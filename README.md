@@ -206,3 +206,9 @@ Grundlage: Bild 1 und 2 des Nutzers und seine Notiz *Complex Tetration Dynamics*
   für ganze Lösungsklassen, nicht nur für Kneser; Paper II Thm. B ist Spezialfall der Youngschen Flächenidentität.
 - **Carleman-slog:** konvergiert gegen Kneser, aber nur algebraisch ($\approx n^{-3.8}$, 8 Stellen bei $n=128$).
 - **Eigener Fehler gefunden:** erste Fassung von `fp.satz.lambert` hatte das Vorzeichen von $\operatorname{Im}L$ falsch (`exp.fixpunkte`).
+
+## Lizenz
+
+Code (`baue.py`, Python-Skripte, JavaScript/CSS der Ansicht) unter der MIT-Lizenz ([`LICENSE`](LICENSE)); Aussagen, Texte,
+Berichte, Daten, Abbildungen und die erzeugte Ansicht unter CC BY 4.0. Einzelheiten und Ausnahmen (KaTeX, Zitate aus fremden
+Quellen) in [`LICENSE-INHALT.md`](LICENSE-INHALT.md).
