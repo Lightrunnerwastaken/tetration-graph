@@ -1,0 +1,105 @@
+{
+ "id": "exp.eta_digamma",
+ "skript_hash": "8c1a5ea2fb9a1dd5",
+ "gelaufen": "2026-10-08 20:45",
+ "laufzeit_s": 93.1,
+ "python": "3.13.9",
+ "zusammenfassung": "Basis η: C_T = 2.7982481542313876625 (aus ganzen Höhen), T_η(1/2) = 1.257153075054173, Σ_k[T(k) − e + 2e/k] = 10.79756227493931, Σ T′(k) = 1.4502290173934; Digamma-Zerlegung bestätigt. C_2 = 0.8125152587890625, C_e = 0.4338677391894938.",
+ "pruefungen": [
+  {
+   "name": "exakte Umformungen: q(x+1) = (1 − e^{−2q})/2 und Z(x+1) = 1 + coth(1/Z)",
+   "ok": true,
+   "wert": "5.99e-55"
+  },
+  {
+   "name": "C_T = lim Φ(Z(n)) − n ist stabil (n = 2500 … 20000)",
+   "ok": true,
+   "wert": "C_T = 2.79824815423138766245258318547"
+  },
+  {
+   "name": "Asymptotik Z(n) = n + (1/3) log n + C_T + O(log n / n)",
+   "ok": true,
+   "wert": {
+    "100": "0.01365",
+    "1000": "0.001641",
+    "10000": "0.00019"
+   }
+  },
+  {
+   "name": "Fatou-Koordinate unabhängig von der Iterationstiefe (N = 1000 vs 3000)",
+   "ok": true,
+   "wert": "3.06e-42"
+  },
+  {
+   "name": "Bruchsumme: S(3/2) − S(1/2) = T(3/2)",
+   "ok": true,
+   "wert": "1.98e-22"
+  },
+  {
+   "name": "Bruchsumme an ganzer Stelle: S(3) = T(1) + T(2) + T(3)",
+   "ok": true,
+   "wert": "5.94e-22"
+  },
+  {
+   "name": "regularisierte Reihe Σ_k [T(k) − e + 2e/k] mit Schwanz stabil (10⁴ vs 2·10⁴ Glieder)",
+   "ok": true,
+   "wert": "Wert 10.797562274939314335"
+  },
+  {
+   "name": "Digamma-Zerlegung: S(x) = e x − 2e(ψ(x+1)+γ) + Σ_k[T(k) − e + 2e/k] − 2e((log x + 1)/3 + C_T)/x + …",
+   "ok": true,
+   "wert": {
+    "20": "Rest -0.9919, rel. zur Vorhersage -0.0962",
+    "200": "Rest -0.1311, rel. zur Vorhersage -0.0128"
+   }
+  },
+  {
+   "name": "T′(n) über die Transferformel = T′ aus der Fatou-Asymptotik (n = 20000)",
+   "ok": true,
+   "wert": "8.52e-55"
+  },
+  {
+   "name": "Σ_{k≥1} T′(k) konvergiert (T′(k) ≈ 2e/k²)",
+   "ok": true,
+   "wert": "Σ T′(k) = 1.45022901739342163"
+  },
+  {
+   "name": "C_2 = 1/2 + 1/4 + 1/16 + 1/65536 + … = 0.8125152587890625 + 2^{−65536} + …",
+   "ok": true,
+   "wert": "0.8125152587890625"
+  },
+  {
+   "name": "über η: C_b − R_b(x) = Σ_m b^{−T(x+m)}, erster Term dominiert (Verhältnis → 1, Basis 2, x = 1/2, 3/2, 5/2)",
+   "ok": true,
+   "wert": {
+    "0": "1.43501",
+    "1": "1.0637",
+    "2": "1.0"
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "c_fatou": [
+   "1/18",
+   "1/135",
+   "-1/972",
+   "-71/27216",
+   "-8759/5103000",
+   "31/328050"
+  ],
+  "C_T": "2.7982481542313876624525831854691003",
+  "T_eta_halb": "1.25715307505417262217164656477",
+  "S_eta_halb": "0.682095573523201008",
+  "regularisiert": "10.797562274939314335",
+  "K_eta": "7.659492568931829765",
+  "T_strich_0": "0.6110954537716517252628104",
+  "summe_T_strich": "1.45022901739342163",
+  "C_b": {
+   "2": "0.8125152587890625",
+   "e": "0.4338677391894938048076215",
+   "10": "0.1000000001"
+  },
+  "T_2_halb": "1.458781816036421700683972"
+ }
+}

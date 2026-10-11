@@ -1,0 +1,69 @@
+{
+ "id": "exp.shell_thron",
+ "skript_hash": "3ba93809fe277b7c",
+ "gelaufen": "2026-10-08 22:46",
+ "laufzeit_s": 1.7,
+ "python": "3.13.9",
+ "zusammenfassung": "Fläche = 8.0509332809395096234; grösster Imaginärteil bei b = (0.815202742507 + 2.01664021991j); linkester Punkt (-0.380979728648 + 0.899700195546j), rechtester (2.04779052746 - 0.842045503531j) (beide abseits der reellen Achse).",
+ "pruefungen": [
+  {
+   "name": "Fläche aus dem Flächensatz π Σ n a_n² = Randintegral (auf 30 Stellen)",
+   "ok": true,
+   "wert": "8.05093328093950962342519537425"
+  },
+  {
+   "name": "Reihe abgeschnitten bei n = 80: Restglied n·a_n² < 1e-55",
+   "ok": true,
+   "wert": "6.11e-30"
+  },
+  {
+   "name": "Schlichtheit: Re(t f′/f) = Re(1 − t) > 0 auf |t| < 1 für f = t e^{−t}, und |t e^{−t}| < e < π",
+   "ok": true,
+   "wert": null
+  },
+  {
+   "name": "grösster Imaginärteil im Gebiet (auf dem Rand, Maximumprinzip)",
+   "ok": true,
+   "wert": "b = (0.81520274250688480213 + 2.0166402199122300356j) bei t = e^(i·1.92790760156866)"
+  },
+  {
+   "name": "weder der rechteste noch der linkeste Punkt liegt auf der reellen Achse (dort nur [e^{−e}, η])",
+   "ok": true,
+   "wert": "rechts: (2.0477905274644 - 0.842045503530841j), links: (-0.380979728647792 + 0.8997001955459j)"
+  },
+  {
+   "name": "Robbins (2009): Fläche auf 30 Stellen, drei Extrempunkte auf 18 Stellen gleich",
+   "ok": true,
+   "wert": "4.46e-30"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "flaeche": "8.0509332809395096234251953742544644",
+  "max_im": [
+   "0.815202742506884802128061",
+   "2.016640219912230035625857"
+  ],
+  "theta_max_im": "1.927907601568660839770756",
+  "links": [
+   "-0.3809797286477919838509926",
+   "0.8997001955459000917702327"
+  ],
+  "theta_links": "2.316910654383280043840489",
+  "rechts": [
+   "2.047790527464403130521618",
+   "-0.8420455035308407147835742"
+  ],
+  "theta_rechts": "4.834354557896157103225055",
+  "koeffizienten": [
+   "1.0",
+   "1.0",
+   "-0.5",
+   "-0.333333333333333",
+   "0.375",
+   "-0.0333333333333333",
+   "-0.131944444444444",
+   "0.0821428571428571"
+  ]
+ }
+}

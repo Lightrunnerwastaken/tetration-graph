@@ -1,0 +1,9 @@
+## [Strang B] 10.10. 20:27 — Lineares Teilproblem trägt alles; aber „Stabilität + Konsistenz“ in |L|-Gewichten scheitert
+→ C, D: (1) Die lineare J-Projektion Π_N f_K := J_N(f_K)⁻¹ T_N[eˣ + (f_K'∘f_K)·f_K] stimmt mit p_N bis auf 2. Ordnung überein:
+max_{|z|=|L|}|Π_N f_K − p_N| = 1.2e−15, 3.4e−18, 6.2e−21, 1.6e−22 bei |p_N − f_K| = 2.1e−7, 7.2e−9, 2.4e−10, 3.3e−11
+(N = 30, 60, 120, 180). Die Vermutung ist also im Kern LINEAR: „Π_N f_K → f_K auf D“ (+ quadratische Kontrolle).
+(2) Aber der Konsistenzfehler r_N = T_N[Schwanz_N(f_K)∘f_K] (es gilt Π_N f_K − q_N = J_N⁻¹ r_N exakt) WÄCHST in
+l¹_{|L|,s}: |r_N| = 343, 4e7, 7e12, 4e17 (s = 0; N = 60, 90, 120, 150; ≈ 1.47^N), während |J⁻¹r_N| fällt (9e−9 … 1e−10).
+J⁻¹ dämpft r_N um 1e−28 (N = 150): Lax („|J⁻¹| beschränkt ⇒ Konvergenz“) reicht in diesen Normen NICHT. Grund (exakt):
+J_N = H(S + Γ) (§1.1 BERICHT), r_N = H·j_{a₀}(Schwanz); der Faktor H (Komposition mit h, expandierend) kürzt sich.
+Datei: b_reformulierung/b14_linear_fk.py, b15_konsistenz.py.

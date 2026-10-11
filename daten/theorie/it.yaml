@@ -1,0 +1,265 @@
+# Theorie-Blöcke für das Gebiet Lokale Iteration (it), Etappe 2.
+
+it.satz.koenigs:
+  worum: |
+    Ganz nah an einem anziehenden Fixpunkt sieht jede glatte Abbildung aus wie eine Streckung. Koenigs hat 1884 gezeigt, dass das
+    nicht nur ungefähr stimmt: es gibt eine Koordinate, in der die Abbildung **exakt** eine Streckung ist, und man bekommt sie als Grenzwert.
+  genau: |
+    Sei $f$ holomorph nahe $p$, $f(p)=p$, und $\lambda=f'(p)$ mit $0<|\lambda|<1$. Dann gibt es genau eine holomorphe Funktion $\sigma$ nahe $p$ mit
+    $$\sigma(p)=0,\qquad\sigma'(p)=1,\qquad\sigma(f(z))=\lambda\,\sigma(z),$$
+    nämlich
+    $$\sigma(z)=\lim_{n\to\infty}\frac{f^{n}(z)-p}{\lambda^{n}} .$$
+    (Für $|\lambda|>1$ wendet man dasselbe auf die Umkehrabbildung an.)
+  warum: |
+    1. Nahe $p$ ist $f(z)-p=\lambda(z-p)+O(|z-p|^2)$: in erster Näherung eine Streckung.
+    2. Setze $\sigma_n(z)=\lambda^{-n}(f^n(z)-p)$. Der Unterschied zweier Glieder ist $\sigma_{n+1}-\sigma_n=\lambda^{-n-1}\bigl(f(f^nz)-p-\lambda(f^nz-p)\bigr)$,
+       also höchstens $C|\lambda|^{-n-1}|f^nz-p|^2$. Weil $|f^nz-p|$ etwa wie $|\lambda|^n$ schrumpft, sind die Unterschiede höchstens etwa $|\lambda|^{n}$ —
+       eine geometrische Reihe, die Folge konvergiert gleichmässig.
+    3. Funktionalgleichung: $\sigma(f(z))=\lim\lambda^{-n}(f^{n+1}z-p)=\lambda\lim\lambda^{-(n+1)}(f^{n+1}z-p)=\lambda\,\sigma(z)$.
+    4. Eindeutig: Zwei Lösungen ergeben in der einen Koordinate eine Abbildung, die mit $w\mapsto\lambda w$ vertauscht und Ableitung $1$ hat;
+       Koeffizientenvergleich zeigt, dass das die Identität ist.
+  beispiel: |
+    $f(z)=\sqrt2^{\,z}$ am Fixpunkt $p=2$, $\lambda=\ln2=0.693$: $\sigma(1)=-0.63210$. Vorhersage für den Turm: $z_{10}-2\approx\sigma(1)\lambda^{10}=-0.01618$;
+    tatsächlich $z_{10}-2=-0.01633$. Das Verhältnis geht gegen $1$, je weiter man geht.
+  bilder: [k4_koenigs]
+  einordnung: |
+    Die Koenigs-Koordinate ist das Werkzeug unter $\eta$: reguläre Tetration ([[kl.satz.regulaer]]), Spektralreihe ([[kl.satz.koenigs_spektral]]),
+    Basiswechsel an Fixpunkten (Kapitel 7). Über $\eta$ wird sie am abstossenden Fixpunkt für $\log_b$ benutzt ([[fp.satz.abstossend]]).
+
+it.satz.vertauschbar:
+  worum: |
+    Man kann Abbildungen auf viele Arten „halbieren“. Verlangt man aber, dass alle Bruchschritte am Fixpunkt holomorph sind, bleibt
+    genau eine Möglichkeit übrig: in der Koenigs-Koordinate um $\lambda^t$ strecken. Das ist die **reguläre Iteration**.
+  genau: |
+    Sei $p$ ein anziehender Fixpunkt mit reellem Multiplikator $0<\lambda<1$ und $(f^t)_{t\in\mathbb R}$ eine stetige Iteration, deren Glieder alle
+    am Fixpunkt holomorph sind. Dann
+    $$f^t=\sigma^{-1}\circ\bigl(\lambda^t\,\sigma\bigr)$$
+    mit der Koenigs-Funktion $\sigma$.
+  warum: |
+    1. Jedes $g=f^t$ vertauscht mit $f$: $g\circ f=f^{t+1}=f\circ g$.
+    2. In Koenigs-Koordinaten vertauscht $\tilde g=\sigma\circ g\circ\sigma^{-1}$ mit $w\mapsto\lambda w$. Schreibe $\tilde g(w)=\sum a_nw^n$; dann
+       $\tilde g(\lambda w)=\lambda\tilde g(w)$ heisst $a_n\lambda^n=\lambda a_n$.
+    3. Für $n\ge2$ ist $\lambda^{n-1}\ne1$, also $a_n=0$: $\tilde g(w)=c_t\,w$ ist eine Streckung.
+    4. Die Gruppeneigenschaft gibt $c_{s+t}=c_sc_t$ und $c_1=\lambda$; mit Stetigkeit folgt $c_t=\lambda^t$.
+  beispiel: |
+    Für $\sqrt2^{\,z}$: die reguläre halbe Iterierte schickt $1$ auf $T(\tfrac12)=1.24362$ und $1.24362$ auf $\sqrt2$ — zweimal angewandt
+    also genau einen Turmschritt.
+  einordnung: |
+    Das ist der Grund, warum die reguläre Tetration unter $\eta$ als „die richtige“ gilt ([[kl.satz.regulaer]]). Dieselbe Idee in Form einer
+    Ableitungsformel: [[kl.satz.bruchprodukt]]. Im parabolischen Fall gibt es keine solche Iteration ([[it.satz.baker]]).
+
+it.lem.julia:
+  worum: |
+    Ein Fluss hat eine „Geschwindigkeit“: wie schnell sich ein Punkt bewegt, wenn die Zeit ein wenig läuft. Diese Geschwindigkeit
+    erfüllt eine eigene einfache Gleichung, die Julia-Gleichung.
+  genau: |
+    Ist $f^t=\alpha^{-1}(\alpha+t)$ mit differenzierbarer Abel-Funktion ($\alpha'\ne0$), so ist der Erzeuger
+    $J:=\partial_tf^t\big|_{t=0}=1/\alpha'$, und er erfüllt
+    $$J(f(z))=f'(z)\,J(z).$$
+    Für Tetration: $J=T_b'\circ\operatorname{slog}_b$.
+  warum: |
+    1. $\partial_t\alpha^{-1}(\alpha(z)+t)$ bei $t=0$ ist $(\alpha^{-1})'(\alpha(z))=1/\alpha'(z)$.
+    2. Ableiten der Abel-Gleichung $\alpha(f(z))=\alpha(z)+1$ gibt $\alpha'(f(z))\,f'(z)=\alpha'(z)$, also $J(f(z))=f'(z)J(z)$.
+  beispiel: |
+    Basis $e$ (Kneser): $J(1)=T'(0)=1.09177$ und $J(e)=T'(1)=2.96773$. Probe: $f'(1)\cdot J(1)=e\cdot1.09177=2.96773$.
+  einordnung: |
+    Die Julia-Gleichung ist die „Ableitungsform“ der Abel-Gleichung; [[gr.satz.kettenregel]] ist dieselbe Aussage, entlang der Tetration gelesen.
+
+it.satz.leau_fatou:
+  worum: |
+    Ist der Multiplikator genau $1$, gibt es keine Streckung, die man ausnutzen könnte. Trotzdem kriechen Punkte in gewissen
+    Richtungen an den Fixpunkt heran — in „Blütenblättern“. Dort findet man eine Koordinate, in der die Abbildung eine reine
+    **Verschiebung** um $1$ ist.
+  genau: |
+    Sei $f(z)=z+az^{k+1}+\dots$ mit $a\ne0$ (Fixpunkt $0$, Multiplikator $1$). Dann gibt es $k$ anziehende und $k$ abstossende Blütenblätter. Auf jedem
+    gibt es eine (bis auf eine Konstante eindeutige) injektive Abel-Funktion, die **Fatou-Koordinate** $\phi$:
+    $$\phi(f(z))=\phi(z)+1,\qquad\phi(z)\approx-\frac1{k\,a\,z^{k}} .$$
+  warum: |
+    Für $k=1$: Mit $w=-1/(az)$ wird $f$ zu $w\mapsto w+1+O(1/w)$ — für grosse $w$ fast eine Verschiebung. Die kleinen Korrekturen summieren
+    sich zu einem Logarithmus ($\phi=w+c\log w+\dots$), und man bekommt $\phi$ als Grenzwert $\phi(z)=\lim\bigl(w(f^n(z))-n-c\log n\bigr)$.
+    Die Blätter sind die Gebiete, in denen die Bahnen in den Fixpunkt laufen (anziehend) bzw. für $f^{-1}$ (abstossend). Ausführlich bei Milnor, §10.
+  beispiel: |
+    $f(u)=e^u-1=u+\tfrac12u^2+\dots$: $a=\tfrac12$, $k=1$, also $u_n\approx-2/n$. Von $u_0=-0.5$ aus: $u_{10}=-0.1385$, $u_{100}=-0.01903$, $u_{1000}=-0.001988$;
+    $n\,u_n$ geht gegen $-2$ (langsam, wegen eines Logarithmus-Glieds).
+  bilder: [k4_blume]
+  einordnung: |
+    Genau das passiert zur Basis $\eta$ am Fixpunkt $e$ ([[kl.satz.parabolisch]], [[kl.kor.eta_baker]]) und an den Rändern der Basen-Ebene
+    ([[fp.satz.parabolisch_rand]]). Ob die Koordinaten der Blätter zusammenpassen, misst [[it.satz.ecalle_voronin]].
+
+it.satz.ecalle_voronin:
+  worum: |
+    Jedes Blütenblatt hat seine eigene Fatou-Koordinate. Wo sich benachbarte Blätter überlappen, kann man die Koordinaten vergleichen.
+    Diese Übergänge sind die feinste Information über die Abbildung — und sie entscheiden, ob es einen glatten Fluss gibt.
+  genau: |
+    Die analytische Klasse eines parabolischen Keims (welche Keime sich durch einen holomorphen Koordinatenwechsel ineinander überführen lassen)
+    wird durch die Übergangsabbildungen zwischen den Fatou-Koordinaten benachbarter Blätter bestimmt (die „Hornabbildungen“). $f$ ist genau dann
+    die Zeit-1-Abbildung eines holomorphen Flusses — konvergieren also die formalen Iterierten —, wenn diese Übergänge trivial (reine Verschiebungen) sind.
+  warum: |
+    Literatursatz (Écalle 1975, Voronin 1981). Idee: In den Fatou-Koordinaten ist $f$ überall die Verschiebung um $1$. Ein Fluss müsste in
+    allen Blättern zugleich die Verschiebung um $t$ sein; das passt nur zusammen, wenn die Koordinaten auf den Überlappungen bis auf Konstanten gleich sind.
+    Die Übergänge sind 1-periodisch (sie vertauschen mit der Verschiebung) — dieselbe Struktur wie in [[fg.satz.kohomologisch]].
+  beispiel: |
+    $f(z)=\frac z{1-z}=z+z^2+\dots$ hat den expliziten Fluss $f^t(z)=\frac z{1-tz}$: triviale Invarianten. $e^z-1$ hat keinen Fluss ([[it.satz.baker]]),
+    also nichttriviale Invarianten.
+  einordnung: |
+    Die 1-periodischen Übergänge sind ein Gegenstück zur periodischen Welle beim Basiswechsel; die Deutung „Welle = Invariante vom
+    Betrag 1“ steht in [[kl.satz.invariante_daempfung]].
+
+it.satz.szekeres:
+  worum: |
+    Auf der reellen Achse kann man trotzdem halbe Schritte bauen, auch am parabolischen Fixpunkt: Szekeres hat 1958 gezeigt, dass es
+    eine natürliche, beliebig oft differenzierbare reelle Iteration gibt — die aber am Fixpunkt selbst nicht analytisch sein muss.
+  genau: |
+    Für reelle $f(x)=x-ax^{k+1}+\dots$ auf $(0,\varepsilon)$ mit $a>0$ (und ebenso im hyperbolischen Fall) gibt es eine eindeutige „reguläre“ Abel-Funktion
+    mit vorgeschriebener Asymptotik am Fixpunkt. Die zugehörige Iteration ist auf $(0,\varepsilon)$ glatt, am Fixpunkt im parabolischen Fall im
+    Allgemeinen aber nicht analytisch.
+  warum: |
+    Literatursatz. Konstruktion wie bei Leau–Fatou, aber nur auf der reellen Halbgeraden; die Eindeutigkeit kommt aus der vorgeschriebenen
+    Asymptotik (die die periodische Freiheit aus [[fg.satz.allgemeine_loesung]] ausschaltet). Dass Analytizität am Fixpunkt fehlen kann, zeigt [[it.satz.baker]].
+  beispiel: |
+    Die reelle halbe Iterierte $g$ von $e^x-1$ existiert, ist für $x\ne0$ analytisch und bei $0$ unendlich oft differenzierbar. Ihre Taylorreihe bei $0$ ist
+    $x+\tfrac14x^2+\tfrac1{48}x^3+\tfrac1{3840}x^5-\dots$ — und diese Reihe konvergiert nirgends ausser bei $0$.
+  einordnung: |
+    Zur Basis $\eta$ übertragen: es gibt eine schöne reelle parabolische Tetration ([[kl.satz.parabolisch]]), aber keine, die am Fixpunkt $e$ analytisch
+    wäre ([[kl.kor.eta_baker]]).
+
+it.satz.baker:
+  worum: |
+    Für $e^z-1$ kann man eine „halbe Iterierte“ als Potenzreihe Glied für Glied ausrechnen. Baker hat gezeigt: diese Reihe konvergiert nie
+    (ausser für ganze Schrittzahlen). Ein holomorpher halber Schritt am Fixpunkt existiert also nicht.
+  genau: |
+    Die eindeutige formale Potenzreihe $f^t(z)=z+\tfrac t2z^2+\dots$ mit $f^s\circ f^t=f^{s+t}$ und $f^1=e^z-1$ hat für reelles $t\notin\mathbb Z$ den
+    Konvergenzradius $0$.
+  warum: |
+    Literatursatz (Baker, mit indirekten Argumenten). Das Formale ist einfach: Man setzt $g(z)=z+a_2z^2+a_3z^3+\dots$ an und verlangt $g(g(z))=e^z-1$.
+    Der Koeffizient von $z^n$ in $g(g(z))$ ist $2a_n$ plus Terme mit kleineren $a_k$; so bestimmt man $a_n$ Schritt für Schritt. Das Schwierige ist zu
+    zeigen, dass die $a_n$ zu schnell wachsen.
+  beispiel: |
+    $$g(z)=z+\frac{z^2}4+\frac{z^3}{48}+0\cdot z^4+\frac{z^5}{3840}-\frac{7z^6}{92160}+\frac{z^7}{645120}+\dots$$
+    Die Grösse $|a_n|^{1/n}$ (ihr Kehrwert ist der Konvergenzradius) wächst: $0.196$ bei $n=10$, $0.373$ bei $15$, $0.534$ bei $20$, $0.668$ bei $25$,
+    $0.738$ bei $30$ — und nach Baker immer weiter.
+  einordnung: |
+    Über die Konjugation $\eta^{e+eu}=e+e(e^u-1)$ überträgt sich das auf die Basis $\eta$ ([[kl.kor.eta_baker]]). Allgemein sagt [[it.satz.erdos_jabotinsky]],
+    für welche $t$ die formalen Iterierten konvergieren können.
+
+it.satz.erdos_jabotinsky:
+  worum: |
+    Für welche Zeiten $t$ konvergiert die formale Iterierte? Erdős und Jabotinsky zeigten: entweder für alle — oder nur für so wenige,
+    dass man sie auf der reellen Achse nicht sieht.
+  genau: |
+    Sei $F(z)=z+\dots$ konvergent und $S$ die Menge der komplexen $s$, für die die formale Iterierte $F(s,z)$ konvergiert. Enthält $S$ ein reelles
+    Intervall um $0$, dann ist $S=\mathbb C$, und $F(s,z)$ hängt analytisch von $s$ ab. Andernfalls hat $S$ Flächeninhalt $0$ und auf der reellen Achse
+    Länge $0$ (nach Baker ist $S$ dann ein Gitter oder trivial).
+  warum: |
+    Literatursatz (Erdős–Jabotinsky 1960). Die Koeffizienten von $F(s,z)$ sind Polynome in $s$. Konvergiert die Reihe für alle $s$ eines ganzen
+    reellen Intervalls, kann man gleichmässige Schranken für die Koeffizienten gewinnen und sie in $s$ analytisch fortsetzen — dann konvergiert
+    sie für alle $s$. Ein einzelnes nicht-ganzes $s$ reicht dafür nicht.
+  beispiel: |
+    $e^z-1$: $S=\mathbb Z$ (nur ganze Schritte). $\ \frac z{1-z}$: $S=\mathbb C$, denn $f^t(z)=\frac z{1-tz}$ konvergiert für jedes $t$.
+  einordnung: |
+    Ein „Alles-oder-fast-nichts“-Satz: Es gibt keine Abbildung, deren halbe, aber nicht drittel Iterierte konvergiert. Für Tetration bei $\eta$
+    gilt der „fast nichts“-Fall ([[kl.kor.eta_baker]]).
+
+it.satz.moebius_iteration:
+  worum: |
+    Bei $\sqrt2^x$ gibt es zwei Fixpunkte, und baut man den „halben Schritt“ vom einen oder vom anderen aus, kommen verschiedene Funktionen
+    heraus ([[kl.beob.zwei_abel]]). Ist das immer so? Nein: Bei den einfachsten gebrochenen Funktionen, den Möbius-Abbildungen
+    $z\mapsto\frac{\alpha z+\beta}{\gamma z+\delta}$, stimmen beide Konstruktionen überein. Der Vergleich zeigt, dass der Unterschied bei der
+    Tetration echt ist und nicht an der Methode liegt.
+  genau: |
+    Sei $f(z)=\frac{\alpha z+\beta}{\gamma z+\delta}$ mit zwei Fixpunkten $L_1\ne L_2$ und Multiplikator $\lambda$ an $L_1$ ($\lambda\ne0$, $|\lambda|\ne1$).
+    - $\sigma(z)=\dfrac{z-L_1}{z-L_2}$ erfüllt $\sigma(f(z))=\lambda\,\sigma(z)$.
+    - Der Multiplikator an $L_2$ ist $1/\lambda$, und $1/\sigma$ ist dort die Schröder-Funktion.
+    - Die reguläre Iteration ist an beiden Fixpunkten dieselbe:
+      $$f^{\circ t}(z)=\sigma^{-1}\bigl(\lambda^t\,\sigma(z)\bigr).$$
+  warum: |
+    1. $\sigma$ ist selbst eine Möbius-Abbildung und schickt $L_1$ nach $0$, $L_2$ nach $\infty$.
+    2. Die konjugierte Abbildung $\sigma\circ f\circ\sigma^{-1}$ ist wieder Möbius und lässt $0$ und $\infty$ fest. Möbius-Abbildungen mit diesen
+       Fixpunkten sind reine Streckungen $w\mapsto\lambda w$. Also $\sigma\circ f=\lambda\,\sigma$ — das ist die Schröder-Gleichung, und zwar für ganz $\mathbb C$.
+    3. Von $L_2$ aus gesehen nimmt man $1/\sigma$: Sie schickt $L_2$ nach $0$ und erfüllt $(1/\sigma)\circ f=\lambda^{-1}(1/\sigma)$. Die reguläre Iteration dort ist
+       $(1/\sigma)^{-1}\bigl(\lambda^{-t}/\sigma\bigr)=\sigma^{-1}(\lambda^t\sigma)$ — dieselbe.
+
+    Bei $b^z$ geht das nicht, weil keine Schröder-Funktion an einem Fixpunkt den anderen Fixpunkt glatt erreicht: zwischen ihnen liegen die
+    Verzweigungen des Logarithmus.
+  beispiel: |
+    $f(z)=\frac{3z+2}{z+2}$: Fixpunkte aus $z^2-z-2=0$, also $L_1=2$, $L_2=-1$. Ableitung $f'(z)=4/(z+2)^2$: $f'(2)=1/4$, $f'(-1)=4$.
+    Halber Schritt mit $\sigma(z)=\frac{z-2}{z+1}$ und $\lambda^{1/2}=1/2$: $h(0)=\sigma^{-1}(\sigma(0)/2)=\sigma^{-1}(-1)=\tfrac12$, und
+    $h(\tfrac12)=\sigma^{-1}(-\tfrac12)=1=f(0)$. Von $L_2=-1$ aus gerechnet: dieselben Werte auf 60 Stellen.
+  einordnung: |
+    Ein Spezialfall von Koenigs ([[it.satz.koenigs]]), bei dem die lokale Linearisierung global wird. Der Kontrast „Möbius gleich, $b^z$
+    verschieden“ ist der Hintergrund des „Bummer“ zur Basis $\sqrt2$ ([[kl.beob.zwei_abel]]).
+
+it.satz.szekeres_monoton:
+  worum: |
+    Die Abel-Gleichung $A(f(x))=A(x)+1$ hat immer unendlich viele Lösungen: Man kann zu einer Lösung eine kleine Welle mit Periode 1
+    addieren. Für $f(x)=e^x-1$ hat G. Szekeres eine Eigenschaft gefunden, die genau **eine** Lösung auswählt, und zwar allein auf der reellen
+    Achse: Die Ableitungen müssen sich im Vorzeichen abwechseln wie beim Logarithmus. Für die Tetration selbst kennt man so etwas (noch) nicht.
+  genau: |
+    Eine Funktion $A$ auf $(0,\infty)$ heisst **total monoton**, wenn sie beliebig oft differenzierbar ist und
+    $$(-1)^{k+1}A^{(k)}(x)>0\qquad\text{für alle }k\ge1,\ x>0,$$
+    also $A'>0$, $A''<0$, $A'''>0$, … — wie $\ln x$.
+
+    **Satz (Szekeres 1961):** Die Haupt-Abel-Funktion von $e^x-1$ — die Fatou-Koordinate am Fixpunkt $0$, mit $A(x)=-\frac2x+\frac13\ln x+\dots$ für
+    $x\to0^+$ — ist total monoton, und sie ist die **einzige** Abel-Funktion von $e^x-1$ mit dieser Eigenschaft.
+  warum: |
+    Der Beweis steht bei Szekeres (hier nur über die Hyperoperations-Wiki geprüft). Warum jede Welle die Eigenschaft zerstört, sieht man so:
+    1. Eine andere Abel-Funktion ist $A+\theta(A)$ mit einer Funktion $\theta$ der Periode $1$, z. B. $\theta=c\sin2\pi A$.
+    2. Ihre zweite Ableitung enthält den Term $-c(2\pi)^2A'^2\sin2\pi A$.
+    3. Nahe $0$ ist $A'\approx2/x^2$ und $A''\approx-4/x^3$, also $A'^2/|A''|\approx1/x$ — beliebig gross. Der Wellen-Term gewinnt, und dort, wo
+       $\sin2\pi A=-1$ ist, wird die zweite Ableitung positiv. Die Bedingung $A''<0$ ist verletzt.
+
+    Je kleiner die Welle, desto näher an $0$ liegt die Verletzung — aber sie kommt immer.
+  beispiel: |
+    Gemessen (exp.cheta) an $x=1$: $A'=2.309$, $A''=-4.330$, $A'''=12.67$, $A^{(4)}=-50.0002$, …, $A^{(8)}=-82320.01$ — Vorzeichen wie gefordert, auch an
+    $x=0.05,\ 0.3,\ 3,\ 10$. Die hohen Ableitungen folgen dem Muster $(-1)^{k+1}(k-1)!\,(2k+\tfrac13)$, das genau von $-\frac2x+\frac13\ln x$ kommt.
+    Die gestörte Funktion $A+0.001\sin2\pi A$ verletzt $A''<0$ schon bei $x=0.0025$.
+  einordnung: |
+    Das einzige bekannte Beispiel einer rein reellen Eindeutigkeitsbedingung in diesem Gebiet. Über $\exp_\eta\sim e^u-1$ gilt sie für die obere
+    Lösung bei $\eta$ ([[kl.satz.cheta]]); das hyperbolische Gegenstück unter $\eta$ ist [[kl.verm.vollmonoton]]. Ob es für Kneser über $\eta$ eine
+    solche Bedingung gibt, ist offen ([[br.frage.bohr_mollerup]]). Szekeres' frühere Arbeit: [[it.satz.szekeres]].
+
+it.satz.elementare_superfunktionen:
+  worum: |
+    Für $\exp$ ist die Superfunktion schwer. Für manche andere Funktionen ist sie eine einfache Formel — und dann sieht man an ihnen, wie Superfunktionen und
+    gebrochene Iterationen funktionieren.
+  genau: |
+    Beispiele ($c$ beliebig):
+
+    | $f(x)$ | Superfunktion $F(t)$ | Grund |
+    |---|---|---|
+    | $x^2-2$ | $2\cosh(2^tc)$ | $2\cosh2y=(2\cosh y)^2-2$ |
+    | $2x^2-1$ | $\cosh(2^tc)$ | Tschebyschow $T_2$ |
+    | $(x-1)^2+1$ | $2^{2^t}+1$ | Fermat-Zahlen |
+    | $x^3+3x$ | $2\sinh(3^tc)$ | $2\sinh3y=(2\sinh y)^3+3\cdot2\sinh y$ |
+    | $4x(1-x)$ | $\sin^2(2^tc)$ | logistische Abbildung |
+    | $x^2+2x$ | $e^{2^tc}-1$ | $(x+1)^2-1$ |
+    | $x^a$ | $e^{a^tc}$ | Potenzen |
+    | $2x/(1+x)$ | $2^t/(2^t+c)$ | Möbius, Fixpunkte 0 und 1 |
+    | $x/(1+x)$ | $1/(t+c)$ | Möbius, parabolisch |
+  warum: |
+    1. Alle Beispiele sind Verdopplungsformeln in Verkleidung: $\cosh2y=2\cosh^2y-1$ heisst, dass $2x^2-1$ das Argument von $\cosh$ verdoppelt.
+    2. Wer das Argument verdoppelt, macht nach $t$ Schritten $2^t$ daraus — das ist die Superfunktion.
+    3. Gebrochene Iterierte: $f^{[1/2]}(\cosh y)=\cosh(\sqrt2\,y)$.
+  beispiel: |
+    Fermat-Zahlen: $(x-1)^2+1$ macht aus $2^{2^n}+1$ die nächste Fermat-Zahl; die halbe Iterierte ist $(x-1)^{\sqrt2}+1$.
+  bilder: [exp.forum_iteration]
+  einordnung: |
+    Prüfsteine für jede Methode der gebrochenen Iteration ([[it.satz.koenigs]]). Für Polynome ohne reellen Fixpunkt — das Gegenstück zu $\exp$ über $\eta$ — ist keine
+    solche Formel bekannt (TPID 8).
+
+it.satz.moebius_familie:
+  worum: |
+    Was passiert bei $\eta$, wenn zwei reelle Fixpunkte zu einem verschmelzen und dann ins Komplexe wandern? Für die Exponentialfunktion ist das schwer. Für
+    Bruchfunktionen kann man es exakt durchrechnen.
+  genau: |
+    $f_\varepsilon(z)=(z+1)/(1-\varepsilon z)$: zwei reelle Fixpunkte für $\varepsilon<0$, einer bei $\varepsilon=0$, ein komplexes Paar für $\varepsilon>0$. Die gebrochenen Iterierten
+    kommen aus Matrixpotenzen und sind **analytisch in $\varepsilon$**, auch durch $\varepsilon=0$.
+  warum: |
+    1. Möbius-Abbildungen sind $2\times2$-Matrizen; Iterieren heisst Potenzieren.
+    2. Die Matrixpotenz $A^t$ ist eine gerade Funktion der Wurzel $\mu=\sqrt{-\varepsilon}$ — also eine gewöhnliche Potenzreihe in $\varepsilon$.
+    3. Weil die Iterierte an beiden Fixpunkten holomorph ist, ist sie an beiden die reguläre — kein Widerspruch wie bei $\sqrt2^x$.
+  beispiel: |
+    $z=0.3$, halbe Iterierte: $0.800053$ ($\varepsilon=-0.01$), $0.8$ ($\varepsilon=0$, dort ist $f$ die Verschiebung um 1), $0.799953$ ($\varepsilon=0.01$) — glatt durch den Übergang.
+  bilder: [exp.forum_iteration]
+  einordnung: |
+    Modell für die offene Frage [[kl.frage.eta_analytisch]]; bei $\exp$ ist schon unter $\eta$ alles komplizierter ([[kl.beob.zwei_abel]]).

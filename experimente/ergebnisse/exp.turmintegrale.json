@@ -1,0 +1,70 @@
+{
+ "id": "exp.turmintegrale",
+ "skript_hash": "4690fcf295a848d5",
+ "gelaufen": "2026-10-08 20:43",
+ "laufzeit_s": 1.6,
+ "python": "3.13.9",
+ "zusammenfassung": "Sophomore bestätigt; gerade 0.6767142737718128, ungerade 0.6313093708019882, Lücke 0.0454049029698246 (= Bild 2 auf 15 Stellen). ∫h = 0.62544581058879. I_n konvergiert wie n^(−1.502) (Vorhersage 3/2).",
+ "pruefungen": [
+  {
+   "name": "Sophomore's Dream: ∫_0^1 x^x dx = Σ (−1)^{k+1}/k^k",
+   "ok": true,
+   "wert": "0.78343051071213440706"
+  },
+  {
+   "name": "∫_{e^{−e}}^1 h = 1 − e^{−e−1} − ∫_{1/e}^1 y^{1/y} dy",
+   "ok": true,
+   "wert": "0.62544581058878807147"
+  },
+  {
+   "name": "Parametrisierung des 2-Zyklus = direkte Nullstellensuche",
+   "ok": true,
+   "wert": "1.82e-36"
+  },
+  {
+   "name": "Lücke stimmt mit Bild 2 auf 15 Stellen",
+   "ok": true,
+   "wert": "0.0454049029698245998"
+  },
+  {
+   "name": "Bild 2: beide Grenzwerte um denselben Betrag zu klein (Fehler im gemeinsamen Teil ∫h)",
+   "ok": true,
+   "wert": "Versatz 2.428e-11 bzw. 2.428e-11"
+  },
+  {
+   "name": "numpy-Quadratur = mpmath für I_1…I_6 (1e-12)",
+   "ok": true,
+   "wert": "1.1e-16"
+  },
+  {
+   "name": "Vorhersage: I_{2n} − lim fällt wie n^{−3/2} (Exponent 1.5 ± 0.1)",
+   "ok": true,
+   "wert": "gemessen 1.502"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "I": {
+   "1": "0.5",
+   "2": "0.783430510712134407",
+   "3": "0.573121567043619583",
+   "4": "0.731339779891570998",
+   "5": "0.597577634945714534",
+   "6": "0.710658941398366714"
+  },
+  "gerade": "0.6767142737718127951907",
+  "ungerade": "0.6313093708019881953949",
+  "luecke": "0.04540490296982459979587",
+  "int_h": "0.6254458105887880714705",
+  "exponent": 1.5017103170008896,
+  "fehler_gerade": {
+   "64": 0.0011987805790422135,
+   "128": 0.0004258269430308381,
+   "256": 0.00015053910515339108,
+   "512": 5.311470402868945e-05,
+   "1024": 1.873012038677846e-05,
+   "2048": 6.605559301209318e-06,
+   "4096": 2.330413804707554e-06
+  }
+ }
+}

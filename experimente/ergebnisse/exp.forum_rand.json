@@ -1,0 +1,107 @@
+{
+ "id": "exp.forum_rand",
+ "skript_hash": "e03c83c1e6703cb9",
+ "gelaufen": "2026-10-10 14:02",
+ "laufzeit_s": 0.8,
+ "python": "3.13.9",
+ "zusammenfassung": "Ackermann A(4,n) = 2↑↑(n+3) − 3, f₃ ≥ 2↑↑n, Σ1/EF(n) = 1.6111149258…, Grenzfälle bei 0, quadratische Näherung C¹ nicht C², Nachbar-Turm = ln x/W(ln x).",
+ "pruefungen": [
+  {
+   "name": "A(m, n) für m ≤ 3 geschlossen = Rekursion; A(4, n) = 2↑↑(n+3) − 3 für n = 0, 1, 2",
+   "ok": true,
+   "wert": {
+    "A(4,0)": 13,
+    "A(4,1)": 65533,
+    "A(4,2) Bits": 65536
+   }
+  },
+  {
+   "name": "f₃(n) ≥ 2↑↑n für n = 1, 2, 3 (f₃(3) = x·2^x mit x = 402653184·2^402653184)",
+   "ok": true,
+   "wert": {
+    "f3(1)": 2,
+    "f3(2)": 2048,
+    "log2 log2 f3(3)": "28.584963"
+   }
+  },
+  {
+   "name": "Σ 1/EF(n) = 1.61111492580837673611…, Teilsumme bis n = 4 trifft auf 10^−183000 (Liouville: Exponent k > 10⁴)",
+   "ok": true,
+   "wert": {
+    "Summe": "1.611114925808376736111111",
+    "k": "27455.2"
+   }
+  },
+  {
+   "name": "x↑↑n bei x = 10⁻⁴⁰: gerade n nahe 1, ungerade nahe 0 (langsam: x^x = e^{x ln x})",
+   "ok": true,
+   "wert": {
+    "1": [
+     "0.001",
+     "1.0e-10",
+     "1.0e-40"
+    ],
+    "2": [
+     "0.993116",
+     "1.0",
+     "1.0"
+    ],
+    "3": [
+     "0.0010487",
+     "1.0e-10",
+     "1.0e-40"
+    ],
+    "4": [
+     "0.992782",
+     "1.0",
+     "1.0"
+    ],
+    "5": [
+     "0.00105112",
+     "1.0e-10",
+     "1.0e-40"
+    ],
+    "6": [
+     "0.992765",
+     "1.0",
+     "1.0"
+    ]
+   }
+  },
+  {
+   "name": "quadratische Näherung: T(−1) = 0, C¹ an 0, aber nicht C²; ½-Wert zur Basis 2 = 1.45933 (Kneser 1.45878)",
+   "ok": true,
+   "wert": {
+    "T(½)": "1.459331918",
+    "T''(0−)": "-0.362464",
+    "T''(0+)": "0.419139"
+   }
+  },
+  {
+   "name": "Nachbar-Turm = ln x / W(ln x) (x = 0.8, 2, e, 10); bei x = e: 1/Ω = 1.7632228343…",
+   "ok": true,
+   "wert": {
+    "0.8": "0.739533650011",
+    "2.0": "1.55961046946",
+    "2.718": "1.76322283435",
+    "10.0": "2.50618414559"
+   }
+  },
+  {
+   "name": "bei x = 20 > e^e konvergiert er nicht (pendelt)",
+   "ok": true,
+   "wert": "-5.7711"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "ef_summe": "1.61111492580837673611111111111",
+  "quad_halb_2": "1.45933191797",
+  "nachbar": {
+   "0.8": "0.739533650011",
+   "2.0": "1.55961046946",
+   "2.718": "1.76322283435",
+   "10.0": "2.50618414559"
+  }
+ }
+}

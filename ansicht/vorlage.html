@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tetration Wissensgraph</title>
+<style>/*__KATEX_CSS__*/</style>
+<style>/*__STIL__*/</style>
+</head>
+<body>
+<header class="kopf">
+  <div class="marke">
+    <svg class="marke-zeichen" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20h4M7 20V12M11 14h4M13 14V7M17 8h4M19 8V3"/></svg>
+    <span class="marke-text">Tetration <span class="marke-sub">Wissensgraph</span></span>
+  </div>
+  <nav class="ansichten" role="tablist" aria-label="Ansicht">
+    <button role="tab" data-ansicht="karte" aria-selected="true">Karte</button>
+    <button role="tab" data-ansicht="theorie" aria-selected="false">Theorie</button>
+    <button role="tab" data-ansicht="forschung" aria-selected="false">Forschung</button>
+  </nav>
+  <div class="suche">
+    <input id="suche" type="search" placeholder="Aussage suchen  ( / )" autocomplete="off" aria-label="Aussage suchen">
+    <ul id="treffer" class="treffer" role="listbox" hidden></ul>
+  </div>
+  <div class="werkzeuge">
+    <button id="tafel-knopf" class="werkzeug" aria-expanded="false" title="Details ein/aus">Details</button>
+    <button id="legende-knopf" class="werkzeug" aria-expanded="false" title="Legende">Legende</button>
+    <button id="thema-knopf" class="werkzeug" title="Hell/Dunkel umschalten" aria-label="Hell/Dunkel umschalten">◐</button>
+  </div>
+</header>
+
+<main class="buehne">
+  <section class="leinwand-rahmen" aria-label="Graph">
+    <div class="pfad" id="pfad"></div>
+    <div class="filter" id="filter"></div>
+    <canvas id="karte" class="karte" aria-label="Zoombare Karte des Wissensgraphen" role="img"></canvas>
+    <div id="karten" class="karten-ebene"></div>
+    <nav id="stufen" class="stufen" aria-label="Zoomstufe"></nav>
+    <svg id="leinwand" class="leinwand" role="img" aria-label="Theorie: Beweisstufen" hidden></svg>
+    <div id="forschung" class="forschung" hidden></div>
+    <div id="buch" class="buch" hidden></div>
+    <div id="tipp" class="tipp" hidden></div>
+    <div class="zoom">
+      <button id="zoom-plus" aria-label="Vergrössern">+</button>
+      <button id="zoom-minus" aria-label="Verkleinern">−</button>
+      <button id="zoom-fit" aria-label="Einpassen">⤢</button>
+    </div>
+  </section>
+  <aside id="tafel" class="tafel" aria-label="Details"></aside>
+</main>
+
+<div id="legende" class="legende" hidden></div>
+
+<script>/*__KATEX_JS__*/</script>
+<script>/*__DATEN__*/</script>
+<script>/*__APP_JS__*/</script>
+</body>
+</html>

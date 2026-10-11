@@ -1,0 +1,123 @@
+{
+ "id": "exp.funde",
+ "skript_hash": "d2a8c8378f6d60bd",
+ "gelaufen": "2026-10-08 20:51",
+ "laufzeit_s": 2.4,
+ "python": "3.13.9",
+ "zusammenfassung": "Original-Zahlen unabhängig bestätigt: −19/25 ↔ d = (1.425186736 - 0.04620336949j), σ = (-0.2004608936 + 0.003486040177j), Residuumsquotient → λ_d; A_e(L_2), K₁, A_2(L_e) (bis auf Zweig); b_links = (-0.08052815762548356 - 9.423207371442147e-52j); Spitzenkonstanten; Rechteckwelle |c_k|πk = |zA − zB|.",
+ "pruefungen": [
+  {
+   "name": "b = −19/25: genau ein Partner (m = +1), L, d und σ wie im Original",
+   "ok": true,
+   "wert": "L = (1.904713524338566 - 0.3776210535085195j), d = (1.4251867364529 - 0.046203369493033j), σ = (-0.20046089358504 + 0.0034860401774261j), Abweichung 4.1e-14"
+  },
+  {
+   "name": "Residuum A_b(T_d(n)) − σ·A_d(T_d(n)): Quotient aufeinanderfolgender Werte → λ_d",
+   "ok": true,
+   "wert": "(0.6636079559582496 - 0.1957181611289821j) vs λ_d = (0.6636079559582441 - 0.1957181611289712j)"
+  },
+  {
+   "name": "Pseudoperiode 2π/|arg λ_d| = 21.908, Dämpfung pro Periode 3.128e-4 (Original)",
+   "ok": true,
+   "wert": "21.90795, 0.000312777"
+  },
+  {
+   "name": "A_e(L_2) = 0.326448651628991 + 0.523513968909648i (bis auf den Zweig 2πi/Log λ_e)",
+   "ok": true,
+   "wert": "Zweigverschiebung 0, Rest 2.1e-22"
+  },
+  {
+   "name": "K₁ = A_e'(L_2) = −0.0305475246507711 − 1.291981944842259i",
+   "ok": true,
+   "wert": "(-0.03054752465077106 - 1.291981944842259j)"
+  },
+  {
+   "name": "umgekehrt A_2(L_e) = −2.664068065075642 + 0.043403036394983i",
+   "ok": true,
+   "wert": "Zweigverschiebung 0"
+  },
+  {
+   "name": "reelle Basen: arg λ = Im λ (Abklingrate in imaginärer Richtung), Drehrate log log d + Re λ",
+   "ok": true,
+   "wert": null
+  },
+  {
+   "name": "geschlossene Form: z1 = e^v, z2 = e^u ist 2-Zyklus von e^{cz}, μ = uv = (s/(2 sinh(s/2)))², c = u e^{−v}",
+   "ok": true,
+   "wert": "0.0"
+  },
+  {
+   "name": "linker Randpunkt b_links = −0.0805281576254835628 (|μ| = 1 und Im c = π)",
+   "ok": true,
+   "wert": "(-0.080528157625483562823 - 9.4232073714421470532e-52j), φ = 1.05131154488"
+  },
+  {
+   "name": "an der Spitze: (1 − μ)/t → 2/e, |z1 − z2|/√t → 2√6 e^{−3/2}",
+   "ok": true,
+   "wert": "0.735758883, 1.093110076"
+  },
+  {
+   "name": "Spitze b = e^{−e}: |z_n − 1/e|·√n → √6/e = 0.9011169177 (n = 10⁶: Original 0.901664)",
+   "ok": true,
+   "wert": "0.901664"
+  },
+  {
+   "name": "reell unter e^{−e}: Zyklus-Multiplikator immer in (0, 1) — keine Periodenverdopplung auf der Achse",
+   "ok": true,
+   "wert": [
+    "0.932621",
+    "0.566887",
+    "0.0497997",
+    "0.000190902"
+   ]
+  },
+  {
+   "name": "Rechteckwelle: T(x + 80) hat |c_k|·πk = |zA − zB| = 0.7651944057 (ungerade k), gerade Moden ≈ 0",
+   "ok": true,
+   "wert": {
+    "1": 0.7651944,
+    "3": 0.7651944,
+    "5": 0.7651943,
+    "9": 0.7651941,
+    "21": 0.7651929,
+    "41": 0.7651888
+   }
+  },
+  {
+   "name": "Kreuzungssatz: T(x*) = L (x* aus der Startinterpolation), dann T(x* + n) = L für alle n",
+   "ok": true,
+   "wert": "x* = 0.698330769, L = 0.3226191538"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "A": {
+   "L": "(1.9047135243385656023 - 0.37762105350851948466j)",
+   "d": "(1.425186736452924 - 0.04620336949303314j)",
+   "sigma": "(-0.2004608935850429 + 0.003486040177426098j)",
+   "quotient": "(0.6636079559582496 - 0.1957181611289821j)"
+  },
+  "B": {
+   "A_e_L2": "(0.32644865162899108347 + 0.52351396890964800265j)",
+   "K1": "(-0.03054752465077106 - 1.291981944842259j)",
+   "A_2_Le": "(-2.6640680650756417063 + 0.043403036394983249782j)"
+  },
+  "C": {
+   "b_links": "(-0.08052815762548356282323 - 9.423207371442147053234e-52j)",
+   "phi_pi": "1.051311544876",
+   "spitze_n1e6": 0.9016641655510416,
+   "rechteck": {
+    "1": 0.7651944019899393,
+    "3": 0.7651943724834427,
+    "5": 0.7651943145475294,
+    "9": 0.7651941159294674,
+    "21": 0.7651928836167009,
+    "41": 0.7651888149300965
+   },
+   "xstern": 0.6983307692390462,
+   "zA": 0.8213273730468768,
+   "zB": 0.05613296732270739,
+   "L": 0.3226191538381251
+  }
+ }
+}

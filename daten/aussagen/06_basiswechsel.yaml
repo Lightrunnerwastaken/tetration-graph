@@ -1,0 +1,1173 @@
+gebiet: bw
+aussagen:
+
+# ---------------------------------------------------------------- Grundbegriffe
+- id: bw.def.F_bd
+  titel: Mischbasen-Höhenabbildung, Schwänze, Phase
+  art: definition
+  ebene: B
+  status: definition
+  objekte: [F_bd, schwanz_D, phase, slog]
+  bereich: 'reguläre (Kneser/Paulsen–Cowgill) Zweige $T_b,T_d$, $b,d>\eta$; $\alpha=\log_b d$'
+  aussage: |
+    $F_{b,d}:=\operatorname{slog}_b\circ T_d$. Schwänze $D_n(\theta):=\log_b^{\circ n}\bigl(T_d(n+\theta)\bigr)$.
+    Falls der Limes existiert: $\Phi_{b,d}(\theta)=A_b(D_{b,d}(\theta))-\theta$, Mittel $\mu_{b,d}=\int_0^1\Phi$,
+    Profil $P_{b,d}=\Phi-\mu$; Lift $\tilde H_{b,d}=\mathrm{id}+\Phi_{b,d}$.
+  quellen: [{ref: justus_p1, stelle: '§2, §5'}, {ref: forum_fox2007, stelle: 'Basiswechsel-Formel mit Konstante μ_b(a), 2007'}, {ref: forum_trappmann2009, stelle: 'Verzweigungspunkte von log_a^n ∘ exp_b^n'}]
+
+- id: bw.prop.gruppoid
+  titel: Gruppoid-Identitäten
+  art: satz
+  ebene: A
+  status: bewiesen
+  objekte: [F_bd]
+  bereich: 'beliebige Lösungen $T_b,T_c,T_d$ mit Umkehrungen auf den nötigen Bildern'
+  voraussetzungen:
+    - {text: 'T_b, T_c umkehrbar (A_b = T_b^{-1}) auf den Bildern', benutzt: ja}
+    - {text: 'reguläre Kneser-Zweige', benutzt: nein, notiz: 'für jede Wahl von Tetrationen gültig'}
+  aussage: '$F_{b,b}=\mathrm{id}$, $F_{b,d}^{-1}=F_{d,b}$, $F_{b,d}=F_{b,c}\circ F_{c,d}$.'
+  beweis: {art: vollstaendig, text: '$A_b T_c A_c T_d=A_b T_d$.'}
+  quellen: [{ref: justus_p1, stelle: 'Prop. 6.1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus $A_c\circ T_c=\mathrm{id}$.'
+    f2_benutzte_voraussetzungen: 'Nur Umkehrbarkeit; keine Regularität, kein Kneser.'
+    f3_spezialfall: 'Ja: Koordinatenwechsel zwischen Abel-Koordinaten bilden immer ein Gruppoid.'
+    f4_uebertragbar: 'Jede Familie von Superfunktionen beliebiger Abbildungen.'
+    f5_neue_frage: 'Inhalt entsteht erst asymptotisch (Phasengesetz).'
+  bewertung: {richtigkeit: vollständig, neuheit: nur_schreibweise, nutzen: 'Organisationsprinzip; kein neuer mathematischer Inhalt.', nutzen_stufe: mittel}
+
+- id: bw.prop.ganzzahl
+  titel: Exaktes Abschälen auf ganzen Höhen
+  art: satz
+  ebene: B
+  status: bewiesen
+  objekte: [F_bd, schwanz_D]
+  bereich: '$n\in\mathbb N$, sofern die iterierten Logarithmen definiert sind'
+  voraussetzungen:
+    - {text: 'log_b^{∘n}(T_d(n)) definiert', benutzt: ja}
+  aussage: '$\operatorname{slog}_b(T_d(n))-n=A_b(C^n_{b,d})$ mit $C^n_{b,d}=\log_b^{\circ n}(T_d(n))$. Ganze Höhen sehen nur die Phase 0.'
+  beweis: {art: vollstaendig, text: 'Abel-Gleichung $n$-mal.'}
+  quellen: [{ref: justus_p1, stelle: 'Prop. 3.2, Kor. 3.3'}]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Definiertheit der Logarithmen.'
+    f3_spezialfall: Ja, $\theta=0$ im Phasengesetz.
+    f4_uebertragbar: Alle Konstruktionen.
+    f5_neue_frage: 'Was passiert bei nichtganzen Höhen? → Phasengesetz.'
+  bewertung: {richtigkeit: vollständig, neuheit: nur_schreibweise, nutzen: 'Erklärt die naheliegende falsche Erwartung einer konstanten Verschiebung.', nutzen_stufe: gering}
+
+# ------------------------------------------------------------- Annahmen Paper I
+- id: bw.ann.hyp22
+  titel: Annahme „regulärer reeller Logarithmenkanal“ (Paper I, Hyp. 2.2)
+  art: annahme
+  ebene: B
+  status: annahme
+  objekte: [schwanz_D, slog]
+  aussage: |
+    (R1) $T_d$ positiv, stetig, lokal von 0 weg beschränkt; (R2) die Logarithmen $\log_b^{\circ k}(T_d(n+\theta))$
+    bleiben im reellen Kanal; (R3) $A_b$ lokal Lipschitz auf einer Umgebung der Grenzschwänze.
+  quellen: [{ref: justus_p1, stelle: 'Hyp. 2.2'}]
+  kanten:
+    - {typ: verwandt, ziel: bw.lem.stoppregel, notiz: '(R2) für die gestoppte Kette bewiesen'}
+  nachgeprueft:
+    - {gegen: bw.gegen.unverschoben, datum: '2026-07', ergebnis: 'Paper III: für Grenzobjekte nur in der Offset-Fassung (bw.lem.offset) richtig.'}
+
+- id: bw.ann.hyp24
+  titel: Annahme „gleichmässiges Abschälwachstum“ (Paper I, Hyp. 2.4)
+  art: annahme
+  ebene: B
+  status: annahme
+  objekte: [schwanz_D]
+  aussage: '$\log_b^{\circ k}(T_d(n+\theta))\ge a\,T_d(n-k+\theta)-B$ und $s_j=\inf_\theta T_d(j+\theta)\to\infty$.'
+  quellen: [{ref: justus_p1, stelle: 'Hyp. 2.4'}]
+
+- id: bw.lem.wachstumsluecke
+  titel: Turmdivergenz mit expliziter Lücke
+  art: lemma
+  ebene: A
+  status: bewiesen
+  objekte: [eta, T_b]
+  bereich: '$d>\eta$, alle $x\in\mathbb R$'
+  voraussetzungen:
+    - {text: 'd > η', benutzt: ja}
+  aussage: '$d^x-x\ge\delta_0(d)=\dfrac{1+\ln\ln d}{\ln d}>0$; daher $s_{j+1}\ge s_j+\delta_0$, $s_j\to\infty$, und Hyp. 2.4 gilt.'
+  beweis: {art: vollstaendig, text: 'Konvexität (fp.satz.reelle_fixpunkte). Wachstum selbstverstärkend: $s_{j+1}=d^{s_j}$.'}
+  stuetzt_sich_auf: [fp.satz.reelle_fixpunkte]
+  quellen: [{ref: justus_p3, stelle: 'Lemma 1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja — wörtlich die Minimumsrechnung aus fp.satz.reelle_fixpunkte.'
+    f2_benutzte_voraussetzungen: 'Nur $d>\eta$; für $s_j\to\infty$ jede Lösung mit $T_d(0)=1$, nicht nur Kneser.'
+    f3_spezialfall: Ja, von fp.satz.reelle_fixpunkte.
+    f4_uebertragbar: 'Jede Tetration zur Basis $d>\eta$ (Ebene A).'
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Entlastet Hyp. 2.4 vollständig.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: entlastet, ziel: bw.ann.hyp24}
+    - {typ: folgt_unmittelbar_aus, ziel: fp.satz.reelle_fixpunkte}
+
+- id: bw.lem.stoppregel
+  titel: Stoppregel — unbedingte Positivität der gestoppten Kette
+  art: lemma
+  ebene: B
+  status: bewiesen
+  objekte: [schwanz_D]
+  bereich: '$b,d>\eta$, $J_0=\min\{j:s_j\ge2C_0\}$, $C_0=|\log_b\alpha|+\ln2/\ln b$'
+  voraussetzungen:
+    - {text: 'b, d > η', benutzt: ja}
+    - {text: 'T_d wachsend mit T_d(0)=1 (für s_j)', benutzt: ja}
+  aussage: |
+    Für $n\ge J_0+1$ sind die Kettenwerte $W_k^{(n)}=\alpha T_d(n-k+\theta)(1+\sigma_k)$, $|\sigma_k|\le C_0/s_{n-k}\le\tfrac12$,
+    für $0\le k\le n-J_0$ definiert und positiv: (R2) gilt bis zur Stoppstufe $J_0$ ohne Annahme.
+  beweis: {art: vollstaendig, text: 'Abwärtsinduktion; erzeugt die Kanalpositivität statt sie anzunehmen.'}
+  stuetzt_sich_auf: [bw.lem.wachstumsluecke]
+  quellen: [{ref: justus_p3, stelle: 'Lemma 2, Kor. 3'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, aber kurz (Induktion).'
+    f2_benutzte_voraussetzungen: 'Monotonie von $T_d$ und $s_j\to\infty$; keine Kneser-Spezifika.'
+    f3_spezialfall: 'Fehlerkontrolle der Auswertungsleiter = Induktionsinvariante.'
+    f4_uebertragbar: 'Jede wachsende Tetration $T_d$ mit $d>\eta$ (Klasse B).'
+    f5_neue_frage: 'Reicht die gestoppte Kette für alle Grenzaussagen? → bw.satz.phasengesetz_gestoppt'
+  bewertung: {richtigkeit: vollständig, neuheit: vermutlich_neu, recherche: 'Papers I–III; keine Vorlage bekannt.', nutzen: 'Macht die Auswertung bedingungsfrei.', nutzen_stufe: hoch}
+
+# ------------------------------------------------------------- Phasengesetz
+- id: bw.satz.schwanzkonvergenz
+  titel: Konvergenz der logarithmischen Schwänze (Paper I, Thm. 5.6)
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen: [bw.ann.hyp22, bw.ann.hyp24]
+  objekte: [schwanz_D]
+  voraussetzungen:
+    - {text: 'Hyp. 2.2', benutzt: ja, ref: bw.ann.hyp22}
+    - {text: 'Hyp. 2.4', benutzt: ja, ref: bw.ann.hyp24}
+  aussage: '$D_n\to D_{b,d}$ gleichmässig auf $[0,1]$.'
+  beweis: {art: bedingt, text: 'Dämpfungsprodukte (Lemmas 5.2–5.4) summierbar ⇒ Cauchy in sup-Norm.'}
+  stuetzt_sich_auf: [bw.ann.hyp22, bw.ann.hyp24]
+  quellen: [{ref: justus_p1, stelle: 'Thm. 5.6'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: '(R2) nur im Indexbereich $j\ge J_0$ — dort durch die Stoppregel gesichert.'
+    f3_spezialfall: 'Kontraktionsargument für iterierte Logarithmen (vgl. Konvergenz von $\log^{\circ n}$ auf Türmen).'
+    f4_uebertragbar: 'Jedes Paar wachsender Tetrationen mit $b,d>\eta$, sofern $A_b$ lokal Lipschitz.'
+    f5_neue_frage: 'Unbedingte Fassung → bw.satz.phasengesetz_gestoppt'
+  bewertung: {richtigkeit: 'bedingt bewiesen', neuheit: vermutlich_neu, recherche: 'Paper I Einleitung.', nutzen: 'Basis des Phasengesetzes.', nutzen_stufe: hoch}
+
+- id: bw.satz.phasengesetz
+  titel: Mischbasen-Phasengesetz (Paper I, Thm. 5.7)
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen: [bw.ann.hyp22, bw.ann.hyp24]
+  objekte: [F_bd, phase]
+  aussage: '$\operatorname{slog}_b(T_d(x))-x=\mu_{b,d}+P_{b,d}(\{x\})+o(1)$ für $x\to+\infty$, $P$ 1-periodisch mit Mittel 0.'
+  beweis: {art: bedingt, text: 'Thm. 5.6 + lokale Lipschitz-Stetigkeit von $A_b$.'}
+  stuetzt_sich_auf: [bw.satz.schwanzkonvergenz]
+  quellen: [{ref: justus_p1, stelle: 'Thm. 5.7'}, {ref: forum_fox2007, stelle: 'Konstante μ (als exakt angenommen)'}, {ref: forum_levenstein2009, stelle: 'Werte und „wobbles“'}]
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Vorarbeiten aus dem Tetration-Forum (2007, 2009) eingetragen.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Thm. 5.6.'
+    f2_benutzte_voraussetzungen: 'Hyp. 2.2 (R3) für $A_b$; Hyp. 2.4 inzwischen entlastet.'
+    f3_spezialfall: 'Allgemeines Muster: Vergleich zweier Abel-Koordinaten ⇒ asymptotisch periodische Abweichung (vgl. kl.beob.zwei_abel für zwei Fixpunkte).'
+    f4_uebertragbar: 'Auf $1<b,d<\eta$ (reguläre Zweige) nicht direkt: dort beschränkte Türme, Hyp. 2.4 falsch.'
+    f5_neue_frage: 'Regularität von $P$ (Streifen? Gevrey?) und Grösse von $\mu$.'
+  bewertung: {richtigkeit: 'bedingt bewiesen', neuheit: vermutlich_neu, recherche: 'Das Phänomen ist im Tetration-Forum bekannt: J. D. Fox (2007) schrieb die Basiswechsel-Formel mit einer additiven Konstante μ auf, S. Levenstein (2009) mass slog_2 − slog_e ≈ 1.1282 usw. und bemerkte, dass der Wechsel „ein wenig wackelt“. Als Satz mit Beweis (Schwanzkonvergenz, Periodizität, Mittel plus Welle) dort nicht gefunden — das bleibt vermutlich neu.', nutzen: 'Zentrales Ergebnis der Serie; erklärt die beobachtete Nicht-Skalarität.', nutzen_stufe: hoch}
+
+- id: bw.satz.phasengesetz_gestoppt
+  titel: Phasengesetz für die gestoppte Kette (Paper III-Lesart)
+  art: satz
+  ebene: B
+  status: skizze
+  objekte: [F_bd, phase, schwanz_D]
+  bereich: 'alle $b,d>\eta$, Kneser-Zweige'
+  aussage: 'Das Phasengesetz gilt ohne Hyp. 2.2/2.4, wenn man die gestoppten Schwänze $D_n^{\mathrm{stop}}$ benutzt.'
+  beweis:
+    art: skizze
+    text: 'Stoppregel + Wachstumslücke; Paper III: „alle Schwanzabschätzungen von [1,2] gelten wörtlich für $j\ge J_0$“.'
+    luecken:
+      - 'Die wörtliche Übertragung der Lemmas 5.2–5.4 (Paper I) auf $j\ge J_0$ ist behauptet, nicht ausgeschrieben.'
+      - '(R3) — lokale Lipschitz-Stetigkeit von $A_b$ — folgt aus reeller Analytizität von $\operatorname{slog}_b^{\mathrm K}$; im Text nicht explizit gemacht.'
+  stuetzt_sich_auf: [bw.lem.stoppregel, bw.lem.wachstumsluecke, kn.konstr.kneser]
+  quellen: [{ref: justus_p3, stelle: '§4, §7'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Inhalt von Paper I + Stoppregel; die Arbeit ist Buchhaltung.'
+    f2_benutzte_voraussetzungen: 'Monotonie, $d>\eta$, Lipschitz von $A_b$.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Klasse B: jede wachsende reell-analytische Tetration.'
+    f5_neue_frage: 'Ausschreiben und als eigenständigen Satz prüfen — dann sind Papers I–II weitgehend unbedingt.'
+  bewertung: {richtigkeit: 'plausibel, Lücken benannt', neuheit: vermutlich_neu, recherche: 'Paper III.', nutzen: 'Würde die Bedingtheit der ganzen Serie aufheben.', nutzen_stufe: hoch}
+  naechste_frage: 'Lemmas 5.2–5.4 für $j\ge J_0$ ausschreiben (1–2 Seiten).'
+  kanten:
+    - {typ: verallgemeinert, ziel: bw.satz.phasengesetz}
+
+- id: bw.lem.offset
+  titel: Offset-ausgerichteter Grenzkanal
+  art: lemma
+  ebene: B
+  status: bedingt
+  bedingungen: [bw.satz.phasengesetz_gestoppt]
+  objekte: [phase, kreishomoeo]
+  bereich: '$m_\star=\inf\tilde H\ge\mu-\sum_k A_k$, $s=\max(0,\lceil-1-m_\star\rceil)$'
+  voraussetzungen:
+    - {text: 'Phasengesetz-Paket (P) für (b,d)', benutzt: ja, ref: bw.satz.phasengesetz_gestoppt}
+  aussage: '$E_j(\theta)=T_b(j+\tilde H(\theta))>0$ für alle $j\ge s+1$; die gesamte Struktur von Papers I–II gilt für die um $s$ verschobenen Objekte.'
+  beweis: {art: bedingt, text: 'Monotonie von $T_b$ auf $(-1,\infty)$ und Verschiebungsäquivarianz.'}
+  stuetzt_sich_auf: [bw.satz.phasengesetz_gestoppt]
+  quellen: [{ref: justus_p3, stelle: 'Lemma 5'}]
+  pruefung:
+    f1_folgt_unmittelbar: Ja, aus Monotonie, sobald (P) gilt.
+    f2_benutzte_voraussetzungen: '(P) — also ist das Lemma nicht unabhängig vom Phasengesetz (keine Zirkularität, aber Reihenfolge beachten).'
+    f3_spezialfall: nein
+    f4_uebertragbar: Alle Konstruktionen mit wachsendem $T_b$.
+    f5_neue_frage: 'Rand: Paare mit $\mu$ nahe ganzzahlig haben dünne Ränder (e, 1.46: 0.056).'
+  bewertung: {richtigkeit: 'bedingt, Beweis vollständig', neuheit: vermutlich_neu, recherche: 'Paper III.', nutzen: 'Repariert die falsche unverschobene Lesart.', nutzen_stufe: mittel}
+
+- id: bw.gegen.unverschoben
+  titel: Unverschobene Kanallesart scheitert für (10,2) und (e,1.5)
+  art: gegenbeispiel
+  ebene: C
+  status: numerisch
+  objekte: [phase]
+  bereich: 'Paare mit $\mu_{b,d}\le-2+\|P\|_\infty$'
+  aussage: |
+    Für $(10,2)$: $\mu=-2.26496\ldots$, $\inf\tilde H<-2$ ⇒ $T_b(\tilde H)$ auf einem Teil der Periode undefiniert,
+    $E_1$ teilweise negativ. Mit $s=2$ ist alles repariert (Rand 0.7346). $(e,1.5)$: $\mu=-9.776$, $s=9$.
+  quellen: [{ref: justus_p3, stelle: 'Example 6, Table 1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem gemessenen µ.'
+    f2_benutzte_voraussetzungen: 'Gemessenes µ (Engine); rigoros wäre eine Intervallschranke für µ nötig.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Alle Paare mit stark negativem µ, z. B. alle $(e,b)$ mit $b$ nahe $\eta$.'
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: 'numerisch eindeutig (Abstand zu −2 gross)', neuheit: vermutlich_neu, recherche: 'Paper III.', nutzen: 'Korrigiert eine Lesart von Paper I.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: korrigiert, ziel: bw.ann.hyp22, notiz: 'unverschobene Lesart von (R2) ist für diese Paare falsch'}
+
+- id: bw.beob.offset_zertifikat
+  titel: Offset-Bedingung für 45 Paare zertifiziert
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [phase, hub_m]
+  aussage: 'Alle 45 gemessenen Paare erfüllen $s+m_\star+1>0$ mit rigoroser Modenschranke; engster Rand $(e,1.46)$: 0.0563.'
+  quellen: [{ref: justus_p3, stelle: 'Table 1'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein (Rechnung).
+    f2_benutzte_voraussetzungen: 'Modenamplituden aus der Engine (fatou.gp-Fork).'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Für jedes neue Paar a priori aus dem Hub prüfbar.'
+    f5_neue_frage: 'Gibt es eine allgemeine Schranke $\|P_{b,d}\|_\infty<\mathrm{frac}$-Abstand, die die Bedingung für alle Paare beweist?'
+  bewertung: {richtigkeit: numerisch zertifiziert, neuheit: vermutlich_neu, recherche: 'Paper III.', nutzen: 'Restbedingung des Phasengesetzes pro Paar.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: bw.lem.offset}
+
+# ------------------------------------------------------------- Kozykel & Kreis
+- id: bw.prop.kozykel
+  titel: Nichtlinearer Phasen-Kozykel
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen: [bw.satz.phasengesetz]
+  objekte: [phase]
+  aussage: '$\Phi_{b,d}(\theta)=\Phi_{c,d}(\theta)+\Phi_{b,c}(\{\theta+\Phi_{c,d}(\theta)\})$; für inverse Paare $\Phi_{d,b}(\{\theta+\Phi_{b,d}(\theta)\})=-\Phi_{b,d}(\theta)$.'
+  beweis: {art: bedingt, text: 'Gruppoid-Identität + gleichmässige Phasengrenzwerte.'}
+  stuetzt_sich_auf: [bw.prop.gruppoid, bw.satz.phasengesetz]
+  quellen: [{ref: justus_p1, stelle: 'Prop. 6.4, Kor. 6.5'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja: Gruppoid + Grenzwert.'
+    f2_benutzte_voraussetzungen: 'Existenz der drei Phasengrenzwerte, gleichmässig.'
+    f3_spezialfall: 'Lifts bilden ein Gruppoid in $\mathrm{Homeo}^+(S^1)$ — reine Kompositionsregel.'
+    f4_uebertragbar: Alle Konstruktionen mit Phasengesetz.
+    f5_neue_frage: 'Hub-Zerlegung der Mittel → bw.prop.hub'
+  bewertung: {richtigkeit: 'bedingt, Beweis trivial', neuheit: nur_schreibweise, nutzen: 'Strukturgleichung; Inhalt steckt im Phasengesetz.', nutzen_stufe: mittel}
+
+- id: bw.prop.antisym_c1
+  titel: Inverse Mittel-Antisymmetrie unter C¹-Diffeo-Annahme (Paper I, Prop. 6.6)
+  art: satz
+  ebene: B
+  status: ueberholt
+  objekte: [phase, kreishomoeo]
+  voraussetzungen:
+    - {text: 'H = id + Φ orientierungserhaltender C¹-Kreisdiffeomorphismus', benutzt: nein, notiz: 'Paper II zeigt: unnötig'}
+  aussage: '$\mu_{b,d}=-\mu_{d,b}$.'
+  beweis: {art: bedingt, text: 'Substitution mit $H''>0$.'}
+  stuetzt_sich_auf: [bw.prop.kozykel]
+  quellen: [{ref: justus_p1, stelle: 'Prop. 6.6'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der inversen Phasengleichung + Substitution.'
+    f2_benutzte_voraussetzungen: 'Die C¹-Annahme ist überflüssig (Paper II, Thm. B).'
+    f3_spezialfall: 'Ja, von br.satz.young_kreis.'
+    f4_uebertragbar: —
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: 'richtig, aber mit überflüssiger Voraussetzung', neuheit: nur_schreibweise, nutzen: 'Historische Fassung.', nutzen_stufe: gering}
+  versionen:
+    - {datum: '2026-06', fassung: 'Paper I', aenderung: 'mit C¹-Annahme'}
+    - {datum: '2026-07', fassung: 'Paper II, Thm. B', aenderung: 'ohne jede Glattheit', grund: 'Riemann–Stieltjes-Substitution'}
+
+- id: bw.satz.homoeo
+  titel: Phasenabbildung ist Kreishomöomorphismus (Paper II, Thm. A)
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen: [bw.satz.phasengesetz]
+  objekte: [kreishomoeo, phase]
+  voraussetzungen:
+    - {text: 'Phasengesetz-Paket (P) für (b,d) und (d,b)', benutzt: ja}
+  aussage: '$\tilde H_{b,d}$ ist ein streng wachsender, mit $x\mapsto x+1$ vertauschbarer Homöomorphismus mit $\tilde H_{b,d}^{-1}=\tilde H_{d,b}$; die Phasenabbildungen bilden ein Gruppoid in $\mathrm{Homeo}^+(S^1)$.'
+  beweis: {art: bedingt, text: 'Grenzwert streng wachsender Abbildungen + inverse Gleichung ⇒ beide Seiten injektiv.'}
+  stuetzt_sich_auf: [bw.prop.kozykel]
+  quellen: [{ref: justus_p2, stelle: 'Thm. A'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Limites monotoner Funktionen sind monoton; Striktheit aus der Inversen.'
+    f2_benutzte_voraussetzungen: '(P) für beide Ordnungen; keine Glattheit.'
+    f3_spezialfall: nein
+    f4_uebertragbar: Alle wachsenden Konstruktionen.
+    f5_neue_frage: 'Antisymmetrie → bw.satz.antisymmetrie'
+  bewertung: {richtigkeit: 'bedingt, vollständig', neuheit: vermutlich_neu, recherche: 'Paper II.', nutzen: 'Topologischer Kern.', nutzen_stufe: mittel}
+
+- id: bw.satz.antisymmetrie
+  titel: Exakte inverse Antisymmetrie ohne Glattheit (Paper II, Thm. B)
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen: [bw.satz.phasengesetz]
+  objekte: [phase, kreishomoeo]
+  aussage: '$\mu_{b,d}=-\mu_{d,b}$ exakt, sobald das Phasengesetz für beide Ordnungen gilt.'
+  beweis: {art: bedingt, text: 'Riemann–Stieltjes-Substitution.'}
+  stuetzt_sich_auf: [bw.satz.homoeo, br.satz.young_kreis]
+  experimente: [exp.young]
+  quellen: [{ref: justus_p2, stelle: 'Thm. B'}]
+  pruefung:
+    f1_folgt_unmittelbar: '**Ja** — aus Thm. A und der Flächenidentität br.satz.young_kreis, die für jeden Lift eines Kreishomöomorphismus gilt. Tetrationsspezifisch ist nur, dass $\tilde H_{d,b}$ die Inverse ist.'
+    f2_benutzte_voraussetzungen: 'Nur Homöomorphismus + Inverse.'
+    f3_spezialfall: 'Ja, von br.satz.young_kreis.'
+    f4_uebertragbar: 'Auf jedes Paar inverser Lifts.'
+    f5_neue_frage: 'Messbare Folge: Tabellen-Residuen $\mu_{b,d}+\mu_{d,b}$ sind reiner Rechenfehler — ein Genauigkeitstest der Engine.'
+  bewertung: {richtigkeit: 'bedingt, vollständig', neuheit: nur_schreibweise, nutzen: 'Erklärt die 10⁻⁹–10⁻¹¹-Residuen in Paper I; mathematisch Spezialfall einer klassischen Identität.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: ersetzt, ziel: bw.prop.antisym_c1}
+    - {typ: spezialfall_von, ziel: br.satz.young_kreis}
+
+- id: bw.satz.minimalregularitaet
+  titel: Minimalregularitätsprinzip (Paper II, Thm. C)
+  art: satz
+  ebene: X
+  status: bewiesen
+  objekte: [kreishomoeo, phase]
+  bereich: '1-periodische $\Phi,\Psi\in C^1$ mit $\Psi(x+\Phi(x))=-\Phi(x)$, $\Phi(u+\Psi(u))=-\Psi(u)$'
+  aussage: '$\mathrm{id}+\Phi$ und $\mathrm{id}+\Psi$ sind zueinander inverse $C^1$-Diffeomorphismen mit positiver Ableitung. Einseitige $C^1$-Regularität reicht nicht.'
+  beweis: {art: vollstaendig, text: 'Rein formal: $K\circ H=H\circ K=\mathrm{id}$ ⇒ $H''K''=1$.'}
+  quellen: [{ref: justus_p2, stelle: 'Thm. C, Bsp. 5.1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (Kettenregel), sobald beide Gleichungen Inverse liefern.'
+    f2_benutzte_voraussetzungen: 'Beide Funktionen $C^1$.'
+    f3_spezialfall: 'Satz über inverse Funktionen auf dem Kreis.'
+    f4_uebertragbar: Beliebige Paare inverser Lifts.
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Spart die Positivitätsabschätzung.', nutzen_stufe: gering}
+
+- id: bw.satz.c1_produkt
+  titel: Analytischer C¹-Satz mit Produktdarstellung (Paper II, Thm. D)
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen: [bw.ann.hyp22, bw.ann.hyp24]
+  bedingungen_text: '(S) differenzierbare strenge Monotonie und (R′) quantitative Kanalpositivität'
+  objekte: [schwanz_D, kreishomoeo]
+  aussage: |
+    $D_n\to D$ in $C^1$, $D'>0$ und
+    $\tilde H_{b,d}'(\theta)=\dfrac{\alpha T_d'(\theta)}{T_b'(\tilde H(\theta))}\prod_{j\ge1}\dfrac{\alpha T_d(j+\theta)}{T_b(j+\tilde H(\theta))}>0$.
+  beweis: {art: bedingt, text: 'Exakte Produktidentität für $D_n''$; turmgrosse Faktoren kürzen sich; Summierbarkeit aus $s_{j+1}=d^{s_j}$.'}
+  stuetzt_sich_auf: [bw.satz.schwanzkonvergenz]
+  quellen: [{ref: justus_p2, stelle: 'Thm. D'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: '(S), (R′), Hyp. 2.2/2.4; (R′) für $j\ge J_0$ durch Stoppregel.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Glatte Zweige; erklärt Endpunktidentitäten.'
+    f5_neue_frage: 'Höhere Ableitungen ⇒ $C^\infty$? Analytisch im Streifen? → bw.verm.streifen'
+  bewertung: {richtigkeit: 'bedingt, vollständig', neuheit: vermutlich_neu, recherche: 'Paper II.', nutzen: 'Glattheit + explizite Ableitung.', nutzen_stufe: mittel}
+
+# ------------------------------------------------------------- Rang eins & Kern
+- id: bw.verm.rang_eins
+  titel: Rang-eins-Gesetz der inneren Basis (Paper I, Vermutung 4.1)
+  art: vermutung
+  ebene: B
+  status: widerlegt
+  objekte: [phase, fourier_moden]
+  aussage: 'Für feste innere Basis $d$ ist $\{P_{b,d}\}_b$ in $L^2(S^1)$ (annähernd) vom Rang eins: die Form hängt nur von $d$ ab.'
+  gegenbeispielsuche: 'Kerne $G_d$ für $d\in\{2,e,3,5,10\}$ auf 25–30 Stellen: normierte Modenverhältnisse $|G_k|/|G_1|$ variieren glatt mit $d$ (0.4 % bei k=2 bis 9 % bei k=8).'
+  stuetzt_sich_auf: []
+  quellen: [{ref: justus_p1, stelle: 'Vermutung 4.1, Bem. 4.2'}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: 'Führende Ordnung der Störungsentwicklung in $\varepsilon=\ln\ln d-\ln\ln b$.'
+    f4_uebertragbar: —
+    f5_neue_frage: 'Exakter Ersatz: bw.satz.antwortkern'
+  bewertung: {richtigkeit: 'als exakte Aussage widerlegt; als führende Ordnung richtig', neuheit: vermutlich_neu, recherche: 'Paper I.', nutzen: 'Hat die Störungstheorie motiviert.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: motiviert, ziel: bw.satz.antwortkern}
+
+- id: bw.beob.kernkleid
+  titel: Kerne tragen eine glatte d-Abhängigkeit
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [kern_V, fourier_moden]
+  aussage: '$|G_k(d)|/|G_1(d)|$ variiert um 0.4 % ($k=2$) bis 9 % ($k=8$) über $d\in\{2,e,3,5,10\}$; zwei unabhängige Wege (komplexer Schritt, ε-Schablonen) stimmen auf 24+ Stellen.'
+  quellen: [{ref: justus_p1, stelle: 'Bem. 4.2'}, {ref: justus_log, stelle: 'Runden 3–5, 9'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Engine; bei d ∈ {2,10} sind die komplexen-Schritt-Referenzen fehlerhaft (bw.gescheitert.cstep).'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Gibt es eine geschlossene Beschreibung der $d$-Abhängigkeit (Kernfläche $C_k(d)$)?'
+  bewertung: {richtigkeit: 'numerisch, doppelt bestätigt', neuheit: vermutlich_neu, recherche: 'Paper I/IV.', nutzen: 'Widerlegt exakte Rang-eins-Form.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: widerlegt, ziel: bw.verm.rang_eins}
+
+- id: bw.ann.basis_diffbar
+  titel: Annahme Basisdifferenzierbarkeit (Paper IV, Hyp. 7.1)
+  art: annahme
+  ebene: C
+  status: annahme
+  objekte: [kern_V, slog]
+  aussage: '$b\mapsto(T_b,A_b)$ ist $C^1$ in $\beta=\ln\ln b$, und $\partial_\beta\Phi_{b,d}|_{b=d}=\lim_n V_d(T_d(n+\theta))$ gleichmässig.'
+  quellen: [{ref: justus_p4, stelle: 'Hyp. 7.1'}]
+
+- id: bw.satz.antwortkern
+  titel: Antwortkern und Phase erster Ordnung (Paper IV, Thm. 7.3)
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen: [bw.satz.phasengesetz, bw.ann.basis_diffbar]
+  objekte: [kern_V, phase]
+  aussage: |
+    $G_d(\theta):=S_d(\theta)-V_d(T_d(\theta))$ mit $S_d=\sum_{j\ge0}T_d(j+\theta)/T_d'(j+\theta)$ ist exakt 1-periodisch, und
+    $\Phi_{b,d}=\varepsilon\,G_d+O(\varepsilon^2)$ gleichmässig, $\varepsilon=\ln\log_b d$.
+  beweis: {art: bedingt, text: 'Kohomologische Gleichung $V_d(T_d(x+1))-V_d(T_d(x))=-T_d(x)/T_d''(x)$ teleskopieren.'}
+  stuetzt_sich_auf: [bw.satz.phasengesetz, bw.ann.basis_diffbar, fg.satz.kohomologisch]
+  quellen: [{ref: justus_p4, stelle: 'Lemma 7.2, Thm. 7.3'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, nach Ableiten der Abel-Gleichung (Lemma 7.2).'
+    f2_benutzte_voraussetzungen: 'Vertauschung von Grenzwert und Ableitung (Hyp. 7.1).'
+    f3_spezialfall: 'Lineare Antwort einer Abel-Koordinate auf Parameteränderung — allgemein für Familien $f_\beta$.'
+    f4_uebertragbar: 'Reguläre Familien $1<b<\eta$: dort ist der Kern durch Koenigs explizit.'
+    f5_neue_frage: 'Welche Lösung der kohomologischen Gleichung ist $V$? → bw.satz.kern_eindeutig'
+  bewertung: {richtigkeit: 'bedingt, vollständig', neuheit: vermutlich_neu, recherche: 'Paper IV.', nutzen: 'Erklärt Amplitudengesetz $A_k\approx C_k|\ln\alpha|$.', nutzen_stufe: hoch}
+
+- id: bw.prop.hub
+  titel: Exakte Hub-Zerlegung der Mittel (Paper IV, Prop. 8.1)
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen: [bw.satz.phasengesetz]
+  objekte: [hub_m, phase]
+  aussage: '$\mu_{b,d}=m(d)-m(b)+\Delta_{b,c_*;d}$, $\Delta=\int_0^1P_{b,c_*}(\{\theta+\Phi_{c_*,d}(\theta)\})\,d\theta$; Defekte zweiter/dritter Ordnung bis $10^{-15}$ bestätigt.'
+  beweis: {art: bedingt, text: 'Integrierter Kozykel + Antisymmetrie.'}
+  stuetzt_sich_auf: [bw.prop.kozykel, bw.satz.antisymmetrie]
+  quellen: [{ref: justus_p4, stelle: 'Prop. 8.1'}, {ref: forum_fox2007, stelle: 'Additivität μ_a(c) = μ_a(b) + μ_b(c), als exakt angenommen'}]
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Vorarbeit Fox 2007 eingetragen: dort exakte Additivität angenommen; hier mit Defekt Δ.'}
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Integration des Kozykels).
+    f2_benutzte_voraussetzungen: Phasengesetz für drei Paare.
+    f3_spezialfall: 'Korrigiert die Annahme von J. D. Fox (2007), die Konstanten seien exakt additiv: der Defekt Δ ist ein Produkt zweier Wellen (≈ 1e-9 für (3,2)).'
+    f4_uebertragbar: —
+    f5_neue_frage: 'Eine Spalte $m(\cdot)$ bestimmt alle Mittel bis auf kleine Defekte → Tabellenformat des Basis-Atlas.'
+  bewertung: {richtigkeit: 'bedingt, vollständig', neuheit: vermutlich_neu, recherche: 'Paper IV. Die Additivität selbst stellte J. D. Fox 2007 im Tetration-Forum auf (als exakt); neu ist die exakte Fassung mit dem Defekt Δ.', nutzen: 'Praktisch: Basiswechsel mit einer Tabellenspalte.', nutzen_stufe: hoch}
+
+- id: bw.lem.randgesetz
+  titel: Parabolisches Randgesetz m(b) bei b ↓ η (Paper IV, Lemma 8.2)
+  art: lemma
+  ebene: C
+  status: skizze
+  objekte: [hub_m, eta, sattel_knoten]
+  aussage: '$m(b)=\mu_{e,b}=-\pi\sqrt{2\eta/e}\,(b-\eta)^{-1/2}(1+o(1))$, $\pi\sqrt{2\eta/e}=3.2389305\ldots$ (Paper IV: 3.23907, siehe bw.korr.konstante), mit Korrektur der Ordnung $\ln(b-\eta)$.'
+  beweis:
+    art: skizze
+    text: 'Engpass $w\mapsto w+e^2\delta+w^2/(2e)$, Kontinuumsnäherung: Durchgangszeit $\pi\sqrt{2/(e\delta)}$.'
+    luecken:
+      - 'Kontinuumsnäherung statt rigoroser Durchgangszeit (Douady–Lavaurs-Theorie).'
+      - 'Behauptete Korrektur $O(\ln(b-\eta))$ nicht hergeleitet.'
+  stuetzt_sich_auf: [br.satz.sattel_knoten]
+  experimente: [exp.randgesetz]
+  quellen: [{ref: justus_p4, stelle: 'Lemma 8.2'}]
+  pruefung:
+    f1_folgt_unmittelbar: '**Ja, als Spezialfall** der klassischen Sattel-Knoten-Durchgangszeit $\pi/\sqrt{a\varepsilon}$ (Pomeau–Manneville-Intermittenz).'
+    f2_benutzte_voraussetzungen: 'Nur der quadratische Term am Engpass.'
+    f3_spezialfall: 'Ja, von br.satz.sattel_knoten.'
+    f4_uebertragbar: 'Jede Grösse, die Höhen zwischen $b$ nahe $\eta$ und einer festen Basis vergleicht.'
+    f5_neue_frage: 'Rigorose Fassung mit Konstante und Phasenterm über parabolische Implosion → br.frage.implosion'
+  bewertung: {richtigkeit: 'Leitterm: reine Iteration bestätigt $A$ auf 6e-5; Hub-Daten nur auf 4–7 % (modellabhängig), nicht 2.3 % wie in Paper IV', neuheit: folklore, nutzen: 'Erklärt die Divergenz der Hub-Spalte.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: spezialfall_von, ziel: br.satz.sattel_knoten}
+  nachgeprueft:
+    - {gegen: bw.korr.konstante, datum: '2026-10-08', ergebnis: 'Zahlenwert korrigiert; Herleitung und Schluss unberührt.'}
+
+- id: bw.korr.konstante
+  titel: Korrektur — π√(2η/e) = 3.238930…, nicht 3.23907
+  art: korrektur
+  ebene: C
+  status: bewiesen
+  objekte: [hub_m, eta]
+  aussage: 'Paper IV nennt an drei Stellen (Abstract, Lemma 8.2, Anhang) $\pi\sqrt{2\eta/e}=3.23907\ldots$; richtig ist $3.2389305453\ldots$ (relativer Fehler $4\cdot10^{-5}$). Die Aussage „Übereinstimmung auf 2.3 %“ bleibt praktisch unberührt.'
+  beweis: {art: vollstaendig, text: 'Direkte Auswertung mit 30 Stellen, drei algebraisch gleichwertige Formen (exp.randgesetz, Nachrechnung 08.10.2026).'}
+  experimente: [exp.randgesetz]
+  quellen: [{ref: justus_p4, stelle: 'Z. 870, 902, 1111 der Textfassung'}, {ref: diese_arbeit}]
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Nachrechnen).
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: —
+    f4_uebertragbar: '—'
+    f5_neue_frage: 'Vor einer Neuauflage von Paper IV: alle Zahlenkonstanten maschinell gegenprüfen.'
+  bewertung: {richtigkeit: 'nachgerechnet', neuheit: unklar, nutzen: 'Kleines Erratum.', nutzen_stufe: gering}
+  kanten:
+    - {typ: korrigiert, ziel: bw.lem.randgesetz}
+
+- id: bw.beob.hub_genauigkeit
+  titel: Versionskonflikt — m(2) in mu_hub.json nur auf ~31 Stellen richtig
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [hub_m]
+  aussage: '$m(2)$ steht in drei Fassungen: Runde 1 (180 Stellen), phi_modes.json (Abweichung $8.5\cdot10^{-37}$), mu_hub.json (Abweichung $1.8\cdot10^{-31}$, obwohl 40 Stellen angegeben). Die Hub-Spalte trägt also weniger Stellen, als sie zeigt.'
+  experimente: [exp.moden]
+  quellen: [{ref: gp_tetration, stelle: 'research/reference/mu_hub.json (Meta: dps 60, n_grid 32)'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein (Vergleich).
+    f2_benutzte_voraussetzungen: 'Annahme: der 180-Stellen-Wert ist richtig (zwei andere Fassungen stimmen auf ≥ 31 Stellen mit ihm).'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Alle Hub-Werte vermutlich gleich betroffen (Gitter n_grid = 32).'
+    f5_neue_frage: 'Hub-Werte mit angegebener Genauigkeit versehen oder auf 31 Stellen kürzen; Grund (n_grid 32 statt 64?) klären.'
+  bewertung: {richtigkeit: numerisch eindeutig, neuheit: unklar, nutzen: 'Datenqualität der Basis-Atlas-Tabelle.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: bw.beob.m2}
+
+- id: bw.satz.fourier_naht
+  titel: Fourier-Asymptotik mit Nahtsprüngen (Paper IV, Prop. 4.1)
+  art: satz
+  ebene: X
+  status: bewiesen
+  objekte: [fourier_moden, gevrey]
+  bereich: '$f\in C^m(S^1)$, stückweise $C^{m+2}$, Sprünge $J_i$ von $f^{(m+1)}$ bei $\tau_i$'
+  aussage: '$\hat f(k)=(2\pi i k)^{-(m+2)}\sum_i J_i e^{-2\pi i k\tau_i}+o(k^{-(m+2)})$.'
+  beweis: {art: vollstaendig, text: 'Partielle Integration, Riemann–Lebesgue.'}
+  quellen: [{ref: justus_p4, stelle: 'Prop. 4.1'}, {ref: zygmund2002}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja — klassische Fourier-Analysis.'
+    f2_benutzte_voraussetzungen: 'Stückweise Glattheit.'
+    f3_spezialfall: Ja (Lehrbuchsatz).
+    f4_uebertragbar: 'Auf jede Konstruktion mit Nähten (linear, Walker-Approximationen).'
+    f5_neue_frage: 'Gemessene Exponenten 3.06/3.006 kalibrieren die Messkette.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Kalibrierwerkzeug für die Modenmessung.', nutzen_stufe: gering}
+
+# ------------------------------------------------------------- Streifen-Frage
+- id: bw.verm.streifen
+  titel: Streifenanalytizität der Phase (Paper I, Vermutung 8.1)
+  art: vermutung
+  ebene: C
+  status: vermutung
+  objekte: [phase, fourier_moden, gevrey]
+  aussage: '$D_{b,d}$ setzt sich holomorph in $|\operatorname{Im}\theta|<\sigma_{b,d}$ fort; $|\hat P_{b,d}(k)|\le C e^{-2\pi\sigma|k|}$.'
+  gegenbeispielsuche: |
+    Modenmessung bis $k\approx520$: lokale Raten $\sigma_{\mathrm{eff}}(k)$ fallen weiter (universelle Kurve).
+    Runde 20: Streifen- und Gevrey-Modell passen gleich gut; nicht entscheidbar aus $k\le500$ — weder bestätigt noch widerlegt.
+  quellen: [{ref: justus_p1, stelle: 'Vermutung 8.1, Bem. 8.2'}, {ref: justus_log, stelle: 'Runde 20'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: —
+    f3_spezialfall: 'Fourier-Charakterisierung analytischer Funktionen (br.satz.gevrey_fourier).'
+    f4_uebertragbar: 'Modellfall mit expliziten Objekten: kl.verm.streifenbreite.'
+    f5_neue_frage: 'bw.frage.streifen_gevrey'
+  bewertung: {richtigkeit: 'offen und umstritten — im Tetration-Forum wird das Gegenteil vermutet (bw.verm.nirgends_analytisch)', neuheit: vermutlich_neu, recherche: 'Paper I. Nachtrag 08.10.2026: S. Levenstein vermutet seit 2011 für Basiswechsel-Tetrationen „C^∞, aber nirgends analytisch“; das schlösse jeden Streifen aus.', nutzen: 'Würde schnelle Konvergenz der Modentabellen garantieren.', nutzen_stufe: hoch}
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Als umstritten markiert: Gegen-Vermutung aus dem Tetration-Forum (2011).'}
+
+- id: bw.verm.nirgends_analytisch
+  titel: Basiswechsel-Tetrationen sind nirgends analytisch (Forum-Vermutung)
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [phase, schwanz_D, gevrey]
+  bereich: '$b\ne d>\eta$, Kneser-Tetration $T_d$; $D_{b,d}(\theta)=\lim_n\log_b^{\circ n}T_d(n+\theta)$'
+  aussage: |
+    Die per Basiswechsel gewonnene Tetration $D_{b,d}=T_b\circ(\mathrm{id}+\Phi_{b,d})$ ist auf der reellen Achse unendlich oft differenzierbar,
+    aber **an keiner Stelle analytisch**. Gleichwertig: die Phase $\Phi_{b,d}$ ist nirgends analytisch — insbesondere in keinem Streifen holomorph,
+    also $\sigma^*=0$ im Modenabfall.
+  einfach: Übersetzt man eine glatte Tetration in eine andere Basis, ist das Ergebnis vermutlich zwar unendlich glatt, aber nirgends durch eine Potenzreihe darstellbar.
+  gegenbeispielsuche: |
+    Forum (Levenstein 2011): Die Näherungen nach $n$ Logarithmenstufen haben Singularitäten, deren Abstand zur reellen Achse mit $n$ gegen $0$ geht
+    (nächste bei Radius $0.46$, nach einer weiteren Stufe $0.035$); Trappmann (2009) beweist für $\log_a^{\circ n}\circ\exp_b^{\circ n}$ Verzweigungspunkte bei
+    $\log_b^{\circ n}\{a,\dots,\exp_a^{\circ n-2}(1)\}$. Eigene Daten: $\sigma_{\mathrm{eff}}(k)$ fällt bis $k\approx520$ weiter, Gevrey- und Streifenmodell passen gleich gut
+    (bw.frage.streifen_gevrey); die Turmanalyse aus Runde 20 spricht eher für Gevrey. Nicht entschieden.
+  quellen: [{ref: forum_levenstein2011, stelle: 'tid 578 (2011), tid 825 (2014)'}, {ref: forum_trappmann2009, stelle: 'Proposition über die Verzweigungspunkte'}, {ref: justus_log, stelle: 'Runde 20 (Turmanalyse)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein. Dass die Grenzfunktion C^∞ ist, ist für Walkers Variante bewiesen; Analytizität an keiner Stelle zu zeigen ist offen.'
+    f2_benutzte_voraussetzungen: —
+    f3_spezialfall: 'Gegenstück zu Walkers Grenzwert dexp^−n ∘ exp^n (kn.konstr.walker), für den ebenfalls nur C^∞ bewiesen ist.'
+    f4_uebertragbar: 'Auf alle Grenzwerte iterierter Logarithmen einer fremden Superfunktion (cheta-Basiswechsel, 2sinh-Methode).'
+    f5_neue_frage: 'Ein Beweis würde bw.verm.streifen widerlegen und die Modenzahlen (bw.kor.modenzahl) auf die Gevrey-Rate festlegen. Ansatz: Verdichtung der Verzweigungspunkte an der reellen Achse quantitativ fassen.'
+  bewertung: {richtigkeit: 'offen (Vermutung)', neuheit: bekannt, recherche: 'Vermutung von S. Levenstein im Tetration-Forum (2011, 2014) und auf math.stackexchange; laut Forum ungelöst.', nutzen: 'Entscheidet die Streifen-Frage in Richtung Gevrey.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: bw.verm.streifen, notiz: 'Gegen-Vermutung: schliesst jeden Streifen aus'}
+    - {typ: verwandt, ziel: bw.frage.streifen_gevrey}
+    - {typ: verwandt, ziel: kn.konstr.walker, notiz: 'Walkers Lösung ist ein Grenzwert derselben Art'}
+    - {typ: verwandt, ziel: bw.satz.ursache_kozykel, notiz: 'D ist eine nicht-Kneser-Tetration; die Vermutung sagt: sogar nirgends analytisch'}
+
+- id: bw.beob.modenabfall
+  titel: Universelle Modenabfall-Kurve
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [fourier_moden, phase]
+  aussage: '$\sigma_{\mathrm{eff}}(k)\approx\sigma^*+1.090k^{-1/2}-1.512k^{-1}$ für alle Paare mit $b,d\in[1.5,10]$, $k\gtrsim5$; Amplitude allein paarabhängig ($\pm2\,\%$). Grundmodell $\ln A_k=\ln C+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi c k}$.'
+  experimente: [exp.moden]
+  quellen: [{ref: justus_p1, stelle: 'Bem. 8.2'}, {ref: justus_p4, stelle: 'Obs. 5.1'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Modenboden der Engine $\approx e^{-2.95\,n_{\lim}}$, nutzbar $k\lesssim2.3n_{\lim}$.'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Entscheidungslauf bis $k\approx5000$.'
+  bewertung: {richtigkeit: 'numerisch robust über 14 Paare', neuheit: vermutlich_neu, recherche: 'Paper IV.', nutzen: 'Modenzahl-Formeln für Tabellen.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: bw.verm.streifen}
+
+- id: bw.beob.singularitaet
+  titel: Isolierte wesentliche Singularität bei z* (Paper IV, Obs. 6.1/6.2)
+  art: beobachtung
+  ebene: C
+  status: widerlegt
+  objekte: [phase]
+  aussage: 'Der Löser bricht in einem schrägen Sektor pro Periode zusammen, Spitze $z^*\approx x^*(b,d)+0.055i$; Höhe paaruniversell.'
+  quellen: [{ref: justus_p4, stelle: 'Obs. 6.1, 6.2'}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: 'yscan-Löser mit fester oberster Abschlussstufe.'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Siehe Korrektur bw.korr.r20.'
+  bewertung: {richtigkeit: 'widerlegt (Löserartefakt)', neuheit: unklar, nutzen: 'Lehrstück: Löserzusammenbruch ≠ Singularität.', nutzen_stufe: mittel}
+
+- id: bw.korr.r20
+  titel: Korrektur Runde 20 — der Sektor ist ein Löserartefakt
+  art: korrektur
+  ebene: C
+  status: numerisch
+  objekte: [phase]
+  aussage: |
+    Die Spitze liegt exakt auf der $\pi/2$-Drehkurve $\operatorname{Re}T_d(m+z)=0$ der obersten Abschlussstufe des Lösers,
+    $y=(\pi/2)/(\ln d\cdot T_d'(m-1+x))$ (0.0595 bei $x=1.001$); die „universelle 0.058“ ist Konjugationsinvarianz von
+    $\operatorname{Im}[\ln d\,T_d(m+z)]$. Das exakte endliche Residuum $R(n+z)$ läuft glatt durch die Zone.
+  quellen: [{ref: justus_log, stelle: 'Runde 20, R20_SINGULARITY_STRUCTURE.md'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein — durch Gegenrechnung mit der exakten Logarithmenleiter gefunden.'
+    f2_benutzte_voraussetzungen: 'Exakte endliche Residuen; Fourier-Reihe auf 9e-43 unterhalb der Zone.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Lehre für jede Löser-basierte Singularitätssuche: Zusammenbrüche gegen eine exakte Leiter prüfen.'
+    f5_neue_frage: 'Wo liegt die echte singuläre Struktur? → bw.beob.positionsgesetz, bw.satz.ursache_kozykel'
+  bewertung: {richtigkeit: 'numerisch eindeutig', neuheit: vermutlich_neu, recherche: 'Runde 20.', nutzen: 'Rettet die Serie vor einer falschen Strukturaussage.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: widerlegt, ziel: bw.beob.singularitaet}
+    - {typ: ersetzt, ziel: bw.verm.universell}
+
+- id: bw.verm.universell
+  titel: Universelle Singularitätsdaten (Paper IV, Vermutung 6.6)
+  art: vermutung
+  ebene: C
+  status: ueberholt
+  objekte: [phase]
+  aussage: '$\Phi_{b,d}$ ist im punktierten Streifen holomorph mit einer isolierten wesentlichen Singularität bei $x^*(b,d)+i\sigma^*$, $\sigma^*$ paarunabhängig.'
+  gegenbeispielsuche: 'Runde 20: Stütze (bw.beob.singularitaet) als Artefakt erkannt.'
+  stuetzt_sich_auf: [bw.beob.singularitaet]
+  quellen: [{ref: justus_p4, stelle: 'Vermutung 6.6'}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Ersetzt durch Positionsgesetz + offene Streifen/Gevrey-Frage.'
+  bewertung: {richtigkeit: 'Stütze entfallen', neuheit: unklar, nutzen: 'Historisch.', nutzen_stufe: gering}
+
+- id: bw.prop.saddle
+  titel: Singularität ⇒ Abfallgesetz (Paper IV, Prop. 6.3)
+  art: satz
+  ebene: X
+  status: bewiesen
+  objekte: [fourier_moden, gevrey]
+  bereich: 'periodisches $P$, holomorph im Streifen bis auf isolierte Singularitäten $P=h\exp(v/(\theta-\bar\theta^*))$'
+  aussage: '$\ln\hat P(k)=\mathrm{const}+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi ck}+o(\sqrt k)$ mit $8|v|\cos^2\Psi=c$.'
+  beweis: {art: vollstaendig, text: 'Sattelpunktmethode (Kontur am Rand verschiebbar vorausgesetzt).'}
+  quellen: [{ref: justus_p4, stelle: 'Prop. 6.3'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Standard-Sattelpunktrechnung.'
+    f2_benutzte_voraussetzungen: 'Konturverschiebung; Form der Singularität.'
+    f3_spezialfall: 'Ja, Darboux/Sattelpunkt.'
+    f4_uebertragbar: —
+    f5_neue_frage: 'Bleibt als Satz richtig; seine Anwendung auf $\Phi$ hing an bw.beob.singularitaet.'
+  bewertung: {richtigkeit: vollständig (unter Voraussetzung), neuheit: klassisch, nutzen: 'Interpretation des √k-Terms — Anwendung jetzt offen.', nutzen_stufe: gering}
+
+- id: bw.kor.modenzahl
+  titel: Modenzahlen für Basiswechsel-Tabellen (Paper IV, Kor. 6.5)
+  art: korollar
+  ebene: C
+  status: numerisch
+  objekte: [fourier_moden]
+  aussage: '≈ 300 Moden für 150 Stellen, ≈ 1400 für 500 Stellen (im angepassten Singularitätsmodell).'
+  stuetzt_sich_auf: [bw.prop.saddle, bw.verm.universell]
+  quellen: [{ref: justus_p4, stelle: 'Kor. 6.5'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem angepassten Modell.'
+    f2_benutzte_voraussetzungen: 'Extrapolation des Modells weit über $k\le500$ hinaus.'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Gilt die Extrapolation ohne die (verworfene) Singularitätsdeutung? Rein empirisch über bw.beob.modenabfall prüfbar.'
+  bewertung: {richtigkeit: 'Extrapolation; Begründung entfallen', neuheit: vermutlich_neu, recherche: 'Paper IV.', nutzen: 'Planung von Tabellen.', nutzen_stufe: mittel}
+
+- id: bw.beob.positionsgesetz
+  titel: Exaktes Positionsgesetz der Modenphasen (Runde 20)
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [fourier_moden, phase, hub_m]
+  aussage: '$x_{\mathrm{eff}}(k)=u(k)+X_d$ mit universeller Drift $u(k)$ und $X_d=X_e-\mu_{e,d}\pmod 1$ auf $5\cdot10^{-4}$: die singuläre Struktur sitzt an einem universellen Punkt der absoluten Höhenkoordinate.'
+  quellen: [{ref: justus_log, stelle: 'Runde 20 (2)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; kozykelverträglich.'
+    f2_benutzte_voraussetzungen: '500 Moden von (e,2), Phasenfits.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Alle Paare über den Hub.'
+    f5_neue_frage: 'Ursache → bw.satz.ursache_kozykel'
+  bewertung: {richtigkeit: numerisch, neuheit: vermutlich_neu, recherche: 'Runde 20.', nutzen: 'Strukturgesetz statt Artefakt.', nutzen_stufe: hoch}
+
+- id: bw.satz.ursache_kozykel
+  titel: Ursache der Singularitäten — Periodenfehlanpassung im Koenigs-Konjugator
+  art: satz
+  ebene: C
+  status: skizze
+  objekte: [phase, multiplikator, kneser_T]
+  aussage: |
+    Mit $P_a=2\pi i/\ln\lambda_a$ erfüllt der Konjugator $\kappa=K-\mathrm{id}$ der Koenigs-Koordinaten
+    $\kappa(\xi+P_d)-\kappa(\xi)=P_b-P_d$; daher ist er in jeder Zelle singulär, mit Residuensumme
+    $1/\ln\lambda_d-1/\ln\lambda_b$. Äquivalent: $D=T_b\circ\tilde H$ ist eine **nicht-Kneser** Basis-$b$-Tetration
+    (sonst Widerspruch zur Eindeutigkeit).
+  beweis:
+    art: skizze
+    text: 'Periodenvergleich der beiden Koenigs-Koordinaten; Eindeutigkeit nach Paulsen–Cowgill.'
+    luecken:
+      - 'Herleitung im Forschungslog, nicht als Beweis ausgeschrieben.'
+      - 'Zusammenhang mit der gemessenen Lage (Positionsgesetz) nur numerisch.'
+  stuetzt_sich_auf: [kn.satz.paulsen_cowgill, fg.satz.schroeder_abel]
+  quellen: [{ref: justus_log, stelle: 'Runde 20 (4)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Der Teil „$T_b\circ\tilde H$ ist nicht Kneser“ folgt unmittelbar aus fg.satz.allgemeine_loesung + Eindeutigkeit, sobald $P\not\equiv0$.'
+    f2_benutzte_voraussetzungen: 'Fortsetzbarkeit der Koenigs-Koordinaten; Perioden exakt.'
+    f3_spezialfall: 'Allgemeines Prinzip: zwei Abel-Koordinaten mit verschiedenen komplexen Perioden können nicht global holomorph konjugiert sein.'
+    f4_uebertragbar: 'Modellfall kl.verm.streifenbreite (dort reelle Perioden, gleiche Mechanik).'
+    f5_neue_frage: 'Liegen die Singularitäten dicht am Rand (Gevrey) oder in festem Abstand (Streifen)?'
+  bewertung: {richtigkeit: 'Skizze, plausibel', neuheit: vermutlich_neu, recherche: 'Runde 20.', nutzen: 'Erklärt, warum Φ singulär sein muss.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: analog_zu, ziel: kl.verm.streifenbreite}
+
+- id: bw.beob.sigma_stern
+  titel: Streifenhöhe σ* gemessen
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [fourier_moden]
+  aussage: '$\sigma^*=0.058\pm0.006$ (n_lim 240, Fenster-Extrapolation $\sigma^*(w)=\sigma^*_\infty+2.83/w$); Normalform-Fit [200,500]: 0.0709, extrapoliert 0.058–0.062.'
+  quellen: [{ref: justus_log, stelle: 'Runden 3, 19'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Fenster-Extrapolation; Modenboden ab $k\approx510$.'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Ist $\sigma^*_\infty>0$ überhaupt? (Gevrey hiesse 0.)'
+  bewertung: {richtigkeit: 'numerisch, modellabhängig', neuheit: vermutlich_neu, recherche: 'Runden 3/19.', nutzen: 'Entscheidungsgrösse.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: bw.verm.streifen}
+
+- id: bw.frage.streifen_gevrey
+  titel: Streifen oder Gevrey?
+  art: frage
+  ebene: C
+  status: offen
+  objekte: [phase, gevrey, fourier_moden]
+  aussage: |
+    Ist $\Phi_{b,d}$ in einem Streifen positiver Breite analytisch ($\sigma^*>0$) oder nur Gevrey-glatt
+    ($\ln A_k\sim -c\sqrt k$, $\sigma^*=0$)? Aus $k\le500$ nicht entscheidbar; die Turmanalyse (Landebänder,
+    Plateau-Identität) spricht für Gevrey mit effektiver Rate ≈ 0.06. Im Tetration-Forum wird seit 2011 sogar „nirgends analytisch“
+    vermutet (bw.verm.nirgends_analytisch).
+  naechste_frage: 'Modenkampagne bis $k\approx5000$ ($n_{\lim}\approx2200$); vorher am Modellfall kl.verm.streifenbreite testen, wie gut die Methode einen bekannten Streifen findet.'
+  quellen: [{ref: justus_log, stelle: 'Runden 19–20'}, {ref: forum_levenstein2011, stelle: 'Gegen-Vermutung'}]
+  kanten:
+    - {typ: verwandt, ziel: bw.verm.streifen}
+    - {typ: verwandt, ziel: bw.verm.nirgends_analytisch}
+    - {typ: verwandt, ziel: br.satz.gevrey_fourier}
+
+- id: bw.beob.m2
+  titel: m(2) = µ_{e,2} auf 180 Stellen, keine geschlossene Form gefunden
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [hub_m]
+  aussage: '$m(2)=-1.12840377662892400987921790203642626\ldots$; PSLQ gegen Logarithmus-Konstanten negativ.'
+  experimente: [exp.moden]
+  quellen: [{ref: justus_log, stelle: 'Runde 1'}, {ref: gp_tetration, stelle: 'mu_hub.json, phi_modes.json'}, {ref: forum_levenstein2009, stelle: 'slog_2 − slog_e ≈ 1.1282 (2009)'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: Engine-Werte.
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Gegenbeispielsuche zu einer geschlossenen Form erweitern (Konstanten von $L_e,L_2$, $\ln\lambda$).'
+  bewertung: {richtigkeit: numerisch, neuheit: bekannt, recherche: 'Der Wert ist auf vier Stellen seit 2009 bekannt (S. Levenstein im Tetration-Forum: 1.1282; ebenso m(3) ≈ −0.1926, m(10) ≈ −1.1364 mit umgekehrtem Vorzeichen). Neu hier: 180 Stellen und die erfolglose PSLQ-Suche.', nutzen: 'Referenzkonstante.', nutzen_stufe: mittel}
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Neuheit auf „bekannt“ (Forum 2009, 4 Stellen).'}
+
+# ------------------------------------------------------------- Paper V
+- id: bw.def.auswahlprinzip
+  titel: Auswahlprinzip für den Basiskern (Paper V, Def. 1)
+  art: definition
+  ebene: C
+  status: definition
+  objekte: [kern_V, rh_problem]
+  aussage: |
+    (i) $V(d^y)-V(y)=-A_d'(d^y)\,y\ln d\,d^y$; (ii) reell auf $\mathbb R$; (iii) vorgeschriebene Fixpunktsingularität
+    (Pol $dL/d\beta=\ln d\,L^2/(1-\lambda)$, log-Koeffizient $d\lambda/d\beta$, radial gelesen); (iv) $V(1)=0$.
+  quellen: [{ref: justus_p5, stelle: 'Def. 1'}]
+
+- id: bw.ann.K1K2
+  titel: Kneser-Zweiggeometrie (K1)–(K2)
+  art: annahme
+  ebene: C
+  status: annahme
+  objekte: [kneser_T, theta_kneser]
+  aussage: '(K1) Streifengeometrie: $T_d$ holomorph auf $\mathbb H$, $T_d(z)\to L$ für $\operatorname{Im}z\to\infty$; (K2) Theta-Struktur: $p=A_d\circ T_{\mathrm{reg}}-\mathrm{id}$ 1-periodisch, $p''\to0$.'
+  quellen: [{ref: justus_p5, stelle: '(K1)–(K2)'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.kneser_eigenschaften, notiz: 'klassisch erwartet, aber nicht als Satz zitiert'}
+
+- id: bw.satz.kern_eindeutig
+  titel: Eindeutigkeit des Basiskerns (Paper V, Thm. 2)
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen: [bw.ann.K1K2]
+  objekte: [kern_V, periodische_stoerung]
+  aussage: 'Höchstens eine Funktion erfüllt (i)–(iv).'
+  beweis: {art: bedingt, text: 'Differenz $=h\circ A_d$; Beschränktheit nahe $L$ tötet Moden $k<0$, nahe $\bar L$ Moden $k>0$; Realität + $V(1)=0$.'}
+  stuetzt_sich_auf: [fg.satz.kohomologisch, fg.lem.periodisch_liouville, bw.ann.K1K2, bw.def.auswahlprinzip]
+  quellen: [{ref: justus_p5, stelle: 'Thm. 2'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja: Mechanismus wie bei Paulsen–Cowgill (Moden-Argument).'
+    f2_benutzte_voraussetzungen: '$\operatorname{Im}A_d\to\pm\infty$ radial nahe $L,\bar L$ — Teil von (K1).'
+    f3_spezialfall: 'Linearisierte Fassung der Kneser-Eindeutigkeit.'
+    f4_uebertragbar: 'Höhere Basisableitungen (zweite Ordnung $H_d$).'
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: 'bedingt, vollständig', neuheit: vermutlich_neu, recherche: 'Paper V.', nutzen: 'Charakterisiert den Kern ohne Engine.', nutzen_stufe: hoch}
+
+- id: bw.lem.geom_kozykel
+  titel: Exakter Kozykel des geometrischen Felds (Paper V, Lemma 7)
+  art: lemma
+  ebene: C
+  status: bewiesen
+  objekte: [kern_V]
+  aussage: '$G:=\partial_\beta\chi/\chi''$ erfüllt $G(d^y)=(\ln d)\,d^y\,(G(y)-y)$; daher löst $A_d''G+h\circ A_d$ die kohomologische Gleichung für jedes periodische $h$.'
+  beweis: {art: vollstaendig, text: 'Drei Zeilen über $A_d''(d^y)d^y\ln d=A_d''(y)$.'}
+  stuetzt_sich_auf: [fg.satz.kohomologisch]
+  quellen: [{ref: justus_p5, stelle: 'Lemma 7'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Rechnung.'
+    f2_benutzte_voraussetzungen: 'Koenigs-Daten differenzierbar in β (Lemma 6).'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Jede Familie $\exp_b$ mit Koenigs-Koordinate.'
+    f5_neue_frage: 'Randdaten $u=\operatorname{Im}V_{\mathrm{geo}}\circ T_d$ → RH-Problem.'
+  bewertung: {richtigkeit: vollständig, neuheit: vermutlich_neu, recherche: 'Paper V.', nutzen: 'Schlüssel zur Existenz.', nutzen_stufe: hoch}
+
+- id: bw.satz.kern_existenz
+  titel: Existenz des Basiskerns über ein RH-Problem (Paper V, Thm. 13)
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen: [bw.ann.K1K2]
+  objekte: [kern_V, rh_problem]
+  aussage: '$\tilde V\circ T_d:=V_{\mathrm{geo}}+g$ mit $g=\tilde u-iu-\tilde u(0)$ erfüllt (i)–(iv); mit Thm. 2 genau eine Lösung; unter (K3) ist sie $\partial_\beta A_b|_{b=d}$.'
+  beweis: {art: bedingt, text: 'Privalov–Dini (Dini-Modul $\delta\ln^2(1/\delta)$), Schwarz-Spiegelung, Riemann-Hebbarkeit, Pol-Entwicklung bei $L$.'}
+  stuetzt_sich_auf: [bw.lem.geom_kozykel, bw.satz.kern_eindeutig, br.satz.privalov, bw.ann.K1K2]
+  quellen: [{ref: justus_p5, stelle: 'Thm. 11, 13, Kor. 14'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: '(K1)–(K2); (K3) nur für die Identifikation.'
+    f3_spezialfall: 'Klassisches skalares RH-/Konjugiertenproblem auf dem Kreis.'
+    f4_uebertragbar: 'Basisfluss-Rekonstruktion (Paper VI).'
+    f5_neue_frage: 'Engine-freie Berechnung des Kerns: 17.8/20.0 Stellen erreicht.'
+  bewertung: {richtigkeit: 'bedingt, vollständig ausgeschrieben', neuheit: vermutlich_neu, recherche: 'Paper V.', nutzen: 'Macht die Basisableitung konstruktiv.', nutzen_stufe: hoch}
+  versionen:
+    - {datum: '2026-07-12', fassung: 'Notiz v1', aenderung: 'Lösbarkeit als Vermutung (gewichtete Klasse, Fredholm-Weg).'}
+    - {datum: '2026-07-13', fassung: 'Notiz v2 / Paper V', aenderung: 'Satz in stärkerer Form, keine gewichtete Klasse.', grund: 'Kollaps-Identität und Dini-Modul.'}
+
+- id: bw.gescheitert.orbitanker
+  titel: Naive Orbitsummation entlang der Rückwärtsspirale
+  art: gescheitert
+  ebene: C
+  status: gescheitert
+  objekte: [kern_V, fixpunkt_L]
+  aussage: 'Ein Anker mit der nackten Schröder-Funktion entlang $w_{k+1}=\log_d w_k\to L$ divergiert wie $|\lambda|^n$: die Theta-Ableitung multipliziert den Pol ($|p''|\approx0.5$ für $d=e$).'
+  quellen: [{ref: justus_p5, stelle: 'Bem. 3'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, nachträglich: Polkoeffizient $-(1+p''(\chi))\,dL/d\beta/\ln\lambda$.'
+    f2_benutzte_voraussetzungen: —
+    f3_spezialfall: —
+    f4_uebertragbar: 'Warnung für jede Orbit-Methode nahe $L$.'
+    f5_neue_frage: 'Radiale statt orbitale Lesart von (iii).'
+  bewertung: {richtigkeit: 'numerisch verifiziert', neuheit: vermutlich_neu, recherche: 'Paper V.', nutzen: 'Spart Sackgasse.', nutzen_stufe: mittel}
+
+- id: bw.gescheitert.rh_v1
+  titel: RH-v1 — Vervollständigungsalgebra ungültig
+  art: gescheitert
+  ebene: C
+  status: gescheitert
+  objekte: [rh_problem]
+  aussage: 'Q-Feld-Schwanzabzug bestätigt das lnln-Modell, aber Q wächst in der oberen Halbebene; die zulässige Basis hat Konditionierung $e^{2\pi k\cdot1.1}$ ⇒ Information doppelt-exponentiell nahe $\theta\in\mathbb Z$.'
+  quellen: [{ref: justus_log, stelle: 'Runde 4'}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Ersetzt durch graduiertes Gitter + periodische Hilbert-Transformation (RH-v2).'
+  bewertung: {richtigkeit: 'gescheitert, dokumentiert', neuheit: unklar, nutzen: 'Lenkte auf RH-v2.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: motiviert, ziel: bw.satz.kern_existenz}
+
+- id: bw.gescheitert.vorhersage_r8
+  titel: Eigene Asymptotik-Vorhersage (Wachstum γ = 4.447) widerlegt
+  art: gescheitert
+  ebene: C
+  status: gescheitert
+  objekte: [rh_problem, kern_V]
+  aussage: 'Vorhergesagt: logarithmisches Potenzwachstum der Randdaten mit Exponent $2\pi\nu=4.447$. Gemessen: das Gegenteil (Kollaps $|1/\chi''|=O(\delta\ln(1/\delta))$). Erst messen, dann beweisen.'
+  quellen: [{ref: justus_log, stelle: 'Runde 8'}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Kollaps-Gesetz wurde zum Beweisschritt in Paper V.'
+  bewertung: {richtigkeit: 'widerlegt durch Messung', neuheit: unklar, nutzen: 'Methodische Lehre.', nutzen_stufe: gering}
+  kanten:
+    - {typ: motiviert, ziel: bw.satz.kern_existenz}
+
+- id: bw.gescheitert.cstep
+  titel: Komplexe-Schritt-Referenzen bei extremen Basen falsch
+  art: gescheitert
+  ebene: C
+  status: gescheitert
+  objekte: [kern_V]
+  aussage: 'Für $d=10$ nur 14.6, für $d=2$ nur 20.0 richtige Stellen (Engine-Boden nahe parabolischem Rand, enger Theta-Streifen); RH-Löser und ε-Schablonen stimmen auf 30–34 Stellen und widerlegen sie gemeinsam.'
+  quellen: [{ref: justus_log, stelle: 'Runde 9'}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Regel: Referenzen immer über zwei unabhängige Wege.'
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: 'nachgewiesen', neuheit: unklar, nutzen: 'Schützt die Kerntabellen.', nutzen_stufe: mittel}
+
+# ------------------------------------------------------------- Paper VI
+- id: bw.satz.anker_rekonstruktion
+  titel: Ankerreine Rekonstruktion (Paper VI, Thm. 8.5/8.6)
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen: [bw.ann.K1K2]
+  objekte: [kneser_T, kern_V, rh_problem]
+  aussage: '$T_\beta=Q_\beta\circ U_\beta$, $U_\beta=\mathrm{id}+p_\beta$: exakte Basisableitung des Rohzweigs, Auslöschung der nichtperiodischen Schwänze in der Hub-Gleichung, geschlossene periodische Evolution auf einem festen gewichteten analytischen Pfadraum.'
+  beweis: {art: bedingt, text: 'Ovsyannikov-Satz im festen Pfadraum; RH-Auswahl des Antwortfelds.'}
+  stuetzt_sich_auf: [bw.satz.kern_existenz, bw.ann.K1K2]
+  quellen: [{ref: justus_p6, stelle: 'Thm. 8.2, 8.5, 8.6, 9.1'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: '(K1)–(K2) Hyp. 2.1/2.2 von Paper VI.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Andere Anker (Paper VI: Neuverankerung).'
+    f5_neue_frage: 'Vollständiger Intervallmarsch → bw.frage.intervallmarsch'
+  bewertung: {richtigkeit: 'bedingt; Rahmen rigoros', neuheit: vermutlich_neu, recherche: 'Paper VI.', nutzen: 'Tetration einer Basis aus einer anderen.', nutzen_stufe: hoch}
+
+- id: bw.beob.blind
+  titel: Blindvalidierung der Rekonstruktion bei Basis 2
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [kneser_T]
+  aussage: '65-Knoten-Fluss: punktweise $4.0\cdot10^{-21}$ auf 48 Punkten, Hub 30.6 Stellen. Zehn-Segment-Marsch: $7.6\cdot10^{-11}$ zu beiden Referenzen; Versagen und Unterteilung des Randsegments wie vom Ovsyannikov-Kriterium vorhergesagt.'
+  quellen: [{ref: justus_p6, stelle: 'Abstract, §12'}, {ref: justus_log, stelle: 'Runden 11–16'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Versiegelte Zielwerte; interne Fehlerprädiktoren.'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Interne Prädiktoren sagen den Blindfehler auf Faktor ~1 voraus — das ist selbst ein prüfbarer Befund.'
+  bewertung: {richtigkeit: 'numerisch, blind', neuheit: vermutlich_neu, recherche: 'Paper VI.', nutzen: 'Validiert die Methode.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: bw.satz.anker_rekonstruktion}
+
+- id: bw.zert.8r1_alt
+  titel: 8r1-Segmentzertifikat vor der Schwanzkorrektur
+  art: beobachtung
+  ebene: C
+  status: ueberholt
+  objekte: [kneser_T]
+  aussage: 'Zertifikatslauf mit der alten Schwanzschranke in tails.py.'
+  quellen: [{ref: justus_cert8r1}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: 'tails.py (fehlerhaft)'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: 'ungültig (Schranke zu klein)', neuheit: unklar, nutzen: 'Historisch.', nutzen_stufe: gering}
+
+- id: bw.korr.tails
+  titel: Korrektur — Sensitivitätsschwanz um Faktor ~20 unterschätzt
+  art: korrektur
+  ebene: C
+  status: bewiesen
+  objekte: [kneser_T]
+  aussage: 'Das Verhältnis der d/dT-Schwanzglieder trägt einen Faktor $1+c\,y_j\theta$; tails.py fehlte er. Gefunden durch wertweisen Vergleich zweier unabhängiger Intervallproduzenten; Regressionstest test_tails.py; Erratum dokumentiert.'
+  beweis: {art: vollstaendig, text: 'Algebraische Korrektur der Schranke; Regressionstest.'}
+  quellen: [{ref: justus_cert8r1, stelle: 'docs/PAPER_VI_8R1_CLOSURE.md, Erratum'}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Regel: zwei unabhängige Intervallproduzenten wertweise vergleichen.'
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: 'Fehler belegt und behoben', neuheit: unklar, nutzen: 'Rettet das Zertifikat.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: korrigiert, ziel: bw.zert.8r1_alt}
+
+- id: bw.zert.8r1
+  titel: 8r1-Segmentzertifikat (beide Beine über die Schliessungsschicht)
+  art: satz
+  ebene: C
+  status: bewiesen
+  objekte: [kneser_T]
+  aussage: 'Replay: $Y=3.1516\cdot10^{-9}$, $L=13613.3$, $q=0.1495<1$, Prüfungen Z1–Z7 bestanden; unabhängige Verifikation in Ordnung 22.'
+  beweis: {art: vollstaendig, text: 'Computergestützt (Kugelarithmetik, python-flint); Annahme: korrekte Implementierung.'}
+  stuetzt_sich_auf: [bw.korr.tails]
+  quellen: [{ref: justus_cert8r1}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Korrekte Intervallimplementierung; Mikrosegment-Induktion, Hilbert-Röhren-Supremum, Γ-Steigung als offene Punkte im README.'
+    f3_spezialfall: 'Ein Segment des Hauptsatzes Thm. 11.15 (Paper VI).'
+    f4_uebertragbar: 'Weitere Segmente.'
+    f5_neue_frage: bw.frage.intervallmarsch
+  bewertung: {richtigkeit: 'computergestützt; offene Punkte laut README', neuheit: vermutlich_neu, recherche: 'Paper VI.', nutzen: 'Erstes zertifiziertes Segment.', nutzen_stufe: hoch}
+
+- id: bw.frage.intervallmarsch
+  titel: Vollständiger zertifizierter Intervallmarsch
+  art: frage
+  ebene: C
+  status: offen
+  objekte: [kneser_T]
+  aussage: 'Alle Segmente von $e$ nach $2$ mit Intervallzertifikaten (Radien-Polynome, Schnittebenen-Zertifikat, Endverklebung E+) — offenes computergestütztes Problem.'
+  naechste_frage: 'Offene Punkte nach Gewicht: Mikrosegment-Induktion, Hilbert-Röhren-Supremum, Γ-Steigungsbeweis, β-Interpolationsboden.'
+  quellen: [{ref: justus_p6, stelle: '§11, Schluss'}, {ref: justus_cert8r1}]
+  kanten:
+    - {typ: verwandt, ziel: bw.zert.8r1}
+
+- id: bw.verm.adressen
+  titel: Komplexe fliehende Basen — Phase hängt an der Adresse
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [phase, F_bd]
+  aussage: |
+    Für komplexe Basen, deren Bahn flieht, wählt jeder Logarithmus-Schritt einen Streifen $m_j$ (Adresse $\mathbf s$). Für Basen mit
+    verträglichen Adressen konvergieren die gestoppten Schwänze gegen einen Kozykel $\Phi_{b,d}(\theta,\mathbf s)$ über Phasenkreis und
+    Adressverschiebung; schliesslich $q$-periodische Adressen geben eine $q$-periodische Höhenphase. Der reelle Fall (Adresse $0,0,\dots$)
+    ist das Phasengesetz.
+  gegenbeispielsuche: |
+    Versuch 08.10.2026 (experimente/e26_adressen.py, gestoppte Kette mit Kneser/Paulsen-Werten für komplexe Basen): die reelle Kontrolle
+    b = 3, d = 2 stimmt (μ = −1.3208260715, Phase 1-periodisch, unabhängig von der Stoppschwelle auf 10⁻¹⁶). Für komplexe Paare
+    (4 + 0.5i mit 3 + 0.3i) liefert der Rechenmotor an den nötigen Punkten in 25 Minuten keine Werte — nicht entschieden. Nebenbefund:
+    die meisten komplexen Basen nahe der reellen Achse fliehen gar nicht (Ausflug und Rückfall, vgl. fp.beob.negative_achse).
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: —
+    f3_spezialfall: 'Verallgemeinert bw.satz.phasengesetz.'
+    f4_uebertragbar: —
+    f5_neue_frage: 'Erstes Testpaar: zwei komplexe Basen mit konstanter Adresse $m\ne0$.'
+  bewertung: {richtigkeit: offen, neuheit: unklar, nutzen: 'Würde das Phasengesetz auf komplexe Basen ausdehnen.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_synthese_jul, stelle: '§20.2, Conjecture I'}]
+  kanten:
+    - {typ: verallgemeinert, ziel: bw.satz.phasengesetz}
+
+- id: bw.satz.imaginaere_richtung
+  titel: In imaginärer Richtung konvergiert der Basiswechsel
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [F_bd, kneser_T, fixpunkt_L, schroeder]
+  bereich: '$b\ne d>\eta$, Kneser-Tetration $T_d$, $\Phi(w)=A_b(A_d^{-1}(w))$; $L_d$ im Linearisierungsgebiet von $E_b$ (Rückwärtsbahn erreicht $L_b$)'
+  voraussetzungen:
+    - {text: 'L_d ≠ L_b und A_b holomorph bei L_d', benutzt: ja}
+    - {text: 'Kneser', benutzt: nein, notiz: 'jede Tetration verschiebt das Argument nur um eine 1-periodische Funktion'}
+  aussage: |
+    $$A_b\bigl(T_d(iy)\bigr)\longrightarrow A_b(L_d)\quad(y\to+\infty),\qquad \Phi(w)=A_b(L_d)+\sum_{k\ge1}K_k\lambda_d^{kw},\quad K_1=A_b'(L_d).$$
+    Die Annäherung ist eine gedämpfte Drehung: Abklingrate $\arg\lambda_d$, Drehrate $\log|\lambda_d|$ (für reelle $d$: $\mathrm{Im}\,\lambda_d$ bzw.
+    $\log\log d+\mathrm{Re}\,\lambda_d$). Für $b=e$, $d=2$: Grenzwert $0.326448651629+0.523513968910i$, $K_1=-0.0305475247-1.2919819448i$, Periode 30.63.
+    Für $d\to b$ wächst $|A_b(L_d)|\sim|\log|L_d-L_b||/|\mathrm{Log}\lambda_b|$. Drei Richtungen: reell → divergent mit 1-periodischer Welle;
+    imaginär nach oben → $A_b(L_d)$; nach unten → $A_b(\overline{L_d})$.
+  einfach: >-
+    Lässt man die Höhe nicht nach rechts, sondern nach oben ins Komplexe laufen, läuft die Tetration in ihren Fixpunkt statt ins
+    Unendliche. Dort ist die andere Basis harmlos, und der Basiswechsel kommt zur Ruhe — mit einer Drehung, die so schnell gedämpft
+    wird, dass man sie fast nie sieht.
+  beweis: {art: vollstaendig, text: '$\kappa_d(A_d^{-1}(w))=\lambda_d^w$ ⇒ $A_d^{-1}(w)=L_d+\lambda_d^w+O(\lambda_d^{2w})$; $A_b$ ist bei $L_d$ holomorph ⇒ Taylorentwicklung in $\lambda_d^w$, $|\lambda_d^{iy}|=e^{-y\arg\lambda_d}\to0$. Kneser: $T_d(x+iy)\to L_d$ (Paulsen–Cowgill-Bedingung).'}
+  stuetzt_sich_auf: [kn.satz.paulsen_cowgill, it.satz.koenigs]
+  experimente: [exp.funde]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald man die Paulsen–Cowgill-Bedingung nimmt.'
+    f2_benutzte_voraussetzungen: 'Holomorphie von A_b bei L_d (Domänentest: über 200 Rückwärtsschritte nötig).'
+    f3_spezialfall: 'Dieselbe Dichotomie wie kl.satz.basiswechsel_gleiches_L mit vertauschten Rollen.'
+    f4_uebertragbar: 'Komplexe Basen mit gemeinsamem oberem Fixpunkt: dann divergiert der Ausdruck wie A_b(T_b(iy)) (kl.frage.gleiches_L_kneser).'
+    f5_neue_frage: 'Welche Funktion der beiden Basen ist A_b(L_d)? (Analytisch in b, d bis zur Diagonale, dort log-singulär.)'
+  gegenbeispielsuche: 'Original: K₁ zweifach bestimmt, 19 Stellen; Annäherung bis y = 40. exp.funde: A_e(L_2), K₁ und A_2(L_e) unabhängig mit eigener Koenigs-Rechnung, Abweichung < 10⁻¹⁸ bzw. 10⁻¹².'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Neue, konvergente Seite des Basiswechsels über η.', nutzen_stufe: hoch}
+  quellen: [{ref: justus_imaginaer}]
+  kanten:
+    - {typ: verwandt, ziel: bw.satz.phasengesetz}
+    - {typ: analog_zu, ziel: kl.satz.basiswechsel_gleiches_L}
+    - {typ: verwandt, ziel: kl.frage.gleiches_L_kneser}
+
+- id: bw.frage.halbiter_vergleich
+  titel: 'Wachsen gebrochene Exponential-Iterierte zu verschiedenen Basen geordnet? (Taranovsky, MO 2017)'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [phase, hoehe]
+  aussage: |
+    Für Basen $a,b>\eta$ und Höhen $c<d$: Gilt $\lim_{x\to\infty}\exp_a^{[c]}(x)/\exp_b^{[d]}(x)=0$? Für $c=1<d$ ja (für jede Tetration mit steigender Ableitung). Levenstein vermutet
+    (Forum 2018): Für Walkers Lösung gilt es allgemein, für Kneser **nicht** — es gibt dann $c<d$ (sogar mit $a<b$) und beliebig grosse $x$ mit $\exp_a^{[c]}(x)>\exp_b^{[d]}(x)$.
+    Der Grund wäre die periodische Welle des Basiswechsels: Kneser-Iterierte zweier Basen sind nur bis auf ein Wackeln ineinander verschoben.
+  einfach: >-
+    Wenn man die Exponentialfunktion „halb“ oder „drei Viertel mal“ anwendet, wächst die höhere Stufe dann immer schneller — auch bei verschiedenen Basen?
+    Vermutlich hängt die Antwort davon ab, welche Fortsetzung der Tetration man nimmt.
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, offen.'
+    f2_benutzte_voraussetzungen: 'Basiswechsel-Welle (bw.satz.phasengesetz).'
+    f3_spezialfall: 'Frage nach einer „natürlichen“ Wachstumsskala zwischen quasipolynomial und quasiexponentiell.'
+    f4_uebertragbar: 'Alle Konstruktionen gebrochener Iterierter.'
+    f5_neue_frage: 'Lässt sich aus der gemessenen Welle eine konkrete Gegenbeispiel-Folge für Kneser bauen?'
+  bewertung: {richtigkeit: offen, neuheit: bekannt, nutzen: 'Verbindet den Basiswechsel mit einer natürlichen Wachstumsfrage.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tid1189}]
+  kanten:
+    - {typ: verwandt, ziel: bw.satz.phasengesetz}
+    - {typ: verwandt, ziel: kn.satz.halbe_exp_wachstum}

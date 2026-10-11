@@ -1,0 +1,473 @@
+gebiet: kl
+aussagen:
+
+- id: kl.satz.regulaer
+  titel: Reguläre Tetration für 1 < b < η
+  art: konstruktion
+  ebene: C
+  status: bewiesen
+  objekte: [regulaer_T, schroeder, fixpunkt_L, multiplikator]
+  bereich: '$1<b<\eta$, $a$ = unterer reeller Fixpunkt, $\lambda=a\ln b\in(0,1)$'
+  voraussetzungen:
+    - {text: '1 < b < η', benutzt: ja}
+    - {text: 'Koenigs-Funktion σ am anziehenden Fixpunkt a', benutzt: ja, ref: it.satz.koenigs}
+  aussage: |
+    $T^{\mathrm{reg}}(x):=\sigma^{-1}\!\bigl(\lambda^{x}\sigma(1)\bigr)$ (mit Fortsetzung über $\log_b$ nach links)
+    ist eine reell-analytische, streng wachsende Tetration auf $(-2,\infty)$ mit $T(x)\uparrow a$ für $x\to\infty$,
+    und die einzige, deren Iterationsgruppe am Fixpunkt $a$ holomorph ist. Wo sie komplex fortgesetzt ist, ist sie
+    $2\pi i/\ln\lambda$-periodisch (Holomorphiegebiet: kl.satz.vier_sqrt2 für $\sqrt2$).
+  beweis:
+    art: vollstaendig
+    text: |
+      Der Orbit von 1 läuft monoton gegen $a$, also ist $\sigma(1)<0$ definiert und $\lambda^x\sigma(1)$ reell.
+      Funktionalgleichung: $\sigma(b^{T})=\lambda\sigma(T)$; nach links Fortsetzung über $\log_b$.
+      Periodizität aus $\lambda^{x+2\pi i/\ln\lambda}=\lambda^x$. Eindeutigkeit der Iterationsgruppe: it.satz.vertauschbar.
+  stuetzt_sich_auf: [it.satz.koenigs, it.satz.vertauschbar, fg.satz.schroeder_abel]
+  quellen: [{ref: kouznetsov_trappmann2010, stelle: 'Fall √2'}, {ref: diese_arbeit}]
+  experimente: [exp.sqrt2_abel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, reell: Koenigs + Schröder→Abel. Komplexe Gebietsaussage nicht unmittelbar.'
+    f2_benutzte_voraussetzungen: 'Nur Anziehung bei $a$ und $1$ im Einzugsgebiet; Reellwertigkeit aus $\lambda>0$.'
+    f3_spezialfall: 'Ja: reguläre Superfunktion an einem hyperbolischen Fixpunkt (allgemein für jedes $f$).'
+    f4_uebertragbar: 'Komplexe Basen im Shell–Thron-Gebiet (fp.satz.shell_thron).'
+    f5_neue_frage: 'Zwei Fixpunkte, zwei reguläre Abel-Funktionen auf $(a,A)$ — wie weit unterscheiden sie sich? → kl.beob.zwei_abel'
+  bewertung: {richtigkeit: 'reell vollständig; komplexes Gebiet nur aus Literatur (√2)', neuheit: klassisch, nutzen: 'Die natürliche Tetration unter η.', nutzen_stufe: hoch}
+
+- id: kl.satz.vier_sqrt2
+  titel: Vier reguläre Superexponentiale zur Basis √2
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  objekte: [regulaer_T, superfunktion, fixpunkt_L]
+  bereich: '$b=\sqrt2$, Fixpunkte 2 und 4'
+  voraussetzungen:
+    - {text: 'b = √2', benutzt: ja}
+  aussage: |
+    Es gibt vier reelle reguläre Superexponentiale (zwei am Fixpunkt 2, zwei am Fixpunkt 4). Die beiden an 4 sind
+    ganz, die beiden an 2 holomorph in einer rechten Halbebene; alle sind in imaginärer Richtung periodisch. Nur das
+    wachsende an 2 kann $F(0)=1$ erfüllen und ist die Tetration.
+  beweis: {art: literatur, text: 'Kouznetsov–Trappmann 2010.'}
+  quellen: [{ref: kouznetsov_trappmann2010}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Existenz ja (Koenigs an beiden Fixpunkten), Ganzheit an 4 nein.'
+    f2_benutzte_voraussetzungen: 'Ganzheit an 4: $\exp_b$ ist ganz und der Fixpunkt 4 abstossend (Superfunktion = Vorwärtsiteration ganzer Funktion).'
+    f3_spezialfall: 'Für jedes $1<b<\eta$ gilt dasselbe Muster (nicht am Original geprüft).'
+    f4_uebertragbar: 'Bei $b=\eta$ verschmelzen die Fixpunkte → zwei parabolische Superexponentiale (kouznetsov_trappmann2012).'
+    f5_neue_frage: 'Verhältnis der beiden Abel-Funktionen auf (2,4) → kl.beob.zwei_abel'
+  bewertung: {richtigkeit: gesichert (Literatur), neuheit: bekannt, nutzen: 'Musterbeispiel für Nicht-Eindeutigkeit durch Fixpunktwahl.', nutzen_stufe: mittel}
+
+- id: kl.beob.zwei_abel
+  titel: Die regulären Abel-Funktionen an 2 und 4 unterscheiden sich um eine winzige Periode
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [abel, regulaer_T, periodische_stoerung, fourier_moden]
+  bereich: '$b=\sqrt2$, $x\in(2,4)$; $\alpha_2$ = reguläre Abel-Funktion am Fixpunkt 2, $\alpha_4$ am Fixpunkt 4'
+  aussage: |
+    $p(\theta):=\alpha_4\bigl(\alpha_2^{-1}(\theta)\bigr)-\theta$ ist 1-periodisch und **nicht konstant**:
+    die beiden regulären Konstruktionen sind verschiedene Abel-Funktionen auf demselben Intervall.
+    Die Amplitude der ersten Fourier-Mode ist von der Grössenordnung $10^{-24}$ (Zahlen im Experiment).
+  experimente: [exp.sqrt2_abel]
+  stuetzt_sich_auf: [kl.satz.regulaer]
+  pruefung:
+    f1_folgt_unmittelbar: 'Dass $p$ periodisch ist: ja (fg.satz.allgemeine_loesung). Dass $p$ nicht konstant ist: nein, das ist der Befund.'
+    f2_benutzte_voraussetzungen: 'Rechnung mit 120 Stellen; Koenigs-Reihen an beiden Fixpunkten, unabhängig voneinander.'
+    f3_spezialfall: 'Instanz von fg.satz.allgemeine_loesung mit explizit messbarem θ.'
+    f4_uebertragbar: 'Auf jedes $1<b<\eta$ → kl.verm.streifenbreite.'
+    f5_neue_frage: 'Erklärt die imaginäre Periode die Grösse der Amplitude? → kl.verm.streifenbreite'
+  bewertung: {richtigkeit: 'numerisch, mit Selbstprüfung (Periodizität, Präzisionsvergleich)', neuheit: bekannt, recherche: 'Gefunden um 1991 von Asimov, Hickerson und Schroeppel (unveröffentlicht), im Tetration-Forum 2007 als „Bummer!“ mit 100–450 Stellen nachgerechnet. Neu hier: 170 Stellen, Modenfolge und das Amplitudengesetz (kl.verm.streifenbreite).', nutzen: 'Konkretes, messbares Beispiel für die periodische Freiheit.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_bummer2007, stelle: 'erster Beitrag: Fund von Asimov/Hickerson/Schroeppel um 1991'}, {ref: kouznetsov_trappmann2010, stelle: 'Unterschiedlichkeit der Superexponentiale'}]
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Neuheit von „folklore“ auf „bekannt“ (Forum 2007, Fund um 1991).'}
+  kanten:
+    - {typ: stuetzt, ziel: fg.satz.allgemeine_loesung}
+
+- id: kl.verm.streifenbreite
+  titel: Amplitudengesetz aus der imaginären Periode
+  art: vermutung
+  ebene: B
+  status: vermutung
+  objekte: [abel, regulaer_T, fourier_moden, multiplikator]
+  bereich: '$1<b<\eta$, Fixpunkte $a<A$, Multiplikatoren $\lambda_a\in(0,1)$, $\lambda_A>1$'
+  aussage: |
+    Die Fourier-Koeffizienten der Differenz $p=\alpha_A\circ\alpha_a^{-1}-\mathrm{id}$ fallen wie
+    $$|\hat p(k)|\approx C\,\exp\!\Bigl(-\frac{2\pi^2 k}{|\ln\lambda_a|}\Bigr),$$
+    d. h. $p$ ist genau in einem Streifen der halben imaginären Periode $\pi/|\ln\lambda_a|$ der regulären Tetration
+    am unteren Fixpunkt holomorph. Heuristik: bei $\operatorname{Im}\theta=\pi/|\ln\lambda_a|$ dreht $\lambda_a^{\theta}$ um $\pi$,
+    $T^{\mathrm{reg}}$ erreicht die andere Seite von $a$, wo $\alpha_A$ singulär wird.
+  gegenbeispielsuche: |
+    exp.sqrt2_abel: Moden $k\le10$ bei $b\in\{1.25,1.3,1.35,\sqrt2,1.43\}$ (170 Stellen, Gegencheck mit anderer Reihenlänge 1e-112).
+    Freie Anpassung $\ln|\hat p(k)|=c+\gamma\ln k-Sk+d/k$: $S$ trifft $2\pi^2/|\ln\lambda_a|$ auf $1.2$–$2.6\cdot10^{-4}$ relativ;
+    die Konkurrenz $2\pi^2/\ln\lambda_A$ liegt 20–40 % daneben. Kein Gegenbeispiel unter 5 Basen.
+  experimente: [exp.sqrt2_abel]
+  stuetzt_sich_auf: [kl.beob.zwei_abel]
+  versionen:
+    - {datum: '2026-10-08', fassung: 'v1 (Heuristik)', aenderung: 'nur Exponent $2\pi^2/|\ln\lambda_a|$ vermutet'}
+    - {datum: '2026-10-08', fassung: 'v2 (gemessen)', aenderung: 'Exponent auf 2.6e-4 bestätigt; Vorfaktor $k^{\gamma}$ gefunden → kl.verm.faktor', grund: 'exp.sqrt2_abel'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein. Folgt, wenn man zeigt, dass die nächsten Singularitäten von $p$ genau bei $\operatorname{Im}\theta=\pm\pi/|\ln\lambda_a|$ liegen.'
+    f2_benutzte_voraussetzungen: —
+    f3_spezialfall: 'Analog zu Paper IV: Modenabfall ⇔ Abstand der nächsten Singularität vom Rand (br.satz.gevrey_fourier).'
+    f4_uebertragbar: 'Gleiche Methode für Kneser-Basiswechsel: dort ist die Singularitätslage gerade die offene Frage (bw.frage.streifen_gevrey).'
+    f5_neue_frage: 'Ein beweisbares Modellproblem für bw.frage.streifen_gevrey: hier sind alle Objekte explizit (Koenigs-Reihen).'
+  bewertung: {richtigkeit: 'Vermutung, numerisch geprüft', neuheit: vermutlich_neu, recherche: 'Keine Formel dieser Art in Kouznetsov–Trappmann 2010 (Abstract) gefunden; Volltext nicht geprüft.', nutzen: 'Modellfall, in dem die Streifenfrage explizit entscheidbar sein sollte.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: analog_zu, ziel: bw.frage.streifen_gevrey}
+
+- id: kl.verm.faktor
+  titel: Universeller Restfaktor ≈ k^(−5/4)
+  art: vermutung
+  ebene: B
+  status: vermutung
+  objekte: [abel, regulaer_T, fourier_moden]
+  bereich: 'wie kl.verm.streifenbreite'
+  aussage: |
+    $|\hat p(k)|=C(b)\,g(k)\,e^{-2\pi^2k/|\ln\lambda_a|}$ mit einer **von $b$ unabhängigen** Funktion $g$, und
+    $g(k)\approx k^{-5/4}$ (auf $\pm0.7\,\%$ für $k\le10$). Deutung: alle Basen haben denselben Singularitätstyp am Streifenrand;
+    eine algebraische Singularität $(\theta-\theta^*)^{\nu}$ gäbe $k^{-1-\nu}$, also $\nu\approx1/4$.
+  gegenbeispielsuche: |
+    Modellfrei: $r_k=|\hat p(k)|e^{S_ak}/(|\hat p(1)|e^{S_a})$ stimmt über $b\in\{1.25,1.3,1.35,\sqrt2\}$ auf $\le4.3\cdot10^{-4}$ überein ($k\le5$).
+    Exponent modellabhängig: $-1.236$ (mit $1/k$-Korrektur, festes $S$) bis $-1.267$ (freies $S$) — $-5/4$ ist nicht von z. B. $1-\sqrt5$ trennbar.
+  experimente: [exp.sqrt2_abel]
+  stuetzt_sich_auf: [kl.verm.streifenbreite]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: 'Paper IV Prop. 6.3 liefert $\gamma=\rho/2-3/4$ für wesentliche Singularitäten mit $\sqrt k$-Term; hier fehlt ein $\sqrt k$-Term (sonst wiche $S$ ab).'
+    f4_uebertragbar: 'Wenn der Typ universell ist, sollte er auch beim Basiswechsel der Kneser-Zweige auftreten — Vergleich mit dem dort gemessenen $\gamma$.'
+    f5_neue_frage: 'Welcher Mechanismus erzeugt einen Viertel-Exponenten? Lage der Singularitäten über $T^{\mathrm{reg}}(\theta)=a+2\pi ik/\ln b$ (Urbilder von $a$) prüfen.'
+  bewertung: {richtigkeit: 'Vermutung, numerisch stark gestützt', neuheit: vermutlich_neu, recherche: 'Keine entsprechende Aussage in den geprüften Abstracts (Kouznetsov–Trappmann 2010).', nutzen: 'Präzises, explizit prüfbares Modell für Singularitätstypen von Abel-Differenzen.', nutzen_stufe: hoch}
+  naechste_frage: 'Singularitäten von $p$ im Komplexen direkt suchen (Newton auf $T^{\mathrm{reg}}(\theta)=a+2\pi i/\ln b$) und lokalen Exponenten messen.'
+
+- id: kl.satz.parabolisch
+  titel: Tetration zur Basis η (parabolisch)
+  art: konstruktion
+  ebene: C
+  status: bewiesen_literatur
+  objekte: [fatou_koord, regulaer_T, eta]
+  bereich: '$b=\eta$, Fixpunkt $e$ mit Multiplikator 1'
+  voraussetzungen:
+    - {text: 'b = η', benutzt: ja}
+  aussage: |
+    Die Fatou-Koordinate des anziehenden Blatts liefert eine reell-analytische Tetration mit
+    $T(x)=e-\dfrac{2e}{x}+O\!\Bigl(\dfrac{\ln x}{x^2}\Bigr)$ für $x\to\infty$. Es gibt zwei reguläre
+    Superexponentiale (von unten und von oben an $e$).
+  beweis: {art: literatur, text: 'Kouznetsov–Trappmann 2012; Asymptotik aus $w_{n+1}=w_n+w_n^2/(2e)+O(w^3)$ mit $w=T-e$.'}
+  stuetzt_sich_auf: [it.satz.leau_fatou]
+  quellen: [{ref: kouznetsov_trappmann2012}, {ref: diese_arbeit, stelle: 'Asymptotik'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Existenz ja (Leau–Fatou). Asymptotik ja (Standardrechnung).'
+    f2_benutzte_voraussetzungen: 'Nur der quadratische Term $w^2/(2e)$.'
+    f3_spezialfall: Ja, von it.satz.leau_fatou.
+    f4_uebertragbar: —
+    f5_neue_frage: 'Stetigkeit in $b$ bei $\eta$ → kl.frage.stetig_eta'
+  bewertung: {richtigkeit: gesichert, neuheit: bekannt, nutzen: 'Grenzfall zwischen regulär und Kneser.', nutzen_stufe: mittel}
+
+- id: kl.kor.eta_baker
+  titel: exp_η an e ist linear konjugiert zu e^u − 1
+  art: korollar
+  ebene: C
+  status: bewiesen
+  objekte: [e_minus_1, eta, iterationsgruppe, fatou_koord]
+  bereich: '$b=\eta$, Fixpunkt $e$'
+  voraussetzungen:
+    - {text: 'b = η = e^{1/e}', benutzt: ja}
+  aussage: |
+    Mit $z=e+e\,u$ gilt $\eta^{z}=e+e\,(e^{u}-1)$: $\exp_\eta$ am Fixpunkt $e$ ist **linear** konjugiert zu
+    $e^u-1$ am Fixpunkt 0. Folglich (Baker) konvergiert die formale reguläre $t$-Iterierte von $\exp_\eta$ an $e$
+    für reelles $t\notin\mathbb Z$ nicht: es gibt keine am Fixpunkt $e$ analytische halbe Iterierte vom
+    regulären Typ, und die Fatou-Koordinaten der beiden Blätter verkleben nicht zu einem Fluss.
+  beweis:
+    art: vollstaendig
+    text: '$\eta^{e+eu}=\exp((e+eu)/e)=e\cdot e^{u}$, also $(\eta^{e+eu}-e)/e=e^u-1$. Der Rest ist it.satz.baker unter Konjugation (Konvergenz formaler Reihen ist konjugationsinvariant).'
+  stuetzt_sich_auf: [it.satz.baker]
+  experimente: [exp.eta_baker]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja — eine Zeile Rechnung plus Bakers Satz. Wert liegt in der Verknüpfung, nicht in neuer Mathematik.'
+    f2_benutzte_voraussetzungen: 'Nur $b=\eta$; der zweite Teil (keine Verklebung) zusätzlich it.satz.ecalle_voronin.'
+    f3_spezialfall: 'Ja: Spezialfall von it.satz.baker.'
+    f4_uebertragbar: 'Für $b\ne\eta$ gibt es keinen parabolischen Fixpunkt; aber nahe $\eta$ steuert diese Normalform die parabolische Implosion (br.frage.implosion).'
+    f5_neue_frage: 'Die Écalle–Voronin-Invarianten von $e^u-1$ sind damit die Invarianten der η-Tetration — numerisch bestimmbar.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Verbindet die η-Tetration mit einem klassischen Satz; Ausgangspunkt für die Implosionsfrage.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}, {ref: baker_iteration}]
+  kanten:
+    - {typ: spezialfall_von, ziel: it.satz.baker}
+    - {typ: motiviert, ziel: br.frage.implosion}
+
+- id: kl.frage.stetig_eta
+  titel: Stetigkeit der Tetration in der Basis bei η
+  art: frage
+  ebene: C
+  status: offen
+  objekte: [kneser_T, regulaer_T, eta]
+  bereich: '$b\downarrow\eta$ (Kneser) und $b\uparrow\eta$ (regulär)'
+  aussage: |
+    Konvergiert $T_b^{\mathrm K}\to T_\eta$ lokal gleichmässig auf $(-2,\infty)$ für $b\downarrow\eta$, und ebenso
+    $T_b^{\mathrm{reg}}\to T_\eta$ für $b\uparrow\eta$? Die divergierende Mittelverschiebung $m(b)\sim -c\,(b-\eta)^{-1/2}$
+    (bw.lem.randgesetz) widerspricht dem nicht: sie misst die Höhe relativ zu Basis $e$, nicht $T_b$ selbst.
+  naechste_frage: 'Numerisch für x = 1/2 beantwortet (kl.beob.stetig_eta: stetig von beiden Seiten, gleiche Steigung 0.43858). Offen: Beweis, andere x, höhere Ableitungen in b.'
+  quellen: [{ref: paulsen2019, stelle: 'Abhängigkeit von der Basis'}]
+  kanten:
+    - {typ: verwandt, ziel: bw.lem.randgesetz}
+
+- id: kl.satz.obere_superexp
+  titel: Obere Superexponentialfunktion (1 < b < η) — ganz und periodisch
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [superfunktion, schroeder, fixpunkt_L, multiplikator]
+  bereich: '$1<b<\eta$, oberer (abstossender) Fixpunkt $A>e$ mit $\lambda_A=A\ln b>1$'
+  aussage: |
+    Sei $\Psi_A$ die Poincaré-Funktion am oberen Fixpunkt: $\Psi_A(\lambda_Aw)=b^{\Psi_A(w)}$, $\Psi_A(0)=A$, $\Psi_A'(0)=1$. Dann ist
+    $$\operatorname{usexp}_b(z)=\Psi_A\bigl(\lambda_A^{\,z}\,c\bigr),\qquad c>0\ \text{mit}\ \operatorname{usexp}_b(0)=A+1,$$
+    eine **ganze** Funktion mit $\operatorname{usexp}_b(z+1)=b^{\operatorname{usexp}_b(z)}$, periodisch mit $2\pi i/\ln\lambda_A$, auf $\mathbb R$ streng wachsend über $A$
+    und $\operatorname{usexp}_b(x)\downarrow A$ für $x\to-\infty$ (wie $\lambda_A^{x}$). Sie ist Superfunktion, aber keine Tetration (sie nimmt den Wert 1 auf $\mathbb R$ nie an).
+    Basis $\sqrt2$: $A=4$, $\lambda_4=2\ln2$, Periode $19.2361490420\ldots\,i$, $\operatorname{usexp}(1/2)=5.2736473691781\ldots$, $\operatorname{usexp}(-1)=\log_{\sqrt2}5=4.6438561897747\ldots$
+  beweis:
+    art: vollstaendig
+    text: 'Koenigs (it.satz.koenigs) gibt $\Psi_A$ nahe 0. Weil $\exp_b$ ganz ist und $|\lambda_A|>1$, setzt $\Psi_A(w):=\exp_b^{\circ n}(\Psi_A(w/\lambda_A^n))$ (n gross) $\Psi_A$ zu einer ganzen Funktion fort (Poincaré). $z\mapsto\lambda_A^zc$ ist ganz, also auch die Verkettung; Periode aus $\lambda_A^{z+2\pi i/\ln\lambda_A}=\lambda_A^z$. Reell: $\Psi_A$ hat reelle Koeffizienten und ist auf $[0,\infty)$ wachsend (Funktionalgleichung mit wachsendem $\exp_b$).'
+  stuetzt_sich_auf: [it.satz.koenigs]
+  experimente: [exp.cheta]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja: Poincaré-Funktion einer ganzen Funktion an einem abstossenden Fixpunkt ist ganz.'
+    f2_benutzte_voraussetzungen: 'Nur dass $\exp_b$ ganz und der Fixpunkt abstossend ist; $b<\eta$ nur für die Existenz des reellen Fixpunkts $A$.'
+    f3_spezialfall: 'Ja: allgemeine Poincaré-Funktion; kl.satz.vier_sqrt2 ist der Fall $b=\sqrt2$ (dort am Original nicht für alle b geprüft — hier für alle $1<b<\eta$ bewiesen).'
+    f4_uebertragbar: 'Bei $b=\eta$ wird $A=e$ parabolisch: dann tritt die Fatou-Koordinate an die Stelle von Ψ (kl.satz.cheta).'
+    f5_neue_frage: 'Wie verhält sich $\operatorname{usexp}_b$ für $b\uparrow\eta$ — geht es gegen cheta (bei passender Normierung)?'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Zweite natürliche Superfunktion unter η; erklärt, was „oberhalb des Turms“ passiert.', nutzen_stufe: mittel}
+  quellen: [{ref: kouznetsov_trappmann2010}, {ref: diese_arbeit, stelle: 'Beweis für alle 1 < b < η'}]
+  kanten:
+    - {typ: verallgemeinert, ziel: kl.satz.vier_sqrt2}
+    - {typ: analog_zu, ziel: kl.satz.cheta}
+
+- id: kl.satz.cheta
+  titel: cheta — die obere Superexponentialfunktion zur Basis η ist ganz
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [superfunktion, fatou_koord, eta, e_minus_1]
+  bereich: '$b=\eta$, Fixpunkt $e$ (parabolisch), Seite $y>e$'
+  aussage: |
+    Auf $y>e$ ist $e$ für $\exp_\eta$ abstossend. Mit der Kehrwert-Koordinate $Z=2e/(e-y)<0$ und der Fatou-Reihe
+    $\Phi(Z)=Z-\tfrac13\ln|Z|+\sum_kc_kZ^{-k}$ (dieselben rationalen $c_k$ wie in kl.satz.eta_koordinate) gilt $\Phi(Z(\exp_\eta y))=\Phi(Z(y))+1$.
+    Die Umkehrung, normiert durch $\check\eta(0)=e^2$, ist
+    $$\check\eta(z)=\exp_\eta^{\circ z}(e^2):\qquad \check\eta(-1)=2e,\quad\check\eta(1)=e^e,\quad \check\eta(z+1)=\eta^{\check\eta(z)},$$
+    eine **ganze** Funktion („cheta“, J. D. Fox 2009), auf $\mathbb R$ streng wachsend mit $\check\eta(x)=e+\frac{2e}{|x|}\bigl(1+O(\tfrac{\log|x|}{|x|})\bigr)$ für $x\to-\infty$.
+    Werte: $\check\eta(1/2)=9.6893506753532295\ldots$, $\check\eta(-1/2)=6.1732925511093943\ldots$; Konstante $C_{\check\eta}=\lim_n[\Phi(Z(\check\eta(-n)))+n]=-1.2569611588725123\ldots$
+  beweis:
+    art: vollstaendig
+    text: 'Leau–Fatou (it.satz.leau_fatou): auf einem abstossenden Blatt an $e$ gibt es die Fatou-Koordinate; ihre Umkehrung $\Psi$ ist auf einer linken Halbebene holomorph mit $\Psi(w+1)=\exp_\eta(\Psi(w))$. Weil $\exp_\eta$ ganz ist, setzt $\Psi(w):=\exp_\eta^{\circ n}(\Psi(w-n))$ sie zu einer ganzen Funktion fort. Normierung durch Verschiebung. Asymptotik aus $\Phi(Z)\approx Z$.'
+  stuetzt_sich_auf: [it.satz.leau_fatou]
+  experimente: [exp.cheta]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Leau–Fatou und der Ganzheit von $\exp_\eta$ (wie bei der Poincaré-Funktion).'
+    f2_benutzte_voraussetzungen: 'Fatou-Koordinate auf dem abstossenden Blatt; die Reihe Φ ist nur asymptotisch (Baker: divergent), wird daher nur weit draussen benutzt und dann iteriert.'
+    f3_spezialfall: 'Ja: inverse abstossende Fatou-Koordinate einer ganzen Funktion (dieselbe Abbildung, die in der Lavaurs-Abbildung vorkommt, br.satz.shishikura).'
+    f4_uebertragbar: 'Untere Lösung $T_\eta$: anziehende Seite, nicht ganz (Singularitäten bei $-2$ usw.); obere Lösung ganz.'
+    f5_neue_frage: 'Ist $\check\eta$ der Grenzwert von $\operatorname{usexp}_b$ für $b\uparrow\eta$? Hat $\check\eta$ eine imaginäre Periode? (Bei $b<\eta$ kommt sie vom Multiplikator, hier ist $\lambda=1$.)'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Vervollständigt das Bild bei η: zwei Superexponentiale, eines ganz.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_fox2009_cheta}, {ref: kouznetsov_trappmann2012}]
+  kanten:
+    - {typ: verwandt, ziel: kl.satz.eta_koordinate}
+    - {typ: verwandt, ziel: kl.satz.parabolisch}
+
+- id: kl.beob.q_binomial
+  titel: q-Binomial-Reihe (Reshetnikov) ergibt die reguläre Tetration
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [regulaer_T, multiplikator, singularitaet_m2]
+  bereich: '$1<a<\eta$, $q=-W(-\ln a)=\lambda$ (Multiplikator am unteren Fixpunkt)'
+  aussage: |
+    $$t(z)=\sum_{n\ge0}\sum_{k=0}^n(-1)^{n-k}q^{\binom{n-k}2}{z\brack n}_q{n\brack k}_q\,{}^ka,\qquad {z\brack n}_q=\prod_{j<n}\frac{1-q^{z-j}}{1-q^{j+1}}.$$
+    Die Teilsumme bis $n=N$ ist das Interpolationspolynom in $q^z$ durch die Punkte $0,\dots,N$ (exakt an ganzen Höhen). Numerisch ($a=\sqrt2$ und $1.3$;
+    $z=\tfrac12,\ 2.5,\ -0.7,\ 0.5+0.5i,\ 1.7$) ist $t(z)$ die reguläre Tetration: Fehler bei $N=80$ unter $10^{-30}$ ($z=-0.7$: $2.7\cdot10^{-19}$), geometrisch mit
+    Faktor $\approx q^{\operatorname{Re}z+2}$ je Glied ($0.3946$ gegen $0.4000$ bei $z=\tfrac12$). Die Glieder sind von der Grösse $q^{-n^2/2}$: man braucht etwa
+    $\tfrac{n^2}2\log_{10}(1/q)$ Stellen, sonst täuscht Auslöschung Divergenz vor.
+  einfach: >-
+    Aus den ganzzahligen Werten 1, a, a^a, … allein lässt sich die reguläre Tetration zurückrechnen — mit einer Formel aus der Welt der
+    q-Binomialkoeffizienten. Die Formel ist schön, aber heikel: die einzelnen Glieder werden riesig und heben sich fast vollständig auf.
+  experimente: [exp.qbinomial]
+  pruefung:
+    f1_folgt_unmittelbar: 'Teilweise. Skizze: $T(z)=G(q^z)$ mit $G(w)=\Psi(w\,\sigma(1))$ holomorph für $|w|<q^{-2}$ (nächste Singularität bei $z=-2$); Interpolation an den Knoten $q^k\to0$ konvergiert im Holomorphiekreis mit Rate $|w|/q^{-2}$ — das gäbe Konvergenz für $\operatorname{Re}z>-2$ (Reshetnikovs Vermutung 1) und genau die gemessene Rate. Der Interpolationssatz ist hier nicht geprüft.'
+    f2_benutzte_voraussetzungen: 'Anziehender Fixpunkt ($a<\eta$), damit $0<q<1$.'
+    f3_spezialfall: 'Ja: q-Analogon der Newton-Reihe; die MO-Antwort zeigt, dass eine konvergente Reihe in $\operatorname{Re}z>0$ beschränkt ist und dann (Carlson/Ramanujan) die reguläre Tetration sein muss.'
+    f4_uebertragbar: 'Auf jede Funktion mit anziehendem Fixpunkt und Multiplikator $q$; nicht auf $b>\eta$ ($|q|=1$ fehlt, Fixpunkt abstossend).'
+    f5_neue_frage: 'Vermutung 3 (T′ vollständig monoton) → kl.verm.vollmonoton.'
+  gegenbeispielsuche: 'exp.qbinomial: zwei Basen, fünf Höhen (reell, negativ, komplex), N bis 80 mit bis zu 640 Stellen; keine Abweichung.'
+  bewertung: {richtigkeit: 'numerisch (30–60 Stellen)', neuheit: bekannt, nutzen: 'Explizite Formel aus ganzen Werten; Rate $q^{\operatorname{Re}z+2}$ hier gemessen und erklärt.', nutzen_stufe: mittel}
+  quellen: [{ref: reshetnikov2017, stelle: 'Formel (11), Vermutungen 1–2, Antwort user78249'}]
+  kanten:
+    - {typ: verwandt, ziel: kl.satz.regulaer}
+    - {typ: verwandt, ziel: kl.satz.koenigs_spektral}
+    - {typ: verwandt, ziel: kn.satz.singulaer_minus2}
+
+- id: kl.verm.vollmonoton
+  titel: T′ ist vollständig monoton ⇔ alle Koenigs-Koeffizienten sind negativ
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [regulaer_T, schroeder, konvexitaet]
+  bereich: '$1<a<\eta$, reguläre Tetration $T(z)=L+\sum_{k\ge1}c_k\lambda^{kz}$ (kl.satz.koenigs_spektral), $c_k=p_k\,\sigma(1)^k$ mit den Taylor-Koeffizienten $p_k$ der Poincaré-Funktion'
+  aussage: |
+    **Vermutung (Reshetnikov 2017):** $T'$ ist auf $(-2,\infty)$ vollständig monoton: $(-1)^mT^{(m+1)}(x)\ge0$ für alle $m\ge0$.
+    **Gleichwertig (hier gezeigt):** alle $c_k\le0$ — d. h. die Taylor-Koeffizienten von $\Psi$ wechseln regelmässig das Vorzeichen ($\sigma(1)<0$).
+    **Numerisch:** $c_1,\dots,c_{60}<0$ für $a=\sqrt2,\ 1.3,\ 1.1,\ 1.44$ (z. B. $\sqrt2$: $c_1=-0.6321$, $c_{60}=-3.8\cdot10^{-21}$).
+    Reshetnikovs Vermutung 4 ergänzt: $T$ ist die einzige analytische Lösung mit $T(-1)=0$ und dieser Eigenschaft.
+  einfach: >-
+    Vermutet wird: die Steigung der regulären Tetration ist eine Summe von lauter abfallenden Exponentialkurven mit positiven Gewichten.
+    Das wäre eine rein reelle Eigenschaft, die die Lösung festlegen könnte — so wie bei der Gammafunktion die Log-Konvexität.
+  gegenbeispielsuche: 'exp.qbinomial: Vorzeichen von c_1 … c_60 bei a = √2, 1.3, 1.1, 1.44 (auch nahe η, wo die Koeffizienten am langsamsten fallen) — alle negativ.'
+  naechste_frage: 'Beweis, dass alle $p_k\sigma(1)^k<0$ (Rekursion der Koenigs-Koeffizienten, it.satz.koenigs); und ob Vermutung 4 aus dem Szekeres-Argument (it.satz.szekeres_monoton) folgt.'
+  experimente: [exp.qbinomial]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Gleichwertigkeit ja: „⇐“ $T′(x)=\sum(-c_k)k|\ln\lambda|e^{-k|\ln\lambda|x}$ ist eine positive Summe fallender Exponentiale; „⇒“ Bernstein: $T′$ ist Laplace-Transformierte eines positiven Masses, und die Dirichlet-Reihe ist eindeutig. Sind alle $c_k\le0$, liegt nach Pringsheim die Konvergenzgrenze auf der reellen Achse, also bei $z=-2$.'
+    f2_benutzte_voraussetzungen: 'Koenigs-Reihe konvergiert für $x>-2$ (folgt aus $c_k\le0$ und der Singularität bei $-2$).'
+    f3_spezialfall: 'Gegenstück zu Szekeres (it.satz.szekeres_monoton) im hyperbolischen Fall.'
+    f4_uebertragbar: 'Nicht auf Kneser ($b>\eta$): keine Koenigs-Reihe in $\lambda^z$ mit reellem $\lambda$.'
+    f5_neue_frage: 'Wenn wahr: reelle Kennzeichnung der regulären Tetration — ein Baustein für br.frage.bohr_mollerup im Fall $b<\eta$.'
+  bewertung: {richtigkeit: 'Gleichwertigkeit bewiesen, Vermutung numerisch gestützt', neuheit: folklore, nutzen: 'Übersetzt eine analytische Vermutung in eine Vorzeichenfrage über eine einfache Rekursion.', nutzen_stufe: mittel}
+  quellen: [{ref: reshetnikov2017, stelle: 'Vermutungen 3 und 4'}, {ref: diese_arbeit, stelle: 'Gleichwertigkeit und Vorzeichen-Rechnung'}]
+  kanten:
+    - {typ: motiviert, ziel: br.frage.bohr_mollerup}
+    - {typ: analog_zu, ziel: it.satz.szekeres_monoton}
+    - {typ: verwandt, ziel: kl.beob.q_binomial}
+
+- id: kl.satz.folgen_vollmonoton
+  titel: 'Aus negativen Koenigs-Koeffizienten folgen Konkavität, TPID 7 und Nixons Halbebene'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen: [kl.verm.vollmonoton]
+  niveau: forschung
+  objekte: [regulaer_T, schroeder, konvexitaet]
+  bereich: '$1<b<\eta$, reguläre Tetration $T(z)=L+\sum_{k\ge1}c_k\lambda^{kz}$'
+  voraussetzungen:
+    - {text: 'alle Koenigs-Koeffizienten c_k ≤ 0 (kl.verm.vollmonoton)', benutzt: ja, ref: kl.verm.vollmonoton}
+  aussage: |
+    Sind alle $c_k\le0$, dann:
+    1. $T$ ist auf $(-2,\infty)$ konkav und $\ln T$ auf $(-1,\infty)$ konkav; insbesondere $T(y)T(-y)<1$ für $0<|y|<1$ (TPID 7).
+    2. $T$ bildet die abgeschlossene rechte Halbebene in die Kreisscheibe $|w-L|\le L-1$ ab; insbesondere $\operatorname{Re}T(z)\ge1$ und $|T(z)|\le2L-1$
+       für $\operatorname{Re}z\ge0$ — Nixons Frage (2017) mit Ja beantwortet.
+    Gemessen (ohne Bedingung): $\operatorname{Re}T\ge1$ und $|T-L|\le L-1$ auf je 637 Punkten für $b=1.1,\ 1.3,\ \sqrt2,\ 1.44$; Gleichheit nur bei $z=0$.
+  einfach: >-
+    Wenn eine einzige Vorzeichenfrage stimmt, folgen drei Dinge auf einmal: die reguläre Tetration ist überall nach unten gebogen, T(y)·T(−y) bleibt unter 1,
+    und die ganze rechte Hälfte der komplexen Ebene landet in einem Kreis, der die 1 am Rand berührt.
+  beweis:
+    art: bedingt
+    text: |
+      Mit $s=|\ln\lambda|$ ist $T(x)=L+\sum c_ke^{-ksx}$. (1) $T''(x)=\sum c_kk^2s^2e^{-ksx}\le0$; $\ln$ einer positiven konkaven Funktion ist konkav; Mittelpunkt-Ungleichung gibt
+      $\ln T(y)+\ln T(-y)\le2\ln T(0)=0$, strikt wegen $c_1<0$. (2) Für $\operatorname{Re}z\ge0$ ist $|\lambda^{kz}|\le1$, also
+      $|T(z)-L|\le\sum|c_k|=-\sum c_k=L-T(0)=L-1$. Konvergenz für $\operatorname{Re}z>-2$: aus $c_k\le0$ und Pringsheim (kl.verm.vollmonoton).
+  stuetzt_sich_auf: [kl.verm.vollmonoton, kl.satz.koenigs_spektral]
+  experimente: [exp.vermutungen]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Bedingung in wenigen Zeilen.'
+    f2_benutzte_voraussetzungen: 'Nur $c_k\le0$ und $T(0)=1$; $|\lambda|<1$ reell.'
+    f3_spezialfall: 'Ja: Dirichlet-Reihen mit Koeffizienten eines Vorzeichens (Bernstein-Funktionen).'
+    f4_uebertragbar: 'Auf Pentation unter η: liegt T(Re z ≥ 0) in einer Scheibe, kann man dort wieder regulär iterieren (Nixons Programm).'
+    f5_neue_frage: 'Die drei Aussagen hängen alle an einer einzigen Vorzeichenfrage über die Poincaré-Funktion — Beweis?'
+  bewertung: {richtigkeit: 'bedingt bewiesen, Folgerungen numerisch bestätigt', neuheit: vermutlich_neu, recherche: 'Nixon (2017/2021) nennt die Vorzeichen der Poincaré-Koeffizienten als Lücke; die Kreisscheibe |w − L| ≤ L − 1 und der Zusammenhang mit TPID 7 und Reshetnikov 3 nicht gefunden (Recherche 08.10.2026).', nutzen: 'Bündelt drei offene Fragen zu einer.', nutzen_stufe: hoch}
+  quellen: [{ref: forum_nixon2017}, {ref: nixon2021a}, {ref: nixon2015}, {ref: diese_arbeit, stelle: 'Beweis'}]
+  kanten:
+    - {typ: stuetzt, ziel: gr.verm.tpid7}
+    - {typ: stuetzt, ziel: gr.verm.ein_wendepunkt}
+
+# ================================================================== Forum-Abgleich 10.10.2026
+- id: kl.satz.newton_reihe
+  titel: 'Die Newton-Reihe der ganzen Turmwerte ergibt unter η die reguläre Tetration'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [regulaer_T, schroeder]
+  bereich: '$1<b<\eta$, $T$ die reguläre Tetration am unteren Fixpunkt $a$, Multiplikator $\lambda=a\ln b\in(0,1)$; $h>-1$'
+  aussage: |
+    Aus den ganzen Werten allein, ohne Fixpunkt und ohne Schröder-Funktion:
+    $$T(h)=\sum_{n\ge0}\binom hn\Delta^nT(0),\qquad\Delta^nT(0)=\sum_{j=0}^n(-1)^{n-j}\binom njT(j),$$
+    und die Summe ist die reguläre Tetration. Die Konvergenz ist nur algebraisch: Für $b=\sqrt2$, $h=\tfrac12$ ist der Abstand nach $10/20/40/90$ Gliedern
+    $3.2\cdot10^{-4}$, $5.3\cdot10^{-5}$, $8.3\cdot10^{-6}$, $9.4\cdot10^{-7}$ (etwa $N^{-2.7}$). Über $\eta$ divergiert die Reihe (die Turmwerte wachsen zu schnell).
+  einfach: >-
+    Man nimmt nur die Turmwerte an den ganzen Stellen und interpoliert sie mit der Newton-Formel aus der Schule, wie man ein Polynom durch Punkte legt.
+    Unter η kommt dabei genau die reguläre Tetration heraus — langsam, aber sicher.
+  beweis:
+    art: vollstaendig
+    text: |
+      Die reguläre Tetration ist $T(h)=\Psi(s_0\lambda^h)=a+\sum_{k\ge1}\psi_ks_0^k\lambda^{kh}$ mit der ganzen Poincaré-Funktion $\Psi$ (kl.satz.regulaer), also
+      $\sum_k|\psi_ks_0^k|<\infty$. Für jedes $k$ ist $\lambda^{kh}=\sum_n\binom hn(\lambda^k-1)^n$ (Binomialreihe, $|\lambda^k-1|<1$), und
+      $\Delta^nT(0)=\sum_k\psi_ks_0^k(\lambda^k-1)^n$ für $n\ge1$. Die Doppelsumme konvergiert absolut, weil $\sum_n|\binom hn|<\infty$ für $h>-1$ ($|\binom hn|\sim n^{-1-h}$)
+      und $|\lambda^k-1|\le1$ — also darf man vertauschen.
+  experimente: [exp.forum_formeln]
+  stuetzt_sich_auf: [kl.satz.regulaer]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald man die Koenigs-Reihe in λ^{kh} hinschreibt.'
+    f2_benutzte_voraussetzungen: 'Ganze Poincaré-Funktion; 0 < λ < 1; h > −1.'
+    f3_spezialfall: 'Ja: Newton-Interpolation einer Exponentialsumme mit Basen in (0, 1). Das q-Analogon (Reshetnikov) konvergiert schneller: kl.beob.q_binomial.'
+    f4_uebertragbar: 'Jede Iteration mit anziehendem reellem Fixpunkt und Multiplikator in (0, 1); Woons Variante mit Parameter w.'
+    f5_neue_frage: 'Genaue Rate: von den hohen Moden mit λ^k → 0 bestimmt?'
+  bewertung: {richtigkeit: 'vollständig; √2 bei h = ½ nachgerechnet', neuheit: bekannt, nutzen: 'Zeigt, dass unter η schon die ganzen Werte die reguläre Lösung festlegen — ohne jede Zusatzwahl.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tid12}, {ref: forum_tid719}]
+  kanten:
+    - {typ: analog_zu, ziel: kl.beob.q_binomial}
+    - {typ: verwandt, ziel: kl.satz.regulaer}
+
+- id: kl.frage.tpid5
+  titel: 'TPID 5: Ist jede Tetration zur Basis √2 mit f(−f(x)) = −x überall unstetig?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [regulaer_T]
+  aussage: |
+    Vermutung (Trappmann 2009): Jede reelle Funktion $f$ auf $(-2,\infty)$ mit $f(0)=1$, $f(x+1)=\sqrt2^{\,f(x)}$ und der Spiegelbedingung $f(-f(x))=-x$ ist an keiner Stelle stetig.
+    Die Spiegelbedingung verlangt eine Symmetrie, die die beiden regulären Lösungen (an 2 und an 4, kl.satz.vier_sqrt2) nicht haben.
+  einfach: >-
+    Verlangt man von einer Tetration zur Basis √2 eine bestimmte Spiegel-Symmetrie, dann — so die Vermutung — kann sie nirgends stetig sein.
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, offen.'
+    f2_benutzte_voraussetzungen: 'Spiegelbedingung.'
+    f3_spezialfall: 'Ähnlich dem „Bummer“: zwei Fixpunkte, zwei unverträgliche Wünsche.'
+    f4_uebertragbar: 'Andere Basen unter η.'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: offen, neuheit: bekannt, nutzen: 'Vollständigkeit der Liste offener Probleme.', nutzen_stufe: gering}
+  quellen: [{ref: forum_tpid, stelle: 'TPID 5 (Trappmann 2009)'}]
+  kanten:
+    - {typ: verwandt, ziel: kl.satz.vier_sqrt2}
+
+- id: kl.satz.carlson
+  titel: 'Carlsons Satz: höchstens eine Tetration ist in der rechten Halbebene holomorph und beschränkt'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [regulaer_T, periodische_stoerung]
+  aussage: |
+    Sind $F,G$ zwei Tetrationen zur Basis $b$ ($F(0)=G(0)=1$), beide auf $\operatorname{Re}z\ge0$ holomorph und dort beschränkt (oder nur langsamer als $e^{\pi|z|}$ wachsend auf der
+    imaginären Achse und von Exponentialtyp in der Halbebene), dann ist $F=G$. Für $1<b\le\eta$ ist die reguläre Tetration so eine Lösung: Sie bleibt auf
+    $\operatorname{Re}z\ge0$ beschränkt (gemessen: $|T-L|\le L-1$ auf einer vollen Periode, kl.satz.folgen_vollmonoton). Über $\eta$ greift der Satz nicht — jede reelle Tetration wächst
+    auf der reellen Achse schneller als jede Exponentialfunktion; dort übernimmt die senkrechte Bedingung von Paulsen–Cowgill.
+  einfach: >-
+    Unter η gibt es eine kurze Antwort auf „Welche Tetration ist die richtige?“: diejenige, die in der rechten Halbebene beschränkt bleibt. Zwei solche
+    stimmen an allen ganzen Zahlen überein, und ein klassischer Satz (Carlson) sagt, dass sie dann überall gleich sind.
+  beweis:
+    art: vollstaendig
+    text: |
+      $H=F-G$ ist auf $\operatorname{Re}z\ge0$ holomorph, beschränkt und verschwindet an $0,1,2,\dots$ (beide haben die Turmwerte $b\uparrow\uparrow n$). Carlson: Eine solche Funktion
+      von Exponentialtyp, die auf der imaginären Achse langsamer als $e^{\pi|y|}$ wächst und an allen natürlichen Zahlen verschwindet, ist identisch null.
+  stuetzt_sich_auf: [fg.lem.ganzzahlwerte]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Carlsons Satz.'
+    f2_benutzte_voraussetzungen: 'Holomorphie und Wachstumsschranke in der rechten Halbebene; gleiche ganzzahlige Werte.'
+    f3_spezialfall: 'Ja: Carlson-Eindeutigkeit für Interpolation ganzzahliger Werte (wie Wielandt für Gamma).'
+    f4_uebertragbar: 'Jede Superfunktion mit anziehendem Fixpunkt; mike3 (2010) für die Basis η.'
+    f5_neue_frage: 'Ist die reguläre Tetration für alle 1 < b ≤ η beweisbar beschränkt in der Halbebene (ohne kl.verm.vollmonoton)?'
+  bewertung: {richtigkeit: 'vollständig (Eindeutigkeit); Beschränktheit der regulären Lösung numerisch', neuheit: bekannt, nutzen: 'Einfachste Eindeutigkeitsbedingung unter η, ohne Fixpunkt-Argumente.', nutzen_stufe: hoch}
+  quellen: [{ref: forum_tid496}]
+  kanten:
+    - {typ: analog_zu, ziel: kn.satz.paulsen_cowgill}
+    - {typ: verwandt, ziel: kl.satz.folgen_vollmonoton}
+    - {typ: verwandt, ziel: it.satz.vertauschbar}

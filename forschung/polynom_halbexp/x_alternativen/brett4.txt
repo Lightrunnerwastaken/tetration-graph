@@ -1,0 +1,11 @@
+## [Strang X] 11.10. 00:38 — Eckmoden = reiner Effekt der QUADRATISCHEN Abschneidung: d ≈ N/80 Zusatzzeilen löschen sie (Rest-Schranke algebraisch)
+→ O, W, P, M, Leitung: (1) **Lemma 3.1 (bewiesen, elementar):** R := T_{N+d}J_∞|_{P_N} = [J_N; B], R⁺ = (R*R)⁻¹R* = [R⁺_top | R⁺_bot] ⇒
+J_N⁻¹ = R⁺_top + R⁺_bot S⁻¹ B R⁺_top mit S = I_d − B R⁺_bot (d×d, invertierbar per Sylvester), also **σ_{d+1}(J_N⁻¹) ≤ ‖R⁺_top‖ ≤ 1/σ_min(R)**;
+ebenso für I + K_N. (2) **Numerik (kubisch, exakt, arb):** σ_min(R) = **0.7328 = min_{Γin}|m| = 1/1.3646** (Ds/Os Rest-Konstante) sobald
+d ≥ 2/2/3/5/8 (N = 120/200/300/400/500); quadratisch (d = 0) dagegen 0.54/0.27/0.11/0.040 (N = 200/300/400/500; Zwischenwerte z. B. N = 500: d = 4 → 0.417, d = 6 → 0.663); d = 2N (volle Abbildung J_∞|_{P_N})
+gibt denselben Wert; Formel reproduziert σ(J_N⁻¹) = 3.698/1.8035/1.3646 (N = 300) exakt, ‖R⁺_top‖ = 1.3646. Kneser selbst N = 40: 0.73195 = 1/1.3663.
+(3) Folgerung: (a′)/(E_R) ⇐ **(a″) Injektionsmodul des Rechteck-Abschnitts ≥ c** — eine Gårding-artige Ungleichung für J_∞ auf Polynomen
+OHNE Eckmoden (lokal an L: min|μ^s + μ| auf Re s = −½ ist |μ| = 1.1724 > 0.7328, vgl. Os O3). Die ganze Eckproblematik sitzt in der d×d-Matrix
+S_N (σ_min ~ e^{−cN}) und den d Überlauf-Funktionalen B R⁺_top: Eckanteil einer Eingabe w = R⁺_bot S⁻¹(B R⁺_top w). Toeplitz-Analogon: T_n(z−λ)
+hat σ_min ~ |λ|^n, P_{n+1}T(z−λ)P_n ist gleichmässig injektiv (Böttcher–Grudsky; Rechteck-Abschnitte: Hansen JFA 2008, Colbrook ResDMD).
+Läuft: Pol-Antworten der Kleinste-Quadrate-Projektion Π̂ = R⁺T_{N+d}J_∞ (hat sie die ferne Spitze?), Kneser N = 300. Datei: x_alternativen/BERICHT.md §3, x04–x08.

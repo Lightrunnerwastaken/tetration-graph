@@ -1,0 +1,96 @@
+{
+ "id": "exp.tetra_euler",
+ "skript_hash": "9dc1bd6da20534d0",
+ "gelaufen": "2026-10-08 22:32",
+ "laufzeit_s": 6.3,
+ "python": "3.13.9",
+ "zusammenfassung": "η₄ = 1.635324496715276399345345, e₄ = 3.088532271806717654482181 (Levenstein 2010 bestätigt); Fixpunktzahl 3 → 1 bei η₄; 1.6↑↑↑∞ = 2.26438440348, 1.7↑↑↑n divergiert; Selbst-Tetrawurzel maximal bei e₄.",
+ "pruefungen": [
+  {
+   "name": "η₄ wie Levenstein (2010, 32 Stellen) auf 1e-28",
+   "ok": true,
+   "wert": "1.6353244967152763993453446183062 (Abstand -2.9e-32)"
+  },
+  {
+   "name": "e₄ wie Levenstein auf 1e-26",
+   "ok": true,
+   "wert": "3.0885322718067176544821807826411 (Abstand 3.3e-32)"
+  },
+  {
+   "name": "Berührung: T(e₄) = e₄, T'(e₄) = 1, T''(e₄) > 0",
+   "ok": true,
+   "wert": "T''(e₄)/2 = 0.293483325947"
+  },
+  {
+   "name": "negativer Fixpunkt bei η₄: L = −1.64087257571659… mit Multiplikator 4.80600575430175… (Levenstein)",
+   "ok": true,
+   "wert": "-1.640872575716593348561232, λ = 4.8060057543017516964"
+  },
+  {
+   "name": "drei reelle Fixpunkte für η < b < η₄ (1.5, 1.6), einer für b > η₄ (1.7, 2, e)",
+   "ok": true,
+   "wert": {
+    "1.5": "3 bei ['-1.61', '1.88', '10.9']",
+    "1.6": "3 bei ['-1.61', '2.38', '4.63']",
+    "1.7": "1 bei ['-1.61']",
+    "2": "1 bei ['-1.86']",
+    "exp(1)": "1 bei ['-1.86']"
+   }
+  },
+  {
+   "name": "nahe η₄: Minimum von T_b(x) − x negativ für η₄ − 10⁻⁴ (zwei Schnitte bei e₄), positiv für η₄ + 10⁻⁴ (keiner)",
+   "ok": true,
+   "wert": "-0.0009881 / 0.0009869"
+  },
+  {
+   "name": "Selbst-Tetrawurzel b(y) (T_b(y) = y) ist kleiner als η₄ für y ≠ e₄ — Maximum η₄ bei e₄",
+   "ok": true,
+   "wert": {
+    "2.6": "1.62558264069",
+    "2.9": "1.63413602663",
+    "3.3": "1.63415269173",
+    "3.6": "1.6295305025"
+   }
+  },
+  {
+   "name": "b = 1.6 < η₄: 1.6↑↑↑n wächst monoton gegen den unteren positiven Fixpunkt (anziehend, T' < 1)",
+   "ok": true,
+   "wert": "Grenzwert 2.264384403481159572, T' = 0.55306287, nach 40 Schritten"
+  },
+  {
+   "name": "b = 1.7 > η₄: 1.7↑↑↑n wächst an e₄ vorbei über 5 (danach T_b(x) > x ohne Schnitt → unbeschränkt)",
+   "ok": true,
+   "wert": "6 Schritte: ['2.6645', '3.1849', '4.0552', '7.5032']"
+  },
+  {
+   "name": "unter η (Basis √2, regulär): positiver Fixpunkt von T anziehend, √2↑↑↑∞ konvergiert dorthin",
+   "ok": true,
+   "wert": "1.5492173298429939098, T' = 0.2086280773"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "eta4": "1.6353244967152763993453446183061713",
+  "e4": "3.0885322718067176544821807826411334",
+  "T2_halbe": "0.29348332594662679156",
+  "L_neg": "-1.64087257571659334856123214887",
+  "lam_neg": "4.806005754301751696384394",
+  "fixpunkte": {
+   "1.5": 3,
+   "1.6": 3,
+   "1.7": 1,
+   "2": 1,
+   "exp(1)": 1
+  },
+  "selbstwurzel": {
+   "2.6": "1.6255826406942501386",
+   "2.9": "1.6341360266253319134",
+   "3.3": "1.634152691729498007",
+   "3.6": "1.6295305025019576818"
+  },
+  "pent_1.6": "2.264384403481159572023483",
+  "Tstrich_1.6": "0.553062869014524",
+  "sqrt2_fix": "1.549217329842993909777082",
+  "sqrt2_Tstrich": "0.20862807726872"
+ }
+}

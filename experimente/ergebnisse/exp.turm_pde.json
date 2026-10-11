@@ -1,0 +1,63 @@
+{
+ "id": "exp.turm_pde",
+ "skript_hash": "f00693c446c5adf3",
+ "gelaufen": "2026-10-10 13:42",
+ "laufzeit_s": 2.0,
+ "python": "3.13.9",
+ "zusammenfassung": "Kobis Gleichung gilt für ganze Höhen exakt; für Kneser ist p = ∂_b slog − S·slog′ periodisch mit Mittel -3.15733299588 (b = 2) und Spanne 0.00057 — Kneser erfüllt sie bei gebrochener Höhe also nur fast.",
+ "pruefungen": [
+  {
+   "name": "∂_a f_n = S(x)·∂_x f_n − S(f_n) für n = 1, 2, 3 (4 Basen, 3 Stellen, relativ)",
+   "ok": true,
+   "wert": "6.07e-39"
+  },
+  {
+   "name": "S(a^x) = a^x ln a · S(x) − x·a^(x−1)",
+   "ok": true,
+   "wert": "9.18e-41"
+  },
+  {
+   "name": "p ist 1-periodisch in slog: p(slog = −1) = p(slog = 0) (b = 2, e)",
+   "ok": true,
+   "wert": {
+    "2": "2.18e-32",
+    "exp(1)": "5.09e-33"
+   }
+  },
+  {
+   "name": "Kneser: p fast konstant, aber nicht konstant — Spanne klein gegen das Mittel, doch weit über der Rechengenauigkeit",
+   "ok": true,
+   "wert": {
+    "2": {
+     "mittel": "-3.15733299588",
+     "harm1": "0.0001427",
+     "spanne": "0.00057",
+     "periodisch": "2.18e-32"
+    },
+    "exp(1)": {
+     "mittel": "-0.806194244997",
+     "harm1": "7.15e-5",
+     "spanne": "0.0002858",
+     "periodisch": "5.09e-33"
+    }
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "p_kneser": {
+   "2": {
+    "mittel": "-3.15733299588",
+    "harm1": "0.0001427",
+    "spanne": "0.00057",
+    "periodisch": "2.18e-32"
+   },
+   "exp(1)": {
+    "mittel": "-0.806194244997",
+    "harm1": "7.15e-5",
+    "spanne": "0.0002858",
+    "periodisch": "5.09e-33"
+   }
+  }
+ }
+}

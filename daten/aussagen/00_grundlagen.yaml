@@ -1,0 +1,1561 @@
+gebiet: gr
+# Grundlagen: elementare Identitäten für jede Tetration, mit einfacher Erklärung („einfach“) und gleichwertigen Formen („formen“).
+# Konvention: a > 0, a ≠ 1 ist die Basis, T eine Tetration (T(x+1) = a^{T(x)}, T(0) = 1), A = slog_a = T^{-1}.
+aussagen:
+
+# ================================================================== Werte und Grössen
+- id: gr.def.turm
+  titel: Der Turm a↑↑n
+  art: definition
+  ebene: A
+  status: definition
+  niveau: einstieg
+  objekte: [hyperoperation, T_b]
+  aussage: >-
+    Für ganze $n\ge1$: $a\uparrow\uparrow 1=a$ und $a\uparrow\uparrow(n+1)=a^{\,a\uparrow\uparrow n}$, also ein Turm aus $n$ Kopien von $a$,
+    **von oben** ausgerechnet; dazu $a\uparrow\uparrow 0=1$. Beispiele: $2\uparrow\uparrow3=2^{4}=16$, $2\uparrow\uparrow4=2^{16}=65536$,
+    $3\uparrow\uparrow3=3^{27}=7\,625\,597\,484\,987$, $e\uparrow\uparrow2=e^e\approx15.154$. Achtung: $(a^a)^a=a^{a^2}$ ist etwas anderes als $a^{(a^a)}$.
+  einfach: >-
+    Man stapelt dieselbe Zahl als Hochzahl übereinander und rechnet von oben nach unten. Eine Tetration T ist eine Kurve, die diese
+    Werte an den ganzen Stellen trifft: T(n) = a↑↑n.
+  formen:
+    - {tex: 'a\uparrow\uparrow n = \underbrace{a^{a^{\cdot^{\cdot^{a}}}}}_{n}', notiz: Knuth-Pfeil}
+    - {tex: '{}^{n}a = a\uparrow\uparrow n', notiz: Schreibweise mit Vorhochzahl}
+    - {tex: 'T_a(n)=a\uparrow\uparrow n,\quad T_a(0)=1,\quad T_a(-1)=0', notiz: als Werte einer Tetration}
+  quellen: [{ref: goodstein1947}, {ref: knuth1976}]
+  kanten:
+    - {typ: verwandt, ziel: br.def.hyperoperation}
+    - {typ: verwandt, ziel: fg.lem.ganzzahlwerte}
+
+- id: gr.satz.stellen
+  titel: Wie viele Stellen hat a↑↑(n+1)?
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [hyperoperation]
+  bereich: 'ganze Zahlen $a\ge2$, $n\ge1$'
+  aussage: >-
+    $a\uparrow\uparrow(n+1)$ hat genau $\lfloor a\uparrow\uparrow n\cdot\log_{10}a\rfloor+1$ Dezimalstellen.
+    Beispiele: $2\uparrow\uparrow5=2^{65536}$ hat $19\,729$ Stellen, $3\uparrow\uparrow4=3^{7\,625\,597\,484\,987}$ hat $3\,638\,334\,640\,025$ Stellen.
+  einfach: >-
+    Die Stellenzahl einer Zahl ist ihr Zehnerlogarithmus, abgerundet, plus eins — und der Logarithmus einer Potenz holt die Hochzahl herunter.
+    Deshalb kennt man die Länge von a↑↑(n+1), obwohl man die Zahl nie hinschreiben könnte.
+  formen:
+    - {tex: '\#\text{Stellen}(m)=\lfloor\log_{10}m\rfloor+1', notiz: allgemein}
+    - {tex: '\log_{10}\bigl(a\uparrow\uparrow(n+1)\bigr)=a\uparrow\uparrow n\cdot\log_{10}a', notiz: der Kern}
+  beweis:
+    art: vollstaendig
+    text: >-
+      $m$ hat $N$ Stellen genau dann, wenn $10^{N-1}\le m<10^N$, also $N=\lfloor\log_{10}m\rfloor+1$; mit $m=a^{t}$, $t=a\uparrow\uparrow n$, ist $\log_{10}m=t\log_{10}a$.
+  experimente: [exp.slog]
+  pruefung:
+    f1_folgt_unmittelbar: Ja, aus der Definition des Logarithmus.
+    f2_benutzte_voraussetzungen: 'Nur $a\ge2$ ganz (für $a=10^k$ ist $t\log_{10}a$ ganz, die Formel stimmt trotzdem).'
+    f3_spezialfall: Ja, Stellenzahl beliebiger Potenzen.
+    f4_uebertragbar: 'Jede Basis $b\ge2$ statt 10 (Stellen im $b$-System).'
+    f5_neue_frage: 'Welche Stellen sind am Ende stabil? → br.satz.turm_mod_m'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Macht die Grösse von Türmen greifbar.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: br.satz.turm_mod_m}
+
+- id: gr.satz.selbstpotenz
+  titel: x^x ist bei 1/e am kleinsten — dort steckt schon η
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: einstieg
+  objekte: [eta]
+  bereich: '$x>0$'
+  aussage: >-
+    $f(x)=x^x$ hat die Ableitung $f'(x)=x^x(1+\ln x)$, ist auf $(0,1/e]$ fallend, auf $[1/e,\infty)$ wachsend, und
+    $\min f=f(1/e)=e^{-1/e}=1/\eta\approx0.6922$. Für $x\to0^+$ gilt $x^x\to1$.
+  einfach: >-
+    Die Kurve x hoch x sinkt zuerst ein wenig und steigt dann steil. Ihr tiefster Punkt liegt bei 1/e, und der Wert dort ist genau
+    1 durch η — dieselbe Zahl η = e^{1/e}, die später entscheidet, ob ein unendlicher Turm konvergiert.
+  formen:
+    - {tex: 'x^x=e^{x\ln x}', notiz: Schlüssel zum Ableiten}
+    - {tex: '\min_{x>0}x^x=e^{-1/e}=\tfrac1\eta', notiz: Minimum}
+  beweis: {art: vollstaendig, text: '$x^x=e^{x\ln x}$, Kettenregel; $1+\ln x=0$ genau bei $x=1/e$; $x\ln x\to0$ für $x\to0^+$.'}
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Schulanalysis).
+    f2_benutzte_voraussetzungen: Keine.
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Der Turm $x^{x^x}$ hat ebenfalls Minimum/Wendepunkte — gleiche Methode.'
+    f5_neue_frage: 'Warum taucht $\eta$ hier und beim unendlichen Turm auf? Beide Male geht es um $\ln x/x$ bzw. $x\ln x$ bei $e$.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Einstieg, zeigt η an unerwarteter Stelle.', nutzen_stufe: gering}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: fp.def.eta}
+
+- id: gr.satz.gestalt
+  titel: Bild einer wachsenden Tetration
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b, eta, turm]
+  bereich: '$a>1$, $T$ stetig, streng wachsend auf $(-2,\infty)$, $T(0)=1$'
+  voraussetzungen:
+    - {text: 'T stetig und streng wachsend', benutzt: ja}
+    - {text: 'a > 1', benutzt: ja}
+  aussage: >-
+    $T(x)\to-\infty$ für $x\to-2^+$. Für $a>\eta$ gilt $T(x)\to\infty$, das Bild ist ganz $\mathbb R$. Für $1<a\le\eta$ gilt
+    $T(x)\uparrow a_*$ (unterer Fixpunkt von $a^x$, höchstens $e$), das Bild ist $(-\infty,a_*)$.
+  einfach: >-
+    Links bei −2 stürzt jede Tetration nach minus unendlich. Rechts wächst sie über alle Grenzen, wenn die Basis grösser als η ≈ 1.4447 ist —
+    sonst nähert sie sich einer festen Höhe, nie höher als e.
+  beweis:
+    art: vollstaendig
+    text: >-
+      Links: $T(x)=\log_a T(x+1)$ und $T(x+1)\to T(-1)=0^+$. Rechts: Monotonie und $T(n)=a\uparrow\uparrow n$, dessen Grenzwert der reelle Turmsatz liefert.
+  stuetzt_sich_auf: [fp.satz.turm_reell]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Gleichung und dem Turmsatz.'
+    f2_benutzte_voraussetzungen: 'Monotonie (für die Grenzwerte zwischen ganzen Stellen); Stetigkeit nur für das Bild als Intervall.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Alle wachsenden Konstruktionen (Kneser, regulär, linear).'
+    f5_neue_frage: 'Wie sieht die Kurve dazwischen aus — konkav, konvex? → gr.verm.ein_wendepunkt'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Grundbild jeder Tetration.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.singulaer_minus2}
+
+# ================================================================== Ableitungen
+- id: gr.satz.kettenregel
+  titel: Kettenregel der Tetration
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b]
+  bereich: 'jede Lösung, die bei $x$ differenzierbar ist'
+  voraussetzungen:
+    - {text: 'T differenzierbar bei x', benutzt: ja}
+  aussage: >-
+    $$T'(x+1)=\ln a\cdot T(x+1)\cdot T'(x).$$
+  einfach: >-
+    Geht man eine Stufe höher, wird die Steigung mit ln a und mit dem Funktionswert dort multipliziert.
+    Weil die Funktionswerte rasant wachsen, wächst die Steigung noch rasanter.
+  formen:
+    - {tex: '\frac{T''(x+1)}{T''(x)}=\ln a\cdot T(x+1)', notiz: 'Quotientenform (wo $T''(x)\ne0$)'}
+    - {tex: '(\ln T)''(x+1)=\ln a\cdot T''(x)', notiz: 'logarithmische Ableitung, für $x>-2$'}
+    - {tex: 'T''(x+1)=\ln a\cdot a^{T(x)}\cdot T''(x)', notiz: ohne T(x+1)}
+    - {tex: '\ln T''(x+1)-\ln T''(x)=\ln\ln a+\ln a\cdot T(x)', notiz: 'Differenzform; bei $a=e$ ist $T=\Delta\ln T''$ — aufsummiert die Kontinuumssummen-Formel (kn.konstr.kontinuumssumme)'}
+  beweis: {art: vollstaendig, text: 'Ableiten von $T(x+1)=a^{T(x)}=e^{T(x)\ln a}$ nach $x$.'}
+  experimente: [exp.ableitung]
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Kettenregel).
+    f2_benutzte_voraussetzungen: Nur Differenzierbarkeit bei x.
+    f3_spezialfall: 'Ja: Julia-Gleichung für Superfunktionen, $F''(z+1)=f''(F(z))F''(z)$ mit $f=\exp_a$ (it.lem.julia).'
+    f4_uebertragbar: 'Jede Superfunktion: $F''(x+1)=f''(F(x))\,F''(x)$.'
+    f5_neue_frage: 'Was folgt beim Iterieren? → gr.kor.produktformel'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Grundformel aller Ableitungsaussagen.', nutzen_stufe: hoch}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: spezialfall_von, ziel: it.lem.julia}
+
+- id: gr.kor.produktformel
+  titel: Produktformel für die Ableitung über ganze Schritte
+  art: korollar
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b]
+  bereich: '$n\in\mathbb N$, $T$ differenzierbar bei $x$'
+  aussage: >-
+    $$\frac{T'(x+n)}{T'(x)}=(\ln a)^{n}\prod_{k=1}^{n}T(x+k),$$
+    und rückwärts $T'(x-n)=\dfrac{T'(x)}{(\ln a)^n\prod_{k=0}^{n-1}T(x-k)}$ für $x-n>-2$.
+  einfach: >-
+    Um die Steigung n Stufen höher zu bekommen, multipliziert man n-mal mit ln a und mit allen Funktionswerten auf dem Weg.
+    Das gilt nur für ganze Schritte n — für halbe Schritte gibt es kein „halbes Produkt“, das etwas Neues sagt.
+  formen:
+    - {tex: 'T''(x+h)=(\ln a)^h\,T''(x)\prod_{k=1}^{h}T(x+k),\ h\in\mathbb N', notiz: Form mit h}
+    - {tex: '\ln T''(x+n)=\ln T''(x)+n\ln\ln a+\sum_{k=1}^{n}\ln T(x+k)', notiz: 'logarithmisch (für $a>1$, $T''>0$)'}
+    - {tex: 'T''(x+n)=T''(x)\prod_{k=1}^{n}\ln a\;a^{T(x+k-1)}', notiz: nur mit Werten unten}
+  beweis: {art: vollstaendig, text: 'Induktion über $n$ mit gr.satz.kettenregel; rückwärts dieselbe Gleichung nach $T''(x)$ aufgelöst ($T(x+1)>0$ für $x>-2$).'}
+  stuetzt_sich_auf: [gr.satz.kettenregel]
+  experimente: [exp.ableitung]
+  pruefung:
+    f1_folgt_unmittelbar: Ja, Induktion.
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit bei x; für die Rückwärtsform $T>0$ auf $(-1,\infty)$.'
+    f3_spezialfall: 'Ja: Kettenregel für $F''(x+n)=(f^{\circ n})''(F(x))F''(x)$.'
+    f4_uebertragbar: 'Jede Superfunktion: Produkt der $f''$ entlang der Bahn.'
+    f5_neue_frage: 'Für reelles h: $Q(x,h)=T''(x+h)/T''(x)$ erfüllt $Q(x,h+1)=\ln a\,T(x+h+1)\,Q(x,h)$ — die „Interpolation des Produkts“ ist wieder eine Tetrationsfrage, kein neuer Weg.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Rechnet alle Steigungen auf ganzen Schritten aus.', nutzen_stufe: hoch}
+  quellen: [{ref: diese_arbeit}]
+
+- id: gr.kor.ganze_stellen
+  titel: Alle Steigungen an ganzen Stellen folgen aus T′(0)
+  art: korollar
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b, hyperoperation]
+  aussage: >-
+    $T'(n)=(\ln a)^n\Bigl(\prod_{k=1}^{n}a\uparrow\uparrow k\Bigr)T'(0)$ und $T'(-1)=\dfrac{T'(0)}{\ln a}$.
+    Die eine Zahl $T'(0)$ hängt von der Konstruktion ab: Kneser zur Basis $e$: $T_e'(0)=1.0917673512583\ldots$; lineare Tetration: Sprung von $1$ auf $\ln a$.
+  einfach: >-
+    An den ganzen Stellen ist jede Steigung festgelegt, sobald man die Steigung bei 0 kennt. Diese eine Zahl unterscheidet verschiedene Tetrationen.
+  formen:
+    - {tex: 'T''(1)=a\ln a\;T''(0),\quad T''(2)=a^{a}\,a\,(\ln a)^2\,T''(0)', notiz: erste Stufen}
+  beweis: {art: vollstaendig, text: 'gr.kor.produktformel bei $x=0$ mit $T(k)=a\uparrow\uparrow k$; bei $x=-1$ mit $T(0)=1$.'}
+  stuetzt_sich_auf: [gr.kor.produktformel]
+  experimente: [exp.ableitung]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: Differenzierbarkeit bei 0.
+    f3_spezialfall: Ja.
+    f4_uebertragbar: Alle Konstruktionen.
+    f5_neue_frage: 'Ist $T_e''(0)$ eine bekannte Konstante? (Wie $T_e(1/2)$: vermutlich nicht.)'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Zeigt, welche Information eine Konstruktion wirklich wählt.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: fg.lem.ganzzahlwerte}
+
+- id: gr.satz.vorzeichen
+  titel: Das Vorzeichen der Steigung ist überall gleich (oder wechselt bei a < 1)
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b]
+  bereich: 'reelle, differenzierbare Lösung auf $(-2,\infty)$, $a>0$, $a\ne1$'
+  voraussetzungen:
+    - {text: 'T differenzierbar auf (−2, ∞)', benutzt: ja}
+  aussage: >-
+    Für $a>1$ haben $T'(x)$ und $T'(x+1)$ für jedes $x>-2$ dasselbe Vorzeichen: wächst $T$ auf einer Periode, wächst $T$ überall.
+    Für $0<a<1$ wechselt das Vorzeichen bei jedem Schritt — eine reelle differenzierbare Tetration mit $0<a<1$ kann nicht monoton sein.
+  einfach: >-
+    Steigt die Kurve auf einem Abschnitt der Länge 1, dann steigt sie überall. Bei Basen kleiner als 1 kippt die Richtung bei jedem Schritt —
+    passend dazu springen Türme wie 0.5^0.5^0.5… hin und her.
+  beweis: {art: vollstaendig, text: 'gr.satz.kettenregel: $T''(x+1)=\ln a\cdot T(x+1)\cdot T''(x)$ mit $T(x+1)>0$ für $x>-2$; Vorzeichen von $\ln a$.'}
+  stuetzt_sich_auf: [gr.satz.kettenregel]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Nur $T>0$ auf $(-1,\infty)$ (gilt für jede reelle Lösung, da $T(y)=a^{T(y-1)}$).'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Superfunktionen wachsender bzw. fallender Abbildungen.'
+    f5_neue_frage: 'Wie sieht eine reelle „Tetration“ für $0<a<1$ aus? (Nicht monoton, vermutlich nicht reell-analytisch mit $T(0)=1$ — offen gelassen.)'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Monotonie lässt sich auf einer Periode prüfen; erklärt das Hin und Her für a < 1.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+
+- id: gr.satz.zweite_ableitung
+  titel: Zweite Ableitung eine Stufe höher
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b, konvexitaet]
+  bereich: '$T$ zweimal differenzierbar bei $x$'
+  aussage: >-
+    $$T''(x+1)=\ln a\cdot T(x+1)\,\bigl[\ln a\cdot T'(x)^2+T''(x)\bigr],\qquad (\ln T)''(x+1)=\ln a\cdot T''(x).$$
+  einfach: >-
+    Die Krümmung eine Stufe höher setzt sich aus der Krümmung unten und dem Quadrat der Steigung unten zusammen.
+    Noch einfacher: Der Logarithmus von T ist eine Stufe höher genau so gekrümmt wie T selbst.
+  formen:
+    - {tex: '(\ln T)''''(x+1)=\ln a\cdot T''''(x)', notiz: 'T konvex auf $[x_0,x_0+1]$ ⇔ $\ln T$ konvex auf $[x_0+1,x_0+2]$'}
+  beweis: {art: vollstaendig, text: 'gr.satz.kettenregel ableiten; für $\ln T$: $\ln T(x+1)=\ln a\cdot T(x)$ zweimal ableiten.'}
+  stuetzt_sich_auf: [gr.satz.kettenregel]
+  experimente: [exp.ableitung]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: Zweimalige Differenzierbarkeit bei x.
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Superfunktionen: $F''''(x+1)=f''''(F)F''^2+f''(F)F''''$.'
+    f5_neue_frage: 'Vererbung der Konvexität → gr.kor.konvex_nach_oben'
+  bewertung: {richtigkeit: 'vollständig (erste eigene Fassung war falsch, siehe Fassungen)', neuheit: folklore, nutzen: 'Schlüssel für die Gestalt der Kurve.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  versionen:
+    - {datum: '2026-10-08', fassung: v1, aenderung: 'Mit Faktor $T(x+1)^2$ vor $T''(x)^2$ — falsch.'}
+    - {datum: '2026-10-08', fassung: v2, aenderung: 'Richtig: $\ln a\,T(x+1)\,[\ln a\,T''(x)^2+T''''(x)]$.', grund: 'exp.ableitung: Gegenprobe wich um 53.9 ab, richtige Formel auf 2e-32.'}
+
+- id: gr.kor.konvex_nach_oben
+  titel: Konvexität vererbt sich nach oben
+  art: korollar
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b, konvexitaet]
+  bereich: '$a>1$, $T$ zweimal differenzierbar'
+  voraussetzungen:
+    - {text: "T'' ≥ 0 auf einer ganzen Periode [x0, x0+1]", benutzt: ja}
+    - {text: "T' ≠ 0 auf dieser Periode", benutzt: ja}
+  aussage: >-
+    Ist $T''\ge0$ auf $[x_0,x_0+1]$ und $T'\ne0$ dort, so ist $T''>0$ auf $[x_0+1,\infty)$. Alle Wendepunkte liegen also links von
+    der ersten ganz konvexen Periode.
+  einfach: >-
+    Sobald die Kurve einen ganzen Abschnitt der Länge 1 lang nach oben gebogen ist, bleibt sie für immer nach oben gebogen.
+  beweis: {art: vollstaendig, text: 'Aus gr.satz.zweite_ableitung: $T''''(x+1)\ge(\ln a)^2T(x+1)T''(x)^2>0$; Induktion über die Perioden.'}
+  stuetzt_sich_auf: [gr.satz.zweite_ableitung]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: '$a>1$ (für $0<a<1$ gilt die Ungleichung ebenso, da $(\ln a)^2>0$ — aber dann wechselt das Vorzeichen von $T''$, siehe gr.satz.vorzeichen).'
+    f3_spezialfall: nein
+    f4_uebertragbar: Alle Konstruktionen.
+    f5_neue_frage: 'Gibt es genau einen Wendepunkt? → gr.verm.ein_wendepunkt'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Halbiert das Wendepunktproblem.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+
+- id: gr.satz.abklingen
+  titel: Unter η klingt die Steigung mit dem Multiplikator ab
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b, multiplikator, fixpunkt_L]
+  bereich: '$1<a<\eta$, $T$ wachsend, differenzierbar, $T(0)=1$; $a_*$ unterer Fixpunkt, $\lambda=a_*\ln a\in(0,1)$'
+  aussage: >-
+    $\displaystyle\lim_{n\to\infty}\bigl(T'(x+n)\bigr)^{1/n}=\lambda$: die Steigung fällt pro Stufe ungefähr um den Faktor $\lambda$.
+    Für $a>\eta$ dagegen $\bigl(T'(x+n)\bigr)^{1/n}\to\infty$.
+  einfach: >-
+    Unter η nähert sich die Kurve einer festen Höhe, und ihre Steigung schrumpft pro Schritt um immer denselben Faktor λ —
+    genau die Zahl, die angibt, wie stark der Fixpunkt anzieht.
+  beweis: {art: vollstaendig, text: 'gr.kor.produktformel: $(T''(x+n)/T''(x))^{1/n}=\ln a\,\bigl(\prod_{k\le n}T(x+k)\bigr)^{1/n}\to\ln a\cdot a_*$ (Cesàro, da $T(x+k)\to a_*$); für $a>\eta$ gilt $T(x+k)\to\infty$.'}
+  stuetzt_sich_auf: [gr.kor.produktformel, gr.satz.gestalt, fp.satz.reelle_fixpunkte]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Nur Konvergenz $T(x+k)\to a_*$ — gilt für jede wachsende Lösung, nicht nur die reguläre.'
+    f3_spezialfall: 'Koenigs-Verhalten $T(x)-a_*\sim C\lambda^x$ der regulären Lösung ist schärfer (kl.satz.regulaer).'
+    f4_uebertragbar: 'Jede Superfunktion mit anziehendem Fixpunkt.'
+    f5_neue_frage: 'Bei $a=\eta$ ist $\lambda=1$: wie fällt $T''$ dann? (Parabolisch: wie $1/x^2$.)'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Verbindet Ableitung und Fixpunkt-Multiplikator.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: kl.satz.regulaer}
+
+# ================================================================== Gestalt der Kurve
+- id: gr.beob.kneser_ableitung
+  titel: Ableitungen der Kneser-Tetration bei 0
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: einstieg
+  objekte: [kneser_T]
+  aussage: >-
+    $T_e'(0)=1.0917673512583209918\ldots$, $T_e''(0)=0.5429664258033891906\ldots$. Taylor-Reihe bei 0 (Konvergenzradius 2):
+    $T_e(x)=1+1.0917673512583\,x+0.2714832129017\,x^2+0.2124532481763\,x^3+0.0695403761400\,x^4+0.0442919520905\,x^5+\dots$
+    Und $\operatorname{slog}_e'(0)=1/T_e'(0)=0.91594605649953339395\ldots$ — dieselbe Zahl wie der Orbitwert $-V_1=e/T_e'(1)$ in Paper V.
+  einfach: >-
+    So steil ist die übliche (Kneser-)Tetration zur Basis e an der Stelle 0, und so beginnt ihre Potenzreihe.
+  experimente: [exp.ableitung, exp.slog]
+  quellen: [{ref: gp_tetration, stelle: 'fatou.gp-Fork, 40 Stellen, Cauchy-Integrale'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein (Rechnung).
+    f2_benutzte_voraussetzungen: 'Motorwerte auf Kreisen um 0; Fehler $(r/R)^{64}$ mit $R=2$.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Jede Basis über den Motor.'
+    f5_neue_frage: 'Sind die Taylor-Koeffizienten alle positiv? (Die ersten neun sind es.)'
+  bewertung: {richtigkeit: 'numerisch, 20+ Stellen', neuheit: bekannt, nutzen: 'Referenzzahlen für Lernende.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: bw.satz.kern_existenz, notiz: 'V₁ = −e/T′(1) = −slog′(0)'}
+
+- id: gr.beob.wendepunkte
+  titel: Wo die Kurven ihre Krümmung wechseln
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: einstieg
+  objekte: [kneser_T, regulaer_T, konvexitaet]
+  aussage: >-
+    Kneser hat je **genau einen** Wendepunkt: $b=1.5$: $x_w=3.987$; $b=2$: $-0.0302$; $b=e$: $-0.5218$; $b=3$: $-0.6039$; $b=5$: $-0.8469$;
+    $b=10$: $-0.9967$; $b=100$: $-1.1819$. Die regulären Tetrationen für $b=1.2,\,1.3,\,\sqrt2,\,1.44$ haben **keinen** — sie sind überall konkav.
+  einfach: >-
+    Links bei −2 ist jede Tetrationskurve nach unten gebogen. Die Kneser-Kurven kippen genau einmal in eine Biegung nach oben,
+    umso später, je näher die Basis an η liegt. Die Kurven unter η kippen nie.
+  experimente: [exp.ableitung]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Suche auf $(-1.94,x_{\max})$ bis $T\approx10^5$, Schritt 0.06 (0.2 bei b = 1.5), Bisektion.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Andere Konstruktionen (Walker, linear) — dort Knicke statt Wendepunkte.'
+    f5_neue_frage: 'Wächst $x_w(b)$ für $b\downarrow\eta$ wie die Durchgangszeit $\sim(b-\eta)^{-1/2}$?'
+  bewertung: {richtigkeit: 'numerisch, Lage auf ~1e-9', neuheit: vermutlich_neu, recherche: 'Keine Tabelle von Wendepunkten in den geprüften Quellen.', nutzen: 'Anschaulich und Ausgang einer Vermutung.', nutzen_stufe: mittel}
+  quellen: [{ref: gp_tetration}]
+  kanten:
+    - {typ: stuetzt, ziel: gr.verm.ein_wendepunkt}
+
+- id: gr.verm.ein_wendepunkt
+  titel: Genau ein Wendepunkt über η, keiner darunter
+  art: vermutung
+  ebene: B
+  status: vermutung
+  niveau: einstieg
+  objekte: [kneser_T, regulaer_T, konvexitaet]
+  aussage: >-
+    Für jedes $b>\eta$ hat $T_b^{\mathrm K}$ genau einen Wendepunkt $x_w(b)$; $x_w$ fällt in $b$ und $x_w\to+\infty$ für $b\downarrow\eta$.
+    Für $1<b\le\eta$ ist die reguläre Tetration auf $(-2,\infty)$ streng konkav.
+  einfach: >-
+    Jede Kneser-Kurve wechselt ihre Krümmung genau einmal; jede reguläre Kurve unter η nie.
+  gegenbeispielsuche: >-
+    exp.ableitung: 7 Kneser-Basen von 1.5 bis 100 und 4 reguläre Basen, Vorzeichenwechsel von $T''$ über Cauchy-Ableitungen — kein Gegenbeispiel.
+    Halber Beweis: nach der ersten ganz konvexen Periode gibt es keinen Wendepunkt mehr (gr.kor.konvex_nach_oben); mindestens einer existiert für $b>\eta$,
+    weil $T$ bei −2 konkav ist und $T'$ unbeschränkt wächst. Offen: kein zweiter Wechsel links davon.
+  stuetzt_sich_auf: [gr.kor.konvex_nach_oben, gr.beob.wendepunkte]
+  experimente: [exp.ableitung]
+  pruefung:
+    f1_folgt_unmittelbar: 'Teilweise (Existenz, „nichts rechts“).'
+    f2_benutzte_voraussetzungen: —
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Gilt nicht für alle Lösungen: $T\circ(\mathrm{id}+\theta)$ mit stark welligem θ hat viele Wendepunkte — es ist eine Eigenschaft der Konstruktion.'
+    f5_neue_frage: 'Folgt die Eindeutigkeit aus Knesers Holomorphie (Zahl der Nullstellen von $T''''$ in einem Streifen)?'
+  bewertung: {richtigkeit: 'Vermutung, numerisch gestützt, halb bewiesen', neuheit: vermutlich_neu, recherche: 'Nicht in den geprüften Quellen gefunden.', nutzen: 'Einfache, sichtbare Kennzeichnung von Kneser gegenüber anderen Lösungen — ein reelles Kriterium?', nutzen_stufe: hoch}
+  kanten:
+    - {typ: motiviert, ziel: br.frage.bohr_mollerup}
+
+# ================================================================== Integrale
+- id: gr.satz.young
+  titel: Fläche unter T plus Fläche neben slog ist ein Rechteck
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b, slog]
+  bereich: '$T$ stetig, streng wachsend; $A=\operatorname{slog}_a$ seine Umkehrung'
+  voraussetzungen:
+    - {text: 'T stetig und streng wachsend', benutzt: ja}
+    - {text: 'T differenzierbar', benutzt: nein, notiz: 'Flächenargument reicht'}
+  aussage: >-
+    $$\int_m^n T(x)\,dx+\int_{T(m)}^{T(n)}A(y)\,dy=n\,T(n)-m\,T(m),\qquad\text{speziell}\qquad\int_0^1T(x)\,dx+\int_1^{a}A(y)\,dy=a.$$
+  einfach: >-
+    Zeichnet man die Kurve über dem Abschnitt von 0 bis 1, so füllen die Fläche unter der Kurve und die Fläche links von ihr
+    zusammen genau das Rechteck 1 mal a. Wer die eine Fläche kennt, kennt die andere.
+  formen:
+    - {tex: '\int_0^1T_e(x)\,dx=e-\int_1^eA_e(y)\,dy', notiz: Basis e}
+    - {tex: '\int_n^{n+1}T=(n+1)\,a\uparrow\uparrow(n+1)-n\,a\uparrow\uparrow n-\int_{a\uparrow\uparrow n}^{a\uparrow\uparrow(n+1)}A', notiz: jede Periode}
+  beweis: {art: vollstaendig, text: 'Youngsche Gleichung für Umkehrfunktionen (Flächenzerlegung); differenzierbar: partielle Integration $\int T=[xT]-\int xT''$ und $y=T(x)$ in $\int xT''dx=\int A\,dy$.'}
+  experimente: [exp.integrale]
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Young).
+    f2_benutzte_voraussetzungen: Nur Monotonie und Stetigkeit.
+    f3_spezialfall: 'Ja, Gleichheitsfall der Youngschen Ungleichung.'
+    f4_uebertragbar: 'Jede umkehrbare Funktion; dieselbe Idee steckt in der Antisymmetrie der Basiswechsel-Phasen (br.satz.young_kreis).'
+    f5_neue_frage: 'Gleichwertige Formen → gr.kor.integral_formen'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Verbindet die Integrale von T und slog.', nutzen_stufe: hoch}
+  quellen: [{ref: young1912}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: analog_zu, ziel: br.satz.young_kreis}
+
+- id: gr.kor.integral_formen
+  titel: Weitere Formen des Integrals über einer Periode
+  art: korollar
+  ebene: B
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b, slog]
+  aussage: >-
+    $$\int_1^aA(y)\,dy=(a-1)+\ln a\int_0^1a^{u}A(u)\,du,\qquad\int_0^1T(x)\,dx=1-\ln a\int_0^1a^{u}A(u)\,du.$$
+    Da $-1\le A(u)\le0$ auf $[0,1]$, folgt $1<\int_0^1T<a$.
+  einfach: >-
+    Man kann das Integral von slog über das Stück [1, a] auf das Stück [0, 1] zurückholen, weil slog dort einfach um 1 kleiner ist.
+  formen:
+    - {tex: 'A(a^u)=A(u)+1', notiz: die benutzte Abel-Gleichung}
+    - {tex: '\int_0^1T_e=1-\int_0^1e^uA_e(u)\,du', notiz: Basis e}
+  beweis: {art: vollstaendig, text: 'Substitution $y=a^u$, $dy=a^u\ln a\,du$, und $A(a^u)=A(u)+1$; dann gr.satz.young.'}
+  stuetzt_sich_auf: [gr.satz.young]
+  experimente: [exp.integrale]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: Abel-Gleichung und Young.
+    f3_spezialfall: nein
+    f4_uebertragbar: Alle Konstruktionen.
+    f5_neue_frage: 'Gibt es eine Form ohne slog, nur mit Werten von T an ganzen Stellen? (Vermutlich nicht: das Integral hängt von der Konstruktion ab.)'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Rechentechnik.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+
+- id: gr.satz.integral_unten
+  titel: Das Integral unter 0 ist das negative slog-Integral
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b, slog]
+  aussage: '$\displaystyle\int_{-1}^{0}T(x)\,dx=-\int_0^1A(y)\,dy.$'
+  einfach: >-
+    Zwischen −1 und 0 läuft die Kurve von 0 bis 1; die Fläche darunter und die Fläche links davon ergeben das Rechteck 0 — also sind sie entgegengesetzt gleich.
+  beweis: {art: vollstaendig, text: 'gr.satz.young mit $m=-1$, $n=0$: rechte Seite $0\cdot1-(-1)\cdot0=0$.'}
+  stuetzt_sich_auf: [gr.satz.young]
+  experimente: [exp.integrale]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: Wie Young.
+    f3_spezialfall: Ja.
+    f4_uebertragbar: Alle Konstruktionen.
+    f5_neue_frage: '$\int_{-1}^0T_e=0.49922\ldots$ liegt auffällig nahe bei 1/2 — Zufall? (gr.beob.integrale_kneser)'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Einfache Gegenprobe für Rechnungen.', nutzen_stufe: gering}
+  quellen: [{ref: diese_arbeit}]
+
+- id: gr.satz.integral_produkt
+  titel: Ein Integral, das jede Tetration gleich auswertet
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b]
+  aussage: >-
+    $$\int_x^{x+1}T'(u)\,T(u+1)\,du=\frac{T(x+2)-T(x+1)}{\ln a},\qquad\text{z. B.}\quad\int_{-1}^{0}T'(u)\,T(u+1)\,du=\frac{a-1}{\ln a}.$$
+  einfach: >-
+    Obwohl verschiedene Tetrationen verschiedene Kurven sind, liefert dieses Integral für alle denselben Wert — der Integrand ist die versteckte Ableitung von T eine Stufe höher.
+  formen:
+    - {tex: 'T''(u)\,T(u+1)=\frac{T''(u+1)}{\ln a}', notiz: Kettenregel}
+    - {tex: '\int_{-1}^{0}T_e''(u)\,T_e(u+1)\,du=e-1', notiz: Basis e}
+  beweis: {art: vollstaendig, text: 'gr.satz.kettenregel: Integrand $=T''(u+1)/\ln a$; Hauptsatz.'}
+  stuetzt_sich_auf: [gr.satz.kettenregel]
+  experimente: [exp.integrale]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit (stetige Ableitung auf dem Intervall).'
+    f3_spezialfall: Ja.
+    f4_uebertragbar: 'Jede Superfunktion: $\int F''(u)\,f''(F(u))\,du=F(x+2)-F(x+1)$.'
+    f5_neue_frage: 'Welche weiteren Integrale sind konstruktionsunabhängig? (Alle der Form $\int G(T(u+1))'' du$.)'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Zeigt, welche Integrale die Konstruktion nicht sehen.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+
+- id: gr.satz.integral_log
+  titel: Mittelwert von ln T eine Stufe höher
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b]
+  aussage: '$\displaystyle\int_x^{x+1}\ln T(u+1)\,du=\ln a\int_x^{x+1}T(u)\,du$; speziell $\int_1^2\ln T_e=\int_0^1T_e=1.71452\ldots$'
+  einfach: >-
+    Der Durchschnitt des Logarithmus von T über einen Abschnitt ist ln a mal der Durchschnitt von T einen Abschnitt tiefer.
+  beweis: {art: vollstaendig, text: '$\ln T(u+1)=T(u)\ln a$.'}
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Definition).
+    f2_benutzte_voraussetzungen: '$T>0$ auf $(-1,\infty)$.'
+    f3_spezialfall: nein
+    f4_uebertragbar: Alle Konstruktionen.
+    f5_neue_frage: —
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Gering, aber nützlich zum Umrechnen.', nutzen_stufe: gering}
+  quellen: [{ref: diese_arbeit}]
+
+- id: gr.beob.integrale_kneser
+  titel: Zahlenwerte der Integrale
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: einstieg
+  objekte: [kneser_T, regulaer_T, slog]
+  aussage: >-
+    Kneser, Basis $e$: $\int_0^1T_e=1.71452195889062048816597476\ldots$, $\int_1^e\operatorname{slog}_e=1.00375986956842474719\ldots$,
+    $\int_{-1}^0T_e=0.49921818282999133972\ldots$. Regulär, Basis $\sqrt2$: $\int_0^1T=1.23158497328040495081\ldots$,
+    $\int_1^{\sqrt2}\operatorname{slog}=0.18262858909269009799\ldots$, $\int_{-1}^0T=0.58730123997894053426\ldots$.
+    Alle Identitäten der Grundlagen stimmen auf $\le10^{-28}$.
+  einfach: So gross sind die Flächen tatsächlich, auf viele Stellen genau.
+  experimente: [exp.integrale]
+  quellen: [{ref: gp_tetration}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Gauss–Legendre 40 Knoten (Gegencheck 30), Motorwerte 40 Stellen.'
+    f3_spezialfall: —
+    f4_uebertragbar: Jede Basis.
+    f5_neue_frage: '$\int_{-1}^0T_e$ liegt $7.8\cdot10^{-4}$ unter 1/2 — kein bekannter Grund.'
+  bewertung: {richtigkeit: 'numerisch, ~30 Stellen', neuheit: vermutlich_neu, recherche: 'Keine veröffentlichten Werte gefunden.', nutzen: 'Referenz für Lernende und Prüfungen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: gr.satz.young}
+
+- id: gr.frage.integral_form
+  titel: Ist ∫₀¹ T_e eine bekannte Konstante?
+  art: frage
+  ebene: C
+  status: offen
+  niveau: einstieg
+  objekte: [kneser_T, transzendenz]
+  aussage: >-
+    Keine ganzzahlige Relation zu $1,e,e^2,\pi,\gamma,\ln2,\operatorname{Re}L,\operatorname{Im}L$ mit Koeffizienten $\le10^3$ (PSLQ, 38 Stellen).
+    Lehrreich: Mit zu groben Einstellungen (Koeffizienten $\le10^5$ bei 30 Stellen) findet PSLQ eine **Scheinrelation**, die bei 40 Stellen zerfällt.
+  einfach: >-
+    Niemand weiss, ob diese Fläche sich durch bekannte Zahlen ausdrücken lässt. Die Rechnung sagt: wahrscheinlich nicht mit kleinen Koeffizienten.
+  naechste_frage: 'Mit 1000 Stellen (Motor) und grösserer Konstantenliste wiederholen.'
+  experimente: [exp.integrale]
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: ar.beob.ausschluss}
+
+# ================================================================== Ableitung nach der Basis
+- id: gr.satz.basis_ganz
+  titel: Ableitung von a↑↑n nach der Basis
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [hyperoperation]
+  aussage: >-
+    Mit $t_n=a\uparrow\uparrow n$: $t_1'=1$ und $t_{n+1}'=t_{n+1}\Bigl(\dfrac{t_n}{a}+\ln a\cdot t_n'\Bigr)$.
+    Beispiele: $\dfrac{d}{da}a^a=a^a(1+\ln a)$, $\dfrac{d}{da}a^{a^a}=a^{a^a}\bigl(a^{a-1}+\ln a\cdot a^a(1+\ln a)\bigr)$.
+  einfach: >-
+    Wie stark ändert sich ein Turm, wenn man die Basis ein wenig verändert? Die Antwort baut sich Stockwerk für Stockwerk auf.
+  formen:
+    - {tex: '\frac{t_{n+1}''}{t_{n+1}}=\frac{t_n}{a}+t_n''\ln a', notiz: logarithmische Ableitung}
+  beweis: {art: vollstaendig, text: '$\ln t_{n+1}=t_n\ln a$ nach $a$ ableiten.'}
+  experimente: [exp.basisableitung]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: '$a>0$.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Nicht-ganze Höhen: die Basisableitung $\partial_b T_b(x)$ ist die Forschungsfrage von Paper V (bw.satz.kern_existenz).'
+    f5_neue_frage: 'Wie interpoliert $\partial_aT_a(x)$ zwischen den ganzen Höhen? → Basiswechsel-Gebiet'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Einstieg in die Basisabhängigkeit.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: motiviert, ziel: bw.satz.antwortkern}
+
+- id: gr.satz.basis_gleichung
+  titel: 'Die Ableitung nach der Basis bei beliebiger Höhe: eine lineare Stufengleichung'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [T_b, slog]
+  aussage: >-
+    Ist $T_b$ eine in der Basis differenzierbare Familie von Tetrationen ($T_b(0)=1$) und $D(x)=\partial_bT_b(x)$, so gilt
+    $$D(x+1)=\ln b\cdot T(x+1)\,D(x)+\frac{T(x+1)\,T(x)}{b},\qquad D(0)=0.$$
+    Mit $D=T'\cdot u$ wird daraus eine reine Summengleichung: $u(x+1)-u(x)=\dfrac{T(x)}{b\ln b\,T'(x)}$. Bei ganzen Höhen löst sie sich ohne jede Interpolation:
+    $$\partial_b(b\uparrow\uparrow n)=\frac1b\sum_{k=0}^{n-1}T(k)\,(\ln b)^{n-k-1}\prod_{j=k+1}^{n}T(j).$$
+    Auf der slog-Seite, $G(y)=\partial_b\operatorname{slog}_b(y)$: $G(b^y)=G(y)-\dfrac{y\,\operatorname{slog}_b'(y)}{b\ln b}$, $G(0)=G(1)=0$, $G(b)=-\operatorname{slog}_b'(b)$.
+    Bei gebrochener Höhe legt die Gleichung $D$ nur bis auf $T'\cdot$(1-periodisch) fest — genau diese Wahl ist die Basisabhängigkeit einer Konstruktion.
+  einfach: >-
+    Ändert man die Basis ein klein wenig, ändert sich die ganze Kurve. Wie stark, gehorcht einer einfachen Regel von Stufe zu Stufe — dieselbe Art
+    Regel wie für die Steigung, nur mit einem Zusatzglied. An ganzen Stellen kann man die Antwort direkt hinschreiben; dazwischen hängt sie davon ab,
+    wie man die Tetration für jede Basis gewählt hat.
+  formen:
+    - {tex: '\frac{d}{dx}\bigl(x\uparrow\uparrow x\bigr)=D_x(x)+T_x''(x)', notiz: 'Ableitung des Selbst-Turms x↑↑x (Forum tid 789): Basis- plus Höhenableitung'}
+    - {tex: '\partial_a({}^xa)=\frac1a\sum_{k=1}^{x}(\ln a)^{k-1}\prod_{j=0}^{k}{}^{x-j}a', notiz: 'Robbins 2009 (tid 337), dieselbe Summe anders gezählt'}
+  beweis:
+    art: vollstaendig
+    text: |
+      $T_b(x+1)=e^{T_b(x)\ln b}$ nach $b$ ableiten: $D(x+1)=T(x+1)\bigl(\ln b\,D(x)+T(x)/b\bigr)$; $D(0)=0$, weil $T_b(0)=1$ für alle $b$. $T'$ löst die homogene
+      Gleichung (gr.satz.kettenregel); Variation der Konstanten mit $D=T'u$ und $T'(x+1)=\ln b\,T(x+1)T'(x)$ gibt $u(x+1)-u(x)=T(x)/(b\ln b\,T'(x))$. Bei ganzem
+      $n$ ist $u(n)=\sum_{k<n}T(k)/(b\ln b\,T'(k))$, und $T'(n)/T'(k)=(\ln b)^{n-k}\prod_{j=k+1}^nT(j)$ — $T'(0)$ kürzt sich heraus. slog-Seite: $A_b(b^y)=A_b(y)+1$
+      nach $b$ ableiten und $A'(b^y)\,b^y\ln b=A'(y)$ benutzen; $G(b)=-A'(b)$ aus $A_b(b)=1$ für alle $b$.
+  experimente: [exp.ln_basis]
+  stuetzt_sich_auf: [gr.satz.kettenregel, gr.satz.basis_ganz]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, durch Ableiten der Turmgleichung nach b.'
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit der Familie in b; Normierung T_b(0) = 1.'
+    f3_spezialfall: 'Ja: die Basisableitung als kohomologische Gleichung (fg.satz.kohomologisch) mit dem Erzeuger T′.'
+    f4_uebertragbar: 'Jede Parameterfamilie f_b mit Superfunktionen: ∂_bσ(x+1) = f′(σ(x))∂_bσ(x) + (∂_bf)(σ(x)).'
+    f5_neue_frage: 'Welche periodische Wahl trifft Kneser? → gr.satz.turm_pde, bw.satz.kern_existenz'
+  bewertung: {richtigkeit: 'vollständig; an Kneser (b = 2, e) bei x = −½, ¼, ½ auf 30 Stellen bestätigt', neuheit: bekannt, nutzen: 'Die Grundgleichung jeder Basisableitung; macht die Paper-V-Frage elementar sichtbar.', nutzen_stufe: hoch}
+  quellen: [{ref: forum_tid337}, {ref: forum_tid789}]
+  kanten:
+    - {typ: verallgemeinert, ziel: gr.satz.basis_ganz}
+    - {typ: motiviert, ziel: bw.satz.kern_existenz}
+
+- id: gr.satz.turm_pde
+  titel: 'Kobis Gleichung: ∂_a y = S(x)·∂_x y − S(y) für Türme jeder ganzen Höhe'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [T_b, slog]
+  aussage: >-
+    Sei $f_{-1}=\log_a$, $f_0=\mathrm{id}$, $f_{n+1}=a^{f_n}$ und
+    $$S_a(x)=\frac1{a\ln^2a}\sum_{k\ge-1}\frac1{\partial_xf_k(x)}=\frac{x\ln a+1}{a\ln^2a}+\frac1{a\ln^2a}\sum_{k\ge1}\frac1{(\ln a)^k\prod_{j=1}^kf_j(x)}$$
+    (Summe über die **Vorwärtsbahn**, für $a>\eta$ und reelles $x$ rasend schnell konvergent). Dann erfüllt jeder Turm $y=f_n(a,x)$, $n\ge-1$ ganz,
+    $$\partial_ay=S_a(x)\,\partial_xy-S_a(y).$$
+    Für gebrochene Höhen $y=\alpha^{-1}(\alpha(x)+h)$ einer Abel-Funktion $\alpha_a$ gilt die Gleichung **genau dann für alle h**, wenn
+    $p=\partial_a\alpha-S_a\,\alpha'$ konstant ist; $p$ ist für jede Familie 1-periodisch in $\alpha$, weil $S$ dieselbe Gleichung
+    $S(a^x)=a^x\ln a\,S(x)-x\,a^{x-1}$ erfüllt wie $\partial_a\alpha/\alpha'$.
+  einfach: >-
+    Ein Forumsteilnehmer fand 2010 eine Gleichung, die sagt, wie sich ein Turm beim Ändern der Basis verschiebt — mit einer Summe, die entlang der
+    immer grösser werdenden Turmwerte läuft. Für ganze Höhen stimmt sie immer. Ob sie auch für gebrochene Höhen stimmt, hängt von der gewählten
+    Fortsetzung ab: genau dann, wenn eine bestimmte Hilfsgrösse konstant ist.
+  beweis:
+    art: vollstaendig
+    text: |
+      Für eine beliebige Abel-Funktion $\alpha$ mit $\alpha(y)=\alpha(x)+n$ gibt Ableiten nach $a$: $\partial_ay=(\partial_a\alpha(x)-\partial_a\alpha(y))/\alpha'(y)$, und
+      $\partial_xy=\alpha'(x)/\alpha'(y)$. Also gilt die Gleichung genau dann, wenn $(\partial_a\alpha-S\alpha')(x)=(\partial_a\alpha-S\alpha')(y)$. $S$ erfüllt
+      $S(a^x)=a^x\ln a\,S(x)-xa^{x-1}$ (Indexverschiebung $f_k(a^x)=f_{k+1}(x)$, das Glied $k=-1$ fällt heraus); $\gamma=\partial_a\alpha/\alpha'$ erfüllt dieselbe
+      Gleichung (gr.satz.basis_gleichung, slog-Seite). Die Differenz löst die homogene Gleichung, also ist $p=(\gamma-S)\alpha'$ invariant unter $x\mapsto a^x$, d. h.
+      1-periodisch in $\alpha$. Für ganze $n$ ist $p(\alpha+n)=p(\alpha)$ — die Gleichung gilt immer; für alle $h$ nur bei konstantem $p$.
+  experimente: [exp.turm_pde]
+  stuetzt_sich_auf: [gr.satz.basis_gleichung]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; die Vorwärtsbahn-Summe ist die Idee aus dem Forum, die Kennzeichnung über p ist hier ergänzt.'
+    f2_benutzte_voraussetzungen: 'Konvergenz der Vorwärtssumme (reelles x, a > η); Differenzierbarkeit in a.'
+    f3_spezialfall: 'Ja: Transportgleichung für Iterierte einer Parameterfamilie, mit dem Erzeuger aus der Vorwärtsbahn.'
+    f4_uebertragbar: 'Auf jede Familie f_a mit schnell wachsenden Iterierten.'
+    f5_neue_frage: 'Ist p für Kneser konstant? → gr.beob.kneser_pde_wackeln'
+  bewertung: {richtigkeit: 'vollständig; ganze Höhen auf 39 Stellen nachgerechnet', neuheit: neu_ungeprueft, recherche: 'PDE: kobi_78 (Forum tid 417, 2010); die Kennzeichnung über p ist hier ergänzt.', nutzen: 'Verbindet die Basisableitung mit einer expliziten Vorwärtssumme.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tid417}]
+  kanten:
+    - {typ: verwandt, ziel: bw.satz.phasengesetz}
+
+- id: gr.beob.kneser_pde_wackeln
+  titel: 'Kneser erfüllt Kobis Gleichung nur fast: p wackelt um 3·10⁻⁴ (Basis 2)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [T_b, slog]
+  aussage: >-
+    Für die Kneser-Tetration ist $p=\partial_b\operatorname{slog}_b-S_b\operatorname{slog}_b'$ (gr.satz.turm_pde) **nicht** konstant: über eine Periode
+    ($y\in[0,1]$, $\operatorname{slog}$ von $-1$ bis $0$) gemessen: Basis 2 Mittel $-3.15733299588$, Spanne $5.7\cdot10^{-4}$; Basis $e$ Mittel
+    $-0.806194244997$, Spanne $2.9\cdot10^{-4}$.
+    Die gebrochenen Kneser-Iterierten erfüllen Kobis Gleichung also nur bis auf ein kleines periodisches Wackeln. Die Familie, für die $p$ konstant ist,
+    ist die Basiswechsel-Familie (Vorwärtsbahn-Grenzwert) — das Wackeln ist die unendlich kleine Fassung der „Welle“ des Basiswechsels
+    (bw.satz.phasengesetz; Levenstein 2009: der Wechsel „wackelt ein wenig“).
+  einfach: >-
+    Die Forumsgleichung stimmt für die bekannte Kneser-Lösung fast, aber nicht ganz: Es bleibt ein winziges, regelmässiges Wackeln. Das ist dasselbe
+    Wackeln, das man sieht, wenn man Tetrationen verschiedener Basen ineinander umrechnet.
+  experimente: [exp.turm_pde]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, Messung.'
+    f2_benutzte_voraussetzungen: 'Kneser-Werte aus dem Fork (b ± 10⁻⁷, Richardson); S als Vorwärtssumme auf 48 Stellen.'
+    f3_spezialfall: 'Infinitesimale Fassung von bw.satz.phasengesetz.'
+    f4_uebertragbar: 'Jede Basis über η; die Spanne fällt von 2 zu e.'
+    f5_neue_frage: 'Sind die Fourier-Koeffizienten von p die Basisableitungen der Basiswechsel-Moden (bw.beob.modenabfall)?'
+  bewertung: {richtigkeit: 'numerisch (Periodizität auf 10⁻³²)', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass Kneser nicht die Familie der Forumsgleichung ist, und bindet das an den Basiswechsel.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tid417}, {ref: forum_levenstein2009}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: gr.satz.turm_pde}
+    - {typ: verwandt, ziel: bw.satz.phasengesetz}
+    - {typ: verwandt, ziel: bw.verm.nirgends_analytisch}
+
+- id: gr.satz.turm_ableitung
+  titel: Ableitung des unendlichen Turms
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: einstieg
+  objekte: [turm, multiplikator]
+  bereich: '$e^{-e}<a<\eta$, $h(a)=a^{a^{\cdots}}$'
+  aussage: >-
+    $$h'(a)=\frac{h^2}{a\,(1-h\ln a)}=\frac{h^2}{a\,(1-\lambda)},\qquad\lambda=h\ln a\ \text{(Multiplikator am Fixpunkt)}.$$
+  einfach: >-
+    Der Grenzwert des Turms reagiert umso empfindlicher auf die Basis, je schwächer sein Fixpunkt anzieht; bei η wird die Empfindlichkeit unendlich.
+  beweis: {art: vollstaendig, text: '$\ln h=h\ln a$ implizit ableiten: $h''(1/h-\ln a)=h/a$.'}
+  stuetzt_sich_auf: [fp.satz.turm_reell]
+  experimente: [exp.basisableitung]
+  pruefung:
+    f1_folgt_unmittelbar: Ja (implizites Ableiten).
+    f2_benutzte_voraussetzungen: 'Konvergenz des Turms, $\lambda\ne1$.'
+    f3_spezialfall: 'Satz über implizite Funktionen.'
+    f4_uebertragbar: 'Fixpunkte jeder Familie $f_a$: $x''=\partial_af/(1-f'')$.'
+    f5_neue_frage: 'Verhalten bei $\lambda\to1$ → gr.satz.wurzel_eta'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Zeigt den Multiplikator in einer Ableitung.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+
+- id: gr.satz.wurzel_eta
+  titel: Quadratwurzel bei η
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: einstieg
+  objekte: [turm, eta, sattel_knoten]
+  aussage: >-
+    $$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+O(\eta-a)\qquad(a\uparrow\eta).$$
+    Gemessen: der nächste Term ist $\approx-1.6166\cdot\sqrt{\eta-a}$ relativ zum Leitterm.
+  einfach: >-
+    Kurz vor η fällt der Turmgrenzwert nicht gleichmässig, sondern wie eine Wurzel ab. Dieselbe Wurzel taucht in der Forschung wieder auf:
+    Wie lange eine Tetration knapp über η im Engpass bei e „hängen bleibt“, wächst wie 1/Wurzel.
+  formen:
+    - {tex: '\frac{\ln h}{h}=\ln a,\quad\frac{\ln h}{h}=\frac1e-\frac{(h-e)^2}{2e^3}+\dots', notiz: Taylor am Maximum}
+  beweis: {art: vollstaendig, text: '$\varphi(h)=\ln h/h$ hat bei $e$ ein Maximum $1/e$ mit $\varphi''''(e)=-1/e^3$; $\ln a=1/e-\delta$, $\delta=(\eta-a)/\eta+O((\eta-a)^2)$, auflösen nach $h<e$.'}
+  experimente: [exp.basisableitung]
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Taylor am Maximum).
+    f2_benutzte_voraussetzungen: 'Nur $\varphi''''(e)\ne0$.'
+    f3_spezialfall: 'Ja: Sattel-Knoten-Verzweigung eines Fixpunkts (zwei Fixpunkte verschmelzen bei η).'
+    f4_uebertragbar: 'Gleiche Wurzel im Randgesetz der Basiswechsel-Mittel und in der Durchgangszeit.'
+    f5_neue_frage: 'Den Koeffizienten $-1.6166$ geschlossen ausrechnen (nächste Taylor-Ordnung).'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Elementare Brücke zur Forschung (Randgesetz).', nutzen_stufe: hoch}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: analog_zu, ziel: bw.lem.randgesetz}
+    - {typ: analog_zu, ziel: br.satz.sattel_knoten}
+
+# ================================================================== Superlogarithmus
+- id: gr.satz.slog_grund
+  titel: Grundwerte und Grundregeln des Superlogarithmus
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: einstieg
+  objekte: [slog]
+  bereich: '$a>\eta$, $A=\operatorname{slog}_a=T^{-1}:\mathbb R\to(-2,\infty)$, $T$ streng wachsend'
+  aussage: >-
+    $A(1)=0$, $A(0)=-1$, $A(a)=1$, $A(a^y)=A(y)+1$, $A(\log_ay)=A(y)-1$ für $y>0$, und $A(y)\to-2$ für $y\to-\infty$.
+  einfach: >-
+    slog beantwortet die Frage „in welcher Höhe hat die Tetration diesen Wert?“. Hochzahl nehmen heisst eine Stufe höher, Logarithmus nehmen eine Stufe tiefer.
+  beweis: {art: vollstaendig, text: 'Umkehrung von $T$ mit gr.satz.gestalt.'}
+  stuetzt_sich_auf: [gr.satz.gestalt]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Monotonie; $a>\eta$ nur für den Definitionsbereich ganz $\mathbb R$.'
+    f3_spezialfall: 'Abel-Funktion (fg.def.abel).'
+    f4_uebertragbar: 'Für $1<a\le\eta$ auf $(-\infty,a_*)$.'
+    f5_neue_frage: '→ gr.satz.logstern'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Rechenregeln für slog.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: kn.def.slog}
+
+- id: gr.satz.logstern
+  titel: slog ist der geglättete iterierte Logarithmus
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: einstieg
+  objekte: [slog]
+  bereich: '$a>\eta$, $y>1$; $\log^*_a(y)=\min\{n:\log_a^{\circ n}(y)\le1\}$'
+  aussage: '$\lceil\operatorname{slog}_a(y)\rceil=\log^*_a(y)$: aufgerundet ist slog die Anzahl der Logarithmen, bis man bei höchstens 1 landet.'
+  einfach: >-
+    Wie oft muss man den Logarithmus drücken, bis die Zahl unter 1 fällt? Das ist eine Treppe. slog ist dieselbe Treppe, nur glatt gezogen.
+  formen:
+    - {tex: '\operatorname{slog}_a(y)=n+\operatorname{slog}_a\bigl(\log_a^{\circ n}y\bigr)', notiz: Zerlegung}
+    - {tex: '\log^*_a(y)-1<\operatorname{slog}_a(y)\le\log^*_a(y)', notiz: als Ungleichung}
+  beweis: {art: vollstaendig, text: '$n=\log^*_a(y)$, $z=\log_a^{\circ n}y\in(0,1]$, also $A(z)\in(-1,0]$ und $A(y)=n+A(z)\in(n-1,n]$.'}
+  stuetzt_sich_auf: [gr.satz.slog_grund]
+  experimente: [exp.slog]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Monotonie und $A(0)=-1$, $A(1)=0$.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Jede wachsende Tetration — alle haben dieselbe Treppe, sie unterscheiden sich nur zwischen den Stufen.'
+    f5_neue_frage: 'Wie gross ist der Abstand verschiedener Konstruktionen innerhalb einer Stufe? (fg.satz.allgemeine_loesung: eine periodische Funktion)'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Anschauliches Bild für slog.', nutzen_stufe: hoch}
+  quellen: [{ref: diese_arbeit}]
+
+- id: gr.satz.slog_ableitung
+  titel: Ableitung des Superlogarithmus
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [slog, julia_funktion]
+  aussage: >-
+    $A'(y)=\dfrac1{T'(A(y))}$ und $A'(y)=\ln a\cdot a^{y}\cdot A'(a^{y})$; speziell $A'(0)=\dfrac{\ln a}{T'(0)}$, $A'(1)=\dfrac1{T'(0)}$.
+    Kneser zur Basis $e$: $\operatorname{slog}_e'(0)=0.915946056499533\ldots$
+  einfach: >-
+    Die Steigung von slog ist der Kehrwert der Steigung von T an der passenden Stelle — wie bei jeder Umkehrfunktion.
+  formen:
+    - {tex: 'J(a^y)=\ln a\cdot a^y\cdot J(y),\quad J=1/A''', notiz: 'Julia-Gleichung (it.lem.julia)'}
+  beweis: {art: vollstaendig, text: 'Umkehrregel; $A(a^y)=A(y)+1$ ableiten.'}
+  stuetzt_sich_auf: [gr.satz.slog_grund]
+  experimente: [exp.slog]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit, $T''\ne0$.'
+    f3_spezialfall: 'Ja, von it.lem.julia.'
+    f4_uebertragbar: Alle Konstruktionen.
+    f5_neue_frage: '$\operatorname{slog}_e''(0)$ ist zugleich der Orbitwert $-V_1$ aus Paper V — ein Zusammenhang zwischen Grundlagen und Basisableitung.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Rechenregel.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: spezialfall_von, ziel: it.lem.julia}
+
+- id: gr.satz.ln_aus_steigungen
+  titel: 'Der Logarithmus aus zwei Steigungen: ln b = slog′(0)/slog′(1) = T′(0)/T′(−1)'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [slog, T_b]
+  aussage: >-
+    Für jede differenzierbare Tetration $T$ zur Basis $b$ mit Superlogarithmus $A$ gilt
+    $$\ln b=\frac{A'(0)}{A'(1)}=\frac{T'(0)}{T'(-1)}=\frac{T''(0)-T'(0)^2}{T''(-1)},$$
+    allgemein $(\ln T)^{(k)}(x+1)=\ln b\cdot T^{(k)}(x)$ für alle $k\ge1$ und $\ln b=\dfrac{T'(x+1)}{T(x+1)\,T'(x)}$ für jedes $x$.
+    Die einzelnen Steigungen hängen von der gewählten Tetration ab, **die Verhältnisse nicht**. Liest man das für jede Basis $x$, ist
+    $\ln x=\operatorname{slog}_x'(0)/\operatorname{slog}_x'(1)$ eine Darstellung des Logarithmus durch Superlogarithmen.
+    Folge: Die Grenzbasis $b_7=10.2210634157814\ldots$ aus TPID 7 ($T''(0)=T'(0)^2$) ist genau die Basis, bei der $T$ seinen Wendepunkt bei $-1$ hat.
+  einfach: >-
+    Wie steil der Superlogarithmus bei 0 und bei 1 ist, hängt davon ab, welche glatte Fortsetzung man nimmt. Das Verhältnis der beiden
+    Steigungen aber ist immer dasselbe: der natürliche Logarithmus der Basis. Man kann ln also aus zwei Steigungen ablesen.
+  formen:
+    - {tex: 'T(x)=\frac{T''(x)}{\ln b\;T''(x-1)}', notiz: 'den Funktionswert aus Nachbarsteigungen (hyper4geek 2007, Basis e)'}
+    - {tex: 'T(x)=W\!\left(\frac{T''(x+1)}{T''(x-1)}\right)\ \ (b=e)', notiz: 'mit Lambert W, weil T′(x+1)/T′(x−1) = T(x+1)T(x) = T(x)e^{T(x)}'}
+    - {tex: '(\ln b)^2=\frac{A''''(0)}{A''(1)+A''''(1)}', notiz: zweite Ordnung auf der slog-Seite}
+    - {tex: '(\ln b)^n=\frac{T''(x)}{T''(x-n)\prod_{k=0}^{n-1}T(x-k)}', notiz: über n Stufen (Produktformel)}
+  beweis:
+    art: vollstaendig
+    text: |
+      $\ln T(x+1)=\ln b\cdot T(x)$ $k$-mal ableiten gibt $(\ln T)^{(k)}(x+1)=\ln b\,T^{(k)}(x)$. Bei $x=-1$ ist $T(0)=1$, also $(\ln T)'(0)=T'(0)$ und
+      $(\ln T)''(0)=T''(0)-T'(0)^2$. Für $A$: $A(b^y)=A(y)+1$ ableiten, $A'(b^y)\,b^y\ln b=A'(y)$, bei $y=0$. Zweite Ableitung derselben Gleichung bei $y=0$
+      gibt $(\ln b)^2(A'(1)+A''(1))=A''(0)$. Unabhängigkeit: Jede andere Tetration ist $T\circ(\mathrm{id}+p)$ mit 1-periodischem $p$ (fg.satz.allgemeine_loesung);
+      der Faktor $1+p'$ ist an $x$ und $x-1$ derselbe und kürzt sich.
+  experimente: [exp.ln_basis]
+  stuetzt_sich_auf: [gr.satz.kettenregel, gr.satz.slog_ableitung]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja — aus der Kettenregel; neu ist nur der Blickwinkel: lösungsunabhängige Verhältnisse.'
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit; $T(0)=1$; $T''(-1)\ne0$ für die zweite Form.'
+    f3_spezialfall: 'Ja, von $\sigma''(x+1)=f''(\sigma(x))\sigma''(x)$ für jede Superfunktion (Trappmann 2009).'
+    f4_uebertragbar: 'Auf jede Stufe: für die Pentation $\ln$ durch die Ableitung der Tetration ersetzt, $P''(0)/P''(-1)=T''(P(-1))=T''(0)$.'
+    f5_neue_frage: 'Gibt es eine lösungsunabhängige Grösse, die die Kneser-Tetration von allen anderen trennt? (br.frage.bohr_mollerup)'
+  bewertung: {richtigkeit: 'vollständig; an Kneser zu den Basen 2, e, 10 auf 30 Stellen nachgerechnet', neuheit: bekannt, nutzen: 'Zeigt, was an Ableitungen lösungsunabhängig ist; verbindet TPID 7 mit einem Wendepunkt.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tid47}, {ref: forum_tid337}, {ref: diese_arbeit, stelle: 'b₇ als Wendepunkt bei −1'}]
+  kanten:
+    - {typ: verwandt, ziel: gr.gegen.tpid7_kneser}
+    - {typ: verwandt, ziel: gr.satz.zweite_ableitung}
+
+- id: gr.satz.slog_steigung_langsam
+  titel: 'slog′ liegt zwischen allen konvergenten und allen divergenten Gliedern der Logarithmen-Skala'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [slog]
+  aussage: >-
+    Sei $b>\eta$, $L_k=\log_b^{\circ k}x$ und $A=\operatorname{slog}_b$. Es gilt die Produktformel
+    $$A'(x)=\frac{A'(L_n)}{\prod_{k=0}^{n-1}\ln b\cdot L_k}\qquad(n=\lfloor A(x)\rfloor,\ L_n\in[1,b)).$$
+    Daraus: Für jedes feste $m$ und $\varepsilon>0$ ist
+    $$\frac{A'(x)}{1/(L_0L_1\cdots L_m)}\to0,\qquad\frac{A'(x)}{1/(L_0\cdots L_{m-1}L_m^{1+\varepsilon})}\to\infty\qquad(x\to\infty).$$
+    $A'$ fällt also schneller als jedes divergente und langsamer als jedes konvergente Glied der Skala von Abel und du Bois-Reymond — und $\sum_nA'(n)$
+    divergiert trotzdem (wie $A(n)$). Der Superlogarithmus ist die natürliche Grenze dieser Skala: $\int dx/(L_0\cdots L_m)\sim\log^{\circ m+1}x$, und $A$ wächst
+    langsamer als jedes davon.
+  einfach: >-
+    Die Steigung des Superlogarithmus wird nach rechts kleiner als alles, was man aus endlich vielen Logarithmen baut — und doch ist die Summe
+    ihrer Werte unendlich. Sie liegt genau in der Lücke zwischen „Summe endlich“ und „Summe unendlich“ der klassischen Logarithmen-Reihen.
+  beweis:
+    art: vollstaendig
+    text: |
+      $A'(y)=\ln b\cdot b^yA'(b^y)$ (gr.satz.slog_ableitung) mit $y=\log_bx$ gibt $A'(x)=A'(\log_bx)/(x\ln b)$; $n$-mal angewandt die Produktformel, und $A'(L_n)$
+      liegt für $L_n\in[1,b)$ zwischen positiven Schranken. Erster Quotient: $A'(x)\,L_0\cdots L_m=A'(L_n)/\bigl((\ln b)^n\prod_{k=m+1}^{n-1}L_k\bigr)$; der Nenner
+      enthält $L_{m+1}\to\infty$, und von den übrigen Faktoren $\ln b\cdot L_k$ sind höchstens beschränkt viele (die letzten, $L_k$ nahe $[1,b)$) kleiner als 1 — der Quotient geht gegen 0.
+      Zweiter Quotient: zusätzlich der Faktor $L_m^{\varepsilon}=b^{\varepsilon L_{m+1}}$, der jedes Produkt $L_{m+1}L_{m+2}\cdots\le L_{m+1}^2$ (für grosse $x$)
+      und jedes $(\ln b)^{-n}$ mit $n\approx A(x)$ überholt. Divergenz: $\sum_{n\le N}A'(n)\ge\int_1^NA'=A(N)-A(1)\to\infty$, weil $A'$ fällt.
+  stuetzt_sich_auf: [gr.satz.slog_ableitung]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Produktformel.'
+    f2_benutzte_voraussetzungen: '$b>\eta$, damit die Logarithmenkette jedes $x$ in $[1,b)$ bringt.'
+    f3_spezialfall: 'Ja: Ramanujans und Hardys Untersuchung der Reihen $\sum1/(n\ln n\ln\ln n\cdots)$ bis zur „letzten“ Stufe.'
+    f4_uebertragbar: 'Auf Abel-Funktionen jeder Superfunktion mit schnell wachsendem $f$.'
+    f5_neue_frage: 'Genaue Asymptotik von $A''(x)\prod_{k<A(x)}\ln b\,L_k$ — ist sie periodisch in $A(x)$?'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Ordnet den Superlogarithmus in die klassische Skala langsam wachsender Funktionen ein: ein divergentes Glied jenseits der ganzen Skala.', nutzen_stufe: gering}
+  quellen: [{ref: forum_tid1559}]
+  kanten:
+    - {typ: verwandt, ziel: gr.satz.logstern}
+
+# ---------------------------------------------------------------- Turm-Integrale (Bild 2 des Nutzers)
+- id: gr.satz.sophomore
+  titel: Sophomore's Dream
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  niveau: einstieg
+  objekte: [turm]
+  bereich: '$x\in(0,1]$'
+  aussage: |
+    $$\int_0^1x^{x}\,dx=\sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{k^{k}}=0.78343051071213440706\ldots,\qquad\int_0^1x^{-x}\,dx=\sum_{k=1}^{\infty}\frac1{k^{k}}.$$
+  einfach: >-
+    Die Fläche unter der Kurve x^x zwischen 0 und 1 ist eine Summe, die fast wie ein Schreibfehler aussieht: 1 − 1/4 + 1/27 − 1/256 + …
+  beweis: {art: literatur, text: 'Johann Bernoulli 1697: $x^x=\sum_k\frac{(x\ln x)^k}{k!}$ gliedweise integrieren, $\int_0^1x^k\ln^kx\,dx=(-1)^kk!/(k+1)^{k+1}$.'}
+  experimente: [exp.turmintegrale]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Reihe + Substitution $x=e^{-u}$ (Gamma-Integral).'
+    f2_benutzte_voraussetzungen: 'Gleichmässige Konvergenz der Reihe auf [0,1].'
+    f3_spezialfall: 'Ja: $\int_0^1x^{-cx}dx$ für jedes c.'
+    f4_uebertragbar: 'Höhere Türme haben keine so einfache Reihe — erste Stufe von gr.satz.turmintegral_grenzen.'
+    f5_neue_frage: 'Was passiert mit $I_n=\int_0^1{}^n x\,dx$ für $n\to\infty$? → gr.satz.turmintegral_grenzen'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Schönster Einstieg in Türme als Funktionen.', nutzen_stufe: mittel}
+  quellen: [{ref: bernoulli1697}]
+
+- id: gr.satz.turmintegral_grenzen
+  titel: Turm-Integrale haben zwei Grenzwerte
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: einstieg
+  objekte: [turm, lambert_w]
+  bereich: '$I_n=\int_0^1{}^n x\,dx$, ${}^1x=x$, ${}^{n+1}x=x^{({}^n x)}$'
+  voraussetzungen:
+    - {text: 'punktweise Grenzwerte der Türme auf (0,1)', benutzt: ja, ref: fp.satz.turm_reell}
+  aussage: |
+    $I_n$ konvergiert nicht, sondern zerfällt in zwei Teilfolgen:
+    $$\lim I_{2n}=\int_0^{e^{-e}}L_+(x)\,dx+\int_{e^{-e}}^1h(x)\,dx=0.67671427377181279519\ldots,$$
+    $$\lim I_{2n+1}=\int_0^{e^{-e}}L_-(x)\,dx+\int_{e^{-e}}^1h(x)\,dx=0.63130937080198819539\ldots,$$
+    mit $h(x)=W(-\ln x)/(-\ln x)$ und dem anziehenden 2-Zyklus $L_+>L_-$ von $y\mapsto x^y$ für $x<e^{-e}$. Die Lücke ist
+    $$\int_0^{e^{-e}}(L_+-L_-)\,dx=0.04540490296982459980\ldots$$
+  einfach: >-
+    Für Zahlen x unter e^(−e) ≈ 0.066 springt der unendliche Turm am Ende zwischen zwei Werten hin und her. Deshalb haben die
+    Flächen unter den Türmen gerader und ungerader Höhe zwei verschiedene Grenzwerte — der Unterschied ist genau die Fläche
+    zwischen den beiden Ästen.
+  beweis: {art: vollstaendig, text: '$0\le{}^nx\le1$ auf $[0,1]$; gerade bzw. ungerade Türme konvergieren punktweise gegen $L_+$ bzw. $L_-$ (für $x<e^{-e}$) und gegen $h$ (für $x\ge e^{-e}$). Dominierte Konvergenz.'}
+  stuetzt_sich_auf: [fp.satz.turm_reell, gr.satz.sophomore]
+  experimente: [exp.turmintegrale]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald die Grenzfunktionen bekannt sind.'
+    f2_benutzte_voraussetzungen: 'Nur Beschränktheit durch 1 und punktweise Konvergenz.'
+    f3_spezialfall: 'Ja: dominierte Konvergenz.'
+    f4_uebertragbar: 'Auf $\int_0^1 g({}^nx)\,dx$ für jede stetige $g$; auf andere Intervalle, solange die Türme beschränkt bleiben ($x\le\eta$).'
+    f5_neue_frage: 'Wie schnell? → gr.verm.turmintegral_rate. Geschlossene Formen → gr.kor.turmintegral_formen'
+  gegenbeispielsuche: 'exp.turmintegrale: Lücke stimmt mit Bild 2 auf 15 Stellen; $\int h$ auf zwei unabhängigen Wegen bis $10^{-22}$ gleich.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Zeigt, dass Türme auf (0,1) eine Periodenverdopplung haben.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_bilder, stelle: 'Bild 2'}, {ref: diese_arbeit}]
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Bild 2 (Nutzer)', aenderung: 'gerade 0.676714273747536, ungerade 0.631309370777713, Lücke 0.045404902969823.'}
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'gerade 0.67671427377181279519, ungerade 0.63130937080198819539 — beide um 2.428·10⁻¹¹ grösser als in Bild 2; Lücke gleich.', grund: 'Der Versatz ist in beiden Werten gleich, liegt also im gemeinsamen Teil ∫h; dieser ist hier auf zwei Wegen (direkt und über Young) bis 10⁻²² bestätigt.'}
+
+- id: gr.kor.turmintegral_formen
+  titel: Andere Formen der Turm-Integrale
+  art: korollar
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [turm, lambert_w]
+  bereich: 'wie gr.satz.turmintegral_grenzen'
+  aussage: |
+    (1) Weil $h$ die Umkehrung von $y\mapsto y^{1/y}$ auf $[1/e,1]$ ist:
+    $$\int_{e^{-e}}^1h(x)\,dx=1-e^{-e-1}-\int_{1/e}^1y^{1/y}\,dy=0.62544581058878807147\ldots$$
+    (2) Der 2-Zyklus ist parametrisiert durch $u\in(0,1/e)$: $v\ln v=u\ln u$, $v=e^{W_0(u\ln u)}$, $x=u^{1/v}$, mit $L_-=u$, $L_+=v$.
+    Damit wird die Lücke ein Integral über $u$.
+  formen:
+    - {tex: '\lim I_{2n}-\lim I_{2n+1}=\int_0^{1/e}\bigl(v(u)-u\bigr)\,\frac{dx}{du}\,du', notiz: 'Lücke als u-Integral'}
+  beweis: {art: vollstaendig, text: '(1) Youngsche Gleichung (gr.satz.young) für $h$ und seine Umkehrung. (2) $x^u=v$, $x^v=u$ ⇒ $v\ln x=\ln u$, $u\ln x=\ln v$ ⇒ $u\ln u=v\ln v$; der Zweig $W_0$ liefert $v\ne u$.'}
+  stuetzt_sich_auf: [gr.satz.young, gr.satz.turmintegral_grenzen]
+  experimente: [exp.turmintegrale]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Monotonie von h; für (2) nur die Zyklusgleichung.'
+    f3_spezialfall: 'Ja: Young; dieselbe Idee wie gr.kor.integral_formen.'
+    f4_uebertragbar: 'Zyklen höherer Periode: keine so einfache Parametrisierung.'
+    f5_neue_frage: 'Ist einer der Grenzwerte eine bekannte Konstante? (PSLQ wie in gr.frage.integral_form)'
+  gegenbeispielsuche: 'exp.turmintegrale: Parametrisierung gegen direkte Nullstellensuche bei x = 0.01, 0.04, 0.06: $1.8\cdot10^{-36}$.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Macht die Grenzwerte auf viele Stellen berechenbar.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: analog_zu, ziel: gr.kor.integral_formen}
+
+- id: gr.verm.turmintegral_rate
+  titel: Turm-Integrale nähern sich wie n^{−3/2}
+  art: vermutung
+  ebene: X
+  status: vermutung
+  niveau: vertiefung
+  objekte: [turm]
+  bereich: '$I_{2n}$ und $I_{2n+1}$, $n\to\infty$'
+  aussage: |
+    $$I_{2n}-\lim I_{2n}\sim C\,n^{-3/2},$$
+    ebenso für die ungeraden. Vor der Rechnung vorhergesagt aus: bei $x=e^{-e}$ ist der Fixpunkt parabolisch (Multiplikator $-1$),
+    dort fällt der Fehler wie $n^{-1/2}$ (fp.satz.parabolisch_rand mit $q=2$), und das langsame Fenster um $e^{-e}$ hat Breite $\sim1/n$.
+  gegenbeispielsuche: 'exp.turmintegrale: gemessener Exponent 1.502 aus n = 64 … 4096 (Fehler 1.2·10⁻³ … 2.3·10⁻⁶).'
+  beweis:
+    art: skizze
+    text: 'Fenster-Heuristik wie oben.'
+    luecken:
+      - 'Skalierungsfunktion im Fenster (Normalform $w\mapsto-w+aw^3$ mit Parameter $x-e^{-e}$) nicht ausgerechnet; Konstante C offen.'
+  experimente: [exp.turmintegrale]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Parabolisches Verhalten bei $e^{-e}$; geometrische Konvergenz sonst.'
+    f3_spezialfall: 'Wie Fehler von Mittelwerten nahe einer Bifurkation (Pomeau–Manneville-Skalierung).'
+    f4_uebertragbar: 'Gleiche Heuristik bei x = η für Integrale über Intervalle, die η enthalten (dann q = 1, anderer Exponent).'
+    f5_neue_frage: 'Konstante C exakt bestimmen; damit Richardson-Extrapolation der I_n (bis n = 4096 erreicht sie nur ~2·10⁻⁹).'
+  bewertung: {richtigkeit: 'numerisch gestützt, Heuristik', neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum die I_n so langsam konvergieren.', nutzen_stufe: gering}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: br.satz.sattel_knoten}
+
+- id: gr.satz.turmintegral_periodisch
+  titel: 'Bei gebrochener Höhe wird das Turm-Integral eine 2-periodische Kurve mit festen Ecken'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [turm, T_b, periodische_stoerung]
+  bereich: '$I(s)=\int_0^1T_x(s)\,dx$; für jede Basis $x\in(0,1)$ eine stetige reelle Tetration $T_x$ ($T_x(0)=1$, $T_x(s+1)=x^{T_x(s)}$), die auf $[0,1]$ positiv ist und ihren abstossenden Fixpunkt $L(x)$ dort genau einmal kreuzt (Kreuzungshöhe $s^*(x)$), messbar in $x$'
+  aussage: |
+    Für $s=2m+r$ und $m\to\infty$ geht $I(s)$ gegen eine 2-periodische Grenzkurve $I_\infty(r)$ mit:
+    (i) **festen Ecken** — $I_\infty(0)=\lim I_{2n}=0.6767142738\ldots$ und $I_\infty(1)=\lim I_{2n+1}=0.6313093708\ldots$, gleich für jede Interpolation;
+    (ii) **Halbperioden-Antisymmetrie** $I_\infty(r+1)=2M-I_\infty(r)$ mit $M=\tfrac12(\lim I_{2n}+\lim I_{2n+1})=0.65401182228690049529\ldots$: Mittelwert genau $M$,
+    nur ungerade Fourier-Harmonische;
+    (iii) **monotonen Flanken** — fallend auf $[0,1]$, steigend auf $[1,2]$;
+    (iv) **Form = Verteilung der Kreuzungshöhen:** $I_\infty(r)=\lim I_{2n}-\int_{\{x<e^{-e},\ s^*(x)<r\}}(L_+-L_-)\,dx$ für $r\in[0,1]$. Nur die Basen unter $e^{-e}$ schwingen
+    bleibend; alle anderen Türme gehen gegen $h(x)$. Bei der linearen Interpolation ist $s^*(x)=L(x)$ genau, der ganze Abfall liegt in $r\in[0,1/e]$ und
+    $I_\infty(r)=\lim I_{2n}-\int_0^{r^{1/r}}(L_+-L_-)\,dx$; bei der geradlinigen ($1-s(1-x)$) liegt er in $[0.677,1]$. Alle Formen sind fast Rechteckwellen:
+    erste Harmonische $1.43$–$1.44\cdot10^{-2}$ gegen $1.445\cdot10^{-2}$ für den reinen Sprung.
+  einfach: >-
+    Interpoliert man die Turmhöhe stetig, schwingt die Fläche unter dem Turm für immer weiter hin und her — mit Periode 2. Die Werte an geraden und
+    ungeraden Höhen und der Mittelwert stehen fest. Wie die Kurve dazwischen verläuft, hängt davon ab, wie man die Höhen interpoliert: Jede Basis unter
+    e^(−e) wechselt an einer eigenen Stelle von oben nach unten, und die Kurve zählt diese Wechselstellen.
+  beweis:
+    art: vollstaendig
+    text: |
+      Für $x\ge e^{-e}$ hat $y\mapsto x^y$ einen einzigen anziehenden Fixpunkt $h(x)$ der zweifach Iterierten, also $T_x(2m+r)\to h(x)$ für jedes $r$. Für $x<e^{-e}$ ist
+      $\lim_mT_x(2m+r)$ nach fp.satz.rechteckwelle die Rechteckwelle mit Werten $L_+$ auf $(s^*-1,s^*)$ und $L_-$ auf $(s^*,s^*+1)$ (mod 2). Ab der Höhe 1 liegen alle Werte in $(0,1)$ (denn $x^y\in(0,1)$ für $y>0$),
+      also darf man nach dem Satz von der dominierten Konvergenz unter dem Integral zum Grenzwert übergehen. (i): $0\in(s^*-1,s^*)$, $1\in(s^*,s^*+1)$. (ii): die
+      Rechteckwelle erfüllt $\Omega(r+1)=L_++L_--\Omega(r)$. (iii), (iv): für $r\in(0,1)$ ist $\Omega_x(r)=L_+$ genau dann, wenn $r<s^*(x)$. Linear: $T_x(s)=x^s$ auf $[0,1]$, und $x^{s^*}=L=x^L$.
+  experimente: [exp.turmintegral_periodisch]
+  stuetzt_sich_auf: [gr.satz.turmintegral_grenzen, fp.satz.rechteckwelle]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem Rechteckwellen-Satz und dominierter Konvergenz; neu ist der Blick auf die Grenzkurve als Ganzes.'
+    f2_benutzte_voraussetzungen: 'Stetige reelle Interpolation je Basis, ein Kreuzungspunkt; Messbarkeit in x.'
+    f3_spezialfall: 'Ja: Integral über eine Familie von Rechteckwellen — eine Verteilungsfunktion der Sprungstellen.'
+    f4_uebertragbar: 'Jedes Integral ∫ φ(T_x(s)) dx über Basen; andere Zykluslängen in der Basen-Ebene (Knospen) geben Periode q.'
+    f5_neue_frage: 'Gibt es eine natürliche Interpolation für Basen unter 1 — und welche Grenzkurve gehört dann zu ihr?'
+  bewertung: {richtigkeit: 'vollständig; drei Interpolationen nachgerechnet', neuheit: neu_ungeprueft, nutzen: 'Antwortet auf die Frage, was die Schwingung der Turm-Integrale bei gebrochener Höhe ist.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verallgemeinert, ziel: gr.satz.turmintegral_grenzen}
+    - {typ: verwandt, ziel: kl.satz.basis_unter_eins}
+
+- id: gr.satz.kehrwert_turmsumme
+  titel: Summe der Kehrwerte eines Turms
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [hyperoperation, turm]
+  bereich: 'reelle $b>\eta$; für gebrochene Höhen eine wachsende Tetration (z. B. Kneser)'
+  aussage: |
+    $$C_b=\sum_{k\ge1}\frac1{b\uparrow\uparrow k},\qquad C_2=\frac12+\frac14+\frac1{16}+\frac1{65536}+2^{-65536}+\dots=0.8125152587890625\ldots$$
+    Die Bruchsumme $R_b(x)=\sum_{k\ge1}\bigl[\tfrac1{T_b(k)}-\tfrac1{T_b(k+x)}\bigr]$ erfüllt $R_b(x+1)-R_b(x)=1/T_b(x+1)$ und
+    $$C_b-R_b(x)=\sum_{m\ge0}b^{-T_b(x+m)}\sim b^{-T_b(x)}.$$
+  einfach: >-
+    Addiert man 1/2 + 1/4 + 1/16 + 1/65536 + …, sind schon nach vier Gliedern alle weiteren so klein, dass sie
+    Tausende von Nachkommastellen nicht mehr ändern. Türme wachsen so schnell, dass ihre Kehrwerte fast sofort verschwinden.
+  formen:
+    - {tex: 'C_e=e^{-1}+e^{-e}+e^{-e^e}+\dots=0.43386773918949380481\ldots', notiz: Basis e}
+    - {tex: 'C_b(s)=\sum_kT_b(k)^{-s}', notiz: 'Dirichlet-artige Familie'}
+  beweis: {art: vollstaendig, text: '$1/T(y+1)=b^{-T(y)}$; Teleskop wie bei jeder Bruchsumme mit Summanden → 0. Der erste Term dominiert, weil $T(x+m+1)$ zur Potenz von $T(x+m)$ wächst.'}
+  stuetzt_sich_auf: [fp.satz.reelle_fixpunkte]
+  experimente: [exp.eta_digamma]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Nur Wachstum des Turms (b > η); der Wert C_b nur ganze Höhen.'
+    f3_spezialfall: 'Ja: Müller–Schleicher-Summe mit Summand → 0.'
+    f4_uebertragbar: 'Auf jede rasch wachsende Folge (Engel-artige Reihen); ob C_b transzendent ist, ist offen.'
+    f5_neue_frage: 'Ist $C_2$ irrational? (Glieder $2^{-2\uparrow\uparrow k}$: liouvilleartig schnell — vermutlich transzendent.)'
+  gegenbeispielsuche: 'exp.eta_digamma: $C_2$, $C_e$, $C_{10}$ auf 25 Stellen; Basis 2 mit Kneser-$T_2(1/2)=1.4587818160\ldots$: Verhältnis $(C-R(x))/2^{-T(x)}$ = 1.435, 1.064, 1.000… bei x = 1/2, 3/2, 5/2.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Einfache, schöne Konstante über η; Gegenstück zur divergierenden Summe der Türme.', nutzen_stufe: gering}
+  quellen: [{ref: justus_synthese_jul, stelle: '§13, Theorem candidate E'}, {ref: diese_arbeit}]
+
+- id: gr.satz.superwurzel
+  titel: Superwurzel — welche Zahl hoch sich selbst gibt x?
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: einstieg
+  objekte: [superwurzel, lambert_w]
+  bereich: 'reelle $x>0$, gesucht reelle $y>0$ mit $y^y=x$'
+  aussage: |
+    $y^y=x$ hat für $x>1$ genau eine Lösung (mit $y>1$), für $e^{-1/e}<x<1$ genau zwei (beide in $(0,1)$, je eine unter und über $1/e$),
+    für $x=e^{-1/e}$ und $x=1$ genau eine ($y=1/e$ bzw. $y=1$), für $x<e^{-1/e}$ keine. Die Lösung mit $y\ge1/e$ ist
+    $$\operatorname{ssrt}(x)=e^{W_0(\ln x)}=\frac{\ln x}{W_0(\ln x)},$$
+    die zweite ist $e^{W_{-1}(\ln x)}$. Um $x=1$ gilt $\operatorname{ssrt}(x)=1+(x-1)-(x-1)^2+\tfrac32(x-1)^3-\tfrac{17}6(x-1)^4+\tfrac{37}6(x-1)^5-\dots$
+  einfach: >-
+    Die Superwurzel fragt rückwärts: welche Zahl y ergibt hoch sich selbst genau x? Für 27 ist es 3, für 2 etwa 1.5596. Unter 1 gibt es
+    oft zwei Antworten, unter 0.6922 keine — weil y hoch y nie kleiner als 0.6922 wird.
+  formen:
+    - {tex: 'y^y=x\iff \ln y\,e^{\ln y}=\ln x\iff \ln y=W(\ln x)', notiz: Umformung}
+    - {tex: '\operatorname{ssrt}(2)=1.5596104694623693\ldots,\quad \operatorname{ssrt}(10)=2.5061841455887692\ldots', notiz: Werte (exp.superwurzel)}
+    - {tex: 'x=0.8:\ y=0.0946497108649\ldots\ \text{oder}\ y=0.7395336500107\ldots', notiz: zwei Lösungen}
+  beweis:
+    art: vollstaendig
+    text: '$y^y=x\iff y\ln y=\ln x\iff(\ln y)e^{\ln y}=\ln x$, also $\ln y=W_k(\ln x)$. Reelle Zweige: $W_0$ auf $[-1/e,\infty)$, $W_{-1}$ auf $[-1/e,0)$; $\ln x\ge-1/e\iff x\ge e^{-1/e}$. Zweite Form: $e^{W(t)}=t/W(t)$. Die Anzahl folgt auch direkt aus gr.satz.selbstpotenz (Minimum $e^{-1/e}$ bei $1/e$, $y^y\to1$ für $y\to0^+$).'
+  stuetzt_sich_auf: [gr.satz.selbstpotenz]
+  experimente: [exp.superwurzel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (Umformung + Lambert W).'
+    f2_benutzte_voraussetzungen: 'Nur $x>0$, $y>0$ reell; komplex liefern alle Zweige $W_k$ Lösungen.'
+    f3_spezialfall: 'Ja: dieselbe Lambert-Umformung wie bei den Fixpunkten (fp.satz.lambert).'
+    f4_uebertragbar: 'Dritte Superwurzel: zweimal W (gr.satz.superwurzel_dritte); Arithmetik der Werte: ar.satz.superwurzel_arith.'
+    f5_neue_frage: 'Gibt es für die $n$-te Superwurzel eine geschlossene Form? Schon für $n=3$ nur als Fixpunkt.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Die natürliche Umkehrung nach der Basis; Einstieg in Lambert W.', nutzen_stufe: mittel}
+  quellen: [{ref: wikipedia_tetration, stelle: 'Abschnitt Super-root'}, {ref: corless1996}]
+  kanten:
+    - {typ: analog_zu, ziel: fp.satz.lambert}
+
+- id: gr.satz.superwurzel_dritte
+  titel: Dritte Superwurzel — zweimal Lambert W
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: einstieg
+  objekte: [superwurzel, lambert_w]
+  bereich: 'reelle $Y>1$, gesucht $y>1$ mit $y^{y^y}=Y$'
+  aussage: |
+    Für $Y>1$ hat $y^{y^y}=Y$ genau eine Lösung $y>0$, und sie liegt in $(1,\infty)$. Sie erfüllt
+    $$y=\exp W\bigl(W(y\ln Y)\bigr),$$
+    und die Fixpunkt-Iteration $y\leftarrow\exp W(W(y\ln Y))$ ab $y=1$ konvergiert (beobachtet für $Y=2,10,100,10^6$, je 53–60 Schritte auf 45 Stellen).
+    Werte: $\sqrt[3]{2}_s=1.4766843373578699\ldots$, $\sqrt[3]{10}_s=1.9235840364420273\ldots$, $\sqrt[3]{100}_s=2.2127958063258997\ldots$
+  einfach: >-
+    Auch die Frage „welche Zahl ergibt als Dreierturm y^y^y genau 2?“ hat genau eine Antwort, etwa 1.4767. Es gibt keine fertige Formel,
+    aber eine Rechenvorschrift, die man immer wieder anwendet, bis sich nichts mehr ändert.
+  formen:
+    - {tex: 'y^{y^y}=Y\iff y^y\ln y=\ln Y\iff (y\ln y)e^{y\ln y}=y\ln Y', notiz: 'mit y multipliziert'}
+  beweis:
+    art: vollstaendig
+    text: 'Eindeutigkeit: für $0<y\le1$ ist $y^{y^y}\le1$; auf $[1,\infty)$ ist $y\mapsto y^{y^y}$ stetig und streng wachsend von 1 nach ∞. Formel: $y^y\ln y=\ln Y$ mit $y$ multiplizieren gibt $(y\ln y)e^{y\ln y}=y\ln Y$, also $y\ln y=W(y\ln Y)$, und $(\ln y)e^{\ln y}=y\ln y$ gibt $\ln y=W(W(y\ln Y))$. Die Konvergenz der Iteration ist nur beobachtet.'
+  stuetzt_sich_auf: [gr.satz.superwurzel]
+  experimente: [exp.superwurzel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja für Formel und Eindeutigkeit; die Konvergenz der Iteration nicht (Kontraktion nicht nachgewiesen).'
+    f2_benutzte_voraussetzungen: '$Y>1$; für $Y<1$ kann es mehrere Lösungen geben (nicht untersucht).'
+    f3_spezialfall: 'Muster für die $n$-te Superwurzel: $n-1$-mal W, aber nur implizit.'
+    f4_uebertragbar: 'Arithmetik: ganz oder irrational (ar.satz.superwurzel_arith).'
+    f5_neue_frage: 'Konvergenzrate der Iteration (Ableitung der Abbildung am Fixpunkt) und Verhalten für $Y\to1^+$.'
+  bewertung: {richtigkeit: 'Formel vollständig, Iteration numerisch', neuheit: bekannt, nutzen: 'Zeigt, wie weit Lambert W trägt.', nutzen_stufe: gering}
+  quellen: [{ref: wikipedia_tetration, stelle: 'Abschnitt Super-root, Iterationsformel'}]
+
+- id: gr.verm.tpid7
+  titel: 'TPID 7: T(y)·T(−y) liegt zwischen 0 und 1'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: vertiefung
+  objekte: [regulaer_T, kneser_T, konvexitaet]
+  bereich: '$0<|y|<1$; reguläre Tetration für $1<b<\eta$ (so gestellt), Kneser für $b>\eta$ (Erweiterung)'
+  aussage: |
+    **Vermutung (A. Robbins, TPID 7, 2009):** Für $1<b<\eta$ und $0<|y|<1$ gilt $0<T_b(y)\,T_b(-y)<1$ (reguläre Tetration).
+    **Gemessen:** für $b=1.1,\ 1.3,\ \sqrt2,\ 1.44$ und $y=0.05,\dots,0.95$ — und ebenso für Kneser bei $b=1.5,\ 2,\ e,\ 3,\ 5,\ 10$; das Produkt fällt
+    jeweils monoton von 1 auf 0 (bei $y=\tfrac12$: $0.7824$ für $\sqrt2$, $0.8208$ für $e$). Für Kneser gilt es aber **nicht** für alle Basen (gr.gegen.tpid7_kneser).
+    Hinreichend ist, dass $\ln T_b$ auf $(-1,1)$ konkav ist; für die reguläre Tetration folgt das aus kl.verm.vollmonoton (kl.satz.folgen_vollmonoton).
+  einfach: >-
+    Multipliziert man den Wert einer Tetration bei +y mit dem Wert bei −y, kommt immer etwas zwischen 0 und 1 heraus — so die Vermutung.
+    Für kleine Basen stimmt das überall, wo nachgerechnet wurde; für sehr grosse Basen kippt es.
+  naechste_frage: 'Beweis der Konkavität von $\ln T_b$ auf $(-1,1)$ für reguläre Tetration (folgt aus negativen Koenigs-Koeffizienten).'
+  gegenbeispielsuche: 'exp.vermutungen: 10 Basen × 19 Höhen; reguläre Basen bis 1.44 (nahe η), Kneser bis 100 — Verletzung erst über b₇ = 10.22.'
+  experimente: [exp.vermutungen]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; aber aus Log-Konkavität: $\ln T(y)+\ln T(-y)\le2\ln T(0)=0$.'
+    f2_benutzte_voraussetzungen: '$T>0$ auf $(-1,1)$ (gilt) und Konkavität von $\ln T$ dort.'
+    f3_spezialfall: 'Ja: Mittelpunkt-Ungleichung für die konkave Funktion $\ln T$.'
+    f4_uebertragbar: 'Auf Kneser genau so lange, wie $\ln T_b$ bei 0 konkav ist: bis $b_7=10.2210634157814\ldots$'
+    f5_neue_frage: 'Ist $\ln T_b$ für $b\le b_7$ auf ganz $(-1,1)$ konkav, oder gibt es dazwischen Basen mit Verletzung bei grossem $y$?'
+  bewertung: {richtigkeit: 'Vermutung, numerisch gestützt; Kneser-Erweiterung teilweise falsch', neuheit: bekannt, nutzen: 'Einfache Ungleichung mit klarer Ursache (Log-Konkavität).', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tpid, stelle: 'TPID 7 (andydude, 23.10.2009)'}]
+  kanten:
+    - {typ: verwandt, ziel: gr.verm.ein_wendepunkt}
+
+- id: gr.gegen.tpid7_kneser
+  titel: 'Kneser-Fassung von TPID 7 falsch über b₇ = 10.2210634157814…'
+  art: gegenbeispiel
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [kneser_T, konvexitaet]
+  bereich: 'Kneser-Tetration, reelle $b>\eta$'
+  aussage: |
+    Für Kneser gilt $T_b(y)T_b(-y)<1$ nicht für alle $b>\eta$: bei $b=20$ ist $T(\tfrac12)T(-\tfrac12)=1.0713$, bei $b=100$ sogar $1.3158$.
+    Die Grenze ist die Basis, bei der $\ln T_b$ in 0 von konkav nach konvex kippt:
+    $$(\ln T_b)''(0)=T_b''(0)-T_b'(0)^2=0\qquad\Longleftrightarrow\qquad b=b_7=10.2210634157814\ldots$$
+    Knapp darunter ist das Produkt für kleine $y$ kleiner als 1, knapp darüber grösser. Bei $b=e$: $(\ln T)''(0)=-0.64899$.
+  einfach: >-
+    Für riesige Basen wie 100 ist die Kneser-Kurve bei 0 so stark nach oben gebogen, dass T(½)·T(−½) grösser als 1 wird. Die Grenze liegt bei einer Basis von etwa 10.22.
+  beweis: {art: vollstaendig, text: '$T(y)T(-y)=\exp\bigl((\ln T)(y)+(\ln T)(-y)\bigr)=\exp\bigl((\ln T)^{\prime\prime}(0)\,y^2+O(y^4)\bigr)$ mit $T(0)=1$; das Vorzeichen von $(\ln T)^{\prime\prime}(0)=T^{\prime\prime}(0)-T^{\prime}(0)^2$ entscheidet für kleine $y$. Die Werte selbst sind gemessen.'}
+  experimente: [exp.vermutungen]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald die Ableitungen bei 0 bekannt sind (lokale Entwicklung).'
+    f2_benutzte_voraussetzungen: 'Kneser-Werte auf 40 Stellen; das Produkt bei b = 100 liegt weit über 1, die Aussage ist rundungsfest.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Andere Tetrationen mit $T^{\prime\prime}(0)>T^{\prime}(0)^2$ verletzen TPID 7 ebenso.'
+    f5_neue_frage: 'Wie hängt $b_7$ mit dem Wendepunkt zusammen? (Bei $b=10$ liegt er bei $-0.997$, also nahe −1.)'
+  bewertung: {richtigkeit: 'numerisch, rundungsfest', neuheit: vermutlich_neu, recherche: 'In TPID 7 nur als Erweiterung („intuitive Tetration für x > η“) erwähnt, ohne Grenze; kein Gegenbeispiel gefunden (Recherche 08.10.2026).', nutzen: 'Zeigt, dass die Kneser-Erweiterung von TPID 7 eine echte Grenze hat.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}, {ref: forum_tpid, stelle: 'TPID 7'}]
+  kanten:
+    - {typ: verwandt, ziel: gr.verm.tpid7}
+    - {typ: verwandt, ziel: gr.beob.wendepunkte}
+
+- id: gr.beob.integral_halb
+  titel: '∫₋₁⁰ T_b = ½ genau bei b = 2.6937028415…'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: einstieg
+  objekte: [kneser_T, regulaer_T]
+  bereich: 'Kneser-Tetration $b>\eta$; Vergleich lineare Näherung und reguläre Tetration'
+  aussage: |
+    Für die lineare Näherung ($T(x)=1+x$ auf $[-1,0]$) ist $\int_{-1}^0T=\tfrac12$ für jede Basis. Für Kneser hängt das Integral von $b$ ab und fällt mit $b$:
+    $0.5747\ (b=1.5)$, $0.5304\ (2)$, $0.5067\ (2.5)$, $0.4992\ (e)$, $0.4911\ (3)$, $0.4276\ (10)$. Genau $\tfrac12$ ist es bei
+    $$b=2.693702841530558043903588\ldots$$
+  einfach: >-
+    Die Fläche unter einer Tetrationskurve zwischen −1 und 0 ist fast immer ungefähr ½ — genau ½ aber nur bei einer einzigen Basis, etwa 2.694, knapp unter e.
+  experimente: [exp.vermutungen]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Kneser-Werte, Gauss–Legendre mit 40 Knoten; Kontrolle bei e gegen gr.beob.integrale_kneser auf 18 Stellen.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Über die Flächenidentität gr.satz.young entspricht das einer Aussage über $\int_0^1\operatorname{slog}$.'
+    f5_neue_frage: 'Hat diese Basis eine Bedeutung, oder ist sie Zufall? (Sie liegt nahe, aber nicht bei e.)'
+  bewertung: {richtigkeit: 'numerisch (25 Stellen)', neuheit: vermutlich_neu, recherche: 'Im Forum als offene Frage gestellt, kein Wert gefunden (Recherche 08.10.2026).', nutzen: 'Kleine Antwort auf eine Forumsfrage.', nutzen_stufe: gering}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: gr.beob.integrale_kneser}
+
+- id: gr.verm.ungerade_ableitungen
+  titel: Alle ungeraden Ableitungen der Kneser-Tetration sind positiv
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [kneser_T, konvexitaet]
+  bereich: 'Kneser-Tetration zur Basis $e$ auf $(-2,\infty)$'
+  aussage: |
+    **Vermutung (mike3, 2014):** $T_e^{(2n+1)}(x)>0$ für alle $n\ge0$ und $x>-2$ — gleichwertig: alle geraden Ableitungen sind streng wachsend. Vorgeschlagen als mögliche
+    reelle Eindeutigkeitsbedingung.
+    **Gemessen:** alle ungeraden Ableitungen bis Ordnung 25 positiv an 20 Stellen in $[-1.8,2]$. Jede gerade Ableitung bis 26 wechselt genau einmal ihr Vorzeichen,
+    von − nach +, an einer Stelle $x_{2n}$, die mit $n$ nach rechts wandert: $x_2=-0.52176$ (Wendepunkt), $x_4=-0.40076$, $x_{10}=-0.18591$,
+    $x_{22}=0.0077902$, $x_{26}=0.046585$.
+    **Grund (Levenstein):** hohe Ableitungen folgen der Singularität $\log(x+2)$: $a_k\approx(-1)^{k+1}/(k(x+2)^k)$ (bei $x=-1$, $k=24$: Quotient $0.99999998$).
+    Daher sind ungerade Ableitungen hoher Ordnung positiv, gerade negativ — bei $x=0.5$ ist die 406. die erste negative.
+  einfach: >-
+    Die Kneser-Kurve zur Basis e scheint eine eiserne Regel zu befolgen: Ableitungen ungerader Ordnung (1., 3., 5., …) sind überall positiv. Das wäre eine
+    Eigenschaft, die man ganz ohne komplexe Zahlen prüfen kann — vielleicht genug, um Kneser von allen anderen Lösungen zu unterscheiden.
+  naechste_frage: 'Beweis aus der Struktur von Kneser (log-Singularitäten bei −2, −3, … und Verhalten in der oberen Halbebene); verletzt jede periodische Störung $T(x+\theta(x))$ die Bedingung?'
+  gegenbeispielsuche: 'exp.ableitungen_vorzeichen: 13 ungerade Ordnungen × 20 Stellen; kleinster Wert 1.7·10⁻⁹ (Taylor-Koeffizient bei x = 0) — positiv.'
+  experimente: [exp.ableitungen_vorzeichen]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein. Für hohe Ordnungen plausibel (log-Singularität), für mittlere offen.'
+    f2_benutzte_voraussetzungen: 'Kneser-Werte auf 40 Stellen, Taylorreihen aus Kreiswerten (Radius bis 1).'
+    f3_spezialfall: 'Analog zu Szekeres (it.satz.szekeres_monoton) und Reshetnikov (kl.verm.vollmonoton) — Vorzeichenbedingungen an alle Ableitungen.'
+    f4_uebertragbar: 'Auf andere Basen $b>\eta$ (nicht geprüft).'
+    f5_neue_frage: 'Wächst $x_{2n}$ wie $\log n$? (Levensteins 406. bei 0.5 und 4904. bei 0.7 deuten darauf.)'
+  bewertung: {richtigkeit: 'Vermutung, numerisch gestützt', neuheit: bekannt, nutzen: 'Kandidat für eine reelle Kennzeichnung von Kneser (br.frage.bohr_mollerup).', nutzen_stufe: hoch}
+  quellen: [{ref: forum_tid882}]
+  kanten:
+    - {typ: motiviert, ziel: br.frage.bohr_mollerup}
+    - {typ: analog_zu, ziel: it.satz.szekeres_monoton}
+    - {typ: verwandt, ziel: gr.beob.wendepunkte}
+
+- id: gr.satz.grenzfaelle
+  titel: 'Grenzfälle: x↑↑n für x → 0, die Basis −1 und negative Höhen'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b]
+  aussage: |
+    $\lim_{x\to0^+}x\uparrow\uparrow n=1$ für gerade $n$ und $=0$ für ungerade $n$ (nur langsam: bei $x=10^{-3}$ ist $x\uparrow\uparrow2=0.993$, $x\uparrow\uparrow3=0.00105$).
+    Ferner $(-1)\uparrow\uparrow n=-1$ für alle $n\ge1$ und $1\uparrow\uparrow n=1$. Negative Höhen: $a\uparrow\uparrow0=1$, $a\uparrow\uparrow(-1)=\log_a1=0$,
+    $a\uparrow\uparrow(-2)=\log_a0=-\infty$ — darunter keine reellen Werte.
+  einfach: >-
+    Bei Basen nahe 0 springen Türme hin und her: gerade Höhen gehen gegen 1, ungerade gegen 0. Unter der Höhe −1 gibt es keine vernünftigen reellen Werte mehr.
+  beweis:
+    art: vollstaendig
+    text: |
+      $x^x=e^{x\ln x}\to1$. Induktiv: ist $x\uparrow\uparrow n\to1$, so $x\uparrow\uparrow(n+1)=x^{x\uparrow\uparrow n}\to0$; ist $x\uparrow\uparrow n\to0$ mit $(x\uparrow\uparrow n)\ln x\to0$, so $\to1$.
+      Für die zweite Bedingung genügt $x\uparrow\uparrow n\le Cx^{c}$ bei ungeradem $n$ (Induktion). Negative Höhen: Umkehrung $T(x-1)=\log_aT(x)$.
+  experimente: [exp.forum_rand]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja.'
+    f2_benutzte_voraussetzungen: 'Grenzwert x ln x → 0.'
+    f3_spezialfall: 'nein'
+    f4_uebertragbar: 'Gebrochene Höhen bei Basen unter 1: kl.satz.basis_unter_eins.'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Die Randfälle, nach denen Einsteiger zuerst fragen.', nutzen_stufe: gering}
+  quellen: [{ref: wikipedia_tetration}, {ref: forum_tid91}]
+  kanten:
+    - {typ: verwandt, ziel: fg.lem.ganzzahlwerte}
+
+# ================================================================== Identitäten: was fest ist, was frei ist
+- id: gr.satz.tauschregel
+  titel: 'Keine Additionsregel, aber eine Tauschregel: T(x+1)^{T(y)} = T(y+1)^{T(x)}'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [T_b, hyperoperation]
+  bereich: 'jede reelle Tetration zur Basis $a>0$, $a\ne1$; $x,y>-2$'
+  aussage: |
+    (i) **Keine Additionsregel:** Es gibt keine Verknüpfung $*$, mit der $^{m+n}x={}^mx*{}^nx$ für alle Basen $x$ gilt: $^14=4={}^22$, aber $^{1+1}4=256$
+    und $^{2+2}2=65536$ müssten beide $4*4$ sein. Für eine feste Basis gibt es nur die Iteration $T(x+n)=\exp_a^{\circ n}\bigl(T(x)\bigr)$.
+
+    (ii) **Tauschregel:** Für alle $x,y>-2$ gilt
+    $$T(x+1)^{T(y)}=T(y+1)^{T(x)}=a^{T(x)\,T(y)}.$$
+    Bei ganzen Höhen heisst das $({}^ba)^{({}^ca)}=({}^{c+1}a)^{({}^{b-1}a)}$, zum Beispiel $16^2=4^4=2^8$, $65536^2=4^{16}=2^{32}$ und $65536^4=16^{16}=2^{64}$.
+
+    (iii) **Folgen:** $a=T(x+1)^{1/T(x)}$ für jedes $x\ne-1$ — die Basis steckt in **jedem** Paar benachbarter Werte —, und $T(x+2)=T(x+1)^{T(x+1)/T(x)}$,
+    eine Stufe ganz ohne $a$. Bei ganzen Höhen: $\log_{a\uparrow\uparrow n}\bigl(a\uparrow\uparrow(n+1)\bigr)=a\uparrow\uparrow n\,/\,a\uparrow\uparrow(n-1)$.
+  einfach: >-
+    Bei Potenzen gilt x^(m+n) = x^m · x^n. Für Türme gibt es keine solche Regel — das sieht man schon an zwei kleinen Beispielen. Was es gibt, ist eine
+    Tauschregel: Ein Turmwert hoch einem anderen Turmwert ist immer a hoch dem Produkt der beiden Werte eine Stufe tiefer, darum darf man die beiden tauschen.
+    Und weil T(x+1) = a^T(x) ist, kann man die Basis aus zwei beliebigen Nachbarwerten zurückrechnen, auch bei halben Höhen.
+  formen:
+    - {tex: 'T(m+n)=\exp_a^{\circ m}\bigl(T(n)\bigr)', notiz: 'Iteration statt Rechenoperation'}
+    - {tex: '({}^ba)^{({}^ca)}=({}^{c+1}a)^{({}^{b-1}a)}', notiz: 'Tauschregel bei ganzen Höhen'}
+    - {tex: '\ln a=\frac{\ln T(x+1)}{T(x)}', notiz: Basis aus Nachbarwerten}
+    - {tex: '\frac{T(x+1)}{T(x)}=\log_{T(x+1)}T(x+2)', notiz: 'Quotient zweier Nachbarn = Logarithmus der nächsten beiden'}
+  beweis: {art: vollstaendig, text: '(i) Gegenbeispiel wie angegeben. (ii) $T(x+1)^{T(y)}=(a^{T(x)})^{T(y)}=a^{T(x)T(y)}$ (für $a>0$ ist $(a^u)^v=a^{uv}$ reell), symmetrisch in $x$ und $y$; bei ganzen Höhen sind beide Seiten $a^{({}^{b-1}a)({}^ca)}$. (iii) Hochzahl $1/T(x)$ gibt $a$ zurück; mit $y=x+1$ und $T(x)\ne0$: $T(x+2)=a^{T(x+1)}=(a^{T(x)})^{T(x+1)/T(x)}$.'}
+  experimente: [exp.grundlagen_identitaeten]
+  pruefung:
+    f1_folgt_unmittelbar: Ja, aus $(a^u)^v=a^{uv}$ und einem Gegenbeispiel.
+    f2_benutzte_voraussetzungen: '$a>0$ (damit Potenzen reell sind); $T(x)\ne0$, also $x\ne-1$, für die Formen mit $1/T(x)$.'
+    f3_spezialfall: 'Ja: für jede Superfunktion einer Potenzfunktion $f(z)=a^z$; allgemein $F(x+1)=f(F(x))$ und $f(u)^v=f(uv)$.'
+    f4_uebertragbar: 'Auf die Pentation nicht direkt: $T(u)^{v}$ ist kein Turmwert. Die Stufenleiter (gr.satz.stufenleiter) ist dort das Gegenstück.'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Räumt einen häufigen Irrtum aus, setzt die Regel daneben, die wirklich gilt, und macht die Basis aus Werten ablesbar.', nutzen_stufe: mittel}
+  quellen: [{ref: wikipedia_tetration}, {ref: diese_arbeit, stelle: 'Tauschregel bei reellen Höhen, Basis aus Nachbarwerten'}]
+  kanten:
+    - {typ: verwandt, ziel: gr.def.turm}
+    - {typ: verwandt, ziel: gr.satz.ln_aus_steigungen}
+
+- id: gr.satz.taylor_leiter
+  titel: 'Taylor-Leiter: die Reihe um x legt die Reihe um x+1 fest (Bell-Polynome)'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [T_b, carleman]
+  bereich: 'jede Tetration, die bei $x$ analytisch bzw. $n$-mal differenzierbar ist; $c=\ln a$'
+  aussage: |
+    Ist $T(x+t)=\sum_{n\ge0}t_n\,t^n$, dann ist $T(x+1+t)=\sum_{n\ge0}e_n\,t^n$ mit
+    $$e_0=a^{t_0}=T(x+1),\qquad n\,e_n=c\sum_{k=1}^{n}k\,t_k\,e_{n-k}.$$
+    Gleichwertig $T^{(n)}(x+1)=T(x+1)\cdot B_n\bigl(c\,T'(x),\,c\,T''(x),\dots,c\,T^{(n)}(x)\bigr)$ mit den vollständigen Bell-Polynomen $B_n$, also
+    $T''(x+1)=T(x+1)\bigl(cT''(x)+c^2T'(x)^2\bigr)$ und $T'''(x+1)=T(x+1)\bigl(cT'''+3c^2T'T''+c^3T'^3\bigr)(x)$.
+    Die $n$-te Ableitung eine Stufe höher hängt nur von den Ableitungen bis zur Ordnung $n$ eine Stufe tiefer ab; rückwärts gilt dasselbe mit
+    $\ln T(x+1+t)=c\,T(x+t)$, solange $T(x+1)>0$. Basis 2: Die 17 Koeffizienten um 1 folgen aus denen um 0 auf $8\cdot10^{-23}$ genau.
+  einfach: >-
+    Kennt man an einer Stelle alle Ableitungen, kennt man sie auch eine Stufe höher: Man setzt die Reihe in „a hoch …“ ein und rechnet aus. Darum
+    genügt die Taylorreihe um eine einzige Stelle, um die Kurve an allen ganzzahlig verschobenen Stellen genau zu kennen — die Kettenregel ist der erste Schritt davon.
+  formen:
+    - {tex: 'e_n=\frac{c}{n}\sum_{k=1}^{n}k\,t_k\,e_{n-k}', notiz: 'Rekursion für exp einer Potenzreihe (J. C. P. Miller)'}
+    - {tex: 'T^{(n)}(x+1)=T(x+1)\,B_n\bigl(cT''(x),\dots,cT^{(n)}(x)\bigr)', notiz: 'Faà di Bruno / Bell-Polynome'}
+    - {tex: '(\ln T)^{(n)}(x+1)=c\,T^{(n)}(x)', notiz: 'rückwärts, ohne Bell-Polynome'}
+  beweis: {art: vollstaendig, text: '$E(t)=\exp(c\,S(t))$ mit $S(t)=\sum t_nt^n$ erfüllt $E''=c\,S''E$; Koeffizientenvergleich gibt die Rekursion. Die Bell-Form ist die Formel von Faà di Bruno für $\exp\circ(cS)$, denn $E^{(n)}(0)=E(0)\,B_n\bigl(cS''(0),\dots,cS^{(n)}(0)\bigr)$.'}
+  stuetzt_sich_auf: [gr.satz.kettenregel]
+  experimente: [exp.grundlagen_identitaeten]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Kettenregel höherer Ordnung.'
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit bis zur Ordnung $n$ bei $x$; für die ganze Reihe Analytizität.'
+    f3_spezialfall: 'Ja: Carleman-/Bell-Matrix von $\exp_a$ — die Leiter ist eine Spalte dieser Matrix, angewandt auf die Taylorreihe.'
+    f4_uebertragbar: 'Jede Superfunktion: Reihe um $x+1$ = $f$ angewandt auf die Reihe um $x$.'
+    f5_neue_frage: 'Wie schnell wächst der Konvergenzradius-Verlust beim Hinuntersteigen zu $-1$ (wo $T(x+1)\to0$ und ln eine Singularität macht)?'
+  bewertung: {richtigkeit: 'vollständig; an Kneser zur Basis 2 auf 22 Stellen nachgerechnet', neuheit: folklore, nutzen: 'Rechnet Ableitungen an allen ganzzahlig verschobenen Stellen aus einer einzigen Reihe aus.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verallgemeinert, ziel: gr.satz.kettenregel}
+    - {typ: verwandt, ziel: gr.kor.produktformel}
+
+- id: gr.satz.stufenleiter
+  titel: 'Stufenleiter: ln ln a ist die m-te Differenz von ln H′ — für Tetration, Pentation, Hexation, …'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [hyperoperation, T_b, superfunktion]
+  bereich: 'Basis $a>1$; $H_3(x)=a^x$, $H_{k+1}(x+1)=H_k(H_{k+1}(x))$, $H_{k+1}(0)=1$, jede Stufe streng wachsend und differenzierbar ($H_4=T$ Tetration, $H_5=P$ Pentation, $H_6$ Hexation)'
+  aussage: |
+    (i) **Werte:** $H_k(0)=1$, $H_k(1)=a$, $H_k(2)=H_{k-1}(a)$, und nach unten $H_k(-j)=-(j-1)$ für $j=1,\dots,k-3$:
+    $T(-1)=0$; $P(-1)=0$, $P(-2)=-1$; $H_6(-1)=0$, $H_6(-2)=-1$, $H_6(-3)=-2$. Jede Stufe erbt eine ganze Stelle mehr.
+
+    (ii) **Steigungen:** $H_{k+1}'(-j)/H_{k+1}'(-j-1)=H_k'(-j)$ für $0\le j\le k-3$, und daraus für $m=0,1,2,\dots$
+    $$\ln\ln a=\sum_{j=0}^{m}(-1)^j\binom{m}{j}\ln H_{3+m}'(-j).$$
+    $m=1$: $\ln a=T'(0)/T'(-1)$; $m=2$: $\ln a=\dfrac{P'(0)\,P'(-2)}{P'(-1)^2}$; $m=3$: $\ln a=\dfrac{H_6'(0)\,H_6'(-2)^3}{H_6'(-1)^3\,H_6'(-3)}$.
+    Die einzelnen Steigungen hängen von den gewählten Lösungen ab, diese Kombinationen nicht. Bei $a=e$ bilden $P'(0),P'(-1),P'(-2)$ eine geometrische Folge
+    mit Quotient $T_e'(0)=1.0917673512\ldots$ (reguläre Pentation am Fixpunkt: $1.08879$, $0.99727$, $0.91345$).
+  einfach: >-
+    Bei der Tetration ist ln a das Verhältnis zweier Steigungen. Eine Stufe höher, bei der Pentation, braucht man drei Steigungen, bei der Hexation vier —
+    immer mit den Vorzeichen und Gewichten einer Binomialzeile. Jede Stufe hat nach unten eine ganze Stelle mehr, an der man den Wert genau kennt.
+  formen:
+    - {tex: 'T''(0)=\frac{P''(0)}{P''(-1)},\quad T''(-1)=\frac{P''(-1)}{P''(-2)}', notiz: 'Steigungen der Tetration als Steigungsverhältnisse der Pentation'}
+    - {tex: '\Delta\ln H_{k+1}''(-j)=\ln H_k''(-j)', notiz: 'Rückwärtsdifferenz einer Stufe = log. Steigung der Stufe darunter'}
+    - {tex: 'P''(-1)^2=P''(0)\,P''(-2)\quad(a=e)', notiz: geometrische Folge}
+  beweis:
+    art: vollstaendig
+    text: |
+      (i) $H_{k+1}(-1)=H_k^{-1}(1)=0$, weil $H_k(0)=1$; induktiv $H_{k+1}(-j-1)=H_k^{-1}(H_{k+1}(-j))=H_k^{-1}(-(j-1))=-j$, weil $H_k(-j)=-(j-1)$.
+      (ii) Kettenregel $H_{k+1}'(x+1)=H_k'(H_{k+1}(x))\,H_{k+1}'(x)$ bei $x=-j-1$ mit $H_{k+1}(-j-1)=-j$. Mit $\delta_k(j)=\ln H_k'(-j)$ heisst das
+      $\delta_{k+1}(j)-\delta_{k+1}(j+1)=\delta_k(j)$: die Rückwärtsdifferenz einer Stufe ist die Stufe darunter. $m$-mal angewandt landet man bei
+      $\delta_3(0)=\ln\bigl(\ln a\cdot a^0\bigr)=\ln\ln a$.
+  stuetzt_sich_auf: [gr.satz.ln_aus_steigungen]
+  experimente: [exp.grundlagen_identitaeten]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Kettenregel; neu ist die Leiter über alle Stufen.'
+    f2_benutzte_voraussetzungen: 'Jede Stufe injektiv (für die Werte) und differenzierbar an den ganzen Stellen bis $-m$.'
+    f3_spezialfall: 'Ja: für jede Folge von Superfunktionen $F_{k+1}(x+1)=F_k(F_{k+1}(x))$ mit gemeinsamem Startwert.'
+    f4_uebertragbar: 'Basen $0<a<1$: mit $\ln a<0$ ohne den äusseren Logarithmus (Quotientenform). Höhere Ableitungen: Taylor-Leiter je Stufe.'
+    f5_neue_frage: 'Gibt es ebenso lösungsunabhängige Kombinationen zweiter Ableitungen über drei Stufen (Analogon zu $(T''''(0)-T''(0)^2)/T''''(-1)$)?'
+  bewertung: {richtigkeit: 'vollständig; Pentation zu den Basen e und 2 auf 25 Stellen nachgerechnet', neuheit: folklore, nutzen: 'Verbindet die Steigungen aller Hyperoperationen mit ln ln a.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}, {ref: forum_fox2007_pentation, stelle: 'Pentation zur Basis e, Werte und Fixpunkt'}]
+  kanten:
+    - {typ: verallgemeinert, ziel: gr.satz.ln_aus_steigungen}
+    - {typ: verwandt, ziel: kn.konstr.pentation}
+
+- id: gr.satz.frei_und_fest
+  titel: 'Was jede Tetration gemeinsam hat: fest ist nur, was ganze Schritte verbindet'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [T_b, periodische_stoerung]
+  bereich: 'glatte (oder reell-analytische), streng wachsende reelle Tetrationen zur Basis $a>1$ auf $(-2,\infty)$'
+  aussage: |
+    (i) **Fest** — für alle solchen Tetrationen gleich — sind die Werte an ganzen Stellen und jede Beziehung zwischen den Taylorreihen an Stellen mit
+    **ganzzahligem** Abstand: Die Reihe bei $x+n$ ist $\exp_a^{\circ n}$ angewandt auf die Reihe bei $x$. Beispiele: $\ln a=T'(0)/T'(-1)=(T''(0)-T'(0)^2)/T''(-1)$,
+    $T'(1)/T'(0)=a\ln a$, $T'(x+1)/T'(x)=\ln a\,T(x+1)$.
+
+    (ii) **Frei** ist alles andere. An einer Stelle $x_0\notin\mathbb Z$ kann man den Wert (irgendwo zwischen den Nachbarwerten an den ganzen Stellen), die Steigung ($>0$) und
+    endlich viele weitere Ableitungen beliebig vorschreiben; an einer ganzen Stelle alle Ableitungen ab der ersten. Stellen mit nicht ganzzahligem Abstand sind
+    voneinander unabhängig.
+
+    Jede lösungsunabhängige Grösse aus Werten und Ableitungen ist deshalb schon eine Grösse der ganzzahligen Iterierten $\exp_a^{\circ n}$ — die Gleichung
+    $T(x+1)=a^{T(x)}$ allein weiss nicht mehr.
+  einfach: >-
+    Die Tetrationsgleichung verbindet nur Stellen, die genau 1, 2, 3, … auseinander liegen. Alles, was eine Stelle mit einer anderen im Abstand ½ verbindet,
+    muss man selbst wählen — darum gibt es viele Tetrationen, und darum braucht man für eine „beste“ eine Zusatzbedingung.
+  formen:
+    - {tex: 'J_{x+n}T=J_{T(x)}\bigl(\exp_a^{\circ n}\bigr)\circ J_xT', notiz: 'Jets (Taylorreihen) an ganzzahlig verschobenen Stellen'}
+    - {tex: '\tilde T=T\circ(\mathrm{id}+p),\ \ p(x+1)=p(x),\ p(0)=0', notiz: 'alle anderen Lösungen (fg.satz.allgemeine_loesung)'}
+  beweis:
+    art: vollstaendig
+    text: |
+      Jede andere Lösung ist $\tilde T=T\circ\varphi$ mit $\varphi=\mathrm{id}+p$, $p$ 1-periodisch, $p(0)=0$ (fg.satz.allgemeine_loesung). (i) Weil $p$ periodisch ist, hat $\varphi$
+      an $x$ und $x+n$ dieselbe Taylorreihe (bis auf die Verschiebung um $n$); in $J_{x+n}\tilde T\circ(J_x\tilde T)^{-1}=J_{x+n}T\circ(J_xT)^{-1}$ kürzt sie sich, und
+      $T(x+n+t)=\exp_a^{\circ n}(T(x+t))$ gibt die Form. (ii) Ein glattes 1-periodisches $p$ mit $1+p'>0$ kann an einer Stelle jede endliche Taylorreihe mit $p'(x_0)>-1$ haben
+      (Hut-Funktion mit kleinem Träger, Ausgleich der Steigung auf dem Rest der Periode), und Hüte an Stellen mit nicht ganzzahligem Abstand stören sich nicht.
+      Reell-analytisch: glättendes Wärmeleitungs-Mittel und eine kleine trigonometrische Korrektur der endlich vielen Ableitungen.
+  stuetzt_sich_auf: [fg.satz.allgemeine_loesung, gr.satz.taylor_leiter]
+  experimente: [exp.grundlagen_identitaeten]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der allgemeinen Lösung; neu ist die Sortierung in „fest“ und „frei“.'
+    f2_benutzte_voraussetzungen: 'Monotonie (für die allgemeine Lösung) und Glattheit; für „frei“ die Konstruktion periodischer Funktionen mit vorgegebener Reihe.'
+    f3_spezialfall: 'Ja: Abel-Gleichungen allgemein (Kuczma) — Invarianten einer Abel-Funktion sind Invarianten der Abbildung.'
+    f4_uebertragbar: 'Jede Stufe: auch bei der Pentation sind nur Beziehungen über ganze Schritte fest (gr.satz.stufenleiter).'
+    f5_neue_frage: 'Welche globale Bedingung (komplex: Kneser; reell: br.frage.bohr_mollerup) macht aus „frei“ wieder „fest“?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Erklärt in einem Satz, welche Identitäten es überhaupt geben kann — und warum T(½) nicht dazu gehört.', nutzen_stufe: hoch}
+  quellen: [{ref: diese_arbeit}, {ref: kuczma1990, geprueft: nein}]
+  kanten:
+    - {typ: verwandt, ziel: fg.kor.nichteindeutigkeit}
+    - {typ: motiviert, ziel: br.frage.bohr_mollerup}
+
+- id: gr.satz.exponentialitaet
+  titel: 'Der Superlogarithmus zählt Exponentiale: χ(f) = lim (slog f(x) − slog x)'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [slog, hardy_feld, superfunktion]
+  bereich: 'wachsende $f$ mit $f(x)\to\infty$; $A=\operatorname{slog}_e$ stetig, streng wachsend, mit $A(y+c)-A(y)\to0$ für jedes feste $c$ (Kneser erfüllt das)'
+  aussage: |
+    Setze $\chi(f)=\lim_{x\to\infty}\bigl(A(f(x))-A(x)\bigr)$, wo der Grenzwert existiert. Dann gilt:
+    (i) $\chi(\exp)=1$, $\chi(\ln)=-1$, $\chi(f\circ g)=\chi(f)+\chi(g)$, und $\chi(\exp^{[s]})=s$ für $\exp^{[s]}(x)=T(A(x)+s)$ — eine halbe Exponentialfunktion hat $\chi=\tfrac12$.
+
+    (ii) $\chi(f)=0$ für $cx$, $x+c$, $x^k$, $x^{\ln x}$; $\chi(f)=1$ für $2^x$, $x^x$, $e^{x^2}$ — allgemein ist $\chi$ für jede Exp-Log-Funktion und jede Transreihe eine ganze
+    Zahl, die Exponentialität im Sinn von Hardy und van der Hoeven.
+
+    (iii) Eine **ganze** Exponentialität ist für jeden Superlogarithmus dieselbe; eine **gebrochene** nicht: mit einem anderen $\tilde A=A+\theta(A)$ ($\theta$ 1-periodisch) ist
+    $\tilde A(\exp^{[1/2]}x)-\tilde A(x)=\tfrac12+\theta(A(x)+\tfrac12)-\theta(A(x))$ — das pendelt, wenn $\theta$ nicht $\tfrac12$-periodisch ist.
+
+    Bei $x=e\uparrow\uparrow k$, $k=2,\dots,5$: für $x^2$ ist die Differenz $0.529$, $0.197$, $0.0149$, $4.0\cdot10^{-9}$.
+  einfach: >-
+    Der Superlogarithmus zählt, wie oft man logarithmieren muss. Vergleicht man das für f(x) und für x, bleibt im Grenzfall genau die Zahl der Exponentialfunktionen
+    übrig, die in f „stecken“: 0 bei Polynomen, 1 bei 2^x oder x^x, 2 bei e^(e^x). Mit Tetration gibt es auch halbe Exponentialfunktionen — dort steht ½.
+  formen:
+    - {tex: '\chi(f)=\lim_{x\to\infty}\bigl(\operatorname{slog}f(x)-\operatorname{slog}x\bigr)', notiz: Definition}
+    - {tex: '\chi(f)=\lim_{n\to\infty}\bigl(\operatorname{slog}(\ln^{\circ n}f(\exp^{\circ n}y))-\operatorname{slog}y\bigr)', notiz: 'über iterierte Logarithmen (praktisch für riesige x)'}
+  beweis:
+    art: vollstaendig
+    text: |
+      (i) $A(e^y)=A(y)+1$; Additivität durch $A(f(g(x)))-A(x)=[A(f(g(x)))-A(g(x))]+[A(g(x))-A(x)]$; $A(T(A(x)+s))=A(x)+s$.
+      (ii) $A(x^2)-A(x)=A(\ln2+\ln\ln x)-A(\ln\ln x)\to0$ nach Voraussetzung; $x^{\ln x}$ ebenso eine Stufe tiefer; $A(2^x)-A(x)=1+A(x\ln2)-A(x)\to1$.
+      Ganzzahligkeit für Exp-Log-Funktionen: Hardy (1910), für Transreihen: van der Hoeven (2006); dort ist $\ln^{\circ n}\circ f\circ\exp^{\circ n}\sim\exp^{\circ k}$, also $\chi=k$.
+      (iii) Weil $\theta$ periodisch und gleichmässig stetig ist, verschwindet $\theta(A(f))-\theta(A(x))$ genau dann für alle Wahlen, wenn $A(f)-A(x)$ gegen eine ganze Zahl geht.
+  stuetzt_sich_auf: [gr.satz.slog_grund]
+  experimente: [exp.grundlagen_identitaeten]
+  pruefung:
+    f1_folgt_unmittelbar: '(i), (iii) ja; (ii) für Beispiele ja, allgemein Literatur.'
+    f2_benutzte_voraussetzungen: '$A(y+c)-A(y)\to0$ (folgt aus $A''\to0$, gr.satz.slog_steigung_langsam); Existenz des Grenzwerts wird nicht für jedes $f$ behauptet.'
+    f3_spezialfall: 'Ja: Exponentialität von Transreihen (Écalle, van der Hoeven) — slog macht sie für reelle Funktionen messbar.'
+    f4_uebertragbar: 'Andere Basen: $\operatorname{slog}_b$ gibt bei ganzem $\chi$ denselben Wert (Basiswechsel ändert slog nur um eine beschränkte Funktion, die gegen eine Konstante geht).'
+    f5_neue_frage: 'Bilden die Funktionen mit gebrochener Exponentialität, die aus Kneser-sexp, slog, exp, ln entstehen, einen Hardy-Körper? (br.frage.kneser_hardy)'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Macht „wie viele Exponentiale?“ zu einer Zahl und zeigt, wo die Wahl der Tetration sichtbar wird.', nutzen_stufe: hoch}
+  quellen: [{ref: hardy1910}, {ref: vdhoeven2006}, {ref: boshernitzan1986}, {ref: diese_arbeit, stelle: '(iii) und Zahlen'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.halbe_exp_wachstum}
+    - {typ: verwandt, ziel: gr.satz.slog_steigung_langsam}
+    - {typ: motiviert, ziel: br.frage.kneser_hardy}

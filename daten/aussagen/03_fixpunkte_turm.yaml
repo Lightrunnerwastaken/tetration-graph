@@ -1,0 +1,456 @@
+gebiet: fp
+aussagen:
+
+- id: fp.def.eta
+  titel: Schwelle η = e^{1/e}
+  art: definition
+  ebene: A
+  niveau: einstieg
+  status: definition
+  objekte: [eta, fixpunkt_L]
+  aussage: |
+    $\eta:=e^{1/e}\approx1.444667861$. Für $1<b<\eta$ hat $b^x=x$ zwei reelle Lösungen, für $b=\eta$ eine
+    doppelte ($x=e$), für $b>\eta$ keine. Die drei Fälle bestimmen drei Lösungsklassen.
+
+- id: fp.satz.lambert
+  titel: Fixpunkte von b^z über Lambert W
+  art: satz
+  ebene: A
+  status: bewiesen
+  objekte: [fixpunkt_L, lambert_w, multiplikator]
+  bereich: '$b\in\mathbb C\setminus\{0,1\}$, Hauptzweig von $\ln b$'
+  voraussetzungen:
+    - {text: 'ln b ≠ 0 (b ≠ 1)', benutzt: ja}
+  aussage: |
+    Die Fixpunkte von $z\mapsto b^z$ sind genau $L_k=-W_k(-\ln b)/\ln b$, $k\in\mathbb Z$, mit Multiplikator
+    $\lambda_k=L_k\ln b=-W_k(-\ln b)$. Für $b>\eta$ sind die primären Fixpunkte $-W_0(-\ln b)/\ln b$ und
+    $-W_{-1}(-\ln b)/\ln b$ (konjugiert); der mit $\operatorname{Im}>0$ ist $L=-W_{-1}(-\ln b)/\ln b$
+    (Hauptzweig-Konvention: $W_0(x)$ für $x<-1/e$ in der oberen Halbebene), z. B. $L_e\approx0.3181315+1.3372357\,i$.
+  beweis:
+    art: vollstaendig
+    text: '$b^L=L\iff e^{L\ln b}=L\iff(-L\ln b)e^{-L\ln b}=-\ln b$, also $-L\ln b=W_k(-\ln b)$.'
+  experimente: [exp.fixpunkte]
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Umformung).
+    f2_benutzte_voraussetzungen: Nur b ≠ 0, 1.
+    f3_spezialfall: Spezialfall der Lösung von $x=a e^{cx}$ durch W.
+    f4_uebertragbar: 'Für komplexe Basen identisch (Paulsen 2019 benutzt das).'
+    f5_neue_frage: 'Multiplikator $\lambda=-W(-\ln b)$ bestimmt alle imaginären Perioden ($2\pi i/\ln\lambda$) und damit Streifenbreiten.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Rechnet alle Fixpunktdaten explizit aus.', nutzen_stufe: hoch}
+  quellen: [{ref: corless1996}]
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Graph v1', aenderung: '„L = −W_0(−ln b)/ln b mit Im L > 0“ — Vorzeichen falsch.'}
+    - {datum: '2026-10-08', fassung: 'Graph v2', aenderung: 'Oberer Fixpunkt ist −W_{−1}(−ln b)/ln b.', grund: 'exp.fixpunkte: −W_0(−1) = 0.318 − 1.337 i'}
+
+- id: fp.satz.reelle_fixpunkte
+  titel: Minimum von b^x − x und die drei Fälle
+  art: satz
+  ebene: A
+  niveau: einstieg
+  einfach: >-
+    Ob die Kurve y = a^x die Gerade y = x schneidet, hängt nur davon ab, ob a kleiner oder grösser als η ≈ 1.4447 ist: zweimal, einmal (berühren) oder gar nicht.
+  status: bewiesen
+  objekte: [fixpunkt_L, eta, multiplikator]
+  bereich: 'reelle $b>1$, $x\in\mathbb R$'
+  voraussetzungen:
+    - {text: 'b > 1', benutzt: ja}
+  aussage: |
+    $\min_{x\in\mathbb R}(b^x-x)=\dfrac{1+\ln\ln b}{\ln b}$, angenommen bei $x^*=-\ln\ln b/\ln b$.
+    Das Minimum ist $>0$ genau für $b>\eta$, $=0$ für $b=\eta$, $<0$ für $1<b<\eta$.
+    Für $1<b<\eta$ ist der untere Fixpunkt anziehend ($0<\lambda<1$), der obere abstossend ($\lambda>1$);
+    bei $b=\eta$ ist $\lambda=1$.
+  beweis:
+    art: vollstaendig
+    text: '$x\mapsto b^x-x$ ist strikt konvex; Ableitung $b^x\ln b-1=0$ bei $x^*$, dort $b^{x^*}=1/\ln b$. Multiplikator $b^x\ln b$ ist wachsend in $x$ und $=1$ bei $x^*$.'
+  experimente: [exp.fixpunkte]
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Schulanalysis).
+    f2_benutzte_voraussetzungen: 'Nur $b>1$; die Formel gilt für alle $b>1$, die Positivität genau für $b>\eta$.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Unmittelbar auf Wachstumsschranken: bw.lem.wachstumsluecke ist genau diese Rechnung.'
+    f5_neue_frage: 'Quantitativer Engpass nahe η: wie viele Schritte braucht der Orbit an $x^*$ vorbei? → br.satz.sattel_knoten'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Grundlage der Fallunterscheidung.', nutzen_stufe: hoch}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verallgemeinert, ziel: bw.lem.wachstumsluecke}
+
+- id: fp.satz.abstossend
+  titel: Für b > η sind alle Fixpunkte abstossend
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  objekte: [fixpunkt_L, multiplikator]
+  bereich: 'reelle $b>\eta$'
+  voraussetzungen:
+    - {text: 'b > η reell', benutzt: ja}
+  aussage: |
+    Alle Fixpunkte von $b^z$ haben $|\lambda|>1$. Grund: $b^z$ ist via $w=z\ln b$ konjugiert zu
+    $w\mapsto(\ln b)\,e^w$ mit $\ln b>1/e$; dafür ist die Julia-Menge ganz $\mathbb C$ (Misiurewicz für
+    $\ln b=1$, Devaney für $>1/e$), also gibt es keine anziehenden oder neutralen Zyklen.
+  beweis: {art: literatur, text: 'Konjugation (hier) + Julia-Menge = ℂ (Literatur).'}
+  quellen: [{ref: misiurewicz1981}, {ref: devaney1984}]
+  experimente: [exp.fixpunkte]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem Satz über die Julia-Menge; direkt nachrechenbar auch für den primären Fixpunkt.'
+    f2_benutzte_voraussetzungen: 'Für die primären Fixpunkte reicht eine direkte Rechnung; für alle $L_k$ die Julia-Mengen-Aussage (am Original ungeprüft).'
+    f3_spezialfall: 'Ja: Satz über die Exponentialfamilie $\lambda e^w$, $\lambda>1/e$.'
+    f4_uebertragbar: 'Komplexe Basen ausserhalb des Shell–Thron-Gebiets: nicht automatisch.'
+    f5_neue_frage: 'Wie gross ist $|\lambda_0|$ als Funktion von $b$? (exp.fixpunkte: $|\lambda|\to1$ für $b\downarrow\eta$.)'
+  bewertung: {richtigkeit: 'gesichert (Literatur), Teil ungeprüft', neuheit: klassisch, nutzen: 'Rechtfertigt Koenigs an L über log_b.', nutzen_stufe: mittel}
+
+- id: fp.satz.turm_reell
+  titel: Konvergenz des unendlichen Turms (reell)
+  art: satz
+  ebene: C
+  niveau: einstieg
+  einfach: >-
+    Der unendliche Turm a^a^a^… hat genau für Basen zwischen etwa 0.066 und 1.4447 einen Grenzwert; darüber wächst er über alle Grenzen.
+  status: bewiesen_literatur
+  objekte: [turm, lambert_w, eta]
+  bereich: 'reelle $b>0$, Folge $t_0=1$, $t_{n+1}=b^{t_n}$'
+  voraussetzungen:
+    - {text: 'b > 0 reell', benutzt: ja}
+  aussage: |
+    Die Folge konvergiert genau für $e^{-e}\le b\le e^{1/e}$, mit Grenzwert $h(b)=-W(-\ln b)/\ln b$.
+  beweis: {art: literatur, text: 'Euler (1783) fand die Grenzen, Eisenstein (1844) die Reihe; Übersicht bei Knoebel (1981), Beweis bei Baker–Rippon.'}
+  quellen: [{ref: euler1783}, {ref: eisenstein1844}, {ref: knoebel1981, stelle: 'Übersicht und Geschichte'}, {ref: baker_rippon1985}]
+  experimente: [exp.turmgebiet]
+  pruefung:
+    f1_folgt_unmittelbar: Nein (Rand $e^{-e}$ braucht Zwei-Zyklus-Analyse).
+    f2_benutzte_voraussetzungen: 'Startwert 1; für $b<e^{-e}$ entsteht ein anziehender 2-Zyklus.'
+    f3_spezialfall: 'Reelle Spur des Shell–Thron-Satzes.'
+    f4_uebertragbar: 'Der Grenzwert ist der anziehende Fixpunkt = Grenzwert der regulären Tetration für $x\to\infty$.'
+    f5_neue_frage: 'Komplexe Basen → fp.satz.shell_thron'
+  bewertung: {richtigkeit: gesichert, neuheit: klassisch, nutzen: 'Einstieg, verbindet mit Lambert W.', nutzen_stufe: mittel}
+
+- id: fp.satz.shell_thron
+  titel: Shell–Thron-Gebiet
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  objekte: [turm, shell_thron, multiplikator]
+  bereich: 'komplexe $b$'
+  voraussetzungen:
+    - {text: 'b = exp(t e^{−t}) mit |t| < 1', benutzt: ja}
+  aussage: |
+    Ist $b=\exp(t\,e^{-t})$ mit $|t|<1$, so konvergiert der Turm $b^{b^{\cdots}}$ (gegen $e^{t}$, den
+    Fixpunkt mit Multiplikator $t$). Auf dem Rand und ausserhalb kommen Konvergenz und Divergenz vor.
+  beweis: {art: literatur, text: 'Barrow (1936): Konvergenz genau bei |log λ| ≤ 1 (in der Form der Forums-Wiki); Thron (1957), Shell (1962); für i^i^… Macintyre (1966); allgemein Baker–Rippon. Parametrisierung: Fixpunkt $L=e^t$, $\lambda=L\ln b=t$.'}
+  quellen: [{ref: barrow1936}, {ref: thron1957}, {ref: shell1962}, {ref: macintyre1966, stelle: 'Basis i'}, {ref: baker_rippon1985}]
+  experimente: [exp.turmgebiet]
+  pruefung:
+    f1_folgt_unmittelbar: 'Teilweise: $|\lambda|<1$ gibt lokale Anziehung; dass der Orbit von 1 eingefangen wird, braucht Argument.'
+    f2_benutzte_voraussetzungen: 'Startwert 1 bzw. Orbit der kritischen Grösse.'
+    f3_spezialfall: 'Analog zur Hauptkardioide der Mandelbrot-Menge (Parameter = Multiplikator).'
+    f4_uebertragbar: 'Basen im Gebiet = Basen mit anziehendem Fixpunkt = reguläre (Koenigs-)Tetration direkt verfügbar.'
+    f5_neue_frage: 'Struktur ausserhalb: Zyklen in „Knospen“ → fp.verm.knospen'
+  bewertung: {richtigkeit: gesichert, neuheit: klassisch, nutzen: 'Bestimmt, wo reguläre Tetration komplex möglich ist.', nutzen_stufe: mittel}
+
+- id: fp.verm.knospen
+  titel: Zyklen in den Knospen am Shell–Thron-Rand
+  art: vermutung
+  ebene: C
+  status: vermutung
+  objekte: [turm, shell_thron]
+  bereich: '$b=\exp(t e^{-t})$, $t=r\,e^{2\pi i p/q}$, $r$ knapp über 1'
+  aussage: |
+    Knapp ausserhalb des Shell–Thron-Gebiets am Randpunkt mit $t=e^{2\pi i p/q}$ läuft der Turm in einen
+    anziehenden Zyklus der Länge $q$ (Periodenverdopplung bei $q=2$, $t=-1$ reell: $b<e^{-e}$).
+  gegenbeispielsuche: |
+    exp.turmgebiet: alle teilerfremden $p/q$ mit $q\le7$, je zwei Abstände $r=1+0.3/q^2$ und $1+0.8/q^2$: Periode $q$ in 34/34 Fällen.
+    Zusätzlich 109 518 Gitterbasen mit $|t|<0.97$: alle konvergent (Shell–Thron ohne Gegenbeispiel).
+  experimente: [exp.turmgebiet]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Analogon der Satelliten-Knospen der Mandelbrot-Menge, dort bewiesen (Multiplikator-Abbildung).'
+    f2_benutzte_voraussetzungen: —
+    f3_spezialfall: 'Vermutlich Spezialfall der allgemeinen Bifurkationstheorie (q-Zyklus entsteht, wenn der Multiplikator durch $e^{2\pi i p/q}$ geht).'
+    f4_uebertragbar: 'Auf reguläre Tetration zu komplexen Basen: dort periodische statt konvergente „Tetration“.'
+    f5_neue_frage: 'Welche Tetration gehört zu Basen mit anziehendem q-Zyklus? (q-wertige reguläre Konstruktion)'
+  bewertung: {richtigkeit: 'numerisch gestützt', neuheit: folklore, nutzen: 'Anschauung; Brücke zur Mandelbrot-Theorie.', nutzen_stufe: gering}
+  quellen: [{ref: baker_rippon1985, stelle: 'Rand und Äusseres'}]
+
+- id: fp.satz.unendliche_superwurzel
+  titel: Unendliche Superwurzel — der Turm umgekehrt ist y^{1/y}
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [turm, superwurzel, eta]
+  bereich: 'reelle Basen $e^{-e}\le b\le\eta$, Grenzwerte $1/e\le y\le e$'
+  aussage: |
+    Die Grenzwertfunktion $h(b)={}^\infty b$ ist auf $[e^{-e},\eta]$ stetig, streng wachsend und bildet bijektiv auf $[1/e,e]$ ab; ihre Umkehrung ist
+    $$\sqrt[\infty]{y}_s=y^{1/y}\qquad(1/e\le y\le e).$$
+    Ausserhalb hilft die Formel nicht: für $y>e$ ist $y^{1/y}<\eta$ eine gültige Basis, aber ihr Turm läuft gegen den anderen Fixpunkt
+    (z. B. $3^{1/3}$: Grenzwert $2.4780526802883\ldots$, nicht 3); für $0<y<1/e$ ist $y^{1/y}<e^{-e}$ und der Turm springt zwischen zwei Werten.
+  einfach: >-
+    Welche Basis muss man nehmen, damit der unendliche Turm genau y ergibt? Antwort: y hoch 1/y — aber nur, wenn y zwischen 1/e und e liegt.
+    Für y = 2 ist das √2, und tatsächlich ist √2^√2^√2^… = 2. Für y = 4 käme wieder √2 heraus, doch der Turm von √2 endet bei 2, nicht bei 4.
+  formen:
+    - {tex: 'b^y=y\iff b=y^{1/y}', notiz: Fixpunktgleichung nach b aufgelöst}
+    - {tex: '\frac{d}{dy}\,y^{1/y}=y^{1/y}\,\frac{1-\ln y}{y^2}', notiz: 'positiv genau für y < e'}
+  beweis:
+    art: vollstaendig
+    text: 'Konvergiert der Turm gegen $y$, so ist $b^y=y$, also $b=y^{1/y}$. Nach fp.satz.turm_reell konvergiert er genau für $b\in[e^{-e},\eta]$ gegen $h(b)=-W(-\ln b)/\ln b$, und das ist der Fixpunkt mit $|\lambda|=|y\ln b|=|\ln y|\le1$, also $y\in[1/e,e]$. Auf $(0,e]$ ist $y^{1/y}$ streng wachsend mit $(1/e)^e=e^{-e}$ und $e^{1/e}=\eta$ — also bijektiv, mit Umkehrung $h$.'
+  stuetzt_sich_auf: [fp.satz.turm_reell]
+  experimente: [exp.superwurzel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus fp.satz.turm_reell und der Fixpunktgleichung.'
+    f2_benutzte_voraussetzungen: 'Konvergenzbereich des Turms (Literatur) und Monotonie von $y^{1/y}$.'
+    f3_spezialfall: 'Reelle Spur der Parametrisierung $b=\exp(te^{-t})$, $L=e^t$ des Shell–Thron-Gebiets mit $y=e^t$, $t\in[-1,1]$.'
+    f4_uebertragbar: 'Komplex: $L=e^t$, $|t|<1$ (fp.satz.shell_thron) — dieselbe Umkehrung.'
+    f5_neue_frage: 'Welche Basis hat einen Turm, der gegen einen vorgegebenen 2-Zyklus springt? (fp.satz.p2_form)'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Macht den Grenzwert umkehrbar und erklärt, warum √2 zu 2 und nicht zu 4 gehört.', nutzen_stufe: mittel}
+  quellen: [{ref: wikipedia_tetration, stelle: 'Abschnitt Super-root, infinite'}, {ref: knoebel1981}]
+  kanten:
+    - {typ: spezialfall_von, ziel: fp.satz.shell_thron}
+
+- id: fp.satz.tpid6
+  titel: Die Lösung von ⁿx = n geht gegen η (TPID 6)
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [turm, eta, hyperoperation]
+  bereich: 'ganze Höhen $n\ge2$, reelle $x>1$'
+  aussage: |
+    Für jedes $n\ge2$ hat ${}^nx=n$ genau eine Lösung $x_n>1$; es gilt $x_n>\eta$ und $\lim_{n\to\infty}x_n=\eta$.
+    Werte: $x_2=1.5596\ldots$, $x_3=1.6350784746\ldots$, $x_{10}=1.5084979203\ldots$, $x_{1000}=1.4446783122\ldots$ (dann fallend).
+  einfach: >-
+    Welche Basis braucht ein Turm aus n Stockwerken, um genau n zu ergeben? Je höher der Turm, desto näher liegt die Basis an η ≈ 1.4447 —
+    der Grenze, über der Türme ins Unendliche wachsen.
+  beweis:
+    art: vollstaendig
+    text: |
+      Für $x>1$ ist ${}^nx$ stetig und streng wachsend in $x$, ${}^n1=1<n$ und ${}^n2\ge n$; für $0<x\le1$ ist ${}^nx\le1$. Also genau eine Lösung $x_n\in(1,2]$.
+      Für $1<x\le\eta$ ist jeder Turm ${}^kx<e$ (Induktion: $x^t<\eta^e=e$); das gibt ${}^nx<e\le n$ für $n\ge3$, und ${}^2x\le\eta^\eta<2$. Also $x_n>\eta$.
+      Für $x=\eta+\varepsilon$ wächst ${}^kx$ über alle Grenzen (fp.satz.turm_reell); sobald ${}^Kx\ge K$ und gross genug ist, dass $x^t\ge t+1$ für $t\ge{}^Kx$, folgt ${}^kx\ge k$ für alle $k\ge K$ (ein solches $K$ gibt es: ab ${}^kx\ge t_1$ mit $x^t\ge2t$ für $t\ge t_1$ verdoppelt sich der Turm mindestens je Schritt). Also $x_n\le\eta+\varepsilon$ für $n\ge K$.
+  stuetzt_sich_auf: [fp.satz.turm_reell, fp.satz.reelle_fixpunkte]
+  experimente: [exp.tpid6]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, elementar aus dem Konvergenzbereich des Turms.'
+    f2_benutzte_voraussetzungen: 'Nur ganze Höhen; keine gebrochene Tetration nötig.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf ${}^nx=c\,n$ oder ${}^nx=n^k$: derselbe Grenzwert η, andere Rate.'
+    f5_neue_frage: 'Wie schnell? → fp.beob.tpid6_rate ($x_n-\eta\approx2\pi^2\eta/(e\,n^2)$).'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Zeigt die Schwelle η an einer einfachen Gleichung.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tpid, stelle: 'TPID 6'}]
+
+- id: fp.beob.tpid6_rate
+  titel: 'Rate in TPID 6: x_n − η ≈ 2π²η/(e n²)'
+  art: beobachtung
+  ebene: A
+  status: numerisch
+  niveau: vertiefung
+  objekte: [turm, eta, sattel_knoten]
+  bereich: 'Lösung $x_n$ von ${}^nx_n=n$, $n=3\ldots3\cdot10^5$'
+  aussage: |
+    $$n^2\,(x_n-\eta)\;\longrightarrow\;\frac{2\pi^2\eta}{e}=10.49067\ldots$$
+    Gemessen: $10.0499$ ($n=100$), $10.4512$ ($10^3$), $10.4871$ ($10^4$), $10.49057$ ($3\cdot10^5$); Anpassung $K(1+\beta/n)$ für $n\ge1000$:
+    $K=10.49089$, $\beta\approx-3.77$. Erklärung: Für $x=\eta+\delta$ braucht der Turm am Engpass bei $e$ etwa $\pi\sqrt{2\eta/(e\delta)}$ Schritte
+    (br.satz.sattel_knoten), danach nur noch wenige, um $n$ zu übersteigen. Aus $n\approx\pi\sqrt{2\eta/(e\delta_n)}$ folgt $\delta_n\approx2\pi^2\eta/(e\,n^2)$.
+  einfach: >-
+    Der Abstand der Basis zu η schrumpft wie 10.49 geteilt durch n². Die Zahl 10.49 kommt daher, dass der Turm knapp über η lange an der
+    Zahl e „hängen bleibt“, bevor er davonwächst — und diese Wartezeit kennt man genau.
+  experimente: [exp.tpid6]
+  pruefung:
+    f1_folgt_unmittelbar: 'Leitterm ja aus der Engpass-Durchgangszeit; die Korrektur $\beta/n$ nicht.'
+    f2_benutzte_voraussetzungen: 'Durchgangszeit $\pi/\sqrt{a\varepsilon}+O(1)$ mit $a=1/(2e)$, $\varepsilon=e^2\delta/\eta$; das $O(1)$ und die Schritte nach dem Engpass (wenige, wie $\log^*n$) geben die $1/n$-Korrektur.'
+    f3_spezialfall: 'Ja: dieselbe Konstante $\pi\sqrt{2\eta/e}=3.238930$ wie im Randgesetz (bw.lem.randgesetz).'
+    f4_uebertragbar: 'Auf jede Zielhöhe $c\,n$: $\delta_n\approx2\pi^2\eta/(e\,n^2)$ unverändert im Leitterm.'
+    f5_neue_frage: 'Beweis mit gestörten Fatou-Koordinaten (br.satz.shishikura): $n=1/\alpha(x_n)+O(1)$? Und der Wert von $\beta$.'
+  gegenbeispielsuche: 'exp.tpid6: zwölf Werte von n = 3 bis 3·10⁵ in doppelter Genauigkeit (δ ≥ 1e−10, Rundung ≪ Engpass-Vorschub); keine Abweichung vom Leitterm über 0.1 % ab n = 10⁴.'
+  bewertung: {richtigkeit: 'numerisch (5 Stellen), Leitterm hergeleitet', neuheit: vermutlich_neu, recherche: 'TPID-Liste (tid 162), Forums-Wiki und Wikipedia nennen nur den Grenzwert η, keine Rate (Recherche 08.10.2026, docs/recherche_wikis_forum.md).', nutzen: 'Neue, einfache Anwendung des Engpass-Gesetzes auf eine Forumsfrage.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}, {ref: forum_tpid, stelle: 'TPID 6 (nur der Grenzwert)'}]
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.tpid6}
+    - {typ: analog_zu, ziel: bw.lem.randgesetz}
+    - {typ: verwandt, ziel: br.satz.sattel_knoten}
+
+- id: fp.satz.shell_thron_flaeche
+  titel: 'Fläche des Shell–Thron-Gebiets: 8.0509332809…'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [shell_thron, turm, multiplikator]
+  bereich: 'Gebiet $\{\exp(te^{-t}):|t|\le1\}$ der komplexen Basen mit konvergentem Turm (fp.satz.shell_thron)'
+  aussage: |
+    Mit $b(t)=\exp(te^{-t})=\sum_na_nt^n$ ist die Fläche
+    $$\text{Fläche}=\pi\sum_{n\ge1}n\,a_n^2=8.0509332809395096234251953742\ldots$$
+    Äusserste Punkte (alle auf dem Rand $|t|=1$): grösster Imaginärteil $0.8152027425+2.0166402199\,i$ (bei $t=e^{1.9279076\,i}$), grösster Realteil
+    $2.0477905275\pm0.8420455035\,i$, kleinster Realteil $-0.3809797286\pm0.8997001955\,i$. Auf der reellen Achse ist das Gebiet nur $[e^{-e},\eta]$.
+  einfach: >-
+    Die Basen, für die der unendliche Turm b^b^b^… einen Grenzwert hat, bilden in der komplexen Ebene ein herzförmiges Gebiet mit Fläche etwa 8.05. Es reicht
+    viel weiter als auf der reellen Achse: bis zum Realteil 2.05 und zum Imaginärteil ±2.02.
+  beweis:
+    art: vollstaendig
+    text: '$f(t)=te^{-t}$ ist auf $|t|<1$ sternförmig ($\operatorname{Re}(tf\prime/f)=\operatorname{Re}(1-t)>0$), also schlicht; ihr Bild liegt in $|w|\le e<\pi$, wo $\exp$ injektiv ist. Also ist $b$ schlicht, und die Fläche ist $\iint_{|t|<1}|b\prime(t)|^2\,dA=\pi\sum n|a_n|^2$ (Flächensatz). Extrempunkte von $\operatorname{Re}b$, $\operatorname{Im}b$ liegen nach dem Maximumprinzip auf dem Rand.'
+  stuetzt_sich_auf: [fp.satz.shell_thron]
+  experimente: [exp.shell_thron]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (Flächensatz), der Zahlenwert aus der Reihe.'
+    f2_benutzte_voraussetzungen: 'Schlichtheit von $b$ auf der Einheitsscheibe.'
+    f3_spezialfall: 'Ja: Flächensatz für schlichte Funktionen.'
+    f4_uebertragbar: 'Fläche der Knospen (fp.verm.knospen) über die Multiplikator-Parametrisierung der q-Zyklen.'
+    f5_neue_frage: 'Hat die Fläche eine geschlossene Form? Die Koeffizienten $a_n$ sind rational (1, 1, −1/2, −1/3, 3/8, …).'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Antwort auf eine wiederkehrende Forumsfrage, mit zweiter unabhängiger Rechnung.', nutzen_stufe: gering}
+  quellen: [{ref: forum_robbins2009_shellthron}, {ref: diese_arbeit, stelle: 'Flächensatz-Rechnung'}]
+
+# ================================================================== Forum-Abgleich 10.10.2026
+- id: fp.satz.fixpunkt_summen
+  titel: 'Die Fixpunkte von eᶻ sind irrational, ihre Potenzsummen rational: Σ L_k⁻² = −1, Σ L_k⁻³ = −1/2, …'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [fixpunkt_L, lambert_w]
+  bereich: '$L_k=-W_k(-1)$, $k\in\mathbb Z$: alle Lösungen von $e^z=z$ (paarweise konjugiert)'
+  aussage: |
+    Für $m\ge2$ ist
+    $$\sum_{k\in\mathbb Z}L_k^{-m}=-[z^{m-1}]\,\frac{e^z-1}{e^z-z},$$
+    also rational: $-1,\ -\tfrac12,\ \tfrac13,\ \tfrac38,\ -\tfrac1{20},\dots$ für $m=2,3,4,5,6$; mit dem Nenner $(m-1)!$ sind die Zähler
+    $-1,-1,2,9,-6,-155,-232,3969,20870,-118779,\dots$ (Fox 2007, durch Kettenbrüche aus 100 000 Fixpunkten gefunden).
+  einfach: >-
+    Die Punkte, an denen eᶻ = z gilt, sind unendlich viele komplexe Zahlen, keine davon ist eine schöne Zahl. Addiert man aber ihre Kehrwerte hoch zwei,
+    kommt genau −1 heraus, hoch drei genau −1/2 — eine kleine Wunderformel, die aus der Faktorzerlegung von eᶻ − z folgt.
+  beweis:
+    art: vollstaendig
+    text: |
+      $g(z)=e^z-z$ ist ganz von Ordnung 1 mit $g(0)=1$ und den Nullstellen $L_k$ ($|L_k|\sim2\pi|k|$, also $\sum|L_k|^{-2}<\infty$). Hadamard:
+      $g(z)=e^{a+cz}\prod_k(1-z/L_k)e^{z/L_k}$, also $g'/g=c+\sum_k\bigl(\frac1{z-L_k}+\frac1{L_k}\bigr)$. Bei $z=0$: $g'(0)/g(0)=0$ gibt $c=0$. Entwickeln:
+      $\frac1{z-L}+\frac1L=-\sum_{n\ge1}z^n L^{-n-1}$, also $\frac{e^z-1}{e^z-z}=-\sum_{n\ge1}z^n\sum_kL_k^{-n-1}$.
+  experimente: [exp.forum_formeln]
+  stuetzt_sich_auf: [fp.satz.lambert]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem Produktsatz von Hadamard.'
+    f2_benutzte_voraussetzungen: 'Ordnung 1 und g(0) ≠ 0.'
+    f3_spezialfall: 'Ja: Potenzsummen der Nullstellen einer ganzen Funktion (wie Σ1/n² aus sin z/z).'
+    f4_uebertragbar: 'Jede Basis: Fixpunkte von b^z, Erzeugende (b^z ln b − 1)/(b^z − z).'
+    f5_neue_frage: 'Was ist die (paarweise summierte) Summe Σ 1/L_k?'
+  bewertung: {richtigkeit: 'vollständig; an 8000 Fixpunkten bis auf den Schwanz nachgerechnet', neuheit: bekannt, nutzen: 'Exakte Aussagen über die irrationalen Fixpunkte, die Kneser und Schröder benutzen.', nutzen_stufe: gering}
+  quellen: [{ref: forum_tid94}]
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.lambert}
+
+- id: fp.satz.turm_reihe_ln
+  titel: 'x↑↑n und der unendliche Turm stimmen in ln x genau bis zur Ordnung n überein'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [turm, lambert_w]
+  bereich: '$u=\ln x$ nahe 0; $h(u)=\sum_{k\ge0}(k+1)^{k-1}u^k/k!=-W(-u)/u$ der unendliche Turm'
+  aussage: |
+    Als Reihe in $u=\ln x$ ist $x\uparrow\uparrow n\equiv h(u)\pmod{u^{n+1}}$, und das Glied $u^{n+1}$ unterscheidet sich schon:
+    $$x\uparrow\uparrow n=\sum_{k=0}^{n}\frac{(k+1)^{k-1}}{k!}(\ln x)^k+O\bigl((\ln x)^{n+1}\bigr).$$
+    Die Koeffizienten des endlichen Turms stabilisieren sich also Stufe für Stufe zu Eisensteins Reihe des unendlichen Turms (Galidakis).
+  einfach: >-
+    Schreibt man einen Turm aus n gleichen Zahlen x als Reihe in ln x, so sind die ersten n Glieder schon die des unendlich hohen Turms. Jede weitere
+    Stufe macht ein Glied mehr „fertig“.
+  beweis:
+    art: vollstaendig
+    text: |
+      Mit $t_1=e^u$, $t_{k+1}=e^{ut_k}$ und $h=e^{uh}$ ist $t_{k+1}-h=e^{uh}\bigl(e^{u(t_k-h)}-1\bigr)=u\,h\,(t_k-h)\,(1+O(u))$. Aus $t_1-h=-u^2+O(u^3)$ folgt
+      $t_n-h=-u^{n+1}+O(u^{n+2})$ durch Induktion — Übereinstimmung genau bis $u^n$.
+  experimente: [exp.forum_formeln]
+  stuetzt_sich_auf: [fp.satz.turm_reell]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Induktion.'
+    f2_benutzte_voraussetzungen: 'Formale Potenzreihen in u.'
+    f3_spezialfall: 'Ja: Fixpunkt-Iteration in formalen Reihen gewinnt pro Schritt eine Ordnung.'
+    f4_uebertragbar: 'Auf jede Iteration z ↦ e^{uz} bzw. Lagrange-Inversion.'
+    f5_neue_frage: 'Gilt Entsprechendes für gebrochene Höhen (x↑↑s als Reihe in ln x)?'
+  bewertung: {richtigkeit: 'vollständig; Koeffizienten bis Ordnung 9 nachgerechnet', neuheit: bekannt, nutzen: 'Erklärt die Muster in den Reihen endlicher Türme (Forum tid 1053).', nutzen_stufe: gering}
+  quellen: [{ref: eisenstein1844}, {ref: forum_tid1053}, {ref: wikipedia_tetration}]
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.turm_reell}
+
+- id: fp.beob.i_turm
+  titel: 'i^i^i^… = 0.43828… + 0.36059 i — der unendliche Turm der imaginären Einheit'
+  art: beobachtung
+  ebene: C
+  status: bewiesen
+  niveau: einstieg
+  objekte: [turm, lambert_w]
+  aussage: |
+    Die Folge $1,\ i,\ i^i,\ i^{i^i},\dots$ konvergiert gegen
+    $$h=\frac{2i}{\pi}\,W\!\left(-\frac{i\pi}2\right)=0.43828293672703211\ldots+0.36059247187138548\ldots\,i,$$
+    weil der Multiplikator $\lambda=h\ln i$ den Betrag $0.8915<1$ hat. Der Winkel von $\lambda$ ist $0.3596$ Umdrehungen — fast ein Drittel: Die Bahn läuft auf drei
+    Spiralarmen ein (Euler; Konvergenz Macintyre 1966).
+  einfach: >-
+    Auch mit der imaginären Einheit kann man einen unendlichen Turm bauen. Die Werte springen dabei auf drei Armen einer Spirale herum und laufen auf
+    eine feste komplexe Zahl zu.
+  beweis:
+    art: vollstaendig
+    text: 'Fixpunkt von $z\mapsto i^z$ über Lambert W (fp.satz.lambert); $|\lambda|<1$ macht ihn anziehend, und $1$ liegt in seinem Einzugsgebiet (numerisch: 3000 Schritte, Abstand $<10^{-30}$).'
+  experimente: [exp.forum_formeln]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja.'
+    f2_benutzte_voraussetzungen: 'Hauptzweig von i^z.'
+    f3_spezialfall: 'Ja, von fp.satz.shell_thron mit z = i.'
+    f4_uebertragbar: 'Jede Basis im Shell–Thron-Gebiet.'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Das bekannteste Beispiel einer komplexen Basis.', nutzen_stufe: gering}
+  quellen: [{ref: macintyre1966}, {ref: forum_tid120}]
+  kanten:
+    - {typ: spezialfall_von, ziel: fp.satz.shell_thron}
+
+- id: fp.satz.nachbar_turm
+  titel: 'Der Nachbar-Turm x^((1/x)^((1/x)^…)) = ln x / W(ln x)'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [turm, lambert_w]
+  aussage: |
+    Der Turm $x^{(1/x)^{(1/x)^{\cdots}}}$ konvergiert genau für $e^{-1/e}\le x\le e^e$, mit Grenzwert
+    $$\frac{\ln x}{W(\ln x)};$$
+    bei $x=e$ ist das $1/\Omega=1.7632228343\ldots$ mit der Omega-Konstante $\Omega=W(1)$. Bei $x=20>e^e$ pendelt er.
+  einfach: >-
+    Ganz oben im Turm steht immer 1/x, nur unten x. Der innere Teil ist ein gewöhnlicher unendlicher Turm zur Basis 1/x; deshalb gelten dieselben Grenzen,
+    gespiegelt.
+  beweis:
+    art: vollstaendig
+    text: |
+      Der innere Turm $t=(1/x)\uparrow\uparrow\infty$ konvergiert genau für $1/x\in[e^{-e},\eta]$, also $x\in[e^{-1/e},e^e]$ (fp.satz.turm_reell). Aus $t=x^{-t}$ folgt $x^t=1/t$, und
+      $t=W(\ln x)/\ln x$ (Lambert W), also ist der Wert $1/t=\ln x/W(\ln x)$.
+  experimente: [exp.forum_rand]
+  stuetzt_sich_auf: [fp.satz.turm_reell]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja.'
+    f2_benutzte_voraussetzungen: 'Konvergenzbereich des unendlichen Turms.'
+    f3_spezialfall: 'Ja, von fp.satz.turm_reell.'
+    f4_uebertragbar: 'Jeder Turm mit fremdem untersten Glied.'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Kleines Beispiel, wie man Türme mit Lambert W auswertet.', nutzen_stufe: gering}
+  quellen: [{ref: wikipedia_tetration}]
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.unendliche_superwurzel}
+
+- id: fp.frage.tpid12_13
+  titel: 'TPID 12/13: Konvergiert die Newton-Interpolation der Selbstwurzeln?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [superwurzel]
+  aussage: |
+    TPID 13: Konvergiert die Newton-Interpolation der Punkte $(0,0),(1,1),(2,\sqrt2),\dots,(m,m^{1/m})$ gegen $x^{1/x}$? Numerisch ja, aber langsam: bei $x=2.5$ Abstand
+    $6\cdot10^{-4}$, $1.2\cdot10^{-4}$, $1.8\cdot10^{-5}$ nach 20, 40, 80 Gliedern; bei $x=7.5$ schon $1\cdot10^{-11}$ (Forum: „fast bewiesen“ über Mellin-Transformation, tid 1079).
+    TPID 12 fragt dasselbe für die Lösungen $y_n$ von $y_n\uparrow\uparrow n=n$ (fp.satz.tpid6): Konvergiert die Interpolation, ist sie bei $\eta$ analytisch, und gilt
+    $f(x)\uparrow\uparrow x=x$ auch für gebrochenes $x$ (regulär unter $\eta$, Kneser darüber)?
+  einfach: >-
+    Man kennt die Zahlen n^(1/n) an den ganzen Stellen und legt die Newton-Interpolation hindurch. Kommt dabei die richtige Kurve x^(1/x) heraus? Die Rechnung
+    sagt ja, ein Beweis fehlt. Die schwierigere Fassung fragt dasselbe für die „Selbst-Turmwurzeln“.
+  experimente: [exp.forum_iteration]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, offen.'
+    f2_benutzte_voraussetzungen: 'Newton-Interpolation; Wachstum der Folge.'
+    f3_spezialfall: 'Verwandt mit kl.satz.newton_reihe (dort bewiesen).'
+    f4_uebertragbar: 'Interpolation anderer Folgen aus der Tetration.'
+    f5_neue_frage: 'Nörlund-Kriterium (Exponentialtyp in der rechten Halbebene) anwendbar?'
+  bewertung: {richtigkeit: offen, neuheit: bekannt, nutzen: 'Klar gestellte offene Fragen der Forumsliste.', nutzen_stufe: gering}
+  quellen: [{ref: forum_tpid, stelle: 'TPID 12, 13 (Trappmann 2011); tid 1079'}]
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.tpid6}
+    - {typ: verwandt, ziel: kl.satz.newton_reihe}

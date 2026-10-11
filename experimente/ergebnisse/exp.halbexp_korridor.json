@@ -1,0 +1,84 @@
+{
+ "id": "exp.halbexp_korridor",
+ "skript_hash": "122e3a6a005a504d",
+ "gelaufen": "2026-10-10 18:35",
+ "laufzeit_s": 68.9,
+ "python": "3.13.9",
+ "zusammenfassung": "Ω = slog(D) ist waagrecht konvex, Re ≤ 0.31218, Breite ≥ 2.067 (oben → 2.3495), linker Rand mit Steigung −0.238; der Korridor Ω ∩ (Ω − ½) ist überall breiter als 1, und die Polynome p_N bilden ihn in D ab.",
+ "pruefungen": [
+  {
+   "name": "(G1) Re slog auf dem Rand von D höchstens c_R = slog(|L|) = 0.31218 (also auf ganz D: Maximumprinzip)",
+   "ok": true,
+   "wert": 0.312179553
+  },
+  {
+   "name": "(G2a) rechter Bogen steigt, linker fällt in Im: jede Höhe trifft jeden Bogen einmal — Ω ist waagrecht konvex",
+   "ok": true,
+   "wert": null
+  },
+  {
+   "name": "(G2b) Breite von Ω auf jeder Höhe ≥ 2.0, also Ω ∩ (Ω − ½) breiter als 1 (bis y = 13.6 gerechnet)",
+   "ok": true,
+   "wert": {
+    "min": 2.0667,
+    "bei y": 0.0,
+    "oben": 2.3493
+   }
+  },
+  {
+   "name": "asymptotisch: Breite → π/Im(L) = 2.3495 (zwei parallele Geraden aus A ≈ log(z − L)/L)",
+   "ok": true,
+   "wert": {
+    "π/Im L": 2.34932,
+    "gemessen oben": 2.34932
+   }
+  },
+  {
+   "name": "(G3) linker Rand x_links(y) ≥ −2 − 0.24·y; Steigung oben → −Re(L)/Im(L) = −0.2379",
+   "ok": true,
+   "wert": {
+    "Steigung oben": -0.2379,
+    "−Re L/Im L": -0.2379
+   }
+  },
+  {
+   "name": "Korridor: für w ∈ Ω ∩ (Ω − ½) liegen z = T_K(w) und f_K(z) = T_K(w + ½) in D (117 Gitterpunkte, 0 ≤ Im w ≤ 6)",
+   "ok": true,
+   "wert": {
+    "max|z|/|L|": "0.999949",
+    "max|f_K(z)|/|L|": "0.999901"
+   }
+  },
+  {
+   "name": "die Polynome p_N bilden dieselben Punkte in D ab: max |p_N(z)|/|L| < 1 (N = 20, 40, 60, 100), Abstand zu f_K fällt",
+   "ok": true,
+   "wert": {
+    "max|p_N|/|L|": {
+     "20": "0.9999017",
+     "40": "0.99990118",
+     "60": "0.99990119",
+     "100": "0.99990119"
+    },
+    "max|p_N − f_K|": {
+     "20": "1.5e-6",
+     "40": "4.54e-8",
+     "60": "6.85e-9",
+     "100": "5.5e-10"
+    }
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "c_R": 0.31217955278736215,
+  "breite_min": 2.066687151385004,
+  "breite_oben": 2.349318557229579,
+  "steigung_links": -0.23790234202123064,
+  "korridor_max_pN": {
+   "20": "0.9999016974",
+   "40": "0.9999011807",
+   "60": "0.9999011886",
+   "100": "0.9999011919"
+  }
+ }
+}

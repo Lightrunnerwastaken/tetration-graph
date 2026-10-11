@@ -1,0 +1,116 @@
+{
+ "id": "exp.turmintegral_periodisch",
+ "skript_hash": "e41c51e592ccc5d8",
+ "gelaufen": "2026-10-10 14:50",
+ "laufzeit_s": 9.9,
+ "python": "3.13.9",
+ "zusammenfassung": "I(2m + r) → 2-periodische Grenzkurve I_∞(r) mit festen Ecken lim I₂ₙ, lim I₂ₙ₊₁, Mittel M = 0.654011822287, nur ungeraden Harmonischen und monotonen Flanken; die Form ist die Verteilung der Kreuzungshöhen und hängt von der Interpolation ab.",
+ "pruefungen": [
+  {
+   "name": "Gewichte in u geben die bekannte Lücke ∫(L₊ − L₋)dx = 0.0454049…",
+   "ok": true,
+   "wert": "0.045404902968"
+  },
+  {
+   "name": "bei jeder Interpolation: I_∞(0) = lim I₂ₙ, I_∞(1) = lim I₂ₙ₊₁, I_∞(2) = lim I₂ₙ",
+   "ok": true,
+   "wert": {
+    "A": [
+     0.676714274,
+     0.631309371
+    ],
+    "B": [
+     0.676714274,
+     0.631309371
+    ],
+    "C": [
+     0.676714274,
+     0.631309371
+    ]
+   }
+  },
+  {
+   "name": "monoton: fallend auf [0,1], steigend auf [1,2]",
+   "ok": true,
+   "wert": null
+  },
+  {
+   "name": "Mittel = M = 0.654011822…, gerade Harmonische verschwinden (Halbperioden-Antisymmetrie)",
+   "ok": true,
+   "wert": {
+    "A": {
+     "Mittel": 0.654011822,
+     "|c2|": "8.1e-15",
+     "|c1|": "1.4351e-02",
+     "|c3|": "4.5212e-03"
+    },
+    "B": {
+     "Mittel": 0.654011822,
+     "|c2|": "8.1e-15",
+     "|c1|": "1.4401e-02",
+     "|c3|": "4.6656e-03"
+    },
+    "C": {
+     "Mittel": 0.654011822,
+     "|c2|": "8.1e-15",
+     "|c1|": "1.4250e-02",
+     "|c3|": "4.2444e-03"
+    }
+   }
+  },
+  {
+   "name": "die Form hängt von der Interpolation ab: I_∞(½) verschieden für A, B, C",
+   "ok": true,
+   "wert": {
+    "A": 0.631309,
+    "B": 0.676714,
+    "C": 0.676595
+   }
+  },
+  {
+   "name": "lineare Interpolation: s*(x) = L(x) genau, Abfall nur für r < 1/e, I_∞(r) = lim I₂ₙ − ∫₀^{r^{1/r}}(L₊ − L₋)dx",
+   "ok": true,
+   "wert": {
+    "I_∞(0.25)": 0.672907034
+   }
+  },
+  {
+   "name": "I(2m + r) nähert sich I_∞(r) (lineare Familie, m = 5, 20, 80)",
+   "ok": true,
+   "wert": {
+    "5": "1.35e-02",
+    "20": "2.16e-03",
+    "80": "2.95e-04"
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "M": "0.65401182228690049529",
+  "fourier": {
+   "A": {
+    "Mittel": 0.654011822,
+    "|c2|": "8.1e-15",
+    "|c1|": "1.4351e-02",
+    "|c3|": "4.5212e-03"
+   },
+   "B": {
+    "Mittel": 0.654011822,
+    "|c2|": "8.1e-15",
+    "|c1|": "1.4401e-02",
+    "|c3|": "4.6656e-03"
+   },
+   "C": {
+    "Mittel": 0.654011822,
+    "|c2|": "8.1e-15",
+    "|c1|": "1.4250e-02",
+    "|c3|": "4.2444e-03"
+   }
+  },
+  "I_halb": {
+   "A": 0.631309,
+   "B": 0.676714,
+   "C": 0.676595
+  }
+ }
+}

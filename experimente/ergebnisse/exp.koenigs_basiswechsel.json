@@ -1,0 +1,56 @@
+{
+ "id": "exp.koenigs_basiswechsel",
+ "skript_hash": "74093d8235d7b44a",
+ "gelaufen": "2026-10-08 20:43",
+ "laufzeit_s": 13.2,
+ "python": "3.13.9",
+ "zusammenfassung": "√2 und d = 1.346032931 (λ_d = (ln 2)²): Ψ konjugiert f_d zu f_√2∘f_√2; Koenigs-Höhe exakt 2x; beliebiges Verhältnis 1.7 ebenfalls linear. Komplexe Spiralen: Ψ bildet den d-Orbit auf jeden zweiten b-Punkt ab.",
+ "pruefungen": [
+  {
+   "name": "Rezeptur: λ = ln 2 liefert die Basis √2 mit Fixpunkt 2",
+   "ok": true,
+   "wert": "1.41421356237"
+  },
+  {
+   "name": "Konjugation f_√2 ∘ f_√2 ∘ Ψ = Ψ ∘ f_d (d = 1.3460329) auf dem Orbit-Schwanz",
+   "ok": true,
+   "wert": "5.92e-31"
+  },
+  {
+   "name": "Koenigs-Höhe: H_√2(Ψ(T_d(x))) = 2x exakt (x = 0.5, 1.25, 3.5)",
+   "ok": true,
+   "wert": "9.27e-28"
+  },
+  {
+   "name": "beliebiges Verhältnis: λ_d = λ_b^{1.7} ⇒ Höhe linear mit Steigung 1.7",
+   "ok": true,
+   "wert": "7.14e-28"
+  },
+  {
+   "name": "naiver Vergleich der Werte (Höhe_√2 von T_d(x)) läuft gegen eine Konstante — kein Basiswechsel im Phasensinn",
+   "ok": true,
+   "wert": [
+    "1.8294611",
+    "1.9061281",
+    "1.9061294"
+   ]
+  },
+  {
+   "name": "komplexe Spiralen: Ψ(z_{d,n}) = z_{b,2n} für n = 10…25",
+   "ok": true,
+   "wert": "1.28e-29"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "d_basis_reell": "1.34603293090135",
+  "d_fixpunkt": "1.61680667224167",
+  "naiv": [
+   "1.829461081",
+   "1.906128053",
+   "1.906129361"
+  ],
+  "b_komplex": "(1.69135468 + 0.3325190167j)",
+  "d_komplex": "(0.4279809687 + 0.8497294232j)"
+ }
+}

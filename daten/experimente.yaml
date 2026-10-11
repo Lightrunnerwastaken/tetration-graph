@@ -1,0 +1,360 @@
+# Experimente. Jedes Skript schreibt experimente/ergebnisse/<id>.json (mit Skript-Hash) und ein SVG.
+# Ausführen: python baue.py --experimente   (oder einzeln im Ordner experimente/)
+- id: exp.fixpunkte
+  titel: Fixpunkte von b^z über Lambert W
+  skript: experimente/e01_fixpunkte.py
+  ergebnis: experimente/ergebnisse/exp.fixpunkte.json
+  bild: experimente/bilder/exp.fixpunkte.svg
+  frage: Stimmen Fixpunktformel, Multiplikatoren und Minimumsformel numerisch? Welcher Zweig gibt Im L > 0?
+  stuetzt: [fp.satz.lambert, fp.satz.reelle_fixpunkte, fp.satz.abstossend]
+- id: exp.turmgebiet
+  titel: Konvergenzgebiet des unendlichen Turms
+  skript: experimente/e02_turmgebiet.py
+  ergebnis: experimente/ergebnisse/exp.turmgebiet.json
+  bild: experimente/bilder/exp.turmgebiet.svg
+  frage: Gegenbeispiele zu Shell–Thron im Inneren? Periode q in den Knospen?
+  stuetzt: [fp.satz.shell_thron, fp.verm.knospen, fp.satz.turm_reell]
+- id: exp.sqrt2_abel
+  titel: Differenz der regulären Abel-Funktionen an a und A
+  skript: experimente/e03_sqrt2_abel.py
+  ergebnis: experimente/ergebnisse/exp.sqrt2_abel.json
+  bild: experimente/bilder/exp.sqrt2_abel.svg
+  frage: Wie fallen die Fourier-Moden der Differenz? Welcher Fixpunkt bestimmt die Streifenbreite?
+  stuetzt: [kl.beob.zwei_abel, kl.verm.streifenbreite, kl.verm.faktor, kl.satz.regulaer]
+- id: exp.carleman
+  titel: Intuitiver slog gegen Kneser
+  skript: experimente/e04_carleman.py
+  ergebnis: experimente/ergebnisse/exp.carleman.json
+  bild: experimente/bilder/exp.carleman.svg
+  frage: Konvergiert der abgeschnittene Carleman-slog gegen Knesers slog, und wie schnell?
+  stuetzt: [kn.verm.carleman_kneser, kn.beob.carleman_rate, kn.konstr.carleman]
+- id: exp.nichteindeutigkeit
+  titel: Drei reell-analytische Tetrationen zur Basis √2
+  skript: experimente/e05_nichteindeutigkeit.py
+  ergebnis: experimente/ergebnisse/exp.nichteindeutigkeit.json
+  bild: experimente/bilder/exp.nichteindeutigkeit.svg
+  frage: Lassen sich explizit verschiedene Lösungen mit gleichem T(0) = 1 bauen?
+  stuetzt: [fg.kor.nichteindeutigkeit, fg.satz.allgemeine_loesung]
+- id: exp.singulaer
+  titel: Singularität bei −2
+  skript: experimente/e06_singulaer.py
+  ergebnis: experimente/ergebnisse/exp.singulaer.json
+  bild: experimente/bilder/exp.singulaer.svg
+  frage: Stimmt die Asymptotik T(−2+ε) = ln ε/ln b + ln T′(−1)/ln b + O(ε)?
+  stuetzt: [kn.satz.singulaer_minus2]
+- id: exp.eta_baker
+  titel: exp_η ↔ e^u − 1 und divergente halbe Iterierte
+  skript: experimente/e07_eta_baker.py
+  ergebnis: experimente/ergebnisse/exp.eta_baker.json
+  bild: experimente/bilder/exp.eta_baker.svg
+  frage: Ist die Konjugation exakt? Wie wachsen die Koeffizienten der formalen halben Iterierten?
+  stuetzt: [kl.kor.eta_baker, it.satz.baker]
+- id: exp.kongruenz
+  titel: Stabile Endziffern von Türmen
+  skript: experimente/e08_kongruenz.py
+  ergebnis: experimente/ergebnisse/exp.kongruenz.json
+  bild: experimente/bilder/exp.kongruenz.svg
+  frage: Wird a↑↑n mod 10^k konstant, und gilt V(a) = v₂(a²−1) − 1 für a ≡ 5 (mod 10)?
+  stuetzt: [br.satz.turm_mod_m, br.satz.ripa]
+- id: exp.randgesetz
+  titel: Sattel-Knoten-Durchgang und Randgesetz
+  skript: experimente/e09_randgesetz.py
+  ergebnis: experimente/ergebnisse/exp.randgesetz.json
+  bild: experimente/bilder/exp.randgesetz.svg
+  frage: Trifft die Durchgangszeit π√(2η/e)(b−η)^{−1/2}? Wie gut passen die Hub-Daten?
+  stuetzt: [br.satz.sattel_knoten, bw.lem.randgesetz, bw.korr.konstante]
+- id: exp.young
+  titel: Flächenidentität für Kreishomöomorphismen
+  skript: experimente/e10_young.py
+  ergebnis: experimente/ergebnisse/exp.young.json
+  bild: experimente/bilder/exp.young.svg
+  frage: Gilt ∫(H−id) = −∫(H⁻¹−id) ohne Glattheit und für die echten Phasen?
+  stuetzt: [br.satz.young_kreis, bw.satz.antisymmetrie]
+- id: exp.moden
+  titel: Modenprofile und m(2)-Fassungen
+  skript: experimente/e11_moden.py
+  ergebnis: experimente/ergebnisse/exp.moden.json
+  bild: experimente/bilder/exp.moden.svg
+  frage: Haben die Phasen verschiedener Basen dieselbe Modenform? Stimmen die gespeicherten m(2)-Werte überein?
+  stuetzt: [bw.beob.modenabfall, bw.beob.m2, bw.beob.hub_genauigkeit]
+- id: exp.ableitung
+  titel: Ableitungen und Wendepunkte
+  skript: experimente/e12_ableitung.py
+  ergebnis: experimente/ergebnisse/exp.ableitung.json
+  bild: experimente/bilder/exp.ableitung.svg
+  frage: Stimmen Kettenregel, Produktformel und die Formel für T″ an Kneser (e) und regulär (√2)? Wie viele Wendepunkte haben die Kurven?
+  stuetzt: [gr.satz.kettenregel, gr.kor.produktformel, gr.kor.ganze_stellen, gr.satz.zweite_ableitung, gr.beob.kneser_ableitung, gr.beob.wendepunkte, gr.verm.ein_wendepunkt]
+- id: exp.integrale
+  titel: Integralidentitäten
+  skript: experimente/e13_integrale.py
+  ergebnis: experimente/ergebnisse/exp.integrale.json
+  bild: experimente/bilder/exp.integrale.svg
+  frage: Gelten die Flächenidentitäten auf viele Stellen, und ist ∫₀¹ T_e eine bekannte Konstante?
+  stuetzt: [gr.satz.young, gr.kor.integral_formen, gr.satz.integral_unten, gr.satz.integral_produkt, gr.beob.integrale_kneser, gr.frage.integral_form]
+- id: exp.basisableitung
+  titel: Ableitung nach der Basis und Wurzel bei η
+  skript: experimente/e14_basis.py
+  ergebnis: experimente/ergebnisse/exp.basisableitung.json
+  bild: experimente/bilder/exp.basisableitung.svg
+  frage: Stimmen die Rekursion für d/da (a↑↑n), die Formel für h′(a) und das Wurzelgesetz bei η?
+  stuetzt: [gr.satz.basis_ganz, gr.satz.turm_ableitung, gr.satz.wurzel_eta]
+- id: exp.slog
+  titel: slog als geglätteter iterierter Logarithmus
+  skript: experimente/e15_slog.py
+  ergebnis: experimente/ergebnisse/exp.slog.json
+  bild: experimente/bilder/exp.slog.svg
+  frage: Ist ⌈slog⌉ = log*? Stimmen die slog-Ableitungsregeln und die Stellenformel für Türme?
+  stuetzt: [gr.satz.logstern, gr.satz.slog_ableitung, gr.satz.stellen, gr.beob.kneser_ableitung]
+- id: exp.parameterraum
+  titel: Regionen der Basen-Ebene
+  skript: experimente/e16_parameterraum.py
+  ergebnis: experimente/ergebnisse/exp.parameterraum.json
+  bild: experimente/bilder/exp.parameterraum.svg
+  frage: Ist Periode 1 genau |t| < 1? Wie drehen die Zyklen in den Knospen? Wie langsam ist es an rationalen Randpunkten? Stimmen die Zahlen zu b = i?
+  stuetzt: [fp.satz.parameter_konform, fp.beob.regionen, fp.verm.knospen_drehzahl, fp.satz.spirale, fp.satz.parabolisch_rand, fp.satz.multiplikator_rezept]
+- id: exp.mittelwerte
+  titel: Mittelwerte über Basen und über die Zeit
+  skript: experimente/e17_mittelwerte.py
+  ergebnis: experimente/ergebnisse/exp.mittelwerte.json
+  bild: experimente/bilder/exp.mittelwerte.svg
+  frage: Gelten Satz 1 und Korollar 2 der Januar-Notiz? Gilt das Kreismittel auch bei Höhe 1/2? Geht das Zeitmittel im Siegel-Fall gegen den Fixpunkt?
+  stuetzt: [fp.satz.kreismittel, fp.kor.fourier_taylor, fp.gegen.bruch_mittel, fp.satz.siegel_mittel, fp.satz.neutral]
+- id: exp.bruchsummen
+  titel: Grenzwertformel, Bruchsummen, Bruchprodukt (Basis √2)
+  skript: experimente/e18_bruchsummen.py
+  ergebnis: experimente/ergebnisse/exp.bruchsummen.json
+  bild: experimente/bilder/exp.bruchsummen.svg
+  frage: Wie schnell konvergiert die Grenzwertformel? Erfüllt die Bruchsumme S(x+1) − S(x) = T(x)? Gilt die Ableitungsformel mit Bruchprodukt nur für die reguläre Lösung?
+  stuetzt: [kl.satz.grenzwertformel, kl.satz.bruchsumme, kl.satz.bruchprodukt]
+- id: exp.koenigs_basiswechsel
+  titel: Linearer Basiswechsel über Koenigs-Koordinaten
+  skript: experimente/e19_koenigs_basiswechsel.py
+  ergebnis: experimente/ergebnisse/exp.koenigs_basiswechsel.json
+  bild: experimente/bilder/exp.koenigs_basiswechsel.svg
+  frage: Bildet Ψ den Orbit einer Basis auf jeden k-ten Punkt der Spirale einer anderen ab, und ist die Höhe dabei exakt linear?
+  stuetzt: [kl.satz.koenigs_basiswechsel, kl.gescheitert.naiver_basiswechsel, fp.satz.multiplikator_rezept]
+- id: exp.turmintegrale
+  titel: Turm-Integrale I_n = ∫₀¹ ⁿx dx
+  skript: experimente/e20_turmintegrale.py
+  ergebnis: experimente/ergebnisse/exp.turmintegrale.json
+  bild: experimente/bilder/exp.turmintegrale.svg
+  frage: Stimmen Sophomore, die geraden/ungeraden Grenzwerte und die Lücke aus Bild 2? Wie schnell konvergiert I_n?
+  stuetzt: [gr.satz.sophomore, gr.satz.turmintegral_grenzen, gr.kor.turmintegral_formen, gr.verm.turmintegral_rate]
+- id: exp.gleiches_L
+  titel: Basen mit gemeinsamem Fixpunkt und Basiswechsel daran
+  skript: experimente/e21_gleiches_L.py
+  ergebnis: experimente/ergebnisse/exp.gleiches_L.json
+  bild: experimente/bilder/exp.gleiches_L.svg
+  frage: Welche reellen Basen teilen einen Fixpunkt, wie laufen ihre Türme, und ist A_b(T_d(x)) am gemeinsamen L eine Gerade ohne Welle?
+  stuetzt: [fp.satz.gleiches_L, fp.beob.gleiches_L_kategorien, kl.satz.basiswechsel_gleiches_L]
+- id: exp.koenigs_kalkuel
+  titel: Koenigs-Kalkül, wertseitiger und quasikonformer Basiswechsel
+  skript: experimente/e22_koenigs_kalkuel.py
+  ergebnis: experimente/ergebnisse/exp.koenigs_kalkuel.json
+  bild: experimente/bilder/exp.koenigs_kalkuel.svg
+  frage: Stimmen Spektralreihe, Lambert-Bruchsumme, Ableitungs-/Integral-/Shift-Kalkül, das Potenzgesetz T_b∘A_d, die Jacobi-Formel und der quasikonforme Basiswechsel?
+  stuetzt: [kl.satz.koenigs_spektral, kl.satz.wertseitiger_basiswechsel, kl.satz.qk_basiswechsel, fp.satz.exp_normalform]
+- id: exp.eta_digamma
+  titel: Basis η — Kehrwert-Koordinate, C_T, Digamma; Kehrwert-Turmsummen
+  skript: experimente/e23_eta_digamma.py
+  ergebnis: experimente/ergebnisse/exp.eta_digamma.json
+  bild: experimente/bilder/exp.eta_digamma.svg
+  frage: Welchen Wert hat C_T, stimmt die Digamma-Zerlegung der Bruchsumme bei η samt Konstante, und dominiert über η das erste Glied der Kehrwertsumme?
+  stuetzt: [kl.satz.eta_koordinate, kl.satz.eta_digamma, kl.beob.eta_konstanten, gr.satz.kehrwert_turmsumme]
+- id: exp.lambert_zeta
+  titel: Lambert → Digamma bei b → η, Stetigkeit bei η
+  skript: experimente/e24_lambert_zeta.py
+  ergebnis: experimente/ergebnisse/exp.lambert_zeta.json
+  bild: experimente/bilder/exp.lambert_zeta.svg
+  frage: Ist die Lambert-Bruchsumme eine q-Digamma-Funktion, laufen T_b(1/2) und S_b(1/2) für b → η gegen die η-Werte, und passen die Steigungen von beiden Seiten?
+  stuetzt: [kl.satz.moebius_qdigamma, kl.verm.lambert_zeta, kl.beob.stetig_eta]
+- id: exp.abel_bruchsumme
+  titel: Bruchsumme des Superlogarithmus (Basis e)
+  skript: experimente/e25_abel_bruchsumme.py
+  ergebnis: experimente/ergebnisse/exp.abel_bruchsumme.json
+  bild: experimente/bilder/exp.abel_bruchsumme.svg
+  frage: Fällt A'' wie 1/y², konvergiert die kompensierte Bruchsumme, und existiert γ_A?
+  stuetzt: [kn.satz.abel_bruchsumme]
+- id: exp.funde
+  titel: Nachrechnung der wiedergefundenen Untersuchungen (Juli/August 2026)
+  skript: experimente/e27_funde.py
+  ergebnis: experimente/ergebnisse/exp.funde.json
+  bild: experimente/bilder/exp.funde.svg
+  frage: Stimmen die Kernzahlen der drei Originale (geteilter Fixpunkt, imaginäre Richtung, Periode-2-Region) mit unabhängigem Code?
+  stuetzt: [kl.satz.basiswechsel_gleiches_L, fp.beob.partner_keil, kl.satz.invariante_daempfung, bw.satz.imaginaere_richtung, fp.satz.p2_form, fp.satz.p2_kein_kreis, fp.satz.p2_raten, fp.satz.rechteckwelle]
+- id: exp.superwurzel
+  titel: Superwurzeln — quadratisch, dritte, unendliche
+  skript: experimente/e28_superwurzel.py
+  ergebnis: experimente/ergebnisse/exp.superwurzel.json
+  bild: experimente/bilder/exp.superwurzel.svg
+  frage: Löst e^{W(ln x)} die Gleichung y^y = x, wie viele reelle Lösungen gibt es, stimmt die Reihe um 1, konvergiert die Iteration für die dritte Superwurzel, und wann ist y^{1/y} die Basis eines gegen y laufenden Turms?
+  stuetzt: [gr.satz.superwurzel, gr.satz.superwurzel_dritte, fp.satz.unendliche_superwurzel]
+- id: exp.tpid6
+  titel: TPID 6 mit Rate — ⁿx = n und der Engpass bei e
+  skript: experimente/e29_tpid6.py
+  ergebnis: experimente/ergebnisse/exp.tpid6.json
+  bild: experimente/bilder/exp.tpid6.svg
+  frage: Geht die Lösung x_n von ⁿx = n gegen η, und wie schnell? Ist n²(x_n − η) → 2π²η/e, wie es die Engpass-Durchgangszeit vorhersagt?
+  stuetzt: [fp.satz.tpid6, fp.beob.tpid6_rate, br.satz.shishikura]
+- id: exp.qbinomial
+  titel: q-Binomial-Reihe der regulären Tetration, Koenigs-Vorzeichen, Möbius-Iteration
+  skript: experimente/e30_qbinomial.py
+  ergebnis: experimente/ergebnisse/exp.qbinomial.json
+  bild: experimente/bilder/exp.qbinomial.svg
+  frage: Konvergiert Reshetnikovs q-Binomial-Reihe gegen die reguläre Tetration und wie schnell, sind alle Koenigs-Koeffizienten negativ, und stimmen bei Möbius-Abbildungen die regulären Iterierten beider Fixpunkte überein?
+  stuetzt: [kl.beob.q_binomial, kl.verm.vollmonoton, it.satz.moebius_iteration]
+- id: exp.cheta
+  titel: Obere Superexponentialfunktionen (√2 an 4, cheta bei η) und Szekeres' Monotonie
+  skript: experimente/e31_cheta.py
+  ergebnis: experimente/ergebnisse/exp.cheta.json
+  bild: experimente/bilder/exp.cheta.svg
+  frage: Erfüllt die obere Lösung an 4 bzw. die Fatou-Koordinate von oben an e die Tetrationsgleichung mit den richtigen Werten und Asymptoten, und ist die Abel-Funktion von e^u − 1 total monoton, eine gestörte aber nicht?
+  stuetzt: [kl.satz.obere_superexp, kl.satz.cheta, it.satz.szekeres_monoton]
+- id: exp.pentation
+  titel: Pentation als reguläre Superfunktion der Kneser-Tetration (Basis e und 2)
+  skript: experimente/e32_pentation.py
+  ergebnis: experimente/ergebnisse/exp.pentation.json
+  bild: experimente/bilder/exp.pentation.svg
+  frage: Wo liegt der reelle Fixpunkt von T_e, wie gross ist sein Multiplikator, und stimmt die reguläre Pentation an ihm mit Fox' Werten (2007) und Levensteins 2↑↑↑1.5 (2020) überein?
+  stuetzt: [kn.konstr.pentation, kn.beob.pentation_werte]
+- id: exp.tetra_euler
+  titel: η₄ und e₄ — Berührung von T_b mit y = x, drei Kennzeichnungen
+  skript: experimente/e33_tetra_euler.py
+  ergebnis: experimente/ergebnisse/exp.tetra_euler.json
+  bild: experimente/bilder/exp.tetra_euler.svg
+  frage: Für welche Basis berührt die Kneser-Tetration die Gerade y = x, wo, und fallen dort Fixpunktzahl, Selbst-Tetrawurzel und Konvergenz der unendlichen Pentation zusammen?
+  stuetzt: [kn.beob.tetra_euler]
+- id: exp.vermutungen
+  titel: Stichproben zu offenen Vermutungen (TPID 7, Halbebene, ∫ = ½, TPID 1)
+  skript: experimente/e34_vermutungen.py
+  ergebnis: experimente/ergebnisse/exp.vermutungen.json
+  bild: experimente/bilder/exp.vermutungen.svg
+  frage: Gilt T(y)T(−y) < 1 (TPID 7) und bis zu welcher Kneser-Basis, liegt T(Re z ≥ 0) in |w − L| ≤ L − 1, wo ist ∫_{−1}^0 T_b = ½, und gehen die Carleman-Eigenwerte gegen λ^k?
+  stuetzt: [gr.verm.tpid7, gr.gegen.tpid7_kneser, kl.satz.folgen_vollmonoton, gr.beob.integral_halb, kn.verm.carleman_eigenwerte]
+- id: exp.shell_thron
+  titel: Fläche und Extrempunkte des Shell–Thron-Gebiets
+  skript: experimente/e35_shell_thron.py
+  ergebnis: experimente/ergebnisse/exp.shell_thron.json
+  bild: experimente/bilder/exp.shell_thron.svg
+  frage: Wie gross ist das Gebiet der konvergenten Türme, und wo liegen seine äussersten Punkte?
+  stuetzt: [fp.satz.shell_thron_flaeche]
+- id: exp.ableitungen_vorzeichen
+  titel: Vorzeichen der Ableitungen der Kneser-Tetration T_e
+  skript: experimente/e36_ableitungen.py
+  ergebnis: experimente/ergebnisse/exp.ableitungen_vorzeichen.json
+  bild: experimente/bilder/exp.ableitungen_vorzeichen.svg
+  frage: Sind alle ungeraden Ableitungen positiv, wechseln die geraden genau einmal ihr Vorzeichen, und wo?
+  stuetzt: [gr.verm.ungerade_ableitungen]
+- id: exp.stufe5
+  titel: η₅ und e₅ — Berührung der Pentation mit y = x (TPID 10/11)
+  skript: experimente/e37_stufe5.py
+  ergebnis: experimente/ergebnisse/exp.stufe5.json
+  bild: experimente/bilder/exp.stufe5.svg
+  frage: Bei welcher Basis berührt die Pentation die Gerade y = x, und passen die Werte zu den Vermutungen „Eulers → 4, Etas → 2“ und η_n² < e_{n−1}?
+  stuetzt: [kn.beob.stufe5, kn.verm.tpid10]
+- id: exp.hexation
+  titel: Hexation — regulär unter η₅, Struktur, unendliche Hexation, Fixpunkte der Pentation zur Basis 2
+  skript: experimente/e38_hexation.py
+  ergebnis: experimente/ergebnisse/exp.hexation.json
+  bild: experimente/bilder/exp.hexation.svg
+  frage: Lässt sich die Hexation unter η₅ regulär bauen, wo liegt ihre Singularität, konvergiert die unendliche Hexation genau bis η₅, und welche komplexen Fixpunkte hat die Pentation zur Basis 2?
+  stuetzt: [kn.konstr.hexation_regulaer, kn.satz.hexation_struktur, kn.beob.unendliche_hexation, kn.satz.kein_kneser_anziehend]
+- id: exp.hexation_kneser
+  titel: Kneser-artige Hexation über η₅ (Basis 2) und η₆, e₆ — die Hexation berührt y = x
+  skript: experimente/e39_hexation_kneser.py
+  ergebnis: experimente/ergebnisse/exp.hexation_kneser.json
+  bild: experimente/bilder/exp.hexation_kneser.svg
+  frage: Welche Werte hat die Kneser-artige Hexation zur Basis 2 (Rechenwerk knhexinit im gp-tetration-Fork), bei welcher Basis berührt die Hexation die Gerade y = x, und wie passen η₆, e₆ zu TPID 10/11?
+  stuetzt: [kn.frage.hexation_kneser, kn.beob.stufe6, kn.verm.tpid10, kn.beob.hexation_verzweigt]
+- id: exp.ln_basis
+  titel: ln b aus Steigungen und die Ableitung nach der Basis
+  skript: experimente/e40_ln_basis.py
+  ergebnis: experimente/ergebnisse/exp.ln_basis.json
+  bild: experimente/bilder/exp.ln_basis.svg
+  frage: Gilt ln b = T′(0)/T′(−1) = slog′(0)/slog′(1) lösungsunabhängig, und erfüllt die Kneser-Basisableitung die lineare Stufengleichung?
+  stuetzt: [gr.satz.ln_aus_steigungen, gr.satz.basis_gleichung, gr.gegen.tpid7_kneser]
+- id: exp.turm_pde
+  titel: Kobis Gleichung für Türme und die Kneser-Basisableitung
+  skript: experimente/e41_turm_pde.py
+  ergebnis: experimente/ergebnisse/exp.turm_pde.json
+  bild: experimente/bilder/exp.turm_pde.svg
+  frage: Gilt ∂_a y = S(x)∂_x y − S(y) für ganze Höhen, und ist p = ∂_b slog − S·slog′ für Kneser konstant?
+  stuetzt: [gr.satz.turm_pde, gr.beob.kneser_pde_wackeln]
+- id: exp.forum_formeln
+  titel: Fixpunktsummen, Newton-Reihe, Turmreihe in ln x und i^i^i^…
+  skript: experimente/e42_forum_formeln.py
+  ergebnis: experimente/ergebnisse/exp.forum_formeln.json
+  bild: experimente/bilder/exp.forum_formeln.svg
+  frage: Stimmen vier Formeln aus dem Tetration-Forum?
+  stuetzt: [fp.satz.fixpunkt_summen, kl.satz.newton_reihe, fp.satz.turm_reihe_ln, fp.beob.i_turm]
+- id: exp.halbe_exp
+  titel: Die halbe Exponentialfunktion aus der Kneser-Tetration
+  skript: experimente/e43_halbe_exp.py
+  ergebnis: experimente/ergebnisse/exp.halbe_exp.json
+  bild: experimente/bilder/exp.halbe_exp.svg
+  frage: Erfüllt T(slog(x) + ½) die Gleichung f(f(x)) = eˣ, wo liegen Nullstelle und Singularität, wie schnell wächst f?
+  stuetzt: [kn.satz.halbe_exp, kn.satz.halbe_exp_wachstum]
+- id: exp.zwei_sinh
+  titel: Die 2sinh-Tetration gegen Kneser
+  skript: experimente/e44_zwei_sinh.py
+  ergebnis: experimente/ergebnisse/exp.zwei_sinh.json
+  bild: experimente/bilder/exp.zwei_sinh.svg
+  frage: Konvergiert ln^[n]∘2sinh^[n+x], erfüllt es die Turmgleichung, und wie weit liegt es von Kneser?
+  stuetzt: [kn.konstr.zwei_sinh]
+- id: exp.forum_rand
+  titel: Ackermann, exponentielle Fakultät, Grenzfälle, quadratische Näherung, Nachbar-Turm
+  skript: experimente/e45_forum_rand.py
+  ergebnis: experimente/ergebnisse/exp.forum_rand.json
+  bild: experimente/bilder/exp.forum_rand.svg
+  frage: Stimmen die kleineren Forum-Aussagen?
+  stuetzt: [br.satz.ackermann, ar.satz.ef_liouville, gr.satz.grenzfaelle, kn.konstr.quadratisch, fp.satz.nachbar_turm]
+- id: exp.forum_iteration
+  titel: Elementare Superfunktionen, Möbius-Modell, TPID 9 und 13
+  skript: experimente/e46_forum_iteration.py
+  ergebnis: experimente/ergebnisse/exp.forum_iteration.json
+  bild: experimente/bilder/exp.forum_iteration.svg
+  frage: Stimmen die elementaren Superfunktionen, ist die Möbius-Familie glatt durch den parabolischen Fall, konvergieren TPID 9 und 13?
+  stuetzt: [it.satz.elementare_superfunktionen, it.satz.moebius_familie, kn.satz.intuitiver_log, fp.frage.tpid12_13]
+- id: exp.turmintegral_periodisch
+  titel: Turm-Integral bei gebrochener Höhe
+  skript: experimente/e47_turmintegral_periodisch.py
+  ergebnis: experimente/ergebnisse/exp.turmintegral_periodisch.json
+  bild: experimente/bilder/exp.turmintegral_periodisch.svg
+  frage: Was wird aus der Schwingung der Turm-Integrale, wenn man die Höhe stetig interpoliert?
+  stuetzt: [gr.satz.turmintegral_periodisch]
+- id: exp.grundlagen_identitaeten
+  titel: Tauschregel, Taylor-Leiter, Stufenleiter, frei und fest, Exponentialität
+  skript: experimente/e48_grundlagen_identitaeten.py
+  ergebnis: experimente/ergebnisse/exp.grundlagen_identitaeten.json
+  bild: experimente/bilder/exp.grundlagen_identitaeten.svg
+  frage: Gelten die lösungsunabhängigen Identitäten an Kneser-Werten (Basen 2 und e) und an der Pentation, und zählt slog f(x) − slog x die Exponentiale?
+  stuetzt: [gr.satz.tauschregel, gr.satz.taylor_leiter, gr.satz.stufenleiter, gr.satz.frei_und_fest, gr.satz.exponentialitaet]
+- id: exp.polynom_halbexp
+  titel: Polynom-Wurzel von exp gegen Knesers halbe e-Funktion
+  skript: experimente/e49_polynom_halbexp.py
+  ergebnis: experimente/ergebnisse/exp.polynom_halbexp.json
+  bild: experimente/bilder/exp.polynom_halbexp.svg
+  frage: Konvergieren die Polynome mit p_N(p_N(x)) = eˣ + O(x^(N+1)) gegen Knesers halbe e-Funktion, Koeffizient für Koeffizient und am Randpunkt L — und wie stark wachsen andere Lösungen dort?
+  stuetzt: [kn.verm.polynom_halbexp, kn.satz.halbexp_beschraenkt, kn.satz.polynom_halbexp_reduktion, kn.verm.polynom_halbexp_schranke]
+- id: exp.halbexp_korridor
+  titel: Form von slog(D) und der Korridor für die Eindeutigkeit der halben e-Funktion
+  skript: experimente/e50_halbexp_korridor.py
+  ergebnis: experimente/ergebnisse/exp.halbexp_korridor.json
+  bild: experimente/bilder/exp.halbexp_korridor.svg
+  frage: 'Ist slog(D) waagrecht konvex, nach rechts beschränkt und überall breiter als 1.5 + ½, und bilden die Polynom-Wurzeln den Korridor {z ∈ D mit f_K(z) ∈ D} in D ab?'
+  stuetzt: [kn.beob.slog_scheibe, kn.satz.halbexp_beschraenkt, kn.verm.polynom_halbexp_schranke]
+- id: exp.polynom_schranke
+  titel: Schranke der Polynom-Wurzeln — streng bis N = 120, und warum Kantorovich scheitert
+  skript: experimente/e51_polynom_schranke.py
+  ergebnis: experimente/ergebnisse/exp.polynom_schranke.json
+  bild: experimente/bilder/exp.polynom_schranke.svg
+  frage: 'Gibt es die Polynom-Wurzeln streng (Krawczyk) bis N = 120 mit Schranke 2.2405 auf |x| ≤ |L|, und reicht Newton–Kantorovich um Knesers Reihe für alle N?'
+  stuetzt: [kn.satz.polynom_halbexp_endlich, kn.gescheitert.polynom_kantorovich, kn.verm.polynom_halbexp_schranke]
+- id: exp.polynom_team
+  titel: Kernzahlen des Forschungsteams aus dessen Daten nachgerechnet
+  skript: experimente/e52_polynom_team.py
+  ergebnis: experimente/ergebnisse/exp.polynom_team.json
+  bild: experimente/bilder/exp.polynom_team.svg
+  frage: 'Stimmen max|Π_N f_K| = 2.232651, Rand- und Innenexponent (−4.8 bzw. −7.894), die Nähe der echten p_N und die Darboux-Asymptotik von Knesers Koeffizienten in den Team-Daten bis N = 1000?'
+  stuetzt: [kn.beob.polynom_halbexp_fehlergesetz, kn.satz.halbexp_singularitaet_L, kn.beob.polynom_eckmode, kn.verm.polynom_halbexp_eckmoden, kn.satz.polynom_halbexp_hauptsatz]
+

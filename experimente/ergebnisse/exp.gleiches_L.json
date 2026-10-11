@@ -1,0 +1,273 @@
+{
+ "id": "exp.gleiches_L",
+ "skript_hash": "fad91123d3d30b1e",
+ "gelaufen": "2026-10-08 20:43",
+ "laufzeit_s": 5.0,
+ "python": "3.13.9",
+ "zusammenfassung": "Basen mit gemeinsamem L bilden Familien u_k = (Log L + 2πik)/L. Reell: e^{π/2+2πk} (L = i), −exp((π/2+2πk)π/W(π)) (L = i·W(π)/π) und 8 gemischte Paare. Am gemeinsamen L ist α_b(T_d(x)) = C1 + C2 x + O(λ_d^x), C2 = log λ_d/log λ_b — keine bleibende Welle; mit verschiedenen L wird α_b(T_d) konstant.",
+ "pruefungen": [
+  {
+   "name": "Familie: u_k = (Log L + 2πik)/L haben alle denselben Fixpunkt L (L = L_e, k = −3…3)",
+   "ok": true,
+   "wert": "3.07e-40"
+  },
+  {
+   "name": "Multiplikatoren der Familie unterscheiden sich um 2πi",
+   "ok": true,
+   "wert": null
+  },
+  {
+   "name": "reelle Paare: e^{π/2+2πk} teilen L = i; −exp((π/2+2πk)π/W(π)) teilen L = i·W(π)/π",
+   "ok": true,
+   "wert": "2.48e-41"
+  },
+  {
+   "name": "gemischte Paare (positive und negative reelle Basis mit gleichem L) gefunden und nachgerechnet",
+   "ok": true,
+   "wert": "8 Paare"
+  },
+  {
+   "name": "e^{π/2} ← e^{5π/2} (L = i): α_b(T_d(x)) − (C1 + C2 x) fällt wie |λ_d|^x (Rate 2.06102 vs ln|λ_d| = 2.06102)",
+   "ok": true,
+   "wert": "Rest bei x = −12: 4.14e-12"
+  },
+  {
+   "name": "e^{π/2} ← e^{5π/2} (L = i): erste Korrektur a1·λ_d^x·w/log λ_b stimmt (x ≤ −10)",
+   "ok": true,
+   "wert": "1.92e-10"
+  },
+  {
+   "name": "e^{π/2} ← e^{5π/2} (L = i): Ausgleichsgerade auf [−12, −8] hat Steigung log λ_d/log λ_b",
+   "ok": true,
+   "wert": "C2 = (1.272072286 - 0.9463828939j), Fit (1.272072284 - 0.9463828955j)"
+  },
+  {
+   "name": "e^{π/2} ← e^{−3π/2} (L = i, Partner links): α_b(T_d(x)) − (C1 + C2 x) fällt wie |λ_d|^x (Rate 1.55019 vs ln|λ_d| = 1.55019)",
+   "ok": true,
+   "wert": "Rest bei x = −12: 2.44e-9"
+  },
+  {
+   "name": "e^{π/2} ← e^{−3π/2} (L = i, Partner links): erste Korrektur a1·λ_d^x·w/log λ_b stimmt (x ≤ −10)",
+   "ok": true,
+   "wert": "3.81e-8"
+  },
+  {
+   "name": "e^{π/2} ← e^{−3π/2} (L = i, Partner links): Ausgleichsgerade auf [−12, −8] hat Steigung log λ_d/log λ_b",
+   "ok": true,
+   "wert": "C2 = (-0.6616034514 - 1.177086831j), Fit (-0.6616033902 - 1.17708701j)"
+  },
+  {
+   "name": "√2 ← −√2 (L = 2): α_b(T_d(x)) − (C1 + C2 x) fällt wie |λ_d|^x (Rate 1.84393 vs ln|λ_d| = 1.84393)",
+   "ok": true,
+   "wert": "Rest bei x = −12: 7.52e-10"
+  },
+  {
+   "name": "√2 ← −√2 (L = 2): erste Korrektur a1·λ_d^x·w/log λ_b stimmt (x ≤ −10)",
+   "ok": true,
+   "wert": "3.06e-9"
+  },
+  {
+   "name": "√2 ← −√2 (L = 2): Ausgleichsgerade auf [−12, −8] hat Steigung log λ_d/log λ_b",
+   "ok": true,
+   "wert": "C2 = (-5.03099684 - 3.986006299j), Fit (-5.030996674 - 3.986006226j)"
+  },
+  {
+   "name": "e ← e^{1−2πi/L_e} (L = L_e): α_b(T_d(x)) − (C1 + C2 x) fällt wie |λ_d|^x (Rate 1.60063 vs ln|λ_d| = 1.60063)",
+   "ok": true,
+   "wert": "Rest bei x = −12: 1.69e-9"
+  },
+  {
+   "name": "e ← e^{1−2πi/L_e} (L = L_e): erste Korrektur a1·λ_d^x·w/log λ_b stimmt (x ≤ −10)",
+   "ok": true,
+   "wert": "2.26e-8"
+  },
+  {
+   "name": "e ← e^{1−2πi/L_e} (L = L_e): Ausgleichsgerade auf [−12, −8] hat Steigung log λ_d/log λ_b",
+   "ok": true,
+   "wert": "C2 = (-0.7967675608 - 1.386524612j), Fit (-0.7967676274 - 1.386524758j)"
+  },
+  {
+   "name": "2.0841 ← -1659.6 (gemischt): α_b(T_d(x)) − (C1 + C2 x) fällt wie |λ_d|^x (Rate 2.61797 vs ln|λ_d| = 2.61797)",
+   "ok": true,
+   "wert": "Rest bei x = −12: 9.62e-15"
+  },
+  {
+   "name": "2.0841 ← -1659.6 (gemischt): erste Korrektur a1·λ_d^x·w/log λ_b stimmt (x ≤ −10)",
+   "ok": true,
+   "wert": "6.46e-13"
+  },
+  {
+   "name": "2.0841 ← -1659.6 (gemischt): Ausgleichsgerade auf [−12, −8] hat Steigung log λ_d/log λ_b",
+   "ok": true,
+   "wert": "C2 = (1.743067056 - 1.970448167j), Fit (1.743067056 - 1.970448167j)"
+  },
+  {
+   "name": "Gegenprobe verschiedene Fixpunkte (e^{π/2} gegen e): Steigung fällt wie |λ_e|^x gegen 0 — α_b(T_d(x)) wird konstant, nicht linear",
+   "ok": true,
+   "wert": [
+    "0.00296",
+    "5.1e-6"
+   ]
+  },
+  {
+   "name": "exakt linear unmöglich für b ≠ d: f_b und f_d vertauschen nicht (Zeuge bei z = 0.3 + 0.9i)",
+   "ok": true,
+   "wert": "1.229e+5"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "kategorien": [
+   {
+    "basis": "1.6775782e-5",
+    "L": "(0.0 + 1.0j)",
+    "lam": "10.996",
+    "turm": "Periode 2"
+   },
+   {
+    "basis": "0.008983291",
+    "L": "(0.0 + 1.0j)",
+    "lam": "4.7124",
+    "turm": "Periode 2"
+   },
+   {
+    "basis": "4.8104774",
+    "L": "(0.0 + 1.0j)",
+    "lam": "1.5708",
+    "turm": "Flucht"
+   },
+   {
+    "basis": "2575.9705",
+    "L": "(0.0 + 1.0j)",
+    "lam": "7.854",
+    "turm": "Flucht"
+   },
+   {
+    "basis": "1379410.7",
+    "L": "(0.0 + 1.0j)",
+    "lam": "14.137",
+    "turm": "Flucht"
+   },
+   {
+    "basis": "-1.0271198e-6",
+    "L": "(0.0 + 0.34175602j)",
+    "lam": "4.8332",
+    "turm": "Periode 2"
+   },
+   {
+    "basis": "-99.112015",
+    "L": "(0.0 + 0.34175602j)",
+    "lam": "1.9027",
+    "turm": "Periode 3"
+   },
+   {
+    "basis": "-9.5638229e+9",
+    "L": "(0.0 + 0.34175602j)",
+    "lam": "7.927",
+    "turm": "Periode 3"
+   },
+   {
+    "basis": "29.672247",
+    "partner": "-0.00081377848",
+    "L": "(-0.16421377 + 0.54905499j)",
+    "turm_b": "Flucht",
+    "turm_d": "Periode 2"
+   },
+   {
+    "basis": "29.672247",
+    "partner": "-1081918.8",
+    "L": "(-0.16421377 - 0.54905499j)",
+    "turm_b": "Flucht",
+    "turm_d": "Periode 3"
+   },
+   {
+    "basis": "11.717285",
+    "partner": "-4.5442772e-7",
+    "L": "(-0.13111668 + 0.71223249j)",
+    "turm_b": "Flucht",
+    "turm_d": "Periode 2"
+   },
+   {
+    "basis": "11.717285",
+    "partner": "-3.0212673e+8",
+    "L": "(-0.13111668 - 0.71223249j)",
+    "turm_b": "Flucht",
+    "turm_d": "Periode 3"
+   },
+   {
+    "basis": "1.4142136",
+    "partner": "-1.4142136",
+    "L": "2.0",
+    "turm_b": "Periode 1",
+    "turm_d": "Periode 9"
+   },
+   {
+    "basis": "1.4142136",
+    "partner": "-1.4142136",
+    "L": "4.0",
+    "turm_b": "Periode 1",
+    "turm_d": "Periode 9"
+   },
+   {
+    "basis": "2.0840541",
+    "partner": "-1659.5717",
+    "L": "(0.72448096 + 1.5404711j)",
+    "turm_b": "Flucht",
+    "turm_d": "Periode 3"
+   },
+   {
+    "basis": "2.0840541",
+    "partner": "-0.0026171098",
+    "L": "(0.72448096 - 1.5404711j)",
+    "turm_b": "Flucht",
+    "turm_d": "Periode 2"
+   }
+  ],
+  "paare": {
+   "e^{π/2} ← e^{5π/2} (L = i)": {
+    "C1": "(0.0863175370881965 - 0.331143784991859j)",
+    "C2": "(1.27207228599878 - 0.946382893905629j)",
+    "T_d(0)": "(1.0 - 2.44929359829e-16j)",
+    "normiert": true,
+    "rest_x-12": "4.14e-12",
+    "rest_x-1": "0.02898"
+   },
+   "e^{π/2} ← e^{−3π/2} (L = i, Partner links)": {
+    "C1": "(0.0351013160795734 - 0.187123133886144j)",
+    "C2": "(-0.661603451436151 - 1.17708683095703j)",
+    "T_d(0)": "(1.0 + 2.44929359829e-16j)",
+    "normiert": true,
+    "rest_x-12": "2.436e-9",
+    "rest_x-1": "0.06258"
+   },
+   "√2 ← −√2 (L = 2)": {
+    "C1": "(-0.877117323338057 - 8.42170929949356j)",
+    "C2": "(-5.03099684006001 - 3.98600629928611j)",
+    "T_d(0)": "(1.0 - 2.44929359829e-16j)",
+    "normiert": true,
+    "rest_x-12": "7.522e-10",
+    "rest_x-1": "0.4822"
+   },
+   "e ← e^{1−2πi/L_e} (L = L_e)": {
+    "C1": "(-0.237920095904843 - 0.439406947819176j)",
+    "C2": "(-0.796767560768562 - 1.38652461168641j)",
+    "T_d(0)": "(1.0 + 2.44929359829e-16j)",
+    "normiert": true,
+    "rest_x-12": "1.685e-9",
+    "rest_x-1": "0.07627"
+   },
+   "2.0841 ← -1659.6 (gemischt)": {
+    "C1": "(-0.633269639128088 - 0.829392888533583j)",
+    "C2": "(1.74306705613236 - 1.97044816669702j)",
+    "T_d(0)": "(1.0 - 4.89858719659e-16j)",
+    "normiert": true,
+    "rest_x-12": "9.616e-15",
+    "rest_x-1": "0.03061"
+   }
+  },
+  "gegenprobe_steigung": [
+   "0.002964",
+   "5.1e-6"
+  ]
+ }
+}

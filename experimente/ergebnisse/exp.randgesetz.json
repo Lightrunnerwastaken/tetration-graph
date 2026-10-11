@@ -1,0 +1,58 @@
+{
+ "id": "exp.randgesetz",
+ "skript_hash": "0fc3c6888639ab7d",
+ "gelaufen": "2026-10-08 20:38",
+ "laufzeit_s": 0.7,
+ "python": "3.13.9",
+ "zusammenfassung": "Iteration: A = 3.23872 vs π√(2η/e) = 3.23893. Hub-Daten: A = 3.3822 mit ln-Term, 3.0155 ohne.",
+ "pruefungen": [
+  {
+   "name": "Iterationszahl: Steigung A trifft π√(2η/e) auf 0.1 %",
+   "ok": true,
+   "wert": "A = 3.238724 vs 3.238931"
+  },
+  {
+   "name": "Rest N − A·(b−η)^{−1/2} bleibt beschränkt (Spannweite < 3)",
+   "ok": true,
+   "wert": [
+    "-7.39",
+    "-7.6",
+    "-8.42",
+    "-8.14",
+    "-7.89",
+    "-7.97",
+    "-8.24",
+    "-8.38",
+    "-7.93",
+    "-8.72",
+    "-8.4"
+   ]
+  },
+  {
+   "name": "Engine-Hub m(b): angepasster Leitkoeffizient trifft π√(2η/e) auf 5 %",
+   "ok": true,
+   "wert": "A = 3.38221 (B = 3.11, C = -0.5152)"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "N": {
+   "0.01": 25,
+   "0.00316": 50,
+   "0.001": 94,
+   "0.000316": 174,
+   "0.0001": 316,
+   "3.16e-5": 568,
+   "1.0e-5": 1016,
+   "3.16e-6": 1813,
+   "1.0e-6": 3231,
+   "3.16e-7": 5751,
+   "1.0e-7": 10234
+  },
+  "A_iteration": 3.238723967963513,
+  "B_iteration": -7.963675409980423,
+  "A_hub_mit_log": 3.38220958465922,
+  "A_hub_ohne_log": 3.015490652132125,
+  "A_theorie": 3.238930545332073
+ }
+}

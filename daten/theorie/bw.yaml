@@ -1,0 +1,825 @@
+# Theorie-Blöcke für das Gebiet Basiswechsel (bw), Etappe 3: Kapitel 7.
+# Zahlen zum Paar (e, 2): eigene Nachrechnung mit Tschebyschow-Interpolanten (lehrbuch/bilder.py, k7_phase) gegen phi_modes.json.
+
+# ------------------------------------------------------------------ Strang bw.phasengesetz
+
+bw.def.F_bd:
+  worum: |
+    Die Grundfrage des Kapitels: Der Turm zur Basis $d$ hat in der Höhe $x$ den Wert $T_d(x)$. In welcher Höhe erreicht der Turm zur Basis $b$
+    denselben Wert? Diese Übersetzung von Höhen heisst Mischbasen-Höhenabbildung. Alles Weitere sind Namen für ihre Bestandteile.
+  genau: |
+    Für $b,d>\eta$ mit Kneser-Tetrationen $T_b,T_d$ und $A_b=\operatorname{slog}_b$, $\alpha=\log_bd$:
+    - Höhenabbildung $F_{b,d}:=A_b\circ T_d$.
+    - Schwänze $D_n(\theta):=\log_b^{\circ n}\bigl(T_d(n+\theta)\bigr)$: den $d$-Turm in der Höhe $n+\theta$ nehmen und $n$-mal den Logarithmus zur Basis $b$ abziehen.
+    - Falls $D_n\to D_{b,d}$: Phase $\Phi_{b,d}(\theta)=A_b(D_{b,d}(\theta))-\theta$, Mittel $\mu_{b,d}=\int_0^1\Phi$, Welle (Profil) $P_{b,d}=\Phi-\mu$, Lift $\tilde H_{b,d}=\mathrm{id}+\Phi_{b,d}$.
+  warum: |
+    Eine Definition; der Zusammenhang der Teile ist eine Zeile: $A_b(\log_by)=A_b(y)-1$, also
+    $$A_b(T_d(n+\theta))-(n+\theta)=A_b(D_n(\theta))-\theta.$$
+    Die linke Seite ist die Höhenverschiebung, die rechte lebt auf einem festen kleinen Intervall. Konvergieren die Schwänze, hat die Verschiebung einen Grenzwert $\Phi(\theta)$.
+  beispiel: |
+    $b=e$, $d=2$, $\theta=0$: $D_1=\ln2=0.693$, $D_2=\ln\ln4=0.327$, $D_3=0.0196$, $D_4=-0.1301$, $D_5=-0.14626192$, $D_6=-0.14626229$ — der Schwanz kommt schnell zur Ruhe.
+  bilder: [k7_phase]
+  einordnung: |
+    Erste Regeln: [[bw.prop.gruppoid]], [[bw.prop.ganzzahl]]. Dass die Schwänze konvergieren: [[bw.satz.schwanzkonvergenz]]. Das Ergebnis: [[bw.satz.phasengesetz]].
+
+bw.prop.gruppoid:
+  worum: |
+    Höhen übersetzen verhält sich wie Geld wechseln: von $d$ nach $c$ und dann nach $b$ ist dasselbe wie direkt von $d$ nach $b$, und zurückwechseln hebt sich auf.
+  genau: |
+    $F_{b,b}=\mathrm{id}$, $F_{b,d}^{-1}=F_{d,b}$, $F_{b,d}=F_{b,c}\circ F_{c,d}$.
+  warum: |
+    $F_{b,c}\circ F_{c,d}=A_bT_cA_cT_d=A_bT_d$, weil $T_cA_c=\mathrm{id}$. Mehr steckt nicht dahinter — man braucht nur, dass die Tetrationen umkehrbar sind.
+  beispiel: |
+    $F_{e,2}(x)=\operatorname{slog}_e(T_2(x))$; zurück: $F_{2,e}(y)=\operatorname{slog}_2(T_e(y))$, und $F_{2,e}(F_{e,2}(x))=x$.
+  einordnung: |
+    Ein Organisationsprinzip ohne eigenen Inhalt. Inhalt bekommt es erst im Grenzwert: Kozykel der Phasen ([[bw.prop.kozykel]]) und die Hub-Zerlegung ([[bw.prop.hub]]).
+
+bw.prop.ganzzahl:
+  worum: |
+    Auf ganzen Höhen kann man die Übersetzung exakt „abschälen“: $n$ Logarithmen ziehen $n$ Stockwerke ab. Ganze Höhen sehen aber nur einen
+    einzigen Punkt der Welle — deshalb erwartet man fälschlich eine konstante Verschiebung.
+  genau: |
+    $\operatorname{slog}_b(T_d(n))-n=A_b(C^n_{b,d})$ mit $C^n_{b,d}=\log_b^{\circ n}(T_d(n))$, sofern die Logarithmen erklärt sind.
+  warum: |
+    Die Abel-Gleichung $A_b(y)=A_b(\log_by)+1$, $n$-mal angewandt.
+  beispiel: |
+    $(e,2)$: $\operatorname{slog}_e(T_2(n))-n=0,\,-0.298,\,-0.679,\,-0.982,\,-1.115,\,-1.1283314$ für $n=0,\dots,5$, Grenzwert $\mu+P(0)=-1.1283317$. Die ganzen Höhen
+    zeigen also nur den einen Wert $P(0)$ der Welle — nicht ihre Form.
+  einordnung: |
+    Der Fall $\theta=0$ des Phasengesetzes ([[bw.satz.phasengesetz]]). Für $\theta\ne0$ kommt die Welle $P(\theta)$ hinzu.
+
+bw.ann.hyp22:
+  worum: |
+    In Paper I musste man annehmen, dass die Kette der Logarithmen nicht aus den positiven Zahlen herausfällt — sonst ist $\log_b$ nicht erklärt.
+    Diese Annahme heisst „regulärer reeller Logarithmenkanal“.
+  genau: |
+    **Annahme** (Paper I, Hyp. 2.2): (R1) $T_d$ positiv, stetig, lokal von $0$ weg beschränkt; (R2) die Logarithmen $\log_b^{\circ k}(T_d(n+\theta))$ bleiben im reellen
+    Kanal; (R3) $A_b$ ist lokal Lipschitz-stetig auf einer Umgebung der Grenzschwänze.
+  warum: |
+    Eine Annahme, kein Satz. Was aus ihr wurde: (R2) ist für die gestoppte Kette bewiesen ([[bw.lem.stoppregel]]); (R3) folgt aus der Analytizität von
+    Knesers Superlogarithmus. Für die Grenzobjekte ist (R2) nur in der verschobenen Fassung richtig ([[bw.lem.offset]]); unverschoben scheitert sie
+    für manche Paare ([[bw.gegen.unverschoben]]).
+  einordnung: |
+    Bedingung des Phasengesetzes in Paper I ([[bw.satz.phasengesetz]]); die unbedingte Fassung: [[bw.satz.phasengesetz_gestoppt]].
+
+bw.ann.hyp24:
+  worum: |
+    Die zweite Annahme aus Paper I: Beim Abschälen bleiben die Werte gross genug, und der Turm wächst über alle Grenzen.
+  genau: |
+    **Annahme** (Paper I, Hyp. 2.4): $\log_b^{\circ k}(T_d(n+\theta))\ge a\,T_d(n-k+\theta)-B$ und $s_j=\inf_\theta T_d(j+\theta)\to\infty$.
+  warum: |
+    Inzwischen vollständig entlastet: Die Turmwerte wachsen mit fester Mindestlücke ([[bw.lem.wachstumsluecke]]), die erste Ungleichung folgt aus der Stoppregel.
+  einordnung: |
+    Unter $\eta$ ist sie falsch — dort sind die Türme beschränkt, und der naive Basiswechsel wird konstant ([[kl.gescheitert.naiver_basiswechsel]]).
+
+bw.lem.wachstumsluecke:
+  worum: |
+    Über $\eta$ liegt die Kurve $y=d^x$ überall über der Diagonalen, und zwar mit einem festen Mindestabstand. Darum wächst jeder Turm pro Stockwerk mindestens um diesen Abstand.
+  genau: |
+    Für $d>\eta$ und alle reellen $x$ gilt $d^x-x\ge\delta_0(d)=\dfrac{1+\ln\ln d}{\ln d}>0$. Daher $s_{j+1}\ge s_j+\delta_0$ und $s_j\to\infty$.
+  warum: |
+    1. $g(x)=d^x-x$ ist konvex; das Minimum liegt dort, wo $g'(x)=d^x\ln d-1=0$, also $d^x=1/\ln d$ und $x=-\ln\ln d/\ln d$.
+    2. Einsetzen: $g_{\min}=\frac1{\ln d}+\frac{\ln\ln d}{\ln d}$. Das ist positiv genau dann, wenn $\ln\ln d>-1$, also $d>e^{1/e}=\eta$.
+    3. $s_{j+1}=d^{s_j}\ge s_j+\delta_0$, also $s_j\ge s_0+j\,\delta_0\to\infty$ (in Wahrheit viel schneller).
+  beispiel: |
+    $\delta_0(1.5)=0.240$, $\delta_0(2)=0.914$, $\delta_0(e)=1$, $\delta_0(10)=0.797$. Bei $\eta$ selbst ist $\delta_0=0$ — dort berühren sich Kurve und Diagonale.
+  einordnung: |
+    Dieselbe Rechnung wie in [[fp.satz.reelle_fixpunkte]]. Entlastet [[bw.ann.hyp24]] und speist die Stoppregel ([[bw.lem.stoppregel]]).
+
+bw.lem.stoppregel:
+  worum: |
+    Statt anzunehmen, dass die Logarithmenkette positiv bleibt, kann man es beweisen — solange man rechtzeitig aufhört. Oben im Turm sind die
+    Werte riesig, jeder Logarithmus macht aus $d^{\text{gross}}$ wieder etwas Grosses. Erst unten, wo die Werte klein werden, hält man an.
+  genau: |
+    Sei $C_0=|\log_b\alpha|+\ln2/\ln b$ und $J_0=\min\{j:s_j\ge2C_0\}$. Für $n\ge J_0+1$ und $0\le k\le n-J_0$ sind die Kettenwerte
+    $$W_k^{(n)}=\alpha\,T_d(n-k+\theta)\,(1+\sigma_k),\qquad|\sigma_k|\le C_0/s_{n-k}\le\tfrac12,$$
+    erklärt und positiv. (R2) gilt also bis zur Stoppstufe $J_0$ ohne Annahme.
+  warum: |
+    1. Der erste Logarithmus ist exakt: $\log_b\bigl(T_d(m)\bigr)=\log_b\bigl(d^{T_d(m-1)}\bigr)=\alpha\,T_d(m-1)$.
+    2. Jeder weitere: $\log_b\bigl(\alpha T(1+\sigma)\bigr)=\alpha T'+\log_b\alpha+\log_b(1+\sigma)$, wobei $T'$ der Turmwert eine Stufe tiefer ist. Die Zusätze sind
+       beschränkt durch $C_0$; relativ zu einem grossen Turmwert sind sie klein.
+    3. Abwärtsinduktion: solange $s\ge2C_0$, bleibt $|\sigma|\le\tfrac12$, also ist der Wert positiv und der nächste Logarithmus erklärt.
+  beispiel: |
+    $(e,2)$: $\alpha=\ln2$, $C_0=1.060$, $2C_0=2.119$. Die Turmwerte sind $s_0=1$, $s_1=2$, $s_2=4$, also $J_0=2$: bis hinunter zur Stufe $2$ ist alles gesichert.
+  einordnung: |
+    Benutzt [[bw.lem.wachstumsluecke]]. Macht die Schwanzkonvergenz bedingungsfrei ([[bw.satz.phasengesetz_gestoppt]]).
+
+bw.satz.schwanzkonvergenz:
+  worum: |
+    Die abgeschälten Schwänze $D_n(\theta)$ kommen zur Ruhe. Der Grund: Ein Unterschied ganz oben im Turm wird durch jeden Logarithmus geteilt —
+    durch den riesigen Turmwert dort. Nach wenigen Stufen ist er unsichtbar.
+  genau: |
+    Unter Hyp. 2.2 und 2.4 gilt $D_n\to D_{b,d}$ gleichmässig auf $[0,1]$ (Paper I, Thm. 5.6).
+  warum: |
+    1. $D_{n+1}(\theta)=\log_b^{\circ n}\bigl(\alpha\,T_d(n+\theta)\bigr)$ und $D_n(\theta)=\log_b^{\circ n}\bigl(T_d(n+\theta)\bigr)$: beide starten oben mit fast derselben Zahl (Faktor $\alpha$).
+    2. Der erste Logarithmus macht aus dem Faktor einen Summanden $\log_b\alpha$. Jeder weitere Logarithmus teilt einen kleinen Unterschied durch ($\ln b\cdot$ Wert) — das sind die Dämpfungsprodukte.
+    3. Die Produkte sind summierbar, weil die Turmwerte riesig sind; also ist $(D_n)$ eine Cauchy-Folge in der Supremumsnorm.
+  beispiel: |
+    $(e,2)$: Der grösste Abstand von $A_e(D_n(\theta))-\theta$ zum Grenzwert ist $1.13$, $0.83$, $0.45$, $0.15$, $0.014$, $3\cdot10^{-7}$, $4\cdot10^{-24}$ für $n=0,\dots,6$.
+    Der Sprung zwischen $n=5$ und $n=6$ ist der Faktor $1/T_2(4)=1/65536$ — und dann noch einmal durch die nächste Stufe.
+  bilder: [k7_phase]
+  einordnung: |
+    Daraus folgt das Phasengesetz ([[bw.satz.phasengesetz]]). Die Annahmen fallen in der gestoppten Fassung weg ([[bw.satz.phasengesetz_gestoppt]]).
+
+bw.satz.phasengesetz:
+  worum: |
+    Das zentrale Ergebnis: Übersetzt man die Höhe vom Turm zur Basis $d$ in Höhen zur Basis $b$, bekommt man fast eine feste Verschiebung $\mu$ —
+    plus eine winzige Welle $P$, die sich mit jeder ganzen Höhe wiederholt. Sie geht nie weg.
+  genau: |
+    $$\operatorname{slog}_b(T_d(x))-x=\mu_{b,d}+P_{b,d}(\{x\})+o(1)\qquad(x\to+\infty),$$
+    $P_{b,d}$ 1-periodisch mit Mittel $0$, $\{x\}$ der Nachkommateil (Paper I, Thm. 5.7; bedingt durch Hyp. 2.2/2.4).
+  warum: |
+    1. Nach [[bw.def.F_bd]] ist die linke Seite bei $x=n+\theta$ gleich $A_b(D_n(\theta))-\theta$.
+    2. $D_n\to D$ gleichmässig ([[bw.satz.schwanzkonvergenz]]) und $A_b$ ist Lipschitz-stetig, also konvergiert sie gegen $\Phi(\theta)=A_b(D(\theta))-\theta$.
+    3. Periodisch: $D_n(1)=\log_b^{\circ n}T_d(n+1)$ und $D_{n+1}(0)=\log_bD_n(1)$, also $\Phi(1)=\Phi(0)$. Aufteilen in Mittel und Rest gibt $\mu+P$.
+    4. Warum $P$ nicht null ist, ist eine eigene Geschichte ([[bw.satz.ursache_kozykel]]).
+  beispiel: |
+    $(e,2)$: $\mu=-1.128403776628924\ldots$, die Welle hat Amplitude $1.44\cdot10^{-4}$. $(e,3)$: $\mu=+0.192422293722\ldots$, Amplitude $3.7\cdot10^{-5}$.
+    Eigene Nachrechnung trifft die gespeicherte Fourier-Tabelle auf $4\cdot10^{-24}$.
+  bilder: [k7_phase]
+  einordnung: |
+    Vorgeschichte im Tetration-Forum: J. D. Fox schrieb 2007 die Basiswechsel-Formel ${}^xa=\lim\log_a^{\circ n}\bigl({}^{n+x+\mu_b(a)}b\bigr)$ mit einer festen Konstante
+    $\mu$ auf. S. Levenstein mass 2009 $\operatorname{slog}_2-\operatorname{slog}_e\approx1.1282$ (unser $-\mu_{e,2}$) und bemerkte, dass der Wechsel „ein wenig wackelt“ —
+    die Welle $P$. Das Phasengesetz macht aus diesen Beobachtungen einen Satz mit Beweis.
+
+    Unter $\eta$ gibt es in Koenigs-Koordinaten keine Welle ([[kl.satz.koenigs_basiswechsel]]), am gemeinsamen Fixpunkt ebenfalls nicht
+    ([[kl.satz.basiswechsel_gleiches_L]]). In senkrechter Richtung kommt der Basiswechsel ganz zur Ruhe ([[bw.satz.imaginaere_richtung]]).
+    Das Muster „zwei Abel-Koordinaten unterscheiden sich periodisch“ im Kleinen: [[kl.beob.zwei_abel]]. Wie glatt die Welle ist, ist umstritten:
+    [[bw.verm.streifen]] gegen [[bw.verm.nirgends_analytisch]].
+
+bw.satz.phasengesetz_gestoppt:
+  worum: |
+    Das Phasengesetz sollte ohne die Annahmen aus Paper I gelten, wenn man die Logarithmenkette rechtzeitig stoppt. Paper III sagt: Die alten
+    Abschätzungen gelten wörtlich weiter. Ausgeschrieben ist das noch nicht.
+  genau: |
+    **Skizze.** Für alle $b,d>\eta$ mit Kneser-Zweigen gilt das Phasengesetz ohne Hyp. 2.2/2.4, wenn man die gestoppten Schwänze $D_n^{\mathrm{stop}}$ benutzt.
+  warum: |
+    Zutaten: Stoppregel ([[bw.lem.stoppregel]]) und Wachstumslücke ([[bw.lem.wachstumsluecke]]) ersetzen die Annahmen; (R3) folgt aus der reellen
+    Analytizität von Knesers Superlogarithmus. Offene Lücken: die Lemmas 5.2–5.4 aus Paper I für $j\ge J_0$ ausschreiben (1–2 Seiten); (R3) explizit machen.
+  einordnung: |
+    Wäre das ausgeschrieben, wären Papers I–II weitgehend unbedingt. Darauf baut [[bw.lem.offset]].
+
+bw.lem.offset:
+  worum: |
+    Die Grenzobjekte $T_b(j+\tilde H(\theta))$ sind nur positiv, wenn das Argument über $-1$ liegt. Bei stark negativem $\mu$ ist das für kleine $j$ falsch.
+    Die Reparatur: alles um $s$ Stockwerke nach oben schieben.
+  genau: |
+    Sei $m_\star=\inf\tilde H$ und $s=\max(0,\lceil-1-m_\star\rceil)$. Dann ist $E_j(\theta)=T_b(j+\tilde H(\theta))>0$ für alle $j\ge s+1$, und die ganze Struktur von
+    Papers I–II gilt für die um $s$ verschobenen Objekte.
+  warum: |
+    $T_b(x)>0$ genau für $x>-1$, und $T_b$ ist wachsend. Für $j\ge s+1$ ist $j+\tilde H(\theta)\ge s+1+m_\star>-1$. Alles andere ist mit der Verschiebung verträglich.
+  beispiel: |
+    $(10,2)$: $\mu=-2.26496$, also $m_\star\approx-2.265$ und $s=2$; Rand $s+m_\star+1=0.7346$. $(e,1.5)$: $\mu=-9.776$, $s=9$.
+  einordnung: |
+    Setzt das Phasengesetz voraus (keine Zirkularität, aber Reihenfolge beachten). Repariert [[bw.gegen.unverschoben]]; für 45 Paare geprüft:
+    [[bw.beob.offset_zertifikat]].
+
+bw.gegen.unverschoben:
+  worum: |
+    Die wörtliche Lesart von Paper I — „der Kanal bleibt ab Stufe 1 positiv“ — ist für manche Basenpaare falsch. Das sieht man direkt am gemessenen $\mu$.
+  genau: |
+    Für $(10,2)$ ist $\mu=-2.26496\ldots$ und $\inf\tilde H<-2$: $T_b(\tilde H)$ ist auf einem Teil der Periode gar nicht erklärt, $E_1$ teilweise negativ. Mit $s=2$
+    ist alles repariert (Rand $0.7346$). Für $(e,1.5)$: $\mu=-9.776$, $s=9$.
+  warum: |
+    $T_b$ ist nur auf $(-2,\infty)$ erklärt und nur auf $(-1,\infty)$ positiv. Liegt $\tilde H=\theta+\mu+P$ unter $-2$ bzw. $-1$, scheitert die unverschobene Lesart.
+    Rigoros bräuchte man eine Intervallschranke für $\mu$; der Abstand zu $-2$ ist aber gross.
+  beispiel: |
+    $\mu_{10,2}=m(2)-m(10)=-1.12840-1.13656=-2.26496$ — direkt aus der Hub-Spalte.
+  einordnung: |
+    Korrigiert die Lesart von [[bw.ann.hyp22]]; repariert durch [[bw.lem.offset]]. Betroffen sind alle Paare mit stark negativem $\mu$, etwa $(e,b)$ mit $b$ nahe $\eta$ ([[bw.lem.randgesetz]]).
+
+bw.beob.offset_zertifikat:
+  worum: |
+    Die Offset-Bedingung muss man für jedes Basenpaar prüfen. Für alle 45 gemessenen Paare ist sie erfüllt — mit einer rigorosen Schranke für die Welle.
+  genau: |
+    Alle 45 Paare erfüllen $s+m_\star+1>0$; der engste Rand ist $(e,1.46)$ mit $0.0563$.
+  warum: |
+    Rechnung: $m_\star\ge\mu-\sum_k|a_k|$ mit den Modenamplituden der Welle; die Modenschranke ist rigoros, die Amplituden kommen vom Rechenmotor.
+  beispiel: |
+    $(10,2)$: Rand $0.7346$; $(e,1.46)$: Rand nur $0.0563$, weil $\mu$ dort knapp über einer ganzen Zahl liegt.
+  einordnung: |
+    Restbedingung von [[bw.lem.offset]] pro Paar. Offen: eine allgemeine Schranke für $\|P\|_\infty$, die es für alle Paare beweist.
+
+bw.verm.adressen:
+  worum: |
+    Für komplexe Basen muss jeder Logarithmus einen Zweig wählen — einen Streifen $m_j$ der komplexen Ebene. Die Folge dieser Wahlen ist eine
+    „Adresse“. Die Vermutung: Das Phasengesetz gilt auch hier, nur hängt die Welle zusätzlich von der Adresse ab.
+  genau: |
+    **Vermutung.** Für komplexe Basen, deren Bahn flieht, und verträgliche Adressen $\mathbf s$ konvergieren die gestoppten Schwänze gegen einen Kozykel
+    $\Phi_{b,d}(\theta,\mathbf s)$ über Phasenkreis und Adressverschiebung. Schliesslich $q$-periodische Adressen geben eine $q$-periodische Höhenphase. Der reelle Fall
+    (Adresse $0,0,\dots$) ist das Phasengesetz.
+  warum: |
+    Heuristik: Der Mechanismus der Schwanzkonvergenz (Dämpfung durch riesige Werte) braucht keine Realität, nur Flucht nach $\infty$. Neu ist nur, dass
+    jeder Logarithmus $+2\pi im_j/\ln b$ dazuzählen kann.
+  beispiel: |
+    Versuch vom 08.10.2026: Die reelle Kontrolle $(3,2)$ stimmt ($\mu=-1.3208260715$, unabhängig von der Stoppschwelle auf $10^{-16}$). Für das komplexe Paar
+    $4+0.5i$ mit $3+0.3i$ lieferte der Rechenmotor in 25 Minuten keine Werte — unentschieden. Nebenbei: Die meisten komplexen Basen nahe der reellen
+    Achse fliehen gar nicht.
+  einordnung: |
+    Verallgemeinert [[bw.satz.phasengesetz]]; braucht einen zuverlässigen Motor für komplexe Basen ([[kn.satz.paulsen_komplex]]).
+
+bw.satz.imaginaere_richtung:
+  worum: |
+    Nach rechts wächst der Turm ins Unendliche, und der Basiswechsel behält seine Welle. Lässt man die Höhe aber nach **oben** ins Komplexe laufen,
+    läuft die Tetration in ihren Fixpunkt $L_d$ — und dort ist die andere Basis harmlos. Der Basiswechsel kommt zur Ruhe.
+  genau: |
+    Für $b\ne d>\eta$ (mit $L_d$ im Gebiet, wo $A_b$ holomorph ist):
+    $$A_b\bigl(T_d(iy)\bigr)\to A_b(L_d)\quad(y\to+\infty),\qquad\Phi(w)=A_b(L_d)+\sum_{k\ge1}K_k\lambda_d^{kw},\quad K_1=A_b'(L_d).$$
+    Die Annäherung ist eine gedämpfte Drehung: Abklingrate $\arg\lambda_d$, Drehrate $\log|\lambda_d|$. Nach unten geht es gegen $A_b(\overline{L_d})$.
+  warum: |
+    1. Nahe $L_d$ ist $T_d(w)=L_d+\lambda_d^w+O(\lambda_d^{2w})$ (Koenigs-Koordinate, passend normiert).
+    2. $A_b$ ist bei $L_d$ holomorph, also Taylor in $\lambda_d^w$: das gibt die Reihe mit $K_1=A_b'(L_d)$.
+    3. $|\lambda_d^{iy}|=e^{-y\arg\lambda_d}\to0$, weil $\arg\lambda_d>0$; der Winkel $y\log|\lambda_d|$ dreht. Dass Kneser oben gegen $L_d$ läuft: [[kn.satz.kneser_eigenschaften]].
+  beispiel: |
+    $b=e$, $d=2$: Grenzwert $A_e(L_2)=0.326448651629+0.523513968910\,i$, $K_1=-0.0305475247-1.2919819448\,i$. Drehperiode $2\pi/\log|\lambda_2|=30.63$, Dämpfung
+    $e^{-1.0865\,y}$ — über eine Drehung also um den Faktor $10^{-14}$. Man sieht die Drehung fast nie.
+  bilder: [exp.funde]
+  einordnung: |
+    Drei Richtungen: nach rechts divergent mit 1-periodischer Welle ([[bw.satz.phasengesetz]]), nach oben gegen $A_b(L_d)$, nach unten gegen $A_b(\overline{L_d})$.
+    Dieselbe Zweiteilung mit vertauschten Rollen: [[kl.satz.basiswechsel_gleiches_L]]. Offen bei gemeinsamem oberem Fixpunkt: [[kl.frage.gleiches_L_kneser]].
+
+# ------------------------------------------------------------------ Strang bw.kreis
+
+bw.prop.kozykel:
+  worum: |
+    Die Wechselregel „von $d$ über $c$ nach $b$“ gilt auch für die Grenzwerte — nur muss man die Welle an der richtigen, schon verschobenen Stelle ablesen.
+  genau: |
+    $$\Phi_{b,d}(\theta)=\Phi_{c,d}(\theta)+\Phi_{b,c}\bigl(\{\theta+\Phi_{c,d}(\theta)\}\bigr),\qquad\Phi_{d,b}\bigl(\{\theta+\Phi_{b,d}(\theta)\}\bigr)=-\Phi_{b,d}(\theta).$$
+  warum: |
+    $F_{b,d}=F_{b,c}\circ F_{c,d}$ ([[bw.prop.gruppoid]]). Mit $y=F_{c,d}(x)=x+\Phi_{c,d}(\{x\})+o(1)$ ist $F_{b,d}(x)-x=(F_{b,c}(y)-y)+(y-x)$; im Grenzwert steht
+    rechts $\Phi_{b,c}(\{y\})+\Phi_{c,d}(\{x\})$. Für $b=d$ gibt das die inverse Gleichung.
+  beispiel: |
+    Integriert man über $\theta$, wird daraus fast $\mu_{b,d}=\mu_{c,d}+\mu_{b,c}$ — bis auf einen winzigen Rest ([[bw.prop.hub]]).
+  einordnung: |
+    Die Lifts $\tilde H$ bilden ein Gruppoid von Kreisabbildungen ([[bw.satz.homoeo]]). Aus der inversen Gleichung folgt die Antisymmetrie ([[bw.satz.antisymmetrie]]).
+
+bw.prop.antisym_c1:
+  worum: |
+    Die erste Fassung der Antisymmetrie $\mu_{b,d}=-\mu_{d,b}$ aus Paper I. Sie brauchte die Annahme, dass die Phasenabbildung glatt ist — überflüssig, wie sich zeigte.
+  genau: |
+    Ist $H=\mathrm{id}+\Phi$ ein orientierungserhaltender $C^1$-Kreisdiffeomorphismus, dann ist $\mu_{b,d}=-\mu_{d,b}$ (Paper I, Prop. 6.6). **Überholt.**
+  warum: |
+    Substitution $u=H(\theta)$ mit $H'>0$ in der inversen Phasengleichung. Paper II zeigt dasselbe ohne Glattheit ([[bw.satz.antisymmetrie]]).
+  einordnung: |
+    Historische Fassung; ersetzt durch [[bw.satz.antisymmetrie]], Spezialfall von [[br.satz.young_kreis]].
+
+bw.satz.homoeo:
+  worum: |
+    Die Phasenabbildung $\tilde H_{b,d}$ ist eine saubere Kreisabbildung: streng wachsend, um $1$ verschoben wird das Ergebnis um $1$ verschoben,
+    und die Gegenrichtung $\tilde H_{d,b}$ ist ihre Umkehrung.
+  genau: |
+    Unter dem Phasengesetz für $(b,d)$ und $(d,b)$ ist $\tilde H_{b,d}$ ein streng wachsender Homöomorphismus mit $\tilde H(x+1)=\tilde H(x)+1$ und $\tilde H_{b,d}^{-1}=\tilde H_{d,b}$
+    (Paper II, Thm. A). Die Phasenabbildungen bilden ein Gruppoid in $\mathrm{Homeo}^+(S^1)$.
+  warum: |
+    1. Vor dem Grenzwert ist $\theta\mapsto A_b(D_n(\theta))$ streng wachsend (alles in der Kette ist wachsend).
+    2. Grenzwerte wachsender Funktionen sind wenigstens nicht fallend.
+    3. Die inverse Gleichung ([[bw.prop.kozykel]]) sagt $\tilde H_{d,b}\circ\tilde H_{b,d}=\mathrm{id}$; also ist $\tilde H_{b,d}$ injektiv und damit streng wachsend und stetig.
+  beispiel: |
+    $(e,2)$: $\tilde H(\theta)=\theta-1.12840+P(\theta)$ mit $|P|\le1.44\cdot10^{-4}$ — fast eine Drehung um $-1.1284$, mit einer winzigen Verbiegung.
+  einordnung: |
+    Topologischer Kern; daraus folgt die Antisymmetrie ohne Glattheit ([[bw.satz.antisymmetrie]]).
+
+bw.satz.antisymmetrie:
+  worum: |
+    Übersetzt man von $d$ nach $b$, verschiebt sich die Höhe im Mittel um $\mu_{b,d}$; zurück um genau $-\mu_{b,d}$. Das klingt selbstverständlich, ist es aber
+    nicht, weil die Welle dazwischen steht. Es folgt aus einer Flächen-Identität für Kreisabbildungen.
+  genau: |
+    $\mu_{b,d}=-\mu_{d,b}$ exakt, sobald das Phasengesetz für beide Ordnungen gilt (Paper II, Thm. B).
+  warum: |
+    1. $\tilde H_{d,b}=\tilde H_{b,d}^{-1}$ ([[bw.satz.homoeo]]).
+    2. Für jeden wachsenden Lift $H$ mit $H(x+1)=H(x)+1$ gilt $\int_0^1(H(x)-x)\,dx=-\int_0^1(H^{-1}(y)-y)\,dy$: die Flächen zwischen Graph und Diagonale
+       sind für $H$ und $H^{-1}$ dieselben, nur gespiegelt ([[br.satz.young_kreis]]).
+    3. Links steht $\mu_{b,d}$, rechts $-\mu_{d,b}$. Glattheit wird nirgends gebraucht.
+  beispiel: |
+    $\mu_{e,2}=-1.128403776628924$; Mittel der Umkehrung $+1.128403776629334$; Summe $4\cdot10^{-13}$ — reiner Rechenfehler. Für 200 zufällige Lifts hält die
+    Identität auf $6\cdot10^{-10}$, auch für einen geknickten Lift.
+  bilder: [exp.young]
+  einordnung: |
+    Ersetzt [[bw.prop.antisym_c1]]. Nebenwirkung: Die Restfehler $\mu_{b,d}+\mu_{d,b}$ in Tabellen sind ein Genauigkeitstest für den Rechenmotor.
+
+bw.satz.minimalregularitaet:
+  worum: |
+    Wann sind zwei zueinander inverse Kreisabbildungen glatt mit positiver Ableitung? Wenn beide $C^1$ sind. Nur eine reicht nicht.
+  genau: |
+    Sind $\Phi,\Psi$ 1-periodisch, $C^1$, mit $\Psi(x+\Phi(x))=-\Phi(x)$ und $\Phi(u+\Psi(u))=-\Psi(u)$, dann sind $\mathrm{id}+\Phi$ und $\mathrm{id}+\Psi$ zueinander inverse
+    $C^1$-Diffeomorphismen mit positiver Ableitung (Paper II, Thm. C). Einseitige $C^1$-Regularität reicht nicht.
+  warum: |
+    Die Gleichungen sagen $K\circ H=H\circ K=\mathrm{id}$ für $H=\mathrm{id}+\Phi$, $K=\mathrm{id}+\Psi$. Kettenregel: $H'(K(u))\,K'(u)=1$, also nirgends null; wachsend gibt positiv.
+  beispiel: |
+    Warum einseitig nicht reicht: $H(x)=x-\frac{\sin2\pi x}{2\pi}$ ist glatt und streng wachsend, aber $H'(0)=0$; nahe $0$ ist $H(x)\approx\frac{(2\pi)^2}{6}x^3$, die Umkehrung
+    verhält sich wie eine dritte Wurzel und ist bei $0$ nicht differenzierbar.
+  einordnung: |
+    Spart die Positivitätsabschätzung in [[bw.satz.c1_produkt]].
+
+bw.satz.c1_produkt:
+  worum: |
+    Die Phasenabbildung ist nicht nur stetig, sondern stetig differenzierbar, und ihre Ableitung lässt sich als Produkt hinschreiben: Turmwerte zur
+    Basis $d$ geteilt durch Turmwerte zur Basis $b$, Stufe für Stufe.
+  genau: |
+    Unter den Bedingungen (S) und (R′) gilt $D_n\to D$ in $C^1$, $D'>0$, und
+    $$\tilde H_{b,d}'(\theta)=\frac{\alpha\,T_d'(\theta)}{T_b'(\tilde H(\theta))}\prod_{j\ge1}\frac{\alpha\,T_d(j+\theta)}{T_b(j+\tilde H(\theta))}>0$$
+    (Paper II, Thm. D).
+  warum: |
+    1. Kettenregel für $D_n$: jede Ableitung von $T$ ist ein Produkt über Turmwerte ($T'(x+1)=\ln b\,T(x+1)T'(x)$), jeder Logarithmus teilt durch den Wert.
+    2. Die turmgrossen Faktoren stehen im Zähler und im Nenner und kürzen sich bis auf Quotienten $\alpha T_d(j+\theta)/T_b(j+\tilde H)$.
+    3. Diese Quotienten gehen sehr schnell gegen $1$, weil die beiden Türme sich nach dem Phasengesetz Stufe für Stufe angleichen; das Produkt konvergiert.
+  beispiel: |
+    $(e,2)$ bei $\theta=\tfrac12$: numerisch $\tilde H'(\tfrac12)=0.9992171582$; die Produktformel mit vier Faktoren gibt denselben Wert auf alle gezeigten Stellen.
+    Ohne den Vorfaktor $\alpha$ käme $1.44$ heraus — er gehört dazu.
+  einordnung: |
+    Glattheit mit expliziter Ableitung. Wie glatt genau — analytisch in einem Streifen? — ist die offene Frage [[bw.verm.streifen]].
+
+# ------------------------------------------------------------------ Strang bw.moden
+
+bw.satz.fourier_naht:
+  worum: |
+    Wie schnell die Fourier-Koeffizienten einer periodischen Funktion fallen, verrät, wie glatt sie ist. Ein Knick in der $(m+1)$-ten Ableitung gibt Koeffizienten
+    der Grösse $k^{-(m+2)}$.
+  genau: |
+    Ist $f\in C^m(S^1)$, stückweise $C^{m+2}$, und springt $f^{(m+1)}$ bei $\tau_i$ um $J_i$, dann
+    $$\hat f(k)=(2\pi ik)^{-(m+2)}\sum_iJ_ie^{-2\pi ik\tau_i}+o(k^{-(m+2)}).$$
+  warum: |
+    $(m+2)$-mal partiell integrieren. Jeder Sprung liefert einen Randterm $J_ie^{-2\pi ik\tau_i}/(2\pi ik)^{m+2}$; der Rest ist ein Fourier-Koeffizient einer integrierbaren
+    Funktion und geht nach Riemann–Lebesgue gegen $0$.
+  beispiel: |
+    Lineare Tetration zur Basis $e$: $C^1$, die zweite Ableitung springt ([[kn.satz.linear_glatt]]) — also Moden wie $k^{-3}$. Gemessen wurden Exponenten $3.06$ und $3.006$; das eicht die Messkette.
+  einordnung: |
+    Ein Lehrbuchsatz als Kalibrierwerkzeug. Für analytische Funktionen fallen die Moden exponentiell ([[br.satz.gevrey_fourier]], [[bw.verm.streifen]]).
+
+bw.verm.streifen:
+  worum: |
+    Die Welle $P$ ist glatt. Ist sie sogar analytisch, und zwar in einem Streifen fester Breite um die reelle Achse? Dann würden ihre Fourier-Moden
+    exponentiell fallen.
+  genau: |
+    **Vermutung** (Paper I, 8.1). $D_{b,d}$ setzt sich holomorph in $|\operatorname{Im}\theta|<\sigma_{b,d}$ fort, und $|\hat P_{b,d}(k)|\le Ce^{-2\pi\sigma|k|}$.
+  warum: |
+    Gestützt und zugleich offen: Bis $k\approx520$ fallen die Moden schnell, aber die lokale Rate $\sigma_{\mathrm{eff}}(k)$ fällt immer noch weiter. Ein Streifenmodell und ein
+    Gevrey-Modell (ohne festen Streifen) passen gleich gut ([[bw.frage.streifen_gevrey]]).
+  beispiel: |
+    $(e,2)$: $|a_1|=1.44\cdot10^{-4}$, $|a_{20}|=1.7\cdot10^{-23}$ — neunzehn Grössenordnungen auf zwanzig Moden.
+  einordnung: |
+    **Umstritten.** Im Tetration-Forum wird seit 2011 das Gegenteil vermutet: Basiswechsel-Tetrationen seien nirgends analytisch ([[bw.verm.nirgends_analytisch]]).
+    Dann gäbe es keinen Streifen, und $\sigma^*$ wäre $0$. Modellfall mit bekanntem Streifen: [[kl.verm.streifenbreite]]. Woher die Singularitäten kommen:
+    [[bw.satz.ursache_kozykel]].
+
+bw.verm.nirgends_analytisch:
+  worum: |
+    Die Gegenposition zur Streifen-Vermutung: Übersetzt man eine glatte Tetration in eine andere Basis, ist das Ergebnis zwar unendlich oft differenzierbar,
+    aber an keiner einzigen Stelle durch eine Potenzreihe darstellbar. Die Singularitäten der Näherungen rücken mit jeder Logarithmenstufe näher an die reelle Achse.
+  genau: |
+    **Vermutung** (S. Levenstein, Tetration-Forum 2011). Die Basiswechsel-Tetration $D_{b,d}=\lim_n\log_b^{\circ n}T_d(n+\theta)=T_b\circ(\mathrm{id}+\Phi_{b,d})$ ist auf der
+    reellen Achse $C^\infty$, aber nirgends analytisch. Gleichwertig: die Phase $\Phi_{b,d}$ ist nirgends analytisch, insbesondere in keinem Streifen holomorph ($\sigma^*=0$).
+  warum: |
+    1. Gleichwertigkeit: $T_b$ ist analytisch und lokal umkehrbar; also ist $D$ an einer Stelle analytisch genau dann, wenn $\Phi$ es ist.
+    2. Die $n$-te Näherung $\log_b^{\circ n}\circ T_d(n+\cdot)$ wird singulär, wo ein Logarithmus auf $0$ trifft; Trappmann (2009) zeigt für $\log_a^{\circ n}\circ\exp_b^{\circ n}$
+       Verzweigungspunkte bei $\log_b^{\circ n}\{a,\dots,\exp_a^{\circ n-2}(1)\}$.
+    3. Levenstein misst, dass der Abstand der nächsten Singularität zur reellen Achse mit $n$ gegen $0$ geht (Radius $0.46$, nach einer weiteren Stufe $0.035$),
+       während die Werte auf der Achse superexponentiell schnell konvergieren. Gleichmässige Konvergenz nur auf der Achse sichert $C^\infty$, aber keine Analytizität.
+    Ein Beweis fehlt; es kann sein, dass sich die Singularitäten im Grenzwert wegheben.
+  beispiel: |
+    Im Modenabfall wäre „nirgends analytisch“ mit dem Gevrey-Bild $\ln|a_k|\approx-c\sqrt k$ verträglich. Unsere Daten bis $k\approx520$ unterscheiden Streifen und
+    Gevrey nicht; die Turmanalyse aus Runde 20 spricht eher für Gevrey.
+  einordnung: |
+    Widerspricht [[bw.verm.streifen]]; entscheidet [[bw.frage.streifen_gevrey]], wenn sie bewiesen wird. Dieselbe Bauart hat Walkers $C^\infty$-Lösung
+    ([[kn.konstr.walker]]). Dass $D$ jedenfalls keine Kneser-Tetration ist, zeigt [[bw.satz.ursache_kozykel]].
+
+bw.beob.modenabfall:
+  worum: |
+    Misst man den Abfall der Fourier-Moden für viele Basenpaare, sieht man immer dieselbe Kurve — nur die Gesamtgrösse hängt vom Paar ab.
+  genau: |
+    $\sigma_{\mathrm{eff}}(k)\approx\sigma^*+1.090\,k^{-1/2}-1.512\,k^{-1}$ für alle Paare mit $b,d\in[1.5,10]$, $k\gtrsim5$; die Amplitude ist paarabhängig ($\pm2\,\%$).
+    Grundmodell $\ln A_k=\ln C+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi ck}$.
+  warum: |
+    Gemessen über 14 Paare. Grenze der Messung: Der Rechenmotor hat einen Modenboden bei etwa $e^{-2.95\,n_{\lim}}$; brauchbar ist $k\lesssim2.3\,n_{\lim}$.
+  beispiel: |
+    Die normierten Profile $|a_k|/|a_1|$ der Paare $(e,2)$ und $(e,3)$ unterscheiden sich für $k\le6$ in $\ln$ um höchstens $0.03$ ([[exp.moden]]).
+  bilder: [exp.moden]
+  einordnung: |
+    Stützt [[bw.verm.streifen]]; die Konstante $\sigma^*$: [[bw.beob.sigma_stern]]. Gleiche Universalität im Kleinen: [[kl.verm.faktor]].
+
+bw.beob.singularitaet:
+  worum: |
+    Eine Beobachtung, die sich als Täuschung herausstellte: Der Löser für die komplexe Fortsetzung der Phase brach in einem schrägen Sektor zusammen,
+    und das sah aus wie eine echte Singularität.
+  genau: |
+    **Widerlegt.** Beobachtet: Zusammenbruch des Lösers in einem schrägen Sektor pro Periode, Spitze bei $z^*\approx x^*(b,d)+0.055i$, Höhe für alle Paare gleich (Paper IV, Obs. 6.1/6.2).
+  warum: |
+    Die Spitze liegt genau dort, wo die oberste Stufe des Lösers ihren Logarithmus nicht mehr sauber nehmen kann ([[bw.korr.r20]]). Eine exakte
+    Rechnung läuft glatt durch die Zone.
+  einordnung: |
+    Lehrstück: Zusammenbruch eines Lösers ist keine Singularität. Ersetzt durch [[bw.beob.positionsgesetz]] und [[bw.satz.ursache_kozykel]].
+
+bw.korr.r20:
+  worum: |
+    Runde 20 hat den „singulären Sektor“ entlarvt: Er sitzt genau auf einer Kurve, die nur der Löser kennt — dort dreht sein letzter Schritt den Wert in die
+    imaginäre Richtung.
+  genau: |
+    Die Spitze liegt exakt auf der $\pi/2$-Drehkurve $\operatorname{Re}T_d(m+z)=0$ der obersten Stufe, $y=\dfrac{\pi/2}{\ln d\cdot T_d'(m-1+x)}$ ($0.0595$ bei $x=1.001$).
+    Die „universelle $0.058$“ ist eine Folge davon, dass $\operatorname{Im}[\ln d\,T_d(m+z)]$ unter Konjugation gleich bleibt. Das exakte endliche Residuum $R(n+z)$
+    läuft glatt durch die Zone.
+  warum: |
+    Gegenrechnung mit der exakten Logarithmenleiter: Unterhalb der Zone stimmt die Fourier-Reihe auf $9\cdot10^{-43}$, in der Zone ist das exakte Residuum
+    glatt. Erreicht der Exponent $\ln d\cdot T_d(m+z)$ den Imaginärteil $\pi/2$, ist $d^{T}$ rein imaginär und der nächste Logarithmus springt — ein Artefakt der Stufe.
+  einordnung: |
+    Widerlegt [[bw.beob.singularitaet]] und ersetzt [[bw.verm.universell]]. Regel für jede Singularitätssuche mit Lösern: Zusammenbrüche gegen eine exakte Leiter prüfen.
+
+bw.verm.universell:
+  worum: |
+    Die Vermutung, die aus der falschen Beobachtung entstand: eine einzige wesentliche Singularität pro Periode, in fester Höhe für alle Paare.
+  genau: |
+    **Überholt.** $\Phi_{b,d}$ sei im punktierten Streifen holomorph mit einer isolierten wesentlichen Singularität bei $x^*(b,d)+i\sigma^*$, $\sigma^*$ paarunabhängig (Paper IV, 6.6).
+  warum: |
+    Ihre Stütze ([[bw.beob.singularitaet]]) ist ein Löserartefakt ([[bw.korr.r20]]). Geblieben sind das Positionsgesetz und die offene Frage Streifen oder Gevrey.
+  einordnung: |
+    Historisch; Nachfolger [[bw.beob.positionsgesetz]], [[bw.frage.streifen_gevrey]].
+
+bw.prop.saddle:
+  worum: |
+    Ein Lehrbuchsatz: Hat eine periodische Funktion im Streifen eine Singularität der Form $\exp(v/(\theta-\bar\theta^*))$, dann fallen ihre Fourier-Moden mit einem
+    zusätzlichen $\sqrt k$-Glied im Exponenten — genau die Form des gemessenen Modenabfalls.
+  genau: |
+    Ist $P$ im Streifen holomorph bis auf isolierte Singularitäten $P=h\exp(v/(\theta-\bar\theta^*))$, dann
+    $\ln\hat P(k)=\mathrm{const}+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi ck}+o(\sqrt k)$ mit $8|v|\cos^2\Psi=c$ (Paper IV, Prop. 6.3).
+  warum: |
+    Sattelpunktmethode: Man verschiebt die Integrationskontur des Fourier-Integrals an die Singularität heran; dort hat der Integrand einen Sattel, dessen Lage
+    mit $\sqrt k$ wandert. Vorausgesetzt ist, dass man die Kontur so verschieben darf.
+  einordnung: |
+    Als Satz richtig. Seine Anwendung auf $\Phi$ hing an [[bw.beob.singularitaet]] und ist jetzt offen; Folgerung: [[bw.kor.modenzahl]].
+
+bw.kor.modenzahl:
+  worum: |
+    Wie viele Fourier-Moden braucht man, um die Welle auf 150 oder 500 Stellen zu tabellieren? Das angepasste Modell gibt eine Antwort — aber seine Begründung ist weggefallen.
+  genau: |
+    Etwa $300$ Moden für $150$ Stellen, etwa $1400$ für $500$ Stellen (im angepassten Singularitätsmodell, Paper IV, Kor. 6.5).
+  warum: |
+    Aus dem Modell von [[bw.prop.saddle]] mit den Konstanten von [[bw.verm.universell]] — weit über die gemessenen $k\le500$ hinaus extrapoliert. Die Deutung als
+    Singularität ist überholt; die Zahlen müssten rein empirisch über [[bw.beob.modenabfall]] neu begründet werden.
+  einordnung: |
+    Die Prüfung meldet hier bewusst eine Warnung: der Satz stützt sich auf eine überholte Vermutung.
+
+bw.beob.positionsgesetz:
+  worum: |
+    Wo sitzt die singuläre Struktur der Welle wirklich? Die Phasen der Fourier-Moden verraten es: an einem festen Punkt der absoluten Höhenskala, für alle Paare derselbe.
+  genau: |
+    $x_{\mathrm{eff}}(k)=u(k)+X_d$ mit universeller Drift $u(k)$ und $X_d=X_e-\mu_{e,d}\pmod1$, auf $5\cdot10^{-4}$ (Runde 20).
+  warum: |
+    Gemessen an 500 Moden von $(e,2)$ mit Phasenfits. Die Verschiebung um $-\mu_{e,d}$ ist genau das, was man erwartet, wenn die Struktur an einer festen Höhe zur
+    Basis $e$ hängt und nur in die Höhen zur Basis $d$ umgerechnet wird — verträglich mit dem Kozykel.
+  einordnung: |
+    Ursache: [[bw.satz.ursache_kozykel]]. Ersetzt die Singularitätsdeutung ([[bw.verm.universell]]).
+
+bw.satz.ursache_kozykel:
+  worum: |
+    Warum muss die Welle überhaupt Singularitäten haben? Weil die beiden Koenigs-Koordinaten an $L_b$ und $L_d$ verschiedene komplexe Perioden haben.
+    Eine Abbildung, die das eine Gitter ins andere übersetzt, kann nicht überall glatt sein.
+  genau: |
+    **Skizze.** Mit $P_a=2\pi i/\ln\lambda_a$ erfüllt der Konjugator $\kappa=K-\mathrm{id}$ der Koenigs-Koordinaten $\kappa(\xi+P_d)-\kappa(\xi)=P_b-P_d$. Daher ist er in jeder Zelle
+    singulär, mit Residuensumme $1/\ln\lambda_d-1/\ln\lambda_b$. Gleichwertig: $D=T_b\circ\tilde H$ ist eine **nicht-Kneser**-Tetration zur Basis $b$.
+  warum: |
+    1. $D(\theta+1)=b^{D(\theta)}$ folgt direkt aus der Definition der Schwänze. Also ist $D$ eine Superfunktion von $b^x$, und $D=T_b\circ(\mathrm{id}+\Phi)$.
+    2. Wäre $D$ die Kneser-Lösung, wäre $\Phi$ konstant ([[kn.satz.paulsen_cowgill]]). Ist $P\ne0$, ist $D$ eine andere Tetration — ihre Abweichung muss sich im Komplexen als
+       Singularität zeigen, sonst hätte sie Knesers senkrechtes Verhalten.
+    3. Periodenvergleich: Eine holomorphe, mit den Verschiebungen verträgliche Abbildung müsste $P_d$ auf $P_b$ schicken; die Differenz $P_b-P_d$ erzwingt Pole.
+    Lücken: im Forschungslog hergeleitet, nicht als Beweis ausgeschrieben; der Zusammenhang mit der gemessenen Lage ist nur numerisch.
+  einordnung: |
+    Dieselbe Mechanik mit reellen Perioden: [[kl.verm.streifenbreite]]. Offen bleibt, ob die Singularitäten in festem Abstand liegen (Streifen) oder sich der Achse
+    nähern (Gevrey): [[bw.frage.streifen_gevrey]].
+
+bw.beob.sigma_stern:
+  worum: |
+    Die Höhe des vermuteten Analytizitätsstreifens ist eine einzige Zahl $\sigma^*$. Gemessen ist sie klein und noch unsicher.
+  genau: |
+    $\sigma^*=0.058\pm0.006$ (Fenster-Extrapolation $\sigma^*(w)=\sigma^*_\infty+2.83/w$ mit $n_{\lim}=240$); Normalform-Fit auf $[200,500]$: $0.0709$, extrapoliert $0.058$–$0.062$.
+  warum: |
+    Gemessen und modellabhängig: Ab $k\approx510$ erreicht man den Modenboden des Motors; die Extrapolation in der Fensterbreite $w$ bestimmt das Ergebnis.
+  einordnung: |
+    Die Entscheidungsgrösse für [[bw.frage.streifen_gevrey]]: Gevrey hiesse $\sigma^*_\infty=0$. Stützt [[bw.verm.streifen]] nur, wenn $\sigma^*_\infty>0$ bleibt.
+
+bw.frage.streifen_gevrey:
+  worum: |
+    Die offene Glattheitsfrage: Ist die Welle in einem Streifen fester Breite analytisch, oder nur „fast analytisch“ (Gevrey), mit Singularitäten,
+    die der reellen Achse beliebig nahe kommen?
+  genau: |
+    Ist $\Phi_{b,d}$ in einem Streifen positiver Breite analytisch ($\sigma^*>0$) oder nur Gevrey-glatt ($\ln A_k\sim-c\sqrt k$, $\sigma^*=0$)? Aus $k\le500$ nicht entscheidbar; die
+    Turmanalyse (Landebänder, Plateau-Identität) spricht für Gevrey mit effektiver Rate $\approx0.06$.
+  warum: |
+    Offen. Beide Modelle sagen für $k\le500$ fast dasselbe; erst bei viel grösserem $k$ trennen sie sich. Warum das wichtig ist: Davon hängt ab, wie viele Moden
+    man für eine Tabelle braucht ([[bw.kor.modenzahl]]). Im Tetration-Forum wird die schärfste Form der Gevrey-Seite vermutet: nirgends analytisch
+    ([[bw.verm.nirgends_analytisch]]).
+  einordnung: |
+    Nächster Schritt: Modenkampagne bis $k\approx5000$ ($n_{\lim}\approx2200$), vorher am Modellfall [[kl.verm.streifenbreite]] testen, ob die Methode einen bekannten
+    Streifen findet. Hintergrund: [[br.satz.gevrey_fourier]].
+
+# ------------------------------------------------------------------ Strang bw.antwort
+
+bw.verm.rang_eins:
+  worum: |
+    Eine frühe Hoffnung: Für eine feste innere Basis $d$ habe die Welle $P_{b,d}$ immer dieselbe Form, egal welches $b$ — nur ihre Grösse ändere sich.
+  genau: |
+    **Widerlegt** (als exakte Aussage). Vermutet war: Für festes $d$ ist $\{P_{b,d}\}_b$ in $L^2(S^1)$ vom Rang eins, die Form hängt nur von $d$ ab (Paper I, 4.1).
+  warum: |
+    In erster Ordnung stimmt es: $\Phi_{b,d}\approx\varepsilon\,G_d$ ([[bw.satz.antwortkern]]). Aber die Kerne $G_c$ ändern ihre Form mit $c$ ([[bw.beob.kernkleid]]), und
+    eine Welle zwischen weit entfernten Basen sammelt die Kerne aller Basen dazwischen auf — ihre Form wandert mit.
+  beispiel: |
+    Die normierten Modenverhältnisse $|G_k|/|G_1|$ ändern sich über $d\in\{2,e,3,5,10\}$ um $0.4\,\%$ ($k=2$) bis $9\,\%$ ($k=8$).
+  einordnung: |
+    Hat die Störungstheorie angestossen; exakter Ersatz: [[bw.satz.antwortkern]].
+
+bw.beob.kernkleid:
+  worum: |
+    Die Kerne $G_d$ — die Form der Welle in erster Ordnung — sehen für verschiedene Basen fast gleich aus, aber nicht ganz: Sie tragen eine glatte, kleine Abhängigkeit von $d$.
+  genau: |
+    $|G_k(d)|/|G_1(d)|$ variiert um $0.4\,\%$ ($k=2$) bis $9\,\%$ ($k=8$) über $d\in\{2,e,3,5,10\}$; zwei unabhängige Wege (komplexer Schritt, $\varepsilon$-Schablonen) stimmen auf 24+ Stellen.
+  warum: |
+    Gemessen, doppelt bestätigt. Bei $d\in\{2,10\}$ waren die Referenzen aus dem komplexen Schritt fehlerhaft ([[bw.gescheitert.cstep]]); die anderen Wege stimmen trotzdem.
+  einordnung: |
+    Widerlegt [[bw.verm.rang_eins]]. Offen: eine geschlossene Beschreibung der Kernfläche $C_k(d)$.
+
+bw.ann.basis_diffbar:
+  worum: |
+    Um nach der Basis abzuleiten, muss man annehmen, dass Tetration und Superlogarithmus glatt von der Basis abhängen — und dass man Ableitung und
+    Grenzwert vertauschen darf.
+  genau: |
+    **Annahme** (Paper IV, Hyp. 7.1): $b\mapsto(T_b,A_b)$ ist $C^1$ in $\beta=\ln\ln b$, und $\partial_\beta\Phi_{b,d}|_{b=d}=\lim_nV_d(T_d(n+\theta))$ gleichmässig.
+  warum: |
+    Der erste Teil ist durch Paulsens holomorphe Abhängigkeit gedeckt ([[kn.satz.paulsen_komplex]]); der zweite — gleichmässige Vertauschung — ist die eigentliche Annahme.
+  einordnung: |
+    Bedingung von [[bw.satz.antwortkern]].
+
+bw.satz.antwortkern:
+  worum: |
+    Wie reagiert die Welle, wenn man die Basis ein klein wenig ändert? In erster Ordnung ist sie ein fester Kern $G_d$ mal die Basisänderung $\varepsilon$.
+    Der Kern lässt sich aus der Tetration zur Basis $d$ allein ausrechnen.
+  genau: |
+    Mit $S_d(\theta)=\sum_{j\ge0}T_d(j+\theta)/T_d'(j+\theta)$ und $V_d=\partial_\beta A_b|_{b=d}$ ist $G_d(\theta):=S_d(\theta)-V_d(T_d(\theta))$ exakt 1-periodisch, und
+    $$\Phi_{b,d}=\varepsilon\,G_d+O(\varepsilon^2),\qquad\varepsilon=\ln\log_bd$$
+    gleichmässig (Paper IV, Thm. 7.3).
+  warum: |
+    1. Die Abel-Gleichung $A_b(b^y)=A_b(y)+1$ nach $\beta=\ln\ln b$ ableiten (mit $b^y=\exp(e^\beta y)$) gibt bei $b=d$ die kohomologische Gleichung
+       $V(T(x+1))-V(T(x))=-T(x)/T'(x)$ ([[fg.satz.kohomologisch]]).
+    2. Teleskopieren entlang des Turms: $V(T(n+\theta))=V(T(\theta))-\sum_{j<n}T(j+\theta)/T'(j+\theta)$; im Grenzwert erscheint $S_d$, und die Differenz $G_d$ ist periodisch.
+    3. $\Phi_{b,d}$ ist bei $b=d$ null; seine Ableitung nach $\beta$ ist der Grenzwert aus 2 (hier steckt Hyp. 7.1).
+  beispiel: |
+    Amplitudengesetz in Zahlen: $|a_1|/|\varepsilon|=1.437\cdot10^{-4}/0.3665=3.92\cdot10^{-4}$ für $(e,2)$ und $3.65\cdot10^{-5}/0.0940=3.88\cdot10^{-4}$ für $(e,3)$ — fast derselbe
+    Kern, obwohl die Wellen viermal verschieden gross sind.
+  einordnung: |
+    Welche Lösung der kohomologischen Gleichung $V$ ist, legt [[bw.satz.kern_eindeutig]] fest. Ersetzt [[bw.verm.rang_eins]].
+
+bw.prop.hub:
+  worum: |
+    Statt für jedes Basenpaar ein eigenes Mittel $\mu_{b,d}$ zu tabellieren, reicht eine einzige Spalte $m(b)=\mu_{e,b}$: Die Mittel sind fast Differenzen.
+    Was fehlt, ist ein winziger Rest zweiter Ordnung.
+  genau: |
+    $$\mu_{b,d}=m(d)-m(b)+\Delta_{b,c_*;d},\qquad\Delta=\int_0^1P_{b,c_*}\bigl(\{\theta+\Phi_{c_*,d}(\theta)\}\bigr)\,d\theta$$
+    (Paper IV, Prop. 8.1); Defekte zweiter und dritter Ordnung bis $10^{-15}$ bestätigt.
+  warum: |
+    Den Kozykel ([[bw.prop.kozykel]]) über eine Periode integrieren und die Antisymmetrie benutzen. Der Rest $\Delta$ ist das Integral einer Welle mit Mittel $0$, abgelesen an
+    leicht verbogenen Stellen — wäre die Verbiegung null, wäre auch $\Delta$ null. Darum ist $\Delta$ ein Produkt zweier kleiner Wellen.
+  beispiel: |
+    $m(2)-m(3)=-1.1284037766-0.1924222937=-1.3208260704$; direkt gemessen $\mu_{3,2}=-1.3208260715$. Der Rest ist etwa $10^{-9}$ — Wellen der Grösse $10^{-4}$, zum Quadrat genommen.
+  bilder: [k7_hub]
+  einordnung: |
+    Praktisch: Basiswechsel mit einer Tabellenspalte. Vorgeschichte: J. D. Fox stellte 2007 im Tetration-Forum die Regel $\mu_a(c)=\mu_a(b)+\mu_b(c)$ auf — als
+    exakte Additivität konstanter Verschiebungen. Der Hub zeigt, was wegen der Welle davon übrig bleibt: Additivität bis auf den Defekt $\Delta$.
+    Wie $m(b)$ bei $\eta$ divergiert: [[bw.lem.randgesetz]]; Genauigkeit der Spalte: [[bw.beob.hub_genauigkeit]].
+
+bw.lem.randgesetz:
+  worum: |
+    Je näher die Basis an $\eta$ liegt, desto länger braucht ihr Turm, um sich durch den schmalen Spalt bei $e$ zu zwängen. Er hinkt dem Turm zur Basis $e$
+    immer weiter hinterher — und $m(b)$ fällt nach $-\infty$, wie eins durch Wurzel aus dem Abstand.
+  genau: |
+    $m(b)=\mu_{e,b}=-\pi\sqrt{2\eta/e}\,(b-\eta)^{-1/2}\,(1+o(1))$ für $b\downarrow\eta$, mit $\pi\sqrt{2\eta/e}=3.2389305\ldots$ und einer Korrektur der Ordnung $\ln(b-\eta)$ (Skizze).
+  warum: |
+    1. Für $b=\eta+\delta$ und $x=e+w$ ist $b^x\approx e+w+\frac{e^2\delta}\eta+\frac{w^2}{2e}$: ein Engpass, durch den jeder Schritt nur um $\varepsilon+aw^2$ weiterkommt ($\varepsilon=e^2\delta/\eta$, $a=1/(2e)$).
+    2. In der Kontinuumsnäherung $dw/dn=\varepsilon+aw^2$ dauert der Durchgang $\int_{-\infty}^\infty\frac{dw}{\varepsilon+aw^2}=\frac\pi{\sqrt{a\varepsilon}}=\pi\sqrt{\frac{2\eta}{e\,\delta}}$ Schritte.
+    3. Um so viele Stockwerke ist der $b$-Turm verspätet, also $m(b)\approx-\pi\sqrt{2\eta/e}\,\delta^{-1/2}$. Lücken: rigorose Durchgangszeit und die $\ln$-Korrektur.
+  beispiel: |
+    Reine Iteration: Durchgangszahlen $25$, $316$, $3231$, $10234$ für $\delta=10^{-2},10^{-4},10^{-6},10^{-7}$; angepasste Konstante $3.23872$ statt $3.23893$.
+    Die Tabelle $m(b)$ trifft den Leitterm nur auf 4–7 %, weil sie erst bei $b=1.5$ beginnt.
+  bilder: [exp.randgesetz]
+  einordnung: |
+    Ein Spezialfall der Sattel-Knoten-Durchgangszeit ([[br.satz.sattel_knoten]]). Konstante korrigiert: [[bw.korr.konstante]]. Rigoros über parabolische
+    Implosion: [[br.frage.implosion]]. Bei $\eta$ selbst kriecht der Turm wie $1/x$ ([[kl.satz.parabolisch]]).
+
+bw.korr.konstante:
+  worum: |
+    Ein kleiner Zahlenfehler in Paper IV: die Konstante des Randgesetzes.
+  genau: |
+    Paper IV nennt an drei Stellen $\pi\sqrt{2\eta/e}=3.23907\ldots$; richtig ist $3.2389305453\ldots$ (relativer Fehler $4\cdot10^{-5}$).
+  warum: |
+    Direkt nachgerechnet mit 30 Stellen in drei gleichwertigen Formen. Die Aussage „Übereinstimmung auf 2.3 %“ ist davon praktisch nicht betroffen.
+  einordnung: |
+    Korrigiert [[bw.lem.randgesetz]]. Lehre: vor einer Neuauflage alle Zahlenkonstanten maschinell gegenprüfen.
+
+bw.beob.hub_genauigkeit:
+  worum: |
+    Die Hub-Spalte zeigt 40 Stellen, trägt aber nur etwa 31 richtige — das zeigt ein Vergleich der drei vorhandenen Fassungen von $m(2)$.
+  genau: |
+    $m(2)$ in drei Fassungen: Runde 1 (180 Stellen), phi_modes.json (Abweichung $8.5\cdot10^{-37}$), mu_hub.json (Abweichung $1.8\cdot10^{-31}$, obwohl 40 Stellen angegeben).
+  warum: |
+    Vergleich unter der Annahme, dass der 180-Stellen-Wert richtig ist (die beiden anderen stimmen auf $\ge31$ Stellen mit ihm). Vermutete Ursache: Rechengitter mit 32 statt 64 Punkten.
+  einordnung: |
+    Betrifft vermutlich alle Hub-Werte. Referenzwert: [[bw.beob.m2]].
+
+bw.beob.m2:
+  worum: |
+    Die wichtigste Zahl der Hub-Spalte: Wie weit liegt der Turm zur Basis $2$ im Mittel hinter dem zur Basis $e$? Gut eine Stufe.
+  genau: |
+    $m(2)=\mu_{e,2}=-1.12840377662892400987921790203642626\ldots$ (180 Stellen); eine Suche nach einer geschlossenen Form (PSLQ gegen Logarithmus-Konstanten) blieb erfolglos.
+  warum: |
+    Gemessen mit dem Rechenmotor; unabhängig bestätigt durch die eigene Nachrechnung der Welle ([[bw.satz.phasengesetz]]).
+  beispiel: |
+    In Worten: $T_2(x)$ ist für grosse $x$ ungefähr $T_e(x-1.1284)$ — der Turm zur Basis $2$ braucht etwas mehr als ein Stockwerk zusätzlich, um denselben Wert zu erreichen.
+  bilder: [k7_hub]
+  einordnung: |
+    Auf vier Stellen ist die Zahl seit 2009 bekannt: S. Levenstein gab im Tetration-Forum $\operatorname{slog}_2-\operatorname{slog}_e\approx1.1282$ an, ebenso $\approx-0.1926$ für die Basis $3$
+    und $\approx-1.1364$ für die Basis $10$ — dieselben Werte wie unsere $-m(2)$, $-m(3)$, $-m(10)$. Neu hier sind 180 Stellen und die erfolglose Suche nach einer
+    geschlossenen Form. Nächster Schritt: die Suche auf Konstanten von $L_e$, $L_2$ und $\ln\lambda$ ausdehnen.
+
+# ------------------------------------------------------------------ Strang bw.rh
+
+bw.def.auswahlprinzip:
+  worum: |
+    Die Ableitung des Superlogarithmus nach der Basis — der „Basiskern“ $V$ — löst eine Gleichung, die viele Lösungen hat. Vier Bedingungen wählen die richtige aus.
+  genau: |
+    $V$ heisst zulässig, wenn (i) $V(d^y)-V(y)=-A_d'(d^y)\,y\ln d\,d^y$; (ii) $V$ reell auf $\mathbb R$; (iii) bei $L$ die vorgeschriebene Singularität (Pol mit Koeffizient
+    $dL/d\beta=\ln d\,L^2/(1-\lambda)$, logarithmischer Anteil mit $d\lambda/d\beta$, radial gelesen); (iv) $V(1)=0$ (Paper V, Def. 1).
+  warum: |
+    Jede Bedingung kommt aus einer Eigenschaft von $A_b$: (i) ist die nach $\beta$ abgeleitete Abel-Gleichung; (ii) $A_b$ ist reell; (iii) $A_b$ hat bei $L(b)$ eine
+    logarithmische Singularität, die mit $L$ wandert — ableiten gibt Pol und Logarithmus ($dL/d\beta$ aus $L=e^{e^\beta L}$); (iv) $A_b(1)=0$ für alle $b$.
+  einordnung: |
+    Eindeutigkeit: [[bw.satz.kern_eindeutig]]; Existenz: [[bw.satz.kern_existenz]].
+
+bw.ann.K1K2:
+  worum: |
+    Zwei geometrische Eigenschaften von Knesers Lösung, die man klassisch erwartet, aber nicht als zitierbaren Satz findet. Paper V/VI nehmen sie an.
+  genau: |
+    **Annahme.** (K1) Streifengeometrie: $T_d$ holomorph auf der oberen Halbebene, $T_d(z)\to L$ für $\operatorname{Im}z\to\infty$. (K2) Theta-Struktur: $p=A_d\circ T_{\mathrm{reg}}-\mathrm{id}$
+    ist 1-periodisch mit $p'\to0$.
+  warum: |
+    (K1) entspricht [[kn.satz.kneser_eigenschaften]]; (K2) ist Knesers Korrektur $\theta_K$ von der anderen Seite gelesen ([[kn.konstr.kneser]]). Annahme bleibt es, weil die genaue
+    Form nicht als Satz zitiert werden kann.
+  einordnung: |
+    Bedingung von [[bw.satz.kern_eindeutig]], [[bw.satz.kern_existenz]] und [[bw.satz.anker_rekonstruktion]].
+
+bw.satz.kern_eindeutig:
+  worum: |
+    Höchstens eine Funktion erfüllt die vier Auswahlbedingungen. Das Argument ist dasselbe wie bei der Eindeutigkeit der Kneser-Lösung, nur eine Ordnung tiefer.
+  genau: |
+    Unter (K1)–(K2) erfüllt höchstens eine Funktion (i)–(iv) (Paper V, Thm. 2).
+  warum: |
+    1. Die Differenz zweier Lösungen löst die homogene Gleichung, ist also $h\circ A_d$ mit 1-periodischem $h$.
+    2. $h=\sum c_ke^{2\pi ikz}$. Nahe $L$ geht $\operatorname{Im}A_d\to+\infty$; Beschränktheit dort tötet alle Moden mit $k<0$. Nahe $\bar L$ entsprechend $k>0$.
+    3. Bleibt eine Konstante; Realität und $V(1)=0$ machen sie zu null.
+  einordnung: |
+    Linearisierte Fassung von [[kn.satz.paulsen_cowgill]]; Werkzeuge [[fg.lem.periodisch_liouville]], [[fg.satz.kohomologisch]].
+
+bw.lem.geom_kozykel:
+  worum: |
+    Ein Hilfsfeld aus der Koenigs-Koordinate löst die Gleichung des Basiskerns schon fast — bis auf ein periodisches Stück. Das ist der Schlüssel zur Existenz.
+  genau: |
+    $G:=\partial_\beta\chi/\chi'$ erfüllt $G(d^y)=(\ln d)\,d^y\,(G(y)-y)$; daher löst $A_d'G+h\circ A_d$ die kohomologische Gleichung für jedes periodische $h$ (Paper V, Lemma 7).
+  warum: |
+    $\chi(d^y)=\chi(y)+1$ nach $\beta$ ableiten: $(\partial_\beta\chi)(d^y)+\chi'(d^y)\,d^y\ln d\cdot y=\partial_\beta\chi(y)$. Durch $\chi'(d^y)$ teilen und $\chi'(d^y)\,d^y\ln d=\chi'(y)$ benutzen — fertig.
+  einordnung: |
+    Liefert die Randdaten $u=\operatorname{Im}V_{\mathrm{geo}}\circ T_d$ für das Randwertproblem in [[bw.satz.kern_existenz]].
+
+bw.satz.kern_existenz:
+  worum: |
+    Den Basiskern gibt es wirklich, und man kann ihn ohne Rechenmotor ausrechnen: Man nimmt das geometrische Feld und korrigiert seinen Imaginärteil auf
+    der reellen Achse mit einer periodischen Funktion. Das ist ein klassisches Randwertproblem (Riemann–Hilbert).
+  genau: |
+    $\tilde V\circ T_d:=V_{\mathrm{geo}}+g$ mit $g=\tilde u-iu-\tilde u(0)$ ($\tilde u$ die konjugierte Funktion der Randdaten $u$) erfüllt (i)–(iv); mit [[bw.satz.kern_eindeutig]] ist es
+    die einzige Lösung, und unter (K3) ist sie $\partial_\beta A_b|_{b=d}$ (Paper V, Thm. 13).
+  warum: |
+    1. $V_{\mathrm{geo}}$ erfüllt (i), ist aber auf der reellen Achse nicht reell; sein Imaginärteil dort ist $u$.
+    2. Eine periodische holomorphe Funktion $g$ mit $\operatorname{Im}g=-u$ auf der Achse findet man mit der periodischen Hilbert-Transformation (konjugierte Funktion).
+    3. Damit das sauber geht: Privalov–Dini für die Randregularität (Modul $\delta\ln^2(1/\delta)$), Schwarz-Spiegelung, hebbare Singularitäten, Polentwicklung bei $L$.
+  beispiel: |
+    Ohne Rechenmotor erreicht: 17.8 bzw. 20.0 richtige Stellen des Kerns.
+  einordnung: |
+    Benutzt [[bw.lem.geom_kozykel]] und [[br.satz.privalov]]. Grundlage der Rekonstruktion [[bw.satz.anker_rekonstruktion]]. Drei Irrwege davor:
+    [[bw.gescheitert.orbitanker]], [[bw.gescheitert.rh_v1]], [[bw.gescheitert.vorhersage_r8]].
+
+bw.gescheitert.orbitanker:
+  worum: |
+    Ein naheliegender Weg zum Basiskern: entlang der Rückwärtsspirale in den Fixpunkt $L$ aufsummieren. Er divergiert.
+  genau: |
+    Ein Anker mit der nackten Schröder-Funktion entlang $w_{k+1}=\log_dw_k\to L$ divergiert wie $|\lambda|^n$: die Theta-Ableitung vervielfacht den Pol ($|p'|\approx0.5$ für $d=e$).
+  warum: |
+    Nachträglich verstanden: Der Polkoeffizient ist $-(1+p'(\chi))\,dL/d\beta/\ln\lambda$. Entlang der Spirale wird $p'$ nicht klein, und jeder Schritt verstärkt um $|\lambda|$.
+  einordnung: |
+    Führte zur radialen statt orbitalen Lesart von Bedingung (iii) in [[bw.def.auswahlprinzip]]. Warnung für jede Bahn-Methode nahe $L$.
+
+bw.gescheitert.rh_v1:
+  worum: |
+    Der erste Anlauf zum Randwertproblem scheiterte an der Zahlenstabilität: Die Information sass doppelt-exponentiell nahe an den ganzen Zahlen.
+  genau: |
+    Der Abzug des Q-Feld-Schwanzes bestätigt das $\ln\ln$-Modell, aber $Q$ wächst in der oberen Halbebene; die zulässige Basis hat Konditionierung $e^{2\pi k\cdot1.1}$.
+  warum: |
+    Eine Basis mit so schlechter Kondition verstärkt Rundungsfehler exponentiell in der Modenzahl — praktisch unbrauchbar.
+  einordnung: |
+    Ersetzt durch ein abgestuftes Gitter mit periodischer Hilbert-Transformation (RH-v2), das zu [[bw.satz.kern_existenz]] führte.
+
+bw.gescheitert.vorhersage_r8:
+  worum: |
+    Eine eigene Vorhersage, die die Messung umgedreht hat: Erwartet war Wachstum der Randdaten, gemessen wurde ein Kollaps.
+  genau: |
+    Vorhergesagt: logarithmisches Potenzwachstum der Randdaten mit Exponent $2\pi\nu=4.447$. Gemessen: $|1/\chi'|=O(\delta\ln(1/\delta))$ — das Gegenteil.
+  warum: |
+    Die Messung war eindeutig; das Kollaps-Gesetz wurde später zu einem Beweisschritt in Paper V.
+  einordnung: |
+    Methodische Lehre: erst messen, dann beweisen. Motivierte [[bw.satz.kern_existenz]].
+
+bw.gescheitert.cstep:
+  worum: |
+    Referenzwerte, die mit einem „komplexen Schritt“ gerechnet wurden, waren bei extremen Basen ungenauer als angegeben. Zwei andere Wege haben das gemeinsam aufgedeckt.
+  genau: |
+    Für $d=10$ nur $14.6$, für $d=2$ nur $20.0$ richtige Stellen; RH-Löser und $\varepsilon$-Schablonen stimmen untereinander auf 30–34 Stellen.
+  warum: |
+    Ursache: Der Motor hat nahe dem parabolischen Rand und bei engem Theta-Streifen einen Genauigkeitsboden. Zwei unabhängige Verfahren, die übereinstimmen, schlagen ein drittes.
+  einordnung: |
+    Regel: Referenzen immer über zwei unabhängige Wege. Schützt die Kerntabellen ([[bw.beob.kernkleid]]).
+
+# ------------------------------------------------------------------ Strang bw.rekonstruktion
+
+bw.satz.anker_rekonstruktion:
+  worum: |
+    Kann man die Tetration zur Basis $2$ aus der zur Basis $e$ allein ausrechnen, ohne den Kneser-Motor für die Basis $2$? Ja: Man lässt die Basis langsam von $e$
+    nach $2$ wandern und folgt der Lösung wie einer Differentialgleichung in der Basis.
+  genau: |
+    Unter (K1)–(K2): $T_\beta=Q_\beta\circ U_\beta$ mit $U_\beta=\mathrm{id}+p_\beta$ gibt eine exakte Basisableitung des Rohzweigs; die nichtperiodischen Schwänze in der Hub-Gleichung löschen sich aus,
+    und die periodische Entwicklung ist geschlossen auf einem festen gewichteten analytischen Pfadraum (Paper VI, Thm. 8.5/8.6).
+  warum: |
+    1. Die Basisableitung liefert der Basiskern ([[bw.satz.kern_existenz]]); er bestimmt, wie sich die Lösung mit $\beta$ ändert.
+    2. Das ergibt eine Evolutionsgleichung in $\beta$. Ein Existenzsatz vom Typ Ovsyannikov (Cauchy–Kowalewskaja in einer Skala von Banach-Räumen) sichert die Lösung
+       für einen Schritt in $\beta$, solange man im festen Pfadraum bleibt.
+    3. Schritt für Schritt von $e$ nach $2$ marschieren.
+  einordnung: |
+    Blind geprüft: [[bw.beob.blind]]. Zertifiziert ist bisher ein Segment ([[bw.zert.8r1]]); der ganze Marsch ist offen ([[bw.frage.intervallmarsch]]).
+
+bw.beob.blind:
+  worum: |
+    Die Rekonstruktion wurde blind getestet: Die Zielwerte zur Basis $2$ waren versiegelt, bis die Rechnung fertig war.
+  genau: |
+    65-Knoten-Fluss: punktweise $4.0\cdot10^{-21}$ auf 48 Punkten, Hub auf $30.6$ Stellen. Zehn-Segment-Marsch: $7.6\cdot10^{-11}$ zu beiden Referenzen. Versagen und Unterteilung
+    des Randsegments genau wie vom Ovsyannikov-Kriterium vorhergesagt.
+  warum: |
+    Gemessen. Bemerkenswert: Die internen Fehlerschätzer sagten den Blindfehler bis auf etwa einen Faktor $1$ voraus — das ist selbst ein prüfbarer Befund.
+  einordnung: |
+    Validiert [[bw.satz.anker_rekonstruktion]].
+
+bw.zert.8r1_alt:
+  worum: |
+    Das erste Zertifikat für ein Segment des Marschs — ungültig, weil eine Fehlerschranke zu klein war.
+  genau: |
+    **Überholt.** Zertifikatslauf mit der alten Schwanzschranke in tails.py.
+  warum: |
+    Die Schranke für den Sensitivitätsschwanz war etwa 20-mal zu klein ([[bw.korr.tails]]). Ein Zertifikat mit zu kleiner Schranke beweist nichts.
+  einordnung: |
+    Ersetzt durch [[bw.zert.8r1]].
+
+bw.korr.tails:
+  worum: |
+    Der Fehler im ersten Zertifikat: In einer Schranke fehlte ein Faktor. Gefunden, weil zwei unabhängige Programme Wert für Wert verglichen wurden.
+  genau: |
+    Das Verhältnis der $d/dT$-Schwanzglieder trägt einen Faktor $1+c\,y_j\theta$; tails.py fehlte er, der Schwanz war um etwa den Faktor 20 unterschätzt. Behoben,
+    Regressionstest test_tails.py, Erratum dokumentiert.
+  warum: |
+    Algebraische Korrektur der Schranke; der Regressionstest hält sie fest.
+  einordnung: |
+    Regel: zwei unabhängige Intervallproduzenten wertweise vergleichen. Rettet das Zertifikat [[bw.zert.8r1]].
+
+bw.zert.8r1:
+  worum: |
+    Ein Segment der Rekonstruktion ist computergestützt bewiesen: In einer kleinen Umgebung der berechneten Näherung liegt garantiert eine echte Lösung.
+  genau: |
+    Wiederholungslauf: Defekt $Y=3.1516\cdot10^{-9}$, Lipschitz-Schranke $L=13613.3$, Kontraktionszahl $q=0.1495<1$; Prüfungen Z1–Z7 bestanden, unabhängige Verifikation in Ordnung 22.
+  warum: |
+    Ein Kriterium vom Newton–Kantorovich-Typ: Ist der Defekt klein, die Ableitung kontrolliert und die Kontraktionszahl $q<1$, dann hat die Gleichung in einer kleinen Kugel um die Näherung
+    genau eine Lösung. Gerechnet mit Kugelarithmetik (python-flint); Annahme ist die korrekte Implementierung. Offene Punkte stehen im README (Mikrosegment-Induktion, Hilbert-Röhren-Supremum, $\Gamma$-Steigung).
+  einordnung: |
+    Ein Segment des Hauptsatzes Thm. 11.15 (Paper VI). Der vollständige Marsch: [[bw.frage.intervallmarsch]].
+
+bw.frage.intervallmarsch:
+  worum: |
+    Das grosse offene Rechenprojekt: alle Segmente von $e$ nach $2$ mit Intervallzertifikaten — dann wäre $T_2$ aus $T_e$ rigoros rekonstruiert.
+  genau: |
+    Alle Segmente von $e$ nach $2$ mit Zertifikaten (Radien-Polynome, Schnittebenen-Zertifikat, Endverklebung E+) — offenes computergestütztes Problem.
+  warum: |
+    Offen. Nach Gewicht geordnet fehlen: Mikrosegment-Induktion, Hilbert-Röhren-Supremum, Beweis der $\Gamma$-Steigung, $\beta$-Interpolationsboden.
+  einordnung: |
+    Erstes Segment: [[bw.zert.8r1]]. Methode: [[bw.satz.anker_rekonstruktion]].
+
+bw.frage.halbiter_vergleich:
+  worum: |
+    Ordnen die gebrochenen Iterierten von $\exp_b$ die Wachstumsgeschwindigkeiten so, wie man es erwartet — höhere Stufe, schnelleres Wachstum, egal welche Basis?
+  genau: |
+    Gilt $\exp_a^{[c]}(x)/\exp_b^{[d]}(x)\to0$ für $c<d$ und alle $a,b>\eta$? Vermutung: ja für Walker, nein für Kneser.
+  warum: |
+    Zwischen zwei Basen ist die Kneser-Tetration nur bis auf eine kleine periodische Welle verschoben ([[bw.satz.phasengesetz]]). Liegen $c$ und $d$ sehr nahe, kann die Welle die
+    Reihenfolge immer wieder umdrehen — für beliebig grosse $x$.
+  beispiel: |
+    Für $c=1$, $d=1+\delta$ gilt die Ordnung schliesslich immer, auch bei $a<b$ — aber erst ab sehr grossen $x$.
+  einordnung: |
+    Verbindet [[kn.satz.halbe_exp_wachstum]] mit dem Basiswechsel.

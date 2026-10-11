@@ -1,0 +1,328 @@
+gebiet: it
+aussagen:
+
+- id: it.satz.koenigs
+  titel: Koenigs-Linearisierung
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  objekte: [schroeder, multiplikator]
+  bereich: '$f$ holomorph nahe $p$, $f(p)=p$, $\lambda=f''(p)$ mit $0<|\lambda|<1$ (oder $|\lambda|>1$ für $f^{-1}$)'
+  voraussetzungen:
+    - {text: '0 < |λ| < 1 (hyperbolisch anziehend)', benutzt: ja}
+    - {text: 'f holomorph in einer Umgebung von p', benutzt: ja}
+  aussage: |
+    Es gibt genau eine holomorphe Funktion $\sigma$ nahe $p$ mit $\sigma(p)=0$, $\sigma'(p)=1$ und
+    $\sigma\circ f=\lambda\,\sigma$; sie ist $\sigma=\lim_{n\to\infty}\lambda^{-n}(f^{n}-p)$.
+  beweis: {art: literatur, text: 'Gleichmässige Konvergenz der Folge $\lambda^{-n}(f^n-p)$ wegen $|f(z)-p-\lambda(z-p)|\le C|z-p|^2$.'}
+  quellen: [{ref: koenigs1884}, {ref: milnor2006, stelle: '§8'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, klassischer Satz (1884).'
+    f2_benutzte_voraussetzungen: '$|\lambda|\ne 0,1$; im Fall $|\lambda|=1$ (irrational indifferent) braucht man Siegel/Brjuno-Bedingungen.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Für $\exp_b$ an jedem nicht-neutralen Fixpunkt: anziehend für $1<b<\eta$ (unterer reeller Fixpunkt), abstossend an $L_b$ für $b>\eta$ (über die Umkehrung $\log_b$).'
+    f5_neue_frage: 'Reguläre Tetration (kl.satz.regulaer) und der Ausgangspunkt von Knesers Konstruktion (kn.konstr.kneser).'
+  bewertung: {richtigkeit: 'klassisch, gesichert', neuheit: klassisch, nutzen: 'Fundament aller regulären Konstruktionen.', nutzen_stufe: hoch}
+
+- id: it.satz.vertauschbar
+  titel: Reguläre Iteration ist die einzige am Fixpunkt holomorphe
+  art: satz
+  ebene: B
+  status: bewiesen
+  objekte: [iterationsgruppe, schroeder]
+  bereich: 'Iterationsgruppen $(f^t)_{t\in\mathbb R}$ mit jedem $f^t$ holomorph am hyperbolischen Fixpunkt $p$, $0<\lambda<1$ reell'
+  voraussetzungen:
+    - {text: '0 < λ < 1 reell', benutzt: ja}
+    - {text: 'jedes f^t holomorph bei p mit f^t(p) = p', benutzt: ja}
+    - {text: 't ↦ (f^t)′(p) stetig', benutzt: ja}
+    - {text: 'f^t reell auf der reellen Achse', benutzt: nein, notiz: 'nur zur Wahl des Zweigs von λ^t'}
+  aussage: |
+    Dann gilt $f^t=\sigma^{-1}\circ(\lambda^t\sigma)$ mit der Koenigs-Funktion $\sigma$: die **reguläre Iteration**
+    ist die einzige stetige Iteration, deren Glieder am Fixpunkt holomorph sind.
+  beweis:
+    art: vollstaendig
+    text: |
+      $g=f^t$ vertauscht mit $f$. In Koenigs-Koordinaten vertauscht $\tilde g=\sigma g\sigma^{-1}$ mit $w\mapsto\lambda w$;
+      Koeffizientenvergleich $a_n\lambda=a_n\lambda^n$ und $\lambda^{n-1}\neq1$ geben $a_n=0$ für $n\ge2$,
+      also $\tilde g(w)=c_t w$. Gruppeneigenschaft und Stetigkeit: $c_t=\lambda^t$.
+  stuetzt_sich_auf: [it.satz.koenigs]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Koenigs plus Koeffizientenvergleich.'
+    f2_benutzte_voraussetzungen: 'Holomorphie aller $f^t$ in $p$; $\lambda$ keine Einheitswurzel; Stetigkeit in $t$ nur für $c_t=\lambda^t$.'
+    f3_spezialfall: 'Spezialfall der Beschreibung des Zentralisators linearisierbarer Keime.'
+    f4_uebertragbar: 'Nicht auf parabolische Fixpunkte (dort kann die formale Iteration divergieren: it.satz.baker).'
+    f5_neue_frage: 'Für $1<b<\eta$: zwei Fixpunkte, zwei reguläre Iterationen — stimmen sie überein? → kl.beob.zwei_abel'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Rechtfertigt den Namen „regulär“.', nutzen_stufe: mittel}
+  quellen: [{ref: kuczma1990, geprueft: nein}, {ref: diese_arbeit}]
+
+- id: it.satz.leau_fatou
+  titel: Leau–Fatou-Blume und Fatou-Koordinaten
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  objekte: [fatou_koord, abel]
+  bereich: '$f(z)=z+az^{k+1}+\dots$, $a\neq0$ (parabolisch, Multiplikator 1)'
+  voraussetzungen:
+    - {text: 'f holomorph nahe 0, f′(0) = 1, f ≠ id', benutzt: ja}
+  aussage: |
+    Es gibt $k$ anziehende und $k$ abstossende **Blütenblätter**; auf jedem existiert eine bis auf additive
+    Konstante eindeutige injektive Abel-Funktion (Fatou-Koordinate) $\phi$ mit $\phi(f(z))=\phi(z)+1$,
+    asymptotisch $\phi(z)\sim -1/(k a z^k)$.
+  beweis: {art: literatur, text: 'Milnor §10.'}
+  quellen: [{ref: milnor2006, stelle: '§10'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein (klassisch).
+    f2_benutzte_voraussetzungen: 'Nur der erste nichtlineare Term; Eindeutigkeit bis auf Konstante braucht Injektivität bzw. Wachstumsbedingung.'
+    f3_spezialfall: nein
+    f4_uebertragbar: '$\exp_\eta$ am Fixpunkt $e$ ist parabolisch mit $k=1$ → kl.satz.parabolisch'
+    f5_neue_frage: 'Passen die Fatou-Koordinaten der zwei Blätter zusammen? → it.satz.ecalle_voronin'
+  bewertung: {richtigkeit: gesichert, neuheit: klassisch, nutzen: 'Grundlage der Tetration bei b = η.', nutzen_stufe: hoch}
+
+- id: it.satz.ecalle_voronin
+  titel: Écalle–Voronin-Invarianten
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  objekte: [fatou_koord, iterationsgruppe]
+  bereich: 'parabolische Keime $f(z)=z+az^2+\dots$'
+  voraussetzungen:
+    - {text: 'f parabolisch, formal konjugiert zu einer Normalform', benutzt: ja}
+  aussage: |
+    Die analytische Konjugationsklasse eines parabolischen Keims wird durch die Übergangsabbildungen
+    (Hornabbildungen) zwischen den Fatou-Koordinaten benachbarter Blätter bestimmt. $f$ ist genau dann
+    Zeit-1-Abbildung eines holomorphen Flusses (formale Iterierte konvergieren), wenn diese Invarianten trivial sind.
+  beweis: {art: literatur, text: 'Écalle 1975, Voronin 1981.'}
+  quellen: [{ref: ecalle1975}, {ref: voronin1981}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Die genaue Form der Äquivalenz (Fluss ⇔ triviale Invarianten) ist hier nicht am Original geprüft.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf $\exp_\eta$ an $e$ über die Konjugation zu $e^u-1$ (kl.kor.eta_baker).'
+    f5_neue_frage: 'Wie gross sind die Écalle–Voronin-Invarianten von $e^u-1$ numerisch, und was bedeuten sie für die zwei regulären Tetrationen bei $\eta$?'
+  bewertung: {richtigkeit: gesichert (Literatur), neuheit: klassisch, nutzen: 'Erklärt, warum es bei η zwei verschiedene reguläre Superexponentiale gibt.', nutzen_stufe: mittel}
+
+- id: it.satz.szekeres
+  titel: Szekeres' reguläre Iteration reeller Funktionen
+  art: satz
+  ebene: B
+  status: bewiesen_literatur
+  objekte: [iterationsgruppe, abel]
+  bereich: 'reelle $f(x)=x-ax^{k+1}+\dots$ auf $(0,\varepsilon)$, $a>0$; bzw. hyperbolischer Fall'
+  voraussetzungen:
+    - {text: 'f reell-analytisch (bzw. hinreichend glatt) nahe 0 mit 0 < f(x) < x', benutzt: unklar}
+  aussage: |
+    Es gibt eine eindeutige „reguläre“ Abel-Funktion mit vorgeschriebener Asymptotik am Fixpunkt;
+    die zugehörige Iterationsgruppe ist auf $(0,\varepsilon)$ glatt, am Fixpunkt im parabolischen Fall
+    aber im Allgemeinen nicht analytisch.
+  beweis: {art: literatur, text: 'Szekeres 1958.'}
+  quellen: [{ref: szekeres1958}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Nicht am Original geprüft — genaue Regularitäts- und Asymptotikbedingung offen.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Reelle Version der regulären Tetration bei $b\le\eta$.'
+    f5_neue_frage: 'Szekeres (1961) wandte ein, Knesers Lösung sei nicht durch Wachstum ausgezeichnet → Motivation für komplexe Eindeutigkeitssätze.'
+  bewertung: {richtigkeit: 'gesichert (Literatur), Formulierung ungeprüft', neuheit: klassisch, nutzen: 'Historisch und für b ≤ η.', nutzen_stufe: mittel}
+
+- id: it.satz.baker
+  titel: Formale Iterierte von e^z − 1 konvergieren nur für ganze t
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  objekte: [e_minus_1, iterationsgruppe]
+  bereich: '$f(z)=e^z-1$ am Fixpunkt 0 (Multiplikator 1), reelle Parameter $t$'
+  voraussetzungen:
+    - {text: 'f(z) = e^z − 1', benutzt: ja}
+    - {text: 't reell', benutzt: ja}
+  aussage: |
+    Die eindeutige formale Potenzreihe $f^t(z)=z+\tfrac t2 z^2+\dots$ mit $f^s\circ f^t=f^{s+t}$ hat für
+    reelles $t\notin\mathbb Z$ Konvergenzradius 0.
+  beweis: {art: literatur, text: 'Baker (indirekte Argumente), zitiert in Bakers Folgearbeiten und bei Szekeres.'}
+  quellen: [{ref: baker_iteration}, {ref: szekeres1958, geprueft: sekundaer}]
+  experimente: [exp.eta_baker]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Konkrete Funktion; allgemeine Klassifikation in it.satz.erdos_jabotinsky.'
+    f3_spezialfall: 'Ja: Konvergenzmenge ist hier $\mathbb Z$, ein Fall der Erdős–Jabotinsky/Baker-Klassifikation.'
+    f4_uebertragbar: 'Unmittelbar auf $\exp_\eta$ am Fixpunkt $e$, da linear konjugiert (kl.kor.eta_baker).'
+    f5_neue_frage: 'Wie schnell wachsen die Koeffizienten (Gevrey-Ordnung)? Experiment: exp.eta_baker.'
+  bewertung: {richtigkeit: gesichert (Literatur), neuheit: klassisch, nutzen: 'Zeigt: halbe Iterierte des Exponentials sind am parabolischen Punkt nicht analytisch.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: spezialfall_von, ziel: it.satz.erdos_jabotinsky}
+
+- id: it.satz.erdos_jabotinsky
+  titel: Konvergenzmenge formaler Iterierter
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  objekte: [iterationsgruppe]
+  bereich: '$F(z)=z+\dots$ konvergent; Menge $S$ der $s\in\mathbb C$ mit konvergenter formaler Iterierter $F(s,z)$'
+  voraussetzungen:
+    - {text: 'F konvergente Potenzreihe mit F′(0) = 1', benutzt: ja}
+  aussage: |
+    Enthält $S$ ein reelles Intervall um 0, so ist $S=\mathbb C$ und $F(s,z)$ ist analytisch in $s$.
+    Andernfalls hat $S$ Flächeninhalt 0 und $S\cap\mathbb R$ Länge 0 (Baker: $S$ ist dann ein Gitter
+    höchstens zweier Dimensionen oder trivial).
+  beweis: {art: literatur, text: 'Erdős–Jabotinsky 1960; Gitteraussage bei Baker.'}
+  quellen: [{ref: erdos_jabotinsky1960}, {ref: baker_iteration}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Nur formale Struktur und Konvergenz von F; Wortlaut über Rezension geprüft.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jeden parabolischen Fixpunkt von $\exp_b$ (nur $b=\eta$ reell).'
+    f5_neue_frage: 'Dichotomie: entweder ganzer Fluss oder fast nichts — kein „halb-analytischer“ Zwischenfall.'
+  bewertung: {richtigkeit: gesichert (Literatur), neuheit: klassisch, nutzen: 'Strukturgrenze für analytische Iteration.', nutzen_stufe: mittel}
+
+- id: it.lem.julia
+  titel: Julia-Gleichung für den Erzeuger eines Flusses
+  art: lemma
+  ebene: A
+  status: bewiesen
+  objekte: [julia_funktion, abel, iterationsgruppe]
+  bereich: 'Iterationsgruppe $f^t=\alpha^{-1}(\alpha+t)$ mit differenzierbarer Abel-Funktion, $\alpha''\neq0$'
+  voraussetzungen:
+    - {text: 'α differenzierbar mit α′ ≠ 0', benutzt: ja}
+  aussage: |
+    Der Erzeuger $J:=\partial_t f^t|_{t=0}=1/\alpha'$ erfüllt die **Julia-Gleichung** $J(f(z))=f'(z)\,J(z)$.
+    Für Tetration: $J=1/\operatorname{slog}_b'=T_b'\circ\operatorname{slog}_b$.
+  beweis: {art: vollstaendig, text: 'Ableiten von $\alpha(f(z))=\alpha(z)+1$ gibt $\alpha''(f)f''=\alpha''$.'}
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Kettenregel).
+    f2_benutzte_voraussetzungen: Differenzierbarkeit, α′ ≠ 0.
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Jede Tetration ⇒ eigener Erzeuger; verschiedene Tetrationen haben verschiedene $J$, die alle dieselbe lineare Gleichung lösen.'
+    f5_neue_frage: 'Die Julia-Gleichung ist linear: die Freiheit ist wieder eine periodische Funktion (fg.satz.kohomologisch). Welche Lösung $J$ ist positiv und am wenigsten oszillierend?'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Linearisiert die Wahlfrage.', nutzen_stufe: gering}
+  quellen: [{ref: kuczma1990, geprueft: nein}, {ref: diese_arbeit}]
+
+- id: it.satz.moebius_iteration
+  titel: Möbius-Abbildungen — reguläre Iteration an beiden Fixpunkten gleich
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [schroeder, iterationsgruppe, multiplikator]
+  bereich: 'Möbius-Abbildung $f(z)=\frac{\alpha z+\beta}{\gamma z+\delta}$ mit zwei Fixpunkten $L_1\ne L_2$, Multiplikator $\lambda$ an $L_1$, $|\lambda|\ne0,1$'
+  aussage: |
+    $\sigma(z)=\dfrac{z-L_1}{z-L_2}$ erfüllt $\sigma\circ f=\lambda\,\sigma$; der Multiplikator an $L_2$ ist $1/\lambda$, und $1/\sigma$ ist die Schröder-Funktion dort.
+    Die regulären Iterationen an beiden Fixpunkten stimmen überein: die an $L_1$,
+    $$f^{\circ t}=\sigma^{-1}\bigl(\lambda^t\sigma\bigr),$$
+    ist zugleich die an $L_2$ (mit $\ln(1/\lambda)=-\ln\lambda$).
+    Beispiel $f(z)=\frac{3z+2}{z+2}$: $L_1=2$ ($\lambda=1/4$), $L_2=-1$ ($\lambda=4$); die halben Iterierten beider Fixpunkte stimmen auf 60 Stellen überein.
+  einfach: >-
+    Bei den einfachsten gebrochenen Funktionen gibt es keine Wahl: ob man den halben Schritt vom einen oder vom anderen Fixpunkt aus baut,
+    es kommt dasselbe heraus. Bei b^x ist das anders — dort geben die beiden Fixpunkte verschiedene Lösungen.
+  beweis:
+    art: vollstaendig
+    text: '$\sigma$ ist Möbius mit $\sigma(L_1)=0$, $\sigma(L_2)=\infty$; $\sigma f\sigma^{-1}$ fixiert $0,\infty$, ist also $w\mapsto\lambda w$. Dann konjugiert $1/\sigma$ zu $w\mapsto\lambda^{-1}w$ mit $1/\sigma(L_2)=0$, ist also (bis auf einen Faktor) die Schröder-Funktion an $L_2$; ihre reguläre Iteration ist $(1/\sigma)^{-1}(\lambda^{-t}/\sigma)=\sigma^{-1}(\lambda^t\sigma)$.'
+  stuetzt_sich_auf: [it.satz.koenigs]
+  experimente: [exp.qbinomial]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (Konjugation auf Normalform).'
+    f2_benutzte_voraussetzungen: 'Zwei verschiedene Fixpunkte, $|\lambda|\ne1$; gleiche Zweigwahl von $\ln\lambda$.'
+    f3_spezialfall: 'Ja: eine Schröder-Funktion, die an beiden Fixpunkten global ist — bei ganzen transzendenten Funktionen unmöglich.'
+    f4_uebertragbar: 'Nicht auf $\exp_b$: dort unterscheiden sich die regulären Abel-Funktionen an 2 und 4 (kl.beob.zwei_abel, „Bummer“).'
+    f5_neue_frage: 'Welche Eigenschaft von $f$ (rational vom Grad 1) erzwingt die Übereinstimmung — und wie gross ist die Abweichung für $f$ „nahe“ einer Möbius-Abbildung?'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Kontrast, der zeigt, warum die Fixpunktwahl bei Tetration wirklich zählt.', nutzen_stufe: gering}
+  quellen: [{ref: diese_arbeit}, {ref: forum_bummer2007, stelle: 'Gegenstück'}]
+  kanten:
+    - {typ: verwandt, ziel: kl.beob.zwei_abel}
+
+- id: it.satz.szekeres_monoton
+  titel: 'Szekeres: die Abel-Funktion von e^x − 1 ist die einzige total monotone'
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [abel, e_minus_1, fatou_koord, konvexitaet]
+  bereich: '$f(x)=e^x-1$ auf $x>0$; Abel-Funktionen $A$ mit $A(e^x-1)=A(x)+1$'
+  aussage: |
+    $A$ heisst **total monoton** auf $(0,\infty)$, wenn $(-1)^{k+1}A^{(k)}(x)>0$ für alle $k\ge1$, $x>0$ (wie $\ln x$: $A'>0$, $A''<0$, $A'''>0$, …).
+    Die Haupt-Abel-Funktion von $e^x-1$ (Fatou-Koordinate am parabolischen Fixpunkt 0, $A(x)=-\frac2x+\frac13\ln x+\dots$ für $x\downarrow0$) ist total monoton,
+    und sie ist die **einzige** Abel-Funktion von $e^x-1$ mit dieser Eigenschaft — eine rein reelle Eindeutigkeitsbedingung.
+  einfach: >-
+    Für die Funktion e^x − 1 gibt es unendlich viele „Schrittzähler“, aber nur einer hat Ableitungen, die sich so brav abwechseln wie beim Logarithmus.
+    Damit ist eine Lösung allein durch eine Eigenschaft auf der reellen Achse festgelegt — genau das, was bei der Tetration selbst noch fehlt.
+  beweis: {art: literatur, text: 'Szekeres 1961 (über die Hyperoperations-Wiki, Theorem 2, geprüft; Original nicht gelesen).'}
+  quellen: [{ref: szekeres1961}, {ref: hyperops_wiki_monoton, stelle: 'Definition und Theorem 2'}]
+  experimente: [exp.cheta]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Warum Störungen scheitern (Skizze hier): nahe 0 ist $A′^2/|A″|\approx1/x$ unbeschränkt; die zweite Ableitung von $c\sin2\pi A$ enthält $-c(2\pi)^2A′^2\sin2\pi A$ und gewinnt — jede periodische Störung verletzt $A″<0$ nahe 0 (exp.cheta: schon $c=0.001$ bei $x=0.0025$).'
+    f3_spezialfall: 'Szekeres’ Rahmen: Funktionen, deren Umkehrung total monoton ist (hier $\ln(1+x)$), haben eine total monotone reguläre Abel-Funktion (Forum tid 37, sekundär).'
+    f4_uebertragbar: 'Auf $\exp_\eta$ an $e$ (konjugiert zu $e^u-1$): die Abel-Funktion zu cheta ist total monoton in $y-e$. Für Kneser ($b>\eta$) offen; der slog ist dort nicht total monoton (Forum).'
+    f5_neue_frage: 'Gibt es eine ebenso reelle Bedingung für $b>\eta$? → br.frage.bohr_mollerup; für $b<\eta$ → kl.verm.vollmonoton.'
+  gegenbeispielsuche: 'exp.cheta: Vorzeichen der Ableitungen 1–8 an u = 0.05, 0.3, 1, 3, 10 alle wie gefordert; bei u = 1 folgen sie dem Muster (−1)^{k+1}(k−1)!(2k + 1/3) der Singularität −2/u + (1/3) ln u.'
+  bewertung: {richtigkeit: 'gesichert (Literatur, sekundär geprüft)', neuheit: bekannt, nutzen: 'Einziges bekanntes Beispiel einer reellen Eindeutigkeitsbedingung in diesem Gebiet.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.bohr_mollerup}
+    - {typ: verwandt, ziel: it.satz.szekeres}
+    - {typ: verwandt, ziel: kl.satz.cheta}
+
+# ================================================================== Forum-Abgleich 10.10.2026
+- id: it.satz.elementare_superfunktionen
+  titel: 'Funktionen mit elementarer Superfunktion: Tschebyschow, Fermat, Logistik, Möbius'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [superfunktion, iterationsgruppe]
+  aussage: |
+    Für manche Funktionen ist die Superfunktion $F(t+1)=f(F(t))$ elementar — dann sind alle gebrochenen Iterierten $f^{[t]}=F(t+F^{-1})$ sofort da. Beispiele
+    ($c$ beliebig): $x^2-2\mapsto2\cosh(2^tc)$, $2x^2-1\mapsto\cosh(2^tc)$, $(x-1)^2+1\mapsto2^{2^t}+1$ (Fermat-Zahlen), $x^3+3x\mapsto2\sinh(3^tc)$,
+    $4x(1-x)\mapsto\sin^2(2^tc)$ (logistische Abbildung), $x^2+2x\mapsto e^{2^tc}-1$, $x^a\mapsto e^{a^tc}$, $2x/(1+x)\mapsto2^t/(2^t+c)$, $x/(1+x)\mapsto1/(t+c)$.
+    Für $\exp$ gibt es keine solche Formel; offen ist sogar, ob es eine elementare Funktion $F$ gibt, für die $F(1+F^{-1}(x))$ ein reelles Polynom vom Grad $\ge2$
+    **ohne** reellen Fixpunkt ist (TPID 8) — das wäre das Polynom-Gegenstück zu $\exp$ über $\eta$.
+  einfach: >-
+    Bei einigen Funktionen kann man das „halb so oft Anwenden“ direkt hinschreiben, weil sie in Wahrheit eine Verdopplung oder Verdreifachung in
+    Verkleidung sind — etwa x² − 2, das in Wahrheit cosh(2y) aus cosh(y) macht.
+  beweis: {art: vollstaendig, text: 'Jede Zeile durch Einsetzen (Verdopplungs- bzw. Verdreifachungsformeln); im Experiment an drei Stellen auf 10⁻⁵⁰ nachgerechnet.'}
+  experimente: [exp.forum_iteration]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja.'
+    f2_benutzte_voraussetzungen: 'keine'
+    f3_spezialfall: 'Ja: Konjugation f = h∘(λ·)∘h⁻¹ mit elementarem h (Schröder-Funktion elementar).'
+    f4_uebertragbar: 'Alle Tschebyschow- und Lattès-artigen Abbildungen.'
+    f5_neue_frage: 'TPID 8: elementares F mit Polynom ohne reellen Fixpunkt?'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Beispiele, an denen man jede Iterationsmethode prüfen kann.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tid275}, {ref: forum_tid809}, {ref: forum_tid819}, {ref: forum_tpid, stelle: 'TPID 8'}]
+  kanten:
+    - {typ: verwandt, ziel: it.satz.koenigs}
+    - {typ: verwandt, ziel: it.satz.moebius_iteration}
+
+- id: it.satz.moebius_familie
+  titel: 'Ein Modell für den Übergang bei η: die Möbius-Familie ist durch den parabolischen Fall hindurch analytisch'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [iterationsgruppe, multiplikator]
+  bereich: '$f_\varepsilon(z)=\dfrac{z+1}{1-\varepsilon z}$, Matrix $A_\varepsilon=\begin{pmatrix}1&1\\-\varepsilon&1\end{pmatrix}$'
+  aussage: |
+    Für $\varepsilon<0$ hat $f_\varepsilon$ zwei reelle Fixpunkte (wie $b^x$ unter $\eta$), für $\varepsilon=0$ einen parabolischen ($z\mapsto z+1$, wie bei $\eta$), für $\varepsilon>0$
+    ein komplexes Paar (wie über $\eta$). Die Iterierten $f_\varepsilon^{[t]}$ zur Matrix $A_\varepsilon^t=\exp(t\log A_\varepsilon)$ sind für jedes reelle $\varepsilon$ reell, an beiden
+    Fixpunkten dieselben (kein „Bummer“) und **analytisch in $\varepsilon$ durch $\varepsilon=0$ hindurch**. Bei der Tetration ist genau das offen (kl.frage.eta_analytisch):
+    Dort unterscheiden sich schon die beiden regulären Iterationen unter $\eta$.
+  einfach: >-
+    Für Bruchfunktionen kann man den Übergang „zwei Fixpunkte → einer → keiner reeller“ ganz durchrechnen: Die gebrochenen Iterierten ändern sich dabei
+    vollkommen glatt. Bei der Exponentialfunktion ist das gerade die ungelöste Frage.
+  beweis:
+    art: vollstaendig
+    text: |
+      $A_\varepsilon=I+N$ mit $N^2=-\varepsilon I$; mit $\mu=\sqrt{-\varepsilon}$ hat $N$ die Eigenwerte $\pm\mu$, also $A^t=a_tI+b_tN$ mit
+      $a_t=\frac{(1+\mu)^t+(1-\mu)^t}2$, $b_t=\frac{(1+\mu)^t-(1-\mu)^t}{2\mu}$. Beide sind gerade in $\mu$, also analytisch in $\varepsilon=-\mu^2$ für $|\varepsilon|<1$, und reell für reelles
+      $\varepsilon$ (dann ist $\mu$ reell oder rein imaginär).
+      Gleiche Iterierte an beiden Fixpunkten: Die reguläre Iteration an einem Fixpunkt ist die einzige dort holomorphe (it.satz.vertauschbar), und $A^t$ ist an beiden holomorph.
+  experimente: [exp.forum_iteration]
+  stuetzt_sich_auf: [it.satz.moebius_iteration]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Matrixrechnung.'
+    f2_benutzte_voraussetzungen: 'Möbius-Abbildungen entsprechen 2×2-Matrizen.'
+    f3_spezialfall: 'Ja: parabolische Implosion ist bei Möbius-Abbildungen trivial.'
+    f4_uebertragbar: 'Nicht auf exp — dort fehlt die globale Linearisierung.'
+    f5_neue_frage: 'Was genau zerstört bei exp die Analytizität (falls sie fehlt)? → br.frage.implosion'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Zeigt am einfachsten Modell, was man bei η erwarten könnte — und was bei exp anders ist.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tid1608}]
+  kanten:
+    - {typ: verwandt, ziel: kl.frage.eta_analytisch}
+    - {typ: verwandt, ziel: br.frage.implosion}

@@ -1,0 +1,74 @@
+{
+ "id": "exp.forum_iteration",
+ "skript_hash": "6fa3cf90151dfe68",
+ "gelaufen": "2026-10-10 14:11",
+ "laufzeit_s": 2.4,
+ "python": "3.13.9",
+ "zusammenfassung": "Neun elementare Superfunktionen bestätigt; Möbius-Familie analytisch durch den parabolischen Fall; TPID 9 konvergiert; TPID 13 numerisch plausibel.",
+ "pruefungen": [
+  {
+   "name": "neun elementare Superfunktionen erfüllen F(t+1) = f(F(t)) (relativ)",
+   "ok": true,
+   "wert": "1.45e-60"
+  },
+  {
+   "name": "Möbius-Familie: halbe Iterierte reell für ε < 0, = 0, > 0 und glatt in ε durch den parabolischen Fall",
+   "ok": true,
+   "wert": {
+    "-0.01": "0.800053194252",
+    "-0.001": "0.800005031769",
+    "0": "0.8",
+    "0.001": "0.799995031731",
+    "0.01": "0.799953156025"
+   }
+  },
+  {
+   "name": "TPID 9 (Trappmann 2010): a'_n → (b−1)/ln b für b = 2, langsam und schwankend (|Abstand| < 5·10⁻⁵ ab n = 80)",
+   "ok": true,
+   "wert": {
+    "10": "-0.000204",
+    "40": "-3.89e-5",
+    "80": "-2.34e-5",
+    "120": "1.89e-5"
+   }
+  },
+  {
+   "name": "TPID 13: Newton-Interpolation von m^(1/m) nähert x^(1/x) bei x = 2.5 und 7.5 (Abstand fällt mit N)",
+   "ok": true,
+   "wert": {
+    "2.5": {
+     "20": "0.000638",
+     "40": "0.000118",
+     "80": "1.82e-5"
+    },
+    "7.5": {
+     "20": "9.62e-7",
+     "40": "2.99e-9",
+     "80": "1.15e-11"
+    }
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "moebius_halb": {
+   "-0.01": "0.800053194251734",
+   "-0.001": "0.800005031769126",
+   "0": "0.8",
+   "0.001": "0.799995031730901",
+   "0.01": "0.799953156024633"
+  },
+  "tpid13": {
+   "2.5": {
+    "20": "0.000638",
+    "40": "0.000118",
+    "80": "1.82e-5"
+   },
+   "7.5": {
+    "20": "9.62e-7",
+    "40": "2.99e-9",
+    "80": "1.15e-11"
+   }
+  }
+ }
+}

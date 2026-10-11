@@ -1,0 +1,89 @@
+{
+ "id": "exp.koenigs_kalkuel",
+ "skript_hash": "c95fe3b42068217b",
+ "gelaufen": "2026-10-08 20:43",
+ "laufzeit_s": 11.5,
+ "python": "3.13.9",
+ "zusammenfassung": "Spektralreihe, Ableitungs-, Integral- und Shift-Kalkül und Lambert-Bruchsumme für √2 bestätigt. K = T_√2∘A_1.3 ist in Koenigs-Koordinaten die Potenz ρ = 0.38495759 (Verzweigungsexponent gemessen 0.38495759); Jacobi-Formel über Bruchsummen bestätigt. Quasikonformer Basiswechsel konjugiert, ist aber nur bei gleichem Multiplikator holomorph. Normalform e^w + κ bestätigt.",
+ "pruefungen": [
+  {
+   "name": "Spektralreihe: a + Σ c_n λ^{nx} = reguläre Tetration (x = 6, 9)",
+   "ok": true,
+   "wert": "2.3e-41"
+  },
+  {
+   "name": "Ableiten ↔ Faktor n·log λ: Spektral-T′(6) = 1/slog′(T(6))",
+   "ok": true,
+   "wert": "7.52e-40"
+  },
+  {
+   "name": "c₂ = ln b·c₁²/(2(λ − 1)) (Formel der Synthese)",
+   "ok": true,
+   "wert": null
+  },
+  {
+   "name": "Shift-Summe ↔ 1/(1 − λ^n): Σ_k T′(6+k) über Transferformel = Lambert-Reihe",
+   "ok": true,
+   "wert": "2.36e-39"
+  },
+  {
+   "name": "Bruchsumme in Lambert-Form = direkte Bruchsumme (x = 6, h = 1/2)",
+   "ok": true,
+   "wert": "8.38e-40"
+  },
+  {
+   "name": "Integrieren ↔ 1/(n log λ): ∫_6^∞ (T − a) dt = −Σ c_n λ^{6n}/(n log λ)",
+   "ok": true,
+   "wert": "3.09e-26"
+  },
+  {
+   "name": "wertseitig: χ_√2(K(y)) = χ_1.3(y)^ρ mit ρ = log λ_b/log λ_d = 0.38495759",
+   "ok": true,
+   "wert": "7.7e-39"
+  },
+  {
+   "name": "Verzweigung am Quellfixpunkt: K(y) − a_b ≈ C·(a_d − y)^ρ",
+   "ok": true,
+   "wert": "Exponent 0.3849575936"
+  },
+  {
+   "name": "Jacobi-Formel: log K′ ändert sich um h·log(ln b/ln d) + ln b·Σ_b − ln d·Σ_d",
+   "ok": true,
+   "wert": "4.4e-38"
+  },
+  {
+   "name": "quasikonform: K ∘ f_d = f_b ∘ K (Rückkehrabbildungen konjugiert, Zeit erhalten)",
+   "ok": true,
+   "wert": "3.25e-41"
+  },
+  {
+   "name": "Hindernis: K ist nicht holomorph (∂K/∂z̄ ≠ 0), bei gleichem Multiplikator dagegen holomorph",
+   "ok": true,
+   "wert": "|∂̄K| = 1.78 bzw. 2.03e-30"
+  },
+  {
+   "name": "Normalform: H(z) = cz + κ konjugiert e^{cz} zu e^w + κ, und H(1) = E_κ(κ) (Turm = singuläre Bahn)",
+   "ok": true,
+   "wert": "7.46e-41"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "sqrt2": {
+   "a": "2.0",
+   "lambda": "0.69314718055994530942",
+   "c": [
+    "-0.632098661050829",
+    "-0.225634285681137",
+    "-0.0854081730269598",
+    "-0.0335771160754674",
+    "-0.0135675339902202",
+    "-0.00559920683945879"
+   ]
+  },
+  "rho_sqrt2_1.3": "0.38495759320066",
+  "verzweigungsexponent": "0.38495759363",
+  "integral_schwanz_6": "-0.19516630498313939961",
+  "qk_dbar": "1.77804"
+ }
+}

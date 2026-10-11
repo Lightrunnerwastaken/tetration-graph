@@ -1,0 +1,41 @@
+{
+ "id": "exp.zwei_sinh",
+ "skript_hash": "1298fceee4b97f73",
+ "gelaufen": "2026-10-10 14:00",
+ "laufzeit_s": 2.7,
+ "python": "3.13.9",
+ "zusammenfassung": "2sinh-Tetration: T(½) = 1.6466507303037 gegen Kneser 1.64635423375119; die Höhenverschiebung θ wackelt mit Spanne 0.0002074.",
+ "pruefungen": [
+  {
+   "name": "ln^[n]∘2sinh^[n] stabil: n = 3, 4 und die Abbruchregel gleich auf 40 Stellen",
+   "ok": true,
+   "wert": "0.85069474701862992126"
+  },
+  {
+   "name": "T(x+1) = e^T(x) und T(0) = 1",
+   "ok": true,
+   "wert": "2.14e-50"
+  },
+  {
+   "name": "T(−½) = 0.498743364531671 (Levenstein, tid 1144)",
+   "ok": true,
+   "wert": "0.49874336453167087918"
+  },
+  {
+   "name": "θ = slog_Kneser(T_2sinh(x)) − x ist periodisch (θ(0) = θ(1) = 0) und nicht konstant: Spanne > 10⁻⁵",
+   "ok": true,
+   "wert": {
+    "Spanne": "0.000207356",
+    "max": "0.00019778",
+    "min": "-9.57614e-6"
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "T_2sinh(0.5)": "1.646650730303699585083352",
+  "Kneser(0.5)": "1.646354233751194580971924",
+  "k": "0.1412564429394194654869884",
+  "theta_spanne": "0.00020735649"
+ }
+}

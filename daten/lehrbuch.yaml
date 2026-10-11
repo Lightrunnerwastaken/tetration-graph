@@ -1,0 +1,458 @@
+# Lehrbuch: Kapitelfolge für den Theorie-Reiter.
+# Teile: abschnitt (Zwischentitel, mit anker für das Inhaltsverzeichnis), text (Markdown mit $…$, [[id]], ![[bild:name]]),
+#        bild (+ unterschrift), strang (klappt zu seinen Aussagen auf), knoten (einzelne Aussage).
+kapitel:
+
+- id: k0
+  titel: Was ist Tetration?
+  untertitel: Vom Potenzturm zur Frage, was eine „halbe Höhe“ sein soll — alles, was man für die folgenden Kapitel braucht.
+  teile:
+    - abschnitt: Rechnen durch Wiederholen
+      anker: wiederholen
+    - text: |
+        Die Grundrechenarten entstehen auseinander durch Wiederholung. Wer $3+3+3+3$ rechnet, hat viermal dieselbe Zahl addiert und
+        schreibt dafür kürzer $4\cdot 3$. Wer $3\cdot3\cdot3\cdot3$ rechnet, hat viermal dieselbe Zahl multipliziert und schreibt $3^4$.
+        Die nächste Stufe liegt auf der Hand: man wiederholt das *Potenzieren*. Vier Dreien übereinander als Hochzahlen gestapelt,
+        $$3^{3^{3^{3}}},$$
+        nennt man einen **Potenzturm** der Höhe 4 und schreibt dafür $3\uparrow\uparrow4$ (Knuths Pfeilschreibweise) oder ${}^{4}3$.
+        Die Rechenart heisst **Tetration** — vom griechischen *tetra* für vier, weil sie die vierte Stufe nach Addition,
+        Multiplikation und Potenz ist.
+
+        Ein Turm wird **von oben** ausgerechnet. $3^{3^3}$ bedeutet $3^{(3^3)}=3^{27}=7\,625\,597\,484\,987$ und nicht $(3^3)^3=27^3=19\,683$.
+        Das ist kein Zufall der Schreibweise: von unten gerechnet würde der Turm zu $3^{3\cdot3\cdot3}$ zusammenfallen — es käme
+        nichts Neues heraus, nur eine gewöhnliche Potenz. Erst die Rechnung von oben erzeugt das neue, unglaublich schnelle Wachstum.
+
+        Formal definiert man den Turm Stockwerk für Stockwerk: $a\uparrow\uparrow1=a$ und $a\uparrow\uparrow(n+1)=a^{\,a\uparrow\uparrow n}$.
+        Ein neues Stockwerk heisst also: „$a$ hoch das bisherige Ergebnis“. Dazu setzt man $a\uparrow\uparrow0=1$, denn dann gilt die
+        Regel auch für den ersten Schritt: $a^{1}=a$. Das ist der erste Knoten des Graphen: [[gr.def.turm]].
+    - bild: k0_rechenarten
+      unterschrift: Dieselbe Idee, viermal angewandt. Auf der logarithmischen Achse wird eine Potenz zur Geraden — der Turm schiesst trotzdem davon.
+    - abschnitt: Wie riesig Türme werden
+      anker: riesig
+    - text: |
+        Schon kleine Türme sprengen jede Vorstellung. $2\uparrow\uparrow3=2^{2^2}=16$, $2\uparrow\uparrow4=2^{16}=65\,536$ — und
+        $2\uparrow\uparrow5=2^{65536}$ hat bereits $19\,729$ Dezimalstellen. Die Zahl $3\uparrow\uparrow4=3^{7\,625\,597\,484\,987}$ hat
+        $3\,638\,334\,640\,025$ Stellen; man könnte sie auf keinem Computer der Welt ausschreiben.
+
+        Wie kann man dann wissen, wie viele Stellen sie hat? Mit dem Logarithmus. Die Stellenzahl einer Zahl $m$ ist
+        $\lfloor\log_{10}m\rfloor+1$, und der Logarithmus einer Potenz holt die Hochzahl herunter:
+        $$\log_{10}\bigl(a\uparrow\uparrow(n+1)\bigr)=a\uparrow\uparrow n\cdot\log_{10}a .$$
+        Der Logarithmus nimmt also **genau ein Stockwerk** vom Turm ab. Diese eine Beobachtung trägt die ganze Theorie: wer Türme
+        verstehen will, rechnet mit wiederholten Logarithmen. Mehr dazu in [[gr.satz.stellen]] und beim Superlogarithmus [[gr.satz.logstern]].
+    - abschnitt: Kleine Basen — der Turm kommt zur Ruhe
+      anker: ruhe
+    - text: |
+        Nicht jeder Turm explodiert. Nimm $a=\sqrt2\approx1.414$ und baue Stockwerk für Stockwerk:
+        $$1,\ \ \sqrt2=1.414,\ \ \sqrt2^{\sqrt2}=1.633,\ \ 1.761,\ \ 1.841,\ \ 1.893,\ \ 1.927,\ \ 1.950,\ \dots$$
+        Die Werte wachsen, aber immer langsamer, und kommen der Zahl $2$ beliebig nahe. Der unendliche Turm $\sqrt2^{\sqrt2^{\sqrt2^{\cdots}}}$
+        ist also eine ganz gewöhnliche Zahl: $2$.
+
+        Warum gerade $2$? Wenn der Turm einen Grenzwert $h$ hat, dann ändert ein weiteres Stockwerk nichts mehr: $h=a^{h}$.
+        Für $a=\sqrt2$ erfüllt $h=2$ diese Gleichung, denn $\sqrt2^{\,2}=2$. Man nennt eine solche Zahl einen **Fixpunkt** der Abbildung
+        $x\mapsto a^x$. Geometrisch ist ein Fixpunkt ein Schnittpunkt der Kurve $y=a^x$ mit der Geraden $y=x$, und das Ausrechnen
+        des Turms ist eine Treppe zwischen den beiden Kurven (rechtes Bild).
+    - bild: k0_treppe
+      unterschrift: Links — je nach Basis schneidet $y=b^x$ die Gerade zweimal, berührt sie, oder verfehlt sie. Rechts — der Turm zur Basis √2 als Treppe zwischen Kurve und Gerade; er läuft in den unteren Schnittpunkt 2.
+    - text: |
+        Ob es überhaupt Schnittpunkte gibt, hängt an einer einzigen Zahl:
+        $$\eta=e^{1/e}\approx1.444667861 .$$
+        Ist die Basis kleiner als $\eta$, schneidet $y=a^x$ die Gerade zweimal; der untere Schnittpunkt **zieht** den Turm an.
+        Bei $a=\eta$ berühren sich die Kurven genau bei $x=e$. Ist $a>\eta$, gibt es keinen Schnittpunkt — der Turm wächst über alle
+        Grenzen. Das ist der Inhalt von [[fp.def.eta]] und [[fp.satz.reelle_fixpunkte]].
+
+        Auch nach unten gibt es eine Grenze. Für Basen zwischen $0$ und $1$ springt der Turm abwechselnd hinauf und hinunter.
+        Bis zur Basis $e^{-e}\approx0.066$ beruhigt sich das Springen und der Turm konvergiert trotzdem. Darunter hört es nie auf:
+        zur Basis $0.03$ pendelt der Turm für immer zwischen ungefähr $0.82$ und $0.056$ — ein **2-Zyklus**. Leonhard Euler hat das
+        Ergebnis so zusammengefasst: der unendliche Turm $a^{a^{a^{\cdots}}}$ konvergiert genau für
+        $$e^{-e}\le a\le e^{1/e}$$
+        ([[fp.satz.turm_reell]]).
+    - bild: k0_kleine_basen
+      unterschrift: Basen unter 1. Bei 0.3 wird das Hin-und-her immer kleiner, bei 0.03 bleibt es ewig bestehen.
+    - abschnitt: Die Basis als Variable
+      anker: basis
+    - text: |
+        Man kann auch die Basis wandern lassen. Die einfachste Funktion dieser Art ist $x^x$: Sie sinkt von $1$ (für $x\to0$) zuerst ein
+        wenig, hat bei $x=1/e$ ihren tiefsten Wert $e^{-1/e}=1/\eta\approx0.692$ und steigt dann steil an ([[gr.satz.selbstpotenz]]).
+        Dass hier schon $\eta$ auftaucht, ist kein Zufall — es ist dieselbe Rechnung wie bei den Schnittpunkten oben.
+
+        Höhere Türme von $x$, also ${}^2x=x^x$, ${}^3x=x^{x^x}$ und so weiter, zeigen alles auf einmal: über $\eta$ laufen sie davon,
+        zwischen $e^{-e}$ und $\eta$ ziehen sie sich auf eine einzige Kurve zusammen, und unter $e^{-e}$ spalten sie sich in zwei Äste —
+        gerade Höhen oben, ungerade unten. Diese Spaltung ist der Grund, warum die Flächen unter den Türmen zwei verschiedene Grenzwerte haben
+        ([[gr.satz.turmintegral_grenzen]]).
+    - bild: k0_xhochx
+      unterschrift: Links die Selbstpotenz $x^x$. Rechts die Türme ${}^n x$ — sie spalten sich bei $e^{-e}$ und enden bei η.
+    - abschnitt: Halbe Höhen — die eigentliche Frage
+      anker: halbe
+    - text: |
+        Bisher hatte jeder Turm eine ganze Anzahl Stockwerke. Was ist ein Turm mit $2.5$ Stockwerken? So wie man von $2^3$ zu $2^{0.5}=\sqrt2$
+        gekommen ist, möchte man eine **Funktion** $T(x)$, die an den ganzen Stellen die Türme trifft und dazwischen sinnvoll verbindet.
+        Was „sinnvoll“ heisst, sagt die Bauregel des Turms, auf alle Höhen übertragen:
+        $$T(x+1)=a^{T(x)},\qquad T(0)=1 .$$
+        Eine solche Funktion heisst **eine Tetration zur Basis $a$**. Aus der Gleichung folgt sofort $T(1)=a$, $T(2)=a^a$ und so weiter,
+        und rückwärts $T(-1)=0$ (denn $a^0=1$). Noch weiter links stürzt jede Tetration nach $-\infty$, sobald $x$ sich $-2$ nähert ([[gr.satz.gestalt]]).
+
+        Hier steckt die Hauptschwierigkeit des ganzen Gebiets: **die Gleichung allein legt $T$ nicht fest.** Man kann $T$ auf dem Stück
+        zwischen $-1$ und $0$ fast beliebig vorgeben — etwa als gerade Linie $T(x)=1+x$ — und dann mit der Gleichung Stück für Stück
+        nach rechts fortsetzen. Das ergibt die „lineare Tetration“. Sie erfüllt die Gleichung exakt, hat aber Knicke. Mit glatteren
+        Vorgaben bekommt man glattere Lösungen, und es gibt unendlich viele davon ([[fg.kor.nichteindeutigkeit]]).
+
+        Welche ist die „richtige“? Die Antwort der Forschung: man verlangt zusätzlich gute Eigenschaften im **Komplexen**, und dann bleibt
+        genau eine Lösung übrig.
+        - Für $1<a<\eta$ ist es die **reguläre Tetration**, gebaut am anziehenden Fixpunkt: dort sieht jeder Schritt fast wie eine
+          Streckung aus, und eine halbe Streckung ist leicht zu definieren (Kapitel 4 und 5). Zur Basis $\sqrt2$ ist $T(1/2)=1.24362\ldots$
+          und die Kurve kommt bei $2$ zur Ruhe.
+        - Für $a>\eta$ ist es die **Tetration von Kneser** (1950), gebaut an einem komplexen Fixpunkt-Paar mit einer zusätzlichen
+          Korrektur (Kapitel 6). Zur Basis $e$ ist $T(1/2)=1.6463542\ldots$; die lineare Tetration gäbe $e^{1/2}=1.6487\ldots$, also
+          fast dasselbe, aber eben nicht dasselbe.
+    - bild: k0_halbe_hoehe
+      unterschrift: Links zwei Tetrationen zur Basis e — Kneser (glatt) und die lineare (mit Knicken); der Einschub zeigt ihren kleinen Unterschied. Rechts die reguläre Tetration zur Basis √2, die sich dem Fixpunkt 2 nähert.
+    - abschnitt: Die Umkehrung — der Superlogarithmus
+      anker: slog
+    - text: |
+        Zu jeder wachsenden Tetration gehört eine Umkehrfunktion, der **Superlogarithmus** $\operatorname{slog}_a$. Er beantwortet die Frage:
+        „In welcher Höhe erreicht der Turm den Wert $y$?“ Aus $T(x+1)=a^{T(x)}$ wird
+        $$\operatorname{slog}_a(a^{y})=\operatorname{slog}_a(y)+1 .$$
+        Ein Logarithmus weniger heisst eine Stufe tiefer. Aufgerundet zählt der Superlogarithmus einfach, wie oft man logarithmieren muss,
+        bis man unter $1$ landet ([[gr.satz.logstern]]). In der Fachsprache ist er eine **Abel-Funktion**, und fast jede tiefere
+        Konstruktion in diesem Buch baut zuerst eine Abel-Funktion und kehrt sie dann um.
+    - abschnitt: Eine kurze Geschichte
+      anker: geschichte
+    - text: |
+        Die Frage ist alt, die Antworten sind erstaunlich jung.
+        - **1783 — Euler** findet, für welche Basen der unendliche Turm einen Grenzwert hat; **1844** gibt **Eisenstein** eine Reihe für diesen Grenzwert ([[fp.satz.turm_reell]]).
+        - **1936–1962 — Barrow, Thron, Shell** klären dasselbe für komplexe Basen: das Shell–Thron-Gebiet ([[fp.satz.shell_thron]]).
+        - **1947 — Goodstein** gibt der Rechenart ihren Namen „Tetration“; **1976** kommen **Knuths** Pfeile $\uparrow\uparrow$ dazu ([[br.def.hyperoperation]]).
+        - **1950 — Hellmuth Kneser** baut eine reelle, analytische halbe Iterierte von $e^x$ — daraus wird später die Kneser-Tetration ([[kn.konstr.kneser]]).
+        - **1958 und 1961 — George Szekeres** entwickelt die reguläre Iteration reeller Funktionen und findet eine rein reelle Eindeutigkeitsbedingung
+          ([[it.satz.szekeres]], [[it.satz.szekeres_monoton]]); er bemerkt auch, dass Knesers Lösung nicht durch Wachstum allein ausgezeichnet ist.
+        - **Um 1991** bemerken **Asimov, Hickerson und Schroeppel**, dass die Basis $\sqrt2$ zwei verschiedene natürliche Lösungen hat ([[kl.beob.zwei_abel]]);
+          im selben Jahr baut **Walker** eine unendlich oft differenzierbare Lösung ([[kn.konstr.walker]]).
+        - **Ab 2007** sammelt das **Tetration-Forum** (Henryk Trappmann, Andrew Robbins, Jay Fox, Sheldon Levenstein, Dmitrii Kouznetsov und andere) Methoden,
+          Zahlen und offene Fragen — von der Pentation ([[kn.konstr.pentation]]) bis zur Liste offener Probleme (TPID).
+        - **2009–2012** rechnen **Kouznetsov und Trappmann** die Lösungen erstmals sauber in der komplexen Ebene aus und beweisen eine Eindeutigkeit
+          ([[kn.satz.trappmann_kouznetsov]], [[kl.satz.vier_sqrt2]]).
+        - **2017** zeigen **Paulsen und Cowgill**, dass Knesers Lösung durch einfache Bedingungen eindeutig bestimmt ist ([[kn.satz.paulsen_cowgill]]);
+          **2019** folgen komplexe Basen ([[kn.satz.paulsen_komplex]]).
+
+        Dieses Buch sammelt das alles an einem Ort, rechnet jede Zahl nach und sagt bei jeder Aussage, wie sicher sie ist.
+    - abschnitt: Wie dieses Buch aufgebaut ist
+      anker: aufbau
+    - text: |
+        Jede Aussage steht in einem eigenen Kasten. Oben steht, was für eine Aussage es ist (Definition, Satz, Vermutung …), wie gut
+        sie gesichert ist und für wen sie gedacht ist (Einstieg, Vertiefung, Forschung). Darunter steht die Aussage selbst in knapper
+        mathematischer Form, und dann die ausführliche Erklärung in festen Teilen:
+        - **Worum es geht** — die Idee, ohne Formeln vorauszusetzen.
+        - **Genau** — die Aussage noch einmal, jedes Zeichen erklärt.
+        - **Warum es gilt** — die Begründung Schritt für Schritt.
+        - **Beispiel** — mit echten Zahlen zum Nachrechnen.
+        - **Einordnung** — worauf die Aussage aufbaut und wohin sie führt.
+
+        Der Knopf „Details und Quellen“ öffnet alles Weitere: Voraussetzungen und ob der Beweis sie wirklich braucht, Quellen,
+        Experimente, die Prüffragen. Blaue Wörter sind Verweise auf andere Aussagen. Die Kapitel bauen aufeinander auf; wer nur
+        verstehen will, was Tetration ist, kommt mit Kapitel 0 bis 2 weit.
+
+        > Ein Wort zur Ehrlichkeit: „bewiesen“ heisst hier bewiesen. Zahlen, die nur gemessen sind, heissen „numerisch“, Vermutungen
+        > heissen Vermutungen, und widerlegte Ideen bleiben stehen, damit man sieht, warum sie nicht stimmen.
+
+- id: k1
+  titel: Grundlagen
+  untertitel: Werte, Ableitungen, Kurvenform und Flächen — was jede Tetration erfüllen muss, egal wie sie gebaut ist.
+  teile:
+    - text: |
+        Dieses Kapitel braucht nur Schulmathematik: Potenzen, Logarithmen, Ableitung und Integral. Fast alles hier folgt aus der einen
+        Gleichung $T(x+1)=a^{T(x)}$ und gilt deshalb für **jede** Tetration, nicht nur für eine bestimmte Konstruktion. Wo eine
+        bestimmte Konstruktion gemeint ist (meist Kneser zur Basis $e$), steht es dabei.
+    - strang: gr.werte
+    - strang: gr.slog
+    - text: |
+        Der Superlogarithmus kehrt die Tetration in der **Höhe** um: er fragt, wie oft man potenzieren muss. Man kann sie auch in der
+        **Basis** umkehren und fragen, welche Zahl hoch sich selbst ein vorgegebenes $x$ ergibt. Das ist die **Superwurzel** — und
+        hier hilft wieder die Lambert-W-Funktion, die später auch alle Fixpunkte liefert.
+    - strang: gr.umkehrungen
+    - strang: gr.ableitung
+    - strang: gr.kurve
+    - strang: gr.integrale
+    - strang: gr.turmintegrale
+    - strang: gr.basis
+    - text: |
+        **Was fest ist und was frei ist.** Die Gleichung $T(x+1)=a^{T(x)}$ verbindet nur Stellen, die eine ganze Zahl auseinander liegen. Deshalb gibt es genau
+        zwei Sorten von Aussagen. Die einen gelten für **jede** Tetration: Werte an ganzen Stellen, die Tauschregel $T(x+1)^{T(y)}=T(y+1)^{T(x)}$, die Taylor-Leiter
+        von einer Stufe zur nächsten und $\ln a=T'(0)/T'(-1)$ — eine Stufe höher $\ln a=P'(0)P'(-2)/P'(-1)^2$ für die Pentation. Die anderen verbinden Stellen mit
+        nicht ganzem Abstand, etwa $T(\tfrac12)$ mit $T(0)$; sie hängen von der gewählten Tetration ab ([[gr.satz.frei_und_fest]]).
+    - strang: gr.identitaeten
+    - text: |
+        **Was erlaubt uns die Tetration?** Fünf Dinge, die ohne sie nicht gehen. *Halbe Schritte:* $\exp^{[s]}(x)=T(\operatorname{slog}x+s)$ ist eine Funktion, die
+        zweimal angewandt $e^x$ ergibt — keine Formel aus $\exp$ und $\ln$ kann das ([[kn.satz.halbe_exp_wachstum]]). *Wachstum messen:* $\operatorname{slog}f(x)-\operatorname{slog}x$
+        zählt, wie viele Exponentialfunktionen in $f$ stecken, und mit Tetration kann diese Zahl ein Bruch sein ([[gr.satz.exponentialitaet]]). *Riesige Zahlen greifbar machen:*
+        Stellenzahl und letzte Ziffern von Türmen, die man nie ausschreiben könnte ([[gr.satz.stellen]], [[br.satz.turm_mod_m]]). *Gleichungen lösen:* $x^x=c$ oder $x^{x^x}=c$
+        mit Superwurzeln ([[gr.satz.superwurzel]]). *Weiterbauen:* Pentation, Hexation und alle höheren Stufen entstehen mit demselben Schritt — und tragen dieselben
+        festen Beziehungen nach oben ([[gr.satz.stufenleiter]]).
+
+- id: k2
+  titel: Fixpunkte und der unendliche Turm
+  untertitel: Wo der Turm zur Ruhe kommt, warum η die Grenze ist, und was im Komplexen passiert.
+  teile:
+    - text: |
+        Ein **Fixpunkt** der Abbildung $f(z)=a^z$ ist eine Zahl $L$ mit $a^{L}=L$. Fixpunkte entscheiden alles: ob der unendliche Turm
+        konvergiert, wie schnell eine Tetration zur Ruhe kommt, und welche Konstruktion man für halbe Höhen benutzen kann. Wie stark ein
+        Fixpunkt anzieht oder abstösst, misst sein **Multiplikator** $\lambda=f'(L)=L\ln a$: Ist $|\lambda|<1$, zieht er an; ist $|\lambda|>1$,
+        stösst er ab; bei $|\lambda|=1$ ist er „neutral“ — das ist der schwierigste Fall.
+    - strang: fp.fixpunkte
+    - strang: fp.turm
+
+- id: k3
+  titel: Die Gleichung und warum sie nicht reicht
+  untertitel: Abel- und Schröder-Gleichung, die Freiheit der Lösungen und was sie einschränkt.
+  teile:
+    - text: |
+        Die Tetrationsgleichung $F(x+1)=a^{F(x)}$ ist ein Spezialfall einer allgemeinen Frage: Zu einer Abbildung $f$ sucht man eine
+        Funktion, die „$f$ in kontinuierlicher Zeit“ ausführt. Dieses Kapitel zeigt, warum die Gleichung allein unendlich viele Lösungen
+        hat, wie man sie alle beschreibt (eine Lösung, verschoben um eine periodische Funktion) und welche Zusatzbedingungen auswählen.
+    - strang: fg.begriffe
+    - strang: fg.freiheit
+    - strang: fg.rand
+
+- id: k4
+  titel: Iteration an einem Fixpunkt
+  untertitel: Koenigs, Leau–Fatou, Écalle — das Werkzeug, mit dem man halbe Schritte baut.
+  teile:
+    - text: |
+        In der Nähe eines Fixpunkts sieht jede glatte Abbildung fast linear aus. Dieses Kapitel macht daraus exakte Koordinaten:
+        am anziehenden oder abstossenden Fixpunkt die Koenigs-Koordinate, in der die Abbildung eine reine Streckung ist; am neutralen
+        (parabolischen) Fixpunkt die Fatou-Koordinate, in der sie eine reine Verschiebung ist. In beiden Koordinaten ist ein halber
+        Schritt offensichtlich.
+    - strang: it.hyperbolisch
+    - strang: it.parabolisch
+
+- id: k5
+  titel: Tetration unter η
+  untertitel: Die reguläre Lösung, Bruchsummen, der Grenzfall η und seine Digamma-Struktur.
+  teile:
+    - text: |
+        Für Basen zwischen $1$ und $\eta$ gibt es einen anziehenden reellen Fixpunkt, und mit dem Werkzeug aus Kapitel 4 bekommt man
+        die reguläre Tetration. Dieses Kapitel baut sie, rechnet mit ihr (Spektralreihe, Bruchsummen, Ableitungsformel) und verfolgt,
+        was beim Grenzübergang zur Basis $\eta$ passiert.
+    - strang: kl.regulaer
+    - strang: kl.bruch
+    - strang: kl.zwei_abel
+    - strang: kl.eta
+
+- id: k6
+  titel: Kneser und der Superlogarithmus
+  untertitel: Die Tetration für Basen über η, ihre Eindeutigkeit und ihre Alternativen.
+  teile:
+    - text: |
+        Über $\eta$ gibt es keinen reellen Fixpunkt mehr, nur ein komplexes Paar $L,\bar L$. Kneser hat 1950 gezeigt, wie man daraus
+        trotzdem eine reelle, analytische Tetration baut. Dieses Kapitel erklärt die Konstruktion, warum sie eindeutig ist
+        (Paulsen–Cowgill), wo sie singulär wird, und welche anderen Vorschläge es gibt.
+    - strang: kn.konstruktion
+    - strang: kn.eindeutigkeit
+    - strang: kn.rand
+    - strang: kn.andere
+    - text: |
+        **Wofür das alles?** Kneser suchte 1950 eigentlich eine Funktion $f$ mit $f(f(x))=e^x$. Mit der Tetration ist sie sofort da:
+        $f(x)=T(\operatorname{slog}x+\tfrac12)$. Sie wächst schneller als jedes Polynom und langsamer als jedes $e^{x^\varepsilon}$ — eine Wachstumsklasse,
+        die man mit $\exp$ und $\log$ allein nicht hinschreiben kann.
+    - strang: kn.halbe_exp
+    - text: |
+        **Eine Stufe höher.** Mit einer fertigen Tetration $T_b$ kann man das ganze Spiel wiederholen: Pentation ist iterierte Tetration,
+        $b\uparrow\uparrow\uparrow3=T_b(T_b(b))$. Für gebrochene Höhen braucht man wieder einen Fixpunkt — die Tetration zur Basis $e$ schneidet
+        die Gerade $y=x$ bei $-1.85$ —, und dort hilft dieselbe reguläre Iteration wie in Kapitel 5. Dabei taucht ein schönes Echo auf:
+        So wie $\eta$ und $e$ die Grenze des unendlichen Turms markieren, markieren $\eta_4\approx1.6353$ und $e_4\approx3.0885$ die Grenze
+        der unendlichen Pentation.
+    - strang: kn.hoehere_stufen
+
+- id: k7
+  titel: Basiswechsel
+  untertitel: Wie die Tetration zur Basis d in die Höhen der Basis b übersetzt wird — Phasengesetz, Welle und gemeinsame Fixpunkte.
+  teile:
+    - text: |
+        Die Frage dieses Kapitels: In welcher Höhe erreicht der Turm zur Basis $b$ den Wert, den der Turm zur Basis $d$ in der Höhe $x$ hat?
+        Die Antwort $\operatorname{slog}_b(T_d(x))$ ist fast $x+\text{const}$, aber mit einer kleinen periodischen Welle. Hier steht,
+        woher die Welle kommt, wie sie aussieht, und wann sie verschwindet.
+
+        ![[bild:k7_phase]] Links: $\operatorname{slog}_e(T_2(n+\theta))-(n+\theta)$ für $n=0,\dots,4$ — die Kurven fallen Stufe für Stufe auf eine fast waagrechte Linie bei
+        $\mu=-1.1284$. Rechts: was übrig bleibt, die Welle $P(\theta)$, zehntausendfach vergrössert.
+
+        ### Wegweiser
+        - **Phasengesetz und Kanal:** warum die Übersetzung zur Ruhe kommt, und welche Annahmen dafür nötig waren oder inzwischen bewiesen sind.
+        - **Kreisabbildung:** die Welle als Abbildung des Kreises auf sich; daraus folgt, dass Hin- und Rückweg sich genau aufheben.
+        - **Moden:** wie schnell die Fourier-Anteile der Welle fallen, und warum eine scheinbare Singularität ein Rechenartefakt war.
+        - **Antwortkern und Hub:** die Welle in erster Ordnung und eine einzige Tabellenspalte $m(b)$, die alle Mittel trägt.
+        - **Riemann–Hilbert und Rekonstruktion:** die Ableitung nach der Basis, ohne Rechenmotor — bis hin zur Tetration zur Basis $2$ aus der zur Basis $e$.
+        - **Gemeinsame Fixpunkte:** wann der Basiswechsel ganz ohne Welle auskommt.
+
+        > Die Stränge reichen bis an den Forschungsstand. Wer zum ersten Mal liest, nimmt die Definition, das Phasengesetz, die Antisymmetrie, den Hub und die
+        > gemeinsamen Fixpunkte mit und überspringt den Rest.
+    - strang: bw.phasengesetz
+    - strang: bw.kreis
+    - strang: bw.moden
+    - strang: bw.antwort
+    - strang: bw.rh
+    - strang: bw.rekonstruktion
+    - strang: kl.gleiches_L
+
+- id: k8
+  titel: Die Basen-Ebene
+  untertitel: Komplexe Basen, Regionen, Spiralen, die Periode-2-Blase und die Rechteckwelle.
+  teile:
+    - text: |
+        Lässt man komplexe Basen zu, wird aus der Zahlengeraden eine Ebene voller Muster: ein Gebiet, in dem der Turm zur Ruhe kommt,
+        Knospen mit Zyklen, Spiralen, Staub aus fliehenden Basen. Dieses Kapitel ordnet die Muster und zeigt, welche Formeln dahinterstecken.
+
+        ![[bild:exp.parameterraum]] Links: jede Basis $b$ im Rechteck, gefärbt nach der Periode, in die ihr Turm fällt. Das grosse Gebiet in der Mitte ist das
+        Shell–Thron-Gebiet (Periode 1); die Knospen am Rand tragen Zyklen. Rechts: der Turm zur Basis $i$ spiralt in seinen Fixpunkt.
+
+        > Die eine Zahl, die fast alles ordnet, ist der Multiplikator $\lambda$ am Fixpunkt: innen $|\lambda|<1$, auf dem Rand $|\lambda|=1$, in den Knospen ein Zyklus,
+        > dessen Multiplikator die Rolle übernimmt.
+    - strang: fp.parameterraum
+    - strang: fp.spiralen_mittel
+    - strang: fp.periode2
+
+- id: k9
+  titel: Zahlen und Arithmetik
+  untertitel: Ist T_e(1/2) rational? Türme modulo m, Transzendenz und o-minimale Strukturen.
+  teile:
+    - text: |
+        Die Werte von Tetrationen sind Zahlen — welche Art von Zahlen? Dieses Kapitel sammelt, was man über Irrationalität,
+        Transzendenz und Teilbarkeit von Türmen weiss, und welche Werkzeuge der Zahlentheorie und Logik hier greifen.
+
+        > Die ehrliche Bilanz vorweg: Schon für $e^e=T_e(2)$ ist nicht bewiesen, dass es irrational ist. Bewiesen sind Aussagen über **Paare** benachbarter
+        > Werte und über die **Anzahl** einfacher Punkte auf dem Graphen — über einen einzelnen Wert wie $T_e(\tfrac12)$ nur numerische Ausschlüsse.
+    - strang: ar.klassisch
+    - strang: ar.gleichung
+    - strang: ar.zaehlen
+    - strang: ar.ks
+
+- id: k10
+  titel: Brücken zu anderen Gebieten
+  untertitel: Logik und Wachstum, Kreisabbildungen, Engpässe, Diskretes und reelle Analysis.
+  teile:
+    - text: |
+        Tetration taucht in vielen Gebieten auf, oft unter anderem Namen: als Wachstumsklasse in der Logik, als Kreisabbildung in der
+        Dynamik, als Engpass beim Durchgang an einem Sattelpunkt. Hier stehen diese Verbindungen.
+    - strang: br.logik
+    - strang: br.kreis
+    - strang: br.engpass
+    - strang: br.diskret
+    - strang: br.reell
+
+- id: formeln
+  titel: 'Formelsammlung: fest und frei'
+  untertitel: Was jede Tetration erfüllen muss, was man frei wählen kann — und welche Bedingung die Wahl wieder festlegt.
+  teile:
+    - text: |
+        Hier stehen die Formeln des Graphen auf einen Blick, sortiert nach einer einzigen Frage:
+        **Gilt das für jede Tetration, oder hängt es davon ab, welche man gewählt hat?**
+        Die Antwort folgt einer einfachen Regel ([[gr.satz.frei_und_fest|frei und fest]]):
+
+        > Eine Formel gilt für jede Tetration genau dann, wenn sie nur Stellen verbindet, die eine **ganze Zahl** auseinander liegen. Alles, was Stellen im Abstand ½ oder 0.3 verbindet, muss man wählen.
+
+        Bezeichnungen: $a>0$, $a\ne1$ ist die Basis, $c=\ln a$, $T$ eine Tetration mit $T(x+1)=a^{T(x)}$ und $T(0)=1$, $A=\operatorname{slog}_a$ ihre Umkehrung,
+        $P$ die Pentation und $H_k$ die $k$-te Stufe ($H_3=a^x$, $H_4=T$, $H_5=P$). Jede Zeile verweist auf den Knoten mit Beweis und Bedingungen.
+
+    - abschnitt: 'Fest: Werte und Rechenregeln'
+      anker: fest-werte
+    - text: |
+        | Formel | in Worten | Knoten |
+        | --- | --- | --- |
+        | $T(x+1)=a^{T(x)}$, $T(x-1)=\log_aT(x)$ | die Gleichung selbst, vorwärts und rückwärts | [[fg.def.tetration|Definition]] |
+        | $T(-1)=0$, $T(1)=a$, $T(2)=a^a$, $T(n)=a\uparrow\uparrow n$ | an ganzen Stellen ist alles festgelegt; bei $-2$ gibt es keinen Wert | [[fg.lem.ganzzahlwerte|ganze Stellen]] |
+        | $T(x)\to-\infty$ für $x\to-2^+$ | für $a>1$; Bild ganz $\mathbb R$ für $a>\eta$, sonst bis zum unteren Fixpunkt | [[gr.satz.gestalt|Gestalt]] |
+        | $T(x+n)=\exp_a^{\circ n}\bigl(T(x)\bigr)$ | ganze Schritte sind Iteration — eine Regel $T(m+n)=T(m)\ast T(n)$ gibt es nicht | [[gr.satz.tauschregel|keine Additionsregel]] |
+        | $T(x+1)^{T(y)}=T(y+1)^{T(x)}=a^{T(x)T(y)}$ | zwei Stufen darf man tauschen; ganz: $16^2=4^4=2^8$ | [[gr.satz.tauschregel|Tauschregel]] |
+        | $a=T(x+1)^{1/T(x)}$, $T(x+2)=T(x+1)^{T(x+1)/T(x)}$ | die Basis steckt in jedem Paar von Nachbarwerten ($x\ne-1$) | [[gr.satz.tauschregel|Tauschregel]] |
+        | $\lfloor a\uparrow\uparrow n\cdot\log_{10}a\rfloor+1$ | Stellenzahl von $a\uparrow\uparrow(n+1)$ | [[gr.satz.stellen|Stellen]] |
+        | $a\uparrow\uparrow n\bmod m$ wird konstant | die letzten Ziffern eines Turms stehen irgendwann still | [[br.satz.turm_mod_m|Türme mod m]] |
+        | $H_k(-j)=-(j-1)$ für $j=1,\dots,k-3$ | $T(-1)=0$; $P(-1)=0$, $P(-2)=-1$; jede Stufe erbt eine ganze Stelle mehr | [[gr.satz.stufenleiter|Stufenleiter]] |
+
+    - abschnitt: 'Fest: Superlogarithmus'
+      anker: fest-slog
+    - text: |
+        | Formel | in Worten | Knoten |
+        | --- | --- | --- |
+        | $A(a^y)=A(y)+1$, $A(1)=0$, $A(0)=-1$, $A(a)=1$ | jede Potenz zählt eins dazu; $A\to-2$ für $y\to-\infty$ | [[gr.satz.slog_grund|slog-Grundregeln]] |
+        | $\lceil A(y)\rceil=\log_a^*y$ | aufgerundet: wie oft man logarithmieren muss, bis man bei höchstens 1 ist | [[gr.satz.logstern|log*]] |
+        | $A'(y)=1/T'(A(y))$, $A'(y)=c\,a^yA'(a^y)$ | Ableitung der Umkehrung | [[gr.satz.slog_ableitung|slog-Ableitung]] |
+        | $A'(0)/A'(1)=\ln a$ | der Logarithmus aus zwei slog-Steigungen | [[gr.satz.ln_aus_steigungen|ln aus Steigungen]] |
+        | $A'(x)\,L_0L_1\cdots L_m\to0$, $L_k=\log_a^{\circ k}x$ | slog wird flacher als jede Stufe der Logarithmen-Skala | [[gr.satz.slog_steigung_langsam|slog′ langsam]] |
+
+    - abschnitt: 'Fest: Ableitungen'
+      anker: fest-ableitungen
+    - text: |
+        Alle Zeilen gelten für jede Tetration, die an den genannten Stellen differenzierbar ist.
+
+        | Formel | in Worten | Knoten |
+        | --- | --- | --- |
+        | $T'(x+1)=c\,T(x+1)\,T'(x)$ | Kettenregel: eine Stufe höher mal $c$ mal Funktionswert | [[gr.satz.kettenregel|Kettenregel]] |
+        | $\ln T'(x+1)-\ln T'(x)=\ln c+c\,T(x)$ | bei $a=e$ ist $T$ die Differenz von $\ln T'$ über einen Schritt | [[gr.satz.kettenregel|Kettenregel]] |
+        | $T'(x+n)=c^n\,T'(x)\prod_{k=1}^{n}T(x+k)$ | über $n$ ganze Schritte ein Produkt | [[gr.kor.produktformel|Produktformel]] |
+        | $T''(x+1)=c\,T(x+1)\bigl[c\,T'(x)^2+T''(x)\bigr]$ | Krümmung eine Stufe höher | [[gr.satz.zweite_ableitung|zweite Ableitung]] |
+        | $T^{(n)}(x+1)=T(x+1)\,B_n\bigl(cT'(x),\dots,cT^{(n)}(x)\bigr)$ | die ganze Taylorreihe springt eine Stufe weiter (Bell-Polynome) | [[gr.satz.taylor_leiter|Taylor-Leiter]] |
+        | $(\ln T)^{(k)}(x+1)=c\,T^{(k)}(x)$ | dasselbe rückwärts, ohne Bell-Polynome | [[gr.satz.ln_aus_steigungen|ln aus Steigungen]] |
+        | $\ln a=\dfrac{T'(0)}{T'(-1)}=\dfrac{T''(0)-T'(0)^2}{T''(-1)}$ | Verhältnisse von Steigungen sind lösungsunabhängig | [[gr.satz.ln_aus_steigungen|ln aus Steigungen]] |
+        | $\ln a=\dfrac{P'(0)\,P'(-2)}{P'(-1)^2}$ | dasselbe eine Stufe höher, für die Pentation | [[gr.satz.stufenleiter|Stufenleiter]] |
+        | $\ln\ln a=\sum_{j=0}^{m}(-1)^j\binom mj\ln H_{3+m}'(-j)$ | für jede Stufe: eine Zeile aus dem Pascal-Dreieck | [[gr.satz.stufenleiter|Stufenleiter]] |
+        | $T'(x)$ und $T'(x+1)$ haben dasselbe Vorzeichen | für $a>1$; für $0<a<1$ wechselt es — dort ist keine Lösung monoton | [[gr.satz.vorzeichen|Vorzeichen]] |
+        | $T''\ge0$ auf einer Periode $\Rightarrow$ $T''>0$ rechts davon | Konvexität vererbt sich nach oben | [[gr.kor.konvex_nach_oben|konvex nach oben]] |
+        | $T'(x+n)^{1/n}\to\lambda=a_*\ln a$ | für $1<a<\eta$: die Steigung fällt pro Stufe um den Faktor $\lambda$ | [[gr.satz.abklingen|Abklingen]] |
+
+    - abschnitt: 'Fest: Integrale'
+      anker: fest-integrale
+    - text: |
+        | Formel | in Worten | Knoten |
+        | --- | --- | --- |
+        | $\int_m^nT+\int_{T(m)}^{T(n)}A=n\,T(n)-m\,T(m)$ | Fläche unter $T$ plus Fläche neben $A$ ergibt ein Rechteck | [[gr.satz.young|Young]] |
+        | $\int_0^1T=1-c\int_0^1a^uA(u)\,du$, also $1<\int_0^1T<a$ | gleichwertige Form, mit Schranken | [[gr.kor.integral_formen|Integral-Formen]] |
+        | $\int_{-1}^0T=-\int_0^1A$ | die Fläche unten ist eine slog-Fläche | [[gr.satz.integral_unten|Integral unten]] |
+        | $\int_x^{x+1}T'(u)\,T(u+1)\,du=\dfrac{T(x+2)-T(x+1)}{c}$ | ein Integral über eine Periode, ganz ohne Wahl | [[gr.satz.integral_produkt|Integral-Produkt]] |
+        | $\int_x^{x+1}\ln T(u+1)\,du=c\int_x^{x+1}T(u)\,du$ | Logarithmus eine Stufe höher = Fläche eine Stufe tiefer | [[gr.satz.integral_log|Integral-Log]] |
+        | $\int_0^1{}^{2n}x\,dx\to0.676714\ldots$, $\int_0^1{}^{2n+1}x\,dx\to0.631309\ldots$ | gerade und ungerade Turm-Integrale haben verschiedene Grenzwerte | [[gr.satz.turmintegral_grenzen|Turm-Integrale]] |
+        | $I_\infty(r+1)=2M-I_\infty(r)$, $M=0.654011822\ldots$ | bei gebrochener Höhe: Ecken, Mittelwert und Symmetrie sind fest | [[gr.satz.turmintegral_periodisch|Turm-Integral periodisch]] |
+
+    - abschnitt: 'Fest: Ableitung nach der Basis und Wachstum'
+      anker: fest-basis
+    - text: |
+        | Formel | in Worten | Knoten |
+        | --- | --- | --- |
+        | $D(x+1)=c\,T(x+1)\,D(x)+\dfrac{T(x+1)\,T(x)}{a}$, $D=\partial_aT$, $D(0)=0$ | die Basis-Ableitung erfüllt eine lineare Stufengleichung | [[gr.satz.basis_gleichung|Basis-Gleichung]] |
+        | $t_{n+1}'=t_{n+1}\bigl(t_n/a+c\,t_n'\bigr)$, $t_n=a\uparrow\uparrow n$ | bei ganzen Höhen eine einfache Rekursion | [[gr.satz.basis_ganz|Basis ganz]] |
+        | $\partial_ay=S_a(x)\,\partial_xy-S_a(y)$ | Kobis Gleichung für jeden Turm ganzer Höhe | [[gr.satz.turm_pde|Turm-Gleichung]] |
+        | $h'(a)=\dfrac{h^2}{a(1-h\ln a)}$, $h=a^{a^{\cdots}}$ | Ableitung des unendlichen Turms | [[gr.satz.turm_ableitung|Turm-Ableitung]] |
+        | $h(a)=e-\sqrt{2e^3(\eta-a)/\eta}+\dots$ | bei $\eta$ eine Quadratwurzel | [[gr.satz.wurzel_eta|Wurzel bei η]] |
+        | $\chi(f)=\lim\bigl(A(f(x))-A(x)\bigr)$, $\chi(f\circ g)=\chi(f)+\chi(g)$ | slog zählt Exponentiale; ganze Werte sind für jeden slog gleich | [[gr.satz.exponentialitaet|Exponentialität]] |
+        | $f\circ f=\exp$ $\Rightarrow$ $x^n\prec f(x)\prec e^{x^\varepsilon}$ | jede halbe Exponentialfunktion liegt zwischen Polynomen und $e^{x^\varepsilon}$ | [[kn.satz.halbe_exp_wachstum|halbe exp wächst]] |
+
+    - abschnitt: 'Frei: was von der Wahl abhängt'
+      anker: frei
+    - text: |
+        Jede andere Tetration ist $\tilde T=T\circ(\mathrm{id}+p)$ mit einer 1-periodischen Funktion $p$, $p(0)=0$ ([[fg.satz.allgemeine_loesung|allgemeine Lösung]]).
+        Weil $p$ an $x$ und $x+1$ gleich aussieht, fällt es aus allen Formeln oben heraus. Was es verändert, steht hier — mit dem Wert der Kneser-Tetration zur Basis $e$
+        als Beispiel.
+
+        | Grösse | warum frei | Kneser, Basis $e$ |
+        | --- | --- | --- |
+        | $T(x)$ bei nicht ganzem $x$ | jeder Wert zwischen den beiden ganzen Nachbarwerten ist möglich, sogar reell-analytisch — [[fg.kor.nichteindeutigkeit|Nichteindeutigkeit]] | $T_e(\tfrac12)=1.6463542337\ldots$ |
+        | $T'(0)$ | eine einzige freie Zahl; sie legt alle $T'(n)$ fest — [[gr.kor.ganze_stellen|ganze Stellen]] | $1.0917673512\ldots$ (linear: Sprung von $1$ auf $\ln a$) |
+        | Verhältnisse über halbe Schritte, z. B. $T'(\tfrac12)/T'(0)$ | $p$ wirkt an $0$ und $\tfrac12$ verschieden — [[gr.satz.frei_und_fest|frei und fest]] | $1.44276$ (mit $p=0.05\,\sin\ldots$: $0.79178$) |
+        | Lage und Zahl der Wendepunkte | Kneser hat genau einen, reguläre unter $\eta$ keinen — [[gr.beob.wendepunkte|Wendepunkte]] | $x_w=-0.5218$ |
+        | Einzelne Flächen wie $\int_{-1}^0T$ | fest ist nur die Rechteck-Summe (Young) — [[gr.beob.integral_halb|Integral ½]] | $0.4992181828\ldots$ (linear: $\tfrac12$) |
+        | Basis-Ableitung bei gebrochener Höhe | die Stufengleichung legt sie nur bis auf $T'\cdot$(periodisch) fest — [[gr.beob.kneser_pde_wackeln|Kneser wackelt]] | bei Basis 2 wackelt $p$ um $5.7\cdot10^{-4}$ |
+        | die halbe Exponentialfunktion selbst | $T(A(x)+\tfrac12+p(A(x)))$ löst $f\circ f=\exp$ ebenso — [[kn.satz.halbe_exp|halbe exp]] | $f(0)=0.4985632879\ldots$ |
+        | gebrochene Exponentialität | ein anderer slog lässt $A(f)-A(x)$ pendeln — [[gr.satz.exponentialitaet|Exponentialität]] | $\chi=\tfrac12$ nur mit Knesers slog |
+        | Form der Turm-Integral-Kurve | Verteilung der Höhen, bei denen die Rechteckwellen springen — [[gr.satz.turmintegral_periodisch|Turm-Integral periodisch]] | (unter $1$ keine natürliche Wahl) |
+        | Glattheit | stetig, $C^1$ oder analytisch — je nach Bau — [[kn.satz.linear_glatt|linear glatt]] | analytisch (linear: $C^1$ nur bei $e$, nie $C^2$) |
+
+    - abschnitt: 'Was die Wahl wieder festlegt'
+      anker: festlegen
+    - text: |
+        Um aus „frei“ wieder „fest“ zu machen, braucht man eine Zusatzbedingung. Die bekannten, die genau eine Lösung auswählen, sind **komplex** — sie schauen
+        über die reelle Achse hinaus.
+
+        | Bedingung | Basen | wählt aus |
+        | --- | --- | --- |
+        | holomorph auf $\operatorname{Re}z>-2$, $T(x+iy)\to L$ für $y\to+\infty$ und $\to\bar L$ für $y\to-\infty$ | $a>\eta$ | genau die Kneser-Tetration — [[kn.satz.paulsen_cowgill|Paulsen–Cowgill]] |
+        | holomorph und beschränkt auf $\operatorname{Re}z\ge0$ | $1<a\le\eta$ | genau die reguläre Tetration — [[kl.satz.carlson|Carlson]] |
+        | reell-analytisch und streng wachsend | alle $a>1$ | noch unendlich viele — [[fg.kor.nichteindeutigkeit|Nichteindeutigkeit]] |
+        | eine reelle Bedingung wie die Log-Konvexität bei $\Gamma$ | $a>\eta$ | **offen** — [[br.frage.bohr_mollerup|Bohr–Mollerup-Frage]] |
+        | linear auf $(-1,0]$ | alle | die lineare Tetration (nur stetig) — [[kn.konstr.linear|linear]] |

@@ -1,0 +1,9 @@
+## [Strang B] 10.10. 19:53 — Idee 3 trägt: in Kneser-Koordinaten ist p_N EIN Modus, c_N = C·N^{1−2γ̄} (numerisch)
+→ alle: θ_N(w) := A(p_N(T(w))) − w − ½ (A = slog aus gemeinsam/…slog…300, T per Newton, kein Motor) ist im Korridor
+(y = 0 … 0.8) bis auf ~1e-34 gleich c_N e^{2πiw} + c̄_N e^{−2πiw}: Moden 0, ±2 ~ c_N², ±3 ≤ 1e-15·|c_N|. Also ist p_N im
+Inneren eine EXAKTE halbe e-Funktion f_{c_N} (Kneser + ein Störmodus) bis auf O(c_N²). Amplitude (N = 18…194):
+c_N / N^{1−2γ̄} = 0.18 − 0.08i ± 5 % (γ = 2πi/L = 4.447 + 1.058i; Betrag ~N^−7.894 UND Phasendrehung 2·1.058·log N passen).
+Lineares Modell: die J-Projektion Π_N (an f_K) auf Knesers Leitsingularität (1 − z/L)^{1+γ} gibt dieselbe Amplitude bis auf
+einen fast konstanten Faktor (−0.029 − 0.012i). Randfehler |p_N(L) − L| ~ N^−4.85 passt zu Bestapproximation an der
+einspringenden Ecke von D ∪ D(a₀,|L−a₀|) bei L (Innenwinkel 201.07° ⇒ N^{−5.447/1.117} = N^−4.876; vgl. Strang C 19:43).
+Dateien: b_reformulierung/b09_theta_fourier.py, b10_amplitude.py (+json), b11_projektion_moden.py, b11b_vergleich.py.

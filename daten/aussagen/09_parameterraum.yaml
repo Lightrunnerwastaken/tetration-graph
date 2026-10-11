@@ -1,0 +1,752 @@
+gebiet: fp
+# Regionen der Basen-Ebene (Bild 1 des Nutzers), Spiralen, neutrale Drehungen und Mittelwerte.
+# Grundlage: J. Justus, Complex Tetration Dynamics (5. Jan. 2026), nachgerechnet in exp.parameterraum und exp.mittelwerte.
+aussagen:
+
+- id: fp.satz.multiplikator_rezept
+  titel: Basis aus dem gewünschten Multiplikator
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [multiplikator, fixpunkt_L, shell_thron]
+  bereich: '$\lambda\in\mathbb C\setminus\{0\}$, $f_b(z)=\exp(z\,\mathrm{Log}\,b)$'
+  voraussetzungen:
+    - {text: 'Log b fest gewählt (ein Zweig)', benutzt: ja}
+  aussage: |
+    $f_b$ hat genau dann einen Fixpunkt $z^*$ mit Multiplikator $\lambda$, wenn
+    $$\mathrm{Log}\,b=\lambda e^{-\lambda};\qquad\text{dann ist }z^*=e^{\lambda}.$$
+    Für $|\lambda|<1$ durchläuft $b$ das Shell–Thron-Gebiet, für $\lambda=e^{i\theta}$ seinen Rand
+    $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$.
+  einfach: >-
+    Man kann sich aussuchen, wie sich ein Turm am Ende verhält (wie stark er schrumpft und wie weit er sich je Schritt dreht),
+    und daraus die passende Basis ausrechnen.
+  formen:
+    - {tex: 'b=\exp(\lambda e^{-\lambda}),\quad z^*=e^\lambda,\quad f_b''(z^*)=\lambda', notiz: 'Rezeptur (4) der Notiz'}
+    - {tex: 'b=z^{1/z}\ \text{mit}\ z=e^\lambda', notiz: 'reell: Basen $z^{1/z}$, Fixpunkt $z$'}
+  beweis: {art: vollstaendig, text: 'Aus $z^*=e^{z^*u}$ und $\lambda=z^*u$ ($u=\mathrm{Log}\,b$) folgt $z^*=e^\lambda$ und $u=\lambda/z^*=\lambda e^{-\lambda}$; umgekehrt rechnet man beides nach.'}
+  stuetzt_sich_auf: [fp.satz.lambert]
+  experimente: [exp.parameterraum, exp.koenigs_basiswechsel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, zwei Zeilen aus der Fixpunktgleichung.'
+    f2_benutzte_voraussetzungen: 'Nur die Zweigwahl von Log b; keine Aussage über Anziehung.'
+    f3_spezialfall: 'Ja: dieselbe Parametrisierung, mit der Shell und Thron ihr Gebiet beschreiben ($t=\lambda$).'
+    f4_uebertragbar: 'Auf jede Familie $z\mapsto e^{uz}$; für Zyklen der Länge q gibt es keine so einfache Formel.'
+    f5_neue_frage: 'Basen mit vorgegebenem Multiplikator erlauben gezielte Experimente: Spiralen (fp.satz.spirale), neutrale Drehungen (fp.satz.neutral), Basiswechsel (kl.satz.koenigs_basiswechsel).'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Macht den Multiplikator zum Regler; Grundlage aller Experimente dieses Strangs.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_ctd, stelle: 'Abschnitt 3, Gl. (4)'}, {ref: shell1962}]
+  versionen:
+    - {datum: '2026-01-05', fassung: 'Notiz Complex Tetration Dynamics', aenderung: 'Als „construction recipe“ unabhängig hergeleitet.'}
+
+- id: fp.satz.parameter_konform
+  titel: Der Multiplikator als Koordinate der Basen-Ebene
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [multiplikator, shell_thron, lambert_w, turm]
+  bereich: '$b\in\mathbb C\setminus\{0\}$, Hauptzweig $\mathrm{Log}$, Startwert 1'
+  voraussetzungen:
+    - {text: 'Hauptzweig Log b', benutzt: ja}
+    - {text: 'f_b hat genau einen singulären Wert (den asymptotischen Wert 0)', benutzt: ja}
+  aussage: |
+    $t(b):=-W_0(-\mathrm{Log}\,b)$ ist der Multiplikator des Hauptfixpunkts. Die Abbildung $t\mapsto\exp(te^{-t})$ ist auf
+    $|t|<1$ konform und wird durch $t(b)$ umgekehrt. Der Turm $b^{b^{\cdots}}$ hat genau dann einen anziehenden Fixpunkt,
+    wenn $|t(b)|<1$; ein anziehender Fixpunkt eines anderen Zweigs $W_k$ kommt nicht vor.
+  beweis:
+    art: vollstaendig
+    text: |
+      $W_0$ ist auf seinem Bildbereich die Umkehrung von $w\mapsto we^{w}$, und dieser Bildbereich enthält die Einheitskreisscheibe
+      (Rand $-\eta\cot\eta+i\eta$ liegt links von $|w|=1$, Berührung nur bei $-1$). Jeder anziehende Zyklus zieht einen singulären
+      Wert an (Fatou); $f_b$ hat nur den Wert 0, dessen Orbit $0\mapsto1\mapsto b\mapsto\cdots$ genau der Turm ist. Ein anziehender
+      Fixpunkt $L_k$ hätte Multiplikator $-W_k(-\mathrm{Log}\,b)$ mit Betrag $<1$, also $k=0$.
+  stuetzt_sich_auf: [fp.satz.lambert, fp.satz.shell_thron]
+  experimente: [exp.parameterraum]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Lambert-W-Bildbereich + Fatous Satz über singuläre Werte.'
+    f2_benutzte_voraussetzungen: 'Zweigwahl und „ein singulärer Wert“. Die Konformität braucht nur $(1-t)e^{-t}\ne0$ auf $|t|<1$.'
+    f3_spezialfall: 'Analog zur Multiplikator-Koordinate der Hauptkardioide der Mandelbrot-Menge.'
+    f4_uebertragbar: 'Andere Zweige von Log b geben andere Bilder; die Aussage gilt je Zweig.'
+    f5_neue_frage: 'Ausserhalb $|t|\le1$: welche Regionen entstehen? → fp.beob.regionen'
+  gegenbeispielsuche: |
+    exp.parameterraum: 4000 Zufallspunkte $|t|<0.95$ — Umkehrfehler $4\cdot10^{-15}$. Gitter 520×520 in der b-Ebene:
+    alle 97 618 Basen mit $|t|<0.97$ haben Periode 1; keine der 145 606 Basen mit $|t|>1.02$ konvergiert.
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Sagt für jede komplexe Basis in einer Zeile, ob der Turm konvergiert.', nutzen_stufe: mittel}
+  quellen: [{ref: corless1996}, {ref: milnor2006, stelle: '§8 (Fatou: anziehende Zyklen und singuläre Werte)'}, {ref: diese_arbeit}]
+
+- id: fp.beob.regionen
+  titel: Die Regionen der Basen-Ebene
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [turm, shell_thron, multiplikator]
+  bereich: '$b$ im Rechteck $[-1,3]\times[-2.4,2.4]$, Hauptzweig, Startwert 1'
+  aussage: |
+    Färbt man jede Basis nach der Periode, in die der Turm fällt (Bild 1), sieht man:
+    (1) das **Hauptgebiet** (Periode 1) = Shell–Thron-Gebiet, berandet von $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$, reell von
+    $e^{-e}$ bis $\eta$; (2) **Knospen** am Rand bei $\theta=2\pi p/q$ mit Periode $q$; die Knospe $1/2$ enthält die reellen Basen
+    $(0,e^{-e})$ (Periodenverdopplung), die Knospen $1/3$, $2/3$ sind die grössten (Anteil Periode 3: 37 864 Gitterpunkte, Periode 2: nur 240);
+    (3) **Fluchtgebiete** (Turm wächst unbeschränkt), dazu reell $b>\eta$; (4) ein Saum aus unklaren Punkten (lange Perioden,
+    neutrale oder chaotische Bahnen) entlang aller Grenzen.
+  einfach: >-
+    In der Mitte liegt ein Gebiet, in dem der Turm zur Ruhe kommt. Daran hängen wie Knospen kleinere Gebiete, in denen er
+    zwischen 2, 3, 4, … Werten hin- und herspringt. Aussen wächst er davon.
+  experimente: [exp.parameterraum, exp.turmgebiet]
+  pruefung:
+    f1_folgt_unmittelbar: 'Teil (1) ja (fp.satz.parameter_konform), Teil (2) lokal ja (Bifurkation), global nein.'
+    f2_benutzte_voraussetzungen: 'Endliche Iterationszahl (3000), Periodentest bis 12, Toleranz $10^{-8}$.'
+    f3_spezialfall: 'Bild der Exponentialfamilie $\lambda e^z$ im Multiplikatorparameter (Devaney, Baker–Rippon).'
+    f4_uebertragbar: 'Für andere Zweige von Log b entstehen verschobene Kopien.'
+    f5_neue_frage: 'Wie drehen die Zyklen in den Knospen? → fp.verm.knospen_drehzahl. Was passiert genau auf dem Rand? → fp.satz.parabolisch_rand, fp.satz.neutral'
+  bewertung: {richtigkeit: 'numerisch, Teil (1) bewiesen', neuheit: klassisch, nutzen: 'Landkarte für alle komplexen Basen.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_bilder, stelle: 'Bild 1'}, {ref: baker_rippon1985}, {ref: devaney1984}]
+  kanten:
+    - {typ: verallgemeinert, ziel: fp.verm.knospen}
+    - {typ: stuetzt_sich_auf, ziel: fp.satz.parameter_konform}
+
+- id: fp.verm.knospen_drehzahl
+  titel: Zyklen in den Knospen drehen mit p/q
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [turm, shell_thron, multiplikator]
+  bereich: 'Knospe am Randpunkt $t=e^{2\pi ip/q}$, $\mathrm{ggT}(p,q)=1$'
+  aussage: |
+    In der ganzen Knospe $p/q$ umläuft der anziehende $q$-Zyklus den (dort abstossenden) Hauptfixpunkt mit kombinatorischer
+    Drehzahl $p/q$: ordnet man die Zykluspunkte nach dem Winkel um $L$, so springt $f_b$ jedes Mal um $p$ Plätze weiter.
+  einfach: >-
+    In der Knospe mit der Beschriftung 2/5 springt der Turm zwischen 5 Werten, die um den Fixpunkt herum liegen, und
+    überspringt dabei jedes Mal einen Nachbarn: 2 Plätze weiter je Schritt.
+  gegenbeispielsuche: |
+    exp.parameterraum: alle teilerfremden $p/q$, $q\le7$, bei $t=(1+0.5/q^2)e^{2\pi ip/q}$: Drehzahl $p/q$ in 17/17 Fällen.
+  beweis:
+    art: skizze
+    text: 'Lokal an der Knospenwurzel aus der Bifurkation; global offen.'
+    luecken:
+      - 'Nahe der Wurzel der Knospe folgt die Drehzahl aus der Bifurkation ($f\approx L+\lambda(z-L)$ mit $\lambda\approx e^{2\pi ip/q}$); für die ganze Knospe fehlt ein Argument (Mandelbrot-Analogon: Douady–Hubbard über äussere Strahlen).'
+  experimente: [exp.parameterraum]
+  pruefung:
+    f1_folgt_unmittelbar: 'Lokal ja, global nein.'
+    f2_benutzte_voraussetzungen: —
+    f3_spezialfall: 'Analog zu den Satelliten-Knospen der Mandelbrot-Menge, dort bewiesen.'
+    f4_uebertragbar: 'Auf Unterknospen (Drehzahl relativ zum Zyklus).'
+    f5_neue_frage: 'Gibt es eine „q-wertige reguläre Tetration“ in der Knospe, die den Zyklus stetig durchläuft?'
+  bewertung: {richtigkeit: 'numerisch gestützt, lokal bewiesen', neuheit: folklore, nutzen: 'Ordnet Bild 1 kombinatorisch.', nutzen_stufe: gering}
+  quellen: [{ref: douady1994}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: verallgemeinert, ziel: fp.verm.knospen}
+
+- id: fp.satz.spirale
+  titel: Spiralen um den Fixpunkt
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: einstieg
+  objekte: [multiplikator, fixpunkt_L, turm]
+  bereich: 'Basis mit anziehendem Fixpunkt $L$, $0<|\lambda|<1$'
+  voraussetzungen:
+    - {text: '|λ| < 1, Orbit läuft gegen L', benutzt: ja}
+    - {text: 'λ nicht reell', benutzt: nein, notiz: 'nur für die Gestalt „Spirale“; reell: einseitig (λ>0) oder hin und her (λ<0)'}
+  aussage: |
+    $$\frac{z_{n+1}-L}{z_n-L}\longrightarrow\lambda\qquad(n\to\infty).$$
+    Der Abstand schrumpft je Schritt um den Faktor $|\lambda|$, der Winkel dreht um $\arg\lambda$. Genauer: $z_n-L\approx C\lambda^n$
+    mit $C=\sigma(1)$ (Koenigs). Beispiel $b=i$: $L\approx0.438282936727+0.360592471871\,i$, $\lambda\approx-0.566417330285+0.688453227108\,i$,
+    $|\lambda|\approx0.891513566$, $\arg\lambda\approx2.259249554$ (etwa 129.4° je Schritt).
+  einfach: >-
+    Der Turm i, i^i, i^(i^i), … läuft spiralförmig auf einen Punkt zu: jeder Schritt verkleinert den Abstand um etwa 11 % und
+    dreht um etwa 129 Grad. Beide Zahlen stecken in einer einzigen komplexen Zahl λ.
+  formen:
+    - {tex: 'z_n=L+\sigma^{-1}\!\bigl(\lambda^n\sigma(1)\bigr)-L\approx L+\sigma(1)\lambda^n', notiz: 'Koenigs'}
+    - {tex: '\frac1N\sum_{n<N}z_n\to L', notiz: 'Cesàro-Mittel, sofort aus der Konvergenz (Notiz Gl. 2)'}
+  beweis: {art: vollstaendig, text: 'Taylor: $z_{n+1}-L=f(z_n)-f(L)=\lambda(z_n-L)+O(|z_n-L|^2)$. Die Schärfung $z_n-L\sim\sigma(1)\lambda^n$ ist Koenigs.'}
+  stuetzt_sich_auf: [it.satz.koenigs, fp.satz.multiplikator_rezept]
+  experimente: [exp.parameterraum]
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Taylor bzw. Koenigs).
+    f2_benutzte_voraussetzungen: 'Nur $0<|\lambda|<1$ und Konvergenz des Orbits.'
+    f3_spezialfall: 'Ja: lokale Dynamik an jedem hyperbolischen anziehenden Fixpunkt.'
+    f4_uebertragbar: 'Auf die reguläre Tetration $T(x)$ für reelle $x$: auch die Zwischenwerte liegen auf der Spirale (Notiz §6).'
+    f5_neue_frage: 'Zwei Basen mit $\lambda_d=\lambda_b^k$ haben „dieselbe Spirale“ → kl.satz.koenigs_basiswechsel'
+  gegenbeispielsuche: 'exp.parameterraum: $b=i$, Quotient bei $n=170$ weicht $3.4\cdot10^{-8}$ von $\lambda$ ab; Notizwerte auf $2\cdot10^{-10}$ bestätigt.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Anschaulicher Einstieg in komplexe Türme.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_ctd, stelle: 'Abschnitt 2'}, {ref: koenigs1884}]
+
+- id: fp.satz.parabolisch_rand
+  titel: Rationale Randpunkte sind parabolisch, Konvergenz wie n^{−1/q}
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [multiplikator, shell_thron, turm, fatou_koord]
+  bereich: '$b=b(2\pi p/q)$ auf dem Shell–Thron-Rand, $\lambda=e^{2\pi ip/q}$'
+  voraussetzungen:
+    - {text: 'λ primitive q-te Einheitswurzel', benutzt: ja}
+    - {text: 'f_b hat genau einen singulären Wert', benutzt: ja}
+  aussage: |
+    Der Turm konvergiert gegen den Fixpunkt $L=e^\lambda$, aber nur algebraisch: $|z_n-L|\asymp n^{-1/q}$. Der Fixpunkt hat genau
+    $q$ Blütenblätter (Vielfachheit $\nu=1$). Reeller Fall $q=2$: $b=e^{-e}$, $L=1/e$, Fehler $\asymp n^{-1/2}$.
+  beweis:
+    art: vollstaendig
+    text: |
+      Ein Fixpunkt mit primitivem $q$-ten Einheitswurzel-Multiplikator hat $\nu q$ Blätter, die in $\nu$ Zyklen zerfallen; jeder Zyklus
+      zieht einen singulären Wert an (Fatou). Mit nur einem singulären Wert ist $\nu=1$, also $f^{\circ q}(z)=z+a(z-L)^{q+1}+\dots$, $a\ne0$,
+      und im Blatt gilt $(z_{nq}-L)^{-q}\approx-qa\,n$ (Leau–Fatou).
+  stuetzt_sich_auf: [it.satz.leau_fatou, fp.satz.multiplikator_rezept]
+  experimente: [exp.parameterraum]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Leau–Fatou und der Zählung singulärer Werte.'
+    f2_benutzte_voraussetzungen: 'Primitivität und ein singulärer Wert; dass der Orbit von 1 im Blatt landet, ist Teil von Fatous Satz.'
+    f3_spezialfall: 'Ja: parabolische Parameter der Exponentialfamilie; $q=1$ ist $b=\eta$ (kl.satz.parabolisch).'
+    f4_uebertragbar: 'Auf jede Familie mit einem singulären Wert.'
+    f5_neue_frage: 'Die Grösse $a$ als Funktion von $p/q$; Écalle–Voronin-Invarianten an diesen Basen.'
+  gegenbeispielsuche: 'exp.parameterraum: gemessene Exponenten 0.5011 ($q=2$) und 0.3237 ($q=3$) zwischen $n=2\cdot10^4$ und $4\cdot10^5$.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Erklärt die sehr langsame Konvergenz an den Knospenwurzeln (und bei e^{−e}).', nutzen_stufe: mittel}
+  quellen: [{ref: milnor2006, stelle: '§10 (Leau–Fatou)'}, {ref: justus_periode2, stelle: '§4: Konstante √6/e für q = 2'}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: analog_zu, ziel: kl.satz.parabolisch}
+    - {typ: uebertragbar_auf, ziel: gr.verm.turmintegral_rate}
+
+- id: fp.satz.neutral
+  titel: Irrationale Randpunkte — Siegel-Scheibe oder nicht
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [multiplikator, shell_thron]
+  bereich: '$b=b(\theta)$, $\lambda=e^{2\pi i\alpha}$, $\alpha$ irrational'
+  voraussetzungen:
+    - {text: 'α Brjuno-Zahl (Σ log q_{n+1}/q_n < ∞)', benutzt: ja}
+  aussage: |
+    Ist $\alpha$ eine Brjuno-Zahl (z. B. der goldene Schnitt, jede algebraische Irrationalzahl), so ist $f_b$ am Fixpunkt
+    linearisierbar: es gibt eine **Siegel-Scheibe** um $L$, auf der $f_b$ einer Drehung um $2\pi\alpha$ gleicht. Der Orbit von 1
+    liegt ausserhalb und häuft sich an ihrem Rand. Ob die Brjuno-Bedingung für diese Familie auch notwendig ist, ist hier
+    nicht am Original geprüft (Geyer 2001 beweist Notwendigkeit für $\lambda z e^z$; Konjugation zu $\lambda(e^s-1)$ ist eine andere Familie).
+  beweis: {art: literatur, text: 'Siegel (diophantisch), Brjuno/Rüssmann (Brjuno-Bedingung). Rand: Fatou — der Rand einer Siegel-Scheibe liegt im Abschluss des postsingulären Orbits.'}
+  experimente: [exp.mittelwerte]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Siegel–Brjuno, angewandt auf die Rezeptur.'
+    f2_benutzte_voraussetzungen: 'Nur die Arithmetik von α; Notwendigkeit offen gelassen.'
+    f3_spezialfall: 'Ja: allgemeiner Linearisierungssatz.'
+    f4_uebertragbar: 'Für Liouville-artige α (nicht Brjuno) sind Cremer-Punkte möglich: keine Scheibe, keine Linearisierung.'
+    f5_neue_frage: 'Die „scheibenartigen Punktwolken“ der Notiz (Abb. 2–5) sind der Rand der Siegel-Scheibe → fp.satz.siegel_mittel'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Erklärt die Abbildungen 2–5 der Notiz.', nutzen_stufe: mittel}
+  quellen: [{ref: siegel1942}, {ref: brjuno1971}, {ref: yoccoz1995}, {ref: geyer2001}, {ref: justus_ctd, stelle: 'Abschnitt 4'}]
+
+- id: fp.ann.siegel_rand
+  titel: Siegel-Rand ist eine Jordankurve, auf der der Orbit von 1 liegt
+  art: annahme
+  ebene: C
+  status: annahme
+  niveau: forschung
+  objekte: [shell_thron, multiplikator]
+  aussage: |
+    Für $b=b(2\pi\alpha)$ mit Brjuno-Zahl $\alpha$ ist die Siegel-Scheibe $\Delta$ beschränkt, ihr Rand eine Jordankurve, und der
+    Orbit von 1 liegt auf $\partial\Delta$.
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.neutral, notiz: 'Für beschränkten Typ (goldener Schnitt) plausibel; Literaturlage nicht geprüft.'}
+
+- id: fp.satz.siegel_mittel
+  titel: Zeitmittel auf dem Siegel-Rand ist der Fixpunkt
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen: [fp.ann.siegel_rand]
+  niveau: forschung
+  objekte: [multiplikator, shell_thron, turm]
+  bereich: '$b=b(2\pi\alpha)$, $\alpha$ Brjuno'
+  voraussetzungen:
+    - {text: 'fp.ann.siegel_rand', benutzt: ja, ref: fp.ann.siegel_rand}
+  aussage: |
+    $$\frac1N\sum_{n=n_0}^{n_0+N-1}z_n\;\longrightarrow\;L\qquad(N\to\infty).$$
+    Die „Scheibenmittel-Identität“ (5) der Notiz ist damit unter der Annahme ein Satz.
+  beweis:
+    art: bedingt
+    text: |
+      Die Linearisierung $\varphi:\mathbb D\to\Delta$, $\varphi(0)=L$, setzt sich (Carathéodory) zu einem Homöomorphismus des Randes fort
+      und konjugiert $f$ auf $\partial\Delta$ zur Drehung um $2\pi\alpha$. Diese ist eindeutig ergodisch (Weyl), also gilt für jeden Randpunkt
+      $\frac1N\sum z_n\to\int_{\partial\Delta}z\,d\omega_L$ mit dem harmonischen Mass $\omega_L=\varphi_*(d\theta/2\pi)$.
+      Mittelwerteigenschaft der harmonischen Funktion $z$: $\int z\,d\omega_L=L$.
+  experimente: [exp.mittelwerte]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, unter der Annahme: Weyl + Mittelwertsatz.'
+    f2_benutzte_voraussetzungen: 'Beschränktheit und Jordan-Rand (für Carathéodory) und dass der Orbit auf dem Rand liegt; Brjuno nur für die Existenz von Δ.'
+    f3_spezialfall: 'Ja: Mittelwertsatz für harmonische Funktionen, gelesen entlang einer Drehung.'
+    f4_uebertragbar: 'Jede stetige Funktion g: Zeitmittel = harmonische Fortsetzung von g in L.'
+    f5_neue_frage: 'Fehlerrate: gemessen ≈ 1/N bei goldenem α — Denjoy–Koksma würde das für rektifizierbaren Rand erklären.'
+  gegenbeispielsuche: 'exp.mittelwerte (goldener Winkel): Fehler $5.9\cdot10^{-4}$, $1.4\cdot10^{-4}$, $1.5\cdot10^{-5}$, $2.8\cdot10^{-6}$ bei $N=10^3,10^4,10^5,2\cdot10^5$.'
+  bewertung: {richtigkeit: 'bedingt bewiesen', neuheit: neu_ungeprueft, nutzen: 'Macht die empirische Identität (5) der Notiz zu einem bedingten Satz und erklärt sie.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_ctd, stelle: 'Gl. (5)'}, {ref: weyl1916}, {ref: diese_arbeit}]
+
+- id: fp.satz.kreismittel
+  titel: Kreismittel ganzer Turmhöhen ist 1
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [turm, shell_thron, multiplikator]
+  bereich: '$Z_0=1$, $Z_{n+1}(w)=\exp(Z_n(w)\,we^{-w})$, $n\in\mathbb N_0$, jeder Radius $r>0$'
+  voraussetzungen:
+    - {text: 'ganze Höhe n', benutzt: ja}
+    - {text: 'Radius r = 1 (Shell–Thron-Rand)', benutzt: nein, notiz: 'jeder Radius, weil Z_n ganz ist'}
+  aussage: |
+    $$\frac1{2\pi}\int_0^{2\pi}Z_n(re^{i\theta})\,d\theta=1\qquad\text{für alle }n\in\mathbb N_0,\ r>0.$$
+    Für $r=1$ ist $Z_n(e^{i\theta})=T_{b(\theta)}(n)$ der Turm auf dem Shell–Thron-Rand (Satz 1 der Notiz: $\int_0^{2\pi}=2\pi$).
+  einfach: >-
+    Geht man einmal um den Rand des Gebiets herum und mittelt die n-te Turmstufe über alle Basen, kommt genau 1 heraus —
+    für jede Stufe n.
+  beweis: {art: vollstaendig, text: '$Z_n$ ist ganz (Induktion) und $Z_n(0)=1$; Mittelwerteigenschaft holomorpher Funktionen. Die Notiz rechnet dasselbe mit dem Residuensatz für $Z_n(w)/w$.'}
+  experimente: [exp.mittelwerte]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Mittelwerteigenschaft.'
+    f2_benutzte_voraussetzungen: 'Nur Ganzheit von $Z_n$ und $Z_n(0)=1$. Die Notiz setzt $r=1$ voraus; jeder Radius geht.'
+    f3_spezialfall: 'Ja: Gaußscher Mittelwertsatz.'
+    f4_uebertragbar: 'Auf jede ganze Funktion von w, z. B. Ableitungen nach der Höhe bei ganzen n.'
+    f5_neue_frage: 'Alle Fourier-Moden → fp.kor.fourier_taylor; nichtganze Höhen → fp.verm.bruch_mittel'
+  gegenbeispielsuche: 'exp.mittelwerte: $n=1,2,3,5,8$ bei $r=1$ (2048 Punkte) und $r=0.6$: Abweichung unter $10^{-25}$.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, recherche: 'Unmittelbare Folge des Mittelwertsatzes; keine Literaturstelle gesucht.', nutzen: 'Eleganter Einstieg in komplexe Basen.', nutzen_stufe: gering}
+  quellen: [{ref: justus_ctd, stelle: 'Theorem 1'}, {ref: diese_arbeit}]
+  versionen:
+    - {datum: '2026-01-05', fassung: 'Notiz, Theorem 1', aenderung: 'Für r = 1 (Shell–Thron-Rand) formuliert und bewiesen.'}
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Voraussetzung abgeschwächt: jeder Radius r > 0.', grund: 'Beweis benutzt nur Ganzheit.'}
+
+- id: fp.kor.fourier_taylor
+  titel: Fourier-Moden des Randturms sind Taylor-Koeffizienten
+  art: korollar
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [turm, shell_thron, fourier_moden]
+  bereich: 'wie fp.satz.kreismittel'
+  aussage: |
+    $$\frac1{2\pi}\int_0^{2\pi}T_{b(\theta)}(n)\,e^{-ik\theta}d\theta=\frac{Z_n^{(k)}(0)}{k!}\ (k\ge0),\qquad=0\ (k<0).$$
+    Für $|r|<1$: $Z_n(r)=\frac1{2\pi}\int_0^{2\pi}\frac{T_{b(\theta)}(n)}{1-re^{-i\theta}}d\theta$; mit $r=\ln z$ ergibt das
+    $T_{z^{1/z}}(n)$ für $1/e<z<e$ aus den Randwerten.
+  formen:
+    - {tex: 'T_{z^{1/z}}(n)=\frac1{2\pi}\int_0^{2\pi}\frac{T_{b(\theta)}(n)}{1-(\ln z)e^{-i\theta}}\,d\theta', notiz: 'Korollar 2 der Notiz'}
+  beweis: {art: vollstaendig, text: 'Cauchy-Formeln für die ganze Funktion $Z_n$ auf $|w|=1$; negative Moden verschwinden, weil $Z_n(w)w^{|k|-1}$ holomorph ist.'}
+  stuetzt_sich_auf: [fp.satz.kreismittel]
+  experimente: [exp.mittelwerte]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (Cauchy).'
+    f2_benutzte_voraussetzungen: 'Ganzheit von $Z_n$.'
+    f3_spezialfall: 'Ja: Randwerte holomorpher Funktionen liegen im Hardy-Raum $H^2$ (nur nichtnegative Moden).'
+    f4_uebertragbar: 'Für Basen mit $|\ln z|\ge1$ divergiert der Kern — die Grenzfälle $z=e$, $z=1/e$ ($b=\eta$, $b=e^{-e}$) bleiben offen (Notiz).'
+    f5_neue_frage: 'Wachstum der Taylor-Koeffizienten von $Z_n$ in n?'
+  gegenbeispielsuche: 'exp.mittelwerte: Korollar 2 bei $z=2$ ($b=\sqrt2$), $n=2,3$: Abweichung unter $10^{-20}$.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Ganze Höhen auf dem Rand bestimmen alle Basen im Inneren.', nutzen_stufe: gering}
+  quellen: [{ref: justus_ctd, stelle: 'Theorem 2, Korollare 1–2'}]
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Ergänzt: negative Moden verschwinden.'}
+
+- id: fp.verm.bruch_mittel
+  titel: Kreismittel auch für nichtganze Höhen gleich 1?
+  art: vermutung
+  ebene: C
+  status: widerlegt
+  niveau: forschung
+  objekte: [turm, regulaer_T, multiplikator]
+  bereich: 'reguläre (Koenigs-)Tetration $T_{b(w)}(t)$, $|w|=r<1$, $t\notin\mathbb Z$'
+  aussage: |
+    Vermutung der Notiz (Bemerkung nach Korollar 2): $\frac1{2\pi}\int_0^{2\pi}T_{b(re^{i\theta})}(t)\,d\theta=1$ auch für reelle $t$.
+    Die Bedingung der Notiz ist „$w\mapsto T_{b(w)}(t)$ holomorph auf der Kreisscheibe“ — für die reguläre Tetration ist sie verletzt,
+    und die Aussage ist falsch.
+  gegenbeispielsuche: 'exp.mittelwerte: t = 1/2, r = 0.5 und 0.8, je zwei Zweige von $w^{1/2}$ — alle vier Mittel weichen um 0.008 bis 0.16 von 1 ab (fp.gegen.bruch_mittel).'
+  stuetzt_sich_auf: [fp.satz.kreismittel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die bedingte Form (holomorph ⇒ Mittel 1) ja; die unbedingte nein.'
+    f2_benutzte_voraussetzungen: 'Holomorphie in w bis w = 0.'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'fp.frage.holomorphe_familie'
+  bewertung: {richtigkeit: widerlegt, neuheit: unklar, nutzen: 'Zeigt, wo die Analogie ganz → gebrochen bricht.', nutzen_stufe: gering}
+  quellen: [{ref: justus_ctd, stelle: 'Remark nach Korollar 2, §6'}]
+  versionen:
+    - {datum: '2026-01-05', fassung: 'Notiz', aenderung: 'Als natürliche Vermutung formuliert.'}
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Widerlegt durch fp.gegen.bruch_mittel.'}
+
+- id: fp.gegen.bruch_mittel
+  titel: Kreismittel bei Höhe 1/2 ist nicht 1 und hängt vom Zweig ab
+  art: gegenbeispiel
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [regulaer_T, multiplikator, schroeder]
+  bereich: '$T_{b(w)}(1/2)=\sigma_w^{-1}(w^{1/2}\sigma_w(1))$, $|w|=0.5$ und $0.8$, 48 Punkte'
+  aussage: |
+    Mittel bei $r=0.5$: $1.0619+0.0051i$ (Hauptzweig von $w^{1/2}$) bzw. $0.9919-0.0816i$ (Schnitt bei $\theta=0$);
+    bei $r=0.8$: $1.1058+0.0064i$ bzw. $0.9862-0.1603i$. Grund: der Multiplikator ist $\lambda=w$, die reguläre Tetration enthält
+    $w^{t}$ und hat bei $w=0$ einen Verzweigungspunkt — keine holomorphe Funktion auf der Scheibe.
+  beweis: {art: vollstaendig, text: 'Verzweigung: $w^{1/2}$ ist auf keinem Kreis um 0 eindeutig; der Wert hängt vom Schnitt ab (gemessen). Die Zahlen sind numerisch (Koenigs-Reihe N = 30, Fortsetzung in 12 Schritten).'}
+  experimente: [exp.mittelwerte]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald man $\lambda=w$ bemerkt.'
+    f2_benutzte_voraussetzungen: 'Reguläre Tetration als Familie; andere Familien sind nicht ausgeschlossen.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Jede Familie, die am Fixpunkt regulär ist, erbt $w^t$.'
+    f5_neue_frage: 'fp.frage.holomorphe_familie'
+  bewertung: {richtigkeit: 'numerisch, Mechanismus bewiesen', neuheit: neu_ungeprueft, nutzen: 'Widerlegt die naive Fortsetzung von Satz 1.', nutzen_stufe: gering}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: widerlegt, ziel: fp.verm.bruch_mittel}
+
+- id: fp.frage.holomorphe_familie
+  titel: Gibt es eine in der Basis holomorphe Tetrationsfamilie bis zur Basis 1?
+  art: frage
+  ebene: B
+  status: offen
+  niveau: forschung
+  objekte: [T_b, multiplikator, shell_thron]
+  aussage: |
+    Gibt es Tetrationen $T_{b(w)}$, $|w|<1$, sodass $w\mapsto T_{b(w)}(t)$ für jedes feste $t$ holomorph auf der ganzen Scheibe ist
+    (mit $T_{b(0)}\equiv1$)? Dann wäre das Kreismittel für alle $t$ gleich 1. Die reguläre Familie scheidet aus ($w^t$), jede Lösung
+    müsste also bei $w\to0$ nichtregulär sein.
+  naechste_frage: 'Ansatz $T=T^{\mathrm{reg}}\circ(\mathrm{id}+\theta_w)$ mit 1-periodischem $\theta_w$, das die Monodromie $w\mapsto we^{2\pi i}$ kompensiert; prüfen, ob das mit $T(0)=1$ verträglich ist.'
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: fg.satz.allgemeine_loesung}
+
+- id: fp.verm.doppelmittel
+  titel: Doppelmittel über Zeit und Rand gleich 2π
+  art: vermutung
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [turm, shell_thron]
+  aussage: |
+    Notiz Gl. (12): $\lim_{T\to\infty}\frac1T\int_0^T\int_0^{2\pi}T_{b(\theta)}(t)\,d\theta\,dt=2\pi$. Die Begründung der Notiz lief über
+    die Vermutung, dass das innere Integral für alle $t$ gleich $2\pi$ ist — die ist widerlegt (fp.gegen.bruch_mittel). Offen bleibt,
+    ob das Zeitmittel trotzdem stimmt; dazu fehlt schon eine Tetration für neutrale Basen auf dem Rand.
+  gegenbeispielsuche: 'Noch keine möglich: für Randbasen gibt es hier keine Tetration nichtganzer Höhe. Nur der ganzzahlige Teil ist geprüft (trivial wahr).'
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Existenz einer Tetration für alle Randbasen (Siegel, Cremer, parabolisch) — unklar.'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Erst ganze Zeiten: $\frac1N\sum_{n<N}\int Z_n\,d\theta=2\pi$ ist trivial wahr (fp.satz.kreismittel).'
+  bewertung: {richtigkeit: offen, neuheit: unklar, nutzen: unklar, nutzen_stufe: gering}
+  quellen: [{ref: justus_ctd, stelle: 'Gl. (10)–(12)'}]
+  kanten:
+    - {typ: verwandt, ziel: fp.verm.bruch_mittel, notiz: 'Die Notiz begründete Gl. (12) damit; die Begründung fiel mit der Widerlegung weg.'}
+
+- id: fp.satz.gleiches_L
+  titel: Viele Basen, ein Fixpunkt
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [fixpunkt_L, multiplikator, lambert_w]
+  bereich: '$L\in\mathbb C\setminus\{0\}$; Basen als $u=\mathrm{Log}\,b$ (bzw. gewählter Zweig)'
+  voraussetzungen:
+    - {text: 'L ≠ 0', benutzt: ja}
+  aussage: |
+    Genau die Abbildungen $z\mapsto e^{uz}$ mit
+    $$u_k=\frac{\mathrm{Log}\,L+2\pi ik}{L},\qquad k\in\mathbb Z,$$
+    haben $L$ als Fixpunkt; ihre Multiplikatoren $\lambda_k=\mathrm{Log}\,L+2\pi ik$ unterscheiden sich um $2\pi i$.
+    Zwei **reelle** Basen (Hauptzweig) teilen ein $L$ genau dann, wenn $\mathrm{Re}(1/L)=0$ (beide positiv oder beide negativ)
+    oder $\mathrm{Re}(1/L)=\mp\tfrac1{2m}$ (eine positiv, eine negativ). Beispiele:
+    $e^{\pi/2+2\pi k}$ ($\approx0.00898,\ 4.8105,\ 2575.97,\dots$) teilen $L=i$; $-\exp\bigl((\tfrac\pi2+2\pi k)\pi/W(\pi)\bigr)$ teilen
+    $L=i\,W(\pi)/\pi$; $b$ und $-b$ teilen jeden Fixpunkt, der eine gerade ganze Zahl ist ($\sqrt2$ und $-\sqrt2$: $L=2$ und $L=4$).
+  einfach: >-
+    Zu einem Fixpunkt L gibt es nicht nur eine Basis, sondern eine ganze Leiter von Basen — für jede Wahl des Logarithmus von L eine.
+    Zum Beispiel haben 4.81 (= e^(π/2)) und 0.00898 (= e^(−3π/2)) beide den Fixpunkt i, obwohl ihre Türme ganz verschieden laufen.
+  formen:
+    - {tex: 'b_k=\exp\!\bigl(\lambda_k e^{-\lambda_k}\bigr),\ \lambda_k=\mathrm{Log}\,L+2\pi ik', notiz: 'mit der Multiplikator-Rezeptur: alle $e^{\lambda_k}=L$'}
+    - {tex: '(e^{\pi/2})^{i}=i,\quad (e^{-3\pi/2})^{i}=e^{-3\pi i/2}=i', notiz: 'das reelle Paar zu $L=i$'}
+  beweis:
+    art: vollstaendig
+    text: |
+      $e^{uL}=L\iff uL=\mathrm{Log}\,L+2\pi ik$. Zwei Basen teilen $L$ ⇔ $u-u'=2\pi im/L$. Für reelle Basen ist $\mathrm{Im}\,u\in\{0,\pi\}$,
+      also $\mathrm{Im}(2\pi im/L)=2\pi m\,\mathrm{Re}(1/L)\in\{0,\pm\pi\}$. Fall $\mathrm{Re}(1/L)=0$: $L=iy$, $|e^{uL}|=|y|$ gibt $y=\pm1$ (positive
+      Basen) bzw. $ye^{\pi y}=1$, $y=W(\pi)/\pi$ (negative Basen). $(-b)^L=b^Le^{i\pi L}=L$ ⇔ $e^{i\pi L}=1$ ⇔ $L\in2\mathbb Z$.
+  stuetzt_sich_auf: [fp.satz.lambert, fp.satz.multiplikator_rezept]
+  experimente: [exp.gleiches_L]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Fixpunktgleichung und den Zweigen von log.'
+    f2_benutzte_voraussetzungen: 'Nur $L\ne0$ und die Zweigwahl.'
+    f3_spezialfall: 'Ja: Urbilder eines Punktes unter $u\mapsto e^{uL}$.'
+    f4_uebertragbar: 'Auf Zyklen: Basen mit gemeinsamem q-Zyklus erfüllen ein System aus q Gleichungen.'
+    f5_neue_frage: 'Basiswechsel zwischen Basen derselben Leiter → kl.satz.basiswechsel_gleiches_L'
+  gegenbeispielsuche: 'exp.gleiches_L: Familie zu $L_e$ ($k=-3\dots3$), reelle Leitern zu $i$ und $iW(\pi)/\pi$, 8 gemischte Paare — alle Fixpunktgleichungen auf $10^{-25}$ oder besser.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Findet systematisch Basen mit gleichem Fixpunkt — Voraussetzung des linearen Basiswechsels.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_bc_geteilt, stelle: '§1'}, {ref: diese_arbeit}]
+
+- id: fp.beob.gleiches_L_kategorien
+  titel: Partner links und rechts der Shell–Thron-Region
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [turm, fixpunkt_L, shell_thron]
+  bereich: 'reelle Basen mit gemeinsamem Fixpunkt, Hauptzweig, Startwert 1'
+  aussage: |
+    Teilen zwei reelle Basen ein $L$, liegt oft eine rechts (Turm divergiert) und eine links der Shell–Thron-Region (Turm periodisch):
+    $L=i$: $e^{-7\pi/2}$, $e^{-3\pi/2}$ Periode 2; $e^{\pi/2}$, $e^{5\pi/2}$, $e^{9\pi/2}$ Flucht.
+    $L=iW(\pi)/\pi$: $-1.03\cdot10^{-6}$ Periode 2; $-99.11$ und $-9.56\cdot10^{9}$ Periode 3.
+    Gemischt: $29.67$ (Flucht) mit $-0.000814$ (Periode 2) und $-1.08\cdot10^{6}$ (Periode 3); $2.084$ (Flucht) mit $-0.00262$ (Periode 2) und $-1659.6$ (Periode 3);
+    $\sqrt2$ (Periode 1) mit $-\sqrt2$ (Periode 9).
+  einfach: >-
+    Basen mit demselben Fixpunkt können sich völlig verschieden benehmen: der eine Turm wächst ins Unendliche, der andere springt
+    zwischen zwei oder drei Werten — aber beide „drehen“ um denselben Punkt L.
+  experimente: [exp.gleiches_L]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; der gemeinsame Fixpunkt ist meist abstossend und bestimmt das Turmverhalten nicht.'
+    f2_benutzte_voraussetzungen: '6000 Iterationen, Periodentest bis 12, Hauptzweig.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Gleiche Suche für komplexe Basen auf der Karte (Bild 1).'
+    f5_neue_frage: 'Hat der gemeinsame Fixpunkt eine Bedeutung für die Zyklen (z. B. Lage des 2-Zyklus um L)?'
+  bewertung: {richtigkeit: numerisch, neuheit: neu_ungeprueft, nutzen: 'Katalog der Basenpaare, an denen der lineare Basiswechsel gilt.', nutzen_stufe: gering}
+  quellen: [{ref: justus_bc_geteilt, stelle: '§3.2'}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: fp.beob.regionen}
+
+- id: fp.satz.exp_normalform
+  titel: Der Turm ist die singuläre Bahn von e^w + κ
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [turm, multiplikator]
+  bereich: '$c=\mathrm{Log}\,b\ne0$, $\kappa$ mit $e^\kappa=c$'
+  aussage: |
+    $H(z)=cz+\kappa$ konjugiert $z\mapsto e^{cz}$ zu $E_\kappa(w)=e^w+\kappa$, und $H(1)=E_\kappa(\kappa)$. Der Turm $1,b,b^b,\dots$ ist also
+    (nach einem Schritt) die Bahn des einzigen singulären Werts $\kappa$ von $E_\kappa$ — wie die kritische Bahn bei der Mandelbrot-Menge.
+    Darum sieht Bild 1 aus wie ein Mandelbrot-Bild der Exponentialfamilie.
+  beweis: {art: vollstaendig, text: '$H(e^{cz})=ce^{cz}+\kappa=e^{\kappa+cz}+\kappa=E_\kappa(H(z))$; $H(1)=c+\kappa=e^\kappa+\kappa$.'}
+  experimente: [exp.koenigs_kalkuel]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Nur $c\ne0$; jeder Zweig von κ geht.'
+    f3_spezialfall: 'Ja: Standardnormalform der Exponentialfamilie.'
+    f4_uebertragbar: 'Erlaubt die Literatur über $e^w+\kappa$ (hyperbolische Komponenten, Bifurkationsorte; Schleicher, Rempe) direkt zu übernehmen.'
+    f5_neue_frage: 'Übersetzung der Knospen-Adressen von Bild 1 in die Adressen der Exponentialfamilie.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Öffnet die gesamte Literatur zur Exponentialfamilie für Türme.', nutzen_stufe: hoch}
+  quellen: [{ref: justus_synthese_jul, stelle: '§17.3'}, {ref: schleicher2004}, {ref: rempe_schleicher2003}]
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.abstossend}
+    - {typ: verwandt, ziel: fp.beob.regionen}
+
+- id: fp.def.basenklassen
+  titel: Arten von Basen (Atlas)
+  art: definition
+  ebene: C
+  status: definition
+  niveau: vertiefung
+  objekte: [turm, multiplikator, shell_thron, fatou_koord, schroeder]
+  aussage: |
+    Nach dem Verhalten der Bahn von 1 unter $e^{cz}$ ($c=\mathrm{Log}\,b$, Zweig gewählt):
+    **anziehender Fixpunkt** (Koenigs, Lambert-Summen) · **anziehender p-Zyklus**, Multiplikator $\rho=c^p\prod_j\zeta_j$ (Koenigs der Rückkehrabbildung) ·
+    **parabolisch** (Fatou-Koordinate, Konvergenz $n^{-1/m}$, Digamma/Zeta) · **reell fliehend** (Abel-Funktion + reeller Logarithmenkanal, periodische Phase) ·
+    **komplex fliehend** (Adresse der logarithmischen Streifen) · **Siegel** (Drehung) · **präperiodisch** (Misiurewicz) · **Cremer/rekurrent** (keine einfache Normalform).
+    Ein schwarzes Pixel in einem Fluchtbild heisst nur „nicht als fliehend erkannt“, nicht „konvergent“. Die b-Ebene faltet die
+    Zweige $\mathrm{Log}\,b+2\pi im$ übereinander; genau genommen ist $(b,m)$ bzw. $c$ der Parameter.
+  einfach: >-
+    Basen sind nicht alle gleich: manche Türme kommen zur Ruhe, manche springen im Kreis, manche kriechen, manche fliehen,
+    manche drehen sich ewig. Für jede Art gibt es eine passende Brille, und nur mit ihr lassen sich Bruchhöhen und Basiswechsel sinnvoll definieren.
+  formen:
+    - {tex: '\rho=(f^{\circ p})''(\zeta_0)=c^p\prod_{j=0}^{p-1}\zeta_j', notiz: 'Zyklus-Multiplikator, aus $f''=cf$'}
+  quellen: [{ref: justus_synthese_jul, stelle: '§§17–18, 21'}]
+  kanten:
+    - {typ: verwandt, ziel: fp.beob.regionen}
+    - {typ: verwandt, ziel: fp.satz.gleiches_L, notiz: 'Zweige Log b + 2πim'}
+
+# ---------------------------------------------------------------- wiedergefundene Untersuchungen Juli/August 2026
+- id: fp.beob.partner_keil
+  titel: Anziehende Partner gibt es nur im Keil links der Shell–Thron-Region
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [fixpunkt_L, multiplikator, shell_thron]
+  bereich: 'Familie $c_m=(\lambda+2\pi im)e^{-\lambda}$, $|\lambda|<1$, Basis nur, wenn $|\mathrm{Im}\,c_m|\le\pi$ (Hauptzweig)'
+  aussage: |
+    Eine Basis $b$ hat einen **anziehenden** Partner mit gleichem Fixpunkt genau dann, wenn $|\lambda_b-2\pi ik|<1$ für ein ganzes $k\ne0$.
+    Im Hauptzweig kommen dabei nur $m=\pm1$ vor ($m=\pm2$: kein einziger der 12 547 460 Gitterpunkte der Einheitsscheibe landet im Streifen),
+    jeweils 18.371 % der Scheibe. Alle solchen Basen haben $\mathrm{Re}\,b<0$: sie bilden einen Keil links der Shell–Thron-Region mit Spitze bei
+    $e^{-e}$ ($\mathrm{Re}\,b\in[-141.12,-0.006]$, $|\mathrm{Im}\,b|\le22.288$); die Bilder von $m=+1$ und $m=-1$ treffen sich genau auf der
+    negativen reellen Achse ($\mathrm{Im}\,\mathrm{Log}\,b=\pi$). Die klassischen Basen $2,e,3,4$ haben keinen anziehenden Partner.
+    Beispiele (Partner $d$, $\sigma=\mathrm{Log}\lambda_d/\mathrm{Log}\lambda_b$): $-19/25\to1.425186736-0.046203369i$; $-1\to1.417109495-0.024735158i$;
+    $-2\to1.419386100+0.023509055i$; $-1+i\to1.444590692-0.000093874i$ (fast $\eta$, schwach gedämpft).
+  einfach: >-
+    Damit eine Basis einen „ruhigen Zwilling“ mit demselben Fixpunkt hat, muss sie links von der Shell–Thron-Region liegen,
+    im Bereich mit negativem Realteil. Die gewohnten Basen 2, e, 3, 4 haben keinen.
+  formen:
+    - {tex: 'b=-\tfrac{19}{25}:\ L=1.9047135243-0.3776210535i,\ \lambda_b=0.6636079560+6.0874671461i,\ \lambda_d=\lambda_b-2\pi i', notiz: 'Musterpaar'}
+  gegenbeispielsuche: 'Original: Gitter mit 12 547 460 Punkten; exp.funde rechnet das Musterpaar −19/25 unabhängig nach (Abweichung 4·10⁻¹⁴, genau ein Partner, m = +1).'
+  experimente: [exp.funde]
+  pruefung:
+    f1_folgt_unmittelbar: 'Kriterium ja (Multiplikatoren der Familie liegen im Abstand 2πi); Keil und „nur ±1“ numerisch.'
+    f2_benutzte_voraussetzungen: 'Hauptzweig von Log b; anziehend heisst |λ_d| < 1.'
+    f3_spezialfall: 'Spezialfall von fp.satz.gleiches_L mit der Streifenbedingung.'
+    f4_uebertragbar: 'Auf andere Zweige von Log: dann erscheinen weitere Blätter.'
+    f5_neue_frage: 'Beweis, dass m = ±2 nie im Streifen landet (Abschätzung von arg((λ + 4πi)e^{−λ})).'
+  bewertung: {richtigkeit: 'numerisch, Kriterium bewiesen', neuheit: neu_ungeprueft, nutzen: 'Sagt, wo der wellenfreie Basiswechsel überhaupt möglich ist.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_bc_geteilt, stelle: '§§1.1, 3.2'}]
+  kanten:
+    - {typ: spezialfall_von, ziel: fp.satz.gleiches_L}
+    - {typ: verwandt, ziel: fp.beob.negative_achse}
+
+- id: fp.beob.negative_achse
+  titel: Die negative reelle Achse — beschränkt, Ausflug, Flucht als Staub
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [turm, shell_thron]
+  bereich: '$b\in[-3,0]$, Hauptzweig $\mathrm{Log}\,b=\ln|b|+i\pi$, Startwert 1'
+  aussage: |
+    Links der Shell–Thron-Region gibt es drei Verhaltensarten: Turm **beschränkt** (Zyklen, z. B. $b=-2$ Periode 8, $b=-3/4$ Periode 6,
+    $b=-1$: $1\mapsto-1\mapsto-1$), **riesiger Ausflug und Rückfall** (die Bahn wird gross, fällt aber auf fast 0 und beginnt bei 1 neu —
+    nicht divergent), und **echte Flucht** (z. B. $b=-19/25$). Die fliehenden Basen bilden **Staub**: 4196 getrennte Stücke in $[-3,0]$,
+    mittlere Breite $5\cdot10^{-5}$. Für $-0.0805281576<b<0$ liegt ein anziehender 2-Zyklus vor (fp.satz.p2_form).
+  einfach: >-
+    Bei negativen Basen springt der Turm wild hin und her. Meist bleibt er beschränkt oder macht nur einen riesigen Ausflug und fällt
+    zurück; echtes Davonlaufen kommt nur an winzigen, verstreuten Stellen vor.
+  experimente: [exp.parameterraum]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Endliche Iterationszahl; „Ausflug und Rückfall“ von Flucht durch den „entscheidenden Schritt“ getrennt (Re(c z) < 0 nach dem Ausflug).'
+    f3_spezialfall: 'Analogon der Cantor-Bündel fliehender Parameter der Exponentialfamilie.'
+    f4_uebertragbar: —
+    f5_neue_frage: 'Hausdorff-Dimension des Staubs auf der Achse.'
+  bewertung: {richtigkeit: numerisch, neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum komplexe/negative Basen fast nie wirklich fliehen.', nutzen_stufe: gering}
+  quellen: [{ref: justus_bc_geteilt, stelle: 'figure_real_axis_strip, figure_base_plane'}]
+  kanten:
+    - {typ: verwandt, ziel: fp.beob.regionen}
+
+- id: fp.satz.p2_form
+  titel: Die Periode-2-Region in geschlossener Form
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [turm, multiplikator, shell_thron]
+  bereich: '$E_c(z)=e^{cz}$, 2-Zyklus $\{z_1,z_2\}$; Parameter $s\in\mathbb C$, $p=(s/2)^2$'
+  aussage: |
+    $$u=-\frac{s}{e^s-1},\quad v=u\,e^s,\quad z_1=e^v,\ z_2=e^u,\quad c=v\,e^{-u}=u\,e^{-v},\quad b=e^c,\quad \mu=uv=\Bigl(\frac{s}{2\sinh(s/2)}\Bigr)^2=G(p)^2,$$
+    $G(p)=\sqrt p/\sinh\sqrt p$. $p$ durchläuft die Komponente genau einmal, $|\mu|<1$ ist die Zugehörigkeit. Reelles $s>0$ gibt genau die Strecke
+    $(0,e^{-e})$ mit $\mu\in(0,1)$ reell: **auf der reellen Achse gibt es unter $e^{-e}$ keine Periodenverdopplung**, der Turm bleibt bis $b\to0$
+    2-periodisch; die Kaskade liegt ganz im Komplexen (Wurzel der Periode-4-Komponente $b=0.0295202424-0.0645122059i$).
+  einfach: >-
+    Für Basen zwischen 0 und etwa 0.066 springt der Turm zwischen zwei Werten. Welche Basen das sind, lässt sich mit einer einzigen
+    Formel aufschreiben — und auf der reellen Achse wird aus dem Zweierwechsel nie ein Viererwechsel.
+  formen:
+    - {tex: 'z_1\ln z_1=z_2\ln z_2', notiz: 'reelle Form; dieselbe Gleichung wie bei den Turm-Integralen (gr.kor.turmintegral_formen)'}
+    - {tex: 's\to0:\ c\to-e,\ b\to e^{-e},\ \mu\to1', notiz: 'Spitze'}
+  beweis: {art: vollstaendig, text: '$u=cz_1$, $v=cz_2$ erfüllen $u=ce^v$, $v=ce^u$; mit $s=u-v$ folgt $u-v=c(e^v-e^u)$ und daraus die Auflösung. $\mu=(E\circ E)''(z_1)=c^2z_1z_2=uv$. $c(-s)=c(s)$ (Zyklenpunkte vertauscht), also analytisch in $p$. Reell: $s/(2\sinh(s/2))\in(0,1)$ für $s>0$.'}
+  experimente: [exp.funde]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, zwei Zeilen Algebra.'
+    f2_benutzte_voraussetzungen: 'Nur die Zyklusgleichung.'
+    f3_spezialfall: 'Gegenstück zur Rezeptur c = λe^{−λ} für Fixpunkte (fp.satz.multiplikator_rezept).'
+    f4_uebertragbar: 'Für Zyklen der Länge ≥ 3 keine so einfache Auflösung bekannt.'
+    f5_neue_frage: 'Form der Komponente → fp.satz.p2_kein_kreis; Raten → fp.satz.p2_raten'
+  gegenbeispielsuche: 'Original: μ = uv auf 10⁻⁵¹, Rand auf 10⁻¹⁶, 400 reelle Basen μ ∈ (0,1). exp.funde: Zyklusprobe bei s = 1.3 exakt, μ reell in (0,1) bei b = 0.06 … 10⁻⁶.'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Exakte Beschreibung dessen, was unter der Eulerschen Schranke e^{−e} geschieht.', nutzen_stufe: hoch}
+  quellen: [{ref: justus_periode2, stelle: '§§0–1, 7'}]
+  kanten:
+    - {typ: analog_zu, ziel: fp.satz.multiplikator_rezept}
+    - {typ: verwandt, ziel: gr.kor.turmintegral_formen}
+
+- id: fp.satz.p2_kein_kreis
+  titel: Die Periode-2-Blase ist kein Kreis
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [multiplikator, shell_thron]
+  bereich: 'hyperbolische Komponente $W$ (Periode 2) der $c$-Ebene, sichtbarer Teil $V=\exp(W\cap\{|\mathrm{Im}\,c|\le\pi\})$'
+  aussage: |
+    $e^{cz}$ hat keinen kritischen Punkt, also kein Zentrum mit $\mu=0$: $\mu:W\to\mathbb D\setminus\{0\}$ ist eine universelle Überlagerung,
+    $W$ ist unbeschränkt und kann keine Kreisscheibe sein (anders als $|c+1|<\tfrac14$ bei $z^2+c$). Sichtbar ist $V=\{0<|b|<R(\arg b)\}$,
+    sternförmig um 0 (gelocht), $R(0)=e^{-e}$, $R(\pm\pi)=0.0805281576254835628\ldots$ ($b_{\text{links}}$), $R_{\max}/R_{\min}=1.2203448185$,
+    Fläche $0.016396425069$; bester Kreis um $-0.0067418921$ mit Radius $0.0722455899$ weicht bis 2.13 % ab. Bei $b_{\text{links}}$ hat der Rand
+    einen Knick (Innenwinkel $175.0897607°$, Schnitt des Hauptzweigs), der den $1/k^2$-Schwanz der Fourier-Koeffizienten von $R(\theta)$ erzeugt.
+  einfach: >-
+    Die Region, in der der Turm zwischen zwei Werten springt, sieht fast wie ein Kreis aus, ist aber keiner — nach links ist sie gut 20 %
+    breiter. Der Grund: Die Exponentialfunktion hat keinen „Mittelpunkt“, um den sich ein Kreis bilden könnte.
+  beweis: {art: literatur, text: 'Kein singulärer Wert wird angenommen ⇒ μ ≠ 0 auf W. Dass hyperbolische Komponenten der Exponentialfamilie einfach zusammenhängend und unbeschränkt sind und der Multiplikator eine universelle Überlagerung von D \ {0} ist: Baker–Rippon, Eremenko–Lyubich, Schleicher. Zahlen: Original (Randpunkte auf 10⁻¹⁶, Fläche zweifach bestimmt).'}
+  experimente: [exp.funde]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Literatur über hyperbolische Komponenten der Exponentialfamilie.'
+    f2_benutzte_voraussetzungen: 'Fehlen eines kritischen Punkts.'
+    f3_spezialfall: 'Ja: allgemeiner Satz über hyperbolische Komponenten von e^z + κ (fp.satz.exp_normalform).'
+    f4_uebertragbar: 'Gilt für jede hyperbolische Komponente (jede Periode) dieser Familie.'
+    f5_neue_frage: 'Blattstruktur: die Randkurve schneidet jede Höhe Im c = kπ einmal (zweites Blatt bei b = 0.0494).'
+  gegenbeispielsuche: 'exp.funde: b_links unabhängig über |G(p)| = 1, Im c = π bestimmt: −0.08052815762548356282 (alle 20 Stellen).'
+  bewertung: {richtigkeit: 'gesichert (Literatur), Zahlen bestätigt', neuheit: bekannt, nutzen: 'Erklärt die Form der blauen Blase in Bild 1.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_periode2, stelle: '§§2–3'}, {ref: schleicher2004}, {ref: baker_rippon1985}]
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: fp.satz.p2_form}
+
+- id: fp.satz.p2_raten
+  titel: Wie schnell der Zweierwechsel einrastet
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [turm, multiplikator]
+  bereich: 'Periode-2-Region, Startwert 1'
+  aussage: |
+    Pro Exponentiation schrumpft der Fehler um $|\mu|^{1/2}=|G(p)|$ (Koenigs der Rückkehrabbildung): $z_{2n}=z_1+K(1)\mu^n+O(\mu^{2n})$.
+    An der Spitze $b=e^{-e}$ nur algebraisch: $|z_n-1/e|\sim\frac{\sqrt6}{e}\,n^{-1/2}$, $\frac{\sqrt6}e=0.9011169177\ldots$
+    Nahe der Spitze, $b=e^{-e}(1-t)$: $1-\mu=\frac2e\,t+O(t^2)$ und $|z_1-z_2|=2\sqrt6\,e^{-3/2}\sqrt t+O(t)$.
+    Komplexe Basen: der Rest spiralt mit $\arg\mu/2$ pro Exponentiation (z. B. $b=-0.05+0.04i$: eine Umdrehung je 7.41 Schritte).
+  einfach: >-
+    Tief in der Region rastet der Zweierwechsel in wenigen Schritten ein, am Rand immer langsamer, und genau an der Spitze e^(−e) nur noch
+    wie 1 durch Wurzel n — mit dem exakten Vorfaktor √6/e.
+  beweis: {art: vollstaendig, text: '$E(L+h)=L-h+\tfrac e2h^2-\tfrac{e^2}6h^3+\dots$ ⇒ $E^{\circ2}(L+h)=L+h-\tfrac{e^2}6h^3+O(h^4)$ ⇒ $h_{m+1}^{-2}=h_m^{-2}+\tfrac{e^2}3+\dots$, also $|h|\sim\sqrt6/(e\sqrt n)$ ($n=2m$). Spitzenentwicklung aus der geschlossenen Form bei kleinem s.'}
+  stuetzt_sich_auf: [fp.satz.p2_form, fp.satz.parabolisch_rand]
+  experimente: [exp.funde]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Koenigs bzw. der kubischen Normalform.'
+    f2_benutzte_voraussetzungen: 'Nur lokale Taylorentwicklung.'
+    f3_spezialfall: 'Ja: fp.satz.parabolisch_rand mit q = 2, hier mit Konstante.'
+    f4_uebertragbar: 'Gleiche Rechnung an jeder Knospenwurzel.'
+    f5_neue_frage: 'Amplitude |K(1)| (Maximum 0.1240 bei b = 0.043) — geschlossene Form?'
+  gegenbeispielsuche: 'exp.funde: √n|z_n − 1/e| = 0.901664 bei n = 10⁶ (Original 0.901664); (1 − μ)/t = 0.735758883, |z₁ − z₂|/√t = 1.093110076 bei t = 10⁻⁸.'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Exakte Konstanten an der Eulerschen Schranke.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_periode2, stelle: '§§4–5'}]
+  kanten:
+    - {typ: verwandt, ziel: gr.verm.turmintegral_rate, notiz: 'dieselbe n^{−1/2}-Spitze erzeugt dort den Exponenten 3/2'}
+
+- id: fp.satz.rechteckwelle
+  titel: Unter e^{−e} wird die Phase zur Rechteckwelle
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [T_b, turm, periodische_stoerung]
+  bereich: '$0<b<e^{-e}$, $T$ eine stetige reelle Tetration, die $L$ auf $[0,1)$ genau einmal kreuzt (z. B. monoton auf $[0,1]$)'
+  voraussetzungen:
+    - {text: 'T stetig, reell, T(0) = 1, T(x+1) = b^{T(x)}', benutzt: ja}
+    - {text: 'T kreuzt den Fixpunkt L auf [0,1) genau einmal', benutzt: ja}
+    - {text: 'T analytisch oder regulär', benutzt: nein}
+  aussage: |
+    Es gibt genau ein $x^*\in(0,1)$ mit $T(x^*)=L$, und dann $T(x^*+n)=L$ für alle $n$ (die Tetration **kreuzt die Julia-Menge**).
+    $\Omega(x)=\lim_nT(x+2n)$ ist eine 2-periodische **Rechteckwelle**: $z_A$ auf $(x^*-1,x^*)$, $z_B$ auf $(x^*,x^*+1)$ (mod 2), $\Omega(x^*)=L$.
+    Eine stetige 2-periodische Grenzfunktion gibt es nicht. Fourier: $c_0=\tfrac{z_A+z_B}2$, $c_k=\frac{i(z_A-z_B)e^{-i\pi kx^*}}{\pi k}$ für ungerades $k$,
+    0 für gerades. Die Form ist **universell**; nur $x^*$ hängt von der gewählten Tetration ab. Zwei Raten: neben dem Sprung $|\mu|^{n/2}$,
+    Breite des Übergangs $|\lambda|^{-n}$ ($\lambda=cL<-1$).
+  einfach: >-
+    Unter e^(−e) springt der Turm zwischen zwei Werten. Zeichnet man die stetige Tetration bei geraden Höhen immer weiter oben,
+    wird ihre Kurve zu einem Rechteck: genau an einer Stelle muss sie den abstossenden Fixpunkt treffen und bleibt dort hängen.
+  formen:
+    - {tex: 'b=0.03:\ L=0.3226191538,\ z_A=0.8213273730,\ z_B=0.0561329673,\ |c_k|\pi k=|z_A-z_B|=0.7651944057', notiz: 'Beispiel'}
+  beweis: {art: vollstaendig, text: '$E$ ist auf ℝ fallend, $E\circ E$ wachsend mit Fixpunkten $z_B<L<z_A$; $(L,\infty)$ ist Becken von $z_A$, $(0,L)$ von $z_B$, einzige Trennstelle $L$. $T(0)=1>L>b=T(1)$ ⇒ Zwischenwertsatz. Ein stetiges 2-periodisches Ω hätte ein zusammenhängendes E-invariantes Bild in zwei getrennten Becken — unmöglich. Fourier-Reihe der Rechteckwelle.'}
+  stuetzt_sich_auf: [fp.satz.p2_form]
+  experimente: [exp.funde]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Zwischenwertsatz + Beckenstruktur.'
+    f2_benutzte_voraussetzungen: 'Stetigkeit und Realität; Analytizität nicht — darum universell.'
+    f3_spezialfall: 'Gegenstück zur glatten 1-periodischen Funktion im Shell–Thron-Regime: sie degeneriert zum Sprung, wenn |λ| durch 1 geht.'
+    f4_uebertragbar: 'Komplexe Basen in der Region: dort echte Phase im Multiplikator-Bild (arg μ), nicht in x.'
+    f5_neue_frage: 'Gibt es eine ausgezeichnete reelle Tetration (ausgezeichnetes x*) für 0 < b < e^{−e}?'
+  gegenbeispielsuche: 'Original: drei bzw. vier Startinterpolationen, |c_k|πk konstant auf 8 Stellen bis k = 41. exp.funde (lineare Startinterpolation, x* = 0.698330769): |c_k|πk = 0.7651944 … 0.7651888 für k = 1 … 41; T(x* + n) = L für n ≤ 12.'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Zeigt, was aus der Basiswechsel-Welle wird, wenn der Fixpunkt abstossend reell ist.', nutzen_stufe: hoch}
+  quellen: [{ref: justus_periode2, stelle: '§6'}]
+  kanten:
+    - {typ: verwandt, ziel: kl.satz.basis_unter_eins}
+    - {typ: verwandt, ziel: gr.satz.turmintegral_grenzen, notiz: 'gleiche Zwei-Becken-Struktur, dort über die Basis x'}

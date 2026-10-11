@@ -1,0 +1,218 @@
+[   12.6s] 601 Wegpunkte am Anfang, Kettenlänge n = 7
+[   21.6s]    Verfeinerung 0: 601 Punkte, max Sprung 3.08, zu verfeinern: 3
+Traceback (most recent call last):
+  File "D:\Users\janis\Documents\Matura\tetration-graph\experimente\prototypen_hexation\start_verfolgt.py", line 62, in <module>
+    ys, H, smax = verfolge(ys0, kette, log=log)
+                  ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users/janis/Documents/Matura/tetration-graph/experimente/prototypen_hexation\blatt.py", line 73, in verfolge
+    werte, sprung = auswerten(param)
+                    ~~~~~~~~~^^^^^^^
+  File "D:\Users\janis\Documents\Matura\tetration-graph\experimente\prototypen_hexation\start_verfolgt.py", line 53, in kette
+    w, s = BP.P_pfad(w)
+           ~~~~~~~~~^^^
+  File "D:\Users/janis/Documents/Matura/tetration-graph/experimente/prototypen_hexation\blatt.py", line 64, in P_pfad
+    ys, s = self.T_pfad(ys)
+            ~~~~~~~~~~~^^^^
+  File "D:\Users/janis/Documents/Matura/tetration-graph/experimente/prototypen_hexation\blatt.py", line 36, in T_pfad
+    v = self.T_haupt([u + k for u in us])
+  File "D:\Users/janis/Documents/Matura/tetration-graph/experimente/prototypen_hexation\blatt.py", line 30, in T_haupt
+    return kneser("sexp", basis_text(self.b), us)
+  File "D:\Users/janis/Documents/Matura/tetration-graph/experimente\gemeinsam.py", line 171, in kneser
+    werte = (sitzung.sexp_batch if art == "sexp" else sitzung.slog_batch)([punkte[i] for i in fehlend])
+  File "D:\Users\janis\Documents\Tetration\gp-tetration\src\fatou_backend\gp_backend.py", line 235, in sexp_batch
+    return self.gp.sexp_batch(self.base, list(xs))
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\janis\Documents\Tetration\gp-tetration\src\fatou_backend\gp_backend.py", line 498, in sexp_batch
+    return self._run_initialized(base, expressions)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\janis\Documents\Tetration\gp-tetration\src\fatou_backend\gp_backend.py", line 439, in _run_initialized
+    return worker.eval(expressions)
+           ~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\Users\janis\Documents\Tetration\gp-tetration\src\fatou_backend\worker.py", line 176, in eval
+    output = self.eval_raw(lines, sentinel, self.eval_timeout)
+  File "D:\Users\janis\Documents\Tetration\gp-tetration\src\fatou_backend\worker.py", line 165, in eval_raw
+    return self._read_until(sentinel, timeout)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\janis\Documents\Tetration\gp-tetration\src\fatou_backend\worker.py", line 157, in _read_until
+    raise RuntimeError("PARI/GP error:\n" + "\n".join(errors))
+RuntimeError: PARI/GP error:
+  ***   at top-level: vv=(sexp(((7.9999997527759705821082952932285)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in t_REAL->double conversion.
+  ***   at top-level: vv=(sexp(((8.0009667421040657370954203035544)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in t_REAL->double conversion.
+  ***   at top-level: vv=(sexp(((8.0007732179214346320625772418222)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in t_REAL->double conversion.
+  ***   at top-level: vv=(sexp(((8.0002319360958706764416701118644)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in t_REAL->double conversion.
+  ***   at top-level: vv=(sexp(((7.9787059427831737011573525064623)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9752849796626860948322687758254)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9716036711064074925203335983768)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9676568027077159407006244573748)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9634386923151860830169955867365)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9589431640075882013999261952473)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9541635189054114643956952023802)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9490925025921992525966095737888)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9437222688743842046193673676892)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9380443395565474573215605300451)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.932049559851229506846827133942)+(
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9257280489783878011782839054816)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in expo().
+  ***   at top-level: vv=(sexp(((7.9190691454383070213479804473506)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: ...zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k;);ret
+  ***                                               ^---------------------
+  *** _-_: the PARI stack overflows !
+  ***   at top-level: vv=(sexp(((7.9120613463616607012191048040255)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in t_REAL->double conversion.
+  ***   at top-level: vv=(sexp(((7.8969484323120813712047864077107)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in t_REAL->double conversion.
+  ***   at top-level: vv=(sexp(((7.8888154614948126884756892630026)+
+  ***                     ^------------------------------------------
+  ***   in function sexp: ...ta,return(regsexp(z)));y=invabel(z-rslog);y=(y
+  ***                                                 ^---------------------
+  ***   in function invabel: ..."));if(t>0,for(n=1,t,est=fs(est));,if((x2mode=
+  ***                                                    ^---------------------
+  ***   in function fs: local(zn);if(x2mode==0,z=exp(z)-1+k;,z=z^2+z+k
+  ***                                            ^---------------------
+  *** exp: overflow in t_REAL->double conversion.

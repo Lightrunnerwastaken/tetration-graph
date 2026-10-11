@@ -1,0 +1,302 @@
+# Theorie-Blöcke für das Gebiet Brücken (br), Etappe 4: Kapitel 10.
+
+br.def.hyperoperation:
+  worum: |
+    Tetration ist die vierte Stufe einer Leiter: Addition wiederholt gibt Multiplikation, Multiplikation wiederholt gibt Potenz, Potenz wiederholt gibt Tetration —
+    und so weiter. Für die Stufen gibt es eine eigene Schreibweise mit Pfeilen.
+  genau: |
+    $a\uparrow b=a^b$, $a\uparrow\uparrow n=a^{a^{\cdot^{\cdot^{a}}}}$ ($n$ Stufen, rechts geklammert), und allgemein iteriert $a\uparrow^{k+1}n$ die Operation $\uparrow^k$:
+    $a\uparrow^{k+1}(n+1)=a\uparrow^k(a\uparrow^{k+1}n)$. Der Name „Tetration“ stammt von Goodstein (1947), die Pfeile von Knuth (1976).
+  warum: |
+    Eine Definition. Rechts geklammert, weil $(a^a)^a=a^{a\cdot a}$ nur eine Potenz wäre und nichts Neues brächte.
+  beispiel: |
+    $3\uparrow\uparrow3=3^{27}=7\,625\,597\,484\,987$. $2\uparrow\uparrow5=2^{65536}$ hat $19\,729$ Stellen. Fünfte Stufe (Pentation): $2\uparrow\uparrow\uparrow3=2\uparrow\uparrow(2\uparrow\uparrow2)=2\uparrow\uparrow4=65\,536$.
+  bilder: [k0_rechenarten]
+  einordnung: |
+    Der Einstieg im Lehrbuch: Kapitel 0 und [[gr.def.turm]]. Wie schnell die Stufen wachsen, misst die Logik ([[br.satz.kalmar]]).
+
+br.satz.vdd_miller:
+  worum: |
+    Die „zahme Geometrie“ erlaubt Logarithmen, Exponentialfunktionen und analytische Funktionen auf kompakten Stücken — aber alles, was man daraus bauen kann, wächst
+    höchstens wie ein Turm fester Höhe. Tetration wächst schneller.
+  genau: |
+    Jede in $\mathbb R_{\mathrm{an},\exp}$ definierbare Funktion $f:\mathbb R\to\mathbb R$ ist schliesslich durch ein iteriertes Exponential $\exp^{\circ n}$ beschränkt (van den Dries–Miller 1994).
+  warum: |
+    Literatursatz. Grundlage ist ein Vorbereitungssatz: Definierbare Funktionen zerfallen in endlich viele Stücke, auf denen sie aus $\exp$, $\log$ und beschränkten analytischen Funktionen
+    in endlich vielen Schritten aufgebaut sind. Jeder Schritt erhöht den Turm um höchstens eine Stufe.
+  beispiel: |
+    $x^x=e^{x\ln x}$, $e^{e^x}$, $\log\log x$ oder $x^{x^x}$ — alle bleiben unter einem Turm fester Höhe.
+  einordnung: |
+    Folge für Tetration: [[br.satz.nicht_definierbar]]. Dieselbe Turmschranke in der Berechenbarkeit: [[br.satz.kalmar]].
+
+br.satz.nicht_definierbar:
+  worum: |
+    Jede reelle Tetration — egal ob glatt oder nicht — überholt irgendwann jeden Turm fester Höhe. Darum passt sie in keine der klassischen „zahmen“ Strukturen.
+  genau: |
+    Ist $E$ stetig auf $[x_0,\infty)$ mit $E(x+1)=e^{E(x)}$, dann übertrifft $E$ schliesslich jedes $\exp^{\circ n}$. Daher ist $E$ in keiner exponentiell beschränkten o-minimalen Struktur definierbar,
+    insbesondere nicht in $\mathbb R_{\mathrm{an},\exp}$.
+  warum: |
+    1. Sei $c=\min_{[x_0,x_0+1]}E$. Nach einem Schritt sind alle Werte $\ge e^c>0$.
+    2. Für grosses $y$ und $k=\lfloor y-x_0\rfloor-1$ ist $E(y)=\exp^{\circ k}(E(y-k))\ge\exp^{\circ k}(e^c)$.
+    3. Schreibe $k=n+j$: $\exp^{\circ n}(\exp^{\circ j}(e^c))\ge\exp^{\circ n}(y)$, sobald $\exp^{\circ j}(e^c)\ge y$ — und das gilt bald, weil $j$ mit $y$ wächst und $\exp^{\circ j}$ turmartig.
+    4. Mit [[br.satz.vdd_miller]] ist $E$ nicht definierbar.
+  beispiel: |
+    Selbst die lineare Tetration mit ihren Knicken überholt $\exp^{\circ5}$: Monotonie oder Glattheit werden nicht gebraucht.
+  einordnung: |
+    Gibt es überhaupt eine zahme Struktur, die Tetration enthält? [[br.frage.transexp]]. Gleiche Lage in der Berechenbarkeit: [[br.satz.kalmar]].
+
+br.satz.boshernitzan:
+  worum: |
+    Hardy-Felder sind Sammlungen „gutartiger“ Funktionen, die für grosse $x$ nicht unendlich oft schwanken. Es gibt solche Sammlungen, die Funktionen enthalten, die schneller als jeder
+    Exponentialturm wachsen — also Tetrations-artige Funktionen.
+  genau: |
+    Es gibt Hardy-Felder mit Funktionen, die schneller wachsen als jedes iterierte Exponential, etwa Lösungen von $f(x+1)=e^{f(x)}$ (Boshernitzan 1986).
+  warum: |
+    Literatursatz; welche Lösung genau gemeint ist, ist am Original zu prüfen. Ein Hardy-Feld ist ein Körper von Funktionskeimen bei $+\infty$, der unter Ableiten abgeschlossen ist;
+    in ihm hat jede Funktion schliesslich ein festes Vorzeichen.
+  einordnung: |
+    Liegt auch Knesers Lösung in einem Hardy-Feld? [[br.frage.kneser_hardy]].
+
+br.frage.kneser_hardy:
+  worum: |
+    Ist Knesers Tetration so „gutartig“, dass keine Kombination aus ihr und ihren Ableitungen für grosse $x$ unendlich oft das Vorzeichen wechselt?
+  genau: |
+    Ist jedes Element von $\mathbb R(x,T,T',T'',\dots)$ schliesslich von festem Vorzeichen, d. h. liegt der Keim der Kneser-Tetration in einem Hardy-Feld?
+  warum: |
+    Offen — jedenfalls nicht geklärt. Eine Sekundärquelle schreibt Boshernitzan zu, dies u. a. für Knesers Lösung gezeigt zu haben; das ist nicht am Original geprüft.
+  einordnung: |
+    Nächster Schritt: Boshernitzan 1986 lesen; sonst numerisch Vorzeichenwechsel von Ausdrücken wie $T''T-cT'^2$ für grosse $x$ suchen (über die slog-Reduktion). Hintergrund: [[br.satz.boshernitzan]], [[br.frage.transexp]].
+
+br.frage.transexp:
+  worum: |
+    Gibt es eine „zahme“ mathematische Welt, in der Tetration lebt? Das ist ein offenes Problem der Logik — und Knesers Lösung ist ein natürlicher Kandidat.
+  genau: |
+    Gibt es eine o-minimale Struktur, die schneller als jedes iterierte Exponential wachsende Funktionen definiert? Vorschlag Marker–Miller: $\mathbb R_{\mathrm{an},\exp}$ um eine reell-analytische Lösung von $f(x+1)=e^{f(x)}$
+    erweitern. Padgett: Die Terme der Erweiterung bilden ein Hardy-Feld; o-Minimalität ist offen.
+  warum: |
+    Offen. Was fehlt, ist eine Quantorenelimination bzw. die Endlichkeitsaussagen, die man für o-Minimalität braucht. Vielleicht liefern Knesers komplexe Eigenschaften (holomorph auf $\mathbb C\setminus(-\infty,-2]$,
+    Grenzwerte $L,\bar L$) genau solche Endlichkeitsaussagen — dann würde Tetrationstheorie zu neuer Logik beitragen.
+  einordnung: |
+    Warum die bekannten Strukturen nicht reichen: [[br.satz.nicht_definierbar]]. Verwandt: [[br.frage.kneser_hardy]], [[kn.satz.kneser_eigenschaften]].
+
+br.satz.kalmar:
+  worum: |
+    Auch in der Berechenbarkeit ist Tetration die erste Funktion, die eine natürliche Grenze sprengt: Sie ist berechenbar mit einfachen Schleifen, aber nicht „elementar“.
+  genau: |
+    $n\mapsto2\uparrow\uparrow n$ ist primitiv rekursiv (Grzegorczyk-Stufe $\mathcal E^4$), aber nicht Kalmár-elementar ($\mathcal E^3$).
+  warum: |
+    Jede elementare Funktion ist durch einen Turm $2^{2^{\cdot^{\cdot^{x}}}}$ fester Höhe beschränkt; $2\uparrow\uparrow n$ übertrifft jede feste Höhe. Primitiv rekursiv ist sie, weil sie mit verschachtelten Schleifen fester
+    Tiefe berechenbar ist.
+  beispiel: |
+    Zwei Welten, dieselbe Schranke: „elementar“ in der Berechenbarkeit und „in $\mathbb R_{\mathrm{an},\exp}$ definierbar“ in der Geometrie sind beide durch Türme fester Höhe begrenzt — und in beiden ist
+    Tetration der erste Ausbrecher.
+  einordnung: |
+    Gegenstück: [[br.satz.nicht_definierbar]]. Die Pfeil-Leiter: [[br.def.hyperoperation]].
+
+br.satz.young_kreis:
+  worum: |
+    Eine Flächenformel für Kreisabbildungen: Die Fläche zwischen dem Graphen einer solchen Abbildung und der Diagonalen ist genau das Negative der entsprechenden Fläche für die
+    Umkehrabbildung. Das ist der eigentliche Grund für die Antisymmetrie im Basiswechsel.
+  genau: |
+    Ist $\tilde H:\mathbb R\to\mathbb R$ ein streng wachsender Homöomorphismus mit $\tilde H(x+1)=\tilde H(x)+1$, dann
+    $$\int_0^1(\tilde H(x)-x)\,dx=-\int_0^1(\tilde H^{-1}(y)-y)\,dy.$$
+  warum: |
+    1. Youngsche Gleichung: $\int_0^1\tilde H+\int_{\tilde H(0)}^{\tilde H(1)}\tilde H^{-1}=\tilde H(1)$ — zwei Flächen ergänzen sich zu einem Rechteck (wie in [[gr.satz.young]]).
+    2. $\tilde H^{-1}-\mathrm{id}$ ist 1-periodisch, also $\int_{\tilde H(0)}^{\tilde H(0)+1}\tilde H^{-1}=\int_0^1(\tilde H^{-1}-\mathrm{id})+\tilde H(0)+\tfrac12$.
+    3. Einsetzen und $\tilde H(1)=\tilde H(0)+1$ benutzen. Differenzierbarkeit wird nirgends gebraucht.
+  beispiel: |
+    $\tilde H(x)=x+0.3$: links $0.3$, rechts $-(-0.3)$. Basiswechsel: $\mu_{e,2}=-1.128403776628924$ und das Mittel der Umkehrung $+1.128403776629334$; für 200 zufällige Lifts hält die Formel auf $6\cdot10^{-10}$.
+  bilder: [exp.young]
+  einordnung: |
+    Macht [[bw.satz.antisymmetrie]] zu einem Spezialfall: Die Tetration liefert nur, dass $\tilde H_{d,b}$ die Umkehrung von $\tilde H_{b,d}$ ist.
+
+br.gescheitert.rotationszahl:
+  worum: |
+    Kreisabbildungen haben eine berühmte Kennzahl, die Rotationszahl. Warum nicht auch für die Phasenabbildungen des Basiswechsels? Weil das ein Typfehler wäre: Die
+    Abbildung geht von einem Kreis auf einen **anderen** Kreis.
+  genau: |
+    **Verworfen.** Idee war, die Rotationszahl $\rho(\tilde H_{b,d})$ oder Kommutatoren wie $[\tilde H_{e,2},\tilde H_{e,3}]$ als neue Invarianten zu nehmen. Aber $\tilde H_{b,d}$ bildet den Phasenkreis der Basis $d$ auf den
+    der Basis $b$ ab. Iterieren (für $b\ne d$) und $\tilde H_{e,2}\circ\tilde H_{e,3}$ haben keine Tetrationsbedeutung.
+  warum: |
+    Eine Abbildung $A\to B$ kann man nur iterieren, wenn $A=B$. Rotationszahl und Kommutator verlangen das; berechnen kann man die Zahlen trotzdem — sie bedeuten nur nichts.
+    Invariant sind nur Grössen, die zur Wechselregel (Gruppoid) passen, etwa die Mittel $\mu$.
+  einordnung: |
+    Regel: vor jeder „neuen Invariante“ prüfen, ob sie mit der Gruppoidstruktur verträglich ist ([[bw.prop.gruppoid]]).
+
+br.satz.privalov:
+  worum: |
+    Zu jeder genügend glatten periodischen Funktion $u$ gibt es eine „Partnerin“ $\tilde u$, so dass $\tilde u-iu$ der Randwert einer holomorphen Funktion ist. Das ist das
+    Werkzeug, mit dem man den Basiskern ohne Rechenmotor konstruiert.
+  genau: |
+    Ist $u\in C(\mathbb T)$ mit Dini-Stetigkeitsmodul, so ist die konjugierte Funktion $\tilde u$ stetig, und $\tilde u-iu$ ist Randwert einer in der Halbebene (Kreisscheibe) holomorphen, stetig fortsetzbaren Funktion.
+  warum: |
+    Literatursatz (Zygmund, Garnett). Die konjugierte Funktion ist die Hilbert-Transformation: in Fourier-Sprache wird $e^{2\pi ik\theta}$ mit $-i\,\mathrm{sign}(k)$ multipliziert. Die Dini-Bedingung sorgt dafür, dass das
+    singuläre Integral stetig bleibt.
+  beispiel: |
+    $u(\theta)=\cos2\pi\theta$ hat die Partnerin $\tilde u=\sin2\pi\theta$; $\tilde u-iu=-ie^{2\pi i\theta}$ ist der Randwert von $-ie^{2\pi iz}$, holomorph und abklingend in der oberen Halbebene.
+  einordnung: |
+    Schlüssel für [[bw.satz.kern_existenz]].
+
+br.satz.gevrey_fourier:
+  worum: |
+    Wie glatt eine periodische Funktion ist, liest man an ihren Fourier-Anteilen ab: Fallen sie exponentiell, ist sie analytisch in einem Streifen; fallen sie nur wie $e^{-c\sqrt k}$, ist sie
+    „fast analytisch“ (Gevrey).
+  genau: |
+    Eine 1-periodische Funktion $f$ ist holomorph in $|\operatorname{Im}\theta|<\sigma$ genau dann, wenn $|\hat f(k)|\le C_\varepsilon e^{-2\pi(\sigma-\varepsilon)|k|}$ für alle $\varepsilon>0$. $f$ ist Gevrey-$s$ genau dann, wenn
+    $|\hat f(k)|\le Ce^{-c|k|^{1/s}}$. Ein Abfall $\ln A_k\sim-2\pi\sigma^*k-a\sqrt k$ ist mit $\sigma^*>0$ analytisch, mit $\sigma^*=0$ Gevrey-2.
+  warum: |
+    Standard (Paley–Wiener-Typ): Die Fourier-Reihe $\sum\hat f(k)e^{2\pi ik\theta}$ konvergiert bei $\theta=x+iy$ genau dann, wenn $|\hat f(k)|e^{2\pi|k||y|}$ summierbar ist. Umgekehrt verschiebt man im Integral für $\hat f(k)$ die
+    Kontur um $\pm i\sigma$.
+  beispiel: |
+    $\sum_ke^{-2\pi\sigma|k|}e^{2\pi ik\theta}$ ist holomorph genau im Streifen $|\operatorname{Im}\theta|<\sigma$. Mit $\hat f(k)=e^{-\sqrt{|k|}}$ ist $f$ glatt, aber in keinem Streifen analytisch.
+  einordnung: |
+    Übersetzt die offene Frage [[bw.frage.streifen_gevrey]] in eine reine Frage über Moden. Anwendung auf die Nähte: [[bw.satz.fourier_naht]].
+
+br.satz.sattel_knoten:
+  worum: |
+    Ein Engpass: Eine Abbildung, die fast einen Fixpunkt hat — nur ein winziges $\varepsilon$ fehlt —, hält die Bahn lange auf. Die Wartezeit wächst wie $1/\sqrt\varepsilon$. Genau das passiert dem
+    Turm für Basen knapp über $\eta$ in der Nähe von $e$.
+  genau: |
+    Für $w\mapsto w+\varepsilon+aw^2+O(w^3,\varepsilon w)$ mit kleinen $a,\varepsilon>0$ ist die Zahl der Schritte durch den Engpass $N(\varepsilon)=\pi/\sqrt{a\varepsilon}+O(1)$.
+  warum: |
+    Kontinuumsgrenze: Jeder Schritt bewegt um $\varepsilon+aw^2$, also $dw/dn\approx\varepsilon+aw^2$ und $N\approx\int_{-\infty}^\infty\frac{dw}{\varepsilon+aw^2}=\frac{\pi}{\sqrt{a\varepsilon}}$. Den $O(1)$-Fehler kontrolliert man mit Fatou-Koordinaten
+    (parabolische Implosion, Douady); in der Physik heisst das Pomeau–Manneville-Intermittenz.
+  beispiel: |
+    Turm zur Basis $\eta+\delta$ am Punkt $e$: $a=1/(2e)$, $\varepsilon=e^2\delta/\eta$, also $N\approx\pi\sqrt{2\eta/e}\,\delta^{-1/2}$. Bei $\delta=10^{-6}$: $3231$ Schritte, Leitterm $3239$.
+  bilder: [exp.randgesetz]
+  einordnung: |
+    Erklärt das Randgesetz [[bw.lem.randgesetz]]. Rigoros mit Konstante: [[br.frage.implosion]]. Bei $\delta=0$ wird der Engpass parabolisch ([[kl.satz.parabolisch]]).
+
+br.frage.implosion:
+  worum: |
+    Für Basen knapp über $\eta$ zwängt sich der Turm durch den Engpass bei $e$. Die Theorie der parabolischen Implosion beschreibt solche Durchgänge sehr genau. Kann man damit Knesers
+    Tetration nahe $\eta$ und das Randgesetz exakt beschreiben?
+  genau: |
+    Für $b\downarrow\eta$ passiert der Turm den Engpass in $\approx\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ Schritten. Lässt sich $T_b^{\mathrm K}$ nach Abzug dieser Durchgangszeit durch die Lavaurs-Abbildung (aus den beiden
+    Fatou-Koordinaten von $e^u-1$) beschreiben — und folgt daraus ein rigoroses Randgesetz für $m(b)$ mit Konstante und Phasenterm?
+  warum: |
+    Offen. Was dafür spricht: Bei $\eta$ selbst ist die Lage parabolisch und durch Fatou-Koordinaten beschrieben ([[kl.satz.eta_koordinate]]); knapp darüber ist sie genau die Situation der Implosion.
+  einordnung: |
+    Nächster Schritt: $m(b)+\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ gegen $\ln(b-\eta)$ und gegen periodische Terme in $(b-\eta)^{-1/2}$ auftragen. Verwandt: [[bw.lem.randgesetz]], [[kl.frage.stetig_eta]].
+
+br.satz.turm_mod_m:
+  worum: |
+    Schaut man nur auf die letzten Ziffern eines Turms wie $3^{3^{3^{\cdot^{\cdot}}}}$, so ändern sie sich ab einer gewissen Höhe nicht mehr — obwohl die Zahl selbst unvorstellbar gross wird.
+  genau: |
+    Für ganze $a,m\ge1$ ist die Folge $a\uparrow\uparrow n\bmod m$ schliesslich konstant.
+  warum: |
+    1. Für grosse Exponenten hängt $a^k\bmod m$ nur von $k\bmod\lambda(m)$ ab (verallgemeinerter Satz von Euler; $\lambda$ ist die Carmichael-Funktion), und $\lambda(m)<m$.
+    2. Der Exponent von $a\uparrow\uparrow n$ ist $a\uparrow\uparrow(n-1)$. Nach Induktion (über $m$) ist er modulo $\lambda(m)$ schliesslich konstant.
+    3. Also ist auch $a\uparrow\uparrow n\bmod m$ schliesslich konstant.
+  beispiel: |
+    Die letzten zehn Ziffern von $3\uparrow\uparrow n$: $n=3$: …5597484987, $n=4$: …6100739387, $n=5$: …9660355387, $n=6$: …5126595387, $n=7$: …3200195387, $n=8$: …5504195387.
+    Pro Stufe wird genau eine weitere Ziffer fest: …87, …387, …5387, …95387, …195387.
+  bilder: [exp.kongruenz]
+  einordnung: |
+    Wie viele Ziffern pro Stufe fest werden: [[br.satz.ripa]].
+
+br.satz.ripa:
+  worum: |
+    Wie schnell werden die Endziffern eines Turms fest? Pro Stufe kommt eine feste Zahl neuer Ziffern dazu, und diese Zahl lässt sich aus der Basis ausrechnen.
+  genau: |
+    Die Zahl neuer stabiler Endziffern pro Stufe, $V(a)$, ist ab einer Höhe konstant (Ripà 2020, Ripà–Onnis 2022). Für $a\not\equiv0\pmod{10}$ ist $V(a)$ eine 2- oder 5-adische Bewertung von $a\pm1$ oder $a^2+1$, je nach
+    $a\bmod20$; für $a\equiv5\pmod{10}$ gilt $V(a)=v_2(a^2-1)-1$.
+  warum: |
+    Literatursatz (die Fallunterscheidung nach $a\bmod20$ ist hier nur aus dem Abstract übernommen). Hintergrund: Der Turm konvergiert 2-adisch und 5-adisch gegen einen Fixpunkt von $x\mapsto a^x$; wie schnell,
+    sagt die Bewertung — dieselbe Idee wie ein Multiplikator, nur in den $p$-adischen Zahlen.
+  beispiel: |
+    $V(3)=1$ (siehe oben), $V(5)=2$, $V(15)=4$, $V(65)=6$. Probe der Formel: $65^2-1=4224=2^7\cdot33$, also $V(65)=7-1=6$. Für 40 Basen $a\equiv5\pmod{10}$ bis 400 ohne Abweichung bestätigt.
+  bilder: [exp.kongruenz]
+  einordnung: |
+    Frage: Gibt es eine $p$-adische Analogie zu Kneser, eine stetige Höhe in $\mathbb Z_p$? Grundlage: [[br.satz.turm_mod_m]].
+
+br.frage.bohr_mollerup:
+  worum: |
+    Die Gamma-Funktion ist die einzige Fortsetzung der Fakultät, die „logarithmisch konvex“ ist — eine rein reelle Bedingung. Gibt es so etwas für die Tetration? Bisher wählen nur komplexe
+    Bedingungen Knesers Lösung aus.
+  genau: |
+    Gibt es eine reelle Bedingung — etwa Konvexität aller Ableitungen von $\operatorname{slog}$, totale Monotonie oder der Carleman-Grenzwert —, die unter den reell-analytischen Tetrationen genau Knesers Lösung auswählt?
+  warum: |
+    Offen. Bekannt ist: Analytizität und Monotonie reichen nicht ([[fg.kor.nichteindeutigkeit]], [[ar.satz.keine_arith_info]]); Hooshmands Bedingungen wählen sogar die lineare Lösung ([[kn.satz.hooshmand]]);
+    die bewiesenen Eindeutigkeitssätze sind komplex ([[kn.satz.paulsen_cowgill]]).
+  beispiel: |
+    Bohr–Mollerup: $\Gamma(x+1)=x\Gamma(x)$, $\Gamma(1)=1$ und $\log\Gamma$ konvex legen $\Gamma$ eindeutig fest. Ein Gegenstück für $T(x+1)=e^{T(x)}$ ist nicht bekannt.
+  einordnung: |
+    Nächster Schritt: an Kneser-Werten testen, welche Konvexitätsbedingungen erfüllt sind, und ob kleine periodische Störungen $\theta=c\sin2\pi x$ sie stets verletzen. Kandidat: [[kn.verm.carleman_kneser]].
+
+br.satz.shishikura:
+  worum: |
+    Knapp über $\eta$ zerfällt der Berührpunkt bei $e$ in zwei komplexe Fixpunkte $L$ und $\bar L$, und zwischen ihnen entsteht ein enges „Tor“,
+    durch das der Turm langsam hindurchkriecht. Die Theorie der **parabolischen Implosion** (Lavaurs, Douady, Shishikura) beschreibt diesen
+    Durchgang genau: Es gibt eine Koordinate, in der jeder Schritt wieder „$+1$“ ist, und die Zahl der Schritte durch das Tor ist im Wesentlichen
+    $1/\alpha$, wobei $\alpha$ am Multiplikator der beiden Fixpunkte abzulesen ist.
+  genau: |
+    Sei $f_0$ eine Abbildung mit einem parabolischen Fixpunkt (Multiplikator 1) und $f$ eine kleine Störung, bei der er in zwei Fixpunkte mit
+    Multiplikator $e^{\pm2\pi i\alpha(f)}$ zerfällt.
+    - **Shishikura:** Auf dem Tor zwischen den Fixpunkten gibt es eine **gestörte Fatou-Koordinate** $\Phi_f$ mit $\Phi_f(f(z))=\Phi_f(z)+1$. Links
+      ähnelt sie der anziehenden, rechts der abstossenden Fatou-Koordinate von $f_0$; dazwischen liegt eine Verschiebung von etwa $1/\alpha(f)$.
+    - **Lavaurs:** Gehen $f_k\to f_0$ und $n_k-1/\alpha(f_k)\to\sigma$, dann
+      $$f_k^{\circ n_k}\;\to\;\Psi_0^{\text{abst}}\bigl(\Phi_0^{\text{anz}}(z)+\sigma\bigr).$$
+    - **Für $\exp_b$, $b=\eta+\delta$:** Die Fixpunkte nahe $e$ haben Multiplikator $\approx1\pm i\sqrt{2e\delta/\eta}$, also
+      $$\frac1\alpha\approx\frac{2\pi}{\sqrt{2e\delta/\eta}}=\pi\sqrt{\frac{2\eta}{e\,\delta}}.$$
+  warum: |
+    Der allgemeine Satz ist schwere Theorie (Literatur, am Original nicht geprüft). Die Rechnung für $\exp_b$ dagegen ist kurz:
+    1. Mit $w=y-e$ ist ein Schritt von $y\mapsto b^y$ nahe $e$ ungefähr $w\mapsto w+\varepsilon+\frac{w^2}{2e}$, $\varepsilon=e^2\delta/\eta$.
+    2. Fixpunkte: $\varepsilon+w^2/(2e)=0$, also $w=\pm i\sqrt{2e\varepsilon}$.
+    3. Multiplikator dort: $1+w/e=1\pm i\sqrt{2\varepsilon/e}=1\pm i\sqrt{2e\delta/\eta}\approx e^{\pm i\sqrt{2e\delta/\eta}}$, also $2\pi\alpha\approx\sqrt{2e\delta/\eta}$.
+    4. Damit $1/\alpha\approx\pi\sqrt{2\eta/(e\delta)}$ — dieselbe Zahl, die der einfache Engpass-Satz ([[br.satz.sattel_knoten]]) als Schrittzahl liefert.
+       Der neue Satz sagt zusätzlich, was mit dem Rest $\sigma$ passiert.
+  beispiel: |
+    $\delta=10^{-6}$: $1/\alpha\approx\pi\sqrt{2\cdot1.4447/(2.7183\cdot10^{-6})}=3239$ Schritte durch das Tor. Umgekehrt braucht die Basis eines
+    1000-stöckigen Turms, der genau 1000 ergibt, $\delta\approx2\pi^2\eta/(e\cdot10^6)=1.05\cdot10^{-5}$ — gemessen $1.0451\cdot10^{-5}$ ([[fp.beob.tpid6_rate]]).
+  einordnung: |
+    Das Werkzeug, mit dem das Randgesetz ([[bw.lem.randgesetz]]) und die TPID-6-Rate mit Fehlerterm beweisbar werden könnten
+    ([[br.frage.implosion]]). Knesers slog für $b>\eta$ ist eine Fatou-Koordinate auf genau diesem Tor; ob sie mit Shishikuras $\Phi_f$
+    übereinstimmt, ist plausibel, aber hier nicht geprüft. Die abstossende Hälfte $\Psi_0^{\text{abst}}$ ist bei $\exp_\eta$ die Funktion cheta ([[kl.satz.cheta]]).
+
+br.satz.ackermann:
+  worum: |
+    Die Ackermann-Funktion, das Standardbeispiel einer berechenbaren, aber nicht primitiv-rekursiven Funktion, ist im Kern die Leiter der Hyperoperationen zur Basis 2.
+  genau: |
+    $A(1,n)=n+2$, $A(2,n)=2n+3$, $A(3,n)=2^{n+3}-3$, $A(4,n)=2\uparrow\uparrow(n+3)-3$. In der schnell wachsenden Hierarchie ist $f_3(n)\ge2\uparrow\uparrow n$.
+  warum: |
+    1. Induktion über $n$ mit der Rekursion $A(m+1,n+1)=A(m,A(m+1,n))$: Eine Stufe von $A(m+1,\cdot)$ wendet $A(m,\cdot)$ einmal an — genau wie eine Stufe Tetration
+       einmal potenziert.
+    2. Der Versatz $\pm3$ kommt vom Startwert $A(m+1,0)=A(m,1)$.
+  beispiel: |
+    $A(4,0)=13=2\uparrow\uparrow3-3$, $A(4,1)=65533=2\uparrow\uparrow4-3$, $A(4,2)=2^{65536}-3$ (65536 Binärstellen).
+  bilder: [exp.forum_rand]
+  einordnung: |
+    Verwandt mit [[br.satz.kalmar]]. Die Umkehrungen ($\log^*$, inverse Ackermann-Funktion) wachsen extrem langsam — siehe [[gr.satz.logstern]].
+
+br.satz.ordinal_tetration:
+  worum: |
+    Was passiert mit Türmen aus unendlichen Ordinalzahlen? Der unendliche Turm aus $\omega$ ist die berühmte Zahl $\varepsilon_0$.
+  genau: |
+    $$\omega\uparrow\uparrow\omega=\sup\{\omega,\omega^\omega,\omega^{\omega^\omega},\dots\}=\varepsilon_0,\qquad\omega^{\varepsilon_0}=\varepsilon_0.$$
+    Deshalb ist $\omega\uparrow\uparrow(\omega+1)=\varepsilon_0$ wieder — die einfache Fortsetzung bleibt stehen.
+  warum: |
+    1. Ordinalpotenzen sind in der Hochzahl stetig; das Supremum der Türme ist also ein Fixpunkt von $x\mapsto\omega^x$.
+    2. $\varepsilon_0$ ist der kleinste solche Fixpunkt; jede weitere Stufe gibt wieder $\varepsilon_0$.
+  beispiel: |
+    Goodsteins Folgen (Zahlen in „erblicher“ Basis-Schreibweise, Basis wächst) erreichen nach einer Zeit 0 — beweisbar mit Ordinalzahlen unter $\varepsilon_0$,
+    aber nicht in der Peano-Arithmetik.
+  einordnung: |
+    Logische Seite der Hyperoperationen ([[br.def.hyperoperation]], [[br.satz.ackermann]]).
+
+br.satz.hyperop_varianten:
+  worum: |
+    „Tetration“ setzt eine Klammerung voraus: von oben. Andere Klammerungen und andere Leitern geben andere Operationen — manche trivial, manche mit schönen
+    Gesetzen.
+  genau: |
+    - **Links:** $x[4']n=x^{x^n}$, die linke Pentation ist nicht trivial.
+    - **Ausgewogen:** Verdoppeln statt Weiterzählen; die ausgewogene Tetration iteriert $x\mapsto x^x$.
+    - **Bennett (1915):** $x\oplus_sy=\exp^{[s]}(\log^{[s]}x+\log^{[s]}y)$ — jede Stufe kommutativ und assoziativ, $\oplus_2$ ist $e^{\ln x\ln y}$.
+  warum: |
+    1. Links: $(x^{x^n})^x=x^{x^{n+1}}$.
+    2. Bennett: Mit $\log^{[s]}$ wird jede Stufe zur gewöhnlichen Addition umgerechnet; Kommutativität und Assoziativität kommen von dort, und weil $\exp$ Summen in
+       Produkte verwandelt, verteilt sich jede Stufe über die vorige.
+  beispiel: |
+    $2\oplus_22=e^{(\ln2)^2}=1.6168$; $e\oplus_2y=y$ — $e$ ist das neutrale Element der Stufe 2.
+  einordnung: |
+    Mit der halben Exponentialfunktion ([[kn.satz.halbe_exp]]) lassen sich Bennett-Stufen zwischen den ganzen bilden.

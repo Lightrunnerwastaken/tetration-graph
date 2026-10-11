@@ -1,0 +1,227 @@
+# Theorie-Blöcke für das Gebiet Funktionalgleichungen (fg), Etappe 2.
+
+fg.def.tetration:
+  worum: |
+    Die ganzen Türme sind bekannt; gesucht ist eine Funktion, die sie für **alle** Höhen verbindet. Statt zu sagen, wie die Kurve
+    aussehen soll, schreibt man nur die Bauregel des Turms für jede Höhe auf. Diese eine Gleichung ist der Startpunkt der ganzen Theorie.
+  genau: |
+    Eine **Tetration zur Basis $b$** ($b>0$, $b\ne1$) ist eine Funktion $F$ mit
+    $$F(x+1)=b^{F(x)},\qquad F(0)=1 ,$$
+    wobei $b^w:=e^{w\ln b}$ mit dem Hauptzweig von $\ln b$. Sie kann auf einem Intervall der reellen Achse leben oder auf einem Gebiet
+    der komplexen Ebene, das mit $x$ auch $x+1$ enthält. Lässt man die Normierung $F(0)=1$ weg, heisst $F$ eine **Superfunktion** von
+    $z\mapsto b^z$. Schreibweise: $T_b$ für irgendeine Tetration, $T_b^{\mathrm K}$ für die von Kneser.
+  warum: |
+    Die Definition folgt dem Vorbild der Potenz: Dort legt $a^{x+1}=a\cdot a^x$ zusammen mit $a^0=1$ die ganzen Potenzen fest, und für
+    gebrochene Hochzahlen braucht man zusätzlich etwas — bei der Potenz das Additionsgesetz $a^{x+y}=a^xa^y$. Für die Gamma-Funktion
+    ($\Gamma(x+1)=x\,\Gamma(x)$) leistet das die logarithmische Konvexität (Satz von Bohr–Mollerup).
+
+    **Für die Tetration fehlt ein solches Gesetz.** $T(x+y)$ hat keine einfache Beziehung zu $T(x)$ und $T(y)$. Deshalb bleibt die
+    Gleichung allein vieldeutig ([[fg.satz.allgemeine_loesung]]), und die Theorie besteht zum grossen Teil darin, gute Zusatzbedingungen
+    zu finden.
+  beispiel: |
+    - Jede Tetration hat $F(1)=b$, $F(2)=b^b$, $F(-1)=0$ ([[fg.lem.ganzzahlwerte]]).
+    - $F(x)=T_2(x+3)$ ist eine Superfunktion zur Basis $2$, aber keine Tetration: $F(0)=2\uparrow\uparrow3=16$.
+  einordnung: |
+    Die Gleichung ist ein Spezialfall der Superfunktions-Gleichung $F(x+1)=f(F(x))$ ([[fg.def.abel]]). Ihre Umkehrung führt zur
+    Abel-Gleichung, ihre Linearisierung am Fixpunkt zur Schröder-Gleichung ([[fg.def.schroeder]]).
+
+fg.def.abel:
+  worum: |
+    Eine Abel-Funktion zählt, wie viele Schritte man schon gegangen ist: Wendet man $f$ einmal an, steigt sie um genau $1$. Eine
+    Superfunktion macht das Umgekehrte: sie geht in der Zeit $x$ genau $x$ Schritte. Die beiden sind Umkehrfunktionen voneinander.
+  genau: |
+    Zu einer Abbildung $f$ heisst $\alpha$ **Abel-Funktion**, wenn
+    $$\alpha(f(z))=\alpha(z)+1,$$
+    und $F$ heisst **Superfunktion**, wenn $F(z+1)=f(F(z))$. Ist $\alpha$ umkehrbar, so ist $F=\alpha^{-1}$ eine Superfunktion, und umgekehrt.
+    Für $f(z)=b^z$ ist die Abel-Funktion der Superlogarithmus $\operatorname{slog}_b=T_b^{-1}$.
+  warum: |
+    Sei $F=\alpha^{-1}$ und $z=F(w)$, also $\alpha(z)=w$. Dann $\alpha(f(z))=w+1$, also $f(z)=\alpha^{-1}(w+1)$, das heisst $f(F(w))=F(w+1)$.
+    Die Rückrichtung geht genauso.
+  beispiel: |
+    - $f(z)=z+2$: Abel-Funktion $\alpha(z)=z/2$, Superfunktion $F(x)=2x$.
+    - $f(z)=2z$: $\alpha(z)=\log_2z$, Superfunktion $F(x)=2^x$ — die Potenz ist die Superfunktion der Verdopplung.
+    - $f(z)=b^z$: $\alpha=\operatorname{slog}_b$, Superfunktion $T_b$ — die Tetration ist die Superfunktion der Potenz.
+  einordnung: |
+    Diese Kette — Addition, Verdopplung, Potenz, Tetration — ist genau die Leiter aus Kapitel 0. Fast jede Konstruktion baut erst
+    eine Abel-Funktion (oft über die Schröder-Gleichung, [[fg.satz.schroeder_abel]]) und kehrt sie dann um.
+
+fg.def.schroeder:
+  worum: |
+    In der Nähe eines Fixpunkts kann man oft eine Koordinate finden, in der die Abbildung eine reine Streckung ist. Die Gleichung
+    für diese Koordinate heisst Schröder-Gleichung. Wer sie gelöst hat, kann jeden gebrochenen Schritt sofort hinschreiben.
+  genau: |
+    Sei $p$ ein Fixpunkt von $f$ mit Multiplikator $\lambda=f'(p)$. Eine Funktion $\sigma$ mit $\sigma(p)=0$ löst die **Schröder-Gleichung**, wenn
+    $$\sigma(f(z))=\lambda\,\sigma(z).$$
+    In der Koordinate $w=\sigma(z)$ ist $f$ also die Multiplikation $w\mapsto\lambda w$.
+  warum: |
+    Das ist eine Definition. Ob es eine Lösung gibt, sagt der Satz von Koenigs ([[it.satz.koenigs]]): ja, falls $0<|\lambda|\ne1$.
+    Der Nutzen: Ist $\sigma$ umkehrbar, so ist $f^{t}=\sigma^{-1}\circ(\lambda^t\sigma)$ eine Iteration in kontinuierlicher Zeit — ein „$t$-facher
+    Schritt“ ist eine Streckung um $\lambda^t$.
+  beispiel: |
+    $f(z)=\dfrac{2z}{1+z}$ hat den Fixpunkt $0$ mit $\lambda=f'(0)=2$, und $\sigma(z)=\dfrac z{1-z}$ löst die Gleichung:
+    $$\sigma(f(z))=\frac{2z/(1+z)}{1-2z/(1+z)}=\frac{2z}{1-z}=2\,\sigma(z).$$
+  einordnung: |
+    Aus einer Schröder-Lösung wird mit dem Logarithmus eine Abel-Funktion ([[fg.satz.schroeder_abel]]). Für Tetration unter $\eta$
+    ist das genau der Weg zur regulären Lösung ([[kl.satz.regulaer]]).
+
+fg.def.iterationsgruppe:
+  worum: |
+    Statt nur „einmal, zweimal, dreimal $f$“ möchte man „$t$-mal $f$“ für jede reelle Zahl $t$. Eine Familie solcher Abbildungen,
+    die sich so verhält wie Zeit, heisst stetige Iteration oder Fluss. Die halbe Iterierte ist der Fall $t=\tfrac12$.
+  genau: |
+    Eine Familie $(f^t)_{t}$ mit $f^1=f$ und
+    $$f^{s+t}=f^s\circ f^t$$
+    heisst **stetige Iteration** (Lösung der Translationsgleichung). Eine **halbe Iterierte** ist eine Abbildung $g$ mit $g\circ g=f$.
+  warum: |
+    Hat man eine umkehrbare Abel-Funktion $\alpha$, so ist $f^t:=\alpha^{-1}(\alpha+t)$ eine stetige Iteration:
+    $f^s(f^t(z))=\alpha^{-1}(\alpha(z)+t+s)=f^{s+t}(z)$, und $f^1=\alpha^{-1}(\alpha+1)=f$. Umgekehrt definiert jede stetige Iteration eine
+    Superfunktion $F(t)=f^t(z_0)$.
+  beispiel: |
+    - $f(x)=2x$: $f^t(x)=2^tx$. $\ f(x)=x+1$: $f^t(x)=x+t$. $\ f(x)=x^2$ auf $x>0$: $f^t(x)=x^{2^t}$.
+    - $f(x)=b^x$: $f^t(x)=T_b(\operatorname{slog}_b(x)+t)$. Die halbe Iterierte von $e^x$ ist $g(x)=T_e(\operatorname{slog}_e(x)+\tfrac12)$; zum Beispiel
+      $g(1)=T_e(\tfrac12)=1.6464$ und $g(1.6464)=e$.
+  einordnung: |
+    Tetration und stetige Iteration sind zwei Seiten derselben Sache. Welche Iterationen am Fixpunkt analytisch sind, beantwortet
+    [[it.satz.vertauschbar]]; dass es für $e^z-1$ keine gibt, [[it.satz.baker]].
+
+fg.satz.schroeder_abel:
+  worum: |
+    Ist $f$ in einer Koordinate eine Streckung um $\lambda$, dann ist $f$ im Logarithmus dieser Koordinate eine Verschiebung um $\log\lambda$.
+    Teilt man durch $\log\lambda$, wird daraus die Verschiebung um $1$ — eine Abel-Funktion. Als Nebenwirkung hat sie eine Periode im Komplexen.
+  genau: |
+    Löst $\sigma$ die Schröder-Gleichung mit Multiplikator $\lambda$ ($\lambda\ne0$, keine Einheitswurzel), so ist
+    $$\alpha:=\frac{\log\sigma}{\log\lambda}$$
+    eine Abel-Funktion von $f$ — bis auf Vielfache von $2\pi i/\log\lambda$, die vom Zweig des Logarithmus kommen. Die zugehörige
+    Superfunktion $\alpha^{-1}$ ist deshalb **periodisch mit der komplexen Periode** $2\pi i/\log\lambda$.
+  warum: |
+    1. $\log\sigma(f(z))=\log(\lambda\,\sigma(z))=\log\lambda+\log\sigma(z)$, bis auf ein Vielfaches von $2\pi i$.
+    2. Durch $\log\lambda$ teilen: $\alpha(f(z))=1+\alpha(z)$ bis auf $2\pi ik/\log\lambda$.
+    3. Die Superfunktion ist $F(x)=\sigma^{-1}(\lambda^x\cdot c)$. Weil $\lambda^{x+2\pi i/\log\lambda}=\lambda^x e^{2\pi i}=\lambda^x$, ist $F$ periodisch.
+  beispiel: |
+    - Mit $f(z)=\frac{2z}{1+z}$ und $\sigma=\frac z{1-z}$: $\alpha(z)=\log_2\frac z{1-z}$, und tatsächlich $\alpha(f(z))=\log_2\frac{2z}{1-z}=\alpha(z)+1$.
+    - Basis $\sqrt2$ am Fixpunkt $2$: $\lambda=\ln2$, $\log\lambda=-0.3665$. Die reguläre Tetration hat die Periode $2\pi i/\log\lambda$, also
+      wiederholt sie sich in senkrechter Richtung alle $17.143$ Einheiten.
+  einordnung: |
+    Die komplexe Periode bestimmt, wie glatt die Unterschiede zwischen verschiedenen Konstruktionen sind ([[kl.verm.streifenbreite]]).
+    Über $\eta$ wird sie zum Hindernis, das Kneser korrigiert ([[kn.gescheitert.regulaer_an_L]]).
+
+fg.satz.allgemeine_loesung:
+  worum: |
+    Hat man eine wachsende Tetration, dann kennt man alle: jede andere entsteht, indem man die Höhe ein wenig hin und her „verbiegt“ —
+    und zwar mit einer Verbiegung, die sich nach jeder Einheit wiederholt.
+  genau: |
+    Ist $F$ eine stetige, streng wachsende Lösung, so ist jede weitere solche Lösung von der Form
+    $$G=F\circ(\mathrm{id}+\theta),\qquad\theta(x+1)=\theta(x),\quad x+\theta(x)\ \text{stetig und streng wachsend}.$$
+    Umgekehrt ist jedes solche $F\circ(\mathrm{id}+\theta)$ wieder eine Lösung; $\theta(0)=0$ erhält $G(0)=1$.
+  warum: |
+    1. Setze $h:=F^{-1}\circ G$ — das ist stetig und streng wachsend, weil $F$ und $G$ es sind.
+    2. $h(x+1)=F^{-1}(G(x+1))=F^{-1}(b^{G(x)})=F^{-1}(b^{F(h(x))})=F^{-1}(F(h(x)+1))=h(x)+1$.
+    3. Also ist $\theta:=h-\mathrm{id}$ periodisch mit Periode $1$, und $G=F\circ h=F\circ(\mathrm{id}+\theta)$.
+    4. Rückrichtung: $F(x+1+\theta(x+1))=F(x+\theta(x)+1)=b^{F(x+\theta(x))}$.
+  beispiel: |
+    Mit $\theta(x)=0.05\cdot\frac{1-\cos2\pi x}2$ (null an den ganzen Stellen, $0.05$ in der Mitte) wird aus Kneser zur Basis $e$ eine neue
+    Tetration $\tilde T(x)=T(x+\theta(x))$ mit $\tilde T(\tfrac12)=T(0.55)=1.7271$ statt $1.6464$.
+  einordnung: |
+    Daraus folgt sofort die Nicht-Eindeutigkeit ([[fg.kor.nichteindeutigkeit]]). Dieselbe Struktur — eine Lösung plus „etwas
+    Periodisches“ — haben alle Gleichungen dieses Typs ([[fg.satz.kohomologisch]]), und sie ist der Ursprung der periodischen Welle beim
+    Basiswechsel (Kapitel 7).
+
+fg.kor.nichteindeutigkeit:
+  worum: |
+    Nicht einmal „glatt“ hilft: Es gibt unendlich viele beliebig oft differenzierbare, sogar reell-analytische Tetrationen, und bei
+    der Höhe $1/2$ kann man jeden Wert zwischen $1$ und $b$ bekommen.
+  genau: |
+    Für jedes $r\in(1,b)$ gibt es eine reell-analytische, streng wachsende Tetration $\tilde F$ mit $\tilde F(0)=1$ und $\tilde F(\tfrac12)=r$.
+  warum: |
+    1. Nimm eine reell-analytische Lösung $F$ und eine reell-analytische, 1-periodische Funktion $g$ mit $g(0)=0$, $g(\tfrac12)=1$.
+    2. Setze $\tilde F=F\circ(\mathrm{id}+c\,g)$. Für kleines $|c|$ ist $x+c\,g(x)$ noch streng wachsend (man braucht $|c|\max|g'|<1$), also ist $\tilde F$
+       nach [[fg.satz.allgemeine_loesung]] wieder eine Tetration.
+    3. $\tilde F(\tfrac12)=F(\tfrac12+c)$, und das durchläuft für passende $c$ alle Werte zwischen $F(0)=1$ und $F(1)=b$. (Mit $g=\frac{1-\cos2\pi x}2$
+       klappt das für $|c|<1/\pi$; für den ganzen Bereich nimmt man ein steileres $g$.)
+  beispiel: |
+    Basis $\sqrt2$: die reguläre Tetration hat $T(\tfrac12)=1.24362$. Im Experiment wurden zwei weitere reell-analytische Lösungen mit
+    $\tilde T(\tfrac12)=1.15$ und $1.30$ gebaut; sie erfüllen die Gleichung auf $10^{-40}$.
+  bilder: [exp.nichteindeutigkeit]
+  einordnung: |
+    Darum braucht man stärkere Forderungen: Analytizität am Fixpunkt (unter $\eta$, [[it.satz.vertauschbar]]) oder Verhalten im
+    Komplexen (über $\eta$, [[kn.satz.paulsen_cowgill]]). Der Hebel dafür ist [[fg.lem.periodisch_liouville]].
+
+fg.satz.kohomologisch:
+  worum: |
+    Viele Fragen über Tetration führen auf Gleichungen der Form „Wert nach einem Schritt minus Wert vorher = bekannte Funktion“.
+    Auch sie haben nie nur eine Lösung: man darf immer etwas Periodisches dazuzählen.
+  genau: |
+    Sei $f$ injektiv mit umkehrbarer Abel-Funktion $\alpha$. Die Lösungen von
+    $$V(f(y))-V(y)=g(y)$$
+    sind genau $V=V_0+h\circ\alpha$ mit einer festen Lösung $V_0$ und einer beliebigen 1-periodischen Funktion $h$.
+  warum: |
+    Die Differenz $D=V-V_0$ zweier Lösungen erfüllt $D(f(y))=D(y)$: sie ändert sich entlang jeder Bahn nicht. In der Abel-Koordinate
+    $u=\alpha(y)$ heisst das $D(\alpha^{-1}(u+1))=D(\alpha^{-1}(u))$ — die Funktion $h:=D\circ\alpha^{-1}$ ist 1-periodisch. Also $D=h\circ\alpha$.
+  beispiel: |
+    $f(y)=y+1$, $\alpha=\mathrm{id}$, und $V(y+1)-V(y)=2y+1$: eine Lösung ist $V_0=y^2$, alle Lösungen sind $y^2+h(y)$ mit 1-periodischem $h$.
+  einordnung: |
+    Die Ableitung der Tetration nach der Basis erfüllt eine solche Gleichung; welche Lösung die „richtige“ ist, entscheidet in Paper V
+    ein Auswahlprinzip ([[bw.def.auswahlprinzip]]). Allgemein: die Gleichung allein wählt nie aus, erst Zusatzbedingungen.
+
+fg.lem.periodisch_liouville:
+  worum: |
+    Eine glatte periodische Funktion, die man ins Komplexe fortsetzt, wird nach oben oder unten riesig — es sei denn, sie ist konstant.
+    Genau deshalb kann man periodische Verbiegungen im Komplexen ausschliessen und so die richtige Tetration auswählen.
+  genau: |
+    Ist $\theta$ ganz (überall komplex differenzierbar), 1-periodisch und für $\operatorname{Im}z\to+\infty$ **und** $\operatorname{Im}z\to-\infty$
+    beschränkt, so ist $\theta$ konstant.
+  warum: |
+    1. Eine 1-periodische ganze Funktion lässt sich als $\theta(z)=h(q)$ mit $q=e^{2\pi iz}$ schreiben; $h$ ist holomorph auf $\mathbb C\setminus\{0\}$.
+    2. $\operatorname{Im}z\to+\infty$ entspricht $q\to0$, $\operatorname{Im}z\to-\infty$ entspricht $q\to\infty$. Beschränktheit dort heisst: $h$ ist bei $0$ und bei $\infty$
+       beschränkt, also lassen sich beide Stellen „hebbar“ ergänzen.
+    3. Dann ist $h$ auf der ganzen Riemannschen Zahlenkugel holomorph und beschränkt — nach Liouville konstant.
+  beispiel: |
+    $\theta(z)=\sin2\pi z$ ist auf der reellen Achse harmlos, aber bei $\operatorname{Im}z=1$ schon etwa $e^{2\pi}/2\approx268$ gross.
+  einordnung: |
+    Anwendung: Läuft Knesers Tetration nach oben gegen $L$ und nach unten gegen $\bar L$, dann zerstört jede nichtkonstante Verbiegung
+    $\theta$ dieses Verhalten. Das ist der Kern der Eindeutigkeitssätze [[kn.satz.paulsen_cowgill]] und [[kn.satz.trappmann_kouznetsov]].
+
+fg.lem.ganzzahlwerte:
+  worum: |
+    An den ganzen Stellen gibt es keine Wahl: jede Tetration trifft dort dieselben Werte. Und nach links endet jede Tetration
+    zwangsläufig vor der Stelle $-2$.
+  genau: |
+    Für jede reelle Tetration gilt $F(-1)=0$ und $F(n)=b\uparrow\uparrow n$ für $n\in\mathbb N$. An der Stelle $-2$ ist keine Lösung erklärt
+    (auch keine komplexe mit $F(-1)=0$), weil $b^{F(-2)}=F(-1)=0$ unmöglich ist. Der reelle Definitionsbereich ist höchstens $(-2,\infty)$.
+  warum: |
+    $b^{F(-1)}=F(0)=1$ heisst $F(-1)\ln b=0$ (für reelles $F(-1)$), also $F(-1)=0$. Vorwärts liefert die Gleichung die Türme. Und $b^w=e^{w\ln b}$
+    ist für keine Zahl $w$ gleich null — die Exponentialfunktion lässt die $0$ aus.
+  beispiel: |
+    Basis $2$: $F(-1)=0$, $F(0)=1$, $F(1)=2$, $F(2)=4$, $F(3)=16$. Ein $F(-2)$ müsste $2^{F(-2)}=0$ erfüllen — das gibt es nicht.
+  einordnung: |
+    Wie die Kurve vor $-2$ abstürzt, steht in [[gr.satz.gestalt]]; im Komplexen ist $-2$ eine Singularität ([[kn.satz.singulaer_minus2]]).
+
+fg.kor.keine_ganze_tetration:
+  worum: |
+    Eine Tetration kann nicht überall in der komplexen Ebene glatt sein: die Stelle $-2$ ist ein Hindernis. Superfunktionen ohne die
+    Normierung $F(0)=1$ können dagegen durchaus ganz sein.
+  genau: |
+    Es gibt keine ganze Funktion $F$ mit $F(z+1)=b^{F(z)}$, $F(0)=1$ und $F(-1)=0$. Insbesondere gibt es keine ganze, auf $\mathbb R$ reelle Tetration.
+  warum: |
+    Wäre $F$ ganz, dann wäre $F(-2)$ eine Zahl mit $b^{F(-2)}=F(-1)=0$ — unmöglich ([[fg.lem.ganzzahlwerte]]). Vorsicht: ohne die Bedingung
+    $F(-1)=0$ geht das Argument nicht durch; im Komplexen wäre auch $F(-1)=2\pi ik/\ln b$ denkbar.
+  beispiel: |
+    Zur Basis $\sqrt2$ ist das reguläre Superexponential am Fixpunkt $4$ ganz ([[kl.satz.vier_sqrt2]]); es nimmt aber nie den Wert $1$ an einer
+    Stelle an, an der eine Stufe tiefer $0$ steht — deshalb ist es keine Tetration.
+  bilder: [k5_vier]
+  einordnung: |
+    Jede Tetration hat also eine Singularität; bei Kneser liegt sie bei $-2$ und ist logarithmisch ([[kn.satz.singulaer_minus2]]).
+
+fg.satz.tpid4:
+  worum: |
+    Eine Stufe unter der Tetration: Warum ist $b^z$ „die“ Fortsetzung des Potenzierens? Weil sie im senkrechten Streifen beschränkt ist — und das legt sie fest.
+  genau: |
+    Ganze Lösungen von $f(z+1)=b\,f(z)$, $f(0)=1$, die auf $0<\operatorname{Re}z\le1$ beschränkt sind, gibt es nur für $b>0$, und dann ist es $b^z$.
+  warum: |
+    1. $g(z)=f(z)b^{-z}$ ist 1-periodisch, also eine Fourier-Reihe $\sum c_ne^{2\pi inz}$.
+    2. Beschränktheit von $f$ gibt eine Schranke für $g$, die oben und unten wie $e^{\theta y}$ wächst ($\theta=\arg b$).
+    3. Jeder Fourier-Koeffizient ist durch $e^{(\theta+2\pi n)y}$ beschränkt — für alle $y$. Das geht nur, wenn $c_n=0$ oder $\theta+2\pi n=0$.
+  beispiel: |
+    $b=-1$: $f(z)=e^{i\pi z}$ erfüllt die Gleichung, ist aber nach unten unbeschränkt ($|e^{i\pi(x+iy)}|=e^{-\pi y}$). Jede andere Wahl macht es nicht besser.
+  einordnung: |
+    Dieselbe Idee wie [[kn.satz.paulsen_cowgill]] und [[fg.lem.periodisch_liouville]], eine Stufe tiefer. Erledigt TPID 4 aus der Forumsliste.

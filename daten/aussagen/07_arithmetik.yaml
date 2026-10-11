@@ -1,0 +1,446 @@
+gebiet: ar
+aussagen:
+
+- id: ar.satz.hermite_lindemann
+  titel: Hermite–Lindemann
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  objekte: [transzendenz]
+  aussage: 'Ist $\alpha\neq0$ algebraisch, so ist $e^\alpha$ transzendent.'
+  beweis: {art: literatur, text: 'Lindemann 1882.'}
+  quellen: [{ref: lindemann1882}]
+  pruefung: {f1_folgt_unmittelbar: Nein, f2_benutzte_voraussetzungen: '—', f3_spezialfall: 'Spezialfall von Lindemann–Weierstrass', f4_uebertragbar: '—', f5_neue_frage: 'Orbitschranke → ar.satz.orbitschranke'}
+  bewertung: {richtigkeit: gesichert, neuheit: klassisch, nutzen: 'Einziges unbedingtes Werkzeug für Basis e.', nutzen_stufe: hoch}
+
+- id: ar.satz.gelfond_schneider
+  titel: Gelfond–Schneider
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  objekte: [transzendenz]
+  aussage: '$a,c$ algebraisch, $a\notin\{0,1\}$, $c$ irrational ⇒ $a^c$ transzendent. Beispiel: $\sqrt2^{\sqrt2}={}^2(\sqrt2)$ ist transzendent.'
+  beweis: {art: literatur, text: '1934.'}
+  quellen: [{ref: gelfond_schneider1934}]
+  pruefung: {f1_folgt_unmittelbar: Nein, f2_benutzte_voraussetzungen: '—', f3_spezialfall: nein, f4_uebertragbar: 'Algebraische Basen → ar.satz.algebraische_basen', f5_neue_frage: '—'}
+  bewertung: {richtigkeit: gesichert, neuheit: klassisch, nutzen: 'Werkzeug für algebraische Basen.', nutzen_stufe: mittel}
+
+- id: ar.verm.schanuel
+  titel: Schanuels Vermutung
+  art: vermutung
+  ebene: X
+  status: vermutung
+  objekte: [schanuel, transzendenz]
+  aussage: 'Sind $x_1,\dots,x_n\in\mathbb C$ linear unabhängig über $\mathbb Q$, so ist $\operatorname{trdeg}_{\mathbb Q}\mathbb Q(x_1,\dots,x_n,e^{x_1},\dots,e^{x_n})\ge n$.'
+  gegenbeispielsuche: 'Klassisch offen; keine Gegenbeispiele bekannt. Hier nicht untersucht.'
+  quellen: [{ref: lang1966}]
+  pruefung: {f1_folgt_unmittelbar: '—', f2_benutzte_voraussetzungen: '—', f3_spezialfall: '—', f4_uebertragbar: '—', f5_neue_frage: 'Folgerungen für Türme → ar.satz.schanuel_orbit'}
+  bewertung: {richtigkeit: offen, neuheit: klassisch, nutzen: 'Zentrale Vermutung der Transzendenztheorie.', nutzen_stufe: hoch}
+
+- id: ar.satz.orbitschranke
+  titel: Orbitschranke — zwei benachbarte algebraische Werte nur bei 0, 1
+  art: satz
+  ebene: A
+  status: bewiesen
+  objekte: [T_b, transzendenz]
+  bereich: 'jede Funktion mit $T(x+1)=e^{T(x)}$ an einer Stelle $x$'
+  voraussetzungen:
+    - {text: 'T(x+1) = e^{T(x)} an der Stelle x', benutzt: ja}
+    - {text: 'T Kneser', benutzt: nein}
+  aussage: 'Sind $T(x)$ und $T(x+1)$ beide algebraisch, so ist $T(x)=0$, $T(x+1)=1$.'
+  beweis: {art: vollstaendig, text: 'Hermite–Lindemann.'}
+  stuetzt_sich_auf: [ar.satz.hermite_lindemann]
+  quellen: [{ref: justus_a1, stelle: 'Satz 1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, unmittelbar aus Hermite–Lindemann.'
+    f2_benutzte_voraussetzungen: 'Nur die Gleichung an einer Stelle (Ebene A).'
+    f3_spezialfall: Ja.
+    f4_uebertragbar: 'Alle Lösungen; algebraische Basen → ar.satz.algebraische_basen.'
+    f5_neue_frage: 'Mehr gibt die unbedingte Theorie nicht: schon $e^e$ ist offen (ar.frage.e_hoch_e).'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Markiert die Grenze des heute Beweisbaren.', nutzen_stufe: mittel}
+
+- id: ar.kor.benachbart
+  titel: Für jede wachsende Tetration ist von T(x), T(x+1) einer transzendent
+  art: korollar
+  ebene: B
+  status: bewiesen
+  objekte: [T_b, transzendenz]
+  bereich: 'reelle Lösungen zur Basis $e$ mit einziger Nullstelle bei $-1$ (z. B. streng wachsend)'
+  voraussetzungen:
+    - {text: 'T(y) = 0 nur für y = −1', benutzt: ja}
+    - {text: 'T = Kneser (A1, Korollar 1)', benutzt: nein, notiz: 'jede streng wachsende Lösung genügt'}
+  aussage: 'Für $x>-2$, $x\notin\{-1,0\}$ ist mindestens einer der Werte $T(x)$, $T(x+1)$ transzendent.'
+  beweis: {art: vollstaendig, text: 'ar.satz.orbitschranke mit $T(x)\ne0$.'}
+  stuetzt_sich_auf: [ar.satz.orbitschranke]
+  quellen: [{ref: justus_a1, stelle: 'Korollar 1'}]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Nur Lage der Nullstelle; A1 formuliert für Kneser — unnötig eng.'
+    f3_spezialfall: Ja.
+    f4_uebertragbar: 'Klasse B: alle streng wachsenden Lösungen (auch linear, regulär).'
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Gering.', nutzen_stufe: gering}
+  versionen:
+    - {datum: '2026-09-06', fassung: 'A1 Korollar 1', aenderung: 'für die Kneser-Tetration'}
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'auf alle Lösungen mit einziger Nullstelle −1 erweitert', grund: 'Prüffrage 2'}
+
+- id: ar.satz.schanuel_orbit
+  titel: Schanuel ⇒ höchstens ein algebraischer Wert pro Orbit
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen: [ar.verm.schanuel]
+  objekte: [T_b, schanuel, transzendenz]
+  bereich: 'Lösungen zur Basis $e$ ohne Nullstelle im Orbit $x+\mathbb Z$'
+  voraussetzungen:
+    - {text: 'Schanuels Vermutung', benutzt: ja, ref: ar.verm.schanuel}
+    - {text: 'T(x+k) ≠ 0 für alle k (z. B. x ∉ ℤ, T streng wachsend)', benutzt: ja}
+  aussage: 'Für algebraisches $\alpha\ne0$ sind $\exp^{\circ1}\alpha,\dots,\exp^{\circ n}\alpha$ algebraisch unabhängig; folglich enthält $\{T(x+k)\}_k$ höchstens einen algebraischen Wert.'
+  beweis: {art: bedingt, text: 'Induktion: lineare Unabhängigkeit der $x_j$ aus der Induktionsannahme, dann Schanuel.'}
+  stuetzt_sich_auf: [ar.verm.schanuel, ar.satz.hermite_lindemann]
+  quellen: [{ref: justus_a1, stelle: 'Satz 2'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast; die Induktion ist kurz. Im Graph nachgeprüft: korrekt.'
+    f2_benutzte_voraussetzungen: 'Schanuel und Nullstellenfreiheit des Orbits.'
+    f3_spezialfall: 'Bekannte Folgerung aus Schanuel für iterierte Exponentiale.'
+    f4_uebertragbar: 'Alle streng wachsenden Lösungen (Klasse B).'
+    f5_neue_frage: 'Algebraische Unabhängigkeit über verschiedene Orbits → ar.verm.ks'
+  bewertung: {richtigkeit: 'bedingt, vollständig', neuheit: folklore, nutzen: 'Zeigt, was Schanuel für Türme liefert.', nutzen_stufe: mittel}
+
+- id: ar.satz.algebraische_basen
+  titel: Algebraische Basen
+  art: satz
+  ebene: A
+  status: bewiesen
+  objekte: [T_b, transzendenz]
+  bereich: 'algebraisches $b>1$'
+  aussage: '(i) $T_b(x)$ algebraisch irrational ⇒ $T_b(x+1)$ transzendent; (ii) $T_b(x)\in\mathbb Q$ ⇒ $T_b(x+1)=b^{p/q}$ algebraisch.'
+  beweis: {art: vollstaendig, text: 'Gelfond–Schneider.'}
+  stuetzt_sich_auf: [ar.satz.gelfond_schneider]
+  quellen: [{ref: justus_a1, stelle: 'Satz 3'}]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Nur die Gleichung an einer Stelle.'
+    f3_spezialfall: Ja.
+    f4_uebertragbar: Alle Lösungen.
+    f5_neue_frage: 'Basis $e$ ist strenger als algebraische Basen.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Vergleich der Basen.', nutzen_stufe: gering}
+
+- id: ar.satz.keine_arith_info
+  titel: Die reelle Gleichung trägt keine arithmetische Information (A1, Satz 4)
+  art: satz
+  ebene: A
+  status: bewiesen
+  objekte: [T_b, periodische_stoerung, transzendenz]
+  aussage: 'Für jedes $r\in(1,e)$ existiert eine reell-analytische streng wachsende Tetration zur Basis $e$ mit $\tilde T(1/2)=r$.'
+  beweis: {art: vollstaendig, text: '$\tilde T=T\circ(\mathrm{id}+\theta)$.'}
+  stuetzt_sich_auf: [fg.kor.nichteindeutigkeit]
+  quellen: [{ref: justus_a1, stelle: 'Satz 4'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja — Spezialfall $b=e$ von fg.kor.nichteindeutigkeit.'
+    f2_benutzte_voraussetzungen: 'Existenz einer reell-analytischen Lösung.'
+    f3_spezialfall: Ja, von fg.kor.nichteindeutigkeit.
+    f4_uebertragbar: Jede Basis.
+    f5_neue_frage: 'Jeder Beweis über $T_e^{\mathrm K}(1/2)$ muss die komplexe Kneser-Bedingung benutzen.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Wichtige methodische Schranke.', nutzen_stufe: hoch}
+
+- id: ar.satz.bpw
+  titel: Bombieri–Pila–Wilkie auf dem Tetrationsgraphen
+  art: satz
+  ebene: B
+  status: bewiesen
+  objekte: [hoehe, ominimal, T_b]
+  bereich: '$\Gamma=\{(x,T(x)):x\in[0,1]\}$, $N_d(H)$ = Punkte mit Grad $\le d$ und Höhe $\le H$'
+  voraussetzungen:
+    - {text: 'T reell-analytisch auf einer Umgebung von [0,1]', benutzt: ja}
+    - {text: 'T nicht algebraisch (folgt aus dem Wachstum)', benutzt: ja}
+    - {text: 'T = Kneser', benutzt: nein, notiz: 'jede reell-analytische Lösung genügt'}
+  aussage: '$N_d(H)\le c(d,\varepsilon)H^{\varepsilon}$ für jedes $\varepsilon>0$.'
+  beweis: {art: vollstaendig, text: 'Γ ist in $\mathbb R_{\mathrm{an}}$ definierbar mit leerem algebraischen Teil; Pila–Wilkie ($d=1$), Pila 2009 (allg. $d$).'}
+  stuetzt_sich_auf: [ar.satz.pila]
+  quellen: [{ref: justus_a1, stelle: 'Satz 5'}, {ref: pila_wilkie2006}, {ref: pila2009}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, direkte Anwendung von Pila–Wilkie.'
+    f2_benutzte_voraussetzungen: 'Nur reelle Analytizität auf $[0,1]$ und Transzendenz der Funktion.'
+    f3_spezialfall: Ja.
+    f4_uebertragbar: 'Alle reell-analytischen Lösungen (Klasse B), auch die mit $\tilde T(1/2)\in\mathbb Q$ aus ar.satz.keine_arith_info.'
+    f5_neue_frage: 'Schärfer mit tetrationsspezifischer Information → ar.satz.masser_typ'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Seltenheit algebraischer Punkte, unbedingt.', nutzen_stufe: mittel}
+
+- id: ar.satz.pila
+  titel: Pila–Wilkie und Pila (algebraische Punkte beschränkten Grades)
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  objekte: [hoehe, ominimal]
+  aussage: 'Für eine in einer o-minimalen Struktur definierbare Menge $X$ ist die Zahl der Punkte von $X\setminus X^{\mathrm{alg}}$ mit Grad $\le d$ und Höhe $\le H$ höchstens $c(X,d,\varepsilon)H^\varepsilon$.'
+  beweis: {art: literatur, text: 'Pila–Wilkie 2006; Pila 2009.'}
+  quellen: [{ref: pila_wilkie2006}, {ref: pila2009}]
+  pruefung: {f1_folgt_unmittelbar: Nein, f2_benutzte_voraussetzungen: 'o-Minimalität', f3_spezialfall: nein, f4_uebertragbar: 'jede definierbare Tetrationsrestriktion', f5_neue_frage: '—'}
+  bewertung: {richtigkeit: gesichert, neuheit: bekannt, nutzen: 'Zählwerkzeug.', nutzen_stufe: mittel}
+
+- id: ar.lem.nullstellen
+  titel: Nullstellenschranke für P(z, T_e(z)) (A1, Lemma 5.1)
+  art: lemma
+  ebene: B
+  status: skizze
+  objekte: [T_b, hoehe, transzendenz]
+  bereich: '$P\in\mathbb Z[X,Y]$, Grade $\le d$, Höhe $\le H$, Scheibe $D(1,1.2)$'
+  voraussetzungen:
+    - {text: 'T holomorph und beschränkt auf der abgeschlossenen Scheibe D̄(1, 2.9)', benutzt: ja}
+    - {text: 'T(1) = e (gilt für jede Lösung mit T(0)=1)', benutzt: ja}
+    - {text: 'T = Kneser', benutzt: nein, notiz: 'nur Holomorphie auf D̄(1,2.9) wird benutzt'}
+  aussage: '$F(z)=P(z,T(z))$ hat in $D(1,1.2)$ höchstens $c_1d^2\log(d+1)\log(H+2)+c_2d$ Nullstellen.'
+  beweis:
+    art: skizze
+    text: 'Jensen auf $D(1,2.9)$; untere Schranke bei $z=1$ über Mahlers Transzendenzmass für $e=T(1)$.'
+    luecken:
+      - 'Aus $\log((d+1)H)$ entsteht ein Term $d^2\log^2(d+1)$, der in der Schranke nicht explizit steht (für $H\ge d$ absorbierbar).'
+      - 'Konstanten nicht ausgeführt; Fall $P(1,Y)\equiv0$ nur skizziert.'
+  stuetzt_sich_auf: [kn.satz.kneser_eigenschaften]
+  quellen: [{ref: justus_a1, stelle: 'Lemma 5.1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein — Kombination Jensen + Transzendenzmass.'
+    f2_benutzte_voraussetzungen: 'Holomorphie auf einer Scheibe vom Radius > 1.2 um 1 und $T(1)=e$; Kneser nur für die Holomorphie.'
+    f3_spezialfall: 'Massers Methode für ζ (Transzendenzmass von π an geraden Stellen).'
+    f4_uebertragbar: 'Jede Lösung, die auf $\bar D(1,R)$, $R>1.2$, holomorph ist.'
+    f5_neue_frage: 'Polylog-Zählschranke → ar.satz.masser_typ'
+  bewertung: {richtigkeit: 'Skizze, Konstantenbuchhaltung offen', neuheit: vermutlich_neu, recherche: 'A1: keine tetrationsspezifische Vorlage bekannt.', nutzen: 'Schlüssel für die Polylog-Schranke.', nutzen_stufe: mittel}
+
+- id: ar.satz.masser_typ
+  titel: Polylogarithmische Zählschranke (A1, Satz 5b)
+  art: satz
+  ebene: B
+  status: skizze
+  objekte: [hoehe, T_b]
+  aussage: '$N_1(H)\le c(\log H)^\kappa$ für $H\ge3$ (rationale Punkte auf dem Graphen von $T_e$ über $[0,1]$); unoptimiert $\kappa\approx9$–10.'
+  beweis:
+    art: skizze
+    text: 'Bombieri–Pila-Lemma für analytische Funktionen (Masser, Boxall–Jones) + ar.lem.nullstellen mit $d\approx\log H/\log\log H$.'
+    luecken:
+      - 'Buchhaltung von κ nicht ausgeführt.'
+      - 'Höhenkontrolle der Hilfspolynome ($\log H(P)\le c''''d\log H$) übernommen, nicht nachgeprüft.'
+  stuetzt_sich_auf: [ar.lem.nullstellen, ar.satz.bpw]
+  quellen: [{ref: justus_a1, stelle: 'Satz 5b'}, {ref: masser2011}, {ref: boxall_jones2015}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, aber direkter Transfer der Masser-Methode.'
+    f2_benutzte_voraussetzungen: 'Holomorphie auf einer Scheibe und Transzendenzmass von $e$.'
+    f3_spezialfall: 'Ja: Instanz von Boxall–Jones-Sätzen für Funktionen mit Punkten bekannten Transzendenzmasses (zu prüfen, ob dort schon abgedeckt).'
+    f4_uebertragbar: 'Jede auf einer Scheibe um 1 holomorphe Lösung zur Basis $e$ — also nicht Kneser-spezifisch.'
+    f5_neue_frage: 'Gilt das auch für die exotischen Lösungen aus ar.satz.keine_arith_info? Wenn ja: Zählsätze sagen nichts über einzelne Werte.'
+  bewertung: {richtigkeit: 'Skizze', neuheit: neu_ungeprueft, nutzen: 'Stärkste unbedingte Aussage zur Arithmetik auf dem Graphen (falls vollständig).', nutzen_stufe: mittel}
+
+- id: ar.satz.funktional_ks
+  titel: Funktionale Kneser–Schanuel-Aussage
+  art: satz
+  ebene: B
+  status: bewiesen
+  objekte: [T_b, transzendenz]
+  bereich: 'stetige streng wachsende reelle Lösungen zur Basis $e$, paarweise verschiedene $c_i\in\mathbb R$'
+  voraussetzungen:
+    - {text: 'T stetig, streng wachsend (beliebige solche Lösung)', benutzt: ja}
+    - {text: 'T = Kneser (A1, Satz 6)', benutzt: nein, notiz: 'Wachstumsargument braucht nur Monotonie'}
+  aussage: '$T(x+c_1),\dots,T(x+c_n)$ sind algebraisch unabhängig über $\mathbb C(x)$ (als Keime bei $+\infty$).'
+  beweis: {art: vollstaendig, text: 'Für $c<c''$: $T(x+c'')\gg T(x+c)^N$, weil $T(y+\delta)-T(y)\to\infty$; dominantes Monom. Direkt für jede stetige streng wachsende Lösung: $m(\delta)=\min_{[0,1]}(T(y+\delta)-T(y))>0$ und $T(y+1+\delta)-T(y+1)\ge e^{T(y)}(e^{m}-1)$.'}
+  quellen: [{ref: justus_a1, stelle: 'Satz 6'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Wachstumsvergleich.'
+    f2_benutzte_voraussetzungen: 'Nur Monotonie und Stetigkeit; A1 formuliert für Kneser — unnötig eng.'
+    f3_spezialfall: 'Analog zu Ax'' funktionalem Schanuel.'
+    f4_uebertragbar: 'Alle stetigen wachsenden Lösungen (Klasse B).'
+    f5_neue_frage: 'Arithmetische Spezialisierung → ar.verm.ks'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Verortet (KS) als Spezialisierungsproblem.', nutzen_stufe: mittel}
+  versionen:
+    - {datum: '2026-09-06', fassung: 'A1 Satz 6', aenderung: 'für Kneser'}
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'auf alle stetigen streng wachsenden Lösungen erweitert'}
+
+- id: ar.verm.ks
+  titel: Kneser–Schanuel-Vermutung (KS)
+  art: vermutung
+  ebene: C
+  status: vermutung
+  objekte: [kneser_T, schanuel, transzendenz]
+  aussage: 'Für $x_1,\dots,x_n\in\mathbb R\setminus\mathbb Z$, $x_i>-2$, paarweise inkongruent mod $\mathbb Z$: $\operatorname{trdeg}_{\mathbb Q}\mathbb Q(x_i,T_e^{\mathrm K}(x_i))\ge n$. Für $n=1$: Ausnahmemenge $\{x\in\bar{\mathbb Q}:T_e(x)\in\bar{\mathbb Q}\}=\{-1,0\}$.'
+  gegenbeispielsuche: 'A1: LLL/PSLQ-Tests $n=1,2$ an Punkten $T_e(k/n)$ mit 509–1973 Stellen; keine Relation gefunden (ar.beob.ausschluss).'
+  stuetzt_sich_auf: [ar.satz.funktional_ks]
+  quellen: [{ref: justus_a1, stelle: 'D1, E'}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: 'Formal analog zu Schanuel; muss Kneser-spezifisch sein (ar.satz.keine_arith_info).'
+    f4_uebertragbar: 'Nicht auf beliebige Lösungen — für exotische Lösungen ist sie falsch.'
+    f5_neue_frage: 'Gibt es ein „Kneser-Ax-Schanuel“ für die komplexe Funktion, das die Spezialisierung trägt?'
+  bewertung: {richtigkeit: Vermutung, neuheit: neu_ungeprueft, nutzen: 'Richtiger Rahmen für Arithmetik der Kneser-Werte.', nutzen_stufe: mittel}
+
+- id: ar.beob.ausschluss
+  titel: T_e(1/2) ist nicht rational mit Nenner ≤ 10^983
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  objekte: [kneser_T, hoehe]
+  aussage: |
+    Aus 1973 Stellen: kein rationaler Wert mit Nenner $\le10^{983}$ (1936 Kettenbruchglieder), nicht algebraisch vom Grad
+    $d$ unter Höhen $10^{949}$ ($d=1$) … $10^{5}$ ($d=200$); keine Relation zu $e,\pi,\ln p,\gamma,\zeta(3),\Omega,L,\ldots$;
+    Kettenbruchstatistik generisch (Chintschin 2.650, Lévy 1.171).
+  experimente: []
+  quellen: [{ref: justus_a1, stelle: 'Teil A'}]
+  stuetzt_sich_auf: [kn.beob.referenzwerte]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; LLL-Zertifikat über Gram–Schmidt-Minimum.'
+    f2_benutzte_voraussetzungen: 'Richtigkeit der 1973 Stellen (Fehler-Vektor-Methode, nicht intervallzertifiziert).'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Gleiches Verfahren für $T_2(1/2)$.'
+    f5_neue_frage: 'Intervallzertifikat der Ziffern würde die Ausschlüsse rigoros machen.'
+  bewertung: {richtigkeit: 'rigoros relativ zu den Ziffern', neuheit: vermutlich_neu, recherche: 'A1.', nutzen: 'Stärkste Evidenz gegen niedrige algebraische Struktur.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: ar.verm.ks}
+
+- id: ar.frage.e_hoch_e
+  titel: Ist e^e = T_e(2) transzendent?
+  art: frage
+  ebene: X
+  status: offen
+  objekte: [transzendenz, schanuel]
+  aussage: 'Offen (folgt aus Schanuel). Die Frage nach $T_e(1/2)$ liegt jenseits davon.'
+  naechste_frage: 'Keine — klassisches offenes Problem.'
+  quellen: [{ref: justus_a1, stelle: 'Bemerkung nach Korollar 1'}]
+  kanten:
+    - {typ: verwandt, ziel: ar.satz.orbitschranke}
+
+- id: ar.satz.superwurzel_arith
+  titel: Superwurzeln natürlicher Zahlen sind ganz oder transzendent
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [superwurzel, transzendenz]
+  bereich: 'natürliche $n\ge1$, reelle $y>0$'
+  aussage: |
+    Ist $y^y=n$, so ist $y$ ganz oder transzendent. Ist $y^{y^y}=n$, so ist $y$ ganz oder irrational.
+    Ob die irrationalen dritten Superwurzeln (z. B. die von 2, $1.4766843\ldots$) transzendent sind, ist offen.
+  einfach: >-
+    Die Zahl y mit y hoch y gleich 2 (etwa 1.5596) ist kein Bruch und auch keine Wurzel aus einer Gleichung mit ganzen Zahlen — sie ist
+    transzendent. Beim Dreierturm weiss man nur noch, dass sie kein Bruch ist.
+  beweis:
+    art: vollstaendig
+    text: |
+      (1) $y=p/q$ gekürzt, $q>1$: aus $(p/q)^{p/q}=n$ folgt $p^p=n^q q^p$, also $q^p\mid p^p$ — unmöglich, da $\operatorname{ggT}(p,q)=1$.
+      Ist $y$ algebraisch irrational, so ist $y^y$ nach Gelfond–Schneider transzendent, also $\ne n$.
+      (2) $y=p/q$ gekürzt, $q>1$: $y^y$ ist algebraisch. Ist $y^y$ irrational, so ist $y^{y^y}$ transzendent (Gelfond–Schneider mit Basis $y$, Exponent $y^y$).
+      Ist $y^y=s/t$ rational (gekürzt), so folgt aus $(p/q)^p=(s/t)^q$ durch Vergleich gekürzter Brüche $q^p=t^q$; wegen $\operatorname{ggT}(p,q)=1$ ist
+      jeder Primexponent von $q$ durch $q$ teilbar, also $q=m^q\ge2^q>q$ — Widerspruch. Für algebraisch irrationales $y$ ist $y^y$ transzendent und
+      Gelfond–Schneider sagt über $y^{y^y}$ nichts — daher nur „irrational“.
+  stuetzt_sich_auf: [ar.satz.gelfond_schneider]
+  experimente: [exp.superwurzel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Gelfond–Schneider plus Teilbarkeit.'
+    f2_benutzte_voraussetzungen: 'Nur dass $n$ natürlich ist; für rationale $n$ geht dieselbe Rechnung vermutlich durch (nicht ausgeführt).'
+    f3_spezialfall: 'Ja: Gelfond–Schneider-Anwendung wie ${}^2\sqrt2$ transzendent.'
+    f4_uebertragbar: 'Auf ${}^n y=N$ für $n\ge3$: dieselbe Lücke wie bei (2); Transzendenz bräuchte Schanuel (ar.verm.schanuel).'
+    f5_neue_frage: 'Folgt aus Schanuel, dass die dritte Superwurzel von 2 transzendent ist?'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Elementares Beispiel für die Grenze von Gelfond–Schneider.', nutzen_stufe: gering}
+  quellen: [{ref: wikipedia_tetration, stelle: 'Abschnitt Super-root (ohne Beweis)'}, {ref: diese_arbeit, stelle: 'Beweis'}]
+  kanten:
+    - {typ: verwandt, ziel: gr.satz.superwurzel}
+    - {typ: verwandt, ziel: ar.verm.schanuel}
+
+- id: ar.satz.rationale_tuerme
+  titel: 'Türme rationaler Zahlen: q^q irrational, q^q^q transzendent'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [transzendenz, turm]
+  bereich: 'rationale $q>0$, nicht ganz'
+  aussage: |
+    Ist $q>0$ rational, aber nicht ganz, so ist ${}^2q=q^q$ algebraisch und irrational, und ${}^3q=q^{q^q}$ ist transzendent.
+    Für ${}^4q$ und höher sagt Gelfond–Schneider nichts mehr.
+  einfach: >-
+    (1/2)^(1/2) ist eine Wurzel, also kein Bruch. Und (1/2)^((1/2)^(1/2)) ist sogar transzendent — wie π oder e. Ab dem vierten Stockwerk weiss man nichts mehr.
+  beweis:
+    art: vollstaendig
+    text: '$q=p/s$ gekürzt, $s\ge2$. Wäre $q^q=u/v$ rational (gekürzt), so gäbe Hoch-$s$-Nehmen $p^p/s^p=u^s/v^s$, also $s^p=v^s$; mit $\operatorname{ggT}(p,s)=1$ folgt $s=m^s\ge2^s>s$ — Widerspruch. $q^q$ ist algebraisch (Wurzel aus $p^p/s^p$). Dann ist $q^{(q^q)}$ nach Gelfond–Schneider transzendent (Basis $q\ne0,1$ algebraisch, Exponent algebraisch irrational).'
+  stuetzt_sich_auf: [ar.satz.gelfond_schneider]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (Teilbarkeit + Gelfond–Schneider).'
+    f2_benutzte_voraussetzungen: '$q$ rational, nicht ganz.'
+    f3_spezialfall: 'Gleiche Rechnung wie ar.satz.superwurzel_arith.'
+    f4_uebertragbar: 'Auf algebraische irrationale $q$: dann ist schon $q^q$ transzendent, über ${}^3q$ weiss man nichts.'
+    f5_neue_frage: 'Ist ${}^4(1/2)$ transzendent? Folgt aus Schanuel (ar.verm.schanuel).'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Zeigt genau, wie weit Gelfond–Schneider in einem Turm trägt.', nutzen_stufe: gering}
+  quellen: [{ref: wikipedia_tetration, stelle: 'Open questions'}, {ref: diese_arbeit, stelle: 'Beweis'}]
+  kanten:
+    - {typ: verwandt, ziel: ar.satz.superwurzel_arith}
+
+- id: ar.frage.ganze_tuerme
+  titel: 'Offene Zahlenfragen: ist ⁴π oder ⁵e ganz? Ist ⁿq je rational?'
+  art: frage
+  ebene: X
+  status: offen
+  niveau: vertiefung
+  objekte: [transzendenz, turm]
+  aussage: |
+    Offen sind (Wikipedia, Abschnitt „Open questions“): Ist ${}^4\pi$ oder ${}^5e$ eine ganze Zahl? Ist ${}^nq$ für rationales, nicht ganzes $q$ und $n\ge4$ je rational?
+    Ist die positive Lösung von ${}^nx=2$ für $n\ge4$ rational? Bekannt: für $n=2$ transzendent, für $n=3$ irrational (ar.satz.superwurzel_arith); ${}^2q$ irrational,
+    ${}^3q$ transzendent (ar.satz.rationale_tuerme).
+  naechste_frage: 'Alle Fragen folgen aus Schanuel; ohne Schanuel ist schon $e^e$ offen (ar.frage.e_hoch_e).'
+  quellen: [{ref: wikipedia_tetration, stelle: 'Open questions'}]
+  kanten:
+    - {typ: verwandt, ziel: ar.frage.e_hoch_e}
+    - {typ: verwandt, ziel: ar.satz.rationale_tuerme}
+
+# ================================================================== Forum-Abgleich 10.10.2026
+- id: ar.satz.ef_liouville
+  titel: 'Die Summe der Kehrwerte der exponentiellen Fakultät ist eine Liouville-Zahl'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [transzendenz]
+  aussage: |
+    Die exponentielle Fakultät $\mathrm{EF}(n)=n^{\mathrm{EF}(n-1)}$, $\mathrm{EF}(1)=1$, ist ein Turm aus absteigenden Zahlen: $1,\,2,\,9,\,262144,\,5^{262144},\dots$ Die Summe
+    $$\sum_{n\ge1}\frac1{\mathrm{EF}(n)}=1.6111149258083767361111\ldots$$
+    ist eine Liouville-Zahl, also transzendent: Die Teilsumme bis $n=4$ (Nenner $q=4718592$) trifft sie bis auf $5^{-262144}\approx q^{-27455}$.
+  einfach: >-
+    Statt immer dieselbe Zahl zu stapeln, stapelt man n, n−1, …, 2, 1. Die Kehrwerte werden so schnell klein, dass ihre Summe von Brüchen unnatürlich gut
+    angenähert wird — und solche Zahlen sind nach Liouville nie algebraisch.
+  beweis:
+    art: vollstaendig
+    text: |
+      Teilsumme $p_N/q_N$ mit $q_N\mid\mathrm{EF}(1)\cdots\mathrm{EF}(N)\le\mathrm{EF}(N)^N$. Der Rest ist $<2/\mathrm{EF}(N+1)=2/(N+1)^{\mathrm{EF}(N)}$, und das ist kleiner als $q_N^{-k}$ für jedes
+      feste $k$, sobald $N$ gross ist ($\mathrm{EF}(N)\gg kN\log\mathrm{EF}(N)$). Liouville: Solche Zahlen sind transzendent.
+  experimente: [exp.forum_rand]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Liouville-Kriterium.'
+    f2_benutzte_voraussetzungen: 'Nur das Wachstum von EF.'
+    f3_spezialfall: 'Ja: Σ 1/(b↑↑n) ist aus demselben Grund eine Liouville-Zahl.'
+    f4_uebertragbar: 'Jede Summe 1/a_n mit a_{n+1} ≥ a_n^{f(n)}, f → ∞.'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Ein sicheres Transzendenz-Ergebnis aus der Turm-Welt.', nutzen_stufe: gering}
+  quellen: [{ref: forum_tid361}, {ref: wikipedia_ef}]
+  kanten:
+    - {typ: verwandt, ziel: ar.satz.hermite_lindemann}
+
+- id: ar.frage.ef_fortsetzung
+  titel: 'TPID 2: Gibt es eine natürliche glatte exponentielle Fakultät — und ist dann EF(0) = γ?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [transzendenz]
+  aussage: |
+    $\mathrm{EF}(x)=x^{\mathrm{EF}(x-1)}$ für reelle $x$ verlangt, wie die Tetration, eine Zusatzbedingung. Vermutung im Forum (TPID 2): Unter totaler Monotonie
+    (wie Szekeres' Kennzeichnung, it.satz.szekeres_monoton) gibt es genau eine Lösung, und für sie wäre $\mathrm{EF}(0)$ die Euler–Mascheroni-Konstante $\gamma=0.5772\ldots$
+  einfach: >-
+    Wie bei der Tetration fragt man, wie die exponentielle Fakultät zwischen den ganzen Zahlen weitergeht. Eine Forumsvermutung sagt: Mit einer natürlichen
+    Glattheitsbedingung gibt es genau eine Antwort, und bei 0 käme die Eulersche Konstante heraus.
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, offen.'
+    f2_benutzte_voraussetzungen: 'Totale Monotonie als Eindeutigkeitsbedingung.'
+    f3_spezialfall: 'Analog zu Gamma (Bohr–Mollerup) und Tetration.'
+    f4_uebertragbar: 'Auf andere „Fakultäten“ von Hyperoperationen.'
+    f5_neue_frage: 'Woher sollte γ kommen?'
+  bewertung: {richtigkeit: offen, neuheit: bekannt, nutzen: 'Zeigt dasselbe Eindeutigkeitsproblem an einem Nachbarobjekt.', nutzen_stufe: gering}
+  quellen: [{ref: forum_tpid}, {ref: forum_tid361}]
+  kanten:
+    - {typ: analog_zu, ziel: br.frage.bohr_mollerup}

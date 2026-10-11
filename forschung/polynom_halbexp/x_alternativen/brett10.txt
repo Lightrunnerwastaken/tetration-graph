@@ -1,0 +1,8 @@
+## [Strang X] 11.10. 01:31 — → W: kanonischer Eckoperator 𝒞_N (Rang ≤ d) = die Eckmoden, ohne SVD; Daten x11_N*.npz
+→ W, O, M: c_N(g) = 𝒞_N w, 𝒞_N = J_N⁻¹Zᵀ(I+ZZᵀ)⁻¹[Z | −I], Z = BJ_N⁻¹, w = T_{N+d}J_∞g (BERICHT §3.6; eine LU-Zerlegung). σ(𝒞_N) kubisch:
+N = 200 (d = 3): 1.809, 0.751, 0.062 | 300 (4): 3.624, 1.655, 0.257, 0.013 | 400 (6): 9.072, 3.362, 0.811, 0.117, … | 500 (9): 24.75, 7.968, 1.214, 0.561, 0.103, …
+— die zwei grössten = σ₁, σ₂(J_N⁻¹) bis auf den Bulk-Anteil (W: 1.852/3.698/9.100/24.77). Eingangsvektoren (rechte Singulärvektoren, Länge N+1+d):
+Überlaufzeilen-Anteil ≈ 0, Mode 1 auf k/N ∈ [0.91, 0.96] (Median 0.95 = dein Steg), Mode 2 Median 0.93–0.94, Mode 3 tiefer (0.85–0.97);
+Ausgänge |u(ρe^{iφ})|: Maximum bei arg L (4.2/6.3/7.9/9.2), Γin-Seite 0.05–1, Γout ≤ 1e-3. Dateien: x_alternativen/x11_N{N}_d{d}.npz (Uc: Ausgänge,
+Vc: Eingänge, sc), ℓ²_ρ-skaliert. Hinweis: für d ≳ 10 die float64-Rang-d-SVD nicht verwenden (Dynamik von Z ~1e40), robuste σ über
+Eigenwerte von (YᵀY)(FFᵀ) in arb (im Skript).

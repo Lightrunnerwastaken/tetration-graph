@@ -1,0 +1,309 @@
+# Theorie-Blöcke für das Gebiet Arithmetik (ar), Etappe 4: Kapitel 9.
+
+ar.satz.hermite_lindemann:
+  worum: |
+    Der wichtigste klassische Satz über die Exponentialfunktion und Zahlen: Setzt man eine algebraische Zahl (ausser $0$) in $e^x$ ein, kommt nie eine algebraische Zahl heraus.
+    Für Türme zur Basis $e$ ist das fast das einzige Werkzeug, das ohne Vermutungen auskommt.
+  genau: |
+    Ist $\alpha\ne0$ algebraisch, so ist $e^\alpha$ transzendent (Lindemann 1882).
+  warum: |
+    Literatursatz; der Beweis (Hermite für $e$, Lindemann allgemein) baut Hilfspolynome, deren Werte gleichzeitig ganzzahlig und sehr klein wären — ein Widerspruch.
+    Ein Spezialfall des Satzes von Lindemann–Weierstraß.
+  beispiel: |
+    $e$, $e^{\sqrt2}$ und $e^{i}$ sind transzendent. Umgekehrt gelesen: $\ln2$ ist transzendent, denn sonst wäre $e^{\ln2}=2$ transzendent. Und $\pi$: wäre $i\pi$ algebraisch, wäre $e^{i\pi}=-1$ transzendent.
+  einordnung: |
+    Für Türme reicht er genau einen Schritt weit ([[ar.satz.orbitschranke]]); schon $e^e$ liegt ausser Reichweite ([[ar.frage.e_hoch_e]]).
+
+ar.satz.gelfond_schneider:
+  worum: |
+    Das Gegenstück für algebraische Basen: Eine algebraische Basis hoch einen algebraischen, irrationalen Exponenten ist immer transzendent. Damit ist der
+    zweistöckige Turm $\sqrt2^{\sqrt2}$ transzendent — beim dreistöckigen hilft der Satz schon nicht mehr.
+  genau: |
+    Sind $a,c$ algebraisch, $a\notin\{0,1\}$ und $c$ irrational, so ist $a^c$ transzendent (Gelfond, Schneider 1934).
+  warum: |
+    Literatursatz (Hilberts siebtes Problem), mit derselben Methode der Hilfsfunktionen wie Hermite–Lindemann.
+  beispiel: |
+    ${}^2(\sqrt2)=\sqrt2^{\sqrt2}=1.63252691944\ldots$ ist transzendent. Für ${}^3(\sqrt2)=\sqrt2^{\sqrt2^{\sqrt2}}$ ist der Exponent bereits transzendent — der Satz ist nicht anwendbar, die Frage offen.
+  einordnung: |
+    Folgerung für Türme mit algebraischer Basis: [[ar.satz.algebraische_basen]].
+
+ar.verm.schanuel:
+  worum: |
+    Die grosse Vermutung der Transzendenztheorie. Sie würde fast alle offenen Fragen über $e$, $\pi$ und ihre Kombinationen beantworten — auch die über Türme.
+  genau: |
+    **Vermutung** (Schanuel). Sind $x_1,\dots,x_n\in\mathbb C$ linear unabhängig über $\mathbb Q$, so hat der Körper $\mathbb Q(x_1,\dots,x_n,e^{x_1},\dots,e^{x_n})$ Transzendenzgrad mindestens $n$ — unter den $2n$ Zahlen sind mindestens $n$ algebraisch unabhängig.
+  warum: |
+    Offen seit den 1960er-Jahren; keine Gegenbeispiele. Sie umfasst Lindemann–Weierstraß (alle $x_i$ algebraisch) als bewiesenen Spezialfall.
+  beispiel: |
+    Mit $x_1=1$, $x_2=i\pi$ (linear unabhängig): Unter $1,i\pi,e,-1$ wären zwei algebraisch unabhängig — also $e$ und $\pi$. Das ist bis heute unbewiesen.
+  einordnung: |
+    Was sie für Türme liefert: [[ar.satz.schanuel_orbit]]; insbesondere $e^e$ transzendent ([[ar.frage.e_hoch_e]]). Das Gegenstück für Kneser-Werte: [[ar.verm.ks]].
+
+ar.frage.e_hoch_e:
+  worum: |
+    Die Grenze des heute Beweisbaren liegt schon beim zweiten Stockwerk: Niemand weiss, ob $e^e$ transzendent ist — ja nicht einmal, ob es irrational ist.
+  genau: |
+    Ist $e^e=T_e(2)$ transzendent? Offen; es folgt aus Schanuels Vermutung. Die Frage nach $T_e(\tfrac12)$ liegt noch weiter jenseits.
+  warum: |
+    Hermite–Lindemann braucht einen algebraischen Exponenten; $e$ ist transzendent. Gelfond–Schneider braucht eine algebraische Basis. Beides fehlt bei $e^e$.
+  beispiel: |
+    $e^e=15.15426224\ldots$ Bewiesen ist nicht einmal, dass diese Zahl irrational ist. Ebenso offen sind $\pi^e$, $e^{\pi^2}$ und $\pi^\pi$ — während $e^\pi$ als $(-1)^{-i}$ nach Gelfond–Schneider transzendent ist.
+  einordnung: |
+    Klassisches offenes Problem. Unbedingt geht nur [[ar.satz.orbitschranke]]; bedingt [[ar.satz.schanuel_orbit]].
+
+ar.satz.orbitschranke:
+  worum: |
+    Was die Gleichung $T(x+1)=e^{T(x)}$ zusammen mit Hermite–Lindemann erzwingt: Zwei benachbarte Turmwerte können nicht beide algebraisch sein — ausser $0$ und $1$.
+  genau: |
+    Ist $T(x+1)=e^{T(x)}$ an einer Stelle $x$ und sind $T(x)$ und $T(x+1)$ beide algebraisch, so ist $T(x)=0$ und $T(x+1)=1$.
+  warum: |
+    Ist $T(x)$ algebraisch und $\ne0$, dann ist $e^{T(x)}=T(x+1)$ nach Hermite–Lindemann transzendent. Bleibt nur $T(x)=0$.
+  beispiel: |
+    $T(-1)=0$, $T(0)=1$ — das einzige algebraische Nachbarpaar. Bei jeder anderen Höhe ist von $T(x)$ und $T(x+1)$ mindestens einer transzendent.
+  einordnung: |
+    Gilt für jede Funktion mit der Gleichung an einer Stelle, nicht nur für Kneser. Folgerung: [[ar.kor.benachbart]]. Mehr gibt die unbedingte Theorie nicht ([[ar.frage.e_hoch_e]]).
+
+ar.kor.benachbart:
+  worum: |
+    Für jede wachsende Tetration zur Basis $e$ gilt: Von zwei Werten im Abstand $1$ ist mindestens einer transzendent — überall ausser bei $-1$ und $0$.
+  genau: |
+    Für reelle Lösungen zur Basis $e$ mit einziger Nullstelle bei $-1$ (z. B. streng wachsend) und $x>-2$, $x\notin\{-1,0\}$ ist mindestens einer der Werte $T(x)$, $T(x+1)$ transzendent.
+  warum: |
+    Für $x\ne-1$ ist $T(x)\ne0$; dann [[ar.satz.orbitschranke]].
+  beispiel: |
+    Kneser: $T_e(\tfrac12)=1.6463542\ldots$ oder $T_e(\tfrac32)=e^{1.6463542\ldots}=5.1880\ldots$ — mindestens eine der beiden Zahlen ist transzendent. Welche, weiss man nicht.
+  einordnung: |
+    In A1 für Kneser formuliert, gilt aber für jede streng wachsende Lösung — auch linear und regulär.
+
+ar.satz.schanuel_orbit:
+  worum: |
+    Was Schanuels Vermutung für Türme hiesse: In einer Kette $T(x),T(x+1),T(x+2),\dots$ ist höchstens ein einziger Wert algebraisch.
+  genau: |
+    **Bedingt (Schanuel).** Für algebraisches $\alpha\ne0$ sind $e^\alpha,e^{e^\alpha},\dots,\exp^{\circ n}\alpha$ algebraisch unabhängig. Folglich enthält $\{T(x+k)\}_k$ höchstens einen algebraischen Wert,
+    sofern der Orbit keine Nullstelle trifft.
+  warum: |
+    1. Setze $x_1=\alpha$, $x_{j+1}=e^{x_j}$. Dann ist $\{x_1,\dots,x_n,e^{x_1},\dots,e^{x_n}\}=\{\alpha,e^\alpha,\dots,\exp^{\circ n}\alpha\}$.
+    2. Induktion: Sind $e^\alpha,\dots,\exp^{\circ(n-1)}\alpha$ algebraisch unabhängig, sind $x_1,\dots,x_n$ linear unabhängig über $\mathbb Q$.
+    3. Schanuel gibt Transzendenzgrad $\ge n$; weil $\alpha$ algebraisch ist, müssen die $n$ übrigen Zahlen unabhängig sein.
+    4. Wären $T(x+j)$ und $T(x+k)$, $j<k$, beide algebraisch, wäre mit $\alpha=T(x+j)$ auch $\exp^{\circ(k-j)}\alpha$ algebraisch — Widerspruch.
+  einordnung: |
+    Eine bekannte Folgerung aus Schanuel. Über mehrere Bahnen hinweg: [[ar.verm.ks]].
+
+ar.satz.algebraische_basen:
+  worum: |
+    Bei algebraischen Basen wie $2$ oder $\sqrt2$ hilft Gelfond–Schneider einen Schritt weit: Ein algebraischer, irrationaler Turmwert macht den nächsten transzendent.
+  genau: |
+    Für algebraisches $b>1$: (i) Ist $T_b(x)$ algebraisch und irrational, dann ist $T_b(x+1)$ transzendent. (ii) Ist $T_b(x)=p/q$ rational, dann ist $T_b(x+1)=b^{p/q}$ algebraisch.
+  warum: |
+    (i) ist Gelfond–Schneider mit $a=b$, $c=T_b(x)$. (ii) ist direkt: eine rationale Potenz einer algebraischen Zahl ist algebraisch.
+  beispiel: |
+    Basis $2$: Wo $T_2(x)=\tfrac12$ ist, gilt $T_2(x+1)=\sqrt2$ (algebraisch) und $T_2(x+2)=2^{\sqrt2}$ (transzendent).
+  einordnung: |
+    Anders als bei Basis $e$ dürfen hier zwei Nachbarn algebraisch sein — rationale Werte sind die Hintertür. Vergleich: [[ar.satz.orbitschranke]].
+
+ar.satz.keine_arith_info:
+  worum: |
+    Eine wichtige Warnung: Die reelle Gleichung allein sagt nichts über die Zahlenart der Werte. Man kann eine glatte, wachsende Tetration bauen, die bei $\tfrac12$ jeden
+    gewünschten Wert zwischen $1$ und $e$ hat — auch einen rationalen.
+  genau: |
+    Für jedes $r\in(1,e)$ gibt es eine reell-analytische, streng wachsende Tetration zur Basis $e$ mit $\tilde T(\tfrac12)=r$ (A1, Satz 4).
+  warum: |
+    Man nimmt Knesers $T$ und verschiebt die Höhe periodisch: $\tilde T=T\circ(\mathrm{id}+\theta)$ mit 1-periodischem, analytischem $\theta$, $\theta(0)=0$, $\theta(\tfrac12)=\operatorname{slog}_e(r)-\tfrac12$ und $1+\theta'>0$.
+    Das löst die Gleichung weiter ([[fg.satz.allgemeine_loesung]]) und bleibt wachsend.
+  beispiel: |
+    Es gibt eine reell-analytische, wachsende Tetration zur Basis $e$ mit $\tilde T(\tfrac12)=\tfrac32$ genau. Zur Basis $\sqrt2$ sind zwei solche Lösungen ausgerechnet ([[exp.nichteindeutigkeit]]).
+  einordnung: |
+    Folge: Jeder Beweis über $T_e^{\mathrm K}(\tfrac12)$ muss Knesers komplexe Bedingungen benutzen ([[kn.satz.paulsen_cowgill]]). Allgemein: [[fg.kor.nichteindeutigkeit]].
+
+ar.satz.bpw:
+  worum: |
+    Auf dem Graphen einer Tetration liegen nur sehr wenige Punkte mit einfachen Koordinaten. Zählt man rationale Punkte mit Zähler und Nenner bis $H$, wächst ihre Zahl
+    langsamer als jede noch so kleine Potenz von $H$.
+  genau: |
+    Für $\Gamma=\{(x,T(x)):x\in[0,1]\}$ und $N_d(H)$ = Zahl der Punkte von $\Gamma$ mit Koordinaten vom Grad $\le d$ und Höhe $\le H$ gilt $N_d(H)\le c(d,\varepsilon)H^\varepsilon$ für jedes $\varepsilon>0$.
+  warum: |
+    $\Gamma$ ist ein Stück eines reell-analytischen Graphen auf einem kompakten Intervall, also in der Struktur $\mathbb R_{\mathrm{an}}$ definierbar. Es enthält kein algebraisches Kurvenstück, weil $T$ keine
+    algebraische Funktion ist (sie wächst zu schnell). Dann greift Pila–Wilkie ([[ar.satz.pila]]).
+  beispiel: |
+    Die Gerade $y=x$ hat bis zur Höhe $H$ etwa $H^2$ rationale Punkte, die Parabel $y=x^2$ und der Einheitskreis etwa $H$. Der Tetrationsgraph hat für grosses $H$ weniger als $H^{0.01}$, weniger als $H^{0.001}$, …
+  einordnung: |
+    Gilt für jede reell-analytische Lösung, auch die exotischen aus [[ar.satz.keine_arith_info]]. Schärfer mit Wissen über die Tetration: [[ar.satz.masser_typ]].
+
+ar.satz.pila:
+  worum: |
+    Ein Zählsatz aus der Logik: Auf „zahmen“ Mengen (definierbar in einer o-minimalen Struktur) liegen ausserhalb der algebraischen Stücke nur wenige algebraische Punkte.
+  genau: |
+    Ist $X$ in einer o-minimalen Struktur definierbar, so ist die Zahl der Punkte von $X\setminus X^{\mathrm{alg}}$ mit Grad $\le d$ und Höhe $\le H$ höchstens $c(X,d,\varepsilon)H^\varepsilon$ (Pila–Wilkie 2006, Pila 2009).
+  warum: |
+    Literatursatz. Idee: Man überdeckt $X$ mit wenigen Stücken, auf denen alle Punkte kleiner Höhe auf einer algebraischen Hyperfläche kleinen Grades liegen (Bombieri–Pila-Determinante);
+    $X$ ohne algebraische Teile schneidet so eine Fläche nur in wenigen Punkten.
+  einordnung: |
+    Das Zählwerkzeug hinter [[ar.satz.bpw]]. Welche Strukturen o-minimal sind, und warum Tetration in $\mathbb R_{\mathrm{an},\exp}$ nicht hineinpasst: [[br.satz.nicht_definierbar]].
+
+ar.lem.nullstellen:
+  worum: |
+    Ein Hilfssatz für die schärfere Zählschranke: Ein Polynom in $z$ und $T(z)$ kann nicht zu viele Nullstellen in einer Scheibe haben — sonst wäre es zu klein, um an der Stelle $z=1$
+    (wo $T(1)=e$ ist) den Wert zu haben, den $e$ als transzendente Zahl erzwingt.
+  genau: |
+    **Skizze.** Für $P\in\mathbb Z[X,Y]$ mit Graden $\le d$ und Höhe $\le H$ hat $F(z)=P(z,T(z))$ in der Scheibe $D(1,1.2)$ höchstens $c_1d^2\log(d+1)\log(H+2)+c_2d$ Nullstellen (A1, Lemma 5.1).
+  warum: |
+    1. Jensen-Formel auf der grösseren Scheibe $D(1,2.9)$: viele Nullstellen zwingen $|F(1)|$ klein, weil $|F|$ auf dem Rand beschränkt ist.
+    2. Untere Schranke: $F(1)=P(1,e)$, und Mahlers Transzendenzmass für $e$ sagt, wie klein ein ganzzahliges Polynom in $e$ höchstens werden kann.
+    3. Beides zusammen begrenzt die Nullstellenzahl. Lücken: Konstanten nicht ausgeführt; ein Term $d^2\log^2(d+1)$ fehlt in der Schranke (für $H\ge d$ absorbierbar); der Fall $P(1,Y)\equiv0$ ist nur skizziert.
+  einordnung: |
+    Braucht nur Holomorphie auf $\bar D(1,2.9)$ ([[kn.satz.kneser_eigenschaften]]). Schlüssel für [[ar.satz.masser_typ]].
+
+ar.satz.masser_typ:
+  worum: |
+    Mit dem Nullstellen-Hilfssatz wird die Zählschranke viel schärfer: statt „kleiner als jede Potenz von $H$“ nur noch „eine Potenz von $\log H$“.
+  genau: |
+    **Skizze.** Für $H\ge3$ ist die Zahl der rationalen Punkte auf dem Graphen von $T_e$ über $[0,1]$ mit Höhe $\le H$ höchstens $c(\log H)^\kappa$; unoptimiert $\kappa\approx9$–10 (A1, Satz 5b).
+  warum: |
+    Methode von Masser (für die Zeta-Funktion) bzw. Boxall–Jones: Liegen viele rationale Punkte auf dem Graphen, gibt es ein Hilfspolynom kleiner Höhe, das an allen verschwindet; der Nullstellen-Hilfssatz mit
+    $d\approx\log H/\log\log H$ begrenzt, wie viele das sein können. Offen: Buchhaltung von $\kappa$, Höhenkontrolle der Hilfspolynome.
+  einordnung: |
+    Nicht Kneser-spezifisch — jede auf einer Scheibe um $1$ holomorphe Lösung geht. Gilt es auch für die exotischen Lösungen aus [[ar.satz.keine_arith_info]], dann sagen Zählsätze
+    nichts über einzelne Werte.
+
+ar.satz.funktional_ks:
+  worum: |
+    Als Funktionen betrachtet sind verschobene Tetrationen $T(x+c_1),T(x+c_2),\dots$ völlig unabhängig: Keine Polynomgleichung verbindet sie. Der Grund ist schlicht das Wachstum —
+    jede Verschiebung nach rechts wächst unvergleichlich schneller.
+  genau: |
+    Für jede stetige, streng wachsende reelle Lösung zur Basis $e$ und paarweise verschiedene $c_i$ sind $T(x+c_1),\dots,T(x+c_n)$ algebraisch unabhängig über $\mathbb C(x)$ (als Keime bei $+\infty$).
+  warum: |
+    1. Für $c<c'$ gilt $T(x+c')\gg T(x+c)^N$ für jedes $N$: Mit $m=\min_{[0,1]}(T(y+\delta)-T(y))>0$ ist $T(y+1+\delta)-T(y+1)\ge e^{T(y)}(e^m-1)$, der Abstand wächst also turmartig.
+    2. In einem Polynom $P(x,T(x+c_1),\dots)$ gibt es dann ein Monom, das alle anderen überwiegt; $P$ kann nicht identisch verschwinden.
+  einordnung: |
+    Analog zu Ax' funktionalem Schanuel. Die arithmetische Spezialisierung (Werte an einzelnen Stellen) ist die Vermutung [[ar.verm.ks]].
+
+ar.verm.ks:
+  worum: |
+    Eine Schanuel-artige Vermutung für Knesers Tetration: Ihre Werte an verschiedenen Stellen sind so unabhängig, wie es nur geht. Für eine einzelne Stelle hiesse das: $T_e(x)$
+    ist nur bei $x=-1$ und $x=0$ algebraisch, wenn $x$ algebraisch ist.
+  genau: |
+    **Vermutung (KS).** Für $x_1,\dots,x_n\in\mathbb R\setminus\mathbb Z$, $x_i>-2$, paarweise inkongruent modulo $1$: $\operatorname{trdeg}_{\mathbb Q}\mathbb Q(x_i,T_e^{\mathrm K}(x_i))\ge n$. Für $n=1$: Die Ausnahmemenge
+    $\{x\in\bar{\mathbb Q}:T_e(x)\in\bar{\mathbb Q}\}$ ist $\{-1,0\}$.
+  warum: |
+    Gestützt durch Tests (LLL/PSLQ mit 509–1973 Stellen an Punkten $T_e(k/n)$, keine Relation) und durch das funktionale Gegenstück ([[ar.satz.funktional_ks]]). Sie muss Kneser-spezifisch sein:
+    Für die exotischen Lösungen aus [[ar.satz.keine_arith_info]] ist sie falsch.
+  einordnung: |
+    Numerische Stütze: [[ar.beob.ausschluss]]. Offen: ein „Kneser-Ax-Schanuel“ für die komplexe Funktion, das die Spezialisierung trägt.
+
+ar.beob.ausschluss:
+  worum: |
+    Ist $T_e(\tfrac12)$ vielleicht ein einfacher Bruch oder eine einfache algebraische Zahl? Mit fast 2000 Stellen kann man das für riesige Nenner und Höhen ausschliessen.
+  genau: |
+    Aus 1973 Stellen von $T_e(\tfrac12)$: kein rationaler Wert mit Nenner $\le10^{983}$ (1936 Kettenbruchglieder); nicht algebraisch vom Grad $d$ unter Höhen $10^{949}$ ($d=1$) bis $10^5$ ($d=200$); keine Relation
+    zu $e,\pi,\ln p,\gamma,\zeta(3),\Omega,L,\dots$; Kettenbruch-Statistik generisch (Chintschin-Mittel $2.650$, Lévy-Konstante $1.171$).
+  warum: |
+    1. Ein Bruch $p/q$ mit $|T-p/q|<1/(2q^2)$ taucht als Kettenbruch-Näherung auf; die Kettenbruchentwicklung aus 1973 Stellen enthält keinen solchen mit kleinem $q$.
+    2. Für algebraische Zahlen höheren Grades sucht der LLL-Algorithmus kurze ganzzahlige Relationen; das Gram–Schmidt-Minimum zertifiziert, dass keine unter der Höhenschranke existiert.
+    3. Rigoros relativ zu den Ziffern — die selbst sind nicht intervallzertifiziert.
+  beispiel: |
+    Für eine „typische“ reelle Zahl ist das geometrische Mittel der Kettenbruchglieder die Chintschin-Konstante $2.685$; gemessen $2.650$ — unauffällig.
+  einordnung: |
+    Stützt [[ar.verm.ks]]. Die Ziffern: [[kn.beob.referenzwerte]]. Ein Intervallzertifikat der Ziffern würde die Ausschlüsse rigoros machen.
+
+ar.satz.superwurzel_arith:
+  worum: |
+    Die Zahl $y$ mit $y^y=2$ ist ungefähr $1.5596$. Ist sie vielleicht ein Bruch? Oder die Lösung einer Gleichung mit ganzen Zahlen,
+    wie $\sqrt2$? Nein: Sie ist **transzendent**. Das folgt in wenigen Zeilen aus einem berühmten Satz von Gelfond und Schneider.
+    Beim Dreierturm reicht dieser Satz nur noch für „kein Bruch“.
+  genau: |
+    Sei $n\ge1$ eine natürliche Zahl.
+    1. Ist $y>0$ mit $y^y=n$, so ist $y$ ganz oder transzendent.
+    2. Ist $y>0$ mit $y^{y^y}=n$, so ist $y$ ganz oder irrational.
+
+    Transzendent heisst: $y$ ist Nullstelle keines Polynoms mit ganzen Koeffizienten. Ob die irrationalen dritten Superwurzeln auch
+    transzendent sind, ist offen.
+  warum: |
+    Werkzeug ist **Gelfond–Schneider** ([[ar.satz.gelfond_schneider]]): Ist $a$ algebraisch ($\ne0,1$) und $c$ algebraisch, aber irrational,
+    so ist $a^c$ transzendent.
+
+    **Teil 1.** Angenommen $y=p/q$ ist ein gekürzter Bruch mit $q>1$. Aus $(p/q)^{p/q}=n$ folgt durch Hoch-$q$-Nehmen
+    $p^p/q^p=n^q$, also $p^p=n^q\,q^p$. Dann teilt $q^p$ die Zahl $p^p$ — unmöglich, weil $p$ und $q$ keinen gemeinsamen Teiler haben.
+    Also ist $y$ ganz oder irrational. Ist $y$ algebraisch und irrational, so ist $y^y$ nach Gelfond–Schneider transzendent, kann also
+    nicht $n$ sein. Bleibt: ganz oder transzendent.
+
+    **Teil 2.** Angenommen $y=p/q$ gekürzt, $q>1$. Dann ist $y^y$ algebraisch.
+    - Ist $y^y$ irrational, so ist $y^{y^y}$ (Basis $y$, Exponent $y^y$) nach Gelfond–Schneider transzendent — nicht $n$.
+    - Ist $y^y=s/t$ ein gekürzter Bruch, so gibt Hoch-$q$-Nehmen $p^p/q^p=s^q/t^q$. Beide Seiten sind gekürzt, also $q^p=t^q$.
+      Weil $p$ und $q$ teilerfremd sind, muss jeder Primfaktor von $q$ in einer durch $q$ teilbaren Potenz vorkommen: $q=m^q$ für eine
+      ganze Zahl $m\ge2$. Aber $m^q\ge2^q>q$ — Widerspruch.
+
+    Warum nicht mehr? Ist $y$ algebraisch irrational, so ist $y^y$ transzendent, und Gelfond–Schneider sagt über $y^{(\text{transzendent})}$ nichts.
+  beispiel: |
+    - $y^y=4$: $y=2$ (ganz). $y^y=27$: $y=3$.
+    - $y^y=2$: $y=1.5596104694\ldots$ ist transzendent. $y^y=10$: $y=2.5061841455\ldots$ ebenfalls.
+    - $y^{y^y}=2$: $y=1.4766843373\ldots$ ist irrational; ob transzendent, ist unbekannt.
+  einordnung: |
+    Eine kleine Anwendung desselben Satzes, der zeigt, dass $\sqrt2^{\sqrt2}$ transzendent ist. Die Lücke in Teil 2 ist von derselben Art
+    wie bei $e^e$ ([[ar.frage.e_hoch_e]]): Man bräuchte die Schanuel-Vermutung ([[ar.verm.schanuel]]). Die Superwurzeln selbst: [[gr.satz.superwurzel]].
+
+ar.satz.rationale_tuerme:
+  worum: |
+    Was passiert mit einem Bruch, wenn man ihn in einen Turm steckt? $(\tfrac12)^{1/2}=1/\sqrt2$ ist schon kein Bruch mehr. Ein Stockwerk höher wird es noch
+    „wilder“: $(\tfrac12)^{(1/2)^{1/2}}$ ist transzendent. Ab dem vierten Stockwerk weiss niemand mehr Bescheid.
+  genau: |
+    Sei $q>0$ rational, aber nicht ganz. Dann
+    - ist ${}^2q=q^q$ algebraisch und irrational,
+    - ist ${}^3q=q^{q^q}$ transzendent.
+
+    Über ${}^4q,{}^5q,\dots$ ist nichts bekannt.
+  warum: |
+    Schreibe $q=p/s$ gekürzt mit $s\ge2$.
+    1. **$q^q$ ist irrational:** Wäre $q^q=u/v$ ein gekürzter Bruch, gäbe Hoch-$s$-Nehmen $p^p/s^p=u^s/v^s$. Beide Seiten sind gekürzt, also $s^p=v^s$. Weil $p$ und $s$
+       teilerfremd sind, muss jeder Primfaktor von $s$ in einer durch $s$ teilbaren Potenz vorkommen: $s=m^s$ mit $m\ge2$. Aber $m^s\ge2^s>s$ — Widerspruch.
+    2. **$q^q$ ist algebraisch:** Es ist die $s$-te Wurzel aus $p^p/s^p$.
+    3. **$q^{q^q}$ ist transzendent:** Gelfond–Schneider ([[ar.satz.gelfond_schneider]]) mit Basis $q$ (algebraisch, nicht 0 oder 1) und Exponent $q^q$ (algebraisch, irrational).
+    4. **Warum es dann aufhört:** ${}^4q=q^{({}^3q)}$ hat einen transzendenten Exponenten; dafür gibt es keinen Satz.
+  beispiel: |
+    $q=\tfrac12$: ${}^2q=0.70711$ (das ist $1/\sqrt2$), ${}^3q=0.61254$ (transzendent), ${}^4q=0.65404$ (unbekannt).
+  einordnung: |
+    Dieselbe Rechnung wie bei den Superwurzeln ([[ar.satz.superwurzel_arith]]). Die offenen Fragen dahinter: [[ar.frage.ganze_tuerme]].
+
+ar.frage.ganze_tuerme:
+  worum: |
+    Über die Zahlen in Türmen weiss man erstaunlich wenig. Schon so einfache Fragen wie „Ist ${}^4\pi$ eine ganze Zahl?“ sind offen — nicht weil sie schwer klingen,
+    sondern weil man ${}^4\pi$ nicht einmal genau genug ausrechnen kann, um es zu prüfen.
+  genau: |
+    Offen (Wikipedia, „Open questions“):
+    - Ist ${}^4\pi$ oder ${}^5e$ eine ganze Zahl?
+    - Ist ${}^nq$ für rationales, nicht ganzes $q$ und $n\ge4$ je rational?
+    - Ist die positive Lösung von ${}^nx=2$ für $n\ge4$ rational?
+
+    Bekannt: ${}^2q$ irrational, ${}^3q$ transzendent ([[ar.satz.rationale_tuerme]]); Lösung von ${}^2x=2$ transzendent, von ${}^3x=2$ irrational ([[ar.satz.superwurzel_arith]]).
+  warum: |
+    ${}^4\pi=\pi^{\pi^{\pi^\pi}}$ ist ungefähr $10^{6.7\cdot10^{17}}$, hat also rund $6.7\cdot10^{17}$ Stellen vor dem Komma — man kann nicht einmal die letzte davon bestimmen. Und die
+    Transzendenzsätze (Gelfond–Schneider) reichen nur bis zu Exponenten, die selbst algebraisch sind.
+  einordnung: |
+    Alle diese Fragen würden aus der Schanuel-Vermutung folgen ([[ar.verm.schanuel]]); ohne sie ist schon $e^e$ offen ([[ar.frage.e_hoch_e]]).
+
+ar.satz.ef_liouville:
+  worum: |
+    Ein Turm aus absteigenden Zahlen — $n^{(n-1)^{\cdots^{2^1}}}$ — wächst so schnell, dass die Summe seiner Kehrwerte sicher transzendent ist.
+  genau: |
+    $$\sum_{n\ge1}\frac1{\mathrm{EF}(n)}=1+\frac12+\frac19+\frac1{262144}+\frac1{5^{262144}}+\dots=1.6111149258083767361111\ldots$$
+    ist eine Liouville-Zahl, also transzendent.
+  warum: |
+    1. Die Teilsummen sind Brüche mit Nenner höchstens $\mathrm{EF}(N)^N$.
+    2. Der Rest ist etwa $1/\mathrm{EF}(N+1)=(N+1)^{-\mathrm{EF}(N)}$ — kleiner als jede feste Potenz des Nenners.
+    3. Liouville: Eine Zahl, die so gut durch Brüche angenähert wird, ist nicht algebraisch.
+  beispiel: |
+    Nach vier Gliedern ist der Fehler $5^{-262144}$, der Nenner $4718592$: Das ist (Nenner)$^{-27455}$.
+  bilder: [exp.forum_rand]
+  einordnung: |
+    Leichter Transzendenzbeweis neben den schweren Sätzen in Kapitel 8 ([[ar.satz.hermite_lindemann]]).
+
+ar.frage.ef_fortsetzung:
+  worum: |
+    Dasselbe Problem wie bei der Tetration, an einem Nachbarobjekt: Wie setzt man $\mathrm{EF}(x)=x^{\mathrm{EF}(x-1)}$ glatt fort?
+  genau: |
+    Vermutung (Forum, TPID 2): Unter totaler Monotonie gibt es genau eine Fortsetzung, und dann ist $\mathrm{EF}(0)=\gamma=0.5772156649\ldots$
+  warum: |
+    Die Hoffnung kommt vom Vorbild der Gammafunktion, die durch logarithmische Konvexität eindeutig wird (Bohr–Mollerup). Belege gibt es keine.
+  beispiel: |
+    Ganze Werte: $\mathrm{EF}(1)=1$, $\mathrm{EF}(2)=2$, $\mathrm{EF}(3)=9$, $\mathrm{EF}(4)=262144$.
+  einordnung: |
+    Gegenstück zu [[br.frage.bohr_mollerup]].

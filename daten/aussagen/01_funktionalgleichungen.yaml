@@ -1,0 +1,289 @@
+gebiet: fg
+aussagen:
+
+- id: fg.def.tetration
+  titel: Tetrationsgleichung
+  art: definition
+  ebene: A
+  niveau: einstieg
+  status: definition
+  objekte: [tetrationsgleichung, T_b]
+  bereich: '$b>0,\ b\neq 1$; Lösung $F$ auf einem Intervall $I\subset\mathbb R$ oder Gebiet $D\subset\mathbb C$ mit $I+1\subset I$'
+  aussage: |
+    Eine **Tetration zur Basis $b$** ist eine Funktion $F$ mit
+    $F(x+1)=b^{F(x)}$ und $F(0)=1$, wobei $b^w:=e^{w\ln b}$ (Hauptzweig von $\ln b$).
+    Ohne Normierung heisst $F$ **Superfunktion** von $\exp_b$. Bezeichnung: $T_b$ für eine
+    (beliebige) Lösung, $T_b^{\mathrm K}$ für Knesers Lösung.
+  quellen: [{ref: kneser1950}, {ref: justus_p1, stelle: 'Gl. (1)'}]
+
+- id: fg.def.abel
+  titel: Abel-Gleichung, Superfunktion, Abel-Funktion
+  art: definition
+  ebene: A
+  niveau: einstieg
+  status: definition
+  objekte: [abel, superfunktion, slog]
+  bereich: '$f:D\to D$, $D\subset\mathbb C$ oder Intervall'
+  aussage: |
+    $\alpha$ heisst **Abel-Funktion** von $f$, wenn $\alpha(f(z))=\alpha(z)+1$.
+    $F$ heisst **Superfunktion**, wenn $F(z+1)=f(F(z))$. Ist $\alpha$ umkehrbar, so ist
+    $F=\alpha^{-1}$ eine Superfunktion und umgekehrt. Für $f=\exp_b$ ist die Abel-Funktion
+    der **Superlogarithmus** $\operatorname{slog}_b=T_b^{-1}$.
+  quellen: [{ref: kuczma1990}]
+
+- id: fg.def.schroeder
+  titel: Schröder-Gleichung
+  art: definition
+  ebene: A
+  status: definition
+  objekte: [schroeder, multiplikator]
+  bereich: '$f$ holomorph nahe einem Fixpunkt $p$, $\lambda=f''(p)$'
+  aussage: |
+    $\sigma$ löst die **Schröder-Gleichung**, wenn $\sigma(f(z))=\lambda\,\sigma(z)$ mit $\sigma(p)=0$.
+  quellen: [{ref: koenigs1884}, {ref: kuczma1990}]
+
+- id: fg.def.iterationsgruppe
+  titel: Stetige Iteration (Translationsgleichung)
+  art: definition
+  ebene: A
+  status: definition
+  objekte: [iterationsgruppe, abel]
+  bereich: '$f:I\to I$, $t\in\mathbb R$ (oder $t\ge 0$)'
+  aussage: |
+    Eine Familie $(f^t)_t$ mit $f^1=f$ und $f^{s+t}=f^s\circ f^t$ heisst **stetige Iteration**
+    (Lösung der Translationsgleichung). Halbe Iterierte $g\circ g=f$ sind der Fall $t=1/2$.
+
+- id: fg.lem.ganzzahlwerte
+  titel: Ganzzahlige Werte und Definitionsrand −2
+  art: lemma
+  ebene: A
+  niveau: einstieg
+  einfach: >-
+    An den ganzen Stellen ist alles festgelegt: T(−1) = 0, T(0) = 1, T(1) = a, T(2) = a^a … Bei −2 müsste a hoch etwas null ergeben — das geht nie, deshalb endet jede Tetration dort.
+  status: bewiesen
+  objekte: [tetrationsgleichung, T_b, singularitaet_m2]
+  bereich: 'reelle Lösung $F$ auf einem Intervall, das $-1$ und $0$ enthält; $b>0$, $b\ne1$'
+  voraussetzungen:
+    - {text: 'F reellwertig mit F(x+1)=b^{F(x)} auf dem Intervall', benutzt: ja}
+    - {text: 'F(0)=1', benutzt: ja}
+  aussage: |
+    Es gilt $F(-1)=0$, $F(n)=b\uparrow\uparrow n$ für $n\in\mathbb N$, und **keine** reelle
+    (auch keine komplexe) Lösung ist an der Stelle $-2$ definiert: $b^{F(-2)}=F(-1)=0$ ist unmöglich.
+    Der natürliche reelle Definitionsbereich ist daher höchstens $(-2,\infty)$.
+  beweis:
+    art: vollstaendig
+    text: |
+      $b^{F(-1)}=F(0)=1$ und reelles $F(-1)$ erzwingen $F(-1)=0$. Induktion gibt die ganzzahligen Werte.
+      $b^w\neq0$ für alle $w\in\mathbb C$.
+  pruefung:
+    f1_folgt_unmittelbar: Ja, direkt aus der Gleichung.
+    f2_benutzte_voraussetzungen: 'Für $F(-1)=0$ nur Reellwertigkeit an $-1$; komplex wäre auch $F(-1)\in 2\pi i\mathbb Z/\ln b$ möglich. Für die Aussage über $-2$ nichts ausser der Gleichung.'
+    f3_spezialfall: 'Spezialfall von: Superfunktionen von $f$ können Werte ausserhalb des Bildes von $f$ nur am Rand annehmen; $0\notin\exp_b(\mathbb C)$.'
+    f4_uebertragbar: Gilt für jede Lösung, also für Kneser, reguläre und alle anderen Konstruktionen.
+    f5_neue_frage: Wie verhält sich eine Lösung bei Annäherung an −2? → kn.satz.singulaer_minus2
+  bewertung: {richtigkeit: elementar, vollständig, neuheit: klassisch, nutzen: 'Grundtatsache; erklärt den Schnitt $(-\infty,-2]$ der Kneser-Lösung.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+
+- id: fg.kor.keine_ganze_tetration
+  titel: Keine auf ℝ reelle Tetration ist ganz
+  art: korollar
+  ebene: A
+  status: bewiesen
+  objekte: [T_b, singularitaet_m2]
+  bereich: 'holomorphe Lösungen auf Gebieten $D\ni -2$'
+  voraussetzungen:
+    - {text: 'F holomorph auf einem Gebiet, das 0, −1, −2 enthält, mit F(z+1)=b^{F(z)}', benutzt: ja}
+    - {text: 'F(0)=1', benutzt: ja}
+    - {text: 'F(−1)=0 (z. B. weil F auf ℝ reell ist)', benutzt: ja}
+  aussage: |
+    Es gibt keine ganze Funktion $F$ mit $F(z+1)=b^{F(z)}$, $F(0)=1$ und $F(-1)=0$ — insbesondere keine
+    ganze, auf $\mathbb R$ reelle Tetration. Ganze **Superfunktionen** ohne die Normierung $F(0)=1$ existieren
+    (z. B. die regulären Superexponentiale am Fixpunkt 4 zur Basis $\sqrt2$).
+  beweis: {art: vollstaendig, text: 'Komplexer Fall von fg.lem.ganzzahlwerte: $F(-1)\in 2\pi i\mathbb Z/\ln b$ ist möglich, aber dann $b^{F(-2)}=F(-1)$; ist $F(-1)=0$ folgt Widerspruch sofort. Ist $F(-1)=2\pi i k/\ln b\neq0$, ist $F(-2)$ definiert; Widerspruch entsteht eine Stufe tiefer nicht zwingend. **Achtung:** der Beweis braucht $F(-1)=0$, also Reellwertigkeit bei −1 oder die Wahl des Hauptzweigs.'}
+  stuetzt_sich_auf: [fg.lem.ganzzahlwerte]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus fg.lem.ganzzahlwerte, sofern $F(-1)=0$.'
+    f2_benutzte_voraussetzungen: '$F(-1)=0$. Ohne Reellwertigkeit bei −1 ist der Schluss nicht erzwungen: $F(-1)=2\pi i k/\ln b$ ($k\ne0$) wäre mit einer Fortsetzung nach −2 verträglich. Die Aussage ist daher präziser: keine ganze Lösung mit $F(-1)=0$.'
+    f3_spezialfall: nein
+    f4_uebertragbar: Gilt für jede Konstruktion mit reellem Wert bei −1 (Kneser, regulär, linear).
+    f5_neue_frage: 'Gibt es ganze Lösungen mit $F(0)=1$ und nichtreellem $F(-1)$? (Offen gelassen, nicht recherchiert.)'
+  bewertung: {richtigkeit: 'richtig mit präzisierter Voraussetzung F(−1)=0', neuheit: folklore, nutzen: 'Klärt, warum Kneser-Tetration einen Schnitt braucht.', nutzen_stufe: gering}
+  quellen: [{ref: kouznetsov_trappmann2010, stelle: 'ganze Superexponentiale am Fixpunkt 4'}, {ref: diese_arbeit}]
+  versionen:
+    - {datum: '2026-10-08', aenderung: 'Erste Fassung „keine ganze Lösung mit F(0)=1“ beim Prüfen auf „mit F(−1)=0“ präzisiert (Frage 2).'}
+
+- id: fg.satz.allgemeine_loesung
+  titel: Alle monotonen Lösungen = eine Lösung ∘ (id + periodisch)
+  art: satz
+  ebene: A
+  status: bewiesen
+  objekte: [T_b, periodische_stoerung, abel]
+  bereich: 'stetige, streng wachsende reelle Lösungen auf $(-2,\infty)$ (bzw. auf einer Halbgeraden)'
+  voraussetzungen:
+    - {text: 'F, G stetig, streng wachsend, Lösungen der Tetrationsgleichung auf (−2,∞)', benutzt: ja}
+    - {text: 'gleiches Bild: G((−2,∞)) ⊂ F((−2,∞))', benutzt: ja, notiz: 'für Tetrationen mit Bild ℝ automatisch'}
+    - {text: 'F(0)=G(0)=1', benutzt: nein, notiz: 'nur für die Normierung θ(0)=0 nötig'}
+  aussage: |
+    Ist $F$ eine stetige, streng wachsende Lösung, so ist jede weitere solche Lösung von der Form
+    $$G=F\circ(\mathrm{id}+\theta),\qquad \theta(x+1)=\theta(x),\quad \mathrm{id}+\theta \text{ stetig, streng wachsend}.$$
+    Umgekehrt ist jedes solche $F\circ(\mathrm{id}+\theta)$ wieder eine Lösung; $\theta(0)=0$ erhält $G(0)=1$.
+  beweis:
+    art: vollstaendig
+    text: |
+      $h:=F^{-1}\circ G$ ist stetig, streng wachsend und erfüllt $h(x+1)=F^{-1}(b^{G(x)})=F^{-1}(b^{F(h(x))})=h(x)+1$.
+      Also ist $\theta:=h-\mathrm{id}$ 1-periodisch. Rückrichtung: $F(x+1+\theta(x))=b^{F(x+\theta(x))}$.
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja: Standardtatsache für Abel-Gleichungen (jede Abel-Funktion = eine Abel-Funktion + periodische Funktion davon).'
+    f2_benutzte_voraussetzungen: 'Hinrichtung: nur Injektivität von $F$ und Bildinklusion; Monotonie von $G$ nur für Monotonie von $h$. Rückrichtung: keine Regularität von $F$, nur dass $\mathrm{id}+\theta$ den Definitionsbereich in sich abbildet. $F(0)=1$ wird nicht gebraucht.'
+    f3_spezialfall: 'Ja, von fg.satz.kohomologisch (homogener Fall) bzw. der allgemeinen Lösung der Abel-Gleichung (Kuczma et al.).'
+    f4_uebertragbar: 'Auf jede Superfunktion einer injektiven Abbildung; komplex: θ holomorph 1-periodisch.'
+    f5_neue_frage: 'Welche Zusatzbedingung wählt genau ein θ aus? → reelle Kriterien (br.frage.bohr_mollerup) oder komplexe (kn.satz.paulsen_cowgill).'
+  bewertung: {richtigkeit: vollständig, elementar, neuheit: klassisch, nutzen: 'Zentral: zeigt, dass die Gleichung allein keine Tetration auszeichnet.', nutzen_stufe: hoch}
+  quellen: [{ref: kuczma1990, geprueft: nein}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: spezialfall_von, ziel: fg.satz.kohomologisch}
+
+- id: fg.kor.nichteindeutigkeit
+  titel: Reell-analytische Tetration ist nicht eindeutig (beliebiger Wert bei 1/2)
+  art: korollar
+  ebene: A
+  niveau: einstieg
+  einfach: >-
+    Die Gleichung T(x+1) = a^T(x) legt die Kurve zwischen den ganzen Stellen nicht fest: Man kann sie glatt verbiegen und erhält eine andere, ebenso glatte Lösung. Bei x = 1/2 ist jeder Wert zwischen 1 und a möglich.
+  status: bewiesen
+  objekte: [T_b, periodische_stoerung]
+  bereich: 'jede Basis $b>1$, für die eine reell-analytische streng wachsende Lösung $F$ auf $(-2,\infty)$ existiert'
+  voraussetzungen:
+    - {text: 'Existenz einer reell-analytischen, streng wachsenden Lösung F mit F(0)=1', benutzt: ja}
+  aussage: |
+    Für jedes $r\in(1,b)$ gibt es eine reell-analytische, streng wachsende Lösung $\tilde F$ mit
+    $\tilde F(0)=1$ und $\tilde F(1/2)=r$. Reelle Analytizität plus Monotonie bestimmt die Tetration also nicht —
+    nicht einmal einen einzigen nichtganzzahligen Wert.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\tilde F=F\circ(\mathrm{id}+\theta)$ mit $\theta=c\,g$, $g$ reell-analytisch 1-periodisch, $g(0)=0$, $g(1/2)=1$
+      und $\max|g'|<1/|c|$. Für $|c|<1/2$ existiert $g$ (geglätteter Zickzack: Fejér-Mittel einer Funktion mit
+      Lipschitzkonstante 2, danach affin korrigiert). $\tilde F(1/2)=F(1/2+c)$ durchläuft $(F(0),F(1))=(1,b)$.
+      Für $|c|<1/\pi$ genügt schon $g=(1-\cos 2\pi x)/2$.
+  stuetzt_sich_auf: [fg.satz.allgemeine_loesung]
+  experimente: [exp.nichteindeutigkeit]
+  pruefung:
+    f1_folgt_unmittelbar: Ja, aus fg.satz.allgemeine_loesung durch Wahl von θ.
+    f2_benutzte_voraussetzungen: 'Nur Existenz eines reell-analytischen streng wachsenden $F$ und $F(0)=1$, $F(1)=b$. Keine komplexen Eigenschaften.'
+    f3_spezialfall: 'Verallgemeinert ar.satz.keine_arith_info (dort nur $b=e$).'
+    f4_uebertragbar: 'Gilt für reguläre Tetration ($1<b<\eta$), Kneser ($b>\eta$) und parabolische ($b=\eta$) gleichermassen.'
+    f5_neue_frage: 'Jede Aussage über einen konkreten Wert wie $T_e(1/2)$ muss eine komplexe (globale) Bedingung benutzen.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Wichtige Grenze für arithmetische und reelle Charakterisierungen.', nutzen_stufe: hoch}
+  quellen: [{ref: diese_arbeit}, {ref: justus_a1, stelle: 'Satz 4 (Spezialfall b = e)'}]
+  kanten:
+    - {typ: verallgemeinert, ziel: ar.satz.keine_arith_info}
+    - {typ: motiviert, ziel: br.frage.bohr_mollerup}
+
+- id: fg.lem.periodisch_liouville
+  titel: Periodische Störungen sprengen jede Beschränktheit
+  art: lemma
+  ebene: A
+  status: bewiesen
+  objekte: [periodische_stoerung, T_b]
+  bereich: '$\theta$ ganz und 1-periodisch'
+  voraussetzungen:
+    - {text: 'θ ganz, 1-periodisch', benutzt: ja}
+    - {text: 'θ beschränkt für Im z → +∞ und für Im z → −∞', benutzt: ja}
+  aussage: |
+    Eine ganze 1-periodische Funktion, die in beiden Richtungen $\operatorname{Im}z\to\pm\infty$ beschränkt bleibt,
+    ist konstant. Daher kann $F\circ(\mathrm{id}+\theta)$ mit nichtkonstantem $\theta$ nicht dieselben
+    Grenzwerte $F(x+iy)\to L$, $F(x-iy)\to\bar L$ haben — das ist der Hebel aller komplexen Eindeutigkeitssätze.
+  beweis:
+    art: vollstaendig
+    text: '$\theta(z)=h(e^{2\pi i z})$ mit $h$ holomorph auf $\mathbb C^*$, beschränkt bei $0$ und $\infty$ ⇒ hebbare Singularitäten, Liouville.'
+  pruefung:
+    f1_folgt_unmittelbar: Ja (Laurent + Liouville).
+    f2_benutzte_voraussetzungen: 'Beschränktheit in beiden Halbebenen; einseitige Beschränktheit reicht nicht ($e^{2\pi i z}$).'
+    f3_spezialfall: Liouville für periodische Funktionen.
+    f4_uebertragbar: Auf jede Superfunktion mit vorgeschriebenen vertikalen Grenzwerten.
+    f5_neue_frage: 'Quantitativ: wie schnell muss θ wachsen, wenn die Grenzwerte nur bis auf Fehler gelten? (relevant für numerische Eindeutigkeitsprüfungen)'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Kern der Eindeutigkeitsbeweise (Paulsen–Cowgill, Trappmann–Kouznetsov, Paper V Thm. 2).', nutzen_stufe: hoch}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: motiviert, ziel: kn.satz.paulsen_cowgill}
+
+- id: fg.satz.kohomologisch
+  titel: Lösungsstruktur der kohomologischen Gleichung
+  art: satz
+  ebene: A
+  status: bewiesen
+  objekte: [abel, periodische_stoerung, kern_V]
+  bereich: '$f$ injektiv mit umkehrbarer Abel-Funktion $\alpha$; $g$ gegeben'
+  voraussetzungen:
+    - {text: 'α Abel-Funktion von f, injektiv auf dem Bereich', benutzt: ja}
+    - {text: 'eine partikuläre Lösung V_0 existiert', benutzt: ja}
+  aussage: |
+    Die Lösungen von $V(f(y))-V(y)=g(y)$ sind genau $V=V_0+h\circ\alpha$ mit 1-periodischem $h$.
+    Die Gleichung allein legt $V$ also nie fest; erst Zusatzbedingungen (Wachstum, Singularitäten,
+    Normierung) wählen $h$ aus.
+  beweis: {art: vollstaendig, text: 'Differenz zweier Lösungen ist $f$-invariant, also Funktion von $\alpha$ modulo 1.'}
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: Nur Injektivität von α.
+    f3_spezialfall: 'fg.satz.allgemeine_loesung ist der Fall $g=1$ nach Umformung ($V=\alpha$).'
+    f4_uebertragbar: 'Grundlage von Paper V: der Antwortkern $V=\partial_\beta\operatorname{slog}_b$ löst eine solche Gleichung; die Eichfreiheit $h$ ist genau das Problem.'
+    f5_neue_frage: 'Welche Randbedingung macht $h$ eindeutig? → bw.satz.kern_eindeutig'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Strukturgrundlage für Basisableitungen.', nutzen_stufe: mittel}
+  quellen: [{ref: kuczma1990, geprueft: nein}, {ref: justus_p5, stelle: 'Lemma 4 (Eichtrivialität)'}]
+
+- id: fg.satz.schroeder_abel
+  titel: Von Schröder zu Abel
+  art: satz
+  ebene: A
+  status: bewiesen
+  objekte: [schroeder, abel, multiplikator]
+  bereich: '$\lambda\neq0$, $\lambda$ keine Einheitswurzel; Gebiet ohne Nullstellen von $\sigma$'
+  voraussetzungen:
+    - {text: 'σ löst σ∘f = λσ', benutzt: ja}
+    - {text: 'ein Zweig von log σ existiert auf dem Gebiet', benutzt: ja}
+  aussage: |
+    $\alpha:=\dfrac{\log\sigma}{\log\lambda}$ ist eine Abel-Funktion von $f$ (bis auf die additive
+    Mehrdeutigkeit $2\pi i k/\log\lambda$). Die Abel-Funktion erbt eine **komplexe Periode** $2\pi i/\log\lambda$.
+  beweis: {art: vollstaendig, text: '$\log\sigma(f(z))=\log\lambda+\log\sigma(z)$ bis auf $2\pi i\mathbb Z$.'}
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: Existenz eines Logarithmuszweigs.
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Reguläre Tetration: $T^{\mathrm{reg}}(z)=\sigma^{-1}(\lambda^z\sigma(1))$ ist $2\pi i/\ln\lambda$-periodisch.'
+    f5_neue_frage: 'Die imaginäre Periode bestimmt Streifenbreiten periodischer Differenzen → kl.verm.streifenbreite'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Verbindung Koenigs → Tetration.', nutzen_stufe: hoch}
+  quellen: [{ref: koenigs1884}, {ref: kuczma1990}]
+  stuetzt_sich_auf: [it.satz.koenigs]
+
+# ================================================================== Forum-Abgleich 10.10.2026
+- id: fg.satz.tpid4
+  titel: 'TPID 4: f(z+1) = b·f(z), f(0) = 1 hat genau dann eine ganze, im Streifen beschränkte Lösung, wenn b > 0'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [periodische_stoerung]
+  aussage: |
+    Sei $b\ne0$ komplex, $S=\{0<\operatorname{Re}z\le1\}$. Eine ganze Funktion mit $f(z+1)=b\,f(z)$, $f(0)=1$, die auf $S$ beschränkt ist, gibt es genau für $b>0$, und dann ist
+    sie $b^z$. Für jedes andere $b$ ist jede ganze Lösung auf $S$ unbeschränkt — die Vermutung TPID 4 (Trappmann 2008) gilt.
+  einfach: >-
+    Auf der Stufe des Potenzierens ist die Frage „Welche glatte Fortsetzung ist die richtige?“ leicht: Beschränktheit in einem senkrechten Streifen legt b^z fest —
+    und für komplexe Basen gibt es so eine beschränkte Fortsetzung gar nicht.
+  beweis:
+    art: vollstaendig
+    text: |
+      Wähle $\ell=\log b$ mit $\theta=\operatorname{Im}\ell\in(-\pi,\pi]$. Dann ist $g(z)=f(z)e^{-\ell z}$ ganz und 1-periodisch, $g(z)=\sum_nc_ne^{2\pi inz}$. Aus $|f|\le M$ auf $S$ folgt
+      $|g(x+iy)|\le M'e^{\theta y}$, also $|c_n|=\bigl|\int_0^1g(x+iy)e^{-2\pi in(x+iy)}dx\bigr|\le M'e^{(\theta+2\pi n)y}$ für alle $y$. Ist $\theta+2\pi n\ne0$, lässt man $y\to\mp\infty$
+      gehen und erhält $c_n=0$. Also überlebt höchstens $n$ mit $\theta=-2\pi n$, d. h. $\theta=0$, $b>0$, $n=0$: $g$ konstant, $f=b^z$.
+  stuetzt_sich_auf: [fg.lem.periodisch_liouville]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Fourier-Koeffizienten wie im Beweis des Satzes von Wielandt.'
+    f2_benutzte_voraussetzungen: 'Ganzheit; Beschränktheit auf dem ganzen Streifen.'
+    f3_spezialfall: 'Ja: Eindeutigkeit über Wachstum in senkrechter Richtung — dieselbe Idee wie Paulsen–Cowgill und Trappmann–Kouznetsov eine Stufe tiefer.'
+    f4_uebertragbar: 'Auf jede lineare Stufengleichung f(z+1) = b f(z).'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Erledigt eine offene Frage der Forumsliste mit zwei Zeilen.', nutzen_stufe: gering}
+  quellen: [{ref: forum_tpid, stelle: 'TPID 4 (Trappmann 2008); Beweisversuche tommy1729, tid 747 (2014, 2022)'}]
+  kanten:
+    - {typ: analog_zu, ziel: kn.satz.paulsen_cowgill}

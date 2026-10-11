@@ -1,0 +1,230 @@
+{
+ "id": "exp.ableitung",
+ "skript_hash": "8bc47c9fc67bf9f3",
+ "gelaufen": "2026-10-08 20:38",
+ "laufzeit_s": 20.4,
+ "python": "3.13.9",
+ "zusammenfassung": "Alle Ableitungsidentitäten an Kneser e auf ≤ 1e-20 bestätigt. T_e'(0) = 1.091767351258321, T_e''(0) = 0.54296642580339. Wendepunkte (Kneser): b=1.5: ['3.986806975'], b=2: ['-0.03024454275'], b=e: ['-0.5217647926'], b=3: ['-0.6038637144'], b=5: ['-0.8469203702'], b=10: ['-0.9967056974'], b=100: ['-1.181880344']. Regulär (1<b<η): b=1.2: keiner, b=1.3: keiner, b=1.41421: keiner, b=1.44: keiner.",
+ "pruefungen": [
+  {
+   "name": "Kettenregel T'(x+1) = ln a·T(x+1)·T'(x) (Kneser e, 6 Stellen x, relativ)",
+   "ok": true,
+   "wert": "6.32e-31"
+  },
+  {
+   "name": "Produktformel T'(x+n) = (ln a)^n ∏ T(x+k) · T'(x), n = 2, 3",
+   "ok": true,
+   "wert": "2.84e-29"
+  },
+  {
+   "name": "T'(−1) = T'(0)/ln a",
+   "ok": true,
+   "wert": "4.58e-33"
+  },
+  {
+   "name": "T'(2) = (ln a)² · a · a^a · T'(0)",
+   "ok": true,
+   "wert": "1.22e-29"
+  },
+  {
+   "name": "erste eigene Fassung mit Faktor T(x+1)² ist FALSCH (Gegenprobe)",
+   "ok": true,
+   "wert": "53.9"
+  },
+  {
+   "name": "T''(x+1) = ln a·T(x+1)·[ln a·T'(x)² + T''(x)] (relativ)",
+   "ok": true,
+   "wert": "1.89e-32"
+  },
+  {
+   "name": "(ln T)''(x+1) = ln a · T''(x)",
+   "ok": true,
+   "wert": "2.11e-32"
+  },
+  {
+   "name": "Taylor bei 0: Koeffizient 0 ist T(0) = 1",
+   "ok": true,
+   "wert": "1.0"
+  },
+  {
+   "name": "Kettenregel an der regulären √2-Tetration",
+   "ok": true,
+   "wert": "1.15e-41"
+  },
+  {
+   "name": "Kneser b=1.5: genau ein Wendepunkt auf (−1.94, 11.86)",
+   "ok": true,
+   "wert": [
+    "3.986807"
+   ]
+  },
+  {
+   "name": "Kneser b=2: genau ein Wendepunkt auf (−1.94, 3.4)",
+   "ok": true,
+   "wert": [
+    "-0.030244543"
+   ]
+  },
+  {
+   "name": "Kneser b=e: genau ein Wendepunkt auf (−1.94, 2.26)",
+   "ok": true,
+   "wert": [
+    "-0.52176479"
+   ]
+  },
+  {
+   "name": "Kneser b=3: genau ein Wendepunkt auf (−1.94, 2.08)",
+   "ok": true,
+   "wert": [
+    "-0.60386371"
+   ]
+  },
+  {
+   "name": "Kneser b=5: genau ein Wendepunkt auf (−1.94, 1.54)",
+   "ok": true,
+   "wert": [
+    "-0.84692037"
+   ]
+  },
+  {
+   "name": "Kneser b=10: genau ein Wendepunkt auf (−1.94, 1.18)",
+   "ok": true,
+   "wert": [
+    "-0.9967057"
+   ]
+  },
+  {
+   "name": "Kneser b=100: genau ein Wendepunkt auf (−1.94, 0.7)",
+   "ok": true,
+   "wert": [
+    "-1.1818803"
+   ]
+  },
+  {
+   "name": "regulär b=1.2: kein Wendepunkt (überall konkav) auf (−1.9, 8)",
+   "ok": true,
+   "wert": []
+  },
+  {
+   "name": "regulär b=1.3: kein Wendepunkt (überall konkav) auf (−1.9, 8)",
+   "ok": true,
+   "wert": []
+  },
+  {
+   "name": "regulär b=1.4142: kein Wendepunkt (überall konkav) auf (−1.9, 8)",
+   "ok": true,
+   "wert": []
+  },
+  {
+   "name": "regulär b=1.44: kein Wendepunkt (überall konkav) auf (−1.9, 8)",
+   "ok": true,
+   "wert": []
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "T_e_strich_0": "1.091767351258320991801385",
+  "T_e_2strich_0": "0.5429664258033891906634134",
+  "taylor_e_bei_0": [
+   "1.0",
+   "1.09176735125832099",
+   "0.271483212901694595",
+   "0.212453248176256284",
+   "0.0695403761399873737",
+   "0.0442919520904733044",
+   "0.0147367420963893912",
+   "0.00866878181722526037",
+   "0.00279647939838545969"
+  ],
+  "wendepunkte_kneser": [
+   {
+    "basis": "1.5",
+    "wendepunkte": [
+     "3.986806975"
+    ],
+    "bereich": [
+     -1.94,
+     11.86
+    ]
+   },
+   {
+    "basis": "2",
+    "wendepunkte": [
+     "-0.03024454275"
+    ],
+    "bereich": [
+     -1.94,
+     3.4
+    ]
+   },
+   {
+    "basis": "e",
+    "wendepunkte": [
+     "-0.5217647926"
+    ],
+    "bereich": [
+     -1.94,
+     2.26
+    ]
+   },
+   {
+    "basis": "3",
+    "wendepunkte": [
+     "-0.6038637144"
+    ],
+    "bereich": [
+     -1.94,
+     2.08
+    ]
+   },
+   {
+    "basis": "5",
+    "wendepunkte": [
+     "-0.8469203702"
+    ],
+    "bereich": [
+     -1.94,
+     1.54
+    ]
+   },
+   {
+    "basis": "10",
+    "wendepunkte": [
+     "-0.9967056974"
+    ],
+    "bereich": [
+     -1.94,
+     1.18
+    ]
+   },
+   {
+    "basis": "100",
+    "wendepunkte": [
+     "-1.181880344"
+    ],
+    "bereich": [
+     -1.94,
+     0.7
+    ]
+   }
+  ],
+  "regulaer": [
+   {
+    "basis": "1.2",
+    "wendepunkte": []
+   },
+   {
+    "basis": "1.3",
+    "wendepunkte": []
+   },
+   {
+    "basis": "1.41421",
+    "wendepunkte": []
+   },
+   {
+    "basis": "1.44",
+    "wendepunkte": []
+   }
+  ]
+ }
+}

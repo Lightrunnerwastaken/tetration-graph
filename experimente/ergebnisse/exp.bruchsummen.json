@@ -1,0 +1,68 @@
+{
+ "id": "exp.bruchsummen",
+ "skript_hash": "bc623c04de25a633",
+ "gelaufen": "2026-10-08 20:43",
+ "laufzeit_s": 24.3,
+ "python": "3.13.9",
+ "zusammenfassung": "Grenzwertformel: Fehler 5.2e-21 bei n = 120, Rate ≈ λ; danach wächst die Rundung (Faktor 1/λ je Rückschritt). Bruchsumme S(1/2) = 0.4277749202048676, S(x+1) − S(x) = T(x) exakt. Bruchprodukt-Formel regulär bis 3.8e-36, für T∘(id+θ) verletzt um 0.0185…0.2.",
+ "pruefungen": [
+  {
+   "name": "Grenzwertformel: Fehler bei n = 120 unter 1e-20",
+   "ok": true,
+   "wert": {
+    "20": "4.3e-5",
+    "60": "1.85e-11",
+    "120": "5.2e-21",
+    "200": "2.14e-19"
+   }
+  },
+  {
+   "name": "Rundungsverstärkung sichtbar: bei n = 200 grösser als bei n = 120 (Optimum dazwischen)",
+   "ok": true,
+   "wert": "n_opt ≈ 157.1"
+  },
+  {
+   "name": "Fehlerrate pro Schritt ≈ λ = ln 2",
+   "ok": true,
+   "wert": "0.693147"
+  },
+  {
+   "name": "Bruchsumme: S(1/2 + 1) − S(1/2) = T(1/2)",
+   "ok": true,
+   "wert": "5.04e-36"
+  },
+  {
+   "name": "Bruchsumme: S(1) = T(0) = 1, S(2) = 1 + √2",
+   "ok": true,
+   "wert": null
+  },
+  {
+   "name": "reguläre Tetration: T'(x+h)/T'(x) = (ln b)^h · Bruchprodukt (h = 0.3, 0.5, 1.7)",
+   "ok": true,
+   "wert": "3.81e-36"
+  },
+  {
+   "name": "Gegenprobe T∘(id+θ), θ = 0.05·(1−cos 2πx)/2: Formel verletzt (Abweichung > 1e-3)",
+   "ok": true,
+   "wert": [
+    "0.01852",
+    "0.2"
+   ]
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "grenzwert_fehler": {
+   "20": "4.299e-5",
+   "60": "1.847e-11",
+   "120": "5.199e-21",
+   "200": "2.136e-19"
+  },
+  "S_halb": "0.4277749202048675550256819",
+  "bruchprodukt_rest": "3.81e-36",
+  "gegenprobe": [
+   "0.0185194",
+   "0.200011"
+  ]
+ }
+}

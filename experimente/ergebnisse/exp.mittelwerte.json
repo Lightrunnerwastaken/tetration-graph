@@ -1,0 +1,69 @@
+{
+ "id": "exp.mittelwerte",
+ "skript_hash": "2149fa1c32b2f98b",
+ "gelaufen": "2026-10-08 20:42",
+ "laufzeit_s": 105.7,
+ "python": "3.13.9",
+ "zusammenfassung": "Satz 1 (ganze Höhen) und Korollar 2 bestätigt. Für t = 1/2 weicht das Kreismittel von 1 ab und hängt vom Zweig von λ^t ab: r=0.5, Hauptzweig (−π, π]: (1.06186579 + 0.005130607658j); r=0.5, Zweig [0, 2π): (0.9919212687 - 0.08162539321j); r=0.8, Hauptzweig (−π, π]: (1.10575579 + 0.006400529086j); r=0.8, Zweig [0, 2π): (0.9861848451 - 0.1602791183j). Siegel-Fall: Cesàro-Fehler 2.8e-06 bei N = 2·10⁵.",
+ "pruefungen": [
+  {
+   "name": "Satz 1: Mittel von T_b(w)(n) über |w| = 1.0 ist 1 (n = 1, 2, 3, 5, 8)",
+   "ok": true,
+   "wert": "0.0"
+  },
+  {
+   "name": "Satz 1: Mittel von T_b(w)(n) über |w| = 0.6 ist 1 (n = 1, 2, 3, 5, 8)",
+   "ok": true,
+   "wert": "0.0"
+  },
+  {
+   "name": "Korollar 2 bei z = 2, n = 2: T_√2(n) aus dem Randintegral",
+   "ok": true,
+   "wert": "1.63252691944 vs (1.63252691944 + 0.0j)"
+  },
+  {
+   "name": "Korollar 2 bei z = 2, n = 3: T_√2(n) aus dem Randintegral",
+   "ok": true,
+   "wert": "1.76083955588 vs (1.76083955588 + 0.0j)"
+  },
+  {
+   "name": "Gegenbeispiel: für t = 1/2 ist das Mittel nicht 1 (mindestens ein Fall weicht > 1e-3 ab)",
+   "ok": true,
+   "wert": "0.1609"
+  },
+  {
+   "name": "das Mittel hängt vom Zweig von λ^t ab (r = 0.5)",
+   "ok": true,
+   "wert": "(1.06186579 + 0.005130607658j) vs (0.9919212687 - 0.08162539321j)"
+  },
+  {
+   "name": "Siegel-Fall (goldener Winkel): Cesàro-Mittel → Fixpunkt, Fehler fällt etwa wie 1/N",
+   "ok": true,
+   "wert": {
+    "1000": "5.94e-04",
+    "10000": "1.42e-04",
+    "100000": "1.52e-05",
+    "200000": "2.77e-06"
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "bruch_t_halbe": {
+   "r=0.5, Hauptzweig (−π, π]": "(1.06186579 + 0.005130607658j)",
+   "r=0.5, Zweig [0, 2π)": "(0.9919212687 - 0.08162539321j)",
+   "r=0.8, Hauptzweig (−π, π]": "(1.10575579 + 0.006400529086j)",
+   "r=0.8, Zweig [0, 2π)": "(0.9861848451 - 0.1602791183j)"
+  },
+  "siegel_fehler": {
+   "1000": 0.0005937350004548215,
+   "10000": 0.0001419860963236062,
+   "100000": 1.515454605503872e-05,
+   "200000": 2.7695514537446865e-06
+  },
+  "siegel_radius_min_max": [
+   0.47837149051810995,
+   5.654602483451376
+  ]
+ }
+}

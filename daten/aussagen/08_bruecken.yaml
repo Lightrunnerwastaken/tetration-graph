@@ -1,0 +1,414 @@
+gebiet: br
+aussagen:
+
+# ------------------------------------------------ Logik: o-Minimalität, Hardy
+- id: br.satz.vdd_miller
+  titel: Definierbare Funktionen in ℝ_an,exp sind durch Exponentialtürme beschränkt
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  objekte: [ominimal]
+  aussage: 'Jede in $\mathbb R_{\mathrm{an},\exp}$ definierbare Funktion $f:\mathbb R\to\mathbb R$ ist schliesslich durch ein iteriertes Exponential $\exp^{\circ n}$ beschränkt.'
+  beweis: {art: literatur, text: 'van den Dries–Miller 1994, Prop. 9.10 (nach Korrektur weiterhin gültig); Skizze bei van den Dries–Macintyre–Marker 1994, §4.8.'}
+  quellen: [{ref: vdd_miller1994}, {ref: dmm1994}]
+  pruefung: {f1_folgt_unmittelbar: Nein, f2_benutzte_voraussetzungen: 'Zellzerlegung/Vorbereitungssatz', f3_spezialfall: nein, f4_uebertragbar: '—', f5_neue_frage: 'Tetration liegt ausserhalb → br.satz.nicht_definierbar'}
+  bewertung: {richtigkeit: gesichert (Literatur), neuheit: bekannt, nutzen: 'Wachstumsschranke der zahmen Geometrie.', nutzen_stufe: hoch}
+
+- id: br.satz.nicht_definierbar
+  titel: Keine reelle Tetration ist in ℝ_an,exp definierbar
+  art: satz
+  ebene: A
+  status: bewiesen
+  objekte: [ominimal, T_b]
+  bereich: 'jede stetige reelle Lösung von $E(x+1)=e^{E(x)}$ auf einer Halbgeraden'
+  voraussetzungen:
+    - {text: 'E stetig auf [x_0, ∞) mit E(x+1) = e^{E(x)}', benutzt: ja}
+    - {text: 'E monoton oder analytisch', benutzt: nein}
+  aussage: '$E$ übertrifft schliesslich jedes $\exp^{\circ n}$; daher ist $E$ in keiner exponentiell beschränkten o-minimalen Struktur definierbar, insbesondere nicht in $\mathbb R_{\mathrm{an},\exp}$.'
+  beweis:
+    art: vollstaendig
+    text: |
+      $c:=\min_{[x_0,x_0+1]}E$; nach einem Schritt sind alle Werte $\ge e^{c}>0$. Für $y$ gross, $k=\lfloor y-x_0\rfloor-1$:
+      $E(y)=\exp^{\circ k}(E(y-k))\ge\exp^{\circ k}(e^c)$. Mit $k=n+j$: $\exp^{\circ n}(\exp^{\circ j}(e^c))\ge\exp^{\circ n}(y)$,
+      sobald $\exp^{\circ j}(e^c)\ge y$ — gilt für grosse $y$, da $j\approx y$ und $\exp^{\circ j}$ turmartig wächst.
+  stuetzt_sich_auf: [br.satz.vdd_miller]
+  quellen: [{ref: diese_arbeit}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus br.satz.vdd_miller und einem elementaren Wachstumsvergleich.'
+    f2_benutzte_voraussetzungen: 'Nur Stetigkeit auf einer Periode (für das Minimum); keine Monotonie, keine Analytizität.'
+    f3_spezialfall: 'Gleiche Struktur wie br.satz.kalmar (Berechenbarkeit).'
+    f4_uebertragbar: 'Jede Basis $b>1$ mit unbeschränktem Turm, d. h. $b>\eta$.'
+    f5_neue_frage: 'Gibt es überhaupt eine o-minimale Struktur, die eine Tetration definiert? → br.frage.transexp'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Erklärt, warum Tetration ausserhalb der klassischen zahmen Geometrie liegt.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: analog_zu, ziel: br.satz.kalmar}
+
+- id: br.satz.boshernitzan
+  titel: Transexponentielle Hardy-Felder existieren
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  objekte: [hardy_feld, T_b]
+  aussage: 'Es gibt Hardy-Felder, die Funktionen enthalten, die schneller wachsen als jedes iterierte Exponential (Lösungen von $f(x+1)=e^{f(x)}$).'
+  beweis: {art: literatur, text: 'Boshernitzan 1986.'}
+  quellen: [{ref: boshernitzan1986}]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Am Original zu prüfen, welche Lösung genau.'
+    f3_spezialfall: nein
+    f4_uebertragbar: '—'
+    f5_neue_frage: 'Liegt der Kneser-Keim in einem Hardy-Feld? → br.frage.kneser_hardy'
+  bewertung: {richtigkeit: 'gesichert (Literatur), Detail ungeprüft', neuheit: bekannt, nutzen: 'Erste Brücke Tetration ↔ asymptotische Analysis.', nutzen_stufe: mittel}
+
+- id: br.frage.kneser_hardy
+  titel: Liegt der Keim der Kneser-Tetration in einem Hardy-Feld?
+  art: frage
+  ebene: C
+  status: offen
+  objekte: [hardy_feld, kneser_T]
+  aussage: 'Ist jedes Element von $\mathbb R(x,T,T'',T'''',\dots)$ schliesslich von festem Vorzeichen? Eine Sekundärquelle (Zusammenfassung) schreibt Boshernitzan zu, dies u. a. für Knesers Lösung gezeigt zu haben — **nicht am Original geprüft**.'
+  naechste_frage: 'Boshernitzan 1986 lesen; falls offen: numerisch Vorzeichenwechsel von $T''''(x)T(x)-cT''(x)^2$ etc. für grosse $x$ testen (über slog-Reduktion).'
+  quellen: [{ref: boshernitzan1986, geprueft: nein}, {ref: padgett2022}]
+  kanten:
+    - {typ: verwandt, ziel: br.satz.boshernitzan}
+
+- id: br.frage.transexp
+  titel: Gibt es eine transexponentielle o-minimale Struktur?
+  art: frage
+  ebene: X
+  status: offen
+  objekte: [ominimal, hardy_feld, kneser_T]
+  aussage: |
+    Offenes Problem (Miller-Dichotomie ⇒ Frage nach Wachstum jenseits von exp). Vorschlag Marker–Miller: $\mathbb R_{\mathrm{an},\exp}$
+    um eine reell-analytische Lösung von $f(x+1)=e^{f(x)}$ erweitern. Padgett: Terme von $\mathbb R_{\mathrm{transexp}}$ bilden ein Hardy-Feld;
+    o-Minimalität offen (Quantorenelimination fehlt). **Kandidat aus der Tetrationstheorie:** die Kneser-Tetration.
+  naechste_frage: 'Welche Eigenschaften der Kneser-Lösung (Holomorphie in $\mathbb C\setminus(-\infty,-2]$, Grenzwerte $L,\bar L$) liefern die für Lions Kriterium nötigen Endlichkeitsaussagen? Hier könnte Tetrationstheorie zu neuer Logik beitragen.'
+  quellen: [{ref: padgett2022}, {ref: miller1994}]
+  kanten:
+    - {typ: motiviert, ziel: br.frage.kneser_hardy}
+    - {typ: verwandt, ziel: br.satz.nicht_definierbar}
+
+# ------------------------------------------------ Berechenbarkeit / Zahlen
+- id: br.def.hyperoperation
+  titel: Hyperoperationen und Knuth-Pfeile
+  art: definition
+  ebene: A
+  niveau: einstieg
+  status: definition
+  objekte: [hyperoperation]
+  aussage: '$a\uparrow\uparrow n=a^{a^{\cdot^{\cdot^{a}}}}$ ($n$ Stufen), $a\uparrow^{k+1}n$ iteriert $\uparrow^k$. Name „Tetration“: Goodstein 1947; Pfeilschreibweise: Knuth 1976.'
+  quellen: [{ref: goodstein1947}, {ref: knuth1976}]
+
+- id: br.satz.kalmar
+  titel: Tetration ist primitiv rekursiv, aber nicht elementar
+  art: satz
+  ebene: X
+  status: bewiesen
+  objekte: [berechenbarkeit, hyperoperation]
+  aussage: '$n\mapsto2\uparrow\uparrow n$ ist primitiv rekursiv (Grzegorczyk-Stufe $\mathcal E^4$), aber nicht Kalmár-elementar ($\mathcal E^3$).'
+  beweis: {art: vollstaendig, text: 'Jede elementare Funktion ist durch einen Turm $2^{2^{\cdot^{\cdot^{x}}}}$ fester Höhe beschränkt; $2\uparrow\uparrow n$ übertrifft jede feste Höhe.'}
+  quellen: [{ref: kalmar_grzegorczyk}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Turmschranke elementarer Funktionen.'
+    f2_benutzte_voraussetzungen: 'Turmschranke (Literatur).'
+    f3_spezialfall: nein
+    f4_uebertragbar: '—'
+    f5_neue_frage: 'Struktur-Analogie: „elementar“ (Berechenbarkeit) und „$\mathbb R_{\mathrm{an},\exp}$-definierbar“ (Geometrie) haben dieselbe Turmschranke; Tetration ist in beiden der erste Ausbrecher.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Verbindet zwei Welten mit derselben Schranke.', nutzen_stufe: mittel}
+
+- id: br.satz.turm_mod_m
+  titel: Türme modulo m werden konstant
+  art: satz
+  ebene: C
+  niveau: einstieg
+  einfach: >-
+    Schaut man nur auf die letzten Ziffern eines Turms wie 3^3^3^…, so ändern sie sich ab einer gewissen Höhe nicht mehr — obwohl die Zahl selbst unvorstellbar gross wird.
+  status: bewiesen
+  objekte: [mod_m, hyperoperation]
+  bereich: 'ganze Zahlen $a\ge1$, $m\ge1$'
+  aussage: 'Die Folge $a\uparrow\uparrow n \bmod m$ ist schliesslich konstant.'
+  beweis: {art: vollstaendig, text: 'Induktion über $m$: $a^k\bmod m$ hängt für $k\ge\log_2 m$ nur von $k\bmod\lambda(m)$ ab (Carmichael), und $\lambda(m)<m$; die Exponenten $a\uparrow\uparrow(n-1)$ werden mod $\lambda(m)$ konstant.'}
+  experimente: [exp.kongruenz]
+  quellen: [{ref: diese_arbeit}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem verallgemeinerten Satz von Euler.'
+    f2_benutzte_voraussetzungen: 'Nur Zahlentheorie mod m.'
+    f3_spezialfall: nein
+    f4_uebertragbar: '—'
+    f5_neue_frage: 'Wie viele Endziffern stabilisieren pro Stufe? → br.satz.ripa'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Diskrete Seite der Tetration.', nutzen_stufe: gering}
+
+- id: br.satz.ripa
+  titel: Kongruenzgeschwindigkeit (Ripà, Ripà–Onnis)
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  objekte: [mod_m]
+  aussage: 'Die Zahl neuer stabiler Endziffern pro Stufe, $V(a)$, ist ab einer Höhe konstant; für $a\not\equiv0\pmod{10}$ ist $V(a)$ eine 2- oder 5-adische Bewertung von $a\pm1$ oder $a^2+1$, je nach $a\bmod 20$. Für $a\equiv5\pmod{10}$: $V(a)=v_2(a^2-1)-1$ (OEIS A317905).'
+  beweis: {art: literatur, text: 'Ripà 2020, Ripà–Onnis 2022.'}
+  quellen: [{ref: ripa2020}, {ref: ripa_onnis2022}, {ref: oeis_A317905}]
+  experimente: [exp.kongruenz]
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Fallunterscheidung nach $a\bmod20$ nur aus dem Abstract.'
+    f3_spezialfall: '$p$-adische Konvergenz des Turms (Fixpunkt von $x\mapsto a^x$ in $\mathbb Z_p$).'
+    f4_uebertragbar: '$p$-adische Tetration: der Turm konvergiert $p$-adisch gegen einen Fixpunkt von $a^x$.'
+    f5_neue_frage: 'Gibt es eine $p$-adische Analogie zu Kneser (stetige Höhe $\mathbb Z_p$)?'
+  bewertung: {richtigkeit: 'Literatur; Formel für a ≡ 5 (mod 10) im Experiment an 40 Basen ≤ 400 ohne Abweichung bestätigt', neuheit: bekannt, nutzen: 'Diskreter Gegenpol zur Analysis.', nutzen_stufe: gering}
+
+# ------------------------------------------------ Analysis: Kreis, Fourier, Engpass
+- id: br.satz.young_kreis
+  titel: Flächenidentität für inverse Kreishomöomorphismen
+  art: satz
+  ebene: X
+  status: bewiesen
+  objekte: [kreishomoeo]
+  bereich: '$\tilde H:\mathbb R\to\mathbb R$ streng wachsender Homöomorphismus mit $\tilde H(x+1)=\tilde H(x)+1$'
+  voraussetzungen:
+    - {text: 'H̃ stetig, streng wachsend, H̃(x+1) = H̃(x)+1', benutzt: ja}
+    - {text: 'H̃ differenzierbar', benutzt: nein}
+  aussage: '$\displaystyle\int_0^1(\tilde H(x)-x)\,dx=-\int_0^1(\tilde H^{-1}(y)-y)\,dy$.'
+  beweis:
+    art: vollstaendig
+    text: |
+      Youngsche Gleichung $\int_0^1\tilde H+\int_{\tilde H(0)}^{\tilde H(1)}\tilde H^{-1}=\tilde H(1)$. Da $\tilde H^{-1}-\mathrm{id}$
+      1-periodisch ist, $\int_{\tilde H(0)}^{\tilde H(0)+1}\tilde H^{-1}=\int_0^1(\tilde H^{-1}-\mathrm{id})+\tilde H(0)+\tfrac12$. Einsetzen.
+  experimente: [exp.young]
+  quellen: [{ref: young1912}, {ref: diese_arbeit}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (Young, Gleichheitsfall).'
+    f2_benutzte_voraussetzungen: 'Nur Monotonie und Gradeins-Eigenschaft.'
+    f3_spezialfall: 'Gleichheitsfall der Youngschen Ungleichung.'
+    f4_uebertragbar: 'Jeder Lift eines Kreishomöomorphismus.'
+    f5_neue_frage: 'Ordnet bw.satz.antisymmetrie als Spezialfall ein: die Tetration liefert nur die Inverse.'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Zeigt, dass Paper II Thm. B kein tetrationsspezifischer Inhalt ist.', nutzen_stufe: mittel}
+
+- id: br.gescheitert.rotationszahl
+  titel: Rotationszahlen und Kommutatoren der Phasenabbildungen
+  art: gescheitert
+  ebene: B
+  status: gescheitert
+  objekte: [kreishomoeo, phase]
+  aussage: |
+    Idee: Rotationszahl $\rho(\tilde H_{b,d})$ oder Kommutatoren $[\tilde H_{e,2},\tilde H_{e,3}]$ als neue Invarianten. Verworfen:
+    $\tilde H_{b,d}$ bildet den Basis-$d$-Phasenkreis auf den Basis-$b$-Phasenkreis ab; Iteration ($b\ne d$) und die Komposition
+    $\tilde H_{e,2}\circ\tilde H_{e,3}$ sind **typfalsch** und haben keine Tetrationsbedeutung. Invariant sind nur gruppoidverträgliche Grössen
+    (Mittel in den kanonischen Abel-Koordinaten).
+  quellen: [{ref: diese_arbeit}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Regel: vor jeder „neuen Invariante“ prüfen, ob sie mit der Gruppoidstruktur verträglich ist.'
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: 'Ansatz verworfen (Typfehler)', neuheit: unklar, nutzen: 'Verhindert eine berechenbare, aber bedeutungslose Zahl.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: bw.prop.gruppoid}
+
+- id: br.satz.privalov
+  titel: Privalov–Dini für konjugierte Funktionen
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  objekte: [rh_problem, fourier_moden]
+  aussage: 'Ist $u\in C(\mathbb T)$ mit Dini-Stetigkeitsmodul, so ist die konjugierte Funktion $\tilde u$ stetig; $\tilde u-iu$ ist Randwert einer in der Halbebene (Kreisscheibe) holomorphen, stetig fortsetzbaren Funktion.'
+  beweis: {art: literatur, text: 'Zygmund, Garnett.'}
+  quellen: [{ref: zygmund2002}]
+  pruefung: {f1_folgt_unmittelbar: Nein, f2_benutzte_voraussetzungen: 'Dini-Modul', f3_spezialfall: nein, f4_uebertragbar: '—', f5_neue_frage: 'Trägt bw.satz.kern_existenz'}
+  bewertung: {richtigkeit: gesichert, neuheit: klassisch, nutzen: 'Schlüsselwerkzeug Paper V.', nutzen_stufe: mittel}
+
+- id: br.satz.gevrey_fourier
+  titel: Fourier-Kennzeichnung von Streifen-Analytizität und Gevrey-Klassen
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  objekte: [gevrey, fourier_moden]
+  aussage: |
+    $f$ 1-periodisch ist holomorph in $|\operatorname{Im}\theta|<\sigma$ genau dann, wenn $|\hat f(k)|\le C_\varepsilon e^{-2\pi(\sigma-\varepsilon)|k|}$ für alle $\varepsilon>0$.
+    $f$ ist Gevrey-$s$ genau dann, wenn $|\hat f(k)|\le Ce^{-c|k|^{1/s}}$. Ein Abfall $\ln A_k\sim-2\pi\sigma^*k-a\sqrt k$ ist also mit $\sigma^*>0$ analytisch, mit $\sigma^*=0$ Gevrey-2.
+  beweis: {art: literatur, text: 'Standard (Paley–Wiener-Typ).'}
+  quellen: [{ref: zygmund2002}]
+  pruefung:
+    f1_folgt_unmittelbar: Lehrbuch.
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Übersetzt die Streifenfrage in eine reine Modenfrage.'
+    f5_neue_frage: 'bw.frage.streifen_gevrey ist genau die Frage $\sigma^*>0$?'
+  bewertung: {richtigkeit: gesichert, neuheit: klassisch, nutzen: 'Präzisiert die offene Frage.', nutzen_stufe: mittel}
+
+- id: br.satz.sattel_knoten
+  titel: Durchgangszeit durch einen Sattel-Knoten-Engpass
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  objekte: [sattel_knoten]
+  bereich: '$w\mapsto w+\varepsilon+aw^2+O(w^3,\varepsilon w)$, $a,\varepsilon>0$ klein'
+  aussage: 'Die Zahl der Iterationen durch den Engpass ist $N(\varepsilon)=\pi/\sqrt{a\varepsilon}+O(1)$ (Kontinuumsgrenze $\int dw/(\varepsilon+aw^2)$); rigoros über parabolische Implosion.'
+  beweis: {art: literatur, text: 'Pomeau–Manneville (Intermittenz), Douady (parabolische Implosion).'}
+  quellen: [{ref: pomeau_manneville1980}, {ref: douady1994}]
+  experimente: [exp.randgesetz]
+  pruefung:
+    f1_folgt_unmittelbar: 'Leitterm ja (Integral); $O(1)$-Fehler braucht Fatou-Koordinaten.'
+    f2_benutzte_voraussetzungen: 'Genaue Fehlerform nicht am Original geprüft.'
+    f3_spezialfall: nein
+    f4_uebertragbar: '$\exp_b$ nahe $\eta$ am Punkt $e$ ($b=\eta+\delta$, $w=y-e$): $a=1/(2e)$, $\varepsilon=e^2\delta/\eta$, also $N\approx\pi\sqrt{2\eta/(e\delta)}$ → bw.lem.randgesetz, fp.beob.tpid6_rate.'
+    f5_neue_frage: '$O(1)$-Term und Phasenabhängigkeit (Lavaurs) → br.frage.implosion'
+  bewertung: {richtigkeit: 'Leitterm gesichert', neuheit: klassisch, nutzen: 'Erklärt das Randgesetz.', nutzen_stufe: hoch}
+
+- id: br.frage.implosion
+  titel: Kneser-Tetration nahe η als parabolische Implosion
+  art: frage
+  ebene: C
+  status: offen
+  objekte: [kneser_T, sattel_knoten, fatou_koord, eta]
+  aussage: |
+    Für $b\downarrow\eta$ passiert der Turm den Engpass bei $e$ in $\approx\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ Schritten. Lässt sich $T_b^{\mathrm K}$
+    nach Abzug dieser Durchgangszeit durch die Lavaurs-Abbildung (aus den beiden Fatou-Koordinaten von $e^u-1$) beschreiben, und
+    folgt daraus ein rigoroses Randgesetz für $m(b)$ mit Konstante und Phasenterm?
+  naechste_frage: 'Numerisch: $m(b)+\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ gegen $\ln(b-\eta)$ und gegen periodische Terme in $(b-\eta)^{-1/2}$ auftragen (exp.randgesetz liefert die erste Hälfte).'
+  quellen: [{ref: douady1994}, {ref: justus_p4, stelle: 'Lemma 8.2'}]
+  kanten:
+    - {typ: verwandt, ziel: bw.lem.randgesetz}
+    - {typ: verwandt, ziel: kl.frage.stetig_eta}
+
+- id: br.frage.bohr_mollerup
+  titel: Gibt es eine reelle (Bohr–Mollerup-artige) Kennzeichnung der Kneser-Tetration?
+  art: frage
+  ebene: B
+  status: offen
+  objekte: [konvexitaet, kneser_T, T_b]
+  aussage: |
+    $\Gamma$ ist durch logarithmische Konvexität eindeutig bestimmt. Für die Tetration zeigen fg.kor.nichteindeutigkeit und
+    ar.satz.keine_arith_info: Analytizität und Monotonie reichen nicht; die bekannten Eindeutigkeitssätze sind komplex.
+    Gibt es eine reelle Bedingung (Konvexität aller Ableitungen von $\operatorname{slog}$, totale Monotonie, Carleman-Grenzwert), die genau Kneser auswählt?
+  naechste_frage: 'An Kneser-Werten testen, welche Konvexitätsbedingungen erfüllt sind, und ob periodische Störungen sie stets verletzen (Gegenbeispielsuche mit $\theta=c\sin2\pi x$, $c\to0$).'
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.carleman_kneser}
+    - {typ: verwandt, ziel: kn.satz.hooshmand}
+
+- id: br.satz.shishikura
+  titel: Gestörte Fatou-Koordinaten und Lavaurs-Abbildung
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [fatou_koord, sattel_knoten, eta, abel]
+  bereich: '$f_0$ mit parabolischem Fixpunkt (Multiplikator 1, ein Blatt), $f$ nahe $f_0$ mit zwei nahen Fixpunkten, Multiplikator $e^{\pm2\pi i\alpha(f)}$'
+  aussage: |
+    Für $f$ nahe $f_0$ (geeignete Richtung, $\alpha(f)$ klein mit $\operatorname{Re}\alpha>0$) gibt es eine **gestörte Fatou-Koordinate** $\Phi_f$ auf einem „Tor“
+    zwischen den beiden Fixpunkten: $\Phi_f(f(z))=\Phi_f(z)+1$; auf beiden Seiten nähert sie sich der anziehenden bzw. abstossenden Fatou-Koordinate von $f_0$,
+    die Verschiebung dazwischen ist $\approx1/\alpha(f)$ (Shishikura). Folge (Lavaurs): Aus $f_k\to f_0$ und $n_k-1/\alpha(f_k)\to\sigma$ folgt
+    $$f_k^{\circ n_k}\;\to\;\Psi_0^{\text{abst}}\bigl(\Phi_0^{\text{anz}}(z)+\sigma\bigr)\quad\text{(Lavaurs-Abbildung)}.$$
+    Für $\exp_b$ mit $b=\eta+\delta$ an $e$: Fixpunkte $L,\bar L$ mit Multiplikator $\approx1\pm i\sqrt{2e\delta/\eta}$, also
+    $1/\alpha\approx2\pi/\sqrt{2e\delta/\eta}=\pi\sqrt{2\eta/(e\delta)}$ — genau die Durchgangszeit des Randgesetzes.
+  beweis: {art: literatur, text: 'Lavaurs 1989 (Grenzwerte), Shishikura 2000 (gestörte Fatou-Koordinaten); Douady 1994. Am Original nicht geprüft. Die Rechnung für exp_b hier: $w=y-e$, $w\mapsto w+\varepsilon+w^2/(2e)$ mit $\varepsilon=e^2\delta/\eta$, Fixpunkte $\pm i\sqrt{2e\varepsilon}$, Multiplikator $1\pm i\sqrt{2\varepsilon/e}$.'}
+  quellen: [{ref: lavaurs1989}, {ref: shishikura2000}, {ref: douady1994}]
+  experimente: [exp.tpid6]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (tiefe Theorie der parabolischen Implosion).'
+    f2_benutzte_voraussetzungen: 'Genaue Bedingungen an die Störungsrichtung und das Tor am Original ungeprüft; die Konstante $1/\alpha$ für exp_b hier nachgerechnet und durch die TPID-6-Rate bestätigt (exp.tpid6).'
+    f3_spezialfall: 'Verschärft br.satz.sattel_knoten: statt „$\pi/\sqrt{a\varepsilon}+O(1)$“ eine genaue Beschreibung des $O(1)$ über die Lavaurs-Phase $\sigma$.'
+    f4_uebertragbar: 'Knesers slog für $b>\eta$ ist holomorph auf einem Gebiet um $\mathbb R$ zwischen $L$ und $\bar L$ mit slog∘exp_b = slog + 1 — also eine Fatou-Koordinate auf dem Tor. Dass sie mit $\Phi_f$ bis auf eine Konstante übereinstimmt, ist plausibel (beide uniformisieren denselben Quotientenzylinder), hier aber nicht geprüft.'
+    f5_neue_frage: 'Randgesetz und TPID-6-Rate mit Fehlerterm beweisen (br.frage.implosion); Grenzwert von Kneser für $b\downarrow\eta$ als Lavaurs-Abbildung.'
+  bewertung: {richtigkeit: 'gesichert (Literatur, ungeprüft)', neuheit: klassisch, nutzen: 'Das Werkzeug, mit dem das Randgesetz und die TPID-6-Rate beweisbar werden könnten.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: motiviert, ziel: br.frage.implosion}
+    - {typ: verwandt, ziel: br.satz.sattel_knoten}
+    - {typ: verwandt, ziel: bw.lem.randgesetz}
+    - {typ: verwandt, ziel: fp.beob.tpid6_rate}
+
+# ================================================================== Forum-Abgleich 10.10.2026
+- id: br.satz.ackermann
+  titel: 'Ackermann-Funktion und schnell wachsende Hierarchie: A(4, n) = 2↑↑(n+3) − 3, f₃ ≥ 2↑↑n'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: einstieg
+  objekte: [hyperoperation, berechenbarkeit]
+  aussage: |
+    Für die Ackermann–Péter-Funktion ($A(0,n)=n+1$, $A(m+1,0)=A(m,1)$, $A(m+1,n+1)=A(m,A(m+1,n))$) gilt
+    $$A(1,n)=n+2,\quad A(2,n)=2n+3,\quad A(3,n)=2^{n+3}-3,\quad A(4,n)=2\uparrow\uparrow(n+3)-3,$$
+    allgemein $A(m,n)=2\uparrow^{m-2}(n+3)-3$: Die Zeilen der Ackermann-Funktion sind die Hyperoperationen zur Basis 2. In der schnell wachsenden Hierarchie
+    ($f_0(n)=n+1$, $f_{k+1}(n)=f_k^{[n]}(n)$) ist $f_3(n)\ge2\uparrow\uparrow n$ — Tetration ist die Stufe $f_3$. Die Umkehrungen wachsen entsprechend langsam:
+    $\log^*$ (gr.satz.logstern) und noch langsamer die inverse Ackermann-Funktion $\alpha(n)$, die in der Laufzeit von Union-Find steckt.
+  einfach: >-
+    Die berühmte Ackermann-Funktion ist nichts anderes als die Hyperoperationen zur Basis 2, um 3 verschoben: die vierte Zeile ist Tetration.
+  beweis:
+    art: vollstaendig
+    text: |
+      Induktion über $n$: $A(m+1,n+1)=A(m,A(m+1,n))$ mit $A(m,x)=2\uparrow^{m-2}(x+3)-3$ gibt $2\uparrow^{m-2}(2\uparrow^{m-1}(n+3))-3=2\uparrow^{m-1}(n+4)-3$; Start
+      $A(m+1,0)=A(m,1)=2\uparrow^{m-2}4-3=2\uparrow^{m-1}3-3$. FGH: $f_2(m)=m2^m\ge2^m$, also $f_3(n)=f_2^{[n]}(n)\ge(2^{\,\cdot})^{[n]}(n)\ge2\uparrow\uparrow n$.
+  experimente: [exp.forum_rand]
+  stuetzt_sich_auf: [br.def.hyperoperation]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Induktion.'
+    f2_benutzte_voraussetzungen: 'Definition der Hyperoperationen (br.def.hyperoperation).'
+    f3_spezialfall: 'Ja: Grzegorczyk-Hierarchie, Kalmár (br.satz.kalmar).'
+    f4_uebertragbar: 'Auf transfinite Stufen f_α (br.satz.ordinal_tetration).'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Verbindet Tetration mit Berechenbarkeit und Algorithmen-Laufzeiten.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_tid10}, {ref: kalmar_grzegorczyk}]
+  kanten:
+    - {typ: verwandt, ziel: br.satz.kalmar}
+    - {typ: verwandt, ziel: gr.satz.logstern}
+
+- id: br.satz.ordinal_tetration
+  titel: 'Tetration der Ordinalzahlen: ω↑↑ω = ε₀, und danach bleibt sie stehen'
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [hyperoperation]
+  aussage: |
+    Mit Cantors Potenz der Ordinalzahlen ist $\omega\uparrow\uparrow n=\omega^{\omega^{\cdot^{\cdot^\omega}}}$ und $\omega\uparrow\uparrow\omega=\sup_n\omega\uparrow\uparrow n=\varepsilon_0$, die kleinste Lösung von
+    $\omega^x=x$. Die naive Fortsetzung $\omega\uparrow\uparrow(\alpha+1)=\omega^{\omega\uparrow\uparrow\alpha}$ steht danach still: $\omega\uparrow\uparrow(\omega+1)=\omega^{\varepsilon_0}=\varepsilon_0$.
+    $\varepsilon_0$ ist die Beweisstärke der Peano-Arithmetik (Gentzen); daran hängt Goodsteins Satz, dessen Folgen mit Türmen wachsen.
+  einfach: >-
+    Auch mit unendlichen Ordinalzahlen kann man Türme bauen. Der unendlich hohe Turm aus ω heisst ε₀ — und weil ε₀ hoch ω wieder ε₀ ist, kommt man mit
+    höheren Türmen nicht weiter.
+  beweis: {art: literatur, text: 'Cantor (ε-Zahlen); Fixpunkteigenschaft ω^{ε₀} = ε₀ direkt aus der Definition als Supremum. Gentzen 1936.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Definition von ε₀.'
+    f2_benutzte_voraussetzungen: 'Stetigkeit der Ordinalpotenz in der Hochzahl.'
+    f3_spezialfall: 'Ja: Fixpunkte normaler Funktionen (Veblen).'
+    f4_uebertragbar: 'Höhere Operationen über Veblen-Funktionen.'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: Literatur, neuheit: klassisch, nutzen: 'Zeigt, wo die Tetration in der Logik auftaucht.', nutzen_stufe: gering}
+  quellen: [{ref: forum_tid124}, {ref: goodstein1947}]
+  kanten:
+    - {typ: verwandt, ziel: br.satz.ackermann}
+
+- id: br.satz.hyperop_varianten
+  titel: 'Andere Klammerungen: linke, ausgewogene und Bennetts kommutative Hyperoperationen'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [hyperoperation, iterationsgruppe]
+  aussage: |
+    (i) **Links geklammert** ist die Tetration trivial: mit $x[4']0=x$ ist $x[4']n=x^{x^n}$; nicht trivial wird erst die linke Pentation
+    ($x[5']0=x$, $x[5'](n+1)=(x[5']n)[4']x$): $x[5']1=x^{x^x}$, $x[5']2=x^{x^{x+x^{x+1}}}$.
+    (ii) **Ausgewogen** ($a[n+1](2b)=(a[n+1]b)[n](a[n+1]b)$) gibt für Stufe 2, 3 wieder $\cdot$ und Potenz; die ausgewogene Tetration ist die Iteration von $x\mapsto x^x$
+    an der Stelle $2^t$: $a[4]2^t=f^{[t]}(a)$ mit $f(x)=x^x$ — ein Fixpunkt bei 1 mit $f'(1)=1$ (parabolisch).
+    (iii) **Bennett (1915):** $x\oplus_sy=\exp^{[s]}\bigl(\log^{[s]}x+\log^{[s]}y\bigr)$ gibt für $s=0,1,2$ Addition, Multiplikation und $x\oplus_2y=e^{\ln x\ln y}$; jede Stufe ist
+    kommutativ, assoziativ und verteilt sich über die vorige. Mit $\exp^{[1/2]}$ (kn.satz.halbe_exp) entsteht eine Operation „zwischen + und ·“.
+  einfach: >-
+    Wie man einen Turm klammert, ist eine Wahl. Von oben geklammert entsteht die übliche Tetration, von unten etwas Einfaches. Bennett schlug 1915 eine
+    ganz andere Leiter vor, bei der jede Stufe kommutativ bleibt — und mit der halben Exponentialfunktion bekommt man sogar Zwischenstufen.
+  beweis:
+    art: vollstaendig
+    text: |
+      (i) $x[4'](n+1)=(x[4']n)^x$ mit $x[4']0=x$ gibt $x^{x^n}$; die linke Pentation durch Einsetzen. (ii) Induktion über $b=2^k$. (iii) Konjugation mit $\log^{[s]}$ überträgt Kommutativität und Assoziativität der
+      Addition; Distributivität: $\log^{[s]}(x\oplus_s y)=\log^{[s]}x+\log^{[s]}y$, und $\exp$ verwandelt Summen in Produkte, also verteilt sich $\oplus_{s+1}$ über $\oplus_s$.
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja.'
+    f2_benutzte_voraussetzungen: 'Für (iii) mit nicht ganzem s: eine Iterationsgruppe exp^[s].'
+    f3_spezialfall: 'Ja: Konjugation einer Gruppenoperation.'
+    f4_uebertragbar: 'Jede Iterationsgruppe statt exp^[s].'
+    f5_neue_frage: 'Gibt es eine natürliche Wahl für die Zwischenstufen (Nixons Halboperationen, Forum tid 1386, 1535)?'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Zeigt, welche Freiheit in der Definition der Hyperoperationen steckt.', nutzen_stufe: gering}
+  quellen: [{ref: forum_tid145}, {ref: forum_tid150}, {ref: bennett1915}]
+  kanten:
+    - {typ: verwandt, ziel: br.def.hyperoperation}
+    - {typ: verwandt, ziel: kn.satz.halbe_exp}

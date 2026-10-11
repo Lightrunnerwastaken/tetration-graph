@@ -1,0 +1,1243 @@
+# Theorie-Blöcke für das Gebiet Kneser und Superlogarithmus (kn), Etappe 3: Kapitel 6.
+
+kn.gescheitert.regulaer_an_L:
+  worum: |
+    Unter $\eta$ hat man die Tetration am reellen Fixpunkt gebaut. Über $\eta$ gibt es nur noch das komplexe Paar $L,\bar L$. Der erste Gedanke:
+    dieselbe Konstruktion einfach an $L$ machen. Das ergibt tatsächlich eine Lösung der Gleichung — nur ist sie auf der reellen Achse
+    nicht reell. Dieser Fehlschlag zeigt, was Kneser reparieren musste.
+  genau: |
+    Sei $b>\eta$, $L$ der Fixpunkt von $b^z$ mit $\operatorname{Im}L>0$ und $\lambda=L\ln b$ (es gilt $|\lambda|>1$). Mit der Poincaré-Funktion $\Psi$
+    ($\Psi(\lambda w)=b^{\Psi(w)}$, $\Psi(0)=L$, $\Psi'(0)=1$) ist jedes $F(x)=\Psi(\lambda^xc)$ eine holomorphe Superfunktion von $b^z$. Keine davon ist
+    auf der ganzen reellen Achse reell. Die Wahl von $L$ statt $\bar L$ bricht die Spiegelsymmetrie $T(\bar z)=\overline{T(z)}$.
+  warum: |
+    1. Gleichung: $F(x+1)=\Psi(\lambda\cdot\lambda^xc)=b^{\Psi(\lambda^xc)}=b^{F(x)}$.
+    2. Wegen $|\lambda|>1$ geht $\lambda^xc\to0$ für $x\to-\infty$, also $F(x)\to\Psi(0)=L$. Eine reelle Funktion kann nicht gegen eine nichtreelle Zahl streben.
+    3. Spiegelt man alles, erhält man dieselbe Konstruktion an $\bar L$. Beide Fixpunkte sind gleichberechtigt; wer einen auswählt, verliert die Symmetrie.
+    4. Nebenbei: $\Psi$ nimmt den Wert $0$ nie an (jeder Wert ist $b^{\text{etwas}}$). Eine reguläre Lösung an $L$ mit $F(0)=1$ hätte darum $F(-1)=2\pi ik/\ln b$
+       mit $k\ne0$ — sie kann den Wert $T(-1)=0$ jeder echten Tetration gar nicht treffen.
+  beispiel: |
+    Basis $e$: $L=0.31813+1.33724\,i$, $\lambda=L$. Normiert man so, dass $F(0)=2$, dann ist $F(-1)=\ln2$ und $F(-2)=\ln\ln2=-0.3665$ — reell. Dazwischen
+    nicht: $F(-\tfrac12)=1.0980+0.0972\,i$, während Kneser in derselben Höhe $1.2329$ liefert. Ein Schritt weiter zurück kommt $F(-3)=-1.0037+\pi i$,
+    danach läuft die Kurve in einer Spirale in $L$ hinein.
+  bilder: [k6_regulaer_an_L]
+  einordnung: |
+    Unter $\eta$ klappt genau diese Konstruktion, weil der Fixpunkt reell ist ([[kl.satz.regulaer]]). Kneser korrigiert den Fehler mit einer
+    periodischen Funktion ([[kn.konstr.kneser]]); dass jede andere Lösung sich um so eine Funktion unterscheidet, sagt [[fg.satz.allgemeine_loesung]].
+
+kn.konstr.kneser:
+  worum: |
+    Knesers Idee (1950): Man nimmt die komplexe Abel-Funktion am Fixpunkt $L$ — sie ist fast richtig, nur „schief“ — und biegt sie mit einer
+    periodischen Korrektur gerade, bis sie auf der reellen Achse reell wird. Dass es diese Korrektur gibt, liefert der Riemannsche Abbildungssatz.
+  genau: |
+    Sei $\chi=\log\sigma/\log\lambda$ die Abel-Koordinate am Fixpunkt $L$ (mit der Schröder-Funktion $\sigma$ von $\log_b$, dort anziehend). Es gibt eine
+    1-periodische Funktion $\theta_K$, holomorph in der oberen Halbebene, mit $\theta_K\to$ const für $\operatorname{Im}\to+\infty$, so dass
+    $$\operatorname{slog}=\chi+\theta_K(\chi)$$
+    auf der reellen Achse reell ist. Die Umkehrfunktion ist eine reell-analytische, streng wachsende Tetration zur Basis $b>\eta$; für $b=e$
+    entsteht so auch eine reell-analytische halbe Iterierte von $e^x$.
+  warum: |
+    Beweisidee, ohne die technischen Abschätzungen:
+    1. $\chi$ erfüllt die Abel-Gleichung $\chi(b^z)=\chi(z)+1$, ist aber auf der reellen Achse komplex ([[kn.gescheitert.regulaer_an_L]]).
+    2. Das Bild der reellen Achse unter $\chi$ ist eine Kurve $\gamma$, die sich wegen der Abel-Gleichung bei Verschiebung um $1$ wiederholt — eine
+       1-periodische „Wellenlinie“ in der $\chi$-Ebene. Oberhalb von $\gamma$ liegt das Gebiet, das zu $L$ gehört ($\operatorname{Im}\chi\to+\infty$).
+    3. Das Gebiet über $\gamma$, aufgerollt mit Periode $1$, ist einfach zusammenhängend. Der Riemannsche Abbildungssatz bildet es konform auf die
+       obere Halbebene (ebenfalls aufgerollt) ab, so dass $\gamma$ auf die reelle Achse fällt und das obere Ende oben bleibt. Diese Abbildung hat die
+       Form $\mathrm{id}+\theta_K$ mit 1-periodischem $\theta_K$.
+    4. Weil $\theta_K$ periodisch ist, erfüllt $\chi+\theta_K(\chi)$ weiterhin die Abel-Gleichung; nach Konstruktion ist es auf der reellen Achse
+       reell. Unten spiegelt man (Fixpunkt $\bar L$). Umkehren und $T(0)=1$ festlegen gibt die Tetration.
+    Zum Rechnen: Kouznetsov (2009) mit Cauchy-Integralen, Levenstein (fatou.gp) mit einer Iteration für $\theta$; hier benutzt über gp-tetration.
+  beispiel: |
+    $T_e(\tfrac12)=1.64635423375119458097\ldots$, $T_2(\tfrac12)=1.45878181603642170068\ldots$, $\operatorname{slog}_e(2)=0.7015456018\ldots$
+    Die lineare Tetration gibt bei Basis $e$ dagegen $e^{1/2}=1.64872$ — ähnlich, aber nicht gleich.
+  bilder: [k6_regulaer_an_L, k0_halbe_hoehe]
+  einordnung: |
+    Eindeutigkeit: [[kn.satz.paulsen_cowgill]]; Eigenschaften im Komplexen: [[kn.satz.kneser_eigenschaften]]; komplexe Basen:
+    [[kn.satz.paulsen_komplex]]; Zahlen: [[kn.beob.referenzwerte]]. Wie die Korrektur $\theta_K$ von der Basis abhängt, ist die Frage hinter
+    dem ganzen Basiswechsel-Kapitel ([[kl.frage.basiswechsel_kneser]]).
+
+kn.satz.kneser_eigenschaften:
+  worum: |
+    Knesers Tetration lebt nicht nur auf der reellen Achse. Lässt man komplexe Höhen zu, ist sie fast überall holomorph, spiegelsymmetrisch,
+    und läuft nach oben in den Fixpunkt $L$, nach unten in $\bar L$.
+  genau: |
+    $T_b^{\mathrm K}$ ist holomorph auf $\mathbb C\setminus(-\infty,-2]$, erfüllt $T(\bar z)=\overline{T(z)}$, und für jedes feste $x>-2$ gilt
+    $T(x+iy)\to L$ für $y\to+\infty$ und $T(x+iy)\to\bar L$ für $y\to-\infty$.
+  warum: |
+    Literatursatz (Kouznetsov 2009, Paulsen–Cowgill 2017); die Teile erklären sich aus der Konstruktion:
+    1. Holomorph: $\operatorname{slog}=\chi+\theta_K(\chi)$ ist holomorph und umkehrbar; die Umkehrung lässt sich mit $T(z+1)=b^{T(z)}$ nach rechts fortsetzen.
+    2. Schnitt: Bei $-2$ sitzt die logarithmische Singularität ([[kn.satz.singulaer_minus2]]); weiter links wiederholt sie sich, darum fehlt die Halbgerade $(-\infty,-2]$.
+    3. Spiegelung: $T$ ist auf der reellen Achse reell; nach dem Spiegelungsprinzip folgt $T(\bar z)=\overline{T(z)}$.
+    4. Grenzwerte: Oben ist $\theta_K$ fast konstant, also verhält sich $T$ dort wie die reguläre Lösung an $L$, und die läuft für $\operatorname{Im}\to+\infty$ in $L$.
+  beispiel: |
+    Basis $e$, Höhe $\tfrac12+iy$: der Abstand $|T_e(\tfrac12+iy)-L|$ ist $1.30$, $0.79$, $0.23$, $0.016$ für $y=\tfrac12,1,2,4$. Er schrumpft wie $e^{-y\arg\lambda}$
+    mit $\arg\lambda=1.337$: von $y=2$ nach $y=4$ um den Faktor $0.069$.
+  einordnung: |
+    Genau diese Eigenschaften machen die Lösung eindeutig ([[kn.satz.paulsen_cowgill]]). Der Basiswechsel in senkrechter Richtung nutzt sie
+    ([[bw.satz.imaginaere_richtung]]); in Paper V/VI stehen sie als Annahme [[bw.ann.K1K2]].
+
+kn.satz.paulsen_komplex:
+  worum: |
+    Knesers Konstruktion braucht keine reelle Basis. Paulsen hat gezeigt, dass sie auch für komplexe Basen funktioniert — und dass die Lösung
+    glatt (sogar holomorph) von der Basis abhängt. Das erlaubt, nach der Basis abzuleiten.
+  genau: |
+    Für komplexe Basen ausserhalb eines Ausnahmebereichs lässt sich Knesers Konstruktion fortsetzen; $T_b(z)$ hängt holomorph von $b$ ab.
+    (Welche Basen genau ausgenommen sind, ist am Original noch zu prüfen.)
+  warum: |
+    Literatursatz (Paulsen 2019). Grund in einem Satz: Alle Zutaten — der Fixpunkt $L(b)$, sein Multiplikator $\lambda(b)$, die Schröder-Funktion und die
+    Riemann-Abbildung — hängen analytisch von $b$ ab, solange $L$ abstossend und von $\bar L$ getrennt bleibt.
+  beispiel: |
+    Die Ableitung nach der Basis, $\partial_bT_b(x)$, ist damit erklärt; im Basiswechsel heisst sie „Antwort“ und wird in Kapitel 7 ausgerechnet.
+  einordnung: |
+    Trägt die Störungstheorie in der Basis ([[bw.ann.basis_diffbar]], [[bw.satz.antwortkern]]) und die Identifikation in Paper V
+    ([[bw.satz.kern_existenz]]). Komplexe Basen mit ihren Adressen: [[bw.verm.adressen]].
+
+kn.beob.referenzwerte:
+  worum: |
+    Knesers Tetration ist sehr genau berechenbar. Diese Werte sind die Messlatte für alles Numerische im Graphen.
+  genau: |
+    $T_e^{\mathrm K}(\tfrac12)=1.6463542337511945809719240315921\ldots$ (972 belegte Stellen),
+    $T_2^{\mathrm K}(\tfrac12)=1.4587818160364217006839716610385\ldots$ (497 Stellen).
+  warum: |
+    Gemessen, nicht bewiesen: zwei Läufe verschiedener Tiefe (die Differenz schätzt den Fehler) und verschiedene Rechenmotoren, die übereinstimmen.
+    Kein Intervallbeweis. Grundannahme: fatou.gp rechnet wirklich Knesers Lösung aus.
+  beispiel: |
+    Gegenprobe in diesem Graphen: ein Tschebyschow-Interpolant aus 44 Werten von $T_2$ auf $[-1,0]$ trifft $T_2(\tfrac12)=1.458781816036421700683972$ auf alle
+    gezeigten Stellen.
+  einordnung: |
+    Benutzt für arithmetische Tests ([[ar.beob.ausschluss]]) und als Referenz für den Carleman-Vergleich ([[kn.verm.carleman_kneser]]).
+
+kn.satz.paulsen_cowgill:
+  worum: |
+    Warum spricht man von „der“ Kneser-Tetration? Weil sie die einzige holomorphe Lösung ist, die in senkrechter Richtung zur Ruhe kommt:
+    nach oben in $L$, nach unten in $\bar L$. Jede andere Lösung schwingt in einer der beiden Richtungen immer stärker.
+  genau: |
+    Sei $b>\eta$. Sind $F_1,F_2$ holomorph auf $\{\operatorname{Re}z>-2\}$, erfüllen $F_j(z+1)=b^{F_j(z)}$, $F_j(0)=1$, und gilt für jedes $x>-2$
+    $F_j(x+iy)\to L$ ($y\to+\infty$) und $F_j(x+iy)\to\bar L$ ($y\to-\infty$), dann ist $F_1=F_2$.
+  warum: |
+    1. Zwei Lösungen unterscheiden sich um eine Verschiebung: $F_2=F_1\circ(\mathrm{id}+\theta)$ mit 1-periodischem $\theta$ ([[fg.satz.allgemeine_loesung]];
+       der technische Teil ist, dass $F_1^{-1}\circ F_2$ auf einem ganzen Streifen erklärt ist).
+    2. Ein periodisches holomorphes $\theta$ ist eine Fourier-Reihe $\sum a_ke^{2\pi ikz}$. Ein Glied mit $k<0$ wächst nach oben wie $e^{2\pi|k|y}$, eines mit $k>0$ nach unten.
+    3. Würde $\theta$ nach oben wachsen, liefe $z+\theta(z)$ davon und $F_2$ könnte nicht in $L$ zur Ruhe kommen. Also ist $\theta$ oben und unten beschränkt.
+    4. Ein beschränktes periodisches ganzes $\theta$ ist konstant ([[fg.lem.periodisch_liouville]]); aus $F(0)=1$ folgt $\theta=0$.
+  beispiel: |
+    Ohne die senkrechten Bedingungen gibt es viele Lösungen. Zur Basis $\sqrt2$ zeigt [[exp.nichteindeutigkeit]] neben der regulären ($T(\tfrac12)=1.24362$)
+    zwei weitere reell-analytische, wachsende Lösungen mit $T(\tfrac12)=1.15$ und $1.30$. Sie entstehen mit $\theta(x)=c\sin(2\pi x)$ — und
+    $\theta(x+iy)$ wächst wie $e^{2\pi|y|}$.
+  einordnung: |
+    Eine zweite Begründung: [[kn.satz.trappmann_kouznetsov]]. Dasselbe Moden-Argument trägt die Eindeutigkeit des Basiskerns
+    ([[bw.satz.kern_eindeutig]]) und den Schluss in [[bw.satz.ursache_kozykel]]. Gesucht ist eine rein reelle Kennzeichnung ([[br.frage.bohr_mollerup]]).
+
+kn.satz.trappmann_kouznetsov:
+  worum: |
+    Eine zweite, unabhängige Eindeutigkeitsaussage — diesmal für die Abel-Funktion (den Superlogarithmus) statt für die Tetration selbst.
+  genau: |
+    Für holomorphe Abel-Funktionen an einem Paar nichtreeller Fixpunkte gibt es ein Eindeutigkeitskriterium (Trappmann–Kouznetsov 2011). Knesers
+    Abel-Funktion für $e^z$ erfüllt es, ebenso die für $b^z$ mit $b>\eta$. Der genaue Wortlaut ist am Original noch zu prüfen.
+  warum: |
+    Literatursatz. Der Mechanismus ist derselbe wie bei Paulsen–Cowgill: zwei Abel-Funktionen unterscheiden sich um eine periodische Funktion,
+    und das Verhalten an $L$ und $\bar L$ zwingt sie, beschränkt und damit konstant zu sein ([[fg.lem.periodisch_liouville]]).
+  einordnung: |
+    Ob die beiden Kriterien gleichwertig sind, ist offen. Vergleich: [[kn.satz.paulsen_cowgill]].
+
+kn.def.slog:
+  worum: |
+    Der Superlogarithmus beantwortet die umgekehrte Frage: Wie viele Stockwerke braucht der Turm, um den Wert $y$ zu erreichen? Er zählt
+    Stockwerke, so wie der Logarithmus Faktoren zählt.
+  genau: |
+    Für eine streng wachsende Tetration $T_b$ mit $b>\eta$ ist $\operatorname{slog}_b:=T_b^{-1}:\mathbb R\to(-2,\infty)$. Er erfüllt
+    $$\operatorname{slog}_b(b^y)=\operatorname{slog}_b(y)+1,\qquad\operatorname{slog}_b(1)=0.$$
+  warum: |
+    1. $T_b$ ist stetig und streng wachsend, geht bei $-2$ nach $-\infty$ und für $x\to\infty$ nach $+\infty$ (Turmwachstum über $\eta$). Also ist $T_b$ eine
+       Bijektion von $(-2,\infty)$ auf $\mathbb R$ und hat eine Umkehrung.
+    2. Setzt man $x=\operatorname{slog}_b(y)$ in $T(x+1)=b^{T(x)}$ ein, steht da $T(\operatorname{slog}_b(y)+1)=b^y$, also $\operatorname{slog}_b(b^y)=\operatorname{slog}_b(y)+1$.
+    3. $T(0)=1$ gibt $\operatorname{slog}_b(1)=0$. Für $1<b<\eta$ ist $T_b$ beschränkt; dann ist $\operatorname{slog}_b$ nur auf $(-\infty,a)$ erklärt.
+  beispiel: |
+    Kneser, Basis $e$: $\operatorname{slog}_e(0)=-1$, $\operatorname{slog}_e(1)=0$, $\operatorname{slog}_e(2)=0.70155$, $\operatorname{slog}_e(e)=1$, $\operatorname{slog}_e(1000)=2.666$.
+  einordnung: |
+    Allgemein heisst so eine Funktion Abel-Funktion ([[fg.def.abel]]); Rechenregeln und Ableitung in den Grundlagen ([[gr.satz.slog_grund]],
+    [[gr.satz.slog_ableitung]]). Bruchsummen des Superlogarithmus: [[kn.satz.abel_bruchsumme]].
+
+kn.satz.singulaer_minus2:
+  worum: |
+    Links von $-1$ wird jede Tetration schnell sehr negativ: Kurz vor $-2$ sieht sie aus wie ein Logarithmus und fällt nach $-\infty$. Das gilt für
+    jede glatte Lösung — Kneser, regulär, linear.
+  genau: |
+    Ist $T$ eine reelle Lösung mit $T(0)=1$ auf $(-2,0]$, im Punkt $-1$ differenzierbar und $T'(-1)\ne0$, dann gilt
+    $$T(-2+\varepsilon)=\frac{\ln\varepsilon}{\ln b}+\frac{\ln T'(-1)}{\ln b}+o(1)\qquad(\varepsilon\to0^+).$$
+  warum: |
+    1. $T(-1)=\log_bT(0)=0$, also $T(-1+\varepsilon)=T'(-1)\,\varepsilon+o(\varepsilon)$.
+    2. Die Gleichung sagt $b^{T(-2+\varepsilon)}=T(-1+\varepsilon)$. Logarithmieren gibt $T(-2+\varepsilon)=\log_b\bigl(T'(-1)\varepsilon(1+o(1))\bigr)$ — das ist die Formel.
+    3. Das Vorzeichen kommt umsonst: $T(-1+\varepsilon)=b^{(\dots)}>0$ und $T(-1)=0$, also $T'(-1)\ge0$, mit der Voraussetzung sogar $>0$.
+       Gebraucht wird nur Differenzierbarkeit **im Punkt** $-1$, nicht in einer Umgebung.
+  beispiel: |
+    Reguläre Tetration zur Basis $\sqrt2$: $T'(-1)=1.69974$, die Konstante ist $\ln T'(-1)/\ln\sqrt2=1.53063$; der Rest ist bei $\varepsilon=10^{-12}$ nur noch $-2\cdot10^{-12}$
+    und fällt wie $\varepsilon$. Lineare Tetration: $T'(-1)=1$, und $T(-2+\varepsilon)=\log_b\varepsilon$ gilt exakt.
+  bilder: [exp.singulaer]
+  einordnung: |
+    Im Komplexen wird daraus der Schnitt $(-\infty,-2]$ ([[kn.satz.kneser_eigenschaften]]). Folgerung für zwei Basen: [[kn.kor.basisvergleich]].
+    Die ganzzahligen Werte $T(-1)=0$, $T(-2)=-\infty$: [[fg.lem.ganzzahlwerte]].
+
+kn.kor.basisvergleich:
+  worum: |
+    Nahe bei $-2$ fallen alle Tetrationen wie ein Logarithmus, aber verschieden steil. Das Verhältnis zweier Basen geht gegen das Verhältnis ihrer Logarithmen.
+  genau: |
+    $$\lim_{\varepsilon\to0^+}\frac{T_b(-2+\varepsilon)}{T_c(-2+\varepsilon)}=\frac{\ln c}{\ln b}.$$
+  warum: |
+    Beide Zähler und Nenner sind $\ln\varepsilon/\ln(\text{Basis})+$ beschränkt ([[kn.satz.singulaer_minus2]]). Durch $\ln\varepsilon$ teilen: die Konstanten verschwinden.
+  beispiel: |
+    $b=e$, $c=\sqrt2$: Grenzwert $\ln\sqrt2=0.3466$. Die Annäherung ist langsam — der Fehler fällt nur wie $1/|\ln\varepsilon|$, bei $\varepsilon=10^{-12}$ also etwa um den Faktor $1/28$.
+  einordnung: |
+    Eine reine Folgerung ohne eigenen Inhalt; sie zeigt, dass am linken Rand nur die Basis zählt, nicht die Konstruktion.
+
+kn.konstr.linear:
+  worum: |
+    Die einfachste denkbare Tetration: Zwischen $-1$ und $0$ zieht man eine gerade Linie von $0$ nach $1$, der Rest folgt aus der Gleichung. Sie ist
+    stetig und wachsend — aber an den ganzen Stellen hat sie Knicke.
+  genau: |
+    $T(x)=x+1$ auf $(-1,0]$, fortgesetzt mit $T(x+1)=b^{T(x)}$ nach rechts und $T(x-1)=\log_bT(x)$ nach links. Für $b>1$ ist das eine stetige, streng wachsende Lösung.
+  warum: |
+    1. Rechts von $0$: $T(x)=b^{x}$ auf $(0,1]$, $T(x)=b^{b^{x-1}}$ auf $(1,2]$, und so weiter; links: $T(x)=\log_b(x+2)$ auf $(-2,-1]$.
+    2. Stetigkeit an den Nahtstellen: $T(0^+)=b^{T(-1^+)}=b^0=1=T(0)$, und so weiter für jede ganze Stelle.
+    3. Monotonie: $b^x$ und $\log_b$ sind wachsend, also überträgt sich die Monotonie der Geraden auf jedes Stück.
+  beispiel: |
+    Basis $e$: $T(\tfrac12)=e^{1/2}=1.64872$, Kneser $1.64635$ — Unterschied $0.0024$. Basis $2$: $T(\tfrac12)=\sqrt2=1.41421$, Kneser $1.45878$.
+  bilder: [k0_halbe_hoehe]
+  einordnung: |
+    Wie glatt sie ist: [[kn.satz.linear_glatt]]. Eine Eindeutigkeitsaussage, die sie auswählt: [[kn.satz.hooshmand]]. Ihre Knicke bestimmen
+    den Abfall ihrer Fourier-Moden ([[bw.satz.fourier_naht]]).
+
+kn.satz.linear_glatt:
+  worum: |
+    Die Knicke der linearen Tetration kann man nur zur Basis $e$ wegbekommen, und auch dort nur in der ersten Ableitung. Die zweite springt immer.
+  genau: |
+    $T'(0^-)=1$ und $T'(0^+)=\ln b$: stetig differenzierbar genau für $b=e$. Für $b=e$ ist $T''(0^-)=0\ne1=T''(0^+)$, also nie $C^2$.
+  warum: |
+    Links von $0$ ist $T$ die Gerade $x+1$: Steigung $1$, Krümmung $0$. Rechts ist $T(x)=b^x$: Steigung $\ln b$, Krümmung $\ln^2b$. Gleiche Steigung heisst
+    $\ln b=1$, also $b=e$; dann ist die Krümmung rechts $1$, links $0$.
+  beispiel: |
+    Basis $2$: links Steigung $1$, rechts $0.693$ — ein sichtbarer Knick. Basis $e$: auf den ersten Blick glatt, erst die Krümmung springt von $0$ auf $1$.
+  einordnung: |
+    Monotonie und $C^1$ reichen also weder für Glattheit noch für Eindeutigkeit. Folge für die Fourier-Moden: [[bw.satz.fourier_naht]]. Glatt in allen
+    Ordnungen: [[kn.konstr.walker]].
+
+kn.satz.hooshmand:
+  worum: |
+    Es gibt einen Satz, der unter Zusatzbedingungen genau die lineare Tetration auswählt. Er zeigt: Reelle Bedingungen können eine Lösung mit
+    Knicken für „die richtige“ erklären.
+  genau: |
+    Hooshmand (2006), Wortlaut nach Wikipedia (das Original ist nicht gelesen):
+    - **Erster Satz.** Sei $0<a\ne1$ und $f$ stetig auf $(-2,\infty)$ mit $f(x)=a^{f(x-1)}$ für $x>-1$, $f(0)=1$, $f$ differenzierbar auf $(-1,0)$ mit monotonem $f'$ dort,
+      und $f'(0^+)=\ln a\cdot f'(0^-)$ (oder $f'(-1^+)=f'(0^-)$). Dann ist $f$ die lineare Tetration $f(x)=\exp_a^{\lfloor x\rfloor+1}(\{x\})$.
+    - **Zweiter Satz** (Basis $e$). Ist $f(x)=e^{f(x-1)}$, $f(0)=1$, $f$ konvex auf $(-1,0)$ und $f'(0^-)\le f'(0^+)$, dann ist $f$ die lineare Tetration.
+    - **Folge.** Die lineare Tetration ist die einzige auf $(-1,\infty)$ konvexe Lösung; jede andere hinreichend glatte Lösung hat einen Wendepunkt in $(-1,0)$.
+  warum: |
+    Idee des ersten Satzes: Auf $(0,1)$ ist $f(x)=a^{f(x-1)}$, also $f'(x)=\ln a\cdot f(x)\,f'(x-1)$. Bei $x\to0^+$ gibt das $f'(0^+)=\ln a\cdot f'(-1^+)$. Mit der Nahtbedingung
+    folgt $f'(-1^+)=f'(0^-)$: die Steigung ist am linken und am rechten Ende von $(-1,0)$ gleich. Ein monotones $f'$ mit gleichen Randwerten ist konstant —
+    $f$ ist auf $[-1,0]$ eine Gerade, und die Gleichung legt den Rest fest.
+  beispiel: |
+    Knesers Tetration zur Basis $e$ ist glatt und nicht linear, also muss sie in $(-1,0)$ einen Wendepunkt haben — er liegt bei $-0.5218$ ([[gr.beob.wendepunkte]]).
+  einordnung: |
+    Gegenstück zu [[kn.satz.paulsen_cowgill]], das mit komplexen Bedingungen Kneser auswählt. Lehre: Eine reelle Konvexitätsbedingung (wie bei Bohr–Mollerup
+    für $\Gamma$) wählt hier die Lösung mit Knicken. Die offene Frage nach einer reellen Bedingung für Kneser: [[br.frage.bohr_mollerup]].
+
+kn.konstr.walker:
+  worum: |
+    Zwischen „linear mit Knicken“ und „analytisch“ liegt eine Stufe: unendlich oft differenzierbar. Walker hat 1991 solche Lösungen gebaut.
+  genau: |
+    Walker konstruiert unendlich oft differenzierbare verallgemeinerte Exponential- und Logarithmusfunktionen, also $C^\infty$-Tetrationen, als Grenzwert
+    $$\operatorname{dexp}^{-n}\circ\exp^{n},\qquad\operatorname{dexp}(x)=e^x-1:$$
+    erst $n$-mal $e^x$, dann $n$-mal die Umkehrung von $e^x-1$, deren gebrochene Iterierte man am parabolischen Fixpunkt $0$ kennt. Bewiesen ist $C^\infty$ auf der
+    reellen Achse; Analytizität nicht.
+  warum: |
+    Literatursatz (Walker 1991), die Form des Grenzwerts nach Trappmann im Tetration-Forum. Warum nur $C^\infty$: Walker zeigt die Konvergenz gleichmässig auf
+    reellen Intervallen. Für Holomorphie bräuchte man sie auf komplexen Umgebungen — und dort können sich während der Konvergenz Singularitäten an die
+    reelle Achse drängen. Die DLMF (§4.12) nennt Walker für $C^\infty$ und Kneser für analytisch.
+  einordnung: |
+    Walkers Grenzwert ist von derselben Bauart wie der Basiswechsel zwischen zwei Basen ([[bw.def.F_bd]]): Logarithmen einer fremden Superfunktion iterieren.
+    Im Forum wird für alle solchen Grenzwerte vermutet, dass sie nirgends analytisch sind ([[bw.verm.nirgends_analytisch]]) — dann wäre Walkers Lösung nicht Kneser.
+    Von Walker stammt auch der intuitive Superlogarithmus ([[kn.konstr.carleman]]).
+
+kn.konstr.carleman:
+  worum: |
+    Ein Weg ganz ohne komplexe Geometrie: Man setzt den Superlogarithmus als Polynom an und verlangt die Abel-Gleichung Koeffizient für
+    Koeffizient. Heraus kommt ein lineares Gleichungssystem.
+  genau: |
+    Ansatz zur Basis $e$: $\operatorname{slog}_n(x)=-1+\sum_{k=1}^{n}a_kx^k$. Man verlangt $\operatorname{slog}_n(e^x)-\operatorname{slog}_n(x)=1$ bis zur Ordnung $x^{n-1}$.
+    Das gibt $n$ lineare Gleichungen für $a_1,\dots,a_n$:
+    $$\sum_{k=1}^na_k=1,\qquad\sum_{k=1}^na_k\frac{k^j}{j!}=a_j\quad(1\le j\le n-1).$$
+  warum: |
+    $\operatorname{slog}_n(e^x)=-1+\sum_ka_ke^{kx}=-1+\sum_ka_k\sum_j\frac{k^jx^j}{j!}$. Der Koeffizient von $x^0$ ist $-1+\sum_ka_k$, der von $\operatorname{slog}_n(x)$ ist $-1$; die
+    Differenz soll $1$ sein. Für $x^j$ mit $j\ge1$ soll die Differenz $0$ sein: $\sum_ka_kk^j/j!-a_j=0$. Ob das System für jedes $n$ lösbar ist, ist nur beobachtet.
+  beispiel: |
+    Mit $n=16$ liegt $\operatorname{slog}_n$ an inneren Punkten um $1.7\cdot10^{-5}$ neben Knesers Wert, mit $n=128$ um $9.2\cdot10^{-9}$.
+  bilder: [exp.carleman]
+  einordnung: |
+    Konvergiert das gegen Kneser? [[kn.verm.carleman_kneser]]; wie schnell: [[kn.beob.carleman_rate]]. Die Methode heisst nach Carleman-Matrizen,
+    die Potenzreihen von Iterierten verwalten (vgl. [[it.satz.erdos_jabotinsky]]).
+
+kn.verm.carleman_kneser:
+  worum: |
+    Der intuitive Superlogarithmus wird mit wachsendem $n$ immer besser — aber gegen welchen Grenzwert? Die Vermutung: genau gegen Knesers Superlogarithmus.
+  genau: |
+    **Vermutung.** Für $|x|<|L_e|\approx1.3746$ gilt $\operatorname{slog}_n(x)\to\operatorname{slog}^{\mathrm K}_e(x)$ für $n\to\infty$.
+  warum: |
+    Gestützt, nicht bewiesen (offen seit Walker 1991). Der Radius $|L_e|$ ist der Abstand zur nächsten Singularität: Knesers Superlogarithmus hat bei $L$ und
+    $\bar L$ logarithmische Singularitäten, seine Potenzreihe um $0$ kann darüber nicht hinaus konvergieren.
+  beispiel: |
+    Systeme $n=4\dots128$ mit bis zu 720 Stellen gerechnet, verglichen an fünf Punkten: der Fehler sinkt ohne Stillstand von $1.7\cdot10^{-5}$ auf $9.2\cdot10^{-9}$.
+    Kein Gegenbeispiel — aber die vorher erwarteten 10 Stellen bei $n=128$ wurden nicht erreicht.
+  bilder: [exp.carleman]
+  einordnung: |
+    Falls richtig, hätte man eine rein reell-algebraische Kennzeichnung der Kneser-Lösung ([[br.frage.bohr_mollerup]]). Rate: [[kn.beob.carleman_rate]].
+    Dieselbe Frage auf der Seite der Tetration selbst steht im Tetration-Forum als TPID 18 (Helms 2022): Konvergiert die „Polynom-Tetration“ aus abgeschnittenen
+    Carleman-Matrizen gegen Kneser? Helms erreicht mit $64\times64$-Matrizen 5–10 Stellen.
+
+kn.beob.carleman_rate:
+  worum: |
+    Der intuitive Superlogarithmus wird besser, aber nur langsam: Verdoppelt man $n$, wird der Fehler etwa zehn- bis fünfzehnmal kleiner — nicht, wie
+    man hoffen würde, um eine feste Zahl von Stellen pro Schritt.
+  genau: |
+    Maximaler Fehler an inneren Punkten $\approx C\,n^{-3.8}$ für $16\le n\le128$; ein geometrischer Ansatz $e^{-cn}$ passt zehnmal schlechter. Bei $n=128$: 8 Stellen.
+  warum: |
+    Gemessen. Vermuteter Grund: die logarithmischen Singularitäten bei $L,\bar L$ bremsen das Verfahren. Ein Ausweg wäre, den Singularitätsanteil vorher abzuziehen.
+  beispiel: |
+    $1.7\cdot10^{-5}$ ($n=16$), $1.6\cdot10^{-6}$ ($32$), $1.1\cdot10^{-7}$ ($64$), $9.2\cdot10^{-9}$ ($128$); angepasster Exponent $-3.81$.
+  bilder: [exp.carleman]
+  einordnung: |
+    Stützt [[kn.verm.carleman_kneser]], zeigt aber auch, wie weit die Methode trägt. Gegenprobe wäre die Basis $\sqrt2$, wo die reguläre Lösung explizit ist.
+
+kn.satz.abel_bruchsumme:
+  worum: |
+    Unter $\eta$ konnte man „anderthalb Turmstufen“ aufsummieren. Über $\eta$ wachsen die Stufen ins Riesige — aber der Superlogarithmus wächst so
+    langsam, dass man von **ihm** gebrochene Summen bilden kann, ähnlich wie $\log\Gamma$ die Summe der Logarithmen fortsetzt.
+  genau: |
+    Sei $b>\eta$, $A=\operatorname{slog}_b$ reell-analytisch und wachsend. Dann ist $|A''(y)|\le C/y^2$ für $y\ge1$, und die ausgeglichene Summe
+    $$\mathcal S[A](x)=\sum_{k\ge1}\Bigl[x\bigl(A(k+1)-A(k)\bigr)-\bigl(A(k+x)-A(k)\bigr)\Bigr]$$
+    konvergiert absolut. Sie erfüllt $\mathcal S(x+1)-\mathcal S(x)=A(x+1)$, $\mathcal S(n)=\sum_{k\le n}A(k)$, und ist die Bruchsumme im Sinn von Müller–Schleicher.
+    Ebenso existiert $\gamma_A=\lim_N\bigl[\sum_{k\le N}A'(k)-A(N)\bigr]$, das Gegenstück zur Euler-Konstante.
+  warum: |
+    1. Ableiten von $A(y)=1+A(\log_by)$ gibt $A'(y)=\dfrac{A'(\log_by)}{y\ln b}$ und eine ähnliche Formel für $A''$ mit $y^2$ im Nenner.
+    2. Weil $\log_by<y$, führt man jedes $y$ in endlich vielen Schritten auf ein festes Grundintervall zurück, auf dem $A',A''$ beschränkt sind. Induktion über die Schritte gibt $|A''(y)|\le C/y^2$.
+    3. Taylor: das $k$-te Glied ist $\tfrac{x-x^2}2A''(k)+\dots=O(k^{-2})$ — absolut summierbar.
+    4. Teleskop: in $\mathcal S(x+1)-\mathcal S(x)$ bleibt nur $A(1+x)-A(1)=A(x+1)$ übrig, weil $A(N+1)-A(N+1+x)\to0$.
+    5. Eindeutig nach dem Axiom von Müller–Schleicher: Summanden, die weit draussen fast konstant sind, dürfen dort wie Konstanten summiert werden.
+  beispiel: |
+    Kneser, Basis $e$: $\mathcal S(\tfrac12)=-0.1150976090828\ldots$, $\gamma_A=0.4951728249\ldots$ Probe: $\mathcal S(\tfrac32)-\mathcal S(\tfrac12)=A(\tfrac32)$ auf $3\cdot10^{-13}$. Die Schranke:
+    $y^2|A''(y)|=0.67$, $0.20$, $0.095$, $0.057$ bei $y=10,10^2,10^3,10^4$.
+  bilder: [exp.abel_bruchsumme]
+  einordnung: |
+    Gegenstück unter $\eta$: [[kl.satz.bruchsumme]]. Für $\log$ statt $\operatorname{slog}$ liefert dieselbe Konstruktion $\log\Gamma$ und $\gamma$. Was der Wert bedeutet:
+    [[kn.frage.abel_bruchsumme]].
+
+kn.frage.abel_bruchsumme:
+  worum: |
+    Die Bruchsumme des Superlogarithmus existiert. Aber hat ihr Wert eine Bedeutung — etwa für den Basiswechsel in Kapitel 7?
+  genau: |
+    Offen: Hängen $\mathcal S[A_b](x)$ oder $\gamma_A$ mit der mittleren Verschiebung $\mu_{b,d}$ des Basiswechsels, mit dem Antwortkern oder mit den
+    logarithmischen Schwänzen zusammen? (Die Konvergenz ist geklärt: [[kn.satz.abel_bruchsumme]].)
+  warum: |
+    Warum man das vermuten könnte: Auch $\mu_{b,d}$ entsteht aus einem Grenzwert von $A_b$ entlang eines Turms ([[bw.satz.phasengesetz]]), und
+    Bruchsummen haben sich unter $\eta$ schon als Sprache des Basiswechsels erwiesen ([[kl.satz.wertseitiger_basiswechsel]]).
+  beispiel: |
+    Basis $e$: $\mathcal S(\tfrac12)=-0.11510$, $\gamma_A=0.49517$; daneben $\mu_{e,2}=-1.12840$. Ein Zusammenhang ist nicht bekannt.
+  einordnung: |
+    Nächster Schritt: die Bruchsumme entlang $T_d$ transportieren und mit $\mu_{b,d}$ und der Welle $P$ vergleichen. Verwandt: [[kl.satz.bruchsumme]].
+
+kn.konstr.pentation:
+  worum: |
+    Addition wiederholt gibt Multiplikation, Multiplikation wiederholt gibt Potenz, Potenz wiederholt gibt Tetration — und Tetration wiederholt
+    gibt **Pentation**: $b\uparrow\uparrow\uparrow3=T_b(T_b(b))$. Für ganze Höhen ist das leicht hinzuschreiben, aber die Zahlen explodieren:
+    $e\uparrow\uparrow\uparrow2=T_e(e)\approx2076$, und $e\uparrow\uparrow\uparrow3=T_e(2076)$ hat mehr Stellen, als man je aufschreiben könnte.
+    Spannender ist die andere Richtung und alles dazwischen. Der Schlüssel ist derselbe wie eine Stufe tiefer: ein Fixpunkt.
+  genau: |
+    Sei $b>\eta$ und $T_b$ die Kneser-Tetration.
+    - $T_b$ hat zwischen $-2$ und $-1$ einen Fixpunkt $L_b$: $T_b(L_b)=L_b$. Zur Basis $e$ ist $L_e=-1.85035\ldots$
+    - Dort ist $T_b$ steil: $\lambda_b=T_b'(L_b)>1$ (gemessen: $6.4607$ für $e$, $5.1718$ für $2$). Der Fixpunkt stösst also ab — für die Umkehrung slog zieht er an.
+    - Die Poincaré-Funktion $\Psi$ an $L_b$ erfüllt $\Psi(\lambda_bw)=T_b(\Psi(w))$. Damit ist
+      $$P_b(z)=\Psi\bigl(c\,\lambda_b^{\,z}\bigr)$$
+      eine Pentation: $P_b(z+1)=T_b(P_b(z))$, und mit der richtigen Konstante $c$ gilt $P_b(0)=1$.
+    - Ganze Höhen: $P_b(1)=b$, $P_b(2)={}^bb$, $P_b(-1)=0$, $P_b(-2)=-1$; für $x\to-\infty$ geht $P_b(x)$ gegen $L_b$.
+  warum: |
+    1. **Fixpunkt.** $T_b(-1)=0$ liegt über der Geraden $y=x$ (denn $0>-1$), und für $x\to-2$ stürzt $T_b$ nach $-\infty$, liegt also darunter.
+       Dazwischen schneidet die Kurve die Gerade.
+    2. **Negative ganze Höhen.** Aus $P(x+1)=T_b(P(x))$ folgt $P(x)=\operatorname{slog}_b(P(x+1))$: $P(-1)=\operatorname{slog}(1)=0$,
+       $P(-2)=\operatorname{slog}(0)=-1$, $P(-3)=\operatorname{slog}(-1)$, … Weil der Fixpunkt für slog anzieht, läuft diese Kette gegen $L_b$,
+       und der Abstand schrumpft je Schritt um den Faktor $1/\lambda_b$.
+    3. **Linearisieren.** Am abstossenden Fixpunkt liefert Koenigs ([[it.satz.koenigs]]) die Reihe $\Psi$; sie macht aus dem Schritt $T_b$ eine
+       Multiplikation mit $\lambda_b$. Eine Multiplikation kann man beliebig oft — auch $z$-mal für gebrochenes $z$ — ausführen: $\lambda_b^z$.
+    4. **Konstante.** $c$ misst, wie weit $1$ vom Fixpunkt „in Schröder-Koordinaten“ entfernt ist: man läuft die slog-Kette $n$ Schritte bis nahe $L_b$,
+       kehrt dort $\Psi$ um und multipliziert mit $\lambda_b^n$.
+    5. **Grössere Höhen.** Für grosse $z$ wendet man $T_b$ einfach vorwärts an: $P_b(z)=T_b^{\circ n}(P_b(z-n))$.
+  beispiel: |
+    Basis $e$: $\lambda_e=6.46067\ldots$, $c=66.3201585987\ldots$, $\Psi(w)=L+w-0.6263\,w^2+0.4828\,w^3-0.4120\,w^4+\dots$
+    Für $z=\tfrac12$: $c\,\lambda^{1/2-8}=66.32\cdot6.46^{-7.5}\approx5.6\cdot10^{-5}$, also $\Psi\approx L+0.000056$; achtmal $T_e$ angewandt gibt
+    $e\uparrow\uparrow\uparrow\tfrac12=1.6323247404\ldots$ — etwas kleiner als die halbe Tetration ${}^{1/2}e=1.6463542\ldots$
+  bilder: [exp.pentation]
+  einordnung: |
+    Dieselbe Konstruktion wie die obere Superexponentialfunktion ([[kl.satz.obere_superexp]]), nur steht $T_b$ statt $b^x$ — und die braucht
+    selbst schon Kneser ([[kn.konstr.kneser]]). Die Zahlen und ihre Prüfung stehen in [[kn.beob.pentation_werte]]; wo die unendliche Pentation
+    konvergiert, sagt [[kn.beob.tetra_euler]]. Wie bei der Tetration ist diese Wahl nicht die einzige mögliche.
+
+kn.beob.pentation_werte:
+  worum: |
+    Mit der Konstruktion aus [[kn.konstr.pentation]] und Kneser-Werten auf 40 Stellen lassen sich Pentationswerte genau ausrechnen. J. D. Fox hat
+    2007 im Tetration-Forum dieselben Grössen mit einer ganz anderen Methode berechnet (einer riesigen Matrix für den slog). Beide Rechnungen
+    stimmen auf 22 Stellen überein — ein starkes Zeichen, dass sie dieselbe Funktion beschreiben.
+  genau: |
+    Basis $e$:
+    - Fixpunkt $L_e=-1.8503545290271814184834459503\ldots$, Multiplikator $\lambda_e=6.4606712956818393902088283398\ldots$
+    - $e\uparrow\uparrow\uparrow\tfrac12=1.6323247404360631\ldots$, $e\uparrow\uparrow\uparrow(-\tfrac12)=0.4910543386356482\ldots$, $e\uparrow\uparrow\uparrow1.5=6.4857360642393348\ldots$
+    - $e\uparrow\uparrow\uparrow2=2075.9683350580658335744\ldots$, $e\uparrow\uparrow\uparrow(-3)=-1.6363583542860289796\ldots$, $e\uparrow\uparrow\uparrow(-4)=-1.8131704830986356400\ldots$
+
+    Basis $2$: $L_2=-1.7439091761327370\ldots$, $\lambda_2=5.1717972635455210\ldots$, $2\uparrow\uparrow\uparrow1.5=2.7028905714601531\ldots$
+  warum: |
+    Die Werte sind gerechnet, nicht bewiesen. Geprüft wurden sie so:
+    1. Der Fixpunkt erfüllt $T_e(L)=L$ auf 30 Stellen.
+    2. Die Pentation erfüllt $P(x+1)=T_e(P(x))$ an Stellen, die nicht in die Konstruktion eingingen ($x=-\tfrac12$, $\tfrac12$).
+    3. Mit 8 oder 10 Vorwärtsschritten gerechnet, unterscheiden sich die Ergebnisse erst an der 23. Stelle.
+    4. Fox' Werte (andere Methode, 2007): Abstand $8\cdot10^{-24}$ beim Fixpunkt, $5\cdot10^{-22}$ beim Multiplikator, relativ $10^{-22}$ bei $e\uparrow\uparrow\uparrow2$.
+    5. S. Levenstein (2020, mit seinem eigenen Programm) gibt $2\uparrow\uparrow\uparrow1.5\approx2.7029$ — getroffen.
+  beispiel: |
+    Wie schnell die negativen Höhen gegen den Fixpunkt laufen: Abstände zu $L_e$ bei $-3,-4,-5,-6,-7$:
+    $0.2140,\ 0.03718,\ 0.005870,\ 0.0009114,\ 0.0001411$. Die Verhältnisse $5.76,\ 6.33,\ 6.44,\ 6.46$ nähern sich $\lambda_e=6.4607$.
+  bilder: [exp.pentation]
+  einordnung: |
+    Fox' Methode ist die Matrix-Methode von Robbins (verwandt mit Carleman, [[kn.konstr.carleman]]); die Übereinstimmung auf 22 Stellen stützt die
+    Vermutung, dass solche Matrix-Lösungen gegen Kneser konvergieren ([[kn.verm.carleman_kneser]]). Kneser-Referenzwerte eine Stufe tiefer:
+    [[kn.beob.referenzwerte]].
+
+kn.beob.tetra_euler:
+  worum: |
+    Eine Stufe tiefer gibt es zwei berühmte Zahlen: Der unendliche Turm $b^{b^{b^{\cdots}}}$ hat einen Wert genau bis zur Basis $\eta=e^{1/e}$, und an
+    dieser Grenze ist der Wert $e$. Dort berührt die Kurve $b^x$ die Gerade $y=x$. Dasselbe passiert eine Stufe höher: Die Kurve der Tetration
+    $x\mapsto{}^xb$ berührt die Gerade $y=x$ bei genau einer Basis $\eta_4\approx1.6353$, im Punkt $e_4\approx3.0885$. Und genau bis $\eta_4$
+    hat die unendliche Pentation einen Wert.
+  genau: |
+    Mit der Kneser-Tetration $T_b(x)={}^xb$:
+    $$\eta_4=1.6353244967152763993453446183\ldots,\qquad e_4=3.0885322718067176544821807826\ldots$$
+    Es gilt $T_{\eta_4}(e_4)=e_4$ und $T_{\eta_4}'(e_4)=1$ (Berührung), und $T_{\eta_4}''(e_4)>0$ (die Kurve liegt sonst über der Geraden). Gleichwertig:
+    1. **Fixpunkte:** Für $\eta<b<\eta_4$ schneidet $T_b$ die Gerade dreimal, für $b>\eta_4$ nur einmal (beim negativen Fixpunkt aus [[kn.konstr.pentation]]).
+    2. **Selbst-Tetrawurzel:** Zu jedem $y$ gibt es eine Basis $b(y)$ mit ${}^yb=y$. Sie ist am grössten bei $y=e_4$, mit $b(e_4)=\eta_4$.
+    3. **Unendliche Pentation:** $b\uparrow\uparrow\uparrow n$ hat für $n\to\infty$ einen Grenzwert genau dann, wenn $b\le\eta_4$.
+  warum: |
+    **Wie gerechnet wurde.** Für eine Basis $b$ nimmt man die Taylorreihe von $T_b$ um $3.0885$, sucht die Stelle $x^*$ mit $T_b'(x^*)=1$ — dort ist
+    $T_b(x)-x$ am kleinsten — und schaut, ob dieses Minimum $g(b)$ positiv oder negativ ist. $\eta_4$ ist die Basis mit $g=0$ (Sekantenverfahren in $b$, wenige Schritte).
+
+    **Warum die drei Kennzeichnungen dasselbe sagen** (unter zwei hier nur gemessenen Annahmen: $T_b(x)$ wächst mit $b$, und $T_b(x)-x$ hat für $x>1$
+    ein einziges Tal):
+    1. Ist $b<\eta_4$, ist der Talboden negativ: zwei positive Schnitte, dazu der negative — drei. Ist $b>\eta_4$, liegt das Tal über null: kein positiver Schnitt.
+    2. Bei $\eta_4$ liegt die Kurve überall über der Geraden ausser bei $e_4$. Für $y\ne e_4$ ist also ${}^y\eta_4>y$, und um ${}^yb=y$ zu erreichen,
+       muss man die Basis verkleinern: $b(y)<\eta_4$.
+    3. Die Folge $1,\ T_b(1)=b,\ T_b(b),\dots$ wächst. Gibt es einen positiven Fixpunkt $x_1$, bleibt sie darunter ($x<x_1\Rightarrow T_b(x)<x_1$) und
+       läuft gegen $x_1$. Gibt es keinen, kann sie nirgends zur Ruhe kommen und wächst über alle Grenzen.
+
+    Eine Stufe tiefer ist es genau dieselbe Rechnung mit $b^x$ statt $T_b(x)$: $b(y)=y^{1/y}$, Maximum $\eta$ bei $e$ ([[fp.satz.unendliche_superwurzel]]).
+  beispiel: |
+    - $b=1.6$: Fixpunkte bei etwa $-1.6$, $2.264$ und $4.6$. Die Folge $1,\ 1.6,\ \dots$ läuft gegen $1.6\uparrow\uparrow\uparrow\infty=2.2643844034811596\ldots$
+      (dort ist $T'=0.553<1$, der Fixpunkt zieht an).
+    - $b=1.5$: die beiden positiven Fixpunkte liegen bei etwa $1.9$ und erst bei etwa $11$ — knapp über $\eta$ hängt die Kurve lange bei $e$ fest.
+    - $b=1.7$: $1,\ 1.7,\ \dots,\ 2.66,\ 3.18,\ 4.06,\ 7.50,\ \dots$ — kein Halt.
+    - Selbst-Tetrawurzel: $b(2.6)=1.62558$, $b(2.9)=1.63414$, $b(3.3)=1.63415$, $b(3.6)=1.62953$ — alle unter $\eta_4=1.63532$.
+    - Unter $\eta$ (reguläre Tetration): $\sqrt2\uparrow\uparrow\uparrow\infty=1.5492173298429939\ldots$
+  bilder: [exp.tetra_euler]
+  einordnung: |
+    Der Wert wurde 2009 im Forum zuerst grob genannt (bo198214, d. h. H. Trappmann: $b\le1.6353244967$) und 2010 von S. Levenstein auf 32 Stellen
+    berechnet („Nuninho's constant“); diese Rechnung bestätigt alle 32 Stellen. Die Zahlen hängen von der Wahl der Tetration ab — mit einer
+    Matrix-Näherung kam 2009 $3.08855\ldots$ statt $3.08853\ldots$ heraus. Eine Stufe tiefer: [[fp.def.eta]], [[fp.satz.turm_reell]].
+
+kn.beob.stufe5:
+  worum: |
+    Nach $(e,\eta)$ eine Stufe tiefer und $(e_4,\eta_4)$ bei der Tetration kommt das nächste Paar: Bei welcher Basis berührt die **Pentation** $b\uparrow\uparrow\uparrow x$
+    die Gerade $y=x$? Mit der Pentation aus [[kn.konstr.pentation]] lässt sich das genau so ausrechnen wie $\eta_4$.
+  genau: |
+    $$\eta_5=1.737355925151687573101390\ldots,\qquad e_5=3.301407278523367493377305\ldots$$
+    mit $P_{\eta_5}(e_5)=e_5$, $P_{\eta_5}'(e_5)=1$ und $P_{\eta_5}''(e_5)>0$.
+    - Für $b<\eta_5$ schneidet die Pentation die Gerade zweimal (bei $b=1.70$ etwa bei $2.44$ und $5.69$).
+    - Für $b>\eta_5$ schneidet sie nie: links von 0 liegt die Pentation immer über der Geraden, weil sie für $x\to-\infty$ gegen den Fixpunkt $L_b\approx-1.67$ läuft.
+  warum: |
+    Gerechnet, nicht bewiesen, mit derselben Methode wie [[kn.beob.tetra_euler]]:
+    1. Für eine Basis $b$ wird die Pentation auf einem kleinen Kreis um $x_0\approx3.3$ ausgewertet (komplexe Höhen, über die Kneser-Tetration an komplexen Punkten).
+    2. Daraus die Taylorreihe, daraus die Stelle $x^*$ mit $P_b'(x^*)=1$ und der Wert $g(b)=P_b(x^*)-x^*$.
+    3. $\eta_5$ ist die Basis mit $g=0$ (Sekantenverfahren in $b$, acht Schritte bis $10^{-29}$).
+    Probe: mit 10 statt 8 Vorwärtsschritten in der Pentation ändert sich nichts bis zur 30. Stelle.
+  beispiel: |
+    Bei $\eta_5$ liegt der negative Fixpunkt der Tetration bei $-1.67509$ mit Multiplikator $4.8736$ — dort wird die Pentation verankert. Die Krümmung im Berührpunkt ist
+    $P''(e_5)/2=0.37699$ (bei der Tetration: $T''(e_4)/2=0.29348$).
+  bilder: [exp.stufe5]
+  einordnung: |
+    Das dritte Glied der Folgen, nach denen [[kn.verm.tpid10]] fragt. Wie alle Zahlen der höheren Stufen hängt es an der gewählten Fortsetzung — hier Kneser für die
+    Tetration und reguläre Iteration für die Pentation.
+
+kn.beob.stufe6:
+  worum: |
+    Das nächste Paar nach $(e_5,\eta_5)$: Bei welcher Basis berührt die **Hexation** $b\uparrow\uparrow\uparrow\uparrow x$ die Gerade $y=x$? Die Antwort liegt bei $b\approx1.8$,
+    also über $\eta_5$ — dort gibt es nur die Kneser-artige Hexation aus [[kn.frage.hexation_kneser]].
+  genau: |
+    $$\eta_6=1.7991212361288126867235670070\ldots,\qquad e_6=3.44223464771689323\ldots$$
+    mit $H_{\eta_6}(e_6)=e_6$, $H_{\eta_6}'(e_6)=1$ und $H_{\eta_6}''(e_6)/2=0.44293>0$.
+    - Für $b<\eta_6$ schneidet die Hexation die Gerade (bei $b=1.78$ liegt sie zwischen etwa $2.7$ und $5.1$ unter ihr, am tiefsten bei $x=4.47$ mit $-0.70$).
+    - Für $b>\eta_6$ liegt sie überall darüber (bei $b=1.80$ ist der kleinste Abstand $0.022$, bei $x=3.41$).
+  warum: |
+    Gerechnet, nicht bewiesen, mit derselben Idee wie bei [[kn.beob.stufe5]]:
+    1. Für eine Basis $b$ baut das Rechenwerk knhexinit die Kneser-artige Hexation (am abstossenden Fixpunkt der Pentation, rund 31 Stellen).
+    2. Auf einem Gitter $x\in[2,6]$ das Minimum von $H_b(x)-x$, dann Newton auf $H_b'(x)=1$; das ergibt $m(b)=H_b(x^*)-x^*$.
+    3. $\eta_6$ ist die Basis mit $m=0$ (Sekantenverfahren, sieben Schritte bis $|m|<10^{-33}$).
+    Probe: dieselbe Rechnung mit 45 statt 30 Stellen stimmt auf 32 Stellen überein.
+  beispiel: |
+    Die Stelle des Minimums wandert schnell: bei $b=1.78$ liegt sie bei $4.47$, bei $1.795$ bei $3.62$, bei $1.80$ bei $3.41$ — die Hexation reagiert in diesem Bereich
+    sehr stark auf die Basis. Die Krümmung im Berührpunkt wächst von Stufe zu Stufe: $0.293$ (Tetration), $0.377$ (Pentation), $0.443$ (Hexation).
+  bilder: [exp.hexation_kneser]
+  einordnung: |
+    Das vierte Glied der Folgen aus [[kn.verm.tpid10]]. Es hängt an der gewählten Fortsetzung jeder Stufe: Kneser für die Tetration, regulär für die Pentation,
+    Kneser-artig für die Hexation.
+
+kn.verm.tpid10:
+  worum: |
+    $e$ und $\eta$ haben auf jeder höheren Rechenstufe ein „Geschwisterpaar“: $(e_4,\eta_4)$ bei der Tetration, $(e_5,\eta_5)$ bei der Pentation, und so weiter.
+    2010 vermutete ein Forumsmitglied (dantheman163), dass diese Folgen gegen 4 und 2 gehen. Der Grund ist hübsch: $2+2=2\cdot2=2^2=2\uparrow\uparrow2=\dots=4$.
+  genau: |
+    **Vermutung (TPID 10):** $e_n\to4$ und $\eta_n\to2$ für $n\to\infty$.
+    **Zusatz (TPID 11, tommy1729):** $\eta_n^2<e_{n-1}$.
+
+    | Stufe | $e_n$ | $\eta_n$ |
+    |---|---|---|
+    | 3 (Potenz) | $2.71828$ | $1.44467$ |
+    | 4 (Tetration) | $3.08853$ | $1.63532$ |
+    | 5 (Pentation) | $3.30141$ | $1.73736$ |
+    | 6 (Hexation) | $3.44223$ | $1.79912$ |
+  warum: |
+    Warum 4 und 2 plausibel sind: Für die Basis 2 geht jede Stufe durch denselben Punkt, $2\uparrow^n2=4$. Die Berührstellen mit $y=x$ wandern deshalb vermutlich zu
+    der Stelle, an der die Kurven zur Basis 2 „zusammenlaufen“.
+
+    Was die vier Glieder zeigen: beide Folgen wachsen. Die Abstände zu 4 sind $1.282$, $0.911$, $0.699$, $0.558$, zu 2 sind es $0.555$, $0.365$, $0.263$, $0.201$.
+    Die Verhältnisse aufeinanderfolgender Abstände steigen (zu 2: $0.66$, $0.72$, $0.76$) — die Annäherung ist nicht geometrisch. Doppelt-logarithmisch liegen die Abstände
+    aber fast auf einer Geraden: $2-\eta_n\approx2.8\,n^{-1.47}$, die lokalen Exponenten sind $1.462$, $1.471$, $1.471$. So ein Potenzgesetz geht gegen 0 — es passt
+    zum Grenzwert 2, auch wenn vier Glieder nichts beweisen. Bei $4-e_n$ sind die Exponenten $1.19$, $1.19$, $1.23$.
+    TPID 11 stimmt: $\eta_4^2=2.6743<e=2.7183$, $\eta_5^2=3.0184<e_4=3.0885$ und $\eta_6^2=3.2368<e_5=3.3014$.
+  beispiel: |
+    Der Punkt $(2,4)$: $2+2=4$, $2\cdot2=4$, $2^2=4$, ${}^22=2^2=4$, $2\uparrow\uparrow\uparrow2={}^22=4$ — auf jeder Stufe.
+  bilder: [exp.stufe5, exp.hexation_kneser]
+  einordnung: |
+    Die Glieder stammen aus [[kn.beob.tetra_euler]], [[kn.beob.stufe5]] und [[kn.beob.stufe6]]. Für das vierte brauchte es eine Hexation nahe der Basis 1.8 — dort hat die
+    Pentation keinen reellen Fixpunkt mehr, deshalb die Kneser-artige Hexation aus [[kn.frage.hexation_kneser]].
+
+kn.verm.carleman_eigenwerte:
+  worum: |
+    Die Carleman-Matrix schreibt eine Funktion als unendliche Tabelle: Zeile $j$ enthält die Potenzreihe von $f(x)^j$. Iterieren wird dann zu Matrix-Multiplikation.
+    Schneidet man die Tabelle ab, hat die Matrix Eigenwerte. H. Trappmann vermutete 2008, dass diese bei $b^x$ gegen die Potenzen der Steigung am Fixpunkt gehen —
+    genau die Zahlen, aus denen die reguläre Iteration gebaut ist.
+  genau: |
+    Für $1<b<\eta$ sei $B_N$ die $N\times N$-Matrix mit Einträgen $(B_N)_{jk}=(j\ln b)^k/k!$ ($j,k=0,\dots,N-1$) — der Abschnitt der Carleman-Matrix von $b^x$ um 0.
+    **Vermutung (TPID 1):** Ihre Eigenwerte gehen für $N\to\infty$ gegen $1,\lambda,\lambda^2,\dots$ mit $\lambda=\ln a=a\ln b$ ($a$ der untere Fixpunkt).
+  warum: |
+    Ein Beweis fehlt. Die Idee: Am Fixpunkt ist $b^x$ zu $w\mapsto\lambda w$ konjugiert, und die Carleman-Matrix von $\lambda w$ ist diagonal mit $\lambda^k$.
+    Eigenwerte ändern sich unter Konjugation nicht — für unendliche Matrizen ist das aber nicht automatisch richtig, und das Abschneiden stört.
+  beispiel: |
+    Grösster Abstand der ersten vier Eigenwerte zu $1,\lambda,\lambda^2,\lambda^3$:
+
+    | $N$ | Basis 1.3 ($\lambda=0.3859$) | Basis $\sqrt2$ ($\lambda=0.6931$) |
+    |---|---|---|
+    | 8 | $6.5\cdot10^{-3}$ | $0.18$ |
+    | 16 | $1.5\cdot10^{-6}$ | $0.029$ |
+    | 24 | $3.2\cdot10^{-11}$ | $0.0020$ |
+    | 32 | $3.0\cdot10^{-16}$ | $5.4\cdot10^{-5}$ |
+
+    Je näher $\lambda$ an 1 (also $b$ an $\eta$), desto langsamer.
+  einordnung: |
+    Matrix-Methoden ([[kn.konstr.carleman]]) und reguläre Iteration ([[it.satz.koenigs]]) sind zwei Wege zur selben Lösung; diese Eigenwerte sind ein direkter Zeuge dafür.
+
+kn.frage.beta_methode:
+  worum: |
+    Kneser ist eindeutig, wenn man zwei Dinge verlangt: holomorph in der aufgeschnittenen Ebene **und** ein bestimmtes Verhalten weit oben und unten (Grenzwert $L$).
+    Braucht man die zweite Bedingung wirklich? J. D. Nixon versuchte 2021 mit seiner β-Methode zu zeigen, dass es ohne sie eine andere holomorphe Tetration gibt.
+  genau: |
+    Die β-Methode startet mit $\beta_\lambda(s+1)=e^{\beta_\lambda(s)}/(e^{-\lambda s}+1)$ — Funktionen, die für $s\to\infty$ fast die Tetrationsgleichung erfüllen — und
+    korrigiert sie zu einer Lösung. Nixon hielt das Ergebnis zuerst für holomorph und verschieden von Kneser. Später schrieb er, er habe Holomorphie zu Unrecht
+    angenommen, und mit β-Funktionen lasse sich Kneser nur annähern.
+
+    **Offene Frage:** Gibt es eine holomorphe, auf $\mathbb R$ reelle Tetration, die **nicht** Kneser ist?
+  warum: |
+    Bekannt ist: Ohne Zusatzbedingung ist die Lösung nie eindeutig — man kann $T(x+\theta(x))$ mit einer 1-periodischen Funktion $\theta$ bilden. Aber solche
+    Störungen erzeugen Singularitäten in der komplexen Ebene. Die Frage ist, ob es eine Störung gibt, die das vermeidet und trotzdem nicht gegen $L$ läuft.
+  einordnung: |
+    Ergänzt die Eindeutigkeitssätze [[kn.satz.paulsen_cowgill]] und [[kn.satz.trappmann_kouznetsov]] von der anderen Seite: Welche Bedingung ist wirklich nötig?
+    Verwandt mit der Suche nach einer reellen Kennzeichnung ([[br.frage.bohr_mollerup]]).
+
+kn.satz.hexation_struktur:
+  worum: |
+    Die Tetration bricht bei $-2$ ab: dort geht sie nach $-\infty$. Die Pentation dagegen ist auf der ganzen reellen Achse definiert. Und die Hexation? Sie bricht wieder ab —
+    irgendwo zwischen $-4$ und $-3$. Der Grund lässt sich in einem Satz sagen: Eine Stufe bricht genau dann ab, wenn die Stufe darunter nach unten beschränkt ist.
+  genau: |
+    Sei $P_b$ die Pentation und $H$ eine wachsende Hexation ($H(x+1)=P_b(H(x))$, $H(0)=1$). Dann:
+    - $H(-1)=0$, $H(-2)=-1$, $H(-3)=-2$.
+    - Es gibt genau ein $x_c\in(-3,-2)$ mit $H(x_c)=L_T$ (dem negativen Fixpunkt der Tetration, etwa $-1.6$).
+    - Für $x\downarrow s_b=x_c-1$ geht $H(x)\to-\infty$; unterhalb von $s_b$ gibt es keine reelle Fortsetzung.
+  warum: |
+    1. **Rückwärts rechnen:** Aus $H(x)=P_b(H(x-1))$ folgt $H(x-1)=P_b^{-1}(H(x))$. Weil $P_b(-1)=0$, $P_b(-2)=-1$ und $P_b(0)=1$, ergibt das $H(-1)=0$, $H(-2)=-1$, $H(-3)=-2$.
+    2. **Untergrenze:** Die Pentation läuft für $x\to-\infty$ gegen $L_T$ und bleibt immer darüber. Werte unter $L_T$ hat sie nicht — also kann man $P_b^{-1}$ nur auf Werte über $L_T$ anwenden.
+    3. **Zwischenwert:** $H(-3)=-2$ liegt unter $L_T$, $H(-2)=-1$ darüber. Dazwischen trifft $H$ den Wert $L_T$ bei $x_c$.
+    4. **Absturz:** Kommt $H(x)$ von oben an $L_T$ heran, muss $P_b^{-1}(H(x))$ gegen $-\infty$ gehen, denn nur dort kommt die Pentation $L_T$ beliebig nahe. Also $H(x_c-1)=-\infty$.
+
+    **Das Muster über die Stufen:** $e^x>0$ ist nach unten beschränkt → die Tetration bricht ab. Die Tetration nimmt auf $(-2,\infty)$ alle reellen Werte an → die Pentation ist überall
+    definiert. Die Pentation ist nach unten beschränkt (durch $L_T$) → die Hexation bricht ab. Die Hexation nimmt wieder alle Werte an → eine Heptation wäre überall definiert.
+  beispiel: |
+    Reguläre Hexation: $s_{1.5}=-3.62649$, $s_{1.6}=-3.66301$, $s_{1.7}=-3.69422$; dicht daneben, bei $s_b+10^{-6}$, ist $H$ schon etwa $-10.7$.
+    Zur Basis 1.7: $L_T=-1.66314$, die Hexation trifft diesen Wert bei $x_c=s_b+1=-2.69422$.
+  bilder: [exp.hexation]
+  einordnung: |
+    Das Gegenstück eine Stufe tiefer ist [[fg.kor.keine_ganze_tetration]] (Abbruch bei $-2$) mit dem Logarithmus-Verhalten aus [[kn.satz.singulaer_minus2]].
+    Die Pentation selbst: [[kn.konstr.pentation]].
+
+kn.konstr.hexation_regulaer:
+  worum: |
+    Hexation ist Pentation immer wieder angewandt: $b\uparrow\uparrow\uparrow\uparrow3=P_b(P_b(b))$. Für halbe Höhen braucht man wieder einen Fixpunkt. Für Basen bis
+    $\eta_5\approx1.737$ hat die Pentation einen anziehenden reellen Fixpunkt $p_1$ — und dort geht alles genau wie bei der Tetration unter $\eta$ (Kapitel 5).
+  genau: |
+    Sei $\eta<b<\eta_5$, $p_1$ der untere Fixpunkt der Pentation ($P_b(p_1)=p_1$) und $\mu=P_b'(p_1)$ mit $0<\mu<1$. Mit der Poincaré-Funktion $\Psi$ an $p_1$ ist
+    $$b\uparrow\uparrow\uparrow\uparrow x=\Psi\bigl(\mu^x\,\sigma(1)\bigr),$$
+    wobei $\sigma(1)$ so gewählt ist, dass der Wert bei $x=0$ genau 1 ist. Die Hexation wächst streng, bleibt unter $p_1$ und läuft für $x\to\infty$ gegen $p_1$.
+  warum: |
+    1. **Fixpunkt:** Die Folge $1,\ P_b(1),\ P_b(P_b(1)),\dots$ wächst und bleibt unter $p_1$, läuft also dorthin. Dort ist die Steigung $\mu<1$ — der Fixpunkt zieht an.
+    2. **Linearisieren:** Am anziehenden Fixpunkt macht die Koenigs-Funktion aus dem Schritt $P_b$ eine Multiplikation mit $\mu$ ([[it.satz.koenigs]]).
+    3. **Zurück zu kleinen Höhen:** Für kleine $x$ ist $\mu^x\sigma(1)$ zu gross für die Reihe; dann rechnet man bei $x+k$ und geht mit der Umkehrung der Pentation $k$ Schritte zurück.
+       Diese Umkehrung ist für reelle Werte über $L_T$ eindeutig und reell.
+  beispiel: |
+    | Basis | $b\uparrow\uparrow\uparrow\uparrow\tfrac12$ | $b\uparrow\uparrow\uparrow\uparrow1\tfrac12$ | $b\uparrow\uparrow\uparrow\uparrow\infty=p_1$ | $\mu$ |
+    |---|---|---|---|---|
+    | 1.5 | $1.3233131536$ | $1.5810095080$ | $1.6365937339$ | $0.1485$ |
+    | 1.6 | $1.3625851342$ | $1.7376889627$ | $1.8863509752$ | $0.2377$ |
+    | 1.7 | $1.3974472613$ | $1.9176638520$ | $2.3876372817$ | $0.4495$ |
+
+    Probe: $1.7\uparrow\uparrow\uparrow\uparrow2=P_{1.7}(1.7)=2.0692201589$, und $P_{1.7}(H(\tfrac12))=H(1\tfrac12)$ auf 29 Stellen.
+  bilder: [exp.hexation]
+  einordnung: |
+    Dieselbe Konstruktion wie die reguläre Tetration [[kl.satz.regulaer]], zwei Stufen höher. Die Struktur am linken Rand: [[kn.satz.hexation_struktur]]. Über $\eta_5$ fehlt der reelle
+    Fixpunkt — dann braucht es eine Kneser-artige Konstruktion ([[kn.frage.hexation_kneser]]).
+
+kn.beob.unendliche_hexation:
+  worum: |
+    Der unendliche Turm $b^{b^{\cdots}}$ hat einen Wert bis $\eta$, die unendliche Pentation bis $\eta_4$ — und die unendliche Hexation $b\uparrow\uparrow\uparrow\uparrow\infty$ genau bis $\eta_5$.
+    Jede Stufe hat ihre eigene Grenzbasis, und es ist jedes Mal die Zahl, bei der die Stufe darunter die Gerade $y=x$ berührt.
+  genau: |
+    Die Folge $1,\ P_b(1),\ P_b(P_b(1)),\dots$ (das ist $b\uparrow\uparrow\uparrow\uparrow n$) konvergiert für $b\le\eta_5=1.7373559\ldots$ gegen den unteren Fixpunkt der Pentation und
+    wächst für $b>\eta_5$ über alle Grenzen.
+  warum: |
+    Die Folge wächst, weil $P_b(1)=b>1$ und $P_b$ wachsend ist. Gibt es einen Fixpunkt $p_1>1$, bleibt sie darunter und läuft dorthin. Gibt es keinen, kann sie nirgends anhalten.
+    Ob es einen gibt, entscheidet die Berührung bei $\eta_5$ ([[kn.beob.stufe5]]): darunter schneidet die Pentation $y=x$, darüber nicht.
+  beispiel: |
+    $b=1.7$: $1,\ 1.7,\ 2.0692,\ 2.2432,\ 2.3225,\ 2.3583,\ 2.3745,\ 2.3817,\dots\to2.3876372817$ (jeder Schritt verkleinert den Abstand etwa um $\mu=0.45$).
+    $b=1.74$: $P_b(x)-x$ ist auf $[-3,4]$ überall mindestens $0.043$ — die Folge wächst ohne Halt.
+  bilder: [exp.hexation]
+  einordnung: |
+    Die Kette: [[fp.satz.turm_reell]] (Stufe 4, Grenze $\eta$) → [[kn.beob.tetra_euler]] (Stufe 5, Grenze $\eta_4$) → hier (Stufe 6, Grenze $\eta_5$).
+
+kn.satz.kein_kneser_anziehend:
+  worum: |
+    Knesers Trick für die Tetration: an einem komplexen Fixpunkt eine Superfunktion bauen und sie dann so verbiegen, dass sie auf der reellen Achse reell wird. Bei der Pentation
+    zur Basis 2 liegt ein komplexer Fixpunkt nahe der reellen Achse — aber er **zieht an**. Und an einem anziehenden Fixpunkt funktioniert der Trick nie.
+  genau: |
+    Ist $f$ reell auf $\mathbb R$ und $p$ ein nicht reeller anziehender Fixpunkt ($|f'(p)|<1$), dann nimmt die reguläre Superfunktion $F_p(\zeta)=\Psi_p(\mu^\zeta)$ — und jede ihrer
+    Fortsetzungen — nie einen reellen Wert an. Eine reelle Lösung $H=F_p\circ(\mathrm{id}+\theta)$ gibt es deshalb nicht.
+  warum: |
+    1. Nimm einen Wert $w=\Psi_p(s)$. Wendet man $f$ $n$-mal an, wird daraus $\Psi_p(\mu^ns)$ — und weil $|\mu|<1$, geht $\mu^ns\to0$, also $f^{\circ n}(w)\to\Psi_p(0)=p$.
+    2. Jeder Wert von $\Psi_p$ liegt also im Einzugsgebiet von $p$.
+    3. Eine reelle Zahl bleibt unter $f$ reell; ihre Bahn kann nicht gegen den nicht reellen Punkt $p$ laufen. Also ist kein Wert von $\Psi_p$ reell.
+  beispiel: |
+    Pentation zur Basis 2: $p=1.7937303432+1.5736302435\,i$ mit $\mu=-0.0263+0.6081\,i$ ($|\mu|=0.61$, anziehend) und $q=-1.9929484359+1.4451284966\,i$ mit
+    $\mu=1.3689+2.4881\,i$ ($|\mu|=2.84$, abstossend). Ein erster Versuch an $p$ lieferte springende Werte — der Satz erklärt warum; an $q$ verläuft alles glatt.
+  bilder: [exp.hexation]
+  einordnung: |
+    Bei der Tetration ist der Kneser-Fixpunkt $L$ abstossend ([[fp.satz.abstossend]]), daher fiel die Bedingung dort nie auf. Wie es an $q$ weitergeht: [[kn.frage.hexation_kneser]].
+
+kn.beob.hexation_verzweigt:
+  worum: |
+    Knesers Tetration ist oberhalb der reellen Achse überall glatt. Für die Hexation zur Basis 2, Kneser-artig am Fixpunkt $q$ der Pentation gebaut, stimmt das nicht: Sie hat in der
+    Höhe 2.75 Verzweigungspunkte. Der Grund ist, dass schon die Pentation — anders als die Exponentialfunktion — eigene Singularitäten hat.
+  genau: |
+    $F_q(\zeta)=\Psi_q(\mu_q^\zeta)$ ist exakt periodisch mit $\Pi=2\pi i/\ln\mu_q=3.00911+2.94132\,i$. Sie verzweigt an $\zeta_c-2+m+k\Pi$ ($m\ge0$): bei $m=0$ logarithmisch
+    (Umlauf $+2\pi i/\ln2$), bei $m\ge1$ wie $(\zeta-\zeta_0)^\alpha$ mit $\alpha=\ln\lambda_T/\ln2=2.370666$. Für $k=0$ sind das die Ecken der reellen Kurve, für $k=1$ liegen sie
+    im Bild der oberen Halbebene: $H$ verzweigt bei $z_m\approx-0.7408+m+2.7458\,i$.
+  warum: |
+    1. **Periode:** $\mu_q^{\zeta+\Pi}=\mu_q^\zeta e^{2\pi i}=\mu_q^\zeta$, also $F_q(\zeta+\Pi)=F_q(\zeta)$.
+    2. **Eine Singularität der Pentation:** Die Tetration hat bei $-2$ eine Log-Singularität. Die Pentation erbt sie an der Stelle $w_b\approx-1.979+1.912\,i$, wo $P(w_b-1)=-2$ ist:
+       $P(w)\approx\log_2(w-w_b)+c$. (Von $w_b$ läuft der Schnitt der Hauptzweig-Pentation nach rechts, entlang $\operatorname{Im}w=\pi/\ln\lambda_T$.)
+    3. **Log-Punkt von $F_q$:** $F_q$ nimmt den Wert $w_b$ an; einen Schritt weiter ist $F_q(\zeta)=P(F_q(\zeta-1))\approx\log_2(\zeta-\zeta_0)$ — ein Umlauf addiert $2\pi i/\ln2$.
+    4. **Potenz-Punkte:** Für $\operatorname{Re}w\to-\infty$ gilt $P(w)-L_T\approx c\,\lambda_T^{\,w}$. Mit $w\approx\log_2\delta$ wird daraus $c\,\delta^{\ln\lambda_T/\ln2}$. Da $P$ bei $L_T$,
+       $P(L_T),\dots$ glatt und umkehrbar ist, tragen alle weiteren Schritte denselben Exponenten.
+    5. **Auf der reellen Achse** heilt $\theta$ das: dort verhält sich $H$ wie $\log(x-s_b)/\ln\lambda_T$ (Koeffizient $1/\ln\lambda_T$ statt $1/\ln2$), $\theta$ hat dafür eine
+       Singularität $(x-x_c)^{1/\alpha}$. In der Höhe $2.75$ ist $\theta$ dagegen glatt (fast konstant) — die Verzweigung von $F_q$ geht unverändert auf $H$ über.
+  beispiel: |
+    Gemessen mit Blattverfolgung, Umlauf mit Radius 0.2 um die vorhergesagten Punkte (Weg von oben, wo der Hauptzweig stimmt):
+    $m=0$: Änderung $9.06472\,i$ ($2\pi i/\ln2=9.06472\,i$); $m=1$ und $m=2$: Änderung $0.49-2.44\,i$ bzw. $1.28-3.13\,i$; zwei Kontrollpunkte dazwischen: genau $0$.
+    Kleiner Umlauf (Radius 0.02) um $m=1$ und $m=2$: Faktor $(F-w_0)$ nachher/vorher $=-0.68784+0.72606\,i$, also $\alpha\equiv0.37070$; vorhergesagt $0.370666$.
+  einordnung: |
+    Bei der Tetration ([[kn.konstr.kneser]]) ist die Stufenfunktion exp ganz — dort gibt es nichts, was wiederkehren könnte. Hier ist die Stufenfunktion die Pentation, und die
+    Singularität aus [[kn.satz.hexation_struktur]] kehrt periodisch wieder. Was das für die Rechnung heisst: [[kn.frage.hexation_kneser]].
+
+kn.satz.hexation_keine_halbebene:
+  worum: |
+    Bei der Tetration legen zwei Forderungen die Lösung fest ([[kn.satz.paulsen_cowgill]]): holomorph auf einer Halbebene und senkrecht nach oben gegen den Fixpunkt $L$.
+    Für die Hexation zur Basis 2 kann man diese beiden Forderungen nicht zugleich erfüllen — es gibt keine einzige Lösung, die das tut.
+  genau: |
+    Ist $H$ eine Lösung von $H(z+1)=P(H(z))$, holomorph auf einer oberen Halbebene $\{\operatorname{Im}z>y_0\}$ oder einer rechten Halbebene $\{\operatorname{Re}z>x_0\}$, mit
+    $H(x+iy)\to q$ für $y\to+\infty$ (gleichmässig auf Streifen der Breite 1), so führt das zu einem Widerspruch. Jede Lösung mit Grenzwert $q$ ist an Punkten
+    $z_k\approx z_0+k\Pi$ verzweigt, $\Pi=2\pi i/\ln P^\prime(q)=3.009+2.941\,i$, und diese Punkte laufen diagonal in jede solche Halbebene hinein.
+  warum: |
+    1. **Jede Lösung hat die Kneser-Form.** Nahe $q$ gibt es die Abel-Funktion $\alpha_q$. Weil $H$ oben gegen $q$ geht, ist $\theta(z)=\alpha_q(H(z))-z$ dort definiert und
+       1-periodisch, also eine Fourierreihe $c+\sum_{n\ge1}c_ne^{2\pi inz}$, die nach oben exponentiell gegen $c$ geht. Damit ist $H=F_q\circ(\mathrm{id}+\theta)$.
+    2. **$F_q$ hat periodisch wiederkehrende Log-Punkte** bei $\zeta_c-2+k\Pi$ ([[kn.beob.hexation_verzweigt]]).
+    3. **Hoch oben ist $\theta$ praktisch konstant.** Deshalb trifft $z+\theta(z)$ jeden dieser Punkte bei einem $z_k$ nahe $\zeta_c-2+k\Pi-c$ (Satz von Rouché).
+    4. **Dort ist $H$ verzweigt**: Ein Umlauf um $z_k$ ändert den Wert um $2\pi i/\ln2$. Für grosse $k$ liegt $z_k$ in jeder oberen und jeder rechten Halbebene — Widerspruch.
+    Die einzige Zutat, die nur numerisch gesichert ist, ist die Log-Verzweigung von $F_q$ (gemessen: Umlauf $9.06472\,i$, genau $2\pi i/\ln2$).
+  beispiel: |
+    Für die Kneser-artige Hexation zur Basis 2 liegen die Verzweigungspunkte bei $z\approx-0.741+m+2.746\,i+(k-1)\Pi$, $m\ge0$, $k\ge1$:
+    $-0.741+2.746\,i$, $0.259+2.746\,i$, …, dann $2.268+5.687\,i$, …, $5.277+8.628\,i$, … — jede Zeile um $\Pi$ nach rechts oben versetzt.
+  einordnung: |
+    Das Gegenstück zu [[kn.satz.paulsen_cowgill]]: Dort ist die Kennzeichnung erfüllbar und legt die Lösung fest, hier ist sie leer. Was an ihre Stelle treten kann:
+    [[kn.verm.hexation_streifen]].
+
+kn.satz.hexation_eindeutig_g0:
+  worum: |
+    Was legt „die“ Kneser-artige Hexation fest, wenn die Halbebenen-Kennzeichnung der Tetration hier leer ist ([[kn.satz.hexation_keine_halbebene]])? Ein festes Gebiet
+    zwischen den beiden komplexen Fixpunkten $q$ und $\bar q$ der Pentation: Wer dort eine glatte, umkehrbare Abel-Funktion hat, ist eindeutig — und die Kneser-artige
+    Hexation hat eine.
+  genau: |
+    $\gamma_0$ ist die senkrechte Strecke von $\bar q$ nach $q$ durch $\operatorname{Re}q=-1.99295$, und $G_0$ das Gebiet zwischen $\gamma_0$ und ihrem Bild $P(\gamma_0)$
+    (ein Halbmond um die reelle Strecke $[-1.993,\,-0.994]$). Eine Abel-Funktion $\alpha$ ($\alpha(P(w))=\alpha(w)+1$ auf $\gamma_0$), die auf $G_0$ holomorph und injektiv ist,
+    reell auf der Achse, und sich bei $q$ und $\bar q$ bis auf Beschränktes wie die reguläre Abel-Funktion verhält, ist bis auf eine Konstante eindeutig. Die Umkehrfunktion
+    der Kneser-artigen Hexation ist so eine.
+  warum: |
+    1. **Eindeutigkeit.** Nimm zwei solche Funktionen $\alpha_1,\alpha_2$. Das Bild $\alpha_2(G_0)$ ist ein Streifen zwischen einer Kurve $\Gamma$ und $\Gamma+1$. Die Funktion
+       $\varphi=\alpha_1\circ\alpha_2^{-1}-\mathrm{id}$ ist darauf holomorph und hat auf den beiden Rändern dieselben Werte (Funktionalgleichung). Damit setzt sie sich
+       1-periodisch auf ganz $\mathbb C$ fort. An den Enden ist sie beschränkt, weil beide Abel-Funktionen sich bei $q$ wie $\alpha_q$ verhalten — also ist sie konstant.
+       Der Unterschied zum Streifen-Problem: Beide Funktionen leben auf **demselben** Gebiet, die Frage „ist $\alpha_1$ dort überhaupt definiert?“ entfällt.
+    2. **Existenz.** Für die Kneser-artige Hexation wurde $\Gamma_0=\alpha_K(\gamma_0)$ ausgerechnet (unten über die Pentation bis in den Rechenbogen, oben über die
+       θ-Darstellung; im Überlapp gleich auf $10^{-14}$ bis $10^{-18}$). Der Streifen zwischen $\Gamma_0$ und $\Gamma_0+1$ beginnt auf der Achse bei $[-2.994,\,-1.994]$ und
+       läuft nach links oben — weit weg von den ersten Verzweigungspunkten bei $\operatorname{Re}z=-0.741$. Dort ist $H_K$ holomorph, und weil der Rand
+       $\gamma_0\cup P(\gamma_0)$ eine einfache geschlossene Kurve ist, bildet $H_K$ den Streifen umkehrbar auf $G_0$ ab.
+  beispiel: |
+    $P(\operatorname{Re}q)=P(-1.99295)=-0.99415$ — der Halbmond $G_0$ reicht auf der Achse von $-1.993$ bis $-0.994$ und nach oben nur bis $\operatorname{Im}q=1.445$; der
+    Singularpunkt $w_b=-1.979+1.912\,i$ der Pentation liegt nicht in $G_0$. $\alpha_K(-1.99295)=-2.99393$.
+  bilder: [exp.hexation_kneser]
+  einordnung: |
+    Die Hexations-Fassung von [[kn.satz.trappmann_kouznetsov]], mit einem lösungsunabhängigen Gebiet. Ersetzt [[kn.satz.paulsen_cowgill]], das hier nicht greift.
+    Ob jedes andere Gebiet dieselbe Lösung auszeichnet: [[kn.verm.hexation_streifen]].
+
+kn.satz.hexation_gebiete:
+  worum: |
+    [[kn.satz.hexation_eindeutig_g0]] legt die Kneser-artige Hexation über ein festes Gebiet $G_0$ fest. Spielt die Wahl des Gebiets eine Rolle? Solange die Umkehrfunktion
+    der bekannten Lösung auf dem Gebiet glatt bleibt: nein. Eine andere Lösung bräuchte ein Gebiet, in dem diese Umkehrfunktion singulär wird.
+  genau: |
+    Ein Fundamentalgebiet $G$ ist ein Gebiet zwischen einer Kurve $\gamma$ von $\bar q$ über einen reellen Punkt $c$ nach $q$ und ihrem Bild $P(\gamma)$ (die beiden treffen sich
+    nur in $q,\bar q$). Lässt sich die Abel-Funktion $\alpha_K$ der Kneser-artigen Hexation von der reellen Strecke $[c,P(c)]$ aus auf ganz $G$ holomorph fortsetzen, dann
+    - ist $\alpha_K$ auf $G$ injektiv und erfüllt alle Bedingungen aus [[kn.satz.hexation_eindeutig_g0]],
+    - und jede andere zulässige Abel-Funktion auf $G$ ist $\alpha_K$ plus eine Konstante.
+    Für die Kreisbogen-Gebiete $G_c$ ($\gamma_c$ von $\bar q$ über $c$ nach $q$) ist das bei allen geprüften $c$ von $-2.5$ bis $1$ der Fall.
+  warum: |
+    1. **Die Fortsetzung bleibt eine Umkehrung.** Auf der reellen Strecke ist $H_K(\alpha_K(w))=w$. Diese Gleichung bleibt beim Fortsetzen richtig, solange $\alpha_K(w)$ keinen
+       Verzweigungspunkt von $H_K$ trifft — und dort hat $H_K$ nur reelle Werte (oder $\infty$). Also nimmt $\alpha_K$ auf $G$ keinen Wert zweimal an.
+    2. **Bei $q$ verhält sich $\alpha_K$ wie $\alpha_q$**, bis auf Beschränktes: Das gilt auf jedem Zweig, auf dem man $q$ erreicht.
+    3. **Dann greift der Beweis mit festem Gebiet** — nur eben mit $G$ statt $G_0$.
+    4. **Was eine Konkurrenz bräuchte:** ein Gebiet, auf dem $\alpha_K$ irgendwo singulär wird. Sicher singulär ist $\alpha_K$ am anziehenden Fixpunkt $p$ der Pentation: Auf Bahnen,
+       die gegen $p$ laufen, wächst $\alpha_K$ bei jedem Schritt um 1. Liegt $p$ im Gebiet einer Lösung, dann nimmt diese den Wert $p$ an zwei benachbarten Stellen an
+       ($H(z)=p$, $H(z+1)=P(p)=p$) — wer auf zwei Streifen injektiv ist, kann $p$ also nicht einschliessen.
+  beispiel: |
+    Die Kreisbogen-Familie: $\alpha_K(c)$ ist $-3.357$ ($c=-2.5$), $-2.994$ ($c=\operatorname{Re}q$), $-1.897$ ($c=-0.9$), $-1.000$ ($c=0$, Probe: $H(-1)=0$), $-0.607$ ($c=0.4$),
+    $0.000$ ($c=1$, Probe: $H(0)=1$). Bei $c=-0.3$ bis $1$ reicht der Bildstreifen auf der Achse schon rechts über $-0.741$ hinaus, biegt aber nach links oben ab und lässt den
+    ersten Verzweigungspunkt $-0.741+2.746\,i$ aus. Bei $c=2$ und $3$ schneidet $P(\gamma_c)$ den Bogen — dort ist $G_c$ kein Fundamentalgebiet mehr.
+  einordnung: |
+    Verallgemeinert [[kn.satz.hexation_eindeutig_g0]]. Was offen bleibt, steht in [[kn.verm.hexation_streifen]]: Gebiete, die einen Singularpunkt von $\alpha_K$ einschliessen.
+
+kn.satz.hexation_logpunkt:
+  worum: |
+    Wie viele Kneser-artige Hexationen kann es geben? Dieser Satz zählt sie über einen einzigen Punkt: den Anfang ihrer reellen Kurve. Jede beginnt an einem Log-Punkt der
+    Hilfsfunktion $F_q$, und jeder Log-Punkt kann höchstens eine Lösung tragen.
+  genau: |
+    Eine Lösung $H=F_q\circ(\mathrm{id}+\theta)$ ist auf der reellen Achse reell. Die Punkte $x+\theta(x)$ bilden die Kurve $C_H$, auf der $F_q$ die Werte $H(x)$ annimmt.
+    Am linken Ende des reellen Bereichs fällt $H$ nach $-\infty$ — und dort muss die Kurve an einem Punkt $Z$ beginnen, an dem $F_q$ logarithmisch nach $-\infty$ geht
+    (ein **Log-Punkt**, mit $F_q(Z-1)=w_b+j\cdot3.8237\,i$, $w_b$ der Log-Punkt der Pentation). Von so einem Punkt geht genau **ein** reeller Strahl aus. Kommt er bei
+    $Z+1$ an, gibt es genau eine Lösung zu $Z$; sonst keine. Die Kneser-artige Hexation gehört zu $Z_0=-1.59693-1.70988\,i$.
+    Fällt eine Lösung aus dieser Bauart heraus, dann trifft sie im Streifen einen besonderen Wert von $F_q$ — bekannt ist der anziehende Fixpunkt $p$.
+  warum: |
+    1. **Wo die Kurve beginnt.** $H(x)\to-\infty$ für $x\downarrow s$, also $F_q\to-\infty$ am Kurvenanfang $Z$. Wegen $F_q(\zeta)=P(F_q(\zeta-1))$ muss $F_q(Z-1)$ eine Stelle
+       sein, an der die Pentation nach $-\infty$ geht — das sind die Log-Punkte $w_b+j\Pi_T$ (dort ist $P(w-1)=-2$, und die Tetration hat bei $-2$ ihre log₂-Singularität).
+    2. **Nur ein Strahl.** Nahe $Z$ ist $F_q=\log_2\varepsilon+h(\varepsilon)$. Reell heisst: Winkel von $\varepsilon$ geteilt durch $\ln2$ plus $\operatorname{Im}h$ gleich 0. Auf der
+       unendlich-blättrigen Log-Fläche ist der Winkel nicht beschränkt, aber die linke Seite wächst streng mit dem Winkel — also genau eine Lösung.
+    3. **Schliessen.** Weil θ 1-periodisch ist, liegt mit $Z$ auch $Z+1$ auf der Kurve, und dort ist $F_q=P(-\infty)=L_T$. Der Strahl muss also bei $Z+1$ ankommen. Tut er es,
+       ist die Kurve festgelegt, und wie bei Kneser liefert die konforme Abbildung auf das Gebiet über ihr θ — eindeutig bis auf eine Verschiebung, die $H(-1)=0$ festlegt.
+    4. **Die Rechnung.** Im Band zwischen $C$ und $C+\Pi$ bis $\operatorname{Re}Z=7$ gibt es (zu $j=-1,\dots,2$) vier Log-Punkte. Zwei sind die bekannten ($Z_0$, $Z_0+\Pi$). Die
+       beiden anderen schliessen nicht: Der eine Strahl endet an einer Ecke von $C+\Pi$, der andere schon nach $0.065$ an einem gewöhnlichen Punkt mit Wert $L_T$.
+  beispiel: |
+    Kontrolle an der Kneser-Kurve: Der Strahl von $Z_0=-1.59693-1.70988\,i$ kommt bei $t=L_T-10^{-4}$ im Abstand $0.010$ an $Z_0+1$ an (wie erwartet für eine Ecke mit
+    Exponent $\alpha=2.37$: Abstand $\sim(10^{-4})^{1/\alpha}$). Nebenbei: $F_q(Z_0-1)=w_b$ auf $10^{-12}$ verbessert die Ecke auf $\zeta_c=0.40306781-1.70988020\,i$.
+    Rund um den neuen Log-Punkt $3.63707+0.95142\,i$ ändert sich $F_q$ pro Achtelkreis um $1.13\,i=(\pi/4)/\ln2$ — genau die log₂-Form.
+  einordnung: |
+    Macht aus [[kn.verm.hexation_streifen]] eine abzählbare Prüfung. Baut auf [[kn.beob.hexation_verzweigt]] (log₂-Form) und der Kneser-Konstruktion [[kn.konstr.kneser]] auf;
+    Teil (iv) schliesst an [[kn.satz.hexation_gebiete]] an.
+
+kn.verm.hexation_streifen:
+  worum: |
+    Wenn „holomorph in einer Halbebene“ bei der Hexation nicht geht ([[kn.satz.hexation_keine_halbebene]]) — was legt die Kneser-artige Hexation dann fest? Vermutlich ein
+    Streifen: Auf einem senkrechten Streifen der Breite 1 ist sie glatt und nimmt keinen Wert zweimal an, und das schafft nur sie.
+  genau: |
+    **Vermutung.** Ist $H$ reell und steigend auf $(s,\infty)$, $H(0)=1$, $H(z+1)=P(H(z))$, und gibt es einen Streifen $S=\{a\le\operatorname{Re}z\le a+1\}$, auf dem $H$
+    holomorph und injektiv ist, mit $H(x+iy)\to q$ für $y\to+\infty$ und $\to\bar q$ für $y\to-\infty$, so ist $H$ die Kneser-artige Hexation.
+  warum: |
+    Was dafür spricht:
+    1. **Die Kneser-artige Hexation erfüllt es.** Ihre Verzweigungspunkte beginnen bei $\operatorname{Re}z=-0.741$; links davon, bis zur Singularität $s_b=-3.767$ auf der
+       Achse, ist sie überall glatt — ein Streifen der Breite $3.03$, fast genau $\operatorname{Re}\Pi=3.009$. Auf $S=[-1.8,-0.8]$ wurden die beiden Ränder ausgerechnet:
+       Ihre Bilder sind einfache Kurven von der Achse nach $q$, die sich nicht schneiden. Dann nimmt $H$ auf $S$ jeden Wert nur einmal an (Argumentprinzip).
+    2. **Andere Kandidaten wären selten.** Jede Lösung, deren Abel-Abweichung $\theta=\alpha_q\circ H-\mathrm{id}$ in der oberen Halbebene holomorph ist, wird durch ihre
+       Kurve $C=\alpha_q(\mathbb R)$ festgelegt (Riemannscher Abbildungssatz). Eine zweite Lösung bräuchte eine zweite Kurve, auf der $F_q$ reell ist und die sich unter
+       $\zeta\mapsto\zeta+1$ fortsetzt. Zwei Karten der reellen Menge von $F_q$ (von oben und von links verfolgt) zeigen in den Streifen über und unter $C$ keine solche.
+    3. **Der Beweisweg** wäre der von Paulsen–Cowgill und Trappmann–Kouznetsov: $\alpha_{H_1}\circ H_2-\mathrm{id}$ ist periodisch und beschränkt, also konstant. Die Lücke:
+       $\alpha_{H_1}$ muss auf dem ganzen Bild $H_2(S_2)$ definiert sein. Bei der Tetration sorgt die Halbebene dafür; hier liegt im Bild der Punkt $w_b$, an dem die
+       Pentation selbst singulär ist.
+    4. **Mit festem Gebiet ist die Lücke zu:** Verlangt man die Injektivität der Umkehrfunktion auf einem festen Gebiet $G_0$ (statt auf irgendeinem Streifen), sind beide
+       Abel-Funktionen auf demselben Gebiet definiert, und der Beweis läuft durch ([[kn.satz.hexation_eindeutig_g0]]). Offen ist nur noch, ob die Wahl des Gebiets eine
+       Rolle spielt.
+    5. **Abzählbar gemacht:** Jede Lösung dieser Bauart beginnt an einem Log-Punkt von $F_q$, und jeder Log-Punkt trägt höchstens eine ([[kn.satz.hexation_logpunkt]]). In der
+       Nähe gibt es zwei weitere Log-Punkte, aber ihre reellen Strahlen schliessen nicht. Offen: Log-Punkte weiter rechts und Lösungen, deren Streifenbild $p$ enthält.
+  beispiel: |
+    Randbilder für $S=[-1.8,-0.8]$: $H(-1.8)=-0.803$, $H(-0.8)=0.207$; beide Kurven laufen nach $q=-1.993+1.445\,i$, die rechte in einem weiten Bogen bis
+    $\operatorname{Im}w\approx4.8$. Der Punkt $w_b\approx-1.979+1.912\,i$ liegt zwischen ihnen (Umlaufzahl im Betrag $\approx1$, gemessen $-0.95$, weil der Rand bei $q$ nicht ganz geschlossen ist) — $H$ nimmt den Wert $w_b$ im Streifen an
+    (bei $z\approx-1.741+2.746\,i$), ohne dort singulär zu sein; erst einen Schritt weiter rechts wird es singulär.
+  einordnung: |
+    Die Streifen-Fassung von [[kn.satz.trappmann_kouznetsov]]; sie tritt an die Stelle von [[kn.satz.paulsen_cowgill]], dessen Halbebenen-Fassung hier leer ist.
+    Gehört zu [[kn.frage.hexation_kneser]].
+
+kn.frage.hexation_kneser:
+  worum: |
+    Über $\eta_5$ — zum Beispiel bei der Basis 2 — hat die Pentation keinen reellen Fixpunkt mehr. Eine glatte Hexation muss dann wie Kneser an einem komplexen Fixpunkt gebaut
+    werden. Das ist möglich, aber numerisch schwierig; hier steht, wie weit es ist.
+  genau: |
+    Bausteine: der abstossende Fixpunkt $q$ der Pentation, die reguläre Superfunktion $F_q(\zeta)=\Psi_q(\mu_q^\zeta)$ (nur Vorwärtsschritte nötig) und eine periodische Korrektur $\theta$:
+    $$H(z)=F_q\bigl(z+\theta(z)\bigr),$$
+    wobei $z\mapsto z+\theta(z)$ die reelle Achse auf die Kurve legt, auf der $F_q$ reell ist.
+
+    Werte: Das Rechenwerk knhexinit (gp-tetration-Fork) rechnet die Abel-Funktion $\alpha=H^{-1}$ als Taylorreihe um $\operatorname{Re}q$; nahe $q$ muss sie
+    $\alpha_q+\theta(\alpha_q)$ sein, nahe der Achse die Funktionalgleichung $\alpha(P(w))=\alpha(w)+1$ erfüllen — alles in einem Ausgleichsproblem, zweimal auf
+    verschiedenen Bögen gelöst. Ergebnis: $2\uparrow\uparrow\uparrow\uparrow1.5=2.67289395934261948919079647\ldots$ ($32.6$ Stellen), S. Levenstein 2020: $\approx2.6729$.
+    Der eigene erste Versuch über $\theta$ auf der reellen Achse gab $2.676$ — die Ecken der Kurve (Punkt 1 unten) bremsten ihn.
+  warum: |
+    Woran es hängt — drei Dinge:
+    1. **Eine Ecke:** Die Kurve, auf der $F_q$ reell ist, hat bei dem Punkt, der zur Höhe $s_b+2$ gehört (Wert genau $P(L_T)$, zwei Stufen über der Singularität aus
+       [[kn.satz.hexation_struktur]]), einen Verzweigungspunkt von $F_q$ mit Exponent $\alpha=\ln\lambda_T/\ln2=2.37$ — die Kurve knickt dort mit dem Winkel $\pi/\alpha\approx76^\circ$ ab.
+       Die Hexation selbst bleibt auf der reellen Achse glatt, aber die Hilfsfunktion $\theta$ bekommt eine Singularität wie $(x-x_c)^{0.42}$. Fourier-Verfahren (Theodorsen, Fornberg)
+       konvergieren dann nicht: 32, 64 und 128 Stützstellen gaben $2.6760$, $2.6821$, $2.6736$.
+    2. **Das falsche Blatt — gelöst:** Die Pentation an komplexen Höhen wird als Kette von Kneser-Tetrationen gerechnet. Kreuzt ein Glied der Kette den Schnitt $(-\infty,-2]$ der
+       Tetration, liefert der Hauptzweig einen Wert auf einem anderen Blatt. Die Blattverfolgung setzt jede Tetration der Kette entlang des Weges fort (Logarithmus-Zweige nach
+       Stetigkeit, riesige Zwischenwerte über ihren exakten Logarithmus $\ln b\cdot T(x-1)$); geprüft gegen den Hauptzweig und mit geschlossenen Wegen.
+    3. **Verzweigung in der oberen Halbebene:** Mit der Blattverfolgung zeigte sich, dass $H$ selbst oberhalb der reellen Achse Verzweigungspunkte hat
+       ([[kn.beob.hexation_verzweigt]]). Eine Cauchy-Formel über ein Rechteck, das bis $q$ hinaufreicht, gilt deshalb nicht; der Weg führt über $\theta$ auf der reellen Achse.
+  einordnung: |
+    Das Gegenstück zur Kneser-Tetration ([[kn.konstr.kneser]]), zwei Stufen höher. Mit der genauen Hexation ist $\eta_6$ berechnet ([[kn.beob.stufe6]]) — das vierte Glied
+    von [[kn.verm.tpid10]]. Warum nicht am anziehenden Fixpunkt: [[kn.satz.kein_kneser_anziehend]]; warum keine Rechteck-Methode: [[kn.beob.hexation_verzweigt]].
+  bilder: [exp.hexation_kneser]
+
+kn.satz.halbe_exp:
+  worum: |
+    Gibt es eine Funktion $f$ mit $f(f(x))=e^x$? Mit dieser Frage hat 1950 die moderne Theorie der Tetration begonnen: Kneser baute seine Lösung, um eine glatte
+    „halbe Exponentialfunktion“ zu bekommen.
+  genau: |
+    $$f=\exp^{[1/2]}=T\bigl(\operatorname{slog}(x)+\tfrac12\bigr),\qquad f(f(x))=e^x.$$
+    Allgemein ist $\exp^{[c]}(x)=T(\operatorname{slog}(x)+c)$, und $\exp^{[c]}\circ\exp^{[d]}=\exp^{[c+d]}$. Mit der Kneser-Tetration:
+    - $f(0)=0.49856328794111\ldots$, $f(1)=1.64635423375119\ldots$;
+    - einzige reelle Nullstelle bei $x=T(-\tfrac32)=-0.69602474\ldots$;
+    - nicht eindeutig, nicht ganz: Singularität bei $-0.36237+i\pi$, Verzweigung an den Fixpunkten $L_k$ von $\exp$; bei $L$ selbst ist $f$ noch stetig, $f(L)=L$,
+      und die Steigung dort ist (numerisch) $\sqrt L$.
+  warum: |
+    1. **Die Gleichung:** $f(f(x))=T(\operatorname{slog}(T(\operatorname{slog}x+\frac12))+\frac12)=T(\operatorname{slog}x+1)=e^{T(\operatorname{slog}x)}=e^x$.
+    2. **Werte:** $\operatorname{slog}1=0$ und $\operatorname{slog}0=-1$, also $f(1)=T(\frac12)$ und $f(0)=T(-\frac12)$. Und $f(0)=\ln f(1)$, weil $f(e^0)=e^{f(0)}$.
+    3. **Nullstelle:** $f(x)=0$ heisst $\operatorname{slog}x+\frac12=-1$.
+    4. **Nicht eindeutig:** Jede periodische Störung der Tetration gibt eine andere halbe Exponentialfunktion.
+  beispiel: |
+    $f(f(0))=f(0.49856\ldots)=1=e^0$; $f(f(1))=f(1.64635\ldots)=e$. Im Experiment gilt $f(f(x))=e^x$ an sieben Stellen auf $10^{-28}$.
+  bilder: [exp.halbe_exp]
+  einordnung: |
+    Die Anwendung, für die Kneser ([[kn.konstr.kneser]]) die Tetration gebaut hat. Wachstum: [[kn.satz.halbe_exp_wachstum]]. Für $e^x-1$ gibt es keine konvergente
+    formale halbe Iteration ([[it.satz.baker]]) — der Fixpunkt macht den Unterschied.
+
+kn.satz.halbe_exp_wachstum:
+  worum: |
+    Wie schnell wächst eine halbe Exponentialfunktion? Schneller als jedes Polynom, langsamer als jedes $e^{x^\varepsilon}$ — und auf eine Art, die man mit
+    keiner Formel aus $\exp$ und $\log$ hinschreiben kann.
+  genau: |
+    Für steigendes $f$ mit $f\circ f=\exp$:
+    - $f(x)/x^n$ ist unbeschränkt, $f(x)/e^{x^\varepsilon}$ kommt beliebig nahe an 0; in einem Hardy-Körper gilt schliesslich $x^n\prec f\prec e^{x^\varepsilon}$.
+    - Kein Exp-Log-Ausdruck und keine Transreihe ist so ein $f$.
+    - In der Komplexitätstheorie heissen solche Grössen „halb-exponentiell“.
+  warum: |
+    1. Wäre $f(x)\le x^n$ für alle grossen $x$, so $e^x=f(f(x))\le f(x)^n\le x^{n^2}$ — falsch.
+    2. Wäre $f(x)\ge e^{x^\varepsilon}$ für alle grossen $x$, so $e^x\ge\exp(f(x)^\varepsilon)\ge\exp(e^{\varepsilon x^\varepsilon})$ — falsch.
+    3. Exp-Log-Funktionen (Hardy) und Transreihen (van der Hoeven) haben einen ganzzahligen Exponentialgrad; $f\circ f=\exp$ verlangt Grad $\frac12$.
+  beispiel: |
+    Entlang $x=T(k)$ ist $\ln f(x)/\ln x=T(k-\frac12)/T(k-1)$: $1.909$, $11.82$, $1.6\cdot10^{71}$ für $k=2,3,4$ — schneller als jedes $x^n$.
+  bilder: [exp.halbe_exp]
+  einordnung: |
+    Verbindet die Tetration mit der Theorie der Wachstumsordnungen ([[br.satz.boshernitzan]], [[br.frage.kneser_hardy]]). Die Untergrenzen von Miltersen,
+    Vinodchandran und Watanabe (1999) für Schaltkreise haben genau diese Grösse.
+
+kn.konstr.cauchy:
+  worum: |
+    Kouznetsov rechnete 2009 die Tetration für komplexe Höhen zum ersten Mal praktisch aus — mit einem Trick aus der Funktionentheorie: Werte im Inneren eines
+    Streifens folgen aus den Werten am Rand.
+  genau: |
+    Im Streifen $|\operatorname{Re}z|<1$ gibt die Cauchy-Formel $F(iy)$ aus den Randwerten. Rechts ist $F(1+iy)=b^{F(iy)}$, links $F(-1+iy)=\log_bF(iy)$, oben und unten
+    $F\approx L,\bar L$. Das ergibt eine Gleichung nur für die Werte auf der Mittellinie, die man durch Wiederholen löst. Das Ergebnis ist die Kneser-Tetration.
+  warum: |
+    1. Cauchy-Formel für ein Rechteck: Das Integral über den Rand, geteilt durch $2\pi i(t-z)$.
+    2. Funktionalgleichung: verschiebt die Mittellinie auf die beiden senkrechten Ränder.
+    3. Eindeutigkeit: Holomorph im Streifen mit den Grenzwerten $L$ und $\bar L$ — das ist Knesers Lösung ([[kn.satz.paulsen_cowgill]]).
+  beispiel: |
+    Für die Hexation zur Basis 2 scheiterte genau dieses Verfahren in den eigenen Versuchen: Die Hexation hat im Rechteck Verzweigungspunkte
+    ([[kn.beob.hexation_verzweigt]]), die Cauchy-Formel gilt dort nicht.
+  einordnung: |
+    Zweiter Weg zur Kneser-Tetration neben der Riemann-Abbildung ([[kn.konstr.kneser]]).
+
+kn.konstr.zwei_sinh:
+  worum: |
+    Eine glatte Tetration, die man fast mit dem Taschenrechner bauen kann: Man ersetzt $e^x$ durch $2\sinh x$, dessen Iteration einfach ist, und kehrt am Ende mit
+    Logarithmen zurück. Sie ist sehr nahe an Kneser — aber nicht gleich.
+  genau: |
+    $$T(x)=\lim_{n\to\infty}\ln^{[n]}\bigl(2\sinh^{[n+x+k]}(1)\bigr),\qquad T(x+1)=e^{T(x)},\ T(0)=1.$$
+    Die gebrochenen Iterierten $2\sinh^{[t]}$ kommen aus der Koenigs-Funktion am Fixpunkt 0 (Multiplikator 2), die ganz ist. Werte: $T(\frac12)=1.64665073030\ldots$
+    (Kneser $1.64635423375\ldots$), $T(-\frac12)=0.49874336453\ldots$
+  warum: |
+    1. Für grosse $y$ ist $2\sinh y=e^y(1-e^{-2y})$, also $\ln(2\sinh y)=y-e^{-2y}+\dots$ — fast exakt $y$.
+    2. Iteriert man $2\sinh$ weit hinauf und logarithmiert wieder hinunter, verschwindet der Unterschied zu $\exp$ superexponentiell schnell.
+    3. Im Grenzwert erfüllt $F$ die Turmgleichung, weil ein Schritt $2\sinh$ oben einem Schritt $\exp$ unten entspricht.
+  beispiel: |
+    Schon $n=3$ gibt 40 Stellen. Die Höhenverschiebung gegen Kneser, $\operatorname{slog}_{\mathrm K}(T(x))-x$, läuft zwischen $-9.6\cdot10^{-6}$ und $1.98\cdot10^{-4}$.
+  bilder: [exp.zwei_sinh]
+  einordnung: |
+    Ein Basiswechsel-Grenzwert wie Walkers Lösung ([[kn.konstr.walker]]) — und wie dort vermutet man, dass er nirgends analytisch ist ([[bw.verm.nirgends_analytisch]]).
+    Er zeigt: „glatt und reell“ legt die Tetration nicht fest.
+
+kn.konstr.kontinuumssumme:
+  worum: |
+    Die Steigung der Tetration ist ein Produkt über alle Turmwerte darunter. Wer „gebrochen viele“ Glieder summieren kann, bekommt daraus eine Gleichung für die
+    Tetration — ohne Fixpunkt, ohne Riemann-Abbildung.
+  genau: |
+    $$\log_b\frac{T'(z)}{T'(0)(\ln b)^z}=\sum_{n=0}^{z-1}T(n)\qquad\text{(Ansus’ Formel).}$$
+    Die rechte Seite braucht eine Summe mit gebrochener Obergrenze. Zwei Versuche aus dem Forum: Faulhabers Formel auf Potenzreihen (instabil) und mike3s
+    Fourier-Kontinuumssumme über periodische Näherungen. Letztere trifft $\sqrt2$ (regulär, $1.24362$) und $e$ (Kneser, $1.64635$–$1.64636$) auf etwa sechs Stellen.
+  warum: |
+    1. Aus der Produktformel $T'(n)=T'(0)(\ln b)^n\prod_{k=1}^nT(k)$ wird durch Logarithmieren eine Summe, und $\ln T(k)=\ln b\cdot T(k-1)$.
+    2. Für Exponentialreihen $\sum a_nb^{nz}$ ist die Kontinuumssumme eindeutig: $\sum_{n=0}^{z-1}b^{kn}=(b^{kz}-1)/(b^k-1)$.
+    3. Unter $\eta$ ist die reguläre Tetration so eine Reihe — darum trifft die Methode sie genau ([[kl.satz.bruchprodukt]]).
+  beispiel: |
+    mike3 (2010): Auf der imaginären Achse sieht die Lösung genau wie Kouznetsovs Cauchy-Lösung aus und geht oben und unten gegen $0.318\pm1.337i$.
+  einordnung: |
+    Verwandt mit den Bruchsummen ([[kl.satz.bruchsumme]]) und der Produktformel ([[gr.kor.produktformel]]); über $\eta$ fehlt ein Beweis.
+
+kn.konstr.quadratisch:
+  worum: |
+    Eine Näherung zum Rechnen von Hand: Zwischen $-1$ und $0$ eine Parabel statt einer Geraden — dann hat die Kurve für jede Basis keine Knicke mehr.
+  genau: |
+    $$T(x)=1+\frac{2\ln a}{1+\ln a}\,x-\frac{1-\ln a}{1+\ln a}\,x^2\quad(-1<x\le0),$$
+    fortgesetzt mit $T(x+1)=a^{T(x)}$. Stetig differenzierbar für jede Basis, aber nicht zweimal.
+  warum: |
+    1. $T(-1)=0$ und $T(0)=1$ passen zu den ganzzahligen Werten.
+    2. Die Steigung links von 0 ist $\frac{2\ln a}{1+\ln a}$, rechts von 0 nach der Kettenregel $\ln a\cdot T'(-1)=\ln a\cdot\frac2{1+\ln a}$ — gleich.
+    3. Für die Krümmung reicht die Freiheit nicht: Sie springt.
+  beispiel: |
+    Basis 2: $^{1/2}2\approx1.45933$ (Kneser $1.45878$). Die zweite Ableitung bei 0 ist links $-0.362$, rechts $0.419$.
+  bilder: [exp.forum_rand]
+  einordnung: |
+    Die nächste Stufe nach der linearen Näherung ([[kn.konstr.linear]]).
+
+kn.satz.grenzwert_trick:
+  worum: |
+    Im Forum gibt es viele „neue“ Tetrationen. Fast alle folgen einem Muster: Man nimmt eine Funktion, die die Turmgleichung nur ungefähr erfüllt, und
+    logarithmiert sie von weit rechts zurück.
+  genau: |
+    $$F(s)=\lim_{n\to\infty}\log^{[n]}G(s+n)$$
+    ist eine Tetration, wenn $G(s+1)\approx e^{G(s)}$ mit schnell fallendem Fehler. Beispiele: Basiswechsel, Walker, 2sinh, β-Methode, Gauss-Methode.
+  warum: |
+    1. Ein Schritt $\log$ verkleinert Fehler um den Faktor $1/G$ — bei riesigen $G$ also enorm.
+    2. Darum konvergiert die Folge, und im Grenzwert gilt die Turmgleichung genau.
+    3. Ob $F$ analytisch ist, hängt daran, wie sich der Fehler abseits der reellen Achse verhält — dort kann $G$ klein werden.
+  beispiel: |
+    2sinh-Methode ([[kn.konstr.zwei_sinh]]): $G$ ist die Superfunktion von $2\sinh$, der Fehler $e^{-2G}$ — drei Schritte geben 40 Stellen.
+  einordnung: |
+    Gemeinsamer Kern von [[kn.konstr.walker]], [[kn.konstr.zwei_sinh]], [[kn.frage.beta_methode]] und dem Basiswechsel ([[bw.satz.schwanzkonvergenz]]).
+
+kn.satz.intuitiver_log:
+  worum: |
+    Die intuitive (Matrix-)Methode liefert Näherungen für den Superlogarithmus, aber ob sie konvergiert, ist für $\exp$ offen. Für die einfachste Funktion
+    $x\mapsto bx$ ist es bewiesen: Es kommt genau der Logarithmus heraus.
+  genau: |
+    Für $f(x)=bx$ konvergiert die intuitive Abel-Funktion gegen $\log_b$ (Trappmann 2010). In Zahlen (TPID 9): $a'_n\to(b-1)/\ln b$.
+  warum: |
+    Die Abel-Funktion von $bx$ ist $\log_bx$ (denn $\log_b(bx)=\log_bx+1$). Die Frage war nur, ob die Matrix-Methode sie auch findet. Trappmann rechnete die Koeffizienten
+    der abgeschnittenen Systeme explizit aus und zeigte die Konvergenz.
+  beispiel: |
+    Basis 2: $(b-1)/\ln b=1.442695\ldots$; $a'_{120}$ liegt $1.9\cdot10^{-5}$ daneben.
+  bilder: [exp.forum_iteration]
+  einordnung: |
+    Einziger bewiesener Fall der Methode aus [[kn.konstr.carleman]]; stützt [[kn.verm.carleman_kneser]].
+
+kn.verm.polynom_halbexp:
+  worum: |
+    Kann man Knesers halbe e-Funktion ausrechnen, ohne Tetration, Superlogarithmus oder komplexe Analysis hineinzustecken — nur aus der Gleichung $f(f(x))=e^x$ selbst?
+    Janis’ Versuch: ein Polynom vom Grad $N$, dessen Selbst-Einsetzung die ersten $N+1$ Glieder von $e^x$ trifft. Die Zahlen treffen Kneser erstaunlich genau.
+  genau: |
+    $p_N$ mit $[x^k]\,p_N(p_N(x))=1/k!$ für $k\le N$, Zweig von $p_1=x+\tfrac12$ aus. Vermutet: $p_N\to f_K=T_e(\operatorname{slog}_e+\tfrac12)$ auf $|x|<|L|$, insbesondere $p_N(1)\to T_e(\tfrac12)$.
+
+    | $N$ | $p_N(1)$ | Abstand zu $T_e(\tfrac12)$ |
+    |---|---|---|
+    | 1 | $1.5$ | $-1.5\cdot10^{-1}$ |
+    | 2 | $1.637802440995$ | $-8.6\cdot10^{-3}$ |
+    | 5 | $1.646354339729$ | $1.1\cdot10^{-7}$ |
+    | 15 | $1.646354233718$ | $-3.3\cdot10^{-11}$ |
+    | 50 | $1.6463542337511980$ | $3.5\cdot10^{-15}$ |
+    | 100 | $1.64635423375119448$ | $-1.0\cdot10^{-16}$ |
+    | 194 | — | $-2\cdot10^{-19}$ |
+  warum: |
+    Nicht bewiesen. Was man sieht und versteht:
+    1. Die Gleichung $f\circ f=\exp$ hat unendlich viele analytische Lösungen $f_\theta$ (eine für jede passende periodische Störung $\theta$). Das abgeschnittene System hat für jedes $N$ nur
+       einzelne Lösungen — es muss also eine auswählen.
+    2. Knesers Lösung ist auf der Kreisscheibe $|x|<|L|$ beschränkt, ihre Taylor-Koeffizienten fallen wie $k^{-6.45}|L|^{-k}$. Jede andere reelle Lösung explodiert nahe $L$ oder $\bar L$;
+       bewiesen ist: Knesers ist die einzige, die den Korridor $\{z\in D:f_K(z)\in D\}$ in die Scheibe abbildet ([[kn.satz.halbexp_beschraenkt]]). Ein Polynom kann die „ruhigste“ Lösung am besten nachahmen.
+    3. Genauer: Blieben die Polynome auf $|x|\le|L|$ beschränkt und im Korridor in der Scheibe, wäre die Vermutung bewiesen ([[kn.satz.polynom_halbexp_reduktion]]). Diese Schranke ist der offene Kern
+       ([[kn.verm.polynom_halbexp_schranke]]).
+  beispiel: |
+    Grad 3: $p_3(x)=0.498574+0.876383x+0.247391x^2+0.024117x^3$, $p_3(1)=1.646465$ — schon auf vier Stellen richtig. Kneser: $f_K(x)=0.4985633+0.8763361x+0.2475522x^2+0.0245718x^3+\dots$
+    Bei Grad 100 stimmen $a_0$ auf 16, $a_5$ auf 11 und $a_{20}$ auf 5 Stellen.
+  bilder: [exp.polynom_halbexp]
+  einordnung: |
+    Dasselbe Muster wie beim intuitiven Superlogarithmus ([[kn.satz.intuitiver_log]]) und Gottfried Helms’ Matrix-Wurzel: ein abgeschnittenes Verfahren, das numerisch Kneser trifft,
+    ohne dass man weiss warum. Ein Beweis würde Knesers Lösung durch eine rein lokale Bedingung kennzeichnen — eine reelle Antwort auf [[br.frage.bohr_mollerup]] ist es nicht ganz,
+    weil die Beschränktheit auf einer komplexen Kreisscheibe gebraucht wird.
+
+kn.beob.slog_scheibe:
+  worum: |
+    Wie sieht die Kreisscheibe bis zum Fixpunkt $L$ aus, wenn man sie mit Knesers Superlogarithmus abbildet? Als schräges Band nach oben und unten. Seine Form ist die einzige
+    numerische Zutat im Eindeutigkeitsbeweis für die halbe e-Funktion.
+  genau: |
+    $\Omega=\operatorname{slog}_e(D)$, $D=\{|z|<|L|\}$:
+    - (G1) $\operatorname{Re}w\le0.3121795528=\operatorname{slog}_e(|L|)$;
+    - (G2) jede waagrechte Gerade schneidet $\Omega$ in einer Strecke der Länge $\ge2.067$ (oben $\to\pi/\operatorname{Im}L=2.3495$);
+    - (G3) linker Rand $x\ge-2-0.24|y|$, Steigung $\to-\operatorname{Re}L/\operatorname{Im}L=-0.2379$.
+  warum: |
+    1. Nahe $L$ ist $\operatorname{slog}(z)=\log(z-L)/L+c+o(1)$. Die Scheibe ist dort fast eine Halbebene; $\log$ macht daraus einen waagrechten Halbstreifen der Höhe $\pi$, und die Division
+       durch $L$ dreht ihn in die Richtung $-1/L$ — ein schräges Band mit waagrechter Breite $\pi/\operatorname{Im}L$.
+    2. $\operatorname{Re}\operatorname{slog}$ ist harmonisch; sein Maximum auf $D$ liegt am Rand, und dort bei $z=|L|$ (gemessen auf dem ganzen Rand).
+    3. Der mittlere Teil (zwischen reeller Achse und Höhe 13.6) ist ausgerechnet: Der rechte Randbogen steigt, der linke fällt, also trifft jede Höhe jeden Bogen genau einmal.
+  beispiel: |
+    $\Omega\cap\mathbb R=(-1.7545,\,0.3122)$, Breite $2.067$; bei Höhe $1.43$ etwa $(-2.14,\,0.16)$; bei Höhe $13.2$ etwa $(-4.95,\,-2.60)$, Breite $2.349$.
+  bilder: [exp.halbexp_korridor]
+  einordnung: |
+    Wird in [[kn.satz.halbexp_beschraenkt]] gebraucht. Ein strenger Nachweis bräuchte Intervallrechnung auf dem Rand und eine Restschranke für die Asymptotik.
+
+kn.satz.halbexp_beschraenkt:
+  worum: |
+    Welche der vielen halben e-Funktionen ist „die richtige“? Antwort: die einzige, die einen bestimmten Streifen der Kreisscheibe bis $L$ wieder in die Scheibe abbildet — den Streifen,
+    auf dem auch Knesers Lösung in der Scheibe bleibt.
+  genau: |
+    $f$ holomorph auf $D=\{|z|<|L|\}$, reell auf der Achse, $f(f(z))=e^z$ nahe 0, und $f(V_0)\subset D$ mit $V_0=\{z\in D:f_K(z)\in D\}$ $\Rightarrow$ $f=f_K$.
+    Bewiesen bis auf die numerisch geprüfte Form von $\operatorname{slog}(D)$ ([[kn.beob.slog_scheibe]]).
+  warum: |
+    1. In Kneser-Koordinaten ist jede reelle halbe e-Funktion $w\mapsto w+\tfrac12+\theta(w)$ mit periodischem $\theta$.
+    2. Auf dem Korridor ist $\theta=\operatorname{slog}\circ f\circ T-\mathrm{id}-\tfrac12$ eine holomorphe Funktion; weil der Korridor auf jeder Höhe breiter als 1 ist, setzt die Periodizität $\theta$ auf
+       die ganze Ebene fort.
+    3. Weil $\operatorname{slog}(f(z))$ im Band $\Omega$ liegt und $\Omega$ nach rechts beschränkt ist, wächst $\operatorname{Re}\theta$ höchstens linear in der Höhe.
+    4. Eine periodische Funktion mit dieser einseitigen Schranke hat keine nach oben (oder unten) explodierenden Schwingungen — das ist der Satz von Bôcher über positive harmonische
+       Funktionen auf einer punktierten Kreisscheibe. Also ist $\theta$ konstant, und $g\circ g=\mathrm{id}+1$ macht die Konstante zu null.
+  beispiel: |
+    Gegenbeispiel-Probe: Mit $\varphi(w)=w+0.01\sin2\pi w$ ist $f=T(\varphi^{-1}(\varphi(A)+\tfrac12))$ ebenfalls eine reelle halbe e-Funktion. Ihr Störterm $0.01\sin(2\pi A(z))$ ist bei
+    $z=0.9L,\ 0.99L,\ 0.999L$ schon $1.4\cdot10^3$, $4.6\cdot10^7$, $1.3\cdot10^{12}$ — $f$ verlässt den Korridor sofort. Knesers $f_K$ liegt dort $0.16$, $0.016$, $0.0016$ von $L$ entfernt.
+  bilder: [exp.halbexp_korridor]
+  einordnung: |
+    Das Gegenstück zu Paulsen–Cowgill ([[kn.satz.paulsen_cowgill]]) für die halbe Iterierte. Statt Grenzwerten bei $\pm i\infty$ genügt eine Bedingung auf einer Kreisscheibe um 0 — genau das,
+    was ein Abschneide-Verfahren liefern kann ([[kn.satz.polynom_halbexp_reduktion]]). Offen bleibt, ob schon die Beschränktheit auf ganz $D$ ausreicht.
+
+kn.satz.polynom_halbexp_reduktion:
+  worum: |
+    Was fehlt noch zum Beweis von Janis’ Vermutung? Nach diesem Satz nur noch eine Schranke für die Polynome — die Eindeutigkeit des Grenzwerts ist bewiesen.
+  genau: |
+    Gilt $|p_N|\le B$ auf $|x|<|L|$, $|p_N|\le|L|$ auf jedem Kompaktum des Korridors $V_0$ (für grosse $N$) und $p_N(0)\le\rho_0<|L|$, dann $p_N\to f_K$ lokal gleichmässig.
+  warum: |
+    1. Beschränkte holomorphe Funktionen bilden eine kompakte Familie (Montel): Es gibt konvergente Teilfolgen.
+    2. $p_N(p_N(x))-e^x$ verschwindet bei 0 von der Ordnung $N+1$ und ist beschränkt — also für kleine $|x|$ höchstens $C(|x|/s)^{N+1}$. Im Grenzwert: $f(f(x))=e^x$.
+    3. Der Grenzwert bildet den Korridor in die abgeschlossene Scheibe ab, als offene Abbildung sogar in die offene — also ist er Knesers $f_K$ ([[kn.satz.halbexp_beschraenkt]]).
+  beispiel: |
+    Gemessen: $p_N(0)\to0.4985632879\ldots=T_e(-\tfrac12)$; Maximum auf $|x|=|L|$ stets $2.2327$; im Korridor $\max|p_N|/|L|=0.9999012$ — alle Voraussetzungen sehen erfüllt aus.
+  bilder: []
+  einordnung: |
+    Das übliche Muster „Schranke + Kompaktheit + Eindeutigkeit“. Die Schranke steht offen in [[kn.verm.polynom_halbexp_schranke]].
+
+kn.verm.polynom_halbexp_schranke:
+  worum: |
+    Das letzte fehlende Stück für einen Beweis: Bleiben die Polynome $p_N$ bis zum Rand $|x|=|L|$ beschränkt, und bleiben sie im Korridor in der Scheibe, egal wie gross $N$ wird?
+  genau: |
+    Vermutung: $\sup_N\max_{|x|\le|L|}|p_N(x)|<\infty$, und auf jedem Kompaktum $K$ des Korridors $V_0$ ist $|p_N|\le|L|$ für grosse $N$.
+  warum: |
+    Gemessen: Das Maximum auf $|x|=|L|$ ist $2.2327$ für jedes $N$ bis 194; im Korridor ist $\max|p_N|/|L|=0.9999012$ für $N=20$ bis $100$; am Randpunkt $L$ konvergiert $p_N(L)$ gegen $L$,
+    etwa wie $N^{-4.8}$. Ein Beweis bräuchte eine Abschätzung für ein nichtlineares Gleichungssystem, dessen Linearisierung fast singulär ist (die Störrichtungen anderer Lösungen sind
+    nur schwach unterdrückt) — die Konditionszahl wächst etwa um den Faktor $1.9$ pro Grad.
+  beispiel: |
+    $|p_N(L)-L|$: $1.5\cdot10^{-6}$ ($N=20$), $4.5\cdot10^{-8}$ ($40$), $1.6\cdot10^{-9}$ ($80$), $5.5\cdot10^{-10}$ ($100$), $2.2\cdot10^{-11}$ ($194$).
+  bilder: []
+  einordnung: |
+    Mit [[kn.satz.polynom_halbexp_reduktion]] wäre damit [[kn.verm.polynom_halbexp]] bewiesen. Beim intuitiven Superlogarithmus ([[kn.satz.intuitiver_log]]) fehlt dieselbe Art von Schranke.
+
+kn.satz.polynom_halbexp_endlich:
+  worum: |
+    Bevor man etwas für alle Grade beweist, sollte man sicher sein, dass die Zahlen stimmen. Hier ist für jeden Grad bis 120 streng bewiesen, dass die Polynom-Wurzel existiert
+    und auf der Kreisscheibe bis $L$ unter $2.2405$ bleibt.
+  genau: |
+    Für $N\le120$: eindeutige Lösung in der Box $|a_k-\tilde a_k|\le2^{-250}|L|^{-k}$, und $\max_{|x|\le|L|}|p_N|\le\sum|a_k||L|^k\le2.2405$.
+  warum: |
+    1. **Intervallrechnung:** Jede Zahl wird als Ball (Mittelpunkt und garantierter Radius) gerechnet; Rundungsfehler stecken im Radius.
+    2. **Krawczyk-Test:** Man nimmt eine kleine Box um die Näherung und bildet $K(X)=\tilde a-CF(\tilde a)+(I-CJ(X))(X-\tilde a)$. Liegt $K(X)$ im Inneren der Box, so gibt es dort genau eine
+       Nullstelle (Fixpunktsatz von Brouwer und Kontraktion).
+    3. **Schranke:** $|p_N(x)|\le\sum|a_k||x|^k$, mit den oberen Grenzen der Bälle ausgewertet.
+  beispiel: |
+    $\sum|a_k||L|^k$: $1.875$ ($N=1$), $2.200$ ($N=2$), $2.2333$ ($N=3$), $2.24041$ ($N=10$), $2.240471$ ($N=40$), $2.2404714$ ($N=120$) — der Wert steht praktisch still. Das tatsächliche Maximum
+    auf $|x|=|L|$ ist $2.2327$ (am Punkt $x=|L|$).
+  bilder: [exp.polynom_schranke]
+  einordnung: |
+    Erster Schritt eines rechnergestützten Beweises. Für alle $N$ zugleich fehlt ein Argument ([[kn.gescheitert.polynom_kantorovich]]); die Vermutung steht in [[kn.verm.polynom_halbexp_schranke]].
+
+kn.gescheitert.polynom_kantorovich:
+  worum: |
+    Der Standardweg für „die Näherung ist fast eine Lösung, also liegt eine Lösung in der Nähe“ ist der Satz von Newton–Kantorovich. Warum klappt er hier nicht?
+  genau: |
+    Um Knesers Taylor-Polynom $q_N$: $\eta_N=\|J^{-1}F(q_N)\|$ fällt wie der wahre Abstand, aber $\beta_N=\|J^{-1}\|$ wächst um $\approx2.6$ pro Grad, und $h_N=\beta_N\gamma\eta_N$ (müsste $\le\tfrac12$ sein)
+    erreicht $10^{16}$ bei $N=60$.
+
+    | $N$ | $\|F(q_N)\|_Y$ | $\beta_N$ | $\eta_N$ | $h_N$ |
+    |---|---|---|---|---|
+    | 10 | $4.3\cdot10^{-7}$ | $1.1\cdot10^{4}$ | $1.3\cdot10^{-5}$ | $0.49$ |
+    | 30 | $4.6\cdot10^{-13}$ | $1.8\cdot10^{12}$ | $5.4\cdot10^{-8}$ | $3.3\cdot10^{5}$ |
+    | 60 | $6.2\cdot10^{-19}$ | $3.2\cdot10^{24}$ | $8.0\cdot10^{-10}$ | $9.0\cdot10^{15}$ |
+  warum: |
+    1. Die Gleichung $f\circ f=\exp$ hat unendlich viele Lösungen; ihre Unterschiede zu Kneser sind Störungen, die erst bei $L$ und $\bar L$ gross werden.
+    2. Abgeschnitten auf Grad $N$ sind diese Störungen fast Lösungen der linearisierten Gleichung — die Linearisierung hat daher sehr kleine Singulärwerte, eine ganze Leiter davon.
+    3. Kantorovich rechnet mit dem schlimmsten Fall: Er nimmt an, der Rest könnte genau in diese Richtungen zeigen. Tatsächlich zeigt er fast nicht dorthin — Knesers Reihe hat bei $L$ nur eine
+       schwache Singularität —, und darum bleibt die Lösung nahe bei Kneser.
+    4. **Korrektur:** Die Leiter kleiner Singulärwerte kam von den ungleichen Gewichten $1.3$ und $0.5$. Bei gleichen Gewichten bleibt ein echtes Hindernis: die Eckmode bei $L$
+       ([[kn.beob.polynom_eckmode]]), die exponentiell wächst. Auch dann scheitern Kugel-Argumente; der Hauptsatz ([[kn.satz.polynom_halbexp_hauptsatz]]) umgeht sie.
+  beispiel: |
+    Kleinster Singulärvektor bei $N=30$, als Polynom auf $|x|=1.3$: am grössten bei $\arg x\approx\pm77°$, also genau in Richtung $L$ und $\bar L$ ($\arg L=76.6°$).
+  bilder: [exp.polynom_schranke]
+  einordnung: |
+    Für einen Beweis aller $N$ braucht man eine **strukturierte** Abschätzung: die Anteile des Rests entlang der Störrichtungen einzeln. Das ist dieselbe Hürde wie beim intuitiven
+    Superlogarithmus ([[kn.satz.intuitiver_log]]). Die Eindeutigkeit dagegen ist erledigt ([[kn.satz.halbexp_beschraenkt]]).
+
+kn.satz.halbexp_singularitaet_L:
+  worum: |
+    Wie verhält sich Knesers halbe e-Funktion am komplexen Fixpunkt $L$? Ganz genau beschrieben — und daraus folgt, wie schnell ihre Taylor-Koeffizienten um 0 abfallen.
+  genau: |
+    $f_K=\varphi(\sqrt L\,\Psi\,e^{L\varepsilon(\Psi^\gamma)})$ mit der Schröder-Funktion $\Psi$ an $L$ und $\gamma=2\pi i/L$. Singuläre Exponenten $1+n\gamma+j$; Leitterm $D_1(1-z/L)^{1+\gamma}$,
+    $D_1=-0.0320033-0.0112441i$; $a_k\approx2\operatorname{Re}[D_1L^{-k}\Gamma(k-1-\gamma)/(\Gamma(-1-\gamma)k!)]$.
+  warum: |
+    1. Knesers Superlogarithmus ist nahe $L$ „regulärer Superlogarithmus plus periodische Korrektur“, $A=u+\vartheta(u)$, und die Korrektur hat nur Schwingungen $e^{2\pi imu}$ mit $m\ge0$.
+    2. In der Schröder-Koordinate ist $e^{2\pi iu}=\Psi^{\gamma}$ — daher die komplexen Hochzahlen $\gamma$.
+    3. Ein halber Schritt verschiebt $u$ um $\tfrac12$; die Korrektur ändert sich dabei um $\varepsilon$, eine Reihe in $\Psi^\gamma$.
+    4. Die schwächste Singularität $(1-z/L)^{1+\gamma}$ bestimmt nach Darboux den Abfall der Taylor-Koeffizienten: $k^{-2-\operatorname{Re}\gamma}=k^{-6.447}$ mal $|L|^{-k}$.
+  beispiel: |
+    Hüllkurve $71.57\,k^{-6.447}|L|^{-k}$; die Darboux-Reihe mit den ersten Korrekturen trifft $a_k$ auf $10^{-12}$ ($k=100$) und $1.5\cdot10^{-18}$ ($k=300$). Der reine Leitterm liegt innerhalb
+    $12/k$ der Amplitude (Prüfdatei, $k=100$ bis $600$).
+  bilder: [exp.polynom_team]
+  einordnung: |
+    Grundlage für Knesers Eigenschaften im Beweis ([[kn.satz.polynom_halbexp_hauptsatz]]) und für das Fehlergesetz ([[kn.beob.polynom_halbexp_fehlergesetz]]).
+
+kn.beob.polynom_halbexp_fehlergesetz:
+  worum: |
+    Wie genau weichen die Polynom-Wurzeln von Knesers Lösung ab? Erstaunlich geordnet: durch eine einzige Störschwingung mit einem präzisen Gesetz.
+  genau: |
+    $p_N-f_K=c_N\delta_{-1}+\bar c_N\delta_{+1}$ im Inneren, $|c_N|\sim N^{-7.894}$, Phase wie $N^{-2.116i}$; am Rand $N^{-4.84}$. Bestätigt bis $N=1500$, Blindtest bei $N\approx216$.
+  warum: |
+    1. Die anderen halben e-Funktionen unterscheiden sich von Kneser durch periodische Störungen in Kneser-Koordinaten; ihre Tangenten $\delta_{\mp1}$ wachsen bei $L$ bzw. $\bar L$ stark an
+       (Koeffizienten $\sim k^{2.45}|L|^{-k}$), Kneser selbst nur schwach ($k^{-6.45}|L|^{-k}$).
+    2. Das Abschneiden kann diese Richtungen nur über die obersten Koeffizienten unterscheiden — wie im Translationsmodell (Satz T) gibt das den Fehler $N^{1-\text{Lücke}}$ mit Lücke $2\operatorname{Re}\gamma$.
+    3. Am Rand bestimmt die Ecke des Konvergenzgebiets bei $L$ (Aussenwinkel $0.883\pi$) die Rate.
+  beispiel: |
+    Vorhergesagt vor der Rechnung: $p_N(1)-T_e(\tfrac12)$ wechselt zwischen $N=216$ und $218$ das Vorzeichen. Gerechnet: $+3.8\cdot10^{-22}$, $-3.7\cdot10^{-21}$, $+5.6\cdot10^{-21}$, $+1.0\cdot10^{-22}$
+    ($N=215$–$218$), ab $219$ positiv. In der Prüfdatei: Innenfehler auf $|z|=1$ fällt wie $N^{-7.908}$ (Soll $-7.894$), Randfehler wie $N^{-4.846}$.
+  bilder: [exp.polynom_team]
+  einordnung: |
+    Stützt [[kn.verm.polynom_halbexp]] bis $N=1500$. Erklärt durch [[kn.satz.polynom_modelle]] (Satz T) und [[kn.satz.halbexp_singularitaet_L]].
+
+kn.beob.polynom_eckmode:
+  worum: |
+    Warum scheitern Beweise mit Normabschätzungen? Weil die Gleichungen eine Schwachstelle bei $L$ haben, die mit dem Grad exponentiell wächst — und die Knesers Lösung trotzdem nicht stört.
+  genau: |
+    $\sigma_1(J_N^{-1})\approx CN^{-0.82}e^{0.012N}$ (1–3 Eckmoden), Rest $=\|\sigma\|_\infty=1.3663$; Anteil an $\Pi_Nf_K$ fällt von $8\cdot10^{-7}$ auf $8\cdot10^{-9}$; Zufallsstörungen wachsen $\gtrsim1.17^N$.
+  warum: |
+    1. Die Inversen nähern sich einer Toeplitz-Matrix, deren Symbol bei $\arg L$ springt: links davon bildet $f$ den Rand der Scheibe hinein, rechts hinaus.
+    2. An der Ecke $L$ wirkt ein abstossender, drehender Fixpunkt; dort entsteht an der Abschneidekante eine Grenzschicht — die Eckmode. Ein kubisches Polynom mit denselben Fixpunkten zeigt sie auch.
+    3. Kohärente Eingaben (Knesers Lösung, Pol-Antworten) haben fast keinen Anteil in dieser Richtung, deshalb bleibt der Fehler klein.
+  beispiel: |
+    $\sigma_1=1.84,\,8.90,\,68.4,\,592,\,5400$ bei $N=200,\,400,\,600,\,800,\,1000$ — und trotzdem bleibt $\max_D|\Pi_Nf_K|=2.232651$ für alle diese $N$.
+  bilder: []
+  einordnung: |
+    Korrigiert die Deutung in [[kn.gescheitert.polynom_kantorovich]]. Der Beweis ([[kn.satz.polynom_halbexp_hauptsatz]]) arbeitet deshalb nur mit kohärenten Richtungen; offen ist genau die Anregung
+    der Eckmoden durch Pole nahe $L$ ([[kn.verm.polynom_halbexp_eckmoden]]).
+
+kn.verm.polynom_halbexp_eckmoden:
+  worum: |
+    Die einzige Stelle, an der der Beweis noch auf eine Annahme angewiesen ist: Wie stark wird die Schwachstelle bei $L$ von einem „Stoss“ (einem Pol) ganz nahe bei $L$ angeregt?
+  genau: |
+    (H): lokale Pol-Schranke $|E^P_N(\zeta,z)|\le CN^\kappa e^{-\varepsilon Ng(\zeta)}/\operatorname{dist}$ auf den Schlitzen bei $L,\bar L$ und einer Niveaulinie, für alle Fast-Lösungen $P$.
+    Bei $P=f_K$: (a′) Rest-Kontraktion und (E_L) Randprofil der adjungierten Eckmoden mit Exponent $p>1.13$.
+  warum: |
+    1. Pol-Antworten sind rational im Pol $\zeta$ mit Polen nur in $0$ und $a_0$ — aus Werten am Rand folgt alles im Äusseren (Bernstein–Walsh, Poisson–Jensen).
+    2. Fern der Ecke stört exponentielles Wachstum mit Rate unter $0.068$ nicht; gemessen ist $0.012$.
+    3. Nahe der Ecke muss die Anregungsrate gegen null gehen, schneller als $|\tau|^{1.13}$; gemessen ist $|\tau|^{1.44}$ bis $|\tau|^{1.52}$.
+  beispiel: |
+    Mittelwert $\int\lambda\,d\nu=0.086$ (Grenze 1) bis $N=1200$; Rest-Kontraktion $1.0001$–$1.0002$ bis $N=400$.
+  bilder: []
+  einordnung: |
+    Ersetzt die stärkeren, numerisch widerlegten Annahmen (gleichmässige Stabilität; globale polynomiale Pol-Schranke). Gelänge der Beweis, wäre [[kn.verm.polynom_halbexp]] bewiesen
+    ([[kn.satz.polynom_halbexp_hauptsatz]]).
+
+kn.satz.polynom_halbexp_hauptsatz:
+  worum: |
+    Der Stand des Beweises von Janis’ Vermutung nach der Arbeit eines Forschungsteams aus fünf Strängen: alles steht, bis auf eine lineare Annahme.
+  genau: |
+    (K) + (H) + (A) ⇒ für alle $N\ge N_0$ genau eine Lösung in $B_N$, gleich dem fortgesetzten Zweig, und $\sup_{\bar D}|p_N-f_K|\le C'N^{\kappa-4.69}$.
+  warum: |
+    1. **Kneser-Eigenschaften:** Aus Knesers Struktursatz folgt, dass $f_K$ um das Konvergenzgebiet holomorph ist bis auf zwei Schlitze bei $L,\bar L$ mit sehr schwachem Sprung.
+    2. **Linear:** Der Fehler der linearen Projektion ist ein Cauchy-Integral über diese Schlitze; die Pol-Antworten sind rational, Bernstein–Walsh und Poisson–Jensen übertragen Randschranken nach
+       aussen. Mit (H) wird der Fehler $O(N^{\kappa-4.69})$.
+    3. **Nichtlinear:** Jede Lösung nahe $f_K$ ist ihre eigene Sekanten-Projektion — das gibt eine a-priori-Schranke strikt im Inneren der Kugel. Eine Fortsetzung über einen Parameter
+       $\lambda\in[0,1]$ hat genau ein Blatt; daraus Existenz und Eindeutigkeit, ohne die (falsche) gleichmässige Stabilität.
+    4. **Zweig:** Der Schritt von $N$ zu $N+1$ ist eine Homotopie, die in der Kugel bleibt.
+  beispiel: |
+    Was nicht mehr gebraucht wird: gleichmässige Stabilität (falsch), Korridor-Bedingung und Form von $\operatorname{slog}(D)$ (nur Nebenweg), eine eigene quadratische Kontrolle.
+  bilder: [exp.polynom_team]
+  einordnung: |
+    Ältere Rückführung: [[kn.satz.polynom_halbexp_reduktion]]. Offene Annahme: [[kn.verm.polynom_halbexp_eckmoden]]. Vollständige Architektur: forschung/polynom_halbexp/ARCHITEKTUR.md.
+
+kn.satz.polynom_modelle:
+  worum: |
+    Kann man das Abschneide-Verfahren überhaupt irgendwo beweisen? Ja — an einfacheren Gleichungen, und dort sieht man den Mechanismus, der auch bei $e^x$ wirkt.
+  genau: |
+    (i) Kontraktiver Fall: geometrische Konvergenz, rechnergestützt für $g=(3-x)/(8-3x)$. (ii) Translationsmodell: exakte Formel, Auswahl der Lösung kleinsten Typs, Fehler $N^{1-\text{Lücke}}$.
+    (iii) Möbius-Drehung: Fehler = eine Pol-Antwort am Pol der Wurzel, Schwelle $c=\pi/3$ ⇔ Pol im Konvergenzgebiet.
+  warum: |
+    1. Wo die Lösung eine Scheibe in sich abbildet, ist die Komposition kompakt und alles gut gestellt — bei $e^x$ fehlt das.
+    2. Im Translationsmodell erhält die Verschiebung die Polynome; das Abschneiden ist exakt eine Funktion der Ableitung, $\varphi_s(D)$, und deren Koeffizienten verraten Auswahl und Fehler.
+    3. Bei Möbius wird im Cayley-Bild alles linear, und der Fehler ist eine einzige Residuenrechnung.
+  beispiel: |
+    Translationsmodell mit $s=\tfrac12$: Schwelle $|\lambda|=2\pi$ für $h=e^{\lambda x}$; bei $N=160$: Fehler $4\cdot10^{-52}$ ($\lambda=3$), $0.038$ ($\lambda=6.2$), $6.1$ ($\lambda=6.4$).
+  bilder: []
+  einordnung: |
+    Vorbilder für [[kn.satz.polynom_halbexp_hauptsatz]]; das Warnbeispiel steht in [[kn.beob.polynom_moebius_schwelle]].
+
+kn.beob.polynom_moebius_schwelle:
+  worum: |
+    Wie trügerisch können gute Zahlen sein? Ein Modell zeigt: sehr.
+  genau: |
+    Möbius-Drehung: unter der Schwelle geometrische Konvergenz mit Rate $e^{-g(\zeta_p)}$; knapp darüber scheinbare Konvergenz bis $N\approx100$, dann Divergenz.
+  warum: |
+    Über der Schwelle liegt der Pol der gewünschten Wurzel im Konvergenzgebiet der Polynome; die Polynome können ihn nicht darstellen. Bei kleinen $N$ dominiert aber noch der gute
+    Anteil — erst später überholt der wachsende.
+  beispiel: |
+    Bei Knesers Fixpunkten $L,\bar L$ („Möbius-exp“) hält die lineare Pol-Schranke mit Konstante $1.01$ bis $N=160$ — dort fehlt nur die Eckmode, die $e^x$ zusätzlich hat.
+  bilder: []
+  einordnung: |
+    Mahnung zu [[kn.verm.polynom_halbexp]]; deshalb wurde dort bis $N=1500$ gerechnet ([[kn.beob.polynom_halbexp_fehlergesetz]]).

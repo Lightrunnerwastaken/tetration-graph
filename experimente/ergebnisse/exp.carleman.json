@@ -1,0 +1,124 @@
+{
+ "id": "exp.carleman",
+ "skript_hash": "18b41fafb7da9393",
+ "gelaufen": "2026-10-08 20:37",
+ "laufzeit_s": 18.8,
+ "python": "3.13.9",
+ "zusammenfassung": "Innere Punkte: Fehler 1.7e-5 (n=16) → 9.2e-9 (n=128), ≈ 8.04 Stellen; Abfall algebraisch ≈ n^-3.81, nicht geometrisch. Punkt 1.25 nahe |L_e|: 6.3e-9. Konvergenz gestützt, aber langsam; vorab erwartete 10 Stellen nicht erreicht.",
+ "pruefungen": [
+  {
+   "name": "Fehler (innere Punkte) sinkt von n=16 bis n=128 um Faktor > 100",
+   "ok": true,
+   "wert": "1.7e-5 → 9.17e-9"
+  },
+  {
+   "name": "keine Stagnation (Maximalfehler sinkt bei jedem Schritt ab n=16 um ≥ 10 %)",
+   "ok": true,
+   "wert": []
+  },
+  {
+   "name": "algebraischer Abfall n^p passt besser als geometrischer e^{−cn}",
+   "ok": true,
+   "wert": "p = -3.81; Residuen alg 0.514 vs geo 5.74"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "n": [
+   4,
+   8,
+   12,
+   16,
+   24,
+   32,
+   48,
+   64,
+   96,
+   128
+  ],
+  "fehler": {
+   "4": [
+    "0.0009056",
+    "0.001365",
+    "0.001231",
+    "0.0004903",
+    "9.134e-5"
+   ],
+   "8": [
+    "0.0001433",
+    "0.0001585",
+    "0.0001153",
+    "3.752e-5",
+    "3.643e-5"
+   ],
+   "12": [
+    "4.241e-5",
+    "3.911e-5",
+    "2.428e-5",
+    "6.561e-6",
+    "2.4e-6"
+   ],
+   "16": [
+    "1.699e-5",
+    "1.364e-5",
+    "7.211e-6",
+    "1.476e-6",
+    "4.462e-6"
+   ],
+   "24": [
+    "4.426e-6",
+    "2.894e-6",
+    "1.065e-6",
+    "1.201e-8",
+    "2.306e-6"
+   ],
+   "32": [
+    "1.575e-6",
+    "8.992e-7",
+    "2.177e-7",
+    "6.975e-8",
+    "1.049e-6"
+   ],
+   "48": [
+    "2.458e-7",
+    "7.936e-8",
+    "4.129e-8",
+    "4.541e-8",
+    "2.7e-7"
+   ],
+   "64": [
+    "5.209e-8",
+    "1.139e-8",
+    "4.357e-8",
+    "2.56e-8",
+    "1.064e-7"
+   ],
+   "96": [
+    "4.022e-9",
+    "1.653e-8",
+    "1.814e-8",
+    "7.888e-9",
+    "2.217e-8"
+   ],
+   "128": [
+    "5.848e-9",
+    "9.169e-9",
+    "8.008e-9",
+    "3.045e-9",
+    "6.284e-9"
+   ]
+  },
+  "punkte": [
+   "-0.4375",
+   "-0.3125",
+   "-0.1875",
+   "-0.0625",
+   "2.153533702562634189874844654853677251640057812148037032836595086010459834473884367068504096725860125e-1"
+  ],
+  "exponent_p": -3.810285524794093,
+  "stellen_n128": 8.037678027270415,
+  "vorab_erwartet": "≥ 10 Stellen bei n = 128 und Faktor 10^4 ab n = 16 — beides nicht eingetreten",
+  "referenz_sha256": "fc9e3cdc96afec9a",
+  "referenz_herkunft": "D:\\Users\\janis\\Documents\\Tetration\\gp-tetration\\research\\reference\\values.json"
+ }
+}

@@ -1,0 +1,745 @@
+# Theorie-Blöcke für das Gebiet Fixpunkte und unendlicher Turm (fp): Etappe 1 (fp.fixpunkte, fp.turm), Etappe 4 (Kapitel 8, am Ende der Datei).
+
+fp.def.eta:
+  worum: |
+    Die Zahl $\eta=e^{1/e}\approx1.4447$ ist die Wasserscheide der Tetration. Unter ihr gibt es zwei reelle Zahlen, die sich beim
+    Potenzieren nicht ändern, über ihr keine. Davon hängt ab, ob ein Turm zur Ruhe kommt, und welche Konstruktion man für halbe
+    Höhen braucht.
+  genau: |
+    $$\eta:=e^{1/e}=1.444667861009766\ldots$$
+    Für $b>1$ hat die Gleichung $b^x=x$
+    - zwei reelle Lösungen, wenn $1<b<\eta$,
+    - genau eine (doppelte) Lösung $x=e$, wenn $b=\eta$,
+    - keine reelle Lösung, wenn $b>\eta$.
+  warum: |
+    1. Logarithmieren: $b^x=x$ (mit $x>0$) ist dasselbe wie $x\ln b=\ln x$, also $\ln b=\dfrac{\ln x}{x}$.
+    2. Die Funktion $\varphi(x)=\dfrac{\ln x}x$ hat die Ableitung $\dfrac{1-\ln x}{x^2}$: sie steigt bis $x=e$ und fällt danach, ihr grösster
+       Wert ist $\varphi(e)=1/e$.
+    3. Also hat $\ln b=\varphi(x)$ zwei Lösungen, wenn $0<\ln b<1/e$, eine bei $\ln b=1/e$, keine bei $\ln b>1/e$. Und $\ln b=1/e$
+       heisst genau $b=e^{1/e}=\eta$.
+  beispiel: |
+    - $b=\sqrt2$: die Lösungen sind $2$ und $4$, denn $\sqrt2^{\,2}=2$ und $\sqrt2^{\,4}=4$.
+    - $b=1.3$: $1.4710$ und $7.8571$.
+    - $b=\eta$: nur $x=e$, dort berühren sich die Kurven $y=\eta^x$ und $y=x$.
+    - $b=1.5$: keine Lösung — die Kurve $y=1.5^x$ bleibt überall über der Geraden.
+  bilder: [k0_treppe]
+  einordnung: |
+    Dieselbe Zahl ist $1/\min x^x$ ([[gr.satz.selbstpotenz]]). Die drei Fälle führen zu drei Arten von Tetration: regulär unter $\eta$
+    ([[kl.satz.regulaer]]), parabolisch bei $\eta$ ([[kl.satz.parabolisch]]), Kneser über $\eta$ ([[kn.konstr.kneser]]).
+
+fp.satz.reelle_fixpunkte:
+  worum: |
+    Statt nach Schnittpunkten zu suchen, kann man fragen, wie weit die Kurve $y=b^x$ höchstens unter die Gerade $y=x$ taucht. Ein
+    einziger Ausdruck entscheidet dann alles — und er sagt zusätzlich, welcher Schnittpunkt anzieht und welcher abstösst.
+  genau: |
+    Für $b>1$ hat $g(x)=b^x-x$ ihr Minimum bei $x^*=-\dfrac{\ln\ln b}{\ln b}$, und es ist
+    $$\min_x\bigl(b^x-x\bigr)=\frac{1+\ln\ln b}{\ln b}.$$
+    Das Minimum ist positiv für $b>\eta$, null für $b=\eta$, negativ für $1<b<\eta$. Im letzten Fall hat der untere Fixpunkt einen
+    Multiplikator $\lambda=a\ln b$ zwischen $0$ und $1$ (er **zieht an**), der obere einen Multiplikator über $1$ (er **stösst ab**).
+  warum: |
+    1. $g''(x)=b^x(\ln b)^2>0$: $g$ ist nach oben gebogen und hat höchstens ein Minimum.
+    2. $g'(x)=b^x\ln b-1=0$ heisst $b^{x^*}=1/\ln b$, also $x^*=-\ln\ln b/\ln b$.
+    3. Wert dort: $g(x^*)=\frac1{\ln b}-x^*=\frac{1+\ln\ln b}{\ln b}$. Positiv genau dann, wenn $\ln\ln b>-1$, also $\ln b>1/e$, also $b>\eta$.
+    4. **Anziehen oder abstossen:** Die Steigung von $b^x$ an einem Fixpunkt $L$ ist $b^L\ln b=L\ln b$ — das ist der Multiplikator $\lambda$.
+       Er wächst mit $L$ und ist genau $1$ an der Stelle $x^*$. Der untere Fixpunkt liegt links von $x^*$ ($\lambda<1$), der obere rechts ($\lambda>1$).
+       Ist $|\lambda|<1$, rücken Punkte in der Nähe bei jedem Schritt näher heran.
+  beispiel: |
+    - $b=\sqrt2$: $x^*=3.058$, Minimum $-0.172<0$. Fixpunkte $2$ ($\lambda=\ln2=0.693$, zieht an) und $4$ ($\lambda=2\ln2=1.386$, stösst ab).
+    - $b=2$: $x^*=0.529$, Minimum $+0.914>0$ — kein Fixpunkt.
+    - $b=e$: $x^*=0$, Minimum $1$.
+  einordnung: |
+    Für $b>\eta$ sagt das Minimum mehr: $b^x-x$ ist überall mindestens $\frac{1+\ln\ln b}{\ln b}$, also wächst jeder Turm pro Schritt
+    um mindestens diesen Betrag — die „Wachstumslücke“ aus Paper III ([[bw.lem.wachstumsluecke]]). Die Steigung des unendlichen Turms
+    als Funktion der Basis: [[gr.satz.turm_ableitung]].
+
+fp.satz.lambert:
+  worum: |
+    Die Fixpunkte von $b^z$ lassen sich nicht mit Wurzeln oder Logarithmen hinschreiben, wohl aber mit einer eigenen Funktion, der
+    Lambert-W-Funktion. Mit ihr bekommt man **alle** Fixpunkte, auch die komplexen, und gleich ihre Multiplikatoren dazu.
+  genau: |
+    Die Lambert-W-Funktion ist die Umkehrung von $w\mapsto we^{w}$: $W(x)e^{W(x)}=x$. Sie hat unendlich viele Zweige $W_k$, $k\in\mathbb Z$
+    (wie der komplexe Logarithmus). Für $b\ne0,1$ sind die Fixpunkte von $z\mapsto b^z$ genau
+    $$L_k=-\frac{W_k(-\ln b)}{\ln b},\qquad\text{mit Multiplikator}\quad\lambda_k=L_k\ln b=-W_k(-\ln b).$$
+    Über $\eta$ gibt es ein komplex-konjugiertes Hauptpaar; der Fixpunkt mit positivem Imaginärteil ist $L=-W_{-1}(-\ln b)/\ln b$.
+  warum: |
+    $b^L=L$ heisst $e^{L\ln b}=L$. Multipliziere mit $-\ln b\cdot e^{-L\ln b}$:
+    $$(-L\ln b)\,e^{-L\ln b}=-\ln b .$$
+    Die linke Seite hat die Form $we^w$ mit $w=-L\ln b$. Also ist $w$ ein Wert von $W(-\ln b)$, und $L=-w/\ln b$. Jeder Zweig von $W$ gibt
+    einen Fixpunkt. Der Multiplikator ist die Ableitung $b^L\ln b=L\ln b=-w$.
+  beispiel: |
+    - $b=\sqrt2$, $-\ln b=-0.34657$: $W_0=-0.69315$ gibt $L=2$; $W_{-1}=-1.38629$ gibt $L=4$.
+    - $b=e$, $-\ln b=-1$ liegt links von $-1/e$, dort sind alle $W$-Werte komplex. Das Hauptpaar ist $L=0.3181315\pm1.3372357\,i$; man prüft
+      $e^{L}=L$ direkt. Weil $\ln e=1$, ist hier $\lambda=L$.
+  einordnung: |
+    Der Multiplikator bestimmt fast alles Weitere: Anziehung ($|\lambda|<1$), die Breite der Streifen, in denen Tetrationen periodisch sind
+    ($2\pi i/\ln\lambda$), und die Spiralen um den Fixpunkt ([[fp.satz.spirale]]). Kneser baut seine Tetration an diesem Paar $L,\bar L$
+    ([[kn.konstr.kneser]]).
+
+fp.satz.abstossend:
+  worum: |
+    Über $\eta$ gibt es keinen Fixpunkt mehr, der einen Turm einfangen könnte: alle Fixpunkte, auch die komplexen, stossen ab. Deshalb
+    kann man dort nicht einfach „am Fixpunkt“ eine Tetration bauen wie unter $\eta$.
+  genau: |
+    Für reelle $b>\eta$ haben alle Fixpunkte $L_k$ von $b^z$ einen Multiplikator mit $|\lambda_k|>1$.
+  warum: |
+    Für das Hauptpaar folgt das direkt: In der Multiplikator-Koordinate $t$ ist $b=\exp(te^{-t})$, und $|t|<1$ beschreibt genau die Basen
+    mit anziehendem Fixpunkt ([[fp.satz.parameter_konform]]). Reelle $b>\eta$ liegen ausserhalb dieses Gebiets.
+    Für alle Fixpunkte zugleich braucht man einen Satz aus der komplexen Dynamik: $b^z$ ist über $w=z\ln b$ verwandt mit
+    $w\mapsto(\ln b)\,e^w$, und für $\ln b>1/e$ ist die Julia-Menge dieser Abbildung die ganze Ebene (Misiurewicz, Devaney). Dann kann es
+    keinen anziehenden und keinen neutralen Zyklus geben.
+  beispiel: |
+    $b=e$: $|\lambda|=|L|=1.3746$. $\ b=2$: $\lambda=0.5716+1.0865\,i$, $|\lambda|=1.2277$. Je näher $b$ an $\eta$ rückt, desto näher kommt $|\lambda|$ an $1$.
+  einordnung: |
+    Weil die Fixpunkte abstossen, ziehen sie die **Umkehrabbildung** $\log_b$ an. Darauf baut man über $\eta$ die Abel-Funktion
+    (Koenigs an $L$ für $\log_b$, [[it.satz.koenigs]]), und Kneser korrigiert daraus eine reelle Lösung ([[kn.gescheitert.regulaer_an_L]],
+    [[kn.konstr.kneser]]).
+
+fp.satz.turm_reell:
+  worum: |
+    Wann hat der unendliche Turm $b^{b^{b^{\cdots}}}$ einen Wert? Euler hat die Antwort gefunden: genau für Basen zwischen etwa $0.066$
+    und $1.4447$. Darüber explodiert er, darunter springt er ewig zwischen zwei Werten.
+  genau: |
+    Die Folge $t_0=1$, $t_{n+1}=b^{t_n}$ konvergiert genau dann, wenn
+    $$e^{-e}\le b\le e^{1/e}=\eta,$$
+    und zwar gegen $h(b)=-\dfrac{W(-\ln b)}{\ln b}$, den anziehenden (an den Rändern: neutralen) Fixpunkt.
+  warum: |
+    - **$1<b\le\eta$:** Die Folge wächst (Induktion: $t_{n+1}=b^{t_n}>b^{t_{n-1}}=t_n$) und bleibt unter dem unteren Fixpunkt $a$ (aus
+      $t_n<a$ folgt $t_{n+1}=b^{t_n}<b^a=a$). Eine wachsende, beschränkte Folge konvergiert, und der Grenzwert ist ein Fixpunkt: $a$.
+    - **$b>\eta$:** Es gibt keinen Fixpunkt; nach [[fp.satz.reelle_fixpunkte]] wächst die Folge jedes Mal um mindestens eine feste Zahl,
+      also über alle Grenzen.
+    - **$e^{-e}\le b<1$:** $b^x$ fällt, die Folge springt um den Fixpunkt herum. Zwei Schritte zusammen, $b^{b^x}$, wachsen, und ihr
+      Fixpunkt zieht an, solange der Multiplikator $\lambda=L\ln b$ nicht unter $-1$ fällt. Das ist genau bis $b=e^{-e}$ der Fall (dort $\lambda=-1$, $L=1/e$).
+    - **$0<b<e^{-e}$:** Jetzt ist $\lambda<-1$, der Fixpunkt stösst ab, und gerade und ungerade Glieder laufen gegen zwei verschiedene
+      Werte — einen 2-Zyklus.
+  beispiel: |
+    - $b=0.5$: $0.5,\ 0.707,\ 0.613,\ 0.654,\ 0.636,\ 0.644,\dots\to0.64119$.
+    - $b=\sqrt2\to2$, $\ b=1.4\to1.8867$, $\ b=\eta\to e$ (sehr langsam), $\ b=e^{-e}\to1/e$ (sehr langsam, wie $1/\sqrt n$).
+    - $b=0.03$: pendelt für immer zwischen $0.821$ und $0.056$.
+  bilder: [k0_kleine_basen]
+  einordnung: |
+    Der Grenzwert $h(b)$ ist zugleich der Wert, gegen den die reguläre Tetration für $x\to\infty$ läuft ([[gr.satz.gestalt]]). Wie die
+    Türme von $x$ (statt fester Basis) aussehen, zeigt [[gr.satz.turmintegral_grenzen]]; die komplexe Fortsetzung ist [[fp.satz.shell_thron]];
+    die genaue Geschwindigkeit an den Rändern [[fp.satz.parabolisch_rand]] und [[fp.satz.p2_raten]].
+
+fp.satz.shell_thron:
+  worum: |
+    Lässt man komplexe Basen zu, wird aus Eulers Intervall ein ganzes Gebiet in der Ebene. Es hat eine überraschend einfache
+    Beschreibung: man gibt nicht die Basis vor, sondern den Multiplikator $t$, und rechnet die Basis daraus aus.
+  genau: |
+    Ist $b=\exp\bigl(t\,e^{-t}\bigr)$ mit einer komplexen Zahl $|t|<1$ (und Hauptzweig des Logarithmus), dann konvergiert der Turm
+    $b^{b^{\cdots}}$ gegen $L=e^{t}$, und $t$ ist der Multiplikator dieses Fixpunkts. Die Basen mit $|t|<1$ bilden das **Shell–Thron-Gebiet**;
+    sein Rand ist die Kurve $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$, auf der reellen Achse von $e^{-e}$ bis $\eta$.
+  warum: |
+    1. Rezeptur: Soll $L$ ein Fixpunkt mit Multiplikator $t$ sein, dann gilt $L=e^{L\ln b}$ und $t=L\ln b$. Also $L=e^t$ und $\ln b=t/L=te^{-t}$
+       ([[fp.satz.multiplikator_rezept]]).
+    2. Für $|t|<1$ zieht dieser Fixpunkt an: Punkte in seiner Nähe kommen bei jedem Schritt um den Faktor $|t|$ näher.
+    3. Dass der Turm, der bei $1$ beginnt, tatsächlich in diese Nähe gerät, ist der schwierigere Teil. Er folgt aus einem Satz von Fatou:
+       ein anziehender Fixpunkt fängt immer die Bahn des „singulären Werts“ ein, und für $b^z$ ist das die Bahn $0\mapsto1\mapsto b\mapsto\dots$ —
+       genau der Turm.
+  beispiel: |
+    Basis $b=i$: $t=-0.5664+0.6885\,i$, $|t|=0.8915<1$. Der Turm $i,\ i^i=0.2079,\ i^{i^i},\dots$ läuft spiralförmig in den Fixpunkt
+    $0.4383+0.3606\,i$, pro Schritt um etwa 11 % näher und um 129° gedreht.
+  bilder: [exp.parameterraum]
+  einordnung: |
+    Ausserhalb des Gebiets entstehen Knospen mit Zyklen ([[fp.verm.knospen]]), ein Staub fliehender Basen und eine eigene Region mit
+    2-Zyklen ([[fp.satz.p2_form]]) — das ganze Bild in Kapitel 8. Die konforme Koordinate $t$ ist [[fp.satz.parameter_konform]].
+
+fp.verm.knospen:
+  worum: |
+    Direkt ausserhalb des Shell–Thron-Gebiets hängen „Knospen“, in denen der Turm nicht mehr zur Ruhe kommt, sondern reihum zwischen
+    $q$ Werten springt. Welches $q$, sieht man am Randpunkt, an dem die Knospe hängt.
+  genau: |
+    **Vermutung.** Knapp ausserhalb des Gebiets beim Randpunkt mit $t=e^{2\pi ip/q}$ ($p/q$ gekürzt) läuft der Turm in einen anziehenden
+    Zyklus der Länge $q$. Der reelle Fall $q=2$, $t=-1$, ist Eulers Grenze $e^{-e}$: darunter der 2-Zyklus.
+  warum: |
+    Nahe am Randpunkt ist der Multiplikator fast $e^{2\pi ip/q}$, eine $q$-te Einheitswurzel. Geht man ein wenig über den Rand hinaus, wird
+    der Fixpunkt abstossend, und aus ihm „knospt“ ein Zyklus der Länge $q$ heraus — so wie bei der Mandelbrot-Menge, wo das bewiesen ist.
+    Für die Exponentialfamilie ist das lokale Bild ebenso klar; dass es für die ganze Knospe gilt, ist hier nur gemessen.
+  beispiel: |
+    In [[exp.turmgebiet]]: alle teilerfremden $p/q$ mit $q\le7$, je zwei Abstände vom Rand — in allen $34$ Fällen Periode $q$. Die Knospen
+    zu $1/3$ und $2/3$ sind die grössten; der Zyklus dreht dabei wirklich um $p/q$ ([[fp.verm.knospen_drehzahl]]).
+  einordnung: |
+    Die Normalform $e^w+\kappa$ ([[fp.satz.exp_normalform]]) macht die Literatur über die Exponentialfamilie zugänglich, in der solche
+    Knospen beschrieben sind. Die ganze Basen-Ebene: [[fp.beob.regionen]].
+
+# ================================================================== Etappe 4: Kapitel 8 (Stränge fp.parameterraum, fp.spiralen_mittel, fp.periode2)
+
+fp.satz.multiplikator_rezept:
+  worum: |
+    Wie sich ein Turm am Ende verhält, entscheidet eine einzige komplexe Zahl: der Multiplikator $\lambda$ am Fixpunkt. Man kann ihn sich aussuchen
+    — und daraus die passende Basis ausrechnen. Das ist das wichtigste Werkzeug für Experimente in der Basen-Ebene.
+  genau: |
+    $f_b(z)=\exp(z\,\mathrm{Log}\,b)$ hat genau dann einen Fixpunkt $z^*$ mit Multiplikator $\lambda$, wenn
+    $$\mathrm{Log}\,b=\lambda e^{-\lambda};\qquad\text{dann ist }z^*=e^\lambda.$$
+    Für $|\lambda|<1$ durchläuft $b$ das Shell–Thron-Gebiet, für $\lambda=e^{i\theta}$ seinen Rand $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$.
+  warum: |
+    Mit $u=\mathrm{Log}\,b$: Fixpunkt heisst $z^*=e^{uz^*}$, Multiplikator heisst $\lambda=f'(z^*)=u\,e^{uz^*}=uz^*$. Also $z^*=e^{uz^*}=e^\lambda$ und $u=\lambda/z^*=\lambda e^{-\lambda}$.
+    Umgekehrt rechnet man beides direkt nach.
+  beispiel: |
+    $\lambda=\ln2$ gibt $b=\sqrt2$ mit Fixpunkt $2$. $\lambda=-1$ gibt $b=e^{-e}=0.065988$ mit Fixpunkt $1/e$. $\lambda=1$ gibt $b=\eta$ mit Fixpunkt $e$. $\lambda=i$ (reine Drehung um einen
+    Radiant) gibt $b=1.98933+1.19328\,i$ mit Fixpunkt $e^i$.
+  einordnung: |
+    Reell ist das die Familie $b=z^{1/z}$ ([[fp.satz.lambert]]). Benutzt für Spiralen ([[fp.satz.spirale]]), neutrale Drehungen ([[fp.satz.neutral]]) und den linearen
+    Basiswechsel ([[kl.satz.koenigs_basiswechsel]]). Für 2-Zyklen gibt es ein ähnliches Rezept ([[fp.satz.p2_form]]).
+
+fp.satz.parameter_konform:
+  worum: |
+    Für jede komplexe Basis sagt eine Zeile, ob ihr Turm zur Ruhe kommt: den Multiplikator ausrechnen und schauen, ob sein Betrag kleiner als $1$ ist. Der Multiplikator
+    ist dabei eine gute Koordinate — das Shell–Thron-Gebiet ist einfach die Einheitskreisscheibe, verzerrt.
+  genau: |
+    Mit dem Hauptzweig $\mathrm{Log}$ ist $t(b):=-W_0(-\mathrm{Log}\,b)$ der Multiplikator des Hauptfixpunkts. Die Abbildung $t\mapsto\exp(te^{-t})$ ist auf $|t|<1$ konform und wird durch $t(b)$
+    umgekehrt. Der Turm $b^{b^{\cdots}}$ hat genau dann einen anziehenden Fixpunkt, wenn $|t(b)|<1$; ein anziehender Fixpunkt eines anderen Zweigs $W_k$ kommt nicht vor.
+  warum: |
+    1. $W_0$ kehrt $w\mapsto we^w$ auf einem Gebiet um, das die Einheitskreisscheibe enthält; darum ist $t\mapsto\exp(te^{-t})$ dort umkehrbar.
+    2. Ein anziehender Fixpunkt zieht einen singulären Wert an (Fatou). $f_b$ hat nur einen: den Wert $0$, dessen Bahn $0\mapsto1\mapsto b\mapsto\cdots$ genau der Turm ist.
+    3. Ein Fixpunkt auf einem anderen Zweig hätte Multiplikator $-W_k(-\mathrm{Log}\,b)$, und der hat nie Betrag $<1$; also kommt nur der Hauptzweig in Frage.
+  beispiel: |
+    $b=i$: $t=-0.5664+0.6885\,i$, $|t|=0.8915<1$ — der Turm $i,i^i,i^{i^i},\dots$ konvergiert. $b=2$: $|t|=1.2277>1$ — er flieht. Auf einem Gitter mit 520 × 520 Basen: alle 97 618 mit
+    $|t|<0.97$ konvergieren, keine der 145 606 mit $|t|>1.02$.
+  bilder: [exp.parameterraum]
+  einordnung: |
+    Reell: [[fp.satz.shell_thron]]. Analogie: der Multiplikator als Koordinate der Hauptkardioide der Mandelbrot-Menge. Was ausserhalb liegt: [[fp.beob.regionen]].
+
+fp.satz.exp_normalform:
+  worum: |
+    Die Bilder der Basen-Ebene sehen aus wie Mandelbrot-Bilder — und das ist kein Zufall. Nach einer linearen Umrechnung ist der Turm die Bahn des einzigen
+    besonderen Punkts einer Exponentialfamilie, so wie die Mandelbrot-Menge aus der Bahn des kritischen Punkts $0$ entsteht.
+  genau: |
+    Mit $c=\mathrm{Log}\,b\ne0$ und $e^\kappa=c$ konjugiert $H(z)=cz+\kappa$ die Abbildung $z\mapsto e^{cz}$ zu $E_\kappa(w)=e^w+\kappa$, und $H(1)=E_\kappa(\kappa)$. Der Turm $1,b,b^b,\dots$ ist also
+    (nach einem Schritt) die Bahn des einzigen singulären Werts $\kappa$ von $E_\kappa$.
+  warum: |
+    $H(e^{cz})=ce^{cz}+\kappa=e^{\kappa+cz}+\kappa=E_\kappa(H(z))$, und $H(1)=c+\kappa=e^\kappa+\kappa$.
+  beispiel: |
+    $b=e$: $c=1$, $\kappa=0$, $E_0(w)=e^w$. Die Bahn von $0$ ist $0,1,e,e^e,\dots$ — genau der Turm, um einen Schritt verschoben.
+  einordnung: |
+    Öffnet die ganze Literatur über $e^w+\kappa$ (Schleicher, Rempe, Eremenko–Lyubich) für Türme, etwa für [[fp.satz.p2_kein_kreis]]. Die Arten von Basen: [[fp.def.basenklassen]].
+
+fp.def.basenklassen:
+  worum: |
+    Basen sind nicht alle gleich: Manche Türme kommen zur Ruhe, manche springen im Kreis, manche kriechen, manche fliehen, manche drehen sich ewig. Für jede Art
+    gibt es eine passende „Brille“ — und nur mit ihr kann man Bruchhöhen und Basiswechsel sinnvoll erklären.
+  genau: |
+    Nach dem Verhalten der Bahn von $1$ unter $e^{cz}$ ($c=\mathrm{Log}\,b$, Zweig gewählt):
+    - **anziehender Fixpunkt** — Werkzeug: Koenigs, Lambert-Summen;
+    - **anziehender $p$-Zyklus** — Multiplikator $\rho=c^p\prod_j\zeta_j$, Koenigs der Rückkehrabbildung;
+    - **parabolisch** — Fatou-Koordinate, Konvergenz wie $n^{-1/m}$, Digamma/Zeta;
+    - **reell fliehend** — Abel-Funktion und reeller Logarithmenkanal, periodische Phase;
+    - **komplex fliehend** — Adresse der logarithmischen Streifen;
+    - **Siegel** (Drehung), **präperiodisch** (Misiurewicz), **Cremer/rekurrent** (keine einfache Normalform).
+    Ein schwarzes Pixel in einem Fluchtbild heisst nur „nicht als fliehend erkannt“. Genau genommen ist $c$ (bzw. $b$ mit Zweig) der Parameter.
+  warum: |
+    Eine Definition. Der Zyklus-Multiplikator folgt aus $f'=cf$ mit der Kettenregel: $(f^{\circ p})'(\zeta_0)=\prod_jf'(\zeta_j)=c^p\prod_j\zeta_j$.
+  beispiel: |
+    $\sqrt2$: anziehender Fixpunkt. $0.03$: anziehender 2-Zyklus. $\eta$: parabolisch. $2$ und $e$: reell fliehend. $-\tfrac{19}{25}$: komplex fliehend. $b(2\pi\alpha)$ mit goldenem $\alpha$: Siegel.
+  einordnung: |
+    Landkarte: [[fp.beob.regionen]]. Die Werkzeuge je Klasse stehen in den Kapiteln 4–7; Zweige: [[fp.satz.gleiches_L]].
+
+fp.beob.regionen:
+  worum: |
+    Färbt man jede komplexe Basis nach dem, was ihr Turm tut, entsteht eine Landkarte: in der Mitte ein Gebiet, in dem er zur Ruhe kommt, daran Knospen,
+    in denen er zwischen 2, 3, 4, … Werten springt, aussen Gebiete, in denen er davonläuft.
+  genau: |
+    Im Rechteck $[-1,3]\times[-2.4,2.4]$ (Hauptzweig, Startwert $1$):
+    1. Hauptgebiet (Periode 1) = Shell–Thron-Gebiet, berandet von $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$, reell von $e^{-e}$ bis $\eta$;
+    2. Knospen am Rand bei $\theta=2\pi p/q$ mit Periode $q$; die Knospe $1/2$ enthält die reellen Basen $(0,e^{-e})$; die Knospen $1/3$, $2/3$ sind die grössten;
+    3. Fluchtgebiete, dazu reell $b>\eta$;
+    4. ein Saum unklarer Punkte (lange Perioden, neutrale oder chaotische Bahnen) entlang aller Grenzen.
+  warum: |
+    Teil 1 ist bewiesen ([[fp.satz.parameter_konform]]), Teil 2 lokal an den Knospenwurzeln (Bifurkation); das Gesamtbild ist gemessen (3000 Schritte, Perioden bis 12, Toleranz $10^{-8}$).
+  beispiel: |
+    Auf 520 × 520 Gitterpunkten: Periode 1: 109 624, Periode 3: 37 864, Periode 4: 28 564, Periode 2: nur 240, Flucht: 29 187, unklar: 22 723.
+  bilder: [exp.parameterraum, exp.turmgebiet]
+  einordnung: |
+    Wie die Zyklen in den Knospen drehen: [[fp.verm.knospen_drehzahl]]; was genau auf dem Rand passiert: [[fp.satz.parabolisch_rand]], [[fp.satz.neutral]]. Erste Fassung:
+    [[fp.verm.knospen]].
+
+fp.verm.knospen_drehzahl:
+  worum: |
+    In der Knospe mit der Aufschrift $2/5$ springt der Turm zwischen 5 Werten, die rund um den Fixpunkt liegen — und überspringt dabei jedes Mal einen Nachbarn:
+    2 Plätze weiter je Schritt.
+  genau: |
+    **Vermutung.** In der ganzen Knospe $p/q$ ($\mathrm{ggT}(p,q)=1$) umläuft der anziehende $q$-Zyklus den dort abstossenden Hauptfixpunkt mit Drehzahl $p/q$: Ordnet man die
+    Zykluspunkte nach dem Winkel um $L$, springt $f_b$ jedes Mal um $p$ Plätze weiter.
+  warum: |
+    Nahe der Knospenwurzel ist $f\approx L+\lambda(z-L)$ mit $\lambda\approx e^{2\pi ip/q}$ — eine Drehung um $p/q$ einer vollen Umdrehung, und der neue Zyklus erbt sie. Für die ganze Knospe fehlt
+    ein Argument; bei der Mandelbrot-Menge leisten das äussere Strahlen (Douady–Hubbard).
+  beispiel: |
+    Alle teilerfremden $p/q$ mit $q\le7$, jeweils knapp ausserhalb der Wurzel: Drehzahl $p/q$ in 17 von 17 Fällen.
+  einordnung: |
+    Präzisiert [[fp.verm.knospen]]. Frage: Gibt es in einer Knospe eine „$q$-wertige reguläre Tetration“, die den Zyklus stetig durchläuft?
+
+fp.satz.parabolisch_rand:
+  worum: |
+    Auf dem Rand des Shell–Thron-Gebiets dreht der Multiplikator genau um einen Bruchteil einer Umdrehung. Dort kommt der Turm zwar zur Ruhe, aber extrem
+    langsam — wie $n^{-1/q}$.
+  genau: |
+    Für $b=b(2\pi p/q)$, $\lambda=e^{2\pi ip/q}$, konvergiert der Turm gegen $L=e^\lambda$, aber nur algebraisch: $|z_n-L|\asymp n^{-1/q}$. Der Fixpunkt hat genau $q$ Blütenblätter.
+    Reell ($q=2$): $b=e^{-e}$, $L=1/e$, Fehler $\asymp n^{-1/2}$.
+  warum: |
+    1. Ein Fixpunkt mit primitivem $q$-ten Einheitswurzel-Multiplikator hat $\nu q$ Blätter, die in $\nu$ Zyklen zerfallen; jeder Zyklus zieht einen singulären Wert an (Fatou).
+    2. $f_b$ hat nur einen singulären Wert, also $\nu=1$: $f^{\circ q}(z)=z+a(z-L)^{q+1}+\dots$ mit $a\ne0$.
+    3. Im Blatt gilt nach Leau–Fatou $(z_{nq}-L)^{-q}\approx-qa\,n$, also $|z-L|\sim n^{-1/q}$.
+  beispiel: |
+    Gemessene Exponenten zwischen $n=2\cdot10^4$ und $4\cdot10^5$: $0.5011$ für $q=2$, $0.3237$ für $q=3$ (erwartet $\tfrac12$, $\tfrac13$).
+  bilder: [k4_blume]
+  einordnung: |
+    $q=1$ ist $b=\eta$ ([[kl.satz.parabolisch]]); $q=2$ mit genauer Konstante: [[fp.satz.p2_raten]]. Werkzeug: [[it.satz.leau_fatou]].
+
+fp.satz.neutral:
+  worum: |
+    Dreht der Multiplikator um einen **irrationalen** Bruchteil einer Umdrehung, kann der Fixpunkt von einer Scheibe umgeben sein, auf der die Abbildung eine reine
+    Drehung ist (Siegel-Scheibe). Der Turm kommt dann nie zur Ruhe, sondern kreist ewig an ihrem Rand.
+  genau: |
+    Für $b=b(2\pi\alpha)$, $\lambda=e^{2\pi i\alpha}$, $\alpha$ eine Brjuno-Zahl (z. B. der goldene Schnitt, jede algebraische Irrationalzahl): $f_b$ ist am Fixpunkt linearisierbar — es gibt eine
+    Siegel-Scheibe um $L$, auf der $f_b$ einer Drehung um $2\pi\alpha$ gleicht. Der Orbit von $1$ liegt ausserhalb und häuft sich an ihrem Rand.
+  warum: |
+    Literatursatz: Siegel (für diophantische $\alpha$), Brjuno und Rüssmann (Brjuno-Bedingung $\sum\log q_{n+1}/q_n<\infty$ für die Nenner der Kettenbruch-Näherungen). Dass der Rand im Abschluss der Bahn des
+    singulären Werts liegt, ist von Fatou. Ob die Brjuno-Bedingung für diese Familie auch notwendig ist, ist hier nicht am Original geprüft.
+  beispiel: |
+    Für Liouville-artige $\alpha$ (extrem gut durch Brüche annäherbar) kann die Scheibe fehlen — dann heisst der Fixpunkt Cremer-Punkt.
+  einordnung: |
+    Erklärt die scheibenartigen Punktwolken in der Notiz des Nutzers ([[fp.satz.siegel_mittel]]). Annahme über den Rand: [[fp.ann.siegel_rand]].
+
+fp.satz.gleiches_L:
+  worum: |
+    Zu einem Fixpunkt $L$ gibt es nicht nur eine Basis, sondern eine ganze Leiter von Basen — für jede Wahl des Logarithmus von $L$ eine. Ihre Türme können sich völlig
+    verschieden benehmen und drehen doch um denselben Punkt.
+  genau: |
+    Genau die Abbildungen $z\mapsto e^{uz}$ mit
+    $$u_k=\frac{\mathrm{Log}\,L+2\pi ik}{L},\qquad k\in\mathbb Z,$$
+    haben $L$ als Fixpunkt; ihre Multiplikatoren $\lambda_k=\mathrm{Log}\,L+2\pi ik$ unterscheiden sich um $2\pi i$. Zwei **reelle** Basen teilen ein $L$ genau dann, wenn $\mathrm{Re}(1/L)=0$
+    (beide positiv oder beide negativ) oder $\mathrm{Re}(1/L)=\mp\tfrac1{2m}$ (eine positiv, eine negativ).
+  warum: |
+    1. $e^{uL}=L$ genau dann, wenn $uL=\mathrm{Log}\,L+2\pi ik$ für ein ganzes $k$.
+    2. Zwei Basen teilen $L$ genau dann, wenn $u-u'=2\pi im/L$. Für reelle Basen ist $\operatorname{Im}u\in\{0,\pi\}$, also $\operatorname{Im}(2\pi im/L)=2\pi m\operatorname{Re}(1/L)\in\{0,\pm\pi\}$.
+    3. Fall $\operatorname{Re}(1/L)=0$: $L=iy$; positive Basen geben $y=\pm1$, negative $ye^{\pi y}=1$, also $y=W(\pi)/\pi$. Und $(-b)^L=b^Le^{i\pi L}=L$ genau dann, wenn $L$ eine gerade ganze Zahl ist.
+  beispiel: |
+    $e^{\pi/2+2\pi k}$ ($0.00898$, $4.8105$, $2575.97$, …) teilen $L=i$: $(e^{\pi/2})^i=e^{i\pi/2}=i$. Auch $\sqrt2$ und $-\sqrt2$ teilen die Fixpunkte $2$ und $4$.
+  bilder: [exp.gleiches_L]
+  einordnung: |
+    Mit dem Multiplikator-Rezept: $b_k=\exp(\lambda_ke^{-\lambda_k})$ ([[fp.satz.multiplikator_rezept]]). Basiswechsel zwischen Basen derselben Leiter: [[kl.satz.basiswechsel_gleiches_L]].
+
+fp.beob.gleiches_L_kategorien:
+  worum: |
+    Teilen zwei reelle Basen einen Fixpunkt, liegt oft eine rechts der Shell–Thron-Region (ihr Turm flieht) und eine links (ihr Turm springt zwischen zwei oder drei Werten).
+  genau: |
+    $L=i$: $e^{-7\pi/2}$, $e^{-3\pi/2}$ Periode 2; $e^{\pi/2}$, $e^{5\pi/2}$, $e^{9\pi/2}$ Flucht. $L=iW(\pi)/\pi$: $-1.03\cdot10^{-6}$ Periode 2; $-99.11$ und $-9.56\cdot10^9$ Periode 3. Gemischt:
+    $29.67$ (Flucht) mit $-0.000814$ (Periode 2) und $-1.08\cdot10^6$ (Periode 3); $2.084$ (Flucht) mit $-0.00262$ (Periode 2) und $-1659.6$ (Periode 3); $\sqrt2$ (Periode 1) mit $-\sqrt2$ (Periode 9).
+  warum: |
+    Gemessen (6000 Schritte, Perioden bis 12). Der gemeinsame Fixpunkt ist meist abstossend und bestimmt das Turmverhalten nicht — darum diese Vielfalt.
+  einordnung: |
+    Katalog der Paare für [[kl.satz.basiswechsel_gleiches_L]]. Frage: Hat der gemeinsame Fixpunkt eine Bedeutung für die Lage der Zyklen?
+
+fp.beob.partner_keil:
+  worum: |
+    Damit eine Basis einen „ruhigen Zwilling“ mit demselben Fixpunkt hat (einen, dessen Turm dort zur Ruhe kommt), muss sie links der Shell–Thron-Region liegen,
+    im Bereich mit negativem Realteil. Die gewohnten Basen $2$, $e$, $3$, $4$ haben keinen.
+  genau: |
+    $b$ hat einen **anziehenden** Partner mit gleichem Fixpunkt genau dann, wenn $|\lambda_b-2\pi ik|<1$ für ein ganzes $k\ne0$. Im Hauptzweig kommen nur $m=\pm1$ vor, jeweils
+    18.371 % der Scheibe. Alle solchen Basen haben $\operatorname{Re}b<0$: Sie bilden einen Keil links der Region mit Spitze bei $e^{-e}$ ($\operatorname{Re}b\in[-141.12,-0.006]$, $|\operatorname{Im}b|\le22.288$).
+  warum: |
+    Das Kriterium folgt aus [[fp.satz.gleiches_L]]: Die Multiplikatoren der Leiter liegen im Abstand $2\pi i$, anziehend heisst Betrag $<1$. Dass nur $m=\pm1$ vorkommen und alles im Keil liegt,
+    ist gemessen (12 547 460 Gitterpunkte).
+  beispiel: |
+    $b=-\tfrac{19}{25}$: $L=1.90471-0.37762\,i$, Partner $d=1.425187-0.046203\,i$ — unabhängig nachgerechnet auf $4\cdot10^{-14}$. Weitere: $-1\to1.417109-0.024735\,i$,
+    $-1+i\to1.444591-0.000094\,i$ (fast $\eta$, schwach gedämpft).
+  bilder: [exp.funde]
+  einordnung: |
+    Sagt, wo der wellenfreie Basiswechsel überhaupt möglich ist ([[kl.satz.basiswechsel_gleiches_L]]). Offen: ein Beweis, dass $m=\pm2$ nie vorkommt.
+
+fp.beob.negative_achse:
+  worum: |
+    Bei negativen Basen springt der Turm wild hin und her. Meist bleibt er beschränkt oder macht nur einen riesigen Ausflug und fällt zurück; echtes Davonlaufen kommt nur an
+    winzigen, verstreuten Stellen vor.
+  genau: |
+    Auf $[-3,0]$ (Hauptzweig $\mathrm{Log}\,b=\ln|b|+i\pi$) gibt es drei Verhaltensarten: Turm **beschränkt** (Zyklen, etwa $b=-2$ Periode 8, $b=-\tfrac34$ Periode 6, $b=-1$: $1\mapsto-1\mapsto-1$),
+    **riesiger Ausflug und Rückfall**, und **echte Flucht** (etwa $b=-\tfrac{19}{25}$). Die fliehenden Basen bilden Staub: 4196 getrennte Stücke, mittlere Breite $5\cdot10^{-5}$.
+    Für $-0.0805281576<b<0$ liegt ein anziehender 2-Zyklus vor.
+  warum: |
+    Gemessen. „Ausflug und Rückfall“ trennt man von Flucht am entscheidenden Schritt: Nach dem Ausflug wird $\operatorname{Re}(cz)$ sehr negativ, $e^{cz}$ fällt auf fast $0$, und die Bahn beginnt bei $1$ neu.
+  beispiel: |
+    $b=-1$: $(-1)^1=-1$, $(-1)^{-1}=-1$ — der Turm steht nach einem Schritt still.
+  einordnung: |
+    Analogon der Cantor-Bündel fliehender Parameter der Exponentialfamilie. Linker Endpunkt der 2-Zyklus-Region: [[fp.satz.p2_kein_kreis]]. Folge für komplexe Basiswechsel: [[bw.verm.adressen]].
+
+fp.satz.spirale:
+  worum: |
+    Der Turm $i,\ i^i,\ i^{i^i},\dots$ läuft spiralförmig auf einen Punkt zu: jeder Schritt verkleinert den Abstand um etwa 11 % und dreht um etwa 129°. Beide Zahlen stecken in
+    einer einzigen komplexen Zahl $\lambda$.
+  genau: |
+    Hat die Basis einen anziehenden Fixpunkt $L$ mit $0<|\lambda|<1$, dann
+    $$\frac{z_{n+1}-L}{z_n-L}\longrightarrow\lambda\qquad(n\to\infty).$$
+    Der Abstand schrumpft je Schritt um $|\lambda|$, der Winkel dreht um $\arg\lambda$; genauer $z_n-L\approx\sigma(1)\lambda^n$ (Koenigs).
+  warum: |
+    Taylor am Fixpunkt: $z_{n+1}-L=f(z_n)-f(L)=\lambda(z_n-L)+O(|z_n-L|^2)$. Die Schärfung mit $\sigma(1)$ ist [[it.satz.koenigs]].
+  beispiel: |
+    $b=i$: $L=0.438283+0.360592\,i$, $\lambda=-0.566417+0.688453\,i$, $|\lambda|=0.89151$, $\arg\lambda=2.25925$ (129.4° je Schritt). Bei $n=170$ weicht der Quotient noch $3.4\cdot10^{-8}$ von $\lambda$ ab.
+  bilder: [exp.parameterraum]
+  einordnung: |
+    Reell ist die Spirale einseitig ($\lambda>0$) oder ein Hin und Her ($\lambda<0$). Zwei Basen mit $\lambda_d=\lambda_b^k$ haben „dieselbe Spirale“ ([[kl.satz.koenigs_basiswechsel]]).
+    Das Mittel der Spiralpunkte ist $L$ (Cesàro).
+
+fp.satz.kreismittel:
+  worum: |
+    Geht man einmal um den Rand des Shell–Thron-Gebiets herum und mittelt die $n$-te Turmstufe über alle diese Basen, kommt genau $1$ heraus — für jede Stufe $n$.
+  genau: |
+    Mit $Z_0=1$, $Z_{n+1}(w)=\exp(Z_n(w)\,we^{-w})$ gilt für alle $n\in\mathbb N_0$ und jeden Radius $r>0$
+    $$\frac1{2\pi}\int_0^{2\pi}Z_n(re^{i\theta})\,d\theta=1.$$
+    Für $r=1$ ist $Z_n(e^{i\theta})=T_{b(\theta)}(n)$ der Turm auf dem Shell–Thron-Rand.
+  warum: |
+    $Z_n$ ist eine ganze Funktion (Induktion: Verkettung ganzer Funktionen) mit $Z_n(0)=1$. Der Mittelwert einer holomorphen Funktion über einen Kreis ist ihr Wert in der Mitte (Gaußscher Mittelwertsatz).
+  beispiel: |
+    $n=1$: $Z_1(w)=\exp(we^{-w})=b(w)$ ist die Basis selbst. Also: Der Mittelwert aller Basen auf dem Shell–Thron-Rand ist genau $1$. Nachgerechnet für $n=1,2,3,5,8$ auf $10^{-25}$.
+  bilder: [exp.mittelwerte]
+  einordnung: |
+    Alle Fourier-Anteile: [[fp.kor.fourier_taylor]]. Für nichtganze Höhen bricht die Aussage ([[fp.verm.bruch_mittel]]).
+
+fp.kor.fourier_taylor:
+  worum: |
+    Kennt man den Turm einer festen Höhe für alle Basen auf dem Rand, kennt man ihn für alle Basen im Inneren — die Fourier-Anteile auf dem Rand sind die
+    Taylor-Koeffizienten im Inneren.
+  genau: |
+    $$\frac1{2\pi}\int_0^{2\pi}T_{b(\theta)}(n)\,e^{-ik\theta}d\theta=\frac{Z_n^{(k)}(0)}{k!}\ (k\ge0),\qquad=0\ (k<0),$$
+    und für $1/e<z<e$: $T_{z^{1/z}}(n)=\dfrac1{2\pi}\displaystyle\int_0^{2\pi}\frac{T_{b(\theta)}(n)}{1-(\ln z)e^{-i\theta}}\,d\theta$.
+  warum: |
+    Cauchy-Formeln für die ganze Funktion $Z_n$ auf $|w|=1$. Negative Moden verschwinden, weil $Z_n(w)w^{|k|-1}$ holomorph ist. Die zweite Formel ist die Cauchy-Formel bei $w=\ln z$, $|\ln z|<1$.
+  beispiel: |
+    $z=2$ ($b=\sqrt2$): aus den Randwerten $T_{\sqrt2}(2)=1.63252691944$ und $T_{\sqrt2}(3)=1.76083955588$, auf $10^{-20}$ richtig. ($1.6325\ldots=\sqrt2^{\sqrt2}$.)
+  bilder: [exp.mittelwerte]
+  einordnung: |
+    Für $|\ln z|\ge1$ — also bei $\eta$ und $e^{-e}$ — divergiert der Kern; diese Grenzfälle bleiben offen.
+
+fp.verm.bruch_mittel:
+  worum: |
+    Naheliegende Fortsetzung: Ist das Kreismittel auch für Höhe $\tfrac12$ gleich $1$? Nein — jedenfalls nicht für die reguläre Tetration.
+  genau: |
+    **Widerlegt.** Vermutet (Notiz des Nutzers): $\frac1{2\pi}\int_0^{2\pi}T_{b(re^{i\theta})}(t)\,d\theta=1$ auch für nichtganze $t$. Die Bedingung dafür wäre, dass $w\mapsto T_{b(w)}(t)$ auf der ganzen Scheibe holomorph ist —
+    für die reguläre Tetration ist sie verletzt.
+  warum: |
+    Der Mittelwertsatz braucht Holomorphie bis $w=0$. Die reguläre Tetration enthält aber $\lambda^t=w^t$ ($\lambda=w$ ist der Multiplikator) und ist bei $w=0$ verzweigt ([[fp.gegen.bruch_mittel]]).
+  einordnung: |
+    Zeigt, wo die Analogie „ganz → gebrochen“ bricht. Offen: [[fp.frage.holomorphe_familie]]. Folgen: [[fp.verm.doppelmittel]].
+
+fp.gegen.bruch_mittel:
+  worum: |
+    Das Gegenbeispiel in Zahlen: Bei Höhe $\tfrac12$ ist das Kreismittel nicht $1$, und es hängt sogar davon ab, wo man den Schnitt der Wurzel $w^{1/2}$ legt.
+  genau: |
+    Für $T_{b(w)}(\tfrac12)=\sigma_w^{-1}(w^{1/2}\sigma_w(1))$: Mittel bei $r=0.5$: $1.0619+0.0051\,i$ (Hauptzweig) bzw. $0.9919-0.0816\,i$ (Schnitt bei $\theta=0$); bei $r=0.8$: $1.1058+0.0064\,i$
+    bzw. $0.9862-0.1603\,i$.
+  warum: |
+    Der Multiplikator ist $\lambda=w$; die reguläre Tetration enthält $w^{1/2}$, und das ist auf keinem Kreis um $0$ eindeutig. Je nach Schnitt bekommt man eine andere Funktion — und ein anderes Mittel.
+  bilder: [exp.mittelwerte]
+  einordnung: |
+    Widerlegt [[fp.verm.bruch_mittel]]. Jede am Fixpunkt reguläre Familie erbt $w^t$.
+
+fp.frage.holomorphe_familie:
+  worum: |
+    Gibt es überhaupt eine Tetrationsfamilie, die in der Basis holomorph ist — bis hin zur Basis $1$ (wo $w=0$)? Dann wäre das Kreismittel für alle Höhen gleich $1$.
+  genau: |
+    Gibt es Tetrationen $T_{b(w)}$, $|w|<1$, mit $w\mapsto T_{b(w)}(t)$ holomorph auf der ganzen Scheibe für jedes feste $t$ und $T_{b(0)}\equiv1$?
+  warum: |
+    Offen. Die reguläre Familie scheidet aus ($w^t$); jede Lösung müsste bei $w\to0$ nichtregulär sein. Ansatz: $T=T^{\mathrm{reg}}\circ(\mathrm{id}+\theta_w)$ mit periodischem $\theta_w$, das die
+    Mehrdeutigkeit beim Umlauf $w\mapsto we^{2\pi i}$ ausgleicht ([[fg.satz.allgemeine_loesung]]).
+  einordnung: |
+    Würde [[fp.verm.bruch_mittel]] in einer anderen Familie retten.
+
+fp.verm.doppelmittel:
+  worum: |
+    Eine zweite Mittelwert-Behauptung der Notiz: über den Rand **und** über die Zeit gemittelt komme $2\pi$ heraus. Ihre Begründung ist weggefallen; ob sie trotzdem stimmt, ist offen.
+  genau: |
+    **Offen.** $\lim_{T\to\infty}\frac1T\int_0^T\int_0^{2\pi}T_{b(\theta)}(t)\,d\theta\,dt=2\pi$ (Notiz, Gl. 12).
+  warum: |
+    Die Begründung lief über „das innere Integral ist für alle $t$ gleich $2\pi$“ — widerlegt ([[fp.gegen.bruch_mittel]]). Dazu fehlt für Randbasen (Siegel, Cremer, parabolisch) schon eine
+    Tetration nichtganzer Höhe. Für ganze Zeiten ist es trivial wahr ([[fp.satz.kreismittel]]).
+  einordnung: |
+    Erst lösbar, wenn [[fp.frage.holomorphe_familie]] oder eine Tetration für neutrale Basen vorliegt.
+
+fp.ann.siegel_rand:
+  worum: |
+    Eine Annahme über die Siegel-Scheibe, die man für den Mittelwertsatz braucht: Sie ist beschränkt, ihr Rand eine geschlossene Kurve ohne Selbstberührung,
+    und der Turm läuft auf diesem Rand.
+  genau: |
+    **Annahme.** Für $b=b(2\pi\alpha)$ mit Brjuno-Zahl $\alpha$ ist die Siegel-Scheibe $\Delta$ beschränkt, $\partial\Delta$ eine Jordankurve, und der Orbit von $1$ liegt auf $\partial\Delta$.
+  warum: |
+    Für Zahlen beschränkten Typs (wie den goldenen Schnitt) plausibel; die Literatur ist hier nicht geprüft.
+  einordnung: |
+    Bedingung von [[fp.satz.siegel_mittel]]; Hintergrund [[fp.satz.neutral]].
+
+fp.satz.siegel_mittel:
+  worum: |
+    Auf dem Rand einer Siegel-Scheibe kreist der Turm ewig. Mittelt man seine Werte über die Zeit, kommt genau der Fixpunkt heraus — obwohl der Turm nie dorthin kommt.
+  genau: |
+    Unter [[fp.ann.siegel_rand]] gilt für $b=b(2\pi\alpha)$, $\alpha$ Brjuno:
+    $$\frac1N\sum_{n=n_0}^{n_0+N-1}z_n\longrightarrow L\qquad(N\to\infty).$$
+  warum: |
+    1. Die Linearisierung $\varphi$ bildet die Einheitskreisscheibe auf $\Delta$ ab, $\varphi(0)=L$; nach Carathéodory setzt sie sich zum Rand fort und macht $f$ dort zur Drehung um $2\pi\alpha$.
+    2. Eine irrationale Drehung verteilt jede Bahn gleichmässig auf dem Kreis (Weyl). Also ist das Zeitmittel das Mittel über den Rand, gewichtet mit dem harmonischen Mass von $L$.
+    3. $z$ ist harmonisch; sein harmonisches Mittel über $\partial\Delta$ ist der Wert in $L$ (Mittelwertsatz).
+  beispiel: |
+    Goldener Winkel: Abstand des Mittels zu $L$: $5.9\cdot10^{-4}$, $1.4\cdot10^{-4}$, $1.5\cdot10^{-5}$, $2.8\cdot10^{-6}$ bei $N=10^3,10^4,10^5,2\cdot10^5$ — etwa wie $1/N$.
+  bilder: [exp.mittelwerte]
+  einordnung: |
+    Macht die empirische „Scheibenmittel-Identität“ der Notiz zu einem bedingten Satz. Die Rate $1/N$ würde Denjoy–Koksma bei rektifizierbarem Rand erklären.
+
+fp.satz.p2_form:
+  worum: |
+    Für Basen zwischen $0$ und etwa $0.066$ springt der Turm zwischen zwei Werten. Welche Basen das sind — reell und komplex —, lässt sich mit einer einzigen Formel
+    aufschreiben. Und auf der reellen Achse wird aus dem Zweierwechsel nie ein Viererwechsel.
+  genau: |
+    Für $E_c(z)=e^{cz}$ mit 2-Zyklus $\{z_1,z_2\}$ und Parameter $s\in\mathbb C$:
+    $$u=-\frac{s}{e^s-1},\quad v=u\,e^s,\quad z_1=e^v,\ z_2=e^u,\quad c=u\,e^{-v},\quad\mu=uv=\Bigl(\frac{s}{2\sinh(s/2)}\Bigr)^2.$$
+    $|\mu|<1$ ist die Zugehörigkeit zur Region. Reelles $s>0$ gibt genau die Strecke $(0,e^{-e})$ mit $\mu\in(0,1)$: Auf der reellen Achse gibt es unter $e^{-e}$ keine Periodenverdopplung.
+  warum: |
+    1. Mit $u=cz_1$, $v=cz_2$ sagt die Zyklusgleichung $u=ce^v$, $v=ce^u$.
+    2. $s=u-v$ gibt $v=ue^s$ und $s=u(1-e^s)$, also $u=-s/(e^s-1)$; dann $c=ue^{-v}$.
+    3. Multiplikator des Zyklus: $\mu=(E\circ E)'(z_1)=c^2z_1z_2=uv=s^2e^s/(e^s-1)^2=(s/(2\sinh(s/2)))^2$.
+    4. Für reelles $s>0$ liegt $s/(2\sinh(s/2))$ in $(0,1)$; $s\to0$ gibt $c\to-e$, $b\to e^{-e}$; $s\to\infty$ gibt $b\to0$.
+  beispiel: |
+    $b=0.03$: $z_A=0.82133$, $z_B=0.05613$, $\mu=0.5669$. Probe der reellen Form $z_1\ln z_1=z_2\ln z_2$: beide Seiten $-0.16166$. Die Periodenverdopplung liegt ganz im Komplexen
+    (Wurzel der Periode-4-Komponente bei $b=0.02952-0.06451\,i$).
+  bilder: [k8_periode2]
+  einordnung: |
+    Gegenstück zum Rezept für Fixpunkte ([[fp.satz.multiplikator_rezept]]). Dieselbe Gleichung $z_1\ln z_1=z_2\ln z_2$ steuert die Turm-Integrale ([[gr.kor.turmintegral_formen]]).
+    Form der Region: [[fp.satz.p2_kein_kreis]].
+
+fp.satz.p2_kein_kreis:
+  worum: |
+    Die Region, in der der Turm zwischen zwei Werten springt, sieht fast wie ein Kreis aus, ist aber keiner. Der Grund: Die Exponentialfunktion hat keinen
+    „Mittelpunkt“, um den sich ein Kreis bilden könnte.
+  genau: |
+    $e^{cz}$ hat keinen kritischen Punkt, also kein Zentrum mit $\mu=0$: $\mu$ überlagert die punktierte Scheibe, die Komponente $W$ in der $c$-Ebene ist unbeschränkt und kein Kreis
+    (anders als $|c+1|<\tfrac14$ bei $z^2+c$). Sichtbar in der $b$-Ebene ist $V=\{0<|b|<R(\arg b)\}$, sternförmig um $0$: $R(0)=e^{-e}$, $R(\pm\pi)=0.0805281576$, $R_{\max}/R_{\min}=1.2203$,
+    Fläche $0.016396$; der beste Kreis (Mitte $-0.00674$, Radius $0.07225$) weicht bis $2.13\,\%$ ab. Bei $-0.0805$ hat der Rand einen Knick von $175.09°$.
+  warum: |
+    1. $\mu=c^2z_1z_2$ ist nie $0$, weil $z_j=e^{(\dots)}\ne0$ und $c\ne0$ — es gibt keinen „superanziehenden“ Mittelpunkt.
+    2. Literatur zur Exponentialfamilie (Baker–Rippon, Eremenko–Lyubich, Schleicher): Hyperbolische Komponenten sind einfach zusammenhängend und unbeschränkt; der Multiplikator ist eine universelle
+       Überlagerung der punktierten Scheibe.
+    3. Der Knick entsteht, wo der Rand den Schnitt des Hauptzweigs kreuzt; er erzeugt den $1/k^2$-Schwanz der Fourier-Koeffizienten von $R(\theta)$ ([[bw.satz.fourier_naht]]).
+  beispiel: |
+    Nach rechts reicht die Region bis $e^{-e}=0.0660$, nach links bis $-0.0805$ — gut 20 % weiter. Der linke Endpunkt ist unabhängig nachgerechnet auf 20 Stellen ($|\mu|=1$, $\operatorname{Im}c=\pi$).
+  bilder: [k8_periode2]
+  einordnung: |
+    Gilt für jede hyperbolische Komponente dieser Familie ([[fp.satz.exp_normalform]]). Grundlage: [[fp.satz.p2_form]].
+
+fp.satz.p2_raten:
+  worum: |
+    Tief in der Region rastet der Zweierwechsel in wenigen Schritten ein, am Rand immer langsamer, und genau an der Spitze $e^{-e}$ nur noch wie $1/\sqrt n$ — mit dem exakten Vorfaktor $\sqrt6/e$.
+  genau: |
+    Pro Exponentiation schrumpft der Fehler um $|\mu|^{1/2}$: $z_{2n}=z_1+K(1)\mu^n+O(\mu^{2n})$. An der Spitze $b=e^{-e}$: $|z_n-1/e|\sim\frac{\sqrt6}{e}n^{-1/2}$, $\frac{\sqrt6}e=0.9011169$.
+    Nahe der Spitze, $b=e^{-e}(1-t)$: $1-\mu=\frac2et+O(t^2)$ und $|z_1-z_2|=2\sqrt6\,e^{-3/2}\sqrt t+O(t)$.
+  warum: |
+    1. Innen: Koenigs für die Rückkehrabbildung $E\circ E$ mit Multiplikator $\mu$ ([[it.satz.koenigs]]).
+    2. Spitze: $E(L+h)=L-h+\tfrac e2h^2-\tfrac{e^2}6h^3+\dots$, also $E^{\circ2}(L+h)=L+h-\tfrac{e^2}6h^3+O(h^4)$. Das gibt $h_{m+1}^{-2}=h_m^{-2}+\tfrac{e^2}3+\dots$, also $|h|\sim\sqrt6/(e\sqrt n)$ mit $n=2m$.
+    3. Nahe der Spitze: Entwicklung der geschlossenen Form für kleines $s$.
+  beispiel: |
+    $\sqrt n\,|z_n-1/e|=0.901664$ bei $n=10^6$ (Grenzwert $0.901117$). Bei $t=10^{-8}$: $(1-\mu)/t=0.735759$ (Grenzwert $2/e$), $|z_1-z_2|/\sqrt t=1.093110$ (Grenzwert $2\sqrt6e^{-3/2}$).
+  einordnung: |
+    Der Fall $q=2$ von [[fp.satz.parabolisch_rand]], hier mit Konstante. Dieselbe $n^{-1/2}$-Spitze erzeugt den Exponenten $3/2$ bei den Turm-Integralen ([[gr.verm.turmintegral_rate]]).
+
+fp.satz.rechteckwelle:
+  worum: |
+    Unter $e^{-e}$ springt der Turm zwischen zwei Werten. Nimmt man eine stetige Tetration und schaut sie bei geraden Höhen immer weiter oben an, wird ihre Kurve zu einem
+    Rechteck: An genau einer Stelle muss sie den abstossenden Fixpunkt treffen, und dort bleibt sie hängen.
+  genau: |
+    Sei $0<b<e^{-e}$ und $T$ eine stetige reelle Tetration, die $L$ auf $[0,1)$ genau einmal kreuzt. Dann gibt es genau ein $x^*\in(0,1)$ mit $T(x^*)=L$, und $T(x^*+n)=L$ für alle $n$.
+    $\Omega(x)=\lim_nT(x+2n)$ ist eine 2-periodische **Rechteckwelle**: $z_A$ auf $(x^*-1,x^*)$, $z_B$ auf $(x^*,x^*+1)$. Eine stetige Grenzfunktion gibt es nicht. Fourier:
+    $c_k=\frac{i(z_A-z_B)e^{-i\pi kx^*}}{\pi k}$ für ungerades $k$, $0$ für gerades. Nur $x^*$ hängt von der gewählten Tetration ab.
+  warum: |
+    1. $E(z)=b^z$ ist fallend, $E\circ E$ wachsend mit Fixpunkten $z_B<L<z_A$. Alles über $L$ läuft unter $E\circ E$ nach $z_A$, alles darunter nach $z_B$; die einzige Trennstelle ist $L$.
+    2. $T(0)=1>L>b=T(1)$, also kreuzt $T$ den Wert $L$ (Zwischenwertsatz); und $E(L)=L$ hält $T(x^*+n)=L$ fest.
+    3. Ein stetiges 2-periodisches $\Omega$ müsste zusammenhängend zwischen zwei getrennten Becken wechseln — unmöglich. Die Fourier-Reihe ist die einer Rechteckwelle.
+  beispiel: |
+    $b=0.03$ mit linearer Startkurve: $L=0.32262$, $z_A=0.82133$, $z_B=0.05613$, $x^*=0.698331$. Gemessen ist $|c_k|\pi k=0.76519$ für $k=1,\dots,41$ — genau $|z_A-z_B|$.
+  bilder: [k8_periode2]
+  einordnung: |
+    Was aus der glatten Basiswechsel-Welle wird, wenn der Fixpunkt reell und abstossend ist ([[bw.satz.phasengesetz]]). Verwandt: [[kl.satz.basis_unter_eins]], [[gr.satz.turmintegral_grenzen]].
+    Frage: Gibt es für $0<b<e^{-e}$ eine ausgezeichnete reelle Tetration (ein ausgezeichnetes $x^*$)?
+
+fp.satz.unendliche_superwurzel:
+  worum: |
+    Der unendliche Turm $b^{b^{b^{\cdots}}}$ ordnet jeder passenden Basis $b$ einen Grenzwert $y$ zu. Kann man das umkehren — zu
+    einem gewünschten Grenzwert die Basis finden? Ja, und die Antwort ist erstaunlich einfach: $b=y^{1/y}$. Aber nur, solange $y$
+    zwischen $1/e$ und $e$ liegt. Ausserhalb liefert die Formel zwar eine Basis, doch deren Turm landet woanders.
+  genau: |
+    Die Funktion $h(b)={}^\infty b$ (Grenzwert des Turms) ist auf $[e^{-e},\eta]$ stetig und streng wachsend und nimmt jeden Wert in
+    $[1/e,e]$ genau einmal an. Ihre Umkehrung, die **unendliche Superwurzel**, ist
+    $$\sqrt[\infty]{y}_s=y^{1/y}\qquad(1/e\le y\le e).$$
+    - Für $y>e$ ist $y^{1/y}$ eine Basis unter $\eta$, aber ihr Turm konvergiert gegen den **anderen** (unteren) Fixpunkt, nicht gegen $y$.
+    - Für $0<y<1/e$ ist $y^{1/y}<e^{-e}$, und der Turm springt am Ende zwischen zwei Werten hin und her.
+  warum: |
+    1. Konvergiert der Turm gegen $y$, so ist $y$ ein Fixpunkt: $b^y=y$. Nach $b$ aufgelöst: $b=y^{1/y}$.
+    2. Welcher Fixpunkt? Der Turm läuft gegen den anziehenden, also den mit $|\lambda|\le1$. Der Multiplikator ist $\lambda=y\ln b=y\cdot\frac{\ln y}y=\ln y$,
+       also $|\ln y|\le1$, d. h. $1/e\le y\le e$.
+    3. Monotonie: $\frac{d}{dy}y^{1/y}=y^{1/y}\,\frac{1-\ln y}{y^2}$ ist positiv für $y<e$. Also ist $y\mapsto y^{1/y}$ auf $[1/e,e]$ streng wachsend,
+       von $(1/e)^e=e^{-e}$ bis $e^{1/e}=\eta$ — genau der Konvergenzbereich aus [[fp.satz.turm_reell]].
+    4. Zusammen: $y\mapsto y^{1/y}$ und $h$ sind zueinander umgekehrt.
+  beispiel: |
+    - $y=2$: $b=2^{1/2}=\sqrt2$, und tatsächlich $\sqrt2^{\sqrt2^{\cdots}}=2$.
+    - $y=4$: $b=4^{1/4}=\sqrt2$ — dieselbe Basis! Ihr Turm geht aber gegen $2$; die $4$ ist der abstossende Fixpunkt ($\lambda=\ln4>1$).
+    - $y=3$: $b=3^{1/3}=1.44225$, der Turm geht gegen $2.4780526802883\ldots$, nicht gegen $3$.
+    - $y=0.5$: $b=0.5^2=0.25$, der Turm von $0.25$ geht gegen $0.5$ (es ist $|\ln0.5|=0.69<1$).
+  bilder: [exp.superwurzel]
+  einordnung: |
+    Die Parametrisierung $b=y^{1/y}$ ist die reelle Spur der Darstellung $b=\exp(t\,e^{-t})$ mit Fixpunkt $e^t$ aus dem Shell–Thron-Satz
+    ([[fp.satz.shell_thron]]). Das Maximum von $y^{1/y}$ bei $y=e$ ist der Grund, warum $\eta$ die Grenze ist ([[gr.satz.selbstpotenz]]).
+
+fp.satz.tpid6:
+  worum: |
+    Ein Turm aus $n$ Stockwerken soll genau $n$ ergeben: ${}^nx=n$. Welche Basis braucht man? Für $n=3$ etwa $1.635$, für $n=10$ etwa
+    $1.508$, für $n=1000$ etwa $1.44468$. Die Basis nähert sich der Zahl $\eta\approx1.44467$. Diese Frage steht als Nummer 6 in der
+    Liste offener Probleme des Tetration-Forums (TPID 6); der Grenzwert ist dort bewiesen.
+  genau: |
+    Für jedes $n\ge2$ hat ${}^nx=n$ genau eine Lösung $x_n>1$. Es gilt $x_n>\eta$ und
+    $$\lim_{n\to\infty}x_n=\eta=e^{1/e}.$$
+  warum: |
+    **Genau eine Lösung.** Für $x>1$ wächst ${}^nx$ stetig und streng mit $x$; bei $x=1$ ist der Turm $1<n$, bei $x=2$ schon mindestens $n$
+    (${}^22=4$, ${}^32=16$, …). Für $0<x\le1$ bleibt jeder Turm $\le1$.
+
+    **$x_n>\eta$.** Für $1<x\le\eta$ bleibt jeder Turm unter $e$: Ist ${}^kx<e$, so ist ${}^{k+1}x=x^{{}^kx}<\eta^e=e$. Also ${}^nx<e\le n$ für
+    $n\ge3$; und ${}^2x\le\eta^\eta\approx1.70<2$. Die Basis $x_n$ muss also grösser als $\eta$ sein.
+
+    **$x_n\to\eta$.** Nimm $x=\eta+\varepsilon$. Dieser Turm konvergiert nicht ([[fp.satz.turm_reell]]), er wächst über alle Grenzen, und sobald er
+    gross ist, verdoppelt er sich mindestens bei jedem Schritt. Ab einem Stockwerk $K$ ist deshalb ${}^kx\ge k$ für alle $k\ge K$. Für diese $n$
+    reicht also schon die Basis $\eta+\varepsilon$, d. h. $x_n\le\eta+\varepsilon$. Da $\varepsilon$ beliebig klein war: $x_n\to\eta$.
+  beispiel: |
+    $x_2=1.5596\ldots$ (die Superwurzel von 2), $x_3=1.6350784746\ldots$ — Probe: $1.635^{1.635}=2.2342$, $1.635^{2.2342}=e^{2.2342\cdot0.49164}=2.999$.
+    Dann fällt die Folge: $x_5=1.5934$, $x_{10}=1.5085$, $x_{30}=1.45466$, $x_{100}=1.445673$, $x_{1000}=1.4446783$.
+  bilder: [exp.tpid6]
+  einordnung: |
+    Der Grenzwert folgt allein aus dem Konvergenzbereich des Turms. Wie **schnell** $x_n$ gegen $\eta$ geht, ist eine feinere Frage — die Antwort
+    ($x_n-\eta\approx10.49/n^2$) kommt aus dem Engpass bei $e$: [[fp.beob.tpid6_rate]].
+
+fp.beob.tpid6_rate:
+  worum: |
+    Die Basis $x_n$, deren $n$-stöckiger Turm genau $n$ ergibt, nähert sich $\eta$. Hier wird gemessen, wie schnell: Der Abstand ist fast genau
+    $10.49/n^2$. Die Konstante ist kein Zufall. Ein Turm mit Basis knapp über $\eta$ „klebt“ lange in der Nähe von $e$, bevor er davonwächst —
+    und wie lange er klebt, weiss man aus der Theorie der Engpässe.
+  genau: |
+    Mit $\delta_n=x_n-\eta$ gilt (numerisch, auf 5 Stellen)
+    $$n^2\,\delta_n\;\longrightarrow\;\frac{2\pi^2\eta}{e}=10.49067\ldots$$
+    Gemessen: $10.0499$ bei $n=100$, $10.4512$ bei $n=1000$, $10.4871$ bei $n=10^4$, $10.49057$ bei $n=3\cdot10^5$. Die Annäherung passt zu
+    $n^2\delta_n\approx K(1+\beta/n)$ mit $K=10.49089$ und $\beta\approx-3.77$.
+  warum: |
+    Eine Herleitung des Leitterms (kein vollständiger Beweis):
+    1. Für die Basis $\eta+\delta$ liegt die Kurve $y\mapsto(\eta+\delta)^y$ knapp über der Geraden $y=x$, am knappsten bei $y=e$. Mit $w=y-e$
+       ist ein Turmschritt dort ungefähr $w\mapsto w+\varepsilon+w^2/(2e)$ mit $\varepsilon=e^2\delta/\eta$.
+    2. Ein solcher Engpass braucht $N\approx\pi/\sqrt{a\varepsilon}$ Schritte mit $a=1/(2e)$ ([[br.satz.sattel_knoten]]), also
+       $$N(\delta)\approx\pi\sqrt{\frac{2\eta}{e\,\delta}}.$$
+    3. Davor und danach braucht der Turm nur wenige Schritte: von $1$ bis in die Nähe von $e$ und, nach dem Engpass, bis über $n$
+       (er wächst dann so schnell wie ein Turm, also in etwa $\log^*n$ Schritten).
+    4. Also $n\approx\pi\sqrt{2\eta/(e\delta_n)}$, nach $\delta_n$ aufgelöst: $\delta_n\approx2\pi^2\eta/(e\,n^2)$.
+
+    Die Schritte ausserhalb des Engpasses erklären die Korrektur $\beta/n$.
+  beispiel: |
+    $n=1000$: $x_{1000}=1.444678312246669$, $\eta=1.444667861009766$, Abstand $1.0451\cdot10^{-5}$, mal $n^2=10^6$ gibt $10.451$.
+    Vorhersage $10.49067/10^6=1.0491\cdot10^{-5}$ — auf 0.4 % getroffen; bei $n=3\cdot10^5$ auf 0.001 %.
+  bilder: [exp.tpid6]
+  einordnung: |
+    Dieselbe Konstante $\pi\sqrt{2\eta/e}=3.238930$ steuert das Randgesetz der Basiswechsel-Forschung ([[bw.lem.randgesetz]]). Ein Beweis mit
+    Fehlerterm müsste über gestörte Fatou-Koordinaten gehen ([[br.satz.shishikura]]). Der Grenzwert selbst: [[fp.satz.tpid6]].
+
+fp.satz.shell_thron_flaeche:
+  worum: |
+    Das Shell–Thron-Gebiet enthält alle komplexen Basen, für die der unendliche Turm einen Grenzwert hat ([[fp.satz.shell_thron]]). Wie gross ist es?
+    Andrew Robbins rechnete 2009 im Forum die Fläche aus: $8.0509\ldots$ Hier wird dieselbe Zahl auf einem zweiten, unabhängigen Weg bestätigt — über eine
+    Potenzreihe statt über ein Randintegral.
+  genau: |
+    Das Gebiet ist das Bild der Einheitsscheibe unter $b(t)=\exp(te^{-t})$. Mit $b(t)=\sum_na_nt^n$ gilt
+    $$\text{Fläche}=\pi\sum_{n\ge1}n\,a_n^2=8.0509332809395096234251953742\ldots$$
+    Die äussersten Punkte:
+    - grösster Imaginärteil: $0.8152027425+2.0166402199\,i$,
+    - grösster Realteil: $2.0477905275\pm0.8420455035\,i$,
+    - kleinster Realteil: $-0.3809797286\pm0.8997001955\,i$.
+  warum: |
+    1. **Schlicht:** $f(t)=te^{-t}$ ist auf $|t|<1$ sternförmig (der Realteil von $tf'(t)/f(t)=1-t$ ist positiv), also umkehrbar eindeutig. Ihr Bild liegt in
+       $|w|\le e<\pi$; dort ist auch $\exp$ umkehrbar eindeutig. Also ist $b$ schlicht.
+    2. **Flächensatz:** Für eine schlichte Abbildung ist die Bildfläche $\iint|b'(t)|^2\,dA$. Mit der Potenzreihe wird daraus $\pi\sum n\,a_n^2$, weil die Funktionen
+       $t^n$ auf der Scheibe orthogonal sind.
+    3. **Gegenprobe:** dasselbe als Randintegral $\tfrac12\oint\operatorname{Im}(\bar b\,db)$ — stimmt auf 30 Stellen, und mit Robbins' Zahl ebenfalls.
+    4. **Extrempunkte:** Real- und Imaginärteil sind harmonisch, ihr Maximum liegt also auf dem Rand $|t|=1$; dort sucht man die Nullstellen der Ableitung.
+  beispiel: |
+    Die Koeffizienten beginnen $1,\ 1,\ -\tfrac12,\ -\tfrac13,\ \tfrac38,\ -\tfrac1{30},\dots$; die ersten vier Glieder $\pi(1+0.5+0.333+0.563)$ geben schon $7.53$ der $8.05$.
+    Auf der reellen Achse reicht das Gebiet nur von $e^{-e}=0.066$ bis $\eta=1.445$ — die Fläche liegt grösstenteils abseits davon, bis zum Realteil $2.05$.
+  bilder: [exp.shell_thron]
+  einordnung: |
+    Antwort auf eine Frage, die im Forum 2009 und wieder 2022 gestellt wurde. Die Parametrisierung über den Multiplikator $t$ ist dieselbe wie in
+    [[fp.satz.multiplikator_rezept]]; ausserhalb liegen die Knospen ([[fp.verm.knospen]]).
+
+fp.satz.fixpunkt_summen:
+  worum: |
+    Die Fixpunkte von $e^z$ sind die Zahlen, an denen Kneser und die reguläre Iteration ansetzen. Einzeln sind sie keine schönen Zahlen — ihre Potenzsummen aber
+    sind rational.
+  genau: |
+    Mit $L_k=-W_k(-1)$:
+    $$\sum_kL_k^{-2}=-1,\quad\sum_kL_k^{-3}=-\tfrac12,\quad\sum_kL_k^{-4}=\tfrac13,\quad\sum_kL_k^{-5}=\tfrac38,\quad\sum_kL_k^{-6}=-\tfrac1{20},$$
+    allgemein $\sum_kL_k^{-m}=-[z^{m-1}]\,(e^z-1)/(e^z-z)$.
+  warum: |
+    1. $e^z-z$ ist eine ganze Funktion mit genau diesen Nullstellen; nach Hadamard ist sie bis auf $e^{\text{linear}}$ das Produkt $\prod(1-z/L_k)e^{z/L_k}$.
+    2. Logarithmisch ableiten: $(e^z-1)/(e^z-z)=c+\sum_k\bigl(\frac1{z-L_k}+\frac1{L_k}\bigr)$, bei $z=0$ ist $c=0$.
+    3. Jedes Glied in Potenzen von $z$ entwickeln und Koeffizienten vergleichen.
+  beispiel: |
+    Mit den 8000 Fixpunkten $k=-4000,\dots,3999$ ist $\sum L_k^{-3}=-0.49999999999979$ und $\sum L_k^{-5}=0.375$ auf 22 Stellen. Jay Fox fand die Werte 2007
+    umgekehrt: aus den Zahlen per Kettenbruch.
+  bilder: [exp.forum_formeln]
+  einordnung: |
+    Wie $\sum1/n^2=\pi^2/6$ aus dem Sinus-Produkt. Die Fixpunkte selbst: [[fp.satz.lambert]].
+
+fp.satz.turm_reihe_ln:
+  worum: |
+    Schreibt man den endlichen Turm $x\uparrow\uparrow n$ als Reihe in $\ln x$, so sind die ersten $n$ Glieder schon die des unendlichen Turms.
+  genau: |
+    $$x\uparrow\uparrow n=\sum_{k=0}^n\frac{(k+1)^{k-1}}{k!}(\ln x)^k+O\bigl((\ln x)^{n+1}\bigr),$$
+    und das Glied $(\ln x)^{n+1}$ weicht schon ab.
+  warum: |
+    1. Der unendliche Turm $h$ erfüllt $h=e^{uh}$ mit $u=\ln x$, der endliche $t_{k+1}=e^{ut_k}$.
+    2. Abziehen: $t_{k+1}-h=e^{uh}(e^{u(t_k-h)}-1)$ — jeder Schritt multipliziert den Fehler mit etwa $u$.
+    3. Am Anfang ist $t_1-h=e^u-h=-u^2+\dots$, nach $n$ Schritten also $-u^{n+1}+\dots$
+  beispiel: |
+    $n=2$: $x^x=e^{ue^u}=1+u+\tfrac32u^2+\tfrac53u^3+\dots$, der unendliche Turm $h=1+u+\tfrac32u^2+\tfrac83u^3+\dots$ — gleich bis $u^2$, bei $u^3$ um
+    genau $-1$ verschieden ($\tfrac53-\tfrac83$).
+  bilder: [exp.forum_formeln]
+  einordnung: |
+    Die Reihe $h$ ist Eisensteins Reihe des unendlichen Turms ([[fp.satz.turm_reell]]).
+
+fp.beob.i_turm:
+  worum: |
+    Der bekannteste unendliche Turm mit komplexer Basis: $i^{i^{i^{\cdots}}}$.
+  genau: |
+    $$i^{i^{i^{\cdots}}}=\frac{2i}\pi\,W\!\left(-\frac{i\pi}2\right)=0.43828293672703\ldots+0.36059247187139\ldots\,i.$$
+    Der Multiplikator hat Betrag $0.8915$ und dreht pro Schritt um $0.3596$ Umdrehungen — die Bahn läuft auf drei Spiralarmen ein.
+  warum: |
+    1. Ein Grenzwert $h$ muss $h=i^h$ erfüllen; Lambert W löst das ([[fp.satz.lambert]]).
+    2. Er zieht an, weil $|h\ln i|<1$ ([[fp.satz.shell_thron]]).
+  beispiel: |
+    Die ersten Glieder: $1$, $i$, $i^i=e^{-\pi/2}=0.2079$, $i^{0.2079}=0.947+0.321i$, …
+  bilder: [exp.forum_formeln]
+  einordnung: |
+    Beispiel für das Shell–Thron-Gebiet ([[fp.satz.shell_thron]]).
+
+fp.satz.nachbar_turm:
+  worum: |
+    Ein kleiner Verwandter des unendlichen Turms: unten $x$, darüber lauter $1/x$.
+  genau: |
+    $$x^{(1/x)^{(1/x)^{\cdots}}}=\frac{\ln x}{W(\ln x)},\qquad e^{-1/e}\le x\le e^e.$$
+  warum: |
+    1. Der Teil über dem untersten Glied ist ein gewöhnlicher unendlicher Turm zur Basis $1/x$; er konvergiert für $1/x\in[e^{-e},\eta]$.
+    2. Sein Wert $t$ erfüllt $t=x^{-t}$, also ist $x^t=1/t$ — das ist der gesuchte Wert, und Lambert W liefert $t$.
+  beispiel: |
+    $x=e$: $1/W(1)=1/\Omega=1.7632228343\ldots$; $x=2$: $1.55961\ldots$
+  bilder: [exp.forum_rand]
+  einordnung: |
+    Ableger von [[fp.satz.turm_reell]].
+
+fp.frage.tpid12_13:
+  worum: |
+    Kann man die Funktionen $x^{1/x}$ und „Selbst-Turmwurzel“ aus ihren Werten an den ganzen Stellen allein zurückgewinnen?
+  genau: |
+    TPID 13: Konvergiert die Newton-Interpolation von $m^{1/m}$ gegen $x^{1/x}$? TPID 12: dasselbe für $y_n$ mit $y_n\uparrow\uparrow n=n$.
+  warum: |
+    Numerisch nähert sich die Interpolation bei $x=2.5$ und $7.5$ an (Abstände $1.8\cdot10^{-5}$ und $1\cdot10^{-11}$ nach 80 Gliedern). Ein Beweis fehlt; im Forum gibt es einen
+    fast fertigen über die Mellin-Transformation.
+  beispiel: |
+    $x=7.5$: $7.5^{1/7.5}=1.30866\ldots$; die Interpolation nach 40 Gliedern liegt $3\cdot10^{-9}$ daneben.
+  bilder: [exp.forum_iteration]
+  einordnung: |
+    Verwandt mit [[fp.satz.tpid6]] und [[kl.satz.newton_reihe]].

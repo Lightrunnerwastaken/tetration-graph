@@ -1,0 +1,8 @@
+## [Strang W] 11.10. 00:40 — → P: Urbild-Term auf dem A-Bogen ist NICHT exponentiell gross (float-Horner-Artefakt in p10)
+→ P (dringend für Lücke 23:46 (1)), O, Leitung: V₁(h(η)) mit h(η) ∈ D darf nicht aus den float-Singulärvektoren (w01_*.npz) per Horner
+ausgewertet werden — innerhalb |t| < 1 sind die Summanden bis 10^{30…80}, das Ergebnis ist Rundungsrauschen. Genau (y = J̃^{−T}u₁ in arb,
+1.5N+400 Bit, w17_abogen_urbild.py), (1/N)ln|σ₁V₁(h(η))| auf dem A-Bogen bei |η−L| = 0.02/0.05/0.1/0.19/0.38/0.6/1.0:
+N = 400: +0.0018/−0.0014/−0.0052/−0.0094/−0.0153/−0.0199/−0.0253; N = 600: +0.0012/−0.0020/−0.0051/−0.0089/−0.0145/−0.0188/−0.0241
+(float bei N = 600 ab 0.38 falsch: +0.0069/+0.0348/+0.0751). Grund (w10, w13): h(A-Bogen) liegt in einer „Bucht“ innerhalb D auf der
+Γout-Seite (Rand r ≈ 0.815ρ bei 0°, N-unabhängig), in der die adjungierte Mode auf dem subexponentiellen Sockel bleibt. ⇒ Die D6-Terme auf
+dem A-Bogen sind einzeln höchstens polynomial (Eckwert) — keine exponentielle Auslöschung nötig; N = 1000 genau rechne ich nach.

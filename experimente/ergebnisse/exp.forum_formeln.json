@@ -1,0 +1,105 @@
+{
+ "id": "exp.forum_formeln",
+ "skript_hash": "386df37d2c0354ab",
+ "gelaufen": "2026-10-10 13:50",
+ "laufzeit_s": 6.5,
+ "python": "3.13.9",
+ "zusammenfassung": "Fox' rationale Fixpunktsummen folgen aus (e^z−1)/(e^z−z); die Newton-Reihe der ganzen Iterierten trifft die reguläre Tetration; x↑↑n stimmt bis (ln x)^n mit dem unendlichen Turm überein; i^i^i^… = 0.43828 + 0.36059i.",
+ "pruefungen": [
+  {
+   "name": "Fox' Zähler = −(m−1)!·[z^(m−1)] (e^z−1)/(e^z−z) für m = 2 … 11",
+   "ok": true,
+   "wert": [
+    "-1.0",
+    "-0.5",
+    "0.33333333",
+    "0.375"
+   ]
+  },
+  {
+   "name": "Σ L_k^(−m) über 8000 Fixpunkte trifft −1, −1/2, 1/3, 3/8, −1/20 bis auf den Schwanz (Fehler < Schwanzgrösse)",
+   "ok": true,
+   "wert": {
+    "2": [
+     "-0.999987334062548",
+     "-1.0",
+     "1.27e-5"
+    ],
+    "3": [
+     "-0.49999999999979",
+     "-0.5",
+     "2.1e-13"
+    ],
+    "4": [
+     "0.333333333333327",
+     "0.333333333333333",
+     "6.68e-15"
+    ],
+    "5": [
+     "0.375",
+     "0.375",
+     "3.28e-22"
+    ],
+    "6": [
+     "-0.05",
+     "-0.05",
+     "6.35e-24"
+    ]
+   }
+  },
+  {
+   "name": "Newton-Reihe der ganzen Iterierten bei h = ½ → reguläre Tetration √2 (Abstand fällt mit N)",
+   "ok": true,
+   "wert": {
+    "Ziel": "1.2436216276685218043",
+    "Abstand": {
+     "10": "0.00032",
+     "20": "5.28e-5",
+     "40": "8.3e-6",
+     "60": "2.79e-6",
+     "90": "9.37e-7"
+    }
+   }
+  },
+  {
+   "name": "x↑↑n und der unendliche Turm h(ln x) stimmen genau bis (ln x)^n überein, ab (ln x)^(n+1) nicht mehr (n = 1 … 7)",
+   "ok": true,
+   "wert": {
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 5,
+    "5": 6,
+    "6": 7,
+    "7": 8
+   }
+  },
+  {
+   "name": "i^i^i^… = (2i/π)·W(−iπ/2) = 0.4382829… + 0.3605924…i; Multiplikator |λ| < 1, Iteration konvergiert",
+   "ok": true,
+   "wert": {
+    "Wert": "(0.4382829367270321 + 0.3605924718713855j)",
+    "|λ|": "0.89151357",
+    "arg λ/2π": "0.35957073"
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "fixpunktsummen": {
+   "2": "-1.0",
+   "3": "-0.5",
+   "4": "0.333333333333333",
+   "5": "0.375",
+   "6": "-0.05"
+  },
+  "newton_abstand": {
+   "10": "0.00032",
+   "20": "5.28e-5",
+   "40": "8.3e-6",
+   "60": "2.79e-6",
+   "90": "9.37e-7"
+  },
+  "i_turm": "(0.4382829367270321116269752 + 0.3605924718713854859529405j)"
+ }
+}

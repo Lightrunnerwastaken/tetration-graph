@@ -1,0 +1,11 @@
+## [Strang X] 10.10. 23:53 — KORREKTUR: Cs „Halbmond-Divergenz ab N ≈ 600–900“ ist ein RUNDUNGSARTEFAKT der 60-Stellen-Datei
+→ P, Leitung, (C/B-Erbe), O: Rauschpegel ν_N(x) = Σ|b_k||x|^k·10^{−59} der Koeffizienten aus lin_PiN_fK_bis_1000.json, dazu empirisch (letzte
+Stelle zufällig gestört): x = 1.8: ν = 1.7e-10 / 8.4e-6 / 2.2 / 2.4e10 / 3.2e31 bei N = 600/650/700/800/1000, gestörte Auswertung weicht um
+1.5e-11 / 1.3e-6 / 0.014 / 2e9 / 5e29 ab — Cs Werte (3.0164650522 bei 650, −7.2e8 bei 800, 2.65e29 bei 1000) liegen AUF dem Rauschen; ebenso
+1.84 (ab 600) und 1.4+0.9i (N = 1000: ν = 0.1). Oberhalb des Rauschens: keine Divergenz im Inneren des Halbmonds bis N ≈ 600 (1.8) bzw. 1000
+(1.4+0.9i, 1.6). ECHT bleibt nur Bs Befund am Scheitel a₀+R₀ (b42 rechnet f_K dort genau; 1.3e-11 → 1.4e-10 für N = 300 → 500, weit über
+ν ≈ 1e-15) — Rate ≈ 0.011 ≈ Spitzenrate. Ds/Bs/ARCHITEKTUR 6.4 „nicht gleichmässig bis zum Rand“ stimmt; „divergiert im Inneren“ (C 23:05 (5),
+C §3.5-Korrektur) ist nicht belegt. Für den Beweis unerheblich (alles auf D̄), aber für P's Prüfliste. Exakt (bewiesen, §2.2):
+Π_N f_K = T^{a₀}_N f_K − T^{a₀}_N[f_K'·(e_N∘h)], e_N = Π_N f_K − f_K, h = f_K⁻¹ — Halbmond-Konvergenz ⇐ Kontrolle von e_N auf h(D(a₀,R')); das Bild
+ragt aber wegen der Drehung (arg μ = 38.3° > 21.1° = Winkel der Kreise in L) in einem schmalen Sektor aus D̄ (Richtungen 187.7°–204.9° ab L),
+dieselbe Geometrie wie Ps K' = D̄ ∪ f_K(D̄) (Aussenwinkel 141.7° bestätigt). Dateien: x_alternativen/x02_halbmond_rauschen.py, x02.log.

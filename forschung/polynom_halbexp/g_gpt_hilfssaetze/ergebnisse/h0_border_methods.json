@@ -1,0 +1,27 @@
+{
+  "status": "method diagnostics, not a separate mathematical certificate",
+  "rejected_float64_probe": {
+    "source": "archiv/h0_increment_probe_float_verworfen.py",
+    "result": "Direct float64 evaluation of the inverse's last row in the bay produced spurious huge increments (about 5.20e57 at N=1000).",
+    "interpretation": "Catastrophic cancellation. These values were rejected; the final bay results use high-precision arb solves and a separate precision comparison. Float64 evaluation at L alone did not reveal this error."
+  },
+  "failed_checked_LU_probe": {
+    "N": 200,
+    "bits": 900,
+    "algorithm": "lu",
+    "result": "ZeroDivisionError: singular matrix in solve()",
+    "interpretation": "Unsuccessful interval elimination at this precision; NOT a claim that the exact matrix is singular. Checked preconditioned solves on the same exact model subsequently succeeded."
+  },
+  "successful_small_LU_probe": {
+    "N": 60,
+    "bits": 800,
+    "algorithm": "lu",
+    "result": "finite enclosures for both the last column and last row"
+  },
+  "certificate_methods": {
+    "N200_N600": "two checked default arb_mat.solve calls; saved data retained",
+    "N800_N1000": "one checked arb_mat.inv reused for the last row and last column",
+    "whole_circle": "complete finite Taylor polynomial, no quadrature or remainder truncation"
+  },
+  "intentional_checkpoints": "The first large loop was stopped after saving N=600 to avoid computing its expensive preconditioner twice. The second loop was stopped after saving N=800 so that N=1000 could also certify the full vector G with the same checked inverse."
+}

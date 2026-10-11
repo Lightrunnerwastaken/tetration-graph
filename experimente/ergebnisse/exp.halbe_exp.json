@@ -1,0 +1,49 @@
+{
+ "id": "exp.halbe_exp",
+ "skript_hash": "29e6a728b4ab5e41",
+ "gelaufen": "2026-10-10 13:52",
+ "laufzeit_s": 1.5,
+ "python": "3.13.9",
+ "zusammenfassung": "f = exp^[1/2] über Kneser: f(f(x)) = eˣ auf 1e-28, f(0) = 0.498563287941, f(1) = 1.64635423375, Nullstelle -0.696024740886.",
+ "pruefungen": [
+  {
+   "name": "f(f(x)) = e^x an 7 Stellen in [−1.5, 3] (relativ)",
+   "ok": true,
+   "wert": "1.79e-31"
+  },
+  {
+   "name": "f(0) = T(−½) = ln f(1), f(1) = T(½) = 1.6463542337…",
+   "ok": true,
+   "wert": {
+    "f(0)": "0.49856328794111443468",
+    "f(1)": "1.646354233751194581"
+   }
+  },
+  {
+   "name": "einzige reelle Nullstelle von f bei x = T(−3/2) = −0.6960247…",
+   "ok": true,
+   "wert": "-0.69602474088608417173"
+  },
+  {
+   "name": "T(−5/2) = −0.36237… + iπ (Ort der Singularität von f über der Achse)",
+   "ok": true,
+   "wert": "(-0.362370072029385 + 3.14159265358979j)"
+  },
+  {
+   "name": "ln f(x)/ln x wächst entlang x = T(2), T(3), T(4) unbeschränkt (schneller als jedes Polynom)",
+   "ok": true,
+   "wert": {
+    "2": "1.90857",
+    "3": "11.8195",
+    "4": "1.61239e+71"
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "f0": "0.4985632879411144346796191",
+  "f1": "1.646354233751194580971924",
+  "nullstelle": "-0.6960247408860841717329609",
+  "T(-2.5)": "(-0.36237007202938499222 + 3.1415926535897932385j)"
+ }
+}

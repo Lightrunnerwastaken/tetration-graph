@@ -1,0 +1,198 @@
+{
+ "id": "exp.parameterraum",
+ "skript_hash": "1581d0a7dce5823c",
+ "gelaufen": "2026-10-08 20:40",
+ "laufzeit_s": 110.1,
+ "python": "3.13.9",
+ "zusammenfassung": "Periode 1 genau für |t| < 1 (0 Gegenbeispiele in beide Richtungen auf 520×520 Gitter); reelle Achse 2/1/Flucht; Basis i wie in der Notiz; Knospen-Drehzahl p/q in 17/17; parabolische Exponenten q=2: 0.501, q=3: 0.324.",
+ "pruefungen": [
+  {
+   "name": "t ↦ exp(t e^{−t}) auf |t| < 0.95 umkehrbar durch −W_0(−Log b) (4000 Zufallspunkte)",
+   "ok": true,
+   "wert": "4.0e-15"
+  },
+  {
+   "name": "Gegenbeispielsuche: alle 97618 Gitterbasen mit |t| < 0.97 haben Periode 1",
+   "ok": true,
+   "wert": "0 Gegenbeispiele"
+  },
+  {
+   "name": "Umkehrung: keine Gitterbasis mit |t| > 1.02 konvergiert (anziehender Fixpunkt nur auf dem Hauptzweig)",
+   "ok": true,
+   "wert": "0 von 145606"
+  },
+  {
+   "name": "reelle Achse: Periode 2 auf (0, e^{−e}), 1 auf (e^{−e}, η), Flucht über η",
+   "ok": true,
+   "wert": {
+    "(0, e^-e)": [
+     2
+    ],
+    "(e^-e, eta)": [
+     1
+    ],
+    "(eta, 4)": [
+     -1
+    ]
+   }
+  },
+  {
+   "name": "Basis i: Fixpunkt, Multiplikator, |λ|, arg λ wie in der Notiz (12 Stellen)",
+   "ok": true,
+   "wert": "2.2e-10"
+  },
+  {
+   "name": "Spirale: (z_{n+1} − L)/(z_n − L) → λ (Schrumpfung |λ|, Drehung arg λ je Schritt)",
+   "ok": true,
+   "wert": "3.4e-08 bei n = 170"
+  },
+  {
+   "name": "Knospen p/q (q ≤ 7): q-Zyklus umläuft den Fixpunkt mit Drehzahl p/q",
+   "ok": true,
+   "wert": "17/17"
+  },
+  {
+   "name": "parabolischer Rand: |z_n − L| ≈ C n^{−1/q} für q = 2 (b = e^{−e}) und q = 3 (Exponent ± 0.05)",
+   "ok": true,
+   "wert": {
+    "2": 0.5011,
+    "3": 0.3237
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "perioden_anteile": {
+   "-1": 29187,
+   "0": 22723,
+   "1": 109624,
+   "2": 240,
+   "3": 37864,
+   "4": 28564,
+   "5": 14544,
+   "6": 4454,
+   "7": 6890,
+   "8": 5814,
+   "9": 3308,
+   "10": 3012,
+   "11": 1926,
+   "12": 2250
+  },
+  "knospen": [
+   {
+    "p": 1,
+    "q": 2,
+    "geschlossen": true,
+    "drehzahl": 1
+   },
+   {
+    "p": 1,
+    "q": 3,
+    "geschlossen": true,
+    "drehzahl": 1
+   },
+   {
+    "p": 2,
+    "q": 3,
+    "geschlossen": true,
+    "drehzahl": 2
+   },
+   {
+    "p": 1,
+    "q": 4,
+    "geschlossen": true,
+    "drehzahl": 1
+   },
+   {
+    "p": 3,
+    "q": 4,
+    "geschlossen": true,
+    "drehzahl": 3
+   },
+   {
+    "p": 1,
+    "q": 5,
+    "geschlossen": true,
+    "drehzahl": 1
+   },
+   {
+    "p": 2,
+    "q": 5,
+    "geschlossen": true,
+    "drehzahl": 2
+   },
+   {
+    "p": 3,
+    "q": 5,
+    "geschlossen": true,
+    "drehzahl": 3
+   },
+   {
+    "p": 4,
+    "q": 5,
+    "geschlossen": true,
+    "drehzahl": 4
+   },
+   {
+    "p": 1,
+    "q": 6,
+    "geschlossen": true,
+    "drehzahl": 1
+   },
+   {
+    "p": 5,
+    "q": 6,
+    "geschlossen": true,
+    "drehzahl": 5
+   },
+   {
+    "p": 1,
+    "q": 7,
+    "geschlossen": true,
+    "drehzahl": 1
+   },
+   {
+    "p": 2,
+    "q": 7,
+    "geschlossen": true,
+    "drehzahl": 2
+   },
+   {
+    "p": 3,
+    "q": 7,
+    "geschlossen": true,
+    "drehzahl": 3
+   },
+   {
+    "p": 4,
+    "q": 7,
+    "geschlossen": true,
+    "drehzahl": 4
+   },
+   {
+    "p": 5,
+    "q": 7,
+    "geschlossen": true,
+    "drehzahl": 5
+   },
+   {
+    "p": 6,
+    "q": 7,
+    "geschlossen": true,
+    "drehzahl": 6
+   }
+  ],
+  "exponenten": {
+   "2": 0.501055576343652,
+   "3": 0.3236664278146992
+  },
+  "basis_i": {
+   "L": "(0.4382829367270321+0.3605924718713855j)",
+   "lam": "(-0.5664173302854644+0.6884532271077021j)"
+  },
+  "gitter": [
+   520,
+   520
+  ]
+ }
+}

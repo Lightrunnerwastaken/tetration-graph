@@ -1,0 +1,110 @@
+{
+ "id": "exp.ln_basis",
+ "skript_hash": "7c85ebd32d44af85",
+ "gelaufen": "2026-10-10 13:48",
+ "laufzeit_s": 3.8,
+ "python": "3.13.9",
+ "zusammenfassung": "ln b = T′(0)/T′(−1) = slog′(0)/slog′(1) und die Formen zweiter/dritter Ordnung an Kneser b = 2, e, 10 bestätigt, auch an einer gestörten Lösung; b₇ ⇔ Wendepunkt bei −1; Basisableitung: Summenformel ganzer Höhen und die lineare Differenzengleichung bei gebrochener Höhe bestätigt.",
+ "pruefungen": [
+  {
+   "name": "ln b = T'(0)/T'(−1) = slog'(0)/slog'(1) (Kneser, b = 2, e, 10)",
+   "ok": true,
+   "wert": "5.55e-33"
+  },
+  {
+   "name": "ln b = (T''(0) − T'(0)²)/T''(−1) und (ln b)² = slog''(0)/(slog'(1) + slog''(1))",
+   "ok": true,
+   "wert": "1.09e-29"
+  },
+  {
+   "name": "(ln T)'''(0) = ln b · T'''(−1)",
+   "ok": true,
+   "wert": "6.47e-32"
+  },
+  {
+   "name": "gestörte Lösung T(x + 0.05 sin 2πx): T~'(0) ≠ T'(0), aber T~'(0)/T~'(−1) = 1 = ln e",
+   "ok": true,
+   "wert": {
+    "T~'(0)": "1.43475618027",
+    "Verhältnis": "1.0"
+   }
+  },
+  {
+   "name": "bei b₇ = 10.2210634157814… (TPID 7) hat T einen Wendepunkt genau bei −1",
+   "ok": true,
+   "wert": "-8.09e-30"
+  },
+  {
+   "name": "∂_b(b↑↑n) = Σ T(k)(ln b)^(n−k−1)∏T(j)/b gleich der Rekursion (4 Basen, n = 1…4)",
+   "ok": true,
+   "wert": "2.3e-41"
+  },
+  {
+   "name": "D(x+1) = ln b·T(x+1)·D(x) + T(x+1)T(x)/b und D(0) = 0 (Kneser b = 2, e; x = −½, ¼, ½)",
+   "ok": true,
+   "wert": "2.33e-30"
+  },
+  {
+   "name": "u = D/T′ hat den Zuwachs T(x)/(b ln b T′(x))",
+   "ok": true,
+   "wert": "1.8e-30"
+  },
+  {
+   "name": "∂_b slog: G(0) = G(1) = 0, G(b^y) = G(y) − y slog'(y)/(b ln b), G(b) = −slog'(b) (b = 2)",
+   "ok": true,
+   "wert": "9.2e-29"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "ableitungen": {
+   "2": {
+    "T'(0)": "0.889364954620976",
+    "T'(-1)": "1.28308240957212",
+    "slog'(0)": "0.779373166165903",
+    "slog'(1)": "1.12439780182948",
+    "T''(-1)": "-1.11609330064"
+   },
+   "exp(1)": {
+    "T'(0)": "1.09176735125832",
+    "T'(-1)": "1.09176735125832",
+    "slog'(0)": "0.915946056499533",
+    "slog'(1)": "0.915946056499533",
+    "T''(-1)": "-0.64898952347"
+   },
+   "10": {
+    "T'(0)": "1.68428902795601",
+    "T'(-1)": "0.731477430771489",
+    "slog'(0)": "1.36709617813539",
+    "slog'(1)": "0.593722326395227",
+    "T''(-1)": "-0.00464760722514"
+   }
+  },
+  "basisableitung": {
+   "2.0": {
+    "-0.5": "-0.0902649029348",
+    "0.25": "0.119527833738",
+    "0.5": "0.306074595216",
+    "1.25": "1.62395403695",
+    "1.5": "2.58808458078",
+    "0.0": "0.0"
+   },
+   "2.71828": {
+    "-0.5": "-0.0465891527773",
+    "0.25": "0.0786763762915",
+    "0.5": "0.225257529973",
+    "1.25": "2.02170854465",
+    "1.5": "4.3108252234",
+    "0.0": "0.0"
+   }
+  },
+  "G_b2": [
+   "0.0",
+   "8.49649019271e-51",
+   "0.0920407631513",
+   "-0.277585803524",
+   "-0.811081566343"
+  ],
+  "T''(-1) bei b7": "-8.0938e-30"
+ }
+}

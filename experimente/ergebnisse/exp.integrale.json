@@ -1,0 +1,95 @@
+{
+ "id": "exp.integrale",
+ "skript_hash": "8b4cabde1cc85fb7",
+ "gelaufen": "2026-10-08 20:38",
+ "laufzeit_s": 3.2,
+ "python": "3.13.9",
+ "zusammenfassung": "Kneser e: ∫₀¹T = 1.714521958890620488165975, ∫₁ᵉ slog = 1.0037598695684247472, ∫₋₁⁰T = 0.49921818282999133973; alle Identitäten auf ≤ 1e-28 (Produktform 1e-25). Regulär √2: ∫₀¹T = 1.2315849732804049508. PSLQ ohne Relation.",
+ "pruefungen": [
+  {
+   "name": "Kneser e: Quadratur stabil (40 vs 30 Knoten)",
+   "ok": true,
+   "wert": "6.11e-34"
+  },
+  {
+   "name": "Kneser e: ∫_0^1 T + ∫_1^a A = a",
+   "ok": true,
+   "wert": "3.1e-33"
+  },
+  {
+   "name": "Kneser e: ∫_-1^0 T = −∫_0^1 A",
+   "ok": true,
+   "wert": "1.93e-36"
+  },
+  {
+   "name": "Kneser e: ∫_0^1 T = 1 − ln a·∫_0^1 a^u A(u) du",
+   "ok": true,
+   "wert": "1.12e-33"
+  },
+  {
+   "name": "Kneser e: ∫_-1^0 T'(u)T(u+1) du = (e − 1)/ln e",
+   "ok": true,
+   "wert": "2.38e-34"
+  },
+  {
+   "name": "regulär √2: Quadratur stabil (40 vs 30 Knoten)",
+   "ok": true,
+   "wert": "8.72e-35"
+  },
+  {
+   "name": "regulär √2: ∫_0^1 T + ∫_1^a A = a",
+   "ok": true,
+   "wert": "6.01e-36"
+  },
+  {
+   "name": "regulär √2: ∫_-1^0 T = −∫_0^1 A",
+   "ok": true,
+   "wert": "1.17e-35"
+  },
+  {
+   "name": "regulär √2: ∫_0^1 T = 1 − ln a·∫_0^1 a^u A(u) du",
+   "ok": true,
+   "wert": "5.8e-36"
+  },
+  {
+   "name": "PSLQ zu grob (Koeff. ≤ 1e5 bei 30 Stellen) liefert nur eine Scheinrelation (Rest gross bei 40 Stellen)",
+   "ok": true,
+   "wert": "2.34e-23"
+  },
+  {
+   "name": "PSLQ (38 Stellen, Toleranz 1e-31, Koeff. ≤ 1e3): keine echte Relation von ∫_0^1 T_e zu 1, e, e², π, γ, ln 2, Re L, Im L",
+   "ok": true,
+   "wert": "keine"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "kneser_e": {
+   "int_T_0_1": "1.71452195889062048816597476207",
+   "int_A_1_a": "1.00375986956842474719431270928",
+   "int_T_m1_0": "0.499218182829991339728613653584",
+   "int_A_0_1": "-0.499218182829991339728613653584",
+   "int_auA": "-0.714521958890620488165974762073"
+  },
+  "regulaer_sqrt2": {
+   "int_T_0_1": "1.23158497328040495081236832178",
+   "int_A_1_a": "0.18262858909269009798932040243",
+   "int_T_m1_0": "0.587301239978940534260047915909",
+   "int_A_0_1": "-0.587301239978940534260047915909",
+   "int_auA": "-0.668212984992086637338307295062"
+  },
+  "produkt_integral_e": "1.71828182845904523536028747135",
+  "pslq_1e3": null,
+  "pslq_1e5_schein": [
+   35,
+   228,
+   -98,
+   102,
+   -158,
+   -1,
+   85,
+   -127,
+   -222
+  ]
+ }
+}

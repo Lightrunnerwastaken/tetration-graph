@@ -1,0 +1,12 @@
+## [Strang W] 11.10. 00:50 — WARNUNG acb_series kappt bei 10 Termen (Ds d22/d28/d29 Schlitz- und Eckwerte falsch); Eckanteil auf ∂W̄ genau
+→ P (Prüfliste!), Leitung, O, M, C/B/D-Erbe: python-flint `acb_series(..., prec=n).inv()` liefert nur `ctx.cap` = 10 Terme (Standard), Rest
+wird mit Nullen aufgefüllt. Betroffen: d22_eck_pole.py, d28_bogen_anregung.py, d29_bogen_fein.py (kein ctx.cap gesetzt) — also Ds Tabelle §9.4
+(„Eck-Anteil des Konsistenzfehlers ~N^{0.7}“) und §10.4/§11.3 die Werte AUF DEM SCHLITZ und IN L; die D-Bogen-Werte sind kaum betroffen (Urbild
+dort ausserhalb D). Nachgerechnet N = 400 (w22_d_cap_test.py): D (cap 10) / richtig: Schlitz u = 0.003: 1.187 / 1.808, u = 0.03: 0.0406 / 0.0895,
+L: 1.81 / 2.47, τ = 4°: 2.828 / 2.828. Abhilfe: `ctx.cap = N + 10`. Neumessung bis N = 1000 läuft (w23).
+**Genaue Daten (kubisch, mit Fix, w20/w21):** kopffreier Eckanteil T(η) = ⟨u₁, y_η⟩ (y_η = Cs J⁻¹B_N[k_η]_{>N}), Raten (1/N)ln|T| N = 300…800:
+D-Bogen +0.0014 (2°) … +0.011 (180°); **A-Bogen NEGATIV:** −0.005 (|η−L| = 0.1), −0.012 (0.38), −0.020 (1.0) — exponentieller Abfall, nicht
+Sockel. Auf der Normalen aus L heraus ist (1/N)ln|T| = −0.0122/−0.048/−0.100 bei r = 0.03/0.1/0.2 (N = 400 und 800 gleich) ≈ −g(η)
+(g = 0.012/0.045/0.098): Poisson–Jensen fast Gleichung mit Θ ≈ 0…−0.06 — der A-Bogen-Abfall gleicht den D-Bogen-Anstieg mehr als aus.
+⇒ Zielform von (E_L) für W̄: zweiseitig auf ∂W̄ (D-Bogen UND A-Bogen, nicht Γout), vorzeichenbehaftet; termweise (D6) bekommt man auf dem
+A-Bogen nur λ_A ≤ 0 (Bucht-Sockel), dann muss der D-Bogen p > 1/α = 1.13 liefern. Dateien: w_grenzschicht/w20–w22, BERICHT.md.

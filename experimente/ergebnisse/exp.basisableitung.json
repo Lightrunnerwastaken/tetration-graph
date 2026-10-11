@@ -1,0 +1,56 @@
+{
+ "id": "exp.basisableitung",
+ "skript_hash": "35b98ec8780d25f4",
+ "gelaufen": "2026-10-08 20:38",
+ "laufzeit_s": 0.7,
+ "python": "3.13.9",
+ "zusammenfassung": "Ableitungsrekursion und h'(a)-Formel auf ≤ 1e-35 bestätigt; (e − h)/√(2e³(η−a)/η) = 0.999998383423 bei η−a = 1e-12; nächste Ordnung ≈ -1.61658·√(η−a).",
+ "pruefungen": [
+  {
+   "name": "Rekursion für d/da (a↑↑n) = numerische Ableitung (relativ)",
+   "ok": true,
+   "wert": "7.34e-50"
+  },
+  {
+   "name": "Beispiel d/da a^a = a^a (1 + ln a) bei a = 2: 4(1 + ln 2)",
+   "ok": true,
+   "wert": "6.77258872223978"
+  },
+  {
+   "name": "h'(a) = h²/(a(1 − h ln a)) am unendlichen Turm (5 Basen, relativ)",
+   "ok": true,
+   "wert": "2.05e-50"
+  },
+  {
+   "name": "Wurzelgesetz: (e − h(a)) / √(2e³(η−a)/η) → 1",
+   "ok": true,
+   "wert": [
+    "0.9999838345",
+    "0.999994888",
+    "0.9999983834"
+   ]
+  },
+  {
+   "name": "Abweichung vom Wurzelgesetz fällt wie √(η − a) (nächste Ordnung)",
+   "ok": true,
+   "wert": "-1.6165766"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "wurzel_quotient": [
+   "0.861025446584",
+   "0.951382873878",
+   "0.98409304821",
+   "0.994914091884",
+   "0.998386046201",
+   "0.999489055596",
+   "0.999838368371",
+   "0.999948881906",
+   "0.999983834471",
+   "0.999994887954",
+   "0.999998383423"
+  ],
+  "naechste_ordnung": "-1.616576572"
+ }
+}

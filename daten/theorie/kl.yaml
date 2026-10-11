@@ -1,0 +1,717 @@
+# Theorie-Blöcke für das Gebiet Lösungsklassen (kl), Etappe 2: Kapitel 5 (Stränge kl.regulaer, kl.bruch, kl.zwei_abel, kl.eta).
+# Der Strang kl.gleiches_L (Kapitel 7) steht am Ende der Datei (Etappe 3).
+
+kl.satz.regulaer:
+  worum: |
+    Unter $\eta$ läuft jeder Turm in einen anziehenden Fixpunkt $a$. Dort ist jeder Schritt fast eine Streckung um $\lambda$, und in der
+    Koenigs-Koordinate sogar exakt. Also macht man dort den halben Schritt als Streckung um $\sqrt\lambda$ und rechnet zurück. Das
+    ist die **reguläre Tetration** — die natürliche Lösung unter $\eta$.
+  genau: |
+    Sei $1<b<\eta$, $a$ der untere Fixpunkt von $b^x$, $\lambda=a\ln b\in(0,1)$ und $\sigma$ die Koenigs-Funktion an $a$. Dann ist
+    $$T^{\mathrm{reg}}(x)=\sigma^{-1}\bigl(\lambda^{x}\,\sigma(1)\bigr)$$
+    (nach links mit $\log_b$ fortgesetzt) eine reell-analytische, streng wachsende Tetration auf $(-2,\infty)$ mit $T(x)\to a$ für $x\to\infty$. Sie ist die
+    einzige, deren Bruchschritte am Fixpunkt $a$ holomorph sind. Im Komplexen ist sie periodisch mit Periode $2\pi i/\ln\lambda$.
+  warum: |
+    1. Der Turm $1,b,b^b,\dots$ wächst gegen $a$, also ist $\sigma(1)$ erklärt (über Vorwärtsiteration bis nahe $a$) und negativ, weil $1<a$.
+    2. $\lambda^x\sigma(1)$ ist reell und geht für $x\to\infty$ gegen $0$, also $T(x)\to\sigma^{-1}(0)=a$.
+    3. Gleichung: $\sigma(b^{T(x)})=\lambda\,\sigma(T(x))=\lambda^{x+1}\sigma(1)=\sigma(T(x+1))$, also $T(x+1)=b^{T(x)}$; und $T(0)=\sigma^{-1}(\sigma(1))=1$.
+    4. Eindeutigkeit der Bruchschritte: [[it.satz.vertauschbar]]. Periode: $\lambda^{x+2\pi i/\ln\lambda}=\lambda^x$ ([[fg.satz.schroeder_abel]]).
+  beispiel: |
+    Basis $\sqrt2$, $a=2$, $\lambda=\ln2$: $T(\tfrac12)=1.24362$, $T(-\tfrac12)=0.62910$, $T(5)=1.89271$. Das Leitglied sagt $T(5)-2\approx\sigma(1)\lambda^5=-0.1011$;
+    tatsächlich $-0.1073$ — der Rest kommt von höheren Gliedern ([[kl.satz.koenigs_spektral]]). In senkrechter Richtung wiederholt sich die Funktion alle $17.14$ Einheiten.
+  bilder: [k0_halbe_hoehe]
+  einordnung: |
+    Rechenwege: [[kl.satz.grenzwertformel]] (ohne Reihen) und [[kl.satz.koenigs_spektral]] (als Reihe). Am oberen Fixpunkt gibt es eine zweite reguläre
+    Konstruktion ([[kl.satz.vier_sqrt2]]); der Unterschied ist winzig, aber nicht null ([[kl.beob.zwei_abel]]). Für $0<b<1$ geht es nicht reell ([[kl.satz.basis_unter_eins]]).
+
+kl.satz.vier_sqrt2:
+  worum: |
+    Zur Basis $\sqrt2$ gibt es zwei Fixpunkte, $2$ und $4$. An jedem kann man reguläre Superfunktionen bauen, auf jeder Seite eine.
+    Das gibt vier Lösungen der Gleichung — aber nur eine davon ist die Tetration.
+  genau: |
+    Es gibt vier reelle reguläre Superexponentiale zu $\sqrt2$: zwei am Fixpunkt $2$ (von unten und von oben kommend), zwei am Fixpunkt $4$ (zwischen $2$
+    und $4$ sowie über $4$). Die beiden an $4$ sind ganz, die an $2$ in einer rechten Halbebene holomorph; alle sind in imaginärer Richtung periodisch.
+    Nur das wachsende am Fixpunkt $2$ kann $F(0)=1$ erfüllen.
+  warum: |
+    Am Fixpunkt $2$ ($\lambda=\ln2<1$, anziehend) ist $F(x)=\sigma_2^{-1}(\lambda^x c)$; das Vorzeichen von $c$ entscheidet die Seite. Am Fixpunkt $4$
+    ($\lambda=2\ln2>1$, abstossend) ist $\sigma_4^{-1}$ ganz (Poincaré-Funktion), und $F(x)=\sigma_4^{-1}(\lambda^xc)$ ist ganz. Den Wert $1$ erreicht nur die
+    Lösung, die von unten an $2$ heranläuft — die anderen bleiben zwischen $2$ und $4$ oder über $4$.
+  beispiel: |
+    Im Bild liegen die Lösung von oben an $2$ und die Lösung von unten an $4$ (beide zwischen $2$ und $4$) nach Verschieben genau übereinander —
+    sie unterscheiden sich nur um eine periodische Funktion der Grösse $4\cdot10^{-25}$.
+  bilder: [k5_vier]
+  einordnung: |
+    Quelle: Kouznetsov–Trappmann. Die winzige Differenz der beiden mittleren Lösungen ist [[kl.beob.zwei_abel]]. Ganze Superfunktionen ohne die
+    Normierung $F(0)=1$ widersprechen [[fg.kor.keine_ganze_tetration]] nicht.
+
+kl.satz.basis_unter_eins:
+  worum: |
+    Für Basen zwischen $0$ und $1$ gibt es auch einen anziehenden Fixpunkt — aber der Turm springt um ihn herum, statt von einer Seite
+    heranzulaufen. Eine halbe Streckung um einen **negativen** Faktor ist keine reelle Zahl, deshalb liefert die reguläre Konstruktion dort nichts Reelles.
+  genau: |
+    Für $0<b<1$ hat der reelle Fixpunkt den Multiplikator $\lambda=a\ln b<0$. Die reguläre Konstruktion $\sigma^{-1}(\lambda^x\sigma(1))$ ist für nichtganze $x$ nicht reell.
+  warum: |
+    $\lambda<0$ heisst $\lambda^x=|\lambda|^x\,e^{i\pi x}$, und das ist für $x\notin\mathbb Z$ nicht reell. $\sigma^{-1}$ bildet reelle Zahlen nahe $0$ auf reelle ab und ist dort
+    umkehrbar, also ist auch $\sigma^{-1}(\lambda^x\sigma(1))$ nicht reell.
+  beispiel: |
+    $b=0.5$: Fixpunkt $a=0.64119$, $\lambda=-0.44444$. Ein halber Schritt wäre die Streckung um $\lambda^{1/2}=0.667\,i$ — eine Drehung ins Komplexe.
+  einordnung: |
+    Unter $e^{-e}$ hat der 2-Zyklus einen positiven Multiplikator; dort gibt es stetige reelle Tetrationen, aber ihre gerade Phase wird zur
+    Rechteckwelle ([[fp.satz.rechteckwelle]]). Das Vorzeichenspiel der Ableitung: [[gr.satz.vorzeichen]].
+
+kl.satz.grenzwertformel:
+  worum: |
+    Man kann die reguläre Tetration ohne Reihen ausrechnen: viele Schritte zum Fixpunkt gehen, dort den Bruchschritt als Streckung
+    machen und genauso viele Schritte mit dem Logarithmus zurückgehen.
+  genau: |
+    $$T^{\mathrm{reg}}(x)=\lim_{n\to\infty}\log_b^{\circ n}\Bigl(a+\lambda^{x}\bigl(b\uparrow\uparrow n-a\bigr)\Bigr),$$
+    und der Fehler fällt wie $\lambda^n$.
+  warum: |
+    1. Nach $n$ Schritten ist $b\uparrow\uparrow n-a\approx\sigma(1)\lambda^n$ — klein.
+    2. Für kleine Abstände ist $\sigma(a+w)\approx w$, also $a+\lambda^x(b\uparrow\uparrow n-a)\approx\sigma^{-1}(\lambda^{x+n}\sigma(1))=T(x+n)$, mit einem Fehler der Grösse $\lambda^{2n}$.
+    3. $n$-mal $\log_b$ führt von $T(x+n)$ zu $T(x)$; das verstärkt den Fehler höchstens um $\lambda^{-n}$. Bleibt ein Fehler der Grösse $\lambda^n$.
+  beispiel: |
+    Basis $\sqrt2$, $x=\tfrac12$: Fehler $4.3\cdot10^{-5}$ bei $n=20$, $1.8\cdot10^{-11}$ bei $n=60$, $5\cdot10^{-21}$ bei $n=120$. Danach wird es mit 50 Stellen
+    Rechengenauigkeit wieder schlechter, weil der Rückweg auch Rundungsfehler um $\lambda^{-n}$ verstärkt — am besten ist $n\approx157$.
+  einordnung: |
+    Die Formel ist die einfachste Rechenvorschrift für [[kl.satz.regulaer]]. Sie zeigt, warum die Konvergenz gegen einen Fixpunkt Bruchhöhen
+    erlaubt — genau die Idee „der Turm konvergiert, also kann man ihn fraktional fortsetzen“.
+
+kl.satz.bruchsumme:
+  worum: |
+    „Die Summe der ersten anderthalb Turmstufen“ — das klingt sinnlos, bekommt aber einen genauen Sinn: Weil die Stufen sich $a$ nähern,
+    darf man weit hinten jede Stufe durch $a$ ersetzen und genau „eine halbe Stufe $a$“ dazuzählen.
+  genau: |
+    Für $1<b<\eta$ und eine Tetration mit $T(k)\to a$:
+    $$\sum_{k=0}^{x-1}T(k):=x\,a+\sum_{k=0}^{\infty}\bigl(T(k)-T(k+x)\bigr).$$
+    Das konvergiert, erfüllt $S(x+1)-S(x)=T(x)$, $S(1)=1$, $S(2)=1+b$, und ist die einzige Fortsetzung der Teilsummen nach den Regeln von Müller–Schleicher.
+  warum: |
+    1. Konvergenz: $T(k)-T(k+x)$ ist von der Grösse $\lambda^k$ — eine geometrische Reihe.
+    2. Teleskop: In $S(x+1)-S(x)=a+\sum_k\bigl(T(k+x)-T(k+x+1)\bigr)$ heben sich alle Glieder bis auf $T(x)-\lim T=T(x)-a$ weg; mit dem $a$ davor bleibt $T(x)$.
+    3. Für ganze $x=n$ ergibt dieselbe Rechnung die gewöhnliche Summe $T(0)+\dots+T(n-1)$.
+    4. Eindeutigkeit: Müller und Schleicher verlangen, dass sich die Summe weit hinten wie eine Summe konstanter Glieder verhält; dann bleibt keine periodische Freiheit.
+  beispiel: |
+    Basis $\sqrt2$, reguläre Tetration: $S(\tfrac12)=0.4277749202\ldots$; Probe $S(\tfrac32)-S(\tfrac12)=T(\tfrac12)=1.24362$ auf $10^{-30}$.
+  bilder: [exp.bruchsummen]
+  einordnung: |
+    Die Summe ist eine Lambert-Reihe in der Spektraldarstellung ([[kl.satz.koenigs_spektral]]), führt zur Ableitungsformel mit Bruchprodukt
+    ([[kl.satz.bruchprodukt]]) und bei $\eta$ zur Digamma-Funktion ([[kl.satz.eta_digamma]]). Über $\eta$ funktioniert sie für Kehrwerte ([[gr.satz.kehrwert_turmsumme]])
+    und für den Superlogarithmus ([[kn.satz.abel_bruchsumme]]).
+
+kl.satz.bruchprodukt:
+  worum: |
+    Die Ableitungsformel $T'(x+n)/T'(x)=(\ln b)^n\prod T(x+k)$ gilt für ganze Schritte bei jeder Tetration. Ersetzt man das Produkt durch ein
+    „Bruchprodukt“, kann man sie auch für halbe Schritte aufschreiben — und dann erfüllt sie unter $\eta$ nur noch die reguläre Tetration.
+  genau: |
+    Mit dem Bruchprodukt $\prod_{k=1}^{h}T(x+k):=a^h\prod_{k\ge1}\frac{T(x+k)}{T(x+k+h)}$ gilt
+    $$\frac{T'(x+h)}{T'(x)}=(\ln b)^h\prod_{k=1}^{h}T(x+k)\qquad\text{für ein }x\text{ und alle reellen }h$$
+    genau dann, wenn $T$ die reguläre Tetration ist (unter allen wachsenden $C^1$-Tetrationen mit $T'>0$, $1<b<\eta$).
+  warum: |
+    1. Mit $g=\ln T'$ ist $g(y+1)-g(y)=\ln\ln b+\ln T(y+1)$ (Kettenregel).
+    2. Teleskopieren über $N$ Schritte ab $x$ und ab $x+h$ gibt: die Formel gilt genau dann, wenn $g(x+N+h)-g(x+N)\to h\ln\lambda$.
+    3. Für die reguläre Tetration ist $T'(y)\approx C\lambda^y$, also stimmt das.
+    4. Jede andere ist $T^{\mathrm{reg}}\circ(\mathrm{id}+\theta)$ mit periodischem $\theta$ ([[fg.satz.allgemeine_loesung]]). Dann ist der Grenzwert
+       $h\ln\lambda+\varphi(x+h)-\varphi(x)$ mit $\varphi=\theta\ln\lambda+\ln(1+\theta')$. Für alle $h$ muss $\varphi$ konstant sein; das ist eine Differentialgleichung
+       für $\theta$, deren einzige periodische Lösungen Konstanten sind — und $\theta(0)=0$ gibt $\theta=0$.
+  beispiel: |
+    Basis $\sqrt2$: regulär bis $4\cdot10^{-36}$ erfüllt (für $h=0.3,\,0.5,\,1.7$). Mit der kleinen Verbiegung $\theta=0.05\cdot\frac{1-\cos2\pi x}2$ weicht die Formel
+    um $0.019$ bis $0.20$ ab.
+  einordnung: |
+    Die Formel stammt aus der Juli-Synthese des Nutzers; die Umkehrung (nur regulär) ist hier bewiesen. Gegenstück am Fixpunkt: [[it.satz.vertauschbar]].
+    Der Basiswechsel unter $\eta$ hat eine ähnliche Jacobi-Formel ([[kl.satz.wertseitiger_basiswechsel]]).
+
+kl.satz.koenigs_spektral:
+  worum: |
+    Unter $\eta$ ist die Tetration eine Summe von immer schneller abklingenden „Wellen“ $\lambda^x,\lambda^{2x},\lambda^{3x},\dots$ In dieser Darstellung
+    werden Ableiten, Integrieren und Aufsummieren zu einfachen Faktoren — man rechnet mit Zahlen statt mit Funktionen.
+  genau: |
+    $$T(x)=a+\sum_{n\ge1}c_n\lambda^{nx},\qquad c_2=\frac{\ln b\;c_1^2}{2(\lambda-1)},$$
+    und pro Welle: Ableiten $\leftrightarrow$ Faktor $n\log\lambda$; Integrieren von $x$ bis $\infty$ $\leftrightarrow$ $-1/(n\log\lambda)$; Summe über ganze
+    Verschiebungen $\leftrightarrow$ $1/(1-\lambda^n)$. Die Bruchsumme ist dann eine Lambert-Reihe:
+    $\Sigma(x;h)=ah+\sum_nc_n\lambda^{nx}\frac{1-\lambda^{nh}}{1-\lambda^n}$.
+  warum: |
+    $T(x)=\sigma^{-1}(\lambda^x\sigma(1))$, und $\sigma^{-1}$ ist nahe $0$ eine Potenzreihe $\sigma^{-1}(w)=a+\sum p_nw^n$. Einsetzen gibt die Reihe mit $c_n=p_n\sigma(1)^n$.
+    Für grosse $x$ ist $\lambda^x\sigma(1)$ klein, die Reihe konvergiert gleichmässig, und man darf gliedweise ableiten, integrieren und geometrisch
+    summieren. Der Koeffizient $c_2$ kommt aus dem Koeffizientenvergleich in $\sigma^{-1}(\lambda w)=b^{\sigma^{-1}(w)}$.
+  beispiel: |
+    Basis $\sqrt2$: $c_1=-0.632099$, $c_2=-0.225634$, $c_3=-0.085408$, $\lambda=\ln2$. Bei $x=6$ stimmt die Reihe mit der direkten Rechnung auf $10^{-40}$ überein;
+    $\int_6^\infty(T-2)\,dx=-0.195166$ aus der Reihe und aus einer unabhängigen Quadratur auf $3\cdot10^{-26}$ gleich.
+  bilder: [exp.koenigs_kalkuel]
+  einordnung: |
+    Bei $\eta$ gehen die Nenner $1-\lambda^n$ gegen null; was dann passiert, beschreibt [[kl.satz.moebius_qdigamma]]. Gemessen mit
+    [[exp.koenigs_kalkuel]].
+
+kl.beob.zwei_abel:
+  worum: |
+    Zur Basis $\sqrt2$ kann man zwischen den Fixpunkten $2$ und $4$ zwei reguläre Abel-Funktionen bauen, eine an jedem Fixpunkt. Sie sind fast
+    gleich — der Unterschied ist eine winzige, periodische Welle der Grösse $10^{-25}$. Aber er ist nicht null.
+  genau: |
+    Mit $\alpha_2$ (regulär am Fixpunkt $2$) und $\alpha_4$ (regulär an $4$) ist $p(\theta):=\alpha_4(\alpha_2^{-1}(\theta))-\theta$ 1-periodisch und **nicht konstant**.
+    Die erste Fourier-Mode hat den Betrag $3.626\cdot10^{-25}$.
+  warum: |
+    Gemessen in [[exp.sqrt2_abel]] mit 170 Dezimalstellen. Dass $p$ periodisch ist, ist ein Satz ([[fg.satz.allgemeine_loesung]]: zwei Abel-Funktionen
+    derselben Abbildung unterscheiden sich um etwas Periodisches); dass es nicht konstant ist, zeigt die Messung.
+  beispiel: |
+    Man müsste die beiden Kurven auf 25 Stellen genau zeichnen, um sie zu unterscheiden — in [[kl.satz.vier_sqrt2]] liegen sie sichtbar aufeinander.
+  bilder: [exp.sqrt2_abel]
+  einordnung: |
+    Geschichte: Den Unterschied fanden D. Asimov, D. Hickerson und R. Schroeppel um 1991 (unveröffentlicht); im Tetration-Forum wurde er 2007 unter dem Titel
+    „Bummer!“ nachgerechnet. Er beendete damals die Hoffnung, verschiedene vernünftige Konstruktionen müssten übereinstimmen. Bei Möbius-Abbildungen ist es
+    anders: dort stimmen die regulären Iterationen an beiden Fixpunkten überein.
+
+    Das ist die kleinste Version des Phänomens „zwei vernünftige Konstruktionen unterscheiden sich um eine periodische Welle“, das beim Basiswechsel
+    über $\eta$ gross wird (Kapitel 7). Wie schnell die Moden fallen: [[kl.verm.streifenbreite]], [[kl.verm.faktor]].
+
+kl.verm.streifenbreite:
+  worum: |
+    Die winzige Welle zwischen den beiden Abel-Funktionen hat Fourier-Moden, die extrem schnell kleiner werden. Wie schnell, scheint eine einfache
+    Formel zu verraten: die komplexe Periode der regulären Tetration bestimmt sie.
+  genau: |
+    **Vermutung.** Für $1<b<\eta$ (Fixpunkte $a<A$, Multiplikator $\lambda_a$) fallen die Fourier-Koeffizienten der Differenz wie
+    $$|\hat p(k)|\approx C\,\exp\Bigl(-\frac{2\pi^2k}{|\ln\lambda_a|}\Bigr).$$
+    Gleichwertig: $p$ ist genau in einem Streifen der halben imaginären Periode $\pi/|\ln\lambda_a|$ holomorph.
+  warum: |
+    Heuristik: Eine periodische Funktion, die in einem Streifen der Höhe $h$ holomorph ist, hat Moden wie $e^{-2\pi kh}$. Bei der Höhe $\pi/|\ln\lambda_a|$ dreht
+    $\lambda_a^\theta$ genau um $\pi$; dort erreicht die reguläre Tetration die andere Seite von $a$, wo die zweite Abel-Funktion singulär wird. Mit $h=\pi/|\ln\lambda_a|$
+    gibt das den Exponenten $2\pi^2k/|\ln\lambda_a|$.
+  beispiel: |
+    Basis $\sqrt2$: $2\pi^2/|\ln\ln2|=53.857$, also schrumpft jede Mode um den Faktor $e^{-53.86}\approx4\cdot10^{-24}$ gegenüber der vorigen. Basis $1.25$: vorhergesagt
+    $16.474$, frei angepasst $16.470$ — auf $2.6\cdot10^{-4}$ genau; die Konkurrenzformel mit $\lambda_A$ liegt 28 % daneben.
+  einordnung: |
+    Ein Modellfall für die Frage, wie glatt die Basiswechsel-Phasen sind ([[bw.verm.streifen]], [[bw.frage.streifen_gevrey]]). Feinstruktur: [[kl.verm.faktor]].
+
+kl.verm.faktor:
+  worum: |
+    Nimmt man den exponentiellen Abfall heraus, bleibt ein langsamer Restfaktor — und der scheint für alle Basen derselbe zu sein, etwa $k^{-5/4}$.
+  genau: |
+    **Vermutung.** $|\hat p(k)|=C(b)\,g(k)\,e^{-2\pi^2k/|\ln\lambda_a|}$ mit einer von $b$ unabhängigen Funktion $g$, und $g(k)\approx k^{-5/4}$.
+  warum: |
+    Eine Singularität der Form $(\theta-\theta^*)^{\nu}$ am Streifenrand erzeugt einen Restfaktor $k^{-1-\nu}$; $k^{-5/4}$ entspräche $\nu=\tfrac14$. Gleiches $g$ für alle
+    Basen hiesse: alle haben denselben Singularitätstyp. Das ist nur gemessen, nicht verstanden.
+  beispiel: |
+    Normierte Verhältnisse $r_2=0.41930$, $r_3=0.25216$, … stimmen über die Basen $1.25$, $1.3$, $1.35$, $\sqrt2$ auf $4\cdot10^{-4}$ überein, und $r_k\,k^{5/4}=1\pm0.0064$
+    für $k\le10$. Ob der Exponent genau $-5/4$ ist oder etwa $1-\sqrt5=-1.236$, lässt sich so nicht trennen.
+  einordnung: |
+    Dieselbe Art Restfaktor wurde bei den Basiswechsel-Moden über $\eta$ gemessen ([[bw.beob.modenabfall]]).
+
+kl.satz.parabolisch:
+  worum: |
+    Genau bei $\eta$ berühren sich $y=\eta^x$ und $y=x$ bei $e$; der Fixpunkt ist weder anziehend noch abstossend, sondern „parabolisch“. Der Turm
+    kriecht nur noch wie $1/x$ an $e$ heran. Trotzdem gibt es eine natürliche Tetration: die Fatou-Koordinate liefert sie.
+  genau: |
+    Zur Basis $\eta$ liefert die Fatou-Koordinate des anziehenden Blatts eine reell-analytische Tetration mit
+    $$T(x)=e-\frac{2e}x+O\Bigl(\frac{\ln x}{x^2}\Bigr)\qquad(x\to\infty).$$
+    Es gibt zwei reguläre Superexponentiale, von unten und von oben an $e$.
+  warum: |
+    Mit $w=T-e$ wird die Gleichung $w(x+1)=w(x)+\frac{w(x)^2}{2e}+O(w^3)$ — ein parabolischer Keim ([[it.satz.leau_fatou]] mit $a=\frac1{2e}$). Die Fatou-Koordinate
+    ist dann ungefähr $-2e/w$, also $w\approx-2e/x$.
+  beispiel: |
+    $\eta\uparrow\uparrow10=2.32046$. Die grobe Formel $e-2e/10=2.1746$ ist noch weit weg; die genauere aus [[kl.satz.eta_koordinate]] gibt $2.3175$.
+    Gebrochen: $T_\eta(\tfrac12)=1.2571531$.
+  einordnung: |
+    Ein analytischer Fluss am Fixpunkt existiert nicht ([[kl.kor.eta_baker]]). Die genaue Asymptotik mit Logarithmus und Konstante $C_T$:
+    [[kl.satz.eta_koordinate]]; die Stetigkeit in der Basis: [[kl.beob.stetig_eta]].
+
+kl.kor.eta_baker:
+  worum: |
+    Die Potenz zur Basis $\eta$ sieht am Fixpunkt $e$ nach einem einfachen Umrechnen genau aus wie $e^u-1$ am Fixpunkt $0$. Für $e^u-1$ weiss man,
+    dass es keine holomorphen halben Schritte gibt — also auch nicht für $\eta^z$ an $e$.
+  genau: |
+    Mit $z=e+e\,u$ gilt $\eta^{z}=e+e\,(e^{u}-1)$. Daher konvergiert die formale reguläre halbe Iterierte von $\eta^z$ am Fixpunkt $e$ nicht: es gibt keine
+    am Fixpunkt analytische halbe Iterierte, und die Fatou-Koordinaten der beiden Blätter verkleben nicht zu einem Fluss.
+  warum: |
+    $\eta^{e+eu}=\exp\bigl((e+eu)/e\bigr)=e\cdot e^{u}$, also $(\eta^{e+eu}-e)/e=e^u-1$: eine **lineare** Koordinatenänderung. Konvergenz formaler Reihen bleibt bei
+    linearen Umrechnungen erhalten, und für $e^u-1$ divergieren sie nach [[it.satz.baker]].
+  beispiel: |
+    Die formale halbe Iterierte von $\eta^z$ an $e$ ist $e+e\,g\bigl(\frac{z-e}e\bigr)$ mit $g(u)=u+\frac{u^2}4+\frac{u^3}{48}+\dots$ — derselben divergenten Reihe wie bei $e^u-1$.
+  einordnung: |
+    Deshalb ist die parabolische Tetration ([[kl.satz.parabolisch]]) zwar reell-analytisch für $x$, aber nicht das Ergebnis eines holomorphen Flusses am
+    Fixpunkt. Allgemein: [[it.satz.ecalle_voronin]].
+
+kl.frage.stetig_eta:
+  worum: |
+    Unter $\eta$ baut man die Tetration regulär, über $\eta$ nach Kneser, bei $\eta$ parabolisch. Passen die drei an der Grenze zusammen?
+  genau: |
+    Konvergiert $T_b^{\mathrm K}\to T_\eta$ für $b\to\eta$ von oben, und $T_b^{\mathrm{reg}}\to T_\eta$ von unten, lokal gleichmässig auf $(-2,\infty)$?
+  warum: |
+    Offen als Satz. Vorsicht bei einem Scheinwiderspruch: Die Mittelverschiebung $m(b)$ des Basiswechsels divergiert bei $\eta$ wie $(b-\eta)^{-1/2}$
+    ([[bw.lem.randgesetz]]). Das betrifft aber die Höhe relativ zur Basis $e$, nicht $T_b$ selbst.
+  beispiel: |
+    Numerisch beantwortet für $x=\tfrac12$: von unten und von oben stetig, sogar mit gleicher Steigung $0.43858$ ([[kl.beob.stetig_eta]]).
+  einordnung: |
+    Ein Beweis würde die Theorie unter und über $\eta$ zu einer einzigen, in $b$ stetigen Familie verbinden.
+
+kl.satz.eta_koordinate:
+  worum: |
+    Bei $\eta$ kriecht der Turm wie $1/x$ an $e$ heran. Misst man den Abstand richtig — als $2e/(e-T)$ —, so wächst er fast genau wie die Höhe selbst,
+    plus ein Drittel ihres Logarithmus plus eine feste Zahl $C_T\approx2.798$.
+  genau: |
+    Mit $q=(e-T)/(2e)$ und $Z=1/q$ gilt exakt
+    $$q(x+1)=\tfrac12\bigl(1-e^{-2q(x)}\bigr),\qquad Z(x+1)=1+\coth\frac1{Z(x)}=Z(x)+1+\frac1{3Z}-\frac1{45Z^3}+\dots$$
+    Die Fatou-Koordinate ist $\Phi(Z)=Z-\tfrac13\log Z+\sum_kc_kZ^{-k}$ mit **rationalen** $c_k$ ($\tfrac1{18},\tfrac1{135},-\tfrac1{972},\dots$), und
+    $$Z(x)=x+\tfrac13\log x+C_T+O\Bigl(\frac{\log x}x\Bigr),\qquad C_T=2.79824815423138766245\ldots$$
+  warum: |
+    1. $T(x+1)=e^{T(x)/e}$ und $T=e-2eq$ geben $T(x+1)=e\cdot e^{-2q}$, also die $q$-Gleichung.
+    2. $Z(x+1)=\frac2{1-e^{-2/Z}}=1+\coth\frac1Z$, und die Reihe von $\coth$ gibt die Entwicklung.
+    3. Das Glied $\frac1{3Z}\approx\frac1{3x}$ summiert sich zu $\frac13\log x$.
+    4. Die $c_k$ bestimmt man Ordnung für Ordnung aus $\Phi(Z(x+1))=\Phi(Z(x))+1$; alle Daten sind rational. $C_T=\lim(\Phi(Z(n))-n)$ braucht nur ganze Höhen.
+  beispiel: |
+    $Z(10)\approx10+0.7675+2.7982=13.566$, also $T_\eta(10)\approx e-2e/13.566=2.3175$; der echte Turm ist $2.3205$.
+  einordnung: |
+    Literatur: Dieselbe Asymptotik steht bei Trappmann und Kouznetsov (Math. Comp. 2012) in der Form $F(z)=e\bigl(1-\frac2z(1+\sum_mP_m(-\ln z)/(3z)^m)\bigr)$ mit rationalen
+    Polynomen $P_1=t$, $P_2=t^2+t+\tfrac12$, … Ihre Verschiebung $x_0$ mit $F(x_0)=1$ entspricht unserem $C_T$. Neu hier ist vor allem die exakte Kehrwert-Form
+    $Z(x+1)=1+\coth(1/Z)$ und $C_T$ auf 30 Stellen.
+
+    Darauf baut die Digamma-Darstellung der Bruchsumme ([[kl.satz.eta_digamma]]); die Zahlen stehen in [[kl.beob.eta_konstanten]].
+
+kl.satz.eta_digamma:
+  worum: |
+    Summiert man bei $\eta$ „$x$ Turmstufen“, wächst die Summe wie $e\,x-2e\log x$. Der Logarithmus kommt daher, dass die Stufen wie $1/k$ an $e$
+    heranrücken — und die Summe von $1/k$ ist der Logarithmus. Die genaue Form ist die Digamma-Funktion $\psi$.
+  genau: |
+    $S_\eta(x)=e\,x+\sum_{k\ge1}[T(k)-T(k+x)]$ konvergiert und ist
+    $$S_\eta(x)=e\,x-2e\bigl[\psi(x+1)+\gamma\bigr]-2e\,R_T(x),\qquad R_T(x)=\sum_{k\ge1}\Bigl[q(k)-\tfrac1k-q(k+x)+\tfrac1{k+x}\Bigr].$$
+    Für grosse $x$: $S_\eta(x)=e\,x-2e\log x-2e\gamma+\sum_k\bigl[T(k)-e+\frac{2e}k\bigr]+O(\log x/x)$.
+  warum: |
+    1. $T(k)-T(k+x)=2e\,(q(k+x)-q(k))$ ist von der Grösse $1/k^2$ — die Reihe konvergiert.
+    2. Zerlege $q(k)=\frac1k+r(k)$. Die Summe $\sum_k(\frac1k-\frac1{k+x})$ ist bekanntlich $\psi(x+1)+\gamma$; der Rest $R_T$ konvergiert absolut, weil $r(k)\approx\log k/k^2$.
+    3. Für $x\to\infty$ ist $\psi(x+1)\approx\log x$ und $R_T(x)\to\sum_k(q(k)-\frac1k)$.
+  beispiel: |
+    $S_\eta(\tfrac12)=0.682096$; die Konstante der Asymptotik ist $-2e\gamma+10.79756=7.65949$. Bei $x=200$ liegt der Rest nur noch $1.3\,\%$ neben der
+    nächsten Vorhersage $-2e\bigl(\frac{\log x+1}3+C_T\bigr)/x$.
+  bilder: [exp.eta_digamma]
+  einordnung: |
+    Unter $\eta$ ist die Bruchsumme eine Lambert-Reihe ([[kl.satz.koenigs_spektral]]); wie sie in die Digamma-Form übergeht: [[kl.satz.moebius_qdigamma]].
+    Nebenbei beantwortet der Satz eine Frage aus dem Tetration-Forum (Helms 2010), ob $\sum_k(e-\eta\uparrow\uparrow k)$ konvergiert: Nein — die Teilsummen wachsen
+    wie $2e\ln n$, weil die Glieder wie $2e/k$ abfallen.
+
+kl.beob.eta_konstanten:
+  worum: |
+    Die wichtigsten Zahlen zur Basis $\eta$ — ausgerechnet, damit man mit ihnen prüfen und vergleichen kann.
+  genau: |
+    $C_T=2.79824815423\ldots$, $\sum_k[T(k)-e+2e/k]=10.7975622749\ldots$, $T_\eta(\tfrac12)=1.2571530751\ldots$, $T_\eta'(0)=0.6110954538\ldots$,
+    $\sum_{k\ge1}T_\eta'(k)=1.4502290174\ldots$, $S_\eta(\tfrac12)=0.6820955735\ldots$
+  warum: |
+    Gerechnet mit der Fatou-Reihe (24 rationale Glieder) und $20\,000$ Turmstufen; Schwänze nach Euler–Maclaurin. $C_T$ und die regularisierte Summe
+    brauchen nur ganze Höhen und hängen nicht von der Wahl der gebrochenen Tetration ab.
+  beispiel: |
+    $T_\eta'(k)\approx2e/k^2$ für grosse $k$: bei $k=1000$ stimmt das auf 2 %.
+  einordnung: |
+    Ob eine dieser Zahlen eine geschlossene Form hat, ist offen — eine Aufgabe für PSLQ wie in [[gr.frage.integral_form]].
+
+kl.verm.lambert_zeta:
+  worum: |
+    Unter $\eta$ sind Bruchsummen Lambert-Reihen mit Nennern $1-\lambda^n$; bei $\eta$ werden sie zu Digamma-Funktionen. Die Vermutung: das
+    eine geht stetig ins andere über, wenn die Basis gegen $\eta$ geht.
+  genau: |
+    **Vermutung.** Für $b\to\eta$ von unten gilt $S_b(x)\to S_\eta(x)$ mit Fehler $O(\eta-b)$; die Brücke ist die q-Digamma-Funktion mit $q=\lambda_b$.
+  warum: |
+    Im vereinfachten Möbius-Modell ist das bewiesen ([[kl.satz.moebius_qdigamma]]). Für die echte Abbildung fehlt der Beweis, vor allem für den Anteil
+    $\tfrac13\log k$, den das Modell nicht trifft.
+  beispiel: |
+    Gemessen für sechs Basen mit $1-\lambda$ von $0.2$ bis $0.005$: der Abstand $|S_b(\tfrac12)-S_\eta(\tfrac12)|$ fällt monoton bis $2.3\cdot10^{-6}$, linear in $\eta-b$.
+  einordnung: |
+    Ursprünglich eine Vermutung der Juli-Synthese des Nutzers; hier präzisiert und gemessen ([[exp.lambert_zeta]]).
+
+kl.satz.moebius_qdigamma:
+  worum: |
+    Ersetzt man $b^x$ nahe dem Doppelfixpunkt durch die einfachste Abbildung mit denselben beiden Fixpunkten — eine Möbius-Abbildung —, dann kann man
+    die Bruchsumme exakt ausrechnen. Heraus kommt die q-Digamma-Funktion mit $q=\lambda$, und für $\lambda\to1$ die gewöhnliche Digamma-Funktion.
+  genau: |
+    Für die Möbius-Abbildung mit Fixpunkten $a<A$ und Multiplikator $\lambda$ bei $a$ ist
+    $$S^M(x)=a\,x+\frac{A-a}{\ln\lambda}\bigl[\psi_\lambda(x+1+s)-\psi_\lambda(1+s)\bigr],\qquad\lambda^s=\frac{a-1}{A-1},$$
+    mit $\psi_q(z)=-\ln(1-q)+\ln q\sum_{n\ge0}\frac{q^{n+z}}{1-q^{n+z}}$. Für $\lambda\to1$: $S^M(x)\to e\,x-2e[\psi(x+1+Z_0)-\psi(1+Z_0)]$, $Z_0=\frac{2e}{e-1}$.
+  warum: |
+    1. Für eine Möbius-Abbildung ist $\frac{y_k-a}{y_k-A}=r_0\lambda^k$ exakt — sie ist in dieser Koordinate eine Streckung.
+    2. Daraus $y_k-a=-(A-a)\frac{r_0\lambda^k}{1-r_0\lambda^k}$; die Summe der Differenzen ist nach Definition eine Differenz von q-Digamma-Werten.
+    3. Grenzwerte: $A-a\approx2e(1-\lambda)$, $\ln\lambda\approx-(1-\lambda)$, und $\psi_q\to\psi$ ist klassisch.
+  beispiel: |
+    Bei $\lambda=0.9$: Formel und direkte Summe auf $8\cdot10^{-30}$ gleich. Bei $1-\lambda=0.005$: $(A-a)/\ln\lambda=-5.4321$ (Grenzwert $-2e=-5.4366$), $s=3.1613$
+    (Grenzwert $Z_0=3.1640$).
+  bilder: [exp.lambert_zeta]
+  einordnung: |
+    Erklärt den Mechanismus hinter [[kl.verm.lambert_zeta]]; der Unterschied zur echten Tetration ist genau der Anteil aus $\tfrac13\log k$ und $C_T$
+    ([[kl.satz.eta_koordinate]]).
+
+kl.beob.stetig_eta:
+  worum: |
+    Unter $\eta$ und über $\eta$ baut man die Tetration auf ganz verschiedene Weise. An der Grenze passen die Werte trotzdem nahtlos zusammen —
+    bei der Höhe $\tfrac12$ stimmt sogar die Steigung auf sechs Stellen.
+  genau: |
+    $T_b(\tfrac12)\to T_\eta(\tfrac12)=1.257153075\ldots$ von beiden Seiten, linear in $|b-\eta|$, mit derselben Steigung: $\partial_bT_b(\tfrac12)\approx0.438579$ von unten
+    (regulär) und $0.438581$ von oben (Kneser).
+  warum: |
+    Gemessen: von unten mit sechs regulären Basen, von oben mit Kneser bei $b-\eta=10^{-1},10^{-2},10^{-3}$; Steigungen linear extrapoliert ([[exp.lambert_zeta]]).
+    Ein Beweis fehlt.
+  beispiel: |
+    $b=\eta+10^{-3}$ (Kneser): $T_b(\tfrac12)-T_\eta(\tfrac12)=0.000438$. Von unten bei $1-\lambda=0.005$: $-2.9\cdot10^{-6}$.
+  bilder: [exp.lambert_zeta]
+  einordnung: |
+    Beantwortet [[kl.frage.stetig_eta]] numerisch für $x=\tfrac12$. Kouznetsov hat eine vorläufige Taylor-Tabelle von $T_b(x)$ in $b-\eta$ veröffentlicht; ihr erster
+    Koeffizient $0.61061$ passt zu unserem $T_\eta'(0)=0.611095$. Trotzdem halten er und Beiträge im Tetration-Forum $\eta$ für einen Verzweigungspunkt.
+    Neue Frage: ist $T_b(x)$ bei $\eta$ in $b$ analytisch oder nur glatt ([[kl.frage.eta_analytisch]])?
+
+kl.frage.eta_analytisch:
+  worum: |
+    Unter und über $\eta$ passen die Tetrationen numerisch so gut zusammen, dass sogar die Steigung übereinstimmt. Ist die Tetration als Funktion der Basis bei
+    $\eta$ also analytisch — oder nur sehr glatt, mit einem versteckten Verzweigungspunkt?
+  genau: |
+    Ist $b\mapsto T_b(x)$ (regulär für $b<\eta$, Kneser für $b>\eta$) bei $b=\eta$ analytisch, oder ist $\eta$ ein Verzweigungspunkt, an dem die Funktion zwar
+    unendlich oft differenzierbar, aber nicht analytisch ist?
+  warum: |
+    Offen. Was für „nicht analytisch“ spricht: Bei $\eta$ ändert sich die Art der Konstruktion (anziehender Fixpunkt → parabolisch → komplexes Paar), und der Engpass
+    bei $e$ erzeugt Grössen wie $(b-\eta)^{-1/2}$ ([[bw.lem.randgesetz]]). Glieder wie $\exp(-c/\sqrt{b-\eta})$ wären unendlich flach — mit allen gemessenen
+    Ableitungen verträglich, aber nicht analytisch. Kouznetsov und Beiträge im Tetration-Forum (mike3, 2011) halten $\eta$ für einen Verzweigungspunkt.
+    Was dagegen spricht: Wert und Steigung passen auf sechs Stellen ([[kl.beob.stetig_eta]]).
+  beispiel: |
+    Ein Modell für „glatt, aber nicht analytisch“: $f(\delta)=e^{-1/\sqrt\delta}$ für $\delta>0$ und $0$ sonst — alle Ableitungen bei $0$ verschwinden, die Taylor-Reihe ist $0$.
+  einordnung: |
+    Nächster Schritt: zweite und dritte Ableitung in $b$ von beiden Seiten messen und $T_b(x)$ auf einem kleinen Kreis komplexer Basen um $\eta$ auswerten.
+    Verwandt: die parabolische Implosion ([[br.frage.implosion]]).
+
+# ------------------------------------------------------------------ Strang kl.gleiches_L (Kapitel 7, Etappe 3)
+
+kl.satz.basiswechsel_gleiches_L:
+  worum: |
+    Zwei verschiedene Basen können denselben Fixpunkt $L$ haben. Dann kreisen ihre Türme (rückwärts) um denselben Punkt, nur verschieden schnell.
+    Übersetzt man die Höhe der einen in die Höhe der anderen, kommt eine Gerade $C_1+C_2x$ heraus — ohne bleibende Welle.
+  genau: |
+    Haben $b\ne d$ den gemeinsamen Fixpunkt $L$ mit $|\lambda_d|>1$, ist $T_d(x)=\Psi_d(\lambda_d^xw_d)$ regulär an $L$ und $A_b=\log\sigma_b/\log\lambda_b$, dann gilt für $x\to-\infty$
+    $$A_b\bigl(T_d(x)\bigr)=C_1+C_2\,x+\frac{a_1w_d}{\log\lambda_b}\,\lambda_d^{x}+O(\lambda_d^{2x}),\qquad C_2=\frac{\log\lambda_d}{\log\lambda_b},\quad C_1=\frac{\log w_d}{\log\lambda_b},$$
+    mit $a_1=\frac{u_d}{2(\lambda_d-1)}-\frac{u_b}{2(\lambda_b-1)}$ ($u=\ln b$ bzw. $\ln d$). Die Abweichung von der Geraden ist eine gedämpfte Schwingung. Bei verschiedenen Fixpunkten läuft
+    $A_b(T_d(x))$ dagegen gegen eine Konstante. Exakt linear ist der Basiswechsel nur für $b=d$.
+  warum: |
+    1. Beide Linearisierungen sind am selben Punkt mit Ableitung $1$ normiert. Also ist $h=\sigma_b\circ\Psi_d$ zur Identität tangential: $h(v)=v+a_1v^2+\dots$
+    2. $A_b(T_d(x))=\log h(\lambda_d^xw_d)/\log\lambda_b=\bigl(x\log\lambda_d+\log w_d+\log(1+a_1\lambda_d^xw_d+\dots)\bigr)/\log\lambda_b$ — das ist die Formel.
+    3. Für $x\to-\infty$ geht $\lambda_d^x\to0$, weil $|\lambda_d|>1$.
+    4. Exakt linear hiesse $f_d=f_b^{\,C_2}$ in der regulären Iterationsgruppe; dann vertauschen $f_b$ und $f_d$, und das erzwingt $u_b=u_d$ ([[it.satz.vertauschbar]]).
+  beispiel: |
+    $b=e^{\pi/2}$, $d=e^{5\pi/2}$ teilen $L=i$ (denn $e^{i\pi/2}=i$ und $e^{5i\pi/2}=i$). $C_2=1.27207-0.94638\,i$; der Rest bei $x=-12$ ist $4\cdot10^{-12}$ und fällt mit der Rate
+    $\ln|\lambda_d|=2.06102$. Bei $x=-1$ ist er noch $0.03$ bis $0.48$ (je nach Paar) — linear ist es nur asymptotisch. Gegenprobe mit verschiedenen Fixpunkten
+    ($e^{\pi/2}$ gegen $e$): die Steigung fällt auf $3\cdot10^{-3}$ bei $x=-20$ und $5\cdot10^{-6}$ bei $x=-40$.
+  bilder: [exp.gleiches_L]
+  einordnung: |
+    Welche Basen einen Fixpunkt teilen: [[fp.satz.gleiches_L]]. Gegenstück mit bleibender Welle: [[bw.satz.phasengesetz]]; mit verschiedenen Fixpunkten in senkrechter
+    Richtung: [[bw.satz.imaginaere_richtung]]. Deutung: [[kl.satz.invariante_daempfung]].
+
+kl.satz.invariante_daempfung:
+  worum: |
+    Die Welle beim klassischen Basiswechsel und die gedämpfte Schwingung am gemeinsamen Fixpunkt sind dasselbe Phänomen. Wie lange die Welle lebt, hängt nur
+    davon ab, wie nah der Multiplikator $|\lambda|$ an $1$ liegt. Bei $|\lambda|=1$ wird sie unsterblich.
+  genau: |
+    **Teilweise bewiesen.** Die Übergangsfunktion zweier Abel-Koordinaten ist eine Funktion der kanonischen Invariante des Anpassungspunkts:
+    - hyperbolischer Fixpunkt ($|\lambda|<1$): $\lambda^A$ — gedämpft, Pseudoperiode $2\pi/|\arg\lambda|$, Dämpfung $|\lambda|^{2\pi/|\arg\lambda|}$ pro Pseudoperiode;
+    - rational neutraler Fixpunkt: $e^{2\pi iA}$ — echt 1-periodisch (Écalle–Voronin); irrational neutral: quasiperiodisch;
+    - wesentliche Singularität bei $\infty$ (Türme über $\eta$): $e^{2\pi iA}$ — die klassische 1-periodische Basiswechsel-Welle, als Grenzfall $|\lambda|\to1$.
+  warum: |
+    Der hyperbolische Fall ist bewiesen: Die Korrektur ist eine Potenzreihe in $\lambda_d^x$ ([[kl.satz.basiswechsel_gleiches_L]]). Der rational neutrale Fall ist Écalle–Voronin
+    ([[it.satz.ecalle_voronin]]). Dass die klassische Welle der Grenzfall $|\lambda|\to1$ ist, ist eine Deutung, kein Grenzwertsatz.
+  beispiel: |
+    Bei $\arg\lambda=0.5$: Dämpfung pro Periode $2.7\cdot10^{-7}$, $1.6\cdot10^{-3}$, $0.061$, $0.27$, $0.68$ für $|\lambda|=0.3,\,0.6,\,0.8,\,0.9,\,0.97$. Musterpaar zu $b=-\tfrac{19}{25}$:
+    Pseudoperiode $21.908$, Dämpfung $3.1\cdot10^{-4}$.
+  bilder: [exp.funde]
+  einordnung: |
+    Frage dahinter: Lässt sich die Welle $P_{b,d}$ über $\eta$ als Grenzwert solcher gedämpften Übergänge bei $|\lambda|\uparrow1$ ausrechnen ([[kl.frage.basiswechsel_kneser]])?
+
+kl.satz.wertseitiger_basiswechsel:
+  worum: |
+    Man kann den Basiswechsel auch umgekehrt stellen: nicht „welche Höhe hat dieser Wert?“, sondern „welcher Wert gehört zur selben Höhe?“. Unter $\eta$ ist diese
+    Übersetzung von Werten in den Koenigs-Koordinaten einfach eine Potenz.
+  genau: |
+    Für $1<b,d<\eta$ mit regulären Tetrationen, normiert durch $\chi(T(x))=\lambda^x$, und $K_{b,d}=T_b\circ A_d$:
+    $$\chi_b\circ K_{b,d}=\chi_d^{\,\rho_{b,d}},\qquad\rho_{b,d}=\frac{\log\lambda_b}{\log\lambda_d},\qquad K_{b,c}\circ K_{c,d}=K_{b,d}.$$
+    Am Quellfixpunkt ist $K$ verzweigt: $K_{b,d}(y)-a_b\sim C(a_d-y)^{\rho}$. Die Ableitung folgt den Bruchsummen:
+    $\dfrac{K'(T_d(x+h))}{K'(T_d(x))}=\Bigl(\dfrac{\ln b}{\ln d}\Bigr)^h\dfrac{b^{\Sigma_b(x;h)}}{d^{\Sigma_d(x;h)}}$.
+  warum: |
+    1. $\chi_b(T_b(x))=\lambda_b^x=(\lambda_d^x)^\rho=\chi_d(T_d(x))^\rho$; mit $x=A_d(y)$ steht die Potenzformel da.
+    2. Gruppoid: $\rho_{b,c}\rho_{c,d}=\rho_{b,d}$.
+    3. Verzweigung: nahe $a_d$ ist $\chi_d(y)\approx\chi_d'(a_d)(y-a_d)$, hoch $\rho$ genommen.
+    4. Ableitung: $K'(T_d(x))=T_b'(x)/T_d'(x)$ und das Bruchprodukt für beide Basen ([[kl.satz.bruchprodukt]]).
+  beispiel: |
+    $b=\sqrt2$, $d=1.3$: $\rho=\log\ln2/\log0.385935=0.384957593$. Potenzgesetz auf $10^{-38}$, Verzweigungsexponent gemessen $0.3849575936$, Ableitungsformel auf $4\cdot10^{-38}$.
+  bilder: [exp.koenigs_kalkuel]
+  einordnung: |
+    Die höhenseitige Abbildung $A_b\circ T_d$ wird dagegen konstant ([[kl.gescheitert.naiver_basiswechsel]]). Drei Übersetzungen im Vergleich: [[kl.satz.qk_basiswechsel]].
+
+kl.satz.qk_basiswechsel:
+  worum: |
+    Will man die Dynamik einer Basis in die einer anderen übersetzen, möchte man drei Dinge: glatt im komplexen Sinn, eindeutig, und im gleichen Takt.
+    Alle drei zusammen gehen nur, wenn die Multiplikatoren gleich sind. Je nachdem, was man opfert, bekommt man eine der drei Übersetzungen dieses Kapitels.
+  genau: |
+    Für zwei Basen mit anziehendem Fixpunkt, $\Omega=\mathrm{Log}\,\lambda$, und die reell-lineare Abbildung $M$ mit $M(\Omega_d)=\Omega_b$, $M(2\pi i)=2\pi i$, ist
+    $$K=\sigma_b^{-1}\circ\exp\circ M\circ\mathrm{Log}\circ\sigma_d$$
+    eindeutig, konjugiert ($K\circ f_d=f_b\circ K$) und verträgt sich mit dem Wechseln über eine dritte Basis — ist aber nur quasikonform. Holomorph, unverzweigt **und**
+    zeiterhaltend geht nur bei $\Omega_b=\Omega_d$.
+  warum: |
+    1. $\mathrm{Log}\,\sigma_d(f_dz)=\mathrm{Log}\,\sigma_d(z)+\Omega_d$ (modulo $2\pi i$): in dieser Koordinate ist $f_d$ eine Verschiebung auf dem Gitter $\Omega_d\mathbb Z+2\pi i\mathbb Z$.
+    2. $M$ bildet dieses Gitter auf $\Omega_b\mathbb Z+2\pi i\mathbb Z$ ab, also ist $K$ wohldefiniert und konjugiert $f_d$ zu $f_b$.
+    3. $M$ ist komplex-linear nur, wenn $M=\mathrm{id}$ (es hält $2\pi i$ fest), also nur bei $\Omega_b=\Omega_d$. Sonst ist $K$ nicht holomorph.
+    Die Alternativen: die Potenz $\chi_d^\rho$ (holomorph, zeiterhaltend, aber verzweigt — [[kl.satz.wertseitiger_basiswechsel]]) oder $\sigma_b^{-1}(\kappa\sigma_d)$ (holomorph, eindeutig, aber mit
+    anderem Takt — [[kl.satz.koenigs_basiswechsel]]).
+  beispiel: |
+    $\lambda_b=0.6e^{0.9i}$, $\lambda_d=0.5e^{2i}$: Konjugation auf $3\cdot10^{-41}$; die Abweichung von Holomorphie ist $|\partial K/\partial\bar z|=1.78$. Mit gleichem Multiplikator: $2\cdot10^{-30}$.
+  bilder: [exp.koenigs_kalkuel]
+  einordnung: |
+    Standardkonstruktion für hyperbolische Keime (ihr Modulraum ist ein Torus). Frage: Ist die Welle $P$ über $\eta$ das Gegenstück dieses Hindernisses ([[kl.frage.basiswechsel_kneser]])?
+
+kl.satz.koenigs_basiswechsel:
+  worum: |
+    Zwei Basen, deren Türme sich gleich zusammenziehen und drehen — nur verschieden schnell —, sind „dieselbe Spirale“. Übersetzt man die eine in die andere,
+    wird aus der Höhe $x$ einfach die Höhe $k\cdot x$. Keine Welle.
+  genau: |
+    Für Basen $b,d$ mit anziehenden Fixpunkten ($0<|\lambda_b|,|\lambda_d|<1$), Koenigs-Funktionen $\sigma_b,\sigma_d$ und $\Psi=\sigma_b^{-1}\circ(\kappa\,\sigma_d)$, $\kappa=\sigma_b(1)/\sigma_d(1)$, gilt
+    $$\Psi\circ f_d^{\,t}=f_b^{\,kt}\circ\Psi,\qquad k=\frac{\ln\lambda_d}{\ln\lambda_b},$$
+    also $\operatorname{slog}^{\mathrm{reg}}_b(\Psi(T_d(x)))=k\,x$. Ist $k$ ganz, bildet $\Psi$ den Orbit von $d$ auf jeden $k$-ten Punkt der Spirale von $b$ ab.
+  warum: |
+    Reguläre Flüsse sind $f^t=\sigma^{-1}(\lambda^t\sigma)$. Einsetzen: $\Psi(f_d^t(z))=\sigma_b^{-1}(\kappa\lambda_d^t\sigma_d(z))=\sigma_b^{-1}(\lambda_b^{kt}\kappa\sigma_d(z))=f_b^{kt}(\Psi(z))$, weil
+    $\lambda_d^t=\lambda_b^{kt}$. Die Wahl von $\kappa$ sorgt für $\Psi(1)=1$.
+  beispiel: |
+    $b=\sqrt2$ ($\lambda=\ln2$) und $d$ mit $\lambda_d=(\ln2)^2$: nach dem Multiplikator-Rezept $d=1.34603293$, Fixpunkt $1.61681$, $k=2$. Die Höhe ist exakt $2x$ (auf $10^{-27}$
+    bei $x=0.5$, $1.25$, $3.5$); auch das Verhältnis $1.7$ gibt eine Gerade. Komplex: $\Psi(z_{d,n})=z_{b,2n}$ für $n=10\dots25$.
+  bilder: [exp.koenigs_basiswechsel]
+  einordnung: |
+    Rezept für Basen mit gewünschtem Multiplikator: [[fp.satz.multiplikator_rezept]]. Über $\eta$ gibt es keinen anziehenden Fixpunkt, und die Welle erscheint
+    ([[bw.satz.phasengesetz]]); offen, woher genau: [[kl.frage.basiswechsel_kneser]].
+
+kl.gescheitert.naiver_basiswechsel:
+  worum: |
+    Macht man unter $\eta$ dasselbe wie über $\eta$ — die Höhe des einen Turms in Höhen des anderen übersetzen —, bekommt man nur eine Konstante. Beide Türme
+    kommen ja zur Ruhe.
+  genau: |
+    Für $1<b,d<\eta$ mit regulären Tetrationen gilt $T_d(x)\to a_d$, also $\operatorname{slog}_b(T_d(x))\to\operatorname{slog}_b(a_d)$ — eine Konstante (sofern $a_d$ im Einzugsgebiet von $a_b$ liegt).
+  warum: |
+    Stetigkeit von $\operatorname{slog}_b$ in $a_d$; die Höhe $x$ geht verloren, weil $T_d$ für grosse $x$ fast nichts mehr ändert.
+  beispiel: |
+    $b=\sqrt2$, $d=1.34603$: $1.8295$, $1.9061$, $1.9061$ bei $x=5,20,40$.
+  einordnung: |
+    Zeigt, warum das Turmwachstum (Hyp. 2.4) im Phasengesetz nötig ist ([[bw.ann.hyp24]]). Der richtige Vergleich unter $\eta$: [[kl.satz.koenigs_basiswechsel]].
+
+kl.frage.basiswechsel_kneser:
+  worum: |
+    Unter $\eta$ ist der Basiswechsel in Koenigs-Koordinaten exakt linear, ohne Welle. Über $\eta$ hat er eine Welle. Woher kommt sie?
+  genau: |
+    Über $\eta$ sind $L,\bar L$ abstossend, und Kneser klebt zwei Koenigs-Karten mit einer Riemann-Abbildung zusammen. Ist die Welle $P_{b,d}$ genau das Bild dieser
+    Klebung — lässt sie sich aus den Korrekturen $\theta_b,\theta_d$ von Kneser ausrechnen?
+  warum: |
+    Offen. Was dafür spricht: Ohne Klebung (unter $\eta$, oder am gemeinsamen Fixpunkt) gibt es keine bleibende Welle; die Welle ist periodisch wie $\theta_K$; und ihre
+    Singularitäten kommen aus dem Periodenunterschied der Koenigs-Koordinaten ([[bw.satz.ursache_kozykel]]).
+  einordnung: |
+    Nächster Schritt: komplexe Basen im Shell–Thron-Gebiet nahe dem Rand ($|\lambda|\to1$) — geht der lineare Basiswechsel stetig in die Kneser-Welle über?
+    Verwandt: [[kn.konstr.kneser]], [[kl.satz.invariante_daempfung]].
+
+kl.frage.gleiches_L_kneser:
+  worum: |
+    Am gemeinsamen Fixpunkt verschwindet die Welle bei regulären Tetrationen. Gilt das auch für Knesers Lösungen zu komplexen Basen, wenn sie den oberen Fixpunkt teilen?
+  genau: |
+    Komplexe Basen $b,d$ mit gemeinsamem oberem Fixpunkt $L$ haben Kneser-artige Tetrationen (Paulsen), die für $\operatorname{Im}z\to+\infty$ gegen $L$ laufen. Ist dann
+    $\operatorname{slog}_b(T_d(z))-C_2z$ nach oben exponentiell klein, und bleibt die Welle nur auf der reellen Achse und nach unten?
+  warum: |
+    Offen. Für verschiedene Fixpunkte ist die Richtung nach oben geklärt ([[bw.satz.imaginaere_richtung]]). Für den gemeinsamen oberen Fixpunkt fehlt ein zuverlässiger
+    Rechenmotor für komplexe Basen (der Versuch in [[bw.verm.adressen]] hing an einzelnen Punkten).
+  einordnung: |
+    Verbindet [[kl.satz.basiswechsel_gleiches_L]] mit dem Phasengesetz ([[bw.satz.phasengesetz]]).
+
+kl.satz.obere_superexp:
+  worum: |
+    Unter $\eta$ hat $b^x$ zwei reelle Fixpunkte, zur Basis $\sqrt2$ etwa $2$ und $4$. Die gewöhnliche Tetration lebt unter dem unteren
+    Fixpunkt: sie startet bei $1$ und kriecht gegen $2$. Was passiert **über** dem oberen Fixpunkt? Dort gibt es eine zweite natürliche
+    Lösung der Gleichung $F(x+1)=b^{F(x)}$, die bei $4$ beginnt (für $x\to-\infty$) und dann explodiert. Sie ist sogar in der ganzen
+    komplexen Ebene glatt — eine **ganze** Funktion.
+  genau: |
+    Sei $1<b<\eta$, $A$ der obere Fixpunkt ($A>e$) und $\lambda_A=A\ln b>1$ sein Multiplikator. Die **Poincaré-Funktion** $\Psi_A$ erfüllt
+    $$\Psi_A(\lambda_A w)=b^{\Psi_A(w)},\qquad\Psi_A(0)=A,\quad\Psi_A'(0)=1.$$
+    Damit ist die obere Superexponentialfunktion
+    $$\operatorname{usexp}_b(z)=\Psi_A\bigl(\lambda_A^{\,z}\,c\bigr),$$
+    mit der Konstante $c>0$ so gewählt, dass $\operatorname{usexp}_b(0)=A+1$. Sie ist ganz, erfüllt $\operatorname{usexp}_b(z+1)=b^{\operatorname{usexp}_b(z)}$,
+    ist periodisch mit der rein imaginären Periode $2\pi i/\ln\lambda_A$, wächst auf $\mathbb R$ streng und geht für $x\to-\infty$ von oben gegen $A$.
+  warum: |
+    1. Am abstossenden Fixpunkt liefert der Satz von Koenigs ([[it.satz.koenigs]]) eine Potenzreihe $\Psi_A$ nahe $w=0$ mit der Gleichung oben.
+    2. **Fortsetzen:** Die Gleichung kann man nach aussen lesen: $\Psi_A(w)=b^{\Psi_A(w/\lambda_A)}$. Für grosses $w$ ist $w/\lambda_A^n$ nach
+       $n$ Schritten klein, dort kennt man $\Psi_A$, und dann wendet man $n$-mal $z\mapsto b^z$ an. Weil $b^z$ überall definiert und glatt ist,
+       entsteht so eine ganze Funktion (das ist Poincarés Argument).
+    3. $z\mapsto\lambda_A^z c$ ist ganz, also auch $\operatorname{usexp}_b$. Die Gleichung: $\Psi_A(\lambda_A^{z+1}c)=\Psi_A(\lambda_A\cdot\lambda_A^zc)=b^{\Psi_A(\lambda_A^zc)}$.
+    4. Periode: $\lambda_A^{z+2\pi i/\ln\lambda_A}=\lambda_A^z\,e^{2\pi i}=\lambda_A^z$.
+    5. Für $x\to-\infty$ geht $\lambda_A^xc\to0$, also $\operatorname{usexp}_b(x)\to\Psi_A(0)=A$.
+
+    Eine Tetration ist sie nicht: Auf $\mathbb R$ bleiben ihre Werte über $A$, den Wert $1$ erreicht sie nie.
+  beispiel: |
+    Basis $\sqrt2$: $A=4$, $\lambda_4=4\ln\sqrt2=2\ln2=1.386$, Periode $2\pi i/\ln1.386=19.2361490420\,i$.
+    - $\operatorname{usexp}(0)=5$, $\operatorname{usexp}(1)=\sqrt2^{\,5}=5.6568542495$, $\operatorname{usexp}(2)=\sqrt2^{\,5.657}=7.10$.
+    - $\operatorname{usexp}(-1)=\log_{\sqrt2}5=4.6438561898$, $\operatorname{usexp}(-30)-4=3.9\cdot10^{-5}$.
+    - $\operatorname{usexp}(1/2)=5.2736473691781\ldots$
+  bilder: [exp.cheta]
+  einordnung: |
+    Für $\sqrt2$ ist das eines der vier regulären Superexponentiale aus [[kl.satz.vier_sqrt2]]; hier gilt der Beweis für jede Basis
+    $1<b<\eta$. Bei $b=\eta$ fallen die beiden Fixpunkte bei $e$ zusammen, und an die Stelle von $\Psi_A$ tritt die Fatou-Koordinate
+    ([[kl.satz.cheta]]). Am unteren Fixpunkt ist die Poincaré-Funktion **nicht** ganz: deshalb hat die Tetration die Singularität bei $-2$.
+
+kl.satz.cheta:
+  worum: |
+    Bei der Basis $\eta$ berührt $\eta^x$ die Gerade $y=x$ bei $e$. Die gewöhnliche Tetration läuft von unten gegen $e$. Von oben gibt es
+    ebenfalls eine natürliche Lösung: Sie startet bei $e^2$, ist bei $x=1$ schon $e^e\approx15.15$ und kommt für $x\to-\infty$ beliebig
+    nahe an $e$ heran. J. D. Fox hat sie 2009 im Tetration-Forum „cheta“ genannt. Sie ist, wie die obere Lösung unter $\eta$, eine ganze Funktion.
+  genau: |
+    Sei $Z=2e/(e-y)$ für $y>e$ (also $Z<0$) und
+    $$\Phi(Z)=Z-\tfrac13\ln|Z|+\sum_{k\ge1}c_kZ^{-k}$$
+    die Fatou-Reihe mit denselben rationalen $c_k$ wie bei der unteren Lösung ([[kl.satz.eta_koordinate]]). Dann gilt
+    $\Phi(Z(\eta^y))=\Phi(Z(y))+1$ für $y$ nahe $e$. Die Umkehrung, so verschoben, dass $\check\eta(0)=e^2$, ist
+    $$\check\eta(z)=\exp_\eta^{\circ z}(e^2),\qquad \check\eta(-1)=2e,\quad\check\eta(1)=e^e,\quad\check\eta(z+1)=\eta^{\check\eta(z)}.$$
+    $\check\eta$ ist ganz, auf $\mathbb R$ streng wachsend, und $\check\eta(x)=e+\dfrac{2e}{|x|}\bigl(1+O(\tfrac{\log|x|}{|x|})\bigr)$ für $x\to-\infty$.
+  warum: |
+    1. **Fatou-Koordinate:** Am Berührpunkt $e$ ist $\exp_\eta$ zu $u\mapsto e^u-1$ konjugiert ($y=e(1+u)$). Auf der Seite $y>e$ schiebt jeder
+       Schritt die Punkte von $e$ weg. Der Satz von Leau–Fatou ([[it.satz.leau_fatou]]) gibt dort eine Koordinate $\Phi$, in der ein Schritt
+       einfach „$+1$“ ist; ihre Entwicklung ist die Reihe oben (sie divergiert, wird aber nur weit draussen, für grosses $|Z|$, benutzt).
+    2. **Umkehren:** Die Umkehrung $\Psi$ von $\Phi$ ist auf einer linken Halbebene definiert und erfüllt $\Psi(w+1)=\eta^{\Psi(w)}$.
+    3. **Fortsetzen:** $\Psi(w)=\exp_\eta^{\circ n}(\Psi(w-n))$ mit grossem $n$ — weil $\eta^z$ überall glatt ist, wird $\Psi$ ganz.
+    4. **Normieren:** Eine Verschiebung $w\mapsto w+C$ legt $\check\eta(0)=e^2$ fest. Die Konstante misst man, indem man von $e^2$ rückwärts läuft
+       ($y\mapsto e\ln y$): $C_{\check\eta}=\lim_n[\Phi(Z(\check\eta(-n)))+n]=-1.2569611588725\ldots$
+    5. Asymptotik: Für $x\to-\infty$ ist $Z\approx x$, also $y=e-2e/Z\approx e+2e/|x|$.
+  beispiel: |
+    - Ganze Werte: $\check\eta(-1)=2e=5.4366$, $\check\eta(0)=e^2=7.3891$, $\check\eta(1)=\eta^{e^2}=e^{e}=15.154$, $\check\eta(2)=e^{e^{e-1}}=263.7$.
+    - Halbe Werte: $\check\eta(1/2)=9.6893506753532\ldots$, $\check\eta(-1/2)=6.1732925511094\ldots$ (unabhängig von der Rechentiefe auf 28 Stellen).
+    - Asymptotik: $(\check\eta(-100)-e)\cdot100/(2e)=1.0028$, bei $-1000$: $1.0011$.
+  bilder: [exp.cheta]
+  einordnung: |
+    Gegenstück zu [[kl.satz.obere_superexp]] beim Grenzfall $\eta$ und zur unteren Lösung [[kl.satz.parabolisch]]. Die Abbildung $\Psi$ ist genau die
+    „abstossende“ Hälfte der Lavaurs-Abbildung aus [[br.satz.shishikura]]. Die zugehörige Abel-Funktion ist nach Szekeres total monoton
+    ([[it.satz.szekeres_monoton]]).
+
+kl.beob.q_binomial:
+  worum: |
+    Kann man die gebrochene Tetration allein aus den ganzzahligen Werten $1,\ a,\ a^a,\ a^{a^a},\dots$ ausrechnen? Bei der Basis unter $\eta$ ja:
+    V. Reshetnikov hat 2017 eine Formel aufgeschrieben, die diese Werte mit **q-Binomialkoeffizienten** mischt. Sie ist eine Interpolation —
+    wie wenn man durch Messpunkte eine glatte Kurve legt —, nur nicht in $z$, sondern in $q^z$. Gerechnet ergibt sie genau die reguläre Tetration.
+  genau: |
+    Für $1<a<\eta$ sei $q=-W(-\ln a)$ — das ist der Multiplikator $\lambda$ am unteren Fixpunkt, $0<q<1$. Dann
+    $$t(z)=\sum_{n\ge0}\sum_{k=0}^n(-1)^{n-k}\,q^{\binom{n-k}2}\,{z\brack n}_q{n\brack k}_q\,{}^ka,\qquad{z\brack n}_q=\prod_{j=0}^{n-1}\frac{1-q^{z-j}}{1-q^{j+1}}.$$
+    - Die Teilsumme bis $n=N$ ist das Polynom in $q^z$, das durch die Werte bei $z=0,1,\dots,N$ geht. An ganzen Höhen stimmt sie exakt.
+    - Gemessen: $t(z)$ ist die reguläre Tetration ([[kl.satz.regulaer]]), mit Fehler bei $N=80$ unter $10^{-30}$, und der Fehler fällt je Glied
+      um den Faktor $q^{\operatorname{Re}z+2}$.
+    - Vorsicht: Die einzelnen Glieder sind riesig (wie $q^{-n^2/2}$) und heben sich fast auf. Man braucht etwa $\frac{n^2}2\log_{10}(1/q)$ Stellen.
+  warum: |
+    Eine Begründung in Skizze (der verwendete Interpolationssatz ist hier nicht nachgeprüft):
+    1. Die reguläre Tetration hängt nur von $w=q^z$ ab: $T(z)=G(q^z)$ mit $G(w)=\Psi(w\,\sigma(1))$ ([[kl.satz.koenigs_spektral]]).
+    2. $G$ ist glatt, bis $w$ die Stelle $q^{-2}$ erreicht — das entspricht $z=-2$, wo jede Tetration abbricht ([[kn.satz.singulaer_minus2]]).
+    3. Die Teilsummen interpolieren $G$ an den Punkten $w=1,q,q^2,\dots\to0$. Für solche Knoten konvergiert die Interpolation im ganzen Kreis,
+       in dem $G$ glatt ist, mit Rate $|w|/q^{-2}=q^{\operatorname{Re}z+2}$ — genau das wird gemessen.
+
+    Ein zweites Argument (Antwort auf Reshetnikovs Frage): Konvergiert die Reihe, so ist $t$ in $\operatorname{Re}z>0$ beschränkt; zwei beschränkte
+    Lösungen, die an allen natürlichen Zahlen übereinstimmen, sind gleich (Satz von Carlson). Also ist $t$ die reguläre Tetration.
+  beispiel: |
+    $a=\sqrt2$ ($q=\ln2=0.6931$), $z=1/2$: $T(1/2)=1.2436216276685218\ldots$ Abstand der Teilsummen:
+    $3.2\cdot10^{-7}$ ($N=10$), $1.8\cdot10^{-11}$ ($N=20$), $1.1\cdot10^{-19}$ ($N=40$), $6.9\cdot10^{-36}$ ($N=80$). Faktor je Glied $0.3946$,
+    vorhergesagt $q^{2.5}=0.4000$. Bei $z=-0.7$ (näher an $-2$) langsamer: Faktor $0.613$ gegen $q^{1.3}=0.621$.
+  bilder: [exp.qbinomial]
+  einordnung: |
+    Eine zweite, explizite Darstellung der regulären Tetration neben der Koenigs-Reihe. Reshetnikovs dritte Vermutung — die Ableitung ist
+    vollständig monoton — ist eine Vorzeichenfrage über die Koenigs-Koeffizienten: [[kl.verm.vollmonoton]].
+
+kl.verm.vollmonoton:
+  worum: |
+    Die Gammafunktion ist unter allen Lösungen ihrer Gleichung die einzige mit einer bestimmten Krümmungseigenschaft (Bohr–Mollerup). Gibt es so
+    etwas für die Tetration? Reshetnikov vermutet: Unter $\eta$ ist die Steigung der regulären Tetration **vollständig monoton** — eine Summe
+    lauter abfallender Exponentialkurven mit positiven Gewichten. Hier wird gezeigt, dass das gleichwertig zu einer einfachen Vorzeichenfrage ist,
+    und die Vorzeichen werden nachgerechnet.
+  genau: |
+    Für $1<a<\eta$ hat die reguläre Tetration die Koenigs-Reihe $T(z)=L+\sum_{k\ge1}c_k\lambda^{kz}$ mit $0<\lambda<1$ ([[kl.satz.koenigs_spektral]]).
+
+    **Vermutung (Reshetnikov 2017):** $T'$ ist auf $(-2,\infty)$ vollständig monoton, d. h. $T'\ge0$, $T''\le0$, $T'''\ge0$, … .
+
+    **Gleichwertig:** alle $c_k\le0$.
+
+    **Gemessen:** $c_1,\dots,c_{60}$ sind negativ für $a=\sqrt2,\ 1.3,\ 1.1,\ 1.44$.
+
+    Reshetnikovs vierte Vermutung: $T$ ist die **einzige** analytische Lösung mit $T(-1)=0$ und dieser Eigenschaft.
+  warum: |
+    **Warum gleichwertig.** Mit $s=|\ln\lambda|$ ist $\lambda^{kz}=e^{-ksz}$ und
+    $$T'(x)=\sum_k(-c_k)\,ks\,e^{-ksx}.$$
+    - Sind alle $c_k\le0$, ist das eine Summe abfallender Exponentiale mit Gewichten $\ge0$; jede Ableitung wechselt brav das Vorzeichen.
+    - Umgekehrt: Nach dem Satz von Bernstein ist eine vollständig monotone Funktion ein „Mittel“ von Exponentialen $e^{-tx}$ mit positiven Gewichten,
+      und diese Gewichte sind eindeutig. Hier kommen nur $t=ks$ vor, mit Gewicht $-c_k ks$ — also $-c_k\ge0$.
+    - Reichweite: Sind alle $c_k\le0$, liegt die erste Störung der Reihe auf der reellen Achse (Satz von Pringsheim), also bei $z=-2$. Die Reihe
+      gilt dann auf ganz $(-2,\infty)$.
+
+    **Die Vorzeichen.** $c_k=p_k\,\sigma(1)^k$, wobei $p_k$ die Taylor-Koeffizienten der Poincaré-Funktion sind und $\sigma(1)<0$. Die Rechnung zeigt
+    also, dass die $p_k$ regelmässig das Vorzeichen wechseln. Ein Beweis dafür fehlt.
+  beispiel: |
+    $a=\sqrt2$: $c_1=-0.6321$, $c_2=-0.226$, $c_3=-0.0854$, $c_4=-0.0336$, …, $c_{60}=-3.8\cdot10^{-21}$.
+    $a=1.44$ (nahe $\eta$, langsamster Abfall): $c_1=-0.455$, $c_8=-0.031$, $c_{60}=-3.8\cdot10^{-9}$ — alle negativ.
+  bilder: [exp.qbinomial]
+  einordnung: |
+    Wäre die Vermutung (mit Eindeutigkeit) bewiesen, hätte man für $b<\eta$ eine rein reelle Kennzeichnung — im Fall $b>\eta$ fehlt so etwas
+    ([[br.frage.bohr_mollerup]]). Das parabolische Vorbild ist Szekeres' Satz für $e^x-1$ ([[it.satz.szekeres_monoton]]). Die Reihe, aus der die
+    Vermutung stammt: [[kl.beob.q_binomial]].
+
+kl.satz.folgen_vollmonoton:
+  worum: |
+    Drei offene Fragen zur regulären Tetration hängen an einer einzigen: ob alle Koenigs-Koeffizienten negativ sind ([[kl.verm.vollmonoton]]).
+    1. Ist die Kurve überall nach unten gebogen?
+    2. Gilt TPID 7?
+    3. Bildet die Tetration die rechte Hälfte der komplexen Ebene wieder in die rechte Hälfte ab? Das fragte J. D. Nixon 2017.
+
+    Sind die Vorzeichen richtig, folgen alle drei in wenigen Zeilen — die dritte sogar in einer schärferen Form.
+  genau: |
+    Sei $1<b<\eta$, $T(z)=L+\sum_{k\ge1}c_k\lambda^{kz}$ die reguläre Tetration (Koenigs-Reihe), und alle $c_k\le0$. Dann:
+    1. $T$ ist auf $(-2,\infty)$ konkav, $\ln T$ auf $(-1,\infty)$ konkav, und $T(y)T(-y)<1$ für $0<|y|<1$.
+    2. Für $\operatorname{Re}z\ge0$ liegt $T(z)$ in der Kreisscheibe um $L$ mit Radius $L-1$:
+       $$|T(z)-L|\le L-1,\qquad\text{also}\quad\operatorname{Re}T(z)\ge1,\quad|T(z)|\le2L-1.$$
+  warum: |
+    Mit $s=|\ln\lambda|$ ist $\lambda^{kx}=e^{-ksx}$.
+    1. **Konkav:** $T''(x)=\sum_kc_k\,k^2s^2\,e^{-ksx}$ — jedes Glied ist $\le0$. Der Logarithmus einer positiven konkaven Funktion ist konkav. Mit
+       $T(0)=1$ gibt die Mittelpunkt-Ungleichung $\ln T(y)+\ln T(-y)<2\ln T(0)=0$.
+    2. **Kreisscheibe:** Für $\operatorname{Re}z\ge0$ ist $|\lambda^{kz}|=\lambda^{k\operatorname{Re}z}\le1$, also
+       $$|T(z)-L|\le\sum_k|c_k|=-\sum_kc_k=L-T(0)=L-1 .$$
+       Die letzte Gleichung ist die Koenigs-Reihe bei $z=0$: $1=T(0)=L+\sum c_k$. Die Scheibe berührt die Gerade $\operatorname{Re}w=1$ genau im Punkt $w=1=T(0)$.
+  beispiel: |
+    Basis $\sqrt2$: $L=2$, also liegt $T(\operatorname{Re}z\ge0)$ in der Scheibe $|w-2|\le1$. Gemessen auf 637 Punkten (Realteil 0 bis 3, eine volle imaginäre
+    Periode $17.14$): kleinster Realteil genau $1.0$, grösster Abstand zu 2 genau $1.0$ — beides nur bei $z=0$. Ebenso für $b=1.1,\ 1.3,\ 1.44$.
+  bilder: [exp.vermutungen]
+  einordnung: |
+    Nixon hatte die Vorzeichen der Poincaré-Koeffizienten als die Lücke in seinem Programm benannt: beschränkte analytische Pentation und Hexation unter $\eta$.
+    Hier sieht man, wie viel an dieser Lücke hängt: [[gr.verm.tpid7]], die Konkavität aus [[gr.verm.ein_wendepunkt]] und die Halbebene. Die Vorzeichen selbst
+    sind für vier Basen bis $c_{60}$ nachgerechnet ([[kl.verm.vollmonoton]]).
+
+kl.satz.newton_reihe:
+  worum: |
+    Unter $\eta$ legen die Turmwerte an den ganzen Stellen die reguläre Tetration schon fest: Die alte Newton-Interpolation aus Differenzen trifft sie genau.
+  genau: |
+    $$T(h)=\sum_{n\ge0}\binom hn\Delta^nT(0)$$
+    mit den Differenzen $\Delta^nT(0)$ der Zahlen $1,b,b^b,\dots$ — die Summe ist die reguläre Tetration. Die Konvergenz ist langsam (algebraisch).
+  warum: |
+    1. Die reguläre Tetration ist eine Summe aus Potenzen $\lambda^{kh}$ mit $0<\lambda<1$.
+    2. Für jede einzelne Potenz ist die Newton-Reihe die Binomialreihe $(1+(\lambda^k-1))^h$, und die konvergiert, weil $|\lambda^k-1|<1$.
+    3. Alles konvergiert absolut, also darf man die Summen vertauschen.
+  beispiel: |
+    $b=\sqrt2$, $h=\frac12$: nach 90 Gliedern $1.24362$ — Abstand $9\cdot10^{-7}$ zur regulären Tetration $1.2436216276685\ldots$
+  bilder: [exp.forum_formeln]
+  einordnung: |
+    Das schnellere q-Analogon ist Reshetnikovs Formel ([[kl.beob.q_binomial]]). Gottfried Helms beobachtete 2011, dass die Newton-Formel der Iteration am
+    anziehenden Fixpunkt folgt.
+
+kl.frage.tpid5:
+  worum: |
+    Eine Symmetrie-Forderung, die die Basis $\sqrt2$ nicht verträgt.
+  genau: |
+    Ist jede Lösung von $f(x+1)=\sqrt2^{\,f(x)}$, $f(0)=1$, mit $f(-f(x))=-x$ überall unstetig?
+  warum: |
+    Die beiden regulären Lösungen (an 2 und an 4, [[kl.satz.vier_sqrt2]]) erfüllen die Spiegelbedingung nicht; eine stetige Lösung müsste beide Fixpunkt-Welten
+    verbinden. Vermutet: unmöglich, nicht einmal an einem Punkt stetig.
+  beispiel: |
+    Für $x=-1$: $f(-f(-1))=f(0)=1$, aber verlangt ist $1$ — passt. Die Schwierigkeit liegt bei nicht ganzen Höhen.
+  einordnung: |
+    Offenes Problem der Forumsliste (TPID 5).
+
+kl.satz.carlson:
+  worum: |
+    Unter $\eta$ gibt es eine besonders einfache Kennzeichnung der richtigen Tetration: Sie bleibt in der rechten Halbebene beschränkt — und das kann nur eine.
+  genau: |
+    Zwei Tetrationen, die auf $\operatorname{Re}z\ge0$ holomorph und beschränkt sind, sind gleich. Die reguläre Tetration (am unteren Fixpunkt) ist für $1<b\le\eta$ so eine.
+  warum: |
+    1. Die Differenz zweier Tetrationen verschwindet an allen ganzen Zahlen $0,1,2,\dots$
+    2. Carlsons Satz: Eine in der rechten Halbebene holomorphe Funktion, die höchstens exponentiell wächst, auf der imaginären Achse langsamer als $e^{\pi|y|}$, und an allen
+       natürlichen Zahlen null ist, ist überall null. (Ohne die Schranke ginge es nicht: $\sin\pi z$ verschwindet auch an allen ganzen Zahlen.)
+    3. Über $\eta$ wächst jede reelle Tetration auf der reellen Achse schneller als jede Exponentialfunktion — dort ist Carlson nutzlos, und man braucht die Grenzwerte $L,\bar L$.
+  beispiel: |
+    Basis $\sqrt2$: Auf $\operatorname{Re}z\in[0,3]$ über eine volle Periode bleibt $|T(z)-2|\le1$ (Experiment zu [[kl.satz.folgen_vollmonoton]]).
+  einordnung: |
+    Gegenstück zu [[kn.satz.paulsen_cowgill]] über $\eta$; verwandt mit [[it.satz.vertauschbar]].

@@ -1,0 +1,663 @@
+gebiet: kl
+# Basen 1 < b < η (und komplex mit anziehendem Fixpunkt): Fortsetzung über den Grenzwert, Bruchsummen, Bruchprodukte,
+# linearer Basiswechsel in Koenigs-Koordinaten. Experimente: exp.bruchsummen, exp.koenigs_basiswechsel.
+aussagen:
+
+- id: kl.satz.grenzwertformel
+  titel: Halbe Schritte über den Grenzwert
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [regulaer_T, schroeder, fixpunkt_L, multiplikator]
+  bereich: '$1<b<\eta$, $a$ unterer Fixpunkt, $\lambda=a\ln b\in(0,1)$, $x\in\mathbb R$ (komplex: jede Basis mit $0<|\lambda|<1$)'
+  voraussetzungen:
+    - {text: 'anziehender Fixpunkt a mit 0 < |λ| < 1', benutzt: ja}
+    - {text: 'b reell', benutzt: nein, notiz: 'komplex genauso, mit einem Zweig von λ^x'}
+  aussage: |
+    $$T^{\mathrm{reg}}(x)=\lim_{n\to\infty}\log_b^{\circ n}\!\Bigl(a+\lambda^{x}\bigl(b\uparrow\uparrow n-a\bigr)\Bigr),$$
+    der Fehler fällt wie $\lambda^{n}$. Man geht $n$ Schritte zum Grenzwert, macht dort den Bruchschritt als Streckung um $\lambda^x$
+    und rechnet $n$ Schritte zurück.
+  einfach: >-
+    Unter η kommt der Turm einer festen Zahl a immer näher. Ganz nah an a ist jeder Schritt fast nur ein Zusammenziehen um den
+    Faktor λ. Dort weiss man, was ein halber Schritt ist: Zusammenziehen um √λ. Rechnet man danach zurück, erhält man den halben
+    Schritt am Anfang.
+  formen:
+    - {tex: 'T(x)=\sigma^{-1}\bigl(\lambda^x\sigma(1)\bigr),\quad \sigma(z)=\lim_n\lambda^{-n}\bigl(f^{\circ n}(z)-a\bigr)', notiz: 'Koenigs-Form'}
+  beweis: {art: vollstaendig, text: '$\sigma(a+w)=w+O(w^2)$; einsetzen von $w=\lambda^x(f^{\circ n}(1)-a)=O(\lambda^n)$ gibt $\sigma^{-1}(\lambda^x\lambda^n\sigma(1))+O(\lambda^{2n})$, und $\log_b^{\circ n}$ verstärkt den Fehler höchstens um $\lambda^{-n}$.'}
+  stuetzt_sich_auf: [kl.satz.regulaer, it.satz.koenigs]
+  experimente: [exp.bruchsummen]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Koenigs.'
+    f2_benutzte_voraussetzungen: 'Nur Anziehung bei a; die Formel definiert dieselbe Lösung wie kl.satz.regulaer.'
+    f3_spezialfall: 'Ja: Grenzwertdarstellung jeder regulären Iteration (Lévy, Kuczma).'
+    f4_uebertragbar: 'Komplexe Basen im Shell–Thron-Gebiet; parabolisch (b = η) braucht statt λ^x die Fatou-Koordinate.'
+    f5_neue_frage: 'Numerik: Rundung wächst wie $\varepsilon\lambda^{-n}$, Optimum $n\approx\mathrm{dps}\ln10/(2|\ln\lambda|)$ (≈157 bei 50 Stellen, √2).'
+  gegenbeispielsuche: 'exp.bruchsummen (√2, x = 1/2): Fehler $4.3\cdot10^{-5}$, $1.8\cdot10^{-11}$, $5.2\cdot10^{-21}$ bei n = 20, 60, 120; bei n = 200 wieder $2\cdot10^{-19}$ (Rundung).'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Einfachste Rechenvorschrift für gebrochene Höhen unter η.', nutzen_stufe: hoch}
+  quellen: [{ref: kuczma1990}, {ref: koenigs1884}, {ref: diese_arbeit}]
+
+- id: kl.satz.bruchsumme
+  titel: Bruchsummen der Tetration
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [regulaer_T, fixpunkt_L]
+  bereich: '$1<b<\eta$, $T$ eine Tetration mit $T(x)\to a$ für $x\to\infty$ (z. B. regulär), $x>0$'
+  voraussetzungen:
+    - {text: 'T(k) → a geometrisch', benutzt: ja}
+    - {text: 'T regulär', benutzt: nein, notiz: 'jede Lösung mit T → a; die Werte hängen aber von T ab'}
+  aussage: |
+    $$\sum_{k=0}^{x-1}T(k):=x\,a+\sum_{k=0}^{\infty}\bigl(T(k)-T(k+x)\bigr)$$
+    konvergiert, erfüllt $S(x+1)-S(x)=T(x)$, $S(1)=1$, $S(2)=1+b$, und ist die einzige Fortsetzung der Teilsummen nach den
+    Axiomen von Müller–Schleicher (Summand nähert sich einer Konstanten).
+  einfach: >-
+    „Die Summe der ersten 1,5 Turmstufen“ bekommt einen Sinn: weil die Stufen sich a nähern, darf man weit hinten jede Stufe
+    durch a ersetzen und genau eine halbe Stufe a dazuzählen.
+  formen:
+    - {tex: 'S_{\sqrt2}(1/2)=0.42777492020486755502\ldots', notiz: 'reguläre Tetration zur Basis √2'}
+    - {tex: '\Sigma(x;h)=a\,h+\sum_{m\ge0}\bigl[T(x+m)-T(x+h+m)\bigr],\quad \Sigma(x;h+r)=\Sigma(x;h)+\Sigma(x+h;r)', notiz: 'Intervallform mit Höhen-Kozyklus (Juli-Synthese §6.4)'}
+    - {tex: '\Sigma(x;h)=a\,h+(I-\tau_h)(I-\tau_1)^{-1}(T-a)(x)', notiz: 'Operatorform, $\tau_h f(x)=f(x+h)$'}
+  beweis: {art: vollstaendig, text: '$|T(k)-T(k+x)|\le C\lambda^k$ ⇒ Konvergenz. Teleskop: $S(x+1)-S(x)=a+\sum_k(T(k+x)-T(k+x+1))=a+T(x)-a$. Eindeutigkeit: Müller–Schleicher, Satz über „approximativ konstante“ Summanden.'}
+  stuetzt_sich_auf: [kl.satz.regulaer]
+  experimente: [exp.bruchsummen]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Definition von Müller–Schleicher.'
+    f2_benutzte_voraussetzungen: 'Nur geometrische Konvergenz $T(k)\to a$.'
+    f3_spezialfall: 'Ja: Bruchsumme für Summanden mit konstantem Grenzwert.'
+    f4_uebertragbar: 'Für b > η nicht: die Summanden wachsen wie Türme, kein Polynom-Grenzverhalten.'
+    f5_neue_frage: 'Bruchprodukte und die Ableitungsformel → kl.satz.bruchprodukt'
+  gegenbeispielsuche: 'exp.bruchsummen: $S(3/2)-S(1/2)=T(1/2)$ auf $10^{-30}$, $S(1)=1$ und $S(2)=1+\sqrt2$ exakt.'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Neue Grösse (Bruchsumme), die es für ganze Höhen nicht gibt.', nutzen_stufe: mittel}
+  quellen: [{ref: mueller_schleicher2011}, {ref: mueller_schleicher2005}, {ref: justus_synthese_jul, stelle: '§§5–6'}, {ref: diese_arbeit}]
+
+- id: kl.satz.bruchprodukt
+  titel: Die Ableitungsformel mit gebrochenem Produkt kennzeichnet die reguläre Tetration
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [regulaer_T, T_b, periodische_stoerung]
+  bereich: '$1<b<\eta$; $T=T^{\mathrm{reg}}\circ(\mathrm{id}+\theta)$ mit $\theta$ 1-periodisch, $C^1$, $1+\theta''>0$, $\theta(0)=0$'
+  voraussetzungen:
+    - {text: '1 < b < η', benutzt: ja}
+    - {text: 'T streng wachsend, C¹, T′ > 0 (dann hat T diese Form)', benutzt: ja, ref: fg.satz.allgemeine_loesung}
+  aussage: |
+    Mit dem Bruchprodukt $\prod_{k=1}^{h}T(x+k):=a^{h}\prod_{k\ge1}\frac{T(x+k)}{T(x+k+h)}$ (Müller–Schleicher) gilt
+    $$\frac{T'(x+h)}{T'(x)}=(\ln b)^{h}\prod_{k=1}^{h}T(x+k)\quad\text{für ein }x\text{ und alle reellen }h$$
+    **genau dann, wenn** $\theta\equiv0$, d. h. $T$ die reguläre Tetration ist. Für ganze $h$ gilt die Formel für jede Lösung
+    (gr.kor.produktformel).
+  einfach: >-
+    Für ganze Schritte h gilt die Produktformel für die Ableitung bei jeder Tetration. Verlangt man sie auch für halbe und andere
+    gebrochene Schritte, bleibt unter η nur noch eine einzige Tetration übrig: die reguläre.
+  formen:
+    - {tex: '\ln T''(x+h)-\ln T''(x)=h\ln\ln b+h\ln a+\sum_{k\ge1}\bigl(\ln T(x+k)-\ln T(x+k+h)\bigr)', notiz: 'logarithmische Form'}
+    - {tex: 'g(x+N+h)-g(x+N)\to h\ln\lambda\ (N\to\infty),\quad g=\ln T''', notiz: 'gleichwertige Bedingung'}
+  beweis:
+    art: vollstaendig
+    text: |
+      Mit $g=\ln T'$ gilt $g(y+1)-g(y)=\ln\ln b+\ln T(y+1)$. Teleskopieren über $N$ Schritte ab $x$ und ab $x+h$ und Differenz bilden:
+      $g(x+h)-g(x)=[g(x+N+h)-g(x+N)]+\sum_{k=1}^{N}(\ln T(x+k)-\ln T(x+k+h))$. Also gilt die Formel genau dann, wenn
+      $g(x+N+h)-g(x+N)\to h\ln\lambda$. Für $T^{\mathrm{reg}}$ ist $T'(y)\sim C\lambda^{y}$, also ja. Für $T=T^{\mathrm{reg}}\circ(\mathrm{id}+\theta)$
+      ist der Grenzwert $h\ln\lambda+\varphi(x+h)-\varphi(x)$ mit $\varphi=\theta\ln\lambda+\ln(1+\theta')$. Gilt das für alle $h$, ist $\varphi$
+      konstant, also $\theta'=Ce^{-\theta\ln\lambda}-1$ — eine autonome Gleichung, deren einzige periodische Lösungen Konstanten sind; $\theta(0)=0$ gibt $\theta\equiv0$.
+  stuetzt_sich_auf: [kl.satz.bruchsumme, gr.kor.produktformel, fg.satz.allgemeine_loesung, kl.satz.regulaer]
+  experimente: [exp.bruchsummen]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; die Richtung „regulär ⇒ Formel“ ist leicht, die Eindeutigkeit braucht das ODE-Argument.'
+    f2_benutzte_voraussetzungen: '$C^1$ und $T''>0$ (für $\ln T''$ und die Darstellung mit θ); Analytizität nicht.'
+    f3_spezialfall: 'Verwandt mit Eindeutigkeitssätzen „Iterationsgruppe am Fixpunkt holomorph“ (it.satz.vertauschbar), aber rein reell.'
+    f4_uebertragbar: 'Für b > η offen: dort fehlt die Bruchsumme. Andere Bruchsummen-Formeln (z. B. für T selbst) geben ähnliche Kriterien.'
+    f5_neue_frage: 'Gibt es ein Bruchprodukt-Kriterium für Kneser (b > η), etwa über die komplexen Fixpunkte?'
+  gegenbeispielsuche: 'exp.bruchsummen: regulär bis $3.8\cdot10^{-36}$ erfüllt (x = 0, −1/2; h = 0.3, 0.5, 1.7); für θ = 0.05·(1−cos 2πx)/2 verletzt um 0.019 bzw. 0.20.'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, recherche: 'Bei Müller–Schleicher nicht gefunden; systematische Suche fehlt.', nutzen: 'Macht aus der Ableitungsformel des Nutzers ein Eindeutigkeitskriterium.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_synthese_jul, stelle: '§12, Theorem candidate C'}, {ref: mueller_schleicher2011}, {ref: diese_arbeit}]
+  versionen:
+    - {datum: '2026-07', fassung: 'Juli-Synthese §12', aenderung: 'Formel mit Bruchsumme Σ_b(x;h) und Beweisskizze (gleiche Differenzengleichung, gleiche Asymptotik) als Satzkandidat.'}
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Beweis ausgeschrieben und umgekehrt: nur die reguläre Lösung erfüllt die Formel für alle h.'}
+  kanten:
+    - {typ: verallgemeinert, ziel: gr.kor.produktformel}
+    - {typ: analog_zu, ziel: it.satz.vertauschbar}
+
+- id: kl.satz.koenigs_basiswechsel
+  titel: Gleiche Spirale, linearer Basiswechsel
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [regulaer_T, schroeder, multiplikator, F_bd]
+  bereich: 'zwei Basen $b,d$ mit anziehenden Fixpunkten, $0<|\lambda_b|,|\lambda_d|<1$ (reell oder komplex)'
+  voraussetzungen:
+    - {text: 'beide Basen mit anziehendem Fixpunkt (Shell–Thron-Gebiet)', benutzt: ja}
+  aussage: |
+    Mit den Koenigs-Funktionen $\sigma_b,\sigma_d$ und $\Psi:=\sigma_b^{-1}\circ(\kappa\,\sigma_d)$, $\kappa=\sigma_b(1)/\sigma_d(1)$, gilt
+    $$\Psi\circ f_d^{\,t}=f_b^{\,kt}\circ\Psi,\qquad k=\frac{\ln\lambda_d}{\ln\lambda_b},$$
+    für die regulären Flüsse, also $\operatorname{slog}^{\mathrm{reg}}_b\bigl(\Psi(T_d(x))\bigr)=k\,x$: der Basiswechsel ist **linear, ohne periodischen Teil**.
+    Ist $\lambda_d=\lambda_b^{k}$ mit ganzem $k$, so ist $f_b^{\circ k}\circ\Psi=\Psi\circ f_d$: der Orbit von $d$ wird auf jeden $k$-ten Punkt
+    der Spirale von $b$ abgebildet.
+  einfach: >-
+    Zwei Basen, deren Türme sich gleich zusammenziehen und drehen (nur verschieden schnell), sind „dieselbe Spirale“. Übersetzt man
+    die eine in die andere, wird aus der Höhe x einfach die Höhe k·x — ohne Wellen.
+  formen:
+    - {tex: 'k=2:\ \lambda_d=(\ln2)^2,\ d=1.34603293090\ldots,\ \text{Fixpunkt }1.61680667\ldots\ \text{(zu }b=\sqrt2)', notiz: 'reelles Beispiel'}
+  beweis: {art: vollstaendig, text: 'Reguläre Flüsse sind $f^t=\sigma^{-1}(\lambda^t\sigma)$. Einsetzen: $\Psi(f_d^t(z))=\sigma_b^{-1}(\kappa\lambda_d^t\sigma_d(z))=\sigma_b^{-1}(\lambda_b^{kt}\kappa\sigma_d(z))=f_b^{kt}(\Psi(z))$. Die Wahl von κ sorgt für $\Psi(1)=1$.'}
+  stuetzt_sich_auf: [it.satz.koenigs, kl.satz.grenzwertformel, fp.satz.multiplikator_rezept]
+  experimente: [exp.koenigs_basiswechsel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Koenigs.'
+    f2_benutzte_voraussetzungen: 'Nur Anziehung bei beiden Fixpunkten; Ψ ist nur auf dem Einzugsgebiet (dort, wo σ_b umkehrbar ist) erklärt.'
+    f3_spezialfall: 'Ja: zwei linearisierbare Keime sind über ihre Linearisierungen konjugiert, sobald die Multiplikatoren Potenzen voneinander sind.'
+    f4_uebertragbar: 'Für b, d > η (Kneser) gibt es keinen anziehenden Fixpunkt; dort hat der Basiswechsel einen periodischen Teil (bw.satz.phasengesetz).'
+    f5_neue_frage: 'kl.frage.basiswechsel_kneser'
+  gegenbeispielsuche: |
+    exp.koenigs_basiswechsel: Konjugation $f_{\sqrt2}^{\circ2}\circ\Psi=\Psi\circ f_d$ auf $10^{-18}$; Höhe exakt $2x$ (x = 0.5, 1.25, 3.5);
+    Verhältnis 1.7 ebenfalls linear; komplex ($\lambda_b=0.85e^{1.1i}$, $\lambda_d=\lambda_b^2$): $\Psi(z_{d,n})=z_{b,2n}$ für n = 10…25.
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Erklärt, warum der Basiswechsel unter η keine Phase hat: hier ist er eine Konjugation der Flüsse.', nutzen_stufe: mittel}
+  quellen: [{ref: koenigs1884}, {ref: diese_arbeit}]
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Rekonstruktion', aenderung: 'Nutzer erinnert sich an eine Untersuchung „Basen mit gleichen Spiralen, linearer Basiswechsel ohne periodischen Teil“; Daten und Sitzungen nicht mehr auffindbar. Diese Fassung ist neu hergeleitet und nachgerechnet, nicht aus den alten Unterlagen übernommen.'}
+    - {datum: '2026-10-08', fassung: 'Präzisierung', aenderung: 'Der Nutzer erinnert sich genauer: das Original war A_b(T_d(x)) für Basen mit gleichem Fixpunkt L. Die nähere Rekonstruktion ist kl.satz.basiswechsel_gleiches_L; diese Aussage bleibt als verwandte Konjugations-Fassung (beliebige Fixpunkte, aber künstliche Abbildung Ψ).'}
+  kanten:
+    - {typ: analog_zu, ziel: bw.satz.phasengesetz, notiz: 'Gegenstück: dort periodischer Teil P'}
+    - {typ: stuetzt_sich_auf, ziel: fp.satz.spirale}
+
+- id: kl.gescheitert.naiver_basiswechsel
+  titel: Naiver Basiswechsel unter η liefert nur eine Konstante
+  art: gescheitert
+  ebene: C
+  status: gescheitert
+  niveau: vertiefung
+  objekte: [F_bd, regulaer_T]
+  bereich: '$1<b,d<\eta$, reguläre Tetrationen'
+  aussage: |
+    Die Mischbasen-Höhe $\operatorname{slog}_b(T_d(x))$ wie bei $b,d>\eta$ zu bilden, bringt nichts: $T_d(x)\to a_d$, also läuft sie gegen
+    die Konstante $\operatorname{slog}_b(a_d)$ (Beispiel √2, $d=1.346$: 1.8295, 1.9061, 1.9061 bei $x=5,20,40$). Erst die Konjugation
+    $\Psi$ (kl.satz.koenigs_basiswechsel) macht einen sinnvollen Vergleich.
+  beweis: {art: vollstaendig, text: 'Stetigkeit von $\operatorname{slog}_b$ in $a_d$ (liegt im Einzugsgebiet von $a_b$, wenn $a_d<a_b$).'}
+  experimente: [exp.koenigs_basiswechsel]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Nur $T_d\to a_d$.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Zeigt, warum Hyp. 2.4 (Wachstum) im Phasengesetz nötig ist.'
+    f5_neue_frage: 'Richtige Koordinate → kl.satz.koenigs_basiswechsel'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Erhaltener Irrweg, der den richtigen Weg begründet.', nutzen_stufe: gering}
+  quellen: [{ref: justus_synthese_jul, stelle: '§15.1'}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: motiviert, ziel: kl.satz.koenigs_basiswechsel}
+
+- id: kl.frage.basiswechsel_kneser
+  titel: Woher kommt der periodische Teil über η?
+  art: frage
+  ebene: B
+  status: offen
+  niveau: forschung
+  objekte: [F_bd, phase, kneser_T, schroeder]
+  aussage: |
+    Unter η ist der Basiswechsel in Koenigs-Koordinaten exakt linear. Über η sind die Fixpunkte $L,\bar L$ abstossend und Kneser
+    klebt zwei Koenigs-Karten mit einer Riemann-Abbildung zusammen. Ist die Phase $P_{b,d}$ des Phasengesetzes genau das Bild dieser
+    Klebung, d. h. lässt sie sich aus den Theta-Abbildungen $\theta_b,\theta_d$ von Kneser ausrechnen?
+  naechste_frage: 'Für komplexe Basen im Shell–Thron-Gebiet nahe dem Rand (|λ| → 1) prüfen, ob der lineare Basiswechsel stetig in die Kneser-Phase übergeht.'
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: bw.satz.phasengesetz}
+    - {typ: verwandt, ziel: kn.konstr.kneser}
+
+- id: kl.satz.basiswechsel_gleiches_L
+  titel: Basiswechsel am gemeinsamen Fixpunkt ist linear
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [regulaer_T, schroeder, multiplikator, F_bd, fixpunkt_L]
+  bereich: 'zwei Basen $b\ne d$ mit gemeinsamem Fixpunkt $L$, $|\lambda_d|>1$, $|\lambda_b|\ne0,1$; $T_d$ regulär an $L$ mit $T_d(0)=1$, $A_b$ reguläre Abel-Funktion an $L$'
+  voraussetzungen:
+    - {text: 'gemeinsamer Fixpunkt L (fp.satz.gleiches_L)', benutzt: ja, ref: fp.satz.gleiches_L}
+    - {text: 'L abstossend für d', benutzt: ja, notiz: 'für anziehendes L gilt dasselbe mit x → +∞'}
+    - {text: 'b, d reell', benutzt: nein}
+  aussage: |
+    Mit $T_d(x)=\Psi_d(\lambda_d^{x}w_d)$ und $A_b=\log\sigma_b/\log\lambda_b$ gilt für $x\to-\infty$
+    $$A_b\bigl(T_d(x)\bigr)=C_1+C_2\,x+\frac{a_1\,w_d}{\log\lambda_b}\,\lambda_d^{x}+O\bigl(\lambda_d^{2x}\bigr),\qquad
+      C_2=\frac{\log\lambda_d}{\log\lambda_b},\quad C_1=\frac{\log w_d}{\log\lambda_b},$$
+    $a_1=\frac{u_d}{2(\lambda_d-1)}-\frac{u_b}{2(\lambda_b-1)}$. Die Abweichung von der Geraden fällt wie $|\lambda_d|^{x}$ — eine
+    gedämpfte Schwingung, **keine bleibende periodische Welle** wie im Mischbasen-Phasengesetz. Haben $b$ und $d$ verschiedene
+    Fixpunkte, läuft $A_b(T_d(x))$ dagegen gegen eine Konstante. Exakt linear ist der Basiswechsel nur für $b=d$.
+  einfach: >-
+    Wählt man zwei Basen, die um denselben Punkt L kreisen, und übersetzt die Höhe der einen in die Höhe der anderen, kommt eine
+    Gerade C₁ + C₂·x heraus. Die Abweichung davon schrumpft mit jedem Schritt um den Faktor |λ| — es bleibt keine Welle übrig.
+    Bei verschiedenen Fixpunkten klappt das nicht: dann bleibt die übersetzte Höhe einfach stehen.
+  formen:
+    - {tex: 'C_2=\frac{\ln(5\pi/2)+i\pi/2}{\ln(\pi/2)+i\pi/2}=1.27207228599878-0.94638289390563\,i', notiz: '$b=e^{\pi/2}$, $d=e^{5\pi/2}$, $L=i$'}
+    - {tex: 'C_2=\frac{\log(\ln2+2\pi i)}{\log\ln2}=-5.03099684006-3.98600629929\,i', notiz: '$b=\sqrt2$, $d=-\sqrt2$, $L=2$'}
+    - {tex: 'h:=\sigma_b\circ\Psi_d,\quad h(v)=v+a_1v^2+\dots,\quad A_b(T_d(x))=\frac{\log h(\lambda_d^xw_d)}{\log\lambda_b}', notiz: 'Kern des Beweises'}
+  beweis:
+    art: vollstaendig
+    text: |
+      Beide Linearisierungen sind am selben Punkt normiert ($\sigma_b(L)=\Psi_d(0)-L=0$, Ableitung 1), also ist $h=\sigma_b\circ\Psi_d$ tangential
+      zur Identität: $h(v)=v+(p_{2,d}-p_{2,b})v^2+\dots$ mit $p_2=u/(2(\lambda-1))$ (Koeffizientenvergleich in $\Psi(\lambda w)=e^{u\Psi(w)}$).
+      Einsetzen von $v=\lambda_d^xw_d\to0$ gibt die Formel. Bei verschiedenen Fixpunkten ist $T_d(x)\to L_d\ne L$ und $A_b(T_d(x))\to A_b(L_d)$.
+      Exakt linear hiesse $T_d(x)=T_b(C_1'+C_2x)$, also $f_d=f_b^{\,C_2}$ in der regulären Iterationsgruppe; dann vertauschen $f_b,f_d$:
+      $u_de^{u_bz}-u_be^{u_dz}\equiv$ const, ableiten gibt $e^{u_bz}=e^{u_dz}$, also $u_b=u_d$.
+  stuetzt_sich_auf: [fp.satz.gleiches_L, it.satz.koenigs, it.satz.vertauschbar]
+  experimente: [exp.gleiches_L, exp.funde]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald man beide Linearisierungen am selben Punkt betrachtet.'
+    f2_benutzte_voraussetzungen: 'Gemeinsamer Fixpunkt und $|\lambda_d|\ne1$; Realität der Basen nicht; T_d(0) = 1 nur für $C_1$.'
+    f3_spezialfall: 'Ja: zwei Keime mit gemeinsamem hyperbolischem Fixpunkt sind über ihre Linearisierungen bis auf einen zur Identität tangentialen Faktor gleich.'
+    f4_uebertragbar: 'Auf Kneser-Tetrationen komplexer Basen mit gemeinsamem oberem Fixpunkt: dort sollte die Welle nach oben (Im z → ∞) verschwinden → kl.frage.gleiches_L_kneser'
+    f5_neue_frage: 'Ist die Phase P des Phasengesetzes (bw.satz.phasengesetz) genau das, was beim Übergang von einem gemeinsamen zu verschiedenen Fixpunkten entsteht?'
+  gegenbeispielsuche: |
+    exp.gleiches_L, fünf Paare ($e^{\pi/2}$ mit $e^{5\pi/2}$ und mit $e^{-3\pi/2}$; $\sqrt2$ mit $-\sqrt2$; $e$ mit $e^{1-2\pi i/L_e}$; $2.084$ mit $-1659.6$):
+    Abfallrate der Abweichung = $\ln|\lambda_d|$ auf 5 Stellen, erste Korrektur bis $<4\cdot10^{-8}$ relativ, Ausgleichsgerade trifft $C_2$ auf $10^{-6}$.
+    Abweichung bei $x=-12$: $4\cdot10^{-12}$ … $2\cdot10^{-9}$; bei $x=-1$ noch 0.03 … 0.48 (linear nur asymptotisch).
+    Gegenprobe $e^{\pi/2}$ gegen $e$ (verschiedene L): Steigung $3.0\cdot10^{-3}$ bei $x=-20$, $5.1\cdot10^{-6}$ bei $x=-40$ (fällt wie $|L_e|^x$).
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, recherche: 'Keine Literaturstelle gesucht; mathematisch elementar.', nutzen: 'Erklärt, wann ein Basiswechsel ohne Welle möglich ist, und grenzt das Phasengesetz ab.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_bc_geteilt, stelle: '§§0–2'}, {ref: diese_arbeit}]
+  versionen:
+    - {datum: '2026-07-30', fassung: 'Original (am 08.10.2026 wiedergefunden)', aenderung: 'Exakt affin: A_b = σ·A_d + Ψ(κ_d), Ψ analytisch, Ψ(0) = 0; Musterpaar b = −19/25 mit anziehendem Partner d = 1.425186736 − 0.046203369i; Quotient des Rests = λ_d auf 21 Stellen (200 Dezimalstellen) für zehn Multiplikatoren.'}
+    - {datum: '2026-08', fassung: 'Erinnerung des Nutzers', aenderung: 'Basen mit gleichem L gesucht, Basiswechsel A_b(T_d(x)) = C₁ + C₂·x ohne periodische Welle beobachtet.'}
+    - {datum: '2026-10-08', fassung: 'Rekonstruktion', aenderung: 'Aus der Erinnerung neu hergeleitet (fünf Paare, beide Seiten abstossend oder gemischt); stimmt mit dem später wiedergefundenen Original überein. Ergänzt aus dem Original: Hauptzweig-Bedingung |Im c| ≤ π (fp.beob.partner_keil) und die Deutung der Welle (kl.satz.invariante_daempfung).'}
+  kanten:
+    - {typ: analog_zu, ziel: bw.satz.phasengesetz, notiz: 'dort bleibt eine Welle P'}
+    - {typ: verwandt, ziel: kl.satz.koenigs_basiswechsel}
+    - {typ: verwandt, ziel: kl.gescheitert.naiver_basiswechsel, notiz: 'Gegenstück: verschiedene Fixpunkte'}
+
+- id: kl.frage.gleiches_L_kneser
+  titel: Verschwindet die Welle auch bei Kneser, wenn der obere Fixpunkt gemeinsam ist?
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [kneser_T, F_bd, phase, fixpunkt_L]
+  aussage: |
+    Komplexe Basen $b,d$ mit gemeinsamem oberem Fixpunkt $L$ (Leiter aus fp.satz.gleiches_L) haben Kneser-artige Tetrationen
+    (Paulsen), die für $\mathrm{Im}\,z\to+\infty$ gegen $L$ laufen. Ist dann $\operatorname{slog}_b(T_d(z))-C_2z$ nach oben exponentiell klein,
+    und bleibt die Welle nur auf der reellen Achse bzw. nach unten (zweiter Fixpunkt)?
+  naechste_frage: 'Für verschiedene Fixpunkte beantwortet (bw.satz.imaginaere_richtung: nach oben konvergiert A_b(T_d(iy)) gegen A_b(L_d)). Offen bleibt der Fall gemeinsamer oberer Fixpunkt; erst mit einem zuverlässigen Motor für komplexe Basen (exp.adressen: der Motor hängt an einzelnen Punkten).'
+  quellen: [{ref: paulsen2019}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: kl.satz.basiswechsel_gleiches_L}
+    - {typ: verwandt, ziel: bw.satz.phasengesetz}
+
+# ---------------------------------------------------------------- aus der Juli-Synthese (§§7, 8–11, 15, 18.8, 19)
+- id: kl.satz.koenigs_spektral
+  titel: Koenigs-Spektrum — Ableiten, Integrieren und Summieren als Faktoren
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [regulaer_T, schroeder, multiplikator]
+  bereich: '$1<b<\eta$ (allgemein: anziehender Fixpunkt $a$, $0<|\lambda|<1$), $x$ so gross, dass $|\sigma(1)\lambda^x|$ im Konvergenzkreis von $\sigma^{-1}$ liegt'
+  voraussetzungen:
+    - {text: 'reguläre Tetration am anziehenden Fixpunkt', benutzt: ja, ref: kl.satz.regulaer}
+  aussage: |
+    $$T(x)=a+\sum_{n\ge1}c_n\lambda^{nx},\qquad c_n=p_n\,\sigma(1)^n,\quad c_2=\frac{\ln b\;c_1^2}{2(\lambda-1)},$$
+    ($p_n$ Koeffizienten von $\sigma^{-1}$). Im Spektrum wird jede Operation ein Faktor pro Mode:
+    Ableiten $\leftrightarrow n\log\lambda$, Integrieren $\int_x^\infty\leftrightarrow-1/(n\log\lambda)$, Summe über ganze Verschiebungen
+    $\sum_{k\ge0}\leftrightarrow1/(1-\lambda^n)$. Insbesondere ist die Bruchsumme eine Lambert-Reihe:
+    $$\Sigma(x;h)=a\,h+\sum_{n\ge1}c_n\lambda^{nx}\,\frac{1-\lambda^{nh}}{1-\lambda^n}.$$
+  einfach: >-
+    Unter η ist die Tetration eine Summe von immer schneller abklingenden Wellen λ^x, λ^{2x}, … Ableiten, Integrieren und
+    Aufsummieren machen aus jeder Welle nur ein Vielfaches von sich selbst — man rechnet mit Zahlen statt mit Funktionen.
+  formen:
+    - {tex: 'T^{(r)}(x)=\sum_n c_n(n\log\lambda)^r\lambda^{nx}', notiz: 'alle Ableitungen'}
+    - {tex: '\sum_{k\ge0}T^{(r)}(x+k)=\sum_n\frac{c_n(n\log\lambda)^r\lambda^{nx}}{1-\lambda^n}\ (r\ge1)', notiz: 'Shift-Summe'}
+    - {tex: '\int_x^\infty(T-a)\,dt=-\sum_n\frac{c_n\lambda^{nx}}{n\log\lambda}', notiz: 'Integral-Schwanz'}
+    - {tex: 'J_h(z)=\frac{1-z^h}{1-z},\quad J_{h+r}(z)=J_h(z)+z^hJ_r(z)', notiz: 'Kern der Lambert-Form; die Identität ist der Höhen-Kozyklus'}
+  beweis: {art: vollstaendig, text: '$T(x)=\sigma^{-1}(\lambda^x\sigma(1))$ und Potenzreihe von $\sigma^{-1}$ um 0; gliedweise ableiten, integrieren und geometrisch summieren ist im Konvergenzbereich erlaubt (gleichmässige Konvergenz). $c_2$ aus dem Koeffizientenvergleich in $\sigma^{-1}(\lambda w)=b^{\sigma^{-1}(w)}$.'}
+  stuetzt_sich_auf: [kl.satz.regulaer, it.satz.koenigs, kl.satz.bruchsumme]
+  experimente: [exp.koenigs_kalkuel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Koenigs-Darstellung.'
+    f2_benutzte_voraussetzungen: 'Nur Anziehung und Konvergenz der inversen Schröder-Reihe; kleinere Höhen über die Funktionalgleichung.'
+    f3_spezialfall: 'Ja: Spektralzerlegung einer linearisierbaren Dynamik.'
+    f4_uebertragbar: 'Auf Zyklen (Rückkehrabbildung) und komplexe Basen im Shell–Thron-Gebiet; bei η bricht es zusammen (1/(1 − λ^n) → ∞) → kl.verm.lambert_zeta'
+    f5_neue_frage: 'Wie gehen die Lambert-Nenner beim Grenzübergang λ → 1 in die Digamma-/Zeta-Struktur über?'
+  gegenbeispielsuche: 'exp.koenigs_kalkuel (√2, x = 6): Spektralreihe, Ableitung, Shift-Summe, Lambert-Bruchsumme und Integral-Schwanz gegen unabhängige Rechnungen auf $10^{-25}$ bis $10^{-40}$.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Rechenkalkül für alle Grössen unter η; macht Bruchsummen explizit.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_synthese_jul, stelle: '§7, Theorem candidate B'}, {ref: diese_arbeit}]
+
+- id: kl.satz.wertseitiger_basiswechsel
+  titel: Wertseitiger Basiswechsel T_b∘A_d ist eine Potenz in Koenigs-Koordinaten
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [regulaer_T, schroeder, multiplikator, F_bd]
+  bereich: '$1<b,d<\eta$, reguläre Tetrationen, $\chi(T(x))=\lambda^x$ normiert, $K_{b,d}=T_b\circ A_d$'
+  voraussetzungen:
+    - {text: 'beide Basen mit anziehendem Fixpunkt, verträgliche Zweige', benutzt: ja}
+  aussage: |
+    $$\chi_b\circ K_{b,d}=\chi_d^{\,\rho_{b,d}},\qquad\rho_{b,d}=\frac{\log\lambda_b}{\log\lambda_d},\qquad K_{b,c}\circ K_{c,d}=K_{b,d}.$$
+    $K_{b,d}$ bildet den $d$-Orbit auf den $b$-Orbit gleicher Höhe ab und konjugiert $f_d$ zu $f_b$. Am Quellfixpunkt ist es verzweigt:
+    $K_{b,d}(y)-a_b\sim C\,(a_d-y)^{\rho_{b,d}}$. Die Jacobi-Funktion folgt den Bruchsummen:
+    $$\frac{K'_{b,d}(T_d(x+h))}{K'_{b,d}(T_d(x))}=\Bigl(\frac{\ln b}{\ln d}\Bigr)^h\frac{b^{\Sigma_b(x;h)}}{d^{\Sigma_d(x;h)}}.$$
+    Die höhenseitige Abbildung $A_b\circ T_d$ läuft dagegen gegen einen festen Wert (kl.gescheitert.naiver_basiswechsel).
+  einfach: >-
+    Statt zu fragen „welche Höhe zur Basis b hat dieser Wert?“, fragt man „welcher Wert zur Basis b gehört zur selben Höhe?“.
+    Diese Übersetzung ist in den richtigen Koordinaten einfach eine Potenz.
+  beweis: {art: vollstaendig, text: '$\chi_b(T_b(x))=\lambda_b^x=(\lambda_d^x)^{\rho}=\chi_d(T_d(x))^\rho$ mit $x=A_d(y)$. Gruppoid: $\rho_{b,c}\rho_{c,d}=\rho_{b,d}$. Verzweigung aus $\chi_d(y)\sim\chi_d''(a_d)(y-a_d)$. Jacobi: $K''(T_d(x))=T_b''(x)/T_d''(x)$ und kl.satz.bruchprodukt für beide Basen.'}
+  stuetzt_sich_auf: [kl.satz.regulaer, kl.satz.bruchprodukt, it.satz.koenigs]
+  experimente: [exp.koenigs_kalkuel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus den Normierungen.'
+    f2_benutzte_voraussetzungen: 'Anziehende Fixpunkte; Realität nur für die Zweigwahl.'
+    f3_spezialfall: 'Ja: Vergleich zweier Linearisierungen; Gruppoid wie bw.prop.gruppoid.'
+    f4_uebertragbar: 'Auf gemeinsamen Fixpunkt (kl.satz.basiswechsel_gleiches_L: dort wird die höhenseitige Abbildung linear) und auf Zyklen.'
+    f5_neue_frage: 'Was wird aus ρ beim Grenzübergang b → η (λ_b → 1, log λ_b → 0)?'
+  gegenbeispielsuche: 'exp.koenigs_kalkuel (√2 und 1.3, ρ = 0.384957593…): Potenzgesetz auf $10^{-38}$, Verzweigungsexponent gemessen 0.3849575936, Jacobi-Formel auf $4\cdot10^{-38}$.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Der natürliche Basiswechsel unter η; verbindet Bruchsummen mit dem Basiswechsel.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_synthese_jul, stelle: '§15, Theorem candidate F'}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: kl.satz.basiswechsel_gleiches_L}
+    - {typ: analog_zu, ziel: bw.prop.gruppoid}
+
+- id: kl.satz.qk_basiswechsel
+  titel: Drei Arten, zwei Basen ineinander zu übersetzen — und warum keine alles kann
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [schroeder, multiplikator, F_bd]
+  bereich: 'zwei Basen mit anziehendem Fixpunkt (oder anziehendem Zyklus gleicher Periode, dann für die Rückkehrabbildung), $\Omega=\mathrm{Log}\,\lambda$'
+  voraussetzungen:
+    - {text: 'anziehende Fixpunkte/Zyklen', benutzt: ja}
+  aussage: |
+    Mit der reell-linearen Abbildung $M$, $M(\Omega_d)=\Omega_b$, $M(2\pi i)=2\pi i$, ist
+    $$K=\sigma_b^{-1}\circ\exp\circ M\circ\mathrm{Log}\circ\sigma_d$$
+    eindeutig, erfüllt $K\circ f_d=f_b\circ K$ und $K_{b,c}\circ K_{c,d}=K_{b,d}$, ist aber nur quasikonform. Holomorph, unverzweigt **und**
+    zeiterhaltend geht nur bei $\Omega_b=\Omega_d$. Man muss also eins aufgeben: Holomorphie (dieses $K$), Eindeutigkeit (Potenz
+    $\chi_d^\rho$, kl.satz.wertseitiger_basiswechsel) oder die Zeit ($\sigma_b^{-1}(\kappa\sigma_d)$ konjugiert $f_d$ zu $f_b^{\,k}$, kl.satz.koenigs_basiswechsel).
+  einfach: >-
+    Will man die Dynamik einer Basis in die einer anderen übersetzen, kann man nicht gleichzeitig alles behalten: glatt im
+    komplexen Sinn, eindeutig und mit gleichem Takt. Je nachdem, was man opfert, bekommt man eine andere der drei Übersetzungen.
+  beweis: {art: vollstaendig, text: '$\mathrm{Log}\,\sigma_d(f_dz)=\mathrm{Log}\,\sigma_d(z)+\Omega_d$ (mod $2\pi i$); $M$ bildet das auf $+\Omega_b$ ab und respektiert $2\pi i\mathbb Z$, also wohldefiniert und konjugierend. Komplex-linear und $2\pi i$ fest ⇒ $M=\mathrm{id}$ ⇒ $\Omega_b=\Omega_d$.'}
+  stuetzt_sich_auf: [it.satz.koenigs]
+  experimente: [exp.koenigs_kalkuel]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Gitterstruktur $\Omega\mathbb Z+2\pi i\mathbb Z$.'
+    f2_benutzte_voraussetzungen: 'Nur Linearisierbarkeit beider Keime.'
+    f3_spezialfall: 'Ja: Standardkonstruktion quasikonformer Konjugationen hyperbolischer Keime (Modulraum = Torus).'
+    f4_uebertragbar: 'Auf Zyklen gleicher Periode in derselben hyperbolischen Komponente; global zusätzlich Adressen.'
+    f5_neue_frage: 'Ist die Phase P des Mischbasen-Gesetzes über η das Gegenstück dieses Hindernisses?'
+  gegenbeispielsuche: 'exp.koenigs_kalkuel (λ_b = 0.6e^{0.9i}, λ_d = 0.5e^{2i}): Konjugation auf $3\cdot10^{-41}$; $|\partial K/\partial\bar z|=1.78$, bei gleichem Multiplikator $2\cdot10^{-30}$.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Ordnet die drei Basiswechsel-Fassungen dieses Graphen in ein Bild.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_synthese_jul, stelle: '§19, Theorem candidate G'}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: kl.satz.koenigs_basiswechsel}
+    - {typ: verwandt, ziel: kl.satz.wertseitiger_basiswechsel}
+
+- id: kl.satz.basis_unter_eins
+  titel: Für 0 < b < 1 ist die reguläre Tetration nicht reell
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [regulaer_T, multiplikator]
+  bereich: '$0<b<1$, reeller Fixpunkt $a$'
+  aussage: |
+    Der reelle Fixpunkt hat Multiplikator $\lambda=a\ln b<0$. Die reguläre Konstruktion $\sigma^{-1}(\lambda^x\sigma(1))$ ist deshalb für
+    nichtganze $x$ nicht reell: der diskrete Turm (Periode 1 oder 2) liefert keine reelle stetige Tetration auf diesem Weg.
+  einfach: >-
+    Unter 1 springt der Turm abwechselnd über und unter den Grenzwert. Einen „halben Sprung“ gibt es dabei nicht als reelle Zahl.
+  beweis: {art: vollstaendig, text: '$\lambda<0$ ⇒ $\lambda^x=|\lambda|^xe^{i\pi x}$ nicht reell für $x\notin\mathbb Z$; $\sigma^{-1}$ ist reell auf reellen Argumenten und injektiv nahe 0.'}
+  stuetzt_sich_auf: [it.satz.koenigs]
+  pruefung:
+    f1_folgt_unmittelbar: Ja.
+    f2_benutzte_voraussetzungen: 'Nur das Vorzeichen von λ.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Für $b<e^{-e}$ hat der 2-Zyklus positiven Multiplikator $(\ln b)^2L_+L_-$: dort ist die reguläre Iteration von $f\circ f$ reell.'
+    f5_neue_frage: 'Gibt es reelle Tetrationen für $0<b<1$ auf anderem Weg (z. B. über den 2-Zyklus)?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Grenzt den Bereich reeller regulärer Tetration ab.', nutzen_stufe: gering}
+  quellen: [{ref: justus_synthese_jul, stelle: '§18.8'}, {ref: diese_arbeit}]
+
+- id: kl.satz.eta_koordinate
+  titel: Basis η in der Kehrwert-Koordinate
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [fatou_koord, eta, regulaer_T]
+  bereich: '$b=\eta$, $T(0)=1$, $q=(e-T)/(2e)$, $Z=1/q$'
+  aussage: |
+    Exakt gilt $q(x+1)=\tfrac12(1-e^{-2q(x)})$ und
+    $$Z(x+1)=1+\coth\frac1{Z(x)}=Z(x)+1+\frac1{3Z}-\frac1{45Z^3}+\dots$$
+    Die Fatou-Koordinate hat die Form $\Phi(Z)=Z-\tfrac13\log Z+\sum_kc_kZ^{-k}$ mit **rationalen** $c_k$
+    ($\tfrac1{18},\tfrac1{135},-\tfrac1{972},-\tfrac{71}{27216},\dots$), und
+    $$Z(x)=x+\tfrac13\log x+C_T+O\Bigl(\frac{\log x}x\Bigr),\qquad C_T=\lim_{n\to\infty}\bigl(\Phi(Z(n))-n\bigr)=2.79824815423138766245\ldots$$
+    $C_T$ hängt nur von den ganzen Höhen $\eta\uparrow\uparrow n$ ab, nicht von der Wahl der gebrochenen Tetration.
+  einfach: >-
+    Bei der Basis η kriecht der Turm nur langsam gegen e. Misst man den Abstand richtig (als 2e/(e − T)), wächst er fast wie die Höhe
+    selbst: Höhe plus ein Drittel ihres Logarithmus plus eine feste Zahl C_T ≈ 2.798.
+  formen:
+    - {tex: 'T_\eta(x)=e-\frac{2e}{x}+\frac{\frac{2e}3\log x+2eC_T}{x^2}+O\Bigl(\frac{\log^2x}{x^3}\Bigr)', notiz: 'ausgeschrieben'}
+  beweis: {art: vollstaendig, text: '$T(x+1)=e\cdot e^{-2q}$ gibt die $q$-Gleichung; $2/(1-e^{-2u})=1+\coth u$. Die $c_k$ löst man Ordnung für Ordnung aus $\Phi(Z+1+\varepsilon)-\Phi(Z)=1$ (lineare Gleichung je Ordnung, rationale Daten). $C_T$: $\Phi(Z(n))-n$ konvergiert, weil der Fehler der abgebrochenen Reihe $O(Z^{-K-1})$ ist.'}
+  stuetzt_sich_auf: [kl.satz.parabolisch, it.satz.leau_fatou]
+  experimente: [exp.eta_digamma]
+  pruefung:
+    f1_folgt_unmittelbar: 'Umformungen ja; die Rationalität der Fatou-Reihe ist eine kleine Rechnung.'
+    f2_benutzte_voraussetzungen: 'Nur $b=\eta$ und $T(0)=1$; für $C_T$ nur ganze Höhen.'
+    f3_spezialfall: 'Ja: Fatou-Koordinate eines parabolischen Keims $z+1+a/z+\dots$ (Écalle).'
+    f4_uebertragbar: 'Auf $e^{-e}$ (Multiplikator −1, zweite Iterierte parabolisch).'
+    f5_neue_frage: 'Ist $C_T$ durch bekannte Konstanten ausdrückbar? (PSLQ offen)'
+  gegenbeispielsuche: 'exp.eta_digamma: Umformungen auf $10^{-55}$; $C_T$ aus n = 2500 und 20000 gleich auf $10^{-35}$; Rest $Z(n)-n-\tfrac13\log n-C_T$ = 0.0137, 0.0016, 0.00019 bei n = 10², 10³, 10⁴.'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, recherche: 'Nachtrag 08.10.2026: Trappmann–Kouznetsov (Math. Comp. 2012) geben die Entwicklung F(z) = e(1 − (2/z)(1 + Σ P_m(−ln z)/(3z)^m)) mit rationalen Polynomen P_m (P₁ = t, P₂ = t² + t + 1/2, …) — dieselbe Asymptotik, verschoben um die Konstante x₀ mit F(x₀) = 1, die unserem C_T entspricht. Neu hier vermutlich nur die exakte Kehrwert-Form Z(x+1) = 1 + coth(1/Z) und C_T auf 30 Stellen (dort etwa 15).', nutzen: 'Macht T_η auf beliebig viele Stellen berechenbar.', nutzen_stufe: mittel}
+  quellen: [{ref: kouznetsov_trappmann2012, stelle: 'Entwicklung der beiden regulären Superexponentiale'}, {ref: mizugadro_tetration, stelle: 'Abschnitt „Evaluation and behavior at b = exp(1/e)“, Polynome P₁–P₅'}, {ref: justus_synthese_jul, stelle: '§8'}, {ref: diese_arbeit}]
+  versionen:
+    - {datum: '2026-07', fassung: 'Synthese §8', aenderung: 'C_T als „normierungsabhängige Konstante“ ohne Wert.'}
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'C_T ist durch T(0) = 1 eindeutig (nur ganze Höhen) und berechnet; Fatou-Reihe rational.'}
+    - {datum: '2026-10-08', fassung: 'Recherche', aenderung: 'Neuheit auf „bekannt“: Entwicklung bei Trappmann–Kouznetsov 2012.'}
+
+- id: kl.satz.eta_digamma
+  titel: Bruchsumme bei η — die Digamma-Funktion erscheint von selbst
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [fatou_koord, eta, regulaer_T]
+  bereich: '$b=\eta$, reguläre parabolische Tetration (Fatou-Koordinate), $x>0$'
+  voraussetzungen:
+    - {text: 'gebrochene Höhen über die Fatou-Koordinate', benutzt: ja, ref: kl.satz.eta_koordinate}
+  aussage: |
+    $S_\eta(x)=e\,x+\sum_{k\ge1}[T(k)-T(k+x)]$ konvergiert (Glieder $O(k^{-2})$), obwohl $\sum(T(k)-e)$ divergiert, und
+    $$S_\eta(x)=e\,x-2e\bigl[\psi(x+1)+\gamma\bigr]-2e\,R_T(x),\qquad R_T(x)=\sum_{k\ge1}\Bigl[q(k)-\tfrac1k-q(k+x)+\tfrac1{k+x}\Bigr].$$
+    Für $x\to\infty$:
+    $$\begin{aligned}S_\eta(x)=e\,x-2e\log x-2e\gamma&+\sum_{k\ge1}\Bigl[T(k)-e+\frac{2e}k\Bigr]\\&-\frac{2e\bigl(\frac{\log x+1}3+C_T\bigr)+e}{x}+\dots\end{aligned}$$
+    Die nächsten Glieder von $q$ ($\log^jx/x^m$) liefern Hurwitz-Zeta-Ableitungen: $R_T$ zerlegt sich formal in $-\tfrac13\Delta_x\zeta'(2,1)+C_T\Delta_x\zeta(2,1)+\dots$
+  einfach: >-
+    Summiert man bei der Basis η „x Turmstufen“, wächst das wie e·x minus 2e·log x. Das log kommt daher, dass der Turm wie 1/x
+    an e heranrückt — und die Summe von 1/k ist der Logarithmus. Die genaue Form ist die Digamma-Funktion.
+  beweis: {art: vollstaendig, text: '$T(k)-T(k+x)=2e(q(k+x)-q(k))=O(k^{-2})$. Zerlegung $q=1/k+r(k)$ mit $\sum(1/k-1/(k+x))=\psi(x+1)+\gamma$. $R_T(x)\to R_\infty=\sum(q(k)-1/k)$ mit $R_T(x)-R_\infty\approx\int_x^\infty(\tfrac13\log m+C_T)m^{-2}dm$; $\psi(x+1)=\log x+\frac1{2x}+\dots$'}
+  stuetzt_sich_auf: [kl.satz.eta_koordinate, kl.satz.bruchsumme]
+  experimente: [exp.eta_digamma]
+  pruefung:
+    f1_folgt_unmittelbar: 'Zerlegung ja (Definition von R_T); die Asymptotik braucht die Entwicklung von q.'
+    f2_benutzte_voraussetzungen: 'Gebrochene Höhen nur für nichtganze x; die Konstante nur aus ganzen Höhen.'
+    f3_spezialfall: 'Ja: Müller–Schleicher-Summe für Summanden mit Rest $1/k$.'
+    f4_uebertragbar: 'Auf jede parabolische Basis (Zyklen mit Einheitswurzel-Multiplikator): dort Rest $k^{-1/q}$, statt ψ eine Hurwitz-Zeta-Funktion.'
+    f5_neue_frage: 'kl.verm.lambert_zeta'
+  gegenbeispielsuche: |
+    exp.eta_digamma: S(3/2) − S(1/2) = T(3/2) auf $2\cdot10^{-22}$; S(3) = T(1)+T(2)+T(3); Rest nach der Konstanten bei x = 20.5 und 200.5:
+    −0.992 und −0.131, relativ zur Vorhersage −2e((log x + 1)/3 + C_T)/x um 9.6 % bzw. 1.3 % daneben (nächste Ordnung).
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, recherche: 'Beantwortet eine offene Forumsfrage von G. Helms (2010, „sum(e − eta^^k): convergence or divergence?“): die Summe divergiert, und zwar wie 2e·ln n. Eine Digamma-Darstellung dort nicht gefunden.', nutzen: 'Zeigt, wie die Grenze η Exponentialabfall in Logarithmen und Digamma verwandelt; beantwortet die Forumsfrage von 2010.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_synthese_jul, stelle: '§§9–10, Theorem candidate D'}, {ref: mueller_schleicher2011}, {ref: forum_helms2010, stelle: 'Frage, ob Σ(e − η↑↑k) konvergiert'}, {ref: diese_arbeit}]
+  versionen:
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Konstante der Asymptotik als −2eγ + Σ[T(k) − e + 2e/k] bestimmt und den 1/x-Term ergänzt (Synthese: nur O(1)).'}
+
+- id: kl.beob.eta_konstanten
+  titel: Zahlen zur Basis η
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [eta, regulaer_T, fatou_koord]
+  bereich: '$b=\eta$, $T(0)=1$, reguläre parabolische Tetration'
+  aussage: |
+    $C_T=2.79824815423138766245258318547\ldots$, $\sum_{k\ge1}[T(k)-e+2e/k]=10.797562274939314335\ldots$,
+    Konstante der Bruchsumme $K_\eta=-2e\gamma+10.7975\ldots=7.659492568931829765\ldots$,
+    $T_\eta(1/2)=1.25715307505417262217\ldots$, $T_\eta'(0)=0.61109545377165172526\ldots$, $\sum_{k\ge1}T_\eta'(k)=1.45022901739342163\ldots$,
+    $S_\eta(1/2)=0.682095573523201008\ldots$
+  experimente: [exp.eta_digamma]
+  pruefung:
+    f1_folgt_unmittelbar: Nein (Rechnung).
+    f2_benutzte_voraussetzungen: 'Fatou-Reihe mit 24 Gliedern, Tiefe 3000; Schwänze nach Euler–Maclaurin. C_T und die regularisierte Summe nur aus ganzen Höhen.'
+    f3_spezialfall: —
+    f4_uebertragbar: —
+    f5_neue_frage: 'Erkennen einer geschlossenen Form (PSLQ mit e, γ, log 2, π, ζ(3), …).'
+  bewertung: {richtigkeit: numerisch, neuheit: neu_ungeprueft, nutzen: 'Referenzwerte für η.', nutzen_stufe: gering}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: stuetzt, ziel: kl.satz.eta_digamma}
+
+- id: kl.verm.lambert_zeta
+  titel: Von Lambert-Reihen zu Digamma beim Grenzübergang b → η
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [regulaer_T, fatou_koord, eta]
+  aussage: |
+    Für $b\uparrow\eta$ gehen die Lambert-Bruchsummen (kl.satz.koenigs_spektral, Nenner $1-\lambda_b^n\to0$) in die parabolische
+    Darstellung mit $\psi$ und Hurwitz-Zeta (kl.satz.eta_digamma) über: $S_b(x)\to S_\eta(x)$ mit Fehler $O(\eta-b)$. Die „geeignete
+    Umskalierung“ ist die Resummation zur q-Digamma-Funktion mit $q=\lambda_b$ (im Möbius-Modell exakt, kl.satz.moebius_qdigamma);
+    offen ist der Beweis für die echte Abbildung samt dem Anteil $\tfrac13\log k$.
+  gegenbeispielsuche: |
+    exp.lambert_zeta: sechs Basen $b=\exp(\lambda e^{-\lambda})$, $\delta=1-\lambda=0.2\dots0.005$: $|S_b(1/2)-S_\eta(1/2)|$ fällt monoton bis $2.3\cdot10^{-6}$,
+    Ordnung 2.0 in δ, also 1 in $\eta-b$. Rest „echt − Möbius“ → η-Rest (0.014572 → 0.014687).
+  pruefung:
+    f1_folgt_unmittelbar: Nein.
+    f2_benutzte_voraussetzungen: 'Stetigkeit der Tetration in b bei η (kl.frage.stetig_eta).'
+    f3_spezialfall: 'Analog zu „parabolischer Implosion“ (Lavaurs).'
+    f4_uebertragbar: —
+    f5_neue_frage: 'Welche Umskalierung: in log λ_b oder in √(η − b) (vgl. gr.satz.wurzel_eta)?'
+  bewertung: {richtigkeit: 'Mechanismus bewiesen (Modell), Konvergenz numerisch', neuheit: unklar, nutzen: 'Verbindet die zwei Kalküle.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_synthese_jul, stelle: 'Conjecture H'}, {ref: diese_arbeit}]
+  experimente: [exp.lambert_zeta]
+  versionen:
+    - {datum: '2026-07', fassung: 'Juli-Synthese', aenderung: '„nach korrekter Umskalierung“ ohne Angabe der Skalierung.'}
+    - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Skalierung = q-Digamma mit q = λ; Konvergenzordnung gemessen.'}
+  kanten:
+    - {typ: verwandt, ziel: kl.frage.stetig_eta}
+
+# ---------------------------------------------------------------- offene Punkte bearbeitet (08.10.2026)
+- id: kl.satz.moebius_qdigamma
+  titel: Lambert-Bruchsummen sind q-Digamma-Funktionen
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [regulaer_T, multiplikator, eta]
+  bereich: 'Möbius-Modell $M$ mit Fixpunkten $a<A$ und Multiplikator $\lambda\in(0,1)$ bei $a$; Start $y_0=1<a$'
+  aussage: |
+    Für $(M(y)-a)/(M(y)-A)=\lambda\,(y-a)/(y-A)$ ist die Bruchsumme exakt
+    $$S^M(x)=a\,x+\frac{A-a}{\ln\lambda}\Bigl[\psi_\lambda(x+1+s)-\psi_\lambda(1+s)\Bigr],\qquad \lambda^s=\frac{a-1}{A-1},$$
+    mit der q-Digamma-Funktion $\psi_q(z)=-\ln(1-q)+\ln q\sum_{n\ge0}\frac{q^{n+z}}{1-q^{n+z}}$ (eine Lambert-Reihe). Nähert man $b^y$ nahe η
+    durch $M$ an, gilt $(A-a)/\ln\lambda\to-2e$, $s\to Z_0=\frac{2e}{e-1}$, $\psi_\lambda\to\psi$, also
+    $$S^M(x)\longrightarrow e\,x-2e\bigl[\psi(x+1+Z_0)-\psi(1+Z_0)\bigr].$$
+    Das ist der Mechanismus „Lambert → Digamma“: die Nenner $1-\lambda^n$ der Lambert-Reihe sind die Nenner der q-Digamma-Funktion, und
+    $q\to1$ ist ihr klassischer Grenzwert. Was das Modell nicht trifft, ist der Anteil aus $\tfrac13\log k$ und $C_T$.
+  einfach: >-
+    Unter η ist jede Bruchsumme eine Reihe mit Nennern 1 − λⁿ. Genau solche Reihen ergeben die „q-Digamma-Funktion“. Wenn λ gegen 1
+    geht (b gegen η), wird daraus die gewöhnliche Digamma-Funktion — dieselbe, die bei η direkt auftaucht.
+  beweis: {art: vollstaendig, text: '$r_k=(y_k-a)/(y_k-A)=r_0\lambda^k$, also $y_k-a=-(A-a)\,r_k/(1-r_k)$; mit $r_0=\lambda^s$ ist $\sum_{k\ge1}[g(k)-g(k+x)]$, $g(t)=\lambda^{t+s}/(1-\lambda^{t+s})$, nach Definition von $\psi_q$ gleich $[\psi_\lambda(1+s)-\psi_\lambda(1+s+x)]/\ln\lambda$. Grenzwerte: $A-a\approx2e(1-\lambda)$, $\ln r_0\approx(a-A)/(e-1)$; $\psi_q\to\psi$ ist klassisch.'}
+  stuetzt_sich_auf: [kl.satz.koenigs_spektral, kl.satz.bruchsumme]
+  experimente: [exp.lambert_zeta]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald man das Möbius-Modell nimmt (dort ist die Iteration explizit).'
+    f2_benutzte_voraussetzungen: 'Nur Fixpunkte und Multiplikator; die echte Abbildung stimmt mit M bis zur zweiten Ordnung am Doppelfixpunkt überein.'
+    f3_spezialfall: 'Ja: Bruchsumme einer Möbius-Iteration = q-Analogon der Harmonischen Zahlen.'
+    f4_uebertragbar: 'Auf jeden Sattel-Knoten-Übergang (zwei verschmelzende Fixpunkte).'
+    f5_neue_frage: 'Korrektur des Modells: welche q-Funktion trägt den Anteil (1/3) log k? (vermutlich eine q-Hurwitz-Zeta-Ableitung)'
+  gegenbeispielsuche: 'exp.lambert_zeta: Formel gegen direkte Summe bei λ = 0.9 auf $8\cdot10^{-30}$; ψ_q → ψ linear in 1 − q; bei δ = 0.005: (A − a)/ln λ = −5.4321 (−2e = −5.4366), s = 3.1613 (Z₀ = 3.1640).'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Macht die Vermutung „Lambert → Zeta“ der Juli-Synthese konkret: die Brücke ist die q-Digamma-Funktion.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: stuetzt, ziel: kl.verm.lambert_zeta}
+    - {typ: verwandt, ziel: kl.satz.eta_digamma}
+
+- id: kl.beob.stetig_eta
+  titel: T_b(1/2) geht bei η glatt von regulär zu Kneser über
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [regulaer_T, kneser_T, eta]
+  bereich: '$T_b(1/2)$: regulär für $b<\eta$ (unterer Fixpunkt), Kneser für $b>\eta$, $T_\eta$ über die Fatou-Koordinate'
+  aussage: |
+    $T_b(1/2)\to T_\eta(1/2)=1.257153075054\ldots$ von beiden Seiten, linear in $|b-\eta|$, und mit **derselben Steigung**:
+    $\partial_bT_b(1/2)\approx0.438579$ (von unten, regulär) bzw. $0.438581$ (von oben, Kneser). Die beiden Familien setzen sich also
+    numerisch $C^1$ über η hinweg fort. Auch die Bruchsumme $S_b(1/2)\to S_\eta(1/2)$, Ordnung 1 in $\eta-b$.
+  einfach: >-
+    Unter η und über η baut man die Tetration auf ganz verschiedene Arten. Trotzdem passen die Werte bei Höhe 1/2 an der Grenze
+    nahtlos zusammen — sogar die Steigung stimmt auf sechs Stellen überein.
+  experimente: [exp.lambert_zeta]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Stetigkeit von unten ist plausibel (keine parabolische Implosion bei reellem λ → 1), von oben nicht offensichtlich.'
+    f2_benutzte_voraussetzungen: 'Sechs Basen unter η (δ = 1 − λ von 0.2 bis 0.005), drei über η (b − η = 10⁻¹, 10⁻², 10⁻³); Steigungen linear extrapoliert.'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Auf andere Höhen x; Frage nach höheren Ableitungen in b (analytisch über η hinweg?).'
+    f5_neue_frage: 'Ist T_b(x) bei η sogar unendlich oft differenzierbar in b — oder analytisch? → kl.frage.eta_analytisch'
+  bewertung: {richtigkeit: numerisch, neuheit: neu_ungeprueft, recherche: 'Kouznetsov (TORI-Wiki) gibt eine vorläufige Taylor-Tabelle von tet_b(x) in b − η an, deren erster Koeffizient 0.61061 zu unserem T_η′(0) = 0.611095 passt, und hält η trotzdem für einen Verzweigungspunkt; im Forum (mike3, 2011) Argumente gegen Analytizität. Die gleiche Steigung von beiden Seiten (C¹) ist dort nicht gemessen.', nutzen: 'Beantwortet kl.frage.stetig_eta numerisch für x = 1/2 und geht darüber hinaus (gleiche Steigung).', nutzen_stufe: hoch}
+  quellen: [{ref: diese_arbeit}, {ref: mizugadro_tetration, stelle: 'Abschnitt „Behavior at b ≈ exp(1/e), z ≈ 0“'}, {ref: forum_mike3_2011}]
+  kanten:
+    - {typ: stuetzt, ziel: kl.frage.stetig_eta}
+    - {typ: motiviert, ziel: kl.frage.eta_analytisch}
+
+- id: kl.frage.eta_analytisch
+  titel: Ist die Tetration in der Basis bei η analytisch?
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [regulaer_T, kneser_T, eta]
+  bereich: '$T_b(x)$ für festes $x>-2$ als Funktion der Basis $b$ nahe $\eta$'
+  aussage: |
+    Unter $\eta$ regulär, über $\eta$ nach Kneser: Numerisch passen Wert und erste Ableitung in $b$ bei $\eta$ zusammen (kl.beob.stetig_eta). Ist $b\mapsto T_b(x)$ bei $\eta$
+    **analytisch** — oder ist $\eta$ ein Verzweigungspunkt, an dem die Funktion zwar glatt ($C^\infty$), aber nicht analytisch ist?
+  naechste_frage: |
+    Zweite und dritte Ableitung in $b$ von beiden Seiten messen; komplexe Basen auf einem kleinen Kreis um $\eta$ auswerten (Monodromie). Kandidat für einen
+    nicht-analytischen Anteil: Glieder wie $\exp(-c/\sqrt{b-\eta})$ aus dem Engpass bei $e$ (bw.lem.randgesetz) — unendlich flach, also mit allen Ableitungen verträglich.
+  quellen: [{ref: mizugadro_tetration, stelle: '„β appears as a branch point of tetration“'}, {ref: forum_mike3_2011}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: bw.lem.randgesetz, notiz: 'der Engpass liefert Glieder in (b − η)^(−1/2)'}
+    - {typ: verwandt, ziel: br.frage.implosion}
+
+- id: kl.satz.invariante_daempfung
+  titel: Die Welle ist gedämpft, nicht verschwunden
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [F_bd, phase, multiplikator, schroeder]
+  bereich: 'Übergang zweier Abel-Koordinaten $A_b$, $A_d$, angepasst an einem Punkt (Fixpunkt oder ∞)'
+  aussage: |
+    Die Übergangsfunktion zweier Abel-Koordinaten ist eine Funktion der **kanonischen Invariante** des Anpassungspunkts:
+    hyperbolischer Fixpunkt ($|\lambda|<1$): $\lambda^{A}$, Betrag $<1$ — geometrisch gedämpft, Pseudoperiode $2\pi/|\arg\lambda|$, Dämpfung
+    $|\lambda|^{2\pi/|\arg\lambda|}$ pro Pseudoperiode; rational neutraler Fixpunkt: $e^{2\pi iA}$ — echte 1-Periodizität (Écalle–Voronin, Hornabbildung);
+    irrational neutral: quasiperiodisch; wesentliche Singularität bei ∞ (Türme über η): $e^{2\pi iA}$ — die klassische 1-periodische
+    Basiswechsel-Funktion. Diese ist also der **Grenzfall $|\lambda|\to1$** der gedämpften Schwingung am geteilten Fixpunkt.
+  einfach: >-
+    Am gemeinsamen Fixpunkt gibt es dieselbe Welle wie beim klassischen Basiswechsel — nur wird sie bei jedem Schritt kleiner.
+    Je näher |λ| an 1 liegt, desto länger überlebt sie; bei |λ| = 1 wird sie zur ungedämpften, ewigen Welle.
+  formen:
+    - {tex: '|\lambda|=0.3,\,0.6,\,0.8,\,0.9,\,0.97\ (\arg\lambda=0.5):\ \text{Dämpfung pro Periode }2.7\cdot10^{-7},\,1.6\cdot10^{-3},\,0.061,\,0.27,\,0.68', notiz: 'Original §3.1'}
+    - {tex: 'b=-\tfrac{19}{25}:\ 2\pi/|\arg\lambda_d|=21.908,\ |\lambda_d|^{21.908}=3.128\cdot10^{-4}', notiz: 'Musterpaar'}
+  beweis:
+    art: skizze
+    text: 'Hyperbolischer Fall bewiesen (kl.satz.basiswechsel_gleiches_L: Korrektur ist Potenzreihe in λ_d^x). Rational neutral: Écalle–Voronin. Die übrigen Zeilen sind die Lesart des Originals.'
+    luecken:
+      - 'Dass die klassische periodische Phase (bw.satz.phasengesetz) als Grenzwert |λ| → 1 einer Familie gedämpfter Übergänge entsteht, ist eine Deutung, kein Grenzwertsatz.'
+  stuetzt_sich_auf: [kl.satz.basiswechsel_gleiches_L]
+  experimente: [exp.funde]
+  pruefung:
+    f1_folgt_unmittelbar: 'Hyperbolischer Fall ja; Gesamtbild nein.'
+    f2_benutzte_voraussetzungen: 'Linearisierbarkeit am Anpassungspunkt.'
+    f3_spezialfall: 'Verallgemeinert die Fourier-Struktur des Phasengesetzes (Moden ↔ Potenzen der Invariante).'
+    f4_uebertragbar: 'Auf Zyklen (Rückkehrabbildung), auf die imaginäre Richtung (bw.satz.imaginaere_richtung).'
+    f5_neue_frage: 'Lässt sich die Phase P_{b,d} über η als Grenzwert regulärer Übergänge an komplexen Basen mit |λ| ↑ 1 berechnen?'
+  bewertung: {richtigkeit: 'teilweise bewiesen', neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum der klassische Basiswechsel eine Welle trägt und der am geteilten Fixpunkt nicht.', nutzen_stufe: hoch}
+  quellen: [{ref: justus_bc_geteilt, stelle: '§3'}]
+  kanten:
+    - {typ: verwandt, ziel: bw.satz.phasengesetz}
+    - {typ: verwandt, ziel: kl.satz.qk_basiswechsel}
