@@ -1,6 +1,6 @@
 # Forschungsteam: Polynom-Wurzel von exp → Kneser (Beweis der Schranke)
 
-## PHASE 3 seit 11.10.2026 19:50: zwei Agenten, Strang K (Kern) und Strang V (Prüfstand), siehe `phase3/README.md`
+## PHASE 3 (11.10. 19:50 – 12.10. 14:15, auf Janis' Wunsch beendet): Stränge K und V, siehe `phase3/README.md`; Ergebnis: `phase3/HAUPTSATZ_KR0.md` (Fassung 3), offener Kern `phase3/KERNPROBLEM.md`, Problemblatt `phase3/OPEN_PROBLEM_2_en.md`; im Graphen Strang kn.halbe_exp
 
 ## PAUSE seit 11.10.2026 04:51 (Janis: „langsam stoppen“)
 
