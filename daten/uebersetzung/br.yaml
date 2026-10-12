@@ -1,0 +1,856 @@
+# Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
+# übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: br.def.hyperoperation
+  quelle_hash: 33e5aa60a2be
+  theorie_hash: dd794f98c082
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: Hyperoperations and Knuth arrows
+    aussage: '$a\uparrow\uparrow n=a^{a^{\cdot^{\cdot^{a}}}}$ ($n$ levels), $a\uparrow^{k+1}n$ iterates $\uparrow^k$. The name “tetration”: Goodstein
+      1947; arrow notation: Knuth 1976.'
+  en_theorie:
+    beispiel: |
+      $3\uparrow\uparrow3=3^{27}=7\,625\,597\,484\,987$. $2\uparrow\uparrow5=2^{65536}$ has $19\,729$ digits. Fifth level (pentation): $2\uparrow\uparrow\uparrow3=2\uparrow\uparrow(2\uparrow\uparrow2)=2\uparrow\uparrow4=65\,536$.
+    einordnung: |
+      The entry point in the textbook: chapter 0 and [[gr.def.turm]]. How fast the levels grow is measured by logic ([[br.satz.kalmar]]).
+    genau: |
+      $a\uparrow b=a^b$, $a\uparrow\uparrow n=a^{a^{\cdot^{\cdot^{a}}}}$ ($n$ levels, parenthesized from the right), and in general $a\uparrow^{k+1}n$ iterates the operation $\uparrow^k$:
+      $a\uparrow^{k+1}(n+1)=a\uparrow^k(a\uparrow^{k+1}n)$. The name “tetration” comes from Goodstein (1947), the arrows from Knuth (1976).
+    warum: |
+      A definition. Parenthesized from the right, because $(a^a)^a=a^{a\cdot a}$ would only be an exponentiation and would bring nothing new.
+    worum: |
+      Tetration is the fourth level of a ladder: repeated addition gives multiplication, repeated multiplication gives exponentiation, repeated exponentiation gives tetration —
+      and so on. For the levels there is a notation of its own, with arrows.
+- id: br.frage.bohr_mollerup
+  quelle_hash: 9eba94c0a896
+  theorie_hash: 5fe7b267d267
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: Test on Kneser values which convexity conditions are satisfied, and whether periodic perturbations always violate them (counterexample
+      search with $\theta=c\sin2\pi x$, $c\to0$).
+    titel: Is there a real (Bohr–Mollerup-type) characterization of Kneser's tetration?
+    aussage: |
+      $\Gamma$ is uniquely determined by logarithmic convexity. For tetration, fg.kor.nichteindeutigkeit and
+      ar.satz.keine_arith_info show: analyticity and monotonicity are not enough; the known uniqueness theorems are complex-variable theorems.
+      Is there a real condition (convexity of all derivatives of $\operatorname{slog}$, total monotonicity, Carleman limit) that selects exactly Kneser's solution?
+      Literature: For difference equations $\Delta f=g$ the Bohr–Mollerup theory is well developed (Krull 1948/49, Webster 1997, Marichal–Zenaïdi 2022:
+      uniqueness as soon as $g$ is eventually $p$-convex). It does not apply directly here: $T(x+1)=b^{T(x)}$ and $\operatorname{slog}(b^x)=\operatorname{slog}(x)+1$
+      are Abel and conjugation equations, respectively, not a $\Delta f=g$ with known $g$. Real partial answers: Hooshmand (convexity, kn.satz.hooshmand);
+      for $b<\eta$ Szekeres' totally monotone Abel function (it.satz.szekeres_monoton).
+  en_theorie:
+    beispiel: |
+      Bohr–Mollerup: $\Gamma(x+1)=x\Gamma(x)$, $\Gamma(1)=1$ and $\log\Gamma$ convex determine $\Gamma$ uniquely. A counterpart for $T(x+1)=e^{T(x)}$ is not known.
+    einordnung: |
+      Next step: test on Kneser values which convexity conditions are satisfied, and whether small periodic perturbations $\theta=c\sin2\pi x$ always violate them. Candidate: [[kn.verm.carleman_kneser]].
+    genau: |
+      Is there a real condition — for instance convexity of all derivatives of $\operatorname{slog}$, total monotonicity or the Carleman limit — that selects exactly Kneser's solution among the real-analytic tetrations?
+    warum: |
+      Open. What is known: analyticity and monotonicity do not suffice ([[fg.kor.nichteindeutigkeit]], [[ar.satz.keine_arith_info]]); Hooshmand's conditions even select the linear solution ([[kn.satz.hooshmand]]);
+      the proved uniqueness theorems are complex-variable theorems ([[kn.satz.paulsen_cowgill]]).
+    worum: |
+      The gamma function is the only continuation of the factorial that is “logarithmically convex” — a purely real condition. Is there something like that for tetration? So far only complex-variable
+      conditions select Kneser's solution.
+- id: br.frage.implosion
+  quelle_hash: e391b02f3162
+  theorie_hash: e0d48de3c164
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: 'Numerically: plot $m(b)+\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ against $\ln(b-\eta)$ and against periodic terms in $(b-\eta)^{-1/2}$
+      (exp.randgesetz supplies the first half).'
+    titel: Kneser's tetration near η as parabolic implosion
+    aussage: |
+      For $b\downarrow\eta$ the tower passes the bottleneck at $e$ in $\approx\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ steps. Can $T_b^{\mathrm K}$
+      be described, after subtracting this transit time, by the Lavaurs map (from the two Fatou coordinates of $e^u-1$), and
+      does a rigorous boundary law for $m(b)$ with constant and phase term follow from this?
+  en_theorie:
+    einordnung: |
+      Next step: plot $m(b)+\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ against $\ln(b-\eta)$ and against periodic terms in $(b-\eta)^{-1/2}$. Related: [[bw.lem.randgesetz]], [[kl.frage.stetig_eta]].
+    genau: |
+      For $b\downarrow\eta$ the tower passes the bottleneck in $\approx\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ steps. Can $T_b^{\mathrm K}$, after subtracting this transit time, be described by the Lavaurs map (from the two
+      Fatou coordinates of $e^u-1$) — and does a rigorous boundary law for $m(b)$ with constant and phase term follow from it?
+    warum: |
+      Open. What speaks in favor: At $\eta$ itself the situation is parabolic and described by Fatou coordinates ([[kl.satz.eta_koordinate]]); just above it, it is exactly the situation of implosion.
+    worum: |
+      For bases just above $\eta$ the tower squeezes through the bottleneck at $e$. The theory of parabolic implosion describes such passages very precisely. Can one use it to describe Kneser's
+      tetration near $\eta$ and the boundary law exactly?
+- id: br.frage.kneser_hardy
+  quelle_hash: 64d444423ea6
+  theorie_hash: b096a585c329
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: 'Read Boshernitzan 1986; if open: numerically test sign changes of $T''''(x)T(x)-cT''(x)^2$ etc. for large $x$ (via slog reduction).'
+    titel: Does the germ of Kneser's tetration lie in a Hardy field?
+    aussage: Is every element of $\mathbb R(x,T,T',T'',\dots)$ eventually of fixed sign? A secondary source (a summary) attributes to Boshernitzan
+      having shown this for, among others, Kneser's solution — **not checked against the original**.
+  en_theorie:
+    einordnung: |
+      Next step: read Boshernitzan 1986; otherwise search numerically for sign changes of expressions like $T''T-cT'^2$ for large $x$ (via the slog reduction). Background: [[br.satz.boshernitzan]], [[br.frage.transexp]].
+    genau: |
+      Is every element of $\mathbb R(x,T,T',T'',\dots)$ eventually of fixed sign, i.e., does the germ of Kneser's tetration lie in a Hardy field?
+    warum: |
+      Open — in any case not settled. A secondary source attributes to Boshernitzan having shown this for, among others, Kneser's solution; this has not been checked against the original.
+    worum: |
+      Is Kneser's tetration so “well-behaved” that no combination of it and its derivatives changes sign infinitely often for large $x$?
+- id: br.frage.transexp
+  quelle_hash: ab49f2045259
+  theorie_hash: d02fd8a0c080
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: Which properties of Kneser's solution (holomorphy in $\mathbb C\setminus(-\infty,-2]$, limits $L,\bar L$) yield the finiteness
+      statements needed for Lion's criterion? Here tetration theory could contribute to new logic.
+    titel: Is there a transexponential o-minimal structure?
+    aussage: |
+      Open problem (Miller dichotomy ⇒ question about growth beyond exp). Proposal by Marker–Miller: extend $\mathbb R_{\mathrm{an},\exp}$
+      by a real-analytic solution of $f(x+1)=e^{f(x)}$. Padgett: the terms of $\mathbb R_{\mathrm{transexp}}$ form a Hardy field;
+      o-minimality is open (quantifier elimination is missing). **Candidate from tetration theory:** Kneser's tetration.
+  en_theorie:
+    einordnung: |
+      Why the known structures do not suffice: [[br.satz.nicht_definierbar]]. Related: [[br.frage.kneser_hardy]], [[kn.satz.kneser_eigenschaften]].
+    genau: |
+      Is there an o-minimal structure that defines functions growing faster than every iterated exponential? Proposal by Marker–Miller: extend $\mathbb R_{\mathrm{an},\exp}$ by a real-analytic solution of $f(x+1)=e^{f(x)}$.
+      Padgett: the terms of the extension form a Hardy field; o-minimality is open.
+    warum: |
+      Open. What is missing is a quantifier elimination, or the finiteness statements one needs for o-minimality. Perhaps Kneser's complex properties (holomorphic on $\mathbb C\setminus(-\infty,-2]$,
+      limits $L,\bar L$) provide exactly such finiteness statements — then tetration theory would contribute to new logic.
+    worum: |
+      Is there a “tame” mathematical world in which tetration lives? This is an open problem in logic — and Kneser's solution is a natural candidate.
+- id: br.gescheitert.rotationszahl
+  quelle_hash: 11e86173076b
+  theorie_hash: dec681b0337f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f2_benutzte_voraussetzungen: —
+      f5_neue_frage: —
+      f3_spezialfall: —
+      f1_folgt_unmittelbar: —
+      f4_uebertragbar: 'Rule: before any “new invariant”, check whether it is compatible with the groupoid structure.'
+    bewertung:
+      nutzen: Prevents a computable but meaningless number.
+      richtigkeit: Approach discarded (type error)
+    titel: Rotation numbers and commutators of the phase maps
+    aussage: |
+      Idea: rotation number $\rho(\tilde H_{b,d})$ or commutators $[\tilde H_{e,2},\tilde H_{e,3}]$ as new invariants. Discarded:
+      $\tilde H_{b,d}$ maps the base-$d$ phase circle to the base-$b$ phase circle; iteration ($b\ne d$) and the composition
+      $\tilde H_{e,2}\circ\tilde H_{e,3}$ are **ill-typed** and have no tetration meaning. Only quantities compatible with the groupoid structure are invariant
+      (means in the canonical Abel coordinates).
+  en_theorie:
+    einordnung: |
+      Rule: before any “new invariant”, check whether it is compatible with the groupoid structure ([[bw.prop.gruppoid]]).
+    genau: |
+      **Discarded.** The idea was to take the rotation number $\rho(\tilde H_{b,d})$ or commutators such as $[\tilde H_{e,2},\tilde H_{e,3}]$ as new invariants. But $\tilde H_{b,d}$ maps the phase circle of base $d$ to that
+      of base $b$. Iterating (for $b\ne d$) and $\tilde H_{e,2}\circ\tilde H_{e,3}$ have no tetration meaning.
+    warum: |
+      A map $A\to B$ can be iterated only if $A=B$. Rotation number and commutator require that; one can still compute the numbers — they just mean nothing.
+      Only quantities that fit the change rule (groupoid) are invariant, for instance the means $\mu$.
+    worum: |
+      Circle maps have a famous invariant, the rotation number. Why not for the phase maps of the base change as well? Because that would be a type error: The
+      map goes from one circle to a **different** circle.
+- id: br.satz.ackermann
+  quelle_hash: 92abfe1bbcc8
+  theorie_hash: d467f652d95d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        Induction on $n$: $A(m+1,n+1)=A(m,A(m+1,n))$ with $A(m,x)=2\uparrow^{m-2}(x+3)-3$ gives $2\uparrow^{m-2}(2\uparrow^{m-1}(n+3))-3=2\uparrow^{m-1}(n+4)-3$; start
+        $A(m+1,0)=A(m,1)=2\uparrow^{m-2}4-3=2\uparrow^{m-1}3-3$. FGH: $f_2(m)=m2^m\ge2^m$, hence $f_3(n)=f_2^{[n]}(n)\ge(2^{\,\cdot})^{[n]}(n)\ge2\uparrow\uparrow n$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Definition of the hyperoperations (br.def.hyperoperation).
+      f5_neue_frage: 'no'
+      f3_spezialfall: 'Yes: Grzegorczyk hierarchy, Kalmár (br.satz.kalmar).'
+      f1_folgt_unmittelbar: Yes, induction.
+      f4_uebertragbar: To transfinite levels f_α (br.satz.ordinal_tetration).
+    bewertung:
+      nutzen: Connects tetration with computability and algorithm running times.
+      richtigkeit: complete
+    titel: 'Ackermann function and fast-growing hierarchy: A(4, n) = 2↑↑(n+3) − 3, f₃ ≥ 2↑↑n'
+    aussage: |
+      For the Ackermann–Péter function ($A(0,n)=n+1$, $A(m+1,0)=A(m,1)$, $A(m+1,n+1)=A(m,A(m+1,n))$) we have
+      $$A(1,n)=n+2,\quad A(2,n)=2n+3,\quad A(3,n)=2^{n+3}-3,\quad A(4,n)=2\uparrow\uparrow(n+3)-3,$$
+      in general $A(m,n)=2\uparrow^{m-2}(n+3)-3$: The rows of the Ackermann function are the hyperoperations with base 2. In the fast-growing hierarchy
+      ($f_0(n)=n+1$, $f_{k+1}(n)=f_k^{[n]}(n)$) we have $f_3(n)\ge2\uparrow\uparrow n$ — tetration is level $f_3$. The inverses grow correspondingly slowly:
+      $\log^*$ (gr.satz.logstern) and, even more slowly, the inverse Ackermann function $\alpha(n)$, which appears in the running time of union-find.
+    einfach: 'The famous Ackermann function is nothing other than the hyperoperations with base 2, shifted by 3: the fourth row is tetration.'
+  en_theorie:
+    beispiel: |
+      $A(4,0)=13=2\uparrow\uparrow3-3$, $A(4,1)=65533=2\uparrow\uparrow4-3$, $A(4,2)=2^{65536}-3$ (65536 binary digits).
+    einordnung: |
+      Related to [[br.satz.kalmar]]. The inverses ($\log^*$, inverse Ackermann function) grow extremely slowly — see [[gr.satz.logstern]].
+    genau: |
+      $A(1,n)=n+2$, $A(2,n)=2n+3$, $A(3,n)=2^{n+3}-3$, $A(4,n)=2\uparrow\uparrow(n+3)-3$. In the fast-growing hierarchy, $f_3(n)\ge2\uparrow\uparrow n$.
+    warum: |
+      1. Induction on $n$ with the recursion $A(m+1,n+1)=A(m,A(m+1,n))$: One level of $A(m+1,\cdot)$ applies $A(m,\cdot)$ once — just as one level of tetration
+         exponentiates once.
+      2. The offset $\pm3$ comes from the starting value $A(m+1,0)=A(m,1)$.
+    worum: |
+      The Ackermann function, the standard example of a computable but not primitive recursive function, is at its core the ladder of hyperoperations with base 2.
+- id: br.satz.boshernitzan
+  quelle_hash: 824aeb0e610f
+  theorie_hash: a5299c0f91f3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Boshernitzan 1986.
+    pruefung:
+      f2_benutzte_voraussetzungen: 'To be checked against the original: which solution exactly.'
+      f5_neue_frage: Does the Kneser germ lie in a Hardy field? → br.frage.kneser_hardy
+      f3_spezialfall: 'no'
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: First bridge tetration ↔ asymptotic analysis.
+      richtigkeit: established (literature), detail unchecked
+    titel: Transexponential Hardy fields exist
+    aussage: There are Hardy fields that contain functions that grow faster than every iterated exponential (solutions of $f(x+1)=e^{f(x)}$).
+  en_theorie:
+    einordnung: |
+      Does Kneser's solution also lie in a Hardy field? [[br.frage.kneser_hardy]].
+    genau: |
+      There are Hardy fields with functions that grow faster than every iterated exponential, for instance solutions of $f(x+1)=e^{f(x)}$ (Boshernitzan 1986).
+    warum: |
+      Theorem from the literature; which solution exactly is meant is to be checked against the original. A Hardy field is a field of function germs at $+\infty$ that is closed under differentiation;
+      in it every function eventually has a fixed sign.
+    worum: |
+      Hardy fields are collections of “well-behaved” functions that do not oscillate infinitely often for large $x$. There are such collections that contain functions that grow faster than any
+      exponential tower — that is, tetration-like functions.
+- id: br.satz.gevrey_fourier
+  quelle_hash: 776d63d4805c
+  theorie_hash: eb357044fb25
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Standard (Paley–Wiener type).
+    pruefung:
+      f2_benutzte_voraussetzungen: —
+      f5_neue_frage: Is bw.frage.streifen_gevrey exactly the question $\sigma^*>0$?
+      f3_spezialfall: 'no'
+      f1_folgt_unmittelbar: Textbook.
+      f4_uebertragbar: Translates the strip question into a pure question about modes.
+    bewertung:
+      nutzen: Sharpens the open question.
+      richtigkeit: established
+    titel: Fourier characterization of strip analyticity and Gevrey classes
+    aussage: |
+      A 1-periodic $f$ is holomorphic in $|\operatorname{Im}\theta|<\sigma$ if and only if $|\hat f(k)|\le C_\varepsilon e^{-2\pi(\sigma-\varepsilon)|k|}$ for all $\varepsilon>0$.
+      $f$ is Gevrey-$s$ if and only if $|\hat f(k)|\le Ce^{-c|k|^{1/s}}$. A decay $\ln A_k\sim-2\pi\sigma^*k-a\sqrt k$ is therefore analytic for $\sigma^*>0$ and Gevrey-2 for $\sigma^*=0$.
+  en_theorie:
+    beispiel: |
+      $\sum_ke^{-2\pi\sigma|k|}e^{2\pi ik\theta}$ is holomorphic exactly in the strip $|\operatorname{Im}\theta|<\sigma$. With $\hat f(k)=e^{-\sqrt{|k|}}$, $f$ is smooth but not analytic in any strip.
+    einordnung: |
+      Translates the open question [[bw.frage.streifen_gevrey]] into a pure question about modes. Application to the seams: [[bw.satz.fourier_naht]].
+    genau: |
+      A 1-periodic function $f$ is holomorphic in $|\operatorname{Im}\theta|<\sigma$ if and only if $|\hat f(k)|\le C_\varepsilon e^{-2\pi(\sigma-\varepsilon)|k|}$ for all $\varepsilon>0$. $f$ is Gevrey-$s$ if and only if
+      $|\hat f(k)|\le Ce^{-c|k|^{1/s}}$. A decay $\ln A_k\sim-2\pi\sigma^*k-a\sqrt k$ is analytic for $\sigma^*>0$ and Gevrey-2 for $\sigma^*=0$.
+    warum: |
+      Standard (Paley–Wiener type): The Fourier series $\sum\hat f(k)e^{2\pi ik\theta}$ converges at $\theta=x+iy$ if and only if $|\hat f(k)|e^{2\pi|k||y|}$ is summable. Conversely, in the integral for $\hat f(k)$ one shifts the
+      contour by $\pm i\sigma$.
+    worum: |
+      How smooth a periodic function is can be read off its Fourier components: If they decay exponentially, it is analytic in a strip; if they decay only like $e^{-c\sqrt k}$, it is
+      “almost analytic” (Gevrey).
+- id: br.satz.halbexp_komplexitaet
+  quelle_hash: 1c67ceaa0ffe
+  theorie_hash: 177726830f97
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Miltersen–Vinodchandran–Watanabe (BRICS RS-99-46, COCOON 1999); Chen–Hirahara–Ren (arXiv 2309.12912).
+    pruefung:
+      f2_benutzte_voraussetzungen: Complexity theory (Karp–Lipton-type arguments, binary search over circuits).
+      f5_neue_frage: Which growth properties of a half-exponential function does the argument need exactly? (kn.satz.halbe_exp_wachstum)
+      f3_spezialfall: —
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: Half-exponential functions also occur in Hardy fields (br.satz.boshernitzan).
+    bewertung:
+      nutzen: Shows where half-iterates of the exponential function play a role outside analysis.
+      richtigkeit: Literature, checked via abstracts and surveys
+    titel: 'Half-exponential functions in complexity theory: the “half-exponential barrier” (1999) and its fall (2023)'
+    aussage: |
+      (i) **Miltersen–Vinodchandran–Watanabe (1999):** For $\mathrm{MA}_{\mathrm{EXP}}$, $\mathrm{ZPEXP}^{\mathrm{NP}}$ and $\Sigma_2^{\mathrm{exp}}$, the known techniques can prove circuit lower bounds
+      exactly up to **half-exponential** size — the method needs a function $f$ with $f(f(n))\le2^{o(n)}$, and it yields no more than that.
+      (ii) **Chen–Hirahara–Ren (2023):** A language in $\mathrm{S}_2\mathrm{E}/_1$ requires circuits of size at least $2^n/n$; the same holds for $\Sigma_2\mathrm{E}$ among others. This overcomes the
+      half-exponential barrier for these classes.
+    bereich: circuit size of languages in exponential complexity classes; $f$ half-exponential if $f(f(n))$ is roughly $2^{n}$
+    einfach: In theoretical computer science one ran into a limit for a long time that grows exactly “half as fast as exponential” — a half exponential
+      function, as with Kneser. Only in 2023 did the leap beyond it succeed.
+  en_theorie:
+    beispiel: |
+      A function like $2^{\sqrt n}$ is too large: $2^{\sqrt{2^{\sqrt n}}}$ grows faster than $2^n$. Half-exponential functions lie between all
+      functions $2^{(\log n)^k}$ and all $2^{n^\varepsilon}$.
+    einordnung: |
+      The growth of half-exponential functions: [[kn.satz.halbe_exp_wachstum]]; in Hardy fields: [[br.satz.boshernitzan]].
+    genau: |
+      For some exponential complexity classes the known methods gave, from 1999 on, only half-exponential lower bounds for circuit size; in 2023 almost maximal
+      lower bounds $2^n/n$ were proved.
+    warum: |
+      The 1999 argument is a case distinction: Either all languages of a class have small circuits — then a hierarchy collapses up to a size $f$ —,
+      or not. The collapse costs one application of $f$ too many; for both cases to fit together, $f(f(n))$ must stay below $2^n$. That is exactly the half-iterate.
+    worum: |
+      Half-exponential functions — functions that give the exponential function when applied twice in a row — appear not only in Kneser's work, but also as the
+      limit of what can be proved about the complexity of computational problems.
+- id: br.satz.hyperop_varianten
+  quelle_hash: 3f237cc5645a
+  theorie_hash: 7153f546b3cd
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        (i) $x[4'](n+1)=(x[4']n)^x$ with $x[4']0=x$ gives $x^{x^n}$; the left pentation by substitution. (ii) Induction on $b=2^k$. (iii) Conjugation with $\log^{[s]}$ transfers commutativity and associativity of
+        addition; distributivity: $\log^{[s]}(x\oplus_s y)=\log^{[s]}x+\log^{[s]}y$, and $\exp$ turns sums into products, so $\oplus_{s+1}$ distributes over $\oplus_s$.
+    pruefung:
+      f2_benutzte_voraussetzungen: 'For (iii) with non-integer s: an iteration group exp^[s].'
+      f5_neue_frage: Is there a natural choice for the intermediate levels (Nixon's half-operations, forum tid 1386, 1535)?
+      f3_spezialfall: 'Yes: conjugation of a group operation.'
+      f1_folgt_unmittelbar: Yes.
+      f4_uebertragbar: Any iteration group instead of exp^[s].
+    bewertung:
+      nutzen: Shows what freedom lies in the definition of the hyperoperations.
+      richtigkeit: complete
+    titel: 'Other parenthesizations: left-parenthesized, balanced, and Bennett''s commutative hyperoperations'
+    aussage: |
+      (i) **Left-parenthesized** tetration is trivial: with $x[4']0=x$ we have $x[4']n=x^{x^n}$; only the left pentation
+      ($x[5']0=x$, $x[5'](n+1)=(x[5']n)[4']x$) becomes nontrivial: $x[5']1=x^{x^x}$, $x[5']2=x^{x^{x+x^{x+1}}}$.
+      (ii) **Balanced** ($a[n+1](2b)=(a[n+1]b)[n](a[n+1]b)$) again gives $\cdot$ and exponentiation for levels 2, 3; balanced tetration is the iteration of $x\mapsto x^x$
+      at the point $2^t$: $a[4]2^t=f^{[t]}(a)$ with $f(x)=x^x$ — a fixed point at 1 with $f'(1)=1$ (parabolic).
+      (iii) **Bennett (1915):** $x\oplus_sy=\exp^{[s]}\bigl(\log^{[s]}x+\log^{[s]}y\bigr)$ gives addition, multiplication and $x\oplus_2y=e^{\ln x\ln y}$ for $s=0,1,2$; every level is
+      commutative, associative, and distributes over the previous one. With $\exp^{[1/2]}$ (kn.satz.halbe_exp) an operation “between + and ·” arises.
+    einfach: How you parenthesize a tower is a choice. Parenthesized from the top, you get the usual tetration; from the bottom, something simple.
+      Bennett proposed an entirely different ladder in 1915, in which every level stays commutative — and with the half-exponential function you
+      even get intermediate levels.
+  en_theorie:
+    beispiel: |
+      $2\oplus_22=e^{(\ln2)^2}=1.6168$; $e\oplus_2y=y$ — $e$ is the neutral element of level 2.
+    einordnung: |
+      With the half-exponential function ([[kn.satz.halbe_exp]]), Bennett levels between the integer ones can be formed.
+    genau: |
+      - **Left:** $x[4']n=x^{x^n}$, the left pentation is nontrivial.
+      - **Balanced:** doubling instead of counting further; balanced tetration iterates $x\mapsto x^x$.
+      - **Bennett (1915):** $x\oplus_sy=\exp^{[s]}(\log^{[s]}x+\log^{[s]}y)$ — every level commutative and associative, $\oplus_2$ is $e^{\ln x\ln y}$.
+    warum: |
+      1. Left: $(x^{x^n})^x=x^{x^{n+1}}$.
+      2. Bennett: With $\log^{[s]}$ every level is converted into ordinary addition; commutativity and associativity come from there, and because $\exp$ turns sums into
+         products, every level distributes over the previous one.
+    worum: |
+      “Tetration” presupposes a parenthesization: from the top. Other parenthesizations and other ladders give other operations — some trivial, some with beautiful
+      laws.
+- id: br.satz.kalmar
+  quelle_hash: 244a546cec6a
+  theorie_hash: 6920a5a00f38
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Every elementary function is bounded by a tower $2^{2^{\cdot^{\cdot^{x}}}}$ of fixed height; $2\uparrow\uparrow n$ exceeds every fixed
+        height.
+    pruefung:
+      f2_benutzte_voraussetzungen: Tower bound (literature).
+      f5_neue_frage: 'Structural analogy: “elementary” (computability) and “$\mathbb R_{\mathrm{an},\exp}$-definable” (geometry) have the same
+        tower bound; tetration is the first to break out in both.'
+      f3_spezialfall: 'no'
+      f1_folgt_unmittelbar: Yes, from the tower bound for elementary functions.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Connects two worlds with the same bound.
+      richtigkeit: complete
+    titel: Tetration is primitive recursive, but not elementary
+    aussage: $n\mapsto2\uparrow\uparrow n$ is primitive recursive (Grzegorczyk level $\mathcal E^4$), but not Kalmár-elementary ($\mathcal E^3$).
+  en_theorie:
+    beispiel: |
+      Two worlds, the same bound: “elementary” in computability and “definable in $\mathbb R_{\mathrm{an},\exp}$” in geometry are both bounded by towers of fixed height — and in both,
+      tetration is the first to break out.
+    einordnung: |
+      Counterpart: [[br.satz.nicht_definierbar]]. The arrow ladder: [[br.def.hyperoperation]].
+    genau: |
+      $n\mapsto2\uparrow\uparrow n$ is primitive recursive (Grzegorczyk level $\mathcal E^4$), but not Kalmár-elementary ($\mathcal E^3$).
+    warum: |
+      Every elementary function is bounded by a tower $2^{2^{\cdot^{\cdot^{x}}}}$ of fixed height; $2\uparrow\uparrow n$ exceeds every fixed height. It is primitive recursive because it is computable with nested loops of fixed
+      depth.
+    worum: |
+      In computability too, tetration is the first function to break through a natural limit: It is computable with simple loops, but not “elementary”.
+- id: br.satz.nicht_definierbar
+  quelle_hash: 658f03cd19b8
+  theorie_hash: b061e02ee1f0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        $c:=\min_{[x_0,x_0+1]}E$; after one step all values are $\ge e^{c}>0$. For $y$ large, $k=\lfloor y-x_0\rfloor-1$:
+        $E(y)=\exp^{\circ k}(E(y-k))\ge\exp^{\circ k}(e^c)$. With $k=n+j$: $\exp^{\circ n}(\exp^{\circ j}(e^c))\ge\exp^{\circ n}(y)$,
+        as soon as $\exp^{\circ j}(e^c)\ge y$ — holds for large $y$, since $j\approx y$ and $\exp^{\circ j}$ grows tower-like.
+    pruefung:
+      f2_benutzte_voraussetzungen: Only continuity on one period (for the minimum); no monotonicity, no analyticity.
+      f5_neue_frage: Is there any o-minimal structure at all that defines a tetration? → br.frage.transexp
+      f3_spezialfall: Same structure as br.satz.kalmar (computability).
+      f1_folgt_unmittelbar: Yes, from br.satz.vdd_miller and an elementary growth comparison.
+      f4_uebertragbar: Every base $b>1$ with unbounded tower, i.e., $b>\eta$.
+    bewertung:
+      nutzen: Explains why tetration lies outside classical tame geometry.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: E continuous on [x_0, ∞) with E(x+1) = e^{E(x)}
+    - text: E monotone or analytic
+    titel: No real tetration is definable in ℝ_an,exp
+    aussage: $E$ eventually exceeds every $\exp^{\circ n}$; hence $E$ is not definable in any exponentially bounded o-minimal structure, in particular
+      not in $\mathbb R_{\mathrm{an},\exp}$.
+    bereich: every continuous real solution of $E(x+1)=e^{E(x)}$ on a half-line
+  en_theorie:
+    beispiel: |
+      Even the linear tetration with its kinks overtakes $\exp^{\circ5}$: monotonicity or smoothness are not needed.
+    einordnung: |
+      Is there any tame structure at all that contains tetration? [[br.frage.transexp]]. The same situation in computability: [[br.satz.kalmar]].
+    genau: |
+      If $E$ is continuous on $[x_0,\infty)$ with $E(x+1)=e^{E(x)}$, then $E$ eventually exceeds every $\exp^{\circ n}$. Hence $E$ is not definable in any exponentially bounded o-minimal structure,
+      in particular not in $\mathbb R_{\mathrm{an},\exp}$.
+    warum: |
+      1. Let $c=\min_{[x_0,x_0+1]}E$. After one step all values are $\ge e^c>0$.
+      2. For large $y$ and $k=\lfloor y-x_0\rfloor-1$ we have $E(y)=\exp^{\circ k}(E(y-k))\ge\exp^{\circ k}(e^c)$.
+      3. Write $k=n+j$: $\exp^{\circ n}(\exp^{\circ j}(e^c))\ge\exp^{\circ n}(y)$ as soon as $\exp^{\circ j}(e^c)\ge y$ — and that holds soon, because $j$ grows with $y$ and $\exp^{\circ j}$ grows tower-like.
+      4. By [[br.satz.vdd_miller]], $E$ is not definable.
+    worum: |
+      Every real tetration — smooth or not — eventually overtakes every tower of fixed height. That is why it fits into none of the classical “tame” structures.
+- id: br.satz.ordinal_tetration
+  quelle_hash: 1279edc5cddc
+  theorie_hash: 1b7b70e998c9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Cantor (ε-numbers); fixed-point property ω^{ε₀} = ε₀ directly from the definition as a supremum. Gentzen 1936.
+    pruefung:
+      f2_benutzte_voraussetzungen: Continuity of ordinal exponentiation in the exponent.
+      f5_neue_frage: 'no'
+      f3_spezialfall: 'Yes: fixed points of normal functions (Veblen).'
+      f1_folgt_unmittelbar: Yes, from the definition of ε₀.
+      f4_uebertragbar: Higher operations via Veblen functions.
+    bewertung:
+      nutzen: Shows where tetration appears in logic.
+      richtigkeit: Literature
+    titel: 'Tetration of ordinals: ω↑↑ω = ε₀, and after that it stops'
+    aussage: |
+      With Cantor's exponentiation of ordinals, $\omega\uparrow\uparrow n=\omega^{\omega^{\cdot^{\cdot^\omega}}}$ and $\omega\uparrow\uparrow\omega=\sup_n\omega\uparrow\uparrow n=\varepsilon_0$, the smallest solution of
+      $\omega^x=x$. The naive continuation $\omega\uparrow\uparrow(\alpha+1)=\omega^{\omega\uparrow\uparrow\alpha}$ stands still afterwards: $\omega\uparrow\uparrow(\omega+1)=\omega^{\varepsilon_0}=\varepsilon_0$.
+      $\varepsilon_0$ is the proof-theoretic strength of Peano arithmetic (Gentzen); Goodstein's theorem hinges on it, and its sequences grow with towers.
+      Doner–Tarski (1969) continue the hyperoperations continuously to ordinals via suprema ($O_0=+$, $O_1=\cdot$, $O_2=$ exponentiation); their third level is
+      no longer a tower, but $\alpha\,O_3\,(1+\beta)=\alpha^{\alpha^\beta}$ — this too shows that the usual tetration does not carry on in the transfinite.
+    einfach: You can build towers with infinite ordinals too. The infinitely high tower of ω is called ε₀ — and since ε₀ raised to ω is again
+      ε₀, higher towers get you no further.
+  en_theorie:
+    beispiel: |
+      Goodstein sequences (numbers in “hereditary” base notation, the base grows) reach 0 after some time — provable with ordinals below $\varepsilon_0$,
+      but not in Peano arithmetic.
+    einordnung: |
+      Logical side of the hyperoperations ([[br.def.hyperoperation]], [[br.satz.ackermann]]).
+    genau: |
+      $$\omega\uparrow\uparrow\omega=\sup\{\omega,\omega^\omega,\omega^{\omega^\omega},\dots\}=\varepsilon_0,\qquad\omega^{\varepsilon_0}=\varepsilon_0.$$
+      Hence $\omega\uparrow\uparrow(\omega+1)=\varepsilon_0$ again — the simple continuation stands still.
+    warum: |
+      1. Ordinal exponentiations are continuous in the exponent; the supremum of the towers is therefore a fixed point of $x\mapsto\omega^x$.
+      2. $\varepsilon_0$ is the smallest such fixed point; every further level gives $\varepsilon_0$ again.
+    worum: |
+      What happens to towers made of infinite ordinals? The infinite tower of $\omega$ is the famous number $\varepsilon_0$.
+- id: br.satz.privalov
+  quelle_hash: b6ddf2f8d192
+  theorie_hash: c13e15cb1001
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Zygmund, Garnett.
+    pruefung:
+      f2_benutzte_voraussetzungen: Dini modulus
+      f5_neue_frage: Underpins bw.satz.kern_existenz
+      f3_spezialfall: 'no'
+      f1_folgt_unmittelbar: 'No'
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Key tool of Paper V.
+      richtigkeit: established
+    titel: Privalov–Dini for conjugate functions
+    aussage: If $u\in C(\mathbb T)$ has a Dini modulus of continuity, then the conjugate function $\tilde u$ is continuous; $\tilde u-iu$ is the
+      boundary value of a function that is holomorphic in the half-plane (disk) and extends continuously.
+  en_theorie:
+    beispiel: |
+      $u(\theta)=\cos2\pi\theta$ has the partner $\tilde u=\sin2\pi\theta$; $\tilde u-iu=-ie^{2\pi i\theta}$ is the boundary value of $-ie^{2\pi iz}$, holomorphic and decaying in the upper half-plane.
+    einordnung: |
+      Key to [[bw.satz.kern_existenz]].
+    genau: |
+      If $u\in C(\mathbb T)$ has a Dini modulus of continuity, then the conjugate function $\tilde u$ is continuous, and $\tilde u-iu$ is the boundary value of a function that is holomorphic in the half-plane (disk) and extends continuously.
+    warum: |
+      Theorem from the literature (Zygmund, Garnett). The conjugate function is the Hilbert transform: in Fourier language, $e^{2\pi ik\theta}$ is multiplied by $-i\,\mathrm{sign}(k)$. The Dini condition ensures that the
+      singular integral stays continuous.
+    worum: |
+      For every sufficiently smooth periodic function $u$ there is a “partner” $\tilde u$ such that $\tilde u-iu$ is the boundary value of a holomorphic function. This is the
+      tool with which one constructs the base kernel without the engine.
+- id: br.satz.ripa
+  quelle_hash: c0d8861acd89
+  theorie_hash: ead7881f997d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Ripà 2011 (book, origin), Ripà 2020, Ripà–Onnis 2022, Ripà 2024.
+    pruefung:
+      f2_benutzte_voraussetzungen: Case distinction by $a\bmod20$ only from the abstract.
+      f5_neue_frage: Is there a $p$-adic analogue of Kneser (continuous height $\mathbb Z_p$)?
+      f3_spezialfall: $p$-adic convergence of the tower (fixed point of $x\mapsto a^x$ in $\mathbb Z_p$).
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: '$p$-adic tetration: the tower converges $p$-adically to a fixed point of $a^x$.'
+    bewertung:
+      nutzen: Discrete counterpart to analysis.
+      richtigkeit: Literature; formula for a ≡ 5 (mod 10) confirmed without deviation in an experiment on 40 bases ≤ 400
+    titel: Congruence speed (Ripà, Ripà–Onnis)
+    aussage: 'The number of new stable final digits per level, $V(a)$, is constant from some height on; for $a\not\equiv0\pmod{10}$, $V(a)$ is
+      a 2-adic or 5-adic valuation of $a\pm1$ or $a^2+1$, depending on $a\bmod 20$. For $a\equiv5\pmod{10}$: $V(a)=v_2(a^2-1)-1$ (OEIS A317905).
+      Every value occurs: for every $c\ge1$ there are infinitely many $c$-th powers $a$ with $V(a)=c$ (Ripà 2024).'
+  en_theorie:
+    beispiel: |
+      $V(3)=1$ (see above), $V(5)=2$, $V(15)=4$, $V(65)=6$. Check of the formula: $65^2-1=4224=2^7\cdot33$, so $V(65)=7-1=6$. Confirmed without deviation for 40 bases $a\equiv5\pmod{10}$ up to 400.
+    einordnung: |
+      Question: is there a $p$-adic analogue of Kneser, a continuous height in $\mathbb Z_p$? Foundation: [[br.satz.turm_mod_m]].
+    genau: |
+      The number of new stable final digits per level, $V(a)$, is constant from some height on (Ripà 2020, Ripà–Onnis 2022). For $a\not\equiv0\pmod{10}$, $V(a)$ is a 2-adic or 5-adic valuation of $a\pm1$ or $a^2+1$, depending on
+      $a\bmod20$; for $a\equiv5\pmod{10}$ we have $V(a)=v_2(a^2-1)-1$.
+    warum: |
+      Theorem from the literature (the case distinction by $a\bmod20$ is taken over here only from the abstract). Background: The tower converges 2-adically and 5-adically to a fixed point of $x\mapsto a^x$; how fast,
+      is told by the valuation — the same idea as a multiplier, only in the $p$-adic numbers.
+    worum: |
+      How fast do the final digits of a tower become fixed? A fixed number of new digits is added per level, and this number can be computed from the base.
+- id: br.satz.sattel_knoten
+  quelle_hash: 0ae7fcb30ab4
+  theorie_hash: b62182549e71
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Pomeau–Manneville (intermittency), Douady (parabolic implosion).
+    pruefung:
+      f2_benutzte_voraussetzungen: Exact form of the error not checked against the original.
+      f5_neue_frage: $O(1)$ term and phase dependence (Lavaurs) → br.frage.implosion
+      f3_spezialfall: 'no'
+      f1_folgt_unmittelbar: Leading term yes (integral); the $O(1)$ error needs Fatou coordinates.
+      f4_uebertragbar: '$\exp_b$ near $\eta$ at the point $e$ ($b=\eta+\delta$, $w=y-e$): $a=1/(2e)$, $\varepsilon=e^2\delta/\eta$, hence $N\approx\pi\sqrt{2\eta/(e\delta)}$
+        → bw.lem.randgesetz, fp.beob.tpid6_rate.'
+    bewertung:
+      nutzen: Explains the boundary law.
+      richtigkeit: Leading term established
+    titel: Transit time through a saddle-node bottleneck
+    aussage: The number of iterations through the bottleneck is $N(\varepsilon)=\pi/\sqrt{a\varepsilon}+O(1)$ (continuum limit $\int dw/(\varepsilon+aw^2)$);
+      rigorous via parabolic implosion.
+    bereich: $w\mapsto w+\varepsilon+aw^2+O(w^3,\varepsilon w)$, $a,\varepsilon>0$ small
+  en_theorie:
+    beispiel: |
+      Tower to base $\eta+\delta$ at the point $e$: $a=1/(2e)$, $\varepsilon=e^2\delta/\eta$, hence $N\approx\pi\sqrt{2\eta/e}\,\delta^{-1/2}$. At $\delta=10^{-6}$: $3231$ steps, leading term $3239$.
+    einordnung: |
+      Explains the boundary law [[bw.lem.randgesetz]]. Rigorous with constant: [[br.frage.implosion]]. At $\delta=0$ the bottleneck becomes parabolic ([[kl.satz.parabolisch]]).
+    genau: |
+      For $w\mapsto w+\varepsilon+aw^2+O(w^3,\varepsilon w)$ with small $a,\varepsilon>0$, the number of steps through the bottleneck is $N(\varepsilon)=\pi/\sqrt{a\varepsilon}+O(1)$.
+    warum: |
+      Continuum limit: Each step moves by $\varepsilon+aw^2$, so $dw/dn\approx\varepsilon+aw^2$ and $N\approx\int_{-\infty}^\infty\frac{dw}{\varepsilon+aw^2}=\frac{\pi}{\sqrt{a\varepsilon}}$. The $O(1)$ error is controlled with Fatou coordinates
+      (parabolic implosion, Douady); in physics this is called Pomeau–Manneville intermittency.
+    worum: |
+      A bottleneck: A map that almost has a fixed point — only a tiny $\varepsilon$ is missing — holds the orbit up for a long time. The waiting time grows like $1/\sqrt\varepsilon$. This is exactly what happens to the
+      tower for bases just above $\eta$ near $e$.
+- id: br.satz.shishikura
+  quelle_hash: de70ca52745d
+  theorie_hash: 2321769c07fe
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Lavaurs 1989 (limits), Shishikura 2000 (perturbed Fatou coordinates); Douady 1994. Not checked against the original. The computation
+        for exp_b here: $w=y-e$, $w\mapsto w+\varepsilon+w^2/(2e)$ with $\varepsilon=e^2\delta/\eta$, fixed points $\pm i\sqrt{2e\varepsilon}$,
+        multiplier $1\pm i\sqrt{2\varepsilon/e}$.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Exact conditions on the direction of perturbation and on the gate not checked against the original; the constant
+        $1/\alpha$ for exp_b recomputed here and confirmed by the TPID-6 rate (exp.tpid6).
+      f5_neue_frage: Prove the boundary law and the TPID-6 rate with an error term (br.frage.implosion); limit of Kneser for $b\downarrow\eta$
+        as a Lavaurs map.
+      f3_spezialfall: 'Sharpens br.satz.sattel_knoten: instead of “$\pi/\sqrt{a\varepsilon}+O(1)$” an exact description of the $O(1)$ via the
+        Lavaurs phase $\sigma$.'
+      f1_folgt_unmittelbar: No (deep theory of parabolic implosion).
+      f4_uebertragbar: Kneser's slog for $b>\eta$ is holomorphic on a domain around $\mathbb R$ between $L$ and $\bar L$ with slog∘exp_b = slog
+        + 1 — i.e., a Fatou coordinate on the gate. That it agrees with $\Phi_f$ up to a constant is plausible (both uniformize the same quotient
+        cylinder), but not checked here.
+    bewertung:
+      nutzen: The tool with which the boundary law and the TPID-6 rate could become provable.
+      richtigkeit: established (literature, unchecked)
+    titel: Perturbed Fatou coordinates and the Lavaurs map
+    aussage: |
+      For $f$ near $f_0$ (suitable direction, $\alpha(f)$ small with $\operatorname{Re}\alpha>0$) there is a **perturbed Fatou coordinate** $\Phi_f$ on a “gate”
+      between the two fixed points: $\Phi_f(f(z))=\Phi_f(z)+1$; on the two sides it approaches the attracting resp. repelling Fatou coordinate of $f_0$,
+      the translation in between is $\approx1/\alpha(f)$ (Shishikura). Consequence (Lavaurs): From $f_k\to f_0$ and $n_k-1/\alpha(f_k)\to\sigma$ it follows that
+      $$f_k^{\circ n_k}\;\to\;\Psi_0^{\text{rep}}\bigl(\Phi_0^{\text{att}}(z)+\sigma\bigr)\quad\text{(Lavaurs map)}.$$
+      For $\exp_b$ with $b=\eta+\delta$ at $e$: fixed points $L,\bar L$ with multiplier $\approx1\pm i\sqrt{2e\delta/\eta}$, hence
+      $1/\alpha\approx2\pi/\sqrt{2e\delta/\eta}=\pi\sqrt{2\eta/(e\delta)}$ — exactly the transit time of the boundary law.
+    bereich: $f_0$ with a parabolic fixed point (multiplier 1, one petal), $f$ near $f_0$ with two nearby fixed points, multiplier $e^{\pm2\pi
+      i\alpha(f)}$
+  en_theorie:
+    beispiel: |
+      $\delta=10^{-6}$: $1/\alpha\approx\pi\sqrt{2\cdot1.4447/(2.7183\cdot10^{-6})}=3239$ steps through the gate. Conversely, the base of a
+      1000-level tower that gives exactly 1000 requires $\delta\approx2\pi^2\eta/(e\cdot10^6)=1.05\cdot10^{-5}$ — measured $1.0451\cdot10^{-5}$ ([[fp.beob.tpid6_rate]]).
+    einordnung: |
+      The tool with which the boundary law ([[bw.lem.randgesetz]]) and the TPID-6 rate with an error term could become provable
+      ([[br.frage.implosion]]). Kneser's slog for $b>\eta$ is a Fatou coordinate on exactly this gate; that it agrees with Shishikura's $\Phi_f$
+      is plausible but not checked here. The repelling half $\Psi_0^{\text{rep}}$ is, for $\exp_\eta$, the function cheta ([[kl.satz.cheta]]).
+    genau: |
+      Let $f_0$ be a map with a parabolic fixed point (multiplier 1) and $f$ a small perturbation in which it splits into two fixed points with
+      multiplier $e^{\pm2\pi i\alpha(f)}$.
+      - **Shishikura:** On the gate between the fixed points there is a **perturbed Fatou coordinate** $\Phi_f$ with $\Phi_f(f(z))=\Phi_f(z)+1$. On the left
+        it resembles the attracting, on the right the repelling Fatou coordinate of $f_0$; in between lies a translation of about $1/\alpha(f)$.
+      - **Lavaurs:** If $f_k\to f_0$ and $n_k-1/\alpha(f_k)\to\sigma$, then
+        $$f_k^{\circ n_k}\;\to\;\Psi_0^{\text{rep}}\bigl(\Phi_0^{\text{att}}(z)+\sigma\bigr).$$
+      - **For $\exp_b$, $b=\eta+\delta$:** The fixed points near $e$ have multiplier $\approx1\pm i\sqrt{2e\delta/\eta}$, hence
+        $$\frac1\alpha\approx\frac{2\pi}{\sqrt{2e\delta/\eta}}=\pi\sqrt{\frac{2\eta}{e\,\delta}}.$$
+    warum: |
+      The general theorem is substantial theory (literature, not checked against the original). The computation for $\exp_b$, by contrast, is short:
+      1. With $w=y-e$, a step of $y\mapsto b^y$ near $e$ is approximately $w\mapsto w+\varepsilon+\frac{w^2}{2e}$, $\varepsilon=e^2\delta/\eta$.
+      2. Fixed points: $\varepsilon+w^2/(2e)=0$, hence $w=\pm i\sqrt{2e\varepsilon}$.
+      3. Multiplier there: $1+w/e=1\pm i\sqrt{2\varepsilon/e}=1\pm i\sqrt{2e\delta/\eta}\approx e^{\pm i\sqrt{2e\delta/\eta}}$, hence $2\pi\alpha\approx\sqrt{2e\delta/\eta}$.
+      4. Thus $1/\alpha\approx\pi\sqrt{2\eta/(e\delta)}$ — the same number that the simple bottleneck theorem ([[br.satz.sattel_knoten]]) gives as the number of steps.
+         The new theorem additionally says what happens with the remainder $\sigma$.
+    worum: |
+      Just above $\eta$ the point of tangency at $e$ splits into two complex fixed points $L$ and $\bar L$, and between them a narrow “gate” forms,
+      through which the tower creeps slowly. The theory of **parabolic implosion** (Lavaurs, Douady, Shishikura) describes this
+      passage precisely: There is a coordinate in which every step is again “$+1$”, and the number of steps through the gate is essentially
+      $1/\alpha$, where $\alpha$ can be read off from the multiplier of the two fixed points.
+- id: br.satz.turm_mod_m
+  quelle_hash: 838e7bb093a7
+  theorie_hash: fa949fbcc8b7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Induction on $m$: $a^k\bmod m$ depends, for $k\ge\log_2 m$, only on $k\bmod\lambda(m)$ (Carmichael), and $\lambda(m)<m$; the exponents
+        $a\uparrow\uparrow(n-1)$ become constant mod $\lambda(m)$.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Only number theory mod m.
+      f5_neue_frage: How many final digits stabilize per level? → br.satz.ripa
+      f3_spezialfall: 'no'
+      f1_folgt_unmittelbar: Yes, from the generalized Euler theorem.
+      f4_uebertragbar: To mixed towers and p-adic (ar.satz.selbstpotenz_kongruenz, ar.satz.padische_tuerme).
+    bewertung:
+      nutzen: Discrete side of tetration.
+      richtigkeit: complete
+    titel: Towers modulo m become constant
+    aussage: The sequence $a\uparrow\uparrow n \bmod m$ is eventually constant.
+    bereich: integers $a\ge1$, $m\ge1$
+    einfach: If you look only at the last digits of a tower like 3^3^3^…, they stop changing beyond a certain height — even though the number
+      itself becomes unimaginably large.
+  en_theorie:
+    beispiel: |
+      The last ten digits of $3\uparrow\uparrow n$: $n=3$: …5597484987, $n=4$: …6100739387, $n=5$: …9660355387, $n=6$: …5126595387, $n=7$: …3200195387, $n=8$: …5504195387.
+      Per level, exactly one further digit becomes fixed: …87, …387, …5387, …95387, …195387.
+    einordnung: |
+      How many digits become fixed per level: [[br.satz.ripa]].
+    genau: |
+      For integers $a,m\ge1$ the sequence $a\uparrow\uparrow n\bmod m$ is eventually constant.
+    warum: |
+      1. For large exponents, $a^k\bmod m$ depends only on $k\bmod\lambda(m)$ (generalized Euler theorem; $\lambda$ is the Carmichael function), and $\lambda(m)<m$.
+      2. The exponent of $a\uparrow\uparrow n$ is $a\uparrow\uparrow(n-1)$. By induction (on $m$) it is eventually constant modulo $\lambda(m)$.
+      3. Hence $a\uparrow\uparrow n\bmod m$ is also eventually constant.
+    worum: |
+      If you look only at the last digits of a tower like $3^{3^{3^{\cdot^{\cdot}}}}$, they stop changing beyond a certain height — even though the number itself becomes unimaginably large.
+- id: br.satz.vdd_miller
+  quelle_hash: eceefa30009a
+  theorie_hash: f806a8691722
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: van den Dries–Miller 1994, Prop. 9.10 (still valid after the correction); sketch in van den Dries–Macintyre–Marker 1994, §4.8.
+    pruefung:
+      f2_benutzte_voraussetzungen: Cell decomposition / preparation theorem
+      f5_neue_frage: Tetration lies outside → br.satz.nicht_definierbar
+      f3_spezialfall: 'no'
+      f1_folgt_unmittelbar: 'No'
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Growth bound of tame geometry.
+      richtigkeit: established (literature)
+    titel: Definable functions in ℝ_an,exp are bounded by exponential towers
+    aussage: Every function $f:\mathbb R\to\mathbb R$ definable in $\mathbb R_{\mathrm{an},\exp}$ is eventually bounded by an iterated exponential
+      $\exp^{\circ n}$.
+  en_theorie:
+    beispiel: |
+      $x^x=e^{x\ln x}$, $e^{e^x}$, $\log\log x$ or $x^{x^x}$ — all stay below a tower of fixed height.
+    einordnung: |
+      Consequence for tetration: [[br.satz.nicht_definierbar]]. The same tower bound in computability: [[br.satz.kalmar]].
+    genau: |
+      Every function $f:\mathbb R\to\mathbb R$ definable in $\mathbb R_{\mathrm{an},\exp}$ is eventually bounded by an iterated exponential $\exp^{\circ n}$ (van den Dries–Miller 1994).
+    warum: |
+      Theorem from the literature. The basis is a preparation theorem: definable functions split into finitely many pieces on which they are built from $\exp$, $\log$ and bounded analytic functions
+      in finitely many steps. Each step raises the tower by at most one level.
+    worum: |
+      “Tame geometry” allows logarithms, exponential functions and analytic functions on compact pieces — but everything one can build from them grows
+      at most like a tower of fixed height. Tetration grows faster.
+- id: br.satz.young_kreis
+  quelle_hash: '460719923996'
+  theorie_hash: 0aa400184ddc
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        Young's equation $\int_0^1\tilde H+\int_{\tilde H(0)}^{\tilde H(1)}\tilde H^{-1}=\tilde H(1)$. Since $\tilde H^{-1}-\mathrm{id}$
+        is 1-periodic, $\int_{\tilde H(0)}^{\tilde H(0)+1}\tilde H^{-1}=\int_0^1(\tilde H^{-1}-\mathrm{id})+\tilde H(0)+\tfrac12$. Substitute.
+    pruefung:
+      f2_benutzte_voraussetzungen: Only monotonicity and the degree-one property.
+      f5_neue_frage: 'Classifies bw.satz.antisymmetrie as a special case: tetration provides only the inverse.'
+      f3_spezialfall: Equality case of Young's inequality.
+      f1_folgt_unmittelbar: Yes (Young, equality case).
+      f4_uebertragbar: Every lift of a circle homeomorphism.
+    bewertung:
+      nutzen: Shows that Paper II Thm. B is not tetration-specific content.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: H̃ continuous, strictly increasing, H̃(x+1) = H̃(x)+1
+    - text: H̃ differentiable
+    titel: Area identity for inverse circle homeomorphisms
+    aussage: $\displaystyle\int_0^1(\tilde H(x)-x)\,dx=-\int_0^1(\tilde H^{-1}(y)-y)\,dy$.
+    bereich: $\tilde H:\mathbb R\to\mathbb R$ strictly increasing homeomorphism with $\tilde H(x+1)=\tilde H(x)+1$
+  en_theorie:
+    beispiel: |
+      $\tilde H(x)=x+0.3$: left $0.3$, right $-(-0.3)$. Base change: $\mu_{e,2}=-1.128403776628924$ and the mean of the inverse $+1.128403776629334$; for 200 random lifts the formula holds up to $6\cdot10^{-10}$.
+    einordnung: |
+      Makes [[bw.satz.antisymmetrie]] a special case: Tetration provides only that $\tilde H_{d,b}$ is the inverse of $\tilde H_{b,d}$.
+    genau: |
+      If $\tilde H:\mathbb R\to\mathbb R$ is a strictly increasing homeomorphism with $\tilde H(x+1)=\tilde H(x)+1$, then
+      $$\int_0^1(\tilde H(x)-x)\,dx=-\int_0^1(\tilde H^{-1}(y)-y)\,dy.$$
+    warum: |
+      1. Young's equation: $\int_0^1\tilde H+\int_{\tilde H(0)}^{\tilde H(1)}\tilde H^{-1}=\tilde H(1)$ — two areas complement each other to a rectangle (as in [[gr.satz.young]]).
+      2. $\tilde H^{-1}-\mathrm{id}$ is 1-periodic, hence $\int_{\tilde H(0)}^{\tilde H(0)+1}\tilde H^{-1}=\int_0^1(\tilde H^{-1}-\mathrm{id})+\tilde H(0)+\tfrac12$.
+      3. Substitute and use $\tilde H(1)=\tilde H(0)+1$. Differentiability is not needed anywhere.
+    worum: |
+      An area formula for circle maps: The area between the graph of such a map and the diagonal is exactly the negative of the corresponding area for the
+      inverse map. This is the actual reason for the antisymmetry in the base change.

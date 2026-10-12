@@ -23,3 +23,11 @@ Erledigtes bitte streichen. Stand 12.10.2026 (fg, it, fp).
 - `fp.beob.partner_keil`: der Kern sagt, alle solchen Basen hätten Re b<0, die Spitze des Keils liegt aber bei e^{−e}>0; der Index m wird neben k ohne Definition benutzt.
 - `fp.satz.p2_raten`, Prüftext: der Cho–Kim-Vorfaktor √(6/e) in √(e^{−e}−x) ergibt nicht offensichtlich 2√6·e^{−3/2}·√t (vermutlich andere Variable).
 - `fp.satz.messbare_dynamik`: Status `bewiesen_literatur`, aber „nicht ergodisch“ steht nur aus dem Gedächtnis (der deutsche Text sagt das selbst).
+
+## br
+- `br.frage.transexp`, `aussage`: ein stehengebliebenes „\num“ (Zeilenumbruch vor „um eine …“).
+- `br.satz.ordinal_tetration`, `einfach`: „ε₀ hoch ω wieder ε₀“, die Aussage ist aber ω^{ε₀} = ε₀ (Reihenfolge vertauscht).
+- `br.satz.nicht_definierbar` und `br.satz.young_kreis`, Prüftext `voraussetzungen`: nennen „E monoton oder analytisch“ bzw. „H̃ differenzierbar“, obwohl f2 und der Beweis beides nicht brauchen.
+- `br.satz.halbexp_komplexitaet`: `bereich` sagt f(f(n)) „etwa 2^n“, `aussage` f(f(n)) ≤ 2^{o(n)}, die Theorie „unter 2^n“.
+- `br.satz.boshernitzan`: der Kern nennt die Funktionen Lösungen von f(x+1)=e^{f(x)}, die Theorie sagt „etwa“ und dass die genaue Lösung noch am Original zu prüfen ist.
+- Notation: in der Lavaurs-Formel (`br.satz.shishikura`) stehen die Kürzel `\text{abst}`, `\text{anz}`; die englische Fassung nennt sie `rep`, `att`.
