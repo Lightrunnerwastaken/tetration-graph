@@ -21,6 +21,7 @@ Befehle (aus dem Wurzelverzeichnis):
     python -m wissen.uebersetzung export --gebiet fp --felder kern --max 20 -o stapel.json
     python -m wissen.uebersetzung export --gebiet fp --felder theorie -o stapel.json
     python -m wissen.uebersetzung einlesen uebersetzt.json --modell sonnet [--ersetzen]
+    python -m wissen.uebersetzung abgleich sonnet.json haiku.json      # wo zwei unabhängige Übersetzungen auseinanderliegen
 """
 import argparse
 import hashlib
@@ -488,6 +489,48 @@ def _verschmelzen(alt, neu):
     return out
 
 
+def _woerter(s: str) -> list:
+    """Englische Wörter ohne Formeln, kleingeschrieben (für den Abgleich zweier Übersetzungen)."""
+    return re.findall(r"[a-zA-Z\u00c0-\u024f][\w'-]*", MATHE.sub(" ", s).lower())
+
+
+def abgleich(a, b, schwelle=0.85):
+    """Vergleicht zwei Übersetzungsstapel [{id, en | en_theorie}]; liefert [(id, pfad, aehnlichkeit, nur_a, nur_b)] unter der Schwelle."""
+    import difflib
+    zu_b = {e["id"]: e for e in b}
+    ausgabe = []
+    for e in a:
+        f = zu_b.get(e["id"])
+        if f is None:
+            ausgabe.append((e["id"], "(fehlt in B)", 0.0, [], []))
+            continue
+        for schluessel in ("en", "en_theorie"):
+            if schluessel not in e:
+                continue
+            la, lb = flach(e[schluessel]), flach(f.get(schluessel) or {})
+            for pfad, ta in la.items():
+                tb = lb.get(pfad)
+                if tb is None:
+                    ausgabe.append((e["id"], f"{schluessel}.{pfad}", 0.0, [], ["(fehlt in B)"]))
+                    continue
+                wa, wb = _woerter(ta), _woerter(tb)
+                sm = difflib.SequenceMatcher(None, wa, wb)
+                if sm.ratio() < schwelle:
+                    nur_a = [w for op, i1, i2, _, _ in sm.get_opcodes() if op != "equal" for w in wa[i1:i2]]
+                    nur_b = [w for op, _, _, j1, j2 in sm.get_opcodes() if op != "equal" for w in wb[j1:j2]]
+                    ausgabe.append((e["id"], f"{schluessel}.{pfad}", round(sm.ratio(), 2), nur_a, nur_b))
+    return sorted(ausgabe, key=lambda x: x[2])
+
+
+def befehl_abgleich(datei_a, datei_b, schwelle):
+    a = json.loads(Path(datei_a).read_text(encoding="utf-8"))
+    b = json.loads(Path(datei_b).read_text(encoding="utf-8"))
+    abw = abgleich(a, b, schwelle)
+    print(f"{len(abw)} Texte unter Ähnlichkeit {schwelle}")
+    for i, pfad, r, na, nb in abw:
+        print(f"- {i} · {pfad} · {r}\n    A: {' '.join(na)[:200]}\n    B: {' '.join(nb)[:200]}")
+
+
 def main(argv=None):
     wurzel = Path(__file__).resolve().parents[1]
     ap = argparse.ArgumentParser(prog="python -m wissen.uebersetzung")
@@ -505,6 +548,10 @@ def main(argv=None):
     i.add_argument("--geprueft", choices=sorted(S.UEBERSETZ_GEPRUEFT), default="nein")
     i.add_argument("--ersetzen", action="store_true", help="vorhandenen Eintrag ganz ersetzen (nötig bei veralteten)")
     i.add_argument("--trocken", action="store_true")
+    v = sub.add_parser("abgleich", help="zwei unabhängige Übersetzungen vergleichen, Abweichungen zeigen")
+    v.add_argument("datei_a")
+    v.add_argument("datei_b")
+    v.add_argument("--schwelle", type=float, default=0.85)
     a = ap.parse_args(argv)
     try:
         sys.stdout.reconfigure(encoding="utf-8")
@@ -512,6 +559,8 @@ def main(argv=None):
         pass
     if a.befehl == "stand":
         befehl_stand(wurzel)
+    elif a.befehl == "abgleich":
+        befehl_abgleich(a.datei_a, a.datei_b, a.schwelle)
     elif a.befehl == "export":
         befehl_export(wurzel, a.gebiet, a.felder, a.max, a.nur_fehlend, a.ausgabe)
     else:

@@ -159,3 +159,13 @@ def test_verschmelzen():
     m = U._verschmelzen(alt, neu)
     assert m["titel"] == "T" and m["aussage"] == "A" and m["beweis"]["text"] == "B2"
     assert m["formen"] == [{"notiz": "n1"}, {"notiz": "n2"}]
+
+
+def test_abgleich_zeigt_nur_abweichungen():
+    a = [{"id": "x", "en": {"titel": "Measurable consequence of the table", "aussage": "Same text $x^2$ here for sure"}}]
+    b = [{"id": "x", "en": {"titel": "A testable sequence of the table", "aussage": "Same text $y$ here for sure"}}]
+    abw = U.abgleich(a, b, schwelle=0.85)
+    assert [x[1] for x in abw] == ["en.titel"]                 # Formeln zählen nicht, Wortwahl schon
+    assert "consequence" in abw[0][3] and "sequence" in abw[0][4]
+    assert U.abgleich(a, a) == []
+    assert U.abgleich(a, [])[0][1] == "(fehlt in B)"
