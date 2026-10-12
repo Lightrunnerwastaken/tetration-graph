@@ -56,6 +56,8 @@ def test_signalwoerter_britisch_und_deutsch():
     assert ("WARNUNG", "uebersetzung-wortwahl") in stufen(U.pruefe_text("Beispiel", "Das ist ein Beispiel"))
     assert not stufen(U.pruefe_text("nach Müller–Schleicher", "after Müller–Schleicher"), "uebersetzung-wortwahl")
     assert not stufen(U.pruefe_text("Verallgemeinert ar.satz.keine_arith_info", "Generalizes ar.satz.keine_arith_info"), "uebersetzung-wortwahl")
+    assert not stufen(U.pruefe_text("Sie sind nicht reell, wohl aber periodisch.", "They are not real, but they are periodic."), "uebersetzung-wortwahl")
+    assert ("WARNUNG", "uebersetzung-wortwahl") in stufen(U.pruefe_text("Das gilt wohl.", "This holds."))
     assert not stufen(U.pruefe_text("Hardy und van der Hoeven", "Hardy and van der Hoeven"), "uebersetzung-wortwahl")
 
 

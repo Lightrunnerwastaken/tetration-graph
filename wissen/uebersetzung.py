@@ -44,7 +44,7 @@ SIGNAL = [
     (r"\bnur\b", r"\bonly\b|\bmerely\b|\bsolely\b|\balone\b"),
     (r"\bgenau\b", r"\bexactly\b|\bprecisely\b|\bjust\b|\bif and only if\b|\bexact\b|\bsharp\b|\bunique"),
     (r"\bjede[rsmn]?\b|\balle\b", r"\bevery\b|\bany\b|\ball\b|\beach\b"),
-    (r"\bvermutlich\b|\bwohl\b|\bvielleicht\b", r"\bpresumably\b|\bprobably\b|\blikely\b|\bperhaps\b|\bsuppos|\bmay\b|\bmight\b|\bapparently\b|\bexpect"),
+    (r"\bvermutlich\b|\bwohl\b(?! aber)|\bvielleicht\b", r"\bpresumably\b|\bprobably\b|\blikely\b|\bperhaps\b|\bsuppos|\bmay\b|\bmight\b|\bapparently\b|\bexpect"),
     (r"\bbedingt", r"\bconditional"),
     (r"\bVermutung", r"\bconjecture"),
     (r"\bwiderlegt", r"\brefut|\bdisprov|\bfalsif"),
