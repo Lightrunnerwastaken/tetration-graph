@@ -40,3 +40,21 @@ Erledigtes bitte streichen. Stand 12.10.2026 (fg, it, fp).
 - `ar.satz.unendliche_tuerme_gs`: `bereich` 1<b≤e^{1/e}, die Aussage behandelt aber auch b∈[e^{−e},1) und b<e^{−e}.
 - `ar.frage.ef_fortsetzung`: `einfach` spricht von einer „natürlichen Glattheitsbedingung“, die Aussage von „totaler Monotonie“.
 - `ar.satz.ssc_gelfond`: Status `bewiesen_literatur`, der Inhalt ist aber eine bedingte Implikation (vermutlich gewollt).
+
+## gr
+- `gr.satz.grenzfaelle`: `einfach` sagt „keine reellen Werte unterhalb der Höhe −1“, die Aussage setzt die Grenze bei −2 (a↑↑(−2)=−∞).
+- `gr.satz.stellen`: `bereich` sagt ganzzahlige a≥2, die Theorie `genau` sagt a>1.
+- `gr.satz.young`: der Prüftext nennt „T differenzierbar“ als Voraussetzung; Kern, f2 und Theorie sagen, sie werde nicht gebraucht.
+- `gr.satz.gestalt`: `einfach` sagt „jede Tetration“ stürzt nach −∞, die Aussage gilt nur für stetige, streng wachsende T.
+- `gr.satz.integral_produkt`: `einfach` sagt „für alle denselben Wert“, das gilt nur bei festem x (etwa x=−1).
+- `gr.beob.wendepunkte`: Suchbereich beginnt bei −1.94 (Prüftext f2) bzw. −1.95 (Theorie `warum`).
+- `gr.beob.kneser_pde_wackeln`: Titel „3·10⁻⁴ (Basis 2)“, die Daten geben 5.7·10⁻⁴ für Basis 2 und 2.9·10⁻⁴ für Basis e.
+- `gr.satz.basis_ganz`, Theorie `einordnung`: „des Kneser-Familie“ (Tippfehler).
+- `gr.verm.tpid7`: die Theorie sagt, der Kneser-Wendepunkt dürfe nicht „zu nah an 0“ wandern; `gr.gegen.tpid7_kneser`, `gr.satz.ln_aus_steigungen` und die Prüftexte legen ihn nahe −1 (T″(−1)=0 bei b₇).
+- `gr.satz.turmintegral_periodisch`: „linear“ ist T_x(s)=x^s und „geradlinig“ 1−s(1−x), das wirkt vertauscht; die Theorie sagt, jede stetige Tetration müsse L kreuzen, Kern und Prüftext nehmen genau eine Kreuzung an.
+- `gr.satz.logstern`: `bereich` y>1, Theorie y>0.
+- `gr.satz.superwurzel`: die Theorie lässt bei der Lösungszahl den Fall x=1 aus.
+- `gr.satz.frei_und_fest`: der Kern sagt, endlich viele Ableitungen lassen sich vorschreiben, die Theorie sagt „jede Taylorreihe“.
+- Status „bewiesen“, aber nur beobachtet oder aus der Literatur: `gr.satz.superwurzel_dritte` (Konvergenz der Iteration nur beobachtet), `gr.satz.wurzel_eta` (Koeffizient −1.6166 nur gemessen), `gr.satz.exponentialitaet` (Ganzzahligkeit aus Hardy / van der Hoeven).
+- `gr.verm.tpid7`: „folgt“ für reguläre Tetration beruht auf `kl.verm.vollmonoton`, selbst eine Vermutung. `gr.gegen.tpid7_kneser`, Theorie: „gilt bis b₇ für Kneser“ übertreibt, der Prüftext nennt volle Konkavität offen.
+- Kleinigkeiten: `gr.satz.stufenleiter` T_e′(0) = 1.0917673512… (Kern) gegen 1.0917673513 (Theorie); `gr.satz.kehrwert_turmsumme` „vierter oder fünfter Summand“ klein, es ist nur der fünfte; `gr.satz.tauschregel` Prüftext nennt a^z „Potenzfunktion“.

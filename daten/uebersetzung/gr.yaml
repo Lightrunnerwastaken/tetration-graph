@@ -1,0 +1,2613 @@
+# Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
+# übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: gr.beob.integral_halb
+  quelle_hash: b5f7278e6b2e
+  theorie_hash: 2f3851edff61
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Does this base have a meaning, or is it a coincidence? (It lies near e, but not at e.)
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: Kneser values, Gauss–Legendre with 40 nodes; control at e against gr.beob.integrale_kneser to 18 digits.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Via the area identity gr.satz.young this corresponds to a statement about $\int_0^1\operatorname{slog}$.
+    bewertung:
+      recherche: Posed in the forum as an open question, no value found (literature search 08.10.2026).
+      richtigkeit: numerical (25 digits)
+      nutzen: Small answer to a forum question.
+    titel: ∫₋₁⁰ T_b = ½ exactly at b = 2.6937028415…
+    aussage: |
+      For the linear approximation ($T(x)=1+x$ on $[-1,0]$) we have $\int_{-1}^0T=\tfrac12$ for every base. For Kneser the integral depends on $b$ and falls with $b$:
+      $0.5747\ (b=1.5)$, $0.5304\ (2)$, $0.5067\ (2.5)$, $0.4992\ (e)$, $0.4911\ (3)$, $0.4276\ (10)$. It is exactly $\tfrac12$ at
+      $$b=2.693702841530558043903588\ldots$$
+    bereich: Kneser tetration $b>\eta$; comparison of linear approximation and regular tetration
+    einfach: The area under a tetration curve between −1 and 0 is almost always about ½ — but exactly ½ only at a single base, about 2.694, just
+      below e.
+  en_theorie:
+    beispiel: |
+      The base $2.6937$ lies just below $e=2.7183$; at $e$ the value falls short of $\tfrac12$ by $0.00078$.
+    einordnung: |
+      A small numerical question from the forum. Via the area identity [[gr.satz.young]] it becomes a statement about the integral of the super-logarithm.
+    genau: |
+      For Kneser, $I(b)=\int_{-1}^0T_b(x)\,dx$ falls as the base grows:
+      $I(1.5)=0.5747$, $I(2)=0.5304$, $I(2.5)=0.5067$, $I(e)=0.4992$, $I(3)=0.4911$, $I(10)=0.4276$. It is exactly $\tfrac12$ at
+      $$b=2.693702841530558043903588\ldots$$
+    warum: |
+      Computed, not proved: Kneser values at 40 Gauss–Legendre nodes in $[-1,0]$, then a secant method in $b$. Control: $I(e)=0.49921818282999\ldots$ agrees with
+      [[gr.beob.integrale_kneser]]. That $I$ falls with $b$ fits the picture: The larger the base, the lower the curve hangs between $-1$ and $0$ below the straight line.
+    worum: |
+      The simplest tetration, the linear approximation, is a straight line from 0 to 1 between $-1$ and $0$. The area below it is exactly $\tfrac12$ — for every base.
+      The Kneser tetration is slightly bent there, and its area deviates. At which base is it nevertheless exactly $\tfrac12$?
+- id: gr.beob.integrale_kneser
+  quelle_hash: e9e05ae6936c
+  theorie_hash: b7bb65516dda
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: $\int_{-1}^0T_e$ lies $7.8\cdot10^{-4}$ below 1/2 — no known reason.
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Gauss–Legendre 40 nodes (cross-check 30), engine values 40 digits.
+      f3_spezialfall: —
+      f4_uebertragbar: Any base.
+    bewertung:
+      recherche: No published values found.
+      richtigkeit: numerical, ~30 digits
+      nutzen: Reference for learners and checks.
+    titel: Numerical values of the integrals
+    aussage: 'Kneser, base $e$: $\int_0^1T_e=1.71452195889062048816597476\ldots$, $\int_1^e\operatorname{slog}_e=1.00375986956842474719\ldots$,
+      $\int_{-1}^0T_e=0.49921818282999133972\ldots$. Regular, base $\sqrt2$: $\int_0^1T=1.23158497328040495081\ldots$, $\int_1^{\sqrt2}\operatorname{slog}=0.18262858909269009799\ldots$,
+      $\int_{-1}^0T=0.58730123997894053426\ldots$. All identities of the foundations agree to within $\le10^{-28}$.'
+    einfach: This is how large the areas really are, exact to many digits.
+  en_theorie:
+    beispiel: |
+      $1.23158497+0.18262859=1.41421356=\sqrt2$ — the rectangle rule at base $\sqrt2$.
+    einordnung: |
+      Whether these numbers are known constants is asked by [[gr.frage.integral_form]].
+    genau: |
+      Kneser, base $e$: $\int_0^1T_e=1.71452195889062\ldots$, $\int_1^e\operatorname{slog}_e=1.00375986956842\ldots$,
+      $\int_{-1}^0T_e=0.49921818282999\ldots$
+      Regular, base $\sqrt2$: $\int_0^1T=1.23158497328040\ldots$, $\int_1^{\sqrt2}\operatorname{slog}=0.18262858909269\ldots$,
+      $\int_{-1}^0T=0.58730123997894\ldots$
+    warum: |
+      Gauss quadrature on values of the tetration (Kneser via gp-tetration, regular via the Koenigs series). The identities
+      [[gr.satz.young]], [[gr.kor.integral_formen]] and [[gr.satz.integral_unten]] then agree to $10^{-28}$.
+    worum: |
+      The areas of this strand, computed to many digits for two important cases — and all formulas checked against one another in the process.
+- id: gr.beob.kneser_ableitung
+  quelle_hash: 660b9dafb50e
+  theorie_hash: 435d2c7cd4b8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Are all Taylor coefficients positive? (The first nine are.)
+      f1_folgt_unmittelbar: No (computation).
+      f2_benutzte_voraussetzungen: Engine values on circles around 0; error $(r/R)^{64}$ with $R=2$.
+      f3_spezialfall: —
+      f4_uebertragbar: Any base via the engine.
+    bewertung:
+      richtigkeit: numerical, 20+ digits
+      nutzen: Reference numbers for learners.
+    titel: Derivatives of Kneser's tetration at 0
+    aussage: '$T_e''(0)=1.0917673512583209918\ldots$, $T_e''''(0)=0.5429664258033891906\ldots$. Taylor series at 0 (radius of convergence 2):
+      $T_e(x)=1+1.0917673512583\,x+0.2714832129017\,x^2+0.2124532481763\,x^3+0.0695403761400\,x^4+0.0442919520905\,x^5+\dots$ And $\operatorname{slog}_e''(0)=1/T_e''(0)=0.91594605649953339395\ldots$
+      — the same number as the orbit value $-V_1=e/T_e''(1)$ in Paper V.'
+    einfach: This is how steep the usual (Kneser) tetration to base e is at the point 0, and this is how its power series begins.
+  en_theorie:
+    beispiel: |
+      With only five terms: $T_e(0.5)\approx1+0.54588+0.06787+0.02656+0.00435+0.00138=1.64604$; the exact value is $1.6463542$.
+    einordnung: |
+      With [[gr.kor.ganze_stellen]], all slopes at integer arguments follow from this. Whether the number $T_e'(0)$ has a closed form is
+      unknown; for where its values are needed, see [[gr.satz.slog_ableitung]].
+    genau: |
+      $T_e'(0)=1.0917673512583209918\ldots$, $\ T_e''(0)=0.5429664258033891906\ldots$, and the Taylor series about $0$ begins with
+      $$\begin{aligned}T_e(x)=1&+1.09177\,x+0.27148\,x^2+0.21245\,x^3\\&+0.06954\,x^4+0.04429\,x^5+\dots\end{aligned}$$
+      It converges for $|x|<2$ (up to the singularity at $-2$).
+    warum: |
+      These are measured values, not derived formulas. They come from the computing program gp-tetration (Kneser via Fatou coordinates)
+      and were determined with Cauchy integrals on a circle about $0$; two independent routes agree to over 25 digits.
+    worum: |
+      For the most important tetration, Kneser's solution at base $e$, the slope and the curvature at $0$ are known to many digits,
+      and with them the beginning of its power series.
+- id: gr.beob.kneser_pde_wackeln
+  quelle_hash: 44247fe1772c
+  theorie_hash: 449d71b174d2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Are the Fourier coefficients of p the base derivatives of the base-change modes (bw.beob.modenabfall)?
+      f1_folgt_unmittelbar: No, measurement.
+      f2_benutzte_voraussetzungen: Kneser values from the fork (b ± 10⁻⁷, Richardson); S as a forward sum to 48 digits.
+      f3_spezialfall: Infinitesimal version of bw.satz.phasengesetz.
+      f4_uebertragbar: Any base above η; the range falls from 2 to e.
+    bewertung:
+      richtigkeit: numerical (periodicity to 10⁻³²)
+      nutzen: Shows that Kneser is not the family of the forum equation, and ties this to the base change.
+    titel: 'Kneser satisfies Kobi''s equation only almost: p wobbles by 3·10⁻⁴ (base 2)'
+    aussage: 'For Kneser''s tetration, $p=\partial_b\operatorname{slog}_b-S_b\operatorname{slog}_b''$ (gr.satz.turm_pde) is **not** constant:
+      measured over one period ($y\in[0,1]$, $\operatorname{slog}$ from $-1$ to $0$): base 2 mean $-3.15733299588$, range $5.7\cdot10^{-4}$; base
+      $e$ mean $-0.806194244997$, range $2.9\cdot10^{-4}$. So the fractional Kneser iterates satisfy Kobi''s equation only up to a small periodic
+      wobble. The family for which $p$ is constant is the base-change family (forward-orbit limit) — the wobble is the infinitesimal version of
+      the “wave” of the base change (bw.satz.phasengesetz; Levenstein 2009: the change “wobbles a little”).'
+    einfach: 'The forum equation almost holds for the well-known Kneser solution, but not quite: a tiny, regular wobble remains. It is the same
+      wobble you see when you convert tetrations of different bases into each other.'
+  en_theorie:
+    beispiel: |
+      Base 2: $p$ runs over one period between about $-3.15761$ and $-3.15704$.
+    einordnung: |
+      Infinitesimal version of the base-change wobble. The family with constant $p$ is presumably nowhere analytic ([[bw.verm.nirgends_analytisch]]) —
+      Kneser, by contrast, is analytic and pays for it with the wobble.
+    genau: |
+      The quantity $p=\partial_b\operatorname{slog}_b-S_b\operatorname{slog}_b'$ is periodic for Kneser (to $10^{-32}$), but not constant:
+
+      | Base | Mean of $p$ | Range over one period | first harmonic |
+      |---|---|---|---|
+      | 2 | $-3.15733299588$ | $5.7\cdot10^{-4}$ | $1.4\cdot10^{-4}$ |
+      | $e$ | $-0.806194244997$ | $2.9\cdot10^{-4}$ | $7.2\cdot10^{-5}$ |
+
+      So the fractional Kneser iterates satisfy the equation only up to a small periodic wobble.
+    warum: |
+      The forward sum $S$ belongs to the family one obtains by base change along the forward orbit: there $p$ is constant. Kneser and this family
+      differ by the known “wave” of the base change (Levenstein 2009: the change “wobbles a little”; here [[bw.satz.phasengesetz]]). The wobble
+      of $p$ is the derivative of this wave with respect to the base.
+    worum: |
+      Does the well-known Kneser tetration satisfy the forum equation from [[gr.satz.turm_pde]] at fractional height too? Almost — but not quite.
+- id: gr.beob.wendepunkte
+  quelle_hash: 9acd0a6f0bb8
+  theorie_hash: e0aca9d56d2b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Does $x_w(b)$ grow for $b\downarrow\eta$ like the transit time $\sim(b-\eta)^{-1/2}$?
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Search on $(-1.94,x_{\max})$ up to $T\approx10^5$, step 0.06 (0.2 at b = 1.5), bisection.
+      f3_spezialfall: —
+      f4_uebertragbar: Other constructions (Walker, linear) — there, kinks instead of inflection points.
+    bewertung:
+      recherche: No table of inflection points in the sources checked.
+      richtigkeit: numerical, location to ~1e-9
+      nutzen: Illustrative and the starting point of a conjecture.
+    titel: Where the curves change their curvature
+    aussage: 'Kneser''s tetration has **exactly one** inflection point in each case: $b=1.5$: $x_w=3.987$; $b=2$: $-0.0302$; $b=e$: $-0.5218$;
+      $b=3$: $-0.6039$; $b=5$: $-0.8469$; $b=10$: $-0.9967$; $b=100$: $-1.1819$. The regular tetrations for $b=1.2,\,1.3,\,\sqrt2,\,1.44$ have
+      **none** — they are concave everywhere.'
+    einfach: On the left, at −2, every tetration curve is bent downward. The Kneser curves tip over into an upward bend exactly once, the later
+      the closer the base is to η. The curves below η never tip over.
+  en_theorie:
+    beispiel: |
+      The closer the base is to $\eta\approx1.4447$, the later the inflection point comes: at $1.5$ only at almost $4$. For large
+      bases it moves toward $-1$ and beyond that further to the left.
+    einordnung: |
+      The conjecture behind this is [[gr.verm.ein_wendepunkt]]; the half “convexity is inherited upward”
+      ([[gr.kor.konvex_nach_oben]]) is proved.
+    genau: |
+      Kneser: $b=1.5$: $x_w=3.987$; $\ b=2$: $-0.030$; $\ b=e$: $-0.522$; $\ b=3$: $-0.604$; $\ b=5$: $-0.847$; $\ b=10$: $-0.997$;
+      $\ b=100$: $-1.182$. Regular for $b=1.2,\,1.3,\,\sqrt2,\,1.44$: no inflection point, bent downward everywhere.
+    warum: |
+      Measured: the second derivative was evaluated on a fine grid from $-1.95$ to far to the right and searched
+      for sign changes ([[exp.ableitung]]). The picture is plausible as follows: near $-2$ every curve plunges logarithmically, so it is
+      bent downward; above $\eta$ it must eventually explode and thus bend upward.
+    worum: |
+      Where does the curve switch from “bent downward” to “bent upward”? As measured, every Kneser curve has exactly one such
+      inflection point, and the regular curves below $\eta$ have none.
+- id: gr.def.turm
+  quelle_hash: eb962d31afba
+  theorie_hash: 5d02e73929f6
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: The tower a↑↑n
+    aussage: 'For integer $n\ge1$: $a\uparrow\uparrow 1=a$ and $a\uparrow\uparrow(n+1)=a^{\,a\uparrow\uparrow n}$, that is, a tower of $n$ copies
+      of $a$, evaluated **from the top**; in addition $a\uparrow\uparrow 0=1$. Examples: $2\uparrow\uparrow3=2^{4}=16$, $2\uparrow\uparrow4=2^{16}=65536$,
+      $3\uparrow\uparrow3=3^{27}=7\,625\,597\,484\,987$, $e\uparrow\uparrow2=e^e\approx15.154$. Caution: $(a^a)^a=a^{a^2}$ is something different
+      from $a^{(a^a)}$. Names and notations: “tetration” is due to Goodstein (1947); “superexponentiation” appears in Nelson (1986) and Bromer
+      (1987); the left superscript ${}^na$ in Maurer (1901) and Goodstein, popularized by Rucker (1982); the arrow $\uparrow\uparrow$ is due to
+      Knuth (1976).'
+    einfach: 'You stack the same number on top of itself as exponents and calculate from the top down. A tetration T is a curve that hits these
+      values at the integer arguments: T(n) = a↑↑n.'
+    formen:
+    - notiz: Knuth arrow
+    - notiz: notation with a left superscript
+    - notiz: as values of a tetration
+  en_theorie:
+    beispiel: |
+      - $2\uparrow\uparrow2=2^2=4$, $\ 2\uparrow\uparrow3=2^4=16$, $\ 2\uparrow\uparrow4=2^{16}=65\,536$.
+      - $3\uparrow\uparrow3=3^{27}=7\,625\,597\,484\,987$, but computed from the bottom only $(3^3)^3=19\,683$.
+      - $e\uparrow\uparrow2=e^{e}\approx15.154$.
+      - Base $\tfrac12$: $0.5,\ 0.7071,\ 0.6126,\ 0.6540,\ 0.6355,\ 0.6437,\dots$ — the tower jumps back and forth and approaches $0.64119$.
+    einordnung: |
+      This is the beginning of everything. How large the towers get is stated in [[gr.satz.stellen]]; what a curve $T_a(x)$ for all heights
+      must look like, in [[gr.satz.gestalt]]; what the infinite tower does, in [[fp.satz.turm_reell]]. The equation $T(x+1)=a^{T(x)}$,
+      which connects all heights, is the starting point of Chapter 3 ([[fg.def.tetration]]).
+    genau: |
+      For a base $a>0$ and an integer $n\ge1$,
+      $$a\uparrow\uparrow1=a,\qquad a\uparrow\uparrow(n+1)=a^{\,a\uparrow\uparrow n}.$$
+      Each new level is “$a$ to the power of the previous result”; so the tower is evaluated **from the top**. The empty tower is
+      $a\uparrow\uparrow0=1$; with this the rule also holds for $n=0$, since $a^{1}=a$. Other notations: ${}^{n}a$ (exponent at the upper left).
+
+      A **tetration** to base $a$ is a function $T_a$ that has these values at the integer arguments: $T_a(n)=a\uparrow\uparrow n$.
+      In particular $T_a(0)=1$, and since $a^{T_a(-1)}=T_a(0)=1$ must hold, $T_a(-1)=0$.
+    warum: |
+      The definition is a choice, but a forced one. If one computed the tower **from the bottom**, that is $(a^a)^a$, it would immediately collapse because of
+      $(a^u)^a=a^{ua}$:
+      $$((a^a)^a)^a=a^{a\cdot a\cdot a}=a^{a^3}.$$
+      That is just an ordinary power with the exponent $a^3$ — nothing new. Computed from the top, by contrast, the exponent grows by a whole power level at every
+      step, and only this gives rise to the new operation.
+    worum: |
+      A power tower arises when one takes the same number as the exponent again and again: $a$, then $a^a$, then $a^{a^a}$, and so on.
+      The height of the tower is the number of levels. Tetration is the operation that makes the tower from base and height — just as
+      exponentiation makes the product of many equal factors from base and exponent.
+- id: gr.frage.integral_form
+  quelle_hash: cd5336e795ef
+  theorie_hash: 5b225e3ebc42
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: Repeat with 1000 digits (engine) and a larger list of constants.
+    titel: Is ∫₀¹ T_e a known constant?
+    aussage: 'No integer relation to $1,e,e^2,\pi,\gamma,\ln2,\operatorname{Re}L,\operatorname{Im}L$ with coefficients $\le10^3$ (PSLQ, 38 digits).
+      Instructive: with settings that are too coarse (coefficients $\le10^5$ at 30 digits), PSLQ finds a **spurious relation** that falls apart
+      at 40 digits.'
+    einfach: 'Nobody knows whether this area can be expressed by known numbers. The computation says: probably not with small coefficients.'
+  en_theorie:
+    beispiel: |
+      For comparison: $\int_0^1x^x\,dx=\sum(-1)^{k+1}k^{-k}$ has a nice form ([[gr.satz.sophomore]]) — for the tetration nothing similar is known.
+    einordnung: |
+      An open question for the number theory of tetration (Chapter 9). Next step: repeat with 1000 digits and a larger list
+      of candidates.
+    genau: |
+      Sought was an integer relation $c_0\int_0^1T_e+c_1+c_2e+c_3e^2+c_4\pi+c_5\gamma+c_6\ln2+c_7\operatorname{Re}L+c_8\operatorname{Im}L=0$ with
+      coefficients up to $1000$ (PSLQ method, 38 digits). None found.
+    warum: |
+      Given numbers, PSLQ finds the smallest integer relation, if there is one. A failure was instructive: with settings that were too coarse
+      (coefficients up to $10^5$ at only 30 digits) the method found a **spurious relation** that fell apart at 40 digits.
+      Rule of thumb: one needs considerably more digits than the sought relation has digits in total.
+    worum: |
+      Is the area $\int_0^1T_e=1.71452\ldots$ perhaps a known number in disguise, say a combination of $e$, $\pi$ and $\ln2$?
+      So far nothing points that way.
+- id: gr.gegen.tpid7_kneser
+  quelle_hash: 8bc785f3444d
+  theorie_hash: a4117a2d1c52
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $T(y)T(-y)=\exp\bigl((\ln T)(y)+(\ln T)(-y)\bigr)=\exp\bigl((\ln T)^{\prime\prime}(0)\,y^2+O(y^4)\bigr)$ with $T(0)=1$; the sign of
+        $(\ln T)^{\prime\prime}(0)=T^{\prime\prime}(0)-T^{\prime}(0)^2$ decides for small $y$. The values themselves are measured.
+    pruefung:
+      f5_neue_frage: How is $b_7$ related to the inflection point? (At $b=10$ it lies at $-0.997$, i.e. near −1.)
+      f1_folgt_unmittelbar: Yes, as soon as the derivatives at 0 are known (local expansion).
+      f2_benutzte_voraussetzungen: Kneser values to 40 digits; the product at b = 100 lies far above 1, the statement is robust against rounding.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Other tetrations with $T^{\prime\prime}(0)>T^{\prime}(0)^2$ violate TPID 7 in the same way.
+    bewertung:
+      recherche: Mentioned in TPID 7 only as an extension (“intuitive tetration for x > η”), without a threshold; no counterexample found (literature
+        search 08.10.2026).
+      richtigkeit: numerical, robust against rounding
+      nutzen: Shows that the Kneser extension of TPID 7 has a genuine threshold.
+    titel: The Kneser version of TPID 7 fails above b₇ = 10.2210634157814…
+    aussage: |
+      For Kneser, $T_b(y)T_b(-y)<1$ does not hold for all $b>\eta$: at $b=20$ we have $T(\tfrac12)T(-\tfrac12)=1.0713$, at $b=100$ even $1.3158$.
+      The threshold is the base at which $\ln T_b$ tips at 0 from concave to convex:
+      $$(\ln T_b)''(0)=T_b''(0)-T_b'(0)^2=0\qquad\Longleftrightarrow\qquad b=b_7=10.2210634157814\ldots$$
+      Just below it the product is smaller than 1 for small $y$, just above it larger. At $b=e$: $(\ln T)''(0)=-0.64899$.
+    bereich: Kneser tetration, real $b>\eta$
+    einfach: For huge bases such as 100, the Kneser curve at 0 is bent upward so strongly that T(½)·T(−½) becomes larger than 1. The threshold
+      is at a base of about 10.22.
+  en_theorie:
+    beispiel: |
+      Base $e$: $T'(0)=1.09177$, $T''(0)=0.54297$, so $(\ln T)''(0)=0.54297-1.19195=-0.64899$; measured $\bigl(1-T(0.05)T(-0.05)\bigr)/0.05^2=0.6496$.
+      Base 100: $T(\tfrac12)T(-\tfrac12)=1.3158$, and at $y=0.85$ even $2.09$.
+    einordnung: |
+      Makes the conjecture [[gr.verm.tpid7]] precise: For regular tetration it is open, for Kneser it holds up to $b_7$ and is false above. For large bases
+      the inflection point of the Kneser curve lies near $-1$ ([[gr.beob.wendepunkte]]: $-0.997$ at $b=10$), the curve is already strongly bent upward at 0.
+    genau: |
+      The second derivative of $\ln T$ at 0 is
+      $$(\ln T_b)''(0)=\frac{T_b''(0)\,T_b(0)-T_b'(0)^2}{T_b(0)^2}=T_b''(0)-T_b'(0)^2 .$$
+      It is negative for $b<b_7$ and positive for $b>b_7$, with
+      $$b_7=10.221063415781408755\ldots$$
+      For $b>b_7$, $T_b(y)T_b(-y)>1$ for small $y$; at $b=20$ the product at $y=\tfrac12$ is already $1.0713$.
+    warum: |
+      For small $y$,
+      $$T(y)T(-y)=\exp\bigl(\ln T(y)+\ln T(-y)\bigr)=\exp\bigl((\ln T)''(0)\,y^2+\dots\bigr),$$
+      because the terms with $y$ and $y^3$ cancel. Whether the product lies just below or just above 1 is therefore decided by the sign of $(\ln T)''(0)$.
+      $b_7$ is the base at which it is zero — found by a secant method over Kneser derivatives at 0.
+    worum: |
+      For the Kneser tetration, TPID 7 does not hold for all bases. At base 100, $T(\tfrac12)\cdot T(-\tfrac12)=1.316$ — clearly above 1. The threshold lies exactly where
+      $\ln T_b$ at 0 changes from “bent downward” to “bent upward”.
+- id: gr.kor.ganze_stellen
+  quelle_hash: 758e5e6cc576
+  theorie_hash: ed7ea704faf8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: gr.kor.produktformel at $x=0$ with $T(k)=a\uparrow\uparrow k$; at $x=-1$ with $T(0)=1$.
+    pruefung:
+      f5_neue_frage: 'Is $T_e''(0)$ a known constant? (Like $T_e(1/2)$: presumably not.)'
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Differentiability at 0.
+      f3_spezialfall: Yes.
+      f4_uebertragbar: All constructions.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Shows which information a construction really chooses.
+    titel: All slopes at integer arguments follow from T′(0)
+    aussage: '$T''(n)=(\ln a)^n\Bigl(\prod_{k=1}^{n}a\uparrow\uparrow k\Bigr)T''(0)$ and $T''(-1)=\dfrac{T''(0)}{\ln a}$. The single number $T''(0)$
+      depends on the construction: Kneser for base $e$: $T_e''(0)=1.0917673512583\ldots$; linear tetration: jump from $1$ to $\ln a$.'
+    einfach: At the integer arguments, every slope is determined as soon as you know the slope at 0. This one number distinguishes different tetrations.
+    formen:
+    - notiz: first levels
+  en_theorie:
+    beispiel: |
+      Kneser, base $e$: $T'(0)=1.0917673512583\ldots$, so $T'(-1)=T'(0)$, $T'(1)=2.9677$, $T'(2)=44.974$. The linear tetration,
+      by contrast, has slope $1$ to the left of $0$ and $\ln a\cdot e^{0}=\ln a$ to the right — a kink at $0$ (except for $a=e$).
+    einordnung: |
+      Which number $T'(0)$ is “right” is decided by the construction (Chapters 5 and 6). The value for Kneser at base $e$ and the
+      entire power series there are shown in [[gr.beob.kneser_ableitung]].
+    genau: |
+      $$T'(n)=(\ln a)^n\Bigl(\prod_{k=1}^{n}a\uparrow\uparrow k\Bigr)T'(0),\qquad T'(-1)=\frac{T'(0)}{\ln a}.$$
+    warum: |
+      Product formula [[gr.kor.produktformel]] at $x=0$ with $T(k)=a\uparrow\uparrow k$. For $T'(-1)$ the chain rule at $x=-1$:
+      $T'(0)=\ln a\cdot T(0)\cdot T'(-1)=\ln a\cdot T'(-1)$.
+    worum: |
+      At the integer arguments, all slopes depend on a single number only: the slope at $0$. This one number distinguishes
+      different tetrations that otherwise agree at the integer arguments.
+- id: gr.kor.integral_formen
+  quelle_hash: 926bac280cc0
+  theorie_hash: e90573c0b2b4
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Substitution $y=a^u$, $dy=a^u\ln a\,du$, and $A(a^u)=A(u)+1$; then gr.satz.young.
+    pruefung:
+      f5_neue_frage: 'Is there a form without slog, using only values of T at integer arguments? (Presumably not: the integral depends on the
+        construction.)'
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Abel equation and Young.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: All constructions.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Computational technique.
+    titel: Further forms of the integral over one period
+    aussage: $$\int_1^aA(y)\,dy=(a-1)+\ln a\int_0^1a^{u}A(u)\,du,\qquad\int_0^1T(x)\,dx=1-\ln a\int_0^1a^{u}A(u)\,du.$$ Since $-1\le A(u)\le0$
+      on $[0,1]$, it follows that $1<\int_0^1T<a$.
+    einfach: You can bring the integral of slog over the piece [1, a] back to the piece [0, 1], because there slog is simply smaller by 1.
+    formen:
+    - notiz: the Abel equation used
+    - notiz: base e
+  en_theorie:
+    beispiel: |
+      Base $e$: $\int_0^1T_e=1-\int_0^1e^u\operatorname{slog}_e(u)\,du=1.71452$, so $\int_0^1e^u\operatorname{slog}_e(u)\,du=-0.71452$.
+    einordnung: |
+      A typical pattern of the theory: the Abel equation $A(a^u)=A(u)+1$ shifts a problem by one level. More forms:
+      [[gr.satz.integral_unten]], [[gr.satz.integral_log]].
+    genau: |
+      $$\int_1^aA(y)\,dy=(a-1)+\ln a\int_0^1a^{u}A(u)\,du,\qquad\int_0^1T(x)\,dx=1-\ln a\int_0^1a^{u}A(u)\,du,$$
+      and since $-1\le A(u)\le0$ on $[0,1]$, it follows that $1<\int_0^1T<a$.
+    warum: |
+      1. Substitution $y=a^u$: then $dy=a^u\ln a\,du$, and $u$ runs from $0$ to $1$ while $y$ runs from $1$ to $a$.
+      2. With $A(a^u)=A(u)+1$: $\int_1^aA\,dy=\int_0^1(A(u)+1)\,a^u\ln a\,du=\int_0^1a^u\ln a\,du+\ln a\int_0^1a^uA(u)\,du$.
+         The first integral is $a-1$.
+      3. Insert into [[gr.satz.young]].
+      4. Bounds: on $[0,1]$, $-1\le A\le0$. So $\ln a\int_0^1a^uA(u)\,du$ lies between $-\ln a\int_0^1a^u\,du=-(a-1)$ and $0$,
+         and $\int_0^1T=1-(\text{this integral})$ lies between $1$ and $a$.
+    worum: |
+      The integral of the super-logarithm over $[1,a]$ can be brought back to the piece $[0,1]$, because there the super-logarithm is simply smaller by
+      $1$. This yields further formulas for the area under the tetration.
+- id: gr.kor.konvex_nach_oben
+  quelle_hash: c6d9769e1a2a
+  theorie_hash: d978b56684d8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'From gr.satz.zweite_ableitung: $T''''(x+1)\ge(\ln a)^2T(x+1)T''(x)^2>0$; induction over the periods.'
+    pruefung:
+      f5_neue_frage: Is there exactly one inflection point? → gr.verm.ein_wendepunkt
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: $a>1$ (for $0<a<1$ the inequality holds just as well, since $(\ln a)^2>0$ — but then the sign of $T'$ alternates,
+        see gr.satz.vorzeichen).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: All constructions.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Halves the inflection-point problem.
+    voraussetzungen:
+    - text: T'' ≥ 0 on a whole period [x0, x0+1]
+    - text: T' ≠ 0 on this period
+    titel: Convexity is inherited upward
+    aussage: If $T''\ge0$ on $[x_0,x_0+1]$ and $T'\ne0$ there, then $T''>0$ on $[x_0+1,\infty)$. So all inflection points lie to the left of the
+      first fully convex period.
+    bereich: $a>1$, $T$ twice differentiable
+    einfach: As soon as the curve is bent upward over a whole segment of length 1, it stays bent upward forever.
+  en_theorie:
+    beispiel: |
+      Kneser at base $e$ has its inflection point at $-0.522$. To the right of it, it is fully convex on $[-0.52,0.48]$, hence convex everywhere to the right
+      of it — exactly what one sees in the plots of the curves.
+    einordnung: |
+      This is the proved part of [[gr.verm.ein_wendepunkt]]: what is missing is that there is only **one** change of curvature to the left of it.
+    genau: |
+      Let $a>1$. If $T''\ge0$ on $[x_0,x_0+1]$ and $T'\ne0$ there, then $T''>0$ on $[x_0+1,\infty)$.
+    warum: |
+      In the formula [[gr.satz.zweite_ableitung]], $T''(x+1)=\ln a\cdot T(x+1)\,[\ln a\,T'(x)^2+T''(x)]$. If $T''(x)\ge0$, the bracket is
+      at least $\ln a\,T'(x)^2>0$, and all other factors are positive. So $T''>0$ on $[x_0+1,x_0+2]$, and with the same argument
+      piece by piece onward.
+    worum: |
+      If the curve is bent upward over a stretch of length $1$, it stays so forever. Inflection points can therefore only exist to the left
+      of this stretch.
+- id: gr.kor.produktformel
+  quelle_hash: 76cf699141cf
+  theorie_hash: d7ae15a66df7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Induction on $n$ with gr.satz.kettenregel; backward, the same equation solved for $T'(x)$ ($T(x+1)>0$ for $x>-2$).
+    pruefung:
+      f5_neue_frage: 'For real h: $Q(x,h)=T''(x+h)/T''(x)$ satisfies $Q(x,h+1)=\ln a\,T(x+h+1)\,Q(x,h)$ — the “interpolation of the product” is
+        again a tetration question, not a new route.'
+      f1_folgt_unmittelbar: Yes, induction.
+      f2_benutzte_voraussetzungen: Differentiability at x; for the backward form, $T>0$ on $(-1,\infty)$.
+      f3_spezialfall: 'Yes: chain rule for $F''(x+n)=(f^{\circ n})''(F(x))F''(x)$.'
+      f4_uebertragbar: 'Any superfunction: product of the $f''$ along the orbit.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Computes all slopes at integer steps.
+    titel: Product formula for the derivative over integer steps
+    aussage: $$\frac{T'(x+n)}{T'(x)}=(\ln a)^{n}\prod_{k=1}^{n}T(x+k),$$ and backward $T'(x-n)=\dfrac{T'(x)}{(\ln a)^n\prod_{k=0}^{n-1}T(x-k)}$
+      for $x-n>-2$.
+    bereich: $n\in\mathbb N$, $T$ differentiable at $x$
+    einfach: To get the slope n levels higher, you multiply n times by ln a and by all the function values along the way. This holds only for
+      integer steps n — for half steps there is no “half product” that says anything new.
+    formen:
+    - notiz: form with h
+    - notiz: logarithmic (for $a>1$, $T'>0$)
+    - notiz: using only the values below
+  en_theorie:
+    beispiel: |
+      Base $e$, $x=0$, $n=2$: $T'(2)=T(1)\,T(2)\,T'(0)=e\cdot e^e\cdot1.09177=44.974$ — the same as in two steps above.
+    einordnung: |
+      The formula holds for every tetration, but only for integer $n$. Whether there is a meaningful version for half steps is answered by
+      [[kl.satz.bruchprodukt]]: yes, and below $\eta$ it forces the regular solution.
+    genau: |
+      For integers $n\ge1$:
+      $$\frac{T'(x+n)}{T'(x)}=(\ln a)^{n}\prod_{k=1}^{n}T(x+k),$$
+      and backward $T'(x-n)=\dfrac{T'(x)}{(\ln a)^n\prod_{k=0}^{n-1}T(x-k)}$, as long as $x-n>-2$.
+    warum: |
+      Induction. For $n=1$ it is the chain rule [[gr.satz.kettenregel]]. If the formula holds for $n$, the chain rule at the
+      point $x+n$ gives one further factor $\ln a\cdot T(x+n+1)$. Backward, one solves the same equation for the slope below; this
+      works because $T(x+1)>0$ for $x>-2$.
+    worum: |
+      If one applies the chain rule several times, the factors multiply: to get the slope $n$ levels higher,
+      one multiplies $n$ times by $\ln a$ and by all the function values along the way.
+- id: gr.kor.turmintegral_formen
+  quelle_hash: 7d70c3c8152b
+  theorie_hash: 7b01aa6f01a9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: (1) Young's equation (gr.satz.young) for $h$ and its inverse. (2) $x^u=v$, $x^v=u$ ⇒ $v\ln x=\ln u$, $u\ln x=\ln v$ ⇒ $u\ln u=v\ln
+        v$; the branch $W_0$ yields $v\ne u$.
+    gegenbeispielsuche: 'exp.turmintegrale: parametrization versus direct root search at x = 0.01, 0.04, 0.06: $1.8\cdot10^{-36}$.'
+    pruefung:
+      f5_neue_frage: Is one of the limits a known constant? (PSLQ as in gr.frage.integral_form)
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Monotonicity of h; for (2) only the cycle equation.
+      f3_spezialfall: 'Yes: Young; same idea as gr.kor.integral_formen.'
+      f4_uebertragbar: 'Cycles of higher period: no such simple parametrization.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Makes the limits computable to many digits.
+    titel: Other forms of the tower integrals
+    aussage: |
+      (1) Because $h$ is the inverse of $y\mapsto y^{1/y}$ on $[1/e,1]$:
+      $$\int_{e^{-e}}^1h(x)\,dx=1-e^{-e-1}-\int_{1/e}^1y^{1/y}\,dy=0.62544581058878807147\ldots$$
+      (2) The 2-cycle is parametrized by $u\in(0,1/e)$: $v\ln v=u\ln u$, $v=e^{W_0(u\ln u)}$, $x=u^{1/v}$, with $L_-=u$, $L_+=v$.
+      With this the gap becomes an integral over $u$.
+    bereich: as in gr.satz.turmintegral_grenzen
+    formen:
+    - notiz: gap as a u-integral
+  en_theorie:
+    beispiel: |
+      $1-e^{-e-1}=1-0.024276=0.975724$; subtract $\int_{1/e}^1y^{1/y}dy=0.350278$, difference $0.625446$ — the common part of both limits.
+    einordnung: |
+      The same cycle equation $z_1\ln z_1=z_2\ln z_2$ describes the entire period-2 region in the base plane ([[fp.satz.p2_form]]).
+    genau: |
+      $$\int_{e^{-e}}^1h(x)\,dx=1-e^{-e-1}-\int_{1/e}^1y^{1/y}\,dy=0.62544581058879\ldots,$$
+      and the 2-cycle is parametrized by $u\in(0,1/e)$: $v\ln v=u\ln u$, $x=u^{1/v}$, with $L_-=u$, $L_+=v$.
+    warum: |
+      1. $h$ is the inverse of $y\mapsto y^{1/y}$ on $[1/e,1]$ (because $h=x^h$ means $x=h^{1/h}$). Young ([[gr.satz.young]]) over
+         $[e^{-e},1]$ with $h(e^{-e})=1/e$, $h(1)=1$ gives the first formula.
+      2. For the cycle, $x^u=v$ and $x^v=u$, so $v\ln x=\ln u$ and $u\ln x=\ln v$. Dividing gives $u\ln u=v\ln v$.
+    worum: |
+      The two limits can be reduced to integrals of simple functions — with the same area trick as for Young and with
+      a formula for the 2-cycle.
+- id: gr.satz.abklingen
+  quelle_hash: 8c4094a4af38
+  theorie_hash: feb0aea0338c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'gr.kor.produktformel: $(T''(x+n)/T''(x))^{1/n}=\ln a\,\bigl(\prod_{k\le n}T(x+k)\bigr)^{1/n}\to\ln a\cdot a_*$ (Cesàro, since $T(x+k)\to
+        a_*$); for $a>\eta$, $T(x+k)\to\infty$.'
+    pruefung:
+      f5_neue_frage: 'At $a=\eta$, $\lambda=1$: how does $T''$ fall then? (Parabolic: like $1/x^2$.)'
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Only convergence $T(x+k)\to a_*$ — holds for every increasing solution, not just the regular one.
+      f3_spezialfall: The Koenigs behavior $T(x)-a_*\sim C\lambda^x$ of the regular solution is sharper (kl.satz.regulaer).
+      f4_uebertragbar: Any superfunction with an attracting fixed point.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Connects the derivative and the fixed-point multiplier.
+    titel: Below η the slope decays with the multiplier
+    aussage: '$\displaystyle\lim_{n\to\infty}\bigl(T''(x+n)\bigr)^{1/n}=\lambda$: the slope falls by roughly the factor $\lambda$ per level. For
+      $a>\eta$, on the other hand, $\bigl(T''(x+n)\bigr)^{1/n}\to\infty$.'
+    bereich: $1<a<\eta$, $T$ increasing, differentiable, $T(0)=1$; $a_*$ lower fixed point, $\lambda=a_*\ln a\in(0,1)$
+    einfach: Below η the curve approaches a fixed height, and its slope shrinks at every step by the same factor λ — exactly the number that tells
+      how strongly the fixed point attracts.
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$: $a_*=2$, $\lambda=2\ln\sqrt2=\ln2=0.693$. So the slope of the regular tetration shrinks per level to about
+      $69\,\%$. Base $1.3$: $a_*=1.4710$, $\lambda=0.386$ — the curve comes to rest much faster.
+    einordnung: |
+      That exactly $\lambda$ comes out is no coincidence: at the fixed point every step is almost a scaling by $\lambda$ — the basic idea
+      of regular tetration ([[it.satz.koenigs]], [[kl.satz.regulaer]]).
+    genau: |
+      For $1<a<\eta$ and the lower fixed point $a_*$ with multiplier $\lambda=a_*\ln a\in(0,1)$,
+      $$\lim_{n\to\infty}\bigl(T'(x+n)\bigr)^{1/n}=\lambda .$$
+      For $a>\eta$, on the other hand, $\bigl(T'(x+n)\bigr)^{1/n}\to\infty$.
+    warum: |
+      By the product formula, $\bigl(T'(x+n)/T'(x)\bigr)^{1/n}=\ln a\cdot\bigl(\prod_{k=1}^nT(x+k)\bigr)^{1/n}$. This is $\ln a$ times the
+      **geometric mean** of the values $T(x+1),\dots,T(x+n)$. These values tend to $a_*$, hence so does their geometric mean. Result:
+      $\ln a\cdot a_*=\lambda$. The factor $T'(x)^{1/n}$ tends to $1$. Above $\eta$ the values grow without bound, hence so does their mean.
+    worum: |
+      Below $\eta$ the curve settles to a fixed height, and its slope shrinks at every step by the same factor
+      $\lambda$. This number is exactly the strength with which the fixed point attracts.
+- id: gr.satz.basis_ganz
+  quelle_hash: 0eadcf74432f
+  theorie_hash: f8b1619ef5cf
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Differentiate $\ln t_{n+1}=t_n\ln a$ with respect to $a$.
+    pruefung:
+      f5_neue_frage: How does $\partial_aT_a(x)$ interpolate between the integer heights? → base-change area
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: $a>0$.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: 'Non-integer heights: the base derivative $\partial_b T_b(x)$ is the research question of Paper V (bw.satz.kern_existenz).'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Entry point into the base dependence.
+    titel: Derivative of a↑↑n with respect to the base
+    aussage: 'With $t_n=a\uparrow\uparrow n$: $t_1''=1$ and $t_{n+1}''=t_{n+1}\Bigl(\dfrac{t_n}{a}+\ln a\cdot t_n''\Bigr)$. Examples: $\dfrac{d}{da}a^a=a^a(1+\ln
+      a)$, $\dfrac{d}{da}a^{a^a}=a^{a^a}\bigl(a^{a-1}+\ln a\cdot a^a(1+\ln a)\bigr)$.'
+    einfach: How much does a tower change if you change the base a little? The answer builds up level by level.
+    formen:
+    - notiz: logarithmic derivative
+  en_theorie:
+    beispiel: |
+      $\frac{d}{da}a^a=a^a(1+\ln a)$, at $a=2$: $4\cdot1.6931=6.773$. $\ \frac{d}{da}a^{a^a}$ at $a=2$: $16\,(4/2+\ln2\cdot6.773)=107.11$.
+    einordnung: |
+      For the whole tetration (not only integer heights) the derivative with respect to the base is a difficult object with a theory of its own —
+      the base derivative of the Kneser family in Paper V ([[bw.satz.antwortkern]]).
+    genau: |
+      With $t_n=a\uparrow\uparrow n$ and $t_n'=\frac{d}{da}t_n$:
+      $$t_1'=1,\qquad t_{n+1}'=t_{n+1}\Bigl(\frac{t_n}{a}+\ln a\cdot t_n'\Bigr).$$
+    warum: |
+      Take the logarithm of $t_{n+1}=a^{t_n}$: $\ln t_{n+1}=t_n\ln a$. Differentiating with respect to $a$ (product rule on the right): $\frac{t_{n+1}'}{t_{n+1}}=t_n'\ln a+\frac{t_n}a$.
+    worum: |
+      How much does a tower change when the base is changed a little? The answer builds up level by level.
+- id: gr.satz.basis_gleichung
+  quelle_hash: 9f397ae34f8e
+  theorie_hash: c3367b542ef2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        Differentiate $T_b(x+1)=e^{T_b(x)\ln b}$ with respect to $b$: $D(x+1)=T(x+1)\bigl(\ln b\,D(x)+T(x)/b\bigr)$; $D(0)=0$, because $T_b(0)=1$ for all $b$. $T'$ solves the homogeneous
+        equation (gr.satz.kettenregel); variation of constants with $D=T'u$ and $T'(x+1)=\ln b\,T(x+1)T'(x)$ gives $u(x+1)-u(x)=T(x)/(b\ln b\,T'(x))$. For integer
+        $n$, $u(n)=\sum_{k<n}T(k)/(b\ln b\,T'(k))$, and $T'(n)/T'(k)=(\ln b)^{n-k}\prod_{j=k+1}^nT(j)$ — $T'(0)$ cancels out. Slog side: differentiate $A_b(b^y)=A_b(y)+1$
+        with respect to $b$ and use $A'(b^y)\,b^y\ln b=A'(y)$; $G(b)=-A'(b)$ from $A_b(b)=1$ for all $b$.
+    pruefung:
+      f5_neue_frage: Which periodic choice does Kneser make? → gr.satz.turm_pde, bw.satz.kern_existenz
+      f1_folgt_unmittelbar: Yes, by differentiating the tower equation with respect to b.
+      f2_benutzte_voraussetzungen: Differentiability of the family in b; normalization T_b(0) = 1.
+      f3_spezialfall: 'Yes: the base derivative as a cohomological equation (fg.satz.kohomologisch) with the generator T′.'
+      f4_uebertragbar: 'Any parameter family f_b with superfunctions: ∂_bσ(x+1) = f′(σ(x))∂_bσ(x) + (∂_bf)(σ(x)).'
+    bewertung:
+      richtigkeit: complete; confirmed for Kneser (b = 2, e) at x = −½, ¼, ½ to 30 digits
+      nutzen: The basic equation of every base derivative; makes the Paper V question visible in an elementary way.
+    titel: 'The derivative with respect to the base at arbitrary height: a linear step equation'
+    aussage: 'If $T_b$ is a family of tetrations ($T_b(0)=1$) that is differentiable in the base and $D(x)=\partial_bT_b(x)$, then $$D(x+1)=\ln
+      b\cdot T(x+1)\,D(x)+\frac{T(x+1)\,T(x)}{b},\qquad D(0)=0.$$ With $D=T''\cdot u$ this becomes a pure summation equation: $u(x+1)-u(x)=\dfrac{T(x)}{b\ln
+      b\,T''(x)}$. At integer heights it can be solved without any interpolation: $$\partial_b(b\uparrow\uparrow n)=\frac1b\sum_{k=0}^{n-1}T(k)\,(\ln
+      b)^{n-k-1}\prod_{j=k+1}^{n}T(j).$$ On the slog side, $G(y)=\partial_b\operatorname{slog}_b(y)$: $G(b^y)=G(y)-\dfrac{y\,\operatorname{slog}_b''(y)}{b\ln
+      b}$, $G(0)=G(1)=0$, $G(b)=-\operatorname{slog}_b''(b)$. At fractional height the equation determines $D$ only up to $T''\cdot$(1-periodic)
+      — exactly this choice is the base dependence of a construction.'
+    einfach: If you change the base a tiny bit, the whole curve changes. How much it changes obeys a simple rule from level to level — the same
+      kind of rule as for the slope, only with an additional term. At integer arguments you can write down the answer directly; in between, it
+      depends on how the tetration was chosen for each base.
+    formen:
+    - notiz: 'derivative of the self-tower x↑↑x (forum tid 789): base derivative plus height derivative'
+    - notiz: Robbins 2009 (tid 337), the same sum counted differently
+  en_theorie:
+    beispiel: |
+      $n=2$: $\frac1b\bigl(T(0)\ln b\,T(1)T(2)+T(1)T(2)\bigr)=b^b(1+\ln b)$ — the well-known derivative of $b^b$. **Self-tower:** The derivative of $x\uparrow\uparrow x$ is
+      base derivative plus height derivative, $D_x(x)+T_x'(x)$ — so it is not available without the base derivative at fractional height.
+    einordnung: |
+      Generalizes [[gr.satz.basis_ganz]]. At fractional height a periodic freedom remains — which choice Kneser makes is the research question of Paper V
+      ([[bw.satz.kern_existenz]]); an explicit forward sum from the forum: [[gr.satz.turm_pde]].
+    genau: |
+      For $D(x)=\partial_bT_b(x)$:
+      $$D(x+1)=\ln b\cdot T(x+1)\,D(x)+\frac{T(x+1)\,T(x)}{b},\qquad D(0)=0.$$
+      Writing $D=T'\cdot u$ leaves $u(x+1)-u(x)=\dfrac{T(x)}{b\ln b\,T'(x)}$ — a pure summation problem. At integer arguments it is solvable without any choice:
+      $$\partial_b(b\uparrow\uparrow n)=\frac1b\sum_{k=0}^{n-1}T(k)(\ln b)^{n-k-1}\prod_{j=k+1}^nT(j).$$
+      On the slog side, $G=\partial_b\operatorname{slog}_b$: $G(b^y)=G(y)-y\operatorname{slog}_b'(y)/(b\ln b)$ with $G(0)=G(1)=0$ and $G(b)=-\operatorname{slog}_b'(b)$.
+    warum: |
+      1. Differentiate $T_b(x+1)=e^{T_b(x)\ln b}$ with respect to $b$: the product rule in the exponent gives $\ln b\cdot D(x)+T(x)/b$, times $T(x+1)$.
+      2. $D(0)=0$, because every family has $T_b(0)=1$.
+      3. The equation without the additional term is solved by $T'$ (chain rule). With the ansatz $D=T'u$ only the difference of $u$ remains.
+      4. At integer height one sums these differences; $T'(n)/T'(k)$ is a product of tower values, $T'(0)$ cancels out.
+    worum: |
+      How does a tetration change when the base is shifted a little? The answer follows a step rule — almost the same as for the ordinary slope,
+      only with an additional term.
+- id: gr.satz.exponentialitaet
+  quelle_hash: 7e6cea47e607
+  theorie_hash: d6116c3d1068
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        (i) $A(e^y)=A(y)+1$; additivity via $A(f(g(x)))-A(x)=[A(f(g(x)))-A(g(x))]+[A(g(x))-A(x)]$; $A(T(A(x)+s))=A(x)+s$.
+        (ii) $A(x^2)-A(x)=A(\ln2+\ln\ln x)-A(\ln\ln x)\to0$ by hypothesis; $x^{\ln x}$ likewise one level lower; $A(2^x)-A(x)=1+A(x\ln2)-A(x)\to1$.
+        Integer-valuedness for exp-log functions: Hardy (1910), for transseries: van der Hoeven (2006); there $\ln^{\circ n}\circ f\circ\exp^{\circ n}\sim\exp^{\circ k}$, hence $\chi=k$.
+        (iii) Because $\theta$ is periodic and uniformly continuous, $\theta(A(f))-\theta(A(x))$ vanishes for all choices if and only if $A(f)-A(x)$ tends to an integer.
+    pruefung:
+      f5_neue_frage: Do the functions with fractional exponentiality that arise from Kneser sexp, slog, exp, ln form a Hardy field? (br.frage.kneser_hardy)
+      f1_folgt_unmittelbar: (i), (iii) yes; (ii) yes for examples, in general literature.
+      f2_benutzte_voraussetzungen: $A(y+c)-A(y)\to0$ (follows from $A'\to0$, gr.satz.slog_steigung_langsam); the existence of the limit is not
+        claimed for every $f$.
+      f3_spezialfall: 'Yes: exponentiality of transseries (Écalle, van der Hoeven) — slog makes it measurable for real functions.'
+      f4_uebertragbar: 'Other bases: $\operatorname{slog}_b$ gives the same value for integer $\chi$ (base change changes slog only by a bounded
+        function that tends to a constant).'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Turns “how many exponentials?” into a number and shows where the choice of tetration becomes visible.
+    titel: 'The super-logarithm counts exponentials: χ(f) = lim (slog f(x) − slog x)'
+    aussage: |
+      Set $\chi(f)=\lim_{x\to\infty}\bigl(A(f(x))-A(x)\bigr)$, where the limit exists. Then:
+      (i) $\chi(\exp)=1$, $\chi(\ln)=-1$, $\chi(f\circ g)=\chi(f)+\chi(g)$, and $\chi(\exp^{[s]})=s$ for $\exp^{[s]}(x)=T(A(x)+s)$ — a half-exponential function has $\chi=\tfrac12$.
+
+      (ii) $\chi(f)=0$ for $cx$, $x+c$, $x^k$, $x^{\ln x}$; $\chi(f)=1$ for $2^x$, $x^x$, $e^{x^2}$ — in general $\chi$ is, for every exp-log function and every transseries, an integer
+      number, the exponentiality in the sense of Hardy and van der Hoeven.
+
+      (iii) An **integer** exponentiality is the same for every super-logarithm; a **fractional** one is not: with another $\tilde A=A+\theta(A)$ ($\theta$ 1-periodic) we have
+      $\tilde A(\exp^{[1/2]}x)-\tilde A(x)=\tfrac12+\theta(A(x)+\tfrac12)-\theta(A(x))$ — this oscillates if $\theta$ is not $\tfrac12$-periodic.
+
+      At $x=e\uparrow\uparrow k$, $k=2,\dots,5$: for $x^2$ the difference is $0.529$, $0.197$, $0.0149$, $4.0\cdot10^{-9}$.
+    bereich: increasing $f$ with $f(x)\to\infty$; $A=\operatorname{slog}_e$ continuous, strictly increasing, with $A(y+c)-A(y)\to0$ for every
+      fixed $c$ (Kneser satisfies this)
+    einfach: 'The super-logarithm counts how often you have to take the logarithm. If you compare that for f(x) and for x, in the limit exactly
+      the number of exponential functions that are “hidden” in f remains: 0 for polynomials, 1 for 2^x or x^x, 2 for e^(e^x). With tetration there
+      are also half exponential functions — for those the answer is ½.'
+    formen:
+    - notiz: Definition
+    - notiz: via iterated logarithms (practical for huge x)
+  en_theorie:
+    beispiel: |
+      At $x=e\uparrow\uparrow k$, $k=2,3,4,5$: $\operatorname{slog}(x^2)-\operatorname{slog}x=0.529,\ 0.197,\ 0.0149,\ 4.0\cdot10^{-9}$; for $2^x$: $0.863,\ 0.9917,\ 0.999999998,\ 1$.
+      So the limit is reached very quickly — one level further, the distance is smaller than any computational accuracy.
+    einordnung: |
+      That exp-log functions and transseries have only integer exponentiality is the reason for [[kn.satz.halbe_exp_wachstum]] (ii). That slog undercuts every level of the logarithm scale
+      is stated in [[gr.satz.slog_steigung_langsam]]. Whether Kneser's functions fit into a Hardy field: [[br.frage.kneser_hardy]].
+    genau: |
+      $\chi(f)=\lim_{x\to\infty}\bigl(\operatorname{slog}f(x)-\operatorname{slog}x\bigr)$. We have $\chi(f\circ g)=\chi(f)+\chi(g)$, $\chi(\exp)=1$, $\chi(\exp^{[s]})=s$;
+      polynomials and $x^{\ln x}$ have $0$, $2^x$ and $x^x$ have $1$. Integer values are the same for every super-logarithm, fractional ones depend on the choice.
+    warum: |
+      1. $\operatorname{slog}(e^y)=\operatorname{slog}y+1$ — every exponential function adds exactly 1.
+      2. Small changes “below” vanish: $\operatorname{slog}(x^2)-\operatorname{slog}x=\operatorname{slog}(\ln2+\ln\ln x)-\operatorname{slog}(\ln\ln x)\to0$, because slog becomes ever flatter.
+      3. Another super-logarithm differs from $\operatorname{slog}$ by a periodic function $\theta$; at integer distance it cancels, at half distance it does not.
+    worum: |
+      How many exponential functions are “hidden” in a fast-growing function? The super-logarithm turns this into a number — and with tetration this number can also
+      be a fraction.
+- id: gr.satz.frei_und_fest
+  quelle_hash: 4c30c7f82536
+  theorie_hash: 2153cd1a6082
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        Every other solution is $\tilde T=T\circ\varphi$ with $\varphi=\mathrm{id}+p$, $p$ 1-periodic, $p(0)=0$ (fg.satz.allgemeine_loesung). (i) Because $p$ is periodic, $\varphi$
+        has the same Taylor series at $x$ and $x+n$ (up to the shift by $n$); in $J_{x+n}\tilde T\circ(J_x\tilde T)^{-1}=J_{x+n}T\circ(J_xT)^{-1}$ it cancels, and
+        $T(x+n+t)=\exp_a^{\circ n}(T(x+t))$ gives the form. (ii) A smooth 1-periodic $p$ with $1+p'>0$ can have at one point any finite Taylor series with $p'(x_0)>-1$
+        (bump function with small support, compensation of the slope on the rest of the period), and bumps at points whose distance is not an integer do not disturb one another.
+        Real-analytic: a smoothing heat-flow average and a small trigonometric correction of the finitely many derivatives.
+    pruefung:
+      f5_neue_frage: 'Which global condition (complex: Kneser; real: br.frage.bohr_mollerup) turns “free” back into “fixed”?'
+      f1_folgt_unmittelbar: Yes, from the general solution; new is the sorting into “fixed” and “free”.
+      f2_benutzte_voraussetzungen: Monotonicity (for the general solution) and smoothness; for “free” the construction of periodic functions with
+        a prescribed series.
+      f3_spezialfall: 'Yes: Abel equations in general (Kuczma) — invariants of an Abel function are invariants of the map.'
+      f4_uebertragbar: 'Every level: for pentation, too, only relations over integer steps are fixed (gr.satz.stufenleiter).'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Explains in one sentence which identities can exist at all — and why T(½) is not among them.
+    titel: 'What every tetration has in common: only what connects integer steps is fixed'
+    aussage: |
+      (i) **Fixed** — the same for all such tetrations — are the values at integer arguments and every relation between the Taylor series at points whose distance is an
+      **integer**: The series at $x+n$ is $\exp_a^{\circ n}$ applied to the series at $x$. Examples: $\ln a=T'(0)/T'(-1)=(T''(0)-T'(0)^2)/T''(-1)$,
+      $T'(1)/T'(0)=a\ln a$, $T'(x+1)/T'(x)=\ln a\,T(x+1)$.
+
+      (ii) **Free** is everything else. At a point $x_0\notin\mathbb Z$ one can prescribe arbitrarily the value (anywhere between the neighboring values at the integer arguments), the slope ($>0$) and
+      finitely many further derivatives; at an integer argument all derivatives from the first on. Points whose distance is not an integer are
+      independent of one another.
+
+      Every solution-independent quantity built from values and derivatives is therefore already a quantity of the integer iterates $\exp_a^{\circ n}$ — the equation
+      $T(x+1)=a^{T(x)}$ alone knows no more.
+    bereich: smooth (or real-analytic), strictly increasing real tetrations to base $a>1$ on $(-2,\infty)$
+    einfach: The tetration equation connects only points that are exactly 1, 2, 3, … apart. Everything that connects a point with another one
+      at distance ½ you have to choose yourself — that is why there are many tetrations, and why you need an extra condition for a “best” one.
+    formen:
+    - notiz: Jets (Taylor series) at integer-shifted points
+    - notiz: all other solutions (fg.satz.allgemeine_loesung)
+  en_theorie:
+    beispiel: |
+      Kneser to base $e$ with $p(x)=0.05\bigl(\sin2\pi x+\tfrac12(1-\cos2\pi x)\bigr)$: $T'(0)/T'(-1)=1$, $(T''(0)-T'(0)^2)/T''(-1)=1$ and $T'(1)/T'(0)=e$ remain
+      the same to 25 digits. By contrast, $T(\tfrac12)$ changes from $1.64635$ to $1.72711$, $T'(0)$ from $1.09177$ to $1.43476$, and $T'(\tfrac12)/T'(0)$ from $1.44276$ to $0.79178$.
+    einordnung: |
+      This is the reason why all solution-independent formulas of this chapter — [[gr.satz.ln_aus_steigungen]], [[gr.satz.stufenleiter]], [[gr.satz.taylor_leiter]] — go over integer
+      steps, and why a value like $T_e(\tfrac12)$ needs an additional, global condition ([[fg.kor.nichteindeutigkeit]], [[br.frage.bohr_mollerup]]).
+    genau: |
+      For smooth, strictly increasing tetrations to base $a>1$:
+      - **fixed:** values at integer arguments; the Taylor series at $x+n$ is $\exp_a^{\circ n}$ applied to the one at $x$.
+      - **free:** value, slope and finitely many derivatives at a non-integer point; all derivatives from the first on at an integer argument. Points whose distance is not an
+        integer are not connected.
+      - **Consequence:** Every solution-independent formula is a formula about $\exp_a,\exp_a^{\circ2},\dots$
+    warum: |
+      1. Every other solution is $T\circ(\mathrm{id}+p)$ with 1-periodic $p$, $p(0)=0$ ([[fg.satz.allgemeine_loesung]]).
+      2. Because $p$ looks the same at $x$ and $x+n$, it cancels out of every relation between these points — the relation comes solely from $T(x+n)=\exp_a^{\circ n}(T(x))$.
+      3. At a single point (or at points whose distance is not an integer), on the other hand, $p$ can have any desired Taylor series, as long as $1+p'>0$ remains.
+    worum: |
+      Which identities can there be for tetration at all? The answer is surprisingly simple: Only what connects points at **integer** distance is fixed.
+      Everything else can be chosen freely.
+- id: gr.satz.gestalt
+  quelle_hash: 8e50ed544eae
+  theorie_hash: b44c52709f42
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Left: $T(x)=\log_a T(x+1)$ and $T(x+1)\to T(-1)=0^+$. Right: monotonicity and $T(n)=a\uparrow\uparrow n$, whose limit is given by
+        the real tower theorem.'
+    pruefung:
+      f5_neue_frage: What does the curve look like in between — concave, convex? → gr.verm.ein_wendepunkt
+      f1_folgt_unmittelbar: Yes, from the equation and the tower theorem.
+      f2_benutzte_voraussetzungen: Monotonicity (for the limits between integer arguments); continuity only for the image being an interval.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: All increasing constructions (Kneser, regular, linear).
+    bewertung:
+      richtigkeit: complete
+      nutzen: Basic picture of every tetration.
+    voraussetzungen:
+    - text: T continuous and strictly increasing
+    - text: a > 1
+    titel: Image of an increasing tetration
+    aussage: $T(x)\to-\infty$ for $x\to-2^+$. For $a>\eta$, $T(x)\to\infty$, and the image is all of $\mathbb R$. For $1<a\le\eta$, $T(x)\uparrow
+      a_*$ (lower fixed point of $a^x$, at most $e$), and the image is $(-\infty,a_*)$.
+    bereich: $a>1$, $T$ continuous, strictly increasing on $(-2,\infty)$, $T(0)=1$
+    einfach: On the left, at −2, every tetration plunges to minus infinity. On the right it grows beyond all bounds if the base is larger than
+      η ≈ 1.4447 — otherwise it approaches a fixed height, never higher than e.
+  en_theorie:
+    beispiel: |
+      Base $e$ (Kneser): $T(-\tfrac12)=0.49856$, so $T(-\tfrac32)=\ln0.49856=-0.69602$, and further left the curve falls ever more steeply.
+      Base $\sqrt2$ (regular): $T(10)=1.98367$ — the curve stays below the fixed point $2$ forever.
+    einordnung: |
+      The singularity at $-2$ is unavoidable ([[fg.kor.keine_ganze_tetration]]); its complex behavior is described in [[kn.satz.singulaer_minus2]].
+      The inverse function of this curve is the super-logarithm [[gr.satz.slog_grund]].
+    genau: |
+      Let $T$ be a continuous, strictly increasing tetration to base $a>1$. Then
+      - $T(x)\to-\infty$ for $x\to-2$ (from the right);
+      - for $a>\eta$: $T(x)\to\infty$ for $x\to\infty$, and $T$ takes every real value exactly once;
+      - for $1<a\le\eta$: $T(x)$ increases toward the lower fixed point $a_*$ of $a^x$ (which is at most $e$) and always stays below it.
+    warum: |
+      **Left:** From $T(x+1)=a^{T(x)}$ it follows that $T(x)=\log_aT(x+1)$. For $x\to-2$, $x+1\to-1$ and $T(x+1)\to T(-1)=0$, from above,
+      because $T$ is increasing. The logarithm of a number tending to $0$ tends to $-\infty$.
+
+      **Right:** At the integer arguments, $T(n)=a\uparrow\uparrow n$. For $a>\eta$ these values grow beyond all bounds
+      ([[fp.satz.turm_reell]]); since $T$ is increasing, $T(x)\to\infty$ follows. For $1<a\le\eta$ they increase toward $a_*$; between two integer arguments
+      $T$ lies between the neighboring values, so $T(x)$ also increases toward $a_*$. That $a_*\le e$ is shown in [[fp.satz.reelle_fixpunkte]].
+    worum: |
+      No matter how one builds an increasing tetration: its curve always has the same basic shape. On the left it plunges at $x=-2$ into the
+      bottomless, on the right it either grows beyond all bounds or settles below a fixed height — depending on whether the base lies above
+      or below $\eta$.
+- id: gr.satz.grenzfaelle
+  quelle_hash: 95cb13ad91dc
+  theorie_hash: 40dc611844fe
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        $x^x=e^{x\ln x}\to1$. Inductively: if $x\uparrow\uparrow n\to1$, then $x\uparrow\uparrow(n+1)=x^{x\uparrow\uparrow n}\to0$; if $x\uparrow\uparrow n\to0$ with $(x\uparrow\uparrow n)\ln x\to0$, then $\to1$.
+        For the second condition $x\uparrow\uparrow n\le Cx^{c}$ for odd $n$ suffices (induction). Negative heights: inverse $T(x-1)=\log_aT(x)$.
+    pruefung:
+      f5_neue_frage: 'no'
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Limit x ln x → 0.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: 'Fractional heights for bases below 1: kl.satz.basis_unter_eins.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: The edge cases that beginners ask about first.
+    titel: 'Borderline cases: x↑↑n for x → 0, the base −1 and negative heights'
+    aussage: |
+      $\lim_{x\to0^+}x\uparrow\uparrow n=1$ for even $n$ and $=0$ for odd $n$ (only slowly: at $x=10^{-3}$ we have $x\uparrow\uparrow2=0.993$, $x\uparrow\uparrow3=0.00105$).
+      Furthermore $(-1)\uparrow\uparrow n=-1$ for all $n\ge1$ and $1\uparrow\uparrow n=1$. Negative heights: $a\uparrow\uparrow0=1$, $a\uparrow\uparrow(-1)=\log_a1=0$,
+      $a\uparrow\uparrow(-2)=\log_a0=-\infty$ — below that no real values.
+    einfach: 'For bases near 0, towers jump back and forth: even heights go to 1, odd ones to 0. Below height −1 there are no sensible real values
+      any more.'
+  en_theorie:
+    beispiel: |
+      $x=10^{-3}$: $x\uparrow\uparrow2=0.9931$, $x\uparrow\uparrow3=0.00105$, $x\uparrow\uparrow4=0.9928$.
+    einordnung: |
+      The basic integer values are in [[fg.lem.ganzzahlwerte]].
+    genau: |
+      - $x\uparrow\uparrow n\to1$ for even $n$, $\to0$ for odd $n$, when $x\to0^+$.
+      - $(-1)\uparrow\uparrow n=-1$.
+      - $a\uparrow\uparrow(-1)=0$, $a\uparrow\uparrow(-2)=-\infty$, below that nothing real.
+    warum: |
+      1. $x^x=e^{x\ln x}\to1$, because $x\ln x\to0$. If a tower is near 1, the next one is $x^{\approx1}\approx x\to0$; if it is near 0 (like $x$), the next one is near 1 again.
+      2. Negative heights: take logarithms backward, $\log_a1=0$ and $\log_a0=-\infty$.
+    worum: |
+      What happens at the edges: for bases near 0, for the base $-1$, for negative heights?
+- id: gr.satz.integral_log
+  quelle_hash: e21a2d7abd3d
+  theorie_hash: 13b406c934b7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $\ln T(u+1)=T(u)\ln a$.
+    pruefung:
+      f5_neue_frage: —
+      f1_folgt_unmittelbar: Yes (definition).
+      f2_benutzte_voraussetzungen: $T>0$ on $(-1,\infty)$.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: All constructions.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Minor, but useful for converting.
+    titel: Mean value of ln T one level higher
+    aussage: $\displaystyle\int_x^{x+1}\ln T(u+1)\,du=\ln a\int_x^{x+1}T(u)\,du$; in particular $\int_1^2\ln T_e=\int_0^1T_e=1.71452\ldots$
+    einfach: The average of the logarithm of T over a segment is ln a times the average of T one segment lower.
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$ (regular): $\int_1^2\ln T=\ln\sqrt2\cdot\int_0^1T=0.34657\cdot1.23158=0.42683$.
+    einordnung: |
+      The same shift by one level as in [[gr.kor.integral_formen]], this time on the side of the tetration.
+    genau: |
+      $$\int_x^{x+1}\ln T(u+1)\,du=\ln a\int_x^{x+1}T(u)\,du,$$
+      in particular $\int_1^2\ln T_e=\int_0^1T_e=1.71452\ldots$
+    warum: |
+      $\ln T(u+1)=\ln\bigl(a^{T(u)}\bigr)=T(u)\ln a$. Integrate over one period.
+    worum: |
+      The logarithm of the tetration, one level higher, is simply the tetration itself times $\ln a$. Hence its mean value is also a
+      known integral.
+- id: gr.satz.integral_produkt
+  quelle_hash: d1060079882c
+  theorie_hash: 71c96d2537b1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'gr.satz.kettenregel: integrand $=T''(u+1)/\ln a$; fundamental theorem of calculus.'
+    pruefung:
+      f5_neue_frage: Which further integrals are independent of the construction? (All of the form $\int G(T(u+1))' du$.)
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Differentiability (continuous derivative on the interval).
+      f3_spezialfall: Yes.
+      f4_uebertragbar: 'Any superfunction: $\int F''(u)\,f''(F(u))\,du=F(x+2)-F(x+1)$.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Shows which integrals the construction does not see.
+    titel: An integral that every tetration evaluates the same way
+    aussage: $$\int_x^{x+1}T'(u)\,T(u+1)\,du=\frac{T(x+2)-T(x+1)}{\ln a},\qquad\text{e.g.}\quad\int_{-1}^{0}T'(u)\,T(u+1)\,du=\frac{a-1}{\ln a}.$$
+    einfach: Although different tetrations are different curves, this integral gives the same value for all of them — the integrand is the hidden
+      derivative of T one level higher.
+    formen:
+    - notiz: chain rule
+    - notiz: base e
+  en_theorie:
+    beispiel: |
+      Base $e$: $\int_{-1}^0T'(u)\,T(u+1)\,du=e-1=1.71828$, no matter whether one takes Kneser, the linear or another tetration.
+    einordnung: |
+      Such “tetration-independent” values are useful test cases for computing programs ([[exp.integrale]]).
+    genau: |
+      $$\int_x^{x+1}T'(u)\,T(u+1)\,du=\frac{T(x+2)-T(x+1)}{\ln a},\qquad\text{for example}\quad\int_{-1}^{0}T'(u)\,T(u+1)\,du=\frac{a-1}{\ln a}.$$
+    warum: |
+      By the chain rule, $T'(u)\,T(u+1)=T'(u+1)/\ln a$. The integral of a derivative is the increase of the function:
+      $\int_x^{x+1}T'(u+1)\,du=T(x+2)-T(x+1)$. For $x=-1$: $T(1)-T(0)=a-1$.
+    worum: |
+      Some integrals are the same for **every** tetration, although the tetrations themselves differ. This is one of them.
+- id: gr.satz.integral_unten
+  quelle_hash: 985c3b326ebd
+  theorie_hash: f38aa0a8e062
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'gr.satz.young with $m=-1$, $n=0$: right-hand side $0\cdot1-(-1)\cdot0=0$.'
+    pruefung:
+      f5_neue_frage: $\int_{-1}^0T_e=0.49922\ldots$ is conspicuously close to 1/2 — coincidence? (gr.beob.integrale_kneser)
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: As for Young.
+      f3_spezialfall: Yes.
+      f4_uebertragbar: All constructions.
+    bewertung:
+      richtigkeit: complete
+      nutzen: A simple control test for computations.
+    titel: The integral below 0 is the negative slog integral
+    aussage: $\displaystyle\int_{-1}^{0}T(x)\,dx=-\int_0^1A(y)\,dy.$
+    einfach: Between −1 and 0 the curve runs from 0 to 1; the area under it and the area to the left of it add up to the rectangle 0 — so they
+      are equal and opposite.
+  en_theorie:
+    beispiel: |
+      Base $e$: $\int_{-1}^0T_e=0.49921818\ldots$, so $\int_0^1\operatorname{slog}_e=-0.49921818\ldots$
+    einordnung: |
+      Together with [[gr.kor.integral_formen]], one thus knows the areas on the three pieces $[-1,0]$, $[0,1]$ and $[1,a]$ as soon as one of them is known.
+    genau: |
+      $$\int_{-1}^{0}T(x)\,dx=-\int_0^1A(y)\,dy .$$
+    warum: |
+      [[gr.satz.young]] with $m=-1$, $n=0$: the right-hand side is $0\cdot T(0)-(-1)\cdot T(-1)=0$, because $T(-1)=0$. So the two
+      areas cancel exactly. Intuitively: between $x=-1$ and $0$ the curve runs from $0$ to $1$ — the area under it and the (negatively
+      counted) area to its left together form a rectangle of size zero.
+    worum: |
+      The area under the tetration between $-1$ and $0$ is exactly the negative of the area under the super-logarithm between $0$ and $1$.
+- id: gr.satz.kehrwert_turmsumme
+  quelle_hash: 853a18d4a036
+  theorie_hash: 9f0cbae22d2e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $1/T(y+1)=b^{-T(y)}$; telescoping as for any fractional sum with summands → 0. The first term dominates because $T(x+m+1)$ grows as
+        a power of $T(x+m)$.
+    gegenbeispielsuche: 'exp.eta_digamma: $C_2$, $C_e$, $C_{10}$ to 25 digits; base 2 with Kneser $T_2(1/2)=1.4587818160\ldots$: ratio $(C-R(x))/2^{-T(x)}$
+      = 1.435, 1.064, 1.000… at x = 1/2, 3/2, 5/2.'
+    pruefung:
+      f5_neue_frage: 'Is $C_2$ irrational? (Terms $2^{-2\uparrow\uparrow k}$: Liouville-like fast — presumably transcendent.)'
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Only the growth of the tower (b > η); for the value C_b only integer heights.
+      f3_spezialfall: 'Yes: Müller–Schleicher sum with summand → 0.'
+      f4_uebertragbar: To any rapidly growing sequence (Engel-type series); whether C_b is transcendent is open.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Simple, beautiful constant above η; counterpart to the divergent sum of the towers.
+    titel: Sum of the reciprocals of a tower
+    aussage: |
+      $$C_b=\sum_{k\ge1}\frac1{b\uparrow\uparrow k},\qquad C_2=\frac12+\frac14+\frac1{16}+\frac1{65536}+2^{-65536}+\dots=0.8125152587890625\ldots$$
+      The fractional sum $R_b(x)=\sum_{k\ge1}\bigl[\tfrac1{T_b(k)}-\tfrac1{T_b(k+x)}\bigr]$ satisfies $R_b(x+1)-R_b(x)=1/T_b(x+1)$ and
+      $$C_b-R_b(x)=\sum_{m\ge0}b^{-T_b(x+m)}\sim b^{-T_b(x)}.$$
+    bereich: real $b>\eta$; for fractional heights an increasing tetration (e.g. Kneser)
+    einfach: If you add 1/2 + 1/4 + 1/16 + 1/65536 + …, after just four terms all further ones are so small that they no longer change thousands
+      of decimal places. Towers grow so fast that their reciprocals vanish almost immediately.
+    formen:
+    - notiz: Base e
+    - notiz: Dirichlet-like family
+  en_theorie:
+    beispiel: |
+      $$C_2=\frac12+\frac14+\frac1{16}+\frac1{65536}+2^{-65536}+\dots=0.8125152587890625\ldots$$
+      The fifth term $2^{-65536}$ only begins at the $19\,729$th decimal place. Base $e$:
+      $C_e=e^{-1}+e^{-e}+e^{-e^e}+\dots=0.367879+0.065988+0.0000003+\dots=0.43386773919\ldots$
+    einordnung: |
+      The fractional sum is an example of the Müller–Schleicher sums from Chapter 5 ([[kl.satz.bruchsumme]]); here the summands
+      tend to $0$, there to a fixed point. Whether $C_2$ is irrational or transcendental is open.
+    genau: |
+      For $b>\eta$ let
+      $$C_b=\sum_{k\ge1}\frac1{b\uparrow\uparrow k}=\frac1b+\frac1{b^b}+\frac1{b^{b^b}}+\dots$$
+      With an increasing tetration $T_b$ one can also form a “fractional sum”:
+      $R_b(x)=\sum_{k\ge1}\bigl[\tfrac1{T_b(k)}-\tfrac1{T_b(k+x)}\bigr]$. It satisfies $R_b(x+1)-R_b(x)=1/T_b(x+1)$, so it “sums the first $x$
+      reciprocals”, and $C_b-R_b(x)=\sum_{m\ge0}b^{-T_b(x+m)}\approx b^{-T_b(x)}$ holds.
+    warum: |
+      1. Convergence: For $b>\eta$, $b\uparrow\uparrow k$ grows faster than any geometric sequence, so the terms fall faster than
+         $q^k$ for every $q<1$.
+      2. Fractional sum: Telescoping. In $R_b(x+1)-R_b(x)$ all terms cancel except $1/T_b(x+1)$.
+      3. The remainder: Because $1/T_b(y+1)=b^{-T_b(y)}$, the missing terms are $b^{-T_b(x)},b^{-T_b(x+1)},\dots$; each is only
+         a tiny power of the previous one, so the first term almost alone determines the remainder.
+    worum: |
+      Towers grow so fast that the sum of their reciprocals is finished almost immediately: already the fourth or fifth term is so tiny
+      that it no longer touches thousands of decimal places. This yields, for every base above $\eta$, a fixed, very precisely known number.
+- id: gr.satz.kettenregel
+  quelle_hash: 0d2271ae41b6
+  theorie_hash: 9175d7754263
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Differentiate $T(x+1)=a^{T(x)}=e^{T(x)\ln a}$ with respect to $x$.
+    pruefung:
+      f5_neue_frage: What follows when iterating? → gr.kor.produktformel
+      f1_folgt_unmittelbar: Yes (chain rule).
+      f2_benutzte_voraussetzungen: Only differentiability at x.
+      f3_spezialfall: 'Yes: Julia equation for superfunctions, $F''(z+1)=f''(F(z))F''(z)$ with $f=\exp_a$ (it.lem.julia).'
+      f4_uebertragbar: 'Any superfunction: $F''(x+1)=f''(F(x))\,F''(x)$.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Basic formula of all derivative statements.
+    voraussetzungen:
+    - text: T differentiable at x
+    titel: Chain rule of tetration
+    aussage: $$T'(x+1)=\ln a\cdot T(x+1)\cdot T'(x).$$
+    bereich: every solution that is differentiable at $x$
+    einfach: Going up one level, the slope is multiplied by ln a and by the function value there. Since the function values grow explosively,
+      the slope grows even more explosively.
+    formen:
+    - notiz: quotient form (where $T'(x)\ne0$)
+    - notiz: logarithmic derivative, for $x>-2$
+    - notiz: without T(x+1)
+    - notiz: difference form; for $a=e$, $T=\Delta\ln T'$ — summed up, this gives the continuum-sum formula (kn.konstr.kontinuumssumme)
+  en_theorie:
+    beispiel: |
+      Base $e$ (Kneser, $T'(0)=1.09177$): $T'(1)=1\cdot T(1)\cdot T'(0)=e\cdot1.09177=2.96773$. One level further:
+      $T'(2)=T(2)\cdot T'(1)=e^e\cdot2.96773=44.974$.
+    einordnung: |
+      All further derivative rules of this strand follow from this: [[gr.kor.produktformel]], [[gr.satz.vorzeichen]],
+      [[gr.satz.zweite_ableitung]]. For fractional steps there is a continuation with fractional products ([[kl.satz.bruchprodukt]]).
+    genau: |
+      For every differentiable tetration $T$ to base $a$ and every $x>-2$:
+      $$T'(x+1)=\ln a\cdot T(x+1)\cdot T'(x).$$
+    warum: |
+      Write the tower equation as $T(x+1)=a^{T(x)}=e^{T(x)\ln a}$ and differentiate with respect to $x$. The chain rule gives
+      $$T'(x+1)=e^{T(x)\ln a}\cdot\ln a\cdot T'(x)=T(x+1)\cdot\ln a\cdot T'(x).$$
+    worum: |
+      The tower equation immediately yields a rule for slopes: one level higher, the curve is steeper by the factor “$\ln a$ times
+      the function value there”. Since the function values grow explosively, the slopes grow even more explosively.
+- id: gr.satz.ln_aus_steigungen
+  quelle_hash: 3349907c4765
+  theorie_hash: ba3a03818eca
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        Differentiating $\ln T(x+1)=\ln b\cdot T(x)$ $k$ times gives $(\ln T)^{(k)}(x+1)=\ln b\,T^{(k)}(x)$. At $x=-1$ we have $T(0)=1$, so $(\ln T)'(0)=T'(0)$ and
+        $(\ln T)''(0)=T''(0)-T'(0)^2$. For $A$: differentiate $A(b^y)=A(y)+1$, giving $A'(b^y)\,b^y\ln b=A'(y)$, at $y=0$. The second derivative of the same equation at $y=0$
+        gives $(\ln b)^2(A'(1)+A''(1))=A''(0)$. Independence: Every other tetration is $T\circ(\mathrm{id}+p)$ with 1-periodic $p$ (fg.satz.allgemeine_loesung);
+        the factor $1+p'$ is the same at $x$ and $x-1$ and cancels.
+    pruefung:
+      f5_neue_frage: Is there a solution-independent quantity that separates the Kneser tetration from all others? (br.frage.bohr_mollerup)
+      f1_folgt_unmittelbar: 'Yes — from the chain rule; only the point of view is new: solution-independent ratios.'
+      f2_benutzte_voraussetzungen: Differentiability; $T(0)=1$; $T'(-1)\ne0$ for the second form.
+      f3_spezialfall: Yes, a special case of $\sigma'(x+1)=f'(\sigma(x))\sigma'(x)$ for every superfunction (Trappmann 2009).
+      f4_uebertragbar: 'To every level: for pentation, $\ln$ replaced by the derivative of the tetration, $P''(0)/P''(-1)=T''(P(-1))=T''(0)$.'
+    bewertung:
+      richtigkeit: complete; recomputed for Kneser at bases 2, e, 10 to 30 digits
+      nutzen: Shows what about derivatives is solution-independent; connects TPID 7 with an inflection point.
+    titel: 'The logarithm from two slopes: ln b = slog′(0)/slog′(1) = T′(0)/T′(−1)'
+    aussage: 'For every differentiable tetration $T$ to base $b$ with super-logarithm $A$ we have $$\ln b=\frac{A''(0)}{A''(1)}=\frac{T''(0)}{T''(-1)}=\frac{T''''(0)-T''(0)^2}{T''''(-1)},$$
+      in general $(\ln T)^{(k)}(x+1)=\ln b\cdot T^{(k)}(x)$ for all $k\ge1$ and $\ln b=\dfrac{T''(x+1)}{T(x+1)\,T''(x)}$ for every $x$. The individual
+      slopes depend on the chosen tetration, **the ratios do not**. If one reads this for every base $x$, then $\ln x=\operatorname{slog}_x''(0)/\operatorname{slog}_x''(1)$
+      is a representation of the logarithm by super-logarithms. Consequence: The limit base $b_7=10.2210634157814\ldots$ from TPID 7 ($T''''(0)=T''(0)^2$)
+      is exactly the base at which $T$ has its inflection point at $-1$.'
+    einfach: 'How steep the super-logarithm is at 0 and at 1 depends on which smooth continuation you take. But the ratio of the two slopes is
+      always the same: the natural logarithm of the base. So you can read off ln from two slopes.'
+    formen:
+    - notiz: the function value from neighboring slopes (hyper4geek 2007, base e)
+    - notiz: with Lambert W, because T′(x+1)/T′(x−1) = T(x+1)T(x) = T(x)e^{T(x)}
+    - notiz: second order on the slog side
+    - notiz: over n levels (product formula)
+  en_theorie:
+    beispiel: |
+      Kneser to base $e$: $T'(0)=T'(-1)=1.0917673\ldots$, ratio 1. If one perturbs the solution to $T(x+0.05\sin2\pi x)$, $T'(0)$ becomes $1.43476$ — the
+      ratio remains exactly 1. For the bases 2 and 10 the ratio agrees with $\ln2$ and $\ln10$ to 30 digits.
+
+      Side finding: TPID 7 tips for Kneser at $b_7$, where $T''(0)=T'(0)^2$. By the third form this means $T''(-1)=0$ — **at $b_7=10.2210634157814\ldots$
+      the Kneser curve has its inflection point exactly at $-1$.** (While recomputing, it turned out that the value $10.2210634581\ldots$ given earlier was wrong from the eighth
+      digit on: too coarse a sampling of the derivatives at large bases.)
+    einordnung: |
+      Follows from [[gr.satz.kettenregel]] and [[gr.satz.slog_ableitung]]. In the forum, hyper4geek (2007) found the forms with neighboring slopes and Robbins/Trappmann
+      (2009) the general product form. The connection to TPID 7 is in [[gr.gegen.tpid7_kneser]].
+    genau: |
+      For every differentiable tetration $T$ to base $b$ and its super-logarithm $A$:
+      $$\ln b=\frac{A'(0)}{A'(1)}=\frac{T'(0)}{T'(-1)}=\frac{T''(0)-T'(0)^2}{T''(-1)}.$$
+      Behind this stands a single rule: $(\ln T)^{(k)}(x+1)=\ln b\cdot T^{(k)}(x)$ for every $k\ge1$. Further forms:
+      - $T(x)=T'(x)/(\ln b\,T'(x-1))$ — the function value from two neighboring slopes;
+      - for $b=e$: $T(x)=W\bigl(T'(x+1)/T'(x-1)\bigr)$ with the Lambert W function;
+      - $(\ln b)^2=A''(0)/(A'(1)+A''(1))$ on the slog side.
+      If one reads the first form for every base, then $\ln x=\operatorname{slog}_x'(0)/\operatorname{slog}_x'(1)$ — the logarithm as a ratio of two
+      super-logarithm slopes.
+    warum: |
+      1. Take the logarithm of the tower equation: $\ln T(x+1)=\ln b\cdot T(x)$. Differentiate $k$ times: $(\ln T)^{(k)}(x+1)=\ln b\cdot T^{(k)}(x)$.
+      2. At $x=-1$ we have $T(0)=1$. Then $(\ln T)'(0)=T'(0)$ and $(\ln T)''(0)=T''(0)-T'(0)^2$ — this gives the first and third forms.
+      3. For $A$: differentiating $A(b^y)=A(y)+1$ gives $A'(b^y)\,b^y\ln b=A'(y)$, so at $y=0$ we get $A'(1)\ln b=A'(0)$.
+      4. **Why the choice of solution does not matter:** Every other tetration is $\tilde T(x)=T(x+p(x))$ with 1-periodic $p$. Then
+         $\tilde T'(x)=T'(x+p)(1+p'(x))$, and the factor $1+p'$ is the same at $x$ and $x-1$ — in the ratio it cancels.
+    worum: |
+      Which parts of the derivatives of a tetration depend on the chosen continuation, and which do not? The individual slopes depend on it. Certain
+      **ratios**, however, are the same for every solution — and one of them is the natural logarithm of the base.
+- id: gr.satz.logstern
+  quelle_hash: 91396d01a3e7
+  theorie_hash: f2b20531925a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $n=\log^*_a(y)$, $z=\log_a^{\circ n}y\in(0,1]$, hence $A(z)\in(-1,0]$ and $A(y)=n+A(z)\in(n-1,n]$.
+    pruefung:
+      f5_neue_frage: 'How large is the distance between different constructions within one step? (fg.satz.allgemeine_loesung: a periodic function)'
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Monotonicity and $A(0)=-1$, $A(1)=0$.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Every increasing tetration — all have the same staircase, they differ only between the steps.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Intuitive picture for slog.
+    titel: slog is the smoothed iterated logarithm
+    aussage: '$\lceil\operatorname{slog}_a(y)\rceil=\log^*_a(y)$: rounded up, slog is the number of logarithms until one lands at 1 or below.'
+    bereich: $a>\eta$, $y>1$; $\log^*_a(y)=\min\{n:\log_a^{\circ n}(y)\le1\}$
+    einfach: How many times do you have to press the logarithm until the number drops below 1? That is a staircase. slog is the same staircase,
+      only drawn out smoothly.
+    formen:
+    - notiz: Decomposition
+    - notiz: as an inequality
+  en_theorie:
+    beispiel: |
+      $y=1000$, base $e$: $\ln1000=6.908$, $\ln6.908=1.933$, $\ln1.933=0.659\le1$ — three logarithms, so $\log^*_e(1000)=3$.
+      Indeed $\operatorname{slog}_e(1000)=2.666$, rounded up $3$. The fractional part $0.666$ tells how far up $1000$ has already “climbed” in the third
+      level.
+    einordnung: |
+      In computer science, $\log^*$ is known as an extremely slowly growing function (running times of union-find). The super-logarithm
+      fills the jumps smoothly. The connection to growth hierarchies in logic is shown in Chapter 10.
+    genau: |
+      For $y>0$ let $\log^*_a(y)$ be the smallest number $n\ge0$ for which $\log_a^{\circ n}(y)\le1$ (the logarithm applied $n$ times).
+      Then
+      $$\bigl\lceil\operatorname{slog}_a(y)\bigr\rceil=\log^*_a(y),$$
+      where $\lceil\cdot\rceil$ denotes rounding up.
+    warum: |
+      1. Let $n=\log^*_a(y)$ and $z=\log_a^{\circ n}(y)$. By definition $z\le1$, and because the previous value was still larger than $1$, we have $z>0$.
+      2. On $(0,1]$ the super-logarithm lies between $A(0)=-1$ (excluded) and $A(1)=0$: $A(z)\in(-1,0]$.
+      3. Each logarithm lowers $A$ by exactly $1$ ([[gr.satz.slog_grund]]), so $A(y)=n+A(z)\in(n-1,n]$. Rounding up gives $n$.
+    worum: |
+      How many times must one take the logarithm until a number falls below $1$? This number is called the iterated logarithm $\log^*$. The
+      super-logarithm is exactly the smooth version of it: rounded up, it gives the same number.
+- id: gr.satz.selbstpotenz
+  quelle_hash: 7e1136457b84
+  theorie_hash: a4b057964139
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $x^x=e^{x\ln x}$, chain rule; $1+\ln x=0$ exactly at $x=1/e$; $x\ln x\to0$ for $x\to0^+$.
+    pruefung:
+      f5_neue_frage: Why does $\eta$ appear both here and for the infinite tower? Both times it is about $\ln x/x$ or $x\ln x$ at $e$.
+      f1_folgt_unmittelbar: Yes (school calculus).
+      f2_benutzte_voraussetzungen: None.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: The tower $x^{x^x}$ likewise has a minimum/inflection points — same method.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Entry point, shows η in an unexpected place.
+    titel: x^x is smallest at 1/e — η is already hiding there
+    aussage: $f(x)=x^x$ has the derivative $f'(x)=x^x(1+\ln x)$, is decreasing on $(0,1/e]$, increasing on $[1/e,\infty)$, and $\min f=f(1/e)=e^{-1/e}=1/\eta\approx0.6922$.
+      For $x\to0^+$, $x^x\to1$.
+    bereich: $x>0$
+    einfach: The curve x to the power x first dips a little and then rises steeply. Its lowest point is at 1/e, and the value there is exactly
+      1 divided by η — the same number η = e^{1/e} that later decides whether an infinite tower converges.
+    formen:
+    - notiz: key to differentiating
+    - notiz: minimum
+  en_theorie:
+    beispiel: |
+      $0.1^{0.1}=0.794$, $\ 0.25^{0.25}=0.707$, $\ (1/e)^{1/e}=0.6922$, $\ 0.5^{0.5}=0.7071$, $\ 1^1=1$, $\ 2^2=4$. The values at $0.25$ and
+      $0.5$ are equal ($0.25^{0.25}=(0.5^2)^{0.25}=0.5^{0.5}$) — to the left and to the right of the minimum.
+    einordnung: |
+      The self-power is the second level of the towers of $x$; its area over $[0,1]$ is the “sophomore's dream”
+      [[gr.satz.sophomore]], the higher levels lead to [[gr.satz.turmintegral_grenzen]]. The number $\eta$ gains its full
+      significance in [[fp.def.eta]].
+    genau: |
+      For $x>0$, $f(x)=x^x=e^{x\ln x}$. We have
+      $$f'(x)=x^x\,(1+\ln x).$$
+      $f$ decreases on $(0,1/e]$, increases on $[1/e,\infty)$, and the smallest value is
+      $$f(1/e)=e^{-1/e}=\frac1\eta\approx0.6922 .$$
+      For $x\to0^+$, $x^x\to1$.
+    warum: |
+      1. $x^x=e^{x\ln x}$, so by the chain rule $f'(x)=e^{x\ln x}\cdot(x\ln x)'=x^x(\ln x+1)$.
+      2. The factor $x^x$ is positive, the sign is determined by $1+\ln x$: negative for $x<1/e$, zero at $x=1/e$, positive afterwards.
+      3. Value at the minimum: $(1/e)^{1/e}=e^{-1/e}$.
+      4. Limit at $0$: $x\ln x\to0$ (e.g. with L'Hospital's rule: $\ln x/(1/x)$ has derivative quotient $(1/x)/(-1/x^2)=-x\to0$), so $x^x=e^{x\ln x}\to e^0=1$.
+
+      **Why $\eta$ in particular?** Setting $x=1/y$ gives $x^x=e^{-\ln y/y}$. The minimum of $x^x$ corresponds to the maximum of
+      $y^{1/y}=e^{\ln y/y}$, and that lies at $y=e$ with value $e^{1/e}=\eta$. The base $b=y^{1/y}$ is exactly the base for which $y$ is a
+      fixed point ($b^y=y$) — this is why $\eta$ is the largest base with a real fixed point ([[fp.satz.reelle_fixpunkte]]).
+    worum: |
+      The function $x^x$ — a number to its own power — is the smallest tower in which the base is variable. It has a lowest
+      point, and there the number $\eta=e^{1/e}$ appears for the first time, which later is decisive everywhere.
+- id: gr.satz.slog_ableitung
+  quelle_hash: 184b72b6f93c
+  theorie_hash: bc4f8017ee7f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Inverse-function rule; differentiate $A(a^y)=A(y)+1$.
+    pruefung:
+      f5_neue_frage: $\operatorname{slog}_e'(0)$ is at the same time the orbit value $-V_1$ from Paper V — a connection between foundations and
+        the base derivative.
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Differentiability, $T'\ne0$.
+      f3_spezialfall: Yes, a special case of it.lem.julia.
+      f4_uebertragbar: All constructions.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Calculation rule.
+    titel: Derivative of the super-logarithm
+    aussage: '$A''(y)=\dfrac1{T''(A(y))}$ and $A''(y)=\ln a\cdot a^{y}\cdot A''(a^{y})$; in particular $A''(0)=\dfrac{\ln a}{T''(0)}$, $A''(1)=\dfrac1{T''(0)}$.
+      Kneser to base $e$: $\operatorname{slog}_e''(0)=0.915946056499533\ldots$'
+    einfach: The slope of slog is the reciprocal of the slope of T at the matching point — as for every inverse function.
+    formen:
+    - notiz: Julia equation (it.lem.julia)
+  en_theorie:
+    beispiel: |
+      Base $e$: $\ln e=1$, so $\operatorname{slog}_e'(0)=\operatorname{slog}_e'(1)=1/T_e'(0)=1/1.0917673\ldots=0.9159461\ldots$
+    einordnung: |
+      The number $T_e'(0)$ appears in [[gr.beob.kneser_ableitung]]. The same number $0.91594\ldots$ surprisingly appears in Paper V as the
+      orbit value of the base derivative ([[bw.satz.kern_existenz]]).
+    genau: |
+      $$A'(y)=\frac1{T'(A(y))},\qquad A'(y)=\ln a\cdot a^{y}\cdot A'(a^{y}).$$
+      In particular $A'(1)=1/T'(0)$ and $A'(0)=\ln a/T'(0)$.
+    warum: |
+      1. The first formula is the derivative rule for inverse functions: from $T(A(y))=y$ it follows that $T'(A(y))\cdot A'(y)=1$.
+      2. The second: differentiate $A(a^y)=A(y)+1$. On the left the chain rule gives $A'(a^y)\cdot a^y\ln a$, on the right $A'(y)$.
+      3. At $y=1$: $A(1)=0$, so $A'(1)=1/T'(0)$. At $y=0$: the second formula with $a^0=1$ gives $A'(0)=\ln a\cdot A'(1)$.
+    worum: |
+      The slope of the super-logarithm is the reciprocal of the slope of the tetration — as for every inverse function. In addition there is a
+      rule of its own that connects two levels.
+- id: gr.satz.slog_grund
+  quelle_hash: 0a34161a1db6
+  theorie_hash: 7cd849fb07a4
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Inverse of $T$, using gr.satz.gestalt.
+    pruefung:
+      f5_neue_frage: → gr.satz.logstern
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Monotonicity; $a>\eta$ only for the domain of definition being all of $\mathbb R$.
+      f3_spezialfall: Abel function (fg.def.abel).
+      f4_uebertragbar: For $1<a\le\eta$ on $(-\infty,a_*)$.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Calculation rules for slog.
+    titel: Basic values and basic rules of the super-logarithm
+    aussage: $A(1)=0$, $A(0)=-1$, $A(a)=1$, $A(a^y)=A(y)+1$, $A(\log_ay)=A(y)-1$ for $y>0$, and $A(y)\to-2$ for $y\to-\infty$.
+    bereich: $a>\eta$, $A=\operatorname{slog}_a=T^{-1}:\mathbb R\to(-2,\infty)$, $T$ strictly increasing
+    einfach: slog answers the question “at what height does the tetration have this value?” Exponentiating means one level up, taking the logarithm
+      one level down.
+  en_theorie:
+    beispiel: |
+      Base $e$ (Kneser): $\operatorname{slog}_e(e^e)=2$, $\ \operatorname{slog}_e(0.5)=-0.4985$, $\ \operatorname{slog}_e(2.5)=0.9219$,
+      $\ \operatorname{slog}_e(1000)=2.6665$.
+    einordnung: |
+      The super-logarithm is an **Abel function** ([[fg.def.abel]]): $A\circ f=A+1$ for $f(y)=a^y$. Almost every construction in this book
+      first builds an Abel function and obtains the tetration by inverting. Next: [[gr.satz.logstern]], [[gr.satz.slog_ableitung]].
+    genau: |
+      Let $A=\operatorname{slog}_a$ be the inverse function of a continuous, increasing tetration $T$ to base $a>\eta$. Then
+      $$A(1)=0,\quad A(0)=-1,\quad A(a)=1,\qquad A(a^y)=A(y)+1,\quad A(\log_ay)=A(y)-1\ (y>0),$$
+      and $A(y)\to-2$ for $y\to-\infty$. $A$ is defined on all of $\mathbb R$ and increasing.
+    warum: |
+      1. From $T(0)=1$, $T(-1)=0$, $T(1)=a$ the three values follow by inverting.
+      2. Put $x=A(y)$, so $T(x)=y$. Then $T(x+1)=a^{T(x)}=a^y$, and conversely $A(a^y)=x+1=A(y)+1$.
+      3. The same rule with $y$ replaced by $\log_ay$ gives $A(y)=A(\log_ay)+1$.
+      4. Because $T(x)\to-\infty$ for $x\to-2$ ([[gr.satz.gestalt]]), conversely $A(y)\to-2$ for $y\to-\infty$.
+    worum: |
+      The super-logarithm $\operatorname{slog}_a$ is the inverse of the tetration: it tells **at what height** the tower reaches a given
+      value. Its basic rules are the tower rules, read backward.
+- id: gr.satz.slog_steigung_langsam
+  quelle_hash: 2f5b8c1c9df5
+  theorie_hash: b4e27f6585b2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        $A'(y)=\ln b\cdot b^yA'(b^y)$ (gr.satz.slog_ableitung) with $y=\log_bx$ gives $A'(x)=A'(\log_bx)/(x\ln b)$; applied $n$ times, the product formula, and $A'(L_n)$
+        lies between positive bounds for $L_n\in[1,b)$. First quotient: $A'(x)\,L_0\cdots L_m=A'(L_n)/\bigl((\ln b)^n\prod_{k=m+1}^{n-1}L_k\bigr)$; the denominator
+        contains $L_{m+1}\to\infty$, and of the remaining factors $\ln b\cdot L_k$ at most a bounded number (the last ones, $L_k$ near $[1,b)$) are smaller than 1 — the quotient tends to 0.
+        Second quotient: additionally the factor $L_m^{\varepsilon}=b^{\varepsilon L_{m+1}}$, which outgrows every product $L_{m+1}L_{m+2}\cdots\le L_{m+1}^2$ (for large $x$)
+        and every $(\ln b)^{-n}$ with $n\approx A(x)$. Divergence: $\sum_{n\le N}A'(n)\ge\int_1^NA'=A(N)-A(1)\to\infty$, because $A'$ is decreasing.
+    pruefung:
+      f5_neue_frage: Exact asymptotics of $A'(x)\prod_{k<A(x)}\ln b\,L_k$ — is it periodic in $A(x)$?
+      f1_folgt_unmittelbar: Yes, from the product formula.
+      f2_benutzte_voraussetzungen: $b>\eta$, so that the logarithm chain brings every $x$ into $[1,b)$.
+      f3_spezialfall: 'Yes: Ramanujan''s and Hardy''s investigation of the series $\sum1/(n\ln n\ln\ln n\cdots)$ up to the “last” level.'
+      f4_uebertragbar: To Abel functions of any superfunction with rapidly growing $f$.
+    bewertung:
+      richtigkeit: complete
+      nutzen: 'Places the super-logarithm in the classical scale of slowly growing functions: a divergent term beyond the entire scale.'
+    titel: slog′ lies between all convergent and all divergent terms of the logarithm scale
+    aussage: 'Let $b>\eta$, $L_k=\log_b^{\circ k}x$ and $A=\operatorname{slog}_b$. The product formula holds $$A''(x)=\frac{A''(L_n)}{\prod_{k=0}^{n-1}\ln
+      b\cdot L_k}\qquad(n=\lfloor A(x)\rfloor,\ L_n\in[1,b)).$$ From this: For every fixed $m$ and $\varepsilon>0$ we have $$\frac{A''(x)}{1/(L_0L_1\cdots
+      L_m)}\to0,\qquad\frac{A''(x)}{1/(L_0\cdots L_{m-1}L_m^{1+\varepsilon})}\to\infty\qquad(x\to\infty).$$ So $A''$ falls faster than every divergent
+      and more slowly than every convergent term of the scale of Abel and du Bois-Reymond — and $\sum_nA''(n)$ diverges nonetheless (like $A(n)$).
+      The super-logarithm is the natural limit of this scale: $\int dx/(L_0\cdots L_m)\sim\log^{\circ m+1}x$, and $A$ grows more slowly than any
+      of these.'
+    einfach: The slope of the super-logarithm gets smaller toward the right than anything you build from finitely many logarithms — and yet the
+      sum of its values is infinite. It lies exactly in the gap between “sum finite” and “sum infinite” of the classical logarithm series.
+  en_theorie:
+    beispiel: |
+      Base $e$, $x=e^{e^e}\approx3.81\cdot10^6$: $L_0=3.81\cdot10^6$, $L_1=15.15$, $L_2=e$, $L_3=1$. Then $\operatorname{slog}'(x)=0.9159/(L_0L_1L_2)\approx5.8\cdot10^{-9}$,
+      already somewhat smaller than $1/(L_0L_1L_2)=6.4\cdot10^{-9}$.
+    einordnung: |
+      The logarithm scale of Abel and du Bois-Reymond (Hardy, “Orders of Infinity”) has no last divergent term; the super-logarithm provides a natural
+      divergent series beyond the entire scale. Related: [[gr.satz.logstern]].
+    genau: |
+      With $L_k=\log_b^{\circ k}x$ and $n=\lfloor\operatorname{slog}_b x\rfloor$:
+      $$\operatorname{slog}_b'(x)=\frac{\operatorname{slog}_b'(L_n)}{\prod_{k=0}^{n-1}\ln b\cdot L_k}.$$
+      For every fixed $m$: $\operatorname{slog}'$ is eventually smaller than $1/(L_0L_1\cdots L_m)$ (whose sum diverges) and larger than
+      $1/(L_0\cdots L_{m-1}L_m^{1+\varepsilon})$ (whose sum converges). Nevertheless $\sum\operatorname{slog}'(n)$ diverges.
+    warum: |
+      1. The product formula is the rule $A'(y)=\ln b\cdot b^yA'(b^y)$, applied $n$ times backward.
+      2. In the comparison with $1/(L_0\cdots L_m)$ the factors $L_{m+1},\dots,L_{n-1}$ remain in the denominator — $L_{m+1}$ grows without bound, the quotient tends to 0.
+      3. In the comparison with the convergent series, $L_m^{\varepsilon}=b^{\varepsilon L_{m+1}}$ enters the numerator — this grows exponentially in $L_{m+1}$ and beats every
+         product of the much smaller $L_{m+1},L_{m+2},\dots$
+      4. Divergence: The sum is at least the integral, and $\int_1^N\operatorname{slog}'=\operatorname{slog}N\to\infty$.
+    worum: |
+      How fast does the super-logarithm become flat? Faster than any function built from finitely many logarithms whose sum is infinite —
+      and yet slowly enough that the sum of its slopes stays infinite.
+- id: gr.satz.sophomore
+  quelle_hash: e23406cb6fd7
+  theorie_hash: bf450fbbb550
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Johann Bernoulli 1697: integrate $x^x=\sum_k\frac{(x\ln x)^k}{k!}$ term by term, $\int_0^1x^k\ln^kx\,dx=(-1)^kk!/(k+1)^{k+1}$.'
+    pruefung:
+      f5_neue_frage: What happens to $I_n=\int_0^1{}^n x\,dx$ for $n\to\infty$? → gr.satz.turmintegral_grenzen
+      f1_folgt_unmittelbar: Yes, series + substitution $x=e^{-u}$ (gamma integral).
+      f2_benutzte_voraussetzungen: Uniform convergence of the series on [0,1].
+      f3_spezialfall: 'Yes: $\int_0^1x^{-cx}dx$ for every c.'
+      f4_uebertragbar: Higher towers have no such simple series — first level of gr.satz.turmintegral_grenzen.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Most beautiful entry point to towers as functions.
+    titel: Sophomore's Dream
+    aussage: |
+      $$\int_0^1x^{x}\,dx=\sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{k^{k}}=0.78343051071213440706\ldots,\qquad\int_0^1x^{-x}\,dx=\sum_{k=1}^{\infty}\frac1{k^{k}}.$$
+    bereich: $x\in(0,1]$
+    einfach: 'The area under the curve x^x between 0 and 1 is a sum that looks almost like a typo: 1 − 1/4 + 1/27 − 1/256 + …'
+  en_theorie:
+    beispiel: |
+      $1-0.25+0.037037-0.003906+0.000320-0.0000214+\dots=0.7834305$.
+    einordnung: |
+      Johann Bernoulli found this in 1697. It is the first level of the tower integrals [[gr.satz.turmintegral_grenzen]]; for higher levels
+      there is no such simple series.
+    genau: |
+      $$\int_0^1x^{x}\,dx=\sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{k^{k}}=0.78343051071213440706\ldots,\qquad\int_0^1x^{-x}\,dx=\sum_{k=1}^{\infty}\frac1{k^{k}}=1.29128599706\ldots$$
+    warum: |
+      1. Write $x^x=e^{x\ln x}=\sum_{k\ge0}\frac{(x\ln x)^k}{k!}$ (exponential series). On $[0,1]$ we have $|x\ln x|\le1/e$, the series converges uniformly,
+         so one may integrate term by term.
+      2. The integral $\int_0^1x^k(\ln x)^k\,dx$ is computed with $x=e^{-t}$: it becomes $(-1)^k\int_0^\infty t^ke^{-(k+1)t}\,dt=\frac{(-1)^kk!}{(k+1)^{k+1}}$.
+      3. The $k!$ cancels against the $k!$ of the exponential series, and what remains is $\sum_{k\ge0}\frac{(-1)^k}{(k+1)^{k+1}}$ — with $k+1\to k$ the formula.
+    worum: |
+      The area under $x^x$ between $0$ and $1$ is a sum that looks almost like a typo:
+      $1-\frac14+\frac1{27}-\frac1{256}+\dots$ Hence the name “Student's Dream” (Sophomore's Dream).
+- id: gr.satz.stellen
+  quelle_hash: 0ae6df0257c3
+  theorie_hash: 7a5e801575c2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $m$ has $N$ digits if and only if $10^{N-1}\le m<10^N$, so $N=\lfloor\log_{10}m\rfloor+1$; with $m=a^{t}$, $t=a\uparrow\uparrow n$,
+        we have $\log_{10}m=t\log_{10}a$.
+    pruefung:
+      f5_neue_frage: Which digits at the end are stable? → br.satz.turm_mod_m
+      f1_folgt_unmittelbar: Yes, from the definition of the logarithm.
+      f2_benutzte_voraussetzungen: Only $a\ge2$ an integer (for $a=10^k$, $t\log_{10}a$ is an integer; the formula is still correct).
+      f3_spezialfall: Yes, the number of digits of arbitrary powers.
+      f4_uebertragbar: Any base $b\ge2$ instead of 10 (digits in the base-$b$ system).
+    bewertung:
+      richtigkeit: complete
+      nutzen: Makes the size of towers tangible.
+    titel: How many digits does a↑↑(n+1) have?
+    aussage: '$a\uparrow\uparrow(n+1)$ has exactly $\lfloor a\uparrow\uparrow n\cdot\log_{10}a\rfloor+1$ decimal digits. Examples: $2\uparrow\uparrow5=2^{65536}$
+      has $19\,729$ digits, $3\uparrow\uparrow4=3^{7\,625\,597\,484\,987}$ has $3\,638\,334\,640\,025$ digits.'
+    bereich: integers $a\ge2$, $n\ge1$
+    einfach: The number of digits of a number is its common logarithm, rounded down, plus one — and the logarithm of a power brings the exponent
+      down. That is why we know the length of a↑↑(n+1), even though the number could never be written out.
+    formen:
+    - notiz: general
+    - notiz: the core
+  en_theorie:
+    beispiel: |
+      - $2\uparrow\uparrow5=2^{65536}$: $65\,536\cdot\log_{10}2=65\,536\cdot0.30103\ldots=19\,728.3\ldots$, so $19\,729$ digits.
+      - $3\uparrow\uparrow4=3^{7\,625\,597\,484\,987}$: $7\,625\,597\,484\,987\cdot0.47712\ldots=3\,638\,334\,640\,024.1\ldots$, so
+        $3\,638\,334\,640\,025$ digits — more than three and a half trillion.
+      - $10\uparrow\uparrow3=10^{10^{10}}$ has $10^{10}+1$ digits.
+    einordnung: |
+      The idea “logarithm = one level down” recurs everywhere: with the super-logarithm [[gr.satz.logstern]], with the
+      base change (Chapter 7), where towers of different bases are compared by repeated logarithms.
+    genau: |
+      For $a>1$ and $n\ge1$ the number $a\uparrow\uparrow(n+1)$ has exactly
+      $$\bigl\lfloor\, a\uparrow\uparrow n\cdot\log_{10}a\,\bigr\rfloor+1$$
+      decimal digits. Here $\lfloor\cdot\rfloor$ is rounding down to the nearest integer and $\log_{10}$ the common logarithm.
+    warum: |
+      1. A positive number $m$ has $N$ digits if and only if $10^{N-1}\le m<10^{N}$. Taking logarithms gives $N-1\le\log_{10}m<N$,
+         so $N=\lfloor\log_{10}m\rfloor+1$.
+      2. For $m=a\uparrow\uparrow(n+1)=a^{t}$ with $t=a\uparrow\uparrow n$ the logarithm brings the exponent down:
+         $\log_{10}m=t\cdot\log_{10}a$.
+      3. Substituting gives the formula. So one needs only the level below, $t$, and never has to form the huge number itself.
+    worum: |
+      Towers get so large that they can no longer be written down. Nevertheless one can say exactly how many digits they have —
+      because the logarithm removes one level from the tower.
+- id: gr.satz.stufenleiter
+  quelle_hash: aa3d1a04961e
+  theorie_hash: 8b4f18238880
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        (i) $H_{k+1}(-1)=H_k^{-1}(1)=0$, because $H_k(0)=1$; inductively $H_{k+1}(-j-1)=H_k^{-1}(H_{k+1}(-j))=H_k^{-1}(-(j-1))=-j$, because $H_k(-j)=-(j-1)$.
+        (ii) Chain rule $H_{k+1}'(x+1)=H_k'(H_{k+1}(x))\,H_{k+1}'(x)$ at $x=-j-1$ with $H_{k+1}(-j-1)=-j$. With $\delta_k(j)=\ln H_k'(-j)$ this means
+        $\delta_{k+1}(j)-\delta_{k+1}(j+1)=\delta_k(j)$: the backward difference of a level is the level below. Applied $m$ times, one arrives at
+        $\delta_3(0)=\ln\bigl(\ln a\cdot a^0\bigr)=\ln\ln a$.
+    pruefung:
+      f5_neue_frage: Are there likewise solution-independent combinations of second derivatives over three levels (analogue of $(T''(0)-T'(0)^2)/T''(-1)$)?
+      f1_folgt_unmittelbar: Yes, from the chain rule; new is the ladder over all levels.
+      f2_benutzte_voraussetzungen: Each level injective (for the values) and differentiable at the integer arguments down to $-m$.
+      f3_spezialfall: 'Yes: for every sequence of superfunctions $F_{k+1}(x+1)=F_k(F_{k+1}(x))$ with a common starting value.'
+      f4_uebertragbar: 'Bases $0<a<1$: with $\ln a<0$ without the outer logarithm (quotient form). Higher derivatives: Taylor ladder for each
+        level.'
+    bewertung:
+      richtigkeit: complete; pentation at bases e and 2 recomputed to 25 digits
+      nutzen: Connects the slopes of all hyperoperations with ln ln a.
+    titel: 'Ladder of levels: ln ln a is the m-th difference of ln H′ — for tetration, pentation, hexation, …'
+    aussage: |
+      (i) **Values:** $H_k(0)=1$, $H_k(1)=a$, $H_k(2)=H_{k-1}(a)$, and downward $H_k(-j)=-(j-1)$ for $j=1,\dots,k-3$:
+      $T(-1)=0$; $P(-1)=0$, $P(-2)=-1$; $H_6(-1)=0$, $H_6(-2)=-1$, $H_6(-3)=-2$. Each level inherits one more integer argument.
+
+      (ii) **Slopes:** $H_{k+1}'(-j)/H_{k+1}'(-j-1)=H_k'(-j)$ for $0\le j\le k-3$, and from this for $m=0,1,2,\dots$
+      $$\ln\ln a=\sum_{j=0}^{m}(-1)^j\binom{m}{j}\ln H_{3+m}'(-j).$$
+      $m=1$: $\ln a=T'(0)/T'(-1)$; $m=2$: $\ln a=\dfrac{P'(0)\,P'(-2)}{P'(-1)^2}$; $m=3$: $\ln a=\dfrac{H_6'(0)\,H_6'(-2)^3}{H_6'(-1)^3\,H_6'(-3)}$.
+      The individual slopes depend on the chosen solutions, these combinations do not. For $a=e$, $P'(0),P'(-1),P'(-2)$ form a geometric sequence
+      with quotient $T_e'(0)=1.0917673512\ldots$ (regular pentation at the fixed point: $1.08879$, $0.99727$, $0.91345$).
+    bereich: base $a>1$; $H_3(x)=a^x$, $H_{k+1}(x+1)=H_k(H_{k+1}(x))$, $H_{k+1}(0)=1$, each level strictly increasing and differentiable ($H_4=T$
+      tetration, $H_5=P$ pentation, $H_6$ hexation)
+    einfach: For tetration, ln a is the ratio of two slopes. One level higher, for pentation, you need three slopes, for hexation four — always
+      with the signs and weights of a row of binomial coefficients. Each level has one more integer argument downward at which the value is known
+      exactly.
+    formen:
+    - notiz: Slopes of the tetration as slope ratios of the pentation
+    - notiz: Backward difference of a level = logarithmic slope of the level below
+    - notiz: geometric sequence
+  en_theorie:
+    beispiel: |
+      Base $e$ (regular pentation at the fixed point $-1.8503\ldots$ of the Kneser tetration): $P'(0)=1.0887888477$, $P'(-1)=0.9972718514$, $P'(-2)=0.9134472196$ — quotient twice
+      $T_e'(0)=1.0917673513$. Base 2: second difference of $\ln P'$ $=-0.36651292058166432701=\ln\ln2$ to 25 digits.
+    einordnung: |
+      Extends [[gr.satz.ln_aus_steigungen]] by one level upward. Pentation itself: [[kn.konstr.pentation]]; hexation and its open questions are found in the
+      Kneser construction.
+    genau: |
+      Levels $H_3=a^x$, $H_{k+1}(x+1)=H_k(H_{k+1}(x))$, $H_{k+1}(0)=1$. Then $H_k(-j)=-(j-1)$ for $1\le j\le k-3$ and
+      $$\ln\ln a=\sum_{j=0}^m(-1)^j\binom mj\ln H_{3+m}'(-j),$$
+      hence $\ln a=T'(0)/T'(-1)=P'(0)P'(-2)/P'(-1)^2=H_6'(0)H_6'(-2)^3/\bigl(H_6'(-1)^3H_6'(-3)\bigr)$.
+    warum: |
+      1. **Values:** $H_k(0)=1$ means $H_{k+1}(-1)=H_k^{-1}(1)=0$. One level higher: $H_{k+2}(-2)=H_{k+1}^{-1}(0)=-1$, and so on.
+      2. **Slopes:** Chain rule $H_{k+1}'(x+1)=H_k'(H_{k+1}(x))\,H_{k+1}'(x)$ at the point $x=-j-1$, where $H_{k+1}(x)=-j$: $H_{k+1}'(-j)/H_{k+1}'(-j-1)=H_k'(-j)$.
+      3. **Ladder:** Taking logarithms, the backward difference of $\ln H_{k+1}'$ equals $\ln H_k'$. $m$ differences lead from level $3+m$ down to $\ln(a^x)'|_{x=0}=\ln\ln a$.
+    worum: |
+      $\ln a=T'(0)/T'(-1)$ holds for every tetration. Is there something like this one level higher, for pentation, and higher still? Yes — with a row of binomial coefficients, and at the end
+      there is always $\ln\ln a$.
+- id: gr.satz.superwurzel
+  quelle_hash: 684a4f3496e3
+  theorie_hash: a9b07e272213
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: '$y^y=x\iff y\ln y=\ln x\iff(\ln y)e^{\ln y}=\ln x$, hence $\ln y=W_k(\ln x)$. Real branches: $W_0$ on $[-1/e,\infty)$, $W_{-1}$ on
+        $[-1/e,0)$; $\ln x\ge-1/e\iff x\ge e^{-1/e}$. Second form: $e^{W(t)}=t/W(t)$. The number of solutions also follows directly from gr.satz.selbstpotenz
+        (minimum $e^{-1/e}$ at $1/e$, $y^y\to1$ for $y\to0^+$).'
+    pruefung:
+      f5_neue_frage: Is there a closed form for the $n$-th super-root? Already for $n=3$ only as a fixed point.
+      f1_folgt_unmittelbar: Yes (rearrangement + Lambert W).
+      f2_benutzte_voraussetzungen: Only real $x>0$, $y>0$; over the complex numbers all branches $W_k$ give solutions.
+      f3_spezialfall: 'Yes: the same Lambert rearrangement as for the fixed points (fp.satz.lambert).'
+      f4_uebertragbar: 'Third super-root: W twice (gr.satz.superwurzel_dritte); arithmetic of the values: ar.satz.superwurzel_arith.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: The natural inverse with respect to the base; entry point to Lambert W.
+    titel: Super-root — which number raised to itself gives x?
+    aussage: |
+      $y^y=x$ has for $x>1$ exactly one solution (with $y>1$), for $e^{-1/e}<x<1$ exactly two (both in $(0,1)$, one below and one above $1/e$),
+      for $x=e^{-1/e}$ and $x=1$ exactly one ($y=1/e$ and $y=1$, respectively), for $x<e^{-1/e}$ none. The solution with $y\ge1/e$ is
+      $$\operatorname{ssrt}(x)=e^{W_0(\ln x)}=\frac{\ln x}{W_0(\ln x)},$$
+      the second one is $e^{W_{-1}(\ln x)}$. Around $x=1$ we have $\operatorname{ssrt}(x)=1+(x-1)-(x-1)^2+\tfrac32(x-1)^3-\tfrac{17}6(x-1)^4+\tfrac{37}6(x-1)^5-\dots$
+    bereich: real $x>0$, sought real $y>0$ with $y^y=x$
+    einfach: 'The super-root asks backward: which number y gives exactly x when raised to itself? For 27 it is 3, for 2 about 1.5596. Below 1
+      there are often two answers, below 0.6922 none — because y to the power y never gets smaller than 0.6922.'
+    formen:
+    - notiz: Rearrangement
+    - notiz: Values (exp.superwurzel)
+    - notiz: two solutions
+  en_theorie:
+    beispiel: |
+      - $\operatorname{ssrt}(2)=1.5596104694623693\ldots$ Check: $1.5596^{1.5596}=e^{1.5596\cdot0.44443}=e^{0.69314}=2.000$.
+      - $\operatorname{ssrt}(3)=1.8254550229\ldots$, $\operatorname{ssrt}(10)=2.5061841455887692\ldots$
+      - $x=0.8$: the two solutions are $0.0946497\ldots$ and $0.7395337\ldots$ — check: $0.0946497^{0.0946497}=e^{-0.2231}=0.800$.
+      - With the series: $\operatorname{ssrt}(1.1)\approx1+0.1-0.01+0.0015-0.00028=1.09122$ (exact: $1.0912666\ldots$; the next terms are still missing).
+    einordnung: |
+      The same rearrangement with Lambert W yields the fixed points of $b^z$ ([[fp.satz.lambert]]). For the tower of height three one needs W twice
+      ([[gr.satz.superwurzel_dritte]]); how “irrational” super-roots of natural numbers are is told by [[ar.satz.superwurzel_arith]].
+      The infinite super-root is surprisingly simple: $y^{1/y}$ ([[fp.satz.unendliche_superwurzel]]).
+    genau: |
+      We seek real $y>0$ with $y^y=x$.
+      - For $x>1$ there is exactly one solution, and it is larger than $1$.
+      - For $e^{-1/e}<x<1$ there are two solutions, both between $0$ and $1$: one smaller than $1/e$, one larger.
+      - For $x=e^{-1/e}\approx0.6922$ there is only $y=1/e$, for $x<e^{-1/e}$ none at all.
+
+      The solution with $y\ge1/e$ is called the **super-root**:
+      $$\operatorname{ssrt}(x)=e^{W_0(\ln x)}=\frac{\ln x}{W_0(\ln x)}.$$
+      Here $W$ is the Lambert W function: $W(t)$ is the number $w$ with $w\,e^w=t$. It has two real branches, $W_0$ (values $\ge-1$) and
+      $W_{-1}$ (values $\le-1$); the second solution for $x<1$ is $e^{W_{-1}(\ln x)}$. Near $x=1$ we have
+      $$\operatorname{ssrt}(x)=1+(x-1)-(x-1)^2+\tfrac32(x-1)^3-\tfrac{17}6(x-1)^4+\dots$$
+      with the further coefficients $\tfrac{37}6,\ -\tfrac{1759}{120},\ \tfrac{13279}{360},\dots$
+    warum: |
+      1. Take logarithms: $y^y=x\iff y\ln y=\ln x$.
+      2. See the trick: $y=e^{\ln y}$, so $y\ln y=(\ln y)\,e^{\ln y}$. The equation now reads $w\,e^w=\ln x$ with $w=\ln y$.
+      3. This is exactly what the Lambert function solves: $w=W(\ln x)$, so $y=e^{W(\ln x)}$.
+      4. The second form: From $W(t)\,e^{W(t)}=t$ it follows that $e^{W(t)}=t/W(t)$.
+      5. How many solutions? $w\,e^w$ has its smallest value $-1/e$ at $w=-1$. For $\ln x<-1/e$ there is no solution, for
+         $-1/e<\ln x<0$ there are two (one on each branch), for $\ln x\ge0$ one. Translated: $x<e^{-1/e}$, $e^{-1/e}<x<1$, $x\ge1$.
+
+      The same can be seen from the curve $y^y$ ([[gr.satz.selbstpotenz]]): It falls from $1$ (at $y\to0$) to $0.6922$ (at $y=1/e$) and
+      then rises beyond all bounds. A horizontal line at height $x$ meets it zero times, twice or once.
+    worum: |
+      For ordinary powers there are two inverses: the logarithm (which exponent?) and the root (which base?). For
+      tetration it is the same. The super-logarithm asks for the height, the **super-root** for the base: Which number $y$ gives exactly $x$
+      when raised to itself? For $x=27$ the answer is $3$, for $x=4$ it is $2$ — and for $x=2$ it is a number that can be written down
+      only with a special function.
+- id: gr.satz.superwurzel_dritte
+  quelle_hash: 5ba9da1ddad6
+  theorie_hash: 9bc15937db01
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Uniqueness: for $0<y\le1$ we have $y^{y^y}\le1$; on $[1,\infty)$ the map $y\mapsto y^{y^y}$ is continuous and strictly increasing
+        from 1 to ∞. Formula: multiplying $y^y\ln y=\ln Y$ by $y$ gives $(y\ln y)e^{y\ln y}=y\ln Y$, hence $y\ln y=W(y\ln Y)$, and $(\ln y)e^{\ln
+        y}=y\ln y$ gives $\ln y=W(W(y\ln Y))$. The convergence of the iteration is only observed.'
+    pruefung:
+      f5_neue_frage: Convergence rate of the iteration (derivative of the map at the fixed point) and behavior for $Y\to1^+$.
+      f1_folgt_unmittelbar: Yes for the formula and uniqueness; not for the convergence of the iteration (contraction not shown).
+      f2_benutzte_voraussetzungen: $Y>1$; for $Y<1$ there may be several solutions (not investigated).
+      f3_spezialfall: 'Pattern for the $n$-th super-root: W applied $n-1$ times, but only implicitly.'
+      f4_uebertragbar: 'Arithmetic: integer or irrational (ar.satz.superwurzel_arith).'
+    bewertung:
+      richtigkeit: Formula complete, iteration numerical
+      nutzen: Shows how far Lambert W carries.
+    titel: Third super-root — Lambert W twice
+    aussage: |
+      For $Y>1$, $y^{y^y}=Y$ has exactly one solution $y>0$, and it lies in $(1,\infty)$. It satisfies
+      $$y=\exp W\bigl(W(y\ln Y)\bigr),$$
+      and the fixed-point iteration $y\leftarrow\exp W(W(y\ln Y))$ starting from $y=1$ converges (observed for $Y=2,10,100,10^6$, each 53–60 steps to 45 digits).
+      Values: $\sqrt[3]{2}_s=1.4766843373578699\ldots$, $\sqrt[3]{10}_s=1.9235840364420273\ldots$, $\sqrt[3]{100}_s=2.2127958063258997\ldots$
+    bereich: real $Y>1$, sought $y>1$ with $y^{y^y}=Y$
+    einfach: The question “which number gives exactly 2 as a three-level tower y^y^y?” also has exactly one answer, about 1.4767. There is no
+      ready-made formula, but there is a rule of computation that you apply again and again until nothing changes any more.
+    formen:
+    - notiz: multiplied by y
+  en_theorie:
+    beispiel: |
+      Third super-roots (to 45 digits, 53–60 iterations each starting from $y=1$):
+      - $Y=2$: $y=1.4766843373578699\ldots$ Check: $1.4767^{1.4767}=1.7782$, $1.4767^{1.7782}=e^{1.7782\cdot0.38981}=e^{0.6932}=2.000$.
+      - $Y=10$: $1.9235840364\ldots$; $Y=100$: $2.2127958063\ldots$; $Y=10^6$: $2.6791911519\ldots$
+
+      The values grow very slowly: even for a million a base below $2.7$ suffices, because the tower of height three grows so fast.
+    einordnung: |
+      Builds on [[gr.satz.superwurzel]]. For four and more levels it works the same way, only with more nested W. Whether the third
+      super-root of 2 is transcendental, nobody knows; that it is irrational is shown by [[ar.satz.superwurzel_arith]].
+    genau: |
+      For every $Y>1$, $y^{y^y}=Y$ has exactly one positive solution $y$, and it is larger than $1$. It satisfies
+      $$y=\exp\Bigl(W\bigl(W(y\ln Y)\bigr)\Bigr).$$
+      If one starts with $y=1$ and substitutes again and again, one arrives (observed, not proved) at the solution.
+    warum: |
+      **Exactly one solution:** For $0<y\le1$, $y^y\le1$ and hence also $y^{y^y}\le1<Y$. For $y\ge1$, $y^{y^y}$ grows continuously and strictly
+      from $1$ to infinity, so it meets $Y$ exactly once.
+
+      **The formula:**
+      1. Take logarithms: $y^y\ln y=\ln Y$.
+      2. Multiply by $y$: $y^y\cdot y\ln y=y\ln Y$. Since $y^y=e^{y\ln y}$, the left side is $(y\ln y)\,e^{y\ln y}$ — again the form $w\,e^w$.
+         So $y\ln y=W(y\ln Y)$.
+      3. Once more the same trick: $y\ln y=(\ln y)\,e^{\ln y}$, so $\ln y=W(y\ln y)=W(W(y\ln Y))$.
+
+      On the right $y$ appears once more — that is why this is not a closed formula but a fixed-point equation.
+    worum: |
+      For the tower of height three $y^{y^y}$ there is no ready-made formula for the inverse any more. But one can write the solution as a fixed point:
+      a rule of computation that one applies again and again until the number no longer changes. And here, too, the Lambert function is
+      involved — this time twice in a row.
+- id: gr.satz.tauschregel
+  quelle_hash: 0ed5a38be4c5
+  theorie_hash: f74f6e78b24c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: '(i) Counterexample as stated. (ii) $T(x+1)^{T(y)}=(a^{T(x)})^{T(y)}=a^{T(x)T(y)}$ (for $a>0$, $(a^u)^v=a^{uv}$ holds for real numbers),
+        symmetric in $x$ and $y$; at integer heights both sides are $a^{({}^{b-1}a)({}^ca)}$. (iii) Exponent $1/T(x)$ returns $a$; with $y=x+1$
+        and $T(x)\ne0$: $T(x+2)=a^{T(x+1)}=(a^{T(x)})^{T(x+1)/T(x)}$.'
+    pruefung:
+      f5_neue_frage: 'no'
+      f1_folgt_unmittelbar: Yes, from $(a^u)^v=a^{uv}$ and a counterexample.
+      f2_benutzte_voraussetzungen: $a>0$ (so that powers are real); $T(x)\ne0$, i.e. $x\ne-1$, for the forms with $1/T(x)$.
+      f3_spezialfall: 'Yes: for every superfunction of a power function $f(z)=a^z$; in general $F(x+1)=f(F(x))$ and $f(u)^v=f(uv)$.'
+      f4_uebertragbar: 'Not directly to pentation: $T(u)^{v}$ is not a tower value. The ladder of levels (gr.satz.stufenleiter) is the counterpart
+        there.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Removes a common misconception, puts next to it the rule that really holds, and makes the base readable from values.
+    titel: 'No addition rule, but a swap rule: T(x+1)^{T(y)} = T(y+1)^{T(x)}'
+    aussage: |
+      (i) **No addition rule:** There is no operation $*$ such that $^{m+n}x={}^mx*{}^nx$ holds for all bases $x$: $^14=4={}^22$, but $^{1+1}4=256$
+      and $^{2+2}2=65536$ would both have to be $4*4$. For a fixed base there is only the iteration $T(x+n)=\exp_a^{\circ n}\bigl(T(x)\bigr)$.
+
+      (ii) **Swap rule:** For all $x,y>-2$ we have
+      $$T(x+1)^{T(y)}=T(y+1)^{T(x)}=a^{T(x)\,T(y)}.$$
+      At integer heights this means $({}^ba)^{({}^ca)}=({}^{c+1}a)^{({}^{b-1}a)}$, for example $16^2=4^4=2^8$, $65536^2=4^{16}=2^{32}$ and $65536^4=16^{16}=2^{64}$.
+
+      (iii) **Consequences:** $a=T(x+1)^{1/T(x)}$ for every $x\ne-1$ — the base is hidden in **every** pair of neighboring values —, and $T(x+2)=T(x+1)^{T(x+1)/T(x)}$,
+      a level entirely without $a$. At integer heights: $\log_{a\uparrow\uparrow n}\bigl(a\uparrow\uparrow(n+1)\bigr)=a\uparrow\uparrow n\,/\,a\uparrow\uparrow(n-1)$.
+    bereich: every real tetration to base $a>0$, $a\ne1$; $x,y>-2$
+    einfach: 'For powers, x^(m+n) = x^m · x^n holds. For towers there is no such rule — you can see that already from two small examples. What
+      there is, is a swap rule: A tower value raised to another tower value is always a raised to the product of the two values one level lower,
+      so the two may be swapped. And because T(x+1) = a^T(x), you can recover the base from any two neighboring values, even at half heights.'
+    formen:
+    - notiz: Iteration instead of an arithmetic operation
+    - notiz: swap rule at integer heights
+    - notiz: base from neighboring values
+    - notiz: quotient of two neighbors = logarithm of the next two
+  en_theorie:
+    beispiel: |
+      Integer: $a=2$, $b=3$, $c=1$ gives $({}^32)^{({}^12)}=16^2=256=4^4=({}^22)^{({}^22)}$; likewise $65536^4=16^{16}=2^{64}$. Fractional (base 2, Kneser):
+      $T(1.3)^{T(-0.6)}=T(0.4)^{T(0.3)}=1.4822241899\ldots$, and $T(1.3)^{1/T(0.3)}=2$ to 35 digits.
+    einordnung: |
+      For a fixed base the addition rule of course exists: $T(m+n)=T^{[m]}(T(n))$ — iteration instead of an arithmetic operation. The derivative variant of the swap rule — the base
+      from slopes instead of from values — is [[gr.satz.ln_aus_steigungen]].
+    genau: |
+      - **No addition rule:** No operation $*$ satisfies $^{m+n}x={}^mx*{}^nx$ for all bases.
+      - **Swap rule:** For every real tetration to base $a>0$ and all $x,y>-2$, $T(x+1)^{T(y)}=T(y+1)^{T(x)}=a^{T(x)T(y)}$; for integers: $({}^ba)^{({}^ca)}=({}^{c+1}a)^{({}^{b-1}a)}$.
+      - **Consequences:** $a=T(x+1)^{1/T(x)}$ for $x\ne-1$, and $T(x+2)=T(x+1)^{T(x+1)/T(x)}$.
+    warum: |
+      1. $^14=4$ and $^22=4$. A rule would require $^{1+1}4=4*4$ and $^{2+2}2=4*4$, but the one is 256, the other 65536.
+      2. $T(x+1)=a^{T(x)}$, so $T(x+1)^{T(y)}=a^{T(x)T(y)}$ — and the product $T(x)T(y)$ is symmetric.
+      3. Exponent $1/T(x)$ instead of $T(y)$ returns $a$.
+      4. With $y=x+1$: $T(x+2)=a^{T(x+1)}=\bigl(a^{T(x)}\bigr)^{T(x+1)/T(x)}$.
+    worum: |
+      For powers, $x^{m+n}=x^m\cdot x^n$ holds. Is there a similar rule for towers? No. But there is a different one: One may swap two levels — and
+      the base is hidden in every pair of neighboring values, even at fractional heights.
+- id: gr.satz.taylor_leiter
+  quelle_hash: 05c5c2e79594
+  theorie_hash: 6a8ff0a8922f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $E(t)=\exp(c\,S(t))$ with $S(t)=\sum t_nt^n$ satisfies $E'=c\,S'E$; comparing coefficients gives the recursion. The Bell form is Faà
+        di Bruno's formula for $\exp\circ(cS)$, since $E^{(n)}(0)=E(0)\,B_n\bigl(cS'(0),\dots,cS^{(n)}(0)\bigr)$.
+    pruefung:
+      f5_neue_frage: How fast does the loss of convergence radius grow when stepping down to $-1$ (where $T(x+1)\to0$ and ln produces a singularity)?
+      f1_folgt_unmittelbar: Yes, higher-order chain rule.
+      f2_benutzte_voraussetzungen: Differentiability up to order $n$ at $x$; for the whole series analyticity.
+      f3_spezialfall: 'Yes: Carleman/Bell matrix of $\exp_a$ — the ladder is a column of this matrix, applied to the Taylor series.'
+      f4_uebertragbar: 'Any superfunction: series about $x+1$ = $f$ applied to the series about $x$.'
+    bewertung:
+      richtigkeit: complete; recomputed for Kneser at base 2 to 22 digits
+      nutzen: Computes derivatives at all integer-shifted points from a single series.
+    titel: 'Taylor ladder: the series about x determines the series about x+1 (Bell polynomials)'
+    aussage: |
+      If $T(x+t)=\sum_{n\ge0}t_n\,t^n$, then $T(x+1+t)=\sum_{n\ge0}e_n\,t^n$ with
+      $$e_0=a^{t_0}=T(x+1),\qquad n\,e_n=c\sum_{k=1}^{n}k\,t_k\,e_{n-k}.$$
+      Equivalently $T^{(n)}(x+1)=T(x+1)\cdot B_n\bigl(c\,T'(x),\,c\,T''(x),\dots,c\,T^{(n)}(x)\bigr)$ with the complete Bell polynomials $B_n$, that is,
+      $T''(x+1)=T(x+1)\bigl(cT''(x)+c^2T'(x)^2\bigr)$ and $T'''(x+1)=T(x+1)\bigl(cT'''+3c^2T'T''+c^3T'^3\bigr)(x)$.
+      The $n$-th derivative one level higher depends only on the derivatives up to order $n$ one level lower; backward the same holds with
+      $\ln T(x+1+t)=c\,T(x+t)$, as long as $T(x+1)>0$. Base 2: The 17 coefficients about 1 follow from those about 0 to an accuracy of $8\cdot10^{-23}$.
+    bereich: every tetration that is analytic, respectively $n$ times differentiable, at $x$; $c=\ln a$
+    einfach: 'If you know all derivatives at one point, you also know them one level higher: you plug the series into “a to the power …” and compute.
+      That is why the Taylor series about a single point is enough to know the curve exactly at all integer-shifted points — the chain rule is
+      the first step of it.'
+    formen:
+    - notiz: Recursion for exp of a power series (J. C. P. Miller)
+    - notiz: Faà di Bruno / Bell polynomials
+    - notiz: backward, without Bell polynomials
+  en_theorie:
+    beispiel: |
+      Base 2 (Kneser): From the 17 Taylor coefficients about 0 ($1$, $0.88936\ldots$, …) arise those about 1 ($2$, $1.23290\ldots$, …) — matching the directly measured ones to
+      $8\cdot10^{-23}$ relative accuracy. Second order written out: $T''(1)=2\bigl(\ln2\,T''(0)+(\ln2)^2T'(0)^2\bigr)$.
+    einordnung: |
+      The first step is [[gr.satz.kettenregel]], whole steps in the product are [[gr.kor.produktformel]]. That series at integer-shifted points are completely
+      related is the “fixed” half of [[gr.satz.frei_und_fest]].
+    genau: |
+      With $T(x+t)=\sum t_nt^n$, $T(x+1+t)=\sum e_nt^n$ and $c=\ln a$:
+      $$e_0=T(x+1),\qquad n\,e_n=c\sum_{k=1}^nk\,t_k\,e_{n-k},$$
+      equivalently $T^{(n)}(x+1)=T(x+1)\,B_n\bigl(cT'(x),\dots,cT^{(n)}(x)\bigr)$ (complete Bell polynomials).
+    warum: |
+      1. $T(x+1+t)=a^{T(x+t)}=\exp\bigl(c\,S(t)\bigr)$ with $S(t)=T(x+t)$.
+      2. $E=\exp(cS)$ satisfies $E'=c\,S'\,E$. If one compares the coefficients of $t^{n-1}$, the recursion is there.
+      3. The Bell form is Faà di Bruno's formula for the derivatives of $\exp\circ(cS)$.
+    worum: |
+      The chain rule says what the slope looks like one level higher. The same works for all derivatives at once: The entire Taylor series about $x$ determines the entire
+      Taylor series about $x+1$.
+- id: gr.satz.turm_ableitung
+  quelle_hash: 5af67ae9face
+  theorie_hash: b63fff0bd7cf
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Differentiate $\ln h=h\ln a$ implicitly: $h''(1/h-\ln a)=h/a$.'
+    pruefung:
+      f5_neue_frage: Behavior as $\lambda\to1$ → gr.satz.wurzel_eta
+      f1_folgt_unmittelbar: Yes (implicit differentiation).
+      f2_benutzte_voraussetzungen: Convergence of the tower, $\lambda\ne1$.
+      f3_spezialfall: Implicit function theorem.
+      f4_uebertragbar: 'Fixed points of any family $f_a$: $x''=\partial_af/(1-f'')$.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Shows the multiplier in a derivative.
+    titel: Derivative of the infinite tower
+    aussage: $$h'(a)=\frac{h^2}{a\,(1-h\ln a)}=\frac{h^2}{a\,(1-\lambda)},\qquad\lambda=h\ln a\ \text{(multiplier at the fixed point)}.$$
+    bereich: $e^{-e}<a<\eta$, $h(a)=a^{a^{\cdots}}$
+    einfach: The limit of the tower reacts more sensitively to the base the more weakly its fixed point attracts; at η the sensitivity becomes
+      infinite.
+  en_theorie:
+    beispiel: |
+      $a=\sqrt2$: $h=2$, $\lambda=\ln2$, $h'=4/(1.4142\cdot0.3069)=9.218$. $\ a=1.44$: $h=2.3938$, $\lambda=0.8729$, $h'=31.31$ — already very steep.
+    einordnung: |
+      At $\eta$ we get $\lambda=1$ and the denominator becomes zero: the slope explodes. Exactly how is told by [[gr.satz.wurzel_eta]].
+    genau: |
+      For $e^{-e}<a<\eta$:
+      $$h'(a)=\frac{h^2}{a\,(1-h\ln a)}=\frac{h^2}{a\,(1-\lambda)},\qquad\lambda=h\ln a .$$
+    warum: |
+      $h=a^h$ means $\ln h=h\ln a$. Differentiate with respect to $a$: $\frac{h'}h=h'\ln a+\frac ha$. Solve for $h'$: $h'\bigl(\frac1h-\ln a\bigr)=\frac ha$,
+      hence $h'=\frac{h^2}{a(1-h\ln a)}$. The number $\lambda=h\ln a$ is the multiplier of the fixed point ([[fp.satz.reelle_fixpunkte]]).
+    worum: |
+      The infinite tower $h(a)=a^{a^{\cdots}}$ is a function of the base. Its slope can be given directly, without Lambert W — and
+      it becomes infinite when the base tends to $\eta$.
+- id: gr.satz.turm_pde
+  quelle_hash: 85403cfc8e9c
+  theorie_hash: 3c226837d125
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        For an arbitrary Abel function $\alpha$ with $\alpha(y)=\alpha(x)+n$, differentiating with respect to $a$ gives $\partial_ay=(\partial_a\alpha(x)-\partial_a\alpha(y))/\alpha'(y)$, and
+        $\partial_xy=\alpha'(x)/\alpha'(y)$. So the equation holds if and only if $(\partial_a\alpha-S\alpha')(x)=(\partial_a\alpha-S\alpha')(y)$. $S$ satisfies
+        $S(a^x)=a^x\ln a\,S(x)-xa^{x-1}$ (index shift $f_k(a^x)=f_{k+1}(x)$, the term $k=-1$ drops out); $\gamma=\partial_a\alpha/\alpha'$ satisfies the same
+        equation (gr.satz.basis_gleichung, slog side). The difference solves the homogeneous equation, so $p=(\gamma-S)\alpha'$ is invariant under $x\mapsto a^x$, i.e.
+        1-periodic in $\alpha$. For integer $n$, $p(\alpha+n)=p(\alpha)$ — the equation always holds; for all $h$ only if $p$ is constant.
+    pruefung:
+      f5_neue_frage: Is p constant for Kneser? → gr.beob.kneser_pde_wackeln
+      f1_folgt_unmittelbar: No; the forward-orbit sum is the idea from the forum, the characterization via p is added here.
+      f2_benutzte_voraussetzungen: Convergence of the forward sum (real x, a > η); differentiability in a.
+      f3_spezialfall: 'Yes: transport equation for iterates of a parameter family, with the generator from the forward orbit.'
+      f4_uebertragbar: Any family f_a with rapidly growing iterates.
+    bewertung:
+      recherche: 'PDE: kobi_78 (forum tid 417, 2010); the characterization via p is added here.'
+      richtigkeit: complete; integer heights rechecked to 39 digits
+      nutzen: Connects the base derivative with an explicit forward sum.
+    titel: 'Kobi''s equation: ∂_a y = S(x)·∂_x y − S(y) for towers of every integer height'
+    aussage: Let $f_{-1}=\log_a$, $f_0=\mathrm{id}$, $f_{n+1}=a^{f_n}$ and $$S_a(x)=\frac1{a\ln^2a}\sum_{k\ge-1}\frac1{\partial_xf_k(x)}=\frac{x\ln
+      a+1}{a\ln^2a}+\frac1{a\ln^2a}\sum_{k\ge1}\frac1{(\ln a)^k\prod_{j=1}^kf_j(x)}$$ (sum over the **forward orbit**, extremely rapidly convergent
+      for $a>\eta$ and real $x$). Then every tower $y=f_n(a,x)$, $n\ge-1$ an integer, satisfies $$\partial_ay=S_a(x)\,\partial_xy-S_a(y).$$ For
+      fractional heights $y=\alpha^{-1}(\alpha(x)+h)$ of an Abel function $\alpha_a$, the equation holds for all h **if and only if** $p=\partial_a\alpha-S_a\,\alpha'$
+      is constant; for every family, $p$ is 1-periodic in $\alpha$, because $S$ satisfies the same equation $S(a^x)=a^x\ln a\,S(x)-x\,a^{x-1}$
+      as $\partial_a\alpha/\alpha'$.
+    einfach: 'A forum participant found an equation in 2010 that says how a tower shifts when the base is changed — with a sum that runs along
+      the ever-growing tower values. For integer heights it is always correct. Whether it is also correct for fractional heights depends on the
+      chosen continuation: if and only if a certain auxiliary quantity is constant.'
+  en_theorie:
+    beispiel: |
+      $a=2$, $x=1$, $n=2$: $y=4$, $\partial_ay=4(1+\ln2)=6.7726$; the right-hand side $S_2(1)\cdot\partial_xy-S_2(4)$ gives the same to 39 digits.
+    einordnung: |
+      The forward sum is the base derivative of the base change (limit along the forward orbit); whether Kneser satisfies it: [[gr.beob.kneser_pde_wackeln]].
+    genau: |
+      With $f_{-1}=\log_a$, $f_0=\mathrm{id}$, $f_{n+1}=a^{f_n}$ and the forward sum
+      $$S_a(x)=\frac1{a\ln^2a}\sum_{k\ge-1}\frac1{\partial_xf_k(x)}$$
+      every tower $y=f_n(a,x)$ satisfies:
+      $$\partial_ay=S_a(x)\,\partial_xy-S_a(y).$$
+      For fractional heights from an Abel function $\alpha$ this holds if and only if $p=\partial_a\alpha-S_a\alpha'$ is constant. For every family, $p$ is at least
+      1-periodic in $\alpha$.
+    warum: |
+      1. For $\alpha(y)=\alpha(x)+h$, differentiating with respect to $a$ gives $\partial_ay=\bigl(\partial_a\alpha(x)-\partial_a\alpha(y)\bigr)/\alpha'(y)$, and $\partial_xy=\alpha'(x)/\alpha'(y)$.
+      2. Substituting: the equation holds if and only if $\partial_a\alpha-S\alpha'$ has the same value at $x$ and $y$.
+      3. $S$ satisfies $S(a^x)=a^x\ln a\,S(x)-xa^{x-1}$ (the sum shifts by one term), and $\partial_a\alpha/\alpha'$ satisfies the same equation
+         ([[gr.satz.basis_gleichung]]). The difference is therefore unchanged under $x\mapsto a^x$ when one multiplies it by $\alpha'$: $p$ is periodic in $\alpha$.
+      4. Integer heights: $p(\alpha+n)=p(\alpha)$ — the equation always holds. All heights: only for constant $p$.
+    worum: |
+      In 2010 a forum participant (kobi_78) found an equation that expresses the base derivative of a tower by a sum along the tower values. For integer heights
+      it is always correct; whether it is correct for fractional heights says something about the chosen continuation.
+- id: gr.satz.turmintegral_grenzen
+  quelle_hash: 0eb6491ec507
+  theorie_hash: 236237696a69
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $0\le{}^nx\le1$ on $[0,1]$; the even resp. odd towers converge pointwise to $L_+$ resp. $L_-$ (for $x<e^{-e}$) and to $h$ (for $x\ge
+        e^{-e}$). Dominated convergence.
+    gegenbeispielsuche: 'exp.turmintegrale: gap agrees with figure 2 to 15 digits; $\int h$ equal along two independent routes down to $10^{-22}$.'
+    pruefung:
+      f5_neue_frage: How fast? → gr.verm.turmintegral_rate. Closed forms → gr.kor.turmintegral_formen
+      f1_folgt_unmittelbar: Yes, as soon as the limit functions are known.
+      f2_benutzte_voraussetzungen: Only boundedness by 1 and pointwise convergence.
+      f3_spezialfall: 'Yes: dominated convergence.'
+      f4_uebertragbar: To $\int_0^1 g({}^nx)\,dx$ for every continuous $g$; to other intervals, as long as the towers remain bounded ($x\le\eta$).
+    bewertung:
+      richtigkeit: complete
+      nutzen: Shows that towers on (0,1) have a period doubling.
+    voraussetzungen:
+    - text: pointwise limits of the towers on (0,1)
+    titel: Tower integrals have two limits
+    aussage: |
+      $I_n$ does not converge but splits into two subsequences:
+      $$\lim I_{2n}=\int_0^{e^{-e}}L_+(x)\,dx+\int_{e^{-e}}^1h(x)\,dx=0.67671427377181279519\ldots,$$
+      $$\lim I_{2n+1}=\int_0^{e^{-e}}L_-(x)\,dx+\int_{e^{-e}}^1h(x)\,dx=0.63130937080198819539\ldots,$$
+      with $h(x)=W(-\ln x)/(-\ln x)$ and the attracting 2-cycle $L_+>L_-$ of $y\mapsto x^y$ for $x<e^{-e}$. The gap is
+      $$\int_0^{e^{-e}}(L_+-L_-)\,dx=0.04540490296982459980\ldots$$
+    bereich: $I_n=\int_0^1{}^n x\,dx$, ${}^1x=x$, ${}^{n+1}x=x^{({}^n x)}$
+    einfach: For numbers x below e^(−e) ≈ 0.066 the infinite tower ends up jumping back and forth between two values. That is why the areas under
+      the towers of even and odd height have two different limits — the difference is exactly the area between the two branches.
+  en_theorie:
+    beispiel: |
+      $I_1=0.5$, $I_2=0.78343$, $I_3=0.57312$, $I_4=0.73134$, $I_5=0.59758$, $I_6=0.71066$ — the even ones fall toward $0.6767$, the odd ones
+      rise toward $0.6313$.
+    einordnung: |
+      The values come from the user's figure 2 and are independently confirmed here (there, both limits were too small by $2.4\cdot10^{-11}$).
+      Closed forms: [[gr.kor.turmintegral_formen]]; speed: [[gr.verm.turmintegral_rate]]; the same 2-cycle in the
+      base plane: [[fp.satz.p2_form]].
+    genau: |
+      Let $I_n=\int_0^1{}^nx\,dx$. Then
+      $$\lim I_{2n}=0.67671427377181\ldots,\qquad\lim I_{2n+1}=0.63130937080198\ldots,$$
+      and the distance $0.04540490296982\ldots$ is exactly the area between the two branches of the 2-cycle for $x<e^{-e}$.
+    warum: |
+      1. For $e^{-e}\le x\le1$ the tower ${}^nx$ converges to $h(x)=W(-\ln x)/(-\ln x)$ ([[fp.satz.turm_reell]]).
+      2. For $0<x<e^{-e}$ it jumps: even heights tend to the upper value $L_+(x)$, odd ones to the lower value $L_-(x)$ of a 2-cycle.
+      3. All towers lie between $0$ and $1$. Then limit and integral may be interchanged (dominated convergence theorem).
+      4. Hence $\lim I_{2n}=\int_0^{e^{-e}}L_+\,dx+\int_{e^{-e}}^1h\,dx$, likewise with $L_-$ for the odd ones; the difference is $\int_0^{e^{-e}}(L_+-L_-)\,dx$.
+    worum: |
+      If one integrates the towers ${}^nx=x^{x^{\cdots}}$ over $[0,1]$, the areas do not converge to one number but jump
+      between two limits — because the towers themselves jump between two branches for small $x$.
+- id: gr.satz.turmintegral_periodisch
+  quelle_hash: d7ae5f49c066
+  theorie_hash: 4493dd4e4547
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        For $x\ge e^{-e}$ the map $y\mapsto x^y$ has a single attracting fixed point $h(x)$ of the twice-iterated map, so $T_x(2m+r)\to h(x)$ for every $r$. For $x<e^{-e}$,
+        $\lim_mT_x(2m+r)$ is, by fp.satz.rechteckwelle, the square wave with values $L_+$ on $(s^*-1,s^*)$ and $L_-$ on $(s^*,s^*+1)$ (mod 2). From height 1 on all values lie in $(0,1)$ (since $x^y\in(0,1)$ for $y>0$),
+        so by the dominated convergence theorem one may pass to the limit under the integral. (i): $0\in(s^*-1,s^*)$, $1\in(s^*,s^*+1)$. (ii): the
+        square wave satisfies $\Omega(r+1)=L_++L_--\Omega(r)$. (iii), (iv): for $r\in(0,1)$ we have $\Omega_x(r)=L_+$ if and only if $r<s^*(x)$. Linear: $T_x(s)=x^s$ on $[0,1]$, and $x^{s^*}=L=x^L$.
+    pruefung:
+      f5_neue_frage: Is there a natural interpolation for bases below 1 — and which limit curve then belongs to it?
+      f1_folgt_unmittelbar: Yes, from the square-wave theorem and dominated convergence; new is the view of the limit curve as a whole.
+      f2_benutzte_voraussetzungen: Continuous real interpolation for each base, one crossing point; measurability in x.
+      f3_spezialfall: 'Yes: integral over a family of square waves — a distribution function of the jump points.'
+      f4_uebertragbar: Any integral ∫ φ(T_x(s)) dx over bases; other cycle lengths in the base plane (buds) give period q.
+    bewertung:
+      richtigkeit: complete; three interpolations recomputed
+      nutzen: Answers the question of what the oscillation of the tower integrals at fractional height is.
+    titel: At fractional height the tower integral becomes a 2-periodic curve with fixed corners
+    aussage: |
+      For $s=2m+r$ and $m\to\infty$, $I(s)$ tends to a 2-periodic limit curve $I_\infty(r)$ with:
+      (i) **fixed corners** — $I_\infty(0)=\lim I_{2n}=0.6767142738\ldots$ and $I_\infty(1)=\lim I_{2n+1}=0.6313093708\ldots$, the same for every interpolation;
+      (ii) **half-period antisymmetry** $I_\infty(r+1)=2M-I_\infty(r)$ with $M=\tfrac12(\lim I_{2n}+\lim I_{2n+1})=0.65401182228690049529\ldots$: mean value exactly $M$,
+      only odd Fourier harmonics;
+      (iii) **monotone flanks** — decreasing on $[0,1]$, increasing on $[1,2]$;
+      (iv) **shape = distribution of the crossing heights:** $I_\infty(r)=\lim I_{2n}-\int_{\{x<e^{-e},\ s^*(x)<r\}}(L_+-L_-)\,dx$ for $r\in[0,1]$. Only the bases below $e^{-e}$ oscillate
+      permanently; all other towers tend to $h(x)$. For linear interpolation $s^*(x)=L(x)$ exactly, the entire drop lies in $r\in[0,1/e]$ and
+      $I_\infty(r)=\lim I_{2n}-\int_0^{r^{1/r}}(L_+-L_-)\,dx$; for the straight-line one ($1-s(1-x)$) it lies in $[0.677,1]$. All shapes are almost square waves:
+      first harmonic $1.43$–$1.44\cdot10^{-2}$ against $1.445\cdot10^{-2}$ for the pure jump.
+    bereich: $I(s)=\int_0^1T_x(s)\,dx$; for every base $x\in(0,1)$ a continuous real tetration $T_x$ ($T_x(0)=1$, $T_x(s+1)=x^{T_x(s)}$) that
+      is positive on $[0,1]$ and crosses its repelling fixed point $L(x)$ there exactly once (crossing height $s^*(x)$), measurable in $x$
+    einfach: 'If you interpolate the tower height continuously, the area under the tower keeps swinging back and forth forever — with period 2.
+      The values at even and odd heights and the mean value are fixed. How the curve runs in between depends on how you interpolate the heights:
+      Every base below e^(−e) switches from above to below at a place of its own, and the curve counts these switching places.'
+  en_theorie:
+    beispiel: |
+      Linear interpolation, $r=\tfrac14$: All bases down to $x=0.25^{4}=0.0039$ have jumped, and $I_\infty(\tfrac14)=0.672907$. All three curves have almost the same first
+      Fourier harmonic ($1.43$–$1.44\cdot10^{-2}$; pure jump: $1.445\cdot10^{-2}$) — they are almost square waves, only smoothed at different places.
+      At finite height (linear family), $I(2m+r)$ after $m=5,20,80$ is still $1.4\cdot10^{-2}$, $2.2\cdot10^{-3}$, $3\cdot10^{-4}$ away from the limit curve.
+    einordnung: |
+      Generalizes [[gr.satz.turmintegral_grenzen]] to fractional heights and ties it to the square-wave theorem of the period-2 region ([[fp.satz.rechteckwelle]]).
+      A natural real interpolation for bases below 1 does not exist ([[kl.satz.basis_unter_eins]]) — that is why the shape is not determined, only corners, mean and symmetry.
+    genau: |
+      For every base $x\in(0,1)$ a continuous real tetration $T_x$, and $I(s)=\int_0^1T_x(s)\,dx$. For $s=2m+r$, $m\to\infty$:
+      - $I_\infty(0)=0.6767142738\ldots$, $I_\infty(1)=0.6313093708\ldots$ — for **every** interpolation;
+      - $I_\infty(r+1)=2M-I_\infty(r)$, mean value $M=0.6540118222869\ldots$, only odd harmonics;
+      - decreasing on $[0,1]$, increasing on $[1,2]$;
+      - $I_\infty(r)=\lim I_{2n}-\int(L_+-L_-)\,dx$ over the bases $x<e^{-e}$ whose crossing height $s^*(x)$ lies below $r$.
+
+      | Interpolation on $[0,1]$ | Crossing height $s^*(x)$ | Drop of $I_\infty$ | $I_\infty(\tfrac12)$ |
+      |---|---|---|---|
+      | linear, $x^s$ | $L(x)$ exactly | $r\in[0,1/e]$ | $0.631309$ |
+      | straight-line, $1-s(1-x)$ | $\frac{1-L}{1-x}$ | $r\in[0.677,1]$ | $0.676714$ |
+      | $C^1$-smooth, $x^{s+cs(1-s)}$ | solution of a quadratic equation | around $r\approx0.7$ | $0.676595$ |
+    warum: |
+      1. **Bases above $e^{-e}$:** The tower tends to $h(x)$, no matter at which partial height one starts — these bases contribute nothing to the oscillation.
+      2. **Bases below $e^{-e}$:** Two steps $y\mapsto x^{x^y}$ have two attracting fixed points $L_-<L_+$ and between them the repelling one $L$. Every continuous tetration must hit $L$
+         at one point $s^*$ in $[0,1)$. Before that it ends up at $L_+$, after that at $L_-$ — in the limit a square wave with a jump at $s^*$ ([[fp.satz.rechteckwelle]]).
+      3. **Integrating:** The area counts how many bases (weighted by the gap $L_+-L_-$) have already jumped. The corners are fixed because at integer heights none, respectively
+         all have jumped; the antisymmetry comes from the fact that every square wave exactly exchanges the values after one step.
+      4. **Linear:** There $T_x(s)=x^s$, and $x^{s^*}=L=x^L$ means $s^*=L(x)$ — the jump point is the fixed point itself.
+    worum: |
+      The areas $I_n=\int_0^1{}^nx\,dx$ jump back and forth between two limits ([[gr.satz.turmintegral_grenzen]]). What happens in between when one makes the
+      height continuous? An oscillation with period 2 arises that never dies out — with fixed corners, a fixed mean value and a shape that reveals how
+      one interpolated.
+- id: gr.satz.vorzeichen
+  quelle_hash: 04a55fe01ad3
+  theorie_hash: 405172d9682d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'gr.satz.kettenregel: $T''(x+1)=\ln a\cdot T(x+1)\cdot T''(x)$ with $T(x+1)>0$ for $x>-2$; sign of $\ln a$.'
+    pruefung:
+      f5_neue_frage: What does a real “tetration” for $0<a<1$ look like? (Not monotone, presumably not real-analytic with $T(0)=1$ — left open.)
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Only $T>0$ on $(-1,\infty)$ (holds for every real solution, since $T(y)=a^{T(y-1)}$).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Superfunctions of increasing resp. decreasing maps.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Monotonicity can be checked on one period; explains the back and forth for a < 1.
+    voraussetzungen:
+    - text: T differentiable on (−2, ∞)
+    titel: The sign of the slope is the same everywhere (or alternates for a < 1)
+    aussage: 'For $a>1$, $T''(x)$ and $T''(x+1)$ have the same sign for every $x>-2$: if $T$ increases over one period, $T$ increases everywhere.
+      For $0<a<1$ the sign changes at every step — a real differentiable tetration with $0<a<1$ cannot be monotone.'
+    bereich: real, differentiable solution on $(-2,\infty)$, $a>0$, $a\ne1$
+    einfach: If the curve rises over a segment of length 1, then it rises everywhere. For bases smaller than 1 the direction flips at every step
+      — in line with this, towers like 0.5^0.5^0.5… jump back and forth.
+  en_theorie:
+    beispiel: |
+      Base $\tfrac12$: the tower $0.5,\,0.707,\,0.613,\,0.654,\dots$ alternately goes up and down — exactly the sign pattern
+      of the derivative at the integer arguments.
+    einordnung: |
+      That is why increasing tetrations are considered almost only for $a>1$. What is possible for $0<a<1$ is shown by [[kl.satz.basis_unter_eins]]
+      and the square wave [[fp.satz.rechteckwelle]].
+    genau: |
+      For $a>1$, $T'(x)$ and $T'(x+1)$ have the same sign for every $x>-2$. For $0<a<1$ they have opposite signs —
+      a real, differentiable tetration with $0<a<1$ cannot be monotone.
+    warum: |
+      Chain rule: $T'(x+1)=\ln a\cdot T(x+1)\cdot T'(x)$. The factor $T(x+1)=a^{T(x)}$ is positive. So $\ln a$ decides: positive for $a>1$,
+      negative for $a<1$.
+    worum: |
+      A tetration cannot increase over one stretch and decrease elsewhere: the sign of the slope is inherited from level to level.
+      For bases below $1$, by contrast, it flips at every step.
+- id: gr.satz.wurzel_eta
+  quelle_hash: 35424dcef588
+  theorie_hash: b9c00cfcad72
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $\varphi(h)=\ln h/h$ has a maximum $1/e$ at $e$ with $\varphi''(e)=-1/e^3$; $\ln a=1/e-\delta$, $\delta=(\eta-a)/\eta+O((\eta-a)^2)$,
+        solve for $h<e$.
+    pruefung:
+      f5_neue_frage: Compute the coefficient $-1.6166$ in closed form (next Taylor order).
+      f1_folgt_unmittelbar: Yes (Taylor at the maximum).
+      f2_benutzte_voraussetzungen: Only $\varphi''(e)\ne0$.
+      f3_spezialfall: 'Yes: saddle-node bifurcation of a fixed point (two fixed points merge at η).'
+      f4_uebertragbar: Same root in the boundary law of the base-change means and in the transit time.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Elementary bridge to the research (boundary law).
+    titel: Square root at η
+    aussage: '$$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+O(\eta-a)\qquad(a\uparrow\eta).$$ Measured: the next term is $\approx-1.6166\cdot\sqrt{\eta-a}$
+      relative to the leading term.'
+    einfach: 'Just below η the limit of the tower does not fall off evenly but like a square root. The same root reappears in the research: how
+      long a tetration just above η “gets stuck” in the bottleneck at e grows like 1/(square root).'
+    formen:
+    - notiz: Taylor expansion at the maximum
+  en_theorie:
+    beispiel: |
+      $a=1.44$: $\eta-a=0.00467$, formula $e-\sqrt{2e^3\cdot0.00467/1.4447}=e-0.3603=2.358$; the exact value is $2.394$ — the error is of the
+      size $\eta-a$, as promised.
+    einordnung: |
+      The same square root appears in the boundary law of the base-change research ([[bw.lem.randgesetz]]): the merging of two fixed points
+      (saddle-node) always produces roots ([[br.satz.sattel_knoten]]).
+    genau: |
+      $$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+O(\eta-a)\qquad(a\to\eta\ \text{from below}).$$
+    warum: |
+      1. The fixed point solves $\frac{\ln h}h=\ln a$. The function $\varphi(h)=\frac{\ln h}h$ has its maximum $\frac1e$ at $h=e$, with $\varphi''(e)=-\frac1{e^3}$.
+      2. Near the maximum, $\varphi(h)\approx\frac1e-\frac1{2e^3}(h-e)^2$ (second-order Taylor).
+      3. With $\ln a=\frac1e-\delta$, $\delta\approx\frac{\eta-a}\eta$, we get $\frac1{2e^3}(h-e)^2=\delta$, hence $|h-e|=\sqrt{2e^3\delta}$; the lower branch has $h<e$.
+    worum: |
+      Just before $\eta$ the infinite tower does not rise linearly but like a square root: the distance to $e$ is proportional to the square root of
+      the distance of the base to $\eta$.
+- id: gr.satz.young
+  quelle_hash: 951f2ffd679f
+  theorie_hash: dddaa91f7919
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Young''s equation for inverse functions (decomposition of areas); differentiable case: integration by parts $\int T=[xT]-\int xT''$
+        and $y=T(x)$ in $\int xT''dx=\int A\,dy$.'
+    pruefung:
+      f5_neue_frage: Equivalent forms → gr.kor.integral_formen
+      f1_folgt_unmittelbar: Yes (Young).
+      f2_benutzte_voraussetzungen: Only monotonicity and continuity.
+      f3_spezialfall: Yes, the equality case of Young's inequality.
+      f4_uebertragbar: Any invertible function; the same idea is behind the antisymmetry of the base-change phases (br.satz.young_kreis).
+    bewertung:
+      richtigkeit: complete
+      nutzen: Connects the integrals of T and slog.
+    voraussetzungen:
+    - text: T continuous and strictly increasing
+    - text: T differentiable
+    titel: Area under T plus area beside slog is a rectangle
+    aussage: $$\int_m^n T(x)\,dx+\int_{T(m)}^{T(n)}A(y)\,dy=n\,T(n)-m\,T(m),\qquad\text{in particular}\qquad\int_0^1T(x)\,dx+\int_1^{a}A(y)\,dy=a.$$
+    bereich: $T$ continuous, strictly increasing; $A=\operatorname{slog}_a$ its inverse
+    einfach: If you draw the curve over the segment from 0 to 1, the area under the curve and the area to the left of it together fill exactly
+      the rectangle 1 times a. Whoever knows one area knows the other.
+    formen:
+    - notiz: base e
+    - notiz: any period
+  en_theorie:
+    beispiel: |
+      Base $e$ (Kneser): $\int_0^1T_e=1.71452196$ and $\int_1^e\operatorname{slog}_e=1.00375987$; the sum is $2.71828183=e$.
+    einordnung: |
+      Many equivalent forms follow from this ([[gr.kor.integral_formen]], [[gr.satz.integral_unten]]). The same area argument computes the
+      tower integrals ([[gr.kor.turmintegral_formen]]) and is behind the antisymmetry of the base-change phases ([[br.satz.young_kreis]]).
+    genau: |
+      For a continuous, increasing tetration $T$ with inverse $A=\operatorname{slog}_a$ and $m<n$:
+      $$\int_m^nT(x)\,dx+\int_{T(m)}^{T(n)}A(y)\,dy=n\,T(n)-m\,T(m),$$
+      in particular
+      $$\int_0^1T(x)\,dx+\int_1^{a}A(y)\,dy=a .$$
+    warum: |
+      This is Young's equation for inverse functions, a pure area argument: the rectangle with corners $(0,0)$ and $(n,T(n))$
+      minus the rectangle up to $(m,T(m))$ decomposes into the area **under** the curve between $m$ and $n$ and the area **to the left** of it between
+      the heights $T(m)$ and $T(n)$; the second is the integral of the inverse function. With $m=0$, $n=1$, $T(0)=1$, $T(1)=a$ the right-hand side becomes
+      $1\cdot a-0=a$. Differentiability is not needed.
+    worum: |
+      Under the curve from $0$ to $1$ there is an area, and to the left of the curve between the heights $1$ and $a$ a second one. Together
+      they fill exactly one rectangle. So whoever knows one area also knows the other.
+- id: gr.satz.zweite_ableitung
+  quelle_hash: eda187e70eb2
+  theorie_hash: 5a344fd677a0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Differentiate gr.satz.kettenregel; for $\ln T$: differentiate $\ln T(x+1)=\ln a\cdot T(x)$ twice.'
+    pruefung:
+      f5_neue_frage: Inheritance of convexity → gr.kor.konvex_nach_oben
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Twice differentiable at x.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: 'Superfunctions: $F''''(x+1)=f''''(F)F''^2+f''(F)F''''$.'
+    bewertung:
+      richtigkeit: complete (first own version was wrong, see versions)
+      nutzen: Key to the shape of the curve.
+    titel: Second derivative one level higher
+    aussage: $$T''(x+1)=\ln a\cdot T(x+1)\,\bigl[\ln a\cdot T'(x)^2+T''(x)\bigr],\qquad (\ln T)''(x+1)=\ln a\cdot T''(x).$$
+    bereich: $T$ twice differentiable at $x$
+    einfach: 'The curvature one level higher is made up of the curvature below and the square of the slope below. Even simpler: one level higher,
+      the logarithm of T is curved exactly like T itself.'
+    formen:
+    - notiz: T convex on $[x_0,x_0+1]$ ⇔ $\ln T$ convex on $[x_0+1,x_0+2]$
+  en_theorie:
+    beispiel: |
+      Base $e$, $x=0$ (Kneser, $T'(0)=1.09177$, $T''(0)=0.54297$):
+      $T''(1)=e\,[1.09177^2+0.54297]=e\cdot1.73493=4.7161$.
+    einordnung: |
+      From this it follows that convexity is inherited upward ([[gr.kor.konvex_nach_oben]]), and that is half of the proof of the conjecture
+      on inflection points ([[gr.verm.ein_wendepunkt]]).
+    genau: |
+      $$T''(x+1)=\ln a\cdot T(x+1)\,\bigl[\ln a\cdot T'(x)^2+T''(x)\bigr],\qquad(\ln T)''(x+1)=\ln a\cdot T''(x).$$
+    warum: |
+      1. Differentiate the chain rule $T'(x+1)=\ln a\cdot T(x+1)\,T'(x)$ once more (product rule):
+         $T''(x+1)=\ln a\,[T'(x+1)\,T'(x)+T(x+1)\,T''(x)]$.
+      2. For $T'(x+1)$ insert the chain rule again and factor out $\ln a\cdot T(x+1)$.
+      3. Simpler: $\ln T(x+1)=\ln a\cdot T(x)$. Differentiating twice immediately gives $(\ln T)''(x+1)=\ln a\cdot T''(x)$.
+    worum: |
+      The curvature one level higher can also be computed from the level below. It becomes especially simple if, instead of $T$,
+      one considers its logarithm.
+- id: gr.verm.ein_wendepunkt
+  quelle_hash: 1f3e20f2eff7
+  theorie_hash: b4c928e175aa
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'exp.ableitung: 7 Kneser bases from 1.5 to 100 and 4 regular bases, sign changes of $T''''$ via Cauchy derivatives — no
+      counterexample. Half a proof: after the first fully convex period there is no inflection point any more (gr.kor.konvex_nach_oben); at least
+      one exists for $b>\eta$, because $T$ is concave at −2 and $T''$ grows without bound. Open: no second change to the left of it.'
+    pruefung:
+      f5_neue_frage: Does uniqueness follow from Kneser's holomorphy (number of zeros of $T''$ in a strip)?
+      f1_folgt_unmittelbar: Partly (existence, “nothing to the right”).
+      f2_benutzte_voraussetzungen: —
+      f3_spezialfall: 'no'
+      f4_uebertragbar: 'Does not hold for all solutions: $T\circ(\mathrm{id}+\theta)$ with a strongly wavy θ has many inflection points — it is
+        a property of the construction.'
+    bewertung:
+      recherche: Not found in the sources checked.
+      richtigkeit: Conjecture, numerically supported, half proved
+      nutzen: A simple, visible characterization of Kneser against other solutions — a real criterion?
+    titel: Exactly one inflection point above η, none below
+    aussage: For every $b>\eta$, $T_b^{\mathrm K}$ has exactly one inflection point $x_w(b)$; $x_w$ is decreasing in $b$ and $x_w\to+\infty$ for
+      $b\downarrow\eta$. For $1<b\le\eta$ the regular tetration is strictly concave on $(-2,\infty)$.
+    einfach: Every Kneser curve changes its curvature exactly once; every regular curve below η never does.
+  en_theorie:
+    beispiel: |
+      Supported by seven Kneser bases and four regular bases ([[gr.beob.wendepunkte]]). A counterexample would show up as a second
+      sign change of $T''$ — none found.
+    einordnung: |
+      A typical “class B” statement: it concerns shape properties that every reasonable tetration should have. Such
+      convexity conditions are also the basis of uniqueness theorems such as [[kn.satz.hooshmand]].
+    genau: |
+      **Conjecture.** For every $b>\eta$ the Kneser tetration has exactly one inflection point $x_w(b)$; $x_w$ decreases with increasing $b$ and tends
+      to $+\infty$ for $b\to\eta$. For $1<b\le\eta$ the regular tetration is strictly bent downward on $(-2,\infty)$.
+    warum: |
+      What is already proved: if the curve is bent upward over a whole stretch of length $1$, it stays so ([[gr.kor.konvex_nach_oben]]).
+      What is missing: that to the left of it the curvature changes sign only once. For the regular part one would have to show that the
+      curvature near the fixed point stays negative; the spectral series ([[kl.satz.koenigs_spektral]]) offers an approach for this,
+      because there the leading term $c_1\lambda^x$ with $c_1<0$ gives a negative curvature for large $x$.
+    worum: |
+      The measurements suggest a clear rule: above $\eta$ exactly one change of curvature, below $\eta$ none. This is not yet proved.
+- id: gr.verm.tpid7
+  quelle_hash: d2c9edde0ad2
+  theorie_hash: 289db3c563dc
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'exp.vermutungen: 10 bases × 19 heights; regular bases up to 1.44 (near η), Kneser up to 100 — violation only above b₇
+      = 10.22.'
+    naechste_frage: Proof of the concavity of $\ln T_b$ on $(-1,1)$ for regular tetration (follows from negative Koenigs coefficients).
+    pruefung:
+      f5_neue_frage: Is $\ln T_b$ concave on all of $(-1,1)$ for $b\le b_7$, or are there bases in between with a violation at large $y$?
+      f1_folgt_unmittelbar: 'No; but from log-concavity: $\ln T(y)+\ln T(-y)\le2\ln T(0)=0$.'
+      f2_benutzte_voraussetzungen: $T>0$ on $(-1,1)$ (holds) and concavity of $\ln T$ there.
+      f3_spezialfall: 'Yes: midpoint inequality for the concave function $\ln T$.'
+      f4_uebertragbar: 'To Kneser exactly as long as $\ln T_b$ is concave at 0: up to $b_7=10.2210634157814\ldots$'
+    bewertung:
+      richtigkeit: Conjecture, numerically supported; Kneser extension partly false
+      nutzen: Simple inequality with a clear cause (log-concavity).
+    titel: 'TPID 7: T(y)·T(−y) lies between 0 and 1'
+    aussage: |
+      **Conjecture (A. Robbins, TPID 7, 2009):** For $1<b<\eta$ and $0<|y|<1$ we have $0<T_b(y)\,T_b(-y)<1$ (regular tetration).
+      **Measured:** for $b=1.1,\ 1.3,\ \sqrt2,\ 1.44$ and $y=0.05,\dots,0.95$ — and likewise for Kneser at $b=1.5,\ 2,\ e,\ 3,\ 5,\ 10$; the product falls
+      monotonically from 1 to 0 in each case (at $y=\tfrac12$: $0.7824$ for $\sqrt2$, $0.8208$ for $e$). For Kneser, however, it does **not** hold for all bases (gr.gegen.tpid7_kneser).
+      Sufficient is that $\ln T_b$ is concave on $(-1,1)$; for regular tetration this follows from kl.verm.vollmonoton (kl.satz.folgen_vollmonoton).
+    bereich: $0<|y|<1$; regular tetration for $1<b<\eta$ (as posed), Kneser for $b>\eta$ (extension)
+    einfach: If you multiply the value of a tetration at +y by its value at −y, you always get something between 0 and 1 — that is the conjecture.
+      For small bases this holds everywhere it has been checked; for very large bases it tips over.
+  en_theorie:
+    beispiel: |
+      At $y=\tfrac12$: $0.8218$ ($b=1.1$), $0.7863$ ($1.3$), $0.7824$ ($\sqrt2$), $0.7821$ ($1.44$) — regular; $0.7820$ ($1.5$), $0.7947$ ($2$), $0.8208$ ($e$),
+      $0.8306$ ($3$), $0.8878$ ($5$), $0.9758$ ($10$) — Kneser. In all cases the product falls uniformly from 1 (at $y=0$) to 0 (at $y=1$).
+    einordnung: |
+      Related to the curvature question [[gr.verm.ein_wendepunkt]]: Regular tetration seems to be concave everywhere, Kneser tetration has an inflection point —
+      and if this moves too close to 0 for large bases, TPID 7 tips over.
+    genau: |
+      **Conjecture (TPID 7):** For $1<b<\eta$ (regular tetration) and $0<|y|<1$ we have
+      $$0<T_b(y)\,T_b(-y)<1.$$
+      Robbins also mentioned the Kneser tetration for $b>\eta$. There it holds only up to the base $b_7\approx10.22$ ([[gr.gegen.tpid7_kneser]]).
+    warum: |
+      A proof is missing. What one sees:
+      1. **Positive:** For $-1<x$ we have $T(x)>0$, so the product is positive.
+      2. **Below 1 if $\ln T$ is concave:** If one writes $T(y)T(-y)=\exp\bigl(\ln T(y)+\ln T(-y)\bigr)$, the concavity of $\ln T$ says:
+         the mean $\tfrac12(\ln T(y)+\ln T(-y))$ is at most $\ln T(0)=0$. So the product is at most $1$.
+      3. **For regular tetration** the concavity follows from a single sign question — if all Koenigs coefficients are negative, $T$ is concave and hence so is
+         $\ln T$ ([[kl.satz.folgen_vollmonoton]]).
+    worum: |
+      Take a tetration and multiply its value at $+y$ by its value at $-y$. At $y=0$ this is $1\cdot1=1$, at $y=1$ it is $b\cdot0=0$. Andrew Robbins
+      conjectured in 2009 that the product in between always lies strictly between 0 and 1. That sounds like a triviality, but it has a nice cause: It depends
+      on whether the logarithm of the curve is bent downward.
+- id: gr.verm.turmintegral_rate
+  quelle_hash: 2744102039e4
+  theorie_hash: ae8a80fc3057
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Window heuristic as above.
+    gegenbeispielsuche: 'exp.turmintegrale: measured exponent 1.502 from n = 64 … 4096 (error 1.2·10⁻³ … 2.3·10⁻⁶).'
+    pruefung:
+      f5_neue_frage: Determine the constant C exactly; with it, Richardson extrapolation of the I_n (up to n = 4096 it reaches only ~2·10⁻⁹).
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Parabolic behavior at $e^{-e}$; geometric convergence otherwise.
+      f3_spezialfall: Like errors of mean values near a bifurcation (Pomeau–Manneville scaling).
+      f4_uebertragbar: Same heuristic at x = η for integrals over intervals containing η (then q = 1, different exponent).
+    bewertung:
+      richtigkeit: numerically supported, heuristic
+      nutzen: Explains why the I_n converge so slowly.
+    titel: Tower integrals converge like n^{−3/2}
+    aussage: |
+      $$I_{2n}-\lim I_{2n}\sim C\,n^{-3/2},$$
+      likewise for the odd ones. Predicted before the calculation from: at $x=e^{-e}$ the fixed point is parabolic (multiplier $-1$),
+      there the error falls like $n^{-1/2}$ (fp.satz.parabolisch_rand with $q=2$), and the slow window around $e^{-e}$ has width $\sim1/n$.
+    bereich: $I_{2n}$ and $I_{2n+1}$, $n\to\infty$
+  en_theorie:
+    beispiel: |
+      Measured between $n=64$ and $n=4096$: exponent $1.502$. The error is $1.2\cdot10^{-3}$ at $n=64$ and $2.3\cdot10^{-6}$ at $n=4096$.
+    einordnung: |
+      A nice example of how a single slow point (parabolic, [[fp.satz.parabolisch_rand]]) determines the behavior of an entire
+      integral.
+    genau: |
+      **Conjecture.** $I_{2n}-\lim I_{2n}\sim C\,n^{-3/2}$, likewise for the odd integrals; the constant $C$ is unknown.
+    warum: |
+      Heuristic: At $x=e^{-e}$ the fixed point has multiplier $-1$; there the error falls only like $n^{-1/2}$
+      (with the exact constant $\sqrt6/e$, [[fp.satz.p2_raten]]). This slow point is a window of width about $1/n$;
+      error $n^{-1/2}$ times width $n^{-1}$ gives $n^{-3/2}$. The scaling function in the window has not yet been computed.
+    worum: |
+      How fast do the tower integrals approach their limits? Predicted and measured: like $n^{-3/2}$ — slowly, because at $x=e^{-e}$ there is
+      a point where the towers converge only very hesitantly.
+- id: gr.verm.ungerade_ableitungen
+  quelle_hash: 70b577b5228a
+  theorie_hash: 9e55a6de0300
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'exp.ableitungen_vorzeichen: 13 odd orders × 20 points; smallest value 1.7·10⁻⁹ (Taylor coefficient at x = 0) — positive.'
+    naechste_frage: Proof from the structure of Kneser (log singularities at −2, −3, … and behavior in the upper half-plane); does every periodic
+      perturbation $T(x+\theta(x))$ violate the condition?
+    pruefung:
+      f5_neue_frage: Does $x_{2n}$ grow like $\log n$? (Levenstein's 406th at 0.5 and 4904th at 0.7 point to it.)
+      f1_folgt_unmittelbar: No. Plausible for high orders (log singularity), open for intermediate ones.
+      f2_benutzte_voraussetzungen: Kneser values to 40 digits, Taylor series from circle values (radius up to 1).
+      f3_spezialfall: Analogous to Szekeres (it.satz.szekeres_monoton) and Reshetnikov (kl.verm.vollmonoton) — sign conditions on all derivatives.
+      f4_uebertragbar: To other bases $b>\eta$ (not checked).
+    bewertung:
+      richtigkeit: Conjecture, numerically supported
+      nutzen: Candidate for a real characterization of Kneser (br.frage.bohr_mollerup).
+    titel: All odd derivatives of the Kneser tetration are positive
+    aussage: |
+      **Conjecture (mike3, 2014):** $T_e^{(2n+1)}(x)>0$ for all $n\ge0$ and $x>-2$ — equivalently: all even derivatives are strictly increasing. Proposed as a possible
+      real uniqueness condition.
+      **Measured:** all odd derivatives up to order 25 positive at 20 points in $[-1.8,2]$. Every even derivative up to 26 changes its sign exactly once,
+      from − to +, at a point $x_{2n}$ that moves to the right with $n$: $x_2=-0.52176$ (inflection point), $x_4=-0.40076$, $x_{10}=-0.18591$,
+      $x_{22}=0.0077902$, $x_{26}=0.046585$.
+      **Reason (Levenstein):** high derivatives follow the singularity $\log(x+2)$: $a_k\approx(-1)^{k+1}/(k(x+2)^k)$ (at $x=-1$, $k=24$: quotient $0.99999998$).
+      Hence odd derivatives of high order are positive, even ones negative — at $x=0.5$ the 406th is the first negative one.
+    bereich: Kneser tetration to base $e$ on $(-2,\infty)$
+    einfach: 'The Kneser curve to base e seems to obey an iron rule: derivatives of odd order (1st, 3rd, 5th, …) are positive everywhere. That
+      would be a property that can be checked entirely without complex numbers — perhaps enough to distinguish Kneser from all other solutions.'
+  en_theorie:
+    beispiel: |
+      At $x=0.5$ all derivatives up to order 26 are positive: there the rapid growth of the tetration still dominates. The first negative derivative comes only at order 406,
+      at $x=0.7$ (predicted) at order 4904.
+    einordnung: |
+      A candidate for the real characterization asked for by [[br.frage.bohr_mollerup]]. Models are Szekeres' totally monotone Abel function
+      ([[it.satz.szekeres_monoton]]) and Reshetnikov's complete monotonicity ([[kl.verm.vollmonoton]]). The first sign-change point is the inflection point from [[gr.beob.wendepunkte]].
+    genau: |
+      **Conjecture:** $T_e^{(2n+1)}(x)>0$ for all $n\ge0$ and all $x>-2$. Equivalently: every even derivative $T_e^{(2n)}$ is strictly increasing.
+
+      Measured:
+      - All odd derivatives up to order 25 are positive at 20 points between $-1.8$ and $2$.
+      - Every even derivative up to order 26 changes its sign exactly once, from − to +. The sign-change point $x_{2n}$ moves to the right:
+        $x_2=-0.5218$ (the inflection point), $x_4=-0.4008$, $x_6=-0.3107$, $x_{10}=-0.1859$, $x_{16}=-0.0689$, $x_{22}=0.0078$, $x_{26}=0.0466$.
+    warum: |
+      A proof is missing. S. Levenstein explained in 2014 why the pattern must hold for **high** orders:
+      1. The nearest singularity of the Kneser tetration on the real axis is $-2$, and there it behaves like $\log(x+2)$.
+      2. High derivatives are determined by the nearest singularity. The derivatives of $\log(x+2)$ are
+         $(-1)^{k+1}(k-1)!/(x+2)^k$: odd ones positive, even ones negative.
+      3. Measured at $x=-1$: the Taylor coefficient of order $k$ is $(-1)^{k+1}/k$ times $0.98611$ ($k=6$), $0.99991$ ($12$), $0.9999989$ ($18$), $0.99999998$ ($24$) — the
+         law takes hold ever more precisely.
+
+      Hence even derivatives of high order become negative everywhere — at $x=0.5$ only from the 406th on (Levenstein). It is open whether the odd ones stay positive for **all** orders.
+    worum: |
+      The gamma function is distinguished among all solutions of its equation by a real curvature property. For tetration, something like that is still being sought.
+      In 2014 mike3 proposed a candidate in the forum: All derivatives of odd order of the Kneser tetration — the 1st, 3rd, 5th, … — are positive everywhere.

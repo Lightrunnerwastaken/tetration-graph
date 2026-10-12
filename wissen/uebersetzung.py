@@ -42,7 +42,7 @@ ZAHL = re.compile(r"(?<![\w.])\d+(?:\.\d+)?")
 SIGNAL = [
     (r"\bnicht\b|\bkein", r"\bnot\b|\bno\b|\bnever\b|\bneither\b|n't|\bnon-?|\bwithout\b|\bnor\b|cannot|\bimpossible\b|\bnone\b|\bnowhere\b|\bun[a-z]+"),
     (r"\bnur\b", r"\bonly\b|\bmerely\b|\bsolely\b|\balone\b"),
-    (r"\bgenau\b", r"\bexactly\b|\bprecisely\b|\bjust\b|\bif and only if\b|\bexact\b|\bsharp\b|\bunique"),
+    (r"\bgenau\b", r"\bexactly\b|\bprecisely\b|\bjust\b|\bif and only if\b|\bexact\b|\bsharp\b|\bunique|\baccura|\bto within\b"),
     (r"\bjede[rsmn]?\b|\balle\b", r"\bevery\b|\bany\b|\ball\b|\beach\b"),
     (r"\bvermutlich\b|\bwohl\b(?! aber)|\bvielleicht\b", r"\bpresumably\b|\bprobably\b|\blikely\b|\bperhaps\b|\bsuppos|\bmay\b|\bmight\b|\bapparently\b|\bexpect"),
     (r"\bbedingt", r"\bconditional"),
@@ -191,6 +191,13 @@ def _mathe(s: str) -> Counter:
     return Counter(re.sub(r"\\text\{[^}]*\}", r"\\text{}", m) for m in MATHE.findall(s))
 
 
+def _dezimalpunkt(s: str) -> str:
+    """Dezimalkomma -> Punkt, ausser in Intervallen wie (0,1) oder [0,1]."""
+    def ersetze(m):
+        return m.group(0) if m.group(1) and m.group(4) else f"{m.group(1) or ''}{m.group(2)}.{m.group(3)}{m.group(4) or ''}"
+    return re.sub(r"([\[(])?\b(\d+),(\d+)\b([)\]])?", ersetze, s)
+
+
 def pruefe_text(de: str, en: str) -> list:
     """Maschinelle Prüfung eines Textpaares. FEHLER = Inhalt kann verfälscht sein, WARNUNG = bitte ansehen."""
     b = []
@@ -203,7 +210,7 @@ def pruefe_text(de: str, en: str) -> list:
     if Counter(KENNUNG.findall(de)) != Counter(KENNUNG.findall(en)):
         b.append(("FEHLER", "uebersetzung-invariante", "Kennungen (z. B. exp.…, kn.…) verändert"))
     # deutsches Dezimalkomma (1,5) darf im Englischen zum Punkt werden und soll es auch
-    zq = Counter(ZAHL.findall(re.sub(r"(?<=\d),(?=\d)", ".", MATHE.sub(" ", de))))
+    zq = Counter(ZAHL.findall(_dezimalpunkt(MATHE.sub(" ", de))))
     zu = Counter(ZAHL.findall(MATHE.sub(" ", en)))
     if zq != zu:
         b.append(("WARNUNG", "uebersetzung-zahlen", f"Zahlen ausserhalb von Formeln verändert: fehlt {dict(zq - zu)}, neu {dict(zu - zq)}"))
