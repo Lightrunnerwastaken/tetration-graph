@@ -6,6 +6,8 @@ const fs = require("fs");
 const pfad = require("path").resolve(process.argv[2] || "ausgabe/tetration-graph.html");
 const ausgabe = process.argv[3] && !process.argv[3].startsWith("--") ? process.argv[3] : null;
 const SPR = process.argv.includes("--de") ? "de" : "en";
+// Originaltitel deutschsprachiger Werke bleiben stehen (mit englischer Erläuterung in Klammern)
+const ERLAUBT = [/Über die Zahl π/, /Über die Gleichverteilung von Zahlen mod\. Eins/];
 
 (async () => {
   const b = await chromium.launch();
@@ -31,7 +33,7 @@ const SPR = process.argv.includes("--de") ? "de" : "en";
       if (S.sieht_deutsch_aus(document.title)) aus.push(document.title);
       return aus.concat(S.canvas.splice(0).map((c) => "[canvas] " + c));
     });
-    for (const s of funde) { const k = s.length > 400 ? s.slice(0, 400) + "…" : s; const e = rest.get(k) || { n: 0, wo }; e.n++; rest.set(k, e); }
+    for (const s of funde.filter((x) => !ERLAUBT.some((re) => re.test(x)))) { const k = s.length > 400 ? s.slice(0, 400) + "…" : s; const e = rest.get(k) || { n: 0, wo }; e.n++; rest.set(k, e); }
   };
   const tabs = await p.$$eval("nav.ansichten button", (bs) => bs.map((x) => x.dataset.ansicht));
   for (const tab of tabs) {
