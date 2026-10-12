@@ -1,0 +1,18 @@
+# Theorie-Blöcke für Literaturknoten des Gebiets fg (Strang L1, 12.10.2026).
+
+fg.satz.einbettung_fluss:
+  worum: |
+    Kann man eine Funktion „halb so oft“ anwenden? Für wachsende Funktionen ohne Fixpunkt ist die Antwort: ja — und zwar auf unendlich viele Arten.
+    Das ist der Grund, warum die Tetration ohne Zusatzbedingung nicht eindeutig ist.
+  genau: |
+    Ist $f$ ein wachsender Homöomorphismus eines Intervalls $I$ auf sich ohne Fixpunkt, so gibt es stetige Abel-Funktionen $\alpha$ mit
+    $\alpha(f(x))=\alpha(x)+1$ und damit stetige Iterationsgruppen $f^t=\alpha^{-1}(\alpha+t)$; auf einem Fundamentalbereich ist $\alpha$ frei wählbar.
+  warum: |
+    1. Das Stück $[f(x_0),x_0]$ wird von $f$ auf das nächste Stück $[f^2(x_0),f(x_0)]$ abgebildet; die Stücke pflastern ganz $I$.
+    2. Auf dem ersten Stück wählt man $\alpha$ beliebig (monoton, mit den Randwerten 0 und 1).
+    3. Auf dem $n$-ten Stück setzt man $\alpha=\alpha_0\circ f^{-n}+n$ — damit gilt die Abel-Gleichung überall, und an den Nähten passt alles zusammen.
+  beispiel: |
+    $f(x)=x-1$ auf ℝ hat neben $\alpha(x)=-x$ auch $\alpha(x)=-x+\tfrac1{10}\sin(2\pi x)$ als Abel-Funktion (monoton, weil $\tfrac{2\pi}{10}<1$).
+  einordnung: |
+    Allgemeine Form von [[fg.satz.allgemeine_loesung]] und Grund für [[fg.kor.nichteindeutigkeit]]. Literatur: Kuczma (1968), Fort (1955), Zdun (1979),
+    Übersicht Zdun–Solarz (2014). Auswahlprinzipien, die eine Lösung festlegen: Konvexität, Analytizität, Holomorphie am Fixpunkt.

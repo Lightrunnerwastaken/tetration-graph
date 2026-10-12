@@ -1,0 +1,172 @@
+gebiet: fp
+aussagen:
+
+# Literaturknoten aus der Literaturkarte L1 (12.10.2026). Quellen in daten/quellen/lit_L1.yaml.
+
+- id: fp.satz.baker_rippon_kardioide
+  titel: 'Der Turm konvergiert nur im Abschluss der Kardioide (Baker–Rippon 1985)'
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [turm, shell_thron, multiplikator]
+  bereich: '$w_0=0$, $w_{n+1}=\exp(a\,w_n)$, $a=\ln b\in\mathbb C$ (also $w_n$ = Turm der Höhe $n$ zur Basis $b$)'
+  voraussetzungen:
+    - {text: 'Grenzwert verschieden von allen Gliedern (schliesst endliche, zufällig stehenbleibende Folgen aus)', benutzt: ja}
+  aussage: |
+    Konvergiert $w_n$ gegen einen Grenzwert, der von allen $w_n$ verschieden ist, so liegt $a$ im **Abschluss** der Kardioide
+    $D=\{te^{-t}:|t|<1\}$. Für $a\in D$ konvergiert $w_n$ stets. In der Basis-Ebene ist $D$ das Shell–Thron-Gebiet $b=\exp(te^{-t})$.
+  einfach: >-
+    Shell und Thron haben gezeigt, wo der Turm sicher konvergiert. Baker und Rippon zeigten die Umkehrung: ausserhalb dieses Gebiets
+    (und seines Randes) gibt es keinen Grenzwert.
+  beweis: {art: literatur, text: 'Baker–Rippon, Amer. Math. Monthly 92 (1985), „ziemlich elementarer Beweis“ laut zbMATH-Rezension. Ausserhalb des Abschlusses sind alle Fixpunkte abstossend, und ein Grenzwert müsste ein Fixpunkt mit $|\lambda|\le1$ sein.'}
+  quellen: [{ref: baker_rippon1985b, geprueft: sekundaer}, {ref: shell1962}, {ref: thron1957}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: der Grenzwert ist Fixpunkt mit $|\lambda|\le1$, und $\lambda=t$ in der Parametrisierung; das Argument für den Rand braucht Sorgfalt.'
+    f2_benutzte_voraussetzungen: 'Startwert 0 (die Bahn des singulären Werts); Ausschluss stehenbleibender Folgen.'
+    f3_spezialfall: 'Komplexe Fassung von fp.satz.turm_reell; Gegenstück (Notwendigkeit) zu fp.satz.shell_thron.'
+    f4_uebertragbar: 'Auf dem Rand: an Wurzelpunkten $t^q=1$ konvergiert der Turm (fp.satz.parabolisch_rand), an Siegel-Punkten nicht (fp.satz.siegel_unbeschraenkt).'
+    f5_neue_frage: 'Und an Cremer-Punkten des Randes (it.satz.cremer)?'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Macht aus dem Shell–Thron-Gebiet eine genaue Antwort (innen ja, aussen nein).', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.shell_thron}
+    - {typ: verwandt, ziel: fp.satz.parabolisch_rand}
+    - {typ: verwandt, ziel: fp.satz.siegel_unbeschraenkt}
+
+- id: fp.satz.baker_rippon_periodisch
+  titel: 'Türme mit periodisch wiederkehrenden Basen (Baker–Rippon 1985, 1989)'
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [turm, multiplikator]
+  bereich: 'Turm $a_1^{a_2^{a_3^{\cdots}}}$ mit $a_{j+k}=a_j$, $b_j=\ln a_j\in\mathbb C$'
+  voraussetzungen:
+    - {text: 'Basen k-periodisch', benutzt: ja}
+  aussage: |
+    Der Turm konvergiert genau dann, wenn es eine **eindeutige** Darstellung
+    $$b_1=t_1e^{-t_2},\quad b_2=t_2e^{-t_3},\ \dots,\ b_k=t_ke^{-t_1}\qquad\text{mit}\quad|t_1t_2\cdots t_k|\le1$$
+    gibt (Baker–Rippon 1989). Für $k=2$ (Basen $a,b$ abwechselnd, $\varphi(x)=a^{b^x}$): Konvergenz genau dann, wenn $\varphi$ genau einen
+    Fixpunkt $c$ mit $|\varphi'(c)|\le1$ hat, d. h. $\ln a=se^{-t}$, $\ln b=te^{-s}$ mit eindeutigem $(s,t)$, $|st|\le1$ (Baker–Rippon 1985).
+    Liegen alle $b_n$ in $[-e,1/e]$, konvergiert der Turm auch ohne Periodizität (Barrows Satz).
+  beweis: {art: literatur, text: 'Baker–Rippon, Fibonacci Quart. 23 (1985) und Math. Proc. Cambridge Philos. Soc. 105 (1989), über die zbMATH-Rezensionen. Die $t_j$ sind die mit $b_j$ multiplizierten Punkte des $k$-Zyklus, $t_1\cdots t_k$ ist sein Multiplikator.'}
+  quellen: [{ref: baker_rippon1985, geprueft: sekundaer}, {ref: baker_rippon1989a, geprueft: sekundaer}, {ref: barrow1936}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Eindeutigkeit der Darstellung ist der Kern (sonst zwei Kandidaten-Zyklen).'
+    f2_benutzte_voraussetzungen: 'Periodizität der Basen; für den Barrow-Teil nur die Lage der $b_n$.'
+    f3_spezialfall: 'Für $k=1$ das Shell–Thron-Kriterium ($|t|\le1$, fp.satz.baker_rippon_kardioide).'
+    f4_uebertragbar: 'Für $a=b$ und $k=2$ beschreibt die Darstellung mit $s\ne t$ genau den 2-Zyklus des gewöhnlichen Turms — das ist fp.satz.p2_form mit $(s,t)=(v,u)$, $\mu=st$.'
+    f5_neue_frage: 'Gibt es eine Tetration mit periodischen Basen (gemischte Türme) — Brücke zum Basiswechsel (bw)?'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Literaturquelle der Periode-2-Form; Brücke zu gemischten Türmen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: fp.satz.p2_form}
+    - {typ: verallgemeinert, ziel: fp.satz.baker_rippon_kardioide}
+
+- id: fp.satz.baker_rippon_parameter
+  titel: 'Die Familie e^{az}: keine wandernden Gebiete, D₁ und D₂ zusammenhängend (Baker–Rippon 1984)'
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [hyperbolische_komponente, multiplikator, shell_thron, exp_familie]
+  bereich: '$f(z)=e^{az}=b^z$, $a=\ln b\in\mathbb C\setminus\{0\}$; $D_p$ = Menge der $a$ mit anziehendem Zyklus der Periode $p$'
+  aussage: |
+    (i) $f$ hat keine wandernden Fatou-Komponenten: jede Komponente landet schliesslich in einer periodischen.
+    (ii) $D_1$ (das Shell–Thron-Gebiet in $a$) und $D_2$ (anziehender 2-Zyklus) sind zusammenhängend; die Komponenten von $D_p$ für $p>2$ liegen
+    verwickelt. (iii) $J(f)=\mathbb C$ für alle reellen $a>1/e$ (also $b>\eta$) und für eine dichte Teilmenge von $\partial D_1$.
+  beweis: {art: literatur, text: 'Baker–Rippon, Ann. Acad. Sci. Fenn. 9 (1984), (i) mit Sullivans Methode; über die zbMATH-Rezension geprüft, Volltext (Scan) nicht gelesen.'}
+  quellen: [{ref: baker_rippon1984, geprueft: sekundaer}, {ref: devaney1984, stelle: 'J = ℂ für λ > 1/e'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Ein einziger singulärer Wert (0) — darum höchstens ein anziehender Zyklus und keine wandernden Gebiete.'
+    f3_spezialfall: 'Später verallgemeinert: Klasse S (Eremenko–Lyubich 1992, Goldberg–Keen 1986); Ränder der Komponenten (Schleicher 2004, Rempe–Schleicher 2009).'
+    f4_uebertragbar: '(iii) ist fp.satz.abstossend; $D_2$ ist die Region aus fp.satz.p2_form.'
+    f5_neue_frage: 'Wie liegen die $D_p$ genau? → Kind-Komponenten (fp.verm.knospen), Kombinatorik bei Rempe–Schleicher 2008.'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Grundsatz der Basen-Ebene: wo welche Art von Turm-Verhalten lebt.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.p2_form}
+    - {typ: verwandt, ziel: fp.satz.abstossend}
+    - {typ: verwandt, ziel: fp.beob.regionen}
+
+- id: fp.satz.thron_variabel
+  titel: 'Türme mit veränderlichen Basen (Barrow, Thron, Baker–Rippon, Bachman)'
+  art: satz
+  ebene: B
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [turm]
+  bereich: 'Turm $a_1^{a_2^{a_3^{\cdots}}}$, d. h. Grenzwert von $f_1\circ\cdots\circ f_n(0)$ mit $f_j(z)=\exp(b_jz)$, $b_j=\ln a_j$'
+  aussage: |
+    (i) **Thron (1957):** Liegen alle $b_j$ in der abgeschlossenen Kreisscheibe $|b_j|\le1/e$, so konvergiert der Turm.
+    (ii) **Barrow (1936):** Liegen alle $b_j$ reell in $[-e,1/e]$, so konvergiert er.
+    (iii) **Baker–Rippon (1989):** Allgemeine Sätze über die Konvergenz von $f_1\circ\cdots\circ f_n$ gegen eine Konstante (Typ Wolff–Denjoy) geben
+    grössere Konvergenzmengen und Grenzen dafür, wo Konvergenz überhaupt möglich ist. **Bachman (1995):** zwei Konvergenztests, im Wesentlichen scharf.
+  beweis: {art: literatur, text: 'Thron 1957 und Barrow 1936 in der Wiedergabe der Rezensionen von Baker–Rippon 1989 (Complex Var. 12; Math. Proc. Cambridge 105); Bachman über die zbMATH-Rezension.'}
+  quellen: [{ref: thron1957}, {ref: barrow1936}, {ref: baker_rippon1989b, geprueft: sekundaer}, {ref: baker_rippon1989a, stelle: 'Barrows Satz für nicht periodische Folgen', geprueft: sekundaer}, {ref: bachman1995, geprueft: sekundaer}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Nur die Lage aller $b_j$ in einer festen Menge; keine Periodizität.'
+    f3_spezialfall: 'Konstante Basen: (i) und (ii) sind Teilmengen des Shell–Thron-Gebiets bzw. von Eulers Intervall.'
+    f4_uebertragbar: 'Auf gemischte Türme des Basiswechsels (bw.def.F_bd): dort wechseln die Basen nicht periodisch, sondern nach Plan.'
+    f5_neue_frage: 'Wie gross ist die genaue Menge der Basen-Folgen mit Konvergenz?'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Brücke vom Turm zu Türmen mit gemischten Basen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: fp.satz.shell_thron}
+    - {typ: verwandt, ziel: fp.satz.baker_rippon_periodisch}
+    - {typ: verwandt, ziel: bw.def.F_bd}
+
+- id: fp.satz.grenzfunktionen
+  titel: 'Die Grenzfunktionen des reellen Turms sind analytisch (de Villiers–Robinson 1986, Cho–Kim 2004)'
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [turm, lambert_w]
+  bereich: 'reelle $x>0$; ${}^0x=1$, ${}^{n+1}x=x^{({}^nx)}$'
+  aussage: |
+    (i) Auf $[e^{-e},e^{1/e}]$ konvergiert ${}^nx$; der Grenzwert $h(x)$ ist im Innern reell-analytisch (de Villiers–Robinson).
+    (ii) Für $0<x<e^{-e}$ konvergieren die ungeraden und die geraden Glieder gegen $h_o(x)\ne h_e(x)$ mit $x^{h_e}=h_o$, $x^{h_o}=h_e$.
+    Beide sind auf $(0,e^{-e})$ reell-analytisch, $h_o$ wachsend, $h_e$ fallend, stetig auf $[0,e^{-e}]$ mit $h_o(0)=0$, $h_e(0)=1$,
+    $h_o(e^{-e})=h_e(e^{-e})=1/e$; an beiden Enden gibt es asymptotische Formeln (Cho–Kim).
+  einfach: >-
+    Unter etwa 0.066 springt der Turm zwischen zwei Werten hin und her. Beide Werte hängen glatt von der Basis ab: der eine fällt von 1 auf 1/e,
+    der andere steigt von 0 auf 1/e, und an der Grenze treffen sie sich.
+  beweis: {art: literatur, text: 'de Villiers–Robinson, Amer. Math. Monthly 93 (1986), und Cho–Kim, Bull. Korean Math. Soc. 41 (2004), über die zbMATH-Rezensionen; Monotonie und Randwerte nach der Wiedergabe in einer Folgearbeit von Cho (2004). Volltexte nicht gelesen.'}
+  quellen: [{ref: devilliers_robinson1986, geprueft: sekundaer}, {ref: cho_kim2004, geprueft: sekundaer}, {ref: macdonnell1989, stelle: 'gerade/ungerade Teilfolgen', geprueft: sekundaer}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Teilweise: Analytizität folgt aus dem Satz über implizite Funktionen, solange der Multiplikator des Fixpunkts bzw. Zyklus nicht 1 ist; die Randwerte brauchen eigene Argumente.'
+    f2_benutzte_voraussetzungen: 'Startwert 1 und die Monotonie der Teilfolgen.'
+    f3_spezialfall: 'Reelle Spur von fp.satz.p2_form (dort komplex parametrisiert).'
+    f4_uebertragbar: 'Die Asymptotik an $e^{-e}$ (Cho–Kim) ist mögliche Vorlage für fp.satz.p2_raten: $|z_1-z_2|\sim2\sqrt6e^{-3/2}\sqrt t$.'
+    f5_neue_frage: 'Stimmen die Konstanten von Cho–Kim mit fp.satz.p2_raten überein? (Volltext fehlt)'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: bekannt, nutzen: 'Reeller Rahmen für das Pendeln unter e^{−e}.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.p2_form}
+    - {typ: verwandt, ziel: fp.satz.p2_raten}
+    - {typ: verwandt, ziel: fp.satz.turm_reell}
+
+- id: fp.satz.messbare_dynamik
+  titel: 'Wohin fast alle Bahnen von eᶻ laufen: zum Turm zur Basis e (Rees 1986, Lyubich 1987); Julia-Mengen der Dimension 2 (McMullen 1987)'
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [turm, exp_familie]
+  bereich: '(i) $f(z)=e^z$, Lebesgue-Mass in $\mathbb C$; (ii) $\lambda e^z$, $\lambda\ne0$'
+  aussage: |
+    (i) Für fast jedes $z\in\mathbb C$ häuft sich die Bahn $z,e^z,e^{e^z},\dots$ genau am Abschluss der Bahn $0,1,e,e^e,\dots$ des singulären Werts —
+    also am Turm zur Basis $e$ (und an $\infty$). $\exp$ ist nicht rekurrent und nicht ergodisch.
+    (ii) Die Julia-Menge jeder Abbildung $\lambda e^z$ hat Hausdorff-Dimension 2; hat die Abbildung einen anziehenden Zyklus, ist ihr Flächenmass 0.
+  einfach: >-
+    Obwohl die Julia-Menge von eᶻ die ganze Ebene ist, landen fast alle Bahnen am Ende in der Nähe des Turms 1, e, e^e, … zur Basis e.
+  beweis: {art: literatur, text: 'Rees, Math. Z. 191 (1986); Lyubich, Sib. Math. J. 28 (1987); McMullen, Trans. AMS 300 (1987); über die zbMATH-Rezensionen (die Aussage „nicht ergodisch“ aus dem Gedächtnis).'}
+  quellen: [{ref: rees1986, geprueft: sekundaer}, {ref: lyubich1987, geprueft: sekundaer}, {ref: mcmullen1987, geprueft: sekundaer}, {ref: misiurewicz1981, stelle: 'J(e^z) = ℂ'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Ein einziger singulärer Wert; dessen Bahn flieht nach ∞.'
+    f3_spezialfall: '(i) ist der Fall $b=e$; für $b>\eta$ allgemein liegt es nahe, ist hier aber nicht geprüft.'
+    f4_uebertragbar: 'Auf Basen $b>\eta$ (konjugiert zu $\lambda e^w$ mit $\lambda>1/e$) für (ii).'
+    f5_neue_frage: 'Gilt (i) für jede Basis $b>\eta$ mit der Bahn $1,b,b^b,\dots$?'
+  bewertung: {richtigkeit: 'gesichert (Literatur); „nicht ergodisch“ nur aus dem Gedächtnis', neuheit: klassisch, nutzen: 'Zeigt eine unerwartete Rolle des Turms in der Dynamik von eᶻ.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.abstossend}

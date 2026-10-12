@@ -88,7 +88,7 @@ aussagen:
     $w\mapsto(\ln b)\,e^w$ mit $\ln b>1/e$; dafür ist die Julia-Menge ganz $\mathbb C$ (Misiurewicz für
     $\ln b=1$, Devaney für $>1/e$), also gibt es keine anziehenden oder neutralen Zyklen.
   beweis: {art: literatur, text: 'Konjugation (hier) + Julia-Menge = ℂ (Literatur).'}
-  quellen: [{ref: misiurewicz1981}, {ref: devaney1984}]
+  quellen: [{ref: misiurewicz1981}, {ref: devaney1984}, {ref: baker_rippon1984, stelle: 'J(e^{az}) = ℂ für alle reellen a > 1/e', geprueft: sekundaer}]
   experimente: [exp.fixpunkte]
   pruefung:
     f1_folgt_unmittelbar: 'Ja, aus dem Satz über die Julia-Menge; direkt nachrechenbar auch für den primären Fixpunkt.'
@@ -112,8 +112,8 @@ aussagen:
     - {text: 'b > 0 reell', benutzt: ja}
   aussage: |
     Die Folge konvergiert genau für $e^{-e}\le b\le e^{1/e}$, mit Grenzwert $h(b)=-W(-\ln b)/\ln b$.
-  beweis: {art: literatur, text: 'Euler (1783) fand die Grenzen, Eisenstein (1844) die Reihe; Übersicht bei Knoebel (1981), Beweis bei Baker–Rippon.'}
-  quellen: [{ref: euler1783}, {ref: eisenstein1844}, {ref: knoebel1981, stelle: 'Übersicht und Geschichte'}, {ref: baker_rippon1985}]
+  beweis: {art: literatur, text: 'Euler (1778, E489, auf eine Frage Condorcets) fand die obere Grenze $e^{1/e}$; die Lambertsche Reihe, aus der der Grenzwert über W folgt, behandelt Euler 1783 (E532); Eisenstein (1844) gab die Reihe des Grenzwerts; Barrow (1936) zeigte das Pendeln zwischen zwei Werten unter $e^{-e}$; Übersicht bei Knoebel (1981); vollständige Beweise bei de Villiers–Robinson (1986), elementar bei Länger (1996).'}
+  quellen: [{ref: euler1778, stelle: 'E489: Konvergenzfrage, Grenze e^{1/e}', geprueft: sekundaer}, {ref: euler1783, stelle: 'E532: Lambertsche Reihe'}, {ref: eisenstein1844}, {ref: barrow1936, stelle: 'Konvergenz für e^{−e} ≤ a ≤ e^{1/e}, Pendeln darunter (JFM-Rezension)'}, {ref: knoebel1981, stelle: 'Übersicht und Geschichte'}, {ref: devilliers_robinson1986, geprueft: sekundaer}, {ref: laenger1996, stelle: 'elementarer Beweis', geprueft: sekundaer}]
   experimente: [exp.turmgebiet]
   pruefung:
     f1_folgt_unmittelbar: Nein (Rand $e^{-e}$ braucht Zwei-Zyklus-Analyse).
@@ -135,8 +135,8 @@ aussagen:
   aussage: |
     Ist $b=\exp(t\,e^{-t})$ mit $|t|<1$, so konvergiert der Turm $b^{b^{\cdots}}$ (gegen $e^{t}$, den
     Fixpunkt mit Multiplikator $t$). Auf dem Rand und ausserhalb kommen Konvergenz und Divergenz vor.
-  beweis: {art: literatur, text: 'Barrow (1936): Konvergenz genau bei |log λ| ≤ 1 (in der Form der Forums-Wiki); Thron (1957), Shell (1962); für i^i^… Macintyre (1966); allgemein Baker–Rippon. Parametrisierung: Fixpunkt $L=e^t$, $\lambda=L\ln b=t$.'}
-  quellen: [{ref: barrow1936}, {ref: thron1957}, {ref: shell1962}, {ref: macintyre1966, stelle: 'Basis i'}, {ref: baker_rippon1985}]
+  beweis: {art: literatur, text: 'Barrow (1936): reelle Basen; Thron (1957): Konvergenz, wenn alle $|\ln a_n|\le1/e$ (auch veränderliche Basen); Shell (1962): das ganze Gebiet $b=\exp(te^{-t})$, $|t|<1$; Macintyre (1966): Basis $i$; Baker–Rippon (1985, Amer. Math. Monthly): Konvergenz gegen einen von allen Gliedern verschiedenen Grenzwert nur im Abschluss der Kardioide $\{te^{-t}\}$ (in $\ln b$), im Inneren stets; Baker–Rippon (1983, 1989): veränderliche und periodische Basen. Parametrisierung: Fixpunkt $L=e^t$, $\lambda=L\ln b=t$.'}
+  quellen: [{ref: barrow1936}, {ref: thron1957}, {ref: shell1962}, {ref: macintyre1966, stelle: 'Basis i'}, {ref: baker_rippon1985b, stelle: 'Notwendigkeit: nur im Abschluss der Kardioide', geprueft: sekundaer}, {ref: baker_rippon1983}, {ref: baker_rippon1989b, stelle: 'Throns Kreisscheibe und grössere Konvergenzmengen', geprueft: sekundaer}, {ref: baker_rippon1985, stelle: 'zwei abwechselnde Basen'}]
   experimente: [exp.turmgebiet]
   pruefung:
     f1_folgt_unmittelbar: 'Teilweise: $|\lambda|<1$ gibt lokale Anziehung; dass der Orbit von 1 eingefangen wird, braucht Argument.'
@@ -148,26 +148,28 @@ aussagen:
 
 - id: fp.verm.knospen
   titel: Zyklen in den Knospen am Shell–Thron-Rand
-  art: vermutung
+  art: satz
   ebene: C
-  status: vermutung
-  objekte: [turm, shell_thron]
-  bereich: '$b=\exp(t e^{-t})$, $t=r\,e^{2\pi i p/q}$, $r$ knapp über 1'
+  status: bewiesen_literatur
+  objekte: [turm, shell_thron, hyperbolische_komponente]
+  bereich: '$b=\exp(t e^{-t})$, $t=r\,e^{2\pi i p/q}$, $r$ knapp über 1 (hinreichend nah, abhängig von $p/q$)'
   aussage: |
     Knapp ausserhalb des Shell–Thron-Gebiets am Randpunkt mit $t=e^{2\pi i p/q}$ läuft der Turm in einen
     anziehenden Zyklus der Länge $q$ (Periodenverdopplung bei $q=2$, $t=-1$ reell: $b<e^{-e}$).
+    Zuerst als Vermutung aus der Rechnung aufgestellt; die Literatur liefert den Beweis für hinreichend kleines $r-1$.
+  beweis: {art: literatur, text: '$b^z$ ist konjugiert zu $E_\kappa(w)=e^w+\kappa$. Rempe–Schleicher (2008, Prop. 6.2 und Thm. 6.8(c)): Endet der innere Strahl zum Winkel $p/q$ der hyperbolischen Komponente $W$ (Periode $n$) in einem endlichen Parameter $\kappa_0$, so ist $\kappa_0$ parabolisch mit Drehzahl $p/q$ und Wurzel einer Kind-Komponente der Periode $qn$. Für $W$ = Shell–Thron-Inneres ($n=1$) ist $\kappa_0$ zu jedem $p/q$ endlich. In der Kind-Komponente gibt es einen anziehenden $q$-Zyklus, und der zieht den einzigen singulären Wert an (Fatou) — dessen Bahn ist der Turm $0,1,b,b^b,\dots$. Dass der radiale Weg $r\searrow1$ nahe der Wurzel in der Kind-Komponente verläuft, ist die lokale Bifurkationsrechnung (Abschnitt 5 dort, nach Milnor für Polynome).'}
   gegenbeispielsuche: |
     exp.turmgebiet: alle teilerfremden $p/q$ mit $q\le7$, je zwei Abstände $r=1+0.3/q^2$ und $1+0.8/q^2$: Periode $q$ in 34/34 Fällen.
     Zusätzlich 109 518 Gitterbasen mit $|t|<0.97$: alle konvergent (Shell–Thron ohne Gegenbeispiel).
   experimente: [exp.turmgebiet]
   pruefung:
-    f1_folgt_unmittelbar: 'Nein; Analogon der Satelliten-Knospen der Mandelbrot-Menge, dort bewiesen (Multiplikator-Abbildung).'
-    f2_benutzte_voraussetzungen: —
-    f3_spezialfall: 'Vermutlich Spezialfall der allgemeinen Bifurkationstheorie (q-Zyklus entsteht, wenn der Multiplikator durch $e^{2\pi i p/q}$ geht).'
+    f1_folgt_unmittelbar: 'Aus der Literatur ja: Kind-Komponenten der Exponentialfamilie (Rempe–Schleicher 2008) plus Fatous Satz, dass ein anziehender Zyklus den singulären Wert anzieht.'
+    f2_benutzte_voraussetzungen: 'Ein einziger singulärer Wert (0) — darum ist der Turm die Bahn, die den Zyklus findet; r−1 klein genug, damit der radiale Weg in der Kind-Komponente liegt.'
+    f3_spezialfall: 'Ja: Spezialfall der Bifurkation an parabolischen Parametern (Kind-Komponente der Periode qn an der Wurzel mit Drehzahl p/q), hier n = 1.'
     f4_uebertragbar: 'Auf reguläre Tetration zu komplexen Basen: dort periodische statt konvergente „Tetration“.'
     f5_neue_frage: 'Welche Tetration gehört zu Basen mit anziehendem q-Zyklus? (q-wertige reguläre Konstruktion)'
-  bewertung: {richtigkeit: 'numerisch gestützt', neuheit: folklore, nutzen: 'Anschauung; Brücke zur Mandelbrot-Theorie.', nutzen_stufe: gering}
-  quellen: [{ref: baker_rippon1985, stelle: 'Rand und Äusseres'}]
+  bewertung: {richtigkeit: 'gesichert (Literatur) für r−1 klein genug; numerisch für r = 1 + 0.3/q² und 1 + 0.8/q² (q ≤ 7)', neuheit: bekannt, recherche: 'Literaturabgleich L1, 12.10.2026: Rempe–Schleicher 2008 (Combinatorics of bifurcations in exponential parameter space), Prop. 6.2 und Thm. 6.8(c), im ar5iv-Volltext nur auszugsweise gelesen. Vorher als Vermutung geführt.', nutzen: 'Anschauung; Brücke zur Mandelbrot-Theorie.', nutzen_stufe: gering}
+  quellen: [{ref: rempe_schleicher2008, stelle: 'Prop. 6.2, Thm. 6.8(c), Kor. 5.5', geprueft: sekundaer}, {ref: rempe_schleicher2003, stelle: 'Ränder hyperbolischer Komponenten (Invent. Math. 2009)'}, {ref: milnor2006, stelle: 'anziehender Zyklus zieht einen singulären Wert an'}, {ref: baker_rippon1985, stelle: 'Rand und Äusseres'}]
 
 - id: fp.satz.unendliche_superwurzel
   titel: Unendliche Superwurzel — der Turm umgekehrt ist y^{1/y}
@@ -259,8 +261,8 @@ aussagen:
     f4_uebertragbar: 'Auf jede Zielhöhe $c\,n$: $\delta_n\approx2\pi^2\eta/(e\,n^2)$ unverändert im Leitterm.'
     f5_neue_frage: 'Beweis mit gestörten Fatou-Koordinaten (br.satz.shishikura): $n=1/\alpha(x_n)+O(1)$? Und der Wert von $\beta$.'
   gegenbeispielsuche: 'exp.tpid6: zwölf Werte von n = 3 bis 3·10⁵ in doppelter Genauigkeit (δ ≥ 1e−10, Rundung ≪ Engpass-Vorschub); keine Abweichung vom Leitterm über 0.1 % ab n = 10⁴.'
-  bewertung: {richtigkeit: 'numerisch (5 Stellen), Leitterm hergeleitet', neuheit: vermutlich_neu, recherche: 'TPID-Liste (tid 162), Forums-Wiki und Wikipedia nennen nur den Grenzwert η, keine Rate (Recherche 08.10.2026, docs/recherche_wikis_forum.md).', nutzen: 'Neue, einfache Anwendung des Engpass-Gesetzes auf eine Forumsfrage.', nutzen_stufe: mittel}
-  quellen: [{ref: diese_arbeit}, {ref: forum_tpid, stelle: 'TPID 6 (nur der Grenzwert)'}]
+  bewertung: {richtigkeit: 'numerisch (5 Stellen), Leitterm hergeleitet', neuheit: vermutlich_neu, recherche: 'TPID-Liste (tid 162), Forums-Wiki und Wikipedia nennen nur den Grenzwert η, keine Rate (Recherche 08.10.2026, docs/recherche_wikis_forum.md). Literaturabgleich L1 12.10.2026: die Methode ist klassisch (Engpass nach Pomeau–Manneville 1980; parabolische Rate it.satz.parabolische_rate), eine Anwendung auf TPID 6 nicht gefunden; Gao–Han–Schilling 2012 (Konvergenzrate iterierter Exponentiale) nicht zugänglich und ungeprüft.', nutzen: 'Neue, einfache Anwendung des Engpass-Gesetzes auf eine Forumsfrage.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}, {ref: forum_tpid, stelle: 'TPID 6 (nur der Grenzwert)'}, {ref: pomeau_manneville1980, stelle: 'Engpass-Gesetz (Methode)'}, {ref: gao_han_schilling2012, stelle: 'möglicher Vorläufer, Inhalt unbekannt'}]
   kanten:
     - {typ: verwandt, ziel: fp.satz.tpid6}
     - {typ: analog_zu, ziel: bw.lem.randgesetz}

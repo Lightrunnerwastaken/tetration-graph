@@ -162,7 +162,7 @@ aussagen:
   aussage: '$\operatorname{slog}_b(T_d(x))-x=\mu_{b,d}+P_{b,d}(\{x\})+o(1)$ für $x\to+\infty$, $P$ 1-periodisch mit Mittel 0.'
   beweis: {art: bedingt, text: 'Thm. 5.6 + lokale Lipschitz-Stetigkeit von $A_b$.'}
   stuetzt_sich_auf: [bw.satz.schwanzkonvergenz]
-  quellen: [{ref: justus_p1, stelle: 'Thm. 5.7'}, {ref: forum_fox2007, stelle: 'Konstante μ (als exakt angenommen)'}, {ref: forum_levenstein2009, stelle: 'Werte und „wobbles“'}]
+  quellen: [{ref: justus_p1, stelle: 'Thm. 5.7'}, {ref: forum_fox2007, stelle: 'Konstante μ (als exakt angenommen)'}, {ref: forum_levenstein2009, stelle: 'Werte und „wobbles“'}, {ref: forum_tid1189, stelle: 'Levenstein 31.03.2018: Bild der 1-periodischen Grenzfunktion für Kneser 2 gegen e'}, {ref: paulsen_cowgill2021, stelle: 'Hardy-Körper-Unverträglichkeit (zbMATH)'}]
   versionen:
     - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Vorarbeiten aus dem Tetration-Forum (2007, 2009) eingetragen.'}
   pruefung:
@@ -171,7 +171,7 @@ aussagen:
     f3_spezialfall: 'Allgemeines Muster: Vergleich zweier Abel-Koordinaten ⇒ asymptotisch periodische Abweichung (vgl. kl.beob.zwei_abel für zwei Fixpunkte).'
     f4_uebertragbar: 'Auf $1<b,d<\eta$ (reguläre Zweige) nicht direkt: dort beschränkte Türme, Hyp. 2.4 falsch.'
     f5_neue_frage: 'Regularität von $P$ (Streifen? Gevrey?) und Grösse von $\mu$.'
-  bewertung: {richtigkeit: 'bedingt bewiesen', neuheit: vermutlich_neu, recherche: 'Das Phänomen ist im Tetration-Forum bekannt: J. D. Fox (2007) schrieb die Basiswechsel-Formel mit einer additiven Konstante μ auf, S. Levenstein (2009) mass slog_2 − slog_e ≈ 1.1282 usw. und bemerkte, dass der Wechsel „ein wenig wackelt“. Als Satz mit Beweis (Schwanzkonvergenz, Periodizität, Mittel plus Welle) dort nicht gefunden — das bleibt vermutlich neu.', nutzen: 'Zentrales Ergebnis der Serie; erklärt die beobachtete Nicht-Skalarität.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'bedingt bewiesen', neuheit: vermutlich_neu, recherche: 'Das Phänomen ist im Tetration-Forum bekannt: J. D. Fox (2007) schrieb die Basiswechsel-Formel mit einer additiven Konstante μ auf, S. Levenstein (2009) mass slog_2 − slog_e ≈ 1.1282 usw. und bemerkte, dass der Wechsel „ein wenig wackelt“. Als Satz mit Beweis (Schwanzkonvergenz, Periodizität, Mittel plus Welle) dort nicht gefunden — das bleibt vermutlich neu. Nachtrag 12.10.2026 (Literaturkarte L2): S. Levenstein zeichnete 2018 (tid 1189) die 1-periodische Grenzfunktion slog_e(tet₂(x)) − x für Kneser; W. Paulsen und S. Cowgill bewiesen 2021, dass Kneser-Tetrationen verschiedener Basen in keinen gemeinsamen Hardy-Körper passen (bw.satz.paulsen_cowgill_hardy) — begutachtete Stütze für die Welle, aber kein Phasengesetz.', nutzen: 'Zentrales Ergebnis der Serie; erklärt die beobachtete Nicht-Skalarität.', nutzen_stufe: hoch}
 
 - id: bw.satz.phasengesetz_gestoppt
   titel: Phasengesetz für die gestoppte Kette (Paper III-Lesart)
@@ -493,14 +493,17 @@ aussagen:
       - 'Behauptete Korrektur $O(\ln(b-\eta))$ nicht hergeleitet.'
   stuetzt_sich_auf: [br.satz.sattel_knoten]
   experimente: [exp.randgesetz]
-  quellen: [{ref: justus_p4, stelle: 'Lemma 8.2'}]
+  quellen:
+    - {ref: justus_p4, stelle: 'Lemma 8.2'}
+    - {ref: forum_tid262, stelle: 'S. Levenstein, Beiträge 40–41 (11. und 15.06.2015): sexp_{η+1/n}[π√(2ηn/e) + slog_e(n/e−1) + C] − n → 0 — dem Betrag nach derselbe Leitterm π√(2η/e)(b−η)^{−1/2}, samt log-artiger Korrektur; BenStandeven, Beiträge 22–27 (30.04.–01.05.2009): Engpass slog_η(e−√ε) ≈ 2e/√ε'}
+    - {ref: paulsen2016, stelle: 'Beweis von Lemma 2, S. 102: Engpass-Zählung π√2/√(η_a f''''(x_a))', geprueft: original}
   pruefung:
     f1_folgt_unmittelbar: '**Ja, als Spezialfall** der klassischen Sattel-Knoten-Durchgangszeit $\pi/\sqrt{a\varepsilon}$ (Pomeau–Manneville-Intermittenz).'
     f2_benutzte_voraussetzungen: 'Nur der quadratische Term am Engpass.'
     f3_spezialfall: 'Ja, von br.satz.sattel_knoten.'
     f4_uebertragbar: 'Jede Grösse, die Höhen zwischen $b$ nahe $\eta$ und einer festen Basis vergleicht.'
     f5_neue_frage: 'Rigorose Fassung mit Konstante und Phasenterm über parabolische Implosion → br.frage.implosion'
-  bewertung: {richtigkeit: 'Leitterm: reine Iteration bestätigt $A$ auf 6e-5; Hub-Daten nur auf 4–7 % (modellabhängig), nicht 2.3 % wie in Paper IV', neuheit: folklore, nutzen: 'Erklärt die Divergenz der Hub-Spalte.', nutzen_stufe: mittel}
+  bewertung: {richtigkeit: 'Leitterm: reine Iteration bestätigt $A$ auf 6e-5; Hub-Daten nur auf 4–7 % (modellabhängig), nicht 2.3 % wie in Paper IV', neuheit: bekannt, recherche: 'Korrektur 12.10.2026 (Literaturkarte L2, vorher „folklore“): Leitterm mit derselben Konstante bei S. Levenstein 2015 (Forum tid 262, Beiträge 40–41, als Vermutung mit Mandelbrot-Analogie), Engpass-Zählung bei W. Paulsen 2016 (Lemma 2) und als grobe Rechnung bei BenStandeven 2009 (tid 262). Paper IV kannte diese Stellen nicht.', nutzen: 'Erklärt die Divergenz der Hub-Spalte.', nutzen_stufe: mittel}
   kanten:
     - {typ: spezialfall_von, ziel: br.satz.sattel_knoten}
   nachgeprueft:
@@ -603,7 +606,7 @@ aussagen:
     (nächste bei Radius $0.46$, nach einer weiteren Stufe $0.035$); Trappmann (2009) beweist für $\log_a^{\circ n}\circ\exp_b^{\circ n}$ Verzweigungspunkte bei
     $\log_b^{\circ n}\{a,\dots,\exp_a^{\circ n-2}(1)\}$. Eigene Daten: $\sigma_{\mathrm{eff}}(k)$ fällt bis $k\approx520$ weiter, Gevrey- und Streifenmodell passen gleich gut
     (bw.frage.streifen_gevrey); die Turmanalyse aus Runde 20 spricht eher für Gevrey. Nicht entschieden.
-  quellen: [{ref: forum_levenstein2011, stelle: 'tid 578 (2011), tid 825 (2014)'}, {ref: forum_trappmann2009, stelle: 'Proposition über die Verzweigungspunkte'}, {ref: justus_log, stelle: 'Runde 20 (Turmanalyse)'}]
+  quellen: [{ref: forum_levenstein2011, stelle: 'tid 578 (2011), tid 825 (2014)'}, {ref: forum_trappmann2009, stelle: 'Proposition über die Verzweigungspunkte'}, {ref: justus_log, stelle: 'Runde 20 (Turmanalyse)'}, {ref: forum_tid937, stelle: 'Levenstein 2014: Ableitungen wachsen zu schnell für Analytizität; Basiswechsel im Komplexen nicht definiert'}]
   pruefung:
     f1_folgt_unmittelbar: 'Nein. Dass die Grenzfunktion C^∞ ist, ist für Walkers Variante bewiesen; Analytizität an keiner Stelle zu zeigen ist offen.'
     f2_benutzte_voraussetzungen: —
@@ -726,6 +729,8 @@ aussagen:
     f4_uebertragbar: —
     f5_neue_frage: 'Gilt die Extrapolation ohne die (verworfene) Singularitätsdeutung? Rein empirisch über bw.beob.modenabfall prüfbar.'
   bewertung: {richtigkeit: 'Extrapolation; Begründung entfallen', neuheit: vermutlich_neu, recherche: 'Paper IV.', nutzen: 'Planung von Tabellen.', nutzen_stufe: mittel}
+  nachgeprueft:
+    - {gegen: bw.verm.universell, datum: '2026-10-12', ergebnis: 'Die Herleitung aus dem Singularitätsmodell entfällt (bw.verm.universell überholt); die Zahlen bleiben nur als empirische Extrapolation stehen, Status numerisch, Prüfweg in f5 (bw.beob.modenabfall).'}
 
 - id: bw.beob.positionsgesetz
   titel: Exaktes Positionsgesetz der Modenphasen (Runde 20)
@@ -1139,7 +1144,7 @@ aussagen:
     f4_uebertragbar: 'Komplexe Basen mit gemeinsamem oberem Fixpunkt: dann divergiert der Ausdruck wie A_b(T_b(iy)) (kl.frage.gleiches_L_kneser).'
     f5_neue_frage: 'Welche Funktion der beiden Basen ist A_b(L_d)? (Analytisch in b, d bis zur Diagonale, dort log-singulär.)'
   gegenbeispielsuche: 'Original: K₁ zweifach bestimmt, 19 Stellen; Annäherung bis y = 40. exp.funde: A_e(L_2), K₁ und A_2(L_e) unabhängig mit eigener Koenigs-Rechnung, Abweichung < 10⁻¹⁸ bzw. 10⁻¹².'
-  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Neue, konvergente Seite des Basiswechsels über η.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: vollständig, neuheit: vermutlich_neu, recherche: 'Literaturkarte 12.10.2026: Forum (tid 14, 236, 333, 578, 937, 1189, 1308), Paulsen–Cowgill 2017/2021, Paulsen 2016: der Basiswechsel im Komplexen erscheint nur als Verzweigungsproblem (Trappmann–Levenstein 2009), als „nicht definiert“ (Levenstein 2014) oder über Mellin (Nixon 2021); der Grenzwert A_b(L_d) in imaginärer Richtung wurde nicht gefunden.', nutzen: 'Neue, konvergente Seite des Basiswechsels über η.', nutzen_stufe: hoch}
   quellen: [{ref: justus_imaginaer}]
   kanten:
     - {typ: verwandt, ziel: bw.satz.phasengesetz}
@@ -1157,6 +1162,9 @@ aussagen:
     Für Basen $a,b>\eta$ und Höhen $c<d$: Gilt $\lim_{x\to\infty}\exp_a^{[c]}(x)/\exp_b^{[d]}(x)=0$? Für $c=1<d$ ja (für jede Tetration mit steigender Ableitung). Levenstein vermutet
     (Forum 2018): Für Walkers Lösung gilt es allgemein, für Kneser **nicht** — es gibt dann $c<d$ (sogar mit $a<b$) und beliebig grosse $x$ mit $\exp_a^{[c]}(x)>\exp_b^{[d]}(x)$.
     Der Grund wäre die periodische Welle des Basiswechsels: Kneser-Iterierte zweier Basen sind nur bis auf ein Wackeln ineinander verschoben.
+    Levenstein verwies 2018 auf eine kommende Arbeit von W. Paulsen und S. Cowgill; sie erschien 2021 und zeigt, dass die Kneser-Tetrationen und ihre gebrochenen
+    Iterierten zu verschiedenen Basen in keinem gemeinsamen Hardy-Körper liegen (bw.satz.paulsen_cowgill_hardy). Ob das die Frage für Kneser schon
+    beantwortet (Vorzeichenwechsel genau dieses Quotienten), ist ohne den Text nicht zu entscheiden.
   einfach: >-
     Wenn man die Exponentialfunktion „halb“ oder „drei Viertel mal“ anwendet, wächst die höhere Stufe dann immer schneller — auch bei verschiedenen Basen?
     Vermutlich hängt die Antwort davon ab, welche Fortsetzung der Tetration man nimmt.
@@ -1167,7 +1175,7 @@ aussagen:
     f4_uebertragbar: 'Alle Konstruktionen gebrochener Iterierter.'
     f5_neue_frage: 'Lässt sich aus der gemessenen Welle eine konkrete Gegenbeispiel-Folge für Kneser bauen?'
   bewertung: {richtigkeit: offen, neuheit: bekannt, nutzen: 'Verbindet den Basiswechsel mit einer natürlichen Wachstumsfrage.', nutzen_stufe: mittel}
-  quellen: [{ref: forum_tid1189}]
+  quellen: [{ref: forum_tid1189}, {ref: paulsen_cowgill2021, stelle: 'Hardy-Körper-Unverträglichkeit (zbMATH-Zusammenfassung)'}]
   kanten:
     - {typ: verwandt, ziel: bw.satz.phasengesetz}
     - {typ: verwandt, ziel: kn.satz.halbe_exp_wachstum}

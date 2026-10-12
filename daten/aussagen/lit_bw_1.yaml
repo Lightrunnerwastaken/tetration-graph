@@ -1,0 +1,59 @@
+# Literaturkarte Strang L2 (12.10.2026): Arbeiten anderer zum Basiswechsel. Karte: forschung/literaturkarte/L2_kneser_basiswechsel/KARTE_bw.md
+gebiet: bw
+aussagen:
+
+- id: bw.satz.paulsen_cowgill_hardy
+  titel: 'Paulsen–Cowgill 2021: Kneser-Tetrationen verschiedener Basen passen in keinen gemeinsamen Hardy-Körper'
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [kneser_T, hardy_feld, phase]
+  bereich: 'reelle Basen $a\ne b$ über $\eta$; Tetration = die nach Paulsen–Cowgill 2017 eindeutige analytische Lösung (Kneser) und die von ihr erzeugten gebrochenen Iterierten $\exp_a^{[c]}$'
+  aussage: |
+    Zwei Kneser-Tetrationen $T_a$, $T_b$ mit $a\ne b$ liegen nicht in einem gemeinsamen Hardy-Körper; ebenso sind die gebrochenen Iterierten
+    $\exp_a^{[c]}$ und $\exp_b^{[d]}$, die sie erzeugen, in keinem Hardy-Körper verträglich.
+    In einem Hardy-Körper hat jede Funktion für $x\to\infty$ schliesslich ein festes Vorzeichen, alle Funktionen sind also der Grösse nach vergleichbar.
+    „Unverträglich“ heisst darum: aus den beiden Funktionen lässt sich (mit Körperoperationen und Ableitungen) eine bilden, deren Vorzeichen für $x\to\infty$ nicht zur Ruhe kommt.
+  einfach: >-
+    In einem „Hardy-Körper“ lassen sich alle Funktionen der Grösse nach ordnen: jede ist ab irgendwann grösser, gleich oder kleiner als jede andere.
+    Paulsen und Cowgill zeigen, dass die Kneser-Tetrationen zu zwei verschiedenen Basen nicht zusammen in so eine Ordnung passen —
+    das ist die strenge Form des „Wackelns“, das man beim Umrechnen zwischen Basen sieht.
+  beweis: {art: literatur, text: 'Paulsen–Cowgill 2021, Indian J. Math. 63(1), 127–141. Inhalt nur über die zbMATH-Zusammenfassung geprüft; Beweisweg nicht gelesen.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Literatur).'
+    f2_benutzte_voraussetzungen: 'Die Eindeutigkeit der Tetration nach Paulsen–Cowgill 2017 (kn.satz.paulsen_cowgill); weitere Voraussetzungen nicht gelesen.'
+    f3_spezialfall: 'Verwandt mit dem Phasengesetz (bw.satz.phasengesetz): eine nichtkonstante 1-periodische Phase des Basiswechsels ist genau die Art Schwingung, die eine gemeinsame Hardy-Ordnung stört; ob der Beweis so läuft, ist ungeprüft.'
+    f4_uebertragbar: 'Auf Walker-artige Lösungen vermutlich nicht: Levenstein vermutet dort Verträglichkeit, aber keine Analytizität (bw.frage.halbiter_vergleich).'
+    f5_neue_frage: 'Beantwortet der Satz Taranovskys Frage (bw.frage.halbiter_vergleich) für Kneser, d. h. wechselt exp_a^[c] − exp_b^[d] für passende c < d unendlich oft das Vorzeichen? Dazu braucht es den Text.'
+  bewertung: {richtigkeit: 'Literatur (Text nicht gelesen)', neuheit: bekannt, nutzen: 'Einzige begutachtete Arbeit zum Vergleich von Tetrationen verschiedener Basen; stützt die Welle des Basiswechsels.', nutzen_stufe: hoch}
+  quellen:
+    - {ref: paulsen_cowgill2021, stelle: 'zbMATH-Zusammenfassung (Zbl 1470.39046)'}
+    - {ref: forum_tid1189, stelle: 'Levenstein, Beitrag 4 (31.03.2018): kündigt die Arbeit an, Wellenbild slog_e(tet₂(x)) − x'}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.paulsen_cowgill}
+    - {typ: verwandt, ziel: bw.satz.phasengesetz}
+    - {typ: verwandt, ziel: bw.frage.halbiter_vergleich}
+    - {typ: verwandt, ziel: kn.satz.halbe_exp_wachstum}
+
+- id: bw.frage.nixon_eta_basiswechsel
+  titel: 'Nixon 2021: Basiswechsel von η nach e über eine Mellin-Darstellung — lässt sich die Korrektur reell wählen?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [F_bd, eta, schroeder]
+  aussage: |
+    J. D. Nixon schlug 2021 im Forum einen anderen Weg zum Basiswechsel vor: Ausgangspunkt ist die Basis η mit ihrem neutralen Fixpunkt e. Die gebrochenen Iterierten
+    η^{∘s} schreibt er über eine inverse Mellin-Transformation und setzt sie holomorph auf ℂ ohne (−∞, −2] fort. Gesucht ist dann eine Abbildung φ mit
+    e^{φ(z)} = φ(η^z), etwa φ = Ψ⁻¹(exp(L·slog_η + θ(slog_η))) mit der Poincaré-Funktion Ψ von exp an L und einer 1-periodischen Korrektur θ.
+    Offen ist, wie man θ so wählt, dass φ reell wird — dieselbe Schwierigkeit, die Kneser mit der Riemann-Abbildung löst. Rechnungen gibt es nicht.
+  einfach: >-
+    Statt von der Basis e auf andere Basen umzurechnen, will Nixon von der besonders gutartigen Basis η ≈ 1.4447 aus auf e umrechnen. Die Idee ist skizziert;
+    die entscheidende Korrektur, die alles reell macht, fehlt noch.
+  naechste_frage: 'Vergleich mit unserer Phasen-Sprache: Ist φ bis auf θ der Basiswechsel F_{η,e} (bw.def.F_bd) mit d = η?'
+  quellen:
+    - {ref: forum_tid1308, stelle: 'Nixon, 17.03.2021'}
+  kanten:
+    - {typ: verwandt, ziel: bw.def.F_bd}
+    - {typ: verwandt, ziel: kn.konstr.kneser}

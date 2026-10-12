@@ -15,6 +15,8 @@ aussagen:
     Für ganze $n\ge1$: $a\uparrow\uparrow 1=a$ und $a\uparrow\uparrow(n+1)=a^{\,a\uparrow\uparrow n}$, also ein Turm aus $n$ Kopien von $a$,
     **von oben** ausgerechnet; dazu $a\uparrow\uparrow 0=1$. Beispiele: $2\uparrow\uparrow3=2^{4}=16$, $2\uparrow\uparrow4=2^{16}=65536$,
     $3\uparrow\uparrow3=3^{27}=7\,625\,597\,484\,987$, $e\uparrow\uparrow2=e^e\approx15.154$. Achtung: $(a^a)^a=a^{a^2}$ ist etwas anderes als $a^{(a^a)}$.
+    Namen und Schreibweisen: „Tetration“ von Goodstein (1947); „Superexponentiation“ bei Nelson (1986) und Bromer (1987); die Vorhochzahl ${}^na$ bei
+    Maurer (1901) und Goodstein, bekannt gemacht durch Rucker (1982); der Pfeil $\uparrow\uparrow$ von Knuth (1976).
   einfach: >-
     Man stapelt dieselbe Zahl als Hochzahl übereinander und rechnet von oben nach unten. Eine Tetration T ist eine Kurve, die diese
     Werte an den ganzen Stellen trifft: T(n) = a↑↑n.
@@ -22,7 +24,7 @@ aussagen:
     - {tex: 'a\uparrow\uparrow n = \underbrace{a^{a^{\cdot^{\cdot^{a}}}}}_{n}', notiz: Knuth-Pfeil}
     - {tex: '{}^{n}a = a\uparrow\uparrow n', notiz: Schreibweise mit Vorhochzahl}
     - {tex: 'T_a(n)=a\uparrow\uparrow n,\quad T_a(0)=1,\quad T_a(-1)=0', notiz: als Werte einer Tetration}
-  quellen: [{ref: goodstein1947}, {ref: knuth1976}]
+  quellen: [{ref: goodstein1947}, {ref: knuth1976}, {ref: maurer1901}, {ref: nelson1986}, {ref: bromer1987}, {ref: rucker1982}, {ref: wikipedia_tetration, stelle: 'Abschnitt Terminology/Notation'}]
   kanten:
     - {typ: verwandt, ziel: br.def.hyperoperation}
     - {typ: verwandt, ziel: fg.lem.ganzzahlwerte}
@@ -85,7 +87,7 @@ aussagen:
     f4_uebertragbar: 'Der Turm $x^{x^x}$ hat ebenfalls Minimum/Wendepunkte — gleiche Methode.'
     f5_neue_frage: 'Warum taucht $\eta$ hier und beim unendlichen Turm auf? Beide Male geht es um $\ln x/x$ bzw. $x\ln x$ bei $e$.'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Einstieg, zeigt η an unerwarteter Stelle.', nutzen_stufe: gering}
-  quellen: [{ref: diese_arbeit}]
+  quellen: [{ref: steiner1850, stelle: 'Maximum von x^(1/x) bei e (gleichwertig)'}, {ref: knoebel1981}, {ref: diese_arbeit}]
   kanten:
     - {typ: verwandt, ziel: fp.def.eta}
 
@@ -738,7 +740,7 @@ aussagen:
     f4_uebertragbar: 'Fixpunkte jeder Familie $f_a$: $x''=\partial_af/(1-f'')$.'
     f5_neue_frage: 'Verhalten bei $\lambda\to1$ → gr.satz.wurzel_eta'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Zeigt den Multiplikator in einer Ableitung.', nutzen_stufe: mittel}
-  quellen: [{ref: diese_arbeit}]
+  quellen: [{ref: knoebel1981, stelle: 'Reihe des unendlichen Turms'}, {ref: corless1996}, {ref: diese_arbeit}]
 
 - id: gr.satz.wurzel_eta
   titel: Quadratwurzel bei η
@@ -764,7 +766,7 @@ aussagen:
     f4_uebertragbar: 'Gleiche Wurzel im Randgesetz der Basiswechsel-Mittel und in der Durchgangszeit.'
     f5_neue_frage: 'Den Koeffizienten $-1.6166$ geschlossen ausrechnen (nächste Taylor-Ordnung).'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Elementare Brücke zur Forschung (Randgesetz).', nutzen_stufe: hoch}
-  quellen: [{ref: diese_arbeit}]
+  quellen: [{ref: corless1996, stelle: 'Reihe von W am Verzweigungspunkt −1/e'}, {ref: knoebel1981}, {ref: diese_arbeit, stelle: 'Nachrechnung, nächster Term gemessen'}]
   kanten:
     - {typ: analog_zu, ziel: bw.lem.randgesetz}
     - {typ: analog_zu, ziel: br.satz.sattel_knoten}
@@ -819,7 +821,7 @@ aussagen:
     f4_uebertragbar: 'Jede wachsende Tetration — alle haben dieselbe Treppe, sie unterscheiden sich nur zwischen den Stufen.'
     f5_neue_frage: 'Wie gross ist der Abstand verschiedener Konstruktionen innerhalb einer Stufe? (fg.satz.allgemeine_loesung: eine periodische Funktion)'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Anschauliches Bild für slog.', nutzen_stufe: hoch}
-  quellen: [{ref: diese_arbeit}]
+  quellen: [{ref: hopcroft_ullman1973, stelle: 'log* als Laufzeitschranke'}, {ref: diese_arbeit, stelle: 'Beweis der Treppenbeziehung'}]
 
 - id: gr.satz.slog_ableitung
   titel: Ableitung des Superlogarithmus

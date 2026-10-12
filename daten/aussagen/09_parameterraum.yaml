@@ -221,7 +221,8 @@ aussagen:
   aussage: |
     Ist $\alpha$ eine Brjuno-Zahl (z. B. der goldene Schnitt, jede algebraische Irrationalzahl), so ist $f_b$ am Fixpunkt
     linearisierbar: es gibt eine **Siegel-Scheibe** um $L$, auf der $f_b$ einer Drehung um $2\pi\alpha$ gleicht. Der Orbit von 1
-    liegt ausserhalb und häuft sich an ihrem Rand. Ob die Brjuno-Bedingung für diese Familie auch notwendig ist, ist hier
+    liegt nicht in der Scheibe; ihr Rand liegt im Abschluss des Orbits (Fatou), und bei unbeschränkter Scheibe — für diophantisches $\alpha$
+    immer — liegt der Orbit auf dem Rand (fp.satz.siegel_unbeschraenkt). Ob die Brjuno-Bedingung für diese Familie auch notwendig ist, ist hier
     nicht am Original geprüft (Geyer 2001 beweist Notwendigkeit für $\lambda z e^z$; Konjugation zu $\lambda(e^s-1)$ ist eine andere Familie).
   beweis: {art: literatur, text: 'Siegel (diophantisch), Brjuno/Rüssmann (Brjuno-Bedingung). Rand: Fatou — der Rand einer Siegel-Scheibe liegt im Abschluss des postsingulären Orbits.'}
   experimente: [exp.mittelwerte]
@@ -232,43 +233,82 @@ aussagen:
     f4_uebertragbar: 'Für Liouville-artige α (nicht Brjuno) sind Cremer-Punkte möglich: keine Scheibe, keine Linearisierung.'
     f5_neue_frage: 'Die „scheibenartigen Punktwolken“ der Notiz (Abb. 2–5) sind der Rand der Siegel-Scheibe → fp.satz.siegel_mittel'
   bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Erklärt die Abbildungen 2–5 der Notiz.', nutzen_stufe: mittel}
-  quellen: [{ref: siegel1942}, {ref: brjuno1971}, {ref: yoccoz1995}, {ref: geyer2001}, {ref: justus_ctd, stelle: 'Abschnitt 4'}]
+  quellen: [{ref: siegel1942}, {ref: brjuno1971}, {ref: yoccoz1995}, {ref: geyer2001}, {ref: justus_ctd, stelle: 'Abschnitt 4'}, {ref: cremer1928, stelle: 'Nicht-Linearisierbarkeit (Cremer-Punkte), vgl. it.satz.cremer', geprueft: sekundaer}, {ref: herman1985, stelle: 'Siegel-Scheiben der Exponentialfamilie unbeschränkt', geprueft: sekundaer}]
 
 - id: fp.ann.siegel_rand
   titel: Siegel-Rand ist eine Jordankurve, auf der der Orbit von 1 liegt
   art: annahme
   ebene: C
-  status: annahme
+  status: widerlegt
   niveau: forschung
   objekte: [shell_thron, multiplikator]
   aussage: |
     Für $b=b(2\pi\alpha)$ mit Brjuno-Zahl $\alpha$ ist die Siegel-Scheibe $\Delta$ beschränkt, ihr Rand eine Jordankurve, und der
     Orbit von 1 liegt auf $\partial\Delta$.
-  quellen: [{ref: diese_arbeit}]
+  bewertung: {richtigkeit: 'Widerlegt nach Literaturabgleich L1 (12.10.2026): $b^z$ ist affin konjugiert zu $\exp(w)+\kappa$. Für diophantisches $\alpha$ — also auch für den goldenen Schnitt, an dem gerechnet wurde — ist die Siegel-Scheibe einer Exponentialabbildung unbeschränkt (Herman 1985). Der Teil „beschränkt, Jordankurve“ ist damit falsch. Richtig bleibt der letzte Teil: Bei unbeschränkter Scheibe liegt der singuläre Wert (hier 0; sein Orbit ist 0, 1, b, …) auf dem Rand (Rempe 2004), siehe fp.satz.siegel_unbeschraenkt.', neuheit: unklar, nutzen: 'Hatte den Mittelwertsatz fp.satz.siegel_mittel getragen.', nutzen_stufe: gering}
+  quellen: [{ref: diese_arbeit}, {ref: herman1985, geprueft: sekundaer}, {ref: rempe2004, geprueft: original}]
   kanten:
-    - {typ: verwandt, ziel: fp.satz.neutral, notiz: 'Für beschränkten Typ (goldener Schnitt) plausibel; Literaturlage nicht geprüft.'}
+    - {typ: verwandt, ziel: fp.satz.neutral, notiz: 'Annahme war für beschränkten Typ gedacht; gerade dort widerlegt.'}
+
+- id: fp.satz.siegel_unbeschraenkt
+  titel: 'Siegel-Scheiben des Turms sind unbeschränkt, der Orbit von 1 liegt auf dem Rand (Herman 1985, Rempe 2004)'
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [shell_thron, multiplikator]
+  bereich: '$b=b(2\pi\alpha)$, d. h. Fixpunkt mit Multiplikator $e^{2\pi i\alpha}$; $\alpha$ diophantisch für (i), Scheibe unbeschränkt für (ii)'
+  voraussetzungen:
+    - {text: 'α diophantisch (z. B. goldener Schnitt, jede algebraische Irrationalzahl)', benutzt: ja}
+  aussage: |
+    $f(z)=b^z$ ist über $w=z\ln b+\ln\ln b$ zu $E_\kappa(w)=\exp(w)+\kappa$ konjugiert. Daraus und aus der Literatur:
+    (i) **Herman (1985):** Ist $\alpha$ diophantisch, so ist die Siegel-Scheibe $\Delta$ um den Fixpunkt **unbeschränkt** — eine beschränkte Scheibe
+    hätte nach Hermans Satz einen kritischen Punkt auf dem Rand, und $\exp$ hat keinen.
+    (ii) **Rempe (2004):** Ist eine Siegel-Scheibe von $E_\kappa$ unbeschränkt, so liegt der singuläre Wert auf ihrem Rand (bei Periode 1:
+    $\kappa\in\partial\Delta$). Für $b^z$ ist der singuläre Wert $0$; also liegen $0$, $1=b^0$ und der ganze Turm $1,b,b^b,\dots$ auf $\partial\Delta$.
+    Fast alle $\alpha$ hatte schon Rippon erledigt; unabhängig auch Buff–Fagella (unveröffentlicht).
+  einfach: >-
+    Wenn der Turm am Rand des Shell–Thron-Gebiets um einen Fixpunkt kreist, gibt es um den Fixpunkt eine Scheibe, in der sich alles nur dreht.
+    Diese Scheibe reicht bei der Exponentialfunktion immer bis ins Unendliche, und der Turm läuft genau auf ihrem Rand.
+  beweis: {art: literatur, text: 'Herman 1985 (Comm. Math. Phys. 99), wiedergegeben in der Einleitung von Rempe 2004; Rempe 2004, Theorem (Bull. London Math. Soc. 36, im Original gelesen). Konjugation: $\ln b\cdot b^z=\exp(z\ln b+\ln\ln b)$.'}
+  quellen: [{ref: herman1985, stelle: 'nach der Einleitung von Rempe 2004', geprueft: sekundaer}, {ref: rempe2004, stelle: 'Theorem und Einleitung (Frage von Herman, Baker und Rippon)', geprueft: original}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Herman und Rempe über die Konjugation zur Exponentialfamilie.'
+    f2_benutzte_voraussetzungen: '(i) braucht diophantisches α (Herman-Klasse genügt); für Brjuno-, aber nicht diophantische α ist Beschränktheit hier nicht geklärt. (ii) braucht nur die Unbeschränktheit.'
+    f3_spezialfall: 'Ja: Spezialfall der Aussagen für die ganze Exponentialfamilie.'
+    f4_uebertragbar: 'Auf periodische Siegel-Scheiben in Knospen (Rempe: κ ∈ ∂E^j(U) für ein j).'
+    f5_neue_frage: 'Gilt der Mittelwertsatz fp.satz.siegel_mittel auch für unbeschränkte Scheiben (Randwerte der Linearisierung integrierbar)?'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: bekannt, nutzen: 'Korrigiert die Annahme fp.ann.siegel_rand und sagt, wo der Turm an irrationalen Randpunkten wirklich läuft.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: widerlegt, ziel: fp.ann.siegel_rand}
+    - {typ: verwandt, ziel: fp.satz.neutral}
+    - {typ: verwandt, ziel: fp.satz.siegel_mittel}
 
 - id: fp.satz.siegel_mittel
   titel: Zeitmittel auf dem Siegel-Rand ist der Fixpunkt
   art: satz
   ebene: C
-  status: bedingt
-  bedingungen: [fp.ann.siegel_rand]
+  status: skizze
   niveau: forschung
   objekte: [multiplikator, shell_thron, turm]
   bereich: '$b=b(2\pi\alpha)$, $\alpha$ Brjuno'
   voraussetzungen:
-    - {text: 'fp.ann.siegel_rand', benutzt: ja, ref: fp.ann.siegel_rand}
+    - {text: 'Orbit von 1 auf dem Rand der Siegel-Scheibe (für unbeschränkte Scheiben bewiesen: fp.satz.siegel_unbeschraenkt)', benutzt: ja, ref: fp.satz.siegel_unbeschraenkt}
+    - {text: 'Randdynamik entlang des Orbits eindeutig ergodisch mit Mass ω_L, und z integrierbar bezüglich ω_L', benutzt: ja}
   aussage: |
     $$\frac1N\sum_{n=n_0}^{n_0+N-1}z_n\;\longrightarrow\;L\qquad(N\to\infty).$$
-    Die „Scheibenmittel-Identität“ (5) der Notiz ist damit unter der Annahme ein Satz.
+    Die „Scheibenmittel-Identität“ (5) der Notiz ist damit für beschränkte Jordan-Scheiben ein Satz; für die tatsächlich vorliegenden
+    unbeschränkten Scheiben (fp.satz.siegel_unbeschraenkt) ist der Beweis eine Skizze.
   beweis:
-    art: bedingt
+    art: skizze
     text: |
-      Die Linearisierung $\varphi:\mathbb D\to\Delta$, $\varphi(0)=L$, setzt sich (Carathéodory) zu einem Homöomorphismus des Randes fort
+      Wäre $\Delta$ beschränkt mit Jordan-Rand: Die Linearisierung $\varphi:\mathbb D\to\Delta$, $\varphi(0)=L$, setzt sich (Carathéodory) zu einem Homöomorphismus des Randes fort
       und konjugiert $f$ auf $\partial\Delta$ zur Drehung um $2\pi\alpha$. Diese ist eindeutig ergodisch (Weyl), also gilt für jeden Randpunkt
       $\frac1N\sum z_n\to\int_{\partial\Delta}z\,d\omega_L$ mit dem harmonischen Mass $\omega_L=\varphi_*(d\theta/2\pi)$.
       Mittelwerteigenschaft der harmonischen Funktion $z$: $\int z\,d\omega_L=L$.
+    luecken:
+      - 'Nach Herman (1985) ist $\Delta$ für diophantisches $\alpha$ unbeschränkt; Carathéodory greift dann nicht. Zu zeigen wäre, dass $\varphi$ Randwerte in $L^1(d\theta)$ hat (Hardy-Raum $H^1$), damit der Mittelwertsatz gilt.'
+      - 'Ohne Jordan-Rand ist die Randdynamik nicht automatisch zu einer Drehung konjugiert; die Gleichverteilung des Turms bezüglich $\omega_L$ ist offen.'
   experimente: [exp.mittelwerte]
   pruefung:
     f1_folgt_unmittelbar: 'Ja, unter der Annahme: Weyl + Mittelwertsatz.'
@@ -644,8 +684,8 @@ aussagen:
     f4_uebertragbar: 'Für Zyklen der Länge ≥ 3 keine so einfache Auflösung bekannt.'
     f5_neue_frage: 'Form der Komponente → fp.satz.p2_kein_kreis; Raten → fp.satz.p2_raten'
   gegenbeispielsuche: 'Original: μ = uv auf 10⁻⁵¹, Rand auf 10⁻¹⁶, 400 reelle Basen μ ∈ (0,1). exp.funde: Zyklusprobe bei s = 1.3 exakt, μ reell in (0,1) bei b = 0.06 … 10⁻⁶.'
-  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Exakte Beschreibung dessen, was unter der Eulerschen Schranke e^{−e} geschieht.', nutzen_stufe: hoch}
-  quellen: [{ref: justus_periode2, stelle: '§§0–1, 7'}]
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, recherche: 'Literaturabgleich L1, 12.10.2026 — im Kern bekannt. Reell: dass der Turm für alle $0<b<e^{-e}$ zwischen zwei Grenzwerten pendelt (keine weitere Periodenverdopplung), steht schon bei Barrow 1936 (JFM-Rezension), ausführlich bei Knoebel 1981, de Villiers–Robinson 1986 und Cho–Kim 2004 (Analytizität der beiden Grenzfunktionen). Komplex: Baker–Rippon 1985 (Fibonacci Quart.) parametrisieren Türme mit zwei abwechselnden Basen durch $\log a=se^{-t}$, $\log b=te^{-s}$, Konvergenz genau bei $|st|\le1$; für $a=b$ ist das unsere Form mit $(s,t)=(v,u)$ und $\mu=uv$; allgemein für periodische Basen Baker–Rippon 1989; $D_2$ zusammenhängend: Baker–Rippon 1984; zweite Hilfsgleichung mit Lambert W: Galidakis 2005. Eigen sind nur die Schreibweise mit $G(p)=\sqrt p/\sinh\sqrt p$ und die Zahl der Periode-4-Wurzel.', nutzen: 'Exakte Beschreibung dessen, was unter der Eulerschen Schranke e^{−e} geschieht.', nutzen_stufe: hoch}
+  quellen: [{ref: justus_periode2, stelle: '§§0–1, 7'}, {ref: barrow1936, stelle: 'Oszillation zwischen zwei Werten für a < e^{−e} (JFM-Rezension)'}, {ref: baker_rippon1985, stelle: 'Parametrisierung log a = s e^{−t}, log b = t e^{−s}, |st| ≤ 1', geprueft: sekundaer}, {ref: baker_rippon1989a, geprueft: sekundaer}, {ref: baker_rippon1984, stelle: 'D_2 zusammenhängend', geprueft: sekundaer}, {ref: galidakis2005, geprueft: sekundaer}, {ref: cho_kim2004, geprueft: sekundaer}]
   kanten:
     - {typ: analog_zu, ziel: fp.satz.multiplikator_rezept}
     - {typ: verwandt, ziel: gr.kor.turmintegral_formen}
@@ -677,7 +717,7 @@ aussagen:
     f5_neue_frage: 'Blattstruktur: die Randkurve schneidet jede Höhe Im c = kπ einmal (zweites Blatt bei b = 0.0494).'
   gegenbeispielsuche: 'exp.funde: b_links unabhängig über |G(p)| = 1, Im c = π bestimmt: −0.08052815762548356282 (alle 20 Stellen).'
   bewertung: {richtigkeit: 'gesichert (Literatur), Zahlen bestätigt', neuheit: bekannt, nutzen: 'Erklärt die Form der blauen Blase in Bild 1.', nutzen_stufe: mittel}
-  quellen: [{ref: justus_periode2, stelle: '§§2–3'}, {ref: schleicher2004}, {ref: baker_rippon1985}]
+  quellen: [{ref: justus_periode2, stelle: '§§2–3'}, {ref: schleicher2004}, {ref: baker_rippon1985}, {ref: baker_rippon1984, stelle: 'D_2 zusammenhängend', geprueft: sekundaer}]
   kanten:
     - {typ: stuetzt_sich_auf, ziel: fp.satz.p2_form}
 
@@ -707,8 +747,8 @@ aussagen:
     f4_uebertragbar: 'Gleiche Rechnung an jeder Knospenwurzel.'
     f5_neue_frage: 'Amplitude |K(1)| (Maximum 0.1240 bei b = 0.043) — geschlossene Form?'
   gegenbeispielsuche: 'exp.funde: √n|z_n − 1/e| = 0.901664 bei n = 10⁶ (Original 0.901664); (1 − μ)/t = 0.735758883, |z₁ − z₂|/√t = 1.093110076 bei t = 10⁻⁸.'
-  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Exakte Konstanten an der Eulerschen Schranke.', nutzen_stufe: mittel}
-  quellen: [{ref: justus_periode2, stelle: '§§4–5'}]
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, recherche: 'Literaturabgleich L1, 12.10.2026: Das Gesetz $n^{-1/2}$ am parabolischen Punkt mit Multiplikator $-1$ ist die Standardrechnung für Iterationen nahe einem Fixpunkt mit Multiplikator 1 (Leau–Fatou; Raten bei Thron 1960 und de Bruijn 1958, Kap. 8). Mögliche Vorläufer für die Konstanten: Cho–Kim 2004 (asymptotische Formeln der beiden Grenzfunktionen an $e^{-e}$; Formeln nicht gelesen) und Gao–Han–Schilling 2012 (Konvergenzrate des Turms; Inhalt nicht zugänglich). Nicht entschieden.', nutzen: 'Exakte Konstanten an der Eulerschen Schranke.', nutzen_stufe: mittel}
+  quellen: [{ref: justus_periode2, stelle: '§§4–5'}, {ref: cho_kim2004, stelle: 'Asymptotik an e^{−e} (möglicher Vorläufer)', geprueft: sekundaer}, {ref: gao_han_schilling2012, stelle: 'Konvergenzrate (Inhalt unbekannt)'}, {ref: thron1960}]
   kanten:
     - {typ: verwandt, ziel: gr.verm.turmintegral_rate, notiz: 'dieselbe n^{−1/2}-Spitze erzeugt dort den Exponenten 3/2'}
 
@@ -745,8 +785,8 @@ aussagen:
     f4_uebertragbar: 'Komplexe Basen in der Region: dort echte Phase im Multiplikator-Bild (arg μ), nicht in x.'
     f5_neue_frage: 'Gibt es eine ausgezeichnete reelle Tetration (ausgezeichnetes x*) für 0 < b < e^{−e}?'
   gegenbeispielsuche: 'Original: drei bzw. vier Startinterpolationen, |c_k|πk konstant auf 8 Stellen bis k = 41. exp.funde (lineare Startinterpolation, x* = 0.698330769): |c_k|πk = 0.7651944 … 0.7651888 für k = 1 … 41; T(x* + n) = L für n ≤ 12.'
-  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Zeigt, was aus der Basiswechsel-Welle wird, wenn der Fixpunkt abstossend reell ist.', nutzen_stufe: hoch}
-  quellen: [{ref: justus_periode2, stelle: '§6'}]
+  bewertung: {richtigkeit: vollständig, neuheit: vermutlich_neu, recherche: 'Literaturabgleich L1, 12.10.2026: Die Literatur zum Bereich unter $e^{-e}$ behandelt den Turm (Barrow 1936, Knoebel 1981, de Villiers–Robinson 1986, MacDonnell 1989, Cho–Kim 2004, Baker–Rippon 1985/89, Galidakis 2005), nicht eine Tetration in gebrochener Höhe. Im Forum hat tid 352 (2009, drei Seiten) genau diese Frage gestellt; dort scheitern reguläre Iteration am abstossenden Fixpunkt und am 2-Zyklus, Helms rechnet über einen komplexen Fixpunkt — Rechteckwelle und Kreuzen der Julia-Menge kommen nicht vor. Ueda 2021 (arXiv 2105.00247, zurückgezogen) gibt nur eine stückweise Formel. Volltexte von Cho–Kim und Gao–Han–Schilling nicht gelesen.', nutzen: 'Zeigt, was aus der Basiswechsel-Welle wird, wenn der Fixpunkt abstossend reell ist.', nutzen_stufe: hoch}
+  quellen: [{ref: justus_periode2, stelle: '§6'}, {ref: forum_tid352, stelle: 'offene Frage nach der Tetration für 0 < b < e^{−e} (2009)', geprueft: sekundaer}]
   kanten:
     - {typ: verwandt, ziel: kl.satz.basis_unter_eins}
     - {typ: verwandt, ziel: gr.satz.turmintegral_grenzen, notiz: 'gleiche Zwei-Becken-Struktur, dort über die Basis x'}

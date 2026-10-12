@@ -32,7 +32,7 @@ aussagen:
       $E(y)=\exp^{\circ k}(E(y-k))\ge\exp^{\circ k}(e^c)$. Mit $k=n+j$: $\exp^{\circ n}(\exp^{\circ j}(e^c))\ge\exp^{\circ n}(y)$,
       sobald $\exp^{\circ j}(e^c)\ge y$ — gilt für grosse $y$, da $j\approx y$ und $\exp^{\circ j}$ turmartig wächst.
   stuetzt_sich_auf: [br.satz.vdd_miller]
-  quellen: [{ref: diese_arbeit}]
+  quellen: [{ref: vdd_miller1994, stelle: 'Wachstumsschranke (Prop. 9.10)'}, {ref: dmm1994}, {ref: diese_arbeit, stelle: 'elementarer Wachstumsvergleich'}]
   pruefung:
     f1_folgt_unmittelbar: 'Ja, aus br.satz.vdd_miller und einem elementaren Wachstumsvergleich.'
     f2_benutzte_voraussetzungen: 'Nur Stetigkeit auf einer Periode (für das Minimum); keine Monotonie, keine Analytizität.'
@@ -129,12 +129,12 @@ aussagen:
   aussage: 'Die Folge $a\uparrow\uparrow n \bmod m$ ist schliesslich konstant.'
   beweis: {art: vollstaendig, text: 'Induktion über $m$: $a^k\bmod m$ hängt für $k\ge\log_2 m$ nur von $k\bmod\lambda(m)$ ab (Carmichael), und $\lambda(m)<m$; die Exponenten $a\uparrow\uparrow(n-1)$ werden mod $\lambda(m)$ konstant.'}
   experimente: [exp.kongruenz]
-  quellen: [{ref: diese_arbeit}]
+  quellen: [{ref: blakley_borosh1983}, {ref: shapiro2007, stelle: 'Abstract, §1–2 (auch für gemischte Türme)'}, {ref: diese_arbeit, stelle: 'eigener Beweis, Experiment'}]
   pruefung:
     f1_folgt_unmittelbar: 'Ja, aus dem verallgemeinerten Satz von Euler.'
     f2_benutzte_voraussetzungen: 'Nur Zahlentheorie mod m.'
     f3_spezialfall: nein
-    f4_uebertragbar: '—'
+    f4_uebertragbar: 'Auf gemischte Türme und p-adisch (ar.satz.selbstpotenz_kongruenz, ar.satz.padische_tuerme).'
     f5_neue_frage: 'Wie viele Endziffern stabilisieren pro Stufe? → br.satz.ripa'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Diskrete Seite der Tetration.', nutzen_stufe: gering}
 
@@ -144,9 +144,9 @@ aussagen:
   ebene: C
   status: bewiesen_literatur
   objekte: [mod_m]
-  aussage: 'Die Zahl neuer stabiler Endziffern pro Stufe, $V(a)$, ist ab einer Höhe konstant; für $a\not\equiv0\pmod{10}$ ist $V(a)$ eine 2- oder 5-adische Bewertung von $a\pm1$ oder $a^2+1$, je nach $a\bmod 20$. Für $a\equiv5\pmod{10}$: $V(a)=v_2(a^2-1)-1$ (OEIS A317905).'
-  beweis: {art: literatur, text: 'Ripà 2020, Ripà–Onnis 2022.'}
-  quellen: [{ref: ripa2020}, {ref: ripa_onnis2022}, {ref: oeis_A317905}]
+  aussage: 'Die Zahl neuer stabiler Endziffern pro Stufe, $V(a)$, ist ab einer Höhe konstant; für $a\not\equiv0\pmod{10}$ ist $V(a)$ eine 2- oder 5-adische Bewertung von $a\pm1$ oder $a^2+1$, je nach $a\bmod 20$. Für $a\equiv5\pmod{10}$: $V(a)=v_2(a^2-1)-1$ (OEIS A317905). Jeder Wert kommt vor: zu jedem $c\ge1$ gibt es unendlich viele $c$-te Potenzen $a$ mit $V(a)=c$ (Ripà 2024).'
+  beweis: {art: literatur, text: 'Ripà 2011 (Buch, Ursprung), Ripà 2020, Ripà–Onnis 2022, Ripà 2024.'}
+  quellen: [{ref: ripa2011}, {ref: ripa2020}, {ref: ripa_onnis2022}, {ref: ripa2024}, {ref: oeis_A317905}]
   experimente: [exp.kongruenz]
   pruefung:
     f1_folgt_unmittelbar: Nein.
@@ -281,8 +281,12 @@ aussagen:
     $\Gamma$ ist durch logarithmische Konvexität eindeutig bestimmt. Für die Tetration zeigen fg.kor.nichteindeutigkeit und
     ar.satz.keine_arith_info: Analytizität und Monotonie reichen nicht; die bekannten Eindeutigkeitssätze sind komplex.
     Gibt es eine reelle Bedingung (Konvexität aller Ableitungen von $\operatorname{slog}$, totale Monotonie, Carleman-Grenzwert), die genau Kneser auswählt?
+    Literatur: Für Differenzengleichungen $\Delta f=g$ ist die Bohr–Mollerup-Theorie weit ausgebaut (Krull 1948/49, Webster 1997, Marichal–Zenaïdi 2022:
+    Eindeutigkeit, sobald $g$ schliesslich $p$-konvex ist). Sie greift hier nicht direkt: $T(x+1)=b^{T(x)}$ und $\operatorname{slog}(b^x)=\operatorname{slog}(x)+1$
+    sind Abel- bzw. Konjugationsgleichungen, kein $\Delta f=g$ mit bekanntem $g$. Reelle Teilantworten: Hooshmand (Konvexität, kn.satz.hooshmand);
+    für $b<\eta$ Szekeres' total monotone Abel-Funktion (it.satz.szekeres_monoton).
   naechste_frage: 'An Kneser-Werten testen, welche Konvexitätsbedingungen erfüllt sind, und ob periodische Störungen sie stets verletzen (Gegenbeispielsuche mit $\theta=c\sin2\pi x$, $c\to0$).'
-  quellen: [{ref: diese_arbeit}]
+  quellen: [{ref: bohr_mollerup1922}, {ref: krull1948}, {ref: webster1997}, {ref: marichal_zenaidi2022}, {ref: diese_arbeit}]
   kanten:
     - {typ: verwandt, ziel: kn.verm.carleman_kneser}
     - {typ: verwandt, ziel: kn.satz.hooshmand}
@@ -348,7 +352,7 @@ aussagen:
     f4_uebertragbar: 'Auf transfinite Stufen f_α (br.satz.ordinal_tetration).'
     f5_neue_frage: 'nein'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Verbindet Tetration mit Berechenbarkeit und Algorithmen-Laufzeiten.', nutzen_stufe: mittel}
-  quellen: [{ref: forum_tid10}, {ref: kalmar_grzegorczyk}]
+  quellen: [{ref: ackermann1928}, {ref: peter1935}, {ref: tarjan1975, stelle: 'inverse Ackermann-Funktion bei Union-Find'}, {ref: forum_tid10}, {ref: kalmar_grzegorczyk}]
   kanten:
     - {typ: verwandt, ziel: br.satz.kalmar}
     - {typ: verwandt, ziel: gr.satz.logstern}
@@ -364,6 +368,8 @@ aussagen:
     Mit Cantors Potenz der Ordinalzahlen ist $\omega\uparrow\uparrow n=\omega^{\omega^{\cdot^{\cdot^\omega}}}$ und $\omega\uparrow\uparrow\omega=\sup_n\omega\uparrow\uparrow n=\varepsilon_0$, die kleinste Lösung von
     $\omega^x=x$. Die naive Fortsetzung $\omega\uparrow\uparrow(\alpha+1)=\omega^{\omega\uparrow\uparrow\alpha}$ steht danach still: $\omega\uparrow\uparrow(\omega+1)=\omega^{\varepsilon_0}=\varepsilon_0$.
     $\varepsilon_0$ ist die Beweisstärke der Peano-Arithmetik (Gentzen); daran hängt Goodsteins Satz, dessen Folgen mit Türmen wachsen.
+    Doner–Tarski (1969) setzen die Hyperoperationen über Suprema stetig auf Ordinalzahlen fort ($O_0=+$, $O_1=\cdot$, $O_2=$ Potenz); ihre dritte Stufe ist
+    kein Turm mehr, sondern $\alpha\,O_3\,(1+\beta)=\alpha^{\alpha^\beta}$ — auch so zeigt sich, dass die übliche Tetration im Transfiniten nicht weiterträgt.
   einfach: >-
     Auch mit unendlichen Ordinalzahlen kann man Türme bauen. Der unendlich hohe Turm aus ω heisst ε₀ — und weil ε₀ hoch ω wieder ε₀ ist, kommt man mit
     höheren Türmen nicht weiter.
@@ -375,7 +381,7 @@ aussagen:
     f4_uebertragbar: 'Höhere Operationen über Veblen-Funktionen.'
     f5_neue_frage: 'nein'
   bewertung: {richtigkeit: Literatur, neuheit: klassisch, nutzen: 'Zeigt, wo die Tetration in der Logik auftaucht.', nutzen_stufe: gering}
-  quellen: [{ref: forum_tid124}, {ref: goodstein1947}]
+  quellen: [{ref: forum_tid124}, {ref: goodstein1947}, {ref: doner_tarski1969, stelle: 'Def. 1, Satz 3(iii)'}]
   kanten:
     - {typ: verwandt, ziel: br.satz.ackermann}
 
@@ -408,7 +414,7 @@ aussagen:
     f4_uebertragbar: 'Jede Iterationsgruppe statt exp^[s].'
     f5_neue_frage: 'Gibt es eine natürliche Wahl für die Zwischenstufen (Nixons Halboperationen, Forum tid 1386, 1535)?'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Zeigt, welche Freiheit in der Definition der Hyperoperationen steckt.', nutzen_stufe: gering}
-  quellen: [{ref: forum_tid145}, {ref: forum_tid150}, {ref: bennett1915}]
+  quellen: [{ref: forum_tid145}, {ref: forum_tid150}, {ref: bennett1915}, {ref: mueller1993, stelle: '(i) links ausgewertete Hyperoperationen'}, {ref: jaramillo2020, stelle: '(iii) Bennetts Folge als Folge von Monoiden, Körper durch Vervollständigung'}]
   kanten:
     - {typ: verwandt, ziel: br.def.hyperoperation}
     - {typ: verwandt, ziel: kn.satz.halbe_exp}

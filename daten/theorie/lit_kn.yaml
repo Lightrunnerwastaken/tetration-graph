@@ -1,0 +1,242 @@
+# Theorie-Blöcke für die Literatur-Aussagen des Gebiets kn (Strang L2, Literaturkarte, 12.10.2026)
+
+kn.beob.eta4_interpolation:
+  worum: |
+    Um $\eta_4$ und $e_4$ auszurechnen, braucht man normalerweise eine Tetration für gebrochene Höhen — und damit eine Wahl, welche.
+    Es gibt aber einen Umweg, der ohne diese Wahl auskommt: die Superwurzel an ganzen Stellen.
+  genau: |
+    Die Selbst-Superwurzel $s(x)$ ist die Basis mit ${}^{x}s(x)=x$. Für ganze $n$ ist sie eindeutig, weil ${}^{n}a$ in $a$ streng wächst.
+    Robbins (2009) legte ein Interpolationspolynom durch mehrere hundert Werte $s(n)$, mike3 (2010) eine Newton-Reihe. Das Maximum der
+    interpolierten Kurve liegt bei $x\approx3.0885325$ mit Wert $\approx1.6353245$ — Kneser gibt $e_4=3.08853227\ldots$, $\eta_4=1.63532450\ldots$
+  warum: |
+    1. Ist $T_b$ irgendeine wachsende Tetration, dann ist $s(x)$ die Lösung von $T_{s}(x)=x$; das Maximum von $s$ ist die grösste Basis, für die $T_b$ einen
+       Fixpunkt über 1 hat — also $\eta_4$, und die Stelle ist $e_4$ (Kennzeichnung 2 in [[kn.beob.tetra_euler]]).
+    2. An ganzen Stellen hängt $s(n)$ von keiner Wahl ab. Wenn die Interpolation gegen „die richtige“ Funktion läuft, bestimmt sie das Maximum ohne Wahl.
+    3. Dass sie das tut, ist nicht bewiesen — dieselbe Frage stellt TPID 12 ([[fp.frage.tpid12_13]]). Die Übereinstimmung auf sieben Stellen mit Kneser ist ein Indiz.
+  beispiel: |
+    $s(2)=\ln2/W(\ln2)=1.559610\ldots$ (denn $a^a=2$), $s(3)=1.635078\ldots$ (denn $a^{a^a}=3$). Schon $s(3)$ liegt nur $2.5\cdot10^{-4}$ unter $\eta_4$ —
+    der Gipfel der Kurve liegt knapp rechts von 3.
+  einordnung: |
+    Einer von mehreren Zugängen zu TPID 10 ([[kn.verm.tpid10]]); daneben der Matrix-slog ([[kn.beob.eta4_matrix]]) und Kneser ([[kn.beob.tetra_euler]]).
+
+kn.beob.eta4_matrix:
+  worum: |
+    Dieselbe Zahl $e_4$, mit einer anderen Methode gerechnet, kommt 2009 in der fünften Nachkommastelle anders heraus. Das zeigt, wie stark
+    die Zahlen aus TPID 10 an der gewählten Fortsetzung hängen — oder wie langsam manche Verfahren konvergieren.
+  genau: |
+    Matrix-slog nach Robbins mit 200 Dimensionen: $1.6353244967\uparrow\uparrow\uparrow\infty\approx3.0885549441$. Kneser: $e_4=3.0885322718\ldots$ Unterschied $+2.3\cdot10^{-5}$.
+  warum: |
+    1. Für $b<\eta_4$ hat $T_b$ zwei Fixpunkte nahe $e_4$; die Folge $1,b,T_b(b),\dots$ steigt monoton und bleibt unter dem unteren.
+    2. Also ist der Grenzwert kleiner als die Berührstelle der benutzten Tetration. Das Abschneiden der Basis drückt den Wert nach unten, nicht nach oben.
+    3. Ein Wert über Knesers $e_4$ heisst darum: die Matrix-Tetration mit 200 Dimensionen hat ein grösseres $e_4$ — durch Abschneiden oder weil sie eine andere Tetration ist.
+  einordnung: |
+    Prüfstein für die Frage, ob der Matrix-slog gegen Kneser läuft ([[kn.verm.carleman_kneser]], [[kn.beob.carleman_rate]]); Zugang (b) in [[kn.verm.tpid10]].
+
+kn.verm.tpid11:
+  worum: |
+    tommy1729 fügte TPID 10 eine Ungleichung hinzu, die die beiden Folgen koppelt: Das Quadrat einer „Eta“ bleibt unter der „Euler“-Zahl der Stufe davor.
+  genau: |
+    (1) $\eta_n^2<e_{n-1}$; (2) $(\eta_n^2-e_{n-1})/(\eta_{n-1}^2-e_{n-2})\to1$. Mit $d_n=2-\eta_n$, $D_n=4-e_n$ ist (1) gleichwertig mit
+    $r_n=D_{n-1}/(4d_n-d_n^2)<1$.
+  warum: |
+    1. Umformen: $\eta_n^2-e_{n-1}=(2-d_n)^2-(4-D_{n-1})=D_{n-1}-4d_n+d_n^2$.
+    2. Gemessen: $r_4=0.967$, $r_5=0.929$, $r_6=0.915$ — unter 1 und fallend; (1) gilt für $n=4,5,6$.
+    3. Fallen $d_n$ und $D_n$ wie Potenzen von $n$, so gehen Quotienten aufeinanderfolgender Glieder gegen 1 — das ist (2). Für (1) muss $D_n$ am Ende mindestens
+       so schnell fallen wie $d_n$; bisher fällt es langsamer (Exponent 1.2 gegen 1.47), aber sein Exponent steigt.
+  beispiel: |
+    $\eta_5^2=3.01836$, $e_4=3.08853$: Unterschied $-0.070$, also etwa 2 % unter $e_4$.
+  einordnung: |
+    Nebenvermutung zu [[kn.verm.tpid10]]; die Abstände stehen in [[kn.beob.tpid10_gesetz]].
+
+kn.beob.hoehere_etas:
+  worum: |
+    Die Folge $\eta,\eta_4,\eta_5,\dots$ verlangt für jedes Glied eine neue Hyperoperation. Sheldon Levenstein hat 2017 als Erster die Kette bis zur Heptation gebaut
+    und die Grenzbasen abgelesen.
+  genau: |
+    Pentation regulär am linken reellen Fixpunkt der Tetration, Hexation Kneser-artig an den konjugierten Fixpunkten der Pentation, Heptation regulär am linken
+    reellen Fixpunkt der Hexation. Beschränkt bis $\approx1.635$ (Pentation), $\approx1.738$ (Hexation), $1.799$ (Heptation), $1.839$ (Oktation), also
+    $\eta_4,\eta_5,\eta_6,\eta_7$ auf drei Stellen.
+  warum: |
+    1. $H_{n+1}(b,m)$ entsteht aus 1 durch wiederholtes Anwenden von $H_n(b,\cdot)$; die Folge steigt.
+    2. Sie bleibt genau dann beschränkt, wenn $H_n(b,\cdot)$ einen Fixpunkt über 1 hat — und das ist genau bis zur Berührbasis $\eta_n$ der Fall.
+    3. Die Grenze der Beschränktheit der Stufe $n+1$ ist darum $\eta_n$.
+  beispiel: |
+    Unsere genauen Werte: $\eta_5=1.737356$ (Levenstein $\approx1.738$), $\eta_6=1.799121$ (Levenstein $1.799$).
+  einordnung: |
+    Ältere Quelle für [[kn.beob.stufe5]] und [[kn.beob.stufe6]]; einziger Wert für $\eta_7$; Prüfwert für [[kn.beob.tpid10_gesetz]].
+
+kn.beob.tpid10_gesetz:
+  worum: |
+    Vier genaue Glieder reichen nicht für einen Grenzwert, aber für ein Gesetz: Wie schnell nähern sich die Etas der 2? Wenn das Gesetz stimmt, sagt es das
+    nächste Glied voraus — und das kann man mit Levensteins Angabe vergleichen.
+  genau: |
+    $2-\eta_n\approx2.8\,n^{-1.47}$ für $n=3,\ldots,6$ (lokale Exponenten $1.462$, $1.471$, $1.470$). Hochrechnung $\eta_7\approx1.8399$, Levenstein 2017: $1.839$.
+    $4-e_n$: Exponenten $1.185$, $1.192$, $1.235$, Hochrechnung $e_7\approx3.54$.
+  warum: |
+    1. Ein Potenzgesetz $d_n=An^{-p}$ hat konstante lokale Exponenten $\ln(d_n/d_{n+1})/\ln\frac{n+1}{n}=p$; ein geometrisches Gesetz hätte konstante Quotienten $d_{n+1}/d_n$.
+    2. Gemessen sind die Exponenten fast gleich, die Quotienten steigen ($0.657$, $0.720$, $0.765$) — also Potenz, nicht geometrisch.
+    3. Mit $p=1.4705$ und $A$ aus $d_6$ folgt $d_7=0.1601$, $\eta_7=1.8399$.
+  beispiel: |
+    $d_6=0.20088$, $d_7=d_6\cdot(6/7)^{1.4705}=0.16013$.
+  einordnung: |
+    Quantitative Fassung von [[kn.verm.tpid10]]; Prüfwert aus [[kn.beob.hoehere_etas]]; die Kopplung beider Folgen in [[kn.verm.tpid11]].
+
+kn.verm.beschraenkt_unter_2:
+  worum: |
+    Was bedeutet „$\eta_n\to2$“ für eine einzelne Basis, etwa 1.9? Nixons Antwort: ab einer gewissen Stufe sind alle Hyperoperationen zur Basis 1.9 zahm —
+    ihre unendlichen Türme haben einen Wert. Zur Basis 2 dagegen nie.
+  genau: |
+    (i) $H_{n+1}(b,m)$ ist in $m$ beschränkt $\iff b\le\eta_n$. (ii) Aus (i) und TPID 10: für jedes $b<2$ gibt es $N$ mit Beschränktheit für alle $n\ge N$.
+  warum: |
+    1. (i): Die Folge $1,b,H_n(b,b),\dots$ steigt; sie ist beschränkt genau dann, wenn $H_n(b,\cdot)$ einen Fixpunkt über 1 hat. Offen ist nur, dass dies genau bis $\eta_n$
+       gilt — dafür braucht man, dass $H_n(b,x)$ in $b$ wächst und höchstens zwei Fixpunkte über 1 hat (bis $n=6$ gemessen).
+    2. (ii): Ist $\eta_n$ wachsend mit Grenzwert 2, so ist $b<\eta_N$ für ein $N$, dann auch $b<\eta_n$ für alle $n\ge N$.
+    3. Basis 2: $2\uparrow^n2=4$, aber $2\uparrow^n3=2\uparrow^{n-1}4$ — die Folge wächst in jeder Stufe über alle Grenzen.
+  einordnung: |
+    Heuristik von Nixon (Forum 2011/2017) zu [[kn.verm.tpid10]]; Spezialfälle: [[fp.satz.turm_reell]] ($n=3$), [[kn.beob.tetra_euler]] ($n=4$), [[kn.beob.unendliche_hexation]] ($n=5$).
+
+kn.frage.pentation_untergrenze:
+  worum: |
+    Der gewöhnliche unendliche Turm hat einen Wert genau zwischen $e^{-e}$ und $\eta$. Für die nächste Stufe kennt man die obere Grenze $\eta_4$ — aber nicht, ob es eine untere gibt.
+  genau: |
+    Offen: Gibt es ein $b_0>0$, so dass $b\uparrow\uparrow\uparrow m$ für $b<b_0$ nicht konvergiert (analog zu $e^{-e}$)?
+  warum: |
+    1. Schon $b\uparrow\uparrow\uparrow2={}^{b}b$ braucht die Tetration an der Höhe $b$, für $b<1$ also an einer gebrochenen Höhe.
+    2. Für $0<b<1$ hat $b^x$ am Fixpunkt eine negative Ableitung; die reguläre Iteration dort ist nicht reell.
+    3. Darum hängt die Frage an einer Wahl der Tetration unter 1, die es noch nicht gibt.
+  einordnung: |
+    Von Robbins 2010 gestellt; Gegenstück zu [[fp.satz.turm_reell]]; Basen unter 1: [[kl.satz.basis_unter_eins]].
+
+kn.frage.andere_etas:
+  worum: |
+    Die Etas und Eulers sind keine festen Naturkonstanten, sondern hängen davon ab, wie man die höheren Stufen baut. Im Forum wurde 2022 gefragt, welche Werte
+    andere Bauweisen geben, und ob $e_4$ eine besondere Zahl ist.
+  genau: |
+    Offen: Etas/Eulers für „schwache“ Hyperoperationen (gemeldet: $\approx1.584$, $\approx2.439$), für die 2sinh-Methode, eine allgemeine Definition je Stufe,
+    und die Rationalität bzw. Transzendenz von $e_4$.
+  warum: |
+    Ohne festgelegte Fortsetzung jeder Stufe ist $\eta_n$ nicht definiert; der Matrix-slog gibt schon für $e_4$ einen anderen Wert ([[kn.beob.eta4_matrix]]).
+  einordnung: |
+    Randfragen zu [[kn.verm.tpid10]]; 2sinh-Methode: [[kn.konstr.zwei_sinh]].
+
+kn.konstr.paulsen_stoerung:
+  worum: |
+    Die Exponentialfunktion hat keinen reellen Fixpunkt — darum gibt es für sie keine eindeutige „reguläre“ halbe Iterierte. Paulsen biegt sie ein wenig,
+    bis sie einen hat, löst dort eindeutig und nimmt die Biegung wieder zurück.
+  genau: |
+    Abel-Gleichung zuerst für eine gestörte Funktion mit reellem Fixpunkt (eindeutige holomorphe Lösung nach Schröder/Koenigs), dann Grenzübergang zu $\exp$;
+    eine Metrik zwischen Lösungen wählt eine Lösung „zwischen“ den anderen; Übertragung auf $a^x$; für $a\downarrow\eta$ stetig gegen die Lösung zur Basis $\eta$.
+  warum: |
+    1. Am reellen Fixpunkt $x_0$ mit $0<g'(x_0)\ne1$ gibt es genau eine analytische Schröder-Funktion mit $\sigma'(x_0)=1$, also eine Abel-Funktion $\ln\sigma/\ln s$.
+    2. Für die gestörte Funktion nahe $\exp$ ist das Bild nahe dem Fixpunkt eindeutig; die Abhängigkeit von der Störung entfernt Paulsen durch eine Auswahl in seiner Metrik.
+    3. Nahe $\eta$ müssen die Bahnen durch einen Engpass; im Beweis zählt er die Schritte dort als Riemann-Summe, $\approx\pi\sqrt2/\sqrt{\eta_af''(x_a)}$.
+  einordnung: |
+    Ein weiterer Zugang neben Kneser ([[kn.konstr.kneser]]) und Walker ([[kn.konstr.walker]]); die Engpass-Zählung ist dasselbe Gesetz wie [[bw.lem.randgesetz]].
+
+# ---------------------------------------------------------------- Block 2 (12.10.2026)
+kn.satz.tk_kriterien:
+  worum: |
+    Das Eindeutigkeitskriterium von Trappmann und Kouznetsov verlangt, dass die verschobenen Bilder eines Gebiets die ganze Ebene bedecken. Das ist schwer direkt
+    zu prüfen. Ihre Kriterien 2 und 3 übersetzen es in eine einfache Bedingung: Imaginärteile entlang einer einzigen Kurve.
+  genau: |
+    Anfangskurve $\gamma$ zwischen den Fixpunkten, Abel-Funktion $\alpha$ mit $\alpha(d)=0$. Wächst $t\mapsto\operatorname{Im}\alpha(\gamma(t))$ streng und geht gegen $\pm\infty$,
+    dann ist $\alpha$ auf dem Anfangsgebiet die einzige solche Abel-Funktion. Für $b>\eta$ ist die senkrechte Strecke von $\bar L$ nach $L$ eine Anfangskurve von $\exp_b$.
+  warum: |
+    1. Wächst $\operatorname{Im}\zeta$ streng, nimmt $\zeta=\alpha\circ\gamma$ keinen Wert zweimal an, und $\zeta+1$ schneidet $\zeta$ nicht (Kriterium 3 ⇒ 2).
+    2. Eine injektive Kurve mit $\operatorname{Im}\to\pm\infty$ teilt die Ebene in einen linken und einen rechten Teil (Lemma 3). Das Bild $\alpha(H)$ ist der Streifen
+       zwischen $\zeta$ und $\zeta+1$; seine ganzzahligen Verschiebungen bedecken alles (Kriterium 2 ⇒ 1).
+    3. Kriterium 1 gibt die Eindeutigkeit über ganze Funktionen mit ganzer Umkehrung, die nur linear sein können ([[kn.satz.trappmann_kouznetsov]]).
+  einordnung: |
+    Zweiter Schritt in der Geschichte der Eindeutigkeit: numerisch ([[kn.beob.kouznetsov_numerik]]), Kriterium (hier), Satz ([[kn.satz.paulsen_cowgill]]).
+
+kn.verm.tk_c2:
+  worum: |
+    Welche Bedingungen braucht man wirklich, damit „die“ Tetration eindeutig ist? Trappmann und Kouznetsov vermuteten 2010: Glattheit in der ganzen Ebene
+    (bis auf einen Schnitt) und Spiegelsymmetrie reichen.
+  genau: |
+    Vermutung: Ist $f$ holomorph auf $\mathbb C\setminus(-\infty,-2]$, $f(\bar z)=\overline{f(z)}$, $f(0)=1$, $f(z+1)=b^{f(z)}$, dann ist $f$ Knesers Tetration.
+  warum: |
+    Nur eine Begründung des Schnitts: aus $f(-1)=0$ folgt $f(-2)=\log_b0$. Jede andere Lösung ist $f(z+\theta(z))$ mit 1-periodischem $\theta$; holomorph auf der
+    geschlitzten Ebene bliebe sie nur, wenn $z+\theta(z)$ den Schnitt nie trifft — dass das nur für konstantes $\theta$ geht, ist der offene Kern.
+  einordnung: |
+    Paulsen–Cowgill beweisen Eindeutigkeit mit zusätzlichem Grenzwert bei $i\infty$ ([[kn.satz.paulsen_cowgill]]); Nixons β-Methode fragt nach Lösungen ohne ihn ([[kn.frage.beta_methode]]).
+
+kn.konstr.paulsen_cowgill_iteration:
+  worum: |
+    Neben dem Eindeutigkeitssatz enthält die Arbeit von Paulsen und Cowgill ein schnelles Rechenverfahren für Knesers Tetration.
+  genau: |
+    180 Knoten, Genauigkeit besser als $10^{-50}$ für die meisten Basen über $\eta$, ein bis zwei Stellen pro Iteration (nach dem Abstract).
+  warum: |
+    Einzelheiten sind uns nicht zugänglich; das Abstract nennt nur Knotenzahl, Genauigkeit und Konvergenzgeschwindigkeit.
+  einordnung: |
+    Drittes Hochpräzisionsverfahren neben [[kn.konstr.cauchy]] und Levensteins fatou.gp; Abgleich mit [[kn.beob.referenzwerte]] wäre eine unabhängige Kontrolle.
+
+kn.beob.kouznetsov_numerik:
+  worum: |
+    Bevor die Eindeutigkeit bewiesen war, gab es ein numerisches Argument: Kouznetsovs Rechnung lief immer zur selben Lösung.
+  genau: |
+    Die Integralgleichung für $F(iy)$ konvergiert in einigen zehn Durchgängen, Residuum $\approx10^{-14}$; $F$ ist beschränkt längs der imaginären Achse und strebt gegen $L$, $\bar L$.
+  warum: |
+    Eine Iteration, die aus verschiedenen Startwerten zum selben Ergebnis läuft, deutet auf genau einen Fixpunkt der Iteration hin — also auf genau eine Lösung in der
+    betrachteten Klasse. Ein Beweis ist das nicht: Konvergenz und Klasse sind nicht formal gesichert.
+  einordnung: |
+    Erster Schritt vor [[kn.satz.tk_kriterien]] und [[kn.satz.paulsen_cowgill]]; das Verfahren selbst ist [[kn.konstr.cauchy]].
+
+kn.satz.walker_konjugation:
+  worum: |
+    $e^x-1$ hat bei 0 einen Fixpunkt und lässt sich dort gut iterieren; $e^x$ hat keinen reellen. Walker verbindet beide durch eine glatte Funktion $h$.
+  genau: |
+    Es gibt $h\in C^\infty(\mathbb R)$ mit $h(e^x)=e^{h(x)}-1$. Mit einer Abel-Funktion $A$ von $e^x-1$ ist dann $G=A\circ h$ eine $C^\infty$-Lösung von $G(e^x)=G(x)+1$.
+  warum: |
+    1. $G(e^x)=A(h(e^x))=A(e^{h(x)}-1)=A(h(x))+1=G(x)+1$.
+    2. $h$ entsteht als Grenzwert $\operatorname{dexp}^{-n}\circ\exp^n$: weit draussen unterscheiden sich $e^x$ und $e^x-1$ relativ kaum, die Rückwärtsschritte mit $\log(1+x)$ dämpfen den Fehler.
+    3. Die Glattheit aller Ableitungen ist der technische Teil der Arbeit.
+  einordnung: |
+    Kern von [[kn.konstr.walker]]; derselbe Grenzwert-Typ wie der Basiswechsel ([[bw.def.F_bd]]); Analytizität offen ([[bw.verm.nirgends_analytisch]]).
+
+kn.verm.szekeres_wachstum:
+  worum: |
+    Welche halbe Iterierte von $e^x-1$ ist „die richtige“? Szekeres schlägt vor: die mit dem regelmässigsten Wachstum, und versucht, das messbar zu machen.
+  genau: |
+    Für $F$ mit Fixpunkt 0, $F^{\prime}(0)\ge1$: eine abgeschwächte vollständige Monotonie der Fourier-Koeffizienten von $\varphi\circ A^{-1}$ ($\varphi$ eine spezielle
+    Lösung von $\varphi\circ F=\varphi$) soll reguläres Wachstum kennzeichnen.
+  warum: |
+    Jede Abel-Lösung unterscheidet sich von einer anderen um eine periodische Funktion. Deren Fourier-Koeffizienten messen, wie stark sie „wackelt“; ein Monotoniegesetz
+    für diese Koeffizienten wäre ein Kriterium ohne komplexe Analysis. Belegt ist es nur numerisch.
+  einordnung: |
+    Auswahlprinzip neben Kneser (Holomorphie, [[kn.konstr.kneser]]), Walker (Glattheit, [[kn.satz.walker_konjugation]]) und Paulsen (Metrik, [[kn.konstr.paulsen_stoerung]]).
+
+kn.verm.tpid3:
+  worum: |
+    Abgeschnittene Carleman-Matrizen sind ein Rechenweg für gebrochene Iterierte ohne Fixpunkt-Wahl. TPID 3 fragt, ob ihre Eigenwerte trotzdem die richtigen
+    Fixpunktdaten treffen, hier für die einfache Funktion $(x+s)^p-s$.
+  genau: |
+    $f(x)=(x+s)^p-s$ hat den Fixpunkt $1-s$ mit Multiplikator $p$. Vermutet: Eigenwerte der $N\times N$-Matrix um 0 gehen gegen $1,p,p^2,\dots$
+  warum: |
+    Wäre die unendliche Carleman-Matrix zur Dreiecksform konjugierbar wie am Fixpunkt, hätte sie das Spektrum $\{p^k\}$; die Frage ist, ob die Abschnitte um 0 das erben.
+    Gemessen: ja, wenn $1-s$ im Konvergenzkreis $|x|<s$ liegt; nein in drei Fällen ausserhalb.
+  beispiel: |
+    $s=3/4$, $p=2/3$: Abstand $6\cdot10^{-11}$ bei $N=32$. $s=3/10$, $p=1/2$: Abstand schwankt zwischen $0.14$ und $0.92$.
+  einordnung: |
+    Gegenstück zu TPID 1 ([[kn.verm.carleman_eigenwerte]]); Verfeinerung [[kn.verm.tpid3_bedingung]].
+
+kn.verm.tpid3_bedingung:
+  worum: |
+    Die Messungen zu TPID 3 zeigen ein einfaches Muster: Die Matrix um 0 „sieht“ einen Fixpunkt nur, wenn er im Konvergenzkreis ihrer Reihe liegt.
+  genau: |
+    Vermutung: Eigenwerte $\to\{p^k\}$ genau für $|1-s|<s$, also $s>1/2$ (bei $p\notin\mathbb N$); bei ganzem $p$ bestimmt der nähere Fixpunkt das Grenzspektrum.
+  warum: |
+    Die Carleman-Matrix um 0 enthält nur die Taylorkoeffizienten dort; ausserhalb des Konvergenzkreises bestimmen sie die Funktion nicht mehr auf natürliche Weise.
+    Ein Fixpunkt dort hinterlässt darum keine Spur im Spektrum der Abschnitte. Belegt nur an fünf Fällen.
+  einordnung: |
+    Präzisiert [[kn.verm.tpid3]]; erwartbar auch für TPID 14 ([[kn.frage.tpid14]]).
+
+kn.frage.tpid14:
+  worum: |
+    Robbins' Matrix-slog wird um einen Punkt herum entwickelt. Ist das Ergebnis vom Punkt unabhängig?
+  genau: |
+    Frage (TPID 14): Gibt der Matrix-slog um $x_0$ und um 0 dieselbe Funktion, wenn beide Punkte im Konvergenzradius des jeweils anderen liegen?
+  warum: |
+    Ist der Matrix-slog Knesers slog ([[kn.verm.carleman_kneser]]), dann ja — die Frage ist also ein Prüfstein für die Gleichheit der Verfahren.
+  einordnung: |
+    Verwandt mit [[kn.konstr.carleman]] und den Eigenwertfragen [[kn.verm.carleman_eigenwerte]], [[kn.verm.tpid3]].

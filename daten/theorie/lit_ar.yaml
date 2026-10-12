@@ -1,0 +1,98 @@
+# Theorie-Blöcke für die Literatur-Aussagen der Arithmetik (Strang L3, Literaturkarte, 12.10.2026)
+
+ar.verm.gelfond_turm:
+  worum: |
+    Welche Türme aus „schönen“ Zahlen sind selbst noch schön? Gelfond hatte 1934 eine Antwort angekündigt, aber nie bewiesen.
+  genau: |
+    Für algebraisches irrationales $\alpha$ und für $z=e^\omega$ ($\omega\ne0$ algebraisch) sind die Türme ${}^kz$ ($k\ge2$) transzendent und sogar algebraisch unabhängig.
+  warum: |
+    Nicht bewiesen. Bekannt sind nur die untersten Stockwerke: $\alpha^\alpha$ ist nach Gelfond–Schneider transzendent, $e^\omega$ nach Hermite–Lindemann. Ab dem dritten Stockwerk
+    bräuchte man Aussagen über die algebraische Unabhängigkeit mehrerer Exponentialwerte — das ist das Gebiet der Schanuel-Vermutung.
+  beispiel: |
+    $\sqrt2^{\sqrt2}$ ist transzendent (bewiesen). Ob $\sqrt2^{\sqrt2^{\sqrt2}}$ transzendent ist, weiss niemand.
+  bilder: []
+  einordnung: |
+    Folgt aus [[ar.satz.ssc_gelfond]]; die Spezialfälle stehen in [[ar.satz.gelfond_schneider]] und [[ar.satz.rationale_tuerme]]; offen ist schon [[ar.frage.e_hoch_e]].
+
+ar.satz.ssc_gelfond:
+  worum: |
+    Die Schanuel-Vermutung würde fast alle offenen Transzendenzfragen über Türme beantworten. Marques und Sondow zeigen, dass dafür schon eine Variante reicht.
+  genau: |
+    Die Schanuel-Teilmengen-Vermutung (SSC) impliziert Gelfonds Turm-Vermutung; die Schanuel-Vermutung impliziert SSC, für $n=2$ sind sie gleichwertig.
+  warum: |
+    1. SSC sagt: Hängt die Menge $\{\alpha_i,e^{\alpha_i}\}$ algebraisch von wenigen ihrer Elemente ab, so sind diese wenigen algebraisch unabhängig.
+    2. Bei einem Turm entsteht jedes Stockwerk als $e^{(\text{Stockwerk darunter})\cdot\log z}$; die Zahlen der Kette lassen sich so als eine solche Menge schreiben.
+    3. Induktion über die Stockwerke liefert die Unabhängigkeit.
+  beispiel: |
+    Für $n=2$: Ist die Schanuel-Vermutung für zwei Zahlen falsch, so gibt es $a,b$ mit Transzendenzgrad 1 von $\mathbb Q(a,b,e^a,e^b)$ — das widerspricht SSC (Proposition 1).
+  bilder: []
+  einordnung: |
+    Teil der Folgerungen von [[ar.verm.schanuel]]; Ziel ist [[ar.verm.gelfond_turm]].
+
+ar.satz.sondow_marques_xx:
+  worum: |
+    Unsere Aussagen über Superwurzeln haben ein breiteres Gegenstück in der Literatur: einfache Exponentialgleichungen und die Natur ihrer Lösungen.
+  genau: |
+    Für $x^x=y$, $x^y=y^x$, $x^x=y^y$, $x^y=y$, $x^{xy}=y$ wird geklärt, wann algebraische Daten transzendente Lösungen erzwingen.
+  warum: |
+    Meist reicht Gelfond–Schneider: Wäre $x$ algebraisch und irrational, so wäre $x^x$ transzendent. Die übrigen Fälle (rationale Kandidaten) erledigen exponentielle
+    diophantische Gleichungen.
+  beispiel: |
+    $x^x=\tfrac34$ hat zwei Lösungen im Intervall $(0,1)$; beide sind transzendent.
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[ar.satz.superwurzel_arith]].
+
+ar.satz.liouville_tuerme:
+  worum: |
+    Für algebraische Zahlen weiss man über das dritte Stockwerk eines Turms nichts. Für bestimmte Liouville-Zahlen dagegen schon.
+  genau: |
+    Es gibt eine $G_\delta$-dichte Menge von Liouville-Zahlen $\xi$ mit transzendentem ${}^3\xi$.
+  warum: |
+    Liouville-Zahlen lassen sich extrem gut durch Brüche annähern. Man baut die Menge so, dass ein algebraischer Wert von ${}^3\xi$ einer Schranke von Baker für Linearformen in
+    Logarithmen widersprechen würde.
+  beispiel: |
+    „$G_\delta$-dicht“ heisst grob: in jedem noch so kleinen Intervall liegen solche Zahlen, und zwar „fast alle“ im Sinne der Baire-Kategorie.
+  bilder: []
+  einordnung: |
+    Ein unbedingter Teilerfolg in Richtung [[ar.verm.gelfond_turm]] — allerdings für andere Basen.
+
+ar.satz.unendliche_tuerme_gs:
+  worum: |
+    Was für eine Zahl ist der unendliche Turm $b^{b^{b^{\cdots}}}$, wenn $b$ algebraisch ist?
+  genau: |
+    Für algebraisches $b\in(1,e^{1/e}]$ ist $h(b)$ rational oder transzendent.
+  warum: |
+    Der Turmwert erfüllt $h=b^h$. Ein algebraisches irrationales $h$ würde nach Gelfond–Schneider ein transzendentes $b^h$ ergeben — Widerspruch.
+  beispiel: |
+    $h(\sqrt2)=2$ (rational). Für $b=1.4=7/5$ ist $h(1.4)=1.88666330\ldots$: entweder ein Bruch oder transzendent — algebraisch irrational kann es nicht sein.
+  bilder: []
+  einordnung: |
+    Gegenstück zu [[ar.satz.rationale_tuerme]] für unendlich viele Stockwerke.
+
+ar.satz.padische_tuerme:
+  worum: |
+    Reell konvergiert der unendliche Turm nur bis zur Basis $e^{1/e}$. In den $p$-adischen Zahlen konvergiert er für jede ganze Basis.
+  genau: |
+    $b_1\uparrow b_2\uparrow\cdots$ konvergiert in $\mathbb Z_p$; für $n\equiv1\pmod p$ ist $n\uparrow\uparrow\infty$ die einzige Lösung von $x=n^x$ in $\mathbb Z_p$.
+  warum: |
+    1. Türme modulo $p^m$ werden schliesslich konstant ([[br.satz.turm_mod_m]]). $p$-adisch heisst das: die Folge der Teil-Türme ist eine Cauchy-Folge.
+    2. Für $n\equiv1\pmod p$ ist $x\mapsto n^x$ auf $\mathbb Z_p$ eine Kontraktion mit Faktor $1/p$; Banach liefert genau einen Fixpunkt.
+  beispiel: |
+    $7\uparrow\uparrow k$ modulo $3^m$ ist für grosse $k$ konstant; diese Reste setzen sich zu einer 3-adischen Zahl $\alpha$ mit $7^\alpha=\alpha$ zusammen.
+  bilder: []
+  einordnung: |
+    Verwandt mit [[ar.satz.selbstpotenz_kongruenz]]; die reelle Seite steht im Gebiet Fixpunkte und Turm.
+
+ar.satz.selbstpotenz_kongruenz:
+  worum: |
+    Endziffern-Rätsel wie „letzte Ziffer von $7^{8^{9^{10}}}$“ führen auf eine kleine Theorie der Türme modulo $k$.
+  genau: |
+    $n^n\bmod k$ ist schliesslich periodisch; $x^x\equiv u$ und $y^{y^y}\equiv u\pmod k$ sind für teilerfremdes $u$ lösbar; gemischte Türme werden modulo $k$ konstant.
+  warum: |
+    Die Hochzahl zählt modulo $k$ nur bis auf die Carmichael-Zahl $\lambda(k)<k$; man reduziert Stockwerk für Stockwerk mit immer kleineren Moduln, bis der Modul 1 erreicht ist.
+  beispiel: |
+    Modulo 10 sind die Reste von $n^n$ periodisch mit Periode 20.
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[br.satz.turm_mod_m]]; die Endziffern-Formeln von Ripà stehen in [[br.satz.ripa]].

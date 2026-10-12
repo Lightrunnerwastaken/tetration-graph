@@ -40,7 +40,7 @@ aussagen:
     streng wachsende Lösung von $\varphi(\varphi(x))=e^x$ bzw. eine reell-analytische Tetration.
   beweis: {art: literatur, text: 'Kneser 1950; numerisch: Kouznetsov 2009 (Cauchy-Integral), Levenstein fatou.gp (Theta-Iteration).'}
   stuetzt_sich_auf: [it.satz.koenigs, fg.satz.schroeder_abel, fp.satz.lambert]
-  quellen: [{ref: kneser1950}, {ref: kouznetsov2009}, {ref: levenstein_fatou}]
+  quellen: [{ref: kneser1950}, {ref: forum_tid213, stelle: 'Trappmanns Darstellung des Beweisgangs (Schröder-Funktion an c, Riemann-Abbildung, induzierte Möbius-Abbildung parabolisch, Spiegelung); Problem 1941 in Jena besprochen'}, {ref: kouznetsov2009}, {ref: levenstein_fatou}]
   pruefung:
     f1_folgt_unmittelbar: 'Nein; die Riemann-Abbildung ist der wesentliche Schritt.'
     f2_benutzte_voraussetzungen: 'Fixpunktpaar $L,\bar L$ nichtreell, abstossend.'
@@ -65,7 +65,7 @@ aussagen:
     $T(x+iy)\to L$ für $y\to+\infty$, $\to\bar L$ für $y\to-\infty$ (für jedes feste $x>-2$).
   beweis: {art: literatur, text: 'Kouznetsov 2009, Paulsen–Cowgill 2017.'}
   stuetzt_sich_auf: [kn.konstr.kneser]
-  quellen: [{ref: paulsen_cowgill2017}, {ref: kouznetsov2009}]
+  quellen: [{ref: paulsen_cowgill2017}, {ref: kouznetsov2009, stelle: 'zbMATH-Rezension: analytisch bis auf Singularitäten an den ganzen Zahlen < −1 und einen Schnitt links von −2; F(iy) → L längs der imaginären Achse'}]
   pruefung:
     f1_folgt_unmittelbar: Nein.
     f2_benutzte_voraussetzungen: 'Genaue Herkunft jeder Teilaussage nicht am Original geprüft.'
@@ -88,7 +88,7 @@ aussagen:
   aussage: 'Dann ist $F_1=F_2$ auf $H_{-2}$. Die Kneser-Lösung erfüllt die Bedingungen, ist also die einzige solche.'
   beweis: {art: literatur, text: 'Paulsen–Cowgill 2017, Prop. 2. Mechanismus: $F_2=F_1\circ(\mathrm{id}+\theta)$, θ periodisch, und die Grenzwerte zwingen θ zur Beschränktheit in beiden Halbebenen.'}
   stuetzt_sich_auf: [fg.lem.periodisch_liouville]
-  quellen: [{ref: paulsen_cowgill2017, stelle: 'Prop. 2', geprueft: sekundaer}, {ref: justus_p6, stelle: 'Thm. 11.11 (Wiedergabe)'}]
+  quellen: [{ref: paulsen_cowgill2017, stelle: 'Prop. 2; Abstract (Repositorium arch.astate.edu): natürliche Bedingungen erzwingen Knesers Lösung, „beantwortet eine Vermutung von Trappmann und Kouznetsov“ (vgl. kn.verm.tk_c2)', geprueft: sekundaer}, {ref: justus_p6, stelle: 'Thm. 11.11 (Wiedergabe)'}, {ref: forum_tpid, stelle: 'Nixon, Beitrag 21 (23.08.2021): Wiedergabe als holomorph auf ℂ ohne (−∞, −2], F(0) = 1, reell-symmetrisch, F(x+iy) → L für y → +∞ — andere Fassung als Paper VI (Halbebene, beide Grenzwerte)'}]
   pruefung:
     f1_folgt_unmittelbar: 'Kern ja (fg.lem.periodisch_liouville); technisch ist zu zeigen, dass $F_1^{-1}\circ F_2$ auf einem Streifen definiert ist.'
     f2_benutzte_voraussetzungen: 'Beide Grenzwerte; Holomorphie nur auf der Halbebene, nicht auf der geschlitzten Ebene.'
@@ -107,23 +107,25 @@ aussagen:
   objekte: [abel, slog, fixpunkt_L]
   bereich: 'Funktionen mit einem Paar nichtreeller Fixpunkte, insbesondere $\exp_b$, $b>\eta$'
   voraussetzungen:
-    - {text: 'Eindeutigkeitstest von Trappmann–Kouznetsov (Wortlaut nicht geprüft)', benutzt: unklar}
+    - {text: 'Anfangskurve γ von F zwischen zwei Fixpunkten (γ und F∘γ injektiv und disjunkt), Anfangsgebiet H', benutzt: ja}
   aussage: |
-    Es gibt ein Eindeutigkeitskriterium für holomorphe Abel-Funktionen an einem komplexen Fixpunktpaar;
-    Knesers Abel-Funktion für $\exp$ erfüllt es, ebenso für $b>\eta$.
-  beweis: {art: literatur, text: 'Trappmann–Kouznetsov 2011.'}
+    **Satz 1 (Trappmann–Kouznetsov 2011):** Sei $\gamma$ eine Anfangskurve von $F$ mit Anfangsgebiet $H$ und $d\in H$. Es gibt höchstens eine Funktion $\alpha$ mit
+    **Kriterium 1:** $\alpha$ ist eine auf $H$ holomorphe und injektive Abel-Funktion von $F$, $\alpha(d)=0$ und $\bigcup_{k\in\mathbb Z}(\alpha(H)+k)=\mathbb C$.
+    **Satz 2:** Auf einem zusammenhängenden $D\ni d$ gibt es höchstens eine holomorphe Abel-Funktion mit $\alpha^{\prime}(d)\ne0$, die Kriterium 1 auf einem Anfangsgebiet $H\subset D$ erfüllt.
+    Knesers Abel-Funktion für $\exp_b$, $b>\eta$, erfüllt das Kriterium (Abschnitt 4; einfache hinreichende Bedingungen: kn.satz.tk_kriterien).
+  beweis: {art: literatur, text: 'Trappmann–Kouznetsov 2011, Satz 1 und 2 mit Beweis (S. 5–6): q = α₂∘α₁⁻¹ erfüllt q(z+1) = q(z)+1, setzt sich zu einer ganzen Funktion mit ganzer Umkehrung fort, ist also linear und wegen q(0) = 0 die Identität.'}
   stuetzt_sich_auf: [fg.lem.periodisch_liouville]
-  quellen: [{ref: trappmann_kouznetsov2011}]
+  quellen: [{ref: trappmann_kouznetsov2011, stelle: 'arXiv:1006.3981, Definition 3, Satz 1, Kriterium 1, Satz 2 (S. 5–6)', geprueft: original}]
   pruefung:
     f1_folgt_unmittelbar: Nein.
-    f2_benutzte_voraussetzungen: 'Am Original zu prüfen.'
+    f2_benutzte_voraussetzungen: 'Injektivität auf H und die Überdeckung der Ebene durch die Verschiebungen von α(H); Holomorphie nur auf H (bzw. D).'
     f3_spezialfall: nein
     f4_uebertragbar: 'Auf andere Funktionen mit Fixpunktpaar (laut Abstract).'
     f5_neue_frage: 'Verhältnis der beiden Kriterien (PC vs. TK) — äquivalent?'
-  bewertung: {richtigkeit: 'gesichert (Literatur), Wortlaut ungeprüft', neuheit: bekannt, nutzen: 'Zweite unabhängige Eindeutigkeitsbegründung.', nutzen_stufe: mittel}
+  bewertung: {richtigkeit: 'gesichert (Literatur, Original gelesen)', neuheit: bekannt, nutzen: 'Zweite unabhängige Eindeutigkeitsbegründung.', nutzen_stufe: mittel}
 
 - id: kn.satz.paulsen_komplex
-  titel: Tetration für komplexe Basen, holomorph in der Basis
+  titel: 'Tetration für komplexe Basen (Paulsen 2019) — Holomorphie in der Basis nicht belegt'
   art: satz
   ebene: C
   status: bewiesen_literatur
@@ -132,20 +134,21 @@ aussagen:
   voraussetzungen:
     - {text: 'Basis im Gültigkeitsbereich von Paulsen 2019 (nicht am Original geprüft)', benutzt: unklar}
   aussage: |
-    Die Kneser-Konstruktion setzt sich auf komplexe Basen fort; die Lösung hängt holomorph von $b$ ab.
-    Paper V benutzt das als (K3) zur Identifikation $V=\partial_\beta A_b$.
+    Paulsen (2019) überträgt die Eindeutigkeitsbedingungen von Paulsen–Cowgill auf komplexe Basen und gibt Iterationsverfahren für Basen innerhalb und
+    ausserhalb des Shell–Thron-Gebiets an (Abstract). **Nicht belegt:** dass die Lösung holomorph von $b$ abhängt — das Abstract nennt es nicht, der Volltext war
+    nicht zugänglich (Prüfung 12.10.2026). Paper V benutzt die Holomorphie in $b$ als (K3) zur Identifikation $V=\partial_\beta A_b$; diese Stütze ist also offen.
   beweis: {art: literatur, text: 'Paulsen 2019.'}
   stuetzt_sich_auf: [kn.konstr.kneser]
-  quellen: [{ref: paulsen2019}]
+  quellen: [{ref: paulsen2019, stelle: 'Abstract (Verlagsseite, über Suchtreffer): Eindeutigkeitsbedingungen für komplexe Basen, Iterationsverfahren in und ausserhalb Shell–Thron', geprueft: sekundaer}]
   pruefung:
     f1_folgt_unmittelbar: Nein.
-    f2_benutzte_voraussetzungen: 'Am Original zu prüfen (welche Basen genau).'
+    f2_benutzte_voraussetzungen: 'Am Original zu prüfen (welche Basen genau, und ob Holomorphie in b gezeigt wird).'
     f3_spezialfall: nein
     f4_uebertragbar: —
     f5_neue_frage: 'Basisableitung $\partial_\beta\operatorname{slog}_b$ ist wohldefiniert → bw.satz.antwortkern'
-  bewertung: {richtigkeit: 'gesichert (Literatur), Bereich ungeprüft', neuheit: bekannt, nutzen: 'Trägt die Störungstheorie in der Basis.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'Fortsetzung und Eindeutigkeit für komplexe Basen gesichert (Abstract); Holomorphie in b nicht belegt; Bereich ungeprüft', neuheit: bekannt, nutzen: 'Trägt die Störungstheorie in der Basis — sofern die Holomorphie in b sich bestätigt.', nutzen_stufe: hoch}
   kanten:
-    - {typ: stuetzt, ziel: bw.ann.basis_diffbar, notiz: 'liefert Differenzierbarkeit von A_b, nicht die gleichmässige Vertauschung des Grenzwerts'}
+    - {typ: stuetzt, ziel: bw.ann.basis_diffbar, notiz: 'nur falls Paulsen 2019 (oder 2026) die Holomorphie in b zeigt — ungeprüft; und nicht die gleichmässige Vertauschung des Grenzwerts'}
 
 - id: kn.def.slog
   titel: Superlogarithmus
@@ -178,14 +181,14 @@ aussagen:
   beweis:
     art: vollstaendig
     text: '$T(-1+\varepsilon)=T''(-1)\varepsilon+o(\varepsilon)$ und $b^{T(-2+\varepsilon)}=T(-1+\varepsilon)$; logarithmieren.'
-  quellen: [{ref: justus_p1, stelle: 'Prop. 7.1'}]
+  quellen: [{ref: justus_p1, stelle: 'Prop. 7.1'}, {ref: trappmann_kouznetsov2011, stelle: 'S. 4: aus f(−1) = 0 folgt f(−2) = log_b 0, also Singularität oder Verzweigung bei −2 und den ganzen Zahlen darunter', geprueft: original}, {ref: kouznetsov2009, stelle: 'Schnitt links von −2 (zbMATH-Rezension)'}]
   pruefung:
     f1_folgt_unmittelbar: 'Ja: Funktionalgleichung + Taylor erster Ordnung.'
     f2_benutzte_voraussetzungen: 'Nur Differenzierbarkeit **im Punkt** −1 und $T''(-1)\ne0$; Paper I fordert eine Umgebung — unnötig. Das Vorzeichen $T''(-1)>0$ folgt automatisch.'
     f3_spezialfall: 'Ja: für jede Superfunktion $F$ von $f$ mit $F(x_0)=$ Randwert von $f$ gibt $f^{-1}$ die Singularität ($\log_b$ bei 0).'
     f4_uebertragbar: 'Auf alle Konstruktionen (Kneser, regulär, Walker); linear: $T''(-1)=1$ ⇒ $T(-2+\varepsilon)=\log_b\varepsilon$ exakt.'
     f5_neue_frage: 'Höhere Terme (Korollar 7.2 in Paper I braucht $T''''(-1)$); komplexe Version: Verzweigung bei −2 → Schnitt $(-\infty,-2]$.'
-  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Beschreibt den Rand jeder Tetration.', nutzen_stufe: mittel}
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, recherche: 'Literaturkarte 12.10.2026: das Argument (f(−2) = log_b 0) steht bei Trappmann–Kouznetsov 2011, S. 4, der Schnitt bei Kouznetsov 2009; eigen ist nur die Abschwächung auf Differenzierbarkeit im Punkt −1.', nutzen: 'Beschreibt den Rand jeder Tetration.', nutzen_stufe: mittel}
   experimente: [exp.singulaer]
   versionen:
     - {datum: '2026-06', fassung: 'Paper I, Prop. 7.1', aenderung: 'Voraussetzung: differenzierbar in einer Umgebung von −1.'}
@@ -226,7 +229,7 @@ aussagen:
   bereich: '$b>1$'
   aussage: '$T(x)=x+1$ auf $(-1,0]$, sonst durch die Gleichung fortgesetzt. Stetige, streng wachsende Lösung.'
   beweis: {art: vollstaendig, text: 'Fortsetzung durch $T(x+1)=b^{T(x)}$ und $T(x-1)=\log_b T(x)$; Stetigkeit bei 0: $T(0^+)=b^{T(-1^+)}=b^0=1$.'}
-  quellen: [{ref: hooshmand2006}, {ref: diese_arbeit}]
+  quellen: [{ref: hooshmand2006}, {ref: clenshaw1986, stelle: 'verallgemeinerte exp/log der Level-Index-Arithmetik, zwei Fassungen (zbMATH-Rezension; ob eine davon die lineare Tetration ist, nicht geprüft)'}, {ref: diese_arbeit}]
   pruefung:
     f1_folgt_unmittelbar: Ja.
     f2_benutzte_voraussetzungen: Keine.
@@ -246,14 +249,14 @@ aussagen:
     $T'(0^-)=1$, $T'(0^+)=\ln b$: $C^1$ genau für $b=e$. Für $b=e$ ist $T''(0^-)=0\ne1=T''(0^+)$, also nie $C^2$.
   beweis: {art: vollstaendig, text: 'Auf $(0,1]$ ist $T(x)=b^{x}$, also $T''(0^+)=\ln b$, $T''''(0^+)=\ln^2 b$.'}
   stuetzt_sich_auf: [kn.konstr.linear]
-  quellen: [{ref: diese_arbeit}]
+  quellen: [{ref: diese_arbeit}, {ref: wikipedia_tetration, stelle: 'Abschnitt „Linear approximation for real heights“'}]
   pruefung:
     f1_folgt_unmittelbar: Ja.
     f2_benutzte_voraussetzungen: Nur die Definition.
     f3_spezialfall: 'Paper IV Prop. 4.1: $C^m$-Nähte ⇒ Fourier-Abfall $k^{-(m+2)}$ — die lineare Tetration ist das Testobjekt mit $m=0$ (bzw. 1 bei $b=e$).'
     f4_uebertragbar: 'Analog: jede stückweise definierte Konstruktion hat endliche Glattheit, solange die Nahtbedingungen nicht alle Ordnungen erfüllen (Walker: alle Ordnungen).'
     f5_neue_frage: 'Wie zeigt sich die Naht in den Basiswechsel-Phasen? (bw.satz.fourier_naht)'
-  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Gegenbeispiel: Monotonie + C¹ reichen nicht für Eindeutigkeit oder Glattheit.', nutzen_stufe: gering}
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, recherche: 'Literaturkarte 12.10.2026: Wikipedia (Tetration, Abschnitt lineare Näherung): stetig differenzierbar für x > −2 genau für Basis e, dort nicht zweimal differenzierbar.', nutzen: 'Gegenbeispiel: Monotonie + C¹ reichen nicht für Eindeutigkeit oder Glattheit.', nutzen_stufe: gering}
   kanten:
     - {typ: verwandt, ziel: bw.satz.fourier_naht}
 
@@ -299,7 +302,7 @@ aussagen:
     $\operatorname{dexp}^{-n}\circ\exp^{n}$ mit $\operatorname{dexp}(x)=e^x-1$ — ein Basiswechsel-artiger Grenzwert von der parabolischen Iteration von
     $e^x-1$ zu $\exp$. Bewiesen ist $C^\infty$ auf der reellen Achse; Analytizität ist nicht bewiesen und wird im Tetration-Forum bezweifelt.
   beweis: {art: literatur, text: 'Walker 1991; DLMF §4.12 zitiert Walker für C^∞, Kneser für analytisch. Form des Grenzwerts nach Trappmann im Tetration-Forum (2009).'}
-  quellen: [{ref: walker1991}, {ref: forum_trappmann2009, stelle: 'Walkers Grenzwert dexp^−n ∘ exp^n, nur reell C^∞'}, {ref: forum_levenstein2011, stelle: 'Vermutung: nirgends analytisch'}]
+  quellen: [{ref: walker1991, stelle: 'zbMATH-Rezension (Zbl 0742.39005): C^∞-Lösungen G von G(eˣ) = G(x) + 1 über h mit h(eˣ) = e^{h(x)} − 1, siehe kn.satz.walker_konjugation'}, {ref: forum_trappmann2009, stelle: 'Walkers Grenzwert dexp^−n ∘ exp^n, nur reell C^∞'}, {ref: forum_levenstein2011, stelle: 'Vermutung: nirgends analytisch'}]
   pruefung:
     f1_folgt_unmittelbar: Nein.
     f2_benutzte_voraussetzungen: 'Am Original zu prüfen.'
@@ -310,6 +313,7 @@ aussagen:
   versionen:
     - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Form des Grenzwerts und Forum-Vermutung eingetragen.'}
   kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.walker_konjugation}
     - {typ: analog_zu, ziel: bw.def.F_bd, notiz: 'Grenzwert iterierter Logarithmen einer fremden Superfunktion'}
 
 - id: kn.konstr.carleman
@@ -324,7 +328,7 @@ aussagen:
     $\sum_{k=1}^{n}a_k\,k^j/j!-a_j=\delta_{j0}$ $(0\le j\le n-1)$. Seine Lösung definiert $\operatorname{slog}_n$
     (Walker 1991, Robbins 2005 „natural slog“).
   beweis: {art: vollstaendig, text: 'Konstruktion; Lösbarkeit für jedes n numerisch beobachtet, nicht allgemein bewiesen.'}
-  quellen: [{ref: walker1991}, {ref: robbins2005}]
+  quellen: [{ref: walker1991}, {ref: walker1991_jmaa, stelle: 'nach Trappmann–Kouznetsov 2011, S. 4: Zahlverfahren für die Potenzreihenkoeffizienten eines 4-Logarithmus um 0, ohne Konvergenzbeweis — vor Robbins'}, {ref: trappmann_kouznetsov2011, stelle: 'S. 4', geprueft: original}, {ref: robbins2005}]
   experimente: [exp.carleman]
   pruefung:
     f1_folgt_unmittelbar: Ja (Definition).
@@ -396,7 +400,7 @@ aussagen:
     f3_spezialfall: nein
     f4_uebertragbar: —
     f5_neue_frage: 'Arithmetische Tests (ar.beob.ausschluss_rational) und Carleman-Vergleich (exp.carleman).'
-  bewertung: {richtigkeit: 'numerisch belegt, nicht zertifiziert', neuheit: vermutlich_neu, recherche: 'Keine längeren veröffentlichten Werte bekannt (Stand gp-tetration README).', nutzen: 'Referenz für alles Numerische.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'numerisch belegt, nicht zertifiziert', neuheit: vermutlich_neu, recherche: 'Keine längeren veröffentlichten Werte bekannt (Stand gp-tetration README). Nachtrag 12.10.2026: Levenstein veröffentlichte 32 Stellen (Forum 2010), Paulsen–Cowgill 2017 rechnen nach Abstract besser als 10⁻⁵⁰; Tabellen mit mehr Stellen nicht gefunden.', nutzen: 'Referenz für alles Numerische.', nutzen_stufe: hoch}
 
 - id: kn.frage.abel_bruchsumme
   titel: Bruchsumme der Abel-Funktion über η
@@ -487,7 +491,12 @@ aussagen:
     f4_uebertragbar: 'Auf Hexation usw.: Fixpunkt von P_b, dort wieder regulär (Levenstein 2020: 2↑↑↑↑1.5 ≈ 2.6729). Für η < b ≤ η₄ gibt es zusätzlich positive Fixpunkte (kn.beob.tetra_euler).'
     f5_neue_frage: 'Wie bei der Tetration ist die Wahl nicht eindeutig (andere Fixpunkte, periodische Störungen). Gibt es eine Kneser-artige Pentation, die in der oberen Halbebene gegen einen komplexen Fixpunkt von T_b läuft?'
   bewertung: {richtigkeit: 'Konstruktion vollständig, λ_b gemessen', neuheit: bekannt, nutzen: 'Erste höhere Stufe mit echten Zahlen; zeigt, dass die Methode der regulären Iteration sich wiederholt.', nutzen_stufe: mittel}
-  quellen: [{ref: forum_fox2007_pentation}, {ref: forum_levenstein2020_pentation}, {ref: diese_arbeit, stelle: 'Rechnung mit Kneser-Werten'}]
+  quellen:
+    - {ref: forum_fox2007_pentation}
+    - {ref: kouznetsov2014_ackermann, stelle: 'erste Zeitschriftenarbeit zur holomorphen („natürlichen“) Pentation zur Basis e, periodisch mit Periode aus der Ableitung der Tetration am Fixpunkt (nach Abstract und Forum tid 949)'}
+    - {ref: forum_tid949, stelle: 'Kouznetsov 11.01.2015; MphLee: Fixpunkt −1.850354529 schon bei Rubtsov–Romerio (2006); Levenstein: erste komplexe Singularität ≈ −2.315 ± 1.684 i'}
+    - {ref: forum_levenstein2020_pentation}
+    - {ref: diese_arbeit, stelle: 'Rechnung mit Kneser-Werten'}
   kanten:
     - {typ: analog_zu, ziel: kl.satz.obere_superexp}
     - {typ: verwandt, ziel: br.def.hyperoperation}
@@ -551,7 +560,12 @@ aussagen:
     f5_neue_frage: 'Gilt nahe $\eta_4$ dasselbe Engpass-Gesetz wie nahe $\eta$ (Durchgangszeit $\propto(b-\eta_4)^{-1/2}$, Konstante aus $T^{\prime\prime}(e_4)/2=0.29348\ldots$)?'
   gegenbeispielsuche: 'exp.tetra_euler: Fixpunkte gezählt für b = 1.5, 1.6, 1.7, 2, e; Vorzeichen des Minimums bei η₄ ± 10⁻⁴; Selbst-Tetrawurzel an vier Stellen; Pentation bei 1.6 und 1.7 iteriert.'
   bewertung: {richtigkeit: 'numerisch (32 Stellen, zwei unabhängige Rechnungen)', neuheit: bekannt, nutzen: 'Zeigt, dass η und e Glieder einer Folge sind — eine der schönsten Strukturen der höheren Stufen.', nutzen_stufe: hoch}
-  quellen: [{ref: forum_tid262}, {ref: diese_arbeit, stelle: 'Kennzeichnungen 2 und 3 nachgerechnet'}]
+  quellen:
+    - {ref: forum_tid262, stelle: 'S. Levenstein, Beitrag 28 (pid 5327, 31.10.2010): 32 Stellen mit kneser.gp; nuninho1980, Beitrag 29: Nachrechnung'}
+    - {ref: forum_tid269, stelle: 'Kennzeichnung 3 (unendliche Pentation): Robbins und nuninho, April 2009'}
+    - {ref: forum_tid468, stelle: 'Kennzeichnung 2 (Maximum der Selbst-Tetrawurzel): mike3, Juli 2010'}
+    - {ref: hyperops_wiki_euler, stelle: 'drei Kennzeichnungen mit Zuschreibung'}
+    - {ref: diese_arbeit, stelle: 'Kennzeichnungen 2 und 3 nachgerechnet'}
   kanten:
     - {typ: analog_zu, ziel: fp.def.eta}
     - {typ: analog_zu, ziel: fp.satz.unendliche_superwurzel}
@@ -581,8 +595,8 @@ aussagen:
     f4_uebertragbar: 'Stufe 6 mit der Kneser-artigen Hexation → kn.beob.stufe6 (η₆ = 1.7991212361…).'
     f5_neue_frage: 'Wie weit trägt die Folge? → kn.verm.tpid10'
   gegenbeispielsuche: 'exp.stufe5: Rechentiefe M = 8 gegen 10 (Abstand 3·10⁻³⁰), Schnittzahl bei 1.70 und 1.74 abgetastet.'
-  bewertung: {richtigkeit: 'numerisch (30 Stellen)', neuheit: vermutlich_neu, recherche: 'TPID 10 nennt nur e, e₄ und η, η₄; kein Wert für die nächste Stufe gefunden (Forum, Suche 08.10.2026).', nutzen: 'Drittes Glied der Folgen aus TPID 10.', nutzen_stufe: mittel}
-  quellen: [{ref: diese_arbeit}]
+  bewertung: {richtigkeit: 'numerisch (30 Stellen)', neuheit: bekannt, recherche: 'Korrektur 12.10.2026 (Literaturkarte L2): S. Levenstein gab 2017 im Forum (tid 1177, Beitrag 5) die Schranke ≈ 1.738 an, bis zu der die Hexation beschränkt ist — das ist η₅ auf drei Stellen (unser Wert 1.73736). Neu hier sind nur die 30 Stellen und e₅; die Suche vom 08.10.2026 hatte das Thema übersehen.', nutzen: 'Drittes Glied der Folgen aus TPID 10.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}, {ref: forum_tid1177, stelle: 'Levenstein, Beitrag 5 (03.09.2017): ≈ 1.738'}]
   kanten:
     - {typ: verallgemeinert, ziel: kn.beob.tetra_euler}
     - {typ: stuetzt_sich_auf, ziel: kn.konstr.pentation}
@@ -611,8 +625,8 @@ aussagen:
     f4_uebertragbar: 'Stufe 7 bräuchte eine Kneser-artige Heptation über η₆.'
     f5_neue_frage: 'Gesetz der Abstände: 2 − η_n fällt in den vier Gliedern sehr gleichmässig wie n^(−1.47) → kn.verm.tpid10.'
   gegenbeispielsuche: 'exp.hexation_kneser: Einschluss bei 1.78 (Fixpunkt) und 1.80 (keiner), Sekanten bis m = 10⁻³³; unabhängige Rechnung bei dps 45 (Motor 43.7 Stellen) gleich auf 32 Stellen.'
-  bewertung: {richtigkeit: 'numerisch (30 Stellen; Motor 31.6 Stellen bei η₆)', neuheit: vermutlich_neu, recherche: 'TPID 10 nennt e, e₄ und η, η₄; η₅ und η₆ im Forum nicht gefunden (Suche 08.10.2026).', nutzen: 'Viertes Glied der Folgen aus TPID 10.', nutzen_stufe: mittel}
-  quellen: [{ref: diese_arbeit}, {ref: gp_tetration, stelle: 'knhexinit im Fork fatou_fork.gp (exp-079, 09.10.2026, lokal)'}]
+  bewertung: {richtigkeit: 'numerisch (30 Stellen; Motor 31.6 Stellen bei η₆)', neuheit: bekannt, recherche: 'Korrektur 12.10.2026 (Literaturkarte L2): S. Levenstein gab 2017 (Forum tid 1177, Beitrag 5) mit derselben Kette — Kneser-artige Hexation an den konjugierten Fixpunkten der Pentation — die Schranke 1.799 an, bis zu der die Heptation beschränkt ist: η₆ auf drei Stellen. Neu hier sind die 30 Stellen und e₆.', nutzen: 'Viertes Glied der Folgen aus TPID 10.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}, {ref: gp_tetration, stelle: 'knhexinit im Fork fatou_fork.gp (exp-079, 09.10.2026, lokal)'}, {ref: forum_tid1177, stelle: 'Levenstein, Beitrag 5 (03.09.2017): 1.799'}]
   kanten:
     - {typ: verallgemeinert, ziel: kn.beob.stufe5}
     - {typ: verwandt, ziel: kn.frage.hexation_kneser}
@@ -626,29 +640,41 @@ aussagen:
   objekte: [hyperoperation, eta]
   bereich: 'Folgen $e_n$ (Berührstelle) und $\eta_n$ (Berührbasis) der $n$-ten Hyperoperation, $n\ge3$'
   aussage: |
-    **Vermutung (dantheman163, TPID 10, 2010):** $e_n\to4$ und $\eta_n\to2$.
-    **Folgerung (tommy1729, TPID 11):** $\eta_n^2<e_{n-1}$.
-    **Gerechnet:** $e=2.71828$, $e_4=3.08853$, $e_5=3.30141$, $e_6=3.44223$ und $\eta=1.44467$, $\eta_4=1.63532$, $\eta_5=1.73736$, $\eta_6=1.79912$ — beide wachsen, und
-    $\eta_4^2=2.6743<e$, $\eta_5^2=3.0184<e_4$, $\eta_6^2=3.2368<e_5$. Die Abstände fallen wie eine Potenz der Stufe: $2-\eta_n$ mit den lokalen Exponenten $1.462$, $1.471$, $1.471$
-    (sehr gleichmässig), $4-e_n$ mit $1.19$, $1.19$, $1.23$ — verträglich mit den Grenzwerten 2 und 4, aber langsam ($2-\eta_n\approx2.8\,n^{-1.47}$).
-    Plausibel wegen $2\uparrow^n2=4$ für alle $n$: bei Basis 2 geht jede Stufe durch den Punkt $(2,4)$.
+    **Vermutung (dantheman163, TPID 10, 31.10.2010):** $e_n\to4$ und $\eta_n\to2$. Zusatzvermutung von tommy1729 (TPID 11): kn.verm.tpid11.
+    **Werte:** $e=2.71828$, $e_4=3.08853$, $e_5=3.30141$, $e_6=3.44223$ und $\eta=1.44467$, $\eta_4=1.63532$, $\eta_5=1.73736$, $\eta_6=1.79912$; dazu $\eta_7\approx1.839$
+    (Levenstein 2017). Beide Folgen wachsen; $2-\eta_n$ fällt wie $2.8\,n^{-1.47}$, $4-e_n$ etwas langsamer (kn.beob.tpid10_gesetz) — verträglich mit 2 und 4, aber langsam.
+    **Zugänge, die gefunden wurden (Karte: KARTE_kn.md §5):**
+    (a) *Fortsetzungsfrei:* Interpolation der Selbst-Superwurzel aus ganzen Stellen (Robbins 2009, mike3 2010) trifft $\eta_4$, $e_4$ auf 7–8 Stellen (kn.beob.eta4_interpolation).
+    (b) *Matrix-slog:* nuninho 2009 mit Robbins' Matrix, 200 Dimensionen: $e_4\ge3.08855$, $2\cdot10^{-5}$ über Kneser (kn.beob.eta4_matrix).
+    (c) *Kneser:* Levenstein 2010, 32 Stellen für $\eta_4$, $e_4$ (kn.beob.tetra_euler); höhere Stufen abwechselnd regulär/Kneser-artig: Levenstein 2017 mit drei Stellen bis
+    $\eta_7$ (kn.beob.hoehere_etas), hier 30 Stellen für $\eta_5,e_5,\eta_6,e_6$ (kn.beob.stufe5, kn.beob.stufe6).
+    (d) *Heuristik:* Nixon 2011/2017 — „unendlicher Operator“ mit $2\triangle_\infty2=4$, und $b>\eta_n$ genau dann, wenn die nächste Stufe unbeschränkt ist, also bleiben Basen unter 2
+    in hohen Stufen beschränkt (kn.verm.beschraenkt_unter_2). Einfachstes Argument: $2\uparrow^n2=4$ für alle $n$ — bei Basis 2 geht jede Stufe durch den Punkt $(2,4)$.
+    (e) *Offene Nebenfragen:* untere Grenze der unendlichen Pentation (kn.frage.pentation_untergrenze), Etas anderer Familien und Rationalität von $e_4$ (kn.frage.andere_etas).
+    Kein Beweis, keine Abschätzung von $\eta_n$ nach oben oder unten, kein OEIS-Eintrag und keine Behandlung auf MathOverflow/Math.SE gefunden (Suche 12.10.2026).
   einfach: >-
     Die Zahlen e ≈ 2.718 und η ≈ 1.445 haben „grössere Geschwister“ auf jeder höheren Rechenstufe. Vermutet wird, dass diese Geschwister sich immer mehr
     den Zahlen 4 und 2 nähern — denn 2 + 2, 2 · 2, 2², 2↑↑2, … ergeben alle 4.
-  naechste_frage: 'Erklärt sich der Exponent 1.47 von 2 − η_n? Ein fünftes Glied (η₇ mit einer Kneser-artigen Heptation) würde ihn prüfen.'
+  naechste_frage: 'Erklärt sich der Exponent 1.47 von 2 − η_n? Ein genaues fünftes Glied (η₇, e₇: reguläre Heptation über die Kneser-artige Hexation) würde ihn prüfen; Levensteins η₇ ≈ 1.839 passt bereits.'
   gegenbeispielsuche: 'exp.stufe5, exp.hexation_kneser: vier Glieder; Abstände zu 4: 1.282, 0.911, 0.699, 0.558; zu 2: 0.555, 0.365, 0.263, 0.201 — die Verhältnisse steigen (nicht geometrisch), doppelt-logarithmisch fast gerade.'
-  experimente: [exp.stufe5, exp.hexation_kneser]
+  experimente: [exp.stufe5, exp.hexation_kneser, exp.tpid10_abstaende]
   pruefung:
     f1_folgt_unmittelbar: 'Nein.'
-    f2_benutzte_voraussetzungen: 'Hängt an der gewählten Fortsetzung jeder Stufe (Kneser, dann regulär am Fixpunkt).'
+    f2_benutzte_voraussetzungen: 'Hängt an der gewählten Fortsetzung jeder Stufe (Kneser, dann regulär am Fixpunkt) — bo198214 2009 und Nixon 2017 betonen das; der Matrix-slog gibt schon für e₄ einen anderen Wert (kn.beob.eta4_matrix).'
     f3_spezialfall: nein
     f4_uebertragbar: 'Auch für Stufe 2 und 1? (Multiplikation: b·x = x berührt nie; die Folge beginnt sinnvoll bei der Potenz.)'
     f5_neue_frage: 'Gibt es eine Grenzfunktion, gegen die die Hyperoperationen zur Basis nahe 2 streben?'
-  bewertung: {richtigkeit: 'Vermutung, vier Glieder stützen sie', neuheit: bekannt, nutzen: 'Struktur über alle Stufen hinweg.', nutzen_stufe: mittel}
-  quellen: [{ref: forum_tpid, stelle: 'TPID 10 (dantheman163, 31.10.2010), TPID 11 (tommy1729, 01.12.2010)'}]
+  bewertung: {richtigkeit: 'Vermutung; vier genaue Glieder und ein grobes fünftes stützen sie', neuheit: bekannt, nutzen: 'Struktur über alle Stufen hinweg.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: forum_tpid, stelle: 'TPID 10 (dantheman163, 31.10.2010, Beitrag 11, verweist auf tid 262 pid 5327)'}
+    - {ref: forum_tid262, stelle: 'Werte für η₄, e₄ (Levenstein, 31.10.2010)'}
+    - {ref: forum_tid1177, stelle: 'Levenstein 2017: η₅ ≈ 1.738, η₆ ≈ 1.799, η₇ ≈ 1.839; Nixon 2017: Grenzwerte 2 und 4 als Beschränktheitsaussage'}
+    - {ref: forum_tid675, stelle: 'Nixon 2011: unendlicher Operator'}
+    - {ref: hyperops_wiki_euler}
   kanten:
     - {typ: verwandt, ziel: kn.beob.stufe5}
     - {typ: verwandt, ziel: kn.beob.tetra_euler}
+    - {typ: verwandt, ziel: kn.verm.beschraenkt_unter_2}
 
 - id: kn.verm.carleman_eigenwerte
   titel: 'TPID 1: Eigenwerte abgeschnittener Carleman-Matrizen gehen gegen λ^k'
@@ -680,6 +706,7 @@ aussagen:
   kanten:
     - {typ: verwandt, ziel: kn.konstr.carleman}
     - {typ: verwandt, ziel: it.satz.koenigs}
+    - {typ: verwandt, ziel: kn.verm.tpid3_bedingung}
 
 - id: kn.frage.beta_methode
   titel: Gibt es holomorphe Tetrationen ohne Knesers senkrechte Grenzbedingung? (β-Methode)
@@ -694,7 +721,7 @@ aussagen:
     für holomorph und von Kneser verschieden hielt (andere Werte auf der reellen Achse, kein Grenzwert $L$ nach oben). Später schrieb er selbst, die Arbeit habe
     Holomorphie zu Unrecht angenommen; mit β-Funktionen lasse sich Kneser nur annähern. Offen bleibt also, ob es eine holomorphe, reelle Tetration gibt, die nicht Kneser ist.
   naechste_frage: 'β-Methode mit hoher Genauigkeit gegen Kneser vergleichen (Abstand bei x = 1/2) und auf Singularitäten nahe der reellen Achse prüfen.'
-  quellen: [{ref: nixon2021b}, {ref: forum_tid1334}]
+  quellen: [{ref: nixon2021b}, {ref: forum_tid1334}, {ref: forum_tpid, stelle: 'Nixon, Beitrag 21 (23.08.2021): gibt es eine Lösung mit allen Eigenschaften von Paulsen–Cowgill, aber Grenzwert ∞ statt L bei i∞? (Frage A), und ist sie dann ebenso eindeutig? (Frage B)'}]
   kanten:
     - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}
     - {typ: verwandt, ziel: br.frage.bohr_mollerup}
@@ -725,8 +752,8 @@ aussagen:
     f3_spezialfall: 'Analog zu fg.kor.keine_ganze_tetration (Tetration bricht bei −2 ab, weil $b^x>0$).'
     f4_uebertragbar: 'Muster: Stufe $n+1$ hat eine reelle Singularität genau dann, wenn Stufe $n$ nach unten beschränkt ist — exp (>0) → Tetration singulär; Tetration (alle Werte) → Pentation glatt; Pentation (>L_T) → Hexation singulär; Hexation (alle Werte) → Heptation glatt.'
     f5_neue_frage: 'Ist die Singularität bei $s_b$ genau logarithmisch, $H(x)\approx\log_\lambda(x-s_b)$, so dass $H$ bei $s_b+1$ analytisch bleibt (wie die Tetration bei −1)?'
-  bewertung: {richtigkeit: vollständig, neuheit: vermutlich_neu, recherche: 'Im Forum nicht gefunden (Recherche 08.10.2026).', nutzen: 'Zeigt den Wechsel glatt/singulär über die Stufen.', nutzen_stufe: mittel}
-  quellen: [{ref: diese_arbeit}]
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, recherche: 'Korrektur 12.10.2026 (Literaturkarte L2): im Forum bekannt — S. Levenstein 07.08.2017 (tid 1177, Beitrag 1): hex(−3) = −2 und eine Singularität nahe −3.86 zur Basis e, weil die Hexation bei ≈ −2.86 den Fixpunkt −1.85 der Tetration erreicht (dasselbe Argument wie hier); J. D. Nixon (Beitrag 2): jede analytische Hyperoperation der Stufe n erfüllt f(−k) = 1−k für 0 ≤ k ≤ n−1, Beweis H. Trappmann zugeschrieben; Levenstein (Beitrag 5): Tetration und Hexation haben eine logarithmische Singularität, Pentation und Heptation laufen gegen einen Fixpunkt. Hier neu: der Beweis für jede wachsende Hexation und die Messwerte s_b.', nutzen: 'Zeigt den Wechsel glatt/singulär über die Stufen.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}, {ref: forum_tid1177, stelle: 'Levenstein, Beiträge 1 und 5 (07.08./03.09.2017); Nixon, Beitrag 2 (21.08.2017)'}]
   kanten:
     - {typ: analog_zu, ziel: fg.kor.keine_ganze_tetration}
     - {typ: verwandt, ziel: kn.satz.singulaer_minus2}
@@ -761,7 +788,7 @@ aussagen:
     f3_spezialfall: 'Ja: reguläre Superfunktion am anziehenden Fixpunkt.'
     f4_uebertragbar: 'Für $b>\eta_5$ fehlt der reelle Fixpunkt → kn.frage.hexation_kneser.'
     f5_neue_frage: 'Geht $H_b$ für $b\uparrow\eta_5$ stetig in eine Kneser-artige Hexation über (wie die Tetration bei η)?'
-  bewertung: {richtigkeit: 'Konstruktion vollständig, Werte numerisch (≈ 25 Stellen)', neuheit: vermutlich_neu, recherche: 'Im Forum Hexation nur zur Basis 2 (Levenstein 2020); reguläre Hexation unter η₅ mit Werten nicht gefunden.', nutzen: 'Erste Werte der Hexation für kleine Basen.', nutzen_stufe: mittel}
+  bewertung: {richtigkeit: 'Konstruktion vollständig, Werte numerisch (≈ 25 Stellen)', neuheit: vermutlich_neu, recherche: 'Forum: Levenstein beschreibt 2017 (tid 1177) die Hexation allgemein als Kneser-artig an den konjugierten Fixpunkten der Pentation (gerechnet für e und 1.84) und rechnet 2020 zur Basis 2 (tid 1263); eine reguläre Hexation am anziehenden reellen Fixpunkt der Pentation unter η₅ mit Werten nicht gefunden (Suche 08.10. und 12.10.2026).', nutzen: 'Erste Werte der Hexation für kleine Basen.', nutzen_stufe: mittel}
   quellen: [{ref: diese_arbeit}]
   kanten:
     - {typ: analog_zu, ziel: kl.satz.regulaer}
@@ -788,8 +815,8 @@ aussagen:
     f3_spezialfall: 'Stufe 6 der Kette fp.satz.turm_reell → kn.beob.tetra_euler (Kennzeichnung 3).'
     f4_uebertragbar: 'Unendliche Heptation konvergiert vermutlich genau bis η₆.'
     f5_neue_frage: 'η₆ → kn.frage.hexation_kneser.'
-  bewertung: {richtigkeit: 'numerisch, mit einfachem Argument', neuheit: vermutlich_neu, recherche: 'Im Forum nicht gefunden (Recherche 08.10.2026).', nutzen: 'Vierte Kennzeichnung von η₅.', nutzen_stufe: mittel}
-  quellen: [{ref: diese_arbeit}]
+  bewertung: {richtigkeit: 'numerisch, mit einfachem Argument', neuheit: bekannt, recherche: 'Korrektur 12.10.2026 (Literaturkarte L2): S. Levenstein 2017 (Forum tid 1177, Beitrag 5): Hexation beschränkt für Basen bis ≈ 1.738; J. D. Nixon (ebd., Beitrag 8) formuliert allgemein b > ηₙ ⇔ unbeschränkt (kn.verm.beschraenkt_unter_2). Neu hier: Grenzwert p₁ und Werte.', nutzen: 'Vierte Kennzeichnung von η₅.', nutzen_stufe: mittel}
+  quellen: [{ref: diese_arbeit}, {ref: forum_tid1177, stelle: 'Levenstein, Beitrag 5; Nixon, Beitrag 8'}]
   kanten:
     - {typ: analog_zu, ziel: kn.beob.tetra_euler}
     - {typ: verwandt, ziel: kn.beob.stufe5}
@@ -851,7 +878,7 @@ aussagen:
     f4_uebertragbar: 'Auf alle Basen b > η₅ (gleiche Herleitung, α = ln λ_T/ln b); nicht auf die Tetration, weil exp ganz ist.'
     f5_neue_frage: 'Welche Eindeutigkeit ersetzt „holomorph in der oberen Halbebene“? Rechnerisch: θ mit singulärer Zusatzbasis (1 − e^{2πi(z − x_c)})^{k/α} statt reiner Fourierreihe.'
   experimente: [exp.hexation_kneser]
-  bewertung: {richtigkeit: 'numerisch (Log-Umlauf auf 6 Stellen, Exponent auf 4·10⁻⁵), Herleitung skizziert', neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum die Cauchy- und Fourier-Verfahren scheiterten, und zeigt den Weg zum θ-Verfahren mit Eckenbasis.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'numerisch (Log-Umlauf auf 6 Stellen, Exponent auf 4·10⁻⁵), Herleitung skizziert', neuheit: vermutlich_neu, recherche: 'Literaturkarte 12.10.2026: Forum (tid 1177: Levenstein 2017 baut die Kneser-artige Hexation über einen Kreis und θ, ohne Verzweigungen oder Eindeutigkeitsbeweis; tid 1263, 949), Kouznetsov 2014 (nur Pentation), arXiv/zbMATH (pentation, hyperoperation), MathOverflow: nicht gefunden.', nutzen: 'Erklärt, warum die Cauchy- und Fourier-Verfahren scheiterten, und zeigt den Weg zum θ-Verfahren mit Eckenbasis.', nutzen_stufe: hoch}
   quellen: [{ref: diese_arbeit}]
   kanten:
     - {typ: verwandt, ziel: kn.frage.hexation_kneser}
@@ -898,7 +925,7 @@ aussagen:
     f3_spezialfall: 'Ja, eines allgemeinen Mechanismus: Ist die Stufenfunktion nicht ganz, kehren ihre Singularitäten in der periodischen Superfunktion wieder.'
     f4_uebertragbar: 'Auf alle Basen b > η₅ mit derselben Struktur (Log-Punkt von F_q aus der Singularität −2 der Tetration); nicht auf die Tetration (exp ganz).'
     f5_neue_frage: 'Welche Kennzeichnung tritt an die Stelle? → kn.verm.hexation_streifen'
-  bewertung: {richtigkeit: 'bedingt bewiesen (Bedingung numerisch auf 6 Stellen)', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass die Eindeutigkeitsfrage der Hexation anders gestellt werden muss als bei der Tetration.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'bedingt bewiesen (Bedingung numerisch auf 6 Stellen)', neuheit: vermutlich_neu, recherche: 'Literaturkarte 12.10.2026: Forum (tid 1177: Levenstein 2017 baut die Kneser-artige Hexation über einen Kreis und θ, ohne Verzweigungen oder Eindeutigkeitsbeweis; tid 1263, 949), Kouznetsov 2014 (nur Pentation), arXiv/zbMATH (pentation, hyperoperation), MathOverflow: nicht gefunden.', nutzen: 'Zeigt, dass die Eindeutigkeitsfrage der Hexation anders gestellt werden muss als bei der Tetration.', nutzen_stufe: hoch}
   quellen: [{ref: diese_arbeit}, {ref: paulsen_cowgill2017, stelle: 'Prop. 2 (Vorbild des Arguments)'}]
   kanten:
     - {typ: stuetzt_sich_auf, ziel: kn.beob.hexation_verzweigt}
@@ -947,7 +974,7 @@ aussagen:
     f3_spezialfall: 'Ja: Fundamentalgebiet-Kriterium wie bei Trappmann–Kouznetsov für exp, hier mit einem festen, lösungsunabhängigen Gebiet.'
     f4_uebertragbar: 'Auf jede Basis b > η₅ und jedes Gebiet G, das zwischen q̄ und q liegt und von einer Kurve γ und P(γ) berandet wird — zu prüfen ist jeweils nur (ii).'
     f5_neue_frage: 'Gebietsunabhängigkeit: Ist jede Lösung, deren Abel-Funktion auf IRGENDEINEM solchen Gebiet injektiv ist, die Kneser-artige? → kn.verm.hexation_streifen'
-  bewertung: {richtigkeit: '(i) bewiesen, (ii) numerisch mit grossem Abstand (−2.994 gegen −1.741)', neuheit: neu_ungeprueft, nutzen: 'Macht „die“ Kneser-artige Hexation trotz leerer Paulsen–Cowgill-Klasse wohldefiniert.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: '(i) bewiesen, (ii) numerisch mit grossem Abstand (−2.994 gegen −1.741)', neuheit: vermutlich_neu, recherche: 'Literaturkarte 12.10.2026: Forum (tid 1177: Levenstein 2017 baut die Kneser-artige Hexation über einen Kreis und θ, ohne Verzweigungen oder Eindeutigkeitsbeweis; tid 1263, 949), Kouznetsov 2014 (nur Pentation), arXiv/zbMATH (pentation, hyperoperation), MathOverflow: nicht gefunden. Levenstein behauptet dort nur, die Lösung zwischen den beiden Fixpunkten sei „zeigbar eindeutig“, ohne Argument.', nutzen: 'Macht „die“ Kneser-artige Hexation trotz leerer Paulsen–Cowgill-Klasse wohldefiniert.', nutzen_stufe: hoch}
   quellen: [{ref: diese_arbeit}, {ref: trappmann_kouznetsov2011, stelle: 'Vorbild des Mechanismus'}, {ref: gp_tetration, stelle: 'knhexinit (exp-081): ihex und θ-Koeffizienten kncc'}]
   stuetzt_sich_auf: [fg.lem.periodisch_liouville]
   kanten:
@@ -996,7 +1023,7 @@ aussagen:
     f3_spezialfall: 'Ja, des Fundamentalgebiet-Kriteriums von Trappmann–Kouznetsov, mit der Abel-Funktion der bekannten Lösung als Prüfstein.'
     f4_uebertragbar: 'Auf jede Basis b > η₅; die Familie G_c wäre dort neu nachzurechnen.'
     f5_neue_frage: 'Gibt es überhaupt ein zulässiges Gebiet, das einen Singularpunkt von α_K enthält (p, p̄, Urbilder davon, die Punkte w_b, P⁻¹(w_b), … jenseits des Schnitts)? → kn.verm.hexation_streifen'
-  bewertung: {richtigkeit: '(i), (ii) bewiesen (bedingt wie kn.satz.hexation_eindeutig_g0); (iii) numerisch an zehn Gebieten', neuheit: neu_ungeprueft, nutzen: 'Schiebt die offene Frage auf Gebiete, die einen Singularpunkt von α_K einschliessen.', nutzen_stufe: mittel}
+  bewertung: {richtigkeit: '(i), (ii) bewiesen (bedingt wie kn.satz.hexation_eindeutig_g0); (iii) numerisch an zehn Gebieten', neuheit: vermutlich_neu, recherche: 'Literaturkarte 12.10.2026: Forum (tid 1177: Levenstein 2017 baut die Kneser-artige Hexation über einen Kreis und θ, ohne Verzweigungen oder Eindeutigkeitsbeweis; tid 1263, 949), Kouznetsov 2014 (nur Pentation), arXiv/zbMATH (pentation, hyperoperation), MathOverflow: nicht gefunden.', nutzen: 'Schiebt die offene Frage auf Gebiete, die einen Singularpunkt von α_K einschliessen.', nutzen_stufe: mittel}
   quellen: [{ref: diese_arbeit}, {ref: gp_tetration, stelle: 'knhexinit (exp-081): ihex und θ-Koeffizienten kncc'}]
   stuetzt_sich_auf: [kn.satz.hexation_eindeutig_g0]
   kanten:
@@ -1059,7 +1086,7 @@ aussagen:
     f3_spezialfall: 'Gegenstück zur Tetration: Dort hat exp keine Log-Punkte, die Kurve beginnt bei −∞, und die Kneser-Kurve ist die einzige verschiebungsfeste reelle Kurve.'
     f4_uebertragbar: 'Auf alle Basen b > η₅ (w_b und Π_T neu rechnen).'
     f5_neue_frage: 'Gibt es weiter rechts (Re Z > 7) oder zu anderen Nullstellen der Tetration einen Log-Punkt mit schliessendem Strahl? Und lassen sich die Lösungen mit p im Bild (Teil iv) auch bei Injektivität auf nur einem Streifen ausschliessen?'
-  bewertung: {richtigkeit: '(i)–(iv) bewiesen unter den Voraussetzungen (log₂-Form gemessen), Skizze; (v) numerisch, Gitter nicht erschöpfend', neuheit: neu_ungeprueft, nutzen: 'Macht aus der offenen Eindeutigkeitsfrage eine abzählbare Prüfung: Log-Punkte und ihre reellen Strahlen.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: '(i)–(iv) bewiesen unter den Voraussetzungen (log₂-Form gemessen), Skizze; (v) numerisch, Gitter nicht erschöpfend', neuheit: vermutlich_neu, recherche: 'Literaturkarte 12.10.2026: Forum (tid 1177: Levenstein 2017 baut die Kneser-artige Hexation über einen Kreis und θ, ohne Verzweigungen oder Eindeutigkeitsbeweis; tid 1263, 949), Kouznetsov 2014 (nur Pentation), arXiv/zbMATH (pentation, hyperoperation), MathOverflow: nicht gefunden.', nutzen: 'Macht aus der offenen Eindeutigkeitsfrage eine abzählbare Prüfung: Log-Punkte und ihre reellen Strahlen.', nutzen_stufe: hoch}
   quellen: [{ref: diese_arbeit}, {ref: gp_tetration, stelle: 'knhexinit (exp-081): q, ksig, pent; F_q zur Laufzeit gebildet'}]
   stuetzt_sich_auf: [kn.beob.hexation_verzweigt]
   kanten:
@@ -1096,7 +1123,7 @@ aussagen:
     f3_spezialfall: 'Streifen-Variante des Kriteriums von Trappmann–Kouznetsov (Abel-Funktion injektiv auf einem Fundamentalgebiet zwischen den Fixpunkten).'
     f4_uebertragbar: 'Auf alle Basen b > η₅ (Streifenbreite ≈ Re Π) und auf höhere Stufen, deren Stufenfunktion nicht ganz ist.'
     f5_neue_frage: 'Ist die Streifenbreite Re Π (bis zur ersten Verzweigung) selbst eine Kennzeichnung?'
-  bewertung: {richtigkeit: 'Vermutung; Belege numerisch (Randbilder, zwei Karten der reellen Menge)', neuheit: neu_ungeprueft, nutzen: 'Gibt der Eindeutigkeitsfrage der Hexation eine prüfbare Form.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'Vermutung; Belege numerisch (Randbilder, zwei Karten der reellen Menge)', neuheit: vermutlich_neu, recherche: 'Literaturkarte 12.10.2026: Forum (tid 1177: Levenstein 2017 baut die Kneser-artige Hexation über einen Kreis und θ, ohne Verzweigungen oder Eindeutigkeitsbeweis; tid 1263, 949), Kouznetsov 2014 (nur Pentation), arXiv/zbMATH (pentation, hyperoperation), MathOverflow: nicht gefunden.', nutzen: 'Gibt der Eindeutigkeitsfrage der Hexation eine prüfbare Form.', nutzen_stufe: hoch}
   quellen: [{ref: diese_arbeit}, {ref: trappmann_kouznetsov2011, stelle: 'Vorbild: Abel-Funktion injektiv auf einem Fundamentalgebiet'}]
   kanten:
     - {typ: verwandt, ziel: kn.satz.hexation_keine_halbebene}
@@ -1116,6 +1143,8 @@ aussagen:
   aussage: |
     Für $b>\eta_5$ (z. B. $b=2$) hat die Pentation keinen reellen Fixpunkt; eine reelle analytische Hexation muss wie Kneser am abstossenden komplexen Fixpunkt $q$ gebaut werden:
     $H(z)=F_q(z+\theta(z))$ mit der regulären Superfunktion $F_q$ und einer periodischen Korrektur $\theta$, die die reelle Achse auf die Kurve bringt, auf der $F_q$ reell ist.
+    **Vorarbeit:** S. Levenstein baute sie 2017 schon so (Forum tid 1177): Abel-Funktion auf einem Kreis zwischen den konjugierten Fixpunkten der Pentation,
+    $\theta$-Abbildung, etwa 30 Stellen für reelle Basen; Verzweigungen in der oberen Halbebene erwähnt er nicht.
     **Werte (09.10.2026):** Das Rechenwerk knhexinit im gp-tetration-Fork löst die Konstruktion als ein Ausgleichsproblem (Taylorreihe der Abel-Funktion um $\operatorname{Re}q$
     plus $\theta$-Koeffizienten nahe $q$, zwei Bögen als Fehlerschranke): $2\uparrow\uparrow\uparrow\uparrow1.5=2.67289395934261948919079647\ldots$ ($32.6$ Stellen;
     S. Levenstein 2020: $\approx2.6729$), $2\uparrow\uparrow\uparrow\uparrow0.5=1.48275118371174155405957\ldots$; damit $\eta_6$ in kn.beob.stufe6.
@@ -1133,7 +1162,7 @@ aussagen:
     $1.05$ Bogenradien weg, steigt die Genauigkeit bei dps 45 von $25.7$ auf $34.1$ Stellen (weglassen bis $1.0$ kippt auf $18$ — zu wenige Gleichungen). An das Fork-Verfahren weitergegeben.
   naechste_frage: 'Streifen-Vermutung beweisen (kn.verm.hexation_streifen); Übergang bei η₅.'
   experimente: [exp.hexation_kneser]
-  quellen: [{ref: forum_levenstein2020_pentation}, {ref: diese_arbeit}]
+  quellen: [{ref: forum_tid1177, stelle: 'Levenstein, Beitrag 5 (03.09.2017): Kneser-artige Hexation über Kreis und θ'}, {ref: forum_levenstein2020_pentation}, {ref: diese_arbeit}]
   kanten:
     - {typ: verwandt, ziel: kn.verm.tpid10}
     - {typ: verwandt, ziel: kn.satz.kein_kneser_anziehend}
@@ -1238,7 +1267,7 @@ aussagen:
     Statt die Tetration Stück für Stück zu bauen, rät man ihre Werte auf einer senkrechten Linie, rechnet daraus mit der Turmgleichung die Werte links und
     rechts davon und mittelt mit der Cauchy-Formel zurück auf die Linie. Wiederholt man das, stellt sich die Kneser-Tetration ein.
   beweis: {art: literatur, text: 'Kouznetsov 2009 (Math. Comp.), numerisch; Identität mit Kneser über die Eindeutigkeit von Paulsen–Cowgill (2017).'}
-  quellen: [{ref: kouznetsov2009}, {ref: forum_tid214}, {ref: paulsen_cowgill2017}]
+  quellen: [{ref: kouznetsov2010_spezial, stelle: 'Tetration und slog zur Basis e durch elementare Funktionen angenähert (zbMATH-Kurzfassung, russisch)'}, {ref: kouznetsov2009}, {ref: forum_tid214}, {ref: paulsen_cowgill2017}]
   pruefung:
     f1_folgt_unmittelbar: 'Nein; die Konvergenz der Iteration ist nur numerisch belegt.'
     f2_benutzte_voraussetzungen: 'Holomorphie im Rechteck, Grenzwerte L, L̄ oben und unten.'

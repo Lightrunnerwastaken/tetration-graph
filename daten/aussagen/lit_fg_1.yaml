@@ -1,0 +1,41 @@
+gebiet: fg
+aussagen:
+
+# Literaturknoten aus der Literaturkarte L1 (12.10.2026).
+
+- id: fg.satz.einbettung_fluss
+  titel: 'Jede wachsende stetige Abbildung ohne Fixpunkt lässt sich auf unendlich viele Arten stetig iterieren (Kuczma, Fort, Zdun)'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [abel, iterationsgruppe, periodische_stoerung]
+  bereich: '$f:I\to I$ wachsender Homöomorphismus eines offenen Intervalls $I$ auf sich, $f(x)<x$ für alle $x\in I$ (bzw. $>$)'
+  voraussetzungen:
+    - {text: 'f stetig, streng wachsend und surjektiv auf I', benutzt: ja}
+    - {text: 'f ohne Fixpunkt in I', benutzt: ja}
+  aussage: |
+    Es gibt eine stetige, streng monotone Abel-Funktion $\alpha$ mit $\alpha(f(x))=\alpha(x)+1$, also eine stetige Iterationsgruppe
+    $f^t=\alpha^{-1}(\alpha+t)$. Sie ist keineswegs eindeutig: Auf einem Fundamentalbereich $[f(x_0),x_0]$ darf man $\alpha$ als beliebigen
+    fallenden Homöomorphismus auf $[0,1]$ mit $\alpha(x_0)=0$, $\alpha(f(x_0))=1$ vorgeben; jede Wahl liefert eine andere Iteration.
+  einfach: >-
+    Eine wachsende Funktion ohne Fixpunkt kann man immer „halb so oft“ anwenden — und zwar auf unendlich viele verschiedene Arten. Man muss nur
+    auf einem einzigen Stück frei wählen, alles andere folgt.
+  beweis:
+    art: vollstaendig
+    text: |
+      Wähle $x_0\in I$ und einen fallenden Homöomorphismus $\alpha_0:[f(x_0),x_0]\to[0,1]$ mit $\alpha_0(x_0)=0$, $\alpha_0(f(x_0))=1$.
+      Jedes $x\in I$ liegt in genau einem $f^n([f(x_0),x_0))$, $n\in\mathbb Z$: die Bahn $f^n(x_0)$ ist monoton und kann sich im Innern von $I$
+      nicht häufen (ein Häufungspunkt wäre ein Fixpunkt), läuft also gegen beide Enden von $I$. Setze $\alpha(x)=\alpha_0(f^{-n}(x))+n$. Stetigkeit an den Nahtstellen folgt aus
+      $\alpha_0(f(x_0))=\alpha_0(x_0)+1$. Die Gruppe $f^t=\alpha^{-1}(\alpha+t)$ ist stetig in $(t,x)$.
+  quellen: [{ref: kuczma1968, stelle: 'Abel-Gleichung, allgemeine stetige Lösung'}, {ref: kuczma1990}, {ref: fort1955, stelle: 'Einbettung von Homöomorphismen in Flüsse (genauer Satz nicht gelesen)'}, {ref: zdun1979, stelle: 'stetige und differenzierbare Iterationshalbgruppen'}, {ref: zdun_solarz2014, stelle: 'Übersicht'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, elementare Konstruktion über einen Fundamentalbereich.'
+    f2_benutzte_voraussetzungen: 'Monotonie und Fixpunktfreiheit; ohne Fixpunktfreiheit zerfällt $I$ in Teilintervalle zwischen Fixpunkten, auf denen man getrennt einbettet.'
+    f3_spezialfall: 'Allgemeine Form von fg.satz.allgemeine_loesung (dort für die Tetrationsgleichung).'
+    f4_uebertragbar: 'Auf $b^x$ für $b>\eta$ (fixpunktfrei auf ℝ): Abel-Funktion = Superlogarithmus, unendlich viele stetige Tetrationen (fg.kor.nichteindeutigkeit).'
+    f5_neue_frage: 'Welche Zusatzbedingung macht die Einbettung eindeutig? Konvexität (Hooshmand), Analytizität im Komplexen (Kneser, Paulsen–Cowgill), Holomorphie am Fixpunkt (Koenigs).'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Zeigt in einer Zeile, warum reelle Bedingungen allein die Tetration nicht festlegen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: fg.satz.allgemeine_loesung}
+    - {typ: verwandt, ziel: fg.kor.nichteindeutigkeit}

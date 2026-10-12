@@ -1,0 +1,114 @@
+# Theorie-Blöcke für Literaturknoten des Gebiets it (Strang L1, 12.10.2026).
+
+it.satz.karlin_mcgregor:
+  worum: |
+    Unter $\eta$ hat $b^x$ zwei Fixpunkte, und an jedem kann man eine „reguläre“ Iteration bauen. Sind das am Ende dieselben? Karlin und
+    McGregor haben 1968 die allgemeine Antwort gegeben: nur bei den gebrochen linearen Funktionen.
+  genau: |
+    Sei $f$ meromorph (allgemeiner: holomorph ausserhalb einer abzählbaren abgeschlossenen Menge) mit Fixpunkten $s_1\ne s_2$,
+    $|f'(s_i)|\notin\{0,1\}$, und $f([s_1,s_2])\subseteq[s_1,s_2]$. Die regulären Iterationen an $s_1$ und $s_2$ stimmen genau dann überein,
+    wenn $f(z)=\dfrac{az+b}{cz+d}$.
+  warum: |
+    1. „Möbius ⇒ gleich“: Die Koenigs-Funktion ist dann selbst Möbius, $\sigma=(z-s_1)/(z-s_2)$, und $1/\sigma$ ist die Koenigs-Funktion am anderen Fixpunkt ([[it.satz.moebius_iteration]]).
+    2. „gleich ⇒ Möbius“: Eine Iterationsgruppe, die an beiden Fixpunkten holomorph ist, liefert eine Koordinate, in der $f$ an beiden Enden
+       linear ist; die Globalbedingung (Meromorphie) erzwingt dann eine gebrochen lineare Gestalt. (Beweis bei Karlin–McGregor, hier nicht nachvollzogen.)
+  beispiel: |
+    $\sqrt2^{\,x}$ auf $[2,4]$: Multiplikatoren $\ln2$ und $2\ln2$, Strecke invariant, aber keine Möbius-Abbildung — die beiden regulären
+    Tetrationen unterscheiden sich, um etwa $10^{-24}$ ([[kl.beob.zwei_abel]]).
+  einordnung: |
+    Theoretischer Grund für [[kl.beob.zwei_abel]]; Gegenstück bei Multiplikator 1: [[it.satz.baker_einbettung]]. Wie gross der Unterschied ist,
+    beschreibt die eigene Vermutung [[kl.verm.streifenbreite]].
+
+it.satz.parabolische_rate:
+  worum: |
+    An einem anziehenden Fixpunkt mit Steigung $\lambda$, $|\lambda|<1$, schrumpft der Abstand wie $\lambda^n$. Ist die Steigung genau 1,
+    geht es viel langsamer: wie $1/n$. Diese klassische Rechnung steckt hinter mehreren Raten in der Bibliothek.
+  genau: |
+    Für $f(x)=x-ax^{k+1}+bx^{k+2}+\dots$, $a>0$, und kleines $x_0>0$ gilt $x_n^{\,k}\sim1/(kan)$. Für $k=1$:
+    $$\frac1{x_n}=a\,n+\frac{a^2-b}{a}\ln n+C+o(1).$$
+  warum: |
+    1. Setze $y=1/x$. Aus $f(x)=x(1-ax+bx^2)$ folgt $1/f(x)=1/x+a+(a^2-b)x+O(x^2)$.
+    2. Also $y_{n+1}=y_n+a+(a^2-b)/y_n+\dots$: jeder Schritt addiert fast genau $a$.
+    3. Dann ist $y_n\approx an$, und die kleinen Zusätze $(a^2-b)/(ak)$ summieren sich zu $\frac{a^2-b}{a}\ln n$.
+  beispiel: |
+    Turm zur Basis $\eta$: $\delta_n=e-{}^n\eta$ erfüllt $\delta_{n+1}=\delta_n-\delta_n^2/(2e)+\delta_n^3/(6e^2)-\dots$, also $a=1/(2e)$,
+    $b=1/(6e^2)$ und $\delta_n=2e/(n+\tfrac13\ln n+C')$. Probe mit 30 Stellen: $1/\delta_n-n/(2e)-\ln n/(6e)=0.51501,\ 0.51474,\ 0.514713,\ 0.5147094$
+    für $n=10^3,10^4,10^5,10^6$.
+  einordnung: |
+    Klassisch seit Leau und Fatou ([[it.satz.leau_fatou]]). Anwendungen hier: die Bruchsumme bei $\eta$ ([[kl.satz.eta_digamma]]), die Spitze
+    $e^{-e}$ ([[fp.satz.p2_raten]], dort mit $f\circ f$ und $k=2$) und knapp daneben der Engpass ([[fp.beob.tpid6_rate]]).
+
+it.satz.boettcher:
+  worum: |
+    Ist die Steigung am Fixpunkt 0, zieht er „überstark“ an: der Abstand wird bei jedem Schritt quadriert (oder höher potenziert).
+    Böttcher hat 1904 gezeigt, dass man dann eine Koordinate findet, in der die Abbildung genau $w\mapsto w^k$ ist.
+  genau: |
+    $f(z)=p+c(z-p)^k+\dots$, $k\ge2$: Es gibt $\phi$ holomorph nahe $p$, $\phi(p)=0$, $\phi'(p)\ne0$, mit $\phi(f(z))=\phi(z)^k$,
+    eindeutig bis auf eine $(k-1)$-te Einheitswurzel.
+  warum: |
+    1. Nach Verschieben und Strecken ist $f(z)=z^k(1+O(z))$.
+    2. Setze $\phi_n(z)=\bigl(f^n(z)\bigr)^{1/k^n}$ (passender Zweig). Dann $\phi_{n+1}/\phi_n=(1+O(f^n z))^{1/k^{n+1}}$, und weil $f^n z$ doppelt-exponentiell schrumpft, konvergiert das Produkt.
+    3. Der Grenzwert erfüllt $\phi(f(z))=\lim(f^{n+1}z)^{1/k^n}=\phi(z)^k$.
+  beispiel: |
+    $f(x)=x^2-2$ hat bei $\infty$ einen superanziehenden Punkt; mit $x=w+1/w$ wird $f$ zu $w\mapsto w^2$. Daraus $f^{t}(x)=w^{2^t}+w^{-2^t}$,
+    d. h. $2\cosh(2^t\operatorname{arcosh}(x/2))$ ([[it.satz.elementare_superfunktionen]]).
+  einordnung: |
+    Der Fall $\lambda=0$ neben Koenigs ($0<|\lambda|<1$, [[it.satz.koenigs]]) und Leau–Fatou ($\lambda=1$). Für $b^z$ selbst kommt er nicht vor.
+
+it.konstr.levy:
+  worum: |
+    Der erste, der ernsthaft „halb so oft $e^x$“ bauen wollte, war Paul Lévy (1927). Sein Trick: für grosse $x$ ist $e^x$ fast dasselbe
+    wie $e^x-1$, und $e^x-1$ hat bei 0 einen Fixpunkt, an dem man iterieren kann.
+  genau: |
+    Lévy sucht eine Interpolation $t\mapsto\exp^t$, die in $t$ „regelmässig wächst“, und zeigt, dass das gleichbedeutend ist mit der Aufgabe für $e^x-1$.
+    Dort hat die formale Iteration $f^t(x)=x+\tfrac t2x^2+\dots$ Koeffizienten, die Polynome in $t$ sind.
+  warum: |
+    1. Für $x\to\infty$ ist $e^x-(e^x-1)=1$ verschwindend klein gegen $e^x$; Bahnen von $e^x$ und $e^x-1$ lassen sich deshalb aneinander ankoppeln.
+    2. $e^x-1$ hat bei 0 einen Fixpunkt mit Steigung 1 (parabolisch); dort gibt es eine natürliche gebrochene Iteration (Fatou-Koordinate, Szekeres).
+    3. Über die Ankopplung überträgt sie sich auf $e^x$.
+    (Nur über die Rezensionen der Noten geprüft; die Ausarbeitung von 1928 ist nicht gelesen.)
+  einordnung: |
+    Vorläufer von Szekeres' regulärer Iteration ([[it.satz.szekeres_monoton]]) und Walkers $C^\infty$-Lösung ([[kn.konstr.walker]]); ganz anderer Weg als
+    Kneser 1950 ([[kn.satz.halbe_exp]]), der über den komplexen Fixpunkt geht.
+
+it.satz.cremer:
+  worum: |
+    Dreht sich die Abbildung am Fixpunkt um einen irrationalen Winkel, hofft man auf eine Scheibe, auf der sie genau eine Drehung ist.
+    Cremer zeigte 1927, dass das schiefgehen kann: Bei Winkeln, die extrem gut durch Brüche angenähert werden, gibt es keine solche Scheibe.
+  genau: |
+    Für Polynome vom Grad $d$ und $\lambda=e^{2\pi i\alpha}$ mit $\liminf_q|\lambda^q-1|^{1/d^q}=0$ ist der Fixpunkt nicht linearisierbar; jede Umgebung
+    enthält periodische Bahnen. Solche $\alpha$ bilden eine Menge der Mächtigkeit des Kontinuums.
+  warum: |
+    1. Ein periodischer Punkt der Periode $q$ löst $f^q(z)=z$, ein Polynom vom Grad $d^q$; das Produkt seiner von 0 verschiedenen Lösungen ist durch $|\lambda^q-1|$ beschränkt.
+    2. Ist $|\lambda^q-1|$ viel kleiner als $\varepsilon^{d^q}$, muss eine Lösung näher als $\varepsilon$ bei 0 liegen.
+    3. Auf einer Linearisierungsscheibe gibt es aber keine periodischen Punkte ausser dem Fixpunkt — Widerspruch.
+  einordnung: |
+    Gegenstück zu Siegel und Brjuno ([[fp.satz.neutral]]). Für die Exponentialfamilie greift das Polynom-Argument nicht direkt.
+
+it.satz.sternberg_reell:
+  worum: |
+    Koenigs' Satz verlangt eine analytische Funktion. Für reelle Fragen reicht oft „glatt“: Sternberg zeigte 1957, dass auch eine nur glatte Funktion
+    nahe einem anziehenden (oder abstossenden) Fixpunkt in passender glatter Koordinate genau eine Streckung ist.
+  genau: |
+    $g\in C^r$, $2\le r\le\infty$, $g(0)=0$, $g'(0)=a>0$, $a\ne1$: es gibt $h\in C^r$ mit $h(0)=0$, $h'(0)=1$, $h\circ g=a\,h$.
+  warum: |
+    1. Wie bei Koenigs betrachtet man $h_n=a^{-n}g^n$.
+    2. Die Abweichung vom Linearen ist quadratisch klein, und $g^n$ schrumpft geometrisch; das gibt Konvergenz von $h_n$ samt Ableitungen bis zur Ordnung $r$.
+    3. Der Fall $r=1$ ist nicht abgedeckt; dort braucht man Zusatzbedingungen an die Stetigkeit von $g'$.
+  einordnung: |
+    Glattes Gegenstück zu [[it.satz.koenigs]]. Es zeigt: Glattheit am Fixpunkt allein wählt die reguläre Tetration noch nicht aus — dafür braucht man
+    Analytizität ([[it.satz.vertauschbar]]).
+
+it.satz.baker_einbettung:
+  worum: |
+    Kann man eine Funktion mit einem Fixpunkt der Steigung 1 „stetig iterieren“, so dass alle Zwischenschritte wieder schöne (meromorphe) Funktionen sind?
+    Baker zeigte: nur wenn sie eine gebrochen lineare Funktion ist.
+  genau: |
+    Ist $f$ meromorph, $f(s_0)=s_0$, $f'(s_0)=1$, $f\ne\mathrm{id}$, und gibt es eine stetige Iterationsgruppe meromorpher $f^t$ mit $f^1=f$, so ist $f$ gebrochen linear.
+    (In der Wiedergabe bei Karlin–McGregor; Original nicht gelesen.)
+  warum: |
+    Lokal gibt es zwar auf jedem Blatt eine Fatou-Koordinate und damit eine Iteration — aber die Blätter passen im Allgemeinen nicht zusammen
+    ([[it.satz.ecalle_voronin]]), und die formale Iterationsreihe divergiert ([[it.satz.baker]]). Eine global meromorphe Gruppe würde beides verhindern.
+  einordnung: |
+    Parabolisches Gegenstück zu [[it.satz.karlin_mcgregor]]. Folgerung für die Tetration: zur Basis $\eta$ gibt es keine Iteration, die am Fixpunkt $e$
+    analytisch und überall meromorph ist ([[kl.kor.eta_baker]]).

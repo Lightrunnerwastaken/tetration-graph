@@ -53,7 +53,7 @@ aussagen:
     f4_uebertragbar: 'Nicht auf parabolische Fixpunkte (dort kann die formale Iteration divergieren: it.satz.baker).'
     f5_neue_frage: 'Für $1<b<\eta$: zwei Fixpunkte, zwei reguläre Iterationen — stimmen sie überein? → kl.beob.zwei_abel'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Rechtfertigt den Namen „regulär“.', nutzen_stufe: mittel}
-  quellen: [{ref: kuczma1990, geprueft: nein}, {ref: diese_arbeit}]
+  quellen: [{ref: kuczma1990, geprueft: nein}, {ref: diese_arbeit}, {ref: fatou1924, stelle: 'vertauschbare Substitutionen und Koenigs-Iteration', geprueft: sekundaer}]
 
 - id: it.satz.leau_fatou
   titel: Leau–Fatou-Blume und Fatou-Koordinaten
@@ -69,7 +69,7 @@ aussagen:
     Konstante eindeutige injektive Abel-Funktion (Fatou-Koordinate) $\phi$ mit $\phi(f(z))=\phi(z)+1$,
     asymptotisch $\phi(z)\sim -1/(k a z^k)$.
   beweis: {art: literatur, text: 'Milnor §10.'}
-  quellen: [{ref: milnor2006, stelle: '§10'}]
+  quellen: [{ref: milnor2006, stelle: '§10'}, {ref: leau1897, stelle: 'Blätter, Multiplikator Einheitswurzel', geprueft: sekundaer}, {ref: fatou1919, geprueft: sekundaer}]
   pruefung:
     f1_folgt_unmittelbar: Nein (klassisch).
     f2_benutzte_voraussetzungen: 'Nur der erste nichtlineare Term; Eindeutigkeit bis auf Konstante braucht Injektivität bzw. Wachstumsbedingung.'
@@ -137,8 +137,8 @@ aussagen:
   aussage: |
     Die eindeutige formale Potenzreihe $f^t(z)=z+\tfrac t2 z^2+\dots$ mit $f^s\circ f^t=f^{s+t}$ hat für
     reelles $t\notin\mathbb Z$ Konvergenzradius 0.
-  beweis: {art: literatur, text: 'Baker (indirekte Argumente), zitiert in Bakers Folgearbeiten und bei Szekeres.'}
-  quellen: [{ref: baker_iteration}, {ref: szekeres1958, geprueft: sekundaer}]
+  beweis: {art: literatur, text: 'Baker 1958 (Konvergenzradius 0 der formalen Halbiterierten von $e^z-1$), Baker 1962 (Menge der Ordnungen mit konvergenter Reihe ist ein diskretes Gitter, hier $\mathbb Z$); zitiert bei Erdős–Jabotinsky 1960 und Lewin 1965.'}
+  quellen: [{ref: baker1958, geprueft: sekundaer}, {ref: baker1962, geprueft: sekundaer}, {ref: lewin1965, geprueft: sekundaer}, {ref: szekeres1958, geprueft: sekundaer}]
   experimente: [exp.eta_baker]
   pruefung:
     f1_folgt_unmittelbar: Nein.
@@ -164,7 +164,7 @@ aussagen:
     Andernfalls hat $S$ Flächeninhalt 0 und $S\cap\mathbb R$ Länge 0 (Baker: $S$ ist dann ein Gitter
     höchstens zweier Dimensionen oder trivial).
   beweis: {art: literatur, text: 'Erdős–Jabotinsky 1960; Gitteraussage bei Baker.'}
-  quellen: [{ref: erdos_jabotinsky1960}, {ref: baker_iteration}]
+  quellen: [{ref: erdos_jabotinsky1960}, {ref: baker1962, stelle: 'Gitteraussage', geprueft: sekundaer}, {ref: jabotinsky1963}]
   pruefung:
     f1_folgt_unmittelbar: Nein.
     f2_benutzte_voraussetzungen: 'Nur formale Struktur und Konvergenz von F; Wortlaut über Rezension geprüft.'
@@ -224,7 +224,7 @@ aussagen:
     f4_uebertragbar: 'Nicht auf $\exp_b$: dort unterscheiden sich die regulären Abel-Funktionen an 2 und 4 (kl.beob.zwei_abel, „Bummer“).'
     f5_neue_frage: 'Welche Eigenschaft von $f$ (rational vom Grad 1) erzwingt die Übereinstimmung — und wie gross ist die Abweichung für $f$ „nahe“ einer Möbius-Abbildung?'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Kontrast, der zeigt, warum die Fixpunktwahl bei Tetration wirklich zählt.', nutzen_stufe: gering}
-  quellen: [{ref: diese_arbeit}, {ref: forum_bummer2007, stelle: 'Gegenstück'}]
+  quellen: [{ref: diese_arbeit}, {ref: schroeder1871, stelle: 'Iterierte gebrochen linearer Abbildungen', geprueft: sekundaer}, {ref: karlin_mcgregor1968, stelle: 'Hauptsatz: Umkehrung — gleiche reguläre Iterationen an zwei Fixpunkten nur bei gebrochen linearen Abbildungen', geprueft: sekundaer}, {ref: forum_bummer2007, stelle: 'Gegenstück'}]
   kanten:
     - {typ: verwandt, ziel: kl.beob.zwei_abel}
 
@@ -285,7 +285,7 @@ aussagen:
     f4_uebertragbar: 'Alle Tschebyschow- und Lattès-artigen Abbildungen.'
     f5_neue_frage: 'TPID 8: elementares F mit Polynom ohne reellen Fixpunkt?'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Beispiele, an denen man jede Iterationsmethode prüfen kann.', nutzen_stufe: mittel}
-  quellen: [{ref: forum_tid275}, {ref: forum_tid809}, {ref: forum_tid819}, {ref: forum_tpid, stelle: 'TPID 8'}]
+  quellen: [{ref: schroeder1871, stelle: 'S. 306: logistische Abbildung 4x(1−x) über x = sin² — das Urbeispiel einer verkleideten Verdopplung', geprueft: sekundaer}, {ref: curtright_zachos2009, stelle: 'Schröder-Funktionen und Superfunktionen elementarer Abbildungen', geprueft: sekundaer}, {ref: forum_tid275}, {ref: forum_tid809}, {ref: forum_tid819}, {ref: forum_tpid, stelle: 'TPID 8'}]
   kanten:
     - {typ: verwandt, ziel: it.satz.koenigs}
     - {typ: verwandt, ziel: it.satz.moebius_iteration}
@@ -322,7 +322,7 @@ aussagen:
     f4_uebertragbar: 'Nicht auf exp — dort fehlt die globale Linearisierung.'
     f5_neue_frage: 'Was genau zerstört bei exp die Analytizität (falls sie fehlt)? → br.frage.implosion'
   bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Zeigt am einfachsten Modell, was man bei η erwarten könnte — und was bei exp anders ist.', nutzen_stufe: mittel}
-  quellen: [{ref: forum_tid1608}]
+  quellen: [{ref: forum_tid1608}, {ref: schroeder1871, stelle: 'Iterierte gebrochen linearer Abbildungen', geprueft: sekundaer}]
   kanten:
     - {typ: verwandt, ziel: kl.frage.eta_analytisch}
     - {typ: verwandt, ziel: br.frage.implosion}

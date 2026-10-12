@@ -1,0 +1,270 @@
+# Literaturkarte Strang L2, Block 2 (12.10.2026): Hauptergebnisse grosser Arbeiten (Trappmann–Kouznetsov 2011, Paulsen–Cowgill 2017,
+# Kouznetsov 2009, Walker 1991, Szekeres 1998) und die Carleman-Vermutungen TPID 3 und TPID 14.
+gebiet: kn
+aussagen:
+
+- id: kn.satz.tk_kriterien
+  titel: 'Trappmann–Kouznetsov 2011: einfache hinreichende Bedingungen für ihr Eindeutigkeitskriterium; Anfangsgebiet für b > η'
+  art: satz
+  ebene: B
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [abel, fixpunkt_L]
+  bereich: '$F$ holomorph; Anfangskurve $\gamma:(-1,1)\to\mathbb C$ ($\gamma$, $F\circ\gamma$ injektiv und disjunkt, Endpunkte $\gamma(\pm1)$ zwei Fixpunkte von $F$), Anfangsgebiet $H$; $\alpha$ holomorphe Abel-Funktion auf $H$ mit $\alpha(d)=0$'
+  aussage: |
+    **Kriterium 2:** Ist $\gamma$ rektifizierbar, $\zeta=\alpha\circ\gamma$ injektiv, $\zeta\cap(\zeta+1)=\emptyset$ und $\operatorname{Im}\zeta(t)\to\pm\infty$ für $t\to\pm1$,
+    dann gilt Kriterium 1 ($\alpha$ injektiv auf $H$ und $\bigcup_k(\alpha(H)+k)=\mathbb C$), also Eindeutigkeit (kn.satz.trappmann_kouznetsov).
+    **Kriterium 3:** Es genügt schon, dass $t\mapsto\operatorname{Im}\alpha(\gamma(t))$ streng wächst und gegen $\pm\infty$ geht.
+    **Lemma 4:** Für $b>\eta$ ist die Strecke $\ell(t)=\operatorname{Re}L+i\operatorname{Im}L\cdot t$ zwischen $\bar L$ und $L$ (Fixpunkte von $\log_b$) eine Anfangskurve von $\exp_b$;
+    Anfangsgebiet $H=\{z:\operatorname{Re}z\ge\operatorname{Re}L,\ |z|\le|L|\}\setminus\{L,\bar L\}$. Damit erfüllt Knesers Abel-Funktion das Kriterium (Abschnitt 4).
+  einfach: >-
+    Damit eine „Stockwerksfunktion“ (Abel-Funktion) eindeutig ist, reicht es, auf einem Stück der Ebene zwischen den beiden komplexen Fixpunkten hinzuschauen:
+    Wenn ihr Wert dort nach oben und unten über alle Grenzen geht, gibt es nur eine. Knesers Lösung besteht diesen Test.
+  beweis: {art: literatur, text: 'Trappmann–Kouznetsov 2011, Kriterien 2 und 3 mit Beweis (S. 8–9), Lemma 3 (Jordan-Kurven, S. 7–8), Lemma 4 und Abschnitt 4 (S. 9 ff.).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Kriterium 3 ⇒ 2 ist kurz (Injektivität, ζ+1 schneidet ζ nicht); 2 ⇒ 1 braucht einen Satz über schlichte Funktionen und Jordan-Kurven.'
+    f2_benutzte_voraussetzungen: 'Zwei verschiedene Fixpunkte von F als Endpunkte der Anfangskurve; Rektifizierbarkeit für Kriterium 2.'
+    f3_spezialfall: 'Hinreichende Bedingungen für Kriterium 1 (kn.satz.trappmann_kouznetsov).'
+    f4_uebertragbar: 'Auf jede holomorphe Funktion mit einem Fixpunktpaar — z. B. die Pentation an ihren komplexen Fixpunkten (Kneser-artige Hexation, kn.satz.hexation_eindeutig_g0).'
+    f5_neue_frage: 'Welche Anfangskurve passt für die Kneser-artige Hexation, deren Bild in der oberen Halbebene verzweigt ist (kn.beob.hexation_verzweigt)?'
+  bewertung: {richtigkeit: 'Literatur, Original gelesen (S. 3–9)', neuheit: bekannt, nutzen: 'Macht das Eindeutigkeitskriterium prüfbar: nur Imaginärteile entlang einer Strecke.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: trappmann_kouznetsov2011, stelle: 'arXiv:1006.3981, Kriterien 2–3, Lemma 3–4, Abschnitt 4', geprueft: original}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.trappmann_kouznetsov}
+    - {typ: verwandt, ziel: kn.satz.hexation_eindeutig_g0}
+
+- id: kn.verm.tk_c2
+  titel: 'Vermutung von Trappmann–Kouznetsov (2010): holomorph auf ℂ ohne (−∞, −2] und reell-symmetrisch genügt für Eindeutigkeit'
+  art: vermutung
+  ebene: B
+  status: vermutung
+  niveau: forschung
+  objekte: [tetrationsgleichung, kneser_T]
+  bereich: '4-Exponential $f$ zur Basis $b>\eta$: $f(0)=1$, $f(z+1)=\exp_b(f(z))$'
+  aussage: |
+    **Vermutung (Trappmann–Kouznetsov, arXiv 2010, S. 4):** Holomorphie auf $C_{-2}=\mathbb C\setminus(-\infty,-2]$ zusammen mit $f(\bar z)=\overline{f(z)}$ legt das 4-Exponential eindeutig fest.
+    Begründung des Schnitts: aus $f(-1)=0$ folgt $f(-2)=\log_b0$, also eine Singularität oder ein Verzweigungspunkt bei $-2$ (und den ganzen Zahlen darunter).
+    **Stand:** Paulsen–Cowgill (2017) schreiben im Abstract, dass sie „eine Vermutung von Trappmann und Kouznetsov beantworten“. Ihr Eindeutigkeitssatz verlangt
+    (nach Nixon 2021) zusätzlich den Grenzwert $f(x+iy)\to L$ für $y\to+\infty$ (kn.satz.paulsen_cowgill). Ob die Fassung ohne Grenzwert damit bewiesen oder
+    widerlegt ist, lässt sich ohne den Volltext nicht sagen. Nixon fragte 2021 im Forum gerade, ob es eine Lösung mit Grenzwert $\infty$ statt $L$ gibt (kn.frage.beta_methode).
+  einfach: >-
+    Trappmann und Kouznetsov vermuteten 2010: Wenn eine Tetration überall in der komplexen Ebene glatt ist (ausser auf dem Strahl links von −2) und auf der reellen
+    Achse reell, dann ist es Knesers. Ob man dafür noch fordern muss, wohin sie nach oben läuft, ist die eigentliche Frage.
+  gegenbeispielsuche: 'Nicht selbst gerechnet. Naheliegende Kandidaten F(z + θ(z)) mit ganzem, reellem, 1-periodischem θ erzeugen Werte auf dem Schnitt und damit Singularitäten — kein einfaches Gegenbeispiel bekannt; die β-Methode (Nixon 2021) wäre ein Kandidat mit anderem Verhalten bei i∞, ihre Holomorphie auf C₋₂ ist nicht geklärt.'
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Nur Holomorphie auf C₋₂ und Spiegelsymmetrie.'
+    f3_spezialfall: 'Stärkere Fassung von kn.satz.paulsen_cowgill (ohne Grenzbedingung).'
+    f4_uebertragbar: 'Auf die Hexation ist die Halbebenen-Fassung leer (kn.satz.hexation_keine_halbebene).'
+    f5_neue_frage: 'Folgt der Grenzwert L bei i∞ schon aus Holomorphie auf C₋₂ und Realität?'
+  bewertung: {richtigkeit: 'offen (Stand des Volltexts von Paulsen–Cowgill ungeprüft)', neuheit: bekannt, nutzen: 'Zeigt, welche Bedingung im Eindeutigkeitssatz wirklich gebraucht wird.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: trappmann_kouznetsov2011, stelle: 'S. 4, nach Gl. (6)', geprueft: original}
+    - {ref: paulsen_cowgill2017, stelle: 'Abstract (Repositorium arch.astate.edu)', geprueft: sekundaer}
+    - {ref: forum_tpid, stelle: 'Nixon, Beitrag 21 (23.08.2021): Bedingungen von Paulsen–Cowgill und Fragen A/B'}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}
+    - {typ: verwandt, ziel: kn.frage.beta_methode}
+
+- id: kn.konstr.paulsen_cowgill_iteration
+  titel: 'Paulsen–Cowgill 2017: ein Iterationsverfahren für Kneser mit 180 Knoten und mehr als 50 Stellen'
+  art: konstruktion
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, abel]
+  bereich: 'reelle Basen $b>\eta$, Kneser-Tetration'
+  aussage: |
+    Paulsen und Cowgill geben ein neues Iterationsverfahren für die Kneser-Tetration an: mit 180 Knoten erreicht es für die meisten Basen eine Genauigkeit
+    besser als $10^{-50}$, jede Iteration bringt ein bis zwei Stellen; sie halten es für übertragbar auf andere Probleme mit der Abel-Gleichung.
+    Neben Kouznetsovs Cauchy-Integral (kn.konstr.cauchy, $\approx10^{-14}$ in doppelter Genauigkeit) und Levensteins θ-Iteration (fatou.gp) das dritte veröffentlichte Hochpräzisionsverfahren.
+  einfach: >-
+    Ein Rechenverfahren, das Knesers Tetration auf über 50 Nachkommastellen liefert — jede Runde wird es ein bis zwei Stellen genauer.
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Verfahren).'
+    f2_benutzte_voraussetzungen: 'Nur das Abstract gelesen; Aufbau des Verfahrens unbekannt.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Nach den Autoren auf andere Abel-Gleichungen.'
+    f5_neue_frage: 'Vergleich mit gp-tetration (Stellen pro Sekunde) an denselben Basen.'
+  gegenbeispielsuche: 'keine eigene Rechnung mit dem Verfahren (Text nicht zugänglich).'
+  bewertung: {richtigkeit: 'Literatur (Abstract)', neuheit: bekannt, nutzen: 'Unabhängiges Hochpräzisionsverfahren zum Abgleich unserer Referenzwerte.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: paulsen_cowgill2017, stelle: 'Abstract', geprueft: sekundaer}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.cauchy}
+    - {typ: verwandt, ziel: kn.beob.referenzwerte}
+
+- id: kn.beob.kouznetsov_numerik
+  titel: 'Kouznetsov 2009: robuste Konvergenz der Integralgleichung als numerisches Argument für Eindeutigkeit'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [kneser_T, fixpunkt_L]
+  bereich: 'Basis $e$; Werte auf der imaginären Achse aus der Cauchy-Integralgleichung (kn.konstr.cauchy)'
+  aussage: |
+    Kouznetsov iteriert die Integralgleichung für $F(iy)$: sie konvergiert in einigen zehn Durchgängen, das Residuum erreicht in doppelter Genauigkeit etwa $10^{-14}$;
+    die Lösung bleibt längs der imaginären Achse beschränkt und strebt gegen $L$ bzw. $\bar L$. Daraus schliesst er — numerisch, nicht als Beweis —, dass es genau eine
+    solche Tetration gibt: wachsend auf der reellen Achse, gegen $L$ längs der imaginären Achse, analytisch bis auf Singularitäten an den ganzen Zahlen $<-1$ und einen Schnitt links von $-2$.
+    Die Eindeutigkeit wurde danach als Kriterium (Trappmann–Kouznetsov 2011) und als Satz (Paulsen–Cowgill 2017) gefasst.
+  einfach: >-
+    2009 rechnete Kouznetsov Knesers Tetration erstmals in der ganzen komplexen Ebene aus. Weil seine Rechnung immer zum selben Ergebnis lief, vermutete er,
+    dass es nur diese eine gibt — bewiesen wurde das erst 2017.
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (numerische Evidenz).'
+    f2_benutzte_voraussetzungen: 'Abschneiden der Integration bei |Im| = A mit F ≈ L dort; doppelte Genauigkeit.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Für die Hexation scheitert das Verfahren an Verzweigungen (kn.beob.hexation_verzweigt).'
+    f5_neue_frage: 'Konvergenzbeweis des Iterationsverfahrens (von Trappmann–Kouznetsov 2011 als Forschungsziel genannt).'
+  bewertung: {richtigkeit: 'numerisch (Literatur)', neuheit: bekannt, nutzen: 'Erster Zugang zur Eindeutigkeit, vor Kriterium und Satz.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: kouznetsov2009, stelle: 'zbMATH-Rezension (Zbl 1202.30002)'}
+    - {ref: trappmann_kouznetsov2011, stelle: 'S. 3–4: Konvergenzbeweis als offenes Ziel', geprueft: original}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.paulsen_cowgill}
+    - {typ: verwandt, ziel: kn.konstr.cauchy}
+
+- id: kn.satz.walker_konjugation
+  titel: 'Walker 1991: eine C^∞-Funktion h mit h(eˣ) = e^{h(x)} − 1 — exp ist glatt konjugiert zu eˣ − 1'
+  art: satz
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [e_minus_1, abel]
+  bereich: 'reelle Achse'
+  aussage: |
+    P. L. Walker konstruiert durch ein natürliches Iterationsverfahren eine unendlich oft differenzierbare reelle Funktion $h$ mit
+    $$h(e^x)=e^{h(x)}-1\qquad(x\in\mathbb R),$$
+    also eine glatte Konjugation zwischen $\exp$ und $\operatorname{dexp}(x)=e^x-1$. Zusammen mit Abel-Funktionen von $\operatorname{dexp}$ (aus Walker 1988 und 1991, J. Math. Anal. Appl.)
+    erhält er $C^\infty$-Lösungen $G$ von $G(e^x)=G(x)+1$, die „verallgemeinerten Logarithmen“ (kn.konstr.walker).
+  einfach: >-
+    eˣ − 1 hat bei 0 einen Fixpunkt, eˣ nicht. Walker baut eine glatte Umrechnung zwischen beiden. Damit kann er die bekannten halben Iterierten von eˣ − 1
+    auf eˣ übertragen.
+  beweis: {art: literatur, text: 'Walker 1991, Math. Comp. 57, 723–733 (nach der zbMATH-Rezension von J. Matkowski).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Grenzwertkonstruktion, h = lim dexp^{−n}∘expⁿ nach Trappmann im Forum).'
+    f2_benutzte_voraussetzungen: 'Nur reelle Argumente; Analytizität nicht behauptet.'
+    f3_spezialfall: 'Ein Basiswechsel (bw.def.F_bd) zwischen exp und dem parabolischen dexp.'
+    f4_uebertragbar: 'Auf jede Basis über η (Konjugation zu b^x mit parabolischem Fixpunkt).'
+    f5_neue_frage: 'Ist h nirgends analytisch (Levenstein 2011, bw.verm.nirgends_analytisch)?'
+  bewertung: {richtigkeit: 'Literatur (Rezension)', neuheit: bekannt, nutzen: 'Der Kern von Walkers Konstruktion und ein frühes Beispiel des Basiswechsels.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: walker1991, stelle: 'zbMATH-Rezension (Zbl 0742.39005)'}
+    - {ref: walker1988, stelle: 'Vorarbeit (Abel-Funktionen ganzer Funktionen)'}
+    - {ref: walker1991_jmaa, stelle: 'Vorarbeit'}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.walker}
+    - {typ: analog_zu, ziel: bw.def.F_bd}
+
+- id: kn.verm.szekeres_wachstum
+  titel: 'Szekeres 1998: „reguläres Wachstum“ als Auswahlprinzip für die beste Abel-Lösung'
+  art: vermutung
+  ebene: B
+  status: vermutung
+  niveau: forschung
+  objekte: [abel, hardy_feld]
+  bereich: '$F$ analytisch auf $[0,\infty)$, $F(0)=0$, $F^{\prime}(0)=c\ge1$, $F^{\prime}>0$ (z. B. $e^x-1$)'
+  aussage: |
+    Die Abel-Gleichung $A(F(x))=A(x)+1$ hat viele Lösungen. G. Szekeres will die „beste“ über einen Begriff **regulären Wachstums** auszeichnen und baut dazu mit drei
+    Hilfsfunktionen eine bestimmte Lösung $\varphi$ von $\varphi(F(x))=\varphi(x)$. **Vermutung:** eine abgeschwächte vollständige Monotonie der Folge der Fourier-Koeffizienten
+    von $\varphi\circ A^{-1}$ entscheidet, ob reguläres Wachstum vorliegt; gestützt durch Rechnerbeispiele. Anknüpfung an einen Versuch von P. Lévy (1928).
+  einfach: >-
+    Szekeres sucht unter den vielen möglichen „halben Iterierten“ die natürlichste — die, deren Wachstum am gleichmässigsten ist. Sein Kriterium ist eine Vermutung,
+    die er mit Rechnungen stützt.
+  gegenbeispielsuche: 'Nach der Rezension: numerische Beispiele im Artikel; keine eigene Prüfung.'
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Fixpunkt 0 mit F''(0) ≥ 1 (also e^x − 1, nicht e^x selbst).'
+    f3_spezialfall: 'Auswahlprinzip neben Kneser (Holomorphie), Walker (Glattheit) und Paulsen 2016 (Metrik).'
+    f4_uebertragbar: 'Über Walkers Konjugation (kn.satz.walker_konjugation) auf exp.'
+    f5_neue_frage: 'Erfüllt Knesers halbe exp Szekeres'' Kriterium?'
+  bewertung: {richtigkeit: 'Vermutung (Literatur)', neuheit: bekannt, nutzen: 'Ein Auswahlprinzip, das nicht über komplexe Analysis geht.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: szekeres1998, stelle: 'zbMATH-Rezension (Zbl 0918.39006)'}
+    - {ref: szekeres1961, stelle: 'Vorarbeit'}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.halbe_exp}
+    - {typ: verwandt, ziel: kn.konstr.paulsen_stoerung}
+    - {typ: verwandt, ziel: kn.satz.walker_konjugation}
+
+- id: kn.verm.tpid3
+  titel: 'TPID 3: Eigenwerte abgeschnittener Carleman-Matrizen von (x+s)^p − s gehen gegen 1, p, p², …'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [carleman, multiplikator]
+  bereich: '$f(x)=(x+s)^p-s$, $s,p>0$; Carleman-Matrix um 0, abgeschnitten auf $N\times N$; Fixpunkt $x_0=1-s$ mit $f^{\prime}(x_0)=p$, Verzweigungspunkt $-s$ (für $p\notin\mathbb N$)'
+  aussage: |
+    **Vermutung (bo198214, TPID 3, 29.06.2008):** Für alle $s,p>0$ lassen sich die Eigenwerte so nummerieren, dass $v_{N,k}\to p^k$.
+    Motivation: Ist die Matrix-Methode unabhängig vom Entwicklungspunkt? Für $s=1$ ist 0 selbst Fixpunkt und die Matrix dreieckig, dann gilt es exakt.
+    **Gemessen (exp.tpid3):** $s=3/4$: Abstand der ersten vier Eigenwerte zu $1,p,p^2,p^3$ bei $N=32$: $6\cdot10^{-11}$ ($p=2/3$), $3\cdot10^{-4}$ ($p=3/2$, langsamer).
+    Aber $s=1/2$, $p=1/2$ (Fixpunkt auf dem Rand $|x|=s$ des Konvergenzkreises): Abstand bleibt bei $0.23$; $s=3/10$, $p=1/2$ (Fixpunkt ausserhalb): keine Annäherung;
+    $s=3/10$, $p=2$ (Polynom): kein Eigenwert nahe 2, das Spektrum nähert sich $\{1,0,0,\dots\}$ — dem des superanziehenden Fixpunkts $-s$.
+    In der gestellten Allgemeinheit ist TPID 3 damit numerisch zweifelhaft; siehe kn.verm.tpid3_bedingung.
+  einfach: >-
+    Eine Vermutung über Tabellen, die eine Funktion und ihre Potenzen beschreiben: Ihre Eigenwerte sollen die Potenzen der Steigung am Fixpunkt treffen.
+    Das klappt — aber nur, wenn der Fixpunkt nah genug am Entwicklungspunkt liegt.
+  gegenbeispielsuche: 'exp.tpid3: fünf Fälle, N = 8 … 32 (mpmath, 60 Stellen); zwei Fälle bestätigen, drei widersprechen bis N = 32.'
+  experimente: [exp.tpid3]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein. Für s = 1 trivial (Dreiecksmatrix).'
+    f2_benutzte_voraussetzungen: 'Entwicklung um 0; die Reihe von f hat Radius s (Verzweigung bei −s), für natürliches p ist f ganz.'
+    f3_spezialfall: 'Gegenstück zu TPID 1 (kn.verm.carleman_eigenwerte) für eine Funktion mit Verzweigungspunkt.'
+    f4_uebertragbar: 'Auf TPID 1: dort liegt der untere Fixpunkt a von b^x für 1 < b < η immer im (unendlichen) Konvergenzkreis.'
+    f5_neue_frage: 'Welcher Fixpunkt bestimmt das Grenzspektrum, wenn mehrere in Frage kommen? (Trappmann vermutete 2008 für x² + x − 1/16 ebenfalls Probleme.)'
+  bewertung: {richtigkeit: 'in der gestellten Allgemeinheit numerisch zweifelhaft (drei Fälle bis N = 32 ohne Annäherung)', neuheit: bekannt, nutzen: 'Testet, ob Matrix-Methoden vom Entwicklungspunkt abhängen.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: forum_tpid, stelle: 'TPID 3 (bo198214, 29.06.2008, Beitrag 4)'}
+    - {ref: forum_tid170, stelle: 'Trappmann 2008: Carleman-Eigenwerte bei zwei Fixpunkten (x² + x − 1/16)'}
+  kanten:
+    - {typ: analog_zu, ziel: kn.verm.carleman_eigenwerte}
+
+- id: kn.verm.tpid3_bedingung
+  titel: 'TPID 3 gilt, wenn der Fixpunkt 1 − s im Konvergenzkreis der Entwicklung liegt (s > 1/2) — sonst nicht'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [carleman, multiplikator]
+  bereich: 'wie kn.verm.tpid3'
+  aussage: |
+    **Vermutung (hier):** Die Eigenwerte der abgeschnittenen Carleman-Matrix von $(x+s)^p-s$ um 0 gehen genau dann gegen $\{p^k\}$, wenn der Fixpunkt $x_0=1-s$
+    im Konvergenzkreis $|x|<s$ der Entwicklung liegt, d. h. für $s>1/2$ (bei $p\notin\mathbb N$). Liegt er ausserhalb, sieht die Matrix ihn nicht; bei ganzem $p$
+    (ganze Funktion) bestimmt der dem Entwicklungspunkt nähere Fixpunkt das Grenzspektrum ($s=3/10$, $p=2$: superanziehend bei $-s$, Spektrum gegen $\{1,0,\dots\}$).
+  einfach: >-
+    Die Tabelle wird um den Punkt 0 gebaut und „sieht“ nur so weit, wie ihre Reihe konvergiert. Liegt der Fixpunkt weiter weg, treffen ihre Eigenwerte dessen Steigung nicht.
+  gegenbeispielsuche: 'exp.tpid3: s = 3/4 (innen) konvergiert für p = 2/3 und 3/2; s = 1/2 (Rand) und s = 3/10 (aussen) mit p = 1/2 keine Annäherung bis N = 32; p = 2, s = 3/10: Spektrum des näheren Fixpunkts. Nicht geprüft: s knapp über 1/2, grössere N.'
+  experimente: [exp.tpid3]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Konvergenzradius s der Entwicklung um 0.'
+    f3_spezialfall: 'Verfeinerung von kn.verm.tpid3.'
+    f4_uebertragbar: 'Auf jede Carleman-Rechnung: die Matrix um x₀ sieht den Fixpunkt nur innerhalb des Konvergenzkreises — eine Erklärung, warum der Carleman-slog um 0 bei b^x funktioniert.'
+    f5_neue_frage: 'Wie hängt die Konvergenzrate vom Verhältnis |1 − s|/s ab, und was passiert genau auf dem Rand s = 1/2?'
+  bewertung: {richtigkeit: 'Vermutung, fünf Fälle', neuheit: vermutlich_neu, recherche: 'Forum: TPID 3 ohne Antwort (tid 162), Themen 170 und 240 (Spektrum der Carleman-Matrix) — Trappmann ahnte 2008 Probleme bei zwei Fixpunkten, eine Bedingung an den Konvergenzkreis fand ich nicht (12.10.2026).', nutzen: 'Präzisiert eine offene Forumsvermutung.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: diese_arbeit, stelle: 'exp.tpid3'}
+    - {ref: forum_tid170}
+  kanten:
+    - {typ: korrigiert, ziel: kn.verm.tpid3}
+
+- id: kn.frage.tpid14
+  titel: 'TPID 14: Hängt Robbins'' Matrix-slog vom Entwicklungspunkt ab?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [carleman, slog]
+  aussage: |
+    tommy1729 (TPID 14, 01.06.2011) vermutet: Ersetzt man in Robbins' Formel für den slog den Entwicklungspunkt $x_0$ durch 0, erhält man denselben Superlogarithmus,
+    solange beide Punkte im Konvergenzradius des jeweils anderen liegen. Verwandt mit TPID 1 und 3 (dort dieselbe Frage für Eigenwerte). Unbeantwortet.
+  einfach: >-
+    Der Matrix-slog wird um einen gewählten Punkt herum ausgerechnet. Kommt immer dieselbe Funktion heraus, egal welchen Punkt man wählt? Vermutet ja — geprüft hat es niemand.
+  naechste_frage: 'Carleman-slog (kn.konstr.carleman) um 0 und um x₀ = 1/2 mit wachsendem n vergleichen; nach kn.verm.tpid3_bedingung ist eine Konvergenzkreis-Bedingung zu erwarten.'
+  quellen:
+    - {ref: forum_tpid, stelle: 'TPID 14 (tommy1729, 01.06.2011, Beitrag 16)'}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.carleman}
+    - {typ: verwandt, ziel: kn.verm.tpid3_bedingung}

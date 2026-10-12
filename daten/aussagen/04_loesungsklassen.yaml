@@ -70,13 +70,13 @@ aussagen:
   experimente: [exp.sqrt2_abel]
   stuetzt_sich_auf: [kl.satz.regulaer]
   pruefung:
-    f1_folgt_unmittelbar: 'Dass $p$ periodisch ist: ja (fg.satz.allgemeine_loesung). Dass $p$ nicht konstant ist: nein, das ist der Befund.'
+    f1_folgt_unmittelbar: 'Dass $p$ periodisch ist: ja (fg.satz.allgemeine_loesung). Dass $p$ nicht konstant ist: aus der Literatur ja — Karlin–McGregor (1968) zeigen, dass die regulären Iterationen an zwei Fixpunkten $s_1,s_2$ (Multiplikatoren $\ne0,1$, $f([s_1,s_2])\subseteq[s_1,s_2]$) nur für gebrochen lineare $f$ übereinstimmen; $\sqrt2^{\,x}$ auf $[2,4]$ erfüllt die Voraussetzungen. Neu hier ist nur die Messung der Grösse.'
     f2_benutzte_voraussetzungen: 'Rechnung mit 120 Stellen; Koenigs-Reihen an beiden Fixpunkten, unabhängig voneinander.'
     f3_spezialfall: 'Instanz von fg.satz.allgemeine_loesung mit explizit messbarem θ.'
     f4_uebertragbar: 'Auf jedes $1<b<\eta$ → kl.verm.streifenbreite.'
     f5_neue_frage: 'Erklärt die imaginäre Periode die Grösse der Amplitude? → kl.verm.streifenbreite'
-  bewertung: {richtigkeit: 'numerisch, mit Selbstprüfung (Periodizität, Präzisionsvergleich)', neuheit: bekannt, recherche: 'Gefunden um 1991 von Asimov, Hickerson und Schroeppel (unveröffentlicht), im Tetration-Forum 2007 als „Bummer!“ mit 100–450 Stellen nachgerechnet. Neu hier: 170 Stellen, Modenfolge und das Amplitudengesetz (kl.verm.streifenbreite).', nutzen: 'Konkretes, messbares Beispiel für die periodische Freiheit.', nutzen_stufe: mittel}
-  quellen: [{ref: forum_bummer2007, stelle: 'erster Beitrag: Fund von Asimov/Hickerson/Schroeppel um 1991'}, {ref: kouznetsov_trappmann2010, stelle: 'Unterschiedlichkeit der Superexponentiale'}]
+  bewertung: {richtigkeit: 'numerisch, mit Selbstprüfung (Periodizität, Präzisionsvergleich)', neuheit: bekannt, recherche: 'Gefunden um 1991 von Asimov, Hickerson und Schroeppel (unveröffentlicht), im Tetration-Forum 2007 als „Bummer!“ mit 100–450 Stellen nachgerechnet. Theoretisch erzwungen schon durch Karlin–McGregor 1968 (Recherche L1, 12.10.2026). Neu hier: 170 Stellen, Modenfolge und das Amplitudengesetz (kl.verm.streifenbreite).', nutzen: 'Konkretes, messbares Beispiel für die periodische Freiheit.', nutzen_stufe: mittel}
+  quellen: [{ref: forum_bummer2007, stelle: 'erster Beitrag: Fund von Asimov/Hickerson/Schroeppel um 1991'}, {ref: kouznetsov_trappmann2010, stelle: 'Unterschiedlichkeit der Superexponentiale'}, {ref: karlin_mcgregor1968, stelle: 'Hauptsatz: an zwei Fixpunkten stimmen die regulären Iterationen nur bei gebrochen linearen Abbildungen überein — erklärt, warum p nicht konstant sein kann', geprueft: sekundaer}]
   versionen:
     - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Neuheit von „folklore“ auf „bekannt“ (Forum 2007, Fund um 1991).'}
   kanten:
@@ -110,7 +110,7 @@ aussagen:
     f3_spezialfall: 'Analog zu Paper IV: Modenabfall ⇔ Abstand der nächsten Singularität vom Rand (br.satz.gevrey_fourier).'
     f4_uebertragbar: 'Gleiche Methode für Kneser-Basiswechsel: dort ist die Singularitätslage gerade die offene Frage (bw.frage.streifen_gevrey).'
     f5_neue_frage: 'Ein beweisbares Modellproblem für bw.frage.streifen_gevrey: hier sind alle Objekte explizit (Koenigs-Reihen).'
-  bewertung: {richtigkeit: 'Vermutung, numerisch geprüft', neuheit: vermutlich_neu, recherche: 'Keine Formel dieser Art in Kouznetsov–Trappmann 2010 (Abstract) gefunden; Volltext nicht geprüft.', nutzen: 'Modellfall, in dem die Streifenfrage explizit entscheidbar sein sollte.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'Vermutung, numerisch geprüft', neuheit: vermutlich_neu, recherche: 'Keine Formel dieser Art in Kouznetsov–Trappmann 2010 (Abstract) gefunden; Volltext nicht geprüft (frei nur als PDF, nicht heruntergeladen). Forum tid 69 („Bummer!“, 2007) nennt nur die Grösse $10^{-24}$, keine Formel, keine imaginäre Periode, keinen Fourier-Abfall (L1, 12.10.2026).', nutzen: 'Modellfall, in dem die Streifenfrage explizit entscheidbar sein sollte.', nutzen_stufe: hoch}
   kanten:
     - {typ: analog_zu, ziel: bw.frage.streifen_gevrey}
 
@@ -189,7 +189,7 @@ aussagen:
     f4_uebertragbar: 'Für $b\ne\eta$ gibt es keinen parabolischen Fixpunkt; aber nahe $\eta$ steuert diese Normalform die parabolische Implosion (br.frage.implosion).'
     f5_neue_frage: 'Die Écalle–Voronin-Invarianten von $e^u-1$ sind damit die Invarianten der η-Tetration — numerisch bestimmbar.'
   bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Verbindet die η-Tetration mit einem klassischen Satz; Ausgangspunkt für die Implosionsfrage.', nutzen_stufe: mittel}
-  quellen: [{ref: diese_arbeit}, {ref: baker_iteration}]
+  quellen: [{ref: diese_arbeit}, {ref: baker1958, stelle: 'formale Halbiterierte von e^z − 1 divergieren', geprueft: sekundaer}, {ref: baker1962, stelle: 'nur ganze Ordnungen konvergieren', geprueft: sekundaer}]
   kanten:
     - {typ: spezialfall_von, ziel: it.satz.baker}
     - {typ: motiviert, ziel: br.frage.implosion}
@@ -410,7 +410,7 @@ aussagen:
     f4_uebertragbar: 'Jede Iteration mit anziehendem reellem Fixpunkt und Multiplikator in (0, 1); Woons Variante mit Parameter w.'
     f5_neue_frage: 'Genaue Rate: von den hohen Moden mit λ^k → 0 bestimmt?'
   bewertung: {richtigkeit: 'vollständig; √2 bei h = ½ nachgerechnet', neuheit: bekannt, nutzen: 'Zeigt, dass unter η schon die ganzen Werte die reguläre Lösung festlegen — ohne jede Zusatzwahl.', nutzen_stufe: mittel}
-  quellen: [{ref: forum_tid12}, {ref: forum_tid719}]
+  quellen: [{ref: forum_tid12}, {ref: forum_tid719}, {ref: woon1997, stelle: 'binomiale Fortsetzung „s-mal anwenden“ (Quelle von Woons Entwicklung, Forum tid 12)', geprueft: sekundaer}]
   kanten:
     - {typ: analog_zu, ziel: kl.beob.q_binomial}
     - {typ: verwandt, ziel: kl.satz.regulaer}
@@ -466,7 +466,7 @@ aussagen:
     f4_uebertragbar: 'Jede Superfunktion mit anziehendem Fixpunkt; mike3 (2010) für die Basis η.'
     f5_neue_frage: 'Ist die reguläre Tetration für alle 1 < b ≤ η beweisbar beschränkt in der Halbebene (ohne kl.verm.vollmonoton)?'
   bewertung: {richtigkeit: 'vollständig (Eindeutigkeit); Beschränktheit der regulären Lösung numerisch', neuheit: bekannt, nutzen: 'Einfachste Eindeutigkeitsbedingung unter η, ohne Fixpunkt-Argumente.', nutzen_stufe: hoch}
-  quellen: [{ref: forum_tid496}]
+  quellen: [{ref: forum_tid496}, {ref: carlson1914, stelle: 'Satz von Carlson (Originalquelle)', geprueft: sekundaer}, {ref: hardy1920}]
   kanten:
     - {typ: analog_zu, ziel: kn.satz.paulsen_cowgill}
     - {typ: verwandt, ziel: kl.satz.folgen_vollmonoton}

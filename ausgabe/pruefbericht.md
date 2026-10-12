@@ -1,21 +1,17 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-321 Aussagen · 528 Kanten · 52 Experimente
+364 Aussagen · 632 Kanten · 54 Experimente
 
-**Effektiver Status:** bewiesen 133, numerisch 45, bewiesen_literatur 35, bedingt 23, vermutung 23, offen 22, definition 11, gescheitert 9, skizze 9, annahme 4, ueberholt 3, widerlegt 3, entlastet 1
+**Effektiver Status:** bewiesen 135, bewiesen_literatur 60, numerisch 51, vermutung 29, offen 26, bedingt 22, definition 11, skizze 10, gescheitert 9, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
-**Zitate nicht am Original geprüft:** 68
+**Zitate nicht am Original geprüft:** 102
 
 
 ## FEHLER (0)
 
 
-## WARNUNG (1)
+## WARNUNG (0)
 
-
-**neu-pruefen** (1)
-
-- `bw.kor.modenzahl` — hängt an widerlegter/überholter Aussage: bw.verm.universell
 
 ## HINWEIS (26)
 
@@ -45,15 +41,15 @@
 - `kn.satz.hexation_keine_halbebene` — Voraussetzung unbenutzt: H reell auf der Achse oder H(0) = 1
 - `kn.satz.singulaer_minus2` — Voraussetzung unbenutzt: T differenzierbar in einer Umgebung von −1 (Paper I)
 
-**fassung** (1)
+**fassung** (2)
 
 - `kn.gescheitert.polynom_kantorovich` — wird von kn.beob.polynom_eckmode korrigiert; Status 'gescheitert' prüfen
+- `kn.verm.tpid3` — wird von kn.verm.tpid3_bedingung korrigiert; Status 'vermutung' prüfen
 
-**voraussetzung-offen** (3)
+**voraussetzung-offen** (2)
 
 - `it.satz.szekeres` — Benutzung unklar: f reell-analytisch (bzw. hinreichend glatt) nahe 0 mit 0 < f(x) < x
 - `kn.satz.paulsen_komplex` — Benutzung unklar: Basis im Gültigkeitsbereich von Paulsen 2019 (nicht am Original geprüft)
-- `kn.satz.trappmann_kouznetsov` — Benutzung unklar: Eindeutigkeitstest von Trappmann–Kouznetsov (Wortlaut nicht geprüft)
 
 ## Beweislücken
 
@@ -85,6 +81,8 @@
 - `ar.satz.masser_typ` — Buchhaltung von κ nicht ausgeführt.
 - `ar.satz.masser_typ` — Höhenkontrolle der Hilfspolynome ($\log H(P)\le c''d\log H$) übernommen, nicht nachgeprüft.
 - `fp.verm.knospen_drehzahl` — Nahe der Wurzel der Knospe folgt die Drehzahl aus der Bifurkation ($f\approx L+\lambda(z-L)$ mit $\lambda\approx e^{2\pi ip/q}$); für die ganze Knospe fehlt ein Argument (Mandelbrot-Analogon: Douady–Hubbard über äussere Strahlen).
+- `fp.satz.siegel_mittel` — Nach Herman (1985) ist $\Delta$ für diophantisches $\alpha$ unbeschränkt; Carathéodory greift dann nicht. Zu zeigen wäre, dass $\varphi$ Randwerte in $L^1(d\theta)$ hat (Hardy-Raum $H^1$), damit der Mittelwertsatz gilt.
+- `fp.satz.siegel_mittel` — Ohne Jordan-Rand ist die Randdynamik nicht automatisch zu einer Drehung konjugiert; die Gleichverteilung des Turms bezüglich $\omega_L$ ist offen.
 - `kl.satz.invariante_daempfung` — Dass die klassische periodische Phase (bw.satz.phasengesetz) als Grenzwert |λ| → 1 einer Familie gedämpfter Übergänge entsteht, ist eine Deutung, kein Grenzwertsatz.
 
 ## Bedingte Aussagen (Wurzelbedingungen = unbewiesene Enden der Beweiskette)
@@ -111,7 +109,6 @@
 - `bw.satz.kern_existenz` — bw.ann.K1K2
 - `bw.satz.anker_rekonstruktion` — bw.ann.K1K2
 - `ar.satz.schanuel_orbit` — ar.verm.schanuel
-- `fp.satz.siegel_mittel` — fp.ann.siegel_rand
 
 ## Experimente
 
@@ -167,3 +164,5 @@
 - `exp.polynom_schranke` — aktuell, 5/5 Prüfungen. Streng (Krawczyk) für N ≤ 120: eindeutige Lösung und |p_N| ≤ 2.2405 auf |x| ≤ |L|. Für alle N scheitert Kantorovich: |J⁻¹| wächst um ≈ 2.57 pro Grad, der Rest steht fast senkrecht auf den fast-singulären Richtungen bei L und L̄.
 - `exp.polynom_team` — aktuell, 5/5 Prüfungen. Team-Daten bestätigt: max|Π_N f_K| = 2.232651 bis N = 1000, Randfehler ~N^-4.85, Innenfehler ~N^-7.91 (Soll −7.894), echte p_N quadratisch nah, Kneser-Koeffizienten = Darboux-Leitterm an L.
 - `exp.polynom_phase3` — aktuell, 5/5 Prüfungen. ‖Ĵ_N⁻¹‖ = 1.251155 (kubisch, N = 100–200 konstant), Kneser 1.250337; ohne Linse wächst sie (1.366 → 1.852); (K2) mit den zertifizierten Koeffizienten verträglich; Eckprofil-Integral bestätigt.
+- `exp.tpid10_abstaende` — aktuell, 8/8 Prüfungen. 2 − ηₙ fällt wie n^(−1.47); Vorhersage η₇ ≈ 1.8399 gegen Levenstein 2017 ≈ 1.839. TPID 11 (1) gilt für n = 4…6; die Quotienten 1.594, 0.9208 entscheiden (2) nicht.
+- `exp.tpid3` — aktuell, 5/5 Prüfungen. TPID 3: s=3/4, p=2/3 (anziehend, x0 im Kreis): 6.1e-11 bei N = 32; s=3/4, p=3/2 (abstossend, x0 im Kreis): 0.00034 bei N = 32; s=3/10, p=2 (Polynom, x0 = 0.7): 1.0 bei N = 32; s=1/2, p=1/2 (x0 auf dem Rand): 0.23 bei N = 32; s=3/10, p=1/2 (x0 ausserhalb): 0.42 bei N = 32

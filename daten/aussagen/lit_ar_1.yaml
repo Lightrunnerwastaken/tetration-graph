@@ -1,0 +1,203 @@
+gebiet: ar
+aussagen:
+- id: ar.verm.gelfond_turm
+  titel: 'Gelfonds Turm-Vermutung: Türme algebraischer irrationaler Zahlen sind transzendent'
+  art: vermutung
+  ebene: A
+  status: vermutung
+  niveau: vertiefung
+  objekte: [transzendenz, turm]
+  bereich: '$\omega\ne0$ und $\alpha$ algebraisch, $\alpha$ irrational; ${}^kz=z^{z^{\cdot^{\cdot^{z}}}}$ ($k$ Stockwerke)'
+  aussage: |
+    Für $z=e^\omega$ und für $z=\alpha$ ist jeder Turm ${}^kz$ mit $k\ge2$ transzendent. Stärker: die Zahlen ${}^1z,{}^2z,{}^3z,\dots$ (für $z=e^\omega$) bzw.
+    ${}^2z,{}^3z,\dots$ (für $z=\alpha$) sind algebraisch unabhängig.
+    Gelfond kündigte 1934 eine noch allgemeinere Fassung als bewiesen an, veröffentlichte aber nie einen Beweis; die hier genannte Form ist die von Marques und Sondow
+    berichtigte (Gelfond hatte die Bedingung „irrational“ weggelassen).
+  einfach: >-
+    Baut man aus einer Zahl wie √2 einen Turm √2^√2^√2…, so sollte jedes Stockwerk ab dem zweiten eine „wirklich neue“ Zahl sein, die keine Gleichung mit ganzen Zahlen löst.
+    Bewiesen ist das nur für das zweite Stockwerk; alles darüber ist offen.
+  gegenbeispielsuche: >-
+    Kein Gegenbeispiel bekannt. Bewiesene Spezialfälle: ${}^2\alpha=\alpha^\alpha$ transzendent (Gelfond–Schneider), ${}^1e^\omega$ transzendent (Hermite–Lindemann).
+    Schon ${}^2e=e^e$ ist offen (ar.frage.e_hoch_e).
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; bis auf das zweite Stockwerk offen.'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: 'Spezialfall von Gelfonds „zweiter Vermutung“ (1934) über Türme verschiedener Zahlen; folgt aus der Schanuel-Vermutung in Teilmengen-Form (ar.satz.ssc_gelfond).'
+    f4_uebertragbar: 'Auf gemischte Türme $\alpha_1^{\alpha_2^{\cdots}}$ (Gelfonds Originalfassung).'
+    f5_neue_frage: 'Ein unbedingter Beweis schon für das dritte Stockwerk ${}^3\alpha$.'
+  bewertung: {richtigkeit: 'Vermutung', neuheit: klassisch, nutzen: 'Zentrale offene Frage zur Arithmetik der Tetration.', nutzen_stufe: hoch}
+  quellen: [{ref: marques_sondow2013_ssc, stelle: '§1 (Gelfond 1934, Formulierung „Gelfond’s Power Tower Conjecture“)'}, {ref: trojovska_trojovsky2021, stelle: 'Abstract (Fall gleicher Stockwerke unter Schanuel)'}, {ref: gelfond_schneider1934}]
+  kanten:
+    - {typ: verwandt, ziel: ar.satz.gelfond_schneider}
+    - {typ: verwandt, ziel: ar.frage.e_hoch_e}
+    - {typ: verwandt, ziel: ar.satz.rationale_tuerme}
+
+- id: ar.satz.ssc_gelfond
+  titel: 'Aus einer Schanuel-artigen Vermutung folgt Gelfonds Turm-Vermutung (Marques–Sondow)'
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [schanuel, transzendenz, turm]
+  bereich: 'komplexe Zahlen; „Schanuel-Teilmengen-Vermutung“ (SSC)'
+  aussage: |
+    **SSC:** Sind $\alpha_1,\dots,\alpha_n$ über $\mathbb Q$ linear unabhängig und ist $\{\alpha_i,e^{\alpha_i}\}$ über $\bar{\mathbb Q}$ von einer Teilmenge $\{\beta_1,\dots,\beta_n\}$ abhängig,
+    so sind $\beta_1,\dots,\beta_n$ algebraisch unabhängig. Die Schanuel-Vermutung impliziert SSC, für $n=2$ sind beide gleichwertig.
+    **Satz:** Unter SSC gilt Gelfonds Turm-Vermutung (ar.verm.gelfond_turm), sogar in etwas stärkerer Form.
+  einfach: >-
+    Man kennt eine (etwas schwächer aussehende) Variante der grossen Schanuel-Vermutung, aus der folgen würde, dass alle Türme algebraischer irrationaler Zahlen
+    „wirklich neue“ Zahlen sind.
+  beweis: {art: literatur, text: 'Marques–Sondow (arXiv 1212.6931): Proposition 1 (SSC ⇒ SC für n = 2) und die bedingten Beweise in §2–3.'}
+  stuetzt_sich_auf: []
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Induktion über die Stockwerke mit SSC.'
+    f2_benutzte_voraussetzungen: 'SSC.'
+    f3_spezialfall: 'Eine der vielen Folgerungen der Schanuel-Vermutung (ar.verm.schanuel).'
+    f4_uebertragbar: 'Auf Türme von $e^\omega$ und gemischte Türme.'
+    f5_neue_frage: 'Sind SSC und Schanuel-Vermutung gleichwertig? (für n = 2 ja)'
+  bewertung: {richtigkeit: 'Literatur (Preprint), Kernstellen im Original gelesen', neuheit: bekannt, nutzen: 'Ordnet die Turm-Frage in die Schanuel-Theorie ein.', nutzen_stufe: mittel}
+  quellen: [{ref: marques_sondow2013_ssc, stelle: 'Abstract, §1, Proposition 1'}]
+  kanten:
+    - {typ: verwandt, ziel: ar.verm.gelfond_turm}
+    - {typ: verwandt, ziel: ar.verm.schanuel}
+
+- id: ar.satz.sondow_marques_xx
+  titel: 'Algebraisch oder transzendent? Lösungen von x^x = y, x^y = y^x und verwandten Gleichungen'
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [transzendenz, superwurzel]
+  bereich: 'positive reelle Lösungen von $x^x=y$, $x^y=y^x$, $x^x=y^y$, $x^y=y$, $x^{xy}=y$'
+  aussage: |
+    Sondow und Marques klären für diese Gleichungen, wann algebraische Werte transzendente Lösungen erzwingen — mit Hermite–Lindemann, Gelfond–Schneider und
+    exponentiellen diophantischen Gleichungen. Beispiele: beide Lösungen von $x^x=\tfrac34$ sind transzendent; ist $x^y=y^x=17$, so ist mindestens eine der Zahlen
+    $x,y$ transzendent. Anwendungen auf Werte iterierter Exponentialfunktionen.
+  einfach: >-
+    Für Gleichungen wie x hoch x gleich eine Zahl lässt sich oft beweisen, dass die Lösung keine „schöne“ Zahl sein kann.
+  beweis: {art: literatur, text: 'Sondow–Marques 2010, mit Hermite–Lindemann und Gelfond–Schneider.'}
+  stuetzt_sich_auf: [ar.satz.gelfond_schneider, ar.satz.hermite_lindemann]
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Teilweise: viele Fälle sind direkte Anwendungen von Gelfond–Schneider.'
+    f2_benutzte_voraussetzungen: 'Hermite–Lindemann, Gelfond–Schneider, diophantische Exponentialgleichungen.'
+    f3_spezialfall: 'Verallgemeinert ar.satz.superwurzel_arith (Superwurzeln natürlicher Zahlen).'
+    f4_uebertragbar: 'Auf höhere Türme nur bedingt (Schanuel).'
+    f5_neue_frage: 'Dieselben Fragen für ${}^3x=y$.'
+  bewertung: {richtigkeit: 'Literatur, über Abstract und OEIS geprüft', neuheit: bekannt, nutzen: 'Ordnet unsere Superwurzel-Aussagen in die Literatur ein.', nutzen_stufe: mittel}
+  quellen: [{ref: sondow_marques2010, stelle: 'Abstract; Prop. 2.2 (x^x = 3/4); S. 155–157 (x^y = y^x = 17)'}]
+  kanten:
+    - {typ: verallgemeinert, ziel: ar.satz.superwurzel_arith}
+
+- id: ar.satz.liouville_tuerme
+  titel: 'Dreistöckige Türme vieler Liouville-Zahlen sind transzendent'
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [transzendenz, turm]
+  bereich: 'Liouville-Zahlen $\xi$; ${}^3\xi=\xi^{\xi^\xi}$'
+  aussage: |
+    Es gibt eine $G_\delta$-dichte Menge von Liouville-Zahlen, für deren jedes Element der dreistöckige Turm ${}^3\xi$ transzendent ist (Marques–Oliveira–Trojovský, mit Bakers
+    Schranken für Linearformen in Logarithmen).
+  einfach: >-
+    Für eine sehr grosse Familie besonders „gut annäherbarer“ Zahlen ist bewiesen, dass schon das dritte Stockwerk ihres Turms transzendent ist — für algebraische Zahlen
+    ist das noch offen.
+  beweis: {art: literatur, text: 'Marques–Oliveira–Trojovský (arXiv 2310.06780).'}
+  stuetzt_sich_auf: []
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Konstruktion der Menge plus Baker-Theorie.'
+    f2_benutzte_voraussetzungen: 'Bakers Schranken für Linearformen in Logarithmen.'
+    f3_spezialfall: '—'
+    f4_uebertragbar: 'Höhere Stockwerke?'
+    f5_neue_frage: 'Gilt es für alle Liouville-Zahlen?'
+  bewertung: {richtigkeit: 'Literatur (Preprint), über Abstract geprüft', neuheit: bekannt, nutzen: 'Einer der wenigen unbedingten Transzendenzsätze für dritte Stockwerke.', nutzen_stufe: mittel}
+  quellen: [{ref: marques_oliveira_trojovsky2023, stelle: 'Abstract'}]
+  kanten:
+    - {typ: verwandt, ziel: ar.verm.gelfond_turm}
+
+- id: ar.satz.unendliche_tuerme_gs
+  titel: 'Unendliche Türme algebraischer Basen sind rational oder transzendent'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [transzendenz, turm, eta]
+  bereich: '$b$ algebraisch, $1<b\le e^{1/e}$; $h(b)=b^{b^{b^{\cdots}}}$ der Wert des unendlichen Turms'
+  aussage: |
+    $h(b)$ ist entweder rational oder transzendent, nie algebraisch irrational. Beispiel: $h(\sqrt2)=2$.
+    Für rationale Basen $b\in[e^{-e},e^{1/e}]$ ist $h(b)$ transzendent ausser bei $b=1/4$ ($h=1/2$) und $b=1$ (Sondow–Marques, Kor. 4.2);
+    unter $e^{-e}$, wo der Turm in zwei Grenzwerte $h_o<h_e$ zerfällt, sind beide für rationales $b\ne1/16$ irrational, und mindestens einer ist transzendent (Prop. 4.5).
+  einfach: >-
+    Der unendliche Turm einer algebraischen Basis ergibt entweder einen Bruch (wie bei √2, wo 2 herauskommt) oder gleich eine transzendente Zahl — dazwischen gibt es nichts.
+  beweis: {art: vollstaendig, text: '$h=b^h$. Wäre $h$ algebraisch und irrational, so wäre $b^h$ nach Gelfond–Schneider transzendent, also $\ne h$.'}
+  stuetzt_sich_auf: [ar.satz.gelfond_schneider]
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, eine Zeile mit Gelfond–Schneider.'
+    f2_benutzte_voraussetzungen: 'Gelfond–Schneider, Fixpunktgleichung des Turms.'
+    f3_spezialfall: '—'
+    f4_uebertragbar: 'Auf jeden Fixpunkt von $b^x$ mit algebraischem $b$, auch komplexe.'
+    f5_neue_frage: 'Wann genau ist $h(b)$ rational? ($b=q^{1/q}$ mit rationalem $q$ auf dem unteren Ast.)'
+  bewertung: {richtigkeit: 'bewiesen (eine Zeile); Zusatz für rationale Basen Literatur', neuheit: bekannt, nutzen: 'Einfache Arithmetik des unendlichen Turms.', nutzen_stufe: gering}
+  quellen: [{ref: sondow_marques2010, stelle: 'Anhang: (4.6), Kor. 4.2, Lemma 4.4, Prop. 4.5'}, {ref: vassilev_missana2010, stelle: 'Abstract'}, {ref: gelfond_schneider1934}]
+  kanten:
+    - {typ: verwandt, ziel: ar.satz.rationale_tuerme}
+
+- id: ar.satz.padische_tuerme
+  titel: 'Unendliche Türme ganzer Zahlen konvergieren p-adisch'
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [padisch, turm, mod_m]
+  bereich: 'positive ganze Zahlen $b_1,b_2,\dots$; $p$ eine Primzahl; $\mathbb Z_p$ die $p$-adischen ganzen Zahlen'
+  aussage: |
+    Der Turm $b_1\uparrow b_2\uparrow b_3\uparrow\cdots$ konvergiert in $\mathbb Z_p$. Für $n\equiv1\pmod p$ ist $\alpha(n)=n\uparrow\uparrow\infty$ die **einzige** $p$-adische Lösung von
+    $x=n^x$ (Banachscher Fixpunktsatz, denn $x\mapsto n^x$ zieht um den Faktor $1/p$ zusammen); für $p\nmid n$ ist $\alpha(n)$ der Fixpunkt eines passenden Zweigs von $n^x$.
+  einfach: >-
+    In den ganz normalen Zahlen wächst 7^7^7^… über alle Grenzen. Misst man aber „wie oft eine Zahl durch p teilbar ist“ (p-adisch), so kommt der Turm zur Ruhe — und
+    löst dort die Gleichung x = 7^x.
+  beweis: {art: literatur, text: 'Shapiro–Shapiro 2007, Lemma 5.1 (Konvergenz, weil Türme modulo p^m schliesslich konstant sind), Lemma 5.3, Prop. 5.4.'}
+  stuetzt_sich_auf: [br.satz.turm_mod_m]
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Konvergenz folgt direkt aus „Türme modulo m werden konstant“.'
+    f2_benutzte_voraussetzungen: 'Türme modulo p^m, Banachscher Fixpunktsatz in Z_p.'
+    f3_spezialfall: 'Gegenstück zum reellen unendlichen Turm (Konvergenz nur bis η).'
+    f4_uebertragbar: 'Auf jede Primzahl p und gemischte Türme.'
+    f5_neue_frage: 'Gibt es eine p-adische Tetration $T(x)$ für nicht-ganze Höhen?'
+  bewertung: {richtigkeit: 'Literatur, im Original gelesen', neuheit: bekannt, nutzen: 'Zeigt ein zweites Zahlsystem, in dem unendliche Türme immer konvergieren.', nutzen_stufe: mittel}
+  quellen: [{ref: shapiro2007, stelle: '§5, Lemma 5.1, Lemma 5.3, Prop. 5.4'}]
+  kanten:
+    - {typ: verwandt, ziel: br.satz.turm_mod_m}
+
+- id: ar.satz.selbstpotenz_kongruenz
+  titel: 'n^n modulo k ist periodisch, und x^x ≡ u (mod k) ist lösbar'
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [mod_m]
+  bereich: 'ganze Zahlen; $k\ge1$; $u$ teilerfremd zu $k$'
+  aussage: |
+    Die Folge $1^1,2^2,3^3,\dots$ modulo $k$ ist schliesslich periodisch (ebenso $n^{n^n}$ usw.), mit bestimmbarer kleinster Periode. Ist $u$ teilerfremd zu $k$, so haben
+    $x^x\equiv u$ und $y^{y^y}\equiv u\pmod k$ Lösungen. Allgemeiner wird jeder Turm $a_1^{a_2^{a_3^{\cdots}}}$ positiver ganzer Zahlen modulo $k$ schliesslich konstant.
+  einfach: >-
+    Rechnet man nur mit Resten (wie bei einer Uhr), so wiederholen sich die Reste von 1¹, 2², 3³, … irgendwann regelmässig, und jeder Rest kommt als x^x vor.
+  beweis: {art: literatur, text: 'Shapiro–Shapiro 2007 (§2–4), mit elementarer Zahlentheorie (Carmichael-Funktion); nach Angabe der Autoren aus dem Jahr 1985.'}
+  stuetzt_sich_auf: [br.satz.turm_mod_m]
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Teilweise aus den Eigenschaften der Carmichael-Funktion.'
+    f2_benutzte_voraussetzungen: 'Elementare Zahlentheorie.'
+    f3_spezialfall: 'Verallgemeinert br.satz.turm_mod_m auf gemischte Türme.'
+    f4_uebertragbar: 'Auf p-adische Zahlen (ar.satz.padische_tuerme).'
+    f5_neue_frage: 'Minimale Perioden für höhere Türme.'
+  bewertung: {richtigkeit: 'Literatur, Abstract und Einleitung im Original gelesen', neuheit: bekannt, nutzen: 'Grundlage für Endziffern- und Kongruenzfragen bei Türmen.', nutzen_stufe: mittel}
+  quellen: [{ref: shapiro2007, stelle: 'Abstract, §1'}, {ref: blakley_borosh1983}]
+  kanten:
+    - {typ: verallgemeinert, ziel: br.satz.turm_mod_m}

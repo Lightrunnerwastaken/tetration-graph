@@ -24,18 +24,42 @@ def _yaml(pfad: Path):
         return yaml.load(f, Loader=_StrengerLader)
 
 
+def _teile(daten: Path, name: str, h):
+    """Hauptdatei daten/<name>.yaml (falls vorhanden) plus alle Ergänzungsdateien daten/<name>/*.yaml, in dieser Reihenfolge."""
+    pfade = ([daten / f"{name}.yaml"] if (daten / f"{name}.yaml").is_file() else []) + \
+            (sorted((daten / name).glob("*.yaml")) if (daten / name).is_dir() else [])
+    for pfad in pfade:
+        h.update(pfad.read_bytes())
+        yield pfad, _yaml(pfad)
+
+
+def _woerterbuch(daten: Path, name: str, h) -> dict:
+    """Zusammenführen ohne stilles Überschreiben: ein Schlüssel in zwei Dateien ist ein Fehler."""
+    alles, herkunft = {}, {}
+    for pfad, inhalt in _teile(daten, name, h):
+        for k, v in (inhalt or {}).items():
+            if k in alles:
+                raise ValueError(f"{name}: Schlüssel {k!r} doppelt, in {herkunft[k]} und {pfad.name}")
+            alles[k], herkunft[k] = v, pfad.name
+    return alles
+
+
+def _liste(daten: Path, name: str, h) -> list:
+    return [e for _, inhalt in _teile(daten, name, h) for e in (inhalt or [])]
+
+
 def lade(wurzel: Path) -> dict:
     daten = wurzel / "daten"
+    h = hashlib.sha256()
     roh = {
         "gebiete": _yaml(daten / "gebiete.yaml") or [],
-        "objekte": _yaml(daten / "objekte.yaml") or {},
-        "quellen": _yaml(daten / "quellen.yaml") or {},
-        "experimente": _yaml(daten / "experimente.yaml") or [],
-        "straenge": (_yaml(daten / "straenge.yaml") or []) if (daten / "straenge.yaml").is_file() else [],
+        "objekte": _woerterbuch(daten, "objekte", h),
+        "quellen": _woerterbuch(daten, "quellen", h),
+        "experimente": _liste(daten, "experimente", h),
+        "straenge": _liste(daten, "straenge", h),
         "aussagen": [],
         "dateien": [],
     }
-    h = hashlib.sha256()
     for pfad in sorted((daten / "aussagen").glob("*.yaml")):
         inhalt = _yaml(pfad) or {}
         h.update(pfad.read_bytes())
@@ -62,7 +86,7 @@ def lade(wurzel: Path) -> dict:
     roh["lehrbuch"] = (_yaml(daten / "lehrbuch.yaml") or {}) if (daten / "lehrbuch.yaml").is_file() else {}
     bilder = wurzel / "lehrbuch" / "bilder"
     roh["bilder"] = {p.stem: p for p in sorted(bilder.glob("*.svg"))} if bilder.is_dir() else {}
-    for name in ("gebiete.yaml", "objekte.yaml", "quellen.yaml", "experimente.yaml", "straenge.yaml", "lehrbuch.yaml"):
+    for name in ("gebiete.yaml", "lehrbuch.yaml"):
         if (daten / name).is_file():
             h.update((daten / name).read_bytes())
     roh["eingabe_hash"] = h.hexdigest()[:16]

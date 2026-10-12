@@ -1,0 +1,216 @@
+gebiet: it
+aussagen:
+
+# Literaturknoten aus der Literaturkarte L1 (12.10.2026). Quellen in daten/quellen/lit_L1.yaml.
+
+- id: it.satz.karlin_mcgregor
+  titel: 'Zwei Fixpunkte: gleiche reguläre Iteration nur bei Möbius-Abbildungen (Karlin–McGregor 1968)'
+  art: satz
+  ebene: B
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [schroeder, iterationsgruppe, multiplikator]
+  bereich: '$f$ eindeutig und holomorph auf dem Komplement einer abgeschlossenen abzählbaren Menge der Riemannschen Zahlenkugel (also auch jede meromorphe Funktion); zwei Fixpunkte $s_1\ne s_2$'
+  voraussetzungen:
+    - {text: '|f′(s_1)|, |f′(s_2)| ∉ {0, 1} (beide Fixpunkte hyperbolisch)', benutzt: ja}
+    - {text: 'f bildet die Strecke [s_1, s_2] in sich ab', benutzt: ja}
+  aussage: |
+    Die reguläre (Koenigs-)Iteration an $s_1$ und die reguläre Iteration an $s_2$ stimmen genau dann überein, wenn $f$ eine
+    gebrochen lineare Abbildung ist. Anders gesagt: eine stetige Iterationsgruppe, deren Glieder an **beiden** Fixpunkten
+    holomorph sind, gibt es nur für Möbius-Abbildungen.
+  einfach: >-
+    Hat eine Funktion zwei Fixpunkte, kann man „halbe Schritte“ vom einen oder vom anderen Fixpunkt aus bauen. Nur bei den
+    einfachsten gebrochenen Funktionen kommt dabei dasselbe heraus; sonst sind es zwei verschiedene Lösungen.
+  beweis: {art: literatur, text: 'Karlin–McGregor 1968 (Trans. AMS 132); Wortlaut des Hauptsatzes nach der Wiedergabe im Tetration-Forum (tid 856) und der Einleitung auf der AMS-Seite; Original nicht gelesen. Die Richtung „Möbius ⇒ gleich“ ist it.satz.moebius_iteration.'}
+  quellen: [{ref: karlin_mcgregor1968, stelle: 'Hauptsatz', geprueft: sekundaer}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; die Rückrichtung („nur Möbius“) ist der eigentliche Inhalt.'
+    f2_benutzte_voraussetzungen: 'Hyperbolizität an beiden Enden (sonst keine Koenigs-Iteration) und die invariante Strecke (damit beide Iterationen auf demselben Gebiet leben).'
+    f3_spezialfall: 'Gegenstück zu Bakers Satz bei Multiplikator 1 (it.satz.baker_einbettung): auch dort sind nur Möbius-Abbildungen einbettbar.'
+    f4_uebertragbar: 'Auf $\sqrt2^{\,x}$ auf $[2,4]$ und jedes $b^x$ mit $1<b<\eta$ auf $[a,A]$: die zwei regulären Tetrationen sind verschieden (kl.beob.zwei_abel).'
+    f5_neue_frage: 'Wie gross ist der Unterschied? → kl.verm.streifenbreite (Amplitudengesetz aus der imaginären Periode).'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Erklärt theoretisch, warum die Fixpunktwahl bei der Tetration unter η zählt.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verallgemeinert, ziel: it.satz.moebius_iteration}
+    - {typ: verwandt, ziel: kl.beob.zwei_abel}
+    - {typ: verwandt, ziel: it.satz.vertauschbar}
+
+- id: it.satz.parabolische_rate
+  titel: 'Wie schnell eine Iteration in einen parabolischen Fixpunkt läuft (Leau–Fatou, Thron, de Bruijn)'
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [fatou_koord, e_minus_1]
+  bereich: '$f(x)=x-a\,x^{k+1}+b\,x^{k+2}+O(x^{k+3})$, $a>0$, Startwert $x_0>0$ klein (komplex: Start im anziehenden Blatt)'
+  voraussetzungen:
+    - {text: 'f′(0) = 1 und erster nichtlinearer Term −a x^{k+1} mit a > 0', benutzt: ja}
+  aussage: |
+    Die Folge $x_{n+1}=f(x_n)$ geht gegen 0, und zwar nur algebraisch:
+    $$x_n^{\,k}\sim\frac{1}{k\,a\,n}\qquad(n\to\infty).$$
+    Für $k=1$ genauer: $\dfrac1{x_n}=a\,n+\dfrac{a^2-b}{a}\ln n+C+o(1)$, also
+    $$x_n=\frac1{an}-\frac{(a^2-b)\ln n}{a^3n^2}+O(n^{-2}).$$
+  einfach: >-
+    Läuft eine Folge in einen Fixpunkt, an dem die Funktion die Steigung 1 hat, so wird sie nicht wie eine geometrische Folge
+    schnell kleiner, sondern nur wie 1/n — und in der nächsten Stelle taucht ein Logarithmus auf.
+  beweis:
+    art: literatur
+    text: |
+      Klassisch (Leau 1897, Fatou 1919; asymptotisch mit Korrekturen bei de Bruijn 1958, Kap. 8, und Thron 1960). Die Rechnung für $k=1$:
+      $1/f(x)=1/x+a+(a^2-b)x+O(x^2)$, also $y_n=1/x_n$ mit $y_{n+1}=y_n+a+(a^2-b)/y_n+O(y_n^{-2})$; Aufsummieren mit $y_n\approx an$ gibt
+      $y_n=an+\tfrac{a^2-b}{a}\ln n+C+o(1)$. Für allgemeines $k$ dieselbe Rechnung mit $y=x^{-k}$.
+  quellen: [{ref: leau1897, geprueft: sekundaer}, {ref: fatou1919, geprueft: sekundaer}, {ref: debruijn1958, stelle: 'Kap. 8 (Iterierte)'}, {ref: thron1960}, {ref: milnor2006, stelle: '§10'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Taylor-Entwicklung von $1/f$ (für $k=1$ im Beweistext vollständig).'
+    f2_benutzte_voraussetzungen: '$a>0$ und reeller Start rechts (sonst Start im Blatt); $b$ nur für die Log-Korrektur.'
+    f3_spezialfall: 'Reelle Spur der Leau–Fatou-Blume (it.satz.leau_fatou): $1/x$ ist bis auf $\ln$-Terme die Fatou-Koordinate.'
+    f4_uebertragbar: 'Turm zur Basis η: $e-{}^n\eta=2e/(n+\tfrac13\ln n+C)$ mit $a=1/(2e)$, $b=1/(6e^2)$ — die Forumsformel von R. Israel (2010) und die Grundlage von kl.satz.eta_digamma; Multiplikator −1 (Basis $e^{-e}$) über $f\circ f$ mit $k=2$ (fp.satz.p2_raten); knapp neben dem parabolischen Fall der Engpass (fp.beob.tpid6_rate).'
+    f5_neue_frage: 'Die Konstante $C$ ist der Wert der Fatou-Koordinate am Startpunkt — bei η: $1/\delta_n-n/(2e)-\ln n/(6e)\to0.51471\ldots$ (Probe L1 mit 30 Stellen, $n\le10^6$).'
+  bewertung: {richtigkeit: 'gesichert (Literatur); Log-Korrektur hier nachgerechnet', neuheit: klassisch, nutzen: 'Gemeinsame Wurzel von drei eigenen Ratenaussagen (η-Turm, Spitze e^{−e}, TPID 6).', nutzen_stufe: hoch}
+  kanten:
+    - {typ: spezialfall_von, ziel: it.satz.leau_fatou}
+    - {typ: uebertragbar_auf, ziel: kl.satz.eta_digamma}
+    - {typ: uebertragbar_auf, ziel: fp.satz.p2_raten}
+    - {typ: verwandt, ziel: fp.beob.tpid6_rate}
+    - {typ: verwandt, ziel: fp.satz.parabolisch_rand}
+
+- id: it.satz.boettcher
+  titel: 'Superanziehende Fixpunkte: die Böttcher-Koordinate (Böttcher 1904)'
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [boettcher, schroeder, iterationsgruppe]
+  bereich: '$f(z)=p+c\,(z-p)^k+O((z-p)^{k+1})$ holomorph nahe $p$, $k\ge2$, $c\ne0$'
+  voraussetzungen:
+    - {text: 'superanziehender Fixpunkt der Ordnung k ≥ 2', benutzt: ja}
+  aussage: |
+    Es gibt eine holomorphe Koordinate $\phi$ nahe $p$ mit $\phi(p)=0$, $\phi'(p)\ne0$ und
+    $$\phi\bigl(f(z)\bigr)=\phi(z)^k .$$
+    Sie ist bis auf einen Faktor, eine $(k-1)$-te Einheitswurzel, eindeutig, und $\phi(z)=\lim_{n\to\infty}\bigl(c^{1/(k-1)}(f^{n}(z)-p)\bigr)^{1/k^n}$
+    (passender Zweig). Damit ist $f^{t}=\phi^{-1}\bigl(\phi^{\,k^t}\bigr)$ eine natürliche gebrochene Iteration.
+  beweis: {art: literatur, text: 'Böttcher 1904; moderne Darstellung Milnor §9. Existenz über Wikipedia „Böttcher''s equation“ geprüft, Eindeutigkeit und Grenzwertformel aus dem Gedächtnis (Milnor).'}
+  quellen: [{ref: boettcher1904}, {ref: milnor2006, stelle: '§9 (Böttcher-Satz)'}, {ref: fatou1919, stelle: 'globale Eigenschaften der Koordinate'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; klassischer Satz.'
+    f2_benutzte_voraussetzungen: 'Nur $k\ge2$; der Logarithmus der Gleichung ist eine Schröder-Gleichung mit „Multiplikator“ $k$.'
+    f3_spezialfall: 'Gegenstück zu Koenigs (it.satz.koenigs) für $\lambda=0$.'
+    f4_uebertragbar: '$b^z$ hat keine superanziehenden Fixpunkte ($f''=f\ln b\ne0$); aber die elementaren Superfunktionen (it.satz.elementare_superfunktionen) sind Böttcher-Fälle bei ∞: $x^2-2$ wird mit $x=w+1/w$ zu $w\mapsto w^2$.'
+    f5_neue_frage: 'Gebrochene Iteration über $\phi^{k^t}$ ist mehrdeutig (Zweig von $k^t$-ter Potenz) — dieselbe Zweigfrage wie fp.gegen.bruch_mittel.'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Schliesst die Fallunterscheidung nach dem Multiplikator (0, hyperbolisch, 1, irrational).', nutzen_stufe: mittel}
+  kanten:
+    - {typ: analog_zu, ziel: it.satz.koenigs}
+    - {typ: verwandt, ziel: it.satz.elementare_superfunktionen}
+
+- id: it.konstr.levy
+  titel: 'Lévys Weg zur gebrochenen Iteration von eˣ: über eˣ − 1 und „reguläres Wachstum“ (1927/28)'
+  art: konstruktion
+  ebene: B
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [e_minus_1, iterationsgruppe, abel]
+  bereich: 'reelle Iteration von $e^x$ (allgemeiner: stetige, ab einer Stelle unbeschränkt wachsende Funktionen)'
+  voraussetzungen:
+    - {text: 'Auswahlprinzip: die Interpolation soll in der Iterationsordnung „regulär wachsen“', benutzt: ja}
+  aussage: |
+    Lévy interpoliert die Iterierten $\exp^{n}$ durch eine Familie $\exp^{t}$, die in $t$ regelmässig wächst. Die Aufgabe ist gleichwertig
+    zur entsprechenden Aufgabe für $e^x-1$: dort gibt es am parabolischen Fixpunkt 0 die formale Iterationsreihe
+    $f^t(x)=x+\tfrac t2x^2+\dots$, deren Koeffizienten Polynome in $t$ sind. Die zweite Note dehnt das auf stetige, schliesslich
+    unbeschränkt wachsende Funktionen aus und präzisiert den Begriff „croissance régulière“.
+  beweis: {art: literatur, text: 'Lévy, C. R. 184 (1927) 500–502 und 663–665; ausgeführt in Ann. Mat. Pura Appl. 5 (1928). Inhalt nur über die JFM-Rezensionen der Noten geprüft; Ausarbeitung nicht gelesen.'}
+  quellen: [{ref: levy1927, geprueft: sekundaer}, {ref: levy1928}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; erster Zugang zur gebrochenen Iteration von eˣ (vor Kneser 1950).'
+    f2_benutzte_voraussetzungen: 'Für $x\to\infty$ unterscheiden sich $e^x$ und $e^x-1$ nur um 1 — das macht die Rückführung möglich; die Auswahl geschieht über das Wachstum, nicht über Analytizität.'
+    f3_spezialfall: 'Später verfeinert von Szekeres (1962: Abel-Funktion an ∞, total monoton) und Walker (1991: $C^\infty$-Lösung über $e^x-1$).'
+    f4_uebertragbar: 'Auf $b^x$ für $b>\eta$ (gleiche Asymptotik) — liefert reelle, aber nicht notwendig analytische Lösungen.'
+    f5_neue_frage: 'Stimmt Lévys bzw. Szekeres'' reguläre Lösung mit Kneser überein? Offen; Walkers verwandte Konstruktion $\mathrm{dexp}^{-n}\circ\exp^n$ ist ein Grenzwert vom Basiswechsel-Typ, und für solche Grenzwerte wird Nirgends-Analytizität vermutet (bw.verm.nirgends_analytisch).'
+  bewertung: {richtigkeit: 'Literatur (nur Rezensionen geprüft)', neuheit: klassisch, nutzen: 'Historisch erster Zugang; Ahnherr der Lösungen von Szekeres und Walker.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.walker}
+    - {typ: verwandt, ziel: it.satz.szekeres_monoton}
+    - {typ: verwandt, ziel: kn.satz.halbe_exp}
+
+- id: it.satz.cremer
+  titel: 'Cremer-Punkte: irrational indifferente Fixpunkte ohne Linearisierung (Cremer 1927/38)'
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [schroeder, multiplikator]
+  bereich: 'Fixpunkt mit Multiplikator $\lambda=e^{2\pi i\alpha}$, $\alpha$ irrational'
+  voraussetzungen:
+    - {text: 'α irrational, extrem gut durch Brüche annäherbar (für Polynome vom Grad d: liminf |λ^q − 1|^{1/d^q} = 0)', benutzt: ja}
+  aussage: |
+    Es gibt Multiplikatoren $e^{2\pi i\alpha}$ — eine Menge von der Mächtigkeit des Kontinuums —, für die der Fixpunkt **nicht** linearisierbar ist
+    (kein „Zentrum“, keine Siegel-Scheibe; man nennt ihn Cremer-Punkt). Für Polynome vom Grad $d$ genügt
+    $\liminf_{q}|\lambda^q-1|^{1/d^q}=0$; dann häufen sich periodische Punkte am Fixpunkt. Zu festem $\lambda$ hat zudem „die Mehrzahl“ der
+    Funktionen kein Zentrum (Cremer 1938).
+  beweis: {art: literatur, text: 'Cremer, Math. Ann. 98 (1928) und 115 (1938), über die JFM-Rezensionen; Bedingung für Polynome in der Form von Milnor §11 (aus dem Gedächtnis).'}
+  quellen: [{ref: cremer1928, geprueft: sekundaer}, {ref: cremer1938, geprueft: sekundaer}, {ref: milnor2006, stelle: '§11'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; kleine Nenner gegen Siegel.'
+    f2_benutzte_voraussetzungen: 'Die Arithmetik von α und (für die explizite Bedingung) der Grad des Polynoms.'
+    f3_spezialfall: 'Gegenstück zu Siegel/Brjuno (fp.satz.neutral): Yoccoz zeigt für quadratische Polynome, dass Brjuno genau die Grenze ist.'
+    f4_uebertragbar: 'Für $b^z$ ist Cremers Polynom-Argument nicht direkt anwendbar (transzendent); dass Brjuno für die Exponentialfamilie notwendig ist, ist hier nicht geprüft (Geyer 2001 für λze^z).'
+    f5_neue_frage: 'Gibt es Basen auf dem Shell–Thron-Rand mit Cremer-Punkt? Wie sieht der Turm dort aus?'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Zeigt, dass an irrationalen Randpunkten nicht immer eine Siegel-Scheibe existiert.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.neutral}
+
+- id: it.satz.baker_einbettung
+  titel: 'Bei Multiplikator 1 sind nur Möbius-Abbildungen einbettbar (Baker)'
+  art: satz
+  ebene: B
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [iterationsgruppe, fatou_koord]
+  bereich: 'meromorphe $f$ mit Fixpunkt $s_0$, $f''(s_0)=1$, $f\ne\mathrm{id}$'
+  voraussetzungen:
+    - {text: 'f meromorph, Fixpunkt mit Multiplikator 1', benutzt: ja}
+  aussage: |
+    Eine meromorphe Funktion mit einem Fixpunkt vom Multiplikator 1 lässt sich nur dann in eine stetige Iterationsgruppe meromorpher
+    Funktionen einbetten, wenn sie gebrochen linear ist. Bei Multiplikator 1 ist Einbettbarkeit also die Ausnahme.
+  beweis: {art: literatur, text: 'Baker (1964, 1967); hier nur in der Wiedergabe der Einleitung von Karlin–McGregor 1968 (AMS-Seite) geprüft. Welche der beiden Arbeiten genau, und unter welchen Zusatzvoraussetzungen, ist nicht am Original geprüft.'}
+  quellen: [{ref: baker1967}, {ref: baker1964}, {ref: karlin_mcgregor1968, stelle: 'Einleitung (Wiedergabe von Bakers Ergebnis)', geprueft: sekundaer}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Meromorphie in der ganzen Ebene (global), nicht nur lokal: lokal gibt es Fatou-Koordinaten auf jedem Blatt.'
+    f3_spezialfall: 'Parabolisches Gegenstück zu Karlin–McGregor (it.satz.karlin_mcgregor).'
+    f4_uebertragbar: '$\exp_\eta$ (ganz, Multiplikator 1 bei $e$) ist also in keine Iterationsgruppe ganzer Funktionen einbettbar; vgl. kl.kor.eta_baker.'
+    f5_neue_frage: 'Welche Regularität hat die beste Einbettung von $\exp_\eta$ (Fatou-Koordinate des einen Blatts) am anderen Blatt?'
+  bewertung: {richtigkeit: 'Literatur (nur Wiedergabe geprüft)', neuheit: klassisch, nutzen: 'Erklärt, warum es bei η keine „perfekte“ Tetration geben kann.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: analog_zu, ziel: it.satz.karlin_mcgregor}
+    - {typ: verwandt, ziel: it.satz.baker}
+    - {typ: verwandt, ziel: kl.kor.eta_baker}
+
+- id: it.satz.sternberg_reell
+  titel: 'Glatte reelle Linearisierung am hyperbolischen Fixpunkt (Sternberg 1957)'
+  art: satz
+  ebene: A
+  status: bewiesen_literatur
+  niveau: vertiefung
+  objekte: [schroeder, iterationsgruppe]
+  bereich: '$g$ reell, $C^r$ mit $2\le r\le\infty$ nahe 0, $g(0)=0$, $g''(0)=a>0$, $a\ne1$'
+  voraussetzungen:
+    - {text: 'g ∈ C^r, r ≥ 2 (nicht analytisch nötig)', benutzt: ja}
+    - {text: '0 < a ≠ 1', benutzt: ja}
+  aussage: |
+    Es gibt eine lokale $C^r$-Koordinate $h$ mit $h(0)=0$, $h'(0)=1$ und $h\circ g=a\,h$. Die reelle Schröder-Gleichung ist also schon für
+    glatte (nicht analytische) Funktionen lösbar, und $g^t=h^{-1}(a^th)$ ist eine $C^r$-Iterationsgruppe.
+  einfach: >-
+    Auch wenn eine Funktion nur glatt und nicht analytisch ist, sieht sie nahe einem anziehenden Fixpunkt nach einer passenden glatten
+    Umrechnung genau wie eine Streckung aus.
+  beweis: {art: literatur, text: 'Sternberg, Duke Math. J. 24 (1957), für die reelle Gerade; höherdimensional mit Nicht-Resonanz Amer. J. Math. 79 (1957). Satzfassung über eine Übungsaufgabe (Eynard-Bontemps 2012) geprüft, Original nicht gelesen.'}
+  quellen: [{ref: sternberg1957b, geprueft: sekundaer}, {ref: sternberg1957}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; ohne Analytizität fehlt Koenigs'' Grenzwertbeweis in der Potenzreihen-Form, der Grenzwert $a^{-n}g^n$ konvergiert aber auch hier in $C^r$.'
+    f2_benutzte_voraussetzungen: '$r\ge2$ (der Fall $r=1$ ist vom Satz nicht abgedeckt); $a\ne1$.'
+    f3_spezialfall: 'Reelles, glattes Gegenstück zu it.satz.koenigs.'
+    f4_uebertragbar: 'Auf jede glatte reelle Tetration am unteren Fixpunkt: die $C^r$-Regularität am Fixpunkt allein legt die Lösung nicht fest (der Konjugator ist nur bis auf $C^r$-Kommutanten von $x\mapsto ax$ bestimmt).'
+    f5_neue_frage: 'Welche Regularität am Fixpunkt erzwingt schon die reguläre Tetration (Analytizität ja, $C^\infty$?)'
+  bewertung: {richtigkeit: 'gesichert (Literatur)', neuheit: klassisch, nutzen: 'Trennt, was Glattheit und was Analytizität bei der Auswahl der regulären Lösung leisten.', nutzen_stufe: gering}
+  kanten:
+    - {typ: analog_zu, ziel: it.satz.koenigs}
+    - {typ: verwandt, ziel: it.satz.vertauschbar}

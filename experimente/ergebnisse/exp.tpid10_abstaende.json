@@ -1,0 +1,118 @@
+{
+ "id": "exp.tpid10_abstaende",
+ "skript_hash": "f1d701046dc94f61",
+ "gelaufen": "2026-10-12 15:35",
+ "laufzeit_s": 0.7,
+ "python": "3.13.9",
+ "zusammenfassung": "2 − ηₙ fällt wie n^(−1.47); Vorhersage η₇ ≈ 1.8399 gegen Levenstein 2017 ≈ 1.839. TPID 11 (1) gilt für n = 4…6; die Quotienten 1.594, 0.9208 entscheiden (2) nicht.",
+ "pruefungen": [
+  {
+   "name": "ηₙ und eₙ wachsen (n = 3 … 6)",
+   "ok": true,
+   "wert": null
+  },
+  {
+   "name": "2 − ηₙ: lokale Potenz-Exponenten fast gleich (Spanne < 0.02), geometrische Quotienten steigen",
+   "ok": true,
+   "wert": {
+    "3→4": "1.46189",
+    "4→5": "1.47084",
+    "5→6": "1.47047"
+   }
+  },
+  {
+   "name": "Vorhersage η₇ aus dem Potenzgesetz trifft Levensteins ≈ 1.839 (|Δ| < 0.002, beide Exponenten)",
+   "ok": true,
+   "wert": "η₇ ≈ 1.83986 (p = 1.4705), 1.83987 (p = 1.4708)"
+  },
+  {
+   "name": "Levensteins η₅ ≈ 1.738 und η₆ ≈ 1.799 stimmen mit den 30-Stellen-Werten auf die angegebenen Stellen",
+   "ok": true,
+   "wert": "Δ₅ = -0.000644, Δ₆ = 0.000121"
+  },
+  {
+   "name": "TPID 11 (1): ηₙ² < e_{n−1} für n = 4, 5, 6",
+   "ok": true,
+   "wert": {
+    "4": "-0.0439956",
+    "5": "-0.0701267",
+    "6": "-0.0645701"
+   }
+  },
+  {
+   "name": "TPID 11 (2): Quotienten (ηₙ² − e_{n−1})/(η_{n−1}² − e_{n−2}) — zwei Werte, keine Entscheidung möglich",
+   "ok": true,
+   "wert": {
+    "5": "1.59395",
+    "6": "0.920763"
+   }
+  },
+  {
+   "name": "TPID 11 umgeschrieben: r_n = (4 − e_{n−1})/(4(2−ηₙ) − (2−ηₙ)²) < 1 und fallend (n = 4, 5, 6)",
+   "ok": true,
+   "wert": {
+    "4": "0.966814",
+    "5": "0.928558",
+    "6": "0.915392"
+   }
+  },
+  {
+   "name": "Selbst-Superwurzel: s(2) = ln2/W(ln2) = 1.559610469462…, s(3) = 1.635078474636… (Robbins 2009); s(3) < η₄",
+   "ok": true,
+   "wert": "s(2) = 1.55961046946237, s(3) = 1.63507847463638, η₄ − s(3) = 0.000246"
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "eta": {
+   "3": 1.444667861009766,
+   "4": 1.6353244967152765,
+   "5": 1.7373559251516875,
+   "6": 1.7991212361288127
+  },
+  "eul": {
+   "3": 2.718281828459045,
+   "4": 3.088532271806718,
+   "5": 3.3014072785233677,
+   "6": 3.442234647716893
+  },
+  "lok_eta": {
+   "3": 1.4618862195056557,
+   "4": 1.4708385525794259,
+   "5": 1.4704691616414503
+  },
+  "lok_eul": {
+   "3": 1.1849907333061616,
+   "4": 1.1920052054886388,
+   "5": 1.2347939499373042
+  },
+  "eta7_vorhersage": [
+   1.839863313632961,
+   1.8398724318548045
+  ],
+  "e7_hochrechnung": 3.5389096404507243,
+  "tpid11": {
+   "4": -0.043995618901973184,
+   "5": -0.07012666114704143,
+   "6": -0.06457005623370052
+  },
+  "tpid11_quotient": {
+   "5": 1.5939464632442362,
+   "6": 0.9207633042490099
+  },
+  "levenstein2017": {
+   "5": 1.738,
+   "6": 1.799,
+   "7": 1.839
+  },
+  "r_tpid11": {
+   "4": 0.9668136371371123,
+   "5": 0.9285584128143094,
+   "6": 0.9153915021544606
+  },
+  "superwurzel": {
+   "s2": 1.5596104694623694,
+   "s3": 1.6350784746363753
+  }
+ }
+}

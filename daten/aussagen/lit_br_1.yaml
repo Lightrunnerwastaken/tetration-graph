@@ -1,0 +1,32 @@
+gebiet: br
+aussagen:
+- id: br.satz.halbexp_komplexitaet
+  titel: 'Halbe Exponentialfunktionen in der Komplexitätstheorie: die „halbexponentielle Schranke“ (1999) und ihr Fall (2023)'
+  art: satz
+  ebene: X
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [berechenbarkeit]
+  bereich: 'Schaltkreisgrösse von Sprachen in exponentiellen Komplexitätsklassen; $f$ halbexponentiell, wenn $f(f(n))$ etwa $2^{n}$ ist'
+  aussage: |
+    (i) **Miltersen–Vinodchandran–Watanabe (1999):** Für $\mathrm{MA}_{\mathrm{EXP}}$, $\mathrm{ZPEXP}^{\mathrm{NP}}$ und $\Sigma_2^{\mathrm{exp}}$ lassen sich mit den bekannten Techniken Schaltkreis-Untergrenzen
+    genau bis zu **halbexponentieller** Grösse beweisen — die Methode braucht eine Funktion $f$ mit $f(f(n))\le2^{o(n)}$, und mehr gibt sie nicht her.
+    (ii) **Chen–Hirahara–Ren (2023):** Eine Sprache in $\mathrm{S}_2\mathrm{E}/_1$ braucht Schaltkreise der Grösse mindestens $2^n/n$; dasselbe für $\Sigma_2\mathrm{E}$ u. a. Damit ist die
+    halbexponentielle Schranke für diese Klassen überwunden.
+  einfach: >-
+    In der theoretischen Informatik stiess man lange an eine Grenze, die genau „halb so schnell wie exponentiell“ wächst — eine halbe e-Funktion wie bei Kneser. Erst 2023
+    gelang der Sprung darüber hinaus.
+  beweis: {art: literatur, text: 'Miltersen–Vinodchandran–Watanabe (BRICS RS-99-46, COCOON 1999); Chen–Hirahara–Ren (arXiv 2309.12912).'}
+  stuetzt_sich_auf: []
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Komplexitätstheorie (Karp–Lipton-artige Argumente, Binärsuche über Schaltkreise).'
+    f3_spezialfall: '—'
+    f4_uebertragbar: 'Halbexponentielle Funktionen treten auch bei Hardy-Feldern auf (br.satz.boshernitzan).'
+    f5_neue_frage: 'Welche Wachstumseigenschaften einer halben Exponentialfunktion braucht das Argument genau? (kn.satz.halbe_exp_wachstum)'
+  bewertung: {richtigkeit: 'Literatur, über Abstracts und Übersichten geprüft', neuheit: bekannt, nutzen: 'Zeigt, wo halbe Iterierte der Exponentialfunktion ausserhalb der Analysis eine Rolle spielen.', nutzen_stufe: mittel}
+  quellen: [{ref: mvw1999, stelle: 'Abstract'}, {ref: chen_hirahara_ren2023, stelle: 'Abstract'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.halbe_exp_wachstum}
+    - {typ: verwandt, ziel: br.satz.boshernitzan}

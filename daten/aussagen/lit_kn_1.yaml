@@ -1,0 +1,287 @@
+# Literaturkarte Strang L2 (12.10.2026): TPID 10 — alle gefundenen Zugänge zu den Folgen ηₙ, eₙ — und weitere Arbeiten anderer zu kn.
+# Bezeichnung: H_n(b, x) = n-te Hyperoperation (H_3 = bˣ, H_4 = Tetration, H_5 = Pentation …); ηₙ = Basis, bei der H_n(b,·) die Gerade
+# y = x berührt, eₙ = Berührstelle; η₃ = η = e^{1/e}, e₃ = e. Karte: forschung/literaturkarte/L2_kneser_basiswechsel/KARTE_kn.md §5.
+gebiet: kn
+aussagen:
+
+- id: kn.beob.eta4_interpolation
+  titel: 'Ohne Wahl einer Fortsetzung: η₄ und e₄ aus der Interpolation der Selbst-Superwurzel (Robbins 2009, mike3 2010)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [superwurzel, eta, hyperoperation]
+  bereich: 'Selbst-Superwurzel $s(x)$ mit ${}^{x}s(x)=x$; an ganzen $x\ge1$ eindeutig, ohne jede Fortsetzung der Tetration'
+  aussage: |
+    An ganzen Stellen ist $s(n)$ eindeutig, weil ${}^{n}a$ in $a$ wächst: $s(1)=1$, $s(2)=\ln2/W(\ln2)=1.559610469462\ldots$, $s(3)=1.635078474636\ldots$
+    A. Robbins (2009) rechnete $s(n)$ an mehreren hundert ganzen Stellen genau aus und legte ein Lagrange-Polynom hindurch; mike3 (2010) benutzte
+    eine Newton-Reihe an $a=1$. Beide Kurven haben ein Maximum: Robbins bei $x\approx3.0885325$ mit Wert $\approx1.6353245$, mike3 bei $x\approx3.089$
+    mit $\approx1.635$. Die Kneser-Rechnung (kn.beob.tetra_euler) gibt $e_4=3.08853227\ldots$, $\eta_4=1.63532450\ldots$ — Robbins' Werte stimmen auf
+    etwa sieben bzw. acht Stellen. Der Wert des Maximums ist die grösste Basis, deren unendliche Pentation konvergiert (Kennzeichnung 2 und 3 in kn.beob.tetra_euler).
+  einfach: >-
+    Die Superwurzel beantwortet die Frage: Welche Basis ergibt bei n Stockwerken genau n? Für ganze n braucht man dafür keine halben Türme.
+    Zieht man eine glatte Kurve durch diese Punkte, liegt ihr Gipfel genau dort, wo die viel aufwendigere Kneser-Rechnung η₄ und e₄ findet.
+  experimente: [exp.tpid10_abstaende]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein. Dass die Interpolation konvergiert und mit der Kneser-Fortsetzung übereinstimmt, ist nicht bewiesen (verwandt mit TPID 12/13, fp.frage.tpid12_13).'
+    f2_benutzte_voraussetzungen: 'Nur die ganzzahligen Superwurzeln und die Annahme, dass die Interpolationspolynome gegen eine glatte Funktion laufen.'
+    f3_spezialfall: 'Kennzeichnung 2 aus kn.beob.tetra_euler (Maximum der Selbst-Tetrawurzel), hier ohne gewählte Tetration.'
+    f4_uebertragbar: 'Eine Stufe höher: Selbst-Pentawurzel aus ganzen Stellen gäbe η₅, e₅ ohne Kneser-artige Hexation — nicht versucht.'
+    f5_neue_frage: 'Wenn die Interpolation konvergiert, legt sie η₄ fortsetzungsfrei fest. Warum trifft sie den Kneser-Wert und nicht den Matrix-Wert (kn.beob.eta4_matrix)?'
+  gegenbeispielsuche: 'exp.tpid10_abstaende: s(2) und s(3) auf 12 Stellen nachgerechnet; s(3) liegt 2.5·10⁻⁴ unter η₄, das Maximum also knapp rechts von 3.'
+  bewertung: {richtigkeit: 'numerisch (Forum; 7–8 Stellen Übereinstimmung mit Kneser)', neuheit: bekannt, nutzen: 'Ein Zugang zu η₄, der keine Fortsetzung der Tetration wählen muss.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: forum_tid269, stelle: 'Robbins, Beitrag 1 (11.04.2009; Koordinaten in Beitrag 4–5 berichtigt), Beitrag 9: exakte Punkte'}
+    - {ref: forum_tid468, stelle: 'mike3, Beiträge 1 und 3 (03. und 11.07.2010)'}
+    - {ref: hyperops_wiki_euler, stelle: 'Kennzeichnung 2 (Zuschreibung an Mike)'}
+  kanten:
+    - {typ: stuetzt, ziel: kn.beob.tetra_euler}
+    - {typ: verwandt, ziel: fp.frage.tpid12_13}
+    - {typ: verwandt, ziel: gr.satz.superwurzel}
+
+- id: kn.beob.eta4_matrix
+  titel: 'Matrix-slog statt Kneser: 1.6353244967↑↑↑∞ ≈ 3.0885549 (nuninho 2009) — 2.3·10⁻⁵ über Knesers e₄'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [carleman, slog, eta, hyperoperation]
+  bereich: 'Tetration aus Robbins'' abgeschnittenem Matrix-slog (30 und 200 Dimensionen), Basis $1.6353244967$ (knapp unter $\eta_4$)'
+  aussage: |
+    nuninho1980 rechnete im April 2009 mit Robbins' Matrix-slog (200 Dimensionen, 410 Stellen Rechengenauigkeit) die unendliche Pentation
+    $1.6353244967\uparrow\uparrow\uparrow\infty\approx3.0885549441$. Knesers Wert (Levenstein 2010) ist $e_4=3.0885322718\ldots$; der Matrix-Wert liegt
+    $2.3\cdot10^{-5}$ **darüber**. Das Abschneiden der Basis erklärt das nicht: für $b<\eta_4$ steigt $b\uparrow\uparrow\uparrow m$ monoton gegen den
+    unteren der beiden Fixpunkte nahe $e_4$, der Grenzwert liegt also unter dem $e_4$ der benutzten Tetration. Der Matrix-slog mit 200 Dimensionen hat
+    damit ein $e_4\ge3.08855$. bo198214 betonte schon damals, dass $\eta_4$ und $e_4$ von der gewählten Fortsetzung abhängen können.
+  einfach: >-
+    Mit einer anderen Rechenmethode für halbe Türme (einer grossen Tabelle statt Knesers Konstruktion) kam 2009 fast dieselbe Zahl heraus —
+    aber in der fünften Nachkommastelle anders. Ob das am Abschneiden der Tabelle liegt oder ob die Methoden wirklich verschiedene Tetrationen geben, ist offen.
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Ungleichung „Grenzwert < e₄ der benutzten Tetration“ folgt aus der Monotonie (wie kn.beob.unendliche_hexation f1); der Zahlenwert ist gemessen.'
+    f2_benutzte_voraussetzungen: 'Dass die Matrix-Tetration bei dieser Basis wachsend ist und die Fixpunktstruktur wie bei Kneser hat (zwei Fixpunkte nahe e₄).'
+    f3_spezialfall: 'Gegenstück auf Stufe 4 zu kn.verm.carleman_kneser (läuft der Matrix-slog gegen Kneser?).'
+    f4_uebertragbar: 'Jede Kennzahl, die an einer Berührung hängt, verstärkt Unterschiede zwischen Fortsetzungen (Wurzelgesetz nahe der Berührung).'
+    f5_neue_frage: 'Den Matrix-slog mit wachsender Dimension bei η₄ nachrechnen: läuft das Matrix-e₄ gegen 3.0885322718 (dann Abschneidefehler, gestützt durch kn.beob.carleman_rate) oder bleibt eine Lücke?'
+  gegenbeispielsuche: 'Vorzeichen-Argument geprüft: Kneser-Rechnungen knapp unter η₄ (nuninho, tid 262 Beitrag 29) liegen unter bzw. sehr nahe bei e₄, keine über 3.0885330. Eigene Matrix-Rechnung bei η₄ noch nicht gemacht.'
+  bewertung: {richtigkeit: 'numerisch (Forum, eine Rechnung)', neuheit: bekannt, nutzen: 'Zeigt, wie empfindlich η₄/e₄ auf die gewählte Fortsetzung reagieren; Prüfstein für den Matrix-slog.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: forum_tid262, stelle: 'nuninho1980, Beiträge 2, 11, 14 (01.–07.04.2009); bo198214, Beitrag 13 (06.04.2009)'}
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.carleman_kneser}
+    - {typ: verwandt, ziel: kn.beob.tetra_euler}
+
+- id: kn.verm.tpid11
+  titel: 'TPID 11: ηₙ² < e_{n−1} — Etas im Quadrat bleiben unter den Eulers der Stufe davor'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  bereich: 'Folgen $\eta_n$, $e_n$ wie in kn.verm.tpid10, $n\ge4$'
+  aussage: |
+    **Vermutung (tommy1729, TPID 11, 01.12.2010):** (1) $\eta_n^2<e_{n-1}$; (2) $\dfrac{\eta_n^2-e_{n-1}}{\eta_{n-1}^2-e_{n-2}}\to1$.
+    **Gemessen:** $\eta_4^2-e=-0.04400$, $\eta_5^2-e_4=-0.07013$, $\eta_6^2-e_5=-0.06457$ — (1) gilt für $n=4,5,6$. Die Quotienten in (2) sind $1.594$ und $0.921$;
+    mit zwei Werten ist (2) nicht entscheidbar.
+    **Umschreibung:** Mit $d_n=2-\eta_n$, $D_n=4-e_n$ ist $\eta_n^2-e_{n-1}=D_{n-1}-(4d_n-d_n^2)$; (1) heisst also $r_n=D_{n-1}/(4d_n-d_n^2)<1$.
+    Gemessen $r_4=0.967$, $r_5=0.929$, $r_6=0.915$ — fallend. Gilt TPID 10 und fallen beide Abstände wie Potenzen von $n$, dann folgt (2), und (1) verlangt,
+    dass $D_n$ am Ende mindestens so schnell fällt wie $d_n$ (lokale Exponenten bisher $1.18$–$1.23$ gegen $1.47$, aber steigend; kn.beob.tpid10_gesetz).
+  einfach: >-
+    Eine Zusatzvermutung zu TPID 10: Nimmt man die „Eta“ einer Stufe ins Quadrat, bleibt man knapp unter der „Euler“-Zahl der Stufe davor.
+    Für die vier bekannten Stufen stimmt das, jeweils um etwa 2 %.
+  naechste_frage: 'Ein fünftes Glied (η₇, e₇) würde zeigen, ob r_n weiter fällt; Levensteins grobe Angaben (η₇ ≈ 1.839, Fast-Berührung nahe 3.7) reichen dafür nicht.'
+  gegenbeispielsuche: 'exp.tpid10_abstaende: (1) für n = 4, 5, 6 mit 30-Stellen-Werten; r_n und die Quotienten aus (2) berechnet; kein Gegenbeispiel.'
+  experimente: [exp.tpid10_abstaende]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; (2) folgt aus TPID 10, wenn beide Abstände wie Potenzen fallen (dann gehen Quotienten aufeinanderfolgender Glieder gegen 1).'
+    f2_benutzte_voraussetzungen: 'Die Wahl der Fortsetzung auf jeder Stufe (wie kn.verm.tpid10).'
+    f3_spezialfall: 'Nebenbedingung zu kn.verm.tpid10.'
+    f4_uebertragbar: 'Auf die Stufe darunter: η₃² = 2.087 < e₂? (e₂ ist nicht definiert — Multiplikation berührt y = x nicht).'
+    f5_neue_frage: 'Bleibt r_n unter 1, wenn 4 − eₙ langsamer fällt als 2 − ηₙ? Die Exponenten müssten sich angleichen.'
+  bewertung: {richtigkeit: 'Vermutung; (1) an drei Gliedern bestätigt', neuheit: bekannt, nutzen: 'Koppelt die beiden Folgen aus TPID 10.', nutzen_stufe: gering}
+  quellen:
+    - {ref: forum_tpid, stelle: 'TPID 11 (tommy1729, 01.12.2010), Beitrag 13'}
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.tpid10}
+
+- id: kn.beob.hoehere_etas
+  titel: 'Levenstein 2017: Beschränkt bis 1.738, 1.799, 1.839 — η₅, η₆ und ein erster Wert für η₇'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, eta, superfunktion]
+  bereich: 'Kette regulär/Kneser-artig: Pentation regulär am linken reellen Fixpunkt der Kneser-Tetration, Hexation Kneser-artig an den konjugierten Fixpunkten der Pentation, Heptation regulär am linken reellen Fixpunkt der Hexation'
+  aussage: |
+    S. Levenstein baute 2017 die Hyperoperationen abwechselnd regulär (an einem reellen Fixpunkt) und Kneser-artig (an einem komplexen Paar):
+    Pentation und Heptation regulär, Hexation über einen Kreis zwischen den konjugierten Fixpunkten der Pentation mit einer $\theta$-Abbildung
+    (Funktionen auf 25–30 Stellen). Er gibt an, bis zu welcher Basis die jeweils nächste Stufe beschränkt bleibt: Pentation bis $\approx1.635$ (nach nuninho),
+    Hexation bis $\approx1.738$, Heptation bis $1.799$, Oktation bis $1.839$. Weil $H_{n+1}(b,m)$ genau dann beschränkt ist, wenn $H_n(b,\cdot)$ einen Fixpunkt über 1 hat,
+    sind das $\eta_4,\eta_5,\eta_6,\eta_7$. Unsere Werte $\eta_5=1.737356$, $\eta_6=1.799121$ (kn.beob.stufe5, kn.beob.stufe6) liegen $6\cdot10^{-4}$ unter bzw.
+    $1\cdot10^{-4}$ über seinen Angaben. Für $\eta_7\approx1.839$ ist das die einzige gefundene Angabe; Levenstein fragte, ob alle Basen unter 2 in hohen Stufen beschränkt bleiben,
+    und warum die Eulers gegen 4 gehen sollten (bei Basis 1.84 sah er eine Fast-Berührung der Heptation nahe 3.7).
+  einfach: >-
+    Schon 2017 hat Sheldon Levenstein die höheren Stufen bis zur Heptation gebaut und die Grenzbasen auf drei Stellen abgelesen: 1.738, 1.799 und 1.839.
+    Unsere genauen Werte bestätigen die ersten beiden; die dritte ist das bisher einzige fünfte Glied der Folge.
+  experimente: [exp.tpid10_abstaende]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Gleichsetzung „Grenze der Beschränktheit = ηₙ“ folgt aus der Monotonie (kn.beob.unendliche_hexation f1); die Zahlen sind gemessen.'
+    f2_benutzte_voraussetzungen: 'Levensteins Wahl der Fortsetzungen (dieselbe wie unsere für Pentation und Hexation über η₅); Rechenweg der Schranken im Beitrag nicht beschrieben.'
+    f3_spezialfall: 'Glieder 4–7 der Folge aus kn.verm.tpid10.'
+    f4_uebertragbar: 'Oktation: Kneser-artig an einem komplexen Paar der Heptation (von Levenstein angekündigt, nicht gerechnet).'
+    f5_neue_frage: 'η₇ und e₇ auf viele Stellen (reguläre Heptation über unsere Kneser-artige Hexation) — prüft das Abstandsgesetz kn.beob.tpid10_gesetz.'
+  gegenbeispielsuche: 'exp.tpid10_abstaende: Abgleich mit den 30-Stellen-Werten η₅, η₆ (Abweichung −6.4·10⁻⁴, +1.2·10⁻⁴) und mit der Hochrechnung η₇ ≈ 1.8399.'
+  bewertung: {richtigkeit: 'numerisch (Forum, drei Stellen)', neuheit: bekannt, nutzen: 'Älteste Quelle für η₅, η₆ und einzige für η₇.', nutzen_stufe: hoch}
+  quellen:
+    - {ref: forum_tid1177, stelle: 'Levenstein, Beitrag 5 (pid 8759, 03.09.2017) und Beitrag 7 (pid 8761, 04.09.2017)'}
+  kanten:
+    - {typ: stuetzt, ziel: kn.verm.tpid10}
+    - {typ: verwandt, ziel: kn.beob.stufe5}
+    - {typ: verwandt, ziel: kn.beob.stufe6}
+
+- id: kn.beob.tpid10_gesetz
+  titel: 'Abstandsgesetz 2 − ηₙ ≈ 2.8·n^(−1.47) — die Hochrechnung trifft Levensteins η₇ ≈ 1.839'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  bereich: 'Glieder $n=3,\ldots,6$ der Folgen aus kn.verm.tpid10 (30 Stellen)'
+  aussage: |
+    $d_n=2-\eta_n$: $0.55533$, $0.36468$, $0.26264$, $0.20088$ ($n=3,\ldots,6$). Die lokalen Potenz-Exponenten $\ln(d_n/d_{n+1})/\ln\frac{n+1}{n}$ sind
+    $1.4619$, $1.4708$, $1.4705$ — fast gleich —, die Quotienten $d_{n+1}/d_n$ dagegen steigen ($0.657$, $0.720$, $0.765$): kein geometrischer, sondern ein
+    Potenzabfall, $d_n\approx2.8\,n^{-1.47}$. Hochrechnung: $\eta_7\approx1.8399$ — S. Levenstein (2017) gab $1.839$ an (kn.beob.hoehere_etas).
+    $D_n=4-e_n$: $1.2817$, $0.9115$, $0.6986$, $0.5578$, lokale Exponenten $1.185$, $1.192$, $1.235$ — steigend; Hochrechnung $e_7\approx3.54$.
+    Levenstein sah bei der Basis 1.84 eine Fast-Berührung der Heptation „nahe 3.7“ (aus einem Bild abgelesen) — das passt nicht gut und ist ungeklärt.
+  einfach: >-
+    Die Abstände der „Etas“ von 2 schrumpfen sehr regelmässig, etwa wie 1 durch n hoch 1.47. Rechnet man damit eine Stufe weiter, landet man
+    bei 1.8399 — und genau dort (1.839) hatte Levenstein 2017 die nächste Grenze gesehen.
+  experimente: [exp.tpid10_abstaende, exp.stufe5, exp.hexation_kneser]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Messung an vier Gliedern).'
+    f2_benutzte_voraussetzungen: 'Die Fortsetzungen jeder Stufe (Kneser-Tetration, reguläre Pentation, Kneser-artige Hexation); das Gesetz ist eine Anpassung, keine Herleitung.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf die Eulers: dort steigen die Exponenten, ein reines Potenzgesetz passt schlechter.'
+    f5_neue_frage: 'Woher kommt der Exponent 1.47? Und was ist e₇ wirklich — 3.54 (Hochrechnung) oder näher an 3.7?'
+  bewertung: {richtigkeit: 'numerisch (Anpassung an vier Glieder, ein unabhängiger Prüfwert)', neuheit: vermutlich_neu, recherche: 'Tetration-Forum (tid 162, 262, 269, 446, 468, 668, 675, 1177, 1518, 1532, 1594), Hyperops-Wiki „Euler number“, OEIS (Ziffernsuche), MathOverflow/Math.SE (Websuche), 12.10.2026: nur Werte und Schranken, kein Abstandsgesetz.', nutzen: 'Macht TPID 10 quantitativ und prüfbar.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: diese_arbeit, stelle: 'exp.tpid10_abstaende'}
+    - {ref: forum_tid1177, stelle: 'Prüfwert η₇ ≈ 1.839 (Levenstein, Beitrag 5)'}
+  kanten:
+    - {typ: stuetzt, ziel: kn.verm.tpid10}
+    - {typ: verwandt, ziel: kn.beob.hoehere_etas}
+
+- id: kn.verm.beschraenkt_unter_2
+  titel: 'Nixon 2017: b > ηₙ genau dann, wenn die nächste Stufe unbeschränkt wächst — jede Basis unter 2 bleibt in hohen Stufen beschränkt'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation, eta, turm]
+  bereich: 'Hyperoperationen $H_n(b,\cdot)$ wie in kn.verm.tpid10, reelle $1<b<2$'
+  aussage: |
+    **(i)** $H_{n+1}(b,m)$ bleibt für $m\to\infty$ beschränkt genau dann, wenn $b\le\eta_n$. **(ii)** Mit TPID 10 ($\eta_n\uparrow2$) folgt: zu jeder Basis $b<2$ gibt es ein $N$,
+    ab dem alle Stufen $H_n(b,m)$ in $m$ beschränkt sind; zur Basis 2 ist dagegen jede Stufe unbeschränkt ($2\uparrow^n3$ wächst), obwohl $2\uparrow^n2=4$ für alle $n$.
+    J. D. Nixon formulierte (i) und (ii) 2017 im Forum (ohne Beweis, „aus vagen Erinnerungen“) und betonte, dass die Konstanten von der gewählten Fortsetzung abhängen;
+    S. Levenstein fragte im selben Thema, ob die Folge für alle Basen unter 2 beschränkt ist. Schon 2011 hatte Nixon einen „unendlichen Operator“
+    $\triangle_\infty=\lim\triangle_n$ mit $2\triangle_\infty2=4$ vorgeschlagen, der die Grenzwerte 2 und 4 voraussetzt.
+  einfach: >-
+    Eine Stufe ist „zahm“, wenn ihr unendlicher Turm einen Wert hat. Für Basen knapp unter 2 sind die unteren Stufen noch wild, aber — so die Vermutung —
+    ab einer gewissen Stufe werden alle zahm, weil die Grenzbasen ηₙ immer näher an 2 heranrücken.
+  naechste_frage: '(i) für alle n beweisen, sobald H_n(b, x) in b wächst und höchstens zwei Fixpunkte über 1 hat; (ii) hängt an TPID 10.'
+  gegenbeispielsuche: '(i): n = 3 klassisch (fp.satz.turm_reell), n = 4 gemessen (kn.beob.tetra_euler, Kennzeichnung 3), n = 5 gemessen (kn.beob.unendliche_hexation); (ii): ηₙ wächst für n = 3 … 6 (exp.tpid10_abstaende), Levensteins η₇ ≈ 1.839 passt; bei b = 1.84 > η₇ ist die Oktation nach Levenstein noch unbeschränkt (oct(45) ≈ 4.05) — kein Widerspruch.'
+  pruefung:
+    f1_folgt_unmittelbar: '(i) ja, aus der Monotonie: die Folge 1, b, H_n(b, b), … steigt und ist genau dann beschränkt, wenn H_n(b,·) einen Fixpunkt über 1 hat; offen ist nur, dass dies genau für b ≤ ηₙ der Fall ist. (ii) folgt aus (i) und TPID 10.'
+    f2_benutzte_voraussetzungen: 'H_n(b, x) wachsend in x und b; Fixpunktzahl über 1 höchstens zwei (gemessen bis n = 6).'
+    f3_spezialfall: 'n = 3: die unendliche Potenz konvergiert genau bis η (Euler).'
+    f4_uebertragbar: 'Auf andere Familien von Hyperoperationen (kn.frage.andere_etas).'
+    f5_neue_frage: 'Gibt es eine Grenzfunktion lim H_n(b, x) für b < 2 (Nixons „unendlicher Operator“)?'
+  bewertung: {richtigkeit: 'Vermutung; (i) bis auf die Fixpunktzahl elementar', neuheit: bekannt, nutzen: 'Erklärt, was TPID 10 für einzelne Basen bedeutet.', nutzen_stufe: mittel}
+  quellen:
+    - {ref: forum_tid1177, stelle: 'Nixon, Beiträge 6 und 8 (pid 8760, 8762, 03./04.09.2017); Levenstein, Beitrag 5'}
+    - {ref: forum_tid675, stelle: 'Nixon, 09.07.2011: unendlicher Operator'}
+    - {ref: nixon2021a, stelle: 'beschränkte analytische Hyperoperationen aller Stufen für 1 < α < η (Abstract)', geprueft: sekundaer}
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.tpid10}
+    - {typ: verallgemeinert, ziel: kn.beob.unendliche_hexation}
+    - {typ: analog_zu, ziel: fp.satz.turm_reell}
+
+- id: kn.frage.pentation_untergrenze
+  titel: 'Hat das Konvergenzgebiet der unendlichen Pentation eine untere Grenze? (andydude 2010)'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [hyperoperation, eta, turm]
+  aussage: |
+    Der unendliche Turm $b\uparrow\uparrow m$ konvergiert genau für $e^{-e}\le b\le\eta$ (Euler). Für die unendliche Pentation $b\uparrow\uparrow\uparrow m$ ist die obere Ecke
+    $(\eta_4,e_4)=(1.6353\ldots,3.0885\ldots)$ bekannt; A. Robbins (andydude) schrieb 2010, dass offen ist, ob es eine **untere** Grenze gibt.
+    Schwierigkeit: schon $b\uparrow\uparrow\uparrow2={}^{b}b$ braucht die Tetration an einer nicht ganzen Höhe, und für $0<b<1$ hat die reguläre Iteration
+    am Fixpunkt einen negativen Multiplikator — eine reelle, natürliche Tetration fehlt dort. Die Frage hängt also an der Wahl der Fortsetzung unter 1.
+  einfach: >-
+    Der gewöhnliche unendliche Turm hat einen Wert für Basen zwischen etwa 0.066 und 1.4447. Für die nächste Stufe kennt man die obere Grenze 1.6353 —
+    aber ob es auch eine untere gibt, weiss niemand, weil man für kleine Basen gar keine gute Tetration hat.
+  naechste_frage: 'Für welche Basen unter 1 gibt es überhaupt eine reelle, monotone Tetration (vgl. kl.satz.basis_unter_eins)?'
+  quellen:
+    - {ref: forum_tid446, stelle: 'andydude, 07.05.2010'}
+  kanten:
+    - {typ: analog_zu, ziel: fp.satz.turm_reell}
+    - {typ: verwandt, ziel: kn.beob.tetra_euler}
+    - {typ: verwandt, ziel: kl.satz.basis_unter_eins}
+
+- id: kn.frage.andere_etas
+  titel: 'Etas und Eulers anderer Familien — und ist e₄ rational? (Forum 2022)'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  aussage: |
+    2022 wurden im Forum Gegenstücke der Folgen aus TPID 10 für andere Familien gefragt: für „schwache“ Hyperoperationen (Catullus: schwache Pentation
+    beschränkt bis etwa $1.584$, Grenzwert dort etwa $2.439$, ohne Rechenweg und ohne Definition im Beitrag), für die 2sinh-Methode (H. Trappmann: das „η“ der
+    Funktion 2sinh ist $e^{1/2}$; die grösste Basis mit konvergenter 2sinh-Pentation blieb offen), und ob $e_4$ rational, algebraisch oder transzendent ist
+    (keine Antwort). MphLee schlug vor, die Folgen allgemein als Funktion der Stufe zu definieren; das Hyperops-Wiki führt bisher nur die Stufen 3 und 4.
+  einfach: >-
+    Die „Etas“ und „Eulers“ hängen davon ab, wie man die höheren Stufen baut. Im Forum wurde gefragt, welche Zahlen andere Bauweisen geben —
+    und ob die Zahl e₄ ≈ 3.0885 vielleicht ein Bruch ist. Beides ist offen.
+  quellen:
+    - {ref: forum_tid1532, stelle: 'Catullus, 17.06.2022'}
+    - {ref: forum_tid1594, stelle: 'Catullus, Trappmann (Juli 2022)'}
+    - {ref: forum_tid1588, stelle: 'Rationalität von e₄'}
+    - {ref: forum_tid1518, stelle: 'MphLee, 15.06.2022: allgemeine Definition'}
+    - {ref: hyperops_wiki_euler}
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.tpid10}
+    - {typ: verwandt, ziel: kn.konstr.zwei_sinh}
+
+- id: kn.konstr.paulsen_stoerung
+  titel: 'Paulsen 2016: eine halbe Exponentialfunktion über eine gestörte Exponentialfunktion mit reellem Fixpunkt'
+  art: konstruktion
+  ebene: C
+  status: bewiesen_literatur
+  niveau: forschung
+  objekte: [abel, schroeder, superfunktion, eta]
+  bereich: '$\exp$ und $a^x$ für $a>\eta$ nahe $\eta$; Abel-Funktionen auf der reellen Achse'
+  aussage: |
+    W. Paulsen löst die Abel-Gleichung $\alpha(e^x)=\alpha(x)+1$ zuerst für eine **gestörte** Exponentialfunktion, die einen reellen Fixpunkt hat — dort ist die
+    holomorphe Lösung eindeutig (Schröder/Koenigs) —, und gewinnt daraus durch einen Grenzübergang eine Lösung für $\exp$. Weil das Ergebnis von der Störung
+    abhängt, führt er eine Metrik zwischen Lösungen der Abel-Gleichung ein und wählt eine Lösung, die „zwischen“ den anderen vorgeschlagenen liegt und leicht
+    zu rechnen ist. Er überträgt sie auf $a^x$ und beweist: für $a\downarrow\eta$ geht sie gleichmässig auf kompakten Intervallen ohne $e$ in die Lösung zur Basis
+    $\eta$ über (Korollar 1, „Stetigkeitsforderung“). Im Beweis von Lemma 2 zählt er die Schritte durch den Engpass einer Fast-Berührung:
+    $\approx\pi\sqrt2/\sqrt{\eta_a f''(x_a)}$. Das Verhalten im Komplexen (und damit das Verhältnis zu Kneser) liess er offen.
+  einfach: >-
+    Weil eˣ keinen reellen Fixpunkt hat, „verbiegt“ Paulsen die Funktion ein wenig, bis sie einen hat. Dort ist die Lösung eindeutig. Dann nimmt er die
+    Verbiegung schrittweise zurück und erhält eine halbe Exponentialfunktion — eine neue, die zwischen den bekannten liegt.
+  beweis: {art: literatur, text: 'Paulsen 2016, Korean J. Math. 24, 81–106: Lemma 2 (S. 102), Proposition 2 (S. 103–105), Korollar 1 und Schluss (S. 105).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (eigene Konstruktion mit Grenzübergang).'
+    f2_benutzte_voraussetzungen: 'Ein reeller Fixpunkt der gestörten Funktion; gleichmässige Abschätzungen im Engpass (Lemma 1, 2).'
+    f3_spezialfall: 'Gegenstück zu Walkers Grenzwert (kn.konstr.walker), der ebenfalls von einer Funktion mit Fixpunkt (eˣ − 1) ausgeht.'
+    f4_uebertragbar: 'Auf jede Basis a > η (im Artikel ausgeführt).'
+    f5_neue_frage: 'Ist Paulsens Lösung analytisch, und wie weit liegt sie in seiner Metrik von Kneser entfernt?'
+  bewertung: {richtigkeit: 'Literatur (Teile gelesen)', neuheit: bekannt, nutzen: 'Ein Zugang zur halben exp über Störung; liefert nebenbei die Engpass-Zählung nahe η (vgl. bw.lem.randgesetz).', nutzen_stufe: mittel}
+  quellen:
+    - {ref: paulsen2016, stelle: 'Abstract; Lemma 2 (S. 102); Prop. 2, Kor. 1 und §7 (S. 103–105)', geprueft: original}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.halbe_exp}
+    - {typ: analog_zu, ziel: kn.konstr.walker}
+    - {typ: verwandt, ziel: bw.lem.randgesetz}

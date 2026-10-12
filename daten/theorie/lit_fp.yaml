@@ -1,0 +1,86 @@
+# Theorie-Blöcke für Literaturknoten des Gebiets fp (Strang L1, 12.10.2026).
+
+fp.satz.baker_rippon_kardioide:
+  worum: |
+    Shell und Thron haben ein Gebiet in der Ebene der Basen gefunden, in dem der Turm sicher einen Grenzwert hat. Baker und Rippon zeigten 1985
+    die andere Hälfte: ausserhalb dieses Gebiets und seines Randes gibt es nie einen Grenzwert.
+  genau: |
+    $w_0=0$, $w_{n+1}=e^{aw_n}$. Konvergiert $w_n$ gegen einen von allen Gliedern verschiedenen Grenzwert, so liegt $a$ im Abschluss von
+    $D=\{te^{-t}:|t|<1\}$; für $a\in D$ konvergiert $w_n$.
+  warum: |
+    1. Ein Grenzwert $L$ ist Fixpunkt: $L=e^{aL}$. Schreibe $t=aL$; dann $a=te^{-t}$ und der Multiplikator ist $aL=t$.
+    2. Eine Folge kann nur gegen einen Fixpunkt mit $|t|\le1$ konvergieren (sonst stösst er ab), also $a\in\overline D$.
+    3. Für $|t|<1$ zieht der Fixpunkt an, und die Bahn des singulären Werts 0 landet in seinem Becken.
+  einordnung: |
+    Macht [[fp.satz.shell_thron]] zu einer genauen Antwort. Auf dem Rand: Wurzelpunkte konvergieren ([[fp.satz.parabolisch_rand]]), Siegel-Punkte nicht
+    ([[fp.satz.siegel_unbeschraenkt]]).
+
+fp.satz.baker_rippon_periodisch:
+  worum: |
+    Statt immer derselben Basis kann man im Turm abwechselnd zwei (oder $k$) Basen verwenden. Baker und Rippon haben genau beschrieben, wann so ein
+    Turm konvergiert — und darin steckt auch das Pendeln des gewöhnlichen Turms unter $e^{-e}$.
+  genau: |
+    Basen $a_1,\dots,a_k$ periodisch, $b_j=\ln a_j$. Konvergenz genau bei einer eindeutigen Darstellung $b_j=t_je^{-t_{j+1}}$ (Indizes modulo $k$)
+    mit $|t_1\cdots t_k|\le1$.
+  warum: |
+    1. Konvergenz heisst: die Zusammensetzung $\varphi$ der $k$ Abbildungen $z\mapsto e^{b_jz}$ hat einen Fixpunkt, gegen den die Bahn läuft.
+    2. Die Punkte des Zyklus, mit $b_j$ multipliziert, sind die $t_j$; die Zyklusgleichungen lauten dann $b_j=t_je^{-t_{j+1}}$.
+    3. Der Multiplikator des Zyklus ist $t_1\cdots t_k$; anziehend oder parabolisch heisst $|t_1\cdots t_k|\le1$. Eindeutigkeit schliesst zwei konkurrierende Zyklen aus.
+  beispiel: |
+    $k=2$, $a_1=a_2=b<e^{-e}$: die Lösung mit $t_1=t_2$ (Fixpunkt) hat $|t|>1$, die mit $t_1\ne t_2$ ist der 2-Zyklus mit $\mu=t_1t_2\in(0,1)$ —
+    genau [[fp.satz.p2_form]].
+  einordnung: |
+    Literaturquelle der Periode-2-Form; Brücke zu Türmen mit wechselnden Basen ([[fp.satz.thron_variabel]]) und zum Basiswechsel.
+
+fp.satz.baker_rippon_parameter:
+  worum: |
+    In der Ebene der Basen $b$ (bzw. $a=\ln b$) gibt es Gebiete, in denen der Turm zur Ruhe kommt, und solche, in denen er zwischen 2, 3, … Werten
+    springt. Baker und Rippon haben 1984 die Grundstruktur dieser Gebiete bewiesen.
+  genau: |
+    Für $e^{az}$: keine wandernden Fatou-Komponenten; $D_1$ und $D_2$ zusammenhängend; $J=\mathbb C$ für reelle $a>1/e$ und dicht auf $\partial D_1$.
+  warum: |
+    1. $e^{az}$ hat nur einen singulären Wert, 0. Jeder anziehende Zyklus muss ihn anziehen — also gibt es höchstens einen.
+    2. Sullivans Methode (quasikonforme Deformationen) schliesst wandernde Gebiete aus, weil es nur endlich viele Parameter gibt.
+    3. Für $a>1/e$ reell flieht die Bahn von 0 nach $\infty$, kein Zyklus zieht an, und die Julia-Menge ist alles.
+  einordnung: |
+    Rahmen für [[fp.beob.regionen]], [[fp.satz.p2_form]] ($D_2$) und [[fp.satz.abstossend]]; die feinere Struktur der Komponenten: [[fp.verm.knospen]].
+
+fp.satz.thron_variabel:
+  worum: |
+    Was, wenn im Turm $a_1^{a_2^{a_3^{\cdots}}}$ jede Etage eine andere Basis hat? Dann gibt es keinen Fixpunkt mehr, aber man kann trotzdem sagen,
+    wann der Turm einen Wert hat.
+  genau: |
+    Thron: alle $|\ln a_j|\le1/e$ ⇒ Konvergenz. Barrow: alle $\ln a_j\in[-e,1/e]$ reell ⇒ Konvergenz. Baker–Rippon und Bachman: grössere Mengen und Grenzen.
+  warum: |
+    1. Für $|b|\le1/e$ bildet jede Abbildung $z\mapsto e^{bz}$ die Kreisscheibe $|z|\le e$ in sich ab — mit einer festen Kontraktion in der hyperbolischen Metrik.
+    2. Eine Zusammensetzung solcher Abbildungen zieht die Scheibe auf einen Punkt zusammen (Typ Wolff–Denjoy).
+  einordnung: |
+    Verallgemeinert [[fp.satz.shell_thron]]; verwandt mit Türmen periodischer Basen ([[fp.satz.baker_rippon_periodisch]]) und mit den gemischten Türmen des
+    Basiswechsels ([[bw.def.F_bd]]).
+
+fp.satz.grenzfunktionen:
+  worum: |
+    Unter $e^{-e}\approx0.066$ springt der Turm zwischen zwei Werten. Wie hängen diese beiden Werte von der Basis ab? Glatt — sie sind sogar analytisch.
+  genau: |
+    Für $0<x<e^{-e}$: $h_o(x)=\lim{}^{2m+1}x$ und $h_e(x)=\lim{}^{2m}x$ mit $x^{h_e}=h_o$, $x^{h_o}=h_e$; beide reell-analytisch, $h_o$ steigt von 0 auf $1/e$,
+    $h_e$ fällt von 1 auf $1/e$.
+  warum: |
+    1. Die geraden Glieder sind die Iteration von $g(y)=x^{x^y}$; diese ist monoton, also konvergiert die Teilfolge.
+    2. Der Grenzwert ist ein anziehender Fixpunkt von $g$ mit Multiplikator $\mu\in(0,1)$; nach dem Satz über implizite Funktionen hängt er analytisch von $x$ ab.
+    3. An $x=e^{-e}$ wird $\mu=1$ und beide Werte fallen in $1/e$ zusammen.
+  beispiel: |
+    $x=0.03$: $h_e=0.82133$, $h_o=0.05613$ (aus [[fp.satz.p2_form]]).
+  einordnung: |
+    Reelle Spur von [[fp.satz.p2_form]]; die Asymptotik an der Spitze (Cho–Kim) ist mögliche Vorlage für [[fp.satz.p2_raten]].
+
+fp.satz.messbare_dynamik:
+  worum: |
+    Die Julia-Menge von $e^z$ ist die ganze Ebene: überall Chaos. Trotzdem sammeln sich fast alle Bahnen am Ende an einer ganz bestimmten Stelle —
+    am Turm $1,e,e^e,\dots$.
+  genau: |
+    Für fast jedes $z$ ist die Menge der Häufungspunkte von $z,e^z,e^{e^z},\dots$ der Abschluss von $\{0,1,e,e^e,\dots\}$. Und $J(\lambda e^z)$ hat Hausdorff-Dimension 2.
+  warum: |
+    1. Bahnen, die lange in der linken Halbebene sind, werden nach 0 geschickt, und von dort geht es entlang des Turms.
+    2. Eine Masseabschätzung (Rees, Lyubich) zeigt, dass fast jede Bahn das unendlich oft tut und sonst nirgends hängen bleibt.
+  einordnung: |
+    Hintergrund zu [[fp.satz.abstossend]] ($J=\mathbb C$ über $\eta$): Für $b=e$ ist der Turm die Bahn des singulären Werts und damit der Ort, an dem sich fast alles sammelt.

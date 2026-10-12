@@ -1,0 +1,106 @@
+{
+ "id": "exp.tpid3",
+ "skript_hash": "5b3b9f763d1d18f6",
+ "gelaufen": "2026-10-12 15:53",
+ "laufzeit_s": 63.0,
+ "python": "3.13.9",
+ "zusammenfassung": "TPID 3: s=3/4, p=2/3 (anziehend, x0 im Kreis): 6.1e-11 bei N = 32; s=3/4, p=3/2 (abstossend, x0 im Kreis): 0.00034 bei N = 32; s=3/10, p=2 (Polynom, x0 = 0.7): 1.0 bei N = 32; s=1/2, p=1/2 (x0 auf dem Rand): 0.23 bei N = 32; s=3/10, p=1/2 (x0 ausserhalb): 0.42 bei N = 32",
+ "pruefungen": [
+  {
+   "name": "TPID 3, s=3/4, p=2/3 (anziehend, x0 im Kreis): Abstand zu 1, p, p², p³ fällt und liegt bei N = 32 unter 10⁻³",
+   "ok": true,
+   "wert": [
+    "0.11",
+    "0.0106",
+    "0.000394",
+    "1.87e-7",
+    "6.09e-11"
+   ]
+  },
+  {
+   "name": "TPID 3, s=3/4, p=3/2 (abstossend, x0 im Kreis): Abstand zu 1, p, p², p³ fällt und liegt bei N = 32 unter 10⁻³",
+   "ok": true,
+   "wert": [
+    "0.439",
+    "0.337",
+    "0.187",
+    "0.0182",
+    "0.000343"
+   ]
+  },
+  {
+   "name": "Gegenbeispiel-Kandidat s=3/10, p=2 (Polynom, x0 = 0.7): kein Eigenwert nahe p = 2, grösster Betrag ≈ 1 (Spektrum des superanziehenden Fixpunkts −s)",
+   "ok": true,
+   "wert": "max |λ| = 1.0"
+  },
+  {
+   "name": "Grenzfall s=1/2, p=1/2 (x0 auf dem Rand): bis N = 32 keine Annäherung (Abstand bleibt > 0.1) — Fixpunkt 1 − s nicht im Konvergenzkreis |x| < s",
+   "ok": true,
+   "wert": [
+    "0.305",
+    "0.241",
+    "0.239",
+    "0.235",
+    "0.233"
+   ]
+  },
+  {
+   "name": "Grenzfall s=3/10, p=1/2 (x0 ausserhalb): bis N = 32 keine Annäherung (Abstand bleibt > 0.1) — Fixpunkt 1 − s nicht im Konvergenzkreis |x| < s",
+   "ok": true,
+   "wert": [
+    "0.924",
+    "0.458",
+    "0.138",
+    "0.251",
+    "0.424"
+   ]
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "N": [
+   8,
+   12,
+   16,
+   24,
+   32
+  ],
+  "abstand": {
+   "s=3/4, p=2/3 (anziehend, x0 im Kreis)": [
+    0.11025339023279972,
+    0.01061665393494529,
+    0.00039376059736309085,
+    1.865731528623678e-07,
+    6.094255724816504e-11
+   ],
+   "s=3/4, p=3/2 (abstossend, x0 im Kreis)": [
+    0.4387285664510533,
+    0.33696647982951944,
+    0.18709749181886776,
+    0.01823700517676704,
+    0.00034256878041653805
+   ],
+   "s=3/10, p=2 (Polynom, x0 = 0.7)": [
+    0.9937632093551458,
+    0.9932791778640557,
+    0.9963594204926524,
+    0.9988418718160513,
+    0.9997837162422966
+   ],
+   "s=1/2, p=1/2 (x0 auf dem Rand)": [
+    0.30486992171010313,
+    0.24141119124265512,
+    0.23872445293476147,
+    0.2348197716950838,
+    0.23290914640276122
+   ],
+   "s=3/10, p=1/2 (x0 ausserhalb)": [
+    0.9238957262599358,
+    0.45767015840146474,
+    0.13781551978637446,
+    0.2511655041659403,
+    0.4241682312660996
+   ]
+  }
+ }
+}

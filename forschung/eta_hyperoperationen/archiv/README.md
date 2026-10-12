@@ -1,0 +1,1 @@
+Historische Arbeitsstände. Die GP-Kombinationen sichern die während der Untersuchung entstandenen Codeversionen. Der erste probe_hex-Hilfsprototyp hatte nach seiner gültigen Initialisierungsabfrage einen GP-Syntaxfehler; er wird nur als unveränderter Arbeitsstand gesichert. Empfohlene reproduzierbare Programme und Ergebnisse stehen im Hauptordner.
