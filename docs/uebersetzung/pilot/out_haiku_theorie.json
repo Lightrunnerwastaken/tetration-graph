@@ -1,0 +1,19 @@
+{
+ "gr.satz.kettenregel": {
+  "worum": "The tower equation immediately yields a rule for slopes: one level higher, the curve is steeper by the factor “$\\ln a$ times\nthe function value there”. Because the function values grow rapidly, the slopes grow even more rapidly.\n",
+  "genau": "For every differentiable tetration $T$ to base $a$ and every $x>-2$:\n$$T'(x+1)=\\ln a\\cdot T(x+1)\\cdot T'(x).$$\n",
+  "warum": "Write the tower equation as $T(x+1)=a^{T(x)}=e^{T(x)\\ln a}$ and differentiate with respect to $x$. The chain rule gives\n$$T'(x+1)=e^{T(x)\\ln a}\\cdot\\ln a\\cdot T'(x)=T(x+1)\\cdot\\ln a\\cdot T'(x).$$\n",
+  "beispiel": "Base $e$ (Kneser, $T'(0)=1.09177$): $T'(1)=1\\cdot T(1)\\cdot T'(0)=e\\cdot1.09177=2.96773$. One level further:\n$T'(2)=T(2)\\cdot T'(1)=e^e\\cdot2.96773=44.974$.\n",
+  "einordnung": "All further differentiation rules of this strand follow from it: [[gr.kor.produktformel]], [[gr.satz.vorzeichen]],\n[[gr.satz.zweite_ableitung]]. For fractional steps there is a continuation with fractional products ([[kl.satz.bruchprodukt]]).\n"
+ },
+ "kn.gescheitert.regulaer_an_L": {
+  "worum": "Below $\\eta$ one has built the tetration at the real fixed point. Above $\\eta$ there is only the complex pair $L,\\bar L$. The first idea:\nsimply carry out the same construction at $L$. This does indeed give a solution of the equation — only it is not real on the real axis.\nThis failure shows what Kneser had to repair.\n",
+  "genau": "Let $b>\\eta$, $L$ the fixed point of $b^z$ with $\\operatorname{Im}L>0$, and $\\lambda=L\\ln b$ (one has $|\\lambda|>1$). With the Poincaré function $\\Psi$\n($\\Psi(\\lambda w)=b^{\\Psi(w)}$, $\\Psi(0)=L$, $\\Psi'(0)=1$), every $F(x)=\\Psi(\\lambda^xc)$ is a holomorphic superfunction of $b^z$. None of them is\nreal on the whole real axis. The choice of $L$ rather than $\\bar L$ breaks the mirror symmetry $T(\\bar z)=\\overline{T(z)}$.\n",
+  "warum": "1. Equation: $F(x+1)=\\Psi(\\lambda\\cdot\\lambda^xc)=b^{\\Psi(\\lambda^xc)}=b^{F(x)}$.\n2. Since $|\\lambda|>1$, $\\lambda^xc\\to0$ for $x\\to-\\infty$, hence $F(x)\\to\\Psi(0)=L$. A real function cannot tend to a non-real number.\n3. Mirroring everything gives the same construction at $\\bar L$. Both fixed points are on an equal footing; whoever chooses one loses the symmetry.\n4. As a side remark: $\\Psi$ never takes the value $0$ (every value is $b^{\\text{something}}$). A regular solution at $L$ with $F(0)=1$ would therefore have $F(-1)=2\\pi ik/\\ln b$\n   with $k\\ne0$ — it can never hit the value $T(-1)=0$ of any genuine tetration.\n",
+  "beispiel": "Base $e$: $L=0.31813+1.33724\\,i$, $\\lambda=L$. If one normalizes so that $F(0)=2$, then $F(-1)=\\ln2$ and $F(-2)=\\ln\\ln2=-0.3665$ — real. In between, it is\nnot real: $F(-\\tfrac12)=1.0980+0.0972\\,i$, whereas Kneser gives $1.2329$ at the same height. One step further back gives $F(-3)=-1.0037+\\pi i$,\nafter that the curve spirals into $L$.\n",
+  "bilder": [
+   "k6_regulaer_an_L"
+  ],
+  "einordnung": "Below $\\eta$ exactly this construction works, because the fixed point is real ([[kl.satz.regulaer]]). Kneser corrects the error with a\nperiodic function ([[kn.konstr.kneser]]); that every other solution differs from this one by such a function is stated in [[fg.satz.allgemeine_loesung]].\n"
+ }
+}

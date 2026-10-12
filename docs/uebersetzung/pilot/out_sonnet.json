@@ -1,0 +1,251 @@
+[
+ {
+  "id": "gr.satz.exponentialitaet",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "The super-logarithm counts exponentials: χ(f) = lim (slog f(x) − slog x)",
+  "aussage": "Set $\\chi(f)=\\lim_{x\\to\\infty}\\bigl(A(f(x))-A(x)\\bigr)$, where the limit exists. Then:\n(i) $\\chi(\\exp)=1$, $\\chi(\\ln)=-1$, $\\chi(f\\circ g)=\\chi(f)+\\chi(g)$, and $\\chi(\\exp^{[s]})=s$ for $\\exp^{[s]}(x)=T(A(x)+s)$ — a half-exponential function has $\\chi=\\tfrac12$.\n\n(ii) $\\chi(f)=0$ for $cx$, $x+c$, $x^k$, $x^{\\ln x}$; $\\chi(f)=1$ for $2^x$, $x^x$, $e^{x^2}$ — in general $\\chi$ is, for every exp-log function and every transseries, an\ninteger, the exponentiality in the sense of Hardy and van der Hoeven.\n\n(iii) An **integer** exponentiality is the same for every super-logarithm; a **fractional** one is not: with another $\\tilde A=A+\\theta(A)$ ($\\theta$ 1-periodic) one has\n$\\tilde A(\\exp^{[1/2]}x)-\\tilde A(x)=\\tfrac12+\\theta(A(x)+\\tfrac12)-\\theta(A(x))$ — this oscillates if $\\theta$ is not $\\tfrac12$-periodic.\n\nAt $x=e\\uparrow\\uparrow k$, $k=2,\\dots,5$: for $x^2$ the difference is $0.529$, $0.197$, $0.0149$, $4.0\\cdot10^{-9}$.\n",
+  "bereich": "increasing $f$ with $f(x)\\to\\infty$; $A=\\operatorname{slog}_e$ continuous, strictly increasing, with $A(y+c)-A(y)\\to0$ for every fixed $c$ (Kneser's satisfies this)",
+  "einfach": "The super-logarithm counts how many times you have to take a logarithm. If you compare this for f(x) and for x, then in the limit exactly the number of exponential functions that are “hidden” in f remains: 0 for polynomials, 1 for 2^x or x^x, 2 for e^(e^x). With tetration there are also half-exponential functions — there the value is ½.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "(i) $A(e^y)=A(y)+1$; additivity via $A(f(g(x)))-A(x)=[A(f(g(x)))-A(g(x))]+[A(g(x))-A(x)]$; $A(T(A(x)+s))=A(x)+s$.\n(ii) $A(x^2)-A(x)=A(\\ln2+\\ln\\ln x)-A(\\ln\\ln x)\\to0$ by hypothesis; $x^{\\ln x}$ likewise one level deeper; $A(2^x)-A(x)=1+A(x\\ln2)-A(x)\\to1$.\nIntegrality for exp-log functions: Hardy (1910), for transseries: van der Hoeven (2006); there $\\ln^{\\circ n}\\circ f\\circ\\exp^{\\circ n}\\sim\\exp^{\\circ k}$, hence $\\chi=k$.\n(iii) Because $\\theta$ is periodic and uniformly continuous, $\\theta(A(f))-\\theta(A(x))$ vanishes for all choices if and only if $A(f)-A(x)$ tends to an integer.\n"
+  },
+  "formen": [
+   {
+    "tex": "\\chi(f)=\\lim_{x\\to\\infty}\\bigl(\\operatorname{slog}f(x)-\\operatorname{slog}x\\bigr)",
+    "notiz": "Definition"
+   },
+   {
+    "tex": "\\chi(f)=\\lim_{n\\to\\infty}\\bigl(\\operatorname{slog}(\\ln^{\\circ n}f(\\exp^{\\circ n}y))-\\operatorname{slog}y\\bigr)",
+    "notiz": "via iterated logarithms (practical for huge x)"
+   }
+  ],
+  "pruefung_f5_neue_frage": "Do the functions with fractional exponentiality that arise from Kneser sexp, slog, exp, ln form a Hardy field? (br.frage.kneser_hardy)"
+ },
+ {
+  "id": "gr.satz.stufenleiter",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Ladder of levels: ln ln a is the m-th difference of ln H′ — for tetration, pentation, hexation, …",
+  "aussage": "(i) **Values:** $H_k(0)=1$, $H_k(1)=a$, $H_k(2)=H_{k-1}(a)$, and downward $H_k(-j)=-(j-1)$ for $j=1,\\dots,k-3$:\n$T(-1)=0$; $P(-1)=0$, $P(-2)=-1$; $H_6(-1)=0$, $H_6(-2)=-1$, $H_6(-3)=-2$. Each level inherits one more integer point.\n\n(ii) **Slopes:** $H_{k+1}'(-j)/H_{k+1}'(-j-1)=H_k'(-j)$ for $0\\le j\\le k-3$, and from this for $m=0,1,2,\\dots$\n$$\\ln\\ln a=\\sum_{j=0}^{m}(-1)^j\\binom{m}{j}\\ln H_{3+m}'(-j).$$\n$m=1$: $\\ln a=T'(0)/T'(-1)$; $m=2$: $\\ln a=\\dfrac{P'(0)\\,P'(-2)}{P'(-1)^2}$; $m=3$: $\\ln a=\\dfrac{H_6'(0)\\,H_6'(-2)^3}{H_6'(-1)^3\\,H_6'(-3)}$.\nThe individual slopes depend on the chosen solutions, these combinations do not. For $a=e$, $P'(0),P'(-1),P'(-2)$ form a geometric sequence\nwith ratio $T_e'(0)=1.0917673512\\ldots$ (regular pentation at the fixed point: $1.08879$, $0.99727$, $0.91345$).\n",
+  "bereich": "base $a>1$; $H_3(x)=a^x$, $H_{k+1}(x+1)=H_k(H_{k+1}(x))$, $H_{k+1}(0)=1$, every level strictly increasing and differentiable ($H_4=T$ tetration, $H_5=P$ pentation, $H_6$ hexation)",
+  "einfach": "For tetration, ln a is the ratio of two slopes. One level higher, for pentation, you need three slopes, for hexation four — always with the signs and weights of a binomial row. Each level has one more integer point downward at which you know the value exactly.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "(i) $H_{k+1}(-1)=H_k^{-1}(1)=0$, because $H_k(0)=1$; inductively $H_{k+1}(-j-1)=H_k^{-1}(H_{k+1}(-j))=H_k^{-1}(-(j-1))=-j$, because $H_k(-j)=-(j-1)$.\n(ii) Chain rule $H_{k+1}'(x+1)=H_k'(H_{k+1}(x))\\,H_{k+1}'(x)$ at $x=-j-1$ with $H_{k+1}(-j-1)=-j$. With $\\delta_k(j)=\\ln H_k'(-j)$ this means\n$\\delta_{k+1}(j)-\\delta_{k+1}(j+1)=\\delta_k(j)$: the backward difference of a level is the level below. Applied $m$ times, one arrives at\n$\\delta_3(0)=\\ln\\bigl(\\ln a\\cdot a^0\\bigr)=\\ln\\ln a$.\n"
+  },
+  "formen": [
+   {
+    "tex": "T'(0)=\\frac{P'(0)}{P'(-1)},\\quad T'(-1)=\\frac{P'(-1)}{P'(-2)}",
+    "notiz": "Slopes of tetration as slope ratios of pentation"
+   },
+   {
+    "tex": "\\Delta\\ln H_{k+1}'(-j)=\\ln H_k'(-j)",
+    "notiz": "backward difference of a level = log. slope of the level below"
+   },
+   {
+    "tex": "P'(-1)^2=P'(0)\\,P'(-2)\\quad(a=e)",
+    "notiz": "geometric sequence"
+   }
+  ],
+  "pruefung_f5_neue_frage": "Are there likewise solution-independent combinations of second derivatives across three levels (analogue of $(T''(0)-T'(0)^2)/T''(-1)$)?"
+ },
+ {
+  "id": "fg.def.tetration",
+  "art": "definition",
+  "status": "definition",
+  "titel": "Tetration equation",
+  "aussage": "A **tetration to base $b$** is a function $F$ with\n$F(x+1)=b^{F(x)}$ and $F(0)=1$, where $b^w:=e^{w\\ln b}$ (principal branch of $\\ln b$).\nWithout the normalization, $F$ is called a **superfunction** of $\\exp_b$. Notation: $T_b$ for an\n(arbitrary) solution, $T_b^{\\mathrm K}$ for Kneser's solution.\n",
+  "bereich": "$b>0,\\ b\\neq 1$; solution $F$ on an interval $I\\subset\\mathbb R$ or region $D\\subset\\mathbb C$ with $I+1\\subset I$"
+ },
+ {
+  "id": "it.satz.ecalle_voronin",
+  "art": "satz",
+  "status": "bewiesen_literatur",
+  "titel": "Écalle–Voronin invariants",
+  "aussage": "The analytic conjugacy class of a parabolic germ is determined by the transition maps\n(horn maps) between the Fatou coordinates of adjacent petals. $f$ is the\ntime-one map of a holomorphic flow (formal iterates converge) if and only if these invariants are trivial.\n",
+  "bereich": "parabolic germs $f(z)=z+az^2+\\dots$",
+  "beweis": {
+   "art": "literatur",
+   "text": "Écalle 1975, Voronin 1981."
+  },
+  "pruefung_f5_neue_frage": "How large are the Écalle–Voronin invariants of $e^u-1$ numerically, and what do they mean for the two regular tetrations at $\\eta$?"
+ },
+ {
+  "id": "fp.satz.baker_rippon_periodisch",
+  "art": "satz",
+  "status": "bewiesen_literatur",
+  "titel": "Towers with periodically recurring bases (Baker–Rippon 1985, 1989)",
+  "aussage": "The tower converges if and only if there is a **unique** representation\n$$b_1=t_1e^{-t_2},\\quad b_2=t_2e^{-t_3},\\ \\dots,\\ b_k=t_ke^{-t_1}\\qquad\\text{with}\\quad|t_1t_2\\cdots t_k|\\le1$$\n(Baker–Rippon 1989). For $k=2$ (bases $a,b$ alternating, $\\varphi(x)=a^{b^x}$): convergence if and only if $\\varphi$ has exactly one\nfixed point $c$ with $|\\varphi'(c)|\\le1$, i.e. $\\ln a=se^{-t}$, $\\ln b=te^{-s}$ with unique $(s,t)$, $|st|\\le1$ (Baker–Rippon 1985).\nIf all $b_n$ lie in $[-e,1/e]$, the tower converges even without periodicity (Barrow's theorem).\n",
+  "bereich": "tower $a_1^{a_2^{a_3^{\\cdots}}}$ with $a_{j+k}=a_j$, $b_j=\\ln a_j\\in\\mathbb C$",
+  "beweis": {
+   "art": "literatur",
+   "text": "Baker–Rippon, Fibonacci Quart. 23 (1985) and Math. Proc. Cambridge Philos. Soc. 105 (1989), via the zbMATH reviews. The $t_j$ are the $b_j$-multiples of the points of the $k$-cycle, $t_1\\cdots t_k$ is its multiplier."
+  },
+  "pruefung_f5_neue_frage": "Is there a tetration with periodic bases (mixed towers) — a bridge to base change (bw)?"
+ },
+ {
+  "id": "fp.satz.rechteckwelle",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Below e^{−e} the phase becomes a square wave",
+  "aussage": "There is exactly one $x^*\\in(0,1)$ with $T(x^*)=L$, and then $T(x^*+n)=L$ for all $n$ (the tetration **crosses the Julia set**).\n$\\Omega(x)=\\lim_nT(x+2n)$ is a 2-periodic **square wave**: $z_A$ on $(x^*-1,x^*)$, $z_B$ on $(x^*,x^*+1)$ (mod 2), $\\Omega(x^*)=L$.\nThere is no continuous 2-periodic limit function. Fourier: $c_0=\\tfrac{z_A+z_B}2$, $c_k=\\frac{i(z_A-z_B)e^{-i\\pi kx^*}}{\\pi k}$ for odd $k$,\n0 for even ones. The shape is **universal**; only $x^*$ depends on the chosen tetration. Two rates: besides the jump $|\\mu|^{n/2}$,\nthe width of the transition $|\\lambda|^{-n}$ ($\\lambda=cL<-1$).\n",
+  "bereich": "$0<b<e^{-e}$, $T$ a continuous real tetration that crosses $L$ exactly once on $[0,1)$ (e.g. monotone on $[0,1]$)",
+  "einfach": "Below e^(−e) the tower jumps between two values. If you draw the continuous tetration at even heights further and further up, its curve turns into a rectangle: at exactly one place it has to hit the repelling fixed point and gets stuck there.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "$E$ is decreasing on ℝ, $E\\circ E$ increasing with fixed points $z_B<L<z_A$; $(L,\\infty)$ is the basin of $z_A$, $(0,L)$ of $z_B$, the only separating point is $L$. $T(0)=1>L>b=T(1)$ ⇒ intermediate value theorem. A continuous 2-periodic Ω would have a connected E-invariant image in two separate basins — impossible. Fourier series of the square wave."
+  },
+  "formen": [
+   {
+    "tex": "b=0.03:\\ L=0.3226191538,\\ z_A=0.8213273730,\\ z_B=0.0561329673,\\ |c_k|\\pi k=|z_A-z_B|=0.7651944057",
+    "notiz": "Example"
+   }
+  ],
+  "gegenbeispielsuche": "Original: three resp. four starting interpolations, |c_k|πk constant to 8 digits up to k = 41. exp.funde (linear starting interpolation, x* = 0.698330769): |c_k|πk = 0.7651944 … 0.7651888 for k = 1 … 41; T(x* + n) = L for n ≤ 12.",
+  "pruefung_f5_neue_frage": "Is there a distinguished real tetration (distinguished x*) for 0 < b < e^{−e}?"
+ },
+ {
+  "id": "kl.satz.basiswechsel_gleiches_L",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Base change at a common fixed point is linear",
+  "aussage": "With $T_d(x)=\\Psi_d(\\lambda_d^{x}w_d)$ and $A_b=\\log\\sigma_b/\\log\\lambda_b$ one has, for $x\\to-\\infty$,\n$$A_b\\bigl(T_d(x)\\bigr)=C_1+C_2\\,x+\\frac{a_1\\,w_d}{\\log\\lambda_b}\\,\\lambda_d^{x}+O\\bigl(\\lambda_d^{2x}\\bigr),\\qquad\n  C_2=\\frac{\\log\\lambda_d}{\\log\\lambda_b},\\quad C_1=\\frac{\\log w_d}{\\log\\lambda_b},$$\n$a_1=\\frac{u_d}{2(\\lambda_d-1)}-\\frac{u_b}{2(\\lambda_b-1)}$. The deviation from the line decays like $|\\lambda_d|^{x}$ — a\ndamped oscillation, **not a persistent periodic wave** as in the mixed-base phase law. If $b$ and $d$ have different\nfixed points, $A_b(T_d(x))$ instead tends to a constant. The base change is exactly linear only for $b=d$.\n",
+  "bereich": "two bases $b\\ne d$ with a common fixed point $L$, $|\\lambda_d|>1$, $|\\lambda_b|\\ne0,1$; $T_d$ regular at $L$ with $T_d(0)=1$, $A_b$ a regular Abel function at $L$",
+  "einfach": "If you choose two bases that circle around the same point L and translate the height of one into the height of the other, a straight line C₁ + C₂·x comes out. The deviation from it shrinks with every step by the factor |λ| — no wave is left over. With different fixed points this does not work: then the translated height simply stays put.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "Both linearizations are normalized at the same point ($\\sigma_b(L)=\\Psi_d(0)-L=0$, derivative 1), so $h=\\sigma_b\\circ\\Psi_d$ is tangent\nto the identity: $h(v)=v+(p_{2,d}-p_{2,b})v^2+\\dots$ with $p_2=u/(2(\\lambda-1))$ (comparison of coefficients in $\\Psi(\\lambda w)=e^{u\\Psi(w)}$).\nSubstituting $v=\\lambda_d^xw_d\\to0$ gives the formula. For different fixed points, $T_d(x)\\to L_d\\ne L$ and $A_b(T_d(x))\\to A_b(L_d)$.\nExactly linear would mean $T_d(x)=T_b(C_1'+C_2x)$, hence $f_d=f_b^{\\,C_2}$ in the regular iteration group; then $f_b,f_d$ commute:\n$u_de^{u_bz}-u_be^{u_dz}\\equiv$ const, differentiating gives $e^{u_bz}=e^{u_dz}$, hence $u_b=u_d$.\n"
+  },
+  "formen": [
+   {
+    "tex": "C_2=\\frac{\\ln(5\\pi/2)+i\\pi/2}{\\ln(\\pi/2)+i\\pi/2}=1.27207228599878-0.94638289390563\\,i",
+    "notiz": "$b=e^{\\pi/2}$, $d=e^{5\\pi/2}$, $L=i$"
+   },
+   {
+    "tex": "C_2=\\frac{\\log(\\ln2+2\\pi i)}{\\log\\ln2}=-5.03099684006-3.98600629929\\,i",
+    "notiz": "$b=\\sqrt2$, $d=-\\sqrt2$, $L=2$"
+   },
+   {
+    "tex": "h:=\\sigma_b\\circ\\Psi_d,\\quad h(v)=v+a_1v^2+\\dots,\\quad A_b(T_d(x))=\\frac{\\log h(\\lambda_d^xw_d)}{\\log\\lambda_b}",
+    "notiz": "Core of the proof"
+   }
+  ],
+  "gegenbeispielsuche": "exp.gleiches_L, five pairs ($e^{\\pi/2}$ with $e^{5\\pi/2}$ and with $e^{-3\\pi/2}$; $\\sqrt2$ with $-\\sqrt2$; $e$ with $e^{1-2\\pi i/L_e}$; $2.084$ with $-1659.6$):\ndecay rate of the deviation = $\\ln|\\lambda_d|$ to 5 digits, first correction to $<4\\cdot10^{-8}$ relative, best-fit line matches $C_2$ to $10^{-6}$.\nDeviation at $x=-12$: $4\\cdot10^{-12}$ … $2\\cdot10^{-9}$; at $x=-1$ still 0.03 … 0.48 (linear only asymptotically).\nControl test $e^{\\pi/2}$ against $e$ (different L): slope $3.0\\cdot10^{-3}$ at $x=-20$, $5.1\\cdot10^{-6}$ at $x=-40$ (decays like $|L_e|^x$).\n",
+  "pruefung_f5_neue_frage": "Is the phase P of the phase law (bw.satz.phasengesetz) exactly what arises in the transition from a common to different fixed points?"
+ },
+ {
+  "id": "kn.gescheitert.regulaer_an_L",
+  "art": "gescheitert",
+  "status": "gescheitert",
+  "titel": "Regular iteration at the complex fixed point L is not real",
+  "aussage": "Obvious approach: Koenigs function at $L$ (for $\\log_b$, attracting) and $T:=\\sigma^{-1}(\\lambda^{x}c)$.\nThis gives a holomorphic superfunction that is **not real** on the real axis: $L$ and $\\bar L$ are\non an equal footing, the choice of $L$ breaks the symmetry $T(\\bar z)=\\overline{T(z)}$.\n",
+  "bereich": "$b>\\eta$, primary fixed point $L$ with $|\\lambda|>1$",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "For $|\\lambda|>1$ one has $\\lambda^{x}\\to0$ as $x\\to-\\infty$, hence $F(x)=\\sigma^{-1}(\\lambda^x c)\\to L\\notin\\mathbb R$. A function that is real on all of $\\mathbb R$ cannot tend to $L$."
+  },
+  "pruefung_f5_neue_frage": "Correction by a 1-periodic function that restores reality → kn.konstr.kneser"
+ },
+ {
+  "id": "kn.satz.linear_glatt",
+  "art": "gegenbeispiel",
+  "status": "bewiesen",
+  "titel": "Linear tetration is continuously differentiable exactly for b = e, never C²",
+  "aussage": "$T'(0^-)=1$, $T'(0^+)=\\ln b$: $C^1$ exactly for $b=e$. For $b=e$, $T''(0^-)=0\\ne1=T''(0^+)$, so never $C^2$.\n",
+  "bereich": "linear tetration, $b>1$",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "On $(0,1]$, $T(x)=b^{x}$, so $T'(0^+)=\\ln b$, $T''(0^+)=\\ln^2 b$."
+  },
+  "pruefung_f5_neue_frage": "How does the seam show up in the base-change phases? (bw.satz.fourier_naht)"
+ },
+ {
+  "id": "bw.gescheitert.cstep",
+  "art": "gescheitert",
+  "status": "gescheitert",
+  "titel": "Complex-step references wrong for extreme bases",
+  "aussage": "For $d=10$ only 14.6, for $d=2$ only 20.0 correct digits (engine floor near the parabolic boundary, narrow theta strip); the RH solver and ε-stencils agree to 30–34 digits and jointly refute them.",
+  "pruefung_f5_neue_frage": "—"
+ },
+ {
+  "id": "bw.satz.antisymmetrie",
+  "art": "satz",
+  "status": "bedingt",
+  "titel": "Exact inverse antisymmetry without smoothness (Paper II, Thm. B)",
+  "aussage": "$\\mu_{b,d}=-\\mu_{d,b}$ exactly, as soon as the phase law holds for both orders.",
+  "beweis": {
+   "art": "bedingt",
+   "text": "Riemann–Stieltjes substitution."
+  },
+  "pruefung_f5_neue_frage": "Measurable consequence: table residuals $\\mu_{b,d}+\\mu_{d,b}$ are pure computational error — an accuracy test of the engine."
+ },
+ {
+  "id": "ar.satz.funktional_ks",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Functional Kneser–Schanuel statement",
+  "aussage": "$T(x+c_1),\\dots,T(x+c_n)$ are algebraically independent over $\\mathbb C(x)$ (as germs at $+\\infty$).",
+  "bereich": "continuous strictly increasing real solutions to base $e$, pairwise distinct $c_i\\in\\mathbb R$",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "For $c<c'$: $T(x+c')\\gg T(x+c)^N$, because $T(y+\\delta)-T(y)\\to\\infty$; dominant monomial. Directly for every continuous strictly increasing solution: $m(\\delta)=\\min_{[0,1]}(T(y+\\delta)-T(y))>0$ and $T(y+1+\\delta)-T(y+1)\\ge e^{T(y)}(e^{m}-1)$."
+  },
+  "pruefung_f5_neue_frage": "Arithmetic specialization → ar.verm.ks"
+ },
+ {
+  "id": "br.satz.boshernitzan",
+  "art": "satz",
+  "status": "bewiesen_literatur",
+  "titel": "Transexponential Hardy fields exist",
+  "aussage": "There are Hardy fields containing functions that grow faster than every iterated exponential (solutions of $f(x+1)=e^{f(x)}$).",
+  "beweis": {
+   "art": "literatur",
+   "text": "Boshernitzan 1986."
+  },
+  "pruefung_f5_neue_frage": "Does the Kneser germ lie in a Hardy field? → br.frage.kneser_hardy"
+ },
+ {
+  "id": "gr.satz.kettenregel",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Chain rule of tetration",
+  "aussage": "$$T'(x+1)=\\ln a\\cdot T(x+1)\\cdot T'(x).$$",
+  "bereich": "every solution that is differentiable at $x$",
+  "einfach": "One level higher, the slope gets multiplied by ln a and by the function value there. Because the function values grow rapidly, the slope grows even more rapidly.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "Differentiation of $T(x+1)=a^{T(x)}=e^{T(x)\\ln a}$ with respect to $x$."
+  },
+  "formen": [
+   {
+    "tex": "\\frac{T'(x+1)}{T'(x)}=\\ln a\\cdot T(x+1)",
+    "notiz": "Quotient form (where $T'(x)\\ne0$)"
+   },
+   {
+    "tex": "(\\ln T)'(x+1)=\\ln a\\cdot T'(x)",
+    "notiz": "logarithmic derivative, for $x>-2$"
+   },
+   {
+    "tex": "T'(x+1)=\\ln a\\cdot a^{T(x)}\\cdot T'(x)",
+    "notiz": "without T(x+1)"
+   },
+   {
+    "tex": "\\ln T'(x+1)-\\ln T'(x)=\\ln\\ln a+\\ln a\\cdot T(x)",
+    "notiz": "Difference form; for $a=e$ one has $T=\\Delta\\ln T'$ — summed up, this gives the continuum-sum formula (kn.konstr.kontinuumssumme)"
+   }
+  ],
+  "pruefung_f5_neue_frage": "What follows on iteration? → gr.kor.produktformel"
+ },
+ {
+  "id": "kl.verm.streifenbreite",
+  "art": "vermutung",
+  "status": "vermutung",
+  "titel": "Amplitude law from the imaginary period",
+  "aussage": "The Fourier coefficients of the difference $p=\\alpha_A\\circ\\alpha_a^{-1}-\\mathrm{id}$ decay like\n$$|\\hat p(k)|\\approx C\\,\\exp\\!\\Bigl(-\\frac{2\\pi^2 k}{|\\ln\\lambda_a|}\\Bigr),$$\ni.e. $p$ is holomorphic exactly in a strip of half the imaginary period $\\pi/|\\ln\\lambda_a|$ of the regular tetration\nat the lower fixed point. Heuristic: at $\\operatorname{Im}\\theta=\\pi/|\\ln\\lambda_a|$, $\\lambda_a^{\\theta}$ turns by $\\pi$,\n$T^{\\mathrm{reg}}$ reaches the other side of $a$, where $\\alpha_A$ becomes singular.\n",
+  "bereich": "$1<b<\\eta$, fixed points $a<A$, multipliers $\\lambda_a\\in(0,1)$, $\\lambda_A>1$",
+  "gegenbeispielsuche": "exp.sqrt2_abel: modes $k\\le10$ at $b\\in\\{1.25,1.3,1.35,\\sqrt2,1.43\\}$ (170 digits, cross-check with a different series length 1e-112).\nFree fit $\\ln|\\hat p(k)|=c+\\gamma\\ln k-Sk+d/k$: $S$ matches $2\\pi^2/|\\ln\\lambda_a|$ to $1.2$–$2.6\\cdot10^{-4}$ relative;\nthe competitor $2\\pi^2/\\ln\\lambda_A$ is off by 20–40 %. No counterexample among 5 bases.\n",
+  "pruefung_f5_neue_frage": "A provable model problem for bw.frage.streifen_gevrey: here all objects are explicit (Koenigs series)."
+ }
+]

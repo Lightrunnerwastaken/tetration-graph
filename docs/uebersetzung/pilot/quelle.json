@@ -1,0 +1,251 @@
+[
+ {
+  "id": "gr.satz.exponentialitaet",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Der Superlogarithmus zählt Exponentiale: χ(f) = lim (slog f(x) − slog x)",
+  "aussage": "Setze $\\chi(f)=\\lim_{x\\to\\infty}\\bigl(A(f(x))-A(x)\\bigr)$, wo der Grenzwert existiert. Dann gilt:\n(i) $\\chi(\\exp)=1$, $\\chi(\\ln)=-1$, $\\chi(f\\circ g)=\\chi(f)+\\chi(g)$, und $\\chi(\\exp^{[s]})=s$ für $\\exp^{[s]}(x)=T(A(x)+s)$ — eine halbe Exponentialfunktion hat $\\chi=\\tfrac12$.\n\n(ii) $\\chi(f)=0$ für $cx$, $x+c$, $x^k$, $x^{\\ln x}$; $\\chi(f)=1$ für $2^x$, $x^x$, $e^{x^2}$ — allgemein ist $\\chi$ für jede Exp-Log-Funktion und jede Transreihe eine ganze\nZahl, die Exponentialität im Sinn von Hardy und van der Hoeven.\n\n(iii) Eine **ganze** Exponentialität ist für jeden Superlogarithmus dieselbe; eine **gebrochene** nicht: mit einem anderen $\\tilde A=A+\\theta(A)$ ($\\theta$ 1-periodisch) ist\n$\\tilde A(\\exp^{[1/2]}x)-\\tilde A(x)=\\tfrac12+\\theta(A(x)+\\tfrac12)-\\theta(A(x))$ — das pendelt, wenn $\\theta$ nicht $\\tfrac12$-periodisch ist.\n\nBei $x=e\\uparrow\\uparrow k$, $k=2,\\dots,5$: für $x^2$ ist die Differenz $0.529$, $0.197$, $0.0149$, $4.0\\cdot10^{-9}$.\n",
+  "bereich": "wachsende $f$ mit $f(x)\\to\\infty$; $A=\\operatorname{slog}_e$ stetig, streng wachsend, mit $A(y+c)-A(y)\\to0$ für jedes feste $c$ (Kneser erfüllt das)",
+  "einfach": "Der Superlogarithmus zählt, wie oft man logarithmieren muss. Vergleicht man das für f(x) und für x, bleibt im Grenzfall genau die Zahl der Exponentialfunktionen übrig, die in f „stecken“: 0 bei Polynomen, 1 bei 2^x oder x^x, 2 bei e^(e^x). Mit Tetration gibt es auch halbe Exponentialfunktionen — dort steht ½.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "(i) $A(e^y)=A(y)+1$; Additivität durch $A(f(g(x)))-A(x)=[A(f(g(x)))-A(g(x))]+[A(g(x))-A(x)]$; $A(T(A(x)+s))=A(x)+s$.\n(ii) $A(x^2)-A(x)=A(\\ln2+\\ln\\ln x)-A(\\ln\\ln x)\\to0$ nach Voraussetzung; $x^{\\ln x}$ ebenso eine Stufe tiefer; $A(2^x)-A(x)=1+A(x\\ln2)-A(x)\\to1$.\nGanzzahligkeit für Exp-Log-Funktionen: Hardy (1910), für Transreihen: van der Hoeven (2006); dort ist $\\ln^{\\circ n}\\circ f\\circ\\exp^{\\circ n}\\sim\\exp^{\\circ k}$, also $\\chi=k$.\n(iii) Weil $\\theta$ periodisch und gleichmässig stetig ist, verschwindet $\\theta(A(f))-\\theta(A(x))$ genau dann für alle Wahlen, wenn $A(f)-A(x)$ gegen eine ganze Zahl geht.\n"
+  },
+  "formen": [
+   {
+    "tex": "\\chi(f)=\\lim_{x\\to\\infty}\\bigl(\\operatorname{slog}f(x)-\\operatorname{slog}x\\bigr)",
+    "notiz": "Definition"
+   },
+   {
+    "tex": "\\chi(f)=\\lim_{n\\to\\infty}\\bigl(\\operatorname{slog}(\\ln^{\\circ n}f(\\exp^{\\circ n}y))-\\operatorname{slog}y\\bigr)",
+    "notiz": "über iterierte Logarithmen (praktisch für riesige x)"
+   }
+  ],
+  "pruefung_f5_neue_frage": "Bilden die Funktionen mit gebrochener Exponentialität, die aus Kneser-sexp, slog, exp, ln entstehen, einen Hardy-Körper? (br.frage.kneser_hardy)"
+ },
+ {
+  "id": "gr.satz.stufenleiter",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Stufenleiter: ln ln a ist die m-te Differenz von ln H′ — für Tetration, Pentation, Hexation, …",
+  "aussage": "(i) **Werte:** $H_k(0)=1$, $H_k(1)=a$, $H_k(2)=H_{k-1}(a)$, und nach unten $H_k(-j)=-(j-1)$ für $j=1,\\dots,k-3$:\n$T(-1)=0$; $P(-1)=0$, $P(-2)=-1$; $H_6(-1)=0$, $H_6(-2)=-1$, $H_6(-3)=-2$. Jede Stufe erbt eine ganze Stelle mehr.\n\n(ii) **Steigungen:** $H_{k+1}'(-j)/H_{k+1}'(-j-1)=H_k'(-j)$ für $0\\le j\\le k-3$, und daraus für $m=0,1,2,\\dots$\n$$\\ln\\ln a=\\sum_{j=0}^{m}(-1)^j\\binom{m}{j}\\ln H_{3+m}'(-j).$$\n$m=1$: $\\ln a=T'(0)/T'(-1)$; $m=2$: $\\ln a=\\dfrac{P'(0)\\,P'(-2)}{P'(-1)^2}$; $m=3$: $\\ln a=\\dfrac{H_6'(0)\\,H_6'(-2)^3}{H_6'(-1)^3\\,H_6'(-3)}$.\nDie einzelnen Steigungen hängen von den gewählten Lösungen ab, diese Kombinationen nicht. Bei $a=e$ bilden $P'(0),P'(-1),P'(-2)$ eine geometrische Folge\nmit Quotient $T_e'(0)=1.0917673512\\ldots$ (reguläre Pentation am Fixpunkt: $1.08879$, $0.99727$, $0.91345$).\n",
+  "bereich": "Basis $a>1$; $H_3(x)=a^x$, $H_{k+1}(x+1)=H_k(H_{k+1}(x))$, $H_{k+1}(0)=1$, jede Stufe streng wachsend und differenzierbar ($H_4=T$ Tetration, $H_5=P$ Pentation, $H_6$ Hexation)",
+  "einfach": "Bei der Tetration ist ln a das Verhältnis zweier Steigungen. Eine Stufe höher, bei der Pentation, braucht man drei Steigungen, bei der Hexation vier — immer mit den Vorzeichen und Gewichten einer Binomialzeile. Jede Stufe hat nach unten eine ganze Stelle mehr, an der man den Wert genau kennt.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "(i) $H_{k+1}(-1)=H_k^{-1}(1)=0$, weil $H_k(0)=1$; induktiv $H_{k+1}(-j-1)=H_k^{-1}(H_{k+1}(-j))=H_k^{-1}(-(j-1))=-j$, weil $H_k(-j)=-(j-1)$.\n(ii) Kettenregel $H_{k+1}'(x+1)=H_k'(H_{k+1}(x))\\,H_{k+1}'(x)$ bei $x=-j-1$ mit $H_{k+1}(-j-1)=-j$. Mit $\\delta_k(j)=\\ln H_k'(-j)$ heisst das\n$\\delta_{k+1}(j)-\\delta_{k+1}(j+1)=\\delta_k(j)$: die Rückwärtsdifferenz einer Stufe ist die Stufe darunter. $m$-mal angewandt landet man bei\n$\\delta_3(0)=\\ln\\bigl(\\ln a\\cdot a^0\\bigr)=\\ln\\ln a$.\n"
+  },
+  "formen": [
+   {
+    "tex": "T'(0)=\\frac{P'(0)}{P'(-1)},\\quad T'(-1)=\\frac{P'(-1)}{P'(-2)}",
+    "notiz": "Steigungen der Tetration als Steigungsverhältnisse der Pentation"
+   },
+   {
+    "tex": "\\Delta\\ln H_{k+1}'(-j)=\\ln H_k'(-j)",
+    "notiz": "Rückwärtsdifferenz einer Stufe = log. Steigung der Stufe darunter"
+   },
+   {
+    "tex": "P'(-1)^2=P'(0)\\,P'(-2)\\quad(a=e)",
+    "notiz": "geometrische Folge"
+   }
+  ],
+  "pruefung_f5_neue_frage": "Gibt es ebenso lösungsunabhängige Kombinationen zweiter Ableitungen über drei Stufen (Analogon zu $(T''(0)-T'(0)^2)/T''(-1)$)?"
+ },
+ {
+  "id": "fg.def.tetration",
+  "art": "definition",
+  "status": "definition",
+  "titel": "Tetrationsgleichung",
+  "aussage": "Eine **Tetration zur Basis $b$** ist eine Funktion $F$ mit\n$F(x+1)=b^{F(x)}$ und $F(0)=1$, wobei $b^w:=e^{w\\ln b}$ (Hauptzweig von $\\ln b$).\nOhne Normierung heisst $F$ **Superfunktion** von $\\exp_b$. Bezeichnung: $T_b$ für eine\n(beliebige) Lösung, $T_b^{\\mathrm K}$ für Knesers Lösung.\n",
+  "bereich": "$b>0,\\ b\\neq 1$; Lösung $F$ auf einem Intervall $I\\subset\\mathbb R$ oder Gebiet $D\\subset\\mathbb C$ mit $I+1\\subset I$"
+ },
+ {
+  "id": "it.satz.ecalle_voronin",
+  "art": "satz",
+  "status": "bewiesen_literatur",
+  "titel": "Écalle–Voronin-Invarianten",
+  "aussage": "Die analytische Konjugationsklasse eines parabolischen Keims wird durch die Übergangsabbildungen\n(Hornabbildungen) zwischen den Fatou-Koordinaten benachbarter Blätter bestimmt. $f$ ist genau dann\nZeit-1-Abbildung eines holomorphen Flusses (formale Iterierte konvergieren), wenn diese Invarianten trivial sind.\n",
+  "bereich": "parabolische Keime $f(z)=z+az^2+\\dots$",
+  "beweis": {
+   "art": "literatur",
+   "text": "Écalle 1975, Voronin 1981."
+  },
+  "pruefung_f5_neue_frage": "Wie gross sind die Écalle–Voronin-Invarianten von $e^u-1$ numerisch, und was bedeuten sie für die zwei regulären Tetrationen bei $\\eta$?"
+ },
+ {
+  "id": "fp.satz.baker_rippon_periodisch",
+  "art": "satz",
+  "status": "bewiesen_literatur",
+  "titel": "Türme mit periodisch wiederkehrenden Basen (Baker–Rippon 1985, 1989)",
+  "aussage": "Der Turm konvergiert genau dann, wenn es eine **eindeutige** Darstellung\n$$b_1=t_1e^{-t_2},\\quad b_2=t_2e^{-t_3},\\ \\dots,\\ b_k=t_ke^{-t_1}\\qquad\\text{mit}\\quad|t_1t_2\\cdots t_k|\\le1$$\ngibt (Baker–Rippon 1989). Für $k=2$ (Basen $a,b$ abwechselnd, $\\varphi(x)=a^{b^x}$): Konvergenz genau dann, wenn $\\varphi$ genau einen\nFixpunkt $c$ mit $|\\varphi'(c)|\\le1$ hat, d. h. $\\ln a=se^{-t}$, $\\ln b=te^{-s}$ mit eindeutigem $(s,t)$, $|st|\\le1$ (Baker–Rippon 1985).\nLiegen alle $b_n$ in $[-e,1/e]$, konvergiert der Turm auch ohne Periodizität (Barrows Satz).\n",
+  "bereich": "Turm $a_1^{a_2^{a_3^{\\cdots}}}$ mit $a_{j+k}=a_j$, $b_j=\\ln a_j\\in\\mathbb C$",
+  "beweis": {
+   "art": "literatur",
+   "text": "Baker–Rippon, Fibonacci Quart. 23 (1985) und Math. Proc. Cambridge Philos. Soc. 105 (1989), über die zbMATH-Rezensionen. Die $t_j$ sind die mit $b_j$ multiplizierten Punkte des $k$-Zyklus, $t_1\\cdots t_k$ ist sein Multiplikator."
+  },
+  "pruefung_f5_neue_frage": "Gibt es eine Tetration mit periodischen Basen (gemischte Türme) — Brücke zum Basiswechsel (bw)?"
+ },
+ {
+  "id": "fp.satz.rechteckwelle",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Unter e^{−e} wird die Phase zur Rechteckwelle",
+  "aussage": "Es gibt genau ein $x^*\\in(0,1)$ mit $T(x^*)=L$, und dann $T(x^*+n)=L$ für alle $n$ (die Tetration **kreuzt die Julia-Menge**).\n$\\Omega(x)=\\lim_nT(x+2n)$ ist eine 2-periodische **Rechteckwelle**: $z_A$ auf $(x^*-1,x^*)$, $z_B$ auf $(x^*,x^*+1)$ (mod 2), $\\Omega(x^*)=L$.\nEine stetige 2-periodische Grenzfunktion gibt es nicht. Fourier: $c_0=\\tfrac{z_A+z_B}2$, $c_k=\\frac{i(z_A-z_B)e^{-i\\pi kx^*}}{\\pi k}$ für ungerades $k$,\n0 für gerades. Die Form ist **universell**; nur $x^*$ hängt von der gewählten Tetration ab. Zwei Raten: neben dem Sprung $|\\mu|^{n/2}$,\nBreite des Übergangs $|\\lambda|^{-n}$ ($\\lambda=cL<-1$).\n",
+  "bereich": "$0<b<e^{-e}$, $T$ eine stetige reelle Tetration, die $L$ auf $[0,1)$ genau einmal kreuzt (z. B. monoton auf $[0,1]$)",
+  "einfach": "Unter e^(−e) springt der Turm zwischen zwei Werten. Zeichnet man die stetige Tetration bei geraden Höhen immer weiter oben, wird ihre Kurve zu einem Rechteck: genau an einer Stelle muss sie den abstossenden Fixpunkt treffen und bleibt dort hängen.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "$E$ ist auf ℝ fallend, $E\\circ E$ wachsend mit Fixpunkten $z_B<L<z_A$; $(L,\\infty)$ ist Becken von $z_A$, $(0,L)$ von $z_B$, einzige Trennstelle $L$. $T(0)=1>L>b=T(1)$ ⇒ Zwischenwertsatz. Ein stetiges 2-periodisches Ω hätte ein zusammenhängendes E-invariantes Bild in zwei getrennten Becken — unmöglich. Fourier-Reihe der Rechteckwelle."
+  },
+  "formen": [
+   {
+    "tex": "b=0.03:\\ L=0.3226191538,\\ z_A=0.8213273730,\\ z_B=0.0561329673,\\ |c_k|\\pi k=|z_A-z_B|=0.7651944057",
+    "notiz": "Beispiel"
+   }
+  ],
+  "gegenbeispielsuche": "Original: drei bzw. vier Startinterpolationen, |c_k|πk konstant auf 8 Stellen bis k = 41. exp.funde (lineare Startinterpolation, x* = 0.698330769): |c_k|πk = 0.7651944 … 0.7651888 für k = 1 … 41; T(x* + n) = L für n ≤ 12.",
+  "pruefung_f5_neue_frage": "Gibt es eine ausgezeichnete reelle Tetration (ausgezeichnetes x*) für 0 < b < e^{−e}?"
+ },
+ {
+  "id": "kl.satz.basiswechsel_gleiches_L",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Basiswechsel am gemeinsamen Fixpunkt ist linear",
+  "aussage": "Mit $T_d(x)=\\Psi_d(\\lambda_d^{x}w_d)$ und $A_b=\\log\\sigma_b/\\log\\lambda_b$ gilt für $x\\to-\\infty$\n$$A_b\\bigl(T_d(x)\\bigr)=C_1+C_2\\,x+\\frac{a_1\\,w_d}{\\log\\lambda_b}\\,\\lambda_d^{x}+O\\bigl(\\lambda_d^{2x}\\bigr),\\qquad\n  C_2=\\frac{\\log\\lambda_d}{\\log\\lambda_b},\\quad C_1=\\frac{\\log w_d}{\\log\\lambda_b},$$\n$a_1=\\frac{u_d}{2(\\lambda_d-1)}-\\frac{u_b}{2(\\lambda_b-1)}$. Die Abweichung von der Geraden fällt wie $|\\lambda_d|^{x}$ — eine\ngedämpfte Schwingung, **keine bleibende periodische Welle** wie im Mischbasen-Phasengesetz. Haben $b$ und $d$ verschiedene\nFixpunkte, läuft $A_b(T_d(x))$ dagegen gegen eine Konstante. Exakt linear ist der Basiswechsel nur für $b=d$.\n",
+  "bereich": "zwei Basen $b\\ne d$ mit gemeinsamem Fixpunkt $L$, $|\\lambda_d|>1$, $|\\lambda_b|\\ne0,1$; $T_d$ regulär an $L$ mit $T_d(0)=1$, $A_b$ reguläre Abel-Funktion an $L$",
+  "einfach": "Wählt man zwei Basen, die um denselben Punkt L kreisen, und übersetzt die Höhe der einen in die Höhe der anderen, kommt eine Gerade C₁ + C₂·x heraus. Die Abweichung davon schrumpft mit jedem Schritt um den Faktor |λ| — es bleibt keine Welle übrig. Bei verschiedenen Fixpunkten klappt das nicht: dann bleibt die übersetzte Höhe einfach stehen.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "Beide Linearisierungen sind am selben Punkt normiert ($\\sigma_b(L)=\\Psi_d(0)-L=0$, Ableitung 1), also ist $h=\\sigma_b\\circ\\Psi_d$ tangential\nzur Identität: $h(v)=v+(p_{2,d}-p_{2,b})v^2+\\dots$ mit $p_2=u/(2(\\lambda-1))$ (Koeffizientenvergleich in $\\Psi(\\lambda w)=e^{u\\Psi(w)}$).\nEinsetzen von $v=\\lambda_d^xw_d\\to0$ gibt die Formel. Bei verschiedenen Fixpunkten ist $T_d(x)\\to L_d\\ne L$ und $A_b(T_d(x))\\to A_b(L_d)$.\nExakt linear hiesse $T_d(x)=T_b(C_1'+C_2x)$, also $f_d=f_b^{\\,C_2}$ in der regulären Iterationsgruppe; dann vertauschen $f_b,f_d$:\n$u_de^{u_bz}-u_be^{u_dz}\\equiv$ const, ableiten gibt $e^{u_bz}=e^{u_dz}$, also $u_b=u_d$.\n"
+  },
+  "formen": [
+   {
+    "tex": "C_2=\\frac{\\ln(5\\pi/2)+i\\pi/2}{\\ln(\\pi/2)+i\\pi/2}=1.27207228599878-0.94638289390563\\,i",
+    "notiz": "$b=e^{\\pi/2}$, $d=e^{5\\pi/2}$, $L=i$"
+   },
+   {
+    "tex": "C_2=\\frac{\\log(\\ln2+2\\pi i)}{\\log\\ln2}=-5.03099684006-3.98600629929\\,i",
+    "notiz": "$b=\\sqrt2$, $d=-\\sqrt2$, $L=2$"
+   },
+   {
+    "tex": "h:=\\sigma_b\\circ\\Psi_d,\\quad h(v)=v+a_1v^2+\\dots,\\quad A_b(T_d(x))=\\frac{\\log h(\\lambda_d^xw_d)}{\\log\\lambda_b}",
+    "notiz": "Kern des Beweises"
+   }
+  ],
+  "gegenbeispielsuche": "exp.gleiches_L, fünf Paare ($e^{\\pi/2}$ mit $e^{5\\pi/2}$ und mit $e^{-3\\pi/2}$; $\\sqrt2$ mit $-\\sqrt2$; $e$ mit $e^{1-2\\pi i/L_e}$; $2.084$ mit $-1659.6$):\nAbfallrate der Abweichung = $\\ln|\\lambda_d|$ auf 5 Stellen, erste Korrektur bis $<4\\cdot10^{-8}$ relativ, Ausgleichsgerade trifft $C_2$ auf $10^{-6}$.\nAbweichung bei $x=-12$: $4\\cdot10^{-12}$ … $2\\cdot10^{-9}$; bei $x=-1$ noch 0.03 … 0.48 (linear nur asymptotisch).\nGegenprobe $e^{\\pi/2}$ gegen $e$ (verschiedene L): Steigung $3.0\\cdot10^{-3}$ bei $x=-20$, $5.1\\cdot10^{-6}$ bei $x=-40$ (fällt wie $|L_e|^x$).\n",
+  "pruefung_f5_neue_frage": "Ist die Phase P des Phasengesetzes (bw.satz.phasengesetz) genau das, was beim Übergang von einem gemeinsamen zu verschiedenen Fixpunkten entsteht?"
+ },
+ {
+  "id": "kn.gescheitert.regulaer_an_L",
+  "art": "gescheitert",
+  "status": "gescheitert",
+  "titel": "Reguläre Iteration am komplexen Fixpunkt L ist nicht reell",
+  "aussage": "Naheliegender Ansatz: Koenigs-Funktion an $L$ (für $\\log_b$, anziehend) und $T:=\\sigma^{-1}(\\lambda^{x}c)$.\nDas ergibt eine holomorphe Superfunktion, die auf der reellen Achse **nicht reell** ist: $L$ und $\\bar L$ sind\ngleichberechtigt, die Wahl von $L$ bricht die Symmetrie $T(\\bar z)=\\overline{T(z)}$.\n",
+  "bereich": "$b>\\eta$, primärer Fixpunkt $L$ mit $|\\lambda|>1$",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "Für $|\\lambda|>1$ gilt $\\lambda^{x}\\to0$ für $x\\to-\\infty$, also $F(x)=\\sigma^{-1}(\\lambda^x c)\\to L\\notin\\mathbb R$. Eine auf ganz $\\mathbb R$ reelle Funktion kann nicht gegen $L$ streben."
+  },
+  "pruefung_f5_neue_frage": "Korrektur durch eine 1-periodische Funktion, die die Realität wiederherstellt → kn.konstr.kneser"
+ },
+ {
+  "id": "kn.satz.linear_glatt",
+  "art": "gegenbeispiel",
+  "status": "bewiesen",
+  "titel": "Lineare Tetration ist genau für b = e stetig differenzierbar, nie C²",
+  "aussage": "$T'(0^-)=1$, $T'(0^+)=\\ln b$: $C^1$ genau für $b=e$. Für $b=e$ ist $T''(0^-)=0\\ne1=T''(0^+)$, also nie $C^2$.\n",
+  "bereich": "lineare Tetration, $b>1$",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "Auf $(0,1]$ ist $T(x)=b^{x}$, also $T'(0^+)=\\ln b$, $T''(0^+)=\\ln^2 b$."
+  },
+  "pruefung_f5_neue_frage": "Wie zeigt sich die Naht in den Basiswechsel-Phasen? (bw.satz.fourier_naht)"
+ },
+ {
+  "id": "bw.gescheitert.cstep",
+  "art": "gescheitert",
+  "status": "gescheitert",
+  "titel": "Komplexe-Schritt-Referenzen bei extremen Basen falsch",
+  "aussage": "Für $d=10$ nur 14.6, für $d=2$ nur 20.0 richtige Stellen (Engine-Boden nahe parabolischem Rand, enger Theta-Streifen); RH-Löser und ε-Schablonen stimmen auf 30–34 Stellen und widerlegen sie gemeinsam.",
+  "pruefung_f5_neue_frage": "—"
+ },
+ {
+  "id": "bw.satz.antisymmetrie",
+  "art": "satz",
+  "status": "bedingt",
+  "titel": "Exakte inverse Antisymmetrie ohne Glattheit (Paper II, Thm. B)",
+  "aussage": "$\\mu_{b,d}=-\\mu_{d,b}$ exakt, sobald das Phasengesetz für beide Ordnungen gilt.",
+  "beweis": {
+   "art": "bedingt",
+   "text": "Riemann–Stieltjes-Substitution."
+  },
+  "pruefung_f5_neue_frage": "Messbare Folge: Tabellen-Residuen $\\mu_{b,d}+\\mu_{d,b}$ sind reiner Rechenfehler — ein Genauigkeitstest der Engine."
+ },
+ {
+  "id": "ar.satz.funktional_ks",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Funktionale Kneser–Schanuel-Aussage",
+  "aussage": "$T(x+c_1),\\dots,T(x+c_n)$ sind algebraisch unabhängig über $\\mathbb C(x)$ (als Keime bei $+\\infty$).",
+  "bereich": "stetige streng wachsende reelle Lösungen zur Basis $e$, paarweise verschiedene $c_i\\in\\mathbb R$",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "Für $c<c'$: $T(x+c')\\gg T(x+c)^N$, weil $T(y+\\delta)-T(y)\\to\\infty$; dominantes Monom. Direkt für jede stetige streng wachsende Lösung: $m(\\delta)=\\min_{[0,1]}(T(y+\\delta)-T(y))>0$ und $T(y+1+\\delta)-T(y+1)\\ge e^{T(y)}(e^{m}-1)$."
+  },
+  "pruefung_f5_neue_frage": "Arithmetische Spezialisierung → ar.verm.ks"
+ },
+ {
+  "id": "br.satz.boshernitzan",
+  "art": "satz",
+  "status": "bewiesen_literatur",
+  "titel": "Transexponentielle Hardy-Felder existieren",
+  "aussage": "Es gibt Hardy-Felder, die Funktionen enthalten, die schneller wachsen als jedes iterierte Exponential (Lösungen von $f(x+1)=e^{f(x)}$).",
+  "beweis": {
+   "art": "literatur",
+   "text": "Boshernitzan 1986."
+  },
+  "pruefung_f5_neue_frage": "Liegt der Kneser-Keim in einem Hardy-Feld? → br.frage.kneser_hardy"
+ },
+ {
+  "id": "gr.satz.kettenregel",
+  "art": "satz",
+  "status": "bewiesen",
+  "titel": "Kettenregel der Tetration",
+  "aussage": "$$T'(x+1)=\\ln a\\cdot T(x+1)\\cdot T'(x).$$",
+  "bereich": "jede Lösung, die bei $x$ differenzierbar ist",
+  "einfach": "Geht man eine Stufe höher, wird die Steigung mit ln a und mit dem Funktionswert dort multipliziert. Weil die Funktionswerte rasant wachsen, wächst die Steigung noch rasanter.",
+  "beweis": {
+   "art": "vollstaendig",
+   "text": "Ableiten von $T(x+1)=a^{T(x)}=e^{T(x)\\ln a}$ nach $x$."
+  },
+  "formen": [
+   {
+    "tex": "\\frac{T'(x+1)}{T'(x)}=\\ln a\\cdot T(x+1)",
+    "notiz": "Quotientenform (wo $T'(x)\\ne0$)"
+   },
+   {
+    "tex": "(\\ln T)'(x+1)=\\ln a\\cdot T'(x)",
+    "notiz": "logarithmische Ableitung, für $x>-2$"
+   },
+   {
+    "tex": "T'(x+1)=\\ln a\\cdot a^{T(x)}\\cdot T'(x)",
+    "notiz": "ohne T(x+1)"
+   },
+   {
+    "tex": "\\ln T'(x+1)-\\ln T'(x)=\\ln\\ln a+\\ln a\\cdot T(x)",
+    "notiz": "Differenzform; bei $a=e$ ist $T=\\Delta\\ln T'$ — aufsummiert die Kontinuumssummen-Formel (kn.konstr.kontinuumssumme)"
+   }
+  ],
+  "pruefung_f5_neue_frage": "Was folgt beim Iterieren? → gr.kor.produktformel"
+ },
+ {
+  "id": "kl.verm.streifenbreite",
+  "art": "vermutung",
+  "status": "vermutung",
+  "titel": "Amplitudengesetz aus der imaginären Periode",
+  "aussage": "Die Fourier-Koeffizienten der Differenz $p=\\alpha_A\\circ\\alpha_a^{-1}-\\mathrm{id}$ fallen wie\n$$|\\hat p(k)|\\approx C\\,\\exp\\!\\Bigl(-\\frac{2\\pi^2 k}{|\\ln\\lambda_a|}\\Bigr),$$\nd. h. $p$ ist genau in einem Streifen der halben imaginären Periode $\\pi/|\\ln\\lambda_a|$ der regulären Tetration\nam unteren Fixpunkt holomorph. Heuristik: bei $\\operatorname{Im}\\theta=\\pi/|\\ln\\lambda_a|$ dreht $\\lambda_a^{\\theta}$ um $\\pi$,\n$T^{\\mathrm{reg}}$ erreicht die andere Seite von $a$, wo $\\alpha_A$ singulär wird.\n",
+  "bereich": "$1<b<\\eta$, Fixpunkte $a<A$, Multiplikatoren $\\lambda_a\\in(0,1)$, $\\lambda_A>1$",
+  "gegenbeispielsuche": "exp.sqrt2_abel: Moden $k\\le10$ bei $b\\in\\{1.25,1.3,1.35,\\sqrt2,1.43\\}$ (170 Stellen, Gegencheck mit anderer Reihenlänge 1e-112).\nFreie Anpassung $\\ln|\\hat p(k)|=c+\\gamma\\ln k-Sk+d/k$: $S$ trifft $2\\pi^2/|\\ln\\lambda_a|$ auf $1.2$–$2.6\\cdot10^{-4}$ relativ;\ndie Konkurrenz $2\\pi^2/\\ln\\lambda_A$ liegt 20–40 % daneben. Kein Gegenbeispiel unter 5 Basen.\n",
+  "pruefung_f5_neue_frage": "Ein beweisbares Modellproblem für bw.frage.streifen_gevrey: hier sind alle Objekte explizit (Koenigs-Reihen)."
+ }
+]

@@ -1,0 +1,19 @@
+{
+ "gr.satz.kettenregel": {
+  "worum": "Aus der Turmgleichung folgt sofort eine Regel für Steigungen: Eine Stufe höher ist die Kurve um den Faktor „$\\ln a$ mal\nFunktionswert dort“ steiler. Weil die Funktionswerte rasant wachsen, wachsen die Steigungen noch rasanter.\n",
+  "genau": "Für jede differenzierbare Tetration $T$ zur Basis $a$ und jedes $x>-2$:\n$$T'(x+1)=\\ln a\\cdot T(x+1)\\cdot T'(x).$$\n",
+  "warum": "Schreibe die Turmgleichung als $T(x+1)=a^{T(x)}=e^{T(x)\\ln a}$ und leite nach $x$ ab. Die Kettenregel gibt\n$$T'(x+1)=e^{T(x)\\ln a}\\cdot\\ln a\\cdot T'(x)=T(x+1)\\cdot\\ln a\\cdot T'(x).$$\n",
+  "beispiel": "Basis $e$ (Kneser, $T'(0)=1.09177$): $T'(1)=1\\cdot T(1)\\cdot T'(0)=e\\cdot1.09177=2.96773$. Eine Stufe weiter:\n$T'(2)=T(2)\\cdot T'(1)=e^e\\cdot2.96773=44.974$.\n",
+  "einordnung": "Alle weiteren Ableitungsregeln dieses Strangs folgen daraus: [[gr.kor.produktformel]], [[gr.satz.vorzeichen]],\n[[gr.satz.zweite_ableitung]]. Für gebrochene Schritte gibt es eine Fortsetzung mit Bruchprodukten ([[kl.satz.bruchprodukt]]).\n"
+ },
+ "kn.gescheitert.regulaer_an_L": {
+  "worum": "Unter $\\eta$ hat man die Tetration am reellen Fixpunkt gebaut. Über $\\eta$ gibt es nur noch das komplexe Paar $L,\\bar L$. Der erste Gedanke:\ndieselbe Konstruktion einfach an $L$ machen. Das ergibt tatsächlich eine Lösung der Gleichung — nur ist sie auf der reellen Achse\nnicht reell. Dieser Fehlschlag zeigt, was Kneser reparieren musste.\n",
+  "genau": "Sei $b>\\eta$, $L$ der Fixpunkt von $b^z$ mit $\\operatorname{Im}L>0$ und $\\lambda=L\\ln b$ (es gilt $|\\lambda|>1$). Mit der Poincaré-Funktion $\\Psi$\n($\\Psi(\\lambda w)=b^{\\Psi(w)}$, $\\Psi(0)=L$, $\\Psi'(0)=1$) ist jedes $F(x)=\\Psi(\\lambda^xc)$ eine holomorphe Superfunktion von $b^z$. Keine davon ist\nauf der ganzen reellen Achse reell. Die Wahl von $L$ statt $\\bar L$ bricht die Spiegelsymmetrie $T(\\bar z)=\\overline{T(z)}$.\n",
+  "warum": "1. Gleichung: $F(x+1)=\\Psi(\\lambda\\cdot\\lambda^xc)=b^{\\Psi(\\lambda^xc)}=b^{F(x)}$.\n2. Wegen $|\\lambda|>1$ geht $\\lambda^xc\\to0$ für $x\\to-\\infty$, also $F(x)\\to\\Psi(0)=L$. Eine reelle Funktion kann nicht gegen eine nichtreelle Zahl streben.\n3. Spiegelt man alles, erhält man dieselbe Konstruktion an $\\bar L$. Beide Fixpunkte sind gleichberechtigt; wer einen auswählt, verliert die Symmetrie.\n4. Nebenbei: $\\Psi$ nimmt den Wert $0$ nie an (jeder Wert ist $b^{\\text{etwas}}$). Eine reguläre Lösung an $L$ mit $F(0)=1$ hätte darum $F(-1)=2\\pi ik/\\ln b$\n   mit $k\\ne0$ — sie kann den Wert $T(-1)=0$ jeder echten Tetration gar nicht treffen.\n",
+  "beispiel": "Basis $e$: $L=0.31813+1.33724\\,i$, $\\lambda=L$. Normiert man so, dass $F(0)=2$, dann ist $F(-1)=\\ln2$ und $F(-2)=\\ln\\ln2=-0.3665$ — reell. Dazwischen\nnicht: $F(-\\tfrac12)=1.0980+0.0972\\,i$, während Kneser in derselben Höhe $1.2329$ liefert. Ein Schritt weiter zurück kommt $F(-3)=-1.0037+\\pi i$,\ndanach läuft die Kurve in einer Spirale in $L$ hinein.\n",
+  "bilder": [
+   "k6_regulaer_an_L"
+  ],
+  "einordnung": "Unter $\\eta$ klappt genau diese Konstruktion, weil der Fixpunkt reell ist ([[kl.satz.regulaer]]). Kneser korrigiert den Fehler mit einer\nperiodischen Funktion ([[kn.konstr.kneser]]); dass jede andere Lösung sich um so eine Funktion unterscheidet, sagt [[fg.satz.allgemeine_loesung]].\n"
+ }
+}
