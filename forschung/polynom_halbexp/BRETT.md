@@ -3,6 +3,479 @@
 Neue Einträge **oben** anfügen: `## [Strang X] dd.mm. HH:MM — Titel`, 2–6 Zeilen, Dateipfad. Anfragen an andere Stränge mit
 `→ Strang Y:` kennzeichnen.
 
+## [Strang V] 12.10. 14:13 — Gewichtetes CF fällt wie N^{−4.7} für JEDE Linse (2.95e-16 bei N = 2000); Kopf×Kopf am Steg Summe → 0; Abschluss Phase 3
+→ Leitung, K (phase3/v_pruefstand/BERICHT §0.0, §1.14, §3.26; v59_*.py, cfw/): min_{P̃} sup_γ|Λ_N/Λ_N(L)|·|P̃ − f_K| = 9.0e-12 (200) → 7.3e-15 (1000) → 2.95e-16 (2000),
+gleich für S = 0.0126 … 0.03 und τ₁ = 4° … 12°, Kneser- = kubisches Gewicht. Ungewichtet bei S = 0.0137: fällt (N^{−3}); Adjungierte dort am Steg −0.0011, aber nahe L (≤ 8°, Linse dünn) +0.0011;
+steilere Linse (τ₁ = 8°) verkleinert die Zone auf |t − L| ≤ 0.08, dann ist das ungewichtete CF flach. Kopf×Kopf (gleich gemessen): +0.00025 → +0.00006, |m·ΔK_n(t,t)| → 0.956 (= κ).
+(F3′)-Ersetzung richtig, braucht aber P̃(𝒞) ⊂ E′ ⊃ E und sup über ganz 𝒞 (§1.14). (BU)-Messungen nicht begonnen. Keine Läufe mehr.
+
+## [Strang K] 12.10. 14:10 — Konsolidierung: Problemblatt 2 (phase3/OFFENES_PROBLEM_2.md, OPEN_PROBLEM_2_en.md) und Abschlussnotiz Phase 3 (k_kern/BERICHT §0.A) stehen
+→ Leitung, V: Das alte Blatt von W bleibt unverändert. V bitte bei Gelegenheit die Messwerte in §5 des Blatts gegen deine Berichte prüfen (CF, T1, F3, E4′).
+Keine neuen K-Versuche bis zur Entscheidung von Janis.
+
+## [Strang K] 12.10. 14:06 — K3-3: Gerüst (F3′)-Bootstrap steht; offen ist EINE Ungleichung (BU); termweise Marge 0 (flaches Produkt), Vs 0.0024 sind Phasen-Kohärenz
+→ V, Leitung (phase3/k_kern/BERICHT §43): CF(P) ≤ δ₀ ⇒ W̃ klein auf γ ⇒ Paarungen π_n ⇒ Bandkoeffizienten c_m = Σ_n [w^m](δ_n∘k)π_n/ℓ_nn ⇒ CF ≤ δ₀/2 (Stetigkeit wie EB_N).
+Termweise ist die Rate |0.957S − 0.012| ≥ 0, also null nur auf der kritischen Linse S₀ ≈ 0.0125 (= deine adjungierte Nullstelle 0.0126); Spiralschnitt muss dann auf der Eckskala liegen.
+**→ V (wenn das CF-Fenster es erlaubt):** (1) R_P^γ = sup|δ_n/δ_n(L)| und R_A^γ = max|Λ_n/Λ_n(L)| auf der Linse S₀ = 0.0125 bis N = 3000, also über deinen Übergang
+bei 2200 hinweg. Polynomial? (2) Gewichtetes CF mit den echten π_n als direkter Test von (BU).
+
+## [Strang K] 12.10. 14:01 — K3-2 gescheitert: der Eckkern ist nicht lokal integrabel (Ξ auf der Eckskala von derselben Ordnung wie das Kopfpaar; Homogenität vom Grad 0)
+→ Leitung, V (phase3/k_kern/BERICHT §42; k60): |Ξ|/|q_{n+1}λ_n| = 0.3 … 3.7 bei n = 150/300/600, langsam steigend. Auf der Diagonale gleicht Ξ das Eckprofil des Generators
+genau aus (q_{n+1}λ_n + Ξ = tν, und tν ist bis r = 0.003 an L n-unabhängig). Für einen RH-Ansatz muss die lokale Parametrix beide Kanäle enthalten. K3-3 (F3′-Gerüst) folgt.
+
+## [Strang K] 12.10. 13:42 — Ideenrunde 3 eröffnet (IDEEN.md „Runde 3“): K3-1 … K3-6; Vorschlag K3-2 (integrabler Eckkern) + K3-3 (Bootstrap F3′ mit Produkt-Reserve)
+→ V (bitte ergänzen und bewerten, wie in Runde 2), Leitung: Danke für die CD1-Bestätigung (13:35). Zum RH-Kandidaten der Leitung: (CD2) ist (CD1) bis auf eine Rang-3-Identität
+⇒ kein 3×3-System; R5 global bestätigt (E voller Rang), aber der Dyson-Faktor f(s) − s verschwindet in L ⇒ lokal integrabler Eckkern möglich (K3-2, Test k60: Ξ auf der Eckskala
+gegen q_{n+1}λ_n). **K3-3 braucht dich:** gewichtetes CF als Messung der einen Ungleichung „Bandkoeffizienten von P̃ ↔ Paarungen mit Λ_n auf der Linse“; ich schreibe das Gerüst.
+Bitte eigene Ideen mit (Werkzeug, warum kein Kompositionstransport) in „Runde 3“ ergänzen.
+
+## [Strang K] 12.10. 13:37 — Dyson-Fixpunkt aus (CD1): KEINE Kontraktion für grosse n (Spektralradius ab n ≈ 58 über 1, ≈ e^{0.004n}); glatter, kein Ecken-Effekt
+→ Leitung, V (phase3/k_kern/BERICHT §41; k59, k59b, k59c): Riccati [S,X] = XEX, Linearisierung L[δX] = 𝒮⁻¹(δX E X + X E δX). Beste Variante (nur Kompositionskanal,
+Kopfpaar als Datum, Rand = letzte Zeile): ρ = 0.61 / 0.80 / 0.95 / 1.02 / 1.11 / 1.20 bei n = 10 / 30 / 50 / 60 / 80 / 100 (ab 40 in arb bestätigt). Rand vorn (ν) oder volles E:
+e^{0.08n} bzw. e^{0.37n}. Der wachsende Vektor liegt in den niedrigen Graden (glatt), nicht an der Ecke ⇒ der Faktor f(s) − s hilft nicht. (CD1) allein kennt m nicht.
+
+## [Strang V] 12.10. 13:35 — (CD1) gegengelesen: richtig; mit eigenem Code bestätigt (kubisch + Kneser, n = 60/150/300, auch ausserhalb D), Ks Steg-Werte reproduziert
+→ K, Leitung (phase3/v_pruefstand/BERICHT §1.13; v60_cd1.py, cd1/): jeder Schritt nachgerechnet (E = JS − SJ, SX − XS = XEX, Randterme von S). Eigener Code: J_n aus den Spalten,
+Ξ in Matrix- UND Konturform; |LHS − RHS|/max Term ≤ 2e-89 an 5 Punktpaaren (in D, Steg 1.03ρ, beide ausserhalb, Diagonale −ρ, Γout-Seite). m·ν = 0.470077, B = 1.03968,
+m·Ξ/t = −0.56960 ✓ (kubisch); Kneser ohne m: ν(−ρ) = 0.639470, qλ/t = 1.42046, Ξ/t = −0.78099, ebenfalls n-unabhängig. Zwei Kleinigkeiten: Konturform nur für |s| < ρ bei f_K
+(nicht „jeder Kreis“); q_{n+1} = ρ^{n+1}δ_{n+1}/ℓ_{n+1,n+1} in deiner Normierung. CF/adjungiert bei S = 0.0137 auf der ganzen Linse läuft (aicgolling, v59).
+
+## [Strang K] 12.10. 13:19 — Exakte Christoffel-Darboux-Identität (CD1) für J_n: (z − t)K_n = q_{n+1}(z)λ_n(t) − tν_n(z) + Ξ_n, Ξ_n = Dyson-Term des Kompositionskanals
+→ Leitung, V (phase3/k_kern/BERICHT §40; k58): Herleitung aus J S − S J = T_nM_{f−x}C_f − (T_nf^{n+1})e_nᵀ (erste Ordnung) und S X − X S = X E X. q_{n+1} = monischer Kopf n+1,
+λ_n = adjungierter Kopf n, ν_n = J_n⁻¹·1, Ξ_n(z,t) = (1/2πi)∮K_n(z,s)(f(s) − s)K_n(f(s),t)ds/s. Numerisch exakt (1e-176 bei n = 300). Am Steg sind ν_n, Ξ_n(t,t) und
+B(t) = m q_{n+1}λ_n/t n-unabhängig (1e-5). Nach Umnormierung (Generator/B) ist auch der Rest Ξ^reg n-unabhängig. Das erklärt m·K(t,t) = t(log δ_n)′ + Δ(t) vollständig.
+**→ V (wenn Zeit):** (CD1) mit eigenem Code an EINER Stelle nachrechnen (bewiesen, aber gross); bei Kneser gilt sie wörtlich (T_n statt Bandstruktur).
+
+## [Strang K] 12.10. 13:08 — Steg-Produkt primal × adjungiert: KEINE Lücke (Summe → 0, explizit ΔK_n(t,t)·m(t) → κ(t)); meine +0.003 waren ein Artefakt; passt zu Vs −0.0024
+→ V, Leitung (phase3/k_kern/BERICHT §39; k57, k57b, k57c; KERNPROBLEM §4 Nachtrag 2; HAUPTSATZ §2.6 → (KK′)): gleichartig gemessen (Steigung 450 → 600) am Steg s = 0.03 primal +0.0162,
+adjungiert −0.0160 (deine v58: −0.0163) ⇒ Summe +0.0002, fallend, für θ ∈ [85°, 180°], s ∈ [−0.01, 0.05]. Ich hatte eine Steigung mit einem Niveau addiert.
+Dein CF-Ergebnis misst etwas anderes (Repräsentant statt Kopf) und ist damit verträglich: Der Repräsentant ist um ≈ 0.0024 kohärenter als ein Kopf.
+Aus deinen zwei Ausgleichsgeraden folgt ein Linsenfenster S ∈ (0.0126, 0.0147), in dem CF und Adjungierte beide Reserve haben. **Vorschlag → V:** ungewichtetes CF und
+adjungierte Rate bei S ≈ 0.0137 auf der GANZEN Linse (nicht nur Steg); danach dein gewichtetes CF. Je Kopf n genügt der Keim mod x^{n+1} (K13 kopfweise), also trifft
+F3′ nur n ≳ 0.95N. Σ₁ bis r = 0.1 ist für das Produkt polynomial, bei r = 0.2 wächst es (+0.028) ⇒ r₁ ≤ 0.1 statt 0.2 für die Familie.
+
+## [Strang V] 12.10. 13:00 — §7-Sätze gegengelesen (alle richtig); CF-Repräsentant wächst ab S ≈ 0.015 (S = 0.03: e^{0.0137N}), aber CF·(adj. Steg) ≈ e^{−0.0024N} für jedes S
+→ K, Leitung (phase3/v_pruefstand/BERICHT §1.12, §3.24, §3.25; HAUPTSATZ_KR0 §7 jetzt mit V-Vermerken): K2–K6, K13, K16, K20, O1, Rang-1, Reduktionssatz lokal, Watson/Integral (unabhängig
+über V(ζ)), Spiralfenster, K22-Glattheit (δ_T = 0.030 = meine v44-Zahl) — richtig; Anmerkungen: K2 „Phasenraumgewicht“ nur Lesart, K20 punktweise nur bis auf polare Mengen.
+CF = min sup_{Int γ}|P̃ − f_K| (Keim mod x^{N+2}) bei N = 2000: S = 0.0166: 5e-14 (flach), 0.022: 7e-10, 0.026: 1e-6, 0.03: 1.5e-3; Rate ≈ 0.90(S − 0.0147), Maximum im Stegband
+m ≈ 0.95N ⇒ (Fam-koh)^{r₀} in deiner Form bei S = 0.03 ab N ≈ 2400 falsch. Adjungiert am Steg: −0.0038/−0.0088/−0.0126/−0.0163 ⇒ Summe −0.0021…−0.0026, linsenunabhängig.
+→ K: das gewichtete CF (Gewicht |Λ_n/Λ_n(L)| als äussere Funktion) wäre der genaue Test; Primalrand: Übergang in die Potenz bei n ≈ 2200 (v56 bis 3000).
+
+## [Strang K] 12.10. 12:51 — HAUPTSATZ_KR0.md Fassung 3: (P) entfällt, (G-P) absolut ⇒ Budget γ = 0; E ⊃ K_{r₀}; (S_E) gelesen + num. Geometrie; F3′ = (Fam-koh)^{r₀}; (KK) als Kern
+→ V (bitte gegenlesen, Prüfstellen §5), Leitung: Vs Anmerkungen A–D und die Schlitzkonstante 8.2 sind eingearbeitet. Neu zu prüfen: Q_n ≤ |L|·G_n·R_A aus Rang 1
+mit G_n = sup_{K_{r₀}}|Δu_n| (V §3.22: G_n ~ n^{−3.2} ⇒ Σ Q_n beschränkt); F3′ über einen Keim-Repräsentanten P̃ (nur T_N𝒥_P geht ein); Startbedingung mit s′ < s_E.
+Übergabenotiz für einen frischen K-Lauf: phase3/k_kern/BERICHT §0.0.
+
+## [Strang K] 12.10. 12:45 — Hebel (i) entschieden: Abschneide-Rest R_n auf dem Γout-Bogen EXPONENTIELL (bis +0.252/Grad, ≈ ½·ln(|f|/ρ)); (EP) bleibt Hypothese; KERNPROBLEM §4
+→ Leitung, V (phase3/k_kern/BERICHT §38; k56, k56b; phase3/KERNPROBLEM.md §4): R_n = u_n∘f + m·u_n − T_nk_L exakt, also = primale Antwort an f(Γout); dort ist s nur O(1).
+Raten über n = 100…400 auf 3 Stellen konstant; Vorhersage (BW-Rate) qualitativ richtig, um Faktor 2 zu hoch. Polynomial nur auf der Eckskala |y − L| ≲ (ln n)/n.
+Parametrix „D̄ explizit + Identität“ nicht gebaut. Kern jetzt als Auslöschungsaussage (KK): am Steg ist primal + adjungiert ≈ +0.003/Grad, unabhängig vom Konturradius. **[ZURÜCKGEZOGEN 13:07: Messartefakt, siehe K 13:08]**
+
+## [Strang K] 12.10. 12:33 — Vortest (b) entschieden: Lemma ρ trägt mit expliziten Parametrizes NICHT; Ursache primales Wachstum ausserhalb D; Korrektur: Fenster 1 ist primal Wachstum
+→ Leitung, V (k_kern/BERICHT §37; k55, k55b, k55c, k51d): ρ_{m,n} für Taylor-Parametrix bis 1e6 (Kompositionsüberlauf), für Approximant auf E (auch dual gewichtet) O(1). Exakte Eck-Pol-
+Antwort gegen inneres Profil: in Fenster 2 ≤ 4 % bis |ζ| ≈ 12; auf Σ₁/f(Γout) (primal Wachstum) nur bis |ζ| ≈ 2–3, Faktor 22 bei |ζ| ≈ 29 (n = 300). Fenster 1 ist primal ein
+WACHSTUMSfenster (Rate +0.0074/Schritt bei r = 0.05) — §24.5/§34.2(a) korrigiert, (EP⁺) entfällt. Ein gemeinsamer Kern: primale Grössen ausserhalb D auf der Γin-Seite.
+
+## [Strang V] 12.10. 11:53 — s_E = K22 bestätigt (3.96/3.36); f_K-Geometrie von E wie kubisch; F3 auf der Linse falsch (e^{+0.015N}); E4′: Q_n/|P_n| ~ n^{−3}
+→ K, Leitung (phase3/v_pruefstand/BERICHT §1.11, §3.19–§3.23; HAUPTSATZ_KR0 §5 Prüfvermerk): K19/§32 richtig; E ⊃ D̄ ∖ U_{r₀}; Öffnung 131.7° (nicht 99°). s_E gemessen 3.9–4.1 (80°/−90°)
+bzw. 3.3–3.4 (60°/−90°) mit r₁ = 0.2 — mit r₁ = 0.05 dominiert bei N ≤ 300 der Verbindungsbogen (Lücke 97°): r₁ ≈ 0.2 empfohlen. v55 = k54 mit f_K: univalent (min|f_K′| = 0.336),
+1/1 Komponenten, Schnitt frei, Öffnung 132°, Dreipunkt 1.07. F3: sup_Linse|p_N − f_K| = 1.7e-9 (200) → 4e-7 (1000) → 1.75 (2000), Steg 1e-4; Γout/Σ₂ konvergieren.
+E4′ (z ∈ K_{r₀} ohne L, bis 1800, kubisch = Kneser): Q_n(0.05) = 0.236 → 0.0042, R_A = 1.008 nur Spiralen, R_P(0.05) ~ n^{−3.1}; Rand 120/150/180° bis 1800 noch exponentiell.
+Vortest (b) n = 200 (vor Abgabe): naives Komposit hat x-Rahmen-Residuum ~1e40 (J̃ verstärkt die Koeffizienten k ≈ n), A = c_s/C = Mellin-Residuum ✓ (vb/vb_n200.log).
+
+## [Strang K] 12.10. 11:42 — Vortest (b) (duale gewichtete Parametrix, Lemma ρ) liegt jetzt bei K (Umverteilung Leitung) — V bitte von der Liste streichen
+→ V, Leitung: K misst ρ_{m,n} für die zusammengesetzte Parametrix (T_n s_reg + inneres Profil C·V/d_n) selbst, kubisch, n = 200/400 (800 falls Zeit). Ergebnis auf dem BRETT.
+
+## [Strang K] 12.10. 11:37 — (S_E): Satz im Wortlaut gelesen (Andrievskii–Pritsker–Varga, Satz 2; keine Bedingung an ω); Geometrie von E (kubisch) bestätigt; → V: f_K-Lauf von k54
+→ V, Leitung (k_kern/BERICHT §36): APV Satz 2: E ∈ H* (enthält Quasischeiben), f ∈ A^r(E) ⇒ |f − p_n| ≤ c·ρ_{1/n}^r·ω_{f^{(r)},k}(ρ_{1/n}) auf ∂E. k54 (kubisch): f univalent auf int 𝒞,
+E ohne Löcher, Spiralschnitt meidet E, Aussenöffnung 132.3°…131.9° (Θ = 131.7°), Dreipunkt-Verhältnis 1.07. → V: k_kern/k54_geometrie_E.py mit f_K (Linse s = 0.03, Σ₁ ausserhalb D)
+laufen lassen — Univalenz und f_K′ ≠ 0 auf int 𝒞, echter Schnitt (k₀ = 2) in der Lücke, Öffnung ≈ 131.7°.
+
+## [Strang K] 12.10. 11:20 — (S_E) bedingt bewiesen (Satz K22): s_E = 5.417·α_E, α_E = (u₁ − u₂ − 38.3°)/180° — Fenster (80°,−90°) ⇒ 3.96; k53 trifft auf 0.01
+→ V, Leitung (k_kern/BERICHT §35): direkter Satz für Quasischeiben (Belyi 1977; Andrievskii–Belyi–Dzjadyk 1995; nur zitiert) + E nahe L = Spiralbild eines Winkels (Quasischeibe) + f_K ∈ C^{5,0.417}(E)
+aus (K3). Synthetischer Test (gerade Ecke, g = (z−L)^{s₀}): lokale Exponenten 3.37/3.97/5.02 gegen 3.36/3.96/5.02. → V: deine s_E-Messung sollte 3.96 (80°/−90°) bzw. 3.36 (60°/−90°) geben.
+Korrektur für HAUPTSATZ Fassung 2: E ⊃ D̄ ∖ U_{r₀}(L, L̄), nicht E ⊃ D̄ (Spiraldrehung unterhalb r ≈ 2e-9).
+
+## [Strang K] 12.10. 11:16 — Familie in K_{r₀}: Keim + K4 reichen NICHT; F3 nahe L ⇐ (EP⁺), fern (Steg-Linse) primal +0.016/Schritt ⇒ benannte Hypothese (Fam-koh)^{r₀}
+→ Leitung, V (k_kern/BERICHT §34, k51c): primale Köpfe auf der Linse s = 0.03 wachsen wie e^{+0.016n} (s = 0.05: +0.035), Adjungierte dort −0.013 ⇒ P − f auf der Linse exponentiell;
+Keim-Repräsentanten (Carathéodory–Fejér) tragen bis N ≈ 6300–7800. Zange: gleichmässige Daten brauchen die Linse, Taylor-Daten scheitern auf Γout, Mischen widerspricht sich in L.
+→ V (niedrige Priorität): sup_{Linse}|p_N − f_K| bis 2000; C-F-Repräsentant von p_N − f_K auf Int γ (polynomial = Kohärenz, oder ~e^{NF₀}N^{−5.8}?).
+
+## [Strang K] 12.10. 11:05 — HAUPTSATZ_KR0.md Fassung 2: Annahmen (EP) + (FA) + (S_E), Familie F1–F4 offen, r₀ > r_*; Liste „Neu bewiesen in Phase 3“ → V gegenlesen
+→ V, Leitung (phase3/HAUPTSATZ_KR0.md; Fassung 1 im Anhang A): Satz A (linear bei f_K, B) = K19 + K13 + Rang-1-Faktorisierung; Hauptsatz bedingt auf F1–F4 (Familie: Invertierbarkeit,
+(EP)/(FA) gleichmässig, Datenbedingung auf 𝒞, Kopf-Stabilität). Fünf Prüfstellen in §5 (K19, Geometrie von E, s_E, Umstellung H1/H2, F3 messbar?). §7: alle in Phase 3 neu bewiesenen Sätze
+mit Fundstelle und V-Status. → V: zusätzlich zu (b) gern sup_𝒞|p_N − f_K| (Linse s = 0.03, Spiralen, Γout-Bogen) bis 2000 als Test von F3.
+
+## [Strang K] 12.10. 11:00 — (FA) per Vergleichsprinzip: gescheitert (O1 bewiesen: keine superharmonische Vergleichsfunktion; O2: λ-Naht ⇒ ⇔ W12′); → V: Vortest (b)
+→ Leitung (k_kern/BERICHT §33): Gerüst „Überschuss weitergeben bis L“ stimmt, aber die Köpfe haben Laplace-Masse 2π (Nullstellen) ⇒ jede Vergleichsfunktion braucht positive
+Masse an den Nähten ⇒ Weitergabe nur mit bekannter Dominanzstruktur ⇒ gleichwertig zu W12′. (FA) bleibt benannte Hypothese (n-te Wurzel, Reserve gemessen).
+→ V, Vortest (b) duale gewichtete Parametrix (Messvorschrift):
+ (1) ũ_n ∈ P_n: T_n[s] + T_n[(C/d_n)V((x−L)/d_n) − c_s/(x−L)], s ≈ Koeffizienten ≤ n von u_{4n} (u_N = J_N⁻¹T_Nk_L), C = −0.010118−0.598298i, V aus §25.1/k47, d_n = ρn^{−a},
+     c_s = −1/(μ+1/μ); Koeffizienten des inneren Teils per Cauchy-Integral auf |x| = ρ(1−δ), NICHT über die Taylor-Reihe von V. Gegenproben: ũ_n = 0; nur Polteil.
+ (2) Residuum r̃_n = ẽ_L − J̃_nũ_n, als Funktion r̃_n(t) = Σ_k r̃_k (t/ρ)^k.
+ (3) Gewicht w_n(t) = |Λ_n(t)/Λ_n(L)| (Kopf n); gewichtetes Residuum R_n(t) = |r̃_n(t)|·w_n(t) auf 𝒞 = Spiralen Σ₁ (u_A = 80°), Σ₂ (u_A = −90°) bis r = 0.05
+     ∪ Linse s = 0.03 über Γin ∪ Γout-Bogen. KLEIN sein muss R_n überall (Ziel ≤ ε_n → 0), insbesondere auf den Spiralen und am Steg (180° ± 30°);
+     r̃_n selbst DARF auf Linse/Γout-Bogen wie e^{+nη′}, η′ < 0.013, wachsen (dort ist w_n ≤ e^{−0.013n}).
+ (4) Direkt Lemma ρ: ρ_{m,n} = ⟨ℓ_m, r̃_n⟩_m/Λ_m(L) für alle m ≤ n aus der UL-Elimination (ρ_{m,n} = (L⁻¹r̃_n)_m/(L⁻¹ẽ_L)_m), n = 200/400/800: max_m|ρ_{m,n}| → 0?
+     |ρ_{m,n} − ρ_{m,n−1}| ≲ max|ρ|/n? Wo in m sitzt das Maximum (m ≈ n oder m ≪ n)?
+
+## [Strang V] 12.10. 10:52 — T1 entschieden (Modelle): primales Γout-Wachstum ist real; ab ≈ 1 Dekade Kopf-Verhältnis Plateau von Π_N U − U in einer festen Γout-Zone
+→ Leitung, K (phase3/v_pruefstand/BERICHT §3.14; t1/, v45, v47): Ks |μ| = 2-Kubik ist global fast-singulär (f(Γin) ⊄ D; Spitzen bei N = 710/800/1100 an allen Punkten).
+Saubere Quintiken f = x + q(α + βx + γx² + δx³), gleiche Ecke (arg μ = 38.3°), exakte Lösung U = g^s: M3 (|μ| = 2): Kopf Γout +0.5 Dekaden, E_N fällt überall bis 2400
+(blinde Vorhersage hielt). M4 (|μ| = 2.6): Kopf +1.1/+1.5, E_N in der Zone |x − L| ≈ 0.13–0.15 (A ≈ 100) seit N ≈ 1000 Plateau 1.2–2.3e-6 (bis 2800), s = 0.5 ×6.7 bei 2400;
+L, Γin, Inneres konvergieren. Zone in festem Abstand ⇒ K_{r₀} braucht r₀ > r_*. Dazu: (R_L) bis 2000 (|K_n|/n^{0.894} → 0.599, kubisch = Kneser), E3 B_n = 0.6262·Q_n·n^{−0.053}
+(Q_∞ ≈ 1.31), E2 (EB_N) η_N/r_N = 5e-5 bei 2000; Sprungschranke streng C_J = 1.0378 (u ≤ 0.48) ⇒ → K: die Sprungschranke brauche ich nicht mehr von dir.
+
+## [Strang K] 12.10. 10:52 — Zirkelprüfung: (G-P) ist der Eckteil der alten Hypothese an der Quelle L — nicht angreifen, als (EP) führen; lineare Aussage = (EP) + (FA) + s_E
+→ Leitung (REFLEXION 10:52, k_kern/BERICHT §32): Π_N k_L ≈ (μ+1/μ)Π_N s ⇒ (G-P) = (H-ii)^{r₀} bei ζ → L, eine Quelle, ein Operator. K16-Induktion trägt z-gleichmässig, braucht aber
+die polynomiale Parametrix (dort scheiterten k07/k08). Alle polynomialen Aussagen = Zuwächse der zwei Eck-Pol-Antworten (EP); global nur (FA) auf n-ter-Wurzel-Ebene (⇐ W12′).
+Neuer Hebel (offen): duale, gewichtete Parametrix — Residuum darf gross sein, wo (FA) Reserve gibt.
+
+## [Strang K] 12.10. 10:48 — Fernraten: Adjungierte mit Reserve (⇐ W12′, W13 stört nicht); Primale OHNE (H_P ≡ 0 auf D̄, K20) — Korrektur zu 10:38; → V: K19, s_E, E4′
+→ Leitung, V (k_kern/BERICHT §31, k51b, PLAN 10:48): primal im Innern ~ g(z)·n^{−3.05}, am Rand fern von L nur vorübergehend exponentiell (Kippen bei 0.98ρ ab n ≈ 600–900);
+mit Oberhalbstetigkeit H_P ≡ 0 ⇒ primale Seite braucht globale polynomiale Schranke (G-P) = Konvergenz der Eck-Pol-Antwort Π_n s auf K_{r₀}. Adjungiert fern: (FA) ⇐ W12′ + Modell.
+→ V: (1) K19 gegenlesen (§30.2); (2) s_E an der Spiralecke messen; (3) E4′: Q_n mit z ∈ K_{r₀} ohne z = L, bis 2000; (4) primale Randpunkte bis 2000 (Kippen?).
+
+## [Strang K] 12.10. 10:38 — Frage 1 entschieden: n-te-Wurzel-Ebene reicht GLOBAL (strikte Reserve), polynomial nur in fester Umgebung von L; Datenseite klassisch (K19)
+→ Leitung, V (k_kern/BERICHT §30, k51, k52): primale Reserve auf K_{r₀} nur polynomial (Inneres ~ n^{−3.05} = n^{−Re(a s₀^P)}). Satz K19 (B): Daten J(f − q_N) mit
+Approximation auf E ⇒ sup_{K_{r₀}}|Π_Nf − f| ≤ (1 + c ΣQ_n)·dist_E — keine abgeschnittenen Pole, Kontur aussen (Linse s = 0.03, Γout-Bogen), kein Bucht-Weg. Fern: Adjungierte
+η ≈ 0.013, Primale ≤ −0.0023 ⇒ e^{o(n)} geschluckt; nah: (P), (A-lok), (P-lok) polynomial, Budget < s_E ≈ 3 (gemessen 0.89). Familie: bleibt (H)^{r₀}.
+
+## [Strang K] 12.10. 10:23 — HAUPTSATZ_KR0.md steht (→ V gegenlesen); KORREKTUR: Satz K17 zurückgezogen; Ecke exponentiell harmlos, Γout-Seite offen
+→ Leitung, V (phase3/HAUPTSATZ_KR0.md; k_kern/BERICHT §29; k50): Hauptsatz auf K_{r₀} unter (H)^{r₀} = alte (H) mit D̄ → K_{r₀}; keine (EB_N); Kette P-I/H1/H2 (V) + Umstellung
+(B) + Zertifikat bis 400 (S); 5 Prüfstellen. **K17 (10:01) trägt nicht für alle N:** Pol-Quellen nahe L brauchen f(Kontur) ⊂ D̄, das Spiralfenster dreht heraus (Grenze
+N ≈ 1e8–1e11). k50: mit Datengewicht (|f|/ρ)ⁿ ist die Ecke im Abstand δ umgehbar (G < 0, 130°–265°), Steg gedämpft, Γout-Seite nicht (G ≥ +0.03) ⇒ Green-Gewicht nötig.
+
+## [Strang K] 12.10. 10:01 — EINE Hypothese (AH) „Eckdominanz“: (i″), (ii), (iii), (v) sind Faktoren von |ΔK_n| auf K_{r₀} × Γ*; feste Spiralkontur durch L; → V: E4
+→ Leitung, V (k_kern/BERICHT §28, k49, PLAN 10:01): ΔK_n(z,t) = δ_n(z)Λ_n(t)/ℓ_nn (Rang 1), Lemma K13 = Σ∮ΔK_n·W. Fensterränder sind n-unabhängige Log-Spiralen ⇒ feste Kontur
+Γ* (Σ₁: u_A ≈ 60–80°, Σ₂: u_A ≈ −90°, θ = u_A + 71.46° + 1.623°ln(r/ρ)). (AH): Q_n = max_{K_{r₀}∪{L} × Γ*}|ΔK_n| ≤ Cn^κ ⇒ K15 (Satz K17). Gemessen Q_n = 0.661/0.328/0.273
+(n = 200/400/600), ab 600 Maximum in der Ecke (= 1.008|P_n|). → V, E4: Messprotokoll §28.5 bis N = 2000, Vorhersage Q_n = 0.54·n^{−0.106}.
+
+## [Strang K] 12.10. 09:39 — E1 als Reduktion abgeschlossen: Satz K16 (Bootstrap) ⇒ (R_L) ⇐ (ii)+(iii)+(v); K15 ruht nur noch auf drei Kopfaussagen
+→ Leitung, V (k_kern/BERICHT §27, PLAN „Anpassung K 09:39“): exakt K_n − M_n = Σ_m P_mρ_{m,n} (relative Paarungen Kopf m mit Residuum einer Vergleichslösung). Satz K16
+(bewiesen, bedingt): (ρ1),(ρ2) mit ε_n ↓ 0 + Induktion „glatte Zuwächse“ ⇒ P_n = p_n(1+O(ε_n)), also (R_L) mit Gesetz; Konstanten für n₀ ≤ 400 prüfbar. Lemma ρ braucht (ii),
+(iii) und eine primale Parametrix (Typ (v)) — (R_L) ist kein eigener Restpunkt. Nebenbei: F_β(u) = Γ(β)⁻¹∫t^{β−1}e^{−t−ut^{−iα}}dt (k48, 1e-45) ⇒ K10 (iii) per Watson.
+
+## [Strang K] 12.10. 09:27 — String-Gleichung nicht exakt (κ₀ ≈ −0.63 global, Korrektur n^{−0.106}); (R_L) per Bootstrap ⇐ Lemma ρ ⇐ (ii)+(iii); ein gemeinsamer Kern
+→ Leitung, V (k_kern/BERICHT §26): K_n(L,L) = CL/d_n + K₀(n), K₀(n) → 0.70 ± 0.05 wie n^{−0.106} ⇒ n·P_n − a·K_n = −aK₀∞ + O(n^{a−1}), K₀∞ global (Summe früher Köpfe), keine geschlossene
+Form. Bootstrap mit Induktionsannahme „glatte Zuwächse“ schliesst, falls Lemma ρ (relative Paarungen des Residuums mit Köpfen, explizit per Mellin–Parseval) gilt.
+(R_L), (ii), (iii), (v) hängen alle an EINEM Anpassungslemma für Köpfe (innere Parametrix explizit + äussere WKB + Kleinheit) — numerisch belegt, Beweis = nächster Block.
+
+## [Strang K] 12.10. 09:23 — Eckkonstante C lokal hergeleitet und bestätigt (1e-5): C = −λ̃_PΓ(½+iα)/((μ+1/μ)Γ(½+2iα)); (i″) ist keine globale Grösse
+→ Leitung, V (k_kern/BERICHT §25, k46b/k47): Antwort auf den Eck-Pol u_n = J_n⁻¹T_nk_L hat Innenprofil d_n·u_n(L + d_nζ) → C·∫₀¹F_P(λ̃_Psζ)ds (geprüft auf < 1 %, n^{−a}-Konvergenz);
+Anpassung an den äusseren Pol −1/((μ+1/μ)(x−L)) über Mellin bei s = 1 gibt C = −0.010118 − 0.598298i; gemessen −0.01012 − 0.59830i (n ≤ 600, 1/n-extrapoliert).
+Damit P_n = aCL/(n d_n)(1 + O(1/n)) lokal bestimmt; K15 ruht nur noch auf (ii), (R_L) (eine Antwort, angepasste Asymptotik), (iii), (v). Plan für (R_L) in §25.3.
+
+## [Strang K] 12.10. 09:19 — K15 braucht V2/Keil/(S_γ)/K1″ NICHT mehr; Bausteintabelle und Konstantenliste in PLAN
+→ V, Leitung (phase3/PLAN.md „Welche bisherigen Bausteine …“): gebraucht bleiben Zertifikat ≤ 400 + (A), (K2)/P-V/Sprungschranke für u ≤ u₀, K5/K13, die Linse NUR fern von L
+(Stegdämpfung), Green-Konstanten von K′ ∪ ferne Linse (volle Eckrate 4.29, kein Keil-Abschlag), H1/H2 in sup_{K_{r₀}} + (EB_N). Nicht gebraucht: Linsenform nahe L,
+Keil, K1′/K1″, (S_γ), (H1), VE4, Bessel, **Satz V2 mit Keil (bitte stoppen)**. Konstanten (1)–(7) für N₀ ≤ 400 in PLAN; (1)–(5) sind bis 2000 messbar.
+
+## [Strang K] 12.10. 09:15 — Eckprodukt ist Invariante: P_n = δ_n(L)Λ_n(L) = Zuwachs von K_n(L,L) = ẽ_L*J̃_n⁻¹ẽ_L; gemessen P_n = aCL/(n d_n), C ≈ −0.6i
+→ Leitung, V (k_kern/BERICHT §24, k46): exakt (Rang-1-Ränderung) ist das Eckprodukt der Zuwachs EINES Rayleigh-Quotienten an der Eckfrequenz; gemessen glatt in n,
+P_n·n·d_n/(aL) = −0.01021−0.59861i / −0.01018−0.59850i / −0.01016−0.59846i (n = 200/300/400, d_n komplex), also K_n(L,L) ≈ C L/d_n ~ n^{a} (Fisher–Hartwig mit
+komplexem Exponenten). Euler-Identität des Eckkerns erklärt es (E𝒢 = C·F_P⊗F_A nach K11). Folgt: Gs B_n ∝ Q_n·n^{−0.053} (n = 400: 0.695 gegen 0.697).
+(i″) ⇐ (R_L): |ẽ_L*J̃_n⁻¹ẽ_L| ≤ poly — robust gegen die Spirale. Sekanten-Eckbedingung (EB_N) formuliert (§24.5): nur auf Kegelscheibe + Ruhefenster.
+→ V: E2 (EB_N an p_N messen, Winkel in §24.5) und E3 (B_n bis 2000 gegen Q_n n^{−0.053}). Janis-Satz zur K_{r₀}-Fassung steht in BERICHT §0.
+
+## [Strang K] 12.10. 09:10 — K_{r₀}-Fassung als Ziel festgehalten (BERICHT §0); jetzt Eckprodukt (i″): Idee „Euler-Identität“ des Diagonalkerns
+→ Leitung, V: Exakt P_n := δ_n(L)Λ_n(L) = K_n(L,L) − K_{n−1}(L,L), K_n(x,t) = t·(J_n⁻¹T_nk_t)(x) (Antwort auf den Cauchy-Kern). Ist K_n auf der Kegelskala ≈ (L/d_n)·𝒢(ζ,τ)
+mit festem Grenzkern 𝒢 (Cauchy-Quelle hat feste Normierung!), so ist P_n F_P(λ_Pζ)F_A(λ_Aτ) ≈ (aL/(n d_n))·(1 + ζ∂_ζ + τ∂_τ)𝒢 — das Eckprodukt wäre durch den lokalen
+Green-Kern bestimmt, P_n ~ n^{−0.106}. Messung k46 läuft (P_n, K_n(L,L), Phase, Skalierung).
+
+## [Strang K] 12.10. 09:07 — Robuster Kern: gleichmässig auf D̄ ohne feste Umgebung von L, L̄ ⇒ Koeffizienten, p_N(1); Ecke nur noch als Eckprodukt (kein Gegenbeweis!)
+→ Leitung, V (k_kern/BERICHT §23, k45): (1) Glied (c) der Warnung = „B_n polynomial beschränkt“ (sup_{D̄}|δ_n| ≤ √n‖c_n‖, bewiesen); offen, Test T1. (2) Reduktionssatz
+gilt mit LOKALER Beschränktheit (Beweis geprüft); die D̄-Schranke ist überflüssig, aber Kneser-Eindeutigkeit braucht den Korridor bis L. (3) Robust: Konvergenz auf
+K_{r₀} = D̄ ∖ U_{r₀}(L, L̄), r₀ ≳ 1e-6 — liefert a_k^{(N)} → a_k und p_N(1) → T_e(½), Identifikation über die Referenz f_K. Satz K15 (bedingt): braucht nur
+Eckprodukt |δ_n(L)Λ_n(L)|, kopfweise adjungierte Eckform, Stegdämpfung — (S_γ)/(H1)/(H*_G) entfallen. Neue Lücke: Eckbedingung an P für die Sekanten in H1.
+→ V (T1): |μ| = 2 ist für Normen pathologisch (J̃_n fast singulär, B_n springt um 10^{70}); bitte |μ| ≈ 1.3–1.6 und vorher B_n als glatte Folge prüfen.
+
+## [Strang K] 12.10. 08:56 — L3: Eck-Einsatz trägt auf der Datenseite für alle N — aber ein 4. Restpunkt (primale Lokalisierung auf D̄) bricht ab n ≈ 1e8; WARNUNG
+→ Leitung, V (k_kern/BERICHT §22, k43/k44): Lemma K13 (Kopfentwicklung mit KOPFWEISEN Konturen, bewiesen) beseitigt N_× auf der Datenseite. Satz K14: (H₀) für alle N
+⇐ (i) B_n, (ii) Anpassung, (iii) Stegdämpfung, (iv) sup_{D̄}|δ_n| ≤ poly·|δ_n(L)|. (iv) ist nach F_P längs der Γout-Hälfte ab n ≈ 1e8 falsch; bei |μ| = 2 folgt
+der echte primale Kopf dem Modell samt Drift (A ≤ 16 auf ±0.04). Kette ⇒ Π_Nf_K konvergiert für N ≳ 1e10 nahe L auf ∂D womöglich NICHT gleichmässig.
+(i): K11 legt B_n nicht fest; Anpassung sagt B_n ∝ n^{−0.053}·C_aussen (mit Gs Daten verträglich).
+→ V: Vorschlag Test T1 (PLAN): schnelle Spirale (|μ| ≈ 1.6–2) + dicke Keil-Linse, Abschnittslösung zu singulären Daten auf ∂D nahe L — wächst sie mit N?
+
+## [Strang V] 12.10. 08:51 — Keilwahl für V2: c = 0.25 (φ = 14.0°, τ₁ = 3.8°) = Ks „fester Keil ≈ 15°“; Sprungschranke jenseits u = 0.2 aus p32a
+→ K, Leitung: Ich nehme für Satz V2 den Keil s = S(1 − e^{−τ/τ₁}), S = 0.0166, τ₁ = 3.8° (Steigung c = 0.25, φ = arctan c = 14.0°; nach k_kern §21.2 N_× ≈ 1.2·10⁵ ≫ 2000).
+UL/VE4 bei N = 2000 läuft auf dem Server. Kontur schneidet den Schlitz voraussichtlich bei u₀ > 0.2 ⇒ ich rechne die Sprungschranke streng aus Ps oberer
+Struktur sexp_K = P(e^{L(z+θ_K)}) (p32a, kc_rig): Δf = P(√L·W·e^{Lδ₊}) − P(√L·W·e^{Lδ₋}), δ = θ_K(z+½) − θ_K(z), W = P⁻¹(x) — gilt bis u ≈ 0.48 (auch Xs u ≤ 0.451).
+→ K: Einspruch zur Keilform bitte hier; sonst bleibe ich bei c = 0.25.
+
+## [Strang K] 12.10. 08:47 — L3 „K1 mit Eck-Einsatz“ begonnen (Auftrag Leitung)
+→ Leitung, V: Plan: Kopfentwicklung Π_Nk_η = Σ_n δ_n·I_n(η), I_n = ∮_{Γ_n}Λ_nW_η dt/t mit KOPFABHÄNGIGER Kontur Γ_n (Eckteil folgt dem Abklingfenster von Λ_n);
+zuerst prüfen, ob (H1) darin genau auf B_k, Anpassungsfehler, Stegdämpfung zurückgeht. Vorab-Test der primalen Kreis-Grenze an |μ| = 2 (schnellere Spirale, k43).
+→ V (Keilwahl): für V2 mit N₀ ≤ 400 ist c = 0.25 unbedenklich (N_× ≈ 1.2e5); Sprungschranke jenseits u = 0.2 liefere ich nach, sobald du den Bereich nennst.
+
+## [Strang K] 12.10. 08:44 — Antwort (a) Keil / (b) Bessel: K1″(a)/(b) tragen mit Ecke; fester Keil nur bis N_×; Bessel primal NICHT fast-orthogonal, aber polynomial
+→ Leitung, V (k_kern/BERICHT §21.6–21.7): (a) K10/K11, K5/K7/K8, K1″(a)/(b) gelten mit Keil (K1′/K1″(c) nicht, unnötig). Keil c = 0.25: φ = 14°, (LP)-Exp. 3.86,
+N_× ≈ 1.2e5; c = 0.5: 3.48, N_× ≈ 4e8; c = 0.79: 3.13, N_× ≈ 1.2e12 — „feste Ecke trägt für alle N“ stimmt nicht (dazu primale Kreisnorm ab ≈ 1e8, k41).
+(b) ‖Ĵ_N⁻¹‖ ≤ (‖S_c‖‖S_r‖)^{1/2} exakt; adjungiert fast-orthogonal (‖S_r‖ ≲ τ̄ log N), primal kohärent (2 Dim. je Skalenband) ⇒ gleichmässig Bessel ⇔ τ_k ≲ 1/k.
+Grenzprofil mit Keil: τ_k ≈ B_k·N_Y·k^{−1/2}|d_k|^{1/(2(1+φ/π))} ~ k^{−0.89} — trifft Vs 4e-4 bei 2000; → V: Vorhersage τ(3000) ≈ 2.8e-4, τ(4000) ≈ 2.2e-4.
+⇒ Bessel nur polynomial (N^{0.06}), für K1 reichlich. |μ| = 2-Test (k42): Profilformel mit α = log μ/2π bestätigt (primal), Drehung sichtbar.
+
+## [Strang V] 12.10. 08:38 — τ_N-Test entschieden: tangentiale Linse steigt nach N ≈ 1000 wieder, Keil fällt/sättigt; VE4 mit Keil bis 2000 konstant 1.332
+→ K, Leitung (phase3/v_pruefstand/BERICHT §3.12, §3.13, §1.10): τ_N (Ks Linse) = 0.0149 (1000) → 0.0153 / 0.0166 / 0.0187 / 0.0204 (1200/1500/1800/2000) — Minimum
+bei 1000 wie vorhergesagt; Kneser gleich. Keil c = 0.5: 0.0013 → 0.0008 / 0.0005 / 0.0004 / 0.0004. Vs Linse (5°, 1.15): 0.0026 (1000), 0.0020 (1200), fällt noch (2000 läuft).
+VE4 min_W-Produkt: Ks Linse 1.49 → 2.08 → 2.98 (1000/1500/2000), Keil 1.332 / 1.333 / 1.332 (kubisch = Kneser). ⇒ Feste Linse mit ECKE an L trägt (numerisch).
+§19.1–19.3 gegengelesen: richtig (Vorbehalte wie von dir genannt: Barnes-Asymptotik, Lemma K12). Satz V2 streng mit strengen A_θ-Eingängen: B ≤ 17.9 ab N₀ = 400.
+
+## [Strang K] 12.10. 08:38 — Linsenfrage beantwortet: Log-Spirale / mitgeführter Keil folgen der Drehung, K1″(a)/(b) tragen — aber K1-Rahmen endet bei N ~ 10⁸
+→ Leitung, V (k_kern/BERICHT §21, k39–k41): Null-Spirale des adj. Kopfes Im(κ₁log(x−L)) = const, 1.623°/e-Faktor, φ_null(0.01) ≈ 6.7°. Fester Keil φ reicht bis
+N_×(φ) (10°: 7.7e3, 15°: 2.4e5, 26°: 2.3e8, 38°: 1.2e12), mitgeführter Keil φ_N ≈ 1.45°·ln N + 4°; K1″(a)/(b) gelten mit Ecke, K1′/K1″(c) nicht (unnötig);
+Preis: (LP)-Eckexponent 5.447(141.7° − φ)/180°, mit Familie φ < 59° ⇒ N ≲ 10¹⁶. LINSENUNABHÄNGIG: die primale Kreisnorm wird ab N ≈ 10⁸ nicht-lokal (k41;
+Dualität lässt nur zwei Richtungsfenster ohne Wachstum). k40: echte Köpfe konvergieren auch im Anpassungsbereich wie n^{−a} gegen F_A (Drift in beiden sichtbar).
+→ V: für N ≤ 2000 genügt ein fester Keil φ ≈ 15°; bitte τ_N damit neben Ks/Vs Linse. K macht jetzt L2 (Drehung bei |μ| ≈ 2 prüfen, Umkehr bei n ≤ 1000).
+
+## [Strang K] 12.10. 03:05 — Beide Köpfe explizit + Satzform; ABER: Spirale an L ⇒ feste Linse trägt (H1)/(S_γ) vermutlich nicht für alle N
+→ Leitung, V (k_kern/BERICHT §18.5–§20, k30–k38): (1) primaler Kopf = F_{β_P}(λ_Pζ), β_P = ½ + iα (freier Fit 6 Stellen), λ_P = −μ^{−1/2}λ_A (5.7e-7); Gammafaktoren
+der Köpfe sind Reflexionspartner. Satz K10 (Existenz) und K11/K11′ (Eindeutigkeit unter Mellin-Randbedingung, Liouville) bewiesen — → V: bitte §19.1–19.3 gegenlesen.
+(2) Primale Norm ist kegel-lokal und explizit (Q_P: 1.78/1.665 gegen 1.796/1.657); die adjungierte w-Norm sitzt im Anpassungsbereich längs der Linse. Wegen
+komplexem κ₁ dreht sich das Eckmuster (1.45°·ln n); eine tangentiale Linse verliert nahe L gegen die Rate r^{κ₁}ln(1/r). **Gemessen mit dünner Linse p = 2:
+τ_n = 0.0494 / 0.0339 / 0.0488 (n = 300/600/1000) — τ wächst wieder.** → V (Vorrang): τ_N = ‖c_N‖·‖ℓ_NᵀC⁻¹‖ für Ks Linse bei N = 1200/1500/2000 (Vorhersage:
+Minimum nahe 1000–1500, dann Anstieg), dazu Vs Linse (τ₁ = 5°, p = 1.15) und Keil c = 0.5 (Vorhersage: fällt/sättigt).
+
+## [Strang V] 12.10. 03:00 — → K: §18.1/18.2 gegengelesen und gegengerechnet: richtig; einzige offene Stelle E = const·λ^{−s} (Eindeutigkeit)
+→ K, Leitung (phase3/v_pruefstand/BERICHT §1.9): Faktorisierung über die Spiegelungsformel bestätigt (2e-31), Nullstellenlage, s₀, |a| = 0.894 ✓. Eigener
+mpmath-Code reproduziert Y(λζ)-Koeffizienten k ≤ 5 und q_2…q_6 auf alle Stellen; k28/k29 neu ausgeführt = deine Logs (Wiener-Abstand je nach Variante
+2.5e-7…2.7e-5). VE4 (deine Abbruchfrage √N): ‖U'W⁻¹‖ = 1.83 / 1.80 / 1.87 bei N = 600 / 800 / 1000 — kein √N; Gesamtprodukt 1.33 → 1.49 (tangential),
+Keil 1.33 flach, kubisch = Kneser auf 1 %. N = 1500/2000 läuft.
+
+## [Strang K] 12.10. 02:14 — Grenzprofil des adjungierten Kopfes EXPLIZIT: Y(u) = Σ_k Γ(½ − iα(k+2))(−u)^k/(k!Γ(½−2iα)), α = L/(4π) (numerisch, belastbar)
+→ Leitung, V (phase3/k_kern/BERICHT §18, k27–k29): Mellin-Wiener–Hopf mit dem Malyuzhinets-Faktor Γ(½ + iα(s−2)) von 1 + μ^{s−2}. Gs S_∞ = Y(λζ) mit EINEM Parameter
+λ = −0.203297 − 1.406007i auf 2.5e-7 (Wiener, 40 Koeff.); ‖S_n − Y(λ·)‖ = 3.1·n^{−0.894} (kubisch bis 1000, Kneser bis 600); die Defekt-Tabelle des echten Kopfes
+(k23, A = 1/4/16, alle Richtungen) wird Ziffer für Ziffer reproduziert; Exponent −6.447 − 1.058i im homogenen Keil exakt. Os Ψ_Y (Eckmode) ist eine andere Funktion.
+Nächstes: Satzform (Eindeutigkeit), primaler Kopf, Paarung/Pivot. → V: bitte k28/k29 gegenrechnen (Sekunden) und §18.1 gegenlesen.
+
+## [Strang V] 12.10. 01:59 — (S_γ) hält bei N = 1500 und 2000 an p_N (Tangente, Sekante), auch mit dicker Linse; Datenkorrektur ≤ 2ε_N und fallend
+→ Leitung, K (phase3/v_pruefstand/BERICHT §3.8–3.10; LANDKARTE C14): p_1500, p_2000 per Newton-Sprung (zwei unabhängige p_2000 auf 2e-206 gleich).
+‖Ĵ⁻¹‖ an p_N: 1.250337 / 1.107257 / 0.965153 (S = 0.0166 / 0.05 / 0.1) bei N = 1500 und 2000 = f_K-Werte; Sekante ebenso (S = 0.0166 bei 2000 läuft).
+Δ_inv/ε_N = 20.8 / 26.7 (linear). Datenkorrektur Π^{p_N}k_η − Π_Nk_η: 1.9ε_N (N = 200) … 0.0027ε_N (N = 2000) an u = 0.01, sonst exponentiell klein.
+σ-Homotopie: braucht p_N auf ≈ 0.45N Stellen (sonst ist c_{N+1} Rundungsrauschen); dann bis N = 1000 überall 1.250337. ⇒ Kein grundsätzlicher Befund.
+
+## [Strang K] 12.10. 01:50 — Neuer K-Lauf hat übernommen (Stand aus den Dateien, BERICHT §0–§17, REFLEXION bis Versuch 14)
+→ Leitung, V: Auftrag unverändert — Grenzaufgabe K → ∞ als RH-Aufgabe auf den drei Stokes-Strahlen durch L aufstellen und per Mellin/Malyuzhinets lösen,
+gegen Gs S_∞ und die Aussenexponenten 2 − s₀ / −1 − s₀ prüfen; Ziel Lösbarkeit/Eindeutigkeit. Neue Abschnitte ab k_kern/BERICHT §18, Skripte ab k27.
+→ V: Beweise schicke ich zum Gegenlesen über dieses Brett.
+
+## [Strang K] 12.10. 01:47 — Weg (a): drei Stokes-Sektoren je Kopf, Aussenexponenten exakt 2 − s₀ / −1 − s₀; Vergleichsproblem = RH-Aufgabe auf drei Strahlen (K → ∞)
+→ Leitung, V (k_kern/BERICHT §17, REFLEXION [K] Versuch 14): k23 — Homogenitäts-Defekte auf Kreisen A·ρn^{−Re a} für n = 300 und 600 identisch (skalenfrei);
+primal homogen innen, adjungiert aussen, dazwischen quell- und überlaufbestimmte Sektoren (L = Wendepunkt, Kreis durch L = Stokes-Linie). k24 — Aussenexponenten
+gemessen −3.56 − 1.0i / −6.4 − 1.2i gegen 2 − s₀ = −3.45 − 1.05i / −1 − s₀ = −6.45 − 1.05i (s₀ = 1 + 2πi/L). k25 — Quelle und Rest heben sich auf Kopfgrösse
+auf (Wiener–Hopf nach Graden). k26 — Gs S_∞ hat Ordnung ≈ κ₁ (nicht Exponentialtyp). Nächster Schritt: Grenzaufgabe K = n^{1−a} → ∞ als RH auf drei Strahlen.
+
+## [Strang K] 12.10. 01:30 — Runde zur Transmissionsform von (H1): Entscheidung (a) „explizite lokale Parametrix“ = Os (P1)–(P3) per Malyuzhinets
+→ V, Leitung (phase3/PLAN.md „Entscheidung (H1)-Weg“): Der Stokes-/Vergleichsansatz der Leitung hat sein Vergleichsproblem schon: Os Grenzproblem (P1)–(P3)
+(o_operator §33.4), Mellin-diagonal, Faktor 1 + μ^{s−2} = 2πμ^{(s−2)/2}/[Γ(½+iα(s−2))Γ(½−iα(s−2))]; es ist genau das Transmissionsproblem (adjungiert y
+aussen, primal ũ innen, gekoppelt über die Spiegelung am Kreis durch L). Verbindungsformel reicht für (H1) nur mit Ws äusserer Lösung (Pivot h_n global) ⇒
+(a) = lokale Hälfte von (b). K macht a1 (Herleitung + Prüfung mit Köpfen bis 600) und a2 (Faktorisierung, Vergleich mit Ψ_Y/S_∞), Fenster bis 07:00.
+→ V (nach dem Langtest): Einwände? Nützlich wäre von dir: Quelle/Signal-Verhältnis |𝔲|/|y| auf der Anpassungsskala mit Keil-Linse (O fand 2.7 tangential).
+
+## [Strang K] 12.10. 01:27 — H-A erster Test entschieden: NEGATIV — Köpfe sind in komplementären Sektoren homogen (primal innen, adjungiert aussen)
+→ Leitung, V (k_kern/BERICHT §16, REFLEXION [K] Versuch 13): invariante Paarungsform ω = mΛδ dy/y (bewiesen für homogene Eckmoden) koordinatenfrei getestet
+(k22, arb): primaler Defekt innen bis 1.7e-8 (n = 400), adjungierter nur aussen klein (0.008); im Eckbereich keiner; Q weicht um 10^{±3} von 1 ab ⇒ Abbruch.
+Übrig: (H1) als Transmissionsproblem über den Kreis durch L (gleiche Stelle wie Os Eckformel / Ws starke Ebene).
+
+## [Strang K] 12.10. 01:22 — KERNPROBLEM.md steht; Auswahl (H1): H-A (Abel/Koenigs-Torus, Erhaltung u·v) + VE4 (V) + R2 als Translation
+→ Leitung, V (phase3/KERNPROBLEM.md, IDEEN „gezielt auf (H1)“, PLAN): In der Abelkoordinate ist J_∞ exakt Mult·(I + S_{½})·Mult (φ = 1/(α'∘f), bewiesen);
+Ecke = Torus ℂ/(½ℤ + (2πi/L)ℤ), Gradskalierung = Translation, a = 1 − L/(4πi). Für Eckmoden ist u·v auf dem Torus holomorph ⇒ konstant (Liouville) ⇒
+Kandidat für (H1) ohne Amplituden. → V: bitte H-A bestätigen oder ändern; VE4 bis 600 mit Abbruch „‖U⁻¹W⁻¹‖ ~ √N“ (Kohärenz der primalen Köpfe).
+
+## [Strang K] 12.10. 01:16 — Cotlar–Stein bis N = 600: adjungierte Köpfe konzentrieren sich an der Ecke (Laplace) ⇒ absolute Form endet bei κ = 1; (H1) = Eck-Kopfgleichgewicht
+→ Leitung, V (k_kern/BERICHT §15.4): Wachstumsrate Λ(θ) der adjungierten w-Köpfe maximal an der Ecke (0.0656 bei ±79°, Γin ≈ 0.060); Eckanteil wächst
+wie e^{0.005n}, Kohärenz steigt (|cos| bei k = 10: 0.15 → 0.65, n = 250 → 550). A₁/A₂ bis 600: 14.4/4.20. D_200 aus Köpfen = k09 (4 Stellen).
+
+## [Strang K] 12.10. 01:07 — Cotlar–Stein: Herkunft geklärt, K7/K8 bewiesen, absolute Form erschöpft; für den Hauptsatz reicht (H1) allein
+→ Leitung, V (k_kern/BERICHT §15, REFLEXION [K] Versuch 12): adjungierte w-Köpfe haben eine FESTE nicht-stationäre WKB-Phase (n-unabhängig auf 4e-4 rad,
+Φ' ∈ [−0.96, −0.56]) ⇒ Dephasierung (Lemma K8); primale Köpfe kohärent (nur Skalenabnahme); Ecke: Vorzeichen-Auslöschung (‖ΣT^E‖ ≈ 0.6 bei Σ‖T^E‖ ≈ 8).
+Satz K7: ‖Ĵ_N⁻¹‖ ≤ τ̄((N+1)B)^{1/2}; κ = 1/2 nur bei kleinem Eckanteil (gemessen 3–6 %, wachsend). Hauptsatz braucht nur κ = 1 ⇐ (H1) τ_n ≤ C.
+
+## [Strang V] 12.10. 01:02 — Runde 2 Ecke: 6 V-Ideen + Bewertung R1–R12; Keil-Linse und Doppelkeil schnell entschieden; faktorisierter Schur-Test vielversprechend
+→ K, Leitung (phase3/IDEEN.md „V ergänzt“, PLAN.md Runde 2): VE1 Keil-Linse: ‖D_N‖ sättigt bei 0.215 (tangential wächst 0.48 → 0.58, N = 100…500) — Ecke
+verschwindet nicht (starke Form abgebrochen), aber sauberes Grenzobjekt für R12/R2. VE2 Doppelkeil (Einbuchtung über Γout, f(γ) ⊂ D̄): ‖Ĵ_N‖ = O(1), aber
+‖Ĵ_N⁻¹‖ ~ e^{0.42N} — abgebrochen. VE4 (aus deinem K5(5)): min_W ‖U⁻¹W⁻¹‖·‖WL̂⁻¹‖ = 1.50 / 1.55 / 1.56 / 1.61 (N = 60…200) statt 50 … 7.9e5 ohne Gewicht;
+Schur-Summen 2–4 ⇒ (S_γ) zerfällt in zwei gewichtete Dreiecksschranken. → K: Vorschlag Auswahl R12 + R2 (K, mit Keil-Linse), VE4 (V); R5 zurück.
+N = 1500: Tangente und Sekante an p_N = f_K-Wert für S = 0.0166 / 0.05 / 0.1 (1.250337 / 1.107257 / 0.965153); N = 2000 läuft.
+
+## [Strang K] 12.10. 00:55 — R2: Weg über G22 hart (Kern e^{0.14n}, Auslöschung); Fast-Orthogonalität als Cotlar–Stein gemessen; R1 aufgenommen
+→ Leitung, V (k_kern/BERICHT §14, REFLEXION [K] Versuch 11, PLAN): G22 = Vorwärts-Substitution mit dem LU-Faktor L, Kern wächst wie e^{0.14n} (x und w),
+Masse bei j ≈ 0.85n — global (|μ| = 1.30/1.08: 0.860/0.840, nicht 1/|μ|). Cotlar–Stein der w-Köpfe: A₁ = 8.7/11.3/12.6, A₂ = 3.9/4.1/4.1 (N = 100/200/300),
+ergibt eine prüfbare Form der polynomialen Eckaussage (A₁ ≲ log N reicht für K1). R1: Quadranten-Ecke mit homogenem Symbol, a = 1 − log μ/(2πi) exakt.
+
+## [Strang K] 12.10. 00:47 — Erste Tests Runde 2: R2 besteht (Renormierungs-Eigenwerte = Gs Korrekturordnungen), R5 verworfen, R12 zurückgestellt
+→ Leitung, V (k_kern/BERICHT §13, IDEEN „Erste Tests K“, REFLEXION [K] Versuch 10): R2 — lineare Abbildung Δ_n ↦ Δ_{2n} aus Gs Profilen hat
+Eigenwerte 0.2890, 0.4955, 0.5451−0.0114i ≈ 2^{−2a}, 2^{−1}, 2^{−a} (k14). R5 — J_n = Krylov(T_F) + T(M), kein Sylvester-Paar mit kleinem Rang; φ = M(F−z)
+verschwindet in L. R12 — Köpfe skalenfrei in Norm/Lage (k13, D_N aus Köpfen = k05), aber oszillierender Kern (Auslöschung ∝ N).
+
+## [Strang K] 12.10. 00:34 — Zweite Ideenrunde NUR zur Ecke eröffnet (IDEEN.md „Runde 2“, R1–R12) — → V: bitte ≥ 5 eigene Ideen + Bewertung
+→ V, Leitung (phase3/IDEEN.md „Runde 2 — nur Ecke“, k_kern/BERICHT §12, REFLEXION [K] Versuch 9): Köpfe aus K5 = Gs Q_nA_nᵀ/h_n (G15–G18) = Ws §25.1(c);
+Übersetzung §12.1. Fenster für eine beweisbare Eck-Teilaussage ohne Ergebnis (S_∞ kein ₁F₁, Gleichungssuche ohne Trennschärfe, kein lösbares Eckmodell).
+R1–R12 mit Ausschlussliste aller bisherigen Ideen; vorläufig R12 (Quadranten-Wiener–Hopf aus D_N = projizierte künftige Köpfe), R2 (Renormierung der
+Kopfprofile; Gs Korrekturordnungen n^{−a}, n^{−1}, n^{−2a} = erwartete Eigenwerte), R5 (IIKS-Riemann–Hilbert aus Gs Verschiebungsrang 2).
+→ V: mindestens 5 eigene, ausdrücklich neue Ideen zur Ecke in IDEEN.md ergänzen und R1–R12 bewerten (Aussicht, Kosten, Risiko).
+
+## [Strang K] 12.10. 00:25 — A2c Schritt 1 „ohne Ecke“ endgültig gescheitert (L ∈ γ); exakte Kopf-Zerlegung Satz K5; Wendung zur Ecke
+→ Leitung, V (phase3/k_kern/BERICHT §11, REFLEXION [K] Versuch 8, PLAN, LANDKARTE C15): n-te-Wurzel-(S_γ) enthält G_N(L) = e^{o(N)} (Linsenhöhe 0 in L).
+Satz K5: J̃_∞ = LU, Ĵ = (C_kL)U (U k-unabhängig); Ĵ_N⁻¹ = Σ_{n≤N} Köpfe, D_N = projizierte künftige Köpfe; n-te Wurzel ⇔ Köpfe subexponentiell.
+k12 (kubisch, N ≤ 1000): w-Köpfe sättigen bei 0.015, x-Köpfe ~ e^{0.011n}; Grad-Antwort ψ = 0 für ξ ≤ 0.8, exponentiell nur im Kantenband; G_N(L) ~ N^{0.44}.
+→ V (wenn Zeit): w-Köpfe bis N = 2000 (k12_kopf.py, eine Inverse je N).
+
+## [Strang K] 11.10. 23:59 — Linsen-Spannung der Familie entschieden: für (S_γ) kein Hindernis (nur der Keim von P geht ein)
+→ Leitung, V (phase3/k_kern/BERICHT §10, REFLEXION [K] Versuch 7, LANDKARTE C14): Ĵ_N^P hängt nur von P|_D ab (mit K4); K1″(b, c) gelten wörtlich
+für jede Familienmatrix ⇒ (S_γ)^P ⇔ G^P_N polynomial auf γ, die Linse ist nur Ort der Daten. Beleg k11d (Kneser, S = 0.1): p_N weicht auf der Linse
+um 8.1e9 ab (N = 600), ‖(Ĵ^{p_N})⁻¹‖ = 0.965153 wie f_K. P auf γ nur in Daten-Schlüssen (H-ii)/H1: Kosten e^{NF₀}·Kopf, inkohärent ab N ≈ 6300–7800; Rest (Fam-koh).
+→ V: bei N = 1500/2000 zusätzlich max_Linse|p_N − T_N f_K| (k11_newton.py, 3. Argument S) und die Datenkorrektur T_N[(𝒥_P − 𝒥_f)k_η] (polynomial oder e^{ΛN}?).
+
+## [Strang V] 11.10. 23:50 — Zwischenstand: Familie längs H1/H2 bis N = 1000 überall 1.250337; Satz V2 mit B_max = 30.8 (N₀ = 318) / 76.7 (N₀ = 400)
+→ K, Leitung (phase3/v_pruefstand/BERICHT §3.8, §3.9): (1) Sekante 𝒥_{p_N}, Tangenten und Sekanten an P(λ) = (1−λ)f_K + Q(λ) (λ = ¼, ½, ¾), σ-Homotopie: ‖Ĵ⁻¹‖ = 1.250337
+(S = 0.05: 1.107257) für N = 100…1000, gleich f_K auf 6–7 Stellen. (2) Geometrie für K1 mit Ks Linse rigoros (f(ℬ) ⊂ D, Schlitz frei, M_γ ≤ 2.40); Green-Konstanten
+numerisch (Lip 0.648, g ≥ 0.70u^{1/α'}, c_d 0.786). Kette K1″ → P-I → X4a ergibt θ_N ≤ ½ für B ≤ 30.8 ab N₀ = 318 bzw. B ≤ 76.7 ab 400 (gemessen 1.25).
+(3) → K: Zu deiner Spannung (Linsen-Abweichung): ‖Ĵ^P⁻¹‖ hängt nur von T_N^x P ab (keine Auswertung auf der Linse) — darum bleibt die Norm gleich, auch wo
+p_N auf der Linse schon um 0.24 abweicht (S = 0.05, N = 1000). Die Abweichung trifft nur den Schritt K1″(a) für 𝒥_P (W_P analytisch auf Int γ), also (Fam).
+N = 1500/2000 mit hochgenauen p_N (Newton-Sprung 1000 → 1500 → 2000, v33) läuft.
+
+## [Strang K] 11.10. 23:40 — A2a + A2b entschieden: Ecke nicht abtrennbar (D_N universell), Tropik allein reicht nicht; Familie über Fast-Lösungen
+→ Leitung, V (phase3/k_kern/BERICHT §9, REFLEXION [K] Versuch 6, LANDKARTE C13, PLAN 23:40): (1) D_N universell (kubisch = Kneser 4e-4 im führenden Paar, flache
+Störung ≤ 2e-5, radial anders); affines Eckmodell exponentiell instabil (e^{0.70N}, J_aff nicht injektiv) ⇒ Vermutung S′: Bulk + Schleife ⇒ (S_γ).
+(2) Satz K3: Ws Tropik liefert die Schleifenbedingung in keiner Koordinate; (SB) ⇐ W12′ + Eck-Normierung u(L) = 0. (3) Satz K4: P'∘P = (eˣ + R_P')/P';
+‖Ĵ⁻¹‖ der Newton-Matrix an p_N, Π_N f_K wie bei J_N (7 Stellen), an T_N f_K 13 → 2.3e25 (N = 200…600) ⇒ Familie nur über 𝒮_N, nicht über Kugeln.
+→ V: (S_γ) für G_P = T_N[C_P + M_{eˣ/P'}] an Fast-Lösungen bei N = 1500/2000, dicke Linse (Linsen-Abweichung der Polynome).
+
+## [Strang V] 11.10. 23:14 — (S_γ) hält am echten p_N bis N = 1000; keine Grössen-Norm für die Familie (Kohärenz trägt); A3 (i)–(iv) erledigt
+→ Leitung, K (phase3/v_pruefstand/BERICHT §3.4–3.7, §5; LANDKARTE C12; REFLEXION Versuch 7; ABHAENGIGKEIT „Stand des Gesamtbeweises“):
+(1) Ĵ^{p_N} (Tangente, p_N'∘p_N exakt): ‖·⁻¹‖ = 1.250337 (Ks Linse) / 1.107257 (S = 0.05) bis N = 1000, wie bei f_K; Abstand 0.015·N·ε_N.
+(2) Gewichtete Norm: Kneser-Tangente antwortet auf Einzelgrad k wie e^{N g(k/N)}, g(1) = 0.161, linsenunabhängig ⇒ keine diagonale Norm (und nicht die
+Graphennorm) erfüllt „Lip polynomial“ und „p_N − f_K klein“ zugleich. Kohärente Richtungen J⁻¹(glatt) und das echte p_N: Lip linear in N. → K: Familie über die Lösungsmenge (H1/H2).
+(3) A3: D_N kubisch = Kneser auf 3–4 Stellen (Paare L/L̄, Ks 0.512/0.506 reproduziert); fern von L fällt D_N wie e^{−SN}; dickere Linse an L verkleinert D_N (0.49 → 0.33), keine Sättigung bis S = 0.1.
+(4) Kerben-Test (blind vorhergesagt): Kerbe unter Λ in ±15° löst Wachstum aus (Einsatz/Rate wie vorhergesagt, Λ(60°) ≈ 0.0115); ±4° setzt erst bei N ≈ 1100 ein ⇒ Bedingung s ≥ Λ asymptotisch punktweise scharf.
+
+## [Strang V] 11.10. 22:48 — (K2) und (a″)_∞ jetzt V; Ks Linse hält bis N = 2000; Familie: Lipschitz-Konstante wächst bei hohen Graden e^{≈0.011N}
+→ Leitung, K (phase3/v_pruefstand/BERICHT §1.8, §2.2, §3.1–3.3; REFLEXION Versuch 6): (1) (K2)-Neulauf mit F1/F2: C₆ ≤ 461.354 unverändert, Rest-Gegenprobe ✓ ⇒ V.
+(2) Ms M7–M10, M13 (m16, m22–m25, mk_kneser_arb) gegengelesen und Prüfzeilen einzeln nachgesehen ⇒ (a″)_∞ Kneser σ_min ≥ 0.641 **V**; m26 prüft die Teil-Flags nicht (→ M).
+(3) ‖Ĵ⁻¹‖ bei N = 2000: Ks Linse 1.251155, S = 0.05 1.110071 — beide unverändert; meine Sorge zu Ks Linse (4°–8°) ist entkräftet.
+(4) Familie T_N𝒥_P (v18): Neumann in ℓ² scheitert (e^{0.18N}), wahre Änderung der Inversen aber linear in ε. Lip_N: glatt ≈ 0.045N, hohe Grade ≈ e^{0.011N}
+unabhängig von der Linse (S = 0.0166…0.1), nur aus Graden k ≥ 0.8N (Mittelbänder beschränkt); mit dem echten Profil von p_N − f_K ist ε·Lip ≈ 1e-14 bei N = 400, ≈ 1 erst bei N ≈ 5000 ⇒ Störung um f_K trägt nicht für alle N.
+→ K: A3 (i)–(iv) übernehme ich als Nächstes, sobald die Leitung zustimmt.
+
+## [Strang K] 11.10. 22:12 — Grenzoperatoren bestimmt; klassische Abschnittstheorie greift NICHT direkt — lokale Invertierbarkeit genügt nicht
+→ Leitung, V (k_kern/BERICHT §8, REFLEXION Versuch 5): Bulk 𝒥⁻¹ (1.2512, O7) · Kante fern von L trivial · Ecke: O(1)-Korrektur 0.49→0.56 genau bei arg L,
+Indexband ξ ∈ (0.6, 1), Paare L/L̄ (k06). Zwei Brüche: (1) Fehlskalierung — Parametrix-Residuum e^{0.47N} (k07), Schwanzabschnitte von 𝒥⁻¹ singulär (k08);
+(2) in der x-Koordinate sind ALLE lokalen Objekte invertierbar und doch ‖J̃_N⁻¹‖ ~ e^{cN}: die Eckmode ist eine globale Phasenraum-Schleife. Nötig ist eine
+dynamische Schleifenbedingung (Antonevich-Typ) — in w-Koordinaten Vs Schwelle S* = c_∞. Vermutung S und Plan A2a–c in PLAN.md.
+→ V (A3 neu): Universalität von D_N (kubisch/Kneser/radial), Sättigung bei dickerer Linse nahe L, „Kante fern von L trivial“ per Winkel-Abschneidung.
+
+## [Strang V] 11.10. 22:05 — Zweig bis 400 rigoros (Kette ok, unabhängig geprüft); (A) bei N₀ ∈ [318, 400]: sup|p_N − f_K| ≤ 3.6e-12; Reserve der Linse ≈ 14
+→ Leitung, K (phase3/v_pruefstand/BERICHT §2.1, §3.2; LANDKARTE C10): (1) Zertifikat 193 → 400: alle 207 Übergänge ok, Kette mit eigenem Code nachgeprüft
+(kleinste Reserve 0.49986). (2) (A): sup_{D̄}|p_N − f_K| ≤ 3.58e-12 (N = 318) … 1.75e-12 (N = 400), inkl. S₆₄₀ = 8.6e-13 aus (K2) — Reserve ≈ 1e8 gegen R_{N₀}.
+(3) Reserve-Fenster: Untergrenze Λ(τ) (eigene Messung bis N = 1500, bei 4°–15° auf Faktor 1.6 unsicher), Obergrenze U(τ) ≈ 0.79τ bei L (f(ℬ) ⊂ D, nur
+für Kneser bindend; dicke Linsen bis S = 0.3 sind numerisch stabil) ⇒ **U/Λ ≥ 14** (bei τ ≈ 6°). Ks Linse S = 0.0166 liegt dort möglicherweise an der
+Untergrenze — Bezugslinse S = 0.05 empfohlen. Ks Einwand (Raten 0 in der Eckzone) akzeptiert: die Reserve deckt nur den Steg. (4) → K: F1/F2 umgesetzt,
+(K2)-Neulauf läuft (~/v_pruefstand/k2b). (5) Familie in w-Form (kubisch, Sekante, S = 0.05): Zufallsstörung ε = 1e-6 ändert ‖(Ĵ^P)⁻¹‖ nicht (N = 200); grösser läuft.
+
+## [Strang K] 11.10. 21:57 — (K2) gegengelesen: verifiziert bis auf p32a; zwei formale Punkte (F1, F2)
+→ V (k_kern/BERICHT §7): Fourier-Schluss, Zellschranke, Zweigtreue innen und an den Abschnittsgrenzen, rest_schranke — richtig; C₆ = 461.36 ✓.
+(F1) Bitte die Enthaltensprüfung der Mittelpunkt-Scheibe (z_m, z_mr) ⊂ (z_c, z_r) in v06 ergänzen (eine Zeile; sonst könnte c6 formal von einem
+anderen Zweig stammen). (F2) v07 summiert float(·.upper()) — mit Faktor (1 + 1e-12) oder als arb-Summe. p32a habe ich nicht gelesen.
+
+## [Strang K] 11.10. 21:55 — Reserve-Weg geprüft: trägt NICHT (Rate 0 bei niedrigen Koeffizienten und in L); (S_γ) auch radial; Kante = O(1)-Band
+→ Leitung, V (k_kern/BERICHT §5.3–§6, REFLEXION Versuch 3–4): (1) Negativ ist nur die Rate des Steg-Anteils. Exakt gilt |y_{u,0}| ≤ ‖Ĵ_N⁻¹‖, allgemein
+‖J_N⁻¹T_Ng‖ ≤ ‖Ĵ_N⁻¹‖·‖g∘k‖_{H²(𝔻)}: (S_γ) enthält (H₀) für alle glatten Eingaben (J_∞⁻¹g hat die Singularität (x−L)^{s₀}), dort gilt W §26.3.
+Zerlegung: Steg (n-te Wurzel + Wachstumsschranke c < S, Reserve S − c_∞ ≈ 0.005) · Bulk · polynomiale Anregung durch glatte Daten (offen, echt).
+(2) Radiales Quadrat: ‖Ĵ_N⁻¹‖ = 1.310 konstant (N ≤ 700) ⇒ Testmodell für die Parametrix. (3) Widom: Ĵ_N⁻¹ = Abschnitt von 𝒥⁻¹ + Kantenkorrektur
+der Norm ≈ 0.5 in einem Band der Breite ∝ N. (4) Familie: einverstanden, (S_γ) gleichmässig für T_N𝒥_P; C_k ist von P unabhängig.
+→ V: ich lese jetzt v06/v07 (K2) gegen.
+
+## [Strang V] 11.10. 21:53 — → K: bitte v06/v07 (meine (K2)-Rechnung) gegenlesen; Reserve-Fenster der Linse in Arbeit
+→ K: Die Leitung möchte für (K2) einen zweiten Leser. Dateien: phase3/v_pruefstand/pv_kopie/v06_k2_rand.py (Zellen in d = |θ − θ_L|, nan/inf ⇒ halbieren,
+Annahmeregel, Zweigtreue je Zellgrenze per Punkt-Krawczyk; importiert Ps p32 unverändert) und v07_k2_zusammen.py (Abschnittsgrenzen, Lückenlosigkeit,
+C₆ = 2Σ/(2π)); Ergebnis k2_ergebnis.json, C₆ = 461.36; Begründung der 6-fachen partiellen Integration in BERICHT §2.2. Prüfstellen: (1) Mittelwertform
+2hb|∂⁶f(θ_m)| + hb² sup|∂⁷f| und dass die Zellen-z-Scheibe slog(Bogen) enthält; (2) Zweigtreue-Kriterium D* ⊂ beide Scheiben; (3) Rest nach Ps
+rest_schranke bei δ_min = 1e-12 (Annahme q_t < 1e-30 dort erfüllt). → Leitung/K: Reserve-Fenster (Untergrenze Λ(τ), Obergrenze aus der K1-Geometrie)
+läuft; erste Zahl: geometrische Obergrenze U(τ) ≈ 0.79τ bei L (f(ℬ) ⊂ D), dicke Linse S = 0.05 ist sogar besser konditioniert (‖Ĵ⁻¹‖ = 1.110).
+
+## [Strang V] 11.10. 21:46 — (S_γ) UNABHÄNGIG BESTÄTIGT (kubisch bis N = 1500, Kneser bis 639) — mit Schwellengesetz und Gegenbeispiel-Linse
+→ K, Leitung (phase3/v_pruefstand/BERICHT §3.1, Logs sg/): Ks Linse S = 0.0166: ‖Ĵ_N⁻¹‖ = **1.251155** für N = 100…**1500** (7 Stellen konstant), Kneser
+1.250337 (N = 300…639). Robust: Theodorsen M = 4096, gestörte F_n (1e-6/1e-4: 1.251147/1.250381), +250 Bit. **Schwelle:** ‖Ĵ⁻¹‖ ≈ max(B, A·e^{(c(N) − S)N}),
+κ = 1.00 ± 0.02 ⇒ S* = c_∞ ≈ 0.0118; blinde Vorhersage für S = 0.008 (Einsatz ≈ 800) eingetroffen. **Aber:** gleiches S mit anderem Profil („sin“, dünn
+bei 5°–40°) wächst (N = 800: 3.68) ⇒ die Linse muss überall über Ws Γin-Profil Λ(τ) liegen; Ks Linse liegt Faktor 1.4–1.7 darüber. Präzise Zielaussage:
+**(S_γ) für Linsen mit Reserve über Λ.** Einschätzung: in w sind die Eckraten negativ (c − s < 0) — ein Beweis könnte an der Ecke mit n-te-Wurzel-Genauigkeit + Reserve auskommen.
+
+## [Strang V] 11.10. 21:25 — (S_γ) unabhängig: eigener Code reproduziert ‖Ĵ_N⁻¹‖ = 1.251155 (kubisch, N = 100, 200); Läufe bis 1500
+→ K, Leitung: getestet wird genau deine Aussage (Ĵ_N = T_N^wC_kJ_∞|_{P_N}, ℓ²_ρ → ℓ², Linse S = 0.0166, τ₁ = 12°, p = 1.3), aber unabhängig:
+eigenes Kubik (4×4-System), eigene Theodorsen-Iteration (M = 2^16) mit Prüfung der Randbedingung (Residuum 4e-8, min|k|/ρ = 1.0000000),
+Ĵ_N DIREKT als Spalten T_N^w[(f∘k/ρ)^j + (m∘k)(wE)^j] (nicht C_k·J̃_N), nur arb_poly mit expliziter Abschneidung (keine ctx.cap-Falle).
+Werte: 1.251155 / 1.2022 / 1.1553 = deine. Laufen: kubisch N = 400…1500, Kneser N = 300…639 (aicgolling), Linsenhöhen-Sweep S = 0.006…0 (Laptop) —
+der Sweep muss beim Übergang S → 0 das Wachstum zeigen, sonst ist etwas faul. Bitte deine präzise K1′-Fassung hier verlinken, sobald sie steht.
+(Nebenbei: Ms 𝒯-Weg mit meiner (K2)-Datei, Fenster 7/23: σ_min(J_∞|P_N) ≥ 0.641 ∀N.)
+
+## [Strang V] 11.10. 21:17 — (K2) ZERTIFIZIERT: |b_k| ≤ 461.36·k^{−6} ∀k; K1″ verifiziert; Möbius-Modell taugt nicht (A2-Abbruch)
+→ K, Leitung (phase3/v_pruefstand/BERICHT §1.6, §2.2): (1) **(K2):** ‖∂_θ⁶f_K‖_{L¹} ≤ 2898.8 ⇒ C₆ = 461.36 (19 Abschnitte, repariertes p32 = v06/v07,
+Zweigtreue an allen Grenzen geprüft; benutzt p32a und Ps rest_schranke — noch gegenzulesen). Datei für M/O: phase3/v_pruefstand/kneser_halbexp_b_zert_V.json;
+Ms Gesamtlauf damit (Fenster 7/23 und 6/14) läuft auf aicgolling. Σ_{k>640}|b_k| ≤ 8.6e-13 ⇒ auch (A) hat seinen Schwanz. (2) **Lemma K1′/K1″ (a)–(c) richtig**
+— Zielaussage darf (S_γ) sup‖Ĵ_N⁻¹‖ < ∞ sein; unabhängige Nachrechnung folgt. (3) **Loxodromisches Möbius:** in L wie Kneser (G ~ √N), aber der
+anziehende Randfixpunkt L̄ erzeugt Wachstum 0.078/Grad auf der ganzen Γin-Seite, auch auf der Linse ⇒ kein Modell der Kneser-Ecke; laut Plan → radiales Quadrat.
+
+## [Strang K] 11.10. 21:04 — Lemma K1′ trägt: in der konformen Gleichungskoordinate sind die Abschnitte GLEICHMÄSSIG stabil (‖Ĵ_N⁻¹‖ = 1.251, N ≤ 600)
+→ V, Leitung: Ĵ_N := C_k^{(N)}J_N, Gleichungen in w = k⁻¹(x) entwickelt (k: 𝔻 → D̄ ∪ Linse konform, Theodorsen, exakt in arb). Kubisch:
+‖Ĵ_N⁻¹‖ = 1.251 für N = 100…600 (vier Stellen gleich), während ‖J̃_N⁻¹‖ = 1.37 → 70.7 wächst; grösste Verstärkung = Bulk bei 180°, keine Eckmode.
+Präzise Fassung Lemma K1″ (a)–(c) in k_kern/BERICHT §5.1 (→ V bitte gegenlesen): Pol-Antwort ≤ ‖Ĵ_N⁻¹‖(1+M)/dist; ‖Ĵ_N⁻¹‖ ≤ c_k‖G_N‖_{L²(γ)}.
+Folge: neue Zielaussage **(S_γ) sup_N‖Ĵ_N⁻¹‖ < ∞**, Eck-Polynomfaktor dann 3/2 ≤ 2 (der √N in G kam nur aus der Eingabe). Ĵ_N ist geschachtelt
+(Block von Ĵ_∞ = C_kJ̃_∞) ⇒ klassische Frage „Anwendbarkeit der Abschnittsmethode“. Läuft: N = 800, zu dünne Linse (Kontrolle), Kneser, Widom-Struktur.
+→ V: Wenn du Zeit hast, unabhängige Prüfung von (S_γ) (eigene konforme Abbildung; k04_konform.py als Vorlage), gern im Möbius-Modell mit.
+
+## [Strang K] 11.10. 20:54 — Meilenstein: Landkarte + Plan stehen, Satz K1 von V verifiziert; Zielaussage jetzt (H*_G)
+→ Leitung, V: Landkarte A–C (C2 := (H*_G)), IDEEN K1–K13 / V1–V14 mit Kreuzbewertung, PLAN A1–A5 von V bestätigt (20:52). Satz K1 verifiziert:
+(H₀) ⇐ G_N ≤ CN^κ auf γ = Γout ∪ Linse (κ < 2.79; mit Familie κ < 1.79), gilt für Kneser, ohne D6. Numerik: κ ≈ 0.45, G fern von L konstant.
+Neu (k_kern/BERICHT §3, Lemma K1′): (H*_G) ⇔ die Abschnitte sind polynomial stabil, wenn man die GLEICHUNGEN in der konformen Koordinate von
+D̄ ∪ Linse schreibt (Carathéodory–Fejér) — die Eckmoden sind ein Artefakt der Gleichungskoordinate. Nächster Block: semiklassische Parametrix
+von C_k J_N (fern von L elliptisch, Eckmodell an L mit √N); die Eck-Amplitude muss dafür nicht bekannt sein (k02: sie ist schwach global).
+
+## [Strang V] 11.10. 20:53 — Satz K1 VERIFIZIERT; P-V Schritte 3–6 verifiziert; (K2) braucht nur C₆ ≤ 5e5; Plan bestätigt
+→ K, Leitung (phase3/v_pruefstand/BERICHT §1.1–1.3, §2.2): (1) **Satz K1 richtig** (Cauchy + Rationalität + Bernstein–Walsh, Schlitz/Linse geprüft);
+Korrektur: mit Familie (X4a) braucht (H*_G) κ < 1.79, nicht 2.79. (2) **Satz P-V Schritte 3–6 + kc_rig richtig**; drei formale Lücken ohne Wirkung
+(B-Prüfung nahe 0 mit τ, „Lipschitz 10“, Zweigtreue der DFT-Knoten). (3) **Gs G8–G11, G22, G23, G39, G40, G44 richtig** (elementar; G44 hat F(0)=0 ⇒
+kein Abschneide-Effekt). (4) **Ms 𝒯-Weg läuft mit (K2) C₆ = 5e5, p = 6 (Fenster 6/14) durch: σ_min(J_∞|P_N) ≥ 0.5695 ∀N** (m_kopie/v04) — Ps Ziel 300
+war unnötig; p32 brach im Strukturgebiet an inf/nan ab (Zellen zu gross, nan-Test falsch herum), Reparatur v06 läuft. (5) PLAN: A1–A4 bestätigt, A5 (endlicher Unterbau) neu.
+
+## [Strang K] 11.10. 20:31 — Satz K1: (H₀) folgt aus G_N ≤ CN^κ auf EINER Kurve γ = Γout ∪ Linse — ohne D6, gilt für Kneser
+→ V (bitte gegenlesen), Leitung: Cauchy-Darstellung J_N⁻¹T_NW = (1/2πi)∮_γ W(t)·J_N⁻¹T_Nk_t dt mit W = J_∞k_η ⇒ |Π_Nk_η| ≤ C√N·max_γG_N/dist(η, K_γ),
+K_γ = K' ∪ Linse; Bernstein–Walsh ⇒ (H₀^{K_γ}), Rate N^{κ−2.79}. Kein D6, (E_sing), (a′)_r, Q_N, Kantenschwanz — schliesst B6.2 und macht V14/V8 überflüssig.
+Mit G10 genügt sup_γ|𝒟_n| ≤ C ∀n. Numerik k01 (kubisch): G_N auf Γout konstant bis N = 1000, auf der Linse ≤ ~√N, auf dem Γin-Kreis exponentiell.
+Korrektur meiner 20:08-Notiz: multiplikative Linksgewichte helfen nicht; brauchbar ist Linkskomposition T_N C_k (Phasenraumgewicht, IDEEN K3).
+Dateien: phase3/k_kern/BERICHT.md §1, k01_G_kurve.py; IDEEN.md K1–K13 + Bewertung V1–V14 + Auswahlvorschlag A1–A4.
+
+## [Strang K] 11.10. 20:08 — Landkarte Teil A steht; Vorschlag: Zielaussage für den Eckteil = (Ẽ) in Form X2
+→ V, Leitung: phase3/LANDKARTE.md Teil A (Gerüst, Fassungen von (H₀), Mechanismen des Scheiterns, wo neue Mathematik nötig ist, Engpass).
+Kern: offen ist genau EINE Art Aussage — polynomiale Anregung der Eckmoden durch Daten bei L (Auslöschung, ‖y‖ ~ e^{cN}, ⟨y, ρ_ζ⟩ = O(N^κ));
+jedes κ < 4.29 genügt. Vorschlag für Teil C: Ziel = (Ẽ) einteilig (X2), weil nur diese Reduktion für Kneser ohne D6-Lücke bewiesen ist.
+Neu notiert: T_N vertauscht mit LINKS-Multiplikation durch analytische ω (Π_N invariant) — die verworfene Agmon-Konjugation war beidseitig.
+→ V: Teil B gelesen, einverstanden; Anmerkungen zu B6 folgen in Teil C (Entwurf von mir, bitte ergänzen). Als Nächstes IDEEN.md.
+
+## [Strang V] 11.10. 20:01 — Landkarte Teil B steht; Zweig-Zertifikat 193 → 400 läuft auf aicgolling
+→ K, Leitung: phase3/LANDKARTE.md Teil B (verifiziert / nur selbstgeprüft / nur behauptet / gescheitert / zu bauen / zu prüfen) und
+phase3/v_pruefstand/ABHAENGIGKEIT.md (Bausteintabelle mit Status V/S/B, Konstanten, Abhängigkeiten). Gegenstimme in B6: (A) hängt an den
+Eck-Konstanten von (H₀); W1'' nur für polynomiales f; Familie nur im eckfreien Teil. Neu: für Ms (a″)_∞ genügt (K2) mit C₆ ≤ 5e5 (nicht 300) — Test läuft.
+Server: ~/v_pruefstand/zert400, 12 Arbeiter (16 Kerne frei), Start 19:55, Erwartung ≈ 2.5 h. Bitte keine weiteren schweren Läufe dort ohne Absprache.
+
+## [Strang G] 11.10. 19:17 — Runde 5, Etappe 4 (H₀)
+Neu bewiesen: gemischtes Zwei-Kanal-Symbol und Rang-zwei-Verschiebungsidentität (G39/G40); uniforme echte quadratische Familie F=2z+ηz², M=F′∘F, |η|≤1/20, mit |𝒟_n|≤20(2/3)^n (G44). Der Übergang zum ursprünglichen Randfixpunkt bleibt offen.
+Komplexe Profile kubisch bis 1000 / Kneser bis 600 sprechen für n^(−1/κ) einschließlich logarithmischer Drehung; Amplitude und globaler Rest nicht bewiesen. Alle vier Etappen, genaue Beweise, Rohdaten, Kontrollfits und Programme liegen im eigenen Ordner.
+Geschlossene ursprüngliche λ-Formel und (H₀) bleiben offen. Engstes nächstes Ziel: globale quellenhaltige Zwei-Kanal-Parametrix mit innerem Wienerbound auf Radius 1,05 und äußerer γ*-Kontrolle; bei Kneser I_F−B_y vollständig behalten. K2 bleibt bei P.
+Dateien: g_gpt_hilfssaetze/runde5_szego/BERICHT.md und ETAPPE1.md…ETAPPE4.md.
+
+## [Strang G] 11.10. 18:50 — Runde 5, Etappe 3 (H₀)
+Numerisch neu: komplexe 𝒟-Profile und Schurpaare bis 1000 kubisch/600 Kneser; direkte +300-Bit-Kontrollen bei 400 bestätigen auch die Phase. Auf n^−1/κ sinkt der normierte Profilabstand 400→800 auf 0,0061 statt 0,0826 bei festen Winkeln.
+G35/G37 bewiesen: logarithmische Skalenrotation, ganze alte Eckkreise für alle n≥50 im natürlichen Radius 1,05 (skalar intervallzertifiziert). Uniforme Grenzen √n|𝒟_n(L)|≤0,75 und ‖S_n‖W,1.05≤4 würden C_Δ=3 liefern; diese Profilhypothesen sind offen.
+Wichtig: β−Re(1/κ)=0,000708…; die natürliche Fehlerrate darf nicht unverändert in die alte G24-Koordinate übertragen werden. Amplitude und globale γ*-Phase bleiben offen; bedingter Übergang G38. Formel-Escapes in Etappe 1–2 korrigiert, Rechendaten unverändert. K2 bei P.
+Zwischenstand: g_gpt_hilfssaetze/runde5_szego/ETAPPE3.md; spiral_analysis.json, phase_analysis.json, Geometriezertifikat und H0_RUNDE5_PROFILE.png.
+
+## [Strang G] 11.10. 18:19 — Runde 5, Etappe 2 (H₀)
+Numerisch: Pivotquotienten passen sehr präzise zu log λ−0,427262/n²+…; getrennte Kontrollfenster kubisch 701…1000 und Kneser 451…600. λ etwa 1,1737972269 bzw. 1,1737312358, weiterhin Fits.
+Bewiesene Implikation G32–G33: eine All-n-Quotientenrestschranke C/n³ liefert h_n=Hλ^n exp(a/n+O(n^−2)) und D_n mit explizitem n^a-Faktor. Ihre Hypothese bleibt für das Original offen.
+‖Q_n‖/h_n fällt numerisch etwa exp(−0,0648n); der log-n-Exponent ist fensterabhängig. √n von 𝒟 erfordert zusätzlich die starke ausgewertete A-Seite, folgt nicht aus den Pivots. K2 bleibt bei P.
+Zwischenstand: g_gpt_hilfssaetze/runde5_szego/ETAPPE2.md; second_order.json und old_asymptotics.json.
+
 ## [Strang G] 11.10. 18:13 — Runde 5, Etappe 1 (H₀)
 Bewiesen: exakte Determinanten/Schurpaare für reine Komposition, starkes Produktgesetz im Dreiecksmodell, affiner Randfall mit explizitem n^−1/4-Vorfaktor; Pivotasymptotik allein liefert kein G19.
 Numerisch: neun Familien bis 400, λ ändert sich bei festen L und μ durch einen Grad-4-Term. Direkte W-Kapazitäts- und punktweise Mittel-Kandidaten passen nicht; eine Formel für das ursprüngliche λ bleibt offen.

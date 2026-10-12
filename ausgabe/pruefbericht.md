@@ -1,8 +1,8 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-311 Aussagen · 505 Kanten · 51 Experimente
+321 Aussagen · 528 Kanten · 52 Experimente
 
-**Effektiver Status:** bewiesen 130, numerisch 43, bewiesen_literatur 35, bedingt 22, offen 22, vermutung 22, definition 11, gescheitert 8, skizze 7, annahme 4, ueberholt 3, widerlegt 3, entlastet 1
+**Effektiver Status:** bewiesen 133, numerisch 45, bewiesen_literatur 35, bedingt 23, vermutung 23, offen 22, definition 11, gescheitert 9, skizze 9, annahme 4, ueberholt 3, widerlegt 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 68
 
@@ -65,8 +65,15 @@
 - `kn.konstr.zwei_sinh` — Nirgends analytisch ist eine Vermutung (Forum).
 - `kn.satz.grenzwert_trick` — Die genauen Bedingungen an δ (insbesondere abseits der reellen Achse) sind nur für den Basiswechsel ausgeschrieben (Paper I).
 - `kn.satz.polynom_halbexp_hauptsatz` — Annahme (H) ist offen (kn.verm.polynom_halbexp_eckmoden).
+- `kn.satz.polynom_halbexp_hauptsatz` — Phase 3: (H) in der Form bis an L ist für astronomisch grosse N vermutlich falsch (kn.beob.polynom_rand_plateau); tragfähige Fassung: kn.satz.polynom_hauptsatz_kr0.
 - `kn.satz.polynom_halbexp_hauptsatz` — Die Einzelbeweise stehen in forschung/polynom_halbexp/ARCHITEKTUR.md §4 und den Strang-Berichten; die Leitung hat sie nicht Zeile für Zeile nachgeprüft.
 - `kn.satz.polynom_halbexp_hauptsatz` — Eine Prüfung (f_K(e^z) ∉ (−∞,0] auf dem linken Bogen) ist nur numerisch.
+- `kn.satz.kneser_e_zertifiziert` — Drei formale Lücken ohne Wirkung auf die Zahlen (Fehlerbudget in Prüfung B, eine Lipschitz-Schranke, Zweigtreue der DFT-Knoten), benannt in phase3/v_pruefstand/BERICHT §1.1.
+- `kn.satz.polynom_eckprofil` — Lemma K12 (Übersetzung der Mellin-Randbedingung in Sektorbedingungen) nur skizziert.
+- `kn.satz.polynom_eckprofil` — Dass die echten Köpfe gegen die Grenzlösung konvergieren, ist gemessen, nicht bewiesen; ebenso die Formel für C (Anpassung an die Aussenlösung).
+- `kn.satz.polynom_approximation_ecke` — Dass E eine Quasischeibe ist (Jordan-Gebiet, Dreipunkt-Bedingung, Öffnung), ist nur numerisch auf einem Raster geprüft (kubisch und f_K).
+- `kn.satz.polynom_hauptsatz_kr0` — Die drei Aussagen des Kerns (kn.verm.polynom_halbexp_kern).
+- `kn.satz.polynom_hauptsatz_kr0` — Die Umstellung von H1/H2 auf K_{r₀} und K19 sind von Strang V gegengelesen, nicht von der Leitung Zeile für Zeile.
 - `bw.satz.phasengesetz_gestoppt` — Die wörtliche Übertragung der Lemmas 5.2–5.4 (Paper I) auf $j\ge J_0$ ist behauptet, nicht ausgeschrieben.
 - `bw.satz.phasengesetz_gestoppt` — (R3) — lokale Lipschitz-Stetigkeit von $A_b$ — folgt aus reeller Analytizität von $\operatorname{slog}_b^{\mathrm K}$; im Text nicht explizit gemacht.
 - `bw.lem.randgesetz` — Kontinuumsnäherung statt rigoroser Durchgangszeit (Douady–Lavaurs-Theorie).
@@ -90,6 +97,7 @@
 - `kn.satz.halbexp_beschraenkt` — kn.beob.slog_scheibe
 - `kn.satz.polynom_halbexp_reduktion` — kn.beob.slog_scheibe, kn.verm.polynom_halbexp_schranke
 - `kn.satz.polynom_halbexp_hauptsatz` — kn.verm.polynom_halbexp_eckmoden
+- `kn.satz.polynom_hauptsatz_kr0` — kn.satz.polynom_approximation_ecke, kn.verm.polynom_halbexp_kern
 - `bw.satz.schwanzkonvergenz` — bw.ann.hyp22
 - `bw.satz.phasengesetz` — bw.ann.hyp22
 - `bw.lem.offset` — bw.satz.phasengesetz_gestoppt
@@ -158,3 +166,4 @@
 - `exp.halbexp_korridor` — aktuell, 7/7 Prüfungen. Ω = slog(D) ist waagrecht konvex, Re ≤ 0.31218, Breite ≥ 2.067 (oben → 2.3495), linker Rand mit Steigung −0.238; der Korridor Ω ∩ (Ω − ½) ist überall breiter als 1, und die Polynome p_N bilden ihn in D ab.
 - `exp.polynom_schranke` — aktuell, 5/5 Prüfungen. Streng (Krawczyk) für N ≤ 120: eindeutige Lösung und |p_N| ≤ 2.2405 auf |x| ≤ |L|. Für alle N scheitert Kantorovich: |J⁻¹| wächst um ≈ 2.57 pro Grad, der Rest steht fast senkrecht auf den fast-singulären Richtungen bei L und L̄.
 - `exp.polynom_team` — aktuell, 5/5 Prüfungen. Team-Daten bestätigt: max|Π_N f_K| = 2.232651 bis N = 1000, Randfehler ~N^-4.85, Innenfehler ~N^-7.91 (Soll −7.894), echte p_N quadratisch nah, Kneser-Koeffizienten = Darboux-Leitterm an L.
+- `exp.polynom_phase3` — aktuell, 5/5 Prüfungen. ‖Ĵ_N⁻¹‖ = 1.251155 (kubisch, N = 100–200 konstant), Kneser 1.250337; ohne Linse wächst sie (1.366 → 1.852); (K2) mit den zertifizierten Koeffizienten verträglich; Eckprofil-Integral bestätigt.

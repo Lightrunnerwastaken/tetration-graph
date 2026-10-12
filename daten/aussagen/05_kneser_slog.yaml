@@ -1435,6 +1435,10 @@ aussagen:
 
     **Stand 10.10.2026 (Forschungsteam):** bis $N=1500$ bestätigt, mit einem präzisen Fehlergesetz (kn.beob.polynom_halbexp_fehlergesetz); bedingt bewiesen — es fehlt nur die
     lineare Annahme (H) über die Eckmoden bei $L$ (kn.satz.polynom_halbexp_hauptsatz). Für kein vergleichbares Abschneide-Verfahren ist bisher Konvergenz gegen Kneser bewiesen.
+
+    **Stand 12.10.2026 (Phasen 2–3):** Kneser zur Basis $e$ und der Zweig bis $N=400$ sind streng zertifiziert (kn.satz.kneser_e_zertifiziert, kn.satz.polynom_zweig_400).
+    Die Fassung „gleichmässig bis zum Rand“ ist nach Modellrechnungen für astronomisch grosse $N$ vermutlich falsch (kn.beob.polynom_rand_plateau). Die tragfähige Fassung — gleichmässig ohne
+    kleine Umgebungen von $L,\bar L$, mit Koeffizienten und $p_N(1)$ — ist bedingt bewiesen (kn.satz.polynom_hauptsatz_kr0); offen ist der Kern kn.verm.polynom_halbexp_kern.
   einfach: >-
     Man sucht ein Polynom, das zweimal hintereinander angewendet möglichst genau eˣ ergibt — aber nur die ersten N Glieder der Reihe müssen stimmen. Ohne dass man Tetration,
     Superlogarithmus oder Kneser hineinsteckt, landet man bei Knesers halber e-Funktion: bei Grad 100 auf 16 Stellen. Warum das Abschneiden genau diese Lösung auswählt, ist nicht bewiesen.
@@ -1450,8 +1454,8 @@ aussagen:
     f2_benutzte_voraussetzungen: 'Wahl des Zweigs (stetig von $p_1$ aus); reelle Koeffizienten.'
     f3_spezialfall: 'Verwandt mit dem intuitiven Superlogarithmus (abgeschnittene Carleman-Matrix) und Gottfried Helms’ Matrix-Wurzel (Forum tid 842) — beide ebenfalls numerisch Kneser, unbewiesen.'
     f4_uebertragbar: 'Auf $f^{\circ m}=\exp$ (Drittel usw.) und andere Basen; auf die Iterationswurzeln jeder ganzen Funktion ohne reellen Fixpunkt.'
-    f5_neue_frage: 'Annahme (H) über die Eckmoden beweisen (kn.verm.polynom_halbexp_eckmoden) — daraus folgt die Vermutung (kn.satz.polynom_halbexp_hauptsatz).'
-  bewertung: {richtigkeit: 'numerisch bis N = 1500 (Fehlergesetz, Blindtest); bedingt bewiesen unter (H)', neuheit: vermutlich_neu, recherche: 'Forum-Spiegel (alle 1265 Themen) nach f(f(x)) = exp(x) mit Polynom/Koeffizienten/Abschneiden durchsucht: nur verwandte Verfahren (tid 228 Höcker-Trick, tid 842 Matrix-Wurzel), nicht dieses.', nutzen: 'Rechnet Knesers halbe e-Funktion aus einer rein lokalen Bedingung; würde Kneser ohne Komplexanalysis kennzeichnen.', nutzen_stufe: hoch}
+    f5_neue_frage: 'Den Kern (kn.verm.polynom_halbexp_kern) beweisen — daraus folgt die Vermutung ohne kleine Umgebungen von L (kn.satz.polynom_hauptsatz_kr0).'
+  bewertung: {richtigkeit: 'numerisch bis N = 1500 (Fehlergesetz, Blindtest); bedingt bewiesen (Fassung ohne Umgebungen von L) unter dem Kern kn.verm.polynom_halbexp_kern', neuheit: vermutlich_neu, recherche: 'Forum-Spiegel (alle 1265 Themen) nach f(f(x)) = exp(x) mit Polynom/Koeffizienten/Abschneiden durchsucht: nur verwandte Verfahren (tid 228 Höcker-Trick, tid 842 Matrix-Wurzel), nicht dieses.', nutzen: 'Rechnet Knesers halbe e-Funktion aus einer rein lokalen Bedingung; würde Kneser ohne Komplexanalysis kennzeichnen.', nutzen_stufe: hoch}
   quellen: [{ref: justus_halbexp_poly}, {ref: diese_arbeit, stelle: 'Nachrechnung bis N = 194, Koeffizienten, Randwert'}, {ref: forum_tid842, stelle: 'Matrix-Wurzel (Helms), verwandt'}]
   kanten:
     - {typ: analog_zu, ziel: kn.satz.intuitiver_log}
@@ -1831,7 +1835,8 @@ aussagen:
     „Stoss“ ganz in der Nähe von L angeregt? Die Rechnungen sagen: viel schwächer als nötig. Ein Beweis fehlt.
   gegenbeispielsuche: >-
     Stärkere Fassungen sind numerisch FALSCH und deshalb nicht angenommen: gleichmässige Stabilität sup|J_N⁻¹| < ∞ (Eckmode) und die globale polynomiale Pol-Schranke (H*) (ab N ≈ 420–650).
-    Die lokale Fassung (H) hält in allen Messungen bis N = 1200 mit Reserve.
+    Die lokale Fassung (H) hält in allen Messungen bis N = 1200 mit Reserve. Phase 3: (H) verlangt Kontrolle bis an L; nach kn.beob.polynom_rand_plateau ist das für N ≳ 10¹⁰
+    vermutlich falsch. Für die Fassung ohne Umgebungen von L tritt kn.verm.polynom_halbexp_kern an ihre Stelle.
   experimente: [exp.polynom_team]
   pruefung:
     f1_folgt_unmittelbar: 'Nein — eine Stabilitätsaussage für einen stark nicht-normalen abgeschnittenen Operator.'
@@ -1875,6 +1880,7 @@ aussagen:
       4. Zweig (Satz H2): σ-Homotopie von $\mathrm{pad}(p_N)$ zu $p_{N+1}$ bleibt in $B_{N+1}$; Induktion ab $N_0$.
     luecken:
       - 'Annahme (H) ist offen (kn.verm.polynom_halbexp_eckmoden).'
+      - 'Phase 3: (H) in der Form bis an L ist für astronomisch grosse N vermutlich falsch (kn.beob.polynom_rand_plateau); tragfähige Fassung: kn.satz.polynom_hauptsatz_kr0.'
       - 'Die Einzelbeweise stehen in forschung/polynom_halbexp/ARCHITEKTUR.md §4 und den Strang-Berichten; die Leitung hat sie nicht Zeile für Zeile nachgeprüft.'
       - 'Eine Prüfung (f_K(e^z) ∉ (−∞,0] auf dem linken Bogen) ist nur numerisch.'
   stuetzt_sich_auf: [kn.satz.halbexp_singularitaet_L, kn.konstr.kneser]
@@ -1884,7 +1890,7 @@ aussagen:
     f2_benutzte_voraussetzungen: '(K), (H), (A); weder gleichmässige Stabilität noch die Korridor-Bedingung noch die Form von slog(D).'
     f3_spezialfall: 'Schema „Konsistenz + kohärente Stabilität“ wie bei Galerkin-Verfahren, hier mit Stabilität nur entlang kohärenter Richtungen.'
     f4_uebertragbar: 'Auf andere Basen und gebrochene Iterierte (gleiche Architektur, andere Exponenten); im Möbius-Modell bis auf (H*)_M durchgezogen.'
-    f5_neue_frage: 'Beweis von (H).'
+    f5_neue_frage: 'Beweis von (H) — bzw. des Kerns der Fassung ohne Umgebungen von L (kn.verm.polynom_halbexp_kern).'
   bewertung: {richtigkeit: 'bedingt; Beweisarchitektur von fünf Forschungssträngen, nicht unabhängig nachgeprüft; numerisch bis N = 1500 gestützt', neuheit: vermutlich_neu, recherche: 'Für kein Abschneide-Verfahren, das gegen Kneser laufen soll, ist Konvergenz bewiesen (Walker 1991 §4, Paulsen 2016, Forum TPID 18; nur f(x) = bx bei Trappmann 2010).', nutzen: 'Führt die Vermutung auf eine einzige, präzise lineare Aussage zurück.', nutzen_stufe: hoch}
   quellen: [{ref: team_polynom_halbexp, stelle: 'ARCHITEKTUR.md §0, §4'}, {ref: walker1991, stelle: '§4: no proof of convergence is known'}, {ref: paulsen2016}, {ref: trappmann2010_intuitiv}]
   kanten:
@@ -1955,3 +1961,345 @@ aussagen:
   quellen: [{ref: team_polynom_halbexp, stelle: 'Strang E (m1*–m8*, r2_*, r3_*)'}]
   kanten:
     - {typ: verwandt, ziel: kn.satz.polynom_modelle}
+
+- id: kn.satz.kneser_e_zertifiziert
+  titel: 'Knesers Tetration zur Basis e rechnergestützt zertifiziert: Werte auf 1e-168, halbe e-Funktion mit Koeffizienten und Restschranke'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, superfunktion, fixpunkt_L]
+  bereich: 'Kneser-sexp zur Basis $e$ auf dem Streifen $-\tfrac12\le\operatorname{Re}z\le\tfrac12$; $f_K=T_e(\operatorname{slog}x+\tfrac12)$ mit Taylor-Koeffizienten $a_k$ um 0, $\rho=|L|$'
+  aussage: |
+    (i) **Werte:** $\operatorname{sexp}_K=\tilde T\pm1.3\cdot10^{-168}$ für $|\operatorname{Im}z|\le0.45$ ($\tilde T$ reelles Polynom vom Grad 519) und $\operatorname{sexp}_K=\tilde U\pm1.3\cdot10^{-168}$
+    für $\operatorname{Im}z\ge0.35$ ($\tilde U=P(L^{z+\tilde\theta})$ mit 241 Fourier-Moden); oberhalb $\operatorname{Im}z=0.36$ ist auch Knesers Strukturfunktion $\theta_K$ auf $4.4\cdot10^{-167}$ eingeschlossen.
+
+    (ii) **Halbe e-Funktion:** $a_0,\dots,a_{640}$ mit Fehler$\cdot\rho^k\le2.9\cdot10^{-127}$; für **alle** $k$ gilt $|a_k|\rho^k\le461.36\,k^{-6}$; ausserdem $f_K(L)=L$ und $f_K'(L)=\sqrt L$.
+  einfach: >-
+    Knesers Lösung zur Basis e ist nicht mehr nur „sehr genau berechnet“, sondern mit garantierter Fehlergrenze bekannt — auf 168 Stellen. Für die halbe e-Funktion gibt es
+    die ersten 641 Koeffizienten mit Garantie und eine bewiesene Schranke für alle übrigen.
+  beweis:
+    art: vollstaendig
+    text: |
+      1. Daten aus einem eigenen Cousin-Newton-Verfahren (Start vom Kneser-Motor), Residuen $2\cdot10^{-31}\to5\cdot10^{-169}$.
+      2. Defekte von Band und Naht mit Taylor-Modellen und Maximumprinzip eingeschlossen ($\le6.5\cdot10^{-173}$); aus ihnen eine glatte Funktion $F_0$, die die Funktionalgleichung exakt erfüllt.
+      3. Eine quasikonforme Glättung (Beltrami-Koeffizient $\le1.3\cdot10^{-171}$; Ahlfors–Bers, Stoilow) führt zu einer exakten Lösung; Identifikation mit Kneser über Paulsen–Cowgill.
+      4. Koeffizienten aus 4096 Krawczyk-Auswertungen und DFT mit Aliasschranke; die Restschranke durch sechsfache partielle Integration auf $|z|=\rho$ mit eingeschlossenem $\partial_\theta^6f_K$.
+    luecken:
+      - 'Drei formale Lücken ohne Wirkung auf die Zahlen (Fehlerbudget in Prüfung B, eine Lipschitz-Schranke, Zweigtreue der DFT-Knoten), benannt in phase3/v_pruefstand/BERICHT §1.1.'
+  stuetzt_sich_auf: [kn.konstr.kneser]
+  experimente: [exp.polynom_phase3]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; rechnergestützter Existenz- und Einschlussbeweis mit Glättung.'
+    f2_benutzte_voraussetzungen: 'Ahlfors–Bers, Stoilow, eine L⁴-Schranke der Beurling-Transformation, Paulsen–Cowgill (Eindeutigkeit).'
+    f3_spezialfall: 'Schema „Näherungslösung + Defektschranke + quasikonforme Korrektur“.'
+    f4_uebertragbar: 'Auf andere Basen b > η mit gleicher Programmkette.'
+    f5_neue_frage: 'Einschlüsse für andere Basen und für gebrochene Iterierte allgemein.'
+  bewertung: {richtigkeit: 'rechnergestützt bewiesen (Strang P), Schritte von Strang V gegengelesen; Restschranke (K2) von V gebaut und von K gegengelesen', neuheit: vermutlich_neu, recherche: 'Bisher nur numerische Werte (Paulsen–Cowgill, Forum, Kouznetsov); kein Einschluss mit Garantie gefunden.', nutzen: 'Macht die Startbedingung und alle Kneser-Eingaben des Polynom-Hauptsatzes streng.', nutzen_stufe: hoch}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'ARCHITEKTUR.md §9.8–§9.9 (Satz P-V, p26–p32a); phase3/v_pruefstand/BERICHT §1.1, §2.2 (K2)'}, {ref: paulsen_cowgill2017}]
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.polynom_hauptsatz_kr0}
+
+- id: kn.satz.polynom_zweig_400
+  titel: 'Der Polynom-Zweig ist bis zum Grad 400 streng zertifiziert und liegt dort 1e-12 nah an Knesers halber e-Funktion'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion]
+  bereich: '$p_N$ wie in kn.verm.polynom_halbexp'
+  aussage: |
+    Für jedes $N\le400$ existiert der von $p_1=x+\tfrac12$ stetig fortgesetzte Zweig und ist in einer expliziten Box eingeschlossen (Krawczyk, Kette $193\to400$ einzeln geprüft).
+    Für $N_0\in[318,400]$ gilt $\sup_{\bar D}|p_{N_0}-f_K|\le3.6\cdot10^{-12}$, bei $N=400$ sogar $1.75\cdot10^{-12}$ — rund $10^8$-mal kleiner als der Kugelradius, den der bedingte Hauptsatz braucht.
+  einfach: >-
+    Bis zum Grad 400 ist mit dem Computer bewiesen, dass die gerechneten Polynome wirklich die richtigen sind und Knesers Funktion bis auf 12 Stellen treffen.
+  beweis:
+    art: vollstaendig
+    text: |
+      Krawczyk-Test je Übergang $N\to N+1$ mit Startbox $2^{-(N+150)}$ (Strang X, auf dem Server parallel); die Kette (Box von $N$ liegt im Startgebiet von $N+1$) separat geprüft (Strang V,
+      eigener Code). Der Abstand zu $f_K$ über die zertifizierten Kneser-Koeffizienten (kn.satz.kneser_e_zertifiziert) und die Restschranke.
+  stuetzt_sich_auf: [kn.satz.kneser_e_zertifiziert, kn.satz.polynom_halbexp_endlich]
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; endliche, aber grosse rechnergestützte Prüfung.'
+    f2_benutzte_voraussetzungen: 'Nur Intervallarithmetik und die zertifizierten Kneser-Werte.'
+    f3_spezialfall: 'Fortsetzung von kn.satz.polynom_halbexp_endlich (dort N ≤ 120).'
+    f4_uebertragbar: 'Mit mehr Rechenzeit auf höhere Grade (N ≈ 1000 braucht ≈ 2320 Bit).'
+    f5_neue_frage: 'Wie weit trägt das, bevor die Verstärkung ≈ 1.17^N die Präzision sprengt?'
+  bewertung: {richtigkeit: 'rechnergestützt bewiesen, Kette unabhängig geprüft', neuheit: vermutlich_neu, recherche: 'Fortsetzung der eigenen Arbeit (kn.satz.polynom_halbexp_endlich).', nutzen: 'Erfüllt die Startbedingung (A) des bedingten Hauptsatzes mit grosser Reserve.', nutzen_stufe: mittel}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'x_alternativen/zert/, phase3/v_pruefstand/BERICHT §2.1'}]
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.polynom_halbexp_endlich}
+    - {typ: stuetzt, ziel: kn.satz.polynom_hauptsatz_kr0}
+
+- id: kn.beob.polynom_konforme_stabilitaet
+  titel: 'In der richtigen Koordinate verschwindet die Eckmode: die abgeschnittenen Gleichungen bleiben bis N = 2000 gleichmässig stabil'
+  art: beobachtung
+  ebene: B
+  status: numerisch
+  niveau: forschung
+  objekte: [superfunktion, fixpunkt_L]
+  bereich: '$\hat J_N=T_N^wC_kJ_N$: die Jacobi-Matrix in der konformen Koordinate $w$ von $\bar D\cup$ Linse über $\Gamma_{\rm in}$ ($k:\mathbb D\to$ Inneres, $k(0)=0$); Linsenhöhe $S$'
+  aussage: |
+    (i) Mit Linse $S=0.0166$ ist $\|\hat J_N^{-1}\|=1.251155$ für **jedes** gemessene $N=100\dots2000$ (kubisches Modell mit gleicher Ecke), $1.250337$ mit Knesers Koeffizienten
+    und ebenso am echten $p_N$ bis $N=2000$ — während in der üblichen Koordinate $\|\tilde J_N^{-1}\|=1.852,\ 9.10,\ 70.7$ ($N=200,400,600$) exponentiell wächst.
+
+    (ii) Die Linse muss überall über dem Wachstumsprofil $\Lambda(\tau)$ der Eckmode liegen (Schwelle $S^*\approx0.0118$, Kerben-Test blind vorhergesagt und bestätigt).
+    Wegen des komplexen Exponenten $\kappa_1$ dreht sich das Eckmuster um $1.45^\circ\cdot\ln N$: eine **tangentiale** Linse verliert ab $N\approx1000$, eine Linse mit **Ecke** an $L$ bleibt stabil
+    (faktorisierte Schur-Norm konstant $1.332$ bis $N=2000$).
+  einfach: >-
+    Die exponentiell wachsende Schwachstelle der Gleichungen ist zum grossen Teil eine Folge der Koordinaten, in denen man rechnet. Schreibt man die Gleichungen in einer an die Ecke
+    angepassten Koordinate, bleibt alles gleichmässig gut lösbar — gemessen bis Grad 2000.
+  gegenbeispielsuche: >-
+    Gezielt gesucht: dünnere Linsen, Kerben im Profil, Keile, das echte p_N statt f_K, Grade bis 2000. Instabil wird es genau dann, wenn die Linse irgendwo unter Λ liegt oder
+    tangential an L anliegt — beides vorhergesagt.
+  experimente: [exp.polynom_phase3]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; numerischer Befund, unabhängig von zwei Strängen mit eigenem Code bestätigt.'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: 'Stabilität des Abschnittsverfahrens (Böttcher–Silbermann) — hier aber mit Kompositionstransport, die klassische Theorie greift nicht direkt.'
+    f4_uebertragbar: 'Jede Basis b > η; jedes kubische Modell mit gleichem μ.'
+    f5_neue_frage: 'Beweis der gleichmässigen Stabilität; sie enthält die offene Eckaussage (kn.verm.polynom_halbexp_kern).'
+  bewertung: {richtigkeit: 'numerisch bis N = 2000, zwei unabhängige Programme', neuheit: vermutlich_neu, recherche: 'Keine Analyse dieser Abschnitte in der Literatur gefunden (Phasen 1–3).', nutzen: 'Zeigt, dass die Eckmode kein Hindernis der Sache, sondern der Darstellung ist.', nutzen_stufe: mittel}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/k_kern/BERICHT §3–§5, phase3/v_pruefstand/BERICHT §3.1–3.2, §3.12–3.13'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.polynom_eckmode}
+
+- id: kn.beob.polynom_rand_plateau
+  titel: 'Bis zum Rand gleichmässig konvergiert das Verfahren vermutlich nicht: in Modellen mit schneller Drehung bleibt der Fehler nahe L stehen'
+  art: beobachtung
+  ebene: B
+  status: numerisch
+  niveau: forschung
+  objekte: [superfunktion, fixpunkt_L]
+  bereich: 'Abschneide-Verfahren für Modelle mit Randfixpunkt $L$ und Multiplikator $\mu$; $\Pi_NU-U$ bei bekannter exakter Lösung $U$'
+  aussage: |
+    In einem Modell mit $|\mu|=2.6$ hört der Fehler $\Pi_NU-U$ in einer **festen** Zone nahe $L$ auf der $\Gamma_{\rm out}$-Seite ($|x-L|\approx0.13$–$0.15$) ab $N\approx1000$ auf zu fallen:
+    Plateau $1.2$–$2.3\cdot10^{-6}$ bis $N=3200$; in $L$ selbst, auf der $\Gamma_{\rm in}$-Seite und im Inneren konvergiert er weiter. Bei $|\mu|=2$ fällt er bis $N=2400$ überall.
+    Ursache ist die Drehung des Eckmusters: der primale Eckkopf dreht auf der $\Gamma_{\rm out}$-Seite in seinen Wachstumssektor.
+    **Folgerung (Kette, nicht nachgerechnet):** Bei Knesers $|\mu|=1.172$ träte derselbe Effekt erst ab $N\gtrsim10^{10}$ im Abstand $r_*\sim10^{-6}$ von $L$ auf.
+  einfach: >-
+    Die schärfste Fassung der Vermutung — „gleichmässig bis zum Rand“ — ist für astronomisch grosse Grade wahrscheinlich falsch: In Modellen, in denen sich die Ecke schneller dreht,
+    bleibt der Fehler in einer kleinen Zone neben L stehen. Koeffizienten und p_N(1) liegen weit weg davon und sind nicht betroffen.
+  gegenbeispielsuche: >-
+    Vorhersage vor der Rechnung aufgeschrieben (Strang V), dann in drei sauberen Quintik-Modellen geprüft; das ungeeignete Modell (|μ| = 2, fast singuläre Abschnitte) verworfen.
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Modellbefund plus Schlusskette über das explizite Eckprofil.'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: '—'
+    f4_uebertragbar: 'Jede Basis mit drehendem Randfixpunkt; die Zone wird mit kleinerem |μ| winzig.'
+    f5_neue_frage: 'Beweis oder Widerlegung der gleichmässigen Konvergenz auf D̄ für Kneser selbst.'
+  bewertung: {richtigkeit: 'numerisch an Modellen (N ≤ 3200); für Kneser nur Hochrechnung', neuheit: vermutlich_neu, recherche: 'Keine Vorarbeit bekannt.', nutzen: 'Legt die richtige Zielfassung fest: gleichmässig ohne kleine Umgebungen von L, L̄.', nutzen_stufe: hoch}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/v_pruefstand/BERICHT §3.14 (Test T1), phase3/k_kern/BERICHT §22–§23'}]
+  kanten:
+    - {typ: motiviert, ziel: kn.satz.polynom_hauptsatz_kr0}
+    - {typ: verwandt, ziel: kn.verm.polynom_halbexp_eckmoden}
+
+- id: kn.satz.polynom_eckprofil
+  titel: 'Die Ecke bei L in geschlossener Form: Grenzprofile als Gamma-Reihen mit dem Exponenten L/(4π)'
+  art: satz
+  ebene: B
+  status: skizze
+  niveau: forschung
+  objekte: [superfunktion, fixpunkt_L]
+  bereich: 'Rang-1-Bausteine („Köpfe“) der Inversen $J_n^{-1}$ nahe $L$ auf der Skala $d_n=\rho n^{-a}$, $a=1/\kappa_1=1-L/(4\pi i)=0.89359+0.02532i$; $\alpha=L/(4\pi)$'
+  aussage: |
+    Mit $F_\beta(u)=\sum_{k\ge0}\Gamma(\beta-i\alpha k)(-u)^k/(k!\,\Gamma(\beta))=\Gamma(\beta)^{-1}\int_0^\infty t^{\beta-1}e^{-t-u\,t^{-i\alpha}}dt$:
+    (i) **bewiesen:** das Grenzproblem an der Ecke (Mellin–Wiener–Hopf mit dem Faktor $1+\mu^{s-2}$, $\mu=\sqrt L$) hat die Lösungen $F_{\beta_A}$, $\beta_A=\tfrac12-2i\alpha$ (adjungiert), und
+    $F_{\beta_P}$, $\beta_P=\tfrac12+i\alpha$ (primal), mit $\lambda_P=-\mu^{-1/2}\lambda_A$; unter einer Mellin-Randbedingung sind sie eindeutig.
+    (ii) **gemessen:** die echten Köpfe laufen wie $n^{-0.894}$ gegen diese Profile (Gs Eckprofil auf $2.5\cdot10^{-7}$ mit einem Parameter getroffen); das Eckprodukt folgt
+    $K_n(L,L)\approx C\,L/d_n$ mit $C=-\tilde\lambda_P\Gamma(\tfrac12+i\alpha)/((\mu+\mu^{-1})\Gamma(\tfrac12+2i\alpha))=-0.010118-0.598298i$ (gemessen $-0.01012-0.59830i$).
+  einfach: >-
+    Das Verhalten der Gleichungen ganz nahe am Fixpunkt L lässt sich in Formeln hinschreiben: Es sind Reihen aus Gammafunktionen, in denen nur die Zahl L/(4π) vorkommt —
+    eine Folge von log L = L. Die Rechnungen treffen diese Formeln auf sieben Stellen.
+  formen:
+    - {tex: '\alpha=\frac{\log\mu}{2\pi}=\frac{L}{4\pi},\qquad \kappa_1=\frac{2\pi i}{2\pi i-\log\mu}', notiz: 'wegen log L = L ist log μ = L/2'}
+  beweis:
+    art: skizze
+    text: |
+      Mellin-Transformation macht das Grenzproblem diagonal; der Faktor $1+\mu^{s-2}$ zerfällt über die Spiegelungsformel in Gammafunktionen (Malyuzhinets-Faktor $\Gamma(\tfrac12+i\alpha(s-2))$);
+      Existenz durch Rücktransformation, Eindeutigkeit über Liouville unter der Mellin-Randbedingung; die Integraldarstellung durch Vertauschen von Reihe und Integral.
+    luecken:
+      - 'Lemma K12 (Übersetzung der Mellin-Randbedingung in Sektorbedingungen) nur skizziert.'
+      - 'Dass die echten Köpfe gegen die Grenzlösung konvergieren, ist gemessen, nicht bewiesen; ebenso die Formel für C (Anpassung an die Aussenlösung).'
+  stuetzt_sich_auf: [kn.satz.halbexp_singularitaet_L]
+  experimente: [exp.polynom_phase3]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Mellin–Wiener–Hopf mit explizitem Faktor.'
+    f2_benutzte_voraussetzungen: 'Nur die lokale Form von f bei L (L, μ = √L).'
+    f3_spezialfall: 'Malyuzhinets-Faktor der Keilbeugung; Stokes-Struktur eines Wendepunkts.'
+    f4_uebertragbar: 'Jede Basis: α = log μ/(2π) mit dem jeweiligen Multiplikator.'
+    f5_neue_frage: 'Anpassung an die globale Lösung mit Fehlerschranken (der offene Kern).'
+  bewertung: {richtigkeit: 'Grenzproblem bewiesen bis auf Lemma K12 (von V gegengelesen); Konvergenz der echten Köpfe numerisch', neuheit: vermutlich_neu, recherche: 'Malyuzhinets-Funktionen sind aus der Beugungstheorie bekannt; ihre Rolle bei Abschnitten von Kompositionsoperatoren nicht gefunden.', nutzen: 'Explizite lokale Parametrix für jeden Beweisweg an der Ecke.', nutzen_stufe: mittel}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/k_kern/BERICHT §18–§19, §24–§25, §27.3; phase3/v_pruefstand/BERICHT §1.9–1.10, §1.12, §3.17'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.halbexp_singularitaet_L}
+
+- id: kn.satz.polynom_cd_identitaet
+  titel: 'Christoffel–Darboux-Formel für die abgeschnittenen Gleichungen mit Komposition'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion]
+  bereich: '$J_n=T_nJ_\infty|_{P_n}$ mit $J_\infty u=u\circ f+m\,u$ ($f$ holomorph um 0, $f(0)\ne0$); $K_n(z,t)$ der Kern von $J_n^{-1}$, $q_{n+1}$ primaler Kopf, $\lambda_n$ adjungierter Kopf, $\nu_n=J_n^{-1}\mathbf 1$'
+  aussage: |
+    $$(z-t)\,K_n(z,t)=q_{n+1}(z)\,\lambda_n(t)-t\,\nu_n(z)+\Xi_n(z,t),\qquad \Xi_n(z,t)=\frac1{2\pi i}\oint K_n(z,s)\,(f(s)-s)\,K_n(f(s),t)\,\frac{ds}{s}.$$
+    Ohne Komposition ($f(s)=s$) bleibt die klassische Christoffel–Darboux-Formel für Toeplitz-Inverse. Der Dyson-Term $\Xi_n$ verschwindet in den Fixpunkten. Am Steg ist das Produkt
+    $m\,q_{n+1}\lambda_n/t$ unabhängig von $n$ (z. B. $1.03968$ bei $180^\circ$).
+  einfach: >-
+    Für die Inverse der Gleichungsmatrix gibt es eine exakte Formel wie für orthogonale Polynome: Sie besteht aus einem einzigen Paar von Bausteinen, einem glatten Teil und einem
+    Zusatzterm, der von der Verkettung p(p(x)) kommt.
+  beweis:
+    art: vollstaendig
+    text: |
+      Die Verschiebung erster Ordnung des Kompositionskanals: $JS-SJ=T_nM_{f-x}C_f-(T_nf^{n+1})e_n^{\mathsf T}$. Für $X=J_n^{-1}$ folgt $SX-XS=X(JS-SJ)X$; zwischen den Erzeugenden
+      $e(z)$ und $\hat e(t)$ ausgewertet ergibt der zweite Term das Kopfpaar, der Randterm $\nu_n$, und der Kompositionsteil den Dyson-Term als Konturintegral.
+  stuetzt_sich_auf: []
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: es ist die Kommutatorformel für Inverse, ausgewertet mit dem expliziten Kompositions-Kommutator.'
+    f2_benutzte_voraussetzungen: 'Holomorphie von f und m um 0; bei f_K gilt die Konturform nur auf Kreisen |s| < ρ.'
+    f3_spezialfall: 'Christoffel–Darboux / Gohberg–Semencul für Toeplitz-Inverse (Fall f(s) = s).'
+    f4_uebertragbar: 'Jede gewichtete Komposition.'
+    f5_neue_frage: 'Abschätzung des Dyson-Terms; eine Kontraktion für ihn scheitert (Spektralradius > 1 ab n ≈ 58).'
+  bewertung: {richtigkeit: 'bewiesen; mit zwei unabhängigen Programmen auf 1e-176 bzw. 2e-89 bestätigt (kubisch und Kneser)', neuheit: vermutlich_neu, recherche: 'CD-Formeln für Kompositionsoperatoren nicht gefunden.', nutzen: 'Exakte Darstellung des ganzen Kerns durch wenige Objekte.', nutzen_stufe: mittel}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/k_kern/BERICHT §39–§41; phase3/v_pruefstand/BERICHT §1.13'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.polynom_eckprofil}
+
+- id: kn.satz.polynom_approximation_ecke
+  titel: 'Wie gut Polynome Knesers halbe e-Funktion bis an die Ecke annähern: Rate N^{−3.96}'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [superfunktion, fixpunkt_L]
+  bereich: '$E\supset\bar D\setminus U_{r_0}(L,\bar L)$ ein Kompaktum mit Spiralecke bei $L$ (Aussenöffnung $\Theta=131.7^\circ$, $\alpha_E=\Theta/\pi$); $\mathcal P_N$ Polynome vom Grad $\le N$'
+  aussage: |
+    $\operatorname{dist}_E(f_K,\mathcal P_N)\le C_E\,N^{-5.417\,\alpha_E}$, beim Standardfenster also $N^{-3.96}$.
+  einfach: >-
+    Knesers halbe e-Funktion lässt sich auf dem Gebiet, das der Beweis braucht, sehr gut durch Polynome annähern: der Fehler fällt wie N hoch minus vier.
+  beweis:
+    art: skizze
+    text: |
+      Satz 2 von Andrievskii–Pritsker–Varga (Approximation auf Quasischeiben, $|f-p_n|\le c\,\rho_{1/n}^{r}\,\omega(\rho_{1/n})$) mit $r=5$; $f_K\in C^{5,0.417}(E)$ aus der Struktur bei $L$
+      (Exponent $5.447$, Verlust $0.030$ durch die Blattdrehung); an der Spiralecke $\rho_{1/N}(L)\asymp N^{-\alpha_E}$.
+    luecken:
+      - 'Dass E eine Quasischeibe ist (Jordan-Gebiet, Dreipunkt-Bedingung, Öffnung), ist nur numerisch auf einem Raster geprüft (kubisch und f_K).'
+  stuetzt_sich_auf: [kn.satz.halbexp_singularitaet_L]
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Anwendung eines bekannten Satzes; die Arbeit steckt in Glattheit und Geometrie.'
+    f2_benutzte_voraussetzungen: 'Andrievskii–Pritsker–Varga Satz 2; Struktur von f_K bei L.'
+    f3_spezialfall: 'Dzjadyk-Typ-Sätze der konstruktiven Funktionentheorie.'
+    f4_uebertragbar: 'Andere Basen, andere Ecköffnungen (Exponent 5.417·α_E).'
+    f5_neue_frage: 'Strenger Beweis der Quasischeiben-Geometrie.'
+  bewertung: {richtigkeit: 'Satz im Original gelesen (Strang K); Geometrie numerisch; synthetischer Test 3.37/3.97/5.02 gegen 3.36/3.96/5.02; gemessen 3.9–4.1', neuheit: folklore, nutzen: 'Datenseite des bedingten Hauptsatzes.', nutzen_stufe: mittel}
+  quellen: [{ref: andrievskii_pritsker_varga2001, stelle: 'Satz 2'}, {ref: team_polynom_halbexp, stelle: 'phase3/k_kern/BERICHT §35–§36; phase3/v_pruefstand/BERICHT §3.19, §3.23'}]
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.polynom_hauptsatz_kr0}
+
+- id: kn.verm.polynom_halbexp_kern
+  titel: 'Der offene Kern nach Phase 3: Eck-Pol-Antwort, ferne Raten und Familien-Kohärenz'
+  art: vermutung
+  ebene: B
+  status: vermutung
+  niveau: forschung
+  objekte: [superfunktion, fixpunkt_L]
+  bereich: '$K_{r_0}=\bar D\setminus U_{r_0}(L,\bar L)$; $u_n=\Pi_ns$ die Antwort auf den Pol in $L$; Köpfe wie in kn.satz.polynom_eckprofil'
+  aussage: |
+    Für den bedingten Hauptsatz (kn.satz.polynom_hauptsatz_kr0) fehlen drei Aussagen, alle numerisch mit Reserve erfüllt:
+    **(G-P)** die Zuwächse der Eck-Pol-Antwort sind auf $K_{r_0}$ polynomial klein: $\sup_{K_{r_0}}|\Delta u_n|\le Cn^{\kappa_G}$ (gemessen $\kappa_G\approx-3.1$);
+    **(FA)** die adjungierten Köpfe fallen fern von $L$ auf $n$-ter-Wurzel-Ebene mit strikter Reserve (Linse $-0.013$, $\Gamma_{\rm out}$-Bogen $-0.037$ je Grad);
+    **(Fam-koh)** für die Fast-Lösungen gibt es Keim-Repräsentanten, deren mit $|\Lambda_N/\Lambda_N(L)|$ gewichteter Abstand zu $f_K$ auf der Kontur polynomial bleibt
+    (gemessen $\sim N^{-4.7}$, $3\cdot10^{-16}$ bei $N=2000$, für jede Linse).
+    Alle drei sind Kohärenzaussagen an Stellen, an denen sich ein wachsender und ein fallender Faktor genau ausgleichen; jede Abschätzung, die die Faktoren einzeln beschränkt, hat dort keine Reserve.
+  einfach: >-
+    Nach drei Arbeitsphasen ist das Problem auf wenige, genau benannte Aussagen eingeschrumpft. Alle sind in den Rechnungen deutlich erfüllt. Sie zu beweisen braucht ein Werkzeug,
+    das zeigt, wie zwei sich exakt aufhebende Grössen zusammen schwingen — so ein Werkzeug fehlt bisher.
+  gegenbeispielsuche: >-
+    Stärkere Fassungen sind gemessen falsch: Familien-Repräsentant ohne Gewicht auf dicker Linse (wächst e^{0.0137N}), primale Reserve auf n-ter-Wurzel-Ebene (H_P ≡ 0, Lemma K20),
+    gleichmässige Konvergenz bis an L (kn.beob.polynom_rand_plateau). Die benannten Fassungen halten bis N = 2000 bzw. 3000.
+  experimente: [exp.polynom_phase3]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: 'Starke Asymptotik mit Verbindungsformel an einem Wendepunkt; nichtlokale Schweiss-Aufgabe.'
+    f4_uebertragbar: 'Gleiche Form für jede Basis b > η.'
+    f5_neue_frage: 'Ein Riemann–Hilbert-Rahmen mit Verschiebung, der beide Kanäle (Komposition und Multiplikation) an L enthält.'
+  bewertung: {richtigkeit: 'numerisch, mit Reserve; von zwei Strängen unabhängig gemessen', neuheit: vermutlich_neu, recherche: 'Phasen 1–3 und GPT-Strang: keine passende Theorie gefunden (Problemblatt OPEN_PROBLEM_2_en.md).', nutzen: 'Die einzige verbleibende Lücke zum Beweis von Janis’ Vermutung in der K_{r₀}-Fassung.', nutzen_stufe: hoch}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/HAUPTSATZ_KR0.md §2, phase3/KERNPROBLEM.md, phase3/OFFENES_PROBLEM_2.md'}]
+  kanten:
+    - {typ: motiviert, ziel: kn.satz.polynom_hauptsatz_kr0}
+    - {typ: verwandt, ziel: kn.verm.polynom_halbexp_eckmoden}
+
+- id: kn.satz.polynom_hauptsatz_kr0
+  titel: 'Hauptsatz, Fassung ohne Umgebungen von L: aus dem offenen Kern folgt Konvergenz gegen Knesers halbe e-Funktion'
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen: [kn.verm.polynom_halbexp_kern, kn.satz.polynom_approximation_ecke]
+  niveau: forschung
+  objekte: [superfunktion, kneser_T]
+  bereich: '$p_N$ wie in kn.verm.polynom_halbexp; $K_{r_0}=\bar D\setminus U_{r_0}(L,\bar L)$ mit $r_0>r_*$ (für Kneser $r_*\sim10^{-6}$)'
+  aussage: |
+    Gilt der Kern (kn.verm.polynom_halbexp_kern), so ist $\sup_{K_{r_0}}|\Pi_Nf_K-f_K|\le C\,N^{\gamma-3.96}$ mit gemessenem $\gamma\approx0$, und der von $p_1$ fortgesetzte Zweig ist ab
+    $N_0=400$ die einzige Lösung in der Kugel um $f_K$; also $p_N\to f_K$ **gleichmässig auf $K_{r_0}$**, insbesondere $a_k^{(N)}\to a_k$ und $p_N(1)\to T_e(\tfrac12)$.
+  einfach: >-
+    Das ist der Stand des Beweises: Alles ist bewiesen oder mit dem Computer zertifiziert, bis auf die wenigen Aussagen des Kerns. Gelten sie, dann ist Janis’ Vermutung bewiesen —
+    in der Fassung, die alles abdeckt, worum es ihr geht: Koeffizienten und p_N(1).
+  beweis:
+    art: skizze
+    text: |
+      1. **Datenseite (K19):** $\Pi_Nf-q_N=J_N^{-1}T_NJ(f-q_N)$ für jedes Polynom $q_N$; mit der Kopfentwicklung auf einer festen Kontur wird der Fehler durch $\operatorname{dist}_E(f_K,\mathcal P_N)$
+         (kn.satz.polynom_approximation_ecke) mal einer Summe über die Köpfe beschränkt — keine abgeschnittenen Pole, kein Drehproblem.
+      2. **Köpfe:** über die Rang-1-Zerlegung $\Delta K_n=\delta_n\Lambda_n/\ell_{nn}$ zerfällt die Kopfsumme in die drei Aussagen des Kerns.
+      3. **Nichtlinear:** die Sätze H1/H2 (Sekanten-Identität, Überlagerung, σ-Homotopie) mit Kugeln in $\sup_{K_{r_0}}$; Start bei $N_0=400$ aus kn.satz.polynom_zweig_400.
+    luecken:
+      - 'Die drei Aussagen des Kerns (kn.verm.polynom_halbexp_kern).'
+      - 'Die Umstellung von H1/H2 auf K_{r₀} und K19 sind von Strang V gegengelesen, nicht von der Leitung Zeile für Zeile.'
+  stuetzt_sich_auf: [kn.satz.kneser_e_zertifiziert, kn.satz.polynom_zweig_400, kn.satz.polynom_approximation_ecke, kn.satz.halbexp_singularitaet_L]
+  experimente: [exp.polynom_phase3]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; neue Datenseite (K19) und Kopfzerlegung statt der Pol-Annahme (H).'
+    f2_benutzte_voraussetzungen: 'Kern, zertifizierte Kneser-Werte, Zweig bis 400, Approximationsrate.'
+    f3_spezialfall: 'Galerkin-artige „Konsistenz + Stabilität“ mit Stabilität nur auf K_{r₀}.'
+    f4_uebertragbar: 'Andere Basen b > η.'
+    f5_neue_frage: 'Beweis des Kerns.'
+  bewertung: {richtigkeit: 'bedingt; Bausteine von Strang V gegengelesen; numerisch bis N = 2000 gestützt', neuheit: vermutlich_neu, recherche: 'wie kn.satz.polynom_halbexp_hauptsatz.', nutzen: 'Stand des Beweises nach drei Arbeitsphasen.', nutzen_stufe: hoch}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/HAUPTSATZ_KR0.md (Fassung 3)'}]
+  kanten:
+    - {typ: stuetzt, ziel: kn.verm.polynom_halbexp}
+    - {typ: verwandt, ziel: kn.satz.polynom_halbexp_hauptsatz}
+
+- id: kn.gescheitert.polynom_ecke_wege
+  titel: 'Acht Wege an der Ecke, die nicht tragen — und warum'
+  art: gescheitert
+  ebene: B
+  status: gescheitert
+  niveau: forschung
+  objekte: [superfunktion, fixpunkt_L]
+  bereich: 'Versuche aus Phase 3 (Stränge K und V), den offenen Kern zu beweisen'
+  aussage: |
+    (1) **Reserve in der konformen Koordinate:** die gleichmässige Stabilität enthält die Eckaussage für glatte Daten, braucht also dieselbe polynomiale Genauigkeit.
+    (2) **Klassische Abschnittstheorie:** lokale Invertierbarkeit genügt nicht — der Kompositionskanal transportiert Anteile durch den ganzen Phasenraum.
+    (3) **Cotlar–Stein:** asymptotisch nicht besser als die Dreiecksungleichung. (4) **Liouville auf dem Abel-Torus:** die Köpfe sind nur in komplementären Sektoren homogen.
+    (5) **Vergleichsprinzip:** es gibt keine superharmonische Vergleichsfunktion mit der Singularität der Köpfe (Gesamtmasse). (6) **Dyson-Kontraktion der CD-Formel:** Spektralradius $>1$ ab $n\approx58$.
+    (7) **Integrabler Eckkern:** die Ecke ist skaleninvariant, $f(s)-s$ und der Kern sind homogen vom Grad 0 — kein kleiner Parameter. (8) **Explizite Parametrix bzw. Abschneide-Rest:**
+    ausserhalb von $D$ dominiert die äussere Wachstumslösung; der Rest wächst um $0.252$ je Grad.
+  einfach: >-
+    Acht verschiedene Werkzeuge wurden an der Ecke bei L ausprobiert. Jedes scheitert an derselben Stelle: Zwei Grössen gleichen sich dort exakt aus, und keine Abschätzung, die sie
+    einzeln behandelt, hat Spielraum.
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: '—'
+    f4_uebertragbar: 'Dieselben Hindernisse bei jeder Basis b > η.'
+    f5_neue_frage: 'Ein Werkzeug, das die Kohärenz zweier sich ausgleichender Faktoren sieht.'
+  bewertung: {richtigkeit: 'jede Bruchstelle numerisch oder durch kurzen Beweis belegt', neuheit: vermutlich_neu, recherche: 'eigene Arbeit', nutzen: 'Erspart späteren Versuchen die bekannten Sackgassen.', nutzen_stufe: mittel}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/KERNPROBLEM.md §2–§4, phase3/REFLEXION.md, phase3/k_kern/BERICHT §6–§8, §15–§16, §33, §37–§38, §41–§42'}]
+  kanten:
+    - {typ: motiviert, ziel: kn.verm.polynom_halbexp_kern}

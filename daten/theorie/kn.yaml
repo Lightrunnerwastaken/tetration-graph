@@ -1241,3 +1241,162 @@ kn.beob.polynom_moebius_schwelle:
   bilder: []
   einordnung: |
     Mahnung zu [[kn.verm.polynom_halbexp]]; deshalb wurde dort bis $N=1500$ gerechnet ([[kn.beob.polynom_halbexp_fehlergesetz]]).
+
+kn.satz.kneser_e_zertifiziert:
+  worum: |
+    Bisher kannte man Knesers Tetration nur „sehr genau gerechnet“. Für einen Beweis braucht man mehr: Werte mit garantierter Fehlergrenze.
+  genau: |
+    Werte von $\operatorname{sexp}_K$ zur Basis $e$ auf $1.3\cdot10^{-168}$, die Koeffizienten $a_0,\dots,a_{640}$ der halben e-Funktion mit Garantie, eine Schranke $|a_k|\rho^k\le461.36\,k^{-6}$
+    für alle $k$, und $f_K(L)=L$, $f_K'(L)=\sqrt L$.
+  warum: |
+    1. Eine sehr genaue Näherungslösung wird so gebaut, dass ihre Fehler in der Funktionalgleichung (in einem Band und an einer Naht) beweisbar winzig sind.
+    2. Aus diesen Fehlern macht man eine glatte, aber nicht holomorphe Funktion, die die Gleichung exakt erfüllt.
+    3. Eine quasikonforme Abbildung biegt sie in eine echte holomorphe Lösung; deren Abstand zur Näherung ist so klein wie der Beltrami-Koeffizient, also $\approx10^{-171}$.
+    4. Weil es nach Paulsen–Cowgill nur eine Lösung dieser Art gibt, ist es Knesers.
+  beispiel: |
+    Aus den 641 Koeffizienten: $\sum a_k=f_K(1)=T_e(\tfrac12)=1.646354233751194580971924031\ldots$ Die grösste der Grössen $|a_k|\rho^kk^6$ für $k\le640$ ist $55.5$ (bei $k=9$),
+    weit unter der bewiesenen Schranke $461.36$.
+  bilder: [exp.polynom_phase3]
+  einordnung: |
+    Liefert die Kneser-Eingaben für [[kn.satz.polynom_zweig_400]] und [[kn.satz.polynom_hauptsatz_kr0]]. Die Struktur bei $L$ stammt aus [[kn.satz.halbexp_singularitaet_L]].
+
+kn.satz.polynom_zweig_400:
+  worum: |
+    Ein Beweis für „alle Grade ab $N_0$“ braucht einen gesicherten Anfang: Bei $N_0$ muss die gerechnete Lösung wirklich die richtige sein und nah genug an Kneser liegen.
+  genau: |
+    Der Zweig ist für jedes $N\le400$ zertifiziert, und $\sup_{\bar D}|p_N-f_K|\le3.6\cdot10^{-12}$ für $N\in[318,400]$.
+  warum: |
+    1. Für jeden Übergang $N\to N+1$ prüft der Krawczyk-Test, dass in einer kleinen Box genau eine Lösung liegt.
+    2. Eine eigene Prüfung zeigt, dass jede Box im Startgebiet der nächsten liegt — die Kette reisst nicht ab.
+    3. Der Abstand zu $f_K$ folgt aus den zertifizierten Kneser-Koeffizienten plus Restschranke.
+  beispiel: |
+    207 Übergänge von 193 bis 400, parallel auf einem Server gerechnet (etwa 2.5 Stunden), alle bestanden.
+  bilder: []
+  einordnung: |
+    Verlängert [[kn.satz.polynom_halbexp_endlich]] (dort bis 120). Startbedingung für [[kn.satz.polynom_hauptsatz_kr0]].
+
+kn.beob.polynom_konforme_stabilitaet:
+  worum: |
+    Die abgeschnittenen Gleichungen schienen eine exponentiell wachsende Schwachstelle bei $L$ zu haben ([[kn.beob.polynom_eckmode]]). Ist das eine Eigenschaft der Sache — oder der Koordinaten?
+  genau: |
+    In der konformen Koordinate von $\bar D\cup$ Linse bleibt $\|\hat J_N^{-1}\|=1.251155$ für $N=100\dots2000$; ohne Linse wächst dieselbe Grösse exponentiell.
+  warum: |
+    1. Man schreibt die Gleichungen nicht in Potenzen von $x$, sondern in Potenzen einer Koordinate $w$, die einen etwas grösseren Bereich (Kreis plus eine dünne Linse) auf die Kreisscheibe abbildet.
+    2. Die Eckmode wächst wie $e^{cN}$ mit $c\approx0.012$; die Linse dämpft genau die Richtungen, in denen sie lebt, um $e^{-SN}$. Ist $S>c$ überall, gewinnt die Dämpfung.
+    3. Weil sich das Eckmuster langsam dreht ($1.45^\circ\cdot\ln N$), muss die Linse an $L$ eine Ecke haben — eine tangential anliegende Linse verliert irgendwann.
+  beispiel: |
+    Ohne Linse: $1.366$ ($N=100$), $1.852$ ($N=200$), $9.10$ ($N=400$), $70.7$ ($N=600$). Mit Linse: immer $1.251155$. Eine absichtliche Kerbe im Linsenprofil lässt das Wachstum genau dort und
+    mit der vorhergesagten Rate zurückkehren.
+  bilder: [exp.polynom_phase3]
+  einordnung: |
+    Gleichwertig zur offenen Eckaussage für glatte Daten — darum kein Beweis, aber der klarste Hinweis, dass die Konvergenz kein Zufall ist. Kern: [[kn.verm.polynom_halbexp_kern]].
+
+kn.beob.polynom_rand_plateau:
+  worum: |
+    Stimmt die Vermutung in der schärfsten Fassung „gleichmässig bis zum Rand $|x|=|L|$“? Die Rechnungen bis Grad 1500 sagen ja — aber das Verhalten an der Ecke spricht dagegen, irgendwann.
+  genau: |
+    In Modellen mit schneller Drehung bleibt der Fehler in einer festen Zone neben $L$ ab $N\approx1000$ stehen; bei Kneser träte das erst bei $N\gtrsim10^{10}$ im Abstand $\sim10^{-6}$ von $L$ auf.
+  warum: |
+    1. Nahe $L$ besteht die Lösung aus Eckprofilen, die sich mit $N$ langsam drehen ([[kn.satz.polynom_eckprofil]]).
+    2. Dreht der primale Teil auf der $\Gamma_{\rm out}$-Seite in einen Sektor, in dem er wächst, kann der Fehler dort nicht mehr fallen.
+    3. Bei grossem Multiplikator $|\mu|$ geschieht das schon bei erreichbaren Graden; bei Knesers $|\mu|=1.17$ ist die Drehung so langsam, dass es erst bei astronomischen Graden passiert.
+  beispiel: |
+    Modell mit $|\mu|=2.6$: Fehler in der Zone $1.2$–$2.3\cdot10^{-6}$ von $N=1000$ bis $3200$, während er in $L$ selbst und im Inneren weiter fällt.
+  bilder: []
+  einordnung: |
+    Darum zielt der Hauptsatz auf $\bar D$ ohne kleine Umgebungen von $L,\bar L$: [[kn.satz.polynom_hauptsatz_kr0]]. Die ältere Annahme [[kn.verm.polynom_halbexp_eckmoden]] verlangte Kontrolle bis an $L$.
+
+kn.satz.polynom_eckprofil:
+  worum: |
+    Was genau passiert in den Gleichungen ganz nahe am Fixpunkt $L$? Man kann es ausrechnen — in Formeln aus Gammafunktionen.
+  genau: |
+    Grenzprofile $F_\beta(u)=\sum\Gamma(\beta-i\alpha k)(-u)^k/(k!\Gamma(\beta))$ mit $\alpha=L/(4\pi)$, $\beta_A=\tfrac12-2i\alpha$ und $\beta_P=\tfrac12+i\alpha$; Skala $n^{-a}$ mit
+    $a=1-L/(4\pi i)$.
+  warum: |
+    1. Nahe $L$ ist $f$ fast eine Streckung um $\mu=\sqrt L$. Die Gleichungen werden dann in der Mellin-Variablen diagonal: aus dem Problem wird ein Faktor $1+\mu^{s-2}$.
+    2. Dieser Faktor zerfällt über die Spiegelungsformel in Gammafunktionen; wegen $\log L=L$ ist $\log\mu=L/2$, daher das $\alpha=L/(4\pi)$.
+    3. Rücktransformiert ergeben sich die Reihen $F_\beta$; mit einer Randbedingung im Mellin-Bild ist die Lösung eindeutig.
+  beispiel: |
+    Das bei GPT gemessene Eckprofil wird mit einem einzigen Skalenparameter $\lambda=-0.203297-1.406007i$ auf $2.5\cdot10^{-7}$ getroffen; die Konstante des Eckprodukts
+    $C=-0.010118-0.598298i$ (Formel) gegen $-0.01012-0.59830i$ (gemessen).
+  bilder: [exp.polynom_phase3]
+  einordnung: |
+    Die Exponenten passen zu Knesers Singularität bei $L$ ([[kn.satz.halbexp_singularitaet_L]]). Explizit ist nur die Ecke; der Anschluss an den Rest ist der offene Kern [[kn.verm.polynom_halbexp_kern]].
+
+kn.satz.polynom_cd_identitaet:
+  worum: |
+    Für orthogonale Polynome gibt es die berühmte Christoffel–Darboux-Formel: Die ganze Summe über alle Polynome lässt sich durch die letzten beiden ausdrücken. Gibt es so etwas hier?
+  genau: |
+    $(z-t)K_n(z,t)=q_{n+1}(z)\lambda_n(t)-t\nu_n(z)+\Xi_n(z,t)$ mit dem Dyson-Term $\Xi_n=\frac1{2\pi i}\oint K_n(z,s)(f(s)-s)K_n(f(s),t)\,ds/s$.
+  warum: |
+    1. Für die Inverse $X$ einer Matrix $J$ gilt $SX-XS=X(JS-SJ)X$ — eine Zeile Algebra.
+    2. Bei der Komposition ist der Kommutator $JS-SJ$ ausrechenbar: ein Randterm plus die Multiplikation mit $f(x)-x$.
+    3. Setzt man das in die erzeugenden Funktionen ein, wird der Randterm zum Kopfpaar und der Rest zum Dyson-Integral.
+  beispiel: |
+    Ohne Komposition ($f(s)=s$) verschwindet $\Xi_n$, und es bleibt die bekannte Formel für Toeplitz-Inverse. Mit Komposition ist die Formel auf $10^{-176}$ nachgerechnet; am Steg ist
+    $m\,q_{n+1}\lambda_n/t=1.03968$ bei $180^\circ$, unabhängig vom Grad.
+  bilder: []
+  einordnung: |
+    Exakt, aber kein Werkzeug für Schranken: eine Kontraktion des Dyson-Terms scheitert ([[kn.gescheitert.polynom_ecke_wege]], Weg 6).
+
+kn.satz.polynom_approximation_ecke:
+  worum: |
+    Ein Teil des Beweises fragt nur: Wie gut kann ein Polynom vom Grad $N$ Knesers halbe e-Funktion auf dem relevanten Gebiet annähern?
+  genau: |
+    Der Fehler fällt wie $N^{-5.417\alpha_E}$, beim Standardgebiet wie $N^{-3.96}$.
+  warum: |
+    1. Ein Satz von Andrievskii–Pritsker–Varga sagt: Auf einer Quasischeibe ist der Fehler so klein wie die Glattheit der Funktion, gemessen im Abstand der Niveaulinie $1+1/N$ der Green-Funktion.
+    2. $f_K$ ist am Rand fünfmal stetig differenzierbar mit Hölder-Rest $0.417$ (wegen des Exponenten $5.447$ bei $L$).
+    3. An der Ecke mit Öffnung $\Theta$ liegt die Niveaulinie im Abstand $N^{-\Theta/\pi}$; zusammen $N^{-5.417\Theta/\pi}$.
+  beispiel: |
+    Vorhersage für drei Ecköffnungen $3.36$, $3.96$, $5.02$; an einer Testfunktion gemessen $3.37$, $3.97$, $5.02$; an $f_K$ selbst $3.9$–$4.1$.
+  bilder: []
+  einordnung: |
+    Die Datenseite von [[kn.satz.polynom_hauptsatz_kr0]]: Je schneller diese Rate, desto mehr Spielraum bleibt für den Kern.
+
+kn.verm.polynom_halbexp_kern:
+  worum: |
+    Nach drei Arbeitsphasen: Was genau fehlt noch zum Beweis von Janis’ Vermutung?
+  genau: |
+    Drei Kohärenzaussagen — (G-P) die Antwort auf den Pol in $L$, (FA) die fernen Raten der adjungierten Köpfe, (Fam-koh) die Nähe der Fast-Lösungen in gewichteter Form.
+  warum: |
+    1. Die Inverse der Gleichungen zerfällt exakt in Rang-1-Bausteine („Köpfe“).
+    2. Jeder Kopf ist ein Produkt aus einem wachsenden und einem fallenden Faktor. An den kritischen Stellen gleichen sich die beiden Raten genau aus.
+    3. Deshalb hat jede Abschätzung, die die Faktoren einzeln beschränkt, keinen Spielraum; nur das gemeinsame Schwingen der Faktoren hält die Summe klein — und genau das ist bisher nicht beweisbar.
+  beispiel: |
+    Gemessen bis $N=2000$: Zuwächse der Eck-Pol-Antwort fallen wie $n^{-3.1}$; ferne adjungierte Raten $-0.013$ bzw. $-0.037$ je Grad; gewichteter Familienabstand $3\cdot10^{-16}$.
+  bilder: [exp.polynom_phase3]
+  einordnung: |
+    Ersetzt für die neue Zielfassung die ältere Annahme [[kn.verm.polynom_halbexp_eckmoden]]; gescheiterte Beweiswege in [[kn.gescheitert.polynom_ecke_wege]]; Problemblatt für Fachleute:
+    forschung/polynom_halbexp/phase3/OPEN_PROBLEM_2_en.md.
+
+kn.satz.polynom_hauptsatz_kr0:
+  worum: |
+    Der Stand des Beweises nach drei Arbeitsphasen, in der Fassung, die alles abdeckt, worum es bei der Vermutung geht.
+  genau: |
+    Unter dem Kern [[kn.verm.polynom_halbexp_kern]]: $p_N\to f_K$ gleichmässig auf $\bar D$ ohne kleine Umgebungen von $L,\bar L$; insbesondere konvergieren die Koeffizienten und $p_N(1)\to T_e(\tfrac12)$.
+  warum: |
+    1. **Datenseite:** Der Fehler der linearen Projektion ist exakt die Inverse angewandt auf den Fehler einer beliebigen Polynom-Annäherung — so wird er zu einer Frage der Approximationstheorie
+       ([[kn.satz.polynom_approximation_ecke]]).
+    2. **Köpfe:** Die Inverse zerfällt in Rang-1-Bausteine; was über sie gebraucht wird, ist genau der Kern.
+    3. **Nichtlinear:** wie im älteren Hauptsatz (Sekanten-Identität, Überlagerung, Homotopie von Grad zu Grad), jetzt mit Kugeln in der Norm auf $K_{r_0}$.
+    4. **Start:** [[kn.satz.polynom_zweig_400]].
+  beispiel: |
+    Mit den gemessenen Exponenten fällt der Fehler wie $N^{-3.96}$; bei $N=400$ verlangt die Startbedingung nur einen Abstand $\lesssim10^{-4}$, vorhanden sind $1.75\cdot10^{-12}$.
+  bilder: []
+  einordnung: |
+    Nachfolger von [[kn.satz.polynom_halbexp_hauptsatz]]; die Gründe für die neue Fassung in [[kn.beob.polynom_rand_plateau]].
+
+kn.gescheitert.polynom_ecke_wege:
+  worum: |
+    Welche naheliegenden Werkzeuge reichen für die Ecke bei $L$ nicht — und was lehrt das?
+  genau: |
+    Acht Wege (Reserve, klassische Abschnittstheorie, Cotlar–Stein, Liouville, Vergleichsprinzip, Dyson-Kontraktion, integrabler Eckkern, explizite Parametrix) mit je einer belegten Bruchstelle.
+  warum: |
+    Alle Wege scheitern an derselben Struktur: An der Ecke und am Steg gleichen sich ein wachsender und ein fallender Faktor exakt aus, und die Ecke ist skaleninvariant — es gibt keinen
+    kleinen Parameter. Werkzeuge, die mit Beträgen oder lokalen Modellen arbeiten, sehen die Kohärenz der beiden Faktoren nicht.
+  beispiel: |
+    Die Dyson-Abbildung der Christoffel–Darboux-Formel hat Spektralradius $0.61$ bei $n=10$, aber $1.20$ bei $n=100$; ihr wachsender Vektor sitzt nicht an der Ecke, sondern bei den niedrigen Graden.
+  bilder: []
+  einordnung: |
+    Ergänzt [[kn.gescheitert.polynom_kantorovich]]; der verbleibende Kern steht in [[kn.verm.polynom_halbexp_kern]].

@@ -1,5 +1,7 @@
 # Forschungsteam: Polynom-Wurzel von exp → Kneser (Beweis der Schranke)
 
+## PHASE 3 seit 11.10.2026 19:50: zwei Agenten, Strang K (Kern) und Strang V (Prüfstand), siehe `phase3/README.md`
+
 ## PAUSE seit 11.10.2026 04:51 (Janis: „langsam stoppen“)
 
 Alle fünf Stränge sind sauber angehalten, es laufen keine Prozesse (lokal und auf aicgolling). Neu starten nur auf Janis' Auftrag.

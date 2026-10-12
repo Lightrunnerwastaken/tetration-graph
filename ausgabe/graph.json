@@ -1,6 +1,6 @@
 {
- "gebaut": "2026-10-10 23:18",
- "eingabe_hash": "ff49afeaeb0edb15",
+ "gebaut": "2026-10-12 14:21",
+ "eingabe_hash": "f71d504a65d8c73d",
  "gebiete": [
   {
    "id": "gr",
@@ -1379,11 +1379,11 @@
   },
   "team_polynom_halbexp": {
    "art": "eigene",
-   "autor": "Forschungsteam (Claude, fünf Stränge A–E, Leitung Hauptsitzung) im Auftrag von J. Justus",
+   "autor": "Forschungsteam (Claude; Phase 1 Stränge A–E, Phase 2 Stränge P, W, O, M, X, Phase 3 Stränge K und V; dazu GPT-Strang G; Leitung Hauptsitzung) im Auftrag von J. Justus",
    "titel": "Polynom-Wurzel von exp → Kneser — Beweisarchitektur, Berichte und Daten",
-   "ort": "tetration-graph/forschung/polynom_halbexp/ (ARCHITEKTUR.md, a_moden … e_modelle/BERICHT.md, gemeinsam/), 10.10.2026",
+   "ort": "tetration-graph/forschung/polynom_halbexp/ (ARCHITEKTUR.md, Strang-Ordner, phase3/HAUPTSATZ_KR0.md, KERNPROBLEM.md, OPEN_PROBLEM_2_en.md, gemeinsam/), 10.–12.10.2026",
    "geprueft": "sekundaer",
-   "notiz": "Kernzahlen in exp.polynom_team aus den Team-Daten nachgerechnet; die Beweise der Stränge sind von der Leitung nicht Zeile für Zeile geprüft."
+   "notiz": "Kernzahlen in exp.polynom_team und exp.polynom_phase3 von der Leitung nachgerechnet; die Beweise der Stränge sind gegenseitig (Strang P bzw. V) gegengelesen, von der Leitung nicht Zeile für Zeile."
   },
   "paulsen2016": {
    "art": "literatur",
@@ -1392,6 +1392,14 @@
    "ort": "Korean J. Math. 24 (2016), 81–106",
    "geprueft": "sekundaer",
    "notiz": "Abgeschnittene Julia-Gleichung konvergiert numerisch gegen Kneser, Beweis „very difficult“ (S. 86–87; laut Strang C gelesen). Titel nach Strang C, nicht im Original geprüft."
+  },
+  "andrievskii_pritsker_varga2001": {
+   "art": "literatur",
+   "autor": "V. V. Andrievskii, I. E. Pritsker, R. S. Varga",
+   "titel": "Simultaneous approximation and interpolation of functions on continua in the complex plane",
+   "ort": "J. Math. Pures Appl. 80 (2001); arXiv math/0005032",
+   "geprueft": "sekundaer",
+   "notiz": "Satz 2 (Approximation auf Quasischeiben) von Strang K im arXiv-Original gelesen (S. 1–5); von der Leitung nicht selbst gelesen."
   }
  },
  "knoten": [
@@ -9864,7 +9872,7 @@
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 30,
+   "_tragweite": 35,
    "_abhaengig": [
     "it.satz.koenigs"
    ],
@@ -10141,7 +10149,7 @@
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 41,
+   "_tragweite": 46,
    "_abhaengig": [],
    "_traegt": [
     "bw.satz.imaginaere_richtung",
@@ -11564,14 +11572,14 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_modelle",
+     "id": "kn.satz.polynom_zweig_400",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: superfunktion"
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_endlich",
+     "id": "kn.satz.polynom_modelle",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: superfunktion"
@@ -11892,7 +11900,7 @@
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 24,
+   "_tragweite": 29,
    "_abhaengig": [],
    "_traegt": [
     "fp.satz.fixpunkt_summen",
@@ -14196,6 +14204,13 @@
      ]
     },
     {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 1.67,
+     "warum": [
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
      "id": "kn.verm.polynom_halbexp_eckmoden",
      "score": 1.67,
      "warum": [
@@ -14203,36 +14218,29 @@
      ]
     },
     {
-     "id": "kn.beob.polynom_eckmode",
+     "id": "kn.satz.polynom_eckprofil",
      "score": 1.67,
      "warum": [
       "gemeinsame Objekte: fixpunkt_L, superfunktion"
      ]
     },
     {
-     "id": "kl.satz.bruchsumme",
+     "id": "kn.satz.polynom_approximation_ecke",
      "score": 1.67,
      "warum": [
-      "gemeinsame Objekte: fixpunkt_L, regulaer_T"
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
      ]
     },
     {
-     "id": "kl.satz.cheta",
-     "score": 1.29,
+     "id": "kn.gescheitert.polynom_ecke_wege",
+     "score": 1.67,
      "warum": [
-      "über kl.satz.obere_superexp"
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
      ]
     },
     {
-     "id": "kn.gescheitert.regulaer_an_L",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: fixpunkt_L, regulaer_T"
-     ]
-    },
-    {
-     "id": "kn.gescheitert.polynom_kantorovich",
-     "score": 1.25,
+     "id": "kn.beob.polynom_rand_plateau",
+     "score": 1.67,
      "warum": [
       "gemeinsame Objekte: fixpunkt_L, superfunktion"
      ]
@@ -16432,7 +16440,7 @@
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 13,
+   "_tragweite": 18,
    "_abhaengig": [
     "fg.satz.schroeder_abel",
     "fp.satz.lambert",
@@ -16443,6 +16451,7 @@
     "kn.konstr.pentation",
     "kn.satz.halbe_exp",
     "kn.satz.halbexp_singularitaet_L",
+    "kn.satz.kneser_e_zertifiziert",
     "kn.satz.kneser_eigenschaften",
     "kn.satz.paulsen_komplex",
     "kn.satz.polynom_halbexp_hauptsatz"
@@ -16507,10 +16516,10 @@
      ]
     },
     {
-     "id": "fp.satz.lambert",
-     "score": 3.36,
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 3.83,
      "warum": [
-      "stützt sich auf (Beweis)"
+      "stützt sich auf (Beweis) (rückwärts)"
      ]
     }
    ],
@@ -16609,6 +16618,14 @@
      ]
     },
     {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 2.3,
+     "warum": [
+      "über kn.konstr.kneser",
+      "gemeinsame Objekte: fixpunkt_L, kneser_T"
+     ]
+    },
+    {
      "id": "kn.satz.halbexp_singularitaet_L",
      "score": 2.05,
      "warum": [
@@ -16636,13 +16653,6 @@
      "score": 1.62,
      "warum": [
       "verwandt (rückwärts)"
-     ]
-    },
-    {
-     "id": "fp.satz.lambert",
-     "score": 1.55,
-     "warum": [
-      "über kn.konstr.kneser"
      ]
     }
    ],
@@ -17044,6 +17054,14 @@
      ]
     },
     {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 2.72,
+     "warum": [
+      "über kn.konstr.kneser",
+      "gemeinsame Objekte: fixpunkt_L, kneser_T"
+     ]
+    },
+    {
      "id": "kn.satz.halbexp_singularitaet_L",
      "score": 2.3,
      "warum": [
@@ -17070,13 +17088,6 @@
      "score": 1.67,
      "warum": [
       "über kn.konstr.kneser"
-     ]
-    },
-    {
-     "id": "kn.satz.paulsen_cowgill",
-     "score": 1.67,
-     "warum": [
-      "gemeinsame Objekte: fixpunkt_L, kneser_T"
      ]
     }
    ],
@@ -21231,7 +21242,7 @@
      ]
     },
     {
-     "id": "kn.verm.polynom_halbexp_eckmoden",
+     "id": "kn.verm.polynom_halbexp_kern",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: fixpunkt_L, superfunktion"
@@ -21999,6 +22010,13 @@
      ]
     },
     {
+     "id": "kn.satz.polynom_zweig_400",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
      "id": "kn.satz.polynom_modelle",
      "score": 1.25,
      "warum": [
@@ -22007,13 +22025,6 @@
     },
     {
      "id": "kn.satz.polynom_halbexp_endlich",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: superfunktion"
-     ]
-    },
-    {
-     "id": "kn.beob.polynom_moebius_schwelle",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: superfunktion"
@@ -22119,6 +22130,14 @@
      ]
     },
     {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 2.02,
+     "warum": [
+      "über kn.konstr.kneser",
+      "gemeinsame Objekte: fixpunkt_L, kneser_T"
+     ]
+    },
+    {
      "id": "kn.beob.hexation_verzweigt",
      "score": 1.85,
      "warum": [
@@ -22146,13 +22165,6 @@
      "warum": [
       "über kn.konstr.kneser",
       "gemeinsame Objekte: fixpunkt_L, kneser_T"
-     ]
-    },
-    {
-     "id": "kn.beob.referenzwerte",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: kneser_T"
      ]
     }
    ],
@@ -22658,6 +22670,13 @@
      ]
     },
     {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: kneser_T, superfunktion"
+     ]
+    },
+    {
      "id": "kn.satz.polynom_halbexp_reduktion",
      "score": 2.5,
      "warum": [
@@ -22686,17 +22705,10 @@
      ]
     },
     {
-     "id": "kn.verm.polynom_halbexp_schranke",
-     "score": 1.25,
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 1.67,
      "warum": [
-      "gemeinsame Objekte: superfunktion"
-     ]
-    },
-    {
-     "id": "kn.satz.polynom_modelle",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: superfunktion"
+      "gemeinsame Objekte: kneser_T, superfunktion"
      ]
     }
    ],
@@ -22857,7 +22869,7 @@
     "kneser_T"
    ],
    "bereich": "$p_N(x)=\\sum_{k\\le N}a_k^{(N)}x^k$ reell mit $p_N(p_N(x))=e^x+O(x^{N+1})$, Zweig stetig fortgesetzt von $p_1(x)=x+\\tfrac12$; $f_K(x)=T_e(\\operatorname{slog}_e x+\\tfrac12)$",
-   "aussage": "Für jedes $N$ legen die $N+1$ Gleichungen „Koeffizient von $x^k$ in $p_N(p_N(x))$ ist $1/k!$“ ($k=0,\\dots,N$) die $N+1$ Koeffizienten von $p_N$ fest, wenn man den Zweig von\n$p_1=x+\\tfrac12$ aus stetig weiterverfolgt. **Vermutung:** $a_k^{(N)}\\to a_k$, den Taylor-Koeffizienten von Knesers halber e-Funktion $f_K$ um 0, und $p_N\\to f_K$ auf $|x|<|L|$;\ninsbesondere $p_N(1)\\to T_e(\\tfrac12)=1.6463542337511945809\\ldots$\nGemessen: $p_N(1)-T_e(\\tfrac12)=-8.6\\cdot10^{-3}$ ($N=2$), $1.1\\cdot10^{-7}$ ($N=5$), $-3.3\\cdot10^{-11}$ ($N=15$), $-1.0\\cdot10^{-16}$ ($N=100$), $-2\\cdot10^{-19}$ ($N=194$); ab $N\\approx50$\nschrumpft der Abstand etwa um den Faktor $0.93$ pro Grad. Jeder Koeffizient nähert sich einzeln dem Kneser-Wert, und am Randpunkt $L$ gilt $p_N(L)\\to L=f_K(L)$.\n\n**Stand 10.10.2026 (Forschungsteam):** bis $N=1500$ bestätigt, mit einem präzisen Fehlergesetz (kn.beob.polynom_halbexp_fehlergesetz); bedingt bewiesen — es fehlt nur die\nlineare Annahme (H) über die Eckmoden bei $L$ (kn.satz.polynom_halbexp_hauptsatz). Für kein vergleichbares Abschneide-Verfahren ist bisher Konvergenz gegen Kneser bewiesen.\n",
+   "aussage": "Für jedes $N$ legen die $N+1$ Gleichungen „Koeffizient von $x^k$ in $p_N(p_N(x))$ ist $1/k!$“ ($k=0,\\dots,N$) die $N+1$ Koeffizienten von $p_N$ fest, wenn man den Zweig von\n$p_1=x+\\tfrac12$ aus stetig weiterverfolgt. **Vermutung:** $a_k^{(N)}\\to a_k$, den Taylor-Koeffizienten von Knesers halber e-Funktion $f_K$ um 0, und $p_N\\to f_K$ auf $|x|<|L|$;\ninsbesondere $p_N(1)\\to T_e(\\tfrac12)=1.6463542337511945809\\ldots$\nGemessen: $p_N(1)-T_e(\\tfrac12)=-8.6\\cdot10^{-3}$ ($N=2$), $1.1\\cdot10^{-7}$ ($N=5$), $-3.3\\cdot10^{-11}$ ($N=15$), $-1.0\\cdot10^{-16}$ ($N=100$), $-2\\cdot10^{-19}$ ($N=194$); ab $N\\approx50$\nschrumpft der Abstand etwa um den Faktor $0.93$ pro Grad. Jeder Koeffizient nähert sich einzeln dem Kneser-Wert, und am Randpunkt $L$ gilt $p_N(L)\\to L=f_K(L)$.\n\n**Stand 10.10.2026 (Forschungsteam):** bis $N=1500$ bestätigt, mit einem präzisen Fehlergesetz (kn.beob.polynom_halbexp_fehlergesetz); bedingt bewiesen — es fehlt nur die\nlineare Annahme (H) über die Eckmoden bei $L$ (kn.satz.polynom_halbexp_hauptsatz). Für kein vergleichbares Abschneide-Verfahren ist bisher Konvergenz gegen Kneser bewiesen.\n\n**Stand 12.10.2026 (Phasen 2–3):** Kneser zur Basis $e$ und der Zweig bis $N=400$ sind streng zertifiziert (kn.satz.kneser_e_zertifiziert, kn.satz.polynom_zweig_400).\nDie Fassung „gleichmässig bis zum Rand“ ist nach Modellrechnungen für astronomisch grosse $N$ vermutlich falsch (kn.beob.polynom_rand_plateau). Die tragfähige Fassung — gleichmässig ohne\nkleine Umgebungen von $L,\\bar L$, mit Koeffizienten und $p_N(1)$ — ist bedingt bewiesen (kn.satz.polynom_hauptsatz_kr0); offen ist der Kern kn.verm.polynom_halbexp_kern.\n",
    "einfach": "Man sucht ein Polynom, das zweimal hintereinander angewendet möglichst genau eˣ ergibt — aber nur die ersten N Glieder der Reihe müssen stimmen. Ohne dass man Tetration, Superlogarithmus oder Kneser hineinsteckt, landet man bei Knesers halber e-Funktion: bei Grad 100 auf 16 Stellen. Warum das Abschneiden genau diese Lösung auswählt, ist nicht bewiesen.",
    "formen": [
     {
@@ -22878,10 +22890,10 @@
     "f2_benutzte_voraussetzungen": "Wahl des Zweigs (stetig von $p_1$ aus); reelle Koeffizienten.",
     "f3_spezialfall": "Verwandt mit dem intuitiven Superlogarithmus (abgeschnittene Carleman-Matrix) und Gottfried Helms’ Matrix-Wurzel (Forum tid 842) — beide ebenfalls numerisch Kneser, unbewiesen.",
     "f4_uebertragbar": "Auf $f^{\\circ m}=\\exp$ (Drittel usw.) und andere Basen; auf die Iterationswurzeln jeder ganzen Funktion ohne reellen Fixpunkt.",
-    "f5_neue_frage": "Annahme (H) über die Eckmoden beweisen (kn.verm.polynom_halbexp_eckmoden) — daraus folgt die Vermutung (kn.satz.polynom_halbexp_hauptsatz)."
+    "f5_neue_frage": "Den Kern (kn.verm.polynom_halbexp_kern) beweisen — daraus folgt die Vermutung ohne kleine Umgebungen von L (kn.satz.polynom_hauptsatz_kr0)."
    },
    "bewertung": {
-    "richtigkeit": "numerisch bis N = 1500 (Fehlergesetz, Blindtest); bedingt bewiesen unter (H)",
+    "richtigkeit": "numerisch bis N = 1500 (Fehlergesetz, Blindtest); bedingt bewiesen (Fassung ohne Umgebungen von L) unter dem Kern kn.verm.polynom_halbexp_kern",
     "neuheit": "vermutlich_neu",
     "recherche": "Forum-Spiegel (alle 1265 Themen) nach f(f(x)) = exp(x) mit Polynom/Koeffizienten/Abschneiden durchsucht: nur verwandte Verfahren (tid 228 Höcker-Trick, tid 842 Matrix-Wurzel), nicht dieses.",
     "nutzen": "Rechnet Knesers halbe e-Funktion aus einer rein lokalen Bedingung; würde Kneser ohne Komplexanalysis kennzeichnen.",
@@ -22943,7 +22955,7 @@
     },
     {
      "id": "kn.satz.polynom_halbexp_hauptsatz",
-     "score": 4.37,
+     "score": 4.72,
      "warum": [
       "stützt (Evidenz) (rückwärts)",
       "über kn.satz.polynom_halbexp_reduktion",
@@ -22957,6 +22969,15 @@
       "gemeinsames Experiment exp.polynom_halbexp",
       "über kn.satz.halbe_exp",
       "über kn.satz.polynom_halbexp_reduktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 4.02,
+     "warum": [
+      "stützt (Evidenz) (rückwärts)",
+      "über kn.satz.polynom_halbexp_hauptsatz",
+      "gemeinsame Objekte: kneser_T, superfunktion"
      ]
     },
     {
@@ -22986,19 +23007,12 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_modelle",
-     "score": 2.33,
+     "id": "kn.satz.halbexp_singularitaet_L",
+     "score": 2.52,
      "warum": [
-      "analog zu (rückwärts)"
-     ]
-    },
-    {
-     "id": "kn.beob.slog_scheibe",
-     "score": 1.95,
-     "warum": [
-      "über kn.verm.polynom_halbexp_schranke",
-      "über kn.satz.halbexp_beschraenkt",
-      "gemeinsame Objekte: kneser_T, slog"
+      "über kn.satz.halbe_exp",
+      "über kn.beob.polynom_halbexp_fehlergesetz",
+      "über kn.satz.polynom_halbexp_hauptsatz"
      ]
     }
    ],
@@ -23458,6 +23472,15 @@
      ]
     },
     {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 3.55,
+     "warum": [
+      "über kn.verm.polynom_halbexp",
+      "über kn.satz.polynom_halbexp_hauptsatz",
+      "gemeinsame Objekte: kneser_T, superfunktion"
+     ]
+    },
+    {
      "id": "kn.satz.grenzwert_trick",
      "score": 2.5,
      "warum": [
@@ -23477,14 +23500,6 @@
      "score": 1.95,
      "warum": [
       "über kn.verm.polynom_halbexp_schranke",
-      "gemeinsame Objekte: superfunktion"
-     ]
-    },
-    {
-     "id": "kn.satz.polynom_modelle",
-     "score": 1.77,
-     "warum": [
-      "über kn.verm.polynom_halbexp",
       "gemeinsame Objekte: superfunktion"
      ]
     }
@@ -23582,6 +23597,14 @@
      ]
     },
     {
+     "id": "kn.satz.polynom_zweig_400",
+     "score": 3.55,
+     "warum": [
+      "über kn.satz.polynom_halbexp_endlich",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
      "id": "kn.gescheitert.polynom_kantorovich",
      "score": 3.53,
      "warum": [
@@ -23608,18 +23631,9 @@
      ]
     },
     {
-     "id": "kn.beob.polynom_moebius_schwelle",
+     "id": "kn.satz.polynom_cd_identitaet",
      "score": 2.5,
      "warum": [
-      "gemeinsame Objekte: superfunktion"
-     ]
-    },
-    {
-     "id": "kn.satz.polynom_halbexp_hauptsatz",
-     "score": 1.95,
-     "warum": [
-      "über kn.satz.polynom_halbexp_reduktion",
-      "über kn.verm.polynom_halbexp",
       "gemeinsame Objekte: superfunktion"
      ]
     }
@@ -23689,10 +23703,21 @@
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 0,
+   "_tragweite": 2,
    "_abhaengig": [],
-   "_traegt": [],
+   "_traegt": [
+    "kn.satz.polynom_zweig_400"
+   ],
    "_verwandt": [
+    {
+     "id": "kn.satz.polynom_zweig_400",
+     "score": 8.0,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "verallgemeinert (rückwärts)",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
     {
      "id": "kn.verm.polynom_halbexp_schranke",
      "score": 5.85,
@@ -23700,6 +23725,14 @@
       "stützt (Evidenz)",
       "gemeinsames Experiment exp.polynom_schranke",
       "über kn.gescheitert.polynom_kantorovich"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 3.0,
+     "warum": [
+      "über kn.satz.polynom_zweig_400",
+      "gemeinsame Objekte: superfunktion"
      ]
     },
     {
@@ -23718,6 +23751,13 @@
      ]
     },
     {
+     "id": "kn.satz.polynom_cd_identitaet",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
      "id": "kn.beob.polynom_moebius_schwelle",
      "score": 2.5,
      "warum": [
@@ -23729,29 +23769,6 @@
      "score": 1.95,
      "warum": [
       "über kn.verm.polynom_halbexp_schranke",
-      "gemeinsame Objekte: superfunktion"
-     ]
-    },
-    {
-     "id": "kn.beob.polynom_eckmode",
-     "score": 1.6,
-     "warum": [
-      "über kn.gescheitert.polynom_kantorovich",
-      "gemeinsame Objekte: superfunktion"
-     ]
-    },
-    {
-     "id": "kn.satz.halbexp_beschraenkt",
-     "score": 1.55,
-     "warum": [
-      "über kn.verm.polynom_halbexp_schranke",
-      "über kn.gescheitert.polynom_kantorovich"
-     ]
-    },
-    {
-     "id": "kn.verm.polynom_halbexp_eckmoden",
-     "score": 1.25,
-     "warum": [
       "gemeinsame Objekte: superfunktion"
      ]
     }
@@ -23878,18 +23895,19 @@
      ]
     },
     {
+     "id": "kn.beob.polynom_konforme_stabilitaet",
+     "score": 2.02,
+     "warum": [
+      "über kn.beob.polynom_eckmode",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
      "id": "kn.satz.polynom_halbexp_reduktion",
      "score": 1.67,
      "warum": [
       "über kn.verm.polynom_halbexp_schranke",
       "über kn.satz.halbexp_beschraenkt"
-     ]
-    },
-    {
-     "id": "kl.satz.vier_sqrt2",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: fixpunkt_L, superfunktion"
      ]
     }
    ],
@@ -23975,17 +23993,20 @@
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 1,
+   "_tragweite": 4,
    "_abhaengig": [
     "kn.konstr.kneser"
    ],
    "_traegt": [
-    "kn.satz.polynom_halbexp_hauptsatz"
+    "kn.satz.polynom_approximation_ecke",
+    "kn.satz.polynom_eckprofil",
+    "kn.satz.polynom_halbexp_hauptsatz",
+    "kn.satz.polynom_hauptsatz_kr0"
    ],
    "_verwandt": [
     {
      "id": "kn.satz.polynom_halbexp_hauptsatz",
-     "score": 6.6,
+     "score": 6.95,
      "warum": [
       "stützt sich auf (Beweis) (rückwärts)",
       "gemeinsames Experiment exp.polynom_team",
@@ -23999,6 +24020,41 @@
       "stützt sich auf (Beweis)",
       "über kn.satz.halbe_exp",
       "über kn.satz.polynom_halbexp_hauptsatz"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 5.25,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "über kn.satz.polynom_halbexp_hauptsatz",
+      "über kn.satz.polynom_eckprofil"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 4.85,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "verwandt (rückwärts)",
+      "über kn.satz.polynom_hauptsatz_kr0"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 4.55,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "über kn.satz.polynom_hauptsatz_kr0"
+     ]
+    },
+    {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 3.45,
+     "warum": [
+      "über kn.konstr.kneser",
+      "über kn.satz.polynom_eckprofil",
+      "über kn.satz.polynom_hauptsatz_kr0"
      ]
     },
     {
@@ -24017,39 +24073,6 @@
       "gemeinsames Experiment exp.polynom_team",
       "über kn.satz.polynom_halbexp_hauptsatz",
       "über kn.beob.polynom_halbexp_fehlergesetz"
-     ]
-    },
-    {
-     "id": "kn.beob.polynom_halbexp_fehlergesetz",
-     "score": 2.47,
-     "warum": [
-      "gemeinsames Experiment exp.polynom_team",
-      "über kn.satz.polynom_halbexp_hauptsatz",
-      "über kn.verm.polynom_halbexp_eckmoden"
-     ]
-    },
-    {
-     "id": "kn.satz.paulsen_komplex",
-     "score": 2.3,
-     "warum": [
-      "über kn.konstr.kneser",
-      "gemeinsame Objekte: fixpunkt_L, kneser_T"
-     ]
-    },
-    {
-     "id": "kn.satz.kneser_eigenschaften",
-     "score": 2.05,
-     "warum": [
-      "über kn.konstr.kneser",
-      "gemeinsame Objekte: fixpunkt_L, kneser_T"
-     ]
-    },
-    {
-     "id": "kn.satz.halbe_exp",
-     "score": 2.05,
-     "warum": [
-      "verwandt",
-      "über kn.konstr.kneser"
      ]
     }
    ],
@@ -24176,19 +24199,20 @@
      ]
     },
     {
-     "id": "kn.satz.halbexp_beschraenkt",
-     "score": 1.85,
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 2.02,
      "warum": [
       "über kn.verm.polynom_halbexp",
-      "gemeinsame Objekte: fixpunkt_L, periodische_stoerung, superfunktion"
+      "über kn.satz.halbexp_singularitaet_L",
+      "über kn.satz.polynom_halbexp_hauptsatz"
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_reduktion",
-     "score": 1.67,
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 2.02,
      "warum": [
-      "über kn.verm.polynom_halbexp",
-      "über kn.satz.polynom_halbexp_hauptsatz"
+      "über kn.verm.polynom_halbexp_eckmoden",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
      ]
     }
    ],
@@ -24285,6 +24309,32 @@
      ]
     },
     {
+     "id": "kn.beob.polynom_konforme_stabilitaet",
+     "score": 3.5,
+     "warum": [
+      "verwandt (rückwärts)",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 3.2,
+     "warum": [
+      "über kn.beob.polynom_konforme_stabilitaet",
+      "über kn.verm.polynom_halbexp_eckmoden",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 3.2,
+     "warum": [
+      "über kn.beob.polynom_konforme_stabilitaet",
+      "über kn.satz.halbexp_singularitaet_L",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
      "id": "kn.satz.polynom_halbexp_hauptsatz",
      "score": 2.88,
      "warum": [
@@ -24294,35 +24344,11 @@
      ]
     },
     {
-     "id": "kn.satz.halbexp_singularitaet_L",
-     "score": 2.55,
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 2.85,
      "warum": [
-      "gemeinsames Experiment exp.polynom_team",
-      "über kn.beob.polynom_halbexp_fehlergesetz",
-      "über kn.verm.polynom_halbexp_eckmoden"
-     ]
-    },
-    {
-     "id": "kn.verm.polynom_halbexp_schranke",
-     "score": 1.95,
-     "warum": [
-      "über kn.gescheitert.polynom_kantorovich",
-      "gemeinsame Objekte: superfunktion"
-     ]
-    },
-    {
-     "id": "kl.satz.vier_sqrt2",
-     "score": 1.67,
-     "warum": [
+      "über kn.satz.halbexp_singularitaet_L",
       "gemeinsame Objekte: fixpunkt_L, superfunktion"
-     ]
-    },
-    {
-     "id": "kn.satz.polynom_halbexp_endlich",
-     "score": 1.6,
-     "warum": [
-      "über kn.gescheitert.polynom_kantorovich",
-      "gemeinsame Objekte: superfunktion"
      ]
     }
    ],
@@ -24342,7 +24368,7 @@
    "bereich": "$\\Pi^P_N$ Sekanten-Projektion an einer Fast-Lösung $P$ (bei $P=f_K$: $\\Pi_N=J_N^{-1}T_NJ_\\infty$); $E^P_N(\\zeta,z)=\\Pi^P_Nk_\\zeta(z)-k_\\zeta(z)$, $k_\\zeta=1/(\\zeta-z)$; $g$ Green-Funktion von $\\mathbb C\\setminus\\bar W$",
    "aussage": "Für alle grossen $N$ und alle Fast-Lösungen $P$ in der Kugel um $f_K$: (H-i) die Linearisierungen sind invertierbar; (H-ii) für $z\\in\\bar D$ und Pole $\\zeta$ auf den Schlitzen bei\n$L,\\bar L$ und einer festen Niveaulinie $\\{g=d\\}$ gilt $|E^P_N(\\zeta,z)|\\le C\\,N^{\\kappa}e^{-\\varepsilon Ng(\\zeta)}/\\operatorname{dist}(\\zeta,\\bar W)$ mit $\\kappa<4.69$; (H-iii) die Antwort auf $x^N$ ist stabil.\n\nBei $P=f_K$ zerfällt (H-ii) in zwei lineare Aussagen: **(a′)** nach Abspalten der Eckmoden ist $\\sigma_{r+1}((I+K_N)^{-1})\\le1+o(1)$ ($K\\delta=(\\delta\\circ f)/(f'\\circ f)$), und **(E_L)** das\nRandprofil der adjungierten Eckmoden fällt zur Ecke hin schneller als $|\\tau|^{1.13}$: $\\sigma_i|\\tilde V_i(\\arg L+\\tau)|\\le CN^\\kappa e^{\\lambda(\\tau)N}$, $\\lambda\\le A|\\tau|^p$, $p>1/\\alpha=1.13$.\n\nGemessen: (a′) $1.0001$–$1.0002$ ($N\\le400$); (E_L) $p\\approx1.44$–$1.52$, Mittelwert $\\int\\lambda\\,d\\nu=0.086$ (Grenze 1, Reserve ≈ 11; $N\\le1200$); Pol-Antworten bis $N=1000$.\n",
    "einfach": "Alles andere am Beweis steht. Offen ist nur eine Aussage über eine einzige Stelle: Wie stark wird die exponentiell wachsende Schwachstelle der Gleichungen bei L von einem „Stoss“ ganz in der Nähe von L angeregt? Die Rechnungen sagen: viel schwächer als nötig. Ein Beweis fehlt.",
-   "gegenbeispielsuche": "Stärkere Fassungen sind numerisch FALSCH und deshalb nicht angenommen: gleichmässige Stabilität sup|J_N⁻¹| < ∞ (Eckmode) und die globale polynomiale Pol-Schranke (H*) (ab N ≈ 420–650). Die lokale Fassung (H) hält in allen Messungen bis N = 1200 mit Reserve.",
+   "gegenbeispielsuche": "Stärkere Fassungen sind numerisch FALSCH und deshalb nicht angenommen: gleichmässige Stabilität sup|J_N⁻¹| < ∞ (Eckmode) und die globale polynomiale Pol-Schranke (H*) (ab N ≈ 420–650). Die lokale Fassung (H) hält in allen Messungen bis N = 1200 mit Reserve. Phase 3: (H) verlangt Kontrolle bis an L; nach kn.beob.polynom_rand_plateau ist das für N ≳ 10¹⁰ vermutlich falsch. Für die Fassung ohne Umgebungen von L tritt kn.verm.polynom_halbexp_kern an ihre Stelle.",
    "experimente": [
     "exp.polynom_team"
    ],
@@ -24420,43 +24446,46 @@
      ]
     },
     {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 3.5,
+     "warum": [
+      "verwandt (rückwärts)",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_rand_plateau",
+     "score": 3.5,
+     "warum": [
+      "verwandt (rückwärts)",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 3.2,
+     "warum": [
+      "über kn.verm.polynom_halbexp_kern",
+      "über kn.satz.halbexp_singularitaet_L",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_konforme_stabilitaet",
+     "score": 3.2,
+     "warum": [
+      "über kn.verm.polynom_halbexp_kern",
+      "über kn.beob.polynom_eckmode",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
      "id": "kn.satz.halbexp_singularitaet_L",
      "score": 2.9,
      "warum": [
       "gemeinsames Experiment exp.polynom_team",
       "über kn.satz.polynom_halbexp_hauptsatz",
       "über kn.beob.polynom_halbexp_fehlergesetz"
-     ]
-    },
-    {
-     "id": "kn.gescheitert.polynom_kantorovich",
-     "score": 2.02,
-     "warum": [
-      "über kn.beob.polynom_eckmode",
-      "gemeinsame Objekte: fixpunkt_L, superfunktion"
-     ]
-    },
-    {
-     "id": "kn.verm.polynom_halbexp",
-     "score": 1.67,
-     "warum": [
-      "über kn.satz.polynom_halbexp_hauptsatz",
-      "über kn.beob.polynom_halbexp_fehlergesetz"
-     ]
-    },
-    {
-     "id": "kl.satz.vier_sqrt2",
-     "score": 1.67,
-     "warum": [
-      "gemeinsame Objekte: fixpunkt_L, superfunktion"
-     ]
-    },
-    {
-     "id": "kn.konstr.kneser",
-     "score": 1.47,
-     "warum": [
-      "über kn.satz.polynom_halbexp_hauptsatz",
-      "über kn.satz.halbexp_singularitaet_L"
      ]
     }
    ],
@@ -24501,6 +24530,7 @@
     "text": "1. (K) ⇒ (F): $f_K$ ist um $\\bar W$ holomorph bis auf zwei Schlitze bei $L,\\bar L$, der Sprung dort ist $O(|\\zeta-L|^{5.447})$ (aus kn.satz.halbexp_singularitaet_L; Inklusionen mit arb).\n2. Lineare Aussage: $\\Pi_Nf_K-f_K$ als Cauchy-Integral über Schlitze und Niveaulinie; die Pol-Antwort ist rational in $\\zeta$ mit Polen nur in $0$ und $a_0$, also greifen Bernstein–Walsh\n   und Poisson–Jensen; mit (H) ergibt das $\\sup_{\\bar D}|\\Pi_Nf_K-f_K|=O(N^{\\kappa-4.69})$.\n3. Nichtlinear (Satz H1): Jede Lösung in $B_N$ erfüllt $P-f=\\lambda(\\Pi^P_Nf-f)$ (Sekanten-Identität) — a-priori-Schranke strikt im Inneren; implizite Funktionen + Überlagerung über\n   $\\lambda\\in[0,1]$ mit genau einem Blatt (bei $\\lambda=0$ nur $Q=0$) geben Existenz und Eindeutigkeit, ohne eine Operatornorm von $J_N^{-1}$.\n4. Zweig (Satz H2): σ-Homotopie von $\\mathrm{pad}(p_N)$ zu $p_{N+1}$ bleibt in $B_{N+1}$; Induktion ab $N_0$.\n",
     "luecken": [
      "Annahme (H) ist offen (kn.verm.polynom_halbexp_eckmoden).",
+     "Phase 3: (H) in der Form bis an L ist für astronomisch grosse N vermutlich falsch (kn.beob.polynom_rand_plateau); tragfähige Fassung: kn.satz.polynom_hauptsatz_kr0.",
      "Die Einzelbeweise stehen in forschung/polynom_halbexp/ARCHITEKTUR.md §4 und den Strang-Berichten; die Leitung hat sie nicht Zeile für Zeile nachgeprüft.",
      "Eine Prüfung (f_K(e^z) ∉ (−∞,0] auf dem linken Bogen) ist nur numerisch."
     ]
@@ -24518,7 +24548,7 @@
     "f2_benutzte_voraussetzungen": "(K), (H), (A); weder gleichmässige Stabilität noch die Korridor-Bedingung noch die Form von slog(D).",
     "f3_spezialfall": "Schema „Konsistenz + kohärente Stabilität“ wie bei Galerkin-Verfahren, hier mit Stabilität nur entlang kohärenter Richtungen.",
     "f4_uebertragbar": "Auf andere Basen und gebrochene Iterierte (gleiche Architektur, andere Exponenten); im Möbius-Modell bis auf (H*)_M durchgezogen.",
-    "f5_neue_frage": "Beweis von (H)."
+    "f5_neue_frage": "Beweis von (H) — bzw. des Kerns der Fassung ohne Umgebungen von L (kn.verm.polynom_halbexp_kern)."
    },
    "bewertung": {
     "richtigkeit": "bedingt; Beweisarchitektur von fünf Forschungssträngen, nicht unabhängig nachgeprüft; numerisch bis N = 1500 gestützt",
@@ -24582,11 +24612,29 @@
    "_verwandt": [
     {
      "id": "kn.satz.halbexp_singularitaet_L",
-     "score": 6.6,
+     "score": 6.95,
      "warum": [
       "stützt sich auf (Beweis)",
       "gemeinsames Experiment exp.polynom_team",
       "über kn.verm.polynom_halbexp_eckmoden"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 5.25,
+     "warum": [
+      "verwandt (rückwärts)",
+      "über kn.satz.halbexp_singularitaet_L",
+      "über kn.verm.polynom_halbexp"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp",
+     "score": 4.72,
+     "warum": [
+      "stützt (Evidenz)",
+      "über kn.satz.polynom_halbexp_reduktion",
+      "über kn.satz.polynom_hauptsatz_kr0"
      ]
     },
     {
@@ -24595,15 +24643,6 @@
      "warum": [
       "stützt sich auf (Beweis)",
       "über kn.satz.halbexp_singularitaet_L"
-     ]
-    },
-    {
-     "id": "kn.verm.polynom_halbexp",
-     "score": 4.37,
-     "warum": [
-      "stützt (Evidenz)",
-      "über kn.satz.polynom_halbexp_reduktion",
-      "über kn.beob.polynom_halbexp_fehlergesetz"
      ]
     },
     {
@@ -24634,18 +24673,11 @@
      ]
     },
     {
-     "id": "kn.beob.polynom_eckmode",
-     "score": 2.88,
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 3.07,
      "warum": [
-      "gemeinsames Experiment exp.polynom_team",
-      "über kn.verm.polynom_halbexp_eckmoden",
-      "über kn.satz.halbexp_singularitaet_L"
-     ]
-    },
-    {
-     "id": "kn.satz.grenzwert_trick",
-     "score": 2.5,
-     "warum": [
+      "über kn.konstr.kneser",
+      "über kn.satz.polynom_hauptsatz_kr0",
       "gemeinsame Objekte: kneser_T, superfunktion"
      ]
     }
@@ -24732,7 +24764,21 @@
      ]
     },
     {
+     "id": "kn.satz.polynom_zweig_400",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
      "id": "kn.satz.polynom_halbexp_endlich",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_cd_identitaet",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: superfunktion"
@@ -24746,32 +24792,18 @@
      ]
     },
     {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 1.77,
+     "warum": [
+      "über kn.verm.polynom_halbexp",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
      "id": "kn.satz.polynom_halbexp_reduktion",
      "score": 1.77,
      "warum": [
       "über kn.verm.polynom_halbexp",
-      "gemeinsame Objekte: superfunktion"
-     ]
-    },
-    {
-     "id": "kn.satz.polynom_halbexp_hauptsatz",
-     "score": 1.77,
-     "warum": [
-      "über kn.verm.polynom_halbexp",
-      "gemeinsame Objekte: superfunktion"
-     ]
-    },
-    {
-     "id": "kn.beob.polynom_halbexp_fehlergesetz",
-     "score": 1.36,
-     "warum": [
-      "über kn.verm.polynom_halbexp"
-     ]
-    },
-    {
-     "id": "kn.verm.polynom_halbexp_eckmoden",
-     "score": 1.25,
-     "warum": [
       "gemeinsame Objekte: superfunktion"
      ]
     }
@@ -24853,8 +24885,29 @@
      ]
     },
     {
+     "id": "kn.satz.polynom_zweig_400",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
      "id": "kn.satz.polynom_halbexp_endlich",
      "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_cd_identitaet",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 1.25,
      "warum": [
       "gemeinsame Objekte: superfunktion"
      ]
@@ -24867,31 +24920,1447 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_reduktion",
+     "id": "kn.satz.polynom_hauptsatz_kr0",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: superfunktion"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.satz.kneser_e_zertifiziert",
+   "titel": "Knesers Tetration zur Basis e rechnergestützt zertifiziert: Werte auf 1e-168, halbe e-Funktion mit Koeffizienten und Restschranke",
+   "art": "satz",
+   "ebene": "C",
+   "status": "bewiesen",
+   "niveau": "forschung",
+   "objekte": [
+    "kneser_T",
+    "superfunktion",
+    "fixpunkt_L"
+   ],
+   "bereich": "Kneser-sexp zur Basis $e$ auf dem Streifen $-\\tfrac12\\le\\operatorname{Re}z\\le\\tfrac12$; $f_K=T_e(\\operatorname{slog}x+\\tfrac12)$ mit Taylor-Koeffizienten $a_k$ um 0, $\\rho=|L|$",
+   "aussage": "(i) **Werte:** $\\operatorname{sexp}_K=\\tilde T\\pm1.3\\cdot10^{-168}$ für $|\\operatorname{Im}z|\\le0.45$ ($\\tilde T$ reelles Polynom vom Grad 519) und $\\operatorname{sexp}_K=\\tilde U\\pm1.3\\cdot10^{-168}$\nfür $\\operatorname{Im}z\\ge0.35$ ($\\tilde U=P(L^{z+\\tilde\\theta})$ mit 241 Fourier-Moden); oberhalb $\\operatorname{Im}z=0.36$ ist auch Knesers Strukturfunktion $\\theta_K$ auf $4.4\\cdot10^{-167}$ eingeschlossen.\n\n(ii) **Halbe e-Funktion:** $a_0,\\dots,a_{640}$ mit Fehler$\\cdot\\rho^k\\le2.9\\cdot10^{-127}$; für **alle** $k$ gilt $|a_k|\\rho^k\\le461.36\\,k^{-6}$; ausserdem $f_K(L)=L$ und $f_K'(L)=\\sqrt L$.\n",
+   "einfach": "Knesers Lösung zur Basis e ist nicht mehr nur „sehr genau berechnet“, sondern mit garantierter Fehlergrenze bekannt — auf 168 Stellen. Für die halbe e-Funktion gibt es die ersten 641 Koeffizienten mit Garantie und eine bewiesene Schranke für alle übrigen.",
+   "beweis": {
+    "art": "vollstaendig",
+    "text": "1. Daten aus einem eigenen Cousin-Newton-Verfahren (Start vom Kneser-Motor), Residuen $2\\cdot10^{-31}\\to5\\cdot10^{-169}$.\n2. Defekte von Band und Naht mit Taylor-Modellen und Maximumprinzip eingeschlossen ($\\le6.5\\cdot10^{-173}$); aus ihnen eine glatte Funktion $F_0$, die die Funktionalgleichung exakt erfüllt.\n3. Eine quasikonforme Glättung (Beltrami-Koeffizient $\\le1.3\\cdot10^{-171}$; Ahlfors–Bers, Stoilow) führt zu einer exakten Lösung; Identifikation mit Kneser über Paulsen–Cowgill.\n4. Koeffizienten aus 4096 Krawczyk-Auswertungen und DFT mit Aliasschranke; die Restschranke durch sechsfache partielle Integration auf $|z|=\\rho$ mit eingeschlossenem $\\partial_\\theta^6f_K$.\n",
+    "luecken": [
+     "Drei formale Lücken ohne Wirkung auf die Zahlen (Fehlerbudget in Prüfung B, eine Lipschitz-Schranke, Zweigtreue der DFT-Knoten), benannt in phase3/v_pruefstand/BERICHT §1.1."
+    ]
+   },
+   "stuetzt_sich_auf": [
+    "kn.konstr.kneser"
+   ],
+   "experimente": [
+    "exp.polynom_phase3"
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Nein; rechnergestützter Existenz- und Einschlussbeweis mit Glättung.",
+    "f2_benutzte_voraussetzungen": "Ahlfors–Bers, Stoilow, eine L⁴-Schranke der Beurling-Transformation, Paulsen–Cowgill (Eindeutigkeit).",
+    "f3_spezialfall": "Schema „Näherungslösung + Defektschranke + quasikonforme Korrektur“.",
+    "f4_uebertragbar": "Auf andere Basen b > η mit gleicher Programmkette.",
+    "f5_neue_frage": "Einschlüsse für andere Basen und für gebrochene Iterierte allgemein."
+   },
+   "bewertung": {
+    "richtigkeit": "rechnergestützt bewiesen (Strang P), Schritte von Strang V gegengelesen; Restschranke (K2) von V gebaut und von K gegengelesen",
+    "neuheit": "vermutlich_neu",
+    "recherche": "Bisher nur numerische Werte (Paulsen–Cowgill, Forum, Kouznetsov); kein Einschluss mit Garantie gefunden.",
+    "nutzen": "Macht die Startbedingung und alle Kneser-Eingaben des Polynom-Hauptsatzes streng.",
+    "nutzen_stufe": "hoch"
+   },
+   "quellen": [
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "ARCHITEKTUR.md §9.8–§9.9 (Satz P-V, p26–p32a); phase3/v_pruefstand/BERICHT §1.1, §2.2 (K2)"
+    },
+    {
+     "ref": "paulsen_cowgill2017"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "stuetzt",
+     "ziel": "kn.satz.polynom_hauptsatz_kr0"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Bisher kannte man Knesers Tetration nur „sehr genau gerechnet“. Für einen Beweis braucht man mehr: Werte mit garantierter Fehlergrenze.\n",
+    "genau": "Werte von $\\operatorname{sexp}_K$ zur Basis $e$ auf $1.3\\cdot10^{-168}$, die Koeffizienten $a_0,\\dots,a_{640}$ der halben e-Funktion mit Garantie, eine Schranke $|a_k|\\rho^k\\le461.36\\,k^{-6}$\nfür alle $k$, und $f_K(L)=L$, $f_K'(L)=\\sqrt L$.\n",
+    "warum": "1. Eine sehr genaue Näherungslösung wird so gebaut, dass ihre Fehler in der Funktionalgleichung (in einem Band und an einer Naht) beweisbar winzig sind.\n2. Aus diesen Fehlern macht man eine glatte, aber nicht holomorphe Funktion, die die Gleichung exakt erfüllt.\n3. Eine quasikonforme Abbildung biegt sie in eine echte holomorphe Lösung; deren Abstand zur Näherung ist so klein wie der Beltrami-Koeffizient, also $\\approx10^{-171}$.\n4. Weil es nach Paulsen–Cowgill nur eine Lösung dieser Art gibt, ist es Knesers.\n",
+    "beispiel": "Aus den 641 Koeffizienten: $\\sum a_k=f_K(1)=T_e(\\tfrac12)=1.646354233751194580971924031\\ldots$ Die grösste der Grössen $|a_k|\\rho^kk^6$ für $k\\le640$ ist $55.5$ (bei $k=9$),\nweit unter der bewiesenen Schranke $461.36$.\n",
+    "bilder": [
+     "exp.polynom_phase3"
+    ],
+    "einordnung": "Liefert die Kneser-Eingaben für [[kn.satz.polynom_zweig_400]] und [[kn.satz.polynom_hauptsatz_kr0]]. Die Struktur bei $L$ stammt aus [[kn.satz.halbexp_singularitaet_L]].\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "bewiesen",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 2,
+   "_abhaengig": [
+    "kn.konstr.kneser"
+   ],
+   "_traegt": [
+    "kn.satz.polynom_hauptsatz_kr0",
+    "kn.satz.polynom_zweig_400"
+   ],
+   "_verwandt": [
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 9.77,
+     "warum": [
+      "stützt (Evidenz)",
+      "stützt sich auf (Beweis) (rückwärts)",
+      "gemeinsames Experiment exp.polynom_phase3"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_zweig_400",
+     "score": 5.58,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "über kn.satz.polynom_hauptsatz_kr0"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 4.07,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "über kn.beob.polynom_konforme_stabilitaet"
+     ]
+    },
+    {
+     "id": "kn.konstr.kneser",
+     "score": 3.83,
+     "warum": [
+      "stützt sich auf (Beweis)"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 3.72,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "über kn.beob.polynom_konforme_stabilitaet"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_konforme_stabilitaet",
+     "score": 3.72,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "über kn.satz.polynom_eckprofil"
+     ]
+    },
+    {
+     "id": "kn.satz.halbexp_singularitaet_L",
+     "score": 3.45,
+     "warum": [
+      "über kn.konstr.kneser",
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "über kn.satz.polynom_eckprofil"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 3.42,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.satz.polynom_zweig_400",
+   "titel": "Der Polynom-Zweig ist bis zum Grad 400 streng zertifiziert und liegt dort 1e-12 nah an Knesers halber e-Funktion",
+   "art": "satz",
+   "ebene": "C",
+   "status": "bewiesen",
+   "niveau": "forschung",
+   "objekte": [
+    "superfunktion"
+   ],
+   "bereich": "$p_N$ wie in kn.verm.polynom_halbexp",
+   "aussage": "Für jedes $N\\le400$ existiert der von $p_1=x+\\tfrac12$ stetig fortgesetzte Zweig und ist in einer expliziten Box eingeschlossen (Krawczyk, Kette $193\\to400$ einzeln geprüft).\nFür $N_0\\in[318,400]$ gilt $\\sup_{\\bar D}|p_{N_0}-f_K|\\le3.6\\cdot10^{-12}$, bei $N=400$ sogar $1.75\\cdot10^{-12}$ — rund $10^8$-mal kleiner als der Kugelradius, den der bedingte Hauptsatz braucht.\n",
+   "einfach": "Bis zum Grad 400 ist mit dem Computer bewiesen, dass die gerechneten Polynome wirklich die richtigen sind und Knesers Funktion bis auf 12 Stellen treffen.",
+   "beweis": {
+    "art": "vollstaendig",
+    "text": "Krawczyk-Test je Übergang $N\\to N+1$ mit Startbox $2^{-(N+150)}$ (Strang X, auf dem Server parallel); die Kette (Box von $N$ liegt im Startgebiet von $N+1$) separat geprüft (Strang V,\neigener Code). Der Abstand zu $f_K$ über die zertifizierten Kneser-Koeffizienten (kn.satz.kneser_e_zertifiziert) und die Restschranke.\n"
+   },
+   "stuetzt_sich_auf": [
+    "kn.satz.kneser_e_zertifiziert",
+    "kn.satz.polynom_halbexp_endlich"
+   ],
+   "experimente": [],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Nein; endliche, aber grosse rechnergestützte Prüfung.",
+    "f2_benutzte_voraussetzungen": "Nur Intervallarithmetik und die zertifizierten Kneser-Werte.",
+    "f3_spezialfall": "Fortsetzung von kn.satz.polynom_halbexp_endlich (dort N ≤ 120).",
+    "f4_uebertragbar": "Mit mehr Rechenzeit auf höhere Grade (N ≈ 1000 braucht ≈ 2320 Bit).",
+    "f5_neue_frage": "Wie weit trägt das, bevor die Verstärkung ≈ 1.17^N die Präzision sprengt?"
+   },
+   "bewertung": {
+    "richtigkeit": "rechnergestützt bewiesen, Kette unabhängig geprüft",
+    "neuheit": "vermutlich_neu",
+    "recherche": "Fortsetzung der eigenen Arbeit (kn.satz.polynom_halbexp_endlich).",
+    "nutzen": "Erfüllt die Startbedingung (A) des bedingten Hauptsatzes mit grosser Reserve.",
+    "nutzen_stufe": "mittel"
+   },
+   "quellen": [
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "x_alternativen/zert/, phase3/v_pruefstand/BERICHT §2.1"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "verallgemeinert",
+     "ziel": "kn.satz.polynom_halbexp_endlich"
+    },
+    {
+     "typ": "stuetzt",
+     "ziel": "kn.satz.polynom_hauptsatz_kr0"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Ein Beweis für „alle Grade ab $N_0$“ braucht einen gesicherten Anfang: Bei $N_0$ muss die gerechnete Lösung wirklich die richtige sein und nah genug an Kneser liegen.\n",
+    "genau": "Der Zweig ist für jedes $N\\le400$ zertifiziert, und $\\sup_{\\bar D}|p_N-f_K|\\le3.6\\cdot10^{-12}$ für $N\\in[318,400]$.\n",
+    "warum": "1. Für jeden Übergang $N\\to N+1$ prüft der Krawczyk-Test, dass in einer kleinen Box genau eine Lösung liegt.\n2. Eine eigene Prüfung zeigt, dass jede Box im Startgebiet der nächsten liegt — die Kette reisst nicht ab.\n3. Der Abstand zu $f_K$ folgt aus den zertifizierten Kneser-Koeffizienten plus Restschranke.\n",
+    "beispiel": "207 Übergänge von 193 bis 400, parallel auf einem Server gerechnet (etwa 2.5 Stunden), alle bestanden.\n",
+    "bilder": [],
+    "einordnung": "Verlängert [[kn.satz.polynom_halbexp_endlich]] (dort bis 120). Startbedingung für [[kn.satz.polynom_hauptsatz_kr0]].\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "bewiesen",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 1,
+   "_abhaengig": [
+    "kn.satz.kneser_e_zertifiziert",
+    "kn.satz.polynom_halbexp_endlich"
+   ],
+   "_traegt": [
+    "kn.satz.polynom_hauptsatz_kr0"
+   ],
+   "_verwandt": [
+    {
+     "id": "kn.satz.polynom_halbexp_endlich",
+     "score": 8.0,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "verallgemeinert",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 7.3,
+     "warum": [
+      "stützt (Evidenz)",
+      "stützt sich auf (Beweis) (rückwärts)",
+      "über kn.satz.kneser_e_zertifiziert"
+     ]
+    },
+    {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 5.58,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "über kn.satz.polynom_hauptsatz_kr0"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_schranke",
+     "score": 3.55,
+     "warum": [
+      "über kn.satz.polynom_halbexp_endlich",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 3.0,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_modelle",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_cd_identitaet",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_moebius_schwelle",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.beob.polynom_konforme_stabilitaet",
+   "titel": "In der richtigen Koordinate verschwindet die Eckmode: die abgeschnittenen Gleichungen bleiben bis N = 2000 gleichmässig stabil",
+   "art": "beobachtung",
+   "ebene": "B",
+   "status": "numerisch",
+   "niveau": "forschung",
+   "objekte": [
+    "superfunktion",
+    "fixpunkt_L"
+   ],
+   "bereich": "$\\hat J_N=T_N^wC_kJ_N$: die Jacobi-Matrix in der konformen Koordinate $w$ von $\\bar D\\cup$ Linse über $\\Gamma_{\\rm in}$ ($k:\\mathbb D\\to$ Inneres, $k(0)=0$); Linsenhöhe $S$",
+   "aussage": "(i) Mit Linse $S=0.0166$ ist $\\|\\hat J_N^{-1}\\|=1.251155$ für **jedes** gemessene $N=100\\dots2000$ (kubisches Modell mit gleicher Ecke), $1.250337$ mit Knesers Koeffizienten\nund ebenso am echten $p_N$ bis $N=2000$ — während in der üblichen Koordinate $\\|\\tilde J_N^{-1}\\|=1.852,\\ 9.10,\\ 70.7$ ($N=200,400,600$) exponentiell wächst.\n\n(ii) Die Linse muss überall über dem Wachstumsprofil $\\Lambda(\\tau)$ der Eckmode liegen (Schwelle $S^*\\approx0.0118$, Kerben-Test blind vorhergesagt und bestätigt).\nWegen des komplexen Exponenten $\\kappa_1$ dreht sich das Eckmuster um $1.45^\\circ\\cdot\\ln N$: eine **tangentiale** Linse verliert ab $N\\approx1000$, eine Linse mit **Ecke** an $L$ bleibt stabil\n(faktorisierte Schur-Norm konstant $1.332$ bis $N=2000$).\n",
+   "einfach": "Die exponentiell wachsende Schwachstelle der Gleichungen ist zum grossen Teil eine Folge der Koordinaten, in denen man rechnet. Schreibt man die Gleichungen in einer an die Ecke angepassten Koordinate, bleibt alles gleichmässig gut lösbar — gemessen bis Grad 2000.",
+   "gegenbeispielsuche": "Gezielt gesucht: dünnere Linsen, Kerben im Profil, Keile, das echte p_N statt f_K, Grade bis 2000. Instabil wird es genau dann, wenn die Linse irgendwo unter Λ liegt oder tangential an L anliegt — beides vorhergesagt.",
+   "experimente": [
+    "exp.polynom_phase3"
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Nein; numerischer Befund, unabhängig von zwei Strängen mit eigenem Code bestätigt.",
+    "f2_benutzte_voraussetzungen": "—",
+    "f3_spezialfall": "Stabilität des Abschnittsverfahrens (Böttcher–Silbermann) — hier aber mit Kompositionstransport, die klassische Theorie greift nicht direkt.",
+    "f4_uebertragbar": "Jede Basis b > η; jedes kubische Modell mit gleichem μ.",
+    "f5_neue_frage": "Beweis der gleichmässigen Stabilität; sie enthält die offene Eckaussage (kn.verm.polynom_halbexp_kern)."
+   },
+   "bewertung": {
+    "richtigkeit": "numerisch bis N = 2000, zwei unabhängige Programme",
+    "neuheit": "vermutlich_neu",
+    "recherche": "Keine Analyse dieser Abschnitte in der Literatur gefunden (Phasen 1–3).",
+    "nutzen": "Zeigt, dass die Eckmode kein Hindernis der Sache, sondern der Darstellung ist.",
+    "nutzen_stufe": "mittel"
+   },
+   "quellen": [
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "phase3/k_kern/BERICHT §3–§5, phase3/v_pruefstand/BERICHT §3.1–3.2, §3.12–3.13"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "verwandt",
+     "ziel": "kn.beob.polynom_eckmode"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Die abgeschnittenen Gleichungen schienen eine exponentiell wachsende Schwachstelle bei $L$ zu haben ([[kn.beob.polynom_eckmode]]). Ist das eine Eigenschaft der Sache — oder der Koordinaten?\n",
+    "genau": "In der konformen Koordinate von $\\bar D\\cup$ Linse bleibt $\\|\\hat J_N^{-1}\\|=1.251155$ für $N=100\\dots2000$; ohne Linse wächst dieselbe Grösse exponentiell.\n",
+    "warum": "1. Man schreibt die Gleichungen nicht in Potenzen von $x$, sondern in Potenzen einer Koordinate $w$, die einen etwas grösseren Bereich (Kreis plus eine dünne Linse) auf die Kreisscheibe abbildet.\n2. Die Eckmode wächst wie $e^{cN}$ mit $c\\approx0.012$; die Linse dämpft genau die Richtungen, in denen sie lebt, um $e^{-SN}$. Ist $S>c$ überall, gewinnt die Dämpfung.\n3. Weil sich das Eckmuster langsam dreht ($1.45^\\circ\\cdot\\ln N$), muss die Linse an $L$ eine Ecke haben — eine tangential anliegende Linse verliert irgendwann.\n",
+    "beispiel": "Ohne Linse: $1.366$ ($N=100$), $1.852$ ($N=200$), $9.10$ ($N=400$), $70.7$ ($N=600$). Mit Linse: immer $1.251155$. Eine absichtliche Kerbe im Linsenprofil lässt das Wachstum genau dort und\nmit der vorhergesagten Rate zurückkehren.\n",
+    "bilder": [
+     "exp.polynom_phase3"
+    ],
+    "einordnung": "Gleichwertig zur offenen Eckaussage für glatte Daten — darum kein Beweis, aber der klarste Hinweis, dass die Konvergenz kein Zufall ist. Kern: [[kn.verm.polynom_halbexp_kern]].\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "numerisch",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 4.55,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.kneser_e_zertifiziert",
+      "über kn.satz.polynom_eckprofil"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 4.55,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.kneser_e_zertifiziert",
+      "über kn.verm.polynom_halbexp_kern"
+     ]
+    },
+    {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 3.72,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.polynom_eckprofil",
+      "über kn.verm.polynom_halbexp_kern"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_eckmode",
+     "score": 3.5,
+     "warum": [
+      "verwandt",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_eckmoden",
+     "score": 3.2,
+     "warum": [
+      "über kn.beob.polynom_eckmode",
+      "über kn.verm.polynom_halbexp_kern",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 2.88,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.kneser_e_zertifiziert",
+      "über kn.satz.polynom_eckprofil"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 2.85,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.gescheitert.polynom_ecke_wege",
+     "score": 2.85,
+     "warum": [
+      "über kn.verm.polynom_halbexp_kern",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.beob.polynom_rand_plateau",
+   "titel": "Bis zum Rand gleichmässig konvergiert das Verfahren vermutlich nicht: in Modellen mit schneller Drehung bleibt der Fehler nahe L stehen",
+   "art": "beobachtung",
+   "ebene": "B",
+   "status": "numerisch",
+   "niveau": "forschung",
+   "objekte": [
+    "superfunktion",
+    "fixpunkt_L"
+   ],
+   "bereich": "Abschneide-Verfahren für Modelle mit Randfixpunkt $L$ und Multiplikator $\\mu$; $\\Pi_NU-U$ bei bekannter exakter Lösung $U$",
+   "aussage": "In einem Modell mit $|\\mu|=2.6$ hört der Fehler $\\Pi_NU-U$ in einer **festen** Zone nahe $L$ auf der $\\Gamma_{\\rm out}$-Seite ($|x-L|\\approx0.13$–$0.15$) ab $N\\approx1000$ auf zu fallen:\nPlateau $1.2$–$2.3\\cdot10^{-6}$ bis $N=3200$; in $L$ selbst, auf der $\\Gamma_{\\rm in}$-Seite und im Inneren konvergiert er weiter. Bei $|\\mu|=2$ fällt er bis $N=2400$ überall.\nUrsache ist die Drehung des Eckmusters: der primale Eckkopf dreht auf der $\\Gamma_{\\rm out}$-Seite in seinen Wachstumssektor.\n**Folgerung (Kette, nicht nachgerechnet):** Bei Knesers $|\\mu|=1.172$ träte derselbe Effekt erst ab $N\\gtrsim10^{10}$ im Abstand $r_*\\sim10^{-6}$ von $L$ auf.\n",
+   "einfach": "Die schärfste Fassung der Vermutung — „gleichmässig bis zum Rand“ — ist für astronomisch grosse Grade wahrscheinlich falsch: In Modellen, in denen sich die Ecke schneller dreht, bleibt der Fehler in einer kleinen Zone neben L stehen. Koeffizienten und p_N(1) liegen weit weg davon und sind nicht betroffen.",
+   "gegenbeispielsuche": "Vorhersage vor der Rechnung aufgeschrieben (Strang V), dann in drei sauberen Quintik-Modellen geprüft; das ungeeignete Modell (|μ| = 2, fast singuläre Abschnitte) verworfen.",
+   "experimente": [],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Nein; Modellbefund plus Schlusskette über das explizite Eckprofil.",
+    "f2_benutzte_voraussetzungen": "—",
+    "f3_spezialfall": "—",
+    "f4_uebertragbar": "Jede Basis mit drehendem Randfixpunkt; die Zone wird mit kleinerem |μ| winzig.",
+    "f5_neue_frage": "Beweis oder Widerlegung der gleichmässigen Konvergenz auf D̄ für Kneser selbst."
+   },
+   "bewertung": {
+    "richtigkeit": "numerisch an Modellen (N ≤ 3200); für Kneser nur Hochrechnung",
+    "neuheit": "vermutlich_neu",
+    "recherche": "Keine Vorarbeit bekannt.",
+    "nutzen": "Legt die richtige Zielfassung fest: gleichmässig ohne kleine Umgebungen von L, L̄.",
+    "nutzen_stufe": "hoch"
+   },
+   "quellen": [
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "phase3/v_pruefstand/BERICHT §3.14 (Test T1), phase3/k_kern/BERICHT §22–§23"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "motiviert",
+     "ziel": "kn.satz.polynom_hauptsatz_kr0"
+    },
+    {
+     "typ": "verwandt",
+     "ziel": "kn.verm.polynom_halbexp_eckmoden"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Stimmt die Vermutung in der schärfsten Fassung „gleichmässig bis zum Rand $|x|=|L|$“? Die Rechnungen bis Grad 1500 sagen ja — aber das Verhalten an der Ecke spricht dagegen, irgendwann.\n",
+    "genau": "In Modellen mit schneller Drehung bleibt der Fehler in einer festen Zone neben $L$ ab $N\\approx1000$ stehen; bei Kneser träte das erst bei $N\\gtrsim10^{10}$ im Abstand $\\sim10^{-6}$ von $L$ auf.\n",
+    "warum": "1. Nahe $L$ besteht die Lösung aus Eckprofilen, die sich mit $N$ langsam drehen ([[kn.satz.polynom_eckprofil]]).\n2. Dreht der primale Teil auf der $\\Gamma_{\\rm out}$-Seite in einen Sektor, in dem er wächst, kann der Fehler dort nicht mehr fallen.\n3. Bei grossem Multiplikator $|\\mu|$ geschieht das schon bei erreichbaren Graden; bei Knesers $|\\mu|=1.17$ ist die Drehung so langsam, dass es erst bei astronomischen Graden passiert.\n",
+    "beispiel": "Modell mit $|\\mu|=2.6$: Fehler in der Zone $1.2$–$2.3\\cdot10^{-6}$ von $N=1000$ bis $3200$, während er in $L$ selbst und im Inneren weiter fällt.\n",
+    "bilder": [],
+    "einordnung": "Darum zielt der Hauptsatz auf $\\bar D$ ohne kleine Umgebungen von $L,\\bar L$: [[kn.satz.polynom_hauptsatz_kr0]]. Die ältere Annahme [[kn.verm.polynom_halbexp_eckmoden]] verlangte Kontrolle bis an $L$.\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "numerisch",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "kn.verm.polynom_halbexp_eckmoden",
+     "score": 3.5,
+     "warum": [
+      "verwandt",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 3.2,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "über kn.verm.polynom_halbexp_eckmoden",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 2.85,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 2.85,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_konforme_stabilitaet",
+     "score": 2.85,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_eckmode",
+     "score": 2.85,
+     "warum": [
+      "über kn.verm.polynom_halbexp_eckmoden",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.gescheitert.polynom_ecke_wege",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 2.02,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.satz.polynom_eckprofil",
+   "titel": "Die Ecke bei L in geschlossener Form: Grenzprofile als Gamma-Reihen mit dem Exponenten L/(4π)",
+   "art": "satz",
+   "ebene": "B",
+   "status": "skizze",
+   "niveau": "forschung",
+   "objekte": [
+    "superfunktion",
+    "fixpunkt_L"
+   ],
+   "bereich": "Rang-1-Bausteine („Köpfe“) der Inversen $J_n^{-1}$ nahe $L$ auf der Skala $d_n=\\rho n^{-a}$, $a=1/\\kappa_1=1-L/(4\\pi i)=0.89359+0.02532i$; $\\alpha=L/(4\\pi)$",
+   "aussage": "Mit $F_\\beta(u)=\\sum_{k\\ge0}\\Gamma(\\beta-i\\alpha k)(-u)^k/(k!\\,\\Gamma(\\beta))=\\Gamma(\\beta)^{-1}\\int_0^\\infty t^{\\beta-1}e^{-t-u\\,t^{-i\\alpha}}dt$:\n(i) **bewiesen:** das Grenzproblem an der Ecke (Mellin–Wiener–Hopf mit dem Faktor $1+\\mu^{s-2}$, $\\mu=\\sqrt L$) hat die Lösungen $F_{\\beta_A}$, $\\beta_A=\\tfrac12-2i\\alpha$ (adjungiert), und\n$F_{\\beta_P}$, $\\beta_P=\\tfrac12+i\\alpha$ (primal), mit $\\lambda_P=-\\mu^{-1/2}\\lambda_A$; unter einer Mellin-Randbedingung sind sie eindeutig.\n(ii) **gemessen:** die echten Köpfe laufen wie $n^{-0.894}$ gegen diese Profile (Gs Eckprofil auf $2.5\\cdot10^{-7}$ mit einem Parameter getroffen); das Eckprodukt folgt\n$K_n(L,L)\\approx C\\,L/d_n$ mit $C=-\\tilde\\lambda_P\\Gamma(\\tfrac12+i\\alpha)/((\\mu+\\mu^{-1})\\Gamma(\\tfrac12+2i\\alpha))=-0.010118-0.598298i$ (gemessen $-0.01012-0.59830i$).\n",
+   "einfach": "Das Verhalten der Gleichungen ganz nahe am Fixpunkt L lässt sich in Formeln hinschreiben: Es sind Reihen aus Gammafunktionen, in denen nur die Zahl L/(4π) vorkommt — eine Folge von log L = L. Die Rechnungen treffen diese Formeln auf sieben Stellen.",
+   "formen": [
+    {
+     "tex": "\\alpha=\\frac{\\log\\mu}{2\\pi}=\\frac{L}{4\\pi},\\qquad \\kappa_1=\\frac{2\\pi i}{2\\pi i-\\log\\mu}",
+     "notiz": "wegen log L = L ist log μ = L/2"
+    }
+   ],
+   "beweis": {
+    "art": "skizze",
+    "text": "Mellin-Transformation macht das Grenzproblem diagonal; der Faktor $1+\\mu^{s-2}$ zerfällt über die Spiegelungsformel in Gammafunktionen (Malyuzhinets-Faktor $\\Gamma(\\tfrac12+i\\alpha(s-2))$);\nExistenz durch Rücktransformation, Eindeutigkeit über Liouville unter der Mellin-Randbedingung; die Integraldarstellung durch Vertauschen von Reihe und Integral.\n",
+    "luecken": [
+     "Lemma K12 (Übersetzung der Mellin-Randbedingung in Sektorbedingungen) nur skizziert.",
+     "Dass die echten Köpfe gegen die Grenzlösung konvergieren, ist gemessen, nicht bewiesen; ebenso die Formel für C (Anpassung an die Aussenlösung)."
+    ]
+   },
+   "stuetzt_sich_auf": [
+    "kn.satz.halbexp_singularitaet_L"
+   ],
+   "experimente": [
+    "exp.polynom_phase3"
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Nein; Mellin–Wiener–Hopf mit explizitem Faktor.",
+    "f2_benutzte_voraussetzungen": "Nur die lokale Form von f bei L (L, μ = √L).",
+    "f3_spezialfall": "Malyuzhinets-Faktor der Keilbeugung; Stokes-Struktur eines Wendepunkts.",
+    "f4_uebertragbar": "Jede Basis: α = log μ/(2π) mit dem jeweiligen Multiplikator.",
+    "f5_neue_frage": "Anpassung an die globale Lösung mit Fehlerschranken (der offene Kern)."
+   },
+   "bewertung": {
+    "richtigkeit": "Grenzproblem bewiesen bis auf Lemma K12 (von V gegengelesen); Konvergenz der echten Köpfe numerisch",
+    "neuheit": "vermutlich_neu",
+    "recherche": "Malyuzhinets-Funktionen sind aus der Beugungstheorie bekannt; ihre Rolle bei Abschnitten von Kompositionsoperatoren nicht gefunden.",
+    "nutzen": "Explizite lokale Parametrix für jeden Beweisweg an der Ecke.",
+    "nutzen_stufe": "mittel"
+   },
+   "quellen": [
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "phase3/k_kern/BERICHT §18–§19, §24–§25, §27.3; phase3/v_pruefstand/BERICHT §1.9–1.10, §1.12, §3.17"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "verwandt",
+     "ziel": "kn.satz.halbexp_singularitaet_L"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Was genau passiert in den Gleichungen ganz nahe am Fixpunkt $L$? Man kann es ausrechnen — in Formeln aus Gammafunktionen.\n",
+    "genau": "Grenzprofile $F_\\beta(u)=\\sum\\Gamma(\\beta-i\\alpha k)(-u)^k/(k!\\Gamma(\\beta))$ mit $\\alpha=L/(4\\pi)$, $\\beta_A=\\tfrac12-2i\\alpha$ und $\\beta_P=\\tfrac12+i\\alpha$; Skala $n^{-a}$ mit\n$a=1-L/(4\\pi i)$.\n",
+    "warum": "1. Nahe $L$ ist $f$ fast eine Streckung um $\\mu=\\sqrt L$. Die Gleichungen werden dann in der Mellin-Variablen diagonal: aus dem Problem wird ein Faktor $1+\\mu^{s-2}$.\n2. Dieser Faktor zerfällt über die Spiegelungsformel in Gammafunktionen; wegen $\\log L=L$ ist $\\log\\mu=L/2$, daher das $\\alpha=L/(4\\pi)$.\n3. Rücktransformiert ergeben sich die Reihen $F_\\beta$; mit einer Randbedingung im Mellin-Bild ist die Lösung eindeutig.\n",
+    "beispiel": "Das bei GPT gemessene Eckprofil wird mit einem einzigen Skalenparameter $\\lambda=-0.203297-1.406007i$ auf $2.5\\cdot10^{-7}$ getroffen; die Konstante des Eckprodukts\n$C=-0.010118-0.598298i$ (Formel) gegen $-0.01012-0.59830i$ (gemessen).\n",
+    "bilder": [
+     "exp.polynom_phase3"
+    ],
+    "einordnung": "Die Exponenten passen zu Knesers Singularität bei $L$ ([[kn.satz.halbexp_singularitaet_L]]). Explizit ist nur die Ecke; der Anschluss an den Rest ist der offene Kern [[kn.verm.polynom_halbexp_kern]].\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "skizze",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [
+    "kn.satz.halbexp_singularitaet_L"
+   ],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "kn.satz.halbexp_singularitaet_L",
+     "score": 4.85,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "verwandt",
+      "über kn.satz.polynom_hauptsatz_kr0"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 4.55,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.beob.polynom_konforme_stabilitaet",
+      "über kn.satz.kneser_e_zertifiziert"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_konforme_stabilitaet",
+     "score": 4.55,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.kneser_e_zertifiziert",
+      "über kn.verm.polynom_halbexp_kern"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 3.93,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.halbexp_singularitaet_L",
+      "über kn.beob.polynom_konforme_stabilitaet"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 3.9,
+     "warum": [
+      "über kn.satz.halbexp_singularitaet_L",
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 3.72,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.beob.polynom_konforme_stabilitaet",
+      "über kn.verm.polynom_halbexp_kern"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_eckmoden",
+     "score": 3.2,
+     "warum": [
+      "über kn.satz.halbexp_singularitaet_L",
+      "über kn.verm.polynom_halbexp_kern",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_eckmode",
+     "score": 3.2,
+     "warum": [
+      "über kn.satz.halbexp_singularitaet_L",
+      "über kn.beob.polynom_konforme_stabilitaet",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.satz.polynom_cd_identitaet",
+   "titel": "Christoffel–Darboux-Formel für die abgeschnittenen Gleichungen mit Komposition",
+   "art": "satz",
+   "ebene": "B",
+   "status": "bewiesen",
+   "niveau": "forschung",
+   "objekte": [
+    "superfunktion"
+   ],
+   "bereich": "$J_n=T_nJ_\\infty|_{P_n}$ mit $J_\\infty u=u\\circ f+m\\,u$ ($f$ holomorph um 0, $f(0)\\ne0$); $K_n(z,t)$ der Kern von $J_n^{-1}$, $q_{n+1}$ primaler Kopf, $\\lambda_n$ adjungierter Kopf, $\\nu_n=J_n^{-1}\\mathbf 1$",
+   "aussage": "$$(z-t)\\,K_n(z,t)=q_{n+1}(z)\\,\\lambda_n(t)-t\\,\\nu_n(z)+\\Xi_n(z,t),\\qquad \\Xi_n(z,t)=\\frac1{2\\pi i}\\oint K_n(z,s)\\,(f(s)-s)\\,K_n(f(s),t)\\,\\frac{ds}{s}.$$\nOhne Komposition ($f(s)=s$) bleibt die klassische Christoffel–Darboux-Formel für Toeplitz-Inverse. Der Dyson-Term $\\Xi_n$ verschwindet in den Fixpunkten. Am Steg ist das Produkt\n$m\\,q_{n+1}\\lambda_n/t$ unabhängig von $n$ (z. B. $1.03968$ bei $180^\\circ$).\n",
+   "einfach": "Für die Inverse der Gleichungsmatrix gibt es eine exakte Formel wie für orthogonale Polynome: Sie besteht aus einem einzigen Paar von Bausteinen, einem glatten Teil und einem Zusatzterm, der von der Verkettung p(p(x)) kommt.",
+   "beweis": {
+    "art": "vollstaendig",
+    "text": "Die Verschiebung erster Ordnung des Kompositionskanals: $JS-SJ=T_nM_{f-x}C_f-(T_nf^{n+1})e_n^{\\mathsf T}$. Für $X=J_n^{-1}$ folgt $SX-XS=X(JS-SJ)X$; zwischen den Erzeugenden\n$e(z)$ und $\\hat e(t)$ ausgewertet ergibt der zweite Term das Kopfpaar, der Randterm $\\nu_n$, und der Kompositionsteil den Dyson-Term als Konturintegral.\n"
+   },
+   "stuetzt_sich_auf": [],
+   "experimente": [],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Fast: es ist die Kommutatorformel für Inverse, ausgewertet mit dem expliziten Kompositions-Kommutator.",
+    "f2_benutzte_voraussetzungen": "Holomorphie von f und m um 0; bei f_K gilt die Konturform nur auf Kreisen |s| < ρ.",
+    "f3_spezialfall": "Christoffel–Darboux / Gohberg–Semencul für Toeplitz-Inverse (Fall f(s) = s).",
+    "f4_uebertragbar": "Jede gewichtete Komposition.",
+    "f5_neue_frage": "Abschätzung des Dyson-Terms; eine Kontraktion für ihn scheitert (Spektralradius > 1 ab n ≈ 58)."
+   },
+   "bewertung": {
+    "richtigkeit": "bewiesen; mit zwei unabhängigen Programmen auf 1e-176 bzw. 2e-89 bestätigt (kubisch und Kneser)",
+    "neuheit": "vermutlich_neu",
+    "recherche": "CD-Formeln für Kompositionsoperatoren nicht gefunden.",
+    "nutzen": "Exakte Darstellung des ganzen Kerns durch wenige Objekte.",
+    "nutzen_stufe": "mittel"
+   },
+   "quellen": [
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "phase3/k_kern/BERICHT §39–§41; phase3/v_pruefstand/BERICHT §1.13"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "verwandt",
+     "ziel": "kn.satz.polynom_eckprofil"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Für orthogonale Polynome gibt es die berühmte Christoffel–Darboux-Formel: Die ganze Summe über alle Polynome lässt sich durch die letzten beiden ausdrücken. Gibt es so etwas hier?\n",
+    "genau": "$(z-t)K_n(z,t)=q_{n+1}(z)\\lambda_n(t)-t\\nu_n(z)+\\Xi_n(z,t)$ mit dem Dyson-Term $\\Xi_n=\\frac1{2\\pi i}\\oint K_n(z,s)(f(s)-s)K_n(f(s),t)\\,ds/s$.\n",
+    "warum": "1. Für die Inverse $X$ einer Matrix $J$ gilt $SX-XS=X(JS-SJ)X$ — eine Zeile Algebra.\n2. Bei der Komposition ist der Kommutator $JS-SJ$ ausrechenbar: ein Randterm plus die Multiplikation mit $f(x)-x$.\n3. Setzt man das in die erzeugenden Funktionen ein, wird der Randterm zum Kopfpaar und der Rest zum Dyson-Integral.\n",
+    "beispiel": "Ohne Komposition ($f(s)=s$) verschwindet $\\Xi_n$, und es bleibt die bekannte Formel für Toeplitz-Inverse. Mit Komposition ist die Formel auf $10^{-176}$ nachgerechnet; am Steg ist\n$m\\,q_{n+1}\\lambda_n/t=1.03968$ bei $180^\\circ$, unabhängig vom Grad.\n",
+    "bilder": [],
+    "einordnung": "Exakt, aber kein Werkzeug für Schranken: eine Kontraktion des Dyson-Terms scheitert ([[kn.gescheitert.polynom_ecke_wege]], Weg 6).\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "bewiesen",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "kn.verm.polynom_halbexp_schranke",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_zweig_400",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_modelle",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_halbexp_endlich",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_moebius_schwelle",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 2.25,
+     "warum": [
+      "verwandt",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 1.6,
+     "warum": [
+      "über kn.satz.polynom_eckprofil",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 1.6,
+     "warum": [
+      "über kn.satz.polynom_eckprofil",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.satz.polynom_approximation_ecke",
+   "titel": "Wie gut Polynome Knesers halbe e-Funktion bis an die Ecke annähern: Rate N^{−3.96}",
+   "art": "satz",
+   "ebene": "C",
+   "status": "skizze",
+   "niveau": "forschung",
+   "objekte": [
+    "superfunktion",
+    "fixpunkt_L"
+   ],
+   "bereich": "$E\\supset\\bar D\\setminus U_{r_0}(L,\\bar L)$ ein Kompaktum mit Spiralecke bei $L$ (Aussenöffnung $\\Theta=131.7^\\circ$, $\\alpha_E=\\Theta/\\pi$); $\\mathcal P_N$ Polynome vom Grad $\\le N$",
+   "aussage": "$\\operatorname{dist}_E(f_K,\\mathcal P_N)\\le C_E\\,N^{-5.417\\,\\alpha_E}$, beim Standardfenster also $N^{-3.96}$.\n",
+   "einfach": "Knesers halbe e-Funktion lässt sich auf dem Gebiet, das der Beweis braucht, sehr gut durch Polynome annähern: der Fehler fällt wie N hoch minus vier.",
+   "beweis": {
+    "art": "skizze",
+    "text": "Satz 2 von Andrievskii–Pritsker–Varga (Approximation auf Quasischeiben, $|f-p_n|\\le c\\,\\rho_{1/n}^{r}\\,\\omega(\\rho_{1/n})$) mit $r=5$; $f_K\\in C^{5,0.417}(E)$ aus der Struktur bei $L$\n(Exponent $5.447$, Verlust $0.030$ durch die Blattdrehung); an der Spiralecke $\\rho_{1/N}(L)\\asymp N^{-\\alpha_E}$.\n",
+    "luecken": [
+     "Dass E eine Quasischeibe ist (Jordan-Gebiet, Dreipunkt-Bedingung, Öffnung), ist nur numerisch auf einem Raster geprüft (kubisch und f_K)."
+    ]
+   },
+   "stuetzt_sich_auf": [
+    "kn.satz.halbexp_singularitaet_L"
+   ],
+   "experimente": [],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Fast: Anwendung eines bekannten Satzes; die Arbeit steckt in Glattheit und Geometrie.",
+    "f2_benutzte_voraussetzungen": "Andrievskii–Pritsker–Varga Satz 2; Struktur von f_K bei L.",
+    "f3_spezialfall": "Dzjadyk-Typ-Sätze der konstruktiven Funktionentheorie.",
+    "f4_uebertragbar": "Andere Basen, andere Ecköffnungen (Exponent 5.417·α_E).",
+    "f5_neue_frage": "Strenger Beweis der Quasischeiben-Geometrie."
+   },
+   "bewertung": {
+    "richtigkeit": "Satz im Original gelesen (Strang K); Geometrie numerisch; synthetischer Test 3.37/3.97/5.02 gegen 3.36/3.96/5.02; gemessen 3.9–4.1",
+    "neuheit": "folklore",
+    "nutzen": "Datenseite des bedingten Hauptsatzes.",
+    "nutzen_stufe": "mittel"
+   },
+   "quellen": [
+    {
+     "ref": "andrievskii_pritsker_varga2001",
+     "stelle": "Satz 2"
+    },
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "phase3/k_kern/BERICHT §35–§36; phase3/v_pruefstand/BERICHT §3.19, §3.23"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "stuetzt",
+     "ziel": "kn.satz.polynom_hauptsatz_kr0"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Ein Teil des Beweises fragt nur: Wie gut kann ein Polynom vom Grad $N$ Knesers halbe e-Funktion auf dem relevanten Gebiet annähern?\n",
+    "genau": "Der Fehler fällt wie $N^{-5.417\\alpha_E}$, beim Standardgebiet wie $N^{-3.96}$.\n",
+    "warum": "1. Ein Satz von Andrievskii–Pritsker–Varga sagt: Auf einer Quasischeibe ist der Fehler so klein wie die Glattheit der Funktion, gemessen im Abstand der Niveaulinie $1+1/N$ der Green-Funktion.\n2. $f_K$ ist am Rand fünfmal stetig differenzierbar mit Hölder-Rest $0.417$ (wegen des Exponenten $5.447$ bei $L$).\n3. An der Ecke mit Öffnung $\\Theta$ liegt die Niveaulinie im Abstand $N^{-\\Theta/\\pi}$; zusammen $N^{-5.417\\Theta/\\pi}$.\n",
+    "beispiel": "Vorhersage für drei Ecköffnungen $3.36$, $3.96$, $5.02$; an einer Testfunktion gemessen $3.37$, $3.97$, $5.02$; an $f_K$ selbst $3.9$–$4.1$.\n",
+    "bilder": [],
+    "einordnung": "Die Datenseite von [[kn.satz.polynom_hauptsatz_kr0]]: Je schneller diese Rate, desto mehr Spielraum bleibt für den Kern.\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "skizze",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 1,
+   "_abhaengig": [
+    "kn.satz.halbexp_singularitaet_L"
+   ],
+   "_traegt": [
+    "kn.satz.polynom_hauptsatz_kr0"
+   ],
+   "_verwandt": [
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 6.88,
+     "warum": [
+      "stützt (Evidenz)",
+      "stützt sich auf (Beweis) (rückwärts)",
+      "über kn.satz.halbexp_singularitaet_L"
+     ]
+    },
+    {
+     "id": "kn.satz.halbexp_singularitaet_L",
+     "score": 4.55,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "über kn.satz.polynom_hauptsatz_kr0"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 3.9,
+     "warum": [
+      "über kn.satz.halbexp_singularitaet_L",
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 3.42,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 3.2,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_zweig_400",
+     "score": 3.0,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: superfunktion"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_eckmoden",
+     "score": 2.85,
+     "warum": [
+      "über kn.satz.halbexp_singularitaet_L",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_rand_plateau",
+     "score": 2.85,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.verm.polynom_halbexp_kern",
+   "titel": "Der offene Kern nach Phase 3: Eck-Pol-Antwort, ferne Raten und Familien-Kohärenz",
+   "art": "vermutung",
+   "ebene": "B",
+   "status": "vermutung",
+   "niveau": "forschung",
+   "objekte": [
+    "superfunktion",
+    "fixpunkt_L"
+   ],
+   "bereich": "$K_{r_0}=\\bar D\\setminus U_{r_0}(L,\\bar L)$; $u_n=\\Pi_ns$ die Antwort auf den Pol in $L$; Köpfe wie in kn.satz.polynom_eckprofil",
+   "aussage": "Für den bedingten Hauptsatz (kn.satz.polynom_hauptsatz_kr0) fehlen drei Aussagen, alle numerisch mit Reserve erfüllt:\n**(G-P)** die Zuwächse der Eck-Pol-Antwort sind auf $K_{r_0}$ polynomial klein: $\\sup_{K_{r_0}}|\\Delta u_n|\\le Cn^{\\kappa_G}$ (gemessen $\\kappa_G\\approx-3.1$);\n**(FA)** die adjungierten Köpfe fallen fern von $L$ auf $n$-ter-Wurzel-Ebene mit strikter Reserve (Linse $-0.013$, $\\Gamma_{\\rm out}$-Bogen $-0.037$ je Grad);\n**(Fam-koh)** für die Fast-Lösungen gibt es Keim-Repräsentanten, deren mit $|\\Lambda_N/\\Lambda_N(L)|$ gewichteter Abstand zu $f_K$ auf der Kontur polynomial bleibt\n(gemessen $\\sim N^{-4.7}$, $3\\cdot10^{-16}$ bei $N=2000$, für jede Linse).\nAlle drei sind Kohärenzaussagen an Stellen, an denen sich ein wachsender und ein fallender Faktor genau ausgleichen; jede Abschätzung, die die Faktoren einzeln beschränkt, hat dort keine Reserve.\n",
+   "einfach": "Nach drei Arbeitsphasen ist das Problem auf wenige, genau benannte Aussagen eingeschrumpft. Alle sind in den Rechnungen deutlich erfüllt. Sie zu beweisen braucht ein Werkzeug, das zeigt, wie zwei sich exakt aufhebende Grössen zusammen schwingen — so ein Werkzeug fehlt bisher.",
+   "gegenbeispielsuche": "Stärkere Fassungen sind gemessen falsch: Familien-Repräsentant ohne Gewicht auf dicker Linse (wächst e^{0.0137N}), primale Reserve auf n-ter-Wurzel-Ebene (H_P ≡ 0, Lemma K20), gleichmässige Konvergenz bis an L (kn.beob.polynom_rand_plateau). Die benannten Fassungen halten bis N = 2000 bzw. 3000.",
+   "experimente": [
+    "exp.polynom_phase3"
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Nein.",
+    "f2_benutzte_voraussetzungen": "—",
+    "f3_spezialfall": "Starke Asymptotik mit Verbindungsformel an einem Wendepunkt; nichtlokale Schweiss-Aufgabe.",
+    "f4_uebertragbar": "Gleiche Form für jede Basis b > η.",
+    "f5_neue_frage": "Ein Riemann–Hilbert-Rahmen mit Verschiebung, der beide Kanäle (Komposition und Multiplikation) an L enthält."
+   },
+   "bewertung": {
+    "richtigkeit": "numerisch, mit Reserve; von zwei Strängen unabhängig gemessen",
+    "neuheit": "vermutlich_neu",
+    "recherche": "Phasen 1–3 und GPT-Strang: keine passende Theorie gefunden (Problemblatt OPEN_PROBLEM_2_en.md).",
+    "nutzen": "Die einzige verbleibende Lücke zum Beweis von Janis’ Vermutung in der K_{r₀}-Fassung.",
+    "nutzen_stufe": "hoch"
+   },
+   "quellen": [
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "phase3/HAUPTSATZ_KR0.md §2, phase3/KERNPROBLEM.md, phase3/OFFENES_PROBLEM_2.md"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "motiviert",
+     "ziel": "kn.satz.polynom_hauptsatz_kr0"
+    },
+    {
+     "typ": "verwandt",
+     "ziel": "kn.verm.polynom_halbexp_eckmoden"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Nach drei Arbeitsphasen: Was genau fehlt noch zum Beweis von Janis’ Vermutung?\n",
+    "genau": "Drei Kohärenzaussagen — (G-P) die Antwort auf den Pol in $L$, (FA) die fernen Raten der adjungierten Köpfe, (Fam-koh) die Nähe der Fast-Lösungen in gewichteter Form.\n",
+    "warum": "1. Die Inverse der Gleichungen zerfällt exakt in Rang-1-Bausteine („Köpfe“).\n2. Jeder Kopf ist ein Produkt aus einem wachsenden und einem fallenden Faktor. An den kritischen Stellen gleichen sich die beiden Raten genau aus.\n3. Deshalb hat jede Abschätzung, die die Faktoren einzeln beschränkt, keinen Spielraum; nur das gemeinsame Schwingen der Faktoren hält die Summe klein — und genau das ist bisher nicht beweisbar.\n",
+    "beispiel": "Gemessen bis $N=2000$: Zuwächse der Eck-Pol-Antwort fallen wie $n^{-3.1}$; ferne adjungierte Raten $-0.013$ bzw. $-0.037$ je Grad; gewichteter Familienabstand $3\\cdot10^{-16}$.\n",
+    "bilder": [
+     "exp.polynom_phase3"
+    ],
+    "einordnung": "Ersetzt für die neue Zielfassung die ältere Annahme [[kn.verm.polynom_halbexp_eckmoden]]; gescheiterte Beweiswege in [[kn.gescheitert.polynom_ecke_wege]]; Problemblatt für Fachleute:\nforschung/polynom_halbexp/phase3/OPEN_PROBLEM_2_en.md.\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "vermutung",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 4.55,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "über kn.beob.polynom_konforme_stabilitaet"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_konforme_stabilitaet",
+     "score": 4.55,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "über kn.satz.kneser_e_zertifiziert"
+     ]
+    },
+    {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 4.07,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "über kn.beob.polynom_konforme_stabilitaet"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "score": 3.88,
+     "warum": [
+      "motiviert",
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.beob.polynom_konforme_stabilitaet"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_eckmoden",
+     "score": 3.5,
+     "warum": [
+      "verwandt",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.gescheitert.polynom_ecke_wege",
+     "score": 3.5,
+     "warum": [
+      "motiviert (rückwärts)",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 3.2,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_rand_plateau",
+     "score": 3.2,
+     "warum": [
+      "über kn.satz.polynom_hauptsatz_kr0",
+      "über kn.verm.polynom_halbexp_eckmoden",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.satz.polynom_hauptsatz_kr0",
+   "titel": "Hauptsatz, Fassung ohne Umgebungen von L: aus dem offenen Kern folgt Konvergenz gegen Knesers halbe e-Funktion",
+   "art": "satz",
+   "ebene": "B",
+   "status": "bedingt",
+   "bedingungen": [
+    "kn.verm.polynom_halbexp_kern",
+    "kn.satz.polynom_approximation_ecke"
+   ],
+   "niveau": "forschung",
+   "objekte": [
+    "superfunktion",
+    "kneser_T"
+   ],
+   "bereich": "$p_N$ wie in kn.verm.polynom_halbexp; $K_{r_0}=\\bar D\\setminus U_{r_0}(L,\\bar L)$ mit $r_0>r_*$ (für Kneser $r_*\\sim10^{-6}$)",
+   "aussage": "Gilt der Kern (kn.verm.polynom_halbexp_kern), so ist $\\sup_{K_{r_0}}|\\Pi_Nf_K-f_K|\\le C\\,N^{\\gamma-3.96}$ mit gemessenem $\\gamma\\approx0$, und der von $p_1$ fortgesetzte Zweig ist ab\n$N_0=400$ die einzige Lösung in der Kugel um $f_K$; also $p_N\\to f_K$ **gleichmässig auf $K_{r_0}$**, insbesondere $a_k^{(N)}\\to a_k$ und $p_N(1)\\to T_e(\\tfrac12)$.\n",
+   "einfach": "Das ist der Stand des Beweises: Alles ist bewiesen oder mit dem Computer zertifiziert, bis auf die wenigen Aussagen des Kerns. Gelten sie, dann ist Janis’ Vermutung bewiesen — in der Fassung, die alles abdeckt, worum es ihr geht: Koeffizienten und p_N(1).",
+   "beweis": {
+    "art": "skizze",
+    "text": "1. **Datenseite (K19):** $\\Pi_Nf-q_N=J_N^{-1}T_NJ(f-q_N)$ für jedes Polynom $q_N$; mit der Kopfentwicklung auf einer festen Kontur wird der Fehler durch $\\operatorname{dist}_E(f_K,\\mathcal P_N)$\n   (kn.satz.polynom_approximation_ecke) mal einer Summe über die Köpfe beschränkt — keine abgeschnittenen Pole, kein Drehproblem.\n2. **Köpfe:** über die Rang-1-Zerlegung $\\Delta K_n=\\delta_n\\Lambda_n/\\ell_{nn}$ zerfällt die Kopfsumme in die drei Aussagen des Kerns.\n3. **Nichtlinear:** die Sätze H1/H2 (Sekanten-Identität, Überlagerung, σ-Homotopie) mit Kugeln in $\\sup_{K_{r_0}}$; Start bei $N_0=400$ aus kn.satz.polynom_zweig_400.\n",
+    "luecken": [
+     "Die drei Aussagen des Kerns (kn.verm.polynom_halbexp_kern).",
+     "Die Umstellung von H1/H2 auf K_{r₀} und K19 sind von Strang V gegengelesen, nicht von der Leitung Zeile für Zeile."
+    ]
+   },
+   "stuetzt_sich_auf": [
+    "kn.satz.kneser_e_zertifiziert",
+    "kn.satz.polynom_zweig_400",
+    "kn.satz.polynom_approximation_ecke",
+    "kn.satz.halbexp_singularitaet_L"
+   ],
+   "experimente": [
+    "exp.polynom_phase3"
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Nein; neue Datenseite (K19) und Kopfzerlegung statt der Pol-Annahme (H).",
+    "f2_benutzte_voraussetzungen": "Kern, zertifizierte Kneser-Werte, Zweig bis 400, Approximationsrate.",
+    "f3_spezialfall": "Galerkin-artige „Konsistenz + Stabilität“ mit Stabilität nur auf K_{r₀}.",
+    "f4_uebertragbar": "Andere Basen b > η.",
+    "f5_neue_frage": "Beweis des Kerns."
+   },
+   "bewertung": {
+    "richtigkeit": "bedingt; Bausteine von Strang V gegengelesen; numerisch bis N = 2000 gestützt",
+    "neuheit": "vermutlich_neu",
+    "recherche": "wie kn.satz.polynom_halbexp_hauptsatz.",
+    "nutzen": "Stand des Beweises nach drei Arbeitsphasen.",
+    "nutzen_stufe": "hoch"
+   },
+   "quellen": [
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "phase3/HAUPTSATZ_KR0.md (Fassung 3)"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "stuetzt",
+     "ziel": "kn.verm.polynom_halbexp"
+    },
+    {
+     "typ": "verwandt",
+     "ziel": "kn.satz.polynom_halbexp_hauptsatz"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Der Stand des Beweises nach drei Arbeitsphasen, in der Fassung, die alles abdeckt, worum es bei der Vermutung geht.\n",
+    "genau": "Unter dem Kern [[kn.verm.polynom_halbexp_kern]]: $p_N\\to f_K$ gleichmässig auf $\\bar D$ ohne kleine Umgebungen von $L,\\bar L$; insbesondere konvergieren die Koeffizienten und $p_N(1)\\to T_e(\\tfrac12)$.\n",
+    "warum": "1. **Datenseite:** Der Fehler der linearen Projektion ist exakt die Inverse angewandt auf den Fehler einer beliebigen Polynom-Annäherung — so wird er zu einer Frage der Approximationstheorie\n   ([[kn.satz.polynom_approximation_ecke]]).\n2. **Köpfe:** Die Inverse zerfällt in Rang-1-Bausteine; was über sie gebraucht wird, ist genau der Kern.\n3. **Nichtlinear:** wie im älteren Hauptsatz (Sekanten-Identität, Überlagerung, Homotopie von Grad zu Grad), jetzt mit Kugeln in der Norm auf $K_{r_0}$.\n4. **Start:** [[kn.satz.polynom_zweig_400]].\n",
+    "beispiel": "Mit den gemessenen Exponenten fällt der Fehler wie $N^{-3.96}$; bei $N=400$ verlangt die Startbedingung nur einen Abstand $\\lesssim10^{-4}$, vorhanden sind $1.75\\cdot10^{-12}$.\n",
+    "bilder": [],
+    "einordnung": "Nachfolger von [[kn.satz.polynom_halbexp_hauptsatz]]; die Gründe für die neue Fassung in [[kn.beob.polynom_rand_plateau]].\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "bedingt",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [
+    "kn.satz.polynom_approximation_ecke",
+    "kn.verm.polynom_halbexp_kern"
+   ],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [
+    "kn.satz.halbexp_singularitaet_L",
+    "kn.satz.kneser_e_zertifiziert",
+    "kn.satz.polynom_approximation_ecke",
+    "kn.satz.polynom_zweig_400"
+   ],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 9.77,
+     "warum": [
+      "stützt (Evidenz) (rückwärts)",
+      "stützt sich auf (Beweis)",
+      "gemeinsames Experiment exp.polynom_phase3"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_zweig_400",
+     "score": 7.3,
+     "warum": [
+      "stützt (Evidenz) (rückwärts)",
+      "stützt sich auf (Beweis)",
+      "über kn.satz.kneser_e_zertifiziert"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 6.88,
+     "warum": [
+      "stützt (Evidenz) (rückwärts)",
+      "stützt sich auf (Beweis)",
+      "über kn.satz.halbexp_singularitaet_L"
      ]
     },
     {
      "id": "kn.satz.polynom_halbexp_hauptsatz",
-     "score": 1.25,
+     "score": 5.25,
      "warum": [
-      "gemeinsame Objekte: superfunktion"
+      "verwandt",
+      "über kn.satz.halbexp_singularitaet_L",
+      "über kn.verm.polynom_halbexp"
      ]
     },
     {
-     "id": "kn.satz.hexation_struktur",
-     "score": 1.25,
+     "id": "kn.satz.halbexp_singularitaet_L",
+     "score": 5.25,
      "warum": [
-      "gemeinsame Objekte: superfunktion"
+      "stützt sich auf (Beweis)",
+      "über kn.satz.polynom_approximation_ecke",
+      "über kn.satz.polynom_halbexp_hauptsatz"
      ]
     },
     {
-     "id": "kn.satz.halbe_exp_wachstum",
-     "score": 1.25,
+     "id": "kn.verm.polynom_halbexp",
+     "score": 4.02,
      "warum": [
-      "gemeinsame Objekte: superfunktion"
+      "stützt (Evidenz)",
+      "über kn.satz.polynom_halbexp_hauptsatz",
+      "gemeinsame Objekte: kneser_T, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 3.93,
+     "warum": [
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.kneser_e_zertifiziert",
+      "über kn.verm.polynom_halbexp_kern"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 3.88,
+     "warum": [
+      "motiviert (rückwärts)",
+      "gemeinsames Experiment exp.polynom_phase3",
+      "über kn.satz.kneser_e_zertifiziert"
+     ]
+    }
+   ],
+   "befunde": []
+  },
+  {
+   "id": "kn.gescheitert.polynom_ecke_wege",
+   "titel": "Acht Wege an der Ecke, die nicht tragen — und warum",
+   "art": "gescheitert",
+   "ebene": "B",
+   "status": "gescheitert",
+   "niveau": "forschung",
+   "objekte": [
+    "superfunktion",
+    "fixpunkt_L"
+   ],
+   "bereich": "Versuche aus Phase 3 (Stränge K und V), den offenen Kern zu beweisen",
+   "aussage": "(1) **Reserve in der konformen Koordinate:** die gleichmässige Stabilität enthält die Eckaussage für glatte Daten, braucht also dieselbe polynomiale Genauigkeit.\n(2) **Klassische Abschnittstheorie:** lokale Invertierbarkeit genügt nicht — der Kompositionskanal transportiert Anteile durch den ganzen Phasenraum.\n(3) **Cotlar–Stein:** asymptotisch nicht besser als die Dreiecksungleichung. (4) **Liouville auf dem Abel-Torus:** die Köpfe sind nur in komplementären Sektoren homogen.\n(5) **Vergleichsprinzip:** es gibt keine superharmonische Vergleichsfunktion mit der Singularität der Köpfe (Gesamtmasse). (6) **Dyson-Kontraktion der CD-Formel:** Spektralradius $>1$ ab $n\\approx58$.\n(7) **Integrabler Eckkern:** die Ecke ist skaleninvariant, $f(s)-s$ und der Kern sind homogen vom Grad 0 — kein kleiner Parameter. (8) **Explizite Parametrix bzw. Abschneide-Rest:**\nausserhalb von $D$ dominiert die äussere Wachstumslösung; der Rest wächst um $0.252$ je Grad.\n",
+   "einfach": "Acht verschiedene Werkzeuge wurden an der Ecke bei L ausprobiert. Jedes scheitert an derselben Stelle: Zwei Grössen gleichen sich dort exakt aus, und keine Abschätzung, die sie einzeln behandelt, hat Spielraum.",
+   "experimente": [],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "—",
+    "f2_benutzte_voraussetzungen": "—",
+    "f3_spezialfall": "—",
+    "f4_uebertragbar": "Dieselben Hindernisse bei jeder Basis b > η.",
+    "f5_neue_frage": "Ein Werkzeug, das die Kohärenz zweier sich ausgleichender Faktoren sieht."
+   },
+   "bewertung": {
+    "richtigkeit": "jede Bruchstelle numerisch oder durch kurzen Beweis belegt",
+    "neuheit": "vermutlich_neu",
+    "recherche": "eigene Arbeit",
+    "nutzen": "Erspart späteren Versuchen die bekannten Sackgassen.",
+    "nutzen_stufe": "mittel"
+   },
+   "quellen": [
+    {
+     "ref": "team_polynom_halbexp",
+     "stelle": "phase3/KERNPROBLEM.md §2–§4, phase3/REFLEXION.md, phase3/k_kern/BERICHT §6–§8, §15–§16, §33, §37–§38, §41–§42"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "motiviert",
+     "ziel": "kn.verm.polynom_halbexp_kern"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "05_kneser_slog.yaml",
+   "theorie": {
+    "worum": "Welche naheliegenden Werkzeuge reichen für die Ecke bei $L$ nicht — und was lehrt das?\n",
+    "genau": "Acht Wege (Reserve, klassische Abschnittstheorie, Cotlar–Stein, Liouville, Vergleichsprinzip, Dyson-Kontraktion, integrabler Eckkern, explizite Parametrix) mit je einer belegten Bruchstelle.\n",
+    "warum": "Alle Wege scheitern an derselben Struktur: An der Ecke und am Steg gleichen sich ein wachsender und ein fallender Faktor exakt aus, und die Ecke ist skaleninvariant — es gibt keinen\nkleinen Parameter. Werkzeuge, die mit Beträgen oder lokalen Modellen arbeiten, sehen die Kohärenz der beiden Faktoren nicht.\n",
+    "beispiel": "Die Dyson-Abbildung der Christoffel–Darboux-Formel hat Spektralradius $0.61$ bei $n=10$, aber $1.20$ bei $n=100$; ihr wachsender Vektor sitzt nicht an der Ecke, sondern bei den niedrigen Graden.\n",
+    "bilder": [],
+    "einordnung": "Ergänzt [[kn.gescheitert.polynom_kantorovich]]; der verbleibende Kern steht in [[kn.verm.polynom_halbexp_kern]].\n"
+   },
+   "_strang": "kn.halbe_exp",
+   "_niveau": "forschung",
+   "_status_eff": "gescheitert",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 3.5,
+     "warum": [
+      "motiviert",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.verm.polynom_halbexp_eckmoden",
+     "score": 2.85,
+     "warum": [
+      "über kn.verm.polynom_halbexp_kern",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 2.85,
+     "warum": [
+      "über kn.verm.polynom_halbexp_kern",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_konforme_stabilitaet",
+     "score": 2.85,
+     "warum": [
+      "über kn.verm.polynom_halbexp_kern",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_rand_plateau",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.beob.polynom_eckmode",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
+     ]
+    },
+    {
+     "id": "kn.satz.kneser_e_zertifiziert",
+     "score": 2.02,
+     "warum": [
+      "über kn.verm.polynom_halbexp_kern",
+      "gemeinsame Objekte: fixpunkt_L, superfunktion"
      ]
     }
    ],
@@ -30729,7 +32198,22 @@
      ]
     },
     {
+     "id": "kn.verm.polynom_halbexp_kern",
+     "score": 0.83,
+     "warum": []
+    },
+    {
      "id": "kn.verm.polynom_halbexp_eckmoden",
+     "score": 0.83,
+     "warum": []
+    },
+    {
+     "id": "kn.satz.polynom_eckprofil",
+     "score": 0.83,
+     "warum": []
+    },
+    {
+     "id": "kn.satz.polynom_approximation_ecke",
      "score": 0.83,
      "warum": []
     },
@@ -30740,21 +32224,6 @@
     },
     {
      "id": "kn.konstr.cauchy",
-     "score": 0.83,
-     "warum": []
-    },
-    {
-     "id": "kn.beob.polynom_eckmode",
-     "score": 0.83,
-     "warum": []
-    },
-    {
-     "id": "kl.satz.bruchsumme",
-     "score": 0.83,
-     "warum": []
-    },
-    {
-     "id": "fp.satz.fixpunkt_summen",
      "score": 0.83,
      "warum": []
     }
@@ -31417,14 +32886,14 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_reduktion",
+     "id": "kn.satz.polynom_hauptsatz_kr0",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_hauptsatz",
+     "id": "kn.satz.polynom_halbexp_reduktion",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
@@ -31538,14 +33007,14 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_reduktion",
+     "id": "kn.satz.polynom_hauptsatz_kr0",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_hauptsatz",
+     "id": "kn.satz.polynom_halbexp_reduktion",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
@@ -31656,14 +33125,14 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_reduktion",
+     "id": "kn.satz.polynom_hauptsatz_kr0",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_hauptsatz",
+     "id": "kn.satz.polynom_halbexp_reduktion",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
@@ -31761,14 +33230,14 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_reduktion",
+     "id": "kn.satz.polynom_hauptsatz_kr0",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
      ]
     },
     {
-     "id": "kn.satz.polynom_halbexp_hauptsatz",
+     "id": "kn.satz.polynom_halbexp_reduktion",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
@@ -45753,6 +47222,135 @@
    "notiz": ""
   },
   {
+   "von": "kn.satz.kneser_e_zertifiziert",
+   "nach": "kn.konstr.kneser",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.kneser_e_zertifiziert",
+   "nach": "kn.satz.polynom_hauptsatz_kr0",
+   "typ": "stuetzt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.polynom_zweig_400",
+   "nach": "kn.satz.kneser_e_zertifiziert",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.polynom_zweig_400",
+   "nach": "kn.satz.polynom_halbexp_endlich",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.polynom_zweig_400",
+   "nach": "kn.satz.polynom_halbexp_endlich",
+   "typ": "verallgemeinert",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.polynom_zweig_400",
+   "nach": "kn.satz.polynom_hauptsatz_kr0",
+   "typ": "stuetzt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.beob.polynom_konforme_stabilitaet",
+   "nach": "kn.beob.polynom_eckmode",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.beob.polynom_rand_plateau",
+   "nach": "kn.satz.polynom_hauptsatz_kr0",
+   "typ": "motiviert",
+   "notiz": ""
+  },
+  {
+   "von": "kn.beob.polynom_rand_plateau",
+   "nach": "kn.verm.polynom_halbexp_eckmoden",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.polynom_eckprofil",
+   "nach": "kn.satz.halbexp_singularitaet_L",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.polynom_eckprofil",
+   "nach": "kn.satz.halbexp_singularitaet_L",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.polynom_cd_identitaet",
+   "nach": "kn.satz.polynom_eckprofil",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.polynom_approximation_ecke",
+   "nach": "kn.satz.halbexp_singularitaet_L",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.polynom_approximation_ecke",
+   "nach": "kn.satz.polynom_hauptsatz_kr0",
+   "typ": "stuetzt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.verm.polynom_halbexp_kern",
+   "nach": "kn.satz.polynom_hauptsatz_kr0",
+   "typ": "motiviert",
+   "notiz": ""
+  },
+  {
+   "von": "kn.verm.polynom_halbexp_kern",
+   "nach": "kn.verm.polynom_halbexp_eckmoden",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.polynom_hauptsatz_kr0",
+   "nach": "kn.satz.kneser_e_zertifiziert",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.polynom_hauptsatz_kr0",
+   "nach": "kn.satz.polynom_zweig_400",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.polynom_hauptsatz_kr0",
+   "nach": "kn.satz.polynom_approximation_ecke",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.polynom_hauptsatz_kr0",
+   "nach": "kn.satz.halbexp_singularitaet_L",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.polynom_hauptsatz_kr0",
+   "nach": "kn.verm.polynom_halbexp",
+   "typ": "stuetzt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.polynom_hauptsatz_kr0",
+   "nach": "kn.satz.polynom_halbexp_hauptsatz",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.gescheitert.polynom_ecke_wege",
+   "nach": "kn.verm.polynom_halbexp_kern",
+   "typ": "motiviert",
+   "notiz": ""
+  },
+  {
    "von": "bw.ann.hyp22",
    "nach": "bw.lem.stoppregel",
    "typ": "verwandt",
@@ -50983,6 +52581,73 @@
    ],
    "zustand": "aktuell",
    "svg": "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"663.143182pt\" height=\"281.634375pt\" viewBox=\"0 0 663.143182 281.634375\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n <metadata>\n  <rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n   <cc:Work>\n    <dc:type rdf:resource=\"http://purl.org/dc/dcmitype/StillImage\"/>\n    <dc:date>2026-10-10T23:13:48.666694</dc:date>\n    <dc:format>image/svg+xml</dc:format>\n    <dc:creator>\n     <cc:Agent>\n      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>\n     </cc:Agent>\n    </dc:creator>\n   </cc:Work>\n  </rdf:RDF>\n </metadata>\n <defs>\n  <style type=\"text/css\">*{stroke-linejoin: round; stroke-linecap: butt}</style>\n </defs>\n <g id=\"figure_1\">\n  <g id=\"patch_1\">\n   <path d=\"M 0 281.634375 \nL 663.143182 281.634375 \nL 663.143182 0 \nL 0 0 \nz\n\" style=\"fill: #ffffff\"/>\n  </g>\n  <g id=\"axes_1\">\n   <g id=\"patch_2\">\n    <path d=\"M 42.1 244.078125 \nL 321.1 244.078125 \nL 321.1 22.318125 \nL 42.1 22.318125 \nz\n\" style=\"fill: #ffffff\"/>\n   </g>\n   <g id=\"matplotlib.axis_1\">\n    <g id=\"xtick_1\">\n     <g id=\"line2d_1\">\n      <path d=\"M 54.781818 244.078125 \nL 54.781818 22.318125 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_2\">\n      <defs>\n       <path id=\"m855d72c0b9\" d=\"M 0 0 \nL 0 3.5 \n\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </defs>\n      <g>\n       <use xlink:href=\"#m855d72c0b9\" x=\"54.781818\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_1\">\n      <!-- $\\mathdefault{10^{2}}$ -->\n      <g transform=\"translate(45.981818 258.676562)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">2</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_2\">\n     <g id=\"line2d_3\">\n      <path d=\"M 308.418182 244.078125 \nL 308.418182 22.318125 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_4\">\n      <g>\n       <use xlink:href=\"#m855d72c0b9\" x=\"308.418182\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_2\">\n      <!-- $\\mathdefault{10^{3}}$ -->\n      <g transform=\"translate(299.618182 258.676562)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">3</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_3\">\n     <g id=\"line2d_5\">\n      <defs>\n       <path id=\"md9dde8d64b\" d=\"M 0 0 \nL 0 2 \n\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </defs>\n      <g>\n       <use xlink:href=\"#md9dde8d64b\" x=\"43.176055\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_4\">\n     <g id=\"line2d_6\">\n      <g>\n       <use xlink:href=\"#md9dde8d64b\" x=\"131.133972\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_5\">\n     <g id=\"line2d_7\">\n      <g>\n       <use xlink:href=\"#md9dde8d64b\" x=\"175.797118\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_6\">\n     <g id=\"line2d_8\">\n      <g>\n       <use xlink:href=\"#md9dde8d64b\" x=\"207.486125\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_7\">\n     <g id=\"line2d_9\">\n      <g>\n       <use xlink:href=\"#md9dde8d64b\" x=\"232.066028\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_8\">\n     <g id=\"line2d_10\">\n      <g>\n       <use xlink:href=\"#md9dde8d64b\" x=\"252.149272\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_9\">\n     <g id=\"line2d_11\">\n      <g>\n       <use xlink:href=\"#md9dde8d64b\" x=\"269.129412\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_10\">\n     <g id=\"line2d_12\">\n      <g>\n       <use xlink:href=\"#md9dde8d64b\" x=\"283.838279\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"xtick_11\">\n     <g id=\"line2d_13\">\n      <g>\n       <use xlink:href=\"#md9dde8d64b\" x=\"296.812418\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.6\"/>\n      </g>\n     </g>\n    </g>\n    <g id=\"text_3\">\n     <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"181.6\" y=\"272.354687\" transform=\"rotate(-0 181.6 272.354687)\">N</text>\n    </g>\n   </g>\n   <g id=\"matplotlib.axis_2\">\n    <g id=\"ytick_1\">\n     <g id=\"line2d_14\">\n      <path d=\"M 42.1 211.667104 \nL 321.1 211.667104 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_15\">\n      <defs>\n       <path id=\"m6ecd0eb878\" d=\"M 0 0 \nL -3.5 0 \n\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </defs>\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"42.1\" y=\"211.667104\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_4\">\n      <!-- $\\mathdefault{10^{-20}}$ -->\n      <g transform=\"translate(7.2 215.466323)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">2</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">0</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_2\">\n     <g id=\"line2d_16\">\n      <path d=\"M 42.1 178.28796 \nL 321.1 178.28796 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_17\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"42.1\" y=\"178.28796\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_5\">\n      <!-- $\\mathdefault{10^{-18}}$ -->\n      <g transform=\"translate(7.2 182.087179)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">8</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_3\">\n     <g id=\"line2d_18\">\n      <path d=\"M 42.1 144.908816 \nL 321.1 144.908816 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_19\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"42.1\" y=\"144.908816\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_6\">\n      <!-- $\\mathdefault{10^{-16}}$ -->\n      <g transform=\"translate(7.2 148.708035)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">6</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_4\">\n     <g id=\"line2d_20\">\n      <path d=\"M 42.1 111.529672 \nL 321.1 111.529672 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_21\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"42.1\" y=\"111.529672\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_7\">\n      <!-- $\\mathdefault{10^{-14}}$ -->\n      <g transform=\"translate(7.2 115.32889)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">4</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_5\">\n     <g id=\"line2d_22\">\n      <path d=\"M 42.1 78.150527 \nL 321.1 78.150527 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_23\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"42.1\" y=\"78.150527\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_8\">\n      <!-- $\\mathdefault{10^{-12}}$ -->\n      <g transform=\"translate(7.2 81.949746)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">2</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_6\">\n     <g id=\"line2d_24\">\n      <path d=\"M 42.1 44.771383 \nL 321.1 44.771383 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_25\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"42.1\" y=\"44.771383\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_9\">\n      <!-- $\\mathdefault{10^{-10}}$ -->\n      <g transform=\"translate(7.2 48.570602)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">0</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n   </g>\n   <g id=\"line2d_26\">\n    <path d=\"M 54.781818 32.398125 \nL 79.361721 40.201573 \nL 99.444965 46.610638 \nL 116.425105 52.081629 \nL 131.133972 56.8586 \nL 144.108111 61.067941 \nL 155.713875 64.787687 \nL 166.212565 68.099478 \nL 174.318534 70.668848 \nL 174.690045 70.771971 \nL 175.060307 70.885802 \nL 175.429329 71.027614 \nL 175.797118 71.102282 \nL 184.614052 73.888171 \nL 192.777259 76.512106 \nL 200.377022 78.98316 \nL 207.486125 81.283898 \nL 214.164101 83.406767 \nL 220.460265 85.378217 \nL 226.415925 87.247123 \nL 231.181262 88.764501 \nL 231.40312 88.907704 \nL 231.624533 88.906298 \nL 231.845502 89.046374 \nL 232.066028 89.05139 \nL 242.564719 92.458794 \nL 252.149272 95.4893 \nL 260.966206 98.273873 \nL 268.498162 100.708224 \nL 268.656314 100.738739 \nL 268.814239 100.81667 \nL 268.971938 100.832545 \nL 269.129412 100.923053 \nL 276.729175 103.325567 \nL 283.838279 105.57105 \nL 290.516255 107.738179 \nL 296.812418 109.725401 \nL 302.768078 111.609597 \nL 307.976687 113.294354 \nL 308.087227 113.308634 \nL 308.197655 113.369414 \nL 308.307974 113.375127 \nL 308.418182 113.442754 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 1.5; stroke-linecap: square\"/>\n   </g>\n   <g id=\"line2d_27\">\n    <path d=\"M 54.781818 101.847644 \nL 131.133972 141.719166 \nL 175.797118 164.954841 \nL 207.486125 181.554939 \nL 232.066028 194.220391 \nL 252.149272 204.722494 \nL 269.129412 213.581037 \nL 283.838279 221.160405 \nL 296.812418 227.937445 \nL 308.418182 233.998125 \n\" clip-path=\"url(#p75c1b6851d)\" style=\"fill: none; stroke: #b5523b; stroke-width: 1.5; stroke-linecap: square\"/>\n    <defs>\n     <path id=\"m1b3dfdeb9a\" d=\"M 0 1.5 \nC 0.397805 1.5 0.77937 1.341951 1.06066 1.06066 \nC 1.341951 0.77937 1.5 0.397805 1.5 0 \nC 1.5 -0.397805 1.341951 -0.77937 1.06066 -1.06066 \nC 0.77937 -1.341951 0.397805 -1.5 0 -1.5 \nC -0.397805 -1.5 -0.77937 -1.341951 -1.06066 -1.06066 \nC -1.341951 -0.77937 -1.5 -0.397805 -1.5 0 \nC -1.5 0.397805 -1.341951 0.77937 -1.06066 1.06066 \nC -0.77937 1.341951 -0.397805 1.5 0 1.5 \nz\n\" style=\"stroke: #b5523b\"/>\n    </defs>\n    <g clip-path=\"url(#p75c1b6851d)\">\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"54.781818\" y=\"101.847644\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"131.133972\" y=\"141.719166\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"175.797118\" y=\"164.954841\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"207.486125\" y=\"181.554939\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"232.066028\" y=\"194.220391\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"252.149272\" y=\"204.722494\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"269.129412\" y=\"213.581037\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"283.838279\" y=\"221.160405\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"296.812418\" y=\"227.937445\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#m1b3dfdeb9a\" x=\"308.418182\" y=\"233.998125\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n    </g>\n   </g>\n   <g id=\"patch_3\">\n    <path d=\"M 42.1 244.078125 \nL 42.1 22.318125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"patch_4\">\n    <path d=\"M 42.1 244.078125 \nL 321.1 244.078125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"text_10\">\n    <text style=\"font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"181.6\" y=\"16.318125\" transform=\"rotate(-0 181.6 16.318125)\">Rand- und Innenfehler der linearen Projektion</text>\n   </g>\n   <g id=\"legend_1\">\n    <g id=\"patch_5\">\n     <path d=\"M 177.06 52.718125 \nL 315.5 52.718125 \nQ 317.1 52.718125 317.1 51.118125 \nL 317.1 27.918125 \nQ 317.1 26.318125 315.5 26.318125 \nL 177.06 26.318125 \nQ 175.46 26.318125 175.46 27.918125 \nL 175.46 51.118125 \nQ 175.46 52.718125 177.06 52.718125 \nz\n\" style=\"fill: #ffffff; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter\"/>\n    </g>\n    <g id=\"line2d_28\">\n     <path d=\"M 178.66 32.831875 \nL 186.66 32.831875 \nL 194.66 32.831875 \n\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 1.5; stroke-linecap: square\"/>\n    </g>\n    <g id=\"text_11\">\n     <text style=\"font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"201.06\" y=\"35.631875\" transform=\"rotate(-0 201.06 35.631875)\">|Π_N f_K(L) − L|</text>\n    </g>\n    <g id=\"line2d_29\">\n     <path d=\"M 178.66 44.831875 \nL 186.66 44.831875 \nL 194.66 44.831875 \n\" style=\"fill: none; stroke: #b5523b; stroke-width: 1.5; stroke-linecap: square\"/>\n     <g>\n      <use xlink:href=\"#m1b3dfdeb9a\" x=\"186.66\" y=\"44.831875\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     </g>\n    </g>\n    <g id=\"text_12\">\n     <text style=\"font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"201.06\" y=\"47.631875\" transform=\"rotate(-0 201.06 47.631875)\">max_{|z|=1}|Π_N f_K − f_K|</text>\n    </g>\n   </g>\n  </g>\n  <g id=\"axes_2\">\n   <g id=\"patch_6\">\n    <path d=\"M 376.9 244.078125 \nL 655.9 244.078125 \nL 655.9 22.318125 \nL 376.9 22.318125 \nz\n\" style=\"fill: #ffffff\"/>\n   </g>\n   <g id=\"matplotlib.axis_3\">\n    <g id=\"xtick_12\">\n     <g id=\"line2d_30\">\n      <path d=\"M 384.405566 244.078125 \nL 384.405566 22.318125 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_31\">\n      <g>\n       <use xlink:href=\"#m855d72c0b9\" x=\"384.405566\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_13\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"384.405566\" y=\"258.676562\" transform=\"rotate(-0 384.405566 258.676562)\">0</text>\n     </g>\n    </g>\n    <g id=\"xtick_13\">\n     <g id=\"line2d_32\">\n      <path d=\"M 436.168089 244.078125 \nL 436.168089 22.318125 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_33\">\n      <g>\n       <use xlink:href=\"#m855d72c0b9\" x=\"436.168089\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_14\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"436.168089\" y=\"258.676562\" transform=\"rotate(-0 436.168089 258.676562)\">200</text>\n     </g>\n    </g>\n    <g id=\"xtick_14\">\n     <g id=\"line2d_34\">\n      <path d=\"M 487.930612 244.078125 \nL 487.930612 22.318125 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_35\">\n      <g>\n       <use xlink:href=\"#m855d72c0b9\" x=\"487.930612\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_15\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"487.930612\" y=\"258.676562\" transform=\"rotate(-0 487.930612 258.676562)\">400</text>\n     </g>\n    </g>\n    <g id=\"xtick_15\">\n     <g id=\"line2d_36\">\n      <path d=\"M 539.693135 244.078125 \nL 539.693135 22.318125 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_37\">\n      <g>\n       <use xlink:href=\"#m855d72c0b9\" x=\"539.693135\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_16\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"539.693135\" y=\"258.676562\" transform=\"rotate(-0 539.693135 258.676562)\">600</text>\n     </g>\n    </g>\n    <g id=\"xtick_16\">\n     <g id=\"line2d_38\">\n      <path d=\"M 591.455659 244.078125 \nL 591.455659 22.318125 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_39\">\n      <g>\n       <use xlink:href=\"#m855d72c0b9\" x=\"591.455659\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_17\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"591.455659\" y=\"258.676562\" transform=\"rotate(-0 591.455659 258.676562)\">800</text>\n     </g>\n    </g>\n    <g id=\"xtick_17\">\n     <g id=\"line2d_40\">\n      <path d=\"M 643.218182 244.078125 \nL 643.218182 22.318125 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_41\">\n      <g>\n       <use xlink:href=\"#m855d72c0b9\" x=\"643.218182\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_18\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"643.218182\" y=\"258.676562\" transform=\"rotate(-0 643.218182 258.676562)\">1000</text>\n     </g>\n    </g>\n    <g id=\"text_19\">\n     <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"516.4\" y=\"272.354687\" transform=\"rotate(-0 516.4 272.354687)\">k</text>\n    </g>\n   </g>\n   <g id=\"matplotlib.axis_4\">\n    <g id=\"ytick_7\">\n     <g id=\"line2d_42\">\n      <path d=\"M 376.9 226.565045 \nL 655.9 226.565045 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_43\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"376.9\" y=\"226.565045\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_20\">\n      <!-- $\\mathdefault{10^{-18}}$ -->\n      <g transform=\"translate(342 230.364264)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">8</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_8\">\n     <g id=\"line2d_44\">\n      <path d=\"M 376.9 192.699679 \nL 655.9 192.699679 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_45\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"376.9\" y=\"192.699679\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_21\">\n      <!-- $\\mathdefault{10^{-16}}$ -->\n      <g transform=\"translate(342 196.498898)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">6</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_9\">\n     <g id=\"line2d_46\">\n      <path d=\"M 376.9 158.834312 \nL 655.9 158.834312 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_47\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"376.9\" y=\"158.834312\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_22\">\n      <!-- $\\mathdefault{10^{-14}}$ -->\n      <g transform=\"translate(342 162.633531)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">4</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_10\">\n     <g id=\"line2d_48\">\n      <path d=\"M 376.9 124.968946 \nL 655.9 124.968946 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_49\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"376.9\" y=\"124.968946\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_23\">\n      <!-- $\\mathdefault{10^{-12}}$ -->\n      <g transform=\"translate(342 128.768165)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">2</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_11\">\n     <g id=\"line2d_50\">\n      <path d=\"M 376.9 91.103579 \nL 655.9 91.103579 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_51\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"376.9\" y=\"91.103579\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_24\">\n      <!-- $\\mathdefault{10^{-10}}$ -->\n      <g transform=\"translate(342 94.902798)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">0</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_12\">\n     <g id=\"line2d_52\">\n      <path d=\"M 376.9 57.238213 \nL 655.9 57.238213 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_53\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"376.9\" y=\"57.238213\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_25\">\n      <!-- $\\mathdefault{10^{-8}}$ -->\n      <g transform=\"translate(346.4 61.037432)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">8</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_13\">\n     <g id=\"line2d_54\">\n      <path d=\"M 376.9 23.372846 \nL 655.9 23.372846 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_55\">\n      <g>\n       <use xlink:href=\"#m6ecd0eb878\" x=\"376.9\" y=\"23.372846\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_26\">\n      <!-- $\\mathdefault{10^{-6}}$ -->\n      <g transform=\"translate(346.4 27.172065)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">6</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n   </g>\n   <g id=\"line2d_56\">\n    <path d=\"M 389.581818 43.935326 \nL 390.875881 42.453174 \nL 392.169944 49.675016 \nL 393.464007 58.941061 \nL 394.758071 72.23642 \nL 396.052134 79.928928 \nL 397.346197 77.146051 \nL 398.64026 79.49428 \nL 399.934323 83.735458 \nL 401.228386 89.784012 \nL 402.522449 99.792379 \nL 403.816512 106.704324 \nL 405.110575 100.887258 \nL 406.404638 100.967955 \nL 407.698701 103.035875 \nL 408.992764 106.644883 \nL 410.286827 112.37721 \nL 411.580891 125.386223 \nL 412.874954 121.020179 \nL 414.169017 117.368009 \nL 415.46308 117.257293 \nL 416.757143 118.838508 \nL 418.051206 121.902387 \nL 419.345269 127.118004 \nL 420.639332 140.086557 \nL 421.933395 134.23182 \nL 423.227458 130.181962 \nL 424.521521 129.571531 \nL 425.815584 130.622371 \nL 427.109647 133.09814 \nL 428.403711 137.516567 \nL 429.697774 147.472543 \nL 430.991837 146.398768 \nL 432.2859 140.879094 \nL 433.579963 139.579346 \nL 434.874026 140.047989 \nL 436.168089 141.90204 \nL 437.462152 145.439857 \nL 440.050278 159.579854 \nL 441.344341 150.437378 \nL 442.638404 148.192388 \nL 443.932468 148.008052 \nL 445.226531 149.223778 \nL 446.520594 151.918328 \nL 447.814657 157.126185 \nL 449.10872 180.714257 \nL 450.402783 159.685799 \nL 451.696846 156.001191 \nL 452.990909 155.047378 \nL 454.284972 155.603685 \nL 455.579035 157.520563 \nL 456.873098 161.307457 \nL 458.167161 170.188308 \nL 459.461224 169.941462 \nL 460.755288 163.486347 \nL 462.049351 161.542707 \nL 463.343414 161.389801 \nL 464.637477 162.577713 \nL 465.93154 165.282544 \nL 467.225603 170.789875 \nL 468.519666 189.823622 \nL 469.813729 171.219866 \nL 471.107792 167.804263 \nL 472.401855 166.831319 \nL 473.695918 167.302582 \nL 474.989981 169.121612 \nL 476.284045 172.845126 \nL 477.578108 182.027247 \nL 478.872171 180.448235 \nL 480.166234 174.168806 \nL 481.460297 172.13674 \nL 482.75436 171.851233 \nL 484.048423 172.886149 \nL 485.342486 175.414721 \nL 486.636549 180.670528 \nL 487.930612 202.900169 \nL 489.224675 181.184726 \nL 490.518738 177.525655 \nL 491.812801 176.359252 \nL 493.106865 176.638285 \nL 494.400928 178.240301 \nL 495.694991 181.655551 \nL 496.989054 189.82717 \nL 498.283117 190.453793 \nL 499.57718 183.313364 \nL 500.871243 180.972278 \nL 502.165306 180.447855 \nL 503.459369 181.242382 \nL 504.753432 183.468072 \nL 506.047495 188.129443 \nL 507.341558 207.994597 \nL 508.635622 190.169857 \nL 509.929685 185.891104 \nL 511.223748 184.403408 \nL 512.517811 184.412514 \nL 513.811874 185.718789 \nL 515.105937 188.690057 \nL 516.4 195.419455 \nL 517.694063 200.816531 \nL 518.988126 191.484284 \nL 520.282189 188.634736 \nL 521.576252 187.784501 \nL 522.870315 188.276647 \nL 524.164378 190.12881 \nL 525.458442 194.075897 \nL 526.752505 205.626795 \nL 528.046568 198.747724 \nL 529.340631 193.369391 \nL 530.634694 191.434548 \nL 531.928757 191.109615 \nL 533.22282 192.070664 \nL 534.516883 194.546007 \nL 535.810946 199.927665 \nL 537.105009 215.109682 \nL 538.399072 199.118869 \nL 539.693135 195.507784 \nL 540.987199 194.244552 \nL 542.281262 194.38621 \nL 543.575325 195.830986 \nL 544.869388 199.070144 \nL 546.163451 206.991158 \nL 547.457514 207.711896 \nL 548.751577 200.307872 \nL 550.04564 197.768796 \nL 551.339703 197.046865 \nL 552.633766 197.629298 \nL 553.927829 199.602338 \nL 555.221892 203.85952 \nL 556.515955 218.951545 \nL 557.810019 206.663643 \nL 559.104082 201.873943 \nL 560.398145 200.091505 \nL 561.692208 199.837753 \nL 562.986271 200.85955 \nL 564.280334 203.443688 \nL 565.574397 209.221553 \nL 566.86846 219.442227 \nL 568.162523 207.021537 \nL 569.456586 203.640083 \nL 570.750649 202.446485 \nL 572.044712 202.621634 \nL 573.338776 204.103648 \nL 574.632839 207.440997 \nL 575.926902 215.968808 \nL 577.220965 214.838793 \nL 578.515028 207.976076 \nL 579.809091 205.521822 \nL 581.103154 204.820501 \nL 582.397217 205.408534 \nL 583.69128 207.39658 \nL 584.985343 211.73679 \nL 586.279406 228.693772 \nL 587.573469 213.901339 \nL 588.867532 209.244272 \nL 590.161596 207.475277 \nL 591.455659 207.209621 \nL 592.749722 208.213374 \nL 594.043785 210.786747 \nL 595.337848 216.612157 \nL 596.631911 226.070317 \nL 597.925974 214.077107 \nL 599.220037 210.697703 \nL 600.5141 209.477071 \nL 601.808163 209.615956 \nL 603.102226 211.056544 \nL 604.396289 214.34658 \nL 605.690353 222.798429 \nL 606.984416 221.711519 \nL 608.278479 214.777374 \nL 609.572542 212.269794 \nL 610.866605 211.515366 \nL 612.160668 212.046207 \nL 613.454731 213.965847 \nL 614.748794 218.19647 \nL 616.042857 233.998125 \nL 617.33692 220.572651 \nL 618.630983 215.773771 \nL 619.925046 213.923498 \nL 621.219109 213.585483 \nL 622.513173 214.511316 \nL 623.807236 216.980546 \nL 625.101299 222.568043 \nL 626.395362 233.648246 \nL 627.689425 220.49202 \nL 628.983488 216.956131 \nL 630.277551 215.63767 \nL 631.571614 215.687701 \nL 632.865677 217.026968 \nL 634.15974 220.159498 \nL 635.453803 228.023813 \nL 636.747866 228.397324 \nL 638.041929 220.930473 \nL 639.335993 218.264605 \nL 640.630056 217.400576 \nL 641.924119 217.826234 \nL 643.218182 219.615095 \nL 643.218182 219.615095 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 0.8; stroke-linecap: square\"/>\n   </g>\n   <g id=\"line2d_57\">\n    <path d=\"M 389.581818 32.398125 \nL 390.875881 42.977307 \nL 392.169944 51.621129 \nL 393.464007 58.929376 \nL 394.758071 65.260067 \nL 396.052134 70.844133 \nL 397.346197 75.83925 \nL 399.934323 84.483071 \nL 402.522449 91.791318 \nL 405.110575 98.122009 \nL 407.698701 103.706075 \nL 410.286827 108.701192 \nL 412.874954 113.219825 \nL 415.46308 117.345013 \nL 418.051206 121.139819 \nL 420.639332 124.65326 \nL 424.521521 129.478753 \nL 428.403711 133.85815 \nL 432.2859 137.866996 \nL 436.168089 141.563134 \nL 440.050278 144.991839 \nL 445.226531 149.208818 \nL 450.402783 153.081154 \nL 455.579035 156.660949 \nL 460.755288 159.989316 \nL 467.225603 163.845894 \nL 473.695918 167.412218 \nL 480.166234 170.728938 \nL 487.930612 174.425076 \nL 495.694991 177.853781 \nL 503.459369 181.051156 \nL 512.517811 184.527775 \nL 521.576252 187.766774 \nL 531.928757 191.216277 \nL 542.281262 194.43173 \nL 553.927829 197.806181 \nL 565.574397 200.956327 \nL 578.515028 204.227262 \nL 592.749722 207.582407 \nL 606.984416 210.715724 \nL 622.513173 213.913099 \nL 639.335993 217.149667 \nL 643.218182 217.866201 \nL 643.218182 217.866201 \n\" clip-path=\"url(#p2d4395f9a3)\" style=\"fill: none; stroke-dasharray: 2.96,1.28; stroke-dashoffset: 0; stroke: #000000; stroke-width: 0.8\"/>\n   </g>\n   <g id=\"patch_7\">\n    <path d=\"M 376.9 244.078125 \nL 376.9 22.318125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"patch_8\">\n    <path d=\"M 376.9 244.078125 \nL 655.9 244.078125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"text_27\">\n    <text style=\"font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"516.4\" y=\"16.318125\" transform=\"rotate(-0 516.4 16.318125)\">Knesers Koeffizienten und Singularität an L</text>\n   </g>\n   <g id=\"legend_2\">\n    <g id=\"patch_9\">\n     <path d=\"M 545.64625 52.460625 \nL 650.3 52.460625 \nQ 651.9 52.460625 651.9 50.860625 \nL 651.9 27.918125 \nQ 651.9 26.318125 650.3 26.318125 \nL 545.64625 26.318125 \nQ 544.04625 26.318125 544.04625 27.918125 \nL 544.04625 50.860625 \nQ 544.04625 52.460625 545.64625 52.460625 \nz\n\" style=\"fill: #ffffff; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter\"/>\n    </g>\n    <g id=\"line2d_58\">\n     <path d=\"M 547.24625 32.831875 \nL 555.24625 32.831875 \nL 563.24625 32.831875 \n\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 0.8; stroke-linecap: square\"/>\n    </g>\n    <g id=\"text_28\">\n     <text style=\"font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"569.64625\" y=\"35.631875\" transform=\"rotate(-0 569.64625 35.631875)\">|a_k|·|L|^k (Kneser)</text>\n    </g>\n    <g id=\"line2d_59\">\n     <path d=\"M 547.24625 44.796875 \nL 555.24625 44.796875 \nL 563.24625 44.796875 \n\" style=\"fill: none; stroke-dasharray: 2.96,1.28; stroke-dashoffset: 0; stroke: #000000; stroke-width: 0.8\"/>\n    </g>\n    <g id=\"text_29\">\n     <text style=\"font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"569.64625\" y=\"47.596875\" transform=\"rotate(-0 569.64625 47.596875)\">71.57·k^−6.447</text>\n    </g>\n   </g>\n  </g>\n </g>\n <defs>\n  <clipPath id=\"p75c1b6851d\">\n   <rect x=\"42.1\" y=\"22.318125\" width=\"279\" height=\"221.76\"/>\n  </clipPath>\n  <clipPath id=\"p2d4395f9a3\">\n   <rect x=\"376.9\" y=\"22.318125\" width=\"279\" height=\"221.76\"/>\n  </clipPath>\n </defs>\n</svg>\n"
+  },
+  {
+   "id": "exp.polynom_phase3",
+   "titel": "Kernzahlen aus Phase 3 des Forschungsteams unabhängig nachgerechnet",
+   "skript": "experimente/e53_polynom_phase3.py",
+   "ergebnis": {
+    "zusammenfassung": "‖Ĵ_N⁻¹‖ = 1.251155 (kubisch, N = 100–200 konstant), Kneser 1.250337; ohne Linse wächst sie (1.366 → 1.852); (K2) mit den zertifizierten Koeffizienten verträglich; Eckprofil-Integral bestätigt.",
+    "pruefungen": [
+     {
+      "name": "(S_γ) kubisch: ‖Ĵ_N⁻¹‖ in der konformen Koordinate (Linse S = 0.0166) konstant 1.2512 ± 0.001 für N = 100, 150, 200",
+      "ok": true,
+      "wert": {
+       "100": 1.251155,
+       "150": 1.251155,
+       "200": 1.251155
+      }
+     },
+     {
+      "name": "Kontrolle ohne Linse: ‖J̃_N⁻¹‖ wächst (Eckmode), bei N = 200 ≈ 1.852",
+      "ok": true,
+      "wert": {
+       "100": 1.366,
+       "200": 1.8524
+      }
+     },
+     {
+      "name": "(S_γ) mit Knesers zertifizierten Koeffizienten: ‖Ĵ_200⁻¹‖ ≈ 1.2503 (kubisch und Kneser gleich auf 1e-3)",
+      "ok": true,
+      "wert": {
+       "Kneser": 1.250337,
+       "kubisch": 1.251155
+      }
+     },
+     {
+      "name": "(K2): die zertifizierten a_1 … a_640 erfüllen |a_k|ρ^k·k⁶ ≤ 461.36",
+      "ok": true,
+      "wert": {
+       "max": "55.5395",
+       "bei_k": 9
+      }
+     },
+     {
+      "name": "Eckprofile: Gammareihe = Integraldarstellung (Abweichung < 1e-15)",
+      "ok": true,
+      "wert": {
+       "β_A, u=0.5": "1.43e-40",
+       "β_A, u=2.0": "1.38e-40",
+       "β_P, u=0.5": "8.24e-23",
+       "β_P, u=2.0": "8.24e-23"
+      }
+     }
+    ],
+    "fehlgeschlagen": [],
+    "gelaufen": "2026-10-12 14:16",
+    "laufzeit_s": 22.7
+   },
+   "bild": "experimente/bilder/exp.polynom_phase3.svg",
+   "frage": "Bleibt die Inverse der abgeschnittenen Gleichungen in der konformen Koordinate bei 1.2512 (ohne Linse wachsend), gilt die Restschranke 461.36 k⁻⁶ an den zertifizierten Koeffizienten, und stimmt die Integraldarstellung der Eckprofile?",
+   "stuetzt": [
+    "kn.beob.polynom_konforme_stabilitaet",
+    "kn.satz.kneser_e_zertifiziert",
+    "kn.satz.polynom_eckprofil",
+    "kn.verm.polynom_halbexp_kern",
+    "kn.satz.polynom_hauptsatz_kr0"
+   ],
+   "zustand": "aktuell",
+   "svg": "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"427.685625pt\" height=\"281.634375pt\" viewBox=\"0 0 427.685625 281.634375\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n <metadata>\n  <rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n   <cc:Work>\n    <dc:type rdf:resource=\"http://purl.org/dc/dcmitype/StillImage\"/>\n    <dc:date>2026-10-12T14:16:07.472475</dc:date>\n    <dc:format>image/svg+xml</dc:format>\n    <dc:creator>\n     <cc:Agent>\n      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>\n     </cc:Agent>\n    </dc:creator>\n   </cc:Work>\n  </rdf:RDF>\n </metadata>\n <defs>\n  <style type=\"text/css\">*{stroke-linejoin: round; stroke-linecap: butt}</style>\n </defs>\n <g id=\"figure_1\">\n  <g id=\"patch_1\">\n   <path d=\"M 0 281.634375 \nL 427.685625 281.634375 \nL 427.685625 0 \nL 0 0 \nz\n\" style=\"fill: #ffffff\"/>\n  </g>\n  <g id=\"axes_1\">\n   <g id=\"patch_2\">\n    <path d=\"M 46.442812 244.078125 \nL 381.242813 244.078125 \nL 381.242813 22.318125 \nL 46.442812 22.318125 \nz\n\" style=\"fill: #ffffff\"/>\n   </g>\n   <g id=\"matplotlib.axis_1\">\n    <g id=\"xtick_1\">\n     <g id=\"line2d_1\">\n      <path d=\"M 61.660994 244.078125 \nL 61.660994 22.318125 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_2\">\n      <defs>\n       <path id=\"m43c3ebc844\" d=\"M 0 0 \nL 0 3.5 \n\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </defs>\n      <g>\n       <use xlink:href=\"#m43c3ebc844\" x=\"61.660994\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_1\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"61.660994\" y=\"258.676562\" transform=\"rotate(-0 61.660994 258.676562)\">100</text>\n     </g>\n    </g>\n    <g id=\"xtick_2\">\n     <g id=\"line2d_3\">\n      <path d=\"M 122.533722 244.078125 \nL 122.533722 22.318125 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_4\">\n      <g>\n       <use xlink:href=\"#m43c3ebc844\" x=\"122.533722\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_2\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"122.533722\" y=\"258.676562\" transform=\"rotate(-0 122.533722 258.676562)\">120</text>\n     </g>\n    </g>\n    <g id=\"xtick_3\">\n     <g id=\"line2d_5\">\n      <path d=\"M 183.406449 244.078125 \nL 183.406449 22.318125 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_6\">\n      <g>\n       <use xlink:href=\"#m43c3ebc844\" x=\"183.406449\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_3\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"183.406449\" y=\"258.676562\" transform=\"rotate(-0 183.406449 258.676562)\">140</text>\n     </g>\n    </g>\n    <g id=\"xtick_4\">\n     <g id=\"line2d_7\">\n      <path d=\"M 244.279176 244.078125 \nL 244.279176 22.318125 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_8\">\n      <g>\n       <use xlink:href=\"#m43c3ebc844\" x=\"244.279176\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_4\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"244.279176\" y=\"258.676562\" transform=\"rotate(-0 244.279176 258.676562)\">160</text>\n     </g>\n    </g>\n    <g id=\"xtick_5\">\n     <g id=\"line2d_9\">\n      <path d=\"M 305.151903 244.078125 \nL 305.151903 22.318125 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_10\">\n      <g>\n       <use xlink:href=\"#m43c3ebc844\" x=\"305.151903\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_5\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"305.151903\" y=\"258.676562\" transform=\"rotate(-0 305.151903 258.676562)\">180</text>\n     </g>\n    </g>\n    <g id=\"xtick_6\">\n     <g id=\"line2d_11\">\n      <path d=\"M 366.024631 244.078125 \nL 366.024631 22.318125 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_12\">\n      <g>\n       <use xlink:href=\"#m43c3ebc844\" x=\"366.024631\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_6\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"366.024631\" y=\"258.676562\" transform=\"rotate(-0 366.024631 258.676562)\">200</text>\n     </g>\n    </g>\n    <g id=\"text_7\">\n     <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"213.842812\" y=\"272.354687\" transform=\"rotate(-0 213.842812 272.354687)\">Grad N</text>\n    </g>\n   </g>\n   <g id=\"matplotlib.axis_2\">\n    <g id=\"ytick_1\">\n     <g id=\"line2d_13\">\n      <path d=\"M 46.442812 217.619052 \nL 381.242813 217.619052 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_14\">\n      <defs>\n       <path id=\"m85732db53f\" d=\"M 0 0 \nL -3.5 0 \n\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </defs>\n      <g>\n       <use xlink:href=\"#m85732db53f\" x=\"46.442812\" y=\"217.619052\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_8\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end\" x=\"39.442812\" y=\"221.418271\" transform=\"rotate(-0 39.442812 221.418271)\">1.3</text>\n     </g>\n    </g>\n    <g id=\"ytick_2\">\n     <g id=\"line2d_15\">\n      <path d=\"M 46.442812 184.086212 \nL 381.242813 184.086212 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_16\">\n      <g>\n       <use xlink:href=\"#m85732db53f\" x=\"46.442812\" y=\"184.086212\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_9\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end\" x=\"39.442812\" y=\"187.88543\" transform=\"rotate(-0 39.442812 187.88543)\">1.4</text>\n     </g>\n    </g>\n    <g id=\"ytick_3\">\n     <g id=\"line2d_17\">\n      <path d=\"M 46.442812 150.553372 \nL 381.242813 150.553372 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_18\">\n      <g>\n       <use xlink:href=\"#m85732db53f\" x=\"46.442812\" y=\"150.553372\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_10\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end\" x=\"39.442812\" y=\"154.35259\" transform=\"rotate(-0 39.442812 154.35259)\">1.5</text>\n     </g>\n    </g>\n    <g id=\"ytick_4\">\n     <g id=\"line2d_19\">\n      <path d=\"M 46.442812 117.020531 \nL 381.242813 117.020531 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_20\">\n      <g>\n       <use xlink:href=\"#m85732db53f\" x=\"46.442812\" y=\"117.020531\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_11\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end\" x=\"39.442812\" y=\"120.81975\" transform=\"rotate(-0 39.442812 120.81975)\">1.6</text>\n     </g>\n    </g>\n    <g id=\"ytick_5\">\n     <g id=\"line2d_21\">\n      <path d=\"M 46.442812 83.487691 \nL 381.242813 83.487691 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_22\">\n      <g>\n       <use xlink:href=\"#m85732db53f\" x=\"46.442812\" y=\"83.487691\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_12\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end\" x=\"39.442812\" y=\"87.28691\" transform=\"rotate(-0 39.442812 87.28691)\">1.7</text>\n     </g>\n    </g>\n    <g id=\"ytick_6\">\n     <g id=\"line2d_23\">\n      <path d=\"M 46.442812 49.954851 \nL 381.242813 49.954851 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_24\">\n      <g>\n       <use xlink:href=\"#m85732db53f\" x=\"46.442812\" y=\"49.954851\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_13\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: end\" x=\"39.442812\" y=\"53.75407\" transform=\"rotate(-0 39.442812 53.75407)\">1.8</text>\n     </g>\n    </g>\n    <g id=\"text_14\">\n     <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"17.46\" y=\"133.198125\" transform=\"rotate(-90 17.46 133.198125)\">Norm der Inversen</text>\n    </g>\n   </g>\n   <g id=\"line2d_25\">\n    <path d=\"M 61.660994 233.998125 \nL 213.842812 233.998125 \nL 366.024631 233.998125 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 1.5; stroke-linecap: square\"/>\n    <defs>\n     <path id=\"m99e7938569\" d=\"M 0 3 \nC 0.795609 3 1.55874 2.683901 2.12132 2.12132 \nC 2.683901 1.55874 3 0.795609 3 0 \nC 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 \nC 1.55874 -2.683901 0.795609 -3 0 -3 \nC -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 \nC -2.683901 -1.55874 -3 -0.795609 -3 0 \nC -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 \nC -1.55874 2.683901 -0.795609 3 0 3 \nz\n\" style=\"stroke: #3d6fb6\"/>\n    </defs>\n    <g clip-path=\"url(#pd284505d3a)\">\n     <use xlink:href=\"#m99e7938569\" x=\"61.660994\" y=\"233.998125\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m99e7938569\" x=\"213.842812\" y=\"233.998125\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m99e7938569\" x=\"366.024631\" y=\"233.998125\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n    </g>\n   </g>\n   <g id=\"line2d_26\">\n    <path d=\"M 61.660994 195.486223 \nL 366.024631 32.398125 \n\" clip-path=\"url(#pd284505d3a)\" style=\"fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #b5523b; stroke-width: 1.5\"/>\n    <defs>\n     <path id=\"m6440da96be\" d=\"M -3 3 \nL 3 3 \nL 3 -3 \nL -3 -3 \nz\n\" style=\"stroke: #b5523b; stroke-linejoin: miter\"/>\n    </defs>\n    <g clip-path=\"url(#pd284505d3a)\">\n     <use xlink:href=\"#m6440da96be\" x=\"61.660994\" y=\"195.486223\" style=\"fill: #b5523b; stroke: #b5523b; stroke-linejoin: miter\"/>\n     <use xlink:href=\"#m6440da96be\" x=\"366.024631\" y=\"32.398125\" style=\"fill: #b5523b; stroke: #b5523b; stroke-linejoin: miter\"/>\n    </g>\n   </g>\n   <g id=\"patch_3\">\n    <path d=\"M 46.442812 244.078125 \nL 46.442812 22.318125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"patch_4\">\n    <path d=\"M 46.442812 244.078125 \nL 381.242812 244.078125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"text_15\">\n    <text style=\"font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"213.842812\" y=\"16.318125\" transform=\"rotate(-0 213.842812 16.318125)\">Phase 3: Abschnitte in der konformen Koordinate bleiben beschränkt</text>\n   </g>\n   <g id=\"legend_1\">\n    <g id=\"patch_5\">\n     <path d=\"M 52.042812 52.203125 \nL 206.504063 52.203125 \nQ 208.104062 52.203125 208.104062 50.603125 \nL 208.104062 27.918125 \nQ 208.104062 26.318125 206.504063 26.318125 \nL 52.042812 26.318125 \nQ 50.442812 26.318125 50.442812 27.918125 \nL 50.442812 50.603125 \nQ 50.442812 52.203125 52.042812 52.203125 \nz\n\" style=\"fill: #ffffff; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter\"/>\n    </g>\n    <g id=\"line2d_27\">\n     <path d=\"M 53.642812 32.796875 \nL 61.642812 32.796875 \nL 69.642812 32.796875 \n\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 1.5; stroke-linecap: square\"/>\n     <g>\n      <use xlink:href=\"#m99e7938569\" x=\"61.642812\" y=\"32.796875\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     </g>\n    </g>\n    <g id=\"text_16\">\n     <text style=\"font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"76.042812\" y=\"35.596875\" transform=\"rotate(-0 76.042812 35.596875)\">mit Linse (konforme Koordinate)</text>\n    </g>\n    <g id=\"line2d_28\">\n     <path d=\"M 53.642812 44.539375 \nL 61.642812 44.539375 \nL 69.642812 44.539375 \n\" style=\"fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #b5523b; stroke-width: 1.5\"/>\n     <g>\n      <use xlink:href=\"#m6440da96be\" x=\"61.642812\" y=\"44.539375\" style=\"fill: #b5523b; stroke: #b5523b; stroke-linejoin: miter\"/>\n     </g>\n    </g>\n    <g id=\"text_17\">\n     <text style=\"font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"76.042812\" y=\"47.339375\" transform=\"rotate(-0 76.042812 47.339375)\">ohne Linse</text>\n    </g>\n   </g>\n  </g>\n </g>\n <defs>\n  <clipPath id=\"pd284505d3a\">\n   <rect x=\"46.442812\" y=\"22.318125\" width=\"334.8\" height=\"221.76\"/>\n  </clipPath>\n </defs>\n</svg>\n"
   }
  ],
  "straenge": [
@@ -51409,7 +53074,17 @@
     "kn.verm.polynom_halbexp_eckmoden",
     "kn.satz.polynom_halbexp_hauptsatz",
     "kn.satz.polynom_modelle",
-    "kn.beob.polynom_moebius_schwelle"
+    "kn.beob.polynom_moebius_schwelle",
+    "kn.satz.kneser_e_zertifiziert",
+    "kn.satz.polynom_zweig_400",
+    "kn.beob.polynom_konforme_stabilitaet",
+    "kn.beob.polynom_rand_plateau",
+    "kn.satz.polynom_eckprofil",
+    "kn.satz.polynom_cd_identitaet",
+    "kn.satz.polynom_approximation_ecke",
+    "kn.verm.polynom_halbexp_kern",
+    "kn.satz.polynom_hauptsatz_kr0",
+    "kn.gescheitert.polynom_ecke_wege"
    ]
   },
   {
@@ -52238,38 +53913,38 @@
  ],
  "statistik": {
   "art:annahme": 5,
-  "art:beobachtung": 38,
+  "art:beobachtung": 40,
   "art:definition": 11,
   "art:frage": 21,
   "art:gegenbeispiel": 4,
-  "art:gescheitert": 8,
+  "art:gescheitert": 9,
   "art:konstruktion": 12,
   "art:korollar": 12,
   "art:korrektur": 3,
   "art:lemma": 9,
-  "art:satz": 162,
-  "art:vermutung": 26,
+  "art:satz": 168,
+  "art:vermutung": 27,
   "befund:HINWEIS": 26,
   "befund:WARNUNG": 1,
   "ebene:A": 65,
-  "ebene:B": 76,
-  "ebene:C": 137,
+  "ebene:B": 83,
+  "ebene:C": 140,
   "ebene:X": 33,
   "niveau:einstieg": 55,
-  "niveau:forschung": 145,
+  "niveau:forschung": 155,
   "niveau:vertiefung": 111,
   "status:annahme": 4,
-  "status:bedingt": 22,
-  "status:bewiesen": 130,
+  "status:bedingt": 23,
+  "status:bewiesen": 133,
   "status:bewiesen_literatur": 35,
   "status:definition": 11,
   "status:entlastet": 1,
-  "status:gescheitert": 8,
-  "status:numerisch": 43,
+  "status:gescheitert": 9,
+  "status:numerisch": 45,
   "status:offen": 22,
-  "status:skizze": 7,
+  "status:skizze": 9,
   "status:ueberholt": 3,
-  "status:vermutung": 22,
+  "status:vermutung": 23,
   "status:widerlegt": 3,
   "zitate_ungeprueft": 68
  },

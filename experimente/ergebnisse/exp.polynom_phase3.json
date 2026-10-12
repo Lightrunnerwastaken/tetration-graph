@@ -1,0 +1,67 @@
+{
+ "id": "exp.polynom_phase3",
+ "skript_hash": "48a6487f9bf85195",
+ "gelaufen": "2026-10-12 14:16",
+ "laufzeit_s": 22.7,
+ "python": "3.13.9",
+ "zusammenfassung": "‖Ĵ_N⁻¹‖ = 1.251155 (kubisch, N = 100–200 konstant), Kneser 1.250337; ohne Linse wächst sie (1.366 → 1.852); (K2) mit den zertifizierten Koeffizienten verträglich; Eckprofil-Integral bestätigt.",
+ "pruefungen": [
+  {
+   "name": "(S_γ) kubisch: ‖Ĵ_N⁻¹‖ in der konformen Koordinate (Linse S = 0.0166) konstant 1.2512 ± 0.001 für N = 100, 150, 200",
+   "ok": true,
+   "wert": {
+    "100": 1.251155,
+    "150": 1.251155,
+    "200": 1.251155
+   }
+  },
+  {
+   "name": "Kontrolle ohne Linse: ‖J̃_N⁻¹‖ wächst (Eckmode), bei N = 200 ≈ 1.852",
+   "ok": true,
+   "wert": {
+    "100": 1.366,
+    "200": 1.8524
+   }
+  },
+  {
+   "name": "(S_γ) mit Knesers zertifizierten Koeffizienten: ‖Ĵ_200⁻¹‖ ≈ 1.2503 (kubisch und Kneser gleich auf 1e-3)",
+   "ok": true,
+   "wert": {
+    "Kneser": 1.250337,
+    "kubisch": 1.251155
+   }
+  },
+  {
+   "name": "(K2): die zertifizierten a_1 … a_640 erfüllen |a_k|ρ^k·k⁶ ≤ 461.36",
+   "ok": true,
+   "wert": {
+    "max": "55.5395",
+    "bei_k": 9
+   }
+  },
+  {
+   "name": "Eckprofile: Gammareihe = Integraldarstellung (Abweichung < 1e-15)",
+   "ok": true,
+   "wert": {
+    "β_A, u=0.5": "1.43e-40",
+    "β_A, u=2.0": "1.38e-40",
+    "β_P, u=0.5": "8.24e-23",
+    "β_P, u=2.0": "8.24e-23"
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "S_gamma_kubisch": {
+   "100": 1.2511551268795529,
+   "150": 1.251155126879558,
+   "200": 1.2511551268795602
+  },
+  "ohne_linse": {
+   "100": 1.3660034419107816,
+   "200": 1.8523568122903193
+  },
+  "S_gamma_kneser_200": 1.250336891237004,
+  "K2_max": "55.539538"
+ }
+}
