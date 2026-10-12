@@ -88,6 +88,19 @@ Preserve quantifiers and scope exactly ("jede" = every, "eine" = a/one, "genau e
 | Gegenprobe | control test |
 | Barrows Satz | Barrow's theorem |
 | Gegenbeispielsuche | counterexample search |
+| ganz (Funktion) / ganze Stellen | entire (function) / integer arguments |
+| Halbe Iterierte | half-iterate |
+| Schnitt (Funktionentheorie) | branch cut |
+| Antwortkern | response kernel |
+| Eichfreiheit | gauge freedom |
+| Hinrichtung / Rückrichtung | forward direction / converse direction |
+| Verbiegung | bending |
+| Hebel | lever |
+| Definitionsbereich / Definitionsrand | domain of definition / domain boundary |
+| Fundamentalbereich | fundamental domain |
+| Stufengleichung (z. B. f(z+1)=b f(z)) | step equation |
+| Nutzen (Feld `bewertung.nutzen`) | usefulness / benefit |
+| Grenze (in "wichtige Grenze für …") | limitation |
 | Prüffrage | check question |
 | Voraussetzung | hypothesis (use "assumption" only for Annahme) |
 | Bereich | domain (of validity) |
