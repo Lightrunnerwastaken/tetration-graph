@@ -67,3 +67,18 @@ Erledigtes bitte streichen. Stand 12.10.2026 (fg, it, fp).
 - `kl.satz.basiswechsel_gleiches_L`: Voraussetzung „b, d reell“, f2 sagt, die Realität werde nicht gebraucht.
 - `kl.beob.stetig_eta`: „Steigung auf sechs Stellen“, 0.438579 gegen 0.438581 stimmen aber nur auf etwa fünf überein.
 - Kleinigkeiten: `kl.satz.koenigs_basiswechsel` (Beweis 10⁻¹⁸ gegen Theorie 10⁻²⁷); `kl.beob.eta_konstanten` (Prüftext „Tiefe 3000“ gegen Theorie „20 000 Turmstufen“); `kl.satz.bruchsumme`, `einfach`: Dezimalkomma „1,5“.
+
+## bw
+- `bw.zert.8r1`: Status „bewiesen“, Prüftext/Theorie nennen aber offene Punkte (Mikrosegment-Induktion, Hilbert-Röhren-Supremum, Γ-Steigung) und eine Annahme „rechnergestützt / korrekt implementiert“.
+- `bw.prop.saddle`: Status „bewiesen“, der Beweis setzt die Verschiebbarkeit der Kontur voraus.
+- `bw.satz.kern_existenz`: benutzt (K3), das in keinem Eintrag definiert ist; `bw.ann.K1K2` deckt nur (K1)–(K2), der Titel nennt „Thm. 13“ und Eindeutigkeit über Thm. 2.
+- `bw.beob.m2`: der Prüftext schreibt „m(3) ≈ −0.1926, m(10) ≈ −1.1364 mit umgekehrtem Vorzeichen“ als wären es unsere Werte, die Theorie sagt, es seien Levensteins Werte (= −m(3), −m(10)); „auf vier Stellen bekannt“ passt schlecht zu 1.1282 gegen unser 1.1284.
+- `bw.gescheitert.vorhersage_r8`: der Titel sagt „γ = 4.447“, die Aussage meint den Exponenten 2πν = 4.447 (γ ist sonst der Modenmodell-Exponent).
+- `bw.satz.imaginaere_richtung`: Bereich im Kern („L_d im Linearisierungsgebiet von E_b“) gegen Theorie („Gebiet, wo A_b holomorph ist“); die Theorie nennt die Dämpfung je Umlauf 10⁻¹⁴, e^(−1.0865·30.63) ≈ 3.5·10⁻¹⁵.
+- `bw.satz.paulsen_cowgill_hardy`: „bewiesen_literatur“, der Beweis wurde aber nur über die zbMATH-Zusammenfassung gelesen; die Glosse „Unverträglich heisst darum…“ wirkt wie eine eigene Deutung.
+- `bw.korr.r20` und `bw.beob.sigma_stern`: r20 nennt das „universelle 0.058“ ein Artefakt, sigma_stern misst σ* = 0.058±0.006 aus dem Modenabfall und die Theorie sagt, es stütze weiter `bw.verm.streifen`.
+- `bw.korr.konstante` sagt, die „2.3 %“-Übereinstimmung bleibe praktisch unberührt; `bw.lem.randgesetz` (Prüftext, Theorie) sagt, die Hub-Daten stimmten nur auf 4–7 %, „nicht 2.3 % wie in Paper IV“.
+- `bw.beob.kernkleid`: „doppelt bestätigt“ und „24+ Stellen“ (Beweis: 25–30), obwohl dieselben Einträge die Complex-Step-Referenzen für d∈{2,10} als fehlerhaft nennen.
+- `bw.verm.nirgends_analytisch`, Theorie `warum`, Schritt 3: „gleichmässige Konvergenz nur auf der Achse sichert C^∞“ gilt so nicht.
+- `bw.satz.fourier_naht`, Theorie `worum`: „Knick in der (m+1)-ten Ableitung“ müsste ein Sprung sein.
+- `bw.prop.antisym_c1`: die Aussage lässt die C¹-Voraussetzung weg, die Titel und Theorie nennen.

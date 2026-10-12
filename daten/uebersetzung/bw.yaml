@@ -1,0 +1,2318 @@
+# Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
+# übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: bw.ann.K1K2
+  quelle_hash: 26c57d369d61
+  theorie_hash: 9b8cd05459c9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: Kneser branch geometry (K1)–(K2)
+    aussage: '(K1) Strip geometry: $T_d$ holomorphic on $\mathbb H$, $T_d(z)\to L$ for $\operatorname{Im}z\to\infty$; (K2) theta structure: $p=A_d\circ
+      T_{\mathrm{reg}}-\mathrm{id}$ 1-periodic, $p''\to0$.'
+  en_theorie:
+    einordnung: |
+      Condition of [[bw.satz.kern_eindeutig]], [[bw.satz.kern_existenz]] and [[bw.satz.anker_rekonstruktion]].
+    genau: |
+      **Assumption.** (K1) Strip geometry: $T_d$ holomorphic on the upper half-plane, $T_d(z)\to L$ for $\operatorname{Im}z\to\infty$. (K2) Theta structure: $p=A_d\circ T_{\mathrm{reg}}-\mathrm{id}$
+      is 1-periodic with $p'\to0$.
+    warum: |
+      (K1) corresponds to [[kn.satz.kneser_eigenschaften]]; (K2) is Kneser's correction $\theta_K$ read from the other side ([[kn.konstr.kneser]]). It remains an assumption because the exact
+      form cannot be cited as a theorem.
+    worum: |
+      Two geometric properties of Kneser's solution that one expects classically but does not find as a citable theorem. Paper V/VI assume them.
+- id: bw.ann.basis_diffbar
+  quelle_hash: 2a300083ad19
+  theorie_hash: dd0b5d8239f2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: Assumption of base differentiability (Paper IV, Hyp. 7.1)
+    aussage: $b\mapsto(T_b,A_b)$ is $C^1$ in $\beta=\ln\ln b$, and $\partial_\beta\Phi_{b,d}|_{b=d}=\lim_n V_d(T_d(n+\theta))$ uniformly.
+  en_theorie:
+    einordnung: |
+      Condition of [[bw.satz.antwortkern]].
+    genau: |
+      **Assumption** (Paper IV, Hyp. 7.1): $b\mapsto(T_b,A_b)$ is $C^1$ in $\beta=\ln\ln b$, and $\partial_\beta\Phi_{b,d}|_{b=d}=\lim_nV_d(T_d(n+\theta))$ uniformly.
+    warum: |
+      The first part is covered by Paulsen's holomorphic dependence ([[kn.satz.paulsen_komplex]]); the second — uniform interchange — is the actual assumption.
+    worum: |
+      To differentiate with respect to the base, one must assume that tetration and super-logarithm depend smoothly on the base — and that one may interchange derivative and
+      limit.
+- id: bw.ann.hyp22
+  quelle_hash: d5e692dae558
+  theorie_hash: a31c4ba50945
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: Assumption “regular real logarithm channel” (Paper I, Hyp. 2.2)
+    aussage: |
+      (R1) $T_d$ positive, continuous, locally bounded away from 0; (R2) the logarithms $\log_b^{\circ k}(T_d(n+\theta))$
+      stay in the real channel; (R3) $A_b$ locally Lipschitz on a neighborhood of the limit tails.
+  en_theorie:
+    einordnung: |
+      Condition of the phase law in Paper I ([[bw.satz.phasengesetz]]); the unconditional version: [[bw.satz.phasengesetz_gestoppt]].
+    genau: |
+      **Assumption** (Paper I, Hyp. 2.2): (R1) $T_d$ positive, continuous, locally bounded away from $0$; (R2) the logarithms $\log_b^{\circ k}(T_d(n+\theta))$ stay in the real
+      channel; (R3) $A_b$ is locally Lipschitz continuous on a neighborhood of the limit tails.
+    warum: |
+      An assumption, not a theorem. What became of it: (R2) is proved for the stopped chain ([[bw.lem.stoppregel]]); (R3) follows from the analyticity of
+      Kneser's super-logarithm. For the limit objects (R2) is correct only in the shifted version ([[bw.lem.offset]]); unshifted it fails
+      for some pairs ([[bw.gegen.unverschoben]]).
+    worum: |
+      In Paper I one had to assume that the chain of logarithms does not fall out of the positive numbers — otherwise $\log_b$ is not defined.
+      This assumption is called “regular real logarithm channel”.
+- id: bw.ann.hyp24
+  quelle_hash: 97a5597b83ee
+  theorie_hash: 73c3f77ac156
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: Assumption “uniform peeling growth” (Paper I, Hyp. 2.4)
+    aussage: $\log_b^{\circ k}(T_d(n+\theta))\ge a\,T_d(n-k+\theta)-B$ and $s_j=\inf_\theta T_d(j+\theta)\to\infty$.
+  en_theorie:
+    einordnung: |
+      Below $\eta$ it is false — there the towers are bounded, and the naive base change becomes constant ([[kl.gescheitert.naiver_basiswechsel]]).
+    genau: |
+      **Assumption** (Paper I, Hyp. 2.4): $\log_b^{\circ k}(T_d(n+\theta))\ge a\,T_d(n-k+\theta)-B$ and $s_j=\inf_\theta T_d(j+\theta)\to\infty$.
+    warum: |
+      By now fully discharged: The tower values grow with a fixed minimal gap ([[bw.lem.wachstumsluecke]]), the first inequality follows from the stopping rule.
+    worum: |
+      The second assumption from Paper I: When peeling, the values stay large enough, and the tower grows beyond all bounds.
+- id: bw.beob.blind
+  quelle_hash: feb7488804a7
+  theorie_hash: b603127105eb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Internal predictors predict the blind error to within a factor ~1 — that is itself a checkable finding.
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Sealed target values; internal error predictors.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: —
+    bewertung:
+      recherche: Paper VI.
+      nutzen: Validates the method.
+      richtigkeit: numerical, blind
+    titel: Blind validation of the reconstruction at base 2
+    aussage: '65-node flow: pointwise $4.0\cdot10^{-21}$ at 48 points, hub 30.6 digits. Ten-segment march: $7.6\cdot10^{-11}$ to both references;
+      failure and subdivision of the boundary segment as predicted by the Ovsyannikov criterion.'
+  en_theorie:
+    einordnung: |
+      Validates [[bw.satz.anker_rekonstruktion]].
+    genau: |
+      65-node flow: pointwise $4.0\cdot10^{-21}$ at 48 points, hub to $30.6$ digits. Ten-segment march: $7.6\cdot10^{-11}$ to both references. Failure and subdivision
+      of the boundary segment exactly as predicted by the Ovsyannikov criterion.
+    warum: |
+      Measured. Remarkable: the internal error estimators predicted the blind error to within about a factor $1$ — that is itself a checkable finding.
+    worum: |
+      The reconstruction was tested blind: the target values for base $2$ were sealed until the computation was finished.
+- id: bw.beob.hub_genauigkeit
+  quelle_hash: 10a284d90ddc
+  theorie_hash: b010e655b6b7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Annotate hub values with their accuracy or truncate to 31 digits; clarify the cause (n_grid 32 instead of 64?).
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: 'Assumption: the 180-digit value is correct (two other versions agree with it to ≥ 31 digits).'
+      f1_folgt_unmittelbar: No (comparison).
+      f4_uebertragbar: All hub values presumably affected equally (grid n_grid = 32).
+    bewertung:
+      nutzen: Data quality of the base-atlas table.
+      richtigkeit: numerically unambiguous
+    titel: Version conflict — m(2) in mu_hub.json correct only to ~31 digits
+    aussage: '$m(2)$ appears in three versions: Round 1 (180 digits), phi_modes.json (deviation $8.5\cdot10^{-37}$), mu_hub.json (deviation $1.8\cdot10^{-31}$,
+      although 40 digits are stated). So the hub column carries fewer digits than it shows.'
+  en_theorie:
+    einordnung: |
+      Presumably affects all hub values. Reference value: [[bw.beob.m2]].
+    genau: |
+      $m(2)$ in three versions: Round 1 (180 digits), phi_modes.json (deviation $8.5\cdot10^{-37}$), mu_hub.json (deviation $1.8\cdot10^{-31}$, although 40 digits are stated).
+    warum: |
+      Comparison under the assumption that the 180-digit value is correct (the other two agree with it to $\ge31$ digits). Presumed cause: computational grid with 32 instead of 64 points.
+    worum: |
+      The hub column shows 40 digits but carries only about 31 correct ones — a comparison of the three existing versions of $m(2)$ shows this.
+- id: bw.beob.kernkleid
+  quelle_hash: 16fdd58f201d
+  theorie_hash: d484d655dfdf
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Is there a closed description of the $d$-dependence (kernel surface $C_k(d)$)?
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Engine; for d ∈ {2,10} the complex-step references are faulty (bw.gescheitert.cstep).
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: —
+    bewertung:
+      recherche: Paper I/IV.
+      nutzen: Refutes the exact rank-one form.
+      richtigkeit: numerical, doubly confirmed
+    titel: Kernels carry a smooth d-dependence
+    aussage: $|G_k(d)|/|G_1(d)|$ varies by 0.4 % ($k=2$) to 9 % ($k=8$) over $d\in\{2,e,3,5,10\}$; two independent routes (complex step, ε-stencils)
+      agree to 24+ digits.
+  en_theorie:
+    einordnung: |
+      Refutes [[bw.verm.rang_eins]]. Open: a closed description of the kernel surface $C_k(d)$.
+    genau: |
+      $|G_k(d)|/|G_1(d)|$ varies by $0.4\,\%$ ($k=2$) to $9\,\%$ ($k=8$) over $d\in\{2,e,3,5,10\}$; two independent routes (complex step, $\varepsilon$-stencils) agree to 24+ digits.
+    warum: |
+      Measured, doubly confirmed. For $d\in\{2,10\}$ the references from the complex step were faulty ([[bw.gescheitert.cstep]]); the other routes agree nonetheless.
+    worum: |
+      The kernels $G_d$ — the shape of the wave to first order — look almost the same for different bases, but not quite: They carry a smooth, small dependence on $d$.
+- id: bw.beob.m2
+  quelle_hash: 79d5251c802e
+  theorie_hash: 1c4a18971a51
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Extend the counterexample search to a closed form (constants of $L_e,L_2$, $\ln\lambda$).
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Engine values.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: —
+    bewertung:
+      recherche: 'The value has been known to four digits since 2009 (S. Levenstein on the tetration forum: 1.1282; likewise m(3) ≈ −0.1926, m(10)
+        ≈ −1.1364 with opposite sign). New here: 180 digits and the unsuccessful PSLQ search.'
+      nutzen: Reference constant.
+      richtigkeit: numerical
+    titel: m(2) = µ_{e,2} to 180 digits, no closed form found
+    aussage: $m(2)=-1.12840377662892400987921790203642626\ldots$; PSLQ against logarithm constants negative.
+  en_theorie:
+    beispiel: |
+      In words: $T_2(x)$ is for large $x$ approximately $T_e(x-1.1284)$ — the tower to base $2$ needs somewhat more than one additional level to reach the same value.
+    einordnung: |
+      To four digits the number has been known since 2009: S. Levenstein gave $\operatorname{slog}_2-\operatorname{slog}_e\approx1.1282$ on the tetration forum, likewise $\approx-0.1926$ for base $3$
+      and $\approx-1.1364$ for base $10$ — the same values as our $-m(2)$, $-m(3)$, $-m(10)$. New here are 180 digits and the unsuccessful search for a
+      closed form. Next step: extend the search to constants of $L_e$, $L_2$ and $\ln\lambda$.
+    genau: |
+      $m(2)=\mu_{e,2}=-1.12840377662892400987921790203642626\ldots$ (180 digits); a search for a closed form (PSLQ against logarithm constants) remained unsuccessful.
+    warum: |
+      Measured with the engine; independently confirmed by our own recomputation of the wave ([[bw.satz.phasengesetz]]).
+    worum: |
+      The most important number of the hub column: how far, on average, does the tower to base $2$ lag behind the one to base $e$? Just over one level.
+- id: bw.beob.modenabfall
+  quelle_hash: addc42eebf26
+  theorie_hash: 306595f286ef
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Decision run up to $k\approx5000$.
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Mode floor of the engine $\approx e^{-2.95\,n_{\lim}}$, usable $k\lesssim2.3n_{\lim}$.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: —
+    bewertung:
+      recherche: Paper IV.
+      nutzen: Mode-count formulas for tables.
+      richtigkeit: numerically robust over 14 pairs
+    titel: Universal mode-decay curve
+    aussage: $\sigma_{\mathrm{eff}}(k)\approx\sigma^*+1.090k^{-1/2}-1.512k^{-1}$ for all pairs with $b,d\in[1.5,10]$, $k\gtrsim5$; amplitude alone
+      pair-dependent ($\pm2\,\%$). Basic model $\ln A_k=\ln C+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi c k}$.
+  en_theorie:
+    beispiel: |
+      The normalized profiles $|a_k|/|a_1|$ of the pairs $(e,2)$ and $(e,3)$ differ for $k\le6$ in $\ln$ by at most $0.03$ ([[exp.moden]]).
+    einordnung: |
+      Supports [[bw.verm.streifen]]; the constant $\sigma^*$: [[bw.beob.sigma_stern]]. Same universality in the small: [[kl.verm.faktor]].
+    genau: |
+      $\sigma_{\mathrm{eff}}(k)\approx\sigma^*+1.090\,k^{-1/2}-1.512\,k^{-1}$ for all pairs with $b,d\in[1.5,10]$, $k\gtrsim5$; the amplitude is pair-dependent ($\pm2\,\%$).
+      Basic model $\ln A_k=\ln C+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi ck}$.
+    warum: |
+      Measured over 14 pairs. Limit of the measurement: the engine has a mode floor at about $e^{-2.95\,n_{\lim}}$; usable is $k\lesssim2.3\,n_{\lim}$.
+    worum: |
+      If one measures the decay of the Fourier modes for many pairs of bases, one always sees the same curve — only the overall size depends on the pair.
+- id: bw.beob.offset_zertifikat
+  quelle_hash: e46f05320888
+  theorie_hash: f644ad63b12d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Is there a general bound $\|P_{b,d}\|_\infty<\mathrm{frac}$ distance that proves the condition for all pairs?
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Mode amplitudes from the engine (fatou.gp fork).
+      f1_folgt_unmittelbar: No (computation).
+      f4_uebertragbar: For any new pair checkable a priori from the hub.
+    bewertung:
+      recherche: Paper III.
+      nutzen: Remaining condition of the phase law per pair.
+      richtigkeit: numerically certified
+    titel: Offset condition certified for 45 pairs
+    aussage: 'All 45 measured pairs satisfy $s+m_\star+1>0$ with a rigorous mode bound; narrowest margin $(e,1.46)$: 0.0563.'
+  en_theorie:
+    beispiel: |
+      $(10,2)$: margin $0.7346$; $(e,1.46)$: margin only $0.0563$, because $\mu$ lies just above an integer there.
+    einordnung: |
+      Remaining condition of [[bw.lem.offset]] per pair. Open: a general bound for $\|P\|_\infty$ that proves it for all pairs.
+    genau: |
+      All 45 pairs satisfy $s+m_\star+1>0$; the narrowest margin is $(e,1.46)$ with $0.0563$.
+    warum: |
+      Computation: $m_\star\ge\mu-\sum_k|a_k|$ with the mode amplitudes of the wave; the mode bound is rigorous, the amplitudes come from the engine.
+    worum: |
+      The offset condition must be checked for each pair of bases. For all 45 measured pairs it is satisfied — with a rigorous bound for the wave.
+- id: bw.beob.positionsgesetz
+  quelle_hash: '514805804706'
+  theorie_hash: f43280fbebe2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Cause → bw.satz.ursache_kozykel
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: 500 modes of (e,2), phase fits.
+      f1_folgt_unmittelbar: No; cocycle-compatible.
+      f4_uebertragbar: All pairs via the hub.
+    bewertung:
+      recherche: Round 20.
+      nutzen: Structural law instead of artifact.
+      richtigkeit: numerical
+    titel: Exact position law of the mode phases (Round 20)
+    aussage: '$x_{\mathrm{eff}}(k)=u(k)+X_d$ with universal drift $u(k)$ and $X_d=X_e-\mu_{e,d}\pmod 1$ to within $5\cdot10^{-4}$: the singular
+      structure sits at a universal point of the absolute height coordinate.'
+  en_theorie:
+    einordnung: |
+      Cause: [[bw.satz.ursache_kozykel]]. Replaces the singularity interpretation ([[bw.verm.universell]]).
+    genau: |
+      $x_{\mathrm{eff}}(k)=u(k)+X_d$ with universal drift $u(k)$ and $X_d=X_e-\mu_{e,d}\pmod1$, to within $5\cdot10^{-4}$ (Round 20).
+    warum: |
+      Measured on 500 modes of $(e,2)$ with phase fits. The shift by $-\mu_{e,d}$ is exactly what one expects if the structure is tied to a fixed height to
+      base $e$ and is only converted into heights to base $d$ — compatible with the cocycle.
+    worum: |
+      Where does the singular structure of the wave really sit? The phases of the Fourier modes reveal it: at a fixed point of the absolute height scale, the same for all pairs.
+- id: bw.beob.sigma_stern
+  quelle_hash: 8ddb340958a5
+  theorie_hash: 1ee0f92da6af
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Is $\sigma^*_\infty>0$ at all? (Gevrey would mean 0.)
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Window extrapolation; mode floor from $k\approx510$.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: —
+    bewertung:
+      recherche: Rounds 3/19.
+      nutzen: Decisive quantity.
+      richtigkeit: numerical, model-dependent
+    titel: Strip height σ* measured
+    aussage: '$\sigma^*=0.058\pm0.006$ (n_lim 240, window extrapolation $\sigma^*(w)=\sigma^*_\infty+2.83/w$); normal-form fit [200,500]: 0.0709,
+      extrapolated 0.058–0.062.'
+  en_theorie:
+    einordnung: |
+      The decisive quantity for [[bw.frage.streifen_gevrey]]: Gevrey would mean $\sigma^*_\infty=0$. Supports [[bw.verm.streifen]] only if $\sigma^*_\infty>0$ persists.
+    genau: |
+      $\sigma^*=0.058\pm0.006$ (window extrapolation $\sigma^*(w)=\sigma^*_\infty+2.83/w$ with $n_{\lim}=240$); normal-form fit on $[200,500]$: $0.0709$, extrapolated $0.058$–$0.062$.
+    warum: |
+      Measured and model-dependent: from $k\approx510$ on one reaches the mode floor of the engine; the extrapolation in the window width $w$ determines the result.
+    worum: |
+      The height of the conjectured analyticity strip is a single number $\sigma^*$. Measured, it is small and still uncertain.
+- id: bw.beob.singularitaet
+  quelle_hash: 6d49b8c50712
+  theorie_hash: 63473bd70cf0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: See correction bw.korr.r20.
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: yscan solver with fixed topmost closing level.
+      f1_folgt_unmittelbar: —
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: 'Object lesson: solver breakdown ≠ singularity.'
+      richtigkeit: refuted (solver artifact)
+    titel: Isolated essential singularity at z* (Paper IV, Obs. 6.1/6.2)
+    aussage: The solver breaks down in a slanted sector per period, tip $z^*\approx x^*(b,d)+0.055i$; height pair-universal.
+  en_theorie:
+    einordnung: |
+      Object lesson: the breakdown of a solver is not a singularity. Replaced by [[bw.beob.positionsgesetz]] and [[bw.satz.ursache_kozykel]].
+    genau: |
+      **Refuted.** Observed: breakdown of the solver in a slanted sector per period, tip at $z^*\approx x^*(b,d)+0.055i$, height the same for all pairs (Paper IV, Obs. 6.1/6.2).
+    warum: |
+      The tip lies exactly where the topmost level of the solver can no longer take its logarithm cleanly ([[bw.korr.r20]]). An exact
+      computation runs smoothly through the zone.
+    worum: |
+      An observation that turned out to be an illusion: the solver for the complex continuation of the phase broke down in a slanted sector,
+      and that looked like a genuine singularity.
+- id: bw.def.F_bd
+  quelle_hash: 609b65088897
+  theorie_hash: d17670926ca8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: Mixed-base height map, tails, phase
+    aussage: |
+      $F_{b,d}:=\operatorname{slog}_b\circ T_d$. Tails $D_n(\theta):=\log_b^{\circ n}\bigl(T_d(n+\theta)\bigr)$.
+      If the limit exists: $\Phi_{b,d}(\theta)=A_b(D_{b,d}(\theta))-\theta$, mean $\mu_{b,d}=\int_0^1\Phi$,
+      profile $P_{b,d}=\Phi-\mu$; lift $\tilde H_{b,d}=\mathrm{id}+\Phi_{b,d}$.
+    bereich: regular (Kneser/Paulsen–Cowgill) branches $T_b,T_d$, $b,d>\eta$; $\alpha=\log_b d$
+  en_theorie:
+    beispiel: |
+      $b=e$, $d=2$, $\theta=0$: $D_1=\ln2=0.693$, $D_2=\ln\ln4=0.327$, $D_3=0.0196$, $D_4=-0.1301$, $D_5=-0.14626192$, $D_6=-0.14626229$ — the tail quickly comes to rest.
+    einordnung: |
+      First rules: [[bw.prop.gruppoid]], [[bw.prop.ganzzahl]]. That the tails converge: [[bw.satz.schwanzkonvergenz]]. The result: [[bw.satz.phasengesetz]].
+    genau: |
+      For $b,d>\eta$ with Kneser tetrations $T_b,T_d$ and $A_b=\operatorname{slog}_b$, $\alpha=\log_bd$:
+      - Height map $F_{b,d}:=A_b\circ T_d$.
+      - Tails $D_n(\theta):=\log_b^{\circ n}\bigl(T_d(n+\theta)\bigr)$: take the $d$-tower at height $n+\theta$ and strip off the logarithm to base $b$ $n$ times.
+      - If $D_n\to D_{b,d}$: phase $\Phi_{b,d}(\theta)=A_b(D_{b,d}(\theta))-\theta$, mean $\mu_{b,d}=\int_0^1\Phi$, wave (profile) $P_{b,d}=\Phi-\mu$, lift $\tilde H_{b,d}=\mathrm{id}+\Phi_{b,d}$.
+    warum: |
+      A definition; the connection of the parts is one line: $A_b(\log_by)=A_b(y)-1$, hence
+      $$A_b(T_d(n+\theta))-(n+\theta)=A_b(D_n(\theta))-\theta.$$
+      The left side is the height shift, the right side lives on a fixed small interval. If the tails converge, the shift has a limit $\Phi(\theta)$.
+    worum: |
+      The basic question of the chapter: The tower to base $d$ has the value $T_d(x)$ at height $x$. At what height does the tower to base $b$
+      reach the same value? This translation of heights is called the mixed-base height map. Everything else is names for its components.
+- id: bw.def.auswahlprinzip
+  quelle_hash: 4f5054273c93
+  theorie_hash: 14e591d2522f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: Selection principle for the base kernel (Paper V, Def. 1)
+    aussage: |
+      (i) $V(d^y)-V(y)=-A_d'(d^y)\,y\ln d\,d^y$; (ii) real on $\mathbb R$; (iii) prescribed fixed-point singularity
+      (pole $dL/d\beta=\ln d\,L^2/(1-\lambda)$, log coefficient $d\lambda/d\beta$, read radially); (iv) $V(1)=0$.
+  en_theorie:
+    einordnung: |
+      Uniqueness: [[bw.satz.kern_eindeutig]]; existence: [[bw.satz.kern_existenz]].
+    genau: |
+      $V$ is called admissible if (i) $V(d^y)-V(y)=-A_d'(d^y)\,y\ln d\,d^y$; (ii) $V$ real on $\mathbb R$; (iii) at $L$ the prescribed singularity (pole with coefficient
+      $dL/d\beta=\ln d\,L^2/(1-\lambda)$, logarithmic part with $d\lambda/d\beta$, read radially); (iv) $V(1)=0$ (Paper V, Def. 1).
+    warum: |
+      Each condition comes from a property of $A_b$: (i) is the Abel equation differentiated with respect to $\beta$; (ii) $A_b$ is real; (iii) $A_b$ has at $L(b)$ a
+      logarithmic singularity that moves with $L$ — differentiating gives pole and logarithm ($dL/d\beta$ from $L=e^{e^\beta L}$); (iv) $A_b(1)=0$ for all $b$.
+    worum: |
+      The derivative of the super-logarithm with respect to the base — the “base kernel” $V$ — solves an equation that has many solutions. Four conditions select the right one.
+- id: bw.frage.halbiter_vergleich
+  quelle_hash: 034ae353b67b
+  theorie_hash: f3240f146fca
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Can a concrete counterexample sequence for Kneser be built from the measured wave?
+      f3_spezialfall: Question about a “natural” growth scale between quasi-polynomial and quasi-exponential.
+      f2_benutzte_voraussetzungen: Base-change wave (bw.satz.phasengesetz).
+      f1_folgt_unmittelbar: No, open.
+      f4_uebertragbar: All constructions of fractional iterates.
+    bewertung:
+      nutzen: Connects the base change with a natural growth question.
+      richtigkeit: open
+    titel: Are fractional exponential iterates for different bases ordered by growth? (Taranovsky, MO 2017)
+    aussage: |
+      For bases $a,b>\eta$ and heights $c<d$: does $\lim_{x\to\infty}\exp_a^{[c]}(x)/\exp_b^{[d]}(x)=0$ hold? For $c=1<d$ yes (for every tetration with increasing derivative). Levenstein conjectures
+      (forum 2018): for Walker's solution it holds in general, for Kneser **not** — there then exist $c<d$ (even with $a<b$) and arbitrarily large $x$ with $\exp_a^{[c]}(x)>\exp_b^{[d]}(x)$.
+      The reason would be the periodic wave of the base change: Kneser iterates of two bases are shifted into each other only up to a wobble.
+      In 2018 Levenstein pointed to a forthcoming paper by W. Paulsen and S. Cowgill; it appeared in 2021 and shows that the Kneser tetrations and their fractional
+      iterates to different bases do not lie in a common Hardy field (bw.satz.paulsen_cowgill_hardy). Whether this already
+      answers the question for Kneser (sign change of exactly this quotient) cannot be decided without the text.
+    einfach: If one applies the exponential function “half a time” or “three quarters of a time”, does the higher level then always grow faster
+      — even for different bases? Presumably the answer depends on which continuation of tetration one takes.
+  en_theorie:
+    beispiel: |
+      For $c=1$, $d=1+\delta$ the order always holds eventually, even for $a<b$ — but only from very large $x$ on.
+    einordnung: |
+      Connects [[kn.satz.halbe_exp_wachstum]] with the base change.
+    genau: |
+      Does $\exp_a^{[c]}(x)/\exp_b^{[d]}(x)\to0$ hold for $c<d$ and all $a,b>\eta$? Conjecture: yes for Walker, no for Kneser.
+    warum: |
+      Between two bases the Kneser tetration is shifted only up to a small periodic wave ([[bw.satz.phasengesetz]]). If $c$ and $d$ are very close, the wave can reverse the
+      order again and again — for arbitrarily large $x$.
+    worum: |
+      Do the fractional iterates of $\exp_b$ order the growth rates the way one expects — higher level, faster growth, regardless of the base?
+- id: bw.frage.intervallmarsch
+  quelle_hash: 0dc3b42071db
+  theorie_hash: 6f67060e1d4b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: 'Open points by weight: micro-segment induction, Hilbert-tube supremum, Γ-slope proof, β-interpolation floor.'
+    titel: Complete certified interval march
+    aussage: All segments from $e$ to $2$ with interval certificates (radius polynomials, cutting-plane certificate, end gluing E+) — open computer-assisted
+      problem.
+  en_theorie:
+    einordnung: |
+      First segment: [[bw.zert.8r1]]. Method: [[bw.satz.anker_rekonstruktion]].
+    genau: |
+      All segments from $e$ to $2$ with certificates (radius polynomials, cutting-plane certificate, end gluing E+) — open computer-assisted problem.
+    warum: |
+      Open. Ordered by weight, the following are missing: micro-segment induction, Hilbert-tube supremum, proof of the $\Gamma$-slope, $\beta$-interpolation floor.
+    worum: |
+      The big open computing project: all segments from $e$ to $2$ with interval certificates — then $T_2$ would be rigorously reconstructed from $T_e$.
+- id: bw.frage.nixon_eta_basiswechsel
+  quelle_hash: 3f34c1597544
+  theorie_hash: fda4b2f3408b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: 'Comparison with our phase language: is φ, up to θ, the base change F_{η,e} (bw.def.F_bd) with d = η?'
+    titel: 'Nixon 2021: base change from η to e via a Mellin representation — can the correction be chosen real?'
+    aussage: |
+      J. D. Nixon proposed a different route to the base change on the forum in 2021: the starting point is the base η with its neutral fixed point e. He writes the fractional iterates
+      η^{∘s} via an inverse Mellin transform and continues them holomorphically to ℂ without (−∞, −2]. One then seeks a map φ with
+      e^{φ(z)} = φ(η^z), e.g. φ = Ψ⁻¹(exp(L·slog_η + θ(slog_η))) with the Poincaré function Ψ of exp at L and a 1-periodic correction θ.
+      Open is how to choose θ so that φ becomes real — the same difficulty that Kneser solves with the Riemann mapping. There are no calculations.
+    einfach: Instead of converting from the base e to other bases, Nixon wants to convert from the particularly well-behaved base η ≈ 1.4447 to
+      e. The idea is sketched; the decisive correction that makes everything real is still missing.
+  en_theorie:
+    einordnung: |
+      Another approach to the base change besides Fox's limit formula and our phase law ([[bw.satz.phasengesetz]]); Kneser construction: [[kn.konstr.kneser]].
+    genau: |
+      Wanted: φ with e^{φ(z)} = φ(η^z), fixed points L, L̄ of exp. Ansatz: φ = Ψ⁻¹(exp(L·slog_η + θ(slog_η))) with 1-periodic θ; open: θ such that φ is real.
+    warum: |
+      Every solution of the equation can be written this way because two Abel functions differ by a periodic function. The reality condition does not fix θ by
+      itself — for Kneser the Riemann mapping does that.
+    worum: |
+      The base change converts a tetration into heights of another base. In 2021 Nixon wanted to start from the base η, because there the fractional
+      iterates are particularly well understood, and thus regain Kneser's tetration to base e.
+- id: bw.frage.streifen_gevrey
+  quelle_hash: 267b9cbfd844
+  theorie_hash: 8269bfce7f18
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: Mode campaign up to $k\approx5000$ ($n_{\lim}\approx2200$); beforehand test on the model case kl.verm.streifenbreite how well
+      the method finds a known strip.
+    titel: Strip or Gevrey?
+    aussage: |
+      Is $\Phi_{b,d}$ analytic in a strip of positive width ($\sigma^*>0$) or only Gevrey-smooth
+      ($\ln A_k\sim -c\sqrt k$, $\sigma^*=0$)? Not decidable from $k\le500$; the tower analysis (landing bands,
+      plateau identity) speaks for Gevrey with effective rate ≈ 0.06. On the tetration forum, “nowhere analytic” has even been
+      conjectured since 2011 (bw.verm.nirgends_analytisch).
+  en_theorie:
+    einordnung: |
+      Next step: mode campaign up to $k\approx5000$ ($n_{\lim}\approx2200$), beforehand test on the model case [[kl.verm.streifenbreite]] whether the method finds a known
+      strip. Background: [[br.satz.gevrey_fourier]].
+    genau: |
+      Is $\Phi_{b,d}$ analytic in a strip of positive width ($\sigma^*>0$) or only Gevrey-smooth ($\ln A_k\sim-c\sqrt k$, $\sigma^*=0$)? Not decidable from $k\le500$; the
+      tower analysis (landing bands, plateau identity) speaks for Gevrey with effective rate $\approx0.06$.
+    warum: |
+      Open. Both models predict almost the same for $k\le500$; only at much larger $k$ do they separate. Why this matters: it determines how many modes
+      one needs for a table ([[bw.kor.modenzahl]]). On the tetration forum the sharpest form of the Gevrey side is conjectured: nowhere analytic
+      ([[bw.verm.nirgends_analytisch]]).
+    worum: |
+      The open smoothness question: is the wave analytic in a strip of fixed width, or only “almost analytic” (Gevrey), with singularities
+      that come arbitrarily close to the real axis?
+- id: bw.gegen.unverschoben
+  quelle_hash: a96044684ab2
+  theorie_hash: 50354ba0f9d6
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: —
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Measured µ (engine); rigorous would require an interval bound for µ.
+      f1_folgt_unmittelbar: Yes, from the measured µ.
+      f4_uebertragbar: All pairs with strongly negative µ, e.g. all $(e,b)$ with $b$ near $\eta$.
+    bewertung:
+      recherche: Paper III.
+      nutzen: Corrects a reading of Paper I.
+      richtigkeit: numerically unambiguous (distance to −2 large)
+    titel: Unshifted channel reading fails for (10,2) and (e,1.5)
+    aussage: |
+      For $(10,2)$: $\mu=-2.26496\ldots$, $\inf\tilde H<-2$ ⇒ $T_b(\tilde H)$ undefined on part of the period,
+      $E_1$ partly negative. With $s=2$ everything is repaired (margin 0.7346). $(e,1.5)$: $\mu=-9.776$, $s=9$.
+    bereich: Pairs with $\mu_{b,d}\le-2+\|P\|_\infty$
+  en_theorie:
+    beispiel: |
+      $\mu_{10,2}=m(2)-m(10)=-1.12840-1.13656=-2.26496$ — directly from the hub column.
+    einordnung: |
+      Corrects the reading of [[bw.ann.hyp22]]; repaired by [[bw.lem.offset]]. Affected are all pairs with strongly negative $\mu$, e.g. $(e,b)$ with $b$ near $\eta$ ([[bw.lem.randgesetz]]).
+    genau: |
+      For $(10,2)$, $\mu=-2.26496\ldots$ and $\inf\tilde H<-2$: $T_b(\tilde H)$ is not defined at all on part of the period, $E_1$ partly negative. With $s=2$
+      everything is repaired (margin $0.7346$). For $(e,1.5)$: $\mu=-9.776$, $s=9$.
+    warum: |
+      $T_b$ is defined only on $(-2,\infty)$ and positive only on $(-1,\infty)$. If $\tilde H=\theta+\mu+P$ lies below $-2$ or $-1$ respectively, the unshifted reading fails.
+      Rigorously one would need an interval bound for $\mu$; but the distance to $-2$ is large.
+    worum: |
+      The literal reading of Paper I — “the channel stays positive from level 1 on” — is false for some pairs of bases. One sees this directly from the measured $\mu$.
+- id: bw.gescheitert.cstep
+  quelle_hash: 0a5a74803ff3
+  theorie_hash: a7af901ab1b7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: —
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: —
+      f4_uebertragbar: 'Rule: always obtain references via two independent routes.'
+    bewertung:
+      nutzen: Protects the core tables.
+      richtigkeit: demonstrated
+    titel: Complex-step references wrong at extreme bases
+    aussage: For $d=10$ only 14.6, for $d=2$ only 20.0 correct digits (engine floor near the parabolic boundary, narrow theta strip); RH solver
+      and ε-stencils agree to 30–34 digits and jointly refute them.
+  en_theorie:
+    einordnung: |
+      Rule: always obtain references via two independent routes. Protects the core tables ([[bw.beob.kernkleid]]).
+    genau: |
+      For $d=10$ only $14.6$, for $d=2$ only $20.0$ correct digits; RH solver and $\varepsilon$-stencils agree with each other to 30–34 digits.
+    warum: |
+      Cause: near the parabolic boundary and with a narrow theta strip the engine has an accuracy floor. Two independent methods that agree beat a third.
+    worum: |
+      Reference values computed with a “complex step” were less accurate than stated at extreme bases. Two other routes jointly uncovered this.
+- id: bw.gescheitert.orbitanker
+  quelle_hash: b6997b796ee4
+  theorie_hash: ea301bf71286
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Radial instead of orbital reading of (iii).
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: 'Yes, in hindsight: pole coefficient $-(1+p''(\chi))\,dL/d\beta/\ln\lambda$.'
+      f4_uebertragbar: Warning for every orbit method near $L$.
+    bewertung:
+      recherche: Paper V.
+      nutzen: Saves a dead end.
+      richtigkeit: numerically verified
+    titel: Naive orbit summation along the backward spiral
+    aussage: 'An anchor with the bare Schröder function along $w_{k+1}=\log_d w_k\to L$ diverges like $|\lambda|^n$: the theta derivative multiplies
+      the pole ($|p''|\approx0.5$ for $d=e$).'
+  en_theorie:
+    einordnung: |
+      Led to the radial instead of orbital reading of condition (iii) in [[bw.def.auswahlprinzip]]. Warning for every orbit method near $L$.
+    genau: |
+      An anchor with the bare Schröder function along $w_{k+1}=\log_dw_k\to L$ diverges like $|\lambda|^n$: the theta derivative multiplies the pole ($|p'|\approx0.5$ for $d=e$).
+    warum: |
+      Understood in hindsight: the pole coefficient is $-(1+p'(\chi))\,dL/d\beta/\ln\lambda$. Along the spiral $p'$ does not become small, and every step amplifies by $|\lambda|$.
+    worum: |
+      An obvious route to the base kernel: sum up along the backward spiral into the fixed point $L$. It diverges.
+- id: bw.gescheitert.rh_v1
+  quelle_hash: 7615ed8fbd98
+  theorie_hash: 1042bd9c7db8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Replaced by graded grid + periodic Hilbert transform (RH-v2).
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: —
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Steered toward RH-v2.
+      richtigkeit: failed, documented
+    titel: RH-v1 — completion algebra invalid
+    aussage: Q-field tail subtraction confirms the lnln model, but Q grows in the upper half-plane; the admissible basis has conditioning $e^{2\pi
+      k\cdot1.1}$ ⇒ information doubly exponential near $\theta\in\mathbb Z$.
+  en_theorie:
+    einordnung: |
+      Replaced by a graded grid with periodic Hilbert transform (RH-v2), which led to [[bw.satz.kern_existenz]].
+    genau: |
+      The subtraction of the Q-field tail confirms the $\ln\ln$ model, but $Q$ grows in the upper half-plane; the admissible basis has conditioning $e^{2\pi k\cdot1.1}$.
+    warum: |
+      A basis with such bad conditioning amplifies rounding errors exponentially in the mode number — practically unusable.
+    worum: |
+      The first attempt at the boundary value problem failed on numerical stability: the information sat doubly exponentially close to the integers.
+- id: bw.gescheitert.vorhersage_r8
+  quelle_hash: 47328389a596
+  theorie_hash: e9e72074caed
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Collapse law became a proof step in Paper V.
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: —
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Methodological lesson.
+      richtigkeit: refuted by measurement
+    titel: Own asymptotics prediction (growth γ = 4.447) refuted
+    aussage: 'Predicted: logarithmic power growth of the boundary data with exponent $2\pi\nu=4.447$. Measured: the opposite (collapse $|1/\chi''|=O(\delta\ln(1/\delta))$).
+      First measure, then prove.'
+  en_theorie:
+    einordnung: |
+      Methodological lesson: first measure, then prove. Motivated [[bw.satz.kern_existenz]].
+    genau: |
+      Predicted: logarithmic power growth of the boundary data with exponent $2\pi\nu=4.447$. Measured: $|1/\chi'|=O(\delta\ln(1/\delta))$ — the opposite.
+    warum: |
+      The measurement was unambiguous; the collapse law later became a proof step in Paper V.
+    worum: |
+      A prediction of our own that the measurement turned around: growth of the boundary data was expected, a collapse was measured.
+- id: bw.kor.modenzahl
+  quelle_hash: bdbe6d77d46f
+  theorie_hash: 3d6b4345573b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Does the extrapolation hold without the (discarded) singularity interpretation? Checkable purely empirically via bw.beob.modenabfall.
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Extrapolation of the model far beyond $k\le500$.
+      f1_folgt_unmittelbar: Yes, from the fitted model.
+      f4_uebertragbar: —
+    bewertung:
+      recherche: Paper IV.
+      nutzen: Planning of tables.
+      richtigkeit: Extrapolation; justification dropped
+    titel: Mode counts for base-change tables (Paper IV, Cor. 6.5)
+    aussage: ≈ 300 modes for 150 digits, ≈ 1400 for 500 digits (in the fitted singularity model).
+  en_theorie:
+    einordnung: |
+      The check deliberately reports a warning here: the theorem rests on a superseded conjecture.
+    genau: |
+      About $300$ modes for $150$ digits, about $1400$ for $500$ digits (in the fitted singularity model, Paper IV, Cor. 6.5).
+    warum: |
+      From the model of [[bw.prop.saddle]] with the constants of [[bw.verm.universell]] — extrapolated far beyond the measured $k\le500$. The interpretation as
+      singularity is superseded; the numbers would have to be re-justified purely empirically via [[bw.beob.modenabfall]].
+    worum: |
+      How many Fourier modes does one need to tabulate the wave to 150 or 500 digits? The fitted model gives an answer — but its justification has fallen away.
+- id: bw.korr.konstante
+  quelle_hash: 050cb6155bcf
+  theorie_hash: e7aa6ea4a0e2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Direct evaluation with 30 digits, three algebraically equivalent forms (exp.randgesetz, recomputation 08.10.2026).
+    pruefung:
+      f5_neue_frage: 'Before a new edition of Paper IV: machine-check all numerical constants.'
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: Yes (recomputation).
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Small erratum.
+      richtigkeit: recomputed
+    titel: Correction — π√(2η/e) = 3.238930…, not 3.23907
+    aussage: Paper IV states $\pi\sqrt{2\eta/e}=3.23907\ldots$ in three places (abstract, Lemma 8.2, appendix); the correct value is $3.2389305453\ldots$
+      (relative error $4\cdot10^{-5}$). The statement “agreement to 2.3 %” remains practically unaffected.
+  en_theorie:
+    einordnung: |
+      Corrects [[bw.lem.randgesetz]]. Lesson: before a new edition, cross-check all numerical constants by machine.
+    genau: |
+      Paper IV states in three places $\pi\sqrt{2\eta/e}=3.23907\ldots$; the correct value is $3.2389305453\ldots$ (relative error $4\cdot10^{-5}$).
+    warum: |
+      Recomputed directly with 30 digits in three equivalent forms. The statement “agreement to 2.3 %” is practically unaffected by this.
+    worum: |
+      A small numerical error in Paper IV: the constant of the boundary law.
+- id: bw.korr.r20
+  quelle_hash: f9149461b523
+  theorie_hash: 7651d917a066
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: Where does the true singular structure lie? → bw.beob.positionsgesetz, bw.satz.ursache_kozykel
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Exact finite residuals; Fourier series to 9e-43 below the zone.
+      f1_folgt_unmittelbar: No — found by cross-checking against the exact logarithm ladder.
+      f4_uebertragbar: 'Lesson for every solver-based singularity search: check breakdowns against an exact ladder.'
+    bewertung:
+      recherche: Round 20.
+      nutzen: Saves the series from a false structural claim.
+      richtigkeit: numerically unambiguous
+    titel: Correction Round 20 — the sector is a solver artifact
+    aussage: |
+      The tip lies exactly on the $\pi/2$ rotation curve $\operatorname{Re}T_d(m+z)=0$ of the topmost closing level of the solver,
+      $y=(\pi/2)/(\ln d\cdot T_d'(m-1+x))$ (0.0595 at $x=1.001$); the “universal 0.058” is conjugation invariance of
+      $\operatorname{Im}[\ln d\,T_d(m+z)]$. The exact finite residual $R(n+z)$ runs smoothly through the zone.
+  en_theorie:
+    einordnung: |
+      Refutes [[bw.beob.singularitaet]] and replaces [[bw.verm.universell]]. Rule for every singularity search with solvers: check breakdowns against an exact ladder.
+    genau: |
+      The tip lies exactly on the $\pi/2$ rotation curve $\operatorname{Re}T_d(m+z)=0$ of the topmost level, $y=\dfrac{\pi/2}{\ln d\cdot T_d'(m-1+x)}$ ($0.0595$ at $x=1.001$).
+      The “universal $0.058$” is a consequence of the fact that $\operatorname{Im}[\ln d\,T_d(m+z)]$ stays the same under conjugation. The exact finite residual $R(n+z)$
+      runs smoothly through the zone.
+    warum: |
+      Cross-check against the exact logarithm ladder: below the zone the Fourier series agrees to $9\cdot10^{-43}$, in the zone the exact residual
+      is smooth. Once the exponent $\ln d\cdot T_d(m+z)$ reaches imaginary part $\pi/2$, $d^{T}$ is purely imaginary and the next logarithm jumps — an artifact of the level.
+    worum: |
+      Round 20 exposed the “singular sector”: it sits exactly on a curve that only the solver knows — there its last step turns the value into the
+      imaginary direction.
+- id: bw.korr.tails
+  quelle_hash: e0bdf447b46d
+  theorie_hash: 28f4164119de
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Algebraic correction of the bound; regression test.
+    pruefung:
+      f5_neue_frage: —
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: —
+      f4_uebertragbar: 'Rule: compare two independent interval producers value by value.'
+    bewertung:
+      nutzen: Saves the certificate.
+      richtigkeit: Error documented and fixed
+    titel: Correction — sensitivity tail underestimated by a factor of ~20
+    aussage: The ratio of the d/dT tail terms carries a factor $1+c\,y_j\theta$; tails.py lacked it. Found by value-by-value comparison of two
+      independent interval producers; regression test test_tails.py; erratum documented.
+  en_theorie:
+    einordnung: |
+      Rule: compare two independent interval producers value by value. Saves the certificate [[bw.zert.8r1]].
+    genau: |
+      The ratio of the $d/dT$ tail terms carries a factor $1+c\,y_j\theta$; tails.py lacked it, the tail was underestimated by about a factor of 20. Fixed,
+      regression test test_tails.py, erratum documented.
+    warum: |
+      Algebraic correction of the bound; the regression test holds it in place.
+    worum: |
+      The error in the first certificate: a factor was missing in a bound. Found because two independent programs were compared value by value.
+- id: bw.lem.geom_kozykel
+  quelle_hash: 64180275fcf6
+  theorie_hash: 9a31631b733a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Three lines via $A_d'(d^y)d^y\ln d=A_d'(y)$.
+    pruefung:
+      f5_neue_frage: Boundary data $u=\operatorname{Im}V_{\mathrm{geo}}\circ T_d$ → RH problem.
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Koenigs data differentiable in β (Lemma 6).
+      f1_folgt_unmittelbar: Yes, computation.
+      f4_uebertragbar: Every family $\exp_b$ with a Koenigs coordinate.
+    bewertung:
+      recherche: Paper V.
+      nutzen: Key to existence.
+      richtigkeit: complete
+    titel: Exact cocycle of the geometric field (Paper V, Lemma 7)
+    aussage: $G:=\partial_\beta\chi/\chi'$ satisfies $G(d^y)=(\ln d)\,d^y\,(G(y)-y)$; hence $A_d'G+h\circ A_d$ solves the cohomological equation
+      for every periodic $h$.
+  en_theorie:
+    einordnung: |
+      Supplies the boundary data $u=\operatorname{Im}V_{\mathrm{geo}}\circ T_d$ for the boundary value problem in [[bw.satz.kern_existenz]].
+    genau: |
+      $G:=\partial_\beta\chi/\chi'$ satisfies $G(d^y)=(\ln d)\,d^y\,(G(y)-y)$; hence $A_d'G+h\circ A_d$ solves the cohomological equation for every periodic $h$ (Paper V, Lemma 7).
+    warum: |
+      Differentiate $\chi(d^y)=\chi(y)+1$ with respect to $\beta$: $(\partial_\beta\chi)(d^y)+\chi'(d^y)\,d^y\ln d\cdot y=\partial_\beta\chi(y)$. Divide by $\chi'(d^y)$ and use $\chi'(d^y)\,d^y\ln d=\chi'(y)$ — done.
+    worum: |
+      An auxiliary field from the Koenigs coordinate almost solves the equation of the base kernel — up to a periodic piece. This is the key to existence.
+- id: bw.lem.offset
+  quelle_hash: 2e7c3fb84170
+  theorie_hash: 7c3907bb08bd
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Monotonicity of $T_b$ on $(-1,\infty)$ and shift equivariance.
+    pruefung:
+      f5_neue_frage: 'Margin: pairs with $\mu$ near an integer have thin margins (e, 1.46: 0.056).'
+      f3_spezialfall: 'no'
+      f2_benutzte_voraussetzungen: (P) — so the lemma is not independent of the phase law (no circularity, but mind the order).
+      f1_folgt_unmittelbar: Yes, from monotonicity, as soon as (P) holds.
+      f4_uebertragbar: All constructions with increasing $T_b$.
+    bewertung:
+      recherche: Paper III.
+      nutzen: Repairs the false unshifted reading.
+      richtigkeit: conditional, proof complete
+    voraussetzungen:
+    - text: Phase-law package (P) for (b,d)
+    titel: Offset-aligned limit channel
+    aussage: $E_j(\theta)=T_b(j+\tilde H(\theta))>0$ for all $j\ge s+1$; the entire structure of Papers I–II holds for the objects shifted by
+      $s$.
+    bereich: $m_\star=\inf\tilde H\ge\mu-\sum_k A_k$, $s=\max(0,\lceil-1-m_\star\rceil)$
+  en_theorie:
+    beispiel: |
+      $(10,2)$: $\mu=-2.26496$, so $m_\star\approx-2.265$ and $s=2$; margin $s+m_\star+1=0.7346$. $(e,1.5)$: $\mu=-9.776$, $s=9$.
+    einordnung: |
+      Presupposes the phase law (no circularity, but mind the order). Repairs [[bw.gegen.unverschoben]]; checked for 45 pairs:
+      [[bw.beob.offset_zertifikat]].
+    genau: |
+      Let $m_\star=\inf\tilde H$ and $s=\max(0,\lceil-1-m_\star\rceil)$. Then $E_j(\theta)=T_b(j+\tilde H(\theta))>0$ for all $j\ge s+1$, and the whole structure of
+      Papers I–II holds for the objects shifted by $s$.
+    warum: |
+      $T_b(x)>0$ if and only if $x>-1$, and $T_b$ is increasing. For $j\ge s+1$ one has $j+\tilde H(\theta)\ge s+1+m_\star>-1$. Everything else is compatible with the shift.
+    worum: |
+      The limit objects $T_b(j+\tilde H(\theta))$ are positive only if the argument lies above $-1$. For strongly negative $\mu$ this is false for small $j$.
+      The repair: shift everything up by $s$ levels.
+- id: bw.lem.randgesetz
+  quelle_hash: d1b31c22ef61
+  theorie_hash: ee80c3940b58
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Bottleneck $w\mapsto w+e^2\delta+w^2/(2e)$, continuum approximation: passage time $\pi\sqrt{2/(e\delta)}$.'
+    pruefung:
+      f5_neue_frage: Rigorous version with constant and phase term via parabolic implosion → br.frage.implosion
+      f3_spezialfall: Yes, of br.satz.sattel_knoten.
+      f2_benutzte_voraussetzungen: Only the quadratic term at the bottleneck.
+      f1_folgt_unmittelbar: '**Yes, as a special case** of the classical saddle-node passage time $\pi/\sqrt{a\varepsilon}$ (Pomeau–Manneville
+        intermittency).'
+      f4_uebertragbar: Any quantity comparing heights between $b$ near $\eta$ and a fixed base.
+    bewertung:
+      recherche: 'Correction 12.10.2026 (literature map L2, previously “folklore”): leading term with the same constant in S. Levenstein 2015
+        (Forum tid 262, posts 40–41, as a conjecture with Mandelbrot analogy), bottleneck counting in W. Paulsen 2016 (Lemma 2) and as a rough
+        computation in BenStandeven 2009 (tid 262). Paper IV did not know these passages.'
+      nutzen: Explains the divergence of the hub column.
+      richtigkeit: 'Leading term: pure iteration confirms $A$ to 6e-5; hub data only to 4–7 % (model-dependent), not 2.3 % as in Paper IV'
+    titel: Parabolic boundary law m(b) as b ↓ η (Paper IV, Lemma 8.2)
+    aussage: '$m(b)=\mu_{e,b}=-\pi\sqrt{2\eta/e}\,(b-\eta)^{-1/2}(1+o(1))$, $\pi\sqrt{2\eta/e}=3.2389305\ldots$ (Paper IV: 3.23907, see bw.korr.konstante),
+      with a correction of order $\ln(b-\eta)$.'
+  en_theorie:
+    beispiel: |
+      Pure iteration: passage counts $25$, $316$, $3231$, $10234$ for $\delta=10^{-2},10^{-4},10^{-6},10^{-7}$; fitted constant $3.23872$ instead of $3.23893$.
+      The table $m(b)$ hits the leading term only to 4–7 %, because it begins only at $b=1.5$.
+    einordnung: |
+      A special case of the saddle-node passage time ([[br.satz.sattel_knoten]]). Constant corrected: [[bw.korr.konstante]]. Rigorous via parabolic
+      implosion: [[br.frage.implosion]]. At $\eta$ itself the tower creeps like $1/x$ ([[kl.satz.parabolisch]]).
+    genau: |
+      $m(b)=\mu_{e,b}=-\pi\sqrt{2\eta/e}\,(b-\eta)^{-1/2}\,(1+o(1))$ for $b\downarrow\eta$, with $\pi\sqrt{2\eta/e}=3.2389305\ldots$ and a correction of order $\ln(b-\eta)$ (sketch).
+    warum: |
+      1. For $b=\eta+\delta$ and $x=e+w$ one has $b^x\approx e+w+\frac{e^2\delta}\eta+\frac{w^2}{2e}$: a bottleneck through which each step advances only by $\varepsilon+aw^2$ ($\varepsilon=e^2\delta/\eta$, $a=1/(2e)$).
+      2. In the continuum approximation $dw/dn=\varepsilon+aw^2$ the passage takes $\int_{-\infty}^\infty\frac{dw}{\varepsilon+aw^2}=\frac\pi{\sqrt{a\varepsilon}}=\pi\sqrt{\frac{2\eta}{e\,\delta}}$ steps.
+      3. By that many levels the $b$-tower is delayed, so $m(b)\approx-\pi\sqrt{2\eta/e}\,\delta^{-1/2}$. Gaps: rigorous passage time and the $\ln$ correction.
+    worum: |
+      The closer the base lies to $\eta$, the longer its tower needs to squeeze through the narrow gap at $e$. It lags further and further behind the tower to base $e$
+      — and $m(b)$ falls to $-\infty$, like one over the square root of the distance.
+- id: bw.lem.stoppregel
+  quelle_hash: '451718668871'
+  theorie_hash: fb6ca6890e05
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Downward induction; produces the channel positivity instead of assuming it.
+    pruefung:
+      f5_neue_frage: Does the stopped chain suffice for all limit statements? → bw.satz.phasengesetz_gestoppt
+      f3_spezialfall: Error control of the evaluation ladder = induction invariant.
+      f2_benutzte_voraussetzungen: Monotonicity of $T_d$ and $s_j\to\infty$; no Kneser specifics.
+      f1_folgt_unmittelbar: No, but short (induction).
+      f4_uebertragbar: Every increasing tetration $T_d$ with $d>\eta$ (class B).
+    bewertung:
+      recherche: Papers I–III; no precedent known.
+      nutzen: Makes the evaluation unconditional.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: b, d > η
+    - text: T_d increasing with T_d(0)=1 (for s_j)
+    titel: Stopping rule — unconditional positivity of the stopped chain
+    aussage: |
+      For $n\ge J_0+1$ the chain values $W_k^{(n)}=\alpha T_d(n-k+\theta)(1+\sigma_k)$, $|\sigma_k|\le C_0/s_{n-k}\le\tfrac12$,
+      are defined and positive for $0\le k\le n-J_0$: (R2) holds up to the stopping level $J_0$ without assumption.
+    bereich: $b,d>\eta$, $J_0=\min\{j:s_j\ge2C_0\}$, $C_0=|\log_b\alpha|+\ln2/\ln b$
+  en_theorie:
+    beispiel: |
+      $(e,2)$: $\alpha=\ln2$, $C_0=1.060$, $2C_0=2.119$. The tower values are $s_0=1$, $s_1=2$, $s_2=4$, so $J_0=2$: all the way down to level $2$ everything is secured.
+    einordnung: |
+      Uses [[bw.lem.wachstumsluecke]]. Makes the tail convergence unconditional ([[bw.satz.phasengesetz_gestoppt]]).
+    genau: |
+      Let $C_0=|\log_b\alpha|+\ln2/\ln b$ and $J_0=\min\{j:s_j\ge2C_0\}$. For $n\ge J_0+1$ and $0\le k\le n-J_0$ the chain values
+      $$W_k^{(n)}=\alpha\,T_d(n-k+\theta)\,(1+\sigma_k),\qquad|\sigma_k|\le C_0/s_{n-k}\le\tfrac12,$$
+      are defined and positive. (R2) thus holds up to the stopping level $J_0$ without assumption.
+    warum: |
+      1. The first logarithm is exact: $\log_b\bigl(T_d(m)\bigr)=\log_b\bigl(d^{T_d(m-1)}\bigr)=\alpha\,T_d(m-1)$.
+      2. Each further one: $\log_b\bigl(\alpha T(1+\sigma)\bigr)=\alpha T'+\log_b\alpha+\log_b(1+\sigma)$, where $T'$ is the tower value one level lower. The additional terms are
+         bounded by $C_0$; relative to a large tower value they are small.
+      3. Downward induction: as long as $s\ge2C_0$, $|\sigma|\le\tfrac12$ remains, so the value is positive and the next logarithm is defined.
+    worum: |
+      Instead of assuming that the logarithm chain stays positive, one can prove it — as long as one stops in time. At the top of the tower the
+      values are huge, each logarithm turns $d^{\text{large}}$ into something large again. Only at the bottom, where the values become small, does one stop.
+- id: bw.lem.wachstumsluecke
+  quelle_hash: 1be2d2f65efe
+  theorie_hash: 33e6309c53e5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Convexity (fp.satz.reelle_fixpunkte). Self-reinforcing growth: $s_{j+1}=d^{s_j}$.'
+    pruefung:
+      f5_neue_frage: —
+      f3_spezialfall: Yes, of fp.satz.reelle_fixpunkte.
+      f2_benutzte_voraussetzungen: Only $d>\eta$; for $s_j\to\infty$ every solution with $T_d(0)=1$, not just Kneser.
+      f1_folgt_unmittelbar: Yes — literally the minimum computation from fp.satz.reelle_fixpunkte.
+      f4_uebertragbar: Every tetration to base $d>\eta$ (layer A).
+    bewertung:
+      nutzen: Fully discharges Hyp. 2.4.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: d > η
+    titel: Tower divergence with explicit gap
+    aussage: $d^x-x\ge\delta_0(d)=\dfrac{1+\ln\ln d}{\ln d}>0$; hence $s_{j+1}\ge s_j+\delta_0$, $s_j\to\infty$, and Hyp. 2.4 holds.
+    bereich: $d>\eta$, all $x\in\mathbb R$
+  en_theorie:
+    beispiel: |
+      $\delta_0(1.5)=0.240$, $\delta_0(2)=0.914$, $\delta_0(e)=1$, $\delta_0(10)=0.797$. At $\eta$ itself $\delta_0=0$ — there curve and diagonal touch.
+    einordnung: |
+      The same computation as in [[fp.satz.reelle_fixpunkte]]. Discharges [[bw.ann.hyp24]] and feeds the stopping rule ([[bw.lem.stoppregel]]).
+    genau: |
+      For $d>\eta$ and all real $x$ one has $d^x-x\ge\delta_0(d)=\dfrac{1+\ln\ln d}{\ln d}>0$. Hence $s_{j+1}\ge s_j+\delta_0$ and $s_j\to\infty$.
+    warum: |
+      1. $g(x)=d^x-x$ is convex; the minimum lies where $g'(x)=d^x\ln d-1=0$, i.e. $d^x=1/\ln d$ and $x=-\ln\ln d/\ln d$.
+      2. Substituting: $g_{\min}=\frac1{\ln d}+\frac{\ln\ln d}{\ln d}$. This is positive if and only if $\ln\ln d>-1$, i.e. $d>e^{1/e}=\eta$.
+      3. $s_{j+1}=d^{s_j}\ge s_j+\delta_0$, so $s_j\ge s_0+j\,\delta_0\to\infty$ (in truth much faster).
+    worum: |
+      Above $\eta$ the curve $y=d^x$ lies everywhere above the diagonal, with a fixed minimal distance. Therefore every tower grows by at least this distance per level.
+- id: bw.prop.antisym_c1
+  quelle_hash: 4e972053910b
+  theorie_hash: 73f11cf2b85e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Substitution with $H'>0$.
+    pruefung:
+      f5_neue_frage: —
+      f3_spezialfall: Yes, of br.satz.young_kreis.
+      f2_benutzte_voraussetzungen: The C¹ assumption is superfluous (Paper II, Thm. B).
+      f1_folgt_unmittelbar: Yes, from the inverse phase equation + substitution.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Historical version.
+      richtigkeit: correct, but with superfluous hypothesis
+    voraussetzungen:
+    - text: H = id + Φ orientation-preserving C¹ circle diffeomorphism
+    titel: Inverse mean antisymmetry under C¹ diffeomorphism assumption (Paper I, Prop. 6.6)
+    aussage: $\mu_{b,d}=-\mu_{d,b}$.
+  en_theorie:
+    einordnung: |
+      Historical version; replaced by [[bw.satz.antisymmetrie]], a special case of [[br.satz.young_kreis]].
+    genau: |
+      If $H=\mathrm{id}+\Phi$ is an orientation-preserving $C^1$ circle diffeomorphism, then $\mu_{b,d}=-\mu_{d,b}$ (Paper I, Prop. 6.6). **Superseded.**
+    warum: |
+      Substitution $u=H(\theta)$ with $H'>0$ in the inverse phase equation. Paper II shows the same without smoothness ([[bw.satz.antisymmetrie]]).
+    worum: |
+      The first version of the antisymmetry $\mu_{b,d}=-\mu_{d,b}$ from Paper I. It needed the assumption that the phase map is smooth — superfluous, as it turned out.
+- id: bw.prop.ganzzahl
+  quelle_hash: b6fa8d405fe5
+  theorie_hash: 437e5965e3dd
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Abel equation applied $n$ times.
+    pruefung:
+      f5_neue_frage: What happens at non-integer heights? → phase law.
+      f3_spezialfall: Yes, $\theta=0$ in the phase law.
+      f2_benutzte_voraussetzungen: Definedness of the logarithms.
+      f1_folgt_unmittelbar: Yes.
+      f4_uebertragbar: All constructions.
+    bewertung:
+      nutzen: Explains the natural but false expectation of a constant shift.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: log_b^{∘n}(T_d(n)) defined
+    titel: Exact peeling at integer heights
+    aussage: $\operatorname{slog}_b(T_d(n))-n=A_b(C^n_{b,d})$ with $C^n_{b,d}=\log_b^{\circ n}(T_d(n))$. Integer heights see only phase 0.
+    bereich: $n\in\mathbb N$, provided the iterated logarithms are defined
+  en_theorie:
+    beispiel: |
+      $(e,2)$: $\operatorname{slog}_e(T_2(n))-n=0,\,-0.298,\,-0.679,\,-0.982,\,-1.115,\,-1.1283314$ for $n=0,\dots,5$, limit $\mu+P(0)=-1.1283317$. So the integer heights
+      show only the one value $P(0)$ of the wave — not its shape.
+    einordnung: |
+      The case $\theta=0$ of the phase law ([[bw.satz.phasengesetz]]). For $\theta\ne0$ the wave $P(\theta)$ is added.
+    genau: |
+      $\operatorname{slog}_b(T_d(n))-n=A_b(C^n_{b,d})$ with $C^n_{b,d}=\log_b^{\circ n}(T_d(n))$, provided the logarithms are defined.
+    warum: |
+      The Abel equation $A_b(y)=A_b(\log_by)+1$, applied $n$ times.
+    worum: |
+      At integer heights one can “peel off” the translation exactly: $n$ logarithms strip off $n$ levels. But integer heights see only a
+      single point of the wave — hence one wrongly expects a constant shift.
+- id: bw.prop.gruppoid
+  quelle_hash: e5bb8da9c27b
+  theorie_hash: 55ef0f34bd4f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $A_b T_c A_c T_d=A_b T_d$.
+    pruefung:
+      f5_neue_frage: Content arises only asymptotically (phase law).
+      f3_spezialfall: 'Yes: changes of coordinates between Abel coordinates always form a groupoid.'
+      f2_benutzte_voraussetzungen: Only invertibility; no regularity, no Kneser.
+      f1_folgt_unmittelbar: Yes, from $A_c\circ T_c=\mathrm{id}$.
+      f4_uebertragbar: Every family of superfunctions of arbitrary maps.
+    bewertung:
+      nutzen: Organizing principle; no new mathematical content.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: T_b, T_c invertible (A_b = T_b^{-1}) on the images
+    - text: regular Kneser branches
+    titel: Groupoid identities
+    aussage: $F_{b,b}=\mathrm{id}$, $F_{b,d}^{-1}=F_{d,b}$, $F_{b,d}=F_{b,c}\circ F_{c,d}$.
+    bereich: arbitrary solutions $T_b,T_c,T_d$ with inverses on the required images
+  en_theorie:
+    beispiel: |
+      $F_{e,2}(x)=\operatorname{slog}_e(T_2(x))$; back: $F_{2,e}(y)=\operatorname{slog}_2(T_e(y))$, and $F_{2,e}(F_{e,2}(x))=x$.
+    einordnung: |
+      An organizing principle without content of its own. It acquires content only in the limit: cocycle of the phases ([[bw.prop.kozykel]]) and the hub decomposition ([[bw.prop.hub]]).
+    genau: |
+      $F_{b,b}=\mathrm{id}$, $F_{b,d}^{-1}=F_{d,b}$, $F_{b,d}=F_{b,c}\circ F_{c,d}$.
+    warum: |
+      $F_{b,c}\circ F_{c,d}=A_bT_cA_cT_d=A_bT_d$, because $T_cA_c=\mathrm{id}$. There is no more to it — one needs only that the tetrations are invertible.
+    worum: |
+      Translating heights behaves like exchanging money: going from $d$ to $c$ and then to $b$ is the same as going directly from $d$ to $b$, and exchanging back cancels out.
+- id: bw.prop.hub
+  quelle_hash: 3c37790d6bae
+  theorie_hash: 5aaea017e519
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Integrated cocycle + antisymmetry.
+    pruefung:
+      f5_neue_frage: One column $m(\cdot)$ determines all means up to small defects → table format of the base atlas.
+      f3_spezialfall: 'Corrects the assumption of J. D. Fox (2007) that the constants are exactly additive: the defect Δ is a product of two waves
+        (≈ 1e-9 for (3,2)).'
+      f2_benutzte_voraussetzungen: Phase law for three pairs.
+      f1_folgt_unmittelbar: Yes (integration of the cocycle).
+      f4_uebertragbar: —
+    bewertung:
+      recherche: Paper IV. The additivity itself was put forward by J. D. Fox in 2007 in the Tetration Forum (as exact); new is the exact version
+        with the defect Δ.
+      nutzen: 'Practical: base change with one table column.'
+      richtigkeit: conditional, complete
+    titel: Exact hub decomposition of the means (Paper IV, Prop. 8.1)
+    aussage: $\mu_{b,d}=m(d)-m(b)+\Delta_{b,c_*;d}$, $\Delta=\int_0^1P_{b,c_*}(\{\theta+\Phi_{c_*,d}(\theta)\})\,d\theta$; defects of second/third
+      order confirmed to $10^{-15}$.
+  en_theorie:
+    beispiel: |
+      $m(2)-m(3)=-1.1284037766-0.1924222937=-1.3208260704$; directly measured $\mu_{3,2}=-1.3208260715$. The remainder is about $10^{-9}$ — waves of size $10^{-4}$, squared.
+    einordnung: |
+      Practical: base change with one table column. Prehistory: J. D. Fox put forward the rule $\mu_a(c)=\mu_a(b)+\mu_b(c)$ in 2007 in the Tetration Forum — as
+      exact additivity of constant shifts. The hub shows what remains of it because of the wave: additivity up to the defect $\Delta$.
+      How $m(b)$ diverges at $\eta$: [[bw.lem.randgesetz]]; accuracy of the column: [[bw.beob.hub_genauigkeit]].
+    genau: |
+      $$\mu_{b,d}=m(d)-m(b)+\Delta_{b,c_*;d},\qquad\Delta=\int_0^1P_{b,c_*}\bigl(\{\theta+\Phi_{c_*,d}(\theta)\}\bigr)\,d\theta$$
+      (Paper IV, Prop. 8.1); defects of second and third order confirmed to $10^{-15}$.
+    warum: |
+      Integrate the cocycle ([[bw.prop.kozykel]]) over one period and use the antisymmetry. The remainder $\Delta$ is the integral of a wave with mean $0$, read off at
+      slightly bent points — if the bending were zero, $\Delta$ would be zero as well. Hence $\Delta$ is a product of two small waves.
+    worum: |
+      Instead of tabulating a separate mean $\mu_{b,d}$ for every pair of bases, a single column $m(b)=\mu_{e,b}$ suffices: The means are almost differences.
+      What is missing is a tiny remainder of second order.
+- id: bw.prop.kozykel
+  quelle_hash: 378db34f169a
+  theorie_hash: 90c95694fb1d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Groupoid identity + uniform phase limits.
+    pruefung:
+      f5_neue_frage: Hub decomposition of the means → bw.prop.hub
+      f3_spezialfall: Lifts form a groupoid in $\mathrm{Homeo}^+(S^1)$ — pure composition rule.
+      f2_benutzte_voraussetzungen: Existence of the three phase limits, uniformly.
+      f1_folgt_unmittelbar: 'Yes: groupoid + limit.'
+      f4_uebertragbar: All constructions with phase law.
+    bewertung:
+      nutzen: Structural equation; content lies in the phase law.
+      richtigkeit: conditional, proof trivial
+    titel: Nonlinear phase cocycle
+    aussage: $\Phi_{b,d}(\theta)=\Phi_{c,d}(\theta)+\Phi_{b,c}(\{\theta+\Phi_{c,d}(\theta)\})$; for inverse pairs $\Phi_{d,b}(\{\theta+\Phi_{b,d}(\theta)\})=-\Phi_{b,d}(\theta)$.
+  en_theorie:
+    beispiel: |
+      Integrating over $\theta$ gives almost $\mu_{b,d}=\mu_{c,d}+\mu_{b,c}$ — up to a tiny remainder ([[bw.prop.hub]]).
+    einordnung: |
+      The lifts $\tilde H$ form a groupoid of circle maps ([[bw.satz.homoeo]]). The inverse equation yields the antisymmetry ([[bw.satz.antisymmetrie]]).
+    genau: |
+      $$\Phi_{b,d}(\theta)=\Phi_{c,d}(\theta)+\Phi_{b,c}\bigl(\{\theta+\Phi_{c,d}(\theta)\}\bigr),\qquad\Phi_{d,b}\bigl(\{\theta+\Phi_{b,d}(\theta)\}\bigr)=-\Phi_{b,d}(\theta).$$
+    warum: |
+      $F_{b,d}=F_{b,c}\circ F_{c,d}$ ([[bw.prop.gruppoid]]). With $y=F_{c,d}(x)=x+\Phi_{c,d}(\{x\})+o(1)$ one has $F_{b,d}(x)-x=(F_{b,c}(y)-y)+(y-x)$; in the limit the right-hand side
+      reads $\Phi_{b,c}(\{y\})+\Phi_{c,d}(\{x\})$. For $b=d$ this gives the inverse equation.
+    worum: |
+      The exchange rule “from $d$ via $c$ to $b$” also holds for the limits — only one must read off the wave at the correct, already shifted point.
+- id: bw.prop.saddle
+  quelle_hash: 2bddccc4bfde
+  theorie_hash: 95cc00ea7256
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Saddle-point method (contour assumed shiftable at the boundary).
+    pruefung:
+      f5_neue_frage: Remains correct as a theorem; its application to $\Phi$ hinged on bw.beob.singularitaet.
+      f3_spezialfall: Yes, Darboux/saddle point.
+      f2_benutzte_voraussetzungen: Contour shift; form of the singularity.
+      f1_folgt_unmittelbar: Standard saddle-point computation.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Interpretation of the √k term — application now open.
+      richtigkeit: complete (under hypothesis)
+    titel: Singularity ⇒ decay law (Paper IV, Prop. 6.3)
+    aussage: $\ln\hat P(k)=\mathrm{const}+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi ck}+o(\sqrt k)$ with $8|v|\cos^2\Psi=c$.
+    bereich: periodic $P$, holomorphic in the strip except for isolated singularities $P=h\exp(v/(\theta-\bar\theta^*))$
+  en_theorie:
+    einordnung: |
+      Correct as a theorem. Its application to $\Phi$ hinged on [[bw.beob.singularitaet]] and is now open; consequence: [[bw.kor.modenzahl]].
+    genau: |
+      If $P$ is holomorphic in the strip except for isolated singularities $P=h\exp(v/(\theta-\bar\theta^*))$, then
+      $\ln\hat P(k)=\mathrm{const}+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi ck}+o(\sqrt k)$ with $8|v|\cos^2\Psi=c$ (Paper IV, Prop. 6.3).
+    warum: |
+      Saddle-point method: one shifts the integration contour of the Fourier integral up to the singularity; there the integrand has a saddle whose position
+      moves with $\sqrt k$. It is assumed that the contour may be shifted in this way.
+    worum: |
+      A textbook theorem: if a periodic function has in the strip a singularity of the form $\exp(v/(\theta-\bar\theta^*))$, then its Fourier modes decay with an
+      additional $\sqrt k$ term in the exponent — exactly the form of the measured mode decay.
+- id: bw.satz.anker_rekonstruktion
+  quelle_hash: 7887a22f2bd1
+  theorie_hash: 60c68d9c4630
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Ovsyannikov theorem in a fixed path space; RH selection of the response field.
+    pruefung:
+      f5_neue_frage: Complete interval march → bw.frage.intervallmarsch
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: (K1)–(K2) Hyp. 2.1/2.2 of Paper VI.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: 'Other anchors (Paper VI: re-anchoring).'
+    bewertung:
+      recherche: Paper VI.
+      nutzen: Tetration of one base from another.
+      richtigkeit: conditional; framework rigorous
+    titel: Anchor-clean reconstruction (Paper VI, Thm. 8.5/8.6)
+    aussage: '$T_\beta=Q_\beta\circ U_\beta$, $U_\beta=\mathrm{id}+p_\beta$: exact base derivative of the raw branch, cancellation of the nonperiodic
+      tails in the hub equation, closed periodic evolution on a fixed weighted analytic path space.'
+  en_theorie:
+    einordnung: |
+      Blind-tested: [[bw.beob.blind]]. So far one segment is certified ([[bw.zert.8r1]]); the whole march is open ([[bw.frage.intervallmarsch]]).
+    genau: |
+      Under (K1)–(K2): $T_\beta=Q_\beta\circ U_\beta$ with $U_\beta=\mathrm{id}+p_\beta$ gives an exact base derivative of the raw branch; the nonperiodic tails in the hub equation cancel,
+      and the periodic evolution is closed on a fixed weighted analytic path space (Paper VI, Thm. 8.5/8.6).
+    warum: |
+      1. The base derivative is supplied by the base kernel ([[bw.satz.kern_existenz]]); it determines how the solution changes with $\beta$.
+      2. This gives an evolution equation in $\beta$. An existence theorem of Ovsyannikov type (Cauchy–Kovalevskaya in a scale of Banach spaces) secures the solution
+         for one step in $\beta$, as long as one stays in the fixed path space.
+      3. March step by step from $e$ to $2$.
+    worum: |
+      Can one compute the tetration to base $2$ from the one to base $e$ alone, without the Kneser engine for base $2$? Yes: one lets the base slowly wander from $e$
+      to $2$ and follows the solution like a differential equation in the base.
+- id: bw.satz.antisymmetrie
+  quelle_hash: ce47d2825ed8
+  theorie_hash: f99f1c99e48b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Riemann–Stieltjes substitution.
+    pruefung:
+      f5_neue_frage: 'Measurable consequence: table residuals $\mu_{b,d}+\mu_{d,b}$ are pure rounding error — an accuracy test of the engine.'
+      f3_spezialfall: Yes, of br.satz.young_kreis.
+      f2_benutzte_voraussetzungen: Only homeomorphism + inverse.
+      f1_folgt_unmittelbar: '**Yes** — from Thm. A and the area identity br.satz.young_kreis, which holds for every lift of a circle homeomorphism.
+        Specific to tetration is only that $\tilde H_{d,b}$ is the inverse.'
+      f4_uebertragbar: To every pair of inverse lifts.
+    bewertung:
+      nutzen: Explains the 10⁻⁹–10⁻¹¹ residuals in Paper I; mathematically a special case of a classical identity.
+      richtigkeit: conditional, complete
+    titel: Exact inverse antisymmetry without smoothness (Paper II, Thm. B)
+    aussage: $\mu_{b,d}=-\mu_{d,b}$ exactly, as soon as the phase law holds for both orders.
+  en_theorie:
+    beispiel: |
+      $\mu_{e,2}=-1.128403776628924$; mean of the inverse $+1.128403776629334$; sum $4\cdot10^{-13}$ — pure rounding error. For 200 random lifts the
+      identity holds to $6\cdot10^{-10}$, even for a kinked lift.
+    einordnung: |
+      Replaces [[bw.prop.antisym_c1]]. Side effect: The residual errors $\mu_{b,d}+\mu_{d,b}$ in tables are an accuracy test for the engine.
+    genau: |
+      $\mu_{b,d}=-\mu_{d,b}$ exactly, as soon as the phase law holds for both orders (Paper II, Thm. B).
+    warum: |
+      1. $\tilde H_{d,b}=\tilde H_{b,d}^{-1}$ ([[bw.satz.homoeo]]).
+      2. For every increasing lift $H$ with $H(x+1)=H(x)+1$ one has $\int_0^1(H(x)-x)\,dx=-\int_0^1(H^{-1}(y)-y)\,dy$: the areas between graph and diagonal
+         are the same for $H$ and $H^{-1}$, only mirrored ([[br.satz.young_kreis]]).
+      3. On the left is $\mu_{b,d}$, on the right $-\mu_{d,b}$. Smoothness is needed nowhere.
+    worum: |
+      If one translates from $d$ to $b$, the height shifts on average by $\mu_{b,d}$; back by exactly $-\mu_{b,d}$. That sounds self-evident, but it is
+      not, because the wave stands in between. It follows from an area identity for circle maps.
+- id: bw.satz.antwortkern
+  quelle_hash: 5b1bba2144ba
+  theorie_hash: 3907f691fff0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Telescope the cohomological equation $V_d(T_d(x+1))-V_d(T_d(x))=-T_d(x)/T_d'(x)$.
+    pruefung:
+      f5_neue_frage: Which solution of the cohomological equation is $V$? → bw.satz.kern_eindeutig
+      f3_spezialfall: Linear response of an Abel coordinate to a change of parameter — general for families $f_\beta$.
+      f2_benutzte_voraussetzungen: Interchange of limit and derivative (Hyp. 7.1).
+      f1_folgt_unmittelbar: Yes, after differentiating the Abel equation (Lemma 7.2).
+      f4_uebertragbar: 'Regular families $1<b<\eta$: there the kernel is explicit via Koenigs.'
+    bewertung:
+      recherche: Paper IV.
+      nutzen: Explains the amplitude law $A_k\approx C_k|\ln\alpha|$.
+      richtigkeit: conditional, complete
+    titel: Response kernel and first-order phase (Paper IV, Thm. 7.3)
+    aussage: |
+      $G_d(\theta):=S_d(\theta)-V_d(T_d(\theta))$ with $S_d=\sum_{j\ge0}T_d(j+\theta)/T_d'(j+\theta)$ is exactly 1-periodic, and
+      $\Phi_{b,d}=\varepsilon\,G_d+O(\varepsilon^2)$ uniformly, $\varepsilon=\ln\log_b d$.
+  en_theorie:
+    beispiel: |
+      Amplitude law in numbers: $|a_1|/|\varepsilon|=1.437\cdot10^{-4}/0.3665=3.92\cdot10^{-4}$ for $(e,2)$ and $3.65\cdot10^{-5}/0.0940=3.88\cdot10^{-4}$ for $(e,3)$ — almost the same
+      kernel, although the waves differ fourfold in size.
+    einordnung: |
+      Which solution of the cohomological equation $V$ is, is fixed by [[bw.satz.kern_eindeutig]]. Replaces [[bw.verm.rang_eins]].
+    genau: |
+      With $S_d(\theta)=\sum_{j\ge0}T_d(j+\theta)/T_d'(j+\theta)$ and $V_d=\partial_\beta A_b|_{b=d}$, $G_d(\theta):=S_d(\theta)-V_d(T_d(\theta))$ is exactly 1-periodic, and
+      $$\Phi_{b,d}=\varepsilon\,G_d+O(\varepsilon^2),\qquad\varepsilon=\ln\log_bd$$
+      uniformly (Paper IV, Thm. 7.3).
+    warum: |
+      1. Differentiating the Abel equation $A_b(b^y)=A_b(y)+1$ with respect to $\beta=\ln\ln b$ (with $b^y=\exp(e^\beta y)$) gives at $b=d$ the cohomological equation
+         $V(T(x+1))-V(T(x))=-T(x)/T'(x)$ ([[fg.satz.kohomologisch]]).
+      2. Telescoping along the tower: $V(T(n+\theta))=V(T(\theta))-\sum_{j<n}T(j+\theta)/T'(j+\theta)$; in the limit $S_d$ appears, and the difference $G_d$ is periodic.
+      3. $\Phi_{b,d}$ is zero at $b=d$; its derivative with respect to $\beta$ is the limit from 2 (this is where Hyp. 7.1 enters).
+    worum: |
+      How does the wave react if one changes the base a tiny bit? To first order it is a fixed kernel $G_d$ times the base change $\varepsilon$.
+      The kernel can be computed from the tetration to base $d$ alone.
+- id: bw.satz.c1_produkt
+  quelle_hash: a8b91db1e220
+  theorie_hash: fa57279070d3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Exact product identity for $D_n'$; tower-sized factors cancel; summability from $s_{j+1}=d^{s_j}$.
+    pruefung:
+      f5_neue_frage: Higher derivatives ⇒ $C^\infty$? Analytic in a strip? → bw.verm.streifen
+      f3_spezialfall: 'no'
+      f2_benutzte_voraussetzungen: (S), (R′), Hyp. 2.2/2.4; (R′) for $j\ge J_0$ by the stopping rule.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: Smooth branches; explains endpoint identities.
+    bewertung:
+      recherche: Paper II.
+      nutzen: Smoothness + explicit derivative.
+      richtigkeit: conditional, complete
+    titel: Analytic C¹ theorem with product representation (Paper II, Thm. D)
+    aussage: |
+      $D_n\to D$ in $C^1$, $D'>0$ and
+      $\tilde H_{b,d}'(\theta)=\dfrac{\alpha T_d'(\theta)}{T_b'(\tilde H(\theta))}\prod_{j\ge1}\dfrac{\alpha T_d(j+\theta)}{T_b(j+\tilde H(\theta))}>0$.
+  en_theorie:
+    beispiel: |
+      $(e,2)$ at $\theta=\tfrac12$: numerically $\tilde H'(\tfrac12)=0.9992171582$; the product formula with four factors gives the same value to all digits shown.
+      Without the prefactor $\alpha$ one would get $1.44$ — it belongs there.
+    einordnung: |
+      Smoothness with explicit derivative. How smooth exactly — analytic in a strip? — is the open question [[bw.verm.streifen]].
+    genau: |
+      Under the conditions (S) and (R′) one has $D_n\to D$ in $C^1$, $D'>0$, and
+      $$\tilde H_{b,d}'(\theta)=\frac{\alpha\,T_d'(\theta)}{T_b'(\tilde H(\theta))}\prod_{j\ge1}\frac{\alpha\,T_d(j+\theta)}{T_b(j+\tilde H(\theta))}>0$$
+      (Paper II, Thm. D).
+    warum: |
+      1. Chain rule for $D_n$: each derivative of $T$ is a product over tower values ($T'(x+1)=\ln b\,T(x+1)T'(x)$), each logarithm divides by the value.
+      2. The tower-sized factors stand in the numerator and in the denominator and cancel except for quotients $\alpha T_d(j+\theta)/T_b(j+\tilde H)$.
+      3. These quotients tend to $1$ very fast, because by the phase law the two towers approach each other level by level; the product converges.
+    worum: |
+      The phase map is not only continuous but continuously differentiable, and its derivative can be written down as a product: tower values to
+      base $d$ divided by tower values to base $b$, level by level.
+- id: bw.satz.fourier_naht
+  quelle_hash: 6ed4cf654c92
+  theorie_hash: 48576d021fc2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Integration by parts, Riemann–Lebesgue.
+    pruefung:
+      f5_neue_frage: Measured exponents 3.06/3.006 calibrate the measurement chain.
+      f3_spezialfall: Yes (textbook theorem).
+      f2_benutzte_voraussetzungen: Piecewise smoothness.
+      f1_folgt_unmittelbar: Yes — classical Fourier analysis.
+      f4_uebertragbar: To every construction with seams (linear, Walker approximations).
+    bewertung:
+      nutzen: Calibration tool for the mode measurement.
+      richtigkeit: complete
+    titel: Fourier asymptotics with seam jumps (Paper IV, Prop. 4.1)
+    aussage: $\hat f(k)=(2\pi i k)^{-(m+2)}\sum_i J_i e^{-2\pi i k\tau_i}+o(k^{-(m+2)})$.
+    bereich: $f\in C^m(S^1)$, piecewise $C^{m+2}$, jumps $J_i$ of $f^{(m+1)}$ at $\tau_i$
+  en_theorie:
+    beispiel: |
+      Linear tetration to base $e$: $C^1$, the second derivative jumps ([[kn.satz.linear_glatt]]) — hence modes like $k^{-3}$. Measured exponents were $3.06$ and $3.006$; this calibrates the measurement chain.
+    einordnung: |
+      A textbook theorem as a calibration tool. For analytic functions the modes decay exponentially ([[br.satz.gevrey_fourier]], [[bw.verm.streifen]]).
+    genau: |
+      If $f\in C^m(S^1)$, piecewise $C^{m+2}$, and $f^{(m+1)}$ jumps by $J_i$ at $\tau_i$, then
+      $$\hat f(k)=(2\pi ik)^{-(m+2)}\sum_iJ_ie^{-2\pi ik\tau_i}+o(k^{-(m+2)}).$$
+    warum: |
+      Integrate by parts $(m+2)$ times. Each jump yields a boundary term $J_ie^{-2\pi ik\tau_i}/(2\pi ik)^{m+2}$; the remainder is a Fourier coefficient of an integrable
+      function and tends to $0$ by Riemann–Lebesgue.
+    worum: |
+      How fast the Fourier coefficients of a periodic function decay reveals how smooth it is. A kink in the $(m+1)$-th derivative gives coefficients
+      of size $k^{-(m+2)}$.
+- id: bw.satz.homoeo
+  quelle_hash: ce5d84c55b14
+  theorie_hash: 2378ca236a88
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Limit of strictly increasing maps + inverse equation ⇒ both sides injective.
+    pruefung:
+      f5_neue_frage: Antisymmetry → bw.satz.antisymmetrie
+      f3_spezialfall: 'no'
+      f2_benutzte_voraussetzungen: (P) for both orders; no smoothness.
+      f1_folgt_unmittelbar: 'Almost: limits of monotone functions are monotone; strictness from the inverse.'
+      f4_uebertragbar: All increasing constructions.
+    bewertung:
+      recherche: Paper II.
+      nutzen: Topological core.
+      richtigkeit: conditional, complete
+    voraussetzungen:
+    - text: Phase-law package (P) for (b,d) and (d,b)
+    titel: Phase map is a circle homeomorphism (Paper II, Thm. A)
+    aussage: $\tilde H_{b,d}$ is a strictly increasing homeomorphism commuting with $x\mapsto x+1$, with $\tilde H_{b,d}^{-1}=\tilde H_{d,b}$;
+      the phase maps form a groupoid in $\mathrm{Homeo}^+(S^1)$.
+  en_theorie:
+    beispiel: |
+      $(e,2)$: $\tilde H(\theta)=\theta-1.12840+P(\theta)$ with $|P|\le1.44\cdot10^{-4}$ — almost a rotation by $-1.1284$, with a tiny bending.
+    einordnung: |
+      Topological core; from it the antisymmetry follows without smoothness ([[bw.satz.antisymmetrie]]).
+    genau: |
+      Under the phase law for $(b,d)$ and $(d,b)$, $\tilde H_{b,d}$ is a strictly increasing homeomorphism with $\tilde H(x+1)=\tilde H(x)+1$ and $\tilde H_{b,d}^{-1}=\tilde H_{d,b}$
+      (Paper II, Thm. A). The phase maps form a groupoid in $\mathrm{Homeo}^+(S^1)$.
+    warum: |
+      1. Before the limit, $\theta\mapsto A_b(D_n(\theta))$ is strictly increasing (everything in the chain is increasing).
+      2. Limits of increasing functions are at least non-decreasing.
+      3. The inverse equation ([[bw.prop.kozykel]]) says $\tilde H_{d,b}\circ\tilde H_{b,d}=\mathrm{id}$; hence $\tilde H_{b,d}$ is injective and therefore strictly increasing and continuous.
+    worum: |
+      The phase map $\tilde H_{b,d}$ is a clean circle map: strictly increasing, if the argument is shifted by $1$ the result is shifted by $1$,
+      and the opposite direction $\tilde H_{d,b}$ is its inverse.
+- id: bw.satz.imaginaere_richtung
+  quelle_hash: d2fedf697dfe
+  theorie_hash: 39bbeaccb566
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: '$\kappa_d(A_d^{-1}(w))=\lambda_d^w$ ⇒ $A_d^{-1}(w)=L_d+\lambda_d^w+O(\lambda_d^{2w})$; $A_b$ is holomorphic at $L_d$ ⇒ Taylor expansion
+        in $\lambda_d^w$, $|\lambda_d^{iy}|=e^{-y\arg\lambda_d}\to0$. Kneser: $T_d(x+iy)\to L_d$ (Paulsen–Cowgill condition).'
+    gegenbeispielsuche: 'Original: K₁ determined twice, 19 digits; approach up to y = 40. exp.funde: A_e(L_2), K₁ and A_2(L_e) independently with
+      own Koenigs computation, deviation < 10⁻¹⁸ resp. 10⁻¹².'
+    pruefung:
+      f5_neue_frage: Which function of the two bases is A_b(L_d)? (Analytic in b, d up to the diagonal, log-singular there.)
+      f3_spezialfall: Same dichotomy as kl.satz.basiswechsel_gleiches_L with roles swapped.
+      f2_benutzte_voraussetzungen: 'Holomorphy of A_b at L_d (domain test: over 200 backward steps needed).'
+      f1_folgt_unmittelbar: Yes, as soon as one takes the Paulsen–Cowgill condition.
+      f4_uebertragbar: 'Complex bases with common upper fixed point: then the expression diverges like A_b(T_b(iy)) (kl.frage.gleiches_L_kneser).'
+    bewertung:
+      recherche: 'Literature map 12.10.2026: forum (tid 14, 236, 333, 578, 937, 1189, 1308), Paulsen–Cowgill 2017/2021, Paulsen 2016: the base
+        change in the complex domain appears only as a branching problem (Trappmann–Levenstein 2009), as “undefined” (Levenstein 2014) or via
+        Mellin (Nixon 2021); the limit A_b(L_d) in the imaginary direction was not found.'
+      nutzen: New, convergent side of the base change above η.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: L_d ≠ L_b and A_b holomorphic at L_d
+    - text: Kneser
+    titel: In the imaginary direction the base change converges
+    aussage: |
+      $$A_b\bigl(T_d(iy)\bigr)\longrightarrow A_b(L_d)\quad(y\to+\infty),\qquad \Phi(w)=A_b(L_d)+\sum_{k\ge1}K_k\lambda_d^{kw},\quad K_1=A_b'(L_d).$$
+      The approach is a damped rotation: decay rate $\arg\lambda_d$, rotation rate $\log|\lambda_d|$ (for real $d$: $\mathrm{Im}\,\lambda_d$ resp.
+      $\log\log d+\mathrm{Re}\,\lambda_d$). For $b=e$, $d=2$: limit $0.326448651629+0.523513968910i$, $K_1=-0.0305475247-1.2919819448i$, period 30.63.
+      For $d\to b$ one has growth $|A_b(L_d)|\sim|\log|L_d-L_b||/|\mathrm{Log}\lambda_b|$. Three directions: real → divergent with 1-periodic wave;
+      imaginary upward → $A_b(L_d)$; downward → $A_b(\overline{L_d})$.
+    bereich: $b\ne d>\eta$, Kneser tetration $T_d$, $\Phi(w)=A_b(A_d^{-1}(w))$; $L_d$ in the linearization domain of $E_b$ (backward orbit reaches
+      $L_b$)
+    einfach: If you let the height run not to the right but upward into the complex plane, the tetration runs into its fixed point instead of
+      to infinity. There the other base is harmless, and the base change comes to rest — with a rotation that is damped so fast that you almost
+      never see it.
+  en_theorie:
+    beispiel: |
+      $b=e$, $d=2$: limit $A_e(L_2)=0.326448651629+0.523513968910\,i$, $K_1=-0.0305475247-1.2919819448\,i$. Rotation period $2\pi/\log|\lambda_2|=30.63$, damping
+      $e^{-1.0865\,y}$ — over one rotation thus by a factor $10^{-14}$. One almost never sees the rotation.
+    einordnung: |
+      Three directions: to the right divergent with 1-periodic wave ([[bw.satz.phasengesetz]]), upward toward $A_b(L_d)$, downward toward $A_b(\overline{L_d})$.
+      The same dichotomy with roles swapped: [[kl.satz.basiswechsel_gleiches_L]]. Open for a common upper fixed point: [[kl.frage.gleiches_L_kneser]].
+    genau: |
+      For $b\ne d>\eta$ (with $L_d$ in the domain where $A_b$ is holomorphic):
+      $$A_b\bigl(T_d(iy)\bigr)\to A_b(L_d)\quad(y\to+\infty),\qquad\Phi(w)=A_b(L_d)+\sum_{k\ge1}K_k\lambda_d^{kw},\quad K_1=A_b'(L_d).$$
+      The approach is a damped rotation: decay rate $\arg\lambda_d$, rotation rate $\log|\lambda_d|$. Downward it goes toward $A_b(\overline{L_d})$.
+    warum: |
+      1. Near $L_d$, $T_d(w)=L_d+\lambda_d^w+O(\lambda_d^{2w})$ (Koenigs coordinate, suitably normalized).
+      2. $A_b$ is holomorphic at $L_d$, hence Taylor in $\lambda_d^w$: this gives the series with $K_1=A_b'(L_d)$.
+      3. $|\lambda_d^{iy}|=e^{-y\arg\lambda_d}\to0$ because $\arg\lambda_d>0$; the angle $y\log|\lambda_d|$ rotates. That Kneser runs toward $L_d$ at the top: [[kn.satz.kneser_eigenschaften]].
+    worum: |
+      To the right the tower grows to infinity, and the base change keeps its wave. But if one lets the height run **upward** into the complex plane,
+      the tetration runs into its fixed point $L_d$ — and there the other base is harmless. The base change comes to rest.
+- id: bw.satz.kern_eindeutig
+  quelle_hash: 73df0182035a
+  theorie_hash: 0d820a8674ce
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Difference $=h\circ A_d$; boundedness near $L$ kills modes $k<0$, near $\bar L$ modes $k>0$; reality + $V(1)=0$.
+    pruefung:
+      f5_neue_frage: —
+      f3_spezialfall: Linearized version of the Kneser uniqueness.
+      f2_benutzte_voraussetzungen: $\operatorname{Im}A_d\to\pm\infty$ radially near $L,\bar L$ — part of (K1).
+      f1_folgt_unmittelbar: 'Yes: same mechanism as in Paulsen–Cowgill (mode argument).'
+      f4_uebertragbar: Higher base derivatives (second order $H_d$).
+    bewertung:
+      recherche: Paper V.
+      nutzen: Characterizes the kernel without an engine.
+      richtigkeit: conditional, complete
+    titel: Uniqueness of the base kernel (Paper V, Thm. 2)
+    aussage: At most one function satisfies (i)–(iv).
+  en_theorie:
+    einordnung: |
+      Linearized version of [[kn.satz.paulsen_cowgill]]; tools [[fg.lem.periodisch_liouville]], [[fg.satz.kohomologisch]].
+    genau: |
+      Under (K1)–(K2) at most one function satisfies (i)–(iv) (Paper V, Thm. 2).
+    warum: |
+      1. The difference of two solutions solves the homogeneous equation, hence is $h\circ A_d$ with 1-periodic $h$.
+      2. $h=\sum c_ke^{2\pi ikz}$. Near $L$, $\operatorname{Im}A_d\to+\infty$; boundedness there kills all modes with $k<0$. Near $\bar L$ correspondingly $k>0$.
+      3. A constant remains; reality and $V(1)=0$ make it zero.
+    worum: |
+      At most one function satisfies the four selection conditions. The argument is the same as for the uniqueness of the Kneser solution, only one order deeper.
+- id: bw.satz.kern_existenz
+  quelle_hash: 7a3729b9a63a
+  theorie_hash: 2e589b25aad0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Privalov–Dini (Dini modulus $\delta\ln^2(1/\delta)$), Schwarz reflection, Riemann removability, pole expansion at $L$.
+    pruefung:
+      f5_neue_frage: 'Engine-free computation of the kernel: 17.8/20.0 digits reached.'
+      f3_spezialfall: Classical scalar RH/conjugate-function problem on the circle.
+      f2_benutzte_voraussetzungen: (K1)–(K2); (K3) only for the identification.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: Base-flow reconstruction (Paper VI).
+    bewertung:
+      recherche: Paper V.
+      nutzen: Makes the base derivative constructive.
+      richtigkeit: conditional, written out in full
+    titel: Existence of the base kernel via an RH problem (Paper V, Thm. 13)
+    aussage: $\tilde V\circ T_d:=V_{\mathrm{geo}}+g$ with $g=\tilde u-iu-\tilde u(0)$ satisfies (i)–(iv); with Thm. 2 exactly one solution; under
+      (K3) it is $\partial_\beta A_b|_{b=d}$.
+  en_theorie:
+    beispiel: |
+      Reached without the engine: 17.8 resp. 20.0 correct digits of the kernel.
+    einordnung: |
+      Uses [[bw.lem.geom_kozykel]] and [[br.satz.privalov]]. Basis of the reconstruction [[bw.satz.anker_rekonstruktion]]. Three wrong paths before it:
+      [[bw.gescheitert.orbitanker]], [[bw.gescheitert.rh_v1]], [[bw.gescheitert.vorhersage_r8]].
+    genau: |
+      $\tilde V\circ T_d:=V_{\mathrm{geo}}+g$ with $g=\tilde u-iu-\tilde u(0)$ ($\tilde u$ the conjugate function of the boundary data $u$) satisfies (i)–(iv); with [[bw.satz.kern_eindeutig]] it is
+      the only solution, and under (K3) it is $\partial_\beta A_b|_{b=d}$ (Paper V, Thm. 13).
+    warum: |
+      1. $V_{\mathrm{geo}}$ satisfies (i) but is not real on the real axis; its imaginary part there is $u$.
+      2. A periodic holomorphic function $g$ with $\operatorname{Im}g=-u$ on the axis is found with the periodic Hilbert transform (conjugate function).
+      3. To make this work cleanly: Privalov–Dini for the boundary regularity (modulus $\delta\ln^2(1/\delta)$), Schwarz reflection, removable singularities, pole expansion at $L$.
+    worum: |
+      The base kernel really exists, and one can compute it without the engine: one takes the geometric field and corrects its imaginary part on
+      the real axis by a periodic function. This is a classical boundary value problem (Riemann–Hilbert).
+- id: bw.satz.minimalregularitaet
+  quelle_hash: e35666260b93
+  theorie_hash: 79077ba9c6b8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Purely formal: $K\circ H=H\circ K=\mathrm{id}$ ⇒ $H''K''=1$.'
+    pruefung:
+      f5_neue_frage: —
+      f3_spezialfall: Theorem on inverse functions on the circle.
+      f2_benutzte_voraussetzungen: Both functions $C^1$.
+      f1_folgt_unmittelbar: Yes (chain rule), as soon as both equations yield inverses.
+      f4_uebertragbar: Arbitrary pairs of inverse lifts.
+    bewertung:
+      nutzen: Saves the positivity estimate.
+      richtigkeit: complete
+    titel: Minimal regularity principle (Paper II, Thm. C)
+    aussage: $\mathrm{id}+\Phi$ and $\mathrm{id}+\Psi$ are mutually inverse $C^1$ diffeomorphisms with positive derivative. One-sided $C^1$ regularity
+      is not enough.
+    bereich: 1-periodic $\Phi,\Psi\in C^1$ with $\Psi(x+\Phi(x))=-\Phi(x)$, $\Phi(u+\Psi(u))=-\Psi(u)$
+  en_theorie:
+    beispiel: |
+      Why one-sided does not suffice: $H(x)=x-\frac{\sin2\pi x}{2\pi}$ is smooth and strictly increasing, but $H'(0)=0$; near $0$ one has $H(x)\approx\frac{(2\pi)^2}{6}x^3$, the inverse
+      behaves like a cube root and is not differentiable at $0$.
+    einordnung: |
+      Saves the positivity estimate in [[bw.satz.c1_produkt]].
+    genau: |
+      If $\Phi,\Psi$ are 1-periodic, $C^1$, with $\Psi(x+\Phi(x))=-\Phi(x)$ and $\Phi(u+\Psi(u))=-\Psi(u)$, then $\mathrm{id}+\Phi$ and $\mathrm{id}+\Psi$ are mutually inverse
+      $C^1$ diffeomorphisms with positive derivative (Paper II, Thm. C). One-sided $C^1$ regularity is not enough.
+    warum: |
+      The equations say $K\circ H=H\circ K=\mathrm{id}$ for $H=\mathrm{id}+\Phi$, $K=\mathrm{id}+\Psi$. Chain rule: $H'(K(u))\,K'(u)=1$, hence nowhere zero; increasing gives positive.
+    worum: |
+      When are two mutually inverse circle maps smooth with positive derivative? When both are $C^1$. One alone is not enough.
+- id: bw.satz.paulsen_cowgill_hardy
+  quelle_hash: 17aec2af10bb
+  theorie_hash: 04a3eae8e1e2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Paulsen–Cowgill 2021, Indian J. Math. 63(1), 127–141. Content checked only via the zbMATH summary; proof route not read.
+    pruefung:
+      f5_neue_frage: Does the theorem answer Taranovsky's question (bw.frage.halbiter_vergleich) for Kneser, i.e., does exp_a^[c] − exp_b^[d]
+        change sign infinitely often for suitable c < d? That requires the text.
+      f3_spezialfall: 'Related to the phase law (bw.satz.phasengesetz): a nonconstant 1-periodic phase of the base change is exactly the kind
+        of oscillation that disturbs a common Hardy ordering; whether the proof runs this way is unchecked.'
+      f2_benutzte_voraussetzungen: Uniqueness of the tetration by Paulsen–Cowgill 2017 (kn.satz.paulsen_cowgill); further hypotheses not read.
+      f1_folgt_unmittelbar: No (literature).
+      f4_uebertragbar: 'Presumably not to Walker-type solutions: Levenstein conjectures compatibility there, but no analyticity (bw.frage.halbiter_vergleich).'
+    bewertung:
+      nutzen: Only peer-reviewed work on the comparison of tetrations to different bases; supports the wave of the base change.
+      richtigkeit: Literature (text not read)
+    titel: 'Paulsen–Cowgill 2021: Kneser tetrations to different bases fit into no common Hardy field'
+    aussage: |
+      Two Kneser tetrations $T_a$, $T_b$ with $a\ne b$ do not lie in a common Hardy field; likewise the fractional iterates
+      $\exp_a^{[c]}$ and $\exp_b^{[d]}$ that they generate are compatible in no Hardy field.
+      In a Hardy field every function eventually has a fixed sign as $x\to\infty$, so all functions are comparable in size.
+      “Incompatible” therefore means: from the two functions one can form (with field operations and derivatives) one whose sign does not settle as $x\to\infty$.
+    bereich: real bases $a\ne b$ above $\eta$; tetration = the analytic solution unique by Paulsen–Cowgill 2017 (Kneser) and the fractional iterates
+      $\exp_a^{[c]}$ generated by it
+    einfach: 'In a “Hardy field” all functions can be ordered by size: from some point on, each is larger than, equal to, or smaller than every
+      other. Paulsen and Cowgill show that the Kneser tetrations to two different bases do not fit together into such an ordering — this is the
+      rigorous form of the “wobble” one sees when converting between bases.'
+  en_theorie:
+    einordnung: |
+      Peer-reviewed support for the wave of the base change (Fox 2007, Levenstein 2009/2018); possibly the answer to [[bw.frage.halbiter_vergleich]] for Kneser.
+      Growth classes of the half-exponential function: [[kn.satz.halbe_exp_wachstum]].
+    genau: |
+      For bases $a\ne b$ above $\eta$, $T_a$ and $T_b$ (the unique tetrations according to [[kn.satz.paulsen_cowgill]]) do not lie in a common
+      Hardy field; likewise the fractional iterates of the exponential functions generated by them.
+    warum: |
+      We have not read the proof (only the zbMATH summary). On the meaning:
+      1. A Hardy field is a field of functions (germs at $+\infty$), closed under differentiation; each of its functions eventually has a fixed sign.
+      2. If $f$ and $g$ lie in a common Hardy field, then for example $f-g$ is eventually positive, negative or zero — they can be compared by size.
+      3. Incompatible means: some function formed from $f$, $g$ and their derivatives changes its sign infinitely often. This is exactly what one expects if the
+         base change carries a nonconstant periodic wave ([[bw.satz.phasengesetz]]).
+    worum: |
+      If one converts the Kneser tetration to base 2 into heights of base $e$, a small wobble remains that never disappears. Paulsen and Cowgill proved the
+      rigorous form of this: the two functions cannot be fitted into a common order of magnitude.
+- id: bw.satz.phasengesetz
+  quelle_hash: 8f4e3aad313d
+  theorie_hash: b142e8602aba
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Thm. 5.6 + local Lipschitz continuity of $A_b$.
+    pruefung:
+      f5_neue_frage: Regularity of $P$ (strip? Gevrey?) and size of $\mu$.
+      f3_spezialfall: 'General pattern: comparing two Abel coordinates ⇒ asymptotically periodic deviation (cf. kl.beob.zwei_abel for two fixed
+        points).'
+      f2_benutzte_voraussetzungen: Hyp. 2.2 (R3) for $A_b$; Hyp. 2.4 by now discharged.
+      f1_folgt_unmittelbar: Yes, from Thm. 5.6.
+      f4_uebertragbar: 'Not directly to $1<b,d<\eta$ (regular branches): there bounded towers, Hyp. 2.4 false.'
+    bewertung:
+      recherche: 'The phenomenon is known in the Tetration Forum: J. D. Fox (2007) wrote down the base-change formula with an additive constant
+        μ, S. Levenstein (2009) measured slog_2 − slog_e ≈ 1.1282 etc. and noted that the change “wobbles a little”. Not found there as a theorem
+        with proof (tail convergence, periodicity, mean plus wave) — that presumably remains new. Addendum 12.10.2026 (literature map L2): S.
+        Levenstein plotted in 2018 (tid 1189) the 1-periodic limit function slog_e(tet₂(x)) − x for Kneser; W. Paulsen and S. Cowgill proved in
+        2021 that Kneser tetrations of different bases do not fit into a common Hardy field (bw.satz.paulsen_cowgill_hardy) — peer-reviewed support
+        for the wave, but not a phase law.'
+      nutzen: Central result of the series; explains the observed non-scalarity.
+      richtigkeit: conditionally proved
+    titel: Mixed-base phase law (Paper I, Thm. 5.7)
+    aussage: $\operatorname{slog}_b(T_d(x))-x=\mu_{b,d}+P_{b,d}(\{x\})+o(1)$ for $x\to+\infty$, $P$ 1-periodic with mean 0.
+  en_theorie:
+    beispiel: |
+      $(e,2)$: $\mu=-1.128403776628924\ldots$, the wave has amplitude $1.44\cdot10^{-4}$. $(e,3)$: $\mu=+0.192422293722\ldots$, amplitude $3.7\cdot10^{-5}$.
+      Our own recomputation hits the stored Fourier table to $4\cdot10^{-24}$.
+    einordnung: |
+      Prehistory in the Tetration Forum: J. D. Fox wrote down in 2007 the base-change formula ${}^xa=\lim\log_a^{\circ n}\bigl({}^{n+x+\mu_b(a)}b\bigr)$ with a fixed constant
+      $\mu$. S. Levenstein measured in 2009 $\operatorname{slog}_2-\operatorname{slog}_e\approx1.1282$ (our $-\mu_{e,2}$) and noted that the change “wobbles a little” —
+      the wave $P$. The phase law turns these observations into a theorem with proof.
+
+      Below $\eta$ there is no wave in Koenigs coordinates ([[kl.satz.koenigs_basiswechsel]]), and likewise none at the common fixed point
+      ([[kl.satz.basiswechsel_gleiches_L]]). In the vertical direction the base change comes completely to rest ([[bw.satz.imaginaere_richtung]]). The pattern “two Abel coordinates differ periodically” on a small scale: [[kl.beob.zwei_abel]]. How smooth the wave is, is disputed:
+      [[bw.verm.streifen]] versus [[bw.verm.nirgends_analytisch]].
+    genau: |
+      $$\operatorname{slog}_b(T_d(x))-x=\mu_{b,d}+P_{b,d}(\{x\})+o(1)\qquad(x\to+\infty),$$
+      $P_{b,d}$ 1-periodic with mean $0$, $\{x\}$ the fractional part (Paper I, Thm. 5.7; conditional on Hyp. 2.2/2.4).
+    warum: |
+      1. By [[bw.def.F_bd]] the left side at $x=n+\theta$ equals $A_b(D_n(\theta))-\theta$.
+      2. $D_n\to D$ uniformly ([[bw.satz.schwanzkonvergenz]]) and $A_b$ is Lipschitz continuous, so it converges to $\Phi(\theta)=A_b(D(\theta))-\theta$.
+      3. Periodic: $D_n(1)=\log_b^{\circ n}T_d(n+1)$ and $D_{n+1}(0)=\log_bD_n(1)$, so $\Phi(1)=\Phi(0)$. Splitting into mean and remainder gives $\mu+P$.
+      4. Why $P$ is not zero is a story of its own ([[bw.satz.ursache_kozykel]]).
+    worum: |
+      The central result: If one translates the height from the tower to base $d$ into heights to base $b$, one gets almost a fixed shift $\mu$ —
+      plus a tiny wave $P$ that repeats with every integer height. It never goes away.
+- id: bw.satz.phasengesetz_gestoppt
+  quelle_hash: cd623ddf0193
+  theorie_hash: 68290b22ba20
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Stopping rule + growth gap; Paper III: “all tail estimates of [1,2] hold verbatim for $j\ge J_0$”.'
+    naechste_frage: Write out Lemmas 5.2–5.4 for $j\ge J_0$ (1–2 pages).
+    pruefung:
+      f5_neue_frage: Write out and check as a standalone theorem — then Papers I–II are largely unconditional.
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: Monotonicity, $d>\eta$, Lipschitz of $A_b$.
+      f1_folgt_unmittelbar: 'Almost: content of Paper I + stopping rule; the work is bookkeeping.'
+      f4_uebertragbar: 'Class B: every increasing real-analytic tetration.'
+    bewertung:
+      recherche: Paper III.
+      nutzen: Would lift the conditionality of the whole series.
+      richtigkeit: plausible, gaps named
+    titel: Phase law for the stopped chain (Paper III reading)
+    aussage: The phase law holds without Hyp. 2.2/2.4 if one uses the stopped tails $D_n^{\mathrm{stop}}$.
+    bereich: all $b,d>\eta$, Kneser branches
+  en_theorie:
+    einordnung: |
+      Once this is written out, Papers I–II would be largely unconditional. [[bw.lem.offset]] builds on it.
+    genau: |
+      **Sketch.** For all $b,d>\eta$ with Kneser branches the phase law holds without Hyp. 2.2/2.4 if one uses the stopped tails $D_n^{\mathrm{stop}}$.
+    warum: |
+      Ingredients: stopping rule ([[bw.lem.stoppregel]]) and growth gap ([[bw.lem.wachstumsluecke]]) replace the assumptions; (R3) follows from the real
+      analyticity of Kneser's super-logarithm. Open gaps: write out Lemmas 5.2–5.4 from Paper I for $j\ge J_0$ (1–2 pages); make (R3) explicit.
+    worum: |
+      The phase law should hold without the assumptions from Paper I if one stops the logarithm chain in time. Paper III says: The old
+      estimates continue to hold verbatim. This has not yet been written out.
+- id: bw.satz.schwanzkonvergenz
+  quelle_hash: 5585717db4d7
+  theorie_hash: 660000eb76b0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Damping products (Lemmas 5.2–5.4) summable ⇒ Cauchy in sup norm.
+    pruefung:
+      f5_neue_frage: Unconditional version → bw.satz.phasengesetz_gestoppt
+      f3_spezialfall: Contraction argument for iterated logarithms (cf. convergence of $\log^{\circ n}$ on towers).
+      f2_benutzte_voraussetzungen: (R2) only in the index range $j\ge J_0$ — secured there by the stopping rule.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: Every pair of increasing tetrations with $b,d>\eta$, provided $A_b$ is locally Lipschitz.
+    bewertung:
+      recherche: Paper I introduction.
+      nutzen: Basis of the phase law.
+      richtigkeit: conditionally proved
+    voraussetzungen:
+    - text: Hyp. 2.2
+    - text: Hyp. 2.4
+    titel: Convergence of the logarithmic tails (Paper I, Thm. 5.6)
+    aussage: $D_n\to D_{b,d}$ uniformly on $[0,1]$.
+  en_theorie:
+    beispiel: |
+      $(e,2)$: The largest distance of $A_e(D_n(\theta))-\theta$ from the limit is $1.13$, $0.83$, $0.45$, $0.15$, $0.014$, $3\cdot10^{-7}$, $4\cdot10^{-24}$ for $n=0,\dots,6$.
+      The jump between $n=5$ and $n=6$ is the factor $1/T_2(4)=1/65536$ — and then once more divided by the next level.
+    einordnung: |
+      From this the phase law follows ([[bw.satz.phasengesetz]]). The assumptions drop out in the stopped version ([[bw.satz.phasengesetz_gestoppt]]).
+    genau: |
+      Under Hyp. 2.2 and 2.4, $D_n\to D_{b,d}$ uniformly on $[0,1]$ (Paper I, Thm. 5.6).
+    warum: |
+      1. $D_{n+1}(\theta)=\log_b^{\circ n}\bigl(\alpha\,T_d(n+\theta)\bigr)$ and $D_n(\theta)=\log_b^{\circ n}\bigl(T_d(n+\theta)\bigr)$: both start at the top with almost the same number (factor $\alpha$).
+      2. The first logarithm turns the factor into a summand $\log_b\alpha$. Each further logarithm divides a small difference by ($\ln b\cdot$ value) — these are the damping products.
+      3. The products are summable because the tower values are huge; so $(D_n)$ is a Cauchy sequence in the supremum norm.
+    worum: |
+      The peeled tails $D_n(\theta)$ come to rest. The reason: A difference at the very top of the tower is divided by every logarithm —
+      by the huge tower value there. After a few levels it is invisible.
+- id: bw.satz.ursache_kozykel
+  quelle_hash: f534619e2383
+  theorie_hash: 25954a85391d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Period comparison of the two Koenigs coordinates; uniqueness by Paulsen–Cowgill.
+    pruefung:
+      f5_neue_frage: Do the singularities lie close to the boundary (Gevrey) or at a fixed distance (strip)?
+      f3_spezialfall: 'General principle: two Abel coordinates with different complex periods cannot be globally holomorphically conjugate.'
+      f2_benutzte_voraussetzungen: Continuability of the Koenigs coordinates; periods exact.
+      f1_folgt_unmittelbar: The part “$T_b\circ\tilde H$ is not Kneser” follows immediately from fg.satz.allgemeine_loesung + uniqueness, as soon
+        as $P\not\equiv0$.
+      f4_uebertragbar: Model case kl.verm.streifenbreite (there real periods, same mechanics).
+    bewertung:
+      recherche: Round 20.
+      nutzen: Explains why Φ must be singular.
+      richtigkeit: Sketch, plausible
+    titel: Cause of the singularities — period mismatch in the Koenigs conjugator
+    aussage: |
+      With $P_a=2\pi i/\ln\lambda_a$ the conjugator $\kappa=K-\mathrm{id}$ of the Koenigs coordinates satisfies
+      $\kappa(\xi+P_d)-\kappa(\xi)=P_b-P_d$; hence it is singular in every cell, with residue sum
+      $1/\ln\lambda_d-1/\ln\lambda_b$. Equivalently: $D=T_b\circ\tilde H$ is a **non-Kneser** base-$b$ tetration
+      (otherwise contradiction to uniqueness).
+  en_theorie:
+    einordnung: |
+      Same mechanics with real periods: [[kl.verm.streifenbreite]]. Open remains whether the singularities lie at a fixed distance (strip) or approach the axis
+      (Gevrey): [[bw.frage.streifen_gevrey]].
+    genau: |
+      **Sketch.** With $P_a=2\pi i/\ln\lambda_a$ the conjugator $\kappa=K-\mathrm{id}$ of the Koenigs coordinates satisfies $\kappa(\xi+P_d)-\kappa(\xi)=P_b-P_d$. Hence it is
+      singular in every cell, with residue sum $1/\ln\lambda_d-1/\ln\lambda_b$. Equivalently: $D=T_b\circ\tilde H$ is a **non-Kneser** tetration to base $b$.
+    warum: |
+      1. $D(\theta+1)=b^{D(\theta)}$ follows directly from the definition of the tails. Hence $D$ is a superfunction of $b^x$, and $D=T_b\circ(\mathrm{id}+\Phi)$.
+      2. If $D$ were the Kneser solution, $\Phi$ would be constant ([[kn.satz.paulsen_cowgill]]). If $P\ne0$, $D$ is a different tetration — its deviation must show up in the complex domain as a
+         singularity, otherwise it would have Kneser's vertical behavior.
+      3. Period comparison: a holomorphic map compatible with the translations would have to send $P_d$ to $P_b$; the difference $P_b-P_d$ forces poles.
+      Gaps: derived in the research log, not written out as a proof; the connection with the measured location is only numerical.
+    worum: |
+      Why must the wave have singularities at all? Because the two Koenigs coordinates at $L_b$ and $L_d$ have different complex periods.
+      A map that translates one lattice into the other cannot be smooth everywhere.
+- id: bw.verm.adressen
+  quelle_hash: 62f73e09a8e4
+  theorie_hash: 194ee1a3ff34
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: |
+      Attempt 08.10.2026 (experimente/e26_adressen.py, stopped chain with Kneser/Paulsen values for complex bases): the real control
+      b = 3, d = 2 agrees (μ = −1.3208260715, phase 1-periodic, independent of the stopping threshold to 10⁻¹⁶). For complex pairs
+      (4 + 0.5i with 3 + 0.3i) the engine returns no values at the necessary points within 25 minutes — undecided. Side finding:
+      most complex bases near the real axis do not escape at all (excursion and relapse, cf. fp.beob.negative_achse).
+    pruefung:
+      f5_neue_frage: 'First test pair: two complex bases with constant address $m\ne0$.'
+      f3_spezialfall: Generalizes bw.satz.phasengesetz.
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Would extend the phase law to complex bases.
+      richtigkeit: open
+    titel: Complex escaping bases — phase depends on the address
+    aussage: |
+      For complex bases whose orbit escapes, each logarithm step selects a strip $m_j$ (address $\mathbf s$). For bases with
+      compatible addresses the stopped tails converge to a cocycle $\Phi_{b,d}(\theta,\mathbf s)$ over phase circle and
+      address shift; eventually $q$-periodic addresses give a $q$-periodic height phase. The real case (address $0,0,\dots$)
+      is the phase law.
+  en_theorie:
+    beispiel: |
+      Attempt of 08.10.2026: the real control $(3,2)$ agrees ($\mu=-1.3208260715$, independent of the stopping threshold to $10^{-16}$). For the complex pair
+      $4+0.5i$ with $3+0.3i$ the engine returned no values within 25 minutes — undecided. Incidentally: most complex bases near the real
+      axis do not escape at all.
+    einordnung: |
+      Generalizes [[bw.satz.phasengesetz]]; needs a reliable engine for complex bases ([[kn.satz.paulsen_komplex]]).
+    genau: |
+      **Conjecture.** For complex bases whose orbit escapes, and compatible addresses $\mathbf s$, the stopped tails converge to a cocycle
+      $\Phi_{b,d}(\theta,\mathbf s)$ over phase circle and address shift. Eventually $q$-periodic addresses give a $q$-periodic height phase. The real case
+      (address $0,0,\dots$) is the phase law.
+    warum: |
+      Heuristic: the mechanism of tail convergence (damping by huge values) needs no reality, only escape to $\infty$. New is only that
+      each logarithm may add $+2\pi im_j/\ln b$.
+    worum: |
+      For complex bases each logarithm must choose a branch — a strip $m_j$ of the complex plane. The sequence of these choices is an
+      “address”. The conjecture: the phase law holds here too, only the wave additionally depends on the address.
+- id: bw.verm.nirgends_analytisch
+  quelle_hash: 753aa87aa555
+  theorie_hash: 3e1798eef6fb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: |
+      Forum (Levenstein 2011): The approximations after $n$ logarithm levels have singularities whose distance to the real axis goes to $0$ with $n$
+      (nearest at radius $0.46$, after one further level $0.035$); Trappmann (2009) proves for $\log_a^{\circ n}\circ\exp_b^{\circ n}$ branch points at
+      $\log_b^{\circ n}\{a,\dots,\exp_a^{\circ n-2}(1)\}$. Our own data: $\sigma_{\mathrm{eff}}(k)$ keeps decreasing up to $k\approx520$, Gevrey and strip model fit equally well
+      (bw.frage.streifen_gevrey); the tower analysis from Round 20 speaks rather for Gevrey. Not decided.
+    pruefung:
+      f5_neue_frage: 'A proof would refute bw.verm.streifen and pin down the mode numbers (bw.kor.modenzahl) to the Gevrey rate. Approach: make
+        the accumulation of the branch points at the real axis quantitative.'
+      f3_spezialfall: Counterpart to Walker's limit dexp^−n ∘ exp^n (kn.konstr.walker), for which also only C^∞ is proved.
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: No. That the limit function is C^∞ is proved for Walker's variant; showing that it is analytic at no point is open.
+      f4_uebertragbar: To all limits of iterated logarithms of a foreign superfunction (cheta base change, 2sinh method).
+    bewertung:
+      recherche: Conjecture of S. Levenstein in the Tetration Forum (2011, 2014) and on math.stackexchange; according to the forum unsolved.
+      nutzen: Decides the strip question in the direction of Gevrey.
+      richtigkeit: open (conjecture)
+    titel: Base-change tetrations are nowhere analytic (forum conjecture)
+    aussage: |
+      The tetration obtained by base change, $D_{b,d}=T_b\circ(\mathrm{id}+\Phi_{b,d})$, is infinitely differentiable on the real axis,
+      but **nowhere analytic**. Equivalently: the phase $\Phi_{b,d}$ is nowhere analytic — in particular holomorphic in no strip,
+      so $\sigma^*=0$ in the mode decay.
+    bereich: $b\ne d>\eta$, Kneser tetration $T_d$; $D_{b,d}(\theta)=\lim_n\log_b^{\circ n}T_d(n+\theta)$
+    einfach: If you translate one smooth tetration into another base, the result is presumably infinitely smooth, but nowhere representable by
+      a power series.
+  en_theorie:
+    beispiel: |
+      In the mode decay, “nowhere analytic” would be compatible with the Gevrey picture $\ln|a_k|\approx-c\sqrt k$. Our data up to $k\approx520$ do not distinguish strip and
+      Gevrey; the tower analysis from Round 20 speaks rather for Gevrey.
+    einordnung: |
+      Contradicts [[bw.verm.streifen]]; decides [[bw.frage.streifen_gevrey]] if it is proved. Walker's $C^\infty$ solution has the same type of construction
+      ([[kn.konstr.walker]]). That $D$ is in any case not a Kneser tetration is shown by [[bw.satz.ursache_kozykel]].
+    genau: |
+      **Conjecture** (S. Levenstein, Tetration Forum 2011). The base-change tetration $D_{b,d}=\lim_n\log_b^{\circ n}T_d(n+\theta)=T_b\circ(\mathrm{id}+\Phi_{b,d})$ is $C^\infty$ on the
+      real axis, but nowhere analytic. Equivalently: the phase $\Phi_{b,d}$ is nowhere analytic, in particular holomorphic in no strip ($\sigma^*=0$).
+    warum: |
+      1. Equivalence: $T_b$ is analytic and locally invertible; so $D$ is analytic at a point if and only if $\Phi$ is.
+      2. The $n$-th approximation $\log_b^{\circ n}\circ T_d(n+\cdot)$ becomes singular where a logarithm hits $0$; Trappmann (2009) shows for $\log_a^{\circ n}\circ\exp_b^{\circ n}$
+         branch points at $\log_b^{\circ n}\{a,\dots,\exp_a^{\circ n-2}(1)\}$.
+      3. Levenstein measures that the distance of the nearest singularity to the real axis tends to $0$ with $n$ (radius $0.46$, after one further level $0.035$),
+         while the values on the axis converge superexponentially fast. Uniform convergence on the axis alone ensures $C^\infty$, but not analyticity.
+      A proof is missing; it may be that the singularities cancel in the limit.
+    worum: |
+      The counter-position to the strip conjecture: If one translates a smooth tetration into another base, the result is infinitely often differentiable,
+      but at no single point representable by a power series. The singularities of the approximations move closer to the real axis with every logarithm level.
+- id: bw.verm.rang_eins
+  quelle_hash: 03724641e043
+  theorie_hash: 09d991e97934
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'Kernels $G_d$ for $d\in\{2,e,3,5,10\}$ to 25–30 digits: normalized mode ratios $|G_k|/|G_1|$ vary smoothly with $d$ (0.4
+      % at k=2 to 9 % at k=8).'
+    pruefung:
+      f5_neue_frage: 'Exact replacement: bw.satz.antwortkern'
+      f3_spezialfall: Leading order of the perturbation expansion in $\varepsilon=\ln\ln d-\ln\ln b$.
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: —
+      f4_uebertragbar: —
+    bewertung:
+      recherche: Paper I.
+      nutzen: Motivated the perturbation theory.
+      richtigkeit: refuted as an exact statement; correct as leading order
+    titel: Rank-one law of the inner base (Paper I, Conjecture 4.1)
+    aussage: 'For fixed inner base $d$, $\{P_{b,d}\}_b$ is (approximately) of rank one in $L^2(S^1)$: the shape depends only on $d$.'
+  en_theorie:
+    beispiel: |
+      The normalized mode ratios $|G_k|/|G_1|$ change over $d\in\{2,e,3,5,10\}$ by $0.4\,\%$ ($k=2$) to $9\,\%$ ($k=8$).
+    einordnung: |
+      Prompted the perturbation theory; exact replacement: [[bw.satz.antwortkern]].
+    genau: |
+      **Refuted** (as an exact statement). The conjecture was: For fixed $d$, $\{P_{b,d}\}_b$ is of rank one in $L^2(S^1)$, the shape depends only on $d$ (Paper I, 4.1).
+    warum: |
+      To first order it is correct: $\Phi_{b,d}\approx\varepsilon\,G_d$ ([[bw.satz.antwortkern]]). But the kernels $G_c$ change their shape with $c$ ([[bw.beob.kernkleid]]), and
+      a wave between widely separated bases collects the kernels of all bases in between — its shape drifts along.
+    worum: |
+      An early hope: that for a fixed inner base $d$ the wave $P_{b,d}$ would always have the same shape, regardless of $b$ — only its size would change.
+- id: bw.verm.streifen
+  quelle_hash: 0d2e199ade4d
+  theorie_hash: 3bea313f3fd2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: |
+      Mode measurement up to $k\approx520$: local rates $\sigma_{\mathrm{eff}}(k)$ keep decreasing (universal curve).
+      Round 20: strip and Gevrey model fit equally well; not decidable from $k\le500$ — neither confirmed nor refuted.
+    pruefung:
+      f5_neue_frage: bw.frage.streifen_gevrey
+      f3_spezialfall: Fourier characterization of analytic functions (br.satz.gevrey_fourier).
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: 'Model case with explicit objects: kl.verm.streifenbreite.'
+    bewertung:
+      recherche: 'Paper I. Addendum 08.10.2026: S. Levenstein has conjectured since 2011 for base-change tetrations “C^∞, but nowhere analytic”;
+        that would exclude every strip.'
+      nutzen: Would guarantee fast convergence of the mode tables.
+      richtigkeit: open and disputed — the opposite is conjectured in the Tetration Forum (bw.verm.nirgends_analytisch)
+    titel: Strip analyticity of the phase (Paper I, Conjecture 8.1)
+    aussage: $D_{b,d}$ continues holomorphically in $|\operatorname{Im}\theta|<\sigma_{b,d}$; $|\hat P_{b,d}(k)|\le C e^{-2\pi\sigma|k|}$.
+  en_theorie:
+    beispiel: |
+      $(e,2)$: $|a_1|=1.44\cdot10^{-4}$, $|a_{20}|=1.7\cdot10^{-23}$ — nineteen orders of magnitude over twenty modes.
+    einordnung: |
+      **Disputed.** In the Tetration Forum the opposite has been conjectured since 2011: that base-change tetrations are nowhere analytic ([[bw.verm.nirgends_analytisch]]).
+      Then there would be no strip, and $\sigma^*$ would be $0$. Model case with known strip: [[kl.verm.streifenbreite]]. Where the singularities come from:
+      [[bw.satz.ursache_kozykel]].
+    genau: |
+      **Conjecture** (Paper I, 8.1). $D_{b,d}$ continues holomorphically in $|\operatorname{Im}\theta|<\sigma_{b,d}$, and $|\hat P_{b,d}(k)|\le Ce^{-2\pi\sigma|k|}$.
+    warum: |
+      Supported and open at the same time: Up to $k\approx520$ the modes decay fast, but the local rate $\sigma_{\mathrm{eff}}(k)$ still keeps falling. A strip model and a
+      Gevrey model (without fixed strip) fit equally well ([[bw.frage.streifen_gevrey]]).
+    worum: |
+      The wave $P$ is smooth. Is it even analytic, in a strip of fixed width around the real axis? Then its Fourier modes would
+      decay exponentially.
+- id: bw.verm.universell
+  quelle_hash: dbc5f58cce54
+  theorie_hash: 978a92b16b20
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'Round 20: support (bw.beob.singularitaet) recognized as an artifact.'
+    pruefung:
+      f5_neue_frage: Replaced by position law + open strip/Gevrey question.
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: —
+      f1_folgt_unmittelbar: —
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Historical.
+      richtigkeit: support dropped
+    titel: Universal singularity data (Paper IV, Conjecture 6.6)
+    aussage: $\Phi_{b,d}$ is holomorphic in the punctured strip with an isolated essential singularity at $x^*(b,d)+i\sigma^*$, $\sigma^*$ pair-independent.
+  en_theorie:
+    einordnung: |
+      Historical; successors [[bw.beob.positionsgesetz]], [[bw.frage.streifen_gevrey]].
+    genau: |
+      **Superseded.** $\Phi_{b,d}$ is supposed to be holomorphic in the punctured strip with an isolated essential singularity at $x^*(b,d)+i\sigma^*$, $\sigma^*$ pair-independent (Paper IV, 6.6).
+    warum: |
+      Its support ([[bw.beob.singularitaet]]) is a solver artifact ([[bw.korr.r20]]). What remains are the position law and the open question strip or Gevrey.
+    worum: |
+      The conjecture that arose from the false observation: a single essential singularity per period, at a fixed height for all pairs.
+- id: bw.zert.8r1
+  quelle_hash: 9c52529af7ea
+  theorie_hash: 7d609c146833
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Computer-assisted (ball arithmetic, python-flint); assumption: correct implementation.'
+    pruefung:
+      f5_neue_frage: bw.frage.intervallmarsch
+      f3_spezialfall: One segment of the main theorem Thm. 11.15 (Paper VI).
+      f2_benutzte_voraussetzungen: Correct interval implementation; micro-segment induction, Hilbert-tube supremum, Γ-slope as open points in
+        the README.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: Further segments.
+    bewertung:
+      recherche: Paper VI.
+      nutzen: First certified segment.
+      richtigkeit: computer-assisted; open points according to README
+    titel: 8r1 segment certificate (both legs via the closure layer)
+    aussage: 'Replay: $Y=3.1516\cdot10^{-9}$, $L=13613.3$, $q=0.1495<1$, checks Z1–Z7 passed; independent verification at order 22.'
+  en_theorie:
+    einordnung: |
+      A segment of the main theorem Thm. 11.15 (Paper VI). The complete march: [[bw.frage.intervallmarsch]].
+    genau: |
+      Replay run: defect $Y=3.1516\cdot10^{-9}$, Lipschitz bound $L=13613.3$, contraction number $q=0.1495<1$; checks Z1–Z7 passed, independent verification at order 22.
+    warum: |
+      A criterion of Newton–Kantorovich type: if the defect is small, the derivative controlled and the contraction number $q<1$, then the equation has in a small ball around the approximation
+      exactly one solution. Computed with ball arithmetic (python-flint); the assumption is the correct implementation. Open points are listed in the README (micro-segment induction, Hilbert-tube supremum, $\Gamma$-slope).
+    worum: |
+      A segment of the reconstruction is proved computer-assisted: in a small neighborhood of the computed approximation there is guaranteed to be a true solution.
+- id: bw.zert.8r1_alt
+  quelle_hash: adda423fd4ea
+  theorie_hash: cce249f0fbef
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f5_neue_frage: —
+      f3_spezialfall: —
+      f2_benutzte_voraussetzungen: tails.py (faulty)
+      f1_folgt_unmittelbar: —
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Historical.
+      richtigkeit: invalid (bound too small)
+    titel: 8r1 segment certificate before the tail correction
+    aussage: Certificate run with the old tail bound in tails.py.
+  en_theorie:
+    einordnung: |
+      Replaced by [[bw.zert.8r1]].
+    genau: |
+      **Superseded.** Certificate run with the old tail bound in tails.py.
+    warum: |
+      The bound for the sensitivity tail was about 20 times too small ([[bw.korr.tails]]). A certificate with a bound that is too small proves nothing.
+    worum: |
+      The first certificate for a segment of the march — invalid because an error bound was too small.
