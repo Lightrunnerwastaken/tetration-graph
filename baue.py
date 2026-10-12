@@ -75,6 +75,15 @@ def _svg_schlank(svg):
     return re.sub(r"<!--.*?-->", "", svg, flags=re.S)
 
 
+def _ideen_mit_en(ideen, g):
+    """Übersetzungen der Ideen (daten/uebersetzung_struktur/idee.yaml) an die berechnete Landkarte hängen."""
+    en = {i["id"]: i["en"] for i in g.ideen if i.get("en")}
+    for x in ideen["haupt"] + ideen["unter"]:
+        if x["id"] in en:
+            x["en"] = en[x["id"]]
+    return ideen
+
+
 def g_export(g, stat, befunde, roh):
     knoten = []
     for i, a in g.knoten.items():
@@ -107,7 +116,7 @@ def g_export(g, stat, befunde, roh):
         "bilder": {n: _svg_schlank(p.read_text(encoding="utf-8")) for n, p in (roh.get("bilder") or {}).items()},
         "befunde": befunde,
         "statistik": stat,
-        "ideen": landkarte.berechne(g, roh),
+        "ideen": _ideen_mit_en(landkarte.berechne(g, roh), g),
         "schema": {"arten": S.ARTEN, "ebenen": S.EBENEN, "status": S.STATUS, "kanten": S.KANTEN,
                    "neuheit": S.NEUHEIT, "prueffragen": S.PRUEFFRAGEN, "quellen_pruefung": S.QUELLEN_PRUEFUNG,
                    "niveau": S.NIVEAU, "theorie_teile": S.THEORIE_TEILE},

@@ -492,11 +492,12 @@ class Graph:
 
     # ------------------------------------------------------------- gesamt
     def alles(self):
-        from . import lehrbuch, uebersetzung
+        from . import lehrbuch, uebersetzung, uebersetzung_struktur
         g = (self.aufbauen().pruefen_schema().pruefen_inhalt().pruefen_straenge().pruefen_ideen()
              .ableiten().verwandte().experimente_einlesen())
         g = lehrbuch.pruefen(g)     # Theorie-Blöcke sind schon angehängt (laden.py)
-        return uebersetzung.einbinden(g)
+        g = uebersetzung.einbinden(g)
+        return uebersetzung_struktur.einbinden(g)
 
     def statistik(self):
         z = defaultdict(int)

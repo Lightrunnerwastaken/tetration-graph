@@ -22,6 +22,8 @@ Befehle (aus dem Wurzelverzeichnis):
     python -m wissen.uebersetzung export --gebiet fp --felder theorie -o stapel.json
     python -m wissen.uebersetzung einlesen uebersetzt.json --modell sonnet [--ersetzen]
     python -m wissen.uebersetzung abgleich sonnet.json haiku.json      # wo zwei unabhängige Übersetzungen auseinanderliegen
+    python -m wissen.uebersetzung struktur-stand | struktur-export --art strang | struktur-einlesen datei.json --modell sonnet
+        (Gebiete, Stränge, Ideen, Lehrbuch-Kapitel, Objekte, Experimente: siehe wissen/uebersetzung_struktur.py)
 """
 import argparse
 import hashlib
@@ -600,11 +602,31 @@ def main(argv=None):
     v.add_argument("datei_a")
     v.add_argument("datei_b")
     v.add_argument("--schwelle", type=float, default=0.85)
+    sub.add_parser("struktur-stand", help="Fortschritt der Strukturtexte")
+    se = sub.add_parser("struktur-export", help="deutsche Strukturtexte als Stapel für Übersetzer")
+    se.add_argument("--art", required=True, choices=["gebiet", "strang", "idee", "objekt", "experiment", "kapitel"])
+    se.add_argument("--max", type=int, default=0)
+    se.add_argument("--nur-fehlend", action="store_true")
+    se.add_argument("-o", "--ausgabe")
+    si = sub.add_parser("struktur-einlesen", help="übersetzten Stapel prüfen, stempeln und in daten/uebersetzung_struktur/ schreiben")
+    si.add_argument("datei")
+    si.add_argument("--modell", required=True)
+    si.add_argument("--geprueft", choices=sorted(S.UEBERSETZ_GEPRUEFT), default="nein")
+    si.add_argument("--trocken", action="store_true")
     a = ap.parse_args(argv)
     try:
         sys.stdout.reconfigure(encoding="utf-8")
     except AttributeError:
         pass
+    if a.befehl.startswith("struktur-"):
+        from . import uebersetzung_struktur as U2
+        if a.befehl == "struktur-stand":
+            U2.befehl_stand(wurzel)
+        elif a.befehl == "struktur-export":
+            U2.befehl_export(wurzel, a.art, a.max, a.nur_fehlend, a.ausgabe)
+        else:
+            return U2.befehl_einlesen(wurzel, a.datei, a.modell, a.geprueft, a.trocken)
+        return 0
     if a.befehl == "stand":
         befehl_stand(wurzel)
     elif a.befehl == "abgleich":
