@@ -48,7 +48,7 @@
 
 **uebersetzung-fortschritt** (1)
 
-- `quelle` — 0 von 292 quelle-Gegenständen übersetzt
+- `quelle` — 204 von 292 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (2)
 

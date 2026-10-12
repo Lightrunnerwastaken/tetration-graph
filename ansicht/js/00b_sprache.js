@@ -86,7 +86,7 @@ const t = (s) => (EN ? uebersetzeText(s) : s);
 
 // Heuristik für den Test: sieht ein Text noch deutsch aus?
 const NAMEN_MIT_UMLAUT = /Schr[öo]der|B[öo]ttcher|Erd[őo]s|M[üu]ller|Hölder|Weierstra[ßs]|Lévy|Écalle|Gödel|Dzyadyk|Kühn|Bürger|Gauß|Gauss|Möbius|Mobius|Cesàro|Pólya|Poincaré|Fréchet|Cauchy|Lambert|Thron|Löwner|Lowner|Kármán|Szegő|Szeg|Eötvös/;
-const DEUTSCHE_WOERTER = /(^|[^\p{L}])(und|der|die|das|nicht|mit|für|von|zu|im|auf|alle|noch|keine|oder|wird|sind|eine|einer|zum|zur|wenn|dass|aber|auch|bei|nach|aus|über|unter|ohne|nur|wie|werden|haben|gibt|jede|jeder|jedes|Aussage|Aussagen|Beweis|Voraussetzung|Quelle|Quellen|Satz|Sätze|Vermutung)($|[^\p{L}])/u;
+const DEUTSCHE_WOERTER = /(^|[^\p{L}_])(und|der|die|das|nicht|mit|für|von|zu|im|auf|alle|noch|keine|oder|wird|sind|eine|einer|zum|zur|wenn|dass|aber|auch|bei|nach|aus|über|unter|ohne|nur|wie|werden|haben|gibt|jede|jeder|jedes|Aussage|Aussagen|Beweis|Voraussetzung|Quelle|Quellen|Satz|Sätze|Vermutung)($|[^\p{L}_])/u;
 function sieht_deutsch_aus(s) {
   if (typeof s !== "string") return false;
   const ohneNamen = s.replace(NAMEN_MIT_UMLAUT, " ");
