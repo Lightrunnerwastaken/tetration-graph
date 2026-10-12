@@ -82,3 +82,23 @@ Erledigtes bitte streichen. Stand 12.10.2026 (fg, it, fp).
 - `bw.verm.nirgends_analytisch`, Theorie `warum`, Schritt 3: „gleichmässige Konvergenz nur auf der Achse sichert C^∞“ gilt so nicht.
 - `bw.satz.fourier_naht`, Theorie `worum`: „Knick in der (m+1)-ten Ableitung“ müsste ein Sprung sein.
 - `bw.prop.antisym_c1`: die Aussage lässt die C¹-Voraussetzung weg, die Titel und Theorie nennen.
+
+## kn
+- `kn.satz.polynom_eckprofil`: Status „skizze“, der Kern sagt „(i) bewiesen“, der Prüftext „bewiesen bis auf Lemma K12“.
+- `kn.verm.tpid11`, `einfach`: „die vier bekannten Stufen“ und „jeweils um etwa 2 %“; gemessen sind nur drei Werte (n=4,5,6), die Abstände liegen bei 1.4–2 %.
+- `kn.verm.tpid3`, Theorie `warum`: „nein in drei Fällen ausserhalb“, aber ein Fall (s=1/2) liegt auf dem Kreisrand, nicht ausserhalb.
+- `kn.satz.walker_konjugation`, Prüftext f4: „jede Basis über η (Konjugation zu b^x mit parabolischem Fixpunkt)“; b^x hat nur bei b=η einen parabolischen Fixpunkt. Walker 1991 steht als „Math. Comp. 57“ (Beweis) und „J. Math. Anal. Appl.“ (Kern), vielleicht zwei Arbeiten.
+- `kn.beob.hoehere_etas`, Theorie `warum`: „beschränkt genau dann … genau bis ηₙ“ als Tatsache, `kn.verm.beschraenkt_unter_2` nennt den „genau bis ηₙ“-Teil offen; `einfach` liest „das bisher einzige fünfte Glied der Folge“.
+- `kn.satz.polynom_approximation_ecke`, Beweis: „Blattdrehung“ (Riemannsche Fläche) – englisch „sheet rotation“.
+- `kn.satz.kneser_e_zertifiziert`, Kern `bereich`: „Streifen“ ohne Zusatz.
+- `kn.satz.paulsen_komplex`: Kern, Beweis und Prüftext sagen, Holomorphie in b sei „nicht belegt“/offen; die Theorie `genau` sagt „T_b(z) hängt holomorph von b ab“, `worum` sogar „holomorph“.
+- `kn.konstr.carleman`: Status „bewiesen“, der Beweis sagt, die Lösbarkeit für jedes n sei nur beobachtet.
+- `kn.konstr.pentation`: Status „bewiesen“, aber λ_b>1 und Eindeutigkeit des Fixpunkts sind nur gemessen.
+- `kn.satz.abel_bruchsumme`: Prüftext f2 „Kneser nicht“ (nicht nötig), die Voraussetzungen nennen „A = Kneser“, der Kern `bereich` „(z. B. Kneser)“.
+- `kn.satz.hexation_struktur`: Status „bewiesen“, der Kern enthält aber auch gemessene Werte (s_1.5 usw.).
+- `kn.konstr.hexation_regulaer`: Prüftext f1 „eine Stufe höher dieselbe Konstruktion wie kl.satz.regulaer“, Theorie `einordnung` „zwei Stufen höher“.
+- `kn.satz.singulaer_minus2`: Voraussetzungen nennen „differenzierbar im Punkt“ und „in einer Umgebung (Paper I)“, das wirkt wie ein Überbleibsel.
+- `kn.frage.hexation_kneser`: der Kern sagt, die Fork-Methode laufe „nie mit θ auf der reellen Achse“, die Theorie `warum` 3 sagt „der Weg führt über θ auf der reellen Achse“.
+- `kn.verm.polynom_halbexp`, Theorie `warum` 3: nennt `kn.verm.polynom_halbexp_schranke` den „offenen Kern“ („Nicht bewiesen“); Kern und Prüftext nennen `kn.verm.polynom_halbexp_kern` als offen (bedingt bewiesen, bestätigt bis N=1500).
+- `kn.satz.halbexp_beschraenkt`: die Aussage beginnt „Dann ist f=f_K“ ohne Voraussetzung im Text (steht nur in Titel, `bereich` und Prüftext).
+- Konditionszahl: „etwa 1.9 je Grad“ (Theorie `schranke`, Prüftext `endlich`) gegen „2.6“ für β_N (`kantorovich`) – vermutlich verschiedene Grössen. Theorie `hauptsatz` `worum`: „konvergieren … für jeden Grad“ passt nicht zu N→∞.

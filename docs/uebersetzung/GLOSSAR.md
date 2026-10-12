@@ -144,3 +144,11 @@ Titles: sentence case, no trailing period, keep any formula or term in the title
 | Jacobi-Funktion / Jacobi-Determinante | Jacobian |
 | Takt (Schrittweite der Höhe) | pace |
 | eindeutig (im Gegensatz zu verzweigt) | single-valued |
+| halbe Exponentialfunktion / halbe e-Funktion | half-exponential function (nie "half-e function") |
+| streng zertifiziert / streng (Beweis, Zertifikat) | rigorously certified / rigorous |
+| Blatt (Riemannsche Fläche, Blattverfolgung) | sheet / sheet tracking (nur in der parabolischen Dynamik: petal) |
+| Eckmode | corner mode |
+| Wendepunkt (Asymptotik, Stokes) | turning point (sonst inflection point) |
+| Überlagerung | superposition (Überlagerung im Sinn der Topologie: covering) |
+| Einzugsgebiet | basin of attraction |
+| Steg | bridge |
