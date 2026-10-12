@@ -108,3 +108,8 @@ Erledigtes bitte streichen. Stand 12.10.2026 (fg, it, fp).
 - Formelsammlung, Zeile T′(0), Spalte Kneser (Basis e): „linear: Sprung von 1 auf ln a“ ist für a=e kein Sprung (ln e = 1); die letzte Zeile derselben Tabelle sagt, die lineare Tetration sei bei e C¹.
 - README: „9 Gebiete“ in der Kopfzeile, obwohl `00_`…`10_` elf Dateien sind und die Theorie-Zählung zehn Gebiete aufführt; die Beschreibung von `formelnEinpassen` steht doppelt (einmal mit „\qquad“, einmal mit „A,\qquad B“); die Experimentliste springt von e37 auf e39; der Hexations-Absatz steht unter dem Datum 08.10., ist aber auf 09.10. datiert.
 - Texte der Strukturebene: `fp.parameterraum` („innen Ruhe“) und `kl.gleiches_L` („bleibt er stehen“) sind sehr knapp; `fp.turm` „Konvergenz reell bis e^{1/e}“ hat kein Verb; `exp.polynom_team` „Nähe der echten p_N“ nennt keinen Bezug; `kn.hoehere_stufen` „anders als Knesers Tetration in der oberen Halbebene verzweigt“ ist doppeldeutig.
+
+## Quellen, Experimente, Zusatzfelder
+- `quellen[].stelle`: mehrere Einträge sind ganze Kommentarsätze statt Fundstellen; andere mischen Sprachen („Abschnitt Super-root“); „Levenstein 31.03.2018 Grenzfunktion für Kneser 2 gegen e“ ist mehrdeutig.
+- Quelle `forum_tid1177` schreibt „Nuinho“, sonst „Nuninho“; `forum_tid213` „Problem 1941 auf der DMV-Tagung in Jena“ (gemeint wohl „1941 besprochen“); `euler1778` hat ein deutsches Dezimalkomma „1/15,154“; `justus_bc_geteilt` hat einen gemischtsprachigen Titel („Base Change an einem geteilten Fixpunkt“).
+- Experiment `exp.ableitungen_vorzeichen`: „20 Stellen“ – Punkte oder Dezimalstellen?

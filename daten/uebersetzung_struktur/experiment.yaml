@@ -2,7 +2,7 @@
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
 - art: experiment
   id: exp.abel_bruchsumme
-  quelle_hash: bc29ba841f71
+  quelle_hash: adf29a2c2efc
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -10,20 +10,59 @@
   en:
     titel: Fractional sum of the super-logarithm (base e)
     frage: Does A'' decay like 1/y², does the compensated fractional sum converge, and does γ_A exist?
+    ergebnis:
+      zusammenfassung: Compensated fractional sum of slog_e converges (A'' = O(1/y²)); S(1/2) = -0.115097609083, γ_A = 0.4951728249; difference
+        equation and S'' = −Σ A'' confirmed.
+      pruefungen:
+      - name: interpolant + reduction A(y) = n + A(lnⁿ y) matches Kneser slog_e at free points (0.37, 2.5, 40)
+      - name: normalization A(1) = 0, A(e) = 1, A(0) = −1
+      - name: differentiated Abel equation e·A'(e) = A'(1) via both representations; A'(1) = 1/T'(0)
+      - name: estimate |A''(y)| ≤ C/y² (y² |A''(y)| bounded and decreasing)
+      - name: compensated series converges (N = 1000 vs 4000 with tail correction)
+      - name: difference equation S(3/2) − S(1/2) = A(3/2)
+      - name: 'integer arguments: S(1) = A(1) = 0, S(2) = A(1) + A(2)'
+      - name: S''(x) = −Σ_k A''(k+x) (x = 1/2)
+      - name: constant γ_A = lim [Σ_{k≤N} A'(k) − A(N)] exists
 - art: experiment
   id: exp.ableitung
-  quelle_hash: 0303b7ff25c7
+  quelle_hash: e80a80435227
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Derivatives and inflection points
-    frage: Are the chain rule, product formula and the formula for T″ correct for Kneser (e) and regular (√2)? How many inflection points do the
-      curves have?
+    frage: Do chain rule, product formula and the formula for T″ hold for Kneser (e) and regular (√2)? How many inflection points do the curves
+      have?
+    ergebnis:
+      zusammenfassung: 'All derivative identities confirmed for Kneser e to ≤ 1e-20. T_e''(0) = 1.091767351258321, T_e''''(0) = 0.54296642580339.
+        Inflection points (Kneser): b=1.5: [''3.986806975''], b=2: [''-0.03024454275''], b=e: [''-0.5217647926''], b=3: [''-0.6038637144''], b=5:
+        [''-0.8469203702''], b=10: [''-0.9967056974''], b=100: [''-1.181880344'']. Regular (1<b<η): b=1.2: none, b=1.3: none, b=1.41421: none,
+        b=1.44: none.'
+      pruefungen:
+      - name: chain rule T'(x+1) = ln a·T(x+1)·T'(x) (Kneser e, 6 points x, relative)
+      - name: product formula T'(x+n) = (ln a)^n ∏ T(x+k) · T'(x), n = 2, 3
+      - name: T'(−1) = T'(0)/ln a
+      - name: T'(2) = (ln a)² · a · a^a · T'(0)
+      - name: first own version with factor T(x+1)² is WRONG (control test)
+      - name: T''(x+1) = ln a·T(x+1)·[ln a·T'(x)² + T''(x)] (relative)
+      - name: (ln T)''(x+1) = ln a · T''(x)
+      - name: 'Taylor at 0: coefficient 0 is T(0) = 1'
+      - name: chain rule for the regular √2 tetration
+      - name: 'Kneser b=1.5: exactly one inflection point on (−1.94, 11.86)'
+      - name: 'Kneser b=2: exactly one inflection point on (−1.94, 3.4)'
+      - name: 'Kneser b=e: exactly one inflection point on (−1.94, 2.26)'
+      - name: 'Kneser b=3: exactly one inflection point on (−1.94, 2.08)'
+      - name: 'Kneser b=5: exactly one inflection point on (−1.94, 1.54)'
+      - name: 'Kneser b=10: exactly one inflection point on (−1.94, 1.18)'
+      - name: 'Kneser b=100: exactly one inflection point on (−1.94, 0.7)'
+      - name: 'regular b=1.2: no inflection point (concave everywhere) on (−1.9, 8)'
+      - name: 'regular b=1.3: no inflection point (concave everywhere) on (−1.9, 8)'
+      - name: 'regular b=1.4142: no inflection point (concave everywhere) on (−1.9, 8)'
+      - name: 'regular b=1.44: no inflection point (concave everywhere) on (−1.9, 8)'
 - art: experiment
   id: exp.ableitungen_vorzeichen
-  quelle_hash: 42cb78914ae6
+  quelle_hash: 11ba17869008
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -31,19 +70,38 @@
   en:
     titel: Signs of the derivatives of Kneser's tetration T_e
     frage: Are all odd derivatives positive, do the even ones change sign exactly once, and where?
+    ergebnis:
+      zusammenfassung: 'Odd derivatives up to 25 positive everywhere (20 points); even ones change sign exactly once: x₂ = -0.52176479, x₁₀ =
+        -0.185914, x₂₂ = 0.00779022, x₂₆ = 0.0465848; log(x+2) law confirmed.'
+      pruefungen:
+      - name: all odd derivatives up to order 25 positive at 20 points in [−1.8, 2]
+      - name: every even derivative (2 … 26) changes sign exactly once on the grid, from − to +
+      - name: x₂ (inflection point) = −0.5218… as gr.beob.wendepunkte
+      - name: the sign-change points x_{2n} move to the right
+      - name: 'high derivatives follow log(x+2): a_k·k·(−1)^{k+1} → 1 at x0 = −1 (distance like 2^{−k})'
+      - name: 'at x0 = 0.5 all derivatives up to order 26 are positive (Levenstein: the first negative one is the 406th)'
 - art: experiment
   id: exp.basisableitung
-  quelle_hash: 8986360e58b3
+  quelle_hash: cf3c173a21a6
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Derivative with respect to the base and root at η
-    frage: Are the recursion for d/da (a↑↑n), the formula for h′(a) and the root law at η correct?
+    titel: Derivative with respect to the base and square root at η
+    frage: Do the recursion for d/da (a↑↑n), the formula for h′(a) and the square-root law at η hold?
+    ergebnis:
+      zusammenfassung: Derivative recursion and h'(a) formula confirmed to ≤ 1e-35; (e − h)/√(2e³(η−a)/η) = 0.999998383423 at η−a = 1e-12; next
+        order ≈ -1.61658·√(η−a).
+      pruefungen:
+      - name: recursion for d/da (a↑↑n) = numerical derivative (relative)
+      - name: 'Example d/da a^a = a^a (1 + ln a) at a = 2: 4(1 + ln 2)'
+      - name: h'(a) = h²/(a(1 − h ln a)) for the infinite tower (5 bases, relative)
+      - name: 'square-root law: (e − h(a)) / √(2e³(η−a)/η) → 1'
+      - name: deviation from the square-root law decays like √(η − a) (next order)
 - art: experiment
   id: exp.bruchsummen
-  quelle_hash: f6c7bece6df3
+  quelle_hash: 5592fbc94bc6
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -52,30 +110,67 @@
     titel: Limit formula, fractional sums, fractional product (base √2)
     frage: How fast does the limit formula converge? Does the fractional sum satisfy S(x+1) − S(x) = T(x)? Does the derivative formula with fractional
       product hold only for the regular solution?
+    ergebnis:
+      zusammenfassung: 'Limit formula: error 5.2e-21 at n = 120, rate ≈ λ; thereafter the rounding error grows (factor 1/λ per step backward).
+        Fractional sum S(1/2) = 0.4277749202048676, S(x+1) − S(x) = T(x) exactly. Fractional-product formula for the regular solution to 3.8e-36,
+        violated for T∘(id+θ) by 0.0185…0.2.'
+      pruefungen:
+      - name: 'limit formula: error at n = 120 below 1e-20'
+      - name: 'rounding amplification visible: larger at n = 200 than at n = 120 (optimum in between)'
+      - name: error rate per step ≈ λ = ln 2
+      - name: 'fractional sum: S(1/2 + 1) − S(1/2) = T(1/2)'
+      - name: 'fractional sum: S(1) = T(0) = 1, S(2) = 1 + √2'
+      - name: 'regular tetration: T''(x+h)/T''(x) = (ln b)^h · fractional product (h = 0.3, 0.5, 1.7)'
+      - name: 'control test T∘(id+θ), θ = 0.05·(1−cos 2πx)/2: formula violated (deviation > 1e-3)'
 - art: experiment
   id: exp.carleman
-  quelle_hash: 5dd0aa0dc0ff
+  quelle_hash: 4fdb972c33ee
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Intuitive slog versus Kneser
+    titel: Intuitive slog vs. Kneser
     frage: Does the truncated Carleman slog converge to Kneser's slog, and how fast?
+    ergebnis:
+      zusammenfassung: 'Interior points: error 1.7e-5 (n=16) → 9.2e-9 (n=128), ≈ 8.04 digits; decay algebraic ≈ n^-3.81, not geometric. Point
+        1.25 near |L_e|: 6.3e-9. Convergence supported, but slow; the 10 digits expected in advance were not reached.'
+      pruefungen:
+      - name: error (interior points) drops by a factor > 100 from n=16 to n=128
+      - name: no stagnation (maximum error drops by ≥ 10 % at every step from n=16 on)
+      - name: algebraic decay n^p fits better than geometric e^{−cn}
 - art: experiment
   id: exp.cheta
-  quelle_hash: f4d464924f63
+  quelle_hash: e280cabd2e62
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Upper super-exponential functions (√2 at 4, cheta at η) and Szekeres' monotonicity
-    frage: Does the upper solution at 4, respectively the Fatou coordinate from above at e, satisfy the tetration equation with the correct values
-      and asymptotes, and is the Abel function of e^u − 1 totally monotone, a perturbed one not?
+    titel: Upper superexponential functions (√2 at 4, cheta at η) and Szekeres' monotonicity
+    frage: Does the upper solution at 4 and the Fatou coordinate from above at e, respectively, satisfy the tetration equation with the correct
+      values and asymptotes, and is the Abel function of e^u − 1 totally monotone, but a perturbed one not?
+    ergebnis:
+      zusammenfassung: 'usexp_√2(1/2) = 5.27364736917811 (entire, period 19.2361i); cheta(1/2) = 9.68935067535323, C_ch = -1.25696115887251; cheta(x)
+        − e ≈ 2e/|x| as x → −∞. Szekeres: Abel function of e^u − 1 totally monotone up to order 8, perturbation 0.001·sin 2πA violates this at
+        u = 0.0025.'
+      pruefungen:
+      - name: '√2 upper: usexp(0) = 5, usexp(1) = √2⁵, usexp(−1) = log_√2 5'
+      - name: '√2 upper: equation usexp(z+1) = √2^usexp(z) also in the complex case (z = 0.3 + 2i)'
+      - name: '√2 upper: periodic with 2πi/ln λ₄ (period 19.24 i)'
+      - name: '√2 upper: usexp(x) → 4 as x → −∞ (distance at x = −30 like λ₄^x)'
+      - name: constant C_ch = lim Φ(Z(cheta(−n))) + n stable (n = 2500 … 20000)
+      - name: cheta(−1) = 2e, cheta(0) = e², cheta(1) = e^e (recovered from the Fatou coordinate)
+      - name: cheta(1/2) independent of the depth (N = 1000 versus 3000)
+      - name: equation cheta(x+1) = η^cheta(x) at x = −0.3
+      - name: cheta(x) ≈ e + 2e/|x| as x → −∞
+      - name: 'control, lower solution: T_η(1/2) = 1.25715307505…'
+      - name: 'Szekeres: A′ > 0, A″ < 0, A‴ > 0, … up to the 8th derivative (u = 0.05 … 10)'
+      - name: Abel equation A(e^u − 1) = A(u) + 1 (u = 0.7)
+      - name: perturbed Abel function A + 0.001·sin 2πA violates this already at the 2nd derivative (near 0)
 - art: experiment
   id: exp.eta_baker
-  quelle_hash: ab430ec100e4
+  quelle_hash: 8291679257c3
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -83,40 +178,118 @@
   en:
     titel: exp_η ↔ e^u − 1 and divergent half-iterates
     frage: Is the conjugation exact? How do the coefficients of the formal half-iterate grow?
+    ergebnis:
+      zusammenfassung: 'Conjugation exact (residual 9.0e-60). Half-iterate: c_2 = 1/4, c_3 = 1/48, …; |c_n|^(1/n) grows from 0.196 (n=10) to 1.630
+        (n=60) — divergent, as in Baker.'
+      pruefungen:
+      - name: η^{e+eu} = e + e(e^u − 1) at 20 complex random points
+      - name: g∘g = e^u − 1 exact up to degree 60
+      - name: known initial coefficients c_2 = 1/4, c_3 = 1/48
+      - name: '|c_n|^{1/n} grows (n = 30 → 60) — no finite radius of convergence visible'
 - art: experiment
   id: exp.eta_digamma
-  quelle_hash: ff74a69d7e2b
+  quelle_hash: d3aac3fef0ce
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Base η — reciprocal coordinate, C_T, digamma; reciprocal tower sums
-    frage: What value does C_T have, is the digamma decomposition of the fractional sum at η correct including the constant, and does the first
+    frage: What is the value of C_T, does the digamma decomposition of the fractional sum at η including the constant hold, and does the first
       term of the reciprocal sum dominate above η?
+    ergebnis:
+      zusammenfassung: 'Base η: C_T = 2.7982481542313876625 (from integer heights), T_η(1/2) = 1.257153075054173, Σ_k[T(k) − e + 2e/k] = 10.79756227493931,
+        Σ T′(k) = 1.4502290173934; digamma decomposition confirmed. C_2 = 0.8125152587890625, C_e = 0.4338677391894938.'
+      pruefungen:
+      - name: 'exact transformations: q(x+1) = (1 − e^{−2q})/2 and Z(x+1) = 1 + coth(1/Z)'
+      - name: C_T = lim Φ(Z(n)) − n is stable (n = 2500 … 20000)
+      - name: asymptotics Z(n) = n + (1/3) log n + C_T + O(log n / n)
+      - name: Fatou coordinate independent of the iteration depth (N = 1000 vs 3000)
+      - name: 'fractional sum: S(3/2) − S(1/2) = T(3/2)'
+      - name: 'fractional sum at an integer argument: S(3) = T(1) + T(2) + T(3)'
+      - name: regularized series Σ_k [T(k) − e + 2e/k] with tail stable (10⁴ vs 2·10⁴ terms)
+      - name: 'digamma decomposition: S(x) = e x − 2e(ψ(x+1)+γ) + Σ_k[T(k) − e + 2e/k] − 2e((log x + 1)/3 + C_T)/x + …'
+      - name: T′(n) via the transfer formula = T′ from the Fatou asymptotics (n = 20000)
+      - name: Σ_{k≥1} T′(k) converges (T′(k) ≈ 2e/k²)
+      - name: C_2 = 1/2 + 1/4 + 1/16 + 1/65536 + … = 0.8125152587890625 + 2^{−65536} + …
+      - name: 'above η: C_b − R_b(x) = Σ_m b^{−T(x+m)}, first term dominates (ratio → 1, base 2, x = 1/2, 3/2, 5/2)'
 - art: experiment
   id: exp.fixpunkte
-  quelle_hash: 5e45a914c1cf
+  quelle_hash: 914c832f8a22
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Fixed points of b^z via Lambert W
-    frage: Do the fixed-point formula, multipliers and minimum formula agree numerically? Which branch gives Im L > 0?
+    frage: Do the fixed-point formula, multipliers and minimum formula hold numerically? Which branch gives Im L > 0?
+    ergebnis:
+      zusammenfassung: Fixed points via W_0/W_{−1} with residual < 1e-50; for b > η all checked |λ| > 1; minimum formula confirmed exactly.
+      pruefungen:
+      - name: 'b=1.2, W_0: b^L = L'
+      - name: 'b=1.2: lower fixed point real, 0 < λ < 1'
+      - name: 'b=1.2, W_-1: b^L = L'
+      - name: 'b=1.2: upper fixed point real, λ > 1'
+      - name: 'b=1.3, W_0: b^L = L'
+      - name: 'b=1.3: lower fixed point real, 0 < λ < 1'
+      - name: 'b=1.3, W_-1: b^L = L'
+      - name: 'b=1.3: upper fixed point real, λ > 1'
+      - name: 'b=1.4142, W_0: b^L = L'
+      - name: 'b=1.4142: lower fixed point real, 0 < λ < 1'
+      - name: 'b=1.4142, W_-1: b^L = L'
+      - name: 'b=1.4142: upper fixed point real, λ > 1'
+      - name: 'b=1.44, W_0: b^L = L'
+      - name: 'b=1.44: lower fixed point real, 0 < λ < 1'
+      - name: 'b=1.44, W_-1: b^L = L'
+      - name: 'b=1.44: upper fixed point real, λ > 1'
+      - name: 'b=1.5, W_0: b^L = L'
+      - name: 'b=1.5, W_0: |λ| > 1 (repelling)'
+      - name: 'b=1.5, W_-1: b^L = L'
+      - name: 'b=1.5, W_-1: |λ| > 1 (repelling)'
+      - name: 'b=2.0, W_0: b^L = L'
+      - name: 'b=2.0, W_0: |λ| > 1 (repelling)'
+      - name: 'b=2.0, W_-1: b^L = L'
+      - name: 'b=2.0, W_-1: |λ| > 1 (repelling)'
+      - name: 'b=2.7183, W_0: b^L = L'
+      - name: 'b=2.7183, W_0: |λ| > 1 (repelling)'
+      - name: 'b=2.7183, W_-1: b^L = L'
+      - name: 'b=2.7183, W_-1: |λ| > 1 (repelling)'
+      - name: 'b=3.0, W_0: b^L = L'
+      - name: 'b=3.0, W_0: |λ| > 1 (repelling)'
+      - name: 'b=3.0, W_-1: b^L = L'
+      - name: 'b=3.0, W_-1: |λ| > 1 (repelling)'
+      - name: 'b=10.0, W_0: b^L = L'
+      - name: 'b=10.0, W_0: |λ| > 1 (repelling)'
+      - name: 'b=10.0, W_-1: b^L = L'
+      - name: 'b=10.0, W_-1: |λ| > 1 (repelling)'
+      - name: 'b=1.2: min(b^x − x) = (1+ln ln b)/ln b'
+      - name: 'b=1.44467: min(b^x − x) = (1+ln ln b)/ln b'
+      - name: 'b=2.0: min(b^x − x) = (1+ln ln b)/ln b'
+      - name: 'b=10.0: min(b^x − x) = (1+ln ln b)/ln b'
+      - name: L_e = −W_{−1}(−1) = 0.3181315… + 1.3372357… i (Im > 0)
+      - name: −W_0(−1) is the conjugate fixed point (Im < 0)
 - art: experiment
   id: exp.forum_formeln
-  quelle_hash: bfd52b54f723
+  quelle_hash: 99cadd20c23c
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Fixed-point sums, Newton series, tower series in ln x and i^i^i^…
-    frage: Are four formulas from the tetration forum correct?
+    frage: Are four formulas from the Tetration Forum correct?
+    ergebnis:
+      zusammenfassung: Fox's rational fixed-point sums follow from (e^z−1)/(e^z−z); the Newton series of the integer iterates hits the regular
+        tetration; x↑↑n agrees with the infinite tower up to (ln x)^n; i^i^i^… = 0.43828 + 0.36059i.
+      pruefungen:
+      - name: Fox's numerators = −(m−1)!·[z^(m−1)] (e^z−1)/(e^z−z) for m = 2 … 11
+      - name: Σ L_k^(−m) over 8000 fixed points hits −1, −1/2, 1/3, 3/8, −1/20 up to the tail (error < tail size)
+      - name: Newton series of the integer iterates at h = ½ → regular √2 tetration (distance decreases with N)
+      - name: x↑↑n and the infinite tower h(ln x) agree exactly up to (ln x)^n, no longer from (ln x)^(n+1) on (n = 1 … 7)
+      - name: i^i^i^… = (2i/π)·W(−iπ/2) = 0.4382829… + 0.3605924…i; multiplier |λ| < 1, iteration converges
 - art: experiment
   id: exp.forum_iteration
-  quelle_hash: f7246a3b6d5b
+  quelle_hash: c510696fc682
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -124,50 +297,131 @@
   en:
     titel: Elementary superfunctions, Möbius model, TPID 9 and 13
     frage: Are the elementary superfunctions correct, is the Möbius family smooth through the parabolic case, do TPID 9 and 13 converge?
+    ergebnis:
+      zusammenfassung: Nine elementary superfunctions confirmed; Möbius family analytic through the parabolic case; TPID 9 converges; TPID 13
+        numerically plausible.
+      pruefungen:
+      - name: nine elementary superfunctions satisfy F(t+1) = f(F(t)) (relative)
+      - name: 'Möbius family: half-iterate real for ε < 0, = 0, > 0 and smooth in ε through the parabolic case'
+      - name: 'TPID 9 (Trappmann 2010): a''_n → (b−1)/ln b for b = 2, slow and fluctuating (|distance| < 5·10⁻⁵ from n = 80 on)'
+      - name: 'TPID 13: Newton interpolation of m^(1/m) approximates x^(1/x) at x = 2.5 and 7.5 (distance decreases with N)'
 - art: experiment
   id: exp.forum_rand
-  quelle_hash: 9b621e8c4dbb
+  quelle_hash: 7fb37d61aac1
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Ackermann, exponential factorial, borderline cases, quadratic approximation, neighboring tower
-    frage: Are the minor forum statements correct?
+    titel: Ackermann, exponential factorial, borderline cases, quadratic approximation, neighbor tower
+    frage: Are the smaller forum statements correct?
+    ergebnis:
+      zusammenfassung: Ackermann A(4,n) = 2↑↑(n+3) − 3, f₃ ≥ 2↑↑n, Σ1/EF(n) = 1.6111149258…, borderline cases at 0, quadratic approximation C¹
+        not C², neighbor tower = ln x/W(ln x).
+      pruefungen:
+      - name: A(m, n) for m ≤ 3 closed form = recursion; A(4, n) = 2↑↑(n+3) − 3 for n = 0, 1, 2
+      - name: f₃(n) ≥ 2↑↑n for n = 1, 2, 3 (f₃(3) = x·2^x with x = 402653184·2^402653184)
+      - name: 'Σ 1/EF(n) = 1.61111492580837673611…, partial sum up to n = 4 matches to 10^−183000 (Liouville: exponent k > 10⁴)'
+      - name: 'x↑↑n at x = 10⁻⁴⁰: even n near 1, odd near 0 (slowly: x^x = e^{x ln x})'
+      - name: 'quadratic approximation: T(−1) = 0, C¹ at 0, but not C²; ½-value to base 2 = 1.45933 (Kneser 1.45878)'
+      - name: 'neighbor tower = ln x / W(ln x) (x = 0.8, 2, e, 10); at x = e: 1/Ω = 1.7632228343…'
+      - name: at x = 20 > e^e it does not converge (oscillates)
 - art: experiment
   id: exp.funde
-  quelle_hash: 23d492d279b8
+  quelle_hash: 6aa78fb371c3
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Recomputation of the rediscovered investigations (July/August 2026)
-    frage: Do the key numbers of the three originals (shared fixed point, imaginary direction, period-2 region) agree with independent code?
+    titel: Recomputation of the recovered studies (July/August 2026)
+    frage: Do the core numbers of the three originals (shared fixed point, imaginary direction, period-2 region) agree with independent code?
+    ergebnis:
+      zusammenfassung: 'Original numbers independently confirmed: −19/25 ↔ d = (1.425186736 - 0.04620336949j), σ = (-0.2004608936 + 0.003486040177j),
+        residual quotient → λ_d; A_e(L_2), K₁, A_2(L_e) (up to the branch); b_links = (-0.08052815762548356 - 9.423207371442147e-52j); cusp constants;
+        square wave |c_k|πk = |zA − zB|.'
+      pruefungen:
+      - name: 'b = −19/25: exactly one partner (m = +1), L, d and σ as in the original'
+      - name: 'residual A_b(T_d(n)) − σ·A_d(T_d(n)): quotient of consecutive values → λ_d'
+      - name: pseudo-period 2π/|arg λ_d| = 21.908, damping per period 3.128e-4 (original)
+      - name: A_e(L_2) = 0.326448651628991 + 0.523513968909648i (up to the branch 2πi/Log λ_e)
+      - name: K₁ = A_e'(L_2) = −0.0305475246507711 − 1.291981944842259i
+      - name: conversely A_2(L_e) = −2.664068065075642 + 0.043403036394983i
+      - name: 'real bases: arg λ = Im λ (decay rate in the imaginary direction), rotation rate log log d + Re λ'
+      - name: 'closed form: z1 = e^v, z2 = e^u is a 2-cycle of e^{cz}, μ = uv = (s/(2 sinh(s/2)))², c = u e^{−v}'
+      - name: left boundary point b_links = −0.0805281576254835628 (|μ| = 1 and Im c = π)
+      - name: 'at the cusp: (1 − μ)/t → 2/e, |z1 − z2|/√t → 2√6 e^{−3/2}'
+      - name: 'cusp b = e^{−e}: |z_n − 1/e|·√n → √6/e = 0.9011169177 (n = 10⁶: original 0.901664)'
+      - name: 'real below e^{−e}: cycle multiplier always in (0, 1) — no period doubling on the axis'
+      - name: 'square wave: T(x + 80) has |c_k|·πk = |zA − zB| = 0.7651944057 (odd k), even modes ≈ 0'
+      - name: 'crossing theorem: T(x*) = L (x* from the starting interpolation), then T(x* + n) = L for all n'
 - art: experiment
   id: exp.gleiches_L
-  quelle_hash: 7a587fb67eb1
+  quelle_hash: d0ac68651399
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Bases with a common fixed point and base change there
-    frage: Which real bases share a fixed point, how do their towers run, and is A_b(T_d(x)) at the common L a line without wave?
+    titel: Bases with a common fixed point and base change at it
+    frage: Which real bases share a fixed point, how do their towers run, and is A_b(T_d(x)) at the common L a straight line without a wave?
+    ergebnis:
+      zusammenfassung: 'Bases with a common L form families u_k = (Log L + 2πik)/L. Real: e^{π/2+2πk} (L = i), −exp((π/2+2πk)π/W(π)) (L = i·W(π)/π)
+        and 8 mixed pairs. At the common L, α_b(T_d(x)) = C1 + C2 x + O(λ_d^x), C2 = log λ_d/log λ_b — no persistent wave; with different L, α_b(T_d)
+        becomes constant.'
+      pruefungen:
+      - name: 'family: u_k = (Log L + 2πik)/L all have the same fixed point L (L = L_e, k = −3…3)'
+      - name: multipliers of the family differ by 2πi
+      - name: 'real pairs: e^{π/2+2πk} share L = i; −exp((π/2+2πk)π/W(π)) share L = i·W(π)/π'
+      - name: mixed pairs (positive and negative real base with the same L) found and recomputed
+      - name: 'e^{π/2} ← e^{5π/2} (L = i): α_b(T_d(x)) − (C1 + C2 x) decays like |λ_d|^x (rate 2.06102 vs ln|λ_d| = 2.06102)'
+      - name: 'e^{π/2} ← e^{5π/2} (L = i): first correction a1·λ_d^x·w/log λ_b is correct (x ≤ −10)'
+      - name: 'e^{π/2} ← e^{5π/2} (L = i): best-fit line on [−12, −8] has slope log λ_d/log λ_b'
+      - name: 'e^{π/2} ← e^{−3π/2} (L = i, partner on the left): α_b(T_d(x)) − (C1 + C2 x) decays like |λ_d|^x (rate 1.55019 vs ln|λ_d| = 1.55019)'
+      - name: 'e^{π/2} ← e^{−3π/2} (L = i, partner on the left): first correction a1·λ_d^x·w/log λ_b is correct (x ≤ −10)'
+      - name: 'e^{π/2} ← e^{−3π/2} (L = i, partner on the left): best-fit line on [−12, −8] has slope log λ_d/log λ_b'
+      - name: '√2 ← −√2 (L = 2): α_b(T_d(x)) − (C1 + C2 x) decays like |λ_d|^x (rate 1.84393 vs ln|λ_d| = 1.84393)'
+      - name: '√2 ← −√2 (L = 2): first correction a1·λ_d^x·w/log λ_b is correct (x ≤ −10)'
+      - name: '√2 ← −√2 (L = 2): best-fit line on [−12, −8] has slope log λ_d/log λ_b'
+      - name: 'e ← e^{1−2πi/L_e} (L = L_e): α_b(T_d(x)) − (C1 + C2 x) decays like |λ_d|^x (rate 1.60063 vs ln|λ_d| = 1.60063)'
+      - name: 'e ← e^{1−2πi/L_e} (L = L_e): first correction a1·λ_d^x·w/log λ_b is correct (x ≤ −10)'
+      - name: 'e ← e^{1−2πi/L_e} (L = L_e): best-fit line on [−12, −8] has slope log λ_d/log λ_b'
+      - name: '2.0841 ← -1659.6 (mixed): α_b(T_d(x)) − (C1 + C2 x) decays like |λ_d|^x (rate 2.61797 vs ln|λ_d| = 2.61797)'
+      - name: '2.0841 ← -1659.6 (mixed): first correction a1·λ_d^x·w/log λ_b is correct (x ≤ −10)'
+      - name: '2.0841 ← -1659.6 (mixed): best-fit line on [−12, −8] has slope log λ_d/log λ_b'
+      - name: 'Control test, different fixed points (e^{π/2} versus e): slope decays like |λ_e|^x toward 0 — α_b(T_d(x)) becomes constant, not
+          linear'
+      - name: 'exactly linear impossible for b ≠ d: f_b and f_d do not commute (witness at z = 0.3 + 0.9i)'
 - art: experiment
   id: exp.grundlagen_identitaeten
-  quelle_hash: 954a9b0c7b9c
+  quelle_hash: 4b43ef17e95b
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Swap rule, Taylor ladder, ladder of levels, free and fixed, exponentiality
-    frage: Do the solution-independent identities hold at Kneser values (bases 2 and e) and for pentation, and does slog f(x) − slog x count the
-      exponentials?
+    frage: Do the solution-independent identities hold for Kneser values (bases 2 and e) and for pentation, and does slog f(x) − slog x count
+      the exponentials?
+    ergebnis:
+      zusammenfassung: Swap rule, Taylor ladder (Bell polynomials), ladder of levels ln ln a = m-th difference of ln H′, free-and-fixed under
+        T∘(id+p) and exponentiality via slog confirmed for Kneser values.
+      pruefungen:
+      - name: 'swap rule T(x+1)^T(y) = T(y+1)^T(x) = a^(T(x)T(y)) (base 2, x = 0.3, y = −0.6) and for integers: 16² = 4⁴, 65536² = 4¹⁶'
+      - name: 'base from two neighboring values: T(x+1)^(1/T(x)) = 2, and T(x+2) = T(x+1)^(T(x+1)/T(x)) without a'
+      - name: 'Taylor ladder: the 17 coefficients of T₂ around 1 follow from those around 0 (Miller recursion = Bell polynomials)'
+      - name: 'second level written out: T''''(x+1) = T(x+1)·(c·T''''(x) + c²·T''(x)²)'
+      - name: 'base exp(1): values of the pentation P(−2) = −1, P(−1) = 0, P(0) = 1, P(1) = a, P(2) = T(a)'
+      - name: 'base exp(1): ln ln a = 1st difference of ln T′ = 2nd difference of ln P′ (at 0, −1, −2), P′(0)/P′(−1) = T′(0), P′(−1)/P′(−2) =
+          T′(−1)'
+      - name: 'base 2: values of the pentation P(−2) = −1, P(−1) = 0, P(0) = 1, P(1) = a, P(2) = T(a)'
+      - name: 'base 2: ln ln a = 1st difference of ln T′ = 2nd difference of ln P′ (at 0, −1, −2), P′(0)/P′(−1) = T′(0), P′(−1)/P′(−2) = T′(−1)'
+      - name: 'perturbed tetration T(x + p(x)) (p 1-periodic, p(0) = 0): ratios over distance 1 stay the same (1, 1, e)'
+      - name: …but value and slope at ½ and the slope at 0 change
+      - name: 'exponentiality: slog f(x) − slog x at x = e↑↑2 … e↑↑6 tends to 0 (x², x^ln x) and 1 (2^x, x^x), respectively'
 - art: experiment
   id: exp.halbe_exp
-  quelle_hash: 7fff14016c3d
+  quelle_hash: 48122f173c45
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -175,42 +429,91 @@
   en:
     titel: The half-exponential function from Kneser's tetration
     frage: Does T(slog(x) + ½) satisfy f(f(x)) = eˣ, where are the zero and the singularity, how fast does f grow?
+    ergebnis:
+      zusammenfassung: 'f = exp^[1/2] via Kneser: f(f(x)) = eˣ to 1e-28, f(0) = 0.498563287941, f(1) = 1.64635423375, zero -0.696024740886.'
+      pruefungen:
+      - name: f(f(x)) = e^x at 7 points in [−1.5, 3] (relative)
+      - name: f(0) = T(−½) = ln f(1), f(1) = T(½) = 1.6463542337…
+      - name: only real zero of f at x = T(−3/2) = −0.6960247…
+      - name: T(−5/2) = −0.36237… + iπ (location of the singularity of f above the axis)
+      - name: ln f(x)/ln x grows without bound along x = T(2), T(3), T(4) (faster than any polynomial)
 - art: experiment
   id: exp.halbexp_korridor
-  quelle_hash: e8643efb0d2a
+  quelle_hash: c17364629cf9
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Shape of slog(D) and the corridor for the uniqueness of the half-exponential function
-    frage: Is slog(D) horizontally convex, bounded to the right and everywhere wider than 1.5 + ½, and do the polynomial roots map the corridor
+    frage: Is slog(D) horizontally convex, bounded on the right and wider than 1.5 + ½ everywhere, and do the polynomial roots map the corridor
       {z ∈ D with f_K(z) ∈ D} into D?
+    ergebnis:
+      zusammenfassung: Ω = slog(D) is horizontally convex, Re ≤ 0.31218, width ≥ 2.067 (above → 2.3495), left boundary with slope −0.238; the
+        corridor Ω ∩ (Ω − ½) is wider than 1 everywhere, and the polynomials p_N map it into D.
+      pruefungen:
+      - name: '(G1) Re slog on the boundary of D at most c_R = slog(|L|) = 0.31218 (hence on all of D: maximum principle)'
+      - name: '(G2a) right arc rises, left one falls in Im: every height meets each arc once — Ω is horizontally convex'
+      - name: (G2b) width of Ω at every height ≥ 2.0, hence Ω ∩ (Ω − ½) wider than 1 (computed up to y = 13.6)
+      - name: 'asymptotically: width → π/Im(L) = 2.3495 (two parallel lines from A ≈ log(z − L)/L)'
+      - name: (G3) left boundary x_links(y) ≥ −2 − 0.24·y; slope above → −Re(L)/Im(L) = −0.2379
+      - name: 'corridor: for w ∈ Ω ∩ (Ω − ½) the points z = T_K(w) and f_K(z) = T_K(w + ½) lie in D (117 grid points, 0 ≤ Im w ≤ 6)'
+      - name: 'the polynomials p_N map the same points into D: max |p_N(z)|/|L| < 1 (N = 20, 40, 60, 100), distance to f_K decreases'
 - art: experiment
   id: exp.hexation
-  quelle_hash: 0828c6253d73
+  quelle_hash: e2750a7ef830
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Hexation — regular below η₅, structure, infinite hexation, fixed points of pentation to base 2
-    frage: Can hexation be built regularly below η₅, where is its singularity, does the infinite hexation converge exactly up to η₅, and which
-      complex fixed points does pentation to base 2 have?
+    frage: Can the hexation below η₅ be built regularly, where is its singularity, does the infinite hexation converge exactly up to η₅, and which
+      complex fixed points does the pentation to base 2 have?
+    ergebnis:
+      zusammenfassung: 'Regular hexation below η₅: 1.5↑↑↑↑½ = 1.32331315362, 1.5↑↑↑↑∞ = 1.63659373391, 1.6↑↑↑↑½ = 1.36258513424, 1.6↑↑↑↑∞ = 1.88635097523,
+        1.7↑↑↑↑½ = 1.39744726135, 1.7↑↑↑↑∞ = 2.3876372817; H(−3) = −2, singularity at s ∈ (−4, −3); above η₅ no real fixed point of the pentation;
+        base 2: p attracting, q repelling.'
+      pruefungen:
+      - name: 'integer heights: H(0) = 1, H(1) = b, H(−1) = 0, H(−2) = −1, H(−3) = −2 (three bases)'
+      - name: H(2) = P(b) and P(H(½)) = H(1½)
+      - name: 'bounded: H(x) → p₁ as x → ∞ (H(25) − p₁ like μ^25)'
+      - name: 'attracting: 0 < μ = P′(p₁) < 1'
+      - name: strictly increasing on (−2.75, 6]
+      - name: 'singularity s_b ∈ (−4, −3): there H tends to −∞ (H(s_b + 10⁻⁶) < −5)'
+      - name: 1.7↑↑↑↑n = P^n(1) increases monotonically to p₁ = 1.7↑↑↑↑∞
+      - name: 'above η₅ (1.74 on [−3, 4], 2 on [−3, 2.5]): P(x) > x — no real fixed point, the infinite hexation diverges'
+      - name: 'base 2: fixed point p = 1.79373 + 1.57363i is attracting (|μ| = 0.6087)'
+      - name: 'base 2: fixed point q = −1.99295 + 1.44513i is repelling (|μ| = 2.84)'
 - art: experiment
   id: exp.hexation_kneser
-  quelle_hash: 1eb7023d4b05
+  quelle_hash: 04c56b875ce4
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Kneser-like hexation above η₅ (base 2) and η₆, e₆ — hexation touches y = x
-    frage: What values does the Kneser-like hexation to base 2 have (engine knhexinit in the gp-tetration fork), at which base does hexation touch
-      the line y = x, and how do η₆, e₆ fit TPID 10/11?
+    titel: Kneser-like hexation above η₅ (base 2) and η₆, e₆ — the hexation touches y = x
+    frage: What values does the Kneser-like hexation to base 2 have (engine knhexinit in the gp-tetration fork), at which base does the hexation
+      touch the line y = x, and how do η₆, e₆ fit TPID 10/11?
+    ergebnis:
+      zusammenfassung: 2↑↑↑↑1.5 = 2.6728939593426194892 (Kneser at q, 31.9 digits); η₆ = 1.7991212361288126867, e₆ = 3.44223464771689; Etas 1.44467,
+        1.63532, 1.73736, 1.79912; Eulers 2.71828, 3.08853, 3.30141, 3.44223.
+      pruefungen:
+      - name: base 2 takes the Kneser path (hexreg = 2) with at least 30 digits (error vector of two arcs)
+      - name: 'integer heights: H(−3) = −2, H(−2) = −1, H(−1) = 0, H(0) = 1, H(1) = 2, H(2) = 2↑↑↑2 = 4'
+      - name: 2↑↑↑↑1.5 agrees with Levenstein's 2.6729 (Tetration Forum tid 1263, 2020) to 4 digits
+      - name: fixed point q of the pentation repelling, |P'(q)| > 1 (Kneser needs this)
+      - name: H increases on (−2.75, 2]
+      - name: 'bracketing: H_1.78 has a real fixed point (min(H − x) < 0), H_1.80 has none (> 0); both Kneser'
+      - name: 'contact: H(e₆) = e₆, H''(e₆) = 1, H''''(e₆) > 0 at b = η₆'
+      - name: η₆ agrees with the control value at dps 45 to 25 digits
+      - name: 'TPID 11: η₆² < e₅'
+      - name: 'Etas increase: η < η₄ < η₅ < η₆ < 2'
+      - name: 'Eulers increase: e < e₄ < e₅ < e₆ < 4'
 - art: experiment
   id: exp.integrale
-  quelle_hash: fcc2bdf788c5
+  quelle_hash: 27f7a6ca5aef
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -218,30 +521,72 @@
   en:
     titel: Integral identities
     frage: Do the area identities hold to many digits, and is ∫₀¹ T_e a known constant?
+    ergebnis:
+      zusammenfassung: 'Kneser e: ∫₀¹T = 1.714521958890620488165975, ∫₁ᵉ slog = 1.0037598695684247472, ∫₋₁⁰T = 0.49921818282999133973; all identities
+        to ≤ 1e-28 (product form 1e-25). Regular √2: ∫₀¹T = 1.2315849732804049508. PSLQ without relation.'
+      pruefungen:
+      - name: 'Kneser e: quadrature stable (40 vs 30 nodes)'
+      - name: 'Kneser e: ∫_0^1 T + ∫_1^a A = a'
+      - name: 'Kneser e: ∫_-1^0 T = −∫_0^1 A'
+      - name: 'Kneser e: ∫_0^1 T = 1 − ln a·∫_0^1 a^u A(u) du'
+      - name: 'Kneser e: ∫_-1^0 T''(u)T(u+1) du = (e − 1)/ln e'
+      - name: 'regular √2: quadrature stable (40 vs 30 nodes)'
+      - name: 'regular √2: ∫_0^1 T + ∫_1^a A = a'
+      - name: 'regular √2: ∫_-1^0 T = −∫_0^1 A'
+      - name: 'regular √2: ∫_0^1 T = 1 − ln a·∫_0^1 a^u A(u) du'
+      - name: PSLQ too coarse (coeff. ≤ 1e5 at 30 digits) yields only a spurious relation (remainder large at 40 digits)
+      - name: 'PSLQ (38 digits, tolerance 1e-31, coeff. ≤ 1e3): no genuine relation of ∫_0^1 T_e to 1, e, e², π, γ, ln 2, Re L, Im L'
 - art: experiment
   id: exp.koenigs_basiswechsel
-  quelle_hash: 191988b0bec6
+  quelle_hash: 2fa19ea30671
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Linear base change via Koenigs coordinates
-    frage: Does Ψ map the orbit of one base onto every k-th point of the spiral of another, and is the height exactly linear in doing so?
+    frage: Does Ψ map the orbit of one base onto every k-th point of the spiral of another, and is the height exactly linear in the process?
+    ergebnis:
+      zusammenfassung: '√2 and d = 1.346032931 (λ_d = (ln 2)²): Ψ conjugates f_d to f_√2∘f_√2; Koenigs height exactly 2x; arbitrary ratio 1.7
+        likewise linear. Complex spirals: Ψ maps the d-orbit onto every second b-point.'
+      pruefungen:
+      - name: 'recipe: λ = ln 2 gives the base √2 with fixed point 2'
+      - name: conjugation f_√2 ∘ f_√2 ∘ Ψ = Ψ ∘ f_d (d = 1.3460329) on the orbit tail
+      - name: 'Koenigs height: H_√2(Ψ(T_d(x))) = 2x exactly (x = 0.5, 1.25, 3.5)'
+      - name: 'arbitrary ratio: λ_d = λ_b^{1.7} ⇒ height linear with slope 1.7'
+      - name: naive comparison of the values (height_√2 of T_d(x)) tends to a constant — no base change in the phase sense
+      - name: 'complex spirals: Ψ(z_{d,n}) = z_{b,2n} for n = 10…25'
 - art: experiment
   id: exp.koenigs_kalkuel
-  quelle_hash: 24aa006d7ce0
+  quelle_hash: 778bd8036a42
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Koenigs calculus, value-side and quasiconformal base change
-    frage: Are the spectral series, Lambert fractional sum, derivative/integral/shift calculus, the power law T_b∘A_d, the Jacobian formula and
-      the quasiconformal base change correct?
+    frage: Do the spectral series, Lambert fractional sum, derivative/integral/shift calculus, the power law T_b∘A_d, the Jacobian formula and
+      the quasiconformal base change hold?
+    ergebnis:
+      zusammenfassung: Spectral series, derivative, integral and shift calculus and Lambert fractional sum confirmed for √2. K = T_√2∘A_1.3 is
+        in Koenigs coordinates the power ρ = 0.38495759 (branching exponent measured 0.38495759); Jacobian formula via fractional sums confirmed.
+        Quasiconformal base change conjugates, but is holomorphic only for equal multiplier. Normal form e^w + κ confirmed.
+      pruefungen:
+      - name: 'spectral series: a + Σ c_n λ^{nx} = regular tetration (x = 6, 9)'
+      - name: 'differentiating ↔ factor n·log λ: spectral T′(6) = 1/slog′(T(6))'
+      - name: c₂ = ln b·c₁²/(2(λ − 1)) (formula of the synthesis)
+      - name: 'shift sum ↔ 1/(1 − λ^n): Σ_k T′(6+k) via transfer formula = Lambert series'
+      - name: fractional sum in Lambert form = direct fractional sum (x = 6, h = 1/2)
+      - name: 'integrating ↔ 1/(n log λ): ∫_6^∞ (T − a) dt = −Σ c_n λ^{6n}/(n log λ)'
+      - name: 'value-side: χ_√2(K(y)) = χ_1.3(y)^ρ with ρ = log λ_b/log λ_d = 0.38495759'
+      - name: 'branching at the repelling fixed point: K(y) − a_b ≈ C·(a_d − y)^ρ'
+      - name: 'Jacobian formula: log K′ changes by h·log(ln b/ln d) + ln b·Σ_b − ln d·Σ_d'
+      - name: 'quasiconformal: K ∘ f_d = f_b ∘ K (return maps conjugate, time preserved)'
+      - name: 'obstruction: K is not holomorphic (∂K/∂z̄ ≠ 0), but holomorphic for equal multiplier'
+      - name: 'normal form: H(z) = cz + κ conjugates e^{cz} to e^w + κ, and H(1) = E_κ(κ) (tower = singular orbit)'
 - art: experiment
   id: exp.kongruenz
-  quelle_hash: be61e52c71ac
+  quelle_hash: e173090dd71b
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -249,20 +594,38 @@
   en:
     titel: Stable final digits of towers
     frage: Does a↑↑n mod 10^k become constant, and does V(a) = v₂(a²−1) − 1 hold for a ≡ 5 (mod 10)?
+    ergebnis:
+      zusammenfassung: 'V(a) determined for 359 bases (40 digits). Formula v₂(a²−1)−1 for a ≡ 5 (mod 10): 40/40 hits.'
+      pruefungen:
+      - name: modular computation = exact towers (small cases)
+      - name: congruence speed stabilizes for ≥ 95 % of a ≤ 400
+      - name: formula V(a) = v₂(a²−1) − 1 for all 40 bases a ≡ 5 (mod 10)
 - art: experiment
   id: exp.lambert_zeta
-  quelle_hash: 2c8fa17ae5f1
+  quelle_hash: 37b554e13e8a
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Lambert → digamma as b → η, continuity at η
-    frage: Is the Lambert fractional sum a q-digamma function, do T_b(1/2) and S_b(1/2) tend to the η values as b → η, and do the slopes match
-      from both sides?
+    frage: Is the Lambert fractional sum a q-digamma function, do T_b(1/2) and S_b(1/2) tend to the η values as b → η, and do the slopes from
+      both sides match?
+    ergebnis:
+      zusammenfassung: 'Möbius model: Lambert fractional sum = q-digamma (q = λ), limit ψ. True regular tetration: T_b(1/2) → T_η(1/2) (order
+        2.0 in 1 − λ), S_b(1/2) → S_η(1/2). Kneser from above: η+1e-1: 0.0421, η+1e-2: 0.00437, η+1e-3: 0.000438.'
+      pruefungen:
+      - name: 'Möbius model: fractional sum = q-digamma formula with q = λ (λ = 0.9)'
+      - name: ψ_q(z) → ψ(z) as q → 1 (linear in 1 − q)
+      - name: 'limit passage in the model: (A − a)/ln λ → −2e, s → 2e/(e − 1), S^M(1/2) → e/2 − 2e[ψ(3/2+Z0) − ψ(1+Z0)]'
+      - name: 'from below: regular T_b(1/2) → T_η(1/2) for b ↑ η, linear in η − b (order 2 in δ = 1 − λ)'
+      - name: 'Lambert fractional sum → digamma fractional sum: S_b(1/2) → S_η(1/2)'
+      - name: 'remainder true − Möbius converges to the η remainder (the part the model does not capture: (1/3) log k and C_T)'
+      - name: 'from above: Kneser T_b(1/2) → T_η(1/2) for b ↓ η'
+      - name: slope dT_b(1/2)/db at η equal from below and from above (numerically C¹ in the base)
 - art: experiment
   id: exp.ln_basis
-  quelle_hash: d8a09269ae97
+  quelle_hash: de21840948d1
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -271,20 +634,47 @@
     titel: ln b from slopes and the derivative with respect to the base
     frage: Does ln b = T′(0)/T′(−1) = slog′(0)/slog′(1) hold independently of the solution, and does the Kneser base derivative satisfy the linear
       step equation?
+    ergebnis:
+      zusammenfassung: 'ln b = T′(0)/T′(−1) = slog′(0)/slog′(1) and the second/third-order forms confirmed for Kneser b = 2, e, 10, also for a
+        perturbed solution; b₇ ⇔ inflection point at −1; base derivative: sum formula for integer heights and the linear difference equation at
+        fractional height confirmed.'
+      pruefungen:
+      - name: ln b = T'(0)/T'(−1) = slog'(0)/slog'(1) (Kneser, b = 2, e, 10)
+      - name: ln b = (T''(0) − T'(0)²)/T''(−1) and (ln b)² = slog''(0)/(slog'(1) + slog''(1))
+      - name: (ln T)'''(0) = ln b · T'''(−1)
+      - name: 'perturbed solution T(x + 0.05 sin 2πx): T~''(0) ≠ T''(0), but T~''(0)/T~''(−1) = 1 = ln e'
+      - name: at b₇ = 10.2210634157814… (TPID 7) T has an inflection point exactly at −1
+      - name: ∂_b(b↑↑n) = Σ T(k)(ln b)^(n−k−1)∏T(j)/b equals the recursion (4 bases, n = 1…4)
+      - name: D(x+1) = ln b·T(x+1)·D(x) + T(x+1)T(x)/b and D(0) = 0 (Kneser b = 2, e; x = −½, ¼, ½)
+      - name: u = D/T′ has the increment T(x)/(b ln b T′(x))
+      - name: '∂_b slog: G(0) = G(1) = 0, G(b^y) = G(y) − y slog''(y)/(b ln b), G(b) = −slog''(b) (b = 2)'
 - art: experiment
   id: exp.mittelwerte
-  quelle_hash: 6ffe99ec5d9e
+  quelle_hash: 92cbf6e13532
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Means over bases and over time
-    frage: Do Theorem 1 and Corollary 2 of the January note hold? Does the circle mean also hold at height 1/2? Does the time average tend to
-      the fixed point in the Siegel case?
+    titel: Averages over bases and over time
+    frage: Do Theorem 1 and Corollary 2 of the January note hold? Does the circle average also hold at height 1/2? Does the time average in the
+      Siegel case tend to the fixed point?
+    ergebnis:
+      zusammenfassung: 'Theorem 1 (integer heights) and Corollary 2 confirmed. For t = 1/2 the circle average deviates from 1 and depends on the
+        branch of λ^t: r=0.5, principal branch (−π, π]: (1.06186579 + 0.005130607658j); r=0.5, branch [0, 2π): (0.9919212687 - 0.08162539321j);
+        r=0.8, principal branch (−π, π]: (1.10575579 + 0.006400529086j); r=0.8, branch [0, 2π): (0.9861848451 - 0.1602791183j). Siegel case: Cesàro
+        error 2.8e-06 at N = 2·10⁵.'
+      pruefungen:
+      - name: 'Theorem 1: average of T_b(w)(n) over |w| = 1.0 is 1 (n = 1, 2, 3, 5, 8)'
+      - name: 'Theorem 1: average of T_b(w)(n) over |w| = 0.6 is 1 (n = 1, 2, 3, 5, 8)'
+      - name: 'Corollary 2 at z = 2, n = 2: T_√2(n) from the boundary integral'
+      - name: 'Corollary 2 at z = 2, n = 3: T_√2(n) from the boundary integral'
+      - name: 'Counterexample: for t = 1/2 the average is not 1 (at least one case deviates by > 1e-3)'
+      - name: the average depends on the branch of λ^t (r = 0.5)
+      - name: 'Siegel case (golden angle): Cesàro average → fixed point, error decays roughly like 1/N'
 - art: experiment
   id: exp.moden
-  quelle_hash: 9d3841d83d04
+  quelle_hash: f4e944e19b24
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -292,41 +682,86 @@
   en:
     titel: Mode profiles and m(2) versions
     frage: Do the phases of different bases have the same mode shape? Do the stored m(2) values agree?
+    ergebnis:
+      zusammenfassung: 'Profile shape nearly the same across 2 bases (range ln ≤ 0.03 for k ≤ 6). m(2): phi_modes deviates by 8.5e-37, mu_hub
+        by 1.8e-31 from the 180-digit value.'
+      pruefungen:
+      - name: 'normalized profiles k = 2..6: range of ln(|a_k|/|a_1|) < 0.25 across all bases'
+      - name: 'phi_modes.json: m(2) agrees with the 180-digit value to 1e-30'
+      - name: 'mu_hub.json: m(2) agrees with the 180-digit value to 1e-30'
 - art: experiment
   id: exp.nichteindeutigkeit
-  quelle_hash: 5d8ed434ca4a
+  quelle_hash: 95bbffb329f9
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Three real-analytic tetrations to base √2
-    frage: Can explicitly different solutions with the same T(0) = 1 be built?
+    frage: Can explicitly different solutions with the same T(0) = 1 be constructed?
+    ergebnis:
+      zusammenfassung: Regular tetration F(1/2) = 1.24362162767; two further real-analytic, strictly increasing solutions with T̃(1/2) = 1.15
+        and 1.30, respectively, satisfy the equation to 1e-40.
+      pruefungen:
+      - name: 'r=1.15: |c| < 1/π (id+θ strictly increasing)'
+      - name: 'r=1.15: T̃(x+1) = b^T̃(x) at 12 random points'
+      - name: 'r=1.15: T̃(0) = 1 and T̃(1/2) = r'
+      - name: 'r=1.15: T̃'' > 0 on [−1.5, 2]'
+      - name: 'r=1.3: |c| < 1/π (id+θ strictly increasing)'
+      - name: 'r=1.3: T̃(x+1) = b^T̃(x) at 12 random points'
+      - name: 'r=1.3: T̃(0) = 1 and T̃(1/2) = r'
+      - name: 'r=1.3: T̃'' > 0 on [−1.5, 2]'
+      - name: the three solutions differ at 1/2
 - art: experiment
   id: exp.parameterraum
-  quelle_hash: 81a0a3f1a93f
+  quelle_hash: 7524ff07b014
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Regions of the base plane
-    frage: Is period 1 exactly |t| < 1? How do the cycles rotate in the buds? How slow is it at rational boundary points? Are the numbers for
-      b = i correct?
+    frage: Is period 1 exactly |t| < 1? How do the cycles rotate in the buds? How slow is it at rational boundary points? Do the numbers for b
+      = i agree?
+    ergebnis:
+      zusammenfassung: 'Period 1 exactly for |t| < 1 (0 counterexamples in both directions on a 520×520 grid); real axis 2/1/escape; base i as
+        in the note; bud rotation number p/q in 17/17; parabolic exponents q=2: 0.501, q=3: 0.324.'
+      pruefungen:
+      - name: t ↦ exp(t e^{−t}) invertible on |t| < 0.95 by −W_0(−Log b) (4000 random points)
+      - name: 'Counterexample search: all 97618 grid bases with |t| < 0.97 have period 1'
+      - name: 'Converse: no grid base with |t| > 1.02 converges (attracting fixed point only on the principal branch)'
+      - name: 'real axis: period 2 on (0, e^{−e}), 1 on (e^{−e}, η), escape above η'
+      - name: 'base i: fixed point, multiplier, |λ|, arg λ as in the note (12 digits)'
+      - name: 'spiral: (z_{n+1} − L)/(z_n − L) → λ (shrinking |λ|, rotation arg λ per step)'
+      - name: 'buds p/q (q ≤ 7): q-cycle winds around the fixed point with rotation number p/q'
+      - name: 'parabolic boundary: |z_n − L| ≈ C n^{−1/q} for q = 2 (b = e^{−e}) and q = 3 (exponent ± 0.05)'
 - art: experiment
   id: exp.pentation
-  quelle_hash: bfd3fb018005
+  quelle_hash: fb20eb65dee4
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Pentation as the regular superfunction of Kneser's tetration (base e and 2)
+    titel: Pentation as regular superfunction of Kneser's tetration (base e and 2)
     frage: Where is the real fixed point of T_e, how large is its multiplier, and does the regular pentation at it agree with Fox's values (2007)
       and Levenstein's 2↑↑↑1.5 (2020)?
+    ergebnis:
+      zusammenfassung: 'L = -1.8503545290271814185, λ = 6.46067129568184; e↑↑↑(1/2) = 1.63232474043606, e↑↑↑(−1/2) = 0.491054338635648, e↑↑↑1.5
+        = 6.48573606423933; Fox''s values (2007) confirmed to ≥ 24 digits; base 2: 2↑↑↑1.5 = 2.702890571.'
+      pruefungen:
+      - name: 'fixed point: T_e(L) = L'
+      - name: L agrees with Fox (2007) to 22 digits
+      - name: 'multiplier λ = T_e''(L) = 6.4606712956818… (Fox: 1/slog''(L), 21 digits)'
+      - name: 'slog chain: slog(1) = 0, slog(0) = −1, then e↑↑↑(−3), (−4), (−5) as in Fox (22 digits)'
+      - name: 'integer heights from the Ψ representation: P(−2) = −1, P(−1) = 0, P(0) = 1, P(1) = e'
+      - name: P(2) = e↑↑e = 2075.968335058065833574… (Fox, relative 1e-21) and P(−10) as in Fox
+      - name: equation P(x+1) = T_e(P(x)) at x = −0.5 and 0.5
+      - name: independent of the depth (M = 8 versus 10)
+      - name: 'base 2: L ≈ −1.7439 and 2↑↑↑1.5 ≈ 2.7029 (Levenstein 2020), 2↑↑↑1 = 2, 2↑↑↑2 = 4'
 - art: experiment
   id: exp.polynom_halbexp
-  quelle_hash: 28671f653fa8
+  quelle_hash: 4f63028c2301
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -335,20 +770,40 @@
     titel: Polynomial root of exp versus Kneser's half-exponential function
     frage: Do the polynomials with p_N(p_N(x)) = eˣ + O(x^(N+1)) converge to Kneser's half-exponential function, coefficient by coefficient and
       at the boundary point L — and how strongly do other solutions grow there?
+    ergebnis:
+      zusammenfassung: 'The truncation p_N∘p_N = exp + O(x^(N+1)) matches Kneser: |p_N(1) − T_e(1/2)| = 1.0e-16 at N = 100, rate ≈ 0.924 per degree;
+        every coefficient and the boundary value p_N(L) → L converge.'
+      pruefungen:
+      - name: the values p_N(1) of the note (N = 2, 3, 5, 15) are recomputed
+      - name: 'p_N(1) → T_e(1/2): distance at N = 100 below 2·10⁻¹⁶'
+      - name: 'geometric from N ≈ 50 on: distance shrinks by about a factor 0.93 per degree (averaged over even/odd N)'
+      - name: 'Kneser series around 0: a₀ = T_e(−1/2), Σ a_k = T_e(1/2) (81 terms)'
+      - name: every coefficient a_k^(N) → a_k^Kneser (k = 0, 1, 5, 10, 20; N = 20, 50, 100)
+      - name: 'at the boundary point L (fixed point of exp, |L| = 1.3746): |p_N(L) − L| decreases (Kneser: f(L) = L)'
+      - name: perturbation term 0.01·sin(2πA(z)) of other solutions grows at z = tL (t = 0.9, 0.99, 0.999) like |z−L|^(−4.447), 4.447 = Re(2πi/L)
 - art: experiment
   id: exp.polynom_phase3
-  quelle_hash: 113eb1ffa388
+  quelle_hash: 74ffa7e707dc
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Key numbers from phase 3 of the research team recomputed independently
-    frage: Does the inverse of the truncated equations stay at 1.2512 in the conformal coordinate (growing without the lens), does the remainder
-      bound 461.36 k⁻⁶ hold at the certified coefficients, and is the integral representation of the corner profiles correct?
+    titel: Core numbers from phase 3 of the research team recomputed independently
+    frage: Does the inverse of the truncated equations stay at 1.2512 in the conformal coordinate (growing without lens), does the remainder bound
+      461.36 k⁻⁶ hold for the certified coefficients, and does the integral representation of the corner profiles agree?
+    ergebnis:
+      zusammenfassung: ‖Ĵ_N⁻¹‖ = 1.251155 (cubic, constant for N = 100–200), Kneser 1.250337; without lens it grows (1.366 → 1.852); (K2) compatible
+        with the certified coefficients; corner-profile integral confirmed.
+      pruefungen:
+      - name: '(S_γ) cubic: ‖Ĵ_N⁻¹‖ in the conformal coordinate (lens S = 0.0166) constant 1.2512 ± 0.001 for N = 100, 150, 200'
+      - name: 'control without lens: ‖J̃_N⁻¹‖ grows (corner mode), ≈ 1.852 at N = 200'
+      - name: '(S_γ) with Kneser''s certified coefficients: ‖Ĵ_200⁻¹‖ ≈ 1.2503 (cubic and Kneser equal to 1e-3)'
+      - name: '(K2): the certified a_1 … a_640 satisfy |a_k|ρ^k·k⁶ ≤ 461.36'
+      - name: 'corner profiles: gamma series = integral representation (deviation < 1e-15)'
 - art: experiment
   id: exp.polynom_schranke
-  quelle_hash: fbac348c87fa
+  quelle_hash: c064115b1a74
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -357,41 +812,82 @@
     titel: Bound for the polynomial roots — rigorous up to N = 120, and why Kantorovich fails
     frage: Do the polynomial roots exist rigorously (Krawczyk) up to N = 120 with bound 2.2405 on |x| ≤ |L|, and does Newton–Kantorovich suffice
       for Kneser's series for all N?
+    ergebnis:
+      zusammenfassung: 'Rigorous (Krawczyk) for N ≤ 120: unique solution and |p_N| ≤ 2.2405 on |x| ≤ |L|. For all N Kantorovich fails: |J⁻¹| grows
+        by ≈ 2.57 per degree, the remainder stands almost perpendicular to the nearly singular directions at L and L̄.'
+      pruefungen:
+      - name: 'Krawczyk for N = 1 … 120: in the box around each approximation there is exactly one solution (rigorous, interval arithmetic)'
+      - name: 'rigorous: max_{|x|≤|L|} |p_N(x)| ≤ Σ|a_k||L|^k ≤ 2.2405 for all N ≤ 120 (measured maximum 2.2327 at x = |L|)'
+      - name: 'Newton step from Kneser''s series predicts the true distance: η_N = |p_N − q_N|_X to 1 % (N = 10 … 60), and η decreases'
+      - name: …but |J⁻¹| grows (factor ≈ 2.6 per degree) and h_N = βγη lies far above 1/2 from N = 20 on — Kantorovich with norms fails
+      - name: 'spectrum (N = 30): ladder of small singular values (factor ≈ 3.4 each); the smallest singular vector is largest on |x| = 1.3 at
+          arg x ≈ arg L = 76.6°'
 - art: experiment
   id: exp.polynom_team
-  quelle_hash: 2214f14fe9ab
+  quelle_hash: ee20be2cda66
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Key numbers of the research team recomputed from its data
-    frage: Are max|Π_N f_K| = 2.232651, boundary and interior exponents (−4.8 and −7.894, respectively), the closeness of the true p_N and the
-      Darboux asymptotics of Kneser's coefficients correct in the team data up to N = 1000?
+    titel: Core numbers of the research team recomputed from its data
+    frage: Do max|Π_N f_K| = 2.232651, the boundary and interior exponents (−4.8 and −7.894, respectively), the closeness of the true p_N and
+      the Darboux asymptotics of Kneser's coefficients hold in the team data up to N = 1000?
+    ergebnis:
+      zusammenfassung: 'Team data confirmed: max|Π_N f_K| = 2.232651 up to N = 1000, boundary error ~N^-4.85, interior error ~N^-7.91 (target
+        −7.894), true p_N quadratically close, Kneser coefficients = Darboux leading term at L.'
+      pruefungen:
+      - name: max_{|z|=|L|} |Π_N f_K| = 2.232651 for N = 100 … 1000 (Theorem B-lin needs only growth < |z−L|^−3.447)
+      - name: boundary error |Π_N f_K(L) − L| ~ N^p with p ≈ −4.8 (corner of W with exterior angle 0.883π)
+      - name: interior error max_{|z|=1} |Π_N f_K − f_K| ~ N^p with p ≈ 1 − 2 Re(2πi/L) = −7.894 (amplitude law of the perturbation mode)
+      - name: 'true p_N (Newton, quadratic) lie close to Π_N f_K: max|p_N − Π_N f_K| ≤ 10·N·|E_N(L)|² on |z| = |L| (N = 100 … 1000)'
+      - name: 'Kneser''s coefficients = Darboux leading term of the singularity (1 − z/L)^{1+γ}: distance ≤ 12/k from the leading-term amplitude
+          (next correction (1−z/L)^{2+γ} is O(|1+γ|/k))'
 - art: experiment
   id: exp.qbinomial
-  quelle_hash: 5dbd45b8ab83
+  quelle_hash: cb4d99e17bcd
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: q-binomial series of regular tetration, Koenigs sign, Möbius iteration
-    frage: Does Reshetnikov's q-binomial series converge to regular tetration and how fast, are all Koenigs coefficients negative, and for Möbius
-      maps do the regular iterates of both fixed points agree?
+    titel: q-binomial series of the regular tetration, Koenigs sign, Möbius iteration
+    frage: Does Reshetnikov's q-binomial series converge to the regular tetration and how fast, are all Koenigs coefficients negative, and do
+      the regular iterates of both fixed points agree for Möbius maps?
+    ergebnis:
+      zusammenfassung: 'q-binomial series = regular tetration (√2 and 1.3, real and complex), error at N = 80 below 1e-30, geometric with factor
+        ≈ 0.395 per term (= q^(z+2), singularity at z = −2); about 0.08 N² digits are needed. Koenigs coefficients c_1…c_60 negative for four
+        bases. Möbius: regular iterates at both fixed points equal.'
+      pruefungen:
+      - name: 'q = −W(−ln a) is the multiplier λ at the lower fixed point (a = √2: ln 2)'
+      - name: 'partial sums hit the integer heights exactly (interpolation: from n > z on the sum stays put)'
+      - name: 'a = √2: series versus regular tetration at z = 1/2, 2.5, 0.5 + 0.5i (N = 80: below 1e-30) and −0.7 (slower: below 1e-15)'
+      - name: 'a = 1.3: likewise at z = 1/2 and 1.7 (error at N = 60 below 1e-30)'
+      - name: error decays geometrically (factor per term stable)
+      - name: factor per term ≈ q^{Re z + 2} (distance of w = q^z from the singularity w = q^{−2}; to 5 %)
+      - name: Koenigs coefficients c_1 … c_60 all negative (a = √2, 1.3, 1.1, 1.44) ⇒ T′ is up to this order a positive sum of decaying exponentials
+      - name: 'Möbius: general Schröder series at the fixed point 2 = closed form (L₁ − L₂)(z − L₁)/(z − L₂)'
+      - name: 'Möbius: regular half-iterate at the fixed point 2 = at the fixed point −1'
+      - name: 'Möbius: applied twice gives f'
 - art: experiment
   id: exp.randgesetz
-  quelle_hash: 647e05afed52
+  quelle_hash: f3e37e864b77
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Saddle-node passage and boundary law
-    frage: Does the passage time π√(2η/e)(b−η)^{−1/2} match? How well do the hub data fit?
+    frage: Does the passage time match π√(2η/e)(b−η)^{−1/2}? How well do the hub data fit?
+    ergebnis:
+      zusammenfassung: 'Iteration: A = 3.23872 vs π√(2η/e) = 3.23893. Hub data: A = 3.3822 with ln term, 3.0155 without.'
+      pruefungen:
+      - name: 'iteration count: slope A matches π√(2η/e) to 0.1 %'
+      - name: remainder N − A·(b−η)^{−1/2} stays bounded (range < 3)
+      - name: 'Engine hub m(b): fitted leading coefficient matches π√(2η/e) to 5 %'
 - art: experiment
   id: exp.shell_thron
-  quelle_hash: b33283d97779
+  quelle_hash: c1168563eed5
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -399,29 +895,55 @@
   en:
     titel: Area and extreme points of the Shell–Thron domain
     frage: How large is the domain of convergent towers, and where are its outermost points?
+    ergebnis:
+      zusammenfassung: Area = 8.0509332809395096234; largest imaginary part at b = (0.815202742507 + 2.01664021991j); leftmost point (-0.380979728648
+        + 0.899700195546j), rightmost (2.04779052746 - 0.842045503531j) (both away from the real axis).
+      pruefungen:
+      - name: area from the area theorem π Σ n a_n² = boundary integral (to 30 digits)
+      - name: 'series truncated at n = 80: remainder n·a_n² < 1e-55'
+      - name: 'univalence: Re(t f′/f) = Re(1 − t) > 0 on |t| < 1 for f = t e^{−t}, and |t e^{−t}| < e < π'
+      - name: largest imaginary part in the domain (on the boundary, maximum principle)
+      - name: neither the rightmost nor the leftmost point lies on the real axis (there only [e^{−e}, η])
+      - name: 'Robbins (2009): area equal to 30 digits, three extreme points equal to 18 digits'
 - art: experiment
   id: exp.singulaer
-  quelle_hash: 116db2d66800
+  quelle_hash: ec37ce147fce
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Singularity at −2
-    frage: Is the asymptotic formula T(−2+ε) = ln ε/ln b + ln T′(−1)/ln b + O(ε) correct?
+    frage: Does the asymptotics T(−2+ε) = ln ε/ln b + ln T′(−1)/ln b + O(ε) hold?
+    ergebnis:
+      zusammenfassung: 'T''(−1) = 1.69973893; remainder term decays like ε (at ε = 1e-12: -2.0e-12). Linear tetration: constant exactly 0.'
+      pruefungen:
+      - name: 'regular √2 tetration: remainder term → 0 (ε = 1e-12)'
+      - name: remainder term decays linearly in ε (ratio ≈ 0.1 per decade)
+      - name: 'linear tetration: constant ln T''(−1)/ln b = 0 exactly'
+      - name: T'(−1) > 0 (sign follows from T(−1+ε) > 0)
 - art: experiment
   id: exp.slog
-  quelle_hash: b7fff04fffda
+  quelle_hash: d2ac503bc0c2
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: slog as a smoothed iterated logarithm
-    frage: Is ⌈slog⌉ = log*? Are the slog derivative rules and the digit formula for towers correct?
+    titel: slog as smoothed iterated logarithm
+    frage: Is ⌈slog⌉ = log*? Do the slog derivative rules and the digit-count formula for towers hold?
+    ergebnis:
+      zusammenfassung: ⌈slog_e⌉ = log* at all points up to 10^1000; slog_e'(0) = 0.9159460564995334 = 1/T_e'(0); digit-count formula exact; 2↑↑5
+        has 19729 digits, 3↑↑4 has 3638334640025 digits.
+      pruefungen:
+      - name: ⌈slog_e(y)⌉ = log*(y) at 11 points up to 10^1000
+      - name: slog'(0) = ln e / T'(0)
+      - name: slog'(y) = ln a · a^y · slog'(a^y) at 3 points
+      - name: digit count ⌊a↑↑n·log10 a⌋+1 is exact (7 cases up to 5↑↑3)
+      - name: 2↑↑5 = 2^65536 has 19729 digits
 - art: experiment
   id: exp.sqrt2_abel
-  quelle_hash: 18e27647ec50
+  quelle_hash: b046117eff6b
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -429,52 +951,122 @@
   en:
     titel: Difference of the regular Abel functions at a and A
     frage: How do the Fourier modes of the difference decay? Which fixed point determines the strip width?
+    ergebnis:
+      zusammenfassung: '|p̂(k)| ≈ C k^γ exp(−2π²k/|ln λ_a|): free slope matches 2π²/|ln λ_a| to -2.6e-04, -2.0e-04, -1.5e-04, -1.2e-04, 2.0e-05
+        (relative); normalized ratios r_k equal across the bases up to 0.00043; r_k·k^(5/4) = 1 ± 0.0064 (k ≤ 10). Competitor 2π²/ln λ_A is off
+        by ≥ 20 %. Base √2: |p̂(1)| = 3.6260878e-25.'
+      pruefungen:
+      - name: 'b=1.25: difference not constant'
+      - name: 'b=1.25: free slope S matches 2π²/|ln λ_a| to 1e-3'
+      - name: 'b=1.3: difference not constant'
+      - name: 'b=1.3: free slope S matches 2π²/|ln λ_a| to 1e-3'
+      - name: 'b=1.35: difference not constant'
+      - name: 'b=1.35: free slope S matches 2π²/|ln λ_a| to 1e-3'
+      - name: 'b=√2: difference not constant'
+      - name: 'b=√2: free slope S matches 2π²/|ln λ_a| to 1e-3'
+      - name: 'b=1.43: difference not constant'
+      - name: 'b=1.43: slope (with γ=−5/4) matches 2π²/|ln λ_a| to 1e-2'
+      - name: fitted γ (at fixed S_a) is the same for all bases (range < 0.02)
+      - name: normalized ratios r_k (k ≤ 5) equal across the bases to 1e-3
+      - name: r_k · k^{5/4} = 1 ± 0.01 for k ≤ 10 (b = 1.25)
+      - name: 'Control check b=1.3 (N=80, tol=1e-3): modes 1–6 agree to 1e-20 (relative)'
 - art: experiment
   id: exp.stufe5
-  quelle_hash: 58e9d35dbdba
+  quelle_hash: b2aeef7b21b4
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: η₅ and e₅ — touching of pentation with y = x (TPID 10/11)
+    titel: η₅ and e₅ — contact of pentation with y = x (TPID 10/11)
     frage: At which base does pentation touch the line y = x, and do the values fit the conjectures “Eulers → 4, Etas → 2” and η_n² < e_{n−1}?
+    ergebnis:
+      zusammenfassung: η₅ = 1.7373559251516875731, e₅ = 3.3014072785233674934 (pentation regular at the negative fixed point of T_b); Etas 1.44467,
+        1.63532, 1.73736; Eulers 2.71828, 3.08853, 3.30141.
+      pruefungen:
+      - name: 'contact: P(e₅) = e₅, P''(e₅) = 1, P''''(e₅) > 0'
+      - name: 'independent of the computation depth (M = 8 versus 10): minimum stays at 0 and e₅'
+      - name: 'control of integer heights at η₅: P(0) = 1, P(1) = η₅, P(2) = η₅↑↑η₅'
+      - name: 'fixed points of pentation: two for b = 1.70 < η₅, none for b = 1.74 > η₅ (P > x for all x ≤ 0)'
+      - name: 'TPID 11: η_n² < e_{n−1} (η₄² < e, η₅² < e₄)'
+      - name: 'Etas increase: η < η₄ < η₅ < 2'
+      - name: 'Eulers increase: e < e₄ < e₅ < 4'
 - art: experiment
   id: exp.superwurzel
-  quelle_hash: 845e748c492f
+  quelle_hash: f765f1672515
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Super-roots — square, third, infinite
-    frage: Does e^{W(ln x)} solve y^y = x, how many real solutions are there, is the series about 1 correct, does the iteration converge for the
-      third super-root, and when is y^{1/y} the base of a tower converging to y?
+    frage: Does e^{W(ln x)} solve y^y = x, how many real solutions are there, is the series around 1 correct, does the iteration for the third
+      super-root converge, and when is y^{1/y} the base of a tower converging to y?
+    ergebnis:
+      zusammenfassung: 'ssrt(2) = 1.55961046946, ssrt(10) = 2.50618414559; series around 1 confirmed; number of solutions 0/2/1; third super-root
+        of 2: 1.47668433736; infinite super-root = y^(1/y) exactly on [1/e, e].'
+      pruefungen:
+      - name: ssrt(x) = e^{W(ln x)} solves y^y = x (6 values)
+      - name: equivalent form ln x / W(ln x)
+      - name: 'integer cases: ssrt(4) = 2, ssrt(27) = 3'
+      - name: 'number of solutions: none below e^{−1/e}, two in (e^{−1/e}, 1), one above 1'
+      - name: the two solutions for x = 0.8 are e^{W₀(ln x)} and e^{W₋₁(ln x)}, both in (0, 1)
+      - name: 'series around 1: 1 + (x−1) − (x−1)² + 3/2 (x−1)³ − 17/6 (x−1)⁴ + 37/6 − 1759/120 + 13279/360 …'
+      - name: 'third super-root: iteration y ← e^{W(W(y ln Y))} converges and solves y^{y^y} = Y'
+      - name: tower of y^{1/y} converges to y for 1/e ≤ y ≤ e (y = 0.5, 1.5, 2, 2.6)
+      - name: 'outside (y = 3): tower of 3^{1/3} tends to the lower fixed point 2.4780…, not to 3'
+      - name: y ↦ y^{1/y} is strictly increasing on [1/e, e] (inverse of the infinite tower)
 - art: experiment
   id: exp.tetra_euler
-  quelle_hash: 3938dcc08982
+  quelle_hash: df7788b33443
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: η₄ and e₄ — touching of T_b with y = x, three characterizations
-    frage: For which base does Kneser's tetration touch the line y = x, where, and do the number of fixed points, the self-tetra-root and the
+    titel: η₄ and e₄ — contact of T_b with y = x, three characterizations
+    frage: For which base does Kneser's tetration touch the line y = x, where, and do the number of fixed points, the self tetra-root and the
       convergence of the infinite pentation coincide there?
+    ergebnis:
+      zusammenfassung: η₄ = 1.635324496715276399345345, e₄ = 3.088532271806717654482181 (Levenstein 2010 confirmed); number of fixed points 3
+        → 1 at η₄; 1.6↑↑↑∞ = 2.26438440348, 1.7↑↑↑n diverges; self tetra-root maximal at e₄.
+      pruefungen:
+      - name: η₄ as in Levenstein (2010, 32 digits) to 1e-28
+      - name: e₄ as in Levenstein to 1e-26
+      - name: 'contact: T(e₄) = e₄, T''(e₄) = 1, T''''(e₄) > 0'
+      - name: 'negative fixed point at η₄: L = −1.64087257571659… with multiplier 4.80600575430175… (Levenstein)'
+      - name: three real fixed points for η < b < η₄ (1.5, 1.6), one for b > η₄ (1.7, 2, e)
+      - name: 'near η₄: minimum of T_b(x) − x negative for η₄ − 10⁻⁴ (two intersections at e₄), positive for η₄ + 10⁻⁴ (none)'
+      - name: self tetra-root b(y) (T_b(y) = y) is smaller than η₄ for y ≠ e₄ — maximum η₄ at e₄
+      - name: 'b = 1.6 < η₄: 1.6↑↑↑n increases monotonically to the lower positive fixed point (attracting, T'' < 1)'
+      - name: 'b = 1.7 > η₄: 1.7↑↑↑n grows past e₄ beyond 5 (thereafter T_b(x) > x without intersection → unbounded)'
+      - name: 'below η (base √2, regular): positive fixed point of T attracting, √2↑↑↑∞ converges there'
 - art: experiment
   id: exp.tpid10_abstaende
-  quelle_hash: 451dd645242d
+  quelle_hash: 95497df4664d
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: TPID 10 and 11 at the terms η₃ … η₆ — distance law and comparison with Levenstein 2017
-    frage: Do 2 − ηₙ and 4 − eₙ fall according to a power law, does its extrapolation hit Levenstein's η₇ ≈ 1.839, and does tommy1729's inequality
-      ηₙ² < e_{n−1} hold?
+    frage: Do 2 − ηₙ and 4 − eₙ decay by a power law, does its extrapolation hit Levenstein's η₇ ≈ 1.839, and does tommy1729's inequality ηₙ²
+      < e_{n−1} hold?
+    ergebnis:
+      zusammenfassung: 2 − ηₙ decays like n^(−1.47); prediction η₇ ≈ 1.8399 versus Levenstein 2017 ≈ 1.839. TPID 11 (1) holds for n = 4…6; the
+        quotients 1.594, 0.9208 do not decide (2).
+      pruefungen:
+      - name: ηₙ and eₙ increase (n = 3 … 6)
+      - name: '2 − ηₙ: local power exponents almost equal (range < 0.02), geometric quotients increase'
+      - name: prediction η₇ from the power law matches Levenstein's ≈ 1.839 (|Δ| < 0.002, both exponents)
+      - name: Levenstein's η₅ ≈ 1.738 and η₆ ≈ 1.799 agree with the 30-digit values to the stated digits
+      - name: 'TPID 11 (1): ηₙ² < e_{n−1} for n = 4, 5, 6'
+      - name: 'TPID 11 (2): quotients (ηₙ² − e_{n−1})/(η_{n−1}² − e_{n−2}) — two values, no decision possible'
+      - name: 'TPID 11 rewritten: r_n = (4 − e_{n−1})/(4(2−ηₙ) − (2−ηₙ)²) < 1 and decreasing (n = 4, 5, 6)'
+      - name: 'self super-root: s(2) = ln2/W(ln2) = 1.559610469462…, s(3) = 1.635078474636… (Robbins 2009); s(3) < η₄'
 - art: experiment
   id: exp.tpid3
-  quelle_hash: 2551103cd9c9
+  quelle_hash: ccec22ea81c5
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -482,10 +1074,23 @@
   en:
     titel: TPID 3 — eigenvalues of truncated Carleman matrices of (x+s)^p − s, with borderline cases
     frage: Do the eigenvalues tend to 1, p, p², …, as TPID 3 conjectures — and also when the fixed point 1 − s lies outside the circle of convergence
-      of the expansion about 0?
+      of the expansion around 0?
+    ergebnis:
+      zusammenfassung: 'TPID 3: s=3/4, p=2/3 (attracting, x0 inside the circle): 6.1e-11 at N = 32; s=3/4, p=3/2 (repelling, x0 inside the circle):
+        0.00034 at N = 32; s=3/10, p=2 (polynomial, x0 = 0.7): 1.0 at N = 32; s=1/2, p=1/2 (x0 on the boundary): 0.23 at N = 32; s=3/10, p=1/2
+        (x0 outside): 0.42 at N = 32'
+      pruefungen:
+      - name: 'TPID 3, s=3/4, p=2/3 (attracting, x0 inside the circle): distance to 1, p, p², p³ decreases and is below 10⁻³ at N = 32'
+      - name: 'TPID 3, s=3/4, p=3/2 (repelling, x0 inside the circle): distance to 1, p, p², p³ decreases and is below 10⁻³ at N = 32'
+      - name: 'Counterexample candidate s=3/10, p=2 (polynomial, x0 = 0.7): no eigenvalue near p = 2, largest modulus ≈ 1 (spectrum of the superattracting
+          fixed point −s)'
+      - name: 'Borderline case s=1/2, p=1/2 (x0 on the boundary): no approach up to N = 32 (distance stays > 0.1) — fixed point 1 − s not in the
+          circle of convergence |x| < s'
+      - name: 'Borderline case s=3/10, p=1/2 (x0 outside): no approach up to N = 32 (distance stays > 0.1) — fixed point 1 − s not in the circle
+          of convergence |x| < s'
 - art: experiment
   id: exp.tpid6
-  quelle_hash: 68a61471f672
+  quelle_hash: b46262e160a7
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -493,9 +1098,16 @@
   en:
     titel: TPID 6 with rate — ⁿx = n and the bottleneck at e
     frage: Does the solution x_n of ⁿx = n tend to η, and how fast? Is n²(x_n − η) → 2π²η/e, as the bottleneck passage time predicts?
+    ergebnis:
+      zusammenfassung: 'x_n − η ≈ 2π²η/(e n²): fitted K = 10.49089 versus 10.49067 (β = -3.77); at n = 3·10⁵: n²(x_n − η) = 10.49057.'
+      pruefungen:
+      - name: 'TPID 6: x_n > η for n ≥ 3 and x_n decreases from n = 3 on'
+      - name: 'TPID 6: x_n → η (distance at n = 3·10⁵ below 2·10⁻¹⁰)'
+      - name: 'rate: n²(x_n − η) → 2π²η/e = 10.4906 (fit K + K·β/n, n ≥ 1000)'
+      - name: 'without fit: n²(x_n − η) at n = 3·10⁵ within 0.1 % of 2π²η/e'
 - art: experiment
   id: exp.turm_pde
-  quelle_hash: 4caf794a2d00
+  quelle_hash: 97ff0bb95993
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -503,9 +1115,17 @@
   en:
     titel: Kobi's equation for towers and the Kneser base derivative
     frage: Does ∂_a y = S(x)∂_x y − S(y) hold for integer heights, and is p = ∂_b slog − S·slog′ constant for Kneser?
+    ergebnis:
+      zusammenfassung: Kobi's equation holds exactly for integer heights; for Kneser p = ∂_b slog − S·slog′ is periodic with mean -3.15733299588
+        (b = 2) and range 0.00057 — so Kneser satisfies it at fractional height only almost.
+      pruefungen:
+      - name: ∂_a f_n = S(x)·∂_x f_n − S(f_n) for n = 1, 2, 3 (4 bases, 3 points, relative)
+      - name: S(a^x) = a^x ln a · S(x) − x·a^(x−1)
+      - name: 'p is 1-periodic in slog: p(slog = −1) = p(slog = 0) (b = 2, e)'
+      - name: 'Kneser: p almost constant, but not constant — range small compared with the mean, yet far above the computational precision'
 - art: experiment
   id: exp.turmgebiet
-  quelle_hash: c3694d171bb5
+  quelle_hash: 2e955d0ac3f0
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -513,9 +1133,14 @@
   en:
     titel: Convergence domain of the infinite tower
     frage: Counterexamples to Shell–Thron in the interior? Period q in the buds?
+    ergebnis:
+      zusammenfassung: '109518 bases with |t|<0.97: all convergent (0 counterexamples). Buds p/q, q ≤ 7: period q in 34/34 cases.'
+      pruefungen:
+      - name: 'Counterexample search: all 109518 grid points with |t| < 0.97 converge'
+      - name: 'Buds: period = q in all tested cases'
 - art: experiment
   id: exp.turmintegral_periodisch
-  quelle_hash: 954c2088f6b9
+  quelle_hash: 061a70abcb60
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -523,30 +1148,66 @@
   en:
     titel: Tower integral at fractional height
     frage: What becomes of the oscillation of the tower integrals when the height is interpolated continuously?
+    ergebnis:
+      zusammenfassung: I(2m + r) → 2-periodic limit curve I_∞(r) with fixed corners lim I₂ₙ, lim I₂ₙ₊₁, mean M = 0.654011822287, only odd harmonics
+        and monotone flanks; the shape is the distribution of the crossing heights and depends on the interpolation.
+      pruefungen:
+      - name: weights in u give the known gap ∫(L₊ − L₋)dx = 0.0454049…
+      - name: 'for every interpolation: I_∞(0) = lim I₂ₙ, I_∞(1) = lim I₂ₙ₊₁, I_∞(2) = lim I₂ₙ'
+      - name: 'monotone: decreasing on [0,1], increasing on [1,2]'
+      - name: mean = M = 0.654011822…, even harmonics vanish (half-period antisymmetry)
+      - name: 'the shape depends on the interpolation: I_∞(½) differs for A, B, C'
+      - name: 'linear interpolation: s*(x) = L(x) exactly, decay only for r < 1/e, I_∞(r) = lim I₂ₙ − ∫₀^{r^{1/r}}(L₊ − L₋)dx'
+      - name: I(2m + r) approaches I_∞(r) (linear family, m = 5, 20, 80)
 - art: experiment
   id: exp.turmintegrale
-  quelle_hash: 411fdba1e776
+  quelle_hash: f53dedd9551b
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
     titel: Tower integrals I_n = ∫₀¹ ⁿx dx
-    frage: Are Sophomore, the even/odd limits and the gap from Figure 2 correct? How fast does I_n converge?
+    frage: Do Sophomore's dream, the even/odd limits and the gap from Figure 2 hold? How fast does I_n converge?
+    ergebnis:
+      zusammenfassung: Sophomore's dream confirmed; even 0.6767142737718128, odd 0.6313093708019882, gap 0.0454049029698246 (= Figure 2 to 15
+        digits). ∫h = 0.62544581058879. I_n converges like n^(−1.502) (prediction 3/2).
+      pruefungen:
+      - name: 'Sophomore''s Dream: ∫_0^1 x^x dx = Σ (−1)^{k+1}/k^k'
+      - name: ∫_{e^{−e}}^1 h = 1 − e^{−e−1} − ∫_{1/e}^1 y^{1/y} dy
+      - name: parametrization of the 2-cycle = direct root search
+      - name: gap agrees with Figure 2 to 15 digits
+      - name: 'Figure 2: both limits too small by the same amount (error in the common part ∫h)'
+      - name: numpy quadrature = mpmath for I_1…I_6 (1e-12)
+      - name: 'prediction: I_{2n} − lim decays like n^{−3/2} (exponent 1.5 ± 0.1)'
 - art: experiment
   id: exp.vermutungen
-  quelle_hash: b0925d07f96c
+  quelle_hash: 259caf23b613
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
   geprueft: nein
   en:
-    titel: Spot checks of open conjectures (TPID 7, half-plane, ∫ = ½, TPID 1)
+    titel: Spot checks on open conjectures (TPID 7, half-plane, ∫ = ½, TPID 1)
     frage: Does T(y)T(−y) < 1 hold (TPID 7) and up to which Kneser base, does T(Re z ≥ 0) lie in |w − L| ≤ L − 1, where is ∫_{−1}^0 T_b = ½, and
       do the Carleman eigenvalues tend to λ^k?
+    ergebnis:
+      zusammenfassung: 'TPID 7 holds for regular and for Kneser up to b₇ = 10.2210634158 (T″(0) = T′(0)²), not beyond (base 100: 1.316); Re T
+        ≥ 1 on the right half-plane (four bases); ∫_{−1}^0 T_b = 1/2 at b = 2.69370284153056; Carleman eigenvalues → λ^k (1.3: distance 3.0e-16
+        at N = 32).'
+      pruefungen:
+      - name: 'TPID 7: 0 < T(y)T(−y) < 1 and monotonically decreasing for y = 0.05 … 0.95 (four regular bases; Kneser 1.5 … 10)'
+      - name: 'Counterexample to the Kneser version: bases 20 and 100 have T(½)T(−½) > 1'
+      - name: 'local as y → 0: 1 − T(y)T(−y) ≈ (T′(0)² − T″(0)) y² (base e: 0.6490)'
+      - name: limit base b₇ with T″(0) = T′(0)² (Kneser); just below, product < 1, just above > 1 (y = 0.05 … 0.2)
+      - name: 'half-plane: Re T(z) ≥ 1 and |T(z) − L| ≤ L − 1 on Re z ∈ [0, 3] × one full period (637 points each)'
+      - name: 'control: ∫_{−1}^0 T_e = 0.49921818282999133972… (gr.beob.integrale_kneser)'
+      - name: ∫_{−1}^0 T_b = 1/2 exactly at one base between 2 and e (Kneser)
+      - name: ∫_{−1}^0 T_b decreases with b (1.5, 2, 2.5, e, 3, 10)
+      - name: 'TPID 1: the first four eigenvalues of the N×N Carleman matrix approach λ^k (distance decreases with N)'
 - art: experiment
   id: exp.young
-  quelle_hash: cf849fc2e1ed
+  quelle_hash: d9b75c25bc14
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -554,9 +1215,16 @@
   en:
     titel: Area identity for circle homeomorphisms
     frage: Does ∫(H−id) = −∫(H⁻¹−id) hold without smoothness and for the true phases?
+    ergebnis:
+      zusammenfassung: 'Identity confirmed for 200 random lifts (max. dev. 6.0e-10), one non-smooth lift and 2 true phases (max. 2.2e-12): Paper
+        II Thm. B needs only monotonicity + inverse.'
+      pruefungen:
+      - name: '200 random smooth lifts: |∫(H−id) + ∫(H⁻¹−id)| < 1e-6'
+      - name: 'piecewise linear lift (not C¹): identity holds'
+      - name: 'phases Φ_(e,b) from gp-tetration (2 bases): ∫(H⁻¹−id) = −µ_(e,b)'
 - art: experiment
   id: exp.zwei_sinh
-  quelle_hash: 3601b3896c78
+  quelle_hash: 942602de0ac4
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -564,3 +1232,10 @@
   en:
     titel: The 2sinh tetration versus Kneser
     frage: Does ln^[n]∘2sinh^[n+x] converge, does it satisfy the tower equation, and how far is it from Kneser?
+    ergebnis:
+      zusammenfassung: '2sinh tetration: T(½) = 1.6466507303037 versus Kneser 1.64635423375119; the height shift θ wobbles with range 0.0002074.'
+      pruefungen:
+      - name: 'ln^[n]∘2sinh^[n] stable: n = 3, 4 and the termination rule equal to 40 digits'
+      - name: T(x+1) = e^T(x) and T(0) = 1
+      - name: T(−½) = 0.498743364531671 (Levenstein, tid 1144)
+      - name: 'θ = slog_Kneser(T_2sinh(x)) − x is periodic (θ(0) = θ(1) = 0) and not constant: range > 10⁻⁵'
