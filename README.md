@@ -4,30 +4,56 @@
 (Funktionalgleichungen, Iterationstheorie, Analysis, Arithmetik, Logik, Dynamik).
 
 **Ansehen:** `ausgabe/tetration-graph.html` direkt im Browser öffnen (eine Datei, offline).
-**Prüfbericht:** `ausgabe/pruefbericht.md`.
+**Prüfbericht:** `ausgabe/pruefbericht.md` · **Landkarte als Text:** `ausgabe/landkarte.md`.
+
+**Stand 12.10.2026:** 367 Aussagen · 637 Kanten · 54 Experimente (alle aktuell) · 292 Quellen · 9 Gebiete · 8 Hauptideen mit 37 Unterideen.
+Prüfprogramm: 0 Fehler, 0 Warnungen, 26 Hinweise. Zahlen ändern sich mit jedem Bau; massgebend sind der Kopf von `ausgabe/pruefbericht.md`
+und `ausgabe/graph.json` (`statistik`).
 
 ```
-C:/Users/janis/miniconda3/python.exe baue.py                # prüfen + bauen
-C:/Users/janis/miniconda3/python.exe baue.py --experimente  # vorher alle Experimente neu rechnen
-C:/Users/janis/miniconda3/python.exe -m pytest -q tests     # Regeln des Prüfprogramms
+python baue.py                 # prüfen + bauen
+python baue.py --nur-pruefen   # nur Prüfbericht
+python baue.py --experimente   # vorher alle Experimente neu rechnen
+python -m pytest -q tests      # Regeln des Prüfprogramms
 ```
-(Plain `python` 3.14 hat kein PyYAML; Miniconda 3.13 hat yaml, mpmath, matplotlib, scipy.)
+Benötigt Python 3 mit `pyyaml` für Prüfen und Bauen (`pip install pyyaml pytest`). Die Experimente brauchen zusätzlich
+`mpmath`, `numpy`, `scipy`, `matplotlib`; manche (Kneser-Motor, Hexation) auch PARI/GP. Wer ohne Experimente nur prüfen und bauen will,
+braucht nur `pyyaml`.
 
 ## Aufbau
 
 | Ort | Inhalt |
 |---|---|
-| `daten/aussagen/*.yaml` | eine Datei pro Gebiet; jede Aussage mit Objekten, Bereich, Voraussetzungen (je „benutzt: ja/nein/unklar“), Schluss, Beweis + Lücken, Quellen, Kanten, Status, Bewertung (Richtigkeit/Neuheit/Nutzen getrennt), fünf Prüffragen, Fassungen |
-| `daten/quellen.yaml` | Literatur mit Prüfvermerk `original` / `sekundaer` / `nein` |
-| `daten/experimente.yaml` | Experimente → Skript, Ergebnis, Bild, gestützte Aussagen |
+| `daten/aussagen/*.yaml` | eine Datei pro Gebiet (`00_`…`10_`) und Ergänzungsdateien `lit_<gebiet>_*.yaml` der Literaturkarte; jede Aussage mit Objekten, Bereich, Voraussetzungen (je „benutzt: ja/nein/unklar“), Schluss, Beweis + Lücken, Quellen, Kanten, Status, Bewertung (Richtigkeit/Neuheit/Nutzen getrennt), fünf Prüffragen, Fassungen |
+| `daten/quellen.yaml`, `daten/quellen/*.yaml` | Literatur mit Prüfvermerk `original` / `sekundaer` / `nein` (Ergänzungen der Literaturkarte in `quellen/lit_L<n>.yaml`; der Lader führt zusammen, ein Schlüssel in zwei Dateien ist ein Fehler) |
+| `daten/experimente.yaml`, `daten/experimente/*.yaml` | Experimente → Skript, Ergebnis, Bild, gestützte Aussagen |
+| `daten/objekte.yaml`, `daten/objekte/*.yaml` | Vokabular der Objekte |
 | `wissen/` | Schema (Vokabular), Laden, Prüfen/Ableiten, Ausgabe |
 | `experimente/e*.py` | reproduzierbare Rechnungen mit Selbstprüfungen; Ergebnis-JSON trägt den Skript-Hash |
-| `daten/straenge.yaml` | Forschungsstränge je Gebiet mit einer Zeile „was dort passiert“ (mittlere Zoomstufe der Karte) |
+| `daten/straenge.yaml`, `daten/straenge/<gebiet>.yaml` | Forschungsstränge je Gebiet mit einer Zeile „was dort passiert“ (mittlere Zoomstufe der Karte, Lesewege, Lehrbuch) |
+| `daten/ideen.yaml` | Ideen-Landkarte: 8 Hauptideen, 37 Unterideen; jede Aussage gehört über ihren Strang (oder ein Feld `idee:`) zu genau einer Unteridee |
+| `wissen/landkarte.py` | berechnet aus den Kanten Kopplung, Lage und Füllstand der Ideen; schreibt `ausgabe/landkarte.md` |
+| `forschung/` | Arbeitsordner der Forschungsstränge (`polynom_halbexp`, `literaturkarte`, `eta_hyperoperationen`); der Graph übernimmt nur Gesichertes daraus |
+| `docs/` | Recherche-Berichte, Entwürfe und Pläne (`docs/superpowers/specs`, `plans`) |
 | `ansicht/` | Vorlage, Stil, Module `js/01_basis … 06_steuerung` (werden beim Bau zu einer Datei zusammengefügt; KaTeX eingebettet) |
 
-## Karte (Reiter „Karte“)
+## Ideen-Landkarte (Startansicht, ab 12.10.2026)
 
-Eine zoombare Karte auf dunkler Blaupause; was man sieht, hängt von der Zoomstufe ab (Leiste links):
+Die Karte öffnet mit der **mathematischen Struktur** statt mit Orten: acht Hauptideen (Die Gleichung · Dynamik von b^z und der Fixpunkt L ·
+Unendlicher Turm und Basen-Ebene · Fraktionale Fortsetzung · Basiswechsel · Höhere Stufen · Zahlen und Arithmetik · Brücken), deren Lage
+sich aus der Kopplung (Kanten zwischen ihren Aussagen, gemeinsame Objekte) berechnet. Klick auf eine Hauptidee zeigt ihre Unterideen,
+Klick auf eine Unteridee ihre Aussagen (Hauptaussagen gross, Hilfsaussagen klein), Klick auf eine Aussage die Inhaltskarte. Pfadleiste oben,
+Zurück mit Esc.
+
+- **Füllstand-Ring:** Anteile nach Status (bewiesen/bedingt/numerisch/Vermutung/offen/verworfen). **Herkunfts-Ring:** Literatur / Forum / nur eigene Arbeit.
+- **Stücke einer Vermutung:** Bei Vermutung, bedingtem Satz oder Skizze zeigt die Inhaltskarte den Baum der Voraussetzungen und markiert, wo es fehlt.
+- **Textfassung** für Forschungs-Agenten: `ausgabe/landkarte.md`.
+- Regeln: Aussage ohne Idee → Hinweis „ohne-idee“; unbekannte Idee oder Strang in zwei Unterideen → Fehler (Tests: `tests/test_ideen.py`, `tests/test_landkarte.py`).
+- Entwurf und Plan: `docs/superpowers/specs/2026-10-12-ideen-landkarte-design.md`, `docs/superpowers/plans/2026-10-12-ideen-landkarte.md`.
+
+## Karte (zweite Ansicht)
+
+Die frühere zoombare Karte (Gebiete → Verläufe → Aussagen → Inhalt) bleibt als zweite Ansicht erhalten. Eine zoombare Karte auf dunkler Blaupause; was man sieht, hängt von der Zoomstufe ab (Leiste links):
 
 1. **Gebiete** — Inseln mit Statusring, Bänder mit fliessendem Licht zeigen die Querverbindungen.
 2. **Verläufe** — Forschungsstränge als Flächen mit Name und einer Zeile Verlauf; Licht fliesst entlang der Beweise von der Voraussetzung zur Folgerung.
@@ -92,7 +118,7 @@ Der Reiter „Theorie“ ist ein Lehrbuch (Umschalter „Abhängigkeiten“ zeig
 (Kapitel 0 „Was ist Tetration?“ als Fliesstext, dann je Kapitel Stränge). Ausführliche Erklärungen je Aussage: `daten/theorie/<gebiet>.yaml`
 mit den Teilen `worum`, `genau`, `warum`, `beispiel`, `bilder`, `einordnung` (Markdown mit `$…$`, `[[id]]`, `![[bild:name]]`).
 Abbildungen: `python lehrbuch/bilder.py` → `lehrbuch/bilder/*.svg`. Das Prüfprogramm meldet tote Verweise, fehlende Teile und den
-Fortschritt je Gebiet. **Stand 08.10.2026: vollständig** — alle Aussagen (218, nach Runde 2 jetzt 233) haben einen Theorie-Block (Kapitel 0–10, Stand 218:
+Fortschritt je Gebiet. **Stand 12.10.2026: vollständig** — alle 367 Aussagen haben einen Theorie-Block (Stand 08.10.: 218 Aussagen in Kapitel 0–10, damals:
 Grundlagen 32, Fixpunkte/Turm 7, Funktionalgleichung 11, Iteration 8, unter η 19, Kneser 19, Basiswechsel 65, Basen-Ebene 25,
 Zahlen 16, Brücken 16). Neue Aussagen brauchen einen Block in `daten/theorie/<gebiet>.yaml`, sonst meldet die Prüfung
 „theorie-fortschritt“. Anzeigeformeln mit „\qquad“ oder „,\quad“ werden bei Platzmangel gestapelt. Das Phasenbild k7_phase
@@ -126,6 +152,25 @@ Blattverfolgung (Pentation entlang von Wegen fortgesetzt) gebaut und geprüft; d
 Halbebene verzweigt (bei −0.7408 + m + 2.7458i; Log-Umlauf 2πi/ln 2, Potenz-Exponent ln λ_T/ln 2 = 2.3707) — Kouznetsovs Rechteck-Methode fällt
 damit weg. Prototypen in `experimente/prototypen_hexation/LIESMICH.md` (schreiben einen eigenen
 Zwischenspeicher `kneser_cache_proto.json`; der gemeinsame `experimente/daten/kneser_cache.json` ist durch frühere Prototyp-Läufe auf ~190 MB gewachsen).
+
+## Literaturkarte (ab 12.10.2026)
+
+Auftrag: die Arbeiten anderer so genau kartieren wie die eigene Forschung (wer woran gearbeitet hat, mit welcher Methode und welchem
+Ergebnis, wo mehrere dieselbe Frage verschieden angegangen sind). Vorher: 321 Aussagen, davon 158 nur mit eigenen Quellen. Drei Stränge
+(L1 Iteration/Funktionalgleichungen/Fixpunkte, L2 Kneser/Basiswechsel, L3 Grundlagen/Arithmetik/Brücken) legten ihre Ergänzungen in
+eigene Dateien (`daten/aussagen/lit_*.yaml`, `daten/theorie/lit_*.yaml`, `daten/quellen/lit_L*.yaml`, Experiment-Nummernbereiche e60–e89 vorgesehen);
+Block 3 (freie Volltexte: Euler E489, Cho–Kim, Kouznetsov–Trappmann, TPID 16/17) ist abgeschlossen, ebenso die Kandidatenliste.
+Karten, Berichte und das Gesamtverzeichnis stehen in `forschung/literaturkarte/` (`GESAMTVERZEICHNIS.md`, `L<n>_*/KARTE_<gebiet>.md`).
+Folge: 46 neue Aussagen (367), 60 statt 35 Aussagen „bewiesen_literatur“, **103 Zitate noch nicht am Original geprüft** (vorher 68).
+
+## Polynom-Wurzel von exp und höhere Hyperoperationen (10.–12.10.2026)
+
+- **Polynom-Wurzel** (Strang `kn.halbe_exp`, Arbeitsordner `forschung/polynom_halbexp/`): Phasen 2–3 sind in den Graphen übernommen
+  (Experiment `exp.polynom_phase3`). Der Hauptsatz steht als **Skizze** mit benannten Lücken (Annahme (H₀) über die Eckmoden bei L ist offen;
+  tragfähige Fassung `kn.satz.polynom_hauptsatz_kr0`; Knesers sexp zur Basis e ist streng zertifiziert, `kn.satz.kneser_e_zertifiziert`).
+  Phase 3 wurde auf Janis' Wunsch am 12.10. beendet; Wiederaufnahme nur auf Auftrag (Einstieg: `forschung/polynom_halbexp/README.md`).
+- **η höherer Hyperoperationen** (`forschung/eta_hyperoperationen/`, eigenständig ab 12.10.): η-Tabelle für höhere Ränge mit
+  Genauigkeitsangaben, ausdrücklich ohne allgemeinen Kneser-Satz für alle Ränge; Bericht und Mathematik in `BERICHT.md` / `MATHEMATIK.md`.
 
 ## Wiedergefundene Untersuchungen (Juli/August 2026, eingearbeitet 08.10.2026)
 
