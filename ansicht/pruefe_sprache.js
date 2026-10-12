@@ -22,7 +22,7 @@ const SPR = process.argv.includes("--de") ? "de" : "en";
       const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
       while (w.nextNode()) {
         const n = w.currentNode;
-        if (/^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) continue;
+        if (/^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName) || n.parentNode.closest("annotation")) continue;   // KaTeX-Quelltext ist unsichtbar
         const s = n.nodeValue.trim();
         if (s && S.sieht_deutsch_aus(s)) aus.push(s);
       }

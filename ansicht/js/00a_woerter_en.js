@@ -565,6 +565,21 @@ const EN_WOERTER = {
   "Hochrechnung η₇": "Extrapolation η₇",
   "s=3/10, p=2 (Polynom, x0 = 0.7)": "s=3/10, p=2 (polynomial, x0 = 0.7)",
   "s=3/10, p=1/2 (x0 ausserhalb)": "s=3/10, p=1/2 (x0 outside)",
+  // --- Literaturangaben (Autor: Titel), Forschungsteam, Foren-Zitate
+  "A. O. Gelfond; Th. Schneider: Satz von Gelfond–Schneider (7. Hilbertsches Problem)": "A. O. Gelfond; Th. Schneider: Gelfond–Schneider theorem (Hilbert's seventh problem)",
+  "S. Lang: Introduction to Transcendental Numbers (Schanuels Vermutung)": "S. Lang: Introduction to Transcendental Numbers (Schanuel's conjecture)",
+  "Introduction to Transcendental Numbers (Schanuels Vermutung)": "Introduction to Transcendental Numbers (Schanuel's conjecture)",
+  "Johann Bernoulli: Opera omnia, Bd. 3 (1697) — Reihe für ∫ x^x": "Johann Bernoulli: Opera omnia, vol. 3 (1697) — series for ∫ x^x",
+  "F. Lindemann (Hermite–Lindemann): Über die Zahl π": "F. Lindemann (Hermite–Lindemann): Über die Zahl π (On the number π)",
+  "H. Weyl: Über die Gleichverteilung von Zahlen mod. Eins": "H. Weyl: Über die Gleichverteilung von Zahlen mod. Eins (On the uniform distribution of numbers mod 1)",
+  "Über die Gleichverteilung von Zahlen mod. Eins": "Über die Gleichverteilung von Zahlen mod. Eins (On the uniform distribution of numbers mod 1)",
+  "Forschungsteam (Claude; Phase 1 Stränge A–E, Phase 2 Stränge P, W, O, M, X, Phase 3 Stränge K und V; dazu GPT-Strang G; Leitung Hauptsitzung) im Auftrag von J. Justus:": "Research team (Claude; phase 1 strands A–E, phase 2 strands P, W, O, M, X, phase 3 strands K and V; plus GPT strand G; lead: main session) commissioned by J. Justus:",
+  "J. Justus (mit Claude):": "J. Justus (with Claude):",
+  "J. Justus (mit Claude im claude.ai-Chat):": "J. Justus (with Claude in the claude.ai chat):",
+  ". MathOverflow, Frage 259278, 10.01.2017 (mit Antwort von user78249, 11.01.2017) —": ". MathOverflow, question 259278, 2017-01-10 (with an answer by user78249, 2017-01-11) —",
+  ". Tetration Forum, tid 424, ab 28.02.2010 (104 Beiträge)": ". Tetration Forum, tid 424, from 2010-02-28 (104 posts)",
+  ". Tetration Forum, tid 262 (2009–2010); Beitrag von S. Levenstein vom 31.10.2010 —": ". Tetration Forum, tid 262 (2009–2010); post by S. Levenstein of 2010-10-31 —",
+  ". Tetration Forum, tid 1189, 28.–29.03.2018 (zu MO 283816, D. Taranovsky) —": ". Tetration Forum, tid 1189, 2018-03-28/29 (on MO 283816, D. Taranovsky) —",
 };
 const EN_MUSTER = [
   // --- Übersicht, Prüfstand, Zähler
