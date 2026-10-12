@@ -101,6 +101,21 @@ Preserve quantifiers and scope exactly ("jede" = every, "eine" = a/one, "genau e
 | Stufengleichung (z. B. f(z+1)=b f(z)) | step equation |
 | Nutzen (Feld `bewertung.nutzen`) | usefulness / benefit |
 | Grenze (in "wichtige Grenze für …") | limitation |
+| Betrag (komplexe Zahl) | modulus (real numbers: absolute value) |
+| Literatursatz | theorem from the literature |
+| Erzeuger | generator |
+| Fluss | flow |
+| Iterationsgruppe | iteration group |
+| gebrochen linear / Bruchfunktion | linear fractional / fractional function (rational of degree 1) |
+| Möbius-Abbildung | Möbius map |
+| Streckung / Verschiebung | scaling / translation |
+| Mächtigkeit | cardinality |
+| Tschebyschow | Chebyshev |
+| unter η / über η (Basis) | below η / above η |
+| Turm zur Basis b | tower to base b |
+| Blütenblatt, Blume | petal, flower |
+| Schrittzähler | step counter |
+| „halbe Iterierte" / „dritte Iterierte" | half-iterate / third iterate |
 | Prüffrage | check question |
 | Voraussetzung | hypothesis (use "assumption" only for Annahme) |
 | Bereich | domain (of validity) |
