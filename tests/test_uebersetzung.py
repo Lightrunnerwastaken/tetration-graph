@@ -47,6 +47,8 @@ def test_verweise_und_kennungen():
 def test_zahlen_ausserhalb_von_formeln_warnen():
     assert stufen(U.pruefe_text("Zeit-1-Abbildung", "time-one map")) == {("WARNUNG", "uebersetzung-zahlen")}
     assert not U.pruefe_text("Zeit-1-Abbildung", "time-1 map")
+    assert not U.pruefe_text("etwa 1,5 mal", "about 1.5 times")                   # Dezimalkomma -> Punkt ist gewollt
+    assert stufen(U.pruefe_text("etwa 1,5 mal", "about 1,5 times")) == {("WARNUNG", "uebersetzung-zahlen")}
 
 
 def test_signalwoerter_britisch_und_deutsch():

@@ -202,7 +202,9 @@ def pruefe_text(de: str, en: str) -> list:
         b.append(("FEHLER", "uebersetzung-invariante", "Verweise [[…]] verändert"))
     if Counter(KENNUNG.findall(de)) != Counter(KENNUNG.findall(en)):
         b.append(("FEHLER", "uebersetzung-invariante", "Kennungen (z. B. exp.…, kn.…) verändert"))
-    zq, zu = Counter(ZAHL.findall(MATHE.sub(" ", de))), Counter(ZAHL.findall(MATHE.sub(" ", en)))
+    # deutsches Dezimalkomma (1,5) darf im Englischen zum Punkt werden und soll es auch
+    zq = Counter(ZAHL.findall(re.sub(r"(?<=\d),(?=\d)", ".", MATHE.sub(" ", de))))
+    zu = Counter(ZAHL.findall(MATHE.sub(" ", en)))
     if zq != zu:
         b.append(("WARNUNG", "uebersetzung-zahlen", f"Zahlen ausserhalb von Formeln verändert: fehlt {dict(zq - zu)}, neu {dict(zu - zq)}"))
     if de.count("\n\n") != en.count("\n\n"):
