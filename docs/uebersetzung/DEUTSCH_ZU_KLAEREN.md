@@ -102,3 +102,9 @@ Erledigtes bitte streichen. Stand 12.10.2026 (fg, it, fp).
 - `kn.verm.polynom_halbexp`, Theorie `warum` 3: nennt `kn.verm.polynom_halbexp_schranke` den „offenen Kern“ („Nicht bewiesen“); Kern und Prüftext nennen `kn.verm.polynom_halbexp_kern` als offen (bedingt bewiesen, bestätigt bis N=1500).
 - `kn.satz.halbexp_beschraenkt`: die Aussage beginnt „Dann ist f=f_K“ ohne Voraussetzung im Text (steht nur in Titel, `bereich` und Prüftext).
 - Konditionszahl: „etwa 1.9 je Grad“ (Theorie `schranke`, Prüftext `endlich`) gegen „2.6“ für β_N (`kantorovich`) – vermutlich verschiedene Grössen. Theorie `hauptsatz` `worum`: „konvergieren … für jeden Grad“ passt nicht zu N→∞.
+
+## Lehrbuch und README
+- Kapitel 0 sagt, der Superlogarithmus zähle Logarithmen, „bis man unter 1 landet“; die Formelsammlung sagt „bei höchstens 1“ (⌈A(1)⌉=0, also ist „höchstens 1“ richtig).
+- Formelsammlung, Zeile T′(0), Spalte Kneser (Basis e): „linear: Sprung von 1 auf ln a“ ist für a=e kein Sprung (ln e = 1); die letzte Zeile derselben Tabelle sagt, die lineare Tetration sei bei e C¹.
+- README: „9 Gebiete“ in der Kopfzeile, obwohl `00_`…`10_` elf Dateien sind und die Theorie-Zählung zehn Gebiete aufführt; die Beschreibung von `formelnEinpassen` steht doppelt (einmal mit „\qquad“, einmal mit „A,\qquad B“); die Experimentliste springt von e37 auf e39; der Hexations-Absatz steht unter dem Datum 08.10., ist aber auf 09.10. datiert.
+- Texte der Strukturebene: `fp.parameterraum` („innen Ruhe“) und `kl.gleiches_L` („bleibt er stehen“) sind sehr knapp; `fp.turm` „Konvergenz reell bis e^{1/e}“ hat kein Verb; `exp.polynom_team` „Nähe der echten p_N“ nennt keinen Bezug; `kn.hoehere_stufen` „anders als Knesers Tetration in der oberen Halbebene verzweigt“ ist doppeldeutig.

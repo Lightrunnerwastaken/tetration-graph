@@ -1,0 +1,507 @@
+# Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
+# übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- art: kapitel
+  id: formeln
+  quelle_hash: 20787375e0a3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: 'Formula collection: fixed and free'
+    untertitel: What every tetration must satisfy, what can be chosen freely — and which condition fixes the choice again.
+    teile:
+    - text: |
+        Here are the formulas of the graph at a glance, sorted by a single question:
+        **Does this hold for every tetration, or does it depend on which one you have chosen?**
+        The answer follows a simple rule ([[gr.satz.frei_und_fest|Free and fixed]]):
+
+        > A formula holds for every tetration if and only if it connects only points that lie an **integer** apart. Anything that connects points at distance ½ or 0.3 has to be chosen.
+
+        Notation: $a>0$, $a\ne1$ is the base, $c=\ln a$, $T$ a tetration with $T(x+1)=a^{T(x)}$ and $T(0)=1$, $A=\operatorname{slog}_a$ its inverse,
+        $P$ the pentation and $H_k$ the $k$-th level ($H_3=a^x$, $H_4=T$, $H_5=P$). Each row points to the node with proof and conditions.
+    - abschnitt: 'Fixed: values and rules of computation'
+    - text: |
+        | Formula | in words | Node |
+        | --- | --- | --- |
+        | $T(x+1)=a^{T(x)}$, $T(x-1)=\log_aT(x)$ | the equation itself, forward and backward | [[fg.def.tetration|Definition]] |
+        | $T(-1)=0$, $T(1)=a$, $T(2)=a^a$, $T(n)=a\uparrow\uparrow n$ | at integer points everything is determined; at $-2$ there is no value | [[fg.lem.ganzzahlwerte|Integer arguments]] |
+        | $T(x)\to-\infty$ for $x\to-2^+$ | for $a>1$; range all of $\mathbb R$ for $a>\eta$, otherwise up to the lower fixed point | [[gr.satz.gestalt|Shape]] |
+        | $T(x+n)=\exp_a^{\circ n}\bigl(T(x)\bigr)$ | integer steps are iteration — a rule $T(m+n)=T(m)\ast T(n)$ does not exist | [[gr.satz.tauschregel|No addition rule]] |
+        | $T(x+1)^{T(y)}=T(y+1)^{T(x)}=a^{T(x)T(y)}$ | two levels may be swapped; for integers: $16^2=4^4=2^8$ | [[gr.satz.tauschregel|Swap rule]] |
+        | $a=T(x+1)^{1/T(x)}$, $T(x+2)=T(x+1)^{T(x+1)/T(x)}$ | the base is contained in every pair of neighboring values ($x\ne-1$) | [[gr.satz.tauschregel|Swap rule]] |
+        | $\lfloor a\uparrow\uparrow n\cdot\log_{10}a\rfloor+1$ | number of digits of $a\uparrow\uparrow(n+1)$ | [[gr.satz.stellen|Digits]] |
+        | $a\uparrow\uparrow n\bmod m$ becomes constant | the last digits of a tower eventually stand still | [[br.satz.turm_mod_m|Towers mod m]] |
+        | $H_k(-j)=-(j-1)$ for $j=1,\dots,k-3$ | $T(-1)=0$; $P(-1)=0$, $P(-2)=-1$; each level inherits one more integer point | [[gr.satz.stufenleiter|Ladder of levels]] |
+    - abschnitt: 'Fixed: super-logarithm'
+    - text: |
+        | Formula | in words | Node |
+        | --- | --- | --- |
+        | $A(a^y)=A(y)+1$, $A(1)=0$, $A(0)=-1$, $A(a)=1$ | every power adds one; $A\to-2$ for $y\to-\infty$ | [[gr.satz.slog_grund|slog basics]] |
+        | $\lceil A(y)\rceil=\log_a^*y$ | rounded up: how often one must take the logarithm until one is at most 1 | [[gr.satz.logstern|log*]] |
+        | $A'(y)=1/T'(A(y))$, $A'(y)=c\,a^yA'(a^y)$ | derivative of the inverse | [[gr.satz.slog_ableitung|slog derivative]] |
+        | $A'(0)/A'(1)=\ln a$ | the logarithm from two slog slopes | [[gr.satz.ln_aus_steigungen|ln from slopes]] |
+        | $A'(x)\,L_0L_1\cdots L_m\to0$, $L_k=\log_a^{\circ k}x$ | slog becomes flatter than every level of the logarithm scale | [[gr.satz.slog_steigung_langsam|slog′ slow]] |
+    - abschnitt: 'Fixed: derivatives'
+    - text: |
+        All rows hold for every tetration that is differentiable at the points in question.
+
+        | Formula | in words | Node |
+        | --- | --- | --- |
+        | $T'(x+1)=c\,T(x+1)\,T'(x)$ | chain rule: one level higher times $c$ times the function value | [[gr.satz.kettenregel|Chain rule]] |
+        | $\ln T'(x+1)-\ln T'(x)=\ln c+c\,T(x)$ | for $a=e$, $T$ is the difference of $\ln T'$ over one step | [[gr.satz.kettenregel|Chain rule]] |
+        | $T'(x+n)=c^n\,T'(x)\prod_{k=1}^{n}T(x+k)$ | over $n$ integer steps a product | [[gr.kor.produktformel|Product formula]] |
+        | $T''(x+1)=c\,T(x+1)\bigl[c\,T'(x)^2+T''(x)\bigr]$ | curvature one level higher | [[gr.satz.zweite_ableitung|Second derivative]] |
+        | $T^{(n)}(x+1)=T(x+1)\,B_n\bigl(cT'(x),\dots,cT^{(n)}(x)\bigr)$ | the whole Taylor series jumps one level further (Bell polynomials) | [[gr.satz.taylor_leiter|Taylor ladder]] |
+        | $(\ln T)^{(k)}(x+1)=c\,T^{(k)}(x)$ | the same backward, without Bell polynomials | [[gr.satz.ln_aus_steigungen|ln from slopes]] |
+        | $\ln a=\dfrac{T'(0)}{T'(-1)}=\dfrac{T''(0)-T'(0)^2}{T''(-1)}$ | ratios of slopes are independent of the solution | [[gr.satz.ln_aus_steigungen|ln from slopes]] |
+        | $\ln a=\dfrac{P'(0)\,P'(-2)}{P'(-1)^2}$ | the same one level higher, for the pentation | [[gr.satz.stufenleiter|Ladder of levels]] |
+        | $\ln\ln a=\sum_{j=0}^{m}(-1)^j\binom mj\ln H_{3+m}'(-j)$ | for every level: a row from Pascal's triangle | [[gr.satz.stufenleiter|Ladder of levels]] |
+        | $T'(x)$ and $T'(x+1)$ have the same sign | for $a>1$; for $0<a<1$ the sign changes — there no solution is monotone | [[gr.satz.vorzeichen|Sign]] |
+        | $T''\ge0$ on one period $\Rightarrow$ $T''>0$ to the right of it | convexity is inherited upward | [[gr.kor.konvex_nach_oben|Convex upward]] |
+        | $T'(x+n)^{1/n}\to\lambda=a_*\ln a$ | for $1<a<\eta$: the slope falls by the factor $\lambda$ per level | [[gr.satz.abklingen|Decay]] |
+    - abschnitt: 'Fixed: integrals'
+    - text: |
+        | Formula | in words | Node |
+        | --- | --- | --- |
+        | $\int_m^nT+\int_{T(m)}^{T(n)}A=n\,T(n)-m\,T(m)$ | area under $T$ plus area beside $A$ makes a rectangle | [[gr.satz.young|Young]] |
+        | $\int_0^1T=1-c\int_0^1a^uA(u)\,du$, also $1<\int_0^1T<a$ | equivalent form, with bounds | [[gr.kor.integral_formen|Integral forms]] |
+        | $\int_{-1}^0T=-\int_0^1A$ | the area below is a slog area | [[gr.satz.integral_unten|Lower integral]] |
+        | $\int_x^{x+1}T'(u)\,T(u+1)\,du=\dfrac{T(x+2)-T(x+1)}{c}$ | an integral over one period, entirely without choice | [[gr.satz.integral_produkt|Product integral]] |
+        | $\int_x^{x+1}\ln T(u+1)\,du=c\int_x^{x+1}T(u)\,du$ | logarithm one level higher = area one level lower | [[gr.satz.integral_log|Log integral]] |
+        | $\int_0^1{}^{2n}x\,dx\to0.676714\ldots$, $\int_0^1{}^{2n+1}x\,dx\to0.631309\ldots$ | even and odd tower integrals have different limits | [[gr.satz.turmintegral_grenzen|Tower integrals]] |
+        | $I_\infty(r+1)=2M-I_\infty(r)$, $M=0.654011822\ldots$ | at fractional height: corners, mean value and symmetry are fixed | [[gr.satz.turmintegral_periodisch|Periodic tower integral]] |
+    - abschnitt: 'Fixed: derivative with respect to the base and growth'
+    - text: |
+        | Formula | in words | Node |
+        | --- | --- | --- |
+        | $D(x+1)=c\,T(x+1)\,D(x)+\dfrac{T(x+1)\,T(x)}{a}$, $D=\partial_aT$, $D(0)=0$ | the base derivative satisfies a linear step equation | [[gr.satz.basis_gleichung|Base equation]] |
+        | $t_{n+1}'=t_{n+1}\bigl(t_n/a+c\,t_n'\bigr)$, $t_n=a\uparrow\uparrow n$ | at integer heights a simple recursion | [[gr.satz.basis_ganz|Base, integer heights]] |
+        | $\partial_ay=S_a(x)\,\partial_xy-S_a(y)$ | Kobi's equation for every tower of integer height | [[gr.satz.turm_pde|Tower equation]] |
+        | $h'(a)=\dfrac{h^2}{a(1-h\ln a)}$, $h=a^{a^{\cdots}}$ | derivative of the infinite tower | [[gr.satz.turm_ableitung|Tower derivative]] |
+        | $h(a)=e-\sqrt{2e^3(\eta-a)/\eta}+\dots$ | a square root at $\eta$ | [[gr.satz.wurzel_eta|Root at η]] |
+        | $\chi(f)=\lim\bigl(A(f(x))-A(x)\bigr)$, $\chi(f\circ g)=\chi(f)+\chi(g)$ | slog counts exponentials; integer values are the same for every slog | [[gr.satz.exponentialitaet|Exponentiality]] |
+        | $f\circ f=\exp$ $\Rightarrow$ $x^n\prec f(x)\prec e^{x^\varepsilon}$ | every half-exponential function lies between polynomials and $e^{x^\varepsilon}$ | [[kn.satz.halbe_exp_wachstum|Half-exp growth]] |
+    - abschnitt: 'Free: what depends on the choice'
+    - text: |
+        Every other tetration is $\tilde T=T\circ(\mathrm{id}+p)$ with a 1-periodic function $p$, $p(0)=0$ ([[fg.satz.allgemeine_loesung|General solution]]).
+        Because $p$ looks the same at $x$ and $x+1$, it drops out of all the formulas above. What it does change is listed here — with the value of Kneser's tetration to base $e$
+        as an example.
+
+        | Quantity | why free | Kneser, base $e$ |
+        | --- | --- | --- |
+        | $T(x)$ at non-integer $x$ | every value between the two integer neighbors is possible, even real-analytic — [[fg.kor.nichteindeutigkeit|Non-uniqueness]] | $T_e(\tfrac12)=1.6463542337\ldots$ |
+        | $T'(0)$ | a single free number; it fixes all $T'(n)$ — [[gr.kor.ganze_stellen|Integer arguments]] | $1.0917673512\ldots$ (linear: jump from $1$ to $\ln a$) |
+        | Ratios across half steps, e.g. $T'(\tfrac12)/T'(0)$ | $p$ acts differently at $0$ and $\tfrac12$ — [[gr.satz.frei_und_fest|Free and fixed]] | $1.44276$ (with $p=0.05\,\sin\ldots$: $0.79178$) |
+        | Position and number of inflection points | Kneser has exactly one, regular ones below $\eta$ none — [[gr.beob.wendepunkte|Inflection points]] | $x_w=-0.5218$ |
+        | Individual areas such as $\int_{-1}^0T$ | only the rectangle sum (Young) is fixed — [[gr.beob.integral_halb|Integral ½]] | $0.4992181828\ldots$ (linear: $\tfrac12$) |
+        | Base derivative at fractional height | the step equation fixes it only up to $T'\cdot$(periodic) — [[gr.beob.kneser_pde_wackeln|Kneser wobbles]] | at base 2, $p$ wobbles by $5.7\cdot10^{-4}$ |
+        | the half-exponential function itself | $T(A(x)+\tfrac12+p(A(x)))$ solves $f\circ f=\exp$ just as well — [[kn.satz.halbe_exp|Half-exp]] | $f(0)=0.4985632879\ldots$ |
+        | fractional exponentiality | another slog lets $A(f)-A(x)$ oscillate — [[gr.satz.exponentialitaet|Exponentiality]] | $\chi=\tfrac12$ only with Kneser's slog |
+        | Shape of the tower-integral curve | distribution of the heights at which the square waves jump — [[gr.satz.turmintegral_periodisch|Periodic tower integral]] | (below $1$ no natural choice) |
+        | Smoothness | continuous, $C^1$ or analytic — depending on the construction — [[kn.satz.linear_glatt|Linear, smooth]] | analytic (linear: $C^1$ only at $e$, never $C^2$) |
+    - abschnitt: What fixes the choice again
+    - text: |
+        To turn “free” into “fixed” again, one needs an additional condition. The known ones that select exactly one solution are **complex** — they look
+        beyond the real axis.
+
+        | Condition | Bases | selects |
+        | --- | --- | --- |
+        | holomorphic on $\operatorname{Re}z>-2$, $T(x+iy)\to L$ for $y\to+\infty$ and $\to\bar L$ for $y\to-\infty$ | $a>\eta$ | exactly Kneser's tetration — [[kn.satz.paulsen_cowgill|Paulsen–Cowgill]] |
+        | holomorphic and bounded on $\operatorname{Re}z\ge0$ | $1<a\le\eta$ | exactly the regular tetration — [[kl.satz.carlson|Carlson]] |
+        | real-analytic and strictly increasing | all $a>1$ | still infinitely many — [[fg.kor.nichteindeutigkeit|Non-uniqueness]] |
+        | a real condition such as log-convexity for $\Gamma$ | $a>\eta$ | **open** — [[br.frage.bohr_mollerup|Bohr–Mollerup question]] |
+        | linear on $(-1,0]$ | all | the linear tetration (only continuous) — [[kn.konstr.linear|Linear]] |
+- art: kapitel
+  id: k0
+  quelle_hash: 771c28e5ecd7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: What is tetration?
+    untertitel: From the power tower to the question of what a “half height” should be — everything you need for the chapters that follow.
+    teile:
+    - abschnitt: Computing by repeating
+    - text: |
+        The basic operations of arithmetic grow out of one another by repetition. Anyone who computes $3+3+3+3$ has added the same number four times and
+        writes $4\cdot 3$ for short. Anyone who computes $3\cdot3\cdot3\cdot3$ has multiplied the same number four times and writes $3^4$.
+        The next step is obvious: you repeat the *exponentiation*. Four threes stacked on top of each other as exponents,
+        $$3^{3^{3^{3}}},$$
+        are called a **power tower** of height 4, written $3\uparrow\uparrow4$ (Knuth's arrow notation) or ${}^{4}3$.
+        The operation is called **tetration** — from the Greek *tetra* for four, because it is the fourth level after addition,
+        multiplication and exponentiation.
+
+        A tower is evaluated **from the top**. $3^{3^3}$ means $3^{(3^3)}=3^{27}=7\,625\,597\,484\,987$ and not $(3^3)^3=27^3=19\,683$.
+        This is no accident of notation: evaluated from the bottom, the tower would collapse to $3^{3\cdot3\cdot3}$ — nothing new would come out,
+        just an ordinary power. Only evaluating from the top produces the new, incredibly fast growth.
+
+        Formally, one defines the tower level by level: $a\uparrow\uparrow1=a$ and $a\uparrow\uparrow(n+1)=a^{\,a\uparrow\uparrow n}$.
+        A new level thus means: “$a$ to the power of the previous result.” We also set $a\uparrow\uparrow0=1$, because then the
+        rule holds for the first step as well: $a^{1}=a$. This is the first node of the graph: [[gr.def.turm]].
+    - unterschrift: The same idea, applied four times. On the logarithmic axis a power becomes a straight line — the tower shoots away all the
+        same.
+    - abschnitt: How huge towers get
+    - text: |
+        Even small towers defy the imagination. $2\uparrow\uparrow3=2^{2^2}=16$, $2\uparrow\uparrow4=2^{16}=65\,536$ — and
+        $2\uparrow\uparrow5=2^{65536}$ already has $19\,729$ decimal digits. The number $3\uparrow\uparrow4=3^{7\,625\,597\,484\,987}$ has
+        $3\,638\,334\,640\,025$ digits; it could not be written out on any computer in the world.
+
+        How can we know how many digits it has, then? With the logarithm. The number of digits of a number $m$ is
+        $\lfloor\log_{10}m\rfloor+1$, and the logarithm of a power brings the exponent down:
+        $$\log_{10}\bigl(a\uparrow\uparrow(n+1)\bigr)=a\uparrow\uparrow n\cdot\log_{10}a .$$
+        So the logarithm removes **exactly one level** from the tower. This one observation carries the whole theory: anyone who wants to
+        understand towers computes with repeated logarithms. More on this in [[gr.satz.stellen]] and, for the super-logarithm, in [[gr.satz.logstern]].
+    - abschnitt: Small bases — the tower comes to rest
+    - text: |
+        Not every tower explodes. Take $a=\sqrt2\approx1.414$ and build level by level:
+        $$1,\ \ \sqrt2=1.414,\ \ \sqrt2^{\sqrt2}=1.633,\ \ 1.761,\ \ 1.841,\ \ 1.893,\ \ 1.927,\ \ 1.950,\ \dots$$
+        The values grow, but ever more slowly, and come arbitrarily close to the number $2$. The infinite tower $\sqrt2^{\sqrt2^{\sqrt2^{\cdots}}}$
+        is therefore a perfectly ordinary number: $2$.
+
+        Why exactly $2$? If the tower has a limit $h$, then one more level changes nothing: $h=a^{h}$.
+        For $a=\sqrt2$, $h=2$ satisfies this equation, since $\sqrt2^{\,2}=2$. Such a number is called a **fixed point** of the map
+        $x\mapsto a^x$. Geometrically, a fixed point is an intersection of the curve $y=a^x$ with the line $y=x$, and computing
+        the tower is a staircase between the two curves (right picture).
+    - unterschrift: Left — depending on the base, $y=b^x$ crosses the line twice, touches it, or misses it. Right — the tower to base √2 as a
+        staircase between curve and line; it runs into the lower intersection point 2.
+    - text: |
+        Whether there are any intersection points at all depends on a single number:
+        $$\eta=e^{1/e}\approx1.444667861 .$$
+        If the base is smaller than $\eta$, then $y=a^x$ crosses the line twice; the lower intersection point **attracts** the tower.
+        At $a=\eta$ the curves touch exactly at $x=e$. If $a>\eta$, there is no intersection point — the tower grows beyond all
+        bounds. This is the content of [[fp.def.eta]] and [[fp.satz.reelle_fixpunkte]].
+
+        There is a limit downward as well. For bases between $0$ and $1$ the tower jumps alternately up and down.
+        Down to the base $e^{-e}\approx0.066$ the jumping dies down and the tower converges nonetheless. Below that it never stops:
+        for base $0.03$ the tower oscillates forever between roughly $0.82$ and $0.056$ — a **2-cycle**. Leonhard Euler summarized the
+        result like this: the infinite tower $a^{a^{a^{\cdots}}}$ converges exactly for
+        $$e^{-e}\le a\le e^{1/e}$$
+        ([[fp.satz.turm_reell]]).
+    - unterschrift: Bases below 1. At 0.3 the back-and-forth gets ever smaller; at 0.03 it persists forever.
+    - abschnitt: The base as a variable
+    - text: |
+        You can also let the base vary. The simplest function of this kind is $x^x$: it starts at $1$ (as $x\to0$), first dips a
+        little, has its lowest value $e^{-1/e}=1/\eta\approx0.692$ at $x=1/e$, and then rises steeply ([[gr.satz.selbstpotenz]]).
+        That $\eta$ shows up here already is no accident — it is the same computation as for the intersection points above.
+
+        Higher towers of $x$, that is ${}^2x=x^x$, ${}^3x=x^{x^x}$ and so on, show everything at once: above $\eta$ they run away,
+        between $e^{-e}$ and $\eta$ they contract onto a single curve, and below $e^{-e}$ they split into two branches —
+        even heights on top, odd heights below. This splitting is the reason why the areas under the towers have two different limits
+        ([[gr.satz.turmintegral_grenzen]]).
+    - unterschrift: Left, the self-power $x^x$. Right, the towers ${}^n x$ — they split at $e^{-e}$ and end at η.
+    - abschnitt: Half heights — the real question
+    - text: |
+        So far every tower had a whole number of levels. What is a tower with $2.5$ levels? Just as one got from $2^3$ to $2^{0.5}=\sqrt2$,
+        we would like a **function** $T(x)$ that hits the towers at the integer points and connects them sensibly in between.
+        What “sensibly” means is dictated by the building rule of the tower, carried over to all heights:
+        $$T(x+1)=a^{T(x)},\qquad T(0)=1 .$$
+        Such a function is called **a tetration to base $a$**. The equation immediately gives $T(1)=a$, $T(2)=a^a$ and so on,
+        and, going backward, $T(-1)=0$ (since $a^0=1$). Still further to the left every tetration plunges to $-\infty$ as soon as $x$ approaches $-2$ ([[gr.satz.gestalt]]).
+
+        Here lies the main difficulty of the whole field: **the equation alone does not determine $T$.** One can prescribe $T$ almost arbitrarily on the piece
+        between $-1$ and $0$ — say as a straight line $T(x)=1+x$ — and then continue it to the right, piece by piece, using the equation.
+        This gives the “linear tetration.” It satisfies the equation exactly but has kinks. With smoother
+        prescriptions one gets smoother solutions, and there are infinitely many of them ([[fg.kor.nichteindeutigkeit]]).
+
+        Which one is the “right” one? The answer from research: one additionally demands good properties in the **complex plane**, and then
+        exactly one solution remains.
+        - For $1<a<\eta$ it is the **regular tetration**, built at the attracting fixed point: there every step looks almost like a
+          scaling, and a half scaling is easy to define (Chapters 4 and 5). For base $\sqrt2$, $T(1/2)=1.24362\ldots$
+          and the curve comes to rest at $2$.
+        - For $a>\eta$ it is **Kneser's tetration** (1950), built at a pair of complex fixed points with an additional
+          correction (Chapter 6). For base $e$, $T(1/2)=1.6463542\ldots$; the linear tetration would give $e^{1/2}=1.6487\ldots$, so
+          almost the same, but not quite the same.
+    - unterschrift: Left, two tetrations to base e — Kneser (smooth) and the linear one (with kinks); the inset shows their small difference.
+        Right, the regular tetration to base √2, approaching the fixed point 2.
+    - abschnitt: The inverse — the super-logarithm
+    - text: |
+        Every increasing tetration comes with an inverse function, the **super-logarithm** $\operatorname{slog}_a$. It answers the question:
+        “At what height does the tower reach the value $y$?” From $T(x+1)=a^{T(x)}$ we get
+        $$\operatorname{slog}_a(a^{y})=\operatorname{slog}_a(y)+1 .$$
+        One logarithm less means one level lower. Rounded up, the super-logarithm simply counts how often one has to take the logarithm
+        until one lands below $1$ ([[gr.satz.logstern]]). In technical language it is an **Abel function**, and almost every deeper
+        construction in this book first builds an Abel function and then inverts it.
+    - abschnitt: A short history
+    - text: |
+        The question is old; the answers are astonishingly recent.
+        - **1783 — Euler** finds for which bases the infinite tower has a limit; in **1844** **Eisenstein** gives a series for this limit ([[fp.satz.turm_reell]]).
+        - **1936–1962 — Barrow, Thron, Shell** settle the same question for complex bases: the Shell–Thron region ([[fp.satz.shell_thron]]).
+        - **1947 — Goodstein** gives the operation its name “tetration”; in **1976** **Knuth's** arrows $\uparrow\uparrow$ are added ([[br.def.hyperoperation]]).
+        - **1950 — Hellmuth Kneser** builds a real-analytic half-iterate of $e^x$ — from which Kneser's tetration later emerges ([[kn.konstr.kneser]]).
+        - **1958 and 1961 — George Szekeres** develops the regular iteration of real functions and finds a purely real uniqueness condition
+          ([[it.satz.szekeres]], [[it.satz.szekeres_monoton]]); he also notes that Kneser's solution is not singled out by growth alone.
+        - **Around 1991** **Asimov, Hickerson and Schroeppel** notice that the base $\sqrt2$ has two different natural solutions ([[kl.beob.zwei_abel]]);
+          in the same year **Walker** builds an infinitely differentiable solution ([[kn.konstr.walker]]).
+        - **From 2007** the **tetration forum** (Henryk Trappmann, Andrew Robbins, Jay Fox, Sheldon Levenstein, Dmitrii Kouznetsov and others) collects methods,
+          numbers and open questions — from pentation ([[kn.konstr.pentation]]) to the list of open problems (TPID).
+        - **2009–2012** **Kouznetsov and Trappmann** compute the solutions cleanly in the complex plane for the first time and prove a uniqueness result
+          ([[kn.satz.trappmann_kouznetsov]], [[kl.satz.vier_sqrt2]]).
+        - **2017** **Paulsen and Cowgill** show that Kneser's solution is uniquely determined by simple conditions ([[kn.satz.paulsen_cowgill]]);
+          **2019** brings complex bases ([[kn.satz.paulsen_komplex]]).
+
+        This book gathers all of this in one place, recomputes every number, and says for every statement how certain it is.
+    - abschnitt: How this book is organized
+    - text: |
+        Every statement sits in its own box. At the top it says what kind of statement it is (definition, theorem, conjecture …), how well
+        established it is, and whom it is meant for (introductory, advanced, research). Below that comes the statement itself in concise
+        mathematical form, and then the detailed explanation in fixed parts:
+        - **What it is about** — the idea, without presupposing any formulas.
+        - **Precisely** — the statement once more, with every symbol explained.
+        - **Why it holds** — the justification, step by step.
+        - **Example** — with real numbers you can recompute.
+        - **Context** — what the statement builds on and where it leads.
+
+        The “Details and sources” button opens everything else: hypotheses and whether the proof really needs them, sources,
+        experiments, the check questions. Blue words are links to other statements. The chapters build on one another; if you only want to
+        understand what tetration is, Chapters 0 to 2 will take you far.
+
+        > A word on honesty: “proved” means proved here. Numbers that were only measured are called “numerical,” conjectures
+        > are called conjectures, and refuted ideas stay in place so that you can see why they are wrong.
+- art: kapitel
+  id: k1
+  quelle_hash: a2cc1731ccb4
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Foundations
+    untertitel: Values, derivatives, shape of the curve and areas — what every tetration must satisfy, no matter how it is built.
+    teile:
+    - text: |
+        This chapter needs only school mathematics: powers, logarithms, derivative and integral. Almost everything here follows from the one
+        equation $T(x+1)=a^{T(x)}$ and therefore holds for **every** tetration, not just for one particular construction. Where a
+        particular construction is meant (mostly Kneser's, for base $e$), this is stated.
+    - {}
+    - {}
+    - text: |
+        The super-logarithm inverts the tetration in the **height**: it asks how often one has to exponentiate. One can also invert it in the
+        **base** and ask which number, raised to the power of itself, gives a prescribed $x$. This is the **super-root** — and
+        here again the Lambert W function helps, which later also delivers all fixed points.
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - text: |
+        **What is fixed and what is free.** The equation $T(x+1)=a^{T(x)}$ connects only points that lie an integer apart. Hence there are exactly
+        two kinds of statements. The first kind holds for **every** tetration: values at integer points, the swap rule $T(x+1)^{T(y)}=T(y+1)^{T(x)}$, the Taylor ladder
+        from one level to the next, and $\ln a=T'(0)/T'(-1)$ — one level higher, $\ln a=P'(0)P'(-2)/P'(-1)^2$ for the pentation. The others connect points
+        at non-integer distance, such as $T(\tfrac12)$ with $T(0)$; they depend on the chosen tetration ([[gr.satz.frei_und_fest]]).
+    - {}
+    - text: |
+        **What does tetration allow us to do?** Five things that are impossible without it. *Half steps:* $\exp^{[s]}(x)=T(\operatorname{slog}x+s)$ is a function that,
+        applied twice, gives $e^x$ — no formula built from $\exp$ and $\ln$ can do that ([[kn.satz.halbe_exp_wachstum]]). *Measuring growth:* $\operatorname{slog}f(x)-\operatorname{slog}x$
+        counts how many exponential functions are contained in $f$, and with tetration this number can be a fraction ([[gr.satz.exponentialitaet]]). *Making huge numbers tangible:*
+        the number of digits and the last digits of towers that could never be written out ([[gr.satz.stellen]], [[br.satz.turm_mod_m]]). *Solving equations:* $x^x=c$ or $x^{x^x}=c$
+        with super-roots ([[gr.satz.superwurzel]]). *Building further:* pentation, hexation and all higher levels arise by the same step — and carry the same
+        fixed relations upward ([[gr.satz.stufenleiter]]).
+- art: kapitel
+  id: k10
+  quelle_hash: dbb9624d5cd6
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Bridges to other fields
+    untertitel: Logic and growth, circle maps, bottlenecks, discrete mathematics and real analysis.
+    teile:
+    - text: |
+        Tetration shows up in many fields, often under another name: as a growth class in logic, as a circle map in
+        dynamics, as a bottleneck when passing a saddle point. These connections are collected here.
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+- art: kapitel
+  id: k2
+  quelle_hash: 2ef5192bc5f5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Fixed points and the infinite tower
+    untertitel: Where the tower comes to rest, why η is the limit, and what happens in the complex plane.
+    teile:
+    - text: |
+        A **fixed point** of the map $f(z)=a^z$ is a number $L$ with $a^{L}=L$. Fixed points decide everything: whether the infinite tower
+        converges, how quickly a tetration comes to rest, and which construction can be used for half heights. How strongly a
+        fixed point attracts or repels is measured by its **multiplier** $\lambda=f'(L)=L\ln a$: if $|\lambda|<1$ it attracts; if $|\lambda|>1$
+        it repels; for $|\lambda|=1$ it is “neutral” — this is the hardest case.
+    - {}
+    - {}
+- art: kapitel
+  id: k3
+  quelle_hash: f02920571bd5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: The equation and why it is not enough
+    untertitel: The Abel and Schröder equations, the freedom in the solutions and what restricts it.
+    teile:
+    - text: |
+        The tetration equation $F(x+1)=a^{F(x)}$ is a special case of a general question: for a map $f$ one looks for a
+        function that carries out “$f$ in continuous time.” This chapter shows why the equation alone has infinitely many solutions,
+        how to describe all of them (one solution, shifted by a periodic function) and which additional conditions single one out.
+    - {}
+    - {}
+    - {}
+- art: kapitel
+  id: k4
+  quelle_hash: 0aa483f1b041
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Iteration at a fixed point
+    untertitel: Koenigs, Leau–Fatou, Écalle — the tool for building half steps.
+    teile:
+    - text: |
+        Near a fixed point, every smooth map looks almost linear. This chapter turns that into exact coordinates:
+        at an attracting or repelling fixed point the Koenigs coordinate, in which the map is a pure scaling; at a neutral
+        (parabolic) fixed point the Fatou coordinate, in which it is a pure translation. In both coordinates a half
+        step is obvious.
+    - {}
+    - {}
+    - {}
+- art: kapitel
+  id: k5
+  quelle_hash: eadbef10f176
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Tetration below η
+    untertitel: The regular solution, fractional sums, the borderline case η and its digamma structure.
+    teile:
+    - text: |
+        For bases between $1$ and $\eta$ there is an attracting real fixed point, and with the tools from Chapter 4 one obtains
+        the regular tetration. This chapter builds it, computes with it (spectral series, fractional sums, derivative formula) and follows
+        what happens in the limit as the base approaches $\eta$.
+    - {}
+    - {}
+    - {}
+    - {}
+- art: kapitel
+  id: k6
+  quelle_hash: 344fd51105cb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Kneser and the super-logarithm
+    untertitel: Tetration for bases above η, its uniqueness and its alternatives.
+    teile:
+    - text: |
+        Above $\eta$ there is no real fixed point any more, only a complex pair $L,\bar L$. In 1950 Kneser showed how to build a real-analytic
+        tetration from it nonetheless. This chapter explains the construction, why it is unique
+        (Paulsen–Cowgill), where it becomes singular, and what other proposals there are.
+    - {}
+    - {}
+    - {}
+    - {}
+    - text: |
+        **What is all this for?** In 1950 Kneser was actually looking for a function $f$ with $f(f(x))=e^x$. With the tetration it is there at once:
+        $f(x)=T(\operatorname{slog}x+\tfrac12)$. It grows faster than any polynomial and more slowly than any $e^{x^\varepsilon}$ — a growth class
+        that cannot be written down with $\exp$ and $\log$ alone.
+    - {}
+    - text: |
+        **One level higher.** With a finished tetration $T_b$ one can repeat the whole game: pentation is iterated tetration,
+        $b\uparrow\uparrow\uparrow3=T_b(T_b(b))$. For fractional heights one again needs a fixed point — the tetration to base $e$ meets
+        the line $y=x$ at $-1.85$ —, and there the same regular iteration helps as in Chapter 5. A nice echo appears along the way:
+        just as $\eta$ and $e$ mark the limit of the infinite tower, $\eta_4\approx1.6353$ and $e_4\approx3.0885$ mark the limit
+        of the infinite pentation.
+    - {}
+    - {}
+- art: kapitel
+  id: k7
+  quelle_hash: 640ea55b14af
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Base change
+    untertitel: How the tetration to base d is translated into the heights of base b — phase law, wave and common fixed points.
+    teile:
+    - text: |
+        The question of this chapter: at what height does the tower to base $b$ reach the value that the tower to base $d$ has at height $x$?
+        The answer $\operatorname{slog}_b(T_d(x))$ is almost $x+\text{const}$, but with a small periodic wave. Here you will find
+        where the wave comes from, what it looks like, and when it vanishes.
+
+        ![[bild:k7_phase]] Left: $\operatorname{slog}_e(T_2(n+\theta))-(n+\theta)$ for $n=0,\dots,4$ — the curves fall, level by level, onto an almost horizontal line at
+        $\mu=-1.1284$. Right: what is left over, the wave $P(\theta)$, magnified ten-thousandfold.
+
+        ### Roadmap
+        - **Phase law and channel:** why the translation comes to rest, and which assumptions were needed for this or have meanwhile been proved.
+        - **Circle map:** the wave as a map of the circle to itself; it follows that the forward and the return path cancel exactly.
+        - **Modes:** how fast the Fourier components of the wave decay, and why an apparent singularity was a computational artifact.
+        - **Response kernel and hub:** the wave to first order and a single table column $m(b)$ that carries all the means.
+        - **Riemann–Hilbert and reconstruction:** the derivative with respect to the base, without a computing engine — all the way to the tetration to base $2$ from the one to base $e$.
+        - **Common fixed points:** when the change of base needs no wave at all.
+
+        > The strands reach all the way to the current state of research. If you are reading for the first time, take along the definition, the phase law, the antisymmetry, the hub and the
+        > common fixed points, and skip the rest.
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+- art: kapitel
+  id: k8
+  quelle_hash: a300580fd625
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: The base plane
+    untertitel: Complex bases, regions, spirals, the period-2 bulb and the square wave.
+    teile:
+    - text: |
+        If you admit complex bases, the number line becomes a plane full of patterns: a region in which the tower comes to rest,
+        buds with cycles, spirals, dust made of escaping bases. This chapter sorts the patterns and shows which formulas lie behind them.
+
+        ![[bild:exp.parameterraum]] Left: every base $b$ in the rectangle, colored by the period into which its tower falls. The large region in the middle is the
+        Shell–Thron region (period 1); the buds on the boundary carry cycles. Right: the tower to base $i$ spirals into its fixed point.
+
+        > The one number that orders almost everything is the multiplier $\lambda$ at the fixed point: inside $|\lambda|<1$, on the boundary $|\lambda|=1$, in the buds a cycle
+        > whose multiplier takes over the role.
+    - {}
+    - {}
+    - {}
+- art: kapitel
+  id: k9
+  quelle_hash: 4713e3da650d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Numbers and arithmetic
+    untertitel: Is T_e(1/2) rational? Towers modulo m, transcendence and o-minimal structures.
+    teile:
+    - text: |
+        The values of tetrations are numbers — what kind of numbers? This chapter collects what is known about irrationality,
+        transcendence and divisibility of towers, and which tools from number theory and logic apply here.
+
+        > The honest balance up front: even for $e^e=T_e(2)$ it is not proved that it is irrational. What is proved are statements about **pairs** of neighboring
+        > values and about the **number** of simple points on the graph — about a single value like $T_e(\tfrac12)$ there are only numerical exclusions.
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}

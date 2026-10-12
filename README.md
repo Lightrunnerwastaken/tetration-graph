@@ -74,7 +74,11 @@ Identitäten `formen:` (gleichwertige Schreibweisen).
 (je Aussage `en` und optional `en_theorie`, dazu Hash der übersetzten deutschen Texte, Herkunft und Prüfstand). Das Prüfprogramm erzwingt, dass
 Formeln, `[[Verweise]]` und Kennungen unverändert bleiben, meldet veraltete Übersetzungen (deutscher Text hat sich geändert), Zahl- und
 Wortwahl-Abweichungen und den Fortschritt je Gebiet. Befehle (`stand`, `export`, `einlesen`), Glossar und Pilot: `docs/uebersetzung/`.
-Noch nicht übersetzt; der DE/EN-Umschalter der Ansicht und die Oberflächentexte folgen.
+**Stand 12.10.2026:** alle 367 Aussagen (Kern, Beweis, Prüffragen, Theorie), Gebiete, Stränge, Ideen, Lehrbuch-Kapitel, Objekte und Experiment-Titel
+sind übersetzt (`daten/uebersetzung_struktur/<art>.yaml`, Befehle `struktur-stand|-export|-einlesen`); die README gibt es als `README.en.md`.
+Gegengelesen ist erst ein Teil (Prüfstand: `python -m wissen.uebersetzung stand`). Offen: DE/EN-Umschalter der Ansicht, Oberflächentexte,
+Ergebnis-Zusammenfassungen der Experimente, `ausgabe/landkarte.md` und `docs/`. Unstimmigkeiten im deutschen Text, die dabei aufgefallen sind:
+`docs/uebersetzung/DEUTSCH_ZU_KLAEREN.md`.
 
 ## Was das Prüfprogramm erzwingt
 
