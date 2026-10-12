@@ -78,7 +78,7 @@ def g_export(g, stat, befunde, roh):
     for i, a in g.knoten.items():
         k = {key: v for key, v in a.items() if not key.startswith("_") or key in (
             "_status_eff", "_bedingungen_auto", "_neu_pruefen", "_tragweite", "_abhaengig", "_traegt", "_verwandt",
-            "_teilweise_entlastet_durch", "_datei", "_wurzelbedingungen", "_strang", "_niveau")}
+            "_teilweise_entlastet_durch", "_datei", "_wurzelbedingungen", "_strang", "_niveau", "_idee")}
         k["befunde"] = [b for b in befunde if b["id"] == i]
         knoten.append(k)
     exp = []

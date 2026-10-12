@@ -1,0 +1,228 @@
+# Ideen-Landkarte: Hauptideen (ohne eltern) und Unterideen. Jede Aussage gehört über ihren Strang zu genau einer Unteridee;
+# einzelne Aussagen können über die Liste `aussagen` einer anderen Unteridee zugeordnet werden (das schlägt den Strang).
+# Die Lage auf der Karte wird beim Bauen aus der Kopplung berechnet (wissen/landkarte.py), nicht hier festgelegt.
+
+# ------------------------------------------------------------------ Die Gleichung
+- id: gleichung
+  name: Die Gleichung T(x+1) = a^T(x)
+  kurz: Was jede Lösung der Grundgleichung erfüllt, ganz gleich, wie man sie zwischen den ganzen Höhen festlegt.
+- id: gleichung.begriffe
+  eltern: gleichung
+  name: Begriffe
+  kurz: Abel-, Schröder- und Böttcher-Gleichung, Superfunktion und ihre Grenzen.
+  straenge: [fg.begriffe, fg.rand]
+- id: gleichung.freiheit
+  eltern: gleichung
+  name: Freiheit der Lösungen
+  kurz: Zu jeder Lösung gibt es unendlich viele weitere — verschoben um eine periodische Funktion θ.
+  straenge: [fg.freiheit]
+- id: gleichung.festfrei
+  eltern: gleichung
+  name: Was fest ist, was frei ist
+  kurz: Welche Grössen jede Tetration gleich hat und welche von der Wahl abhängen.
+  straenge: [gr.identitaeten]
+- id: gleichung.werte
+  eltern: gleichung
+  name: Werte, Ableitungen, Gestalt
+  kurz: Türme an ganzen Stellen, Steigungen, Krümmung und Ableitung nach der Basis.
+  straenge: [gr.werte, gr.kurve, gr.ableitung, gr.basis]
+- id: gleichung.integrale
+  eltern: gleichung
+  name: Integrale
+  kurz: Flächen unter der Tetration und unter Türmen.
+  straenge: [gr.integrale, gr.turmintegrale]
+- id: gleichung.slog
+  eltern: gleichung
+  name: Superlogarithmus
+  kurz: Die Umkehrung nach der Höhe — wie oft man logarithmieren muss.
+  straenge: [gr.slog]
+- id: gleichung.superwurzeln
+  eltern: gleichung
+  name: Superwurzeln
+  kurz: Die Umkehrung nach der Basis, über Lamberts W.
+  straenge: [gr.umkehrungen]
+
+# ------------------------------------------------------------------ Dynamik
+- id: dynamik
+  name: Dynamik von b^z und der Fixpunkt L
+  kurz: Was passiert, wenn man b^z immer wieder anwendet — und welche Rolle die Fixpunkte spielen.
+- id: dynamik.fixpunkte
+  eltern: dynamik
+  name: Fixpunkte von b^z
+  kurz: Wo b^z = z ist, und wie stark die Abbildung dort zieht oder stösst.
+  straenge: [fp.fixpunkte]
+- id: dynamik.koenigs
+  eltern: dynamik
+  name: Anziehend und abstossend
+  kurz: Koenigs-Koordinaten — nahe einem gewöhnlichen Fixpunkt ist die Abbildung eine reine Streckung.
+  straenge: [it.hyperbolisch]
+- id: dynamik.parabolisch
+  eltern: dynamik
+  name: Parabolisch
+  kurz: Fixpunkte mit Multiplikator 1 (wie bei η) — Fatou-Koordinaten, langsames Kriechen.
+  straenge: [it.parabolisch]
+- id: dynamik.indifferent
+  eltern: dynamik
+  name: Indifferent
+  kurz: Drehende Fixpunkte — Siegel-Scheiben und Cremer-Punkte.
+  straenge: [it.indifferent]
+
+# ------------------------------------------------------------------ Turm und Basen-Ebene
+- id: turm
+  name: Unendlicher Turm und Basen-Ebene
+  kurz: Für welche Basen der unendlich hohe Turm einen Grenzwert hat, und welche Bilder dabei in der komplexen Ebene entstehen.
+- id: turm.konvergenz
+  eltern: turm
+  name: Konvergenz des Turms
+  kurz: Der Turm b^b^b^… konvergiert genau für e^{-e} ≤ b ≤ e^{1/e}.
+  straenge: [fp.turm]
+- id: turm.periode2
+  eltern: turm
+  name: Periode 2 unter e^{-e}
+  kurz: Unter der Eulerschen Schranke springt der Turm zwischen zwei Werten hin und her.
+  straenge: [fp.periode2]
+- id: turm.regionen
+  eltern: turm
+  name: Regionen und Fraktale
+  kurz: Die Basen-Ebene zerfällt in Gebiete mit Periode 1, 2, 3 … — mit fraktalen Rändern.
+  straenge: [fp.parameterraum]
+- id: turm.spiralen
+  eltern: turm
+  name: Spiralen und Mittelwerte
+  kurz: Wie der Turm um seinen Grenzwert kreist, und was sein Mittel ist.
+  straenge: [fp.spiralen_mittel]
+
+# ------------------------------------------------------------------ Fraktionale Fortsetzung
+- id: fortsetzung
+  name: Fraktionale Fortsetzung
+  kurz: Wie man T(x) zwischen den ganzen Höhen festlegt — und welche Wahl die natürliche ist.
+- id: fortsetzung.regulaer
+  eltern: fortsetzung
+  name: Regulär unter η
+  kurz: Für kleine Basen liefert der reelle Fixpunkt eine natürliche Lösung.
+  straenge: [kl.regulaer, kl.zwei_abel, kl.bruch]
+- id: fortsetzung.eta
+  eltern: fortsetzung
+  name: Der Grenzfall η = e^{1/e}
+  kurz: Der parabolische Übergang, Engpass bei e und das Verhalten knapp darüber.
+  straenge: [kl.eta, br.engpass]
+- id: fortsetzung.kneser
+  eltern: fortsetzung
+  name: Kneser über η
+  kurz: Holomorphe Lösung über die komplexen Fixpunkte L und L̄.
+  straenge: [kn.konstruktion, kn.rand]
+- id: fortsetzung.andere
+  eltern: fortsetzung
+  name: Andere Konstruktionen
+  kurz: Linear, Carleman-Matrizen, Cauchy-Integrale, Walker — und wie sie zu Kneser stehen.
+  straenge: [kn.andere]
+- id: fortsetzung.eindeutigkeit
+  eltern: fortsetzung
+  name: Eindeutigkeit
+  kurz: Welche Bedingungen genau eine Lösung auswählen.
+  straenge: [kn.eindeutigkeit]
+- id: fortsetzung.reell
+  eltern: fortsetzung
+  name: Reelle Kennzeichnung?
+  kurz: Gibt es wie bei Γ eine rein reelle Bedingung, die Kneser auswählt?
+  straenge: [br.reell]
+- id: fortsetzung.halbexp
+  eltern: fortsetzung
+  name: Halbe Exponentialfunktion
+  kurz: f(f(x)) = e^x — Wachstum, Konstruktion und die Polynom-Vermutung.
+  straenge: [kn.halbe_exp]
+
+# ------------------------------------------------------------------ Basiswechsel
+- id: basiswechsel
+  name: Basiswechsel T_b ∘ slog_d
+  kurz: Was entsteht, wenn man die Tetration zu einer Basis mit dem Superlogarithmus einer anderen zusammensetzt.
+- id: basiswechsel.gleiches_l
+  eltern: basiswechsel
+  name: Gleicher Fixpunkt
+  kurz: Basen mit gemeinsamem Fixpunkt — dort ist der Wechsel fast linear.
+  straenge: [kl.gleiches_L]
+- id: basiswechsel.abschaelen
+  eltern: basiswechsel
+  name: Log-Peeling und Grenzkanal
+  kurz: Logarithmen schichtweise abschälen; die Schwänze konvergieren gegen eine Konstante.
+  aussagen: [bw.def.F_bd, bw.prop.gruppoid, bw.prop.ganzzahl, bw.ann.hyp22, bw.ann.hyp24, bw.lem.wachstumsluecke, bw.lem.stoppregel, bw.satz.schwanzkonvergenz]
+- id: basiswechsel.phase
+  eltern: basiswechsel
+  name: Phasengesetz und Welle
+  kurz: Der Basiswechsel ist bis auf eine periodische Welle linear.
+  straenge: [bw.phasengesetz]
+- id: basiswechsel.kreis
+  eltern: basiswechsel
+  name: Kreisabbildung
+  kurz: Die Phase als Homöomorphismus des Kreises, mit exakter Antisymmetrie.
+  straenge: [bw.kreis]
+- id: basiswechsel.moden
+  eltern: basiswechsel
+  name: Moden und Singularitäten
+  kurz: Fourier-Moden der Welle, ihr Abfall und die Singularität, die ihn bestimmt.
+  straenge: [bw.moden]
+- id: basiswechsel.antwort
+  eltern: basiswechsel
+  name: Antwortkern und Basisableitung
+  kurz: Wie die Welle auf eine kleine Änderung der Basis antwortet — über ein Riemann–Hilbert-Problem.
+  straenge: [bw.antwort, bw.rh]
+- id: basiswechsel.rekonstruktion
+  eltern: basiswechsel
+  name: Rekonstruktion und Zertifikat
+  kurz: Die Welle aus Ankerwerten zurückgewinnen und rigoros zertifizieren.
+  straenge: [bw.rekonstruktion]
+
+# ------------------------------------------------------------------ Höhere Stufen
+- id: stufen
+  name: Höhere Stufen
+  kurz: Pentation, Hexation und die ganze Leiter der Hyperoperationen.
+- id: stufen.pentation
+  eltern: stufen
+  name: Pentation und Hexation
+  kurz: Die Tetration iterieren — Fixpunkte, Kneser-artige Lösungen, Verzweigungen.
+  straenge: [kn.hoehere_stufen]
+- id: stufen.etas
+  eltern: stufen
+  name: η_n → 2 und e_n → 4
+  kurz: Die Grenzbasen der höheren Stufen und ihr Grenzwert (TPID 10).
+  straenge: [kn.etas]
+- id: stufen.hyperop
+  eltern: stufen
+  name: Hyperoperationen
+  kurz: Ackermann, andere Klammerungen, Ordinalzahlen.
+  aussagen: [br.def.hyperoperation, br.satz.ackermann, br.satz.ordinal_tetration, br.satz.hyperop_varianten]
+
+# ------------------------------------------------------------------ Zahlen
+- id: zahlen
+  name: Zahlen und Arithmetik
+  kurz: Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.
+- id: zahlen.transzendenz
+  eltern: zahlen
+  name: Transzendenz
+  kurz: Gelfond–Schneider, Schanuel und was die Gleichung über Zahlwerte erzwingt.
+  straenge: [ar.klassisch, ar.gleichung, ar.zaehlen]
+- id: zahlen.ks
+  eltern: zahlen
+  name: Kneser–Schanuel
+  kurz: Eine Schanuel-artige Vermutung für die Kneser-Tetration.
+  straenge: [ar.ks]
+- id: zahlen.kongruenzen
+  eltern: zahlen
+  name: Kongruenzen
+  kurz: Türme modulo m, Endziffern und p-adische Grenzwerte.
+  straenge: [ar.kongruenzen, br.diskret]
+
+# ------------------------------------------------------------------ Brücken
+- id: bruecken
+  name: Brücken
+  kurz: Wo die Tetration in Logik, Wachstumstheorie und Fourier-Analysis auftaucht.
+- id: bruecken.logik
+  eltern: bruecken
+  name: Logik und Wachstum
+  kurz: Definierbarkeit, Hardy-Felder, Komplexitätstheorie.
+  straenge: [br.logik]
+- id: bruecken.fourier
+  eltern: bruecken
+  name: Kreis und Fourier
+  kurz: Werkzeuge aus der Analysis auf dem Kreis.
+  straenge: [br.kreis]

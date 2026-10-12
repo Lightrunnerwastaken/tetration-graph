@@ -51,6 +51,7 @@ class Graph:
         self.quellen = roh["quellen"]
         self.experimente = {e["id"]: e for e in roh["experimente"]}
         self.straenge = roh.get("straenge") or []
+        self.ideen = roh.get("ideen") or []
 
     # ------------------------------------------------------------------ util
     def befund(self, stufe, regel, id_, text):
@@ -211,6 +212,42 @@ class Graph:
                 # Regel: auf der Karte soll jede Aussage einem Verlauf angehören.
                 if i not in zuordnung:
                     self.befund("HINWEIS", "ohne-strang", i, "gehört keinem Forschungsstrang an")
+        return self
+
+    def pruefen_ideen(self):
+        """Ideen-Landkarte: Hauptideen (ohne eltern) und Unterideen; Zuordnung über Stränge, Ausnahmen über 'aussagen'."""
+        if not self.ideen:
+            return self
+        haupt = {i["id"] for i in self.ideen if not i.get("eltern")}
+        strang_ids = {s.get("id") for s in self.straenge}
+        von_strang, von_aussage = {}, {}
+        for i in self.ideen:
+            iid = i.get("id", "?")
+            for f in ("name", "kurz"):
+                if not i.get(f):
+                    self.befund("WARNUNG", "idee", iid, f"Feld '{f}' fehlt")
+            if not i.get("eltern"):
+                continue
+            if i["eltern"] not in haupt:
+                self.befund("FEHLER", "idee", iid, f"Eltern '{i['eltern']}' ist keine Hauptidee")
+            for s in _liste(i.get("straenge")):
+                if s not in strang_ids:
+                    self.befund("FEHLER", "idee", iid, f"unbekannter Strang '{s}'")
+                elif s in von_strang:
+                    self.befund("FEHLER", "idee-doppelt", s, f"Strang in {von_strang[s]} und {iid}")
+                else:
+                    von_strang[s] = iid
+            for a in _liste(i.get("aussagen")):
+                if a not in self.knoten:
+                    self.befund("FEHLER", "idee", iid, f"unbekannte Aussage '{a}'")
+                elif a in von_aussage:
+                    self.befund("FEHLER", "idee-doppelt", a, f"Aussage in {von_aussage[a]} und {iid}")
+                else:
+                    von_aussage[a] = iid
+        for k, a in self.knoten.items():
+            a["_idee"] = von_aussage.get(k) or von_strang.get(a.get("_strang"))
+            if not a["_idee"]:
+                self.befund("HINWEIS", "ohne-idee", k, "gehört keiner Idee der Landkarte an")
         return self
 
     # ------------------------------------------------------------ ableiten
@@ -456,7 +493,7 @@ class Graph:
     # ------------------------------------------------------------- gesamt
     def alles(self):
         from . import lehrbuch
-        g = (self.aufbauen().pruefen_schema().pruefen_inhalt().pruefen_straenge()
+        g = (self.aufbauen().pruefen_schema().pruefen_inhalt().pruefen_straenge().pruefen_ideen()
              .ableiten().verwandte().experimente_einlesen())
         return lehrbuch.pruefen(g)
 
