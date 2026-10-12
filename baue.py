@@ -18,6 +18,7 @@ sys.path.insert(0, str(WURZEL))
 from wissen.ausgabe import bericht_md, html_bauen  # noqa: E402
 from wissen.graph import Graph  # noqa: E402
 from wissen.laden import lade  # noqa: E402
+from wissen import landkarte  # noqa: E402
 
 try:
     sys.stdout.reconfigure(encoding="utf-8")
@@ -55,6 +56,7 @@ def main():
         (aus / "graph.json").write_text(json.dumps(daten, ensure_ascii=False, indent=1), encoding="utf-8")
         html = html_bauen(WURZEL, daten)
         (aus / "tetration-graph.html").write_text(html, encoding="utf-8")
+        (aus / "landkarte.md").write_text(landkarte.text_md(daten["ideen"]), encoding="utf-8")
     zahl = {s: sum(1 for b in befunde if b["stufe"] == s) for s in ("FEHLER", "WARNUNG", "HINWEIS")}
     print(f"{len(g.knoten)} Aussagen, {len(g.kanten)} Kanten, {len(g.experimente)} Experimente — "
           f"{zahl['FEHLER']} Fehler, {zahl['WARNUNG']} Warnungen, {zahl['HINWEIS']} Hinweise")
@@ -104,6 +106,7 @@ def g_export(g, stat, befunde, roh):
         "bilder": {n: _svg_schlank(p.read_text(encoding="utf-8")) for n, p in (roh.get("bilder") or {}).items()},
         "befunde": befunde,
         "statistik": stat,
+        "ideen": landkarte.berechne(g, roh),
         "schema": {"arten": S.ARTEN, "ebenen": S.EBENEN, "status": S.STATUS, "kanten": S.KANTEN,
                    "neuheit": S.NEUHEIT, "prueffragen": S.PRUEFFRAGEN, "quellen_pruefung": S.QUELLEN_PRUEFUNG,
                    "niveau": S.NIVEAU, "theorie_teile": S.THEORIE_TEILE},
