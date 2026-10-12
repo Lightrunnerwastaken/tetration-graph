@@ -1,0 +1,2385 @@
+# Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
+# übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: fp.ann.siegel_rand
+  quelle_hash: 3091467ead7a
+  theorie_hash: cd85078dc319
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    bewertung:
+      nutzen: Had supported the mean-value theorem fp.satz.siegel_mittel.
+      richtigkeit: 'Refuted after literature comparison L1 (12.10.2026): $b^z$ is affinely conjugate to $\exp(w)+\kappa$. For Diophantine $\alpha$
+        — hence also for the golden ratio, on which the computations were done — the Siegel disk of an exponential map is unbounded (Herman 1985).
+        The part “bounded, Jordan curve” is therefore false. The last part remains correct: For an unbounded disk the singular value (here 0;
+        its orbit is 0, 1, b, …) lies on the boundary (Rempe 2004), see fp.satz.siegel_unbeschraenkt.'
+    titel: Siegel boundary is a Jordan curve on which the orbit of 1 lies
+    aussage: |
+      For $b=b(2\pi\alpha)$ with Brjuno number $\alpha$ the Siegel disk $\Delta$ is bounded, its boundary a Jordan curve, and the
+      orbit of 1 lies on $\partial\Delta$.
+  en_theorie:
+    einordnung: |
+      Was the condition of [[fp.satz.siegel_mittel]]; background [[fp.satz.neutral]]. Refuted by [[fp.satz.siegel_unbeschraenkt]].
+    genau: |
+      **Assumption.** For $b=b(2\pi\alpha)$ with Brjuno number $\alpha$ the Siegel disk $\Delta$ is bounded, $\partial\Delta$ is a Jordan curve, and the orbit of $1$ lies on $\partial\Delta$.
+    warum: |
+      The idea was: plausible for numbers of bounded type (like the golden ratio). **This is false.** Herman showed in 1985 that an exponential map
+      cannot have a bounded Siegel disk for Diophantine rotation numbers — the golden ratio is one of them; and $b^z$ is such a map.
+      The last part of the assumption is nevertheless correct: The tower runs on the boundary ([[fp.satz.siegel_unbeschraenkt]]).
+    worum: |
+      An assumption about the Siegel disk that is needed for the mean-value theorem: It is bounded, its boundary a closed curve without self-contact,
+      and the tower runs on this boundary.
+- id: fp.beob.gleiches_L_kategorien
+  quelle_hash: ceebfff5795a
+  theorie_hash: 1aa5ca27b2aa
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f2_benutzte_voraussetzungen: 6000 iterations, period test up to 12, principal branch.
+      f5_neue_frage: Does the common fixed point have a meaning for the cycles (e.g. position of the 2-cycle around L)?
+      f3_spezialfall: —
+      f1_folgt_unmittelbar: No; the common fixed point is mostly repelling and does not determine the tower's behavior.
+      f4_uebertragbar: Same search for complex bases on the map (Figure 1).
+    bewertung:
+      nutzen: Catalog of the base pairs for which the linear base change holds.
+      richtigkeit: numerical
+    titel: Partners to the left and right of the Shell–Thron region
+    aussage: |
+      If two real bases share an $L$, often one lies to the right (tower diverges) and one to the left of the Shell–Thron region (tower periodic):
+      $L=i$: $e^{-7\pi/2}$, $e^{-3\pi/2}$ period 2; $e^{\pi/2}$, $e^{5\pi/2}$, $e^{9\pi/2}$ escape.
+      $L=iW(\pi)/\pi$: $-1.03\cdot10^{-6}$ period 2; $-99.11$ and $-9.56\cdot10^{9}$ period 3.
+      Mixed: $29.67$ (escape) with $-0.000814$ (period 2) and $-1.08\cdot10^{6}$ (period 3); $2.084$ (escape) with $-0.00262$ (period 2) and $-1659.6$ (period 3);
+      $\sqrt2$ (period 1) with $-\sqrt2$ (period 9).
+    bereich: real bases with a common fixed point, principal branch, starting value 1
+    einfach: 'Bases with the same fixed point can behave completely differently: one tower grows to infinity, the other jumps between two or three
+      values — but both “circle” around the same point L.'
+  en_theorie:
+    einordnung: |
+      Catalog of the pairs for [[kl.satz.basiswechsel_gleiches_L]]. Question: does the common fixed point have a meaning for the location of the cycles?
+    genau: |
+      $L=i$: $e^{-7\pi/2}$, $e^{-3\pi/2}$ period 2; $e^{\pi/2}$, $e^{5\pi/2}$, $e^{9\pi/2}$ escape. $L=iW(\pi)/\pi$: $-1.03\cdot10^{-6}$ period 2; $-99.11$ and $-9.56\cdot10^9$ period 3. Mixed:
+      $29.67$ (escape) with $-0.000814$ (period 2) and $-1.08\cdot10^6$ (period 3); $2.084$ (escape) with $-0.00262$ (period 2) and $-1659.6$ (period 3); $\sqrt2$ (period 1) with $-\sqrt2$ (period 9).
+    warum: |
+      Measured (6000 steps, periods up to 12). The common fixed point is mostly repelling and does not determine the tower's behavior — hence this variety.
+    worum: |
+      If two real bases share a fixed point, often one lies to the right of the Shell–Thron region (its tower escapes) and one to the left (its tower jumps between two or three values).
+- id: fp.beob.i_turm
+  quelle_hash: aaab609dc568
+  theorie_hash: d0e3c9e5eb49
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Fixed point of $z\mapsto i^z$ via Lambert W (fp.satz.lambert); $|\lambda|<1$ makes it attracting, and $1$ lies in its basin of attraction
+        (numerically: 3000 steps, distance $<10^{-30}$).'
+    pruefung:
+      f2_benutzte_voraussetzungen: Principal branch of i^z.
+      f5_neue_frage: 'no'
+      f3_spezialfall: Yes, of fp.satz.shell_thron with z = i.
+      f1_folgt_unmittelbar: Yes.
+      f4_uebertragbar: Every base in the Shell–Thron domain.
+    bewertung:
+      nutzen: The best-known example of a complex base.
+      richtigkeit: complete
+    titel: i^i^i^… = 0.43828… + 0.36059 i — the infinite tower of the imaginary unit
+    aussage: |
+      The sequence $1,\ i,\ i^i,\ i^{i^i},\dots$ converges to
+      $$h=\frac{2i}{\pi}\,W\!\left(-\frac{i\pi}2\right)=0.43828293672703211\ldots+0.36059247187138548\ldots\,i,$$
+      because the multiplier $\lambda=h\ln i$ has modulus $0.8915<1$. The angle of $\lambda$ is $0.3596$ turns — almost a third: The orbit approaches along three
+      spiral arms (Euler; convergence Macintyre 1966).
+    einfach: You can also build an infinite tower with the imaginary unit. The values jump around on three arms of a spiral and approach a fixed
+      complex number.
+  en_theorie:
+    beispiel: |
+      The first terms: $1$, $i$, $i^i=e^{-\pi/2}=0.2079$, $i^{0.2079}=0.947+0.321i$, …
+    einordnung: |
+      Example for the Shell–Thron domain ([[fp.satz.shell_thron]]).
+    genau: |
+      $$i^{i^{i^{\cdots}}}=\frac{2i}\pi\,W\!\left(-\frac{i\pi}2\right)=0.43828293672703\ldots+0.36059247187139\ldots\,i.$$
+      The multiplier has modulus $0.8915$ and rotates by $0.3596$ of a full turn per step — the orbit approaches along three spiral arms.
+    warum: |
+      1. A limit $h$ must satisfy $h=i^h$; Lambert W solves this ([[fp.satz.lambert]]).
+      2. It attracts because $|h\ln i|<1$ ([[fp.satz.shell_thron]]).
+    worum: |
+      The best-known infinite tower with a complex base: $i^{i^{i^{\cdots}}}$.
+- id: fp.beob.negative_achse
+  quelle_hash: d14003758257
+  theorie_hash: 16ce2cd66096
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f2_benutzte_voraussetzungen: Finite number of iterations; “excursion and fall-back” separated from escape by the “decisive step” (Re(c z)
+        < 0 after the excursion).
+      f5_neue_frage: Hausdorff dimension of the dust on the axis.
+      f3_spezialfall: Analogue of the Cantor bouquets of escaping parameters of the exponential family.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Explains why complex/negative bases almost never really escape.
+      richtigkeit: numerical
+    titel: The negative real axis — bounded, excursion, escape as dust
+    aussage: |
+      To the left of the Shell–Thron region there are three kinds of behavior: tower **bounded** (cycles, e.g. $b=-2$ period 8, $b=-3/4$ period 6,
+      $b=-1$: $1\mapsto-1\mapsto-1$), **huge excursion and fall-back** (the orbit becomes large, but falls to almost 0 and starts anew at 1 —
+      not divergent), and **true escape** (e.g. $b=-19/25$). The escaping bases form **dust**: 4196 separate pieces in $[-3,0]$,
+      mean width $5\cdot10^{-5}$. For $-0.0805281576<b<0$ there is an attracting 2-cycle (fp.satz.p2_form).
+    bereich: $b\in[-3,0]$, principal branch $\mathrm{Log}\,b=\ln|b|+i\pi$, starting value 1
+    einfach: For negative bases the tower jumps wildly back and forth. Usually it stays bounded or makes only a huge excursion and falls back;
+      true running away occurs only at tiny, scattered places.
+  en_theorie:
+    beispiel: |
+      $b=-1$: $(-1)^1=-1$, $(-1)^{-1}=-1$ — the tower stands still after one step.
+    einordnung: |
+      Analogue of the Cantor bouquets of escaping parameters of the exponential family. Left endpoint of the 2-cycle region: [[fp.satz.p2_kein_kreis]]. Consequence for complex base changes: [[bw.verm.adressen]].
+    genau: |
+      On $[-3,0]$ (principal branch $\mathrm{Log}\,b=\ln|b|+i\pi$) there are three kinds of behavior: tower **bounded** (cycles, e.g. $b=-2$ period 8, $b=-\tfrac34$ period 6, $b=-1$: $1\mapsto-1\mapsto-1$),
+      **huge excursion and fall-back**, and **true escape** (e.g. $b=-\tfrac{19}{25}$). The escaping bases form dust: 4196 separate pieces, mean width $5\cdot10^{-5}$.
+      For $-0.0805281576<b<0$ there is an attracting 2-cycle.
+    warum: |
+      Measured. “Excursion and fall-back” is separated from escape at the decisive step: after the excursion $\operatorname{Re}(cz)$ becomes very negative, $e^{cz}$ falls to almost $0$, and the orbit starts anew at $1$.
+    worum: |
+      For negative bases the tower jumps wildly back and forth. Usually it stays bounded or makes only a huge excursion and falls back; true running away occurs only at
+      tiny, scattered places.
+- id: fp.beob.partner_keil
+  quelle_hash: b5cd818953e0
+  theorie_hash: 0d008793f2e7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'Original: grid of 12 547 460 points; exp.funde independently recomputes the sample pair −19/25 (deviation 4·10⁻¹⁴, exactly
+      one partner, m = +1).'
+    pruefung:
+      f2_benutzte_voraussetzungen: Principal branch of Log b; attracting means |λ_d| < 1.
+      f5_neue_frage: Proof that m = ±2 never lands in the strip (estimate of arg((λ + 4πi)e^{−λ})).
+      f3_spezialfall: Special case of fp.satz.gleiches_L with the strip condition.
+      f1_folgt_unmittelbar: Criterion yes (multipliers of the family lie at distance 2πi); wedge and “only ±1” numerical.
+      f4_uebertragbar: 'To other branches of Log: then further sheets appear.'
+    bewertung:
+      nutzen: Says where the wave-free base change is possible at all.
+      richtigkeit: numerical, criterion proved
+    titel: Attracting partners exist only in the wedge to the left of the Shell–Thron region
+    aussage: |
+      A base $b$ has an **attracting** partner with the same fixed point if and only if $|\lambda_b-2\pi ik|<1$ for some integer $k\ne0$.
+      In the principal branch only $m=\pm1$ occur ($m=\pm2$: not a single one of the 12 547 460 grid points of the unit disk lands in the strip),
+      each 18.371 % of the disk. All such bases have $\mathrm{Re}\,b<0$: they form a wedge to the left of the Shell–Thron region with tip at
+      $e^{-e}$ ($\mathrm{Re}\,b\in[-141.12,-0.006]$, $|\mathrm{Im}\,b|\le22.288$); the images of $m=+1$ and $m=-1$ meet exactly on the
+      negative real axis ($\mathrm{Im}\,\mathrm{Log}\,b=\pi$). The classical bases $2,e,3,4$ have no attracting partner.
+      Examples (partner $d$, $\sigma=\mathrm{Log}\lambda_d/\mathrm{Log}\lambda_b$): $-19/25\to1.425186736-0.046203369i$; $-1\to1.417109495-0.024735158i$;
+      $-2\to1.419386100+0.023509055i$; $-1+i\to1.444590692-0.000093874i$ (almost $\eta$, weakly damped).
+    bereich: Family $c_m=(\lambda+2\pi im)e^{-\lambda}$, $|\lambda|<1$, base only if $|\mathrm{Im}\,c_m|\le\pi$ (principal branch)
+    einfach: For a base to have a “calm twin” with the same fixed point, it must lie to the left of the Shell–Thron region, in the domain with
+      negative real part. The familiar bases 2, e, 3, 4 have none.
+    formen:
+    - notiz: sample pair
+  en_theorie:
+    beispiel: |
+      $b=-\tfrac{19}{25}$: $L=1.90471-0.37762\,i$, partner $d=1.425187-0.046203\,i$ — independently recomputed to $4\cdot10^{-14}$. Further: $-1\to1.417109-0.024735\,i$,
+      $-1+i\to1.444591-0.000094\,i$ (almost $\eta$, weakly damped).
+    einordnung: |
+      Says where the wave-free base change is possible at all ([[kl.satz.basiswechsel_gleiches_L]]). Open: a proof that $m=\pm2$ never occurs.
+    genau: |
+      $b$ has an **attracting** partner with the same fixed point if and only if $|\lambda_b-2\pi ik|<1$ for some integer $k\ne0$. In the principal branch only $m=\pm1$ occur, each
+      18.371 % of the disk. All such bases have $\operatorname{Re}b<0$: they form a wedge to the left of the region with tip at $e^{-e}$ ($\operatorname{Re}b\in[-141.12,-0.006]$, $|\operatorname{Im}b|\le22.288$).
+    warum: |
+      The criterion follows from [[fp.satz.gleiches_L]]: the multipliers of the ladder lie at distance $2\pi i$, attracting means modulus $<1$. That only $m=\pm1$ occur and everything lies in the wedge
+      is measured (12 547 460 grid points).
+    worum: |
+      For a base to have a “calm twin” with the same fixed point (one whose tower comes to rest there), it must lie to the left of the Shell–Thron region,
+      in the domain with negative real part. The familiar bases $2$, $e$, $3$, $4$ have none.
+- id: fp.beob.regionen
+  quelle_hash: 19dd5bcfb372
+  theorie_hash: ddbceced9a23
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f2_benutzte_voraussetzungen: Finite number of iterations (3000), period test up to 12, tolerance $10^{-8}$.
+      f5_neue_frage: How do the cycles rotate in the buds? → fp.verm.knospen_drehzahl. What happens exactly on the boundary? → fp.satz.parabolisch_rand,
+        fp.satz.neutral
+      f3_spezialfall: Picture of the exponential family $\lambda e^z$ in the multiplier parameter (Devaney, Baker–Rippon).
+      f1_folgt_unmittelbar: Part (1) yes (fp.satz.parameter_konform), part (2) locally yes (bifurcation), globally no.
+      f4_uebertragbar: For other branches of Log b, shifted copies arise.
+    bewertung:
+      nutzen: Map of all complex bases.
+      richtigkeit: numerical, part (1) proved
+    titel: The regions of the base plane
+    aussage: |
+      If one colors each base according to the period into which the tower falls (figure 1), one sees:
+      (1) the **main domain** (period 1) = Shell–Thron domain, bounded by $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$, real from
+      $e^{-e}$ to $\eta$; (2) **buds** at the boundary at $\theta=2\pi p/q$ with period $q$; the bud $1/2$ contains the real bases
+      $(0,e^{-e})$ (period doubling), the buds $1/3$, $2/3$ are the largest (share of period 3: 37 864 grid points, period 2: only 240);
+      (3) **escape domains** (tower grows without bound), plus real $b>\eta$; (4) a fringe of unclear points (long periods,
+      neutral or chaotic orbits) along all boundaries.
+    bereich: $b$ in the rectangle $[-1,3]\times[-2.4,2.4]$, principal branch, starting value 1
+    einfach: In the middle lies a domain in which the tower comes to rest. Attached to it, like buds, are smaller domains in which it jumps back
+      and forth between 2, 3, 4, … values. Outside, it grows away.
+  en_theorie:
+    beispiel: |
+      On 520 × 520 grid points: period 1: 109 624, period 3: 37 864, period 4: 28 564, period 2: only 240, escape: 29 187, unclear: 22 723.
+    einordnung: |
+      How the cycles in the buds rotate: [[fp.verm.knospen_drehzahl]]; what happens exactly on the boundary: [[fp.satz.parabolisch_rand]], [[fp.satz.neutral]]. First version:
+      [[fp.verm.knospen]].
+    genau: |
+      In the rectangle $[-1,3]\times[-2.4,2.4]$ (principal branch, starting value $1$):
+      1. Main domain (period 1) = Shell–Thron domain, bounded by $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$, real from $e^{-e}$ to $\eta$;
+      2. Buds at the boundary at $\theta=2\pi p/q$ with period $q$; the bud $1/2$ contains the real bases $(0,e^{-e})$; the buds $1/3$, $2/3$ are the largest;
+      3. Escape domains, plus real $b>\eta$;
+      4. a fringe of unclear points (long periods, neutral or chaotic orbits) along all boundaries.
+    warum: |
+      Part 1 is proved ([[fp.satz.parameter_konform]]), part 2 locally at the bud roots (bifurcation); the overall picture is measured (3000 steps, periods up to 12, tolerance $10^{-8}$).
+    worum: |
+      If one colors every complex base according to what its tower does, a map arises: in the middle a domain in which it comes to rest, attached to it buds
+      in which it jumps between 2, 3, 4, … values, outside domains in which it runs away.
+- id: fp.beob.tpid6_rate
+  quelle_hash: 4dd9034fa91f
+  theorie_hash: bc400f2344a1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'exp.tpid6: twelve values of n = 3 to 3·10⁵ in double precision (δ ≥ 1e−10, rounding ≪ bottleneck advance); no deviation
+      from the leading term above 0.1 % from n = 10⁴ on.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Transit time $\pi/\sqrt{a\varepsilon}+O(1)$ with $a=1/(2e)$, $\varepsilon=e^2\delta/\eta$; the $O(1)$ and the
+        steps after the bottleneck (few, like $\log^*n$) give the $1/n$ correction.
+      f5_neue_frage: 'Proof with perturbed Fatou coordinates (br.satz.shishikura): $n=1/\alpha(x_n)+O(1)$? And the value of $\beta$.'
+      f3_spezialfall: 'Yes: the same constant $\pi\sqrt{2\eta/e}=3.238930$ as in the boundary law (bw.lem.randgesetz).'
+      f1_folgt_unmittelbar: Leading term yes from the bottleneck transit time; the correction $\beta/n$ no.
+      f4_uebertragbar: 'To any target height $c\,n$: $\delta_n\approx2\pi^2\eta/(e\,n^2)$ unchanged in the leading term.'
+    bewertung:
+      recherche: 'TPID list (tid 162), forum wiki and Wikipedia give only the limit η, no rate (research 08.10.2026, docs/recherche_wikis_forum.md).
+        Literature comparison L1 12.10.2026: the method is classical (bottleneck after Pomeau–Manneville 1980; parabolic rate it.satz.parabolische_rate),
+        an application to TPID 6 not found; Gao–Han–Schilling 2012 (convergence rate of iterated exponentials) not accessible and unchecked.'
+      nutzen: New, simple application of the bottleneck law to a forum question.
+      richtigkeit: numerical (5 digits), leading term derived
+    titel: 'Rate in TPID 6: x_n − η ≈ 2π²η/(e n²)'
+    aussage: |
+      $$n^2\,(x_n-\eta)\;\longrightarrow\;\frac{2\pi^2\eta}{e}=10.49067\ldots$$
+      Measured: $10.0499$ ($n=100$), $10.4512$ ($10^3$), $10.4871$ ($10^4$), $10.49057$ ($3\cdot10^5$); fit $K(1+\beta/n)$ for $n\ge1000$:
+      $K=10.49089$, $\beta\approx-3.77$. Explanation: For $x=\eta+\delta$ the tower needs about $\pi\sqrt{2\eta/(e\delta)}$ steps at the bottleneck at $e$
+      (br.satz.sattel_knoten), afterwards only a few more to exceed $n$. From $n\approx\pi\sqrt{2\eta/(e\delta_n)}$ it follows that $\delta_n\approx2\pi^2\eta/(e\,n^2)$.
+    bereich: Solution $x_n$ of ${}^nx_n=n$, $n=3\ldots3\cdot10^5$
+    einfach: The distance of the base from η shrinks like 10.49 divided by n². The number 10.49 comes from the fact that the tower, just above
+      η, “gets stuck” for a long time at the number e before it grows away — and this waiting time is known exactly.
+  en_theorie:
+    beispiel: |
+      $n=1000$: $x_{1000}=1.444678312246669$, $\eta=1.444667861009766$, distance $1.0451\cdot10^{-5}$, times $n^2=10^6$ gives $10.451$.
+      Prediction $10.49067/10^6=1.0491\cdot10^{-5}$ — hit to 0.4 %; at $n=3\cdot10^5$ to 0.001 %.
+    einordnung: |
+      The same constant $\pi\sqrt{2\eta/e}=3.238930$ governs the boundary law of the base-change research ([[bw.lem.randgesetz]]). A proof with
+      an error term would have to go through perturbed Fatou coordinates ([[br.satz.shishikura]]). The limit itself: [[fp.satz.tpid6]].
+    genau: |
+      With $\delta_n=x_n-\eta$ we have (numerically, to 5 digits)
+      $$n^2\,\delta_n\;\longrightarrow\;\frac{2\pi^2\eta}{e}=10.49067\ldots$$
+      Measured: $10.0499$ at $n=100$, $10.4512$ at $n=1000$, $10.4871$ at $n=10^4$, $10.49057$ at $n=3\cdot10^5$. The approach fits
+      $n^2\delta_n\approx K(1+\beta/n)$ with $K=10.49089$ and $\beta\approx-3.77$.
+    warum: |
+      A derivation of the leading term (not a complete proof):
+      1. For the base $\eta+\delta$ the curve $y\mapsto(\eta+\delta)^y$ lies just above the line $y=x$, most narrowly at $y=e$. With $w=y-e$
+         a tower step there is approximately $w\mapsto w+\varepsilon+w^2/(2e)$ with $\varepsilon=e^2\delta/\eta$.
+      2. Such a bottleneck needs $N\approx\pi/\sqrt{a\varepsilon}$ steps with $a=1/(2e)$ ([[br.satz.sattel_knoten]]), so
+         $$N(\delta)\approx\pi\sqrt{\frac{2\eta}{e\,\delta}}.$$
+      3. Before and after, the tower needs only a few steps: from $1$ to the neighborhood of $e$ and, after the bottleneck, to above $n$
+         (it then grows as fast as a tower, that is in about $\log^*n$ steps).
+      4. So $n\approx\pi\sqrt{2\eta/(e\delta_n)}$, solved for $\delta_n$: $\delta_n\approx2\pi^2\eta/(e\,n^2)$.
+
+      The steps outside the bottleneck explain the correction $\beta/n$.
+    worum: |
+      The base $x_n$ whose $n$-story tower gives exactly $n$ approaches $\eta$. Here we measure how fast: The distance is almost exactly
+      $10.49/n^2$. The constant is no coincidence. A tower with a base just above $\eta$ “sticks” near $e$ for a long time before it grows away —
+      and how long it sticks is known from the theory of bottlenecks.
+- id: fp.def.basenklassen
+  quelle_hash: e46d0296e629
+  theorie_hash: fa9c507ad07b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: Kinds of bases (atlas)
+    aussage: |
+      By the behavior of the orbit of 1 under $e^{cz}$ ($c=\mathrm{Log}\,b$, branch chosen):
+      **attracting fixed point** (Koenigs, Lambert sums) · **attracting p-cycle**, multiplier $\rho=c^p\prod_j\zeta_j$ (Koenigs of the return map) ·
+      **parabolic** (Fatou coordinate, convergence $n^{-1/m}$, digamma/zeta) · **real escaping** (Abel function + real logarithm channel, periodic phase) ·
+      **complex escaping** (address of the logarithmic strips) · **Siegel** (rotation) · **preperiodic** (Misiurewicz) · **Cremer/recurrent** (no simple normal form).
+      A black pixel in an escape image only means “not recognized as escaping”, not “convergent”. The b-plane folds the
+      branches $\mathrm{Log}\,b+2\pi im$ on top of each other; to be exact, $(b,m)$ resp. $c$ is the parameter.
+    einfach: 'Bases are not all alike: some towers come to rest, some jump around in circles, some crawl, some escape, some rotate forever. For
+      each kind there is a suitable pair of glasses, and only with it can fractional heights and base changes be defined sensibly.'
+    formen:
+    - notiz: cycle multiplier, from $f'=cf$
+  en_theorie:
+    beispiel: |
+      $\sqrt2$: attracting fixed point. $0.03$: attracting 2-cycle. $\eta$: parabolic. $2$ and $e$: real escaping. $-\tfrac{19}{25}$: complex escaping. $b(2\pi\alpha)$ with golden $\alpha$: Siegel.
+    einordnung: |
+      Map: [[fp.beob.regionen]]. The tools for each class are in chapters 4–7; branches: [[fp.satz.gleiches_L]].
+    genau: |
+      By the behavior of the orbit of $1$ under $e^{cz}$ ($c=\mathrm{Log}\,b$, branch chosen):
+      - **attracting fixed point** — tool: Koenigs, Lambert sums;
+      - **attracting $p$-cycle** — multiplier $\rho=c^p\prod_j\zeta_j$, Koenigs of the return map;
+      - **parabolic** — Fatou coordinate, convergence like $n^{-1/m}$, digamma/zeta;
+      - **real escaping** — Abel function and real logarithm channel, periodic phase;
+      - **complex escaping** — address of the logarithmic strips;
+      - **Siegel** (rotation), **preperiodic** (Misiurewicz), **Cremer/recurrent** (no simple normal form).
+      A black pixel in an escape image only means “not recognized as escaping”. To be exact, $c$ (resp. $b$ with a branch) is the parameter.
+    warum: |
+      A definition. The cycle multiplier follows from $f'=cf$ with the chain rule: $(f^{\circ p})'(\zeta_0)=\prod_jf'(\zeta_j)=c^p\prod_j\zeta_j$.
+    worum: |
+      Bases are not all alike: some towers come to rest, some jump around in circles, some crawl, some escape, some rotate forever. For each kind
+      there is a suitable “pair of glasses” — and only with it can one explain fractional heights and base changes sensibly.
+- id: fp.def.eta
+  quelle_hash: de78bfa2294a
+  theorie_hash: 4240ea8fcb2e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    titel: Threshold η = e^{1/e}
+    aussage: |
+      $\eta:=e^{1/e}\approx1.444667861$. For $1<b<\eta$, $b^x=x$ has two real solutions, for $b=\eta$ one
+      double solution ($x=e$), for $b>\eta$ none. The three cases determine three classes of solutions.
+  en_theorie:
+    beispiel: |
+      - $b=\sqrt2$: the solutions are $2$ and $4$, since $\sqrt2^{\,2}=2$ and $\sqrt2^{\,4}=4$.
+      - $b=1.3$: $1.4710$ and $7.8571$.
+      - $b=\eta$: only $x=e$, where the curves $y=\eta^x$ and $y=x$ touch.
+      - $b=1.5$: no solution — the curve $y=1.5^x$ stays above the line everywhere.
+    einordnung: |
+      The same number is $1/\min x^x$ ([[gr.satz.selbstpotenz]]). The three cases lead to three kinds of tetration: regular below $\eta$
+      ([[kl.satz.regulaer]]), parabolic at $\eta$ ([[kl.satz.parabolisch]]), Kneser above $\eta$ ([[kn.konstr.kneser]]).
+    genau: |
+      $$\eta:=e^{1/e}=1.444667861009766\ldots$$
+      For $b>1$ the equation $b^x=x$ has
+      - two real solutions if $1<b<\eta$,
+      - exactly one (double) solution $x=e$ if $b=\eta$,
+      - no real solution if $b>\eta$.
+    warum: |
+      1. Taking logarithms: $b^x=x$ (with $x>0$) is the same as $x\ln b=\ln x$, that is, $\ln b=\dfrac{\ln x}{x}$.
+      2. The function $\varphi(x)=\dfrac{\ln x}x$ has derivative $\dfrac{1-\ln x}{x^2}$: it increases up to $x=e$ and decreases afterwards, its largest
+         value is $\varphi(e)=1/e$.
+      3. So $\ln b=\varphi(x)$ has two solutions if $0<\ln b<1/e$, one at $\ln b=1/e$, none for $\ln b>1/e$. And $\ln b=1/e$
+         means exactly $b=e^{1/e}=\eta$.
+    worum: |
+      The number $\eta=e^{1/e}\approx1.4447$ is the watershed of tetration. Below it there are two real numbers that do not change under
+      exponentiation, above it none. On this depends whether a tower comes to rest, and which construction one needs for half
+      heights.
+- id: fp.frage.holomorphe_familie
+  quelle_hash: f0dc83defdb2
+  theorie_hash: 2e62fc74b4c7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: Ansatz $T=T^{\mathrm{reg}}\circ(\mathrm{id}+\theta_w)$ with 1-periodic $\theta_w$ that compensates the monodromy $w\mapsto
+      we^{2\pi i}$; check whether this is compatible with $T(0)=1$.
+    titel: Is there a tetration family holomorphic in the base all the way to base 1?
+    aussage: |
+      Are there tetrations $T_{b(w)}$, $|w|<1$, such that $w\mapsto T_{b(w)}(t)$ is holomorphic on the whole disk for every fixed $t$
+      (with $T_{b(0)}\equiv1$)? Then the circle mean would equal 1 for all $t$. The regular family is ruled out ($w^t$), so any solution
+      would have to be non-regular at $w\to0$.
+  en_theorie:
+    einordnung: |
+      Would rescue [[fp.verm.bruch_mittel]] in a different family.
+    genau: |
+      Are there tetrations $T_{b(w)}$, $|w|<1$, with $w\mapsto T_{b(w)}(t)$ holomorphic on the whole disk for every fixed $t$ and $T_{b(0)}\equiv1$?
+    warum: |
+      Open. The regular family is ruled out ($w^t$); any solution would have to be non-regular at $w\to0$. Ansatz: $T=T^{\mathrm{reg}}\circ(\mathrm{id}+\theta_w)$ with periodic $\theta_w$ that compensates the
+      ambiguity on going around $w\mapsto we^{2\pi i}$ ([[fg.satz.allgemeine_loesung]]).
+    worum: |
+      Is there any tetration family at all that is holomorphic in the base — all the way to base $1$ (where $w=0$)? Then the circle mean would equal $1$ for all heights.
+- id: fp.frage.tpid12_13
+  quelle_hash: 88abc52a6452
+  theorie_hash: 7f16ebf3c8ba
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f2_benutzte_voraussetzungen: Newton interpolation; growth of the sequence.
+      f5_neue_frage: Is the Nörlund criterion (exponential type in the right half-plane) applicable?
+      f3_spezialfall: Related to kl.satz.newton_reihe (proved there).
+      f1_folgt_unmittelbar: No, open.
+      f4_uebertragbar: Interpolation of other sequences from tetration.
+    bewertung:
+      nutzen: Clearly posed open questions of the forum list.
+      richtigkeit: open
+    titel: 'TPID 12/13: Does the Newton interpolation of the self-roots converge?'
+    aussage: |
+      TPID 13: Does the Newton interpolation of the points $(0,0),(1,1),(2,\sqrt2),\dots,(m,m^{1/m})$ converge to $x^{1/x}$? Numerically yes, but slowly: at $x=2.5$ the distance is
+      $6\cdot10^{-4}$, $1.2\cdot10^{-4}$, $1.8\cdot10^{-5}$ after 20, 40, 80 terms; at $x=7.5$ already $1\cdot10^{-11}$ (forum: “almost proved” via Mellin transform, tid 1079).
+      TPID 12 asks the same for the solutions $y_n$ of $y_n\uparrow\uparrow n=n$ (fp.satz.tpid6): Does the interpolation converge, is it analytic at $\eta$, and does
+      $f(x)\uparrow\uparrow x=x$ also hold for fractional $x$ (regular below $\eta$, Kneser above)?
+    einfach: One knows the numbers n^(1/n) at the integer arguments and passes the Newton interpolation through them. Does the right curve x^(1/x)
+      come out? The computation says yes, a proof is missing. The harder version asks the same for the “self tower roots”.
+  en_theorie:
+    beispiel: |
+      $x=7.5$: $7.5^{1/7.5}=1.30866\ldots$; the interpolation after 40 terms is off by $3\cdot10^{-9}$.
+    einordnung: |
+      Related to [[fp.satz.tpid6]] and [[kl.satz.newton_reihe]].
+    genau: |
+      TPID 13: Does the Newton interpolation of $m^{1/m}$ converge to $x^{1/x}$? TPID 12: the same for $y_n$ with $y_n\uparrow\uparrow n=n$.
+    warum: |
+      Numerically the interpolation approaches at $x=2.5$ and $7.5$ (distances $1.8\cdot10^{-5}$ and $1\cdot10^{-11}$ after 80 terms). A proof is missing; in the forum there is an
+      almost finished one via the Mellin transform.
+    worum: |
+      Can one recover the functions $x^{1/x}$ and “self tower root” from their values at the integer arguments alone?
+- id: fp.gegen.bruch_mittel
+  quelle_hash: 29e178f6f5b5
+  theorie_hash: 970bffd9d49b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Branching: $w^{1/2}$ is not single-valued on any circle around 0; the value depends on the branch cut (measured). The numbers are
+        numerical (Koenigs series N = 30, continuation in 12 steps).'
+    pruefung:
+      f2_benutzte_voraussetzungen: Regular tetration as a family; other families are not excluded.
+      f5_neue_frage: fp.frage.holomorphe_familie
+      f3_spezialfall: —
+      f1_folgt_unmittelbar: Yes, as soon as one notices $\lambda=w$.
+      f4_uebertragbar: Every family that is regular at the fixed point inherits $w^t$.
+    bewertung:
+      nutzen: Refutes the naive continuation of Theorem 1.
+      richtigkeit: numerical, mechanism proved
+    titel: Circle mean at height 1/2 is not 1 and depends on the branch
+    aussage: |
+      Mean at $r=0.5$: $1.0619+0.0051i$ (principal branch of $w^{1/2}$) resp. $0.9919-0.0816i$ (branch cut at $\theta=0$);
+      at $r=0.8$: $1.1058+0.0064i$ resp. $0.9862-0.1603i$. Reason: the multiplier is $\lambda=w$, regular tetration contains
+      $w^{t}$ and has a branch point at $w=0$ — no holomorphic function on the disk.
+    bereich: $T_{b(w)}(1/2)=\sigma_w^{-1}(w^{1/2}\sigma_w(1))$, $|w|=0.5$ and $0.8$, 48 points
+  en_theorie:
+    einordnung: |
+      Refutes [[fp.verm.bruch_mittel]]. Every family regular at the fixed point inherits $w^t$.
+    genau: |
+      For $T_{b(w)}(\tfrac12)=\sigma_w^{-1}(w^{1/2}\sigma_w(1))$: mean at $r=0.5$: $1.0619+0.0051\,i$ (principal branch) resp. $0.9919-0.0816\,i$ (branch cut at $\theta=0$); at $r=0.8$: $1.1058+0.0064\,i$
+      resp. $0.9862-0.1603\,i$.
+    warum: |
+      The multiplier is $\lambda=w$; regular tetration contains $w^{1/2}$, and that is not single-valued on any circle around $0$. Depending on the branch cut one gets a different function — and a different mean.
+    worum: |
+      The counterexample in numbers: at height $\tfrac12$ the circle mean is not $1$, and it even depends on where one puts the branch cut of the root $w^{1/2}$.
+- id: fp.kor.fourier_taylor
+  quelle_hash: 7110a30ae6aa
+  theorie_hash: cf1676a2b23b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Cauchy formulas for the entire function $Z_n$ on $|w|=1$; negative modes vanish because $Z_n(w)w^{|k|-1}$ is holomorphic.
+    gegenbeispielsuche: 'exp.mittelwerte: Corollary 2 at $z=2$ ($b=\sqrt2$), $n=2,3$: deviation below $10^{-20}$.'
+    pruefung:
+      f2_benutzte_voraussetzungen: $Z_n$ being entire.
+      f5_neue_frage: Growth of the Taylor coefficients of $Z_n$ in n?
+      f3_spezialfall: 'Yes: boundary values of holomorphic functions lie in the Hardy space $H^2$ (only nonnegative modes).'
+      f1_folgt_unmittelbar: Yes (Cauchy).
+      f4_uebertragbar: For bases with $|\ln z|\ge1$ the kernel diverges — the borderline cases $z=e$, $z=1/e$ ($b=\eta$, $b=e^{-e}$) remain open
+        (note).
+    bewertung:
+      nutzen: Integer heights on the boundary determine all bases in the interior.
+      richtigkeit: complete
+    titel: Fourier modes of the boundary tower are Taylor coefficients
+    aussage: |
+      $$\frac1{2\pi}\int_0^{2\pi}T_{b(\theta)}(n)\,e^{-ik\theta}d\theta=\frac{Z_n^{(k)}(0)}{k!}\ (k\ge0),\qquad=0\ (k<0).$$
+      For $|r|<1$: $Z_n(r)=\frac1{2\pi}\int_0^{2\pi}\frac{T_{b(\theta)}(n)}{1-re^{-i\theta}}d\theta$; with $r=\ln z$ this gives
+      $T_{z^{1/z}}(n)$ for $1/e<z<e$ from the boundary values.
+    bereich: as in fp.satz.kreismittel
+    formen:
+    - notiz: Corollary 2 of the note
+  en_theorie:
+    beispiel: |
+      $z=2$ ($b=\sqrt2$): from the boundary values $T_{\sqrt2}(2)=1.63252691944$ and $T_{\sqrt2}(3)=1.76083955588$, correct to $10^{-20}$. ($1.6325\ldots=\sqrt2^{\sqrt2}$.)
+    einordnung: |
+      For $|\ln z|\ge1$ — that is, at $\eta$ and $e^{-e}$ — the kernel diverges; these borderline cases remain open.
+    genau: |
+      $$\frac1{2\pi}\int_0^{2\pi}T_{b(\theta)}(n)\,e^{-ik\theta}d\theta=\frac{Z_n^{(k)}(0)}{k!}\ (k\ge0),\qquad=0\ (k<0),$$
+      and for $1/e<z<e$: $T_{z^{1/z}}(n)=\dfrac1{2\pi}\displaystyle\int_0^{2\pi}\frac{T_{b(\theta)}(n)}{1-(\ln z)e^{-i\theta}}\,d\theta$.
+    warum: |
+      Cauchy formulas for the entire function $Z_n$ on $|w|=1$. Negative modes vanish because $Z_n(w)w^{|k|-1}$ is holomorphic. The second formula is the Cauchy formula at $w=\ln z$, $|\ln z|<1$.
+    worum: |
+      If one knows the tower of a fixed height for all bases on the boundary, one knows it for all bases in the interior — the Fourier components on the boundary are the
+      Taylor coefficients in the interior.
+- id: fp.satz.abstossend
+  quelle_hash: c17e9a6d82c0
+  theorie_hash: f1a6f433e253
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Conjugation (here) + Julia set = ℂ (literature).
+    pruefung:
+      f2_benutzte_voraussetzungen: For the primary fixed points a direct computation suffices; for all $L_k$ the Julia-set statement (unchecked
+        against the original).
+      f5_neue_frage: 'How large is $|\lambda_0|$ as a function of $b$? (exp.fixpunkte: $|\lambda|\to1$ for $b\downarrow\eta$.)'
+      f3_spezialfall: 'Yes: theorem on the exponential family $\lambda e^w$, $\lambda>1/e$.'
+      f1_folgt_unmittelbar: Yes, from the theorem on the Julia set; also directly verifiable by computation for the primary fixed point.
+      f4_uebertragbar: 'Complex bases outside the Shell–Thron domain: not automatically.'
+    bewertung:
+      nutzen: Justifies Koenigs at L via log_b.
+      richtigkeit: established (literature), part unchecked
+    voraussetzungen:
+    - text: b > η real
+    titel: For b > η all fixed points are repelling
+    aussage: |
+      All fixed points of $b^z$ have $|\lambda|>1$. Reason: $b^z$ is conjugate via $w=z\ln b$ to
+      $w\mapsto(\ln b)\,e^w$ with $\ln b>1/e$; for this map the Julia set is all of $\mathbb C$ (Misiurewicz for
+      $\ln b=1$, Devaney for $>1/e$), so there are no attracting or neutral cycles.
+    bereich: real $b>\eta$
+  en_theorie:
+    beispiel: |
+      $b=e$: $|\lambda|=|L|=1.3746$. $\ b=2$: $\lambda=0.5716+1.0865\,i$, $|\lambda|=1.2277$. The closer $b$ gets to $\eta$, the closer $|\lambda|$ gets to $1$.
+    einordnung: |
+      Because the fixed points repel, they attract the **inverse map** $\log_b$. On this one builds the Abel function above $\eta$
+      (Koenigs at $L$ for $\log_b$, [[it.satz.koenigs]]), and Kneser corrects from it a real solution ([[kn.gescheitert.regulaer_an_L]],
+      [[kn.konstr.kneser]]).
+    genau: |
+      For real $b>\eta$ all fixed points $L_k$ of $b^z$ have a multiplier with $|\lambda_k|>1$.
+    warum: |
+      For the principal pair this follows directly: In the multiplier coordinate $t$ we have $b=\exp(te^{-t})$, and $|t|<1$ describes exactly the bases
+      with an attracting fixed point ([[fp.satz.parameter_konform]]). Real $b>\eta$ lie outside this domain.
+      For all fixed points at once one needs a theorem from complex dynamics: $b^z$ is related via $w=z\ln b$ to
+      $w\mapsto(\ln b)\,e^w$, and for $\ln b>1/e$ the Julia set of this map is the whole plane (Misiurewicz, Devaney). Then there can be
+      no attracting and no neutral cycle.
+    worum: |
+      Above $\eta$ there is no longer any fixed point that could capture a tower: all fixed points, also the complex ones, repel. Therefore
+      one cannot simply build a tetration “at the fixed point” there, as one does below $\eta$.
+- id: fp.satz.baker_rippon_kardioide
+  quelle_hash: 9a80907869ab
+  theorie_hash: a0bd5f3bb256
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Baker–Rippon, Amer. Math. Monthly 92 (1985), “fairly elementary proof” according to the zbMATH review. Outside the closure all fixed
+        points are repelling, and a limit would have to be a fixed point with $|\lambda|\le1$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Starting value 0 (the orbit of the singular value); exclusion of stalling sequences.
+      f5_neue_frage: And at Cremer points of the boundary (it.satz.cremer)?
+      f3_spezialfall: Complex version of fp.satz.turm_reell; counterpart (necessity) to fp.satz.shell_thron.
+      f1_folgt_unmittelbar: 'Almost: the limit is a fixed point with $|\lambda|\le1$, and $\lambda=t$ in the parametrization; the argument for
+        the boundary needs care.'
+      f4_uebertragbar: 'On the boundary: at root points $t^q=1$ the tower converges (fp.satz.parabolisch_rand), at Siegel points not (fp.satz.siegel_unbeschraenkt).'
+    bewertung:
+      nutzen: Turns the Shell–Thron domain into an exact answer (inside yes, outside no).
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: Limit different from all terms (excludes finite, accidentally stalling sequences)
+    titel: The tower converges only in the closure of the cardioid (Baker–Rippon 1985)
+    aussage: |
+      If $w_n$ converges to a limit that differs from all $w_n$, then $a$ lies in the **closure** of the cardioid
+      $D=\{te^{-t}:|t|<1\}$. For $a\in D$, $w_n$ always converges. In the base plane, $D$ is the Shell–Thron domain $b=\exp(te^{-t})$.
+    bereich: $w_0=0$, $w_{n+1}=\exp(a\,w_n)$, $a=\ln b\in\mathbb C$ (so $w_n$ = tower of height $n$ to base $b$)
+    einfach: 'Shell and Thron showed where the tower surely converges. Baker and Rippon showed the converse: outside this domain (and its boundary)
+      there is no limit.'
+  en_theorie:
+    einordnung: |
+      Turns [[fp.satz.shell_thron]] into an exact answer. On the boundary: root points converge ([[fp.satz.parabolisch_rand]]), Siegel points do not
+      ([[fp.satz.siegel_unbeschraenkt]]).
+    genau: |
+      $w_0=0$, $w_{n+1}=e^{aw_n}$. If $w_n$ converges to a limit different from all terms, then $a$ lies in the closure of
+      $D=\{te^{-t}:|t|<1\}$; for $a\in D$, $w_n$ converges.
+    warum: |
+      1. A limit $L$ is a fixed point: $L=e^{aL}$. Write $t=aL$; then $a=te^{-t}$ and the multiplier is $aL=t$.
+      2. A sequence can converge only to a fixed point with $|t|\le1$ (otherwise it repels), hence $a\in\overline D$.
+      3. For $|t|<1$ the fixed point attracts, and the orbit of the singular value 0 lands in its basin.
+    worum: |
+      Shell and Thron found a domain in the plane of bases in which the tower surely has a limit. Baker and Rippon showed in 1985
+      the other half: outside this domain and its boundary there is never a limit.
+- id: fp.satz.baker_rippon_parameter
+  quelle_hash: 4ef9351306c6
+  theorie_hash: 95dbbb014d1c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Baker–Rippon, Ann. Acad. Sci. Fenn. 9 (1984), (i) with Sullivan's method; checked via the zbMATH review, full text (scan) not read.
+    pruefung:
+      f2_benutzte_voraussetzungen: A single singular value (0) — hence at most one attracting cycle and no wandering domains.
+      f5_neue_frage: How exactly do the $D_p$ lie? → child components (fp.verm.knospen), combinatorics in Rempe–Schleicher 2008.
+      f3_spezialfall: 'Later generalized: class S (Eremenko–Lyubich 1992, Goldberg–Keen 1986); boundaries of the components (Schleicher 2004,
+        Rempe–Schleicher 2009).'
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: (iii) is fp.satz.abstossend; $D_2$ is the region from fp.satz.p2_form.
+    bewertung:
+      nutzen: 'Basic principle of the base plane: where each kind of tower behavior lives.'
+      richtigkeit: established (literature)
+    titel: 'The family e^{az}: no wandering domains, D₁ and D₂ connected (Baker–Rippon 1984)'
+    aussage: |
+      (i) $f$ has no wandering Fatou components: every component eventually lands in a periodic one.
+      (ii) $D_1$ (the Shell–Thron domain in $a$) and $D_2$ (attracting 2-cycle) are connected; the components of $D_p$ for $p>2$ are
+      intertwined. (iii) $J(f)=\mathbb C$ for all real $a>1/e$ (i.e. $b>\eta$) and for a dense subset of $\partial D_1$.
+    bereich: $f(z)=e^{az}=b^z$, $a=\ln b\in\mathbb C\setminus\{0\}$; $D_p$ = set of $a$ with an attracting cycle of period $p$
+  en_theorie:
+    einordnung: |
+      Framework for [[fp.beob.regionen]], [[fp.satz.p2_form]] ($D_2$) and [[fp.satz.abstossend]]; the finer structure of the components: [[fp.verm.knospen]].
+    genau: |
+      For $e^{az}$: no wandering Fatou components; $D_1$ and $D_2$ connected; $J=\mathbb C$ for real $a>1/e$ and dense on $\partial D_1$.
+    warum: |
+      1. $e^{az}$ has only one singular value, 0. Every attracting cycle must attract it — so there is at most one.
+      2. Sullivan's method (quasiconformal deformations) rules out wandering domains because there are only finitely many parameters.
+      3. For real $a>1/e$ the orbit of 0 escapes to $\infty$, no cycle attracts, and the Julia set is everything.
+    worum: |
+      In the plane of bases $b$ (resp. $a=\ln b$) there are domains in which the tower comes to rest, and others in which it jumps between 2, 3, … values.
+      Baker and Rippon proved the basic structure of these domains in 1984.
+- id: fp.satz.baker_rippon_periodisch
+  quelle_hash: ea5759baeddf
+  theorie_hash: 25b9190e3d9a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Baker–Rippon, Fibonacci Quart. 23 (1985) and Math. Proc. Cambridge Philos. Soc. 105 (1989), via the zbMATH reviews. The $t_j$ are
+        the points of the $k$-cycle multiplied by $b_j$, $t_1\cdots t_k$ is its multiplier.
+    pruefung:
+      f2_benutzte_voraussetzungen: Periodicity of the bases; for the Barrow part only the location of the $b_n$.
+      f5_neue_frage: Is there a tetration with periodic bases (mixed towers) — bridge to the base change (bw)?
+      f3_spezialfall: For $k=1$ the Shell–Thron criterion ($|t|\le1$, fp.satz.baker_rippon_kardioide).
+      f1_folgt_unmittelbar: No; uniqueness of the representation is the core (otherwise two candidate cycles).
+      f4_uebertragbar: For $a=b$ and $k=2$ the representation with $s\ne t$ describes exactly the 2-cycle of the ordinary tower — this is fp.satz.p2_form
+        with $(s,t)=(v,u)$, $\mu=st$.
+    bewertung:
+      nutzen: Literature source of the period-2 form; bridge to mixed towers.
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: Bases k-periodic
+    titel: Towers with periodically recurring bases (Baker–Rippon 1985, 1989)
+    aussage: |
+      The tower converges if and only if there is a **unique** representation
+      $$b_1=t_1e^{-t_2},\quad b_2=t_2e^{-t_3},\ \dots,\ b_k=t_ke^{-t_1}\qquad\text{with}\quad|t_1t_2\cdots t_k|\le1$$
+      (Baker–Rippon 1989). For $k=2$ (bases $a,b$ alternating, $\varphi(x)=a^{b^x}$): convergence if and only if $\varphi$ has exactly one
+      fixed point $c$ with $|\varphi'(c)|\le1$, i.e. $\ln a=se^{-t}$, $\ln b=te^{-s}$ with unique $(s,t)$, $|st|\le1$ (Baker–Rippon 1985).
+      If all $b_n$ lie in $[-e,1/e]$, the tower converges even without periodicity (Barrow's theorem).
+    bereich: Tower $a_1^{a_2^{a_3^{\cdots}}}$ with $a_{j+k}=a_j$, $b_j=\ln a_j\in\mathbb C$
+  en_theorie:
+    beispiel: |
+      $k=2$, $a_1=a_2=b<e^{-e}$: the solution with $t_1=t_2$ (fixed point) has $|t|>1$, the one with $t_1\ne t_2$ is the 2-cycle with $\mu=t_1t_2\in(0,1)$ —
+      exactly [[fp.satz.p2_form]].
+    einordnung: |
+      Literature source of the period-2 form; bridge to towers with alternating bases ([[fp.satz.thron_variabel]]) and to the base change.
+    genau: |
+      Bases $a_1,\dots,a_k$ periodic, $b_j=\ln a_j$. Convergence exactly when there is a unique representation $b_j=t_je^{-t_{j+1}}$ (indices modulo $k$)
+      with $|t_1\cdots t_k|\le1$.
+    warum: |
+      1. Convergence means: the composition $\varphi$ of the $k$ maps $z\mapsto e^{b_jz}$ has a fixed point to which the orbit runs.
+      2. The points of the cycle, multiplied by $b_j$, are the $t_j$; the cycle equations then read $b_j=t_je^{-t_{j+1}}$.
+      3. The multiplier of the cycle is $t_1\cdots t_k$; attracting or parabolic means $|t_1\cdots t_k|\le1$. Uniqueness rules out two competing cycles.
+    worum: |
+      Instead of always the same base one can use two (or $k$) bases alternately in the tower. Baker and Rippon described exactly when such a
+      tower converges — and this also contains the oscillation of the ordinary tower below $e^{-e}$.
+- id: fp.satz.exp_normalform
+  quelle_hash: 8710120daf98
+  theorie_hash: 7701b3afa9f0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $H(e^{cz})=ce^{cz}+\kappa=e^{\kappa+cz}+\kappa=E_\kappa(H(z))$; $H(1)=c+\kappa=e^\kappa+\kappa$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Only $c\ne0$; every branch of κ works.
+      f5_neue_frage: Translation of the bud addresses of Figure 1 into the addresses of the exponential family.
+      f3_spezialfall: 'Yes: standard normal form of the exponential family.'
+      f1_folgt_unmittelbar: Yes.
+      f4_uebertragbar: Allows the literature on $e^w+\kappa$ (hyperbolic components, bifurcation loci; Schleicher, Rempe) to be taken over directly.
+    bewertung:
+      nutzen: Opens the entire literature on the exponential family for towers.
+      richtigkeit: complete
+    titel: The tower is the singular orbit of e^w + κ
+    aussage: |
+      $H(z)=cz+\kappa$ conjugates $z\mapsto e^{cz}$ to $E_\kappa(w)=e^w+\kappa$, and $H(1)=E_\kappa(\kappa)$. The tower $1,b,b^b,\dots$ is thus
+      (after one step) the orbit of the only singular value $\kappa$ of $E_\kappa$ — like the critical orbit for the Mandelbrot set.
+      That is why Figure 1 looks like a Mandelbrot picture of the exponential family.
+    bereich: $c=\mathrm{Log}\,b\ne0$, $\kappa$ with $e^\kappa=c$
+  en_theorie:
+    beispiel: |
+      $b=e$: $c=1$, $\kappa=0$, $E_0(w)=e^w$. The orbit of $0$ is $0,1,e,e^e,\dots$ — exactly the tower, shifted by one step.
+    einordnung: |
+      Opens the entire literature on $e^w+\kappa$ (Schleicher, Rempe, Eremenko–Lyubich) for towers, e.g. for [[fp.satz.p2_kein_kreis]]. The kinds of bases: [[fp.def.basenklassen]].
+    genau: |
+      With $c=\mathrm{Log}\,b\ne0$ and $e^\kappa=c$, $H(z)=cz+\kappa$ conjugates the map $z\mapsto e^{cz}$ to $E_\kappa(w)=e^w+\kappa$, and $H(1)=E_\kappa(\kappa)$. The tower $1,b,b^b,\dots$ is thus
+      (after one step) the orbit of the only singular value $\kappa$ of $E_\kappa$.
+    warum: |
+      $H(e^{cz})=ce^{cz}+\kappa=e^{\kappa+cz}+\kappa=E_\kappa(H(z))$, and $H(1)=c+\kappa=e^\kappa+\kappa$.
+    worum: |
+      The pictures of the base plane look like Mandelbrot pictures — and that is no coincidence. After a linear change of variables the tower is the orbit of the only
+      special point of an exponential family, just as the Mandelbrot set arises from the orbit of the critical point $0$.
+- id: fp.satz.fixpunkt_summen
+  quelle_hash: 2fa04d1ea79b
+  theorie_hash: 3a60a6769f64
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        $g(z)=e^z-z$ is entire of order 1 with $g(0)=1$ and zeros $L_k$ ($|L_k|\sim2\pi|k|$, hence $\sum|L_k|^{-2}<\infty$). Hadamard:
+        $g(z)=e^{a+cz}\prod_k(1-z/L_k)e^{z/L_k}$, hence $g'/g=c+\sum_k\bigl(\frac1{z-L_k}+\frac1{L_k}\bigr)$. At $z=0$: $g'(0)/g(0)=0$ gives $c=0$. Expanding:
+        $\frac1{z-L}+\frac1L=-\sum_{n\ge1}z^n L^{-n-1}$, hence $\frac{e^z-1}{e^z-z}=-\sum_{n\ge1}z^n\sum_kL_k^{-n-1}$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Order 1 and g(0) ≠ 0.
+      f5_neue_frage: What is the (pairwise summed) sum Σ 1/L_k?
+      f3_spezialfall: 'Yes: power sums of the zeros of an entire function (like Σ1/n² from sin z/z).'
+      f1_folgt_unmittelbar: Yes, from Hadamard's product theorem.
+      f4_uebertragbar: 'Any base: fixed points of b^z, generating function (b^z ln b − 1)/(b^z − z).'
+    bewertung:
+      nutzen: Exact statements about the irrational fixed points that Kneser and Schröder use.
+      richtigkeit: complete; recomputed at 8000 fixed points up to the tail
+    titel: 'The fixed points of eᶻ are irrational, their power sums rational: Σ L_k⁻² = −1, Σ L_k⁻³ = −1/2, …'
+    aussage: |
+      For $m\ge2$,
+      $$\sum_{k\in\mathbb Z}L_k^{-m}=-[z^{m-1}]\,\frac{e^z-1}{e^z-z},$$
+      hence rational: $-1,\ -\tfrac12,\ \tfrac13,\ \tfrac38,\ -\tfrac1{20},\dots$ for $m=2,3,4,5,6$; with denominator $(m-1)!$ the numerators are
+      $-1,-1,2,9,-6,-155,-232,3969,20870,-118779,\dots$ (Fox 2007, found by continued fractions from 100 000 fixed points).
+    bereich: '$L_k=-W_k(-1)$, $k\in\mathbb Z$: all solutions of $e^z=z$ (pairwise conjugate)'
+    einfach: The points where eᶻ = z holds are infinitely many complex numbers, none of them a nice number. But if you add up their reciprocals
+      raised to the power two, exactly −1 comes out, raised to the power three exactly −1/2 — a little miracle formula that follows from the factorization
+      of eᶻ − z.
+  en_theorie:
+    beispiel: |
+      With the 8000 fixed points $k=-4000,\dots,3999$ we have $\sum L_k^{-3}=-0.49999999999979$ and $\sum L_k^{-5}=0.375$ to 22 digits. Jay Fox found the values in 2007
+      the other way round: from the numbers via continued fractions.
+    einordnung: |
+      Like $\sum1/n^2=\pi^2/6$ from the sine product. The fixed points themselves: [[fp.satz.lambert]].
+    genau: |
+      With $L_k=-W_k(-1)$:
+      $$\sum_kL_k^{-2}=-1,\quad\sum_kL_k^{-3}=-\tfrac12,\quad\sum_kL_k^{-4}=\tfrac13,\quad\sum_kL_k^{-5}=\tfrac38,\quad\sum_kL_k^{-6}=-\tfrac1{20},$$
+      in general $\sum_kL_k^{-m}=-[z^{m-1}]\,(e^z-1)/(e^z-z)$.
+    warum: |
+      1. $e^z-z$ is an entire function with exactly these zeros; by Hadamard it is, up to $e^{\text{linear}}$, the product $\prod(1-z/L_k)e^{z/L_k}$.
+      2. Taking the logarithmic derivative: $(e^z-1)/(e^z-z)=c+\sum_k\bigl(\frac1{z-L_k}+\frac1{L_k}\bigr)$, at $z=0$ we have $c=0$.
+      3. Expand each term in powers of $z$ and compare coefficients.
+    worum: |
+      The fixed points of $e^z$ are the numbers at which Kneser and the regular iteration start. Individually they are not nice numbers — but their power sums
+      are rational.
+- id: fp.satz.gleiches_L
+  quelle_hash: 1e4c1d58956e
+  theorie_hash: ca3a1cbb998d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        $e^{uL}=L\iff uL=\mathrm{Log}\,L+2\pi ik$. Two bases share $L$ ⇔ $u-u'=2\pi im/L$. For real bases $\mathrm{Im}\,u\in\{0,\pi\}$,
+        hence $\mathrm{Im}(2\pi im/L)=2\pi m\,\mathrm{Re}(1/L)\in\{0,\pm\pi\}$. Case $\mathrm{Re}(1/L)=0$: $L=iy$, $|e^{uL}|=|y|$ gives $y=\pm1$ (positive
+        bases) resp. $ye^{\pi y}=1$, $y=W(\pi)/\pi$ (negative bases). $(-b)^L=b^Le^{i\pi L}=L$ ⇔ $e^{i\pi L}=1$ ⇔ $L\in2\mathbb Z$.
+    gegenbeispielsuche: 'exp.gleiches_L: family for $L_e$ ($k=-3\dots3$), real ladders for $i$ and $iW(\pi)/\pi$, 8 mixed pairs — all fixed-point
+      equations to $10^{-25}$ or better.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Only $L\ne0$ and the choice of branch.
+      f5_neue_frage: Base change between bases of the same ladder → kl.satz.basiswechsel_gleiches_L
+      f3_spezialfall: 'Yes: preimages of a point under $u\mapsto e^{uL}$.'
+      f1_folgt_unmittelbar: Yes, from the fixed-point equation and the branches of log.
+      f4_uebertragbar: 'To cycles: bases with a common q-cycle satisfy a system of q equations.'
+    bewertung:
+      nutzen: Systematically finds bases with the same fixed point — hypothesis of the linear base change.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: L ≠ 0
+    titel: Many bases, one fixed point
+    aussage: |
+      Exactly the maps $z\mapsto e^{uz}$ with
+      $$u_k=\frac{\mathrm{Log}\,L+2\pi ik}{L},\qquad k\in\mathbb Z,$$
+      have $L$ as a fixed point; their multipliers $\lambda_k=\mathrm{Log}\,L+2\pi ik$ differ by $2\pi i$.
+      Two **real** bases (principal branch) share an $L$ if and only if $\mathrm{Re}(1/L)=0$ (both positive or both negative)
+      or $\mathrm{Re}(1/L)=\mp\tfrac1{2m}$ (one positive, one negative). Examples:
+      $e^{\pi/2+2\pi k}$ ($\approx0.00898,\ 4.8105,\ 2575.97,\dots$) share $L=i$; $-\exp\bigl((\tfrac\pi2+2\pi k)\pi/W(\pi)\bigr)$ share
+      $L=i\,W(\pi)/\pi$; $b$ and $-b$ share every fixed point that is an even integer ($\sqrt2$ and $-\sqrt2$: $L=2$ and $L=4$).
+    bereich: $L\in\mathbb C\setminus\{0\}$; bases as $u=\mathrm{Log}\,b$ (resp. chosen branch)
+    einfach: For a fixed point L there is not only one base but a whole ladder of bases — one for each choice of the logarithm of L. For example,
+      4.81 (= e^(π/2)) and 0.00898 (= e^(−3π/2)) both have the fixed point i, although their towers run quite differently.
+    formen:
+    - notiz: 'with the multiplier recipe: all $e^{\lambda_k}=L$'
+    - notiz: the real pair for $L=i$
+  en_theorie:
+    beispiel: |
+      $e^{\pi/2+2\pi k}$ ($0.00898$, $4.8105$, $2575.97$, …) share $L=i$: $(e^{\pi/2})^i=e^{i\pi/2}=i$. Also $\sqrt2$ and $-\sqrt2$ share the fixed points $2$ and $4$.
+    einordnung: |
+      With the multiplier recipe: $b_k=\exp(\lambda_ke^{-\lambda_k})$ ([[fp.satz.multiplikator_rezept]]). Base change between bases of the same ladder: [[kl.satz.basiswechsel_gleiches_L]].
+    genau: |
+      Exactly the maps $z\mapsto e^{uz}$ with
+      $$u_k=\frac{\mathrm{Log}\,L+2\pi ik}{L},\qquad k\in\mathbb Z,$$
+      have $L$ as a fixed point; their multipliers $\lambda_k=\mathrm{Log}\,L+2\pi ik$ differ by $2\pi i$. Two **real** bases share an $L$ if and only if $\mathrm{Re}(1/L)=0$
+      (both positive or both negative) or $\mathrm{Re}(1/L)=\mp\tfrac1{2m}$ (one positive, one negative).
+    warum: |
+      1. $e^{uL}=L$ if and only if $uL=\mathrm{Log}\,L+2\pi ik$ for some integer $k$.
+      2. Two bases share $L$ if and only if $u-u'=2\pi im/L$. For real bases $\operatorname{Im}u\in\{0,\pi\}$, hence $\operatorname{Im}(2\pi im/L)=2\pi m\operatorname{Re}(1/L)\in\{0,\pm\pi\}$.
+      3. Case $\operatorname{Re}(1/L)=0$: $L=iy$; positive bases give $y=\pm1$, negative ones $ye^{\pi y}=1$, hence $y=W(\pi)/\pi$. And $(-b)^L=b^Le^{i\pi L}=L$ if and only if $L$ is an even integer.
+    worum: |
+      For a fixed point $L$ there is not only one base but a whole ladder of bases — one for each choice of the logarithm of $L$. Their towers can behave completely
+      differently and yet circle around the same point.
+- id: fp.satz.grenzfunktionen
+  quelle_hash: da4435b57d33
+  theorie_hash: 238b44578860
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: de Villiers–Robinson, Amer. Math. Monthly 93 (1986), and Cho–Kim, Bull. Korean Math. Soc. 41 (2004), via the zbMATH reviews; monotonicity
+        and boundary values following the account in a follow-up paper by Cho (2004). Full texts not read.
+    pruefung:
+      f2_benutzte_voraussetzungen: Starting value 1 and the monotonicity of the subsequences.
+      f5_neue_frage: Do the constants of Cho–Kim agree with fp.satz.p2_raten? (full text missing)
+      f3_spezialfall: Real trace of fp.satz.p2_form (parametrized there in the complex plane).
+      f1_folgt_unmittelbar: 'Partly: analyticity follows from the implicit function theorem as long as the multiplier of the fixed point resp.
+        cycle is not 1; the boundary values need their own arguments.'
+      f4_uebertragbar: 'The asymptotics at $e^{-e}$ (Cho–Kim) is a possible template for fp.satz.p2_raten: $|z_1-z_2|\sim2\sqrt6e^{-3/2}\sqrt
+        t$.'
+    bewertung:
+      nutzen: Real framework for the oscillation below e^{−e}.
+      richtigkeit: established (literature)
+    titel: The limit functions of the real tower are analytic (de Villiers–Robinson 1986, Cho–Kim 2004)
+    aussage: |
+      (i) On $[e^{-e},e^{1/e}]$, ${}^nx$ converges; the limit $h(x)$ is real-analytic in the interior (de Villiers–Robinson).
+      (ii) For $0<x<e^{-e}$ the odd and the even terms converge to $h_o(x)\ne h_e(x)$ with $x^{h_e}=h_o$, $x^{h_o}=h_e$.
+      Both are real-analytic on $(0,e^{-e})$, $h_o$ increasing, $h_e$ decreasing, continuous on $[0,e^{-e}]$ with $h_o(0)=0$, $h_e(0)=1$,
+      $h_o(e^{-e})=h_e(e^{-e})=1/e$; at both ends there are asymptotic formulas (Cho–Kim).
+    bereich: real $x>0$; ${}^0x=1$, ${}^{n+1}x=x^{({}^nx)}$
+    einfach: 'Below about 0.066 the tower jumps back and forth between two values. Both values depend smoothly on the base: one falls from 1 to
+      1/e, the other rises from 0 to 1/e, and at the threshold they meet.'
+  en_theorie:
+    beispiel: |
+      $x=0.03$: $h_e=0.82133$, $h_o=0.05613$ (from [[fp.satz.p2_form]]).
+    einordnung: |
+      Real trace of [[fp.satz.p2_form]]; the asymptotics at the tip (Cho–Kim) is a possible template for [[fp.satz.p2_raten]].
+    genau: |
+      For $0<x<e^{-e}$: $h_o(x)=\lim{}^{2m+1}x$ and $h_e(x)=\lim{}^{2m}x$ with $x^{h_e}=h_o$, $x^{h_o}=h_e$; both real-analytic, $h_o$ rises from 0 to $1/e$,
+      $h_e$ falls from 1 to $1/e$.
+    warum: |
+      1. The even terms are the iteration of $g(y)=x^{x^y}$; this is monotone, so the subsequence converges.
+      2. The limit is an attracting fixed point of $g$ with multiplier $\mu\in(0,1)$; by the implicit function theorem it depends analytically on $x$.
+      3. At $x=e^{-e}$, $\mu=1$ and both values coincide at $1/e$.
+    worum: |
+      Below $e^{-e}\approx0.066$ the tower jumps between two values. How do these two values depend on the base? Smoothly — they are even analytic.
+- id: fp.satz.kreismittel
+  quelle_hash: fa0f80f22804
+  theorie_hash: 04a5826d570c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $Z_n$ is entire (induction) and $Z_n(0)=1$; mean value property of holomorphic functions. The note computes the same thing with the
+        residue theorem for $Z_n(w)/w$.
+    gegenbeispielsuche: 'exp.mittelwerte: $n=1,2,3,5,8$ at $r=1$ (2048 points) and $r=0.6$: deviation below $10^{-25}$.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Only that $Z_n$ is entire and $Z_n(0)=1$. The note assumes $r=1$; every radius works.
+      f5_neue_frage: All Fourier modes → fp.kor.fourier_taylor; non-integer heights → fp.verm.bruch_mittel
+      f3_spezialfall: 'Yes: Gauss''s mean value theorem.'
+      f1_folgt_unmittelbar: Yes, from the mean value property.
+      f4_uebertragbar: To every entire function of w, e.g. derivatives with respect to the height at integer n.
+    bewertung:
+      recherche: Immediate consequence of the mean value theorem; no literature reference sought.
+      nutzen: Elegant entry point to complex bases.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: integer height n
+    - text: radius r = 1 (Shell–Thron boundary)
+    titel: Circle mean of integer tower heights is 1
+    aussage: |
+      $$\frac1{2\pi}\int_0^{2\pi}Z_n(re^{i\theta})\,d\theta=1\qquad\text{for all }n\in\mathbb N_0,\ r>0.$$
+      For $r=1$, $Z_n(e^{i\theta})=T_{b(\theta)}(n)$ is the tower on the Shell–Thron boundary (Theorem 1 of the note: $\int_0^{2\pi}=2\pi$).
+    bereich: $Z_0=1$, $Z_{n+1}(w)=\exp(Z_n(w)\,we^{-w})$, $n\in\mathbb N_0$, every radius $r>0$
+    einfach: If you go once around the boundary of the domain and average the n-th tower level over all bases, exactly 1 comes out — for every
+      level n.
+  en_theorie:
+    beispiel: |
+      $n=1$: $Z_1(w)=\exp(we^{-w})=b(w)$ is the base itself. So: the mean of all bases on the Shell–Thron boundary is exactly $1$. Verified for $n=1,2,3,5,8$ to $10^{-25}$.
+    einordnung: |
+      All Fourier components: [[fp.kor.fourier_taylor]]. For non-integer heights the statement breaks down ([[fp.verm.bruch_mittel]]).
+    genau: |
+      With $Z_0=1$, $Z_{n+1}(w)=\exp(Z_n(w)\,we^{-w})$, for all $n\in\mathbb N_0$ and every radius $r>0$
+      $$\frac1{2\pi}\int_0^{2\pi}Z_n(re^{i\theta})\,d\theta=1.$$
+      For $r=1$, $Z_n(e^{i\theta})=T_{b(\theta)}(n)$ is the tower on the Shell–Thron boundary.
+    warum: |
+      $Z_n$ is an entire function (induction: composition of entire functions) with $Z_n(0)=1$. The mean of a holomorphic function over a circle is its value at the center (Gauss's mean value theorem).
+    worum: |
+      If one goes once around the boundary of the Shell–Thron domain and averages the $n$-th tower level over all these bases, exactly $1$ comes out — for every level $n$.
+- id: fp.satz.lambert
+  quelle_hash: 82054b1b6adf
+  theorie_hash: 70e5b08088df
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $b^L=L\iff e^{L\ln b}=L\iff(-L\ln b)e^{-L\ln b}=-\ln b$, hence $-L\ln b=W_k(-\ln b)$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Only b ≠ 0, 1.
+      f5_neue_frage: The multiplier $\lambda=-W(-\ln b)$ determines all imaginary periods ($2\pi i/\ln\lambda$) and hence strip widths.
+      f3_spezialfall: Special case of the solution of $x=a e^{cx}$ by W.
+      f1_folgt_unmittelbar: Yes (rearrangement).
+      f4_uebertragbar: Identical for complex bases (Paulsen 2019 uses this).
+    bewertung:
+      nutzen: Computes all fixed-point data explicitly.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: ln b ≠ 0 (b ≠ 1)
+    titel: Fixed points of b^z via Lambert W
+    aussage: |
+      The fixed points of $z\mapsto b^z$ are exactly $L_k=-W_k(-\ln b)/\ln b$, $k\in\mathbb Z$, with multiplier
+      $\lambda_k=L_k\ln b=-W_k(-\ln b)$. For $b>\eta$ the primary fixed points are $-W_0(-\ln b)/\ln b$ and
+      $-W_{-1}(-\ln b)/\ln b$ (conjugate); the one with $\operatorname{Im}>0$ is $L=-W_{-1}(-\ln b)/\ln b$
+      (principal-branch convention: $W_0(x)$ for $x<-1/e$ in the upper half-plane), e.g. $L_e\approx0.3181315+1.3372357\,i$.
+    bereich: $b\in\mathbb C\setminus\{0,1\}$, principal branch of $\ln b$
+  en_theorie:
+    beispiel: |
+      - $b=\sqrt2$, $-\ln b=-0.34657$: $W_0=-0.69315$ gives $L=2$; $W_{-1}=-1.38629$ gives $L=4$.
+      - $b=e$, $-\ln b=-1$ lies to the left of $-1/e$, where all $W$ values are complex. The principal pair is $L=0.3181315\pm1.3372357\,i$; one checks
+        $e^{L}=L$ directly. Since $\ln e=1$, here $\lambda=L$.
+    einordnung: |
+      The multiplier determines almost everything that follows: attraction ($|\lambda|<1$), the width of the strips in which tetrations are periodic
+      ($2\pi i/\ln\lambda$), and the spirals around the fixed point ([[fp.satz.spirale]]). Kneser builds his tetration at this pair $L,\bar L$
+      ([[kn.konstr.kneser]]).
+    genau: |
+      The Lambert W function is the inverse of $w\mapsto we^{w}$: $W(x)e^{W(x)}=x$. It has infinitely many branches $W_k$, $k\in\mathbb Z$
+      (like the complex logarithm). For $b\ne0,1$ the fixed points of $z\mapsto b^z$ are exactly
+      $$L_k=-\frac{W_k(-\ln b)}{\ln b},\qquad\text{with multiplier}\quad\lambda_k=L_k\ln b=-W_k(-\ln b).$$
+      Above $\eta$ there is a complex-conjugate principal pair; the fixed point with positive imaginary part is $L=-W_{-1}(-\ln b)/\ln b$.
+    warum: |
+      $b^L=L$ means $e^{L\ln b}=L$. Multiply by $-\ln b\cdot e^{-L\ln b}$:
+      $$(-L\ln b)\,e^{-L\ln b}=-\ln b .$$
+      The left-hand side has the form $we^w$ with $w=-L\ln b$. So $w$ is a value of $W(-\ln b)$, and $L=-w/\ln b$. Every branch of $W$ gives
+      a fixed point. The multiplier is the derivative $b^L\ln b=L\ln b=-w$.
+    worum: |
+      The fixed points of $b^z$ cannot be written down with roots or logarithms, but they can with a function of their own, the
+      Lambert W function. With it one obtains **all** fixed points, also the complex ones, and their multipliers right along with them.
+- id: fp.satz.messbare_dynamik
+  quelle_hash: da2f4af84490
+  theorie_hash: 86388a7449e3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Rees, Math. Z. 191 (1986); Lyubich, Sib. Math. J. 28 (1987); McMullen, Trans. AMS 300 (1987); via the zbMATH reviews (the statement
+        “not ergodic” from memory).
+    pruefung:
+      f2_benutzte_voraussetzungen: A single singular value; its orbit escapes to ∞.
+      f5_neue_frage: Does (i) hold for every base $b>\eta$ with the orbit $1,b,b^b,\dots$?
+      f3_spezialfall: (i) is the case $b=e$; for general $b>\eta$ it seems natural, but is not checked here.
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: To bases $b>\eta$ (conjugate to $\lambda e^w$ with $\lambda>1/e$) for (ii).
+    bewertung:
+      nutzen: Shows an unexpected role of the tower in the dynamics of eᶻ.
+      richtigkeit: established (literature); “not ergodic” only from memory
+    titel: 'Where almost all orbits of eᶻ go: to the tower to base e (Rees 1986, Lyubich 1987); Julia sets of dimension 2 (McMullen 1987)'
+    aussage: |
+      (i) For almost every $z\in\mathbb C$ the orbit $z,e^z,e^{e^z},\dots$ accumulates exactly on the closure of the orbit $0,1,e,e^e,\dots$ of the singular value —
+      that is, on the tower to base $e$ (and at $\infty$). $\exp$ is not recurrent and not ergodic.
+      (ii) The Julia set of every map $\lambda e^z$ has Hausdorff dimension 2; if the map has an attracting cycle, its area measure is 0.
+    bereich: (i) $f(z)=e^z$, Lebesgue measure in $\mathbb C$; (ii) $\lambda e^z$, $\lambda\ne0$
+    einfach: Although the Julia set of eᶻ is the whole plane, almost all orbits end up near the tower 1, e, e^e, … to base e.
+  en_theorie:
+    einordnung: |
+      Background to [[fp.satz.abstossend]] ($J=\mathbb C$ above $\eta$): for $b=e$ the tower is the orbit of the singular value and thus the place where almost everything accumulates.
+    genau: |
+      For almost every $z$ the set of accumulation points of $z,e^z,e^{e^z},\dots$ is the closure of $\{0,1,e,e^e,\dots\}$. And $J(\lambda e^z)$ has Hausdorff dimension 2.
+    warum: |
+      1. Orbits that stay in the left half-plane for a long time are sent to 0, and from there they go along the tower.
+      2. A measure estimate (Rees, Lyubich) shows that almost every orbit does this infinitely often and otherwise gets stuck nowhere.
+    worum: |
+      The Julia set of $e^z$ is the whole plane: chaos everywhere. Nevertheless almost all orbits eventually accumulate at one very specific place —
+      at the tower $1,e,e^e,\dots$.
+- id: fp.satz.multiplikator_rezept
+  quelle_hash: 7caf67539417
+  theorie_hash: c6120c3faf77
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: From $z^*=e^{z^*u}$ and $\lambda=z^*u$ ($u=\mathrm{Log}\,b$) it follows that $z^*=e^\lambda$ and $u=\lambda/z^*=\lambda e^{-\lambda}$;
+        conversely one checks both by direct computation.
+    pruefung:
+      f2_benutzte_voraussetzungen: Only the branch choice of Log b; no statement about attraction.
+      f5_neue_frage: 'Bases with a prescribed multiplier allow targeted experiments: spirals (fp.satz.spirale), neutral rotations (fp.satz.neutral),
+        base change (kl.satz.koenigs_basiswechsel).'
+      f3_spezialfall: 'Yes: the same parametrization with which Shell and Thron describe their domain ($t=\lambda$).'
+      f1_folgt_unmittelbar: Yes, two lines from the fixed-point equation.
+      f4_uebertragbar: To any family $z\mapsto e^{uz}$; for cycles of length q there is no such simple formula.
+    bewertung:
+      nutzen: Turns the multiplier into a control knob; basis of all experiments of this strand.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: Log b chosen fixed (one branch)
+    titel: Base from the desired multiplier
+    aussage: |
+      $f_b$ has a fixed point $z^*$ with multiplier $\lambda$ if and only if
+      $$\mathrm{Log}\,b=\lambda e^{-\lambda};\qquad\text{then }z^*=e^{\lambda}.$$
+      For $|\lambda|<1$, $b$ runs through the Shell–Thron domain, for $\lambda=e^{i\theta}$ through its boundary
+      $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$.
+    bereich: $\lambda\in\mathbb C\setminus\{0\}$, $f_b(z)=\exp(z\,\mathrm{Log}\,b)$
+    einfach: You can choose how a tower behaves in the end (how strongly it shrinks and how far it turns per step), and compute the matching base
+      from that.
+    formen:
+    - notiz: Recipe (4) of the note
+    - notiz: 'real: bases $z^{1/z}$, fixed point $z$'
+  en_theorie:
+    beispiel: |
+      $\lambda=\ln2$ gives $b=\sqrt2$ with fixed point $2$. $\lambda=-1$ gives $b=e^{-e}=0.065988$ with fixed point $1/e$. $\lambda=1$ gives $b=\eta$ with fixed point $e$. $\lambda=i$ (pure rotation by one
+      radian) gives $b=1.98933+1.19328\,i$ with fixed point $e^i$.
+    einordnung: |
+      Real, this is the family $b=z^{1/z}$ ([[fp.satz.lambert]]). Used for spirals ([[fp.satz.spirale]]), neutral rotations ([[fp.satz.neutral]]) and the linear
+      base change ([[kl.satz.koenigs_basiswechsel]]). For 2-cycles there is a similar recipe ([[fp.satz.p2_form]]).
+    genau: |
+      $f_b(z)=\exp(z\,\mathrm{Log}\,b)$ has a fixed point $z^*$ with multiplier $\lambda$ if and only if
+      $$\mathrm{Log}\,b=\lambda e^{-\lambda};\qquad\text{then }z^*=e^\lambda.$$
+      For $|\lambda|<1$, $b$ runs through the Shell–Thron domain, for $\lambda=e^{i\theta}$ through its boundary $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$.
+    warum: |
+      With $u=\mathrm{Log}\,b$: fixed point means $z^*=e^{uz^*}$, multiplier means $\lambda=f'(z^*)=u\,e^{uz^*}=uz^*$. So $z^*=e^{uz^*}=e^\lambda$ and $u=\lambda/z^*=\lambda e^{-\lambda}$.
+      Conversely, one checks both directly.
+    worum: |
+      How a tower behaves in the end is decided by a single complex number: the multiplier $\lambda$ at the fixed point. One can choose it
+      — and compute the matching base from it. This is the most important tool for experiments in the base plane.
+- id: fp.satz.nachbar_turm
+  quelle_hash: 9c5ecbb092d0
+  theorie_hash: 46119713fadd
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        The inner tower $t=(1/x)\uparrow\uparrow\infty$ converges exactly for $1/x\in[e^{-e},\eta]$, i.e. $x\in[e^{-1/e},e^e]$ (fp.satz.turm_reell). From $t=x^{-t}$ it follows that $x^t=1/t$, and
+        $t=W(\ln x)/\ln x$ (Lambert W), so the value is $1/t=\ln x/W(\ln x)$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Convergence range of the infinite tower.
+      f5_neue_frage: 'no'
+      f3_spezialfall: Yes, of fp.satz.turm_reell.
+      f1_folgt_unmittelbar: Yes.
+      f4_uebertragbar: Every tower with a different lowest term.
+    bewertung:
+      nutzen: Small example of how to evaluate towers with Lambert W.
+      richtigkeit: complete
+    titel: The neighbor tower x^((1/x)^((1/x)^…)) = ln x / W(ln x)
+    aussage: |
+      The tower $x^{(1/x)^{(1/x)^{\cdots}}}$ converges exactly for $e^{-1/e}\le x\le e^e$, with limit
+      $$\frac{\ln x}{W(\ln x)};$$
+      at $x=e$ this is $1/\Omega=1.7632228343\ldots$ with the omega constant $\Omega=W(1)$. At $x=20>e^e$ it oscillates.
+    einfach: At the very top of the tower there is always 1/x, only at the bottom x. The inner part is an ordinary infinite tower to base 1/x;
+      therefore the same bounds apply, mirrored.
+  en_theorie:
+    beispiel: |
+      $x=e$: $1/W(1)=1/\Omega=1.7632228343\ldots$; $x=2$: $1.55961\ldots$
+    einordnung: |
+      Offshoot of [[fp.satz.turm_reell]].
+    genau: |
+      $$x^{(1/x)^{(1/x)^{\cdots}}}=\frac{\ln x}{W(\ln x)},\qquad e^{-1/e}\le x\le e^e.$$
+    warum: |
+      1. The part above the lowest term is an ordinary infinite tower to base $1/x$; it converges for $1/x\in[e^{-e},\eta]$.
+      2. Its value $t$ satisfies $t=x^{-t}$, so $x^t=1/t$ — this is the value sought, and Lambert W gives $t$.
+    worum: |
+      A small relative of the infinite tower: $x$ at the bottom, nothing but $1/x$ above it.
+- id: fp.satz.neutral
+  quelle_hash: 5f410c71d689
+  theorie_hash: 21c72999f9b0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Siegel (Diophantine), Brjuno/Rüssmann (Brjuno condition). Boundary: Fatou — the boundary of a Siegel disk lies in the closure of
+        the post-singular orbit.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Only the arithmetic of α; necessity left open.
+      f5_neue_frage: The “disk-like point clouds” of the note (figs. 2–5) are the boundary of the Siegel disk → fp.satz.siegel_mittel
+      f3_spezialfall: 'Yes: general linearization theorem.'
+      f1_folgt_unmittelbar: Yes, from Siegel–Brjuno, applied to the recipe.
+      f4_uebertragbar: 'For Liouville-like α (not Brjuno), Cremer points are possible: no disk, no linearization.'
+    bewertung:
+      nutzen: Explains figures 2–5 of the note.
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: α Brjuno number (Σ log q_{n+1}/q_n < ∞)
+    titel: Irrational boundary points — Siegel disk or not
+    aussage: |
+      If $\alpha$ is a Brjuno number (e.g. the golden ratio, every algebraic irrational number), then $f_b$ is
+      linearizable at the fixed point: there is a **Siegel disk** around $L$ on which $f_b$ resembles a rotation by $2\pi\alpha$. The orbit of 1
+      does not lie in the disk; its boundary lies in the closure of the orbit (Fatou), and for an unbounded disk — for Diophantine $\alpha$
+      always — the orbit lies on the boundary (fp.satz.siegel_unbeschraenkt). Whether the Brjuno condition is also necessary for this family is here
+      not checked against the original (Geyer 2001 proves necessity for $\lambda z e^z$; conjugation to $\lambda(e^s-1)$ is a different family).
+    bereich: $b=b(\theta)$, $\lambda=e^{2\pi i\alpha}$, $\alpha$ irrational
+  en_theorie:
+    beispiel: |
+      For Liouville-like $\alpha$ (extremely well approximable by fractions) the disk may be missing — the fixed point is then called a Cremer point.
+    einordnung: |
+      Explains the disk-like point clouds in the user's note ([[fp.satz.siegel_mittel]]). What is really known about the boundary: [[fp.satz.siegel_unbeschraenkt]] (unbounded, tower on the boundary); the earlier assumption [[fp.ann.siegel_rand]] is refuted.
+    genau: |
+      For $b=b(2\pi\alpha)$, $\lambda=e^{2\pi i\alpha}$, $\alpha$ a Brjuno number (e.g. the golden ratio, every algebraic irrational number): $f_b$ is linearizable at the fixed point — there is a
+      Siegel disk around $L$ on which $f_b$ resembles a rotation by $2\pi\alpha$. The orbit of $1$ lies outside and accumulates at its boundary.
+    warum: |
+      Theorem from the literature: Siegel (for Diophantine $\alpha$), Brjuno and Rüssmann (Brjuno condition $\sum\log q_{n+1}/q_n<\infty$ for the denominators of the continued-fraction approximants). That the boundary lies in the closure of the orbit of the
+      singular value is due to Fatou. Whether the Brjuno condition is also necessary for this family has not been checked against the original here.
+    worum: |
+      If the multiplier turns by an **irrational** fraction of a full turn, the fixed point can be surrounded by a disk on which the map is a pure
+      rotation (Siegel disk). The tower then never comes to rest but circles forever at its boundary.
+- id: fp.satz.p2_form
+  quelle_hash: 8df8c1487b14
+  theorie_hash: 3fe997a5dedb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: '$u=cz_1$, $v=cz_2$ satisfy $u=ce^v$, $v=ce^u$; with $s=u-v$ it follows that $u-v=c(e^v-e^u)$ and from this the solved form. $\mu=(E\circ
+        E)''(z_1)=c^2z_1z_2=uv$. $c(-s)=c(s)$ (cycle points swapped), hence analytic in $p$. Real: $s/(2\sinh(s/2))\in(0,1)$ for $s>0$.'
+    gegenbeispielsuche: 'Original: μ = uv to 10⁻⁵¹, boundary to 10⁻¹⁶, 400 real bases μ ∈ (0,1). exp.funde: cycle test at s = 1.3 exact, μ real
+      in (0,1) for b = 0.06 … 10⁻⁶.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Only the cycle equation.
+      f5_neue_frage: Shape of the component → fp.satz.p2_kein_kreis; rates → fp.satz.p2_raten
+      f3_spezialfall: Counterpart of the recipe c = λe^{−λ} for fixed points (fp.satz.multiplikator_rezept).
+      f1_folgt_unmittelbar: Yes, two lines of algebra.
+      f4_uebertragbar: For cycles of length ≥ 3 no such simple solution is known.
+    bewertung:
+      recherche: 'Literature comparison L1, 12.10.2026 — known in essence. Real case: that the tower oscillates between two limits for all $0<b<e^{-e}$
+        (no further period doubling) is already in Euler 1778 (E489, §§38–39, translation read) and Barrow 1936, in detail in Knoebel 1981, de
+        Villiers–Robinson 1986 and Cho–Kim 2004 (analyticity of the two limit functions). Complex case: Baker–Rippon 1985 (Fibonacci Quart.) parametrize
+        towers with two alternating bases by $\log a=se^{-t}$, $\log b=te^{-s}$, convergence exactly for $|st|\le1$; for $a=b$ this is our form
+        with $(s,t)=(v,u)$ and $\mu=uv$; in general for periodic bases Baker–Rippon 1989; $D_2$ connected: Baker–Rippon 1984; second auxiliary
+        equation with Lambert W: Galidakis 2005. Only the notation with $G(p)=\sqrt p/\sinh\sqrt p$ and the number for the period-4 root are our
+        own.'
+      nutzen: Exact description of what happens below Euler's bound e^{−e}.
+      richtigkeit: complete
+    titel: The period-2 region in closed form
+    aussage: |
+      $$u=-\frac{s}{e^s-1},\quad v=u\,e^s,\quad z_1=e^v,\ z_2=e^u,\quad c=v\,e^{-u}=u\,e^{-v},\quad b=e^c,\quad \mu=uv=\Bigl(\frac{s}{2\sinh(s/2)}\Bigr)^2=G(p)^2,$$
+      $G(p)=\sqrt p/\sinh\sqrt p$. $p$ runs through the component exactly once, $|\mu|<1$ is the membership condition. Real $s>0$ gives exactly the segment
+      $(0,e^{-e})$ with $\mu\in(0,1)$ real: **on the real axis there is no period doubling below $e^{-e}$**, the tower stays
+      2-periodic down to $b\to0$; the cascade lies entirely in the complex plane (root of the period-4 component $b=0.0295202424-0.0645122059i$).
+    bereich: $E_c(z)=e^{cz}$, 2-cycle $\{z_1,z_2\}$; parameter $s\in\mathbb C$, $p=(s/2)^2$
+    einfach: For bases between 0 and about 0.066 the tower jumps between two values. Which bases these are can be written down with a single formula
+      — and on the real axis the two-fold alternation never turns into a four-fold one.
+    formen:
+    - notiz: real form; the same equation as for the tower integrals (gr.kor.turmintegral_formen)
+    - notiz: tip
+  en_theorie:
+    beispiel: |
+      $b=0.03$: $z_A=0.82133$, $z_B=0.05613$, $\mu=0.5669$. Check of the real form $z_1\ln z_1=z_2\ln z_2$: both sides $-0.16166$. The period doubling lies entirely in the complex plane
+      (root of the period-4 component at $b=0.02952-0.06451\,i$).
+    einordnung: |
+      Counterpart to the recipe for fixed points ([[fp.satz.multiplikator_rezept]]). The same equation $z_1\ln z_1=z_2\ln z_2$ governs the tower integrals ([[gr.kor.turmintegral_formen]]).
+      Shape of the region: [[fp.satz.p2_kein_kreis]]. Literature: the oscillation for real $b<e^{-e}$ has been known since Barrow (1936); the parametrization
+      $\ln a=se^{-t}$, $\ln b=te^{-s}$ with $|st|\le1$ for towers with two alternating bases is due to Baker and Rippon (1985, 1989) — for $a=b$ this is
+      exactly the form here, with $\mu=st$. That the region is connected was shown by Baker and Rippon in 1984.
+    genau: |
+      For $E_c(z)=e^{cz}$ with 2-cycle $\{z_1,z_2\}$ and parameter $s\in\mathbb C$:
+      $$u=-\frac{s}{e^s-1},\quad v=u\,e^s,\quad z_1=e^v,\ z_2=e^u,\quad c=u\,e^{-v},\quad\mu=uv=\Bigl(\frac{s}{2\sinh(s/2)}\Bigr)^2.$$
+      $|\mu|<1$ is membership in the region. Real $s>0$ gives exactly the segment $(0,e^{-e})$ with $\mu\in(0,1)$: on the real axis there is no period doubling below $e^{-e}$.
+    warum: |
+      1. With $u=cz_1$, $v=cz_2$, the cycle equation says $u=ce^v$, $v=ce^u$.
+      2. $s=u-v$ gives $v=ue^s$ and $s=u(1-e^s)$, hence $u=-s/(e^s-1)$; then $c=ue^{-v}$.
+      3. Multiplier of the cycle: $\mu=(E\circ E)'(z_1)=c^2z_1z_2=uv=s^2e^s/(e^s-1)^2=(s/(2\sinh(s/2)))^2$.
+      4. For real $s>0$, $s/(2\sinh(s/2))$ lies in $(0,1)$; $s\to0$ gives $c\to-e$, $b\to e^{-e}$; $s\to\infty$ gives $b\to0$.
+    worum: |
+      For bases between $0$ and about $0.066$ the tower jumps between two values. Which bases these are — real and complex — can be written down with a single formula.
+      And on the real axis the two-fold alternation never turns into a four-fold one.
+- id: fp.satz.p2_kein_kreis
+  quelle_hash: 8f143e33a43f
+  theorie_hash: e3c36eb4bc96
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'No singular value is attained ⇒ μ ≠ 0 on W. That hyperbolic components of the exponential family are simply connected and unbounded
+        and that the multiplier is a universal covering of D \ {0}: Baker–Rippon, Eremenko–Lyubich, Schleicher. Numbers: original (boundary points
+        to 10⁻¹⁶, area determined in two ways).'
+    gegenbeispielsuche: 'exp.funde: b_left determined independently via |G(p)| = 1, Im c = π: −0.08052815762548356282 (all 20 digits).'
+    pruefung:
+      f2_benutzte_voraussetzungen: Absence of a critical point.
+      f5_neue_frage: 'Sheet structure: the boundary curve meets each height Im c = kπ once (second sheet at b = 0.0494).'
+      f3_spezialfall: 'Yes: general theorem on hyperbolic components of e^z + κ (fp.satz.exp_normalform).'
+      f1_folgt_unmittelbar: Yes, from the literature on hyperbolic components of the exponential family.
+      f4_uebertragbar: Holds for every hyperbolic component (every period) of this family.
+    bewertung:
+      nutzen: Explains the shape of the blue bubble in Figure 1.
+      richtigkeit: established (literature), numbers confirmed
+    titel: The period-2 bubble is not a circle
+    aussage: |
+      $e^{cz}$ has no critical point, hence no center with $\mu=0$: $\mu:W\to\mathbb D\setminus\{0\}$ is a universal covering,
+      $W$ is unbounded and cannot be a disk (unlike $|c+1|<\tfrac14$ for $z^2+c$). Visible is $V=\{0<|b|<R(\arg b)\}$,
+      star-shaped about 0 (punctured), $R(0)=e^{-e}$, $R(\pm\pi)=0.0805281576254835628\ldots$ ($b_{\text{left}}$), $R_{\max}/R_{\min}=1.2203448185$,
+      area $0.016396425069$; the best circle around $-0.0067418921$ with radius $0.0722455899$ deviates by up to 2.13 %. At $b_{\text{left}}$ the boundary has
+      a kink (interior angle $175.0897607°$, branch cut of the principal branch), which produces the $1/k^2$ tail of the Fourier coefficients of $R(\theta)$.
+    bereich: hyperbolic component $W$ (period 2) of the $c$-plane, visible part $V=\exp(W\cap\{|\mathrm{Im}\,c|\le\pi\})$
+    einfach: 'The region in which the tower jumps between two values looks almost like a circle but is not one — toward the left it is a good
+      20 % wider. The reason: the exponential function has no “center” around which a circle could form.'
+  en_theorie:
+    beispiel: |
+      To the right the region extends to $e^{-e}=0.0660$, to the left to $-0.0805$ — a good 20 % farther. The left endpoint has been independently recomputed to 20 digits ($|\mu|=1$, $\operatorname{Im}c=\pi$).
+    einordnung: |
+      Holds for every hyperbolic component of this family ([[fp.satz.exp_normalform]]). Basis: [[fp.satz.p2_form]].
+    genau: |
+      $e^{cz}$ has no critical point, hence no center with $\mu=0$: $\mu$ is a covering of the punctured disk, the component $W$ in the $c$-plane is unbounded and not a circle
+      (unlike $|c+1|<\tfrac14$ for $z^2+c$). Visible in the $b$-plane is $V=\{0<|b|<R(\arg b)\}$, star-shaped about $0$: $R(0)=e^{-e}$, $R(\pm\pi)=0.0805281576$, $R_{\max}/R_{\min}=1.2203$,
+      area $0.016396$; the best circle (center $-0.00674$, radius $0.07225$) deviates by up to $2.13\,\%$. At $-0.0805$ the boundary has a kink of $175.09°$.
+    warum: |
+      1. $\mu=c^2z_1z_2$ is never $0$, because $z_j=e^{(\dots)}\ne0$ and $c\ne0$ — there is no “superattracting” center.
+      2. Literature on the exponential family (Baker–Rippon, Eremenko–Lyubich, Schleicher): hyperbolic components are simply connected and unbounded; the multiplier is a universal
+         covering of the punctured disk.
+      3. The kink arises where the boundary crosses the branch cut of the principal branch; it produces the $1/k^2$ tail of the Fourier coefficients of $R(\theta)$ ([[bw.satz.fourier_naht]]).
+    worum: |
+      The region in which the tower jumps between two values looks almost like a circle, but is not one. The reason: the exponential function has no
+      “center” around which a circle could form.
+- id: fp.satz.p2_raten
+  quelle_hash: 872342aa681f
+  theorie_hash: 0c845f7d1d5f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $E(L+h)=L-h+\tfrac e2h^2-\tfrac{e^2}6h^3+\dots$ ⇒ $E^{\circ2}(L+h)=L+h-\tfrac{e^2}6h^3+O(h^4)$ ⇒ $h_{m+1}^{-2}=h_m^{-2}+\tfrac{e^2}3+\dots$,
+        hence $|h|\sim\sqrt6/(e\sqrt n)$ ($n=2m$). Tip expansion from the closed form at small s.
+    gegenbeispielsuche: 'exp.funde: √n|z_n − 1/e| = 0.901664 at n = 10⁶ (original 0.901664); (1 − μ)/t = 0.735758883, |z₁ − z₂|/√t = 1.093110076
+      at t = 10⁻⁸.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Only local Taylor expansion.
+      f5_neue_frage: Amplitude |K(1)| (maximum 0.1240 at b = 0.043) — closed form?
+      f3_spezialfall: 'Yes: fp.satz.parabolisch_rand with q = 2, here with constant.'
+      f1_folgt_unmittelbar: Yes, from Koenigs resp. the cubic normal form.
+      f4_uebertragbar: The same computation at every bud root.
+    bewertung:
+      recherche: 'Literature comparison L1, 12.10.2026: The law $n^{-1/2}$ at the parabolic point with multiplier $-1$ is the standard computation
+        for iterations near a fixed point with multiplier 1 (Leau–Fatou; rates in Thron 1960 and de Bruijn 1958, ch. 8). Cho–Kim 2004 (original
+        read, Thm. 2.1) contain the tip expansion of the two limits in $\sqrt{e^{-e}-x}$ with leading coefficient $\sqrt{6/e}$ — from this follows
+        our gap $|z_1-z_2|\sim2\sqrt6e^{-3/2}\sqrt t$: this part is known. The convergence rate $\tfrac{\sqrt6}{e}n^{-1/2}$ of the sequence itself
+        and $1-\mu\sim\tfrac2et$ are not stated there; Gao–Han–Schilling 2012 (paywall) unchecked.'
+      nutzen: Exact constants at Euler's bound.
+      richtigkeit: complete
+    titel: How fast the alternation between two values locks in
+    aussage: |
+      Per exponentiation the error shrinks by $|\mu|^{1/2}=|G(p)|$ (Koenigs of the return map): $z_{2n}=z_1+K(1)\mu^n+O(\mu^{2n})$.
+      At the tip $b=e^{-e}$ only algebraically: $|z_n-1/e|\sim\frac{\sqrt6}{e}\,n^{-1/2}$, $\frac{\sqrt6}e=0.9011169177\ldots$
+      Near the tip, $b=e^{-e}(1-t)$: $1-\mu=\frac2e\,t+O(t^2)$ and $|z_1-z_2|=2\sqrt6\,e^{-3/2}\sqrt t+O(t)$.
+      Complex bases: the remainder spirals with $\arg\mu/2$ per exponentiation (e.g. $b=-0.05+0.04i$: one revolution every 7.41 steps).
+    bereich: period-2 region, starting value 1
+    einfach: Deep inside the region the two-fold alternation locks in within a few steps, near the boundary ever more slowly, and exactly at the
+      tip e^(−e) only like 1 over the square root of n — with the exact prefactor √6/e.
+  en_theorie:
+    beispiel: |
+      $\sqrt n\,|z_n-1/e|=0.901664$ at $n=10^6$ (limit $0.901117$). At $t=10^{-8}$: $(1-\mu)/t=0.735759$ (limit $2/e$), $|z_1-z_2|/\sqrt t=1.093110$ (limit $2\sqrt6e^{-3/2}$).
+    einordnung: |
+      The case $q=2$ of [[fp.satz.parabolisch_rand]], here with a constant. The same $n^{-1/2}$ tip produces the exponent $3/2$ in the tower integrals ([[gr.verm.turmintegral_rate]]).
+    genau: |
+      Per exponentiation the error shrinks by $|\mu|^{1/2}$: $z_{2n}=z_1+K(1)\mu^n+O(\mu^{2n})$. At the tip $b=e^{-e}$: $|z_n-1/e|\sim\frac{\sqrt6}{e}n^{-1/2}$, $\frac{\sqrt6}e=0.9011169$.
+      Near the tip, $b=e^{-e}(1-t)$: $1-\mu=\frac2et+O(t^2)$ and $|z_1-z_2|=2\sqrt6\,e^{-3/2}\sqrt t+O(t)$.
+    warum: |
+      1. Inside: Koenigs for the return map $E\circ E$ with multiplier $\mu$ ([[it.satz.koenigs]]).
+      2. Tip: $E(L+h)=L-h+\tfrac e2h^2-\tfrac{e^2}6h^3+\dots$, hence $E^{\circ2}(L+h)=L+h-\tfrac{e^2}6h^3+O(h^4)$. This gives $h_{m+1}^{-2}=h_m^{-2}+\tfrac{e^2}3+\dots$, hence $|h|\sim\sqrt6/(e\sqrt n)$ with $n=2m$.
+      3. Near the tip: expansion of the closed form for small $s$.
+    worum: |
+      Deep inside the region the two-fold alternation locks in within a few steps, ever more slowly toward the boundary, and exactly at the tip $e^{-e}$ only like $1/\sqrt n$ — with the exact prefactor $\sqrt6/e$.
+- id: fp.satz.parabolisch_rand
+  quelle_hash: c0ec92f001c8
+  theorie_hash: a09a9357c282
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        A fixed point whose multiplier is a primitive $q$-th root of unity has $\nu q$ petals, which split into $\nu$ cycles; each cycle
+        attracts a singular value (Fatou). With only one singular value, $\nu=1$, so $f^{\circ q}(z)=z+a(z-L)^{q+1}+\dots$, $a\ne0$,
+        and in the petal $(z_{nq}-L)^{-q}\approx-qa\,n$ (Leau–Fatou).
+    gegenbeispielsuche: 'exp.parameterraum: measured exponents 0.5011 ($q=2$) and 0.3237 ($q=3$) between $n=2\cdot10^4$ and $4\cdot10^5$.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Primitivity and one singular value; that the orbit of 1 lands in the petal is part of Fatou's theorem.
+      f5_neue_frage: The quantity $a$ as a function of $p/q$; Écalle–Voronin invariants at these bases.
+      f3_spezialfall: 'Yes: parabolic parameters of the exponential family; $q=1$ is $b=\eta$ (kl.satz.parabolisch).'
+      f1_folgt_unmittelbar: Yes, from Leau–Fatou and the count of singular values.
+      f4_uebertragbar: To any family with one singular value.
+    bewertung:
+      nutzen: Explains the very slow convergence at the bud roots (and at e^{−e}).
+      richtigkeit: complete
+    voraussetzungen:
+    - text: λ primitive q-th root of unity
+    - text: f_b has exactly one singular value
+    titel: Rational boundary points are parabolic, convergence like n^{−1/q}
+    aussage: |
+      The tower converges to the fixed point $L=e^\lambda$, but only algebraically: $|z_n-L|\asymp n^{-1/q}$. The fixed point has exactly
+      $q$ petals (multiplicity $\nu=1$). Real case $q=2$: $b=e^{-e}$, $L=1/e$, error $\asymp n^{-1/2}$.
+    bereich: $b=b(2\pi p/q)$ on the Shell–Thron boundary, $\lambda=e^{2\pi ip/q}$
+  en_theorie:
+    beispiel: |
+      Measured exponents between $n=2\cdot10^4$ and $4\cdot10^5$: $0.5011$ for $q=2$, $0.3237$ for $q=3$ (expected $\tfrac12$, $\tfrac13$).
+    einordnung: |
+      $q=1$ is $b=\eta$ ([[kl.satz.parabolisch]]); $q=2$ with the exact constant: [[fp.satz.p2_raten]]. Tool: [[it.satz.leau_fatou]].
+    genau: |
+      For $b=b(2\pi p/q)$, $\lambda=e^{2\pi ip/q}$, the tower converges to $L=e^\lambda$, but only algebraically: $|z_n-L|\asymp n^{-1/q}$. The fixed point has exactly $q$ petals.
+      Real ($q=2$): $b=e^{-e}$, $L=1/e$, error $\asymp n^{-1/2}$.
+    warum: |
+      1. A fixed point whose multiplier is a primitive $q$-th root of unity has $\nu q$ petals, which split into $\nu$ cycles; each cycle attracts a singular value (Fatou).
+      2. $f_b$ has only one singular value, so $\nu=1$: $f^{\circ q}(z)=z+a(z-L)^{q+1}+\dots$ with $a\ne0$.
+      3. In the petal, by Leau–Fatou, $(z_{nq}-L)^{-q}\approx-qa\,n$, hence $|z-L|\sim n^{-1/q}$.
+    worum: |
+      On the boundary of the Shell–Thron domain the multiplier turns by exactly a fraction of a full turn. There the tower does come to rest, but extremely
+      slowly — like $n^{-1/q}$.
+- id: fp.satz.parameter_konform
+  quelle_hash: 5c882f1f88d5
+  theorie_hash: 0ef3ce4225f0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        $W_0$ is, on its image domain, the inverse of $w\mapsto we^{w}$, and this image domain contains the unit disk
+        (boundary $-\eta\cot\eta+i\eta$ lies to the left of $|w|=1$, touching only at $-1$). Every attracting cycle attracts a singular
+        value (Fatou); $f_b$ has only the value 0, whose orbit $0\mapsto1\mapsto b\mapsto\cdots$ is exactly the tower. An attracting
+        fixed point $L_k$ would have multiplier $-W_k(-\mathrm{Log}\,b)$ with modulus $<1$, hence $k=0$.
+    gegenbeispielsuche: |
+      exp.parameterraum: 4000 random points $|t|<0.95$ — inversion error $4\cdot10^{-15}$. Grid 520×520 in the b-plane:
+      all 97 618 bases with $|t|<0.97$ have period 1; none of the 145 606 bases with $|t|>1.02$ converges.
+    pruefung:
+      f2_benutzte_voraussetzungen: Branch choice and “one singular value”. Conformality needs only $(1-t)e^{-t}\ne0$ on $|t|<1$.
+      f5_neue_frage: 'Outside $|t|\le1$: which regions arise? → fp.beob.regionen'
+      f3_spezialfall: Analogous to the multiplier coordinate of the main cardioid of the Mandelbrot set.
+      f1_folgt_unmittelbar: 'Almost: Lambert-W image domain + Fatou''s theorem on singular values.'
+      f4_uebertragbar: Other branches of Log b give other pictures; the statement holds per branch.
+    bewertung:
+      nutzen: Tells in one line for every complex base whether the tower converges.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: Principal branch Log b
+    - text: f_b has exactly one singular value (the asymptotic value 0)
+    titel: The multiplier as a coordinate of the base plane
+    aussage: |
+      $t(b):=-W_0(-\mathrm{Log}\,b)$ is the multiplier of the principal fixed point. The map $t\mapsto\exp(te^{-t})$ is conformal on
+      $|t|<1$ and is inverted by $t(b)$. The tower $b^{b^{\cdots}}$ has an attracting fixed point if and only if
+      $|t(b)|<1$; an attracting fixed point of another branch $W_k$ does not occur.
+    bereich: $b\in\mathbb C\setminus\{0\}$, principal branch $\mathrm{Log}$, starting value 1
+  en_theorie:
+    beispiel: |
+      $b=i$: $t=-0.5664+0.6885\,i$, $|t|=0.8915<1$ — the tower $i,i^i,i^{i^i},\dots$ converges. $b=2$: $|t|=1.2277>1$ — it escapes. On a grid of 520 × 520 bases: all 97 618 with
+      $|t|<0.97$ converge, none of the 145 606 with $|t|>1.02$.
+    einordnung: |
+      Real: [[fp.satz.shell_thron]]. Analogy: the multiplier as coordinate of the main cardioid of the Mandelbrot set. What lies outside: [[fp.beob.regionen]].
+    genau: |
+      With the principal branch $\mathrm{Log}$, $t(b):=-W_0(-\mathrm{Log}\,b)$ is the multiplier of the principal fixed point. The map $t\mapsto\exp(te^{-t})$ is conformal on $|t|<1$ and is inverted
+      by $t(b)$. The tower $b^{b^{\cdots}}$ has an attracting fixed point if and only if $|t(b)|<1$; an attracting fixed point of another branch $W_k$ does not occur.
+    warum: |
+      1. $W_0$ inverts $w\mapsto we^w$ on a domain that contains the unit disk; therefore $t\mapsto\exp(te^{-t})$ is invertible there.
+      2. An attracting fixed point attracts a singular value (Fatou). $f_b$ has only one: the value $0$, whose orbit $0\mapsto1\mapsto b\mapsto\cdots$ is exactly the tower.
+      3. A fixed point on another branch would have multiplier $-W_k(-\mathrm{Log}\,b)$, and this never has modulus $<1$; so only the principal branch comes into question.
+    worum: |
+      For every complex base, one line says whether its tower comes to rest: compute the multiplier and see whether its modulus is smaller than $1$. The multiplier
+      is a good coordinate here — the Shell–Thron domain is simply the unit disk, distorted.
+- id: fp.satz.rechteckwelle
+  quelle_hash: a23fe45962a8
+  theorie_hash: aa2e43fca69e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $E$ is decreasing on ℝ, $E\circ E$ increasing with fixed points $z_B<L<z_A$; $(L,\infty)$ is the basin of $z_A$, $(0,L)$ of $z_B$,
+        the only separating point is $L$. $T(0)=1>L>b=T(1)$ ⇒ intermediate value theorem. A continuous 2-periodic Ω would have a connected E-invariant
+        image in two separate basins — impossible. Fourier series of the square wave.
+    gegenbeispielsuche: 'Original: three resp. four starting interpolations, |c_k|πk constant to 8 digits up to k = 41. exp.funde (linear starting
+      interpolation, x* = 0.698330769): |c_k|πk = 0.7651944 … 0.7651888 for k = 1 … 41; T(x* + n) = L for n ≤ 12.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Continuity and reality; not analyticity — hence universal.
+      f5_neue_frage: Is there a distinguished real tetration (distinguished x*) for 0 < b < e^{−e}?
+      f3_spezialfall: 'Counterpart of the smooth 1-periodic function in the Shell–Thron regime: it degenerates to a jump when |λ| passes through
+        1.'
+      f1_folgt_unmittelbar: Yes, intermediate value theorem + basin structure.
+      f4_uebertragbar: 'Complex bases in the region: there a genuine phase in the multiplier picture (arg μ), not in x.'
+    bewertung:
+      recherche: 'Literature comparison L1, 12.10.2026: The literature on the domain below $e^{-e}$ treats the tower (Barrow 1936, Knoebel 1981,
+        de Villiers–Robinson 1986, MacDonnell 1989, Cho–Kim 2004, Baker–Rippon 1985/89, Galidakis 2005), not a tetration of fractional height.
+        In the forum, tid 352 (2009, three pages) asked exactly this question; there, regular iteration fails at the repelling fixed point and
+        at the 2-cycle, Helms computes via a complex fixed point — square wave and crossing of the Julia set do not occur. Ueda 2021 (arXiv 2105.00247,
+        withdrawn) gives only a piecewise formula. Cho–Kim 2004 read in the original (only limit functions of the tower); Gao–Han–Schilling (paywall)
+        not.'
+      nutzen: Shows what becomes of the base-change wave when the fixed point is real and repelling.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: T continuous, real, T(0) = 1, T(x+1) = b^{T(x)}
+    - text: T crosses the fixed point L on [0,1) exactly once
+    - text: T analytic or regular
+    titel: Below e^{−e} the phase becomes a square wave
+    aussage: |
+      There is exactly one $x^*\in(0,1)$ with $T(x^*)=L$, and then $T(x^*+n)=L$ for all $n$ (the tetration **crosses the Julia set**).
+      $\Omega(x)=\lim_nT(x+2n)$ is a 2-periodic **square wave**: $z_A$ on $(x^*-1,x^*)$, $z_B$ on $(x^*,x^*+1)$ (mod 2), $\Omega(x^*)=L$.
+      There is no continuous 2-periodic limit function. Fourier: $c_0=\tfrac{z_A+z_B}2$, $c_k=\frac{i(z_A-z_B)e^{-i\pi kx^*}}{\pi k}$ for odd $k$,
+      0 for even. The shape is **universal**; only $x^*$ depends on the chosen tetration. Two rates: besides the jump $|\mu|^{n/2}$,
+      the width of the transition $|\lambda|^{-n}$ ($\lambda=cL<-1$).
+    bereich: $0<b<e^{-e}$, $T$ a continuous real tetration that crosses $L$ exactly once on $[0,1)$ (e.g. monotone on $[0,1]$)
+    einfach: 'Below e^(−e) the tower jumps between two values. If you plot the continuous tetration at even heights ever further up, its curve
+      turns into a rectangle: at exactly one place it must hit the repelling fixed point and gets stuck there.'
+    formen:
+    - notiz: Example
+  en_theorie:
+    beispiel: |
+      $b=0.03$ with linear starting curve: $L=0.32262$, $z_A=0.82133$, $z_B=0.05613$, $x^*=0.698331$. Measured is $|c_k|\pi k=0.76519$ for $k=1,\dots,41$ — exactly $|z_A-z_B|$.
+    einordnung: |
+      What becomes of the smooth base-change wave when the fixed point is real and repelling ([[bw.satz.phasengesetz]]). Related: [[kl.satz.basis_unter_eins]], [[gr.satz.turmintegral_grenzen]].
+      Question: is there, for $0<b<e^{-e}$, a distinguished real tetration (a distinguished $x^*$)?
+    genau: |
+      Let $0<b<e^{-e}$ and $T$ a continuous real tetration that crosses $L$ exactly once on $[0,1)$. Then there is exactly one $x^*\in(0,1)$ with $T(x^*)=L$, and $T(x^*+n)=L$ for all $n$.
+      $\Omega(x)=\lim_nT(x+2n)$ is a 2-periodic **square wave**: $z_A$ on $(x^*-1,x^*)$, $z_B$ on $(x^*,x^*+1)$. There is no continuous limit function. Fourier:
+      $c_k=\frac{i(z_A-z_B)e^{-i\pi kx^*}}{\pi k}$ for odd $k$, $0$ for even. Only $x^*$ depends on the chosen tetration.
+    warum: |
+      1. $E(z)=b^z$ is decreasing, $E\circ E$ increasing with fixed points $z_B<L<z_A$. Everything above $L$ runs to $z_A$ under $E\circ E$, everything below it to $z_B$; the only separating point is $L$.
+      2. $T(0)=1>L>b=T(1)$, so $T$ crosses the value $L$ (intermediate value theorem); and $E(L)=L$ pins down $T(x^*+n)=L$.
+      3. A continuous 2-periodic $\Omega$ would have to pass continuously between two separate basins — impossible. The Fourier series is that of a square wave.
+    worum: |
+      Below $e^{-e}$ the tower jumps between two values. If one takes a continuous tetration and looks at it at even heights ever further up, its curve turns into a
+      rectangle: at exactly one place it must hit the repelling fixed point, and there it gets stuck.
+- id: fp.satz.reelle_fixpunkte
+  quelle_hash: 35348b999bf3
+  theorie_hash: bf181b58df70
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $x\mapsto b^x-x$ is strictly convex; derivative $b^x\ln b-1=0$ at $x^*$, where $b^{x^*}=1/\ln b$. The multiplier $b^x\ln b$ is increasing
+        in $x$ and $=1$ at $x^*$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Only $b>1$; the formula holds for all $b>1$, positivity exactly for $b>\eta$.
+      f5_neue_frage: 'Quantitative bottleneck near η: how many steps does the orbit need to get past $x^*$? → br.satz.sattel_knoten'
+      f3_spezialfall: 'no'
+      f1_folgt_unmittelbar: Yes (school calculus).
+      f4_uebertragbar: 'Directly to growth bounds: bw.lem.wachstumsluecke is exactly this computation.'
+    bewertung:
+      nutzen: Basis of the case distinction.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: b > 1
+    titel: Minimum of b^x − x and the three cases
+    aussage: |
+      $\min_{x\in\mathbb R}(b^x-x)=\dfrac{1+\ln\ln b}{\ln b}$, attained at $x^*=-\ln\ln b/\ln b$.
+      The minimum is $>0$ exactly for $b>\eta$, $=0$ for $b=\eta$, $<0$ for $1<b<\eta$.
+      For $1<b<\eta$ the lower fixed point is attracting ($0<\lambda<1$), the upper one repelling ($\lambda>1$);
+      for $b=\eta$ we have $\lambda=1$.
+    bereich: real $b>1$, $x\in\mathbb R$
+    einfach: 'Whether the curve y = a^x meets the line y = x depends only on whether a is smaller or larger than η ≈ 1.4447: twice, once (touching)
+      or not at all.'
+  en_theorie:
+    beispiel: |
+      - $b=\sqrt2$: $x^*=3.058$, minimum $-0.172<0$. Fixed points $2$ ($\lambda=\ln2=0.693$, attracts) and $4$ ($\lambda=2\ln2=1.386$, repels).
+      - $b=2$: $x^*=0.529$, minimum $+0.914>0$ — no fixed point.
+      - $b=e$: $x^*=0$, minimum $1$.
+    einordnung: |
+      For $b>\eta$ the minimum says more: $b^x-x$ is at least $\frac{1+\ln\ln b}{\ln b}$ everywhere, so every tower grows per step
+      by at least this amount — the “growth gap” from Paper III ([[bw.lem.wachstumsluecke]]). The slope of the infinite tower
+      as a function of the base: [[gr.satz.turm_ableitung]].
+    genau: |
+      For $b>1$, $g(x)=b^x-x$ has its minimum at $x^*=-\dfrac{\ln\ln b}{\ln b}$, and
+      $$\min_x\bigl(b^x-x\bigr)=\frac{1+\ln\ln b}{\ln b}.$$
+      The minimum is positive for $b>\eta$, zero for $b=\eta$, negative for $1<b<\eta$. In the last case the lower fixed point has a
+      multiplier $\lambda=a\ln b$ between $0$ and $1$ (it **attracts**), the upper one a multiplier above $1$ (it **repels**).
+    warum: |
+      1. $g''(x)=b^x(\ln b)^2>0$: $g$ is bent upward and has at most one minimum.
+      2. $g'(x)=b^x\ln b-1=0$ means $b^{x^*}=1/\ln b$, hence $x^*=-\ln\ln b/\ln b$.
+      3. Value there: $g(x^*)=\frac1{\ln b}-x^*=\frac{1+\ln\ln b}{\ln b}$. Positive if and only if $\ln\ln b>-1$, that is $\ln b>1/e$, that is $b>\eta$.
+      4. **Attracting or repelling:** The slope of $b^x$ at a fixed point $L$ is $b^L\ln b=L\ln b$ — this is the multiplier $\lambda$.
+         It increases with $L$ and is exactly $1$ at the point $x^*$. The lower fixed point lies to the left of $x^*$ ($\lambda<1$), the upper one to the right ($\lambda>1$).
+         If $|\lambda|<1$, nearby points move closer at every step.
+    worum: |
+      Instead of looking for intersection points, one can ask how far at most the curve $y=b^x$ dips below the line $y=x$. A
+      single expression then decides everything — and it also says which intersection point attracts and which repels.
+- id: fp.satz.shell_thron
+  quelle_hash: 3b86936c4188
+  theorie_hash: 9c7997705c77
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Barrow (1936): real bases; Thron (1957): convergence if all $|\ln a_n|\le1/e$ (also for variable bases); Shell (1962): the whole
+        domain $b=\exp(te^{-t})$, $|t|<1$; Macintyre (1966): base $i$; Baker–Rippon (1985, Amer. Math. Monthly): convergence to a limit different
+        from all terms only in the closure of the cardioid $\{te^{-t}\}$ (in $\ln b$), in the interior always; Baker–Rippon (1983, 1989): variable
+        and periodic bases. Parametrization: fixed point $L=e^t$, $\lambda=L\ln b=t$.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Starting value 1, or the orbit of the critical quantity.
+      f5_neue_frage: 'Structure outside: cycles in “buds” → fp.verm.knospen'
+      f3_spezialfall: Analogous to the main cardioid of the Mandelbrot set (parameter = multiplier).
+      f1_folgt_unmittelbar: 'Partly: $|\lambda|<1$ gives local attraction; that the orbit of 1 is captured requires an argument.'
+      f4_uebertragbar: Bases in the domain = bases with attracting fixed point = regular (Koenigs) tetration directly available.
+    bewertung:
+      nutzen: Determines where regular tetration is possible in the complex case.
+      richtigkeit: established
+    voraussetzungen:
+    - text: b = exp(t e^{−t}) with |t| < 1
+    titel: Shell–Thron domain
+    aussage: |
+      If $b=\exp(t\,e^{-t})$ with $|t|<1$, then the tower $b^{b^{\cdots}}$ converges (to $e^{t}$, the
+      fixed point with multiplier $t$). On the boundary and outside, both convergence and divergence occur.
+    bereich: complex $b$
+  en_theorie:
+    beispiel: |
+      Base $b=i$: $t=-0.5664+0.6885\,i$, $|t|=0.8915<1$. The tower $i,\ i^i=0.2079,\ i^{i^i},\dots$ spirals into the fixed point
+      $0.4383+0.3606\,i$, getting about 11 % closer per step and turning by 129°.
+    einordnung: |
+      Outside the domain there arise buds with cycles ([[fp.verm.knospen]]), a dust of escaping bases and a region of its own with
+      2-cycles ([[fp.satz.p2_form]]) — the whole picture in chapter 8. The conformal coordinate $t$ is [[fp.satz.parameter_konform]].
+    genau: |
+      If $b=\exp\bigl(t\,e^{-t}\bigr)$ with a complex number $|t|<1$ (and principal branch of the logarithm), then the tower
+      $b^{b^{\cdots}}$ converges to $L=e^{t}$, and $t$ is the multiplier of this fixed point. The bases with $|t|<1$ form the **Shell–Thron domain**;
+      its boundary is the curve $b(\theta)=\exp(e^{i\theta-e^{i\theta}})$, on the real axis from $e^{-e}$ to $\eta$.
+    warum: |
+      1. Recipe: If $L$ is to be a fixed point with multiplier $t$, then $L=e^{L\ln b}$ and $t=L\ln b$. So $L=e^t$ and $\ln b=t/L=te^{-t}$
+         ([[fp.satz.multiplikator_rezept]]).
+      2. For $|t|<1$ this fixed point attracts: points near it come closer by the factor $|t|$ at every step.
+      3. That the tower starting at $1$ actually gets into this neighborhood is the harder part. It follows from a theorem of Fatou:
+         an attracting fixed point always captures the orbit of the “singular value”, and for $b^z$ this is the orbit $0\mapsto1\mapsto b\mapsto\dots$ —
+         exactly the tower.
+    worum: |
+      If one allows complex bases, Euler's interval becomes a whole domain in the plane. It has a surprisingly simple
+      description: one does not prescribe the base but the multiplier $t$, and computes the base from it.
+- id: fp.satz.shell_thron_flaeche
+  quelle_hash: bba82d23444f
+  theorie_hash: 351b2eb0aeb2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $f(t)=te^{-t}$ is starlike on $|t|<1$ ($\operatorname{Re}(tf\prime/f)=\operatorname{Re}(1-t)>0$), hence univalent; its image lies
+        in $|w|\le e<\pi$, where $\exp$ is injective. So $b$ is univalent, and the area is $\iint_{|t|<1}|b\prime(t)|^2\,dA=\pi\sum n|a_n|^2$
+        (area theorem). By the maximum principle, extreme points of $\operatorname{Re}b$, $\operatorname{Im}b$ lie on the boundary.
+    pruefung:
+      f2_benutzte_voraussetzungen: Univalence of $b$ on the unit disk.
+      f5_neue_frage: Does the area have a closed form? The coefficients $a_n$ are rational (1, 1, −1/2, −1/3, 3/8, …).
+      f3_spezialfall: 'Yes: area theorem for univalent functions.'
+      f1_folgt_unmittelbar: Yes (area theorem), the numerical value from the series.
+      f4_uebertragbar: Area of the buds (fp.verm.knospen) via the multiplier parametrization of the q-cycles.
+    bewertung:
+      nutzen: Answer to a recurring forum question, with a second independent computation.
+      richtigkeit: complete
+    titel: 'Area of the Shell–Thron domain: 8.0509332809…'
+    aussage: |
+      With $b(t)=\exp(te^{-t})=\sum_na_nt^n$ the area is
+      $$\text{Area}=\pi\sum_{n\ge1}n\,a_n^2=8.0509332809395096234251953742\ldots$$
+      Extreme points (all on the boundary $|t|=1$): largest imaginary part $0.8152027425+2.0166402199\,i$ (at $t=e^{1.9279076\,i}$), largest real part
+      $2.0477905275\pm0.8420455035\,i$, smallest real part $-0.3809797286\pm0.8997001955\,i$. On the real axis the domain is only $[e^{-e},\eta]$.
+    bereich: Domain $\{\exp(te^{-t}):|t|\le1\}$ of the complex bases with convergent tower (fp.satz.shell_thron)
+    einfach: 'The bases for which the infinite tower b^b^b^… has a limit form a heart-shaped domain in the complex plane with area about 8.05.
+      It reaches much farther than on the real axis: up to real part 2.05 and imaginary part ±2.02.'
+  en_theorie:
+    beispiel: |
+      The coefficients begin $1,\ 1,\ -\tfrac12,\ -\tfrac13,\ \tfrac38,\ -\tfrac1{30},\dots$; the first four terms $\pi(1+0.5+0.333+0.563)$ already give $7.53$ of the $8.05$.
+      On the real axis the domain extends only from $e^{-e}=0.066$ to $\eta=1.445$ — the area lies for the most part away from it, up to real part $2.05$.
+    einordnung: |
+      Answer to a question that was asked in the forum in 2009 and again in 2022. The parametrization via the multiplier $t$ is the same as in
+      [[fp.satz.multiplikator_rezept]]; outside lie the buds ([[fp.verm.knospen]]).
+    genau: |
+      The domain is the image of the unit disk under $b(t)=\exp(te^{-t})$. With $b(t)=\sum_na_nt^n$,
+      $$\text{Area}=\pi\sum_{n\ge1}n\,a_n^2=8.0509332809395096234251953742\ldots$$
+      The extreme points:
+      - largest imaginary part: $0.8152027425+2.0166402199\,i$,
+      - largest real part: $2.0477905275\pm0.8420455035\,i$,
+      - smallest real part: $-0.3809797286\pm0.8997001955\,i$.
+    warum: |
+      1. **Univalent:** $f(t)=te^{-t}$ is starlike on $|t|<1$ (the real part of $tf'(t)/f(t)=1-t$ is positive), hence one-to-one. Its image lies in
+         $|w|\le e<\pi$; there $\exp$ is also one-to-one. So $b$ is univalent.
+      2. **Area theorem:** For a univalent map the area of the image is $\iint|b'(t)|^2\,dA$. With the power series this becomes $\pi\sum n\,a_n^2$, because the functions
+         $t^n$ are orthogonal on the disk.
+      3. **Control test:** the same as a boundary integral $\tfrac12\oint\operatorname{Im}(\bar b\,db)$ — agrees to 30 digits, and with Robbins' number as well.
+      4. **Extreme points:** Real and imaginary part are harmonic, so their maximum lies on the boundary $|t|=1$; there one looks for the zeros of the derivative.
+    worum: |
+      The Shell–Thron domain contains all complex bases for which the infinite tower has a limit ([[fp.satz.shell_thron]]). How large is it?
+      Andrew Robbins computed the area in the forum in 2009: $8.0509\ldots$ Here the same number is confirmed in a second, independent way — via a
+      power series instead of a boundary integral.
+- id: fp.satz.siegel_mittel
+  quelle_hash: f1cc98631591
+  theorie_hash: 7704e4aae54d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        If $\Delta$ were bounded with Jordan boundary: the linearization $\varphi:\mathbb D\to\Delta$, $\varphi(0)=L$, extends (Carathéodory) to a homeomorphism of the boundary
+        and conjugates $f$ on $\partial\Delta$ to the rotation by $2\pi\alpha$. This is uniquely ergodic (Weyl), so for every boundary point
+        $\frac1N\sum z_n\to\int_{\partial\Delta}z\,d\omega_L$ with the harmonic measure $\omega_L=\varphi_*(d\theta/2\pi)$.
+        Mean value property of the harmonic function $z$: $\int z\,d\omega_L=L$.
+    gegenbeispielsuche: 'exp.mittelwerte (golden angle): error $5.9\cdot10^{-4}$, $1.4\cdot10^{-4}$, $1.5\cdot10^{-5}$, $2.8\cdot10^{-6}$ at $N=10^3,10^4,10^5,2\cdot10^5$.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Boundedness and Jordan boundary (for Carathéodory) and that the orbit lies on the boundary; Brjuno only for
+        the existence of Δ.
+      f5_neue_frage: 'Error rate: measured ≈ 1/N for golden α — Denjoy–Koksma would explain this for a rectifiable boundary.'
+      f3_spezialfall: 'Yes: mean value theorem for harmonic functions, read along a rotation.'
+      f1_folgt_unmittelbar: 'Yes, under the assumption: Weyl + mean value theorem.'
+      f4_uebertragbar: 'Every continuous function g: time average = harmonic extension of g at L.'
+    bewertung:
+      nutzen: Turns the empirical identity (5) of the note into a conditional theorem and explains it.
+      richtigkeit: conditionally proved
+    voraussetzungen:
+    - text: 'Orbit of 1 on the boundary of the Siegel disk (proved for unbounded disks: fp.satz.siegel_unbeschraenkt)'
+    - text: Boundary dynamics along the orbit uniquely ergodic with measure ω_L, and z integrable with respect to ω_L
+    titel: Time average on the Siegel boundary is the fixed point
+    aussage: |
+      $$\frac1N\sum_{n=n_0}^{n_0+N-1}z_n\;\longrightarrow\;L\qquad(N\to\infty).$$
+      The “disk-mean identity” (5) of the note is thus a theorem for bounded Jordan disks; for the unbounded disks that actually occur (fp.satz.siegel_unbeschraenkt) the proof is a sketch.
+    bereich: $b=b(2\pi\alpha)$, $\alpha$ Brjuno
+  en_theorie:
+    beispiel: |
+      Golden angle: distance of the mean from $L$: $5.9\cdot10^{-4}$, $1.4\cdot10^{-4}$, $1.5\cdot10^{-5}$, $2.8\cdot10^{-6}$ at $N=10^3,10^4,10^5,2\cdot10^5$ — roughly like $1/N$.
+    einordnung: |
+      Would have turned the empirical “disk-mean identity” of the note into a conditional theorem; since [[fp.satz.siegel_unbeschraenkt]] it is clear that the condition (bounded boundary) is not met. The rate $1/N$ would be explained by Denjoy–Koksma for a rectifiable boundary.
+    genau: |
+      For $b=b(2\pi\alpha)$, $\alpha$ Brjuno, and a bounded Siegel disk with Jordan boundary one would have
+      $$\frac1N\sum_{n=n_0}^{n_0+N-1}z_n\longrightarrow L\qquad(N\to\infty).$$
+      For Diophantine $\alpha$, however, the disk is unbounded ([[fp.satz.siegel_unbeschraenkt]]); there the statement is numerically supported, the proof a sketch.
+    warum: |
+      1. The linearization $\varphi$ maps the unit disk onto $\Delta$, $\varphi(0)=L$; for a bounded Jordan boundary it extends to the boundary by Carathéodory and turns $f$ there into the rotation by $2\pi\alpha$.
+      2. An irrational rotation distributes every orbit uniformly on the circle (Weyl). So the time average is the mean over the boundary, weighted by the harmonic measure of $L$.
+      3. $z$ is harmonic; its harmonic mean over $\partial\Delta$ is the value at $L$ (mean value theorem).
+    worum: |
+      On the boundary of a Siegel disk the tower circles forever. If one averages its values over time, the result — as the computations show — is exactly the fixed point,
+      even though the tower never gets there. A proof exists only for bounded disks; the actual disks are unbounded.
+- id: fp.satz.siegel_unbeschraenkt
+  quelle_hash: a1a19a7e0cf1
+  theorie_hash: 095705419887
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Herman 1985 (Comm. Math. Phys. 99), as restated in the introduction of Rempe 2004; Rempe 2004, Theorem (Bull. London Math. Soc. 36,
+        read in the original). Conjugation: $\ln b\cdot b^z=\exp(z\ln b+\ln\ln b)$.'
+    pruefung:
+      f2_benutzte_voraussetzungen: (i) needs Diophantine α (the Herman class suffices); for Brjuno but non-Diophantine α, boundedness is not settled
+        here. (ii) needs only the unboundedness.
+      f5_neue_frage: Does the mean value theorem fp.satz.siegel_mittel also hold for unbounded disks (boundary values of the linearization integrable)?
+      f3_spezialfall: 'Yes: special case of the statements for the entire exponential family.'
+      f1_folgt_unmittelbar: Yes, from Herman and Rempe via the conjugation to the exponential family.
+      f4_uebertragbar: 'To periodic Siegel disks in buds (Rempe: κ ∈ ∂E^j(U) for some j).'
+    bewertung:
+      nutzen: Corrects the assumption fp.ann.siegel_rand and says where the tower really runs at irrational boundary points.
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: α Diophantine (e.g. golden ratio, every algebraic irrational number)
+    titel: Siegel disks of the tower are unbounded, the orbit of 1 lies on the boundary (Herman 1985, Rempe 2004)
+    aussage: |
+      $f(z)=b^z$ is conjugate via $w=z\ln b+\ln\ln b$ to $E_\kappa(w)=\exp(w)+\kappa$. From this and from the literature:
+      (i) **Herman (1985):** If $\alpha$ is Diophantine, then the Siegel disk $\Delta$ around the fixed point is **unbounded** — a bounded disk
+      would, by Herman's theorem, have a critical point on its boundary, and $\exp$ has none.
+      (ii) **Rempe (2004):** If a Siegel disk of $E_\kappa$ is unbounded, then the singular value lies on its boundary (for period 1:
+      $\kappa\in\partial\Delta$). For $b^z$ the singular value is $0$; hence $0$, $1=b^0$ and the whole tower $1,b,b^b,\dots$ lie on $\partial\Delta$.
+      Rippon had already settled almost all $\alpha$; independently also Buff–Fagella (unpublished).
+    bereich: $b=b(2\pi\alpha)$, i.e. a fixed point with multiplier $e^{2\pi i\alpha}$; $\alpha$ Diophantine for (i), disk unbounded for (ii)
+    einfach: When the tower circles a fixed point at the boundary of the Shell–Thron domain, there is a disk around the fixed point in which everything
+      only rotates. For the exponential function this disk always extends to infinity, and the tower runs exactly along its boundary.
+  en_theorie:
+    beispiel: |
+      Golden angle: the point cloud of the tower in the user's note (Figs. 2–5) is a piece of this boundary; the boundary itself runs off to infinity.
+    einordnung: |
+      Replaces the assumption [[fp.ann.siegel_rand]]. For the mean value theorem [[fp.satz.siegel_mittel]] it remains open whether the boundary values of the linearization are integrable.
+      General background: [[fp.satz.neutral]].
+    genau: |
+      Let $b=b(2\pi\alpha)$ (fixed point $L$ with multiplier $e^{2\pi i\alpha}$) and $\Delta$ the Siegel disk around $L$.
+      (i) If $\alpha$ is Diophantine, then $\Delta$ is unbounded (Herman 1985).
+      (ii) If $\Delta$ is unbounded, then the singular value $0$ lies on $\partial\Delta$, hence so does the whole tower $1,b,b^b,\dots$ (Rempe 2004).
+    warum: |
+      1. With $w=z\ln b+\ln\ln b$, $z\mapsto b^z$ becomes $w\mapsto e^w+\kappa$, $\kappa=\ln\ln b$ — a map of the exponential family. Its only singular value is $\kappa$, and that corresponds to $z=0$.
+      2. Herman's theorem: for a Diophantine rotation number, the boundary of a bounded Siegel disk carries a critical point. $e^w$ has none — so the disk cannot be bounded.
+      3. For unbounded disks of the exponential family, Rempe shows directly that the singular value lies on the boundary.
+    worum: |
+      At an irrational boundary point of the Shell–Thron domain, everything near the fixed point only rotates in a circle — in a **Siegel disk**. How large is this
+      disk, and where does the tower run? For the exponential function both are known: the disk extends to infinity, and the tower runs exactly along its boundary.
+- id: fp.satz.spirale
+  quelle_hash: d12503ef0b94
+  theorie_hash: b3628b1d7da1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Taylor: $z_{n+1}-L=f(z_n)-f(L)=\lambda(z_n-L)+O(|z_n-L|^2)$. The refinement $z_n-L\sim\sigma(1)\lambda^n$ is Koenigs.'
+    gegenbeispielsuche: 'exp.parameterraum: $b=i$, the quotient at $n=170$ deviates from $\lambda$ by $3.4\cdot10^{-8}$; values from the note
+      confirmed to $2\cdot10^{-10}$.'
+    pruefung:
+      f2_benutzte_voraussetzungen: Only $0<|\lambda|<1$ and convergence of the orbit.
+      f5_neue_frage: Two bases with $\lambda_d=\lambda_b^k$ have “the same spiral” → kl.satz.koenigs_basiswechsel
+      f3_spezialfall: 'Yes: local dynamics at every hyperbolic attracting fixed point.'
+      f1_folgt_unmittelbar: Yes (Taylor or Koenigs).
+      f4_uebertragbar: 'To the regular tetration $T(x)$ for real $x$: the intermediate values also lie on the spiral (note §6).'
+    bewertung:
+      nutzen: Intuitive entry point to complex towers.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: '|λ| < 1, orbit converges to L'
+    - text: λ not real
+    titel: Spirals around the fixed point
+    aussage: |
+      $$\frac{z_{n+1}-L}{z_n-L}\longrightarrow\lambda\qquad(n\to\infty).$$
+      The distance shrinks per step by the factor $|\lambda|$, the angle turns by $\arg\lambda$. More precisely: $z_n-L\approx C\lambda^n$
+      with $C=\sigma(1)$ (Koenigs). Example $b=i$: $L\approx0.438282936727+0.360592471871\,i$, $\lambda\approx-0.566417330285+0.688453227108\,i$,
+      $|\lambda|\approx0.891513566$, $\arg\lambda\approx2.259249554$ (about 129.4° per step).
+    bereich: Base with attracting fixed point $L$, $0<|\lambda|<1$
+    einfach: 'The tower i, i^i, i^(i^i), … runs toward a point in a spiral: each step reduces the distance by about 11 % and turns by about 129
+      degrees. Both numbers are contained in a single complex number λ.'
+    formen:
+    - notiz: Koenigs
+    - notiz: Cesàro mean, immediately from the convergence (note eq. 2)
+  en_theorie:
+    beispiel: |
+      $b=i$: $L=0.438283+0.360592\,i$, $\lambda=-0.566417+0.688453\,i$, $|\lambda|=0.89151$, $\arg\lambda=2.25925$ (129.4° per step). At $n=170$ the quotient still deviates by $3.4\cdot10^{-8}$ from $\lambda$.
+    einordnung: |
+      Real, the spiral is one-sided ($\lambda>0$) or a back and forth ($\lambda<0$). Two bases with $\lambda_d=\lambda_b^k$ have “the same spiral” ([[kl.satz.koenigs_basiswechsel]]).
+      The mean of the spiral points is $L$ (Cesàro).
+    genau: |
+      If the base has an attracting fixed point $L$ with $0<|\lambda|<1$, then
+      $$\frac{z_{n+1}-L}{z_n-L}\longrightarrow\lambda\qquad(n\to\infty).$$
+      The distance shrinks per step by $|\lambda|$, the angle turns by $\arg\lambda$; more precisely $z_n-L\approx\sigma(1)\lambda^n$ (Koenigs).
+    warum: |
+      Taylor at the fixed point: $z_{n+1}-L=f(z_n)-f(L)=\lambda(z_n-L)+O(|z_n-L|^2)$. The refinement with $\sigma(1)$ is [[it.satz.koenigs]].
+    worum: |
+      The tower $i,\ i^i,\ i^{i^i},\dots$ spirals toward a point: each step reduces the distance by about 11 % and turns by about 129°. Both numbers are contained in
+      a single complex number $\lambda$.
+- id: fp.satz.thron_variabel
+  quelle_hash: 85643aec49c1
+  theorie_hash: d8597d82afe2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Thron 1957 and Barrow 1936 as restated in the reviews of Baker–Rippon 1989 (Complex Var. 12; Math. Proc. Cambridge 105); Bachman via
+        the zbMATH review.
+    pruefung:
+      f2_benutzte_voraussetzungen: Only the location of all $b_j$ in a fixed set; no periodicity.
+      f5_neue_frage: How large is the exact set of base sequences with convergence?
+      f3_spezialfall: 'Constant bases: (i) and (ii) are subsets of the Shell–Thron domain resp. of Euler''s interval.'
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: 'To mixed towers of the base change (bw.def.F_bd): there the bases do not alternate periodically but according to a plan.'
+    bewertung:
+      nutzen: Bridge from the tower to towers with mixed bases.
+      richtigkeit: established (literature)
+    titel: Towers with varying bases (Barrow, Thron, Baker–Rippon, Bachman)
+    aussage: |
+      (i) **Thron (1957):** If all $b_j$ lie in the closed disk $|b_j|\le1/e$, then the tower converges.
+      (ii) **Barrow (1936):** If all $b_j$ are real and lie in $[-e,1/e]$, then it converges.
+      (iii) **Baker–Rippon (1989):** General theorems on the convergence of $f_1\circ\cdots\circ f_n$ to a constant (Wolff–Denjoy type) give
+      larger convergence sets and bounds on where convergence is possible at all. **Bachman (1995):** two convergence tests, essentially sharp.
+    bereich: Tower $a_1^{a_2^{a_3^{\cdots}}}$, i.e. limit of $f_1\circ\cdots\circ f_n(0)$ with $f_j(z)=\exp(b_jz)$, $b_j=\ln a_j$
+  en_theorie:
+    einordnung: |
+      Generalizes [[fp.satz.shell_thron]]; related to towers of periodic bases ([[fp.satz.baker_rippon_periodisch]]) and to the mixed towers of the
+      base change ([[bw.def.F_bd]]).
+    genau: |
+      Thron: all $|\ln a_j|\le1/e$ ⇒ convergence. Barrow: all $\ln a_j\in[-e,1/e]$ real ⇒ convergence. Baker–Rippon and Bachman: larger sets and bounds.
+    warum: |
+      1. For $|b|\le1/e$ every map $z\mapsto e^{bz}$ maps the disk $|z|\le e$ into itself — with a fixed contraction in the hyperbolic metric.
+      2. A composition of such maps contracts the disk to a point (Wolff–Denjoy type).
+    worum: |
+      What if in the tower $a_1^{a_2^{a_3^{\cdots}}}$ every level has a different base? Then there is no fixed point any more, but one can still say
+      when the tower has a value.
+- id: fp.satz.tpid6
+  quelle_hash: 5dff657a290b
+  theorie_hash: ba7df01dca5c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        For $x>1$, ${}^nx$ is continuous and strictly increasing in $x$, ${}^n1=1<n$ and ${}^n2\ge n$; for $0<x\le1$, ${}^nx\le1$. Hence exactly one solution $x_n\in(1,2]$.
+        For $1<x\le\eta$ every tower ${}^kx<e$ (induction: $x^t<\eta^e=e$); this gives ${}^nx<e\le n$ for $n\ge3$, and ${}^2x\le\eta^\eta<2$. Hence $x_n>\eta$.
+        For $x=\eta+\varepsilon$, ${}^kx$ grows beyond all bounds (fp.satz.turm_reell); as soon as ${}^Kx\ge K$ and is large enough that $x^t\ge t+1$ for $t\ge{}^Kx$, it follows that ${}^kx\ge k$ for all $k\ge K$ (such a $K$ exists: from ${}^kx\ge t_1$ on, with $x^t\ge2t$ for $t\ge t_1$, the tower at least doubles at each step). Hence $x_n\le\eta+\varepsilon$ for $n\ge K$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Only integer heights; no fractional tetration needed.
+      f5_neue_frage: How fast? → fp.beob.tpid6_rate ($x_n-\eta\approx2\pi^2\eta/(e\,n^2)$).
+      f3_spezialfall: 'no'
+      f1_folgt_unmittelbar: Yes, elementary from the convergence range of the tower.
+      f4_uebertragbar: 'To ${}^nx=c\,n$ or ${}^nx=n^k$: the same limit η, a different rate.'
+    bewertung:
+      nutzen: Shows the threshold η in a simple equation.
+      richtigkeit: complete
+    titel: The solution of ⁿx = n tends to η (TPID 6)
+    aussage: |
+      For every $n\ge2$, ${}^nx=n$ has exactly one solution $x_n>1$; we have $x_n>\eta$ and $\lim_{n\to\infty}x_n=\eta$.
+      Values: $x_2=1.5596\ldots$, $x_3=1.6350784746\ldots$, $x_{10}=1.5084979203\ldots$, $x_{1000}=1.4446783122\ldots$ (then decreasing).
+    bereich: integer heights $n\ge2$, real $x>1$
+    einfach: Which base does a tower of n floors need in order to give exactly n? The taller the tower, the closer the base lies to η ≈ 1.4447
+      — the limit above which towers grow to infinity.
+  en_theorie:
+    beispiel: |
+      $x_2=1.5596\ldots$ (the super-root of 2), $x_3=1.6350784746\ldots$ — check: $1.635^{1.635}=2.2342$, $1.635^{2.2342}=e^{2.2342\cdot0.49164}=2.999$.
+      Then the sequence decreases: $x_5=1.5934$, $x_{10}=1.5085$, $x_{30}=1.45466$, $x_{100}=1.445673$, $x_{1000}=1.4446783$.
+    einordnung: |
+      The limit follows from the convergence range of the tower alone. How **fast** $x_n$ tends to $\eta$ is a finer question — the answer
+      ($x_n-\eta\approx10.49/n^2$) comes from the bottleneck at $e$: [[fp.beob.tpid6_rate]].
+    genau: |
+      For every $n\ge2$, ${}^nx=n$ has exactly one solution $x_n>1$. We have $x_n>\eta$ and
+      $$\lim_{n\to\infty}x_n=\eta=e^{1/e}.$$
+    warum: |
+      **Exactly one solution.** For $x>1$, ${}^nx$ grows continuously and strictly with $x$; at $x=1$ the tower is $1<n$, at $x=2$ it is already at least $n$
+      (${}^22=4$, ${}^32=16$, …). For $0<x\le1$ every tower stays $\le1$.
+
+      **$x_n>\eta$.** For $1<x\le\eta$ every tower stays below $e$: If ${}^kx<e$, then ${}^{k+1}x=x^{{}^kx}<\eta^e=e$. So ${}^nx<e\le n$ for
+      $n\ge3$; and ${}^2x\le\eta^\eta\approx1.70<2$. The base $x_n$ must therefore be larger than $\eta$.
+
+      **$x_n\to\eta$.** Take $x=\eta+\varepsilon$. This tower does not converge ([[fp.satz.turm_reell]]), it grows beyond all bounds, and as soon as it
+      is large, it at least doubles at each step. From a certain floor $K$ on, therefore, ${}^kx\ge k$ for all $k\ge K$. For these $n$
+      the base $\eta+\varepsilon$ already suffices, i.e. $x_n\le\eta+\varepsilon$. Since $\varepsilon$ was arbitrarily small: $x_n\to\eta$.
+    worum: |
+      A tower of $n$ floors is to give exactly $n$: ${}^nx=n$. Which base does one need? For $n=3$ about $1.635$, for $n=10$ about
+      $1.508$, for $n=1000$ about $1.44468$. The base approaches the number $\eta\approx1.44467$. This question appears as number 6 in the
+      list of open problems of the tetration forum (TPID 6); the limit is proved there.
+- id: fp.satz.turm_reell
+  quelle_hash: 64804401cc85
+  theorie_hash: a30cfca7d88e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Euler (1778, E489, in response to a question of Condorcet) found both limits: $e^{1/e}$ and $e^{-e}\approx1/15.154$, below it alternately
+        two limit values (§§38–39); Euler treats Lambert''s series, from which the limit via W follows, in 1783 (E532); Eisenstein (1844) gave
+        the series of the limit; Barrow (1936) showed the oscillation between two values below $e^{-e}$; survey in Knoebel (1981); complete proofs
+        in de Villiers–Robinson (1986), elementary in Länger (1996).'
+    pruefung:
+      f2_benutzte_voraussetzungen: Starting value 1; for $b<e^{-e}$ an attracting 2-cycle arises.
+      f5_neue_frage: Complex bases → fp.satz.shell_thron
+      f3_spezialfall: Real trace of the Shell–Thron theorem.
+      f1_folgt_unmittelbar: No (the boundary $e^{-e}$ requires a two-cycle analysis).
+      f4_uebertragbar: The limit is the attracting fixed point = limit of the regular tetration for $x\to\infty$.
+    bewertung:
+      nutzen: Entry point, connects to Lambert W.
+      richtigkeit: established
+    voraussetzungen:
+    - text: b > 0 real
+    titel: Convergence of the infinite tower (real)
+    aussage: |
+      The sequence converges exactly for $e^{-e}\le b\le e^{1/e}$, with limit $h(b)=-W(-\ln b)/\ln b$.
+    bereich: real $b>0$, sequence $t_0=1$, $t_{n+1}=b^{t_n}$
+    einfach: The infinite tower a^a^a^… has a limit exactly for bases between about 0.066 and 1.4447; above that it grows beyond all bounds.
+  en_theorie:
+    beispiel: |
+      - $b=0.5$: $0.5,\ 0.707,\ 0.613,\ 0.654,\ 0.636,\ 0.644,\dots\to0.64119$.
+      - $b=\sqrt2\to2$, $\ b=1.4\to1.8867$, $\ b=\eta\to e$ (very slowly), $\ b=e^{-e}\to1/e$ (very slowly, like $1/\sqrt n$).
+      - $b=0.03$: oscillates forever between $0.821$ and $0.056$.
+    einordnung: |
+      The limit $h(b)$ is also the value to which the regular tetration tends for $x\to\infty$ ([[gr.satz.gestalt]]). What the
+      towers of $x$ (instead of a fixed base) look like is shown in [[gr.satz.turmintegral_grenzen]]; the complex continuation is [[fp.satz.shell_thron]];
+      the exact speed at the boundaries is in [[fp.satz.parabolisch_rand]] and [[fp.satz.p2_raten]].
+    genau: |
+      The sequence $t_0=1$, $t_{n+1}=b^{t_n}$ converges if and only if
+      $$e^{-e}\le b\le e^{1/e}=\eta,$$
+      namely to $h(b)=-\dfrac{W(-\ln b)}{\ln b}$, the attracting (at the boundaries: neutral) fixed point.
+    warum: |
+      - **$1<b\le\eta$:** The sequence increases (induction: $t_{n+1}=b^{t_n}>b^{t_{n-1}}=t_n$) and stays below the lower fixed point $a$ (from
+        $t_n<a$ it follows that $t_{n+1}=b^{t_n}<b^a=a$). An increasing, bounded sequence converges, and the limit is a fixed point: $a$.
+      - **$b>\eta$:** There is no fixed point; by [[fp.satz.reelle_fixpunkte]] the sequence grows each time by at least a fixed number,
+        hence beyond all bounds.
+      - **$e^{-e}\le b<1$:** $b^x$ decreases, the sequence jumps around the fixed point. Two steps together, $b^{b^x}$, increase, and their
+        fixed point attracts as long as the multiplier $\lambda=L\ln b$ does not fall below $-1$. This is exactly the case up to $b=e^{-e}$ (there $\lambda=-1$, $L=1/e$).
+      - **$0<b<e^{-e}$:** Now $\lambda<-1$, the fixed point repels, and even and odd terms tend to two different
+        values — a 2-cycle.
+    worum: |
+      When does the infinite tower $b^{b^{b^{\cdots}}}$ have a value? Euler found the answer: exactly for bases between about $0.066$
+      and $1.4447$. Above that it explodes, below it jumps forever between two values.
+- id: fp.satz.turm_reihe_ln
+  quelle_hash: 566370cde1fc
+  theorie_hash: 449d0efd77b6
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        With $t_1=e^u$, $t_{k+1}=e^{ut_k}$ and $h=e^{uh}$ we have $t_{k+1}-h=e^{uh}\bigl(e^{u(t_k-h)}-1\bigr)=u\,h\,(t_k-h)\,(1+O(u))$. From $t_1-h=-u^2+O(u^3)$ it follows by induction that
+        $t_n-h=-u^{n+1}+O(u^{n+2})$ — agreement exactly up to $u^n$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Formal power series in u.
+      f5_neue_frage: Does the analogue hold for fractional heights (x↑↑s as a series in ln x)?
+      f3_spezialfall: 'Yes: fixed-point iteration in formal series gains one order per step.'
+      f1_folgt_unmittelbar: Yes, induction.
+      f4_uebertragbar: To any iteration z ↦ e^{uz}, or Lagrange inversion.
+    bewertung:
+      nutzen: Explains the patterns in the series of finite towers (forum tid 1053).
+      richtigkeit: complete; coefficients recomputed up to order 9
+    titel: x↑↑n and the infinite tower agree in ln x exactly up to order n
+    aussage: |
+      As a series in $u=\ln x$, $x\uparrow\uparrow n\equiv h(u)\pmod{u^{n+1}}$, and the term $u^{n+1}$ already differs:
+      $$x\uparrow\uparrow n=\sum_{k=0}^{n}\frac{(k+1)^{k-1}}{k!}(\ln x)^k+O\bigl((\ln x)^{n+1}\bigr).$$
+      So the coefficients of the finite tower stabilize level by level to Eisenstein's series of the infinite tower (Galidakis).
+    bereich: $u=\ln x$ near 0; $h(u)=\sum_{k\ge0}(k+1)^{k-1}u^k/k!=-W(-u)/u$ the infinite tower
+    einfach: If you write a tower of n equal numbers x as a series in ln x, the first n terms are already those of the infinitely tall tower.
+      Each further level makes one more term “finished”.
+  en_theorie:
+    beispiel: |
+      $n=2$: $x^x=e^{ue^u}=1+u+\tfrac32u^2+\tfrac53u^3+\dots$, the infinite tower $h=1+u+\tfrac32u^2+\tfrac83u^3+\dots$ — equal up to $u^2$, at $u^3$ different by
+      exactly $-1$ ($\tfrac53-\tfrac83$).
+    einordnung: |
+      The series $h$ is Eisenstein's series of the infinite tower ([[fp.satz.turm_reell]]).
+    genau: |
+      $$x\uparrow\uparrow n=\sum_{k=0}^n\frac{(k+1)^{k-1}}{k!}(\ln x)^k+O\bigl((\ln x)^{n+1}\bigr),$$
+      and the term $(\ln x)^{n+1}$ already differs.
+    warum: |
+      1. The infinite tower $h$ satisfies $h=e^{uh}$ with $u=\ln x$, the finite one $t_{k+1}=e^{ut_k}$.
+      2. Subtracting: $t_{k+1}-h=e^{uh}(e^{u(t_k-h)}-1)$ — each step multiplies the error by about $u$.
+      3. At the start $t_1-h=e^u-h=-u^2+\dots$, so after $n$ steps $-u^{n+1}+\dots$
+    worum: |
+      If one writes the finite tower $x\uparrow\uparrow n$ as a series in $\ln x$, the first $n$ terms are already those of the infinite tower.
+- id: fp.satz.unendliche_superwurzel
+  quelle_hash: 1e511a92b006
+  theorie_hash: 068cf51bc3e8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: If the tower converges to $y$, then $b^y=y$, hence $b=y^{1/y}$. By fp.satz.turm_reell it converges exactly for $b\in[e^{-e},\eta]$
+        to $h(b)=-W(-\ln b)/\ln b$, and this is the fixed point with $|\lambda|=|y\ln b|=|\ln y|\le1$, hence $y\in[1/e,e]$. On $(0,e]$, $y^{1/y}$
+        is strictly increasing with $(1/e)^e=e^{-e}$ and $e^{1/e}=\eta$ — hence bijective, with inverse $h$.
+    pruefung:
+      f2_benutzte_voraussetzungen: Convergence range of the tower (literature) and monotonicity of $y^{1/y}$.
+      f5_neue_frage: Which base has a tower that jumps toward a prescribed 2-cycle? (fp.satz.p2_form)
+      f3_spezialfall: Real trace of the parametrization $b=\exp(te^{-t})$, $L=e^t$ of the Shell–Thron domain with $y=e^t$, $t\in[-1,1]$.
+      f1_folgt_unmittelbar: Yes, from fp.satz.turm_reell and the fixed-point equation.
+      f4_uebertragbar: 'Complex: $L=e^t$, $|t|<1$ (fp.satz.shell_thron) — the same inversion.'
+    bewertung:
+      nutzen: Makes the limit invertible and explains why √2 belongs to 2 and not to 4.
+      richtigkeit: complete
+    titel: Infinite super-root — the inverse of the tower is y^{1/y}
+    aussage: |
+      The limit function $h(b)={}^\infty b$ is continuous on $[e^{-e},\eta]$, strictly increasing and maps bijectively onto $[1/e,e]$; its inverse is
+      $$\sqrt[\infty]{y}_s=y^{1/y}\qquad(1/e\le y\le e).$$
+      Outside this range the formula does not help: for $y>e$, $y^{1/y}<\eta$ is a valid base, but its tower converges to the other fixed point
+      (e.g. $3^{1/3}$: limit $2.4780526802883\ldots$, not 3); for $0<y<1/e$, $y^{1/y}<e^{-e}$ and the tower jumps between two values.
+    bereich: real bases $e^{-e}\le b\le\eta$, limits $1/e\le y\le e$
+    einfach: 'Which base must one take so that the infinite tower gives exactly y? Answer: y to the power 1/y — but only if y lies between 1/e
+      and e. For y = 2 this is √2, and indeed √2^√2^√2^… = 2. For y = 4 one would again get √2, but the tower of √2 ends at 2, not at 4.'
+    formen:
+    - notiz: Fixed-point equation solved for b
+    - notiz: positive exactly for y < e
+  en_theorie:
+    beispiel: |
+      - $y=2$: $b=2^{1/2}=\sqrt2$, and indeed $\sqrt2^{\sqrt2^{\cdots}}=2$.
+      - $y=4$: $b=4^{1/4}=\sqrt2$ — the same base! Its tower tends to $2$, however; the $4$ is the repelling fixed point ($\lambda=\ln4>1$).
+      - $y=3$: $b=3^{1/3}=1.44225$, the tower tends to $2.4780526802883\ldots$, not to $3$.
+      - $y=0.5$: $b=0.5^2=0.25$, the tower of $0.25$ tends to $0.5$ (we have $|\ln0.5|=0.69<1$).
+    einordnung: |
+      The parametrization $b=y^{1/y}$ is the real trace of the representation $b=\exp(t\,e^{-t})$ with fixed point $e^t$ from the Shell–Thron theorem
+      ([[fp.satz.shell_thron]]). The maximum of $y^{1/y}$ at $y=e$ is the reason why $\eta$ is the boundary ([[gr.satz.selbstpotenz]]).
+    genau: |
+      The function $h(b)={}^\infty b$ (limit of the tower) is continuous and strictly increasing on $[e^{-e},\eta]$ and takes every value in
+      $[1/e,e]$ exactly once. Its inverse, the **infinite super-root**, is
+      $$\sqrt[\infty]{y}_s=y^{1/y}\qquad(1/e\le y\le e).$$
+      - For $y>e$, $y^{1/y}$ is a base below $\eta$, but its tower converges to the **other** (lower) fixed point, not to $y$.
+      - For $0<y<1/e$, $y^{1/y}<e^{-e}$, and the tower in the end jumps back and forth between two values.
+    warum: |
+      1. If the tower converges to $y$, then $y$ is a fixed point: $b^y=y$. Solved for $b$: $b=y^{1/y}$.
+      2. Which fixed point? The tower tends to the attracting one, that is, the one with $|\lambda|\le1$. The multiplier is $\lambda=y\ln b=y\cdot\frac{\ln y}y=\ln y$,
+         so $|\ln y|\le1$, i.e. $1/e\le y\le e$.
+      3. Monotonicity: $\frac{d}{dy}y^{1/y}=y^{1/y}\,\frac{1-\ln y}{y^2}$ is positive for $y<e$. So $y\mapsto y^{1/y}$ is strictly increasing on $[1/e,e]$,
+         from $(1/e)^e=e^{-e}$ to $e^{1/e}=\eta$ — exactly the convergence range from [[fp.satz.turm_reell]].
+      4. Together: $y\mapsto y^{1/y}$ and $h$ are inverse to each other.
+    worum: |
+      The infinite tower $b^{b^{b^{\cdots}}}$ assigns a limit $y$ to every suitable base $b$. Can one reverse this — find, for
+      a desired limit, the base? Yes, and the answer is astonishingly simple: $b=y^{1/y}$. But only as long as $y$
+      lies between $1/e$ and $e$. Outside, the formula does deliver a base, but its tower ends up somewhere else.
+- id: fp.verm.bruch_mittel
+  quelle_hash: 2924ce759206
+  theorie_hash: 7efe9ce89beb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'exp.mittelwerte: t = 1/2, r = 0.5 and 0.8, two branches of $w^{1/2}$ each — all four means deviate from 1 by 0.008 to
+      0.16 (fp.gegen.bruch_mittel).'
+    pruefung:
+      f2_benutzte_voraussetzungen: Holomorphy in w up to w = 0.
+      f5_neue_frage: fp.frage.holomorphe_familie
+      f3_spezialfall: —
+      f1_folgt_unmittelbar: The conditional form (holomorphic ⇒ mean 1) yes; the unconditional one no.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Shows where the analogy integer → fractional breaks down.
+      richtigkeit: refuted
+    titel: Circle mean also equal to 1 for non-integer heights?
+    aussage: |
+      Conjecture of the note (remark after Corollary 2): $\frac1{2\pi}\int_0^{2\pi}T_{b(re^{i\theta})}(t)\,d\theta=1$ also for real $t$.
+      The condition of the note is “$w\mapsto T_{b(w)}(t)$ holomorphic on the disk” — for regular tetration it is violated,
+      and the statement is false.
+    bereich: regular (Koenigs) tetration $T_{b(w)}(t)$, $|w|=r<1$, $t\notin\mathbb Z$
+  en_theorie:
+    einordnung: |
+      Shows where the analogy “integer → fractional” breaks down. Open: [[fp.frage.holomorphe_familie]]. Consequences: [[fp.verm.doppelmittel]].
+    genau: |
+      **Refuted.** Conjectured (user's note): $\frac1{2\pi}\int_0^{2\pi}T_{b(re^{i\theta})}(t)\,d\theta=1$ also for non-integer $t$. The condition for this would be that $w\mapsto T_{b(w)}(t)$ is holomorphic on the whole disk —
+      for regular tetration it is violated.
+    warum: |
+      The mean value theorem needs holomorphy up to $w=0$. But regular tetration contains $\lambda^t=w^t$ ($\lambda=w$ is the multiplier) and is branched at $w=0$ ([[fp.gegen.bruch_mittel]]).
+    worum: |
+      The obvious continuation: is the circle mean also equal to $1$ for height $\tfrac12$? No — at least not for regular tetration.
+- id: fp.verm.doppelmittel
+  quelle_hash: 0d17525c4871
+  theorie_hash: 99a5b2982b74
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'None possible yet: for boundary bases there is no tetration of non-integer height here. Only the integer part has been
+      checked (trivially true).'
+    pruefung:
+      f2_benutzte_voraussetzungen: Existence of a tetration for all boundary bases (Siegel, Cremer, parabolic) — unclear.
+      f5_neue_frage: 'First, integer times: $\frac1N\sum_{n<N}\int Z_n\,d\theta=2\pi$ is trivially true (fp.satz.kreismittel).'
+      f3_spezialfall: —
+      f1_folgt_unmittelbar: No.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: unclear
+      richtigkeit: open
+    titel: Double mean over time and boundary equals 2π
+    aussage: |
+      Note, Eq. (12): $\lim_{T\to\infty}\frac1T\int_0^T\int_0^{2\pi}T_{b(\theta)}(t)\,d\theta\,dt=2\pi$. The justification in the note went via
+      the conjecture that the inner integral equals $2\pi$ for all $t$ — that one is refuted (fp.gegen.bruch_mittel). It remains open
+      whether the time average is nevertheless correct; for that, a tetration for neutral bases on the boundary is already missing.
+  en_theorie:
+    einordnung: |
+      Can be settled only once [[fp.frage.holomorphe_familie]] or a tetration for neutral bases is available.
+    genau: |
+      **Open.** $\lim_{T\to\infty}\frac1T\int_0^T\int_0^{2\pi}T_{b(\theta)}(t)\,d\theta\,dt=2\pi$ (note, Eq. 12).
+    warum: |
+      The justification went via “the inner integral equals $2\pi$ for all $t$” — refuted ([[fp.gegen.bruch_mittel]]). Moreover, for boundary bases (Siegel, Cremer, parabolic) a
+      tetration of non-integer height is already missing. For integer times it is trivially true ([[fp.satz.kreismittel]]).
+    worum: |
+      A second mean-value claim of the note: averaged over the boundary **and** over time, $2\pi$ comes out. Its justification has fallen away; whether it is nevertheless correct is open.
+- id: fp.verm.knospen
+  quelle_hash: 34a1683783b2
+  theorie_hash: 19b154394486
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: '$b^z$ is conjugate to $E_\kappa(w)=e^w+\kappa$. Rempe–Schleicher (2008, Prop. 6.2 and Thm. 6.8(c)): If the inner ray at angle $p/q$
+        of the hyperbolic component $W$ (period $n$) ends at a finite parameter $\kappa_0$, then $\kappa_0$ is parabolic with rotation number
+        $p/q$ and the root of a child component of period $qn$. For $W$ = interior of Shell–Thron ($n=1$), $\kappa_0$ is finite for every $p/q$.
+        In the child component there is an attracting $q$-cycle, and it attracts the unique singular value (Fatou) — whose orbit is the tower
+        $0,1,b,b^b,\dots$. That the radial path $r\searrow1$ near the root runs inside the child component is the local bifurcation computation
+        (section 5 there, following Milnor for polynomials).'
+    gegenbeispielsuche: |
+      exp.turmgebiet: all coprime $p/q$ with $q\le7$, two distances each, $r=1+0.3/q^2$ and $1+0.8/q^2$: period $q$ in 34/34 cases.
+      Additionally 109 518 grid bases with $|t|<0.97$: all convergent (Shell–Thron without counterexample).
+    pruefung:
+      f2_benutzte_voraussetzungen: A single singular value (0) — hence the tower is the orbit that finds the cycle; r−1 small enough so that the
+        radial path lies in the child component.
+      f5_neue_frage: Which tetration belongs to bases with an attracting q-cycle? (q-valued regular construction)
+      f3_spezialfall: 'Yes: special case of the bifurcation at parabolic parameters (child component of period qn at the root with rotation number
+        p/q), here n = 1.'
+      f1_folgt_unmittelbar: 'From the literature yes: child components of the exponential family (Rempe–Schleicher 2008) plus Fatou''s theorem
+        that an attracting cycle attracts the singular value.'
+      f4_uebertragbar: 'To regular tetration for complex bases: there periodic instead of convergent “tetration”.'
+    bewertung:
+      recherche: 'Literature comparison L1, 12.10.2026: Rempe–Schleicher 2008 (Combinatorics of bifurcations in exponential parameter space),
+        Prop. 6.2 and Thm. 6.8(c), read only in excerpts in the ar5iv full text. Previously carried as a conjecture.'
+      nutzen: Intuition; bridge to Mandelbrot theory.
+      richtigkeit: established (literature) for r−1 small enough; numerical for r = 1 + 0.3/q² and 1 + 0.8/q² (q ≤ 7)
+    titel: Cycles in the buds at the Shell–Thron boundary
+    aussage: |
+      Just outside the Shell–Thron domain at the boundary point with $t=e^{2\pi i p/q}$ the tower runs into an
+      attracting cycle of length $q$ (period doubling for $q=2$, $t=-1$ real: $b<e^{-e}$).
+      First put forward as a conjecture from computation; the literature supplies the proof for sufficiently small $r-1$.
+    bereich: $b=\exp(t e^{-t})$, $t=r\,e^{2\pi i p/q}$, $r$ just above 1 (sufficiently close, depending on $p/q$)
+  en_theorie:
+    beispiel: |
+      In [[exp.turmgebiet]]: all coprime $p/q$ with $q\le7$, two distances each from the boundary — in all $34$ cases period $q$. The buds
+      for $1/3$ and $2/3$ are the largest; the cycle really does rotate by $p/q$ ([[fp.verm.knospen_drehzahl]]).
+    einordnung: |
+      The normal form $e^w+\kappa$ ([[fp.satz.exp_normalform]]) makes the literature on the exponential family accessible, in which such
+      buds are described. The whole base plane: [[fp.beob.regionen]].
+    genau: |
+      **Theorem (literature; first stated here as a conjecture).** Just outside the domain at the boundary point with $t=e^{2\pi ip/q}$ ($p/q$ in lowest terms) the tower runs into an attracting
+      cycle of length $q$. The real case $q=2$, $t=-1$, is Euler's boundary $e^{-e}$: below it the 2-cycle.
+    warum: |
+      Near the boundary point the multiplier is almost $e^{2\pi ip/q}$, a $q$-th root of unity. If one goes a little beyond the boundary,
+      the fixed point becomes repelling, and a cycle of length $q$ “buds” out of it — just as for the Mandelbrot set, where this is proved.
+      For the exponential family Rempe and Schleicher (2008) proved exactly this: At every such boundary point there hangs a “child component” with an
+      attracting $q$-cycle. Because $b^z$ has only one singular value ($0$, and the tower is its orbit), the tower finds this cycle.
+      This is proved for bases close enough to the root of the bud; for the whole bud it is measured here.
+    worum: |
+      Directly outside the Shell–Thron domain there hang “buds” in which the tower no longer comes to rest but jumps in turn between
+      $q$ values. Which $q$ one sees at the boundary point at which the bud hangs.
+- id: fp.verm.knospen_drehzahl
+  quelle_hash: 5fac22252247
+  theorie_hash: affb3ddbc56c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Locally at the bud root from the bifurcation; globally open.
+    gegenbeispielsuche: |
+      exp.parameterraum: all coprime $p/q$, $q\le7$, at $t=(1+0.5/q^2)e^{2\pi ip/q}$: rotation number $p/q$ in 17/17 cases.
+    pruefung:
+      f2_benutzte_voraussetzungen: —
+      f5_neue_frage: Is there a “q-valued regular tetration” in the bud that runs through the cycle continuously?
+      f3_spezialfall: Analogous to the satellite buds of the Mandelbrot set, proved there.
+      f1_folgt_unmittelbar: Locally yes, globally no.
+      f4_uebertragbar: To sub-buds (rotation number relative to the cycle).
+    bewertung:
+      nutzen: Orders figure 1 combinatorially.
+      richtigkeit: numerically supported, locally proved
+    titel: Cycles in the buds rotate with p/q
+    aussage: |
+      In the whole bud $p/q$ the attracting $q$-cycle circles the (there repelling) principal fixed point with combinatorial
+      rotation number $p/q$: if one orders the cycle points by the angle around $L$, then $f_b$ moves on by $p$ places each time.
+    bereich: Bud at the boundary point $t=e^{2\pi ip/q}$, $\mathrm{ggT}(p,q)=1$
+    einfach: 'In the bud labeled 2/5 the tower jumps between 5 values lying around the fixed point, skipping a neighbor each time: 2 places further
+      per step.'
+  en_theorie:
+    beispiel: |
+      All coprime $p/q$ with $q\le7$, each just outside the root: rotation number $p/q$ in 17 of 17 cases.
+    einordnung: |
+      Makes [[fp.verm.knospen]] precise. Question: Is there in a bud a “$q$-valued regular tetration” that runs through the cycle continuously?
+    genau: |
+      **Conjecture.** In the whole bud $p/q$ ($\mathrm{ggT}(p,q)=1$) the attracting $q$-cycle circles the principal fixed point, which is repelling there, with rotation number $p/q$: If one orders the
+      cycle points by the angle around $L$, $f_b$ moves on by $p$ places each time.
+    warum: |
+      Near the bud root $f\approx L+\lambda(z-L)$ with $\lambda\approx e^{2\pi ip/q}$ — a rotation by $p/q$ of a full turn, and the new cycle inherits it. For the whole bud an
+      argument is missing; for the Mandelbrot set, external rays accomplish this (Douady–Hubbard).
+    worum: |
+      In the bud labeled $2/5$ the tower jumps between 5 values lying around the fixed point — and skips a neighbor each time:
+      2 places further per step.
