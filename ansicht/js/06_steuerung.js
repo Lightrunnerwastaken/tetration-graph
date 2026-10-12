@@ -9,6 +9,7 @@ function pfadZeigen() {
       <span class="klein">${buchModus ? "von den Grundlagen bis zur Forschung, Kapitel für Kapitel" : "Beweisstufen, links Grundlagen"}</span>`;
     return;
   }
+  if (zustand.ansicht === "ideen") { const h = ideen.pfadHtml(); if (p.innerHTML !== h) p.innerHTML = h; return; }
   if (zustand.ansicht === "forschung") { p.innerHTML = `<span>Forschung: Lücken, Experimente, Korrekturen, nächste Fragen</span>`; return; }
   const o = karte.ort();
   const teile = [`<button data-karte="ganz">Karte</button>`];
@@ -24,7 +25,7 @@ setInterval(() => { if (zustand.ansicht === "karte") pfadZeigen(); }, 250);
 
 function filterLeiste() {
   const f = $("#filter");
-  if (zustand.ansicht === "forschung" || (zustand.ansicht === "theorie" && zustand.theorieModus !== "graph")) { f.innerHTML = ""; return; }
+  if (zustand.ansicht === "forschung" || zustand.ansicht === "ideen" || (zustand.ansicht === "theorie" && zustand.theorieModus !== "graph")) { f.innerHTML = ""; return; }
   const aktiv = (GRUPPEN.length - zustand.filter.size) + (4 - zustand.ebenen.size);
   f.innerHTML = Object.entries(NIVEAU_NAME).map(([n, name]) => `<button data-niveau="${n}" class="niveau-knopf" aria-pressed="${zustand.niveaus.has(n)}" title="${esc(S.niveau[n])}">${name}</button>`).join("")
     + `<button data-filtermehr="1" aria-expanded="${!!zustand.filterOffen}">${zustand.filterOffen ? "Weniger" : "Weitere Filter"}${aktiv ? ` (${aktiv} aus)` : ""}</button>`
@@ -40,7 +41,9 @@ function setzeAnsicht(a) {
   document.body.dataset.ansicht = a;
   document.body.dataset.modus = zustand.theorieModus || "buch";
   $("#tipp").hidden = true;
-  if (a === "karte") { theorie.verberge(); buch.verberge(); $("#forschung").hidden = true; karte.zeige(); }
+  if (a !== "ideen") ideen.verberge();
+  if (a === "ideen") { karte.verberge(); theorie.verberge(); buch.verberge(); $("#forschung").hidden = true; ideen.zeige(); }
+  else if (a === "karte") { theorie.verberge(); buch.verberge(); $("#forschung").hidden = true; karte.zeige(); }
   else if (a === "theorie") {
     karte.verberge(); $("#forschung").hidden = true;
     if (zustand.theorieModus === "graph") { buch.verberge(); theorie.zeige(); } else { theorie.verberge(); buch.zeige(); }
@@ -57,9 +60,12 @@ function waehle(id, opt = {}) {
     karte.fokus(null);
     theorie.hervorheben(null);
     tafelSchliessen();
+    ideen.anstossen();
+    pfadZeigen();
     hashSetzen();
     return;
   }
+  if (zustand.ansicht === "ideen") { zeigeKnoten(id); ideen.zuKnoten(id); pfadZeigen(); hashSetzen(); return; }
   if (zustand.ansicht === "theorie" && zustand.theorieModus !== "graph") {
     zeigeKnoten(id); buch.zuKnoten(id); pfadZeigen(); hashSetzen(); return;
   }
@@ -78,10 +84,14 @@ function hashSetzen() {
 }
 
 document.addEventListener("click", (e) => {
-  const t = e.target.closest("[data-id],[data-exp],[data-gebiet],[data-strang],[data-ansicht],[data-filter],[data-ebene],[data-niveau],[data-filtermehr],[data-tafel],[data-karte],[data-theoriemodus],[data-lehrbuch]");
+  const t = e.target.closest("[data-idee],[data-id],[data-exp],[data-gebiet],[data-strang],[data-ansicht],[data-filter],[data-ebene],[data-niveau],[data-filtermehr],[data-tafel],[data-karte],[data-theoriemodus],[data-lehrbuch]");
   if (!t || t.closest(".knoten") || t.closest(".inhaltskarte")) return;
   const d = t.dataset;
-  if (d.id) { if (zustand.ansicht === "forschung") { zustand.gewaehlt = d.id; zeigeKnoten(d.id); hashSetzen(); } else waehle(d.id); }
+  if (d.idee) {
+    if (zustand.ansicht !== "ideen") setzeAnsicht("ideen");
+    if (zustand.gewaehlt) { zustand.gewaehlt = null; tafelSchliessen(); hashSetzen(); }
+    ideen.oeffne(d.idee === "_alle" ? null : d.idee);
+  } else if (d.id) { if (zustand.ansicht === "forschung") { zustand.gewaehlt = d.id; zeigeKnoten(d.id); hashSetzen(); } else waehle(d.id); }
   else if (d.exp) zeigeExperiment(d.exp);
   else if (d.gebiet) {
     if (zustand.ansicht !== "karte") setzeAnsicht("karte");
@@ -106,9 +116,9 @@ $("#tafel-knopf").onclick = () => {
   else if (zustand.gewaehlt) zeigeKnoten(zustand.gewaehlt);
   else zeigeUebersicht();
 };
-$("#zoom-plus").onclick = () => (zustand.ansicht === "karte" ? karte.zoom(1.6) : theorie.zoom(1.25));
-$("#zoom-minus").onclick = () => (zustand.ansicht === "karte" ? karte.zoom(1 / 1.6) : theorie.zoom(0.8));
-$("#zoom-fit").onclick = () => (zustand.ansicht === "karte" ? (waehleNichts(), karte.ganz()) : setzeAnsicht("theorie"));
+$("#zoom-plus").onclick = () => (zustand.ansicht === "ideen" ? ideen.zoom(1.4) : zustand.ansicht === "karte" ? karte.zoom(1.6) : theorie.zoom(1.25));
+$("#zoom-minus").onclick = () => (zustand.ansicht === "ideen" ? ideen.zoom(1 / 1.4) : zustand.ansicht === "karte" ? karte.zoom(1 / 1.6) : theorie.zoom(0.8));
+$("#zoom-fit").onclick = () => (zustand.ansicht === "ideen" ? (waehle(null), ideen.oeffne(null)) : zustand.ansicht === "karte" ? (waehleNichts(), karte.ganz()) : setzeAnsicht("theorie"));
 
 // ------------------------------------------------------------------ Suche
 const suche = $("#suche"), treffer = $("#treffer");
@@ -144,6 +154,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "/") { e.preventDefault(); suche.focus(); suche.select(); }
   else if (e.key === "Escape") {
     if (!$("#legende").hidden) { $("#legende").hidden = true; $("#legende-knopf").setAttribute("aria-expanded", "false"); }
+    else if (zustand.ansicht === "ideen") ideen.hoch();
     else if (zustand.gewaehlt) waehle(null);
     else if (document.body.classList.contains("tafel-offen")) tafelSchliessen();
     else if (zustand.ansicht === "karte") karte.ganz();
@@ -198,7 +209,7 @@ try { const t = localStorage.getItem("tg-thema"); if (t) document.documentElemen
 legendeBauen();
 {
   const h = new URLSearchParams(location.hash.slice(1));
-  const v = ["theorie", "forschung"].includes(h.get("v")) ? h.get("v") : "karte";
+  const v = ["karte", "theorie", "forschung"].includes(h.get("v")) ? h.get("v") : "ideen";
   zustand.theorieModus = h.get("m") === "graph" ? "graph" : "buch";
   if (h.get("k")) zustand.kapitel = h.get("k");
   setzeAnsicht(v);

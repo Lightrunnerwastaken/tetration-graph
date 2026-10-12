@@ -111,6 +111,29 @@ function zeigeExperiment(eid) {
     <h3>Stützt</h3><ul class="liste">${(e.stuetzt || []).map((s) => `<li>${knotenLink(s)}</li>`).join("")}</ul>`);
 }
 
+// Woraus eine Vermutung / ein bedingter Satz besteht: Baum der Voraussetzungen (Tiefe ≤ 3), sicher / bedingt / fehlt.
+const STUECK_VOLL = new Set(["definition", "bewiesen", "bewiesen_literatur", "entlastet"]);
+const STUECK_HALB = new Set(["bedingt", "skizze", "numerisch"]);
+function stueckeHtml(id) {
+  const gesehen = new Set([id]), z = { voll: 0, halb: 0, fehlt: 0 };
+  const klasse = (s) => (STUECK_VOLL.has(s) ? "voll" : STUECK_HALB.has(s) ? "halb" : "fehlt");
+  function ast(i, tiefe) {
+    const q = K.get(i);
+    const kinder = [...new Set([...(q._abhaengig || []), ...(q.bedingungen || []), ...(q._bedingungen_auto || [])])]
+      .filter((d) => K.has(d) && !gesehen.has(d));
+    if (!kinder.length) return "";
+    kinder.forEach((d) => gesehen.add(d));
+    return `<ul class="stuecke">${kinder.map((d) => {
+      const c = klasse(K.get(d)._status_eff);
+      z[c]++;
+      return `<li class="stueck-${c}">${knotenLink(d)}${c === "fehlt" ? ` <span class="klein stueck-luecke">hier fehlt es</span>` : ""}${tiefe < 3 ? ast(d, tiefe + 1) : ""}</li>`;
+    }).join("")}</ul>`;
+  }
+  const baum = ast(id, 1);
+  const n = z.voll + z.halb + z.fehlt;
+  return `<h3>Woraus es besteht</h3><p class="klein">${n} Stück${n === 1 ? "" : "e"}: ${z.voll} sicher, ${z.halb} bedingt oder nur numerisch, ${z.fehlt} ${z.fehlt === 1 ? "fehlt" : "fehlen"} noch</p>${baum}`;
+}
+
 function zeigeKnoten(id) {
   const k = K.get(id);
   const geb = GEB.get(k.gebiet);
@@ -155,6 +178,7 @@ function zeigeKnoten(id) {
     if (k.bedingungen_text) T.push(`<p class="klein">${mathe(k.bedingungen_text)}</p>`);
     if (k._wurzelbedingungen?.length) T.push(`<p class="klein">Unbewiesene Enden der Beweiskette: ${k._wurzelbedingungen.map(knotenLink).join(", ")}</p>`);
   }
+  if (["vermutung", "bedingt", "skizze"].includes(st) && (k._abhaengig?.length || k.bedingungen?.length || k._bedingungen_auto?.length)) T.push(stueckeHtml(id));
   if (k.beweis) {
     T.push(`<h3>Beweis</h3><p class="klein">${esc({ vollstaendig: "vollständig", literatur: "in der Literatur", skizze: "Skizze", bedingt: "bedingt", keiner: "keiner" }[k.beweis.art] || k.beweis.art)}</p>`);
     if (k.beweis.text) T.push(`<div class="mathe" style="font-size:15px">${mathe(k.beweis.text)}</div>`);
