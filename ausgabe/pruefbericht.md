@@ -13,7 +13,7 @@
 ## WARNUNG (0)
 
 
-## HINWEIS (26)
+## HINWEIS (27)
 
 
 **abschwaechbar** (22)
@@ -45,6 +45,10 @@
 
 - `kn.gescheitert.polynom_kantorovich` — wird von kn.beob.polynom_eckmode korrigiert; Status 'gescheitert' prüfen
 - `kn.verm.tpid3` — wird von kn.verm.tpid3_bedingung korrigiert; Status 'vermutung' prüfen
+
+**uebersetzung-fortschritt** (1)
+
+- `quelle` — 0 von 292 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (2)
 

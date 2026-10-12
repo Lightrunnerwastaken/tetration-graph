@@ -23,9 +23,15 @@ function sprachDaten(G) {
     const en = k.en;
     if (en) {
       ersetze(k, en, ["titel", "aussage", "bereich", "einfach", "naechste_frage", "gegenbeispielsuche"]);
-      if (en.beweis && k.beweis) ersetze(k.beweis, en.beweis, ["text"]);
+      if (en.beweis && k.beweis) {
+        ersetze(k.beweis, en.beweis, ["text"]);
+        for (const [i, l] of (en.beweis.luecken || []).entries()) if (typeof l === "string" && l.trim() && k.beweis.luecken) k.beweis.luecken[i] = l;
+      }
       for (const [i, f] of (en.formen || []).entries()) if (k.formen && k.formen[i] && typeof k.formen[i] === "object") ersetze(k.formen[i], f, ["notiz"]);
-      for (const [i, v] of (en.voraussetzungen || []).entries()) if (k.voraussetzungen && k.voraussetzungen[i]) ersetze(k.voraussetzungen[i], v, ["text"]);
+      for (const [i, v] of (en.voraussetzungen || []).entries()) if (k.voraussetzungen && k.voraussetzungen[i]) ersetze(k.voraussetzungen[i], v, ["text", "notiz"]);
+      for (const [i, v] of (en.versionen || []).entries()) if (k.versionen && k.versionen[i]) ersetze(k.versionen[i], v, ["aenderung", "grund"]);
+      for (const [i, v] of (en.nachgeprueft || []).entries()) if (k.nachgeprueft && k.nachgeprueft[i]) ersetze(k.nachgeprueft[i], v, ["ergebnis"]);
+      for (const [i, v] of (en.quellen || []).entries()) if (k.quellen && k.quellen[i] && typeof k.quellen[i] === "object") ersetze(k.quellen[i], v, ["stelle"]);
       if (en.pruefung) { k.pruefung = k.pruefung || {}; ersetze(k.pruefung, en.pruefung, Object.keys(en.pruefung)); }
       if (en.bewertung) { k.bewertung = k.bewertung || {}; ersetze(k.bewertung, en.bewertung, ["richtigkeit", "nutzen", "recherche"]); }
     }
@@ -33,7 +39,15 @@ function sprachDaten(G) {
   }
   for (const g of G.gebiete || []) ersetze(g, g.en, ["name", "kurz"]);
   for (const s of G.straenge || []) ersetze(s, s.en, ["name", "verlauf"]);
-  for (const e of G.experimente || []) ersetze(e, e.en, ["titel", "frage"]);
+  for (const e of G.experimente || []) {
+    ersetze(e, e.en, ["titel", "frage"]);
+    const r = e.en && e.en.ergebnis;
+    if (r && e.ergebnis) {
+      ersetze(e.ergebnis, r, ["zusammenfassung"]);
+      for (const [i, p] of (r.pruefungen || []).entries()) if (e.ergebnis.pruefungen && e.ergebnis.pruefungen[i]) ersetze(e.ergebnis.pruefungen[i], p, ["name"]);
+    }
+  }
+  for (const q of Object.values(G.quellen || {})) ersetze(q, q.en, ["notiz", "titel"]);
   for (const o of Object.values(G.objekte || {})) ersetze(o, o.en, ["name"]);
   for (const x of [...((G.ideen || {}).haupt || []), ...((G.ideen || {}).unter || [])]) ersetze(x, x.en, ["name", "kurz"]);
   for (const kap of (G.lehrbuch || {}).kapitel || []) {
@@ -47,6 +61,12 @@ if (EN) sprachDaten(window.GRAPH);
 // ------------------------------------------------------------------ Texte übersetzen
 const WOERTER = new Map(Object.entries(EN_WOERTER));
 const MUSTER = EN_MUSTER.map(([re, rep]) => [re instanceof RegExp ? re : new RegExp(re), rep]);
+function uebersetzeKern(kern) {
+  const treffer = WOERTER.get(kern);
+  if (treffer !== undefined) return treffer;
+  for (const [re, rep] of MUSTER) if (re.test(kern)) return kern.replace(re, rep);
+  return kern;
+}
 function uebersetzeText(s) {
   if (typeof s !== "string" || !s) return s;
   const m = /^(\s*)([\s\S]*?)(\s*)$/.exec(s);
@@ -55,6 +75,11 @@ function uebersetzeText(s) {
   const treffer = WOERTER.get(kern);
   if (treffer !== undefined) return m[1] + treffer + m[3];
   for (const [re, rep] of MUSTER) if (re.test(kern)) return m[1] + kern.replace(re, rep) + m[3];
+  // Aufzählungen "A · B · C" (Beziehungen, Zeilen der Tafel): Teile einzeln übersetzen
+  if (kern.includes(" · ")) {
+    const teile = kern.split(" · "), neu = teile.map((x) => uebersetzeKern(x));
+    if (neu.some((x, i) => x !== teile[i])) return m[1] + neu.join(" · ") + m[3];
+  }
   return s;
 }
 const t = (s) => (EN ? uebersetzeText(s) : s);

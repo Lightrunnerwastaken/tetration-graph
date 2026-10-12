@@ -103,13 +103,17 @@ NIVEAU = {
 # (Eintrag je Aussage: id, quelle_hash, en, optional en_theorie/theorie_hash, herkunft, geprueft); Aufbau und Regeln: wissen/uebersetzung.py.
 UEBERSETZ_TEXT = {"titel", "aussage", "bereich", "einfach", "naechste_frage", "gegenbeispielsuche"}   # einfache Texte
 UEBERSETZ_BAU = {                                                                                     # Felder mit Unterstruktur
-    "beweis": {"text"},
+    "beweis": {"text", "luecken"},                        # `luecken`: Liste von Texten, gleiche Länge wie im Deutschen
     "formen": {"notiz"},                                  # Liste, gleiche Länge wie im Deutschen; `tex` wird nie übersetzt
-    "voraussetzungen": {"text"},                          # Liste, gleiche Länge
+    "voraussetzungen": {"text", "notiz"},                 # Liste, gleiche Länge
+    "versionen": {"aenderung", "grund"},                  # Liste, gleiche Länge (Fassungs-Vermerke)
+    "nachgeprueft": {"ergebnis"},                         # Liste, gleiche Länge
+    "quellen": {"stelle"},                                # Liste, gleiche Länge; `ref` bleibt
     "pruefung": {"f1_folgt_unmittelbar", "f2_benutzte_voraussetzungen", "f3_spezialfall", "f4_uebertragbar", "f5_neue_frage"},
     "bewertung": {"richtigkeit", "nutzen", "recherche"},
 }
 UEBERSETZBAR = UEBERSETZ_TEXT | set(UEBERSETZ_BAU)
+UEBERSETZ_LISTEN = {"formen", "voraussetzungen", "versionen", "nachgeprueft", "quellen"}   # Listen von Wörterbüchern (Länge wie im Deutschen)
 UEBERSETZ_THEORIE = {"worum", "genau", "warum", "beispiel", "einordnung"}   # `bilder` bleibt unübersetzt
 UEBERSETZ_GEPRUEFT = {"nein": "nur maschinell geprüft", "zweitpruefung": "zweiter Übersetzer/Prüfer", "mensch": "von einem Menschen gelesen"}
 

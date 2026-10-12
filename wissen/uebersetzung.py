@@ -93,6 +93,7 @@ FELDGRUPPEN = {
     "kern": ["titel", "aussage", "bereich", "einfach", "formen"],
     "beweis": ["beweis", "gegenbeispielsuche", "naechste_frage"],
     "intern": ["pruefung", "bewertung", "voraussetzungen"],
+    "zusatz": ["versionen", "nachgeprueft", "quellen"],
 }
 GRUPPE_VON_FELD = {f: g for g, fs in FELDGRUPPEN.items() for f in fs}
 RANG = {"nein": 0, "zweitpruefung": 1, "mensch": 2}
@@ -143,7 +144,7 @@ def pruefe_form(a: dict, en: dict) -> list:
         elif f in S.UEBERSETZ_TEXT:
             if not isinstance(v, str) or not v.strip():
                 b.append(("FEHLER", "uebersetzung", f"'{f}' muss ein nichtleerer Text sein"))
-        elif f in ("formen", "voraussetzungen"):
+        elif f in S.UEBERSETZ_LISTEN:
             de = a.get(f) or []
             if not isinstance(v, list):
                 b.append(("FEHLER", "uebersetzung", f"'{f}' muss eine Liste sein"))
@@ -165,6 +166,10 @@ def pruefe_form(a: dict, en: dict) -> list:
             for k in v:
                 if k not in S.UEBERSETZ_BAU[f]:
                     b.append(("FEHLER", "uebersetzung", f"'{f}.{k}' ist nicht übersetzbar (erlaubt: {sorted(S.UEBERSETZ_BAU[f])})"))
+            if f == "beweis" and "luecken" in v:
+                de = (a.get("beweis") or {}).get("luecken") or []
+                if not isinstance(v["luecken"], list) or len(v["luecken"]) != len(de):
+                    b.append(("FEHLER", "uebersetzung", f"'beweis.luecken' muss eine Liste mit {len(de)} Einträgen sein"))
     for p, v in flach(en).items():
         if hole(a, p) is None:
             b.append(("FEHLER", "uebersetzung", f"'{p}' hat im Deutschen keine Entsprechung"))
@@ -337,10 +342,13 @@ def _blatt_pfade(a, feld):
         return []
     if feld in S.UEBERSETZ_TEXT:
         return [feld] if isinstance(v, str) and v.strip() else []
-    if feld in ("formen", "voraussetzungen"):
+    if feld in S.UEBERSETZ_LISTEN:
         return [f"{feld}[{i}].{k}" for i, e in enumerate(v) if isinstance(e, dict)
-                for k in S.UEBERSETZ_BAU[feld] if isinstance(e.get(k), str) and e[k].strip()]
-    return [f"{feld}.{k}" for k in S.UEBERSETZ_BAU[feld] if isinstance(v, dict) and isinstance(v.get(k), str) and v[k].strip()]
+                for k in sorted(S.UEBERSETZ_BAU[feld]) if isinstance(e.get(k), str) and e[k].strip()]
+    pf = [f"{feld}.{k}" for k in sorted(S.UEBERSETZ_BAU[feld]) if isinstance(v, dict) and isinstance(v.get(k), str) and v[k].strip()]
+    if feld == "beweis" and isinstance(v, dict):
+        pf += [f"beweis.luecken[{i}]" for i, x in enumerate(v.get("luecken") or []) if isinstance(x, str) and x.strip()]
+    return pf
 
 
 def _bauen(pfade_texte, vorlage_aussage):
@@ -365,6 +373,17 @@ def _bauen(pfade_texte, vorlage_aussage):
                     cur[name] = t
                 else:
                     cur = cur.setdefault(name, [] if nxt[1] != "" else {})
+    return out
+
+
+def _auffuellen(out: dict, a: dict) -> dict:
+    """Listen im Export auf die deutsche Länge bringen (fehlende Einträge `{}`), damit der Übersetzer die Ausrichtung behält."""
+    for f in S.UEBERSETZ_LISTEN:
+        if f in out and isinstance(a.get(f), list):
+            out[f] += [{} for _ in range(len(a[f]) - len(out[f]))]
+    luecken = (a.get("beweis") or {}).get("luecken") if isinstance(a.get("beweis"), dict) else None
+    if "beweis" in out and "luecken" in out["beweis"] and luecken:
+        out["beweis"]["luecken"] += [""] * (len(luecken) - len(out["beweis"]["luecken"]))
     return out
 
 
@@ -427,7 +446,7 @@ def befehl_export(wurzel, gebiet, felder, maximum, nur_fehlend, ausgabe):
         texte = {p: hole(a, p) for p in pfade}
         if nur_fehlend and a.get("en"):
             texte = {p: t for p, t in texte.items() if p not in flach(a["en"])}
-        stapel.append({"id": i, "art": a.get("art"), "status": a.get("status"), "de": _bauen(texte, a)})
+        stapel.append({"id": i, "art": a.get("art"), "status": a.get("status"), "de": _auffuellen(_bauen(texte, a), a)})
     if maximum:
         stapel = stapel[:maximum]
     text = json.dumps(stapel, ensure_ascii=False, indent=1)
@@ -609,7 +628,7 @@ def main(argv=None):
     v.add_argument("--schwelle", type=float, default=0.85)
     sub.add_parser("struktur-stand", help="Fortschritt der Strukturtexte")
     se = sub.add_parser("struktur-export", help="deutsche Strukturtexte als Stapel für Übersetzer")
-    se.add_argument("--art", required=True, choices=["gebiet", "strang", "idee", "objekt", "experiment", "kapitel"])
+    se.add_argument("--art", required=True, choices=["gebiet", "strang", "idee", "objekt", "experiment", "quelle", "kapitel"])
     se.add_argument("--max", type=int, default=0)
     se.add_argument("--nur-fehlend", action="store_true")
     se.add_argument("-o", "--ausgabe")
