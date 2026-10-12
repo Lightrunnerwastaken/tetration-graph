@@ -93,3 +93,8 @@ Schleicher. Die Periode-2- und Siegel-Knoten waren rein eigen.
   fp.satz.p2_raten und fp.beob.tpid6_rate; Knoebel 1981 (JSTOR) mit seiner Literaturliste; Baker–Rippon 1983 (keine Rezension); welche Euler-Arbeit die
   untere Grenze $e^{-e}$ enthält (E489 in der Mainzer Übersetzung lesen); Cremer-Punkte für $b^z$ und Notwendigkeit der Brjuno-Bedingung in der Exponentialfamilie;
   Wortlaut von Rempe–Schleicher Prop. 6.2 vollständig lesen.
+
+**Nachtrag 12.10. 18:15 (freie PDFs gelesen):** Euler E489 (Mainzer Übersetzung, §§38–39) hat schon **beide** Grenzen und das Pendeln zwischen zwei Werten
+unter $1/e^e$ — die Zuschreibung „Barrow 1936“ für das Pendeln ist damit ersetzt (fp.satz.turm_reell, fp.satz.p2_form). Cho–Kim 2004 im Original:
+Thm. 2.1 entwickelt $h_e,h_o$ in $\sqrt{e^{-e}-x}$ mit Leitkoeffizient $\sqrt{6/e}$ — unsere Lücke $2\sqrt6e^{-3/2}\sqrt t$ in fp.satz.p2_raten ist damit
+bekannt; die Rate $\tfrac{\sqrt6}en^{-1/2}$ der Folge steht dort nicht. Knoebel 1981 und Gao–Han–Schilling 2012 sind nicht frei verfügbar (Restlücke).

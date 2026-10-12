@@ -268,3 +268,38 @@ aussagen:
   kanten:
     - {typ: verwandt, ziel: kn.konstr.carleman}
     - {typ: verwandt, ziel: kn.verm.tpid3_bedingung}
+
+- id: kn.frage.tpid16
+  titel: 'TPID 16: Ganze reelle Funktionen mit konjugiertem Fixpunktpaar — gibt es Kneser-artige Lösungen mit positiven Ableitungen?'
+  art: frage
+  ebene: B
+  status: offen
+  niveau: forschung
+  objekte: [fixpunkt_L, superfunktion]
+  aussage: |
+    tommy1729 (TPID 16, 07.06.2014) betrachtet reelle, nicht polynomiale ganze Funktionen mit einem konjugierten Paar primärer Fixpunkte und fragt, ob es Lösungen
+    gibt, deren Iterierte zusätzliche Positivitätsbedingungen an die Ableitungen erfüllen; er vermutet ja. Die Frage verallgemeinert Knesers Lage (exp mit L, L̄) auf andere ganze Funktionen.
+  einfach: >-
+    Knesers Trick funktioniert für eˣ, das zwei spiegelbildliche komplexe Fixpunkte hat. Klappt er für jede solche Funktion — und bleiben dabei alle Ableitungen positiv?
+  quellen:
+    - {ref: forum_tpid, stelle: 'TPID 16 (tommy1729, 07.06.2014, Beitrag 18); Bedingungen im Beitrag nur knapp angegeben'}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.kneser}
+    - {typ: verwandt, ziel: kn.satz.kein_kneser_anziehend}
+
+- id: kn.frage.tpid17
+  titel: 'TPID 17: Fehlerschranke O(n ln(n+1)) für das Verfahren S9 der „fake function theory“'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [superfunktion]
+  aussage: |
+    tommy1729 (TPID 17, 28.03.2015) behauptet für das Verfahren S9 seiner „fake function theory“ (ganze Funktionen mit positiven Taylorkoeffizienten, die eine gegebene
+    wachsende Funktion nachahmen, Forum tid 863) eine Fehlerschranke $O(n\ln(n+1))$ und fragt nach einem Beweis. Anwendung u. a. auf eine ganze Näherung der halben Exponentialfunktion.
+  einfach: >-
+    Man kann schnell wachsende Funktionen durch Potenzreihen mit lauter positiven Koeffizienten nachahmen. Wie gut gelingt das? tommy1729 schätzt den Fehler ab, ohne Beweis.
+  quellen:
+    - {ref: forum_tpid, stelle: 'TPID 17 (tommy1729, 28.03.2015, Beitrag 19), verweist auf tid 863'}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.halbe_exp}

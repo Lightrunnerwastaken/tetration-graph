@@ -52,7 +52,7 @@ Die Gleichungen selbst (Abel, Schröder, Böttcher, Julia) sind klassisch; eigen
 
 ## 4. Stand und Restlücken (Abschluss L1, 12.10.2026)
 
-- **Stand:** 12 → 13 Aussagen (fg.*). Neu: fg.satz.einbettung_fluss (`daten/aussagen/lit_fg_1.yaml`, Beweis vollständig, Literatur Kuczma/Fort/Zdun).
+- **Stand:** 12 → 14 Aussagen (fg.*). Neu (Block 3): fg.def.boettcher; Fort 1955 jetzt sekundär belegt (Intervall-Homöomorphismus einbettbar ⇔ ordnungserhaltend, nach Jones 1972). Neu: fg.satz.einbettung_fluss (`daten/aussagen/lit_fg_1.yaml`, Beweis vollständig, Literatur Kuczma/Fort/Zdun).
   Ursprungsquellen Abel 1881 und Schröder 1871 an fg.def.abel / fg.def.schroeder.
-- **Restlücken:** Satznummern bei Kuczma 1968 und Kuczma–Choczewski–Ger 1990 (Buch nötig); Böttcher-Gleichung als eigene Definition; Belitskii–Tkachenko an
+- **Restlücken:** Satznummern bei Kuczma 1968 und Kuczma–Choczewski–Ger 1990 (Buch nötig); Belitskii–Tkachenko an
   fg.satz.kohomologisch; Julia-Gleichung mit Originalquelle an it.lem.julia; Krull/Webster liegen bei L3 (br.frage.bohr_mollerup).

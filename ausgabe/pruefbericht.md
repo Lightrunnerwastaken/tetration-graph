@@ -1,10 +1,10 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-364 Aussagen · 632 Kanten · 54 Experimente
+367 Aussagen · 637 Kanten · 54 Experimente
 
-**Effektiver Status:** bewiesen 135, bewiesen_literatur 60, numerisch 51, vermutung 29, offen 26, bedingt 22, definition 11, skizze 10, gescheitert 9, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 135, bewiesen_literatur 60, numerisch 51, vermutung 29, offen 28, bedingt 22, definition 12, skizze 10, gescheitert 9, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
-**Zitate nicht am Original geprüft:** 102
+**Zitate nicht am Original geprüft:** 103
 
 
 ## FEHLER (0)

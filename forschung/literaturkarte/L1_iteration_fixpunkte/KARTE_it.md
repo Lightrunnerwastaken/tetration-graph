@@ -81,4 +81,4 @@ Bestand vorher: 12 Aussagen (it.*), davon 8 klassisch/bekannt, 4 mit eigenem Ant
   elementare Superfunktionen. Neuer Strang it.indifferent.
 - **Restlücken:** Lévy 1928, Baker 1958/62/64/67, Szekeres 1958 und Écalle nur über Rezensionen bzw. Zitate (kein Volltext gelesen); Fatou 1924 als eigener
   Knoten (vertauschbare Abbildungen); Jabotinsky 1947 / Aldrovandi–Freitas (Matrizen) und Edgar 2013 (Transreihen) liegen bei L2; Rice–Schweizer–Sklar 1980 und
-  Babbage nur in der Karte. Fort 1955 und Zdun 1979: genauer Satz nicht gelesen (nur als Literatur bei fg.satz.einbettung_fluss).
+  Babbage nur in der Karte. Fort 1955 über Jones 1972 belegt; Zdun 1979 weiter ungelesen (keine freie Fassung, keine Rezension). Volltexte hinter Bezahlschranken bleiben „sekundaer“ (kein Springer-Zugang).

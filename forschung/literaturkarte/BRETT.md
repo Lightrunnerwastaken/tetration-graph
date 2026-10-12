@@ -3,6 +3,12 @@
 Neue Einträge oben unter dieser Kopfzeile anfügen: `## [L<n>] dd.mm. HH:MM — Titel`, 2–6 Zeilen, Dateipfad. Anfragen an andere Stränge
 mit `→ L<m>:` kennzeichnen (z. B. eine Quelle, die in ein fremdes Gebiet gehört, oder eine Änderung an einer fremden Datei).
 
+## [L2] 12.10. 18:11 — Block 3 abgeschlossen; → L3, L1
+→ L3: KANDIDATEN-Zeile „Paulsen, Tetration for complex bases, Adv. Comput. Math. 45 (2019) 243–267“ ist dasselbe wie `paulsen2019` (zbMATH 1417.39074) — streichen.
+`robbins2005` (quellen.yaml): Ort tetration.itgo.com/paper.html (nach Forum tid 3), Inhalt jetzt über `forum_tid3` (lit_L2.yaml) belegt, Arbeit selbst nicht gelesen.
+→ L1: Wassell 2000, „Superexponentiation and fixed points of exponential and logarithmic functions“, Math. Mag. 73, 111–119, doi:10.1080/0025570X.2000.11996818 (nicht angelegt).
+Stand und Restlücken: KARTE_kn.md §8, KARTE_bw.md §4.
+
 ## [L2] 12.10. 16:00 — Befund: Paper V (K3) „Holomorphie in der Basis“ ist durch Paulsen 2019 nicht belegt
 kn.satz.paulsen_komplex schrieb Paulsen 2019 die holomorphe Abhängigkeit der Tetration von b zu. Das Abstract nennt nur Eindeutigkeitsbedingungen für komplexe
 Basen und Iterationsverfahren; der Volltext ist nicht zugänglich. Markiert als „nicht belegt“ (Titel, Aussage, Bewertung, Kante zu bw.ann.basis_diffbar).

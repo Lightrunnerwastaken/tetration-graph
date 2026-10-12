@@ -2,14 +2,14 @@
 
 Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` und `daten/quellen/*.yaml`. Spalte „zitiert in“: Gebiet und Zahl der Aussagen.
 
-**Stand:** Literatur 194, Forum 74, eigene Arbeit 17, Notiz/Wiki 4, Software 2 — zusammen 291 Quellen.
+**Stand:** Literatur 194, Forum 75, eigene Arbeit 17, Notiz/Wiki 4, Software 2 — zusammen 292 Quellen.
 
 ## Literatur (194)
 
 | Schlüssel | Autor | Jahr | Titel | geprüft | zitiert in |
 |---|---|---|---|---|---|
 | `lambert1758` | J. H. Lambert | 1758 | Observationes variae in mathesin puram | nein | — (nicht zitiert) |
-| `euler1778` | L. Euler | 1777 | De formulis exponentialibus replicatis (E489) | sekundaer | fp (1) |
+| `euler1778` | L. Euler | 1777 | De formulis exponentialibus replicatis (E489) | original | fp (2) |
 | `euler1783` | L. Euler | 1783 | De serie Lambertina plurimisque eius insignibus proprietatibus | sekundaer | fp (1) |
 | `babbage1815` | C. Babbage | 1815 | An essay towards the calculus of functions | sekundaer | — (nicht zitiert) |
 | `eisenstein1844` | G. Eisenstein | 1844 | über die Entwicklung von α^α^α^… | sekundaer | fp (2) |
@@ -22,7 +22,7 @@ Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` u
 | `vdhoeven2006` | J. van der Hoeven | 1888 | Transseries and Real Differential Algebra | sekundaer | gr (1), kn (1) |
 | `leau1897` | L. Leau | 1897 | Étude sur les équations fonctionnelles à une ou à plusieurs variables | sekundaer | it (2) |
 | `maurer1901` | H. Maurer | 1901 | Über die Funktion y = x^[x^[x(…)]] für ganzzahliges Argument (Abundanzen) | sekundaer | gr (1) |
-| `boettcher1904` | L. E. Böttcher | 1904 | The principal laws of convergence of iterates and their application to analysis (russisch) | nein | it (1) |
+| `boettcher1904` | L. E. Böttcher | 1904 | The principal laws of convergence of iterates and their application to analysis (russisch) | nein | fg (1), it (1) |
 | `hardy1910` | G. H. Hardy | 1910 | Orders of Infinity. The 'Infinitärcalcül' of Paul du Bois-Reymond | sekundaer | gr (1), kn (1) |
 | `young1912` | W. H. Young | 1912 | On classes of summable functions and their Fourier series (Youngsche Ungleichung, Gleichheitsfall) | nein | br (1), gr (1) |
 | `carlson1914` | F. Carlson | 1914 | Sur une classe de séries de Taylor | sekundaer | kl (1) |
@@ -53,7 +53,7 @@ Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` u
 | `kneser1950` | H. Kneser | 1950 | Reelle analytische Lösungen der Gleichung φ(φ(x)) = e^x und verwandter Funktionalgleichungen | sekundaer | fg (1), kn (4) |
 | `kalmar_grzegorczyk` | L. Kalmár (1943); A. Grzegorczyk (1953) | 1953 | Elementare Funktionen; Some classes of recursive functions | nein | br (2) |
 | `baker1955` | I. N. Baker | 1955 | The iteration of entire transcendental functions and the solution of the functional equation f{f(z)} = F(z) | nein | — (nicht zitiert) |
-| `fort1955` | M. K. Fort Jr. | 1955 | The embedding of homeomorphisms in flows | nein | fg (1) |
+| `fort1955` | M. K. Fort Jr. | 1955 | The embedding of homeomorphisms in flows | sekundaer | fg (1) |
 | `sternberg1957` | S. Sternberg | 1957 | Local contractions and a theorem of Poincaré | nein | it (1) |
 | `sternberg1957b` | S. Sternberg | 1957 | Local C^n transformations of the real line | sekundaer | it (1) |
 | `thron1957` | W. J. Thron | 1957 | Convergence of infinite exponentials with complex elements | nein | fp (3) |
@@ -115,7 +115,7 @@ Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` u
 | `baker_rippon1989b` | I. N. Baker, P. J. Rippon | 1989 | Towers of exponents and other composite maps | sekundaer | fp (2) |
 | `lavaurs1989` | P. Lavaurs | 1989 | Systèmes dynamiques holomorphes — explosion de points périodiques paraboliques | nein | br (1) |
 | `macdonnell1989` | J. MacDonnell | 1989 | Some critical points on the hyperpower function | sekundaer | fp (1) |
-| `kuczma1990` | M. Kuczma, B. Choczewski, R. Ger | 1990 | Iterative Functional Equations | nein | fg (6), gr (1), it (2), kl (1) |
+| `kuczma1990` | M. Kuczma, B. Choczewski, R. Ger | 1990 | Iterative Functional Equations | nein | fg (7), gr (1), it (2), kl (1) |
 | `walker1991` | P. Walker | 1991 | Infinitely differentiable generalized logarithmic and exponential functions | sekundaer | kn (5) |
 | `walker1991_jmaa` | P. L. Walker | 1991 | On the solutions of an Abelian functional equation | sekundaer | kn (2) |
 | `eremenko_lyubich1992` | A. Eremenko, M. Yu. Lyubich | 1992 | Dynamical properties of some classes of entire functions | nein | — (nicht zitiert) |
@@ -148,14 +148,14 @@ Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` u
 | `schleicher_zimmer2003` | D. Schleicher, J. Zimmer | 2003 | Escaping points of exponential maps | sekundaer | — (nicht zitiert) |
 | `anderson2004` | J. Anderson | 2004 | Iterated exponentials | nein | — (nicht zitiert) |
 | `bernoulli1697` | Johann Bernoulli | 2004 | Opera omnia, Bd. 3 (1697) — Reihe für ∫ x^x | nein | gr (1) |
-| `cho_kim2004` | Y. Cho, Y.-O. Kim | 2004 | Analytic properties of the limits of the even and odd hyperpower sequences | sekundaer | fp (3) |
+| `cho_kim2004` | Y. Cho, Y.-O. Kim | 2004 | Analytic properties of the limits of the even and odd hyperpower sequences | original | fp (3) |
 | `galidakis2004` | I. N. Galidakis | 2004 | On an application of Lambert's W function to infinite exponentials | nein | — (nicht zitiert) |
 | `rempe2004` | L. Rempe | 2004 | On a question of Herman, Baker and Rippon concerning Siegel disks | original | fp (2) |
 | `schleicher2004` | D. Schleicher | 2004 | Hyperbolic components in exponential parameter space | nein | fp (2) |
 | `galidakis2005` | I. N. Galidakis | 2005 | On solving the p-th complex auxiliary equation f^(p)(z) = z | sekundaer | fp (1) |
 | `mueller_schleicher2005` | M. Müller, D. Schleicher | 2005 | How to add a non-integer number of terms, and how to produce unusual infinite summations | sekundaer | kl (1) |
 | `hooshmand2006` | M. H. Hooshmand | 2006 | Ultra power and ultra exponential functions | sekundaer | kn (2) |
-| `milnor2006` | J. Milnor | 2006 | Dynamics in One Complex Variable (3. Aufl.) | nein | fp (3), it (5) |
+| `milnor2006` | J. Milnor | 2006 | Dynamics in One Complex Variable (3. Aufl.) | nein | fg (1), fp (3), it (5) |
 | `pila_wilkie2006` | J. Pila, A. J. Wilkie | 2006 | The rational points of a definable set | nein | ar (2) |
 | `shapiro2007` | D. B. Shapiro, S. D. Shapiro | 2007 | Iterated exponents in number theory | original | ar (2), br (1) |
 | `foerster_rempe_schleicher2008` | M. Förster, L. Rempe, D. Schleicher | 2008 | Classification of escaping exponential maps | sekundaer | — (nicht zitiert) |
@@ -203,7 +203,7 @@ Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` u
 | `trappmann2010_intuitiv` | H. Trappmann | — | The Intuitive Logarithm | sekundaer | kn (2) |
 | `wikipedia_ef` | Wikipedia | — | Exponential factorial | sekundaer | ar (1) |
 
-## Forum (74)
+## Forum (75)
 
 | Schlüssel | Autor | Jahr | Titel | geprüft | zitiert in |
 |---|---|---|---|---|---|
@@ -214,7 +214,7 @@ Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` u
 | `forum_tid91` | Forum (mehrere) | 2007 | Tetration of 0^0^0 …. or h(0)=? | sekundaer | gr (1) |
 | `forum_tid120` | Forum (mehrere) | 2008 | Infinite tetration of the imaginary unit | sekundaer | fp (1) |
 | `forum_tid170` | H. Trappmann (bo198214), G. Helms (Gottfried), Ivars | 2008 | open problems / Discussion | original | kn (2) |
-| `forum_tpid` | H. Trappmann u. a. | 2008 | open problems survey (Liste TPID 1–18) | original | ar (1), fg (1), fp (3), gr (2), it (1), kl (1), kn (9) |
+| `forum_tpid` | H. Trappmann u. a. | 2008 | open problems survey (Liste TPID 1–18) | original | ar (1), fg (1), fp (3), gr (2), it (1), kl (1), kn (11) |
 | `forum_fox2009_cheta` | J. D. Fox | 2009 | Upper superexponential at base η („cheta“) | sekundaer | kl (1) |
 | `forum_tid262` | bo198214 (H. Trappmann), nuninho1980, S. Levenstein (sheldonison) | 2009 | tetration limit ?? | original | bw (1), kn (3) |
 | `forum_tid275` | H. Trappmann (bo198214), A. Robbins, D. Kouznetsov u. a. | 2009 | elementary superfunctions | original | it (1) |
@@ -257,6 +257,7 @@ Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` u
 | `forum_tid214` | A. Robbins, H. Trappmann, D. Kouznetsov | — | Dmitrii Kouznetsov's Tetration Extension | original | kn (1) |
 | `forum_tid26` | G. Helms (Gottfried) | — | Gottfried Helms' change of base formula | original | — (nicht zitiert) |
 | `forum_tid269` | A. Robbins (andydude), nuninho1980, H. Trappmann (bo198214) | — | Infinite Pentation (and x-srt-x) | original | kn (2) |
+| `forum_tid3` | H. Trappmann (bo198214), J. D. Fox (jaydfox), A. Robbins (andydude) | — | Andrew Robbins' Tetration Extension | original | kn (1) |
 | `forum_tid337` | A. Robbins (andydude), H. Trappmann, Ansus | — | Closed-form derivatives | original | gr (2) |
 | `forum_tid343` | H. Trappmann (bo198214) | — | Uniqueness of Ansus' extended sum superfunction | original | kn (1) |
 | `forum_tid352` | mike3, bo198214 (H. Trappmann), G. Helms, tommy1729 | — | Solving tetration for base 0 < b < e^-e | sekundaer | fp (1) |
@@ -286,7 +287,7 @@ Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` u
 
 | Schlüssel | Autor | Jahr | Titel | geprüft | zitiert in |
 |---|---|---|---|---|---|
-| `robbins2005` | A. Robbins | 2005 | Solving for the analytic piecewise extension of tetration and the super-logarithm | nein | kn (1) |
+| `robbins2005` | A. Robbins | 2005 | Solving for the analytic piecewise extension of tetration and the super-logarithm | sekundaer | kn (1) |
 | `mizugadro_tetration` | D. Kouznetsov | 2026 | Tetration (TORI/Mizugadro-Wiki) | original | kl (3) |
 | `justus_bilder` | J. Justus | — | Bild 1 (Periodenbild der Basen-Ebene) und Bild 2 (Turm-Integrale I_n, gerade/ungerade Grenzwerte) | original | fp (1), gr (1) |
 | `wikipedia_tetration` | Wikipedia (en) | — | Tetration | original | ar (3), fp (3), gr (5), kn (3) |
@@ -331,15 +332,15 @@ Erzeugt von `forschung/literaturkarte/verzeichnis.py` aus `daten/quellen.yaml` u
 | A. J. Marshall, Y. Tan, A rational number of the form a^a with a irrational, Math. Gazette 96 (2012) 106–109 | ar → L3 | geringe Priorität; Inhalt durch ar.satz.superwurzel_arith und Sondow–Marques 2010 (Prop. 2.2) abgedeckt, Abstract nicht geprüft |
 | M. Müller, Reihenalgebra: What comes beyond exponentiation? (online) | br → L3 | aufgenommen als `mueller1993` bei br.satz.hyperop_varianten (links ausgewertete Hyperoperationen; nach Wikipedia) |
 | J. Doner, A. Tarski 1969; J. D. Jaramillo 2020 | br → L3 | aufgenommen bei br.satz.ordinal_tetration bzw. br.satz.hyperop_varianten |
-| A. Robbins, Solving for the analytic piecewise extension of tetration and the super-logarithm (2005, online) | kn → L2 | offen |
-| W. Paulsen, Tetration for complex bases, Adv. Comput. Math. 45 (2019) 243–267 | kn → L2 | prüfen, ob `paulsen2019` dasselbe ist |
+| A. Robbins, Solving for the analytic piecewise extension of tetration and the super-logarithm (2005, online) | kn → L2 | über forum_tid3 bei kn.konstr.carleman (sekundär) |
+| W. Paulsen, Tetration for complex bases, Adv. Comput. Math. 45 (2019) 243–267 | kn → L2 | erledigt: dasselbe Werk wie `paulsen2019` (zbMATH) |
 | C. Cheng u. a., Some consequences of Schanuel's conjecture, J. Number Theory 129 (2009) 1464–1467 | ar → L3 | gelesen (Abstract); keine Turm-Aussage — nicht aufnehmen |
-| M. Neyrinck, An investigation of arithmetic operations (Essay) | br → L3 | offen (Hyperoperationen, Abstand der Stufen) |
+| M. Neyrinck, An investigation of arithmetic operations (Essay) | br → L3 | nicht aufgenommen: Essay ohne prüfbare Sätze; Abstand der Stufen ist in kn.etas (TPID 10) kartiert |
 | P. Trojovská, P. Trojovský, Mathematics 9 (2021) Nr. 7, 717 | ar → L3 | aufgenommen (Quelle bei ar.verm.gelfond_turm) |
 | arXiv 1908.05559, L. Moroni, The strange properties of the infinite power tower (2019) | fp → L1 | als Quelle `moroni2019` (lit_L1.yaml) in KARTE_fp; kein Knoten — Unterrichtsleitfaden ohne neue Ergebnisse (Abstract) |
 | arXiv 2201.00643, Does the Zeraoulia sequence converge? (unendliche Exponentiale) | fp → L1 | verworfen: von arXiv wegen unzulässiger Textübernahme zurückgezogen (v2, 10.09.2024); enthält kein Ergebnis, nur eine offene Frage |
 | D. Ripà, arXiv 2602.00252 = J. AppliedMath 2 (2024) 1771 | br → L3 | aufgenommen als `ripa2024` bei br.satz.ripa; dazu `ripa2011` (Buch, Ursprung) |
-| G. R. Blakley, I. Borosh 1983; J. Dawson, Towers of powers modulo m (1994) | br/ar → L3 | Blakley–Borosh aufgenommen; Dawson Angaben fehlen |
+| G. R. Blakley, I. Borosh 1983; J. Dawson, Towers of powers modulo m (1994) | br/ar → L3 | Blakley–Borosh aufgenommen; Dawson nicht auffindbar (Suche 12.10.: keine Arbeit unter diesem Titel; nächster Treffer eine Bachelorarbeit der De La Salle University, 2001, ohne Text) — verworfen |
 | Ackermann 1928, Péter 1935 | br → L3 | aufgenommen bei br.satz.ackermann |
 | Bohr–Mollerup 1922, Krull 1948/49, Webster 1997, Marichal–Zenaïdi 2022 | br → L3 | aufgenommen bei br.frage.bohr_mollerup (warum die Theorie für Δf = g hier nicht direkt greift) |
 | Sondow–Marques 2010 (Original gelesen) | ar → L3 | jetzt Quelle bei ar.satz.rationale_tuerme (Lemma 2.1), ar.satz.superwurzel_arith (Prop. 2.2), ar.satz.unendliche_tuerme_gs (Anhang) |

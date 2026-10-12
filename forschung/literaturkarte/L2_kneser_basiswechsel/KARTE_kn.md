@@ -166,3 +166,18 @@ Bezeichnung hier: η₃ = η = e^{1/e}, e₃ = e; ηₙ, eₙ = Berührbasis und
 - **C (teilweise)** Clenshaw–Lozier–Olver–Turner 1986 als Quelle an kn.konstr.linear (Definition nicht gelesen); Tetration FAQ als Sekundärquelle der Verfahren offen.
 - **C** Hyperoperations-Literatur (Rubtsov–Romerio, Müller, Doner–Tarski, Ackermann 1928) — Grundlagen gehören zu br (L3); hier nur Kartierung.
 - **C** TPID 16, 17 (tommy1729) einordnen.
+
+## 8. Stand und Restlücken (12.10.2026, nach Block 3)
+
+**Stand:** Kartiert sind Kneser und seine Eindeutigkeit (Kouznetsov 2009 → Trappmann–Kouznetsov 2011 → Paulsen–Cowgill 2017), die anderen Verfahren
+(Walker, Robbins/Carleman, Szekeres, Paulsen 2016, Kontinuumssumme, 2sinh, β-Methode), die halbe exp, die höheren Hyperoperationen (Kouznetsov 2014, Levenstein 2017/2020),
+TPID 10 mit allen Zugängen (Strang kn.etas) und die ganze TPID-Liste: TPID 1, 3, 9, 10, 11, 14, 16, 17, 18 (b) haben Knoten im Gebiet kn. Robbins 2005: Verfahren nach Forum tid 3
+belegt (Arbeit selbst nicht gelesen; Trappmann: Ansatz schon bei Walker um 1990). KANDIDATEN-Zeile Paulsen 2019 = `paulsen2019` (Adv. Comput. Math. 45, 243–267, über zbMATH bestätigt).
+
+**Restlücken:**
+- Volltexte hinter Bezahlschranke (bleiben sekundaer): Paulsen–Cowgill 2017 und 2021, Paulsen 2019 (Holomorphie in b, Paper V (K3) — „nicht belegt“), Paulsen 2026, Kneser 1950 (nur über Forum tid 213), Kouznetsov 2009/2010, Walker 1991.
+- η₇, e₇ genau (zurückgestellt; Aufwand §7).
+- Nicht erreichbar: Math.SE (Abruf gesperrt); Robbins' Arbeit (tetration.itgo.com) nicht gelesen.
+- Nur kartiert, ohne Knoten: Bromer 1987 (Math. Mag. 60, 169–174, doi:10.1080/0025570X.1987.11977296), Wassell 2000 (Math. Mag. 73, 111–119; Fixpunkte → L1),
+  Kouznetsov–Trappmann 2010 (Fakultät), Clenshaw u. a. 1986 (Definition nicht gelesen), Tetration FAQ, Ueda 2021, Nesargi–Roudenko 2025, Aldrovandi 2014;
+  Hyperoperations-Grundlagen (Rubtsov–Romerio, Müller, Doner–Tarski, Ackermann 1928) gehören zu br (L3).

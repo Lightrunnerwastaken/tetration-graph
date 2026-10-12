@@ -69,3 +69,7 @@ Bestand vorher: 36 Aussagen (kl.*) in 04_ und 10_ (Bruchsummen/Basiswechsel); Li
 - **Restlücken:** Volltext Kouznetsov–Trappmann 2010 (Fourier-Abfall der Differenz; frei nur als PDF — Leitung/Janis); Basen $e^{-e}\le b<1$: keine Arbeit zur
   Tetration (nur zum Turm) gefunden — Forum tid 352 (2009) stellt die Frage für $b<e^{-e}$, ungelöst; Paulsen 2019 auf Basen unter 1 prüfen (L2);
   Kouznetsov–Trappmanns zwei Eindeutigkeitskriterien als eigene Knoten; Nörlund (Newton-Reihen).
+
+**Nachtrag 12.10. 18:15:** Kouznetsov–Trappmann 2010 (freies Manuskript) gelesen: §5, (5.9)–(5.10) — erste Mode der Differenz mit
+$\xi=0.7252\cdot10^{-24}$, gültig mindestens für $\mathrm{Im}\,z<T_2/2$. Der Streifen ist dort gesehen, das Abfallgesetz der höheren Moden
+(kl.verm.streifenbreite, kl.verm.faktor) nicht — beide bleiben „vermutlich neu“. Lévy 1928 nur hinter Bezahlschranke (Springer) — Restlücke.

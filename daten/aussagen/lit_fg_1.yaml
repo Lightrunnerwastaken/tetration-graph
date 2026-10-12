@@ -28,7 +28,7 @@ aussagen:
       Jedes $x\in I$ liegt in genau einem $f^n([f(x_0),x_0))$, $n\in\mathbb Z$: die Bahn $f^n(x_0)$ ist monoton und kann sich im Innern von $I$
       nicht häufen (ein Häufungspunkt wäre ein Fixpunkt), läuft also gegen beide Enden von $I$. Setze $\alpha(x)=\alpha_0(f^{-n}(x))+n$. Stetigkeit an den Nahtstellen folgt aus
       $\alpha_0(f(x_0))=\alpha_0(x_0)+1$. Die Gruppe $f^t=\alpha^{-1}(\alpha+t)$ ist stetig in $(t,x)$.
-  quellen: [{ref: kuczma1968, stelle: 'Abel-Gleichung, allgemeine stetige Lösung'}, {ref: kuczma1990}, {ref: fort1955, stelle: 'Einbettung von Homöomorphismen in Flüsse (genauer Satz nicht gelesen)'}, {ref: zdun1979, stelle: 'stetige und differenzierbare Iterationshalbgruppen'}, {ref: zdun_solarz2014, stelle: 'Übersicht'}]
+  quellen: [{ref: kuczma1968, stelle: 'Abel-Gleichung, allgemeine stetige Lösung'}, {ref: kuczma1990}, {ref: fort1955, stelle: 'Intervall-Homöomorphismus in Fluss einbettbar ⇔ ordnungserhaltend (Wiedergabe bei Jones 1972)', geprueft: sekundaer}, {ref: zdun1979, stelle: 'stetige und differenzierbare Iterationshalbgruppen'}, {ref: zdun_solarz2014, stelle: 'Übersicht'}]
   pruefung:
     f1_folgt_unmittelbar: 'Ja, elementare Konstruktion über einen Fundamentalbereich.'
     f2_benutzte_voraussetzungen: 'Monotonie und Fixpunktfreiheit; ohne Fixpunktfreiheit zerfällt $I$ in Teilintervalle zwischen Fixpunkten, auf denen man getrennt einbettet.'
@@ -39,3 +39,18 @@ aussagen:
   kanten:
     - {typ: verallgemeinert, ziel: fg.satz.allgemeine_loesung}
     - {typ: verwandt, ziel: fg.kor.nichteindeutigkeit}
+
+- id: fg.def.boettcher
+  titel: Böttcher-Gleichung
+  art: definition
+  ebene: A
+  status: definition
+  niveau: vertiefung
+  objekte: [boettcher, schroeder]
+  aussage: |
+    Zu $f$ mit superanziehendem Fixpunkt $p$ der Ordnung $k\ge2$ heisst $\phi\circ f=\phi^{k}$, $\phi(p)=0$, die **Böttcher-Gleichung**.
+    Mit $\psi=\log\phi$ wird sie zur Schröder-artigen Gleichung $\psi\circ f=k\,\psi$ (Multiplikator $k$ statt $\lambda$).
+  quellen: [{ref: boettcher1904}, {ref: kuczma1990}, {ref: milnor2006, stelle: '§9'}]
+  kanten:
+    - {typ: verwandt, ziel: it.satz.boettcher}
+    - {typ: analog_zu, ziel: fg.def.schroeder}

@@ -45,6 +45,17 @@ Prüfstand P wie in KARTE_kn.md (O Original, S sekundär, N nicht geprüft).
   besorgen (Indian J. Math., nicht frei); Leitung fragen.
 - **A** bw.lem.randgesetz: Neuheit von „folklore“ auf „bekannt“ (Levenstein 2015, Paulsen 2016, BenStandeven 2009). → in diesem Durchgang.
 - **A** Paulsen 2026 lesen (Basisabhängigkeit, bw.ann.basis_diffbar).
-- **B** Helms 2007 (Basiswechsel unter η, Matrix) an L1 melden (kl.satz.koenigs_basiswechsel).
+- **B (erledigt 12.10.)** Helms 2007 an L1 gemeldet (BRETT); Quelle `forum_tid26` liegt in lit_L2.yaml.
 - **B (erledigt 12.10.)** Nixon 2021 (tid 1308) → bw.frage.nixon_eta_basiswechsel; Nixon–Levenstein 2014 (tid 937) als Quelle an bw.verm.nirgends_analytisch.
-- **C** Math.SE 2010406 (Walkers slog nirgends analytisch?) und 198757 lesen.
+- **C (nicht erreichbar)** Math.SE 2010406 und 198757: Abruf von math.stackexchange.com gesperrt.
+
+## 4. Stand und Restlücken (12.10.2026, nach Block 3)
+
+**Stand:** Alle gefundenen Arbeiten anderer zum Basiswechsel sind kartiert und mit unseren Knoten verbunden: Fox 2007 (Formel), Levenstein 2009/2018 (Welle),
+Trappmann–Levenstein 2009 und Levenstein 2011/2014 (Analytizität), BenStandeven 2009, Levenstein 2015 und Paulsen 2016 (Randgesetz bei η → bekannt),
+Paulsen–Cowgill 2021 (Hardy-Körper, bw.satz.paulsen_cowgill_hardy), Nixon 2021 (Basiswechsel von η aus, bw.frage.nixon_eta_basiswechsel). Neu bewertet:
+bw.lem.randgesetz (bekannt), bw.satz.imaginaere_richtung (vermutlich neu, Recherche dokumentiert).
+
+**Restlücken:** Volltexte Paulsen–Cowgill 2021 und Paulsen 2026 (Bezahlschranke, bleiben sekundaer) — entscheiden, ob bw.frage.halbiter_vergleich für Kneser beantwortet ist
+und ob die Basisabhängigkeit (bw.ann.basis_diffbar) belegt werden kann; Math.SE 2010406/198757 nicht erreichbar; die übrigen bw-Aussagen sind eigene Forschung
+(Papers I–VI) ohne Gegenstück in der Literatur.
