@@ -41,6 +41,8 @@ def test_prosa_in_text_darf_uebersetzt_werden():
 def test_verweise_und_kennungen():
     assert stufen(U.pruefe_text("Siehe [[kn.konstr.kneser]].", "See [[kn.konstr.kneser2]].")) >= {("FEHLER", "uebersetzung-invariante")}
     assert stufen(U.pruefe_text("Siehe exp.funde.", "See exp.funden.")) >= {("FEHLER", "uebersetzung-invariante")}
+    assert not U.pruefe_text("Siehe [[kn.konstr.kneser|Knesers Konstruktion]].", "See [[kn.konstr.kneser|Kneser's construction]].")   # Linktext übersetzbar
+    assert stufen(U.pruefe_text("Siehe [[kn.konstr.kneser|Kneser]].", "See [[kn.konstr.walker|Kneser]].")) >= {("FEHLER", "uebersetzung-invariante")}
     assert not U.pruefe_text("Siehe [[kn.konstr.kneser]] und exp.funde.", "See [[kn.konstr.kneser]] and exp.funde.")
 
 

@@ -193,6 +193,11 @@ def _mathe(s: str) -> Counter:
     return Counter(re.sub(r"\\text\{[^}]*\}", r"\\text{}", m) for m in MATHE.findall(s))
 
 
+def _verweis_ids(s: str) -> list:
+    """[[id|Linktext]] -> [[id]]: nur das Ziel muss gleich bleiben, der angezeigte Text wird übersetzt."""
+    return [re.sub(r"\|[^\]]*\]\]$", "]]", v) for v in VERWEIS.findall(s)]
+
+
 def _dezimalpunkt(s: str) -> str:
     """Dezimalkomma -> Punkt, ausser in Intervallen und Mengen wie (0,1), [0,1] oder {2,10}."""
     def ersetze(m):
@@ -207,7 +212,7 @@ def pruefe_text(de: str, en: str) -> list:
     if qm != um:
         b.append(("FEHLER", "uebersetzung-invariante",
                   f"Formeln verändert: fehlt {list((qm - um).elements())[:2]}, neu {list((um - qm).elements())[:2]}"))
-    if Counter(VERWEIS.findall(de)) != Counter(VERWEIS.findall(en)):
+    if Counter(_verweis_ids(de)) != Counter(_verweis_ids(en)):          # Linktext hinter | darf übersetzt werden
         b.append(("FEHLER", "uebersetzung-invariante", "Verweise [[…]] verändert"))
     if Counter(KENNUNG.findall(de)) != Counter(KENNUNG.findall(en)):
         b.append(("FEHLER", "uebersetzung-invariante", "Kennungen (z. B. exp.…, kn.…) verändert"))
