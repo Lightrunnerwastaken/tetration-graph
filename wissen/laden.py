@@ -58,6 +58,7 @@ def lade(wurzel: Path) -> dict:
         "experimente": _liste(daten, "experimente", h),
         "straenge": _liste(daten, "straenge", h),
         "ideen": _liste(daten, "ideen", h),
+        "uebersetzung": _liste(daten, "uebersetzung", h),
         "aussagen": [],
         "dateien": [],
     }

@@ -492,10 +492,11 @@ class Graph:
 
     # ------------------------------------------------------------- gesamt
     def alles(self):
-        from . import lehrbuch
+        from . import lehrbuch, uebersetzung
         g = (self.aufbauen().pruefen_schema().pruefen_inhalt().pruefen_straenge().pruefen_ideen()
              .ableiten().verwandte().experimente_einlesen())
-        return lehrbuch.pruefen(g)
+        g = lehrbuch.pruefen(g)     # Theorie-Blöcke sind schon angehängt (laden.py)
+        return uebersetzung.einbinden(g)
 
     def statistik(self):
         z = defaultdict(int)
@@ -503,6 +504,8 @@ class Graph:
             z["niveau:" + a.get("_niveau", "?")] += 1
             z["status:" + a["_status_eff"]] += 1
             z["art:" + a.get("art", "?")] += 1
+            if a.get("_en_stand"):
+                z["uebersetzung:" + a["_en_stand"]] += 1
             z["ebene:" + a.get("ebene", "?")] += 1
         qn = 0
         for a in self.knoten.values():

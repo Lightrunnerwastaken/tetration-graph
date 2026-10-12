@@ -70,9 +70,11 @@ Basisaussagen) · **Vertiefung** (Studium) · **Forschung** (offene Fragen, eige
 Basiswechsel und Vermutungen/Beobachtungen = Forschung, sonst Vertiefung. Einstiegsaussagen tragen `einfach:` (Erklärung in Alltagssprache),
 Identitäten `formen:` (gleichwertige Schreibweisen).
 
-**Englisch vorbereitet:** Jede Aussage darf einen Block `en:` mit den Feldern `titel, aussage, bereich, einfach, beweis, formen,
-naechste_frage, gegenbeispielsuche` tragen; das Prüfprogramm kennt ihn schon. Die Übersetzung soll in einem Durchgang erfolgen,
-sobald die Veröffentlichung feststeht (dann auch Oberflächentexte und ein DE/EN-Umschalter).
+**Englische Fassung (Werkzeuge ab 12.10.2026):** Übersetzungen stehen getrennt von den deutschen Texten in `daten/uebersetzung/<gebiet>.yaml`
+(je Aussage `en` und optional `en_theorie`, dazu Hash der übersetzten deutschen Texte, Herkunft und Prüfstand). Das Prüfprogramm erzwingt, dass
+Formeln, `[[Verweise]]` und Kennungen unverändert bleiben, meldet veraltete Übersetzungen (deutscher Text hat sich geändert), Zahl- und
+Wortwahl-Abweichungen und den Fortschritt je Gebiet. Befehle (`stand`, `export`, `einlesen`), Glossar und Pilot: `docs/uebersetzung/`.
+Noch nicht übersetzt; der DE/EN-Umschalter der Ansicht und die Oberflächentexte folgen.
 
 ## Was das Prüfprogramm erzwingt
 
