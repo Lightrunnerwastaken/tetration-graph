@@ -1,0 +1,998 @@
+# Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
+# übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: it.konstr.levy
+  quelle_hash: a7566c544b11
+  theorie_hash: 460e3e54e6b5
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Lévy, C. R. 184 (1927) 500–502 and 663–665; carried out in Ann. Mat. Pura Appl. 5 (1928). Content checked only via the JFM reviews
+        of the notes; full elaboration not read.
+    pruefung:
+      f1_folgt_unmittelbar: No; first approach to the fractional iteration of eˣ (before Kneser 1950).
+      f2_benutzte_voraussetzungen: For $x\to\infty$, $e^x$ and $e^x-1$ differ only by 1 — this makes the reduction possible; the selection is
+        made via growth, not via analyticity.
+      f5_neue_frage: Does Lévy's resp. Szekeres' regular solution agree with Kneser's? Open; Walker's related construction $\mathrm{dexp}^{-n}\circ\exp^n$
+        is a limit of base-change type, and for such limits nowhere-analyticity is conjectured (bw.verm.nirgends_analytisch).
+      f4_uebertragbar: To $b^x$ for $b>\eta$ (same asymptotics) — yields real, but not necessarily analytic solutions.
+      f3_spezialfall: 'Later refined by Szekeres (1962: Abel function at ∞, totally monotone) and Walker (1991: $C^\infty$ solution via $e^x-1$).'
+    bewertung:
+      nutzen: Historically first approach; ancestor of the solutions of Szekeres and Walker.
+      richtigkeit: Literature (only reviews checked)
+    voraussetzungen:
+    - text: 'Selection principle: the interpolation is to “grow regularly” in the iteration order'
+    titel: 'Lévy''s route to the fractional iteration of eˣ: via eˣ − 1 and “regular growth” (1927/28)'
+    aussage: |
+      Lévy interpolates the iterates $\exp^{n}$ by a family $\exp^{t}$ that grows regularly in $t$. The task is equivalent
+      to the corresponding task for $e^x-1$: there, at the parabolic fixed point 0, one has the formal iteration series
+      $f^t(x)=x+\tfrac t2x^2+\dots$, whose coefficients are polynomials in $t$. The second note extends this to continuous, eventually
+      unboundedly growing functions and makes the notion “croissance régulière” precise.
+    bereich: 'real iteration of $e^x$ (more generally: continuous functions growing unboundedly from some point on)'
+  en_theorie:
+    einordnung: |
+      Precursor of Szekeres' regular iteration ([[it.satz.szekeres_monoton]]) and of Walker's $C^\infty$ solution ([[kn.konstr.walker]]); a completely different route from
+      Kneser 1950 ([[kn.satz.halbe_exp]]), which goes via the complex fixed point.
+    genau: |
+      Lévy seeks an interpolation $t\mapsto\exp^t$ that “grows regularly” in $t$, and shows that this is equivalent to the task for $e^x-1$.
+      There the formal iteration $f^t(x)=x+\tfrac t2x^2+\dots$ has coefficients that are polynomials in $t$.
+    warum: |
+      1. For $x\to\infty$, $e^x-(e^x-1)=1$ is vanishingly small compared with $e^x$; orbits of $e^x$ and $e^x-1$ can therefore be coupled to each other.
+      2. $e^x-1$ has a fixed point at 0 with slope 1 (parabolic); there is a natural fractional iteration there (Fatou coordinate, Szekeres).
+      3. Via the coupling it carries over to $e^x$.
+      (Checked only via the reviews of the notes; the 1928 elaboration has not been read.)
+    worum: |
+      The first to seriously want to build “half as many times $e^x$” was Paul Lévy (1927). His trick: for large $x$, $e^x$ is almost the same
+      as $e^x-1$, and $e^x-1$ has a fixed point at 0 at which one can iterate.
+- id: it.lem.julia
+  quelle_hash: 0405af31095c
+  theorie_hash: 21943177e3ae
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Differentiating $\alpha(f(z))=\alpha(z)+1$ gives $\alpha'(f)f'=\alpha'$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes (chain rule).
+      f2_benutzte_voraussetzungen: Differentiability, α′ ≠ 0.
+      f5_neue_frage: 'The Julia equation is linear: the freedom is again a periodic function (fg.satz.kohomologisch). Which solution $J$ is positive
+        and least oscillating?'
+      f4_uebertragbar: Every tetration ⇒ its own generator; different tetrations have different $J$, all solving the same linear equation.
+      f3_spezialfall: 'no'
+    bewertung:
+      nutzen: Linearizes the question of choice.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: α differentiable with α′ ≠ 0
+    titel: Julia equation for the generator of a flow
+    aussage: |
+      The generator $J:=\partial_t f^t|_{t=0}=1/\alpha'$ satisfies the **Julia equation** $J(f(z))=f'(z)\,J(z)$.
+      For tetration: $J=1/\operatorname{slog}_b'=T_b'\circ\operatorname{slog}_b$.
+    bereich: iteration group $f^t=\alpha^{-1}(\alpha+t)$ with differentiable Abel function, $\alpha'\neq0$
+  en_theorie:
+    beispiel: |
+      Base $e$ (Kneser): $J(1)=T'(0)=1.09177$ and $J(e)=T'(1)=2.96773$. Check: $f'(1)\cdot J(1)=e\cdot1.09177=2.96773$.
+    einordnung: |
+      The Julia equation is the “derivative form” of the Abel equation; [[gr.satz.kettenregel]] is the same statement, read along the tetration.
+    genau: |
+      If $f^t=\alpha^{-1}(\alpha+t)$ with a differentiable Abel function ($\alpha'\ne0$), then the generator is
+      $J:=\partial_tf^t\big|_{t=0}=1/\alpha'$, and it satisfies
+      $$J(f(z))=f'(z)\,J(z).$$
+      For tetration: $J=T_b'\circ\operatorname{slog}_b$.
+    warum: |
+      1. $\partial_t\alpha^{-1}(\alpha(z)+t)$ at $t=0$ is $(\alpha^{-1})'(\alpha(z))=1/\alpha'(z)$.
+      2. Differentiating the Abel equation $\alpha(f(z))=\alpha(z)+1$ gives $\alpha'(f(z))\,f'(z)=\alpha'(z)$, hence $J(f(z))=f'(z)J(z)$.
+    worum: |
+      A flow has a “velocity”: how fast a point moves when time runs a little. This velocity
+      satisfies an equation of its own, simple, the Julia equation.
+- id: it.satz.baker
+  quelle_hash: b6eeb6548334
+  theorie_hash: 5e158817a6c5
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Baker 1958 (radius of convergence 0 of the formal half-iterate of $e^z-1$), Baker 1962 (the set of orders with a convergent series
+        is a discrete lattice, here $\mathbb Z$); cited in Erdős–Jabotinsky 1960 and Lewin 1965.
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Concrete function; general classification in it.satz.erdos_jabotinsky.
+      f5_neue_frage: 'How fast do the coefficients grow (Gevrey order)? Experiment: exp.eta_baker.'
+      f4_uebertragbar: Directly to $\exp_\eta$ at the fixed point $e$, since linearly conjugate (kl.kor.eta_baker).
+      f3_spezialfall: 'Yes: the convergence set here is $\mathbb Z$, one case of the Erdős–Jabotinsky/Baker classification.'
+    bewertung:
+      nutzen: 'Shows: half-iterates of the exponential are not analytic at the parabolic point.'
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: f(z) = e^z − 1
+    - text: t real
+    titel: Formal iterates of e^z − 1 converge only for integer t
+    aussage: |
+      The unique formal power series $f^t(z)=z+\tfrac t2 z^2+\dots$ with $f^s\circ f^t=f^{s+t}$ has, for
+      real $t\notin\mathbb Z$, radius of convergence 0.
+    bereich: $f(z)=e^z-1$ at the fixed point 0 (multiplier 1), real parameters $t$
+  en_theorie:
+    beispiel: |
+      $$g(z)=z+\frac{z^2}4+\frac{z^3}{48}+0\cdot z^4+\frac{z^5}{3840}-\frac{7z^6}{92160}+\frac{z^7}{645120}+\dots$$
+      The quantity $|a_n|^{1/n}$ (its reciprocal is the radius of convergence) grows: $0.196$ at $n=10$, $0.373$ at $15$, $0.534$ at $20$, $0.668$ at $25$,
+      $0.738$ at $30$ — and, according to Baker, ever further.
+    einordnung: |
+      Via the conjugation $\eta^{e+eu}=e+e(e^u-1)$ this carries over to base $\eta$ ([[kl.kor.eta_baker]]). In general, [[it.satz.erdos_jabotinsky]] says
+      for which $t$ the formal iterates can converge.
+    genau: |
+      The unique formal power series $f^t(z)=z+\tfrac t2z^2+\dots$ with $f^s\circ f^t=f^{s+t}$ and $f^1=e^z-1$ has, for real $t\notin\mathbb Z$,
+      radius of convergence $0$.
+    warum: |
+      Theorem from the literature (Baker, with indirect arguments). The formal part is easy: one makes the ansatz $g(z)=z+a_2z^2+a_3z^3+\dots$ and demands $g(g(z))=e^z-1$.
+      The coefficient of $z^n$ in $g(g(z))$ is $2a_n$ plus terms with smaller $a_k$; this determines $a_n$ step by step. The difficult part is to
+      show that the $a_n$ grow too fast.
+    worum: |
+      For $e^z-1$ one can compute a “half-iterate” as a power series term by term. Baker showed: this series never converges
+      (except for integer numbers of steps). A holomorphic half step at the fixed point thus does not exist.
+- id: it.satz.baker_einbettung
+  quelle_hash: d1f5700f7927
+  theorie_hash: 4418cede1bd4
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Baker (1964, 1967); here checked only in the account in the introduction of Karlin–McGregor 1968 (AMS page). Which of the two papers
+        exactly, and under which additional hypotheses, has not been checked against the original.
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: 'Meromorphy in the whole plane (global), not only locally: locally there are Fatou coordinates on each petal.'
+      f5_neue_frage: What regularity does the best embedding of $\exp_\eta$ (Fatou coordinate of one petal) have at the other petal?
+      f4_uebertragbar: $\exp_\eta$ (entire, multiplier 1 at $e$) is thus not embeddable into any iteration group of entire functions; cf. kl.kor.eta_baker.
+      f3_spezialfall: Parabolic counterpart of Karlin–McGregor (it.satz.karlin_mcgregor).
+    bewertung:
+      nutzen: Explains why there cannot be a “perfect” tetration at η.
+      richtigkeit: Literature (only the restatement checked)
+    voraussetzungen:
+    - text: f meromorphic, fixed point with multiplier 1
+    titel: At multiplier 1 only Möbius maps are embeddable (Baker)
+    aussage: |
+      A meromorphic function with a fixed point of multiplier 1 can be embedded into a continuous iteration group of meromorphic
+      functions only if it is linear fractional. At multiplier 1, embeddability is thus the exception.
+    bereich: meromorphic $f$ with fixed point $s_0$, $f'(s_0)=1$, $f\ne\mathrm{id}$
+  en_theorie:
+    einordnung: |
+      Parabolic counterpart of [[it.satz.karlin_mcgregor]]. Consequence for tetration: at base $\eta$ there is no iteration that is analytic at the fixed point $e$
+      and meromorphic everywhere ([[kl.kor.eta_baker]]).
+    genau: |
+      If $f$ is meromorphic, $f(s_0)=s_0$, $f'(s_0)=1$, $f\ne\mathrm{id}$, and there is a continuous iteration group of meromorphic $f^t$ with $f^1=f$, then $f$ is linear fractional.
+      (In the account in Karlin–McGregor; original not read.)
+    warum: |
+      Locally there is indeed a Fatou coordinate on each petal and hence an iteration — but the petals in general do not fit together
+      ([[it.satz.ecalle_voronin]]), and the formal iteration series diverges ([[it.satz.baker]]). A globally meromorphic group would preclude both.
+    worum: |
+      Can a function with a fixed point of slope 1 be “continuously iterated” so that all intermediate steps are again nice (meromorphic) functions?
+      Baker showed: only if it is a linear fractional function.
+- id: it.satz.boettcher
+  quelle_hash: 635733f8355a
+  theorie_hash: 376861f7ba0d
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Böttcher 1904; modern account Milnor §9. Existence checked via Wikipedia “Böttcher's equation”, uniqueness and limit formula from
+        memory (Milnor).
+    pruefung:
+      f1_folgt_unmittelbar: No; classical theorem.
+      f2_benutzte_voraussetzungen: Only $k\ge2$; the logarithm of the equation is a Schröder equation with “multiplier” $k$.
+      f5_neue_frage: Fractional iteration via $\phi^{k^t}$ is multivalued (branch of the $k^t$-th power) — the same branch question as fp.gegen.bruch_mittel.
+      f4_uebertragbar: '$b^z$ has no superattracting fixed points ($f''=f\ln b\ne0$); but the elementary superfunctions (it.satz.elementare_superfunktionen)
+        are Böttcher cases at ∞: $x^2-2$ becomes $w\mapsto w^2$ with $x=w+1/w$.'
+      f3_spezialfall: Counterpart of Koenigs (it.satz.koenigs) for $\lambda=0$.
+    bewertung:
+      nutzen: Completes the case distinction by multiplier (0, hyperbolic, 1, irrational).
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: superattracting fixed point of order k ≥ 2
+    titel: 'Superattracting fixed points: the Böttcher coordinate (Böttcher 1904)'
+    aussage: |
+      There is a holomorphic coordinate $\phi$ near $p$ with $\phi(p)=0$, $\phi'(p)\ne0$ and
+      $$\phi\bigl(f(z)\bigr)=\phi(z)^k .$$
+      It is unique up to a factor, a $(k-1)$-th root of unity, and $\phi(z)=\lim_{n\to\infty}\bigl(c^{1/(k-1)}(f^{n}(z)-p)\bigr)^{1/k^n}$
+      (suitable branch). Hence $f^{t}=\phi^{-1}\bigl(\phi^{\,k^t}\bigr)$ is a natural fractional iteration.
+    bereich: $f(z)=p+c\,(z-p)^k+O((z-p)^{k+1})$ holomorphic near $p$, $k\ge2$, $c\ne0$
+  en_theorie:
+    beispiel: |
+      $f(x)=x^2-2$ has a superattracting point at $\infty$; with $x=w+1/w$, $f$ becomes $w\mapsto w^2$. Hence $f^{t}(x)=w^{2^t}+w^{-2^t}$,
+      i.e. $2\cosh(2^t\operatorname{arcosh}(x/2))$ ([[it.satz.elementare_superfunktionen]]).
+    einordnung: |
+      The case $\lambda=0$ next to Koenigs ($0<|\lambda|<1$, [[it.satz.koenigs]]) and Leau–Fatou ($\lambda=1$). For $b^z$ itself it does not occur.
+    genau: |
+      $f(z)=p+c(z-p)^k+\dots$, $k\ge2$: There is $\phi$ holomorphic near $p$, $\phi(p)=0$, $\phi'(p)\ne0$, with $\phi(f(z))=\phi(z)^k$,
+      unique up to a $(k-1)$-th root of unity.
+    warum: |
+      1. After translating and scaling, $f(z)=z^k(1+O(z))$.
+      2. Set $\phi_n(z)=\bigl(f^n(z)\bigr)^{1/k^n}$ (suitable branch). Then $\phi_{n+1}/\phi_n=(1+O(f^n z))^{1/k^{n+1}}$, and since $f^n z$ shrinks doubly exponentially, the product converges.
+      3. The limit satisfies $\phi(f(z))=\lim(f^{n+1}z)^{1/k^n}=\phi(z)^k$.
+    worum: |
+      If the slope at the fixed point is 0, it attracts “overly strongly”: at each step the distance is squared (or raised to a higher power).
+      Böttcher showed in 1904 that one then finds a coordinate in which the map is exactly $w\mapsto w^k$.
+- id: it.satz.cremer
+  quelle_hash: 22aad3a42f17
+  theorie_hash: 8715942c3238
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Cremer, Math. Ann. 98 (1928) and 115 (1938), via the JFM reviews; condition for polynomials in the form of Milnor §11 (from memory).
+    pruefung:
+      f1_folgt_unmittelbar: No; small denominators versus Siegel.
+      f2_benutzte_voraussetzungen: The arithmetic of α and (for the explicit condition) the degree of the polynomial.
+      f5_neue_frage: Are there bases on the Shell–Thron boundary with a Cremer point? What does the tower look like there?
+      f4_uebertragbar: For $b^z$ Cremer's polynomial argument is not directly applicable (transcendental); whether Brjuno is necessary for the
+        exponential family has not been checked here (Geyer 2001 for λze^z).
+      f3_spezialfall: 'Counterpart of Siegel/Brjuno (fp.satz.neutral): Yoccoz shows for quadratic polynomials that Brjuno is exactly the boundary.'
+    bewertung:
+      nutzen: Shows that at irrational boundary points a Siegel disk does not always exist.
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: 'α irrational, extremely well approximable by fractions (for polynomials of degree d: liminf |λ^q − 1|^{1/d^q} = 0)'
+    titel: 'Cremer points: irrationally indifferent fixed points without linearization (Cremer 1927/38)'
+    aussage: |
+      There are multipliers $e^{2\pi i\alpha}$ — a set of the cardinality of the continuum — for which the fixed point is **not** linearizable
+      (no “center”, no Siegel disk; it is called a Cremer point). For polynomials of degree $d$ it suffices that
+      $\liminf_{q}|\lambda^q-1|^{1/d^q}=0$; then periodic points accumulate at the fixed point. Moreover, for fixed $\lambda$ “the majority” of
+      functions has no center (Cremer 1938).
+    bereich: fixed point with multiplier $\lambda=e^{2\pi i\alpha}$, $\alpha$ irrational
+  en_theorie:
+    einordnung: |
+      Counterpart to Siegel and Brjuno ([[fp.satz.neutral]]). For the exponential family the polynomial argument does not apply directly.
+    genau: |
+      For polynomials of degree $d$ and $\lambda=e^{2\pi i\alpha}$ with $\liminf_q|\lambda^q-1|^{1/d^q}=0$ the fixed point is not linearizable; every neighborhood
+      contains periodic orbits. Such $\alpha$ form a set of the cardinality of the continuum.
+    warum: |
+      1. A periodic point of period $q$ solves $f^q(z)=z$, a polynomial of degree $d^q$; the product of its solutions different from 0 is bounded by $|\lambda^q-1|$.
+      2. If $|\lambda^q-1|$ is much smaller than $\varepsilon^{d^q}$, a solution must lie closer than $\varepsilon$ to 0.
+      3. But on a linearization disk there are no periodic points other than the fixed point — contradiction.
+    worum: |
+      If the map rotates by an irrational angle at the fixed point, one hopes for a disk on which it is exactly a rotation.
+      Cremer showed in 1927 that this can go wrong: for angles that are extremely well approximated by fractions there is no such disk.
+- id: it.satz.ecalle_voronin
+  quelle_hash: 8c1cdcf01937
+  theorie_hash: 1724e3bd2667
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Écalle 1975, Voronin 1981.
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: The exact form of the equivalence (flow ⇔ trivial invariants) has not been checked against the original here.
+      f5_neue_frage: How large are the Écalle–Voronin invariants of $e^u-1$ numerically, and what do they mean for the two regular tetrations
+        at $\eta$?
+      f4_uebertragbar: To $\exp_\eta$ at $e$ via the conjugation to $e^u-1$ (kl.kor.eta_baker).
+      f3_spezialfall: 'no'
+    bewertung:
+      nutzen: Explains why there are two different regular super-exponentials at η.
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: f parabolic, formally conjugate to a normal form
+    titel: Écalle–Voronin invariants
+    aussage: |
+      The analytic conjugacy class of a parabolic germ is determined by the transition maps
+      (horn maps) between the Fatou coordinates of adjacent petals. $f$ is the
+      time-1 map of a holomorphic flow (formal iterates converge) if and only if these invariants are trivial.
+    bereich: parabolic germs $f(z)=z+az^2+\dots$
+  en_theorie:
+    beispiel: |
+      $f(z)=\frac z{1-z}=z+z^2+\dots$ has the explicit flow $f^t(z)=\frac z{1-tz}$: trivial invariants. $e^z-1$ has no flow ([[it.satz.baker]]),
+      hence nontrivial invariants.
+    einordnung: |
+      The 1-periodic transitions are a counterpart of the periodic wave under base change; the interpretation “wave = invariant of
+      modulus 1” is in [[kl.satz.invariante_daempfung]].
+    genau: |
+      The analytic class of a parabolic germ (which germs can be transformed into one another by a holomorphic change of coordinates)
+      is determined by the transition maps between the Fatou coordinates of adjacent petals (the “horn maps”). $f$ is
+      the time-1 map of a holomorphic flow — that is, the formal iterates converge — if and only if these transitions are trivial (pure translations).
+    warum: |
+      Theorem from the literature (Écalle 1975, Voronin 1981). Idea: In the Fatou coordinates $f$ is the translation by $1$ everywhere. A flow would have to be
+      the translation by $t$ in all petals simultaneously; this fits together only if the coordinates agree on the overlaps up to constants.
+      The transitions are 1-periodic (they commute with the translation) — the same structure as in [[fg.satz.kohomologisch]].
+    worum: |
+      Every petal has its own Fatou coordinate. Where adjacent petals overlap, the coordinates can be compared.
+      These transitions are the finest information about the map — and they decide whether there is a smooth flow.
+- id: it.satz.elementare_superfunktionen
+  quelle_hash: 9bf59b05fd7f
+  theorie_hash: 7423cdcb0018
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Each row by substitution (doubling and tripling formulas, respectively); recomputed in an experiment at three points to 10⁻⁵⁰.
+    pruefung:
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: none
+      f5_neue_frage: 'TPID 8: elementary F with a polynomial without a real fixed point?'
+      f4_uebertragbar: All Chebyshev- and Lattès-type maps.
+      f3_spezialfall: 'Yes: conjugation f = h∘(λ·)∘h⁻¹ with elementary h (Schröder function elementary).'
+    bewertung:
+      nutzen: Examples on which every iteration method can be tested.
+      richtigkeit: complete
+    titel: 'Functions with an elementary superfunction: Chebyshev, Fermat, logistic, Möbius'
+    aussage: |
+      For some functions the superfunction $F(t+1)=f(F(t))$ is elementary — then all fractional iterates $f^{[t]}=F(t+F^{-1})$ are immediately available. Examples
+      ($c$ arbitrary): $x^2-2\mapsto2\cosh(2^tc)$, $2x^2-1\mapsto\cosh(2^tc)$, $(x-1)^2+1\mapsto2^{2^t}+1$ (Fermat numbers), $x^3+3x\mapsto2\sinh(3^tc)$,
+      $4x(1-x)\mapsto\sin^2(2^tc)$ (logistic map), $x^2+2x\mapsto e^{2^tc}-1$, $x^a\mapsto e^{a^tc}$, $2x/(1+x)\mapsto2^t/(2^t+c)$, $x/(1+x)\mapsto1/(t+c)$.
+      For $\exp$ there is no such formula; it is even open whether there is an elementary function $F$ for which $F(1+F^{-1}(x))$ is a real polynomial of degree $\ge2$
+      **without** a real fixed point (TPID 8) — that would be the polynomial counterpart of $\exp$ above $\eta$.
+    einfach: For some functions you can write down “applying it half as often” directly, because they are really a doubling or tripling in disguise
+      — for instance x² − 2, which really turns cosh(y) into cosh(2y).
+  en_theorie:
+    beispiel: |
+      Fermat numbers: $(x-1)^2+1$ turns $2^{2^n}+1$ into the next Fermat number; the half-iterate is $(x-1)^{\sqrt2}+1$.
+    einordnung: |
+      Test cases for every method of fractional iteration ([[it.satz.koenigs]]). For polynomials without a real fixed point — the counterpart of $\exp$ above $\eta$ — no
+      such formula is known (TPID 8).
+    genau: |
+      Examples ($c$ arbitrary):
+
+      | $f(x)$ | Superfunction $F(t)$ | Reason |
+      |---|---|---|
+      | $x^2-2$ | $2\cosh(2^tc)$ | $2\cosh2y=(2\cosh y)^2-2$ |
+      | $2x^2-1$ | $\cosh(2^tc)$ | Chebyshev $T_2$ |
+      | $(x-1)^2+1$ | $2^{2^t}+1$ | Fermat numbers |
+      | $x^3+3x$ | $2\sinh(3^tc)$ | $2\sinh3y=(2\sinh y)^3+3\cdot2\sinh y$ |
+      | $4x(1-x)$ | $\sin^2(2^tc)$ | logistic map |
+      | $x^2+2x$ | $e^{2^tc}-1$ | $(x+1)^2-1$ |
+      | $x^a$ | $e^{a^tc}$ | powers |
+      | $2x/(1+x)$ | $2^t/(2^t+c)$ | Möbius, fixed points 0 and 1 |
+      | $x/(1+x)$ | $1/(t+c)$ | Möbius, parabolic |
+    warum: |
+      1. All examples are doubling formulas in disguise: $\cosh2y=2\cosh^2y-1$ means that $2x^2-1$ doubles the argument of $\cosh$.
+      2. Whoever doubles the argument turns it into $2^t$ after $t$ steps — that is the superfunction.
+      3. Fractional iterates: $f^{[1/2]}(\cosh y)=\cosh(\sqrt2\,y)$.
+    worum: |
+      For $\exp$ the superfunction is hard. For some other functions it is a simple formula — and then one can see on them how superfunctions and
+      fractional iterations work.
+- id: it.satz.erdos_jabotinsky
+  quelle_hash: 7194ad94af8e
+  theorie_hash: c8a7b7ad738b
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Erdős–Jabotinsky 1960; lattice statement in Baker.
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Only formal structure and convergence of F; wording checked via a review.
+      f5_neue_frage: 'Dichotomy: either the whole flow or almost nothing — no “half-analytic” intermediate case.'
+      f4_uebertragbar: To every parabolic fixed point of $\exp_b$ (only $b=\eta$ real).
+      f3_spezialfall: 'no'
+    bewertung:
+      nutzen: Structural limitation for analytic iteration.
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: F convergent power series with F′(0) = 1
+    titel: Convergence set of formal iterates
+    aussage: |
+      If $S$ contains a real interval around 0, then $S=\mathbb C$ and $F(s,z)$ is analytic in $s$.
+      Otherwise $S$ has area 0 and $S\cap\mathbb R$ has length 0 (Baker: $S$ is then a lattice of
+      at most two dimensions, or trivial).
+    bereich: $F(z)=z+\dots$ convergent; set $S$ of those $s\in\mathbb C$ with a convergent formal iterate $F(s,z)$
+  en_theorie:
+    beispiel: |
+      $e^z-1$: $S=\mathbb Z$ (integer steps only). $\ \frac z{1-z}$: $S=\mathbb C$, since $f^t(z)=\frac z{1-tz}$ converges for every $t$.
+    einordnung: |
+      An “all-or-almost-nothing” theorem: there is no map whose half-iterate converges but not its third-iterate. For tetration at $\eta$
+      the “almost nothing” case holds ([[kl.kor.eta_baker]]).
+    genau: |
+      Let $F(z)=z+\dots$ be convergent and $S$ the set of complex $s$ for which the formal iterate $F(s,z)$ converges. If $S$ contains a real
+      interval around $0$, then $S=\mathbb C$, and $F(s,z)$ depends analytically on $s$. Otherwise $S$ has area $0$ and, on the real axis,
+      length $0$ (by Baker, $S$ is then a lattice or trivial).
+    warum: |
+      Theorem from the literature (Erdős–Jabotinsky 1960). The coefficients of $F(s,z)$ are polynomials in $s$. If the series converges for all $s$ of a whole
+      real interval, one can obtain uniform bounds for the coefficients and continue them analytically in $s$ — then it converges
+      for all $s$. A single non-integer $s$ does not suffice for this.
+    worum: |
+      For which times $t$ does the formal iterate converge? Erdős and Jabotinsky showed: either for all — or only for so few
+      that one cannot see them on the real axis.
+- id: it.satz.karlin_mcgregor
+  quelle_hash: 30db25cb61db
+  theorie_hash: 9ae2a80a1bcc
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Karlin–McGregor 1968 (Trans. AMS 132); wording of the main theorem after the account in the Tetration forum (tid 856) and the introduction
+        on the AMS page; original not read. The direction “Möbius ⇒ equal” is it.satz.moebius_iteration.
+    pruefung:
+      f1_folgt_unmittelbar: No; the converse direction (“only Möbius”) is the actual content.
+      f2_benutzte_voraussetzungen: Hyperbolicity at both ends (otherwise no Koenigs iteration) and the invariant segment (so that both iterations
+        live on the same domain).
+      f5_neue_frage: How large is the difference? → kl.verm.streifenbreite (amplitude law from the imaginary period).
+      f4_uebertragbar: 'To $\sqrt2^{\,x}$ on $[2,4]$ and every $b^x$ with $1<b<\eta$ on $[a,A]$: the two regular tetrations are different (kl.beob.zwei_abel).'
+      f3_spezialfall: 'Counterpart of Baker''s theorem at multiplier 1 (it.satz.baker_einbettung): there too only Möbius maps are embeddable.'
+    bewertung:
+      nutzen: Explains theoretically why the choice of fixed point matters for tetration below η.
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: '|f′(s_1)|, |f′(s_2)| ∉ {0, 1} (both fixed points hyperbolic)'
+    - text: f maps the segment [s_1, s_2] into itself
+    titel: 'Two fixed points: same regular iteration only for Möbius maps (Karlin–McGregor 1968)'
+    aussage: |
+      The regular (Koenigs) iteration at $s_1$ and the regular iteration at $s_2$ agree if and only if $f$ is a
+      linear fractional map. In other words: a continuous iteration group whose members are holomorphic at **both** fixed points
+      exists only for Möbius maps.
+    bereich: $f$ single-valued and holomorphic on the complement of a closed countable set of the Riemann sphere (hence also every meromorphic
+      function); two fixed points $s_1\ne s_2$
+    einfach: If a function has two fixed points, you can build “half steps” from one fixed point or from the other. Only for the simplest fractional
+      functions does the same thing come out; otherwise there are two different solutions.
+  en_theorie:
+    beispiel: |
+      $\sqrt2^{\,x}$ on $[2,4]$: multipliers $\ln2$ and $2\ln2$, segment invariant, but not a Möbius map — the two regular
+      tetrations differ, by about $10^{-24}$ ([[kl.beob.zwei_abel]]).
+    einordnung: |
+      Theoretical reason for [[kl.beob.zwei_abel]]; counterpart at multiplier 1: [[it.satz.baker_einbettung]]. How large the difference is
+      is described by the separate conjecture [[kl.verm.streifenbreite]].
+    genau: |
+      Let $f$ be meromorphic (more generally: holomorphic outside a countable closed set) with fixed points $s_1\ne s_2$,
+      $|f'(s_i)|\notin\{0,1\}$, and $f([s_1,s_2])\subseteq[s_1,s_2]$. The regular iterations at $s_1$ and $s_2$ agree if and only if
+      $f(z)=\dfrac{az+b}{cz+d}$.
+    warum: |
+      1. “Möbius ⇒ equal”: The Koenigs function is then itself Möbius, $\sigma=(z-s_1)/(z-s_2)$, and $1/\sigma$ is the Koenigs function at the other fixed point ([[it.satz.moebius_iteration]]).
+      2. “equal ⇒ Möbius”: An iteration group that is holomorphic at both fixed points yields a coordinate in which $f$ is linear at both ends;
+         the global condition (meromorphy) then forces a linear fractional form. (Proof in Karlin–McGregor, not retraced here.)
+    worum: |
+      Below $\eta$, $b^x$ has two fixed points, and at each one can build a “regular” iteration. Are these in the end the same? Karlin and
+      McGregor gave the general answer in 1968: only for the linear fractional functions.
+- id: it.satz.koenigs
+  quelle_hash: e6d89ddd57e0
+  theorie_hash: 9749797402b6
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Uniform convergence of the sequence $\lambda^{-n}(f^n-p)$ because of $|f(z)-p-\lambda(z-p)|\le C|z-p|^2$.
+    pruefung:
+      f1_folgt_unmittelbar: No, classical theorem (1884).
+      f2_benutzte_voraussetzungen: $|\lambda|\ne 0,1$; in the case $|\lambda|=1$ (irrationally indifferent) one needs Siegel/Brjuno conditions.
+      f5_neue_frage: Regular tetration (kl.satz.regulaer) and the starting point of Kneser's construction (kn.konstr.kneser).
+      f4_uebertragbar: 'For $\exp_b$ at every non-neutral fixed point: attracting for $1<b<\eta$ (lower real fixed point), repelling at $L_b$
+        for $b>\eta$ (via the inverse $\log_b$).'
+      f3_spezialfall: 'no'
+    bewertung:
+      nutzen: Foundation of all regular constructions.
+      richtigkeit: classical, established
+    voraussetzungen:
+    - text: 0 < |λ| < 1 (hyperbolic attracting)
+    - text: f holomorphic in a neighborhood of p
+    titel: Koenigs linearization
+    aussage: |
+      There is exactly one holomorphic function $\sigma$ near $p$ with $\sigma(p)=0$, $\sigma'(p)=1$ and
+      $\sigma\circ f=\lambda\,\sigma$; it is $\sigma=\lim_{n\to\infty}\lambda^{-n}(f^{n}-p)$.
+    bereich: $f$ holomorphic near $p$, $f(p)=p$, $\lambda=f'(p)$ with $0<|\lambda|<1$ (or $|\lambda|>1$ for $f^{-1}$)
+  en_theorie:
+    beispiel: |
+      $f(z)=\sqrt2^{\,z}$ at the fixed point $p=2$, $\lambda=\ln2=0.693$: $\sigma(1)=-0.63210$. Prediction for the tower: $z_{10}-2\approx\sigma(1)\lambda^{10}=-0.01618$;
+      actually $z_{10}-2=-0.01633$. The ratio tends to $1$ the further one goes.
+    einordnung: |
+      The Koenigs coordinate is the tool below $\eta$: regular tetration ([[kl.satz.regulaer]]), spectral series ([[kl.satz.koenigs_spektral]]),
+      base change at fixed points (Chapter 7). Above $\eta$ it is used at the repelling fixed point for $\log_b$ ([[fp.satz.abstossend]]).
+    genau: |
+      Let $f$ be holomorphic near $p$, $f(p)=p$, and $\lambda=f'(p)$ with $0<|\lambda|<1$. Then there is exactly one holomorphic function $\sigma$ near $p$ with
+      $$\sigma(p)=0,\qquad\sigma'(p)=1,\qquad\sigma(f(z))=\lambda\,\sigma(z),$$
+      namely
+      $$\sigma(z)=\lim_{n\to\infty}\frac{f^{n}(z)-p}{\lambda^{n}} .$$
+      (For $|\lambda|>1$ one applies the same to the inverse map.)
+    warum: |
+      1. Near $p$, $f(z)-p=\lambda(z-p)+O(|z-p|^2)$: to first approximation a scaling.
+      2. Set $\sigma_n(z)=\lambda^{-n}(f^n(z)-p)$. The difference of two terms is $\sigma_{n+1}-\sigma_n=\lambda^{-n-1}\bigl(f(f^nz)-p-\lambda(f^nz-p)\bigr)$,
+         hence at most $C|\lambda|^{-n-1}|f^nz-p|^2$. Since $|f^nz-p|$ shrinks roughly like $|\lambda|^n$, the differences are at most about $|\lambda|^{n}$ —
+         a geometric series, the sequence converges uniformly.
+      3. Functional equation: $\sigma(f(z))=\lim\lambda^{-n}(f^{n+1}z-p)=\lambda\lim\lambda^{-(n+1)}(f^{n+1}z-p)=\lambda\,\sigma(z)$.
+      4. Unique: Two solutions give, in one coordinate, a map that commutes with $w\mapsto\lambda w$ and has derivative $1$;
+         comparison of coefficients shows that this is the identity.
+    worum: |
+      Very close to an attracting fixed point, every smooth map looks like a scaling. Koenigs showed in 1884 that this is
+      not only approximately true: there is a coordinate in which the map is **exactly** a scaling, and one obtains it as a limit.
+- id: it.satz.leau_fatou
+  quelle_hash: 1eafe4d54f61
+  theorie_hash: f4b26c2d33fd
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Milnor §10.
+    pruefung:
+      f1_folgt_unmittelbar: No (classical).
+      f2_benutzte_voraussetzungen: Only the first nonlinear term; uniqueness up to a constant needs injectivity or a growth condition, respectively.
+      f5_neue_frage: Do the Fatou coordinates of the two petals fit together? → it.satz.ecalle_voronin
+      f4_uebertragbar: $\exp_\eta$ at the fixed point $e$ is parabolic with $k=1$ → kl.satz.parabolisch
+      f3_spezialfall: 'no'
+    bewertung:
+      nutzen: Basis of tetration at b = η.
+      richtigkeit: established
+    voraussetzungen:
+    - text: f holomorphic near 0, f′(0) = 1, f ≠ id
+    titel: Leau–Fatou flower and Fatou coordinates
+    aussage: |
+      There are $k$ attracting and $k$ repelling **petals**; on each there exists an injective Abel function (Fatou coordinate) $\phi$,
+      unique up to an additive constant, with $\phi(f(z))=\phi(z)+1$,
+      asymptotically $\phi(z)\sim -1/(k a z^k)$.
+    bereich: $f(z)=z+az^{k+1}+\dots$, $a\neq0$ (parabolic, multiplier 1)
+  en_theorie:
+    beispiel: |
+      $f(u)=e^u-1=u+\tfrac12u^2+\dots$: $a=\tfrac12$, $k=1$, so $u_n\approx-2/n$. Starting from $u_0=-0.5$: $u_{10}=-0.1385$, $u_{100}=-0.01903$, $u_{1000}=-0.001988$;
+      $n\,u_n$ tends to $-2$ (slowly, because of a logarithmic term).
+    einordnung: |
+      This is exactly what happens at base $\eta$ at the fixed point $e$ ([[kl.satz.parabolisch]], [[kl.kor.eta_baker]]) and at the edges of the base plane
+      ([[fp.satz.parabolisch_rand]]). Whether the coordinates of the petals fit together is measured by [[it.satz.ecalle_voronin]].
+    genau: |
+      Let $f(z)=z+az^{k+1}+\dots$ with $a\ne0$ (fixed point $0$, multiplier $1$). Then there are $k$ attracting and $k$ repelling petals. On each
+      there is an (up to a constant unique) injective Abel function, the **Fatou coordinate** $\phi$:
+      $$\phi(f(z))=\phi(z)+1,\qquad\phi(z)\approx-\frac1{k\,a\,z^{k}} .$$
+    warum: |
+      For $k=1$: With $w=-1/(az)$, $f$ becomes $w\mapsto w+1+O(1/w)$ — for large $w$ almost a translation. The small corrections add up
+      to a logarithm ($\phi=w+c\log w+\dots$), and one obtains $\phi$ as the limit $\phi(z)=\lim\bigl(w(f^n(z))-n-c\log n\bigr)$.
+      The petals are the domains in which the orbits run into the fixed point (attracting) or, for $f^{-1}$, (repelling). Detailed in Milnor, §10.
+    worum: |
+      If the multiplier is exactly $1$, there is no scaling to exploit. Nevertheless points creep up to the fixed point in certain
+      directions — in “petals”. There one finds a coordinate in which the map is a pure **translation** by $1$.
+- id: it.satz.moebius_familie
+  quelle_hash: 7f3c159f41d3
+  theorie_hash: ca5c57964b06
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: |
+        $A_\varepsilon=I+N$ with $N^2=-\varepsilon I$; with $\mu=\sqrt{-\varepsilon}$, $N$ has the eigenvalues $\pm\mu$, hence $A^t=a_tI+b_tN$ with
+        $a_t=\frac{(1+\mu)^t+(1-\mu)^t}2$, $b_t=\frac{(1+\mu)^t-(1-\mu)^t}{2\mu}$. Both are even in $\mu$, hence analytic in $\varepsilon=-\mu^2$ for $|\varepsilon|<1$, and real for real
+        $\varepsilon$ (then $\mu$ is real or purely imaginary).
+        Same iterate at both fixed points: The regular iteration at a fixed point is the only one holomorphic there (it.satz.vertauschbar), and $A^t$ is holomorphic at both.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, matrix computation.
+      f2_benutzte_voraussetzungen: Möbius maps correspond to 2×2 matrices.
+      f5_neue_frage: What exactly destroys analyticity for exp (if it is missing)? → br.frage.implosion
+      f4_uebertragbar: Not to exp — there the global linearization is missing.
+      f3_spezialfall: 'Yes: parabolic implosion is trivial for Möbius maps.'
+    bewertung:
+      nutzen: Shows in the simplest model what one might expect at η — and what is different for exp.
+      richtigkeit: complete
+    titel: 'A model for the transition at η: the Möbius family is analytic through the parabolic case'
+    aussage: |
+      For $\varepsilon<0$, $f_\varepsilon$ has two real fixed points (like $b^x$ below $\eta$), for $\varepsilon=0$ one parabolic one ($z\mapsto z+1$, as at $\eta$), for $\varepsilon>0$
+      a complex pair (as above $\eta$). The iterates $f_\varepsilon^{[t]}$ belonging to the matrix $A_\varepsilon^t=\exp(t\log A_\varepsilon)$ are real for every real $\varepsilon$, the same at both
+      fixed points (no “Bummer”) and **analytic in $\varepsilon$ through $\varepsilon=0$**. For tetration precisely this is open (kl.frage.eta_analytisch):
+      there already the two regular iterations below $\eta$ differ.
+    bereich: $f_\varepsilon(z)=\dfrac{z+1}{1-\varepsilon z}$, matrix $A_\varepsilon=\begin{pmatrix}1&1\\-\varepsilon&1\end{pmatrix}$
+    einfach: 'For fractional functions the transition “two fixed points → one → no real one” can be worked out completely: the fractional iterates
+      change perfectly smoothly along the way. For the exponential function this is precisely the unsolved question.'
+  en_theorie:
+    beispiel: |
+      $z=0.3$, half-iterate: $0.800053$ ($\varepsilon=-0.01$), $0.8$ ($\varepsilon=0$, where $f$ is the translation by 1), $0.799953$ ($\varepsilon=0.01$) — smooth through the transition.
+    einordnung: |
+      Model for the open question [[kl.frage.eta_analytisch]]; for $\exp$ everything is more complicated already below $\eta$ ([[kl.beob.zwei_abel]]).
+    genau: |
+      $f_\varepsilon(z)=(z+1)/(1-\varepsilon z)$: two real fixed points for $\varepsilon<0$, one at $\varepsilon=0$, a complex pair for $\varepsilon>0$. The fractional iterates
+      come from matrix powers and are **analytic in $\varepsilon$**, also through $\varepsilon=0$.
+    warum: |
+      1. Möbius maps are $2\times2$ matrices; iterating means taking powers.
+      2. The matrix power $A^t$ is an even function of the root $\mu=\sqrt{-\varepsilon}$ — hence an ordinary power series in $\varepsilon$.
+      3. Since the iterate is holomorphic at both fixed points, it is the regular one at both — no contradiction as with $\sqrt2^x$.
+    worum: |
+      What happens at $\eta$ when two real fixed points merge into one and then move into the complex plane? For the exponential function this is hard. For
+      fractional functions one can compute it exactly.
+- id: it.satz.moebius_iteration
+  quelle_hash: 149e8227d867
+  theorie_hash: f83616d0eb44
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: $\sigma$ is Möbius with $\sigma(L_1)=0$, $\sigma(L_2)=\infty$; $\sigma f\sigma^{-1}$ fixes $0,\infty$, hence is $w\mapsto\lambda w$.
+        Then $1/\sigma$ conjugates to $w\mapsto\lambda^{-1}w$ with $1/\sigma(L_2)=0$, hence is (up to a factor) the Schröder function at $L_2$;
+        its regular iteration is $(1/\sigma)^{-1}(\lambda^{-t}/\sigma)=\sigma^{-1}(\lambda^t\sigma)$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes (conjugation to normal form).
+      f2_benutzte_voraussetzungen: Two distinct fixed points, $|\lambda|\ne1$; same branch choice of $\ln\lambda$.
+      f5_neue_frage: Which property of $f$ (rational of degree 1) forces the agreement — and how large is the deviation for $f$ “near” a Möbius
+        map?
+      f4_uebertragbar: 'Not to $\exp_b$: there the regular Abel functions at 2 and 4 differ (kl.beob.zwei_abel, “Bummer”).'
+      f3_spezialfall: 'Yes: a Schröder function that is global at both fixed points — impossible for entire transcendental functions.'
+    bewertung:
+      nutzen: Contrast showing why the choice of fixed point really matters for tetration.
+      richtigkeit: complete
+    titel: Möbius maps — regular iteration at both fixed points is the same
+    aussage: |
+      $\sigma(z)=\dfrac{z-L_1}{z-L_2}$ satisfies $\sigma\circ f=\lambda\,\sigma$; the multiplier at $L_2$ is $1/\lambda$, and $1/\sigma$ is the Schröder function there.
+      The regular iterations at both fixed points coincide: the one at $L_1$,
+      $$f^{\circ t}=\sigma^{-1}\bigl(\lambda^t\sigma\bigr),$$
+      is also the one at $L_2$ (with $\ln(1/\lambda)=-\ln\lambda$).
+      Example $f(z)=\frac{3z+2}{z+2}$: $L_1=2$ ($\lambda=1/4$), $L_2=-1$ ($\lambda=4$); the half-iterates at the two fixed points agree to 60 digits.
+    bereich: Möbius map $f(z)=\frac{\alpha z+\beta}{\gamma z+\delta}$ with two fixed points $L_1\ne L_2$, multiplier $\lambda$ at $L_1$, $|\lambda|\ne0,1$
+    einfach: 'For the simplest fractional functions there is no choice: whether you build the half step from one fixed point or from the other,
+      the same thing comes out. For b^x this is different — there the two fixed points give different solutions.'
+  en_theorie:
+    beispiel: |
+      $f(z)=\frac{3z+2}{z+2}$: fixed points from $z^2-z-2=0$, hence $L_1=2$, $L_2=-1$. Derivative $f'(z)=4/(z+2)^2$: $f'(2)=1/4$, $f'(-1)=4$.
+      Half step with $\sigma(z)=\frac{z-2}{z+1}$ and $\lambda^{1/2}=1/2$: $h(0)=\sigma^{-1}(\sigma(0)/2)=\sigma^{-1}(-1)=\tfrac12$, and
+      $h(\tfrac12)=\sigma^{-1}(-\tfrac12)=1=f(0)$. Computed from $L_2=-1$: the same values to 60 digits.
+    einordnung: |
+      A special case of Koenigs ([[it.satz.koenigs]]) in which the local linearization becomes global. The contrast “Möbius the same, $b^z$
+      different” is the background of the “Bummer” at base $\sqrt2$ ([[kl.beob.zwei_abel]]).
+    genau: |
+      Let $f(z)=\frac{\alpha z+\beta}{\gamma z+\delta}$ with two fixed points $L_1\ne L_2$ and multiplier $\lambda$ at $L_1$ ($\lambda\ne0$, $|\lambda|\ne1$).
+      - $\sigma(z)=\dfrac{z-L_1}{z-L_2}$ satisfies $\sigma(f(z))=\lambda\,\sigma(z)$.
+      - The multiplier at $L_2$ is $1/\lambda$, and $1/\sigma$ is the Schröder function there.
+      - The regular iteration is the same at both fixed points:
+        $$f^{\circ t}(z)=\sigma^{-1}\bigl(\lambda^t\,\sigma(z)\bigr).$$
+    warum: |
+      1. $\sigma$ is itself a Möbius map and sends $L_1$ to $0$, $L_2$ to $\infty$.
+      2. The conjugated map $\sigma\circ f\circ\sigma^{-1}$ is again Möbius and fixes $0$ and $\infty$. Möbius maps with these
+         fixed points are pure scalings $w\mapsto\lambda w$. Hence $\sigma\circ f=\lambda\,\sigma$ — this is the Schröder equation, and indeed for all of $\mathbb C$.
+      3. Seen from $L_2$ one takes $1/\sigma$: it sends $L_2$ to $0$ and satisfies $(1/\sigma)\circ f=\lambda^{-1}(1/\sigma)$. The regular iteration there is
+         $(1/\sigma)^{-1}\bigl(\lambda^{-t}/\sigma\bigr)=\sigma^{-1}(\lambda^t\sigma)$ — the same.
+
+      For $b^z$ this does not work, because no Schröder function at one fixed point reaches the other fixed point smoothly: between them lie the
+      branch points of the logarithm.
+    worum: |
+      For $\sqrt2^x$ there are two fixed points, and if one builds the “half step” from one or from the other, different functions
+      come out ([[kl.beob.zwei_abel]]). Is that always so? No: for the simplest fractional functions, the Möbius maps
+      $z\mapsto\frac{\alpha z+\beta}{\gamma z+\delta}$, both constructions agree. The comparison shows that the difference for
+      tetration is genuine and does not come from the method.
+- id: it.satz.parabolische_rate
+  quelle_hash: 72b2bf1a4300
+  theorie_hash: b6e414b23c80
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: |
+        Classical (Leau 1897, Fatou 1919; asymptotics with corrections in de Bruijn 1958, Ch. 8, and Thron 1960). The computation for $k=1$:
+        $1/f(x)=1/x+a+(a^2-b)x+O(x^2)$, hence $y_n=1/x_n$ with $y_{n+1}=y_n+a+(a^2-b)/y_n+O(y_n^{-2})$; summing up with $y_n\approx an$ gives
+        $y_n=an+\tfrac{a^2-b}{a}\ln n+C+o(1)$. For general $k$ the same computation with $y=x^{-k}$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the Taylor expansion of $1/f$ (for $k=1$ complete in the proof text).
+      f2_benutzte_voraussetzungen: $a>0$ and real start on the right (otherwise start in the petal); $b$ only for the log correction.
+      f5_neue_frage: 'The constant $C$ is the value of the Fatou coordinate at the starting point — at η: $1/\delta_n-n/(2e)-\ln n/(6e)\to0.51471\ldots$
+        (check L1 with 30 digits, $n\le10^6$).'
+      f4_uebertragbar: 'Tower to base η: $e-{}^n\eta=2e/(n+\tfrac13\ln n+C)$ with $a=1/(2e)$, $b=1/(6e^2)$ — the forum formula of R. Israel (2010)
+        and the basis of kl.satz.eta_digamma; multiplier −1 (base $e^{-e}$) via $f\circ f$ with $k=2$ (fp.satz.p2_raten); just beside the parabolic
+        case the bottleneck (fp.beob.tpid6_rate).'
+      f3_spezialfall: 'Real trace of the Leau–Fatou flower (it.satz.leau_fatou): $1/x$ is, up to $\ln$ terms, the Fatou coordinate.'
+    bewertung:
+      nutzen: Common root of three rate statements of our own (η tower, tip e^{−e}, TPID 6).
+      richtigkeit: established (literature); log correction recomputed here
+    voraussetzungen:
+    - text: f′(0) = 1 and first nonlinear term −a x^{k+1} with a > 0
+    titel: How fast an iteration runs into a parabolic fixed point (Leau–Fatou, Thron, de Bruijn)
+    aussage: |
+      The sequence $x_{n+1}=f(x_n)$ tends to 0, and only algebraically:
+      $$x_n^{\,k}\sim\frac{1}{k\,a\,n}\qquad(n\to\infty).$$
+      For $k=1$ more precisely: $\dfrac1{x_n}=a\,n+\dfrac{a^2-b}{a}\ln n+C+o(1)$, hence
+      $$x_n=\frac1{an}-\frac{(a^2-b)\ln n}{a^3n^2}+O(n^{-2}).$$
+    bereich: '$f(x)=x-a\,x^{k+1}+b\,x^{k+2}+O(x^{k+3})$, $a>0$, starting value $x_0>0$ small (complex: start in the attracting petal)'
+    einfach: If a sequence runs into a fixed point where the function has slope 1, it does not shrink quickly like a geometric sequence, but only
+      like 1/n — and in the next decimal place a logarithm shows up.
+  en_theorie:
+    beispiel: |
+      Tower to base $\eta$: $\delta_n=e-{}^n\eta$ satisfies $\delta_{n+1}=\delta_n-\delta_n^2/(2e)+\delta_n^3/(6e^2)-\dots$, hence $a=1/(2e)$,
+      $b=1/(6e^2)$ and $\delta_n=2e/(n+\tfrac13\ln n+C')$. Check with 30 digits: $1/\delta_n-n/(2e)-\ln n/(6e)=0.51501,\ 0.51474,\ 0.514713,\ 0.5147094$
+      for $n=10^3,10^4,10^5,10^6$.
+    einordnung: |
+      Classical since Leau and Fatou ([[it.satz.leau_fatou]]). Applications here: the fractional sum at $\eta$ ([[kl.satz.eta_digamma]]), the tip
+      $e^{-e}$ ([[fp.satz.p2_raten]], there with $f\circ f$ and $k=2$) and, just beside it, the bottleneck ([[fp.beob.tpid6_rate]]).
+    genau: |
+      For $f(x)=x-ax^{k+1}+bx^{k+2}+\dots$, $a>0$, and small $x_0>0$ one has $x_n^{\,k}\sim1/(kan)$. For $k=1$:
+      $$\frac1{x_n}=a\,n+\frac{a^2-b}{a}\ln n+C+o(1).$$
+    warum: |
+      1. Set $y=1/x$. From $f(x)=x(1-ax+bx^2)$ it follows that $1/f(x)=1/x+a+(a^2-b)x+O(x^2)$.
+      2. So $y_{n+1}=y_n+a+(a^2-b)/y_n+\dots$: every step adds almost exactly $a$.
+      3. Then $y_n\approx an$, and the small additions $(a^2-b)/(ak)$ add up to $\frac{a^2-b}{a}\ln n$.
+    worum: |
+      At an attracting fixed point with slope $\lambda$, $|\lambda|<1$, the distance shrinks like $\lambda^n$. If the slope is exactly 1,
+      it goes much more slowly: like $1/n$. This classical computation lies behind several rates in the library.
+- id: it.satz.sternberg_reell
+  quelle_hash: 7adb38fa9d22
+  theorie_hash: b40e160fb61e
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Sternberg, Duke Math. J. 24 (1957), for the real line; higher-dimensional with non-resonance Amer. J. Math. 79 (1957). Statement of
+        the theorem checked via an exercise (Eynard-Bontemps 2012), original not read.
+    pruefung:
+      f1_folgt_unmittelbar: No; without analyticity Koenigs' limit proof in power series form is missing, but the limit $a^{-n}g^n$ converges
+        here too in $C^r$.
+      f2_benutzte_voraussetzungen: $r\ge2$ (the case $r=1$ is not covered by the theorem); $a\ne1$.
+      f5_neue_frage: What regularity at the fixed point does regular tetration already force (analyticity yes, $C^\infty$?)
+      f4_uebertragbar: 'To every smooth real tetration at the lower fixed point: $C^r$ regularity at the fixed point alone does not determine
+        the solution (the conjugator is determined only up to $C^r$ commutants of $x\mapsto ax$).'
+      f3_spezialfall: Real, smooth counterpart of it.satz.koenigs.
+    bewertung:
+      nutzen: Separates what smoothness and what analyticity contribute to selecting the regular solution.
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: g ∈ C^r, r ≥ 2 (analytic not required)
+    - text: 0 < a ≠ 1
+    titel: Smooth real linearization at a hyperbolic fixed point (Sternberg 1957)
+    aussage: |
+      There is a local $C^r$ coordinate $h$ with $h(0)=0$, $h'(0)=1$ and $h\circ g=a\,h$. The real Schröder equation is thus already solvable for
+      smooth (non-analytic) functions, and $g^t=h^{-1}(a^th)$ is a $C^r$ iteration group.
+    bereich: $g$ real, $C^r$ with $2\le r\le\infty$ near 0, $g(0)=0$, $g'(0)=a>0$, $a\ne1$
+    einfach: Even if a function is only smooth and not analytic, near an attracting fixed point it looks, after a suitable smooth change of variables,
+      exactly like a scaling.
+  en_theorie:
+    einordnung: |
+      Smooth counterpart of [[it.satz.koenigs]]. It shows: smoothness at the fixed point alone does not yet single out the regular tetration — for that one needs
+      analyticity ([[it.satz.vertauschbar]]).
+    genau: |
+      $g\in C^r$, $2\le r\le\infty$, $g(0)=0$, $g'(0)=a>0$, $a\ne1$: there is $h\in C^r$ with $h(0)=0$, $h'(0)=1$, $h\circ g=a\,h$.
+    warum: |
+      1. As with Koenigs one considers $h_n=a^{-n}g^n$.
+      2. The deviation from linear is quadratically small, and $g^n$ shrinks geometrically; this gives convergence of $h_n$ together with its derivatives up to order $r$.
+      3. The case $r=1$ is not covered; there one needs additional conditions on the continuity of $g'$.
+    worum: |
+      Koenigs' theorem requires an analytic function. For real questions “smooth” is often enough: Sternberg showed in 1957 that even a merely smooth function
+      near an attracting (or repelling) fixed point is exactly a scaling in a suitable smooth coordinate.
+- id: it.satz.szekeres
+  quelle_hash: 6c4352524ab6
+  theorie_hash: 93185e7591b0
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Szekeres 1958.
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Not checked against the original — exact regularity and asymptotics condition open.
+      f5_neue_frage: Szekeres (1961) objected that Kneser's solution is not distinguished by growth → motivation for complex uniqueness theorems.
+      f4_uebertragbar: Real version of regular tetration at $b\le\eta$.
+      f3_spezialfall: 'no'
+    bewertung:
+      nutzen: Historically, and for b ≤ η.
+      richtigkeit: established (literature), formulation unchecked
+    voraussetzungen:
+    - text: f real-analytic (or sufficiently smooth) near 0 with 0 < f(x) < x
+    titel: Szekeres' regular iteration of real functions
+    aussage: |
+      There is a unique “regular” Abel function with prescribed asymptotics at the fixed point;
+      the associated iteration group is smooth on $(0,\varepsilon)$, but at the fixed point in the parabolic case
+      in general not analytic.
+    bereich: real $f(x)=x-ax^{k+1}+\dots$ on $(0,\varepsilon)$, $a>0$; resp. the hyperbolic case
+  en_theorie:
+    beispiel: |
+      The real half-iterate $g$ of $e^x-1$ exists, is analytic for $x\ne0$ and infinitely often differentiable at $0$. Its Taylor series at $0$ is
+      $x+\tfrac14x^2+\tfrac1{48}x^3+\tfrac1{3840}x^5-\dots$ — and this series converges nowhere except at $0$.
+    einordnung: |
+      Transferred to base $\eta$: there is a nice real parabolic tetration ([[kl.satz.parabolisch]]), but none that would be analytic at the fixed point $e$
+      ([[kl.kor.eta_baker]]).
+    genau: |
+      For real $f(x)=x-ax^{k+1}+\dots$ on $(0,\varepsilon)$ with $a>0$ (and likewise in the hyperbolic case) there is a unique “regular” Abel function
+      with prescribed asymptotics at the fixed point. The associated iteration is smooth on $(0,\varepsilon)$, but at the fixed point in the parabolic case in
+      general not analytic.
+    warum: |
+      Theorem from the literature. Construction as for Leau–Fatou, but only on the real half-line; uniqueness comes from the prescribed
+      asymptotics (which eliminates the periodic freedom from [[fg.satz.allgemeine_loesung]]). That analyticity at the fixed point can be missing is shown by [[it.satz.baker]].
+    worum: |
+      On the real axis one can nevertheless build half steps, even at the parabolic fixed point: Szekeres showed in 1958 that there is
+      a natural, arbitrarily often differentiable real iteration — which, however, need not be analytic at the fixed point itself.
+- id: it.satz.szekeres_monoton
+  quelle_hash: e18290587042
+  theorie_hash: 5fb11db1d595
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: Szekeres 1961 (via the Hyperoperations wiki, Theorem 2, checked; original not read).
+    gegenbeispielsuche: 'exp.cheta: signs of the derivatives 1–8 at u = 0.05, 0.3, 1, 3, 10 all as required; at u = 1 they follow the pattern
+      (−1)^{k+1}(k−1)!(2k + 1/3) of the singularity −2/u + (1/3) ln u.'
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: 'Why perturbations fail (sketch here): near 0, $A′^2/|A″|\approx1/x$ is unbounded; the second derivative of
+        $c\sin2\pi A$ contains $-c(2\pi)^2A′^2\sin2\pi A$ and wins — every periodic perturbation violates $A″<0$ near 0 (exp.cheta: already $c=0.001$
+        at $x=0.0025$).'
+      f5_neue_frage: Is there an equally real condition for $b>\eta$? → br.frage.bohr_mollerup; for $b<\eta$ → kl.verm.vollmonoton.
+      f4_uebertragbar: 'To $\exp_\eta$ at $e$ (conjugate to $e^u-1$): the Abel function belonging to cheta is totally monotone in $y-e$. For Kneser
+        ($b>\eta$) open; the slog is not totally monotone there (forum).'
+      f3_spezialfall: 'Szekeres’ framework: functions whose inverse is totally monotone (here $\ln(1+x)$) have a totally monotone regular Abel
+        function (forum tid 37, secondary).'
+    bewertung:
+      nutzen: The only known example of a real uniqueness condition in this area.
+      richtigkeit: established (literature, checked via secondary sources)
+    titel: 'Szekeres: the Abel function of e^x − 1 is the only totally monotone one'
+    aussage: |
+      $A$ is called **totally monotone** on $(0,\infty)$ if $(-1)^{k+1}A^{(k)}(x)>0$ for all $k\ge1$, $x>0$ (like $\ln x$: $A'>0$, $A''<0$, $A'''>0$, …).
+      The principal Abel function of $e^x-1$ (Fatou coordinate at the parabolic fixed point 0, $A(x)=-\frac2x+\frac13\ln x+\dots$ for $x\downarrow0$) is totally monotone,
+      and it is the **only** Abel function of $e^x-1$ with this property — a purely real uniqueness condition.
+    bereich: $f(x)=e^x-1$ on $x>0$; Abel functions $A$ with $A(e^x-1)=A(x)+1$
+    einfach: For the function e^x − 1 there are infinitely many “step counters”, but only one has derivatives that alternate in sign as neatly
+      as those of the logarithm. This pins down a solution by a property on the real axis alone — exactly what is still missing for tetration
+      itself.
+  en_theorie:
+    beispiel: |
+      Measured (exp.cheta) at $x=1$: $A'=2.309$, $A''=-4.330$, $A'''=12.67$, $A^{(4)}=-50.0002$, …, $A^{(8)}=-82320.01$ — signs as required, also at
+      $x=0.05,\ 0.3,\ 3,\ 10$. The high derivatives follow the pattern $(-1)^{k+1}(k-1)!\,(2k+\tfrac13)$, which comes exactly from $-\frac2x+\frac13\ln x$.
+      The perturbed function $A+0.001\sin2\pi A$ violates $A''<0$ already at $x=0.0025$.
+    einordnung: |
+      The only known example of a purely real uniqueness condition in this area. Via $\exp_\eta\sim e^u-1$ it holds for the upper
+      solution at $\eta$ ([[kl.satz.cheta]]); the hyperbolic counterpart below $\eta$ is [[kl.verm.vollmonoton]]. Whether there is such a
+      condition for Kneser above $\eta$ is open ([[br.frage.bohr_mollerup]]). Szekeres' earlier work: [[it.satz.szekeres]].
+    genau: |
+      A function $A$ on $(0,\infty)$ is called **totally monotone** if it is infinitely often differentiable and
+      $$(-1)^{k+1}A^{(k)}(x)>0\qquad\text{for all }k\ge1,\ x>0,$$
+      that is $A'>0$, $A''<0$, $A'''>0$, … — like $\ln x$.
+
+      **Theorem (Szekeres 1961):** The principal Abel function of $e^x-1$ — the Fatou coordinate at the fixed point $0$, with $A(x)=-\frac2x+\frac13\ln x+\dots$ for
+      $x\to0^+$ — is totally monotone, and it is the **only** Abel function of $e^x-1$ with this property.
+    warum: |
+      The proof is in Szekeres (checked here only via the Hyperoperations wiki). Why every wave destroys the property can be seen as follows:
+      1. Another Abel function is $A+\theta(A)$ with a function $\theta$ of period $1$, e.g. $\theta=c\sin2\pi A$.
+      2. Its second derivative contains the term $-c(2\pi)^2A'^2\sin2\pi A$.
+      3. Near $0$, $A'\approx2/x^2$ and $A''\approx-4/x^3$, hence $A'^2/|A''|\approx1/x$ — arbitrarily large. The wave term wins, and where
+         $\sin2\pi A=-1$ the second derivative becomes positive. The condition $A''<0$ is violated.
+
+      The smaller the wave, the closer to $0$ the violation lies — but it always comes.
+    worum: |
+      The Abel equation $A(f(x))=A(x)+1$ always has infinitely many solutions: to a solution one can add a small wave of period 1. For $f(x)=e^x-1$, G. Szekeres found a property that selects exactly **one** solution, and does so on the real
+      axis alone: the derivatives must alternate in sign, as for the logarithm. For tetration itself, one does not (yet) know anything like this.
+- id: it.satz.vertauschbar
+  quelle_hash: ae0f911ff52f
+  theorie_hash: 2669148de492
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
+  en:
+    beweis:
+      text: |
+        $g=f^t$ commutes with $f$. In Koenigs coordinates $\tilde g=\sigma g\sigma^{-1}$ commutes with $w\mapsto\lambda w$;
+        comparing coefficients, $a_n\lambda=a_n\lambda^n$ and $\lambda^{n-1}\neq1$ give $a_n=0$ for $n\ge2$,
+        hence $\tilde g(w)=c_t w$. Group property and continuity: $c_t=\lambda^t$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from Koenigs plus comparison of coefficients.
+      f2_benutzte_voraussetzungen: Holomorphy of all $f^t$ at $p$; $\lambda$ not a root of unity; continuity in $t$ only for $c_t=\lambda^t$.
+      f5_neue_frage: 'For $1<b<\eta$: two fixed points, two regular iterations — do they agree? → kl.beob.zwei_abel'
+      f4_uebertragbar: 'Not to parabolic fixed points (there the formal iteration can diverge: it.satz.baker).'
+      f3_spezialfall: Special case of the description of the centralizer of linearizable germs.
+    bewertung:
+      nutzen: Justifies the name “regular”.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: 0 < λ < 1 real
+    - text: every f^t holomorphic at p with f^t(p) = p
+    - text: t ↦ (f^t)′(p) continuous
+    - text: f^t real on the real axis
+    titel: Regular iteration is the only one holomorphic at the fixed point
+    aussage: |
+      Then $f^t=\sigma^{-1}\circ(\lambda^t\sigma)$ holds, with the Koenigs function $\sigma$: the **regular iteration**
+      is the only continuous iteration whose members are holomorphic at the fixed point.
+    bereich: iteration groups $(f^t)_{t\in\mathbb R}$ with every $f^t$ holomorphic at the hyperbolic fixed point $p$, $0<\lambda<1$ real
+  en_theorie:
+    beispiel: |
+      For $\sqrt2^{\,z}$: the regular half-iterate sends $1$ to $T(\tfrac12)=1.24362$ and $1.24362$ to $\sqrt2$ — applied twice,
+      that is exactly one tower step.
+    einordnung: |
+      This is the reason why regular tetration below $\eta$ counts as “the right one” ([[kl.satz.regulaer]]). The same idea in the form of a
+      derivative formula: [[kl.satz.bruchprodukt]]. In the parabolic case there is no such iteration ([[it.satz.baker]]).
+    genau: |
+      Let $p$ be an attracting fixed point with real multiplier $0<\lambda<1$ and $(f^t)_{t\in\mathbb R}$ a continuous iteration all of whose members are
+      holomorphic at the fixed point. Then
+      $$f^t=\sigma^{-1}\circ\bigl(\lambda^t\,\sigma\bigr)$$
+      with the Koenigs function $\sigma$.
+    warum: |
+      1. Every $g=f^t$ commutes with $f$: $g\circ f=f^{t+1}=f\circ g$.
+      2. In Koenigs coordinates $\tilde g=\sigma\circ g\circ\sigma^{-1}$ commutes with $w\mapsto\lambda w$. Write $\tilde g(w)=\sum a_nw^n$; then
+         $\tilde g(\lambda w)=\lambda\tilde g(w)$ means $a_n\lambda^n=\lambda a_n$.
+      3. For $n\ge2$, $\lambda^{n-1}\ne1$, hence $a_n=0$: $\tilde g(w)=c_t\,w$ is a scaling.
+      4. The group property gives $c_{s+t}=c_sc_t$ and $c_1=\lambda$; with continuity it follows that $c_t=\lambda^t$.
+    worum: |
+      One can “halve” maps in many ways. But if one demands that all fractional steps be holomorphic at the fixed point, exactly
+      one possibility remains: scale by $\lambda^t$ in the Koenigs coordinate. This is the **regular iteration**.

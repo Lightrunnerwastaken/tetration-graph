@@ -170,3 +170,17 @@ def test_abgleich_zeigt_nur_abweichungen():
     assert "consequence" in abw[0][3] and "sequence" in abw[0][4]
     assert U.abgleich(a, a) == []
     assert U.abgleich(a, [])[0][1] == "(fehlt in B)"
+
+
+def test_geprueft_je_gruppe():
+    e = {"en": {"titel": "T", "beweis": {"text": "B"}}, "en_theorie": {"worum": "W"}, "geprueft": "zweitpruefung"}
+    assert U.geprueft_je_gruppe(e) == {"beweis": "zweitpruefung", "kern": "zweitpruefung", "theorie": "zweitpruefung"}
+    e["geprueft"] = {"kern": "zweitpruefung", "theorie": "mensch"}
+    assert U.geprueft_je_gruppe(e) == {"beweis": "nein", "kern": "zweitpruefung", "theorie": "mensch"}
+    assert U.schlechtester_stand(e) == "nein"
+    assert U.schlechtester_stand({"en": {"titel": "T"}, "geprueft": "mensch"}) == "mensch"
+    a = knoten("a")
+    assert not [x for x in U.pruefe_eintrag(a, {"id": "g.a", "en": {"titel": "T"}, "geprueft": {"kern": "mensch"}})
+                if x[0] == "FEHLER"]
+    assert [x for x in U.pruefe_eintrag(a, {"id": "g.a", "en": {"titel": "T"}, "geprueft": {"quatsch": "mensch"}}) if x[0] == "FEHLER"]
+    assert [x for x in U.pruefe_eintrag(a, {"id": "g.a", "en": {"titel": "T"}, "geprueft": {"kern": "vielleicht"}}) if x[0] == "FEHLER"]

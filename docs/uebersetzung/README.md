@@ -5,11 +5,12 @@ Stand: Werkzeuge und Prüfregeln stehen (12.10.2026); übersetzt ist noch nichts
 ## Ablauf je Gebiet und Feldgruppe
 
 ```
-python -m wissen.uebersetzung stand                                    # Fortschritt je Gebiet
+python -m wissen.uebersetzung stand                                    # Fortschritt je Gebiet und Feldgruppe (übersetzt/gegengelesen)
 python -m wissen.uebersetzung export --gebiet fp --felder kern --max 20 -o stapel.json
 #   → Übersetzer (Sonnet) bekommt GLOSSAR.md + stapel.json und liefert dieselbe Struktur mit "en" statt "de"
 python -m wissen.uebersetzung einlesen uebersetzt.json --modell sonnet          # prüft, stempelt, schreibt daten/uebersetzung/fp.yaml
 python -m wissen.uebersetzung einlesen uebersetzt.json --modell sonnet --trocken  # nur prüfen
+python -m wissen.uebersetzung abgleich sonnet.json haiku.json         # wo zwei unabhängige Übersetzungen auseinanderliegen
 python baue.py --nur-pruefen                                           # volle Prüfung inkl. Übersetzungsregeln
 ```
 
@@ -23,7 +24,7 @@ Format des Übersetzer-Stapels (Eingabe): `[{"id", "art", "status", "de": {…}}
 ## Datei `daten/uebersetzung/<gebiet>.yaml` (maschinell geführt)
 
 Pro Aussage: `id`, `quelle_hash` (Hash der übersetzten deutschen Texte), optional `theorie_hash`, `herkunft` (Modell, Datum), `geprueft`
-(`nein` | `zweitpruefung` | `mensch`), `en`, `en_theorie`. Einzelne Texte dürfen von Hand verbessert werden; danach `einlesen --ersetzen` mit dem
+(`nein` | `zweitpruefung` | `mensch`, entweder ein Wert für den ganzen Eintrag oder je Feldgruppe `{kern, beweis, intern, theorie}`), `en`, `en_theorie`. Einzelne Texte dürfen von Hand verbessert werden; danach `einlesen --ersetzen` mit dem
 Gesamteintrag oder den Hash mitführen (sonst meldet die Prüfung „veraltet“).
 
 ## Prüfregeln (`wissen/uebersetzung.py`, Tests `tests/test_uebersetzung.py`)

@@ -6,7 +6,7 @@ Die Übersetzungen stehen NICHT in den deutschen Aussagedateien, sondern in `dat
       quelle_hash: 3fa9c1d20b7e        # Hash der deutschen Texte, die hier übersetzt sind (Pfad -> Text)
       theorie_hash: 91ce44aa07d2       # nur wenn en_theorie vorhanden
       herkunft: {modell: sonnet, datum: '2026-10-13'}
-      geprueft: nein                   # nein | zweitpruefung | mensch
+      geprueft: nein                   # nein | zweitpruefung | mensch – oder je Feldgruppe {kern: …, beweis: …, intern: …, theorie: …}
       en:
         titel: Chain rule of tetration
         aussage: ...
@@ -85,6 +85,35 @@ def hole(o, pfad):
                 return None
             o = o[name]
     return o
+
+
+FELDGRUPPEN = {
+    "kern": ["titel", "aussage", "bereich", "einfach", "formen"],
+    "beweis": ["beweis", "gegenbeispielsuche", "naechste_frage"],
+    "intern": ["pruefung", "bewertung", "voraussetzungen"],
+}
+GRUPPE_VON_FELD = {f: g for g, fs in FELDGRUPPEN.items() for f in fs}
+RANG = {"nein": 0, "zweitpruefung": 1, "mensch": 2}
+
+
+def gruppen_im_eintrag(e: dict) -> set:
+    """Feldgruppen, die ein Übersetzungseintrag enthält."""
+    gr = {GRUPPE_VON_FELD[f] for f in (e.get("en") or {}) if f in GRUPPE_VON_FELD}
+    return gr | ({"theorie"} if e.get("en_theorie") else set())
+
+
+def geprueft_je_gruppe(e: dict) -> dict:
+    """Prüfstand je enthaltener Feldgruppe; ein einzelner Wert gilt für alle Gruppen des Eintrags."""
+    g = e.get("geprueft", "nein")
+    gr = gruppen_im_eintrag(e)
+    if isinstance(g, dict):
+        return {k: g.get(k, "nein") for k in sorted(gr)}
+    return {k: g for k in sorted(gr)}
+
+
+def schlechtester_stand(e: dict) -> str:
+    werte = list(geprueft_je_gruppe(e).values()) or [e.get("geprueft", "nein") if isinstance(e.get("geprueft", "nein"), str) else "nein"]
+    return min(werte, key=lambda w: RANG.get(w, 0))
 
 
 def quell_hash(texte: dict) -> str:
@@ -197,8 +226,14 @@ def pruefe_eintrag(a: dict, eintrag: dict) -> list:
     en, th = eintrag.get("en"), eintrag.get("en_theorie")
     if en is None and th is None:
         return [("FEHLER", "uebersetzung", "Eintrag ohne 'en' und ohne 'en_theorie'")]
-    if eintrag.get("geprueft", "nein") not in S.UEBERSETZ_GEPRUEFT:
-        b.append(("FEHLER", "uebersetzung", f"geprueft='{eintrag.get('geprueft')}' unbekannt (erlaubt: {sorted(S.UEBERSETZ_GEPRUEFT)})"))
+    gp = eintrag.get("geprueft", "nein")
+    erlaubt_gruppen = set(FELDGRUPPEN) | {"theorie"}
+    if isinstance(gp, dict):
+        schlecht = [f"{k}={v}" for k, v in gp.items() if v not in S.UEBERSETZ_GEPRUEFT or k not in erlaubt_gruppen]
+    else:
+        schlecht = [] if gp in S.UEBERSETZ_GEPRUEFT else [str(gp)]
+    if schlecht:
+        b.append(("FEHLER", "uebersetzung", f"geprueft unbekannt: {', '.join(schlecht)} (Werte: {sorted(S.UEBERSETZ_GEPRUEFT)}, Gruppen: {sorted(erlaubt_gruppen)})"))
     if en is not None:
         form = pruefe_form(a, en)
         b += form
@@ -260,7 +295,7 @@ def einbinden(g):
         if e.get("en_theorie") is not None:
             a["en_theorie"] = e["en_theorie"]
         a["_en_stand"] = stand_eines(a, e)
-        a["_en_geprueft"] = e.get("geprueft", "nein")
+        a["_en_geprueft"] = schlechtester_stand(e)
     # Fortschritt je Gebiet (nur wenn schon übersetzt wird)
     if gesehen:
         for geb in g.roh.get("gebiete") or []:
@@ -270,7 +305,7 @@ def einbinden(g):
             mit = [i for i in ids if i in gesehen and g.knoten[i].get("en")]
             alt = sum(1 for i in mit if g.knoten[i]["_en_stand"] != "aktuell")
             th = sum(1 for i in ids if i in gesehen and gesehen[i].get("en_theorie"))
-            geprueft = sum(1 for i in mit if gesehen[i].get("geprueft", "nein") != "nein")
+            geprueft = sum(1 for i in mit if schlechtester_stand(gesehen[i]) != "nein")
             if len(mit) < len(ids) or alt or th < len(ids):
                 g.befund("HINWEIS", "uebersetzung-fortschritt", geb["id"],
                          f"{len(mit)} von {len(ids)} Aussagen übersetzt ({alt} nicht aktuell, {geprueft} gegengelesen), "
@@ -279,13 +314,6 @@ def einbinden(g):
 
 
 # ------------------------------------------------------------------ Werkzeuge (Befehlszeile)
-FELDGRUPPEN = {
-    "kern": ["titel", "aussage", "bereich", "einfach", "formen"],
-    "beweis": ["beweis", "gegenbeispielsuche", "naechste_frage"],
-    "intern": ["pruefung", "bewertung", "voraussetzungen"],
-}
-
-
 def _blatt_pfade(a, feld):
     """Übersetzbare Pfade einer Aussage für ein Feld (nur was es im Deutschen gibt)."""
     v = a.get(feld)
@@ -332,25 +360,32 @@ def lade_graph(wurzel: Path):
 
 
 def befehl_stand(wurzel):
+    """Fortschritt je Gebiet; je Feldgruppe 'übersetzt/gegengelesen' (gegengelesen = zweitpruefung oder mensch)."""
     g = lade_graph(wurzel)
-    zeilen = defaultdict(lambda: Counter())
+    gruppen = [*FELDGRUPPEN, "theorie"]
+    zeilen = defaultdict(Counter)
+    eintraege = {e["id"]: e for e in g.roh.get("uebersetzung") or []}
     for i, a in g.knoten.items():
         z = zeilen[a.get("gebiet")]
         z["gesamt"] += 1
+        e = eintraege.get(i)
+        if not e:
+            continue
         if a.get("en"):
-            z["übersetzt"] += 1
             z["veraltet" if a["_en_stand"] != "aktuell" else "aktuell"] += 1
-            if a.get("_en_geprueft") != "nein":
-                z["gegengelesen"] += 1
-        if a.get("en_theorie"):
-            z["theorie"] += 1
-    print(f"{'Gebiet':8} {'gesamt':>6} {'übers.':>6} {'aktuell':>7} {'veraltet':>8} {'gegengel.':>9} {'theorie':>7}")
+        for gr, wert in geprueft_je_gruppe(e).items():
+            z[gr + ":uebersetzt"] += 1
+            z[gr + ":geprueft"] += RANG.get(wert, 0) > 0
+    kopf = f"{'Gebiet':8} {'gesamt':>6} {'veraltet':>8}  " + "  ".join(f"{gr:>9}" for gr in gruppen) + "     (je Gruppe: übersetzt/gegengelesen)"
+    print(kopf)
     summe = Counter()
-    for geb, z in sorted(zeilen.items()):
-        print(f"{geb:8} {z['gesamt']:>6} {z['übersetzt']:>6} {z['aktuell']:>7} {z['veraltet']:>8} {z['gegengelesen']:>9} {z['theorie']:>7}")
-        summe.update(z)
-    print(f"{'Summe':8} {summe['gesamt']:>6} {summe['übersetzt']:>6} {summe['aktuell']:>7} {summe['veraltet']:>8} "
-          f"{summe['gegengelesen']:>9} {summe['theorie']:>7}")
+    for geb, z in [*sorted(zeilen.items()), ("Summe", None)]:
+        if z is None:
+            z = summe
+        else:
+            summe.update(z)
+        print(f"{geb:8} {z['gesamt']:>6} {z['veraltet']:>8}  " +
+              "  ".join(f"{str(z[gr + ':uebersetzt']) + '/' + str(z[gr + ':geprueft']):>9}" for gr in gruppen))
 
 
 def befehl_export(wurzel, gebiet, felder, maximum, nur_fehlend, ausgabe):
@@ -446,7 +481,10 @@ def befehl_einlesen(wurzel, datei, modell, ersetzen, trocken, geprueft):
         if "en_theorie" in e:
             e["theorie_hash"] = quell_hash(deutsch_theorie(a, e["en_theorie"]))
         e["herkunft"] = {"modell": modell, "datum": datetime.date.today().isoformat()}
-        e["geprueft"] = geprueft
+        neue_gruppen = gruppen_im_eintrag({"en": z.get("en"), "en_theorie": z.get("en_theorie")})
+        alte = geprueft_je_gruppe(e) if (alt and not ersetzen) else {}
+        stand = {**alte, **{g: geprueft for g in neue_gruppen}}
+        e["geprueft"] = next(iter(stand.values())) if len(set(stand.values())) == 1 else dict(sorted(stand.items()))
         b = pruefe_eintrag(a, e)
         for s, r, t in b:
             if s != "HINWEIS":
