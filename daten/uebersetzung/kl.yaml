@@ -1,0 +1,1907 @@
+# Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
+# übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: kl.beob.eta_konstanten
+  quelle_hash: 6e00e8c8ad95
+  theorie_hash: 4074c5e758c7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f3_spezialfall: —
+      f5_neue_frage: Recognition of a closed form (PSLQ with e, γ, log 2, π, ζ(3), …).
+      f1_folgt_unmittelbar: No (computation).
+      f2_benutzte_voraussetzungen: Fatou series with 24 terms, depth 3000; tails by Euler–Maclaurin. C_T and the regularized sum only from integer
+        heights.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Reference values for η.
+      richtigkeit: numerical
+    titel: Numbers for base η
+    aussage: |
+      $C_T=2.79824815423138766245258318547\ldots$, $\sum_{k\ge1}[T(k)-e+2e/k]=10.797562274939314335\ldots$,
+      constant of the fractional sum $K_\eta=-2e\gamma+10.7975\ldots=7.659492568931829765\ldots$,
+      $T_\eta(1/2)=1.25715307505417262217\ldots$, $T_\eta'(0)=0.61109545377165172526\ldots$, $\sum_{k\ge1}T_\eta'(k)=1.45022901739342163\ldots$,
+      $S_\eta(1/2)=0.682095573523201008\ldots$
+    bereich: $b=\eta$, $T(0)=1$, regular parabolic tetration
+  en_theorie:
+    beispiel: |
+      $T_\eta'(k)\approx2e/k^2$ for large $k$: at $k=1000$ this agrees to 2 %.
+    einordnung: |
+      Whether any of these numbers has a closed form is open — a task for PSLQ as in [[gr.frage.integral_form]].
+    genau: |
+      $C_T=2.79824815423\ldots$, $\sum_k[T(k)-e+2e/k]=10.7975622749\ldots$, $T_\eta(\tfrac12)=1.2571530751\ldots$, $T_\eta'(0)=0.6110954538\ldots$,
+      $\sum_{k\ge1}T_\eta'(k)=1.4502290174\ldots$, $S_\eta(\tfrac12)=0.6820955735\ldots$
+    warum: |
+      Computed with the Fatou series (24 rational terms) and $20\,000$ tower levels; tails by Euler–Maclaurin. $C_T$ and the regularized sum
+      need only integer heights and do not depend on the choice of the fractional tetration.
+    worum: |
+      The most important numbers for base $\eta$ — computed so that one can check and compare with them.
+- id: kl.beob.q_binomial
+  quelle_hash: 66b885c9b9f4
+  theorie_hash: 4999a614a002
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'exp.qbinomial: two bases, five heights (real, negative, complex), N up to 80 with up to 640 digits; no deviation.'
+    pruefung:
+      f3_spezialfall: 'Yes: q-analog of the Newton series; the MO answer shows that a convergent series is bounded in $\operatorname{Re}z>0$ and
+        then (Carlson/Ramanujan) must be the regular tetration.'
+      f5_neue_frage: Conjecture 3 (T′ completely monotone) → kl.verm.vollmonoton.
+      f1_folgt_unmittelbar: 'Partially. Sketch: $T(z)=G(q^z)$ with $G(w)=\Psi(w\,\sigma(1))$ holomorphic for $|w|<q^{-2}$ (nearest singularity
+        at $z=-2$); interpolation at the nodes $q^k\to0$ converges in the disk of holomorphy with rate $|w|/q^{-2}$ — this would give convergence
+        for $\operatorname{Re}z>-2$ (Reshetnikov''s conjecture 1) and exactly the measured rate. The interpolation theorem is not checked here.'
+      f2_benutzte_voraussetzungen: Attracting fixed point ($a<\eta$), so that $0<q<1$.
+      f4_uebertragbar: To every function with an attracting fixed point and multiplier $q$; not to $b>\eta$ ($|q|=1$ is missing, fixed point repelling).
+    bewertung:
+      nutzen: Explicit formula from integer values; rate $q^{\operatorname{Re}z+2}$ measured and explained here.
+      richtigkeit: numerical (30–60 digits)
+    titel: q-binomial series (Reshetnikov) yields the regular tetration
+    aussage: |
+      $$t(z)=\sum_{n\ge0}\sum_{k=0}^n(-1)^{n-k}q^{\binom{n-k}2}{z\brack n}_q{n\brack k}_q\,{}^ka,\qquad {z\brack n}_q=\prod_{j<n}\frac{1-q^{z-j}}{1-q^{j+1}}.$$
+      The partial sum up to $n=N$ is the interpolation polynomial in $q^z$ through the points $0,\dots,N$ (exact at integer heights). Numerically ($a=\sqrt2$ and $1.3$;
+      $z=\tfrac12,\ 2.5,\ -0.7,\ 0.5+0.5i,\ 1.7$) $t(z)$ is the regular tetration: error at $N=80$ below $10^{-30}$ ($z=-0.7$: $2.7\cdot10^{-19}$), geometric with
+      factor $\approx q^{\operatorname{Re}z+2}$ per term ($0.3946$ versus $0.4000$ at $z=\tfrac12$). The terms are of size $q^{-n^2/2}$: one needs about
+      $\tfrac{n^2}2\log_{10}(1/q)$ digits, otherwise cancellation feigns divergence.
+    bereich: $1<a<\eta$, $q=-W(-\ln a)=\lambda$ (multiplier at the lower fixed point)
+    einfach: 'From the integer values 1, a, a^a, … alone, the regular tetration can be recovered — with a formula from the world of q-binomial
+      coefficients. The formula is beautiful but delicate: the individual terms become huge and almost completely cancel each other.'
+  en_theorie:
+    beispiel: |
+      $a=\sqrt2$ ($q=\ln2=0.6931$), $z=1/2$: $T(1/2)=1.2436216276685218\ldots$ Distance of the partial sums:
+      $3.2\cdot10^{-7}$ ($N=10$), $1.8\cdot10^{-11}$ ($N=20$), $1.1\cdot10^{-19}$ ($N=40$), $6.9\cdot10^{-36}$ ($N=80$). Factor per term $0.3946$,
+      predicted $q^{2.5}=0.4000$. At $z=-0.7$ (closer to $-2$) slower: factor $0.613$ versus $q^{1.3}=0.621$.
+    einordnung: |
+      A second, explicit representation of the regular tetration besides the Koenigs series. Reshetnikov's third conjecture — the derivative is
+      completely monotone — is a sign question about the Koenigs coefficients: [[kl.verm.vollmonoton]].
+    genau: |
+      For $1<a<\eta$ let $q=-W(-\ln a)$ — this is the multiplier $\lambda$ at the lower fixed point, $0<q<1$. Then
+      $$t(z)=\sum_{n\ge0}\sum_{k=0}^n(-1)^{n-k}\,q^{\binom{n-k}2}\,{z\brack n}_q{n\brack k}_q\,{}^ka,\qquad{z\brack n}_q=\prod_{j=0}^{n-1}\frac{1-q^{z-j}}{1-q^{j+1}}.$$
+      - The partial sum up to $n=N$ is the polynomial in $q^z$ that passes through the values at $z=0,1,\dots,N$. At integer heights it is exact.
+      - Measured: $t(z)$ is the regular tetration ([[kl.satz.regulaer]]), with error at $N=80$ below $10^{-30}$, and the error decays per term
+        by the factor $q^{\operatorname{Re}z+2}$.
+      - Caution: The individual terms are huge (like $q^{-n^2/2}$) and almost cancel. One needs about $\frac{n^2}2\log_{10}(1/q)$ digits.
+    warum: |
+      A justification in sketch form (the interpolation theorem used is not verified here):
+      1. The regular tetration depends only on $w=q^z$: $T(z)=G(q^z)$ with $G(w)=\Psi(w\,\sigma(1))$ ([[kl.satz.koenigs_spektral]]).
+      2. $G$ is smooth until $w$ reaches the point $q^{-2}$ — this corresponds to $z=-2$, where every tetration breaks off ([[kn.satz.singulaer_minus2]]).
+      3. The partial sums interpolate $G$ at the points $w=1,q,q^2,\dots\to0$. For such nodes the interpolation converges in the whole disk
+         in which $G$ is smooth, with rate $|w|/q^{-2}=q^{\operatorname{Re}z+2}$ — exactly what is measured.
+
+      A second argument (answer to Reshetnikov's question): If the series converges, then $t$ is bounded in $\operatorname{Re}z>0$; two bounded
+      solutions that agree at all natural numbers are equal (Carlson's theorem). Hence $t$ is the regular tetration.
+    worum: |
+      Can one compute the fractional tetration from the integer values alone, $1,\ a,\ a^a,\ a^{a^a},\dots$? For bases below $\eta$, yes:
+      V. Reshetnikov wrote down in 2017 a formula that mixes these values with **q-binomial coefficients**. It is an interpolation —
+      like drawing a smooth curve through measured points —, only not in $z$ but in $q^z$. Computed, it gives exactly the regular tetration.
+- id: kl.beob.stetig_eta
+  quelle_hash: f1db37fe93ee
+  theorie_hash: 8339a030ceb7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f3_spezialfall: —
+      f5_neue_frage: Is T_b(x) at η even infinitely differentiable in b — or analytic? → kl.frage.eta_analytisch
+      f1_folgt_unmittelbar: No; continuity from below is plausible (no parabolic implosion for real λ → 1), from above not obvious.
+      f2_benutzte_voraussetzungen: Six bases below η (δ = 1 − λ from 0.2 to 0.005), three above η (b − η = 10⁻¹, 10⁻², 10⁻³); slopes linearly
+        extrapolated.
+      f4_uebertragbar: To other heights x; question of higher derivatives in b (analytic across η?).
+    bewertung:
+      nutzen: Answers kl.frage.stetig_eta numerically for x = 1/2 and goes beyond it (same slope).
+      recherche: Kouznetsov (TORI wiki) gives a preliminary Taylor table of tet_b(x) in b − η, whose first coefficient 0.61061 matches our T_η′(0)
+        = 0.611095, and nevertheless regards η as a branch point; in the forum (mike3, 2011) arguments against analyticity. The same slope from
+        both sides (C¹) is not measured there.
+      richtigkeit: numerical
+    titel: T_b(1/2) passes smoothly from regular to Kneser at η
+    aussage: |
+      $T_b(1/2)\to T_\eta(1/2)=1.257153075054\ldots$ from both sides, linearly in $|b-\eta|$, and with the **same slope**:
+      $\partial_bT_b(1/2)\approx0.438579$ (from below, regular) and $0.438581$ (from above, Kneser), respectively. The two families thus continue
+      numerically $C^1$ across η. Also the fractional sum $S_b(1/2)\to S_\eta(1/2)$, order 1 in $\eta-b$.
+    bereich: '$T_b(1/2)$: regular for $b<\eta$ (lower fixed point), Kneser for $b>\eta$, $T_\eta$ via the Fatou coordinate'
+    einfach: Below η and above η, the tetration is built in quite different ways. Nevertheless the values at height 1/2 fit together seamlessly
+      at the boundary — even the slope agrees to six digits.
+  en_theorie:
+    beispiel: |
+      $b=\eta+10^{-3}$ (Kneser): $T_b(\tfrac12)-T_\eta(\tfrac12)=0.000438$. From below at $1-\lambda=0.005$: $-2.9\cdot10^{-6}$.
+    einordnung: |
+      Answers [[kl.frage.stetig_eta]] numerically for $x=\tfrac12$. Kouznetsov has published a preliminary Taylor table of $T_b(x)$ in $b-\eta$; its first
+      coefficient $0.61061$ matches our $T_\eta'(0)=0.611095$. Nevertheless he and contributions in the Tetration forum regard $\eta$ as a branch point.
+      New question: is $T_b(x)$ at $\eta$ analytic in $b$ or only smooth ([[kl.frage.eta_analytisch]])?
+    genau: |
+      $T_b(\tfrac12)\to T_\eta(\tfrac12)=1.257153075\ldots$ from both sides, linear in $|b-\eta|$, with the same slope: $\partial_bT_b(\tfrac12)\approx0.438579$ from below
+      (regular) and $0.438581$ from above (Kneser).
+    warum: |
+      Measured: from below with six regular bases, from above with Kneser at $b-\eta=10^{-1},10^{-2},10^{-3}$; slopes extrapolated linearly ([[exp.lambert_zeta]]).
+      A proof is missing.
+    worum: |
+      Below $\eta$ and above $\eta$ the tetration is built in quite different ways. At the boundary the values nevertheless fit together seamlessly —
+      at height $\tfrac12$ even the slope agrees to six digits.
+- id: kl.beob.zwei_abel
+  quelle_hash: 86c46e511dd1
+  theorie_hash: 9cf79f940db2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f3_spezialfall: Instance of fg.satz.allgemeine_loesung with explicitly measurable θ.
+      f5_neue_frage: Does the imaginary period explain the size of the amplitude? → kl.verm.streifenbreite
+      f1_folgt_unmittelbar: 'That $p$ is periodic: yes (fg.satz.allgemeine_loesung). That $p$ is not constant: yes from the literature — Karlin–McGregor
+        (1968) show that the regular iterations at two fixed points $s_1,s_2$ (multipliers $\ne0,1$, $f([s_1,s_2])\subseteq[s_1,s_2]$) agree only
+        for linear fractional $f$; $\sqrt2^{\,x}$ on $[2,4]$ satisfies the hypotheses. New here is only the measurement of the size.'
+      f2_benutzte_voraussetzungen: Computation with 120 digits; Koenigs series at both fixed points, independently of each other.
+      f4_uebertragbar: To every $1<b<\eta$ → kl.verm.streifenbreite.
+    bewertung:
+      nutzen: Concrete, measurable example of the periodic freedom.
+      recherche: 'Found around 1991 by Asimov, Hickerson and Schroeppel (unpublished), recomputed in the Tetration forum in 2007 as “Bummer!”
+        with 100–450 digits. Theoretically forced already by Karlin–McGregor 1968 (research L1, 12.10.2026). New here: 170 digits, sequence of
+        modes and the amplitude law (kl.verm.streifenbreite).'
+      richtigkeit: numerical, with self-check (periodicity, precision comparison)
+    titel: The regular Abel functions at 2 and 4 differ by a tiny periodic function
+    aussage: |
+      $p(\theta):=\alpha_4\bigl(\alpha_2^{-1}(\theta)\bigr)-\theta$ is 1-periodic and **not constant**:
+      the two regular constructions are different Abel functions on the same interval.
+      The amplitude of the first Fourier mode is of the order of magnitude $10^{-24}$ (numbers in the experiment).
+    bereich: $b=\sqrt2$, $x\in(2,4)$; $\alpha_2$ = regular Abel function at the fixed point 2, $\alpha_4$ at the fixed point 4
+  en_theorie:
+    beispiel: |
+      One would have to draw the two curves precisely to 25 digits to tell them apart — in [[kl.satz.vier_sqrt2]] they visibly lie on top of each other.
+    einordnung: |
+      History: The difference was found by D. Asimov, D. Hickerson and R. Schroeppel around 1991 (unpublished); in the Tetration forum it was recomputed in 2007 under the title
+      “Bummer!”. It ended the hope back then that different reasonable constructions must agree. For Möbius maps it is
+      different: there the regular iterations at both fixed points agree.
+
+      This is the smallest version of the phenomenon “two reasonable constructions differ by a periodic wave” that becomes large in the base change
+      above $\eta$ (Chapter 7). How fast the modes decay: [[kl.verm.streifenbreite]], [[kl.verm.faktor]].
+    genau: |
+      With $\alpha_2$ (regular at the fixed point $2$) and $\alpha_4$ (regular at $4$), $p(\theta):=\alpha_4(\alpha_2^{-1}(\theta))-\theta$ is 1-periodic and **not constant**.
+      The first Fourier mode has modulus $3.626\cdot10^{-25}$.
+    warum: |
+      Measured in [[exp.sqrt2_abel]] with 170 decimal places. That $p$ is periodic is a theorem ([[fg.satz.allgemeine_loesung]]: two Abel functions
+      of the same map differ by something periodic); that it is not constant is shown by the measurement.
+    worum: |
+      For base $\sqrt2$ one can build two regular Abel functions between the fixed points $2$ and $4$, one at each fixed point. They are almost
+      the same — the difference is a tiny, periodic wave of size $10^{-25}$. But it is not zero.
+- id: kl.frage.basiswechsel_kneser
+  quelle_hash: cc443cc84f73
+  theorie_hash: 9af9f8619162
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: For complex bases in the Shell–Thron domain near the boundary (|λ| → 1), check whether the linear base change passes continuously
+      into the Kneser phase.
+    titel: Where does the periodic part above η come from?
+    aussage: |
+      Below η the base change is exactly linear in Koenigs coordinates. Above η the fixed points $L,\bar L$ are repelling and Kneser
+      glues two Koenigs charts together with a Riemann map. Is the phase $P_{b,d}$ of the phase law exactly the image of this
+      gluing, i.e. can it be computed from Kneser's theta maps $\theta_b,\theta_d$?
+  en_theorie:
+    einordnung: |
+      Next step: complex bases in the Shell–Thron domain near the boundary ($|\lambda|\to1$) — does the linear base change pass continuously into the Kneser wave?
+      Related: [[kn.konstr.kneser]], [[kl.satz.invariante_daempfung]].
+    genau: |
+      Above $\eta$, $L,\bar L$ are repelling, and Kneser glues two Koenigs charts together with a Riemann map. Is the wave $P_{b,d}$ exactly the image of this
+      gluing — can it be computed from the corrections $\theta_b,\theta_d$ of Kneser?
+    warum: |
+      Open. What speaks in favor: Without gluing (below $\eta$, or at a common fixed point) there is no persistent wave; the wave is periodic like $\theta_K$; and its
+      singularities come from the period difference of the Koenigs coordinates ([[bw.satz.ursache_kozykel]]).
+    worum: |
+      Below $\eta$ the base change in Koenigs coordinates is exactly linear, without a wave. Above $\eta$ it has a wave. Where does it come from?
+- id: kl.frage.eta_analytisch
+  quelle_hash: 262132dba9dc
+  theorie_hash: 06df1a47cc5c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: |
+      Measure the second and third derivative in $b$ from both sides; evaluate complex bases on a small circle around $\eta$ (monodromy). Candidate for a
+      non-analytic part: terms like $\exp(-c/\sqrt{b-\eta})$ from the bottleneck at $e$ (bw.lem.randgesetz) — infinitely flat, hence compatible with all derivatives.
+    titel: Is tetration analytic in the base at η?
+    aussage: |
+      Regular below $\eta$, Kneser above $\eta$: Numerically, value and first derivative in $b$ match at $\eta$ (kl.beob.stetig_eta). Is $b\mapsto T_b(x)$ at $\eta$
+      **analytic** — or is $\eta$ a branch point at which the function is indeed smooth ($C^\infty$), but not analytic?
+    bereich: $T_b(x)$ for fixed $x>-2$ as a function of the base $b$ near $\eta$
+  en_theorie:
+    beispiel: |
+      A model for “smooth but not analytic”: $f(\delta)=e^{-1/\sqrt\delta}$ for $\delta>0$ and $0$ otherwise — all derivatives at $0$ vanish, the Taylor series is $0$.
+    einordnung: |
+      Next step: measure the second and third derivative in $b$ from both sides and evaluate $T_b(x)$ on a small circle of complex bases around $\eta$.
+      Related: the parabolic implosion ([[br.frage.implosion]]).
+    genau: |
+      Is $b\mapsto T_b(x)$ (regular for $b<\eta$, Kneser for $b>\eta$) analytic at $b=\eta$, or is $\eta$ a branch point at which the function is indeed
+      infinitely differentiable but not analytic?
+    warum: |
+      Open. What speaks for “not analytic”: At $\eta$ the type of construction changes (attracting fixed point → parabolic → complex pair), and the bottleneck
+      at $e$ produces quantities like $(b-\eta)^{-1/2}$ ([[bw.lem.randgesetz]]). Terms like $\exp(-c/\sqrt{b-\eta})$ would be infinitely flat — compatible with all measured
+      derivatives, but not analytic. Kouznetsov and contributions in the Tetration forum (mike3, 2011) regard $\eta$ as a branch point.
+      What speaks against: value and slope agree to six digits ([[kl.beob.stetig_eta]]).
+    worum: |
+      Below and above $\eta$ the tetrations fit together numerically so well that even the slope agrees. Is the tetration, as a function of the base, therefore analytic at
+      $\eta$ — or only very smooth, with a hidden branch point?
+- id: kl.frage.gleiches_L_kneser
+  quelle_hash: ef3d1b9219c2
+  theorie_hash: aa2db415737a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: 'Answered for different fixed points (bw.satz.imaginaere_richtung: upward A_b(T_d(iy)) converges to A_b(L_d)). The case of
+      a common upper fixed point remains open; it needs, first of all, a reliable engine for complex bases (exp.adressen: the engine gets stuck
+      at individual points).'
+    titel: Does the wave also vanish for Kneser when the upper fixed point is common?
+    aussage: |
+      Complex bases $b,d$ with a common upper fixed point $L$ (ladder from fp.satz.gleiches_L) have Kneser-like tetrations
+      (Paulsen) that tend to $L$ for $\mathrm{Im}\,z\to+\infty$. Is $\operatorname{slog}_b(T_d(z))-C_2z$ then exponentially small upward,
+      and does the wave remain only on the real axis or downward (second fixed point)?
+  en_theorie:
+    einordnung: |
+      Connects [[kl.satz.basiswechsel_gleiches_L]] with the phase law ([[bw.satz.phasengesetz]]).
+    genau: |
+      Complex bases $b,d$ with a common upper fixed point $L$ have Kneser-like tetrations (Paulsen) that tend to $L$ for $\operatorname{Im}z\to+\infty$. Is then
+      $\operatorname{slog}_b(T_d(z))-C_2z$ exponentially small upward, and does the wave remain only on the real axis and downward?
+    warum: |
+      Open. For different fixed points the upward direction is settled ([[bw.satz.imaginaere_richtung]]). For the common upper fixed point a reliable
+      computing engine for complex bases is missing (the attempt in [[bw.verm.adressen]] got stuck at individual points).
+    worum: |
+      At the common fixed point the wave vanishes for regular tetrations. Does this also hold for Kneser's solutions for complex bases when they share the upper fixed point?
+- id: kl.frage.stetig_eta
+  quelle_hash: 84d94ebbf3bc
+  theorie_hash: a8173e968a92
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    naechste_frage: 'Answered numerically for x = 1/2 (kl.beob.stetig_eta: continuous from both sides, same slope 0.43858). Open: proof, other
+      x, higher derivatives in b.'
+    titel: Continuity of tetration in the base at η
+    aussage: |
+      Does $T_b^{\mathrm K}\to T_\eta$ converge locally uniformly on $(-2,\infty)$ for $b\downarrow\eta$, and likewise
+      $T_b^{\mathrm{reg}}\to T_\eta$ for $b\uparrow\eta$? The diverging mean shift $m(b)\sim -c\,(b-\eta)^{-1/2}$
+      (bw.lem.randgesetz) does not contradict this: it measures the height relative to base $e$, not $T_b$ itself.
+    bereich: $b\downarrow\eta$ (Kneser) and $b\uparrow\eta$ (regular)
+  en_theorie:
+    beispiel: |
+      Answered numerically for $x=\tfrac12$: continuous from below and from above, even with the same slope $0.43858$ ([[kl.beob.stetig_eta]]).
+    einordnung: |
+      A proof would connect the theory below and above $\eta$ into a single family that is continuous in $b$.
+    genau: |
+      Does $T_b^{\mathrm K}\to T_\eta$ converge for $b\to\eta$ from above, and $T_b^{\mathrm{reg}}\to T_\eta$ from below, locally uniformly on $(-2,\infty)$?
+    warum: |
+      Open as a theorem. Caution about an apparent contradiction: The mean shift $m(b)$ of the base change diverges at $\eta$ like $(b-\eta)^{-1/2}$
+      ([[bw.lem.randgesetz]]). But that concerns the height relative to base $e$, not $T_b$ itself.
+    worum: |
+      Below $\eta$ one builds the tetration regularly, above $\eta$ following Kneser, at $\eta$ parabolically. Do the three fit together at the boundary?
+- id: kl.frage.tpid5
+  quelle_hash: ee15a2d96cc3
+  theorie_hash: bb3303ec9993
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    pruefung:
+      f3_spezialfall: 'Similar to the “Bummer”: two fixed points, two incompatible wishes.'
+      f5_neue_frage: 'no'
+      f1_folgt_unmittelbar: No, open.
+      f2_benutzte_voraussetzungen: Reflection condition.
+      f4_uebertragbar: Other bases below η.
+    bewertung:
+      nutzen: Completeness of the list of open problems.
+      richtigkeit: open
+    titel: 'TPID 5: Is every tetration to base √2 with f(−f(x)) = −x discontinuous everywhere?'
+    aussage: |
+      Conjecture (Trappmann 2009): Every real function $f$ on $(-2,\infty)$ with $f(0)=1$, $f(x+1)=\sqrt2^{\,f(x)}$ and the reflection condition $f(-f(x))=-x$ is continuous at no point.
+      The reflection condition demands a symmetry that the two regular solutions (at 2 and at 4, kl.satz.vier_sqrt2) do not have.
+    einfach: If one demands a certain mirror symmetry of a tetration to base √2, then — so the conjecture goes — it cannot be continuous anywhere.
+  en_theorie:
+    beispiel: |
+      For $x=-1$: $f(-f(-1))=f(0)=1$, but what is required is $1$ — fits. The difficulty lies at non-integer heights.
+    einordnung: |
+      Open problem of the forum list (TPID 5).
+    genau: |
+      Is every solution of $f(x+1)=\sqrt2^{\,f(x)}$, $f(0)=1$, with $f(-f(x))=-x$ discontinuous everywhere?
+    warum: |
+      The two regular solutions (at 2 and at 4, [[kl.satz.vier_sqrt2]]) do not satisfy the reflection condition; a continuous solution would have to
+      connect both fixed-point worlds. Conjectured: impossible, not even continuous at a single point.
+    worum: |
+      A symmetry requirement that the base $\sqrt2$ does not tolerate.
+- id: kl.gescheitert.naiver_basiswechsel
+  quelle_hash: c88c2215bebc
+  theorie_hash: cee33afc15b9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Continuity of $\operatorname{slog}_b$ at $a_d$ (lies in the basin of attraction of $a_b$ if $a_d<a_b$).
+    pruefung:
+      f3_spezialfall: 'no'
+      f5_neue_frage: Right coordinate → kl.satz.koenigs_basiswechsel
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Only $T_d\to a_d$.
+      f4_uebertragbar: Shows why Hyp. 2.4 (growth) is necessary in the phase law.
+    bewertung:
+      nutzen: A preserved wrong path that motivates the right one.
+      richtigkeit: complete
+    titel: Naive base change below η yields only a constant
+    aussage: |
+      Forming the mixed-base height $\operatorname{slog}_b(T_d(x))$ as for $b,d>\eta$ accomplishes nothing: $T_d(x)\to a_d$, so it tends to
+      the constant $\operatorname{slog}_b(a_d)$ (example √2, $d=1.346$: 1.8295, 1.9061, 1.9061 at $x=5,20,40$). Only the conjugation
+      $\Psi$ (kl.satz.koenigs_basiswechsel) makes for a meaningful comparison.
+    bereich: $1<b,d<\eta$, regular tetrations
+  en_theorie:
+    beispiel: |
+      $b=\sqrt2$, $d=1.34603$: $1.8295$, $1.9061$, $1.9061$ at $x=5,20,40$.
+    einordnung: |
+      Shows why the tower growth (Hyp. 2.4) is necessary in the phase law ([[bw.ann.hyp24]]). The right comparison below $\eta$: [[kl.satz.koenigs_basiswechsel]].
+    genau: |
+      For $1<b,d<\eta$ with regular tetrations we have $T_d(x)\to a_d$, hence $\operatorname{slog}_b(T_d(x))\to\operatorname{slog}_b(a_d)$ — a constant (provided $a_d$ lies in the basin of attraction of $a_b$).
+    warum: |
+      Continuity of $\operatorname{slog}_b$ at $a_d$; the height $x$ is lost, because $T_d$ hardly changes anything any more for large $x$.
+    worum: |
+      If one does below $\eta$ the same as above $\eta$ — translate the height of one tower into heights of the other —, one gets only a constant. Both towers
+      come to rest, after all.
+- id: kl.kor.eta_baker
+  quelle_hash: 7ed17693e262
+  theorie_hash: ba6af121c402
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $\eta^{e+eu}=\exp((e+eu)/e)=e\cdot e^{u}$, hence $(\eta^{e+eu}-e)/e=e^u-1$. The rest is it.satz.baker under conjugation (convergence
+        of formal series is conjugation-invariant).
+    pruefung:
+      f3_spezialfall: 'Yes: special case of it.satz.baker.'
+      f5_neue_frage: The Écalle–Voronin invariants of $e^u-1$ are thus the invariants of the η-tetration — numerically determinable.
+      f1_folgt_unmittelbar: Yes — one line of computation plus Baker's theorem. The value lies in the connection, not in new mathematics.
+      f2_benutzte_voraussetzungen: Only $b=\eta$; the second part (no gluing) additionally it.satz.ecalle_voronin.
+      f4_uebertragbar: For $b\ne\eta$ there is no parabolic fixed point; but near $\eta$ this normal form governs the parabolic implosion (br.frage.implosion).
+    bewertung:
+      nutzen: Connects the η-tetration with a classical theorem; starting point for the implosion question.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: b = η = e^{1/e}
+    titel: exp_η at e is linearly conjugate to e^u − 1
+    aussage: |
+      With $z=e+e\,u$ we have $\eta^{z}=e+e\,(e^{u}-1)$: $\exp_\eta$ at the fixed point $e$ is **linearly** conjugate to
+      $e^u-1$ at the fixed point 0. Consequently (Baker) the formal regular $t$-th iterate of $\exp_\eta$ at $e$
+      does not converge for real $t\notin\mathbb Z$: there is no half-iterate analytic at the fixed point $e$ of
+      regular type, and the Fatou coordinates of the two petals do not glue to a flow.
+    bereich: $b=\eta$, fixed point $e$
+  en_theorie:
+    beispiel: |
+      The formal half-iterate of $\eta^z$ at $e$ is $e+e\,g\bigl(\frac{z-e}e\bigr)$ with $g(u)=u+\frac{u^2}4+\frac{u^3}{48}+\dots$ — the same divergent series as for $e^u-1$.
+    einordnung: |
+      That is why the parabolic tetration ([[kl.satz.parabolisch]]) is, to be sure, real-analytic in $x$, but not the result of a holomorphic flow at the
+      fixed point. In general: [[it.satz.ecalle_voronin]].
+    genau: |
+      With $z=e+e\,u$ we have $\eta^{z}=e+e\,(e^{u}-1)$. Hence the formal regular half-iterate of $\eta^z$ at the fixed point $e$ does not converge: there is no
+      half-iterate analytic at the fixed point, and the Fatou coordinates of the two petals do not glue to a flow.
+    warum: |
+      $\eta^{e+eu}=\exp\bigl((e+eu)/e\bigr)=e\cdot e^{u}$, hence $(\eta^{e+eu}-e)/e=e^u-1$: a **linear** change of coordinates. Convergence of formal series is preserved under
+      linear conversions, and for $e^u-1$ they diverge by [[it.satz.baker]].
+    worum: |
+      After a simple conversion, the power with base $\eta$ looks at the fixed point $e$ exactly like $e^u-1$ at the fixed point $0$. For $e^u-1$ one knows
+      that there are no holomorphic half steps — hence none for $\eta^z$ at $e$ either.
+- id: kl.satz.basis_unter_eins
+  quelle_hash: 0bd06cfcedcf
+  theorie_hash: bab50940cd41
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $\lambda<0$ ⇒ $\lambda^x=|\lambda|^xe^{i\pi x}$ is not real for $x\notin\mathbb Z$; $\sigma^{-1}$ is real on real arguments and injective
+        near 0.
+    pruefung:
+      f3_spezialfall: —
+      f5_neue_frage: Are there real tetrations for $0<b<1$ by another route (e.g. via the 2-cycle)?
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Only the sign of λ.
+      f4_uebertragbar: 'For $b<e^{-e}$ the 2-cycle has positive multiplier $(\ln b)^2L_+L_-$: there the regular iteration of $f\circ f$ is real.'
+    bewertung:
+      nutzen: Delimits the domain of real regular tetration.
+      richtigkeit: complete
+    titel: For 0 < b < 1 the regular tetration is not real
+    aussage: |
+      The real fixed point has multiplier $\lambda=a\ln b<0$. The regular construction $\sigma^{-1}(\lambda^x\sigma(1))$ is therefore not real for
+      non-integer $x$: the discrete tower (period 1 or 2) yields no real continuous tetration by this route.
+    bereich: $0<b<1$, real fixed point $a$
+    einfach: Below 1 the tower jumps alternately above and below the limit. A “half jump” does not exist there as a real number.
+  en_theorie:
+    beispiel: |
+      $b=0.5$: fixed point $a=0.64119$, $\lambda=-0.44444$. A half step would be the scaling by $\lambda^{1/2}=0.667\,i$ — a rotation into the complex domain.
+    einordnung: |
+      Below $e^{-e}$ the 2-cycle has a positive multiplier; there are continuous real tetrations there, but their even phase becomes a
+      square wave ([[fp.satz.rechteckwelle]]). The sign behavior of the derivative: [[gr.satz.vorzeichen]].
+    genau: |
+      For $0<b<1$ the real fixed point has multiplier $\lambda=a\ln b<0$. The regular construction $\sigma^{-1}(\lambda^x\sigma(1))$ is not real for non-integer $x$.
+    warum: |
+      $\lambda<0$ means $\lambda^x=|\lambda|^x\,e^{i\pi x}$, and that is not real for $x\notin\mathbb Z$. $\sigma^{-1}$ maps real numbers near $0$ to real ones and is invertible there,
+      hence $\sigma^{-1}(\lambda^x\sigma(1))$ is not real either.
+    worum: |
+      For bases between $0$ and $1$ there is also an attracting fixed point — but the tower jumps around it instead of approaching from one side.
+      A half scaling by a **negative** factor is not a real number, so the regular construction yields nothing real there.
+- id: kl.satz.basiswechsel_gleiches_L
+  quelle_hash: 982581695d29
+  theorie_hash: 3342181dcc32
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        Both linearizations are normalized at the same point ($\sigma_b(L)=\Psi_d(0)-L=0$, derivative 1), hence $h=\sigma_b\circ\Psi_d$ is tangent
+        to the identity: $h(v)=v+(p_{2,d}-p_{2,b})v^2+\dots$ with $p_2=u/(2(\lambda-1))$ (comparison of coefficients in $\Psi(\lambda w)=e^{u\Psi(w)}$).
+        Substituting $v=\lambda_d^xw_d\to0$ gives the formula. For different fixed points, $T_d(x)\to L_d\ne L$ and $A_b(T_d(x))\to A_b(L_d)$.
+        Exactly linear would mean $T_d(x)=T_b(C_1'+C_2x)$, i.e. $f_d=f_b^{\,C_2}$ in the regular iteration group; then $f_b,f_d$ commute:
+        $u_de^{u_bz}-u_be^{u_dz}\equiv$ const, differentiating gives $e^{u_bz}=e^{u_dz}$, hence $u_b=u_d$.
+    gegenbeispielsuche: |
+      exp.gleiches_L, five pairs ($e^{\pi/2}$ with $e^{5\pi/2}$ and with $e^{-3\pi/2}$; $\sqrt2$ with $-\sqrt2$; $e$ with $e^{1-2\pi i/L_e}$; $2.084$ with $-1659.6$):
+      decay rate of the deviation = $\ln|\lambda_d|$ to 5 digits, first correction to $<4\cdot10^{-8}$ relative, best-fit line hits $C_2$ to $10^{-6}$.
+      Deviation at $x=-12$: $4\cdot10^{-12}$ … $2\cdot10^{-9}$; at $x=-1$ still 0.03 … 0.48 (linear only asymptotically).
+      Control test $e^{\pi/2}$ against $e$ (different L): slope $3.0\cdot10^{-3}$ at $x=-20$, $5.1\cdot10^{-6}$ at $x=-40$ (decays like $|L_e|^x$).
+    pruefung:
+      f3_spezialfall: 'Yes: two germs with a common hyperbolic fixed point agree via their linearizations up to a factor tangent to the identity.'
+      f5_neue_frage: Is the phase P of the phase law (bw.satz.phasengesetz) exactly what arises in the transition from a common to different fixed
+        points?
+      f1_folgt_unmittelbar: Yes, as soon as one considers both linearizations at the same point.
+      f2_benutzte_voraussetzungen: Common fixed point and $|\lambda_d|\ne1$; reality of the bases not; T_d(0) = 1 only for $C_1$.
+      f4_uebertragbar: 'To Kneser tetrations of complex bases with a common upper fixed point: there the wave should vanish upward (Im z → ∞)
+        → kl.frage.gleiches_L_kneser'
+    bewertung:
+      nutzen: Explains when a base change without a wave is possible, and delimits the phase law.
+      recherche: No literature reference searched; mathematically elementary.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: common fixed point L (fp.satz.gleiches_L)
+    - text: L repelling for d
+    - text: b, d real
+    titel: Base change at a common fixed point is linear
+    aussage: |
+      With $T_d(x)=\Psi_d(\lambda_d^{x}w_d)$ and $A_b=\log\sigma_b/\log\lambda_b$ we have for $x\to-\infty$
+      $$A_b\bigl(T_d(x)\bigr)=C_1+C_2\,x+\frac{a_1\,w_d}{\log\lambda_b}\,\lambda_d^{x}+O\bigl(\lambda_d^{2x}\bigr),\qquad
+        C_2=\frac{\log\lambda_d}{\log\lambda_b},\quad C_1=\frac{\log w_d}{\log\lambda_b},$$
+      $a_1=\frac{u_d}{2(\lambda_d-1)}-\frac{u_b}{2(\lambda_b-1)}$. The deviation from the line decays like $|\lambda_d|^{x}$ — a
+      damped oscillation, **not a persistent periodic wave** as in the mixed-base phase law. If $b$ and $d$ have different
+      fixed points, $A_b(T_d(x))$ instead tends to a constant. The base change is exactly linear only for $b=d$.
+    bereich: two bases $b\ne d$ with common fixed point $L$, $|\lambda_d|>1$, $|\lambda_b|\ne0,1$; $T_d$ regular at $L$ with $T_d(0)=1$, $A_b$
+      regular Abel function at $L$
+    einfach: 'If one chooses two bases that circle around the same point L and translates the height of one into the height of the other, a straight
+      line C₁ + C₂·x comes out. The deviation from it shrinks by the factor |λ| with every step — no wave remains. For different fixed points
+      this does not work: then the translated height just stays put.'
+    formen:
+    - notiz: $b=e^{\pi/2}$, $d=e^{5\pi/2}$, $L=i$
+    - notiz: $b=\sqrt2$, $d=-\sqrt2$, $L=2$
+    - notiz: core of the proof
+  en_theorie:
+    beispiel: |
+      $b=e^{\pi/2}$, $d=e^{5\pi/2}$ share $L=i$ (since $e^{i\pi/2}=i$ and $e^{5i\pi/2}=i$). $C_2=1.27207-0.94638\,i$; the remainder at $x=-12$ is $4\cdot10^{-12}$ and decays with rate
+      $\ln|\lambda_d|=2.06102$. At $x=-1$ it is still $0.03$ to $0.48$ (depending on the pair) — it is linear only asymptotically. Control test with different fixed points
+      ($e^{\pi/2}$ against $e$): the slope falls to $3\cdot10^{-3}$ at $x=-20$ and $5\cdot10^{-6}$ at $x=-40$.
+    einordnung: |
+      Which bases share a fixed point: [[fp.satz.gleiches_L]]. Counterpart with persistent wave: [[bw.satz.phasengesetz]]; with different fixed points in the vertical
+      direction: [[bw.satz.imaginaere_richtung]]. Interpretation: [[kl.satz.invariante_daempfung]].
+    genau: |
+      If $b\ne d$ have the common fixed point $L$ with $|\lambda_d|>1$, $T_d(x)=\Psi_d(\lambda_d^xw_d)$ is regular at $L$ and $A_b=\log\sigma_b/\log\lambda_b$, then for $x\to-\infty$
+      $$A_b\bigl(T_d(x)\bigr)=C_1+C_2\,x+\frac{a_1w_d}{\log\lambda_b}\,\lambda_d^{x}+O(\lambda_d^{2x}),\qquad C_2=\frac{\log\lambda_d}{\log\lambda_b},\quad C_1=\frac{\log w_d}{\log\lambda_b},$$
+      with $a_1=\frac{u_d}{2(\lambda_d-1)}-\frac{u_b}{2(\lambda_b-1)}$ ($u=\ln b$ or $\ln d$, respectively). The deviation from the line is a damped oscillation. For different fixed points
+      $A_b(T_d(x))$ instead tends to a constant. The base change is exactly linear only for $b=d$.
+    warum: |
+      1. Both linearizations are normalized at the same point with derivative $1$. So $h=\sigma_b\circ\Psi_d$ is tangent to the identity: $h(v)=v+a_1v^2+\dots$
+      2. $A_b(T_d(x))=\log h(\lambda_d^xw_d)/\log\lambda_b=\bigl(x\log\lambda_d+\log w_d+\log(1+a_1\lambda_d^xw_d+\dots)\bigr)/\log\lambda_b$ — that is the formula.
+      3. For $x\to-\infty$, $\lambda_d^x\to0$, because $|\lambda_d|>1$.
+      4. Exactly linear would mean $f_d=f_b^{\,C_2}$ in the regular iteration group; then $f_b$ and $f_d$ commute, and that forces $u_b=u_d$ ([[it.satz.vertauschbar]]).
+    worum: |
+      Two different bases can have the same fixed point $L$. Then their towers circle (backward) around the same point, only at different speeds.
+      If one translates the height of one into the height of the other, a line $C_1+C_2x$ comes out — without a persistent wave.
+- id: kl.satz.bruchprodukt
+  quelle_hash: e1243d1e69d3
+  theorie_hash: 74ca55c93b0e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        With $g=\ln T'$ we have $g(y+1)-g(y)=\ln\ln b+\ln T(y+1)$. Telescoping over $N$ steps from $x$ and from $x+h$ and taking the difference:
+        $g(x+h)-g(x)=[g(x+N+h)-g(x+N)]+\sum_{k=1}^{N}(\ln T(x+k)-\ln T(x+k+h))$. So the formula holds if and only if
+        $g(x+N+h)-g(x+N)\to h\ln\lambda$. For $T^{\mathrm{reg}}$ we have $T'(y)\sim C\lambda^{y}$, so yes. For $T=T^{\mathrm{reg}}\circ(\mathrm{id}+\theta)$
+        the limit is $h\ln\lambda+\varphi(x+h)-\varphi(x)$ with $\varphi=\theta\ln\lambda+\ln(1+\theta')$. If this holds for all $h$, $\varphi$ is
+        constant, hence $\theta'=Ce^{-\theta\ln\lambda}-1$ — an autonomous equation whose only periodic solutions are constants; $\theta(0)=0$ gives $\theta\equiv0$.
+    gegenbeispielsuche: 'exp.bruchsummen: regular case satisfied to $3.8\cdot10^{-36}$ (x = 0, −1/2; h = 0.3, 0.5, 1.7); for θ = 0.05·(1−cos 2πx)/2
+      violated by 0.019 and 0.20, respectively.'
+    pruefung:
+      f3_spezialfall: Related to uniqueness theorems “iteration group holomorphic at the fixed point” (it.satz.vertauschbar), but purely real.
+      f5_neue_frage: Is there a fractional-product criterion for Kneser (b > η), perhaps via the complex fixed points?
+      f1_folgt_unmittelbar: No; the direction “regular ⇒ formula” is easy, the uniqueness needs the ODE argument.
+      f2_benutzte_voraussetzungen: $C^1$ and $T'>0$ (for $\ln T'$ and the representation with θ); analyticity not.
+      f4_uebertragbar: 'Open for b > η: the fractional sum is missing there. Other fractional-sum formulas (e.g. for T itself) give similar criteria.'
+    bewertung:
+      nutzen: Turns the user's derivative formula into a uniqueness criterion.
+      recherche: Not found in Müller–Schleicher; systematic search missing.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: 1 < b < η
+    - text: T strictly increasing, C¹, T′ > 0 (then T has this form)
+    titel: The derivative formula with fractional product characterizes the regular tetration
+    aussage: |
+      With the fractional product $\prod_{k=1}^{h}T(x+k):=a^{h}\prod_{k\ge1}\frac{T(x+k)}{T(x+k+h)}$ (Müller–Schleicher) we have
+      $$\frac{T'(x+h)}{T'(x)}=(\ln b)^{h}\prod_{k=1}^{h}T(x+k)\quad\text{for one }x\text{ and all real }h$$
+      **if and only if** $\theta\equiv0$, i.e. $T$ is the regular tetration. For integer $h$ the formula holds for every solution
+      (gr.kor.produktformel).
+    bereich: $1<b<\eta$; $T=T^{\mathrm{reg}}\circ(\mathrm{id}+\theta)$ with $\theta$ 1-periodic, $C^1$, $1+\theta'>0$, $\theta(0)=0$
+    einfach: 'For integer steps h the product formula for the derivative holds for every tetration. If one demands it also for half and other
+      fractional steps, only a single tetration remains below η: the regular one.'
+    formen:
+    - notiz: logarithmic form
+    - notiz: equivalent condition
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$: satisfied for the regular case to $4\cdot10^{-36}$ (for $h=0.3,\,0.5,\,1.7$). With the small bending $\theta=0.05\cdot\frac{1-\cos2\pi x}2$ the formula
+      deviates by $0.019$ to $0.20$.
+    einordnung: |
+      The formula stems from the user's July synthesis; the converse (regular only) is proved here. Counterpart at the fixed point: [[it.satz.vertauschbar]].
+      The base change below $\eta$ has a similar Jacobian formula ([[kl.satz.wertseitiger_basiswechsel]]).
+    genau: |
+      With the fractional product $\prod_{k=1}^{h}T(x+k):=a^h\prod_{k\ge1}\frac{T(x+k)}{T(x+k+h)}$ we have
+      $$\frac{T'(x+h)}{T'(x)}=(\ln b)^h\prod_{k=1}^{h}T(x+k)\qquad\text{for one }x\text{ and all real }h$$
+      if and only if $T$ is the regular tetration (among all increasing $C^1$ tetrations with $T'>0$, $1<b<\eta$).
+    warum: |
+      1. With $g=\ln T'$ we have $g(y+1)-g(y)=\ln\ln b+\ln T(y+1)$ (chain rule).
+      2. Telescoping over $N$ steps from $x$ and from $x+h$ gives: the formula holds if and only if $g(x+N+h)-g(x+N)\to h\ln\lambda$.
+      3. For the regular tetration $T'(y)\approx C\lambda^y$, so this is true.
+      4. Every other one is $T^{\mathrm{reg}}\circ(\mathrm{id}+\theta)$ with periodic $\theta$ ([[fg.satz.allgemeine_loesung]]). Then the limit is
+         $h\ln\lambda+\varphi(x+h)-\varphi(x)$ with $\varphi=\theta\ln\lambda+\ln(1+\theta')$. For all $h$, $\varphi$ must be constant; this is a differential equation
+         for $\theta$ whose only periodic solutions are constants — and $\theta(0)=0$ gives $\theta=0$.
+    worum: |
+      The derivative formula $T'(x+n)/T'(x)=(\ln b)^n\prod T(x+k)$ holds for integer steps for every tetration. If one replaces the product by a
+      “fractional product”, one can write it down for half steps as well — and then below $\eta$ only the regular tetration satisfies it.
+- id: kl.satz.bruchsumme
+  quelle_hash: f5d560bc651b
+  theorie_hash: 1ec4cbc73fdf
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: '$|T(k)-T(k+x)|\le C\lambda^k$ ⇒ convergence. Telescoping: $S(x+1)-S(x)=a+\sum_k(T(k+x)-T(k+x+1))=a+T(x)-a$. Uniqueness: Müller–Schleicher,
+        theorem on “approximately constant” summands.'
+    gegenbeispielsuche: 'exp.bruchsummen: $S(3/2)-S(1/2)=T(1/2)$ to $10^{-30}$, $S(1)=1$ and $S(2)=1+\sqrt2$ exactly.'
+    pruefung:
+      f3_spezialfall: 'Yes: fractional sum for summands with a constant limit.'
+      f5_neue_frage: Fractional products and the derivative formula → kl.satz.bruchprodukt
+      f1_folgt_unmittelbar: Yes, from the definition of Müller–Schleicher.
+      f2_benutzte_voraussetzungen: Only geometric convergence $T(k)\to a$.
+      f4_uebertragbar: 'Not for b > η: the summands grow like towers, no polynomial limiting behavior.'
+    bewertung:
+      nutzen: New quantity (fractional sum) that does not exist for integer heights.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: T(k) → a geometrically
+    - text: T regular
+    titel: Fractional sums of tetration
+    aussage: |
+      $$\sum_{k=0}^{x-1}T(k):=x\,a+\sum_{k=0}^{\infty}\bigl(T(k)-T(k+x)\bigr)$$
+      converges, satisfies $S(x+1)-S(x)=T(x)$, $S(1)=1$, $S(2)=1+b$, and is the only continuation of the partial sums according to the
+      axioms of Müller–Schleicher (the summand approaches a constant).
+    bereich: $1<b<\eta$, $T$ a tetration with $T(x)\to a$ for $x\to\infty$ (e.g. regular), $x>0$
+    einfach: '“The sum of the first 1.5 tower levels” gets a meaning: because the levels approach a, far out one may replace each level by a and
+      add exactly half a level a.'
+    formen:
+    - notiz: regular tetration to base √2
+    - notiz: interval form with height cocycle (July synthesis §6.4)
+    - notiz: operator form, $\tau_h f(x)=f(x+h)$
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$, regular tetration: $S(\tfrac12)=0.4277749202\ldots$; check $S(\tfrac32)-S(\tfrac12)=T(\tfrac12)=1.24362$ to $10^{-30}$.
+    einordnung: |
+      The sum is a Lambert series in the spectral representation ([[kl.satz.koenigs_spektral]]), leads to the derivative formula with fractional product
+      ([[kl.satz.bruchprodukt]]) and at $\eta$ to the digamma function ([[kl.satz.eta_digamma]]). Above $\eta$ it works for reciprocals ([[gr.satz.kehrwert_turmsumme]])
+      and for the super-logarithm ([[kn.satz.abel_bruchsumme]]).
+    genau: |
+      For $1<b<\eta$ and a tetration with $T(k)\to a$:
+      $$\sum_{k=0}^{x-1}T(k):=x\,a+\sum_{k=0}^{\infty}\bigl(T(k)-T(k+x)\bigr).$$
+      This converges, satisfies $S(x+1)-S(x)=T(x)$, $S(1)=1$, $S(2)=1+b$, and is the only continuation of the partial sums according to the rules of Müller–Schleicher.
+    warum: |
+      1. Convergence: $T(k)-T(k+x)$ is of size $\lambda^k$ — a geometric series.
+      2. Telescoping: In $S(x+1)-S(x)=a+\sum_k\bigl(T(k+x)-T(k+x+1)\bigr)$ all terms cancel except $T(x)-\lim T=T(x)-a$; with the $a$ in front, $T(x)$ remains.
+      3. For integer $x=n$ the same computation gives the ordinary sum $T(0)+\dots+T(n-1)$.
+      4. Uniqueness: Müller and Schleicher require that the sum far out behaves like a sum of constant terms; then no periodic freedom remains.
+    worum: |
+      “The sum of the first one and a half tower levels” — that sounds meaningless, but acquires a precise meaning: Since the levels approach $a$,
+      one may replace each level far out by $a$ and add exactly “half a level $a$”.
+- id: kl.satz.carlson
+  quelle_hash: 0bd3f4891cdf
+  theorie_hash: cb0b98bd648a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        $H=F-G$ is holomorphic and bounded on $\operatorname{Re}z\ge0$ and vanishes at $0,1,2,\dots$ (both have the tower values $b\uparrow\uparrow n$). Carlson: Such a function
+        of exponential type that grows more slowly than $e^{\pi|y|}$ on the imaginary axis and vanishes at all natural numbers is identically zero.
+    pruefung:
+      f3_spezialfall: 'Yes: Carlson uniqueness for interpolation of integer values (like Wielandt for gamma).'
+      f5_neue_frage: Is the regular tetration provably bounded in the half-plane for all 1 < b ≤ η (without kl.verm.vollmonoton)?
+      f1_folgt_unmittelbar: Yes, from Carlson's theorem.
+      f2_benutzte_voraussetzungen: Holomorphy and growth bound in the right half-plane; same integer values.
+      f4_uebertragbar: Every superfunction with attracting fixed point; mike3 (2010) for base η.
+    bewertung:
+      nutzen: Simplest uniqueness condition below η, without fixed-point arguments.
+      richtigkeit: complete (uniqueness); boundedness of the regular solution numerical
+    titel: 'Carlson''s theorem: at most one tetration is holomorphic and bounded in the right half-plane'
+    aussage: |
+      If $F,G$ are two tetrations to base $b$ ($F(0)=G(0)=1$), both holomorphic on $\operatorname{Re}z\ge0$ and bounded there (or growing only more slowly than $e^{\pi|z|}$ on the
+      imaginary axis and of exponential type in the half-plane), then $F=G$. For $1<b\le\eta$ the regular tetration is such a solution: it remains bounded on
+      $\operatorname{Re}z\ge0$ (measured: $|T-L|\le L-1$ over a full period, kl.satz.folgen_vollmonoton). Above $\eta$ the theorem does not apply — every real tetration grows
+      on the real axis faster than any exponential function; there the vertical condition of Paulsen–Cowgill takes over.
+    einfach: 'Below η there is a short answer to “Which tetration is the right one?”: the one that stays bounded in the right half-plane. Two
+      such tetrations agree at all integers, and a classical theorem (Carlson) says that they are then equal everywhere.'
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$: On $\operatorname{Re}z\in[0,3]$ over a full period, $|T(z)-2|\le1$ holds (experiment for [[kl.satz.folgen_vollmonoton]]).
+    einordnung: |
+      Counterpart to [[kn.satz.paulsen_cowgill]] above $\eta$; related to [[it.satz.vertauschbar]].
+    genau: |
+      Two tetrations that are holomorphic and bounded on $\operatorname{Re}z\ge0$ are equal. The regular tetration (at the lower fixed point) is such a one for $1<b\le\eta$.
+    warum: |
+      1. The difference of two tetrations vanishes at all integers $0,1,2,\dots$
+      2. Carlson's theorem: A function holomorphic in the right half-plane that grows at most exponentially, more slowly than $e^{\pi|y|}$ on the imaginary axis, and is zero at all
+         natural numbers is zero everywhere. (Without the bound it would not work: $\sin\pi z$ also vanishes at all integers.)
+      3. Above $\eta$ every real tetration grows on the real axis faster than any exponential function — there Carlson is useless, and one needs the limit values $L,\bar L$.
+    worum: |
+      Below $\eta$ there is a particularly simple characterization of the right tetration: It remains bounded in the right half-plane — and only one can do that.
+- id: kl.satz.cheta
+  quelle_hash: f131393e4974
+  theorie_hash: 7bb525b6ac69
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Leau–Fatou (it.satz.leau_fatou): on a repelling petal at $e$ there is the Fatou coordinate; its inverse $\Psi$ is holomorphic on
+        a left half-plane with $\Psi(w+1)=\exp_\eta(\Psi(w))$. Since $\exp_\eta$ is entire, $\Psi(w):=\exp_\eta^{\circ n}(\Psi(w-n))$ continues
+        it to an entire function. Normalization by translation. Asymptotics from $\Phi(Z)\approx Z$.'
+    pruefung:
+      f3_spezialfall: 'Yes: inverse repelling Fatou coordinate of an entire function (the same map that appears in the Lavaurs map, br.satz.shishikura).'
+      f5_neue_frage: Is $\check\eta$ the limit of $\operatorname{usexp}_b$ for $b\uparrow\eta$? Does $\check\eta$ have an imaginary period? (For
+        $b<\eta$ it comes from the multiplier, here $\lambda=1$.)
+      f1_folgt_unmittelbar: Yes, from Leau–Fatou and the entireness of $\exp_\eta$ (as for the Poincaré function).
+      f2_benutzte_voraussetzungen: 'Fatou coordinate on the repelling petal; the series Φ is only asymptotic (Baker: divergent), so it is used
+        only far out and then iterated.'
+      f4_uebertragbar: 'Lower solution $T_\eta$: attracting side, not entire (singularities at $-2$ etc.); upper solution entire.'
+    bewertung:
+      nutzen: 'Completes the picture at η: two superexponentials, one of them entire.'
+      richtigkeit: complete
+    titel: cheta — the upper superexponential function to base η is entire
+    aussage: |
+      On $y>e$, $e$ is repelling for $\exp_\eta$. With the reciprocal coordinate $Z=2e/(e-y)<0$ and the Fatou series
+      $\Phi(Z)=Z-\tfrac13\ln|Z|+\sum_kc_kZ^{-k}$ (the same rational $c_k$ as in kl.satz.eta_koordinate) we have $\Phi(Z(\exp_\eta y))=\Phi(Z(y))+1$.
+      The inverse, normalized by $\check\eta(0)=e^2$, is
+      $$\check\eta(z)=\exp_\eta^{\circ z}(e^2):\qquad \check\eta(-1)=2e,\quad\check\eta(1)=e^e,\quad \check\eta(z+1)=\eta^{\check\eta(z)},$$
+      an **entire** function (“cheta”, J. D. Fox 2009), strictly increasing on $\mathbb R$ with $\check\eta(x)=e+\frac{2e}{|x|}\bigl(1+O(\tfrac{\log|x|}{|x|})\bigr)$ for $x\to-\infty$.
+      Values: $\check\eta(1/2)=9.6893506753532295\ldots$, $\check\eta(-1/2)=6.1732925511093943\ldots$; constant $C_{\check\eta}=\lim_n[\Phi(Z(\check\eta(-n)))+n]=-1.2569611588725123\ldots$
+    bereich: $b=\eta$, fixed point $e$ (parabolic), side $y>e$
+  en_theorie:
+    beispiel: |
+      - Integer values: $\check\eta(-1)=2e=5.4366$, $\check\eta(0)=e^2=7.3891$, $\check\eta(1)=\eta^{e^2}=e^{e}=15.154$, $\check\eta(2)=e^{e^{e-1}}=263.7$.
+      - Half values: $\check\eta(1/2)=9.6893506753532\ldots$, $\check\eta(-1/2)=6.1732925511094\ldots$ (independent of the computation depth to 28 digits).
+      - Asymptotics: $(\check\eta(-100)-e)\cdot100/(2e)=1.0028$, at $-1000$: $1.0011$.
+    einordnung: |
+      Counterpart to [[kl.satz.obere_superexp]] in the limiting case $\eta$ and to the lower solution [[kl.satz.parabolisch]]. The map $\Psi$ is exactly the
+      “repelling” half of the Lavaurs map from [[br.satz.shishikura]]. The associated Abel function is totally monotone by Szekeres
+      ([[it.satz.szekeres_monoton]]).
+    genau: |
+      Let $Z=2e/(e-y)$ for $y>e$ (so $Z<0$) and
+      $$\Phi(Z)=Z-\tfrac13\ln|Z|+\sum_{k\ge1}c_kZ^{-k}$$
+      the Fatou series with the same rational $c_k$ as for the lower solution ([[kl.satz.eta_koordinate]]). Then
+      $\Phi(Z(\eta^y))=\Phi(Z(y))+1$ for $y$ near $e$. The inverse, shifted so that $\check\eta(0)=e^2$, is
+      $$\check\eta(z)=\exp_\eta^{\circ z}(e^2),\qquad \check\eta(-1)=2e,\quad\check\eta(1)=e^e,\quad\check\eta(z+1)=\eta^{\check\eta(z)}.$$
+      $\check\eta$ is entire, strictly increasing on $\mathbb R$, and $\check\eta(x)=e+\dfrac{2e}{|x|}\bigl(1+O(\tfrac{\log|x|}{|x|})\bigr)$ for $x\to-\infty$.
+    warum: |
+      1. **Fatou coordinate:** At the point of tangency $e$, $\exp_\eta$ is conjugate to $u\mapsto e^u-1$ ($y=e(1+u)$). On the side $y>e$ every
+         step pushes the points away from $e$. The Leau–Fatou theorem ([[it.satz.leau_fatou]]) gives there a coordinate $\Phi$ in which a step is
+         simply “$+1$”; its expansion is the series above (it diverges, but is used only far out, for large $|Z|$).
+      2. **Inverting:** The inverse $\Psi$ of $\Phi$ is defined on a left half-plane and satisfies $\Psi(w+1)=\eta^{\Psi(w)}$.
+      3. **Continuing:** $\Psi(w)=\exp_\eta^{\circ n}(\Psi(w-n))$ with large $n$ — since $\eta^z$ is smooth everywhere, $\Psi$ becomes entire.
+      4. **Normalizing:** A translation $w\mapsto w+C$ fixes $\check\eta(0)=e^2$. One measures the constant by running backward from $e^2$
+         ($y\mapsto e\ln y$): $C_{\check\eta}=\lim_n[\Phi(Z(\check\eta(-n)))+n]=-1.2569611588725\ldots$
+      5. Asymptotics: For $x\to-\infty$ we have $Z\approx x$, hence $y=e-2e/Z\approx e+2e/|x|$.
+    worum: |
+      At base $\eta$, $\eta^x$ touches the line $y=x$ at $e$. The ordinary tetration runs toward $e$ from below. From above there is
+      also a natural solution: it starts at $e^2$, is already $e^e\approx15.15$ at $x=1$ and comes arbitrarily
+      close to $e$ for $x\to-\infty$. J. D. Fox named it “cheta” in the Tetration forum in 2009. Like the upper solution below $\eta$, it is an entire function.
+- id: kl.satz.eta_digamma
+  quelle_hash: 1bdab42bd199
+  theorie_hash: aead9e46ad5c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $T(k)-T(k+x)=2e(q(k+x)-q(k))=O(k^{-2})$. Decomposition $q=1/k+r(k)$ with $\sum(1/k-1/(k+x))=\psi(x+1)+\gamma$. $R_T(x)\to R_\infty=\sum(q(k)-1/k)$
+        with $R_T(x)-R_\infty\approx\int_x^\infty(\tfrac13\log m+C_T)m^{-2}dm$; $\psi(x+1)=\log x+\frac1{2x}+\dots$
+    gegenbeispielsuche: |
+      exp.eta_digamma: S(3/2) − S(1/2) = T(3/2) to $2\cdot10^{-22}$; S(3) = T(1)+T(2)+T(3); remainder after the constant at x = 20.5 and 200.5:
+      −0.992 and −0.131, relative to the prediction −2e((log x + 1)/3 + C_T)/x off by 9.6 % and 1.3 %, respectively (next order).
+    pruefung:
+      f3_spezialfall: 'Yes: Müller–Schleicher sum for summands with remainder $1/k$.'
+      f5_neue_frage: kl.verm.lambert_zeta
+      f1_folgt_unmittelbar: Decomposition yes (definition of R_T); the asymptotics needs the expansion of q.
+      f2_benutzte_voraussetzungen: Fractional heights only for non-integer x; the constant only from integer heights.
+      f4_uebertragbar: 'To every parabolic base (cycles with root-of-unity multiplier): there the remainder is $k^{-1/q}$, and instead of ψ a
+        Hurwitz zeta function.'
+    bewertung:
+      nutzen: Shows how the boundary η turns exponential decay into logarithms and digamma; makes the heuristic forum answer of 2010 exact.
+      recherche: 'Corrected after literature comparison L1 (12.10.2026): The forum question by G. Helms (2010, “sum(e − eta^^k): convergence or
+        divergence?”) was already answered heuristically in the same thread — tommy1729 (16.08.2010) and R. Israel (sci.math, relayed by Helms
+        on 17.08.2010) give $e-\eta\uparrow\uparrow k\approx2e/k$, Israel even $2e/(k+\ln k/(3-1/k))$, hence divergence like $2e\ln n$. The leading
+        order $2e/k$ is the classical rate at a parabolic fixed point (Leau–Fatou). New here are only the digamma representation with the remainder
+        $R_T$, the next order with $C_T$ and the proof of the convergence of the fractional sum; a digamma representation is not in the thread.'
+      richtigkeit: complete
+    voraussetzungen:
+    - text: fractional heights via the Fatou coordinate
+    titel: Fractional sum at η — the digamma function appears by itself
+    aussage: |
+      $S_\eta(x)=e\,x+\sum_{k\ge1}[T(k)-T(k+x)]$ converges (terms $O(k^{-2})$), although $\sum(T(k)-e)$ diverges, and
+      $$S_\eta(x)=e\,x-2e\bigl[\psi(x+1)+\gamma\bigr]-2e\,R_T(x),\qquad R_T(x)=\sum_{k\ge1}\Bigl[q(k)-\tfrac1k-q(k+x)+\tfrac1{k+x}\Bigr].$$
+      For $x\to\infty$:
+      $$\begin{aligned}S_\eta(x)=e\,x-2e\log x-2e\gamma&+\sum_{k\ge1}\Bigl[T(k)-e+\frac{2e}k\Bigr]\\&-\frac{2e\bigl(\frac{\log x+1}3+C_T\bigr)+e}{x}+\dots\end{aligned}$$
+      The next terms of $q$ ($\log^jx/x^m$) yield Hurwitz zeta derivatives: $R_T$ decomposes formally into $-\tfrac13\Delta_x\zeta'(2,1)+C_T\Delta_x\zeta(2,1)+\dots$
+    bereich: $b=\eta$, regular parabolic tetration (Fatou coordinate), $x>0$
+    einfach: If one sums “x tower levels” at base η, this grows like e·x minus 2e·log x. The log comes from the tower approaching e like 1/x —
+      and the sum of 1/k is the logarithm. The exact form is the digamma function.
+  en_theorie:
+    beispiel: |
+      $S_\eta(\tfrac12)=0.682096$; the constant of the asymptotics is $-2e\gamma+10.79756=7.65949$. At $x=200$ the remainder is off by only $1.3\,\%$ from the
+      next prediction $-2e\bigl(\frac{\log x+1}3+C_T\bigr)/x$.
+    einordnung: |
+      Below $\eta$ the fractional sum is a Lambert series ([[kl.satz.koenigs_spektral]]); how it passes into the digamma form: [[kl.satz.moebius_qdigamma]].
+      Incidentally the theorem answers a question from the Tetration forum (Helms 2010) whether $\sum_k(e-\eta\uparrow\uparrow k)$ converges: No — the partial sums grow
+      like $2e\ln n$, because the terms decay like $2e/k$.
+    genau: |
+      $S_\eta(x)=e\,x+\sum_{k\ge1}[T(k)-T(k+x)]$ converges and is
+      $$S_\eta(x)=e\,x-2e\bigl[\psi(x+1)+\gamma\bigr]-2e\,R_T(x),\qquad R_T(x)=\sum_{k\ge1}\Bigl[q(k)-\tfrac1k-q(k+x)+\tfrac1{k+x}\Bigr].$$
+      For large $x$: $S_\eta(x)=e\,x-2e\log x-2e\gamma+\sum_k\bigl[T(k)-e+\frac{2e}k\bigr]+O(\log x/x)$.
+    warum: |
+      1. $T(k)-T(k+x)=2e\,(q(k+x)-q(k))$ is of size $1/k^2$ — the series converges.
+      2. Decompose $q(k)=\frac1k+r(k)$. The sum $\sum_k(\frac1k-\frac1{k+x})$ is, as is well known, $\psi(x+1)+\gamma$; the remainder $R_T$ converges absolutely, because $r(k)\approx\log k/k^2$.
+      3. For $x\to\infty$, $\psi(x+1)\approx\log x$ and $R_T(x)\to\sum_k(q(k)-\frac1k)$.
+    worum: |
+      If one sums “$x$ tower levels” at $\eta$, the sum grows like $e\,x-2e\log x$. The logarithm comes from the levels approaching $e$ like $1/k$
+      — and the sum of $1/k$ is the logarithm. The exact form is the digamma function $\psi$.
+- id: kl.satz.eta_koordinate
+  quelle_hash: be9bdd291315
+  theorie_hash: 46bc6db40d24
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: '$T(x+1)=e\cdot e^{-2q}$ gives the $q$-equation; $2/(1-e^{-2u})=1+\coth u$. The $c_k$ are solved order by order from $\Phi(Z+1+\varepsilon)-\Phi(Z)=1$
+        (a linear equation at each order, rational data). $C_T$: $\Phi(Z(n))-n$ converges because the error of the truncated series is $O(Z^{-K-1})$.'
+    gegenbeispielsuche: 'exp.eta_digamma: transformations to $10^{-55}$; $C_T$ from n = 2500 and 20000 agrees to $10^{-35}$; remainder $Z(n)-n-\tfrac13\log
+      n-C_T$ = 0.0137, 0.0016, 0.00019 at n = 10², 10³, 10⁴.'
+    pruefung:
+      f3_spezialfall: 'Yes: Fatou coordinate of a parabolic germ $z+1+a/z+\dots$ (Écalle).'
+      f5_neue_frage: Is $C_T$ expressible by known constants? (PSLQ open)
+      f1_folgt_unmittelbar: Transformations yes; the rationality of the Fatou series is a small computation.
+      f2_benutzte_voraussetzungen: Only $b=\eta$ and $T(0)=1$; for $C_T$ only integer heights.
+      f4_uebertragbar: To $e^{-e}$ (multiplier −1, second iterate parabolic).
+    bewertung:
+      nutzen: Makes T_η computable to arbitrarily many digits.
+      recherche: 'Addendum 08.10.2026: Trappmann–Kouznetsov (Math. Comp. 2012) give the expansion F(z) = e(1 − (2/z)(1 + Σ P_m(−ln z)/(3z)^m))
+        with rational polynomials P_m (P₁ = t, P₂ = t² + t + 1/2, …) — the same asymptotics, shifted by the constant x₀ with F(x₀) = 1, which
+        corresponds to our C_T. New here presumably only the exact reciprocal form Z(x+1) = 1 + coth(1/Z) and C_T to 30 digits (about 15 there).'
+      richtigkeit: complete
+    titel: Base η in the reciprocal coordinate
+    aussage: |
+      The following holds exactly: $q(x+1)=\tfrac12(1-e^{-2q(x)})$ and
+      $$Z(x+1)=1+\coth\frac1{Z(x)}=Z(x)+1+\frac1{3Z}-\frac1{45Z^3}+\dots$$
+      The Fatou coordinate has the form $\Phi(Z)=Z-\tfrac13\log Z+\sum_kc_kZ^{-k}$ with **rational** $c_k$
+      ($\tfrac1{18},\tfrac1{135},-\tfrac1{972},-\tfrac{71}{27216},\dots$), and
+      $$Z(x)=x+\tfrac13\log x+C_T+O\Bigl(\frac{\log x}x\Bigr),\qquad C_T=\lim_{n\to\infty}\bigl(\Phi(Z(n))-n\bigr)=2.79824815423138766245\ldots$$
+      $C_T$ depends only on the integer heights $\eta\uparrow\uparrow n$, not on the choice of the fractional tetration.
+    bereich: $b=\eta$, $T(0)=1$, $q=(e-T)/(2e)$, $Z=1/q$
+    einfach: 'At base η the tower creeps toward e only slowly. If one measures the distance correctly (as 2e/(e − T)), it grows almost like the
+      height itself: height plus one third of its logarithm plus a fixed number C_T ≈ 2.798.'
+    formen:
+    - notiz: written out
+  en_theorie:
+    beispiel: |
+      $Z(10)\approx10+0.7675+2.7982=13.566$, hence $T_\eta(10)\approx e-2e/13.566=2.3175$; the true tower is $2.3205$.
+    einordnung: |
+      Literature: The same asymptotics appears in Trappmann and Kouznetsov (Math. Comp. 2012) in the form $F(z)=e\bigl(1-\frac2z(1+\sum_mP_m(-\ln z)/(3z)^m)\bigr)$ with rational
+      polynomials $P_1=t$, $P_2=t^2+t+\tfrac12$, … Their shift $x_0$ with $F(x_0)=1$ corresponds to our $C_T$. New here is above all the exact reciprocal form
+      $Z(x+1)=1+\coth(1/Z)$ and $C_T$ to 30 digits.
+
+      The digamma representation of the fractional sum builds on this ([[kl.satz.eta_digamma]]); the numbers are in [[kl.beob.eta_konstanten]].
+    genau: |
+      With $q=(e-T)/(2e)$ and $Z=1/q$ the following holds exactly
+      $$q(x+1)=\tfrac12\bigl(1-e^{-2q(x)}\bigr),\qquad Z(x+1)=1+\coth\frac1{Z(x)}=Z(x)+1+\frac1{3Z}-\frac1{45Z^3}+\dots$$
+      The Fatou coordinate is $\Phi(Z)=Z-\tfrac13\log Z+\sum_kc_kZ^{-k}$ with **rational** $c_k$ ($\tfrac1{18},\tfrac1{135},-\tfrac1{972},\dots$), and
+      $$Z(x)=x+\tfrac13\log x+C_T+O\Bigl(\frac{\log x}x\Bigr),\qquad C_T=2.79824815423138766245\ldots$$
+    warum: |
+      1. $T(x+1)=e^{T(x)/e}$ and $T=e-2eq$ give $T(x+1)=e\cdot e^{-2q}$, hence the $q$-equation.
+      2. $Z(x+1)=\frac2{1-e^{-2/Z}}=1+\coth\frac1Z$, and the series of $\coth$ gives the expansion.
+      3. The term $\frac1{3Z}\approx\frac1{3x}$ sums to $\frac13\log x$.
+      4. The $c_k$ are determined order by order from $\Phi(Z(x+1))=\Phi(Z(x))+1$; all data are rational. $C_T=\lim(\Phi(Z(n))-n)$ needs only integer heights.
+    worum: |
+      At $\eta$ the tower creeps toward $e$ like $1/x$. If one measures the distance correctly — as $2e/(e-T)$ —, it grows almost exactly like the height itself,
+      plus one third of its logarithm plus a fixed number $C_T\approx2.798$.
+- id: kl.satz.folgen_vollmonoton
+  quelle_hash: d59984cfc1f7
+  theorie_hash: 7ca4e8caa868
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        With $s=|\ln\lambda|$ we have $T(x)=L+\sum c_ke^{-ksx}$. (1) $T''(x)=\sum c_kk^2s^2e^{-ksx}\le0$; the $\ln$ of a positive concave function is concave; the midpoint inequality gives
+        $\ln T(y)+\ln T(-y)\le2\ln T(0)=0$, strict because $c_1<0$. (2) For $\operatorname{Re}z\ge0$ we have $|\lambda^{kz}|\le1$, hence
+        $|T(z)-L|\le\sum|c_k|=-\sum c_k=L-T(0)=L-1$. Convergence for $\operatorname{Re}z>-2$: from $c_k\le0$ and Pringsheim (kl.verm.vollmonoton).
+    pruefung:
+      f3_spezialfall: 'Yes: Dirichlet series with coefficients of one sign (Bernstein functions).'
+      f5_neue_frage: The three statements all hang on a single sign question about the Poincaré function — proof?
+      f1_folgt_unmittelbar: Yes, from the condition in a few lines.
+      f2_benutzte_voraussetzungen: Only $c_k\le0$ and $T(0)=1$; $|\lambda|<1$ real.
+      f4_uebertragbar: 'To pentation below η: if T(Re z ≥ 0) lies in a disk, one can iterate regularly again there (Nixon''s program).'
+    bewertung:
+      nutzen: Bundles three open questions into one.
+      recherche: Nixon (2017/2021) names the signs of the Poincaré coefficients as a gap; the disk |w − L| ≤ L − 1 and the connection with TPID
+        7 and Reshetnikov 3 not found (research 08.10.2026).
+      richtigkeit: proved conditionally, consequences numerically confirmed
+    voraussetzungen:
+    - text: all Koenigs coefficients c_k ≤ 0 (kl.verm.vollmonoton)
+    titel: Negative Koenigs coefficients imply concavity, TPID 7 and Nixon's half-plane
+    aussage: |
+      If all $c_k\le0$, then:
+      1. $T$ is concave on $(-2,\infty)$ and $\ln T$ is concave on $(-1,\infty)$; in particular $T(y)T(-y)<1$ for $0<|y|<1$ (TPID 7).
+      2. $T$ maps the closed right half-plane into the disk $|w-L|\le L-1$; in particular $\operatorname{Re}T(z)\ge1$ and $|T(z)|\le2L-1$
+         for $\operatorname{Re}z\ge0$ — Nixon's question (2017) answered with yes.
+      Measured (without the condition): $\operatorname{Re}T\ge1$ and $|T-L|\le L-1$ at 637 points each for $b=1.1,\ 1.3,\ \sqrt2,\ 1.44$; equality only at $z=0$.
+    bereich: $1<b<\eta$, regular tetration $T(z)=L+\sum_{k\ge1}c_k\lambda^{kz}$
+    einfach: 'If a single sign question comes out right, three things follow at once: the regular tetration is bent downward everywhere, T(y)·T(−y)
+      stays below 1, and the whole right half of the complex plane lands in a disk that touches the 1 at its edge.'
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$: $L=2$, so $T(\operatorname{Re}z\ge0)$ lies in the disk $|w-2|\le1$. Measured at 637 points (real part 0 to 3, one full imaginary
+      period $17.14$): smallest real part exactly $1.0$, largest distance from 2 exactly $1.0$ — both only at $z=0$. Likewise for $b=1.1,\ 1.3,\ 1.44$.
+    einordnung: |
+      Nixon had named the signs of the Poincaré coefficients as the gap in his program: bounded analytic pentation and hexation below $\eta$.
+      Here one sees how much hangs on this gap: [[gr.verm.tpid7]], the concavity from [[gr.verm.ein_wendepunkt]] and the half-plane. The signs themselves
+      have been recomputed for four bases up to $c_{60}$ ([[kl.verm.vollmonoton]]).
+    genau: |
+      Let $1<b<\eta$, $T(z)=L+\sum_{k\ge1}c_k\lambda^{kz}$ the regular tetration (Koenigs series), and all $c_k\le0$. Then:
+      1. $T$ is concave on $(-2,\infty)$, $\ln T$ is concave on $(-1,\infty)$, and $T(y)T(-y)<1$ for $0<|y|<1$.
+      2. For $\operatorname{Re}z\ge0$, $T(z)$ lies in the disk around $L$ with radius $L-1$:
+         $$|T(z)-L|\le L-1,\qquad\text{hence}\quad\operatorname{Re}T(z)\ge1,\quad|T(z)|\le2L-1.$$
+    warum: |
+      With $s=|\ln\lambda|$ we have $\lambda^{kx}=e^{-ksx}$.
+      1. **Concave:** $T''(x)=\sum_kc_k\,k^2s^2\,e^{-ksx}$ — every term is $\le0$. The logarithm of a positive concave function is concave. With
+         $T(0)=1$ the midpoint inequality gives $\ln T(y)+\ln T(-y)<2\ln T(0)=0$.
+      2. **Disk:** For $\operatorname{Re}z\ge0$ we have $|\lambda^{kz}|=\lambda^{k\operatorname{Re}z}\le1$, hence
+         $$|T(z)-L|\le\sum_k|c_k|=-\sum_kc_k=L-T(0)=L-1 .$$
+         The last equation is the Koenigs series at $z=0$: $1=T(0)=L+\sum c_k$. The disk touches the line $\operatorname{Re}w=1$ exactly at the point $w=1=T(0)$.
+    worum: |
+      Three open questions about the regular tetration hang on a single one: whether all Koenigs coefficients are negative ([[kl.verm.vollmonoton]]).
+      1. Is the curve bent downward everywhere?
+      2. Does TPID 7 hold?
+      3. Does the tetration map the right half of the complex plane into the right half again? J. D. Nixon asked this in 2017.
+
+      If the signs are right, all three follow in a few lines — the third even in a sharper form.
+- id: kl.satz.grenzwertformel
+  quelle_hash: d818a47dc7fa
+  theorie_hash: 2affca578ea0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $\sigma(a+w)=w+O(w^2)$; inserting $w=\lambda^x(f^{\circ n}(1)-a)=O(\lambda^n)$ gives $\sigma^{-1}(\lambda^x\lambda^n\sigma(1))+O(\lambda^{2n})$,
+        and $\log_b^{\circ n}$ amplifies the error by at most $\lambda^{-n}$.
+    gegenbeispielsuche: 'exp.bruchsummen (√2, x = 1/2): error $4.3\cdot10^{-5}$, $1.8\cdot10^{-11}$, $5.2\cdot10^{-21}$ at n = 20, 60, 120; at
+      n = 200 again $2\cdot10^{-19}$ (rounding).'
+    pruefung:
+      f3_spezialfall: 'Yes: limit representation of every regular iteration (Lévy, Kuczma).'
+      f5_neue_frage: 'Numerics: rounding error grows like $\varepsilon\lambda^{-n}$, optimum $n\approx\mathrm{dps}\ln10/(2|\ln\lambda|)$ (≈157
+        at 50 digits, √2).'
+      f1_folgt_unmittelbar: Yes, from Koenigs.
+      f2_benutzte_voraussetzungen: Only attraction at a; the formula defines the same solution as kl.satz.regulaer.
+      f4_uebertragbar: Complex bases in the Shell–Thron domain; parabolic (b = η) needs the Fatou coordinate instead of λ^x.
+    bewertung:
+      nutzen: Simplest computation rule for fractional heights below η.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: attracting fixed point a with 0 < |λ| < 1
+    - text: b real
+    titel: Half steps via the limit
+    aussage: |
+      $$T^{\mathrm{reg}}(x)=\lim_{n\to\infty}\log_b^{\circ n}\!\Bigl(a+\lambda^{x}\bigl(b\uparrow\uparrow n-a\bigr)\Bigr),$$
+      the error decays like $\lambda^{n}$. One goes $n$ steps toward the limit, makes the fractional step there as a scaling by $\lambda^x$
+      and goes $n$ steps back.
+    bereich: '$1<b<\eta$, $a$ lower fixed point, $\lambda=a\ln b\in(0,1)$, $x\in\mathbb R$ (complex: every base with $0<|\lambda|<1$)'
+    einfach: 'Below η, the tower gets closer and closer to a fixed number a. Very close to a, each step is almost only a contraction by the factor
+      λ. There one knows what a half step is: a contraction by √λ. If one then computes back, one obtains the half step at the start.'
+    formen:
+    - notiz: Koenigs form
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$, $x=\tfrac12$: error $4.3\cdot10^{-5}$ at $n=20$, $1.8\cdot10^{-11}$ at $n=60$, $5\cdot10^{-21}$ at $n=120$. After that, with 50 digits of
+      computational precision, it gets worse again, because the way back also amplifies rounding errors by $\lambda^{-n}$ — the best is $n\approx157$.
+    einordnung: |
+      The formula is the simplest computation rule for [[kl.satz.regulaer]]. It shows why convergence toward a fixed point permits fractional heights
+      — exactly the idea “the tower converges, so one can continue it fractionally”.
+    genau: |
+      $$T^{\mathrm{reg}}(x)=\lim_{n\to\infty}\log_b^{\circ n}\Bigl(a+\lambda^{x}\bigl(b\uparrow\uparrow n-a\bigr)\Bigr),$$
+      and the error decays like $\lambda^n$.
+    warum: |
+      1. After $n$ steps, $b\uparrow\uparrow n-a\approx\sigma(1)\lambda^n$ — small.
+      2. For small distances $\sigma(a+w)\approx w$, hence $a+\lambda^x(b\uparrow\uparrow n-a)\approx\sigma^{-1}(\lambda^{x+n}\sigma(1))=T(x+n)$, with an error of size $\lambda^{2n}$.
+      3. $n$ applications of $\log_b$ lead from $T(x+n)$ to $T(x)$; this amplifies the error by at most $\lambda^{-n}$. An error of size $\lambda^n$ remains.
+    worum: |
+      One can compute the regular tetration without series: go many steps to the fixed point, make the fractional step there as a scaling,
+      and go back the same number of steps with the logarithm.
+- id: kl.satz.invariante_daempfung
+  quelle_hash: 9873543d0873
+  theorie_hash: 7bceb0d5a8e2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Hyperbolic case proved (kl.satz.basiswechsel_gleiches_L: the correction is a power series in λ_d^x). Rationally neutral: Écalle–Voronin.
+        The remaining lines are the reading of the original.'
+    pruefung:
+      f3_spezialfall: Generalizes the Fourier structure of the phase law (modes ↔ powers of the invariant).
+      f5_neue_frage: Can the phase P_{b,d} above η be computed as a limit of regular transitions at complex bases with |λ| ↑ 1?
+      f1_folgt_unmittelbar: Hyperbolic case yes; overall picture no.
+      f2_benutzte_voraussetzungen: Linearizability at the matching point.
+      f4_uebertragbar: To cycles (return map), to the imaginary direction (bw.satz.imaginaere_richtung).
+    bewertung:
+      nutzen: Explains why the classical base change carries a wave and the one at the shared fixed point does not.
+      richtigkeit: partially proved
+    titel: The wave is damped, not gone
+    aussage: |
+      The transition function of two Abel coordinates is a function of the **canonical invariant** of the matching point:
+      hyperbolic fixed point ($|\lambda|<1$): $\lambda^{A}$, modulus $<1$ — geometrically damped, pseudoperiod $2\pi/|\arg\lambda|$, damping
+      $|\lambda|^{2\pi/|\arg\lambda|}$ per pseudoperiod; rationally neutral fixed point: $e^{2\pi iA}$ — genuine 1-periodicity (Écalle–Voronin, horn map);
+      irrationally neutral: quasiperiodic; essential singularity at ∞ (towers above η): $e^{2\pi iA}$ — the classical 1-periodic
+      base-change function. This is thus the **limiting case $|\lambda|\to1$** of the damped oscillation at the shared fixed point.
+    bereich: transition between two Abel coordinates $A_b$, $A_d$, matched at one point (fixed point or ∞)
+    einfach: At the shared fixed point there is the same wave as in the classical base change — only it gets smaller with every step. The closer
+      |λ| is to 1, the longer it survives; at |λ| = 1 it becomes the undamped, eternal wave.
+    formen:
+    - notiz: original §3.1
+    - notiz: sample pair
+  en_theorie:
+    beispiel: |
+      At $\arg\lambda=0.5$: damping per period $2.7\cdot10^{-7}$, $1.6\cdot10^{-3}$, $0.061$, $0.27$, $0.68$ for $|\lambda|=0.3,\,0.6,\,0.8,\,0.9,\,0.97$. Sample pair for $b=-\tfrac{19}{25}$:
+      pseudoperiod $21.908$, damping $3.1\cdot10^{-4}$.
+    einordnung: |
+      Question behind it: Can the wave $P_{b,d}$ above $\eta$ be computed as a limit of such damped transitions for $|\lambda|\uparrow1$ ([[kl.frage.basiswechsel_kneser]])?
+    genau: |
+      **Partially proved.** The transition function of two Abel coordinates is a function of the canonical invariant of the matching point:
+      - hyperbolic fixed point ($|\lambda|<1$): $\lambda^A$ — damped, pseudoperiod $2\pi/|\arg\lambda|$, damping $|\lambda|^{2\pi/|\arg\lambda|}$ per pseudoperiod;
+      - rationally neutral fixed point: $e^{2\pi iA}$ — genuinely 1-periodic (Écalle–Voronin); irrationally neutral: quasiperiodic;
+      - essential singularity at $\infty$ (towers above $\eta$): $e^{2\pi iA}$ — the classical 1-periodic base-change wave, as the limiting case $|\lambda|\to1$.
+    warum: |
+      The hyperbolic case is proved: The correction is a power series in $\lambda_d^x$ ([[kl.satz.basiswechsel_gleiches_L]]). The rationally neutral case is Écalle–Voronin
+      ([[it.satz.ecalle_voronin]]). That the classical wave is the limiting case $|\lambda|\to1$ is an interpretation, not a limit theorem.
+    worum: |
+      The wave in the classical base change and the damped oscillation at the common fixed point are the same phenomenon. How long the wave lives depends only on
+      how close the multiplier $|\lambda|$ is to $1$. At $|\lambda|=1$ it becomes immortal.
+- id: kl.satz.koenigs_basiswechsel
+  quelle_hash: 33c51efe4ec7
+  theorie_hash: ede5a8a2f1ae
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Regular flows are $f^t=\sigma^{-1}(\lambda^t\sigma)$. Substituting: $\Psi(f_d^t(z))=\sigma_b^{-1}(\kappa\lambda_d^t\sigma_d(z))=\sigma_b^{-1}(\lambda_b^{kt}\kappa\sigma_d(z))=f_b^{kt}(\Psi(z))$.
+        The choice of κ ensures $\Psi(1)=1$.'
+    gegenbeispielsuche: |
+      exp.koenigs_basiswechsel: conjugation $f_{\sqrt2}^{\circ2}\circ\Psi=\Psi\circ f_d$ to $10^{-18}$; height exactly $2x$ (x = 0.5, 1.25, 3.5);
+      ratio 1.7 likewise linear; complex ($\lambda_b=0.85e^{1.1i}$, $\lambda_d=\lambda_b^2$): $\Psi(z_{d,n})=z_{b,2n}$ for n = 10…25.
+    pruefung:
+      f3_spezialfall: 'Yes: two linearizable germs are conjugate via their linearizations as soon as the multipliers are powers of each other.'
+      f5_neue_frage: kl.frage.basiswechsel_kneser
+      f1_folgt_unmittelbar: Yes, from Koenigs.
+      f2_benutzte_voraussetzungen: Only attraction at both fixed points; Ψ is defined only on the basin of attraction (where σ_b is invertible).
+      f4_uebertragbar: For b, d > η (Kneser) there is no attracting fixed point; there the base change has a periodic part (bw.satz.phasengesetz).
+    bewertung:
+      nutzen: 'Explains why the base change below η has no phase: here it is a conjugation of the flows.'
+      richtigkeit: complete
+    voraussetzungen:
+    - text: both bases with attracting fixed point (Shell–Thron domain)
+    titel: Same spiral, linear base change
+    aussage: |
+      With the Koenigs functions $\sigma_b,\sigma_d$ and $\Psi:=\sigma_b^{-1}\circ(\kappa\,\sigma_d)$, $\kappa=\sigma_b(1)/\sigma_d(1)$, we have
+      $$\Psi\circ f_d^{\,t}=f_b^{\,kt}\circ\Psi,\qquad k=\frac{\ln\lambda_d}{\ln\lambda_b},$$
+      for the regular flows, hence $\operatorname{slog}^{\mathrm{reg}}_b\bigl(\Psi(T_d(x))\bigr)=k\,x$: the base change is **linear, without periodic part**.
+      If $\lambda_d=\lambda_b^{k}$ with integer $k$, then $f_b^{\circ k}\circ\Psi=\Psi\circ f_d$: the orbit of $d$ is mapped onto every $k$-th point
+      of the spiral of $b$.
+    bereich: two bases $b,d$ with attracting fixed points, $0<|\lambda_b|,|\lambda_d|<1$ (real or complex)
+    einfach: Two bases whose towers contract and rotate in the same way (only at different speeds) are “the same spiral”. If one translates one
+      into the other, the height x simply becomes the height k·x — without waves.
+    formen:
+    - notiz: real example
+  en_theorie:
+    beispiel: |
+      $b=\sqrt2$ ($\lambda=\ln2$) and $d$ with $\lambda_d=(\ln2)^2$: by the multiplier recipe $d=1.34603293$, fixed point $1.61681$, $k=2$. The height is exactly $2x$ (to $10^{-27}$
+      at $x=0.5$, $1.25$, $3.5$); the ratio $1.7$ also gives a line. Complex: $\Psi(z_{d,n})=z_{b,2n}$ for $n=10\dots25$.
+    einordnung: |
+      Recipe for bases with a desired multiplier: [[fp.satz.multiplikator_rezept]]. Above $\eta$ there is no attracting fixed point, and the wave appears
+      ([[bw.satz.phasengesetz]]); exactly where it comes from is open: [[kl.frage.basiswechsel_kneser]].
+    genau: |
+      For bases $b,d$ with attracting fixed points ($0<|\lambda_b|,|\lambda_d|<1$), Koenigs functions $\sigma_b,\sigma_d$ and $\Psi=\sigma_b^{-1}\circ(\kappa\,\sigma_d)$, $\kappa=\sigma_b(1)/\sigma_d(1)$, we have
+      $$\Psi\circ f_d^{\,t}=f_b^{\,kt}\circ\Psi,\qquad k=\frac{\ln\lambda_d}{\ln\lambda_b},$$
+      hence $\operatorname{slog}^{\mathrm{reg}}_b(\Psi(T_d(x)))=k\,x$. If $k$ is an integer, $\Psi$ maps the orbit of $d$ onto every $k$-th point of the spiral of $b$.
+    warum: |
+      Regular flows are $f^t=\sigma^{-1}(\lambda^t\sigma)$. Substituting: $\Psi(f_d^t(z))=\sigma_b^{-1}(\kappa\lambda_d^t\sigma_d(z))=\sigma_b^{-1}(\lambda_b^{kt}\kappa\sigma_d(z))=f_b^{kt}(\Psi(z))$, because
+      $\lambda_d^t=\lambda_b^{kt}$. The choice of $\kappa$ ensures $\Psi(1)=1$.
+    worum: |
+      Two bases whose towers contract and rotate in the same way — only at different speeds — are “the same spiral”. If one translates one into the other,
+      the height $x$ simply becomes the height $k\cdot x$. No wave.
+- id: kl.satz.koenigs_spektral
+  quelle_hash: b5f55a9c257c
+  theorie_hash: 9fafa15ecd10
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $T(x)=\sigma^{-1}(\lambda^x\sigma(1))$ and the power series of $\sigma^{-1}$ around 0; differentiating, integrating and summing geometrically
+        term by term is allowed in the domain of convergence (uniform convergence). $c_2$ from the comparison of coefficients in $\sigma^{-1}(\lambda
+        w)=b^{\sigma^{-1}(w)}$.
+    gegenbeispielsuche: 'exp.koenigs_kalkuel (√2, x = 6): spectral series, derivative, shift sum, Lambert fractional sum and integral tail against
+      independent computations to $10^{-25}$ to $10^{-40}$.'
+    pruefung:
+      f3_spezialfall: 'Yes: spectral decomposition of a linearizable dynamics.'
+      f5_neue_frage: How do the Lambert denominators pass into the digamma/zeta structure in the limit λ → 1?
+      f1_folgt_unmittelbar: Yes, from the Koenigs representation.
+      f2_benutzte_voraussetzungen: Only attraction and convergence of the inverse Schröder series; smaller heights via the functional equation.
+      f4_uebertragbar: To cycles (return map) and complex bases in the Shell–Thron domain; at η it breaks down (1/(1 − λ^n) → ∞) → kl.verm.lambert_zeta
+    bewertung:
+      nutzen: Calculus for all quantities below η; makes fractional sums explicit.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: regular tetration at the attracting fixed point
+    titel: Koenigs spectrum — differentiating, integrating and summing as factors
+    aussage: |
+      $$T(x)=a+\sum_{n\ge1}c_n\lambda^{nx},\qquad c_n=p_n\,\sigma(1)^n,\quad c_2=\frac{\ln b\;c_1^2}{2(\lambda-1)},$$
+      ($p_n$ coefficients of $\sigma^{-1}$). In the spectrum every operation becomes one factor per mode:
+      differentiation $\leftrightarrow n\log\lambda$, integration $\int_x^\infty\leftrightarrow-1/(n\log\lambda)$, sum over integer translations
+      $\sum_{k\ge0}\leftrightarrow1/(1-\lambda^n)$. In particular the fractional sum is a Lambert series:
+      $$\Sigma(x;h)=a\,h+\sum_{n\ge1}c_n\lambda^{nx}\,\frac{1-\lambda^{nh}}{1-\lambda^n}.$$
+    bereich: '$1<b<\eta$ (in general: attracting fixed point $a$, $0<|\lambda|<1$), $x$ so large that $|\sigma(1)\lambda^x|$ lies in the disk
+      of convergence of $\sigma^{-1}$'
+    einfach: Below η, the tetration is a sum of ever faster decaying waves λ^x, λ^{2x}, … Differentiating, integrating and summing up turn each
+      wave into only a multiple of itself — one computes with numbers instead of functions.
+    formen:
+    - notiz: all derivatives
+    - notiz: shift sum
+    - notiz: integral tail
+    - notiz: core of the Lambert form; the identity is the height cocycle
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$: $c_1=-0.632099$, $c_2=-0.225634$, $c_3=-0.085408$, $\lambda=\ln2$. At $x=6$ the series agrees with the direct computation to $10^{-40}$;
+      $\int_6^\infty(T-2)\,dx=-0.195166$ from the series and from an independent quadrature agree to $3\cdot10^{-26}$.
+    einordnung: |
+      At $\eta$ the denominators $1-\lambda^n$ tend to zero; what happens then is described by [[kl.satz.moebius_qdigamma]]. Measured with
+      [[exp.koenigs_kalkuel]].
+    genau: |
+      $$T(x)=a+\sum_{n\ge1}c_n\lambda^{nx},\qquad c_2=\frac{\ln b\;c_1^2}{2(\lambda-1)},$$
+      and per wave: differentiation $\leftrightarrow$ factor $n\log\lambda$; integration from $x$ to $\infty$ $\leftrightarrow$ $-1/(n\log\lambda)$; sum over integer
+      translations $\leftrightarrow$ $1/(1-\lambda^n)$. The fractional sum is then a Lambert series:
+      $\Sigma(x;h)=ah+\sum_nc_n\lambda^{nx}\frac{1-\lambda^{nh}}{1-\lambda^n}$.
+    warum: |
+      $T(x)=\sigma^{-1}(\lambda^x\sigma(1))$, and $\sigma^{-1}$ is a power series near $0$, $\sigma^{-1}(w)=a+\sum p_nw^n$. Substituting gives the series with $c_n=p_n\sigma(1)^n$.
+      For large $x$, $\lambda^x\sigma(1)$ is small, the series converges uniformly, and one may differentiate, integrate and sum geometrically
+      term by term. The coefficient $c_2$ comes from the comparison of coefficients in $\sigma^{-1}(\lambda w)=b^{\sigma^{-1}(w)}$.
+    worum: |
+      Below $\eta$ the tetration is a sum of ever faster decaying “waves” $\lambda^x,\lambda^{2x},\lambda^{3x},\dots$ In this representation
+      differentiating, integrating and summing become simple factors — one computes with numbers instead of functions.
+- id: kl.satz.moebius_qdigamma
+  quelle_hash: 1458c1c4f5b2
+  theorie_hash: b200ff6ee350
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: '$r_k=(y_k-a)/(y_k-A)=r_0\lambda^k$, hence $y_k-a=-(A-a)\,r_k/(1-r_k)$; with $r_0=\lambda^s$, $\sum_{k\ge1}[g(k)-g(k+x)]$, $g(t)=\lambda^{t+s}/(1-\lambda^{t+s})$,
+        equals $[\psi_\lambda(1+s)-\psi_\lambda(1+s+x)]/\ln\lambda$ by the definition of $\psi_q$. Limits: $A-a\approx2e(1-\lambda)$, $\ln r_0\approx(a-A)/(e-1)$;
+        $\psi_q\to\psi$ is classical.'
+    gegenbeispielsuche: 'exp.lambert_zeta: formula against direct sum at λ = 0.9 to $8\cdot10^{-30}$; ψ_q → ψ linear in 1 − q; at δ = 0.005: (A
+      − a)/ln λ = −5.4321 (−2e = −5.4366), s = 3.1613 (Z₀ = 3.1640).'
+    pruefung:
+      f3_spezialfall: 'Yes: fractional sum of a Möbius iteration = q-analog of the harmonic numbers.'
+      f5_neue_frage: 'Correction of the model: which q-function carries the part (1/3) log k? (presumably a q-Hurwitz zeta derivative)'
+      f1_folgt_unmittelbar: Yes, as soon as one takes the Möbius model (there the iteration is explicit).
+      f2_benutzte_voraussetzungen: Only fixed points and multiplier; the true map agrees with M up to second order at the double fixed point.
+      f4_uebertragbar: To every saddle-node transition (two merging fixed points).
+    bewertung:
+      nutzen: 'Makes the “Lambert → zeta” conjecture of the July synthesis concrete: the bridge is the q-digamma function.'
+      richtigkeit: complete
+    titel: Lambert fractional sums are q-digamma functions
+    aussage: |
+      For $(M(y)-a)/(M(y)-A)=\lambda\,(y-a)/(y-A)$ the fractional sum is exactly
+      $$S^M(x)=a\,x+\frac{A-a}{\ln\lambda}\Bigl[\psi_\lambda(x+1+s)-\psi_\lambda(1+s)\Bigr],\qquad \lambda^s=\frac{a-1}{A-1},$$
+      with the q-digamma function $\psi_q(z)=-\ln(1-q)+\ln q\sum_{n\ge0}\frac{q^{n+z}}{1-q^{n+z}}$ (a Lambert series). If one approximates $b^y$ near η
+      by $M$, then $(A-a)/\ln\lambda\to-2e$, $s\to Z_0=\frac{2e}{e-1}$, $\psi_\lambda\to\psi$, hence
+      $$S^M(x)\longrightarrow e\,x-2e\bigl[\psi(x+1+Z_0)-\psi(1+Z_0)\bigr].$$
+      This is the mechanism “Lambert → digamma”: the denominators $1-\lambda^n$ of the Lambert series are the denominators of the q-digamma function, and
+      $q\to1$ is its classical limit. What the model does not capture is the part from $\tfrac13\log k$ and $C_T$.
+    bereich: Möbius model $M$ with fixed points $a<A$ and multiplier $\lambda\in(0,1)$ at $a$; start $y_0=1<a$
+    einfach: Below η, every fractional sum is a series with denominators 1 − λⁿ. Exactly such series give the “q-digamma function”. When λ goes
+      to 1 (b to η), it becomes the ordinary digamma function — the same one that appears directly at η.
+  en_theorie:
+    beispiel: |
+      At $\lambda=0.9$: formula and direct sum agree to $8\cdot10^{-30}$. At $1-\lambda=0.005$: $(A-a)/\ln\lambda=-5.4321$ (limit $-2e=-5.4366$), $s=3.1613$
+      (limit $Z_0=3.1640$).
+    einordnung: |
+      Explains the mechanism behind [[kl.verm.lambert_zeta]]; the difference from the true tetration is exactly the part from $\tfrac13\log k$ and $C_T$
+      ([[kl.satz.eta_koordinate]]).
+    genau: |
+      For the Möbius map with fixed points $a<A$ and multiplier $\lambda$ at $a$,
+      $$S^M(x)=a\,x+\frac{A-a}{\ln\lambda}\bigl[\psi_\lambda(x+1+s)-\psi_\lambda(1+s)\bigr],\qquad\lambda^s=\frac{a-1}{A-1},$$
+      with $\psi_q(z)=-\ln(1-q)+\ln q\sum_{n\ge0}\frac{q^{n+z}}{1-q^{n+z}}$. For $\lambda\to1$: $S^M(x)\to e\,x-2e[\psi(x+1+Z_0)-\psi(1+Z_0)]$, $Z_0=\frac{2e}{e-1}$.
+    warum: |
+      1. For a Möbius map, $\frac{y_k-a}{y_k-A}=r_0\lambda^k$ exactly — in this coordinate it is a scaling.
+      2. From this $y_k-a=-(A-a)\frac{r_0\lambda^k}{1-r_0\lambda^k}$; the sum of the differences is, by definition, a difference of q-digamma values.
+      3. Limits: $A-a\approx2e(1-\lambda)$, $\ln\lambda\approx-(1-\lambda)$, and $\psi_q\to\psi$ is classical.
+    worum: |
+      If one replaces $b^x$ near the double fixed point by the simplest map with the same two fixed points — a Möbius map —, one can compute
+      the fractional sum exactly. The result is the q-digamma function with $q=\lambda$, and for $\lambda\to1$ the ordinary digamma function.
+- id: kl.satz.newton_reihe
+  quelle_hash: 5a13fc73e7e6
+  theorie_hash: dec1fdc11458
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        The regular tetration is $T(h)=\Psi(s_0\lambda^h)=a+\sum_{k\ge1}\psi_ks_0^k\lambda^{kh}$ with the entire Poincaré function $\Psi$ (kl.satz.regulaer), hence
+        $\sum_k|\psi_ks_0^k|<\infty$. For each $k$ we have $\lambda^{kh}=\sum_n\binom hn(\lambda^k-1)^n$ (binomial series, $|\lambda^k-1|<1$), and
+        $\Delta^nT(0)=\sum_k\psi_ks_0^k(\lambda^k-1)^n$ for $n\ge1$. The double sum converges absolutely because $\sum_n|\binom hn|<\infty$ for $h>-1$ ($|\binom hn|\sim n^{-1-h}$)
+        and $|\lambda^k-1|\le1$ — so the order of summation may be interchanged.
+    pruefung:
+      f3_spezialfall: 'Yes: Newton interpolation of an exponential sum with bases in (0, 1). The q-analog (Reshetnikov) converges faster: kl.beob.q_binomial.'
+      f5_neue_frage: 'Exact rate: determined by the high modes with λ^k → 0?'
+      f1_folgt_unmittelbar: Yes, as soon as one writes down the Koenigs series in λ^{kh}.
+      f2_benutzte_voraussetzungen: Entire Poincaré function; 0 < λ < 1; h > −1.
+      f4_uebertragbar: Every iteration with attracting real fixed point and multiplier in (0, 1); Woon's variant with parameter w.
+    bewertung:
+      nutzen: Shows that below η the integer values alone already determine the regular solution — without any additional choice.
+      richtigkeit: complete; √2 at h = ½ recomputed
+    titel: Below η, the Newton series of the integer tower values yields the regular tetration
+    aussage: |
+      From the integer values alone, without fixed point and without Schröder function:
+      $$T(h)=\sum_{n\ge0}\binom hn\Delta^nT(0),\qquad\Delta^nT(0)=\sum_{j=0}^n(-1)^{n-j}\binom njT(j),$$
+      and the sum is the regular tetration. The convergence is only algebraic: for $b=\sqrt2$, $h=\tfrac12$ the distance after $10/20/40/90$ terms is
+      $3.2\cdot10^{-4}$, $5.3\cdot10^{-5}$, $8.3\cdot10^{-6}$, $9.4\cdot10^{-7}$ (about $N^{-2.7}$). Above $\eta$ the series diverges (the tower values grow too fast).
+    bereich: $1<b<\eta$, $T$ the regular tetration at the lower fixed point $a$, multiplier $\lambda=a\ln b\in(0,1)$; $h>-1$
+    einfach: One takes only the tower values at the integer points and interpolates them with the Newton formula from school, just as one lays
+      a polynomial through points. Below η, exactly the regular tetration comes out — slowly, but surely.
+  en_theorie:
+    beispiel: |
+      $b=\sqrt2$, $h=\frac12$: after 90 terms $1.24362$ — distance $9\cdot10^{-7}$ from the regular tetration $1.2436216276685\ldots$
+    einordnung: |
+      The faster q-analog is Reshetnikov's formula ([[kl.beob.q_binomial]]). Gottfried Helms observed in 2011 that the Newton formula follows the iteration at the
+      attracting fixed point.
+    genau: |
+      $$T(h)=\sum_{n\ge0}\binom hn\Delta^nT(0)$$
+      with the differences $\Delta^nT(0)$ of the numbers $1,b,b^b,\dots$ — the sum is the regular tetration. The convergence is slow (algebraic).
+    warum: |
+      1. The regular tetration is a sum of powers $\lambda^{kh}$ with $0<\lambda<1$.
+      2. For each single power the Newton series is the binomial series $(1+(\lambda^k-1))^h$, and it converges because $|\lambda^k-1|<1$.
+      3. Everything converges absolutely, so the sums may be interchanged.
+    worum: |
+      Below $\eta$ the tower values at the integer points already determine the regular tetration: The old Newton interpolation from differences hits it exactly.
+- id: kl.satz.obere_superexp
+  quelle_hash: 284afd47c069
+  theorie_hash: 2219bdd108e2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: 'Koenigs (it.satz.koenigs) gives $\Psi_A$ near 0. Since $\exp_b$ is entire and $|\lambda_A|>1$, $\Psi_A(w):=\exp_b^{\circ n}(\Psi_A(w/\lambda_A^n))$
+        (n large) continues $\Psi_A$ to an entire function (Poincaré). $z\mapsto\lambda_A^zc$ is entire, hence so is the composition; period from
+        $\lambda_A^{z+2\pi i/\ln\lambda_A}=\lambda_A^z$. Real: $\Psi_A$ has real coefficients and is increasing on $[0,\infty)$ (functional equation
+        with increasing $\exp_b$).'
+    pruefung:
+      f3_spezialfall: 'Yes: general Poincaré function; kl.satz.vier_sqrt2 is the case $b=\sqrt2$ (there not checked against the original for all
+        b — here proved for all $1<b<\eta$).'
+      f5_neue_frage: How does $\operatorname{usexp}_b$ behave for $b\uparrow\eta$ — does it tend to cheta (with suitable normalization)?
+      f1_folgt_unmittelbar: 'Yes: the Poincaré function of an entire function at a repelling fixed point is entire.'
+      f2_benutzte_voraussetzungen: Only that $\exp_b$ is entire and the fixed point is repelling; $b<\eta$ only for the existence of the real
+        fixed point $A$.
+      f4_uebertragbar: 'At $b=\eta$, $A=e$ becomes parabolic: then the Fatou coordinate takes the place of Ψ (kl.satz.cheta).'
+    bewertung:
+      nutzen: Second natural superfunction below η; explains what happens “above the tower”.
+      richtigkeit: complete
+    titel: Upper superexponential function (1 < b < η) — entire and periodic
+    aussage: |
+      Let $\Psi_A$ be the Poincaré function at the upper fixed point: $\Psi_A(\lambda_Aw)=b^{\Psi_A(w)}$, $\Psi_A(0)=A$, $\Psi_A'(0)=1$. Then
+      $$\operatorname{usexp}_b(z)=\Psi_A\bigl(\lambda_A^{\,z}\,c\bigr),\qquad c>0\ \text{with}\ \operatorname{usexp}_b(0)=A+1,$$
+      is an **entire** function with $\operatorname{usexp}_b(z+1)=b^{\operatorname{usexp}_b(z)}$, periodic with $2\pi i/\ln\lambda_A$, strictly increasing on $\mathbb R$ above $A$
+      and $\operatorname{usexp}_b(x)\downarrow A$ for $x\to-\infty$ (like $\lambda_A^{x}$). It is a superfunction, but not a tetration (it never takes the value 1 on $\mathbb R$).
+      Base $\sqrt2$: $A=4$, $\lambda_4=2\ln2$, period $19.2361490420\ldots\,i$, $\operatorname{usexp}(1/2)=5.2736473691781\ldots$, $\operatorname{usexp}(-1)=\log_{\sqrt2}5=4.6438561897747\ldots$
+    bereich: $1<b<\eta$, upper (repelling) fixed point $A>e$ with $\lambda_A=A\ln b>1$
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$: $A=4$, $\lambda_4=4\ln\sqrt2=2\ln2=1.386$, period $2\pi i/\ln1.386=19.2361490420\,i$.
+      - $\operatorname{usexp}(0)=5$, $\operatorname{usexp}(1)=\sqrt2^{\,5}=5.6568542495$, $\operatorname{usexp}(2)=\sqrt2^{\,5.657}=7.10$.
+      - $\operatorname{usexp}(-1)=\log_{\sqrt2}5=4.6438561898$, $\operatorname{usexp}(-30)-4=3.9\cdot10^{-5}$.
+      - $\operatorname{usexp}(1/2)=5.2736473691781\ldots$
+    einordnung: |
+      For $\sqrt2$ this is one of the four regular superexponentials from [[kl.satz.vier_sqrt2]]; here the proof holds for every base
+      $1<b<\eta$. At $b=\eta$ the two fixed points coalesce at $e$, and the Fatou coordinate takes the place of $\Psi_A$
+      ([[kl.satz.cheta]]). At the lower fixed point the Poincaré function is **not** entire: that is why the tetration has the singularity at $-2$.
+    genau: |
+      Let $1<b<\eta$, $A$ the upper fixed point ($A>e$) and $\lambda_A=A\ln b>1$ its multiplier. The **Poincaré function** $\Psi_A$ satisfies
+      $$\Psi_A(\lambda_A w)=b^{\Psi_A(w)},\qquad\Psi_A(0)=A,\quad\Psi_A'(0)=1.$$
+      With it, the upper superexponential function is
+      $$\operatorname{usexp}_b(z)=\Psi_A\bigl(\lambda_A^{\,z}\,c\bigr),$$
+      with the constant $c>0$ chosen so that $\operatorname{usexp}_b(0)=A+1$. It is entire, satisfies $\operatorname{usexp}_b(z+1)=b^{\operatorname{usexp}_b(z)}$,
+      is periodic with the purely imaginary period $2\pi i/\ln\lambda_A$, is strictly increasing on $\mathbb R$ and tends to $A$ from above for $x\to-\infty$.
+    warum: |
+      1. At the repelling fixed point the Koenigs theorem ([[it.satz.koenigs]]) gives a power series $\Psi_A$ near $w=0$ with the equation above.
+      2. **Continuing:** The equation can be read outward: $\Psi_A(w)=b^{\Psi_A(w/\lambda_A)}$. For large $w$, $w/\lambda_A^n$ is small after
+         $n$ steps, there one knows $\Psi_A$, and then one applies $z\mapsto b^z$ $n$ times. Since $b^z$ is defined and smooth everywhere,
+         this yields an entire function (this is Poincaré's argument).
+      3. $z\mapsto\lambda_A^z c$ is entire, hence so is $\operatorname{usexp}_b$. The equation: $\Psi_A(\lambda_A^{z+1}c)=\Psi_A(\lambda_A\cdot\lambda_A^zc)=b^{\Psi_A(\lambda_A^zc)}$.
+      4. Period: $\lambda_A^{z+2\pi i/\ln\lambda_A}=\lambda_A^z\,e^{2\pi i}=\lambda_A^z$.
+      5. For $x\to-\infty$, $\lambda_A^xc\to0$, hence $\operatorname{usexp}_b(x)\to\Psi_A(0)=A$.
+
+      It is not a tetration: On $\mathbb R$ its values stay above $A$, it never reaches the value $1$.
+    worum: |
+      Below $\eta$, $b^x$ has two real fixed points, for base $\sqrt2$ for instance $2$ and $4$. The ordinary tetration lives below the lower
+      fixed point: it starts at $1$ and creeps toward $2$. What happens **above** the upper fixed point? There is a second natural
+      solution of the equation $F(x+1)=b^{F(x)}$, which begins at $4$ (for $x\to-\infty$) and then explodes. It is even smooth in the whole
+      complex plane — an **entire** function.
+- id: kl.satz.parabolisch
+  quelle_hash: 0d2fd593f117
+  theorie_hash: d34019c33fe5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Kouznetsov–Trappmann 2012; asymptotics from $w_{n+1}=w_n+w_n^2/(2e)+O(w^3)$ with $w=T-e$.
+    pruefung:
+      f3_spezialfall: Yes, from it.satz.leau_fatou.
+      f5_neue_frage: Continuity in $b$ at $\eta$ → kl.frage.stetig_eta
+      f1_folgt_unmittelbar: Existence yes (Leau–Fatou). Asymptotics yes (standard computation).
+      f2_benutzte_voraussetzungen: Only the quadratic term $w^2/(2e)$.
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Borderline case between regular and Kneser.
+      richtigkeit: established
+    voraussetzungen:
+    - text: b = η
+    titel: Tetration to base η (parabolic)
+    aussage: |
+      The Fatou coordinate of the attracting petal yields a real-analytic tetration with
+      $T(x)=e-\dfrac{2e}{x}+O\!\Bigl(\dfrac{\ln x}{x^2}\Bigr)$ for $x\to\infty$. There are two regular
+      superexponentials (from below and from above at $e$).
+    bereich: $b=\eta$, fixed point $e$ with multiplier 1
+  en_theorie:
+    beispiel: |
+      $\eta\uparrow\uparrow10=2.32046$. The rough formula $e-2e/10=2.1746$ is still far off; the more precise one from [[kl.satz.eta_koordinate]] gives $2.3175$.
+      Fractional: $T_\eta(\tfrac12)=1.2571531$.
+    einordnung: |
+      An analytic flow at the fixed point does not exist ([[kl.kor.eta_baker]]). The precise asymptotics with logarithm and constant $C_T$:
+      [[kl.satz.eta_koordinate]]; the continuity in the base: [[kl.beob.stetig_eta]].
+    genau: |
+      For base $\eta$ the Fatou coordinate of the attracting petal yields a real-analytic tetration with
+      $$T(x)=e-\frac{2e}x+O\Bigl(\frac{\ln x}{x^2}\Bigr)\qquad(x\to\infty).$$
+      There are two regular superexponentials, from below and from above at $e$.
+    warum: |
+      With $w=T-e$ the equation becomes $w(x+1)=w(x)+\frac{w(x)^2}{2e}+O(w^3)$ — a parabolic germ ([[it.satz.leau_fatou]] with $a=\frac1{2e}$). The Fatou coordinate
+      is then approximately $-2e/w$, hence $w\approx-2e/x$.
+    worum: |
+      Exactly at $\eta$, $y=\eta^x$ and $y=x$ touch at $e$; the fixed point is neither attracting nor repelling but “parabolic”. The tower
+      creeps toward $e$ only like $1/x$. Nevertheless there is a natural tetration: the Fatou coordinate provides it.
+- id: kl.satz.qk_basiswechsel
+  quelle_hash: 6cedd3340d5f
+  theorie_hash: bbc22e1b8453
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: $\mathrm{Log}\,\sigma_d(f_dz)=\mathrm{Log}\,\sigma_d(z)+\Omega_d$ (mod $2\pi i$); $M$ maps this to $+\Omega_b$ and respects $2\pi
+        i\mathbb Z$, hence well-defined and conjugating. Complex-linear with $2\pi i$ fixed ⇒ $M=\mathrm{id}$ ⇒ $\Omega_b=\Omega_d$.
+    gegenbeispielsuche: 'exp.koenigs_kalkuel (λ_b = 0.6e^{0.9i}, λ_d = 0.5e^{2i}): conjugation to $3\cdot10^{-41}$; $|\partial K/\partial\bar
+      z|=1.78$, for equal multiplier $2\cdot10^{-30}$.'
+    pruefung:
+      f3_spezialfall: 'Yes: standard construction of quasiconformal conjugacies of hyperbolic germs (moduli space = torus).'
+      f5_neue_frage: Is the phase P of the mixed-base law above η the counterpart of this obstruction?
+      f1_folgt_unmittelbar: Yes, from the lattice structure $\Omega\mathbb Z+2\pi i\mathbb Z$.
+      f2_benutzte_voraussetzungen: Only linearizability of both germs.
+      f4_uebertragbar: To cycles of the same period in the same hyperbolic component; globally additionally addresses.
+    bewertung:
+      nutzen: Puts the three versions of the base change in this graph into one picture.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: attracting fixed points/cycles
+    titel: Three ways to translate two bases into each other — and why none can do everything
+    aussage: |
+      With the real-linear map $M$, $M(\Omega_d)=\Omega_b$, $M(2\pi i)=2\pi i$,
+      $$K=\sigma_b^{-1}\circ\exp\circ M\circ\mathrm{Log}\circ\sigma_d$$
+      is single-valued, satisfies $K\circ f_d=f_b\circ K$ and $K_{b,c}\circ K_{c,d}=K_{b,d}$, but is only quasiconformal. Holomorphic, unbranched **and**
+      time-preserving is possible only for $\Omega_b=\Omega_d$. So one has to give up one of them: holomorphy (this $K$), single-valuedness (power
+      $\chi_d^\rho$, kl.satz.wertseitiger_basiswechsel) or the time ($\sigma_b^{-1}(\kappa\sigma_d)$ conjugates $f_d$ to $f_b^{\,k}$, kl.satz.koenigs_basiswechsel).
+    bereich: two bases with an attracting fixed point (or an attracting cycle of the same period, then for the return map), $\Omega=\mathrm{Log}\,\lambda$
+    einfach: 'If one wants to translate the dynamics of one base into that of another, one cannot keep everything at once: smooth in the complex
+      sense, single-valued and at the same pace. Depending on what one sacrifices, one gets a different one of the three translations.'
+  en_theorie:
+    beispiel: |
+      $\lambda_b=0.6e^{0.9i}$, $\lambda_d=0.5e^{2i}$: conjugation to $3\cdot10^{-41}$; the deviation from holomorphy is $|\partial K/\partial\bar z|=1.78$. With equal multiplier: $2\cdot10^{-30}$.
+    einordnung: |
+      Standard construction for hyperbolic germs (their moduli space is a torus). Question: Is the wave $P$ above $\eta$ the counterpart of this obstruction ([[kl.frage.basiswechsel_kneser]])?
+    genau: |
+      For two bases with attracting fixed point, $\Omega=\mathrm{Log}\,\lambda$, and the real-linear map $M$ with $M(\Omega_d)=\Omega_b$, $M(2\pi i)=2\pi i$,
+      $$K=\sigma_b^{-1}\circ\exp\circ M\circ\mathrm{Log}\circ\sigma_d$$
+      is single-valued, conjugating ($K\circ f_d=f_b\circ K$) and compatible with changing via a third base — but is only quasiconformal. Holomorphic, unbranched **and**
+      time-preserving is possible only for $\Omega_b=\Omega_d$.
+    warum: |
+      1. $\mathrm{Log}\,\sigma_d(f_dz)=\mathrm{Log}\,\sigma_d(z)+\Omega_d$ (modulo $2\pi i$): in this coordinate $f_d$ is a translation on the lattice $\Omega_d\mathbb Z+2\pi i\mathbb Z$.
+      2. $M$ maps this lattice onto $\Omega_b\mathbb Z+2\pi i\mathbb Z$, so $K$ is well-defined and conjugates $f_d$ to $f_b$.
+      3. $M$ is complex-linear only if $M=\mathrm{id}$ (it fixes $2\pi i$), hence only for $\Omega_b=\Omega_d$. Otherwise $K$ is not holomorphic.
+      The alternatives: the power $\chi_d^\rho$ (holomorphic, time-preserving, but branched — [[kl.satz.wertseitiger_basiswechsel]]) or $\sigma_b^{-1}(\kappa\sigma_d)$ (holomorphic, single-valued, but with a
+      different pace — [[kl.satz.koenigs_basiswechsel]]).
+    worum: |
+      If one wants to translate the dynamics of one base into that of another, one would like three things: smooth in the complex sense, single-valued, and at the same pace.
+      All three together are possible only if the multipliers are equal. Depending on what one sacrifices, one gets one of the three translations of this chapter.
+- id: kl.satz.regulaer
+  quelle_hash: 1c9081884e33
+  theorie_hash: 4626ab34472b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: |
+        The orbit of 1 runs monotonically toward $a$, so $\sigma(1)<0$ is defined and $\lambda^x\sigma(1)$ is real.
+        Functional equation: $\sigma(b^{T})=\lambda\sigma(T)$; continuation to the left via $\log_b$.
+        Periodicity from $\lambda^{x+2\pi i/\ln\lambda}=\lambda^x$. Uniqueness of the iteration group: it.satz.vertauschbar.
+    pruefung:
+      f3_spezialfall: 'Yes: regular superfunction at a hyperbolic fixed point (in general for every $f$).'
+      f5_neue_frage: Two fixed points, two regular Abel functions on $(a,A)$ — how far do they differ? → kl.beob.zwei_abel
+      f1_folgt_unmittelbar: 'Yes, in the real case: Koenigs + Schröder→Abel. Statement on the complex domain not immediate.'
+      f2_benutzte_voraussetzungen: Only attraction at $a$ and $1$ in the basin of attraction; real-valuedness from $\lambda>0$.
+      f4_uebertragbar: Complex bases in the Shell–Thron domain (fp.satz.shell_thron).
+    bewertung:
+      nutzen: The natural tetration below η.
+      richtigkeit: complete in the real case; complex domain only from the literature (√2)
+    voraussetzungen:
+    - text: 1 < b < η
+    - text: Koenigs function σ at the attracting fixed point a
+    titel: Regular tetration for 1 < b < η
+    aussage: |
+      $T^{\mathrm{reg}}(x):=\sigma^{-1}\!\bigl(\lambda^{x}\sigma(1)\bigr)$ (continued to the left via $\log_b$)
+      is a real-analytic, strictly increasing tetration on $(-2,\infty)$ with $T(x)\uparrow a$ for $x\to\infty$,
+      and the only one whose iteration group is holomorphic at the fixed point $a$. Where it has been continued to the complex domain, it is
+      $2\pi i/\ln\lambda$-periodic (domain of holomorphy: kl.satz.vier_sqrt2 for $\sqrt2$).
+    bereich: $1<b<\eta$, $a$ = lower real fixed point, $\lambda=a\ln b\in(0,1)$
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$, $a=2$, $\lambda=\ln2$: $T(\tfrac12)=1.24362$, $T(-\tfrac12)=0.62910$, $T(5)=1.89271$. The leading term gives $T(5)-2\approx\sigma(1)\lambda^5=-0.1011$;
+      in fact $-0.1073$ — the remainder comes from higher terms ([[kl.satz.koenigs_spektral]]). In the vertical direction the function repeats every $17.14$ units.
+    einordnung: |
+      Computation routes: [[kl.satz.grenzwertformel]] (without series) and [[kl.satz.koenigs_spektral]] (as a series). At the upper fixed point there is a second regular
+      construction ([[kl.satz.vier_sqrt2]]); the difference is tiny, but not zero ([[kl.beob.zwei_abel]]). For $0<b<1$ it does not work with real values ([[kl.satz.basis_unter_eins]]).
+    genau: |
+      Let $1<b<\eta$, $a$ the lower fixed point of $b^x$, $\lambda=a\ln b\in(0,1)$ and $\sigma$ the Koenigs function at $a$. Then
+      $$T^{\mathrm{reg}}(x)=\sigma^{-1}\bigl(\lambda^{x}\,\sigma(1)\bigr)$$
+      (continued to the left with $\log_b$) is a real-analytic, strictly increasing tetration on $(-2,\infty)$ with $T(x)\to a$ for $x\to\infty$. It is the
+      only one whose fractional steps are holomorphic at the fixed point $a$. In the complex domain it is periodic with period $2\pi i/\ln\lambda$.
+    warum: |
+      1. The tower $1,b,b^b,\dots$ increases toward $a$, so $\sigma(1)$ is defined (via forward iteration up to near $a$) and negative, because $1<a$.
+      2. $\lambda^x\sigma(1)$ is real and tends to $0$ for $x\to\infty$, so $T(x)\to\sigma^{-1}(0)=a$.
+      3. Equation: $\sigma(b^{T(x)})=\lambda\,\sigma(T(x))=\lambda^{x+1}\sigma(1)=\sigma(T(x+1))$, hence $T(x+1)=b^{T(x)}$; and $T(0)=\sigma^{-1}(\sigma(1))=1$.
+      4. Uniqueness of the fractional steps: [[it.satz.vertauschbar]]. Period: $\lambda^{x+2\pi i/\ln\lambda}=\lambda^x$ ([[fg.satz.schroeder_abel]]).
+    worum: |
+      Below $\eta$ every tower runs into an attracting fixed point $a$. There each step is almost a scaling by $\lambda$, and in the
+      Koenigs coordinate even exactly. So one makes the half step there as a scaling by $\sqrt\lambda$ and computes back. This
+      is the **regular tetration** — the natural solution below $\eta$.
+- id: kl.satz.vier_sqrt2
+  quelle_hash: de26bd199ae3
+  theorie_hash: bb5c4f7033f9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: Kouznetsov–Trappmann 2010.
+    pruefung:
+      f3_spezialfall: The same pattern holds for every $1<b<\eta$ (not checked against the original).
+      f5_neue_frage: Ratio of the two Abel functions on (2,4) → kl.beob.zwei_abel
+      f1_folgt_unmittelbar: Existence yes (Koenigs at both fixed points), entireness at 4 no.
+      f2_benutzte_voraussetzungen: 'Entireness at 4: $\exp_b$ is entire and the fixed point 4 is repelling (superfunction = forward iteration
+        of an entire function).'
+      f4_uebertragbar: At $b=\eta$ the fixed points merge → two parabolic superexponentials (kouznetsov_trappmann2012).
+    bewertung:
+      nutzen: Model example of non-uniqueness through the choice of fixed point.
+      richtigkeit: established (literature)
+    voraussetzungen:
+    - text: b = √2
+    titel: Four regular superexponentials for base √2
+    aussage: |
+      There are four real regular superexponentials (two at the fixed point 2, two at the fixed point 4). The two at 4 are
+      entire, the two at 2 are holomorphic in a right half-plane; all are periodic in the imaginary direction. Only the
+      increasing one at 2 can satisfy $F(0)=1$ and is the tetration.
+    bereich: $b=\sqrt2$, fixed points 2 and 4
+  en_theorie:
+    beispiel: |
+      In the picture, the solution from above at $2$ and the solution from below at $4$ (both between $2$ and $4$) lie exactly on top of each other after shifting —
+      they differ only by a periodic function of size $4\cdot10^{-25}$.
+    einordnung: |
+      Source: Kouznetsov–Trappmann. The tiny difference between the two middle solutions is [[kl.beob.zwei_abel]]. Entire superfunctions without the
+      normalization $F(0)=1$ do not contradict [[fg.kor.keine_ganze_tetration]].
+    genau: |
+      There are four real regular superexponentials for $\sqrt2$: two at the fixed point $2$ (coming from below and from above), two at the fixed point $4$ (between $2$
+      and $4$ and above $4$). The two at $4$ are entire, those at $2$ holomorphic in a right half-plane; all are periodic in the imaginary direction.
+      Only the increasing one at the fixed point $2$ can satisfy $F(0)=1$.
+    warum: |
+      At the fixed point $2$ ($\lambda=\ln2<1$, attracting) we have $F(x)=\sigma_2^{-1}(\lambda^x c)$; the sign of $c$ decides the side. At the fixed point $4$
+      ($\lambda=2\ln2>1$, repelling) $\sigma_4^{-1}$ is entire (Poincaré function), and $F(x)=\sigma_4^{-1}(\lambda^xc)$ is entire. The value $1$ is reached only by the
+      solution that approaches $2$ from below — the others stay between $2$ and $4$ or above $4$.
+    worum: |
+      For base $\sqrt2$ there are two fixed points, $2$ and $4$. At each one can build regular superfunctions, one on each side.
+      That gives four solutions of the equation — but only one of them is the tetration.
+- id: kl.satz.wertseitiger_basiswechsel
+  quelle_hash: 672033b72eb3
+  theorie_hash: 29b2d6bffe6d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    beweis:
+      text: '$\chi_b(T_b(x))=\lambda_b^x=(\lambda_d^x)^{\rho}=\chi_d(T_d(x))^\rho$ with $x=A_d(y)$. Groupoid: $\rho_{b,c}\rho_{c,d}=\rho_{b,d}$.
+        Branching from $\chi_d(y)\sim\chi_d''(a_d)(y-a_d)$. Jacobian: $K''(T_d(x))=T_b''(x)/T_d''(x)$ and kl.satz.bruchprodukt for both bases.'
+    gegenbeispielsuche: 'exp.koenigs_kalkuel (√2 and 1.3, ρ = 0.384957593…): power law to $10^{-38}$, branching exponent measured 0.3849575936,
+      Jacobian formula to $4\cdot10^{-38}$.'
+    pruefung:
+      f3_spezialfall: 'Yes: comparison of two linearizations; groupoid as bw.prop.gruppoid.'
+      f5_neue_frage: What becomes of ρ in the limit b → η (λ_b → 1, log λ_b → 0)?
+      f1_folgt_unmittelbar: Yes, from the normalizations.
+      f2_benutzte_voraussetzungen: Attracting fixed points; reality only for the choice of branch.
+      f4_uebertragbar: 'To a common fixed point (kl.satz.basiswechsel_gleiches_L: there the height-side map becomes linear) and to cycles.'
+    bewertung:
+      nutzen: The natural base change below η; connects fractional sums with the base change.
+      richtigkeit: complete
+    voraussetzungen:
+    - text: both bases with attracting fixed point, compatible branches
+    titel: Value-side base change T_b∘A_d is a power in Koenigs coordinates
+    aussage: |
+      $$\chi_b\circ K_{b,d}=\chi_d^{\,\rho_{b,d}},\qquad\rho_{b,d}=\frac{\log\lambda_b}{\log\lambda_d},\qquad K_{b,c}\circ K_{c,d}=K_{b,d}.$$
+      $K_{b,d}$ maps the $d$-orbit onto the $b$-orbit of the same height and conjugates $f_d$ to $f_b$. At the repelling fixed point it is branched:
+      $K_{b,d}(y)-a_b\sim C\,(a_d-y)^{\rho_{b,d}}$. The Jacobian follows the fractional sums:
+      $$\frac{K'_{b,d}(T_d(x+h))}{K'_{b,d}(T_d(x))}=\Bigl(\frac{\ln b}{\ln d}\Bigr)^h\frac{b^{\Sigma_b(x;h)}}{d^{\Sigma_d(x;h)}}.$$
+      The height-side map $A_b\circ T_d$, by contrast, tends to a fixed value (kl.gescheitert.naiver_basiswechsel).
+    bereich: $1<b,d<\eta$, regular tetrations, $\chi(T(x))=\lambda^x$ normalized, $K_{b,d}=T_b\circ A_d$
+    einfach: Instead of asking “which height to base b does this value have?”, one asks “which value to base b belongs to the same height?”. In
+      the right coordinates this translation is simply a power.
+  en_theorie:
+    beispiel: |
+      $b=\sqrt2$, $d=1.3$: $\rho=\log\ln2/\log0.385935=0.384957593$. Power law to $10^{-38}$, branching exponent measured $0.3849575936$, derivative formula to $4\cdot10^{-38}$.
+    einordnung: |
+      The height-side map $A_b\circ T_d$, by contrast, becomes constant ([[kl.gescheitert.naiver_basiswechsel]]). Three translations compared: [[kl.satz.qk_basiswechsel]].
+    genau: |
+      For $1<b,d<\eta$ with regular tetrations, normalized by $\chi(T(x))=\lambda^x$, and $K_{b,d}=T_b\circ A_d$:
+      $$\chi_b\circ K_{b,d}=\chi_d^{\,\rho_{b,d}},\qquad\rho_{b,d}=\frac{\log\lambda_b}{\log\lambda_d},\qquad K_{b,c}\circ K_{c,d}=K_{b,d}.$$
+      At the repelling fixed point $K$ is branched: $K_{b,d}(y)-a_b\sim C(a_d-y)^{\rho}$. The derivative follows the fractional sums:
+      $\dfrac{K'(T_d(x+h))}{K'(T_d(x))}=\Bigl(\dfrac{\ln b}{\ln d}\Bigr)^h\dfrac{b^{\Sigma_b(x;h)}}{d^{\Sigma_d(x;h)}}$.
+    warum: |
+      1. $\chi_b(T_b(x))=\lambda_b^x=(\lambda_d^x)^\rho=\chi_d(T_d(x))^\rho$; with $x=A_d(y)$ the power formula appears.
+      2. Groupoid: $\rho_{b,c}\rho_{c,d}=\rho_{b,d}$.
+      3. Branching: near $a_d$, $\chi_d(y)\approx\chi_d'(a_d)(y-a_d)$, raised to the power $\rho$.
+      4. Derivative: $K'(T_d(x))=T_b'(x)/T_d'(x)$ and the fractional product for both bases ([[kl.satz.bruchprodukt]]).
+    worum: |
+      One can also pose the base change the other way around: not “which height does this value have?” but “which value belongs to the same height?”. Below $\eta$ this
+      translation of values is simply a power in Koenigs coordinates.
+- id: kl.verm.faktor
+  quelle_hash: 26c3f5288fa6
+  theorie_hash: 22cdcfab5ab5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: |
+      Model-free: $r_k=|\hat p(k)|e^{S_ak}/(|\hat p(1)|e^{S_a})$ agrees across $b\in\{1.25,1.3,1.35,\sqrt2\}$ to $\le4.3\cdot10^{-4}$ ($k\le5$).
+      Exponent model-dependent: $-1.236$ (with $1/k$ correction, fixed $S$) to $-1.267$ (free $S$) — $-5/4$ cannot be separated from, e.g., $1-\sqrt5$.
+    naechste_frage: Search for the singularities of $p$ in the complex plane directly (Newton on $T^{\mathrm{reg}}(\theta)=a+2\pi i/\ln b$) and
+      measure the local exponent.
+    pruefung:
+      f3_spezialfall: Paper IV Prop. 6.3 gives $\gamma=\rho/2-3/4$ for essential singularities with a $\sqrt k$ term; here a $\sqrt k$ term is
+        missing (otherwise $S$ would deviate).
+      f5_neue_frage: Which mechanism produces a quarter exponent? Check the location of the singularities via $T^{\mathrm{reg}}(\theta)=a+2\pi
+        ik/\ln b$ (preimages of $a$).
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: —
+      f4_uebertragbar: If the type is universal, it should also appear in the base change of the Kneser branches — compare with the $\gamma$ measured
+        there.
+    bewertung:
+      nutzen: Precise, explicitly testable model for singularity types of Abel differences.
+      recherche: No corresponding statement in the abstracts checked (Kouznetsov–Trappmann 2010).
+      richtigkeit: Conjecture, strongly supported numerically
+    titel: Universal residual factor ≈ k^(−5/4)
+    aussage: |
+      $|\hat p(k)|=C(b)\,g(k)\,e^{-2\pi^2k/|\ln\lambda_a|}$ with a function $g$ **independent of $b$**, and
+      $g(k)\approx k^{-5/4}$ (to within $\pm0.7\,\%$ for $k\le10$). Interpretation: all bases have the same singularity type at the edge of the strip;
+      an algebraic singularity $(\theta-\theta^*)^{\nu}$ would give $k^{-1-\nu}$, hence $\nu\approx1/4$.
+    bereich: same as kl.verm.streifenbreite
+  en_theorie:
+    beispiel: |
+      Normalized ratios $r_2=0.41930$, $r_3=0.25216$, … agree across the bases $1.25$, $1.3$, $1.35$, $\sqrt2$ to $4\cdot10^{-4}$, and $r_k\,k^{5/4}=1\pm0.0064$
+      for $k\le10$. Whether the exponent is exactly $-5/4$ or perhaps $1-\sqrt5=-1.236$ cannot be told apart this way.
+    einordnung: |
+      The same kind of residual factor was measured for the base-change modes above $\eta$ ([[bw.beob.modenabfall]]).
+    genau: |
+      **Conjecture.** $|\hat p(k)|=C(b)\,g(k)\,e^{-2\pi^2k/|\ln\lambda_a|}$ with a function $g$ independent of $b$, and $g(k)\approx k^{-5/4}$.
+    warum: |
+      A singularity of the form $(\theta-\theta^*)^{\nu}$ at the edge of the strip produces a residual factor $k^{-1-\nu}$; $k^{-5/4}$ would correspond to $\nu=\tfrac14$. The same $g$ for all
+      bases would mean: all have the same singularity type. This is only measured, not understood.
+    worum: |
+      If one takes out the exponential decay, a slow residual factor remains — and it seems to be the same for all bases, roughly $k^{-5/4}$.
+- id: kl.verm.lambert_zeta
+  quelle_hash: 1e237d145192
+  theorie_hash: e31a10a79169
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: |
+      exp.lambert_zeta: six bases $b=\exp(\lambda e^{-\lambda})$, $\delta=1-\lambda=0.2\dots0.005$: $|S_b(1/2)-S_\eta(1/2)|$ decreases monotonically to $2.3\cdot10^{-6}$,
+      order 2.0 in δ, hence 1 in $\eta-b$. Remainder “true − Möbius” → η-remainder (0.014572 → 0.014687).
+    pruefung:
+      f3_spezialfall: Analogous to “parabolic implosion” (Lavaurs).
+      f5_neue_frage: 'Which rescaling: in log λ_b or in √(η − b) (cf. gr.satz.wurzel_eta)?'
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Continuity of tetration in b at η (kl.frage.stetig_eta).
+      f4_uebertragbar: —
+    bewertung:
+      nutzen: Connects the two calculi.
+      richtigkeit: Mechanism proved (model), convergence numerical
+    titel: From Lambert series to digamma in the limit b → η
+    aussage: |
+      For $b\uparrow\eta$ the Lambert fractional sums (kl.satz.koenigs_spektral, denominator $1-\lambda_b^n\to0$) pass over into the parabolic
+      representation with $\psi$ and Hurwitz zeta (kl.satz.eta_digamma): $S_b(x)\to S_\eta(x)$ with error $O(\eta-b)$. The “suitable
+      rescaling” is the resummation to the q-digamma function with $q=\lambda_b$ (exact in the Möbius model, kl.satz.moebius_qdigamma);
+      the proof for the true map, including the part $\tfrac13\log k$, is open.
+  en_theorie:
+    beispiel: |
+      Measured for six bases with $1-\lambda$ from $0.2$ to $0.005$: the distance $|S_b(\tfrac12)-S_\eta(\tfrac12)|$ falls monotonically to $2.3\cdot10^{-6}$, linear in $\eta-b$.
+    einordnung: |
+      Originally a conjecture of the user's July synthesis; here made precise and measured ([[exp.lambert_zeta]]).
+    genau: |
+      **Conjecture.** For $b\to\eta$ from below, $S_b(x)\to S_\eta(x)$ with error $O(\eta-b)$; the bridge is the q-digamma function with $q=\lambda_b$.
+    warum: |
+      In the simplified Möbius model this is proved ([[kl.satz.moebius_qdigamma]]). For the true map the proof is missing, above all for the part
+      $\tfrac13\log k$, which the model does not capture.
+    worum: |
+      Below $\eta$ fractional sums are Lambert series with denominators $1-\lambda^n$; at $\eta$ they become digamma functions. The conjecture: the
+      one passes continuously into the other when the base tends to $\eta$.
+- id: kl.verm.streifenbreite
+  quelle_hash: d7b71b0e38b2
+  theorie_hash: 02cbd92e3e41
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: |
+      exp.sqrt2_abel: modes $k\le10$ at $b\in\{1.25,1.3,1.35,\sqrt2,1.43\}$ (170 digits, control check with a different series length 1e-112).
+      Free fit $\ln|\hat p(k)|=c+\gamma\ln k-Sk+d/k$: $S$ hits $2\pi^2/|\ln\lambda_a|$ to within $1.2$–$2.6\cdot10^{-4}$ relative;
+      the competitor $2\pi^2/\ln\lambda_A$ is off by 20–40 %. No counterexample among 5 bases.
+    pruefung:
+      f3_spezialfall: 'Analogous to Paper IV: mode decay ⇔ distance of the nearest singularity from the boundary (br.satz.gevrey_fourier).'
+      f5_neue_frage: 'A provable model problem for bw.frage.streifen_gevrey: here all objects are explicit (Koenigs series).'
+      f1_folgt_unmittelbar: No. Follows if one shows that the nearest singularities of $p$ lie exactly at $\operatorname{Im}\theta=\pm\pi/|\ln\lambda_a|$.
+      f2_benutzte_voraussetzungen: —
+      f4_uebertragbar: 'Same method for the Kneser base change: there the location of the singularities is precisely the open question (bw.frage.streifen_gevrey).'
+    bewertung:
+      nutzen: Model case in which the strip question should be explicitly decidable.
+      recherche: 'No formula of this kind found in Kouznetsov–Trappmann 2010 (abstract); full text (free manuscript in the forum) read, L1 12.10.2026:
+        §5, (5.9)–(5.10) approximate $\theta_{2,4}$ by the first mode $\xi(\sin(\varphi+2\pi z)-\sin\varphi)$ with $\xi=0.7252175546\cdot10^{-24}$
+        and state that the relation holds at least for $\mathrm{Im}\,z<T_2/2$ (half imaginary period) — so the strip has already been seen there,
+        but no law for the decay of the higher modes is given. Forum tid 69 (“Bummer!”, 2007) mentions only the size $10^{-24}$, no formula, no
+        imaginary period, no Fourier decay (L1, 12.10.2026).'
+      richtigkeit: Conjecture, numerically checked
+    titel: Amplitude law from the imaginary period
+    aussage: |
+      The Fourier coefficients of the difference $p=\alpha_A\circ\alpha_a^{-1}-\mathrm{id}$ decay like
+      $$|\hat p(k)|\approx C\,\exp\!\Bigl(-\frac{2\pi^2 k}{|\ln\lambda_a|}\Bigr),$$
+      i.e. $p$ is holomorphic precisely in a strip of half the imaginary period $\pi/|\ln\lambda_a|$ of the regular tetration
+      at the lower fixed point. Heuristics: at $\operatorname{Im}\theta=\pi/|\ln\lambda_a|$, $\lambda_a^{\theta}$ turns by $\pi$,
+      $T^{\mathrm{reg}}$ reaches the other side of $a$, where $\alpha_A$ becomes singular.
+    bereich: $1<b<\eta$, fixed points $a<A$, multipliers $\lambda_a\in(0,1)$, $\lambda_A>1$
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$: $2\pi^2/|\ln\ln2|=53.857$, so each mode shrinks by the factor $e^{-53.86}\approx4\cdot10^{-24}$ relative to the previous one. Base $1.25$: predicted
+      $16.474$, freely fitted $16.470$ — accurate to $2.6\cdot10^{-4}$; the competing formula with $\lambda_A$ is off by 28 %.
+    einordnung: |
+      A model case for the question of how smooth the base-change phases are ([[bw.verm.streifen]], [[bw.frage.streifen_gevrey]]). Fine structure: [[kl.verm.faktor]].
+    genau: |
+      **Conjecture.** For $1<b<\eta$ (fixed points $a<A$, multiplier $\lambda_a$) the Fourier coefficients of the difference decay like
+      $$|\hat p(k)|\approx C\,\exp\Bigl(-\frac{2\pi^2k}{|\ln\lambda_a|}\Bigr).$$
+      Equivalently: $p$ is holomorphic precisely in a strip of half the imaginary period $\pi/|\ln\lambda_a|$.
+    warum: |
+      Heuristics: A periodic function that is holomorphic in a strip of height $h$ has modes like $e^{-2\pi kh}$. At the height $\pi/|\ln\lambda_a|$,
+      $\lambda_a^\theta$ turns exactly by $\pi$; there the regular tetration reaches the other side of $a$, where the second Abel function becomes singular. With $h=\pi/|\ln\lambda_a|$
+      this gives the exponent $2\pi^2k/|\ln\lambda_a|$.
+    worum: |
+      The tiny wave between the two Abel functions has Fourier modes that become smaller extremely fast. How fast seems to be revealed by a simple
+      formula: the complex period of the regular tetration determines it.
+- id: kl.verm.vollmonoton
+  quelle_hash: 89f1d84c2d82
+  theorie_hash: a47b0ca0f80f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-12'
+  geprueft:
+    beweis: nein
+    intern: nein
+    kern: zweitpruefung
+    theorie: nein
+  en:
+    gegenbeispielsuche: 'exp.qbinomial: signs of c_1 … c_60 at a = √2, 1.3, 1.1, 1.44 (also near η, where the coefficients decay most slowly)
+      — all negative.'
+    naechste_frage: Proof that all $p_k\sigma(1)^k<0$ (recursion of the Koenigs coefficients, it.satz.koenigs); and whether conjecture 4 follows
+      from the Szekeres argument (it.satz.szekeres_monoton).
+    pruefung:
+      f3_spezialfall: Counterpart to Szekeres (it.satz.szekeres_monoton) in the hyperbolic case.
+      f5_neue_frage: 'If true: real characterization of the regular tetration — a building block for br.frage.bohr_mollerup in the case $b<\eta$.'
+      f1_folgt_unmittelbar: 'The equivalence yes: “⇐” $T′(x)=\sum(-c_k)k|\ln\lambda|e^{-k|\ln\lambda|x}$ is a positive sum of decaying exponentials;
+        “⇒” Bernstein: $T′$ is the Laplace transform of a positive measure, and the Dirichlet series is unique. If all $c_k\le0$, then by Pringsheim
+        the boundary of convergence lies on the real axis, i.e. at $z=-2$.'
+      f2_benutzte_voraussetzungen: The Koenigs series converges for $x>-2$ (follows from $c_k\le0$ and the singularity at $-2$).
+      f4_uebertragbar: 'Not to Kneser ($b>\eta$): no Koenigs series in $\lambda^z$ with real $\lambda$.'
+    bewertung:
+      nutzen: Translates an analytic conjecture into a sign question about a simple recursion.
+      richtigkeit: Equivalence proved, conjecture numerically supported
+    titel: T′ is completely monotone ⇔ all Koenigs coefficients are negative
+    aussage: |
+      **Conjecture (Reshetnikov 2017):** $T'$ is completely monotone on $(-2,\infty)$: $(-1)^mT^{(m+1)}(x)\ge0$ for all $m\ge0$.
+      **Equivalent (shown here):** all $c_k\le0$ — i.e. the Taylor coefficients of $\Psi$ alternate in sign regularly ($\sigma(1)<0$).
+      **Numerical:** $c_1,\dots,c_{60}<0$ for $a=\sqrt2,\ 1.3,\ 1.1,\ 1.44$ (e.g. $\sqrt2$: $c_1=-0.6321$, $c_{60}=-3.8\cdot10^{-21}$).
+      Reshetnikov's conjecture 4 adds: $T$ is the only analytic solution with $T(-1)=0$ and this property.
+    bereich: $1<a<\eta$, regular tetration $T(z)=L+\sum_{k\ge1}c_k\lambda^{kz}$ (kl.satz.koenigs_spektral), $c_k=p_k\,\sigma(1)^k$ with the Taylor
+      coefficients $p_k$ of the Poincaré function
+    einfach: 'The conjecture: the slope of the regular tetration is a sum of nothing but decaying exponential curves with positive weights. That
+      would be a purely real property that could pin down the solution — just as log-convexity does for the gamma function.'
+  en_theorie:
+    beispiel: |
+      $a=\sqrt2$: $c_1=-0.6321$, $c_2=-0.226$, $c_3=-0.0854$, $c_4=-0.0336$, …, $c_{60}=-3.8\cdot10^{-21}$.
+      $a=1.44$ (near $\eta$, slowest decay): $c_1=-0.455$, $c_8=-0.031$, $c_{60}=-3.8\cdot10^{-9}$ — all negative.
+    einordnung: |
+      If the conjecture were proved (together with uniqueness), one would have a purely real characterization for $b<\eta$ — for $b>\eta$ nothing of the kind exists
+      ([[br.frage.bohr_mollerup]]). The parabolic prototype is Szekeres' theorem for $e^x-1$ ([[it.satz.szekeres_monoton]]). The series from which the
+      conjecture stems: [[kl.beob.q_binomial]].
+    genau: |
+      For $1<a<\eta$ the regular tetration has the Koenigs series $T(z)=L+\sum_{k\ge1}c_k\lambda^{kz}$ with $0<\lambda<1$ ([[kl.satz.koenigs_spektral]]).
+
+      **Conjecture (Reshetnikov 2017):** $T'$ is completely monotone on $(-2,\infty)$, i.e. $T'\ge0$, $T''\le0$, $T'''\ge0$, … .
+
+      **Equivalent:** all $c_k\le0$.
+
+      **Measured:** $c_1,\dots,c_{60}$ are negative for $a=\sqrt2,\ 1.3,\ 1.1,\ 1.44$.
+
+      Reshetnikov's fourth conjecture: $T$ is the **only** analytic solution with $T(-1)=0$ and this property.
+    warum: |
+      **Why equivalent.** With $s=|\ln\lambda|$ we have $\lambda^{kz}=e^{-ksz}$ and
+      $$T'(x)=\sum_k(-c_k)\,ks\,e^{-ksx}.$$
+      - If all $c_k\le0$, this is a sum of decaying exponentials with weights $\ge0$; every derivative alternates its sign nicely.
+      - Conversely: By Bernstein's theorem a completely monotone function is a “mean” of exponentials $e^{-tx}$ with positive weights,
+        and these weights are unique. Here only $t=ks$ occurs, with weight $-c_k ks$ — hence $-c_k\ge0$.
+      - Extent: If all $c_k\le0$, the first singularity of the series lies on the real axis (Pringsheim's theorem), i.e. at $z=-2$. The series
+        then holds on all of $(-2,\infty)$.
+
+      **The signs.** $c_k=p_k\,\sigma(1)^k$, where $p_k$ are the Taylor coefficients of the Poincaré function and $\sigma(1)<0$. The computation shows
+      that the $p_k$ regularly alternate in sign. A proof of this is missing.
+    worum: |
+      The gamma function is, among all solutions of its equation, the only one with a certain curvature property (Bohr–Mollerup). Is there
+      something like that for tetration? Reshetnikov conjectures: Below $\eta$ the slope of the regular tetration is **completely monotone** — a sum
+      of nothing but decaying exponential curves with positive weights. Here it is shown that this is equivalent to a simple sign question,
+      and the signs are recomputed.

@@ -140,3 +140,7 @@ Titles: sentence case, no trailing period, keep any formula or term in the title
 | gekürzt / teilerfremd | in lowest terms / coprime |
 | Zählschranke, Nullstellenschranke, Orbitschranke | counting bound, zero bound, orbit bound |
 | Wurzel einer Gleichung (algebraisch) | root of an equation (with integer coefficients) |
+| Quellfixpunkt (Dynamik) | repelling fixed point ("source" nur mit Zusatz) |
+| Jacobi-Funktion / Jacobi-Determinante | Jacobian |
+| Takt (Schrittweite der Höhe) | pace |
+| eindeutig (im Gegensatz zu verzweigt) | single-valued |

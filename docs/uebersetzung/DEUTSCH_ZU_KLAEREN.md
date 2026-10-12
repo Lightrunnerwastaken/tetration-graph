@@ -58,3 +58,12 @@ Erledigtes bitte streichen. Stand 12.10.2026 (fg, it, fp).
 - Status „bewiesen“, aber nur beobachtet oder aus der Literatur: `gr.satz.superwurzel_dritte` (Konvergenz der Iteration nur beobachtet), `gr.satz.wurzel_eta` (Koeffizient −1.6166 nur gemessen), `gr.satz.exponentialitaet` (Ganzzahligkeit aus Hardy / van der Hoeven).
 - `gr.verm.tpid7`: „folgt“ für reguläre Tetration beruht auf `kl.verm.vollmonoton`, selbst eine Vermutung. `gr.gegen.tpid7_kneser`, Theorie: „gilt bis b₇ für Kneser“ übertreibt, der Prüftext nennt volle Konkavität offen.
 - Kleinigkeiten: `gr.satz.stufenleiter` T_e′(0) = 1.0917673512… (Kern) gegen 1.0917673513 (Theorie); `gr.satz.kehrwert_turmsumme` „vierter oder fünfter Summand“ klein, es ist nur der fünfte; `gr.satz.tauschregel` Prüftext nennt a^z „Potenzfunktion“.
+
+## kl
+- `kl.satz.carlson`: Status „bewiesen“ und die Aussage nennt die reguläre Tetration für 1<b≤η beschränkt; der Prüftext sagt, die Beschränktheit sei „numerisch“, f5 fragt, ob sie beweisbar ist.
+- `kl.satz.newton_reihe` (Beweis, Prüftext f2) benutzt eine „ganze“ Poincaré-Funktion am unteren Fixpunkt, `kl.satz.obere_superexp` (Theorie) sagt, sie sei dort nicht ganz.
+- `kl.satz.invariante_daempfung`: Status „skizze“, die Theorie sagt „teilweise bewiesen“; der Kern behauptet den Grenzfall |λ|→1 als Tatsache, die Theorie nennt ihn „eine Deutung“.
+- `kl.beob.zwei_abel`: f2 sagt 120 Stellen, sonst 170; die Amplitude ist „Ordnung 10⁻²⁴“ (Kern), 3.6·10⁻²⁵ (Theorie), 10⁻²⁵ (`worum`); der Titel sagt „unterscheiden sich um eine winzige Periode“ (gemeint: periodische Funktion).
+- `kl.satz.basiswechsel_gleiches_L`: Voraussetzung „b, d reell“, f2 sagt, die Realität werde nicht gebraucht.
+- `kl.beob.stetig_eta`: „Steigung auf sechs Stellen“, 0.438579 gegen 0.438581 stimmen aber nur auf etwa fünf überein.
+- Kleinigkeiten: `kl.satz.koenigs_basiswechsel` (Beweis 10⁻¹⁸ gegen Theorie 10⁻²⁷); `kl.beob.eta_konstanten` (Prüftext „Tiefe 3000“ gegen Theorie „20 000 Turmstufen“); `kl.satz.bruchsumme`, `einfach`: Dezimalkomma „1,5“.
