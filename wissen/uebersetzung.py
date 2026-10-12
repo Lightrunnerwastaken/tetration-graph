@@ -178,8 +178,9 @@ def pruefe_text(de: str, en: str) -> list:
         b.append(("WARNUNG", "uebersetzung-zahlen", f"Zahlen ausserhalb von Formeln verändert: fehlt {dict(zq - zu)}, neu {dict(zu - zq)}"))
     if de.count("\n\n") != en.count("\n\n"):
         b.append(("WARNUNG", "uebersetzung-absaetze", f"Absätze: {de.count(chr(10) * 2)} deutsch, {en.count(chr(10) * 2)} englisch"))
+    de_s, en_s = KENNUNG.sub(" ", de), KENNUNG.sub(" ", en)       # Kennungen wie ar.satz.keine_arith_info enthalten Signalwörter
     for muster_de, muster_en in SIGNAL:
-        if re.search(muster_de, de, re.I) and not re.search(muster_en, en, re.I):
+        if re.search(muster_de, de_s, re.I) and not re.search(muster_en, en_s, re.I):
             b.append(("WARNUNG", "uebersetzung-wortwahl", f"Signalwort '{muster_de}' im Deutschen, im Englischen nichts Entsprechendes"))
     if BRITISCH.search(en):
         b.append(("WARNUNG", "uebersetzung-wortwahl", f"britische Schreibweise: {BRITISCH.search(en).group(0)}"))
