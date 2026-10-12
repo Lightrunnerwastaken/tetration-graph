@@ -1,0 +1,587 @@
+# Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
+# übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: fg.def.abel
+  quelle_hash: dfdbff647957
+  theorie_hash: 5a45cb9050f2
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Abel equation, superfunction, Abel function
+    aussage: |
+      $\alpha$ is called an **Abel function** of $f$ if $\alpha(f(z))=\alpha(z)+1$.
+      $F$ is called a **superfunction** if $F(z+1)=f(F(z))$. If $\alpha$ is invertible, then
+      $F=\alpha^{-1}$ is a superfunction and vice versa. For $f=\exp_b$ the Abel function is
+      the **super-logarithm** $\operatorname{slog}_b=T_b^{-1}$.
+    bereich: $f:D\to D$, $D\subset\mathbb C$ or an interval
+  en_theorie:
+    beispiel: |
+      - $f(z)=z+2$: Abel function $\alpha(z)=z/2$, superfunction $F(x)=2x$.
+      - $f(z)=2z$: $\alpha(z)=\log_2z$, superfunction $F(x)=2^x$ — the power is the superfunction of doubling.
+      - $f(z)=b^z$: $\alpha=\operatorname{slog}_b$, superfunction $T_b$ — tetration is the superfunction of the power.
+    einordnung: |
+      This chain — addition, doubling, power, tetration — is exactly the ladder from chapter 0. Almost every construction first builds
+      an Abel function (often via the Schröder equation, [[fg.satz.schroeder_abel]]) and then inverts it.
+    genau: |
+      For a map $f$, $\alpha$ is called an **Abel function** if
+      $$\alpha(f(z))=\alpha(z)+1,$$
+      and $F$ is called a **superfunction** if $F(z+1)=f(F(z))$. If $\alpha$ is invertible, then $F=\alpha^{-1}$ is a superfunction, and vice versa.
+      For $f(z)=b^z$ the Abel function is the super-logarithm $\operatorname{slog}_b=T_b^{-1}$.
+    warum: |
+      Let $F=\alpha^{-1}$ and $z=F(w)$, so $\alpha(z)=w$. Then $\alpha(f(z))=w+1$, so $f(z)=\alpha^{-1}(w+1)$, that is $f(F(w))=F(w+1)$.
+      The converse works the same way.
+    worum: |
+      An Abel function counts how many steps have already been taken: if one applies $f$ once, it rises by exactly $1$. A
+      superfunction does the opposite: in time $x$ it takes exactly $x$ steps. The two are inverse functions of each other.
+- id: fg.def.boettcher
+  quelle_hash: 05e2e4c8bb66
+  theorie_hash: b6a6bea73e96
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Böttcher equation
+    aussage: |
+      For $f$ with a superattracting fixed point $p$ of order $k\ge2$, $\phi\circ f=\phi^{k}$, $\phi(p)=0$, is called the **Böttcher equation**.
+      With $\psi=\log\phi$ it becomes the Schröder-type equation $\psi\circ f=k\,\psi$ (multiplier $k$ instead of $\lambda$).
+  en_theorie:
+    einordnung: |
+      It does not occur for $b^z$, but it does for the elementary superfunctions such as $x^2-2$ ([[it.satz.elementare_superfunktionen]]).
+    genau: |
+      $\phi(f(z))=\phi(z)^k$ with $\phi(p)=0$; solution due to Böttcher ([[it.satz.boettcher]]).
+    warum: |
+      Taking the logarithm turns the exponentiation into a multiplication by $k$: this is a Schröder equation ([[fg.def.schroeder]]).
+    worum: |
+      The third classical iteration equation besides Abel and Schröder: it describes fixed points that attract so strongly that the
+      distance is squared (or raised to a higher power) at every step.
+- id: fg.def.iterationsgruppe
+  quelle_hash: 5ed48e56ccea
+  theorie_hash: 1c079c63b65b
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Continuous iteration (translation equation)
+    aussage: |
+      A family $(f^t)_t$ with $f^1=f$ and $f^{s+t}=f^s\circ f^t$ is called a **continuous iteration**
+      (solution of the translation equation). Half iterates $g\circ g=f$ are the case $t=1/2$.
+    bereich: $f:I\to I$, $t\in\mathbb R$ (or $t\ge 0$)
+  en_theorie:
+    beispiel: |
+      - $f(x)=2x$: $f^t(x)=2^tx$. $\ f(x)=x+1$: $f^t(x)=x+t$. $\ f(x)=x^2$ on $x>0$: $f^t(x)=x^{2^t}$.
+      - $f(x)=b^x$: $f^t(x)=T_b(\operatorname{slog}_b(x)+t)$. The half iterate of $e^x$ is $g(x)=T_e(\operatorname{slog}_e(x)+\tfrac12)$; for example
+        $g(1)=T_e(\tfrac12)=1.6464$ and $g(1.6464)=e$.
+    einordnung: |
+      Tetration and continuous iteration are two sides of the same thing. Which iterations are analytic at the fixed point is answered by
+      [[it.satz.vertauschbar]]; that there is none for $e^z-1$, by [[it.satz.baker]].
+    genau: |
+      A family $(f^t)_{t}$ with $f^1=f$ and
+      $$f^{s+t}=f^s\circ f^t$$
+      is called a **continuous iteration** (solution of the translation equation). A **half iterate** is a map $g$ with $g\circ g=f$.
+    warum: |
+      If one has an invertible Abel function $\alpha$, then $f^t:=\alpha^{-1}(\alpha+t)$ is a continuous iteration:
+      $f^s(f^t(z))=\alpha^{-1}(\alpha(z)+t+s)=f^{s+t}(z)$, and $f^1=\alpha^{-1}(\alpha+1)=f$. Conversely, every continuous iteration defines a
+      superfunction $F(t)=f^t(z_0)$.
+    worum: |
+      Instead of only "once, twice, three times $f$", one wants "$t$ times $f$" for every real number $t$. A family of such maps
+      that behaves like time is called a continuous iteration or flow. The half iterate is the case $t=\tfrac12$.
+- id: fg.def.schroeder
+  quelle_hash: f29c59ef5d27
+  theorie_hash: 8b23c7096439
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Schröder equation
+    aussage: |
+      $\sigma$ solves the **Schröder equation** if $\sigma(f(z))=\lambda\,\sigma(z)$ with $\sigma(p)=0$.
+    bereich: $f$ holomorphic near a fixed point $p$, $\lambda=f'(p)$
+  en_theorie:
+    beispiel: |
+      $f(z)=\dfrac{2z}{1+z}$ has the fixed point $0$ with $\lambda=f'(0)=2$, and $\sigma(z)=\dfrac z{1-z}$ solves the equation:
+      $$\sigma(f(z))=\frac{2z/(1+z)}{1-2z/(1+z)}=\frac{2z}{1-z}=2\,\sigma(z).$$
+    einordnung: |
+      From a Schröder solution one obtains an Abel function by taking the logarithm ([[fg.satz.schroeder_abel]]). For tetration below $\eta$
+      this is exactly the way to the regular solution ([[kl.satz.regulaer]]).
+    genau: |
+      Let $p$ be a fixed point of $f$ with multiplier $\lambda=f'(p)$. A function $\sigma$ with $\sigma(p)=0$ solves the **Schröder equation** if
+      $$\sigma(f(z))=\lambda\,\sigma(z).$$
+      In the coordinate $w=\sigma(z)$, $f$ is thus the multiplication $w\mapsto\lambda w$.
+    warum: |
+      This is a definition. Whether a solution exists is answered by Koenigs' theorem ([[it.satz.koenigs]]): yes, if $0<|\lambda|\ne1$.
+      The benefit: if $\sigma$ is invertible, then $f^{t}=\sigma^{-1}\circ(\lambda^t\sigma)$ is an iteration in continuous time — a "$t$-fold
+      step" is a dilation by $\lambda^t$.
+    worum: |
+      Near a fixed point one can often find a coordinate in which the map is a pure dilation. The equation
+      for this coordinate is called the Schröder equation. Whoever has solved it can write down any fractional step immediately.
+- id: fg.def.tetration
+  quelle_hash: 7a719eb7b3fd
+  theorie_hash: 6a2586d7c1e5
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Tetration equation
+    aussage: |
+      A **tetration to base $b$** is a function $F$ with
+      $F(x+1)=b^{F(x)}$ and $F(0)=1$, where $b^w:=e^{w\ln b}$ (principal branch of $\ln b$).
+      Without the normalization, $F$ is called a **superfunction** of $\exp_b$. Notation: $T_b$ for an
+      (arbitrary) solution, $T_b^{\mathrm K}$ for Kneser's solution.
+    bereich: $b>0,\ b\neq 1$; solution $F$ on an interval $I\subset\mathbb R$ or domain $D\subset\mathbb C$ with $I+1\subset I$
+  en_theorie:
+    beispiel: |
+      - Every tetration has $F(1)=b$, $F(2)=b^b$, $F(-1)=0$ ([[fg.lem.ganzzahlwerte]]).
+      - $F(x)=T_2(x+3)$ is a superfunction to base $2$, but not a tetration: $F(0)=2\uparrow\uparrow3=16$.
+    einordnung: |
+      The equation is a special case of the superfunction equation $F(x+1)=f(F(x))$ ([[fg.def.abel]]). Its inverse leads to the
+      Abel equation, its linearization at the fixed point to the Schröder equation ([[fg.def.schroeder]]).
+    genau: |
+      A **tetration to base $b$** ($b>0$, $b\ne1$) is a function $F$ with
+      $$F(x+1)=b^{F(x)},\qquad F(0)=1 ,$$
+      where $b^w:=e^{w\ln b}$ with the principal branch of $\ln b$. It can live on an interval of the real axis or on a domain
+      of the complex plane that contains $x+1$ together with $x$. If one drops the normalization $F(0)=1$, $F$ is called a **superfunction** of
+      $z\mapsto b^z$. Notation: $T_b$ for any tetration, $T_b^{\mathrm K}$ for Kneser's.
+    warum: |
+      The definition follows the model of the power: there, $a^{x+1}=a\cdot a^x$ together with $a^0=1$ fixes the integer powers, and for
+      fractional exponents one needs something additional — for the power, the addition law $a^{x+y}=a^xa^y$. For the gamma function
+      ($\Gamma(x+1)=x\,\Gamma(x)$) logarithmic convexity does this (Bohr–Mollerup theorem).
+
+      **For tetration no such law is available.** $T(x+y)$ has no simple relation to $T(x)$ and $T(y)$. Hence the
+      equation alone remains ambiguous ([[fg.satz.allgemeine_loesung]]), and the theory consists to a large extent in finding good additional conditions.
+    worum: |
+      The integer towers are known; what is sought is a function that connects them for **all** heights. Instead of saying what the curve
+      should look like, one only writes down the building rule of the tower for every height. This one equation is the starting point of the whole theory.
+- id: fg.kor.keine_ganze_tetration
+  quelle_hash: c0615d7c0f18
+  theorie_hash: 6093c67bbc71
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: No tetration that is real on ℝ is entire
+    aussage: |
+      There is no entire function $F$ with $F(z+1)=b^{F(z)}$, $F(0)=1$ and $F(-1)=0$ — in particular no
+      entire tetration that is real on $\mathbb R$. Entire **superfunctions** without the normalization $F(0)=1$ exist
+      (e.g. the regular super-exponentials at the fixed point 4 for base $\sqrt2$).
+    bereich: holomorphic solutions on domains $D\ni -2$
+    beweis:
+      text: 'Complex case of fg.lem.ganzzahlwerte: $F(-1)\in 2\pi i\mathbb Z/\ln b$ is possible, but then $b^{F(-2)}=F(-1)$; if $F(-1)=0$, a contradiction
+        follows immediately. If $F(-1)=2\pi i k/\ln b\neq0$, $F(-2)$ is defined; a contradiction one level down does not necessarily arise. **Caution:**
+        the proof needs $F(-1)=0$, i.e. real-valuedness at −1 or the choice of the principal branch.'
+    pruefung:
+      f5_neue_frage: Are there entire solutions with $F(0)=1$ and non-real $F(-1)$? (Left open, not researched.)
+      f1_folgt_unmittelbar: Yes, from fg.lem.ganzzahlwerte, provided $F(-1)=0$.
+      f3_spezialfall: 'no'
+      f2_benutzte_voraussetzungen: '$F(-1)=0$. Without real-valuedness at −1 the conclusion is not forced: $F(-1)=2\pi i k/\ln b$ ($k\ne0$) would
+        be compatible with a continuation to −2. The statement is therefore more precise: no entire solution with $F(-1)=0$.'
+      f4_uebertragbar: Holds for every construction with a real value at −1 (Kneser, regular, linear).
+    bewertung:
+      richtigkeit: correct with the hypothesis F(−1)=0 made precise
+      nutzen: Clarifies why Kneser's tetration needs a cut.
+    voraussetzungen:
+    - text: F holomorphic on a domain containing 0, −1, −2, with F(z+1)=b^{F(z)}
+    - text: F(0)=1
+    - text: F(−1)=0 (e.g. because F is real on ℝ)
+  en_theorie:
+    beispiel: |
+      For base $\sqrt2$ the regular super-exponential at the fixed point $4$ is entire ([[kl.satz.vier_sqrt2]]); but it never takes the value $1$ at a
+      point where one level lower there is $0$ — hence it is not a tetration.
+    einordnung: |
+      So every tetration has a singularity; for Kneser it lies at $-2$ and is logarithmic ([[kn.satz.singulaer_minus2]]).
+    genau: |
+      There is no entire function $F$ with $F(z+1)=b^{F(z)}$, $F(0)=1$ and $F(-1)=0$. In particular there is no entire tetration that is real on $\mathbb R$.
+    warum: |
+      If $F$ were entire, then $F(-2)$ would be a number with $b^{F(-2)}=F(-1)=0$ — impossible ([[fg.lem.ganzzahlwerte]]). Caution: without the condition
+      $F(-1)=0$ the argument does not go through; in the complex domain $F(-1)=2\pi ik/\ln b$ would also be conceivable.
+    worum: |
+      A tetration cannot be smooth everywhere in the complex plane: the point $-2$ is an obstruction. Superfunctions without the
+      normalization $F(0)=1$, by contrast, can very well be entire.
+- id: fg.kor.nichteindeutigkeit
+  quelle_hash: 3ef6fa72ff94
+  theorie_hash: dba5187bfb01
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Real-analytic tetration is not unique (arbitrary value at 1/2)
+    aussage: |
+      For every $r\in(1,b)$ there is a real-analytic, strictly increasing solution $\tilde F$ with
+      $\tilde F(0)=1$ and $\tilde F(1/2)=r$. Real analyticity plus monotonicity therefore does not determine tetration —
+      not even a single non-integer value.
+    bereich: every base $b>1$ for which a real-analytic strictly increasing solution $F$ on $(-2,\infty)$ exists
+    einfach: 'The equation T(x+1) = a^T(x) does not pin down the curve between the integer points: you can bend it smoothly and get another, equally
+      smooth solution. At x = 1/2 every value between 1 and a is possible.'
+    beweis:
+      text: |
+        $\tilde F=F\circ(\mathrm{id}+\theta)$ with $\theta=c\,g$, $g$ real-analytic 1-periodic, $g(0)=0$, $g(1/2)=1$
+        and $\max|g'|<1/|c|$. For $|c|<1/2$ such a $g$ exists (smoothed zigzag: Fejér mean of a function with
+        Lipschitz constant 2, then corrected affinely). $\tilde F(1/2)=F(1/2+c)$ runs through $(F(0),F(1))=(1,b)$.
+        For $|c|<1/\pi$ already $g=(1-\cos 2\pi x)/2$ suffices.
+    pruefung:
+      f5_neue_frage: Any statement about a concrete value such as $T_e(1/2)$ must use a complex (global) condition.
+      f1_folgt_unmittelbar: Yes, from fg.satz.allgemeine_loesung by choosing θ.
+      f3_spezialfall: Generalizes ar.satz.keine_arith_info (there only $b=e$).
+      f2_benutzte_voraussetzungen: Only the existence of a real-analytic strictly increasing $F$ and $F(0)=1$, $F(1)=b$. No complex properties.
+      f4_uebertragbar: Holds equally for regular tetration ($1<b<\eta$), Kneser ($b>\eta$) and parabolic ($b=\eta$).
+    bewertung:
+      richtigkeit: complete
+      nutzen: An important limitation for arithmetic and real characterizations.
+    voraussetzungen:
+    - text: Existence of a real-analytic, strictly increasing solution F with F(0)=1
+  en_theorie:
+    beispiel: |
+      Base $\sqrt2$: the regular tetration has $T(\tfrac12)=1.24362$. In an experiment, two further real-analytic solutions with
+      $\tilde T(\tfrac12)=1.15$ and $1.30$ were built; they satisfy the equation to $10^{-40}$.
+    einordnung: |
+      This is why stronger requirements are needed: analyticity at the fixed point (below $\eta$, [[it.satz.vertauschbar]]) or behavior in the
+      complex domain (above $\eta$, [[kn.satz.paulsen_cowgill]]). The lever for this is [[fg.lem.periodisch_liouville]].
+    genau: |
+      For every $r\in(1,b)$ there is a real-analytic, strictly increasing tetration $\tilde F$ with $\tilde F(0)=1$ and $\tilde F(\tfrac12)=r$.
+    warum: |
+      1. Take a real-analytic solution $F$ and a real-analytic, 1-periodic function $g$ with $g(0)=0$, $g(\tfrac12)=1$.
+      2. Set $\tilde F=F\circ(\mathrm{id}+c\,g)$. For small $|c|$, $x+c\,g(x)$ is still strictly increasing (one needs $|c|\max|g'|<1$), so $\tilde F$ is
+         again a tetration by [[fg.satz.allgemeine_loesung]].
+      3. $\tilde F(\tfrac12)=F(\tfrac12+c)$, and for suitable $c$ this runs through all values between $F(0)=1$ and $F(1)=b$. (With $g=\frac{1-\cos2\pi x}2$
+         this works for $|c|<1/\pi$; for the whole range one takes a steeper $g$.)
+    worum: |
+      Not even "smooth" helps: there are infinitely many infinitely differentiable, even real-analytic tetrations, and at
+      height $1/2$ one can obtain any value between $1$ and $b$.
+- id: fg.lem.ganzzahlwerte
+  quelle_hash: dd2400963d7b
+  theorie_hash: f6091a3bdbaa
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Values at integer arguments and the domain boundary −2
+    aussage: |
+      We have $F(-1)=0$, $F(n)=b\uparrow\uparrow n$ for $n\in\mathbb N$, and **no** real
+      (and no complex) solution is defined at the point $-2$: $b^{F(-2)}=F(-1)=0$ is impossible.
+      The natural real domain of definition is therefore at most $(-2,\infty)$.
+    bereich: real solution $F$ on an interval containing $-1$ and $0$; $b>0$, $b\ne1$
+    einfach: 'At the integer points everything is fixed: T(−1) = 0, T(0) = 1, T(1) = a, T(2) = a^a … At −2, a raised to something would have to
+      give zero — that never happens, so every tetration ends there.'
+    beweis:
+      text: |
+        $b^{F(-1)}=F(0)=1$ and real $F(-1)$ force $F(-1)=0$. Induction gives the integer values.
+        $b^w\neq0$ for all $w\in\mathbb C$.
+    pruefung:
+      f5_neue_frage: How does a solution behave as it approaches −2? → kn.satz.singulaer_minus2
+      f1_folgt_unmittelbar: Yes, directly from the equation.
+      f3_spezialfall: 'Special case of: superfunctions of $f$ can take values outside the image of $f$ only at the boundary; $0\notin\exp_b(\mathbb
+        C)$.'
+      f2_benutzte_voraussetzungen: For $F(-1)=0$ only real-valuedness at $-1$; in the complex case $F(-1)\in 2\pi i\mathbb Z/\ln b$ would also
+        be possible. For the statement about $-2$ nothing beyond the equation.
+      f4_uebertragbar: Holds for every solution, hence for Kneser, regular and all other constructions.
+    bewertung:
+      richtigkeit: elementary
+      nutzen: Basic fact; explains the cut $(-\infty,-2]$ of Kneser's solution.
+    voraussetzungen:
+    - text: F real-valued with F(x+1)=b^{F(x)} on the interval
+    - text: F(0)=1
+  en_theorie:
+    beispiel: |
+      Base $2$: $F(-1)=0$, $F(0)=1$, $F(1)=2$, $F(2)=4$, $F(3)=16$. A value $F(-2)$ would have to satisfy $2^{F(-2)}=0$ — no such value exists.
+    einordnung: |
+      How the curve plunges before $-2$ is stated in [[gr.satz.gestalt]]; in the complex domain $-2$ is a singularity ([[kn.satz.singulaer_minus2]]).
+    genau: |
+      For every real tetration, $F(-1)=0$ and $F(n)=b\uparrow\uparrow n$ for $n\in\mathbb N$. At the point $-2$ no solution is defined
+      (not even a complex one with $F(-1)=0$), because $b^{F(-2)}=F(-1)=0$ is impossible. The real domain of definition is at most $(-2,\infty)$.
+    warum: |
+      $b^{F(-1)}=F(0)=1$ means $F(-1)\ln b=0$ (for real $F(-1)$), hence $F(-1)=0$. Going forward, the equation yields the towers. And $b^w=e^{w\ln b}$
+      equals zero for no number $w$ — the exponential function omits the value $0$.
+    worum: |
+      At the integer points there is no choice: every tetration hits the same values there. And toward the left, every tetration
+      necessarily ends before the point $-2$.
+- id: fg.lem.periodisch_liouville
+  quelle_hash: 1525b8c1fa14
+  theorie_hash: e8a2fa906162
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Periodic perturbations destroy any boundedness
+    aussage: |
+      An entire 1-periodic function that stays bounded in both directions $\operatorname{Im}z\to\pm\infty$
+      is constant. Hence $F\circ(\mathrm{id}+\theta)$ with nonconstant $\theta$ cannot have the same
+      limits $F(x+iy)\to L$, $F(x-iy)\to\bar L$ — this is the lever of all complex uniqueness theorems.
+    bereich: $\theta$ entire and 1-periodic
+    beweis:
+      text: $\theta(z)=h(e^{2\pi i z})$ with $h$ holomorphic on $\mathbb C^*$, bounded at $0$ and $\infty$ ⇒ removable singularities, Liouville.
+    pruefung:
+      f5_neue_frage: 'Quantitatively: how fast must θ grow if the limits hold only up to an error? (relevant for numerical uniqueness checks)'
+      f1_folgt_unmittelbar: Yes (Laurent + Liouville).
+      f3_spezialfall: Liouville for periodic functions.
+      f2_benutzte_voraussetzungen: Boundedness in both half-planes; one-sided boundedness is not enough ($e^{2\pi i z}$).
+      f4_uebertragbar: To every superfunction with prescribed vertical limits.
+    bewertung:
+      richtigkeit: complete
+      nutzen: Core of the uniqueness proofs (Paulsen–Cowgill, Trappmann–Kouznetsov, Paper V Thm. 2).
+    voraussetzungen:
+    - text: θ entire, 1-periodic
+    - text: θ bounded for Im z → +∞ and for Im z → −∞
+  en_theorie:
+    beispiel: |
+      $\theta(z)=\sin2\pi z$ is harmless on the real axis, but at $\operatorname{Im}z=1$ it is already about $e^{2\pi}/2\approx268$ in size.
+    einordnung: |
+      Application: if Kneser's tetration tends to $L$ upward and to $\bar L$ downward, then every nonconstant bending
+      $\theta$ destroys this behavior. This is the core of the uniqueness theorems [[kn.satz.paulsen_cowgill]] and [[kn.satz.trappmann_kouznetsov]].
+    genau: |
+      If $\theta$ is entire (complex differentiable everywhere), 1-periodic and bounded for $\operatorname{Im}z\to+\infty$ **and** $\operatorname{Im}z\to-\infty$,
+      then $\theta$ is constant.
+    warum: |
+      1. A 1-periodic entire function can be written as $\theta(z)=h(q)$ with $q=e^{2\pi iz}$; $h$ is holomorphic on $\mathbb C\setminus\{0\}$.
+      2. $\operatorname{Im}z\to+\infty$ corresponds to $q\to0$, $\operatorname{Im}z\to-\infty$ corresponds to $q\to\infty$. Boundedness there means: $h$ is bounded at $0$ and at $\infty$,
+         so both points can be filled in as "removable".
+      3. Then $h$ is holomorphic and bounded on the entire Riemann sphere — constant by Liouville.
+    worum: |
+      A smooth periodic function that is continued into the complex domain becomes huge upward or downward — unless it is constant.
+      Precisely for this reason one can rule out periodic bendings in the complex domain and thereby select the right tetration.
+- id: fg.satz.allgemeine_loesung
+  quelle_hash: e9993ef898ca
+  theorie_hash: 5317d20f204e
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: All monotone solutions = one solution ∘ (id + periodic)
+    aussage: |
+      If $F$ is a continuous, strictly increasing solution, then every other such solution is of the form
+      $$G=F\circ(\mathrm{id}+\theta),\qquad \theta(x+1)=\theta(x),\quad \mathrm{id}+\theta \text{ continuous, strictly increasing}.$$
+      Conversely, every such $F\circ(\mathrm{id}+\theta)$ is again a solution; $\theta(0)=0$ preserves $G(0)=1$.
+    bereich: continuous, strictly increasing real solutions on $(-2,\infty)$ (or on a half-line)
+    beweis:
+      text: |
+        $h:=F^{-1}\circ G$ is continuous, strictly increasing and satisfies $h(x+1)=F^{-1}(b^{G(x)})=F^{-1}(b^{F(h(x))})=h(x)+1$.
+        Hence $\theta:=h-\mathrm{id}$ is 1-periodic. Converse: $F(x+1+\theta(x))=b^{F(x+\theta(x))}$.
+    pruefung:
+      f5_neue_frage: Which additional condition selects exactly one θ? → real criteria (br.frage.bohr_mollerup) or complex ones (kn.satz.paulsen_cowgill).
+      f1_folgt_unmittelbar: 'Yes: a standard fact for Abel equations (every Abel function = one Abel function + a periodic function of it).'
+      f3_spezialfall: Yes, of fg.satz.kohomologisch (homogeneous case) or of the general solution of the Abel equation (Kuczma et al.).
+      f2_benutzte_voraussetzungen: 'Forward direction: only injectivity of $F$ and inclusion of images; monotonicity of $G$ only for monotonicity
+        of $h$. Converse: no regularity of $F$, only that $\mathrm{id}+\theta$ maps the domain of definition into itself. $F(0)=1$ is not needed.'
+      f4_uebertragbar: 'To every superfunction of an injective map; complex: θ holomorphic 1-periodic.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: 'Central: shows that the equation alone does not single out a tetration.'
+    voraussetzungen:
+    - text: F, G continuous, strictly increasing, solutions of the tetration equation on (−2,∞)
+    - text: 'same image: G((−2,∞)) ⊂ F((−2,∞))'
+    - text: F(0)=G(0)=1
+  en_theorie:
+    beispiel: |
+      With $\theta(x)=0.05\cdot\frac{1-\cos2\pi x}2$ (zero at the integer points, $0.05$ in the middle), Kneser's tetration to base $e$ yields a new
+      tetration $\tilde T(x)=T(x+\theta(x))$ with $\tilde T(\tfrac12)=T(0.55)=1.7271$ instead of $1.6464$.
+    einordnung: |
+      From this the non-uniqueness follows immediately ([[fg.kor.nichteindeutigkeit]]). All equations of this type have the same structure — a solution plus "something
+      periodic" ([[fg.satz.kohomologisch]]), and it is the origin of the periodic wave under
+      base change (chapter 7).
+    genau: |
+      If $F$ is a continuous, strictly increasing solution, then every other such solution is of the form
+      $$G=F\circ(\mathrm{id}+\theta),\qquad\theta(x+1)=\theta(x),\quad x+\theta(x)\ \text{continuous and strictly increasing}.$$
+      Conversely, every such $F\circ(\mathrm{id}+\theta)$ is again a solution; $\theta(0)=0$ preserves $G(0)=1$.
+    warum: |
+      1. Set $h:=F^{-1}\circ G$ — this is continuous and strictly increasing because $F$ and $G$ are.
+      2. $h(x+1)=F^{-1}(G(x+1))=F^{-1}(b^{G(x)})=F^{-1}(b^{F(h(x))})=F^{-1}(F(h(x)+1))=h(x)+1$.
+      3. Hence $\theta:=h-\mathrm{id}$ is periodic with period $1$, and $G=F\circ h=F\circ(\mathrm{id}+\theta)$.
+      4. Converse: $F(x+1+\theta(x+1))=F(x+\theta(x)+1)=b^{F(x+\theta(x))}$.
+    worum: |
+      If one has an increasing tetration, one knows all of them: every other arises by "bending" the height a little back and forth —
+      with a bending that repeats after every unit.
+- id: fg.satz.einbettung_fluss
+  quelle_hash: fd31cb2002aa
+  theorie_hash: c157dce5565b
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Every increasing continuous map without a fixed point can be continuously iterated in infinitely many ways (Kuczma, Fort, Zdun)
+    aussage: |
+      There is a continuous, strictly monotone Abel function $\alpha$ with $\alpha(f(x))=\alpha(x)+1$, hence a continuous iteration group
+      $f^t=\alpha^{-1}(\alpha+t)$. It is by no means unique: on a fundamental domain $[f(x_0),x_0]$ one may prescribe $\alpha$ as an arbitrary
+      decreasing homeomorphism onto $[0,1]$ with $\alpha(x_0)=0$, $\alpha(f(x_0))=1$; each choice yields a different iteration.
+    bereich: $f:I\to I$ an increasing homeomorphism of an open interval $I$ onto itself, $f(x)<x$ for all $x\in I$ (or $>$)
+    einfach: An increasing function without a fixed point can always be applied "half as often" — in infinitely many different ways. You only
+      have to choose freely on a single piece; everything else follows.
+    beweis:
+      text: |
+        Choose $x_0\in I$ and a decreasing homeomorphism $\alpha_0:[f(x_0),x_0]\to[0,1]$ with $\alpha_0(x_0)=0$, $\alpha_0(f(x_0))=1$.
+        Every $x\in I$ lies in exactly one $f^n([f(x_0),x_0))$, $n\in\mathbb Z$: the orbit $f^n(x_0)$ is monotone and cannot accumulate in the interior of $I$
+        (an accumulation point would be a fixed point), so it runs toward both ends of $I$. Set $\alpha(x)=\alpha_0(f^{-n}(x))+n$. Continuity at the seams follows from
+        $\alpha_0(f(x_0))=\alpha_0(x_0)+1$. The group $f^t=\alpha^{-1}(\alpha+t)$ is continuous in $(t,x)$.
+    pruefung:
+      f5_neue_frage: Which additional condition makes the embedding unique? Convexity (Hooshmand), analyticity in the complex domain (Kneser,
+        Paulsen–Cowgill), holomorphy at the fixed point (Koenigs).
+      f1_folgt_unmittelbar: Yes, an elementary construction via a fundamental domain.
+      f3_spezialfall: General form of fg.satz.allgemeine_loesung (there for the tetration equation).
+      f2_benutzte_voraussetzungen: Monotonicity and absence of fixed points; if fixed points are present, $I$ splits into subintervals between
+        fixed points, on which one embeds separately.
+      f4_uebertragbar: 'To $b^x$ for $b>\eta$ (fixed-point-free on ℝ): Abel function = super-logarithm, infinitely many continuous tetrations
+        (fg.kor.nichteindeutigkeit).'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Shows in one line why real conditions alone do not determine tetration.
+    voraussetzungen:
+    - text: f continuous, strictly increasing and surjective on I
+    - text: f without a fixed point in I
+  en_theorie:
+    beispiel: |
+      $f(x)=x-1$ on ℝ has, besides $\alpha(x)=-x$, also $\alpha(x)=-x+\tfrac1{10}\sin(2\pi x)$ as an Abel function (monotone, because $\tfrac{2\pi}{10}<1$).
+    einordnung: |
+      General form of [[fg.satz.allgemeine_loesung]] and the reason for [[fg.kor.nichteindeutigkeit]]. Literature: Kuczma (1968), Fort (1955), Zdun (1979),
+      survey Zdun–Solarz (2014). Selection principles that fix one solution: convexity, analyticity, holomorphy at the fixed point.
+    genau: |
+      If $f$ is an increasing homeomorphism of an interval $I$ onto itself without a fixed point, then there are continuous Abel functions $\alpha$ with
+      $\alpha(f(x))=\alpha(x)+1$ and hence continuous iteration groups $f^t=\alpha^{-1}(\alpha+t)$; on a fundamental domain $\alpha$ can be chosen freely.
+    warum: |
+      1. The piece $[f(x_0),x_0]$ is mapped by $f$ onto the next piece $[f^2(x_0),f(x_0)]$; the pieces tile all of $I$.
+      2. On the first piece one chooses $\alpha$ arbitrarily (monotone, with boundary values 0 and 1).
+      3. On the $n$-th piece one sets $\alpha=\alpha_0\circ f^{-n}+n$ — then the Abel equation holds everywhere, and at the seams everything fits together.
+    worum: |
+      Can one apply a function "half as often"? For increasing functions without a fixed point the answer is: yes — and in infinitely many ways.
+      That is the reason why tetration is not unique without an additional condition.
+- id: fg.satz.kohomologisch
+  quelle_hash: 3eff05d170cc
+  theorie_hash: cc29521039b3
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: Solution structure of the cohomological equation
+    aussage: |
+      The solutions of $V(f(y))-V(y)=g(y)$ are exactly $V=V_0+h\circ\alpha$ with 1-periodic $h$.
+      The equation alone therefore never determines $V$; only additional conditions (growth, singularities,
+      normalization) select $h$.
+    bereich: $f$ injective with invertible Abel function $\alpha$; $g$ given
+    beweis:
+      text: The difference of two solutions is $f$-invariant, hence a function of $\alpha$ modulo 1.
+    pruefung:
+      f5_neue_frage: Which boundary condition makes $h$ unique? → bw.satz.kern_eindeutig
+      f1_folgt_unmittelbar: Yes.
+      f3_spezialfall: fg.satz.allgemeine_loesung is the case $g=1$ after rearrangement ($V=\alpha$).
+      f2_benutzte_voraussetzungen: Only injectivity of α.
+      f4_uebertragbar: 'Foundation of Paper V: the answer kernel $V=\partial_\beta\operatorname{slog}_b$ solves such an equation; the gauge freedom
+        $h$ is exactly the problem.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Structural foundation for base derivatives.
+    voraussetzungen:
+    - text: α Abel function of f, injective on the domain
+    - text: a particular solution V_0 exists
+  en_theorie:
+    beispiel: |
+      $f(y)=y+1$, $\alpha=\mathrm{id}$, and $V(y+1)-V(y)=2y+1$: one solution is $V_0=y^2$, all solutions are $y^2+h(y)$ with 1-periodic $h$.
+    einordnung: |
+      The derivative of tetration with respect to the base satisfies such an equation; which solution is the "right" one is decided in Paper V
+      by a selection principle ([[bw.def.auswahlprinzip]]). In general: the equation alone never selects, only additional conditions do.
+    genau: |
+      Let $f$ be injective with invertible Abel function $\alpha$. The solutions of
+      $$V(f(y))-V(y)=g(y)$$
+      are exactly $V=V_0+h\circ\alpha$ with a fixed solution $V_0$ and an arbitrary 1-periodic function $h$.
+    warum: |
+      The difference $D=V-V_0$ of two solutions satisfies $D(f(y))=D(y)$: it does not change along any orbit. In the Abel coordinate
+      $u=\alpha(y)$ this means $D(\alpha^{-1}(u+1))=D(\alpha^{-1}(u))$ — the function $h:=D\circ\alpha^{-1}$ is 1-periodic. Hence $D=h\circ\alpha$.
+    worum: |
+      Many questions about tetration lead to equations of the form "value after one step minus previous value = known function".
+      They, too, never have only one solution: one may always add something periodic.
+- id: fg.satz.schroeder_abel
+  quelle_hash: 539fc2f9ce8e
+  theorie_hash: 6d98f2fc3a98
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: From Schröder to Abel
+    aussage: |
+      $\alpha:=\dfrac{\log\sigma}{\log\lambda}$ is an Abel function of $f$ (up to the additive
+      ambiguity $2\pi i k/\log\lambda$). The Abel function inherits a **complex period** $2\pi i/\log\lambda$.
+    bereich: $\lambda\neq0$, $\lambda$ not a root of unity; domain without zeros of $\sigma$
+    beweis:
+      text: $\log\sigma(f(z))=\log\lambda+\log\sigma(z)$ up to $2\pi i\mathbb Z$.
+    pruefung:
+      f5_neue_frage: The imaginary period determines strip widths of periodic differences → kl.verm.streifenbreite
+      f1_folgt_unmittelbar: Yes.
+      f3_spezialfall: 'no'
+      f2_benutzte_voraussetzungen: Existence of a branch of the logarithm.
+      f4_uebertragbar: 'Regular tetration: $T^{\mathrm{reg}}(z)=\sigma^{-1}(\lambda^z\sigma(1))$ is $2\pi i/\ln\lambda$-periodic.'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Link Koenigs → tetration.
+    voraussetzungen:
+    - text: σ solves σ∘f = λσ
+    - text: a branch of log σ exists on the domain
+  en_theorie:
+    beispiel: |
+      - With $f(z)=\frac{2z}{1+z}$ and $\sigma=\frac z{1-z}$: $\alpha(z)=\log_2\frac z{1-z}$, and indeed $\alpha(f(z))=\log_2\frac{2z}{1-z}=\alpha(z)+1$.
+      - Base $\sqrt2$ at the fixed point $2$: $\lambda=\ln2$, $\log\lambda=-0.3665$. The regular tetration has the period $2\pi i/\log\lambda$, so
+        it repeats in the vertical direction every $17.143$ units.
+    einordnung: |
+      The complex period determines how smooth the differences between different constructions are ([[kl.verm.streifenbreite]]).
+      Above $\eta$ it becomes an obstruction that Kneser corrects ([[kn.gescheitert.regulaer_an_L]]).
+    genau: |
+      If $\sigma$ solves the Schröder equation with multiplier $\lambda$ ($\lambda\ne0$, not a root of unity), then
+      $$\alpha:=\frac{\log\sigma}{\log\lambda}$$
+      is an Abel function of $f$ — up to multiples of $2\pi i/\log\lambda$, which come from the branch of the logarithm. The associated
+      superfunction $\alpha^{-1}$ is therefore **periodic with the complex period** $2\pi i/\log\lambda$.
+    warum: |
+      1. $\log\sigma(f(z))=\log(\lambda\,\sigma(z))=\log\lambda+\log\sigma(z)$, up to a multiple of $2\pi i$.
+      2. Dividing by $\log\lambda$: $\alpha(f(z))=1+\alpha(z)$ up to $2\pi ik/\log\lambda$.
+      3. The superfunction is $F(x)=\sigma^{-1}(\lambda^x\cdot c)$. Because $\lambda^{x+2\pi i/\log\lambda}=\lambda^x e^{2\pi i}=\lambda^x$, $F$ is periodic.
+    worum: |
+      If $f$ is a dilation by $\lambda$ in some coordinate, then in the logarithm of that coordinate $f$ is a shift by $\log\lambda$.
+      Dividing by $\log\lambda$ turns this into the shift by $1$ — an Abel function. As a side effect it has a period in the complex domain.
+- id: fg.satz.tpid4
+  quelle_hash: 6a11dc87dabd
+  theorie_hash: 24249cba19c2
+  herkunft:
+    modell: sonnet+haiku-abgleich
+    datum: '2026-10-12'
+  geprueft: zweitpruefung
+  en:
+    titel: 'TPID 4: f(z+1) = b·f(z), f(0) = 1 has an entire solution bounded on the strip if and only if b > 0'
+    aussage: |
+      Let $b\ne0$ be complex, $S=\{0<\operatorname{Re}z\le1\}$. An entire function with $f(z+1)=b\,f(z)$, $f(0)=1$ that is bounded on $S$ exists exactly for $b>0$, and then
+      it is $b^z$. For every other $b$, every entire solution is unbounded on $S$ — the conjecture TPID 4 (Trappmann 2008) holds.
+    einfach: 'At the level of exponentiation, the question "Which smooth continuation is the right one?" is easy: being bounded in a vertical
+      strip pins down b^z — and for complex bases there is no such bounded continuation at all.'
+    beweis:
+      text: |
+        Choose $\ell=\log b$ with $\theta=\operatorname{Im}\ell\in(-\pi,\pi]$. Then $g(z)=f(z)e^{-\ell z}$ is entire and 1-periodic, $g(z)=\sum_nc_ne^{2\pi inz}$. From $|f|\le M$ on $S$ it follows that
+        $|g(x+iy)|\le M'e^{\theta y}$, hence $|c_n|=\bigl|\int_0^1g(x+iy)e^{-2\pi in(x+iy)}dx\bigr|\le M'e^{(\theta+2\pi n)y}$ for all $y$. If $\theta+2\pi n\ne0$, letting $y\to\mp\infty$
+        gives $c_n=0$. So at most those $n$ with $\theta=-2\pi n$ survive, i.e. $\theta=0$, $b>0$, $n=0$: $g$ is constant, $f=b^z$.
+    pruefung:
+      f5_neue_frage: 'no'
+      f1_folgt_unmittelbar: Yes, Fourier coefficients as in the proof of Wielandt's theorem.
+      f3_spezialfall: 'Yes: uniqueness via growth in the vertical direction — the same idea as Paulsen–Cowgill and Trappmann–Kouznetsov one level
+        down.'
+      f2_benutzte_voraussetzungen: Entireness; boundedness on the whole strip.
+      f4_uebertragbar: To every linear step equation f(z+1) = b f(z).
+    bewertung:
+      richtigkeit: complete
+      nutzen: Settles an open question of the forum list in two lines.
+  en_theorie:
+    beispiel: |
+      $b=-1$: $f(z)=e^{i\pi z}$ satisfies the equation, but is unbounded below ($|e^{i\pi(x+iy)}|=e^{-\pi y}$). Any other choice does no better.
+    einordnung: |
+      The same idea as [[kn.satz.paulsen_cowgill]] and [[fg.lem.periodisch_liouville]], one level down. Settles TPID 4 from the forum list.
+    genau: |
+      Entire solutions of $f(z+1)=b\,f(z)$, $f(0)=1$ that are bounded on $0<\operatorname{Re}z\le1$ exist only for $b>0$, and then it is $b^z$.
+    warum: |
+      1. $g(z)=f(z)b^{-z}$ is 1-periodic, hence a Fourier series $\sum c_ne^{2\pi inz}$.
+      2. Boundedness of $f$ gives a bound for $g$ that grows like $e^{\theta y}$ upward and downward ($\theta=\arg b$).
+      3. Each Fourier coefficient is bounded by $e^{(\theta+2\pi n)y}$ — for all $y$. This is possible only if $c_n=0$ or $\theta+2\pi n=0$.
+    worum: |
+      One level below tetration: why is $b^z$ "the" continuation of exponentiation? Because it is bounded in the vertical strip — and that pins it down.
