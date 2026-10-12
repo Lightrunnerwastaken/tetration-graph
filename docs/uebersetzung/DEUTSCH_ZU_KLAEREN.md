@@ -31,3 +31,12 @@ Erledigtes bitte streichen. Stand 12.10.2026 (fg, it, fp).
 - `br.satz.halbexp_komplexitaet`: `bereich` sagt f(f(n)) „etwa 2^n“, `aussage` f(f(n)) ≤ 2^{o(n)}, die Theorie „unter 2^n“.
 - `br.satz.boshernitzan`: der Kern nennt die Funktionen Lösungen von f(x+1)=e^{f(x)}, die Theorie sagt „etwa“ und dass die genaue Lösung noch am Original zu prüfen ist.
 - Notation: in der Lavaurs-Formel (`br.satz.shishikura`) stehen die Kürzel `\text{abst}`, `\text{anz}`; die englische Fassung nennt sie `rep`, `att`.
+
+## ar
+- `ar.lem.nullstellen`: der Prüftext nennt Holomorphie auf Radius > 1.2 (f2, f4), Theorie und Beweis brauchen aber D̄(1,2.9); die Aussage zählt nur Nullstellen in D(1,1.2).
+- `ar.kor.benachbart`: x=0 wird in der Theorie als Ausnahme genannt, aber T(1)=e ist transzendent, also ist nur x=−1 eine echte Ausnahme.
+- `ar.satz.selbstpotenz_kongruenz`: `einfach` sagt „jeder Rest kommt als x^x vor“, die Aussage gilt aber nur für u teilerfremd zu k.
+- `ar.verm.gelfond_turm`: `bereich` „ω≠0 und α algebraisch“ lässt offen, ob ω algebraisch ist (die Theorie sagt ja); die Theorie `genau` lässt den ¹z-Fall für z=e^ω aus, den der Kern enthält.
+- `ar.satz.unendliche_tuerme_gs`: `bereich` 1<b≤e^{1/e}, die Aussage behandelt aber auch b∈[e^{−e},1) und b<e^{−e}.
+- `ar.frage.ef_fortsetzung`: `einfach` spricht von einer „natürlichen Glattheitsbedingung“, die Aussage von „totaler Monotonie“.
+- `ar.satz.ssc_gelfond`: Status `bewiesen_literatur`, der Inhalt ist aber eine bedingte Implikation (vermutlich gewollt).

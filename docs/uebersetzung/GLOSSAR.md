@@ -133,3 +133,10 @@ Preserve quantifiers and scope exactly ("jede" = every, "eine" = a/one, "genau e
 Spelling: American English (neighbor, behavior, normalize, analyze – a script warns on British forms). "gleichberechtigt" = "on an equal footing". Swiss "ss" in source (gleichmässig) is just spelling.
 Titles: sentence case, no trailing period, keep any formula or term in the title.
 `einfach` texts: simple everyday English for a reader who has had school mathematics plus derivative/integral; keep it short and warm, but never loosen the claim.
+| Induktionsannahme | induction hypothesis (not "assumption") |
+| Kettenbruchglied | partial quotient |
+| Stockwerk (Turm) | level (of the tower) |
+| Chintschin | Khinchin |
+| gekürzt / teilerfremd | in lowest terms / coprime |
+| Zählschranke, Nullstellenschranke, Orbitschranke | counting bound, zero bound, orbit bound |
+| Wurzel einer Gleichung (algebraisch) | root of an equation (with integer coefficients) |
