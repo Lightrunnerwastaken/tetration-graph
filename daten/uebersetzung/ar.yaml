@@ -1,7 +1,7 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
 - id: ar.beob.ausschluss
-  quelle_hash: bb1342b28a92
+  quelle_hash: 7c375f7c19f5
   theorie_hash: 94fdb95e4561
   herkunft:
     modell: sonnet
@@ -10,6 +10,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     pruefung:
       f4_uebertragbar: Same procedure for $T_2(1/2)$.
@@ -26,6 +27,8 @@
       From 1973 digits: no rational value with denominator $\le10^{983}$ (1936 partial quotients), not algebraic of degree
       $d$ under heights $10^{949}$ ($d=1$) … $10^{5}$ ($d=200$); no relation to $e,\pi,\ln p,\gamma,\zeta(3),\Omega,L,\ldots$;
       continued fraction statistics generic (Khinchin 2.650, Lévy 1.171).
+    quellen:
+    - stelle: Part A
   en_theorie:
     beispiel: |
       For a “typical” real number the geometric mean of the partial quotients is Khinchin's constant $2.685$; measured $2.650$ — unremarkable.
@@ -41,7 +44,7 @@
     worum: |
       Is $T_e(\tfrac12)$ perhaps a simple fraction or a simple algebraic number? With almost 2000 digits one can rule this out for huge denominators and heights.
 - id: ar.frage.e_hoch_e
-  quelle_hash: 89c53251d7c2
+  quelle_hash: 4853cefd39bb
   theorie_hash: 4f9db302b632
   herkunft:
     modell: sonnet
@@ -50,10 +53,14 @@
     beweis: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     naechste_frage: None — classical open problem.
     titel: Is e^e = T_e(2) transcendental?
     aussage: Open (follows from Schanuel). The question for $T_e(1/2)$ lies beyond that.
+    quellen:
+    - stelle: Schanuel's conjecture; e^e as a consequence
+    - stelle: Remark after Corollary 1
   en_theorie:
     beispiel: |
       $e^e=15.15426224\ldots$ It is not even proved that this number is irrational. Equally open are $\pi^e$, $e^{\pi^2}$ and $\pi^\pi$ — whereas $e^\pi$, as $(-1)^{-i}$, is transcendental by Gelfond–Schneider.
@@ -103,7 +110,7 @@
     worum: |
       The same problem as for tetration, on a neighboring object: How does one continue $\mathrm{EF}(x)=x^{\mathrm{EF}(x-1)}$ smoothly?
 - id: ar.frage.ganze_tuerme
-  quelle_hash: d4564ef070b3
+  quelle_hash: d261a201631a
   theorie_hash: be0e5f52ae2a
   herkunft:
     modell: sonnet
@@ -112,6 +119,7 @@
     beweis: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     naechste_frage: All the questions follow from Schanuel; without Schanuel even $e^e$ is open (ar.frage.e_hoch_e).
     titel: 'Open number questions: is ⁴π or ⁵e an integer? Is ⁿq ever rational?'
@@ -119,6 +127,8 @@
       Open are (Wikipedia, section “Open questions”): Is ${}^4\pi$ or ${}^5e$ an integer? Is ${}^nq$ for rational, non-integer $q$ and $n\ge4$ ever rational?
       Is the positive solution of ${}^nx=2$ for $n\ge4$ rational? Known: for $n=2$ transcendental, for $n=3$ irrational (ar.satz.superwurzel_arith); ${}^2q$ irrational,
       ${}^3q$ transcendental (ar.satz.rationale_tuerme).
+    quellen:
+    - stelle: Open questions
   en_theorie:
     einordnung: |
       All these questions would follow from the Schanuel conjecture ([[ar.verm.schanuel]]); without it even $e^e$ is open ([[ar.frage.e_hoch_e]]).
@@ -136,7 +146,7 @@
       Remarkably little is known about the numbers in towers. Even such simple questions as “Is ${}^4\pi$ an integer?” are open — not because they sound hard,
       but because one cannot even compute ${}^4\pi$ precisely enough to check.
 - id: ar.kor.benachbart
-  quelle_hash: 3fdd3e44a7db
+  quelle_hash: 158a0a18a5e9
   theorie_hash: bf9b56f4847d
   herkunft:
     modell: sonnet
@@ -146,6 +156,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: ar.satz.orbitschranke with $T(x)\ne0$.
@@ -161,9 +172,16 @@
     voraussetzungen:
     - text: T(y) = 0 only for y = −1
     - text: T = Kneser (A1, Corollary 1)
+      notiz: every strictly increasing solution suffices
     titel: For every increasing tetration, one of T(x), T(x+1) is transcendental
     aussage: For $x>-2$, $x\notin\{-1,0\}$ at least one of the values $T(x)$, $T(x+1)$ is transcendental.
     bereich: real solutions to base $e$ whose only zero is at $-1$ (e.g. strictly increasing)
+    versionen:
+    - aenderung: for Kneser's tetration
+    - aenderung: extended to all solutions with sole zero −1
+      grund: Check question 2
+    quellen:
+    - stelle: Corollary 1
   en_theorie:
     beispiel: |
       Kneser: $T_e(\tfrac12)=1.6463542\ldots$ or $T_e(\tfrac32)=e^{1.6463542\ldots}=5.1880\ldots$ — at least one of the two numbers is transcendental. Which one is not known.
@@ -176,7 +194,7 @@
     worum: |
       For every increasing tetration to base $e$: Of two values at distance $1$, at least one is transcendental — everywhere except at $-1$ and $0$.
 - id: ar.lem.nullstellen
-  quelle_hash: 787cd0999934
+  quelle_hash: 83b19df0dd3d
   theorie_hash: 9d093d4adc03
   herkunft:
     modell: sonnet
@@ -186,9 +204,13 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Jensen on $D(1,2.9)$; lower bound at $z=1$ via Mahler's transcendence measure for $e=T(1)$.
+      luecken:
+      - From $\log((d+1)H)$ a term $d^2\log^2(d+1)$ arises that does not appear explicitly in the bound (absorbable for $H\ge d$).
+      - Constants not carried out; case $P(1,Y)\equiv0$ only sketched.
     pruefung:
       f4_uebertragbar: Every solution that is holomorphic on $\bar D(1,R)$, $R>1.2$.
       f5_neue_frage: Polylog counting bound → ar.satz.masser_typ
@@ -203,9 +225,12 @@
     - text: T holomorphic and bounded on the closed disk D̄(1, 2.9)
     - text: T(1) = e (holds for every solution with T(0)=1)
     - text: T = Kneser
+      notiz: only holomorphy on D̄(1,2.9) is used
     titel: Zero bound for P(z, T_e(z)) (A1, Lemma 5.1)
     aussage: $F(z)=P(z,T(z))$ has at most $c_1d^2\log(d+1)\log(H+2)+c_2d$ zeros in $D(1,1.2)$.
     bereich: $P\in\mathbb Z[X,Y]$, degrees $\le d$, height $\le H$, disk $D(1,1.2)$
+    quellen:
+    - stelle: Lemma 5.1
   en_theorie:
     einordnung: |
       Needs only holomorphy on $\bar D(1,2.9)$ ([[kn.satz.kneser_eigenschaften]]). Key for [[ar.satz.masser_typ]].
@@ -219,7 +244,7 @@
       An auxiliary lemma for the sharper counting bound: A polynomial in $z$ and $T(z)$ cannot have too many zeros in a disk — otherwise it would be too small to have, at the point $z=1$
       (where $T(1)=e$), the value that $e$, as a transcendental number, forces.
 - id: ar.satz.algebraische_basen
-  quelle_hash: acea9ec9c8de
+  quelle_hash: 9e38e437a74a
   theorie_hash: ae9749136b67
   herkunft:
     modell: sonnet
@@ -229,6 +254,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Gelfond–Schneider.
@@ -244,6 +270,8 @@
     titel: Algebraic bases
     aussage: (i) $T_b(x)$ algebraic irrational ⇒ $T_b(x+1)$ transcendental; (ii) $T_b(x)\in\mathbb Q$ ⇒ $T_b(x+1)=b^{p/q}$ algebraic.
     bereich: algebraic $b>1$
+    quellen:
+    - stelle: Thm. 3
   en_theorie:
     beispiel: |
       Base $2$: Where $T_2(x)=\tfrac12$, we have $T_2(x+1)=\sqrt2$ (algebraic) and $T_2(x+2)=2^{\sqrt2}$ (transcendental).
@@ -256,7 +284,7 @@
     worum: |
       For algebraic bases such as $2$ or $\sqrt2$, Gelfond–Schneider helps one step: An algebraic, irrational tower value makes the next one transcendental.
 - id: ar.satz.bpw
-  quelle_hash: ce656f98323c
+  quelle_hash: a50748935166
   theorie_hash: 6352c34f6cbb
   herkunft:
     modell: sonnet
@@ -266,6 +294,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Γ is definable in $\mathbb R_{\mathrm{an}}$ with empty algebraic part; Pila–Wilkie ($d=1$), Pila 2009 (general $d$).
@@ -282,9 +311,14 @@
     - text: T real-analytic on a neighborhood of [0,1]
     - text: T not algebraic (follows from the growth)
     - text: T = Kneser
+      notiz: every real-analytic solution suffices
     titel: Bombieri–Pila–Wilkie on the tetration graph
     aussage: $N_d(H)\le c(d,\varepsilon)H^{\varepsilon}$ for every $\varepsilon>0$.
     bereich: $\Gamma=\{(x,T(x)):x\in[0,1]\}$, $N_d(H)$ = points with degree $\le d$ and height $\le H$
+    quellen:
+    - stelle: Thm. 5
+    - {}
+    - {}
   en_theorie:
     beispiel: |
       The line $y=x$ has about $H^2$ rational points up to height $H$, the parabola $y=x^2$ and the unit circle about $H$. For large $H$ the tetration graph has fewer than $H^{0.01}$, fewer than $H^{0.001}$, …
@@ -345,7 +379,7 @@
     worum: |
       A tower of descending numbers — $n^{(n-1)^{\cdots^{2^1}}}$ — grows so fast that the sum of its reciprocals is certainly transcendental.
 - id: ar.satz.funktional_ks
-  quelle_hash: 1e40a62fd1eb
+  quelle_hash: 2330ea5d457c
   theorie_hash: 130b8ba7b00c
   herkunft:
     modell: sonnet
@@ -355,6 +389,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'For $c<c''$: $T(x+c'')\gg T(x+c)^N$, because $T(y+\delta)-T(y)\to\infty$; dominant monomial. Directly for every continuous strictly
@@ -371,9 +406,15 @@
     voraussetzungen:
     - text: T continuous, strictly increasing (any such solution)
     - text: T = Kneser (A1, Theorem 6)
+      notiz: growth argument needs only monotonicity
     titel: Functional Kneser–Schanuel statement
     aussage: $T(x+c_1),\dots,T(x+c_n)$ are algebraically independent over $\mathbb C(x)$ (as germs at $+\infty$).
     bereich: continuous strictly increasing real solutions to base $e$, pairwise distinct $c_i\in\mathbb R$
+    versionen:
+    - aenderung: for Kneser
+    - aenderung: extended to all continuous strictly increasing solutions
+    quellen:
+    - stelle: Thm. 6
   en_theorie:
     einordnung: |
       Analogous to Ax's functional Schanuel. The arithmetic specialization (values at individual points) is the conjecture [[ar.verm.ks]].
@@ -461,7 +502,7 @@
       The most important classical theorem on the exponential function and numbers: If one plugs an algebraic number (other than $0$) into $e^x$, an algebraic number never comes out.
       For towers to base $e$ this is almost the only tool that works without conjectures.
 - id: ar.satz.keine_arith_info
-  quelle_hash: 7fc68edc87a7
+  quelle_hash: a636cbecfc11
   theorie_hash: d15730f6f102
   herkunft:
     modell: sonnet
@@ -471,6 +512,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $\tilde T=T\circ(\mathrm{id}+\theta)$.
@@ -485,6 +527,8 @@
       richtigkeit: complete
     titel: The real equation carries no arithmetic information (A1, Theorem 4)
     aussage: For every $r\in(1,e)$ there exists a real-analytic strictly increasing tetration to base $e$ with $\tilde T(1/2)=r$.
+    quellen:
+    - stelle: Thm. 4
   en_theorie:
     beispiel: |
       There is a real-analytic, increasing tetration to base $e$ with $\tilde T(\tfrac12)=\tfrac32$ exactly. For base $\sqrt2$, two such solutions have been computed ([[exp.nichteindeutigkeit]]).
@@ -499,7 +543,7 @@
       An important warning: The real equation alone says nothing about the kind of number its values are. One can build a smooth, increasing tetration that takes any
       desired value between $1$ and $e$ at $\tfrac12$ — even a rational one.
 - id: ar.satz.liouville_tuerme
-  quelle_hash: bb0aa68e6dab
+  quelle_hash: 792e573dfc20
   theorie_hash: 781a3535e056
   herkunft:
     modell: sonnet
@@ -509,6 +553,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Marques–Oliveira–Trojovský (arXiv 2310.06780).
@@ -528,6 +573,8 @@
     bereich: Liouville numbers $\xi$; ${}^3\xi=\xi^{\xi^\xi}$
     einfach: For a very large family of numbers that are particularly “well approximable”, it is proved that already the third level of their
       tower is transcendental — for algebraic numbers this is still open.
+    quellen:
+    - stelle: Abstract
   en_theorie:
     beispiel: |
       “$G_\delta$-dense” means roughly: in every interval, however small, there are such numbers, and indeed “almost all” in the sense of Baire category.
@@ -541,7 +588,7 @@
     worum: |
       For algebraic numbers nothing is known about the third level of a tower. For certain Liouville numbers, however, it is.
 - id: ar.satz.masser_typ
-  quelle_hash: cb5690748eb5
+  quelle_hash: 0e382b9a0562
   theorie_hash: 74469f30abc5
   herkunft:
     modell: sonnet
@@ -551,9 +598,13 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Bombieri–Pila lemma for analytic functions (Masser, Boxall–Jones) + ar.lem.nullstellen with $d\approx\log H/\log\log H$.
+      luecken:
+      - Bookkeeping of κ not carried out.
+      - Height control of the auxiliary polynomials ($\log H(P)\le c''d\log H$) taken over, not checked.
     pruefung:
       f4_uebertragbar: Every solution to base $e$ that is holomorphic on a disk around 1 — hence not Kneser-specific.
       f5_neue_frage: 'Does this also hold for the exotic solutions from ar.satz.keine_arith_info? If so: counting theorems say nothing about individual
@@ -567,6 +618,10 @@
       richtigkeit: Sketch
     titel: Polylogarithmic counting bound (A1, Theorem 5b)
     aussage: $N_1(H)\le c(\log H)^\kappa$ for $H\ge3$ (rational points on the graph of $T_e$ over $[0,1]$); unoptimized $\kappa\approx9$–10.
+    quellen:
+    - stelle: Thm. 5b
+    - {}
+    - {}
   en_theorie:
     einordnung: |
       Not Kneser-specific — any solution holomorphic on a disk around $1$ works. If it also holds for the exotic solutions from [[ar.satz.keine_arith_info]], then counting theorems say
@@ -579,7 +634,7 @@
     worum: |
       With the auxiliary lemma on zeros the counting bound becomes much sharper: instead of “smaller than any power of $H$” only “a power of $\log H$”.
 - id: ar.satz.orbitschranke
-  quelle_hash: bdda04c37598
+  quelle_hash: 1591804b5c22
   theorie_hash: 7ca03018a28b
   herkunft:
     modell: sonnet
@@ -589,6 +644,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Hermite–Lindemann.
@@ -607,6 +663,8 @@
     titel: Orbit bound — two neighboring algebraic values only at 0, 1
     aussage: If $T(x)$ and $T(x+1)$ are both algebraic, then $T(x)=0$, $T(x+1)=1$.
     bereich: every function with $T(x+1)=e^{T(x)}$ at a point $x$
+    quellen:
+    - stelle: Thm. 1
   en_theorie:
     beispiel: |
       $T(-1)=0$, $T(0)=1$ — the only algebraic pair of neighbors. At every other height at least one of $T(x)$ and $T(x+1)$ is transcendental.
@@ -619,7 +677,7 @@
     worum: |
       What the equation $T(x+1)=e^{T(x)}$ together with Hermite–Lindemann forces: Two neighboring tower values cannot both be algebraic — except $0$ and $1$.
 - id: ar.satz.padische_tuerme
-  quelle_hash: d2d60b00fb65
+  quelle_hash: 1a6a17a21025
   theorie_hash: d3a166923ab5
   herkunft:
     modell: sonnet
@@ -629,6 +687,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Shapiro–Shapiro 2007, Lemma 5.1 (convergence, because towers modulo p^m are eventually constant), Lemma 5.3, Prop. 5.4.
@@ -648,6 +707,8 @@
     bereich: positive integers $b_1,b_2,\dots$; $p$ a prime; $\mathbb Z_p$ the $p$-adic integers
     einfach: In the ordinary numbers, 7^7^7^… grows beyond all bounds. But if one measures “how often a number is divisible by p” (p-adically),
       the tower settles down — and there it solves the equation x = 7^x.
+    quellen:
+    - stelle: §5, Lemma 5.1, Lemma 5.3, Prop. 5.4
   en_theorie:
     beispiel: |
       $7\uparrow\uparrow k$ modulo $3^m$ is constant for large $k$; these residues combine to a 3-adic number $\alpha$ with $7^\alpha=\alpha$.
@@ -697,7 +758,7 @@
     worum: |
       A counting theorem from logic: On “tame” sets (definable in an o-minimal structure), outside the algebraic pieces there are only few algebraic points.
 - id: ar.satz.rationale_tuerme
-  quelle_hash: 723e6a5a2c8c
+  quelle_hash: 4e43dacc7ef9
   theorie_hash: d14b8b05ac23
   herkunft:
     modell: sonnet
@@ -707,6 +768,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $q=p/s$ in lowest terms, $s\ge2$. If $q^q=u/v$ were rational (in lowest terms), raising to the $s$-th power would give $p^p/s^p=u^s/v^s$,
@@ -728,6 +790,10 @@
     bereich: rational $q>0$, not an integer
     einfach: (1/2)^(1/2) is a root, so not a fraction. And (1/2)^((1/2)^(1/2)) is even transcendental — like π or e. From the fourth level on,
       nothing is known.
+    quellen:
+    - stelle: Lemma 2.1 and the consequence after it (pp. 2–3)
+    - stelle: Open questions
+    - stelle: Proof (independent, same idea)
   en_theorie:
     beispiel: |
       $q=\tfrac12$: ${}^2q=0.70711$ (that is $1/\sqrt2$), ${}^3q=0.61254$ (transcendental), ${}^4q=0.65404$ (unknown).
@@ -750,7 +816,7 @@
       What happens to a fraction when it is put into a tower? $(\tfrac12)^{1/2}=1/\sqrt2$ is already no longer a fraction. One level higher it gets even
       “wilder”: $(\tfrac12)^{(1/2)^{1/2}}$ is transcendental. From the fourth level on, nobody knows anymore.
 - id: ar.satz.schanuel_orbit
-  quelle_hash: 16a0afa5ceb5
+  quelle_hash: 1f7558ca610a
   theorie_hash: 72ea93724edf
   herkunft:
     modell: sonnet
@@ -760,6 +826,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Induction: linear independence of the $x_j$ from the induction hypothesis, then Schanuel.'
@@ -779,6 +846,8 @@
     aussage: For algebraic $\alpha\ne0$ the numbers $\exp^{\circ1}\alpha,\dots,\exp^{\circ n}\alpha$ are algebraically independent; consequently
       $\{T(x+k)\}_k$ contains at most one algebraic value.
     bereich: solutions to base $e$ with no zero in the orbit $x+\mathbb Z$
+    quellen:
+    - stelle: Thm. 2
   en_theorie:
     einordnung: |
       A known consequence of Schanuel. Across several orbits: [[ar.verm.ks]].
@@ -793,7 +862,7 @@
     worum: |
       What Schanuel's conjecture would mean for towers: In a chain $T(x),T(x+1),T(x+2),\dots$ at most a single value is algebraic.
 - id: ar.satz.selbstpotenz_kongruenz
-  quelle_hash: 5f5ffc516bc3
+  quelle_hash: a8fa1fec7a04
   theorie_hash: 8ddeb3256cb1
   herkunft:
     modell: sonnet
@@ -803,6 +872,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Shapiro–Shapiro 2007 (§2–4), with elementary number theory (Carmichael function); according to the authors, from 1985.
@@ -822,6 +892,9 @@
     bereich: integers; $k\ge1$; $u$ coprime to $k$
     einfach: If one calculates only with remainders (as on a clock), the remainders of 1¹, 2², 3³, … eventually repeat regularly, and every remainder
       occurs as x^x.
+    quellen:
+    - stelle: Abstract, §1
+    - {}
   en_theorie:
     beispiel: |
       Modulo 10 the residues of $n^n$ are periodic with period 20.
@@ -834,7 +907,7 @@
     worum: |
       Final-digit puzzles such as “last digit of $7^{8^{9^{10}}}$” lead to a small theory of towers modulo $k$.
 - id: ar.satz.sondow_marques_xx
-  quelle_hash: e7651e8a6fdd
+  quelle_hash: 64efce8e7bca
   theorie_hash: 15145b45bd37
   herkunft:
     modell: sonnet
@@ -844,6 +917,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Sondow–Marques 2010, with Hermite–Lindemann and Gelfond–Schneider.
@@ -863,6 +937,8 @@
       $x,y$ is transcendental. Applications to values of iterated exponential functions.
     bereich: positive real solutions of $x^x=y$, $x^y=y^x$, $x^x=y^y$, $x^y=y$, $x^{xy}=y$
     einfach: For equations like x to the power x equals a number, one can often prove that the solution cannot be a “nice” number.
+    quellen:
+    - stelle: Abstract; Prop. 2.2 (x^x = 3/4); pp. 155–157 (x^y = y^x = 17)
   en_theorie:
     beispiel: |
       $x^x=\tfrac34$ has two solutions in the interval $(0,1)$; both are transcendental.
@@ -876,7 +952,7 @@
     worum: |
       Our statements about super-roots have a broader counterpart in the literature: simple exponential equations and the nature of their solutions.
 - id: ar.satz.ssc_gelfond
-  quelle_hash: ccb2230da02f
+  quelle_hash: f1ca7e5600a8
   theorie_hash: 087bc0df01bb
   herkunft:
     modell: sonnet
@@ -886,6 +962,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Marques–Sondow (arXiv 1212.6931): Proposition 1 (SSC ⇒ SC for n = 2) and the conditional proofs in §2–3.'
@@ -906,6 +983,8 @@
     bereich: complex numbers; “Schanuel subset conjecture” (SSC)
     einfach: A (somewhat weaker-looking) variant of the big Schanuel conjecture is known, from which it would follow that all towers of algebraic
       irrational numbers are “truly new” numbers.
+    quellen:
+    - stelle: Abstract, §1, Proposition 1
   en_theorie:
     beispiel: |
       For $n=2$: If the Schanuel conjecture is false for two numbers, then there are $a,b$ with transcendence degree 1 of $\mathbb Q(a,b,e^a,e^b)$ — this contradicts SSC (Proposition 1).
@@ -920,7 +999,7 @@
     worum: |
       The Schanuel conjecture would answer almost all open transcendence questions about towers. Marques and Sondow show that a variant already suffices for this.
 - id: ar.satz.superwurzel_arith
-  quelle_hash: 72d08bed267f
+  quelle_hash: 15db791687c9
   theorie_hash: 6fabb807ef53
   herkunft:
     modell: sonnet
@@ -930,6 +1009,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -956,6 +1036,10 @@
     bereich: natural $n\ge1$, real $y>0$
     einfach: The number y with y to the power y equal to 2 (about 1.5596) is not a fraction and also not a root of an equation with integer coefficients
       — it is transcendental. For the three-level tower we only know that it is not a fraction.
+    quellen:
+    - stelle: 'Part (1): Prop. 2.2 (ii), p. 3'
+    - stelle: Section Super-root (without proof)
+    - stelle: Proof; part (2) not found in Sondow–Marques
   en_theorie:
     beispiel: |
       - $y^y=4$: $y=2$ (integer). $y^y=27$: $y=3$.
@@ -992,7 +1076,7 @@
       like $\sqrt2$? No: It is **transcendental**. This follows in a few lines from a famous theorem of Gelfond and Schneider.
       For the three-level tower this theorem only suffices for “not a fraction”.
 - id: ar.satz.unendliche_tuerme_gs
-  quelle_hash: 24767ab04253
+  quelle_hash: a7d6c21a4572
   theorie_hash: 5a014c0d3bc1
   herkunft:
     modell: sonnet
@@ -1002,6 +1086,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $h=b^h$. If $h$ were algebraic and irrational, then $b^h$ would be transcendental by Gelfond–Schneider, hence $\ne h$.
@@ -1022,6 +1107,10 @@
     bereich: $b$ algebraic, $1<b\le e^{1/e}$; $h(b)=b^{b^{b^{\cdots}}}$ the value of the infinite tower
     einfach: The infinite tower of an algebraic base gives either a fraction (as with √2, where 2 comes out) or right away a transcendental number
       — there is nothing in between.
+    quellen:
+    - stelle: 'Appendix: (4.6), Cor. 4.2, Lemma 4.4, Prop. 4.5'
+    - stelle: Abstract
+    - {}
   en_theorie:
     beispiel: |
       $h(\sqrt2)=2$ (rational). For $b=1.4=7/5$, $h(1.4)=1.88666330\ldots$: either a fraction or transcendental — it cannot be algebraic irrational.
@@ -1034,7 +1123,7 @@
     worum: |
       What kind of number is the infinite tower $b^{b^{b^{\cdots}}}$ when $b$ is algebraic?
 - id: ar.verm.gelfond_turm
-  quelle_hash: 4fa8f6a475f1
+  quelle_hash: e9fcbc5473a6
   theorie_hash: 720b736e10a5
   herkunft:
     modell: sonnet
@@ -1044,6 +1133,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'No counterexample known. Proved special cases: ${}^2\alpha=\alpha^\alpha$ transcendental (Gelfond–Schneider), ${}^1e^\omega$
       transcendental (Hermite–Lindemann). Even ${}^2e=e^e$ is open (ar.frage.e_hoch_e).'
@@ -1066,6 +1156,10 @@
     bereich: $\omega\ne0$ and $\alpha$ algebraic, $\alpha$ irrational; ${}^kz=z^{z^{\cdot^{\cdot^{z}}}}$ ($k$ levels)
     einfach: If one builds a tower √2^√2^√2… from a number like √2, then every level from the second on should be a “truly new” number that solves
       no equation with whole numbers. This is proved only for the second level; everything above it is open.
+    quellen:
+    - stelle: §1 (Gelfond 1934, formulation “Gelfond’s Power Tower Conjecture”)
+    - stelle: Abstract (case of equal levels under Schanuel)
+    - {}
   en_theorie:
     beispiel: |
       $\sqrt2^{\sqrt2}$ is transcendental (proved). Whether $\sqrt2^{\sqrt2^{\sqrt2}}$ is transcendental, nobody knows.
@@ -1079,7 +1173,7 @@
     worum: |
       Which towers made of “nice” numbers are themselves still nice? In 1934 Gelfond announced an answer, but never proved it.
 - id: ar.verm.ks
-  quelle_hash: 40fa5885994e
+  quelle_hash: 8227a32c74b7
   theorie_hash: aaa3d062ad61
   herkunft:
     modell: sonnet
@@ -1089,6 +1183,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'A1: LLL/PSLQ tests $n=1,2$ at points $T_e(k/n)$ with 509–1973 digits; no relation found (ar.beob.ausschluss).'
     pruefung:
@@ -1103,6 +1198,8 @@
     titel: Kneser–Schanuel conjecture (KS)
     aussage: 'For $x_1,\dots,x_n\in\mathbb R\setminus\mathbb Z$, $x_i>-2$, pairwise incongruent mod $\mathbb Z$: $\operatorname{trdeg}_{\mathbb
       Q}\mathbb Q(x_i,T_e^{\mathrm K}(x_i))\ge n$. For $n=1$: exceptional set $\{x\in\bar{\mathbb Q}:T_e(x)\in\bar{\mathbb Q}\}=\{-1,0\}$.'
+    quellen:
+    - stelle: D1, E
   en_theorie:
     einordnung: |
       Numerical support: [[ar.beob.ausschluss]]. Open: a “Kneser–Ax–Schanuel” for the complex function that supports the specialization.

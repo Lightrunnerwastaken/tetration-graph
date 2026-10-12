@@ -148,16 +148,17 @@
       For $e^z-1$ one can compute a “half-iterate” as a power series term by term. Baker showed: this series never converges
       (except for integer numbers of steps). A holomorphic half step at the fixed point thus does not exist.
 - id: it.satz.baker_einbettung
-  quelle_hash: d1f5700f7927
+  quelle_hash: 60baeeb5dab9
   theorie_hash: 4418cede1bd4
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: Baker (1964, 1967); here checked only in the account in the introduction of Karlin–McGregor 1968 (AMS page). Which of the two papers
@@ -178,6 +179,10 @@
       A meromorphic function with a fixed point of multiplier 1 can be embedded into a continuous iteration group of meromorphic
       functions only if it is linear fractional. At multiplier 1, embeddability is thus the exception.
     bereich: meromorphic $f$ with fixed point $s_0$, $f'(s_0)=1$, $f\ne\mathrm{id}$
+    quellen:
+    - {}
+    - {}
+    - stelle: Introduction (restatement of Baker's result)
   en_theorie:
     einordnung: |
       Parabolic counterpart of [[it.satz.karlin_mcgregor]]. Consequence for tetration: at base $\eta$ there is no iteration that is analytic at the fixed point $e$
@@ -192,16 +197,17 @@
       Can a function with a fixed point of slope 1 be “continuously iterated” so that all intermediate steps are again nice (meromorphic) functions?
       Baker showed: only if it is a linear fractional function.
 - id: it.satz.boettcher
-  quelle_hash: 635733f8355a
+  quelle_hash: 573b09ce6366
   theorie_hash: 376861f7ba0d
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: Böttcher 1904; modern account Milnor §9. Existence checked via Wikipedia “Böttcher's equation”, uniqueness and limit formula from
@@ -225,6 +231,10 @@
       It is unique up to a factor, a $(k-1)$-th root of unity, and $\phi(z)=\lim_{n\to\infty}\bigl(c^{1/(k-1)}(f^{n}(z)-p)\bigr)^{1/k^n}$
       (suitable branch). Hence $f^{t}=\phi^{-1}\bigl(\phi^{\,k^t}\bigr)$ is a natural fractional iteration.
     bereich: $f(z)=p+c\,(z-p)^k+O((z-p)^{k+1})$ holomorphic near $p$, $k\ge2$, $c\ne0$
+    quellen:
+    - {}
+    - stelle: §9 (Böttcher's theorem)
+    - stelle: global properties of the coordinate
   en_theorie:
     beispiel: |
       $f(x)=x^2-2$ has a superattracting point at $\infty$; with $x=w+1/w$, $f$ becomes $w\mapsto w^2$. Hence $f^{t}(x)=w^{2^t}+w^{-2^t}$,
@@ -242,16 +252,17 @@
       If the slope at the fixed point is 0, it attracts “overly strongly”: at each step the distance is squared (or raised to a higher power).
       Böttcher showed in 1904 that one then finds a coordinate in which the map is exactly $w\mapsto w^k$.
 - id: it.satz.cremer
-  quelle_hash: 22aad3a42f17
+  quelle_hash: f20160d89466
   theorie_hash: 8715942c3238
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: Cremer, Math. Ann. 98 (1928) and 115 (1938), via the JFM reviews; condition for polynomials in the form of Milnor §11 (from memory).
@@ -274,6 +285,10 @@
       $\liminf_{q}|\lambda^q-1|^{1/d^q}=0$; then periodic points accumulate at the fixed point. Moreover, for fixed $\lambda$ “the majority” of
       functions has no center (Cremer 1938).
     bereich: fixed point with multiplier $\lambda=e^{2\pi i\alpha}$, $\alpha$ irrational
+    quellen:
+    - {}
+    - {}
+    - stelle: §11
   en_theorie:
     einordnung: |
       Counterpart to Siegel and Brjuno ([[fp.satz.neutral]]). For the exponential family the polynomial argument does not apply directly.
@@ -338,16 +353,17 @@
       Every petal has its own Fatou coordinate. Where adjacent petals overlap, the coordinates can be compared.
       These transitions are the finest information about the map — and they decide whether there is a smooth flow.
 - id: it.satz.elementare_superfunktionen
-  quelle_hash: 9bf59b05fd7f
+  quelle_hash: 6b0ac761cb08
   theorie_hash: 7423cdcb0018
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: Each row by substitution (doubling and tripling formulas, respectively); recomputed in an experiment at three points to 10⁻⁵⁰.
@@ -369,6 +385,13 @@
       **without** a real fixed point (TPID 8) — that would be the polynomial counterpart of $\exp$ above $\eta$.
     einfach: For some functions you can write down “applying it half as often” directly, because they are really a doubling or tripling in disguise
       — for instance x² − 2, which really turns cosh(y) into cosh(2y).
+    quellen:
+    - stelle: 'p. 306: logistic map 4x(1−x) via x = sin² — the archetypal example of a disguised doubling'
+    - stelle: Schröder functions and superfunctions of elementary maps
+    - {}
+    - {}
+    - {}
+    - stelle: TPID 8
   en_theorie:
     beispiel: |
       Fermat numbers: $(x-1)^2+1$ turns $2^{2^n}+1$ into the next Fermat number; the half-iterate is $(x-1)^{\sqrt2}+1$.
@@ -397,16 +420,17 @@
       For $\exp$ the superfunction is hard. For some other functions it is a simple formula — and then one can see on them how superfunctions and
       fractional iterations work.
 - id: it.satz.erdos_jabotinsky
-  quelle_hash: 7194ad94af8e
+  quelle_hash: 597fd6675e36
   theorie_hash: c8a7b7ad738b
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: Erdős–Jabotinsky 1960; lattice statement in Baker.
@@ -427,6 +451,10 @@
       Otherwise $S$ has area 0 and $S\cap\mathbb R$ has length 0 (Baker: $S$ is then a lattice of
       at most two dimensions, or trivial).
     bereich: $F(z)=z+\dots$ convergent; set $S$ of those $s\in\mathbb C$ with a convergent formal iterate $F(s,z)$
+    quellen:
+    - {}
+    - stelle: Lattice statement
+    - {}
   en_theorie:
     beispiel: |
       $e^z-1$: $S=\mathbb Z$ (integer steps only). $\ \frac z{1-z}$: $S=\mathbb C$, since $f^t(z)=\frac z{1-tz}$ converges for every $t$.
@@ -445,16 +473,17 @@
       For which times $t$ does the formal iterate converge? Erdős and Jabotinsky showed: either for all — or only for so few
       that one cannot see them on the real axis.
 - id: it.satz.karlin_mcgregor
-  quelle_hash: 30db25cb61db
+  quelle_hash: dad605f74776
   theorie_hash: 9ae2a80a1bcc
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: Karlin–McGregor 1968 (Trans. AMS 132); wording of the main theorem after the account in the Tetration forum (tid 856) and the introduction
@@ -481,6 +510,8 @@
       function); two fixed points $s_1\ne s_2$
     einfach: If a function has two fixed points, you can build “half steps” from one fixed point or from the other. Only for the simplest fractional
       functions does the same thing come out; otherwise there are two different solutions.
+    quellen:
+    - stelle: Main theorem
   en_theorie:
     beispiel: |
       $\sqrt2^{\,x}$ on $[2,4]$: multipliers $\ln2$ and $2\ln2$, segment invariant, but not a Möbius map — the two regular
@@ -500,16 +531,17 @@
       Below $\eta$, $b^x$ has two fixed points, and at each one can build a “regular” iteration. Are these in the end the same? Karlin and
       McGregor gave the general answer in 1968: only for the linear fractional functions.
 - id: it.satz.koenigs
-  quelle_hash: e6d89ddd57e0
+  quelle_hash: c531492ed1b2
   theorie_hash: 9749797402b6
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: Uniform convergence of the sequence $\lambda^{-n}(f^n-p)$ because of $|f(z)-p-\lambda(z-p)|\le C|z-p|^2$.
@@ -531,6 +563,9 @@
       There is exactly one holomorphic function $\sigma$ near $p$ with $\sigma(p)=0$, $\sigma'(p)=1$ and
       $\sigma\circ f=\lambda\,\sigma$; it is $\sigma=\lim_{n\to\infty}\lambda^{-n}(f^{n}-p)$.
     bereich: $f$ holomorphic near $p$, $f(p)=p$, $\lambda=f'(p)$ with $0<|\lambda|<1$ (or $|\lambda|>1$ for $f^{-1}$)
+    quellen:
+    - {}
+    - stelle: §8
   en_theorie:
     beispiel: |
       $f(z)=\sqrt2^{\,z}$ at the fixed point $p=2$, $\lambda=\ln2=0.693$: $\sigma(1)=-0.63210$. Prediction for the tower: $z_{10}-2\approx\sigma(1)\lambda^{10}=-0.01618$;
@@ -556,16 +591,17 @@
       Very close to an attracting fixed point, every smooth map looks like a scaling. Koenigs showed in 1884 that this is
       not only approximately true: there is a coordinate in which the map is **exactly** a scaling, and one obtains it as a limit.
 - id: it.satz.leau_fatou
-  quelle_hash: 1eafe4d54f61
+  quelle_hash: 051f31435faa
   theorie_hash: f4b26c2d33fd
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: Milnor §10.
@@ -586,6 +622,10 @@
       unique up to an additive constant, with $\phi(f(z))=\phi(z)+1$,
       asymptotically $\phi(z)\sim -1/(k a z^k)$.
     bereich: $f(z)=z+az^{k+1}+\dots$, $a\neq0$ (parabolic, multiplier 1)
+    quellen:
+    - stelle: §10
+    - stelle: Petals, multiplier root of unity
+    - {}
   en_theorie:
     beispiel: |
       $f(u)=e^u-1=u+\tfrac12u^2+\dots$: $a=\tfrac12$, $k=1$, so $u_n\approx-2/n$. Starting from $u_0=-0.5$: $u_{10}=-0.1385$, $u_{100}=-0.01903$, $u_{1000}=-0.001988$;
@@ -605,16 +645,17 @@
       If the multiplier is exactly $1$, there is no scaling to exploit. Nevertheless points creep up to the fixed point in certain
       directions — in “petals”. There one finds a coordinate in which the map is a pure **translation** by $1$.
 - id: it.satz.moebius_familie
-  quelle_hash: 7f3c159f41d3
+  quelle_hash: 52414201f3ce
   theorie_hash: ca5c57964b06
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -640,6 +681,9 @@
     bereich: $f_\varepsilon(z)=\dfrac{z+1}{1-\varepsilon z}$, matrix $A_\varepsilon=\begin{pmatrix}1&1\\-\varepsilon&1\end{pmatrix}$
     einfach: 'For fractional functions the transition “two fixed points → one → no real one” can be worked out completely: the fractional iterates
       change perfectly smoothly along the way. For the exponential function this is precisely the unsolved question.'
+    quellen:
+    - {}
+    - stelle: Iterates of linear fractional maps
   en_theorie:
     beispiel: |
       $z=0.3$, half-iterate: $0.800053$ ($\varepsilon=-0.01$), $0.8$ ($\varepsilon=0$, where $f$ is the translation by 1), $0.799953$ ($\varepsilon=0.01$) — smooth through the transition.
@@ -656,16 +700,17 @@
       What happens at $\eta$ when two real fixed points merge into one and then move into the complex plane? For the exponential function this is hard. For
       fractional functions one can compute it exactly.
 - id: it.satz.moebius_iteration
-  quelle_hash: 149e8227d867
+  quelle_hash: 16a1564f5464
   theorie_hash: f83616d0eb44
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: $\sigma$ is Möbius with $\sigma(L_1)=0$, $\sigma(L_2)=\infty$; $\sigma f\sigma^{-1}$ fixes $0,\infty$, hence is $w\mapsto\lambda w$.
@@ -691,6 +736,11 @@
     bereich: Möbius map $f(z)=\frac{\alpha z+\beta}{\gamma z+\delta}$ with two fixed points $L_1\ne L_2$, multiplier $\lambda$ at $L_1$, $|\lambda|\ne0,1$
     einfach: 'For the simplest fractional functions there is no choice: whether you build the half step from one fixed point or from the other,
       the same thing comes out. For b^x this is different — there the two fixed points give different solutions.'
+    quellen:
+    - {}
+    - stelle: Iterates of linear fractional maps
+    - stelle: 'Main theorem: converse — equal regular iterations at two fixed points only for linear fractional maps'
+    - stelle: Counterpart
   en_theorie:
     beispiel: |
       $f(z)=\frac{3z+2}{z+2}$: fixed points from $z^2-z-2=0$, hence $L_1=2$, $L_2=-1$. Derivative $f'(z)=4/(z+2)^2$: $f'(2)=1/4$, $f'(-1)=4$.
@@ -720,16 +770,17 @@
       $z\mapsto\frac{\alpha z+\beta}{\gamma z+\delta}$, both constructions agree. The comparison shows that the difference for
       tetration is genuine and does not come from the method.
 - id: it.satz.parabolische_rate
-  quelle_hash: 72b2bf1a4300
+  quelle_hash: d7298efe5c02
   theorie_hash: b6e414b23c80
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -759,6 +810,12 @@
     bereich: '$f(x)=x-a\,x^{k+1}+b\,x^{k+2}+O(x^{k+3})$, $a>0$, starting value $x_0>0$ small (complex: start in the attracting petal)'
     einfach: If a sequence runs into a fixed point where the function has slope 1, it does not shrink quickly like a geometric sequence, but only
       like 1/n — and in the next decimal place a logarithm shows up.
+    quellen:
+    - {}
+    - {}
+    - stelle: Ch. 8 (iterates)
+    - {}
+    - stelle: §10
   en_theorie:
     beispiel: |
       Tower to base $\eta$: $\delta_n=e-{}^n\eta$ satisfies $\delta_{n+1}=\delta_n-\delta_n^2/(2e)+\delta_n^3/(6e^2)-\dots$, hence $a=1/(2e)$,
@@ -875,16 +932,17 @@
       On the real axis one can nevertheless build half steps, even at the parabolic fixed point: Szekeres showed in 1958 that there is
       a natural, arbitrarily often differentiable real iteration — which, however, need not be analytic at the fixed point itself.
 - id: it.satz.szekeres_monoton
-  quelle_hash: e18290587042
+  quelle_hash: 6fd0695df95e
   theorie_hash: 5fb11db1d595
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: Szekeres 1961 (via the Hyperoperations wiki, Theorem 2, checked; original not read).
@@ -912,6 +970,9 @@
     einfach: For the function e^x − 1 there are infinitely many “step counters”, but only one has derivatives that alternate in sign as neatly
       as those of the logarithm. This pins down a solution by a property on the real axis alone — exactly what is still missing for tetration
       itself.
+    quellen:
+    - {}
+    - stelle: Definition and Theorem 2
   en_theorie:
     beispiel: |
       Measured (exp.cheta) at $x=1$: $A'=2.309$, $A''=-4.330$, $A'''=12.67$, $A^{(4)}=-50.0002$, …, $A^{(8)}=-82320.01$ — signs as required, also at
@@ -940,16 +1001,17 @@
       The Abel equation $A(f(x))=A(x)+1$ always has infinitely many solutions: to a solution one can add a small wave of period 1. For $f(x)=e^x-1$, G. Szekeres found a property that selects exactly **one** solution, and does so on the real
       axis alone: the derivatives must alternate in sign, as for the logarithm. For tetration itself, one does not (yet) know anything like this.
 - id: it.satz.vertauschbar
-  quelle_hash: ae0f911ff52f
+  quelle_hash: 7419d19a4899
   theorie_hash: 2669148de492
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
   geprueft:
     beweis: nein
     intern: nein
     kern: zweitpruefung
     theorie: zweitpruefung
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -970,11 +1032,16 @@
     - text: every f^t holomorphic at p with f^t(p) = p
     - text: t ↦ (f^t)′(p) continuous
     - text: f^t real on the real axis
+      notiz: only for the choice of branch of λ^t
     titel: Regular iteration is the only one holomorphic at the fixed point
     aussage: |
       Then $f^t=\sigma^{-1}\circ(\lambda^t\sigma)$ holds, with the Koenigs function $\sigma$: the **regular iteration**
       is the only continuous iteration whose members are holomorphic at the fixed point.
     bereich: iteration groups $(f^t)_{t\in\mathbb R}$ with every $f^t$ holomorphic at the hyperbolic fixed point $p$, $0<\lambda<1$ real
+    quellen:
+    - {}
+    - {}
+    - stelle: commuting substitutions and Koenigs iteration
   en_theorie:
     beispiel: |
       For $\sqrt2^{\,z}$: the regular half-iterate sends $1$ to $T(\tfrac12)=1.24362$ and $1.24362$ to $\sqrt2$ — applied twice,

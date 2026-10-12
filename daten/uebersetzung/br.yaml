@@ -62,7 +62,7 @@
       The gamma function is the only continuation of the factorial that is “logarithmically convex” — a purely real condition. Is there something like that for tetration? So far only complex-variable
       conditions select Kneser's solution.
 - id: br.frage.implosion
-  quelle_hash: e391b02f3162
+  quelle_hash: ecae3d5e45e8
   theorie_hash: e0d48de3c164
   herkunft:
     modell: sonnet
@@ -71,6 +71,7 @@
     beweis: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     naechste_frage: 'Numerically: plot $m(b)+\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ against $\ln(b-\eta)$ and against periodic terms in $(b-\eta)^{-1/2}$
       (exp.randgesetz supplies the first half).'
@@ -79,6 +80,9 @@
       For $b\downarrow\eta$ the tower passes the bottleneck at $e$ in $\approx\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ steps. Can $T_b^{\mathrm K}$
       be described, after subtracting this transit time, by the Lavaurs map (from the two Fatou coordinates of $e^u-1$), and
       does a rigorous boundary law for $m(b)$ with constant and phase term follow from this?
+    quellen:
+    - {}
+    - stelle: Lemma 8.2
   en_theorie:
     einordnung: |
       Next step: plot $m(b)+\pi\sqrt{2\eta/e}(b-\eta)^{-1/2}$ against $\ln(b-\eta)$ and against periodic terms in $(b-\eta)^{-1/2}$. Related: [[bw.lem.randgesetz]], [[kl.frage.stetig_eta]].
@@ -182,7 +186,7 @@
       Circle maps have a famous invariant, the rotation number. Why not for the phase maps of the base change as well? Because that would be a type error: The
       map goes from one circle to a **different** circle.
 - id: br.satz.ackermann
-  quelle_hash: 92abfe1bbcc8
+  quelle_hash: 16d51ac2167e
   theorie_hash: d467f652d95d
   herkunft:
     modell: sonnet
@@ -192,6 +196,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -214,6 +219,12 @@
       ($f_0(n)=n+1$, $f_{k+1}(n)=f_k^{[n]}(n)$) we have $f_3(n)\ge2\uparrow\uparrow n$ — tetration is level $f_3$. The inverses grow correspondingly slowly:
       $\log^*$ (gr.satz.logstern) and, even more slowly, the inverse Ackermann function $\alpha(n)$, which appears in the running time of union-find.
     einfach: 'The famous Ackermann function is nothing other than the hyperoperations with base 2, shifted by 3: the fourth row is tetration.'
+    quellen:
+    - {}
+    - {}
+    - stelle: inverse Ackermann function in union-find
+    - {}
+    - {}
   en_theorie:
     beispiel: |
       $A(4,0)=13=2\uparrow\uparrow3-3$, $A(4,1)=65533=2\uparrow\uparrow4-3$, $A(4,2)=2^{65536}-3$ (65536 binary digits).
@@ -305,7 +316,7 @@
       How smooth a periodic function is can be read off its Fourier components: If they decay exponentially, it is analytic in a strip; if they decay only like $e^{-c\sqrt k}$, it is
       “almost analytic” (Gevrey).
 - id: br.satz.halbexp_komplexitaet
-  quelle_hash: 1c67ceaa0ffe
+  quelle_hash: d76bfb1149e0
   theorie_hash: 177726830f97
   herkunft:
     modell: sonnet
@@ -315,6 +326,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Miltersen–Vinodchandran–Watanabe (BRICS RS-99-46, COCOON 1999); Chen–Hirahara–Ren (arXiv 2309.12912).
@@ -336,6 +348,9 @@
     bereich: circuit size of languages in exponential complexity classes; $f$ half-exponential if $f(f(n))$ is roughly $2^{n}$
     einfach: In theoretical computer science one ran into a limit for a long time that grows exactly “half as fast as exponential” — a half exponential
       function, as with Kneser. Only in 2023 did the leap beyond it succeed.
+    quellen:
+    - stelle: Abstract
+    - stelle: Abstract
   en_theorie:
     beispiel: |
       A function like $2^{\sqrt n}$ is too large: $2^{\sqrt{2^{\sqrt n}}}$ grows faster than $2^n$. Half-exponential functions lie between all
@@ -352,7 +367,7 @@
       Half-exponential functions — functions that give the exponential function when applied twice in a row — appear not only in Kneser's work, but also as the
       limit of what can be proved about the complexity of computational problems.
 - id: br.satz.hyperop_varianten
-  quelle_hash: 3f237cc5645a
+  quelle_hash: 0018644d4f47
   theorie_hash: 7153f546b3cd
   herkunft:
     modell: sonnet
@@ -362,6 +377,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -387,6 +403,12 @@
     einfach: How you parenthesize a tower is a choice. Parenthesized from the top, you get the usual tetration; from the bottom, something simple.
       Bennett proposed an entirely different ladder in 1915, in which every level stays commutative — and with the half-exponential function you
       even get intermediate levels.
+    quellen:
+    - {}
+    - {}
+    - {}
+    - stelle: (i) left-evaluated hyperoperations
+    - stelle: (iii) Bennett's sequence as a sequence of monoids, field by completion
   en_theorie:
     beispiel: |
       $2\oplus_22=e^{(\ln2)^2}=1.6168$; $e\oplus_2y=y$ — $e$ is the neutral element of level 2.
@@ -444,7 +466,7 @@
     worum: |
       In computability too, tetration is the first function to break through a natural limit: It is computable with simple loops, but not “elementary”.
 - id: br.satz.nicht_definierbar
-  quelle_hash: 658f03cd19b8
+  quelle_hash: ee306b2e785c
   theorie_hash: b061e02ee1f0
   herkunft:
     modell: sonnet
@@ -454,6 +476,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -476,6 +499,10 @@
     aussage: $E$ eventually exceeds every $\exp^{\circ n}$; hence $E$ is not definable in any exponentially bounded o-minimal structure, in particular
       not in $\mathbb R_{\mathrm{an},\exp}$.
     bereich: every continuous real solution of $E(x+1)=e^{E(x)}$ on a half-line
+    quellen:
+    - stelle: Growth bound (Prop. 9.10)
+    - {}
+    - stelle: elementary growth comparison
   en_theorie:
     beispiel: |
       Even the linear tetration with its kinks overtakes $\exp^{\circ5}$: monotonicity or smoothness are not needed.
@@ -492,7 +519,7 @@
     worum: |
       Every real tetration — smooth or not — eventually overtakes every tower of fixed height. That is why it fits into none of the classical “tame” structures.
 - id: br.satz.ordinal_tetration
-  quelle_hash: 1279edc5cddc
+  quelle_hash: f6b4bb7b2071
   theorie_hash: 1b7b70e998c9
   herkunft:
     modell: sonnet
@@ -502,6 +529,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Cantor (ε-numbers); fixed-point property ω^{ε₀} = ε₀ directly from the definition as a supremum. Gentzen 1936.
@@ -523,6 +551,10 @@
       no longer a tower, but $\alpha\,O_3\,(1+\beta)=\alpha^{\alpha^\beta}$ — this too shows that the usual tetration does not carry on in the transfinite.
     einfach: You can build towers with infinite ordinals too. The infinitely high tower of ω is called ε₀ — and since ε₀ raised to ω is again
       ε₀, higher towers get you no further.
+    quellen:
+    - {}
+    - {}
+    - stelle: Def. 1, Thm. 3(iii)
   en_theorie:
     beispiel: |
       Goodstein sequences (numbers in “hereditary” base notation, the base grows) reach 0 after some time — provable with ordinals below $\varepsilon_0$,
@@ -727,7 +759,7 @@
       passage precisely: There is a coordinate in which every step is again “$+1$”, and the number of steps through the gate is essentially
       $1/\alpha$, where $\alpha$ can be read off from the multiplier of the two fixed points.
 - id: br.satz.turm_mod_m
-  quelle_hash: 838e7bb093a7
+  quelle_hash: 9b054b1a3d38
   theorie_hash: fa949fbcc8b7
   herkunft:
     modell: sonnet
@@ -737,6 +769,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Induction on $m$: $a^k\bmod m$ depends, for $k\ge\log_2 m$, only on $k\bmod\lambda(m)$ (Carmichael), and $\lambda(m)<m$; the exponents
@@ -755,6 +788,10 @@
     bereich: integers $a\ge1$, $m\ge1$
     einfach: If you look only at the last digits of a tower like 3^3^3^…, they stop changing beyond a certain height — even though the number
       itself becomes unimaginably large.
+    quellen:
+    - {}
+    - stelle: Abstract, §1–2 (also for mixed towers)
+    - stelle: own proof, experiment
   en_theorie:
     beispiel: |
       The last ten digits of $3\uparrow\uparrow n$: $n=3$: …5597484987, $n=4$: …6100739387, $n=5$: …9660355387, $n=6$: …5126595387, $n=7$: …3200195387, $n=8$: …5504195387.

@@ -38,7 +38,7 @@
       The intuitive super-logarithm gets better, but only slowly: If one doubles $n$, the error becomes about ten to fifteen times smaller — not, as
       one would hope, by a fixed number of digits per step.
 - id: kn.beob.eta4_interpolation
-  quelle_hash: 5b5de2bc71c0
+  quelle_hash: 53a864a366f3
   theorie_hash: 0b5534751ec3
   herkunft:
     modell: sonnet
@@ -48,6 +48,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.tpid10_abstaende: s(2) and s(3) recomputed to 12 digits; s(3) lies 2.5·10⁻⁴ below η₄, so the maximum lies just to
       the right of 3.'
@@ -73,6 +74,10 @@
     bereich: Self-super-root $s(x)$ with ${}^{x}s(x)=x$; unique at integer $x\ge1$, without any continuation of tetration
     einfach: 'The super-root answers the question: Which base gives exactly n for n levels? For integer n one needs no half towers for this. If
       one draws a smooth curve through these points, its peak lies exactly where the much more laborious Kneser computation finds η₄ and e₄.'
+    quellen:
+    - stelle: 'Robbins, post 1 (11.04.2009; coordinates corrected in posts 4–5), post 9: exact points'
+    - stelle: mike3, posts 1 and 3 (03. and 11.07.2010)
+    - stelle: Characterization 2 (attribution to Mike)
   en_theorie:
     beispiel: |
       $s(2)=\ln2/W(\ln2)=1.559610\ldots$ (since $a^a=2$), $s(3)=1.635078\ldots$ (since $a^{a^a}=3$). Already $s(3)$ lies only $2.5\cdot10^{-4}$ below $\eta_4$ —
@@ -92,7 +97,7 @@
       To compute $\eta_4$ and $e_4$ one normally needs a tetration for fractional heights — and with it a choice of which one.
       But there is a detour that gets by without this choice: the super-root at integer arguments.
 - id: kn.beob.eta4_matrix
-  quelle_hash: 884087563ac9
+  quelle_hash: dc2f39dc8a93
   theorie_hash: f953316b2f4e
   herkunft:
     modell: sonnet
@@ -102,6 +107,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'Sign argument checked: Kneser computations just below η₄ (nuninho, tid 262 post 29) lie below or very close to e₄, none
       above 3.0885330. Own matrix computation at η₄ not yet done.'
@@ -128,6 +134,8 @@
     einfach: With a different computation method for half towers (a large table instead of Kneser's construction), almost the same number came
       out in 2009 — but different in the fifth decimal place. Whether this is due to the truncation of the table or whether the methods really
       give different tetrations is open.
+    quellen:
+    - stelle: nuninho1980, posts 2, 11, 14 (01.–07.04.2009); bo198214, post 13 (06.04.2009)
   en_theorie:
     einordnung: |
       Touchstone for the question whether the matrix slog tends to Kneser ([[kn.verm.carleman_kneser]], [[kn.beob.carleman_rate]]); approach (b) in [[kn.verm.tpid10]].
@@ -205,7 +213,7 @@
       Kneser's tetration is smooth everywhere above the real axis. For the hexation to base 2, built Kneser-type at the fixed point $q$ of the pentation, this is not true: It has branch points at
       height 2.75. The reason is that already the pentation — unlike the exponential function — has singularities of its own.
 - id: kn.beob.hoehere_etas
-  quelle_hash: 91d36b916d43
+  quelle_hash: fd8ec63731b8
   theorie_hash: 0eff738d3448
   herkunft:
     modell: sonnet
@@ -215,6 +223,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.tpid10_abstaende: comparison with the 30-digit values η₅, η₆ (deviation −6.4·10⁻⁴, +1.2·10⁻⁴) and with the extrapolation
       η₇ ≈ 1.8399.'
@@ -242,6 +251,8 @@
       fixed points of pentation, heptation regular at the left real fixed point of hexation'
     einfach: 'As early as 2017 Sheldon Levenstein built the higher levels up to heptation and read off the limit bases to three digits: 1.738,
       1.799 and 1.839. Our exact values confirm the first two; the third is so far the only fifth term of the sequence.'
+    quellen:
+    - stelle: Levenstein, post 5 (pid 8759, 03.09.2017) and post 7 (pid 8761, 04.09.2017)
   en_theorie:
     beispiel: |
       Our exact values: $\eta_5=1.737356$ (Levenstein $\approx1.738$), $\eta_6=1.799121$ (Levenstein $1.799$).
@@ -259,7 +270,7 @@
       The sequence $\eta,\eta_4,\eta_5,\dots$ requires a new hyperoperation for each term. Sheldon Levenstein was in 2017 the first to build the chain up to heptation
       and read off the limit bases.
 - id: kn.beob.kouznetsov_numerik
-  quelle_hash: 710395bdc67d
+  quelle_hash: 0192fb4781f4
   theorie_hash: a96c2c898e89
   herkunft:
     modell: sonnet
@@ -268,6 +279,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     pruefung:
       f2_benutzte_voraussetzungen: Truncation of the integration at |Im| = A with F ≈ L there; double precision.
@@ -287,6 +299,9 @@
     bereich: Base $e$; values on the imaginary axis from the Cauchy integral equation (kn.konstr.cauchy)
     einfach: In 2009 Kouznetsov computed Kneser's tetration in the whole complex plane for the first time. Because his computation always ran
       to the same result, he conjectured that there is only this one — this was proved only in 2017.
+    quellen:
+    - stelle: zbMATH review (Zbl 1202.30002)
+    - stelle: 'pp. 3–4: convergence proof as an open goal'
   en_theorie:
     einordnung: |
       First step before [[kn.satz.tk_kriterien]] and [[kn.satz.paulsen_cowgill]]; the method itself is [[kn.konstr.cauchy]].
@@ -358,7 +373,7 @@
       the same quantities in 2007 in the tetration forum with a completely different method (a huge matrix for the slog). Both computations
       agree to 22 digits — a strong sign that they describe the same function.
 - id: kn.beob.polynom_eckmode
-  quelle_hash: 21620c9cba48
+  quelle_hash: 9c2c411e2391
   theorie_hash: 85f4d16a9f10
   herkunft:
     modell: sonnet
@@ -368,6 +383,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'Whether the corner mode tips the convergence at large N was checked up to N = 1500 (strand A): no. An earlier extrapolation
       “problems from N ≈ 5000 on” was withdrawn.'
@@ -399,6 +415,8 @@
     einfach: The equations have a weak spot near the fixed point L that grows exponentially with the degree. Kneser's solution practically does
       not “hit” this weak spot, however — only random errors would amplify it. That is why the method works, and why proofs that work only with
       size estimates fail.
+    quellen:
+    - stelle: Strand D (d05, d06, d18–d29), strand A (R2), strand B (b45, b46)
   en_theorie:
     beispiel: |
       $\sigma_1=1.84,\,8.90,\,68.4,\,592,\,5400$ at $N=200,\,400,\,600,\,800,\,1000$ — and still $\max_D|\Pi_Nf_K|=2.232651$ for all these $N$.
@@ -414,7 +432,7 @@
     worum: |
       Why do proofs with norm estimates fail? Because the equations have a weak spot at $L$ that grows exponentially with the degree — and which nevertheless does not disturb Kneser's solution.
 - id: kn.beob.polynom_halbexp_fehlergesetz
-  quelle_hash: 357a2c4fcfd0
+  quelle_hash: 296484c53de3
   theorie_hash: 03f99f9f2083
   herkunft:
     modell: sonnet
@@ -424,6 +442,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: Computed up to N = 1500 (linear projection and genuine solutions), sign change predicted as a blind test; exponential
       components (corner mode) searched for specifically (rate < 1e-4 per degree). On the crescent outside D divergence was found — there the
@@ -459,6 +478,8 @@
     einfach: The deviation of the polynomials from Kneser's solution is not an arbitrary cloud of errors but exactly one single “perturbation
       oscillation” — the same one by which the other half-exponential functions differ from Kneser's. Its size falls like N to the power −7.9,
       and the law even predicts at which degree the error changes sign.
+    quellen:
+    - stelle: Strands A (k3b, k9, R2), B (b09–b10), C, E
   en_theorie:
     beispiel: |
       Predicted before the computation: $p_N(1)-T_e(\tfrac12)$ changes sign between $N=216$ and $218$. Computed: $+3.8\cdot10^{-22}$, $-3.7\cdot10^{-21}$, $+5.6\cdot10^{-21}$, $+1.0\cdot10^{-22}$
@@ -475,7 +496,7 @@
     worum: |
       How exactly do the polynomial roots deviate from Kneser's solution? Astonishingly orderly: through a single perturbation oscillation with a precise law.
 - id: kn.beob.polynom_konforme_stabilitaet
-  quelle_hash: 51e2f0df13bc
+  quelle_hash: ed52d7fc63e7
   theorie_hash: ad4aef7edb40
   herkunft:
     modell: sonnet
@@ -485,6 +506,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'Searched deliberately: thinner lenses, notches in the profile, wedges, the true p_N instead of f_K, degrees up to 2000.
       It becomes unstable if and only if the lens lies somewhere below Λ or touches L tangentially — both predicted.'
@@ -511,6 +533,8 @@
       D\to$ interior, $k(0)=0$); lens height $S$'
     einfach: The exponentially growing weak point of the equations is to a large extent a consequence of the coordinates in which one computes.
       If one writes the equations in a coordinate adapted to the corner, everything remains uniformly well solvable — measured up to degree 2000.
+    quellen:
+    - stelle: phase3/k_kern/BERICHT §3–§5, phase3/v_pruefstand/BERICHT §3.1–3.2, §3.12–3.13
   en_theorie:
     beispiel: |
       Without lens: $1.366$ ($N=100$), $1.852$ ($N=200$), $9.10$ ($N=400$), $70.7$ ($N=600$). With lens: always $1.251155$. A deliberate notch in the lens profile makes the growth return exactly there and
@@ -526,7 +550,7 @@
     worum: |
       The truncated equations seemed to have an exponentially growing weak point at $L$ ([[kn.beob.polynom_eckmode]]). Is this a property of the matter — or of the coordinates?
 - id: kn.beob.polynom_moebius_schwelle
-  quelle_hash: ad108d15a60d
+  quelle_hash: 2718f01908c2
   theorie_hash: 691a5a7b612b
   herkunft:
     modell: sonnet
@@ -535,6 +559,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     pruefung:
       f2_benutzte_voraussetzungen: —
@@ -556,6 +581,8 @@
       = rotation by $c/2$
     einfach: 'A model without real fixed points shows how deceptive numbers can be: Up to degree 100 everything looks like convergence, and then
       it tips over. That is why good numbers alone are not enough for eˣ either — and why computations there went up to degree 1500.'
+    quellen:
+    - stelle: Strand E (m1*–m8*, r2_*, r3_*)
   en_theorie:
     beispiel: |
       At Kneser's fixed points $L,\bar L$ (“Möbius-exp”) the linear pole bound holds with constant $1.01$ up to $N=160$ — there only the corner mode is missing, which $e^x$ additionally has.
@@ -569,7 +596,7 @@
     worum: |
       How deceptive can good numbers be? A model shows: very.
 - id: kn.beob.polynom_rand_plateau
-  quelle_hash: 5d6937b032d4
+  quelle_hash: 5db1fa4c696f
   theorie_hash: 47b67ddbae39
   herkunft:
     modell: sonnet
@@ -579,6 +606,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: Prediction written down before the computation (strand V), then checked in three clean quintic models; the unsuitable
       model (|μ| = 2, nearly singular sections) discarded.
@@ -602,6 +630,8 @@
     einfach: 'The sharpest version of the conjecture — “uniformly up to the boundary” — is probably false for astronomically large degrees: In
       models in which the corner rotates faster, the error stays put in a small zone next to L. Coefficients and p_N(1) are far away from it and
       are not affected.'
+    quellen:
+    - stelle: phase3/v_pruefstand/BERICHT §3.14 (Test T1), phase3/k_kern/BERICHT §22–§23
   en_theorie:
     beispiel: |
       Model with $|\mu|=2.6$: error in the zone $1.2$–$2.3\cdot10^{-6}$ from $N=1000$ to $3200$, while it continues to fall at $L$ itself and in the interior.
@@ -616,7 +646,7 @@
     worum: |
       Does the conjecture hold in the sharpest version “uniformly up to the boundary $|x|=|L|$”? The computations up to degree 1500 say yes — but the behavior at the corner speaks against it, at some point.
 - id: kn.beob.referenzwerte
-  quelle_hash: 58fb95f5e981
+  quelle_hash: dbe6b651491a
   theorie_hash: e1341202bed6
   herkunft:
     modell: sonnet
@@ -625,6 +655,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     pruefung:
       f2_benutzte_voraussetzungen: 'Assumption: fatou.gp implements Kneser (not proved, according to the forum).'
@@ -643,6 +674,8 @@
       $T_2^{\mathrm K}(1/2)=1.4587818160364217006839716610385\ldots$ (497 digits). Evidence: error-vector method
       (two runs of different depth) plus engine diversity — no interval proof.
     bereich: $b\in\{e,2\}$, $x=1/2$
+    quellen:
+    - stelle: research/reference/values.json
   en_theorie:
     beispiel: |
       Control test in this graph: a Chebyshev interpolant from 44 values of $T_2$ on $[-1,0]$ hits $T_2(\tfrac12)=1.458781816036421700683972$ to all
@@ -714,7 +747,7 @@
       What does the disk up to the fixed point $L$ look like when mapped with Kneser's super-logarithm? Like a slanted band upward and downward. Its shape is the only
       numerical ingredient in the uniqueness proof for the half-exponential function.
 - id: kn.beob.stufe5
-  quelle_hash: 7741ea5ab5ed
+  quelle_hash: e3010cdc705f
   theorie_hash: 75114238a511
   herkunft:
     modell: sonnet
@@ -724,6 +757,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.stufe5: computation depth M = 8 versus 10 (distance 3·10⁻³⁰), intersection count sampled at 1.70 and 1.74.'
     pruefung:
@@ -748,6 +782,9 @@
     bereich: pentation $P_b$ from kn.konstr.pentation (regular at the negative fixed point of Kneser's tetration), $b$ near $1.74$
     einfach: 'One level above η₄ and e₄ it continues: The pentation (tetration applied again and again) touches the line y = x at the base 1.7374,
       at the point 3.3014.'
+    quellen:
+    - {}
+    - stelle: 'Levenstein, post 5 (03.09.2017): ≈ 1.738'
   en_theorie:
     beispiel: |
       At $\eta_5$ the negative fixed point of the tetration lies at $-1.67509$ with multiplier $4.8736$ — there the pentation is anchored. The curvature at the point of tangency is
@@ -770,7 +807,7 @@
       After $(e,\eta)$ one level lower and $(e_4,\eta_4)$ for tetration comes the next pair: At which base does the **pentation** $b\uparrow\uparrow\uparrow x$
       touch the line $y=x$? With the pentation from [[kn.konstr.pentation]] this can be computed in exactly the same way as $\eta_4$.
 - id: kn.beob.stufe6
-  quelle_hash: 46e7299a04d4
+  quelle_hash: fde55e47d390
   theorie_hash: 96828dae45c0
   herkunft:
     modell: sonnet
@@ -780,6 +817,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.hexation_kneser: enclosure at 1.78 (fixed point) and 1.80 (none), secants down to m = 10⁻³³; independent computation
       at dps 45 (engine 43.7 digits) agrees to 32 digits.'
@@ -806,6 +844,10 @@
       fork), $b$ near $1.8$'
     einfach: 'One level above η₅ and e₅ it continues: The hexation touches the line y = x at the base 1.7991, at the point 3.4422. This is the
       fourth term of the sequence that begins with e ≈ 2.718 and η ≈ 1.445.'
+    quellen:
+    - {}
+    - stelle: knhexinit in the fork fatou_fork.gp (exp-079, 09.10.2026, local)
+    - stelle: 'Levenstein, post 5 (03.09.2017): 1.799'
   en_theorie:
     beispiel: |
       The location of the minimum moves quickly: at $b=1.78$ it lies at $4.47$, at $1.795$ at $3.62$, at $1.80$ at $3.41$ — the hexation reacts very strongly
@@ -828,7 +870,7 @@
       The next pair after $(e_5,\eta_5)$: At which base does the **hexation** $b\uparrow\uparrow\uparrow\uparrow x$ touch the line $y=x$? The answer lies at $b\approx1.8$,
       that is above $\eta_5$ — there only the Kneser-type hexation from [[kn.frage.hexation_kneser]] exists.
 - id: kn.beob.tetra_euler
-  quelle_hash: c5ede893f688
+  quelle_hash: cf35024179ea
   theorie_hash: 0856b93d40b5
   herkunft:
     modell: sonnet
@@ -838,6 +880,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.tetra_euler: fixed points counted for b = 1.5, 1.6, 1.7, 2, e; sign of the minimum at η₄ ± 10⁻⁴; self-tetra-root
       at four points; pentation iterated at 1.6 and 1.7.'
@@ -865,6 +908,12 @@
     einfach: 'The infinite tower b^b^b^… has a value exactly up to the base η ≈ 1.4447. One level higher there is the same threshold: the infinite
       pentation (tetration applied to itself again and again) has a value exactly up to η₄ ≈ 1.6353. There the curve of the tetration touches
       the line y = x, at e₄ ≈ 3.0885.'
+    quellen:
+    - stelle: 'S. Levenstein, post 28 (pid 5327, 31.10.2010): 32 digits with kneser.gp; nuninho1980, post 29: recomputation'
+    - stelle: 'Characterization 3 (infinite pentation): Robbins and nuninho, April 2009'
+    - stelle: 'Characterization 2 (maximum of the self tetra-root): mike3, July 2010'
+    - stelle: three characterizations with attribution
+    - stelle: Characterizations 2 and 3 recomputed
   en_theorie:
     beispiel: |
       - $b=1.6$: fixed points at about $-1.6$, $2.264$ and $4.6$. The sequence $1,\ 1.6,\ \dots$ runs toward $1.6\uparrow\uparrow\uparrow\infty=2.2643844034811596\ldots$
@@ -903,7 +952,7 @@
       $x\mapsto{}^xb$ touches the line $y=x$ at exactly one base $\eta_4\approx1.6353$, at the point $e_4\approx3.0885$. And exactly up to $\eta_4$
       the infinite pentation has a value.
 - id: kn.beob.tpid10_gesetz
-  quelle_hash: 0cb4d0c89693
+  quelle_hash: f2e8832b4a5d
   theorie_hash: 1c743a9ec77a
   herkunft:
     modell: sonnet
@@ -912,6 +961,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     pruefung:
       f2_benutzte_voraussetzungen: The continuations of each level (Kneser's tetration, regular pentation, Kneser-like hexation); the law is a
@@ -935,6 +985,9 @@
     bereich: Terms $n=3,\ldots,6$ of the sequences from kn.verm.tpid10 (30 digits)
     einfach: The distances of the “etas” from 2 shrink very regularly, roughly like 1 over n to the power 1.47. If one extrapolates one level
       further with this, one lands at 1.8399 — and exactly there (1.839) Levenstein had seen the next bound in 2017.
+    quellen:
+    - stelle: exp.tpid10_abstaende
+    - stelle: Check value η₇ ≈ 1.839 (Levenstein, post 5)
   en_theorie:
     beispiel: |
       $d_6=0.20088$, $d_7=d_6\cdot(6/7)^{1.4705}=0.16013$.
@@ -951,7 +1004,7 @@
       Four exact terms are not enough for a limit, but for a law: How fast do the etas approach 2? If the law is right, it predicts the
       next term — and this can be compared with Levenstein's figure.
 - id: kn.beob.unendliche_hexation
-  quelle_hash: ea04b9024a60
+  quelle_hash: 572a25804b3c
   theorie_hash: 277ee5fa39d0
   herkunft:
     modell: sonnet
@@ -960,6 +1013,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     pruefung:
       f2_benutzte_voraussetzungen: Number of fixed points of the pentation only measured.
@@ -981,6 +1035,9 @@
     bereich: $b>\eta$, $b\uparrow\uparrow\uparrow\uparrow n=P_b^{\circ n}(1)$
     einfach: The tower of pentations has a limit exactly up to the base 1.7374 — one level higher the same threshold as for the ordinary tower
       (up to η ≈ 1.4447).
+    quellen:
+    - {}
+    - stelle: Levenstein, post 5; Nixon, post 8
   en_theorie:
     beispiel: |
       $b=1.7$: $1,\ 1.7,\ 2.0692,\ 2.2432,\ 2.3225,\ 2.3583,\ 2.3745,\ 2.3817,\dots\to2.3876372817$ (each step reduces the distance by about the factor $\mu=0.45$).
@@ -1028,7 +1085,7 @@
       The super-logarithm answers the reverse question: How many levels does the tower need to reach the value $y$? It counts
       levels, just as the logarithm counts factors.
 - id: kn.frage.abel_bruchsumme
-  quelle_hash: 9471f10d63c2
+  quelle_hash: 25a2df671512
   theorie_hash: d2f0f560d634
   herkunft:
     modell: sonnet
@@ -1037,6 +1094,7 @@
     beweis: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     naechste_frage: 'Base change of the fractional sum: transport $\mathcal S[A_b]$ along $T_d$ and compare against μ_{b,d} and the phase P.'
     titel: Fractional sum of the Abel function above η
@@ -1045,6 +1103,8 @@
       $\mathcal S[A_b](x)=\lim_N\bigl[xA_b(N)+\sum_{k\le N}(A_b(k)-A_b(k+x))\bigr]$ formally satisfies $\mathcal S(x+1)-\mathcal S(x)=A_b(x+1)$.
       Convergence is settled (kn.satz.abel_bruchsumme: yes, because $A''=O(y^{-2})$). What remains open: Does its value or $\gamma_A$ connect with $\mu_{b,d}$,
       the response kernel or the logarithmic tails?
+    quellen:
+    - stelle: §14
   en_theorie:
     beispiel: |
       Base $e$: $\mathcal S(\tfrac12)=-0.11510$, $\gamma_A=0.49517$; alongside $\mu_{e,2}=-1.12840$. A connection is not known.
@@ -1059,7 +1119,7 @@
     worum: |
       The fractional sum of the super-logarithm exists. But does its value have a meaning — say for the base change in chapter 7?
 - id: kn.frage.andere_etas
-  quelle_hash: a69261e8cbdd
+  quelle_hash: 6e5383b99fc0
   theorie_hash: 69976b5f8f0c
   herkunft:
     modell: sonnet
@@ -1067,6 +1127,7 @@
   geprueft:
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     titel: Etas and Eulers of other families — and is e₄ rational? (forum 2022)
     aussage: |
@@ -1076,6 +1137,12 @@
       (no answer). MphLee suggested defining the sequences generally as a function of the level; the hyperops wiki so far lists only levels 3 and 4.
     einfach: The “etas” and “Eulers” depend on how one builds the higher levels. In the forum it was asked which numbers other constructions give
       — and whether the number e₄ ≈ 3.0885 might be a fraction. Both are open.
+    quellen:
+    - stelle: Catullus, 17.06.2022
+    - stelle: Catullus, Trappmann (July 2022)
+    - stelle: Rationality of e₄
+    - stelle: 'MphLee, 15.06.2022: general definition'
+    - {}
   en_theorie:
     einordnung: |
       Side questions to [[kn.verm.tpid10]]; 2sinh method: [[kn.konstr.zwei_sinh]].
@@ -1088,7 +1155,7 @@
       The etas and Eulers are not fixed natural constants, but depend on how one builds the higher levels. In 2022 it was asked in the forum which values
       other constructions give, and whether $e_4$ is a special number.
 - id: kn.frage.beta_methode
-  quelle_hash: 1e376544e261
+  quelle_hash: c40f9fad9194
   theorie_hash: 46cb159bd7db
   herkunft:
     modell: sonnet
@@ -1097,6 +1164,7 @@
     beweis: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     naechste_frage: Compare the β method with Kneser at high accuracy (distance at x = 1/2) and check for singularities near the real axis.
     titel: Are there holomorphic tetrations without Kneser's vertical limit condition? (β method)
@@ -1105,6 +1173,11 @@
       Is the second condition necessary? J. D. Nixon built a tetration in 2021 with the β method ($\beta_\lambda(s+1)=e^{\beta_\lambda(s)}/(e^{-\lambda s}+1)$), which at first he
       thought to be holomorphic and different from Kneser (different values on the real axis, no limit $L$ upward). Later he himself wrote that the work had
       wrongly assumed holomorphy; with β functions Kneser can only be approximated. So it remains open whether there is a holomorphic, real tetration that is not Kneser.
+    quellen:
+    - {}
+    - {}
+    - stelle: 'Nixon, post 21 (23.08.2021): is there a solution with all properties of Paulsen–Cowgill, but limit ∞ instead of L at i∞? (question
+        A), and is it then equally unique? (question B)'
   en_theorie:
     einordnung: |
       Complements the uniqueness theorems [[kn.satz.paulsen_cowgill]] and [[kn.satz.trappmann_kouznetsov]] from the other side: Which condition is really necessary?
@@ -1122,7 +1195,7 @@
       Kneser is unique if one demands two things: holomorphic in the slit plane **and** a particular behavior far up and down (limit $L$).
       Is the second condition really needed? J. D. Nixon tried in 2021 with his β method to show that without it there is another holomorphic tetration.
 - id: kn.frage.hexation_kneser
-  quelle_hash: 6e4c0ca7daff
+  quelle_hash: fc334e0726aa
   theorie_hash: 839abc85a39e
   herkunft:
     modell: sonnet
@@ -1131,6 +1204,7 @@
     beweis: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     naechste_frage: Prove the strip conjecture (kn.verm.hexation_streifen); transition at η₅.
     titel: Kneser-type hexation above η₅ — and η₆
@@ -1154,6 +1228,10 @@
       **Clarified (09.10.2026):** The limit of about 26 digits at base $e$ does not come from the corners (they lie below the arc in $W$) and not from the data
       (pentation there accurate to 48–55 digits), but from functional equations whose image point lies up to $1.22$ arc radii far outside: If one omits those with image beyond
       $1.05$ arc radii, the accuracy at dps 45 rises from $25.7$ to $34.1$ digits (omitting up to $1.0$ drops to $18$ — too few equations). Passed on to the fork method.
+    quellen:
+    - stelle: 'Levenstein, post 5 (03.09.2017): Kneser-like hexation via circle and θ'
+    - {}
+    - {}
   en_theorie:
     einordnung: |
       The counterpart to Kneser's tetration ([[kn.konstr.kneser]]), two levels higher. With the exact hexation, $\eta_6$ has been computed ([[kn.beob.stufe6]]) — the fourth term
@@ -1182,7 +1260,7 @@
       Above $\eta_5$ — for example at base 2 — the pentation no longer has a real fixed point. A smooth hexation must then be built, like Kneser's, at a complex fixed point.
       This is possible but numerically difficult; here it is stated how far things have got.
 - id: kn.frage.pentation_untergrenze
-  quelle_hash: 25da07f92c7b
+  quelle_hash: 23079fc7fd69
   theorie_hash: f52abbb1e0cf
   herkunft:
     modell: sonnet
@@ -1191,6 +1269,7 @@
     beweis: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     naechste_frage: For which bases below 1 is there a real, monotone tetration at all (cf. kl.satz.basis_unter_eins)?
     titel: Does the domain of convergence of the infinite pentation have a lower bound? (andydude 2010)
@@ -1201,6 +1280,8 @@
       a negative multiplier at the fixed point — a real, natural tetration is missing there. The question thus hinges on the choice of continuation below 1.
     einfach: The ordinary infinite tower has a value for bases between about 0.066 and 1.4447. For the next level one knows the upper bound 1.6353
       — but whether there is also a lower one, nobody knows, because for small bases one has no good tetration at all.
+    quellen:
+    - stelle: andydude, 07.05.2010
   en_theorie:
     einordnung: |
       Posed by Robbins in 2010; counterpart to [[fp.satz.turm_reell]]; bases below 1: [[kl.satz.basis_unter_eins]].
@@ -1213,7 +1294,7 @@
     worum: |
       The ordinary infinite tower has a value exactly between $e^{-e}$ and $\eta$. For the next level one knows the upper bound $\eta_4$ — but not whether there is a lower one.
 - id: kn.frage.tpid14
-  quelle_hash: fbeb528c0175
+  quelle_hash: dc59427c43f7
   theorie_hash: 956651bc3a58
   herkunft:
     modell: sonnet
@@ -1222,6 +1303,7 @@
     beweis: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     naechste_frage: Compare the Carleman slog (kn.konstr.carleman) about 0 and about x₀ = 1/2 with growing n; according to kn.verm.tpid3_bedingung
       a circle-of-convergence condition is to be expected.
@@ -1231,6 +1313,8 @@
       as long as both points lie within the radius of convergence of the respective other. Related to TPID 1 and 3 (there the same question for eigenvalues). Unanswered.
     einfach: The matrix slog is computed about a chosen point. Does the same function always come out, no matter which point one chooses? Conjectured
       yes — nobody has checked it.
+    quellen:
+    - stelle: TPID 14 (tommy1729, 01.06.2011, post 16)
   en_theorie:
     einordnung: |
       Related to [[kn.konstr.carleman]] and the eigenvalue questions [[kn.verm.carleman_eigenwerte]], [[kn.verm.tpid3]].
@@ -1241,7 +1325,7 @@
     worum: |
       Robbins' matrix slog is developed about a point. Is the result independent of the point?
 - id: kn.frage.tpid16
-  quelle_hash: 5cf6268a5a5f
+  quelle_hash: 02f3429d982d
   theorie_hash: ee072ac37e22
   herkunft:
     modell: sonnet
@@ -1249,6 +1333,7 @@
   geprueft:
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     titel: 'TPID 16: Entire real functions with a conjugate pair of fixed points — are there Kneser-like solutions with positive derivatives?'
     aussage: |
@@ -1256,6 +1341,8 @@
       whose iterates satisfy additional positivity conditions on the derivatives; he conjectures yes. The question generalizes Kneser's situation (exp with L, L̄) to other entire functions.
     einfach: Kneser's trick works for eˣ, which has two mirror-image complex fixed points. Does it work for every such function — and do all derivatives
       remain positive in the process?
+    quellen:
+    - stelle: TPID 16 (tommy1729, 07.06.2014, post 18); conditions stated only briefly in the post
   en_theorie:
     einordnung: |
       Generalizes [[kn.konstr.kneser]]; at attracting complex fixed points the route fails ([[kn.satz.kein_kneser_anziehend]]).
@@ -1266,7 +1353,7 @@
     worum: |
       Kneser's construction needs only little from exp: an entire function, real on the axis, with a pair of complex fixed points. TPID 16 asks how far this carries.
 - id: kn.frage.tpid17
-  quelle_hash: 79a40c49222f
+  quelle_hash: 6eb10530a8be
   theorie_hash: e7edcc4201b4
   herkunft:
     modell: sonnet
@@ -1274,6 +1361,7 @@
   geprueft:
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     titel: 'TPID 17: Error bound O(n ln(n+1)) for the method S9 of the “fake function theory”'
     aussage: |
@@ -1281,6 +1369,8 @@
       growing function, forum tid 863) an error bound $O(n\ln(n+1))$ and asks for a proof. Application, among others, to an entire approximation of the half-exponential function.
     einfach: One can mimic fast-growing functions by power series with all positive coefficients. How well does that succeed? tommy1729 estimates
       the error, without proof.
+    quellen:
+    - stelle: TPID 17 (tommy1729, 28.03.2015, post 19), refers to tid 863
   en_theorie:
     einordnung: |
       A route to entire approximations of the half-exponential function ([[kn.satz.halbe_exp]]).
@@ -1291,7 +1381,7 @@
     worum: |
       “Fake functions” are entire functions with positive coefficients that mimic a given growing function. TPID 17 asks about the quality of a method for this.
 - id: kn.gescheitert.polynom_ecke_wege
-  quelle_hash: 2f086628efa5
+  quelle_hash: b50e1d80dfb5
   theorie_hash: e753a2cee2a5
   herkunft:
     modell: sonnet
@@ -1300,6 +1390,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     pruefung:
       f2_benutzte_voraussetzungen: —
@@ -1322,6 +1413,8 @@
     bereich: Attempts from phase 3 (strands K and V) to prove the open core
     einfach: 'Eight different tools were tried at the corner at L. Each fails at the same place: Two quantities cancel exactly there, and no estimate
       that treats them individually has any room.'
+    quellen:
+    - stelle: phase3/KERNPROBLEM.md §2–§4, phase3/REFLEXION.md, phase3/k_kern/BERICHT §6–§8, §15–§16, §33, §37–§38, §41–§42
   en_theorie:
     beispiel: |
       The Dyson map of the Christoffel–Darboux formula has spectral radius $0.61$ at $n=10$, but $1.20$ at $n=100$; its growing vector sits not at the corner but at the low degrees.
@@ -1450,7 +1543,7 @@
       just make the same construction at $L$. This does indeed give a solution of the equation — only it is
       not real on the real axis. This failure shows what Kneser had to repair.
 - id: kn.konstr.carleman
-  quelle_hash: 66e5ce00715c
+  quelle_hash: 7e22831da5d1
   theorie_hash: 5ae82ec46c19
   herkunft:
     modell: sonnet
@@ -1460,6 +1553,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Construction; solvability for every n observed numerically, not proved in general.
@@ -1478,6 +1572,13 @@
       $\sum_{k=1}^{n}a_k\,k^j/j!-a_j=\delta_{j0}$ $(0\le j\le n-1)$. Its solution defines $\operatorname{slog}_n$
       (Walker 1991, Robbins 2005 “natural slog”).
     bereich: $b=e$; ansatz $\operatorname{slog}_n(x)=-1+\sum_{k=1}^{n}a_k x^k$
+    quellen:
+    - {}
+    - stelle: 'according to Trappmann–Kouznetsov 2011, p. 4: numerical method for the power series coefficients of a 4-logarithm about 0, without
+        convergence proof — before Robbins'
+    - stelle: p. 4
+    - {}
+    - stelle: 'Robbins'' method, discussion 2007; Trappmann: approach already in Walker around 1990'
   en_theorie:
     beispiel: |
       With $n=16$, $\operatorname{slog}_n$ lies $1.7\cdot10^{-5}$ off Kneser's value at interior points, with $n=128$ $9.2\cdot10^{-9}$ off.
@@ -1495,7 +1596,7 @@
       A way entirely without complex geometry: One takes the super-logarithm as a polynomial ansatz and demands the Abel equation coefficient by
       coefficient. What comes out is a linear system of equations.
 - id: kn.konstr.cauchy
-  quelle_hash: c845278782ea
+  quelle_hash: 6c1afb2f3bf6
   theorie_hash: cc2b7c20568e
   herkunft:
     modell: sonnet
@@ -1505,6 +1606,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Kouznetsov 2009 (Math. Comp.), numerical; identity with Kneser via the uniqueness of Paulsen–Cowgill (2017).
@@ -1528,6 +1630,11 @@
     einfach: Instead of building the tetration piece by piece, one guesses its values on a vertical line, uses the tower equation to compute from
       them the values to the left and right of it, and averages back onto the line with the Cauchy formula. If one repeats this, Kneser's tetration
       emerges.
+    quellen:
+    - stelle: Tetration and slog to base e approximated by elementary functions (zbMATH short version, Russian)
+    - {}
+    - {}
+    - {}
   en_theorie:
     beispiel: |
       For the hexation to base 2 exactly this method failed in our own attempts: The hexation has branch points in the rectangle
@@ -1609,7 +1716,7 @@
       Hexation is pentation applied again and again: $b\uparrow\uparrow\uparrow\uparrow3=P_b(P_b(b))$. For half heights one again needs a fixed point. For bases up to
       $\eta_5\approx1.737$ the pentation has an attracting real fixed point $p_1$ — and there everything works exactly as for tetration below $\eta$ (chapter 5).
 - id: kn.konstr.kneser
-  quelle_hash: b5a4fced5f46
+  quelle_hash: bd625f037c96
   theorie_hash: 901dff051b0f
   herkunft:
     modell: sonnet
@@ -1619,6 +1726,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Kneser 1950; numerical: Kouznetsov 2009 (Cauchy integral), Levenstein fatou.gp (theta iteration).'
@@ -1640,6 +1748,12 @@
       so that $\operatorname{slog}=\chi+\theta_K(\chi)$ is real on the real axis. Result: a real-analytic,
       strictly increasing solution of $\varphi(\varphi(x))=e^x$ or, respectively, a real-analytic tetration.
     bereich: originally $b=e$ (half-iterate of $e^x$), in general $b>\eta$
+    quellen:
+    - {}
+    - stelle: Trappmann's account of the proof strategy (Schröder function at c, Riemann map, induced Möbius map parabolic, reflection); problem
+        discussed in Jena in 1941
+    - {}
+    - {}
   en_theorie:
     beispiel: |
       $T_e(\tfrac12)=1.64635423375119458097\ldots$, $T_2(\tfrac12)=1.45878181603642170068\ldots$, $\operatorname{slog}_e(2)=0.7015456018\ldots$
@@ -1719,7 +1833,7 @@
       The slope of the tetration is a product over all tower values below it. Anyone who can sum “fractionally many” terms obtains from this an equation for the
       tetration — without a fixed point, without a Riemann mapping.
 - id: kn.konstr.linear
-  quelle_hash: 953d9fa55566
+  quelle_hash: c5ca0ba44080
   theorie_hash: 4085ccc99840
   herkunft:
     modell: sonnet
@@ -1729,6 +1843,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Continuation by $T(x+1)=b^{T(x)}$ and $T(x-1)=\log_b T(x)$; continuity at 0: $T(0^+)=b^{T(-1^+)}=b^0=1$.'
@@ -1745,6 +1860,10 @@
     aussage: $T(x)=x+1$ on $(-1,0]$, otherwise continued by the equation. Continuous, strictly increasing solution.
     bereich: $b>1$
     einfach: 'The simplest tetration: a straight line between −1 and 0, the rest follows from the equation. It has kinks at the integer arguments.'
+    quellen:
+    - {}
+    - stelle: generalized exp/log of level-index arithmetic, two versions (zbMATH review; whether one of them is the linear tetration, not checked)
+    - {}
   en_theorie:
     beispiel: |
       Base $e$: $T(\tfrac12)=e^{1/2}=1.64872$, Kneser $1.64635$ — difference $0.0024$. Base $2$: $T(\tfrac12)=\sqrt2=1.41421$, Kneser $1.45878$.
@@ -1761,7 +1880,7 @@
       The simplest conceivable tetration: Between $-1$ and $0$ one draws a straight line from $0$ to $1$, the rest follows from the equation. It is
       continuous and increasing — but at the integer arguments it has kinks.
 - id: kn.konstr.paulsen_cowgill_iteration
-  quelle_hash: 388a2be7aa8f
+  quelle_hash: 3e69e4a19201
   theorie_hash: 00e97da7f062
   herkunft:
     modell: sonnet
@@ -1771,6 +1890,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: no computation of our own with the method (text not accessible).
     pruefung:
@@ -1789,6 +1909,8 @@
       Besides Kouznetsov's Cauchy integral (kn.konstr.cauchy, $\approx10^{-14}$ in double precision) and Levenstein's θ-iteration (fatou.gp) the third published high-precision method.
     bereich: real bases $b>\eta$, Kneser's tetration
     einfach: A computation method that delivers Kneser's tetration to over 50 decimal places — each round it becomes one to two digits more accurate.
+    quellen:
+    - stelle: Abstract
   en_theorie:
     einordnung: |
       Third high-precision method besides [[kn.konstr.cauchy]] and Levenstein's fatou.gp; a comparison with [[kn.beob.referenzwerte]] would be an independent check.
@@ -1799,7 +1921,7 @@
     worum: |
       Besides the uniqueness theorem, the work of Paulsen and Cowgill contains a fast computation method for Kneser's tetration.
 - id: kn.konstr.paulsen_stoerung
-  quelle_hash: 789c59dfdcb2
+  quelle_hash: 19a3fd635481
   theorie_hash: a78bfd27c330
   herkunft:
     modell: sonnet
@@ -1809,6 +1931,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Paulsen 2016, Korean J. Math. 24, 81–106: Lemma 2 (p. 102), Proposition 2 (pp. 103–105), Corollary 1 and conclusion (p. 105).'
@@ -1832,6 +1955,8 @@
     bereich: $\exp$ and $a^x$ for $a>\eta$ near $\eta$; Abel functions on the real axis
     einfach: Because eˣ has no real fixed point, Paulsen “bends” the function a little until it has one. There the solution is unique. Then he
       takes the bending back step by step and obtains a half-exponential function — a new one, lying between the known ones.
+    quellen:
+    - stelle: Abstract; Lemma 2 (p. 102); Prop. 2, Cor. 1 and §7 (pp. 103–105)
   en_theorie:
     einordnung: |
       A further approach besides Kneser ([[kn.konstr.kneser]]) and Walker ([[kn.konstr.walker]]); the bottleneck count is the same law as [[bw.lem.randgesetz]].
@@ -1846,7 +1971,7 @@
       The exponential function has no real fixed point — hence there is no unique “regular” half-iterate for it. Paulsen bends it a little,
       until it has one, solves uniquely there and takes the bending back.
 - id: kn.konstr.pentation
-  quelle_hash: ddf448bf92d5
+  quelle_hash: a0a918daeadb
   theorie_hash: 68efb99671bf
   herkunft:
     modell: sonnet
@@ -1856,6 +1981,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Fixed point: $T_b(-1)=0>-1$ and $T_b(x)\to-\infty$ as $x\downarrow-2$, hence a zero of $T_b(x)-x$ (intermediate value theorem). Koenigs
@@ -1886,6 +2012,14 @@
     bereich: real $b>\eta$, Kneser's tetration $T_b$; fixed point $L_b\in(-2,-1)$ with $\lambda_b=T_b^{\prime}(L_b)>1$
     einfach: 'Pentation is the next step after tetration: b↑↑↑3 = T_b(T_b(b)), i.e. “tetration repeated that many times”. For half heights one
       uses the same trick as one level lower: tetration has a fixed point (about −1.85 for base e), and there one can iterate it regularly.'
+    quellen:
+    - {}
+    - stelle: first journal paper on holomorphic (“natural”) pentation to base e, periodic with period from the derivative of tetration at the
+        fixed point (according to abstract and forum tid 949)
+    - stelle: 'Kouznetsov 11.01.2015; MphLee: fixed point −1.850354529 already in Rubtsov–Romerio (2006); Levenstein: first complex singularity
+        ≈ −2.315 ± 1.684 i'
+    - {}
+    - stelle: Computation with Kneser values
   en_theorie:
     beispiel: |
       Base $e$: $\lambda_e=6.46067\ldots$, $c=66.3201585987\ldots$, $\Psi(w)=L+w-0.6263\,w^2+0.4828\,w^3-0.4120\,w^4+\dots$
@@ -1966,7 +2100,7 @@
     worum: |
       An approximation for computing by hand: Between $-1$ and $0$ a parabola instead of a straight line — then for every base the curve has no more kinks.
 - id: kn.konstr.walker
-  quelle_hash: b1b57f0823d9
+  quelle_hash: 83e1a70596c7
   theorie_hash: 3aee657664be
   herkunft:
     modell: sonnet
@@ -1976,6 +2110,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Walker 1991; DLMF §4.12 cites Walker for C^∞, Kneser for analytic. Form of the limit after Trappmann in the tetration forum (2009).
@@ -1994,6 +2129,12 @@
       $\operatorname{dexp}^{-n}\circ\exp^{n}$ with $\operatorname{dexp}(x)=e^x-1$ — a base-change-type limit from the parabolic iteration of
       $e^x-1$ to $\exp$. $C^\infty$ on the real axis is proved; analyticity is not proved and is doubted in the tetration forum.
     bereich: generalized logarithms/exponentials
+    versionen:
+    - aenderung: Form of the limit and forum conjecture entered.
+    quellen:
+    - stelle: 'zbMATH review (Zbl 0742.39005): C^∞ solutions G of G(eˣ) = G(x) + 1 via h with h(eˣ) = e^{h(x)} − 1, see kn.satz.walker_konjugation'
+    - stelle: Walker's limit dexp^−n ∘ exp^n, only real C^∞
+    - stelle: 'Conjecture: nowhere analytic'
   en_theorie:
     einordnung: |
       Walker's limit is of the same construction type as the base change between two bases ([[bw.def.F_bd]]): iterate logarithms of a foreign superfunction.
@@ -2011,7 +2152,7 @@
     worum: |
       Between “linear with kinks” and “analytic” lies one level: infinitely differentiable. Walker built such solutions in 1991.
 - id: kn.konstr.zwei_sinh
-  quelle_hash: b5da6951144e
+  quelle_hash: fe23daf14a9e
   theorie_hash: 1a59fdc2f878
   herkunft:
     modell: sonnet
@@ -2027,6 +2168,9 @@
         Convergence: $\ln(2\sinh y)=y+\ln(1-e^{-2y})$, the error per level is $e^{-2y}$ and shrinks further on taking logarithms back. Functional equation:
         $\ln^{[n]}s^{[n+x+1]}=\ln^{[n]}(s(s^{[n+x]}))\approx\ln^{[n-1]}s^{[n+x]}$ and in the limit $F(x+1)=e^{F(x)}$. Infinitely differentiable: as for the base change
         (bw.satz.schwanzkonvergenz), with uniform convergence of the derivatives.
+      luecken:
+      - C^∞ only carried over by analogy, not written out.
+      - Nowhere analytic is a conjecture (forum).
     pruefung:
       f2_benutzte_voraussetzungen: Repelling fixed point of 2sinh, closeness to exp for large values.
       f5_neue_frage: Is the wobble range 2.07·10⁻⁴ the base-change wave between 2sinh and exp?
@@ -2066,7 +2210,7 @@
       A smooth tetration that can almost be built with a pocket calculator: One replaces $e^x$ by $2\sinh x$, whose iteration is simple, and returns at the end with
       logarithms. It is very close to Kneser's — but not equal.
 - id: kn.kor.basisvergleich
-  quelle_hash: 9c59e966fe2a
+  quelle_hash: eb7fcb2301b8
   theorie_hash: 862add95454b
   herkunft:
     modell: sonnet
@@ -2076,6 +2220,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Divide by $\ln\varepsilon$.
@@ -2093,6 +2238,8 @@
     titel: Base comparison at the singularity
     aussage: $\displaystyle\lim_{\varepsilon\to0^+}\frac{T_b(-2+\varepsilon)}{T_c(-2+\varepsilon)}=\frac{\ln c}{\ln b}$.
     bereich: two bases $b,c>0$, $\ne1$
+    quellen:
+    - stelle: Prop. 7.3
   en_theorie:
     beispiel: |
       $b=e$, $c=\sqrt2$: limit $\ln\sqrt2=0.3466$. The approach is slow — the error falls only like $1/|\ln\varepsilon|$, so at $\varepsilon=10^{-12}$ by about the factor $1/28$.
@@ -2105,7 +2252,7 @@
     worum: |
       Near $-2$ all tetrations fall like a logarithm, but with different steepness. The ratio of two bases tends to the ratio of their logarithms.
 - id: kn.satz.abel_bruchsumme
-  quelle_hash: 408f8dedd249
+  quelle_hash: 672d65ad3f07
   theorie_hash: af411b9142b6
   herkunft:
     modell: sonnet
@@ -2115,6 +2262,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Differentiating $A(y)=1+A(\log_by)$ gives the formulas above. On the base interval $A'',A''''$ are bounded; for $y\ge1$, $\log_by$
@@ -2136,6 +2284,7 @@
     - text: b > η (the log_b reduction ends in a fixed base interval)
     - text: A real-analytic on a neighborhood of the base interval
     - text: A = Kneser
+      notiz: every real-analytic increasing Abel function
     titel: Fractional sum of the super-logarithm
     aussage: |
       $|A''(y)|\le C/y^2$ for $y\ge1$; therefore the compensated fractional sum converges absolutely:
@@ -2149,6 +2298,10 @@
     formen:
     - notiz: base e, Kneser
     - notiz: the two lines following the bound
+    quellen:
+    - stelle: §14
+    - {}
+    - {}
   en_theorie:
     beispiel: |
       Kneser, base $e$: $\mathcal S(\tfrac12)=-0.1150976090828\ldots$, $\gamma_A=0.4951728249\ldots$ Check: $\mathcal S(\tfrac32)-\mathcal S(\tfrac12)=A(\tfrac32)$ to $3\cdot10^{-13}$. The bound:
@@ -2171,7 +2324,7 @@
       Below $\eta$ one could sum up “one and a half tower levels”. Above $\eta$ the levels grow to the gigantic — but the super-logarithm grows so
       slowly that one can form fractional sums of **it**, similar to how $\log\Gamma$ continues the sum of the logarithms.
 - id: kn.satz.grenzwert_trick
-  quelle_hash: b6051537b947
+  quelle_hash: 028bfd201931
   theorie_hash: 7b78c8a84b5b
   herkunft:
     modell: sonnet
@@ -2186,6 +2339,8 @@
       text: |
         $F_{n+1}(s)-F_n(s)=\log^{[n]}\bigl(\log G(s+n+1)\bigr)-\log^{[n]}G(s+n)$, and $\log G(s+n+1)-G(s+n)=\log(1+\delta(s+n))$. The derivative of $\log^{[n]}$ at the point $y$ is
         $\prod_{k<n}1/\log^{[k]}y$ — tiny on the real axis. Summing, $F_n$ converges if $\sum_n|\delta(s+n)|\prod_k1/|\log^{[k]}G(s+n)|<\infty$. Functional equation in the limit.
+      luecken:
+      - The exact conditions on δ (in particular away from the real axis) are written out only for the base change (Paper I).
     pruefung:
       f2_benutzte_voraussetzungen: Rapidly decaying error δ; chain of logarithms without branching problems.
       f5_neue_frage: Which growth condition on δ in the half-plane makes F analytic — and when is F = Kneser?
@@ -2337,7 +2492,7 @@
       How fast does a half-exponential function grow? Faster than every polynomial, more slowly than every $e^{x^\varepsilon}$ — and in a way that cannot be written down with
       any formula in $\exp$ and $\log$.
 - id: kn.satz.halbexp_beschraenkt
-  quelle_hash: d3d3ff58ea20
+  quelle_hash: d7da703553f4
   theorie_hash: c1d629a044a2
   herkunft:
     modell: sonnet
@@ -2347,6 +2502,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -2385,6 +2541,7 @@
     voraussetzungen:
     - text: f holomorphic on D, real on D ∩ ℝ, f(f(z)) = e^z near 0
     - text: 'Corridor condition: f(V₀) ⊂ D'
+      notiz: replaces the earlier requirement “f bounded on D”
     - text: Shape of Ω = slog(D) (kn.beob.slog_scheibe)
     titel: 'Uniqueness via a corridor: Kneser''s half-exponential function is the only one that maps the corridor V₀ into the disk |z| < |L|'
     aussage: |
@@ -2394,6 +2551,9 @@
       D:f_K(z)\in D\}$
     einfach: 'There are infinitely many smooth functions that give eˣ when applied twice. If one only requires that f maps a certain strip of
       the disk — where Kneser''s solution also stays in the disk — back into the disk, exactly one remains: Kneser''s.'
+    quellen:
+    - {}
+    - stelle: Prop. 2, same pattern
   en_theorie:
     beispiel: |
       Counterexample check: With $\varphi(w)=w+0.01\sin2\pi w$, $f=T(\varphi^{-1}(\varphi(A)+\tfrac12))$ is likewise a real half-exponential function. Its perturbation term $0.01\sin(2\pi A(z))$ is already $1.4\cdot10^3$, $4.6\cdot10^7$, $1.3\cdot10^{12}$ at
@@ -2415,7 +2575,7 @@
       Which of the many half-exponential functions is “the right one”? Answer: the only one that maps a certain strip of the disk up to $L$ back into the disk — the strip
       on which Kneser's solution also stays in the disk.
 - id: kn.satz.halbexp_singularitaet_L
-  quelle_hash: 597598b0928c
+  quelle_hash: f0b4cffc86b0
   theorie_hash: e40369b8cf4a
   herkunft:
     modell: sonnet
@@ -2425,6 +2585,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -2453,6 +2614,9 @@
       $t=z-L$
     einfach: At the complex fixed point L, Kneser's half-exponential function looks almost like the “regular” half-iteration at this point — plus
       very weak additional terms with complex exponents. These additional terms determine how fast the Taylor coefficients decay.
+    quellen:
+    - stelle: Strand A (a_moden/BERICHT.md §4), strand B Lemma 8.2
+    - {}
   en_theorie:
     beispiel: |
       Envelope $71.57\,k^{-6.447}|L|^{-k}$; the Darboux series with the first corrections hits $a_k$ to $10^{-12}$ ($k=100$) and $1.5\cdot10^{-18}$ ($k=300$). The pure leading term lies within
@@ -2470,7 +2634,7 @@
     worum: |
       How does Kneser's half-exponential function behave at the complex fixed point $L$? Described exactly — and from this follows how fast its Taylor coefficients about 0 decay.
 - id: kn.satz.hexation_eindeutig_g0
-  quelle_hash: 7b98bfcb03c3
+  quelle_hash: 92b006bf5751
   theorie_hash: 38476269b9fb
   herkunft:
     modell: sonnet
@@ -2480,6 +2644,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -2512,6 +2677,7 @@
     - text: α(P(w)) = α(w) + 1 for w ∈ γ₀
     - text: α − α_q bounded for w → q in G₀, α − α_q̄ bounded for w → q̄
     - text: α real on G₀ ∩ ℝ; normalization via H(0) = 1
+      notiz: fixes only the additive constant
     titel: Uniqueness of the Kneser-type hexation over a fixed fundamental domain G₀
     aussage: |
       (i) **Uniqueness (proved):** There is at most one Abel function $\alpha$ of $P$ with these properties, up to an additive constant.
@@ -2525,6 +2691,10 @@
     einfach: Instead of “smooth on an entire half-plane” (which is not possible for the hexation) one takes a fixed domain between the two complex
       fixed points of the pentation. Anything that is invertibly smooth there and behaves properly at the fixed points is already determined —
       and the Kneser-type hexation satisfies this.
+    quellen:
+    - {}
+    - stelle: Model for the mechanism
+    - stelle: 'knhexinit (exp-081): ihex and θ coefficients kncc'
   en_theorie:
     beispiel: |
       $P(\operatorname{Re}q)=P(-1.99295)=-0.99415$ — the crescent $G_0$ extends on the axis from $-1.993$ to $-0.994$ and upward only to $\operatorname{Im}q=1.445$; the
@@ -2551,7 +2721,7 @@
       between the two complex fixed points $q$ and $\bar q$ of the pentation: Anything that has a smooth, invertible Abel function there is unique — and the Kneser-type
       hexation has one.
 - id: kn.satz.hexation_gebiete
-  quelle_hash: c8f7eaf2940f
+  quelle_hash: 45b608ff3d23
   theorie_hash: d9d761a48315
   herkunft:
     modell: sonnet
@@ -2561,6 +2731,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -2601,6 +2772,9 @@
     einfach: The choice of domain does not matter as long as the inverse function of the Kneser-type hexation stays smooth on the whole domain
       — this was checked by calculation in a whole family of domains. Another solution would have to use a domain in which this inverse function
       has a singularity, such as the attracting fixed point.
+    quellen:
+    - {}
+    - stelle: 'knhexinit (exp-081): ihex and θ coefficients kncc'
   en_theorie:
     beispiel: |
       The circular-arc family: $\alpha_K(c)$ is $-3.357$ ($c=-2.5$), $-2.994$ ($c=\operatorname{Re}q$), $-1.897$ ($c=-0.9$), $-1.000$ ($c=0$, check: $H(-1)=0$), $-0.607$ ($c=0.4$),
@@ -2626,7 +2800,7 @@
       [[kn.satz.hexation_eindeutig_g0]] determines the Kneser-type hexation over a fixed domain $G_0$. Does the choice of domain matter? As long as the inverse function
       of the known solution stays smooth on the domain: no. Another solution would need a domain in which this inverse function becomes singular.
 - id: kn.satz.hexation_keine_halbebene
-  quelle_hash: b3fce6c31417
+  quelle_hash: 0d00de9b61df
   theorie_hash: 9a847a5d8aac
   herkunft:
     modell: sonnet
@@ -2636,6 +2810,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -2666,6 +2841,7 @@
     - text: H(z+1) = P(H(z)) there
     - text: H(x+iy) → q for y → +∞, uniformly for x in strips of width 1
     - text: H real on the axis or H(0) = 1
+      notiz: the contradiction already arises without normalization
     titel: No hexation to base 2 is holomorphic in a half-plane and tends to q upward
     aussage: |
       There is no such solution. More precisely: Every solution with limit $q$ has the form $H=F_q\circ(\mathrm{id}+\theta)$ with 1-periodic $\theta$ tending to a constant $c$ upward,
@@ -2678,6 +2854,9 @@
     einfach: 'For tetration the solution is determined by two requirements: smooth on an entire half-plane and tending to the fixed point upward.
       For the hexation these two requirements cannot be met together at all — the singularities of the pentation reappear periodically in every
       solution, ever farther to the upper right.'
+    quellen:
+    - {}
+    - stelle: Prop. 2 (model for the argument)
   en_theorie:
     beispiel: |
       For the Kneser-type hexation to base 2 the branch points lie at $z\approx-0.741+m+2.746\,i+(k-1)\Pi$, $m\ge0$, $k\ge1$:
@@ -2700,7 +2879,7 @@
       For the tetration two requirements determine the solution ([[kn.satz.paulsen_cowgill]]): holomorphic on a half-plane and tending vertically upward to the fixed point $L$.
       For the hexation to base 2 these two requirements cannot be met together — there is no single solution that does so.
 - id: kn.satz.hexation_logpunkt
-  quelle_hash: a3c79ad9b83a
+  quelle_hash: bde53c9496f9
   theorie_hash: 0dd2c5475268
   herkunft:
     modell: sonnet
@@ -2710,6 +2889,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -2727,6 +2907,11 @@
         (v) $F_q$ as the main chain $\mathrm{pent}^n(q+\Psi(\mu_q^{\zeta-n}))$ of the fork; in the region of the tracked map it agrees with the sheet tracking to $10^{-14}$.
         Newton from a grid ($19\times8$ starting points) for $F_q(\zeta^*)=w_b+j\Pi_T$, then $Z=\zeta^*+1$; ray by Newton continuation $F_q(\zeta)=t$ from $t\approx-10$ to
         $L_T-10^{-4}$ (steps at most 0.06).
+      luecken:
+      - That θ is continuous up to the axis (Carathéodory) is assumed and not derived from the strip condition.
+      - That F_q tends to ∞ only at log points of the form log₂ε + h(ε) or nested is inferred from the construction of P (P → −∞ only at w_b +
+        jΠ_T), not completely proved.
+      - 'Part (iv): Other singular values of F_q off the axis, besides p, are not ruled out.'
     pruefung:
       f2_benutzte_voraussetzungen: θ continuous up to the axis (otherwise no starting point), log₂ form at the log points, periodicity of θ, normalization
         H(−1) = 0.
@@ -2744,7 +2929,9 @@
       richtigkeit: (i)–(iv) proved under the hypotheses (log₂ form measured), sketch; (v) numerical, grid not exhaustive
     voraussetzungen:
     - text: θ = α_q∘H − id can be continued from above (near q) over the whole upper half of the strip and is continuous up to the axis (“θ-class”)
+      notiz: 'what happens otherwise: part (iv)'
     - text: F_q tends to ∞ only at log points, namely like log₂ε + h(ε) with holomorphic h or nested (log₂∘log₂ …)
+      notiz: measured at the point ζ_c − 2 (winding 2πi/ln 2, kn.beob.hexation_verzweigt) and at two further log points (values on circles)
     titel: Every Kneser-type solution begins at a log point of F_q — and every log point carries at most one
     aussage: |
       (i) **Starting point.** For $x\downarrow s$ the curve point $x+\theta(x)$ runs into a log point $Z$ of $F_q$; there $F_q(Z-1)=w_b+j\,\Pi_T$ for an integer $j$.
@@ -2766,6 +2953,9 @@
       to this, a log point. From every log point exactly one real trace leads away. Only if this trace arrives again exactly one level further
       does a solution arise. The question “Is there a second one?” thereby becomes “Is there a second log point whose trace closes?”. Nearby there
       are two further log points, but their traces do not close.
+    quellen:
+    - {}
+    - stelle: 'knhexinit (exp-081): q, ksig, pent; F_q formed at run time'
   en_theorie:
     beispiel: |
       Check on the Kneser curve: The ray from $Z_0=-1.59693-1.70988\,i$ arrives at $t=L_T-10^{-4}$ at distance $0.010$ from $Z_0+1$ (as expected for a corner with
@@ -2793,7 +2983,7 @@
       How many Kneser-type hexations can there be? This theorem counts them via a single point: the start of their real curve. Each begins at a log point of the
       auxiliary function $F_q$, and each log point can carry at most one solution.
 - id: kn.satz.hexation_struktur
-  quelle_hash: 41ff8f06b4d3
+  quelle_hash: af222c527991
   theorie_hash: 54138240d50d
   herkunft:
     modell: sonnet
@@ -2803,6 +2993,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: '$P_b$ is strictly increasing, $P_b(x)>L_T$ and $P_b(x)\to L_T$ for $x\to-\infty$ (unbounded above for $b>\eta_4$, otherwise bounded),
@@ -2834,6 +3025,9 @@
     bereich: pentation $P_b$ from kn.konstr.pentation ($b>\eta$); $H$ a continuous, strictly increasing real solution of $H(x+1)=P_b(H(x))$, $H(0)=1$
     einfach: 'Tetration breaks off at −2, the pentation nowhere — and the hexation again, somewhere between −4 and −3. The reason is the same
       every time: whether the level below is bounded below.'
+    quellen:
+    - {}
+    - stelle: Levenstein, posts 1 and 5 (07.08./03.09.2017); Nixon, post 2 (21.08.2017)
   en_theorie:
     beispiel: |
       Regular hexation: $s_{1.5}=-3.62649$, $s_{1.6}=-3.66301$, $s_{1.7}=-3.69422$; very close to it, at $s_b+10^{-6}$, $H$ is already about $-10.7$.
@@ -2858,7 +3052,7 @@
       The tetration breaks off at $-2$: there it goes to $-\infty$. The pentation, by contrast, is defined on the whole real axis. And the hexation? It breaks off again —
       somewhere between $-4$ and $-3$. The reason can be said in one sentence: A level breaks off if and only if the level below is bounded below.
 - id: kn.satz.hooshmand
-  quelle_hash: 604933301c96
+  quelle_hash: 6acfc083f57c
   theorie_hash: 10d3a91860c8
   herkunft:
     modell: sonnet
@@ -2868,6 +3062,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Hooshmand 2006; wording after Wikipedia (en). Core: the conditions force f to be a straight line on [−1, 0].'
@@ -2891,6 +3086,12 @@
       **Second theorem** (base $e$): If $f(x)=e^{f(x-1)}$, $f(0)=1$, $f$ is convex on $(-1,0)$ and $f'(0^-)\le f'(0^+)$, then $f$ is the linear tetration.
       Consequence: The linear tetration is the only solution that is convex on $(-1,\infty)$; every other sufficiently smooth solution has an **inflection point in $(-1,0)$**.
     bereich: base $0<a\ne1$, $f$ continuous on $(-2,\infty)$; second theorem for $a=e$
+    versionen:
+    - aenderung: Wording of the two theorems from Wikipedia entered (previously “unchecked”); inflection-point consequence added.
+    quellen:
+    - {}
+    - stelle: Section “Linear approximation for real heights”
+    - stelle: Thread “Hooshmand's extension of tetration”
   en_theorie:
     beispiel: |
       Kneser's tetration for base $e$ is smooth and not linear, so it must have an inflection point in $(-1,0)$ — it lies at $-0.5218$ ([[gr.beob.wendepunkte]]).
@@ -3006,7 +3207,7 @@
       Kneser's trick for the tetration: build a superfunction at a complex fixed point and then bend it so that it becomes real on the real axis. For the pentation
       to base 2 there is a complex fixed point near the real axis — but it **attracts**. And at an attracting fixed point the trick never works.
 - id: kn.satz.kneser_e_zertifiziert
-  quelle_hash: ffde02cbeebf
+  quelle_hash: 69570b2eac73
   theorie_hash: e59e9cdb51c8
   herkunft:
     modell: sonnet
@@ -3016,6 +3217,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -3023,6 +3225,9 @@
         2. Defects of band and seam enclosed with Taylor models and the maximum principle ($\le6.5\cdot10^{-173}$); from them a smooth function $F_0$ that satisfies the functional equation exactly.
         3. A quasiconformal smoothing (Beltrami coefficient $\le1.3\cdot10^{-171}$; Ahlfors–Bers, Stoilow) leads to an exact solution; identification with Kneser via Paulsen–Cowgill.
         4. Coefficients from 4096 Krawczyk evaluations and DFT with an aliasing bound; the remainder bound by six-fold integration by parts on $|z|=\rho$ with enclosed $\partial_\theta^6f_K$.
+      luecken:
+      - Three formal gaps with no effect on the numbers (error budget in check B, a Lipschitz bound, branch fidelity of the DFT nodes), named
+        in phase3/v_pruefstand/BERICHT §1.1.
     pruefung:
       f2_benutzte_voraussetzungen: Ahlfors–Bers, Stoilow, an L⁴ bound for the Beurling transform, Paulsen–Cowgill (uniqueness).
       f5_neue_frage: Enclosures for other bases and for fractional iterates in general.
@@ -3045,6 +3250,9 @@
       coefficients $a_k$ about 0, $\rho=|L|$
     einfach: Kneser's solution to base e is no longer merely “computed very accurately”, but known with a guaranteed error bound — to 168 digits.
       For the half-exponential function the first 641 coefficients are available with a guarantee, together with a proved bound for all the others.
+    quellen:
+    - stelle: ARCHITEKTUR.md §9.8–§9.9 (Theorem P-V, p26–p32a); phase3/v_pruefstand/BERICHT §1.1, §2.2 (K2)
+    - {}
   en_theorie:
     beispiel: |
       From the 641 coefficients: $\sum a_k=f_K(1)=T_e(\tfrac12)=1.646354233751194580971924031\ldots$ The largest of the quantities $|a_k|\rho^kk^6$ for $k\le640$ is $55.5$ (at $k=9$),
@@ -3062,7 +3270,7 @@
     worum: |
       Until now Kneser's tetration was known only as “computed very accurately”. For a proof one needs more: values with a guaranteed error bound.
 - id: kn.satz.kneser_eigenschaften
-  quelle_hash: e10caed94430
+  quelle_hash: 311176b4f18f
   theorie_hash: 28ea59034b39
   herkunft:
     modell: sonnet
@@ -3072,6 +3280,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Kouznetsov 2009, Paulsen–Cowgill 2017.
@@ -3091,6 +3300,10 @@
       $T_b^{\mathrm K}$ is holomorphic on $\mathbb C\setminus(-\infty,-2]$, satisfies $T(\bar z)=\overline{T(z)}$ and
       $T(x+iy)\to L$ as $y\to+\infty$, $\to\bar L$ as $y\to-\infty$ (for every fixed $x>-2$).
     bereich: $b>\eta$
+    quellen:
+    - {}
+    - stelle: 'zbMATH review: analytic except for singularities at the integers < −1 and a branch cut left of −2; F(iy) → L along the imaginary
+        axis'
   en_theorie:
     beispiel: |
       Base $e$, height $\tfrac12+iy$: the distance $|T_e(\tfrac12+iy)-L|$ is $1.30$, $0.79$, $0.23$, $0.016$ for $y=\tfrac12,1,2,4$. It shrinks like $e^{-y\arg\lambda}$
@@ -3111,7 +3324,7 @@
       Kneser's tetration does not live only on the real axis. If one allows complex heights, it is holomorphic almost everywhere, mirror-symmetric,
       and runs into the fixed point $L$ upward, into $\bar L$ downward.
 - id: kn.satz.linear_glatt
-  quelle_hash: 04e2a9ba5efa
+  quelle_hash: 36345b80f757
   theorie_hash: 310fb5258cec
   herkunft:
     modell: sonnet
@@ -3121,6 +3334,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: On $(0,1]$, $T(x)=b^{x}$, hence $T'(0^+)=\ln b$, $T''(0^+)=\ln^2 b$.
@@ -3141,6 +3355,9 @@
     aussage: |
       $T'(0^-)=1$, $T'(0^+)=\ln b$: $C^1$ exactly for $b=e$. For $b=e$, $T''(0^-)=0\ne1=T''(0^+)$, hence never $C^2$.
     bereich: linear tetration, $b>1$
+    quellen:
+    - {}
+    - stelle: Section “Linear approximation for real heights”
   en_theorie:
     beispiel: |
       Base $2$: slope $1$ on the left, $0.693$ on the right — a visible kink. Base $e$: smooth at first glance, only the curvature jumps from $0$ to $1$.
@@ -3155,7 +3372,7 @@
     worum: |
       The kinks of the linear tetration can be removed only for base $e$, and even there only in the first derivative. The second always jumps.
 - id: kn.satz.paulsen_cowgill
-  quelle_hash: d0cdf40844c8
+  quelle_hash: f36c8ec7c7d2
   theorie_hash: be2856b8f060
   herkunft:
     modell: sonnet
@@ -3165,6 +3382,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Paulsen–Cowgill 2017, Prop. 2. Mechanism: $F_2=F_1\circ(\mathrm{id}+\theta)$, θ periodic, and the limits force θ to be bounded in
@@ -3182,9 +3400,16 @@
     - text: F_1, F_2 holomorphic on Re z > −2
     - text: F_j(z+1) = b^{F_j(z)} and F_j(0) = 1
     - text: 'for every x > −2: F_j(x+iy) → L as y → +∞ and → L̄ as y → −∞'
+      notiz: both vertical limits are a hypothesis; conjugation symmetry does not replace the lower one
     titel: Uniqueness (Paulsen–Cowgill, Prop. 2)
     aussage: Then $F_1=F_2$ on $H_{-2}$. Kneser's solution satisfies the conditions, hence is the only such one.
     bereich: $b>\eta$, $H_{-2}=\{\operatorname{Re}z>-2\}$
+    quellen:
+    - stelle: 'Prop. 2; Abstract (repository arch.astate.edu): natural conditions force Kneser''s solution, “answers a conjecture of Trappmann
+        and Kouznetsov” (cf. kn.verm.tk_c2)'
+    - stelle: Thm. 11.11 (restatement)
+    - stelle: 'Nixon, post 21 (23.08.2021): restated as holomorphic on ℂ minus (−∞, −2], F(0) = 1, real-symmetric, F(x+iy) → L for y → +∞ — a
+        different version from Paper VI (half-plane, both limits)'
   en_theorie:
     beispiel: |
       Without the vertical conditions there are many solutions. For base $\sqrt2$, [[exp.nichteindeutigkeit]] shows, besides the regular one ($T(\tfrac12)=1.24362$),
@@ -3206,7 +3431,7 @@
       Why does one speak of “the” Kneser tetration? Because it is the only holomorphic solution that settles down in the vertical direction:
       upward at $L$, downward at $\bar L$. Every other solution oscillates ever more strongly in one of the two directions.
 - id: kn.satz.paulsen_komplex
-  quelle_hash: fe9ee62bf5e1
+  quelle_hash: 3b3800b4bb39
   theorie_hash: 0944acfc5d50
   herkunft:
     modell: sonnet
@@ -3216,6 +3441,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Paulsen 2019.
@@ -3236,6 +3462,8 @@
       outside the Shell–Thron region (abstract). **Not substantiated:** that the solution depends holomorphically on $b$ — the abstract does not mention it, the full text was
       not accessible (check of 12.10.2026). Paper V uses holomorphy in $b$ as (K3) for the identification $V=\partial_\beta A_b$; this support is therefore open.
     bereich: complex bases outside an exceptional region
+    quellen:
+    - stelle: 'Abstract (publisher page, via search hit): uniqueness conditions for complex bases, iteration methods inside and outside Shell–Thron'
   en_theorie:
     beispiel: |
       The derivative with respect to the base, $\partial_bT_b(x)$, is thereby defined; in the base change it is called the “response” and is computed in chapter 7.
@@ -3252,7 +3480,7 @@
       Kneser's construction does not need a real base. Paulsen has shown that it also works for complex bases — and that the solution depends
       smoothly (even holomorphically) on the base. This allows differentiating with respect to the base.
 - id: kn.satz.polynom_approximation_ecke
-  quelle_hash: ffbd34de8461
+  quelle_hash: d57d03e2f1fc
   theorie_hash: e0973b5cab11
   herkunft:
     modell: sonnet
@@ -3262,11 +3490,14 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
         Theorem 2 of Andrievskii–Pritsker–Varga (approximation on quasidisks, $|f-p_n|\le c\,\rho_{1/n}^{r}\,\omega(\rho_{1/n})$) with $r=5$; $f_K\in C^{5,0.417}(E)$ from the structure at $L$
         (exponent $5.447$, loss $0.030$ due to the sheet rotation); at the spiral corner $\rho_{1/N}(L)\asymp N^{-\alpha_E}$.
+      luecken:
+      - That E is a quasidisk (Jordan domain, three-point condition, opening) is checked only numerically on a grid (cubic and f_K).
     pruefung:
       f2_benutzte_voraussetzungen: Andrievskii–Pritsker–Varga Theorem 2; structure of f_K at L.
       f5_neue_frage: Rigorous proof of the quasidisk geometry.
@@ -3284,6 +3515,9 @@
       $\mathcal P_N$ polynomials of degree $\le N$
     einfach: 'Kneser''s half-exponential function can be approximated very well by polynomials on the domain that the proof needs: the error falls
       like N to the power minus four.'
+    quellen:
+    - stelle: Thm. 2
+    - stelle: phase3/k_kern/BERICHT §35–§36; phase3/v_pruefstand/BERICHT §3.19, §3.23
   en_theorie:
     beispiel: |
       Prediction for three corner openings $3.36$, $3.96$, $5.02$; measured on a test function $3.37$, $3.97$, $5.02$; on $f_K$ itself $3.9$–$4.1$.
@@ -3298,7 +3532,7 @@
     worum: |
       One part of the proof asks only: How well can a polynomial of degree $N$ approximate Kneser's half-exponential function on the relevant domain?
 - id: kn.satz.polynom_cd_identitaet
-  quelle_hash: 8e4655ece048
+  quelle_hash: 8de541d33e21
   theorie_hash: 1970ebb28953
   herkunft:
     modell: sonnet
@@ -3308,6 +3542,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -3332,6 +3567,8 @@
       $q_{n+1}$ primal head, $\lambda_n$ adjoint head, $\nu_n=J_n^{-1}\mathbf 1$
     einfach: 'For the inverse of the equation matrix there is an exact formula like the one for orthogonal polynomials: it consists of a single
       pair of building blocks, a smooth part and an additional term that comes from the composition p(p(x)).'
+    quellen:
+    - stelle: phase3/k_kern/BERICHT §39–§41; phase3/v_pruefstand/BERICHT §1.13
   en_theorie:
     beispiel: |
       Without composition ($f(s)=s$) $\Xi_n$ vanishes, and the known formula for Toeplitz inverses remains. With composition the formula is verified to $10^{-176}$; at the bridge
@@ -3347,7 +3584,7 @@
     worum: |
       For orthogonal polynomials there is the famous Christoffel–Darboux formula: The whole sum over all polynomials can be expressed by the last two. Is there something like that here?
 - id: kn.satz.polynom_eckprofil
-  quelle_hash: 01e1a235b9f0
+  quelle_hash: ef92f940b834
   theorie_hash: fb7fb7f0be87
   herkunft:
     modell: sonnet
@@ -3357,11 +3594,15 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
         Mellin transform makes the limit problem diagonal; the factor $1+\mu^{s-2}$ splits via the reflection formula into gamma functions (Malyuzhinets factor $\Gamma(\tfrac12+i\alpha(s-2))$);
         existence by inverse transformation, uniqueness via Liouville under the Mellin boundary condition; the integral representation by interchanging series and integral.
+      luecken:
+      - Lemma K12 (translation of the Mellin boundary condition into sector conditions) only sketched.
+      - That the true heads converge to the limit solution is measured, not proved; likewise the formula for C (fit to the outer solution).
     pruefung:
       f2_benutzte_voraussetzungen: Only the local form of f at L (L, μ = √L).
       f5_neue_frage: Matching to the global solution with error bounds (the open core).
@@ -3385,6 +3626,8 @@
       in which only the number L/(4π) occurs — a consequence of log L = L. The computations match these formulas to seven digits.'
     formen:
     - notiz: because log L = L, log μ = L/2
+    quellen:
+    - stelle: phase3/k_kern/BERICHT §18–§19, §24–§25, §27.3; phase3/v_pruefstand/BERICHT §1.9–1.10, §1.12, §3.17
   en_theorie:
     beispiel: |
       The corner profile measured at GPT is matched to $2.5\cdot10^{-7}$ with a single scale parameter $\lambda=-0.203297-1.406007i$; the constant of the corner product
@@ -3455,7 +3698,7 @@
       Before proving something for all degrees one should be sure the numbers are right. Here it is rigorously proved for every degree up to 120 that the polynomial root exists
       and stays below $2.2405$ on the disk up to $L$.
 - id: kn.satz.polynom_halbexp_hauptsatz
-  quelle_hash: f6d001e0140d
+  quelle_hash: 1fe64944dd3a
   theorie_hash: 54e05badf3bc
   herkunft:
     modell: sonnet
@@ -3465,6 +3708,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -3474,6 +3718,12 @@
         3. Nonlinear (Theorem H1): Every solution in $B_N$ satisfies $P-f=\lambda(\Pi^P_Nf-f)$ (secant identity) — a priori bound strictly in the interior; implicit functions + covering over
            $\lambda\in[0,1]$ with exactly one sheet (at $\lambda=0$ only $Q=0$) give existence and uniqueness, without an operator norm of $J_N^{-1}$.
         4. Branch (Theorem H2): σ-homotopy from $\mathrm{pad}(p_N)$ to $p_{N+1}$ stays in $B_{N+1}$; induction from $N_0$ on.
+      luecken:
+      - Assumption (H) is open (kn.verm.polynom_halbexp_eckmoden).
+      - 'Phase 3: (H) in the form up to L is presumably false for astronomically large N (kn.beob.polynom_rand_plateau); viable version: kn.satz.polynom_hauptsatz_kr0.'
+      - The individual proofs are in forschung/polynom_halbexp/ARCHITEKTUR.md §4 and the strand reports; the lead has not checked them line by
+        line.
+      - One check (f_K(e^z) ∉ (−∞,0] on the left arc) is only numerical.
     pruefung:
       f2_benutzte_voraussetzungen: (K), (H), (A); neither uniform stability nor the corridor condition nor the shape of slog(D).
       f5_neue_frage: Proof of (H) — or of the core of the version without neighborhoods of L (kn.verm.polynom_halbexp_kern).
@@ -3489,8 +3739,11 @@
       richtigkeit: conditional; proof architecture of five research strands, not independently rechecked; numerically supported up to N = 1500
     voraussetzungen:
     - text: Kneser's structure theorem (K) — slog = u + ϑ(u) with ϑ periodic, bounded for Im → +∞
+      notiz: kn.konstr.kneser
     - text: Assumption (H) about the corner modes
+      notiz: kn.verm.polynom_halbexp_eckmoden
     - text: 'Starting condition (A): the branch lies in the ball B_{N₀} at some N₀'
+      notiz: finite computation; checked up to N = 300, N ≤ 120 rigorously (Krawczyk)
     titel: 'Main theorem: from assumption (H) it follows that the polynomial roots converge to Kneser''s half-exponential function'
     aussage: |
       For all $N\ge N_0$ the truncated system has in the ball $B_N=\{p:\sup_{\bar D}|p-f_K|\le R_N\}$, $R_N=K_0C'N^{\kappa-4.69}$, **exactly one** solution $p^*_N$, and
@@ -3499,6 +3752,11 @@
     bereich: $p_N$ as in kn.verm.polynom_halbexp, $D=\{|z|<|L|\}$
     einfach: The research team has built the proof so far that only one single linear statement about the weak spot of the equations at L is missing.
       If it holds, then the polynomials converge to Kneser's half-exponential function for every degree — exactly as in Janis’ conjecture.
+    quellen:
+    - stelle: ARCHITEKTUR.md §0, §4
+    - stelle: '§4: no proof of convergence is known'
+    - {}
+    - {}
   en_theorie:
     beispiel: |
       What is no longer needed: uniform stability (false), corridor condition and shape of $\operatorname{slog}(D)$ (side route only), a quadratic control of its own.
@@ -3516,7 +3774,7 @@
     worum: |
       The status of the proof of Janis’ conjecture after the work of a research team of five strands: everything stands, except for one linear assumption.
 - id: kn.satz.polynom_halbexp_reduktion
-  quelle_hash: 2605289f22a3
+  quelle_hash: f7c6c5c082ea
   theorie_hash: cd97e228bc6e
   herkunft:
     modell: sonnet
@@ -3551,9 +3809,13 @@
       richtigkeit: complete under the conditions
     voraussetzungen:
     - text: 'Bound: |p_N(x)| ≤ B for all N and all x ∈ D'
+      notiz: kn.verm.polynom_halbexp_schranke
     - text: 'Corridor: for every compact subset K ⊂ V₀, |p_N| ≤ |L| on K for all large N'
+      notiz: kn.verm.polynom_halbexp_schranke
     - text: a₀^(N) = p_N(0) ≤ ρ₀ < |L| for all N
+      notiz: measured a₀ → 0.49856
     - text: Uniqueness via the corridor
+      notiz: kn.satz.halbexp_beschraenkt
     titel: If the polynomials stay bounded and, in the corridor, in the disk, then they converge to Kneser's half-exponential function
     aussage: |
       Under these hypotheses $p_N\to f_K$ locally uniformly on $D$; in particular $a_k^{(N)}\to a_k$ for every $k$ and $p_N(1)\to T_e(\tfrac12)$. The conjecture kn.verm.polynom_halbexp is thus
@@ -3575,7 +3837,7 @@
     worum: |
       What is still missing for the proof of Janis’ conjecture? According to this theorem only a bound for the polynomials — the uniqueness of the limit is proved.
 - id: kn.satz.polynom_hauptsatz_kr0
-  quelle_hash: ca600da4509f
+  quelle_hash: 12f45bef5d7b
   theorie_hash: 1a1ea43df9d1
   herkunft:
     modell: sonnet
@@ -3585,6 +3847,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -3592,6 +3855,9 @@
            (kn.satz.polynom_approximation_ecke) times a sum over the heads — no truncated poles, no rotation problem.
         2. **Heads:** via the rank-1 decomposition $\Delta K_n=\delta_n\Lambda_n/\ell_{nn}$ the head sum splits into the three statements of the core.
         3. **Nonlinear:** Theorems H1/H2 (secant identity, superposition, σ-homotopy) with balls in $\sup_{K_{r_0}}$; start at $N_0=400$ from kn.satz.polynom_zweig_400.
+      luecken:
+      - The three statements of the kernel (kn.verm.polynom_halbexp_kern).
+      - The rearrangement of H1/H2 to K_{r₀} and K19 have been proofread by strand V, not by the lead line by line.
     pruefung:
       f2_benutzte_voraussetzungen: Core, certified Kneser values, branch up to 400, approximation rate.
       f5_neue_frage: Proof of the core.
@@ -3609,6 +3875,8 @@
     bereich: $p_N$ as in kn.verm.polynom_halbexp; $K_{r_0}=\bar D\setminus U_{r_0}(L,\bar L)$ with $r_0>r_*$ (for Kneser $r_*\sim10^{-6}$)
     einfach: 'This is the state of the proof: Everything is proved or certified by computer, except for the few statements of the core. If they
       hold, then Janis’ conjecture is proved — in the version that covers everything it is about: coefficients and p_N(1).'
+    quellen:
+    - stelle: phase3/HAUPTSATZ_KR0.md (version 3)
   en_theorie:
     beispiel: |
       With the measured exponents the error falls like $N^{-3.96}$; at $N=400$ the starting condition demands only a distance $\lesssim10^{-4}$, and $1.75\cdot10^{-12}$ is available.
@@ -3625,7 +3893,7 @@
     worum: |
       The state of the proof after three working phases, in the version that covers everything the conjecture is about.
 - id: kn.satz.polynom_modelle
-  quelle_hash: b05a92d88666
+  quelle_hash: 490c3f1b8e04
   theorie_hash: 59682bfff6b8
   herkunft:
     modell: sonnet
@@ -3635,6 +3903,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -3667,6 +3936,8 @@
     bereich: 'Truncation method for $f\circ f=g$: polynomial $p$ of degree $N$ with $[x^k]p\circ p=[x^k]g$, $k\le N$'
     einfach: 'For simpler equations the method can be worked through completely. There one sees the mechanism in pure form: The truncation selects
       the “calmest” among all solutions — and it fails as soon as the desired solution is itself less calm than the competition.'
+    quellen:
+    - stelle: Strand E (e_modelle/BERICHT.md §3–5, Rounds 2–3)
   en_theorie:
     beispiel: |
       Translation model with $s=\tfrac12$: threshold $|\lambda|=2\pi$ for $h=e^{\lambda x}$; at $N=160$: error $4\cdot10^{-52}$ ($\lambda=3$), $0.038$ ($\lambda=6.2$), $6.1$ ($\lambda=6.4$).
@@ -3682,7 +3953,7 @@
     worum: |
       Can the truncation method be proved anywhere at all? Yes — for simpler equations, and there one sees the mechanism that also acts for $e^x$.
 - id: kn.satz.polynom_zweig_400
-  quelle_hash: e9837e106063
+  quelle_hash: 181157d6a7bc
   theorie_hash: f8bee0378927
   herkunft:
     modell: sonnet
@@ -3692,6 +3963,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -3714,6 +3986,8 @@
     bereich: $p_N$ as in kn.verm.polynom_halbexp
     einfach: Up to degree 400 it is proved by computer that the computed polynomials really are the right ones and hit Kneser's function to within
       12 digits.
+    quellen:
+    - stelle: x_alternativen/zert/, phase3/v_pruefstand/BERICHT §2.1
   en_theorie:
     beispiel: |
       207 transitions from 193 to 400, computed in parallel on a server (about 2.5 hours), all passed.
@@ -3728,7 +4002,7 @@
     worum: |
       A proof for “all degrees from $N_0$ on” needs a secured start: At $N_0$ the computed solution must really be the right one and lie close enough to Kneser.
 - id: kn.satz.singulaer_minus2
-  quelle_hash: 46183bf0bbf4
+  quelle_hash: a6a16b672fd9
   theorie_hash: 9a5649d00d28
   herkunft:
     modell: sonnet
@@ -3738,6 +4012,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $T(-1+\varepsilon)=T'(-1)\varepsilon+o(\varepsilon)$ and $b^{T(-2+\varepsilon)}=T(-1+\varepsilon)$; take logarithms.
@@ -3758,12 +4033,21 @@
     - text: T real solution with T(0)=1 on (−2,0]
     - text: T differentiable at −1 (only at the point)
     - text: T′(−1) ≠ 0
+      notiz: implies T′(−1) > 0, because T(−1+ε) = b^{T(−2+ε)} > 0
     - text: T differentiable in a neighborhood of −1 (Paper I)
     titel: Logarithmic singularity at −2
     aussage: |
       $$T(-2+\varepsilon)=\frac{\ln\varepsilon}{\ln b}+\frac{\ln T'(-1)}{\ln b}+o(1),\qquad \varepsilon\to0^+ .$$
     bereich: real solutions on $(-2,-1]$, $b>0$, $b\ne1$
     einfach: Just before −2, every smooth tetration looks like a logarithm and drops to minus infinity.
+    versionen:
+    - aenderung: 'Hypothesis: differentiable in a neighborhood of −1.'
+    - aenderung: Weakened to differentiability at the point; sign as a consequence.
+      grund: Check question 2
+    quellen:
+    - stelle: Prop. 7.1
+    - stelle: 'p. 4: f(−1) = 0 implies f(−2) = log_b 0, hence singularity or branching at −2 and the integers below it'
+    - stelle: Branch cut left of −2 (zbMATH review)
   en_theorie:
     beispiel: |
       Regular tetration to base $\sqrt2$: $T'(-1)=1.69974$, the constant is $\ln T'(-1)/\ln\sqrt2=1.53063$; the remainder at $\varepsilon=10^{-12}$ is only $-2\cdot10^{-12}$
@@ -3783,7 +4067,7 @@
       To the left of $-1$ every tetration quickly becomes very negative: Just before $-2$ it looks like a logarithm and falls to $-\infty$. This holds for
       every smooth solution — Kneser, regular, linear.
 - id: kn.satz.tk_kriterien
-  quelle_hash: 9bd556e7c3b3
+  quelle_hash: 6c3823c4f35a
   theorie_hash: 4c66507fee37
   herkunft:
     modell: sonnet
@@ -3793,6 +4077,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Trappmann–Kouznetsov 2011, Criteria 2 and 3 with proof (pp. 8–9), Lemma 3 (Jordan curves, pp. 7–8), Lemma 4 and Section 4 (p. 9 ff.).
@@ -3818,6 +4103,8 @@
       two fixed points of $F$), initial domain $H$; $\alpha$ holomorphic Abel function on $H$ with $\alpha(d)=0$
     einfach: 'For a “level function” (Abel function) to be unique, it suffices to look at a piece of the plane between the two complex fixed points:
       If its value there goes up and down beyond all bounds, there is only one. Kneser''s solution passes this test.'
+    quellen:
+    - stelle: arXiv:1006.3981, Criteria 2–3, Lemma 3–4, Section 4
   en_theorie:
     einordnung: |
       Second step in the history of uniqueness: numerical ([[kn.beob.kouznetsov_numerik]]), criterion (here), theorem ([[kn.satz.paulsen_cowgill]]).
@@ -3833,7 +4120,7 @@
       The uniqueness criterion of Trappmann and Kouznetsov requires that the translated images of a domain cover the whole plane. That is hard to check
       directly. Their Criteria 2 and 3 translate it into a simple condition: imaginary parts along a single curve.
 - id: kn.satz.trappmann_kouznetsov
-  quelle_hash: 1152d043fc07
+  quelle_hash: 3e68f041b663
   theorie_hash: ec2c2fd01773
   herkunft:
     modell: sonnet
@@ -3843,6 +4130,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Trappmann–Kouznetsov 2011, Theorems 1 and 2 with proof (pp. 5–6): q = α₂∘α₁⁻¹ satisfies q(z+1) = q(z)+1, extends to an entire function
@@ -3866,6 +4154,8 @@
       **Theorem 2:** On a connected $D\ni d$ there is at most one holomorphic Abel function with $\alpha^{\prime}(d)\ne0$ that satisfies Criterion 1 on an initial domain $H\subset D$.
       Kneser's Abel function for $\exp_b$, $b>\eta$, satisfies the criterion (Section 4; simple sufficient conditions: kn.satz.tk_kriterien).
     bereich: functions with a pair of non-real fixed points, in particular $\exp_b$, $b>\eta$
+    quellen:
+    - stelle: arXiv:1006.3981, Definition 3, Thm. 1, Criterion 1, Thm. 2 (pp. 5–6)
   en_theorie:
     einordnung: |
       Whether the two criteria are equivalent is open. Comparison: [[kn.satz.paulsen_cowgill]].
@@ -3878,7 +4168,7 @@
     worum: |
       A second, independent uniqueness statement — this time for the Abel function (the super-logarithm) instead of the tetration itself.
 - id: kn.satz.walker_konjugation
-  quelle_hash: c3c92b95b154
+  quelle_hash: caa472d4ea3b
   theorie_hash: 04ac60f6f8d9
   herkunft:
     modell: sonnet
@@ -3888,6 +4178,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: Walker 1991, Math. Comp. 57, 723–733 (according to the zbMATH review by J. Matkowski).
@@ -3909,6 +4200,10 @@
     bereich: real axis
     einfach: eˣ − 1 has a fixed point at 0, eˣ does not. Walker builds a smooth conversion between the two. With it he can transfer the known
       half-iterates of eˣ − 1 to eˣ.
+    quellen:
+    - stelle: zbMATH review (Zbl 0742.39005)
+    - stelle: Prior work (Abel functions of entire functions)
+    - stelle: Prior work
   en_theorie:
     einordnung: |
       Core of [[kn.konstr.walker]]; the same limit type as the base change ([[bw.def.F_bd]]); analyticity open ([[bw.verm.nirgends_analytisch]]).
@@ -3921,7 +4216,7 @@
     worum: |
       $e^x-1$ has a fixed point at 0 and can be iterated well there; $e^x$ has no real one. Walker connects the two by a smooth function $h$.
 - id: kn.verm.beschraenkt_unter_2
-  quelle_hash: 561d4e01f86b
+  quelle_hash: 710af4f8b1fe
   theorie_hash: a8d97b989f71
   herkunft:
     modell: sonnet
@@ -3931,6 +4226,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: '(i): n = 3 classical (fp.satz.turm_reell), n = 4 measured (kn.beob.tetra_euler, characterization 3), n = 5 measured (kn.beob.unendliche_hexation);
       (ii): ηₙ increases for n = 3 … 6 (exp.tpid10_abstaende), Levenstein''s η₇ ≈ 1.839 fits; at b = 1.84 > η₇ the octation is, according to Levenstein,
@@ -3956,6 +4252,10 @@
     bereich: Hyperoperations $H_n(b,\cdot)$ as in kn.verm.tpid10, real $1<b<2$
     einfach: A level is “tame” if its infinite tower has a value. For bases just below 2 the lower levels are still wild, but — so the conjecture
       — from a certain level on all become tame, because the limit bases ηₙ move ever closer to 2.
+    quellen:
+    - stelle: Nixon, posts 6 and 8 (pid 8760, 8762, 03./04.09.2017); Levenstein, post 5
+    - stelle: 'Nixon, 09.07.2011: infinite operator'
+    - stelle: bounded analytic hyperoperations of all levels for 1 < α < η (Abstract)
   en_theorie:
     einordnung: |
       Heuristic by Nixon (forum 2011/2017) on [[kn.verm.tpid10]]; special cases: [[fp.satz.turm_reell]] ($n=3$), [[kn.beob.tetra_euler]] ($n=4$), [[kn.beob.unendliche_hexation]] ($n=5$).
@@ -3970,7 +4270,7 @@
       What does “$\eta_n\to2$” mean for a single base, say 1.9? Nixon's answer: from a certain level on, all hyperoperations to base 1.9 are tame —
       their infinite towers have a value. To base 2, however, never.
 - id: kn.verm.carleman_eigenwerte
-  quelle_hash: 5d4ecd5ce157
+  quelle_hash: 5ef4a03e8ca6
   theorie_hash: 2d7ca9f8630f
   herkunft:
     modell: sonnet
@@ -3980,6 +4280,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.vermutungen: two bases, N = 8 … 32, four eigenvalues.'
     naechste_frage: Proof; rate as a function of λ (the measurement suggests geometric convergence in N).
@@ -4001,6 +4302,8 @@
     bereich: $1<b<\eta$; $B_N$ = $N\times N$ section of the Carleman matrix of $b^x$ (about 0), $(B_N)_{jk}=(j\ln b)^k/k!$; $a$ lower fixed point
     einfach: A table of the power series of b^x, b^{2x}, b^{3x}, … has — truncated — eigenvalues. The larger the table, the more accurately they
       hit the powers of the slope at the fixed point. This connects the matrix methods with regular iteration.
+    quellen:
+    - stelle: TPID 1 (bo198214, 17.05.2008)
   en_theorie:
     beispiel: |
       Largest distance of the first four eigenvalues from $1,\lambda,\lambda^2,\lambda^3$:
@@ -4026,7 +4329,7 @@
       If one truncates the table, the matrix has eigenvalues. H. Trappmann conjectured in 2008 that for $b^x$ these tend to the powers of the slope at the fixed point —
       exactly the numbers from which regular iteration is built.
 - id: kn.verm.carleman_kneser
-  quelle_hash: a496fd20150d
+  quelle_hash: 8a5f868b749c
   theorie_hash: 47e20419d1b4
   herkunft:
     modell: sonnet
@@ -4036,6 +4339,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: |
       exp.carleman: systems $n=4\dots128$ (up to 720 digits), comparison at 5 points with Kneser reference values (gp-tetration, 80 digits).
@@ -4054,6 +4358,12 @@
     titel: Intuitive slog converges to Kneser's slog
     aussage: $\operatorname{slog}_n(x)\to\operatorname{slog}^{\mathrm K}_e(x)$ for $n\to\infty$.
     bereich: $b=e$, $|x|<|L_e|\approx1.3746$
+    quellen:
+    - stelle: 'Helms: 5–10+ digits; Walker poses the question'
+    - {}
+    - stelle: 'TPID 18 (Helms 2022): the same question for the sexp side'
+    - stelle: 'Trappmann 2009, “Grand Unity Conjecture”: matrix-power tetration (Helms) = intuitive tetration = regular below η, = Cauchy/Kneser
+        above η'
   en_theorie:
     beispiel: |
       Systems $n=4\dots128$ computed with up to 720 digits, compared at five points: the error decreases without standstill from $1.7\cdot10^{-5}$ to $9.2\cdot10^{-9}$.
@@ -4070,7 +4380,7 @@
     worum: |
       The intuitive super-logarithm gets better and better with growing $n$ — but toward which limit? The conjecture: exactly toward Kneser's super-logarithm.
 - id: kn.verm.hexation_streifen
-  quelle_hash: 44f3e8133bf0
+  quelle_hash: 4b721ccfc362
   theorie_hash: 5d58d364037a
   herkunft:
     modell: sonnet
@@ -4080,6 +4390,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'Searched for other translation-invariant real curves of F_q: map from above (Re ζ ∈ [−2.6, 1.4], Im ζ ∈ [−2.6, 1.6])
       and from the left (Im ζ ∈ [−4.6, −1.8]) — only C and C ± Π. Log points in the band between C and C + Π with Re Z ∈ [−2, 7] (F_q(Z − 1) =
@@ -4116,6 +4427,9 @@
     einfach: 'For tetration, “smooth on an entire half-plane” determines the solution. For the hexation this does not work, but presumably a strip
       of width 1 suffices: there the Kneser-type hexation is smooth and takes no value twice — and presumably it is the only solution with this
       property.'
+    quellen:
+    - {}
+    - stelle: 'Model: Abel function injective on a fundamental domain'
   en_theorie:
     beispiel: |
       Boundary images for $S=[-1.8,-0.8]$: $H(-1.8)=-0.803$, $H(-0.8)=0.207$; both curves run to $q=-1.993+1.445\,i$, the right one in a wide arc up to
@@ -4147,7 +4461,7 @@
       If “holomorphic in a half-plane” does not work for the hexation ([[kn.satz.hexation_keine_halbebene]]) — what then determines the Kneser-type hexation? Presumably a
       strip: On a vertical strip of width 1 it is smooth and takes no value twice, and only it manages that.
 - id: kn.verm.polynom_halbexp
-  quelle_hash: e52bb376b2d6
+  quelle_hash: ea87e6949e3f
   theorie_hash: 9a001ff87195
   herkunft:
     modell: sonnet
@@ -4157,6 +4471,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'Branch followed up to N = 194 with 210 digits (arb): no jump, no stalling of the distance; coefficients k = 0, 1, 5,
       10, 20 checked individually, boundary value p_N(L) in addition. The sign change at N ≈ 51 is a transition between two decay rates, not a
@@ -4197,6 +4512,10 @@
     formen:
     - notiz: the system of equations
     - notiz: 'equivalent: at the point a₀, p_N agrees with exp ∘ p_N⁻¹'
+    quellen:
+    - {}
+    - stelle: Recomputation up to N = 194, coefficients, boundary value
+    - stelle: Matrix root (Helms), related
   en_theorie:
     beispiel: |
       Degree 3: $p_3(x)=0.498574+0.876383x+0.247391x^2+0.024117x^3$, $p_3(1)=1.646465$ — already correct to four digits. Kneser: $f_K(x)=0.4985633+0.8763361x+0.2475522x^2+0.0245718x^3+\dots$
@@ -4229,7 +4548,7 @@
       Can one compute Kneser's half-exponential function without putting in tetration, super-logarithm or complex analysis — only from the equation $f(f(x))=e^x$ itself?
       Janis’ attempt: a polynomial of degree $N$ whose self-composition hits the first $N+1$ terms of $e^x$. The numbers hit Kneser astonishingly exactly.
 - id: kn.verm.polynom_halbexp_eckmoden
-  quelle_hash: a89664719460
+  quelle_hash: b3f6eafb34a9
   theorie_hash: dccd84bda23a
   herkunft:
     modell: sonnet
@@ -4239,6 +4558,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'Stronger versions are numerically FALSE and therefore not assumed: uniform stability sup|J_N⁻¹| < ∞ (corner mode) and
       the global polynomial pole bound (H*) (from N ≈ 420–650 on). The local version (H) holds in all measurements up to N = 1200 with reserve.
@@ -4269,6 +4589,8 @@
       $k_\zeta=1/(\zeta-z)$; $g$ Green''s function of $\mathbb C\setminus\bar W$'
     einfach: 'Everything else in the proof stands. Only a statement about a single spot is open: How strongly is the exponentially growing weak
       spot of the equations at L excited by a “kick” very near L? The computations say: much more weakly than necessary. A proof is missing.'
+    quellen:
+    - stelle: ARCHITEKTUR.md §5; strand D §10–11, strand C §13
   en_theorie:
     beispiel: |
       Mean $\int\lambda\,d\nu=0.086$ (limit 1) up to $N=1200$; remainder contraction $1.0001$–$1.0002$ up to $N=400$.
@@ -4285,7 +4607,7 @@
     worum: |
       The only place where the proof still depends on an assumption: How strongly is the weak spot at $L$ excited by a “kick” (a pole) very near $L$?
 - id: kn.verm.polynom_halbexp_kern
-  quelle_hash: 06ea19946329
+  quelle_hash: c0fc1dec75c5
   theorie_hash: fc44b6917aef
   herkunft:
     modell: sonnet
@@ -4295,6 +4617,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'Stronger versions are measured to be false: family representative without weight on a thick lens (grows like e^{0.0137N}),
       primal reserve at the n-th-root level (H_P ≡ 0, Lemma K20), uniform convergence up to L (kn.beob.polynom_rand_plateau). The named versions
@@ -4320,6 +4643,8 @@
     bereich: $K_{r_0}=\bar D\setminus U_{r_0}(L,\bar L)$; $u_n=\Pi_ns$ the response to the pole at $L$; heads as in kn.satz.polynom_eckprofil
     einfach: After three working phases the problem has shrunk to a few, precisely named statements. All of them are clearly satisfied in the
       computations. Proving them requires a tool that shows how two exactly canceling quantities oscillate together — such a tool is so far missing.
+    quellen:
+    - stelle: phase3/HAUPTSATZ_KR0.md §2, phase3/KERNPROBLEM.md, phase3/OFFENES_PROBLEM_2.md
   en_theorie:
     beispiel: |
       Measured up to $N=2000$: increments of the corner-pole response fall like $n^{-3.1}$; far adjoint rates $-0.013$ and $-0.037$ per degree, respectively; weighted family distance $3\cdot10^{-16}$.
@@ -4386,7 +4711,7 @@
     worum: |
       The last missing piece for a proof: Do the polynomials $p_N$ stay bounded up to the boundary $|x|=|L|$, and do they stay in the disk in the corridor, no matter how large $N$ becomes?
 - id: kn.verm.szekeres_wachstum
-  quelle_hash: 3c7540469396
+  quelle_hash: 3d9dca934d7a
   theorie_hash: ca021033ef5f
   herkunft:
     modell: sonnet
@@ -4396,6 +4721,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'According to the review: numerical examples in the article; no check of our own.'
     pruefung:
@@ -4415,6 +4741,9 @@
     bereich: $F$ analytic on $[0,\infty)$, $F(0)=0$, $F^{\prime}(0)=c\ge1$, $F^{\prime}>0$ (e.g. $e^x-1$)
     einfach: Among the many possible “half-iterates”, Szekeres looks for the most natural one — the one whose growth is the most uniform. His
       criterion is a conjecture that he supports with computations.
+    quellen:
+    - stelle: zbMATH review (Zbl 0918.39006)
+    - stelle: Prior work
   en_theorie:
     einordnung: |
       Selection principle alongside Kneser (holomorphy, [[kn.konstr.kneser]]), Walker (smoothness, [[kn.satz.walker_konjugation]]) and Paulsen (metric, [[kn.konstr.paulsen_stoerung]]).
@@ -4427,7 +4756,7 @@
     worum: |
       Which half-iterate of $e^x-1$ is “the right one”? Szekeres proposes: the one with the most regular growth, and tries to make that measurable.
 - id: kn.verm.tk_c2
-  quelle_hash: 34543dcb2e20
+  quelle_hash: 7c1b50ca58f5
   theorie_hash: 7484d18e848f
   herkunft:
     modell: sonnet
@@ -4437,6 +4766,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: Not computed by ourselves. Obvious candidates F(z + θ(z)) with entire, real, 1-periodic θ produce values on the cut and
       thereby singularities — no simple counterexample known; the β-method (Nixon 2021) would be a candidate with different behavior at i∞, its
@@ -4461,6 +4791,10 @@
     einfach: 'Trappmann and Kouznetsov conjectured in 2010: If a tetration is smooth everywhere in the complex plane (except on the ray to the
       left of −2) and real on the real axis, then it is Kneser''s. Whether one must additionally require where it tends to upward is the real
       question.'
+    quellen:
+    - stelle: p. 4, after Eq. (6)
+    - stelle: Abstract (repository arch.astate.edu)
+    - stelle: 'Nixon, post 21 (23.08.2021): conditions of Paulsen–Cowgill and questions A/B'
   en_theorie:
     einordnung: |
       Paulsen–Cowgill prove uniqueness with an additional limit at $i\infty$ ([[kn.satz.paulsen_cowgill]]); Nixon's β-method asks for solutions without it ([[kn.frage.beta_methode]]).
@@ -4473,7 +4807,7 @@
       Which conditions are really needed for “the” tetration to be unique? Trappmann and Kouznetsov conjectured in 2010: smoothness in the whole plane
       (except for a cut) and mirror symmetry suffice.
 - id: kn.verm.tpid10
-  quelle_hash: 09ee24e34733
+  quelle_hash: bee2d26920f7
   theorie_hash: 9303015199eb
   herkunft:
     modell: sonnet
@@ -4483,6 +4817,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.stufe5, exp.hexation_kneser: four terms; distances to 4: 1.282, 0.911, 0.699, 0.558; to 2: 0.555, 0.365, 0.263, 0.201
       — the ratios increase (not geometric), nearly straight on a double-logarithmic scale.'
@@ -4515,6 +4850,12 @@
     bereich: sequences $e_n$ (point of tangency) and $\eta_n$ (tangency base) of the $n$-th hyperoperation, $n\ge3$
     einfach: The numbers e ≈ 2.718 and η ≈ 1.445 have “bigger siblings” on every higher level of operation. The conjecture is that these siblings
       come closer and closer to the numbers 4 and 2 — because 2 + 2, 2 · 2, 2², 2↑↑2, … all give 4.
+    quellen:
+    - stelle: TPID 10 (dantheman163, 31.10.2010, post 11, refers to tid 262 pid 5327)
+    - stelle: Values for η₄, e₄ (Levenstein, 31.10.2010)
+    - stelle: 'Levenstein 2017: η₅ ≈ 1.738, η₆ ≈ 1.799, η₇ ≈ 1.839; Nixon 2017: limits 2 and 4 as a boundedness statement'
+    - stelle: 'Nixon 2011: infinite operator'
+    - {}
   en_theorie:
     beispiel: |
       The point $(2,4)$: $2+2=4$, $2\cdot2=4$, $2^2=4$, ${}^22=2^2=4$, $2\uparrow\uparrow\uparrow2={}^22=4$ — at every level.
@@ -4544,7 +4885,7 @@
       $e$ and $\eta$ have on every higher level of operation a “sibling pair”: $(e_4,\eta_4)$ for tetration, $(e_5,\eta_5)$ for pentation, and so on.
       In 2010 a forum member (dantheman163) conjectured that these sequences tend to 4 and 2. The reason is pretty: $2+2=2\cdot2=2^2=2\uparrow\uparrow2=\dots=4$.
 - id: kn.verm.tpid11
-  quelle_hash: 40c815713e16
+  quelle_hash: 139f0e17f66c
   theorie_hash: bb34a7757531
   herkunft:
     modell: sonnet
@@ -4554,6 +4895,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.tpid10_abstaende: (1) for n = 4, 5, 6 with 30-digit values; r_n and the quotients from (2) computed; no counterexample.'
     naechste_frage: A fifth term (η₇, e₇) would show whether r_n keeps falling; Levenstein's rough figures (η₇ ≈ 1.839, near-touching near 3.7)
@@ -4578,6 +4920,8 @@
     bereich: Sequences $\eta_n$, $e_n$ as in kn.verm.tpid10, $n\ge4$
     einfach: 'An additional conjecture to TPID 10: If one squares the “eta” of a level, one stays just below the “Euler” number of the level before.
       For the four known levels this holds, in each case by about 2 %.'
+    quellen:
+    - stelle: TPID 11 (tommy1729, 01.12.2010), post 13
   en_theorie:
     beispiel: |
       $\eta_5^2=3.01836$, $e_4=3.08853$: difference $-0.070$, i.e. about 2 % below $e_4$.
@@ -4594,7 +4938,7 @@
     worum: |
       tommy1729 added to TPID 10 an inequality that couples the two sequences: The square of an “eta” stays below the “Euler” number of the level before.
 - id: kn.verm.tpid3
-  quelle_hash: 2007c8843e63
+  quelle_hash: b04042b74e4a
   theorie_hash: 7f09f08d804c
   herkunft:
     modell: sonnet
@@ -4604,6 +4948,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.tpid3: five cases, N = 8 … 32 (mpmath, 60 digits); two cases confirm, three contradict up to N = 32.'
     pruefung:
@@ -4628,6 +4973,9 @@
       point $-s$ (for $p\notin\mathbb N$)
     einfach: 'A conjecture about tables that describe a function and its powers: their eigenvalues are supposed to hit the powers of the slope
       at the fixed point. That works — but only if the fixed point is close enough to the expansion point.'
+    quellen:
+    - stelle: TPID 3 (bo198214, 29.06.2008, post 4)
+    - stelle: 'Trappmann 2008: Carleman eigenvalues at two fixed points (x² + x − 1/16)'
   en_theorie:
     beispiel: |
       $s=3/4$, $p=2/3$: distance $6\cdot10^{-11}$ at $N=32$. $s=3/10$, $p=1/2$: distance fluctuates between $0.14$ and $0.92$.
@@ -4642,7 +4990,7 @@
       Truncated Carleman matrices are a computation route to fractional iterates without choosing a fixed point. TPID 3 asks whether their eigenvalues nevertheless hit the right
       fixed-point data, here for the simple function $(x+s)^p-s$.
 - id: kn.verm.tpid3_bedingung
-  quelle_hash: b0acd5bacede
+  quelle_hash: 9a5c43bbca69
   theorie_hash: 274f49fa9a96
   herkunft:
     modell: sonnet
@@ -4652,6 +5000,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.tpid3: s = 3/4 (inside) converges for p = 2/3 and 3/2; s = 1/2 (boundary) and s = 3/10 (outside) with p = 1/2 no
       approach up to N = 32; p = 2, s = 3/10: spectrum of the nearer fixed point. Not checked: s just above 1/2, larger N.'
@@ -4675,6 +5024,9 @@
     bereich: as kn.verm.tpid3
     einfach: The table is built about the point 0 and “sees” only as far as its series converges. If the fixed point lies farther away, its eigenvalues
       do not hit its slope.
+    quellen:
+    - stelle: exp.tpid3
+    - {}
   en_theorie:
     einordnung: |
       Sharpens [[kn.verm.tpid3]]; to be expected also for TPID 14 ([[kn.frage.tpid14]]).

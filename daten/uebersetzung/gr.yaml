@@ -86,7 +86,7 @@
     worum: |
       The areas of this strand, computed to many digits for two important cases — and all formulas checked against one another in the process.
 - id: gr.beob.kneser_ableitung
-  quelle_hash: 660b9dafb50e
+  quelle_hash: c313af366919
   theorie_hash: 435d2c7cd4b8
   herkunft:
     modell: sonnet
@@ -95,6 +95,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     pruefung:
       f5_neue_frage: Are all Taylor coefficients positive? (The first nine are.)
@@ -110,6 +111,8 @@
       $T_e(x)=1+1.0917673512583\,x+0.2714832129017\,x^2+0.2124532481763\,x^3+0.0695403761400\,x^4+0.0442919520905\,x^5+\dots$ And $\operatorname{slog}_e''(0)=1/T_e''(0)=0.91594605649953339395\ldots$
       — the same number as the orbit value $-V_1=e/T_e''(1)$ in Paper V.'
     einfach: This is how steep the usual (Kneser) tetration to base e is at the point 0, and this is how its power series begins.
+    quellen:
+    - stelle: fatou.gp fork, 40 digits, Cauchy integrals
   en_theorie:
     beispiel: |
       With only five terms: $T_e(0.5)\approx1+0.54588+0.06787+0.02656+0.00435+0.00138=1.64604$; the exact value is $1.6463542$.
@@ -220,7 +223,7 @@
       Where does the curve switch from “bent downward” to “bent upward”? As measured, every Kneser curve has exactly one such
       inflection point, and the regular curves below $\eta$ have none.
 - id: gr.def.turm
-  quelle_hash: eb962d31afba
+  quelle_hash: f10403478908
   theorie_hash: 5d02e73929f6
   herkunft:
     modell: sonnet
@@ -228,6 +231,7 @@
   geprueft:
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     titel: The tower a↑↑n
     aussage: 'For integer $n\ge1$: $a\uparrow\uparrow 1=a$ and $a\uparrow\uparrow(n+1)=a^{\,a\uparrow\uparrow n}$, that is, a tower of $n$ copies
@@ -242,6 +246,14 @@
     - notiz: Knuth arrow
     - notiz: notation with a left superscript
     - notiz: as values of a tetration
+    quellen:
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - {}
+    - stelle: Section Terminology/Notation
   en_theorie:
     beispiel: |
       - $2\uparrow\uparrow2=2^2=4$, $\ 2\uparrow\uparrow3=2^4=16$, $\ 2\uparrow\uparrow4=2^{16}=65\,536$.
@@ -304,7 +316,7 @@
       Is the area $\int_0^1T_e=1.71452\ldots$ perhaps a known number in disguise, say a combination of $e$, $\pi$ and $\ln2$?
       So far nothing points that way.
 - id: gr.gegen.tpid7_kneser
-  quelle_hash: 8bc785f3444d
+  quelle_hash: e64575bf2c53
   theorie_hash: a4117a2d1c52
   herkunft:
     modell: sonnet
@@ -314,6 +326,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $T(y)T(-y)=\exp\bigl((\ln T)(y)+(\ln T)(-y)\bigr)=\exp\bigl((\ln T)^{\prime\prime}(0)\,y^2+O(y^4)\bigr)$ with $T(0)=1$; the sign of
@@ -338,6 +351,9 @@
     bereich: Kneser tetration, real $b>\eta$
     einfach: For huge bases such as 100, the Kneser curve at 0 is bent upward so strongly that T(½)·T(−½) becomes larger than 1. The threshold
       is at a base of about 10.22.
+    quellen:
+    - {}
+    - stelle: TPID 7
   en_theorie:
     beispiel: |
       Base $e$: $T'(0)=1.09177$, $T''(0)=0.54297$, so $(\ln T)''(0)=0.54297-1.19195=-0.64899$; measured $\bigl(1-T(0.05)T(-0.05)\bigr)/0.05^2=0.6496$.
@@ -752,7 +768,7 @@
       How does a tetration change when the base is shifted a little? The answer follows a step rule — almost the same as for the ordinary slope,
       only with an additional term.
 - id: gr.satz.exponentialitaet
-  quelle_hash: 7e6cea47e607
+  quelle_hash: 320d13ad122c
   theorie_hash: d6116c3d1068
   herkunft:
     modell: sonnet
@@ -762,6 +778,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -800,6 +817,11 @@
     formen:
     - notiz: Definition
     - notiz: via iterated logarithms (practical for huge x)
+    quellen:
+    - {}
+    - {}
+    - {}
+    - stelle: (iii) and numbers
   en_theorie:
     beispiel: |
       At $x=e\uparrow\uparrow k$, $k=2,3,4,5$: $\operatorname{slog}(x^2)-\operatorname{slog}x=0.529,\ 0.197,\ 0.0149,\ 4.0\cdot10^{-9}$; for $2^x$: $0.863,\ 0.9917,\ 0.999999998,\ 1$.
@@ -1108,7 +1130,7 @@
     worum: |
       The area under the tetration between $-1$ and $0$ is exactly the negative of the area under the super-logarithm between $0$ and $1$.
 - id: gr.satz.kehrwert_turmsumme
-  quelle_hash: 853a18d4a036
+  quelle_hash: 57d18a341b6d
   theorie_hash: 9f0cbae22d2e
   herkunft:
     modell: sonnet
@@ -1118,6 +1140,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $1/T(y+1)=b^{-T(y)}$; telescoping as for any fractional sum with summands → 0. The first term dominates because $T(x+m+1)$ grows as
@@ -1144,6 +1167,9 @@
     formen:
     - notiz: Base e
     - notiz: Dirichlet-like family
+    quellen:
+    - stelle: §13, Theorem candidate E
+    - {}
   en_theorie:
     beispiel: |
       $$C_2=\frac12+\frac14+\frac1{16}+\frac1{65536}+2^{-65536}+\dots=0.8125152587890625\ldots$$
@@ -1219,7 +1245,7 @@
       The tower equation immediately yields a rule for slopes: one level higher, the curve is steeper by the factor “$\ln a$ times
       the function value there”. Since the function values grow explosively, the slopes grow even more explosively.
 - id: gr.satz.ln_aus_steigungen
-  quelle_hash: 3349907c4765
+  quelle_hash: 91e612353de9
   theorie_hash: ba3a03818eca
   herkunft:
     modell: sonnet
@@ -1229,6 +1255,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -1258,6 +1285,10 @@
     - notiz: with Lambert W, because T′(x+1)/T′(x−1) = T(x+1)T(x) = T(x)e^{T(x)}
     - notiz: second order on the slog side
     - notiz: over n levels (product formula)
+    quellen:
+    - {}
+    - {}
+    - stelle: b₇ as inflection point at −1
   en_theorie:
     beispiel: |
       Kneser to base $e$: $T'(0)=T'(-1)=1.0917673\ldots$, ratio 1. If one perturbs the solution to $T(x+0.05\sin2\pi x)$, $T'(0)$ becomes $1.43476$ — the
@@ -1288,7 +1319,7 @@
       Which parts of the derivatives of a tetration depend on the chosen continuation, and which do not? The individual slopes depend on it. Certain
       **ratios**, however, are the same for every solution — and one of them is the natural logarithm of the base.
 - id: gr.satz.logstern
-  quelle_hash: 91396d01a3e7
+  quelle_hash: a39239c43bfb
   theorie_hash: f2b20531925a
   herkunft:
     modell: sonnet
@@ -1298,6 +1329,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $n=\log^*_a(y)$, $z=\log_a^{\circ n}y\in(0,1]$, hence $A(z)\in(-1,0]$ and $A(y)=n+A(z)\in(n-1,n]$.
@@ -1318,6 +1350,9 @@
     formen:
     - notiz: Decomposition
     - notiz: as an inequality
+    quellen:
+    - stelle: log* as a running-time bound
+    - stelle: Proof of the staircase relation
   en_theorie:
     beispiel: |
       $y=1000$, base $e$: $\ln1000=6.908$, $\ln6.908=1.933$, $\ln1.933=0.659\le1$ — three logarithms, so $\log^*_e(1000)=3$.
@@ -1339,7 +1374,7 @@
       How many times must one take the logarithm until a number falls below $1$? This number is called the iterated logarithm $\log^*$. The
       super-logarithm is exactly the smooth version of it: rounded up, it gives the same number.
 - id: gr.satz.selbstpotenz
-  quelle_hash: 7e1136457b84
+  quelle_hash: 592f3563a33c
   theorie_hash: a4b057964139
   herkunft:
     modell: sonnet
@@ -1349,6 +1384,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $x^x=e^{x\ln x}$, chain rule; $1+\ln x=0$ exactly at $x=1/e$; $x\ln x\to0$ for $x\to0^+$.
@@ -1370,6 +1406,10 @@
     formen:
     - notiz: key to differentiating
     - notiz: minimum
+    quellen:
+    - stelle: Maximum of x^(1/x) at e (equivalent)
+    - {}
+    - {}
   en_theorie:
     beispiel: |
       $0.1^{0.1}=0.794$, $\ 0.25^{0.25}=0.707$, $\ (1/e)^{1/e}=0.6922$, $\ 0.5^{0.5}=0.7071$, $\ 1^1=1$, $\ 2^2=4$. The values at $0.25$ and
@@ -1647,7 +1687,7 @@
       Towers get so large that they can no longer be written down. Nevertheless one can say exactly how many digits they have —
       because the logarithm removes one level from the tower.
 - id: gr.satz.stufenleiter
-  quelle_hash: aa3d1a04961e
+  quelle_hash: 280cabe11372
   theorie_hash: 8b4f18238880
   herkunft:
     modell: sonnet
@@ -1657,6 +1697,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: |
@@ -1693,6 +1734,9 @@
     - notiz: Slopes of the tetration as slope ratios of the pentation
     - notiz: Backward difference of a level = logarithmic slope of the level below
     - notiz: geometric sequence
+    quellen:
+    - {}
+    - stelle: Pentation to base e, values and fixed point
   en_theorie:
     beispiel: |
       Base $e$ (regular pentation at the fixed point $-1.8503\ldots$ of the Kneser tetration): $P'(0)=1.0887888477$, $P'(-1)=0.9972718514$, $P'(-2)=0.9134472196$ — quotient twice
@@ -1712,7 +1756,7 @@
       $\ln a=T'(0)/T'(-1)$ holds for every tetration. Is there something like this one level higher, for pentation, and higher still? Yes — with a row of binomial coefficients, and at the end
       there is always $\ln\ln a$.
 - id: gr.satz.superwurzel
-  quelle_hash: 684a4f3496e3
+  quelle_hash: 3fe269aa7271
   theorie_hash: a9b07e272213
   herkunft:
     modell: sonnet
@@ -1722,6 +1766,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: '$y^y=x\iff y\ln y=\ln x\iff(\ln y)e^{\ln y}=\ln x$, hence $\ln y=W_k(\ln x)$. Real branches: $W_0$ on $[-1/e,\infty)$, $W_{-1}$ on
@@ -1749,6 +1794,9 @@
     - notiz: Rearrangement
     - notiz: Values (exp.superwurzel)
     - notiz: two solutions
+    quellen:
+    - stelle: Section Super-root
+    - {}
   en_theorie:
     beispiel: |
       - $\operatorname{ssrt}(2)=1.5596104694623693\ldots$ Check: $1.5596^{1.5596}=e^{1.5596\cdot0.44443}=e^{0.69314}=2.000$.
@@ -1787,7 +1835,7 @@
       when raised to itself? For $x=27$ the answer is $3$, for $x=4$ it is $2$ — and for $x=2$ it is a number that can be written down
       only with a special function.
 - id: gr.satz.superwurzel_dritte
-  quelle_hash: 5ba9da1ddad6
+  quelle_hash: f246e3749d2c
   theorie_hash: 9bc15937db01
   herkunft:
     modell: sonnet
@@ -1797,6 +1845,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Uniqueness: for $0<y\le1$ we have $y^{y^y}\le1$; on $[1,\infty)$ the map $y\mapsto y^{y^y}$ is continuous and strictly increasing
@@ -1822,6 +1871,8 @@
       ready-made formula, but there is a rule of computation that you apply again and again until nothing changes any more.
     formen:
     - notiz: multiplied by y
+    quellen:
+    - stelle: Section Super-root, iteration formula
   en_theorie:
     beispiel: |
       Third super-roots (to 45 digits, 53–60 iterations each starting from $y=1$):
@@ -1852,7 +1903,7 @@
       a rule of computation that one applies again and again until the number no longer changes. And here, too, the Lambert function is
       involved — this time twice in a row.
 - id: gr.satz.tauschregel
-  quelle_hash: 0ed5a38be4c5
+  quelle_hash: 65006b4b5d92
   theorie_hash: f74f6e78b24c
   herkunft:
     modell: sonnet
@@ -1862,6 +1913,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: '(i) Counterexample as stated. (ii) $T(x+1)^{T(y)}=(a^{T(x)})^{T(y)}=a^{T(x)T(y)}$ (for $a>0$, $(a^u)^v=a^{uv}$ holds for real numbers),
@@ -1897,6 +1949,9 @@
     - notiz: swap rule at integer heights
     - notiz: base from neighboring values
     - notiz: quotient of two neighbors = logarithm of the next two
+    quellen:
+    - {}
+    - stelle: Swap rule for real heights, base from neighboring values
   en_theorie:
     beispiel: |
       Integer: $a=2$, $b=3$, $c=1$ gives $({}^32)^{({}^12)}=16^2=256=4^4=({}^22)^{({}^22)}$; likewise $65536^4=16^{16}=2^{64}$. Fractional (base 2, Kneser):
@@ -1975,7 +2030,7 @@
       The chain rule says what the slope looks like one level higher. The same works for all derivatives at once: The entire Taylor series about $x$ determines the entire
       Taylor series about $x+1$.
 - id: gr.satz.turm_ableitung
-  quelle_hash: 5af67ae9face
+  quelle_hash: da594009f4f6
   theorie_hash: b63fff0bd7cf
   herkunft:
     modell: sonnet
@@ -1985,6 +2040,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Differentiate $\ln h=h\ln a$ implicitly: $h''(1/h-\ln a)=h/a$.'
@@ -2002,6 +2058,10 @@
     bereich: $e^{-e}<a<\eta$, $h(a)=a^{a^{\cdots}}$
     einfach: The limit of the tower reacts more sensitively to the base the more weakly its fixed point attracts; at η the sensitivity becomes
       infinite.
+    quellen:
+    - stelle: Series of the infinite tower
+    - {}
+    - {}
   en_theorie:
     beispiel: |
       $a=\sqrt2$: $h=2$, $\lambda=\ln2$, $h'=4/(1.4142\cdot0.3069)=9.218$. $\ a=1.44$: $h=2.3938$, $\lambda=0.8729$, $h'=31.31$ — already very steep.
@@ -2077,7 +2137,7 @@
       In 2010 a forum participant (kobi_78) found an equation that expresses the base derivative of a tower by a sum along the tower values. For integer heights
       it is always correct; whether it is correct for fractional heights says something about the chosen continuation.
 - id: gr.satz.turmintegral_grenzen
-  quelle_hash: 0eb6491ec507
+  quelle_hash: a254c4c493a4
   theorie_hash: 236237696a69
   herkunft:
     modell: sonnet
@@ -2087,6 +2147,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $0\le{}^nx\le1$ on $[0,1]$; the even resp. odd towers converge pointwise to $L_+$ resp. $L_-$ (for $x<e^{-e}$) and to $h$ (for $x\ge
@@ -2113,6 +2174,14 @@
     bereich: $I_n=\int_0^1{}^n x\,dx$, ${}^1x=x$, ${}^{n+1}x=x^{({}^n x)}$
     einfach: For numbers x below e^(−e) ≈ 0.066 the infinite tower ends up jumping back and forth between two values. That is why the areas under
       the towers of even and odd height have two different limits — the difference is exactly the area between the two branches.
+    versionen:
+    - aenderung: even 0.676714273747536, odd 0.631309370777713, gap 0.045404902969823.
+    - aenderung: even 0.67671427377181279519, odd 0.63130937080198819539 — both larger by 2.428·10⁻¹¹ than in Figure 2; gap the same.
+      grund: The offset is the same in both values, so it lies in the common part ∫h; this has been confirmed here by two routes (directly and
+        via Young) to 10⁻²².
+    quellen:
+    - stelle: Figure 2
+    - {}
   en_theorie:
     beispiel: |
       $I_1=0.5$, $I_2=0.78343$, $I_3=0.57312$, $I_4=0.73134$, $I_5=0.59758$, $I_6=0.71066$ — the even ones fall toward $0.6767$, the odd ones
@@ -2255,7 +2324,7 @@
       A tetration cannot increase over one stretch and decrease elsewhere: the sign of the slope is inherited from level to level.
       For bases below $1$, by contrast, it flips at every step.
 - id: gr.satz.wurzel_eta
-  quelle_hash: 35424dcef588
+  quelle_hash: d39ee9067d38
   theorie_hash: b9c00cfcad72
   herkunft:
     modell: sonnet
@@ -2265,6 +2334,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: $\varphi(h)=\ln h/h$ has a maximum $1/e$ at $e$ with $\varphi''(e)=-1/e^3$; $\ln a=1/e-\delta$, $\delta=(\eta-a)/\eta+O((\eta-a)^2)$,
@@ -2285,6 +2355,10 @@
       long a tetration just above η “gets stuck” in the bottleneck at e grows like 1/(square root).'
     formen:
     - notiz: Taylor expansion at the maximum
+    quellen:
+    - stelle: Series of W at the branch point −1/e
+    - {}
+    - stelle: Recomputation, next term measured
   en_theorie:
     beispiel: |
       $a=1.44$: $\eta-a=0.00467$, formula $e-\sqrt{2e^3\cdot0.00467/1.4447}=e-0.3603=2.358$; the exact value is $2.394$ — the error is of the
@@ -2302,7 +2376,7 @@
       Just before $\eta$ the infinite tower does not rise linearly but like a square root: the distance to $e$ is proportional to the square root of
       the distance of the base to $\eta$.
 - id: gr.satz.young
-  quelle_hash: 951f2ffd679f
+  quelle_hash: a15ec2b8262e
   theorie_hash: dddaa91f7919
   herkunft:
     modell: sonnet
@@ -2328,6 +2402,7 @@
     voraussetzungen:
     - text: T continuous and strictly increasing
     - text: T differentiable
+      notiz: area argument suffices
     titel: Area under T plus area beside slog is a rectangle
     aussage: $$\int_m^n T(x)\,dx+\int_{T(m)}^{T(n)}A(y)\,dy=n\,T(n)-m\,T(m),\qquad\text{in particular}\qquad\int_0^1T(x)\,dx+\int_1^{a}A(y)\,dy=a.$$
     bereich: $T$ continuous, strictly increasing; $A=\operatorname{slog}_a$ its inverse
@@ -2356,7 +2431,7 @@
       Under the curve from $0$ to $1$ there is an area, and to the left of the curve between the heights $1$ and $a$ a second one. Together
       they fill exactly one rectangle. So whoever knows one area also knows the other.
 - id: gr.satz.zweite_ableitung
-  quelle_hash: eda187e70eb2
+  quelle_hash: ed1d12c0e2f0
   theorie_hash: 5a344fd677a0
   herkunft:
     modell: sonnet
@@ -2366,6 +2441,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     beweis:
       text: 'Differentiate gr.satz.kettenregel; for $\ln T$: differentiate $\ln T(x+1)=\ln a\cdot T(x)$ twice.'
@@ -2385,6 +2461,10 @@
       the logarithm of T is curved exactly like T itself.'
     formen:
     - notiz: T convex on $[x_0,x_0+1]$ ⇔ $\ln T$ convex on $[x_0+1,x_0+2]$
+    versionen:
+    - aenderung: With factor $T(x+1)^2$ in front of $T'(x)^2$ — wrong.
+    - aenderung: 'Correct: $\ln a\,T(x+1)\,[\ln a\,T''(x)^2+T''''(x)]$.'
+      grund: 'exp.ableitung: control test deviated by 53.9, correct formula to 2e-32.'
   en_theorie:
     beispiel: |
       Base $e$, $x=0$ (Kneser, $T'(0)=1.09177$, $T''(0)=0.54297$):
@@ -2450,7 +2530,7 @@
     worum: |
       The measurements suggest a clear rule: above $\eta$ exactly one change of curvature, below $\eta$ none. This is not yet proved.
 - id: gr.verm.tpid7
-  quelle_hash: d2c9edde0ad2
+  quelle_hash: e1b495336dff
   theorie_hash: 289db3c563dc
   herkunft:
     modell: sonnet
@@ -2460,6 +2540,7 @@
     intern: nein
     kern: zweitpruefung
     theorie: nein
+    zusatz: nein
   en:
     gegenbeispielsuche: 'exp.vermutungen: 10 bases × 19 heights; regular bases up to 1.44 (near η), Kneser up to 100 — violation only above b₇
       = 10.22.'
@@ -2482,6 +2563,8 @@
     bereich: $0<|y|<1$; regular tetration for $1<b<\eta$ (as posed), Kneser for $b>\eta$ (extension)
     einfach: If you multiply the value of a tetration at +y by its value at −y, you always get something between 0 and 1 — that is the conjecture.
       For small bases this holds everywhere it has been checked; for very large bases it tips over.
+    quellen:
+    - stelle: TPID 7 (andydude, 23.10.2009)
   en_theorie:
     beispiel: |
       At $y=\tfrac12$: $0.8218$ ($b=1.1$), $0.7863$ ($1.3$), $0.7824$ ($\sqrt2$), $0.7821$ ($1.44$) — regular; $0.7820$ ($1.5$), $0.7947$ ($2$), $0.8208$ ($e$),
@@ -2505,7 +2588,7 @@
       conjectured in 2009 that the product in between always lies strictly between 0 and 1. That sounds like a triviality, but it has a nice cause: It depends
       on whether the logarithm of the curve is bent downward.
 - id: gr.verm.turmintegral_rate
-  quelle_hash: 2744102039e4
+  quelle_hash: 3995a372a2b1
   theorie_hash: ae8a80fc3057
   herkunft:
     modell: sonnet
@@ -2518,6 +2601,8 @@
   en:
     beweis:
       text: Window heuristic as above.
+      luecken:
+      - Scaling function in the window (normal form $w\mapsto-w+aw^3$ with parameter $x-e^{-e}$) not computed; constant C open.
     gegenbeispielsuche: 'exp.turmintegrale: measured exponent 1.502 from n = 64 … 4096 (error 1.2·10⁻³ … 2.3·10⁻⁶).'
     pruefung:
       f5_neue_frage: Determine the constant C exactly; with it, Richardson extrapolation of the I_n (up to n = 4096 it reaches only ~2·10⁻⁹).

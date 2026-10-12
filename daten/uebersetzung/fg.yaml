@@ -1,12 +1,15 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
 - id: fg.def.abel
-  quelle_hash: dfdbff647957
+  quelle_hash: c7254d10d561
   theorie_hash: 5a45cb9050f2
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    kern: zweitpruefung
+    theorie: zweitpruefung
+    zusatz: nein
   en:
     titel: Abel equation, superfunction, Abel function
     aussage: |
@@ -15,6 +18,9 @@
       $F=\alpha^{-1}$ is a superfunction and vice versa. For $f=\exp_b$ the Abel function is
       the **super-logarithm** $\operatorname{slog}_b=T_b^{-1}$.
     bereich: $f:D\to D$, $D\subset\mathbb C$ or an interval
+    quellen:
+    - {}
+    - stelle: Origin of the Abel equation
   en_theorie:
     beispiel: |
       - $f(z)=z+2$: Abel function $\alpha(z)=z/2$, superfunction $F(x)=2x$.
@@ -35,17 +41,24 @@
       An Abel function counts how many steps have already been taken: if one applies $f$ once, it rises by exactly $1$. A
       superfunction does the opposite: in time $x$ it takes exactly $x$ steps. The two are inverse functions of each other.
 - id: fg.def.boettcher
-  quelle_hash: 05e2e4c8bb66
+  quelle_hash: bbeb3c76660c
   theorie_hash: b6a6bea73e96
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    kern: zweitpruefung
+    theorie: zweitpruefung
+    zusatz: nein
   en:
     titel: Böttcher equation
     aussage: |
       For $f$ with a superattracting fixed point $p$ of order $k\ge2$, $\phi\circ f=\phi^{k}$, $\phi(p)=0$, is called the **Böttcher equation**.
       With $\psi=\log\phi$ it becomes the Schröder-type equation $\psi\circ f=k\,\psi$ (multiplier $k$ instead of $\lambda$).
+    quellen:
+    - {}
+    - {}
+    - stelle: §9
   en_theorie:
     einordnung: |
       It does not occur for $b^z$, but it does for the elementary superfunctions such as $x^2-2$ ([[it.satz.elementare_superfunktionen]]).
@@ -89,17 +102,24 @@
       Instead of only "once, twice, three times $f$", one wants "$t$ times $f$" for every real number $t$. A family of such maps
       that behaves like time is called a continuous iteration or flow. The half iterate is the case $t=\tfrac12$.
 - id: fg.def.schroeder
-  quelle_hash: f29c59ef5d27
+  quelle_hash: 6629e75eba3b
   theorie_hash: 8b23c7096439
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    kern: zweitpruefung
+    theorie: zweitpruefung
+    zusatz: nein
   en:
     titel: Schröder equation
     aussage: |
       $\sigma$ solves the **Schröder equation** if $\sigma(f(z))=\lambda\,\sigma(z)$ with $\sigma(p)=0$.
     bereich: $f$ holomorphic near a fixed point $p$, $\lambda=f'(p)$
+    quellen:
+    - {}
+    - {}
+    - stelle: Origin of the Schröder equation
   en_theorie:
     beispiel: |
       $f(z)=\dfrac{2z}{1+z}$ has the fixed point $0$ with $\lambda=f'(0)=2$, and $\sigma(z)=\dfrac z{1-z}$ solves the equation:
@@ -119,12 +139,15 @@
       Near a fixed point one can often find a coordinate in which the map is a pure dilation. The equation
       for this coordinate is called the Schröder equation. Whoever has solved it can write down any fractional step immediately.
 - id: fg.def.tetration
-  quelle_hash: 7a719eb7b3fd
+  quelle_hash: 4d5e9a1dc72d
   theorie_hash: 6a2586d7c1e5
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    kern: zweitpruefung
+    theorie: zweitpruefung
+    zusatz: nein
   en:
     titel: Tetration equation
     aussage: |
@@ -133,6 +156,9 @@
       Without the normalization, $F$ is called a **superfunction** of $\exp_b$. Notation: $T_b$ for an
       (arbitrary) solution, $T_b^{\mathrm K}$ for Kneser's solution.
     bereich: $b>0,\ b\neq 1$; solution $F$ on an interval $I\subset\mathbb R$ or domain $D\subset\mathbb C$ with $I+1\subset I$
+    quellen:
+    - {}
+    - stelle: Eq. (1)
   en_theorie:
     beispiel: |
       - Every tetration has $F(1)=b$, $F(2)=b^b$, $F(-1)=0$ ([[fg.lem.ganzzahlwerte]]).
@@ -157,12 +183,17 @@
       The integer towers are known; what is sought is a function that connects them for **all** heights. Instead of saying what the curve
       should look like, one only writes down the building rule of the tower for every height. This one equation is the starting point of the whole theory.
 - id: fg.kor.keine_ganze_tetration
-  quelle_hash: c0615d7c0f18
+  quelle_hash: e829713e89bf
   theorie_hash: 6093c67bbc71
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    beweis: zweitpruefung
+    intern: zweitpruefung
+    kern: zweitpruefung
+    theorie: zweitpruefung
+    zusatz: nein
   en:
     titel: No tetration that is real on ℝ is entire
     aussage: |
@@ -188,6 +219,11 @@
     - text: F holomorphic on a domain containing 0, −1, −2, with F(z+1)=b^{F(z)}
     - text: F(0)=1
     - text: F(−1)=0 (e.g. because F is real on ℝ)
+    versionen:
+    - aenderung: First version “no entire solution with F(0)=1” made precise to “with F(−1)=0” during checking (question 2).
+    quellen:
+    - stelle: entire superexponentials at fixed point 4
+    - {}
   en_theorie:
     beispiel: |
       For base $\sqrt2$ the regular super-exponential at the fixed point $4$ is entire ([[kl.satz.vier_sqrt2]]); but it never takes the value $1$ at a
@@ -203,12 +239,17 @@
       A tetration cannot be smooth everywhere in the complex plane: the point $-2$ is an obstruction. Superfunctions without the
       normalization $F(0)=1$, by contrast, can very well be entire.
 - id: fg.kor.nichteindeutigkeit
-  quelle_hash: 3ef6fa72ff94
+  quelle_hash: 084ff96387bd
   theorie_hash: dba5187bfb01
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    beweis: zweitpruefung
+    intern: zweitpruefung
+    kern: zweitpruefung
+    theorie: zweitpruefung
+    zusatz: nein
   en:
     titel: Real-analytic tetration is not unique (arbitrary value at 1/2)
     aussage: |
@@ -235,6 +276,9 @@
       nutzen: An important limitation for arithmetic and real characterizations.
     voraussetzungen:
     - text: Existence of a real-analytic, strictly increasing solution F with F(0)=1
+    quellen:
+    - {}
+    - stelle: Thm. 4 (special case b = e)
   en_theorie:
     beispiel: |
       Base $\sqrt2$: the regular tetration has $T(\tfrac12)=1.24362$. In an experiment, two further real-analytic solutions with
@@ -347,12 +391,16 @@
       A smooth periodic function that is continued into the complex domain becomes huge upward or downward — unless it is constant.
       Precisely for this reason one can rule out periodic bendings in the complex domain and thereby select the right tetration.
 - id: fg.satz.allgemeine_loesung
-  quelle_hash: e9993ef898ca
+  quelle_hash: dd733bbd3832
   theorie_hash: 5317d20f204e
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    beweis: zweitpruefung
+    intern: nein
+    kern: zweitpruefung
+    theorie: zweitpruefung
   en:
     titel: All monotone solutions = one solution ∘ (id + periodic)
     aussage: |
@@ -377,7 +425,9 @@
     voraussetzungen:
     - text: F, G continuous, strictly increasing, solutions of the tetration equation on (−2,∞)
     - text: 'same image: G((−2,∞)) ⊂ F((−2,∞))'
+      notiz: automatic for tetrations with image ℝ
     - text: F(0)=G(0)=1
+      notiz: needed only for the normalization θ(0)=0
   en_theorie:
     beispiel: |
       With $\theta(x)=0.05\cdot\frac{1-\cos2\pi x}2$ (zero at the integer points, $0.05$ in the middle), Kneser's tetration to base $e$ yields a new
@@ -399,12 +449,17 @@
       If one has an increasing tetration, one knows all of them: every other arises by "bending" the height a little back and forth —
       with a bending that repeats after every unit.
 - id: fg.satz.einbettung_fluss
-  quelle_hash: fd31cb2002aa
+  quelle_hash: a0984e256cf6
   theorie_hash: c157dce5565b
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    beweis: zweitpruefung
+    intern: zweitpruefung
+    kern: zweitpruefung
+    theorie: zweitpruefung
+    zusatz: nein
   en:
     titel: Every increasing continuous map without a fixed point can be continuously iterated in infinitely many ways (Kuczma, Fort, Zdun)
     aussage: |
@@ -435,6 +490,12 @@
     voraussetzungen:
     - text: f continuous, strictly increasing and surjective on I
     - text: f without a fixed point in I
+    quellen:
+    - stelle: Abel equation, general continuous solution
+    - {}
+    - stelle: Interval homeomorphism embeddable in a flow ⇔ order-preserving (restatement in Jones 1972)
+    - stelle: continuous and differentiable iteration semigroups
+    - stelle: Overview
   en_theorie:
     beispiel: |
       $f(x)=x-1$ on ℝ has, besides $\alpha(x)=-x$, also $\alpha(x)=-x+\tfrac1{10}\sin(2\pi x)$ as an Abel function (monotone, because $\tfrac{2\pi}{10}<1$).
@@ -452,12 +513,17 @@
       Can one apply a function "half as often"? For increasing functions without a fixed point the answer is: yes — and in infinitely many ways.
       That is the reason why tetration is not unique without an additional condition.
 - id: fg.satz.kohomologisch
-  quelle_hash: 3eff05d170cc
+  quelle_hash: 4079e22b3a20
   theorie_hash: cc29521039b3
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    beweis: zweitpruefung
+    intern: zweitpruefung
+    kern: zweitpruefung
+    theorie: zweitpruefung
+    zusatz: nein
   en:
     titel: Solution structure of the cohomological equation
     aussage: |
@@ -480,6 +546,9 @@
     voraussetzungen:
     - text: α Abel function of f, injective on the domain
     - text: a particular solution V_0 exists
+    quellen:
+    - {}
+    - stelle: Lemma 4 (gauge triviality)
   en_theorie:
     beispiel: |
       $f(y)=y+1$, $\alpha=\mathrm{id}$, and $V(y+1)-V(y)=2y+1$: one solution is $V_0=y^2$, all solutions are $y^2+h(y)$ with 1-periodic $h$.
@@ -544,12 +613,17 @@
       If $f$ is a dilation by $\lambda$ in some coordinate, then in the logarithm of that coordinate $f$ is a shift by $\log\lambda$.
       Dividing by $\log\lambda$ turns this into the shift by $1$ — an Abel function. As a side effect it has a period in the complex domain.
 - id: fg.satz.tpid4
-  quelle_hash: 6a11dc87dabd
+  quelle_hash: 5a40ff70db38
   theorie_hash: 24249cba19c2
   herkunft:
-    modell: sonnet+haiku-abgleich
+    modell: sonnet
     datum: '2026-10-12'
-  geprueft: zweitpruefung
+  geprueft:
+    beweis: zweitpruefung
+    intern: zweitpruefung
+    kern: zweitpruefung
+    theorie: zweitpruefung
+    zusatz: nein
   en:
     titel: 'TPID 4: f(z+1) = b·f(z), f(0) = 1 has an entire solution bounded on the strip if and only if b > 0'
     aussage: |
@@ -572,6 +646,8 @@
     bewertung:
       richtigkeit: complete
       nutzen: Settles an open question of the forum list in two lines.
+    quellen:
+    - stelle: TPID 4 (Trappmann 2008); proof attempts tommy1729, tid 747 (2014, 2022)
   en_theorie:
     beispiel: |
       $b=-1$: $f(z)=e^{i\pi z}$ satisfies the equation, but is unbounded below ($|e^{i\pi(x+iy)}|=e^{-\pi y}$). Any other choice does no better.
