@@ -47,6 +47,7 @@ def test_verweise_und_kennungen():
 def test_zahlen_ausserhalb_von_formeln_warnen():
     assert stufen(U.pruefe_text("Zeit-1-Abbildung", "time-one map")) == {("WARNUNG", "uebersetzung-zahlen")}
     assert not U.pruefe_text("Zeit-1-Abbildung", "time-1 map")
+    assert not U.pruefe_text("auf (−2,0] und (−1,0)", "on (−2,0] and (−1,0)")
     assert not U.pruefe_text("für d ∈ {2,10}", "for d ∈ {2,10}")
     assert not U.pruefe_text("im Intervall (0,1) und [0,1]", "in the interval (0,1) and [0,1]")    # Intervall, kein Dezimalkomma
     assert not stufen(U.pruefe_text("auf 8·10^-23 genau", "to an accuracy of 8·10^-23"), "uebersetzung-wortwahl")

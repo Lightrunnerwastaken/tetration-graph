@@ -195,7 +195,7 @@ def _dezimalpunkt(s: str) -> str:
     """Dezimalkomma -> Punkt, ausser in Intervallen und Mengen wie (0,1), [0,1] oder {2,10}."""
     def ersetze(m):
         return m.group(0) if m.group(1) and m.group(4) else f"{m.group(1) or ''}{m.group(2)}.{m.group(3)}{m.group(4) or ''}"
-    return re.sub(r"([\[({])?\b(\d+),(\d+)\b([)\]}])?", ersetze, s)
+    return re.sub(r"([\[({])?[−-]?\b(\d+),(\d+)\b([)\]}])?", ersetze, s)
 
 
 def pruefe_text(de: str, en: str) -> list:
