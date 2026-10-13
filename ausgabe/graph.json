@@ -1,6 +1,6 @@
 {
- "gebaut": "2026-10-13 08:34",
- "eingabe_hash": "681223c6655e193e",
+ "gebaut": "2026-10-13 11:14",
+ "eingabe_hash": "f9d7e384b0856fb3",
  "gebiete": [
   {
    "id": "gr",
@@ -3554,6 +3554,22 @@
     "notiz": "Two-argument version of the Ackermann function; details from standard catalogs."
    },
    "_en_stand": "aktuell"
+  },
+  "hectogon2020a": {
+   "art": "notiz",
+   "autor": "What the Hectogon? (YouTube-Kanal)",
+   "titel": "On Tetration, Part I: Inverses — THE GENERALIZATION WAR",
+   "ort": "YouTube, 07.06.2020, https://www.youtube.com/watch?v=czxRs8T0JcM (58 min)",
+   "geprueft": "original",
+   "notiz": "Automatisches Transkript vollständig gelesen (13.10.2026); Formeln in exp.superwurzel_omega nachgerechnet."
+  },
+  "hectogon2020b": {
+   "art": "notiz",
+   "autor": "What the Hectogon? (YouTube-Kanal)",
+   "titel": "On Tetration, Part II: Derivatives — THE GENERALIZATION WAR",
+   "ort": "YouTube, 2020, https://www.youtube.com/watch?v=w544a_IP0bw (54 min)",
+   "geprueft": "original",
+   "notiz": "Automatisches Transkript vollständig gelesen (13.10.2026). Die Grenzidentität am Schluss stimmt so nicht (gr.korr.grenzidentitaet)."
   }
  },
  "knoten": [
@@ -3820,6 +3836,13 @@
      ]
     },
     {
+     "id": "gr.kor.basis_summe",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
      "id": "br.satz.ordinal_tetration",
      "score": 2.5,
      "warum": [
@@ -3866,14 +3889,6 @@
       "gemeinsames Experiment exp.slog",
       "über gr.satz.logstern",
       "über gr.satz.slog_ableitung"
-     ]
-    },
-    {
-     "id": "gr.kor.ganze_stellen",
-     "score": 1.6,
-     "warum": [
-      "über gr.beob.kneser_ableitung",
-      "gemeinsame Objekte: hyperoperation"
      ]
     }
    ],
@@ -3993,7 +4008,7 @@
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 2,
+   "_tragweite": 3,
    "_abhaengig": [],
    "_traegt": [
     "gr.satz.superwurzel"
@@ -7307,9 +7322,10 @@
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 2,
+   "_tragweite": 3,
    "_abhaengig": [],
    "_traegt": [
+    "gr.kor.basis_summe",
     "gr.satz.basis_gleichung"
    ],
    "_verwandt": [
@@ -7319,6 +7335,14 @@
      "warum": [
       "stützt sich auf (Beweis) (rückwärts)",
       "verallgemeinert (rückwärts)"
+     ]
+    },
+    {
+     "id": "gr.kor.basis_summe",
+     "score": 5.5,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "gemeinsame Objekte: hyperoperation"
      ]
     },
     {
@@ -7360,13 +7384,6 @@
     },
     {
      "id": "kn.verm.tpid11",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: hyperoperation"
-     ]
-    },
-    {
-     "id": "kn.verm.tpid10",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: hyperoperation"
@@ -10394,21 +10411,49 @@
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 1,
+   "_tragweite": 2,
    "_abhaengig": [
     "gr.satz.selbstpotenz"
    ],
    "_traegt": [
-    "gr.satz.superwurzel_dritte"
+    "gr.satz.superwurzel_dritte",
+    "gr.satz.turm_superwurzel"
    ],
    "_verwandt": [
     {
      "id": "gr.satz.superwurzel_dritte",
-     "score": 6.85,
+     "score": 7.2,
      "warum": [
       "stützt sich auf (Beweis) (rückwärts)",
       "gemeinsames Experiment exp.superwurzel",
-      "über fp.satz.unendliche_superwurzel"
+      "über gr.satz.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_omega",
+     "score": 6.05,
+     "warum": [
+      "verallgemeinert (rückwärts)",
+      "über gr.satz.superwurzel_dritte",
+      "über gr.def.epsilon_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.turm_superwurzel",
+     "score": 5.37,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "über gr.def.epsilon_omega",
+      "über gr.satz.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.def.epsilon_omega",
+     "score": 4.72,
+     "warum": [
+      "verwandt (rückwärts)",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel"
      ]
     },
     {
@@ -10416,6 +10461,15 @@
      "score": 3.0,
      "warum": [
       "stützt sich auf (Beweis)"
+     ]
+    },
+    {
+     "id": "gr.satz.omega_ableitung",
+     "score": 2.3,
+     "warum": [
+      "über gr.def.epsilon_omega",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel"
      ]
     },
     {
@@ -10431,35 +10485,6 @@
      "warum": [
       "gemeinsames Experiment exp.superwurzel",
       "über gr.satz.superwurzel_dritte"
-     ]
-    },
-    {
-     "id": "ar.satz.superwurzel_arith",
-     "score": 1.83,
-     "warum": [
-      "verwandt (rückwärts)"
-     ]
-    },
-    {
-     "id": "kn.beob.eta4_interpolation",
-     "score": 1.62,
-     "warum": [
-      "verwandt (rückwärts)"
-     ]
-    },
-    {
-     "id": "fp.frage.tpid12_13",
-     "score": 1.6,
-     "warum": [
-      "über kn.beob.eta4_interpolation",
-      "gemeinsame Objekte: superwurzel"
-     ]
-    },
-    {
-     "id": "fp.satz.fixpunkt_summen",
-     "score": 1.36,
-     "warum": [
-      "über fp.satz.lambert"
      ]
     }
    ],
@@ -10587,11 +10612,38 @@
    "_verwandt": [
     {
      "id": "gr.satz.superwurzel",
-     "score": 6.85,
+     "score": 7.2,
      "warum": [
       "stützt sich auf (Beweis)",
       "gemeinsames Experiment exp.superwurzel",
-      "über fp.satz.unendliche_superwurzel"
+      "über gr.satz.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_omega",
+     "score": 4.38,
+     "warum": [
+      "verwandt (rückwärts)",
+      "über gr.satz.superwurzel",
+      "gemeinsame Objekte: lambert_w, superwurzel"
+     ]
+    },
+    {
+     "id": "gr.def.epsilon_omega",
+     "score": 3.2,
+     "warum": [
+      "über gr.satz.superwurzel",
+      "über gr.satz.superwurzel_omega",
+      "gemeinsame Objekte: lambert_w, superwurzel"
+     ]
+    },
+    {
+     "id": "gr.satz.turm_superwurzel",
+     "score": 3.07,
+     "warum": [
+      "über gr.satz.superwurzel",
+      "über gr.satz.superwurzel_omega",
+      "gemeinsame Objekte: lambert_w, superwurzel"
      ]
     },
     {
@@ -10603,45 +10655,26 @@
      ]
     },
     {
+     "id": "gr.satz.omega_ableitung",
+     "score": 1.6,
+     "warum": [
+      "über gr.satz.superwurzel_omega",
+      "gemeinsame Objekte: lambert_w"
+     ]
+    },
+    {
+     "id": "gr.korr.grenzidentitaet",
+     "score": 1.6,
+     "warum": [
+      "über gr.satz.superwurzel_omega",
+      "gemeinsame Objekte: lambert_w"
+     ]
+    },
+    {
      "id": "fp.frage.tpid12_13",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: superwurzel"
-     ]
-    },
-    {
-     "id": "fp.satz.nachbar_turm",
-     "score": 1.18,
-     "warum": [
-      "über fp.satz.unendliche_superwurzel"
-     ]
-    },
-    {
-     "id": "ar.satz.superwurzel_arith",
-     "score": 1.18,
-     "warum": [
-      "über gr.satz.superwurzel"
-     ]
-    },
-    {
-     "id": "fp.satz.lambert",
-     "score": 1.15,
-     "warum": [
-      "über gr.satz.superwurzel"
-     ]
-    },
-    {
-     "id": "gr.satz.selbstpotenz",
-     "score": 1.05,
-     "warum": [
-      "über gr.satz.superwurzel"
-     ]
-    },
-    {
-     "id": "kn.beob.eta4_interpolation",
-     "score": 0.97,
-     "warum": [
-      "über gr.satz.superwurzel"
      ]
     }
    ],
@@ -19552,6 +19585,13 @@
      ]
     },
     {
+     "id": "gr.satz.superwurzel_omega",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: superwurzel"
+     ]
+    },
+    {
      "id": "gr.satz.superwurzel_dritte",
      "score": 1.25,
      "warum": [
@@ -19559,14 +19599,7 @@
      ]
     },
     {
-     "id": "ar.satz.superwurzel_arith",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: superwurzel"
-     ]
-    },
-    {
-     "id": "ar.satz.sondow_marques_xx",
+     "id": "gr.def.epsilon_omega",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: superwurzel"
@@ -48916,6 +48949,13 @@
      ]
     },
     {
+     "id": "gr.kor.basis_summe",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
      "id": "gr.def.turm",
      "score": 2.25,
      "warum": [
@@ -48936,14 +48976,6 @@
      "score": 1.6,
      "warum": [
       "über kn.konstr.pentation",
-      "gemeinsame Objekte: hyperoperation"
-     ]
-    },
-    {
-     "id": "gr.satz.tauschregel",
-     "score": 1.6,
-     "warum": [
-      "über gr.def.turm",
       "gemeinsame Objekte: hyperoperation"
      ]
     }
@@ -49062,16 +49094,18 @@
      ]
     },
     {
+     "id": "gr.kor.basis_summe",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
      "id": "br.satz.halbexp_komplexitaet",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: berechenbarkeit"
      ]
-    },
-    {
-     "id": "kn.verm.tpid11",
-     "score": 0.83,
-     "warum": []
     }
    ],
    "en": {
@@ -49217,6 +49251,13 @@
      ]
     },
     {
+     "id": "gr.kor.basis_summe",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
      "id": "br.satz.ordinal_tetration",
      "score": 1.25,
      "warum": [
@@ -49229,11 +49270,6 @@
      "warum": [
       "gemeinsame Objekte: hyperoperation"
      ]
-    },
-    {
-     "id": "kn.verm.tpid11",
-     "score": 0.83,
-     "warum": []
     }
    ],
    "en": {
@@ -50917,6 +50953,13 @@
      ]
     },
     {
+     "id": "gr.kor.basis_summe",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
      "id": "br.satz.ackermann",
      "score": 2.25,
      "warum": [
@@ -50941,13 +50984,6 @@
     },
     {
      "id": "kn.verm.tpid10",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: hyperoperation"
-     ]
-    },
-    {
-     "id": "kn.satz.hexation_struktur",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: hyperoperation"
@@ -51100,6 +51136,13 @@
      ]
     },
     {
+     "id": "gr.kor.basis_summe",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
      "id": "br.satz.ordinal_tetration",
      "score": 1.25,
      "warum": [
@@ -51115,13 +51158,6 @@
     },
     {
      "id": "gr.def.turm",
-     "score": 1.18,
-     "warum": [
-      "über br.def.hyperoperation"
-     ]
-    },
-    {
-     "id": "br.satz.ackermann",
      "score": 1.18,
      "warum": [
       "über br.def.hyperoperation"
@@ -63173,6 +63209,1060 @@
    "befunde": []
   },
   {
+   "id": "gr.def.epsilon_omega",
+   "titel": "ε_n und ω_n — Lambert W für höhere Türme",
+   "art": "definition",
+   "ebene": "X",
+   "status": "definition",
+   "niveau": "vertiefung",
+   "objekte": [
+    "lambert_w",
+    "superwurzel"
+   ],
+   "aussage": "Für ganze $n\\ge0$ sei $\\varepsilon_n(x)=x\\cdot(e^x)\\uparrow\\uparrow n$, also $\\varepsilon_0(x)=x$ und $\\varepsilon_{n+1}(x)=x\\,e^{\\varepsilon_n(x)}$:\n$$\\varepsilon_1(x)=xe^x,\\qquad \\varepsilon_2(x)=xe^{xe^x},\\qquad \\varepsilon_3(x)=xe^{xe^{xe^x}},\\ \\dots$$\n$\\omega_n$ ist die Umkehrfunktion von $\\varepsilon_n$ (Hauptzweig, für $x\\ge0$ eindeutig, da $\\varepsilon_n$ dort streng wächst). Also $\\omega_0=\\mathrm{id}$ und\n$\\omega_1=W$ (Lambert W). Für $n\\to\\infty$ und $0\\le x<1/e$ gilt $\\varepsilon_\\infty(x)=-W(-x)$ und $\\omega_\\infty(x)=xe^{-x}$.\n",
+   "einfach": "Lambert W kehrt x·eˣ um. Stapelt man das eˣ zu einem Turm (x·e^{x·eˣ} und so weiter), bekommt man eine ganze Familie solcher Funktionen — und ihre Umkehrungen ω₁ = W, ω₂, ω₃ … sind genau die Bausteine, mit denen man höhere Superwurzeln hinschreiben kann.",
+   "formen": [
+    {
+     "tex": "\\varepsilon_{n+1}(x)=x\\,e^{\\varepsilon_n(x)},\\quad \\varepsilon_0(x)=x",
+     "notiz": "Rekursion"
+    },
+    {
+     "tex": "\\varepsilon_\\infty(x)=-W(-x),\\qquad \\omega_\\infty(x)=x\\,e^{-x}",
+     "notiz": "unendlicher Turm, $0\\le x<1/e$"
+    }
+   ],
+   "quellen": [
+    {
+     "ref": "hectogon2020a",
+     "stelle": "ab 25:00 (Epsilon- und Omega-Funktionen)"
+    }
+   ],
+   "kanten": [
+    {
+     "typ": "verwandt",
+     "ziel": "gr.satz.superwurzel"
+    }
+   ],
+   "gebiet": "gr",
+   "_datei": "lit_gr_2.yaml",
+   "theorie": {
+    "worum": "Lambert W ist die Umkehrung von $xe^x$ und löst damit $y^y=Y$. Für höhere Türme fehlt eine solche Funktion — also führt man sie ein.\n",
+    "genau": "$\\varepsilon_n(x)=x\\cdot(e^x)\\uparrow\\uparrow n$ mit $\\varepsilon_0=x$, $\\varepsilon_{n+1}=xe^{\\varepsilon_n}$; $\\omega_n=\\varepsilon_n^{-1}$. Insbesondere $\\omega_1=W$.\n",
+    "warum": "Für $x\\ge0$ ist jedes $\\varepsilon_n$ streng wachsend mit $\\varepsilon_n(0)=0$, also umkehrbar. Für $0\\le x<1/e$ konvergiert $\\varepsilon_n(x)$ gegen den\nFixpunkt von $\\varepsilon\\mapsto xe^\\varepsilon$, also gegen $-W(-x)$; dessen Umkehrung ist $xe^{-x}$.\n",
+    "beispiel": "$\\varepsilon_2(x)=xe^{xe^x}$; $\\omega_2(\\ln 2)=\\ln\\sqrt[3]{2}_s=0.38978\\ldots$\n",
+    "bilder": [],
+    "einordnung": "Anwendung: [[gr.satz.superwurzel_omega]]; Ableitungen: [[gr.satz.omega_ableitung]].\n"
+   },
+   "_strang": "gr.umkehrungen",
+   "_idee": "gleichung.superwurzeln",
+   "_niveau": "vertiefung",
+   "_status_eff": "definition",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 3,
+   "_abhaengig": [],
+   "_traegt": [
+    "gr.satz.omega_ableitung",
+    "gr.satz.superwurzel_omega"
+   ],
+   "_verwandt": [
+    {
+     "id": "gr.satz.superwurzel_omega",
+     "score": 6.55,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "über gr.satz.superwurzel",
+      "über gr.satz.turm_superwurzel"
+     ]
+    },
+    {
+     "id": "gr.satz.omega_ableitung",
+     "score": 4.95,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel",
+     "score": 4.72,
+     "warum": [
+      "verwandt",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel"
+     ]
+    },
+    {
+     "id": "gr.satz.turm_superwurzel",
+     "score": 3.72,
+     "warum": [
+      "verwandt (rückwärts)",
+      "über gr.satz.superwurzel",
+      "über gr.satz.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_dritte",
+     "score": 3.2,
+     "warum": [
+      "über gr.satz.superwurzel",
+      "über gr.satz.superwurzel_omega",
+      "gemeinsame Objekte: lambert_w, superwurzel"
+     ]
+    },
+    {
+     "id": "gr.korr.grenzidentitaet",
+     "score": 3.0,
+     "warum": [
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel",
+      "über gr.satz.omega_ableitung"
+     ]
+    },
+    {
+     "id": "fp.frage.tpid12_13",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: superwurzel"
+     ]
+    },
+    {
+     "id": "ar.satz.superwurzel_arith",
+     "score": 1.18,
+     "warum": [
+      "über gr.satz.superwurzel"
+     ]
+    }
+   ],
+   "en": {
+    "titel": "ε_n and ω_n — Lambert W for higher towers",
+    "aussage": "For integer $n\\ge0$ let $\\varepsilon_n(x)=x\\cdot(e^x)\\uparrow\\uparrow n$, i.e. $\\varepsilon_0(x)=x$ and $\\varepsilon_{n+1}(x)=x\\,e^{\\varepsilon_n(x)}$:\n$$\\varepsilon_1(x)=xe^x,\\qquad \\varepsilon_2(x)=xe^{xe^x},\\qquad \\varepsilon_3(x)=xe^{xe^{xe^x}},\\ \\dots$$\n$\\omega_n$ is the inverse function of $\\varepsilon_n$ (principal branch, unique for $x\\ge0$, since $\\varepsilon_n$ is strictly increasing there). So $\\omega_0=\\mathrm{id}$ and\n$\\omega_1=W$ (Lambert W). For $n\\to\\infty$ and $0\\le x<1/e$ we have $\\varepsilon_\\infty(x)=-W(-x)$ and $\\omega_\\infty(x)=xe^{-x}$.\n",
+    "einfach": "Lambert W undoes x·eˣ. If you stack the eˣ into a tower (x·e^{x·eˣ} and so on), you get a whole family of such functions — and their inverses ω₁ = W, ω₂, ω₃ … are exactly the building blocks with which higher super-roots can be written down.",
+    "formen": [
+     {
+      "notiz": "recursion"
+     },
+     {
+      "notiz": "infinite tower, $0\\le x<1/e$"
+     }
+    ],
+    "quellen": [
+     {
+      "stelle": "from 25:00 (epsilon and omega functions)"
+     }
+    ]
+   },
+   "en_theorie": {
+    "worum": "Lambert W is the inverse of $xe^x$ and therefore solves $y^y=Y$. For higher towers no such function exists — so one introduces it.\n",
+    "genau": "$\\varepsilon_n(x)=x\\cdot(e^x)\\uparrow\\uparrow n$ with $\\varepsilon_0=x$, $\\varepsilon_{n+1}=xe^{\\varepsilon_n}$; $\\omega_n=\\varepsilon_n^{-1}$. In particular $\\omega_1=W$.\n",
+    "warum": "For $x\\ge0$ every $\\varepsilon_n$ is strictly increasing with $\\varepsilon_n(0)=0$, hence invertible. For $0\\le x<1/e$, $\\varepsilon_n(x)$ converges to the\nfixed point of $\\varepsilon\\mapsto xe^\\varepsilon$, i.e. to $-W(-x)$; its inverse is $xe^{-x}$.\n",
+    "beispiel": "$\\varepsilon_2(x)=xe^{xe^x}$; $\\omega_2(\\ln 2)=\\ln\\sqrt[3]{2}_s=0.38978\\ldots$\n",
+    "einordnung": "Application: [[gr.satz.superwurzel_omega]]; derivatives: [[gr.satz.omega_ableitung]].\n"
+   },
+   "_en_stand": "aktuell",
+   "_en_geprueft": "nein",
+   "befunde": []
+  },
+  {
+   "id": "gr.satz.superwurzel_omega",
+   "titel": "Jede Superwurzel ist exp∘ω_{n−1}∘ln",
+   "art": "satz",
+   "ebene": "X",
+   "status": "bewiesen",
+   "niveau": "vertiefung",
+   "objekte": [
+    "superwurzel",
+    "lambert_w"
+   ],
+   "bereich": "ganze $n\\ge1$; $Y>1$, gesucht $y>1$ mit $y\\uparrow\\uparrow n=Y$",
+   "aussage": "Die $n$-te Superwurzel ist\n$$\\sqrt[n]{Y}_s=\\exp\\bigl(\\omega_{n-1}(\\ln Y)\\bigr).$$\nFür $n=2$ ist das $e^{W(\\ln Y)}$ (gr.satz.superwurzel), für $n=1$ einfach $Y$. Werte: $\\sqrt[3]{2}_s=1.4766843373\\ldots$, $\\sqrt[4]{3}_s=1.5636279033\\ldots$,\n$\\sqrt[5]{10}_s=1.6440790743\\ldots$\n",
+   "einfach": "Für den Zweierturm y^y = Y gibt Lambert W die Antwort. Für den Dreier-, Vierer-, n-er-Turm gibt es genauso eine Formel — man braucht nur eine neue Funktion ω_{n−1}, die die Rolle von W übernimmt. Die Rechnung ist eine Zeile.",
+   "beweis": {
+    "art": "vollstaendig",
+    "text": "$\\ln(y\\uparrow\\uparrow n)=(y\\uparrow\\uparrow(n-1))\\ln y$, und mit $y=e^{\\ln y}$ ist $y\\uparrow\\uparrow(n-1)=(e^{\\ln y})\\uparrow\\uparrow(n-1)$. Also\n$\\ln Y=\\ln y\\cdot(e^{\\ln y})\\uparrow\\uparrow(n-1)=\\varepsilon_{n-1}(\\ln y)$, d. h. $\\ln y=\\omega_{n-1}(\\ln Y)$. Für $y>1$ ist $\\ln y>0$, dort ist $\\varepsilon_{n-1}$ streng wachsend.\n"
+   },
+   "stuetzt_sich_auf": [
+    "gr.def.epsilon_omega"
+   ],
+   "experimente": [
+    "exp.superwurzel_omega"
+   ],
+   "quellen": [
+    {
+     "ref": "hectogon2020a",
+     "stelle": "ab 45:00"
+    }
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Ja — die Formel benennt die Umkehrung; sie ist so explizit wie W selbst.",
+    "f2_benutzte_voraussetzungen": "Nur $y>1$ (damit $\\ln y>0$ und $\\varepsilon_{n-1}$ dort umkehrbar ist).",
+    "f3_spezialfall": "Ja: $n=2$ ist gr.satz.superwurzel.",
+    "f4_uebertragbar": "Auf $0<y<1$ mit den passenden Zweigen von $\\omega_{n-1}$; die Fixpunkt-Iteration von gr.satz.superwurzel_dritte ist eine Rechenvorschrift für $\\omega_2$.",
+    "f5_neue_frage": "Lassen sich die $\\omega_n$ zu einer stetigen Familie in $n$ verbinden — eine Superwurzel zu gebrochener Höhe?"
+   },
+   "bewertung": {
+    "richtigkeit": "vollständig; Werte auf 25 Stellen nachgerechnet",
+    "neuheit": "bekannt",
+    "nutzen": "Gibt allen Superwurzeln einen Namen und eine Rechenvorschrift.",
+    "nutzen_stufe": "mittel"
+   },
+   "kanten": [
+    {
+     "typ": "verallgemeinert",
+     "ziel": "gr.satz.superwurzel"
+    },
+    {
+     "typ": "verwandt",
+     "ziel": "gr.satz.superwurzel_dritte"
+    }
+   ],
+   "gebiet": "gr",
+   "_datei": "lit_gr_2.yaml",
+   "theorie": {
+    "worum": "Eine Formel für die $n$-te Superwurzel, gebaut wie die bekannte Formel mit Lambert W.\n",
+    "genau": "$\\sqrt[n]{Y}_s=\\exp(\\omega_{n-1}(\\ln Y))$ für $Y>1$.\n",
+    "warum": "Logarithmieren macht aus $y\\uparrow\\uparrow n=Y$ die Gleichung $\\ln Y=\\ln y\\cdot(e^{\\ln y})\\uparrow\\uparrow(n-1)=\\varepsilon_{n-1}(\\ln y)$; $\\omega_{n-1}$ löst nach $\\ln y$ auf.\n",
+    "beispiel": "$n=3$, $Y=2$: $\\omega_2(\\ln 2)=0.38978$, also $\\sqrt[3]{2}_s=e^{0.38978}=1.47668\\ldots$ — derselbe Wert wie über die doppelte W-Iteration in [[gr.satz.superwurzel_dritte]].\n",
+    "bilder": [],
+    "einordnung": "Verallgemeinert [[gr.satz.superwurzel]]; die Bausteine stehen in [[gr.def.epsilon_omega]].\n"
+   },
+   "_strang": "gr.umkehrungen",
+   "_idee": "gleichung.superwurzeln",
+   "_niveau": "vertiefung",
+   "_status_eff": "bewiesen",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [
+    "gr.def.epsilon_omega"
+   ],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "gr.def.epsilon_omega",
+     "score": 6.55,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "über gr.satz.superwurzel",
+      "über gr.satz.turm_superwurzel"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel",
+     "score": 6.05,
+     "warum": [
+      "verallgemeinert",
+      "über gr.def.epsilon_omega",
+      "über gr.satz.superwurzel_dritte"
+     ]
+    },
+    {
+     "id": "gr.satz.turm_superwurzel",
+     "score": 4.94,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.def.epsilon_omega",
+      "über gr.satz.superwurzel"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_dritte",
+     "score": 4.38,
+     "warum": [
+      "verwandt",
+      "über gr.satz.superwurzel",
+      "gemeinsame Objekte: lambert_w, superwurzel"
+     ]
+    },
+    {
+     "id": "gr.satz.omega_ableitung",
+     "score": 4.35,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.def.epsilon_omega",
+      "über gr.satz.turm_superwurzel"
+     ]
+    },
+    {
+     "id": "gr.korr.grenzidentitaet",
+     "score": 3.3,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.turm_superwurzel",
+      "über gr.kor.basis_summe"
+     ]
+    },
+    {
+     "id": "gr.kor.basis_summe",
+     "score": 2.05,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.turm_superwurzel",
+      "über gr.satz.omega_ableitung"
+     ]
+    },
+    {
+     "id": "fp.satz.unendliche_superwurzel",
+     "score": 1.32,
+     "warum": [
+      "über gr.satz.superwurzel",
+      "über gr.satz.superwurzel_dritte"
+     ]
+    }
+   ],
+   "en": {
+    "titel": "Every super-root is exp∘ω_{n−1}∘ln",
+    "aussage": "The $n$-th super-root is\n$$\\sqrt[n]{Y}_s=\\exp\\bigl(\\omega_{n-1}(\\ln Y)\\bigr).$$\nFor $n=2$ this is $e^{W(\\ln Y)}$ (gr.satz.superwurzel), for $n=1$ simply $Y$. Values: $\\sqrt[3]{2}_s=1.4766843373\\ldots$, $\\sqrt[4]{3}_s=1.5636279033\\ldots$,\n$\\sqrt[5]{10}_s=1.6440790743\\ldots$\n",
+    "bereich": "integer $n\\ge1$; $Y>1$, sought $y>1$ with $y\\uparrow\\uparrow n=Y$",
+    "einfach": "For the tower of two, y^y = Y, Lambert W gives the answer. For towers of three, four, n there is just such a formula — you only need a new function ω_{n−1} that takes over the role of W. The calculation is one line.",
+    "beweis": {
+     "text": "$\\ln(y\\uparrow\\uparrow n)=(y\\uparrow\\uparrow(n-1))\\ln y$, and with $y=e^{\\ln y}$ we have $y\\uparrow\\uparrow(n-1)=(e^{\\ln y})\\uparrow\\uparrow(n-1)$. Hence\n$\\ln Y=\\ln y\\cdot(e^{\\ln y})\\uparrow\\uparrow(n-1)=\\varepsilon_{n-1}(\\ln y)$, i.e. $\\ln y=\\omega_{n-1}(\\ln Y)$. For $y>1$ we have $\\ln y>0$, where $\\varepsilon_{n-1}$ is strictly increasing.\n"
+    },
+    "pruefung": {
+     "f1_folgt_unmittelbar": "Yes — the formula names the inverse; it is as explicit as W itself.",
+     "f2_benutzte_voraussetzungen": "Only $y>1$ (so that $\\ln y>0$ and $\\varepsilon_{n-1}$ is invertible there).",
+     "f3_spezialfall": "Yes: $n=2$ is gr.satz.superwurzel.",
+     "f4_uebertragbar": "To $0<y<1$ with the appropriate branches of $\\omega_{n-1}$; the fixed-point iteration of gr.satz.superwurzel_dritte is a computing rule for $\\omega_2$.",
+     "f5_neue_frage": "Can the $\\omega_n$ be joined into a continuous family in $n$ — a super-root of fractional height?"
+    },
+    "bewertung": {
+     "richtigkeit": "complete; values recomputed to 25 digits",
+     "nutzen": "Gives every super-root a name and a computing rule."
+    },
+    "quellen": [
+     {
+      "stelle": "from 45:00"
+     }
+    ]
+   },
+   "en_theorie": {
+    "worum": "A formula for the $n$-th super-root, built like the familiar formula with Lambert W.\n",
+    "genau": "$\\sqrt[n]{Y}_s=\\exp(\\omega_{n-1}(\\ln Y))$ for $Y>1$.\n",
+    "warum": "Taking logarithms turns $y\\uparrow\\uparrow n=Y$ into the equation $\\ln Y=\\ln y\\cdot(e^{\\ln y})\\uparrow\\uparrow(n-1)=\\varepsilon_{n-1}(\\ln y)$; $\\omega_{n-1}$ solves for $\\ln y$.\n",
+    "beispiel": "$n=3$, $Y=2$: $\\omega_2(\\ln 2)=0.38978$, so $\\sqrt[3]{2}_s=e^{0.38978}=1.47668\\ldots$ — the same value as via the double W iteration in [[gr.satz.superwurzel_dritte]].\n",
+    "einordnung": "Generalizes [[gr.satz.superwurzel]]; the building blocks are in [[gr.def.epsilon_omega]].\n"
+   },
+   "_en_stand": "aktuell",
+   "_en_geprueft": "nein",
+   "befunde": []
+  },
+  {
+   "id": "gr.satz.turm_superwurzel",
+   "titel": "Der unendliche Turm ist der Kehrwert der Superquadratwurzel von 1/x",
+   "art": "satz",
+   "ebene": "X",
+   "status": "bewiesen",
+   "niveau": "einstieg",
+   "objekte": [
+    "turm",
+    "superwurzel",
+    "lambert_w"
+   ],
+   "bereich": "$e^{-e}\\le x\\le e^{1/e}$, $h(x)=x^{x^{\\cdots}}$; $\\operatorname{ssrt}$ wie in gr.satz.superwurzel",
+   "aussage": "$$h(x)=\\frac{1}{\\operatorname{ssrt}(1/x)}=\\frac{W(-\\ln x)}{-\\ln x},\\qquad h^{-1}(y)=y^{1/y}.$$\n",
+   "einfach": "Der unendliche Turm und die Superquadratwurzel sind eng verwandt: Nimm den Kehrwert der Basis, ziehe die Superquadratwurzel und nimm wieder den Kehrwert — dann hast du den Wert des unendlichen Turms.",
+   "beweis": {
+    "art": "vollstaendig",
+    "text": "$h=x^h$ gibt $x=h^{1/h}$, also $(1/h)^{1/h}=1/x$: $1/h$ ist die Superquadratwurzel von $1/x$. Mit $\\operatorname{ssrt}(Y)=\\ln Y/W(\\ln Y)$ folgt die W-Form."
+   },
+   "stuetzt_sich_auf": [
+    "gr.satz.superwurzel"
+   ],
+   "experimente": [
+    "exp.superwurzel_omega"
+   ],
+   "quellen": [
+    {
+     "ref": "hectogon2020a",
+     "stelle": "ab 20:00"
+    },
+    {
+     "ref": "corless1996"
+    }
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Ja, aus $h=x^h$.",
+    "f2_benutzte_voraussetzungen": "Hauptzweig von W; für $x<e^{-e}$ gibt es keinen Grenzwert (Periode 2).",
+    "f3_spezialfall": "Ja: Umkehrung von $y\\mapsto y^{1/y}$.",
+    "f4_uebertragbar": "Komplexe $x$ im Konvergenzgebiet mit dem passenden W-Zweig.",
+    "f5_neue_frage": "nein"
+   },
+   "bewertung": {
+    "richtigkeit": "vollständig",
+    "neuheit": "bekannt",
+    "nutzen": "Verbindet die zwei Lambert-W-Formeln der Grundlagen.",
+    "nutzen_stufe": "gering"
+   },
+   "kanten": [
+    {
+     "typ": "verwandt",
+     "ziel": "gr.def.epsilon_omega"
+    }
+   ],
+   "gebiet": "gr",
+   "_datei": "lit_gr_2.yaml",
+   "theorie": {
+    "worum": "Zwei Lambert-W-Formeln der Grundlagen — unendlicher Turm und Superquadratwurzel — sind dieselbe Formel.\n",
+    "genau": "$h(x)=1/\\operatorname{ssrt}(1/x)$, und die Umkehrung des unendlichen Turms ist $y\\mapsto y^{1/y}$.\n",
+    "warum": "Aus $h=x^h$ folgt $(1/h)^{1/h}=1/x$.\n",
+    "beispiel": "$x=\\sqrt2$: $1/x=0.7071$, $\\operatorname{ssrt}(0.7071)=\\tfrac12$ (denn $(\\tfrac12)^{1/2}=0.7071$), also $h(\\sqrt2)=2$.\n",
+    "bilder": [],
+    "einordnung": "Superquadratwurzel: [[gr.satz.superwurzel]]; Ableitung des Turms: [[gr.satz.turm_ableitung]].\n"
+   },
+   "_strang": "gr.umkehrungen",
+   "_idee": "gleichung.superwurzeln",
+   "_niveau": "einstieg",
+   "_status_eff": "bewiesen",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [
+    "gr.satz.superwurzel"
+   ],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "gr.satz.superwurzel",
+     "score": 5.37,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "über gr.def.epsilon_omega",
+      "über gr.satz.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_omega",
+     "score": 4.94,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.superwurzel",
+      "über gr.def.epsilon_omega"
+     ]
+    },
+    {
+     "id": "gr.def.epsilon_omega",
+     "score": 3.72,
+     "warum": [
+      "verwandt",
+      "über gr.satz.superwurzel",
+      "über gr.satz.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.omega_ableitung",
+     "score": 3.23,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.def.epsilon_omega",
+      "über gr.satz.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_dritte",
+     "score": 3.07,
+     "warum": [
+      "über gr.satz.superwurzel",
+      "über gr.satz.superwurzel_omega",
+      "gemeinsame Objekte: lambert_w, superwurzel"
+     ]
+    },
+    {
+     "id": "gr.korr.grenzidentitaet",
+     "score": 2.88,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.superwurzel_omega",
+      "über gr.kor.basis_summe"
+     ]
+    },
+    {
+     "id": "gr.kor.basis_summe",
+     "score": 2.05,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.omega_ableitung"
+     ]
+    },
+    {
+     "id": "gr.satz.turmintegral_grenzen",
+     "score": 1.67,
+     "warum": [
+      "gemeinsame Objekte: lambert_w, turm"
+     ]
+    }
+   ],
+   "en": {
+    "titel": "The infinite tower is the reciprocal of the super-square-root of 1/x",
+    "aussage": "$$h(x)=\\frac{1}{\\operatorname{ssrt}(1/x)}=\\frac{W(-\\ln x)}{-\\ln x},\\qquad h^{-1}(y)=y^{1/y}.$$\n",
+    "bereich": "$e^{-e}\\le x\\le e^{1/e}$, $h(x)=x^{x^{\\cdots}}$; $\\operatorname{ssrt}$ as in gr.satz.superwurzel",
+    "einfach": "The infinite tower and the super-square-root are closely related: take the reciprocal of the base, take the super-square-root, and take the reciprocal again — then you have the value of the infinite tower.",
+    "beweis": {
+     "text": "$h=x^h$ gives $x=h^{1/h}$, so $(1/h)^{1/h}=1/x$: $1/h$ is the super-square-root of $1/x$. With $\\operatorname{ssrt}(Y)=\\ln Y/W(\\ln Y)$ the W form follows."
+    },
+    "pruefung": {
+     "f1_folgt_unmittelbar": "Yes, from $h=x^h$.",
+     "f2_benutzte_voraussetzungen": "Principal branch of W; for $x<e^{-e}$ there is no limit (period 2).",
+     "f3_spezialfall": "Yes: inverse of $y\\mapsto y^{1/y}$.",
+     "f4_uebertragbar": "Complex $x$ in the convergence region with the matching branch of W.",
+     "f5_neue_frage": "no"
+    },
+    "bewertung": {
+     "richtigkeit": "complete",
+     "nutzen": "Connects the two Lambert W formulas of the basics."
+    },
+    "quellen": [
+     {
+      "stelle": "from 20:00"
+     },
+     {}
+    ]
+   },
+   "en_theorie": {
+    "worum": "Two Lambert W formulas of the basics — infinite tower and super-square-root — are the same formula.\n",
+    "genau": "$h(x)=1/\\operatorname{ssrt}(1/x)$, and the inverse of the infinite tower is $y\\mapsto y^{1/y}$.\n",
+    "warum": "From $h=x^h$ it follows that $(1/h)^{1/h}=1/x$.\n",
+    "beispiel": "$x=\\sqrt2$: $1/x=0.7071$, $\\operatorname{ssrt}(0.7071)=\\tfrac12$ (since $(\\tfrac12)^{1/2}=0.7071$), so $h(\\sqrt2)=2$.\n",
+    "einordnung": "Super-square-root: [[gr.satz.superwurzel]]; derivative of the tower: [[gr.satz.turm_ableitung]].\n"
+   },
+   "_en_stand": "aktuell",
+   "_en_geprueft": "nein",
+   "befunde": []
+  },
+  {
+   "id": "gr.kor.basis_summe",
+   "titel": "Ableitung von x↑↑n nach der Basis — ohne Rekursion",
+   "art": "korollar",
+   "ebene": "A",
+   "status": "bewiesen",
+   "niveau": "vertiefung",
+   "objekte": [
+    "hyperoperation"
+   ],
+   "bereich": "ganze $n\\ge1$, $x>0$, $x\\ne1$",
+   "aussage": "$$\\frac{d}{dx}\\,x\\uparrow\\uparrow n=\\frac{x\\uparrow\\uparrow n}{x\\ln x}\\sum_{k=1}^{n}\\ \\prod_{m=k-1}^{n-1}\\bigl(x\\uparrow\\uparrow m\\cdot\\ln x\\bigr).$$\nGleichwertig mit dem „Turm-Faktoriell“ $\\Pi_j(x)=\\prod_{i=1}^{j}x\\uparrow\\uparrow i$ ($\\Pi_{-1}=\\Pi_0=1$): $\\ (x\\uparrow\\uparrow n)'=\\dfrac{\\Pi_n(x)}{x}\\sum_{k=1}^n\\dfrac{(\\ln x)^{n-k}}{\\Pi_{k-2}(x)}$.\nBeispiel $n=3$: $x^{x^x}\\,x^x\\bigl(\\ln^2x+\\ln x+\\tfrac1x\\bigr)$.\n",
+   "einfach": "Die Rekursion aus gr.satz.basis_ganz lässt sich ganz auflösen: Die Ableitung ist eine Summe von Produkten von Türmen, mit Logarithmen dazwischen.",
+   "beweis": {
+    "art": "vollstaendig",
+    "text": "Induktion über $n$ aus $t_{n+1}'=t_{n+1}(t_n/x+\\ln x\\,t_n')$ (gr.satz.basis_ganz); der Summand $k$ ist das Produkt über die Stufen $k-1,\\dots,n-1$."
+   },
+   "stuetzt_sich_auf": [
+    "gr.satz.basis_ganz"
+   ],
+   "experimente": [
+    "exp.superwurzel_omega"
+   ],
+   "quellen": [
+    {
+     "ref": "hectogon2020b",
+     "stelle": "ab 10:00 (Induktionsbeweis)"
+    }
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Ja, Auflösen der Rekursion.",
+    "f2_benutzte_voraussetzungen": "$x\\ne1$ für die Division durch $\\ln x$ (bei $x=1$ den Grenzwert nehmen).",
+    "f3_spezialfall": "Ja: gr.satz.basis_ganz.",
+    "f4_uebertragbar": "Auf $\\varepsilon_n$ und $\\omega_n$ (gr.satz.omega_ableitung).",
+    "f5_neue_frage": "Konvergiert $\\Pi_n(x)$ oder eine normierte Fassung für $n\\to\\infty$?"
+   },
+   "bewertung": {
+    "richtigkeit": "vollständig; n = 2…5 auf 40 Stellen nachgerechnet",
+    "neuheit": "bekannt",
+    "nutzen": "Geschlossene Form für Rechnungen und Abschätzungen.",
+    "nutzen_stufe": "gering"
+   },
+   "gebiet": "gr",
+   "_datei": "lit_gr_2.yaml",
+   "theorie": {
+    "worum": "Die Ableitung eines Turms nach der Basis, nicht Schritt für Schritt, sondern als eine Formel.\n",
+    "genau": "$(x\\uparrow\\uparrow n)'=\\dfrac{x\\uparrow\\uparrow n}{x\\ln x}\\sum_{k=1}^n\\prod_{m=k-1}^{n-1}(x\\uparrow\\uparrow m\\cdot\\ln x)$.\n",
+    "warum": "Die Rekursion $t_{n+1}'=t_{n+1}(t_n/x+\\ln x\\,t_n')$ aus [[gr.satz.basis_ganz]] ist linear in $t_n'$; aufgelöst entsteht pro Stufe ein Summand.\n",
+    "beispiel": "$n=2$: $x^x(\\ln x+1)$. $n=3$: $x^{x^x}x^x(\\ln^2x+\\ln x+1/x)$.\n",
+    "bilder": [],
+    "einordnung": "Dieselbe Rechnung mit $e^x$ als Basis: [[gr.satz.omega_ableitung]].\n"
+   },
+   "_strang": "gr.basis",
+   "_idee": "gleichung.werte",
+   "_niveau": "vertiefung",
+   "_status_eff": "bewiesen",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [
+    "gr.satz.basis_ganz"
+   ],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "gr.satz.basis_ganz",
+     "score": 5.5,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
+     "id": "gr.satz.stellen",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
+     "id": "br.satz.ordinal_tetration",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
+     "id": "br.def.hyperoperation",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: hyperoperation"
+     ]
+    },
+    {
+     "id": "gr.satz.turm_superwurzel",
+     "score": 2.05,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.omega_ableitung"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_omega",
+     "score": 2.05,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.turm_superwurzel",
+      "über gr.satz.omega_ableitung"
+     ]
+    },
+    {
+     "id": "gr.satz.omega_ableitung",
+     "score": 2.05,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel"
+     ]
+    },
+    {
+     "id": "gr.korr.grenzidentitaet",
+     "score": 2.05,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel"
+     ]
+    }
+   ],
+   "en": {
+    "titel": "Derivative of x↑↑n with respect to the base — without recursion",
+    "aussage": "$$\\frac{d}{dx}\\,x\\uparrow\\uparrow n=\\frac{x\\uparrow\\uparrow n}{x\\ln x}\\sum_{k=1}^{n}\\ \\prod_{m=k-1}^{n-1}\\bigl(x\\uparrow\\uparrow m\\cdot\\ln x\\bigr).$$\nEquivalently, with the “tower factorial” $\\Pi_j(x)=\\prod_{i=1}^{j}x\\uparrow\\uparrow i$ ($\\Pi_{-1}=\\Pi_0=1$): $\\ (x\\uparrow\\uparrow n)'=\\dfrac{\\Pi_n(x)}{x}\\sum_{k=1}^n\\dfrac{(\\ln x)^{n-k}}{\\Pi_{k-2}(x)}$.\nExample $n=3$: $x^{x^x}\\,x^x\\bigl(\\ln^2x+\\ln x+\\tfrac1x\\bigr)$.\n",
+    "bereich": "integer $n\\ge1$, $x>0$, $x\\ne1$",
+    "einfach": "The recursion from gr.satz.basis_ganz can be unrolled completely: the derivative is a sum of products of towers, with logarithms in between.",
+    "beweis": {
+     "text": "Induction on $n$ from $t_{n+1}'=t_{n+1}(t_n/x+\\ln x\\,t_n')$ (gr.satz.basis_ganz); the summand $k$ is the product over the levels $k-1,\\dots,n-1$."
+    },
+    "pruefung": {
+     "f1_folgt_unmittelbar": "Yes, unrolling the recursion.",
+     "f2_benutzte_voraussetzungen": "$x\\ne1$ for the division by $\\ln x$ (at $x=1$ take the limit).",
+     "f3_spezialfall": "Yes: gr.satz.basis_ganz.",
+     "f4_uebertragbar": "To $\\varepsilon_n$ and $\\omega_n$ (gr.satz.omega_ableitung).",
+     "f5_neue_frage": "Does $\\Pi_n(x)$ or a normalized version converge for $n\\to\\infty$?"
+    },
+    "bewertung": {
+     "richtigkeit": "complete; n = 2…5 recomputed to 40 digits",
+     "nutzen": "Closed form for calculations and estimates."
+    },
+    "quellen": [
+     {
+      "stelle": "from 10:00 (proof by induction)"
+     }
+    ]
+   },
+   "en_theorie": {
+    "worum": "The derivative of a tower with respect to the base, not step by step but as one formula.\n",
+    "genau": "$(x\\uparrow\\uparrow n)'=\\dfrac{x\\uparrow\\uparrow n}{x\\ln x}\\sum_{k=1}^n\\prod_{m=k-1}^{n-1}(x\\uparrow\\uparrow m\\cdot\\ln x)$.\n",
+    "warum": "The recursion $t_{n+1}'=t_{n+1}(t_n/x+\\ln x\\,t_n')$ from [[gr.satz.basis_ganz]] is linear in $t_n'$; unrolled, each level contributes one summand.\n",
+    "beispiel": "$n=2$: $x^x(\\ln x+1)$. $n=3$: $x^{x^x}x^x(\\ln^2x+\\ln x+1/x)$.\n",
+    "einordnung": "The same calculation with $e^x$ as base: [[gr.satz.omega_ableitung]].\n"
+   },
+   "_en_stand": "aktuell",
+   "_en_geprueft": "nein",
+   "befunde": []
+  },
+  {
+   "id": "gr.satz.omega_ableitung",
+   "titel": "Ableitungen von ε_n und ω_n",
+   "art": "satz",
+   "ebene": "X",
+   "status": "bewiesen",
+   "niveau": "vertiefung",
+   "objekte": [
+    "lambert_w"
+   ],
+   "aussage": "Mit $S_n(x)=\\sum_{k=1}^{n}\\prod_{m=k-1}^{n-1}\\varepsilon_m(x)$ gilt\n$$\\varepsilon_n'(x)=\\frac{\\varepsilon_n(x)}{x}\\bigl(1+S_n(x)\\bigr),\\qquad \\omega_n'(x)=\\frac{\\omega_n(x)}{x\\,\\bigl(1+S_n(\\omega_n(x))\\bigr)}.$$\nFür $n=1$: $(xe^x)'=e^x(1+x)$ und $W'(x)=W(x)/\\bigl(x(1+W(x))\\bigr)$.\n",
+   "einfach": "Auch die neuen Funktionen lassen sich ableiten, und die Formel sieht aus wie die bekannte Ableitung von Lambert W — nur mit einer längeren Summe im Nenner.",
+   "beweis": {
+    "art": "vollstaendig",
+    "text": "$r_n=x\\varepsilon_n'/\\varepsilon_n$ erfüllt $r_0=1$ und $r_{n+1}=1+\\varepsilon_n r_n$ (aus $\\varepsilon_{n+1}=xe^{\\varepsilon_n}$); aufgelöst $r_n=1+S_n$. Für $\\omega_n$ die Umkehrregel und $\\varepsilon_n(\\omega_n(x))=x$."
+   },
+   "stuetzt_sich_auf": [
+    "gr.def.epsilon_omega"
+   ],
+   "experimente": [
+    "exp.superwurzel_omega"
+   ],
+   "quellen": [
+    {
+     "ref": "hectogon2020b",
+     "stelle": "ab 35:00"
+    }
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Ja, Kettenregel und Umkehrregel.",
+    "f2_benutzte_voraussetzungen": "$x\\ne0$; für $\\omega_n$ der Bereich, auf dem $\\varepsilon_n$ umkehrbar ist.",
+    "f3_spezialfall": "Ja: Ableitung von Lambert W ($n=1$).",
+    "f4_uebertragbar": "Gleiche Rechnung wie gr.kor.basis_summe mit $e^x$ statt $x$ als Basis.",
+    "f5_neue_frage": "Was passiert für $n\\to\\infty$? → gr.korr.grenzidentitaet"
+   },
+   "bewertung": {
+    "richtigkeit": "vollständig; n = 1…4 auf 20 Stellen nachgerechnet",
+    "neuheit": "bekannt",
+    "nutzen": "Rechenregel für die verallgemeinerten W-Funktionen.",
+    "nutzen_stufe": "gering"
+   },
+   "gebiet": "gr",
+   "_datei": "lit_gr_2.yaml",
+   "theorie": {
+    "worum": "Wie man die neuen Funktionen $\\varepsilon_n$ und ihre Umkehrungen $\\omega_n$ ableitet.\n",
+    "genau": "$\\varepsilon_n'=(\\varepsilon_n/x)(1+S_n)$, $\\omega_n'=\\omega_n/(x(1+S_n(\\omega_n)))$ mit $S_n=\\sum_{k=1}^n\\prod_{m=k-1}^{n-1}\\varepsilon_m$.\n",
+    "warum": "$r_n=x\\varepsilon_n'/\\varepsilon_n$ erfüllt $r_{n+1}=1+\\varepsilon_nr_n$; die Umkehrregel gibt $\\omega_n'$.\n",
+    "beispiel": "$n=1$ ist die bekannte Formel $W'(x)=W(x)/(x(1+W(x)))$.\n",
+    "bilder": [],
+    "einordnung": "Grenzfall $n\\to\\infty$ und die Falle beim Vertauschen: [[gr.korr.grenzidentitaet]].\n"
+   },
+   "_strang": "gr.basis",
+   "_idee": "gleichung.werte",
+   "_niveau": "vertiefung",
+   "_status_eff": "bewiesen",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 1,
+   "_abhaengig": [
+    "gr.def.epsilon_omega"
+   ],
+   "_traegt": [
+    "gr.korr.grenzidentitaet"
+   ],
+   "_verwandt": [
+    {
+     "id": "gr.korr.grenzidentitaet",
+     "score": 8.55,
+     "warum": [
+      "stützt sich auf (Beweis) (rückwärts)",
+      "verwandt (rückwärts)",
+      "gemeinsames Experiment exp.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.def.epsilon_omega",
+     "score": 4.95,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_omega",
+     "score": 4.35,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.def.epsilon_omega",
+      "über gr.korr.grenzidentitaet"
+     ]
+    },
+    {
+     "id": "gr.satz.turm_superwurzel",
+     "score": 3.23,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.def.epsilon_omega",
+      "über gr.korr.grenzidentitaet"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel",
+     "score": 2.3,
+     "warum": [
+      "über gr.def.epsilon_omega",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel"
+     ]
+    },
+    {
+     "id": "gr.kor.basis_summe",
+     "score": 2.05,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.korr.grenzidentitaet",
+      "über gr.satz.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_dritte",
+     "score": 1.6,
+     "warum": [
+      "über gr.satz.superwurzel_omega",
+      "gemeinsame Objekte: lambert_w"
+     ]
+    },
+    {
+     "id": "gr.satz.turmintegral_grenzen",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: lambert_w"
+     ]
+    }
+   ],
+   "en": {
+    "titel": "Derivatives of ε_n and ω_n",
+    "aussage": "With $S_n(x)=\\sum_{k=1}^{n}\\prod_{m=k-1}^{n-1}\\varepsilon_m(x)$ we have\n$$\\varepsilon_n'(x)=\\frac{\\varepsilon_n(x)}{x}\\bigl(1+S_n(x)\\bigr),\\qquad \\omega_n'(x)=\\frac{\\omega_n(x)}{x\\,\\bigl(1+S_n(\\omega_n(x))\\bigr)}.$$\nFor $n=1$: $(xe^x)'=e^x(1+x)$ and $W'(x)=W(x)/\\bigl(x(1+W(x))\\bigr)$.\n",
+    "einfach": "The new functions can be differentiated too, and the formula looks like the familiar derivative of Lambert W — only with a longer sum in the denominator.",
+    "beweis": {
+     "text": "$r_n=x\\varepsilon_n'/\\varepsilon_n$ satisfies $r_0=1$ and $r_{n+1}=1+\\varepsilon_n r_n$ (from $\\varepsilon_{n+1}=xe^{\\varepsilon_n}$); unrolled, $r_n=1+S_n$. For $\\omega_n$ use the inverse-function rule and $\\varepsilon_n(\\omega_n(x))=x$."
+    },
+    "pruefung": {
+     "f1_folgt_unmittelbar": "Yes, chain rule and inverse-function rule.",
+     "f2_benutzte_voraussetzungen": "$x\\ne0$; for $\\omega_n$ the range on which $\\varepsilon_n$ is invertible.",
+     "f3_spezialfall": "Yes: derivative of Lambert W ($n=1$).",
+     "f4_uebertragbar": "Same calculation as gr.kor.basis_summe with $e^x$ instead of $x$ as the base.",
+     "f5_neue_frage": "What happens for $n\\to\\infty$? → gr.korr.grenzidentitaet"
+    },
+    "bewertung": {
+     "richtigkeit": "complete; n = 1…4 recomputed to 20 digits",
+     "nutzen": "Calculation rule for the generalized W functions."
+    },
+    "quellen": [
+     {
+      "stelle": "from 35:00"
+     }
+    ]
+   },
+   "en_theorie": {
+    "worum": "How to differentiate the new functions $\\varepsilon_n$ and their inverses $\\omega_n$.\n",
+    "genau": "$\\varepsilon_n'=(\\varepsilon_n/x)(1+S_n)$, $\\omega_n'=\\omega_n/(x(1+S_n(\\omega_n)))$ with $S_n=\\sum_{k=1}^n\\prod_{m=k-1}^{n-1}\\varepsilon_m$.\n",
+    "warum": "$r_n=x\\varepsilon_n'/\\varepsilon_n$ satisfies $r_{n+1}=1+\\varepsilon_nr_n$; the inverse-function rule gives $\\omega_n'$.\n",
+    "beispiel": "$n=1$ is the familiar formula $W'(x)=W(x)/(x(1+W(x)))$.\n",
+    "einordnung": "Limit $n\\to\\infty$ and the trap of interchanging limits: [[gr.korr.grenzidentitaet]].\n"
+   },
+   "_en_stand": "aktuell",
+   "_en_geprueft": "nein",
+   "befunde": []
+  },
+  {
+   "id": "gr.korr.grenzidentitaet",
+   "titel": "Korrektur: x/(1−x) als unendliche Summe von ε-Produkten — nur in der richtigen Reihenfolge",
+   "art": "korrektur",
+   "ebene": "X",
+   "status": "numerisch",
+   "niveau": "vertiefung",
+   "objekte": [
+    "lambert_w"
+   ],
+   "bereich": "$0<x<1$; $S_n$ wie in gr.satz.omega_ableitung",
+   "aussage": "Im Video wird in $\\omega_n'$ zuerst $\\omega_\\infty(x)=xe^{-x}$ eingesetzt und dann $n\\to\\infty$ gesetzt; behauptet wird\n$\\dfrac{x}{1-x}=\\sum_{k\\ge1}\\prod_{m\\ge k-1}\\varepsilon_m(xe^{-x})$. **So stimmt das nicht:** bei $x=\\tfrac12$ geht die rechte Seite gegen $\\tfrac12$, nicht gegen $1$.\nRichtig (numerisch) ist die Reihenfolge „erst $\\omega_n$ einsetzen, dann $n\\to\\infty$“:\n$$\\lim_{n\\to\\infty}S_n\\bigl(\\omega_n(x)\\bigr)=\\frac{x}{1-x}\\qquad(0<x<1);$$\nbei $x=\\tfrac12$: $S_5=0.9035$, $S_{20}=0.99998794$, $S_{80}=1-4\\cdot10^{-23}$.\n",
+   "einfach": "Eine schöne Formel aus dem Video ist falsch, weil zwei Grenzübergänge vertauscht wurden. In der richtigen Reihenfolge stimmt sie — jedenfalls in allen Rechnungen bis n = 80.",
+   "beweis": {
+    "art": "skizze",
+    "text": "Die oberen Faktoren $\\varepsilon_m(\\omega_n(x))$, $m$ nahe $n$, liegen nahe bei $x$ (weil $\\varepsilon_n(\\omega_n(x))=x$ und die Iteration $\\varepsilon\\mapsto we^{\\varepsilon}$ bei $x<1$ anzieht); die Summe wird so zu $\\sum_j x^j$. Beim Vertauschen bleiben in jedem unendlichen Produkt unendlich viele Faktoren nahe $x<1$ stehen.",
+    "luecken": [
+     "Gleichmässige Abschätzung der unteren Faktoren, die den Grenzwert nicht ändern."
+    ]
+   },
+   "stuetzt_sich_auf": [
+    "gr.satz.omega_ableitung"
+   ],
+   "experimente": [
+    "exp.superwurzel_omega"
+   ],
+   "quellen": [
+    {
+     "ref": "hectogon2020b",
+     "stelle": "ab 50:00 (Grenzfall n → ∞)"
+    },
+    {
+     "ref": "diese_arbeit",
+     "stelle": "Nachrechnung und Korrektur"
+    }
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Nein; der Grenzwert braucht eine Abschätzung (Skizze).",
+    "f2_benutzte_voraussetzungen": "$0<x<1$, damit die Iteration anzieht und $\\sum x^j$ konvergiert.",
+    "f3_spezialfall": "Vertauschen von Grenzwerten ohne gleichmässige Konvergenz.",
+    "f4_uebertragbar": "Dieselbe Falle bei allen Formeln, in die „$n=\\infty$“ eingesetzt wird (z. B. $\\omega_\\infty$ statt $\\omega_n$).",
+    "f5_neue_frage": "Gibt es einen kurzen Beweis über die Fixpunkt-Ableitung $x=-W(-w)$, $w=xe^{-x}$?"
+   },
+   "bewertung": {
+    "richtigkeit": "numerisch (n bis 80, 22 Stellen); Beweis als Skizze",
+    "neuheit": "neu_ungeprueft",
+    "nutzen": "Korrigiert eine falsch verbreitete Formel und zeigt, wo sie herkommt.",
+    "nutzen_stufe": "gering"
+   },
+   "kanten": [
+    {
+     "typ": "verwandt",
+     "ziel": "gr.satz.omega_ableitung",
+     "notiz": "korrigiert nur den Grenzfall n → ∞ aus dem Video; die Formel für endliches n stimmt"
+    }
+   ],
+   "gebiet": "gr",
+   "_datei": "lit_gr_2.yaml",
+   "theorie": {
+    "worum": "Eine Formel aus einem Video, die falsch wird, weil zwei Grenzübergänge vertauscht wurden.\n",
+    "genau": "$\\lim_n S_n(\\omega_n(x))=x/(1-x)$ für $0<x<1$ (numerisch), aber $\\sum_k\\prod_{m\\ge k-1}\\varepsilon_m(xe^{-x})\\ne x/(1-x)$.\n",
+    "warum": "In $S_n(\\omega_n(x))$ liegen die obersten Faktoren nahe $x$, weil $\\varepsilon_n(\\omega_n(x))=x$; die Summe wird zur geometrischen Reihe. Setzt man vorher\n$\\omega_\\infty$ ein, steht in jedem unendlichen Produkt eine unendliche Folge von Faktoren nahe $x<1$ — die Produkte verschwinden, und es kommt etwas anderes heraus.\n",
+    "beispiel": "$x=\\tfrac12$: richtige Reihenfolge $S_{80}=1-4\\cdot10^{-23}$, vertauschte Reihenfolge $\\to\\tfrac12$.\n",
+    "bilder": [],
+    "einordnung": "Endliche Formel: [[gr.satz.omega_ableitung]].\n"
+   },
+   "_strang": "gr.basis",
+   "_idee": "gleichung.werte",
+   "_niveau": "vertiefung",
+   "_status_eff": "numerisch",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [
+    "gr.satz.omega_ableitung"
+   ],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "gr.satz.omega_ableitung",
+     "score": 8.55,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "verwandt",
+      "gemeinsames Experiment exp.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_omega",
+     "score": 3.3,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.omega_ableitung",
+      "über gr.kor.basis_summe"
+     ]
+    },
+    {
+     "id": "gr.def.epsilon_omega",
+     "score": 3.0,
+     "warum": [
+      "über gr.satz.omega_ableitung",
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel"
+     ]
+    },
+    {
+     "id": "gr.satz.turm_superwurzel",
+     "score": 2.88,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.omega_ableitung",
+      "über gr.kor.basis_summe"
+     ]
+    },
+    {
+     "id": "gr.kor.basis_summe",
+     "score": 2.05,
+     "warum": [
+      "gemeinsames Experiment exp.superwurzel_omega",
+      "über gr.satz.omega_ableitung",
+      "über gr.satz.superwurzel_omega"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel",
+     "score": 1.95,
+     "warum": [
+      "über gr.satz.superwurzel_omega",
+      "über gr.satz.turm_superwurzel",
+      "gemeinsame Objekte: lambert_w"
+     ]
+    },
+    {
+     "id": "gr.satz.superwurzel_dritte",
+     "score": 1.6,
+     "warum": [
+      "über gr.satz.superwurzel_omega",
+      "gemeinsame Objekte: lambert_w"
+     ]
+    },
+    {
+     "id": "gr.satz.turmintegral_grenzen",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: lambert_w"
+     ]
+    }
+   ],
+   "en": {
+    "titel": "Correction: x/(1−x) as an infinite sum of ε products — only in the right order",
+    "aussage": "In the video, $\\omega_\\infty(x)=xe^{-x}$ is first substituted into $\\omega_n'$ and then $n\\to\\infty$ is taken; the claim is\n$\\dfrac{x}{1-x}=\\sum_{k\\ge1}\\prod_{m\\ge k-1}\\varepsilon_m(xe^{-x})$. **As stated this is false:** at $x=\\tfrac12$ the right-hand side tends to $\\tfrac12$, not to $1$.\nCorrect (numerically) is the order “first substitute $\\omega_n$, then $n\\to\\infty$”:\n$$\\lim_{n\\to\\infty}S_n\\bigl(\\omega_n(x)\\bigr)=\\frac{x}{1-x}\\qquad(0<x<1);$$\nat $x=\\tfrac12$: $S_5=0.9035$, $S_{20}=0.99998794$, $S_{80}=1-4\\cdot10^{-23}$.\n",
+    "bereich": "$0<x<1$; $S_n$ as in gr.satz.omega_ableitung",
+    "einfach": "A nice formula from the video is wrong because two limits were interchanged. In the right order it holds — at least in all calculations up to n = 80.",
+    "beweis": {
+     "text": "The top factors $\\varepsilon_m(\\omega_n(x))$, $m$ close to $n$, lie close to $x$ (because $\\varepsilon_n(\\omega_n(x))=x$ and the iteration $\\varepsilon\\mapsto we^{\\varepsilon}$ is attracting for $x<1$); the sum thereby becomes $\\sum_j x^j$. After interchanging, every infinite product keeps infinitely many factors close to $x<1$.",
+     "luecken": [
+      "Uniform estimate of the lower factors, which do not change the limit."
+     ]
+    },
+    "pruefung": {
+     "f1_folgt_unmittelbar": "No; the limit needs an estimate (sketch).",
+     "f2_benutzte_voraussetzungen": "$0<x<1$, so that the iteration attracts and $\\sum x^j$ converges.",
+     "f3_spezialfall": "Interchanging limits without uniform convergence.",
+     "f4_uebertragbar": "The same trap in every formula into which “$n=\\infty$” is substituted (e.g. $\\omega_\\infty$ instead of $\\omega_n$).",
+     "f5_neue_frage": "Is there a short proof via the fixed-point derivative $x=-W(-w)$, $w=xe^{-x}$?"
+    },
+    "bewertung": {
+     "richtigkeit": "numerical (n up to 80, 22 digits); proof as sketch",
+     "nutzen": "Corrects a formula that circulates in wrong form and shows where it comes from."
+    },
+    "quellen": [
+     {
+      "stelle": "from 50:00 (limit n → ∞)"
+     },
+     {
+      "stelle": "recomputation and correction"
+     }
+    ]
+   },
+   "en_theorie": {
+    "worum": "A formula from a video that becomes wrong because two limits were interchanged.\n",
+    "genau": "$\\lim_n S_n(\\omega_n(x))=x/(1-x)$ for $0<x<1$ (numerically), but $\\sum_k\\prod_{m\\ge k-1}\\varepsilon_m(xe^{-x})\\ne x/(1-x)$.\n",
+    "warum": "In $S_n(\\omega_n(x))$ the top factors lie close to $x$, because $\\varepsilon_n(\\omega_n(x))=x$; the sum becomes a geometric series. If one substitutes\n$\\omega_\\infty$ first, every infinite product contains an infinite sequence of factors close to $x<1$ — the products vanish, and something else comes out.\n",
+    "beispiel": "$x=\\tfrac12$: right order $S_{80}=1-4\\cdot10^{-23}$, interchanged order $\\to\\tfrac12$.\n",
+    "einordnung": "Finite formula: [[gr.satz.omega_ableitung]].\n"
+   },
+   "_en_stand": "aktuell",
+   "_en_geprueft": "nein",
+   "befunde": []
+  },
+  {
    "id": "it.satz.karlin_mcgregor",
    "titel": "Zwei Fixpunkte: gleiche reguläre Iteration nur bei Möbius-Abbildungen (Karlin–McGregor 1968)",
    "art": "satz",
@@ -70966,6 +72056,61 @@
    "notiz": ""
   },
   {
+   "von": "gr.def.epsilon_omega",
+   "nach": "gr.satz.superwurzel",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "gr.satz.superwurzel_omega",
+   "nach": "gr.def.epsilon_omega",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "gr.satz.superwurzel_omega",
+   "nach": "gr.satz.superwurzel",
+   "typ": "verallgemeinert",
+   "notiz": ""
+  },
+  {
+   "von": "gr.satz.superwurzel_omega",
+   "nach": "gr.satz.superwurzel_dritte",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "gr.satz.turm_superwurzel",
+   "nach": "gr.satz.superwurzel",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "gr.satz.turm_superwurzel",
+   "nach": "gr.def.epsilon_omega",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "gr.kor.basis_summe",
+   "nach": "gr.satz.basis_ganz",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "gr.satz.omega_ableitung",
+   "nach": "gr.def.epsilon_omega",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "gr.korr.grenzidentitaet",
+   "nach": "gr.satz.omega_ableitung",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "gr.korr.grenzidentitaet",
+   "nach": "gr.satz.omega_ableitung",
+   "typ": "verwandt",
+   "notiz": "korrigiert nur den Grenzfall n → ∞ aus dem Video; die Formel für endliches n stimmt"
+  },
+  {
    "von": "it.satz.karlin_mcgregor",
    "nach": "it.satz.moebius_iteration",
    "typ": "verallgemeinert",
@@ -77425,6 +78570,102 @@
    },
    "zustand": "aktuell",
    "svg": "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"337.578125pt\" height=\"248.370375pt\" viewBox=\"0 0 337.578125 248.370375\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n <metadata>\n  <rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n   <cc:Work>\n    <dc:type rdf:resource=\"http://purl.org/dc/dcmitype/StillImage\"/>\n    <dc:date>2026-10-12T15:53:17.577070</dc:date>\n    <dc:format>image/svg+xml</dc:format>\n    <dc:creator>\n     <cc:Agent>\n      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>\n     </cc:Agent>\n    </dc:creator>\n   </cc:Work>\n  </rdf:RDF>\n </metadata>\n <defs>\n  <style type=\"text/css\">*{stroke-linejoin: round; stroke-linecap: butt}</style>\n </defs>\n <g id=\"figure_1\">\n  <g id=\"patch_1\">\n   <path d=\"M -0 248.370375 \nL 337.578125 248.370375 \nL 337.578125 0 \nL -0 0 \nz\n\" style=\"fill: #ffffff\"/>\n  </g>\n  <g id=\"axes_1\">\n   <g id=\"patch_2\">\n    <path d=\"M 51.378125 210.814125 \nL 330.378125 210.814125 \nL 330.378125 22.318125 \nL 51.378125 22.318125 \nz\n\" style=\"fill: #ffffff\"/>\n   </g>\n   <g id=\"matplotlib.axis_1\">\n    <g id=\"xtick_1\">\n     <g id=\"line2d_1\">\n      <path d=\"M 85.196307 210.814125 \nL 85.196307 22.318125 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_2\">\n      <defs>\n       <path id=\"m9cb4e5c52f\" d=\"M 0 0 \nL 0 3.5 \n\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </defs>\n      <g>\n       <use xlink:href=\"#m9cb4e5c52f\" x=\"85.196307\" y=\"210.814125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_1\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"85.196307\" y=\"225.412562\" transform=\"rotate(-0 85.196307 225.412562)\">10</text>\n     </g>\n    </g>\n    <g id=\"xtick_2\">\n     <g id=\"line2d_3\">\n      <path d=\"M 138.037216 210.814125 \nL 138.037216 22.318125 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_4\">\n      <g>\n       <use xlink:href=\"#m9cb4e5c52f\" x=\"138.037216\" y=\"210.814125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_2\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"138.037216\" y=\"225.412562\" transform=\"rotate(-0 138.037216 225.412562)\">15</text>\n     </g>\n    </g>\n    <g id=\"xtick_3\">\n     <g id=\"line2d_5\">\n      <path d=\"M 190.878125 210.814125 \nL 190.878125 22.318125 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_6\">\n      <g>\n       <use xlink:href=\"#m9cb4e5c52f\" x=\"190.878125\" y=\"210.814125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_3\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"190.878125\" y=\"225.412562\" transform=\"rotate(-0 190.878125 225.412562)\">20</text>\n     </g>\n    </g>\n    <g id=\"xtick_4\">\n     <g id=\"line2d_7\">\n      <path d=\"M 243.719034 210.814125 \nL 243.719034 22.318125 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_8\">\n      <g>\n       <use xlink:href=\"#m9cb4e5c52f\" x=\"243.719034\" y=\"210.814125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_4\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"243.719034\" y=\"225.412562\" transform=\"rotate(-0 243.719034 225.412562)\">25</text>\n     </g>\n    </g>\n    <g id=\"xtick_5\">\n     <g id=\"line2d_9\">\n      <path d=\"M 296.559943 210.814125 \nL 296.559943 22.318125 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_10\">\n      <g>\n       <use xlink:href=\"#m9cb4e5c52f\" x=\"296.559943\" y=\"210.814125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_5\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"296.559943\" y=\"225.412562\" transform=\"rotate(-0 296.559943 225.412562)\">30</text>\n     </g>\n    </g>\n    <g id=\"text_6\">\n     <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"190.878125\" y=\"239.090688\" transform=\"rotate(-0 190.878125 239.090688)\">Matrixgrösse N</text>\n    </g>\n   </g>\n   <g id=\"matplotlib.axis_2\">\n    <g id=\"ytick_1\">\n     <g id=\"line2d_11\">\n      <path d=\"M 51.378125 181.862739 \nL 330.378125 181.862739 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_12\">\n      <defs>\n       <path id=\"ma51836bbbe\" d=\"M 0 0 \nL -3.5 0 \n\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </defs>\n      <g>\n       <use xlink:href=\"#ma51836bbbe\" x=\"51.378125\" y=\"181.862739\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_7\">\n      <!-- $\\mathdefault{10^{-9}}$ -->\n      <g transform=\"translate(20.878125 185.661957)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">9</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_2\">\n     <g id=\"line2d_13\">\n      <path d=\"M 51.378125 148.31203 \nL 330.378125 148.31203 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_14\">\n      <g>\n       <use xlink:href=\"#ma51836bbbe\" x=\"51.378125\" y=\"148.31203\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_8\">\n      <!-- $\\mathdefault{10^{-7}}$ -->\n      <g transform=\"translate(20.878125 152.111249)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">7</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_3\">\n     <g id=\"line2d_15\">\n      <path d=\"M 51.378125 114.761321 \nL 330.378125 114.761321 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_16\">\n      <g>\n       <use xlink:href=\"#ma51836bbbe\" x=\"51.378125\" y=\"114.761321\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_9\">\n      <!-- $\\mathdefault{10^{-5}}$ -->\n      <g transform=\"translate(20.878125 118.56054)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">5</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_4\">\n     <g id=\"line2d_17\">\n      <path d=\"M 51.378125 81.210612 \nL 330.378125 81.210612 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_18\">\n      <g>\n       <use xlink:href=\"#ma51836bbbe\" x=\"51.378125\" y=\"81.210612\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_10\">\n      <!-- $\\mathdefault{10^{-3}}$ -->\n      <g transform=\"translate(20.878125 85.009831)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">3</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_5\">\n     <g id=\"line2d_19\">\n      <path d=\"M 51.378125 47.659904 \nL 330.378125 47.659904 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_20\">\n      <g>\n       <use xlink:href=\"#ma51836bbbe\" x=\"51.378125\" y=\"47.659904\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_11\">\n      <!-- $\\mathdefault{10^{-1}}$ -->\n      <g transform=\"translate(20.878125 51.459122)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"text_12\">\n     <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"14.798438\" y=\"116.566125\" transform=\"rotate(-90 14.798438 116.566125)\">Abstand zu 1, p, p², p³</text>\n    </g>\n   </g>\n   <g id=\"line2d_21\">\n    <path d=\"M 64.059943 46.948763 \nL 106.33267 63.999306 \nL 148.605398 88.000735 \nL 233.150852 143.768439 \nL 317.696307 202.246125 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 1.5; stroke-linecap: square\"/>\n    <defs>\n     <path id=\"m7734d74a7f\" d=\"M 0 3 \nC 0.795609 3 1.55874 2.683901 2.12132 2.12132 \nC 2.683901 1.55874 3 0.795609 3 0 \nC 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 \nC 1.55874 -2.683901 0.795609 -3 0 -3 \nC -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 \nC -2.683901 -1.55874 -3 -0.795609 -3 0 \nC -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 \nC -1.55874 2.683901 -0.795609 3 0 3 \nz\n\" style=\"stroke: #3d6fb6\"/>\n    </defs>\n    <g clip-path=\"url(#p5cb5a516d8)\">\n     <use xlink:href=\"#m7734d74a7f\" x=\"64.059943\" y=\"46.948763\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m7734d74a7f\" x=\"106.33267\" y=\"63.999306\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m7734d74a7f\" x=\"148.605398\" y=\"88.000735\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m7734d74a7f\" x=\"233.150852\" y=\"143.768439\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m7734d74a7f\" x=\"317.696307\" y=\"202.246125\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n    </g>\n   </g>\n   <g id=\"line2d_22\">\n    <path d=\"M 64.059943 36.886839 \nL 106.33267 38.80945 \nL 148.605398 43.095867 \nL 233.150852 60.05767 \nL 317.696307 89.015383 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b5523b; stroke-width: 1.5; stroke-linecap: square\"/>\n    <defs>\n     <path id=\"ma6725d07b5\" d=\"M 0 3 \nC 0.795609 3 1.55874 2.683901 2.12132 2.12132 \nC 2.683901 1.55874 3 0.795609 3 0 \nC 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 \nC 1.55874 -2.683901 0.795609 -3 0 -3 \nC -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 \nC -2.683901 -1.55874 -3 -0.795609 -3 0 \nC -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 \nC -1.55874 2.683901 -0.795609 3 0 3 \nz\n\" style=\"stroke: #b5523b\"/>\n    </defs>\n    <g clip-path=\"url(#p5cb5a516d8)\">\n     <use xlink:href=\"#ma6725d07b5\" x=\"64.059943\" y=\"36.886839\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#ma6725d07b5\" x=\"106.33267\" y=\"38.80945\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#ma6725d07b5\" x=\"148.605398\" y=\"43.095867\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#ma6725d07b5\" x=\"233.150852\" y=\"60.05767\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     <use xlink:href=\"#ma6725d07b5\" x=\"317.696307\" y=\"89.015383\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n    </g>\n   </g>\n   <g id=\"line2d_23\">\n    <path d=\"M 64.059943 30.930129 \nL 106.33267 30.933679 \nL 148.605398 30.911121 \nL 233.150852 30.892991 \nL 317.696307 30.886125 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #2f8f83; stroke-width: 1.5; stroke-linecap: square\"/>\n    <defs>\n     <path id=\"m8ad20e6e89\" d=\"M 0 3 \nC 0.795609 3 1.55874 2.683901 2.12132 2.12132 \nC 2.683901 1.55874 3 0.795609 3 0 \nC 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 \nC 1.55874 -2.683901 0.795609 -3 0 -3 \nC -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 \nC -2.683901 -1.55874 -3 -0.795609 -3 0 \nC -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 \nC -1.55874 2.683901 -0.795609 3 0 3 \nz\n\" style=\"stroke: #2f8f83\"/>\n    </defs>\n    <g clip-path=\"url(#p5cb5a516d8)\">\n     <use xlink:href=\"#m8ad20e6e89\" x=\"64.059943\" y=\"30.930129\" style=\"fill: #2f8f83; stroke: #2f8f83\"/>\n     <use xlink:href=\"#m8ad20e6e89\" x=\"106.33267\" y=\"30.933679\" style=\"fill: #2f8f83; stroke: #2f8f83\"/>\n     <use xlink:href=\"#m8ad20e6e89\" x=\"148.605398\" y=\"30.911121\" style=\"fill: #2f8f83; stroke: #2f8f83\"/>\n     <use xlink:href=\"#m8ad20e6e89\" x=\"233.150852\" y=\"30.892991\" style=\"fill: #2f8f83; stroke: #2f8f83\"/>\n     <use xlink:href=\"#m8ad20e6e89\" x=\"317.696307\" y=\"30.886125\" style=\"fill: #2f8f83; stroke: #2f8f83\"/>\n    </g>\n   </g>\n   <g id=\"line2d_24\">\n    <path d=\"M 64.059943 39.53871 \nL 106.33267 41.239012 \nL 148.605398 41.320549 \nL 233.150852 41.440698 \nL 317.696307 41.500219 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #b0832b; stroke-width: 1.5; stroke-linecap: square\"/>\n    <defs>\n     <path id=\"maffdf0cb48\" d=\"M 0 3 \nC 0.795609 3 1.55874 2.683901 2.12132 2.12132 \nC 2.683901 1.55874 3 0.795609 3 0 \nC 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 \nC 1.55874 -2.683901 0.795609 -3 0 -3 \nC -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 \nC -2.683901 -1.55874 -3 -0.795609 -3 0 \nC -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 \nC -1.55874 2.683901 -0.795609 3 0 3 \nz\n\" style=\"stroke: #b0832b\"/>\n    </defs>\n    <g clip-path=\"url(#p5cb5a516d8)\">\n     <use xlink:href=\"#maffdf0cb48\" x=\"64.059943\" y=\"39.53871\" style=\"fill: #b0832b; stroke: #b0832b\"/>\n     <use xlink:href=\"#maffdf0cb48\" x=\"106.33267\" y=\"41.239012\" style=\"fill: #b0832b; stroke: #b0832b\"/>\n     <use xlink:href=\"#maffdf0cb48\" x=\"148.605398\" y=\"41.320549\" style=\"fill: #b0832b; stroke: #b0832b\"/>\n     <use xlink:href=\"#maffdf0cb48\" x=\"233.150852\" y=\"41.440698\" style=\"fill: #b0832b; stroke: #b0832b\"/>\n     <use xlink:href=\"#maffdf0cb48\" x=\"317.696307\" y=\"41.500219\" style=\"fill: #b0832b; stroke: #b0832b\"/>\n    </g>\n   </g>\n   <g id=\"line2d_25\">\n    <path d=\"M 64.059943 31.461236 \nL 106.33267 36.5789 \nL 148.605398 45.323128 \nL 233.150852 40.950433 \nL 317.696307 37.132729 \n\" clip-path=\"url(#p5cb5a516d8)\" style=\"fill: none; stroke: #8c4fa3; stroke-width: 1.5; stroke-linecap: square\"/>\n    <defs>\n     <path id=\"m6f68313b42\" d=\"M 0 3 \nC 0.795609 3 1.55874 2.683901 2.12132 2.12132 \nC 2.683901 1.55874 3 0.795609 3 0 \nC 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 \nC 1.55874 -2.683901 0.795609 -3 0 -3 \nC -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 \nC -2.683901 -1.55874 -3 -0.795609 -3 0 \nC -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 \nC -1.55874 2.683901 -0.795609 3 0 3 \nz\n\" style=\"stroke: #8c4fa3\"/>\n    </defs>\n    <g clip-path=\"url(#p5cb5a516d8)\">\n     <use xlink:href=\"#m6f68313b42\" x=\"64.059943\" y=\"31.461236\" style=\"fill: #8c4fa3; stroke: #8c4fa3\"/>\n     <use xlink:href=\"#m6f68313b42\" x=\"106.33267\" y=\"36.5789\" style=\"fill: #8c4fa3; stroke: #8c4fa3\"/>\n     <use xlink:href=\"#m6f68313b42\" x=\"148.605398\" y=\"45.323128\" style=\"fill: #8c4fa3; stroke: #8c4fa3\"/>\n     <use xlink:href=\"#m6f68313b42\" x=\"233.150852\" y=\"40.950433\" style=\"fill: #8c4fa3; stroke: #8c4fa3\"/>\n     <use xlink:href=\"#m6f68313b42\" x=\"317.696307\" y=\"37.132729\" style=\"fill: #8c4fa3; stroke: #8c4fa3\"/>\n    </g>\n   </g>\n   <g id=\"patch_3\">\n    <path d=\"M 51.378125 210.814125 \nL 51.378125 22.318125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"patch_4\">\n    <path d=\"M 51.378125 210.814125 \nL 330.378125 210.814125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"text_13\">\n    <text style=\"font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"190.878125\" y=\"16.318125\" transform=\"rotate(-0 190.878125 16.318125)\">TPID 3</text>\n   </g>\n   <g id=\"legend_1\">\n    <g id=\"patch_5\">\n     <path d=\"M 56.278125 207.314125 \nL 216.523438 207.314125 \nQ 217.923438 207.314125 217.923438 205.914125 \nL 217.923438 155.240687 \nQ 217.923438 153.840688 216.523438 153.840688 \nL 56.278125 153.840688 \nQ 54.878125 153.840688 54.878125 155.240687 \nL 54.878125 205.914125 \nQ 54.878125 207.314125 56.278125 207.314125 \nz\n\" style=\"fill: #ffffff; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter\"/>\n    </g>\n    <g id=\"line2d_26\">\n     <path d=\"M 57.678125 159.509594 \nL 64.678125 159.509594 \nL 71.678125 159.509594 \n\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 1.5; stroke-linecap: square\"/>\n     <g>\n      <use xlink:href=\"#m7734d74a7f\" x=\"64.678125\" y=\"159.509594\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     </g>\n    </g>\n    <g id=\"text_14\">\n     <text style=\"font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"77.278125\" y=\"161.959594\" transform=\"rotate(-0 77.278125 161.959594)\">s=3/4, p=2/3 (anziehend, x0 im Kreis)</text>\n    </g>\n    <g id=\"line2d_27\">\n     <path d=\"M 57.678125 169.784281 \nL 64.678125 169.784281 \nL 71.678125 169.784281 \n\" style=\"fill: none; stroke: #b5523b; stroke-width: 1.5; stroke-linecap: square\"/>\n     <g>\n      <use xlink:href=\"#ma6725d07b5\" x=\"64.678125\" y=\"169.784281\" style=\"fill: #b5523b; stroke: #b5523b\"/>\n     </g>\n    </g>\n    <g id=\"text_15\">\n     <text style=\"font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"77.278125\" y=\"172.234281\" transform=\"rotate(-0 77.278125 172.234281)\">s=3/4, p=3/2 (abstossend, x0 im Kreis)</text>\n    </g>\n    <g id=\"line2d_28\">\n     <path d=\"M 57.678125 180.058969 \nL 64.678125 180.058969 \nL 71.678125 180.058969 \n\" style=\"fill: none; stroke: #2f8f83; stroke-width: 1.5; stroke-linecap: square\"/>\n     <g>\n      <use xlink:href=\"#m8ad20e6e89\" x=\"64.678125\" y=\"180.058969\" style=\"fill: #2f8f83; stroke: #2f8f83\"/>\n     </g>\n    </g>\n    <g id=\"text_16\">\n     <text style=\"font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"77.278125\" y=\"182.508969\" transform=\"rotate(-0 77.278125 182.508969)\">s=3/10, p=2 (Polynom, x0 = 0.7)</text>\n    </g>\n    <g id=\"line2d_29\">\n     <path d=\"M 57.678125 190.333656 \nL 64.678125 190.333656 \nL 71.678125 190.333656 \n\" style=\"fill: none; stroke: #b0832b; stroke-width: 1.5; stroke-linecap: square\"/>\n     <g>\n      <use xlink:href=\"#maffdf0cb48\" x=\"64.678125\" y=\"190.333656\" style=\"fill: #b0832b; stroke: #b0832b\"/>\n     </g>\n    </g>\n    <g id=\"text_17\">\n     <text style=\"font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"77.278125\" y=\"192.783656\" transform=\"rotate(-0 77.278125 192.783656)\">s=1/2, p=1/2 (x0 auf dem Rand)</text>\n    </g>\n    <g id=\"line2d_30\">\n     <path d=\"M 57.678125 200.608344 \nL 64.678125 200.608344 \nL 71.678125 200.608344 \n\" style=\"fill: none; stroke: #8c4fa3; stroke-width: 1.5; stroke-linecap: square\"/>\n     <g>\n      <use xlink:href=\"#m6f68313b42\" x=\"64.678125\" y=\"200.608344\" style=\"fill: #8c4fa3; stroke: #8c4fa3\"/>\n     </g>\n    </g>\n    <g id=\"text_18\">\n     <text style=\"font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"77.278125\" y=\"203.058344\" transform=\"rotate(-0 77.278125 203.058344)\">s=3/10, p=1/2 (x0 ausserhalb)</text>\n    </g>\n   </g>\n  </g>\n </g>\n <defs>\n  <clipPath id=\"p5cb5a516d8\">\n   <rect x=\"51.378125\" y=\"22.318125\" width=\"279\" height=\"188.496\"/>\n  </clipPath>\n </defs>\n</svg>\n"
+  },
+  {
+   "id": "exp.superwurzel_omega",
+   "titel": "Superwurzeln über ω_n, Basisableitung geschlossen, Grenzidentität (What the Hectogon?)",
+   "skript": "experimente/e80_superwurzel_omega.py",
+   "ergebnis": {
+    "zusammenfassung": "Superwurzel-Formel exp(ω_{n−1}(ln Y)), h(x) = 1/ssrt(1/x), geschlossene Basisableitung und Ableitungen von ε_n, ω_n auf ≥ 20 Stellen bestätigt; die Grenzidentität gilt nur, wenn n → ∞ nach dem Einsetzen von ω_n geht.",
+    "pruefungen": [
+     {
+      "name": "n-te Superwurzel = exp(ω_{n−1}(ln Y)); n = 2 gibt e^{W(ln 2)}; dritte Superwurzel von 2 = 1.4766843373578699…",
+      "ok": true,
+      "wert": {
+       "2. Superwurzel von 2": "1.559610469462369349970389",
+       "3. Superwurzel von 2": "1.476684337357869947089236",
+       "3. Superwurzel von 10": "1.923584036442027339350225",
+       "4. Superwurzel von 3": "1.563627903284840548836496",
+       "5. Superwurzel von 10": "1.644079074276154015754369"
+      }
+     },
+     {
+      "name": "h(x) = 1/ssrt(1/x) (x = 1.1, 1.3, 1.44); ε_∞(0.2) = −W(−0.2); ω_∞(x) = x e^{−x} kehrt ε_∞ um",
+      "ok": true,
+      "wert": {
+       "max |h − 1/ssrt(1/x)|": "4.59e-41",
+       "ε_400(0.2)": "0.25917110181907374506"
+      }
+     },
+     {
+      "name": "(x↑↑n)' = x↑↑n/(x ln x)·Σ_k Π_{m=k−1}^{n−1}(x↑↑m·ln x) für n = 2…5, x = 1.2, 1.4",
+      "ok": true,
+      "wert": "9.18e-41"
+     },
+     {
+      "name": "ε_n' = (ε_n/x)(1 + S_n), ω_n' = ω_n/(x(1 + S_n(ω_n))) für n = 1…4",
+      "ok": true,
+      "wert": "4.59e-41"
+     },
+     {
+      "name": "S_n(ω_n(1/2)) → x/(1−x) = 1 (n = 80: Abstand < 1e-20)",
+      "ok": true,
+      "wert": {
+       "n=5": "0.90349942412",
+       "n=20": "0.999987937315",
+       "n=80": "0.999999999999999999999957"
+      }
+     },
+     {
+      "name": "Fassung aus dem Video (ω_∞ vorher eingesetzt) geht gegen x = 1/2, nicht gegen 1",
+      "ok": true,
+      "wert": {
+       "N=80": "0.5"
+      }
+     }
+    ],
+    "fehlgeschlagen": [],
+    "gelaufen": "2026-10-13 11:07",
+    "laufzeit_s": 4.9
+   },
+   "bild": "experimente/bilder/exp.superwurzel_omega.svg",
+   "frage": "Stimmen die Formeln aus „On Tetration I/II“ — Superwurzel exp(ω_{n−1}(ln Y)), h(x) = 1/ssrt(1/x), geschlossene Basisableitung, Ableitungen von ε_n und ω_n — und in welcher Reihenfolge gilt die Grenzidentität x/(1−x)?",
+   "stuetzt": [
+    "gr.satz.superwurzel_omega",
+    "gr.satz.turm_superwurzel",
+    "gr.kor.basis_summe",
+    "gr.satz.omega_ableitung",
+    "gr.korr.grenzidentitaet"
+   ],
+   "en": {
+    "titel": "Super-roots via ω_n, closed-form base derivative, limit identity (What the Hectogon?)",
+    "frage": "Are the formulas from “On Tetration I/II” correct — super-root exp(ω_{n−1}(ln Y)), h(x) = 1/ssrt(1/x), closed-form base derivative, derivatives of ε_n and ω_n — and in which order does the limit identity x/(1−x) hold?",
+    "ergebnis": {
+     "zusammenfassung": "Super-root formula exp(ω_{n−1}(ln Y)), h(x) = 1/ssrt(1/x), closed-form base derivative and derivatives of ε_n, ω_n confirmed to ≥ 20 digits; the limit identity holds only if n → ∞ is taken after substituting ω_n.",
+     "pruefungen": [
+      {
+       "name": "n-th super-root = exp(ω_{n−1}(ln Y)); n = 2 gives e^{W(ln 2)}; third super-root of 2 = 1.4766843373578699…"
+      },
+      {
+       "name": "h(x) = 1/ssrt(1/x) (x = 1.1, 1.3, 1.44); ε_∞(0.2) = −W(−0.2); ω_∞(x) = x e^{−x} inverts ε_∞"
+      },
+      {
+       "name": "(x↑↑n)' = x↑↑n/(x ln x)·Σ_k Π_{m=k−1}^{n−1}(x↑↑m·ln x) for n = 2…5, x = 1.2, 1.4"
+      },
+      {
+       "name": "ε_n' = (ε_n/x)(1 + S_n), ω_n' = ω_n/(x(1 + S_n(ω_n))) for n = 1…4"
+      },
+      {
+       "name": "S_n(ω_n(1/2)) → x/(1−x) = 1 (n = 80: distance < 1e-20)"
+      },
+      {
+       "name": "Version from the video (ω_∞ substituted first) tends to x = 1/2, not to 1"
+      }
+     ]
+    }
+   },
+   "zustand": "aktuell",
+   "svg": "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"412pt\" height=\"281.634375pt\" viewBox=\"0 0 412 281.634375\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">\n <metadata>\n  <rdf:RDF xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:cc=\"http://creativecommons.org/ns#\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n   <cc:Work>\n    <dc:type rdf:resource=\"http://purl.org/dc/dcmitype/StillImage\"/>\n    <dc:date>2026-10-13T11:07:00.519471</dc:date>\n    <dc:format>image/svg+xml</dc:format>\n    <dc:creator>\n     <cc:Agent>\n      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>\n     </cc:Agent>\n    </dc:creator>\n   </cc:Work>\n  </rdf:RDF>\n </metadata>\n <defs>\n  <style type=\"text/css\">*{stroke-linejoin: round; stroke-linecap: butt}</style>\n </defs>\n <g id=\"figure_1\">\n  <g id=\"patch_1\">\n   <path d=\"M 0 281.634375 \nL 412 281.634375 \nL 412 0 \nL 0 0 \nz\n\" style=\"fill: #ffffff\"/>\n  </g>\n  <g id=\"axes_1\">\n   <g id=\"patch_2\">\n    <path d=\"M 42.1 244.078125 \nL 404.8 244.078125 \nL 404.8 22.318125 \nL 42.1 22.318125 \nz\n\" style=\"fill: #ffffff\"/>\n   </g>\n   <g id=\"matplotlib.axis_1\">\n    <g id=\"xtick_1\">\n     <g id=\"line2d_1\">\n      <path d=\"M 80.568182 244.078125 \nL 80.568182 22.318125 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_2\">\n      <defs>\n       <path id=\"m34250a3b59\" d=\"M 0 0 \nL 0 3.5 \n\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </defs>\n      <g>\n       <use xlink:href=\"#m34250a3b59\" x=\"80.568182\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_1\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"80.568182\" y=\"258.676562\" transform=\"rotate(-0 80.568182 258.676562)\">10</text>\n     </g>\n    </g>\n    <g id=\"xtick_2\">\n     <g id=\"line2d_3\">\n      <path d=\"M 124.531818 244.078125 \nL 124.531818 22.318125 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_4\">\n      <g>\n       <use xlink:href=\"#m34250a3b59\" x=\"124.531818\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_2\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"124.531818\" y=\"258.676562\" transform=\"rotate(-0 124.531818 258.676562)\">20</text>\n     </g>\n    </g>\n    <g id=\"xtick_3\">\n     <g id=\"line2d_5\">\n      <path d=\"M 168.495455 244.078125 \nL 168.495455 22.318125 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_6\">\n      <g>\n       <use xlink:href=\"#m34250a3b59\" x=\"168.495455\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_3\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"168.495455\" y=\"258.676562\" transform=\"rotate(-0 168.495455 258.676562)\">30</text>\n     </g>\n    </g>\n    <g id=\"xtick_4\">\n     <g id=\"line2d_7\">\n      <path d=\"M 212.459091 244.078125 \nL 212.459091 22.318125 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_8\">\n      <g>\n       <use xlink:href=\"#m34250a3b59\" x=\"212.459091\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_4\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"212.459091\" y=\"258.676562\" transform=\"rotate(-0 212.459091 258.676562)\">40</text>\n     </g>\n    </g>\n    <g id=\"xtick_5\">\n     <g id=\"line2d_9\">\n      <path d=\"M 256.422727 244.078125 \nL 256.422727 22.318125 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_10\">\n      <g>\n       <use xlink:href=\"#m34250a3b59\" x=\"256.422727\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_5\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"256.422727\" y=\"258.676562\" transform=\"rotate(-0 256.422727 258.676562)\">50</text>\n     </g>\n    </g>\n    <g id=\"xtick_6\">\n     <g id=\"line2d_11\">\n      <path d=\"M 300.386364 244.078125 \nL 300.386364 22.318125 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_12\">\n      <g>\n       <use xlink:href=\"#m34250a3b59\" x=\"300.386364\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_6\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"300.386364\" y=\"258.676562\" transform=\"rotate(-0 300.386364 258.676562)\">60</text>\n     </g>\n    </g>\n    <g id=\"xtick_7\">\n     <g id=\"line2d_13\">\n      <path d=\"M 344.35 244.078125 \nL 344.35 22.318125 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_14\">\n      <g>\n       <use xlink:href=\"#m34250a3b59\" x=\"344.35\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_7\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"344.35\" y=\"258.676562\" transform=\"rotate(-0 344.35 258.676562)\">70</text>\n     </g>\n    </g>\n    <g id=\"xtick_8\">\n     <g id=\"line2d_15\">\n      <path d=\"M 388.313636 244.078125 \nL 388.313636 22.318125 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_16\">\n      <g>\n       <use xlink:href=\"#m34250a3b59\" x=\"388.313636\" y=\"244.078125\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_8\">\n      <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"388.313636\" y=\"258.676562\" transform=\"rotate(-0 388.313636 258.676562)\">80</text>\n     </g>\n    </g>\n    <g id=\"text_9\">\n     <text style=\"font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"223.45\" y=\"272.354687\" transform=\"rotate(-0 223.45 272.354687)\">n bzw. N</text>\n    </g>\n   </g>\n   <g id=\"matplotlib.axis_2\">\n    <g id=\"ytick_1\">\n     <g id=\"line2d_17\">\n      <path d=\"M 42.1 221.539408 \nL 404.8 221.539408 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_18\">\n      <defs>\n       <path id=\"m76f00b18ca\" d=\"M 0 0 \nL -3.5 0 \n\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </defs>\n      <g>\n       <use xlink:href=\"#m76f00b18ca\" x=\"42.1\" y=\"221.539408\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_10\">\n      <!-- $\\mathdefault{10^{-21}}$ -->\n      <g transform=\"translate(7.2 225.338626)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">2</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_2\">\n     <g id=\"line2d_19\">\n      <path d=\"M 42.1 194.191398 \nL 404.8 194.191398 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_20\">\n      <g>\n       <use xlink:href=\"#m76f00b18ca\" x=\"42.1\" y=\"194.191398\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_11\">\n      <!-- $\\mathdefault{10^{-18}}$ -->\n      <g transform=\"translate(7.2 197.990617)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">8</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_3\">\n     <g id=\"line2d_21\">\n      <path d=\"M 42.1 166.843388 \nL 404.8 166.843388 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_22\">\n      <g>\n       <use xlink:href=\"#m76f00b18ca\" x=\"42.1\" y=\"166.843388\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_12\">\n      <!-- $\\mathdefault{10^{-15}}$ -->\n      <g transform=\"translate(7.2 170.642607)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.064063\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-3.892188\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">5</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_4\">\n     <g id=\"line2d_23\">\n      <path d=\"M 42.1 139.495378 \nL 404.8 139.495378 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_24\">\n      <g>\n       <use xlink:href=\"#m76f00b18ca\" x=\"42.1\" y=\"139.495378\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_13\">\n      <!-- $\\mathdefault{10^{-12}}$ -->\n      <g transform=\"translate(7.2 143.294597)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"23.13916\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">2</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_5\">\n     <g id=\"line2d_25\">\n      <path d=\"M 42.1 112.147369 \nL 404.8 112.147369 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_26\">\n      <g>\n       <use xlink:href=\"#m76f00b18ca\" x=\"42.1\" y=\"112.147369\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_14\">\n      <!-- $\\mathdefault{10^{-9}}$ -->\n      <g transform=\"translate(11.6 115.946587)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">9</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_6\">\n     <g id=\"line2d_27\">\n      <path d=\"M 42.1 84.799359 \nL 404.8 84.799359 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_28\">\n      <g>\n       <use xlink:href=\"#m76f00b18ca\" x=\"42.1\" y=\"84.799359\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_15\">\n      <!-- $\\mathdefault{10^{-6}}$ -->\n      <g transform=\"translate(11.6 88.598578)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">6</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_7\">\n     <g id=\"line2d_29\">\n      <path d=\"M 42.1 57.451349 \nL 404.8 57.451349 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_30\">\n      <g>\n       <use xlink:href=\"#m76f00b18ca\" x=\"42.1\" y=\"57.451349\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_16\">\n      <!-- $\\mathdefault{10^{-3}}$ -->\n      <g transform=\"translate(11.6 61.250568)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">−</tspan>\n        <tspan x=\"18.685547\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">3</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n    <g id=\"ytick_8\">\n     <g id=\"line2d_31\">\n      <path d=\"M 42.1 30.103339 \nL 404.8 30.103339 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #b0b0b0; stroke-opacity: 0.25; stroke-width: 0.8; stroke-linecap: square\"/>\n     </g>\n     <g id=\"line2d_32\">\n      <g>\n       <use xlink:href=\"#m76f00b18ca\" x=\"42.1\" y=\"30.103339\" style=\"stroke: #000000; stroke-width: 0.8\"/>\n      </g>\n     </g>\n     <g id=\"text_17\">\n      <!-- $\\mathdefault{10^{0}}$ -->\n      <g transform=\"translate(17.5 33.902558)\">\n       <text>\n        <tspan x=\"0\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">1</tspan>\n        <tspan x=\"6.362305\" y=\"-0.976562\" style=\"font-size: 10px; font-family: 'DejaVu Sans'\">0</tspan>\n        <tspan x=\"12.820312\" y=\"-4.804688\" style=\"font-size: 7px; font-family: 'DejaVu Sans'\">0</tspan>\n       </text>\n      </g>\n     </g>\n    </g>\n   </g>\n   <g id=\"line2d_33\">\n    <path d=\"M 58.586364 39.360368 \nL 80.568182 50.372027 \nL 124.531818 74.940912 \nL 212.459091 127.009672 \nL 388.313636 233.998125 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 1.5; stroke-linecap: square\"/>\n    <defs>\n     <path id=\"m0e44c184e8\" d=\"M 0 3 \nC 0.795609 3 1.55874 2.683901 2.12132 2.12132 \nC 2.683901 1.55874 3 0.795609 3 0 \nC 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 \nC 1.55874 -2.683901 0.795609 -3 0 -3 \nC -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 \nC -2.683901 -1.55874 -3 -0.795609 -3 0 \nC -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 \nC -1.55874 2.683901 -0.795609 3 0 3 \nz\n\" style=\"stroke: #3d6fb6\"/>\n    </defs>\n    <g clip-path=\"url(#p0d656d314e)\">\n     <use xlink:href=\"#m0e44c184e8\" x=\"58.586364\" y=\"39.360368\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m0e44c184e8\" x=\"80.568182\" y=\"50.372027\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m0e44c184e8\" x=\"124.531818\" y=\"74.940912\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m0e44c184e8\" x=\"212.459091\" y=\"127.009672\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     <use xlink:href=\"#m0e44c184e8\" x=\"388.313636\" y=\"233.998125\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n    </g>\n   </g>\n   <g id=\"line2d_34\">\n    <path d=\"M 58.586364 32.398125 \nL 80.568182 32.820247 \nL 124.531818 32.847478 \nL 212.459091 32.84753 \nL 388.313636 32.84753 \n\" clip-path=\"url(#p0d656d314e)\" style=\"fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #b5523b; stroke-width: 1.5\"/>\n    <defs>\n     <path id=\"m4706225e98\" d=\"M -3 3 \nL 3 3 \nL 3 -3 \nL -3 -3 \nz\n\" style=\"stroke: #b5523b; stroke-linejoin: miter\"/>\n    </defs>\n    <g clip-path=\"url(#p0d656d314e)\">\n     <use xlink:href=\"#m4706225e98\" x=\"58.586364\" y=\"32.398125\" style=\"fill: #b5523b; stroke: #b5523b; stroke-linejoin: miter\"/>\n     <use xlink:href=\"#m4706225e98\" x=\"80.568182\" y=\"32.820247\" style=\"fill: #b5523b; stroke: #b5523b; stroke-linejoin: miter\"/>\n     <use xlink:href=\"#m4706225e98\" x=\"124.531818\" y=\"32.847478\" style=\"fill: #b5523b; stroke: #b5523b; stroke-linejoin: miter\"/>\n     <use xlink:href=\"#m4706225e98\" x=\"212.459091\" y=\"32.84753\" style=\"fill: #b5523b; stroke: #b5523b; stroke-linejoin: miter\"/>\n     <use xlink:href=\"#m4706225e98\" x=\"388.313636\" y=\"32.84753\" style=\"fill: #b5523b; stroke: #b5523b; stroke-linejoin: miter\"/>\n    </g>\n   </g>\n   <g id=\"patch_3\">\n    <path d=\"M 42.1 244.078125 \nL 42.1 22.318125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"patch_4\">\n    <path d=\"M 42.1 244.078125 \nL 404.8 244.078125 \n\" style=\"fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square\"/>\n   </g>\n   <g id=\"text_18\">\n    <text style=\"font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: middle\" x=\"223.45\" y=\"16.318125\" transform=\"rotate(-0 223.45 16.318125)\">Grenzidentität bei x = 1/2</text>\n   </g>\n   <g id=\"legend_1\">\n    <g id=\"patch_5\">\n     <path d=\"M 47.7 240.078125 \nL 260.815 240.078125 \nQ 262.415 240.078125 262.415 238.478125 \nL 262.415 215.278125 \nQ 262.415 213.678125 260.815 213.678125 \nL 47.7 213.678125 \nQ 46.1 213.678125 46.1 215.278125 \nL 46.1 238.478125 \nQ 46.1 240.078125 47.7 240.078125 \nz\n\" style=\"fill: #ffffff; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter\"/>\n    </g>\n    <g id=\"line2d_35\">\n     <path d=\"M 49.3 220.191875 \nL 57.3 220.191875 \nL 65.3 220.191875 \n\" style=\"fill: none; stroke: #3d6fb6; stroke-width: 1.5; stroke-linecap: square\"/>\n     <g>\n      <use xlink:href=\"#m0e44c184e8\" x=\"57.3\" y=\"220.191875\" style=\"fill: #3d6fb6; stroke: #3d6fb6\"/>\n     </g>\n    </g>\n    <g id=\"text_19\">\n     <text style=\"font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"71.7\" y=\"222.991875\" transform=\"rotate(-0 71.7 222.991875)\">|S_n(ω_n(x)) − x/(1−x)|  (richtig: → 0)</text>\n    </g>\n    <g id=\"line2d_36\">\n     <path d=\"M 49.3 232.191875 \nL 57.3 232.191875 \nL 65.3 232.191875 \n\" style=\"fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #b5523b; stroke-width: 1.5\"/>\n     <g>\n      <use xlink:href=\"#m4706225e98\" x=\"57.3\" y=\"232.191875\" style=\"fill: #b5523b; stroke: #b5523b; stroke-linejoin: miter\"/>\n     </g>\n    </g>\n    <g id=\"text_20\">\n     <text style=\"font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: start\" x=\"71.7\" y=\"234.991875\" transform=\"rotate(-0 71.7 234.991875)\">|Σ Π ε_m(x e^{−x}) − x/(1−x)|  (Video: → 1/2)</text>\n    </g>\n   </g>\n  </g>\n </g>\n <defs>\n  <clipPath id=\"p0d656d314e\">\n   <rect x=\"42.1\" y=\"22.318125\" width=\"362.7\" height=\"221.76\"/>\n  </clipPath>\n </defs>\n</svg>\n"
   }
  ],
  "straenge": [
@@ -78002,7 +79243,10 @@
     "gr.satz.turm_pde",
     "gr.beob.kneser_pde_wackeln",
     "gr.satz.turm_ableitung",
-    "gr.satz.wurzel_eta"
+    "gr.satz.wurzel_eta",
+    "gr.kor.basis_summe",
+    "gr.satz.omega_ableitung",
+    "gr.korr.grenzidentitaet"
    ],
    "en": {
     "name": "Derivative with respect to the base",
@@ -78053,7 +79297,10 @@
    "verlauf": "Welche Zahl hoch sich selbst gibt x? Lambert W antwortet geschlossen, für den Dreierturm zweimal W als Fixpunkt.",
    "mitglieder": [
     "gr.satz.superwurzel",
-    "gr.satz.superwurzel_dritte"
+    "gr.satz.superwurzel_dritte",
+    "gr.def.epsilon_omega",
+    "gr.satz.superwurzel_omega",
+    "gr.satz.turm_superwurzel"
    ],
    "en": {
     "name": "Inverses — super-roots",
@@ -79280,7 +80527,7 @@
    "stufe": "HINWEIS",
    "regel": "uebersetzung-fortschritt",
    "id": "quelle",
-   "text": "204 von 292 quelle-Gegenständen übersetzt"
+   "text": "204 von 294 quelle-Gegenständen übersetzt"
   },
   {
    "stufe": "HINWEIS",
@@ -79298,39 +80545,39 @@
  "statistik": {
   "art:annahme": 5,
   "art:beobachtung": 45,
-  "art:definition": 12,
+  "art:definition": 13,
   "art:frage": 27,
   "art:gegenbeispiel": 4,
   "art:gescheitert": 9,
   "art:konstruktion": 15,
-  "art:korollar": 12,
-  "art:korrektur": 3,
+  "art:korollar": 13,
+  "art:korrektur": 4,
   "art:lemma": 9,
-  "art:satz": 193,
+  "art:satz": 196,
   "art:vermutung": 33,
   "befund:HINWEIS": 27,
-  "ebene:A": 78,
+  "ebene:A": 79,
   "ebene:B": 91,
   "ebene:C": 164,
-  "ebene:X": 34,
-  "niveau:einstieg": 55,
+  "ebene:X": 39,
+  "niveau:einstieg": 56,
   "niveau:forschung": 184,
-  "niveau:vertiefung": 128,
+  "niveau:vertiefung": 133,
   "status:annahme": 3,
   "status:bedingt": 27,
-  "status:bewiesen": 130,
+  "status:bewiesen": 134,
   "status:bewiesen_literatur": 60,
-  "status:definition": 12,
+  "status:definition": 13,
   "status:entlastet": 1,
   "status:gescheitert": 9,
-  "status:numerisch": 51,
+  "status:numerisch": 52,
   "status:offen": 28,
   "status:skizze": 10,
   "status:ueberholt": 3,
   "status:vermutung": 29,
   "status:widerlegt": 4,
-  "uebersetzung:aktuell": 367,
-  "zitate_ungeprueft": 103
+  "uebersetzung:aktuell": 373,
+  "zitate_ungeprueft": 104
  },
  "ideen": {
   "haupt": [
@@ -79338,20 +80585,20 @@
     "id": "gleichung",
     "name": "Die Gleichung T(x+1) = aᵀ⁽ˣ⁾",
     "kurz": "Was jede Lösung der Grundgleichung erfüllt, ganz gleich, wie man sie zwischen den ganzen Höhen festlegt.",
-    "x": 368.6,
-    "y": 321.6,
-    "r": 270.9,
-    "n": 64,
+    "x": 376.5,
+    "y": 329.8,
+    "r": 278.9,
+    "n": 70,
     "fuell": {
-     "bewiesen": 53,
-     "numerisch": 6,
+     "bewiesen": 58,
+     "numerisch": 7,
      "offen": 1,
      "vermutung": 4
     },
     "herkunft": {
      "eigen": 31,
-     "forum": 14,
-     "literatur": 19
+     "forum": 19,
+     "literatur": 20
     },
     "kinder": [
      "gleichung.begriffe",
@@ -79371,8 +80618,8 @@
     "id": "dynamik",
     "name": "Dynamik von bᶻ und der Fixpunkt L",
     "kurz": "Was passiert, wenn man b^z immer wieder anwendet — und welche Rolle die Fixpunkte spielen.",
-    "x": -493.8,
-    "y": 217.1,
+    "x": -496.4,
+    "y": 217.6,
     "r": 187.0,
     "n": 24,
     "fuell": {
@@ -79398,8 +80645,8 @@
     "id": "turm",
     "name": "Unendlicher Turm und Basen-Ebene",
     "kurz": "Für welche Basen der unendlich hohe Turm einen Grenzwert hat, und welche Bilder dabei in der komplexen Ebene entstehen.",
-    "x": -60.6,
-    "y": 3.5,
+    "x": -58.4,
+    "y": 5.7,
     "r": 222.4,
     "n": 43,
     "fuell": {
@@ -79430,8 +80677,8 @@
     "id": "fortsetzung",
     "name": "Fraktionale Fortsetzung",
     "kurz": "Wie man T(x) zwischen den ganzen Höhen festlegt — und welche Wahl die natürliche ist.",
-    "x": 358.9,
-    "y": -430.2,
+    "x": 357.0,
+    "y": -435.1,
     "r": 308.3,
     "n": 97,
     "fuell": {
@@ -79465,8 +80712,8 @@
     "id": "basiswechsel",
     "name": "Basiswechsel T ∘ slog",
     "kurz": "Was entsteht, wenn man die Tetration zu einer Basis mit dem Superlogarithmus einer anderen zusammensetzt.",
-    "x": -155.4,
-    "y": 594.6,
+    "x": -159.7,
+    "y": 596.5,
     "r": 280.0,
     "n": 69,
     "fuell": {
@@ -79500,8 +80747,8 @@
     "id": "stufen",
     "name": "Höhere Stufen",
     "kurz": "Pentation, Hexation und die ganze Leiter der Hyperoperationen.",
-    "x": -487.4,
-    "y": -198.3,
+    "x": -487.7,
+    "y": -197.8,
     "r": 188.5,
     "n": 29,
     "fuell": {
@@ -79530,8 +80777,8 @@
     "id": "zahlen",
     "name": "Zahlen und Arithmetik",
     "kurz": "Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.",
-    "x": -175.3,
-    "y": -473.6,
+    "x": -177.4,
+    "y": -475.2,
     "r": 187.7,
     "n": 30,
     "fuell": {
@@ -79560,8 +80807,8 @@
     "id": "bruecken",
     "name": "Brücken",
     "kurz": "Wo die Tetration in Logik, Wachstumstheorie und Fourier-Analysis auftaucht.",
-    "x": 645.1,
-    "y": -34.7,
+    "x": 646.1,
+    "y": -41.5,
     "r": 140.0,
     "n": 11,
     "fuell": {
@@ -79589,8 +80836,8 @@
     "eltern": "gleichung",
     "name": "Begriffe",
     "kurz": "Abel-, Schröder- und Böttcher-Gleichung, Superfunktion und ihre Grenzen.",
-    "x": 406.7,
-    "y": 159.2,
+    "x": 329.6,
+    "y": 267.3,
     "r": 68.4,
     "n": 8,
     "fuell": {
@@ -79621,8 +80868,8 @@
     "eltern": "gleichung",
     "name": "Freiheit der Lösungen",
     "kurz": "Zu jeder Lösung gibt es unendlich viele weitere — verschoben um eine periodische Funktion θ.",
-    "x": 269.9,
-    "y": 149.7,
+    "x": 329.7,
+    "y": 129.1,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -79652,8 +80899,8 @@
     "eltern": "gleichung",
     "name": "Was fest ist, was frei ist",
     "kurz": "Welche Grössen jede Tetration gleich hat und welche von der Wahl abhängen.",
-    "x": 319.9,
-    "y": 267.8,
+    "x": 189.6,
+    "y": 314.4,
     "r": 59.5,
     "n": 5,
     "fuell": {
@@ -79682,18 +80929,18 @@
     "eltern": "gleichung",
     "name": "Werte, Ableitungen, Gestalt",
     "kurz": "Türme an ganzen Stellen, Steigungen, Krümmung und Ableitung nach der Basis.",
-    "x": 236.8,
-    "y": 412.2,
-    "r": 101.0,
-    "n": 25,
+    "x": 300.3,
+    "y": 444.7,
+    "r": 105.4,
+    "n": 28,
     "fuell": {
-     "bewiesen": 18,
-     "numerisch": 4,
+     "bewiesen": 20,
+     "numerisch": 5,
      "vermutung": 3
     },
     "herkunft": {
      "eigen": 14,
-     "forum": 7,
+     "forum": 10,
      "literatur": 4
     },
     "offen": [
@@ -79703,10 +80950,11 @@
     ],
     "mitglieder": [
      "gr.satz.kettenregel",
+     "gr.satz.basis_ganz",
      "gr.satz.gestalt",
      "gr.kor.produktformel",
-     "gr.satz.basis_ganz",
      "gr.beob.wendepunkte",
+     "gr.satz.omega_ableitung",
      "gr.satz.selbstpotenz",
      "gr.satz.zweite_ableitung",
      "gr.kor.konvex_nach_oben",
@@ -79722,7 +80970,9 @@
      "gr.verm.tpid7",
      "gr.verm.ungerade_ableitungen",
      "gr.satz.basis_gleichung",
+     "gr.kor.basis_summe",
      "gr.kor.ganze_stellen",
+     "gr.korr.grenzidentitaet",
      "gr.satz.turm_pde",
      "gr.satz.vorzeichen",
      "gr.satz.abklingen",
@@ -79738,8 +80988,8 @@
     "eltern": "gleichung",
     "name": "Integrale",
     "kurz": "Flächen unter der Tetration und unter Türmen.",
-    "x": 430.2,
-    "y": 363.0,
+    "x": 468.6,
+    "y": 334.8,
     "r": 80.1,
     "n": 13,
     "fuell": {
@@ -79782,8 +81032,8 @@
     "eltern": "gleichung",
     "name": "Superlogarithmus",
     "kurz": "Die Umkehrung nach der Höhe — wie oft man logarithmieren muss.",
-    "x": 182.8,
-    "y": 243.9,
+    "x": 218.3,
+    "y": 192.7,
     "r": 59.5,
     "n": 5,
     "fuell": {
@@ -79812,21 +81062,24 @@
     "eltern": "gleichung",
     "name": "Superwurzeln",
     "kurz": "Die Umkehrung nach der Basis, über Lamberts W.",
-    "x": 494.0,
-    "y": 243.9,
-    "r": 47.2,
-    "n": 2,
+    "x": 442.0,
+    "y": 191.0,
+    "r": 59.5,
+    "n": 5,
     "fuell": {
-     "bewiesen": 2
+     "bewiesen": 5
     },
     "herkunft": {
-     "forum": 1,
-     "literatur": 1
+     "forum": 3,
+     "literatur": 2
     },
     "offen": [],
     "mitglieder": [
      "gr.satz.superwurzel",
-     "gr.satz.superwurzel_dritte"
+     "gr.def.epsilon_omega",
+     "gr.satz.superwurzel_dritte",
+     "gr.satz.superwurzel_omega",
+     "gr.satz.turm_superwurzel"
     ],
     "en": {
      "name": "Super-roots",
@@ -79838,8 +81091,8 @@
     "eltern": "dynamik",
     "name": "Fixpunkte von bᶻ",
     "kurz": "Wo b^z = z ist, und wie stark die Abbildung dort zieht oder stösst.",
-    "x": -381.9,
-    "y": 181.4,
+    "x": -384.4,
+    "y": 182.4,
     "r": 59.5,
     "n": 5,
     "fuell": {
@@ -79868,8 +81121,8 @@
     "eltern": "dynamik",
     "name": "Anziehend und abstossend",
     "kurz": "Koenigs-Koordinaten — nahe einem gewöhnlichen Fixpunkt ist die Abbildung eine reine Streckung.",
-    "x": -504.4,
-    "y": 127.1,
+    "x": -506.7,
+    "y": 127.7,
     "r": 68.4,
     "n": 8,
     "fuell": {
@@ -79899,8 +81152,8 @@
     "eltern": "dynamik",
     "name": "Parabolisch",
     "kurz": "Fixpunkte mit Multiplikator 1 (wie bei η) — Fatou-Koordinaten, langsames Kriechen.",
-    "x": -454.0,
-    "y": 300.2,
+    "x": -457.0,
+    "y": 300.9,
     "r": 73.4,
     "n": 10,
     "fuell": {
@@ -79932,8 +81185,8 @@
     "eltern": "dynamik",
     "name": "Indifferent",
     "kurz": "Drehende Fixpunkte — Siegel-Scheiben und Cremer-Punkte.",
-    "x": -553.5,
-    "y": 231.9,
+    "x": -556.3,
+    "y": 232.2,
     "r": 41.0,
     "n": 1,
     "fuell": {
@@ -79956,8 +81209,8 @@
     "eltern": "turm",
     "name": "Konvergenz des Turms",
     "kurz": "Der Turm b^b^b^… konvergiert genau für e⁻ᵉ ≤ b ≤ η = e^(1/e).",
-    "x": 19.6,
-    "y": -57.6,
+    "x": 40.6,
+    "y": -54.1,
     "r": 80.1,
     "n": 13,
     "fuell": {
@@ -79997,8 +81250,8 @@
     "eltern": "turm",
     "name": "Periode 2 unter e⁻ᵉ",
     "kurz": "Unter der Eulerschen Schranke springt der Turm zwischen zwei Werten hin und her.",
-    "x": -101.4,
-    "y": 125.0,
+    "x": -102.1,
+    "y": 127.3,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -80027,8 +81280,8 @@
     "eltern": "turm",
     "name": "Regionen und Fraktale",
     "kurz": "Die Basen-Ebene zerfällt in Gebiete mit Periode 1, 2, 3 … — mit fraktalen Rändern.",
-    "x": -145.1,
-    "y": -19.4,
+    "x": -125.8,
+    "y": -21.7,
     "r": 82.1,
     "n": 14,
     "fuell": {
@@ -80069,8 +81322,8 @@
     "eltern": "turm",
     "name": "Spiralen und Mittelwerte",
     "kurz": "Wie der Turm um seinen Grenzwert kreist, und was sein Mittel ist.",
-    "x": 38.7,
-    "y": 100.8,
+    "x": 38.4,
+    "y": 105.4,
     "r": 73.4,
     "n": 10,
     "fuell": {
@@ -80110,8 +81363,8 @@
     "eltern": "fortsetzung",
     "name": "Regulär unter η",
     "kurz": "Für kleine Basen liefert der reelle Fixpunkt eine natürliche Lösung.",
-    "x": 249.9,
-    "y": -250.3,
+    "x": 248.3,
+    "y": -254.9,
     "r": 87.8,
     "n": 17,
     "fuell": {
@@ -80163,8 +81416,8 @@
     "eltern": "fortsetzung",
     "name": "Der Grenzfall η",
     "kurz": "Der parabolische Übergang, Engpass bei e und das Verhalten knapp darüber.",
-    "x": 218.0,
-    "y": -517.8,
+    "x": 216.7,
+    "y": -522.4,
     "r": 82.1,
     "n": 14,
     "fuell": {
@@ -80210,8 +81463,8 @@
     "eltern": "fortsetzung",
     "name": "Kneser über η",
     "kurz": "Holomorphe Lösung über die komplexen Fixpunkte L und L̄.",
-    "x": 143.6,
-    "y": -376.3,
+    "x": 142.2,
+    "y": -381.1,
     "r": 71.0,
     "n": 9,
     "fuell": {
@@ -80245,8 +81498,8 @@
     "eltern": "fortsetzung",
     "name": "Andere Konstruktionen",
     "kurz": "Linear, Carleman-Matrizen, Cauchy-Integrale, Walker — und wie sie zu Kneser stehen.",
-    "x": 438.8,
-    "y": -510.5,
+    "x": 437.6,
+    "y": -514.9,
     "r": 97.9,
     "n": 23,
     "fuell": {
@@ -80307,8 +81560,8 @@
     "eltern": "fortsetzung",
     "name": "Eindeutigkeit",
     "kurz": "Welche Bedingungen genau eine Lösung auswählen.",
-    "x": 313.0,
-    "y": -396.8,
+    "x": 311.6,
+    "y": -401.4,
     "r": 65.7,
     "n": 7,
     "fuell": {
@@ -80344,8 +81597,8 @@
     "eltern": "fortsetzung",
     "name": "Reelle Kennzeichnung?",
     "kurz": "Gibt es wie bei Γ eine rein reelle Bedingung, die Kneser auswählt?",
-    "x": 515.4,
-    "y": -387.5,
+    "x": 514.5,
+    "y": -392.0,
     "r": 41.0,
     "n": 1,
     "fuell": {
@@ -80370,8 +81623,8 @@
     "eltern": "fortsetzung",
     "name": "Halbe Exponentialfunktion",
     "kurz": "f(f(x)) = e^x — Wachstum, Konstruktion und die Polynom-Vermutung.",
-    "x": 446.1,
-    "y": -255.0,
+    "x": 444.5,
+    "y": -259.9,
     "r": 102.5,
     "n": 26,
     "fuell": {
@@ -80434,8 +81687,8 @@
     "eltern": "basiswechsel",
     "name": "Gleicher Fixpunkt",
     "kurz": "Basen mit gemeinsamem Fixpunkt — dort ist der Wechsel fast linear.",
-    "x": -132.5,
-    "y": 394.4,
+    "x": -136.7,
+    "y": 396.3,
     "r": 68.4,
     "n": 8,
     "fuell": {
@@ -80472,8 +81725,8 @@
     "eltern": "basiswechsel",
     "name": "Log-Peeling und Grenzkanal",
     "kurz": "Logarithmen schichtweise abschälen; die Schwänze konvergieren gegen eine Konstante.",
-    "x": -133.3,
-    "y": 541.5,
+    "x": -137.5,
+    "y": 543.4,
     "r": 68.4,
     "n": 8,
     "fuell": {
@@ -80509,8 +81762,8 @@
     "eltern": "basiswechsel",
     "name": "Phasengesetz und Welle",
     "kurz": "Der Basiswechsel ist bis auf eine periodische Welle linear.",
-    "x": -4.6,
-    "y": 468.6,
+    "x": -8.8,
+    "y": 470.5,
     "r": 73.4,
     "n": 10,
     "fuell": {
@@ -80554,8 +81807,8 @@
     "eltern": "basiswechsel",
     "name": "Kreisabbildung",
     "kurz": "Die Phase als Homöomorphismus des Kreises, mit exakter Antisymmetrie.",
-    "x": 9.6,
-    "y": 610.1,
+    "x": 5.1,
+    "y": 612.0,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -80590,8 +81843,8 @@
     "eltern": "basiswechsel",
     "name": "Moden und Singularitäten",
     "kurz": "Fourier-Moden der Welle, ihr Abfall und die Singularität, die ihn bestimmt.",
-    "x": -269.6,
-    "y": 465.6,
+    "x": -273.7,
+    "y": 467.7,
     "r": 80.1,
     "n": 13,
     "fuell": {
@@ -80637,8 +81890,8 @@
     "eltern": "basiswechsel",
     "name": "Antwortkern und Basisableitung",
     "kurz": "Wie die Welle auf eine kleine Änderung der Basis antwortet — über ein Riemann–Hilbert-Problem.",
-    "x": -260.1,
-    "y": 645.6,
+    "x": -264.0,
+    "y": 647.8,
     "r": 89.6,
     "n": 18,
     "fuell": {
@@ -80691,8 +81944,8 @@
     "eltern": "basiswechsel",
     "name": "Rekonstruktion und Zertifikat",
     "kurz": "Die Welle aus Ankerwerten zurückgewinnen und rigoros zertifizieren.",
-    "x": -100.9,
-    "y": 681.4,
+    "x": -104.9,
+    "y": 684.1,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -80728,8 +81981,8 @@
     "eltern": "stufen",
     "name": "Pentation und Hexation",
     "kurz": "Die Tetration iterieren — Fixpunkte, Kneser-artige Lösungen, Verzweigungen.",
-    "x": -483.4,
-    "y": -288.1,
+    "x": -483.1,
+    "y": -287.6,
     "r": 86.0,
     "n": 16,
     "fuell": {
@@ -80783,8 +82036,8 @@
     "eltern": "stufen",
     "name": "ηₙ → 2 und eₙ → 4",
     "kurz": "Die Grenzbasen der höheren Stufen und ihr Grenzwert (TPID 10).",
-    "x": -389.0,
-    "y": -155.3,
+    "x": -389.4,
+    "y": -154.3,
     "r": 71.0,
     "n": 9,
     "fuell": {
@@ -80824,8 +82077,8 @@
     "eltern": "stufen",
     "name": "Hyperoperationen",
     "kurz": "Ackermann, andere Klammerungen, Ordinalzahlen.",
-    "x": -521.1,
-    "y": -140.0,
+    "x": -521.6,
+    "y": -139.9,
     "r": 56.0,
     "n": 4,
     "fuell": {
@@ -80851,8 +82104,8 @@
     "eltern": "zahlen",
     "name": "Transzendenz",
     "kurz": "Gelfond–Schneider, Schanuel und was die Gleichung über Zahlwerte erzwingt.",
-    "x": -170.6,
-    "y": -524.5,
+    "x": -172.0,
+    "y": -526.3,
     "r": 97.9,
     "n": 23,
     "fuell": {
@@ -80909,8 +82162,8 @@
     "eltern": "zahlen",
     "name": "Kneser–Schanuel",
     "kurz": "Eine Schanuel-artige Vermutung für die Kneser-Tetration.",
-    "x": -203.9,
-    "y": -369.1,
+    "x": -206.5,
+    "y": -371.3,
     "r": 52.0,
     "n": 3,
     "fuell": {
@@ -80939,8 +82192,8 @@
     "eltern": "zahlen",
     "name": "Kongruenzen",
     "kurz": "Türme modulo m, Endziffern und p-adische Grenzwerte.",
-    "x": -91.1,
-    "y": -385.7,
+    "x": -93.6,
+    "y": -386.9,
     "r": 56.0,
     "n": 4,
     "fuell": {
@@ -80966,8 +82219,8 @@
     "eltern": "bruecken",
     "name": "Logik und Wachstum",
     "kurz": "Definierbarkeit, Hardy-Felder, Komplexitätstheorie.",
-    "x": 580.8,
-    "y": -33.3,
+    "x": 581.8,
+    "y": -40.0,
     "r": 65.7,
     "n": 7,
     "fuell": {
@@ -81000,8 +82253,8 @@
     "eltern": "bruecken",
     "name": "Kreis und Fourier",
     "kurz": "Werkzeuge aus der Analysis auf dem Kreis.",
-    "x": 706.9,
-    "y": -13.6,
+    "x": 707.9,
+    "y": -20.2,
     "r": 56.0,
     "n": 4,
     "fuell": {
@@ -81044,7 +82297,7 @@
    [
     "basiswechsel",
     "gleichung",
-    21.72
+    21.35
    ],
    [
     "basiswechsel",
@@ -81069,7 +82322,7 @@
    [
     "bruecken",
     "gleichung",
-    3.68
+    3.63
    ],
    [
     "bruecken",
@@ -81094,7 +82347,7 @@
    [
     "dynamik",
     "gleichung",
-    11.63
+    12.0
    ],
    [
     "dynamik",
@@ -81114,7 +82367,7 @@
    [
     "fortsetzung",
     "gleichung",
-    52.8
+    52.04
    ],
    [
     "fortsetzung",
@@ -81134,17 +82387,17 @@
    [
     "gleichung",
     "stufen",
-    12.94
+    13.34
    ],
    [
     "gleichung",
     "turm",
-    19.83
+    22.61
    ],
    [
     "gleichung",
     "zahlen",
-    10.16
+    10.75
    ],
    [
     "stufen",
@@ -81266,7 +82519,7 @@
    [
     "basiswechsel.abschaelen",
     "gleichung.werte",
-    0.86
+    0.8
    ],
    [
     "basiswechsel.abschaelen",
@@ -81406,7 +82659,7 @@
    [
     "basiswechsel.antwort",
     "gleichung.werte",
-    4.0
+    3.87
    ],
    [
     "basiswechsel.antwort",
@@ -81546,7 +82799,7 @@
    [
     "basiswechsel.gleiches_l",
     "gleichung.werte",
-    1.14
+    1.07
    ],
    [
     "basiswechsel.gleiches_l",
@@ -81681,7 +82934,7 @@
    [
     "basiswechsel.moden",
     "gleichung.werte",
-    1.06
+    1.01
    ],
    [
     "basiswechsel.moden",
@@ -81796,7 +83049,7 @@
    [
     "basiswechsel.phase",
     "gleichung.werte",
-    1.29
+    1.25
    ],
    [
     "basiswechsel.phase",
@@ -81886,7 +83139,7 @@
    [
     "basiswechsel.rekonstruktion",
     "gleichung.werte",
-    0.23
+    0.21
    ],
    [
     "basiswechsel.rekonstruktion",
@@ -81976,7 +83229,7 @@
    [
     "bruecken.logik",
     "gleichung.werte",
-    0.75
+    0.7
    ],
    [
     "bruecken.logik",
@@ -82081,12 +83334,12 @@
    [
     "dynamik.fixpunkte",
     "gleichung.superwurzeln",
-    0.45
+    0.67
    ],
    [
     "dynamik.fixpunkte",
     "gleichung.werte",
-    2.88
+    3.08
    ],
    [
     "dynamik.fixpunkte",
@@ -82251,7 +83504,7 @@
    [
     "dynamik.koenigs",
     "gleichung.werte",
-    0.49
+    0.47
    ],
    [
     "dynamik.koenigs",
@@ -82336,7 +83589,7 @@
    [
     "dynamik.parabolisch",
     "gleichung.werte",
-    0.92
+    0.88
    ],
    [
     "dynamik.parabolisch",
@@ -82426,7 +83679,7 @@
    [
     "fortsetzung.andere",
     "gleichung.werte",
-    5.91
+    5.61
    ],
    [
     "fortsetzung.andere",
@@ -82521,7 +83774,7 @@
    [
     "fortsetzung.eindeutigkeit",
     "gleichung.werte",
-    1.08
+    1.0
    ],
    [
     "fortsetzung.eindeutigkeit",
@@ -82601,7 +83854,7 @@
    [
     "fortsetzung.eta",
     "gleichung.werte",
-    2.44
+    2.31
    ],
    [
     "fortsetzung.eta",
@@ -82691,7 +83944,7 @@
    [
     "fortsetzung.halbexp",
     "gleichung.werte",
-    2.21
+    2.17
    ],
    [
     "fortsetzung.halbexp",
@@ -82771,7 +84024,7 @@
    [
     "fortsetzung.kneser",
     "gleichung.werte",
-    1.38
+    1.31
    ],
    [
     "fortsetzung.kneser",
@@ -82836,7 +84089,7 @@
    [
     "fortsetzung.reell",
     "gleichung.werte",
-    1.14
+    1.12
    ],
    [
     "fortsetzung.reell",
@@ -82891,7 +84144,7 @@
    [
     "fortsetzung.regulaer",
     "gleichung.werte",
-    5.75
+    5.61
    ],
    [
     "fortsetzung.regulaer",
@@ -82956,7 +84209,7 @@
    [
     "gleichung.begriffe",
     "gleichung.werte",
-    1.42
+    1.38
    ],
    [
     "gleichung.begriffe",
@@ -83021,7 +84274,7 @@
    [
     "gleichung.festfrei",
     "gleichung.werte",
-    3.0
+    2.97
    ],
    [
     "gleichung.festfrei",
@@ -83081,7 +84334,7 @@
    [
     "gleichung.freiheit",
     "gleichung.werte",
-    0.2
+    0.19
    ],
    [
     "gleichung.freiheit",
@@ -83121,12 +84374,12 @@
    [
     "gleichung.integrale",
     "gleichung.superwurzeln",
-    0.11
+    0.56
    ],
    [
     "gleichung.integrale",
     "gleichung.werte",
-    3.32
+    3.79
    ],
    [
     "gleichung.integrale",
@@ -83176,7 +84429,7 @@
    [
     "gleichung.slog",
     "gleichung.werte",
-    2.92
+    2.88
    ],
    [
     "gleichung.slog",
@@ -83211,82 +84464,97 @@
    [
     "gleichung.superwurzeln",
     "gleichung.werte",
-    1.0
+    2.38
    ],
    [
     "gleichung.superwurzeln",
     "stufen.etas",
-    0.38
+    0.88
+   ],
+   [
+    "gleichung.superwurzeln",
+    "stufen.pentation",
+    0.23
    ],
    [
     "gleichung.superwurzeln",
     "turm.konvergenz",
-    0.22
+    0.83
    ],
    [
     "gleichung.superwurzeln",
     "turm.periode2",
-    0.14
+    0.71
    ],
    [
     "gleichung.superwurzeln",
     "turm.regionen",
-    0.1
+    0.5
+   ],
+   [
+    "gleichung.superwurzeln",
+    "turm.spiralen",
+    0.25
+   ],
+   [
+    "gleichung.superwurzeln",
+    "zahlen.kongruenzen",
+    0.33
    ],
    [
     "gleichung.superwurzeln",
     "zahlen.transzendenz",
-    0.35
+    0.75
    ],
    [
     "gleichung.werte",
     "stufen.etas",
-    1.29
+    1.2
    ],
    [
     "gleichung.werte",
     "stufen.hyperop",
-    0.4
+    0.39
    ],
    [
     "gleichung.werte",
     "stufen.pentation",
-    3.43
+    3.2
    ],
    [
     "gleichung.werte",
     "turm.konvergenz",
-    4.17
+    4.6
    ],
    [
     "gleichung.werte",
     "turm.periode2",
-    0.64
+    0.86
    ],
    [
     "gleichung.werte",
     "turm.regionen",
-    1.24
+    1.65
    ],
    [
     "gleichung.werte",
     "turm.spiralen",
-    1.79
+    1.67
    ],
    [
     "gleichung.werte",
     "zahlen.kongruenzen",
-    0.56
+    0.54
    ],
    [
     "gleichung.werte",
     "zahlen.ks",
-    0.21
+    0.2
    ],
    [
     "gleichung.werte",
     "zahlen.transzendenz",
-    2.03
+    1.92
    ],
    [
     "stufen.etas",
@@ -83473,2570 +84741,2612 @@
    "fg.def.abel": {
     "haupt": false,
     "r": 5.0,
-    "x": 409.5,
-    "y": 127.7,
+    "x": 332.4,
+    "y": 235.9,
     "idee": "gleichung.begriffe"
    },
    "fg.def.boettcher": {
     "haupt": false,
     "r": 5.0,
-    "x": 429.5,
-    "y": 188.8,
+    "x": 352.3,
+    "y": 296.9,
     "idee": "gleichung.begriffe"
    },
    "fg.def.iterationsgruppe": {
     "haupt": false,
     "r": 5.0,
-    "x": 365.1,
-    "y": 151.8,
+    "x": 287.9,
+    "y": 259.9,
     "idee": "gleichung.begriffe"
    },
    "fg.def.schroeder": {
     "haupt": false,
     "r": 5.0,
-    "x": 446.2,
-    "y": 134.0,
+    "x": 369.1,
+    "y": 242.2,
     "idee": "gleichung.begriffe"
    },
    "fg.def.tetration": {
     "haupt": false,
     "r": 5.0,
-    "x": 393.5,
-    "y": 208.3,
+    "x": 316.4,
+    "y": 316.4,
     "idee": "gleichung.begriffe"
    },
    "fg.kor.keine_ganze_tetration": {
     "haupt": false,
     "r": 5.0,
-    "x": 381.6,
-    "y": 110.7,
+    "x": 304.4,
+    "y": 218.8,
     "idee": "gleichung.begriffe"
    },
    "fg.lem.ganzzahlwerte": {
     "haupt": false,
     "r": 9.0,
-    "x": 420.9,
-    "y": 159.2,
+    "x": 343.7,
+    "y": 267.3,
     "idee": "gleichung.begriffe"
    },
    "fg.satz.schroeder_abel": {
     "haupt": true,
     "r": 21.0,
-    "x": 388.7,
-    "y": 175.7,
+    "x": 311.6,
+    "y": 283.8,
     "idee": "gleichung.begriffe"
    },
    "fg.kor.nichteindeutigkeit": {
     "haupt": false,
     "r": 7.0,
-    "x": 226.6,
-    "y": 142.1,
+    "x": 286.4,
+    "y": 121.4,
     "idee": "gleichung.freiheit"
    },
    "fg.lem.periodisch_liouville": {
     "haupt": false,
     "r": 11.3,
-    "x": 284.5,
-    "y": 149.7,
+    "x": 344.3,
+    "y": 129.1,
     "idee": "gleichung.freiheit"
    },
    "fg.satz.allgemeine_loesung": {
     "haupt": true,
     "r": 14.4,
-    "x": 251.2,
-    "y": 166.8,
+    "x": 311.0,
+    "y": 146.2,
     "idee": "gleichung.freiheit"
    },
    "fg.satz.einbettung_fluss": {
     "haupt": false,
     "r": 5.0,
-    "x": 293.5,
-    "y": 180.5,
+    "x": 353.3,
+    "y": 159.8,
     "idee": "gleichung.freiheit"
    },
    "fg.satz.kohomologisch": {
     "haupt": true,
     "r": 13.3,
-    "x": 272.8,
-    "y": 117.1,
+    "x": 332.6,
+    "y": 96.4,
     "idee": "gleichung.freiheit"
    },
    "fg.satz.tpid4": {
     "haupt": false,
     "r": 5.0,
-    "x": 310.9,
-    "y": 123.6,
+    "x": 370.7,
+    "y": 103.0,
     "idee": "gleichung.freiheit"
    },
    "gr.satz.exponentialitaet": {
     "haupt": true,
     "r": 7.0,
-    "x": 300.7,
-    "y": 285.4,
+    "x": 170.4,
+    "y": 332.0,
     "idee": "gleichung.festfrei"
    },
    "gr.satz.frei_und_fest": {
     "haupt": false,
     "r": 5.0,
-    "x": 275.5,
-    "y": 260.0,
+    "x": 145.2,
+    "y": 306.6,
     "idee": "gleichung.festfrei"
    },
    "gr.satz.stufenleiter": {
     "haupt": false,
     "r": 5.0,
-    "x": 322.8,
-    "y": 234.4,
+    "x": 192.5,
+    "y": 280.9,
     "idee": "gleichung.festfrei"
    },
    "gr.satz.tauschregel": {
     "haupt": false,
     "r": 5.0,
-    "x": 344.1,
-    "y": 299.4,
+    "x": 213.8,
+    "y": 346.0,
     "idee": "gleichung.festfrei"
    },
    "gr.satz.taylor_leiter": {
     "haupt": true,
     "r": 9.8,
-    "x": 334.9,
-    "y": 267.8,
+    "x": 204.6,
+    "y": 314.4,
     "idee": "gleichung.festfrei"
    },
    "gr.beob.kneser_ableitung": {
     "haupt": false,
     "r": 5.0,
-    "x": 285.5,
-    "y": 430.0,
+    "x": 250.0,
+    "y": 465.4,
     "idee": "gleichung.werte"
    },
    "gr.beob.kneser_pde_wackeln": {
     "haupt": false,
     "r": 5.0,
-    "x": 186.1,
-    "y": 433.1,
+    "x": 324.5,
+    "y": 392.9,
     "idee": "gleichung.werte"
    },
    "gr.beob.wendepunkte": {
     "haupt": false,
     "r": 7.0,
-    "x": 199.6,
-    "y": 405.6,
+    "x": 263.4,
+    "y": 438.1,
     "idee": "gleichung.werte"
    },
    "gr.def.turm": {
     "haupt": false,
     "r": 5.0,
-    "x": 261.2,
-    "y": 359.9,
+    "x": 318.2,
+    "y": 501.8,
     "idee": "gleichung.werte"
    },
    "gr.gegen.tpid7_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": 254.8,
-    "y": 469.7,
+    "x": 246.3,
+    "y": 413.4,
+    "idee": "gleichung.werte"
+   },
+   "gr.kor.basis_summe": {
+    "haupt": false,
+    "r": 5.0,
+    "x": 381.4,
+    "y": 455.6,
     "idee": "gleichung.werte"
    },
    "gr.kor.ganze_stellen": {
     "haupt": false,
     "r": 5.0,
-    "x": 185.1,
-    "y": 350.3,
+    "x": 231.6,
+    "y": 492.5,
     "idee": "gleichung.werte"
    },
    "gr.kor.konvex_nach_oben": {
     "haupt": false,
     "r": 7.0,
-    "x": 214.3,
-    "y": 368.9,
+    "x": 348.6,
+    "y": 462.3,
     "idee": "gleichung.werte"
    },
    "gr.kor.produktformel": {
     "haupt": false,
     "r": 9.0,
-    "x": 239.2,
-    "y": 384.1,
+    "x": 320.4,
+    "y": 470.9,
+    "idee": "gleichung.werte"
+   },
+   "gr.korr.grenzidentitaet": {
+    "haupt": false,
+    "r": 5.0,
+    "x": 319.1,
+    "y": 361.2,
     "idee": "gleichung.werte"
    },
    "gr.satz.abklingen": {
     "haupt": false,
     "r": 5.0,
-    "x": 255.7,
-    "y": 328.0,
+    "x": 382.7,
+    "y": 406.6,
     "idee": "gleichung.werte"
    },
    "gr.satz.basis_ganz": {
     "haupt": true,
-    "r": 11.0,
-    "x": 257.0,
-    "y": 438.6,
+    "r": 11.8,
+    "x": 284.4,
+    "y": 459.3,
     "idee": "gleichung.werte"
    },
    "gr.satz.basis_gleichung": {
     "haupt": true,
     "r": 9.8,
-    "x": 233.1,
-    "y": 490.7,
+    "x": 249.1,
+    "y": 383.3,
     "idee": "gleichung.werte"
    },
    "gr.satz.gestalt": {
     "haupt": true,
     "r": 14.9,
-    "x": 220.7,
-    "y": 426.9,
+    "x": 302.7,
+    "y": 416.9,
     "idee": "gleichung.werte"
    },
    "gr.satz.grenzfaelle": {
     "haupt": false,
     "r": 5.0,
-    "x": 182.3,
-    "y": 380.6,
+    "x": 363.6,
+    "y": 430.7,
     "idee": "gleichung.werte"
    },
    "gr.satz.kehrwert_turmsumme": {
     "haupt": false,
     "r": 5.0,
-    "x": 300.6,
-    "y": 398.1,
+    "x": 261.6,
+    "y": 499.6,
     "idee": "gleichung.werte"
    },
    "gr.satz.kettenregel": {
     "haupt": true,
     "r": 18.2,
-    "x": 249.4,
-    "y": 412.2,
+    "x": 312.8,
+    "y": 444.7,
+    "idee": "gleichung.werte"
+   },
+   "gr.satz.omega_ableitung": {
+    "haupt": true,
+    "r": 9.8,
+    "x": 335.2,
+    "y": 422.5,
     "idee": "gleichung.werte"
    },
    "gr.satz.selbstpotenz": {
     "haupt": true,
-    "r": 11.0,
-    "x": 272.0,
-    "y": 389.7,
+    "r": 11.8,
+    "x": 288.6,
+    "y": 488.1,
     "idee": "gleichung.werte"
    },
    "gr.satz.stellen": {
     "haupt": false,
     "r": 5.0,
-    "x": 197.8,
-    "y": 467.6,
+    "x": 291.4,
+    "y": 375.8,
     "idee": "gleichung.werte"
    },
    "gr.satz.turm_ableitung": {
     "haupt": false,
     "r": 5.0,
-    "x": 227.8,
-    "y": 342.7,
+    "x": 355.1,
+    "y": 490.9,
     "idee": "gleichung.werte"
    },
    "gr.satz.turm_pde": {
     "haupt": false,
     "r": 5.0,
-    "x": 318.6,
-    "y": 423.2,
+    "x": 343.7,
+    "y": 520.4,
     "idee": "gleichung.werte"
    },
    "gr.satz.vorzeichen": {
     "haupt": false,
     "r": 5.0,
-    "x": 167.5,
-    "y": 460.4,
+    "x": 215.4,
+    "y": 417.6,
     "idee": "gleichung.werte"
    },
    "gr.satz.wurzel_eta": {
     "haupt": true,
     "r": 7.0,
-    "x": 292.1,
-    "y": 458.7,
+    "x": 226.5,
+    "y": 447.7,
     "idee": "gleichung.werte"
    },
    "gr.satz.zweite_ableitung": {
     "haupt": true,
     "r": 11.0,
-    "x": 225.0,
-    "y": 456.0,
+    "x": 278.0,
+    "y": 401.8,
     "idee": "gleichung.werte"
    },
    "gr.verm.ein_wendepunkt": {
     "haupt": true,
     "r": 7.0,
-    "x": 280.6,
-    "y": 488.6,
+    "x": 264.6,
+    "y": 530.0,
     "idee": "gleichung.werte"
    },
    "gr.verm.tpid7": {
     "haupt": false,
     "r": 5.0,
-    "x": 162.4,
-    "y": 415.2,
+    "x": 354.1,
+    "y": 391.1,
     "idee": "gleichung.werte"
    },
    "gr.verm.ungerade_ableitungen": {
     "haupt": true,
     "r": 7.0,
-    "x": 291.0,
-    "y": 358.1,
+    "x": 296.7,
+    "y": 522.5,
     "idee": "gleichung.werte"
    },
    "gr.beob.integral_halb": {
     "haupt": false,
     "r": 5.0,
-    "x": 451.7,
-    "y": 391.0,
+    "x": 490.1,
+    "y": 362.8,
     "idee": "gleichung.integrale"
    },
    "gr.beob.integrale_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": 390.7,
-    "y": 356.0,
+    "x": 429.1,
+    "y": 327.8,
     "idee": "gleichung.integrale"
    },
    "gr.frage.integral_form": {
     "haupt": false,
     "r": 5.0,
-    "x": 467.5,
-    "y": 339.2,
+    "x": 506.0,
+    "y": 311.0,
     "idee": "gleichung.integrale"
    },
    "gr.kor.integral_formen": {
     "haupt": false,
     "r": 5.0,
-    "x": 376.4,
-    "y": 385.2,
+    "x": 414.8,
+    "y": 357.0,
     "idee": "gleichung.integrale"
    },
    "gr.kor.turmintegral_formen": {
     "haupt": false,
     "r": 5.0,
-    "x": 372.4,
-    "y": 329.5,
+    "x": 410.8,
+    "y": 301.3,
     "idee": "gleichung.integrale"
    },
    "gr.satz.integral_log": {
     "haupt": false,
     "r": 5.0,
-    "x": 417.7,
-    "y": 409.5,
+    "x": 456.1,
+    "y": 381.3,
     "idee": "gleichung.integrale"
    },
    "gr.satz.integral_produkt": {
     "haupt": false,
     "r": 5.0,
-    "x": 406.3,
-    "y": 317.1,
+    "x": 444.8,
+    "y": 288.9,
     "idee": "gleichung.integrale"
    },
    "gr.satz.integral_unten": {
     "haupt": false,
     "r": 5.0,
-    "x": 456.1,
-    "y": 307.6,
+    "x": 494.5,
+    "y": 279.3,
     "idee": "gleichung.integrale"
    },
    "gr.satz.sophomore": {
     "haupt": true,
     "r": 11.8,
-    "x": 413.1,
-    "y": 378.6,
+    "x": 451.5,
+    "y": 350.4,
     "idee": "gleichung.integrale"
    },
    "gr.satz.turmintegral_grenzen": {
     "haupt": true,
     "r": 11.0,
-    "x": 432.8,
-    "y": 333.2,
+    "x": 471.2,
+    "y": 305.0,
     "idee": "gleichung.integrale"
    },
    "gr.satz.turmintegral_periodisch": {
     "haupt": false,
     "r": 5.0,
-    "x": 449.3,
-    "y": 424.1,
+    "x": 487.8,
+    "y": 395.9,
     "idee": "gleichung.integrale"
    },
    "gr.satz.young": {
     "haupt": true,
     "r": 11.8,
-    "x": 443.5,
-    "y": 363.0,
+    "x": 481.9,
+    "y": 334.8,
     "idee": "gleichung.integrale"
    },
    "gr.verm.turmintegral_rate": {
     "haupt": false,
     "r": 5.0,
-    "x": 481.9,
-    "y": 381.9,
+    "x": 520.3,
+    "y": 353.7,
     "idee": "gleichung.integrale"
    },
    "gr.satz.ln_aus_steigungen": {
     "haupt": false,
     "r": 7.0,
-    "x": 185.7,
-    "y": 210.4,
+    "x": 221.3,
+    "y": 159.2,
     "idee": "gleichung.slog"
    },
    "gr.satz.logstern": {
     "haupt": false,
     "r": 5.0,
-    "x": 207.0,
-    "y": 275.5,
+    "x": 242.5,
+    "y": 224.3,
     "idee": "gleichung.slog"
    },
    "gr.satz.slog_ableitung": {
     "haupt": true,
     "r": 11.8,
-    "x": 163.6,
-    "y": 261.5,
+    "x": 199.1,
+    "y": 210.3,
     "idee": "gleichung.slog"
    },
    "gr.satz.slog_grund": {
     "haupt": true,
     "r": 13.9,
-    "x": 197.8,
-    "y": 243.9,
+    "x": 233.3,
+    "y": 192.7,
     "idee": "gleichung.slog"
    },
    "gr.satz.slog_steigung_langsam": {
     "haupt": false,
     "r": 5.0,
-    "x": 138.4,
-    "y": 236.0,
+    "x": 173.9,
+    "y": 184.8,
     "idee": "gleichung.slog"
+   },
+   "gr.def.epsilon_omega": {
+    "haupt": true,
+    "r": 11.8,
+    "x": 422.8,
+    "y": 208.6,
+    "idee": "gleichung.superwurzeln"
    },
    "gr.satz.superwurzel": {
     "haupt": true,
-    "r": 9.8,
-    "x": 511.6,
-    "y": 243.9,
+    "r": 11.0,
+    "x": 457.1,
+    "y": 191.0,
     "idee": "gleichung.superwurzeln"
    },
    "gr.satz.superwurzel_dritte": {
     "haupt": false,
     "r": 5.0,
-    "x": 471.5,
-    "y": 264.5,
+    "x": 445.0,
+    "y": 157.5,
+    "idee": "gleichung.superwurzeln"
+   },
+   "gr.satz.superwurzel_omega": {
+    "haupt": false,
+    "r": 5.0,
+    "x": 466.2,
+    "y": 222.6,
+    "idee": "gleichung.superwurzeln"
+   },
+   "gr.satz.turm_superwurzel": {
+    "haupt": false,
+    "r": 5.0,
+    "x": 397.6,
+    "y": 183.2,
     "idee": "gleichung.superwurzeln"
    },
    "fp.def.eta": {
     "haupt": false,
     "r": 5.0,
-    "x": -378.9,
-    "y": 147.9,
+    "x": -381.5,
+    "y": 148.9,
     "idee": "dynamik.fixpunkte"
    },
    "fp.satz.abstossend": {
     "haupt": false,
     "r": 5.0,
-    "x": -357.7,
-    "y": 212.9,
+    "x": -360.2,
+    "y": 213.9,
     "idee": "dynamik.fixpunkte"
    },
    "fp.satz.fixpunkt_summen": {
     "haupt": false,
     "r": 5.0,
-    "x": -426.3,
-    "y": 173.5,
+    "x": -428.8,
+    "y": 174.5,
     "idee": "dynamik.fixpunkte"
    },
    "fp.satz.lambert": {
     "haupt": true,
     "r": 21.0,
-    "x": -366.8,
-    "y": 181.4,
+    "x": -369.4,
+    "y": 182.4,
     "idee": "dynamik.fixpunkte"
    },
    "fp.satz.reelle_fixpunkte": {
     "haupt": true,
     "r": 14.4,
-    "x": -401.1,
-    "y": 198.9,
+    "x": -403.6,
+    "y": 200.0,
     "idee": "dynamik.fixpunkte"
    },
    "it.lem.julia": {
     "haupt": false,
     "r": 5.0,
-    "x": -522.4,
-    "y": 143.6,
+    "x": -524.7,
+    "y": 144.2,
     "idee": "dynamik.koenigs"
    },
    "it.satz.boettcher": {
     "haupt": false,
     "r": 5.0,
-    "x": -501.6,
-    "y": 95.7,
+    "x": -503.9,
+    "y": 96.3,
     "idee": "dynamik.koenigs"
    },
    "it.satz.elementare_superfunktionen": {
     "haupt": false,
     "r": 5.0,
-    "x": -481.6,
-    "y": 156.7,
+    "x": -484.0,
+    "y": 157.3,
     "idee": "dynamik.koenigs"
    },
    "it.satz.karlin_mcgregor": {
     "haupt": false,
     "r": 5.0,
-    "x": -546.0,
-    "y": 119.7,
+    "x": -548.4,
+    "y": 120.3,
     "idee": "dynamik.koenigs"
    },
    "it.satz.koenigs": {
     "haupt": true,
     "r": 21.0,
-    "x": -490.2,
-    "y": 127.1,
+    "x": -492.6,
+    "y": 127.7,
     "idee": "dynamik.koenigs"
    },
    "it.satz.moebius_iteration": {
     "haupt": true,
     "r": 9.8,
-    "x": -529.5,
-    "y": 78.6,
+    "x": -531.9,
+    "y": 79.2,
     "idee": "dynamik.koenigs"
    },
    "it.satz.sternberg_reell": {
     "haupt": false,
     "r": 5.0,
-    "x": -464.9,
-    "y": 102.0,
+    "x": -467.2,
+    "y": 102.6,
     "idee": "dynamik.koenigs"
    },
    "it.satz.vertauschbar": {
     "haupt": true,
     "r": 18.5,
-    "x": -517.6,
-    "y": 176.2,
+    "x": -519.9,
+    "y": 176.8,
     "idee": "dynamik.koenigs"
    },
    "it.konstr.levy": {
     "haupt": false,
     "r": 5.0,
-    "x": -451.3,
-    "y": 269.6,
+    "x": -454.3,
+    "y": 270.3,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.baker": {
     "haupt": true,
     "r": 9.8,
-    "x": -471.5,
-    "y": 316.2,
+    "x": -474.6,
+    "y": 316.9,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.baker_einbettung": {
     "haupt": false,
     "r": 5.0,
-    "x": -431.8,
-    "y": 329.0,
+    "x": -434.9,
+    "y": 329.7,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.ecalle_voronin": {
     "haupt": false,
     "r": 5.0,
-    "x": -494.5,
-    "y": 293.0,
+    "x": -497.6,
+    "y": 293.7,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.erdos_jabotinsky": {
     "haupt": false,
     "r": 5.0,
-    "x": -415.5,
-    "y": 275.7,
+    "x": -418.6,
+    "y": 276.4,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.leau_fatou": {
     "haupt": true,
     "r": 13.9,
-    "x": -440.2,
-    "y": 300.2,
+    "x": -443.3,
+    "y": 300.9,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.moebius_familie": {
     "haupt": false,
     "r": 5.0,
-    "x": -466.8,
-    "y": 348.0,
+    "x": -469.9,
+    "y": 348.7,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.parabolische_rate": {
     "haupt": true,
     "r": 7.0,
-    "x": -478.5,
-    "y": 253.0,
+    "x": -481.6,
+    "y": 253.6,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.szekeres": {
     "haupt": false,
     "r": 5.0,
-    "x": -400.8,
-    "y": 319.6,
+    "x": -403.8,
+    "y": 320.3,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.szekeres_monoton": {
     "haupt": true,
     "r": 7.0,
-    "x": -509.3,
-    "y": 323.0,
+    "x": -512.4,
+    "y": 323.7,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.cremer": {
     "haupt": true,
     "r": 7.0,
-    "x": -553.5,
-    "y": 231.9,
+    "x": -556.3,
+    "y": 232.2,
     "idee": "dynamik.indifferent"
    },
    "fp.beob.i_turm": {
     "haupt": false,
     "r": 5.0,
-    "x": 22.2,
-    "y": -87.4,
+    "x": 43.2,
+    "y": -83.8,
     "idee": "turm.konvergenz"
    },
    "fp.beob.tpid6_rate": {
     "haupt": false,
     "r": 5.0,
-    "x": 41.1,
-    "y": -29.6,
+    "x": 62.1,
+    "y": -26.1,
     "idee": "turm.konvergenz"
    },
    "fp.frage.tpid12_13": {
     "haupt": false,
     "r": 5.0,
-    "x": -19.9,
-    "y": -64.6,
+    "x": 1.1,
+    "y": -61.1,
     "idee": "turm.konvergenz"
    },
    "fp.satz.baker_rippon_kardioide": {
     "haupt": true,
     "r": 7.0,
-    "x": 57.0,
-    "y": -81.4,
+    "x": 77.9,
+    "y": -77.9,
     "idee": "turm.konvergenz"
    },
    "fp.satz.nachbar_turm": {
     "haupt": false,
     "r": 5.0,
-    "x": 71.3,
-    "y": -38.7,
+    "x": 92.3,
+    "y": -35.2,
     "idee": "turm.konvergenz"
    },
    "fp.satz.shell_thron": {
     "haupt": true,
     "r": 11.0,
-    "x": 2.5,
-    "y": -42.0,
+    "x": 23.5,
+    "y": -38.5,
     "idee": "turm.konvergenz"
    },
    "fp.satz.shell_thron_flaeche": {
     "haupt": false,
     "r": 5.0,
-    "x": -34.2,
-    "y": -35.4,
+    "x": -13.2,
+    "y": -31.9,
     "idee": "turm.konvergenz"
    },
    "fp.satz.thron_variabel": {
     "haupt": false,
     "r": 5.0,
-    "x": 7.1,
-    "y": -11.1,
+    "x": 28.1,
+    "y": -7.6,
     "idee": "turm.konvergenz"
    },
    "fp.satz.tpid6": {
     "haupt": false,
     "r": 5.0,
-    "x": 45.5,
-    "y": -113.0,
+    "x": 66.5,
+    "y": -109.5,
     "idee": "turm.konvergenz"
    },
    "fp.satz.turm_reell": {
     "haupt": true,
     "r": 18.5,
-    "x": 32.9,
-    "y": -57.6,
+    "x": 53.9,
+    "y": -54.1,
     "idee": "turm.konvergenz"
    },
    "fp.satz.turm_reihe_ln": {
     "haupt": false,
     "r": 5.0,
-    "x": 38.8,
-    "y": 3.5,
+    "x": 59.7,
+    "y": 7.0,
     "idee": "turm.konvergenz"
    },
    "fp.satz.unendliche_superwurzel": {
     "haupt": false,
     "r": 5.0,
-    "x": -38.2,
-    "y": -91.1,
+    "x": -17.2,
+    "y": -87.6,
     "idee": "turm.konvergenz"
    },
    "fp.verm.knospen": {
     "haupt": false,
     "r": 5.0,
-    "x": -4.2,
-    "y": -103.5,
+    "x": 16.7,
+    "y": -100.0,
     "idee": "turm.konvergenz"
    },
    "fp.satz.baker_rippon_periodisch": {
     "haupt": false,
     "r": 5.0,
-    "x": -120.1,
-    "y": 142.1,
+    "x": -120.8,
+    "y": 144.4,
     "idee": "turm.periode2"
    },
    "fp.satz.grenzfunktionen": {
     "haupt": false,
     "r": 5.0,
-    "x": -98.5,
-    "y": 92.4,
+    "x": -99.2,
+    "y": 94.7,
     "idee": "turm.periode2"
    },
    "fp.satz.p2_form": {
     "haupt": true,
     "r": 11.8,
-    "x": -86.7,
-    "y": 125.0,
+    "x": -87.4,
+    "y": 127.3,
     "idee": "turm.periode2"
    },
    "fp.satz.p2_kein_kreis": {
     "haupt": false,
     "r": 5.0,
-    "x": -77.8,
-    "y": 155.8,
+    "x": -78.5,
+    "y": 158.1,
     "idee": "turm.periode2"
    },
    "fp.satz.p2_raten": {
     "haupt": false,
     "r": 5.0,
-    "x": -60.4,
-    "y": 98.9,
+    "x": -61.1,
+    "y": 101.2,
     "idee": "turm.periode2"
    },
    "fp.satz.rechteckwelle": {
     "haupt": true,
     "r": 9.8,
-    "x": -144.6,
-    "y": 117.3,
+    "x": -145.3,
+    "y": 119.6,
     "idee": "turm.periode2"
    },
    "fp.beob.gleiches_L_kategorien": {
     "haupt": false,
     "r": 5.0,
-    "x": -162.0,
-    "y": -3.9,
+    "x": -142.7,
+    "y": -6.2,
     "idee": "turm.regionen"
    },
    "fp.beob.negative_achse": {
     "haupt": false,
     "r": 5.0,
-    "x": -142.5,
-    "y": -48.9,
+    "x": -123.2,
+    "y": -51.2,
     "idee": "turm.regionen"
    },
    "fp.beob.partner_keil": {
     "haupt": false,
     "r": 5.0,
-    "x": -123.7,
-    "y": 8.4,
+    "x": -104.5,
+    "y": 6.1,
     "idee": "turm.regionen"
    },
    "fp.beob.regionen": {
     "haupt": false,
     "r": 5.0,
-    "x": -184.2,
-    "y": -26.3,
+    "x": -165.0,
+    "y": -28.6,
     "idee": "turm.regionen"
    },
    "fp.def.basenklassen": {
     "haupt": false,
     "r": 5.0,
-    "x": -108.0,
-    "y": -43.0,
+    "x": -88.7,
+    "y": -45.3,
     "idee": "turm.regionen"
    },
    "fp.satz.baker_rippon_parameter": {
     "haupt": false,
     "r": 5.0,
-    "x": -157.5,
-    "y": 26.7,
+    "x": -138.2,
+    "y": 24.5,
     "idee": "turm.regionen"
    },
    "fp.satz.exp_normalform": {
     "haupt": true,
     "r": 7.0,
-    "x": -168.7,
-    "y": -64.9,
+    "x": -149.5,
+    "y": -67.2,
     "idee": "turm.regionen"
    },
    "fp.satz.gleiches_L": {
     "haupt": true,
     "r": 11.0,
-    "x": -202.4,
-    "y": -52.6,
+    "x": -183.1,
+    "y": -54.9,
     "idee": "turm.regionen"
    },
    "fp.satz.messbare_dynamik": {
     "haupt": false,
     "r": 5.0,
-    "x": -93.7,
-    "y": -0.7,
+    "x": -74.5,
+    "y": -2.9,
     "idee": "turm.regionen"
    },
    "fp.satz.multiplikator_rezept": {
     "haupt": true,
     "r": 14.4,
-    "x": -131.8,
-    "y": -19.4,
+    "x": -112.6,
+    "y": -21.7,
     "idee": "turm.regionen"
    },
    "fp.satz.neutral": {
     "haupt": false,
     "r": 5.0,
-    "x": -198.5,
-    "y": 2.6,
+    "x": -179.2,
+    "y": 0.4,
     "idee": "turm.regionen"
    },
    "fp.satz.parabolisch_rand": {
     "haupt": true,
     "r": 9.8,
-    "x": -77.8,
-    "y": -34.2,
+    "x": -58.6,
+    "y": -36.5,
     "idee": "turm.regionen"
    },
    "fp.satz.parameter_konform": {
     "haupt": false,
     "r": 5.0,
-    "x": -119.3,
-    "y": -74.4,
+    "x": -100.1,
+    "y": -76.7,
     "idee": "turm.regionen"
    },
    "fp.verm.knospen_drehzahl": {
     "haupt": false,
     "r": 5.0,
-    "x": -126.0,
-    "y": 41.2,
+    "x": -106.8,
+    "y": 39.0,
     "idee": "turm.regionen"
    },
    "fp.ann.siegel_rand": {
     "haupt": false,
     "r": 5.0,
-    "x": 21.2,
-    "y": 116.8,
+    "x": 20.9,
+    "y": 121.5,
     "idee": "turm.spiralen"
    },
    "fp.frage.holomorphe_familie": {
     "haupt": false,
     "r": 5.0,
-    "x": 41.4,
-    "y": 70.2,
+    "x": 41.1,
+    "y": 74.8,
     "idee": "turm.spiralen"
    },
    "fp.gegen.bruch_mittel": {
     "haupt": false,
     "r": 5.0,
-    "x": 60.8,
-    "y": 129.6,
+    "x": 60.5,
+    "y": 134.3,
     "idee": "turm.spiralen"
    },
    "fp.kor.fourier_taylor": {
     "haupt": false,
     "r": 5.0,
-    "x": 91.9,
-    "y": 120.2,
+    "x": 91.6,
+    "y": 124.8,
     "idee": "turm.spiralen"
    },
    "fp.satz.kreismittel": {
     "haupt": true,
     "r": 11.0,
-    "x": 52.5,
-    "y": 100.8,
+    "x": 52.2,
+    "y": 105.4,
     "idee": "turm.spiralen"
    },
    "fp.satz.siegel_mittel": {
     "haupt": false,
     "r": 5.0,
-    "x": -1.9,
-    "y": 93.6,
+    "x": -2.2,
+    "y": 98.2,
     "idee": "turm.spiralen"
    },
    "fp.satz.siegel_unbeschraenkt": {
     "haupt": false,
     "r": 5.0,
-    "x": 77.2,
-    "y": 76.3,
+    "x": 76.9,
+    "y": 81.0,
     "idee": "turm.spiralen"
    },
    "fp.satz.spirale": {
     "haupt": false,
     "r": 5.0,
-    "x": 25.9,
-    "y": 148.6,
+    "x": 25.6,
+    "y": 153.2,
     "idee": "turm.spiralen"
    },
    "fp.verm.bruch_mittel": {
     "haupt": false,
     "r": 5.0,
-    "x": -16.6,
-    "y": 123.6,
+    "x": -16.9,
+    "y": 128.3,
     "idee": "turm.spiralen"
    },
    "fp.verm.doppelmittel": {
     "haupt": false,
     "r": 5.0,
-    "x": 14.2,
-    "y": 53.5,
+    "x": 13.9,
+    "y": 58.2,
     "idee": "turm.spiralen"
    },
    "kl.beob.q_binomial": {
     "haupt": false,
     "r": 5.0,
-    "x": 286.3,
-    "y": -273.4,
+    "x": 284.7,
+    "y": -278.1,
     "idee": "fortsetzung.regulaer"
    },
    "kl.beob.zwei_abel": {
     "haupt": false,
     "r": 7.8,
-    "x": 270.8,
-    "y": -223.0,
+    "x": 269.2,
+    "y": -227.6,
     "idee": "fortsetzung.regulaer"
    },
    "kl.frage.tpid5": {
     "haupt": false,
     "r": 5.0,
-    "x": 237.7,
-    "y": -205.0,
+    "x": 236.1,
+    "y": -209.6,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.basis_unter_eins": {
     "haupt": false,
     "r": 5.0,
-    "x": 226.6,
-    "y": -295.0,
+    "x": 225.1,
+    "y": -299.6,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.bruchprodukt": {
     "haupt": true,
     "r": 9.8,
-    "x": 240.6,
-    "y": -322.1,
+    "x": 239.0,
+    "y": -326.8,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.bruchsumme": {
     "haupt": true,
     "r": 14.4,
-    "x": 233.3,
-    "y": -235.1,
+    "x": 231.7,
+    "y": -239.7,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.carlson": {
     "haupt": false,
     "r": 5.0,
-    "x": 300.2,
-    "y": -231.9,
+    "x": 298.6,
+    "y": -236.5,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.folgen_vollmonoton": {
     "haupt": false,
     "r": 5.0,
-    "x": 307.0,
-    "y": -202.1,
+    "x": 305.4,
+    "y": -206.8,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.grenzwertformel": {
     "haupt": true,
     "r": 9.8,
-    "x": 193.6,
-    "y": -282.9,
+    "x": 192.0,
+    "y": -287.6,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.koenigs_spektral": {
     "haupt": true,
     "r": 11.0,
-    "x": 268.5,
-    "y": -190.8,
+    "x": 266.9,
+    "y": -195.4,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.newton_reihe": {
     "haupt": false,
     "r": 5.0,
-    "x": 315.9,
-    "y": -264.8,
+    "x": 314.3,
+    "y": -269.5,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.obere_superexp": {
     "haupt": false,
     "r": 5.0,
-    "x": 197.5,
-    "y": -228.6,
+    "x": 195.9,
+    "y": -233.3,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.regulaer": {
     "haupt": true,
     "r": 17.5,
-    "x": 262.9,
-    "y": -250.3,
+    "x": 261.3,
+    "y": -254.9,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.vier_sqrt2": {
     "haupt": false,
     "r": 5.0,
-    "x": 275.1,
-    "y": -304.3,
+    "x": 273.5,
+    "y": -308.9,
     "idee": "fortsetzung.regulaer"
    },
    "kl.verm.faktor": {
     "haupt": false,
     "r": 5.0,
-    "x": 209.6,
-    "y": -193.0,
+    "x": 208.0,
+    "y": -197.6,
     "idee": "fortsetzung.regulaer"
    },
    "kl.verm.streifenbreite": {
     "haupt": true,
     "r": 9.8,
-    "x": 211.4,
-    "y": -257.1,
+    "x": 209.8,
+    "y": -261.7,
     "idee": "fortsetzung.regulaer"
    },
    "kl.verm.vollmonoton": {
     "haupt": false,
     "r": 7.0,
-    "x": 252.4,
-    "y": -279.3,
+    "x": 250.8,
+    "y": -283.9,
     "idee": "fortsetzung.regulaer"
    },
    "br.frage.implosion": {
     "haupt": false,
     "r": 5.0,
-    "x": 239.3,
-    "y": -490.0,
+    "x": 238.0,
+    "y": -494.6,
     "idee": "fortsetzung.eta"
    },
    "br.satz.sattel_knoten": {
     "haupt": true,
     "r": 9.8,
-    "x": 201.1,
-    "y": -502.3,
+    "x": 199.8,
+    "y": -506.9,
     "idee": "fortsetzung.eta"
    },
    "br.satz.shishikura": {
     "haupt": true,
     "r": 7.0,
-    "x": 178.9,
-    "y": -524.7,
+    "x": 177.6,
+    "y": -529.3,
     "idee": "fortsetzung.eta"
    },
    "kl.beob.eta_konstanten": {
     "haupt": false,
     "r": 5.0,
-    "x": 255.1,
-    "y": -541.4,
+    "x": 253.8,
+    "y": -546.0,
     "idee": "fortsetzung.eta"
    },
    "kl.beob.stetig_eta": {
     "haupt": false,
     "r": 5.0,
-    "x": 205.6,
-    "y": -471.6,
+    "x": 204.3,
+    "y": -476.3,
     "idee": "fortsetzung.eta"
    },
    "kl.frage.eta_analytisch": {
     "haupt": false,
     "r": 5.0,
-    "x": 194.3,
-    "y": -563.3,
+    "x": 193.1,
+    "y": -568.0,
     "idee": "fortsetzung.eta"
    },
    "kl.frage.stetig_eta": {
     "haupt": false,
     "r": 5.0,
-    "x": 269.3,
-    "y": -499.0,
+    "x": 268.0,
+    "y": -503.7,
     "idee": "fortsetzung.eta"
    },
    "kl.kor.eta_baker": {
     "haupt": false,
     "r": 5.0,
-    "x": 164.6,
-    "y": -495.7,
+    "x": 163.3,
+    "y": -500.4,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.cheta": {
     "haupt": false,
     "r": 5.0,
-    "x": 243.7,
-    "y": -572.8,
+    "x": 242.5,
+    "y": -577.4,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.eta_digamma": {
     "haupt": false,
     "r": 5.0,
-    "x": 285.3,
-    "y": -532.6,
+    "x": 284.0,
+    "y": -537.2,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.eta_koordinate": {
     "haupt": true,
     "r": 9.8,
-    "x": 220.6,
-    "y": -547.3,
+    "x": 219.3,
+    "y": -551.9,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.moebius_qdigamma": {
     "haupt": false,
     "r": 5.0,
-    "x": 237.0,
-    "y": -457.1,
+    "x": 235.7,
+    "y": -461.8,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.parabolisch": {
     "haupt": true,
     "r": 11.0,
-    "x": 231.3,
-    "y": -517.8,
+    "x": 230.0,
+    "y": -522.4,
     "idee": "fortsetzung.eta"
    },
    "kl.verm.lambert_zeta": {
     "haupt": false,
     "r": 5.0,
-    "x": 160.7,
-    "y": -551.0,
+    "x": 159.4,
+    "y": -555.6,
     "idee": "fortsetzung.eta"
    },
    "kn.beob.referenzwerte": {
     "haupt": false,
     "r": 7.0,
-    "x": 146.4,
-    "y": -407.3,
+    "x": 144.9,
+    "y": -412.1,
     "idee": "fortsetzung.kneser"
    },
    "kn.gescheitert.regulaer_an_L": {
     "haupt": false,
     "r": 5.0,
-    "x": 166.0,
-    "y": -347.1,
+    "x": 164.6,
+    "y": -351.9,
     "idee": "fortsetzung.kneser"
    },
    "kn.konstr.cauchy": {
     "haupt": false,
     "r": 5.0,
-    "x": 102.6,
-    "y": -383.6,
+    "x": 101.1,
+    "y": -388.4,
     "idee": "fortsetzung.kneser"
    },
    "kn.konstr.kneser": {
     "haupt": true,
     "r": 18.9,
-    "x": 157.5,
-    "y": -376.3,
+    "x": 156.1,
+    "y": -381.1,
     "idee": "fortsetzung.kneser"
    },
    "kn.konstr.paulsen_cowgill_iteration": {
     "haupt": false,
     "r": 5.0,
-    "x": 182.6,
-    "y": -401.1,
+    "x": 181.1,
+    "y": -405.9,
     "idee": "fortsetzung.kneser"
    },
    "kn.kor.basisvergleich": {
     "haupt": false,
     "r": 5.0,
-    "x": 118.8,
-    "y": -424.1,
+    "x": 117.4,
+    "y": -428.9,
     "idee": "fortsetzung.kneser"
    },
    "kn.satz.kneser_eigenschaften": {
     "haupt": true,
     "r": 11.0,
-    "x": 130.6,
-    "y": -327.9,
+    "x": 129.2,
+    "y": -332.7,
     "idee": "fortsetzung.kneser"
    },
    "kn.satz.paulsen_komplex": {
     "haupt": false,
     "r": 5.0,
-    "x": 197.5,
-    "y": -356.7,
+    "x": 196.1,
+    "y": -361.5,
     "idee": "fortsetzung.kneser"
    },
    "kn.satz.singulaer_minus2": {
     "haupt": true,
     "r": 9.8,
-    "x": 125.9,
-    "y": -360.1,
+    "x": 124.4,
+    "y": -364.9,
     "idee": "fortsetzung.kneser"
    },
    "kn.beob.carleman_rate": {
     "haupt": false,
     "r": 5.0,
-    "x": 441.3,
-    "y": -538.8,
+    "x": 440.1,
+    "y": -543.1,
     "idee": "fortsetzung.andere"
    },
    "kn.frage.abel_bruchsumme": {
     "haupt": false,
     "r": 5.0,
-    "x": 459.2,
-    "y": -483.9,
+    "x": 458.0,
+    "y": -488.3,
     "idee": "fortsetzung.andere"
    },
    "kn.frage.tpid14": {
     "haupt": false,
     "r": 5.0,
-    "x": 401.4,
-    "y": -517.2,
+    "x": 400.2,
+    "y": -521.5,
     "idee": "fortsetzung.andere"
    },
    "kn.frage.tpid16": {
     "haupt": false,
     "r": 5.0,
-    "x": 474.3,
-    "y": -533.1,
+    "x": 473.1,
+    "y": -537.4,
     "idee": "fortsetzung.andere"
    },
    "kn.frage.tpid17": {
     "haupt": false,
     "r": 5.0,
-    "x": 427.0,
-    "y": -466.4,
+    "x": 425.8,
+    "y": -470.8,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.carleman": {
     "haupt": true,
     "r": 9.8,
-    "x": 422.6,
-    "y": -495.7,
+    "x": 421.5,
+    "y": -500.1,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.kontinuumssumme": {
     "haupt": false,
     "r": 5.0,
-    "x": 416.2,
-    "y": -554.1,
+    "x": 415.0,
+    "y": -558.4,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.linear": {
     "haupt": true,
     "r": 11.0,
-    "x": 451.5,
-    "y": -510.5,
+    "x": 450.3,
+    "y": -514.9,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.paulsen_stoerung": {
     "haupt": false,
     "r": 5.0,
-    "x": 487.9,
-    "y": -492.6,
+    "x": 486.7,
+    "y": -497.0,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.quadratisch": {
     "haupt": false,
     "r": 5.0,
-    "x": 387.8,
-    "y": -489.5,
+    "x": 386.6,
+    "y": -493.8,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.walker": {
     "haupt": false,
     "r": 5.0,
-    "x": 463.4,
-    "y": -563.1,
+    "x": 462.3,
+    "y": -567.5,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.zwei_sinh": {
     "haupt": false,
     "r": 5.0,
-    "x": 457.0,
-    "y": -452.6,
+    "x": 455.8,
+    "y": -456.9,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.abel_bruchsumme": {
     "haupt": false,
     "r": 5.0,
-    "x": 384.0,
-    "y": -542.3,
+    "x": 382.8,
+    "y": -546.6,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.grenzwert_trick": {
     "haupt": false,
     "r": 5.0,
-    "x": 503.1,
-    "y": -524.7,
+    "x": 501.9,
+    "y": -529.0,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.hooshmand": {
     "haupt": false,
     "r": 5.0,
-    "x": 386.8,
-    "y": -572.8,
+    "x": 385.7,
+    "y": -577.2,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.intuitiver_log": {
     "haupt": false,
     "r": 5.0,
-    "x": 399.6,
-    "y": -454.7,
+    "x": 398.4,
+    "y": -459.1,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.linear_glatt": {
     "haupt": false,
     "r": 5.0,
-    "x": 521.2,
-    "y": -499.5,
+    "x": 520.0,
+    "y": -503.8,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.walker_konjugation": {
     "haupt": false,
     "r": 5.0,
-    "x": 429.8,
-    "y": -580.5,
+    "x": 428.6,
+    "y": -584.8,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.carleman_eigenwerte": {
     "haupt": false,
     "r": 5.0,
-    "x": 494.5,
-    "y": -463.6,
+    "x": 493.3,
+    "y": -468.0,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.carleman_kneser": {
     "haupt": true,
     "r": 7.0,
-    "x": 369.1,
-    "y": -462.0,
+    "x": 367.9,
+    "y": -466.3,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.szekeres_wachstum": {
     "haupt": false,
     "r": 5.0,
-    "x": 363.9,
-    "y": -507.4,
+    "x": 362.7,
+    "y": -511.8,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.tpid3": {
     "haupt": false,
     "r": 5.0,
-    "x": 493.5,
-    "y": -564.9,
+    "x": 492.3,
+    "y": -569.2,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.tpid3_bedingung": {
     "haupt": false,
     "r": 5.0,
-    "x": 435.2,
-    "y": -431.5,
+    "x": 434.0,
+    "y": -435.8,
     "idee": "fortsetzung.andere"
    },
    "kn.beob.kouznetsov_numerik": {
     "haupt": false,
     "r": 5.0,
-    "x": 315.8,
-    "y": -428.8,
+    "x": 314.4,
+    "y": -433.3,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.def.slog": {
     "haupt": true,
     "r": 11.8,
-    "x": 327.3,
-    "y": -396.8,
+    "x": 325.9,
+    "y": -401.4,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.frage.beta_methode": {
     "haupt": false,
     "r": 5.0,
-    "x": 336.1,
-    "y": -366.7,
+    "x": 334.7,
+    "y": -371.2,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.satz.paulsen_cowgill": {
     "haupt": true,
     "r": 11.0,
-    "x": 294.7,
-    "y": -380.0,
+    "x": 293.3,
+    "y": -384.6,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.satz.tk_kriterien": {
     "haupt": false,
     "r": 5.0,
-    "x": 270.6,
-    "y": -404.3,
+    "x": 269.2,
+    "y": -408.9,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.satz.trappmann_kouznetsov": {
     "haupt": false,
     "r": 5.0,
-    "x": 353.1,
-    "y": -422.3,
+    "x": 351.8,
+    "y": -426.9,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.verm.tk_c2": {
     "haupt": false,
     "r": 5.0,
-    "x": 299.6,
-    "y": -346.8,
+    "x": 298.2,
+    "y": -351.4,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "br.frage.bohr_mollerup": {
     "haupt": true,
     "r": 7.0,
-    "x": 515.4,
-    "y": -387.5,
+    "x": 514.5,
+    "y": -392.0,
     "idee": "fortsetzung.reell"
    },
    "kn.beob.polynom_eckmode": {
     "haupt": false,
     "r": 5.0,
-    "x": 423.7,
-    "y": -298.1,
+    "x": 422.1,
+    "y": -303.1,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.polynom_halbexp_fehlergesetz": {
     "haupt": false,
     "r": 5.0,
-    "x": 494.7,
-    "y": -237.2,
+    "x": 493.1,
+    "y": -242.2,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.polynom_konforme_stabilitaet": {
     "haupt": false,
     "r": 5.0,
-    "x": 395.6,
-    "y": -234.1,
+    "x": 394.0,
+    "y": -239.1,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.polynom_moebius_schwelle": {
     "haupt": false,
     "r": 5.0,
-    "x": 470.5,
-    "y": -307.1,
+    "x": 468.9,
+    "y": -312.0,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.polynom_rand_plateau": {
     "haupt": false,
     "r": 5.0,
-    "x": 464.2,
-    "y": -197.6,
+    "x": 462.5,
+    "y": -202.5,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.slog_scheibe": {
     "haupt": false,
     "r": 7.8,
-    "x": 448.6,
-    "y": -282.9,
+    "x": 447.0,
+    "y": -287.9,
     "idee": "fortsetzung.halbexp"
    },
    "kn.gescheitert.polynom_ecke_wege": {
     "haupt": false,
     "r": 5.0,
-    "x": 391.9,
-    "y": -286.4,
+    "x": 390.3,
+    "y": -291.4,
     "idee": "fortsetzung.halbexp"
    },
    "kn.gescheitert.polynom_kantorovich": {
     "haupt": false,
     "r": 5.0,
-    "x": 509.8,
-    "y": -269.0,
+    "x": 508.2,
+    "y": -273.9,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.halbe_exp": {
     "haupt": true,
     "r": 9.8,
-    "x": 409.1,
-    "y": -261.5,
+    "x": 407.5,
+    "y": -266.5,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.halbe_exp_wachstum": {
     "haupt": false,
     "r": 5.0,
-    "x": 527.7,
-    "y": -244.0,
+    "x": 526.1,
+    "y": -249.0,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.halbexp_beschraenkt": {
     "haupt": true,
     "r": 9.8,
-    "x": 481.3,
-    "y": -277.3,
+    "x": 479.7,
+    "y": -282.3,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.halbexp_singularitaet_L": {
     "haupt": true,
     "r": 12.6,
-    "x": 458.7,
-    "y": -255.0,
+    "x": 457.1,
+    "y": -259.9,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.kneser_e_zertifiziert": {
     "haupt": true,
     "r": 11.0,
-    "x": 430.1,
-    "y": -240.3,
+    "x": 428.5,
+    "y": -245.3,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_approximation_ecke": {
     "haupt": true,
     "r": 9.8,
-    "x": 434.4,
-    "y": -211.3,
+    "x": 432.8,
+    "y": -216.2,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_cd_identitaet": {
     "haupt": false,
     "r": 5.0,
-    "x": 407.3,
-    "y": -199.7,
+    "x": 405.7,
+    "y": -204.7,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_eckprofil": {
     "haupt": false,
     "r": 5.0,
-    "x": 377.0,
-    "y": -206.9,
+    "x": 375.4,
+    "y": -211.9,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_halbexp_endlich": {
     "haupt": true,
     "r": 11.0,
-    "x": 466.3,
-    "y": -228.6,
+    "x": 464.7,
+    "y": -233.6,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_halbexp_hauptsatz": {
     "haupt": true,
     "r": 7.0,
-    "x": 465.0,
-    "y": -338.9,
+    "x": 463.4,
+    "y": -343.9,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_halbexp_reduktion": {
     "haupt": false,
     "r": 5.0,
-    "x": 489.8,
-    "y": -178.8,
+    "x": 488.2,
+    "y": -183.7,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_hauptsatz_kr0": {
     "haupt": true,
     "r": 7.0,
-    "x": 360.8,
-    "y": -282.2,
+    "x": 359.2,
+    "y": -287.2,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_modelle": {
     "haupt": false,
     "r": 5.0,
-    "x": 437.2,
-    "y": -324.3,
+    "x": 435.6,
+    "y": -329.2,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_zweig_400": {
     "haupt": true,
     "r": 9.8,
-    "x": 394.7,
-    "y": -316.7,
+    "x": 393.1,
+    "y": -321.6,
     "idee": "fortsetzung.halbexp"
    },
    "kn.verm.polynom_halbexp": {
     "haupt": false,
     "r": 5.0,
-    "x": 501.3,
-    "y": -208.5,
+    "x": 499.7,
+    "y": -213.5,
     "idee": "fortsetzung.halbexp"
    },
    "kn.verm.polynom_halbexp_eckmoden": {
     "haupt": false,
     "r": 5.0,
-    "x": 372.0,
-    "y": -251.9,
+    "x": 370.4,
+    "y": -256.9,
     "idee": "fortsetzung.halbexp"
    },
    "kn.verm.polynom_halbexp_kern": {
     "haupt": false,
     "r": 5.0,
-    "x": 500.2,
-    "y": -308.8,
+    "x": 498.6,
+    "y": -313.8,
     "idee": "fortsetzung.halbexp"
    },
    "kn.verm.polynom_halbexp_schranke": {
     "haupt": false,
     "r": 5.0,
-    "x": 442.5,
-    "y": -176.7,
+    "x": 440.9,
+    "y": -181.7,
     "idee": "fortsetzung.halbexp"
    },
    "kl.frage.basiswechsel_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": -150.5,
-    "y": 410.9,
+    "x": -154.7,
+    "y": 412.8,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.frage.gleiches_L_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": -129.7,
-    "y": 363.0,
+    "x": -133.9,
+    "y": 364.9,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.gescheitert.naiver_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": -109.8,
-    "y": 424.0,
+    "x": -114.0,
+    "y": 425.9,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.basiswechsel_gleiches_L": {
     "haupt": true,
     "r": 9.8,
-    "x": -118.4,
-    "y": 394.4,
+    "x": -122.6,
+    "y": 396.3,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.invariante_daempfung": {
     "haupt": true,
     "r": 7.0,
-    "x": -157.7,
-    "y": 345.9,
+    "x": -161.9,
+    "y": 347.8,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.koenigs_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": -174.1,
-    "y": 387.0,
+    "x": -178.3,
+    "y": 388.9,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.qk_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": -93.0,
-    "y": 369.3,
+    "x": -97.2,
+    "y": 371.2,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.wertseitiger_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": -145.7,
-    "y": 443.5,
+    "x": -149.9,
+    "y": 445.4,
     "idee": "basiswechsel.gleiches_l"
    },
    "bw.ann.hyp22": {
     "haupt": false,
     "r": 11.0,
-    "x": -119.2,
-    "y": 541.5,
+    "x": -123.4,
+    "y": 543.4,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.ann.hyp24": {
     "haupt": false,
     "r": 11.0,
-    "x": -151.3,
-    "y": 558.0,
+    "x": -155.5,
+    "y": 559.9,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.def.F_bd": {
     "haupt": false,
     "r": 5.0,
-    "x": -175.0,
-    "y": 534.1,
+    "x": -179.2,
+    "y": 536.0,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.lem.stoppregel": {
     "haupt": false,
     "r": 7.8,
-    "x": -146.5,
-    "y": 590.6,
+    "x": -150.7,
+    "y": 592.5,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.lem.wachstumsluecke": {
     "haupt": false,
     "r": 8.5,
-    "x": -130.5,
-    "y": 510.0,
+    "x": -134.7,
+    "y": 511.9,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.prop.ganzzahl": {
     "haupt": false,
     "r": 5.0,
-    "x": -93.8,
-    "y": 516.4,
+    "x": -98.0,
+    "y": 518.3,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.prop.gruppoid": {
     "haupt": true,
     "r": 13.3,
-    "x": -110.6,
-    "y": 571.1,
+    "x": -114.8,
+    "y": 573.0,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.satz.schwanzkonvergenz": {
     "haupt": true,
     "r": 14.9,
-    "x": -158.5,
-    "y": 493.0,
+    "x": -162.7,
+    "y": 494.9,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.beob.offset_zertifikat": {
     "haupt": false,
     "r": 5.0,
-    "x": -1.9,
-    "y": 438.0,
+    "x": -6.1,
+    "y": 439.9,
     "idee": "basiswechsel.phase"
    },
    "bw.frage.halbiter_vergleich": {
     "haupt": false,
     "r": 5.0,
-    "x": 17.5,
-    "y": 497.5,
+    "x": 13.3,
+    "y": 499.4,
     "idee": "basiswechsel.phase"
    },
    "bw.frage.nixon_eta_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": -45.2,
-    "y": 461.5,
+    "x": -49.4,
+    "y": 463.4,
     "idee": "basiswechsel.phase"
    },
    "bw.gegen.unverschoben": {
     "haupt": false,
     "r": 5.0,
-    "x": 33.8,
-    "y": 444.2,
+    "x": 29.6,
+    "y": 446.1,
     "idee": "basiswechsel.phase"
    },
    "bw.lem.offset": {
     "haupt": false,
     "r": 5.0,
-    "x": -60.0,
-    "y": 491.5,
+    "x": -64.2,
+    "y": 493.4,
     "idee": "basiswechsel.phase"
    },
    "bw.satz.imaginaere_richtung": {
     "haupt": true,
     "r": 7.0,
-    "x": -17.5,
-    "y": 516.5,
+    "x": -21.7,
+    "y": 518.4,
     "idee": "basiswechsel.phase"
    },
    "bw.satz.paulsen_cowgill_hardy": {
     "haupt": true,
     "r": 7.0,
-    "x": -29.1,
-    "y": 421.4,
+    "x": -33.3,
+    "y": 423.3,
     "idee": "basiswechsel.phase"
    },
    "bw.satz.phasengesetz": {
     "haupt": true,
     "r": 13.9,
-    "x": -22.1,
-    "y": 484.7,
+    "x": -26.4,
+    "y": 486.6,
     "idee": "basiswechsel.phase"
    },
    "bw.satz.phasengesetz_gestoppt": {
     "haupt": true,
     "r": 9.8,
-    "x": 9.1,
-    "y": 468.6,
+    "x": 4.9,
+    "y": 470.5,
     "idee": "basiswechsel.phase"
    },
    "bw.verm.adressen": {
     "haupt": false,
     "r": 5.0,
-    "x": 48.6,
-    "y": 488.1,
+    "x": 44.4,
+    "y": 490.0,
     "idee": "basiswechsel.phase"
    },
    "bw.prop.antisym_c1": {
     "haupt": false,
     "r": 5.0,
-    "x": 50.6,
-    "y": 584.0,
+    "x": 46.1,
+    "y": 586.0,
     "idee": "basiswechsel.kreis"
    },
    "bw.prop.kozykel": {
     "haupt": true,
     "r": 12.6,
-    "x": 24.2,
-    "y": 610.1,
+    "x": 19.7,
+    "y": 612.0,
     "idee": "basiswechsel.kreis"
    },
    "bw.satz.antisymmetrie": {
     "haupt": false,
     "r": 7.0,
-    "x": -33.7,
-    "y": 602.4,
+    "x": -38.2,
+    "y": 604.4,
     "idee": "basiswechsel.kreis"
    },
    "bw.satz.c1_produkt": {
     "haupt": false,
     "r": 5.0,
-    "x": 12.4,
-    "y": 577.5,
+    "x": 8.0,
+    "y": 579.4,
     "idee": "basiswechsel.kreis"
    },
    "bw.satz.homoeo": {
     "haupt": true,
     "r": 11.0,
-    "x": -9.1,
-    "y": 627.2,
+    "x": -13.6,
+    "y": 629.2,
     "idee": "basiswechsel.kreis"
    },
    "bw.satz.minimalregularitaet": {
     "haupt": false,
     "r": 5.0,
-    "x": 33.2,
-    "y": 640.9,
+    "x": 28.7,
+    "y": 642.8,
     "idee": "basiswechsel.kreis"
    },
    "bw.beob.modenabfall": {
     "haupt": false,
     "r": 5.0,
-    "x": -248.1,
-    "y": 493.7,
+    "x": -252.2,
+    "y": 495.7,
     "idee": "basiswechsel.moden"
    },
    "bw.beob.positionsgesetz": {
     "haupt": false,
     "r": 5.0,
-    "x": -309.0,
-    "y": 458.6,
+    "x": -313.1,
+    "y": 460.7,
     "idee": "basiswechsel.moden"
    },
    "bw.beob.sigma_stern": {
     "haupt": false,
     "r": 5.0,
-    "x": -232.2,
-    "y": 441.9,
+    "x": -236.3,
+    "y": 443.9,
     "idee": "basiswechsel.moden"
    },
    "bw.beob.singularitaet": {
     "haupt": false,
     "r": 7.8,
-    "x": -256.2,
-    "y": 465.6,
+    "x": -260.3,
+    "y": 467.7,
     "idee": "basiswechsel.moden"
    },
    "bw.frage.streifen_gevrey": {
     "haupt": false,
     "r": 5.0,
-    "x": -282.1,
-    "y": 512.1,
+    "x": -286.2,
+    "y": 514.2,
     "idee": "basiswechsel.moden"
    },
    "bw.kor.modenzahl": {
     "haupt": false,
     "r": 5.0,
-    "x": -327.3,
-    "y": 432.1,
+    "x": -331.4,
+    "y": 434.2,
     "idee": "basiswechsel.moden"
    },
    "bw.korr.r20": {
     "haupt": false,
     "r": 5.0,
-    "x": -293.4,
-    "y": 419.7,
+    "x": -297.5,
+    "y": 421.8,
     "idee": "basiswechsel.moden"
    },
    "bw.prop.saddle": {
     "haupt": true,
     "r": 9.8,
-    "x": -286.6,
-    "y": 481.2,
+    "x": -290.7,
+    "y": 483.3,
     "idee": "basiswechsel.moden"
    },
    "bw.satz.fourier_naht": {
     "haupt": false,
     "r": 5.0,
-    "x": -217.9,
-    "y": 484.5,
+    "x": -222.0,
+    "y": 486.6,
     "idee": "basiswechsel.moden"
    },
    "bw.satz.ursache_kozykel": {
     "haupt": true,
     "r": 7.0,
-    "x": -323.4,
-    "y": 487.8,
+    "x": -327.5,
+    "y": 489.9,
     "idee": "basiswechsel.moden"
    },
    "bw.verm.nirgends_analytisch": {
     "haupt": true,
     "r": 7.0,
-    "x": -243.6,
-    "y": 410.2,
+    "x": -247.7,
+    "y": 412.3,
     "idee": "basiswechsel.moden"
    },
    "bw.verm.streifen": {
     "haupt": true,
     "r": 7.0,
-    "x": -250.4,
-    "y": 526.7,
+    "x": -254.5,
+    "y": 528.8,
     "idee": "basiswechsel.moden"
    },
    "bw.verm.universell": {
     "haupt": true,
     "r": 9.8,
-    "x": -267.0,
-    "y": 435.9,
+    "x": -271.1,
+    "y": 438.0,
     "idee": "basiswechsel.moden"
    },
    "bw.ann.K1K2": {
     "haupt": false,
     "r": 8.5,
-    "x": -247.1,
-    "y": 645.6,
+    "x": -251.1,
+    "y": 647.8,
     "idee": "basiswechsel.antwort"
    },
    "bw.ann.basis_diffbar": {
     "haupt": false,
     "r": 7.0,
-    "x": -239.3,
-    "y": 672.8,
+    "x": -243.2,
+    "y": 675.0,
     "idee": "basiswechsel.antwort"
    },
    "bw.beob.hub_genauigkeit": {
     "haupt": false,
     "r": 5.0,
-    "x": -298.3,
-    "y": 638.8,
+    "x": -302.2,
+    "y": 641.1,
     "idee": "basiswechsel.antwort"
    },
    "bw.beob.kernkleid": {
     "haupt": false,
     "r": 5.0,
-    "x": -223.9,
-    "y": 622.5,
+    "x": -227.8,
+    "y": 624.8,
     "idee": "basiswechsel.antwort"
    },
    "bw.beob.m2": {
     "haupt": false,
     "r": 5.0,
-    "x": -272.2,
-    "y": 690.6,
+    "x": -276.1,
+    "y": 692.9,
     "idee": "basiswechsel.antwort"
    },
    "bw.def.auswahlprinzip": {
     "haupt": true,
     "r": 11.8,
-    "x": -276.6,
-    "y": 660.7,
+    "x": -280.5,
+    "y": 663.0,
     "idee": "basiswechsel.antwort"
    },
    "bw.gescheitert.cstep": {
     "haupt": false,
     "r": 5.0,
-    "x": -283.2,
-    "y": 601.1,
+    "x": -287.1,
+    "y": 603.4,
     "idee": "basiswechsel.antwort"
    },
    "bw.gescheitert.orbitanker": {
     "haupt": false,
     "r": 5.0,
-    "x": -210.0,
-    "y": 663.9,
+    "x": -213.9,
+    "y": 666.1,
     "idee": "basiswechsel.antwort"
    },
    "bw.gescheitert.rh_v1": {
     "haupt": false,
     "r": 5.0,
-    "x": -312.2,
-    "y": 667.1,
+    "x": -316.1,
+    "y": 669.4,
     "idee": "basiswechsel.antwort"
    },
    "bw.gescheitert.vorhersage_r8": {
     "haupt": false,
     "r": 5.0,
-    "x": -234.9,
-    "y": 591.9,
+    "x": -238.9,
+    "y": 594.1,
     "idee": "basiswechsel.antwort"
    },
    "bw.korr.konstante": {
     "haupt": false,
     "r": 5.0,
-    "x": -241.5,
-    "y": 704.8,
+    "x": -245.4,
+    "y": 707.0,
     "idee": "basiswechsel.antwort"
    },
    "bw.lem.geom_kozykel": {
     "haupt": false,
     "r": 7.8,
-    "x": -257.6,
-    "y": 616.8,
+    "x": -261.5,
+    "y": 619.0,
     "idee": "basiswechsel.antwort"
    },
    "bw.lem.randgesetz": {
     "haupt": false,
     "r": 5.0,
-    "x": -316.1,
-    "y": 613.1,
+    "x": -320.0,
+    "y": 615.4,
     "idee": "basiswechsel.antwort"
    },
    "bw.prop.hub": {
     "haupt": true,
     "r": 7.0,
-    "x": -194.4,
-    "y": 631.1,
+    "x": -198.3,
+    "y": 633.4,
     "idee": "basiswechsel.antwort"
    },
    "bw.satz.antwortkern": {
     "haupt": true,
     "r": 7.0,
-    "x": -203.2,
-    "y": 693.5,
+    "x": -207.2,
+    "y": 695.7,
     "idee": "basiswechsel.antwort"
    },
    "bw.satz.kern_eindeutig": {
     "haupt": true,
     "r": 11.0,
-    "x": -269.3,
-    "y": 574.1,
+    "x": -273.3,
+    "y": 576.4,
     "idee": "basiswechsel.antwort"
    },
    "bw.satz.kern_existenz": {
     "haupt": true,
     "r": 9.8,
-    "x": -336.6,
-    "y": 648.7,
+    "x": -340.5,
+    "y": 651.0,
     "idee": "basiswechsel.antwort"
    },
    "bw.verm.rang_eins": {
     "haupt": false,
     "r": 5.0,
-    "x": -300.2,
-    "y": 702.6,
+    "x": -304.1,
+    "y": 704.8,
     "idee": "basiswechsel.antwort"
    },
    "bw.beob.blind": {
     "haupt": false,
     "r": 5.0,
-    "x": -119.6,
-    "y": 698.6,
+    "x": -123.6,
+    "y": 701.2,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.frage.intervallmarsch": {
     "haupt": false,
     "r": 5.0,
-    "x": -98.0,
-    "y": 648.8,
+    "x": -102.0,
+    "y": 651.4,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.korr.tails": {
     "haupt": false,
     "r": 7.0,
-    "x": -86.2,
-    "y": 681.4,
+    "x": -90.3,
+    "y": 684.1,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.satz.anker_rekonstruktion": {
     "haupt": true,
     "r": 7.0,
-    "x": -77.3,
-    "y": 712.2,
+    "x": -81.3,
+    "y": 714.8,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.zert.8r1": {
     "haupt": true,
     "r": 7.0,
-    "x": -59.9,
-    "y": 655.4,
+    "x": -63.9,
+    "y": 658.0,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.zert.8r1_alt": {
     "haupt": false,
     "r": 5.0,
-    "x": -144.2,
-    "y": 673.8,
+    "x": -148.2,
+    "y": 676.4,
     "idee": "basiswechsel.rekonstruktion"
    },
    "kn.beob.hexation_verzweigt": {
     "haupt": false,
     "r": 7.0,
-    "x": -500.1,
-    "y": -272.8,
+    "x": -499.8,
+    "y": -272.3,
     "idee": "stufen.pentation"
    },
    "kn.beob.pentation_werte": {
     "haupt": false,
     "r": 5.0,
-    "x": -462.4,
-    "y": -260.7,
+    "x": -462.1,
+    "y": -260.2,
     "idee": "stufen.pentation"
    },
    "kn.beob.stufe5": {
     "haupt": false,
     "r": 5.0,
-    "x": -522.1,
-    "y": -295.0,
+    "x": -521.8,
+    "y": -294.5,
     "idee": "stufen.pentation"
    },
    "kn.beob.stufe6": {
     "haupt": false,
     "r": 5.0,
-    "x": -446.8,
-    "y": -311.4,
+    "x": -446.5,
+    "y": -310.9,
     "idee": "stufen.pentation"
    },
    "kn.beob.tetra_euler": {
     "haupt": false,
     "r": 5.0,
-    "x": -495.7,
-    "y": -242.6,
+    "x": -495.4,
+    "y": -242.1,
     "idee": "stufen.pentation"
    },
    "kn.beob.unendliche_hexation": {
     "haupt": false,
     "r": 5.0,
-    "x": -506.8,
-    "y": -333.1,
+    "x": -506.5,
+    "y": -332.6,
     "idee": "stufen.pentation"
    },
    "kn.frage.hexation_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": -432.8,
-    "y": -269.6,
+    "x": -432.5,
+    "y": -269.1,
     "idee": "stufen.pentation"
    },
    "kn.konstr.hexation_regulaer": {
     "haupt": false,
     "r": 5.0,
-    "x": -540.0,
-    "y": -320.9,
+    "x": -539.7,
+    "y": -320.4,
     "idee": "stufen.pentation"
    },
    "kn.konstr.pentation": {
     "haupt": true,
     "r": 11.0,
-    "x": -470.3,
-    "y": -288.1,
+    "x": -470.0,
+    "y": -287.6,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_eindeutig_g0": {
     "haupt": true,
     "r": 9.8,
-    "x": -480.9,
-    "y": -317.3,
+    "x": -480.6,
+    "y": -316.8,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_gebiete": {
     "haupt": false,
     "r": 5.0,
-    "x": -417.0,
-    "y": -302.7,
+    "x": -416.7,
+    "y": -302.2,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_keine_halbebene": {
     "haupt": true,
     "r": 7.0,
-    "x": -536.1,
-    "y": -266.4,
+    "x": -535.8,
+    "y": -265.9,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_logpunkt": {
     "haupt": true,
     "r": 7.0,
-    "x": -523.9,
-    "y": -230.5,
+    "x": -523.6,
+    "y": -230.0,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_struktur": {
     "haupt": false,
     "r": 5.0,
-    "x": -492.8,
-    "y": -360.4,
+    "x": -492.5,
+    "y": -359.9,
     "idee": "stufen.pentation"
    },
    "kn.satz.kein_kneser_anziehend": {
     "haupt": false,
     "r": 5.0,
-    "x": -458.0,
-    "y": -342.4,
+    "x": -457.7,
+    "y": -341.9,
     "idee": "stufen.pentation"
    },
    "kn.verm.hexation_streifen": {
     "haupt": true,
     "r": 7.0,
-    "x": -464.6,
-    "y": -228.3,
+    "x": -464.3,
+    "y": -227.8,
     "idee": "stufen.pentation"
    },
    "kn.beob.eta4_interpolation": {
     "haupt": true,
     "r": 7.0,
-    "x": -375.1,
-    "y": -155.3,
+    "x": -375.5,
+    "y": -154.3,
     "idee": "stufen.etas"
    },
    "kn.beob.eta4_matrix": {
     "haupt": true,
     "r": 7.0,
-    "x": -406.7,
-    "y": -139.0,
+    "x": -407.1,
+    "y": -138.0,
     "idee": "stufen.etas"
    },
    "kn.beob.hoehere_etas": {
     "haupt": true,
     "r": 7.0,
-    "x": -386.3,
-    "y": -186.3,
+    "x": -386.7,
+    "y": -185.3,
     "idee": "stufen.etas"
    },
    "kn.beob.tpid10_gesetz": {
     "haupt": false,
     "r": 5.0,
-    "x": -366.6,
-    "y": -126.1,
+    "x": -367.0,
+    "y": -125.1,
     "idee": "stufen.etas"
    },
    "kn.frage.andere_etas": {
     "haupt": false,
     "r": 5.0,
-    "x": -430.1,
-    "y": -162.5,
+    "x": -430.5,
+    "y": -161.5,
     "idee": "stufen.etas"
    },
    "kn.frage.pentation_untergrenze": {
     "haupt": false,
     "r": 5.0,
-    "x": -350.1,
-    "y": -180.0,
+    "x": -350.5,
+    "y": -179.0,
     "idee": "stufen.etas"
    },
    "kn.verm.beschraenkt_unter_2": {
     "haupt": false,
     "r": 5.0,
-    "x": -402.0,
-    "y": -106.9,
+    "x": -402.4,
+    "y": -105.9,
     "idee": "stufen.etas"
    },
    "kn.verm.tpid10": {
     "haupt": false,
     "r": 5.0,
-    "x": -413.8,
-    "y": -203.1,
+    "x": -414.2,
+    "y": -202.1,
     "idee": "stufen.etas"
    },
    "kn.verm.tpid11": {
     "haupt": false,
     "r": 5.0,
-    "x": -335.1,
-    "y": -135.6,
+    "x": -335.5,
+    "y": -134.6,
     "idee": "stufen.etas"
    },
    "br.def.hyperoperation": {
     "haupt": true,
     "r": 9.8,
-    "x": -505.5,
-    "y": -140.0,
+    "x": -506.1,
+    "y": -139.9,
     "idee": "stufen.hyperop"
    },
    "br.satz.ackermann": {
     "haupt": false,
     "r": 5.0,
-    "x": -496.1,
-    "y": -107.3,
+    "x": -496.6,
+    "y": -107.2,
     "idee": "stufen.hyperop"
    },
    "br.satz.hyperop_varianten": {
     "haupt": false,
     "r": 5.0,
-    "x": -541.0,
-    "y": -121.8,
+    "x": -541.5,
+    "y": -121.7,
     "idee": "stufen.hyperop"
    },
    "br.satz.ordinal_tetration": {
     "haupt": false,
     "r": 5.0,
-    "x": -518.1,
-    "y": -174.7,
+    "x": -518.6,
+    "y": -174.6,
     "idee": "stufen.hyperop"
    },
    "ar.frage.e_hoch_e": {
     "haupt": false,
     "r": 5.0,
-    "x": -193.3,
-    "y": -568.0,
+    "x": -194.6,
+    "y": -569.9,
     "idee": "zahlen.transzendenz"
    },
    "ar.frage.ef_fortsetzung": {
     "haupt": false,
     "r": 5.0,
-    "x": -121.6,
-    "y": -506.5,
+    "x": -122.9,
+    "y": -508.4,
     "idee": "zahlen.transzendenz"
    },
    "ar.frage.ganze_tuerme": {
     "haupt": false,
     "r": 5.0,
-    "x": -221.7,
-    "y": -503.4,
+    "x": -223.1,
+    "y": -505.2,
     "idee": "zahlen.transzendenz"
    },
    "ar.kor.benachbart": {
     "haupt": false,
     "r": 5.0,
-    "x": -179.7,
-    "y": -594.4,
+    "x": -181.1,
+    "y": -596.3,
     "idee": "zahlen.transzendenz"
    },
    "ar.lem.nullstellen": {
     "haupt": false,
     "r": 7.0,
-    "x": -150.2,
-    "y": -497.9,
+    "x": -151.6,
+    "y": -499.7,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.algebraische_basen": {
     "haupt": false,
     "r": 5.0,
-    "x": -115.0,
-    "y": -477.5,
+    "x": -116.4,
+    "y": -479.4,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.bpw": {
     "haupt": true,
     "r": 9.8,
-    "x": -135.2,
-    "y": -547.0,
+    "x": -136.6,
+    "y": -548.9,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.ef_liouville": {
     "haupt": false,
     "r": 5.0,
-    "x": -146.0,
-    "y": -577.0,
+    "x": -147.4,
+    "y": -578.9,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.gelfond_schneider": {
     "haupt": true,
     "r": 13.3,
-    "x": -158.0,
-    "y": -524.5,
+    "x": -159.3,
+    "y": -526.3,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.hermite_lindemann": {
     "haupt": true,
     "r": 12.6,
-    "x": -186.8,
-    "y": -509.6,
+    "x": -188.2,
+    "y": -511.5,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.keine_arith_info": {
     "haupt": true,
     "r": 7.0,
-    "x": -152.5,
-    "y": -466.5,
+    "x": -153.8,
+    "y": -468.3,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.liouville_tuerme": {
     "haupt": false,
     "r": 5.0,
-    "x": -225.5,
-    "y": -556.2,
+    "x": -226.8,
+    "y": -558.1,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.masser_typ": {
     "haupt": false,
     "r": 5.0,
-    "x": -222.6,
-    "y": -586.8,
+    "x": -224.0,
+    "y": -588.6,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.orbitschranke": {
     "haupt": true,
     "r": 9.8,
-    "x": -182.5,
-    "y": -480.3,
+    "x": -183.9,
+    "y": -482.2,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.pila": {
     "haupt": true,
     "r": 11.0,
-    "x": -168.2,
-    "y": -552.7,
+    "x": -169.5,
+    "y": -554.5,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.rationale_tuerme": {
     "haupt": false,
     "r": 5.0,
-    "x": -245.5,
-    "y": -521.4,
+    "x": -246.9,
+    "y": -523.2,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.schanuel_orbit": {
     "haupt": false,
     "r": 5.0,
-    "x": -88.3,
-    "y": -513.4,
+    "x": -89.7,
+    "y": -515.2,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.sondow_marques_xx": {
     "haupt": false,
     "r": 5.0,
-    "x": -240.4,
-    "y": -475.9,
+    "x": -241.8,
+    "y": -477.8,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.ssc_gelfond": {
     "haupt": false,
     "r": 5.0,
-    "x": -106.3,
-    "y": -538.6,
+    "x": -107.7,
+    "y": -540.5,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.superwurzel_arith": {
     "haupt": false,
     "r": 5.0,
-    "x": -116.0,
-    "y": -578.8,
+    "x": -117.4,
+    "y": -580.7,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.unendliche_tuerme_gs": {
     "haupt": false,
     "r": 5.0,
-    "x": -174.3,
-    "y": -445.4,
+    "x": -175.7,
+    "y": -447.3,
     "idee": "zahlen.transzendenz"
    },
    "ar.verm.gelfond_turm": {
     "haupt": true,
     "r": 7.0,
-    "x": -209.9,
-    "y": -468.6,
+    "x": -211.3,
+    "y": -470.5,
     "idee": "zahlen.transzendenz"
    },
    "ar.verm.schanuel": {
     "haupt": true,
     "r": 9.8,
-    "x": -208.1,
-    "y": -531.1,
+    "x": -209.5,
+    "y": -532.9,
     "idee": "zahlen.transzendenz"
    },
    "ar.beob.ausschluss": {
     "haupt": false,
     "r": 5.0,
-    "x": -224.8,
-    "y": -350.0,
+    "x": -227.4,
+    "y": -352.2,
     "idee": "zahlen.ks"
    },
    "ar.satz.funktional_ks": {
     "haupt": true,
     "r": 9.8,
-    "x": -187.6,
-    "y": -369.1,
+    "x": -190.2,
+    "y": -371.3,
     "idee": "zahlen.ks"
    },
    "ar.verm.ks": {
     "haupt": false,
     "r": 5.0,
-    "x": -200.7,
-    "y": -405.5,
+    "x": -203.3,
+    "y": -407.6,
     "idee": "zahlen.ks"
    },
    "ar.satz.padische_tuerme": {
     "haupt": false,
     "r": 5.0,
-    "x": -88.1,
-    "y": -420.3,
+    "x": -90.6,
+    "y": -421.6,
     "idee": "zahlen.kongruenzen"
    },
    "ar.satz.selbstpotenz_kongruenz": {
     "haupt": false,
     "r": 5.0,
-    "x": -66.1,
-    "y": -353.0,
+    "x": -68.6,
+    "y": -354.3,
     "idee": "zahlen.kongruenzen"
    },
    "br.satz.ripa": {
     "haupt": false,
     "r": 5.0,
-    "x": -111.0,
-    "y": -367.5,
+    "x": -113.5,
+    "y": -368.7,
     "idee": "zahlen.kongruenzen"
    },
    "br.satz.turm_mod_m": {
     "haupt": true,
     "r": 11.0,
-    "x": -75.6,
-    "y": -385.7,
+    "x": -78.1,
+    "y": -386.9,
     "idee": "zahlen.kongruenzen"
    },
    "br.frage.kneser_hardy": {
     "haupt": false,
     "r": 5.0,
-    "x": 562.5,
-    "y": -16.5,
+    "x": 563.4,
+    "y": -23.3,
     "idee": "bruecken.logik"
    },
    "br.frage.transexp": {
     "haupt": false,
     "r": 5.0,
-    "x": 583.6,
-    "y": -65.3,
+    "x": 584.6,
+    "y": -72.0,
     "idee": "bruecken.logik"
    },
    "br.satz.boshernitzan": {
     "haupt": false,
     "r": 5.0,
-    "x": 603.9,
-    "y": -3.2,
+    "x": 604.9,
+    "y": -9.9,
     "idee": "bruecken.logik"
    },
    "br.satz.halbexp_komplexitaet": {
     "haupt": false,
     "r": 5.0,
-    "x": 538.4,
-    "y": -40.8,
+    "x": 539.4,
+    "y": -47.5,
     "idee": "bruecken.logik"
    },
    "br.satz.kalmar": {
     "haupt": false,
     "r": 5.0,
-    "x": 620.9,
-    "y": -58.9,
+    "x": 621.9,
+    "y": -65.6,
     "idee": "bruecken.logik"
    },
    "br.satz.nicht_definierbar": {
     "haupt": false,
     "r": 5.0,
-    "x": 567.4,
-    "y": 16.6,
+    "x": 568.3,
+    "y": 9.9,
     "idee": "bruecken.logik"
    },
    "br.satz.vdd_miller": {
     "haupt": true,
     "r": 9.8,
-    "x": 595.1,
-    "y": -33.3,
+    "x": 596.1,
+    "y": -40.0,
     "idee": "bruecken.logik"
    },
    "br.gescheitert.rotationszahl": {
     "haupt": false,
     "r": 5.0,
-    "x": 710.0,
-    "y": -48.2,
+    "x": 710.9,
+    "y": -54.9,
     "idee": "bruecken.fourier"
    },
    "br.satz.gevrey_fourier": {
     "haupt": false,
     "r": 5.0,
-    "x": 732.0,
-    "y": 19.1,
+    "x": 732.9,
+    "y": 12.4,
     "idee": "bruecken.fourier"
    },
    "br.satz.privalov": {
     "haupt": true,
     "r": 11.0,
-    "x": 722.5,
-    "y": -13.6,
+    "x": 723.5,
+    "y": -20.2,
     "idee": "bruecken.fourier"
    },
    "br.satz.young_kreis": {
     "haupt": true,
     "r": 11.0,
-    "x": 687.1,
-    "y": 4.6,
+    "x": 688.0,
+    "y": -2.0,
     "idee": "bruecken.fourier"
    }
   }

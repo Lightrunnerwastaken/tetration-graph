@@ -1,0 +1,170 @@
+gebiet: gr
+# Superwurzeln über verallgemeinerte Lambert-W-Funktionen und Basisableitungen in geschlossener Form
+# (What the Hectogon?, „On Tetration“ I und II, YouTube 2020), nachgerechnet in exp.superwurzel_omega (13.10.2026).
+aussagen:
+
+- id: gr.def.epsilon_omega
+  titel: 'ε_n und ω_n — Lambert W für höhere Türme'
+  art: definition
+  ebene: X
+  status: definition
+  niveau: vertiefung
+  objekte: [lambert_w, superwurzel]
+  aussage: |
+    Für ganze $n\ge0$ sei $\varepsilon_n(x)=x\cdot(e^x)\uparrow\uparrow n$, also $\varepsilon_0(x)=x$ und $\varepsilon_{n+1}(x)=x\,e^{\varepsilon_n(x)}$:
+    $$\varepsilon_1(x)=xe^x,\qquad \varepsilon_2(x)=xe^{xe^x},\qquad \varepsilon_3(x)=xe^{xe^{xe^x}},\ \dots$$
+    $\omega_n$ ist die Umkehrfunktion von $\varepsilon_n$ (Hauptzweig, für $x\ge0$ eindeutig, da $\varepsilon_n$ dort streng wächst). Also $\omega_0=\mathrm{id}$ und
+    $\omega_1=W$ (Lambert W). Für $n\to\infty$ und $0\le x<1/e$ gilt $\varepsilon_\infty(x)=-W(-x)$ und $\omega_\infty(x)=xe^{-x}$.
+  einfach: >-
+    Lambert W kehrt x·eˣ um. Stapelt man das eˣ zu einem Turm (x·e^{x·eˣ} und so weiter), bekommt man eine ganze Familie solcher Funktionen —
+    und ihre Umkehrungen ω₁ = W, ω₂, ω₃ … sind genau die Bausteine, mit denen man höhere Superwurzeln hinschreiben kann.
+  formen:
+    - {tex: '\varepsilon_{n+1}(x)=x\,e^{\varepsilon_n(x)},\quad \varepsilon_0(x)=x', notiz: Rekursion}
+    - {tex: '\varepsilon_\infty(x)=-W(-x),\qquad \omega_\infty(x)=x\,e^{-x}', notiz: 'unendlicher Turm, $0\le x<1/e$'}
+  quellen: [{ref: hectogon2020a, stelle: 'ab 25:00 (Epsilon- und Omega-Funktionen)'}]
+  kanten:
+    - {typ: verwandt, ziel: gr.satz.superwurzel}
+
+- id: gr.satz.superwurzel_omega
+  titel: 'Jede Superwurzel ist exp∘ω_{n−1}∘ln'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [superwurzel, lambert_w]
+  bereich: 'ganze $n\ge1$; $Y>1$, gesucht $y>1$ mit $y\uparrow\uparrow n=Y$'
+  aussage: |
+    Die $n$-te Superwurzel ist
+    $$\sqrt[n]{Y}_s=\exp\bigl(\omega_{n-1}(\ln Y)\bigr).$$
+    Für $n=2$ ist das $e^{W(\ln Y)}$ (gr.satz.superwurzel), für $n=1$ einfach $Y$. Werte: $\sqrt[3]{2}_s=1.4766843373\ldots$, $\sqrt[4]{3}_s=1.5636279033\ldots$,
+    $\sqrt[5]{10}_s=1.6440790743\ldots$
+  einfach: >-
+    Für den Zweierturm y^y = Y gibt Lambert W die Antwort. Für den Dreier-, Vierer-, n-er-Turm gibt es genauso eine Formel — man braucht nur eine
+    neue Funktion ω_{n−1}, die die Rolle von W übernimmt. Die Rechnung ist eine Zeile.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\ln(y\uparrow\uparrow n)=(y\uparrow\uparrow(n-1))\ln y$, und mit $y=e^{\ln y}$ ist $y\uparrow\uparrow(n-1)=(e^{\ln y})\uparrow\uparrow(n-1)$. Also
+      $\ln Y=\ln y\cdot(e^{\ln y})\uparrow\uparrow(n-1)=\varepsilon_{n-1}(\ln y)$, d. h. $\ln y=\omega_{n-1}(\ln Y)$. Für $y>1$ ist $\ln y>0$, dort ist $\varepsilon_{n-1}$ streng wachsend.
+  stuetzt_sich_auf: [gr.def.epsilon_omega]
+  experimente: [exp.superwurzel_omega]
+  quellen: [{ref: hectogon2020a, stelle: 'ab 45:00'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja — die Formel benennt die Umkehrung; sie ist so explizit wie W selbst.'
+    f2_benutzte_voraussetzungen: 'Nur $y>1$ (damit $\ln y>0$ und $\varepsilon_{n-1}$ dort umkehrbar ist).'
+    f3_spezialfall: 'Ja: $n=2$ ist gr.satz.superwurzel.'
+    f4_uebertragbar: 'Auf $0<y<1$ mit den passenden Zweigen von $\omega_{n-1}$; die Fixpunkt-Iteration von gr.satz.superwurzel_dritte ist eine Rechenvorschrift für $\omega_2$.'
+    f5_neue_frage: 'Lassen sich die $\omega_n$ zu einer stetigen Familie in $n$ verbinden — eine Superwurzel zu gebrochener Höhe?'
+  bewertung: {richtigkeit: 'vollständig; Werte auf 25 Stellen nachgerechnet', neuheit: bekannt, nutzen: 'Gibt allen Superwurzeln einen Namen und eine Rechenvorschrift.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: gr.satz.superwurzel}
+    - {typ: verwandt, ziel: gr.satz.superwurzel_dritte}
+
+- id: gr.satz.turm_superwurzel
+  titel: 'Der unendliche Turm ist der Kehrwert der Superquadratwurzel von 1/x'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: einstieg
+  objekte: [turm, superwurzel, lambert_w]
+  bereich: '$e^{-e}\le x\le e^{1/e}$, $h(x)=x^{x^{\cdots}}$; $\operatorname{ssrt}$ wie in gr.satz.superwurzel'
+  aussage: |
+    $$h(x)=\frac{1}{\operatorname{ssrt}(1/x)}=\frac{W(-\ln x)}{-\ln x},\qquad h^{-1}(y)=y^{1/y}.$$
+  einfach: >-
+    Der unendliche Turm und die Superquadratwurzel sind eng verwandt: Nimm den Kehrwert der Basis, ziehe die Superquadratwurzel und nimm wieder den
+    Kehrwert — dann hast du den Wert des unendlichen Turms.
+  beweis: {art: vollstaendig, text: '$h=x^h$ gibt $x=h^{1/h}$, also $(1/h)^{1/h}=1/x$: $1/h$ ist die Superquadratwurzel von $1/x$. Mit $\operatorname{ssrt}(Y)=\ln Y/W(\ln Y)$ folgt die W-Form.'}
+  stuetzt_sich_auf: [gr.satz.superwurzel]
+  experimente: [exp.superwurzel_omega]
+  quellen: [{ref: hectogon2020a, stelle: 'ab 20:00'}, {ref: corless1996}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus $h=x^h$.'
+    f2_benutzte_voraussetzungen: 'Hauptzweig von W; für $x<e^{-e}$ gibt es keinen Grenzwert (Periode 2).'
+    f3_spezialfall: 'Ja: Umkehrung von $y\mapsto y^{1/y}$.'
+    f4_uebertragbar: 'Komplexe $x$ im Konvergenzgebiet mit dem passenden W-Zweig.'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Verbindet die zwei Lambert-W-Formeln der Grundlagen.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: gr.def.epsilon_omega}
+
+- id: gr.kor.basis_summe
+  titel: 'Ableitung von x↑↑n nach der Basis — ohne Rekursion'
+  art: korollar
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [hyperoperation]
+  bereich: 'ganze $n\ge1$, $x>0$, $x\ne1$'
+  aussage: |
+    $$\frac{d}{dx}\,x\uparrow\uparrow n=\frac{x\uparrow\uparrow n}{x\ln x}\sum_{k=1}^{n}\ \prod_{m=k-1}^{n-1}\bigl(x\uparrow\uparrow m\cdot\ln x\bigr).$$
+    Gleichwertig mit dem „Turm-Faktoriell“ $\Pi_j(x)=\prod_{i=1}^{j}x\uparrow\uparrow i$ ($\Pi_{-1}=\Pi_0=1$): $\ (x\uparrow\uparrow n)'=\dfrac{\Pi_n(x)}{x}\sum_{k=1}^n\dfrac{(\ln x)^{n-k}}{\Pi_{k-2}(x)}$.
+    Beispiel $n=3$: $x^{x^x}\,x^x\bigl(\ln^2x+\ln x+\tfrac1x\bigr)$.
+  einfach: >-
+    Die Rekursion aus gr.satz.basis_ganz lässt sich ganz auflösen: Die Ableitung ist eine Summe von Produkten von Türmen, mit Logarithmen dazwischen.
+  beweis: {art: vollstaendig, text: 'Induktion über $n$ aus $t_{n+1}''=t_{n+1}(t_n/x+\ln x\,t_n'')$ (gr.satz.basis_ganz); der Summand $k$ ist das Produkt über die Stufen $k-1,\dots,n-1$.'}
+  stuetzt_sich_auf: [gr.satz.basis_ganz]
+  experimente: [exp.superwurzel_omega]
+  quellen: [{ref: hectogon2020b, stelle: 'ab 10:00 (Induktionsbeweis)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Auflösen der Rekursion.'
+    f2_benutzte_voraussetzungen: '$x\ne1$ für die Division durch $\ln x$ (bei $x=1$ den Grenzwert nehmen).'
+    f3_spezialfall: 'Ja: gr.satz.basis_ganz.'
+    f4_uebertragbar: 'Auf $\varepsilon_n$ und $\omega_n$ (gr.satz.omega_ableitung).'
+    f5_neue_frage: 'Konvergiert $\Pi_n(x)$ oder eine normierte Fassung für $n\to\infty$?'
+  bewertung: {richtigkeit: 'vollständig; n = 2…5 auf 40 Stellen nachgerechnet', neuheit: bekannt, nutzen: 'Geschlossene Form für Rechnungen und Abschätzungen.', nutzen_stufe: gering}
+
+- id: gr.satz.omega_ableitung
+  titel: 'Ableitungen von ε_n und ω_n'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [lambert_w]
+  aussage: |
+    Mit $S_n(x)=\sum_{k=1}^{n}\prod_{m=k-1}^{n-1}\varepsilon_m(x)$ gilt
+    $$\varepsilon_n'(x)=\frac{\varepsilon_n(x)}{x}\bigl(1+S_n(x)\bigr),\qquad \omega_n'(x)=\frac{\omega_n(x)}{x\,\bigl(1+S_n(\omega_n(x))\bigr)}.$$
+    Für $n=1$: $(xe^x)'=e^x(1+x)$ und $W'(x)=W(x)/\bigl(x(1+W(x))\bigr)$.
+  einfach: >-
+    Auch die neuen Funktionen lassen sich ableiten, und die Formel sieht aus wie die bekannte Ableitung von Lambert W — nur mit einer längeren Summe im Nenner.
+  beweis: {art: vollstaendig, text: '$r_n=x\varepsilon_n''/\varepsilon_n$ erfüllt $r_0=1$ und $r_{n+1}=1+\varepsilon_n r_n$ (aus $\varepsilon_{n+1}=xe^{\varepsilon_n}$); aufgelöst $r_n=1+S_n$. Für $\omega_n$ die Umkehrregel und $\varepsilon_n(\omega_n(x))=x$.'}
+  stuetzt_sich_auf: [gr.def.epsilon_omega]
+  experimente: [exp.superwurzel_omega]
+  quellen: [{ref: hectogon2020b, stelle: 'ab 35:00'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Kettenregel und Umkehrregel.'
+    f2_benutzte_voraussetzungen: '$x\ne0$; für $\omega_n$ der Bereich, auf dem $\varepsilon_n$ umkehrbar ist.'
+    f3_spezialfall: 'Ja: Ableitung von Lambert W ($n=1$).'
+    f4_uebertragbar: 'Gleiche Rechnung wie gr.kor.basis_summe mit $e^x$ statt $x$ als Basis.'
+    f5_neue_frage: 'Was passiert für $n\to\infty$? → gr.korr.grenzidentitaet'
+  bewertung: {richtigkeit: 'vollständig; n = 1…4 auf 20 Stellen nachgerechnet', neuheit: bekannt, nutzen: 'Rechenregel für die verallgemeinerten W-Funktionen.', nutzen_stufe: gering}
+
+- id: gr.korr.grenzidentitaet
+  titel: 'Korrektur: x/(1−x) als unendliche Summe von ε-Produkten — nur in der richtigen Reihenfolge'
+  art: korrektur
+  ebene: X
+  status: numerisch
+  niveau: vertiefung
+  objekte: [lambert_w]
+  bereich: '$0<x<1$; $S_n$ wie in gr.satz.omega_ableitung'
+  aussage: |
+    Im Video wird in $\omega_n'$ zuerst $\omega_\infty(x)=xe^{-x}$ eingesetzt und dann $n\to\infty$ gesetzt; behauptet wird
+    $\dfrac{x}{1-x}=\sum_{k\ge1}\prod_{m\ge k-1}\varepsilon_m(xe^{-x})$. **So stimmt das nicht:** bei $x=\tfrac12$ geht die rechte Seite gegen $\tfrac12$, nicht gegen $1$.
+    Richtig (numerisch) ist die Reihenfolge „erst $\omega_n$ einsetzen, dann $n\to\infty$“:
+    $$\lim_{n\to\infty}S_n\bigl(\omega_n(x)\bigr)=\frac{x}{1-x}\qquad(0<x<1);$$
+    bei $x=\tfrac12$: $S_5=0.9035$, $S_{20}=0.99998794$, $S_{80}=1-4\cdot10^{-23}$.
+  einfach: >-
+    Eine schöne Formel aus dem Video ist falsch, weil zwei Grenzübergänge vertauscht wurden. In der richtigen Reihenfolge stimmt sie — jedenfalls in
+    allen Rechnungen bis n = 80.
+  beweis: {art: skizze, text: 'Die oberen Faktoren $\varepsilon_m(\omega_n(x))$, $m$ nahe $n$, liegen nahe bei $x$ (weil $\varepsilon_n(\omega_n(x))=x$ und die Iteration $\varepsilon\mapsto we^{\varepsilon}$ bei $x<1$ anzieht); die Summe wird so zu $\sum_j x^j$. Beim Vertauschen bleiben in jedem unendlichen Produkt unendlich viele Faktoren nahe $x<1$ stehen.', luecken: ['Gleichmässige Abschätzung der unteren Faktoren, die den Grenzwert nicht ändern.']}
+  stuetzt_sich_auf: [gr.satz.omega_ableitung]
+  experimente: [exp.superwurzel_omega]
+  quellen: [{ref: hectogon2020b, stelle: 'ab 50:00 (Grenzfall n → ∞)'}, {ref: diese_arbeit, stelle: 'Nachrechnung und Korrektur'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; der Grenzwert braucht eine Abschätzung (Skizze).'
+    f2_benutzte_voraussetzungen: '$0<x<1$, damit die Iteration anzieht und $\sum x^j$ konvergiert.'
+    f3_spezialfall: 'Vertauschen von Grenzwerten ohne gleichmässige Konvergenz.'
+    f4_uebertragbar: 'Dieselbe Falle bei allen Formeln, in die „$n=\infty$“ eingesetzt wird (z. B. $\omega_\infty$ statt $\omega_n$).'
+    f5_neue_frage: 'Gibt es einen kurzen Beweis über die Fixpunkt-Ableitung $x=-W(-w)$, $w=xe^{-x}$?'
+  bewertung: {richtigkeit: 'numerisch (n bis 80, 22 Stellen); Beweis als Skizze', neuheit: neu_ungeprueft, nutzen: 'Korrigiert eine falsch verbreitete Formel und zeigt, wo sie herkommt.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: gr.satz.omega_ableitung, notiz: 'korrigiert nur den Grenzfall n → ∞ aus dem Video; die Formel für endliches n stimmt'}

@@ -16,6 +16,20 @@ Stand: bewiesen 44, bedingt 9, numerisch 17, Vermutung 14, offen 10, verworfen 3
 - **Eindeutigkeit** (7): bewiesen 4, numerisch 1, Vermutung 1, offen 1 · Literatur 6 / Forum 0 / eigen 1 · offen: kn.frage.beta_methode, kn.verm.tk_c2
 - **Reelle Kennzeichnung?** (1): offen 1 · Literatur 1 / Forum 0 / eigen 0 · offen: br.frage.bohr_mollerup
 
+## Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ (70 Aussagen)
+
+Was jede Lösung der Grundgleichung erfüllt, ganz gleich, wie man sie zwischen den ganzen Höhen festlegt.
+
+Stand: bewiesen 58, numerisch 7, Vermutung 4, offen 1 · Literatur 20 / Forum 19 / eigen 31
+
+- **Werte, Ableitungen, Gestalt** (28): bewiesen 20, numerisch 5, Vermutung 3 · Literatur 4 / Forum 10 / eigen 14 · offen: gr.verm.ein_wendepunkt, gr.verm.tpid7, gr.verm.ungerade_ableitungen
+- **Integrale** (13): bewiesen 9, numerisch 2, Vermutung 1, offen 1 · Literatur 2 / Forum 1 / eigen 10 · offen: gr.frage.integral_form, gr.verm.turmintegral_rate
+- **Begriffe** (8): bewiesen 8 · Literatur 6 / Forum 0 / eigen 2
+- **Freiheit der Lösungen** (6): bewiesen 6 · Literatur 3 / Forum 1 / eigen 2
+- **Was fest ist, was frei ist** (5): bewiesen 5 · Literatur 2 / Forum 2 / eigen 1
+- **Superlogarithmus** (5): bewiesen 5 · Literatur 1 / Forum 2 / eigen 2
+- **Superwurzeln** (5): bewiesen 5 · Literatur 2 / Forum 3 / eigen 0
+
 ## Basiswechsel T ∘ slog (69 Aussagen)
 
 Was entsteht, wenn man die Tetration zu einer Basis mit dem Superlogarithmus einer anderen zusammensetzt.
@@ -29,20 +43,6 @@ Stand: bewiesen 19, bedingt 17, numerisch 11, Vermutung 6, offen 6, verworfen 10
 - **Log-Peeling und Grenzkanal** (8): bewiesen 6, bedingt 1, Vermutung 1 · Literatur 0 / Forum 1 / eigen 7 · offen: bw.ann.hyp22, bw.satz.schwanzkonvergenz
 - **Kreisabbildung** (6): bewiesen 1, bedingt 4, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.prop.kozykel, bw.satz.homoeo, bw.satz.antisymmetrie, bw.satz.c1_produkt
 - **Rekonstruktion und Zertifikat** (6): bewiesen 1, bedingt 2, numerisch 1, offen 1, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.frage.intervallmarsch, bw.satz.anker_rekonstruktion, bw.zert.8r1
-
-## Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ (64 Aussagen)
-
-Was jede Lösung der Grundgleichung erfüllt, ganz gleich, wie man sie zwischen den ganzen Höhen festlegt.
-
-Stand: bewiesen 53, numerisch 6, Vermutung 4, offen 1 · Literatur 19 / Forum 14 / eigen 31
-
-- **Werte, Ableitungen, Gestalt** (25): bewiesen 18, numerisch 4, Vermutung 3 · Literatur 4 / Forum 7 / eigen 14 · offen: gr.verm.ein_wendepunkt, gr.verm.tpid7, gr.verm.ungerade_ableitungen
-- **Integrale** (13): bewiesen 9, numerisch 2, Vermutung 1, offen 1 · Literatur 2 / Forum 1 / eigen 10 · offen: gr.frage.integral_form, gr.verm.turmintegral_rate
-- **Begriffe** (8): bewiesen 8 · Literatur 6 / Forum 0 / eigen 2
-- **Freiheit der Lösungen** (6): bewiesen 6 · Literatur 3 / Forum 1 / eigen 2
-- **Was fest ist, was frei ist** (5): bewiesen 5 · Literatur 2 / Forum 2 / eigen 1
-- **Superlogarithmus** (5): bewiesen 5 · Literatur 1 / Forum 2 / eigen 2
-- **Superwurzeln** (2): bewiesen 2 · Literatur 1 / Forum 1 / eigen 0
 
 ## Unendlicher Turm und Basen-Ebene (43 Aussagen)
 
@@ -97,31 +97,31 @@ Stand: bewiesen 8, offen 2, verworfen 1 · Literatur 10 / Forum 0 / eigen 1
 
 ## Stärkste Kopplungen zwischen Hauptideen
 
-- Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 52.8
+- Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 52.04
 - Basiswechsel T ∘ slog — Fraktionale Fortsetzung: 40.05
 - Dynamik von bᶻ und der Fixpunkt L — Fraktionale Fortsetzung: 29.06
+- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Unendlicher Turm und Basen-Ebene: 22.61
 - Fraktionale Fortsetzung — Höhere Stufen: 22.47
-- Basiswechsel T ∘ slog — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 21.72
-- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Unendlicher Turm und Basen-Ebene: 19.83
+- Basiswechsel T ∘ slog — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 21.35
 - Fraktionale Fortsetzung — Unendlicher Turm und Basen-Ebene: 17.25
 - Dynamik von bᶻ und der Fixpunkt L — Unendlicher Turm und Basen-Ebene: 14.22
-- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 12.94
+- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 13.34
 - Basiswechsel T ∘ slog — Unendlicher Turm und Basen-Ebene: 12.32
 
 ## Stärkste Kopplungen über Ideengrenzen
 
 - Anziehend und abstossend (Dynamik von bᶻ und der Fixpunkt L) — Regulär unter η (Fraktionale Fortsetzung): 8.14
 - Parabolisch (Dynamik von bᶻ und der Fixpunkt L) — Der Grenzfall η (Fraktionale Fortsetzung): 7.77
-- Andere Konstruktionen (Fraktionale Fortsetzung) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 5.91
-- Regulär unter η (Fraktionale Fortsetzung) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 5.75
 - Gleicher Fixpunkt (Basiswechsel T ∘ slog) — Anziehend und abstossend (Dynamik von bᶻ und der Fixpunkt L): 5.67
+- Andere Konstruktionen (Fraktionale Fortsetzung) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 5.61
+- Regulär unter η (Fraktionale Fortsetzung) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 5.61
+- Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾) — Konvergenz des Turms (Unendlicher Turm und Basen-Ebene): 4.6
 - Fixpunkte von bᶻ (Dynamik von bᶻ und der Fixpunkt L) — Regionen und Fraktale (Unendlicher Turm und Basen-Ebene): 4.5
 - Antwortkern und Basisableitung (Basiswechsel T ∘ slog) — Freiheit der Lösungen (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 4.4
-- Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾) — Konvergenz des Turms (Unendlicher Turm und Basen-Ebene): 4.17
 - Gleicher Fixpunkt (Basiswechsel T ∘ slog) — Regulär unter η (Fraktionale Fortsetzung): 4.14
 - Kneser über η (Fraktionale Fortsetzung) — Pentation und Hexation (Höhere Stufen): 4.04
-- Antwortkern und Basisableitung (Basiswechsel T ∘ slog) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 4.0
+- Antwortkern und Basisableitung (Basiswechsel T ∘ slog) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.87
 - Andere Konstruktionen (Fraktionale Fortsetzung) — Pentation und Hexation (Höhere Stufen): 3.75
 - Regulär unter η (Fraktionale Fortsetzung) — Begriffe (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.6
 - Anziehend und abstossend (Dynamik von bᶻ und der Fixpunkt L) — Begriffe (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.43
-- Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾) — Pentation und Hexation (Höhere Stufen): 3.43
+- Eindeutigkeit (Fraktionale Fortsetzung) — Freiheit der Lösungen (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.42

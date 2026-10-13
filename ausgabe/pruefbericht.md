@@ -1,10 +1,10 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-367 Aussagen · 637 Kanten · 54 Experimente
+373 Aussagen · 647 Kanten · 55 Experimente
 
-**Effektiver Status:** bewiesen 130, bewiesen_literatur 60, numerisch 51, vermutung 29, offen 28, bedingt 27, definition 12, skizze 10, gescheitert 9, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 134, bewiesen_literatur 60, numerisch 52, vermutung 29, offen 28, bedingt 27, definition 13, skizze 10, gescheitert 9, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
-**Zitate nicht am Original geprüft:** 103
+**Zitate nicht am Original geprüft:** 104
 
 
 ## FEHLER (0)
@@ -48,7 +48,7 @@
 
 **uebersetzung-fortschritt** (1)
 
-- `quelle` — 204 von 292 quelle-Gegenständen übersetzt
+- `quelle` — 204 von 294 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (2)
 
@@ -88,6 +88,7 @@
 - `fp.satz.siegel_mittel` — Nach Herman (1985) ist $\Delta$ für diophantisches $\alpha$ unbeschränkt; Carathéodory greift dann nicht. Zu zeigen wäre, dass $\varphi$ Randwerte in $L^1(d\theta)$ hat (Hardy-Raum $H^1$), damit der Mittelwertsatz gilt.
 - `fp.satz.siegel_mittel` — Ohne Jordan-Rand ist die Randdynamik nicht automatisch zu einer Drehung konjugiert; die Gleichverteilung des Turms bezüglich $\omega_L$ ist offen.
 - `kl.satz.invariante_daempfung` — Dass die klassische periodische Phase (bw.satz.phasengesetz) als Grenzwert |λ| → 1 einer Familie gedämpfter Übergänge entsteht, ist eine Deutung, kein Grenzwertsatz.
+- `gr.korr.grenzidentitaet` — Gleichmässige Abschätzung der unteren Faktoren, die den Grenzwert nicht ändern.
 
 ## Bedingte Aussagen (Wurzelbedingungen = unbewiesene Enden der Beweiskette)
 
@@ -175,3 +176,4 @@
 - `exp.polynom_phase3` — aktuell, 5/5 Prüfungen. ‖Ĵ_N⁻¹‖ = 1.251155 (kubisch, N = 100–200 konstant), Kneser 1.250337; ohne Linse wächst sie (1.366 → 1.852); (K2) mit den zertifizierten Koeffizienten verträglich; Eckprofil-Integral bestätigt.
 - `exp.tpid10_abstaende` — aktuell, 8/8 Prüfungen. 2 − ηₙ fällt wie n^(−1.47); Vorhersage η₇ ≈ 1.8399 gegen Levenstein 2017 ≈ 1.839. TPID 11 (1) gilt für n = 4…6; die Quotienten 1.594, 0.9208 entscheiden (2) nicht.
 - `exp.tpid3` — aktuell, 5/5 Prüfungen. TPID 3: s=3/4, p=2/3 (anziehend, x0 im Kreis): 6.1e-11 bei N = 32; s=3/4, p=3/2 (abstossend, x0 im Kreis): 0.00034 bei N = 32; s=3/10, p=2 (Polynom, x0 = 0.7): 1.0 bei N = 32; s=1/2, p=1/2 (x0 auf dem Rand): 0.23 bei N = 32; s=3/10, p=1/2 (x0 ausserhalb): 0.42 bei N = 32
+- `exp.superwurzel_omega` — aktuell, 6/6 Prüfungen. Superwurzel-Formel exp(ω_{n−1}(ln Y)), h(x) = 1/ssrt(1/x), geschlossene Basisableitung und Ableitungen von ε_n, ω_n auf ≥ 20 Stellen bestätigt; die Grenzidentität gilt nur, wenn n → ∞ nach dem Einsetzen von ω_n geht.

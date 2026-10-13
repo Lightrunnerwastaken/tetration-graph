@@ -1017,6 +1017,27 @@
       - name: 'outside (y = 3): tower of 3^{1/3} tends to the lower fixed point 2.4780…, not to 3'
       - name: y ↦ y^{1/y} is strictly increasing on [1/e, e] (inverse of the infinite tower)
 - art: experiment
+  id: exp.superwurzel_omega
+  quelle_hash: 1ea20fba2c85
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Super-roots via ω_n, closed-form base derivative, limit identity (What the Hectogon?)
+    frage: Are the formulas from “On Tetration I/II” correct — super-root exp(ω_{n−1}(ln Y)), h(x) = 1/ssrt(1/x), closed-form base derivative,
+      derivatives of ε_n and ω_n — and in which order does the limit identity x/(1−x) hold?
+    ergebnis:
+      zusammenfassung: Super-root formula exp(ω_{n−1}(ln Y)), h(x) = 1/ssrt(1/x), closed-form base derivative and derivatives of ε_n, ω_n confirmed
+        to ≥ 20 digits; the limit identity holds only if n → ∞ is taken after substituting ω_n.
+      pruefungen:
+      - name: n-th super-root = exp(ω_{n−1}(ln Y)); n = 2 gives e^{W(ln 2)}; third super-root of 2 = 1.4766843373578699…
+      - name: h(x) = 1/ssrt(1/x) (x = 1.1, 1.3, 1.44); ε_∞(0.2) = −W(−0.2); ω_∞(x) = x e^{−x} inverts ε_∞
+      - name: (x↑↑n)' = x↑↑n/(x ln x)·Σ_k Π_{m=k−1}^{n−1}(x↑↑m·ln x) for n = 2…5, x = 1.2, 1.4
+      - name: ε_n' = (ε_n/x)(1 + S_n), ω_n' = ω_n/(x(1 + S_n(ω_n))) for n = 1…4
+      - name: 'S_n(ω_n(1/2)) → x/(1−x) = 1 (n = 80: distance < 1e-20)'
+      - name: Version from the video (ω_∞ substituted first) tends to x = 1/2, not to 1
+- art: experiment
   id: exp.tetra_euler
   quelle_hash: df7788b33443
   herkunft:

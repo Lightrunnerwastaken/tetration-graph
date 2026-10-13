@@ -222,6 +222,39 @@
     worum: |
       Where does the curve switch from “bent downward” to “bent upward”? As measured, every Kneser curve has exactly one such
       inflection point, and the regular curves below $\eta$ have none.
+- id: gr.def.epsilon_omega
+  quelle_hash: 5dfea1e32e87
+  theorie_hash: 027df88571a3
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: ε_n and ω_n — Lambert W for higher towers
+    aussage: |
+      For integer $n\ge0$ let $\varepsilon_n(x)=x\cdot(e^x)\uparrow\uparrow n$, i.e. $\varepsilon_0(x)=x$ and $\varepsilon_{n+1}(x)=x\,e^{\varepsilon_n(x)}$:
+      $$\varepsilon_1(x)=xe^x,\qquad \varepsilon_2(x)=xe^{xe^x},\qquad \varepsilon_3(x)=xe^{xe^{xe^x}},\ \dots$$
+      $\omega_n$ is the inverse function of $\varepsilon_n$ (principal branch, unique for $x\ge0$, since $\varepsilon_n$ is strictly increasing there). So $\omega_0=\mathrm{id}$ and
+      $\omega_1=W$ (Lambert W). For $n\to\infty$ and $0\le x<1/e$ we have $\varepsilon_\infty(x)=-W(-x)$ and $\omega_\infty(x)=xe^{-x}$.
+    einfach: Lambert W undoes x·eˣ. If you stack the eˣ into a tower (x·e^{x·eˣ} and so on), you get a whole family of such functions — and their
+      inverses ω₁ = W, ω₂, ω₃ … are exactly the building blocks with which higher super-roots can be written down.
+    formen:
+    - notiz: recursion
+    - notiz: infinite tower, $0\le x<1/e$
+    quellen:
+    - stelle: from 25:00 (epsilon and omega functions)
+  en_theorie:
+    worum: |
+      Lambert W is the inverse of $xe^x$ and therefore solves $y^y=Y$. For higher towers no such function exists — so one introduces it.
+    genau: |
+      $\varepsilon_n(x)=x\cdot(e^x)\uparrow\uparrow n$ with $\varepsilon_0=x$, $\varepsilon_{n+1}=xe^{\varepsilon_n}$; $\omega_n=\varepsilon_n^{-1}$. In particular $\omega_1=W$.
+    warum: |
+      For $x\ge0$ every $\varepsilon_n$ is strictly increasing with $\varepsilon_n(0)=0$, hence invertible. For $0\le x<1/e$, $\varepsilon_n(x)$ converges to the
+      fixed point of $\varepsilon\mapsto xe^\varepsilon$, i.e. to $-W(-x)$; its inverse is $xe^{-x}$.
+    beispiel: |
+      $\varepsilon_2(x)=xe^{xe^x}$; $\omega_2(\ln 2)=\ln\sqrt[3]{2}_s=0.38978\ldots$
+    einordnung: |
+      Application: [[gr.satz.superwurzel_omega]]; derivatives: [[gr.satz.omega_ableitung]].
 - id: gr.def.turm
   quelle_hash: f10403478908
   theorie_hash: 5d02e73929f6
@@ -375,6 +408,46 @@
     worum: |
       For the Kneser tetration, TPID 7 does not hold for all bases. At base 100, $T(\tfrac12)\cdot T(-\tfrac12)=1.316$ — clearly above 1. The threshold lies exactly where
       $\ln T_b$ at 0 changes from “bent downward” to “bent upward”.
+- id: gr.kor.basis_summe
+  quelle_hash: 93709d71a0a3
+  theorie_hash: ed2b2de7c640
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Derivative of x↑↑n with respect to the base — without recursion
+    aussage: |
+      $$\frac{d}{dx}\,x\uparrow\uparrow n=\frac{x\uparrow\uparrow n}{x\ln x}\sum_{k=1}^{n}\ \prod_{m=k-1}^{n-1}\bigl(x\uparrow\uparrow m\cdot\ln x\bigr).$$
+      Equivalently, with the “tower factorial” $\Pi_j(x)=\prod_{i=1}^{j}x\uparrow\uparrow i$ ($\Pi_{-1}=\Pi_0=1$): $\ (x\uparrow\uparrow n)'=\dfrac{\Pi_n(x)}{x}\sum_{k=1}^n\dfrac{(\ln x)^{n-k}}{\Pi_{k-2}(x)}$.
+      Example $n=3$: $x^{x^x}\,x^x\bigl(\ln^2x+\ln x+\tfrac1x\bigr)$.
+    bereich: integer $n\ge1$, $x>0$, $x\ne1$
+    einfach: 'The recursion from gr.satz.basis_ganz can be unrolled completely: the derivative is a sum of products of towers, with logarithms
+      in between.'
+    beweis:
+      text: Induction on $n$ from $t_{n+1}'=t_{n+1}(t_n/x+\ln x\,t_n')$ (gr.satz.basis_ganz); the summand $k$ is the product over the levels $k-1,\dots,n-1$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, unrolling the recursion.
+      f2_benutzte_voraussetzungen: $x\ne1$ for the division by $\ln x$ (at $x=1$ take the limit).
+      f3_spezialfall: 'Yes: gr.satz.basis_ganz.'
+      f4_uebertragbar: To $\varepsilon_n$ and $\omega_n$ (gr.satz.omega_ableitung).
+      f5_neue_frage: Does $\Pi_n(x)$ or a normalized version converge for $n\to\infty$?
+    bewertung:
+      richtigkeit: complete; n = 2…5 recomputed to 40 digits
+      nutzen: Closed form for calculations and estimates.
+    quellen:
+    - stelle: from 10:00 (proof by induction)
+  en_theorie:
+    worum: |
+      The derivative of a tower with respect to the base, not step by step but as one formula.
+    genau: |
+      $(x\uparrow\uparrow n)'=\dfrac{x\uparrow\uparrow n}{x\ln x}\sum_{k=1}^n\prod_{m=k-1}^{n-1}(x\uparrow\uparrow m\cdot\ln x)$.
+    warum: |
+      The recursion $t_{n+1}'=t_{n+1}(t_n/x+\ln x\,t_n')$ from [[gr.satz.basis_ganz]] is linear in $t_n'$; unrolled, each level contributes one summand.
+    beispiel: |
+      $n=2$: $x^x(\ln x+1)$. $n=3$: $x^{x^x}x^x(\ln^2x+\ln x+1/x)$.
+    einordnung: |
+      The same calculation with $e^x$ as base: [[gr.satz.omega_ableitung]].
 - id: gr.kor.ganze_stellen
   quelle_hash: 874fbe9c78d5
   theorie_hash: ed7ea704faf8
@@ -617,6 +690,54 @@
     worum: |
       The two limits can be reduced to integrals of simple functions — with the same area trick as for Young and with
       a formula for the 2-cycle.
+- id: gr.korr.grenzidentitaet
+  quelle_hash: ebeb9512f665
+  theorie_hash: 401ce9d6aa76
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: 'Correction: x/(1−x) as an infinite sum of ε products — only in the right order'
+    aussage: |
+      In the video, $\omega_\infty(x)=xe^{-x}$ is first substituted into $\omega_n'$ and then $n\to\infty$ is taken; the claim is
+      $\dfrac{x}{1-x}=\sum_{k\ge1}\prod_{m\ge k-1}\varepsilon_m(xe^{-x})$. **As stated this is false:** at $x=\tfrac12$ the right-hand side tends to $\tfrac12$, not to $1$.
+      Correct (numerically) is the order “first substitute $\omega_n$, then $n\to\infty$”:
+      $$\lim_{n\to\infty}S_n\bigl(\omega_n(x)\bigr)=\frac{x}{1-x}\qquad(0<x<1);$$
+      at $x=\tfrac12$: $S_5=0.9035$, $S_{20}=0.99998794$, $S_{80}=1-4\cdot10^{-23}$.
+    bereich: $0<x<1$; $S_n$ as in gr.satz.omega_ableitung
+    einfach: A nice formula from the video is wrong because two limits were interchanged. In the right order it holds — at least in all calculations
+      up to n = 80.
+    beweis:
+      text: The top factors $\varepsilon_m(\omega_n(x))$, $m$ close to $n$, lie close to $x$ (because $\varepsilon_n(\omega_n(x))=x$ and the iteration
+        $\varepsilon\mapsto we^{\varepsilon}$ is attracting for $x<1$); the sum thereby becomes $\sum_j x^j$. After interchanging, every infinite
+        product keeps infinitely many factors close to $x<1$.
+      luecken:
+      - Uniform estimate of the lower factors, which do not change the limit.
+    pruefung:
+      f1_folgt_unmittelbar: No; the limit needs an estimate (sketch).
+      f2_benutzte_voraussetzungen: $0<x<1$, so that the iteration attracts and $\sum x^j$ converges.
+      f3_spezialfall: Interchanging limits without uniform convergence.
+      f4_uebertragbar: The same trap in every formula into which “$n=\infty$” is substituted (e.g. $\omega_\infty$ instead of $\omega_n$).
+      f5_neue_frage: Is there a short proof via the fixed-point derivative $x=-W(-w)$, $w=xe^{-x}$?
+    bewertung:
+      richtigkeit: numerical (n up to 80, 22 digits); proof as sketch
+      nutzen: Corrects a formula that circulates in wrong form and shows where it comes from.
+    quellen:
+    - stelle: from 50:00 (limit n → ∞)
+    - stelle: recomputation and correction
+  en_theorie:
+    worum: |
+      A formula from a video that becomes wrong because two limits were interchanged.
+    genau: |
+      $\lim_n S_n(\omega_n(x))=x/(1-x)$ for $0<x<1$ (numerically), but $\sum_k\prod_{m\ge k-1}\varepsilon_m(xe^{-x})\ne x/(1-x)$.
+    warum: |
+      In $S_n(\omega_n(x))$ the top factors lie close to $x$, because $\varepsilon_n(\omega_n(x))=x$; the sum becomes a geometric series. If one substitutes
+      $\omega_\infty$ first, every infinite product contains an infinite sequence of factors close to $x<1$ — the products vanish, and something else comes out.
+    beispiel: |
+      $x=\tfrac12$: right order $S_{80}=1-4\cdot10^{-23}$, interchanged order $\to\tfrac12$.
+    einordnung: |
+      Finite formula: [[gr.satz.omega_ableitung]].
 - id: gr.satz.abklingen
   quelle_hash: 8c4094a4af38
   theorie_hash: feb0aea0338c
@@ -1374,6 +1495,46 @@
     worum: |
       How many times must one take the logarithm until a number is at most $1$? This number is called the iterated logarithm $\log^*$. The
       super-logarithm is exactly the smooth version of it: rounded up, it gives the same number.
+- id: gr.satz.omega_ableitung
+  quelle_hash: 3ec8d2e4d13f
+  theorie_hash: 39afe3039e20
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Derivatives of ε_n and ω_n
+    aussage: |
+      With $S_n(x)=\sum_{k=1}^{n}\prod_{m=k-1}^{n-1}\varepsilon_m(x)$ we have
+      $$\varepsilon_n'(x)=\frac{\varepsilon_n(x)}{x}\bigl(1+S_n(x)\bigr),\qquad \omega_n'(x)=\frac{\omega_n(x)}{x\,\bigl(1+S_n(\omega_n(x))\bigr)}.$$
+      For $n=1$: $(xe^x)'=e^x(1+x)$ and $W'(x)=W(x)/\bigl(x(1+W(x))\bigr)$.
+    einfach: The new functions can be differentiated too, and the formula looks like the familiar derivative of Lambert W — only with a longer
+      sum in the denominator.
+    beweis:
+      text: $r_n=x\varepsilon_n'/\varepsilon_n$ satisfies $r_0=1$ and $r_{n+1}=1+\varepsilon_n r_n$ (from $\varepsilon_{n+1}=xe^{\varepsilon_n}$);
+        unrolled, $r_n=1+S_n$. For $\omega_n$ use the inverse-function rule and $\varepsilon_n(\omega_n(x))=x$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, chain rule and inverse-function rule.
+      f2_benutzte_voraussetzungen: $x\ne0$; for $\omega_n$ the range on which $\varepsilon_n$ is invertible.
+      f3_spezialfall: 'Yes: derivative of Lambert W ($n=1$).'
+      f4_uebertragbar: Same calculation as gr.kor.basis_summe with $e^x$ instead of $x$ as the base.
+      f5_neue_frage: What happens for $n\to\infty$? → gr.korr.grenzidentitaet
+    bewertung:
+      richtigkeit: complete; n = 1…4 recomputed to 20 digits
+      nutzen: Calculation rule for the generalized W functions.
+    quellen:
+    - stelle: from 35:00
+  en_theorie:
+    worum: |
+      How to differentiate the new functions $\varepsilon_n$ and their inverses $\omega_n$.
+    genau: |
+      $\varepsilon_n'=(\varepsilon_n/x)(1+S_n)$, $\omega_n'=\omega_n/(x(1+S_n(\omega_n)))$ with $S_n=\sum_{k=1}^n\prod_{m=k-1}^{n-1}\varepsilon_m$.
+    warum: |
+      $r_n=x\varepsilon_n'/\varepsilon_n$ satisfies $r_{n+1}=1+\varepsilon_nr_n$; the inverse-function rule gives $\omega_n'$.
+    beispiel: |
+      $n=1$ is the familiar formula $W'(x)=W(x)/(x(1+W(x)))$.
+    einordnung: |
+      Limit $n\to\infty$ and the trap of interchanging limits: [[gr.korr.grenzidentitaet]].
 - id: gr.satz.selbstpotenz
   quelle_hash: 592f3563a33c
   theorie_hash: a4b057964139
@@ -1904,6 +2065,50 @@
       For the tower of height three $y^{y^y}$ there is no ready-made formula for the inverse anymore. But one can write the solution as a fixed point:
       a rule of computation that one applies again and again until the number no longer changes. And here, too, the Lambert function is
       involved — this time twice in a row.
+- id: gr.satz.superwurzel_omega
+  quelle_hash: 7266f7793de1
+  theorie_hash: b7bd1eec13df
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Every super-root is exp∘ω_{n−1}∘ln
+    aussage: |
+      The $n$-th super-root is
+      $$\sqrt[n]{Y}_s=\exp\bigl(\omega_{n-1}(\ln Y)\bigr).$$
+      For $n=2$ this is $e^{W(\ln Y)}$ (gr.satz.superwurzel), for $n=1$ simply $Y$. Values: $\sqrt[3]{2}_s=1.4766843373\ldots$, $\sqrt[4]{3}_s=1.5636279033\ldots$,
+      $\sqrt[5]{10}_s=1.6440790743\ldots$
+    bereich: integer $n\ge1$; $Y>1$, sought $y>1$ with $y\uparrow\uparrow n=Y$
+    einfach: For the tower of two, y^y = Y, Lambert W gives the answer. For towers of three, four, n there is just such a formula — you only need
+      a new function ω_{n−1} that takes over the role of W. The calculation is one line.
+    beweis:
+      text: |
+        $\ln(y\uparrow\uparrow n)=(y\uparrow\uparrow(n-1))\ln y$, and with $y=e^{\ln y}$ we have $y\uparrow\uparrow(n-1)=(e^{\ln y})\uparrow\uparrow(n-1)$. Hence
+        $\ln Y=\ln y\cdot(e^{\ln y})\uparrow\uparrow(n-1)=\varepsilon_{n-1}(\ln y)$, i.e. $\ln y=\omega_{n-1}(\ln Y)$. For $y>1$ we have $\ln y>0$, where $\varepsilon_{n-1}$ is strictly increasing.
+    pruefung:
+      f1_folgt_unmittelbar: Yes — the formula names the inverse; it is as explicit as W itself.
+      f2_benutzte_voraussetzungen: Only $y>1$ (so that $\ln y>0$ and $\varepsilon_{n-1}$ is invertible there).
+      f3_spezialfall: 'Yes: $n=2$ is gr.satz.superwurzel.'
+      f4_uebertragbar: To $0<y<1$ with the appropriate branches of $\omega_{n-1}$; the fixed-point iteration of gr.satz.superwurzel_dritte is
+        a computing rule for $\omega_2$.
+      f5_neue_frage: Can the $\omega_n$ be joined into a continuous family in $n$ — a super-root of fractional height?
+    bewertung:
+      richtigkeit: complete; values recomputed to 25 digits
+      nutzen: Gives every super-root a name and a computing rule.
+    quellen:
+    - stelle: from 45:00
+  en_theorie:
+    worum: |
+      A formula for the $n$-th super-root, built like the familiar formula with Lambert W.
+    genau: |
+      $\sqrt[n]{Y}_s=\exp(\omega_{n-1}(\ln Y))$ for $Y>1$.
+    warum: |
+      Taking logarithms turns $y\uparrow\uparrow n=Y$ into the equation $\ln Y=\ln y\cdot(e^{\ln y})\uparrow\uparrow(n-1)=\varepsilon_{n-1}(\ln y)$; $\omega_{n-1}$ solves for $\ln y$.
+    beispiel: |
+      $n=3$, $Y=2$: $\omega_2(\ln 2)=0.38978$, so $\sqrt[3]{2}_s=e^{0.38978}=1.47668\ldots$ — the same value as via the double W iteration in [[gr.satz.superwurzel_dritte]].
+    einordnung: |
+      Generalizes [[gr.satz.superwurzel]]; the building blocks are in [[gr.def.epsilon_omega]].
 - id: gr.satz.tauschregel
   quelle_hash: 3a7385c3aa36
   theorie_hash: f74f6e78b24c
@@ -2138,6 +2343,46 @@
     worum: |
       In 2010 a forum participant (kobi_78) found an equation that expresses the base derivative of a tower by a sum along the tower values. For integer heights
       it is always correct; whether it is correct for fractional heights says something about the chosen continuation.
+- id: gr.satz.turm_superwurzel
+  quelle_hash: ecc0447e5328
+  theorie_hash: 3051196f8c0e
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: The infinite tower is the reciprocal of the super-square-root of 1/x
+    aussage: |
+      $$h(x)=\frac{1}{\operatorname{ssrt}(1/x)}=\frac{W(-\ln x)}{-\ln x},\qquad h^{-1}(y)=y^{1/y}.$$
+    bereich: $e^{-e}\le x\le e^{1/e}$, $h(x)=x^{x^{\cdots}}$; $\operatorname{ssrt}$ as in gr.satz.superwurzel
+    einfach: 'The infinite tower and the super-square-root are closely related: take the reciprocal of the base, take the super-square-root, and
+      take the reciprocal again — then you have the value of the infinite tower.'
+    beweis:
+      text: '$h=x^h$ gives $x=h^{1/h}$, so $(1/h)^{1/h}=1/x$: $1/h$ is the super-square-root of $1/x$. With $\operatorname{ssrt}(Y)=\ln Y/W(\ln
+        Y)$ the W form follows.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from $h=x^h$.
+      f2_benutzte_voraussetzungen: Principal branch of W; for $x<e^{-e}$ there is no limit (period 2).
+      f3_spezialfall: 'Yes: inverse of $y\mapsto y^{1/y}$.'
+      f4_uebertragbar: Complex $x$ in the convergence region with the matching branch of W.
+      f5_neue_frage: 'no'
+    bewertung:
+      richtigkeit: complete
+      nutzen: Connects the two Lambert W formulas of the basics.
+    quellen:
+    - stelle: from 20:00
+    - {}
+  en_theorie:
+    worum: |
+      Two Lambert W formulas of the basics — infinite tower and super-square-root — are the same formula.
+    genau: |
+      $h(x)=1/\operatorname{ssrt}(1/x)$, and the inverse of the infinite tower is $y\mapsto y^{1/y}$.
+    warum: |
+      From $h=x^h$ it follows that $(1/h)^{1/h}=1/x$.
+    beispiel: |
+      $x=\sqrt2$: $1/x=0.7071$, $\operatorname{ssrt}(0.7071)=\tfrac12$ (since $(\tfrac12)^{1/2}=0.7071$), so $h(\sqrt2)=2$.
+    einordnung: |
+      Super-square-root: [[gr.satz.superwurzel]]; derivative of the tower: [[gr.satz.turm_ableitung]].
 - id: gr.satz.turmintegral_grenzen
   quelle_hash: a254c4c493a4
   theorie_hash: 236237696a69

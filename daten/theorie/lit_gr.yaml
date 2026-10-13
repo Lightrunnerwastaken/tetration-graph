@@ -1,0 +1,81 @@
+# Theorie-Blöcke: Superwurzeln über ω_n und Basisableitungen (What the Hectogon?, „On Tetration“ I/II), 13.10.2026
+
+gr.def.epsilon_omega:
+  worum: |
+    Lambert W ist die Umkehrung von $xe^x$ und löst damit $y^y=Y$. Für höhere Türme fehlt eine solche Funktion — also führt man sie ein.
+  genau: |
+    $\varepsilon_n(x)=x\cdot(e^x)\uparrow\uparrow n$ mit $\varepsilon_0=x$, $\varepsilon_{n+1}=xe^{\varepsilon_n}$; $\omega_n=\varepsilon_n^{-1}$. Insbesondere $\omega_1=W$.
+  warum: |
+    Für $x\ge0$ ist jedes $\varepsilon_n$ streng wachsend mit $\varepsilon_n(0)=0$, also umkehrbar. Für $0\le x<1/e$ konvergiert $\varepsilon_n(x)$ gegen den
+    Fixpunkt von $\varepsilon\mapsto xe^\varepsilon$, also gegen $-W(-x)$; dessen Umkehrung ist $xe^{-x}$.
+  beispiel: |
+    $\varepsilon_2(x)=xe^{xe^x}$; $\omega_2(\ln 2)=\ln\sqrt[3]{2}_s=0.38978\ldots$
+  bilder: []
+  einordnung: |
+    Anwendung: [[gr.satz.superwurzel_omega]]; Ableitungen: [[gr.satz.omega_ableitung]].
+
+gr.satz.superwurzel_omega:
+  worum: |
+    Eine Formel für die $n$-te Superwurzel, gebaut wie die bekannte Formel mit Lambert W.
+  genau: |
+    $\sqrt[n]{Y}_s=\exp(\omega_{n-1}(\ln Y))$ für $Y>1$.
+  warum: |
+    Logarithmieren macht aus $y\uparrow\uparrow n=Y$ die Gleichung $\ln Y=\ln y\cdot(e^{\ln y})\uparrow\uparrow(n-1)=\varepsilon_{n-1}(\ln y)$; $\omega_{n-1}$ löst nach $\ln y$ auf.
+  beispiel: |
+    $n=3$, $Y=2$: $\omega_2(\ln 2)=0.38978$, also $\sqrt[3]{2}_s=e^{0.38978}=1.47668\ldots$ — derselbe Wert wie über die doppelte W-Iteration in [[gr.satz.superwurzel_dritte]].
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[gr.satz.superwurzel]]; die Bausteine stehen in [[gr.def.epsilon_omega]].
+
+gr.satz.turm_superwurzel:
+  worum: |
+    Zwei Lambert-W-Formeln der Grundlagen — unendlicher Turm und Superquadratwurzel — sind dieselbe Formel.
+  genau: |
+    $h(x)=1/\operatorname{ssrt}(1/x)$, und die Umkehrung des unendlichen Turms ist $y\mapsto y^{1/y}$.
+  warum: |
+    Aus $h=x^h$ folgt $(1/h)^{1/h}=1/x$.
+  beispiel: |
+    $x=\sqrt2$: $1/x=0.7071$, $\operatorname{ssrt}(0.7071)=\tfrac12$ (denn $(\tfrac12)^{1/2}=0.7071$), also $h(\sqrt2)=2$.
+  bilder: []
+  einordnung: |
+    Superquadratwurzel: [[gr.satz.superwurzel]]; Ableitung des Turms: [[gr.satz.turm_ableitung]].
+
+gr.kor.basis_summe:
+  worum: |
+    Die Ableitung eines Turms nach der Basis, nicht Schritt für Schritt, sondern als eine Formel.
+  genau: |
+    $(x\uparrow\uparrow n)'=\dfrac{x\uparrow\uparrow n}{x\ln x}\sum_{k=1}^n\prod_{m=k-1}^{n-1}(x\uparrow\uparrow m\cdot\ln x)$.
+  warum: |
+    Die Rekursion $t_{n+1}'=t_{n+1}(t_n/x+\ln x\,t_n')$ aus [[gr.satz.basis_ganz]] ist linear in $t_n'$; aufgelöst entsteht pro Stufe ein Summand.
+  beispiel: |
+    $n=2$: $x^x(\ln x+1)$. $n=3$: $x^{x^x}x^x(\ln^2x+\ln x+1/x)$.
+  bilder: []
+  einordnung: |
+    Dieselbe Rechnung mit $e^x$ als Basis: [[gr.satz.omega_ableitung]].
+
+gr.satz.omega_ableitung:
+  worum: |
+    Wie man die neuen Funktionen $\varepsilon_n$ und ihre Umkehrungen $\omega_n$ ableitet.
+  genau: |
+    $\varepsilon_n'=(\varepsilon_n/x)(1+S_n)$, $\omega_n'=\omega_n/(x(1+S_n(\omega_n)))$ mit $S_n=\sum_{k=1}^n\prod_{m=k-1}^{n-1}\varepsilon_m$.
+  warum: |
+    $r_n=x\varepsilon_n'/\varepsilon_n$ erfüllt $r_{n+1}=1+\varepsilon_nr_n$; die Umkehrregel gibt $\omega_n'$.
+  beispiel: |
+    $n=1$ ist die bekannte Formel $W'(x)=W(x)/(x(1+W(x)))$.
+  bilder: []
+  einordnung: |
+    Grenzfall $n\to\infty$ und die Falle beim Vertauschen: [[gr.korr.grenzidentitaet]].
+
+gr.korr.grenzidentitaet:
+  worum: |
+    Eine Formel aus einem Video, die falsch wird, weil zwei Grenzübergänge vertauscht wurden.
+  genau: |
+    $\lim_n S_n(\omega_n(x))=x/(1-x)$ für $0<x<1$ (numerisch), aber $\sum_k\prod_{m\ge k-1}\varepsilon_m(xe^{-x})\ne x/(1-x)$.
+  warum: |
+    In $S_n(\omega_n(x))$ liegen die obersten Faktoren nahe $x$, weil $\varepsilon_n(\omega_n(x))=x$; die Summe wird zur geometrischen Reihe. Setzt man vorher
+    $\omega_\infty$ ein, steht in jedem unendlichen Produkt eine unendliche Folge von Faktoren nahe $x<1$ — die Produkte verschwinden, und es kommt etwas anderes heraus.
+  beispiel: |
+    $x=\tfrac12$: richtige Reihenfolge $S_{80}=1-4\cdot10^{-23}$, vertauschte Reihenfolge $\to\tfrac12$.
+  bilder: []
+  einordnung: |
+    Endliche Formel: [[gr.satz.omega_ableitung]].
