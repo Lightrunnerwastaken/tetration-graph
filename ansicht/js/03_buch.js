@@ -98,9 +98,14 @@ const buch = (() => {
     if (n < 0) return;
     if (aktuell !== kid) {
       aktuell = kid;
-      wurzel.innerHTML = `<nav class="lb-nav" aria-label="Inhalt des Lehrbuchs">${navHtml()}</nav>
+      wurzel.innerHTML = `<button class="lb-mobil-leiste" data-lbnav="1" aria-expanded="false" aria-label="Inhalt öffnen">
+          <span class="lb-mobil-kap"><span class="lb-nav-nr">${n}</span> ${esc(kapitel[n].titel)}</span>
+          <span class="lb-mobil-abschnitt"></span><span class="lb-mobil-pfeil" aria-hidden="true">▾</span></button>
+        <nav class="lb-nav" aria-label="Inhalt des Lehrbuchs">${navHtml()}</nav>
         <article class="lb-seite" tabindex="-1">${kapitelHtml(kapitel[n], n)}</article>`;
+      $(".lb-seite", wurzel).addEventListener("scroll", abschnittMerken, { passive: true });
     }
+    navZu();
     const seite = $(".lb-seite", wurzel);
     if (ziel) {
       // erst nach dem Layout (das Detailfeld kann gerade aufgehen) rollen, sonst bricht der Browser das Rollen ab
@@ -115,11 +120,41 @@ const buch = (() => {
     hashSetzen();
   }
 
+  // Handy: das Inhaltsverzeichnis liegt als Ebene über dem Text; die Leiste oben zeigt Kapitel und aktuellen Abschnitt
+  function navZu() {
+    wurzel.classList.remove("nav-offen");
+    $(".lb-mobil-leiste", wurzel)?.setAttribute("aria-expanded", "false");
+  }
+  let abschnittPlan = false;
+  function abschnittMerken() {
+    if (abschnittPlan) return;
+    abschnittPlan = true;
+    requestAnimationFrame(() => {
+      abschnittPlan = false;
+      const seite = $(".lb-seite", wurzel), anzeige = $(".lb-mobil-abschnitt", wurzel);
+      if (!seite || !anzeige) return;
+      const oben = seite.getBoundingClientRect().top + Math.min(160, seite.clientHeight / 3);
+      let name = "";
+      for (const h of seite.querySelectorAll(".lb-abschnitt, .lb-strang")) {
+        if (h.getBoundingClientRect().top > oben) break;
+        name = h.textContent.trim();
+      }
+      if (anzeige.textContent !== name) anzeige.textContent = name;
+    });
+  }
+
   wurzel.addEventListener("click", (e) => {
-    const t = e.target.closest("[data-kapitel],[data-sprung],[data-details],[data-id]");
+    const t = e.target.closest("[data-kapitel],[data-sprung],[data-details],[data-id],[data-lbnav]");
     if (!t) return;
     e.stopPropagation();
     const d = t.dataset;
+    if (d.lbnav) {
+      const auf = !wurzel.classList.contains("nav-offen");
+      wurzel.classList.toggle("nav-offen", auf);
+      t.setAttribute("aria-expanded", String(auf));
+      return;
+    }
+    if (d.kapitel || d.sprung) navZu();
     if (d.kapitel) zeigeKapitel(d.kapitel);
     else if (d.sprung) zeigeKapitel(aktuell, d.sprung, true);
     else if (d.details) { zustand.gewaehlt = d.details; zeigeKnoten(d.details); hervorheben(d.details); hashSetzen(); }

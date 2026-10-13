@@ -9,6 +9,8 @@ const EN_WERT_RE = new RegExp("(?<![\\p{L}\\d_])(?:" + Object.keys(EN_WERT).sort
 const EN_WERT_UEBERSETZE = (s) => s.replace(EN_WERT_RE, (w, i) => { const e = EN_WERT[w]; return i === 1 && s[0] === "[" ? e[0].toUpperCase() + e.slice(1) : e; });
 
 const EN_WOERTER = {
+  // --- Handy: Blatt von unten, Lehrbuch-Leiste
+  "Beides": "Both", "Höhe der Tafel ändern": "Resize the panel", "Ansicht": "View", "Inhalt öffnen": "Open contents",
   // --- Kopfzeile, Reiter, Suche, Werkzeuge (vorlage.html)
   "Tetration Wissensgraph": "Tetration Knowledge Graph",
   "Wissensgraph": "Knowledge Graph",

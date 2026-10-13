@@ -224,7 +224,7 @@ const karte = (() => {
   const zuWelt = (sx, sy) => [(sx - W / 2) / cam.k + cam.x, (sy - H / 2) / cam.k + cam.y];
   function groesse() {
     const r = leinwand.parentElement.getBoundingClientRect();
-    if (!r.width) return;
+    if (!r.width || r.height < 40) return;          // Handy, Stufe „Text“: Karte zugeklappt
     W = r.width; H = r.height;
     dpr = Math.min(2, window.devicePixelRatio || 1);
     leinwand.width = Math.round(W * dpr); leinwand.height = Math.round(H * dpr);

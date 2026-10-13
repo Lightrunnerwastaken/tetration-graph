@@ -8,10 +8,44 @@ const knotenLink = (id) => {
   return `${punkt(k._status_eff)}<button class="verweis" data-id="${id}">${mathe(k.titel)}</button>`;
 };
 function tafelZeigen(html) {
-  tafel.innerHTML = `<div class="tafel-leiste"><button class="tafel-zu" data-tafel="zu" aria-label="Tafel schliessen">×</button></div><div class="tafel-innen">${html}</div>`;
+  tafel.innerHTML = `<div class="tafel-leiste">
+    <div class="blatt-griff" role="separator" aria-label="Höhe der Tafel ändern"><span></span></div>
+    <span class="blatt-wahl" role="group" aria-label="Ansicht">
+      <button data-blatt="klein">Graph</button><button data-blatt="halb">Beides</button><button data-blatt="ganz">Text</button></span>
+    <button class="tafel-zu" data-tafel="zu" aria-label="Tafel schliessen">×</button></div><div class="tafel-innen">${html}</div>`;
   tafel.scrollTop = 0;
+  // neue Inhalte: aus „zu“ oder „klein“ auf „halb“; wer gerade im Text liest („ganz“), bleibt dort
+  const offen = document.body.classList.contains("tafel-offen");
   document.body.classList.add("tafel-offen");
   $("#tafel-knopf").setAttribute("aria-expanded", "true");
+  blattStufe(!offen || document.body.dataset.blatt !== "ganz" ? "halb" : "ganz");
+}
+
+// ------------------------------------------------------------------ Handy: Tafel als Blatt von unten (klein · halb · ganz)
+const BLATT = ["klein", "halb", "ganz"];
+function blattStufe(s) {
+  document.body.dataset.blatt = s;
+  tafel.querySelectorAll(".blatt-wahl button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.blatt === s)));
+}
+tafel.addEventListener("click", (e) => {
+  const b = e.target.closest(".blatt-wahl button");
+  if (b) { e.stopPropagation(); blattStufe(b.dataset.blatt); }
+});
+{
+  let zug = null;
+  tafel.addEventListener("pointerdown", (e) => {
+    if (!e.target.closest(".blatt-griff")) return;
+    zug = { y: e.clientY, t: performance.now() };
+    e.target.closest(".blatt-griff").setPointerCapture(e.pointerId);
+  });
+  tafel.addEventListener("pointerup", (e) => {
+    if (!zug) return;
+    const dy = e.clientY - zug.y, i = BLATT.indexOf(document.body.dataset.blatt || "halb");
+    zug = null;
+    if (Math.abs(dy) < 8) blattStufe(i === 2 ? "halb" : BLATT[i + 1]);       // Tippen: eine Stufe grösser, ganz → halb
+    else blattStufe(BLATT[Math.max(0, Math.min(2, i + (dy < 0 ? 1 : -1) * (Math.abs(dy) > 160 ? 2 : 1)))]);
+  });
+  tafel.addEventListener("pointercancel", () => { zug = null; });
 }
 function tafelSchliessen() {
   document.body.classList.remove("tafel-offen");

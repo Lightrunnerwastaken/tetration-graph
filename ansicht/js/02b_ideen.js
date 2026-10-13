@@ -59,7 +59,7 @@ const ideen = (() => {
   }
   function groesse() {
     const r = leinwand.parentElement.getBoundingClientRect();
-    if (!r.width) return;
+    if (!r.width || r.height < 40) return;          // Handy, Stufe „Text“: Karte zugeklappt
     const rel = kFit ? cam.k / kFit : 1;
     W = r.width; Hh = r.height;
     dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -167,8 +167,22 @@ const ideen = (() => {
     const m = 70, s = Math.min((W / 2 - m) / Math.abs(dx || 1e-9), (Hh / 2 - m) / Math.abs(dy || 1e-9));
     return s < 1 ? [cx + dx * s, cy + dy * s] : [sx, sy];
   }
+  // Handy: die anderen Hauptideen als wischbare Leiste unten statt als Schildchen am Rand
+  const leiste = $("#ideen-chips");
+  let leisteSchluessel = "";
+  function leisteSetzen(ids) {
+    const s = ids.join(",");
+    if (s === leisteSchluessel) return;
+    leisteSchluessel = s;
+    leiste.innerHTML = ids.map((id) => `<button data-idee="${id}" style="--f:${hFarbe.get(id)}">${esc(H.get(id).name)}</button>`).join("");
+    leiste.hidden = !ids.length;
+  }
+  const schmal = () => W < 600;
+
   function zeichneChips() {
     chips = [];
+    if (schmal()) { leisteSetzen(offen.haupt ? D.haupt.filter((h) => h.id !== offen.haupt).map((h) => h.id) : []); return; }
+    leisteSetzen([]);
     if (!offen.haupt) return;
     ctx.font = `600 12px ${SERIF}`;
     for (const h of D.haupt) {
@@ -222,12 +236,14 @@ const ideen = (() => {
     }
   }
   function zeichne() {
+    if (Hh < 40) return;
     const c = ctx;
     c.setTransform(dpr, 0, 0, dpr, 0, 0);
     const bg = c.createRadialGradient(W / 2, Hh / 2, 0, W / 2, Hh / 2, Math.max(W, Hh) * 0.75);
     bg.addColorStop(0, "#0d1628"); bg.addColorStop(1, "#060a13");
     c.fillStyle = bg; c.fillRect(0, 0, W, Hh);
     const h0 = offen.haupt && H.get(offen.haupt), u0 = offen.unter && U.get(offen.unter);
+    if (!h0) leisteSetzen([]);
     if (!h0) {
       for (const [a, b, w] of kopH) {
         const p = H.get(a), q = H.get(b);
@@ -391,7 +407,7 @@ const ideen = (() => {
       document.fonts?.load(`600 20px "KaTeX_Main"`).then(anstossen);
       anstossen();
     },
-    verberge() { aktiv = false; leinwand.hidden = true; tipp.hidden = true; },
+    verberge() { aktiv = false; leinwand.hidden = true; tipp.hidden = true; leiste.hidden = true; leisteSchluessel = ""; },
     oeffne, hoch, anstossen,
     zuKnoten(id) { const a = A[id]; if (a && a.idee !== offen.unter) oeffne(a.idee); else anstossen(); },
     zoom(f) { const k = Math.max(kFit * 0.6, Math.min(kFit * 4, cam.k * f)); fliege(cam.x, cam.y, k, 380); },
