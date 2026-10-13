@@ -191,6 +191,24 @@ function legendeBauen() {
     <h4>Linien</h4><p class="klein">Blau: Beweis (Pfeil zur Folgerung) · Rot gestrichelt: widerlegt/korrigiert · Grün: entlastet oder stützt · Grau: Spezialfall, verwandt.</p>
     <p class="klein" style="margin-top:12px">Tasten: <b>/</b> Suche · <b>+ −</b> Zoom · <b>Esc</b> zurück · Doppelklick zoomt hinein.</p>`;
 }
+// Handy: Suche und Werkzeuge hinter je einem Knopf (Kopfzeile in einer Zeile)
+function handyMenue(auf) {
+  document.body.classList.toggle("menue-offen", auf);
+  $("#menue-knopf").setAttribute("aria-expanded", String(auf));
+}
+function handySuche(auf) {
+  document.body.classList.toggle("suche-offen", auf);
+  $("#such-knopf").setAttribute("aria-expanded", String(auf));
+  if (auf) { handyMenue(false); $("#suche").focus(); }
+}
+$("#menue-knopf").onclick = (e) => { e.stopPropagation(); handySuche(false); handyMenue(!document.body.classList.contains("menue-offen")); };
+$("#such-knopf").onclick = (e) => { e.stopPropagation(); handySuche(!document.body.classList.contains("suche-offen")); };
+document.addEventListener("click", (e) => {
+  if (document.body.classList.contains("menue-offen") && (!e.target.closest(".werkzeuge") || e.target.closest("button"))) handyMenue(false);
+  if (document.body.classList.contains("suche-offen") && !e.target.closest(".suche")) handySuche(false);
+});
+$("#treffer").addEventListener("click", () => handySuche(false));
+
 $("#legende-knopf").onclick = () => {
   const l = $("#legende");
   l.hidden = !l.hidden;

@@ -10,7 +10,7 @@ const EN_WERT_UEBERSETZE = (s) => s.replace(EN_WERT_RE, (w, i) => { const e = EN
 
 const EN_WOERTER = {
   // --- Handy: Blatt von unten, Lehrbuch-Leiste
-  "Beides": "Both", "Höhe der Tafel ändern": "Resize the panel", "Ansicht": "View", "Inhalt öffnen": "Open contents",
+  "Beides": "Both", "Suche öffnen": "Open search", "Menü": "Menu","Höhe der Tafel ändern": "Resize the panel", "Ansicht": "View", "Inhalt öffnen": "Open contents",
   // --- Kopfzeile, Reiter, Suche, Werkzeuge (vorlage.html)
   "Tetration Wissensgraph": "Tetration Knowledge Graph",
   "Wissensgraph": "Knowledge Graph",
