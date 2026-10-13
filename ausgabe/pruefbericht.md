@@ -1,8 +1,8 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-373 Aussagen · 647 Kanten · 55 Experimente
+387 Aussagen · 668 Kanten · 55 Experimente
 
-**Effektiver Status:** bewiesen 134, bewiesen_literatur 60, numerisch 52, vermutung 29, offen 28, bedingt 27, definition 13, skizze 10, gescheitert 9, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 141, bewiesen_literatur 60, numerisch 56, offen 29, vermutung 29, bedingt 27, definition 13, gescheitert 11, skizze 10, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 104
 
@@ -13,7 +13,7 @@
 ## WARNUNG (0)
 
 
-## HINWEIS (27)
+## HINWEIS (29)
 
 
 **abschwaechbar** (22)
@@ -41,19 +41,21 @@
 - `kn.satz.hexation_keine_halbebene` — Voraussetzung unbenutzt: H reell auf der Achse oder H(0) = 1
 - `kn.satz.singulaer_minus2` — Voraussetzung unbenutzt: T differenzierbar in einer Umgebung von −1 (Paper I)
 
-**fassung** (2)
+**fassung** (3)
 
 - `kn.gescheitert.polynom_kantorovich` — wird von kn.beob.polynom_eckmode korrigiert; Status 'gescheitert' prüfen
+- `kn.gescheitert.polynom_rekonstruktion` — wird von kn.satz.halbrang_quadratisch korrigiert; Status 'gescheitert' prüfen
 - `kn.verm.tpid3` — wird von kn.verm.tpid3_bedingung korrigiert; Status 'vermutung' prüfen
 
 **uebersetzung-fortschritt** (1)
 
-- `quelle` — 210 von 294 quelle-Gegenständen übersetzt
+- `quelle` — 211 von 295 quelle-Gegenständen übersetzt
 
-**voraussetzung-offen** (2)
+**voraussetzung-offen** (3)
 
 - `it.satz.szekeres` — Benutzung unklar: f reell-analytisch (bzw. hinreichend glatt) nahe 0 mit 0 < f(x) < x
 - `kn.satz.paulsen_komplex` — Benutzung unklar: Basis im Gültigkeitsbereich von Paulsen 2019 (nicht am Original geprüft)
+- `kn.satz.schwellen_monoton` — Benutzung unklar: Diese Monotonie gilt für alle gebauten höheren Stufen
 
 ## Beweislücken
 

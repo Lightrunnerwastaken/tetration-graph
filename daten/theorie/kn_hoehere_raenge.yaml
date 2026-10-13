@@ -1,0 +1,185 @@
+# Theorie-Blöcke: höhere Hyperoperationen und halber Rang (aus forschung/eta_hyperoperationen, übernommen 13.10.2026)
+
+kn.beob.eta7_eta8:
+  worum: |
+    Zu jeder Rechenart $H_r$ gibt es eine Grenzbasis $\eta_r$: dort berührt $H_r(\eta_r,\cdot)$ die Diagonale, und bis dahin bleibt die nächste Rechenart beschränkt.
+  genau: |
+    $\eta_7=1.83975866072333\ldots$ (25 Stellen gesichert), $\eta_8=1.86814657735734\ldots$ (13 Stellen); dazu $e_7=3.54348978552749\ldots$, $e_8=3.62060089762\ldots$
+  warum: |
+    Gesucht ist das Minimum von $H_r(b,x)-x$; Newton auf $\partial_xH_r=1$ mit Ableitungen aus komplexen Cauchy-Abtastungen, eine äussere Sekante setzt das Minimum auf null.
+    Zwei Läufe mit verschiedener Präzision, Kontur und Punktzahl sichern die Stellen.
+  beispiel: |
+    Das Abstandsgesetz $2-\eta_r\approx2.785\,r^{-1.467}$ aus den vier alten Gliedern sagte $\eta_7=1.83971$ voraus — gemessen $1.83976$.
+  bilder: []
+  einordnung: |
+    Vorher bekannt: [[kn.beob.stufe6]], Levensteins drei Stellen [[kn.beob.hoehere_etas]]. Vermutung: [[kn.verm.tpid10]]. Was die Schwelle bedeutet: [[kn.satz.schwellen_monoton]].
+
+kn.satz.schwellen_monoton:
+  worum: |
+    Warum die Berührbasis überhaupt eine Grenze ist — und was man für $\eta_r\to2$ noch bräuchte.
+  genau: |
+    Die nächste Stufe ist beschränkt genau dann, wenn die jetzige einen Fixpunkt $\ge1$ hat (M1). Unter Monotonie in $x$ und $b$ wachsen die Fixpunkt-Mengen und liegen in $(1,2)$ (M2).
+  warum: |
+    Die ganzzahlige nächste Stufe ist die Iteration $y_{k+1}=H_r(b,y_k)$ ab $y_0=1$; eine monotone Iteration ist beschränkt genau dann, wenn sie an einem Fixpunkt hängen bleibt.
+    Bei $b=2$ wächst jede ganzzahlige Iteration um mindestens 1 pro Schritt, also gibt es dort keinen Fixpunkt.
+  beispiel: |
+    $r=3$: $b^x$ hat einen Fixpunkt genau für $b\le e^{1/e}$ — Eulers Schranke für den unendlichen Turm.
+  bilder: []
+  einordnung: |
+    Präzisiert Nixons Behauptung [[kn.verm.beschraenkt_unter_2]]; der fehlende Schritt zu $L=2$ ist ein Kriterium wie [[kn.satz.eta_kriterium]].
+
+kn.satz.basis2_hoehe3:
+  worum: |
+    Bei Basis 2 sind die Werte an Höhe 1 und 2 für alle Ränge gleich — aber nicht an Höhe 3.
+  genau: |
+    $H_r(2,3)\ge2^r$; es gibt keinen Grenzgraphen $\lim_rH_r(2,\cdot)$.
+  warum: |
+    $H_{r+1}(2,3)=H_r(2,4)$, und $H_r(2,4)$ ist eine Iteration, die bei $H_r(2,3)$ startet und mindestens verdoppelt.
+  beispiel: |
+    $H_3(2,3)=8$, $H_4(2,3)=16$, $H_5(2,3)=2\uparrow\uparrow4=65536$.
+  bilder: []
+  einordnung: |
+    Zwischen den Höhen 1 und 2: [[kn.beob.zwischenwerte_basis2]].
+
+kn.satz.kritische_rate:
+  worum: |
+    Genau an der Grenzbasis läuft die nächste Stufe sehr langsam auf den Berührpunkt zu.
+  genau: |
+    $e_r-H_{r+1}(\eta_r,k)\sim1/(\beta_rk)$ mit $\beta_r=\tfrac12\partial_x^2H_r(\eta_r,e_r)$.
+  warum: |
+    Am Berührpunkt ist der Multiplikator 1; der Abstand $t$ schrumpft pro Schritt nur um $\beta t^2$, wie bei jedem parabolischen Fixpunkt.
+  beispiel: |
+    $r=3$: der Turm $\eta\uparrow\uparrow k$ nähert sich $e$ wie $2e/k$ ($\beta=1/(2e)$).
+  bilder: []
+  einordnung: |
+    Allgemeine Fassung: [[it.satz.parabolische_rate]].
+
+kn.satz.eta_auswahl:
+  worum: |
+    Die Grenzbasen sind keine Eigenschaft der Rekursion allein, sondern der gewählten Fortsetzung.
+  genau: |
+    Eine periodische Umparametrisierung der Höhe verschiebt $\eta_r$ um $-\varepsilon\sin(2\pi e_r)/\partial_bH_r$.
+  warum: |
+    $S(x+\varepsilon\sin2\pi x)$ hat dieselben ganzen Werte und erfüllt dieselbe Rekursion; nur Werte zwischen den ganzen Höhen ändern sich — und genau dort liegt der Berührpunkt $e_r$.
+  beispiel: |
+    Für die Tetration ($r=4$): $\eta_4'(0)=-0.0535$; schon $\varepsilon=0.01$ verschiebt $\eta_4$ in der vierten Stelle.
+  bilder: []
+  einordnung: |
+    Grund: [[fg.kor.nichteindeutigkeit]]. Folge für TPID 10: [[kn.verm.tpid10]] gilt für eine bestimmte Fortsetzungskette.
+
+kn.satz.eta_kriterium:
+  worum: |
+    Ein Weg, $\eta_N\to2$ zu beweisen, ohne die Grenzbasen auszurechnen.
+  genau: |
+    Wenn $H_N(\eta_N,q)\to q+1$ für jedes $0<q<1$, dann $\eta_N\to2$. Für $e_N\to4$ zusätzlich eine Schranke an die Basisableitung bei Höhe 2.
+  warum: |
+    $H_N(\eta_N,q)\le H_N(\eta_N,1)=\eta_N$ wegen Monotonie; nähert sich die linke Seite $q+1$, muss $\eta_N$ mindestens $q+1$ werden.
+  beispiel: |
+    Gemessen bei $q=0.5$: $1.335,\ 1.396,\ 1.428,\ 1.448,\ 1.460$ für $N=4\ldots8$ ([[kn.beob.kritische_profile]]).
+  bilder: []
+  einordnung: |
+    Obergrenze aus [[kn.satz.schwellen_monoton]]; Ziel [[kn.verm.tpid10]].
+
+kn.beob.kritische_profile:
+  worum: |
+    Messwerte der Rechenarten an ihren eigenen Grenzbasen, links von Höhe 1.
+  genau: |
+    $H_N(\eta_N,-0.5)\to0.5$ und $H_N(\eta_N,0.5)\to1.5$ zeichnen sich ab; bei Höhe 2 ist $H_N(\eta_N,2)$ mit $2.53$ ($N=8$) noch weit von 4.
+  warum: |
+    Je höher die Stufe, desto näher liegt $\eta_N$ an 2, und bei Basis 2 ist jede Stufe an den Höhen 1 und 2 exakt $x+1$-artig (Werte 2 und 4).
+  beispiel: |
+    $N=8$: $F_8(-0.5)=0.50564$, $F_8(0.5)=1.46013$.
+  bilder: []
+  einordnung: |
+    Daten zu [[kn.satz.eta_kriterium]].
+
+kn.beob.zwischenwerte_basis2:
+  worum: |
+    Wie sehen die höheren Rechenarten zur Basis 2 zwischen den Höhen 1 und 2 aus?
+  genau: |
+    Bei halber Höhe steigt der Wert ($1.414\to1.493$), bei Höhe 1.5 fällt er ($2.828\to2.625$) — die Kurven werden zwischen 2 und 4 immer gerader.
+  warum: |
+    Die Endpunkte 2 und 4 sind für alle Stufen fest; die Krümmung dazwischen nimmt mit dem Rang ab.
+  beispiel: |
+    Nonation: $H_9(2,0.5)=1.49281$, $H_9(2,1.5)=2.62453$.
+  bilder: []
+  einordnung: |
+    Kein Grenzgraph: [[kn.satz.basis2_hoehe3]].
+
+kn.beob.decation_reell:
+  worum: |
+    Ein billiger Rechenweg für die zehnte Rechenart unterhalb ihrer Grenzbasis.
+  genau: |
+    Rückwärtsiteration von einem anziehenden Fixpunkt aus: $z_k(t)=f^{-k}(a+\lambda^t(f^k(1)-a))\to H_{10}(1.83,t)$ mit Fehler $O(\lambda^k)$.
+  warum: |
+    Nahe dem Fixpunkt ist $f$ fast die Streckung um $\lambda$; dort ist der Bruchschritt $\lambda^t$ klar, und $f^{-k}$ trägt ihn zurück (Koenigs).
+  beispiel: |
+    $H_{10}(1.83,0.5)\approx1.4567116$.
+  bilder: []
+  einordnung: |
+    Dasselbe Prinzip wie die reguläre Tetration: [[it.satz.koenigs]].
+
+kn.satz.halbrang_linear:
+  worum: |
+    Ein exakter halber Schritt von einer Rechenart zur nächsten — aber nur für kleine Abweichungen von „plus 1“.
+  genau: |
+    In erster Ordnung ist der Rangschritt die Summation $\Delta w=v(x+1)$; auf den Funktionen $B_\nu$ verschiebt er $\nu\mapsto\nu+1$, und $\mathcal L_s:B_\nu\mapsto B_{\nu+s}$ ist eine Halbgruppe.
+  warum: |
+    $B_\nu(x)=\Gamma(x+\nu)/(\Gamma(x)\Gamma(\nu+1))$ erfüllt die Pascal-Regel $B_{\nu+1}(x+1)-B_{\nu+1}(x)=B_\nu(x+1)$; in $\nu$ ist das stetig fortsetzbar.
+  beispiel: |
+    $\mathcal L_{1/2}\mathcal L_{1/2}=\mathcal L_1$: zwei halbe Summationen sind eine ganze (Kern $(1/2)_k/k!$).
+  bilder: []
+  einordnung: |
+    Zweite Ordnung: [[kn.satz.halbrang_quadratisch]]; Ziel [[kn.frage.halber_rang]].
+
+kn.satz.halbrang_quadratisch:
+  worum: |
+    Der halbe Rangschritt in der nächsten Genauigkeitsstufe — als echte holomorphe Funktion.
+  genau: |
+    $q_{1/2}(x)=\sum_{j\ge3}\alpha_j\binom xj$ mit $|\alpha_j|\le1500(1+\log j)/j$ ist holomorph auf $\operatorname{Re}x>-1$.
+  warum: |
+    Die Koeffizienten lassen sich exakt aus Gamma-Quotienten berechnen und grob abschätzen; $\binom xj$ fällt wie $j^{-\operatorname{Re}x-1}$, das reicht für Konvergenz.
+  beispiel: |
+    An Höhe 3 exakt: $\tfrac{341}{12}-35\ln2=4.15651534706858\ldots$
+  bilder: []
+  einordnung: |
+    Ersetzt die driftende Rekonstruktion [[kn.gescheitert.polynom_rekonstruktion]]; offen bleibt [[kn.frage.halber_rang]].
+
+kn.gescheitert.polynom_rekonstruktion:
+  worum: |
+    Eine erste Rechnung des halben Rangschritts, die zwischen den ganzen Höhen davonläuft.
+  genau: |
+    Bei $x=0.5$ wandern die Werte mit der Modellgrösse $K$ ab (etwa $a-0.0087\sqrt K$), während sie an ganzen Höhen konvergieren.
+  warum: |
+    Das Grad-$K$-Polynom durch die ganzzahligen Werte hat Ableitungen, die mit $K$ exponentiell wachsen; der bilineare Halbschritt-Operator ist darum nicht gleichmässig beschränkt.
+  beispiel: |
+    $K=16$: $+0.0070$; $K=80$: $-0.0362$; die richtige Fortsetzung gibt $0.0369$.
+  bilder: []
+  einordnung: |
+    Richtig gemacht in [[kn.satz.halbrang_quadratisch]].
+
+kn.gescheitert.mischkurve:
+  worum: |
+    Der Kurzweg „zwischen Potenz und Tetration einfach mitteln“.
+  genau: |
+    $\tfrac12b^x+\tfrac12T_b(x)$ hat eine Grenzbasis $1.54255$ nahe der Hochrechnung $1.55682$, verletzt aber die Rangrekursion.
+  warum: |
+    Eine Rechenart ist durch die Rekursion zur nächsten Stufe bestimmt; eine Mittelung zweier Stufen erfüllt diese Struktur nicht.
+  beispiel: |
+    Fehler der Rangrekursion bei $b=e$, $x=0.5$: $-0.023$.
+  bilder: []
+  einordnung: |
+    Richtiger Rahmen: [[kn.frage.halber_rang]].
+
+kn.frage.halber_rang:
+  worum: |
+    Ob es zwischen Potenz und Tetration eine Rechenart „3.5“ gibt — und ihre Grenzbasis.
+  genau: |
+    Gesucht ist eine Halbgruppe $T_b^s$ des Rangschritts, $T_b^{1/2}\circ T_b^{1/2}=T_b$, mit $H_{3+s}=T_b^s(b^x)$.
+  warum: |
+    Gebrochene Höhe heisst: eine Funktion halb iterieren. Gebrochener Rang heisst: den Schritt „Funktion → ihre Superfunktion“ halb ausführen — eine Iteration im Raum der Funktionen.
+  beispiel: |
+    Erste Bausteine: [[kn.satz.halbrang_linear]], [[kn.satz.halbrang_quadratisch]].
+  bilder: []
+  einordnung: |
+    Verwandt mit den Zwischenstufen von Bennett und Nixon: [[br.satz.hyperop_varianten]].

@@ -55,6 +55,17 @@ Stand: bewiesen 30, bedingt 1, numerisch 6, Vermutung 1, offen 3, verworfen 2 ·
 - **Spiralen und Mittelwerte** (10): bewiesen 4, bedingt 1, numerisch 1, offen 2, verworfen 2 · Literatur 4 / Forum 0 / eigen 6 · offen: fp.frage.holomorphe_familie, fp.verm.doppelmittel
 - **Periode 2 unter e⁻ᵉ** (6): bewiesen 6 · Literatur 5 / Forum 1 / eigen 0
 
+## Höhere Stufen (43 Aussagen)
+
+Pentation, Hexation und die ganze Leiter der Hyperoperationen.
+
+Stand: bewiesen 12, bedingt 7, numerisch 14, Vermutung 4, offen 4, verworfen 2 · Literatur 10 / Forum 16 / eigen 17
+
+- **Pentation und Hexation** (17): bewiesen 1, bedingt 7, numerisch 7, Vermutung 1, offen 1 · Literatur 4 / Forum 7 / eigen 6 · offen: kn.konstr.pentation, kn.satz.hexation_eindeutig_g0, kn.frage.hexation_kneser, kn.konstr.hexation_regulaer, kn.satz.hexation_gebiete, kn.satz.hexation_keine_halbebene, kn.satz.hexation_logpunkt, kn.satz.hexation_struktur …
+- **ηₙ → 2 und eₙ → 4** (17): bewiesen 5, numerisch 7, Vermutung 3, offen 2 · Literatur 1 / Forum 9 / eigen 7 · offen: kn.frage.andere_etas, kn.frage.pentation_untergrenze, kn.verm.beschraenkt_unter_2, kn.verm.tpid10, kn.verm.tpid11
+- **Gebrochene Ränge** (5): bewiesen 2, offen 1, verworfen 2 · Literatur 1 / Forum 0 / eigen 4 · offen: kn.frage.halber_rang
+- **Hyperoperationen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
+
 ## Zahlen und Arithmetik (30 Aussagen)
 
 Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.
@@ -64,16 +75,6 @@ Stand: bewiesen 20, bedingt 3, numerisch 1, Vermutung 3, offen 3 · Literatur 19
 - **Transzendenz** (23): bewiesen 15, bedingt 3, Vermutung 2, offen 3 · Literatur 15 / Forum 2 / eigen 6 · offen: ar.verm.schanuel, ar.frage.e_hoch_e, ar.frage.ef_fortsetzung, ar.frage.ganze_tuerme, ar.satz.schanuel_orbit, ar.verm.gelfond_turm
 - **Kongruenzen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
 - **Kneser–Schanuel** (3): bewiesen 1, numerisch 1, Vermutung 1 · Literatur 0 / Forum 0 / eigen 3 · offen: ar.verm.ks
-
-## Höhere Stufen (29 Aussagen)
-
-Pentation, Hexation und die ganze Leiter der Hyperoperationen.
-
-Stand: bewiesen 5, bedingt 7, numerisch 10, Vermutung 4, offen 3 · Literatur 9 / Forum 15 / eigen 5
-
-- **Pentation und Hexation** (16): bewiesen 1, bedingt 7, numerisch 6, Vermutung 1, offen 1 · Literatur 4 / Forum 7 / eigen 5 · offen: kn.konstr.pentation, kn.satz.hexation_eindeutig_g0, kn.frage.hexation_kneser, kn.konstr.hexation_regulaer, kn.satz.hexation_gebiete, kn.satz.hexation_keine_halbebene, kn.satz.hexation_logpunkt, kn.satz.hexation_struktur …
-- **ηₙ → 2 und eₙ → 4** (9): numerisch 4, Vermutung 3, offen 2 · Literatur 1 / Forum 8 / eigen 0 · offen: kn.frage.andere_etas, kn.frage.pentation_untergrenze, kn.verm.beschraenkt_unter_2, kn.verm.tpid10, kn.verm.tpid11
-- **Hyperoperationen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
 
 ## Dynamik von bᶻ und der Fixpunkt L (24 Aussagen)
 
@@ -100,12 +101,12 @@ Stand: bewiesen 8, offen 2, verworfen 1 · Literatur 10 / Forum 0 / eigen 1
 - Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 52.04
 - Basiswechsel T ∘ slog — Fraktionale Fortsetzung: 40.05
 - Dynamik von bᶻ und der Fixpunkt L — Fraktionale Fortsetzung: 29.06
+- Fraktionale Fortsetzung — Höhere Stufen: 25.53
 - Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Unendlicher Turm und Basen-Ebene: 22.61
-- Fraktionale Fortsetzung — Höhere Stufen: 22.47
 - Basiswechsel T ∘ slog — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 21.35
 - Fraktionale Fortsetzung — Unendlicher Turm und Basen-Ebene: 17.25
+- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 16.65
 - Dynamik von bᶻ und der Fixpunkt L — Unendlicher Turm und Basen-Ebene: 14.22
-- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 13.34
 - Basiswechsel T ∘ slog — Unendlicher Turm und Basen-Ebene: 12.32
 
 ## Stärkste Kopplungen über Ideengrenzen
@@ -120,8 +121,8 @@ Stand: bewiesen 8, offen 2, verworfen 1 · Literatur 10 / Forum 0 / eigen 1
 - Antwortkern und Basisableitung (Basiswechsel T ∘ slog) — Freiheit der Lösungen (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 4.4
 - Gleicher Fixpunkt (Basiswechsel T ∘ slog) — Regulär unter η (Fraktionale Fortsetzung): 4.14
 - Kneser über η (Fraktionale Fortsetzung) — Pentation und Hexation (Höhere Stufen): 4.04
+- Andere Konstruktionen (Fraktionale Fortsetzung) — Pentation und Hexation (Höhere Stufen): 3.97
 - Antwortkern und Basisableitung (Basiswechsel T ∘ slog) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.87
-- Andere Konstruktionen (Fraktionale Fortsetzung) — Pentation und Hexation (Höhere Stufen): 3.75
 - Regulär unter η (Fraktionale Fortsetzung) — Begriffe (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.6
 - Anziehend und abstossend (Dynamik von bᶻ und der Fixpunkt L) — Begriffe (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.43
 - Eindeutigkeit (Fraktionale Fortsetzung) — Freiheit der Lösungen (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.42

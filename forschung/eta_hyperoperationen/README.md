@@ -43,3 +43,13 @@ Die schnelle Bogenplanung mit `--pilot` ist eine explizite Änderung der von Hex
 Normalisierung und Funktionalgleichung werden teilweise durch die Fortsetzungskette selbst erzwungen. Kleine Restfehler dafür sind Konsistenzprüfungen, keine unabhängigen Genauigkeitsbeweise. Maßgeblich sind veränderte Präzision, Cauchy-Radius und Punktzahl, zwei Bogenlösungen sowie zusätzliche lokale Fortsetzungsschritte. Bei der komplexen H₈ hat das Argument `extra` gegenwärtig keine Wirkung; sein Nullunterschied wird **nicht** als unabhängige Kontrolle gezählt.
 
 Alle höheren η-Werte sind numerische lokale Berührungen der gewählten Fortsetzungen. Für ihre Deutung als globale einzige Beschränktheitsschwellen gelten die in MATHEMATIK.md genannten Voraussetzungen. Die Vermutungen ηᵣ→2 und eᵣ→4 bleiben offen.
+
+## In den Wissensgraphen übernommen (13.10.2026)
+
+Datei `daten/aussagen/kn_hoehere_raenge.yaml` (Theorie: `daten/theorie/kn_hoehere_raenge.yaml`), Stränge `kn.etas`, `kn.hoehere_stufen` und neu `kn.halbrang`:
+`kn.beob.eta7_eta8`, `kn.satz.schwellen_monoton` (M1, M2), `kn.satz.basis2_hoehe3` (M2a), `kn.satz.kritische_rate` (M3), `kn.satz.eta_auswahl` (M4),
+`kn.satz.eta_kriterium` und `kn.beob.kritische_profile` (rang_gamma), `kn.beob.zwischenwerte_basis2`, `kn.beob.decation_reell`,
+`kn.satz.halbrang_linear` (rang_gamma §5), `kn.satz.halbrang_quadratisch` (halb_rang_analytisch §6), `kn.gescheitert.polynom_rekonstruktion`,
+`kn.gescheitert.mischkurve` (halb_rang_quadratisch), `kn.frage.halber_rang`.
+Nicht übernommen: Fit-Formeln als eigene Aussage, die Gamma-Signaturen am Berührpunkt (keine unabhängige Evidenz, rang_gamma §4), die Vermutung
+zur Randstruktur der Newtonkoeffizienten (halb_rang_analytisch §8, Lücke benannt), die experimentelle Zwei-Bogen-Auswahl als Satz.

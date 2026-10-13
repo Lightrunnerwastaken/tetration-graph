@@ -1,0 +1,389 @@
+gebiet: kn
+# Höhere Hyperoperationen: η₇, η₈, Schwellensätze und halber Rang (Forschungsrunden forschung/eta_hyperoperationen, 12.10.2026),
+# in den Graphen übernommen am 13.10.2026. H₃ = b^x, H₄ = Tetration, …; η_r = Basis, bei der H_r die Diagonale berührt.
+aussagen:
+
+# ================================================================== η-Folge
+- id: kn.beob.eta7_eta8
+  titel: 'η₇ = 1.83975866… und η₈ = 1.86814658…: Heptation und Oktation berühren y = x'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  bereich: 'Fortsetzungskette: ungerade Stufen regulär am negativen reellen abstossenden Fixpunkt der Stufe darunter, gerade Stufen unter der Berührbasis am positiven anziehenden Fixpunkt, darüber Kneser-artig (Zwei-Bogen-Abel-Auswahl, für H₈ experimentell)'
+  aussage: |
+    Die Heptation $H_7$ und die Oktation $H_8$ berühren die Diagonale ($H_r(\eta_r,e_r)=e_r$, $\partial_xH_r(\eta_r,e_r)=1$) bei
+    $$\eta_7=1.8397586607233305769\ldots,\ e_7=3.5434897855274943\ldots;\qquad \eta_8=1.8681465773573\ldots,\ e_8=3.62060089762\ldots$$
+    Abgesichert durch zwei unabhängige Läufe: $\eta_7$ auf etwa 25, $e_7$ auf 23 Stellen; $\eta_8$ auf 13, $e_8$ auf 11 Stellen. Die Folge setzt sich fort:
+    $1.44467\to1.63532\to1.73736\to1.79912\to1.83976\to1.86815$, und $e_r$: $2.71828\to\dots\to3.44223\to3.54349\to3.62060$.
+    Das Abstandsgesetz aus den Gliedern $r=3\ldots6$ (kn.beob.tpid10_gesetz) sagte $\eta_7\approx1.83971$, $\eta_8\approx1.86822$ voraus — Fehler $-5\cdot10^{-5}$ und $+8\cdot10^{-5}$.
+    Die lokalen Exponenten $\ln\frac{2-\eta_{r-1}}{2-\eta_r}/\ln\frac r{r-1}$ sind $1.4619,\ 1.4708,\ 1.4705,\ 1.4662,\ 1.4603$ ($r=4\ldots8$) — sie sinken zuletzt; $1.467$ ist also keine gesicherte Asymptotik.
+    TPID 11 ($\eta_r^2<e_{r-1}$) gilt weiter: $\eta_7^2=3.3847<e_6$, $\eta_8^2=3.4900<e_7$.
+  einfach: >-
+    Für jede höhere Rechenart gibt es eine Grenzbasis, bis zu der die nächste Rechenart beschränkt bleibt. Wir kannten sie bis zur Hexation; jetzt
+    sind zwei weitere Glieder genau berechnet. Sie nähern sich weiter der 2 — ob sie wirklich gegen 2 gehen, ist nicht bewiesen.
+  experimente: []
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/BERICHT.md §§2–3, 7; eta_values.csv'}, {ref: forum_tid1177, stelle: 'Levenstein 2017: Oktation beschränkt bis ≈ 1.839'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung: Newton auf $\partial_xH_r-1$ mit Cauchy-Ableitungen, Sekante für den Minimalwert).'
+    f2_benutzte_voraussetzungen: 'Die gewählte Fortsetzungskette; lokale Faltenstruktur ($\partial_x^2H_r>0$). Dass die Berührung die globale Schwelle ist, braucht kn.satz.schwellen_monoton und ist für die gebauten Stufen nicht bewiesen.'
+    f3_spezialfall: 'Fortsetzung von kn.beob.stufe6.'
+    f4_uebertragbar: 'η₉ (Nonation) wäre die nächste Berührbasis — nicht berechnet; Nonation bei b = 2 und 1.83 ist gebaut.'
+    f5_neue_frage: 'Warum sinkt der lokale Exponent? Ist $2-\eta_r\sim C\,r^{-3/2}$ mit einer Log-Korrektur?'
+  bewertung: {richtigkeit: 'numerisch, zwei unabhängige Präzisionen; keine Intervallzertifikate', neuheit: vermutlich_neu, recherche: 'Levenstein 2017 (tid 1177) gab für die Oktationsgrenze ≈ 1.839 an (3 Stellen); η₈ und genaue Werte nicht gefunden (Literaturkarte 12.10.2026).', nutzen: 'Zwei neue Glieder für TPID 10 und ein echter Test des Abstandsgesetzes.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: kn.verm.tpid10}
+    - {typ: stuetzt, ziel: kn.verm.tpid11}
+    - {typ: stuetzt, ziel: kn.beob.tpid10_gesetz}
+    - {typ: verwandt, ziel: kn.beob.hoehere_etas}
+
+- id: kn.satz.schwellen_monoton
+  titel: 'Beschränkt ⇔ Fixpunkt; unter Monotonie wachsen die Schwellen und bleiben unter 2'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [hyperoperation, eta]
+  voraussetzungen:
+    - {text: 'H_r(b,·) stetig und monoton in x auf [1,∞), H_r(b,1) = b', benutzt: ja}
+    - {text: 'H_r monoton nichtfallend in b (für die Obergrenze und die Intervallform)', benutzt: ja}
+    - {text: 'Diese Monotonie gilt für alle gebauten höheren Stufen', benutzt: unklar}
+  aussage: |
+    **(M1)** Ist $F:[1,\infty)\to[1,\infty)$ stetig, monoton nichtfallend, $F(1)=b>1$, so ist $y_0=1$, $y_{k+1}=F(y_k)$ genau dann beschränkt, wenn $F$ einen Fixpunkt $a\ge1$ hat;
+    der Grenzwert ist der kleinste solche Fixpunkt. Mit $F=H_r(b,\cdot)$: $H_{r+1}(b,k)$ bleibt beschränkt genau dann, wenn $H_r(b,\cdot)$ einen Fixpunkt $\ge1$ hat.
+    **(M2)** Sind alle Stufen stetig und monoton in $x$ und monoton in $b$, so sind die Mengen $\mathcal E_r=\{b>1:H_r(b,\cdot)\text{ hat einen Fixpunkt}\ge1\}$ Anfangsintervalle mit
+    $\mathcal E_{r-1}\subseteq\mathcal E_r\subset(1,2)$. Ihre oberen Grenzen $\eta_r$ wachsen also gegen einen Grenzwert $L$ mit $e^{1/e}\le L\le2$. **$L=2$ folgt nicht.**
+  einfach: >-
+    Die nächste Rechenart bleibt genau dann beschränkt, wenn die jetzige einen Fixpunkt hat. Unter einer natürlichen Monotonie-Annahme folgt daraus,
+    dass die Grenzbasen wachsen und nie 2 erreichen — dass sie bis an 2 heranreichen, folgt daraus noch nicht.
+  beweis:
+    art: vollstaendig
+    text: |
+      (M1) $y_k$ wächst; ein Fixpunkt $a$ beschränkt induktiv ($y_k\le a\Rightarrow F(y_k)\le a$); eine beschränkte monotone Folge konvergiert gegen einen Fixpunkt. (M2) Hat $H_{r-1}(b,\cdot)$
+      einen Fixpunkt $a$, so ist $H_r(b,k)\le a$ für ganze $k$, wegen Monotonie $H_r(b,x)\le a$ für $x\ge1$; mit $H_r(b,1)>1$ gibt der Zwischenwertsatz einen Fixpunkt.
+      Bei $b=2$ ist $H_r(2,k)\ge k+1$ für ganze $k$ (Induktion), also hat $H_r(2,\cdot)$ keinen Fixpunkt; Monotonie in $b$ schliesst $b\ge2$ aus.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/MATHEMATIK.md §§2–3 (Sätze M1, M2)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, elementare Monotonie- und Zwischenwertargumente.'
+    f2_benutzte_voraussetzungen: 'Monotonie in x und b — für bˣ und die Tetration klar, für die gebauten höheren Stufen nicht bewiesen.'
+    f3_spezialfall: 'Ja: Eulers Schranke für Türme ($r=3$).'
+    f4_uebertragbar: 'Beweist Teil (i) von kn.verm.beschraenkt_unter_2 unter den genannten Voraussetzungen.'
+    f5_neue_frage: 'Hat jede Basis $1<b<2$ ab einem Rang einen Fixpunkt? Das wäre $L=2$.'
+  bewertung: {richtigkeit: 'vollständig unter den genannten Voraussetzungen', neuheit: folklore, nutzen: 'Macht die Schwellen-Deutung von η_r präzise und zeigt, was für L = 2 fehlt.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: kn.verm.beschraenkt_unter_2}
+    - {typ: motiviert, ziel: kn.verm.tpid10}
+
+- id: kn.satz.basis2_hoehe3
+  titel: 'Bei Basis 2 wächst H_r(2,3) ≥ 2^r — kein Grenzgraph der Hierarchie'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [hyperoperation]
+  aussage: |
+    Für alle Ränge gilt $H_r(2,1)=2$, $H_r(2,2)=4$, und für ganze $k\ge1$: $H_r(2,k)\ge2k$ sowie
+    $$H_{r+1}(2,3)=H_r(2,4)\ge2H_r(2,3),\qquad H_r(2,3)\ge2^r.$$
+    Die Werte bei Höhe 3 divergieren also mit dem Rang — unabhängig davon, wie die Stufen zwischen den ganzen Höhen fortgesetzt werden. Einen endlichen Grenzgraphen
+    $\lim_rH_r(2,\cdot)$ gibt es nicht, auch wenn die Werte bei Höhe 1.5 mit dem Rang fallen (kn.beob.zwischenwerte_basis2).
+  einfach: >-
+    2 hoch 2, 2 hoch hoch 2, … geben immer 4. Aber schon bei drei Stockwerken wächst der Wert mit jeder höheren Rechenart mindestens auf das Doppelte.
+  beweis: {art: vollstaendig, text: 'Induktion über $r$ auf ganzen Höhen: $H_{r+1}(2,k)\ge2^k\ge2k$; $H_{r+1}(2,3)=H_r(2,H_{r+1}(2,2))=H_r(2,4)=H_{r-1}(2,H_r(2,3))\ge2H_r(2,3)$; Start $H_4(2,3)=16$.'}
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/MATHEMATIK.md §3, Zusatz M2a'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Induktion über ganze Höhen.'
+    f2_benutzte_voraussetzungen: 'Nur die ganzzahlige Rekursion.'
+    f3_spezialfall: 'Ja: $2\uparrow^n2=4$ (br.def.hyperoperation).'
+    f4_uebertragbar: 'Jede Basis $b\ge2$.'
+    f5_neue_frage: 'nein'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Schliesst einen naheliegenden Fehlschluss aus (Grenzprofil bei Basis 2).', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.beschraenkt_unter_2}
+
+- id: kn.satz.kritische_rate
+  titel: 'An der Grenzbasis kriecht die nächste Stufe wie 1/(β k) gegen e_r'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  voraussetzungen:
+    - {text: 'F = H_r(η_r,·) ist C³ an e_r mit F(e_r) = e_r, F′(e_r) = 1, β = F″(e_r)/2 > 0', benutzt: ja}
+    - {text: 'H_{r+1}(η_r,k) konvergiert von unten gegen e_r', benutzt: ja}
+  aussage: |
+    $$k\,\bigl(e_r-H_{r+1}(\eta_r,k)\bigr)\to\frac1{\beta_r},\qquad \beta_r=\tfrac12\,\partial_x^2H_r(\eta_r,e_r).$$
+    Numerisch $\beta_7\approx0.4961476452$, $\beta_8\approx0.5368242374$. Knapp über $\eta_r$ braucht die nächste Stufe deshalb sehr viele Schritte, bis sie davonläuft;
+    endliche Iterationen trennen die Schwelle schlecht. Lokal: unter $\eta_r$ liegen zwei Fixpunkte im Abstand $\approx\sqrt{\alpha(\eta_r-b)/\beta}$ von $e_r$ ($\alpha=\partial_bH_r$).
+  einfach: >-
+    Genau an der Grenzbasis kommt die nächste Rechenart dem Berührpunkt nur sehr langsam näher — der Abstand schrumpft wie 1 durch die Schrittzahl.
+  beweis: {art: vollstaendig, text: '$t_k=e_r-y_k$: $t_{k+1}=t_k-\beta t_k^2+O(t_k^3)$, also $1/t_{k+1}-1/t_k\to\beta$; Teleskopieren und Cesàro geben $1/(kt_k)\to\beta$.'}
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/MATHEMATIK.md §5 (Satz M3)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (parabolischer Fixpunkt, Standardrechnung).'
+    f2_benutzte_voraussetzungen: 'Konvergenz von unten und Nichtentartung β > 0; die Werte β₇, β₈ sind numerisch.'
+    f3_spezialfall: 'Ja: Leau–Fatou-Rate am parabolischen Fixpunkt (it.satz.parabolische_rate), wie beim η-Turm.'
+    f4_uebertragbar: 'Engpasszeit knapp über η_r ≈ π/√(αβ(b−η_r)) — nur als Heuristik.'
+    f5_neue_frage: 'Gilt das Randgesetz (bw.lem.randgesetz) mit Konstante für jede Stufe?'
+  bewertung: {richtigkeit: 'vollständig unter den Voraussetzungen; β numerisch', neuheit: folklore, nutzen: 'Erklärt, warum Schwellen aus endlichen Iterationen ungenau sind.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: it.satz.parabolische_rate}
+
+- id: kn.satz.eta_auswahl
+  titel: 'Die Grenzbasen hängen von der Wahl der Fortsetzung ab'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  aussage: |
+    Erfüllt $S$ die Rekursion $S(x+1)=F(S(x))$, $S(0)=1$, so auch $\tilde S_\varepsilon(x)=S(x+\varepsilon\sin2\pi x)$ ($|\varepsilon|<1/2\pi$, reell-analytisch, monoton), mit denselben
+    Werten an allen ganzen Höhen. Wird so die Stufe $H_r$ verändert, verschiebt sich ihre Berührbasis (Faltennichtentartung vorausgesetzt) um
+    $$\frac{d\eta_r}{d\varepsilon}\Big|_0=-\frac{\sin(2\pi e_r)}{\partial_bH_r(\eta_r,e_r)};\qquad\text{für }H_4:\ \partial_bH_4=9.87526\ldots,\ \eta_4'(0)=-0.05347\ldots$$
+    Die η-Folge ist also nur für eine **fest gewählte** Fortsetzung (Kneser, regulär, …) eine Zahlfolge; Rekursion und ganze Werte allein legen sie nicht fest.
+  einfach: >-
+    Wie man eine Rechenart zwischen den ganzen Zahlen auffüllt, ist eine Wahl — und diese Wahl verschiebt die Grenzbasen. Die Folge 1.44, 1.64, 1.74, …
+    gehört also zu einer bestimmten Wahl der Fortsetzung.
+  beweis: {art: vollstaendig, text: '$\psi(x)=x+\varepsilon\sin2\pi x$ erfüllt $\psi(x+1)=\psi(x)+1$, $\psi(k)=k$, $\psi''>0$. Ableiten der Berührgleichung $H_r(\eta,e)=e$ nach $\varepsilon$: der Term mit $e''$ fällt wegen $\partial_xH_r=1$ weg, es bleibt $\alpha\eta''+\sin(2\pi e)=0$.'}
+  stuetzt_sich_auf: [fg.kor.nichteindeutigkeit]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/MATHEMATIK.md §6 (Satz M4)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Nicht-Eindeutigkeit (fg.kor.nichteindeutigkeit) und dem Satz über implizite Funktionen.'
+    f2_benutzte_voraussetzungen: 'Faltennichtentartung α ≠ 0, ∂²ₓH ≠ 0; der Zahlwert η₄′ numerisch.'
+    f3_spezialfall: 'Ja: periodische Störung der Höhe wie bei jeder Tetration.'
+    f4_uebertragbar: 'Auf jede Grenzgrösse, die von Werten zwischen den ganzen Höhen abhängt (η_r, e_r, Integrale).'
+    f5_neue_frage: 'Welche Auswahlregel macht η_r kanonisch — Kneser-artige Bedingungen auf jeder Stufe?'
+  bewertung: {richtigkeit: 'vollständig; Zahlwert numerisch', neuheit: vermutlich_neu, recherche: 'In TPID 10 und den Forumsthreads (Literaturkarte 12.10.2026) wird die Auswahl nicht als Variable der η-Folge behandelt.', nutzen: 'Zeigt, dass TPID 10 eine Aussage über eine bestimmte Fortsetzungskette ist.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.tpid10}
+
+- id: kn.satz.eta_kriterium
+  titel: 'Ein hinreichendes Kriterium für ηₙ → 2 (und eines für eₙ → 4)'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  voraussetzungen:
+    - {text: 'limsup η_N ≤ 2 (z. B. aus kn.satz.schwellen_monoton) und F_N = H_N(η_N,·) monoton', benutzt: ja}
+    - {text: 'für e_N → 4 zusätzlich: η_N → 2, 2 ≤ e_N ≤ 4', benutzt: ja}
+  aussage: |
+    Mit $F_N(x)=H_N(\eta_N,x)$ (die Stufe **an ihrer eigenen Grenzbasis**):
+    $$F_N(q)\to q+1\ \text{für jedes }0<q<1\quad\Longrightarrow\quad\eta_N\to2.$$
+    Und: Gilt $\eta_N\to2$ und $(2-\eta_N)\sup_{\eta_N\le b\le2}|\partial_bH_N(b,2)|\to0$, so folgt $H_N(\eta_N,2)\to4$ und daraus $e_N\to4$.
+    Die drei Familien $H_N(2,\cdot)$, $H_N(b,\cdot)$ bei festem $b<2$ und $H_N(\eta_N,\cdot)$ dürfen dabei nicht vertauscht werden.
+  einfach: >-
+    Wenn die Rechenarten an ihren Grenzbasen immer mehr wie „plus 1“ aussehen, müssen die Grenzbasen gegen 2 gehen. Das verschiebt das Problem auf eine
+    Abschätzung, die man an konkreten Werten prüfen kann.
+  beweis: {art: vollstaendig, text: '$F_N(q)\le F_N(1)=\eta_N$ (Monotonie), also $\liminf\eta_N\ge q+1$ für jedes $q<1$; mit $\limsup\le2$ folgt $\eta_N\to2$. Für $e_N$: $|H_N(2,2)-H_N(\eta_N,2)|\le(2-\eta_N)\sup|\partial_bH_N|$, $H_N(2,2)=4$ und $e_N\ge H_N(\eta_N,2)$.'}
+  stuetzt_sich_auf: [kn.satz.schwellen_monoton]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/rang_gamma/BERICHT.md §2, MATHEMATIK.md'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Monotonie.'
+    f2_benutzte_voraussetzungen: 'Monotonie und die Obergrenze; die Annäherung F_N(q) → q+1 selbst ist offen (nur gemessen, kn.beob.kritische_profile).'
+    f3_spezialfall: 'nein'
+    f4_uebertragbar: 'Gleiches Schema für andere Hyperoperationsfamilien (kn.frage.andere_etas).'
+    f5_neue_frage: 'Gilt $A_N(\eta_N,q)=o((N-2)^{1-q})$ für die Abweichung vom Nachfolger? Das wäre ein Beweis von η_N → 2.'
+  bewertung: {richtigkeit: 'vollständig (bedingte Implikation)', neuheit: neu_ungeprueft, nutzen: 'Macht aus TPID 10 eine prüfbare Abschätzung an den kritischen Basen.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: motiviert, ziel: kn.verm.tpid10}
+
+- id: kn.beob.kritische_profile
+  titel: 'An der Grenzbasis sieht H_N links immer mehr wie x+1 aus'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  aussage: |
+    $F_N=H_N(\eta_N,\cdot)$ bei $x=-0.5$ (Ziel des Nachfolgers $0.5$), $x=0.5$ (Ziel $1.5$) und $x=2$:
+    $N=4$: $0.5872,\ 1.3348,\ 2.2352$; $N=5$: $0.5326,\ 1.3959,\ 2.3465$; $N=6$: $0.5158,\ 1.4285,\ 2.4272$; $N=7$: $0.5089,\ 1.4477,\ 2.4877$; $N=8$: $0.5056,\ 1.4601,\ 2.5346$.
+    Links und bei $0.5$ nähern sich die Werte $x+1$; bei $x=2$ ist man noch weit von $4$ entfernt. Die Sekanten-Untergrenze $(4-F_N(2))/(2-\eta_N)$ für die Basissensitivität wächst
+    etwa linear ($4.84,\ 6.30,\ 7.83,\ 9.44,\ 11.11$) — das Kriterium für $e_N\to4$ in kn.satz.eta_kriterium ist damit nicht gestützt.
+  einfach: >-
+    Die gemessenen Werte passen zu „die Rechenarten werden an ihren Grenzbasen zu plus 1“ — aber nur bei kleinen Höhen; bei Höhe 2 ist davon noch wenig zu sehen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/rang_gamma/BERICHT.md §3; critical_profile_r*.json'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Gewählte Fortsetzungskette, N = 8 mit experimenteller Zwei-Bogen-Auswahl; Residuen ≤ 1e-19, keine Intervallzertifikate.'
+    f3_spezialfall: 'nein'
+    f4_uebertragbar: 'Gleiche Messung bei q nahe 1 ist für das Kriterium entscheidend.'
+    f5_neue_frage: 'Wie schnell geht F_N(q) − q − 1 gegen 0, und gleichmässig bis q → 1?'
+  bewertung: {richtigkeit: 'numerisch (N = 7 zweifach, relativ 2e-30)', neuheit: neu_ungeprueft, nutzen: 'Erste Daten zum Kriterium für TPID 10.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.eta_kriterium}
+
+- id: kn.beob.zwischenwerte_basis2
+  titel: 'Basis 2 zwischen den ganzen Höhen: H_r(2, 1/2) steigt, H_r(2, 3/2) fällt mit dem Rang'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [hyperoperation]
+  aussage: |
+    Bei Basis 2 bleiben $H_r(2,1)=2$, $H_r(2,2)=4$ für jeden Rang. Dazwischen (gewählte Fortsetzungskette):
+    $H_r(2,\tfrac12)$: $1.41421,\ 1.45878,\ 1.47488,\ 1.48275,\ 1.48727,\ 1.49026,\ 1.49281$ und $H_r(2,\tfrac32)$: $2.82843,\ 2.74876,\ 2.70289,\ 2.67289,\ 2.65162,\ 2.63586,\ 2.62453$ ($r=3\ldots9$).
+    Die Werte 1.5 und 2.5 liegen nahe, sind aber keine bewiesenen Grenzwerte — und einen Grenzgraphen gibt es nicht (kn.satz.basis2_hoehe3).
+  einfach: >-
+    Zwischen 2 und 4 werden die Kurven der höheren Rechenarten immer gerader — die Werte bei einer halben Höhe nähern sich 1.5 und 2.5.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/BERICHT.md §6'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Gewählte Fortsetzungskette; Oktation über die experimentelle Zwei-Bogen-Auswahl.'
+    f3_spezialfall: 'nein'
+    f4_uebertragbar: 'Passt zu kn.beob.kritische_profile (Annäherung an x+1 auf kurzen Stücken).'
+    f5_neue_frage: 'Konvergiert H_r(2,x) auf [1,2] gegen die Gerade 2x, und wie schnell?'
+  bewertung: {richtigkeit: 'numerisch (bis etwa 22–30 Stellen intern)', neuheit: neu_ungeprueft, nutzen: 'Anschauliches Bild der Hierarchie.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.basis2_hoehe3}
+
+- id: kn.beob.decation_reell
+  titel: 'Reelle Dekation bei Basis 1.83 über Rückwärts-Koenigs'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation]
+  aussage: |
+    Mit $f=H_9(1.83,\cdot)$, anziehendem Fixpunkt $a=2.3628$ und $\lambda=f'(a)=0.18261$ gilt für $0<t<1$
+    $$z_k(t)=f^{-k}\bigl(a+\lambda^t(f^k(1)-a)\bigr)=H_{10}(1.83,t)+C(t)\lambda^k+O(\lambda^{2k})$$
+    (reeller inverser Zweig). Aus $k=5,7,9$ mit Richardson-Schritt: $H_{10}(1.83,0.5)\approx1.4567116$, $H_{10}(1.83,1.5)\approx2.0842796$ (Abweichung $\le3\cdot10^{-9}$).
+    Die volle komplexe Cauchy-Abtastung der verschachtelten Nonation kam in derselben Zeit nicht zum Ziel.
+  einfach: >-
+    Für die zehnte Rechenart gibt es einen günstigen Rechenweg: rückwärts von einem anziehenden Fixpunkt aus, ohne komplexe Zahlen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/BERICHT.md §5, MATHEMATIK.md §9'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung; Konvergenzaussage unter den Koenigs-Voraussetzungen).'
+    f2_benutzte_voraussetzungen: 'Reeller inverser Zweig, κ′ ≠ 0; nur reelle Höhen, keine negative Fortsetzung.'
+    f3_spezialfall: 'Koenigs-Verfahren wie bei der regulären Tetration (it.satz.koenigs).'
+    f4_uebertragbar: 'Jede beschränkte Stufe unter ihrer Grenzbasis.'
+    f5_neue_frage: 'Reicht das für η₉ und die beschränkten Stufen bis H₁₁?'
+  bewertung: {richtigkeit: 'numerisch, 7–8 Stellen', neuheit: neu_ungeprueft, nutzen: 'Billiger Weg zu höheren beschränkten Stufen.', nutzen_stufe: gering}
+
+# ================================================================== halber Rang
+- id: kn.satz.halbrang_linear
+  titel: 'Halber Rangschritt im linearen Modell: L_s B_ν = B_{ν+s}'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: forschung
+  objekte: [hyperoperation]
+  bereich: 'Rangschritt $T_b(f)=S$ mit $S(0)=1$, $S(x+1)=f(S(x))$; Abweichung vom Nachfolger $f=x+1+\varepsilon v$, erste Ordnung in $\varepsilon$'
+  aussage: |
+    In erster Ordnung macht der Rangschritt aus der Abweichung $v$ die Lösung $w$ von $w(x+1)-w(x)=v(x+1)$, $w(0)=0$. Für $B_\nu(x)=\dfrac{\Gamma(x+\nu)}{\Gamma(x)\Gamma(\nu+1)}$ gilt
+    exakt $B_{\nu+1}(x+1)-B_{\nu+1}(x)=B_\nu(x+1)$; mit der Gamma-Fortsetzung in $\nu$ entsteht eine Halbgruppe
+    $$\mathcal L_sB_\nu=B_{\nu+s},\qquad\mathcal L_s\mathcal L_t=\mathcal L_{s+t}\quad(s,t\ge0),$$
+    auf ganzen Höhen eine fraktionale Summation mit Kern $(s)_k/k!$. Zwei halbe Rangschritte ergeben genau einen ganzen (auf einer 16×16-Höhenmatrix exakt geprüft).
+    **Nur das lineare Modell** — kein $H_{3.5}$; schon die zweite Ordnung enthält den Term $w(x)v'(x+1)$.
+  einfach: >-
+    Zwischen Potenz und Tetration einen „halben Schritt“ zu machen, ist schwer. Wenn man nur kleine Abweichungen von „plus 1“ betrachtet, geht es:
+    dort lässt sich der Schritt zur nächsten Rechenart sauber halbieren.
+  beweis: {art: vollstaendig, text: 'Die Rekursion $B_{\nu+1}(x+1)-B_{\nu+1}(x)=B_\nu(x+1)$ ist die Pascal-Regel in Gamma-Form; die Gruppeneigenschaft folgt aus $\Gamma$-Verschiebung und $(s)_k(t)_j$-Faltung (Vandermonde).'}
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/rang_gamma/BERICHT.md §§5–6, MATHEMATIK.md'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (Binomialkalkül).'
+    f2_benutzte_voraussetzungen: 'Erste Ordnung, Polynomklasse mit Normierung w(0) = 0; auf allgemeinen holomorphen Funktionen gibt es periodische Zusatzlösungen.'
+    f3_spezialfall: 'Ja: fraktionale Differenzen/Summen.'
+    f4_uebertragbar: 'Zweite Ordnung: kn.satz.halbrang_quadratisch.'
+    f5_neue_frage: 'Gibt es eine Halbgruppe $T_b^s$ auf Funktionen, $T_b^{1/2}\circ T_b^{1/2}=T_b$, mit einer Auswahlregel?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Erster exakter Baustein für gebrochene Ränge.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: motiviert, ziel: kn.frage.halber_rang}
+
+- id: kn.satz.halbrang_quadratisch
+  titel: 'Zweite Ordnung: der quadratische Halbrang-Jet ist holomorph auf Re x > −1'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: forschung
+  objekte: [hyperoperation]
+  bereich: 'Teststörung $v(x)=x(x-1)$, $f_\varepsilon=x+1+\varepsilon v$; voller Rangschritt $S_\varepsilon=x+1+\varepsilon w+\varepsilon^2z+\ldots$ mit $\Delta w=v(x+1)$, $\Delta z=w(x)\,v''(x+1)$'
+  aussage: |
+    Die kanonische quadratische Rangfortsetzung zum Rangzuwachs $\tfrac12$ ist eine Newtonreihe
+    $$q_{1/2}(x)=\sum_{j\ge3}\alpha_j\binom xj,\qquad|\alpha_j|\le\frac{1500(1+\log j)}j,$$
+    die auf $\operatorname{Re}x>-1$ absolut und lokal gleichmässig konvergiert, also holomorph ist; $q_{1/2}(0)=q_{1/2}(1)=q_{1/2}(2)=0$. Damit ist
+    $x+1+\varepsilon\,2(B_{5/2}-B_{3/2})+\varepsilon^2q_{1/2}$ ein analytischer Halbrang-Jet. Ein Wert exakt: $Q_{1/2}(v,v)(3)=\tfrac{341}{12}-35\ln2=4.1565153470685808\ldots$;
+    Partialsummen (512 Terme): $q_{1/2}(0.5)\approx0.0369429$, $q_{1/2}(1.5)\approx-0.1204979$, $q_{1/2}(2.5)\approx1.0605429$.
+    Für $b>e^{1/e}$ enthält die verwendete Halbebenenklasse keine vollständige Tetration — ein voller Rangfluss von $b^x$ zur Tetration muss diese Klasse verlassen.
+  einfach: >-
+    Auch in der nächsten Genauigkeitsstufe lässt sich der halbe Schritt ausrechnen, und er ergibt eine schöne glatte Funktion. Für die echte Rechenart
+    „dreieinhalb“ fehlen aber noch alle höheren Stufen und der Weg bis zur echten Exponentialfunktion.
+  beweis: {art: vollstaendig, text: 'Koeffizientenschranke aus Gamma-Spiegelung und Abel–Plana-Summation (Konstanten $C_W<21$, $C_h<14$, Faltung bei $k=m/2$); $|\binom xj|\le Cj^{-\operatorname{Re}x-1}$ auf Kompakta. Zwei exakte Algorithmen stimmen in 129 Koeffizienten überein.'}
+  stuetzt_sich_auf: [kn.satz.halbrang_linear]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_analytisch_2026_10_12/MATHEMATIK.md §6; halb_rang_quadratisch_2026_10_12'}, {ref: saharian2007, stelle: '§2, Abel–Plana-Formel'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Schranken über Gamma-Quotienten).'
+    f2_benutzte_voraussetzungen: 'Nur die polynomiale Teststörung v = x(x−1); keine Aussage für bˣ selbst.'
+    f3_spezialfall: 'nein'
+    f4_uebertragbar: 'Auf Gamma-Modenpaare und die echte Exponentialfamilie (lineare Korrektur dort explizit) — offen.'
+    f5_neue_frage: 'Konvergieren alle Ordnungen, und mit welcher Auswahlregel? → kn.frage.halber_rang'
+  bewertung: {richtigkeit: 'vollständig; Partialsummen nicht eng zertifiziert', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass ein halber Rang in zweiter Ordnung als Funktion existiert; die frühere Drift lag an der Rekonstruktion.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: korrigiert, ziel: kn.gescheitert.polynom_rekonstruktion}
+    - {typ: motiviert, ziel: kn.frage.halber_rang}
+
+- id: kn.gescheitert.polynom_rekonstruktion
+  titel: 'Endliche Polynom-Rekonstruktion des Halbrangs driftet zwischen den ganzen Höhen'
+  art: gescheitert
+  ebene: X
+  status: gescheitert
+  niveau: forschung
+  objekte: [hyperoperation]
+  aussage: |
+    Im endlichen Modell (Höhenwerte $1\ldots K$, Grad-$K$-Polynom) ist der quadratische Halbschritt algebraisch exakt ($T_{1/2}^K\circ T_{1/2}^K=T_1^K+O(\|d\|^3)$), und an ganzen Höhen
+    konvergiert er. Zwischen den ganzen Höhen driftet er: bei $x=0.5$ $+0.0070,\ -0.0077,\ -0.0188,\ -0.0281,\ -0.0362$ ($K=16\ldots80$), etwa $a-0.0087\sqrt K$.
+    Ursache: die Norm des bilinearen Halbschritt-Operators wächst wie $2^K/K^4$. Die intrinsische Newtonreihe (kn.satz.halbrang_quadratisch) gibt dort $0.03694$.
+  einfach: >-
+    Eine erste Rechnung des halben Schritts sah an ganzen Zahlen gut aus, wanderte aber dazwischen weg. Der Fehler lag in der Art, wie die Kurve aus
+    ganzen Werten wieder zusammengesetzt wurde.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_quadratisch_2026_10_12/BERICHT.md'}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Regel: Konstruktionen für gebrochene Ränge immer auch zwischen den ganzen Höhen prüfen, nicht nur an ganzen Stellen.'
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: 'Drift auf 250 Stellen stabil (kein Rundungsartefakt)', neuheit: unklar, nutzen: 'Verhindert, dass ein Modellartefakt als Halbrang gilt.', nutzen_stufe: gering}
+
+- id: kn.gescheitert.mischkurve
+  titel: 'Die Mischung (1−θ)bˣ + θ·T_b ist keine Rechenart „3.5“'
+  art: gescheitert
+  ebene: X
+  status: gescheitert
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  aussage: |
+    Die Kurve $F_{1/2}=\tfrac12b^x+\tfrac12T_b(x)$ hat eine Berührung bei $b=1.5425485299\ldots$, $x=3.0321922722\ldots$ — nahe an der Hochrechnung $\eta_{3.5}^{\rm fit}=1.55682$ aus dem
+    Abstandsgesetz. Sie ist trotzdem kein Rang $3.5$: die nächsten Stufen der Mischung verletzen die Rangrekursion (bei $b=2$, $x=0.5$ um $-4.6\cdot10^{-4}$, bei $b=e$ um $-2.3\cdot10^{-2}$),
+    die ganzzahligen Ränge bestehen denselben Test auf $10^{-37}$.
+  einfach: >-
+    Man kann zwischen zwei Rechenarten einfach eine Mischkurve legen — sie hat sogar eine plausible Grenzbasis. Aber sie verhält sich nicht wie eine
+    echte Rechenart, und ein passender Zahlenwert beweist daher nichts.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_quadratisch_2026_10_12/BERICHT.md, Abschnitt Fitvorhersage'}]
+  pruefung:
+    f1_folgt_unmittelbar: '—'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: —
+    f4_uebertragbar: 'Regel: Eine Zwischen-Rechenart muss die Rangrekursion erfüllen, nicht nur eine plausible Grenzbasis haben.'
+    f5_neue_frage: '—'
+  bewertung: {richtigkeit: 'Test der Rangrekursion numerisch auf 28 Stellen', neuheit: unklar, nutzen: 'Schliesst den naheliegenden Kurzweg aus.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.frage.halber_rang}
+
+- id: kn.frage.halber_rang
+  titel: 'Gibt es eine Rechenart zwischen Potenz und Tetration — und welche Grenzbasis η₃.₅ hätte sie?'
+  art: frage
+  ebene: B
+  status: offen
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  aussage: |
+    Gesucht ist eine Halbgruppe $T_b^s$ des Rangschritts $T_b(f)=S$ ($S(0)=1$, $S(x+1)=f(S(x))$) mit $T_b^{1/2}\circ T_b^{1/2}=T_b$ und $H_{3+s}(b,\cdot)=T_b^s(b^x)$ — eine gebrochene Iteration
+    eines **Operators auf Funktionen**, nicht der Höhe. Ein injektiver Fixpunkt von $T_b$ müsste $f(x+1)=f(f(x))$ erfüllen, das erzwingt $f=x+1$ und $b=2$; ein einfaches Fixpunkt-Argument
+    wie bei der Tetration fehlt also. Bekannt: der lineare (kn.satz.halbrang_linear) und der quadratische Schritt (kn.satz.halbrang_quadratisch) für Teststörungen. Hochrechnung:
+    $\eta_{3.5}^{\rm fit}=1.55682$ — ohne Bedeutung, solange es kein $H_{3.5}$ gibt.
+  naechste_frage: 'Q₁/₂ auf Gamma-Modenpaare verallgemeinern, die Reihen für bˣ kontrollieren, eine Auswahlklasse mit variablen Wachstumsgewichten festlegen (die Halbebenenklasse enthält für b > e^(1/e) keine Tetration).'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/rang_gamma, halb_rang_quadratisch, halb_rang_analytisch'}]
+  kanten:
+    - {typ: verwandt, ziel: br.satz.hyperop_varianten}
+    - {typ: verwandt, ziel: kn.verm.tpid10}

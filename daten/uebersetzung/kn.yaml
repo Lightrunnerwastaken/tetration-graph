@@ -37,6 +37,43 @@
     worum: |
       The intuitive super-logarithm gets better, but only slowly: If one doubles $n$, the error becomes about ten to fifteen times smaller — not, as
       one would hope, by a fixed number of digits per step.
+- id: kn.beob.decation_reell
+  quelle_hash: c6e2f45ad188
+  theorie_hash: 3879aa11cdbe
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Real decation at base 1.83 via backward Koenigs
+    aussage: |
+      With $f=H_9(1.83,\cdot)$, attracting fixed point $a=2.3628$ and $\lambda=f'(a)=0.18261$ we have for $0<t<1$
+      $$z_k(t)=f^{-k}\bigl(a+\lambda^t(f^k(1)-a)\bigr)=H_{10}(1.83,t)+C(t)\lambda^k+O(\lambda^{2k})$$
+      (real inverse branch). From $k=5,7,9$ with a Richardson step: $H_{10}(1.83,0.5)\approx1.4567116$, $H_{10}(1.83,1.5)\approx2.0842796$ (deviation $\le3\cdot10^{-9}$).
+      The full complex Cauchy sampling of the nested nonation did not reach the goal in the same time.
+    einfach: 'For the tenth hyperoperation there is a cheap way to compute: backward from an attracting fixed point, without complex numbers.'
+    pruefung:
+      f1_folgt_unmittelbar: No (computation; convergence statement under the Koenigs hypotheses).
+      f2_benutzte_voraussetzungen: Real inverse branch, κ′ ≠ 0; real heights only, no negative continuation.
+      f3_spezialfall: Koenigs method as for regular tetration (it.satz.koenigs).
+      f4_uebertragbar: Every bounded level below its limit base.
+      f5_neue_frage: Is this enough for η₉ and the bounded levels up to H₁₁?
+    bewertung:
+      nutzen: Cheap route to higher bounded levels.
+      richtigkeit: numerical, 7–8 digits
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/BERICHT.md §5, MATHEMATIK.md §9
+  en_theorie:
+    beispiel: |
+      $H_{10}(1.83,0.5)\approx1.4567116$.
+    einordnung: |
+      The same principle as regular tetration: [[it.satz.koenigs]].
+    genau: |
+      Backward iteration from an attracting fixed point: $z_k(t)=f^{-k}(a+\lambda^t(f^k(1)-a))\to H_{10}(1.83,t)$ with error $O(\lambda^k)$.
+    warum: |
+      Near the fixed point $f$ is almost the scaling by $\lambda$; there the fractional step $\lambda^t$ is clear, and $f^{-k}$ carries it back (Koenigs).
+    worum: |
+      A cheap way to compute the tenth hyperoperation below its limit base.
 - id: kn.beob.eta4_interpolation
   quelle_hash: 53a864a366f3
   theorie_hash: 0b5534751ec3
@@ -148,6 +185,53 @@
     worum: |
       The same number $e_4$, computed by another method, comes out different in the fifth decimal place in 2009. This shows how strongly
       the numbers from TPID 10 depend on the chosen continuation — or how slowly some methods converge.
+- id: kn.beob.eta7_eta8
+  quelle_hash: b89e20b5791b
+  theorie_hash: e83718ebfdcb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: 'η₇ = 1.83975866… and η₈ = 1.86814658…: heptation and octation touch y = x'
+    aussage: |
+      Heptation $H_7$ and octation $H_8$ touch the diagonal ($H_r(\eta_r,e_r)=e_r$, $\partial_xH_r(\eta_r,e_r)=1$) at
+      $$\eta_7=1.8397586607233305769\ldots,\ e_7=3.5434897855274943\ldots;\qquad \eta_8=1.8681465773573\ldots,\ e_8=3.62060089762\ldots$$
+      Secured by two independent runs: $\eta_7$ to about 25 digits, $e_7$ to 23; $\eta_8$ to 13, $e_8$ to 11. The sequence continues:
+      $1.44467\to1.63532\to1.73736\to1.79912\to1.83976\to1.86815$, and $e_r$: $2.71828\to\dots\to3.44223\to3.54349\to3.62060$.
+      The distance law from the terms $r=3\ldots6$ (kn.beob.tpid10_gesetz) predicted $\eta_7\approx1.83971$, $\eta_8\approx1.86822$ — errors $-5\cdot10^{-5}$ and $+8\cdot10^{-5}$.
+      The local exponents $\ln\frac{2-\eta_{r-1}}{2-\eta_r}/\ln\frac r{r-1}$ are $1.4619,\ 1.4708,\ 1.4705,\ 1.4662,\ 1.4603$ ($r=4\ldots8$) — they decrease at the end; $1.467$ is therefore not a secured asymptotic.
+      TPID 11 ($\eta_r^2<e_{r-1}$) continues to hold: $\eta_7^2=3.3847<e_6$, $\eta_8^2=3.4900<e_7$.
+    bereich: 'Continuation chain: odd levels regular at the negative real repelling fixed point of the level below, even levels below the touching
+      base at the positive attracting fixed point, above it Kneser-like (two-arc Abel selection, experimental for H₈)'
+    einfach: For every higher hyperoperation there is a limit base up to which the next hyperoperation stays bounded. We knew these up to hexation;
+      now two more terms have been computed accurately. They keep approaching 2 — whether they really tend to 2 is not proved.
+    pruefung:
+      f1_folgt_unmittelbar: 'No (computation: Newton on $\partial_xH_r-1$ with Cauchy derivatives, secant for the minimum value).'
+      f2_benutzte_voraussetzungen: The chosen continuation chain; local fold structure ($\partial_x^2H_r>0$). That the touching is the global
+        threshold requires kn.satz.schwellen_monoton and is not proved for the levels built.
+      f3_spezialfall: Continuation of kn.beob.stufe6.
+      f4_uebertragbar: η₉ (nonation) would be the next touching base — not computed; nonation at b = 2 and 1.83 has been built.
+      f5_neue_frage: Why does the local exponent decrease? Is $2-\eta_r\sim C\,r^{-3/2}$ with a log correction?
+    bewertung:
+      nutzen: Two new terms for TPID 10 and a genuine test of the distance law.
+      recherche: Levenstein 2017 (tid 1177) gave ≈ 1.839 for the octation limit (3 digits); η₈ and exact values not found (literature map 12.10.2026).
+      richtigkeit: numerical, two independent precisions; no interval certificates
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/BERICHT.md §§2–3, 7; eta_values.csv
+    - stelle: 'Levenstein 2017: octation bounded up to ≈ 1.839'
+  en_theorie:
+    beispiel: |
+      The distance law $2-\eta_r\approx2.785\,r^{-1.467}$ from the four old terms predicted $\eta_7=1.83971$ — measured $1.83976$.
+    einordnung: |
+      Previously known: [[kn.beob.stufe6]], Levenstein's three digits [[kn.beob.hoehere_etas]]. Conjecture: [[kn.verm.tpid10]]. What the threshold means: [[kn.satz.schwellen_monoton]].
+    genau: |
+      $\eta_7=1.83975866072333\ldots$ (25 digits secured), $\eta_8=1.86814657735734\ldots$ (13 digits); also $e_7=3.54348978552749\ldots$, $e_8=3.62060089762\ldots$
+    warum: |
+      One looks for the minimum of $H_r(b,x)-x$; Newton on $\partial_xH_r=1$ with derivatives from complex Cauchy samplings, an outer secant sets the minimum to zero.
+      Two runs with different precision, contour, and number of points secure the digits.
+    worum: |
+      For every hyperoperation $H_r$ there is a limit base $\eta_r$: there $H_r(\eta_r,\cdot)$ touches the diagonal, and up to it the next hyperoperation stays bounded.
 - id: kn.beob.hexation_verzweigt
   quelle_hash: 9c512691b9e1
   theorie_hash: 206fbff0a23b
@@ -312,6 +396,44 @@
       class considered. This is not a proof: convergence and class are not formally secured.
     worum: |
       Before uniqueness was proved, there was a numerical argument: Kouznetsov's computation always ran to the same solution.
+- id: kn.beob.kritische_profile
+  quelle_hash: e1831407a0e3
+  theorie_hash: 9fed4936dc8e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: At the limit base, H_N looks more and more like x+1 on the left
+    aussage: |
+      $F_N=H_N(\eta_N,\cdot)$ at $x=-0.5$ (target of the successor $0.5$), $x=0.5$ (target $1.5$) and $x=2$:
+      $N=4$: $0.5872,\ 1.3348,\ 2.2352$; $N=5$: $0.5326,\ 1.3959,\ 2.3465$; $N=6$: $0.5158,\ 1.4285,\ 2.4272$; $N=7$: $0.5089,\ 1.4477,\ 2.4877$; $N=8$: $0.5056,\ 1.4601,\ 2.5346$.
+      On the left and at $0.5$ the values approach $x+1$; at $x=2$ they are still far from $4$. The secant lower bound $(4-F_N(2))/(2-\eta_N)$ for the base sensitivity grows
+      roughly linearly ($4.84,\ 6.30,\ 7.83,\ 9.44,\ 11.11$) — so the criterion for $e_N\to4$ in kn.satz.eta_kriterium is not supported.
+    einfach: The measured values fit “the hyperoperations become plus 1 at their limit bases” — but only at small heights; at height 2 little
+      of this is visible yet.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: Chosen continuation chain, N = 8 with experimental two-arc selection; residuals ≤ 1e-19, no interval certificates.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: The same measurement at q near 1 is decisive for the criterion.
+      f5_neue_frage: How fast does F_N(q) − q − 1 tend to 0, and uniformly up to q → 1?
+    bewertung:
+      nutzen: First data on the criterion for TPID 10.
+      richtigkeit: numerical (N = 7 twice, relative 2e-30)
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/rang_gamma/BERICHT.md §3; critical_profile_r*.json
+  en_theorie:
+    beispiel: |
+      $N=8$: $F_8(-0.5)=0.50564$, $F_8(0.5)=1.46013$.
+    einordnung: |
+      Data for [[kn.satz.eta_kriterium]].
+    genau: |
+      $H_N(\eta_N,-0.5)\to0.5$ and $H_N(\eta_N,0.5)\to1.5$ are emerging; at height 2, $H_N(\eta_N,2)$ with $2.53$ ($N=8$) is still far from 4.
+    warum: |
+      The higher the level, the closer $\eta_N$ lies to 2, and at base 2 every level is exactly $x+1$-like at heights 1 and 2 (values 2 and 4).
+    worum: |
+      Measured values of the hyperoperations at their own limit bases, to the left of height 1.
 - id: kn.beob.pentation_werte
   quelle_hash: 06cb2fab84ad
   theorie_hash: a027fdb976e5
@@ -1053,6 +1175,43 @@
     worum: |
       The infinite tower $b^{b^{\cdots}}$ has a value up to $\eta$, the infinite pentation up to $\eta_4$ — and the infinite hexation $b\uparrow\uparrow\uparrow\uparrow\infty$ exactly up to $\eta_5$.
       Each level has its own limiting base, and every time it is the number at which the level below touches the line $y=x$.
+- id: kn.beob.zwischenwerte_basis2
+  quelle_hash: ce3c7b19539e
+  theorie_hash: c9a16aae8c5a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: 'Base 2 between the integer heights: H_r(2, 1/2) increases, H_r(2, 3/2) decreases with the rank'
+    aussage: |
+      At base 2, $H_r(2,1)=2$, $H_r(2,2)=4$ remain for every rank. In between (chosen continuation chain):
+      $H_r(2,\tfrac12)$: $1.41421,\ 1.45878,\ 1.47488,\ 1.48275,\ 1.48727,\ 1.49026,\ 1.49281$ and $H_r(2,\tfrac32)$: $2.82843,\ 2.74876,\ 2.70289,\ 2.67289,\ 2.65162,\ 2.63586,\ 2.62453$ ($r=3\ldots9$).
+      The values 1.5 and 2.5 are close, but are not proved limits — and there is no limit graph (kn.satz.basis2_hoehe3).
+    einfach: Between 2 and 4 the curves of the higher hyperoperations become straighter and straighter — the values at half a height approach
+      1.5 and 2.5.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: Chosen continuation chain; octation via the experimental two-arc selection.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Fits kn.beob.kritische_profile (approach to x+1 on short stretches).
+      f5_neue_frage: Does H_r(2,x) converge on [1,2] to the line 2x, and how fast?
+    bewertung:
+      nutzen: Intuitive picture of the hierarchy.
+      richtigkeit: numerical (up to about 22–30 digits internally)
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/BERICHT.md §6
+  en_theorie:
+    beispiel: |
+      Nonation: $H_9(2,0.5)=1.49281$, $H_9(2,1.5)=2.62453$.
+    einordnung: |
+      No limit graph: [[kn.satz.basis2_hoehe3]].
+    genau: |
+      At half height the value increases ($1.414\to1.493$), at height 1.5 it decreases ($2.828\to2.625$) — the curves become straighter and straighter between 2 and 4.
+    warum: |
+      The endpoints 2 and 4 are fixed for all levels; the curvature in between decreases with the rank.
+    worum: |
+      What do the higher hyperoperations at base 2 look like between heights 1 and 2?
 - id: kn.def.slog
   quelle_hash: 78731c114abb
   theorie_hash: 80ebf4b26068
@@ -1192,6 +1351,35 @@
     worum: |
       Kneser is unique if one demands two things: holomorphic in the slit plane **and** a particular behavior far up and down (limit $L$).
       Is the second condition really needed? J. D. Nixon tried in 2021 with his β method to show that without it there is another holomorphic tetration.
+- id: kn.frage.halber_rang
+  quelle_hash: dd873a38f117
+  theorie_hash: 216061644d89
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Is there a hyperoperation between power and tetration — and what limit base η₃.₅ would it have?
+    aussage: |
+      We look for a semigroup $T_b^s$ of the rank step $T_b(f)=S$ ($S(0)=1$, $S(x+1)=f(S(x))$) with $T_b^{1/2}\circ T_b^{1/2}=T_b$ and $H_{3+s}(b,\cdot)=T_b^s(b^x)$ — a fractional iteration
+      of an **operator on functions**, not of the height. An injective fixed point of $T_b$ would have to satisfy $f(x+1)=f(f(x))$, which forces $f=x+1$ and $b=2$; a simple fixed-point argument
+      as for tetration is therefore missing. Known: the linear (kn.satz.halbrang_linear) and the quadratic step (kn.satz.halbrang_quadratisch) for test perturbations. Extrapolation:
+      $\eta_{3.5}^{\rm fit}=1.55682$ — meaningless as long as there is no $H_{3.5}$.
+    naechste_frage: Generalize Q₁/₂ to gamma mode pairs, control the series for bˣ, fix a selection class with variable growth weights (the half-plane
+      class contains no tetration for b > e^(1/e)).
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/rang_gamma, halb_rang_quadratisch, halb_rang_analytisch
+  en_theorie:
+    beispiel: |
+      First building blocks: [[kn.satz.halbrang_linear]], [[kn.satz.halbrang_quadratisch]].
+    einordnung: |
+      Related to the intermediate levels of Bennett and Nixon: [[br.satz.hyperop_varianten]].
+    genau: |
+      We look for a semigroup $T_b^s$ of the rank step, $T_b^{1/2}\circ T_b^{1/2}=T_b$, with $H_{3+s}=T_b^s(b^x)$.
+    warum: |
+      Fractional height means: iterating a function by half. Fractional rank means: performing the step “function → its superfunction” by half — an iteration in the space of functions.
+    worum: |
+      Whether there is a hyperoperation “3.5” between power and tetration — and its limit base.
 - id: kn.frage.hexation_kneser
   quelle_hash: fc334e0726aa
   theorie_hash: 9d3e9b600d1b
@@ -1378,6 +1566,43 @@
       No proof known; the bound is estimated from computations in the forum.
     worum: |
       “Fake functions” are entire functions with positive coefficients that mimic a given growing function. TPID 17 asks about the quality of a method for this.
+- id: kn.gescheitert.mischkurve
+  quelle_hash: 87a4d141de07
+  theorie_hash: d4d3ef174d4a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: The mixture (1−θ)bˣ + θ·T_b is not a hyperoperation “3.5”
+    aussage: |
+      The curve $F_{1/2}=\tfrac12b^x+\tfrac12T_b(x)$ has a touching at $b=1.5425485299\ldots$, $x=3.0321922722\ldots$ — close to the extrapolation $\eta_{3.5}^{\rm fit}=1.55682$ from the
+      distance law. It is nevertheless not a rank $3.5$: the next levels of the mixture violate the rank recursion (at $b=2$, $x=0.5$ by $-4.6\cdot10^{-4}$, at $b=e$ by $-2.3\cdot10^{-2}$),
+      whereas the integer ranks pass the same test to $10^{-37}$.
+    einfach: One can simply lay a mixed curve between two hyperoperations — it even has a plausible limit base. But it does not behave like a
+      real hyperoperation, so a matching numerical value proves nothing.
+    pruefung:
+      f1_folgt_unmittelbar: —
+      f2_benutzte_voraussetzungen: —
+      f3_spezialfall: —
+      f4_uebertragbar: 'Rule: An intermediate hyperoperation must satisfy the rank recursion, not merely have a plausible limit base.'
+      f5_neue_frage: —
+    bewertung:
+      nutzen: Rules out the obvious shortcut.
+      richtigkeit: Test of the rank recursion numerical to 28 digits
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_quadratisch_2026_10_12/BERICHT.md, section Fitvorhersage
+  en_theorie:
+    beispiel: |
+      Error of the rank recursion at $b=e$, $x=0.5$: $-0.023$.
+    einordnung: |
+      Correct framework: [[kn.frage.halber_rang]].
+    genau: |
+      $\tfrac12b^x+\tfrac12T_b(x)$ has a limit base $1.54255$ close to the extrapolation $1.55682$, but violates the rank recursion.
+    warum: |
+      A hyperoperation is determined by the recursion to the next level; an average of two levels does not satisfy this structure.
+    worum: |
+      The shortcut “just average between power and tetration”.
 - id: kn.gescheitert.polynom_ecke_wege
   quelle_hash: b50e1d80dfb5
   theorie_hash: e753a2cee2a5
@@ -1488,6 +1713,43 @@
          ([[kn.beob.polynom_eckmode]]), which grows exponentially. Even then ball arguments fail; the main theorem ([[kn.satz.polynom_halbexp_hauptsatz]]) circumvents them.
     worum: |
       The standard route for “the approximation is almost a solution, so a solution lies nearby” is the Newton–Kantorovich theorem. Why does it not work here?
+- id: kn.gescheitert.polynom_rekonstruktion
+  quelle_hash: a7d6eec9f416
+  theorie_hash: a2b4ce04d2a7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Finite polynomial reconstruction of the half rank drifts between the integer heights
+    aussage: |
+      In the finite model (height values $1\ldots K$, degree-$K$ polynomial) the quadratic half step is algebraically exact ($T_{1/2}^K\circ T_{1/2}^K=T_1^K+O(\|d\|^3)$), and at integer heights
+      it converges. Between the integer heights it drifts: at $x=0.5$ $+0.0070,\ -0.0077,\ -0.0188,\ -0.0281,\ -0.0362$ ($K=16\ldots80$), roughly $a-0.0087\sqrt K$.
+      Cause: the norm of the bilinear half-step operator grows like $2^K/K^4$. The intrinsic Newton series (kn.satz.halbrang_quadratisch) gives $0.03694$ there.
+    einfach: A first computation of the half step looked good at whole numbers but wandered off in between. The error lay in how the curve was
+      put back together from whole values.
+    pruefung:
+      f1_folgt_unmittelbar: —
+      f2_benutzte_voraussetzungen: —
+      f3_spezialfall: —
+      f4_uebertragbar: 'Rule: always check constructions for fractional ranks also between the integer heights, not only at integer points.'
+      f5_neue_frage: —
+    bewertung:
+      nutzen: Prevents a model artifact from passing as a half rank.
+      richtigkeit: Drift stable to 250 digits (not a rounding artifact)
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_quadratisch_2026_10_12/BERICHT.md
+  en_theorie:
+    beispiel: |
+      $K=16$: $+0.0070$; $K=80$: $-0.0362$; the correct continuation gives $0.0369$.
+    einordnung: |
+      Done correctly in [[kn.satz.halbrang_quadratisch]].
+    genau: |
+      At $x=0.5$ the values drift with the model size $K$ (roughly $a-0.0087\sqrt K$), while they converge at integer heights.
+    warum: |
+      The degree-$K$ polynomial through the integer values has derivatives that grow exponentially with $K$; the bilinear half-step operator is therefore not uniformly bounded.
+    worum: |
+      A first computation of the half rank step that runs away between the integer heights.
 - id: kn.gescheitert.regulaer_an_L
   quelle_hash: dbefad41c164
   theorie_hash: 1c9955ade707
@@ -2318,6 +2580,133 @@
     worum: |
       Below $\eta$ one could sum up “one and a half tower levels”. Above $\eta$ the levels grow to the gigantic — but the super-logarithm grows so
       slowly that one can form fractional sums of **it**, similar to how $\log\Gamma$ continues the sum of the logarithms.
+- id: kn.satz.basis2_hoehe3
+  quelle_hash: fabfb20eff3a
+  theorie_hash: b8cdbaae8d8a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: At base 2, H_r(2,3) ≥ 2^r grows — no limit graph of the hierarchy
+    aussage: |
+      For all ranks $H_r(2,1)=2$, $H_r(2,2)=4$, and for integer $k\ge1$: $H_r(2,k)\ge2k$ as well as
+      $$H_{r+1}(2,3)=H_r(2,4)\ge2H_r(2,3),\qquad H_r(2,3)\ge2^r.$$
+      So the values at height 3 diverge with the rank — independently of how the levels are continued between the integer heights. A finite limit graph
+      $\lim_rH_r(2,\cdot)$ does not exist, even though the values at height 1.5 decrease with the rank (kn.beob.zwischenwerte_basis2).
+    einfach: 2 to the power 2, 2 tetrated to 2, … always give 4. But already at three levels, the value at least doubles with every higher hyperoperation.
+    beweis:
+      text: 'Induction over $r$ at integer heights: $H_{r+1}(2,k)\ge2^k\ge2k$; $H_{r+1}(2,3)=H_r(2,H_{r+1}(2,2))=H_r(2,4)=H_{r-1}(2,H_r(2,3))\ge2H_r(2,3)$;
+        start $H_4(2,3)=16$.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, induction over integer heights.
+      f2_benutzte_voraussetzungen: Only the integer recursion.
+      f3_spezialfall: 'Yes: $2\uparrow^n2=4$ (br.def.hyperoperation).'
+      f4_uebertragbar: Every base $b\ge2$.
+      f5_neue_frage: 'no'
+    bewertung:
+      nutzen: Rules out an obvious fallacy (limit profile at base 2).
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/MATHEMATIK.md §3, Zusatz M2a
+  en_theorie:
+    beispiel: |
+      $H_3(2,3)=8$, $H_4(2,3)=16$, $H_5(2,3)=2\uparrow\uparrow4=65536$.
+    einordnung: |
+      Between heights 1 and 2: [[kn.beob.zwischenwerte_basis2]].
+    genau: |
+      $H_r(2,3)\ge2^r$; there is no limit graph $\lim_rH_r(2,\cdot)$.
+    warum: |
+      $H_{r+1}(2,3)=H_r(2,4)$, and $H_r(2,4)$ is an iteration that starts at $H_r(2,3)$ and at least doubles.
+    worum: |
+      At base 2 the values at heights 1 and 2 are the same for all ranks — but not at height 3.
+- id: kn.satz.eta_auswahl
+  quelle_hash: 813ee016fe3f
+  theorie_hash: c4412a7ee9c4
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: The limit bases depend on the choice of continuation
+    aussage: |
+      If $S$ satisfies the recursion $S(x+1)=F(S(x))$, $S(0)=1$, then so does $\tilde S_\varepsilon(x)=S(x+\varepsilon\sin2\pi x)$ ($|\varepsilon|<1/2\pi$, real-analytic, monotone), with the same
+      values at all integer heights. If the level $H_r$ is changed in this way, its touching base shifts (assuming fold nondegeneracy) by
+      $$\frac{d\eta_r}{d\varepsilon}\Big|_0=-\frac{\sin(2\pi e_r)}{\partial_bH_r(\eta_r,e_r)};\qquad\text{for }H_4:\ \partial_bH_4=9.87526\ldots,\ \eta_4'(0)=-0.05347\ldots$$
+      So the η sequence is a sequence of numbers only for a **fixed chosen** continuation (Kneser, regular, …); the recursion and the integer values alone do not determine it.
+    einfach: How to fill in a hyperoperation between the integers is a choice — and this choice shifts the limit bases. The sequence 1.44, 1.64,
+      1.74, … therefore belongs to one particular choice of continuation.
+    beweis:
+      text: '$\psi(x)=x+\varepsilon\sin2\pi x$ satisfies $\psi(x+1)=\psi(x)+1$, $\psi(k)=k$, $\psi''>0$. Differentiating the touching equation
+        $H_r(\eta,e)=e$ with respect to $\varepsilon$: the term with $e''$ drops out because $\partial_xH_r=1$, leaving $\alpha\eta''+\sin(2\pi
+        e)=0$.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from non-uniqueness (fg.kor.nichteindeutigkeit) and the implicit function theorem.
+      f2_benutzte_voraussetzungen: Fold nondegeneracy α ≠ 0, ∂²ₓH ≠ 0; the value of η₄′ is numerical.
+      f3_spezialfall: 'Yes: periodic perturbation of the height, as for any tetration.'
+      f4_uebertragbar: To any limit quantity that depends on values between the integer heights (η_r, e_r, integrals).
+      f5_neue_frage: Which selection rule makes η_r canonical — Kneser-type conditions on every level?
+    bewertung:
+      nutzen: Shows that TPID 10 is a statement about a particular continuation chain.
+      recherche: In TPID 10 and the forum threads (literature map 12.10.2026), the selection is not treated as a variable of the η sequence.
+      richtigkeit: complete; the numerical value is numerical
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/MATHEMATIK.md §6 (Satz M4)
+  en_theorie:
+    beispiel: |
+      For tetration ($r=4$): $\eta_4'(0)=-0.0535$; already $\varepsilon=0.01$ shifts $\eta_4$ in the fourth digit.
+    einordnung: |
+      Reason: [[fg.kor.nichteindeutigkeit]]. Consequence for TPID 10: [[kn.verm.tpid10]] holds for a particular continuation chain.
+    genau: |
+      A periodic reparametrization of the height shifts $\eta_r$ by $-\varepsilon\sin(2\pi e_r)/\partial_bH_r$.
+    warum: |
+      $S(x+\varepsilon\sin2\pi x)$ has the same integer values and satisfies the same recursion; only values between the integer heights change — and exactly there lies the touching point $e_r$.
+    worum: |
+      The limit bases are not a property of the recursion alone, but of the chosen continuation.
+- id: kn.satz.eta_kriterium
+  quelle_hash: 8228bcb7d088
+  theorie_hash: 784ebfe85131
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: A sufficient criterion for ηₙ → 2 (and one for eₙ → 4)
+    aussage: |
+      With $F_N(x)=H_N(\eta_N,x)$ (the level **at its own limit base**):
+      $$F_N(q)\to q+1\ \text{for every }0<q<1\quad\Longrightarrow\quad\eta_N\to2.$$
+      And: if $\eta_N\to2$ and $(2-\eta_N)\sup_{\eta_N\le b\le2}|\partial_bH_N(b,2)|\to0$, then $H_N(\eta_N,2)\to4$ and hence $e_N\to4$.
+      The three families $H_N(2,\cdot)$, $H_N(b,\cdot)$ at fixed $b<2$, and $H_N(\eta_N,\cdot)$ must not be interchanged.
+    einfach: If the hyperoperations at their limit bases look more and more like “plus 1”, the limit bases must tend to 2. This shifts the problem
+      to an estimate that can be checked on concrete values.
+    beweis:
+      text: '$F_N(q)\le F_N(1)=\eta_N$ (monotonicity), hence $\liminf\eta_N\ge q+1$ for every $q<1$; with $\limsup\le2$ it follows that $\eta_N\to2$.
+        For $e_N$: $|H_N(2,2)-H_N(\eta_N,2)|\le(2-\eta_N)\sup|\partial_bH_N|$, $H_N(2,2)=4$ and $e_N\ge H_N(\eta_N,2)$.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from monotonicity.
+      f2_benutzte_voraussetzungen: Monotonicity and the upper bound; the approach F_N(q) → q+1 itself is open (only measured, kn.beob.kritische_profile).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Same scheme for other hyperoperation families (kn.frage.andere_etas).
+      f5_neue_frage: Does $A_N(\eta_N,q)=o((N-2)^{1-q})$ hold for the deviation from the successor? That would be a proof of η_N → 2.
+    bewertung:
+      nutzen: Turns TPID 10 into a checkable estimate at the critical bases.
+      richtigkeit: complete (conditional implication)
+    voraussetzungen:
+    - text: limsup η_N ≤ 2 (e.g. from kn.satz.schwellen_monoton) and F_N = H_N(η_N,·) monotone
+    - text: 'for e_N → 4 additionally: η_N → 2, 2 ≤ e_N ≤ 4'
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/rang_gamma/BERICHT.md §2, MATHEMATIK.md
+  en_theorie:
+    beispiel: |
+      Measured at $q=0.5$: $1.335,\ 1.396,\ 1.428,\ 1.448,\ 1.460$ for $N=4\ldots8$ ([[kn.beob.kritische_profile]]).
+    einordnung: |
+      Upper limit from [[kn.satz.schwellen_monoton]]; goal [[kn.verm.tpid10]].
+    genau: |
+      If $H_N(\eta_N,q)\to q+1$ for every $0<q<1$, then $\eta_N\to2$. For $e_N\to4$ additionally a bound on the base derivative at height 2.
+    warum: |
+      $H_N(\eta_N,q)\le H_N(\eta_N,1)=\eta_N$ by monotonicity; if the left side approaches $q+1$, then $\eta_N$ must become at least $q+1$.
+    worum: |
+      A way to prove $\eta_N\to2$ without computing the limit bases.
 - id: kn.satz.grenzwert_trick
   quelle_hash: 028bfd201931
   theorie_hash: 7b78c8a84b5b
@@ -2628,6 +3017,96 @@
       4. The weakest singularity $(1-z/L)^{1+\gamma}$ determines, by Darboux, the decay of the Taylor coefficients: $k^{-2-\operatorname{Re}\gamma}=k^{-6.447}$ times $|L|^{-k}$.
     worum: |
       How does Kneser's half-exponential function behave at the complex fixed point $L$? Described exactly — and from this follows how fast its Taylor coefficients about 0 decay.
+- id: kn.satz.halbrang_linear
+  quelle_hash: 42312ad9e64d
+  theorie_hash: a31468126003
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: 'Half rank step in the linear model: L_s B_ν = B_{ν+s}'
+    aussage: |
+      To first order, the rank step turns the deviation $v$ into the solution $w$ of $w(x+1)-w(x)=v(x+1)$, $w(0)=0$. For $B_\nu(x)=\dfrac{\Gamma(x+\nu)}{\Gamma(x)\Gamma(\nu+1)}$ we have
+      exactly $B_{\nu+1}(x+1)-B_{\nu+1}(x)=B_\nu(x+1)$; with the gamma continuation in $\nu$ a semigroup arises
+      $$\mathcal L_sB_\nu=B_{\nu+s},\qquad\mathcal L_s\mathcal L_t=\mathcal L_{s+t}\quad(s,t\ge0),$$
+      which at integer heights is a fractional summation with kernel $(s)_k/k!$. Two half rank steps give exactly one whole step (checked exactly on a 16×16 height matrix).
+      **Only the linear model** — no $H_{3.5}$; already the second order contains the term $w(x)v'(x+1)$.
+    bereich: Rank step $T_b(f)=S$ with $S(0)=1$, $S(x+1)=f(S(x))$; deviation from the successor $f=x+1+\varepsilon v$, first order in $\varepsilon$
+    einfach: 'Taking a “half step” between power and tetration is hard. If one only considers small deviations from “plus 1”, it works: there
+      the step to the next hyperoperation can be cleanly halved.'
+    beweis:
+      text: The recursion $B_{\nu+1}(x+1)-B_{\nu+1}(x)=B_\nu(x+1)$ is Pascal's rule in gamma form; the group property follows from the $\Gamma$
+        shift and the $(s)_k(t)_j$ convolution (Vandermonde).
+    pruefung:
+      f1_folgt_unmittelbar: Yes (binomial calculus).
+      f2_benutzte_voraussetzungen: First order, polynomial class with normalization w(0) = 0; on general holomorphic functions there are periodic
+        additional solutions.
+      f3_spezialfall: 'Yes: fractional differences/sums.'
+      f4_uebertragbar: 'Second order: kn.satz.halbrang_quadratisch.'
+      f5_neue_frage: Is there a semigroup $T_b^s$ on functions, $T_b^{1/2}\circ T_b^{1/2}=T_b$, with a selection rule?
+    bewertung:
+      nutzen: First exact building block for fractional ranks.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/rang_gamma/BERICHT.md §§5–6, MATHEMATIK.md
+  en_theorie:
+    beispiel: |
+      $\mathcal L_{1/2}\mathcal L_{1/2}=\mathcal L_1$: two half summations are one whole one (kernel $(1/2)_k/k!$).
+    einordnung: |
+      Second order: [[kn.satz.halbrang_quadratisch]]; goal [[kn.frage.halber_rang]].
+    genau: |
+      To first order the rank step is the summation $\Delta w=v(x+1)$; on the functions $B_\nu$ it shifts $\nu\mapsto\nu+1$, and $\mathcal L_s:B_\nu\mapsto B_{\nu+s}$ is a semigroup.
+    warum: |
+      $B_\nu(x)=\Gamma(x+\nu)/(\Gamma(x)\Gamma(\nu+1))$ satisfies Pascal's rule $B_{\nu+1}(x+1)-B_{\nu+1}(x)=B_\nu(x+1)$; this can be continued continuously in $\nu$.
+    worum: |
+      An exact half step from one hyperoperation to the next — but only for small deviations from “plus 1”.
+- id: kn.satz.halbrang_quadratisch
+  quelle_hash: d09af48bb81e
+  theorie_hash: 16b91519b1fb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: 'Second order: the quadratic half-rank jet is holomorphic on Re x > −1'
+    aussage: |
+      The canonical quadratic rank continuation for the rank increment $\tfrac12$ is a Newton series
+      $$q_{1/2}(x)=\sum_{j\ge3}\alpha_j\binom xj,\qquad|\alpha_j|\le\frac{1500(1+\log j)}j,$$
+      which converges absolutely and locally uniformly on $\operatorname{Re}x>-1$, hence is holomorphic; $q_{1/2}(0)=q_{1/2}(1)=q_{1/2}(2)=0$. Thus
+      $x+1+\varepsilon\,2(B_{5/2}-B_{3/2})+\varepsilon^2q_{1/2}$ is an analytic half-rank jet. One value exactly: $Q_{1/2}(v,v)(3)=\tfrac{341}{12}-35\ln2=4.1565153470685808\ldots$;
+      partial sums (512 terms): $q_{1/2}(0.5)\approx0.0369429$, $q_{1/2}(1.5)\approx-0.1204979$, $q_{1/2}(2.5)\approx1.0605429$.
+      For $b>e^{1/e}$ the half-plane class used contains no complete tetration — a full rank flow from $b^x$ to tetration has to leave this class.
+    bereich: Test perturbation $v(x)=x(x-1)$, $f_\varepsilon=x+1+\varepsilon v$; full rank step $S_\varepsilon=x+1+\varepsilon w+\varepsilon^2z+\ldots$
+      with $\Delta w=v(x+1)$, $\Delta z=w(x)\,v'(x+1)$
+    einfach: Even in the next order of accuracy the half step can be computed, and it yields a nice smooth function. For the real hyperoperation
+      “three and a half”, however, all higher orders and the way to the true exponential function are still missing.
+    beweis:
+      text: Coefficient bound from gamma reflection and Abel–Plana summation (constants $C_W<21$, $C_h<14$, convolution at $k=m/2$); $|\binom
+        xj|\le Cj^{-\operatorname{Re}x-1}$ on compact sets. Two exact algorithms agree in 129 coefficients.
+    pruefung:
+      f1_folgt_unmittelbar: No (bounds on gamma quotients).
+      f2_benutzte_voraussetzungen: Only the polynomial test perturbation v = x(x−1); no statement for bˣ itself.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To gamma mode pairs and the true exponential family (linear correction explicit there) — open.
+      f5_neue_frage: Do all orders converge, and with which selection rule? → kn.frage.halber_rang
+    bewertung:
+      nutzen: Shows that a half rank exists as a function in second order; the earlier drift was due to the reconstruction.
+      richtigkeit: complete; partial sums not tightly certified
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_analytisch_2026_10_12/MATHEMATIK.md §6; halb_rang_quadratisch_2026_10_12
+    - stelle: §2, Abel–Plana formula
+  en_theorie:
+    beispiel: |
+      Exact at height 3: $\tfrac{341}{12}-35\ln2=4.15651534706858\ldots$
+    einordnung: |
+      Replaces the drifting reconstruction [[kn.gescheitert.polynom_rekonstruktion]]; [[kn.frage.halber_rang]] remains open.
+    genau: |
+      $q_{1/2}(x)=\sum_{j\ge3}\alpha_j\binom xj$ with $|\alpha_j|\le1500(1+\log j)/j$ is holomorphic on $\operatorname{Re}x>-1$.
+    warum: |
+      The coefficients can be computed exactly from gamma quotients and roughly estimated; $\binom xj$ decays like $j^{-\operatorname{Re}x-1}$, which suffices for convergence.
+    worum: |
+      The half rank step in the next order of accuracy — as a genuine holomorphic function.
 - id: kn.satz.hexation_eindeutig_g0
   quelle_hash: 92b006bf5751
   theorie_hash: 38476269b9fb
@@ -3318,6 +3797,48 @@
     worum: |
       Kneser's tetration does not live only on the real axis. If one allows complex heights, it is holomorphic almost everywhere, mirror-symmetric,
       and runs into the fixed point $L$ upward, into $\bar L$ downward.
+- id: kn.satz.kritische_rate
+  quelle_hash: 3537cde20853
+  theorie_hash: 097217f35cf4
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: At the limit base the next level creeps toward e_r like 1/(β k)
+    aussage: |
+      $$k\,\bigl(e_r-H_{r+1}(\eta_r,k)\bigr)\to\frac1{\beta_r},\qquad \beta_r=\tfrac12\,\partial_x^2H_r(\eta_r,e_r).$$
+      Numerically $\beta_7\approx0.4961476452$, $\beta_8\approx0.5368242374$. Just above $\eta_r$ the next level therefore needs very many steps before it runs away;
+      finite iterations separate the threshold poorly. Locally: below $\eta_r$ there are two fixed points at distance $\approx\sqrt{\alpha(\eta_r-b)/\beta}$ from $e_r$ ($\alpha=\partial_bH_r$).
+    einfach: Exactly at the limit base, the next hyperoperation approaches the touching point only very slowly — the distance shrinks like 1 divided
+      by the number of steps.
+    beweis:
+      text: '$t_k=e_r-y_k$: $t_{k+1}=t_k-\beta t_k^2+O(t_k^3)$, hence $1/t_{k+1}-1/t_k\to\beta$; telescoping and Cesàro give $1/(kt_k)\to\beta$.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes (parabolic fixed point, standard computation).
+      f2_benutzte_voraussetzungen: Convergence from below and nondegeneracy β > 0; the values β₇, β₈ are numerical.
+      f3_spezialfall: 'Yes: Leau–Fatou rate at a parabolic fixed point (it.satz.parabolische_rate), as for the η tower.'
+      f4_uebertragbar: Bottleneck time just above η_r ≈ π/√(αβ(b−η_r)) — only as a heuristic.
+      f5_neue_frage: Does the boundary law (bw.lem.randgesetz) hold with a constant for every level?
+    bewertung:
+      nutzen: Explains why thresholds from finite iterations are inaccurate.
+      richtigkeit: complete under the hypotheses; β numerical
+    voraussetzungen:
+    - text: F = H_r(η_r,·) is C³ at e_r with F(e_r) = e_r, F′(e_r) = 1, β = F″(e_r)/2 > 0
+    - text: H_{r+1}(η_r,k) converges to e_r from below
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/MATHEMATIK.md §5 (Satz M3)
+  en_theorie:
+    beispiel: |
+      $r=3$: the tower $\eta\uparrow\uparrow k$ approaches $e$ like $2e/k$ ($\beta=1/(2e)$).
+    einordnung: |
+      General version: [[it.satz.parabolische_rate]].
+    genau: |
+      $e_r-H_{r+1}(\eta_r,k)\sim1/(\beta_rk)$ with $\beta_r=\tfrac12\partial_x^2H_r(\eta_r,e_r)$.
+    warum: |
+      At the touching point the multiplier is 1; the distance $t$ shrinks per step only by $\beta t^2$, as at any parabolic fixed point.
+    worum: |
+      Exactly at the limit base the next level runs very slowly toward the touching point.
 - id: kn.satz.linear_glatt
   quelle_hash: 36345b80f757
   theorie_hash: 310fb5258cec
@@ -3996,6 +4517,54 @@
       3. The distance to $f_K$ follows from the certified Kneser coefficients plus the remainder bound.
     worum: |
       A proof for “all degrees from $N_0$ on” needs a secured start: At $N_0$ the computed solution must really be the right one and lie close enough to Kneser.
+- id: kn.satz.schwellen_monoton
+  quelle_hash: 7ebc1daceaf6
+  theorie_hash: 72b99ded83d1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Bounded ⇔ fixed point; under monotonicity the thresholds increase and stay below 2
+    aussage: |
+      **(M1)** If $F:[1,\infty)\to[1,\infty)$ is continuous, monotone nondecreasing, $F(1)=b>1$, then $y_0=1$, $y_{k+1}=F(y_k)$ is bounded if and only if $F$ has a fixed point $a\ge1$;
+      the limit is the smallest such fixed point. With $F=H_r(b,\cdot)$: $H_{r+1}(b,k)$ stays bounded if and only if $H_r(b,\cdot)$ has a fixed point $\ge1$.
+      **(M2)** If all levels are continuous and monotone in $x$ and monotone in $b$, then the sets $\mathcal E_r=\{b>1:H_r(b,\cdot)\text{ has a fixed point}\ge1\}$ are initial intervals with
+      $\mathcal E_{r-1}\subseteq\mathcal E_r\subset(1,2)$. Their upper limits $\eta_r$ therefore increase to a limit $L$ with $e^{1/e}\le L\le2$. **$L=2$ does not follow.**
+    einfach: The next hyperoperation stays bounded exactly when the current one has a fixed point. Under a natural monotonicity assumption it
+      follows that the limit bases increase and never reach 2 — that they come all the way up to 2 does not yet follow.
+    beweis:
+      text: |
+        (M1) $y_k$ increases; a fixed point $a$ bounds it inductively ($y_k\le a\Rightarrow F(y_k)\le a$); a bounded monotone sequence converges to a fixed point. (M2) If $H_{r-1}(b,\cdot)$
+        has a fixed point $a$, then $H_r(b,k)\le a$ for integer $k$, by monotonicity $H_r(b,x)\le a$ for $x\ge1$; with $H_r(b,1)>1$ the intermediate value theorem gives a fixed point.
+        At $b=2$ we have $H_r(2,k)\ge k+1$ for integer $k$ (induction), so $H_r(2,\cdot)$ has no fixed point; monotonicity in $b$ excludes $b\ge2$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, elementary monotonicity and intermediate-value arguments.
+      f2_benutzte_voraussetzungen: Monotonicity in x and b — clear for bˣ and tetration, not proved for the higher levels built.
+      f3_spezialfall: 'Yes: Euler''s bound for towers ($r=3$).'
+      f4_uebertragbar: Proves part (i) of kn.verm.beschraenkt_unter_2 under the stated hypotheses.
+      f5_neue_frage: Does every base $1<b<2$ have a fixed point from some rank on? That would be $L=2$.
+    bewertung:
+      nutzen: Makes the threshold interpretation of η_r precise and shows what is missing for L = 2.
+      richtigkeit: complete under the stated hypotheses
+    voraussetzungen:
+    - text: H_r(b,·) continuous and monotone in x on [1,∞), H_r(b,1) = b
+    - text: H_r monotone nondecreasing in b (for the upper limit and the interval form)
+    - text: This monotonicity holds for all higher levels built
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/MATHEMATIK.md §§2–3 (Sätze M1, M2)
+  en_theorie:
+    beispiel: |
+      $r=3$: $b^x$ has a fixed point exactly for $b\le e^{1/e}$ — Euler's bound for the infinite tower.
+    einordnung: |
+      Makes Nixon's claim [[kn.verm.beschraenkt_unter_2]] precise; the missing step to $L=2$ is a criterion like [[kn.satz.eta_kriterium]].
+    genau: |
+      The next level is bounded if and only if the current one has a fixed point $\ge1$ (M1). Under monotonicity in $x$ and $b$ the fixed-point sets increase and lie in $(1,2)$ (M2).
+    warum: |
+      The integer-height next level is the iteration $y_{k+1}=H_r(b,y_k)$ from $y_0=1$; a monotone iteration is bounded if and only if it gets stuck at a fixed point.
+      At $b=2$ every integer-height iteration grows by at least 1 per step, so there is no fixed point there.
+    worum: |
+      Why the touching base is a limit at all — and what is still needed for $\eta_r\to2$.
 - id: kn.satz.singulaer_minus2
   quelle_hash: a6a16b672fd9
   theorie_hash: 9a5649d00d28
