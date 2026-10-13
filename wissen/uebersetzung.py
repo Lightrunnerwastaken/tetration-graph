@@ -471,7 +471,8 @@ def _yaml_schreiben(pfad: Path, eintraege: list):
             "# übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.\n")
     pfad.parent.mkdir(parents=True, exist_ok=True)
     pfad.write_text(kopf + yaml.dump(sorted(eintraege, key=lambda e: e["id"]), Dumper=Dumper, allow_unicode=True,
-                                     sort_keys=False, width=140, default_flow_style=False), encoding="utf-8")
+                                     sort_keys=False, width=140, default_flow_style=False), encoding="utf-8",
+                    newline="\n")                       # auch unter Windows LF, sonst wird jede Datei ganz neu eingecheckt
 
 
 def befehl_einlesen(wurzel, datei, modell, ersetzen, trocken, geprueft):
