@@ -143,7 +143,7 @@ Report: `docs/recherche_wikis_forum.md` (Wikipedia en/de/ru, Googology, MathWorl
 1991, “Bummer!” 2007), expansion at η (Trappmann–Kouznetsov 2012); counter-conjecture “base change nowhere analytic”
 (Levenstein 2011) as `bw.verm.nirgends_analytisch`. The loader now reports duplicate YAML keys (previously `justus_p2` appeared twice).
 **Round 2 done:** 13 core statements — super-roots (strand `gr.umkehrungen`, arithmetic), infinite super-root, TPID 6 with a
-new rate $n^2(x_n-\eta)\to2\pi^2\eta/e$, upper super-exponential function and cheta, q-binomial series (Reshetnikov) with rate $q^{\operatorname{Re}z+2}$,
+new rate $n^2(x_n-\eta)\to2\pi^2\eta/e$, upper super-exponential function and cheta, q-binomial series (Reshetnikov) with rate $q^{\mathrm{Re}z+2}$,
 conjecture “T′ completely monotone ⇔ Koenigs coefficients negative”, Möbius iteration, Szekeres' monotonicity, Shishikura/Lavaurs;
 experiments e28–e31. **Round 3 done:** strand `kn.hoehere_stufen` — pentation as the regular superfunction of T_e at the fixed point
 −1.8503545290… (λ = 6.4607; Fox 2007 confirmed to 22 digits), η₄ = 1.63532449671527639934… and e₄ = 3.08853227180671765448… (Levenstein 2010
@@ -261,7 +261,7 @@ Basis: the user's images 1 and 2 and his/her note *Complex Tetration Dynamics* (
 - **Weakened hypotheses:** Paper I Prop. 7.1 needs only differentiability at the point −1; A1 theorems 5, 6 and Cor. 1 hold
   for whole solution classes, not just for Kneser; Paper II Thm. B is a special case of Young's area identity.
 - **Carleman slog:** converges to Kneser, but only algebraically ($\approx n^{-3.8}$, 8 digits at $n=128$).
-- **Own error found:** the first version of `fp.satz.lambert` had the sign of $\operatorname{Im}L$ wrong (`exp.fixpunkte`).
+- **Own error found:** the first version of `fp.satz.lambert` had the sign of $\mathrm{Im}L$ wrong (`exp.fixpunkte`).
 
 ## License
 

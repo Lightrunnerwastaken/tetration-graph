@@ -142,7 +142,7 @@ Bericht: `docs/recherche_wikis_forum.md` (Wikipedia en/de/ru, Googology, MathWor
 1991, „Bummer!“ 2007), Entwicklung bei η (Trappmann–Kouznetsov 2012); Gegen-Vermutung „Basiswechsel nirgends analytisch“
 (Levenstein 2011) als `bw.verm.nirgends_analytisch`. Der Lader meldet jetzt doppelte YAML-Schlüssel (vorher stand `justus_p2` doppelt).
 **Runde 2 erledigt:** 13 Kern-Aussagen — Superwurzeln (Strang `gr.umkehrungen`, Arithmetik), unendliche Superwurzel, TPID 6 mit
-neuer Rate $n^2(x_n-\eta)\to2\pi^2\eta/e$, obere Superexponentialfunktion und cheta, q-Binomial-Reihe (Reshetnikov) mit Rate $q^{\operatorname{Re}z+2}$,
+neuer Rate $n^2(x_n-\eta)\to2\pi^2\eta/e$, obere Superexponentialfunktion und cheta, q-Binomial-Reihe (Reshetnikov) mit Rate $q^{\mathrm{Re}z+2}$,
 Vermutung „T′ vollständig monoton ⇔ Koenigs-Koeffizienten negativ“, Möbius-Iteration, Szekeres' Monotonie, Shishikura/Lavaurs;
 Experimente e28–e31. **Runde 3 erledigt:** Strang `kn.hoehere_stufen` — Pentation als reguläre Superfunktion von T_e am Fixpunkt
 −1.8503545290… (λ = 6.4607; Fox 2007 auf 22 Stellen bestätigt), η₄ = 1.63532449671527639934… und e₄ = 3.08853227180671765448… (Levenstein 2010
@@ -260,7 +260,7 @@ Grundlage: Bild 1 und 2 des Nutzers und seine Notiz *Complex Tetration Dynamics*
 - **Abgeschwächte Voraussetzungen:** Paper I Prop. 7.1 braucht nur Differenzierbarkeit im Punkt −1; A1 Sätze 5, 6 und Kor. 1 gelten
   für ganze Lösungsklassen, nicht nur für Kneser; Paper II Thm. B ist Spezialfall der Youngschen Flächenidentität.
 - **Carleman-slog:** konvergiert gegen Kneser, aber nur algebraisch ($\approx n^{-3.8}$, 8 Stellen bei $n=128$).
-- **Eigener Fehler gefunden:** erste Fassung von `fp.satz.lambert` hatte das Vorzeichen von $\operatorname{Im}L$ falsch (`exp.fixpunkte`).
+- **Eigener Fehler gefunden:** erste Fassung von `fp.satz.lambert` hatte das Vorzeichen von $\mathrm{Im}L$ falsch (`exp.fixpunkte`).
 
 ## Lizenz
 
