@@ -124,13 +124,13 @@ Der Reiter „Theorie“ ist ein Lehrbuch (Umschalter „Abhängigkeiten“ zeig
 (Kapitel 0 „Was ist Tetration?“ als Fliesstext, dann je Kapitel Stränge). Ausführliche Erklärungen je Aussage: `daten/theorie/<gebiet>.yaml`
 mit den Teilen `worum`, `genau`, `warum`, `beispiel`, `bilder`, `einordnung` (Markdown mit `$…$`, `[[id]]`, `![[bild:name]]`).
 Abbildungen: `python lehrbuch/bilder.py` → `lehrbuch/bilder/*.svg`. Das Prüfprogramm meldet tote Verweise, fehlende Teile und den
-Fortschritt je Gebiet. **Stand 12.10.2026: vollständig** — alle 367 Aussagen haben einen Theorie-Block (Stand 08.10.: 218 Aussagen in Kapitel 0–10, damals:
+Fortschritt je Gebiet. **Stand 12.10.2026: vollständig** — alle 367 Aussagen haben einen Theorie-Block (Stand 08.10.: 218 Aussagen in Kapitel 0–10, damals je Kapitel:
 Grundlagen 32, Fixpunkte/Turm 7, Funktionalgleichung 11, Iteration 8, unter η 19, Kneser 19, Basiswechsel 65, Basen-Ebene 25,
 Zahlen 16, Brücken 16). Neue Aussagen brauchen einen Block in `daten/theorie/<gebiet>.yaml`, sonst meldet die Prüfung
-„theorie-fortschritt“. Anzeigeformeln mit „\qquad“ oder „,\quad“ werden bei Platzmangel gestapelt. Das Phasenbild k7_phase
+„theorie-fortschritt“. Das Phasenbild k7_phase
 rechnet slog_e(T₂(n+θ)) selbst nach (Tschebyschow-Interpolanten aus Kneser-Werten, ab n = 5 über die Logarithmenleiter) und trifft
 phi_modes.json auf 4·10⁻²⁴.
-Anzeigeformeln der Form „A,\qquad B“ setzt die Ansicht untereinander, wenn sie nebeneinander nicht passen (`formelnEinpassen`).
+Anzeigeformeln der Form „A,\qquad B“ oder mit „,\quad“ setzt die Ansicht untereinander, wenn sie nebeneinander nicht passen (`formelnEinpassen`).
 
 ## Abgleich mit Wikis und Tetration-Forum (08.10.2026)
 
@@ -145,11 +145,13 @@ Vermutung „T′ vollständig monoton ⇔ Koenigs-Koeffizienten negativ“, Mö
 Experimente e28–e31. **Runde 3 erledigt:** Strang `kn.hoehere_stufen` — Pentation als reguläre Superfunktion von T_e am Fixpunkt
 −1.8503545290… (λ = 6.4607; Fox 2007 auf 22 Stellen bestätigt), η₄ = 1.63532449671527639934… und e₄ = 3.08853227180671765448… (Levenstein 2010
 auf 32 Stellen bestätigt) mit drei Kennzeichnungen; Experimente e32–e33, Hilfsmodul `experimente/stufen.py`. **Runde 4 erledigt:** offene
-Vermutungen mit Stichproben (e34–e37) — TPID 7 gilt für Kneser nur bis b₇ = 10.2210634581 (Gegenbeispiel darüber); negative Koenigs-Koeffizienten
+Vermutungen mit Stichproben (e34–e37) — TPID 7 gilt für Kneser nur bis b₇ = 10.2210634158 (Gegenbeispiel darüber); negative Koenigs-Koeffizienten
 würden TPID 7 und Nixons Halbebenen-Frage zugleich beantworten; η₅ = 1.7373559252, e₅ = 3.3014072785 (TPID 10); Carleman-Eigenwerte → λ^k;
 Ableitungs-Vorzeichen; Shell–Thron-Fläche 8.0509332809 (Robbins 2009 bestätigt); Geschichte in Kapitel 0. Damit sind alle vier Runden des Berichts erledigt.
 
-**Hexation (09.10.2026):** reguläre Hexation unter η₅ am anziehenden Fixpunkt der Pentation (`experimente/hexation.py`, `exp.hexation` 10/10):
+## Hexation (09.10.2026)
+
+Reguläre Hexation unter η₅ am anziehenden Fixpunkt der Pentation (`experimente/hexation.py`, `e38_hexation.py`, `exp.hexation` 10/10):
 1.7↑↑↑↑½ = 1.3974472613, 1.7↑↑↑↑∞ = 2.3876372817; jede Hexation hat H(−3) = −2 und eine Singularität in (−4, −3); die unendliche Hexation
 konvergiert genau bis η₅; an einem anziehenden komplexen Fixpunkt gibt es keine Kneser-Konstruktion. Kneser-artige Hexation über η₅
 über das Rechenwerk knhexinit im gp-tetration-Fork (exp-079): 2↑↑↑↑1.5 = 2.6728939593426194891907964…, und damit η₆ = 1.79912123612881268672356700703,

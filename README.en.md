@@ -126,13 +126,13 @@ The “Theory” tab is a textbook (the toggle “Dependencies” shows the old 
 (chapter 0 “What is tetration?” as running text, then strands per chapter). Detailed explanations per statement: `daten/theorie/<gebiet>.yaml`
 with the parts `worum`, `genau`, `warum`, `beispiel`, `bilder`, `einordnung` (what it is about, in detail, why, example, images, placement; Markdown with `$…$`, `[[id]]`, `![[bild:name]]`).
 Figures: `python lehrbuch/bilder.py` → `lehrbuch/bilder/*.svg`. The checker reports dead references, missing parts and the
-progress per area. **As of 2026-10-12: complete** — all 367 statements have a theory block (as of 2026-10-08: 218 statements in chapters 0–10, at that time:
+progress per area. **As of 2026-10-12: complete** — all 367 statements have a theory block (as of 2026-10-08: 218 statements in chapters 0–10, at that time per chapter:
 Foundations 32, fixed points/tower 7, functional equation 11, iteration 8, below η 19, Kneser 19, base change 65, base plane 25,
 numbers 16, bridges 16). New statements need a block in `daten/theorie/<gebiet>.yaml`, otherwise the check reports
-“theorie-fortschritt” (theory progress). Display formulas with “\qquad” or “,\quad” are stacked when space is short. The phase picture k7_phase
+“theorie-fortschritt” (theory progress). The phase picture k7_phase
 recomputes slog_e(T₂(n+θ)) itself (Chebyshev interpolants from Kneser values, from n = 5 via the logarithm ladder) and matches
 phi_modes.json to 4·10⁻²⁴.
-Display formulas of the form “A,\qquad B” are set one beneath the other by the view when they do not fit side by side (`formelnEinpassen`).
+Display formulas of the form “A,\qquad B” or with “,\quad” are set one beneath the other by the view when they do not fit side by side (`formelnEinpassen`).
 
 ## Comparison with wikis and the Tetration Forum (2026-10-08)
 
@@ -147,11 +147,13 @@ conjecture “T′ completely monotone ⇔ Koenigs coefficients negative”, Mö
 experiments e28–e31. **Round 3 done:** strand `kn.hoehere_stufen` — pentation as the regular superfunction of T_e at the fixed point
 −1.8503545290… (λ = 6.4607; Fox 2007 confirmed to 22 digits), η₄ = 1.63532449671527639934… and e₄ = 3.08853227180671765448… (Levenstein 2010
 confirmed to 32 digits) with three characterizations; experiments e32–e33, helper module `experimente/stufen.py`. **Round 4 done:** open
-conjectures with sample checks (e34–e37) — TPID 7 holds for Kneser only up to b₇ = 10.2210634581 (counterexample above it); negative Koenigs coefficients
+conjectures with sample checks (e34–e37) — TPID 7 holds for Kneser only up to b₇ = 10.2210634158 (counterexample above it); negative Koenigs coefficients
 would answer TPID 7 and Nixon's half-plane question at the same time; η₅ = 1.7373559252, e₅ = 3.3014072785 (TPID 10); Carleman eigenvalues → λ^k;
 signs of the derivatives; Shell–Thron area 8.0509332809 (Robbins 2009 confirmed); history in chapter 0. With this, all four rounds of the report are done.
 
-**Hexation (2026-10-09):** regular hexation below η₅ at the attracting fixed point of pentation (`experimente/hexation.py`, `exp.hexation` 10/10):
+## Hexation (2026-10-09)
+
+Regular hexation below η₅ at the attracting fixed point of pentation (`experimente/hexation.py`, `e38_hexation.py`, `exp.hexation` 10/10):
 1.7↑↑↑↑½ = 1.3974472613, 1.7↑↑↑↑∞ = 2.3876372817; every hexation has H(−3) = −2 and a singularity in (−4, −3); the infinite hexation
 converges exactly up to η₅; at an attracting complex fixed point there is no Kneser construction. Kneser-like hexation above η₅
 via the engine knhexinit in the gp-tetration fork (exp-079): 2↑↑↑↑1.5 = 2.6728939593426194891907964…, and thus η₆ = 1.79912123612881268672356700703,
