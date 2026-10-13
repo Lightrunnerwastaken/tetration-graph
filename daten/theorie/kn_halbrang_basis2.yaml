@@ -1,0 +1,53 @@
+# Theorie-Blöcke: halber Rang an Basis 2 (Etappen 1–2), 13.10.2026
+
+kn.satz.rangjets_exppoly:
+  worum: |
+    Bei Basis 2 lassen sich alle ganzen Rechenarten als „plus 1 mit Korrekturen“ exakt aufschreiben.
+  genau: |
+    Jeder Koeffizient der Entwicklung von $T^n(f_\varepsilon)$ ist ein Exponentialpolynom $\sum_{m\le j}2^{mx}P(x)$ und in der Klasse $\mathcal A$ eindeutig.
+  warum: |
+    Jede Ordnung führt auf eine Differenzengleichung $\Delta e=G$. In $\mathcal A$ hat sie höchstens eine Lösung (eine periodische Differenz müsste konstant sein), und für Exponentialpolynome gibt es sie explizit.
+  beispiel: |
+    Für $m=0$ hilft die Summenformel mit Bernoulli-Polynomen: $\Delta e=x$ gibt $e=x(x-1)/2$.
+  bilder: []
+  einordnung: |
+    Erste Ordnung: [[kn.satz.halbrang_linear]]; die Werte des halben Schritts: [[kn.beob.halbrang_basis2]].
+
+kn.beob.halbrang_basis2:
+  worum: |
+    Erste Zahlen für eine Rechenart zwischen Potenz und Tetration zur Basis 2.
+  genau: |
+    $H_{3.5}(2,0.5)=1.44302\pm10^{-4}$, zwischen $2^{0.5}=1.41421$ und $2\uparrow\uparrow0.5=1.45878$.
+  warum: |
+    Jede Ordnung der Entwicklung ist für ganze Ränge exakt bekannt; in den Rang wird mit einer Newtonreihe fortgesetzt und bei $n=\tfrac12$ ausgewertet; summiert wird bis zum kleinsten Glied.
+  beispiel: |
+    Die Leiter bei $x=0.5$: $1.41421$ (Potenz), $1.44302$ (Rang 3.5), $1.45878$ (Tetration), $1.46827$ (Rang 4.5).
+  bilder: []
+  einordnung: |
+    Test gegen Kneser: [[kn.beob.halbrang_kneser_test]]; Grenze der Methode: [[kn.beob.halbrang_divergenz]].
+
+kn.beob.halbrang_kneser_test:
+  worum: |
+    Ob der halbe Schritt wirklich ein halber Schritt ist: zweimal angewandt muss die Tetration herauskommen.
+  genau: |
+    Abstand zur Kneser-Tetration $0.8$ bis $3\cdot10^{-4}$ auf den reellen Testpunkten, Kneser liegt im Band der Partialsummen.
+  warum: |
+    Eine Auswahl, die einen „falschen“ halben Schritt trifft, würde eine andere Tetration erzeugen; die lineare Näherung etwa liegt um $0.045$ daneben.
+  beispiel: |
+    $x=0.25$: Summe $1.224284$, Kneser $1.224361$.
+  bilder: []
+  einordnung: |
+    Die Werte: [[kn.beob.halbrang_basis2]]; Kneser: [[kn.konstr.kneser]].
+
+kn.beob.halbrang_divergenz:
+  worum: |
+    Warum die Rechnung bei etwa vier Stellen stehen bleibt.
+  genau: |
+    Die Reihe in $\varepsilon$ divergiert (Gevrey-1-artig), und ab Ordnung 8 wachsen die Rang-Koeffizienten wie $\rho^n$ mit grossem $|\rho|$ — dann ist die Fortsetzung in den Rang nicht mehr festgelegt.
+  warum: |
+    Der Nachfolger $x+1$ hat keinen Fixpunkt; die Fixpunkte von $x+1+\varepsilon d(x)$ laufen bei $\varepsilon\to0$ ins Unendliche. Eine Entwicklung um einen solchen entarteten Punkt divergiert typischerweise.
+  beispiel: |
+    Rang 1: kleinstes Glied $\approx3\cdot10^{-5}$ bei Ordnung 6–10, bei Ordnung 52 schon $10^{18}$.
+  bilder: []
+  einordnung: |
+    Ähnliche Lehre: [[kn.gescheitert.polynom_rekonstruktion]]; offene Frage: [[kn.frage.halber_rang]].

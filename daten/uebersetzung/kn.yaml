@@ -232,6 +232,124 @@
       Two runs with different precision, contour, and number of points secure the digits.
     worum: |
       For every hyperoperation $H_r$ there is a limit base $\eta_r$: there $H_r(\eta_r,\cdot)$ touches the diagonal, and up to it the next hyperoperation stays bounded.
+- id: kn.beob.halbrang_basis2
+  quelle_hash: fe58489aa07b
+  theorie_hash: c63655b6d7ac
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: 'H₃.₅(2, x): a half hyperoperation between 2^x and tetration, to about 4 digits'
+    bereich: 'Selection: height class $\mathcal A$ (kn.satz.rangjets_exppoly), Newton series in the rank (Levin-accelerated), sum in $\varepsilon$
+      up to the smallest term (order $\le7$)'
+    aussage: |
+      The half-rank jet $H_{3.5}(2,x)\approx x+1+\sum_{j\le7}u_j(x)$ for the actual deviation $2^x-x-1$ gives (uncertainty about $\pm10^{-4}$):
+      $H_{3.5}(2,0.25)=1.21246$, $H_{3.5}(2,0.5)=1.44302$, $H_{3.5}(2,0.75)=1.70164$, $H_{3.5}(2,1.5)=2.78231$, $H_{3.5}(2,-0.5)=0.58923$, $H_{3.5}(2,0.5+0.5i)\approx1.3884+0.4720i$.
+      For comparison at $x=0.5$: $2^{0.5}=1.414214$, tetration (Kneser) $1.458782$, $H_{4.5}(2,0.5)=1.46827$. The ladder is monotone in the rank: increasing left of 1, decreasing to the right.
+      $H_{3.5}(2,1)=2$, $H_{3.5}(2,2)=4$ hold exactly — but they are built into every linear rank continuation and do not test the selection. The first term agrees with the closed formula to 34 digits.
+    einfach: 'For the first time there are numbers for a hyperoperation “three and a half” at base 2: they lie neatly between the power and tetration.
+      But they are accurate only to about four digits, because the calculation breaks down after that.'
+    pruefung:
+      f1_folgt_unmittelbar: No (calculation).
+      f2_benutzte_voraussetzungen: The chosen selection (height class, Newton series in the rank, optimal truncation); rank continuation not certified
+        (Levin, error ≤ 2e-6 per order).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Control values (±1e-4) for every future construction of H₃.₅.
+      f5_neue_frage: More digits via Borel summation? → kn.beob.halbrang_divergenz
+    bewertung:
+      richtigkeit: numerical, about 4 digits
+      nutzen: First concrete values of a half hyperoperation with rank structure.
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT.md, tables stage 1
+  en_theorie:
+    worum: |
+      First numbers for a hyperoperation between power and tetration at base 2.
+    genau: |
+      $H_{3.5}(2,0.5)=1.44302\pm10^{-4}$, between $2^{0.5}=1.41421$ and $2\uparrow\uparrow0.5=1.45878$.
+    warum: |
+      Every order of the expansion is known exactly for integer ranks; it is continued in the rank by a Newton series and evaluated at $n=\tfrac12$; the sum is taken up to the smallest term.
+    beispiel: |
+      The ladder at $x=0.5$: $1.41421$ (power), $1.44302$ (rank 3.5), $1.45878$ (tetration), $1.46827$ (rank 4.5).
+    einordnung: |
+      Test against Kneser: [[kn.beob.halbrang_kneser_test]]; limit of the method: [[kn.beob.halbrang_divergenz]].
+- id: kn.beob.halbrang_divergenz
+  quelle_hash: 39e1a888f8f4
+  theorie_hash: 36ff1da48572
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: 'Limit of the expansion around x+1: the series diverges, and from order 8 on the rank continuation is missing'
+    aussage: |
+      (a) The $\varepsilon$ series diverges: at rank 1 the terms fall to about $3\cdot10^{-5}$ ($j\approx6\ldots10$) and then grow factorially (up to $10^{18}$ at $j=52$), consistent with Gevrey-1; Borel–Padé does not stabilize.
+      (b) From order 8 on, the integer rank jets grow exponentially in the rank, $c_n^{(j)}\sim\rho_j^n$ with height-independent rates $|\rho_j|\approx7.6,\ 28,\ 117,\ 470,\ 2667$ ($j=8\ldots12$, partly negative).
+      Then the Newton continuation in $n$ diverges ($|\rho-1|>1$), and for $|\log|\rho||\ge\pi$ the growth type no longer determines the continuation (both proved elementarily) — the half-rank jet is not defined from order 8 on with this selection.
+      Underlying reason: as $\varepsilon\to0$ the fixed points of $f_\varepsilon$ move to $\infty$ (for $\varepsilon<0$, $f_\varepsilon$ has two real fixed points) — the expansion around the successor is degenerate.
+    einfach: The calculation “plus 1 and then small corrections” works only to about four digits. After that the corrections grow again, and for
+      the finer corrections a half step is no longer determined at all.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured; the divergence criteria are proved elementarily).
+      f2_benutzte_voraussetzungen: Rates from ranks up to n = 40; Gevrey order only by fit (A ≈ 7–9, imprecise).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Every expansion around a degenerate reference point.
+      f5_neue_frage: Rank continuation in Borel space instead of term by term; explanation of the rates ρ_j; expansion around a non-degenerate
+        reference point.
+    bewertung:
+      richtigkeit: numerical; criteria proved
+      nutzen: Names the actual obstacle on the way to H₃.₅.
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT.md, section “Was offen ist”
+  en_theorie:
+    worum: |
+      Why the calculation stops at about four digits.
+    genau: |
+      The series in $\varepsilon$ diverges (Gevrey-1-like), and from order 8 on the rank coefficients grow like $\rho^n$ with large $|\rho|$ — then the continuation in the rank is no longer determined.
+    warum: |
+      The successor $x+1$ has no fixed point; the fixed points of $x+1+\varepsilon d(x)$ run to infinity as $\varepsilon\to0$. An expansion around such a degenerate point typically diverges.
+    beispiel: |
+      Rank 1: smallest term $\approx3\cdot10^{-5}$ at orders 6–10, at order 52 already $10^{18}$.
+    einordnung: |
+      Similar lesson: [[kn.gescheitert.polynom_rekonstruktion]]; open question: [[kn.frage.halber_rang]].
+- id: kn.beob.halbrang_kneser_test
+  quelle_hash: ae53e8825cc7
+  theorie_hash: c9434b4c2d6e
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Two half steps give tetration — consistent with Kneser up to 10⁻⁴
+    aussage: |
+      In the construction of kn.beob.halbrang_basis2, two half steps give the perturbative tetration (rank-1 jet, 52 orders, optimal truncation). Its distance to the Kneser tetration $2\uparrow\uparrow x$:
+      $7.7\cdot10^{-5}$ ($x=0.25$), $2.3\cdot10^{-4}$ ($0.5$), $1.3\cdot10^{-4}$ ($0.75$), $1.5\cdot10^{-4}$ ($1.25$), $2.3\cdot10^{-4}$ ($1.5$), $3.1\cdot10^{-4}$ ($1.75$), $7.8\cdot10^{-4}$ ($0.5+0.5i$);
+      Kneser lies inside the band of partial sums at all real points. The rank recursion $H_{4.5}(x+1)=H_{3.5}(H_{4.5}(x))$ holds order by order to $10^{-34}$ (order 1) up to $\le2\cdot10^{-6}$.
+      **Consistent with Kneser, but no proof:** a tetration differing from Kneser by a 1-periodic θ below about $10^{-4}$ would be equally consistent. The linear approximation (distance $0.045$) is excluded.
+    einfach: 'The most important test: if you take the half step twice, the real tetration must come out. That works to about four digits, and
+      it fits Kneser''s solution — this calculation cannot test more precisely.'
+    pruefung:
+      f1_folgt_unmittelbar: No (calculation).
+      f2_benutzte_voraussetzungen: Kneser values from the fatou.gp fork (40 digits); truncation of the divergent series at the smallest term.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: The same test decides every better summation.
+      f5_neue_frage: Does a Borel summation in ε single out exactly Kneser?
+    bewertung:
+      richtigkeit: numerical, resolution about 1e-4
+      nutzen: First indication that the half rank at base 2 fits the Kneser tetration.
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT.md, stage 2
+  en_theorie:
+    worum: |
+      Whether the half step really is a half step: applied twice, tetration must come out.
+    genau: |
+      Distance to the Kneser tetration $0.8$ to $3\cdot10^{-4}$ at the real test points; Kneser lies inside the band of partial sums.
+    warum: |
+      A selection that hits a “wrong” half step would produce a different tetration; the linear approximation, for example, is off by $0.045$.
+    beispiel: |
+      $x=0.25$: sum $1.224284$, Kneser $1.224361$.
+    einordnung: |
+      The values: [[kn.beob.halbrang_basis2]]; Kneser: [[kn.konstr.kneser]].
 - id: kn.beob.hexation_verzweigt
   quelle_hash: 9c512691b9e1
   theorie_hash: 206fbff0a23b
@@ -4517,6 +4635,48 @@
       3. The distance to $f_K$ follows from the certified Kneser coefficients plus the remainder bound.
     worum: |
       A proof for “all degrees from $N_0$ on” needs a secured start: At $N_0$ the computed solution must really be the right one and lie close enough to Kneser.
+- id: kn.satz.rangjets_exppoly
+  quelle_hash: 1075e8bc1eed
+  theorie_hash: 92067f852139
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: All integer ranks above 2^x are exponential polynomials in every order — and unique
+    bereich: '$f_\varepsilon=x+1+\varepsilon(2^x-x-1)$; height class $\mathcal A$: holomorphic on $\operatorname{Re}x>-\rho$ with $|h(x+iy)|\le
+      Ce^{a\max(x,0)}(1+|x|+|y|)^p$'
+    aussage: |
+      For every rank $n\ge0$ and every order $j\ge1$, the formal jet of $T^n(f_\varepsilon)$ has exactly one version with coefficients in $\mathcal A$ (normalized by $e(0)=0$ at every stage), and every coefficient is an exponential polynomial
+      $$c_n^{(j)}(x)=\sum_{m=0}^{j}2^{mx}P_{n,j,m}(x).$$
+      Basis: $\Delta e=G$ has at most one solution in $\mathcal A$ with $e(0)=0$ (Lemma A); for exponential polynomials it exists and is again one (Lemma B: Bernoulli polynomials for $m=0$, for $m\ge1$ the polynomial solution of $2^mq(x+1)-q(x)=P(x)$).
+    einfach: If one writes the power 2^x as “plus 1 with a deviation”, all higher hyperoperations are built level by level from simple building
+      blocks (powers of two times polynomials) — and the building blocks are unique once wild growth is excluded.
+    beweis:
+      text: 'Lemma A: the difference of two solutions is 1-periodic and entire with polynomial vertical growth, hence constant (Fourier coefficients).
+        Lemma B by substitution. Theorem: induction on $n$ and $j$; exponents add in products, so $m\le j$.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, induction with Lemma A/B.
+      f2_benutzte_voraussetzungen: The height class $\mathcal A$ — it excludes the periodic freedom θ in every order (a choice).
+      f3_spezialfall: 'Yes: for $n=1$, $j=1$ the summation formula $\Delta w=v(x+1)$ from kn.satz.halbrang_linear.'
+      f4_uebertragbar: To every base $b$ with $b^{mx}$ instead of $2^{mx}$ (diagonal $b^m-1\ne0$).
+      f5_neue_frage: How do the coefficients grow in $n$ and $j$? → kn.beob.halbrang_divergenz
+    bewertung:
+      richtigkeit: complete; exponential polynomials computed with ball arithmetic (1000–3200 bits)
+      nutzen: Makes the integer ranks exactly computable and the height selection unique.
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/MATHEMATIK.md (Lemma A, B, Theorem C)
+  en_theorie:
+    worum: |
+      At base 2, all integer hyperoperations can be written down exactly as “plus 1 with corrections”.
+    genau: |
+      Every coefficient of the expansion of $T^n(f_\varepsilon)$ is an exponential polynomial $\sum_{m\le j}2^{mx}P(x)$ and unique in the class $\mathcal A$.
+    warum: |
+      Every order leads to a difference equation $\Delta e=G$. In $\mathcal A$ it has at most one solution (a periodic difference would have to be constant), and for exponential polynomials it exists explicitly.
+    beispiel: |
+      For $m=0$ the summation formula with Bernoulli polynomials helps: $\Delta e=x$ gives $e=x(x-1)/2$.
+    einordnung: |
+      First order: [[kn.satz.halbrang_linear]]; the values of the half step: [[kn.beob.halbrang_basis2]].
 - id: kn.satz.schwellen_monoton
   quelle_hash: 7ebc1daceaf6
   theorie_hash: 72b99ded83d1

@@ -1,0 +1,113 @@
+gebiet: kn
+# Halber Rang an Basis 2: Etappen 1–2 (forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13), übernommen 13.10.2026.
+# Störung um den Nachfolger: f_ε(x) = x + 1 + ε·d(x), d(x) = 2^x − x − 1 (ε = 1 ist die Potenz 2^x).
+aussagen:
+
+- id: kn.satz.rangjets_exppoly
+  titel: 'Alle ganzen Ränge über 2^x sind in jeder Ordnung Exponentialpolynome — und eindeutig'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: forschung
+  objekte: [hyperoperation]
+  bereich: '$f_\varepsilon=x+1+\varepsilon(2^x-x-1)$; Höhenklasse $\mathcal A$: holomorph auf $\operatorname{Re}x>-\rho$ mit $|h(x+iy)|\le Ce^{a\max(x,0)}(1+|x|+|y|)^p$'
+  aussage: |
+    Für jeden Rang $n\ge0$ und jede Ordnung $j\ge1$ hat der formale Jet von $T^n(f_\varepsilon)$ genau eine Fassung mit Koeffizienten in $\mathcal A$ (normiert durch $e(0)=0$ in jeder Stufe), und jeder Koeffizient ist ein Exponentialpolynom
+    $$c_n^{(j)}(x)=\sum_{m=0}^{j}2^{mx}P_{n,j,m}(x).$$
+    Grundlage: $\Delta e=G$ hat in $\mathcal A$ höchstens eine Lösung mit $e(0)=0$ (Lemma A); für Exponentialpolynome existiert sie und ist wieder eines (Lemma B: Bernoulli-Polynome für $m=0$, für $m\ge1$ Polynomlösung von $2^mq(x+1)-q(x)=P(x)$).
+  einfach: >-
+    Wenn man die Potenz 2^x als „plus 1 mit einer Abweichung“ schreibt, sind alle höheren Rechenarten Stufe für Stufe aus einfachen Bausteinen (Zweierpotenzen mal Polynome)
+    gebaut — und die Bausteine sind eindeutig, wenn man wildes Wachstum ausschliesst.
+  beweis: {art: vollstaendig, text: 'Lemma A: die Differenz zweier Lösungen ist 1-periodisch und ganz mit polynomialem vertikalem Wachstum, also konstant (Fourierkoeffizienten). Lemma B durch Einsetzen. Satz: Induktion über $n$ und $j$; Exponenten addieren sich in Produkten, also $m\le j$.'}
+  stuetzt_sich_auf: [kn.satz.halbrang_linear]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/MATHEMATIK.md (Lemma A, B, Satz C)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Induktion mit Lemma A/B.'
+    f2_benutzte_voraussetzungen: 'Die Höhenklasse $\mathcal A$ — sie schliesst die periodische Freiheit θ in jeder Ordnung aus (eine Wahl).'
+    f3_spezialfall: 'Ja: für $n=1$, $j=1$ die Summationsformel $\Delta w=v(x+1)$ aus kn.satz.halbrang_linear.'
+    f4_uebertragbar: 'Auf jede Basis $b$ mit $b^{mx}$ statt $2^{mx}$ (Diagonale $b^m-1\ne0$).'
+    f5_neue_frage: 'Wie wachsen die Koeffizienten in $n$ und $j$? → kn.beob.halbrang_divergenz'
+  bewertung: {richtigkeit: 'vollständig; Exponentialpolynome mit Ballarithmetik (1000–3200 Bit) berechnet', neuheit: neu_ungeprueft, nutzen: 'Macht die ganzen Ränge exakt rechenbar und die Höhenauswahl eindeutig.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: motiviert, ziel: kn.frage.halber_rang}
+
+- id: kn.beob.halbrang_basis2
+  titel: 'H₃.₅(2, x): eine halbe Rechenart zwischen 2^x und der Tetration, auf etwa 4 Stellen'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation]
+  bereich: 'Auswahl: Höhenklasse $\mathcal A$ (kn.satz.rangjets_exppoly), Newtonreihe im Rang (Levin-beschleunigt), Summe in $\varepsilon$ bis zum kleinsten Glied (Ordnung $\le7$)'
+  aussage: |
+    Der Halbrang-Jet $H_{3.5}(2,x)\approx x+1+\sum_{j\le7}u_j(x)$ für die echte Abweichung $2^x-x-1$ ergibt (Unsicherheit etwa $\pm10^{-4}$):
+    $H_{3.5}(2,0.25)=1.21246$, $H_{3.5}(2,0.5)=1.44302$, $H_{3.5}(2,0.75)=1.70164$, $H_{3.5}(2,1.5)=2.78231$, $H_{3.5}(2,-0.5)=0.58923$, $H_{3.5}(2,0.5+0.5i)\approx1.3884+0.4720i$.
+    Zum Vergleich bei $x=0.5$: $2^{0.5}=1.414214$, Tetration (Kneser) $1.458782$, $H_{4.5}(2,0.5)=1.46827$. Die Leiter ist monoton im Rang: links von 1 steigend, rechts fallend.
+    $H_{3.5}(2,1)=2$, $H_{3.5}(2,2)=4$ gelten exakt — sind aber in jede lineare Rangfortsetzung eingebaut und prüfen die Auswahl nicht. Das erste Glied stimmt mit der geschlossenen Formel auf 34 Stellen überein.
+  einfach: >-
+    Zum ersten Mal gibt es Zahlen für eine Rechenart „dreieinhalb“ zur Basis 2: Sie liegen sauber zwischen der Potenz und der Tetration. Genau sind sie
+    aber nur auf etwa vier Stellen, weil die Rechnung danach zerfällt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT.md, Tabellen Etappe 1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung).'
+    f2_benutzte_voraussetzungen: 'Die gewählte Auswahl (Höhenklasse, Newtonreihe im Rang, optimaler Abbruch); Rangfortsetzung nicht zertifiziert (Levin, Fehler ≤ 2e-6 je Ordnung).'
+    f3_spezialfall: 'nein'
+    f4_uebertragbar: 'Kontrollzahlen (±1e-4) für jede künftige Konstruktion von H₃.₅.'
+    f5_neue_frage: 'Mehr Stellen über Borel-Summation? → kn.beob.halbrang_divergenz'
+  bewertung: {richtigkeit: 'numerisch, etwa 4 Stellen', neuheit: neu_ungeprueft, nutzen: 'Erste konkrete Werte einer halben Hyperoperation mit Rangstruktur.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: motiviert, ziel: kn.frage.halber_rang}
+
+- id: kn.beob.halbrang_kneser_test
+  titel: 'Zwei halbe Schritte geben die Tetration — verträglich mit Kneser bis auf 10⁻⁴'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, kneser_T]
+  aussage: |
+    In der Konstruktion von kn.beob.halbrang_basis2 ergeben zwei Halbschritte die perturbative Tetration (Rang-1-Jet, 52 Ordnungen, optimaler Abbruch). Ihr Abstand zur Kneser-Tetration $2\uparrow\uparrow x$:
+    $7.7\cdot10^{-5}$ ($x=0.25$), $2.3\cdot10^{-4}$ ($0.5$), $1.3\cdot10^{-4}$ ($0.75$), $1.5\cdot10^{-4}$ ($1.25$), $2.3\cdot10^{-4}$ ($1.5$), $3.1\cdot10^{-4}$ ($1.75$), $7.8\cdot10^{-4}$ ($0.5+0.5i$);
+    Kneser liegt an allen reellen Punkten im Band der Partialsummen. Die Rangrekursion $H_{4.5}(x+1)=H_{3.5}(H_{4.5}(x))$ gilt Ordnung für Ordnung auf $10^{-34}$ (Ordnung 1) bis $\le2\cdot10^{-6}$.
+    **Verträglich mit Kneser, aber kein Nachweis:** eine Tetration, die sich von Kneser um ein 1-periodisches θ unter etwa $10^{-4}$ unterscheidet, wäre ebenso verträglich. Die lineare Näherung (Abstand $0.045$) ist ausgeschlossen.
+  einfach: >-
+    Der wichtigste Test: Macht man den halben Schritt zweimal, muss die echte Tetration herauskommen. Das klappt auf etwa vier Stellen, und es passt zu
+    Knesers Lösung — genauer lässt sich mit dieser Rechnung nicht prüfen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT.md, Etappe 2'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung).'
+    f2_benutzte_voraussetzungen: 'Kneser-Werte aus dem fatou.gp-Fork (40 Stellen); Abbruch der divergenten Reihe beim kleinsten Glied.'
+    f3_spezialfall: 'nein'
+    f4_uebertragbar: 'Derselbe Test entscheidet jede bessere Summation.'
+    f5_neue_frage: 'Zeichnet eine Borel-Summation in ε genau Kneser aus?'
+  bewertung: {richtigkeit: 'numerisch, Auflösung etwa 1e-4', neuheit: neu_ungeprueft, nutzen: 'Erster Hinweis, dass der Halbrang an Basis 2 zur Kneser-Tetration passt.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: kn.beob.halbrang_basis2}
+    - {typ: verwandt, ziel: kn.konstr.kneser}
+
+- id: kn.beob.halbrang_divergenz
+  titel: 'Grenze der Entwicklung um x+1: die Reihe divergiert, und ab Ordnung 8 fehlt die Rangfortsetzung'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation]
+  aussage: |
+    (a) Die $\varepsilon$-Reihe divergiert: bei Rang 1 fallen die Glieder bis etwa $3\cdot10^{-5}$ ($j\approx6\ldots10$) und wachsen dann faktoriell (bis $10^{18}$ bei $j=52$), verträglich mit Gevrey-1; Borel–Padé stabilisiert sich nicht.
+    (b) Ab Ordnung 8 wachsen die ganzzahligen Rangjets exponentiell im Rang, $c_n^{(j)}\sim\rho_j^n$ mit höhenunabhängigen Raten $|\rho_j|\approx7.6,\ 28,\ 117,\ 470,\ 2667$ ($j=8\ldots12$, teils negativ).
+    Dann divergiert die Newtonfortsetzung in $n$ ($|\rho-1|>1$), und für $|\log|\rho||\ge\pi$ legt der Wachstumstyp die Fortsetzung nicht mehr fest (beides elementar bewiesen) — der Halbrang-Jet ist ab Ordnung 8 mit dieser Auswahl nicht definiert.
+    Grund im Hintergrund: bei $\varepsilon\to0$ wandern die Fixpunkte von $f_\varepsilon$ nach $\infty$ (für $\varepsilon<0$ hat $f_\varepsilon$ zwei reelle Fixpunkte) — die Entwicklung um den Nachfolger ist entartet.
+  einfach: >-
+    Die Rechnung „plus 1 und dann kleine Korrekturen“ trägt nur bis etwa vier Stellen. Danach werden die Korrekturen wieder grösser, und für die feineren
+    Korrekturen ist ein halber Schritt gar nicht mehr festgelegt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT.md, Abschnitt „Was offen ist“'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen; die Divergenzkriterien sind elementar bewiesen).'
+    f2_benutzte_voraussetzungen: 'Raten aus Rängen bis n = 40; Gevrey-Ordnung nur durch Fit (A ≈ 7–9, unscharf).'
+    f3_spezialfall: 'nein'
+    f4_uebertragbar: 'Jede Entwicklung um einen entarteten Bezugspunkt.'
+    f5_neue_frage: 'Rangfortsetzung im Borel-Raum statt Glied für Glied; Erklärung der Raten ρ_j; Entwicklung um einen nicht entarteten Bezugspunkt.'
+  bewertung: {richtigkeit: 'numerisch; Kriterien bewiesen', neuheit: neu_ungeprueft, nutzen: 'Benennt das eigentliche Hindernis auf dem Weg zu H₃.₅.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: motiviert, ziel: kn.frage.halber_rang}
+    - {typ: verwandt, ziel: kn.gescheitert.polynom_rekonstruktion}
