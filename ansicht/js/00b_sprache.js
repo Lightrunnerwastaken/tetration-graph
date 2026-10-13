@@ -11,7 +11,7 @@ const SPRACHE = (() => {
     const s = localStorage.getItem("tetra-sprache");
     if (s === "en" || s === "de") return s;
   } catch (e) { /* localStorage nicht verfügbar */ }
-  return /^de\b/i.test(navigator.language || "") ? "de" : "en";
+  return "en";                     // Standard für alle (öffentliche Bibliothek); Deutsch über den Knopf oder ?lang=de, die Wahl wird gemerkt
 })();
 const EN = SPRACHE === "en";
 document.documentElement.lang = SPRACHE;
