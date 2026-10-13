@@ -1,6 +1,6 @@
 """exp.polynom_halbexp — Polynom-Wurzel von exp: wählt das Abschneiden die Kneser-Halbexponentialfunktion aus?
 
- Verfahren (Janis' Notiz, Okt. 2026): p_N(x) = Σ_{k≤N} a_k x^k mit p_N(p_N(x)) = e^x + O(x^{N+1}) — N+1 Gleichungen für N+1 Koeffizienten,
+ Verfahren (Notiz des Autors, Okt. 2026): p_N(x) = Σ_{k≤N} a_k x^k mit p_N(p_N(x)) = e^x + O(x^{N+1}) — N+1 Gleichungen für N+1 Koeffizienten,
  Zweig stetig von p_1(x) = x + 1/2 aus fortgesetzt (Newton, Startwert: Lösung zu N−1 mit a_N = 0). Gerechnet mit arb (python-flint).
  Vergleich: Kneser f_K(z) = T_e(slog_e(z) + 1/2), Taylor-Koeffizienten um 0 aus Cauchy-Werten auf |z| = 0.9 (komplexes slog und sexp).
  Prüfgrössen: p_N(1) gegen T_e(1/2), Koeffizienten einzeln, und p_N(L) gegen L (L = Fixpunkt von exp, |L| = 1.3746 = Konvergenzradius von f_K).

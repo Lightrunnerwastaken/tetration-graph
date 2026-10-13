@@ -240,7 +240,7 @@ an unserem Verständnis geändert?
 - **Was es lehrt:** Für den Hauptsatz reicht κ = 1 = nur (H1); die Fast-Orthogonalität ist Verfeinerung. Der Kern ist (H1), die exakte Auslöschung der
   beiden Kopfraten. **Konsequenz:** Cotlar–Stein (absolut) abgeschlossen; nächster sinnvoller Schritt wäre (H1) selbst — mit V in der Ideenrunde.
 
-## [K] 12.10. 01:22 — Meta-Reflexion (Auftrag Janis/Leitung): Kernproblem-Synthese
+## [K] 12.10. 01:22 — Meta-Reflexion (Auftrag Leitung/Autor): Kernproblem-Synthese
 - **Was ich sah:** Alle Fassungen der offenen Aussage sind Aussagen über die Köpfe (K5); für den Hauptsatz genügt (H1), und (H1) ist asymptotisch eine reine
   Eckaussage. Alle gescheiterten Ansätze behandeln f als beliebige Abbildung mit drehendem Randfixpunkt; keiner benutzt die Herkunft aus f∘f = exp über
   die Abelkoordinate, in der J_∞ exakt die Verschiebung I + S_{½} ist (KERNPROBLEM.md).
@@ -418,7 +418,7 @@ an unserem Verständnis geändert?
   Exponentiell (k50) ist die Ecke harmlos, die Γout-Seite braucht das Green-Gewicht.
 - **Warum:** In §22.2/§28.4 hatte ich die Datenseite „wie in K15“ übernommen, ohne die Pol-Quellen nahe L zu prüfen. Die Drehung, die ich auf der Kopfseite
   beseitigt hatte, sitzt auf der Datenseite wieder.
-- **Was es lehrt:** Ein Satz ist erst fertig, wenn BEIDE Seiten (Köpfe und Daten) im selben Gebiet ausgeschrieben sind. Ein Dokument für Janis zwingt dazu — gut so.
+- **Was es lehrt:** Ein Satz ist erst fertig, wenn BEIDE Seiten (Köpfe und Daten) im selben Gebiet ausgeschrieben sind. Ein Dokument für den Autor zwingt dazu — gut so.
   Meldung 10:01 war in diesem Punkt zu stark; das muss die Leitung wissen.
 - **Konsequenz:** Hauptsatz unter (H)^{r₀}; (AH) als Eckstruktur; nächster Block exponentielle Ebene mit Green-Gewicht (Γout-Seite).
 

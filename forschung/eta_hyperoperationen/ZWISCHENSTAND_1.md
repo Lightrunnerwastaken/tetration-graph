@@ -8,7 +8,7 @@ Wir schreiben H₃(b,x)=bˣ, H₄=Tetration, H₅=Pentation, H₆=Hexation, H₇
 
 Hᵣ₊₁(b,0)=1 und Hᵣ₊₁(b,x+1)=Hᵣ(b,Hᵣ₊₁(b,x)).
 
-ηᵣ bezeichnet die positive Berührbasis **der Abbildung Hᵣ**: Hᵣ(ηᵣ,eᵣ)=eᵣ und ∂ₓHᵣ(ηᵣ,eᵣ)=1. Sie ist unter den üblichen Monotonie- und Fixpunkthypothesen die Grenze beschränkter ganzzahliger Iteration für **Hᵣ₊₁**. Die von Janis erinnerte Reihe beginnt somit mit η₃=e^(1/e).
+ηᵣ bezeichnet die positive Berührbasis **der Abbildung Hᵣ**: Hᵣ(ηᵣ,eᵣ)=eᵣ und ∂ₓHᵣ(ηᵣ,eᵣ)=1. Sie ist unter den üblichen Monotonie- und Fixpunkthypothesen die Grenze beschränkter ganzzahliger Iteration für **Hᵣ₊₁**. Die vom Autor erinnerte Reihe beginnt somit mit η₃=e^(1/e).
 
 ## Bisherige Ergebnisse
 

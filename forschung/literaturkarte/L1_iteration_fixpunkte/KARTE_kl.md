@@ -66,7 +66,7 @@ Bestand vorher: 36 Aussagen (kl.*) in 04_ und 10_ (Bruchsummen/Basiswechsel); Li
 
 - **Stand:** keine neuen kl-Knoten, aber Neuheit und Quellen korrigiert: kl.satz.eta_digamma (Forum 2010 hatte 2e/k), kl.beob.zwei_abel (Karlin–McGregor),
   kl.kor.eta_baker (Baker 1958/62), kl.satz.carlson (Carlson 1914, Hardy 1920), kl.satz.newton_reihe (Woon 1997), kl.verm.streifenbreite (Forum tid 69 ohne Formel).
-- **Restlücken:** Volltext Kouznetsov–Trappmann 2010 (Fourier-Abfall der Differenz; frei nur als PDF — Leitung/Janis); Basen $e^{-e}\le b<1$: keine Arbeit zur
+- **Restlücken:** Volltext Kouznetsov–Trappmann 2010 (Fourier-Abfall der Differenz; frei nur als PDF — Leitung/Autor); Basen $e^{-e}\le b<1$: keine Arbeit zur
   Tetration (nur zum Turm) gefunden — Forum tid 352 (2009) stellt die Frage für $b<e^{-e}$, ungelöst; Paulsen 2019 auf Basen unter 1 prüfen (L2);
   Kouznetsov–Trappmanns zwei Eindeutigkeitskriterien als eigene Knoten; Nörlund (Newton-Reihen).
 

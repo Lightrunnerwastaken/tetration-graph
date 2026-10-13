@@ -27,7 +27,7 @@ Was sich gegenüber Fassung 2 ändert:
 
 **Bezeichnungen.**
 - L = 0.31813 + 1.33724i (e^L = L), ρ = |L|, D = {|x| < ρ}, μ = √L, a = 1 + iL/(4π), r_n = ρn^{−Re a} (Kegelskala).
-- f_K ist Knesers halbe e-Funktion. p_N sind Janis' Polynome (T_N[p_N∘p_N − eˣ] = 0, Zweig der σ-Homotopie ab p₁).
+- f_K ist Knesers halbe e-Funktion. p_N sind die Polynome des Autors (T_N[p_N∘p_N − eˣ] = 0, Zweig der σ-Homotopie ab p₁).
 - **K_{r₀} := D̄ ∖ (U_{r₀}(L) ∪ U_{r₀}(L̄))** mit festem r₀ ∈ (r_*, 0.1]. r_* ist der Abstand der Zone, in der der primale Kopf auf der Γout-Seite zu wachsen beginnt
   (Kneser ~ 1e-6 nach der Profilrechnung, Schätzung; Modell M4 ≈ 0.13, Vs T1).
 - Köpfe: c_n = J̃_n⁻¹e_n, ℓ_n = J̃_n^{−T}e_n, δ_n(z) = Σ c_{n,k}(z/ρ)^k, Λ_n(t) = Σ ℓ_{n,k}(ρ/t)^k.
@@ -159,7 +159,7 @@ Status: **numerisch**. (EP) und (F3′) bleiben benannte Hypothesen.
 4. **(KK′)** (KERNPROBLEM §4, Nachtrag 2): Die Steg-Zahl +0.003 ist zurückgezogen (13:07). Zu prüfen: h_P + h_A ≈ 0 am Steg und ΔK_n(t,t)·m(t) → κ(t) (k57, k57b) mit eigenem Code.
 5. Startbedingung: s′ < s_E im Kugelradius — verträglich mit H1/H2 (R_N ≤ δ₀ der Familienannahmen)?
 
-## 6. Für Janis
+## 6. Für den Autor
 Wenn drei Aussagen über das lineare Problem stimmen, nähern sich Deine Polynome p_N Knesers Funktion überall auf der Scheibe bis |L|, ausser in zwei winzigen
 festen Kreisen um L und L̄. Daraus folgt, dass alle Koeffizienten und p_N(1) gegen Knesers Werte gehen.
 - Die dritte Aussage (Annäherung durch Polynome) ist jetzt erledigt: ein bekannter Satz aus der Literatur, dazu eine am Computer geprüfte Form des Gebiets.
@@ -220,7 +220,7 @@ Statuswörter (wie in v_pruefstand/ABHAENGIGKEIT.md):
 **Bezeichnungen.**
 - L = 0.31813 + 1.33724i ist der Fixpunkt e^L = L, ρ = |L|, D = {|x| < ρ}.
 - f_K ist Knesers halbe e-Funktion.
-- p_N sind Janis' Polynome vom Grad N mit T_N[p_N∘p_N − eˣ] = 0, als Zweig der σ-Homotopie ab p₁.
+- p_N sind die Polynome des Autors vom Grad N mit T_N[p_N∘p_N − eˣ] = 0, als Zweig der σ-Homotopie ab p₁.
 - Für ein festes r₀ ∈ (0, 0.1] ist **K_{r₀} := D̄ ∖ (U_{r₀}(L) ∪ U_{r₀}(L̄))**.
 - B_N^{r₀} := {P : sup_{K_{r₀}}|P − f_K| ≤ R_N}, R_N = K₀C′N^{κ−4.29}, K₀ = 6.
 
@@ -335,7 +335,7 @@ Leitet man den Familienteil statt dessen aus P = f_K her (Weg X4a/X8), so kommt 
 4. **Schritt 6.** (H-iii) ist hier in sup_{K_{r₀}} formuliert. Prüfen, ob H2 an keiner Stelle sup_{D̄} benutzt (Homotopie-Integral, Ball-Erhalt).
 5. **(H-ii)^{r₀}** ist schwächer als die alte (H-ii) und von der Warnkette nicht betroffen. Ob sie für alle N gilt, ist die offene Frage. Weil Quellen auf dem Schlitz nahe L bleiben, ist sie aber nicht frei von der Ecke.
 
-### A.7. Für Janis
+### A.7. Für den Autor
 
 Wir zeigen: Wenn eine einzige Aussage über das lineare Problem stimmt — die Annahme (H)^{r₀} —, dann nähern sich Deine Polynome p_N Knesers Funktion überall auf der Kreisscheibe bis |x| = |L|, nur nicht in zwei winzigen festen Kreisen um die Fixpunkte L und L̄. Daraus folgt, dass jeder Koeffizient und der Wert p_N(1) gegen Knesers Werte gehen.
 
@@ -368,7 +368,7 @@ Was sich gegenüber Fassung 1 ändert:
 
 **Bezeichnungen.**
 - L = 0.31813 + 1.33724i (e^L = L), ρ = |L|, D = {|x| < ρ}, μ = √L, a = 1 + iL/(4π), r_n = ρn^{−Re a} (Kegelskala).
-- f_K ist Knesers halbe e-Funktion. p_N sind Janis' Polynome (T_N[p_N∘p_N − eˣ] = 0, Zweig der σ-Homotopie ab p₁).
+- f_K ist Knesers halbe e-Funktion. p_N sind die Polynome des Autors (T_N[p_N∘p_N − eˣ] = 0, Zweig der σ-Homotopie ab p₁).
 - **K_{r₀} := D̄ ∖ (U_{r₀}(L) ∪ U_{r₀}(L̄))** mit festem r₀ ∈ (r_*, 0.1]. Dabei ist r_* der Abstand der Zone, in der der primale Kopf auf der Γout-Seite zu wachsen beginnt:
   - für Kneser nach der Profilrechnung r_* ~ 1e-6 (k_kern/BERICHT §23.3; Schätzung);
   - im Modell M4 von V etwa 0.13 (Vs T1).
@@ -522,7 +522,7 @@ Die Green- und Abstandsfaktoren von Fassung 1 (c_g′, 0.933) werden in Fassung 
   dieser Linse für N ≳ 1500 falsch**; die Familie braucht eine andere Datenbedingung oder eine Kontur ohne Linsenteil, auf dem p_N divergiert.
 - Fassung 1, Prüfstelle 1 (Faktor 2): Schreibfehler in ARCH §9.7 (1); 12.7 enthält beide Schlitze; für K′ 8.2, nicht 16.3.
 
-### B.6. Für Janis
+### B.6. Für den Autor
 Wenn drei Aussagen über das lineare Problem stimmen, nähern sich Deine Polynome p_N Knesers Funktion überall auf der Scheibe bis |L|, ausser in zwei winzigen festen Kreisen um L und L̄. Daraus folgt, dass alle Koeffizienten und p_N(1) gegen Knesers Werte gehen.
 - Die erste betrifft zwei Antwortfolgen an der Ecke, deren Form wir explizit kennen.
 - Die zweite ist eine Aussage über exponentielles Wachstum, wie sie die Potentialtheorie behandelt.

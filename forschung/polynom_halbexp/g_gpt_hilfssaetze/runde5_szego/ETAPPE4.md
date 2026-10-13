@@ -242,9 +242,9 @@ Die strikte Inklusion H_η(D_R)⊂D_r mit r<1 schließt aber einen Fixpunkt von 
 
 \[
 \partial_\theta\log\frac{h_n}{h_{n-1}}
-=\operatorname{tr}(J_n^{-1}\partial_\theta J_n)
--2\operatorname{tr}(J_{n-1}^{-1}\partial_\theta J_{n-1})
-+\operatorname{tr}(J_{n-2}^{-1}\partial_\theta J_{n-2}),
+=\mathrm{tr}(J_n^{-1}\partial_\theta J_n)
+-2\mathrm{tr}(J_{n-1}^{-1}\partial_\theta J_{n-1})
++\mathrm{tr}(J_{n-2}^{-1}\partial_\theta J_{n-2}),
 \]
 \[
 (\partial_\theta J_n)_{kj}

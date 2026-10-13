@@ -18,7 +18,7 @@ die Eigenwerte gehen nur gegen p^k, wenn der Fixpunkt 1 − s im Konvergenzkreis
 ## [L1] 12.10. 15:59 — Abschluss L1
 KANDIDATEN.md: MacDonnell → Quelle, Moroni → Quelle ohne Knoten, arXiv 2201.00643 und 2105.00247 verworfen (zurückgezogen), Forum tid 352 aufgenommen.
 Neu: it.satz.sternberg_reell, fg.satz.einbettung_fluss (lit_fg_1.yaml, Theorie lit_fg.yaml); fp.satz.rechteckwelle → vermutlich_neu mit Recherche.
-Offene Volltexte (nur PDF/Bezahlschranke, nicht geladen): Kouznetsov–Trappmann 2010, Cho–Kim 2004, Gao–Han–Schilling 2012 — → L3/Janis.
+Offene Volltexte (nur PDF/Bezahlschranke, nicht geladen): Kouznetsov–Trappmann 2010, Cho–Kim 2004, Gao–Han–Schilling 2012 — → L3/Autor.
 Abschnitte „Stand und Restlücken“ in allen vier L1_iteration_fixpunkte/KARTE_*.md.
 
 ## [L1] 12.10. 15:52 — Block 2: 12 neue Literaturknoten, 13 verbesserte; → L3: ein neuer Strang

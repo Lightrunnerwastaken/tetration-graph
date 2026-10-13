@@ -153,8 +153,8 @@ Bezeichnung hier: η₃ = η = e^{1/e}, e₃ = e; ηₙ, eₙ = Berührbasis und
 
 - **A (erledigt 12.10.)** Eigene „vermutlich neu“-Einstufungen bei Hexation/höheren Stufen korrigieren: η₅, η₆ (Levenstein 2017 auf 3–4 Stellen), unendliche Hexation bis η₅ (ebd.), H(−3) = −2 und Singularität (ebd.; Trappmann nach Nixon), Kneser-artige Hexation über Kreis und θ (ebd.). → erledigt in diesem Durchgang (BRETT).
 - **A (erledigt 12.10.)** TPID 10 mit allen Zugängen (Abschnitt 5) als Knoten (Strang kn.etas, 9 Aussagen); TPID 11 als eigene Vermutung.
-- **A (wartet auf Janis)** Volltexte Paulsen 2026 (z↑↑a als Funktion der Basis, betrifft bw.ann.basis_diffbar) und Paulsen–Cowgill 2021 — nicht frei zugänglich; bis dahin sekundaer.
-- **A (zurückgestellt, Entscheid Janis)** η₇, e₇ genau rechnen (Levenstein 2017: η₇ ≈ 1.839; Abstandsgesetz 1.8399; e₇: Hochrechnung ≈ 3.54 gegen Levensteins „nahe 3.7“).
+- **A (wartet auf den Autor)** Volltexte Paulsen 2026 (z↑↑a als Funktion der Basis, betrifft bw.ann.basis_diffbar) und Paulsen–Cowgill 2021 — nicht frei zugänglich; bis dahin sekundaer.
+- **A (zurückgestellt, Entscheid des Autors)** η₇, e₇ genau rechnen (Levenstein 2017: η₇ ≈ 1.839; Abstandsgesetz 1.8399; e₇: Hochrechnung ≈ 3.54 gegen Levensteins „nahe 3.7“).
   Aufwand: neue Stufe — reguläre Heptation am linken reellen Fixpunkt der Kneser-artigen Hexation (Schröder-Reihe der Hexation dort, Hexation auf einem Kreis
   um den Berührpunkt). Code etwa ein Arbeitstag; Rechnung etwa 10–15 Basen in der Sekantensuche, je Basis ein knhexinit-Lauf plus einige hundert Hexationswerte —
   geschätzt 1–4 h Laptop, Kneser-Motor exklusiv (zum Vergleich: exp.hexation_kneser 141 s mit Zwischenspeicher für eine Basis).

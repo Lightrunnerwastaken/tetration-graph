@@ -1,6 +1,6 @@
 # Beweis-Buchhaltung — Abhängigkeitsbild des Gesamtbeweises (Strang V, Phase 3)
 
-## Stand des Gesamtbeweises (für Janis, 11.10. 22:54, ergänzt 12.10. 02:17)
+## Stand des Gesamtbeweises (für den Autor, 11.10. 22:54, ergänzt 12.10. 02:17)
 
 **Ziel:** Die Polynome p_N (p_N∘p_N = eˣ bis zum Grad N) nähern sich auf der Scheibe D̄ gleichmässig Knesers f_K.
 **Aufbau:** bis N₀ rechnet der Computer streng nach; ab N₀ zeigt ein Newton-Argument, dass p_N in einer kleinen Kugel um f_K bleibt.

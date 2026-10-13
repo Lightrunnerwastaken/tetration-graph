@@ -13,7 +13,7 @@ Die Sätze G3–G7 und die ausführlichen Korrekturen I_f − B_y stehen im arch
 Wir untersuchen die quadratischen Jacobiabschnitte J_N des ursprünglichen Systems, mit N+1 Koeffizienten und N+1 Gleichungen. f ist dabei der feste Modellkeim; es wird keine neue nichtlineare Lösung p_N konstruiert. Wie zuvor ist
 
 \[
-\widetilde J_N=D_NJ_ND_N^{-1},\quad D_N=\operatorname{diag}(\rho^k),\quad
+\widetilde J_N=D_NJ_ND_N^{-1},\quad D_N=\mathrm{diag}(\rho^k),\quad
 e_{N,x}=((\rho/x)^k)_{k=0}^N,\quad
 v_N(x)=\widetilde J_N^{-1}e_{N,x}.
 \]
@@ -50,7 +50,7 @@ Sie transportiert die **Testkerne**, nicht bereits die inverse Momentlösung. Ih
 Seien r₁(t), r₂(t), r₃(t) die drei einfachen Urbilder von t, \(\lambda_i=1/r_i\). Abseits von t=0,a und den kritischen Werten gilt auf jedem Gebiet mit einer analytischen Wahl der Zweige
 
 \[
-\mathsf A=V\operatorname{diag}(\lambda_1,\lambda_2,\lambda_3,1/t)V^{-1},
+\mathsf A=V\mathrm{diag}(\lambda_1,\lambda_2,\lambda_3,1/t)V^{-1},
 \qquad
 V=\begin{pmatrix}
 \lambda_1^2&\lambda_2^2&\lambda_3^2&0\\
@@ -63,7 +63,7 @@ V=\begin{pmatrix}
 **Beweis:** \((t-a)\lambda_i^3-b\lambda_i^2-c\lambda_i-d=0\), weil f(1/λ_i)=t. Direktes Multiplizieren gibt die vier Eigenvektoren. Ferner
 \(\det V=(\lambda_1-\lambda_2)(\lambda_1-\lambda_3)(\lambda_2-\lambda_3)\ne0\). ∎
 
-Damit ist der **Transport** auf dem geschnittenen Gebiet exakt durch \(V\operatorname{diag}(\lambda_i^k,t^{-k})V^{-1}\) dargestellt, ohne asymptotischen Rest. Beim Weiterführen um eine Kontur, die beide kritischen Werte umschließt, permutieren die ersten drei Spalten zyklisch. Die vierte bleibt fest. In Matrixsprache: \(V_+=V_-P\), wobei P die entsprechende 3-Zykel-Permutation, erweitert um eine 1, ist. Ein globaler Ansatz muss diesen Sprung mitführen.
+Damit ist der **Transport** auf dem geschnittenen Gebiet exakt durch \(V\mathrm{diag}(\lambda_i^k,t^{-k})V^{-1}\) dargestellt, ohne asymptotischen Rest. Beim Weiterführen um eine Kontur, die beide kritischen Werte umschließt, permutieren die ersten drei Spalten zyklisch. Die vierte bleibt fest. In Matrixsprache: \(V_+=V_-P\), wobei P die entsprechende 3-Zykel-Permutation, erweitert um eine 1, ist. Ein globaler Ansatz muss diesen Sprung mitführen.
 
 Für das **exakte** kubische Modell aus L=−W₋₁(−1) und μ=√L liegen die kritischen Werte rigoros in
 

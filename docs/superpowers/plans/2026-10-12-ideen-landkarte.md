@@ -16,7 +16,7 @@
 - Backslashes in YAML/Skripten nur mit Write/Edit schreiben, nie per Bash-Heredoc.
 - `experimente/gemeinsam.py` nicht anfassen (sonst werden alle Experimente „veraltet“).
 - Lage deterministisch: gleiche Daten ⇒ gleiche Koordinaten (kein `random` ohne festen Startwert).
-- Sprache der Oberfläche Deutsch, einfache Wörter; Karte immer dunkel (Janis' Wahl), Farben wie `KF` in `02_karte.js`.
+- Sprache der Oberfläche Deutsch, einfache Wörter; Karte immer dunkel (Wahl des Autors), Farben wie `KF` in `02_karte.js`.
 - Die alte Karte (Tab „Karte“) bleibt unverändert erreichbar.
 
 ## Review Focus

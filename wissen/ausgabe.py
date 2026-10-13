@@ -41,7 +41,8 @@ def bericht_md(g, stat, befunde):
         n = len(erg.get("pruefungen") or [])
         f = len(erg.get("fehlgeschlagen") or [])
         z.append(f"- `{e['id']}` — {e.get('_zustand')}, {n - f}/{n} Prüfungen. {erg.get('zusammenfassung', '')}")
-    return "\n".join(z) + "\n"
+    # GitHub stellt \operatorname nicht dar (KaTeX in der Ansicht schon) — im Bericht \mathrm verwenden
+    return re.sub(r"\\operatorname\*?\{([^}]*)\}", r"\\mathrm{\1}", "\n".join(z) + "\n")
 
 
 def _katex_css_inline(vendor: Path) -> str:

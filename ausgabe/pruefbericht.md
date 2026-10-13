@@ -77,7 +77,7 @@
 - `kn.satz.polynom_hauptsatz_kr0` — Die drei Aussagen des Kerns (kn.verm.polynom_halbexp_kern).
 - `kn.satz.polynom_hauptsatz_kr0` — Die Umstellung von H1/H2 auf K_{r₀} und K19 sind von Strang V gegengelesen, nicht von der Leitung Zeile für Zeile.
 - `bw.satz.phasengesetz_gestoppt` — Die wörtliche Übertragung der Lemmas 5.2–5.4 (Paper I) auf $j\ge J_0$ ist behauptet, nicht ausgeschrieben.
-- `bw.satz.phasengesetz_gestoppt` — (R3) — lokale Lipschitz-Stetigkeit von $A_b$ — folgt aus reeller Analytizität von $\operatorname{slog}_b^{\mathrm K}$; im Text nicht explizit gemacht.
+- `bw.satz.phasengesetz_gestoppt` — (R3) — lokale Lipschitz-Stetigkeit von $A_b$ — folgt aus reeller Analytizität von $\mathrm{slog}_b^{\mathrm K}$; im Text nicht explizit gemacht.
 - `bw.lem.randgesetz` — Kontinuumsnäherung statt rigoroser Durchgangszeit (Douady–Lavaurs-Theorie).
 - `bw.lem.randgesetz` — Behauptete Korrektur $O(\ln(b-\eta))$ nicht hergeleitet.
 - `bw.satz.ursache_kozykel` — Herleitung im Forschungslog, nicht als Beweis ausgeschrieben.

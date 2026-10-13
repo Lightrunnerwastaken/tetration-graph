@@ -312,7 +312,7 @@ alle (1)–(5) sind für n ≤ 2000 messbar (V hat Köpfe/Inversen), der asympto
 - → V: R_P^γ, R_A^γ auf der kritischen Linse bis N = 3000 (über den Übergang bei 2200); gewichtetes CF mit den echten π_n.
 - Wartet auf Leitung.
 
-## Anpassung K (12.10. 14:10): Konsolidierung (Auftrag Leitung) — Problemblatt 2 (de/en) und Abschlussnotiz Phase 3 stehen; keine neuen Versuche bis zur Entscheidung von Janis
+## Anpassung K (12.10. 14:10): Konsolidierung (Auftrag Leitung) — Problemblatt 2 (de/en) und Abschlussnotiz Phase 3 stehen; keine neuen Versuche bis zur Entscheidung des Autors
 - phase3/OFFENES_PROBLEM_2.md, phase3/OPEN_PROBLEM_2_en.md (je ≈ 100 Zeilen): Rahmen, bedingter Hauptsatz + T1, offene Aussagen (G-P), (A-lok), (FA), (S_E), (BU),
   Werkzeuge (CD1, Eckprofile, K19, Rang 1, Steg-Formel), Messwerte, gescheiterte Wege, 4 Fachfragen.
 - k_kern/BERICHT §0.A: Abschlussnotiz Phase 3.

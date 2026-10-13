@@ -11,7 +11,7 @@ steilere Linse (τ₁ = 8°) verkleinert die Zone auf |t − L| ≤ 0.08, dann i
 
 ## [Strang K] 12.10. 14:10 — Konsolidierung: Problemblatt 2 (phase3/OFFENES_PROBLEM_2.md, OPEN_PROBLEM_2_en.md) und Abschlussnotiz Phase 3 (k_kern/BERICHT §0.A) stehen
 → Leitung, V: Das alte Blatt von W bleibt unverändert. V bitte bei Gelegenheit die Messwerte in §5 des Blatts gegen deine Berichte prüfen (CF, T1, F3, E4′).
-Keine neuen K-Versuche bis zur Entscheidung von Janis.
+Keine neuen K-Versuche bis zur Entscheidung des Autors.
 
 ## [Strang K] 12.10. 14:06 — K3-3: Gerüst (F3′)-Bootstrap steht; offen ist EINE Ungleichung (BU); termweise Marge 0 (flaches Produkt), Vs 0.0024 sind Phasen-Kohärenz
 → V, Leitung (phase3/k_kern/BERICHT §43): CF(P) ≤ δ₀ ⇒ W̃ klein auf γ ⇒ Paarungen π_n ⇒ Bandkoeffizienten c_m = Σ_n [w^m](δ_n∘k)π_n/ℓ_nn ⇒ CF ≤ δ₀/2 (Stetigkeit wie EB_N).
@@ -176,7 +176,7 @@ Keil, K1′/K1″, (S_γ), (H1), VE4, Bessel, **Satz V2 mit Keil (bitte stoppen)
 P_n·n·d_n/(aL) = −0.01021−0.59861i / −0.01018−0.59850i / −0.01016−0.59846i (n = 200/300/400, d_n komplex), also K_n(L,L) ≈ C L/d_n ~ n^{a} (Fisher–Hartwig mit
 komplexem Exponenten). Euler-Identität des Eckkerns erklärt es (E𝒢 = C·F_P⊗F_A nach K11). Folgt: Gs B_n ∝ Q_n·n^{−0.053} (n = 400: 0.695 gegen 0.697).
 (i″) ⇐ (R_L): |ẽ_L*J̃_n⁻¹ẽ_L| ≤ poly — robust gegen die Spirale. Sekanten-Eckbedingung (EB_N) formuliert (§24.5): nur auf Kegelscheibe + Ruhefenster.
-→ V: E2 (EB_N an p_N messen, Winkel in §24.5) und E3 (B_n bis 2000 gegen Q_n n^{−0.053}). Janis-Satz zur K_{r₀}-Fassung steht in BERICHT §0.
+→ V: E2 (EB_N an p_N messen, Winkel in §24.5) und E3 (B_n bis 2000 gegen Q_n n^{−0.053}). Hauptsatz zur K_{r₀}-Fassung steht in BERICHT §0.
 
 ## [Strang K] 12.10. 09:10 — K_{r₀}-Fassung als Ziel festgehalten (BERICHT §0); jetzt Eckprodukt (i″): Idee „Euler-Identität“ des Diagonalkerns
 → Leitung, V: Exakt P_n := δ_n(L)Λ_n(L) = K_n(L,L) − K_{n−1}(L,L), K_n(x,t) = t·(J_n⁻¹T_nk_t)(x) (Antwort auf den Cauchy-Kern). Ist K_n auf der Kegelskala ≈ (L/d_n)·𝒢(ζ,τ)

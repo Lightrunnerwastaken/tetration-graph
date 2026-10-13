@@ -8,7 +8,7 @@ Zwei Zwecke, Überblick zuerst:
 1. **Überblick:** Welche grossen Ideen gibt es, wie hängen sie zusammen, wo ist die Tetration gut erforscht und wo liegt die Grenze?
 2. **Einem Ergebnis nachgehen:** Woraus besteht ein Satz oder eine Vermutung, welche Stücke sind sicher, wo fehlt es?
 
-Leser: Janis, spätere Leser der öffentlichen Bibliothek und Forschungs-Agenten (diese über eine Textfassung).
+Leser: der Autor, spätere Leser der öffentlichen Bibliothek und Forschungs-Agenten (diese über eine Textfassung).
 
 Erfolg heisst: Beim Öffnen sieht man acht benannte Hauptideen, deren Lage die Kopplung wiedergibt; zwei Klicks führen zu einzelnen
 Aussagen; Haupt- und Hilfsaussagen sind unterscheidbar; Erforschtheit und Herkunft (eigene Arbeit / Literatur) sind ohne Lesen erkennbar.
@@ -34,7 +34,7 @@ Neue Datei `daten/ideen.yaml`, zwei Stufen:
 - Prüfung (`wissen/graph.py`): Aussage ohne Idee → Hinweis „ohne-idee“; unbekannte Idee, Unteridee ohne gültige Eltern, Strang in zwei
   Unterideen → Fehler.
 
-Hauptideen (Ausgangspunkt, von Janis bestätigt):
+Hauptideen (Ausgangspunkt, vom Autor bestätigt):
 
 | Hauptidee | Unterideen (Ausgangspunkt) |
 |---|---|

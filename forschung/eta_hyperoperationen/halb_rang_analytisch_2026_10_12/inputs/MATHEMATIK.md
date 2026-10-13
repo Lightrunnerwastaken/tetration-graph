@@ -81,7 +81,7 @@ Hebe c auf (c,q), q=c⊗c. Auf den linearen und quadratischen Koordinaten wirkt
 \[
 M_K=\begin{pmatrix}L&B_K\\0&L\otimes L\end{pmatrix},
 \quad
-B_K(q)=L\,\operatorname{diag}(WqD_K^T).
+B_K(q)=L\,\mathrm{diag}(WqD_K^T).
 \]
 
 Auf symmetrischen Tensoren entspricht dies genau dem quadratischen Jet des Modells. L−I ist nilpotent vom Index höchstens K; L⊗L−I hat Index höchstens 2K−1. Damit (M_K−I)^{3K−1}=0. Für beliebiges komplexes s ist daher

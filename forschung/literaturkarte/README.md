@@ -1,6 +1,6 @@
 # Literaturkarte — alle Gebiete so genau kartieren wie die eigene Forschung (ab 12.10.2026)
 
-Auftrag von Janis: Die Bibliothek enthält viel eigene Forschung, aber die Arbeiten anderer nur dünn. Jedes Gebiet soll so genau kartiert
+Auftrag des Autors: Die Bibliothek enthält viel eigene Forschung, aber die Arbeiten anderer nur dünn. Jedes Gebiet soll so genau kartiert
 werden wie unsere eigene Arbeit: wer woran gearbeitet hat, mit welcher Methode und welchem Ergebnis, und wo mehrere Leute dieselbe Frage
 verschieden angegangen sind.
 

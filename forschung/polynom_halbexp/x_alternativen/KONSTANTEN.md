@@ -176,4 +176,4 @@ gelesen**. Sekundär [S]: arXiv 1901.07844 zitiert „[Pom92, Theorems 3.5, 3.6]
 Stetigkeitsmodul von w'; C^{m,α} ⇒ φ^{(m)} Hölder); arXiv 1902.03753 zitiert Thm 3.5 für den Dini-glatten Fall; arXiv 1803.09458 zitiert Thm 3.6 für C^{m,α}.
 Die **Nullstellenfreiheit von φ' auf dem Rand** (für |dz| ≍ dθ in Lemma X6 nötig) habe ich in keiner zugänglichen Quelle wörtlich gefunden [U];
 sie ist Teil der üblichen Fassung (Pommerenke Thm 3.5: „φ' has a continuous extension to D̄ which has no zeros“ — aus dem Gedächtnis, ungeprüft).
-Für uns genügt C^{1,α} (f(∂D) ist C^{5,0.44}). **Bitte (Leitung/Janis):** falls jemand Zugang zum Buch hat, Thm 3.5/3.6 wörtlich nachtragen.
+Für uns genügt C^{1,α} (f(∂D) ist C^{5,0.44}). **Bitte (Leitung/Autor):** falls jemand Zugang zum Buch hat, Thm 3.5/3.6 wörtlich nachtragen.

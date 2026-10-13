@@ -168,7 +168,7 @@ zertifiziert werden. Kosten: endlich ≈ Tage Rechenzeit Server; asymptotisch = 
 
 **V7. Schwächerer, jetzt erreichbarer Satz: „endlicher Satz bis N = 400 + bedingter Hauptsatz mit genau einer Hypothese“.**
 Kern: Mit Zweig-Zertifikat bis 400, (K2) und Kopplung p31 gilt rigoros sup_{D̄}|p_N − f_K| ≤ ε_N für alle N ≤ 400 (explizite Tabelle),
-und p_N → f_K für alle N, *falls* (H) mit Konstanten κ_E ≤ 2, C_E ≤ 1 gilt. Das ist ehrlich, prüfbar und als Zwischenergebnis für Janis vorzeigbar.
+und p_N → f_K für alle N, *falls* (H) mit Konstanten κ_E ≤ 2, C_E ≤ 1 gilt. Das ist ehrlich, prüfbar und als Zwischenergebnis für den Autor vorzeigbar.
 Warum: alle Teile sind endlich oder bereits verifiziert; der Rest ist sauber benannt. Scheitern: kein Beweis der Vermutung. Kosten: (K2) + Kette
 + Prüfungen (V, ~1–2 Tage). Bewertung V: (5 als Teilergebnis, 2, 1).
 

@@ -6,7 +6,7 @@ zusätzlich r_t := J_N⁻¹T_Nk_t ∈ P_N (Antwort des Abschnitts auf den Cauchy
 (Os SVD-freie Majorante, O §33.1; ẽ_t = ((ρ/t)^k)_{k≤N}). Es gilt G_N(t) = sup_{‖u‖=1}|Y_u(t)| (alle adjungierten Vektoren, Ecke und Bulk).
 
 ## 0. Kurzfassung (Stand 11.10. 20:30; Nachtrag 23:39)
-### 0.A ABSCHLUSSNOTIZ PHASE 3 (Strang K, 12.10. 14:10; Konsolidierung bis zur Entscheidung von Janis, keine neuen Versuche)
+### 0.A ABSCHLUSSNOTIZ PHASE 3 (Strang K, 12.10. 14:10; Konsolidierung bis zur Entscheidung des Autors, keine neuen Versuche)
 
 **Erreicht, bewiesen UND von V gegengelesen** (Liste mit Fundstellen: HAUPTSATZ_KR0.md §7):
 - Kurvenkriterium K1/K1′/K1″, Lemma K2, Sätze K3–K5 (Strukturidentität, Kopf-Zerlegung), Lemma K6.
@@ -32,7 +32,7 @@ zusätzlich r_t := J_N⁻¹T_Nk_t ∈ P_N (Antwort des Abschnitts auf den Cauchy
 - (EP) = (G-P) + (A-lok); (FA) (⇐ W12′); für die Familie (BU) bzw. (Fam-koh)^{r₀}.
 - Gemeinsamer Kern: Kohärenz an exakt ausgeglichenen Stellen. Am Steg ist das Produkt flach (Marge 0). Die Ecke ist echt zweikanalig (§42). Bei (BU) entscheiden die Phasen der Paarungen (§43).
 
-**Nächste Kandidaten (für Janis' Entscheidung):**
+**Nächste Kandidaten (für die Entscheidung des Autors):**
 1. K3-4: RH-Problem mit Verschiebung bzw. konformer Verschweissung, mit einer lokalen Parametrix an L, die BEIDE Kanäle enthält (mindestens 3×3). Langfristig.
 2. Ein Beweis von (BU) über die Phasen der Paarungen π_n. Vorher misst V die R_P und R_A auf der kritischen Linse S₀ ≈ 0.0125 bis N = 3000 und das gewichtete CF.
 3. (FA) aus Ws Grenzproblem W12′.
@@ -96,23 +96,23 @@ zu (EP) die Primale an f(Γout) (≈ ½·ln(|w|/ρ) je Grad, §38).
 - F3 in der Form „P nahe f_K auf 𝒞“ ist falsch (V §3.20).
 - Die Schlitzkonstante in Fassung 1 ist 8.2, nicht 16.3.
 
-**Für Janis (12.10. 09:10) — welche Fassung wir jetzt anstreben und warum:** Wir wollen beweisen, dass p_N gleichmässig auf der Kreisscheibe |x| ≤ |L| ohne
+**Für den Autor (12.10. 09:10) — welche Fassung wir jetzt anstreben und warum:** Wir wollen beweisen, dass p_N gleichmässig auf der Kreisscheibe |x| ≤ |L| ohne
 zwei kleine, feste Kreise um die Fixpunkte L und L̄ gegen Knesers halbe e-Funktion f_K konvergiert (K_{r₀}-Fassung, z. B. r₀ = 10⁻³). Daraus folgt alles, was die
 ursprüngliche Vermutung verlangt: jeder Koeffizient a_k^{(N)} geht gegen Knesers Koeffizienten, und p_N(1) → T_e(½). Die schärfere Fassung „gleichmässig bis an L
 heran“ verfolgen wir nicht weiter, weil sich das Eckmuster bei L mit wachsendem N langsam dreht (komplexer Exponent κ₁) und eine gleichmässige Randaussage
 dadurch für sehr grosse N unbeweisbar und womöglich falsch ist (Prüfung läuft, Test T1); die K_{r₀}-Fassung ist davon nicht betroffen und braucht von der Ecke nur
 noch eine Zahl je Grad (das Eckprodukt) plus lokale, explizite Eckprofile.
-**Für Janis (12.10. 13:07):** Eine Korrektur zu meiner Notiz von 12:45. Ich hatte zwei Zahlen verglichen, die auf verschiedene Art gemessen waren.
+**Für den Autor (12.10. 13:07):** Eine Korrektur zu meiner Notiz von 12:45. Ich hatte zwei Zahlen verglichen, die auf verschiedene Art gemessen waren.
 Richtig gemessen wird knapp ausserhalb der Scheibe die eine Hälfte der Rechnung genau so schnell gross, wie die andere klein wird. Das Produkt bleibt harmlos und
 folgt sogar einer einfachen Formel. V hat dazu passend gefunden, dass die Nachbarpolynome dort mit etwas Spielraum gut genug sind, wenn man die „Linse“ richtig dick wählt.
 Offen bleiben vor allem zwei Dinge: Die Nachbarpolynome müssen dort punktweise nahe an Knesers Funktion bleiben, und nahe beim Punkt L gibt es eine Zone, in der wirklich etwas wächst.
 
-**Für Janis (12.10. 12:45; Korrektur 13:07: der zweite Teil stimmt so nicht mehr, siehe die Notiz darüber):** Wir haben vier Wege probiert, die erste Annahme (EP) zu beweisen. Alle vier scheitern an derselben Stelle: Knapp ausserhalb der
+**Für den Autor (12.10. 12:45; Korrektur 13:07: der zweite Teil stimmt so nicht mehr, siehe die Notiz darüber):** Wir haben vier Wege probiert, die erste Annahme (EP) zu beweisen. Alle vier scheitern an derselben Stelle: Knapp ausserhalb der
 Kreisscheibe wird die eine Hälfte der Rechnung exponentiell gross, und die andere wird fast, aber nicht ganz so schnell klein. Das Produkt bleibt in Wirklichkeit
 harmlos, aber nur weil sich Vorzeichen gegenseitig aufheben, nicht weil einzelne Teile klein sind. Ein Beweis muss dieses Aufheben direkt zeigen.
 Das steht jetzt kurz in phase3/KERNPROBLEM.md §4. (EP) bleibt vorerst eine ausdrücklich genannte Annahme.
 
-**Für Janis (12.10. 11:05; ersetzt die Notizen von 10:01 und 10:23):** Das Ergebnis steht in phase3/HAUPTSATZ_KR0.md (Fassung 2): Wenn drei Aussagen über das lineare
+**Für den Autor (12.10. 11:05; ersetzt die Notizen von 10:01 und 10:23):** Das Ergebnis steht in phase3/HAUPTSATZ_KR0.md (Fassung 2): Wenn drei Aussagen über das lineare
 Problem stimmen — zwei Antwortfolgen an der Ecke wachsen höchstens wie eine Potenz (EP), die adjungierten Köpfe sind fern der Ecke exponentiell kleiner als in der Ecke (FA),
 und Knesers Funktion lässt sich auf einem etwas grösseren Gebiet mit Polynomen annähern (S_E) — und dasselbe für die Nachbarpolynome im Newton-Schritt gilt, dann konvergieren
 Deine Polynome auf der Scheibe bis |L| ausser in zwei kleinen Kreisen um L, L̄. Alle drei Aussagen sind gemessen bzw. in Messung, bewiesen sind sie noch nicht.
@@ -1349,7 +1349,7 @@ r ~ 10⁻³⁰, den Korridor V₀ bei r ~ 10⁻¹⁶). Folgen:
 - **(a) lokal gleichmässig in D + beschränkt auf D̄:** die D̄-Schranke ist nicht robust (Zone am Rand). Auch „lokal gleichmässig in D“ ist nicht ganz robust: Kompakta
   von D, die L näher als r_* kommen, können Punkte der nach innen drehenden Zone enthalten.
 - **(b) gleichmässig auf D̄ ohne Umgebung von L, L̄:** robust für eine FESTE Umgebung vom Radius r₀ ≳ r_* (mit Rand: r₀ = 10⁻³ ist sicher), nicht für schrumpfende.
-- **Robuster Kern: gleichmässige Konvergenz auf K_{r₀} := D̄ ∖ (U_{r₀}(L) ∪ U_{r₀}(L̄)), insbesondere auf {|x| ≤ |L| − r₀}.** Daraus folgen alle Kernaussagen von Janis'
+- **Robuster Kern: gleichmässige Konvergenz auf K_{r₀} := D̄ ∖ (U_{r₀}(L) ∪ U_{r₀}(L̄)), insbesondere auf {|x| ≤ |L| − r₀}.** Daraus folgen alle Kernaussagen der Polynom-Wurzel-
   Vermutung: a_k^{(N)} → a_k (Cauchy auf einem kleinen Kreis um 0) und p_N(1) → T_e(½). Die Identifikation mit Kneser kommt dann aus der Referenz f_K in der
   Fehlerschätzung (B-Max auf K_{r₀}), NICHT aus dem Eindeutigkeitssatz — eine andere halbe e-Funktion f_θ unterscheidet sich von f_K schon auf {|x| ≤ 1.2} um O(|θ|).
 

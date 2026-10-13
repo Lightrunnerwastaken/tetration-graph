@@ -1,6 +1,6 @@
 # Runde 2: (H₀) als exaktes Cauchy-Problem auf festen Konturen
 
-Bearbeitung vom 11.10.2026. Auf Janis' Rückmeldung hin behandelt diese Runde allein die ursprünglichen quadratischen Abschnitte J_N und (H₀). Keine neue Grad-5N-Konstruktion, keine K2-Arbeit. Unabhängige Prüfung durch Strang P steht aus.
+Bearbeitung vom 11.10.2026. Auf Rückmeldung des Autors hin behandelt diese Runde allein die ursprünglichen quadratischen Abschnitte J_N und (H₀). Keine neue Grad-5N-Konstruktion, keine K2-Arbeit. Unabhängige Prüfung durch Strang P steht aus.
 
 **Ergebnis:** Die feste Cauchy-Operator-Fassung ist vollständig ausgeschrieben, einschließlich des endlichen Projektors und der gemeinsamen Korrektur I_f − B_y. Im kubischen Modell hat diese Korrektur auf einer großen festen Kontur exakt Rang höchstens 6. Dazu kommen eine exakte Viererrekursion der transportierten Testkerne und neue SVD-freie Rechnungen. **Eine polynomiale Schranke für alle N und damit (H₀) ist noch nicht bewiesen.**
 
@@ -11,7 +11,7 @@ Gelesen: W-BERICHT §15–§27, W/OFFENES_PROBLEM.md, O-BERICHT §32–§34, X/K
 Hier wird die physische Variable x benutzt, damit die Zahlen unmittelbar mit O38 vergleichbar sind. Es sei ρ = |L| und
 
 \[
-\widetilde J_N=D J_ND^{-1},\quad D=\operatorname{diag}(\rho^k),\qquad
+\widetilde J_N=D J_ND^{-1},\quad D=\mathrm{diag}(\rho^k),\qquad
 \widetilde J_N^T y=u,
 \]
 \[
@@ -81,7 +81,7 @@ Dann ist das ursprüngliche System mit N+1 Unbekannten genau äquivalent zu
 
 \[
 \Pi_N^-\mathcal C_\Gamma Y=\mathcal U,
-\qquad Y\in\mathcal L_N:=\operatorname{span}\{1,(\rho/z),\ldots,(\rho/z)^N\}.
+\qquad Y\in\mathcal L_N:=\mathrm{span}\{1,(\rho/z),\ldots,(\rho/z)^N\}.
 \tag{G7}
 \]
 

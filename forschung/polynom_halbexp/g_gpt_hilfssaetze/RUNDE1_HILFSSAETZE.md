@@ -120,7 +120,7 @@ Die Klammer ist exakt 0.675622435625. Zusammen mit
  =O(N^{-5.446950720\ldots}).
 \]
 
-Der Exponent der Rate ist exakt \(1+\operatorname{Re}\gamma\); die Dezimaldarstellung oben ist abgekürzt. Keine Aussage (H₀), (H), Bulk-Koerzivität oder Korridor-Eindeutigkeit wird dafür benötigt. Die Kneser-Struktur selbst wurde hier nicht unabhängig neu zertifiziert. Die Voraussetzung α < 0.37 wurde zusätzlich mit 512-Bit-Intervallarithmetik aus dem vorhandenen a₀-Zertifikat geprüft; eine zusätzliche Fehlertoleranz 10⁻¹³⁹ deckt dessen Dezimalrundung ab (`ergebnisse/alpha_check.json`).
+Der Exponent der Rate ist exakt \(1+\mathrm{Re}\gamma\); die Dezimaldarstellung oben ist abgekürzt. Keine Aussage (H₀), (H), Bulk-Koerzivität oder Korridor-Eindeutigkeit wird dafür benötigt. Die Kneser-Struktur selbst wurde hier nicht unabhängig neu zertifiziert. Die Voraussetzung α < 0.37 wurde zusätzlich mit 512-Bit-Intervallarithmetik aus dem vorhandenen a₀-Zertifikat geprüft; eine zusätzliche Fehlertoleranz 10⁻¹³⁹ deckt dessen Dezimalrundung ab (`ergebnisse/alpha_check.json`).
 
 **Grenze des Ergebnisses:** P_N ist eine neue Folge. Sie ist nicht mit dem ursprünglichen p_N identifiziert. Insbesondere erfüllt ein Polynom vom Grad 5N hier nur die Gleichungen bis Ordnung N; die Gleichungen der Ordnungen N+1 bis 5N werden nicht behauptet.
 

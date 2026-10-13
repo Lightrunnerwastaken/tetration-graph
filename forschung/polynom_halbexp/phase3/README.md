@@ -1,6 +1,6 @@
 # Phase 3 — zwei Forschungsstränge K und V (ab 11.10.2026 19:50)
 
-Auftrag von Janis: mit dem ganzen bisherigen Wissen weiterarbeiten, sich selbst gut organisieren, verstehen, wo und warum wir
+Auftrag des Autors: mit dem ganzen bisherigen Wissen weiterarbeiten, sich selbst gut organisieren, verstehen, wo und warum wir
 gescheitert sind, wo neue Mathematik nötig ist, wo weiter gebaut und geprüft werden muss und wie man zum Beweis kommt.
 Brainstorming mit vielen Ideen, die aussichtsreichsten ausprobieren, laufend über die eigene Arbeit nachdenken.
 

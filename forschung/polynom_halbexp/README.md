@@ -1,10 +1,10 @@
 # Forschungsteam: Polynom-Wurzel von exp → Kneser (Beweis der Schranke)
 
-## PHASE 3 (11.10. 19:50 – 12.10. 14:15, auf Janis' Wunsch beendet): Stränge K und V, siehe `phase3/README.md`; Ergebnis: `phase3/HAUPTSATZ_KR0.md` (Fassung 3), offener Kern `phase3/KERNPROBLEM.md`, Problemblatt `phase3/OPEN_PROBLEM_2_en.md`; im Graphen Strang kn.halbe_exp
+## PHASE 3 (11.10. 19:50 – 12.10. 14:15, auf Wunsch des Autors beendet): Stränge K und V, siehe `phase3/README.md`; Ergebnis: `phase3/HAUPTSATZ_KR0.md` (Fassung 3), offener Kern `phase3/KERNPROBLEM.md`, Problemblatt `phase3/OPEN_PROBLEM_2_en.md`; im Graphen Strang kn.halbe_exp
 
-## PAUSE seit 11.10.2026 04:51 (Janis: „langsam stoppen“)
+## PAUSE seit 11.10.2026 04:51 (Autor: „langsam stoppen“)
 
-Alle fünf Stränge sind sauber angehalten, es laufen keine Prozesse (lokal und auf aicgolling). Neu starten nur auf Janis' Auftrag.
+Alle fünf Stränge sind sauber angehalten, es laufen keine Prozesse (lokal und auf aicgolling). Neu starten nur auf Auftrag des Autors.
 
 **Stand:** Hauptsatz (K) + (H₀) + (A) ⇒ p_N → f_K gleichmässig auf D̄ (ARCHITEKTUR §9.9). Bewiesen bzw. zertifiziert:
 - Satz P-V: Knesers sexp zur Basis e streng zertifiziert (±1.3e-168), a₀…a₆₄₀ in `gemeinsam/kneser_halbexp_koeff_zert_640.json`; (K3) f_K(L) = L, f_K′(L) = √L (p32a).
@@ -18,9 +18,9 @@ Prüfschlange P (Rest), Gegenlesen von P-V Schritte 3–6.
 
 **Wiederaufnahme:** ARCHITEKTUR §9.9 (Dateiliste), BRETT-Abschlusseinträge 04:48–04:51, `w_grenzschicht/WIEDERAUFNAHME.md` und
 `OFFENES_PROBLEM.md` / `OPEN_PROBLEM_en.md`, `x_alternativen/zert/STARTANLEITUNG.md` (≈ 2.5 h auf aicgolling), `m_modell_eckmode/BERICHT.md` §17,
-`o_operator/BERICHT.md` §34. Experten nur mit Janis' Zustimmung anfragen.
+`o_operator/BERICHT.md` §34. Experten nur mit Zustimmung des Autors anfragen.
 
-## PHASE 2 (ab 10.10. 23:30) — Dauerbetrieb bis zum vollständigen Beweis oder bis Janis stoppt
+## PHASE 2 (ab 10.10. 23:30) — Dauerbetrieb bis zum vollständigen Beweis oder bis der Autor stoppt
 
 **Ausgangspunkt ist ARCHITEKTUR.md** (Phase 1, Stränge A–E): Hauptsatz (K) + (H) + (A) ⇒ p_N → f_K; offen ist nur die lineare Annahme
 (H) über die Eckmoden bei L, Kern (a′) Rest-Kontraktion und (E_L) Randprofil der adjungierten Eckmoden. Die Phase-1-Ordner a–e sind
@@ -52,7 +52,7 @@ auf dem Zweig, der stetig von p_1 = x + 1/2 aus fortgesetzt wird (Newton, Start:
 Code: `experimente/polynom_wurzel.py` → `loesungen(nmax, bits)` gibt {N: [a_0..a_N]} (mpmath), `horner(c, z)`.
 Jacobi-Matrix: J[k][j] = [x^k] p^j + ([x^{k−j}] p'∘p falls j ≤ k).
 
-**Vermutung (Janis):** p_N → f_K := T_e(slog_e(x) + 1/2) (Knesers halbe e-Funktion) lokal gleichmässig auf
+**Vermutung (des Autors):** p_N → f_K := T_e(slog_e(x) + 1/2) (Knesers halbe e-Funktion) lokal gleichmässig auf
 D = {|x| < |L|}, L = 0.31813150520476413 + 1.3372357014306895 i (Fixpunkt von exp), |L| = 1.3745570107437075.
 
 ## 2. Was bewiesen ist (Graph-Knoten in `daten/aussagen/05_kneser_slog.yaml`)
@@ -126,7 +126,7 @@ Nächste Schritte siehe ARCHITEKTUR.md §7.
 - `gemeinsam/polynome_bis_194.json` — {"N": [a_0..a_N] als Strings, 60 Stellen}, N = 1..194.
 - `gemeinsam/kneser_halbexp_koeff_80.json` — Taylor-Koeffizienten von f_K um 0, k = 0..80 (≈ 35 Stellen).
 - `gemeinsam/omega_rand.json` — Rand von Ω = slog(D) (obere Hälfte), siehe e50.
-- `gemeinsam/janis_notiz.md` — Janis' ursprüngliche Notiz.
+- `gemeinsam/janis_notiz.md` — die ursprüngliche Notiz des Autors.
 - Experimente: `experimente/e49_polynom_halbexp.py`, `e50_halbexp_korridor.py`, `e51_polynom_schranke.py`.
 - Kneser-Motor: `experimente/gemeinsam.py`, `kneser(art, basis, punkte, dps=40)` (art 'sexp'/'slog', basis 'exp(1)',
   komplexe Punkte erlaubt). **Nur Strang A darf ihn benutzen** (gemeinsamer 190-MB-Zwischenspeicher, gleichzeitige Nutzung

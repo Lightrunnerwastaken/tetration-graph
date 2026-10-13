@@ -4,7 +4,7 @@ Auftrag (Leitung, 11.10.2026 19:50): Prüfschlange abarbeiten, Experimente für 
 Beweis-Buchhaltung (`ABHAENGIGKEIT.md`), kritische Gegenstimme. Kennzeichnung: bewiesen / Skizze / numerisch / Vermutung; Statuswörter der
 Buchhaltung V/S/B (siehe ABHAENGIGKEIT.md). Zeiten aus `date`.
 
-## 0.0 Abschlussnotiz Phase 3 (12.10. 14:15; Team auf Janis' Entscheidung angehalten — keine Läufe mehr, lokal und auf aicgolling geprüft)
+## 0.0 Abschlussnotiz Phase 3 (12.10. 14:15; Team auf Entscheidung des Autors angehalten — keine Läufe mehr, lokal und auf aicgolling geprüft)
 **Verifiziert (Logik gegengelesen, mit eigenem Code nachgerechnet):** Satz P-V Schritte 3–6 (§1.1); Gs G8–G44 (§1.2); Ks K1, K1′/K1″, §18, K10/K11, K19, §32, alle Sätze von
 HAUPTSATZ_KR0 §7 (§1.3, §1.6, §1.9–§1.12); Ps p32a/rest_schranke (§1.7); Ms 𝒯-Weg (a″)_∞, σ_min ≥ 0.641 (§1.8); Ks (CD1) exakt, kubisch + Kneser, 1e-89 (§1.13).
 Streng (Status S/V): (K2) C₆ = 461.36 (§2.2); Zweig-Zertifikat 193 → 400 und Kopplung (A) sup_{D̄}|p₄₀₀ − f_K| ≤ 1.75e-12 (§2.1); Sprungschranke C_J = 1.0378 bis u = 0.48 (§3.15).

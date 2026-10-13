@@ -1,4 +1,4 @@
-# Kernproblem — Synthese (Strang K, 12.10.2026 01:22; Auftrag Leitung/Janis)
+# Kernproblem — Synthese (Strang K, 12.10.2026 01:22; Auftrag Leitung/Autor)
 
 Kennzeichnung wie überall: bewiesen / numerisch / Vermutung. Quellen: ARCHITEKTUR §4–5, phase3/k_kern/BERICHT §1–15, Berichte W, O, M, X, G, D, B, C, E, V.
 
