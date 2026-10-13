@@ -76,16 +76,16 @@ kn.satz.kneser_eigenschaften:
 
 kn.satz.paulsen_komplex:
   worum: |
-    Knesers Konstruktion braucht keine reelle Basis. Paulsen hat gezeigt, dass sie auch für komplexe Basen funktioniert — und dass die Lösung
-    glatt (sogar holomorph) von der Basis abhängt. Das erlaubt, nach der Basis abzuleiten.
+    Knesers Konstruktion braucht keine reelle Basis. Paulsen hat gezeigt, dass sie auch für komplexe Basen funktioniert. Ob die Lösung
+    sogar holomorph von der Basis abhängt, ist damit nicht belegt; das würde erlauben, nach der Basis abzuleiten.
   genau: |
-    Für komplexe Basen ausserhalb eines Ausnahmebereichs lässt sich Knesers Konstruktion fortsetzen; $T_b(z)$ hängt holomorph von $b$ ab.
-    (Welche Basen genau ausgenommen sind, ist am Original noch zu prüfen.)
+    Für komplexe Basen ausserhalb eines Ausnahmebereichs lässt sich Knesers Konstruktion fortsetzen. Dass $T_b(z)$ holomorph von $b$ abhängt, nennt das Abstract nicht;
+    der Volltext war nicht zugänglich. (Welche Basen genau ausgenommen sind, ist am Original noch zu prüfen.)
   warum: |
-    Literatursatz (Paulsen 2019). Grund in einem Satz: Alle Zutaten — der Fixpunkt $L(b)$, sein Multiplikator $\lambda(b)$, die Schröder-Funktion und die
-    Riemann-Abbildung — hängen analytisch von $b$ ab, solange $L$ abstossend und von $\bar L$ getrennt bleibt.
+    Literatursatz (Paulsen 2019). Warum man Holomorphie in $b$ erwartet: Alle Zutaten — der Fixpunkt $L(b)$, sein Multiplikator $\lambda(b)$, die Schröder-Funktion und die
+    Riemann-Abbildung — hängen analytisch von $b$ ab, solange $L$ abstossend und von $\bar L$ getrennt bleibt. Ein Beweis liegt hier nicht vor.
   beispiel: |
-    Die Ableitung nach der Basis, $\partial_bT_b(x)$, ist damit erklärt; im Basiswechsel heisst sie „Antwort“ und wird in Kapitel 7 ausgerechnet.
+    Die Ableitung nach der Basis, $\partial_bT_b(x)$, wäre damit erklärt; im Basiswechsel heisst sie „Antwort“ und wird in Kapitel 7 ausgerechnet.
   einordnung: |
     Trägt die Störungstheorie in der Basis ([[bw.ann.basis_diffbar]], [[bw.satz.antwortkern]]) und die Identifikation in Paper V
     ([[bw.satz.kern_existenz]]). Komplexe Basen mit ihren Adressen: [[bw.verm.adressen]].
@@ -828,7 +828,7 @@ kn.frage.hexation_kneser:
        Tetration, liefert der Hauptzweig einen Wert auf einem anderen Blatt. Die Blattverfolgung setzt jede Tetration der Kette entlang des Weges fort (Logarithmus-Zweige nach
        Stetigkeit, riesige Zwischenwerte über ihren exakten Logarithmus $\ln b\cdot T(x-1)$); geprüft gegen den Hauptzweig und mit geschlossenen Wegen.
     3. **Verzweigung in der oberen Halbebene:** Mit der Blattverfolgung zeigte sich, dass $H$ selbst oberhalb der reellen Achse Verzweigungspunkte hat
-       ([[kn.beob.hexation_verzweigt]]). Eine Cauchy-Formel über ein Rechteck, das bis $q$ hinaufreicht, gilt deshalb nicht; der Weg führt über $\theta$ auf der reellen Achse.
+       ([[kn.beob.hexation_verzweigt]]). Eine Cauchy-Formel über ein Rechteck, das bis $q$ hinaufreicht, gilt deshalb nicht; das Fork-Verfahren rechnet stattdessen die Abel-Funktion nahe $q$ und an der Achse über die Funktionalgleichung, nie mit $\theta$ auf der reellen Achse.
   einordnung: |
     Das Gegenstück zur Kneser-Tetration ([[kn.konstr.kneser]]), zwei Stufen höher. Mit der genauen Hexation ist $\eta_6$ berechnet ([[kn.beob.stufe6]]) — das vierte Glied
     von [[kn.verm.tpid10]]. Warum nicht am anziehenden Fixpunkt: [[kn.satz.kein_kneser_anziehend]]; warum keine Rechteck-Methode: [[kn.beob.hexation_verzweigt]].
@@ -994,13 +994,13 @@ kn.verm.polynom_halbexp:
     | 100 | $1.64635423375119448$ | $-1.0\cdot10^{-16}$ |
     | 194 | — | $-2\cdot10^{-19}$ |
   warum: |
-    Nicht bewiesen. Was man sieht und versteht:
+    Nur bedingt bewiesen. Was man sieht und versteht:
     1. Die Gleichung $f\circ f=\exp$ hat unendlich viele analytische Lösungen $f_\theta$ (eine für jede passende periodische Störung $\theta$). Das abgeschnittene System hat für jedes $N$ nur
        einzelne Lösungen — es muss also eine auswählen.
     2. Knesers Lösung ist auf der Kreisscheibe $|x|<|L|$ beschränkt, ihre Taylor-Koeffizienten fallen wie $k^{-6.45}|L|^{-k}$. Jede andere reelle Lösung explodiert nahe $L$ oder $\bar L$;
        bewiesen ist: Knesers ist die einzige, die den Korridor $\{z\in D:f_K(z)\in D\}$ in die Scheibe abbildet ([[kn.satz.halbexp_beschraenkt]]). Ein Polynom kann die „ruhigste“ Lösung am besten nachahmen.
-    3. Genauer: Blieben die Polynome auf $|x|\le|L|$ beschränkt und im Korridor in der Scheibe, wäre die Vermutung bewiesen ([[kn.satz.polynom_halbexp_reduktion]]). Diese Schranke ist der offene Kern
-       ([[kn.verm.polynom_halbexp_schranke]]).
+    3. Genauer: Blieben die Polynome auf $|x|\le|L|$ beschränkt und im Korridor in der Scheibe, wäre die Vermutung bewiesen ([[kn.satz.polynom_halbexp_reduktion]]). Diese Schranke war zunächst der offene Kern
+       ([[kn.verm.polynom_halbexp_schranke]]); heute ist die tragfähige Fassung bedingt bewiesen, offen ist [[kn.verm.polynom_halbexp_kern]].
   beispiel: |
     Grad 3: $p_3(x)=0.498574+0.876383x+0.247391x^2+0.024117x^3$, $p_3(1)=1.646465$ — schon auf vier Stellen richtig. Kneser: $f_K(x)=0.4985633+0.8763361x+0.2475522x^2+0.0245718x^3+\dots$
     Bei Grad 100 stimmen $a_0$ auf 16, $a_5$ auf 11 und $a_{20}$ auf 5 Stellen.

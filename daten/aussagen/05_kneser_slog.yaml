@@ -783,7 +783,7 @@ aussagen:
   stuetzt_sich_auf: [kn.konstr.pentation, it.satz.koenigs]
   experimente: [exp.hexation]
   pruefung:
-    f1_folgt_unmittelbar: 'Ja, sobald $p_1$ und $\mu<1$ bekannt sind — eine Stufe höher dieselbe Konstruktion wie kl.satz.regulaer.'
+    f1_folgt_unmittelbar: 'Ja, sobald $p_1$ und $\mu<1$ bekannt sind — zwei Stufen höher dieselbe Konstruktion wie kl.satz.regulaer.'
     f2_benutzte_voraussetzungen: 'Fixpunkt und Multiplikator gemessen; die Wahl der Pentation (regulär am negativen Fixpunkt der Kneser-Tetration).'
     f3_spezialfall: 'Ja: reguläre Superfunktion am anziehenden Fixpunkt.'
     f4_uebertragbar: 'Für $b>\eta_5$ fehlt der reelle Fixpunkt → kn.frage.hexation_kneser.'
@@ -1539,7 +1539,7 @@ aussagen:
     - {text: 'Korridor-Bedingung: f(V₀) ⊂ D', benutzt: ja, notiz: 'ersetzt die frühere Forderung „f beschränkt auf D“'}
     - {text: 'Form von Ω = slog(D) (kn.beob.slog_scheibe)', benutzt: ja}
   aussage: |
-    Dann ist $f=f_K=T(A+\tfrac12)$. Gleichwertig: Ist $|f|\le|L|$ auf $V_0$, so ist $f=f_K$ (eine nicht konstante holomorphe Funktion bildet die offene Menge $V_0$ in die offene Scheibe ab).
+    Ist $f$ holomorph auf $D$, reell auf $D\cap\mathbb R$, $f(f(z))=e^z$ nahe 0, und gilt $f(V_0)\subset D$, dann ist $f=f_K=T(A+\tfrac12)$. Gleichwertig: Ist $|f|\le|L|$ auf $V_0$, so ist $f=f_K$ (eine nicht konstante holomorphe Funktion bildet die offene Menge $V_0$ in die offene Scheibe ab).
     $f_K$ selbst erfüllt die Korridor-Bedingung nach Definition von $V_0$. Jede andere reelle halbe e-Funktion verletzt sie — ihr Störterm wächst beim Annähern an $L$ wie $|z-L|^{-4.447n}$.
   einfach: >-
     Es gibt unendlich viele glatte Funktionen, die zweimal angewendet eˣ ergeben. Verlangt man nur, dass f einen bestimmten Streifen der Kreisscheibe — dort, wo auch Knesers
@@ -1897,7 +1897,7 @@ aussagen:
     gemessen mit $\kappa\approx0$: am Rand wie $N^{-4.8}$, im Inneren wie $N^{-7.9}$.
   einfach: >-
     Das Forschungsteam hat den Beweis so weit gebaut, dass nur noch eine einzige lineare Aussage über die Schwachstelle der Gleichungen bei L fehlt. Gilt sie, dann konvergieren
-    die Polynome für jeden Grad gegen Knesers halbe e-Funktion — genau wie in Janis’ Vermutung.
+    die Polynome mit wachsendem Grad gegen Knesers halbe e-Funktion — genau wie in Janis’ Vermutung.
   beweis:
     art: skizze
     text: |
@@ -2135,7 +2135,7 @@ aussagen:
   bereich: 'Rang-1-Bausteine („Köpfe“) der Inversen $J_n^{-1}$ nahe $L$ auf der Skala $d_n=\rho n^{-a}$, $a=1/\kappa_1=1-L/(4\pi i)=0.89359+0.02532i$; $\alpha=L/(4\pi)$'
   aussage: |
     Mit $F_\beta(u)=\sum_{k\ge0}\Gamma(\beta-i\alpha k)(-u)^k/(k!\,\Gamma(\beta))=\Gamma(\beta)^{-1}\int_0^\infty t^{\beta-1}e^{-t-u\,t^{-i\alpha}}dt$:
-    (i) **bewiesen:** das Grenzproblem an der Ecke (Mellin–Wiener–Hopf mit dem Faktor $1+\mu^{s-2}$, $\mu=\sqrt L$) hat die Lösungen $F_{\beta_A}$, $\beta_A=\tfrac12-2i\alpha$ (adjungiert), und
+    (i) **bewiesen bis auf Lemma K12:** das Grenzproblem an der Ecke (Mellin–Wiener–Hopf mit dem Faktor $1+\mu^{s-2}$, $\mu=\sqrt L$) hat die Lösungen $F_{\beta_A}$, $\beta_A=\tfrac12-2i\alpha$ (adjungiert), und
     $F_{\beta_P}$, $\beta_P=\tfrac12+i\alpha$ (primal), mit $\lambda_P=-\mu^{-1/2}\lambda_A$; unter einer Mellin-Randbedingung sind sie eindeutig.
     (ii) **gemessen:** die echten Köpfe laufen wie $n^{-0.894}$ gegen diese Profile (Gs Eckprofil auf $2.5\cdot10^{-7}$ mit einem Parameter getroffen); das Eckprodukt folgt
     $K_n(L,L)\approx C\,L/d_n$ mit $C=-\tilde\lambda_P\Gamma(\tfrac12+i\alpha)/((\mu+\mu^{-1})\Gamma(\tfrac12+2i\alpha))=-0.010118-0.598298i$ (gemessen $-0.01012-0.59830i$).

@@ -182,8 +182,8 @@
     worum: |
       The hub column shows 40 digits but carries only about 31 correct ones — a comparison of the three existing versions of $m(2)$ shows this.
 - id: bw.beob.kernkleid
-  quelle_hash: 656b6dbb92fb
-  theorie_hash: d484d655dfdf
+  quelle_hash: bf07254baee4
+  theorie_hash: 3a0a51cf6e52
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -204,8 +204,8 @@
       nutzen: Refutes the exact rank-one form.
       richtigkeit: numerical, doubly confirmed
     titel: Kernels carry a smooth d-dependence
-    aussage: $|G_k(d)|/|G_1(d)|$ varies by 0.4 % ($k=2$) to 9 % ($k=8$) over $d\in\{2,e,3,5,10\}$; two independent routes (complex step, ε-stencils)
-      agree to 24+ digits.
+    aussage: $|G_k(d)|/|G_1(d)|$ varies by 0.4 % ($k=2$) to 9 % ($k=8$) over $d\in\{2,e,3,5,10\}$; two independent routes (complex step, ε-stencils;
+      for $d\in\{2,10\}$ the RH solver instead of the complex step) agree to 24+ digits.
     quellen:
     - stelle: Rem. 4.2
     - stelle: Rounds 3–5, 9
@@ -213,13 +213,13 @@
     einordnung: |
       Refutes [[bw.verm.rang_eins]]. Open: a closed description of the kernel surface $C_k(d)$.
     genau: |
-      $|G_k(d)|/|G_1(d)|$ varies by $0.4\,\%$ ($k=2$) to $9\,\%$ ($k=8$) over $d\in\{2,e,3,5,10\}$; two independent routes (complex step, $\varepsilon$-stencils) agree to 24+ digits.
+      $|G_k(d)|/|G_1(d)|$ varies by $0.4\,\%$ ($k=2$) to $9\,\%$ ($k=8$) over $d\in\{2,e,3,5,10\}$; two independent routes (complex step, $\varepsilon$-stencils; for $d\in\{2,10\}$ the RH solver instead of the complex step) agree to 24+ digits.
     warum: |
       Measured, doubly confirmed. For $d\in\{2,10\}$ the references from the complex step were faulty ([[bw.gescheitert.cstep]]); the other routes agree nonetheless.
     worum: |
       The kernels $G_d$ — the shape of the wave to first order — look almost the same for different bases, but not quite: They carry a smooth, small dependence on $d$.
 - id: bw.beob.m2
-  quelle_hash: 62c2f38979b0
+  quelle_hash: e20dd541c228
   theorie_hash: 1c4a18971a51
   herkunft:
     modell: sonnet
@@ -237,8 +237,8 @@
       f1_folgt_unmittelbar: No.
       f4_uebertragbar: —
     bewertung:
-      recherche: 'The value has been known to four digits since 2009 (S. Levenstein on the tetration forum: 1.1282; likewise m(3) ≈ −0.1926, m(10)
-        ≈ −1.1364 with opposite sign). New here: 180 digits and the unsuccessful PSLQ search.'
+      recherche: 'The value has been known to four digits since 2009 (S. Levenstein on the tetration forum: 1.1282; likewise slog_3 − slog_e ≈
+        −0.1926 and slog_10 − slog_e ≈ −1.1364, i.e., −m(3) and −m(10)). New here: 180 digits and the unsuccessful PSLQ search.'
       nutzen: Reference constant.
       richtigkeit: numerical
     titel: m(2) = µ_{e,2} to 180 digits, no closed form found
@@ -808,7 +808,7 @@
     worum: |
       The first attempt at the boundary value problem failed on numerical stability: the information sat doubly exponentially close to the integers.
 - id: bw.gescheitert.vorhersage_r8
-  quelle_hash: 3beb9b6d264d
+  quelle_hash: 8c480e464d2e
   theorie_hash: e9e72074caed
   herkunft:
     modell: sonnet
@@ -828,7 +828,7 @@
     bewertung:
       nutzen: Methodological lesson.
       richtigkeit: refuted by measurement
-    titel: Own asymptotics prediction (growth γ = 4.447) refuted
+    titel: Own asymptotics prediction (growth with exponent 2πν = 4.447) refuted
     aussage: 'Predicted: logarithmic power growth of the boundary data with exponent $2\pi\nu=4.447$. Measured: the opposite (collapse $|1/\chi''|=O(\delta\ln(1/\delta))$).
       First measure, then prove.'
     quellen:
@@ -882,8 +882,8 @@
     worum: |
       How many Fourier modes does one need to tabulate the wave to 150 or 500 digits? The fitted model gives an answer — but its justification has fallen away.
 - id: bw.korr.konstante
-  quelle_hash: 66fbeaa57d2f
-  theorie_hash: e7aa6ea4a0e2
+  quelle_hash: 9bad483b9b2c
+  theorie_hash: 6f0775244bff
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -906,8 +906,9 @@
       nutzen: Small erratum.
       richtigkeit: recomputed
     titel: Correction — π√(2η/e) = 3.238930…, not 3.23907
-    aussage: Paper IV states $\pi\sqrt{2\eta/e}=3.23907\ldots$ in three places (abstract, Lemma 8.2, appendix); the correct value is $3.2389305453\ldots$
-      (relative error $4\cdot10^{-5}$). The statement “agreement to 2.3 %” remains practically unaffected.
+    aussage: 'Paper IV states $\pi\sqrt{2\eta/e}=3.23907\ldots$ in three places (abstract, Lemma 8.2, appendix); the correct value is $3.2389305453\ldots$
+      (relative error $4\cdot10^{-5}$). The statement “agreement to 2.3 %” remains practically unaffected by this correction (it is itself too
+      optimistic: the hub data agree only to 4–7 %, bw.lem.randgesetz).'
     quellen:
     - stelle: Lines 870, 902, 1111 of the text version
     - {}
@@ -917,7 +918,7 @@
     genau: |
       Paper IV states in three places $\pi\sqrt{2\eta/e}=3.23907\ldots$; the correct value is $3.2389305453\ldots$ (relative error $4\cdot10^{-5}$).
     warum: |
-      Recomputed directly with 30 digits in three equivalent forms. The statement “agreement to 2.3 %” is practically unaffected by this.
+      Recomputed directly with 30 digits in three equivalent forms. The statement “agreement to 2.3 %” is practically unaffected by this; it is itself too optimistic, though (hub data only to 4–7 %).
     worum: |
       A small numerical error in Paper IV: the constant of the boundary law.
 - id: bw.korr.r20
@@ -1465,7 +1466,7 @@
     worum: |
       The exchange rule “from $d$ via $c$ to $b$” also holds for the limits — only one must read off the wave at the correct, already shifted point.
 - id: bw.prop.saddle
-  quelle_hash: 714dadeafd60
+  quelle_hash: 2a14b21966ea
   theorie_hash: 95cc00ea7256
   herkunft:
     modell: sonnet
@@ -1490,7 +1491,8 @@
       richtigkeit: complete (under hypothesis)
     titel: Singularity ⇒ decay law (Paper IV, Prop. 6.3)
     aussage: $\ln\hat P(k)=\mathrm{const}+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi ck}+o(\sqrt k)$ with $8|v|\cos^2\Psi=c$.
-    bereich: periodic $P$, holomorphic in the strip except for isolated singularities $P=h\exp(v/(\theta-\bar\theta^*))$
+    bereich: periodic $P$, holomorphic in the strip except for isolated singularities $P=h\exp(v/(\theta-\bar\theta^*))$; integration contour
+      can be shifted up to the edge of the strip (assumed)
     quellen:
     - stelle: Prop. 6.3
   en_theorie:
@@ -1693,7 +1695,7 @@
       base $d$ divided by tower values to base $b$, level by level.
 - id: bw.satz.fourier_naht
   quelle_hash: a973c71deece
-  theorie_hash: 48576d021fc2
+  theorie_hash: 0ba4a2130a54
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1733,7 +1735,7 @@
       Integrate by parts $(m+2)$ times. Each jump yields a boundary term $J_ie^{-2\pi ik\tau_i}/(2\pi ik)^{m+2}$; the remainder is a Fourier coefficient of an integrable
       function and tends to $0$ by Riemann–Lebesgue.
     worum: |
-      How fast the Fourier coefficients of a periodic function decay reveals how smooth it is. A kink in the $(m+1)$-th derivative gives coefficients
+      How fast the Fourier coefficients of a periodic function decay reveals how smooth it is. A jump in the $(m+1)$-th derivative gives coefficients
       of size $k^{-(m+2)}$.
 - id: bw.satz.homoeo
   quelle_hash: e8038f65e0ae
@@ -1784,7 +1786,7 @@
       and the opposite direction $\tilde H_{d,b}$ is its inverse.
 - id: bw.satz.imaginaere_richtung
   quelle_hash: 061bbe2f3515
-  theorie_hash: 39bbeaccb566
+  theorie_hash: 3d8cd598be93
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1830,7 +1832,7 @@
   en_theorie:
     beispiel: |
       $b=e$, $d=2$: limit $A_e(L_2)=0.326448651629+0.523513968910\,i$, $K_1=-0.0305475247-1.2919819448\,i$. Rotation period $2\pi/\log|\lambda_2|=30.63$, damping
-      $e^{-1.0865\,y}$ — over one rotation thus by a factor $10^{-14}$. One almost never sees the rotation.
+      $e^{-1.0865\,y}$ — over one rotation thus by a factor $3.5\cdot10^{-15}$. One almost never sees the rotation.
     einordnung: |
       Three directions: to the right divergent with 1-periodic wave ([[bw.satz.phasengesetz]]), upward toward $A_b(L_d)$, downward toward $A_b(\overline{L_d})$.
       The same dichotomy with roles swapped: [[kl.satz.basiswechsel_gleiches_L]]. Open for a common upper fixed point: [[kl.frage.gleiches_L_kneser]].
@@ -1886,8 +1888,8 @@
     worum: |
       At most one function satisfies the four selection conditions. The argument is the same as for the uniqueness of the Kneser solution, only one order deeper.
 - id: bw.satz.kern_existenz
-  quelle_hash: e7a7e473fc7d
-  theorie_hash: 2e589b25aad0
+  quelle_hash: 2bbee1cceb04
+  theorie_hash: cab52384e17a
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1912,7 +1914,7 @@
       richtigkeit: conditional, written out in full
     titel: Existence of the base kernel via an RH problem (Paper V, Thm. 13)
     aussage: $\tilde V\circ T_d:=V_{\mathrm{geo}}+g$ with $g=\tilde u-iu-\tilde u(0)$ satisfies (i)–(iv); with Thm. 2 exactly one solution; under
-      (K3) it is $\partial_\beta A_b|_{b=d}$.
+      (K3) (holomorphy in the base, kn.satz.paulsen_komplex) it is $\partial_\beta A_b|_{b=d}$.
     versionen:
     - aenderung: Solvability as a conjecture (weighted class, Fredholm route).
     - aenderung: Theorem in stronger form, no weighted class.
@@ -1927,7 +1929,7 @@
       [[bw.gescheitert.orbitanker]], [[bw.gescheitert.rh_v1]], [[bw.gescheitert.vorhersage_r8]].
     genau: |
       $\tilde V\circ T_d:=V_{\mathrm{geo}}+g$ with $g=\tilde u-iu-\tilde u(0)$ ($\tilde u$ the conjugate function of the boundary data $u$) satisfies (i)–(iv); with [[bw.satz.kern_eindeutig]] it is
-      the only solution, and under (K3) it is $\partial_\beta A_b|_{b=d}$ (Paper V, Thm. 13).
+      the only solution, and under (K3) (holomorphy in the base, [[kn.satz.paulsen_komplex]]) it is $\partial_\beta A_b|_{b=d}$ (Paper V, Thm. 13).
     warum: |
       1. $V_{\mathrm{geo}}$ satisfies (i) but is not real on the real axis; its imaginary part there is $u$.
       2. A periodic holomorphic function $g$ with $\operatorname{Im}g=-u$ on the axis is found with the periodic Hilbert transform (conjugate function).
@@ -2298,7 +2300,7 @@
       “address”. The conjecture: the phase law holds here too, only the wave additionally depends on the address.
 - id: bw.verm.nirgends_analytisch
   quelle_hash: aca8af84a885
-  theorie_hash: 3e1798eef6fb
+  theorie_hash: 1691edda59a5
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -2353,7 +2355,7 @@
       2. The $n$-th approximation $\log_b^{\circ n}\circ T_d(n+\cdot)$ becomes singular where a logarithm hits $0$; Trappmann (2009) shows for $\log_a^{\circ n}\circ\exp_b^{\circ n}$
          branch points at $\log_b^{\circ n}\{a,\dots,\exp_a^{\circ n-2}(1)\}$.
       3. Levenstein measures that the distance of the nearest singularity to the real axis tends to $0$ with $n$ (radius $0.46$, after one further level $0.035$),
-         while the values on the axis converge superexponentially fast. Uniform convergence on the axis alone ensures $C^\infty$, but not analyticity.
+         while the values on the axis converge superexponentially fast. Uniform convergence of all derivatives on the axis ensures $C^\infty$, but not analyticity.
       A proof is missing; it may be that the singularities cancel in the limit.
     worum: |
       The counter-position to the strip conjecture: If one translates a smooth tetration into another base, the result is infinitely often differentiable,

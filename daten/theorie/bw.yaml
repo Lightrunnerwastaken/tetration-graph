@@ -232,7 +232,7 @@ bw.satz.imaginaere_richtung:
     3. $|\lambda_d^{iy}|=e^{-y\arg\lambda_d}\to0$, weil $\arg\lambda_d>0$; der Winkel $y\log|\lambda_d|$ dreht. Dass Kneser oben gegen $L_d$ läuft: [[kn.satz.kneser_eigenschaften]].
   beispiel: |
     $b=e$, $d=2$: Grenzwert $A_e(L_2)=0.326448651629+0.523513968910\,i$, $K_1=-0.0305475247-1.2919819448\,i$. Drehperiode $2\pi/\log|\lambda_2|=30.63$, Dämpfung
-    $e^{-1.0865\,y}$ — über eine Drehung also um den Faktor $10^{-14}$. Man sieht die Drehung fast nie.
+    $e^{-1.0865\,y}$ — über eine Drehung also um den Faktor $3.5\cdot10^{-15}$. Man sieht die Drehung fast nie.
   bilder: [exp.funde]
   einordnung: |
     Drei Richtungen: nach rechts divergent mit 1-periodischer Welle ([[bw.satz.phasengesetz]]), nach oben gegen $A_b(L_d)$, nach unten gegen $A_b(\overline{L_d})$.
@@ -333,7 +333,7 @@ bw.satz.c1_produkt:
 
 bw.satz.fourier_naht:
   worum: |
-    Wie schnell die Fourier-Koeffizienten einer periodischen Funktion fallen, verrät, wie glatt sie ist. Ein Knick in der $(m+1)$-ten Ableitung gibt Koeffizienten
+    Wie schnell die Fourier-Koeffizienten einer periodischen Funktion fallen, verrät, wie glatt sie ist. Ein Sprung in der $(m+1)$-ten Ableitung gibt Koeffizienten
     der Grösse $k^{-(m+2)}$.
   genau: |
     Ist $f\in C^m(S^1)$, stückweise $C^{m+2}$, und springt $f^{(m+1)}$ bei $\tau_i$ um $J_i$, dann
@@ -374,7 +374,7 @@ bw.verm.nirgends_analytisch:
     2. Die $n$-te Näherung $\log_b^{\circ n}\circ T_d(n+\cdot)$ wird singulär, wo ein Logarithmus auf $0$ trifft; Trappmann (2009) zeigt für $\log_a^{\circ n}\circ\exp_b^{\circ n}$
        Verzweigungspunkte bei $\log_b^{\circ n}\{a,\dots,\exp_a^{\circ n-2}(1)\}$.
     3. Levenstein misst, dass der Abstand der nächsten Singularität zur reellen Achse mit $n$ gegen $0$ geht (Radius $0.46$, nach einer weiteren Stufe $0.035$),
-       während die Werte auf der Achse superexponentiell schnell konvergieren. Gleichmässige Konvergenz nur auf der Achse sichert $C^\infty$, aber keine Analytizität.
+       während die Werte auf der Achse superexponentiell schnell konvergieren. Gleichmässige Konvergenz aller Ableitungen auf der Achse sichert $C^\infty$, aber keine Analytizität.
     Ein Beweis fehlt; es kann sein, dass sich die Singularitäten im Grenzwert wegheben.
   beispiel: |
     Im Modenabfall wäre „nirgends analytisch“ mit dem Gevrey-Bild $\ln|a_k|\approx-c\sqrt k$ verträglich. Unsere Daten bis $k\approx520$ unterscheiden Streifen und
@@ -529,7 +529,7 @@ bw.beob.kernkleid:
   worum: |
     Die Kerne $G_d$ — die Form der Welle in erster Ordnung — sehen für verschiedene Basen fast gleich aus, aber nicht ganz: Sie tragen eine glatte, kleine Abhängigkeit von $d$.
   genau: |
-    $|G_k(d)|/|G_1(d)|$ variiert um $0.4\,\%$ ($k=2$) bis $9\,\%$ ($k=8$) über $d\in\{2,e,3,5,10\}$; zwei unabhängige Wege (komplexer Schritt, $\varepsilon$-Schablonen) stimmen auf 24+ Stellen.
+    $|G_k(d)|/|G_1(d)|$ variiert um $0.4\,\%$ ($k=2$) bis $9\,\%$ ($k=8$) über $d\in\{2,e,3,5,10\}$; zwei unabhängige Wege (komplexer Schritt, $\varepsilon$-Schablonen; bei $d\in\{2,10\}$ statt des komplexen Schritts der RH-Löser) stimmen auf 24+ Stellen.
   warum: |
     Gemessen, doppelt bestätigt. Bei $d\in\{2,10\}$ waren die Referenzen aus dem komplexen Schritt fehlerhaft ([[bw.gescheitert.cstep]]); die anderen Wege stimmen trotzdem.
   einordnung: |
@@ -607,7 +607,7 @@ bw.korr.konstante:
   genau: |
     Paper IV nennt an drei Stellen $\pi\sqrt{2\eta/e}=3.23907\ldots$; richtig ist $3.2389305453\ldots$ (relativer Fehler $4\cdot10^{-5}$).
   warum: |
-    Direkt nachgerechnet mit 30 Stellen in drei gleichwertigen Formen. Die Aussage „Übereinstimmung auf 2.3 %“ ist davon praktisch nicht betroffen.
+    Direkt nachgerechnet mit 30 Stellen in drei gleichwertigen Formen. Die Aussage „Übereinstimmung auf 2.3 %“ ist davon praktisch nicht betroffen; sie selbst ist allerdings zu optimistisch (Hub-Daten nur auf 4–7 %).
   einordnung: |
     Korrigiert [[bw.lem.randgesetz]]. Lehre: vor einer Neuauflage alle Zahlenkonstanten maschinell gegenprüfen.
 
@@ -690,7 +690,7 @@ bw.satz.kern_existenz:
     der reellen Achse mit einer periodischen Funktion. Das ist ein klassisches Randwertproblem (Riemann–Hilbert).
   genau: |
     $\tilde V\circ T_d:=V_{\mathrm{geo}}+g$ mit $g=\tilde u-iu-\tilde u(0)$ ($\tilde u$ die konjugierte Funktion der Randdaten $u$) erfüllt (i)–(iv); mit [[bw.satz.kern_eindeutig]] ist es
-    die einzige Lösung, und unter (K3) ist sie $\partial_\beta A_b|_{b=d}$ (Paper V, Thm. 13).
+    die einzige Lösung, und unter (K3) (Holomorphie in der Basis, [[kn.satz.paulsen_komplex]]) ist sie $\partial_\beta A_b|_{b=d}$ (Paper V, Thm. 13).
   warum: |
     1. $V_{\mathrm{geo}}$ erfüllt (i), ist aber auf der reellen Achse nicht reell; sein Imaginärteil dort ist $u$.
     2. Eine periodische holomorphe Funktion $g$ mit $\operatorname{Im}g=-u$ auf der Achse findet man mit der periodischen Hilbert-Transformation (konjugierte Funktion).

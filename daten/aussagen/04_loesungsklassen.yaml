@@ -57,7 +57,7 @@ aussagen:
   bewertung: {richtigkeit: gesichert (Literatur), neuheit: bekannt, nutzen: 'Musterbeispiel für Nicht-Eindeutigkeit durch Fixpunktwahl.', nutzen_stufe: mittel}
 
 - id: kl.beob.zwei_abel
-  titel: Die regulären Abel-Funktionen an 2 und 4 unterscheiden sich um eine winzige Periode
+  titel: Die regulären Abel-Funktionen an 2 und 4 unterscheiden sich um eine winzige periodische Funktion
   art: beobachtung
   ebene: C
   status: numerisch
@@ -66,12 +66,12 @@ aussagen:
   aussage: |
     $p(\theta):=\alpha_4\bigl(\alpha_2^{-1}(\theta)\bigr)-\theta$ ist 1-periodisch und **nicht konstant**:
     die beiden regulären Konstruktionen sind verschiedene Abel-Funktionen auf demselben Intervall.
-    Die Amplitude der ersten Fourier-Mode ist von der Grössenordnung $10^{-24}$ (Zahlen im Experiment).
+    Die Amplitude der ersten Fourier-Mode beträgt $3.6\cdot10^{-25}$ (Zahlen im Experiment).
   experimente: [exp.sqrt2_abel]
   stuetzt_sich_auf: [kl.satz.regulaer]
   pruefung:
     f1_folgt_unmittelbar: 'Dass $p$ periodisch ist: ja (fg.satz.allgemeine_loesung). Dass $p$ nicht konstant ist: aus der Literatur ja — Karlin–McGregor (1968) zeigen, dass die regulären Iterationen an zwei Fixpunkten $s_1,s_2$ (Multiplikatoren $\ne0,1$, $f([s_1,s_2])\subseteq[s_1,s_2]$) nur für gebrochen lineare $f$ übereinstimmen; $\sqrt2^{\,x}$ auf $[2,4]$ erfüllt die Voraussetzungen. Neu hier ist nur die Messung der Grösse.'
-    f2_benutzte_voraussetzungen: 'Rechnung mit 120 Stellen; Koenigs-Reihen an beiden Fixpunkten, unabhängig voneinander.'
+    f2_benutzte_voraussetzungen: 'Rechnung mit 170 Stellen; Koenigs-Reihen an beiden Fixpunkten, unabhängig voneinander.'
     f3_spezialfall: 'Instanz von fg.satz.allgemeine_loesung mit explizit messbarem θ.'
     f4_uebertragbar: 'Auf jedes $1<b<\eta$ → kl.verm.streifenbreite.'
     f5_neue_frage: 'Erklärt die imaginäre Periode die Grösse der Amplitude? → kl.verm.streifenbreite'
@@ -397,15 +397,16 @@ aussagen:
   beweis:
     art: vollstaendig
     text: |
-      Die reguläre Tetration ist $T(h)=\Psi(s_0\lambda^h)=a+\sum_{k\ge1}\psi_ks_0^k\lambda^{kh}$ mit der ganzen Poincaré-Funktion $\Psi$ (kl.satz.regulaer), also
-      $\sum_k|\psi_ks_0^k|<\infty$. Für jedes $k$ ist $\lambda^{kh}=\sum_n\binom hn(\lambda^k-1)^n$ (Binomialreihe, $|\lambda^k-1|<1$), und
+      Die reguläre Tetration ist $T(h)=\Psi(s_0\lambda^h)=a+\sum_{k\ge1}\psi_ks_0^k\lambda^{kh}$ mit der Poincaré-Funktion $\Psi$ (kl.satz.regulaer; am anziehenden Fixpunkt nicht ganz),
+      deren Taylorreihe bei $|w|=|s_0|$ noch absolut konvergiert, also $\sum_k|\psi_ks_0^k|<\infty$ (Konvergenzradius $>|s_0|$; für $b=\sqrt2$ nachgerechnet:
+      Radius $\approx|s_0|\lambda^{-2}=1.32$, entsprechend der Singularität bei $h=-2$, gegen $|s_0|=0.63$). Für jedes $k$ ist $\lambda^{kh}=\sum_n\binom hn(\lambda^k-1)^n$ (Binomialreihe, $|\lambda^k-1|<1$), und
       $\Delta^nT(0)=\sum_k\psi_ks_0^k(\lambda^k-1)^n$ für $n\ge1$. Die Doppelsumme konvergiert absolut, weil $\sum_n|\binom hn|<\infty$ für $h>-1$ ($|\binom hn|\sim n^{-1-h}$)
       und $|\lambda^k-1|\le1$ — also darf man vertauschen.
   experimente: [exp.forum_formeln]
   stuetzt_sich_auf: [kl.satz.regulaer]
   pruefung:
     f1_folgt_unmittelbar: 'Ja, sobald man die Koenigs-Reihe in λ^{kh} hinschreibt.'
-    f2_benutzte_voraussetzungen: 'Ganze Poincaré-Funktion; 0 < λ < 1; h > −1.'
+    f2_benutzte_voraussetzungen: 'Konvergenzradius der Poincaré-Reihe grösser als |s₀|; 0 < λ < 1; h > −1.'
     f3_spezialfall: 'Ja: Newton-Interpolation einer Exponentialsumme mit Basen in (0, 1). Das q-Analogon (Reshetnikov) konvergiert schneller: kl.beob.q_binomial.'
     f4_uebertragbar: 'Jede Iteration mit anziehendem reellem Fixpunkt und Multiplikator in (0, 1); Woons Variante mit Parameter w.'
     f5_neue_frage: 'Genaue Rate: von den hohen Moden mit λ^k → 0 bestimmt?'

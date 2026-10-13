@@ -1,7 +1,7 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
 - id: kl.beob.eta_konstanten
-  quelle_hash: 6e00e8c8ad95
+  quelle_hash: 81ed7d96bed4
   theorie_hash: 4074c5e758c7
   herkunft:
     modell: sonnet
@@ -15,8 +15,8 @@
       f3_spezialfall: —
       f5_neue_frage: Recognition of a closed form (PSLQ with e, γ, log 2, π, ζ(3), …).
       f1_folgt_unmittelbar: No (computation).
-      f2_benutzte_voraussetzungen: Fatou series with 24 terms, depth 3000; tails by Euler–Maclaurin. C_T and the regularized sum only from integer
-        heights.
+      f2_benutzte_voraussetzungen: Fatou series with 24 terms, depth 3000 for the Fatou coordinate, 20 000 tower levels for C_T and the sums;
+        tails by Euler–Maclaurin. C_T and the regularized sum only from integer heights.
       f4_uebertragbar: —
     bewertung:
       nutzen: Reference values for η.
@@ -109,7 +109,7 @@
       like drawing a smooth curve through measured points —, only not in $z$ but in $q^z$. Computed, it gives exactly the regular tetration.
 - id: kl.beob.stetig_eta
   quelle_hash: ef66b3a8d64b
-  theorie_hash: 8339a030ceb7
+  theorie_hash: e74130f25a34
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -159,9 +159,9 @@
       A proof is missing.
     worum: |
       Below $\eta$ and above $\eta$ the tetration is built in quite different ways. At the boundary the values nevertheless fit together seamlessly —
-      at height $\tfrac12$ even the slope agrees to six digits.
+      at height $\tfrac12$ even the slope agrees to five digits.
 - id: kl.beob.zwei_abel
-  quelle_hash: a64fe11e1612
+  quelle_hash: c77add80499b
   theorie_hash: 9cf79f940db2
   herkunft:
     modell: sonnet
@@ -178,7 +178,7 @@
       f1_folgt_unmittelbar: 'That $p$ is periodic: yes (fg.satz.allgemeine_loesung). That $p$ is not constant: yes from the literature — Karlin–McGregor
         (1968) show that the regular iterations at two fixed points $s_1,s_2$ (multipliers $\ne0,1$, $f([s_1,s_2])\subseteq[s_1,s_2]$) agree only
         for linear fractional $f$; $\sqrt2^{\,x}$ on $[2,4]$ satisfies the hypotheses. New here is only the measurement of the size.'
-      f2_benutzte_voraussetzungen: Computation with 120 digits; Koenigs series at both fixed points, independently of each other.
+      f2_benutzte_voraussetzungen: Computation with 170 digits; Koenigs series at both fixed points, independently of each other.
       f4_uebertragbar: To every $1<b<\eta$ → kl.verm.streifenbreite.
     bewertung:
       nutzen: Concrete, measurable example of the periodic freedom.
@@ -190,7 +190,7 @@
     aussage: |
       $p(\theta):=\alpha_4\bigl(\alpha_2^{-1}(\theta)\bigr)-\theta$ is 1-periodic and **not constant**:
       the two regular constructions are different Abel functions on the same interval.
-      The amplitude of the first Fourier mode is of the order of magnitude $10^{-24}$ (numbers in the experiment).
+      The amplitude of the first Fourier mode is $3.6\cdot10^{-25}$ (numbers in the experiment).
     bereich: $b=\sqrt2$, $x\in(2,4)$; $\alpha_2$ = regular Abel function at the fixed point 2, $\alpha_4$ at the fixed point 4
     versionen:
     - aenderung: Novelty changed from “folklore” to “known” (forum 2007, discovery around 1991).
@@ -703,7 +703,7 @@
       The derivative formula $T'(x+n)/T'(x)=(\ln b)^n\prod T(x+k)$ holds for integer steps for every tetration. If one replaces the product by a
       “fractional product”, one can write it down for half steps as well — and then below $\eta$ only the regular tetration satisfies it.
 - id: kl.satz.bruchsumme
-  quelle_hash: 399c3b703a05
+  quelle_hash: a3fa68be366a
   theorie_hash: 1ec4cbc73fdf
   herkunft:
     modell: sonnet
@@ -1163,8 +1163,8 @@
       One can compute the regular tetration without series: go many steps to the fixed point, make the fractional step there as a scaling,
       and go back the same number of steps with the logarithm.
 - id: kl.satz.invariante_daempfung
-  quelle_hash: 5f0668b38738
-  theorie_hash: 7bceb0d5a8e2
+  quelle_hash: 65804e55ef8c
+  theorie_hash: dd8cb564fd02
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1196,7 +1196,7 @@
       hyperbolic fixed point ($|\lambda|<1$): $\lambda^{A}$, modulus $<1$ — geometrically damped, pseudoperiod $2\pi/|\arg\lambda|$, damping
       $|\lambda|^{2\pi/|\arg\lambda|}$ per pseudoperiod; rationally neutral fixed point: $e^{2\pi iA}$ — genuine 1-periodicity (Écalle–Voronin, horn map);
       irrationally neutral: quasiperiodic; essential singularity at ∞ (towers above η): $e^{2\pi iA}$ — the classical 1-periodic
-      base-change function. This is thus the **limiting case $|\lambda|\to1$** of the damped oscillation at the shared fixed point.
+      base-change function. It can be interpreted as the **limiting case $|\lambda|\to1$** of the damped oscillation at the shared fixed point (not a limit theorem).
     bereich: transition between two Abel coordinates $A_b$, $A_d$, matched at one point (fixed point or ∞)
     einfach: At the shared fixed point there is the same wave as in the classical base change — only it gets smaller with every step. The closer
       |λ| is to 1, the longer it survives; at |λ| = 1 it becomes the undamped, eternal wave.
@@ -1215,7 +1215,7 @@
       **Partially proved.** The transition function of two Abel coordinates is a function of the canonical invariant of the matching point:
       - hyperbolic fixed point ($|\lambda|<1$): $\lambda^A$ — damped, pseudoperiod $2\pi/|\arg\lambda|$, damping $|\lambda|^{2\pi/|\arg\lambda|}$ per pseudoperiod;
       - rationally neutral fixed point: $e^{2\pi iA}$ — genuinely 1-periodic (Écalle–Voronin); irrationally neutral: quasiperiodic;
-      - essential singularity at $\infty$ (towers above $\eta$): $e^{2\pi iA}$ — the classical 1-periodic base-change wave, as the limiting case $|\lambda|\to1$.
+      - essential singularity at $\infty$ (towers above $\eta$): $e^{2\pi iA}$ — the classical 1-periodic base-change wave, interpreted as the limiting case $|\lambda|\to1$.
     warum: |
       The hyperbolic case is proved: The correction is a power series in $\lambda_d^x$ ([[kl.satz.basiswechsel_gleiches_L]]). The rationally neutral case is Écalle–Voronin
       ([[it.satz.ecalle_voronin]]). That the classical wave is the limiting case $|\lambda|\to1$ is an interpretation, not a limit theorem.
@@ -1223,7 +1223,7 @@
       The wave in the classical base change and the damped oscillation at the common fixed point are the same phenomenon. How long the wave lives depends only on
       how close the multiplier $|\lambda|$ is to $1$. At $|\lambda|=1$ it becomes immortal.
 - id: kl.satz.koenigs_basiswechsel
-  quelle_hash: fd52dbe96078
+  quelle_hash: 54056096e88c
   theorie_hash: ede5a8a2f1ae
   herkunft:
     modell: sonnet
@@ -1239,7 +1239,7 @@
       text: 'Regular flows are $f^t=\sigma^{-1}(\lambda^t\sigma)$. Substituting: $\Psi(f_d^t(z))=\sigma_b^{-1}(\kappa\lambda_d^t\sigma_d(z))=\sigma_b^{-1}(\lambda_b^{kt}\kappa\sigma_d(z))=f_b^{kt}(\Psi(z))$.
         The choice of κ ensures $\Psi(1)=1$.'
     gegenbeispielsuche: |
-      exp.koenigs_basiswechsel: conjugation $f_{\sqrt2}^{\circ2}\circ\Psi=\Psi\circ f_d$ to $10^{-18}$; height exactly $2x$ (x = 0.5, 1.25, 3.5);
+      exp.koenigs_basiswechsel: conjugation $f_{\sqrt2}^{\circ2}\circ\Psi=\Psi\circ f_d$ to $10^{-30}$; height exactly $2x$ (to $10^{-27}$) (x = 0.5, 1.25, 3.5);
       ratio 1.7 likewise linear; complex ($\lambda_b=0.85e^{1.1i}$, $\lambda_d=\lambda_b^2$): $\Psi(z_{d,n})=z_{b,2n}$ for n = 10…25.
     pruefung:
       f3_spezialfall: 'Yes: two linearizable germs are conjugate via their linearizations as soon as the multipliers are powers of each other.'
@@ -1413,7 +1413,7 @@
       If one replaces $b^x$ near the double fixed point by the simplest map with the same two fixed points — a Möbius map —, one can compute
       the fractional sum exactly. The result is the q-digamma function with $q=\lambda$, and for $\lambda\to1$ the ordinary digamma function.
 - id: kl.satz.newton_reihe
-  quelle_hash: 594ea69ee3c6
+  quelle_hash: da01f9211a16
   theorie_hash: dec1fdc11458
   herkunft:
     modell: sonnet
@@ -1427,15 +1427,16 @@
   en:
     beweis:
       text: |
-        The regular tetration is $T(h)=\Psi(s_0\lambda^h)=a+\sum_{k\ge1}\psi_ks_0^k\lambda^{kh}$ with the entire Poincaré function $\Psi$ (kl.satz.regulaer), hence
-        $\sum_k|\psi_ks_0^k|<\infty$. For each $k$ we have $\lambda^{kh}=\sum_n\binom hn(\lambda^k-1)^n$ (binomial series, $|\lambda^k-1|<1$), and
+        The regular tetration is $T(h)=\Psi(s_0\lambda^h)=a+\sum_{k\ge1}\psi_ks_0^k\lambda^{kh}$ with the Poincaré function $\Psi$ (kl.satz.regulaer; not entire at the attracting fixed point),
+        whose Taylor series still converges absolutely at $|w|=|s_0|$, hence $\sum_k|\psi_ks_0^k|<\infty$ (radius of convergence $>|s_0|$; recomputed for $b=\sqrt2$:
+        radius $\approx|s_0|\lambda^{-2}=1.32$, corresponding to the singularity at $h=-2$, versus $|s_0|=0.63$). For each $k$ we have $\lambda^{kh}=\sum_n\binom hn(\lambda^k-1)^n$ (binomial series, $|\lambda^k-1|<1$), and
         $\Delta^nT(0)=\sum_k\psi_ks_0^k(\lambda^k-1)^n$ for $n\ge1$. The double sum converges absolutely because $\sum_n|\binom hn|<\infty$ for $h>-1$ ($|\binom hn|\sim n^{-1-h}$)
         and $|\lambda^k-1|\le1$ — so the order of summation may be interchanged.
     pruefung:
       f3_spezialfall: 'Yes: Newton interpolation of an exponential sum with bases in (0, 1). The q-analog (Reshetnikov) converges faster: kl.beob.q_binomial.'
       f5_neue_frage: 'Exact rate: determined by the high modes with λ^k → 0?'
       f1_folgt_unmittelbar: Yes, as soon as one writes down the Koenigs series in λ^{kh}.
-      f2_benutzte_voraussetzungen: Entire Poincaré function; 0 < λ < 1; h > −1.
+      f2_benutzte_voraussetzungen: Radius of convergence of the Poincaré series larger than |s₀|; 0 < λ < 1; h > −1.
       f4_uebertragbar: Every iteration with attracting real fixed point and multiplier in (0, 1); Woon's variant with parameter w.
     bewertung:
       nutzen: Shows that below η the integer values alone already determine the regular solution — without any additional choice.

@@ -213,8 +213,8 @@
       Kneser's tetration is smooth everywhere above the real axis. For the hexation to base 2, built Kneser-type at the fixed point $q$ of the pentation, this is not true: It has branch points at
       height 2.75. The reason is that already the pentation — unlike the exponential function — has singularities of its own.
 - id: kn.beob.hoehere_etas
-  quelle_hash: fd8ec63731b8
-  theorie_hash: 0eff738d3448
+  quelle_hash: 21bd726a8a97
+  theorie_hash: 25c7fc0b5b8c
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -250,7 +250,7 @@
     bereich: 'Chain regular/Kneser-like: pentation regular at the left real fixed point of Kneser''s tetration, hexation Kneser-like at the conjugate
       fixed points of pentation, heptation regular at the left real fixed point of hexation'
     einfach: 'As early as 2017 Sheldon Levenstein built the higher levels up to heptation and read off the limit bases to three digits: 1.738,
-      1.799 and 1.839. Our exact values confirm the first two; the third is so far the only fifth term of the sequence.'
+      1.799 and 1.839. Our exact values confirm the first two; the third is so far the only value for the fifth term of the sequence.'
     quellen:
     - stelle: Levenstein, post 5 (pid 8759, 03.09.2017) and post 7 (pid 8761, 04.09.2017)
   en_theorie:
@@ -264,7 +264,7 @@
       $\eta_4,\eta_5,\eta_6,\eta_7$ to three digits.
     warum: |
       1. $H_{n+1}(b,m)$ arises from 1 by repeated application of $H_n(b,\cdot)$; the sequence increases.
-      2. It remains bounded if and only if $H_n(b,\cdot)$ has a fixed point above 1 — and that is exactly the case up to the touching base $\eta_n$.
+      2. It remains bounded if and only if $H_n(b,\cdot)$ has a fixed point above 1 — and that is, according to the conjecture [[kn.verm.beschraenkt_unter_2]], exactly the case up to the touching base $\eta_n$.
       3. The boundary of boundedness of level $n+1$ is therefore $\eta_n$.
     worum: |
       The sequence $\eta,\eta_4,\eta_5,\dots$ requires a new hyperoperation for each term. Sheldon Levenstein was in 2017 the first to build the chain up to heptation
@@ -1196,7 +1196,7 @@
       Is the second condition really needed? J. D. Nixon tried in 2021 with his β method to show that without it there is another holomorphic tetration.
 - id: kn.frage.hexation_kneser
   quelle_hash: fc334e0726aa
-  theorie_hash: 839abc85a39e
+  theorie_hash: 9d3e9b600d1b
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1255,7 +1255,7 @@
          tetration, the principal branch returns a value on another sheet. Sheet tracking continues each tetration of the chain along the path (logarithm branches by
          continuity, huge intermediate values via their exact logarithm $\ln b\cdot T(x-1)$); checked against the principal branch and with closed paths.
       3. **Branching in the upper half-plane:** With sheet tracking it turned out that $H$ itself has branch points above the real axis
-         ([[kn.beob.hexation_verzweigt]]). A Cauchy formula over a rectangle reaching up to $q$ therefore does not hold; the route goes via $\theta$ on the real axis.
+         ([[kn.beob.hexation_verzweigt]]). A Cauchy formula over a rectangle reaching up to $q$ therefore does not hold; instead the fork method computes the Abel function near $q$ and at the axis via the functional equation, never with $\theta$ on the real axis.
     worum: |
       Above $\eta_5$ — for example at base 2 — the pentation no longer has a real fixed point. A smooth hexation must then be built, like Kneser's, at a complex fixed point.
       This is possible but numerically difficult; here it is stated how far things have got.
@@ -1652,7 +1652,7 @@
       In 2009 Kouznetsov for the first time computed the tetration for complex heights in practice — with a trick from function theory: Values in the interior of a
       strip follow from the values on the boundary.
 - id: kn.konstr.hexation_regulaer
-  quelle_hash: dfc76c3727af
+  quelle_hash: 41388a1c68a1
   theorie_hash: 647d4e244817
   herkunft:
     modell: sonnet
@@ -1671,7 +1671,7 @@
         tetration).
       f5_neue_frage: Does $H_b$ pass continuously into a Kneser-type hexation as $b\uparrow\eta_5$ (like tetration at η)?
       f3_spezialfall: 'Yes: regular superfunction at the attracting fixed point.'
-      f1_folgt_unmittelbar: Yes, as soon as $p_1$ and $\mu<1$ are known — one level higher the same construction as kl.satz.regulaer.
+      f1_folgt_unmittelbar: Yes, as soon as $p_1$ and $\mu<1$ are known — two levels higher the same construction as kl.satz.regulaer.
       f4_uebertragbar: For $b>\eta_5$ the real fixed point is missing → kn.frage.hexation_kneser.
     bewertung:
       recherche: 'Forum: Levenstein describes in 2017 (tid 1177) the hexation in general as Kneser-type at the conjugate fixed points of the pentation
@@ -2492,7 +2492,7 @@
       How fast does a half-exponential function grow? Faster than every polynomial, more slowly than every $e^{x^\varepsilon}$ — and in a way that cannot be written down with
       any formula in $\exp$ and $\log$.
 - id: kn.satz.halbexp_beschraenkt
-  quelle_hash: d7da703553f4
+  quelle_hash: 86700b914075
   theorie_hash: c1d629a044a2
   herkunft:
     modell: sonnet
@@ -2545,7 +2545,7 @@
     - text: Shape of Ω = slog(D) (kn.beob.slog_scheibe)
     titel: 'Uniqueness via a corridor: Kneser''s half-exponential function is the only one that maps the corridor V₀ into the disk |z| < |L|'
     aussage: |
-      Then $f=f_K=T(A+\tfrac12)$. Equivalently: If $|f|\le|L|$ on $V_0$, then $f=f_K$ (a non-constant holomorphic function maps the open set $V_0$ into the open disk).
+      If $f$ is holomorphic on $D$, real on $D\cap\mathbb R$, $f(f(z))=e^z$ near 0, and $f(V_0)\subset D$ holds, then $f=f_K=T(A+\tfrac12)$. Equivalently: If $|f|\le|L|$ on $V_0$, then $f=f_K$ (a non-constant holomorphic function maps the open set $V_0$ into the open disk).
       $f_K$ itself satisfies the corridor condition by the definition of $V_0$. Every other real half-exponential function violates it — its perturbation term grows on approaching $L$ like $|z-L|^{-4.447n}$.
     bereich: $D=\{|z|<|L|\}$; $T$, $A$ Kneser's tetration and slog to base $e$, $\Omega=A(D)$; corridor $V_0=T\bigl(\Omega\cap(\Omega-\tfrac12)\bigr)=\{z\in
       D:f_K(z)\in D\}$
@@ -3432,7 +3432,7 @@
       upward at $L$, downward at $\bar L$. Every other solution oscillates ever more strongly in one of the two directions.
 - id: kn.satz.paulsen_komplex
   quelle_hash: 3b3800b4bb39
-  theorie_hash: 0944acfc5d50
+  theorie_hash: bf97970e6538
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -3466,19 +3466,19 @@
     - stelle: 'Abstract (publisher page, via search hit): uniqueness conditions for complex bases, iteration methods inside and outside Shell–Thron'
   en_theorie:
     beispiel: |
-      The derivative with respect to the base, $\partial_bT_b(x)$, is thereby defined; in the base change it is called the “response” and is computed in chapter 7.
+      The derivative with respect to the base, $\partial_bT_b(x)$, would thereby be defined; in the base change it is called the “response” and is computed in chapter 7.
     einordnung: |
       Supports the perturbation theory in the base ([[bw.ann.basis_diffbar]], [[bw.satz.antwortkern]]) and the identification in Paper V
       ([[bw.satz.kern_existenz]]). Complex bases with their addresses: [[bw.verm.adressen]].
     genau: |
-      For complex bases outside an exceptional region, Kneser's construction can be continued; $T_b(z)$ depends holomorphically on $b$.
-      (Which bases exactly are excluded is still to be checked against the original.)
+      For complex bases outside an exceptional region, Kneser's construction can be continued. That $T_b(z)$ depends holomorphically on $b$ is not stated in the abstract;
+      the full text was not accessible. (Which bases exactly are excluded is still to be checked against the original.)
     warum: |
-      Theorem from the literature (Paulsen 2019). Reason in one sentence: All ingredients — the fixed point $L(b)$, its multiplier $\lambda(b)$, the Schröder function and the
-      Riemann map — depend analytically on $b$, as long as $L$ stays repelling and separated from $\bar L$.
+      Theorem from the literature (Paulsen 2019). Why one expects holomorphy in $b$: All ingredients — the fixed point $L(b)$, its multiplier $\lambda(b)$, the Schröder function and the
+      Riemann map — depend analytically on $b$, as long as $L$ stays repelling and separated from $\bar L$. A proof is not available here.
     worum: |
-      Kneser's construction does not need a real base. Paulsen has shown that it also works for complex bases — and that the solution depends
-      smoothly (even holomorphically) on the base. This allows differentiating with respect to the base.
+      Kneser's construction does not need a real base. Paulsen has shown that it also works for complex bases. Whether the solution
+      even depends holomorphically on the base is not established by this; that would allow differentiating with respect to the base.
 - id: kn.satz.polynom_approximation_ecke
   quelle_hash: d57d03e2f1fc
   theorie_hash: e0973b5cab11
@@ -3584,7 +3584,7 @@
     worum: |
       For orthogonal polynomials there is the famous Christoffel–Darboux formula: The whole sum over all polynomials can be expressed by the last two. Is there something like that here?
 - id: kn.satz.polynom_eckprofil
-  quelle_hash: ef92f940b834
+  quelle_hash: 969582394bd5
   theorie_hash: fb7fb7f0be87
   herkunft:
     modell: sonnet
@@ -3616,7 +3616,7 @@
     titel: 'The corner at L in closed form: limit profiles as gamma series with the exponent L/(4π)'
     aussage: |
       With $F_\beta(u)=\sum_{k\ge0}\Gamma(\beta-i\alpha k)(-u)^k/(k!\,\Gamma(\beta))=\Gamma(\beta)^{-1}\int_0^\infty t^{\beta-1}e^{-t-u\,t^{-i\alpha}}dt$:
-      (i) **proved:** the limit problem at the corner (Mellin–Wiener–Hopf with the factor $1+\mu^{s-2}$, $\mu=\sqrt L$) has the solutions $F_{\beta_A}$, $\beta_A=\tfrac12-2i\alpha$ (adjoint), and
+      (i) **proved up to Lemma K12:** the limit problem at the corner (Mellin–Wiener–Hopf with the factor $1+\mu^{s-2}$, $\mu=\sqrt L$) has the solutions $F_{\beta_A}$, $\beta_A=\tfrac12-2i\alpha$ (adjoint), and
       $F_{\beta_P}$, $\beta_P=\tfrac12+i\alpha$ (primal), with $\lambda_P=-\mu^{-1/2}\lambda_A$; under a Mellin boundary condition they are unique.
       (ii) **measured:** the true heads converge like $n^{-0.894}$ to these profiles (G's corner profile matched to $2.5\cdot10^{-7}$ with one parameter); the corner product follows
       $K_n(L,L)\approx C\,L/d_n$ with $C=-\tilde\lambda_P\Gamma(\tfrac12+i\alpha)/((\mu+\mu^{-1})\Gamma(\tfrac12+2i\alpha))=-0.010118-0.598298i$ (measured $-0.01012-0.59830i$).
@@ -3698,7 +3698,7 @@
       Before proving something for all degrees one should be sure the numbers are right. Here it is rigorously proved for every degree up to 120 that the polynomial root exists
       and stays below $2.2405$ on the disk up to $L$.
 - id: kn.satz.polynom_halbexp_hauptsatz
-  quelle_hash: 1fe64944dd3a
+  quelle_hash: a50a5172efcb
   theorie_hash: 54e05badf3bc
   herkunft:
     modell: sonnet
@@ -3751,7 +3751,7 @@
       measured with $\kappa\approx0$: at the boundary like $N^{-4.8}$, in the interior like $N^{-7.9}$.
     bereich: $p_N$ as in kn.verm.polynom_halbexp, $D=\{|z|<|L|\}$
     einfach: The research team has built the proof so far that only one single linear statement about the weak spot of the equations at L is missing.
-      If it holds, then the polynomials converge to Kneser's half-exponential function for every degree — exactly as in Janis’ conjecture.
+      If it holds, then the polynomials converge to Kneser's half-exponential function as the degree grows — exactly as in Janis’ conjecture.
     quellen:
     - stelle: ARCHITEKTUR.md §0, §4
     - stelle: '§4: no proof of convergence is known'
@@ -4168,7 +4168,7 @@
     worum: |
       A second, independent uniqueness statement — this time for the Abel function (the super-logarithm) instead of the tetration itself.
 - id: kn.satz.walker_konjugation
-  quelle_hash: caa472d4ea3b
+  quelle_hash: 8a3e781fcc2b
   theorie_hash: 04ac60f6f8d9
   herkunft:
     modell: sonnet
@@ -4187,7 +4187,7 @@
       f5_neue_frage: Is h nowhere analytic (Levenstein 2011, bw.verm.nirgends_analytisch)?
       f3_spezialfall: A base change (bw.def.F_bd) between exp and the parabolic dexp.
       f1_folgt_unmittelbar: No (limit construction, h = lim dexp^{−n}∘expⁿ according to Trappmann in the forum).
-      f4_uebertragbar: To every base above η (conjugation to b^x with parabolic fixed point).
+      f4_uebertragbar: To every base above η (conjugation of b^x to a map with a parabolic fixed point, e.g. e^x − 1).
     bewertung:
       nutzen: The core of Walker's construction and an early example of the base change.
       richtigkeit: Literature (review)
@@ -4462,7 +4462,7 @@
       strip: On a vertical strip of width 1 it is smooth and takes no value twice, and only it manages that.
 - id: kn.verm.polynom_halbexp
   quelle_hash: ea87e6949e3f
-  theorie_hash: 9a001ff87195
+  theorie_hash: c7596643a0dd
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -4537,13 +4537,13 @@
       | 100 | $1.64635423375119448$ | $-1.0\cdot10^{-16}$ |
       | 194 | — | $-2\cdot10^{-19}$ |
     warum: |
-      Not proved. What one sees and understands:
+      Only conditionally proved. What one sees and understands:
       1. The equation $f\circ f=\exp$ has infinitely many analytic solutions $f_\theta$ (one for each suitable periodic perturbation $\theta$). The truncated system has, for each $N$, only individual
          solutions — so it must select one.
       2. Kneser's solution is bounded on the disk $|x|<|L|$, its Taylor coefficients fall like $k^{-6.45}|L|^{-k}$. Every other real solution explodes near $L$ or $\bar L$;
          proved is: Kneser's is the only one that maps the corridor $\{z\in D:f_K(z)\in D\}$ into the disk ([[kn.satz.halbexp_beschraenkt]]). A polynomial can best imitate the “calmest” solution.
-      3. More precisely: If the polynomials stayed bounded on $|x|\le|L|$ and, in the corridor, in the disk, the conjecture would be proved ([[kn.satz.polynom_halbexp_reduktion]]). This bound is the open core
-         ([[kn.verm.polynom_halbexp_schranke]]).
+      3. More precisely: If the polynomials stayed bounded on $|x|\le|L|$ and, in the corridor, in the disk, the conjecture would be proved ([[kn.satz.polynom_halbexp_reduktion]]). This bound was at first the open core
+         ([[kn.verm.polynom_halbexp_schranke]]); today the viable version is conditionally proved, and what is open is [[kn.verm.polynom_halbexp_kern]].
     worum: |
       Can one compute Kneser's half-exponential function without putting in tetration, super-logarithm or complex analysis — only from the equation $f(f(x))=e^x$ itself?
       Janis’ attempt: a polynomial of degree $N$ whose self-composition hits the first $N+1$ terms of $e^x$. The numbers hit Kneser astonishingly exactly.
@@ -4885,7 +4885,7 @@
       $e$ and $\eta$ have on every higher level of operation a “sibling pair”: $(e_4,\eta_4)$ for tetration, $(e_5,\eta_5)$ for pentation, and so on.
       In 2010 a forum member (dantheman163) conjectured that these sequences tend to 4 and 2. The reason is pretty: $2+2=2\cdot2=2^2=2\uparrow\uparrow2=\dots=4$.
 - id: kn.verm.tpid11
-  quelle_hash: 139f0e17f66c
+  quelle_hash: a84b23d3d927
   theorie_hash: bb34a7757531
   herkunft:
     modell: sonnet
@@ -4919,7 +4919,7 @@
       that $D_n$ eventually falls at least as fast as $d_n$ (local exponents so far $1.18$–$1.23$ versus $1.47$, but increasing; kn.beob.tpid10_gesetz).
     bereich: Sequences $\eta_n$, $e_n$ as in kn.verm.tpid10, $n\ge4$
     einfach: 'An additional conjecture to TPID 10: If one squares the “eta” of a level, one stays just below the “Euler” number of the level before.
-      For the four known levels this holds, in each case by about 2 %.'
+      For the three levels checked this holds, in each case by about 2 %.'
     quellen:
     - stelle: TPID 11 (tommy1729, 01.12.2010), post 13
   en_theorie:
@@ -4939,7 +4939,7 @@
       tommy1729 added to TPID 10 an inequality that couples the two sequences: The square of an “eta” stays below the “Euler” number of the level before.
 - id: kn.verm.tpid3
   quelle_hash: b04042b74e4a
-  theorie_hash: 7f09f08d804c
+  theorie_hash: f8bcafcf9a6f
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -4985,7 +4985,7 @@
       $f(x)=(x+s)^p-s$ has the fixed point $1-s$ with multiplier $p$. Conjectured: eigenvalues of the $N\times N$ matrix about 0 tend to $1,p,p^2,\dots$
     warum: |
       If the infinite Carleman matrix were conjugate to triangular form, as at the fixed point, it would have the spectrum $\{p^k\}$; the question is whether the sections about 0 inherit that.
-      Measured: yes, if $1-s$ lies in the circle of convergence $|x|<s$; no in three cases outside.
+      Measured: yes, if $1-s$ lies in the circle of convergence $|x|<s$; no in the three other cases (fixed point on the boundary, outside, and the polynomial $p=2$).
     worum: |
       Truncated Carleman matrices are a computation route to fractional iterates without choosing a fixed point. TPID 3 asks whether their eigenvalues nevertheless hit the right
       fixed-point data, here for the simple function $(x+s)^p-s$.

@@ -415,7 +415,7 @@ aussagen:
   ebene: C
   status: numerisch
   objekte: [kern_V, fourier_moden]
-  aussage: '$|G_k(d)|/|G_1(d)|$ variiert um 0.4 % ($k=2$) bis 9 % ($k=8$) über $d\in\{2,e,3,5,10\}$; zwei unabhängige Wege (komplexer Schritt, ε-Schablonen) stimmen auf 24+ Stellen.'
+  aussage: '$|G_k(d)|/|G_1(d)|$ variiert um 0.4 % ($k=2$) bis 9 % ($k=8$) über $d\in\{2,e,3,5,10\}$; zwei unabhängige Wege (komplexer Schritt, ε-Schablonen; bei $d\in\{2,10\}$ statt des komplexen Schritts der RH-Löser) stimmen auf 24+ Stellen.'
   quellen: [{ref: justus_p1, stelle: 'Bem. 4.2'}, {ref: justus_log, stelle: 'Runden 3–5, 9'}]
   pruefung:
     f1_folgt_unmittelbar: Nein.
@@ -515,7 +515,7 @@ aussagen:
   ebene: C
   status: bewiesen
   objekte: [hub_m, eta]
-  aussage: 'Paper IV nennt an drei Stellen (Abstract, Lemma 8.2, Anhang) $\pi\sqrt{2\eta/e}=3.23907\ldots$; richtig ist $3.2389305453\ldots$ (relativer Fehler $4\cdot10^{-5}$). Die Aussage „Übereinstimmung auf 2.3 %“ bleibt praktisch unberührt.'
+  aussage: 'Paper IV nennt an drei Stellen (Abstract, Lemma 8.2, Anhang) $\pi\sqrt{2\eta/e}=3.23907\ldots$; richtig ist $3.2389305453\ldots$ (relativer Fehler $4\cdot10^{-5}$). Die Aussage „Übereinstimmung auf 2.3 %“ bleibt von dieser Korrektur praktisch unberührt (sie selbst ist zu optimistisch: die Hub-Daten treffen nur auf 4–7 %, bw.lem.randgesetz).'
   beweis: {art: vollstaendig, text: 'Direkte Auswertung mit 30 Stellen, drei algebraisch gleichwertige Formen (exp.randgesetz, Nachrechnung 08.10.2026).'}
   experimente: [exp.randgesetz]
   quellen: [{ref: justus_p4, stelle: 'Z. 870, 902, 1111 der Textfassung'}, {ref: diese_arbeit}]
@@ -701,7 +701,7 @@ aussagen:
   ebene: X
   status: bewiesen
   objekte: [fourier_moden, gevrey]
-  bereich: 'periodisches $P$, holomorph im Streifen bis auf isolierte Singularitäten $P=h\exp(v/(\theta-\bar\theta^*))$'
+  bereich: 'periodisches $P$, holomorph im Streifen bis auf isolierte Singularitäten $P=h\exp(v/(\theta-\bar\theta^*))$; Integrationskontur bis an den Streifenrand verschiebbar (vorausgesetzt)'
   aussage: '$\ln\hat P(k)=\mathrm{const}+\gamma\ln k-2\pi\sigma^*k-\sqrt{\pi ck}+o(\sqrt k)$ mit $8|v|\cos^2\Psi=c$.'
   beweis: {art: vollstaendig, text: 'Sattelpunktmethode (Kontur am Rand verschiebbar vorausgesetzt).'}
   quellen: [{ref: justus_p4, stelle: 'Prop. 6.3'}]
@@ -828,7 +828,7 @@ aussagen:
     f3_spezialfall: —
     f4_uebertragbar: —
     f5_neue_frage: 'Gegenbeispielsuche zu einer geschlossenen Form erweitern (Konstanten von $L_e,L_2$, $\ln\lambda$).'
-  bewertung: {richtigkeit: numerisch, neuheit: bekannt, recherche: 'Der Wert ist auf vier Stellen seit 2009 bekannt (S. Levenstein im Tetration-Forum: 1.1282; ebenso m(3) ≈ −0.1926, m(10) ≈ −1.1364 mit umgekehrtem Vorzeichen). Neu hier: 180 Stellen und die erfolglose PSLQ-Suche.', nutzen: 'Referenzkonstante.', nutzen_stufe: mittel}
+  bewertung: {richtigkeit: numerisch, neuheit: bekannt, recherche: 'Der Wert ist auf vier Stellen seit 2009 bekannt (S. Levenstein im Tetration-Forum: 1.1282; ebenso slog_3 − slog_e ≈ −0.1926 und slog_10 − slog_e ≈ −1.1364, also −m(3) und −m(10)). Neu hier: 180 Stellen und die erfolglose PSLQ-Suche.', nutzen: 'Referenzkonstante.', nutzen_stufe: mittel}
   versionen:
     - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Neuheit auf „bekannt“ (Forum 2009, 4 Stellen).'}
 
@@ -899,7 +899,7 @@ aussagen:
   status: bedingt
   bedingungen: [bw.ann.K1K2]
   objekte: [kern_V, rh_problem]
-  aussage: '$\tilde V\circ T_d:=V_{\mathrm{geo}}+g$ mit $g=\tilde u-iu-\tilde u(0)$ erfüllt (i)–(iv); mit Thm. 2 genau eine Lösung; unter (K3) ist sie $\partial_\beta A_b|_{b=d}$.'
+  aussage: '$\tilde V\circ T_d:=V_{\mathrm{geo}}+g$ mit $g=\tilde u-iu-\tilde u(0)$ erfüllt (i)–(iv); mit Thm. 2 genau eine Lösung; unter (K3) (Holomorphie in der Basis, kn.satz.paulsen_komplex) ist sie $\partial_\beta A_b|_{b=d}$.'
   beweis: {art: bedingt, text: 'Privalov–Dini (Dini-Modul $\delta\ln^2(1/\delta)$), Schwarz-Spiegelung, Riemann-Hebbarkeit, Pol-Entwicklung bei $L$.'}
   stuetzt_sich_auf: [bw.lem.geom_kozykel, bw.satz.kern_eindeutig, br.satz.privalov, bw.ann.K1K2]
   quellen: [{ref: justus_p5, stelle: 'Thm. 11, 13, Kor. 14'}]
@@ -949,7 +949,7 @@ aussagen:
     - {typ: motiviert, ziel: bw.satz.kern_existenz}
 
 - id: bw.gescheitert.vorhersage_r8
-  titel: Eigene Asymptotik-Vorhersage (Wachstum γ = 4.447) widerlegt
+  titel: Eigene Asymptotik-Vorhersage (Wachstum mit Exponent 2πν = 4.447) widerlegt
   art: gescheitert
   ebene: C
   status: gescheitert

@@ -53,7 +53,7 @@ aussagen:
     konvergiert, erfüllt $S(x+1)-S(x)=T(x)$, $S(1)=1$, $S(2)=1+b$, und ist die einzige Fortsetzung der Teilsummen nach den
     Axiomen von Müller–Schleicher (Summand nähert sich einer Konstanten).
   einfach: >-
-    „Die Summe der ersten 1,5 Turmstufen“ bekommt einen Sinn: weil die Stufen sich a nähern, darf man weit hinten jede Stufe
+    „Die Summe der ersten 1.5 Turmstufen“ bekommt einen Sinn: weil die Stufen sich a nähern, darf man weit hinten jede Stufe
     durch a ersetzen und genau eine halbe Stufe a dazuzählen.
   formen:
     - {tex: 'S_{\sqrt2}(1/2)=0.42777492020486755502\ldots', notiz: 'reguläre Tetration zur Basis √2'}
@@ -151,7 +151,7 @@ aussagen:
     f4_uebertragbar: 'Für b, d > η (Kneser) gibt es keinen anziehenden Fixpunkt; dort hat der Basiswechsel einen periodischen Teil (bw.satz.phasengesetz).'
     f5_neue_frage: 'kl.frage.basiswechsel_kneser'
   gegenbeispielsuche: |
-    exp.koenigs_basiswechsel: Konjugation $f_{\sqrt2}^{\circ2}\circ\Psi=\Psi\circ f_d$ auf $10^{-18}$; Höhe exakt $2x$ (x = 0.5, 1.25, 3.5);
+    exp.koenigs_basiswechsel: Konjugation $f_{\sqrt2}^{\circ2}\circ\Psi=\Psi\circ f_d$ auf $10^{-30}$; Höhe exakt $2x$ (auf $10^{-27}$) (x = 0.5, 1.25, 3.5);
     Verhältnis 1.7 ebenfalls linear; komplex ($\lambda_b=0.85e^{1.1i}$, $\lambda_d=\lambda_b^2$): $\Psi(z_{d,n})=z_{b,2n}$ für n = 10…25.
   bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Erklärt, warum der Basiswechsel unter η keine Phase hat: hier ist er eine Konjugation der Flüsse.', nutzen_stufe: mittel}
   quellen: [{ref: koenigs1884}, {ref: diese_arbeit}]
@@ -501,7 +501,7 @@ aussagen:
   experimente: [exp.eta_digamma]
   pruefung:
     f1_folgt_unmittelbar: Nein (Rechnung).
-    f2_benutzte_voraussetzungen: 'Fatou-Reihe mit 24 Gliedern, Tiefe 3000; Schwänze nach Euler–Maclaurin. C_T und die regularisierte Summe nur aus ganzen Höhen.'
+    f2_benutzte_voraussetzungen: 'Fatou-Reihe mit 24 Gliedern, Tiefe 3000 für die Fatou-Koordinate, 20 000 Turmstufen für C_T und die Summen; Schwänze nach Euler–Maclaurin. C_T und die regularisierte Summe nur aus ganzen Höhen.'
     f3_spezialfall: —
     f4_uebertragbar: —
     f5_neue_frage: 'Erkennen einer geschlossenen Form (PSLQ mit e, γ, log 2, π, ζ(3), …).'
@@ -636,7 +636,7 @@ aussagen:
     hyperbolischer Fixpunkt ($|\lambda|<1$): $\lambda^{A}$, Betrag $<1$ — geometrisch gedämpft, Pseudoperiode $2\pi/|\arg\lambda|$, Dämpfung
     $|\lambda|^{2\pi/|\arg\lambda|}$ pro Pseudoperiode; rational neutraler Fixpunkt: $e^{2\pi iA}$ — echte 1-Periodizität (Écalle–Voronin, Hornabbildung);
     irrational neutral: quasiperiodisch; wesentliche Singularität bei ∞ (Türme über η): $e^{2\pi iA}$ — die klassische 1-periodische
-    Basiswechsel-Funktion. Diese ist also der **Grenzfall $|\lambda|\to1$** der gedämpften Schwingung am geteilten Fixpunkt.
+    Basiswechsel-Funktion. Diese lässt sich als **Grenzfall $|\lambda|\to1$** der gedämpften Schwingung am geteilten Fixpunkt deuten (kein Grenzwertsatz).
   einfach: >-
     Am gemeinsamen Fixpunkt gibt es dieselbe Welle wie beim klassischen Basiswechsel — nur wird sie bei jedem Schritt kleiner.
     Je näher |λ| an 1 liegt, desto länger überlebt sie; bei |λ| = 1 wird sie zur ungedämpften, ewigen Welle.
