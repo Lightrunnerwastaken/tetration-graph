@@ -6,11 +6,11 @@ Hauptideen und Unterideen mit Füllstand (Status der Aussagen), Herkunft (Litera
 
 Wie man T(x) zwischen den ganzen Höhen festlegt — und welche Wahl die natürliche ist.
 
-Stand: bewiesen 45, bedingt 8, numerisch 17, Vermutung 14, offen 10, verworfen 3 · Literatur 50 / Forum 17 / eigen 30
+Stand: bewiesen 44, bedingt 9, numerisch 17, Vermutung 14, offen 10, verworfen 3 · Literatur 50 / Forum 17 / eigen 30
 
 - **Halbe Exponentialfunktion** (26): bewiesen 8, bedingt 6, numerisch 6, Vermutung 4, verworfen 2 · Literatur 7 / Forum 1 / eigen 18 · offen: kn.satz.halbexp_beschraenkt, kn.satz.polynom_halbexp_hauptsatz, kn.satz.polynom_halbexp_reduktion, kn.satz.polynom_hauptsatz_kr0, kn.verm.polynom_halbexp, kn.verm.polynom_halbexp_eckmoden, kn.verm.polynom_halbexp_kern, kn.verm.polynom_halbexp_schranke
 - **Andere Konstruktionen** (23): bewiesen 10, bedingt 1, numerisch 3, Vermutung 5, offen 4 · Literatur 10 / Forum 11 / eigen 2 · offen: kn.frage.abel_bruchsumme, kn.frage.tpid14, kn.frage.tpid16, kn.frage.tpid17, kn.verm.carleman_eigenwerte, kn.verm.carleman_kneser, kn.verm.szekeres_wachstum, kn.verm.tpid3 …
-- **Regulär unter η** (17): bewiesen 10, bedingt 1, numerisch 2, Vermutung 3, offen 1 · Literatur 10 / Forum 3 / eigen 4 · offen: kl.verm.streifenbreite, kl.verm.vollmonoton, kl.frage.tpid5, kl.satz.folgen_vollmonoton, kl.verm.faktor
+- **Regulär unter η** (17): bewiesen 9, bedingt 2, numerisch 2, Vermutung 3, offen 1 · Literatur 10 / Forum 3 / eigen 4 · offen: kl.verm.streifenbreite, kl.verm.vollmonoton, kl.frage.tpid5, kl.satz.folgen_vollmonoton, kl.satz.newton_reihe, kl.verm.faktor
 - **Der Grenzfall η** (14): bewiesen 8, numerisch 2, Vermutung 1, offen 3 · Literatur 9 / Forum 2 / eigen 3 · offen: br.frage.implosion, kl.frage.eta_analytisch, kl.frage.stetig_eta, kl.verm.lambert_zeta
 - **Kneser über η** (9): bewiesen 5, numerisch 3, verworfen 1 · Literatur 7 / Forum 0 / eigen 2
 - **Eindeutigkeit** (7): bewiesen 4, numerisch 1, Vermutung 1, offen 1 · Literatur 6 / Forum 0 / eigen 1 · offen: kn.frage.beta_methode, kn.verm.tk_c2
@@ -20,7 +20,7 @@ Stand: bewiesen 45, bedingt 8, numerisch 17, Vermutung 14, offen 10, verworfen 3
 
 Was entsteht, wenn man die Tetration zu einer Basis mit dem Superlogarithmus einer anderen zusammensetzt.
 
-Stand: bewiesen 20, bedingt 16, numerisch 11, Vermutung 6, offen 6, verworfen 10 · Literatur 7 / Forum 6 / eigen 56
+Stand: bewiesen 19, bedingt 17, numerisch 11, Vermutung 6, offen 6, verworfen 10 · Literatur 7 / Forum 6 / eigen 56
 
 - **Antwortkern und Basisableitung** (18): bewiesen 3, bedingt 5, numerisch 3, Vermutung 2, verworfen 5 · Literatur 1 / Forum 2 / eigen 15 · offen: bw.ann.K1K2, bw.satz.kern_eindeutig, bw.ann.basis_diffbar, bw.satz.kern_existenz, bw.prop.hub, bw.satz.antwortkern
 - **Moden und Singularitäten** (13): bewiesen 2, bedingt 1, numerisch 5, Vermutung 2, offen 1, verworfen 2 · Literatur 1 / Forum 2 / eigen 10 · offen: bw.frage.streifen_gevrey, bw.verm.nirgends_analytisch, bw.verm.streifen
@@ -28,7 +28,7 @@ Stand: bewiesen 20, bedingt 16, numerisch 11, Vermutung 6, offen 6, verworfen 10
 - **Gleicher Fixpunkt** (8): bewiesen 4, bedingt 1, offen 2, verworfen 1 · Literatur 2 / Forum 0 / eigen 6 · offen: kl.frage.basiswechsel_kneser, kl.frage.gleiches_L_kneser
 - **Log-Peeling und Grenzkanal** (8): bewiesen 6, bedingt 1, Vermutung 1 · Literatur 0 / Forum 1 / eigen 7 · offen: bw.ann.hyp22, bw.satz.schwanzkonvergenz
 - **Kreisabbildung** (6): bewiesen 1, bedingt 4, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.prop.kozykel, bw.satz.homoeo, bw.satz.antisymmetrie, bw.satz.c1_produkt
-- **Rekonstruktion und Zertifikat** (6): bewiesen 2, bedingt 1, numerisch 1, offen 1, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.frage.intervallmarsch, bw.satz.anker_rekonstruktion
+- **Rekonstruktion und Zertifikat** (6): bewiesen 1, bedingt 2, numerisch 1, offen 1, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.frage.intervallmarsch, bw.satz.anker_rekonstruktion, bw.zert.8r1
 
 ## Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ (64 Aussagen)
 
@@ -69,9 +69,9 @@ Stand: bewiesen 20, bedingt 3, numerisch 1, Vermutung 3, offen 3 · Literatur 19
 
 Pentation, Hexation und die ganze Leiter der Hyperoperationen.
 
-Stand: bewiesen 8, bedingt 4, numerisch 10, Vermutung 4, offen 3 · Literatur 9 / Forum 15 / eigen 5
+Stand: bewiesen 5, bedingt 7, numerisch 10, Vermutung 4, offen 3 · Literatur 9 / Forum 15 / eigen 5
 
-- **Pentation und Hexation** (16): bewiesen 4, bedingt 4, numerisch 6, Vermutung 1, offen 1 · Literatur 4 / Forum 7 / eigen 5 · offen: kn.satz.hexation_eindeutig_g0, kn.frage.hexation_kneser, kn.satz.hexation_gebiete, kn.satz.hexation_keine_halbebene, kn.satz.hexation_logpunkt, kn.verm.hexation_streifen
+- **Pentation und Hexation** (16): bewiesen 1, bedingt 7, numerisch 6, Vermutung 1, offen 1 · Literatur 4 / Forum 7 / eigen 5 · offen: kn.konstr.pentation, kn.satz.hexation_eindeutig_g0, kn.frage.hexation_kneser, kn.konstr.hexation_regulaer, kn.satz.hexation_gebiete, kn.satz.hexation_keine_halbebene, kn.satz.hexation_logpunkt, kn.satz.hexation_struktur …
 - **ηₙ → 2 und eₙ → 4** (9): numerisch 4, Vermutung 3, offen 2 · Literatur 1 / Forum 8 / eigen 0 · offen: kn.frage.andere_etas, kn.frage.pentation_untergrenze, kn.verm.beschraenkt_unter_2, kn.verm.tpid10, kn.verm.tpid11
 - **Hyperoperationen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
 

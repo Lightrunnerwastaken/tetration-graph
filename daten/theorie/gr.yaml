@@ -583,14 +583,15 @@ gr.satz.wurzel_eta:
     Kurz vor $\eta$ steigt der unendliche Turm nicht linear, sondern wie eine Wurzel: der Abstand zu $e$ ist proportional zur Wurzel aus
     dem Abstand der Basis zu $\eta$.
   genau: |
-    $$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+O(\eta-a)\qquad(a\to\eta\ \text{von unten}).$$
+    $$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+\frac{5e^2}{3}\,\frac{\eta-a}{\eta}+O\bigl((\eta-a)^{3/2}\bigr)\qquad(a\to\eta\ \text{von unten}).$$
   warum: |
     1. Der Fixpunkt löst $\frac{\ln h}h=\ln a$. Die Funktion $\varphi(h)=\frac{\ln h}h$ hat bei $h=e$ ihr Maximum $\frac1e$, mit $\varphi''(e)=-\frac1{e^3}$.
     2. Nahe dem Maximum ist $\varphi(h)\approx\frac1e-\frac1{2e^3}(h-e)^2$ (Taylor zweiter Ordnung).
     3. Mit $\ln a=\frac1e-\delta$, $\delta\approx\frac{\eta-a}\eta$, gibt $\frac1{2e^3}(h-e)^2=\delta$, also $|h-e|=\sqrt{2e^3\delta}$; der untere Ast hat $h<e$.
+    4. Nächste Ordnung: Mit $h=e(1+v)$ ist $\varphi(h)=\frac1e\bigl(1-\frac{v^2}2+\frac{5v^3}6+O(v^4)\bigr)$, also $v^2\bigl(1-\frac53v\bigr)=2e\delta$. Mit $u=\sqrt{2e\delta}$ folgt $v=-u+\frac56u^2+O(u^3)$ und damit der zweite Term $\frac{5e}6u^2=\frac{5e^2}3\delta$.
   beispiel: |
     $a=1.44$: $\eta-a=0.00467$, Formel $e-\sqrt{2e^3\cdot0.00467/1.4447}=e-0.3603=2.358$; der genaue Wert ist $2.394$ — der Fehler ist von der
-    Grösse $\eta-a$, wie versprochen.
+    Grösse $\eta-a$, wie versprochen; mit dem zweiten Term $\frac{5e^2}3\cdot0.00467/1.4447=0.0398$ kommt man auf $2.358+0.0398=2.398$, der Fehler sinkt auf $0.004$ (Grösse $(\eta-a)^{3/2}$).
   einordnung: |
     Dieselbe Quadratwurzel taucht im Randgesetz der Basiswechsel-Forschung auf ([[bw.lem.randgesetz]]): das Verschmelzen zweier Fixpunkte
     (Sattel-Knoten) erzeugt immer Wurzeln ([[br.satz.sattel_knoten]]).
@@ -642,7 +643,7 @@ gr.satz.superwurzel_dritte:
   genau: |
     Für jedes $Y>1$ hat $y^{y^y}=Y$ genau eine positive Lösung $y$, und sie ist grösser als $1$. Sie erfüllt
     $$y=\exp\Bigl(W\bigl(W(y\ln Y)\bigr)\Bigr).$$
-    Startet man mit $y=1$ und setzt immer wieder ein, so kommt man (beobachtet, nicht bewiesen) zur Lösung.
+    Startet man mit $y=1$ und setzt immer wieder ein, so wächst die Folge monoton und kommt der Lösung beliebig nahe.
   warum: |
     **Genau eine Lösung:** Für $0<y\le1$ ist $y^y\le1$ und daher auch $y^{y^y}\le1<Y$. Für $y\ge1$ wächst $y^{y^y}$ stetig und streng
     von $1$ ins Unendliche, trifft $Y$ also genau einmal.
@@ -654,6 +655,8 @@ gr.satz.superwurzel_dritte:
     3. Noch einmal derselbe Trick: $y\ln y=(\ln y)\,e^{\ln y}$, also $\ln y=W(y\ln y)=W(W(y\ln Y))$.
 
     Rechts steht $y$ noch einmal — deshalb ist es keine geschlossene Formel, sondern eine Fixpunktgleichung.
+
+    **Die Iteration konvergiert:** Sei $F(y)=\exp W(W(y\ln Y))$. Da $W$ und $\exp$ wachsen und $\ln Y>0$ ist, wächst $F$. Weiter ist $F(1)>1$, weil $W(\ln Y)>0$ und damit $W(W(\ln Y))>0$. Also ist $y_n=F^n(1)$ monoton wachsend. Ist $y^*$ die Lösung, so ist $F(y^*)=y^*$ und $1\le y^*$, also $y_n\le y^*$ für alle $n$. Der Grenzwert ist ein Fixpunkt von $F$; rückwärts gerechnet löst jeder Fixpunkt $y\ge1$ die Gleichung $y^{y^y}=Y$, also ist er $y^*$.
   beispiel: |
     Dritte Superwurzeln (auf 45 Stellen, je 53–60 Iterationen ab $y=1$):
     - $Y=2$: $y=1.4766843373578699\ldots$ Probe: $1.4767^{1.4767}=1.7782$, $1.4767^{1.7782}=e^{1.7782\cdot0.38981}=e^{0.6932}=2.000$.

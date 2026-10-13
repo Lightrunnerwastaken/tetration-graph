@@ -22,7 +22,7 @@ function sprachDaten(G) {
   for (const k of G.knoten) {
     const en = k.en;
     if (en) {
-      ersetze(k, en, ["titel", "aussage", "bereich", "einfach", "naechste_frage", "gegenbeispielsuche"]);
+      ersetze(k, en, ["titel", "aussage", "bereich", "einfach", "naechste_frage", "gegenbeispielsuche", "bedingungen_text"]);
       if (en.beweis && k.beweis) {
         ersetze(k.beweis, en.beweis, ["text"]);
         for (const [i, l] of (en.beweis.luecken || []).entries()) if (typeof l === "string" && l.trim() && k.beweis.luecken) k.beweis.luecken[i] = l;

@@ -1836,36 +1836,35 @@
       when raised to itself? For $x=27$ the answer is $3$, for $x=4$ it is $2$ — and for $x=2$ it is a number that can be written down
       only with a special function.
 - id: gr.satz.superwurzel_dritte
-  quelle_hash: f246e3749d2c
-  theorie_hash: 9bc15937db01
+  quelle_hash: df9ac3dfe049
+  theorie_hash: 6862a596de7b
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
-  geprueft:
-    beweis: nein
-    intern: nein
-    kern: zweitpruefung
-    theorie: zweitpruefung
-    zusatz: nein
+  geprueft: nein
   en:
     beweis:
       text: 'Uniqueness: for $0<y\le1$ we have $y^{y^y}\le1$; on $[1,\infty)$ the map $y\mapsto y^{y^y}$ is continuous and strictly increasing
         from 1 to ∞. Formula: multiplying $y^y\ln y=\ln Y$ by $y$ gives $(y\ln y)e^{y\ln y}=y\ln Y$, hence $y\ln y=W(y\ln Y)$, and $(\ln y)e^{\ln
-        y}=y\ln y$ gives $\ln y=W(W(y\ln Y))$. The convergence of the iteration is only observed.'
+        y}=y\ln y$ gives $\ln y=W(W(y\ln Y))$. Convergence: $F(y)=\exp W(W(y\ln Y))$ is increasing, since $W$ and $\exp$ are and $\ln Y>0$. $F(1)>1$,
+        because $W(\ln Y)>0$ and hence $W(W(\ln Y))>0$. So $y_n=F^n(1)$ increases monotonically. With $y^*$ for the solution, $F(y^*)=y^*$ and
+        $y_0=1\le y^*$, hence $y_n\le y^*$ for all $n$. The limit $y_\infty\le y^*$ is a fixed point of $F$; from $y=F(y)$ it follows backwards
+        that $y^y\ln y=\ln Y$, hence $y^{y^y}=Y$ (for $y\ge1$, $W(xe^x)=x$ with $x\ge0$), and uniqueness gives $y_\infty=y^*$.'
     pruefung:
       f5_neue_frage: Convergence rate of the iteration (derivative of the map at the fixed point) and behavior for $Y\to1^+$.
-      f1_folgt_unmittelbar: Yes for the formula and uniqueness; not for the convergence of the iteration (contraction not shown).
+      f1_folgt_unmittelbar: Yes for the formula and uniqueness; also for the convergence of the iteration (monotonically increasing and bounded,
+        no contraction proof needed).
       f2_benutzte_voraussetzungen: $Y>1$; for $Y<1$ there may be several solutions (not investigated).
       f3_spezialfall: 'Pattern for the $n$-th super-root: W applied $n-1$ times, but only implicitly.'
       f4_uebertragbar: 'Arithmetic: integer or irrational (ar.satz.superwurzel_arith).'
     bewertung:
-      richtigkeit: Formula complete, iteration numerical
+      richtigkeit: complete
       nutzen: Shows how far Lambert W carries.
     titel: Third super-root — Lambert W twice
     aussage: |
       For $Y>1$, $y^{y^y}=Y$ has exactly one solution $y>0$, and it lies in $(1,\infty)$. It satisfies
       $$y=\exp W\bigl(W(y\ln Y)\bigr),$$
-      and the fixed-point iteration $y\leftarrow\exp W(W(y\ln Y))$ starting from $y=1$ converges (observed for $Y=2,10,100,10^6$, each 53–60 steps to 45 digits).
+      and the fixed-point iteration $y\leftarrow\exp W(W(y\ln Y))$ starting from $y=1$ increases monotonically and converges to this solution (numerically for $Y=2,10,100,10^6$: each 53–60 steps to 45 digits).
       Values: $\sqrt[3]{2}_s=1.4766843373578699\ldots$, $\sqrt[3]{10}_s=1.9235840364420273\ldots$, $\sqrt[3]{100}_s=2.2127958063258997\ldots$
     bereich: real $Y>1$, sought $y>1$ with $y^{y^y}=Y$
     einfach: The question “which number gives exactly 2 as a three-level tower y^y^y?” also has exactly one answer, about 1.4767. There is no
@@ -1887,7 +1886,7 @@
     genau: |
       For every $Y>1$, $y^{y^y}=Y$ has exactly one positive solution $y$, and it is larger than $1$. It satisfies
       $$y=\exp\Bigl(W\bigl(W(y\ln Y)\bigr)\Bigr).$$
-      If one starts with $y=1$ and substitutes again and again, one arrives (observed, not proved) at the solution.
+      If one starts with $y=1$ and substitutes again and again, the sequence grows monotonically and comes arbitrarily close to the solution.
     warum: |
       **Exactly one solution:** For $0<y\le1$, $y^y\le1$ and hence also $y^{y^y}\le1<Y$. For $y\ge1$, $y^{y^y}$ grows continuously and strictly
       from $1$ to infinity, so it meets $Y$ exactly once.
@@ -1899,6 +1898,8 @@
       3. Once more the same trick: $y\ln y=(\ln y)\,e^{\ln y}$, so $\ln y=W(y\ln y)=W(W(y\ln Y))$.
 
       On the right $y$ appears once more — that is why this is not a closed formula but a fixed-point equation.
+
+      **The iteration converges:** Let $F(y)=\exp W(W(y\ln Y))$. Since $W$ and $\exp$ increase and $\ln Y>0$, $F$ increases. Moreover $F(1)>1$, because $W(\ln Y)>0$ and hence $W(W(\ln Y))>0$. So $y_n=F^n(1)$ is monotonically increasing. If $y^*$ is the solution, then $F(y^*)=y^*$ and $1\le y^*$, hence $y_n\le y^*$ for all $n$. The limit is a fixed point of $F$; computing backwards, every fixed point $y\ge1$ solves $y^{y^y}=Y$, so it is $y^*$.
     worum: |
       For the tower of height three $y^{y^y}$ there is no ready-made formula for the inverse anymore. But one can write the solution as a fixed point:
       a rule of computation that one applies again and again until the number no longer changes. And here, too, the Lambert function is
@@ -2325,23 +2326,19 @@
       A tetration cannot increase over one stretch and decrease elsewhere: the sign of the slope is inherited from level to level.
       For bases below $1$, by contrast, it flips at every step.
 - id: gr.satz.wurzel_eta
-  quelle_hash: d39ee9067d38
-  theorie_hash: b9c00cfcad72
+  quelle_hash: dbd6698e6e57
+  theorie_hash: 1ab3f6fc0662
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
-  geprueft:
-    beweis: nein
-    intern: nein
-    kern: zweitpruefung
-    theorie: zweitpruefung
-    zusatz: nein
+  geprueft: nein
   en:
     beweis:
-      text: $\varphi(h)=\ln h/h$ has a maximum $1/e$ at $e$ with $\varphi''(e)=-1/e^3$; $\ln a=1/e-\delta$, $\delta=(\eta-a)/\eta+O((\eta-a)^2)$,
-        solve for $h<e$.
+      text: '$\varphi(h)=\ln h/h$ has a maximum $1/e$ at $e$ with $\varphi''''(e)=-1/e^3$; $\ln a=1/e-\delta$, $\delta=(\eta-a)/\eta+O((\eta-a)^2)$,
+        solve for $h<e$. Next order: With $h=e(1+v)$ we have $\varphi(h)=\tfrac1e\bigl(1-\tfrac{v^2}2+\tfrac{5v^3}6+O(v^4)\bigr)$, hence $v^2(1-\tfrac53v)=2e\delta$.
+        With $u=\sqrt{2e\delta}$ it follows that $v=-u+\tfrac56u^2+O(u^3)$ and thus $h=e-eu+\tfrac{5e}6u^2+O(u^3)$, which is the formula above.'
     pruefung:
-      f5_neue_frage: Compute the coefficient $-1.6166$ in closed form (next Taylor order).
+      f5_neue_frage: Compute the term of the next Taylor order ($(\eta-a)^{3/2}$).
       f1_folgt_unmittelbar: Yes (Taylor at the maximum).
       f2_benutzte_voraussetzungen: Only $\varphi''(e)\ne0$.
       f3_spezialfall: 'Yes: saddle-node bifurcation of a fixed point (two fixed points merge at η).'
@@ -2350,8 +2347,9 @@
       richtigkeit: complete
       nutzen: Elementary bridge to the research (boundary law).
     titel: Square root at η
-    aussage: '$$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+O(\eta-a)\qquad(a\uparrow\eta).$$ Measured: the next term is $\approx-1.6166\cdot\sqrt{\eta-a}$
-      relative to the leading term.'
+    aussage: '$$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+\frac{5e^2}{3}\,\frac{\eta-a}{\eta}+O\bigl((\eta-a)^{3/2}\bigr)\qquad(a\uparrow\eta).$$
+      The second term is, relative to the leading term $-\tfrac56\sqrt{2e/\eta}\,\sqrt{\eta-a}=-1.61658\ldots\cdot\sqrt{\eta-a}$ (measured: $-1.61655$
+      at $\eta-a=10^{-10}$).'
     einfach: 'Just below η the limit of the tower does not fall off evenly but like a square root. The same root reappears in the research: how
       long a tetration just above η “gets stuck” in the bottleneck at e grows like 1/(square root).'
     formen:
@@ -2359,20 +2357,21 @@
     quellen:
     - stelle: Series of W at the branch point −1/e
     - {}
-    - stelle: Recomputation, next term measured
+    - stelle: Recomputation; next term derived in closed form and measured
   en_theorie:
     beispiel: |
       $a=1.44$: $\eta-a=0.00467$, formula $e-\sqrt{2e^3\cdot0.00467/1.4447}=e-0.3603=2.358$; the exact value is $2.394$ — the error is of the
-      size $\eta-a$, as promised.
+      size $\eta-a$, as promised; with the second term $\frac{5e^2}3\cdot0.00467/1.4447=0.0398$ one gets $2.358+0.0398=2.398$, and the error drops to $0.004$ (size $(\eta-a)^{3/2}$).
     einordnung: |
       The same square root appears in the boundary law of the base-change research ([[bw.lem.randgesetz]]): the merging of two fixed points
       (saddle-node) always produces roots ([[br.satz.sattel_knoten]]).
     genau: |
-      $$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+O(\eta-a)\qquad(a\to\eta\ \text{from below}).$$
+      $$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+\frac{5e^2}{3}\,\frac{\eta-a}{\eta}+O\bigl((\eta-a)^{3/2}\bigr)\qquad(a\to\eta\ \text{from below}).$$
     warum: |
       1. The fixed point solves $\frac{\ln h}h=\ln a$. The function $\varphi(h)=\frac{\ln h}h$ has its maximum $\frac1e$ at $h=e$, with $\varphi''(e)=-\frac1{e^3}$.
       2. Near the maximum, $\varphi(h)\approx\frac1e-\frac1{2e^3}(h-e)^2$ (second-order Taylor).
       3. With $\ln a=\frac1e-\delta$, $\delta\approx\frac{\eta-a}\eta$, we get $\frac1{2e^3}(h-e)^2=\delta$, hence $|h-e|=\sqrt{2e^3\delta}$; the lower branch has $h<e$.
+      4. Next order: With $h=e(1+v)$, $\varphi(h)=\frac1e\bigl(1-\frac{v^2}2+\frac{5v^3}6+O(v^4)\bigr)$, so $v^2\bigl(1-\frac53v\bigr)=2e\delta$. With $u=\sqrt{2e\delta}$ it follows that $v=-u+\frac56u^2+O(u^3)$ and thus the second term $\frac{5e}6u^2=\frac{5e^2}3\delta$.
     worum: |
       Just before $\eta$ the infinite tower does not rise linearly but like a square root: the distance to $e$ is proportional to the square root of
       the distance of the base to $\eta$.

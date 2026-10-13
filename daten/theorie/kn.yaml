@@ -266,7 +266,7 @@ kn.konstr.carleman:
     $$\sum_{k=1}^na_k=1,\qquad\sum_{k=1}^na_k\frac{k^j}{j!}=a_j\quad(1\le j\le n-1).$$
   warum: |
     $\operatorname{slog}_n(e^x)=-1+\sum_ka_ke^{kx}=-1+\sum_ka_k\sum_j\frac{k^jx^j}{j!}$. Der Koeffizient von $x^0$ ist $-1+\sum_ka_k$, der von $\operatorname{slog}_n(x)$ ist $-1$; die
-    Differenz soll $1$ sein. Für $x^j$ mit $j\ge1$ soll die Differenz $0$ sein: $\sum_ka_kk^j/j!-a_j=0$. Ob das System für jedes $n$ lösbar ist, ist nur beobachtet.
+    Differenz soll $1$ sein. Für $x^j$ mit $j\ge1$ soll die Differenz $0$ sein: $\sum_ka_kk^j/j!-a_j=0$. Ob das System für jedes $n$ lösbar ist, ist nur beobachtet; für alle geprüften $n$ ist die Lösung eindeutig.
   beispiel: |
     Mit $n=16$ liegt $\operatorname{slog}_n$ an inneren Punkten um $1.7\cdot10^{-5}$ neben Knesers Wert, mit $n=128$ um $9.2\cdot10^{-9}$.
   bilder: [exp.carleman]
@@ -351,7 +351,7 @@ kn.konstr.pentation:
   genau: |
     Sei $b>\eta$ und $T_b$ die Kneser-Tetration.
     - $T_b$ hat zwischen $-2$ und $-1$ einen Fixpunkt $L_b$: $T_b(L_b)=L_b$. Zur Basis $e$ ist $L_e=-1.85035\ldots$
-    - Dort ist $T_b$ steil: $\lambda_b=T_b'(L_b)>1$ (gemessen: $6.4607$ für $e$, $5.1718$ für $2$). Der Fixpunkt stösst also ab — für die Umkehrung slog zieht er an.
+    - Dort ist $T_b$ steil: $\lambda_b=T_b'(L_b)>1$ — **gemessen, nicht bewiesen** ($6.4607$ für $e$, $5.1718$ für $2$; bewiesen ist nur $\lambda_b\ge1$ am kleinsten Fixpunkt). Der Fixpunkt stösst also ab — für die Umkehrung slog zieht er an. Alles Folgende gilt unter dieser Voraussetzung.
     - Die Poincaré-Funktion $\Psi$ an $L_b$ erfüllt $\Psi(\lambda_bw)=T_b(\Psi(w))$. Damit ist
       $$P_b(z)=\Psi\bigl(c\,\lambda_b^{\,z}\bigr)$$
       eine Pentation: $P_b(z+1)=T_b(P_b(z))$, und mit der richtigen Konstante $c$ gilt $P_b(0)=1$.

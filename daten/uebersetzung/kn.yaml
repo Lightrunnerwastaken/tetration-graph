@@ -1541,17 +1541,12 @@
       just make the same construction at $L$. This does indeed give a solution of the equation — only it is
       not real on the real axis. This failure shows what Kneser had to repair.
 - id: kn.konstr.carleman
-  quelle_hash: 7e22831da5d1
-  theorie_hash: 5ae82ec46c19
+  quelle_hash: e8120527076a
+  theorie_hash: 278e637d65e2
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
-  geprueft:
-    beweis: nein
-    intern: nein
-    kern: zweitpruefung
-    theorie: nein
-    zusatz: nein
+  geprueft: nein
   en:
     beweis:
       text: Construction; solvability for every n observed numerically, not proved in general.
@@ -1567,7 +1562,7 @@
     titel: Intuitive slog via truncated Carleman systems
     aussage: |
       Comparing coefficients in $\operatorname{slog}(e^x)-\operatorname{slog}(x)=1$ up to degree $n-1$ gives the linear system
-      $\sum_{k=1}^{n}a_k\,k^j/j!-a_j=\delta_{j0}$ $(0\le j\le n-1)$. Its solution defines $\operatorname{slog}_n$
+      $\sum_{k=1}^{n}a_k\,k^j/j!-a_j=\delta_{j0}$ $(0\le j\le n-1)$. Its solution (unique for all $n$ tested) defines $\operatorname{slog}_n$
       (Walker 1991, Robbins 2005 “natural slog”).
     bereich: $b=e$; ansatz $\operatorname{slog}_n(x)=-1+\sum_{k=1}^{n}a_k x^k$
     quellen:
@@ -1589,7 +1584,7 @@
       $$\sum_{k=1}^na_k=1,\qquad\sum_{k=1}^na_k\frac{k^j}{j!}=a_j\quad(1\le j\le n-1).$$
     warum: |
       $\operatorname{slog}_n(e^x)=-1+\sum_ka_ke^{kx}=-1+\sum_ka_k\sum_j\frac{k^jx^j}{j!}$. The coefficient of $x^0$ is $-1+\sum_ka_k$, that of $\operatorname{slog}_n(x)$ is $-1$; the
-      difference is to be $1$. For $x^j$ with $j\ge1$ the difference is to be $0$: $\sum_ka_kk^j/j!-a_j=0$. Whether the system is solvable for every $n$ has only been observed.
+      difference is to be $1$. For $x^j$ with $j\ge1$ the difference is to be $0$: $\sum_ka_kk^j/j!-a_j=0$. Whether the system is solvable for every $n$ has only been observed; for all $n$ tested the solution is unique.
     worum: |
       A way entirely without complex geometry: One takes the super-logarithm as a polynomial ansatz and demands the Abel equation coefficient by
       coefficient. What comes out is a linear system of equations.
@@ -1969,8 +1964,8 @@
       The exponential function has no real fixed point — hence there is no unique “regular” half-iterate for it. Paulsen bends it a little,
       until it has one, solves uniquely there and takes the bending back.
 - id: kn.konstr.pentation
-  quelle_hash: a0a918daeadb
-  theorie_hash: 68efb99671bf
+  quelle_hash: c23008966278
+  theorie_hash: 4871443348bc
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1997,7 +1992,7 @@
         additionally positive fixed points (kn.beob.tetra_euler).'
     bewertung:
       nutzen: First higher level with actual numbers; shows that the method of regular iteration repeats.
-      richtigkeit: Construction complete, λ_b measured
+      richtigkeit: Construction complete under the assumption λ_b > 1 (measured)
     voraussetzungen:
     - text: 'T_b holomorphic near L_b (holds: L_b > −2)'
     - text: 'L_b repelling: λ_b = T_b′(L_b) > 1 (measured: e 6.4607, 2 5.1718)'
@@ -2018,6 +2013,8 @@
         ≈ −2.315 ± 1.684 i'
     - {}
     - stelle: Computation with Kneser values
+    bedingungen_text: 'λ_b = T_b′(L_b) > 1 and L_b the only fixed point of T_b in (−2, −1): measured (e 6.4607, 2 5.1718), proved only λ_b ≥ 1
+      at the smallest fixed point; equivalent to the log-concavity of T_b on (−1, 0), which fails for b > b₇ (gr.gegen.tpid7_kneser)'
   en_theorie:
     beispiel: |
       Base $e$: $\lambda_e=6.46067\ldots$, $c=66.3201585987\ldots$, $\Psi(w)=L+w-0.6263\,w^2+0.4828\,w^3-0.4120\,w^4+\dots$
@@ -2030,7 +2027,7 @@
     genau: |
       Let $b>\eta$ and $T_b$ the Kneser tetration.
       - $T_b$ has a fixed point $L_b$ between $-2$ and $-1$: $T_b(L_b)=L_b$. For base $e$, $L_e=-1.85035\ldots$
-      - There $T_b$ is steep: $\lambda_b=T_b'(L_b)>1$ (measured: $6.4607$ for $e$, $5.1718$ for $2$). So the fixed point repels — for the inverse slog it attracts.
+      - There $T_b$ is steep: $\lambda_b=T_b'(L_b)>1$ — **measured, not proved** ($6.4607$ for $e$, $5.1718$ for $2$; only $\lambda_b\ge1$ is proved, at the smallest fixed point). So the fixed point repels — for the inverse slog it attracts. Everything that follows holds under this assumption.
       - The Poincaré function $\Psi$ at $L_b$ satisfies $\Psi(\lambda_bw)=T_b(\Psi(w))$. With it,
         $$P_b(z)=\Psi\bigl(c\,\lambda_b^{\,z}\bigr)$$
         is a pentation: $P_b(z+1)=T_b(P_b(z))$, and with the right constant $c$ one has $P_b(0)=1$.

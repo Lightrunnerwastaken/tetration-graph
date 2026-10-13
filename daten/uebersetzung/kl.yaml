@@ -769,17 +769,12 @@
       “The sum of the first one and a half tower levels” — that sounds meaningless, but acquires a precise meaning: Since the levels approach $a$,
       one may replace each level far out by $a$ and add exactly “half a level $a$”.
 - id: kl.satz.carlson
-  quelle_hash: e96c3d8175bd
-  theorie_hash: cb0b98bd648a
+  quelle_hash: 4a98b7f791ad
+  theorie_hash: d1e37cb5c27f
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
-  geprueft:
-    beweis: nein
-    intern: nein
-    kern: zweitpruefung
-    theorie: nein
-    zusatz: nein
+  geprueft: nein
   en:
     beweis:
       text: |
@@ -797,7 +792,7 @@
     titel: 'Carlson''s theorem: at most one tetration is holomorphic and bounded in the right half-plane'
     aussage: |
       If $F,G$ are two tetrations to base $b$ ($F(0)=G(0)=1$), both holomorphic on $\operatorname{Re}z\ge0$ and bounded there (or growing only more slowly than $e^{\pi|z|}$ on the
-      imaginary axis and of exponential type in the half-plane), then $F=G$. For $1<b\le\eta$ the regular tetration is such a solution: it remains bounded on
+      imaginary axis and of exponential type in the half-plane), then $F=G$. For $1<b\le\eta$ the regular tetration is, by measurement, such a solution: it remains bounded on
       $\operatorname{Re}z\ge0$ (measured: $|T-L|\le L-1$ over a full period, kl.satz.folgen_vollmonoton). Above $\eta$ the theorem does not apply — every real tetration grows
       on the real axis faster than any exponential function; there the vertical condition of Paulsen–Cowgill takes over.
     einfach: 'Below η there is a short answer to “Which tetration is the right one?”: the one that stays bounded in the right half-plane. Two
@@ -812,7 +807,7 @@
     einordnung: |
       Counterpart to [[kn.satz.paulsen_cowgill]] above $\eta$; related to [[it.satz.vertauschbar]].
     genau: |
-      Two tetrations that are holomorphic and bounded on $\operatorname{Re}z\ge0$ are equal. The regular tetration (at the lower fixed point) is such a one for $1<b\le\eta$.
+      Two tetrations that are holomorphic and bounded on $\operatorname{Re}z\ge0$ are equal. The regular tetration (at the lower fixed point) is, by measurement, such a one for $1<b\le\eta$.
     warum: |
       1. The difference of two tetrations vanishes at all integers $0,1,2,\dots$
       2. Carlson's theorem: A function holomorphic in the right half-plane that grows at most exponentially, more slowly than $e^{\pi|y|}$ on the imaginary axis, and is zero at all
@@ -1413,8 +1408,8 @@
       If one replaces $b^x$ near the double fixed point by the simplest map with the same two fixed points — a Möbius map —, one can compute
       the fractional sum exactly. The result is the q-digamma function with $q=\lambda$, and for $\lambda\to1$ the ordinary digamma function.
 - id: kl.satz.newton_reihe
-  quelle_hash: da01f9211a16
-  theorie_hash: dec1fdc11458
+  quelle_hash: 31684debd97d
+  theorie_hash: af0a5595f50c
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1440,7 +1435,7 @@
       f4_uebertragbar: Every iteration with attracting real fixed point and multiplier in (0, 1); Woon's variant with parameter w.
     bewertung:
       nutzen: Shows that below η the integer values alone already determine the regular solution — without any additional choice.
-      richtigkeit: complete; √2 at h = ½ recomputed
+      richtigkeit: complete under the convergence hypothesis; √2 at h = ½ recomputed
     titel: Below η, the Newton series of the integer tower values yields the regular tetration
     aussage: |
       From the integer values alone, without fixed point and without Schröder function:
@@ -1454,6 +1449,9 @@
     - {}
     - {}
     - stelle: binomial continuation “apply s times” (source of Woon's expansion, forum tid 12)
+    bedingungen_text: 'The Poincaré series Ψ at the attracting fixed point has radius of convergence greater than |s₀| (recomputed for b = √2:
+      1.316 > 0.632); in general to be derived from the holomorphy of the regular tetration on Re h > −2, which so far is established only for
+      √2 (kl.satz.vier_sqrt2)'
   en_theorie:
     beispiel: |
       $b=\sqrt2$, $h=\frac12$: after 90 terms $1.24362$ — distance $9\cdot10^{-7}$ from the regular tetration $1.2436216276685\ldots$
@@ -1464,7 +1462,7 @@
       $$T(h)=\sum_{n\ge0}\binom hn\Delta^nT(0)$$
       with the differences $\Delta^nT(0)$ of the numbers $1,b,b^b,\dots$ — the sum is the regular tetration. The convergence is slow (algebraic).
     warum: |
-      1. The regular tetration is a sum of powers $\lambda^{kh}$ with $0<\lambda<1$.
+      1. The regular tetration is a sum of powers $\lambda^{kh}$ with $0<\lambda<1$; that this series still converges absolutely at $|w|=|s_0|$ (radius of convergence larger than $|s_0|$) is the only hypothesis. For $b=\sqrt2$ it has been recomputed ($1.316>0.632$), in general it is still open.
       2. For each single power the Newton series is the binomial series $(1+(\lambda^k-1))^h$, and it converges because $|\lambda^k-1|<1$.
       3. Everything converges absolutely, so the sums may be interchanged.
     worum: |

@@ -2,35 +2,14 @@
 
 Die Übersetzer sollen deutsche Texte nicht stillschweigend glätten; was ihnen widersprüchlich vorkam, steht hier. Stand 12.10.2026 (Sammlung),
 Zweitprüfung 13.10.2026: jeder Punkt fachlich nachgeprüft (eigene Rechnung, wo nötig mit mpmath/numpy). Klare Fehler sind im deutschen Text korrigiert
-und in der englischen Fassung nachgezogen (Abschnitt „Erledigt“). Status wurde **nicht** geändert; dazu und zu allem, was ohne Quelle oder Rückfrage
-nicht entscheidbar ist, stehen unten Empfehlungen an den Autor.
+und in der englischen Fassung nachgezogen (Abschnitt „Erledigt“). Die Statusempfehlungen sind umgesetzt (Abschnitt „Erledigt“, Unterabschnitt „Status“); was ohne Quelle oder Rückfrage
+nicht entscheidbar ist, steht unten als Empfehlung an den Autor.
 
-## Offen — Statusfragen (Empfehlung, nach Wichtigkeit)
+## Offen — Statusfragen
 
-- `kn.konstr.pentation` (Status „bewiesen“): λ_b > 1 und Eindeutigkeit des Fixpunkts in (−2, −1) sind nur gemessen. Eigene Überlegung: λ_b ≥ 1 folgt am
-  *kleinsten* Fixpunkt aus dem Zwischenwertsatz (T_b − x läuft von −∞ nach 1); λ_b > 1 und Eindeutigkeit folgen, wenn T_b auf (−2, −1) konkav ist — das ist
-  gleichwertig zur Log-Konkavität von T_b auf (−1, 0), und die bricht nahe 0 für b > b₇ (`gr.gegen.tpid7_kneser`). **Empfehlung:** Status „bedingt“
-  (Bedingung: Log-Konkavität auf (−1, 0) bzw. λ_b > 1), oder den Satz auf die gemessenen Basen beschränken. Das erbt `kn.satz.hexation_struktur`
-  (Status „bewiesen“, benutzt die Monotonie von P_b) und mittelbar `kn.konstr.hexation_regulaer`.
-- `bw.zert.8r1` (Status „bewiesen“): Prüftext und Bewertung nennen drei offene Punkte (Mikrosegment-Induktion, Hilbert-Röhren-Supremum, Γ-Steigung).
-  Die Annahme „korrekt implementiert“ allein wäre bei Rechnerbeweisen üblich, die offenen Punkte nicht. **Empfehlung:** „bedingt“, bis die drei Punkte zu sind.
-- `kl.satz.newton_reihe` (Status „bewiesen“): Der Beweis stützte sich auf eine *ganze* Poincaré-Funktion am anziehenden Fixpunkt — die ist dort nicht ganz
-  (korrigiert, siehe unten). Gebraucht wird nur Konvergenzradius der Ψ-Reihe > |s₀|; für b = √2 nachgerechnet (Radius ≈ |s₀|λ⁻² = 1.316, |s₀| = 0.632,
-  Σ|ψ_k s₀^k| = 1). **Empfehlung:** allgemeines Argument ergänzen (T regulär holomorph auf Re h > −2 und 2πi/ln λ-periodisch ⇒ Ψ holomorph auf |w| < |s₀|λ⁻²),
-  sonst Status „bedingt“.
-- `kl.satz.carlson` (Status „bewiesen“): Die Eindeutigkeit ist bewiesen; dass die reguläre Tetration für 1 < b ≤ η auf Re z ≥ 0 beschränkt ist, ist gemessen
-  (der Kern sagt „gemessen“, f5 fragt danach). **Empfehlung:** Status bleibt; Formulierung „ist nach Messung so eine Lösung“.
-- `kn.konstr.carleman` (Status „bewiesen“): Lösbarkeit des Systems für jedes n nur beobachtet. **Empfehlung:** als Definition belassen, aber „Seine Lösung
-  (für alle geprüften n eindeutig) definiert slog_n“.
-- `gr.satz.superwurzel_dritte` (Status „bewiesen“, Konvergenz der Iteration „nur beobachtet“): Die Konvergenz ist elementar beweisbar — g(y) = exp W(W(y ln Y))
-  ist auf [1, ∞) wachsend, g(1) > 1, also steigen die Iterierten ab y = 1 monoton und bleiben unter dem (eindeutigen) Fixpunkt. **Empfehlung:** diese zwei
-  Zeilen als Beweis ergänzen und „nur beobachtet“ streichen.
-- `gr.satz.wurzel_eta` (Status „bewiesen“, Koeffizient −1.6166 „gemessen“): geschlossen ist er −(5/6)·√(2e/η) = −1.61658… (aus φ(e(1+v)) =
-  (1/e)(1 − v²/2 + 5v³/6 + …)), passend zur Messung (−1.61655 bei η − a = 10⁻¹⁰). **Empfehlung:** einsetzen; f5 ist damit beantwortet.
 - `fp.satz.messbare_dynamik` (bewiesen_literatur): „nicht ergodisch“ steht nur aus dem Gedächtnis. Meine Erinnerung deckt sich (Rees 1986: nicht rekurrent;
   Lyubich 1987: nicht ergodisch), ist aber ebenfalls keine Quelle. **Empfehlung:** an der zbMATH-Rezension von Lyubich 1987 prüfen.
 - `gr.satz.exponentialitaet` (bewiesen; Ganzzahligkeit aus Hardy / van der Hoeven): der Prüftext sagt das schon („(ii) allgemein Literatur“). **Empfehlung:** belassen.
-- `kn.satz.hexation_struktur`: gemessene Werte s_1.5 usw. sind als „Gemessen“ markiert — unschädlich; die Statusfrage hängt an `kn.konstr.pentation` (oben).
 
 ## Offen — Rückfragen an den Autor
 
@@ -59,6 +38,15 @@ nicht entscheidbar ist, stehen unten Empfehlungen an den Autor.
   „(reell, auch veränderliche Basen)“ getrennt nennen? Nicht geändert.
 
 ## Erledigt (2026-10-13)
+
+**Status (Empfehlungen umgesetzt).** Deutsche Daten, Theorietexte und englische Fassung sind gleichzeitig angepasst; das Feld `bedingungen_text` ist jetzt übersetzbar.
+- `kn.konstr.pentation`: Status „bedingt“, `beweis.art: bedingt`; Bedingung: λ_b = T_b′(L_b) > 1 und Eindeutigkeit des Fixpunkts in (−2, −1) (nur gemessen; bewiesen ist λ_b ≥ 1 am kleinsten Fixpunkt;
+  gleichwertig zur Log-Konkavität von T_b auf (−1, 0), die für b > b₇ bricht, `gr.gegen.tpid7_kneser`). Geerbt (Status „bedingt“, `bedingungen: [kn.konstr.pentation]`): `kn.satz.hexation_struktur`, `kn.konstr.hexation_regulaer`.
+- `bw.zert.8r1`: Status „bedingt“, `beweis.art: bedingt`; Bedingung: korrekte Intervallimplementierung und die drei offenen Punkte des Zertifikats-README.
+- `kl.satz.newton_reihe`: Status „bedingt“, `beweis.art: bedingt`; Bedingung: Konvergenzradius der Poincaré-Reihe > |s₀| (für b = √2 nachgerechnet, allgemein noch zu zeigen).
+- `kl.satz.carlson`: Status bleibt; „ist nach Messung so eine Lösung“. `kn.konstr.carleman`: „Seine Lösung (für alle geprüften n eindeutig) definiert slog_n“.
+- `gr.satz.superwurzel_dritte`: Konvergenz der Iteration bewiesen (monoton wachsend, durch den Fixpunkt beschränkt; Beweis im Satz und im Theorietext), „nur beobachtet“ gestrichen.
+- `gr.satz.wurzel_eta`: zweiter Term geschlossen hergeleitet, (5e²/3)(η−a)/η, relativ zum Leitterm −(5/6)√(2e/η)·√(η−a) = −1.61658…·√(η−a); die Messung −1.61655 bei η−a = 10⁻¹⁰ stimmt. f5 ist nun die nächste Ordnung (η−a)^{3/2}.
 
 **fg.** `fg.satz.allgemeine_loesung`: Titel „Alle stetigen, streng wachsenden Lösungen“ (wie Bereich). `fg.satz.tpid4`: kein Widerspruch — der Satz
 beweist die Vermutung (Fourier-Argument nachgerechnet).

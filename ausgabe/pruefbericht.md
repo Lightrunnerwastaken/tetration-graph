@@ -2,7 +2,7 @@
 
 367 Aussagen · 637 Kanten · 54 Experimente
 
-**Effektiver Status:** bewiesen 135, bewiesen_literatur 60, numerisch 51, vermutung 29, offen 28, bedingt 22, definition 12, skizze 10, gescheitert 9, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 130, bewiesen_literatur 60, numerisch 51, vermutung 29, offen 28, bedingt 27, definition 12, skizze 10, gescheitert 9, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 103
 
@@ -92,6 +92,10 @@
 ## Bedingte Aussagen (Wurzelbedingungen = unbewiesene Enden der Beweiskette)
 
 - `kl.satz.folgen_vollmonoton` — kl.verm.vollmonoton
+- `kl.satz.newton_reihe` — — · zusätzlich: Die Poincaré-Reihe Ψ am anziehenden Fixpunkt hat Konvergenzradius grösser als |s₀| (für b = √2 nachgerechnet: 1.316 > 0.632); allgemein aus der Holomorphie der regulären Tetration auf Re h > −2 zu zeigen, die bisher nur für √2 belegt ist (kl.satz.vier_sqrt2)
+- `kn.konstr.pentation` — — · zusätzlich: λ_b = T_b′(L_b) > 1 und L_b einziger Fixpunkt von T_b in (−2, −1): gemessen (e 6.4607, 2 5.1718), bewiesen nur λ_b ≥ 1 am kleinsten Fixpunkt; gleichwertig zur Log-Konkavität von T_b auf (−1, 0), die für b > b₇ bricht (gr.gegen.tpid7_kneser)
+- `kn.satz.hexation_struktur` — —
+- `kn.konstr.hexation_regulaer` — —
 - `kn.satz.hexation_keine_halbebene` — kn.beob.hexation_verzweigt
 - `kn.satz.hexation_eindeutig_g0` — kn.beob.hexation_verzweigt
 - `kn.satz.hexation_gebiete` — kn.beob.hexation_verzweigt
@@ -112,6 +116,7 @@
 - `bw.satz.kern_eindeutig` — bw.ann.K1K2
 - `bw.satz.kern_existenz` — bw.ann.K1K2
 - `bw.satz.anker_rekonstruktion` — bw.ann.K1K2
+- `bw.zert.8r1` — — · zusätzlich: korrekte Implementierung der Intervallarithmetik und die drei offenen Punkte des Zertifikats-README: Mikrosegment-Induktion, Hilbert-Röhren-Supremum, Γ-Steigungsbeweis
 - `ar.satz.schanuel_orbit` — ar.verm.schanuel
 
 ## Experimente

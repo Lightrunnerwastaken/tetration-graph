@@ -1646,7 +1646,7 @@
       How does the wave react if one changes the base a tiny bit? To first order it is a fixed kernel $G_d$ times the base change $\varepsilon$.
       The kernel can be computed from the tetration to base $d$ alone.
 - id: bw.satz.c1_produkt
-  quelle_hash: 7285a199a245
+  quelle_hash: c40fd815e40e
   theorie_hash: fa57279070d3
   herkunft:
     modell: sonnet
@@ -1676,6 +1676,7 @@
       $\tilde H_{b,d}'(\theta)=\dfrac{\alpha T_d'(\theta)}{T_b'(\tilde H(\theta))}\prod_{j\ge1}\dfrac{\alpha T_d(j+\theta)}{T_b(j+\tilde H(\theta))}>0$.
     quellen:
     - stelle: Thm. D
+    bedingungen_text: (S) differentiable strict monotonicity and (R′) quantitative channel positivity
   en_theorie:
     beispiel: |
       $(e,2)$ at $\theta=\tfrac12$: numerically $\tilde H'(\tfrac12)=0.9992171582$; the product formula with four factors gives the same value to all digits shown.
@@ -2487,8 +2488,8 @@
     worum: |
       The conjecture that arose from the false observation: a single essential singularity per period, at a fixed height for all pairs.
 - id: bw.zert.8r1
-  quelle_hash: 9c52529af7ea
-  theorie_hash: 7d609c146833
+  quelle_hash: 672d7f0875e3
+  theorie_hash: 1f24b8312583
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -2499,7 +2500,7 @@
     theorie: nein
   en:
     beweis:
-      text: 'Computer-assisted (ball arithmetic, python-flint); assumption: correct implementation.'
+      text: 'Computer-assisted (ball arithmetic, python-flint); assumption: correct implementation; three points of the README still open.'
     pruefung:
       f5_neue_frage: bw.frage.intervallmarsch
       f3_spezialfall: One segment of the main theorem Thm. 11.15 (Paper VI).
@@ -2513,6 +2514,8 @@
       richtigkeit: computer-assisted; open points according to README
     titel: 8r1 segment certificate (both legs via the closure layer)
     aussage: 'Replay: $Y=3.1516\cdot10^{-9}$, $L=13613.3$, $q=0.1495<1$, checks Z1–Z7 passed; independent verification at order 22.'
+    bedingungen_text: 'correct implementation of the interval arithmetic and the three open points of the certificate README: micro-segment induction,
+      Hilbert-tube supremum, Γ-slope proof'
   en_theorie:
     einordnung: |
       A segment of the main theorem Thm. 11.15 (Paper VI). The complete march: [[bw.frage.intervallmarsch]].
@@ -2520,7 +2523,7 @@
       Replay run: defect $Y=3.1516\cdot10^{-9}$, Lipschitz bound $L=13613.3$, contraction number $q=0.1495<1$; checks Z1–Z7 passed, independent verification at order 22.
     warum: |
       A criterion of Newton–Kantorovich type: if the defect is small, the derivative controlled and the contraction number $q<1$, then the equation has in a small ball around the approximation
-      exactly one solution. Computed with ball arithmetic (python-flint); the assumption is the correct implementation. Open points are listed in the README (micro-segment induction, Hilbert-tube supremum, $\Gamma$-slope).
+      exactly one solution. Computed with ball arithmetic (python-flint); the assumption is the correct implementation. Three points of the README are still open (micro-segment induction, Hilbert-tube supremum, $\Gamma$-slope); as long as they are, the certificate holds only conditionally.
     worum: |
       A segment of the reconstruction is proved computer-assisted: in a small neighborhood of the computed approximation there is guaranteed to be a true solution.
 - id: bw.zert.8r1_alt

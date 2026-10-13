@@ -325,7 +325,7 @@ aussagen:
   bereich: '$b=e$; Ansatz $\operatorname{slog}_n(x)=-1+\sum_{k=1}^{n}a_k x^k$'
   aussage: |
     Koeffizientenvergleich in $\operatorname{slog}(e^x)-\operatorname{slog}(x)=1$ bis Grad $n-1$ gibt das lineare System
-    $\sum_{k=1}^{n}a_k\,k^j/j!-a_j=\delta_{j0}$ $(0\le j\le n-1)$. Seine Lösung definiert $\operatorname{slog}_n$
+    $\sum_{k=1}^{n}a_k\,k^j/j!-a_j=\delta_{j0}$ $(0\le j\le n-1)$. Seine Lösung (für alle geprüften $n$ eindeutig) definiert $\operatorname{slog}_n$
     (Walker 1991, Robbins 2005 „natural slog“).
   beweis: {art: vollstaendig, text: 'Konstruktion; Lösbarkeit für jedes n numerisch beobachtet, nicht allgemein bewiesen.'}
   quellen: [{ref: walker1991}, {ref: walker1991_jmaa, stelle: 'nach Trappmann–Kouznetsov 2011, S. 4: Zahlverfahren für die Potenzreihenkoeffizienten eines 4-Logarithmus um 0, ohne Konvergenzbeweis — vor Robbins'}, {ref: trappmann_kouznetsov2011, stelle: 'S. 4', geprueft: original}, {ref: robbins2005}, {ref: forum_tid3, stelle: 'Robbins'' Verfahren, Diskussion 2007; Trappmann: Ansatz schon bei Walker um 1990'}]
@@ -464,7 +464,8 @@ aussagen:
   titel: Pentation — reguläre Superfunktion der Tetration an ihrem reellen Fixpunkt
   art: konstruktion
   ebene: C
-  status: bewiesen
+  status: bedingt
+  bedingungen_text: 'λ_b = T_b′(L_b) > 1 und L_b einziger Fixpunkt von T_b in (−2, −1): gemessen (e 6.4607, 2 5.1718), bewiesen nur λ_b ≥ 1 am kleinsten Fixpunkt; gleichwertig zur Log-Konkavität von T_b auf (−1, 0), die für b > b₇ bricht (gr.gegen.tpid7_kneser)'
   niveau: vertiefung
   objekte: [hyperoperation, kneser_T, superfunktion, schroeder, multiplikator]
   bereich: 'reelle $b>\eta$, Kneser-Tetration $T_b$; Fixpunkt $L_b\in(-2,-1)$ mit $\lambda_b=T_b^{\prime}(L_b)>1$'
@@ -480,7 +481,7 @@ aussagen:
     Pentation ist der nächste Schritt nach der Tetration: b↑↑↑3 = T_b(T_b(b)), also „Tetration so oft wiederholt“. Für halbe Höhen nimmt man
     denselben Trick wie eine Stufe tiefer: Die Tetration hat einen Fixpunkt (bei Basis e etwa −1.85), und dort kann man sie regulär iterieren.
   beweis:
-    art: vollstaendig
+    art: bedingt
     text: 'Fixpunkt: $T_b(-1)=0>-1$ und $T_b(x)\to-\infty$ für $x\downarrow-2$, also Nullstelle von $T_b(x)-x$ (Zwischenwertsatz). Koenigs (it.satz.koenigs) am abstossenden Fixpunkt gibt $\Psi$ nahe 0; $\Psi(w)=T_b^{\circ n}(\Psi(w/\lambda_b^n))$ setzt sie längs der reellen Achse fort. $c$: die slog-Kette $1\to0\to-1\to\dots\to L_b$ konvergiert (anziehend für slog), also $c=\lim\lambda_b^n\Psi^{-1}(\operatorname{slog}^{\circ n}1)$. Gleichung und Periode wie bei kl.satz.obere_superexp.'
   stuetzt_sich_auf: [kn.konstr.kneser, it.satz.koenigs]
   experimente: [exp.pentation]
@@ -490,7 +491,7 @@ aussagen:
     f3_spezialfall: 'Ja: reguläre Superfunktion an einem abstossenden Fixpunkt (wie kl.satz.obere_superexp, wo statt T_b die Funktion b^x steht).'
     f4_uebertragbar: 'Auf Hexation usw.: Fixpunkt von P_b, dort wieder regulär (Levenstein 2020: 2↑↑↑↑1.5 ≈ 2.6729). Für η < b ≤ η₄ gibt es zusätzlich positive Fixpunkte (kn.beob.tetra_euler).'
     f5_neue_frage: 'Wie bei der Tetration ist die Wahl nicht eindeutig (andere Fixpunkte, periodische Störungen). Gibt es eine Kneser-artige Pentation, die in der oberen Halbebene gegen einen komplexen Fixpunkt von T_b läuft?'
-  bewertung: {richtigkeit: 'Konstruktion vollständig, λ_b gemessen', neuheit: bekannt, nutzen: 'Erste höhere Stufe mit echten Zahlen; zeigt, dass die Methode der regulären Iteration sich wiederholt.', nutzen_stufe: mittel}
+  bewertung: {richtigkeit: 'Konstruktion vollständig unter der Voraussetzung λ_b > 1 (gemessen)', neuheit: bekannt, nutzen: 'Erste höhere Stufe mit echten Zahlen; zeigt, dass die Methode der regulären Iteration sich wiederholt.', nutzen_stufe: mittel}
   quellen:
     - {ref: forum_fox2007_pentation}
     - {ref: kouznetsov2014_ackermann, stelle: 'erste Zeitschriftenarbeit zur holomorphen („natürlichen“) Pentation zur Basis e, periodisch mit Periode aus der Ableitung der Tetration am Fixpunkt (nach Abstract und Forum tid 949)'}
@@ -730,7 +731,8 @@ aussagen:
   titel: 'Jede Hexation: H(−3) = −2 und eine Singularität zwischen −4 und −3'
   art: satz
   ebene: B
-  status: bewiesen
+  status: bedingt
+  bedingungen: [kn.konstr.pentation]
   niveau: vertiefung
   objekte: [hyperoperation, superfunktion]
   bereich: 'Pentation $P_b$ aus kn.konstr.pentation ($b>\eta$); $H$ stetige, streng wachsende reelle Lösung von $H(x+1)=P_b(H(x))$, $H(0)=1$'
@@ -762,7 +764,8 @@ aussagen:
   titel: Reguläre Hexation unter η₅ — am anziehenden Fixpunkt der Pentation
   art: konstruktion
   ebene: C
-  status: bewiesen
+  status: bedingt
+  bedingungen: [kn.konstr.pentation]
   niveau: vertiefung
   objekte: [hyperoperation, superfunktion, schroeder, multiplikator]
   bereich: '$\eta<b<\eta_5$; $p_1$ unterer reeller Fixpunkt der Pentation $P_b$, $0<\mu=P_b^{\prime}(p_1)<1$'

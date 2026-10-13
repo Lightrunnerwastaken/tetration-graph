@@ -382,7 +382,8 @@ aussagen:
   titel: 'Die Newton-Reihe der ganzen Turmwerte ergibt unter η die reguläre Tetration'
   art: satz
   ebene: B
-  status: bewiesen
+  status: bedingt
+  bedingungen_text: 'Die Poincaré-Reihe Ψ am anziehenden Fixpunkt hat Konvergenzradius grösser als |s₀| (für b = √2 nachgerechnet: 1.316 > 0.632); allgemein aus der Holomorphie der regulären Tetration auf Re h > −2 zu zeigen, die bisher nur für √2 belegt ist (kl.satz.vier_sqrt2)'
   niveau: vertiefung
   objekte: [regulaer_T, schroeder]
   bereich: '$1<b<\eta$, $T$ die reguläre Tetration am unteren Fixpunkt $a$, Multiplikator $\lambda=a\ln b\in(0,1)$; $h>-1$'
@@ -395,7 +396,7 @@ aussagen:
     Man nimmt nur die Turmwerte an den ganzen Stellen und interpoliert sie mit der Newton-Formel aus der Schule, wie man ein Polynom durch Punkte legt.
     Unter η kommt dabei genau die reguläre Tetration heraus — langsam, aber sicher.
   beweis:
-    art: vollstaendig
+    art: bedingt
     text: |
       Die reguläre Tetration ist $T(h)=\Psi(s_0\lambda^h)=a+\sum_{k\ge1}\psi_ks_0^k\lambda^{kh}$ mit der Poincaré-Funktion $\Psi$ (kl.satz.regulaer; am anziehenden Fixpunkt nicht ganz),
       deren Taylorreihe bei $|w|=|s_0|$ noch absolut konvergiert, also $\sum_k|\psi_ks_0^k|<\infty$ (Konvergenzradius $>|s_0|$; für $b=\sqrt2$ nachgerechnet:
@@ -410,7 +411,7 @@ aussagen:
     f3_spezialfall: 'Ja: Newton-Interpolation einer Exponentialsumme mit Basen in (0, 1). Das q-Analogon (Reshetnikov) konvergiert schneller: kl.beob.q_binomial.'
     f4_uebertragbar: 'Jede Iteration mit anziehendem reellem Fixpunkt und Multiplikator in (0, 1); Woons Variante mit Parameter w.'
     f5_neue_frage: 'Genaue Rate: von den hohen Moden mit λ^k → 0 bestimmt?'
-  bewertung: {richtigkeit: 'vollständig; √2 bei h = ½ nachgerechnet', neuheit: bekannt, nutzen: 'Zeigt, dass unter η schon die ganzen Werte die reguläre Lösung festlegen — ohne jede Zusatzwahl.', nutzen_stufe: mittel}
+  bewertung: {richtigkeit: 'vollständig unter der Konvergenzvoraussetzung; √2 bei h = ½ nachgerechnet', neuheit: bekannt, nutzen: 'Zeigt, dass unter η schon die ganzen Werte die reguläre Lösung festlegen — ohne jede Zusatzwahl.', nutzen_stufe: mittel}
   quellen: [{ref: forum_tid12}, {ref: forum_tid719}, {ref: woon1997, stelle: 'binomiale Fortsetzung „s-mal anwenden“ (Quelle von Woons Entwicklung, Forum tid 12)', geprueft: sekundaer}]
   kanten:
     - {typ: analog_zu, ziel: kl.beob.q_binomial}
@@ -448,7 +449,7 @@ aussagen:
   objekte: [regulaer_T, periodische_stoerung]
   aussage: |
     Sind $F,G$ zwei Tetrationen zur Basis $b$ ($F(0)=G(0)=1$), beide auf $\operatorname{Re}z\ge0$ holomorph und dort beschränkt (oder nur langsamer als $e^{\pi|z|}$ wachsend auf der
-    imaginären Achse und von Exponentialtyp in der Halbebene), dann ist $F=G$. Für $1<b\le\eta$ ist die reguläre Tetration so eine Lösung: Sie bleibt auf
+    imaginären Achse und von Exponentialtyp in der Halbebene), dann ist $F=G$. Für $1<b\le\eta$ ist nach Messung die reguläre Tetration so eine Lösung: Sie bleibt auf
     $\operatorname{Re}z\ge0$ beschränkt (gemessen: $|T-L|\le L-1$ auf einer vollen Periode, kl.satz.folgen_vollmonoton). Über $\eta$ greift der Satz nicht — jede reelle Tetration wächst
     auf der reellen Achse schneller als jede Exponentialfunktion; dort übernimmt die senkrechte Bedingung von Paulsen–Cowgill.
   einfach: >-

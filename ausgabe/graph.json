@@ -1,6 +1,6 @@
 {
- "gebaut": "2026-10-13 08:09",
- "eingabe_hash": "671bfc293eef5d93",
+ "gebaut": "2026-10-13 08:34",
+ "eingabe_hash": "681223c6655e193e",
  "gebiete": [
   {
    "id": "gr",
@@ -8115,7 +8115,7 @@
     "eta",
     "sattel_knoten"
    ],
-   "aussage": "$$h(a)=e-\\sqrt{\\frac{2e^3(\\eta-a)}{\\eta}}+O(\\eta-a)\\qquad(a\\uparrow\\eta).$$ Gemessen: der nächste Term ist $\\approx-1.6166\\cdot\\sqrt{\\eta-a}$ relativ zum Leitterm.",
+   "aussage": "$$h(a)=e-\\sqrt{\\frac{2e^3(\\eta-a)}{\\eta}}+\\frac{5e^2}{3}\\,\\frac{\\eta-a}{\\eta}+O\\bigl((\\eta-a)^{3/2}\\bigr)\\qquad(a\\uparrow\\eta).$$ Der zweite Term ist relativ zum Leitterm $-\\tfrac56\\sqrt{2e/\\eta}\\,\\sqrt{\\eta-a}=-1.61658\\ldots\\cdot\\sqrt{\\eta-a}$ (gemessen: $-1.61655$ bei $\\eta-a=10^{-10}$).",
    "einfach": "Kurz vor η fällt der Turmgrenzwert nicht gleichmässig, sondern wie eine Wurzel ab. Dieselbe Wurzel taucht in der Forschung wieder auf: Wie lange eine Tetration knapp über η im Engpass bei e „hängen bleibt“, wächst wie 1/Wurzel.",
    "formen": [
     {
@@ -8125,7 +8125,7 @@
    ],
    "beweis": {
     "art": "vollstaendig",
-    "text": "$\\varphi(h)=\\ln h/h$ hat bei $e$ ein Maximum $1/e$ mit $\\varphi''(e)=-1/e^3$; $\\ln a=1/e-\\delta$, $\\delta=(\\eta-a)/\\eta+O((\\eta-a)^2)$, auflösen nach $h<e$."
+    "text": "$\\varphi(h)=\\ln h/h$ hat bei $e$ ein Maximum $1/e$ mit $\\varphi''(e)=-1/e^3$; $\\ln a=1/e-\\delta$, $\\delta=(\\eta-a)/\\eta+O((\\eta-a)^2)$, auflösen nach $h<e$. Nächste Ordnung: Mit $h=e(1+v)$ ist $\\varphi(h)=\\tfrac1e\\bigl(1-\\tfrac{v^2}2+\\tfrac{5v^3}6+O(v^4)\\bigr)$, also $v^2(1-\\tfrac53v)=2e\\delta$. Mit $u=\\sqrt{2e\\delta}$ folgt $v=-u+\\tfrac56u^2+O(u^3)$ und damit $h=e-eu+\\tfrac{5e}6u^2+O(u^3)$, das ist die Formel oben."
    },
    "experimente": [
     "exp.basisableitung"
@@ -8135,7 +8135,7 @@
     "f2_benutzte_voraussetzungen": "Nur $\\varphi''(e)\\ne0$.",
     "f3_spezialfall": "Ja: Sattel-Knoten-Verzweigung eines Fixpunkts (zwei Fixpunkte verschmelzen bei η).",
     "f4_uebertragbar": "Gleiche Wurzel im Randgesetz der Basiswechsel-Mittel und in der Durchgangszeit.",
-    "f5_neue_frage": "Den Koeffizienten $-1.6166$ geschlossen ausrechnen (nächste Taylor-Ordnung)."
+    "f5_neue_frage": "Den Term der nächsten Taylor-Ordnung ($(\\eta-a)^{3/2}$) ausrechnen."
    },
    "bewertung": {
     "richtigkeit": "vollständig",
@@ -8153,7 +8153,7 @@
     },
     {
      "ref": "diese_arbeit",
-     "stelle": "Nachrechnung, nächster Term gemessen"
+     "stelle": "Nachrechnung; nächster Term geschlossen hergeleitet und gemessen"
     }
    ],
    "kanten": [
@@ -8170,9 +8170,9 @@
    "_datei": "00_grundlagen.yaml",
    "theorie": {
     "worum": "Kurz vor $\\eta$ steigt der unendliche Turm nicht linear, sondern wie eine Wurzel: der Abstand zu $e$ ist proportional zur Wurzel aus\ndem Abstand der Basis zu $\\eta$.\n",
-    "genau": "$$h(a)=e-\\sqrt{\\frac{2e^3(\\eta-a)}{\\eta}}+O(\\eta-a)\\qquad(a\\to\\eta\\ \\text{von unten}).$$\n",
-    "warum": "1. Der Fixpunkt löst $\\frac{\\ln h}h=\\ln a$. Die Funktion $\\varphi(h)=\\frac{\\ln h}h$ hat bei $h=e$ ihr Maximum $\\frac1e$, mit $\\varphi''(e)=-\\frac1{e^3}$.\n2. Nahe dem Maximum ist $\\varphi(h)\\approx\\frac1e-\\frac1{2e^3}(h-e)^2$ (Taylor zweiter Ordnung).\n3. Mit $\\ln a=\\frac1e-\\delta$, $\\delta\\approx\\frac{\\eta-a}\\eta$, gibt $\\frac1{2e^3}(h-e)^2=\\delta$, also $|h-e|=\\sqrt{2e^3\\delta}$; der untere Ast hat $h<e$.\n",
-    "beispiel": "$a=1.44$: $\\eta-a=0.00467$, Formel $e-\\sqrt{2e^3\\cdot0.00467/1.4447}=e-0.3603=2.358$; der genaue Wert ist $2.394$ — der Fehler ist von der\nGrösse $\\eta-a$, wie versprochen.\n",
+    "genau": "$$h(a)=e-\\sqrt{\\frac{2e^3(\\eta-a)}{\\eta}}+\\frac{5e^2}{3}\\,\\frac{\\eta-a}{\\eta}+O\\bigl((\\eta-a)^{3/2}\\bigr)\\qquad(a\\to\\eta\\ \\text{von unten}).$$\n",
+    "warum": "1. Der Fixpunkt löst $\\frac{\\ln h}h=\\ln a$. Die Funktion $\\varphi(h)=\\frac{\\ln h}h$ hat bei $h=e$ ihr Maximum $\\frac1e$, mit $\\varphi''(e)=-\\frac1{e^3}$.\n2. Nahe dem Maximum ist $\\varphi(h)\\approx\\frac1e-\\frac1{2e^3}(h-e)^2$ (Taylor zweiter Ordnung).\n3. Mit $\\ln a=\\frac1e-\\delta$, $\\delta\\approx\\frac{\\eta-a}\\eta$, gibt $\\frac1{2e^3}(h-e)^2=\\delta$, also $|h-e|=\\sqrt{2e^3\\delta}$; der untere Ast hat $h<e$.\n4. Nächste Ordnung: Mit $h=e(1+v)$ ist $\\varphi(h)=\\frac1e\\bigl(1-\\frac{v^2}2+\\frac{5v^3}6+O(v^4)\\bigr)$, also $v^2\\bigl(1-\\frac53v\\bigr)=2e\\delta$. Mit $u=\\sqrt{2e\\delta}$ folgt $v=-u+\\frac56u^2+O(u^3)$ und damit der zweite Term $\\frac{5e}6u^2=\\frac{5e^2}3\\delta$.\n",
+    "beispiel": "$a=1.44$: $\\eta-a=0.00467$, Formel $e-\\sqrt{2e^3\\cdot0.00467/1.4447}=e-0.3603=2.358$; der genaue Wert ist $2.394$ — der Fehler ist von der\nGrösse $\\eta-a$, wie versprochen; mit dem zweiten Term $\\frac{5e^2}3\\cdot0.00467/1.4447=0.0398$ kommt man auf $2.358+0.0398=2.398$, der Fehler sinkt auf $0.004$ (Grösse $(\\eta-a)^{3/2}$).\n",
     "einordnung": "Dieselbe Quadratwurzel taucht im Randgesetz der Basiswechsel-Forschung auf ([[bw.lem.randgesetz]]): das Verschmelzen zweier Fixpunkte\n(Sattel-Knoten) erzeugt immer Wurzeln ([[br.satz.sattel_knoten]]).\n"
    },
    "_strang": "gr.basis",
@@ -8256,10 +8256,10 @@
    ],
    "en": {
     "beweis": {
-     "text": "$\\varphi(h)=\\ln h/h$ has a maximum $1/e$ at $e$ with $\\varphi''(e)=-1/e^3$; $\\ln a=1/e-\\delta$, $\\delta=(\\eta-a)/\\eta+O((\\eta-a)^2)$, solve for $h<e$."
+     "text": "$\\varphi(h)=\\ln h/h$ has a maximum $1/e$ at $e$ with $\\varphi''(e)=-1/e^3$; $\\ln a=1/e-\\delta$, $\\delta=(\\eta-a)/\\eta+O((\\eta-a)^2)$, solve for $h<e$. Next order: With $h=e(1+v)$ we have $\\varphi(h)=\\tfrac1e\\bigl(1-\\tfrac{v^2}2+\\tfrac{5v^3}6+O(v^4)\\bigr)$, hence $v^2(1-\\tfrac53v)=2e\\delta$. With $u=\\sqrt{2e\\delta}$ it follows that $v=-u+\\tfrac56u^2+O(u^3)$ and thus $h=e-eu+\\tfrac{5e}6u^2+O(u^3)$, which is the formula above."
     },
     "pruefung": {
-     "f5_neue_frage": "Compute the coefficient $-1.6166$ in closed form (next Taylor order).",
+     "f5_neue_frage": "Compute the term of the next Taylor order ($(\\eta-a)^{3/2}$).",
      "f1_folgt_unmittelbar": "Yes (Taylor at the maximum).",
      "f2_benutzte_voraussetzungen": "Only $\\varphi''(e)\\ne0$.",
      "f3_spezialfall": "Yes: saddle-node bifurcation of a fixed point (two fixed points merge at η).",
@@ -8270,7 +8270,7 @@
      "nutzen": "Elementary bridge to the research (boundary law)."
     },
     "titel": "Square root at η",
-    "aussage": "$$h(a)=e-\\sqrt{\\frac{2e^3(\\eta-a)}{\\eta}}+O(\\eta-a)\\qquad(a\\uparrow\\eta).$$ Measured: the next term is $\\approx-1.6166\\cdot\\sqrt{\\eta-a}$ relative to the leading term.",
+    "aussage": "$$h(a)=e-\\sqrt{\\frac{2e^3(\\eta-a)}{\\eta}}+\\frac{5e^2}{3}\\,\\frac{\\eta-a}{\\eta}+O\\bigl((\\eta-a)^{3/2}\\bigr)\\qquad(a\\uparrow\\eta).$$ The second term is, relative to the leading term $-\\tfrac56\\sqrt{2e/\\eta}\\,\\sqrt{\\eta-a}=-1.61658\\ldots\\cdot\\sqrt{\\eta-a}$ (measured: $-1.61655$ at $\\eta-a=10^{-10}$).",
     "einfach": "Just below η the limit of the tower does not fall off evenly but like a square root. The same root reappears in the research: how long a tetration just above η “gets stuck” in the bottleneck at e grows like 1/(square root).",
     "formen": [
      {
@@ -8283,15 +8283,15 @@
      },
      {},
      {
-      "stelle": "Recomputation, next term measured"
+      "stelle": "Recomputation; next term derived in closed form and measured"
      }
     ]
    },
    "en_theorie": {
-    "beispiel": "$a=1.44$: $\\eta-a=0.00467$, formula $e-\\sqrt{2e^3\\cdot0.00467/1.4447}=e-0.3603=2.358$; the exact value is $2.394$ — the error is of the\nsize $\\eta-a$, as promised.\n",
+    "beispiel": "$a=1.44$: $\\eta-a=0.00467$, formula $e-\\sqrt{2e^3\\cdot0.00467/1.4447}=e-0.3603=2.358$; the exact value is $2.394$ — the error is of the\nsize $\\eta-a$, as promised; with the second term $\\frac{5e^2}3\\cdot0.00467/1.4447=0.0398$ one gets $2.358+0.0398=2.398$, and the error drops to $0.004$ (size $(\\eta-a)^{3/2}$).\n",
     "einordnung": "The same square root appears in the boundary law of the base-change research ([[bw.lem.randgesetz]]): the merging of two fixed points\n(saddle-node) always produces roots ([[br.satz.sattel_knoten]]).\n",
-    "genau": "$$h(a)=e-\\sqrt{\\frac{2e^3(\\eta-a)}{\\eta}}+O(\\eta-a)\\qquad(a\\to\\eta\\ \\text{from below}).$$\n",
-    "warum": "1. The fixed point solves $\\frac{\\ln h}h=\\ln a$. The function $\\varphi(h)=\\frac{\\ln h}h$ has its maximum $\\frac1e$ at $h=e$, with $\\varphi''(e)=-\\frac1{e^3}$.\n2. Near the maximum, $\\varphi(h)\\approx\\frac1e-\\frac1{2e^3}(h-e)^2$ (second-order Taylor).\n3. With $\\ln a=\\frac1e-\\delta$, $\\delta\\approx\\frac{\\eta-a}\\eta$, we get $\\frac1{2e^3}(h-e)^2=\\delta$, hence $|h-e|=\\sqrt{2e^3\\delta}$; the lower branch has $h<e$.\n",
+    "genau": "$$h(a)=e-\\sqrt{\\frac{2e^3(\\eta-a)}{\\eta}}+\\frac{5e^2}{3}\\,\\frac{\\eta-a}{\\eta}+O\\bigl((\\eta-a)^{3/2}\\bigr)\\qquad(a\\to\\eta\\ \\text{from below}).$$\n",
+    "warum": "1. The fixed point solves $\\frac{\\ln h}h=\\ln a$. The function $\\varphi(h)=\\frac{\\ln h}h$ has its maximum $\\frac1e$ at $h=e$, with $\\varphi''(e)=-\\frac1{e^3}$.\n2. Near the maximum, $\\varphi(h)\\approx\\frac1e-\\frac1{2e^3}(h-e)^2$ (second-order Taylor).\n3. With $\\ln a=\\frac1e-\\delta$, $\\delta\\approx\\frac{\\eta-a}\\eta$, we get $\\frac1{2e^3}(h-e)^2=\\delta$, hence $|h-e|=\\sqrt{2e^3\\delta}$; the lower branch has $h<e$.\n4. Next order: With $h=e(1+v)$, $\\varphi(h)=\\frac1e\\bigl(1-\\frac{v^2}2+\\frac{5v^3}6+O(v^4)\\bigr)$, so $v^2\\bigl(1-\\frac53v\\bigr)=2e\\delta$. With $u=\\sqrt{2e\\delta}$ it follows that $v=-u+\\frac56u^2+O(u^3)$ and thus the second term $\\frac{5e}6u^2=\\frac{5e^2}3\\delta$.\n",
     "worum": "Just before $\\eta$ the infinite tower does not rise linearly but like a square root: the distance to $e$ is proportional to the square root of\nthe distance of the base to $\\eta$.\n"
    },
    "_en_stand": "aktuell",
@@ -10523,7 +10523,7 @@
     "lambert_w"
    ],
    "bereich": "reelle $Y>1$, gesucht $y>1$ mit $y^{y^y}=Y$",
-   "aussage": "Für $Y>1$ hat $y^{y^y}=Y$ genau eine Lösung $y>0$, und sie liegt in $(1,\\infty)$. Sie erfüllt\n$$y=\\exp W\\bigl(W(y\\ln Y)\\bigr),$$\nund die Fixpunkt-Iteration $y\\leftarrow\\exp W(W(y\\ln Y))$ ab $y=1$ konvergiert (beobachtet für $Y=2,10,100,10^6$, je 53–60 Schritte auf 45 Stellen).\nWerte: $\\sqrt[3]{2}_s=1.4766843373578699\\ldots$, $\\sqrt[3]{10}_s=1.9235840364420273\\ldots$, $\\sqrt[3]{100}_s=2.2127958063258997\\ldots$\n",
+   "aussage": "Für $Y>1$ hat $y^{y^y}=Y$ genau eine Lösung $y>0$, und sie liegt in $(1,\\infty)$. Sie erfüllt\n$$y=\\exp W\\bigl(W(y\\ln Y)\\bigr),$$\nund die Fixpunkt-Iteration $y\\leftarrow\\exp W(W(y\\ln Y))$ ab $y=1$ wächst monoton und konvergiert gegen diese Lösung (numerisch für $Y=2,10,100,10^6$: je 53–60 Schritte auf 45 Stellen).\nWerte: $\\sqrt[3]{2}_s=1.4766843373578699\\ldots$, $\\sqrt[3]{10}_s=1.9235840364420273\\ldots$, $\\sqrt[3]{100}_s=2.2127958063258997\\ldots$\n",
    "einfach": "Auch die Frage „welche Zahl ergibt als Dreierturm y^y^y genau 2?“ hat genau eine Antwort, etwa 1.4767. Es gibt keine fertige Formel, aber eine Rechenvorschrift, die man immer wieder anwendet, bis sich nichts mehr ändert.",
    "formen": [
     {
@@ -10533,7 +10533,7 @@
    ],
    "beweis": {
     "art": "vollstaendig",
-    "text": "Eindeutigkeit: für $0<y\\le1$ ist $y^{y^y}\\le1$; auf $[1,\\infty)$ ist $y\\mapsto y^{y^y}$ stetig und streng wachsend von 1 nach ∞. Formel: $y^y\\ln y=\\ln Y$ mit $y$ multiplizieren gibt $(y\\ln y)e^{y\\ln y}=y\\ln Y$, also $y\\ln y=W(y\\ln Y)$, und $(\\ln y)e^{\\ln y}=y\\ln y$ gibt $\\ln y=W(W(y\\ln Y))$. Die Konvergenz der Iteration ist nur beobachtet."
+    "text": "Eindeutigkeit: für $0<y\\le1$ ist $y^{y^y}\\le1$; auf $[1,\\infty)$ ist $y\\mapsto y^{y^y}$ stetig und streng wachsend von 1 nach ∞. Formel: $y^y\\ln y=\\ln Y$ mit $y$ multiplizieren gibt $(y\\ln y)e^{y\\ln y}=y\\ln Y$, also $y\\ln y=W(y\\ln Y)$, und $(\\ln y)e^{\\ln y}=y\\ln y$ gibt $\\ln y=W(W(y\\ln Y))$. Konvergenz: $F(y)=\\exp W(W(y\\ln Y))$ ist wachsend, da $W$ und $\\exp$ es sind und $\\ln Y>0$ gilt. $F(1)>1$, weil $W(\\ln Y)>0$ und damit $W(W(\\ln Y))>0$. Also wächst $y_n=F^n(1)$ monoton. Mit $y^*$ für die Lösung gilt $F(y^*)=y^*$ und $y_0=1\\le y^*$, also $y_n\\le y^*$ für alle $n$. Der Grenzwert $y_\\infty\\le y^*$ ist ein Fixpunkt von $F$; aus $y=F(y)$ folgt rückwärts $y^y\\ln y=\\ln Y$, also $y^{y^y}=Y$ (für $y\\ge1$ ist $W(xe^x)=x$ mit $x\\ge0$), und die Eindeutigkeit gibt $y_\\infty=y^*$."
    },
    "stuetzt_sich_auf": [
     "gr.satz.superwurzel"
@@ -10542,14 +10542,14 @@
     "exp.superwurzel"
    ],
    "pruefung": {
-    "f1_folgt_unmittelbar": "Ja für Formel und Eindeutigkeit; die Konvergenz der Iteration nicht (Kontraktion nicht nachgewiesen).",
+    "f1_folgt_unmittelbar": "Ja für Formel und Eindeutigkeit; auch die Konvergenz der Iteration (monoton wachsend und beschränkt, kein Kontraktionsbeweis nötig).",
     "f2_benutzte_voraussetzungen": "$Y>1$; für $Y<1$ kann es mehrere Lösungen geben (nicht untersucht).",
     "f3_spezialfall": "Muster für die $n$-te Superwurzel: $n-1$-mal W, aber nur implizit.",
     "f4_uebertragbar": "Arithmetik: ganz oder irrational (ar.satz.superwurzel_arith).",
     "f5_neue_frage": "Konvergenzrate der Iteration (Ableitung der Abbildung am Fixpunkt) und Verhalten für $Y\\to1^+$."
    },
    "bewertung": {
-    "richtigkeit": "Formel vollständig, Iteration numerisch",
+    "richtigkeit": "vollständig",
     "neuheit": "bekannt",
     "nutzen": "Zeigt, wie weit Lambert W trägt.",
     "nutzen_stufe": "gering"
@@ -10564,8 +10564,8 @@
    "_datei": "00_grundlagen.yaml",
    "theorie": {
     "worum": "Beim Dreierturm $y^{y^y}$ gibt es keine fertige Formel mehr für die Umkehrung. Man kann die Lösung aber als Fixpunkt schreiben:\neine Rechenvorschrift, die man immer wieder anwendet, bis sich die Zahl nicht mehr ändert. Und auch hier steckt die Lambert-Funktion\ndrin — diesmal zweimal hintereinander.\n",
-    "genau": "Für jedes $Y>1$ hat $y^{y^y}=Y$ genau eine positive Lösung $y$, und sie ist grösser als $1$. Sie erfüllt\n$$y=\\exp\\Bigl(W\\bigl(W(y\\ln Y)\\bigr)\\Bigr).$$\nStartet man mit $y=1$ und setzt immer wieder ein, so kommt man (beobachtet, nicht bewiesen) zur Lösung.\n",
-    "warum": "**Genau eine Lösung:** Für $0<y\\le1$ ist $y^y\\le1$ und daher auch $y^{y^y}\\le1<Y$. Für $y\\ge1$ wächst $y^{y^y}$ stetig und streng\nvon $1$ ins Unendliche, trifft $Y$ also genau einmal.\n\n**Die Formel:**\n1. Logarithmieren: $y^y\\ln y=\\ln Y$.\n2. Mit $y$ multiplizieren: $y^y\\cdot y\\ln y=y\\ln Y$. Da $y^y=e^{y\\ln y}$, steht links $(y\\ln y)\\,e^{y\\ln y}$ — wieder die Form $w\\,e^w$.\n   Also $y\\ln y=W(y\\ln Y)$.\n3. Noch einmal derselbe Trick: $y\\ln y=(\\ln y)\\,e^{\\ln y}$, also $\\ln y=W(y\\ln y)=W(W(y\\ln Y))$.\n\nRechts steht $y$ noch einmal — deshalb ist es keine geschlossene Formel, sondern eine Fixpunktgleichung.\n",
+    "genau": "Für jedes $Y>1$ hat $y^{y^y}=Y$ genau eine positive Lösung $y$, und sie ist grösser als $1$. Sie erfüllt\n$$y=\\exp\\Bigl(W\\bigl(W(y\\ln Y)\\bigr)\\Bigr).$$\nStartet man mit $y=1$ und setzt immer wieder ein, so wächst die Folge monoton und kommt der Lösung beliebig nahe.\n",
+    "warum": "**Genau eine Lösung:** Für $0<y\\le1$ ist $y^y\\le1$ und daher auch $y^{y^y}\\le1<Y$. Für $y\\ge1$ wächst $y^{y^y}$ stetig und streng\nvon $1$ ins Unendliche, trifft $Y$ also genau einmal.\n\n**Die Formel:**\n1. Logarithmieren: $y^y\\ln y=\\ln Y$.\n2. Mit $y$ multiplizieren: $y^y\\cdot y\\ln y=y\\ln Y$. Da $y^y=e^{y\\ln y}$, steht links $(y\\ln y)\\,e^{y\\ln y}$ — wieder die Form $w\\,e^w$.\n   Also $y\\ln y=W(y\\ln Y)$.\n3. Noch einmal derselbe Trick: $y\\ln y=(\\ln y)\\,e^{\\ln y}$, also $\\ln y=W(y\\ln y)=W(W(y\\ln Y))$.\n\nRechts steht $y$ noch einmal — deshalb ist es keine geschlossene Formel, sondern eine Fixpunktgleichung.\n\n**Die Iteration konvergiert:** Sei $F(y)=\\exp W(W(y\\ln Y))$. Da $W$ und $\\exp$ wachsen und $\\ln Y>0$ ist, wächst $F$. Weiter ist $F(1)>1$, weil $W(\\ln Y)>0$ und damit $W(W(\\ln Y))>0$. Also ist $y_n=F^n(1)$ monoton wachsend. Ist $y^*$ die Lösung, so ist $F(y^*)=y^*$ und $1\\le y^*$, also $y_n\\le y^*$ für alle $n$. Der Grenzwert ist ein Fixpunkt von $F$; rückwärts gerechnet löst jeder Fixpunkt $y\\ge1$ die Gleichung $y^{y^y}=Y$, also ist er $y^*$.\n",
     "beispiel": "Dritte Superwurzeln (auf 45 Stellen, je 53–60 Iterationen ab $y=1$):\n- $Y=2$: $y=1.4766843373578699\\ldots$ Probe: $1.4767^{1.4767}=1.7782$, $1.4767^{1.7782}=e^{1.7782\\cdot0.38981}=e^{0.6932}=2.000$.\n- $Y=10$: $1.9235840364\\ldots$; $Y=100$: $2.2127958063\\ldots$; $Y=10^6$: $2.6791911519\\ldots$\n\nDie Werte wachsen sehr langsam: Selbst für eine Million reicht eine Basis unter $2.7$, weil der Dreierturm so schnell wächst.\n",
     "bilder": [
      "exp.superwurzel"
@@ -10647,21 +10647,21 @@
    ],
    "en": {
     "beweis": {
-     "text": "Uniqueness: for $0<y\\le1$ we have $y^{y^y}\\le1$; on $[1,\\infty)$ the map $y\\mapsto y^{y^y}$ is continuous and strictly increasing from 1 to ∞. Formula: multiplying $y^y\\ln y=\\ln Y$ by $y$ gives $(y\\ln y)e^{y\\ln y}=y\\ln Y$, hence $y\\ln y=W(y\\ln Y)$, and $(\\ln y)e^{\\ln y}=y\\ln y$ gives $\\ln y=W(W(y\\ln Y))$. The convergence of the iteration is only observed."
+     "text": "Uniqueness: for $0<y\\le1$ we have $y^{y^y}\\le1$; on $[1,\\infty)$ the map $y\\mapsto y^{y^y}$ is continuous and strictly increasing from 1 to ∞. Formula: multiplying $y^y\\ln y=\\ln Y$ by $y$ gives $(y\\ln y)e^{y\\ln y}=y\\ln Y$, hence $y\\ln y=W(y\\ln Y)$, and $(\\ln y)e^{\\ln y}=y\\ln y$ gives $\\ln y=W(W(y\\ln Y))$. Convergence: $F(y)=\\exp W(W(y\\ln Y))$ is increasing, since $W$ and $\\exp$ are and $\\ln Y>0$. $F(1)>1$, because $W(\\ln Y)>0$ and hence $W(W(\\ln Y))>0$. So $y_n=F^n(1)$ increases monotonically. With $y^*$ for the solution, $F(y^*)=y^*$ and $y_0=1\\le y^*$, hence $y_n\\le y^*$ for all $n$. The limit $y_\\infty\\le y^*$ is a fixed point of $F$; from $y=F(y)$ it follows backwards that $y^y\\ln y=\\ln Y$, hence $y^{y^y}=Y$ (for $y\\ge1$, $W(xe^x)=x$ with $x\\ge0$), and uniqueness gives $y_\\infty=y^*$."
     },
     "pruefung": {
      "f5_neue_frage": "Convergence rate of the iteration (derivative of the map at the fixed point) and behavior for $Y\\to1^+$.",
-     "f1_folgt_unmittelbar": "Yes for the formula and uniqueness; not for the convergence of the iteration (contraction not shown).",
+     "f1_folgt_unmittelbar": "Yes for the formula and uniqueness; also for the convergence of the iteration (monotonically increasing and bounded, no contraction proof needed).",
      "f2_benutzte_voraussetzungen": "$Y>1$; for $Y<1$ there may be several solutions (not investigated).",
      "f3_spezialfall": "Pattern for the $n$-th super-root: W applied $n-1$ times, but only implicitly.",
      "f4_uebertragbar": "Arithmetic: integer or irrational (ar.satz.superwurzel_arith)."
     },
     "bewertung": {
-     "richtigkeit": "Formula complete, iteration numerical",
+     "richtigkeit": "complete",
      "nutzen": "Shows how far Lambert W carries."
     },
     "titel": "Third super-root — Lambert W twice",
-    "aussage": "For $Y>1$, $y^{y^y}=Y$ has exactly one solution $y>0$, and it lies in $(1,\\infty)$. It satisfies\n$$y=\\exp W\\bigl(W(y\\ln Y)\\bigr),$$\nand the fixed-point iteration $y\\leftarrow\\exp W(W(y\\ln Y))$ starting from $y=1$ converges (observed for $Y=2,10,100,10^6$, each 53–60 steps to 45 digits).\nValues: $\\sqrt[3]{2}_s=1.4766843373578699\\ldots$, $\\sqrt[3]{10}_s=1.9235840364420273\\ldots$, $\\sqrt[3]{100}_s=2.2127958063258997\\ldots$\n",
+    "aussage": "For $Y>1$, $y^{y^y}=Y$ has exactly one solution $y>0$, and it lies in $(1,\\infty)$. It satisfies\n$$y=\\exp W\\bigl(W(y\\ln Y)\\bigr),$$\nand the fixed-point iteration $y\\leftarrow\\exp W(W(y\\ln Y))$ starting from $y=1$ increases monotonically and converges to this solution (numerically for $Y=2,10,100,10^6$: each 53–60 steps to 45 digits).\nValues: $\\sqrt[3]{2}_s=1.4766843373578699\\ldots$, $\\sqrt[3]{10}_s=1.9235840364420273\\ldots$, $\\sqrt[3]{100}_s=2.2127958063258997\\ldots$\n",
     "bereich": "real $Y>1$, sought $y>1$ with $y^{y^y}=Y$",
     "einfach": "The question “which number gives exactly 2 as a three-level tower y^y^y?” also has exactly one answer, about 1.4767. There is no ready-made formula, but there is a rule of computation that you apply again and again until nothing changes anymore.",
     "formen": [
@@ -10678,8 +10678,8 @@
    "en_theorie": {
     "beispiel": "Third super-roots (to 45 digits, 53–60 iterations each starting from $y=1$):\n- $Y=2$: $y=1.4766843373578699\\ldots$ Check: $1.4767^{1.4767}=1.7782$, $1.4767^{1.7782}=e^{1.7782\\cdot0.38981}=e^{0.6932}=2.000$.\n- $Y=10$: $1.9235840364\\ldots$; $Y=100$: $2.2127958063\\ldots$; $Y=10^6$: $2.6791911519\\ldots$\n\nThe values grow very slowly: even for a million a base below $2.7$ suffices, because the tower of height three grows so fast.\n",
     "einordnung": "Builds on [[gr.satz.superwurzel]]. For four and more levels it works the same way, only with more nested W. Whether the third\nsuper-root of 2 is transcendental, nobody knows; that it is irrational is shown by [[ar.satz.superwurzel_arith]].\n",
-    "genau": "For every $Y>1$, $y^{y^y}=Y$ has exactly one positive solution $y$, and it is larger than $1$. It satisfies\n$$y=\\exp\\Bigl(W\\bigl(W(y\\ln Y)\\bigr)\\Bigr).$$\nIf one starts with $y=1$ and substitutes again and again, one arrives (observed, not proved) at the solution.\n",
-    "warum": "**Exactly one solution:** For $0<y\\le1$, $y^y\\le1$ and hence also $y^{y^y}\\le1<Y$. For $y\\ge1$, $y^{y^y}$ grows continuously and strictly\nfrom $1$ to infinity, so it meets $Y$ exactly once.\n\n**The formula:**\n1. Take logarithms: $y^y\\ln y=\\ln Y$.\n2. Multiply by $y$: $y^y\\cdot y\\ln y=y\\ln Y$. Since $y^y=e^{y\\ln y}$, the left side is $(y\\ln y)\\,e^{y\\ln y}$ — again the form $w\\,e^w$.\n   So $y\\ln y=W(y\\ln Y)$.\n3. Once more the same trick: $y\\ln y=(\\ln y)\\,e^{\\ln y}$, so $\\ln y=W(y\\ln y)=W(W(y\\ln Y))$.\n\nOn the right $y$ appears once more — that is why this is not a closed formula but a fixed-point equation.\n",
+    "genau": "For every $Y>1$, $y^{y^y}=Y$ has exactly one positive solution $y$, and it is larger than $1$. It satisfies\n$$y=\\exp\\Bigl(W\\bigl(W(y\\ln Y)\\bigr)\\Bigr).$$\nIf one starts with $y=1$ and substitutes again and again, the sequence grows monotonically and comes arbitrarily close to the solution.\n",
+    "warum": "**Exactly one solution:** For $0<y\\le1$, $y^y\\le1$ and hence also $y^{y^y}\\le1<Y$. For $y\\ge1$, $y^{y^y}$ grows continuously and strictly\nfrom $1$ to infinity, so it meets $Y$ exactly once.\n\n**The formula:**\n1. Take logarithms: $y^y\\ln y=\\ln Y$.\n2. Multiply by $y$: $y^y\\cdot y\\ln y=y\\ln Y$. Since $y^y=e^{y\\ln y}$, the left side is $(y\\ln y)\\,e^{y\\ln y}$ — again the form $w\\,e^w$.\n   So $y\\ln y=W(y\\ln Y)$.\n3. Once more the same trick: $y\\ln y=(\\ln y)\\,e^{\\ln y}$, so $\\ln y=W(y\\ln y)=W(W(y\\ln Y))$.\n\nOn the right $y$ appears once more — that is why this is not a closed formula but a fixed-point equation.\n\n**The iteration converges:** Let $F(y)=\\exp W(W(y\\ln Y))$. Since $W$ and $\\exp$ increase and $\\ln Y>0$, $F$ increases. Moreover $F(1)>1$, because $W(\\ln Y)>0$ and hence $W(W(\\ln Y))>0$. So $y_n=F^n(1)$ is monotonically increasing. If $y^*$ is the solution, then $F(y^*)=y^*$ and $1\\le y^*$, hence $y_n\\le y^*$ for all $n$. The limit is a fixed point of $F$; computing backwards, every fixed point $y\\ge1$ solves $y^{y^y}=Y$, so it is $y^*$.\n",
     "worum": "For the tower of height three $y^{y^y}$ there is no ready-made formula for the inverse anymore. But one can write the solution as a fixed point:\na rule of computation that one applies again and again until the number no longer changes. And here, too, the Lambert function is\ninvolved — this time twice in a row.\n"
    },
    "_en_stand": "aktuell",
@@ -21979,7 +21979,8 @@
    "titel": "Die Newton-Reihe der ganzen Turmwerte ergibt unter η die reguläre Tetration",
    "art": "satz",
    "ebene": "B",
-   "status": "bewiesen",
+   "status": "bedingt",
+   "bedingungen_text": "Die Poincaré-Reihe Ψ am anziehenden Fixpunkt hat Konvergenzradius grösser als |s₀| (für b = √2 nachgerechnet: 1.316 > 0.632); allgemein aus der Holomorphie der regulären Tetration auf Re h > −2 zu zeigen, die bisher nur für √2 belegt ist (kl.satz.vier_sqrt2)",
    "niveau": "vertiefung",
    "objekte": [
     "regulaer_T",
@@ -21989,7 +21990,7 @@
    "aussage": "Aus den ganzen Werten allein, ohne Fixpunkt und ohne Schröder-Funktion:\n$$T(h)=\\sum_{n\\ge0}\\binom hn\\Delta^nT(0),\\qquad\\Delta^nT(0)=\\sum_{j=0}^n(-1)^{n-j}\\binom njT(j),$$\nund die Summe ist die reguläre Tetration. Die Konvergenz ist nur algebraisch: Für $b=\\sqrt2$, $h=\\tfrac12$ ist der Abstand nach $10/20/40/90$ Gliedern\n$3.2\\cdot10^{-4}$, $5.3\\cdot10^{-5}$, $8.3\\cdot10^{-6}$, $9.4\\cdot10^{-7}$ (etwa $N^{-2.7}$). Über $\\eta$ divergiert die Reihe (die Turmwerte wachsen zu schnell).\n",
    "einfach": "Man nimmt nur die Turmwerte an den ganzen Stellen und interpoliert sie mit der Newton-Formel aus der Schule, wie man ein Polynom durch Punkte legt. Unter η kommt dabei genau die reguläre Tetration heraus — langsam, aber sicher.",
    "beweis": {
-    "art": "vollstaendig",
+    "art": "bedingt",
     "text": "Die reguläre Tetration ist $T(h)=\\Psi(s_0\\lambda^h)=a+\\sum_{k\\ge1}\\psi_ks_0^k\\lambda^{kh}$ mit der Poincaré-Funktion $\\Psi$ (kl.satz.regulaer; am anziehenden Fixpunkt nicht ganz),\nderen Taylorreihe bei $|w|=|s_0|$ noch absolut konvergiert, also $\\sum_k|\\psi_ks_0^k|<\\infty$ (Konvergenzradius $>|s_0|$; für $b=\\sqrt2$ nachgerechnet:\nRadius $\\approx|s_0|\\lambda^{-2}=1.32$, entsprechend der Singularität bei $h=-2$, gegen $|s_0|=0.63$). Für jedes $k$ ist $\\lambda^{kh}=\\sum_n\\binom hn(\\lambda^k-1)^n$ (Binomialreihe, $|\\lambda^k-1|<1$), und\n$\\Delta^nT(0)=\\sum_k\\psi_ks_0^k(\\lambda^k-1)^n$ für $n\\ge1$. Die Doppelsumme konvergiert absolut, weil $\\sum_n|\\binom hn|<\\infty$ für $h>-1$ ($|\\binom hn|\\sim n^{-1-h}$)\nund $|\\lambda^k-1|\\le1$ — also darf man vertauschen.\n"
    },
    "experimente": [
@@ -22006,7 +22007,7 @@
     "f5_neue_frage": "Genaue Rate: von den hohen Moden mit λ^k → 0 bestimmt?"
    },
    "bewertung": {
-    "richtigkeit": "vollständig; √2 bei h = ½ nachgerechnet",
+    "richtigkeit": "vollständig unter der Konvergenzvoraussetzung; √2 bei h = ½ nachgerechnet",
     "neuheit": "bekannt",
     "nutzen": "Zeigt, dass unter η schon die ganzen Werte die reguläre Lösung festlegen — ohne jede Zusatzwahl.",
     "nutzen_stufe": "mittel"
@@ -22039,7 +22040,7 @@
    "theorie": {
     "worum": "Unter $\\eta$ legen die Turmwerte an den ganzen Stellen die reguläre Tetration schon fest: Die alte Newton-Interpolation aus Differenzen trifft sie genau.\n",
     "genau": "$$T(h)=\\sum_{n\\ge0}\\binom hn\\Delta^nT(0)$$\nmit den Differenzen $\\Delta^nT(0)$ der Zahlen $1,b,b^b,\\dots$ — die Summe ist die reguläre Tetration. Die Konvergenz ist langsam (algebraisch).\n",
-    "warum": "1. Die reguläre Tetration ist eine Summe aus Potenzen $\\lambda^{kh}$ mit $0<\\lambda<1$.\n2. Für jede einzelne Potenz ist die Newton-Reihe die Binomialreihe $(1+(\\lambda^k-1))^h$, und die konvergiert, weil $|\\lambda^k-1|<1$.\n3. Alles konvergiert absolut, also darf man die Summen vertauschen.\n",
+    "warum": "1. Die reguläre Tetration ist eine Summe aus Potenzen $\\lambda^{kh}$ mit $0<\\lambda<1$; dass diese Reihe noch bei $|w|=|s_0|$ absolut konvergiert (Konvergenzradius grösser als $|s_0|$), ist die einzige Voraussetzung. Für $b=\\sqrt2$ ist sie nachgerechnet ($1.316>0.632$), allgemein steht sie noch aus.\n2. Für jede einzelne Potenz ist die Newton-Reihe die Binomialreihe $(1+(\\lambda^k-1))^h$, und die konvergiert, weil $|\\lambda^k-1|<1$.\n3. Alles konvergiert absolut, also darf man die Summen vertauschen.\n",
     "beispiel": "$b=\\sqrt2$, $h=\\frac12$: nach 90 Gliedern $1.24362$ — Abstand $9\\cdot10^{-7}$ zur regulären Tetration $1.2436216276685\\ldots$\n",
     "bilder": [
      "exp.forum_formeln"
@@ -22049,7 +22050,7 @@
    "_strang": "kl.regulaer",
    "_idee": "fortsetzung.regulaer",
    "_niveau": "vertiefung",
-   "_status_eff": "bewiesen",
+   "_status_eff": "bedingt",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
@@ -22137,7 +22138,7 @@
     },
     "bewertung": {
      "nutzen": "Shows that below η the integer values alone already determine the regular solution — without any additional choice.",
-     "richtigkeit": "complete; √2 at h = ½ recomputed"
+     "richtigkeit": "complete under the convergence hypothesis; √2 at h = ½ recomputed"
     },
     "titel": "Below η, the Newton series of the integer tower values yields the regular tetration",
     "aussage": "From the integer values alone, without fixed point and without Schröder function:\n$$T(h)=\\sum_{n\\ge0}\\binom hn\\Delta^nT(0),\\qquad\\Delta^nT(0)=\\sum_{j=0}^n(-1)^{n-j}\\binom njT(j),$$\nand the sum is the regular tetration. The convergence is only algebraic: for $b=\\sqrt2$, $h=\\tfrac12$ the distance after $10/20/40/90$ terms is\n$3.2\\cdot10^{-4}$, $5.3\\cdot10^{-5}$, $8.3\\cdot10^{-6}$, $9.4\\cdot10^{-7}$ (about $N^{-2.7}$). Above $\\eta$ the series diverges (the tower values grow too fast).\n",
@@ -22149,13 +22150,14 @@
      {
       "stelle": "binomial continuation “apply s times” (source of Woon's expansion, forum tid 12)"
      }
-    ]
+    ],
+    "bedingungen_text": "The Poincaré series Ψ at the attracting fixed point has radius of convergence greater than |s₀| (recomputed for b = √2: 1.316 > 0.632); in general to be derived from the holomorphy of the regular tetration on Re h > −2, which so far is established only for √2 (kl.satz.vier_sqrt2)"
    },
    "en_theorie": {
     "beispiel": "$b=\\sqrt2$, $h=\\frac12$: after 90 terms $1.24362$ — distance $9\\cdot10^{-7}$ from the regular tetration $1.2436216276685\\ldots$\n",
     "einordnung": "The faster q-analog is Reshetnikov's formula ([[kl.beob.q_binomial]]). Gottfried Helms observed in 2011 that the Newton formula follows the iteration at the\nattracting fixed point.\n",
     "genau": "$$T(h)=\\sum_{n\\ge0}\\binom hn\\Delta^nT(0)$$\nwith the differences $\\Delta^nT(0)$ of the numbers $1,b,b^b,\\dots$ — the sum is the regular tetration. The convergence is slow (algebraic).\n",
-    "warum": "1. The regular tetration is a sum of powers $\\lambda^{kh}$ with $0<\\lambda<1$.\n2. For each single power the Newton series is the binomial series $(1+(\\lambda^k-1))^h$, and it converges because $|\\lambda^k-1|<1$.\n3. Everything converges absolutely, so the sums may be interchanged.\n",
+    "warum": "1. The regular tetration is a sum of powers $\\lambda^{kh}$ with $0<\\lambda<1$; that this series still converges absolutely at $|w|=|s_0|$ (radius of convergence larger than $|s_0|$) is the only hypothesis. For $b=\\sqrt2$ it has been recomputed ($1.316>0.632$), in general it is still open.\n2. For each single power the Newton series is the binomial series $(1+(\\lambda^k-1))^h$, and it converges because $|\\lambda^k-1|<1$.\n3. Everything converges absolutely, so the sums may be interchanged.\n",
     "worum": "Below $\\eta$ the tower values at the integer points already determine the regular tetration: The old Newton interpolation from differences hits it exactly.\n"
    },
    "_en_stand": "aktuell",
@@ -22317,7 +22319,7 @@
     "regulaer_T",
     "periodische_stoerung"
    ],
-   "aussage": "Sind $F,G$ zwei Tetrationen zur Basis $b$ ($F(0)=G(0)=1$), beide auf $\\operatorname{Re}z\\ge0$ holomorph und dort beschränkt (oder nur langsamer als $e^{\\pi|z|}$ wachsend auf der\nimaginären Achse und von Exponentialtyp in der Halbebene), dann ist $F=G$. Für $1<b\\le\\eta$ ist die reguläre Tetration so eine Lösung: Sie bleibt auf\n$\\operatorname{Re}z\\ge0$ beschränkt (gemessen: $|T-L|\\le L-1$ auf einer vollen Periode, kl.satz.folgen_vollmonoton). Über $\\eta$ greift der Satz nicht — jede reelle Tetration wächst\nauf der reellen Achse schneller als jede Exponentialfunktion; dort übernimmt die senkrechte Bedingung von Paulsen–Cowgill.\n",
+   "aussage": "Sind $F,G$ zwei Tetrationen zur Basis $b$ ($F(0)=G(0)=1$), beide auf $\\operatorname{Re}z\\ge0$ holomorph und dort beschränkt (oder nur langsamer als $e^{\\pi|z|}$ wachsend auf der\nimaginären Achse und von Exponentialtyp in der Halbebene), dann ist $F=G$. Für $1<b\\le\\eta$ ist nach Messung die reguläre Tetration so eine Lösung: Sie bleibt auf\n$\\operatorname{Re}z\\ge0$ beschränkt (gemessen: $|T-L|\\le L-1$ auf einer vollen Periode, kl.satz.folgen_vollmonoton). Über $\\eta$ greift der Satz nicht — jede reelle Tetration wächst\nauf der reellen Achse schneller als jede Exponentialfunktion; dort übernimmt die senkrechte Bedingung von Paulsen–Cowgill.\n",
    "einfach": "Unter η gibt es eine kurze Antwort auf „Welche Tetration ist die richtige?“: diejenige, die in der rechten Halbebene beschränkt bleibt. Zwei solche stimmen an allen ganzen Zahlen überein, und ein klassischer Satz (Carlson) sagt, dass sie dann überall gleich sind.",
    "beweis": {
     "art": "vollstaendig",
@@ -22370,7 +22372,7 @@
    "_datei": "04_loesungsklassen.yaml",
    "theorie": {
     "worum": "Unter $\\eta$ gibt es eine besonders einfache Kennzeichnung der richtigen Tetration: Sie bleibt in der rechten Halbebene beschränkt — und das kann nur eine.\n",
-    "genau": "Zwei Tetrationen, die auf $\\operatorname{Re}z\\ge0$ holomorph und beschränkt sind, sind gleich. Die reguläre Tetration (am unteren Fixpunkt) ist für $1<b\\le\\eta$ so eine.\n",
+    "genau": "Zwei Tetrationen, die auf $\\operatorname{Re}z\\ge0$ holomorph und beschränkt sind, sind gleich. Die reguläre Tetration (am unteren Fixpunkt) ist für $1<b\\le\\eta$ nach Messung so eine.\n",
     "warum": "1. Die Differenz zweier Tetrationen verschwindet an allen ganzen Zahlen $0,1,2,\\dots$\n2. Carlsons Satz: Eine in der rechten Halbebene holomorphe Funktion, die höchstens exponentiell wächst, auf der imaginären Achse langsamer als $e^{\\pi|y|}$, und an allen\n   natürlichen Zahlen null ist, ist überall null. (Ohne die Schranke ginge es nicht: $\\sin\\pi z$ verschwindet auch an allen ganzen Zahlen.)\n3. Über $\\eta$ wächst jede reelle Tetration auf der reellen Achse schneller als jede Exponentialfunktion — dort ist Carlson nutzlos, und man braucht die Grenzwerte $L,\\bar L$.\n",
     "beispiel": "Basis $\\sqrt2$: Auf $\\operatorname{Re}z\\in[0,3]$ über eine volle Periode bleibt $|T(z)-2|\\le1$ (Experiment zu [[kl.satz.folgen_vollmonoton]]).\n",
     "einordnung": "Gegenstück zu [[kn.satz.paulsen_cowgill]] über $\\eta$; verwandt mit [[it.satz.vertauschbar]].\n"
@@ -22463,7 +22465,7 @@
      "richtigkeit": "complete (uniqueness); boundedness of the regular solution numerical"
     },
     "titel": "Carlson's theorem: at most one tetration is holomorphic and bounded in the right half-plane",
-    "aussage": "If $F,G$ are two tetrations to base $b$ ($F(0)=G(0)=1$), both holomorphic on $\\operatorname{Re}z\\ge0$ and bounded there (or growing only more slowly than $e^{\\pi|z|}$ on the\nimaginary axis and of exponential type in the half-plane), then $F=G$. For $1<b\\le\\eta$ the regular tetration is such a solution: it remains bounded on\n$\\operatorname{Re}z\\ge0$ (measured: $|T-L|\\le L-1$ over a full period, kl.satz.folgen_vollmonoton). Above $\\eta$ the theorem does not apply — every real tetration grows\non the real axis faster than any exponential function; there the vertical condition of Paulsen–Cowgill takes over.\n",
+    "aussage": "If $F,G$ are two tetrations to base $b$ ($F(0)=G(0)=1$), both holomorphic on $\\operatorname{Re}z\\ge0$ and bounded there (or growing only more slowly than $e^{\\pi|z|}$ on the\nimaginary axis and of exponential type in the half-plane), then $F=G$. For $1<b\\le\\eta$ the regular tetration is, by measurement, such a solution: it remains bounded on\n$\\operatorname{Re}z\\ge0$ (measured: $|T-L|\\le L-1$ over a full period, kl.satz.folgen_vollmonoton). Above $\\eta$ the theorem does not apply — every real tetration grows\non the real axis faster than any exponential function; there the vertical condition of Paulsen–Cowgill takes over.\n",
     "einfach": "Below η there is a short answer to “Which tetration is the right one?”: the one that stays bounded in the right half-plane. Two such tetrations agree at all integers, and a classical theorem (Carlson) says that they are then equal everywhere.",
     "quellen": [
      {},
@@ -22476,7 +22478,7 @@
    "en_theorie": {
     "beispiel": "Base $\\sqrt2$: On $\\operatorname{Re}z\\in[0,3]$ over a full period, $|T(z)-2|\\le1$ holds (experiment for [[kl.satz.folgen_vollmonoton]]).\n",
     "einordnung": "Counterpart to [[kn.satz.paulsen_cowgill]] above $\\eta$; related to [[it.satz.vertauschbar]].\n",
-    "genau": "Two tetrations that are holomorphic and bounded on $\\operatorname{Re}z\\ge0$ are equal. The regular tetration (at the lower fixed point) is such a one for $1<b\\le\\eta$.\n",
+    "genau": "Two tetrations that are holomorphic and bounded on $\\operatorname{Re}z\\ge0$ are equal. The regular tetration (at the lower fixed point) is, by measurement, such a one for $1<b\\le\\eta$.\n",
     "warum": "1. The difference of two tetrations vanishes at all integers $0,1,2,\\dots$\n2. Carlson's theorem: A function holomorphic in the right half-plane that grows at most exponentially, more slowly than $e^{\\pi|y|}$ on the imaginary axis, and is zero at all\n   natural numbers is zero everywhere. (Without the bound it would not work: $\\sin\\pi z$ also vanishes at all integers.)\n3. Above $\\eta$ every real tetration grows on the real axis faster than any exponential function — there Carlson is useless, and one needs the limit values $L,\\bar L$.\n",
     "worum": "Below $\\eta$ there is a particularly simple characterization of the right tetration: It remains bounded in the right half-plane — and only one can do that.\n"
    },
@@ -24870,7 +24872,7 @@
     "abel"
    ],
    "bereich": "$b=e$; Ansatz $\\operatorname{slog}_n(x)=-1+\\sum_{k=1}^{n}a_k x^k$",
-   "aussage": "Koeffizientenvergleich in $\\operatorname{slog}(e^x)-\\operatorname{slog}(x)=1$ bis Grad $n-1$ gibt das lineare System\n$\\sum_{k=1}^{n}a_k\\,k^j/j!-a_j=\\delta_{j0}$ $(0\\le j\\le n-1)$. Seine Lösung definiert $\\operatorname{slog}_n$\n(Walker 1991, Robbins 2005 „natural slog“).\n",
+   "aussage": "Koeffizientenvergleich in $\\operatorname{slog}(e^x)-\\operatorname{slog}(x)=1$ bis Grad $n-1$ gibt das lineare System\n$\\sum_{k=1}^{n}a_k\\,k^j/j!-a_j=\\delta_{j0}$ $(0\\le j\\le n-1)$. Seine Lösung (für alle geprüften $n$ eindeutig) definiert $\\operatorname{slog}_n$\n(Walker 1991, Robbins 2005 „natural slog“).\n",
    "beweis": {
     "art": "vollstaendig",
     "text": "Konstruktion; Lösbarkeit für jedes n numerisch beobachtet, nicht allgemein bewiesen."
@@ -24917,7 +24919,7 @@
    "theorie": {
     "worum": "Ein Weg ganz ohne komplexe Geometrie: Man setzt den Superlogarithmus als Polynom an und verlangt die Abel-Gleichung Koeffizient für\nKoeffizient. Heraus kommt ein lineares Gleichungssystem.\n",
     "genau": "Ansatz zur Basis $e$: $\\operatorname{slog}_n(x)=-1+\\sum_{k=1}^{n}a_kx^k$. Man verlangt $\\operatorname{slog}_n(e^x)-\\operatorname{slog}_n(x)=1$ bis zur Ordnung $x^{n-1}$.\nDas gibt $n$ lineare Gleichungen für $a_1,\\dots,a_n$:\n$$\\sum_{k=1}^na_k=1,\\qquad\\sum_{k=1}^na_k\\frac{k^j}{j!}=a_j\\quad(1\\le j\\le n-1).$$\n",
-    "warum": "$\\operatorname{slog}_n(e^x)=-1+\\sum_ka_ke^{kx}=-1+\\sum_ka_k\\sum_j\\frac{k^jx^j}{j!}$. Der Koeffizient von $x^0$ ist $-1+\\sum_ka_k$, der von $\\operatorname{slog}_n(x)$ ist $-1$; die\nDifferenz soll $1$ sein. Für $x^j$ mit $j\\ge1$ soll die Differenz $0$ sein: $\\sum_ka_kk^j/j!-a_j=0$. Ob das System für jedes $n$ lösbar ist, ist nur beobachtet.\n",
+    "warum": "$\\operatorname{slog}_n(e^x)=-1+\\sum_ka_ke^{kx}=-1+\\sum_ka_k\\sum_j\\frac{k^jx^j}{j!}$. Der Koeffizient von $x^0$ ist $-1+\\sum_ka_k$, der von $\\operatorname{slog}_n(x)$ ist $-1$; die\nDifferenz soll $1$ sein. Für $x^j$ mit $j\\ge1$ soll die Differenz $0$ sein: $\\sum_ka_kk^j/j!-a_j=0$. Ob das System für jedes $n$ lösbar ist, ist nur beobachtet; für alle geprüften $n$ ist die Lösung eindeutig.\n",
     "beispiel": "Mit $n=16$ liegt $\\operatorname{slog}_n$ an inneren Punkten um $1.7\\cdot10^{-5}$ neben Knesers Wert, mit $n=128$ um $9.2\\cdot10^{-9}$.\n",
     "bilder": [
      "exp.carleman"
@@ -25019,7 +25021,7 @@
      "richtigkeit": "complete as a definition"
     },
     "titel": "Intuitive slog via truncated Carleman systems",
-    "aussage": "Comparing coefficients in $\\operatorname{slog}(e^x)-\\operatorname{slog}(x)=1$ up to degree $n-1$ gives the linear system\n$\\sum_{k=1}^{n}a_k\\,k^j/j!-a_j=\\delta_{j0}$ $(0\\le j\\le n-1)$. Its solution defines $\\operatorname{slog}_n$\n(Walker 1991, Robbins 2005 “natural slog”).\n",
+    "aussage": "Comparing coefficients in $\\operatorname{slog}(e^x)-\\operatorname{slog}(x)=1$ up to degree $n-1$ gives the linear system\n$\\sum_{k=1}^{n}a_k\\,k^j/j!-a_j=\\delta_{j0}$ $(0\\le j\\le n-1)$. Its solution (unique for all $n$ tested) defines $\\operatorname{slog}_n$\n(Walker 1991, Robbins 2005 “natural slog”).\n",
     "bereich": "$b=e$; ansatz $\\operatorname{slog}_n(x)=-1+\\sum_{k=1}^{n}a_k x^k$",
     "quellen": [
      {},
@@ -25039,7 +25041,7 @@
     "beispiel": "With $n=16$, $\\operatorname{slog}_n$ lies $1.7\\cdot10^{-5}$ off Kneser's value at interior points, with $n=128$ $9.2\\cdot10^{-9}$ off.\n",
     "einordnung": "Does it converge to Kneser? [[kn.verm.carleman_kneser]]; how fast: [[kn.beob.carleman_rate]]. The method is named after Carleman matrices,\nwhich manage power series of iterates (cf. [[it.satz.erdos_jabotinsky]]).\n",
     "genau": "Ansatz for base $e$: $\\operatorname{slog}_n(x)=-1+\\sum_{k=1}^{n}a_kx^k$. One requires $\\operatorname{slog}_n(e^x)-\\operatorname{slog}_n(x)=1$ up to order $x^{n-1}$.\nThis gives $n$ linear equations for $a_1,\\dots,a_n$:\n$$\\sum_{k=1}^na_k=1,\\qquad\\sum_{k=1}^na_k\\frac{k^j}{j!}=a_j\\quad(1\\le j\\le n-1).$$\n",
-    "warum": "$\\operatorname{slog}_n(e^x)=-1+\\sum_ka_ke^{kx}=-1+\\sum_ka_k\\sum_j\\frac{k^jx^j}{j!}$. The coefficient of $x^0$ is $-1+\\sum_ka_k$, that of $\\operatorname{slog}_n(x)$ is $-1$; the\ndifference is to be $1$. For $x^j$ with $j\\ge1$ the difference is to be $0$: $\\sum_ka_kk^j/j!-a_j=0$. Whether the system is solvable for every $n$ has only been observed.\n",
+    "warum": "$\\operatorname{slog}_n(e^x)=-1+\\sum_ka_ke^{kx}=-1+\\sum_ka_k\\sum_j\\frac{k^jx^j}{j!}$. The coefficient of $x^0$ is $-1+\\sum_ka_k$, that of $\\operatorname{slog}_n(x)$ is $-1$; the\ndifference is to be $1$. For $x^j$ with $j\\ge1$ the difference is to be $0$: $\\sum_ka_kk^j/j!-a_j=0$. Whether the system is solvable for every $n$ has only been observed; for all $n$ tested the solution is unique.\n",
     "worum": "A way entirely without complex geometry: One takes the super-logarithm as a polynomial ansatz and demands the Abel equation coefficient by\ncoefficient. What comes out is a linear system of equations.\n"
    },
    "_en_stand": "aktuell",
@@ -25897,7 +25899,8 @@
    "titel": "Pentation — reguläre Superfunktion der Tetration an ihrem reellen Fixpunkt",
    "art": "konstruktion",
    "ebene": "C",
-   "status": "bewiesen",
+   "status": "bedingt",
+   "bedingungen_text": "λ_b = T_b′(L_b) > 1 und L_b einziger Fixpunkt von T_b in (−2, −1): gemessen (e 6.4607, 2 5.1718), bewiesen nur λ_b ≥ 1 am kleinsten Fixpunkt; gleichwertig zur Log-Konkavität von T_b auf (−1, 0), die für b > b₇ bricht (gr.gegen.tpid7_kneser)",
    "niveau": "vertiefung",
    "objekte": [
     "hyperoperation",
@@ -25920,7 +25923,7 @@
    "aussage": "$T_b$ hat auf $(-2,-1)$ einen Fixpunkt $L_b$. Mit der Poincaré-Funktion $\\Psi$ von $T_b$ an $L_b$ ($\\Psi(\\lambda_bw)=T_b(\\Psi(w))$, $\\Psi(0)=L_b$, $\\Psi'(0)=1$) ist\n$$b\\uparrow\\uparrow\\uparrow z=P_b(z)=\\Psi\\bigl(c\\,\\lambda_b^{\\,z}\\bigr),\\qquad c=\\sigma(1),$$\nmit der Schröder-Funktion $\\sigma=\\Psi^{-1}$ (über die slog-Kette fortgesetzt) eine Lösung von $P_b(z+1)=T_b(P_b(z))$ mit $P_b(0)=1$, $P_b(-1)=0$, $P_b(-2)=-1$, $P_b(1)=b$, $P_b(2)=T_b(b)={}^bb$; sie ist reell, streng wachsend, geht für\n$x\\to-\\infty$ gegen $L_b$ und hat die imaginäre Periode $2\\pi i/\\ln\\lambda_b$.\n",
    "einfach": "Pentation ist der nächste Schritt nach der Tetration: b↑↑↑3 = T_b(T_b(b)), also „Tetration so oft wiederholt“. Für halbe Höhen nimmt man denselben Trick wie eine Stufe tiefer: Die Tetration hat einen Fixpunkt (bei Basis e etwa −1.85), und dort kann man sie regulär iterieren.",
    "beweis": {
-    "art": "vollstaendig",
+    "art": "bedingt",
     "text": "Fixpunkt: $T_b(-1)=0>-1$ und $T_b(x)\\to-\\infty$ für $x\\downarrow-2$, also Nullstelle von $T_b(x)-x$ (Zwischenwertsatz). Koenigs (it.satz.koenigs) am abstossenden Fixpunkt gibt $\\Psi$ nahe 0; $\\Psi(w)=T_b^{\\circ n}(\\Psi(w/\\lambda_b^n))$ setzt sie längs der reellen Achse fort. $c$: die slog-Kette $1\\to0\\to-1\\to\\dots\\to L_b$ konvergiert (anziehend für slog), also $c=\\lim\\lambda_b^n\\Psi^{-1}(\\operatorname{slog}^{\\circ n}1)$. Gleichung und Periode wie bei kl.satz.obere_superexp."
    },
    "stuetzt_sich_auf": [
@@ -25938,7 +25941,7 @@
     "f5_neue_frage": "Wie bei der Tetration ist die Wahl nicht eindeutig (andere Fixpunkte, periodische Störungen). Gibt es eine Kneser-artige Pentation, die in der oberen Halbebene gegen einen komplexen Fixpunkt von T_b läuft?"
    },
    "bewertung": {
-    "richtigkeit": "Konstruktion vollständig, λ_b gemessen",
+    "richtigkeit": "Konstruktion vollständig unter der Voraussetzung λ_b > 1 (gemessen)",
     "neuheit": "bekannt",
     "nutzen": "Erste höhere Stufe mit echten Zahlen; zeigt, dass die Methode der regulären Iteration sich wiederholt.",
     "nutzen_stufe": "mittel"
@@ -25977,7 +25980,7 @@
    "_datei": "05_kneser_slog.yaml",
    "theorie": {
     "worum": "Addition wiederholt gibt Multiplikation, Multiplikation wiederholt gibt Potenz, Potenz wiederholt gibt Tetration — und Tetration wiederholt\ngibt **Pentation**: $b\\uparrow\\uparrow\\uparrow3=T_b(T_b(b))$. Für ganze Höhen ist das leicht hinzuschreiben, aber die Zahlen explodieren:\n$e\\uparrow\\uparrow\\uparrow2=T_e(e)\\approx2076$, und $e\\uparrow\\uparrow\\uparrow3=T_e(2076)$ hat mehr Stellen, als man je aufschreiben könnte.\nSpannender ist die andere Richtung und alles dazwischen. Der Schlüssel ist derselbe wie eine Stufe tiefer: ein Fixpunkt.\n",
-    "genau": "Sei $b>\\eta$ und $T_b$ die Kneser-Tetration.\n- $T_b$ hat zwischen $-2$ und $-1$ einen Fixpunkt $L_b$: $T_b(L_b)=L_b$. Zur Basis $e$ ist $L_e=-1.85035\\ldots$\n- Dort ist $T_b$ steil: $\\lambda_b=T_b'(L_b)>1$ (gemessen: $6.4607$ für $e$, $5.1718$ für $2$). Der Fixpunkt stösst also ab — für die Umkehrung slog zieht er an.\n- Die Poincaré-Funktion $\\Psi$ an $L_b$ erfüllt $\\Psi(\\lambda_bw)=T_b(\\Psi(w))$. Damit ist\n  $$P_b(z)=\\Psi\\bigl(c\\,\\lambda_b^{\\,z}\\bigr)$$\n  eine Pentation: $P_b(z+1)=T_b(P_b(z))$, und mit der richtigen Konstante $c$ gilt $P_b(0)=1$.\n- Ganze Höhen: $P_b(1)=b$, $P_b(2)={}^bb$, $P_b(-1)=0$, $P_b(-2)=-1$; für $x\\to-\\infty$ geht $P_b(x)$ gegen $L_b$.\n",
+    "genau": "Sei $b>\\eta$ und $T_b$ die Kneser-Tetration.\n- $T_b$ hat zwischen $-2$ und $-1$ einen Fixpunkt $L_b$: $T_b(L_b)=L_b$. Zur Basis $e$ ist $L_e=-1.85035\\ldots$\n- Dort ist $T_b$ steil: $\\lambda_b=T_b'(L_b)>1$ — **gemessen, nicht bewiesen** ($6.4607$ für $e$, $5.1718$ für $2$; bewiesen ist nur $\\lambda_b\\ge1$ am kleinsten Fixpunkt). Der Fixpunkt stösst also ab — für die Umkehrung slog zieht er an. Alles Folgende gilt unter dieser Voraussetzung.\n- Die Poincaré-Funktion $\\Psi$ an $L_b$ erfüllt $\\Psi(\\lambda_bw)=T_b(\\Psi(w))$. Damit ist\n  $$P_b(z)=\\Psi\\bigl(c\\,\\lambda_b^{\\,z}\\bigr)$$\n  eine Pentation: $P_b(z+1)=T_b(P_b(z))$, und mit der richtigen Konstante $c$ gilt $P_b(0)=1$.\n- Ganze Höhen: $P_b(1)=b$, $P_b(2)={}^bb$, $P_b(-1)=0$, $P_b(-2)=-1$; für $x\\to-\\infty$ geht $P_b(x)$ gegen $L_b$.\n",
     "warum": "1. **Fixpunkt.** $T_b(-1)=0$ liegt über der Geraden $y=x$ (denn $0>-1$), und für $x\\to-2$ stürzt $T_b$ nach $-\\infty$, liegt also darunter.\n   Dazwischen schneidet die Kurve die Gerade.\n2. **Negative ganze Höhen.** Aus $P(x+1)=T_b(P(x))$ folgt $P(x)=\\operatorname{slog}_b(P(x+1))$: $P(-1)=\\operatorname{slog}(1)=0$,\n   $P(-2)=\\operatorname{slog}(0)=-1$, $P(-3)=\\operatorname{slog}(-1)$, … Weil der Fixpunkt für slog anzieht, läuft diese Kette gegen $L_b$,\n   und der Abstand schrumpft je Schritt um den Faktor $1/\\lambda_b$.\n3. **Linearisieren.** Am abstossenden Fixpunkt liefert Koenigs ([[it.satz.koenigs]]) die Reihe $\\Psi$; sie macht aus dem Schritt $T_b$ eine\n   Multiplikation mit $\\lambda_b$. Eine Multiplikation kann man beliebig oft — auch $z$-mal für gebrochenes $z$ — ausführen: $\\lambda_b^z$.\n4. **Konstante.** $c$ misst, wie weit $1$ vom Fixpunkt „in Schröder-Koordinaten“ entfernt ist: man läuft die slog-Kette $n$ Schritte bis nahe $L_b$,\n   kehrt dort $\\Psi$ um und multipliziert mit $\\lambda_b^n$.\n5. **Grössere Höhen.** Für grosse $z$ wendet man $T_b$ einfach vorwärts an: $P_b(z)=T_b^{\\circ n}(P_b(z-n))$.\n",
     "beispiel": "Basis $e$: $\\lambda_e=6.46067\\ldots$, $c=66.3201585987\\ldots$, $\\Psi(w)=L+w-0.6263\\,w^2+0.4828\\,w^3-0.4120\\,w^4+\\dots$\nFür $z=\\tfrac12$: $c\\,\\lambda^{1/2-8}=66.32\\cdot6.46^{-7.5}\\approx5.6\\cdot10^{-5}$, also $\\Psi\\approx L+0.000056$; achtmal $T_e$ angewandt gibt\n$e\\uparrow\\uparrow\\uparrow\\tfrac12=1.6323247404\\ldots$ — etwas kleiner als die halbe Tetration ${}^{1/2}e=1.6463542\\ldots$\n",
     "bilder": [
@@ -25988,7 +25991,7 @@
    "_strang": "kn.hoehere_stufen",
    "_idee": "stufen.pentation",
    "_niveau": "vertiefung",
-   "_status_eff": "bewiesen",
+   "_status_eff": "bedingt",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
@@ -26085,7 +26088,7 @@
     },
     "bewertung": {
      "nutzen": "First higher level with actual numbers; shows that the method of regular iteration repeats.",
-     "richtigkeit": "Construction complete, λ_b measured"
+     "richtigkeit": "Construction complete under the assumption λ_b > 1 (measured)"
     },
     "voraussetzungen": [
      {
@@ -26111,12 +26114,13 @@
      {
       "stelle": "Computation with Kneser values"
      }
-    ]
+    ],
+    "bedingungen_text": "λ_b = T_b′(L_b) > 1 and L_b the only fixed point of T_b in (−2, −1): measured (e 6.4607, 2 5.1718), proved only λ_b ≥ 1 at the smallest fixed point; equivalent to the log-concavity of T_b on (−1, 0), which fails for b > b₇ (gr.gegen.tpid7_kneser)"
    },
    "en_theorie": {
     "beispiel": "Base $e$: $\\lambda_e=6.46067\\ldots$, $c=66.3201585987\\ldots$, $\\Psi(w)=L+w-0.6263\\,w^2+0.4828\\,w^3-0.4120\\,w^4+\\dots$\nFor $z=\\tfrac12$: $c\\,\\lambda^{1/2-8}=66.32\\cdot6.46^{-7.5}\\approx5.6\\cdot10^{-5}$, so $\\Psi\\approx L+0.000056$; applying $T_e$ eight times gives\n$e\\uparrow\\uparrow\\uparrow\\tfrac12=1.6323247404\\ldots$ — slightly smaller than the half tetration ${}^{1/2}e=1.6463542\\ldots$\n",
     "einordnung": "The same construction as the upper superexponential function ([[kl.satz.obere_superexp]]), only with $T_b$ in place of $b^x$ — and that needs\nKneser itself ([[kn.konstr.kneser]]). The numbers and their check are in [[kn.beob.pentation_werte]]; where the infinite pentation\nconverges is stated by [[kn.beob.tetra_euler]]. As with tetration, this choice is not the only possible one.\n",
-    "genau": "Let $b>\\eta$ and $T_b$ the Kneser tetration.\n- $T_b$ has a fixed point $L_b$ between $-2$ and $-1$: $T_b(L_b)=L_b$. For base $e$, $L_e=-1.85035\\ldots$\n- There $T_b$ is steep: $\\lambda_b=T_b'(L_b)>1$ (measured: $6.4607$ for $e$, $5.1718$ for $2$). So the fixed point repels — for the inverse slog it attracts.\n- The Poincaré function $\\Psi$ at $L_b$ satisfies $\\Psi(\\lambda_bw)=T_b(\\Psi(w))$. With it,\n  $$P_b(z)=\\Psi\\bigl(c\\,\\lambda_b^{\\,z}\\bigr)$$\n  is a pentation: $P_b(z+1)=T_b(P_b(z))$, and with the right constant $c$ one has $P_b(0)=1$.\n- Integer heights: $P_b(1)=b$, $P_b(2)={}^bb$, $P_b(-1)=0$, $P_b(-2)=-1$; as $x\\to-\\infty$, $P_b(x)$ tends to $L_b$.\n",
+    "genau": "Let $b>\\eta$ and $T_b$ the Kneser tetration.\n- $T_b$ has a fixed point $L_b$ between $-2$ and $-1$: $T_b(L_b)=L_b$. For base $e$, $L_e=-1.85035\\ldots$\n- There $T_b$ is steep: $\\lambda_b=T_b'(L_b)>1$ — **measured, not proved** ($6.4607$ for $e$, $5.1718$ for $2$; only $\\lambda_b\\ge1$ is proved, at the smallest fixed point). So the fixed point repels — for the inverse slog it attracts. Everything that follows holds under this assumption.\n- The Poincaré function $\\Psi$ at $L_b$ satisfies $\\Psi(\\lambda_bw)=T_b(\\Psi(w))$. With it,\n  $$P_b(z)=\\Psi\\bigl(c\\,\\lambda_b^{\\,z}\\bigr)$$\n  is a pentation: $P_b(z+1)=T_b(P_b(z))$, and with the right constant $c$ one has $P_b(0)=1$.\n- Integer heights: $P_b(1)=b$, $P_b(2)={}^bb$, $P_b(-1)=0$, $P_b(-2)=-1$; as $x\\to-\\infty$, $P_b(x)$ tends to $L_b$.\n",
     "warum": "1. **Fixed point.** $T_b(-1)=0$ lies above the line $y=x$ (since $0>-1$), and as $x\\to-2$, $T_b$ plunges to $-\\infty$, hence lies below it.\n   In between the curve crosses the line.\n2. **Negative integer heights.** From $P(x+1)=T_b(P(x))$ it follows that $P(x)=\\operatorname{slog}_b(P(x+1))$: $P(-1)=\\operatorname{slog}(1)=0$,\n   $P(-2)=\\operatorname{slog}(0)=-1$, $P(-3)=\\operatorname{slog}(-1)$, … Since the fixed point attracts for slog, this chain runs toward $L_b$,\n   and the distance shrinks by the factor $1/\\lambda_b$ per step.\n3. **Linearizing.** At the repelling fixed point, Koenigs ([[it.satz.koenigs]]) supplies the series $\\Psi$; it turns the step $T_b$ into a\n   multiplication by $\\lambda_b$. A multiplication can be carried out arbitrarily often — also $z$ times for fractional $z$: $\\lambda_b^z$.\n4. **Constant.** $c$ measures how far $1$ is from the fixed point “in Schröder coordinates”: one runs the slog chain $n$ steps to near $L_b$,\n   inverts $\\Psi$ there and multiplies by $\\lambda_b^n$.\n5. **Larger heights.** For large $z$ one simply applies $T_b$ forward: $P_b(z)=T_b^{\\circ n}(P_b(z-n))$.\n",
     "worum": "Addition repeated gives multiplication, multiplication repeated gives power, power repeated gives tetration — and tetration repeated\ngives **pentation**: $b\\uparrow\\uparrow\\uparrow3=T_b(T_b(b))$. For integer heights it is easy to write down, but the numbers explode:\n$e\\uparrow\\uparrow\\uparrow2=T_e(e)\\approx2076$, and $e\\uparrow\\uparrow\\uparrow3=T_e(2076)$ has more digits than one could ever write down.\nMore exciting is the other direction and everything in between. The key is the same as one level lower: a fixed point.\n"
    },
@@ -27404,7 +27408,10 @@
    "titel": "Jede Hexation: H(−3) = −2 und eine Singularität zwischen −4 und −3",
    "art": "satz",
    "ebene": "B",
-   "status": "bewiesen",
+   "status": "bedingt",
+   "bedingungen": [
+    "kn.konstr.pentation"
+   ],
    "niveau": "vertiefung",
    "objekte": [
     "hyperoperation",
@@ -27471,7 +27478,7 @@
    "_strang": "kn.hoehere_stufen",
    "_idee": "stufen.pentation",
    "_niveau": "vertiefung",
-   "_status_eff": "bewiesen",
+   "_status_eff": "bedingt",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
@@ -27594,7 +27601,10 @@
    "titel": "Reguläre Hexation unter η₅ — am anziehenden Fixpunkt der Pentation",
    "art": "konstruktion",
    "ebene": "C",
-   "status": "bewiesen",
+   "status": "bedingt",
+   "bedingungen": [
+    "kn.konstr.pentation"
+   ],
    "niveau": "vertiefung",
    "objekte": [
     "hyperoperation",
@@ -27666,7 +27676,7 @@
    "_strang": "kn.hoehere_stufen",
    "_idee": "stufen.pentation",
    "_niveau": "vertiefung",
-   "_status_eff": "bewiesen",
+   "_status_eff": "bedingt",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
@@ -38529,7 +38539,8 @@
      {
       "stelle": "Thm. D"
      }
-    ]
+    ],
+    "bedingungen_text": "(S) differentiable strict monotonicity and (R′) quantitative channel positivity"
    },
    "en_theorie": {
     "beispiel": "$(e,2)$ at $\\theta=\\tfrac12$: numerically $\\tilde H'(\\tfrac12)=0.9992171582$; the product formula with four factors gives the same value to all digits shown.\nWithout the prefactor $\\alpha$ one would get $1.44$ — it belongs there.\n",
@@ -43887,14 +43898,15 @@
    "titel": "8r1-Segmentzertifikat (beide Beine über die Schliessungsschicht)",
    "art": "satz",
    "ebene": "C",
-   "status": "bewiesen",
+   "status": "bedingt",
+   "bedingungen_text": "korrekte Implementierung der Intervallarithmetik und die drei offenen Punkte des Zertifikats-README: Mikrosegment-Induktion, Hilbert-Röhren-Supremum, Γ-Steigungsbeweis",
    "objekte": [
     "kneser_T"
    ],
    "aussage": "Replay: $Y=3.1516\\cdot10^{-9}$, $L=13613.3$, $q=0.1495<1$, Prüfungen Z1–Z7 bestanden; unabhängige Verifikation in Ordnung 22.",
    "beweis": {
-    "art": "vollstaendig",
-    "text": "Computergestützt (Kugelarithmetik, python-flint); Annahme: korrekte Implementierung."
+    "art": "bedingt",
+    "text": "Computergestützt (Kugelarithmetik, python-flint); Annahme: korrekte Implementierung; drei Punkte des README noch offen."
    },
    "stuetzt_sich_auf": [
     "bw.korr.tails"
@@ -43923,13 +43935,13 @@
    "theorie": {
     "worum": "Ein Segment der Rekonstruktion ist computergestützt bewiesen: In einer kleinen Umgebung der berechneten Näherung liegt garantiert eine echte Lösung.\n",
     "genau": "Wiederholungslauf: Defekt $Y=3.1516\\cdot10^{-9}$, Lipschitz-Schranke $L=13613.3$, Kontraktionszahl $q=0.1495<1$; Prüfungen Z1–Z7 bestanden, unabhängige Verifikation in Ordnung 22.\n",
-    "warum": "Ein Kriterium vom Newton–Kantorovich-Typ: Ist der Defekt klein, die Ableitung kontrolliert und die Kontraktionszahl $q<1$, dann hat die Gleichung in einer kleinen Kugel um die Näherung\ngenau eine Lösung. Gerechnet mit Kugelarithmetik (python-flint); Annahme ist die korrekte Implementierung. Offene Punkte stehen im README (Mikrosegment-Induktion, Hilbert-Röhren-Supremum, $\\Gamma$-Steigung).\n",
+    "warum": "Ein Kriterium vom Newton–Kantorovich-Typ: Ist der Defekt klein, die Ableitung kontrolliert und die Kontraktionszahl $q<1$, dann hat die Gleichung in einer kleinen Kugel um die Näherung\ngenau eine Lösung. Gerechnet mit Kugelarithmetik (python-flint); Annahme ist die korrekte Implementierung. Drei Punkte des README sind noch offen (Mikrosegment-Induktion, Hilbert-Röhren-Supremum, $\\Gamma$-Steigung); solange sie es sind, gilt das Zertifikat nur bedingt.\n",
     "einordnung": "Ein Segment des Hauptsatzes Thm. 11.15 (Paper VI). Der vollständige Marsch: [[bw.frage.intervallmarsch]].\n"
    },
    "_strang": "bw.rekonstruktion",
    "_idee": "basiswechsel.rekonstruktion",
    "_niveau": "forschung",
-   "_status_eff": "bewiesen",
+   "_status_eff": "bedingt",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
@@ -44001,7 +44013,7 @@
    ],
    "en": {
     "beweis": {
-     "text": "Computer-assisted (ball arithmetic, python-flint); assumption: correct implementation."
+     "text": "Computer-assisted (ball arithmetic, python-flint); assumption: correct implementation; three points of the README still open."
     },
     "pruefung": {
      "f5_neue_frage": "bw.frage.intervallmarsch",
@@ -44016,12 +44028,13 @@
      "richtigkeit": "computer-assisted; open points according to README"
     },
     "titel": "8r1 segment certificate (both legs via the closure layer)",
-    "aussage": "Replay: $Y=3.1516\\cdot10^{-9}$, $L=13613.3$, $q=0.1495<1$, checks Z1–Z7 passed; independent verification at order 22."
+    "aussage": "Replay: $Y=3.1516\\cdot10^{-9}$, $L=13613.3$, $q=0.1495<1$, checks Z1–Z7 passed; independent verification at order 22.",
+    "bedingungen_text": "correct implementation of the interval arithmetic and the three open points of the certificate README: micro-segment induction, Hilbert-tube supremum, Γ-slope proof"
    },
    "en_theorie": {
     "einordnung": "A segment of the main theorem Thm. 11.15 (Paper VI). The complete march: [[bw.frage.intervallmarsch]].\n",
     "genau": "Replay run: defect $Y=3.1516\\cdot10^{-9}$, Lipschitz bound $L=13613.3$, contraction number $q=0.1495<1$; checks Z1–Z7 passed, independent verification at order 22.\n",
-    "warum": "A criterion of Newton–Kantorovich type: if the defect is small, the derivative controlled and the contraction number $q<1$, then the equation has in a small ball around the approximation\nexactly one solution. Computed with ball arithmetic (python-flint); the assumption is the correct implementation. Open points are listed in the README (micro-segment induction, Hilbert-tube supremum, $\\Gamma$-slope).\n",
+    "warum": "A criterion of Newton–Kantorovich type: if the defect is small, the derivative controlled and the contraction number $q<1$, then the equation has in a small ball around the approximation\nexactly one solution. Computed with ball arithmetic (python-flint); the assumption is the correct implementation. Three points of the README are still open (micro-segment induction, Hilbert-tube supremum, $\\Gamma$-slope); as long as they are, the certificate holds only conditionally.\n",
     "worum": "A segment of the reconstruction is proved computer-assisted: in a small neighborhood of the computed approximation there is guaranteed to be a true solution.\n"
    },
    "_en_stand": "aktuell",
@@ -79304,8 +79317,8 @@
   "niveau:forschung": 184,
   "niveau:vertiefung": 128,
   "status:annahme": 3,
-  "status:bedingt": 22,
-  "status:bewiesen": 135,
+  "status:bedingt": 27,
+  "status:bewiesen": 130,
   "status:bewiesen_literatur": 60,
   "status:definition": 12,
   "status:entlastet": 1,
@@ -79422,8 +79435,8 @@
     "r": 308.3,
     "n": 97,
     "fuell": {
-     "bedingt": 8,
-     "bewiesen": 45,
+     "bedingt": 9,
+     "bewiesen": 44,
      "numerisch": 17,
      "offen": 10,
      "vermutung": 14,
@@ -79457,8 +79470,8 @@
     "r": 280.0,
     "n": 69,
     "fuell": {
-     "bedingt": 16,
-     "bewiesen": 20,
+     "bedingt": 17,
+     "bewiesen": 19,
      "numerisch": 11,
      "offen": 6,
      "vermutung": 6,
@@ -79492,8 +79505,8 @@
     "r": 188.5,
     "n": 29,
     "fuell": {
-     "bedingt": 4,
-     "bewiesen": 8,
+     "bedingt": 7,
+     "bewiesen": 5,
      "numerisch": 10,
      "offen": 3,
      "vermutung": 4
@@ -80102,8 +80115,8 @@
     "r": 87.8,
     "n": 17,
     "fuell": {
-     "bedingt": 1,
-     "bewiesen": 10,
+     "bedingt": 2,
+     "bewiesen": 9,
      "numerisch": 2,
      "offen": 1,
      "vermutung": 3
@@ -80118,6 +80131,7 @@
      "kl.verm.vollmonoton",
      "kl.frage.tpid5",
      "kl.satz.folgen_vollmonoton",
+     "kl.satz.newton_reihe",
      "kl.verm.faktor"
     ],
     "mitglieder": [
@@ -80682,8 +80696,8 @@
     "r": 62.7,
     "n": 6,
     "fuell": {
-     "bedingt": 1,
-     "bewiesen": 2,
+     "bedingt": 2,
+     "bewiesen": 1,
      "numerisch": 1,
      "offen": 1,
      "verworfen": 1
@@ -80693,7 +80707,8 @@
     },
     "offen": [
      "bw.frage.intervallmarsch",
-     "bw.satz.anker_rekonstruktion"
+     "bw.satz.anker_rekonstruktion",
+     "bw.zert.8r1"
     ],
     "mitglieder": [
      "bw.korr.tails",
@@ -80718,8 +80733,8 @@
     "r": 86.0,
     "n": 16,
     "fuell": {
-     "bedingt": 4,
-     "bewiesen": 4,
+     "bedingt": 7,
+     "bewiesen": 1,
      "numerisch": 6,
      "offen": 1,
      "vermutung": 1
@@ -80730,11 +80745,14 @@
      "literatur": 4
     },
     "offen": [
+     "kn.konstr.pentation",
      "kn.satz.hexation_eindeutig_g0",
      "kn.frage.hexation_kneser",
+     "kn.konstr.hexation_regulaer",
      "kn.satz.hexation_gebiete",
      "kn.satz.hexation_keine_halbebene",
      "kn.satz.hexation_logpunkt",
+     "kn.satz.hexation_struktur",
      "kn.verm.hexation_streifen"
     ],
     "mitglieder": [

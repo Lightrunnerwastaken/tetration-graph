@@ -750,23 +750,23 @@ aussagen:
   niveau: einstieg
   objekte: [turm, eta, sattel_knoten]
   aussage: >-
-    $$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+O(\eta-a)\qquad(a\uparrow\eta).$$
-    Gemessen: der nächste Term ist $\approx-1.6166\cdot\sqrt{\eta-a}$ relativ zum Leitterm.
+    $$h(a)=e-\sqrt{\frac{2e^3(\eta-a)}{\eta}}+\frac{5e^2}{3}\,\frac{\eta-a}{\eta}+O\bigl((\eta-a)^{3/2}\bigr)\qquad(a\uparrow\eta).$$
+    Der zweite Term ist relativ zum Leitterm $-\tfrac56\sqrt{2e/\eta}\,\sqrt{\eta-a}=-1.61658\ldots\cdot\sqrt{\eta-a}$ (gemessen: $-1.61655$ bei $\eta-a=10^{-10}$).
   einfach: >-
     Kurz vor η fällt der Turmgrenzwert nicht gleichmässig, sondern wie eine Wurzel ab. Dieselbe Wurzel taucht in der Forschung wieder auf:
     Wie lange eine Tetration knapp über η im Engpass bei e „hängen bleibt“, wächst wie 1/Wurzel.
   formen:
     - {tex: '\frac{\ln h}{h}=\ln a,\quad\frac{\ln h}{h}=\frac1e-\frac{(h-e)^2}{2e^3}+\dots', notiz: Taylor am Maximum}
-  beweis: {art: vollstaendig, text: '$\varphi(h)=\ln h/h$ hat bei $e$ ein Maximum $1/e$ mit $\varphi''''(e)=-1/e^3$; $\ln a=1/e-\delta$, $\delta=(\eta-a)/\eta+O((\eta-a)^2)$, auflösen nach $h<e$.'}
+  beweis: {art: vollstaendig, text: '$\varphi(h)=\ln h/h$ hat bei $e$ ein Maximum $1/e$ mit $\varphi''''(e)=-1/e^3$; $\ln a=1/e-\delta$, $\delta=(\eta-a)/\eta+O((\eta-a)^2)$, auflösen nach $h<e$. Nächste Ordnung: Mit $h=e(1+v)$ ist $\varphi(h)=\tfrac1e\bigl(1-\tfrac{v^2}2+\tfrac{5v^3}6+O(v^4)\bigr)$, also $v^2(1-\tfrac53v)=2e\delta$. Mit $u=\sqrt{2e\delta}$ folgt $v=-u+\tfrac56u^2+O(u^3)$ und damit $h=e-eu+\tfrac{5e}6u^2+O(u^3)$, das ist die Formel oben.'}
   experimente: [exp.basisableitung]
   pruefung:
     f1_folgt_unmittelbar: Ja (Taylor am Maximum).
     f2_benutzte_voraussetzungen: 'Nur $\varphi''''(e)\ne0$.'
     f3_spezialfall: 'Ja: Sattel-Knoten-Verzweigung eines Fixpunkts (zwei Fixpunkte verschmelzen bei η).'
     f4_uebertragbar: 'Gleiche Wurzel im Randgesetz der Basiswechsel-Mittel und in der Durchgangszeit.'
-    f5_neue_frage: 'Den Koeffizienten $-1.6166$ geschlossen ausrechnen (nächste Taylor-Ordnung).'
+    f5_neue_frage: 'Den Term der nächsten Taylor-Ordnung ($(\eta-a)^{3/2}$) ausrechnen.'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Elementare Brücke zur Forschung (Randgesetz).', nutzen_stufe: hoch}
-  quellen: [{ref: corless1996, stelle: 'Reihe von W am Verzweigungspunkt −1/e'}, {ref: knoebel1981}, {ref: diese_arbeit, stelle: 'Nachrechnung, nächster Term gemessen'}]
+  quellen: [{ref: corless1996, stelle: 'Reihe von W am Verzweigungspunkt −1/e'}, {ref: knoebel1981}, {ref: diese_arbeit, stelle: 'Nachrechnung; nächster Term geschlossen hergeleitet und gemessen'}]
   kanten:
     - {typ: analog_zu, ziel: bw.lem.randgesetz}
     - {typ: analog_zu, ziel: br.satz.sattel_knoten}
@@ -1173,7 +1173,7 @@ aussagen:
   aussage: |
     Für $Y>1$ hat $y^{y^y}=Y$ genau eine Lösung $y>0$, und sie liegt in $(1,\infty)$. Sie erfüllt
     $$y=\exp W\bigl(W(y\ln Y)\bigr),$$
-    und die Fixpunkt-Iteration $y\leftarrow\exp W(W(y\ln Y))$ ab $y=1$ konvergiert (beobachtet für $Y=2,10,100,10^6$, je 53–60 Schritte auf 45 Stellen).
+    und die Fixpunkt-Iteration $y\leftarrow\exp W(W(y\ln Y))$ ab $y=1$ wächst monoton und konvergiert gegen diese Lösung (numerisch für $Y=2,10,100,10^6$: je 53–60 Schritte auf 45 Stellen).
     Werte: $\sqrt[3]{2}_s=1.4766843373578699\ldots$, $\sqrt[3]{10}_s=1.9235840364420273\ldots$, $\sqrt[3]{100}_s=2.2127958063258997\ldots$
   einfach: >-
     Auch die Frage „welche Zahl ergibt als Dreierturm y^y^y genau 2?“ hat genau eine Antwort, etwa 1.4767. Es gibt keine fertige Formel,
@@ -1182,16 +1182,16 @@ aussagen:
     - {tex: 'y^{y^y}=Y\iff y^y\ln y=\ln Y\iff (y\ln y)e^{y\ln y}=y\ln Y', notiz: 'mit y multipliziert'}
   beweis:
     art: vollstaendig
-    text: 'Eindeutigkeit: für $0<y\le1$ ist $y^{y^y}\le1$; auf $[1,\infty)$ ist $y\mapsto y^{y^y}$ stetig und streng wachsend von 1 nach ∞. Formel: $y^y\ln y=\ln Y$ mit $y$ multiplizieren gibt $(y\ln y)e^{y\ln y}=y\ln Y$, also $y\ln y=W(y\ln Y)$, und $(\ln y)e^{\ln y}=y\ln y$ gibt $\ln y=W(W(y\ln Y))$. Die Konvergenz der Iteration ist nur beobachtet.'
+    text: 'Eindeutigkeit: für $0<y\le1$ ist $y^{y^y}\le1$; auf $[1,\infty)$ ist $y\mapsto y^{y^y}$ stetig und streng wachsend von 1 nach ∞. Formel: $y^y\ln y=\ln Y$ mit $y$ multiplizieren gibt $(y\ln y)e^{y\ln y}=y\ln Y$, also $y\ln y=W(y\ln Y)$, und $(\ln y)e^{\ln y}=y\ln y$ gibt $\ln y=W(W(y\ln Y))$. Konvergenz: $F(y)=\exp W(W(y\ln Y))$ ist wachsend, da $W$ und $\exp$ es sind und $\ln Y>0$ gilt. $F(1)>1$, weil $W(\ln Y)>0$ und damit $W(W(\ln Y))>0$. Also wächst $y_n=F^n(1)$ monoton. Mit $y^*$ für die Lösung gilt $F(y^*)=y^*$ und $y_0=1\le y^*$, also $y_n\le y^*$ für alle $n$. Der Grenzwert $y_\infty\le y^*$ ist ein Fixpunkt von $F$; aus $y=F(y)$ folgt rückwärts $y^y\ln y=\ln Y$, also $y^{y^y}=Y$ (für $y\ge1$ ist $W(xe^x)=x$ mit $x\ge0$), und die Eindeutigkeit gibt $y_\infty=y^*$.'
   stuetzt_sich_auf: [gr.satz.superwurzel]
   experimente: [exp.superwurzel]
   pruefung:
-    f1_folgt_unmittelbar: 'Ja für Formel und Eindeutigkeit; die Konvergenz der Iteration nicht (Kontraktion nicht nachgewiesen).'
+    f1_folgt_unmittelbar: 'Ja für Formel und Eindeutigkeit; auch die Konvergenz der Iteration (monoton wachsend und beschränkt, kein Kontraktionsbeweis nötig).'
     f2_benutzte_voraussetzungen: '$Y>1$; für $Y<1$ kann es mehrere Lösungen geben (nicht untersucht).'
     f3_spezialfall: 'Muster für die $n$-te Superwurzel: $n-1$-mal W, aber nur implizit.'
     f4_uebertragbar: 'Arithmetik: ganz oder irrational (ar.satz.superwurzel_arith).'
     f5_neue_frage: 'Konvergenzrate der Iteration (Ableitung der Abbildung am Fixpunkt) und Verhalten für $Y\to1^+$.'
-  bewertung: {richtigkeit: 'Formel vollständig, Iteration numerisch', neuheit: bekannt, nutzen: 'Zeigt, wie weit Lambert W trägt.', nutzen_stufe: gering}
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Zeigt, wie weit Lambert W trägt.', nutzen_stufe: gering}
   quellen: [{ref: wikipedia_tetration, stelle: 'Abschnitt Super-root, Iterationsformel'}]
 
 - id: gr.verm.tpid7

@@ -101,7 +101,7 @@ NIVEAU = {
 }
 # Felder, die eine englische Fassung unter `en:` tragen darf. Die Übersetzungen stehen in `daten/uebersetzung/<gebiet>.yaml`
 # (Eintrag je Aussage: id, quelle_hash, en, optional en_theorie/theorie_hash, herkunft, geprueft); Aufbau und Regeln: wissen/uebersetzung.py.
-UEBERSETZ_TEXT = {"titel", "aussage", "bereich", "einfach", "naechste_frage", "gegenbeispielsuche"}   # einfache Texte
+UEBERSETZ_TEXT = {"titel", "aussage", "bereich", "einfach", "naechste_frage", "gegenbeispielsuche", "bedingungen_text"}   # einfache Texte
 UEBERSETZ_BAU = {                                                                                     # Felder mit Unterstruktur
     "beweis": {"text", "luecken"},                        # `luecken`: Liste von Texten, gleiche Länge wie im Deutschen
     "formen": {"notiz"},                                  # Liste, gleiche Länge wie im Deutschen; `tex` wird nie übersetzt

@@ -91,7 +91,7 @@ def hole(o, pfad):
 
 FELDGRUPPEN = {
     "kern": ["titel", "aussage", "bereich", "einfach", "formen"],
-    "beweis": ["beweis", "gegenbeispielsuche", "naechste_frage"],
+    "beweis": ["beweis", "gegenbeispielsuche", "naechste_frage", "bedingungen_text"],
     "intern": ["pruefung", "bewertung", "voraussetzungen"],
     "zusatz": ["versionen", "nachgeprueft", "quellen"],
 }
