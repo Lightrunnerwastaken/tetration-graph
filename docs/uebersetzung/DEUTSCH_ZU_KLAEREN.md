@@ -54,6 +54,9 @@ nicht entscheidbar ist, stehen unten Empfehlungen an den Autor.
   Kein Fehler, aber für die Ansicht unpraktisch; bei Gelegenheit in `notiz` verschieben.
 - Bitte gegenlesen (Deutung): Strang `kl.gleiches_L` „bleibt er stehen“ habe ich als „läuft der naive Höhenvergleich gegen eine Konstante“ gelesen
   (so `exp.koenigs_basiswechsel`, Prüfung 5); Szekeres: auch f5 von `it.satz.szekeres` („wandte ein, Knesers Lösung …“) auf 1962 gesetzt.
+- Lehrbuch Kapitel 0, Zeittafel: „1936–1962 — Barrow, Thron, Shell klären dasselbe für komplexe Basen“. Laut Beweis von `fp.satz.shell_thron`
+  behandelt Barrow (1936) aber reelle Basen (auch `lit_fp_1`: $b_j$ reell in $[-e,1/e]$). Frage: „1957–1962 — Thron, Shell“ oder Barrow mit
+  „(reell, auch veränderliche Basen)“ getrennt nennen? Nicht geändert.
 
 ## Erledigt (2026-10-13)
 
