@@ -74,6 +74,47 @@
       Near the fixed point $f$ is almost the scaling by $\lambda$; there the fractional step $\lambda^t$ is clear, and $f^{-k}$ carries it back (Koenigs).
     worum: |
       A cheap way to compute the tenth hyperoperation below its limit base.
+- id: kn.beob.einheitliche_raenge
+  quelle_hash: 7a42a0ddebeb
+  theorie_hash: 6e64d37bb538
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: 'All ranks the Kneser way: regular and Kneser-type pentation differ by a wave of 10⁻⁵'
+    bereich: Base 2; superfunction S with S(0)=1, S(x+1)=f(S(x)), holomorphic on a strip, with limits towards the fixed-point pair of f as Im
+      x → ±∞ (generalized Cauchy solver)
+    aussage: |
+      With a solver for arbitrary lower functions, $H_4,H_5,H_6$ to base 2 can be computed uniformly in the Kneser way ($H_4$ matches Kneser to $10^{-12}$, also at complex heights; functional equation for $H_5,H_6$ to $4\cdot10^{-10}$).
+      Fixed-point pairs: $L_4=1.46982+1.66434i$, $L_5=1.80768+1.59692i$, $L_6=2.00815+1.51564i$.
+      The regular pentation used so far (at the real fixed point $-1.744$) differs from the Kneser-type one by a pure θ wave $a\sin2\pi x+b(1-\cos2\pi x)$, $a=-4.40\cdot10^{-6}$, $b=3.46\cdot10^{-6}$; for $H_6$ the difference is $1$–$3\cdot10^{-5}$ and θ-like.
+      Rank 7 still fails (the inverse of the non-injective $H_6$ changes branch at the boundary). For the half rank, the uniform selection at ranks 3–6 changes only $10^{-6}$–$10^{-5}$ — **the limiting factor is the number of ranks, not the selection.** The θ-independent rank descent $R(S)(y)=S(S^{-1}(y)+1)$ is numerically unstable.
+      $H_{3.5}(2,0.5)\approx1.4428\pm3\cdot10^{-4}$ remains; no functional equation for the half rank alone was found (the condition is an operator equation).
+    einfach: The higher hyperoperations can now all be built with the same method as Kneser's tetration, up to the sixth. The older method for
+      pentation differs from it only by a tiny wave. For more digits of the half step, however, even higher hyperoperations would be needed.
+    pruefung:
+      f1_folgt_unmittelbar: No (calculation); proved is only that the rank descent is θ-independent.
+      f2_benutzte_voraussetzungen: Cauchy solver with limits towards the fixed-point pair; fits of the wave form.
+      f3_spezialfall: 'Yes: for rank 4 the Kneser tetration (kn.konstr.kneser).'
+      f4_uebertragbar: Rank ≥ 7 with a tabulated, branch-faithful Abel function (estimated 1–2 days of development, then 10–30 min per rank).
+      f5_neue_frage: Does the wave between the regular and the Kneser-type selection grow with the rank (conjectured ~10⁻³ at ranks 8–9)?
+    bewertung:
+      richtigkeit: numerical
+      nutzen: First uniform Kneser-type pentation and hexation to base 2; shows that the previous selections differ only by small waves.
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT_ETAPPE6.md
+  en_theorie:
+    worum: |
+      Whether the higher hyperoperations to base 2 can be built with one single method — and how much the methods differ.
+    genau: |
+      Regular and Kneser-type pentation differ by a wave of size $5\cdot10^{-6}$, the hexations by $1$–$3\cdot10^{-5}$.
+    warum: |
+      Two superfunctions of the same function with the same initial value differ by a 1-periodic shift of the height; measured small means: the selections lie very close to each other.
+    beispiel: |
+      Fixed point of the pentation to base 2 (for the Kneser-type hexation): $L_5=1.80768+1.59692i$.
+    einordnung: |
+      Rank continuation: [[kn.beob.halbrang_rangfortsetzung]]; selection dependence of the critical bases: [[kn.satz.eta_auswahl]].
 - id: kn.beob.eta4_interpolation
   quelle_hash: 53a864a366f3
   theorie_hash: 0b5534751ec3

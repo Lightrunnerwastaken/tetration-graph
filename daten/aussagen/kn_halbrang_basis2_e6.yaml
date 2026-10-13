@@ -1,0 +1,33 @@
+gebiet: kn
+# Halber Rang an Basis 2, Etappe 6 (einheitliche Kneser-Auswahl für alle Ränge), übernommen 13.10.2026.
+aussagen:
+
+- id: kn.beob.einheitliche_raenge
+  titel: 'Alle Ränge nach Kneser-Art: reguläre und Kneser-artige Pentation unterscheiden sich um eine Welle von 10⁻⁵'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, kneser_T]
+  bereich: 'Basis 2; Superfunktion S mit S(0)=1, S(x+1)=f(S(x)), holomorph auf einem Streifen, mit Grenzwerten gegen das Fixpunktpaar von f für Im x → ±∞ (verallgemeinerter Cauchy-Löser)'
+  aussage: |
+    Mit einem Löser für beliebige untere Funktionen lassen sich $H_4,H_5,H_6$ zur Basis 2 einheitlich Kneser-artig rechnen ($H_4$ trifft Kneser auf $10^{-12}$, auch komplex; Funktionalgleichung bei $H_5,H_6$ auf $4\cdot10^{-10}$).
+    Fixpunktpaare: $L_4=1.46982+1.66434i$, $L_5=1.80768+1.59692i$, $L_6=2.00815+1.51564i$.
+    Die bisher benutzte reguläre Pentation (am reellen Fixpunkt $-1.744$) unterscheidet sich von der Kneser-artigen um eine reine θ-Welle $a\sin2\pi x+b(1-\cos2\pi x)$, $a=-4.40\cdot10^{-6}$, $b=3.46\cdot10^{-6}$; bei $H_6$ ist der Unterschied $1$–$3\cdot10^{-5}$ und θ-artig.
+    Rang 7 scheitert noch (die Inverse des nicht injektiven $H_6$ wechselt am Rand den Zweig). Für den halben Rang ändert die einheitliche Auswahl bei den Rängen 3–6 nur $10^{-6}$–$10^{-5}$ — **begrenzend ist die Zahl der Ränge, nicht die Auswahl.** Der θ-unabhängige Rangabstieg $R(S)(y)=S(S^{-1}(y)+1)$ ist numerisch instabil.
+    Es bleibt $H_{3.5}(2,0.5)\approx1.4428\pm3\cdot10^{-4}$; eine Funktionalgleichung für den Halbrang allein wurde nicht gefunden (die Bedingung ist eine Operatorgleichung).
+  einfach: >-
+    Die höheren Rechenarten lassen sich jetzt alle nach derselben Methode wie Knesers Tetration bauen, bis zur sechsten. Die ältere Rechenmethode für die
+    Pentation weicht davon nur um eine winzige Welle ab. Für mehr Stellen beim halben Schritt bräuchte man aber noch höhere Rechenarten.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT_ETAPPE6.md'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung); bewiesen ist nur, dass der Rangabstieg θ-unabhängig ist.'
+    f2_benutzte_voraussetzungen: 'Cauchy-Löser mit Grenzwerten gegen das Fixpunktpaar; Fits der Wellenform.'
+    f3_spezialfall: 'Ja: für Rang 4 die Kneser-Tetration (kn.konstr.kneser).'
+    f4_uebertragbar: 'Rang ≥ 7 mit einer tabellierten, zweigtreuen Abel-Funktion (geschätzt 1–2 Tage Entwicklung, dann 10–30 min je Rang).'
+    f5_neue_frage: 'Wächst die Welle zwischen regulärer und Kneser-artiger Auswahl mit dem Rang (vermutet ~10⁻³ bei Rang 8–9)?'
+  bewertung: {richtigkeit: 'numerisch', neuheit: neu_ungeprueft, nutzen: 'Erste einheitliche Kneser-artige Pentation und Hexation zur Basis 2; zeigt, dass die bisherigen Auswahlen sich nur um kleine Wellen unterscheiden.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.halbrang_rangfortsetzung}
+    - {typ: verwandt, ziel: kn.satz.eta_auswahl}
+    - {typ: motiviert, ziel: kn.frage.halber_rang}
