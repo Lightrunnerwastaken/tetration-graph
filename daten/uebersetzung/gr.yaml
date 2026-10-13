@@ -9,7 +9,7 @@
   geprueft:
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     pruefung:
       f5_neue_frage: Does this base have a meaning, or is it a coincidence? (It lies near e, but not at e.)
@@ -53,7 +53,7 @@
   geprueft:
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     pruefung:
       f5_neue_frage: $\int_{-1}^0T_e$ lies $7.8\cdot10^{-4}$ below 1/2 — no known reason.
@@ -94,7 +94,7 @@
   geprueft:
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     pruefung:
@@ -187,7 +187,7 @@
   geprueft:
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     pruefung:
       f5_neue_frage: Does $x_w(b)$ grow for $b\downarrow\eta$ like the transit time $\sim(b-\eta)^{-1/2}$?
@@ -230,7 +230,7 @@
     datum: '2026-10-12'
   geprueft:
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     titel: The tower a↑↑n
@@ -291,7 +291,7 @@
   geprueft:
     beweis: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     naechste_frage: Repeat with 1000 digits (engine) and a larger list of constants.
     titel: Is ∫₀¹ T_e a known constant?
@@ -376,7 +376,7 @@
       For the Kneser tetration, TPID 7 does not hold for all bases. At base 100, $T(\tfrac12)\cdot T(-\tfrac12)=1.316$ — clearly above 1. The threshold lies exactly where
       $\ln T_b$ at 0 changes from “bent downward” to “bent upward”.
 - id: gr.kor.ganze_stellen
-  quelle_hash: 758e5e6cc576
+  quelle_hash: 874fbe9c78d5
   theorie_hash: ed7ea704faf8
   herkunft:
     modell: sonnet
@@ -385,7 +385,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: gr.kor.produktformel at $x=0$ with $T(k)=a\uparrow\uparrow k$; at $x=-1$ with $T(0)=1$.
@@ -400,7 +400,8 @@
       nutzen: Shows which information a construction really chooses.
     titel: All slopes at integer arguments follow from T′(0)
     aussage: '$T''(n)=(\ln a)^n\Bigl(\prod_{k=1}^{n}a\uparrow\uparrow k\Bigr)T''(0)$ and $T''(-1)=\dfrac{T''(0)}{\ln a}$. The single number $T''(0)$
-      depends on the construction: Kneser for base $e$: $T_e''(0)=1.0917673512583\ldots$; linear tetration: jump from $1$ to $\ln a$.'
+      depends on the construction: Kneser for base $e$: $T_e''(0)=1.0917673512583\ldots$; linear tetration: jump from $1$ to $\ln a$ (except for
+      $a=e$).'
     einfach: At the integer arguments, every slope is determined as soon as you know the slope at 0. This one number distinguishes different tetrations.
     formen:
     - notiz: first levels
@@ -429,7 +430,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: Substitution $y=a^u$, $dy=a^u\ln a\,du$, and $A(a^u)=A(u)+1$; then gr.satz.young.
@@ -479,7 +480,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: 'From gr.satz.zweite_ableitung: $T''''(x+1)\ge(\ln a)^2T(x+1)T''(x)^2>0$; induction over the periods.'
@@ -526,7 +527,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: Induction on $n$ with gr.satz.kettenregel; backward, the same equation solved for $T'(x)$ ($T(x+1)>0$ for $x>-2$).
@@ -626,7 +627,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: 'gr.kor.produktformel: $(T''(x+n)/T''(x))^{1/n}=\ln a\,\bigl(\prod_{k\le n}T(x+k)\bigr)^{1/n}\to\ln a\cdot a_*$ (Cesàro, since $T(x+k)\to
@@ -674,7 +675,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: Differentiate $\ln t_{n+1}=t_n\ln a$ with respect to $a$.
@@ -916,7 +917,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: 'Left: $T(x)=\log_a T(x+1)$ and $T(x+1)\to T(-1)=0^+$. Right: monotonicity and $T(n)=a\uparrow\uparrow n$, whose limit is given by
@@ -959,8 +960,8 @@
       ([[fp.satz.turm_reell]]); since $T$ is increasing, $T(x)\to\infty$ follows. For $1<a\le\eta$ they increase toward $a_*$; between two integer arguments
       $T$ lies between the neighboring values, so $T(x)$ also increases toward $a_*$. That $a_*\le e$ is shown in [[fp.satz.reelle_fixpunkte]].
     worum: |
-      No matter how one builds an increasing tetration: its curve always has the same basic shape. On the left it plunges at $x=-2$ into the
-      bottomless, on the right it either grows beyond all bounds or settles below a fixed height — depending on whether the base lies above
+      No matter how one builds an increasing tetration: its curve always has the same basic shape. On the left it plunges into the abyss
+      at $x=-2$, on the right it either grows beyond all bounds or settles below a fixed height — depending on whether the base lies above
       or below $\eta$.
 - id: gr.satz.grenzfaelle
   quelle_hash: 3edaa9144f3c
@@ -972,7 +973,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: |
@@ -1018,7 +1019,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: $\ln T(u+1)=T(u)\ln a$.
@@ -1057,7 +1058,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: 'gr.satz.kettenregel: integrand $=T''(u+1)/\ln a$; fundamental theorem of calculus.'
@@ -1079,7 +1080,7 @@
     - notiz: base e
   en_theorie:
     beispiel: |
-      Base $e$: $\int_{-1}^0T'(u)\,T(u+1)\,du=e-1=1.71828$, no matter whether one takes Kneser, the linear or another tetration.
+      Base $e$: $\int_{-1}^0T'(u)\,T(u+1)\,du=e-1=1.71828$, no matter whether one takes Kneser, the linear one or another tetration.
     einordnung: |
       Such “tetration-independent” values are useful test cases for computing programs ([[exp.integrale]]).
     genau: |
@@ -1099,7 +1100,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: 'gr.satz.young with $m=-1$, $n=0$: right-hand side $0\cdot1-(-1)\cdot0=0$.'
@@ -1114,8 +1115,8 @@
       nutzen: A simple control test for computations.
     titel: The integral below 0 is the negative slog integral
     aussage: $\displaystyle\int_{-1}^{0}T(x)\,dx=-\int_0^1A(y)\,dy.$
-    einfach: Between −1 and 0 the curve runs from 0 to 1; the area under it and the area to the left of it add up to the rectangle 0 — so they
-      are equal and opposite.
+    einfach: Between −1 and 0 the curve runs from 0 to 1; the area under it and the area to the left of it together make up a rectangle of area
+      0 — so they are equal and opposite.
   en_theorie:
     beispiel: |
       Base $e$: $\int_{-1}^0T_e=0.49921818\ldots$, so $\int_0^1\operatorname{slog}_e=-0.49921818\ldots$
@@ -1139,7 +1140,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -1165,7 +1166,7 @@
     einfach: If you add 1/2 + 1/4 + 1/16 + 1/65536 + …, after just four terms all further ones are so small that they no longer change thousands
       of decimal places. Towers grow so fast that their reciprocals vanish almost immediately.
     formen:
-    - notiz: Base e
+    - notiz: base e
     - notiz: Dirichlet-like family
     quellen:
     - stelle: §13, Theorem candidate E
@@ -1203,7 +1204,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: Differentiate $T(x+1)=a^{T(x)}=e^{T(x)\ln a}$ with respect to $x$.
@@ -1254,7 +1255,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -1294,7 +1295,7 @@
       Kneser to base $e$: $T'(0)=T'(-1)=1.0917673\ldots$, ratio 1. If one perturbs the solution to $T(x+0.05\sin2\pi x)$, $T'(0)$ becomes $1.43476$ — the
       ratio remains exactly 1. For the bases 2 and 10 the ratio agrees with $\ln2$ and $\ln10$ to 30 digits.
 
-      Side finding: TPID 7 tips for Kneser at $b_7$, where $T''(0)=T'(0)^2$. By the third form this means $T''(-1)=0$ — **at $b_7=10.2210634157814\ldots$
+      Side finding: TPID 7 tips over for Kneser at $b_7$, where $T''(0)=T'(0)^2$. By the third form this means $T''(-1)=0$ — **at $b_7=10.2210634157814\ldots$
       the Kneser curve has its inflection point exactly at $-1$.** (While recomputing, it turned out that the value $10.2210634581\ldots$ given earlier was wrong from the eighth
       digit on: too coarse a sampling of the derivatives at large bases.)
     einordnung: |
@@ -1319,7 +1320,7 @@
       Which parts of the derivatives of a tetration depend on the chosen continuation, and which do not? The individual slopes depend on it. Certain
       **ratios**, however, are the same for every solution — and one of them is the natural logarithm of the base.
 - id: gr.satz.logstern
-  quelle_hash: 85b8e4947f3d
+  quelle_hash: 0a14d3b6d3d7
   theorie_hash: c95b2b314aec
   herkunft:
     modell: sonnet
@@ -1328,7 +1329,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -1345,10 +1346,10 @@
     titel: slog is the smoothed iterated logarithm
     aussage: '$\lceil\operatorname{slog}_a(y)\rceil=\log^*_a(y)$: rounded up, slog is the number of logarithms until one lands at 1 or below.'
     bereich: $a>\eta$, $y>0$; $\log^*_a(y)=\min\{n:\log_a^{\circ n}(y)\le1\}$
-    einfach: How many times do you have to press the logarithm until the number drops below 1? That is a staircase. slog is the same staircase,
+    einfach: How many times do you have to press the log key until the number gets to 1 or below? That is a staircase. slog is the same staircase,
       only drawn out smoothly.
     formen:
-    - notiz: Decomposition
+    - notiz: decomposition
     - notiz: as an inequality
     quellen:
     - stelle: log* as a running-time bound
@@ -1383,7 +1384,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -1435,7 +1436,7 @@
       fixed point ($b^y=y$) — this is why $\eta$ is the largest base with a real fixed point ([[fp.satz.reelle_fixpunkte]]).
     worum: |
       The function $x^x$ — a number to its own power — is the smallest tower in which the base is variable. It has a lowest
-      point, and there the number $\eta=e^{1/e}$ appears for the first time, which later is decisive everywhere.
+      point, and there the number $\eta=e^{1/e}$, which later decides everything, appears for the first time.
 - id: gr.satz.slog_ableitung
   quelle_hash: 184b72b6f93c
   theorie_hash: bc4f8017ee7f
@@ -1446,7 +1447,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: Inverse-function rule; differentiate $A(a^y)=A(y)+1$.
@@ -1492,7 +1493,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: Inverse of $T$, using gr.satz.gestalt.
@@ -1597,7 +1598,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: 'Johann Bernoulli 1697: integrate $x^x=\sum_k\frac{(x\ln x)^k}{k!}$ term by term, $\int_0^1x^k\ln^kx\,dx=(-1)^kk!/(k+1)^{k+1}$.'
@@ -1610,7 +1611,7 @@
     bewertung:
       richtigkeit: complete
       nutzen: Most beautiful entry point to towers as functions.
-    titel: Sophomore's Dream
+    titel: Sophomore's dream
     aussage: |
       $$\int_0^1x^{x}\,dx=\sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{k^{k}}=0.78343051071213440706\ldots,\qquad\int_0^1x^{-x}\,dx=\sum_{k=1}^{\infty}\frac1{k^{k}}.$$
     bereich: $x\in(0,1]$
@@ -1630,7 +1631,7 @@
       3. The $k!$ cancels against the $k!$ of the exponential series, and what remains is $\sum_{k\ge0}\frac{(-1)^k}{(k+1)^{k+1}}$ — with $k+1\to k$ the formula.
     worum: |
       The area under $x^x$ between $0$ and $1$ is a sum that looks almost like a typo:
-      $1-\frac14+\frac1{27}-\frac1{256}+\dots$ Hence the name “Student's Dream” (Sophomore's Dream).
+      $1-\frac14+\frac1{27}-\frac1{256}+\dots$ Hence the name “sophomore's dream”.
 - id: gr.satz.stellen
   quelle_hash: 0ae6df0257c3
   theorie_hash: 2f76eb5d8123
@@ -1641,7 +1642,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: $m$ has $N$ digits if and only if $10^{N-1}\le m<10^N$, so $N=\lfloor\log_{10}m\rfloor+1$; with $m=a^{t}$, $t=a\uparrow\uparrow n$,
@@ -1765,7 +1766,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -1791,8 +1792,8 @@
     einfach: 'The super-root asks backward: which number y gives exactly x when raised to itself? For 27 it is 3, for 2 about 1.5596. Below 1
       there are often two answers, below 0.6922 none — because y to the power y never gets smaller than 0.6922.'
     formen:
-    - notiz: Rearrangement
-    - notiz: Values (exp.superwurzel)
+    - notiz: rearrangement
+    - notiz: values (exp.superwurzel)
     - notiz: two solutions
     quellen:
     - stelle: Section Super-root
@@ -1844,7 +1845,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -1868,7 +1869,7 @@
       Values: $\sqrt[3]{2}_s=1.4766843373578699\ldots$, $\sqrt[3]{10}_s=1.9235840364420273\ldots$, $\sqrt[3]{100}_s=2.2127958063258997\ldots$
     bereich: real $Y>1$, sought $y>1$ with $y^{y^y}=Y$
     einfach: The question “which number gives exactly 2 as a three-level tower y^y^y?” also has exactly one answer, about 1.4767. There is no
-      ready-made formula, but there is a rule of computation that you apply again and again until nothing changes any more.
+      ready-made formula, but there is a rule of computation that you apply again and again until nothing changes anymore.
     formen:
     - notiz: multiplied by y
     quellen:
@@ -1899,7 +1900,7 @@
 
       On the right $y$ appears once more — that is why this is not a closed formula but a fixed-point equation.
     worum: |
-      For the tower of height three $y^{y^y}$ there is no ready-made formula for the inverse any more. But one can write the solution as a fixed point:
+      For the tower of height three $y^{y^y}$ there is no ready-made formula for the inverse anymore. But one can write the solution as a fixed point:
       a rule of computation that one applies again and again until the number no longer changes. And here, too, the Lambert function is
       involved — this time twice in a row.
 - id: gr.satz.tauschregel
@@ -1912,7 +1913,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -1945,7 +1946,7 @@
       there is, is a swap rule: A tower value raised to another tower value is always a raised to the product of the two values one level lower,
       so the two may be swapped. And because T(x+1) = a^T(x), you can recover the base from any two neighboring values, even at half heights.'
     formen:
-    - notiz: Iteration instead of an arithmetic operation
+    - notiz: iteration instead of an arithmetic operation
     - notiz: swap rule at integer heights
     - notiz: base from neighboring values
     - notiz: quotient of two neighbors = logarithm of the next two
@@ -2039,7 +2040,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -2146,7 +2147,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -2188,7 +2189,7 @@
       rise toward $0.6313$.
     einordnung: |
       The values come from the user's figure 2 and are independently confirmed here (there, both limits were too small by $2.4\cdot10^{-11}$).
-      Closed forms: [[gr.kor.turmintegral_formen]]; speed: [[gr.verm.turmintegral_rate]]; the same 2-cycle in the
+      More explicit forms: [[gr.kor.turmintegral_formen]]; speed: [[gr.verm.turmintegral_rate]]; the same 2-cycle in the
       base plane: [[fp.satz.p2_form]].
     genau: |
       Let $I_n=\int_0^1{}^nx\,dx$. Then
@@ -2286,7 +2287,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: 'gr.satz.kettenregel: $T''(x+1)=\ln a\cdot T(x+1)\cdot T''(x)$ with $T(x+1)>0$ for $x>-2$; sign of $\ln a$.'
@@ -2333,7 +2334,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -2385,7 +2386,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: 'Young''s equation for inverse functions (decomposition of areas); differentiable case: integration by parts $\int T=[xT]-\int xT''$
@@ -2440,7 +2441,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -2492,7 +2493,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     gegenbeispielsuche: 'exp.ableitung: 7 Kneser bases from 1.5 to 100 and 4 regular bases, sign changes of $T''''$ via Cauchy derivatives — no
       counterexample. Half a proof: after the first fully convex period there is no inflection point any more (gr.kor.konvex_nach_oben); at least
@@ -2511,7 +2512,7 @@
     titel: Exactly one inflection point above η, none below
     aussage: For every $b>\eta$, $T_b^{\mathrm K}$ has exactly one inflection point $x_w(b)$; $x_w$ is decreasing in $b$ and $x_w\to+\infty$ for
       $b\downarrow\eta$. For $1<b\le\eta$ the regular tetration is strictly concave on $(-2,\infty)$.
-    einfach: Every Kneser curve changes its curvature exactly once; every regular curve below η never does.
+    einfach: Every Kneser curve changes its curvature exactly once; no regular curve below η ever does.
   en_theorie:
     beispiel: |
       Supported by seven Kneser bases and four regular bases ([[gr.beob.wendepunkte]]). A counterexample would show up as a second
