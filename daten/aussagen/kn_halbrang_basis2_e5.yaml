@@ -1,0 +1,32 @@
+gebiet: kn
+# Halber Rang an Basis 2, Etappe 5 (Rangfortsetzung der vollen Rechenarten an komplexen Höhen), übernommen 13.10.2026.
+aussagen:
+
+- id: kn.beob.halbrang_rangfortsetzung
+  titel: 'Zweiter Weg zu H₃.₅(2, x): die vollen Rechenarten im Rang fortgesetzt — gleiche Grenze, und die Beschränktheit wählt hier nichts aus'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation]
+  aussage: |
+    Die vollen Rechenarten $H_N(2,x+iy)$, $N=3\ldots9$ (für $|\operatorname{Im}x|\ge1$ nur $N\le5$), mit einer Newtonreihe im Rang nach $N=3.5$ fortgesetzt, geben
+    $H_{3.5}(2,0.5)=1.44246$, $H_{3.5}(2,1.5)=2.78254$ (letzte Korrektur je etwa $2\cdot10^{-4}$); Abstand zur Störungsrechnung (kn.beob.halbrang_basis2) $0.9$–$12\cdot10^{-4}$, bei $x=-0.5$ schlechter ($5\cdot10^{-3}$).
+    Die Rangrekursion $H_{4.5}(x+1)=H_{3.5}(H_{4.5}(x))$ gilt auf $3\cdot10^{-6}$–$1.2\cdot10^{-4}$ (reell). Beste Kontrollzahlen aus beiden Wegen: $H_{3.5}(2,0.5)\approx1.4428\pm3\cdot10^{-4}$, $H_{3.5}(2,1.5)\approx2.7824\pm2\cdot10^{-4}$.
+    **Die Beschränktheitsregel (kn.beob.kneser_beschraenkte_summe) wählt hier nichts aus** (elementar bewiesen): jede Rangfortsetzung $\sum_kw_k(s)H_{3+k}(z)$ mit höhenunabhängigen Gewichten ist senkrecht beschränkt, weil jedes $H_N$ es ist. Die θ-Freiheit wird erst über eine Funktionalgleichung festgelegt.
+    „Zwei Halbschritte = Kneser“ ist auf diesem Weg kein Test (die Interpolation gibt $H_4$ per Konstruktion zurück). Die Ränge stammen aus verschiedenen Auswahlen (Kneser, regulär, Zwei-Bogen); an komplexen Höhen knickt die Rangfolge, was die Genauigkeit begrenzt.
+  einfach: >-
+    Ein zweiter, unabhängiger Rechenweg gibt dieselben Werte für die Rechenart „dreieinhalb“ auf etwa drei bis vier Stellen. Genauer geht es so nicht,
+    weil die höheren Rechenarten mit verschiedenen Methoden gebaut sind und weil die Regel „beschränkt bleiben“ hier keine Entscheidung trifft.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT_ETAPPE5.md'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); bewiesen ist nur die Beschränktheit jeder Rangfortsetzung mit höhenunabhängigen Gewichten.'
+    f2_benutzte_voraussetzungen: 'Rechenarten aus der Fortsetzungskette der Hauptrunde; Hexation des Motors versagt für |Im x| ≥ 1.'
+    f3_spezialfall: 'nein'
+    f4_uebertragbar: 'Alle Ränge mit derselben Kneser-artigen Auswahl rechnen (Cauchy-Löser aus Etappe 4 verallgemeinert), dann U = H₃.₅ und V = Kneser-Superfunktion von U als gekoppeltes Problem lösen.'
+    f5_neue_frage: 'Gibt es eine Funktionalgleichung für den Halbrang U allein?'
+  bewertung: {richtigkeit: 'numerisch, etwa 3–4 Stellen; ein Teilsatz bewiesen', neuheit: neu_ungeprueft, nutzen: 'Unabhängige Bestätigung der H₃.₅-Werte und genaue Benennung, was als Nächstes fehlt.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.beob.halbrang_basis2}
+    - {typ: verwandt, ziel: kn.beob.kneser_beschraenkte_summe}
+    - {typ: motiviert, ziel: kn.frage.halber_rang}

@@ -350,6 +350,47 @@
       $x=0.25$: sum $1.224284$, Kneser $1.224361$.
     einordnung: |
       The values: [[kn.beob.halbrang_basis2]]; Kneser: [[kn.konstr.kneser]].
+- id: kn.beob.halbrang_rangfortsetzung
+  quelle_hash: 5fc87613513e
+  theorie_hash: 5ae8156826e7
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: 'Second route to H₃.₅(2, x): the full hyperoperations continued in the rank — same limit, and boundedness selects nothing here'
+    aussage: |
+      The full hyperoperations $H_N(2,x+iy)$, $N=3\ldots9$ (for $|\operatorname{Im}x|\ge1$ only $N\le5$), continued in the rank to $N=3.5$ by a Newton series, give
+      $H_{3.5}(2,0.5)=1.44246$, $H_{3.5}(2,1.5)=2.78254$ (last correction about $2\cdot10^{-4}$ each); distance to the perturbative calculation (kn.beob.halbrang_basis2) $0.9$–$12\cdot10^{-4}$, worse at $x=-0.5$ ($5\cdot10^{-3}$).
+      The rank recursion $H_{4.5}(x+1)=H_{3.5}(H_{4.5}(x))$ holds to $3\cdot10^{-6}$–$1.2\cdot10^{-4}$ (real). Best control values from both routes: $H_{3.5}(2,0.5)\approx1.4428\pm3\cdot10^{-4}$, $H_{3.5}(2,1.5)\approx2.7824\pm2\cdot10^{-4}$.
+      **The boundedness rule (kn.beob.kneser_beschraenkte_summe) selects nothing here** (proved elementarily): every rank continuation $\sum_kw_k(s)H_{3+k}(z)$ with height-independent weights is vertically bounded, because every $H_N$ is. The θ freedom is fixed only through a functional equation.
+      “Two half steps = Kneser” is no test on this route (the interpolation returns $H_4$ by construction). The ranks come from different selections (Kneser, regular, two-arc); at complex heights the rank sequence has kinks, which limits the accuracy.
+    einfach: A second, independent route gives the same values for the hyperoperation “three and a half” to about three to four digits. It cannot
+      get more accurate this way, because the higher hyperoperations are built with different methods and because the rule “stay bounded” makes
+      no decision here.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured); proved is only the boundedness of every rank continuation with height-independent weights.
+      f2_benutzte_voraussetzungen: Hyperoperations from the continuation chain of the main round; the engine's hexation fails for |Im x| ≥ 1.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Compute all ranks with the same Kneser-type selection (Cauchy solver from stage 4 generalized), then solve U = H₃.₅ and
+        V = Kneser superfunction of U as a coupled problem.
+      f5_neue_frage: Is there a functional equation for the half rank U alone?
+    bewertung:
+      richtigkeit: numerical, about 3–4 digits; one partial statement proved
+      nutzen: Independent confirmation of the H₃.₅ values and a precise statement of what is missing next.
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT_ETAPPE5.md
+  en_theorie:
+    worum: |
+      A second route to the half rank: instead of expanding around “plus 1”, interpolate the finished hyperoperations $H_3,\ldots,H_9$ between the integer ranks.
+    genau: |
+      $H_{3.5}(2,0.5)\approx1.4428\pm3\cdot10^{-4}$ and $H_{3.5}(2,1.5)\approx2.7824\pm2\cdot10^{-4}$ from both routes together.
+    warum: |
+      At each fixed height, $N\mapsto H_N(2,x)$ is a sequence of numbers; a Newton series continues it to $N=3.5$. Because every hyperoperation is vertically bounded, so is every such mixture — boundedness therefore cannot sort out any wave.
+    beispiel: |
+      At $x=0.5$: perturbative $1.44302$, rank continuation $1.44246$.
+    einordnung: |
+      First route: [[kn.beob.halbrang_basis2]]; selection rule: [[kn.beob.kneser_beschraenkte_summe]]; open: [[kn.frage.halber_rang]].
 - id: kn.beob.halbrang_theta_grenze
   quelle_hash: 66b86b32c6b5
   theorie_hash: f8a273c92e41
