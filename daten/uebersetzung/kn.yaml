@@ -350,6 +350,47 @@
       $x=0.25$: sum $1.224284$, Kneser $1.224361$.
     einordnung: |
       The values: [[kn.beob.halbrang_basis2]]; Kneser: [[kn.konstr.kneser]].
+- id: kn.beob.halbrang_theta_grenze
+  quelle_hash: 66b86b32c6b5
+  theorie_hash: f8a273c92e41
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: The 10⁻⁴ limit of the half rank is the θ freedom itself
+    aussage: |
+      The growing parts of the expansion around $x+1$ (late $\varepsilon$ terms, high orders at growing rank) have the height form $a\sin2\pi x+b(1-\cos2\pi x)$ — 1-periodic, zero at integer heights:
+      exactly the θ modes that every tetration leaves free (a one-parameter fit hits at $j=12$, $x=0.5+i$: $134.37-212.77i$ versus measured $134.28-212.79i$).
+      The Borel singularities in $\varepsilon$ are absent at rank 0, lie at $|t|\approx8$ at rank 1 and at $|t|\approx0.7$–$1.1$ at rank 2; their approach produces the rates $\rho_j^n$.
+      Lateral Laplace sums differ precisely by θ modes: **choosing a summation rule means choosing θ.** Hence the rank continuation in Borel space gives no more digits, and Kneser versus a θ variant can only be decided by a non-perturbative condition.
+      Cross-check via the full rank chain $H_3,\ldots,H_9$ continued in the rank: $H_{3.5}(2,0.5)\in[1.44246,1.44266]$ (perturbative $1.44302$), $H_{3.5}(2,1.5)\in[2.78245,2.78254]$ ($2.78231$) — agreement to $\le6\cdot10^{-4}$.
+    einfach: 'The calculation stops at about four digits because that is exactly where the freedom begins that every fractional hyperoperation
+      has: one can add a small wave without changing the integer values. Which wave is the right one is not decided by any summation rule — that
+      needs a condition like Kneser''s.'
+    pruefung:
+      f1_folgt_unmittelbar: 'No (measured); proved are only: no Borel singularity at rank 0, no further injective fixed point of T, θ modes lie
+        outside the class 𝒜.'
+      f2_benutzte_voraussetzungen: Borel–Padé location of the singularities numerical; fit of the mode form with one free parameter.
+      f3_spezialfall: 'Yes: the non-uniqueness of fractional iteration (fg.kor.nichteindeutigkeit), here in the rank.'
+      f4_uebertragbar: Every perturbative construction of fractional ranks and heights around a degenerate point.
+      f5_neue_frage: Which θ does Kneser have relative to the perturbative tetration (rank 1)? Can this rule be transferred to the half rank?
+    bewertung:
+      richtigkeit: numerical; three partial statements proved
+      nutzen: Explains why H₃.₅ needs a selection condition like Kneser's, not only better numerics.
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT_ETAPPE3.md
+  en_theorie:
+    worum: |
+      Why even a more refined summation gives no more digits for the half rank.
+    genau: |
+      The ambiguity of the summation is exactly a 1-periodic wave $a\sin2\pi x+b(1-\cos2\pi x)$ that vanishes at integer heights.
+    warum: |
+      Such waves change neither the recursion nor the integer values — this is the freedom θ of every fractional iteration. A summation rule fixes it without saying which one is right.
+    beispiel: |
+      Two routes to $H_{3.5}(2,0.5)$ give $1.44302$ and $1.44246$–$1.44266$ — a difference of about $5\cdot10^{-4}$, the size of this wave.
+    einordnung: |
+      Limit of the expansion: [[kn.beob.halbrang_divergenz]]; basic freedom: [[fg.kor.nichteindeutigkeit]]; open question: [[kn.frage.halber_rang]].
 - id: kn.beob.hexation_verzweigt
   quelle_hash: 9c512691b9e1
   theorie_hash: 206fbff0a23b

@@ -44,15 +44,15 @@ Stand: bewiesen 19, bedingt 17, numerisch 11, Vermutung 6, offen 6, verworfen 10
 - **Kreisabbildung** (6): bewiesen 1, bedingt 4, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.prop.kozykel, bw.satz.homoeo, bw.satz.antisymmetrie, bw.satz.c1_produkt
 - **Rekonstruktion und Zertifikat** (6): bewiesen 1, bedingt 2, numerisch 1, offen 1, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.frage.intervallmarsch, bw.satz.anker_rekonstruktion, bw.zert.8r1
 
-## Höhere Stufen (47 Aussagen)
+## Höhere Stufen (48 Aussagen)
 
 Pentation, Hexation und die ganze Leiter der Hyperoperationen.
 
-Stand: bewiesen 13, bedingt 7, numerisch 17, Vermutung 4, offen 4, verworfen 2 · Literatur 10 / Forum 16 / eigen 21
+Stand: bewiesen 13, bedingt 7, numerisch 18, Vermutung 4, offen 4, verworfen 2 · Literatur 10 / Forum 16 / eigen 22
 
 - **Pentation und Hexation** (17): bewiesen 1, bedingt 7, numerisch 7, Vermutung 1, offen 1 · Literatur 4 / Forum 7 / eigen 6 · offen: kn.konstr.pentation, kn.satz.hexation_eindeutig_g0, kn.frage.hexation_kneser, kn.konstr.hexation_regulaer, kn.satz.hexation_gebiete, kn.satz.hexation_keine_halbebene, kn.satz.hexation_logpunkt, kn.satz.hexation_struktur …
 - **ηₙ → 2 und eₙ → 4** (17): bewiesen 5, numerisch 7, Vermutung 3, offen 2 · Literatur 1 / Forum 9 / eigen 7 · offen: kn.frage.andere_etas, kn.frage.pentation_untergrenze, kn.verm.beschraenkt_unter_2, kn.verm.tpid10, kn.verm.tpid11
-- **Gebrochene Ränge** (9): bewiesen 3, numerisch 3, offen 1, verworfen 2 · Literatur 1 / Forum 0 / eigen 8 · offen: kn.frage.halber_rang
+- **Gebrochene Ränge** (10): bewiesen 3, numerisch 4, offen 1, verworfen 2 · Literatur 1 / Forum 0 / eigen 9 · offen: kn.frage.halber_rang
 - **Hyperoperationen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
 
 ## Unendlicher Turm und Basen-Ebene (43 Aussagen)
@@ -101,10 +101,10 @@ Stand: bewiesen 8, offen 2, verworfen 1 · Literatur 10 / Forum 0 / eigen 1
 - Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 52.04
 - Basiswechsel T ∘ slog — Fraktionale Fortsetzung: 40.05
 - Dynamik von bᶻ und der Fixpunkt L — Fraktionale Fortsetzung: 29.06
-- Fraktionale Fortsetzung — Höhere Stufen: 28.16
+- Fraktionale Fortsetzung — Höhere Stufen: 28.36
 - Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Unendlicher Turm und Basen-Ebene: 22.61
 - Basiswechsel T ∘ slog — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 21.35
-- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 17.77
+- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 18.2
 - Fraktionale Fortsetzung — Unendlicher Turm und Basen-Ebene: 17.25
 - Dynamik von bᶻ und der Fixpunkt L — Unendlicher Turm und Basen-Ebene: 14.22
 - Basiswechsel T ∘ slog — Unendlicher Turm und Basen-Ebene: 12.32
