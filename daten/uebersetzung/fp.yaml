@@ -85,7 +85,7 @@
     datum: '2026-10-12'
   geprueft:
     beweis: nein
-    intern: nein
+    intern: zweitpruefung
     kern: zweitpruefung
     theorie: zweitpruefung
   en:
@@ -366,7 +366,7 @@
       **parabolic** (Fatou coordinate, convergence $n^{-1/m}$, digamma/zeta) · **real escaping** (Abel function + real logarithm channel, periodic phase) ·
       **complex escaping** (address of the logarithmic strips) · **Siegel** (rotation) · **preperiodic** (Misiurewicz) · **Cremer/recurrent** (no simple normal form).
       A black pixel in an escape image only means “not recognized as escaping”, not “convergent”. The b-plane folds the
-      branches $\mathrm{Log}\,b+2\pi im$ on top of each other; to be exact, $(b,m)$ resp. $c$ is the parameter.
+      branches $\mathrm{Log}\,b+2\pi im$ on top of each other; to be exact, $(b,m)$, or equivalently $c$, is the parameter.
     einfach: 'Bases are not all alike: some towers come to rest, some jump around in circles, some crawl, some escape, some rotate forever. For
       each kind there is a suitable pair of glasses, and only with it can fractional heights and base changes be defined sensibly.'
     formen:
@@ -386,7 +386,7 @@
       - **real escaping** — Abel function and real logarithm channel, periodic phase;
       - **complex escaping** — address of the logarithmic strips;
       - **Siegel** (rotation), **preperiodic** (Misiurewicz), **Cremer/recurrent** (no simple normal form).
-      A black pixel in an escape image only means “not recognized as escaping”. To be exact, $c$ (resp. $b$ with a branch) is the parameter.
+      A black pixel in an escape image only means “not recognized as escaping”. To be exact, $c$ (or equivalently $b$ with a branch) is the parameter.
     warum: |
       A definition. The cycle multiplier follows from $f'=cf$ with the chain rule: $(f^{\circ p})'(\zeta_0)=\prod_jf'(\zeta_j)=c^p\prod_j\zeta_j$.
     worum: |
@@ -526,16 +526,16 @@
       richtigkeit: numerical, mechanism proved
     titel: Circle mean at height 1/2 is not 1 and depends on the branch
     aussage: |
-      Mean at $r=0.5$: $1.0619+0.0051i$ (principal branch of $w^{1/2}$) resp. $0.9919-0.0816i$ (branch cut at $\theta=0$);
-      at $r=0.8$: $1.1058+0.0064i$ resp. $0.9862-0.1603i$. Reason: the multiplier is $\lambda=w$, regular tetration contains
+      Mean at $r=0.5$: $1.0619+0.0051i$ (principal branch of $w^{1/2}$) or $0.9919-0.0816i$ (branch cut at $\theta=0$);
+      at $r=0.8$: $1.1058+0.0064i$ or $0.9862-0.1603i$. Reason: the multiplier is $\lambda=w$, regular tetration contains
       $w^{t}$ and has a branch point at $w=0$ — no holomorphic function on the disk.
     bereich: $T_{b(w)}(1/2)=\sigma_w^{-1}(w^{1/2}\sigma_w(1))$, $|w|=0.5$ and $0.8$, 48 points
   en_theorie:
     einordnung: |
       Refutes [[fp.verm.bruch_mittel]]. Every family regular at the fixed point inherits $w^t$.
     genau: |
-      For $T_{b(w)}(\tfrac12)=\sigma_w^{-1}(w^{1/2}\sigma_w(1))$: mean at $r=0.5$: $1.0619+0.0051\,i$ (principal branch) resp. $0.9919-0.0816\,i$ (branch cut at $\theta=0$); at $r=0.8$: $1.1058+0.0064\,i$
-      resp. $0.9862-0.1603\,i$.
+      For $T_{b(w)}(\tfrac12)=\sigma_w^{-1}(w^{1/2}\sigma_w(1))$: mean at $r=0.5$: $1.0619+0.0051\,i$ (principal branch) or $0.9919-0.0816\,i$ (branch cut at $\theta=0$); at $r=0.8$: $1.1058+0.0064\,i$
+      or $0.9862-0.1603\,i$.
     warum: |
       The multiplier is $\lambda=w$; regular tetration contains $w^{1/2}$, and that is not single-valued on any circle around $0$. Depending on the branch cut one gets a different function — and a different mean.
     worum: |
@@ -548,9 +548,9 @@
     datum: '2026-10-12'
   geprueft:
     beweis: nein
-    intern: nein
+    intern: zweitpruefung
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -653,8 +653,8 @@
     modell: sonnet
     datum: '2026-10-12'
   geprueft:
-    beweis: nein
-    intern: nein
+    beweis: zweitpruefung
+    intern: zweitpruefung
     kern: zweitpruefung
     theorie: nein
   en:
@@ -738,7 +738,7 @@
       2. Sullivan's method (quasiconformal deformations) rules out wandering domains because there are only finitely many parameters.
       3. For real $a>1/e$ the orbit of 0 escapes to $\infty$, no cycle attracts, and the Julia set is everything.
     worum: |
-      In the plane of bases $b$ (resp. $a=\ln b$) there are domains in which the tower comes to rest, and others in which it jumps between 2, 3, … values.
+      In the plane of bases $b$ (or of $a=\ln b$) there are domains in which the tower comes to rest, and others in which it jumps between 2, 3, … values.
       Baker and Rippon proved the basic structure of these domains in 1984.
 - id: fp.satz.baker_rippon_periodisch
   quelle_hash: ea5759baeddf
@@ -848,7 +848,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
   en:
     beweis:
       text: |
@@ -908,7 +908,7 @@
       text: |
         $e^{uL}=L\iff uL=\mathrm{Log}\,L+2\pi ik$. Two bases share $L$ ⇔ $u-u'=2\pi im/L$. For real bases $\mathrm{Im}\,u\in\{0,\pi\}$,
         hence $\mathrm{Im}(2\pi im/L)=2\pi m\,\mathrm{Re}(1/L)\in\{0,\pm\pi\}$. Case $\mathrm{Re}(1/L)=0$: $L=iy$, $|e^{uL}|=|y|$ gives $y=\pm1$ (positive
-        bases) resp. $ye^{\pi y}=1$, $y=W(\pi)/\pi$ (negative bases). $(-b)^L=b^Le^{i\pi L}=L$ ⇔ $e^{i\pi L}=1$ ⇔ $L\in2\mathbb Z$.
+        bases) or $ye^{\pi y}=1$, $y=W(\pi)/\pi$ (negative bases). $(-b)^L=b^Le^{i\pi L}=L$ ⇔ $e^{i\pi L}=1$ ⇔ $L\in2\mathbb Z$.
     gegenbeispielsuche: 'exp.gleiches_L: family for $L_e$ ($k=-3\dots3$), real ladders for $i$ and $iW(\pi)/\pi$, 8 mixed pairs — all fixed-point
       equations to $10^{-25}$ or better.'
     pruefung:
@@ -931,7 +931,7 @@
       or $\mathrm{Re}(1/L)=\mp\tfrac1{2m}$ (one positive, one negative). Examples:
       $e^{\pi/2+2\pi k}$ ($\approx0.00898,\ 4.8105,\ 2575.97,\dots$) share $L=i$; $-\exp\bigl((\tfrac\pi2+2\pi k)\pi/W(\pi)\bigr)$ share
       $L=i\,W(\pi)/\pi$; $b$ and $-b$ share every fixed point that is an even integer ($\sqrt2$ and $-\sqrt2$: $L=2$ and $L=4$).
-    bereich: $L\in\mathbb C\setminus\{0\}$; bases as $u=\mathrm{Log}\,b$ (resp. chosen branch)
+    bereich: $L\in\mathbb C\setminus\{0\}$; bases as $u=\mathrm{Log}\,b$ (or a chosen branch)
     einfach: For a fixed point L there is not only one base but a whole ladder of bases — one for each choice of the logarithm of L. For example,
       4.81 (= e^(π/2)) and 0.00898 (= e^(−3π/2)) both have the fixed point i, although their towers run quite differently.
     formen:
@@ -967,7 +967,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -977,8 +977,8 @@
       f2_benutzte_voraussetzungen: Starting value 1 and the monotonicity of the subsequences.
       f5_neue_frage: Do the constants of Cho–Kim agree with fp.satz.p2_raten? (full text missing)
       f3_spezialfall: Real trace of fp.satz.p2_form (parametrized there in the complex plane).
-      f1_folgt_unmittelbar: 'Partly: analyticity follows from the implicit function theorem as long as the multiplier of the fixed point resp.
-        cycle is not 1; the boundary values need their own arguments.'
+      f1_folgt_unmittelbar: 'Partly: analyticity follows from the implicit function theorem as long as the multiplier of the fixed point or cycle
+        is not 1; the boundary values need their own arguments.'
       f4_uebertragbar: 'The asymptotics at $e^{-e}$ (Cho–Kim) is a possible template for fp.satz.p2_raten: $|z_1-z_2|\sim2\sqrt6e^{-3/2}\sqrt
         t$.'
     bewertung:
@@ -1018,7 +1018,7 @@
     modell: sonnet
     datum: '2026-10-12'
   geprueft:
-    beweis: nein
+    beweis: zweitpruefung
     intern: nein
     kern: zweitpruefung
     theorie: nein
@@ -1079,7 +1079,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -1138,7 +1138,7 @@
     beweis: nein
     intern: nein
     kern: zweitpruefung
-    theorie: nein
+    theorie: zweitpruefung
     zusatz: nein
   en:
     beweis:
@@ -1289,7 +1289,7 @@
     modell: sonnet
     datum: '2026-10-12'
   geprueft:
-    beweis: nein
+    beweis: zweitpruefung
     intern: nein
     kern: zweitpruefung
     theorie: nein
@@ -1481,8 +1481,8 @@
     modell: sonnet
     datum: '2026-10-12'
   geprueft:
-    beweis: nein
-    intern: nein
+    beweis: zweitpruefung
+    intern: zweitpruefung
     kern: zweitpruefung
     theorie: nein
     zusatz: nein
@@ -1496,7 +1496,7 @@
       f2_benutzte_voraussetzungen: Only local Taylor expansion.
       f5_neue_frage: Amplitude |K(1)| (maximum 0.1240 at b = 0.043) — closed form?
       f3_spezialfall: 'Yes: fp.satz.parabolisch_rand with q = 2, here with constant.'
-      f1_folgt_unmittelbar: Yes, from Koenigs resp. the cubic normal form.
+      f1_folgt_unmittelbar: Yes, from Koenigs or the cubic normal form.
       f4_uebertragbar: The same computation at every bud root.
     bewertung:
       recherche: 'Literature comparison L1, 12.10.2026: The law $n^{-1/2}$ at the parabolic point with multiplier $-1$ is the standard computation
@@ -1597,7 +1597,7 @@
     datum: '2026-10-12'
   geprueft:
     beweis: nein
-    intern: nein
+    intern: zweitpruefung
     kern: zweitpruefung
     theorie: nein
     zusatz: nein
@@ -1666,7 +1666,7 @@
       text: $E$ is decreasing on ℝ, $E\circ E$ increasing with fixed points $z_B<L<z_A$; $(L,\infty)$ is the basin of $z_A$, $(0,L)$ of $z_B$,
         the only separating point is $L$. $T(0)=1>L>b=T(1)$ ⇒ intermediate value theorem. A continuous 2-periodic Ω would have a connected E-invariant
         image in two separate basins — impossible. Fourier series of the square wave.
-    gegenbeispielsuche: 'Original: three resp. four starting interpolations, |c_k|πk constant to 8 digits up to k = 41. exp.funde (linear starting
+    gegenbeispielsuche: 'Original: three or four starting interpolations, |c_k|πk constant to 8 digits up to k = 41. exp.funde (linear starting
       interpolation, x* = 0.698330769): |c_k|πk = 0.7651944 … 0.7651888 for k = 1 … 41; T(x* + n) = L for n ≤ 12.'
     pruefung:
       f2_benutzte_voraussetzungen: Continuity and reality; not analyticity — hence universal.
@@ -2095,7 +2095,7 @@
     modell: sonnet
     datum: '2026-10-12'
   geprueft:
-    beweis: nein
+    beweis: zweitpruefung
     intern: nein
     kern: zweitpruefung
     theorie: nein
@@ -2107,7 +2107,7 @@
     pruefung:
       f2_benutzte_voraussetzungen: Only the location of all $b_j$ in a fixed set; no periodicity.
       f5_neue_frage: How large is the exact set of base sequences with convergence?
-      f3_spezialfall: 'Constant bases: (i) and (ii) are subsets of the Shell–Thron domain resp. of Euler''s interval.'
+      f3_spezialfall: 'Constant bases: (i) and (ii) are subsets of the Shell–Thron domain and of Euler''s interval, respectively.'
       f1_folgt_unmittelbar: No.
       f4_uebertragbar: 'To mixed towers of the base change (bw.def.F_bd): there the bases do not alternate periodically but according to a plan.'
     bewertung:
