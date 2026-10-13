@@ -512,6 +512,49 @@
     worum: |
       The sequence $\eta,\eta_4,\eta_5,\dots$ requires a new hyperoperation for each term. Sheldon Levenstein was in 2017 the first to build the chain up to heptation
       and read off the limit bases.
+- id: kn.beob.kneser_beschraenkte_summe
+  quelle_hash: 7d52c49c81cb
+  theorie_hash: df2a50b800aa
+  herkunft:
+    modell: opus
+    datum: '2026-10-13'
+  geprueft: nein
+  en:
+    titel: Kneser is the vertically bounded sum of the perturbation series around x+1
+    bereich: $f_\varepsilon=x+1+\varepsilon(2^x-x-1)$, $0.36\le\varepsilon\le0.6$ and $\varepsilon=1$; Kneser-type superfunction for each $\varepsilon$
+      via a Cauchy integral with limits $L_\varepsilon,\bar L_\varepsilon$
+    aussage: |
+      For every $\varepsilon$ there is a Kneser-type superfunction of $f_\varepsilon$ (at $\varepsilon=1$ equal to the Kneser tetration to base 2 within $2.9\cdot10^{-11}$). Its distance to the Borel–Padé sum of the perturbation series is
+      $$D_0(x)\approx C(x)\,e^{-B/\varepsilon},\qquad B\approx7.6\ (7.0\text{–}8.0\text{ je nach Höhe}),$$
+      about $5\cdot10^{-10}$ at $\varepsilon=0.36$, extrapolated to $\varepsilon=1$ about $10^{-4}$–$8\cdot10^{-4}$ (consistent with kn.beob.halbrang_kneser_test). $D_0$ is exactly a θ mode $a\sin2\pi x+b(1-\cos2\pi x)$ and grows vertically like $e^{2\pi|y|}$; Kneser itself stays bounded.
+      **So among all sums of the series, Kneser is the one bounded on vertical lines** (the Paulsen–Cowgill mechanism). Kneser is not the Borel–Padé sum along the real axis; whether it is the median sum remains open (Borel singularity at about $7.6\pm0.35i$).
+      Proposal for the half rank: $H_{3.5}(2,\cdot)$ as the vertically bounded sum — consistent with ranks 0 and 1, excludes all θ modes; that two such half steps give Kneser is not shown, and there are no new values yet.
+    einfach: 'Which wave does Kneser carry? Measured: exactly none that grows upward and downward — Kneser''s tetration is the sum of the series
+      that stays bounded in the complex plane. This rule could also select the right half step.'
+    pruefung:
+      f1_folgt_unmittelbar: No (measured); proved is only the adopted theorem that periodic functions with polynomial growth are constant.
+      f2_benutzte_voraussetzungen: Own Kneser-type superfunction for each ε (Cauchy integral); Borel–Padé does not resolve the singularity near
+        the axis.
+      f3_spezialfall: 'Yes: uniqueness via boundedness (kn.satz.paulsen_cowgill), here as a selection among resummations.'
+      f4_uebertragbar: As a selection rule for the half rank — requires a non-perturbative half rank at complex heights.
+      f5_neue_frage: Is Kneser the median sum? Can H_N(2, x+iy) be continued in the rank and boundedness then be applied?
+    bewertung:
+      richtigkeit: numerical
+      nutzen: Shows which selection rule Kneser satisfies in the language of the perturbation series, and gives a candidate for H₃.₅.
+    quellen:
+    - stelle: forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT_ETAPPE4.md
+    - stelle: uniqueness via boundedness
+  en_theorie:
+    worum: |
+      Which of the many possible sums of a divergent series Kneser's tetration is.
+    genau: |
+      Kneser minus the Borel–Padé sum is a θ wave of size $e^{-7.6/\varepsilon}$ that grows vertically like $e^{2\pi|y|}$; Kneser itself stays bounded.
+    warum: |
+      Two sums of the same series differ by a periodic wave; every non-constant such wave grows exponentially in the vertical direction. Requiring boundedness excludes all waves — this is the core of the uniqueness after Paulsen–Cowgill.
+    beispiel: |
+      At $\varepsilon=0.36$ the distance is $5\cdot10^{-10}$, at $\varepsilon=1$ about $10^{-4}$.
+    einordnung: |
+      The wave as a limit: [[kn.beob.halbrang_theta_grenze]]; uniqueness: [[kn.satz.paulsen_cowgill]]; goal: [[kn.frage.halber_rang]].
 - id: kn.beob.kouznetsov_numerik
   quelle_hash: 0192fb4781f4
   theorie_hash: a96c2c898e89

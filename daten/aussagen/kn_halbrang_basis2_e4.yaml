@@ -1,0 +1,33 @@
+gebiet: kn
+# Halber Rang an Basis 2, Etappe 4 (welches θ hat Kneser?), übernommen 13.10.2026.
+aussagen:
+
+- id: kn.beob.kneser_beschraenkte_summe
+  titel: 'Kneser ist die senkrecht beschränkte Summe der Störungsreihe um x+1'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, kneser_T]
+  bereich: '$f_\varepsilon=x+1+\varepsilon(2^x-x-1)$, $0.36\le\varepsilon\le0.6$ und $\varepsilon=1$; Kneser-artige Superfunktion je $\varepsilon$ über Cauchy-Integral mit Grenzwerten $L_\varepsilon,\bar L_\varepsilon$'
+  aussage: |
+    Für jedes $\varepsilon$ gibt es eine Kneser-artige Superfunktion von $f_\varepsilon$ (bei $\varepsilon=1$ gleich der Kneser-Tetration zur Basis 2 auf $2.9\cdot10^{-11}$). Ihr Abstand zur Borel–Padé-Summe der Störungsreihe ist
+    $$D_0(x)\approx C(x)\,e^{-B/\varepsilon},\qquad B\approx7.6\ (7.0\text{–}8.0\text{ je nach Höhe}),$$
+    bei $\varepsilon=0.36$ etwa $5\cdot10^{-10}$, hochgerechnet auf $\varepsilon=1$ etwa $10^{-4}$–$8\cdot10^{-4}$ (passend zu kn.beob.halbrang_kneser_test). $D_0$ ist genau eine θ-Mode $a\sin2\pi x+b(1-\cos2\pi x)$ und wächst senkrecht wie $e^{2\pi|y|}$; Kneser selbst bleibt beschränkt.
+    **Unter allen Summen der Reihe ist Kneser also die auf senkrechten Geraden beschränkte** (der Mechanismus von Paulsen–Cowgill). Kneser ist nicht die Borel–Padé-Summe längs der reellen Achse; ob es die Median-Summe ist, bleibt offen (Borel-Singularität bei etwa $7.6\pm0.35i$).
+    Vorschlag für den halben Rang: $H_{3.5}(2,\cdot)$ als die senkrecht beschränkte Summe — verträglich mit Rang 0 und 1, schliesst alle θ-Moden aus; dass zwei solche Halbschritte Kneser ergeben, ist nicht gezeigt, und neue Werte gibt es noch nicht.
+  einfach: >-
+    Welche Welle hat Kneser? Gemessen: genau keine, die nach oben und unten anwächst — Knesers Tetration ist die Summe der Reihe, die in der komplexen Ebene
+    beschränkt bleibt. Diese Regel könnte auch den richtigen halben Schritt auswählen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/halb_rang_basis2_2026_10_13/BERICHT_ETAPPE4.md'}, {ref: paulsen_cowgill2017, stelle: 'Eindeutigkeit über Beschränktheit'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); bewiesen ist nur der übernommene Satz, dass periodische Funktionen mit polynomialem Wachstum konstant sind.'
+    f2_benutzte_voraussetzungen: 'Eigene Kneser-artige Superfunktion je ε (Cauchy-Integral); Borel–Padé löst die Singularität nahe der Achse nicht auf.'
+    f3_spezialfall: 'Ja: die Eindeutigkeit über Beschränktheit (kn.satz.paulsen_cowgill), hier als Auswahl unter Resummationen.'
+    f4_uebertragbar: 'Als Auswahlregel auf den halben Rang — braucht einen nicht-störungstheoretischen Halbrang an komplexen Höhen.'
+    f5_neue_frage: 'Ist Kneser die Median-Summe? Lässt sich H_N(2, x+iy) im Rang fortsetzen und dann die Beschränktheit anwenden?'
+  bewertung: {richtigkeit: 'numerisch', neuheit: neu_ungeprueft, nutzen: 'Zeigt, welche Auswahlregel Kneser in der Sprache der Störungsreihe trifft, und gibt einen Kandidaten für H₃.₅.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.halbrang_theta_grenze}
+    - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}
+    - {typ: motiviert, ziel: kn.frage.halber_rang}
