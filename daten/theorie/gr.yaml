@@ -35,7 +35,7 @@ gr.satz.stellen:
     Türme werden so gross, dass man sie nicht mehr hinschreiben kann. Trotzdem kann man genau sagen, wie viele Stellen sie haben —
     weil der Logarithmus ein Stockwerk vom Turm abnimmt.
   genau: |
-    Für $a>1$ und $n\ge1$ hat die Zahl $a\uparrow\uparrow(n+1)$ genau
+    Für ganze $a\ge2$ und $n\ge1$ hat die Zahl $a\uparrow\uparrow(n+1)$ genau
     $$\bigl\lfloor\, a\uparrow\uparrow n\cdot\log_{10}a\,\bigr\rfloor+1$$
     Dezimalstellen. Dabei ist $\lfloor\cdot\rfloor$ das Abrunden auf die nächste ganze Zahl und $\log_{10}$ der Zehnerlogarithmus.
   warum: |
@@ -152,7 +152,7 @@ gr.satz.slog_grund:
 
 gr.satz.logstern:
   worum: |
-    Wie oft muss man logarithmieren, bis eine Zahl unter $1$ fällt? Diese Anzahl heisst iterierter Logarithmus $\log^*$. Der
+    Wie oft muss man logarithmieren, bis eine Zahl bei höchstens $1$ ankommt? Diese Anzahl heisst iterierter Logarithmus $\log^*$. Der
     Superlogarithmus ist genau die glatte Version davon: aufgerundet ergibt er dieselbe Zahl.
   genau: |
     Für $y>0$ sei $\log^*_a(y)$ die kleinste Anzahl $n\ge0$, für die $\log_a^{\circ n}(y)\le1$ ist (der $n$-mal angewandte Logarithmus).
@@ -334,7 +334,7 @@ gr.beob.wendepunkte:
     Kneser: $b=1.5$: $x_w=3.987$; $\ b=2$: $-0.030$; $\ b=e$: $-0.522$; $\ b=3$: $-0.604$; $\ b=5$: $-0.847$; $\ b=10$: $-0.997$;
     $\ b=100$: $-1.182$. Regulär für $b=1.2,\,1.3,\,\sqrt2,\,1.44$: kein Wendepunkt, überall nach unten gebogen.
   warum: |
-    Gemessen: die zweite Ableitung wurde auf einem feinen Gitter von $-1.95$ bis weit rechts ausgewertet und auf Vorzeichenwechsel
+    Gemessen: die zweite Ableitung wurde auf einem feinen Gitter von $-1.94$ bis weit rechts ausgewertet und auf Vorzeichenwechsel
     durchsucht ([[exp.ableitung]]). Plausibel ist das Bild so: nahe $-2$ stürzt jede Kurve logarithmisch ab, ist also nach unten
     gebogen; über $\eta$ muss sie irgendwann explodieren und also nach oben biegen.
   beispiel: |
@@ -561,7 +561,7 @@ gr.satz.basis_ganz:
     $\frac{d}{da}a^a=a^a(1+\ln a)$, bei $a=2$: $4\cdot1.6931=6.773$. $\ \frac{d}{da}a^{a^a}$ bei $a=2$: $16\,(4/2+\ln2\cdot6.773)=107.11$.
   einordnung: |
     Für die ganze Tetration (nicht nur ganze Höhen) ist die Ableitung nach der Basis ein schwieriges Objekt mit eigener Theorie —
-    die Basis-Ableitung des Kneser-Familie in Paper V ([[bw.satz.antwortkern]]).
+    die Basis-Ableitung der Kneser-Familie in Paper V ([[bw.satz.antwortkern]]).
 
 gr.satz.turm_ableitung:
   worum: |
@@ -603,7 +603,7 @@ gr.satz.superwurzel:
     nur mit einer besonderen Funktion hinschreiben kann.
   genau: |
     Gesucht sind reelle $y>0$ mit $y^y=x$.
-    - Für $x>1$ gibt es genau eine Lösung, und sie ist grösser als $1$.
+    - Für $x>1$ gibt es genau eine Lösung, und sie ist grösser als $1$; für $x=1$ nur $y=1$.
     - Für $e^{-1/e}<x<1$ gibt es zwei Lösungen, beide zwischen $0$ und $1$: eine kleiner als $1/e$, eine grösser.
     - Für $x=e^{-1/e}\approx0.6922$ gibt es nur $y=1/e$, für $x<e^{-1/e}$ gar keine.
 
@@ -673,7 +673,7 @@ gr.verm.tpid7:
   genau: |
     **Vermutung (TPID 7):** Für $1<b<\eta$ (reguläre Tetration) und $0<|y|<1$ gilt
     $$0<T_b(y)\,T_b(-y)<1.$$
-    Robbins erwähnte auch die Kneser-Tetration für $b>\eta$. Dort stimmt es nur bis zur Basis $b_7\approx10.22$ ([[gr.gegen.tpid7_kneser]]).
+    Robbins erwähnte auch die Kneser-Tetration für $b>\eta$. Dort stimmt es höchstens bis zur Basis $b_7\approx10.22$ ([[gr.gegen.tpid7_kneser]]).
   warum: |
     Ein Beweis fehlt. Was man sieht:
     1. **Positiv:** Für $-1<x$ ist $T(x)>0$, also ist das Produkt positiv.
@@ -687,7 +687,7 @@ gr.verm.tpid7:
   bilder: [exp.vermutungen]
   einordnung: |
     Verwandt mit der Krümmungsfrage [[gr.verm.ein_wendepunkt]]: Die reguläre Tetration scheint überall konkav zu sein, die Kneser-Tetration hat einen Wendepunkt —
-    und rückt dieser für grosse Basen zu nahe an 0, kippt TPID 7.
+    und wandert dieser für grosse Basen weit nach links (bei $b=10$ schon nahe $-1$), ist die Kurve bei 0 so stark nach oben gebogen, dass TPID 7 kippt.
 
 gr.gegen.tpid7_kneser:
   worum: |
@@ -709,7 +709,7 @@ gr.gegen.tpid7_kneser:
     Basis 100: $T(\tfrac12)T(-\tfrac12)=1.3158$, und bei $y=0.85$ sogar $2.09$.
   bilder: [exp.vermutungen]
   einordnung: |
-    Präzisiert die Vermutung [[gr.verm.tpid7]]: Für die reguläre Tetration ist sie offen, für Kneser gilt sie bis $b_7$ und ist darüber falsch. Bei grossen Basen liegt
+    Präzisiert die Vermutung [[gr.verm.tpid7]]: Für die reguläre Tetration ist sie offen, für Kneser ist sie über $b_7$ falsch und bis $b_7$ nur gemessen (lokal bei 0 erfüllt). Bei grossen Basen liegt
     der Wendepunkt der Kneser-Kurve nahe $-1$ ([[gr.beob.wendepunkte]]: $-0.997$ bei $b=10$), die Kurve ist bei 0 schon stark nach oben gebogen.
 
 gr.beob.integral_halb:
@@ -914,7 +914,7 @@ gr.satz.turmintegral_periodisch:
   warum: |
     1. **Basen über $e^{-e}$:** Der Turm geht gegen $h(x)$, egal bei welcher Teilhöhe man startet — diese Basen tragen nichts zur Schwingung bei.
     2. **Basen unter $e^{-e}$:** Zwei Schritte $y\mapsto x^{x^y}$ haben zwei anziehende Fixpunkte $L_-<L_+$ und dazwischen den abstossenden $L$. Jede stetige Tetration muss $L$
-       auf $[0,1)$ an einer Stelle $s^*$ treffen. Davor landet sie bei $L_+$, danach bei $L_-$ — im Grenzwert eine Rechteckwelle mit Sprung bei $s^*$ ([[fp.satz.rechteckwelle]]).
+       auf $[0,1)$ treffen; vorausgesetzt ist, dass sie es genau einmal tut, an der Stelle $s^*$. Davor landet sie bei $L_+$, danach bei $L_-$ — im Grenzwert eine Rechteckwelle mit Sprung bei $s^*$ ([[fp.satz.rechteckwelle]]).
     3. **Integrieren:** Die Fläche zählt, wie viele Basen (gewichtet mit der Lücke $L_+-L_-$) schon gesprungen sind. Die Ecken sind fest, weil bei ganzen Höhen noch keine bzw.
        schon alle gesprungen sind; die Antisymmetrie kommt daher, dass jede Rechteckwelle nach einem Schritt genau die Werte tauscht.
     4. **Linear:** Dort ist $T_x(s)=x^s$, und $x^{s^*}=L=x^L$ heisst $s^*=L(x)$ — die Sprungstelle ist der Fixpunkt selbst.
@@ -1001,7 +1001,7 @@ gr.satz.frei_und_fest:
   warum: |
     1. Jede andere Lösung ist $T\circ(\mathrm{id}+p)$ mit 1-periodischem $p$, $p(0)=0$ ([[fg.satz.allgemeine_loesung]]).
     2. Weil $p$ an $x$ und $x+n$ gleich aussieht, kürzt es sich aus jeder Beziehung zwischen diesen Stellen heraus — die Beziehung kommt allein von $T(x+n)=\exp_a^{\circ n}(T(x))$.
-    3. An einer einzelnen Stelle (oder an Stellen, deren Abstand nicht ganz ist) kann $p$ dagegen jede gewünschte Taylorreihe haben, solange $1+p'>0$ bleibt.
+    3. An einer einzelnen Stelle (oder an Stellen, deren Abstand nicht ganz ist) kann $p$ dagegen beliebige endlich viele Ableitungen vorgeschrieben bekommen, solange $1+p'>0$ bleibt.
   beispiel: |
     Kneser zur Basis $e$ mit $p(x)=0.05\bigl(\sin2\pi x+\tfrac12(1-\cos2\pi x)\bigr)$: $T'(0)/T'(-1)=1$, $(T''(0)-T'(0)^2)/T''(-1)=1$ und $T'(1)/T'(0)=e$ bleiben
     auf 25 Stellen gleich. Dagegen wird $T(\tfrac12)$ von $1.64635$ zu $1.72711$, $T'(0)$ von $1.09177$ zu $1.43476$, und $T'(\tfrac12)/T'(0)$ von $1.44276$ zu $0.79178$.

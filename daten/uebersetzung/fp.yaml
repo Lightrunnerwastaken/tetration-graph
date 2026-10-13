@@ -78,7 +78,7 @@
     worum: |
       If two real bases share a fixed point, often one lies to the right of the Shell–Thron region (its tower escapes) and one to the left (its tower jumps between two or three values).
 - id: fp.beob.i_turm
-  quelle_hash: aaab609dc568
+  quelle_hash: fcc85aae4950
   theorie_hash: d0e3c9e5eb49
   herkunft:
     modell: sonnet
@@ -90,12 +90,13 @@
     theorie: nein
   en:
     beweis:
-      text: 'Fixed point of $z\mapsto i^z$ via Lambert W (fp.satz.lambert); $|\lambda|<1$ makes it attracting, and $1$ lies in its basin of attraction
-        (numerically: 3000 steps, distance $<10^{-30}$).'
+      text: 'Fixed point of $z\mapsto i^z$ via Lambert W (fp.satz.lambert); $|\lambda|<1$ makes it attracting, and by fp.satz.shell_thron (with
+        $t=\lambda$, $te^{-t}=\ln i$) the tower converges, so $1$ lies in its basin of attraction (numerically confirmed: 3000 steps, distance
+        $<10^{-30}$).'
     pruefung:
       f2_benutzte_voraussetzungen: Principal branch of i^z.
       f5_neue_frage: 'no'
-      f3_spezialfall: Yes, of fp.satz.shell_thron with z = i.
+      f3_spezialfall: Yes, of fp.satz.shell_thron with b = i.
       f1_folgt_unmittelbar: Yes.
       f4_uebertragbar: Every base in the Shell–Thron domain.
     bewertung:
@@ -170,8 +171,8 @@
       For negative bases the tower jumps wildly back and forth. Usually it stays bounded or makes only a huge excursion and falls back; true running away occurs only at
       tiny, scattered places.
 - id: fp.beob.partner_keil
-  quelle_hash: 3525120aa77d
-  theorie_hash: 0d008793f2e7
+  quelle_hash: 53f0cdf78442
+  theorie_hash: 0288745c5b43
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -195,10 +196,10 @@
       richtigkeit: numerical, criterion proved
     titel: Attracting partners exist only in the wedge to the left of the Shell–Thron region
     aussage: |
-      A base $b$ has an **attracting** partner with the same fixed point if and only if $|\lambda_b-2\pi ik|<1$ for some integer $k\ne0$.
+      A base $b$ has an **attracting** partner with the same fixed point if and only if $|\lambda_b-2\pi im|<1$ for some integer $m\ne0$.
       In the principal branch only $m=\pm1$ occur ($m=\pm2$: not a single one of the 12 547 460 grid points of the unit disk lands in the strip),
-      each 18.371 % of the disk. All such bases have $\mathrm{Re}\,b<0$: they form a wedge to the left of the Shell–Thron region with tip at
-      $e^{-e}$ ($\mathrm{Re}\,b\in[-141.12,-0.006]$, $|\mathrm{Im}\,b|\le22.288$); the images of $m=+1$ and $m=-1$ meet exactly on the
+      each 18.371 % of the disk. All such bases have $\mathrm{Re}\,b<0$: they form a wedge to the left of the Shell–Thron region with its tip
+      on the negative real axis near $0$ ($\mathrm{Re}\,b\in[-141.12,-0.006]$, $|\mathrm{Im}\,b|\le22.288$); the images of $m=+1$ and $m=-1$ meet exactly on the
       negative real axis ($\mathrm{Im}\,\mathrm{Log}\,b=\pi$). The classical bases $2,e,3,4$ have no attracting partner.
       Examples (partner $d$, $\sigma=\mathrm{Log}\lambda_d/\mathrm{Log}\lambda_b$): $-19/25\to1.425186736-0.046203369i$; $-1\to1.417109495-0.024735158i$;
       $-2\to1.419386100+0.023509055i$; $-1+i\to1.444590692-0.000093874i$ (almost $\eta$, weakly damped).
@@ -216,8 +217,8 @@
     einordnung: |
       Says where the wave-free base change is possible at all ([[kl.satz.basiswechsel_gleiches_L]]). Open: a proof that $m=\pm2$ never occurs.
     genau: |
-      $b$ has an **attracting** partner with the same fixed point if and only if $|\lambda_b-2\pi ik|<1$ for some integer $k\ne0$. In the principal branch only $m=\pm1$ occur, each
-      18.371 % of the disk. All such bases have $\operatorname{Re}b<0$: they form a wedge to the left of the region with tip at $e^{-e}$ ($\operatorname{Re}b\in[-141.12,-0.006]$, $|\operatorname{Im}b|\le22.288$).
+      $b$ has an **attracting** partner with the same fixed point if and only if $|\lambda_b-2\pi im|<1$ for some integer $m\ne0$. In the principal branch only $m=\pm1$ occur, each
+      18.371 % of the disk. All such bases have $\operatorname{Re}b<0$: they form a wedge to the left of the region with its tip on the negative real axis near $0$ ($\operatorname{Re}b\in[-141.12,-0.006]$, $|\operatorname{Im}b|\le22.288$).
     warum: |
       The criterion follows from [[fp.satz.gleiches_L]]: the multipliers of the ladder lie at distance $2\pi i$, attracting means modulus $<1$. That only $m=\pm1$ occur and everything lies in the wedge
       is measured (12 547 460 grid points).
@@ -226,7 +227,7 @@
       in the domain with negative real part. The familiar bases $2$, $e$, $3$, $4$ have none.
 - id: fp.beob.regionen
   quelle_hash: 6bb25fba392e
-  theorie_hash: ddbceced9a23
+  theorie_hash: f8a1604bac26
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -263,7 +264,7 @@
     - {}
   en_theorie:
     beispiel: |
-      On 520 × 520 grid points: period 1: 109 624, period 3: 37 864, period 4: 28 564, period 2: only 240, escape: 29 187, unclear: 22 723.
+      On 520 × 520 grid points: period 1: 109 624, period 3: 37 864, period 4: 28 564, periods 5–12 together: 42 198, period 2: only 240, escape: 29 187, unclear: 22 723.
     einordnung: |
       How the cycles in the buds rotate: [[fp.verm.knospen_drehzahl]]; what happens exactly on the boundary: [[fp.satz.parabolisch_rand]], [[fp.satz.neutral]]. First version:
       [[fp.verm.knospen]].

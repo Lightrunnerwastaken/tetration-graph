@@ -130,7 +130,7 @@
       For the most important tetration, Kneser's solution at base $e$, the slope and the curvature at $0$ are known to many digits,
       and with them the beginning of its power series.
 - id: gr.beob.kneser_pde_wackeln
-  quelle_hash: 44247fe1772c
+  quelle_hash: 35fb13e36808
   theorie_hash: 449d71b174d2
   herkunft:
     modell: sonnet
@@ -149,7 +149,7 @@
     bewertung:
       richtigkeit: numerical (periodicity to 10⁻³²)
       nutzen: Shows that Kneser is not the family of the forum equation, and ties this to the base change.
-    titel: 'Kneser satisfies Kobi''s equation only almost: p wobbles by 3·10⁻⁴ (base 2)'
+    titel: 'Kneser satisfies Kobi''s equation only almost: p wobbles by ±3·10⁻⁴ (base 2)'
     aussage: 'For Kneser''s tetration, $p=\partial_b\operatorname{slog}_b-S_b\operatorname{slog}_b''$ (gr.satz.turm_pde) is **not** constant:
       measured over one period ($y\in[0,1]$, $\operatorname{slog}$ from $-1$ to $0$): base 2 mean $-3.15733299588$, range $5.7\cdot10^{-4}$; base
       $e$ mean $-0.806194244997$, range $2.9\cdot10^{-4}$. So the fractional Kneser iterates satisfy Kobi''s equation only up to a small periodic
@@ -180,7 +180,7 @@
       Does the well-known Kneser tetration satisfy the forum equation from [[gr.satz.turm_pde]] at fractional height too? Almost — but not quite.
 - id: gr.beob.wendepunkte
   quelle_hash: 9acd0a6f0bb8
-  theorie_hash: e0aca9d56d2b
+  theorie_hash: 41fa66a32ca5
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -216,7 +216,7 @@
       Kneser: $b=1.5$: $x_w=3.987$; $\ b=2$: $-0.030$; $\ b=e$: $-0.522$; $\ b=3$: $-0.604$; $\ b=5$: $-0.847$; $\ b=10$: $-0.997$;
       $\ b=100$: $-1.182$. Regular for $b=1.2,\,1.3,\,\sqrt2,\,1.44$: no inflection point, bent downward everywhere.
     warum: |
-      Measured: the second derivative was evaluated on a fine grid from $-1.95$ to far to the right and searched
+      Measured: the second derivative was evaluated on a fine grid from $-1.94$ to far to the right and searched
       for sign changes ([[exp.ableitung]]). The picture is plausible as follows: near $-2$ every curve plunges logarithmically, so it is
       bent downward; above $\eta$ it must eventually explode and thus bend upward.
     worum: |
@@ -317,7 +317,7 @@
       So far nothing points that way.
 - id: gr.gegen.tpid7_kneser
   quelle_hash: e64575bf2c53
-  theorie_hash: a4117a2d1c52
+  theorie_hash: 66823b7a0e84
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -359,7 +359,7 @@
       Base $e$: $T'(0)=1.09177$, $T''(0)=0.54297$, so $(\ln T)''(0)=0.54297-1.19195=-0.64899$; measured $\bigl(1-T(0.05)T(-0.05)\bigr)/0.05^2=0.6496$.
       Base 100: $T(\tfrac12)T(-\tfrac12)=1.3158$, and at $y=0.85$ even $2.09$.
     einordnung: |
-      Makes the conjecture [[gr.verm.tpid7]] precise: For regular tetration it is open, for Kneser it holds up to $b_7$ and is false above. For large bases
+      Makes the conjecture [[gr.verm.tpid7]] precise: For regular tetration it is open, for Kneser it is false above $b_7$ and only measured up to $b_7$ (satisfied locally at 0). For large bases
       the inflection point of the Kneser curve lies near $-1$ ([[gr.beob.wendepunkte]]: $-0.997$ at $b=10$), the curve is already strongly bent upward at 0.
     genau: |
       The second derivative of $\ln T$ at 0 is
@@ -666,7 +666,7 @@
       $\lambda$. This number is exactly the strength with which the fixed point attracts.
 - id: gr.satz.basis_ganz
   quelle_hash: 0eadcf74432f
-  theorie_hash: f8b1619ef5cf
+  theorie_hash: 2c8c7ec48b26
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -841,7 +841,7 @@
       be a fraction.
 - id: gr.satz.frei_und_fest
   quelle_hash: 4c30c7f82536
-  theorie_hash: 2153cd1a6082
+  theorie_hash: 323f010ccaf1
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -902,12 +902,12 @@
     warum: |
       1. Every other solution is $T\circ(\mathrm{id}+p)$ with 1-periodic $p$, $p(0)=0$ ([[fg.satz.allgemeine_loesung]]).
       2. Because $p$ looks the same at $x$ and $x+n$, it cancels out of every relation between these points — the relation comes solely from $T(x+n)=\exp_a^{\circ n}(T(x))$.
-      3. At a single point (or at points whose distance is not an integer), on the other hand, $p$ can have any desired Taylor series, as long as $1+p'>0$ remains.
+      3. At a single point (or at points whose distance is not an integer), on the other hand, $p$ can be given any finitely many prescribed derivatives, as long as $1+p'>0$ remains.
     worum: |
       Which identities can there be for tetration at all? The answer is surprisingly simple: Only what connects points at **integer** distance is fixed.
       Everything else can be chosen freely.
 - id: gr.satz.gestalt
-  quelle_hash: 8e50ed544eae
+  quelle_hash: c0208f5c34ae
   theorie_hash: b44c52709f42
   herkunft:
     modell: sonnet
@@ -937,8 +937,8 @@
     aussage: $T(x)\to-\infty$ for $x\to-2^+$. For $a>\eta$, $T(x)\to\infty$, and the image is all of $\mathbb R$. For $1<a\le\eta$, $T(x)\uparrow
       a_*$ (lower fixed point of $a^x$, at most $e$), and the image is $(-\infty,a_*)$.
     bereich: $a>1$, $T$ continuous, strictly increasing on $(-2,\infty)$, $T(0)=1$
-    einfach: On the left, at −2, every tetration plunges to minus infinity. On the right it grows beyond all bounds if the base is larger than
-      η ≈ 1.4447 — otherwise it approaches a fixed height, never higher than e.
+    einfach: On the left, at −2, every increasing tetration plunges to minus infinity. On the right it grows beyond all bounds if the base is
+      larger than η ≈ 1.4447 — otherwise it approaches a fixed height, never higher than e.
   en_theorie:
     beispiel: |
       Base $e$ (Kneser): $T(-\tfrac12)=0.49856$, so $T(-\tfrac32)=\ln0.49856=-0.69602$, and further left the curve falls ever more steeply.
@@ -963,7 +963,7 @@
       bottomless, on the right it either grows beyond all bounds or settles below a fixed height — depending on whether the base lies above
       or below $\eta$.
 - id: gr.satz.grenzfaelle
-  quelle_hash: 95cb13ad91dc
+  quelle_hash: 3edaa9144f3c
   theorie_hash: 40dc611844fe
   herkunft:
     modell: sonnet
@@ -992,8 +992,8 @@
       $\lim_{x\to0^+}x\uparrow\uparrow n=1$ for even $n$ and $=0$ for odd $n$ (only slowly: at $x=10^{-3}$ we have $x\uparrow\uparrow2=0.993$, $x\uparrow\uparrow3=0.00105$).
       Furthermore $(-1)\uparrow\uparrow n=-1$ for all $n\ge1$ and $1\uparrow\uparrow n=1$. Negative heights: $a\uparrow\uparrow0=1$, $a\uparrow\uparrow(-1)=\log_a1=0$,
       $a\uparrow\uparrow(-2)=\log_a0=-\infty$ — below that no real values.
-    einfach: 'For bases near 0, towers jump back and forth: even heights go to 1, odd ones to 0. Below height −1 there are no sensible real values
-      any more.'
+    einfach: 'For bases near 0, towers jump back and forth: even heights go to 1, odd ones to 0. At height −2 and below there are no sensible
+      real values anymore.'
   en_theorie:
     beispiel: |
       $x=10^{-3}$: $x\uparrow\uparrow2=0.9931$, $x\uparrow\uparrow3=0.00105$, $x\uparrow\uparrow4=0.9928$.
@@ -1048,7 +1048,7 @@
       The logarithm of the tetration, one level higher, is simply the tetration itself times $\ln a$. Hence its mean value is also a
       known integral.
 - id: gr.satz.integral_produkt
-  quelle_hash: d1060079882c
+  quelle_hash: '254869360110'
   theorie_hash: 71c96d2537b1
   herkunft:
     modell: sonnet
@@ -1072,8 +1072,8 @@
       nutzen: Shows which integrals the construction does not see.
     titel: An integral that every tetration evaluates the same way
     aussage: $$\int_x^{x+1}T'(u)\,T(u+1)\,du=\frac{T(x+2)-T(x+1)}{\ln a},\qquad\text{e.g.}\quad\int_{-1}^{0}T'(u)\,T(u+1)\,du=\frac{a-1}{\ln a}.$$
-    einfach: Although different tetrations are different curves, this integral gives the same value for all of them — the integrand is the hidden
-      derivative of T one level higher.
+    einfach: Although different tetrations are different curves, this integral gives the same value for all of them between integers (say from
+      −1 to 0) — the integrand is the hidden derivative of T one level higher.
     formen:
     - notiz: chain rule
     - notiz: base e
@@ -1319,8 +1319,8 @@
       Which parts of the derivatives of a tetration depend on the chosen continuation, and which do not? The individual slopes depend on it. Certain
       **ratios**, however, are the same for every solution — and one of them is the natural logarithm of the base.
 - id: gr.satz.logstern
-  quelle_hash: a39239c43bfb
-  theorie_hash: f2b20531925a
+  quelle_hash: 85b8e4947f3d
+  theorie_hash: c95b2b314aec
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1344,7 +1344,7 @@
       nutzen: Intuitive picture for slog.
     titel: slog is the smoothed iterated logarithm
     aussage: '$\lceil\operatorname{slog}_a(y)\rceil=\log^*_a(y)$: rounded up, slog is the number of logarithms until one lands at 1 or below.'
-    bereich: $a>\eta$, $y>1$; $\log^*_a(y)=\min\{n:\log_a^{\circ n}(y)\le1\}$
+    bereich: $a>\eta$, $y>0$; $\log^*_a(y)=\min\{n:\log_a^{\circ n}(y)\le1\}$
     einfach: How many times do you have to press the logarithm until the number drops below 1? That is a staircase. slog is the same staircase,
       only drawn out smoothly.
     formen:
@@ -1371,7 +1371,7 @@
       2. On $(0,1]$ the super-logarithm lies between $A(0)=-1$ (excluded) and $A(1)=0$: $A(z)\in(-1,0]$.
       3. Each logarithm lowers $A$ by exactly $1$ ([[gr.satz.slog_grund]]), so $A(y)=n+A(z)\in(n-1,n]$. Rounding up gives $n$.
     worum: |
-      How many times must one take the logarithm until a number falls below $1$? This number is called the iterated logarithm $\log^*$. The
+      How many times must one take the logarithm until a number is at most $1$? This number is called the iterated logarithm $\log^*$. The
       super-logarithm is exactly the smooth version of it: rounded up, it gives the same number.
 - id: gr.satz.selbstpotenz
   quelle_hash: 592f3563a33c
@@ -1633,7 +1633,7 @@
       $1-\frac14+\frac1{27}-\frac1{256}+\dots$ Hence the name “Student's Dream” (Sophomore's Dream).
 - id: gr.satz.stellen
   quelle_hash: 0ae6df0257c3
-  theorie_hash: 7a5e801575c2
+  theorie_hash: 2f76eb5d8123
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1674,7 +1674,7 @@
       The idea “logarithm = one level down” recurs everywhere: with the super-logarithm [[gr.satz.logstern]], with the
       base change (Chapter 7), where towers of different bases are compared by repeated logarithms.
     genau: |
-      For $a>1$ and $n\ge1$ the number $a\uparrow\uparrow(n+1)$ has exactly
+      For integers $a\ge2$ and $n\ge1$ the number $a\uparrow\uparrow(n+1)$ has exactly
       $$\bigl\lfloor\, a\uparrow\uparrow n\cdot\log_{10}a\,\bigr\rfloor+1$$
       decimal digits. Here $\lfloor\cdot\rfloor$ is rounding down to the nearest integer and $\log_{10}$ the common logarithm.
     warum: |
@@ -1757,7 +1757,7 @@
       there is always $\ln\ln a$.
 - id: gr.satz.superwurzel
   quelle_hash: 3fe269aa7271
-  theorie_hash: a9b07e272213
+  theorie_hash: 6fc376d66acf
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1809,7 +1809,7 @@
       The infinite super-root is surprisingly simple: $y^{1/y}$ ([[fp.satz.unendliche_superwurzel]]).
     genau: |
       We seek real $y>0$ with $y^y=x$.
-      - For $x>1$ there is exactly one solution, and it is larger than $1$.
+      - For $x>1$ there is exactly one solution, and it is larger than $1$; for $x=1$ only $y=1$.
       - For $e^{-1/e}<x<1$ there are two solutions, both between $0$ and $1$: one smaller than $1/e$, one larger.
       - For $x=e^{-1/e}\approx0.6922$ there is only $y=1/e$, for $x<e^{-1/e}$ none at all.
 
@@ -1903,7 +1903,7 @@
       a rule of computation that one applies again and again until the number no longer changes. And here, too, the Lambert function is
       involved — this time twice in a row.
 - id: gr.satz.tauschregel
-  quelle_hash: 65006b4b5d92
+  quelle_hash: 3a7385c3aa36
   theorie_hash: f74f6e78b24c
   herkunft:
     modell: sonnet
@@ -1923,7 +1923,7 @@
       f5_neue_frage: 'no'
       f1_folgt_unmittelbar: Yes, from $(a^u)^v=a^{uv}$ and a counterexample.
       f2_benutzte_voraussetzungen: $a>0$ (so that powers are real); $T(x)\ne0$, i.e. $x\ne-1$, for the forms with $1/T(x)$.
-      f3_spezialfall: 'Yes: for every superfunction of a power function $f(z)=a^z$; in general $F(x+1)=f(F(x))$ and $f(u)^v=f(uv)$.'
+      f3_spezialfall: 'Yes: for every superfunction of an exponential function $f(z)=a^z$; in general $F(x+1)=f(F(x))$ and $f(u)^v=f(uv)$.'
       f4_uebertragbar: 'Not directly to pentation: $T(u)^{v}$ is not a tower value. The ladder of levels (gr.satz.stufenleiter) is the counterpart
         there.'
     bewertung:
@@ -2204,7 +2204,7 @@
       between two limits — because the towers themselves jump between two branches for small $x$.
 - id: gr.satz.turmintegral_periodisch
   quelle_hash: d7ae5f49c066
-  theorie_hash: 4493dd4e4547
+  theorie_hash: 9e26b1f36936
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -2268,7 +2268,7 @@
     warum: |
       1. **Bases above $e^{-e}$:** The tower tends to $h(x)$, no matter at which partial height one starts — these bases contribute nothing to the oscillation.
       2. **Bases below $e^{-e}$:** Two steps $y\mapsto x^{x^y}$ have two attracting fixed points $L_-<L_+$ and between them the repelling one $L$. Every continuous tetration must hit $L$
-         at one point $s^*$ in $[0,1)$. Before that it ends up at $L_+$, after that at $L_-$ — in the limit a square wave with a jump at $s^*$ ([[fp.satz.rechteckwelle]]).
+         in $[0,1)$; it is assumed to do so exactly once, at the point $s^*$. Before that it ends up at $L_+$, after that at $L_-$ — in the limit a square wave with a jump at $s^*$ ([[fp.satz.rechteckwelle]]).
       3. **Integrating:** The area counts how many bases (weighted by the gap $L_+-L_-$) have already jumped. The corners are fixed because at integer heights none, respectively
          all have jumped; the antisymmetry comes from the fact that every square wave exactly exchanges the values after one step.
       4. **Linear:** There $T_x(s)=x^s$, and $x^{s^*}=L=x^L$ means $s^*=L(x)$ — the jump point is the fixed point itself.
@@ -2530,8 +2530,8 @@
     worum: |
       The measurements suggest a clear rule: above $\eta$ exactly one change of curvature, below $\eta$ none. This is not yet proved.
 - id: gr.verm.tpid7
-  quelle_hash: e1b495336dff
-  theorie_hash: 289db3c563dc
+  quelle_hash: 97cf768d7f02
+  theorie_hash: 2c0b548eea1c
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -2559,7 +2559,7 @@
       **Conjecture (A. Robbins, TPID 7, 2009):** For $1<b<\eta$ and $0<|y|<1$ we have $0<T_b(y)\,T_b(-y)<1$ (regular tetration).
       **Measured:** for $b=1.1,\ 1.3,\ \sqrt2,\ 1.44$ and $y=0.05,\dots,0.95$ — and likewise for Kneser at $b=1.5,\ 2,\ e,\ 3,\ 5,\ 10$; the product falls
       monotonically from 1 to 0 in each case (at $y=\tfrac12$: $0.7824$ for $\sqrt2$, $0.8208$ for $e$). For Kneser, however, it does **not** hold for all bases (gr.gegen.tpid7_kneser).
-      Sufficient is that $\ln T_b$ is concave on $(-1,1)$; for regular tetration this follows from kl.verm.vollmonoton (kl.satz.folgen_vollmonoton).
+      Sufficient is that $\ln T_b$ is concave on $(-1,1)$; for regular tetration this follows from the conjecture kl.verm.vollmonoton (kl.satz.folgen_vollmonoton).
     bereich: $0<|y|<1$; regular tetration for $1<b<\eta$ (as posed), Kneser for $b>\eta$ (extension)
     einfach: If you multiply the value of a tetration at +y by its value at −y, you always get something between 0 and 1 — that is the conjecture.
       For small bases this holds everywhere it has been checked; for very large bases it tips over.
@@ -2571,11 +2571,11 @@
       $0.8306$ ($3$), $0.8878$ ($5$), $0.9758$ ($10$) — Kneser. In all cases the product falls uniformly from 1 (at $y=0$) to 0 (at $y=1$).
     einordnung: |
       Related to the curvature question [[gr.verm.ein_wendepunkt]]: Regular tetration seems to be concave everywhere, Kneser tetration has an inflection point —
-      and if this moves too close to 0 for large bases, TPID 7 tips over.
+      and if for large bases it moves far to the left (already near $-1$ at $b=10$), the curve is bent upward so strongly at 0 that TPID 7 tips over.
     genau: |
       **Conjecture (TPID 7):** For $1<b<\eta$ (regular tetration) and $0<|y|<1$ we have
       $$0<T_b(y)\,T_b(-y)<1.$$
-      Robbins also mentioned the Kneser tetration for $b>\eta$. There it holds only up to the base $b_7\approx10.22$ ([[gr.gegen.tpid7_kneser]]).
+      Robbins also mentioned the Kneser tetration for $b>\eta$. There it holds at most up to the base $b_7\approx10.22$ ([[gr.gegen.tpid7_kneser]]).
     warum: |
       A proof is missing. What one sees:
       1. **Positive:** For $-1<x$ we have $T(x)>0$, so the product is positive.

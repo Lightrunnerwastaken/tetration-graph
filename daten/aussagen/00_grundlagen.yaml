@@ -106,7 +106,7 @@ aussagen:
     $T(x)\to-\infty$ für $x\to-2^+$. Für $a>\eta$ gilt $T(x)\to\infty$, das Bild ist ganz $\mathbb R$. Für $1<a\le\eta$ gilt
     $T(x)\uparrow a_*$ (unterer Fixpunkt von $a^x$, höchstens $e$), das Bild ist $(-\infty,a_*)$.
   einfach: >-
-    Links bei −2 stürzt jede Tetration nach minus unendlich. Rechts wächst sie über alle Grenzen, wenn die Basis grösser als η ≈ 1.4447 ist —
+    Links bei −2 stürzt jede wachsende Tetration nach minus unendlich. Rechts wächst sie über alle Grenzen, wenn die Basis grösser als η ≈ 1.4447 ist —
     sonst nähert sie sich einer festen Höhe, nie höher als e.
   beweis:
     art: vollstaendig
@@ -498,7 +498,7 @@ aussagen:
   aussage: >-
     $$\int_x^{x+1}T'(u)\,T(u+1)\,du=\frac{T(x+2)-T(x+1)}{\ln a},\qquad\text{z. B.}\quad\int_{-1}^{0}T'(u)\,T(u+1)\,du=\frac{a-1}{\ln a}.$$
   einfach: >-
-    Obwohl verschiedene Tetrationen verschiedene Kurven sind, liefert dieses Integral für alle denselben Wert — der Integrand ist die versteckte Ableitung von T eine Stufe höher.
+    Obwohl verschiedene Tetrationen verschiedene Kurven sind, liefert dieses Integral zwischen ganzen Zahlen (etwa von −1 bis 0) für alle denselben Wert — der Integrand ist die versteckte Ableitung von T eine Stufe höher.
   formen:
     - {tex: 'T''(u)\,T(u+1)=\frac{T''(u+1)}{\ln a}', notiz: Kettenregel}
     - {tex: '\int_{-1}^{0}T_e''(u)\,T_e(u+1)\,du=e-1', notiz: Basis e}
@@ -688,7 +688,7 @@ aussagen:
     - {typ: verwandt, ziel: bw.satz.phasengesetz}
 
 - id: gr.beob.kneser_pde_wackeln
-  titel: 'Kneser erfüllt Kobis Gleichung nur fast: p wackelt um 3·10⁻⁴ (Basis 2)'
+  titel: 'Kneser erfüllt Kobis Gleichung nur fast: p wackelt um ±3·10⁻⁴ (Basis 2)'
   art: beobachtung
   ebene: C
   status: numerisch
@@ -804,7 +804,7 @@ aussagen:
   status: bewiesen
   niveau: einstieg
   objekte: [slog]
-  bereich: '$a>\eta$, $y>1$; $\log^*_a(y)=\min\{n:\log_a^{\circ n}(y)\le1\}$'
+  bereich: '$a>\eta$, $y>0$; $\log^*_a(y)=\min\{n:\log_a^{\circ n}(y)\le1\}$'
   aussage: '$\lceil\operatorname{slog}_a(y)\rceil=\log^*_a(y)$: aufgerundet ist slog die Anzahl der Logarithmen, bis man bei höchstens 1 landet.'
   einfach: >-
     Wie oft muss man den Logarithmus drücken, bis die Zahl unter 1 fällt? Das ist eine Treppe. slog ist dieselbe Treppe, nur glatt gezogen.
@@ -1206,7 +1206,7 @@ aussagen:
     **Vermutung (A. Robbins, TPID 7, 2009):** Für $1<b<\eta$ und $0<|y|<1$ gilt $0<T_b(y)\,T_b(-y)<1$ (reguläre Tetration).
     **Gemessen:** für $b=1.1,\ 1.3,\ \sqrt2,\ 1.44$ und $y=0.05,\dots,0.95$ — und ebenso für Kneser bei $b=1.5,\ 2,\ e,\ 3,\ 5,\ 10$; das Produkt fällt
     jeweils monoton von 1 auf 0 (bei $y=\tfrac12$: $0.7824$ für $\sqrt2$, $0.8208$ für $e$). Für Kneser gilt es aber **nicht** für alle Basen (gr.gegen.tpid7_kneser).
-    Hinreichend ist, dass $\ln T_b$ auf $(-1,1)$ konkav ist; für die reguläre Tetration folgt das aus kl.verm.vollmonoton (kl.satz.folgen_vollmonoton).
+    Hinreichend ist, dass $\ln T_b$ auf $(-1,1)$ konkav ist; für die reguläre Tetration folgt das aus der Vermutung kl.verm.vollmonoton (kl.satz.folgen_vollmonoton).
   einfach: >-
     Multipliziert man den Wert einer Tetration bei +y mit dem Wert bei −y, kommt immer etwas zwischen 0 und 1 heraus — so die Vermutung.
     Für kleine Basen stimmt das überall, wo nachgerechnet wurde; für sehr grosse Basen kippt es.
@@ -1326,7 +1326,7 @@ aussagen:
     Ferner $(-1)\uparrow\uparrow n=-1$ für alle $n\ge1$ und $1\uparrow\uparrow n=1$. Negative Höhen: $a\uparrow\uparrow0=1$, $a\uparrow\uparrow(-1)=\log_a1=0$,
     $a\uparrow\uparrow(-2)=\log_a0=-\infty$ — darunter keine reellen Werte.
   einfach: >-
-    Bei Basen nahe 0 springen Türme hin und her: gerade Höhen gehen gegen 1, ungerade gegen 0. Unter der Höhe −1 gibt es keine vernünftigen reellen Werte mehr.
+    Bei Basen nahe 0 springen Türme hin und her: gerade Höhen gehen gegen 1, ungerade gegen 0. Bei der Höhe −2 und darunter gibt es keine vernünftigen reellen Werte mehr.
   beweis:
     art: vollstaendig
     text: |
@@ -1377,7 +1377,7 @@ aussagen:
   pruefung:
     f1_folgt_unmittelbar: Ja, aus $(a^u)^v=a^{uv}$ und einem Gegenbeispiel.
     f2_benutzte_voraussetzungen: '$a>0$ (damit Potenzen reell sind); $T(x)\ne0$, also $x\ne-1$, für die Formen mit $1/T(x)$.'
-    f3_spezialfall: 'Ja: für jede Superfunktion einer Potenzfunktion $f(z)=a^z$; allgemein $F(x+1)=f(F(x))$ und $f(u)^v=f(uv)$.'
+    f3_spezialfall: 'Ja: für jede Superfunktion einer Exponentialfunktion $f(z)=a^z$; allgemein $F(x+1)=f(F(x))$ und $f(u)^v=f(uv)$.'
     f4_uebertragbar: 'Auf die Pentation nicht direkt: $T(u)^{v}$ ist kein Turmwert. Die Stufenleiter (gr.satz.stufenleiter) ist dort das Gegenstück.'
     f5_neue_frage: 'nein'
   bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Räumt einen häufigen Irrtum aus, setzt die Regel daneben, die wirklich gilt, und macht die Basis aus Werten ablesbar.', nutzen_stufe: mittel}

@@ -146,8 +146,8 @@
       Remarkably little is known about the numbers in towers. Even such simple questions as “Is ${}^4\pi$ an integer?” are open — not because they sound hard,
       but because one cannot even compute ${}^4\pi$ precisely enough to check.
 - id: ar.kor.benachbart
-  quelle_hash: 158a0a18a5e9
-  theorie_hash: bf9b56f4847d
+  quelle_hash: 947e7df0c273
+  theorie_hash: 45532a827333
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -174,7 +174,7 @@
     - text: T = Kneser (A1, Corollary 1)
       notiz: every strictly increasing solution suffices
     titel: For every increasing tetration, one of T(x), T(x+1) is transcendental
-    aussage: For $x>-2$, $x\notin\{-1,0\}$ at least one of the values $T(x)$, $T(x+1)$ is transcendental.
+    aussage: For $x>-2$, $x\ne-1$ at least one of the values $T(x)$, $T(x+1)$ is transcendental.
     bereich: real solutions to base $e$ whose only zero is at $-1$ (e.g. strictly increasing)
     versionen:
     - aenderung: for Kneser's tetration
@@ -188,13 +188,13 @@
     einordnung: |
       Formulated in A1 for Kneser, but holds for every strictly increasing solution — also linear and regular.
     genau: |
-      For real solutions to base $e$ whose only zero is at $-1$ (e.g. strictly increasing) and $x>-2$, $x\notin\{-1,0\}$, at least one of the values $T(x)$, $T(x+1)$ is transcendental.
+      For real solutions to base $e$ whose only zero is at $-1$ (e.g. strictly increasing) and $x>-2$, $x\ne-1$, at least one of the values $T(x)$, $T(x+1)$ is transcendental.
     warum: |
       For $x\ne-1$ we have $T(x)\ne0$; then [[ar.satz.orbitschranke]].
     worum: |
-      For every increasing tetration to base $e$: Of two values at distance $1$, at least one is transcendental — everywhere except at $-1$ and $0$.
+      For every increasing tetration to base $e$: Of two values at distance $1$, at least one is transcendental — everywhere except at $-1$ (there $T(-1)=0$, $T(0)=1$).
 - id: ar.lem.nullstellen
-  quelle_hash: 83b19df0dd3d
+  quelle_hash: 01e4c4aa87ac
   theorie_hash: 9d093d4adc03
   herkunft:
     modell: sonnet
@@ -215,7 +215,8 @@
       f4_uebertragbar: Every solution that is holomorphic on $\bar D(1,R)$, $R>1.2$.
       f5_neue_frage: Polylog counting bound → ar.satz.masser_typ
       f1_folgt_unmittelbar: No — combination of Jensen + transcendence measure.
-      f2_benutzte_voraussetzungen: Holomorphy on a disk of radius > 1.2 around 1 and $T(1)=e$; Kneser only for the holomorphy.
+      f2_benutzte_voraussetzungen: Holomorphy on $\bar D(1,2.9)$ (any radius > 1.2 around 1 would do, with other constants) and $T(1)=e$; Kneser
+        only for the holomorphy.
       f3_spezialfall: Masser's method for ζ (transcendence measure of π at even points).
     bewertung:
       recherche: 'A1: no tetration-specific template known.'
@@ -862,7 +863,7 @@
     worum: |
       What Schanuel's conjecture would mean for towers: In a chain $T(x),T(x+1),T(x+2),\dots$ at most a single value is algebraic.
 - id: ar.satz.selbstpotenz_kongruenz
-  quelle_hash: a8fa1fec7a04
+  quelle_hash: 5e01f92128ab
   theorie_hash: 8ddeb3256cb1
   herkunft:
     modell: sonnet
@@ -891,7 +892,7 @@
       $x^x\equiv u$ and $y^{y^y}\equiv u\pmod k$ have solutions. More generally, every tower $a_1^{a_2^{a_3^{\cdots}}}$ of positive integers becomes eventually constant modulo $k$.
     bereich: integers; $k\ge1$; $u$ coprime to $k$
     einfach: If one calculates only with remainders (as on a clock), the remainders of 1¹, 2², 3³, … eventually repeat regularly, and every remainder
-      occurs as x^x.
+      coprime to k occurs as x^x.
     quellen:
     - stelle: Abstract, §1
     - {}
@@ -1076,8 +1077,8 @@
       like $\sqrt2$? No: It is **transcendental**. This follows in a few lines from a famous theorem of Gelfond and Schneider.
       For the three-level tower this theorem only suffices for “not a fraction”.
 - id: ar.satz.unendliche_tuerme_gs
-  quelle_hash: a7d6c21a4572
-  theorie_hash: 5a014c0d3bc1
+  quelle_hash: 97af566cd10b
+  theorie_hash: 54a47bbc7bf5
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1104,7 +1105,8 @@
       $h(b)$ is either rational or transcendental, never algebraic irrational. Example: $h(\sqrt2)=2$.
       For rational bases $b\in[e^{-e},e^{1/e}]$, $h(b)$ is transcendental except at $b=1/4$ ($h=1/2$) and $b=1$ (Sondow–Marques, Cor. 4.2);
       below $e^{-e}$, where the tower splits into two limits $h_o<h_e$, both are irrational for rational $b\ne1/16$, and at least one is transcendental (Prop. 4.5).
-    bereich: $b$ algebraic, $1<b\le e^{1/e}$; $h(b)=b^{b^{b^{\cdots}}}$ the value of the infinite tower
+    bereich: $b$ algebraic, $e^{-e}\le b\le e^{1/e}$; $h(b)=b^{b^{b^{\cdots}}}$ the value of the infinite tower; below $e^{-e}$ (rational $b$
+      only) its two limits
     einfach: The infinite tower of an algebraic base gives either a fraction (as with √2, where 2 comes out) or right away a transcendental number
       — there is nothing in between.
     quellen:
@@ -1117,14 +1119,14 @@
     einordnung: |
       Counterpart to [[ar.satz.rationale_tuerme]] for infinitely many levels.
     genau: |
-      For algebraic $b\in(1,e^{1/e}]$, $h(b)$ is rational or transcendental.
+      For algebraic $b\in[e^{-e},e^{1/e}]$, $h(b)$ is rational or transcendental.
     warum: |
       The tower value satisfies $h=b^h$. An algebraic irrational $h$ would, by Gelfond–Schneider, give a transcendental $b^h$ — contradiction.
     worum: |
       What kind of number is the infinite tower $b^{b^{b^{\cdots}}}$ when $b$ is algebraic?
 - id: ar.verm.gelfond_turm
-  quelle_hash: e9fcbc5473a6
-  theorie_hash: 720b736e10a5
+  quelle_hash: 890807c848a0
+  theorie_hash: 1058d8cde2b7
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -1153,7 +1155,7 @@
       ${}^2z,{}^3z,\dots$ (for $z=\alpha$) are algebraically independent.
       In 1934 Gelfond announced an even more general version as proved but never published a proof; the form stated here is the one corrected by Marques and Sondow
       (Gelfond had omitted the condition “irrational”).
-    bereich: $\omega\ne0$ and $\alpha$ algebraic, $\alpha$ irrational; ${}^kz=z^{z^{\cdot^{\cdot^{z}}}}$ ($k$ levels)
+    bereich: $\omega\ne0$ algebraic, $\alpha$ algebraic and irrational; ${}^kz=z^{z^{\cdot^{\cdot^{z}}}}$ ($k$ levels)
     einfach: If one builds a tower √2^√2^√2… from a number like √2, then every level from the second on should be a “truly new” number that solves
       no equation with whole numbers. This is proved only for the second level; everything above it is open.
     quellen:
@@ -1166,7 +1168,7 @@
     einordnung: |
       Follows from [[ar.satz.ssc_gelfond]]; the special cases are in [[ar.satz.gelfond_schneider]] and [[ar.satz.rationale_tuerme]]; already [[ar.frage.e_hoch_e]] is open.
     genau: |
-      For algebraic irrational $\alpha$ and for $z=e^\omega$ ($\omega\ne0$ algebraic), the towers ${}^kz$ ($k\ge2$) are transcendental and even algebraically independent.
+      For algebraic irrational $\alpha$ and for $z=e^\omega$ ($\omega\ne0$ algebraic), the towers ${}^kz$ ($k\ge2$) are transcendental and even algebraically independent (for $z=e^\omega$ including ${}^1z$).
     warum: |
       Not proved. Only the lowest levels are known: $\alpha^\alpha$ is transcendental by Gelfond–Schneider, $e^\omega$ by Hermite–Lindemann. From the third level on
       one would need statements about the algebraic independence of several exponential values — that is the territory of the Schanuel conjecture.
