@@ -1,0 +1,32 @@
+gebiet: gr
+# Identitätssuche Etappe 3 (14.10.2026): Nullstellenzählung von sexp″ zur Basis e.
+aussagen:
+
+- id: gr.beob.ein_wendepunkt_e
+  titel: 'Basis e: Knesers Tetration hat genau einen Wendepunkt (rechnergestützt, Nullstellenzählung im Komplexen)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [kneser_T, konvexitaet]
+  bereich: 'Kneser-$\mathrm{sexp}_e$ auf $(-2,\infty)$'
+  aussage: |
+    Das Argumentprinzip zählt die Nullstellen von $\mathrm{sexp}''$ (nach kn.satz.ableitung_nullstellenfrei die Nullstellen von $\varphi=\mathrm{sexp}''/\mathrm{sexp}'$)
+    in Streifen $[x_0,x_0+1]\times[-4,4]$: im ganzen Gebiet $[-1.8,1.4]\times[-4,4]$ liegt genau eine, der reelle Wendepunkt $x_w=-0.5218\ldots$;
+    oberhalb $|\mathrm{Im}z|=4$ ist $|\varphi-L|\ll|L|$. Mit zwei elementaren Schritten ($\mathrm{sexp}''>0$ auf $[-0.4,\infty)$ nach gr.kor.konvex_nach_oben;
+    $\mathrm{sexp}''(x)<0$ auf $(-2,-1.6)$ aus $\mathrm{sexp}''(x+1)<0$) folgt: **genau ein Wendepunkt auf $(-2,\infty)$** — für $b=e$ die Vermutung
+    gr.verm.ein_wendepunkt, bis auf eine Zertifizierung mit Intervallarithmetik.
+  einfach: >-
+    Ob die Kneser-Kurve ihre Krümmung genau einmal wechselt, war offen. Für die Basis e zählt eine Rechnung in der komplexen Ebene alle Stellen, an
+    denen die Krümmung null wird: es ist genau eine. Ganz streng ist das erst, wenn man die Rechnung mit garantierten Rundungsfehlern wiederholt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, W; s4_zaehlung.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Windungszahlen gerechnet).'
+    f2_benutzte_voraussetzungen: 'Windungszahlen in Gleitkomma (dps 30), ganzzahlig auf 10⁻³⁰, Schrittweite ≤ 0.26 rad; Kneser-Werte aus dem Motor und der θ-Reihe.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf Basis 2 (Wendepunkt bei −0.0302) und als Familie in b.'
+    f5_neue_frage: 'Zertifizierung mit Intervallarithmetik (python-flint arb).'
+  bewertung: {richtigkeit: 'rechnergestützt, nicht zertifiziert', neuheit: neu_ungeprueft, nutzen: 'Löst die Wendepunkt-Vermutung für b = e bis auf die Zertifizierung.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: gr.verm.ein_wendepunkt}
+    - {typ: verwandt, ziel: kn.satz.ableitung_nullstellenfrei}

@@ -1,0 +1,150 @@
+gebiet: kn
+# Identitätssuche Etappe 3 (14.10.2026): exakte Integralformeln aus Knesers Struktur.
+# Rechnungen: forschung/identitaeten_2026_10_14/etappe3/ (BERICHT_ETAPPE3.md).
+aussagen:
+
+- id: kn.satz.ableitung_nullstellenfrei
+  titel: 'Die Ableitung von Knesers sexp wird nirgends null (ausser auf dem Schnitt (−∞, −2])'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [kneser_T]
+  bereich: 'Kneser-$\mathrm{sexp}_e$ auf $\mathbb C\setminus(-\infty,-2]$'
+  aussage: |
+    $\mathrm{sexp}'(z)\neq0$ für alle $z\in\mathbb C\setminus(-\infty,-2]$. Gleichwertig: $1+\theta'\neq0$ in der oberen Halbebene, und
+    $\log\mathrm{sexp}'(z+1)=\mathrm{sexp}(z)+\log\mathrm{sexp}'(z)$ gilt in der ganzen oberen Halbebene mit dem stetigen Zweig, ohne Zusatz $2\pi ik$.
+  einfach: >-
+    Die Kneser-Tetration hat nirgends in der komplexen Ebene eine „flache Stelle“, an der ihre Steigung null wird. Das folgt allein aus der
+    Turmgleichung und daraus, dass sie oben und unten zu den beiden Fixpunkten L und L̄ strebt.
+  beweis:
+    art: vollstaendig
+    text: |
+      Mit $\varphi=\mathrm{sexp}''/\mathrm{sexp}'$ folgt aus $\mathrm{sexp}'(z+1)=e^{\mathrm{sexp}z}\mathrm{sexp}'(z)$ exakt $\varphi(z+1)=\varphi(z)+\mathrm{sexp}'(z)$.
+      Argumentprinzip auf dem Rechteck $[x_0,x_0+1]\times[0,Y]$: Unterkante $\ln\mathrm{sexp}'(x_0+1)-\ln\mathrm{sexp}'(x_0)=\mathrm{sexp}(x_0)$, Seiten zusammen
+      $\mathrm{sexp}(x_0+iY)-\mathrm{sexp}(x_0)$, also $2\pi iN(Y)=\mathrm{sexp}(x_0+iY)-\int_{x_0}^{x_0+1}\varphi(x+iY)\,dx$. Für $Y\to\infty$ strebt $\varphi\to L$
+      gleichmässig und $\mathrm{sexp}\to L$, also $N\to0$; $N$ ist ganz, nicht negativ und wachsend, also $N\equiv0$. Eine Nullstelle $z_0$ hätte die
+      Nullstellen $z_0+n$; eine davon läge im Halbstreifen. Untere Halbebene durch Spiegelung. Numerisch: Windungszahl 0 auf $10^{-30}$ in 12 Streifen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, A und Beweis B-A; s4_zaehlung.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: vermutlich auch aus der Univalenz in Knesers Konstruktion; hier ein eigenständiger Beweis mit dem Argumentprinzip.'
+    f2_benutzte_voraussetzungen: 'Turmgleichung, sexp′ > 0 auf ℝ, Grenzwerte L, L̄ für Im z → ±∞ mit gleichmässiger Konvergenz von φ.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis über η und jede Superfunktion mit denselben Grenzwerten.'
+    f5_neue_frage: 'Gilt dasselbe für Knesers Pentation?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Macht log sexp′ eindeutig und ist der Schlüssel für die Mittelwertformeln.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.kneser_eigenschaften}
+    - {typ: motiviert, ziel: kn.satz.theta_mittelwerte}
+
+- id: kn.satz.theta_mittelwerte
+  titel: 'Mittelwerte über eine Periode sind multiplikativ — reelle Formeln, die nur Kneser erfüllt (z. B. ∫₁ᵉ slog′²/h′ = 1)'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  bereich: 'Basis $b>\eta$ (gerechnet für $e$ und 2); $h$, $\sigma$ reguläre Abel- bzw. Schröder-Funktion am Fixpunkt $L$; $\theta(x)=h(\mathrm{sexp}\,x)-x$ auf dem stetigen Zweig; $M[G]=\int_0^1G(x)\,dx$'
+  aussage: |
+    **Prinzip:** Ist $G$ in der oberen Halbebene holomorph, 1-periodisch, mit Grenzwert $G_\infty$ oben (und einer integrierbaren Majorante an der
+    reellen Achse), so ist $M[G(x+i0)]=G_\infty$. Für Kneser ist $\theta$ so eine Funktion — also sind Mittelwerte von Funktionen von $\theta$
+    **multiplikativ**. Daraus folgen rein reelle Gleichungen:
+    $$\int_0^1\theta^2=\Bigl(\int_0^1\theta\Bigr)^2,\qquad \int_0^1\sigma(\mathrm{sexp}\,x)e^{-Lx}dx\cdot\int_0^1\frac{e^{Lx}}{\sigma(\mathrm{sexp}\,x)}dx=1,$$
+    $$\int_1^e\frac{\mathrm{slog}'(w)^2}{h'(w)}\,dw=1,\qquad \int_0^1\ln\mathrm{sexp}'(x)\,dx=-\int_0^1\ln|h'(\mathrm{sexp}\,x)|\,dx=0.49843955952451799390\ldots$$
+    und $\theta$ hat auf der reellen Achse keine negativen Fourier-Moden. Für jede andere reelle Tetration sind diese Formeln falsch:
+    $T(x)=\mathrm{sexp}(x+\varepsilon\sin2\pi x)$ verletzt sie schon bei $\varepsilon=10^{-4}$ um $10^{-5}$–$10^{-4}$. Geprüft auf $10^{-98}$ (Basis $e$) und $10^{-58}$ (Basis 2).
+  einfach: >-
+    Für Knesers Tetration gelten Integralformeln auf der Zahlengeraden, die keine andere Tetration erfüllt — etwa: ein bestimmtes Integral von 1 bis e
+    ist genau 1. Der Grund ist, dass Knesers Welle θ sich nach oben in die komplexe Ebene ruhig fortsetzen lässt. Solche Formeln sind seltene
+    „reelle Fingerabdrücke“ von Kneser.
+  formen:
+    - {tex: '\int_1^e\frac{\mathrm{slog}''(w)^2}{h''(w)}\,dw=1', notiz: 'einfachste Form ($=M[1/(1+\theta'')]$)'}
+    - {tex: 'M[\theta^k]=M[\theta]^k,\quad M[e^{c\theta}]=e^{cM[\theta]}', notiz: 'Multiplikativität'}
+  beweis:
+    art: skizze
+    text: |
+      $\frac{d}{dy}\int_0^1G(x+iy)\,dx=i[G(1+iy)-G(iy)]=0$; oben ist der Mittelwert $G_\infty$, unten der Randmittelwert. Anwendungen: $G=\Phi(\theta)$ ($\Phi$ ganz),
+      $G=e^{kL\theta}$ (Formel mit $\sigma$), $G=(1+\theta')^s$ für $\mathrm{Re}\,s<1$ und $G=\log(1+\theta')$ (eindeutig nach kn.satz.ableitung_nullstellenfrei);
+      Substitution $w=\mathrm{sexp}\,x$ gibt die slog-Form. Die Majorante kommt aus der Lokalform von $\theta$ an den ganzen Zahlen (kn.satz.theta_singularitaet).
+    luecken:
+      - 'Die Majorante ist aus der Lokalform abgelesen; eine ausgeschriebene Abschätzung von h und h′ auf {log(Az) : 0 < arg z < π} fehlt.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 und B-Z; s2_nullmoden.py, s2b_kontrolle.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Das Prinzip ja (Hardy-Raum, klassisch); die Anwendung auf θ und die reellen Formeln nein.'
+    f2_benutzte_voraussetzungen: 'θ holomorph und periodisch in der oberen Halbebene mit Grenzwert (Knesers Konstruktion, Paulsen–Cowgill); sexp′ ≠ 0; Majorante an den ganzen Zahlen.'
+    f3_spezialfall: 'Die Aussage „keine negativen Fourier-Moden“ ist eine Umformulierung von „θ holomorph oben“, also von Knesers Eindeutigkeitsbedingung.'
+    f4_uebertragbar: 'Auf jede Basis über η (Basis 2 geprüft) und auf Kneser-artige Pentation.'
+    f5_neue_frage: 'Wählt schon eine dieser reellen Gleichungen allein Kneser aus — eine Antwort auf br.frage.bohr_mollerup in reellen Integralen?'
+  bewertung: {richtigkeit: 'Kern bewiesen, Majorante skizziert; numerisch auf 10⁻⁹⁸', neuheit: neu_ungeprueft, nutzen: 'Erste reelle Integralformeln, die Kneser von allen anderen Tetrationen unterscheiden.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.ableitung_nullstellenfrei}
+    - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: br.frage.bohr_mollerup}
+    - {typ: verwandt, ziel: kn.satz.paulsen_komplex}
+
+- id: kn.satz.senkrechte_integrale
+  titel: 'Auf jeder senkrechten Geraden: ∫ (e^{sexp} − sexp) dt = 2 Im L'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [kneser_T]
+  bereich: 'Kneser-$\mathrm{sexp}$, $s=\mathrm{sexp}(x_0+it)$, $x_0>-2$, $t\in\mathbb R$; $\Phi$ ganze Funktion'
+  aussage: |
+    $$\int_{-\infty}^{\infty}\bigl[\Phi(e^{s})-\Phi(s)\bigr]\,dt=\frac{\Phi(L)-\Phi(\bar L)}{i},\qquad\text{insbesondere}\quad\int_{-\infty}^{\infty}\bigl[e^{s}-s\bigr]dt=2\,\mathrm{Im}\,L=2.67447140286\ldots$$
+    auf jeder senkrechten Geraden $x_0+i\mathbb R$ (Basis 2: $2\,\mathrm{Im}\,L_2=3.13486\ldots$). Dazu eine Raabe-artige Formel:
+    $$\int_{x_0}^{x_0+1}\mathrm{sexp}=\mathrm{Re}\,L+\int_0^\infty\mathrm{Im}\bigl[\mathrm{sexp}(x_0+1+it)-\mathrm{sexp}(x_0+it)\bigr]dt,$$
+    für $x_0=0$ also $\int_0^1T_e=1.71452195889062048816\ldots$
+  einfach: >-
+    Läuft man senkrecht durch die komplexe Ebene und misst, wie sehr „e hoch Tetration“ von der Tetration selbst abweicht, kommt insgesamt immer
+    genau das Doppelte des Imaginärteils des Fixpunkts heraus — egal, wo man die Linie zieht.
+  beweis:
+    art: vollstaendig
+    text: |
+      Cauchy für $\Phi\circ\mathrm{sexp}$ auf dem Halbstreifen $[x_0,x_0+1]\times[0,\infty)$: Unterkante $+\,i\int_0^\infty[\Phi(\mathrm{sexp}(x_0+1+it))-\Phi(\mathrm{sexp}(x_0+it))]dt-\Phi(L)=0$,
+      denn oben strebt $\mathrm{sexp}\to L$ (exponentiell, $\sim e^{-t\,\mathrm{Im}L}$). Spiegelung gibt die untere Hälfte mit $\Phi(\bar L)$; die Unterkanten heben sich weg.
+      $\mathrm{sexp}(z+1)=e^{\mathrm{sexp}z}$ ergibt die Form mit $e^s$. Numerisch auf $10^{-39}$ ($\Phi=w,w^2,1/w$; drei Geraden) und $2\cdot10^{-59}$ (Basis 2).
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, V1/V2 und B-V; s3_senkrecht.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Cauchy und den Grenzwerten L, L̄ (eine Zeile).'
+    f2_benutzte_voraussetzungen: 'Holomorphie im Streifen und die Grenzwerte L, L̄ — gilt für Kneser, nicht für Tetrationen mit anderem Verhalten im Komplexen.'
+    f3_spezialfall: 'Raabe-Formel für log Γ als Vorbild.'
+    f4_uebertragbar: 'Auf jede Basis über η; für Pentation mit deren Fixpunktpaar.'
+    f5_neue_frage: 'Gibt es eine entsprechende Formel mit Gewicht (z. B. ∫ t·(e^s − s) dt)?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Exakte Integralwerte mit geschlossener rechter Seite; schöner Einstieg in Knesers komplexe Struktur.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.cauchy}
+    - {typ: verwandt, ziel: gr.beob.integrale_kneser}
+
+- id: kn.satz.binet_kappa
+  titel: 'Binet-artige Formel für Knesers Asymptotik-Konstante κ (sexp ≈ L + κ e^{Lz} oben)'
+  art: korollar
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  aussage: |
+    Für $\mathrm{Im}\,z\to\infty$ gilt $\mathrm{sexp}(z)=L+\kappa e^{Lz}+o(e^{-y\,\mathrm{Im}L})$ mit
+    $$\kappa=e^{La_0}=\int_0^1\sigma(\mathrm{sexp}\,x)e^{-Lx}dx=\exp\Bigl(\int_0^1\ln\mathrm{sexp}'-\tfrac{3L}2+i\int_0^\infty(\mathrm{sexp}(it)-L)\,dt\Bigr),$$
+    $\kappa=1.7176401959431580370\ldots-2.3844430117304858788\ldots\,i$, $|\kappa|=2.9386827523\ldots$ (Basis 2: $\kappa_2=-0.0912950128\ldots-3.0092098197\ldots\,i$).
+    Wie Binets Formel für $\ln\Gamma$ drückt sie eine Konstante der Asymptotik durch reelle und senkrechte Integrale der Funktion selbst aus.
+  einfach: >-
+    Weit oben in der komplexen Ebene sieht Knesers Tetration fast aus wie „Fixpunkt plus eine kleine Exponentialfunktion“. Der Vorfaktor dieser
+    Exponentialfunktion lässt sich exakt als Integral ausdrücken — so wie man bei der Gammafunktion Konstanten durch Integrale ausdrückt.
+  beweis:
+    art: skizze
+    text: '$E(z)=\log\mathrm{sexp}''(z)-Lh(\mathrm{sexp}z)$ ist eindeutig (kn.satz.ableitung_nullstellenfrei), $E(z+1)-E(z)=\mathrm{sexp}(z)-L$, $E\to L$ oben; das Mittelwertargument gibt $m''(y)=i(\mathrm{sexp}(iy)-L)$, also $\int_0^1E=L-i\int_0^\infty(\mathrm{sexp}(it)-L)dt$; mit $M[h\circ\mathrm{sexp}]=a_0+\tfrac12$ folgt die Formel modulo $2\pi i$, und $\kappa=e^{La_0}$ ist eindeutig. Numerisch auf $10^{-35}$.'
+    luecken:
+      - 'Benutzt dieselbe Majorante wie kn.satz.theta_mittelwerte.'
+  stuetzt_sich_auf: [kn.satz.theta_mittelwerte]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, V3 und B-V3'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Aus dem Mittelwertprinzip, ja.'
+    f2_benutzte_voraussetzungen: 'Wie kn.satz.theta_mittelwerte.'
+    f3_spezialfall: 'Ja: Mittelwertprinzip mit G = e^{Lθ}.'
+    f4_uebertragbar: 'Allgemeine Basis: κ_b = λ^{a₀} = exp(∫₀¹ ln sexp′ + i ln b·K₀)/(√λ·log λ).'
+    f5_neue_frage: 'Hat κ selbst eine Darstellung in klassischen Konstanten? (bis jetzt keine, ar.beob.keine_relationen deckt κ noch nicht ab)'
+  bewertung: {richtigkeit: 'skizziert; numerisch auf 10⁻³⁵', neuheit: neu_ungeprueft, nutzen: 'Verbindet die Asymptotik oben mit Integralen auf der reellen Achse.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.senkrechte_integrale}
+    - {typ: verwandt, ziel: kn.beob.theta_koeffizienten}

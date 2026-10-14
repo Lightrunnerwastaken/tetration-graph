@@ -18,13 +18,13 @@ Stand: bewiesen 47, bedingt 9, numerisch 19, Vermutung 14, offen 11, verworfen 3
 - **Reelle Kennzeichnung?** (1): offen 1 · Literatur 1 / Forum 0 / eigen 0 · offen: br.frage.bohr_mollerup
 - **Selbst ausrechnen** (1): numerisch 1 · Literatur 0 / Forum 1 / eigen 0
 
-## Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ (70 Aussagen)
+## Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ (71 Aussagen)
 
 Was jede Lösung der Grundgleichung erfüllt, ganz gleich, wie man sie zwischen den ganzen Höhen festlegt.
 
-Stand: bewiesen 58, numerisch 7, Vermutung 4, offen 1 · Literatur 20 / Forum 19 / eigen 31
+Stand: bewiesen 58, numerisch 8, Vermutung 4, offen 1 · Literatur 20 / Forum 19 / eigen 32
 
-- **Werte, Ableitungen, Gestalt** (28): bewiesen 20, numerisch 5, Vermutung 3 · Literatur 4 / Forum 10 / eigen 14 · offen: gr.verm.ein_wendepunkt, gr.verm.tpid7, gr.verm.ungerade_ableitungen
+- **Werte, Ableitungen, Gestalt** (29): bewiesen 20, numerisch 6, Vermutung 3 · Literatur 4 / Forum 10 / eigen 15 · offen: gr.verm.ein_wendepunkt, gr.verm.tpid7, gr.verm.ungerade_ableitungen
 - **Integrale** (13): bewiesen 9, numerisch 2, Vermutung 1, offen 1 · Literatur 2 / Forum 1 / eigen 10 · offen: gr.frage.integral_form, gr.verm.turmintegral_rate
 - **Begriffe** (8): bewiesen 8 · Literatur 6 / Forum 0 / eigen 2
 - **Freiheit der Lösungen** (6): bewiesen 6 · Literatur 3 / Forum 1 / eigen 2
@@ -68,14 +68,14 @@ Stand: bewiesen 30, bedingt 1, numerisch 6, Vermutung 1, offen 3, verworfen 2 ·
 - **Spiralen und Mittelwerte** (10): bewiesen 4, bedingt 1, numerisch 1, offen 2, verworfen 2 · Literatur 4 / Forum 0 / eigen 6 · offen: fp.frage.holomorphe_familie, fp.verm.doppelmittel
 - **Periode 2 unter e⁻ᵉ** (6): bewiesen 6 · Literatur 5 / Forum 1 / eigen 0
 
-## Zahlen und Arithmetik (34 Aussagen)
+## Zahlen und Arithmetik (38 Aussagen)
 
 Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.
 
-Stand: bewiesen 20, bedingt 4, numerisch 4, Vermutung 3, offen 3 · Literatur 19 / Forum 1 / eigen 14
+Stand: bewiesen 22, bedingt 6, numerisch 4, Vermutung 3, offen 3 · Literatur 19 / Forum 1 / eigen 18
 
 - **Transzendenz** (22): bewiesen 15, bedingt 3, Vermutung 2, offen 2 · Literatur 15 / Forum 1 / eigen 6 · offen: ar.verm.schanuel, ar.frage.e_hoch_e, ar.frage.ganze_tuerme, ar.satz.schanuel_orbit, ar.verm.gelfond_turm
-- **Formeln und Identitäten** (5): bedingt 1, numerisch 3, offen 1 · Literatur 0 / Forum 0 / eigen 5 · offen: kn.frage.theta_exponent
+- **Formeln und Identitäten** (9): bewiesen 2, bedingt 3, numerisch 3, offen 1 · Literatur 0 / Forum 0 / eigen 9 · offen: kn.frage.theta_exponent
 - **Kongruenzen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
 - **Kneser–Schanuel** (3): bewiesen 1, numerisch 1, Vermutung 1 · Literatur 0 / Forum 0 / eigen 3 · offen: ar.verm.ks
 
@@ -121,7 +121,7 @@ Stand: bewiesen 6, bedingt 1, numerisch 2, offen 2 · Literatur 2 / Forum 8 / ei
 - Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 18.72
 - Fraktionale Fortsetzung — Unendlicher Turm und Basen-Ebene: 17.25
 - Dynamik von bᶻ und der Fixpunkt L — Unendlicher Turm und Basen-Ebene: 14.08
-- Basiswechsel T ∘ slog — Unendlicher Turm und Basen-Ebene: 12.32
+- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Zahlen und Arithmetik: 13.24
 
 ## Stärkste Kopplungen über Ideengrenzen
 

@@ -3143,6 +3143,39 @@
     worum: |
       Below $\eta$ one could sum up “one and a half tower levels”. Above $\eta$ the levels grow to the gigantic — but the super-logarithm grows so
       slowly that one can form fractional sums of **it**, similar to how $\log\Gamma$ continues the sum of the logarithms.
+- id: kn.satz.ableitung_nullstellenfrei
+  quelle_hash: d5dc4c2908b0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: The derivative of Kneser's sexp is nowhere zero (except on the cut (−∞, −2])
+    aussage: |
+      $\mathrm{sexp}'(z)\neq0$ for all $z\in\mathbb C\setminus(-\infty,-2]$. Equivalently: $1+\theta'\neq0$ in the upper half-plane, and
+      $\log\mathrm{sexp}'(z+1)=\mathrm{sexp}(z)+\log\mathrm{sexp}'(z)$ holds in the whole upper half-plane with the continuous branch, without an extra $2\pi ik$.
+    bereich: Kneser $\mathrm{sexp}_e$ on $\mathbb C\setminus(-\infty,-2]$
+    einfach: Kneser's tetration has no “flat spot” anywhere in the complex plane where its slope becomes zero. This follows solely from the tower
+      equation and from the fact that it tends to the two fixed points L and L̄ at the top and at the bottom.
+    beweis:
+      text: |
+        With $\varphi=\mathrm{sexp}''/\mathrm{sexp}'$, the relation $\mathrm{sexp}'(z+1)=e^{\mathrm{sexp}z}\mathrm{sexp}'(z)$ gives exactly $\varphi(z+1)=\varphi(z)+\mathrm{sexp}'(z)$.
+        Argument principle on the rectangle $[x_0,x_0+1]\times[0,Y]$: lower edge $\ln\mathrm{sexp}'(x_0+1)-\ln\mathrm{sexp}'(x_0)=\mathrm{sexp}(x_0)$, the sides together
+        $\mathrm{sexp}(x_0+iY)-\mathrm{sexp}(x_0)$, hence $2\pi iN(Y)=\mathrm{sexp}(x_0+iY)-\int_{x_0}^{x_0+1}\varphi(x+iY)\,dx$. As $Y\to\infty$, $\varphi\to L$
+        uniformly and $\mathrm{sexp}\to L$, so $N\to0$; $N$ is an integer, nonnegative and nondecreasing, hence $N\equiv0$. A zero $z_0$ would give the
+        zeros $z_0+n$; one of them would lie in the half-strip. The lower half-plane follows by reflection. Numerically: winding number 0 to $10^{-30}$ in 12 strips.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: presumably also follows from the univalence in Kneser''s construction; here an independent proof via the
+        argument principle.'
+      f2_benutzte_voraussetzungen: Tower equation, sexp′ > 0 on ℝ, limits L, L̄ for Im z → ±∞ with uniform convergence of φ.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every base above η and every superfunction with the same limits.
+      f5_neue_frage: Does the same hold for Kneser's pentation?
+    bewertung:
+      nutzen: Makes log sexp′ single-valued and is the key to the mean-value formulas.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, A and proof B-A; s4_zaehlung.py
 - id: kn.satz.basis2_hoehe3
   quelle_hash: fabfb20eff3a
   theorie_hash: b8cdbaae8d8a
@@ -3183,6 +3216,38 @@
       $H_{r+1}(2,3)=H_r(2,4)$, and $H_r(2,4)$ is an iteration that starts at $H_r(2,3)$ and at least doubles.
     worum: |
       At base 2 the values at heights 1 and 2 are the same for all ranks — but not at height 3.
+- id: kn.satz.binet_kappa
+  quelle_hash: 2c700bf85415
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Binet-type formula for Kneser's asymptotic constant κ (sexp ≈ L + κ e^{Lz} above)
+    aussage: |
+      For $\mathrm{Im}\,z\to\infty$ we have $\mathrm{sexp}(z)=L+\kappa e^{Lz}+o(e^{-y\,\mathrm{Im}L})$ with
+      $$\kappa=e^{La_0}=\int_0^1\sigma(\mathrm{sexp}\,x)e^{-Lx}dx=\exp\Bigl(\int_0^1\ln\mathrm{sexp}'-\tfrac{3L}2+i\int_0^\infty(\mathrm{sexp}(it)-L)\,dt\Bigr),$$
+      $\kappa=1.7176401959431580370\ldots-2.3844430117304858788\ldots\,i$, $|\kappa|=2.9386827523\ldots$ (base 2: $\kappa_2=-0.0912950128\ldots-3.0092098197\ldots\,i$).
+      Like Binet's formula for $\ln\Gamma$, it expresses a constant of the asymptotics through real and vertical integrals of the function itself.
+    einfach: Far up in the complex plane, Kneser's tetration looks almost like “fixed point plus a small exponential function”. The prefactor
+      of this exponential function can be expressed exactly as an integral — just as one expresses constants of the gamma function by integrals.
+    beweis:
+      text: $E(z)=\log\mathrm{sexp}'(z)-Lh(\mathrm{sexp}z)$ is single-valued (kn.satz.ableitung_nullstellenfrei), $E(z+1)-E(z)=\mathrm{sexp}(z)-L$,
+        $E\to L$ above; the mean-value argument gives $m'(y)=i(\mathrm{sexp}(iy)-L)$, hence $\int_0^1E=L-i\int_0^\infty(\mathrm{sexp}(it)-L)dt$;
+        with $M[h\circ\mathrm{sexp}]=a_0+\tfrac12$ the formula follows modulo $2\pi i$, and $\kappa=e^{La_0}$ is unique. Numerically to $10^{-35}$.
+      luecken:
+      - Uses the same majorant as kn.satz.theta_mittelwerte.
+    pruefung:
+      f1_folgt_unmittelbar: From the mean-value principle, yes.
+      f2_benutzte_voraussetzungen: As for kn.satz.theta_mittelwerte.
+      f3_spezialfall: 'Yes: mean-value principle with G = e^{Lθ}.'
+      f4_uebertragbar: 'General base: κ_b = λ^{a₀} = exp(∫₀¹ ln sexp′ + i ln b·K₀)/(√λ·log λ).'
+      f5_neue_frage: Does κ itself have a representation in classical constants? (so far none; ar.beob.keine_relationen does not yet cover κ)
+    bewertung:
+      nutzen: Connects the asymptotics at the top with integrals on the real axis.
+      richtigkeit: sketched; numerically to 10⁻³⁵
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, V3 and B-V3
 - id: kn.satz.eta_auswahl
   quelle_hash: 813ee016fe3f
   theorie_hash: c4412a7ee9c4
@@ -5171,6 +5236,39 @@
       At $b=2$ every integer-height iteration grows by at least 1 per step, so there is no fixed point there.
     worum: |
       Why the touching base is a limit at all — and what is still needed for $\eta_r\to2$.
+- id: kn.satz.senkrechte_integrale
+  quelle_hash: 42b9625fcb0e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'On every vertical line: ∫ (e^{sexp} − sexp) dt = 2 Im L'
+    aussage: |
+      $$\int_{-\infty}^{\infty}\bigl[\Phi(e^{s})-\Phi(s)\bigr]\,dt=\frac{\Phi(L)-\Phi(\bar L)}{i},\qquad\text{insbesondere}\quad\int_{-\infty}^{\infty}\bigl[e^{s}-s\bigr]dt=2\,\mathrm{Im}\,L=2.67447140286\ldots$$
+      on every vertical line $x_0+i\mathbb R$ (base 2: $2\,\mathrm{Im}\,L_2=3.13486\ldots$). In addition a Raabe-type formula:
+      $$\int_{x_0}^{x_0+1}\mathrm{sexp}=\mathrm{Re}\,L+\int_0^\infty\mathrm{Im}\bigl[\mathrm{sexp}(x_0+1+it)-\mathrm{sexp}(x_0+it)\bigr]dt,$$
+      so for $x_0=0$ we get $\int_0^1T_e=1.71452195889062048816\ldots$
+    bereich: Kneser $\mathrm{sexp}$, $s=\mathrm{sexp}(x_0+it)$, $x_0>-2$, $t\in\mathbb R$; $\Phi$ an entire function
+    einfach: If one runs vertically through the complex plane and measures how much “e to the power tetration” differs from the tetration itself,
+      the total is always exactly twice the imaginary part of the fixed point — no matter where one draws the line.
+    beweis:
+      text: |
+        Cauchy for $\Phi\circ\mathrm{sexp}$ on the half-strip $[x_0,x_0+1]\times[0,\infty)$: lower edge $+\,i\int_0^\infty[\Phi(\mathrm{sexp}(x_0+1+it))-\Phi(\mathrm{sexp}(x_0+it))]dt-\Phi(L)=0$,
+        since at the top $\mathrm{sexp}\to L$ (exponentially, $\sim e^{-t\,\mathrm{Im}L}$). Reflection gives the lower half with $\Phi(\bar L)$; the lower edges cancel.
+        $\mathrm{sexp}(z+1)=e^{\mathrm{sexp}z}$ gives the form with $e^s$. Numerically to $10^{-39}$ ($\Phi=w,w^2,1/w$; three lines) and $2\cdot10^{-59}$ (base 2).
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from Cauchy and the limits L, L̄ (one line).
+      f2_benutzte_voraussetzungen: Holomorphy in the strip and the limits L, L̄ — holds for Kneser, not for tetrations with different behavior
+        in the complex plane.
+      f3_spezialfall: Raabe's formula for log Γ as the model.
+      f4_uebertragbar: To every base above η; for pentation with its pair of fixed points.
+      f5_neue_frage: Is there a corresponding formula with a weight (e.g. ∫ t·(e^s − s) dt)?
+    bewertung:
+      nutzen: Exact integral values with a closed right-hand side; a nice entry point to Kneser's complex structure.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, V1/V2 and B-V; s3_senkrecht.py
 - id: kn.satz.singulaer_minus2
   quelle_hash: a6a16b672fd9
   theorie_hash: 9a5649d00d28
@@ -5305,6 +5403,49 @@
       richtigkeit: complete; checked exactly up to n = 12
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K1/K2 and proof B1; b_gewichte.py
+- id: kn.satz.theta_mittelwerte
+  quelle_hash: 28ab801f9306
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Means over one period are multiplicative — real formulas that only Kneser satisfies (e.g. ∫₁ᵉ slog′²/h′ = 1)
+    aussage: |
+      **Principle:** If $G$ is holomorphic in the upper half-plane, 1-periodic, with limit $G_\infty$ at the top (and an integrable majorant on the
+      real axis), then $M[G(x+i0)]=G_\infty$. For Kneser, $\theta$ is such a function — so means of functions of $\theta$ are
+      **multiplicative**. This yields purely real equations:
+      $$\int_0^1\theta^2=\Bigl(\int_0^1\theta\Bigr)^2,\qquad \int_0^1\sigma(\mathrm{sexp}\,x)e^{-Lx}dx\cdot\int_0^1\frac{e^{Lx}}{\sigma(\mathrm{sexp}\,x)}dx=1,$$
+      $$\int_1^e\frac{\mathrm{slog}'(w)^2}{h'(w)}\,dw=1,\qquad \int_0^1\ln\mathrm{sexp}'(x)\,dx=-\int_0^1\ln|h'(\mathrm{sexp}\,x)|\,dx=0.49843955952451799390\ldots$$
+      and $\theta$ has no negative Fourier modes on the real axis. For every other real tetration these formulas are false:
+      $T(x)=\mathrm{sexp}(x+\varepsilon\sin2\pi x)$ violates them already at $\varepsilon=10^{-4}$ by $10^{-5}$–$10^{-4}$. Checked to $10^{-98}$ (base $e$) and $10^{-58}$ (base 2).
+    bereich: Base $b>\eta$ (computed for $e$ and 2); $h$, $\sigma$ the regular Abel and Schröder function at the fixed point $L$; $\theta(x)=h(\mathrm{sexp}\,x)-x$
+      on the continuous branch; $M[G]=\int_0^1G(x)\,dx$
+    einfach: 'For Kneser''s tetration there are integral formulas on the number line that no other tetration satisfies — for example: a certain
+      definite integral from 1 to e is exactly 1. The reason is that Kneser''s wave θ continues smoothly upward into the complex plane. Such formulas
+      are rare “real fingerprints” of Kneser.'
+    formen:
+    - notiz: simplest form ($=M[1/(1+\theta')]$)
+    - notiz: multiplicativity
+    beweis:
+      text: |
+        $\frac{d}{dy}\int_0^1G(x+iy)\,dx=i[G(1+iy)-G(iy)]=0$; at the top the mean is $G_\infty$, at the bottom the boundary mean. Applications: $G=\Phi(\theta)$ ($\Phi$ entire),
+        $G=e^{kL\theta}$ (formula with $\sigma$), $G=(1+\theta')^s$ for $\mathrm{Re}\,s<1$ and $G=\log(1+\theta')$ (single-valued by kn.satz.ableitung_nullstellenfrei);
+        the substitution $w=\mathrm{sexp}\,x$ gives the slog form. The majorant comes from the local form of $\theta$ at the integers (kn.satz.theta_singularitaet).
+      luecken:
+      - 'The majorant is read off from the local form; a written-out estimate of h and h′ on {log(Az) : 0 < arg z < π} is missing.'
+    pruefung:
+      f1_folgt_unmittelbar: The principle yes (Hardy space, classical); the application to θ and the real formulas no.
+      f2_benutzte_voraussetzungen: θ holomorphic and periodic in the upper half-plane with a limit (Kneser's construction, Paulsen–Cowgill); sexp′
+        ≠ 0; majorant at the integers.
+      f3_spezialfall: The statement “no negative Fourier modes” is a reformulation of “θ holomorphic above”, i.e. of Kneser's uniqueness condition.
+      f4_uebertragbar: To every base above η (base 2 checked) and to Kneser-type pentation.
+      f5_neue_frage: Does even one of these real equations alone single out Kneser — an answer to br.frage.bohr_mollerup in real integrals?
+    bewertung:
+      nutzen: First real integral formulas that distinguish Kneser from all other tetrations.
+      richtigkeit: Core proved, majorant sketched; numerically to 10⁻⁹⁸
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 and B-Z; s2_nullmoden.py, s2b_kontrolle.py
 - id: kn.satz.theta_singularitaet
   quelle_hash: b2c1c5b1c179
   herkunft:
