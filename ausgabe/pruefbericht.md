@@ -1,8 +1,8 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-415 Aussagen · 739 Kanten · 57 Experimente
+417 Aussagen · 746 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 149, numerisch 69, bewiesen_literatur 60, offen 33, vermutung 29, bedingt 27, definition 15, gescheitert 11, skizze 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 149, numerisch 70, bewiesen_literatur 60, offen 33, vermutung 29, bedingt 27, definition 15, skizze 12, gescheitert 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 104
 
@@ -52,14 +52,14 @@
 - `ar` — 29 von 31 Aussagen mit Theorie-Block
 - `br` — 28 von 29 Aussagen mit Theorie-Block
 - `it` — 19 von 20 Aussagen mit Theorie-Block
-- `kn` — 116 von 120 Aussagen mit Theorie-Block
+- `kn` — 116 von 122 Aussagen mit Theorie-Block
 
 **uebersetzung-fortschritt** (5)
 
 - `ar` — 31 von 31 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 29 von 31 Theorie-Blöcken
 - `br` — 29 von 29 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 28 von 29 Theorie-Blöcken
 - `it` — 20 von 20 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 19 von 20 Theorie-Blöcken
-- `kn` — 120 von 120 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 116 von 120 Theorie-Blöcken
+- `kn` — 122 von 122 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 116 von 122 Theorie-Blöcken
 - `quelle` — 217 von 301 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (3)
@@ -101,6 +101,8 @@
 - `fp.satz.siegel_mittel` — Nach Herman (1985) ist $\Delta$ für diophantisches $\alpha$ unbeschränkt; Carathéodory greift dann nicht. Zu zeigen wäre, dass $\varphi$ Randwerte in $L^1(d\theta)$ hat (Hardy-Raum $H^1$), damit der Mittelwertsatz gilt.
 - `fp.satz.siegel_mittel` — Ohne Jordan-Rand ist die Randdynamik nicht automatisch zu einer Drehung konjugiert; die Gleichverteilung des Turms bezüglich $\omega_L$ ist offen.
 - `kl.satz.invariante_daempfung` — Dass die klassische periodische Phase (bw.satz.phasengesetz) als Grenzwert |λ| → 1 einer Familie gedämpfter Übergänge entsteht, ist eine Deutung, kein Grenzwertsatz.
+- `kn.satz.theta_singularitaet` — Dass die Fortsetzung von h nur über der Bahn von 0 behindert ist (singuläre Werte von Poincaré-Funktionen), ist zitiert, nicht hier bewiesen.
+- `kn.satz.theta_singularitaet` — Analytizität auf ℝ∖ℤ: die Wahl des Hauptzweigs ist nur numerisch geprüft (stetiger Verlauf in allen Abtastungen).
 - `br.satz.vergleichsfunktion` — Konvergenz für die Exponentialfakultät nur gemessen (doppelt exponentiell, ganze Werte auf 10⁻¹²), nicht bewiesen.
 - `br.satz.vergleichsfunktion` — Für Tetration mit Produkt-Tetration als Vergleich (tid 1816) weder Konvergenz noch Glattheit geprüft.
 - `gr.korr.grenzidentitaet` — Gleichmässige Abschätzung der unteren Faktoren, die den Grenzwert nicht ändern.

@@ -68,16 +68,16 @@ Stand: bewiesen 30, bedingt 1, numerisch 6, Vermutung 1, offen 3, verworfen 2 ·
 - **Spiralen und Mittelwerte** (10): bewiesen 4, bedingt 1, numerisch 1, offen 2, verworfen 2 · Literatur 4 / Forum 0 / eigen 6 · offen: fp.frage.holomorphe_familie, fp.verm.doppelmittel
 - **Periode 2 unter e⁻ᵉ** (6): bewiesen 6 · Literatur 5 / Forum 1 / eigen 0
 
-## Zahlen und Arithmetik (32 Aussagen)
+## Zahlen und Arithmetik (34 Aussagen)
 
 Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.
 
-Stand: bewiesen 20, bedingt 3, numerisch 3, Vermutung 3, offen 3 · Literatur 19 / Forum 1 / eigen 12
+Stand: bewiesen 20, bedingt 4, numerisch 4, Vermutung 3, offen 3 · Literatur 19 / Forum 1 / eigen 14
 
 - **Transzendenz** (22): bewiesen 15, bedingt 3, Vermutung 2, offen 2 · Literatur 15 / Forum 1 / eigen 6 · offen: ar.verm.schanuel, ar.frage.e_hoch_e, ar.frage.ganze_tuerme, ar.satz.schanuel_orbit, ar.verm.gelfond_turm
+- **Formeln und Identitäten** (5): bedingt 1, numerisch 3, offen 1 · Literatur 0 / Forum 0 / eigen 5 · offen: kn.frage.theta_exponent
 - **Kongruenzen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
 - **Kneser–Schanuel** (3): bewiesen 1, numerisch 1, Vermutung 1 · Literatur 0 / Forum 0 / eigen 3 · offen: ar.verm.ks
-- **Formeln und Identitäten** (3): numerisch 2, offen 1 · Literatur 0 / Forum 0 / eigen 3 · offen: kn.frage.theta_exponent
 
 ## Dynamik von bᶻ und der Fixpunkt L (23 Aussagen)
 

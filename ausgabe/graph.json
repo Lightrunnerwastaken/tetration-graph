@@ -1,6 +1,6 @@
 {
- "gebaut": "2026-10-14 10:51",
- "eingabe_hash": "fde8fdaefaed16c7",
+ "gebaut": "2026-10-14 11:30",
+ "eingabe_hash": "b363462e7b357a34",
  "gebiete": [
   {
    "id": "gr",
@@ -22717,6 +22717,14 @@
    "_traegt": [],
    "_verwandt": [
     {
+     "id": "kn.konstr.kneser",
+     "score": 2.18,
+     "warum": [
+      "motiviert",
+      "über kn.satz.theta_singularitaet"
+     ]
+    },
+    {
      "id": "kl.satz.regulaer",
      "score": 1.88,
      "warum": [
@@ -22728,13 +22736,6 @@
      "score": 1.88,
      "warum": [
       "gemeinsame Objekte: fixpunkt_L, regulaer_T, schroeder"
-     ]
-    },
-    {
-     "id": "kn.konstr.kneser",
-     "score": 1.83,
-     "warum": [
-      "motiviert"
      ]
     },
     {
@@ -22759,15 +22760,15 @@
      ]
     },
     {
-     "id": "kn.satz.kein_kneser_anziehend",
+     "id": "kn.satz.theta_singularitaet",
      "score": 1.35,
      "warum": [
-      "über kn.konstr.kneser",
-      "gemeinsame Objekte: fixpunkt_L, schroeder"
+      "verwandt (rückwärts)",
+      "über kn.konstr.kneser"
      ]
     },
     {
-     "id": "kn.satz.halbexp_singularitaet_L",
+     "id": "kn.satz.kein_kneser_anziehend",
      "score": 1.35,
      "warum": [
       "über kn.konstr.kneser",
@@ -42353,7 +42354,21 @@
      ]
     },
     {
+     "id": "kn.satz.theta_singularitaet",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
      "id": "kn.frage.theta_exponent",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
+     "id": "kn.beob.theta_koeffizienten",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, theta_kneser"
@@ -42371,21 +42386,6 @@
      "score": 1.95,
      "warum": [
       "über bw.satz.anker_rekonstruktion",
-      "gemeinsame Objekte: kneser_T"
-     ]
-    },
-    {
-     "id": "kn.satz.kneser_eigenschaften",
-     "score": 1.62,
-     "warum": [
-      "verwandt"
-     ]
-    },
-    {
-     "id": "gr.beob.kneser_ableitung",
-     "score": 1.6,
-     "warum": [
-      "über bw.satz.kern_existenz",
       "gemeinsame Objekte: kneser_T"
      ]
     }
@@ -43874,7 +43874,7 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "id": "kn.satz.theta_singularitaet",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
@@ -44019,7 +44019,7 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "id": "kn.satz.theta_singularitaet",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
@@ -44170,7 +44170,7 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "id": "kn.satz.theta_singularitaet",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
@@ -44304,7 +44304,7 @@
      ]
     },
     {
-     "id": "kn.satz.polynom_hauptsatz_kr0",
+     "id": "kn.satz.theta_singularitaet",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
@@ -61249,7 +61249,7 @@
   },
   {
    "id": "kn.beob.theta_fourier_algebraisch",
-   "titel": "Knesers θ hat Fourier-Koeffizienten, die nur algebraisch fallen (etwa n^(−1.2)) — θ ist auf der reellen Achse singulär",
+   "titel": "Knesers θ hat Fourier-Koeffizienten, die nur langsam fallen (lokal etwa n^(−1.2)) — θ ist auf der reellen Achse singulär",
    "art": "beobachtung",
    "ebene": "C",
    "status": "numerisch",
@@ -61259,27 +61259,33 @@
     "theta_kneser"
    ],
    "bereich": "Basis $e$; $\\mathrm{sexp}(z)=F(z+\\theta(z))$ mit der regulären Superfunktion $F=\\sigma^{-1}(e^{Lz})$ am Fixpunkt $L$, $\\sigma'(L)=1$; $\\theta=\\sum a_ne^{2\\pi inz}$ in der oberen Halbebene",
-   "aussage": "Die ersten Koeffizienten (auf 162 Stellen):\n$a_1=0.00385157873541-0.09056477795412\\,i$, $a_2=0.00210091678690-0.03795624815248\\,i$, $a_3=0.00144754775842-0.02281729713002\\,i$;\n$\\arg a_n\\to$ nahe $-\\pi/2$. $|a_n|$ fällt **nicht** geometrisch, sondern algebraisch: der lokale Exponent ist $1.254$ ($n=2$), $1.241$ ($8$),\n$1.208$ ($32$), $1.192$ ($64$) und sinkt langsam ($a_{64}$ auf $10^{-97}$ genau). Also hat $\\theta$, als Funktion von $z$ betrachtet,\nSingularitäten auf der reellen Achse — die reguläre Lösung am komplexen Fixpunkt und Kneser unterscheiden sich dort nicht analytisch.\n",
-   "einfach": "Knesers Tetration ist die „gewöhnliche“ Lösung am komplexen Fixpunkt plus eine kleine Welle. Die Welle besteht aus Schwingungen, deren Stärke erstaunlich langsam abnimmt. Das zeigt: die Welle hat auf der reellen Achse scharfe Stellen. Wie schnell genau sie abnimmt, könnte eine neue Kennzahl der Kneser-Tetration sein.",
+   "aussage": "Die ersten Koeffizienten (auf 162 Stellen):\n$a_1=0.00385157873541-0.09056477795412\\,i$, $a_2=0.00210091678690-0.03795624815248\\,i$, $a_3=0.00144754775842-0.02281729713002\\,i$.\n$|a_n|$ fällt **nicht** geometrisch: der lokale Exponent ist $1.254$ ($n=2$), $1.184$ ($64$), $1.137$ ($1024$), $1.121$ ($4096$) und sinkt weiter\n(Koeffizienten bis $n=4096$ auf 44 Stellen, zwei unabhängige Einstellungen). $\\arg a_n$ wandert langsam ($-1.53$ bei $n=1$, $-1.37$ bei $n=4096$)\nund hat keinen Grenzwert — die Angabe „$\\arg a_n\\to-\\pi/2$“ aus Etappe 1 war falsch. Also hat $\\theta$ Singularitäten auf der reellen Achse;\nwo und welcher Art sie sind, steht in kn.satz.theta_singularitaet, die genaue Asymptotik in kn.beob.theta_koeffizienten.\n",
+   "einfach": "Knesers Tetration ist die „gewöhnliche“ Lösung am komplexen Fixpunkt plus eine kleine Welle. Die Welle besteht aus Schwingungen, deren Stärke erstaunlich langsam abnimmt. Das zeigt: die Welle hat auf der reellen Achse scharfe Stellen.",
    "quellen": [
     {
      "ref": "diese_arbeit",
-     "stelle": "forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K8; a_theta.py, daten/theta_*.json"
+     "stelle": "forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md (K8) und etappe2/BERICHT_ETAPPE2.md (Abschnitt 3.0)"
     }
    ],
    "pruefung": {
     "f1_folgt_unmittelbar": "Nein (gemessen).",
-    "f2_benutzte_voraussetzungen": "fatou.gp-Fork bei dps 120/160/200 auf Kreisen mit Radius 0.2 (bei grösserem |Im z| bricht der Motor über dps 60 ab).",
+    "f2_benutzte_voraussetzungen": "fatou.gp-Fork bei dps 60–200 nahe der reellen Achse (|Im z| ≤ 0.2); Etappe 1 und 2 stimmen für a₁…a₆₄ auf 3.5·10⁻⁸⁰ überein.",
     "f3_spezialfall": "nein",
-    "f4_uebertragbar": "Auf jede Basis über η und auf die Pentation (θ zwischen regulärer und Kneser-artiger Lösung, kn.beob.einheitliche_raenge).",
-    "f5_neue_frage": "Wie lautet der genaue Abfall — $n^{-1-c}$ oder $n^{-1}(\\ln n)^{-p}$? (kn.frage.theta_exponent)"
+    "f4_uebertragbar": "Basis 2 zeigt dieselbe Struktur (|a₄₀₉₆| = 4.579·10⁻⁶ gegen 4.603·10⁻⁶ bei e).",
+    "f5_neue_frage": "Erklärt durch kn.satz.theta_singularitaet und kn.beob.theta_koeffizienten."
    },
    "bewertung": {
-    "richtigkeit": "numerisch, 162 Stellen für a₁–a₃",
+    "richtigkeit": "numerisch, 44–162 Stellen",
     "neuheit": "neu_ungeprueft",
     "nutzen": "Erste hochgenaue θ-Koeffizienten; zeigt eine unerwartete Singularitätsstruktur.",
     "nutzen_stufe": "mittel"
    },
+   "versionen": [
+    {
+     "aenderung": "Etappe 1: „arg a_n → −π/2“ behauptet.",
+     "grund": "Etappe 2 (n bis 4096) zeigt: das Argument wandert und hat keinen Grenzwert; korrigiert am 14.10.2026."
+    }
+   ],
    "kanten": [
     {
      "typ": "verwandt",
@@ -61308,12 +61314,30 @@
    "_traegt": [],
    "_verwandt": [
     {
+     "id": "kn.beob.theta_koeffizienten",
+     "score": 5.55,
+     "warum": [
+      "stützt (Evidenz) (rückwärts)",
+      "über kn.frage.theta_exponent",
+      "über kn.satz.theta_singularitaet"
+     ]
+    },
+    {
      "id": "kn.frage.theta_exponent",
-     "score": 4.5,
+     "score": 5.2,
      "warum": [
       "motiviert",
       "verwandt (rückwärts)",
-      "gemeinsame Objekte: kneser_T, theta_kneser"
+      "über kn.beob.theta_koeffizienten"
+     ]
+    },
+    {
+     "id": "kn.satz.theta_singularitaet",
+     "score": 4.2,
+     "warum": [
+      "verwandt (rückwärts)",
+      "über kn.konstr.kneser",
+      "über kn.beob.theta_koeffizienten"
      ]
     },
     {
@@ -61325,9 +61349,10 @@
     },
     {
      "id": "kn.konstr.kneser",
-     "score": 2.0,
+     "score": 2.35,
      "warum": [
       "verwandt",
+      "über kn.satz.theta_singularitaet",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -61352,41 +61377,33 @@
      "warum": [
       "gemeinsame Objekte: kneser_T"
      ]
-    },
-    {
-     "id": "bw.zert.8r1_alt",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: kneser_T"
-     ]
-    },
-    {
-     "id": "bw.zert.8r1",
-     "score": 1.25,
-     "warum": [
-      "gemeinsame Objekte: kneser_T"
-     ]
     }
    ],
    "en": {
-    "titel": "Kneser's θ has Fourier coefficients that decay only algebraically (about n^(−1.2)) — θ is singular on the real axis",
-    "aussage": "The first coefficients (to 162 digits):\n$a_1=0.00385157873541-0.09056477795412\\,i$, $a_2=0.00210091678690-0.03795624815248\\,i$, $a_3=0.00144754775842-0.02281729713002\\,i$;\n$\\arg a_n\\to$ near $-\\pi/2$. $|a_n|$ does **not** decay geometrically but algebraically: the local exponent is $1.254$ ($n=2$), $1.241$ ($8$),\n$1.208$ ($32$), $1.192$ ($64$) and falls slowly ($a_{64}$ exact to $10^{-97}$). So $\\theta$, viewed as a function of $z$, has\nsingularities on the real axis — the regular solution at the complex fixed point and Kneser's solution do not differ analytically there.\n",
+    "titel": "Kneser's θ has Fourier coefficients that decay only slowly (locally about n^(−1.2)) — θ is singular on the real axis",
+    "aussage": "The first coefficients (to 162 digits):\n$a_1=0.00385157873541-0.09056477795412\\,i$, $a_2=0.00210091678690-0.03795624815248\\,i$, $a_3=0.00144754775842-0.02281729713002\\,i$.\n$|a_n|$ does **not** decay geometrically: the local exponent is $1.254$ ($n=2$), $1.184$ ($64$), $1.137$ ($1024$), $1.121$ ($4096$) and keeps falling\n(coefficients up to $n=4096$ to 44 digits, two independent settings). $\\arg a_n$ drifts slowly ($-1.53$ at $n=1$, $-1.37$ at $n=4096$)\nand has no limit — the statement “$\\arg a_n\\to-\\pi/2$” from stage 1 was wrong. So $\\theta$ has singularities on the real axis;\nwhere they are and of what kind is given in kn.satz.theta_singularitaet, the exact asymptotics in kn.beob.theta_koeffizienten.\n",
     "bereich": "Base $e$; $\\mathrm{sexp}(z)=F(z+\\theta(z))$ with the regular superfunction $F=\\sigma^{-1}(e^{Lz})$ at the fixed point $L$, $\\sigma'(L)=1$; $\\theta=\\sum a_ne^{2\\pi inz}$ in the upper half-plane",
-    "einfach": "Kneser's tetration is the \"ordinary\" solution at the complex fixed point plus a small wave. The wave consists of oscillations whose strength decreases surprisingly slowly. This shows: the wave has sharp spots on the real axis. Exactly how fast it decreases could be a new key number of Kneser's tetration.",
+    "einfach": "Kneser's tetration is the \"ordinary\" solution at the complex fixed point plus a small wave. The wave consists of oscillations whose strength decreases surprisingly slowly. This shows: the wave has sharp spots on the real axis.",
     "pruefung": {
      "f1_folgt_unmittelbar": "No (measured).",
-     "f2_benutzte_voraussetzungen": "fatou.gp fork at dps 120/160/200 on circles of radius 0.2 (for larger |Im z| the engine breaks down above dps 60).",
+     "f2_benutzte_voraussetzungen": "fatou.gp fork at dps 60–200 near the real axis (|Im z| ≤ 0.2); stages 1 and 2 agree for a₁…a₆₄ to 3.5·10⁻⁸⁰.",
      "f3_spezialfall": "no",
-     "f4_uebertragbar": "To every base via η and to pentation (θ between the regular and the Kneser-type solution, kn.beob.einheitliche_raenge).",
-     "f5_neue_frage": "What is the exact decay — $n^{-1-c}$ or $n^{-1}(\\ln n)^{-p}$? (kn.frage.theta_exponent)"
+     "f4_uebertragbar": "Base 2 shows the same structure (|a₄₀₉₆| = 4.579·10⁻⁶ versus 4.603·10⁻⁶ for e).",
+     "f5_neue_frage": "Explained by kn.satz.theta_singularitaet and kn.beob.theta_koeffizienten."
     },
     "bewertung": {
-     "nutzen": "First high-precision θ coefficients; shows an unexpected singularity structure.",
-     "richtigkeit": "numerical, 162 digits for a₁–a₃"
+     "nutzen": "First high-precision θ coefficients; reveals an unexpected singularity structure.",
+     "richtigkeit": "numerical, 44–162 digits"
     },
+    "versionen": [
+     {
+      "aenderung": "Stage 1: “arg a_n → −π/2” claimed.",
+      "grund": "Stage 2 (n up to 4096) shows: the argument drifts and has no limit; corrected on 14.10.2026."
+     }
+    ],
     "quellen": [
      {
-      "stelle": "forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K8; a_theta.py, daten/theta_*.json"
+      "stelle": "forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md (K8) and etappe2/BERICHT_ETAPPE2.md (section 3.0)"
      }
     ]
    },
@@ -61396,7 +61413,7 @@
   },
   {
    "id": "kn.frage.theta_exponent",
-   "titel": "Welche Zahl bestimmt den Fourier-Abfall von Knesers θ?",
+   "titel": "Welche Zahl bestimmt den Fourier-Abfall von Knesers θ? — Antwort: keine eigene, der Exponent ist genau 1",
    "art": "frage",
    "ebene": "C",
    "status": "offen",
@@ -61405,17 +61422,22 @@
     "kneser_T",
     "theta_kneser"
    ],
-   "aussage": "Die Koeffizienten $a_n$ von $\\theta$ (kn.beob.theta_fourier_algebraisch) fallen ungefähr wie $n^{-1.2}$, der Exponent sinkt aber noch. Ist der Abfall\n$n^{-1-c}$ mit einer exakten Konstante $c$ — etwa aus $L$ ($\\mathrm{Re}(1/L)=0.169$, oder aus $2\\pi i/L$) — oder $n^{-1}(\\ln n)^{-p}$?\nEin exakt bestimmbarer Exponent wäre eine echte, nur Kneser eigene Konstante; die Suche nach Beziehungen zu klassischen Konstanten\n(ar.beob.keine_relationen) hat für die Werte selbst nichts ergeben.\n",
-   "einfach": "Wie schnell wird die Welle in Knesers Tetration schwächer? Wenn die Antwort eine genaue Zahl ist, die man aus dem Fixpunkt ausrechnen kann, hätte man eine neue Formel, die zu Kneser gehört.",
+   "aussage": "Ausgangsfrage (Etappe 1): Fallen die $a_n$ wie $n^{-1-c}$ mit einer Kneser-eigenen Konstante $c$, oder wie $n^{-1}(\\ln n)^{-p}$?\n**Antwort (Etappe 2): weder noch.** Der Exponent ist genau 1, mit einem Produkt iterierter Logarithmen,\n$|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$; die Drift des lokalen Exponenten ist $1+1/\\ln n$ (kn.beob.theta_koeffizienten). Eine eigene\n„Kneser-Exponentenzahl“ gibt es nicht; der Abfall wird von $A=\\mathrm{sexp}'(0)$ und der regulären Abel-Funktion $h$ bestimmt.\n**Offen bleibt:** die Übertragung von der Singularität auf die Koeffizienten streng zu beweisen, und die Schwankung von $\\arg a_n$ explizit\nüber $\\theta'$ auf der reellen Achse auszudrücken.\n",
+   "einfach": "Die Welle in Knesers Tetration wird so langsam schwächer wie 1/n, nur noch ein klein wenig schneller. Eine neue Zahl steckt nicht darin — aber eine schöne Formel (siehe die verwandten Einträge). Ein strenger Beweis fehlt noch.",
    "quellen": [
     {
-     "ref": "diese_arbeit"
+     "ref": "diese_arbeit",
+     "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md"
     }
    ],
    "kanten": [
     {
      "typ": "verwandt",
      "ziel": "kn.beob.theta_fourier_algebraisch"
+    },
+    {
+     "typ": "verwandt",
+     "ziel": "kn.beob.theta_koeffizienten"
     },
     {
      "typ": "verwandt",
@@ -61436,11 +61458,29 @@
    "_traegt": [],
    "_verwandt": [
     {
+     "id": "kn.beob.theta_koeffizienten",
+     "score": 5.2,
+     "warum": [
+      "verwandt",
+      "verwandt (rückwärts)",
+      "über kn.beob.theta_fourier_algebraisch"
+     ]
+    },
+    {
      "id": "kn.beob.theta_fourier_algebraisch",
-     "score": 4.5,
+     "score": 5.2,
      "warum": [
       "motiviert (rückwärts)",
       "verwandt",
+      "über kn.beob.theta_koeffizienten"
+     ]
+    },
+    {
+     "id": "kn.satz.theta_singularitaet",
+     "score": 3.2,
+     "warum": [
+      "über kn.beob.theta_fourier_algebraisch",
+      "über kn.beob.theta_koeffizienten",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -61479,16 +61519,151 @@
      "warum": [
       "gemeinsame Objekte: kneser_T"
      ]
+    }
+   ],
+   "en": {
+    "titel": "Which number determines the Fourier decay of Kneser's θ? — Answer: none of its own, the exponent is exactly 1",
+    "aussage": "Original question (stage 1): Do the $a_n$ decay like $n^{-1-c}$ with a constant $c$ of Kneser's own, or like $n^{-1}(\\ln n)^{-p}$?\n**Answer (stage 2): neither.** The exponent is exactly 1, with a product of iterated logarithms,\n$|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$; the drift of the local exponent is $1+1/\\ln n$ (kn.beob.theta_koeffizienten). There is\nno \"Kneser exponent number\" of its own; the decay is determined by $A=\\mathrm{sexp}'(0)$ and the regular Abel function $h$.\n**Still open:** proving the transfer from the singularity to the coefficients rigorously, and expressing the fluctuation of $\\arg a_n$ explicitly\nvia $\\theta'$ on the real axis.\n",
+    "einfach": "The wave in Kneser's tetration weakens about as slowly as 1/n, only a tiny bit faster. No new number is hidden in it — but a beautiful formula (see the related entries). A rigorous proof is still missing.",
+    "quellen": [
+     {
+      "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md"
+     }
+    ]
+   },
+   "_en_stand": "aktuell",
+   "_en_geprueft": "nein",
+   "befunde": []
+  },
+  {
+   "id": "kn.satz.theta_singularitaet",
+   "titel": "θ ist genau an den ganzen Zahlen singulär — mit einer „Superlogarithmus-Singularität“",
+   "art": "satz",
+   "ebene": "C",
+   "status": "skizze",
+   "niveau": "forschung",
+   "objekte": [
+    "kneser_T",
+    "theta_kneser"
+   ],
+   "bereich": "Basis $b>\\eta$ (gerechnet für $e$ und 2); $\\mathrm{sexp}(z)=F(z+\\theta(z))$, $F(s)=\\Psi(\\lambda^s)$ mit der Poincaré-Funktion $\\Psi$ am Fixpunkt $L$, $\\lambda=L\\ln b$; $h=F^{-1}$ die reguläre Abel-Funktion",
+   "aussage": "(i) $\\Psi'$ hat keine Nullstelle und $\\Psi$ lässt den Wert 0 aus; daher ist $F'\\neq0$ und $F\\neq0$ überall.\n(ii) Weil $\\mathrm{sexp}(-1)=0$, aber $F$ nie 0 wird, muss $z+\\theta(z)$ bei $z\\to-1$ unbeschränkt werden: **θ ist an jeder ganzen Zahl singulär**.\nAn allen anderen reellen Stellen ist $\\theta$ analytisch.\n(iii) Die Singularität ist weder eine Potenz noch ein Logarithmus. Nahe $z=0$ gilt (Basis $e$)\n$$\\theta(z)=2-z+h\\bigl(\\log(Az)+\\kappa z+O(z^2)\\bigr),\\qquad A=\\mathrm{sexp}'(0),\\quad\\kappa=\\frac{\\mathrm{sexp}''(0)}{2A}-\\frac A2.$$\n$\\theta$ wächst dort unbeschränkt, aber unvorstellbar langsam: von $z=10^{-2}i$ bis $10^{-30}i$ ändert sich $\\theta$ nur um $0.14$\n(von $26.205+5.227i$ nach $26.330+4.763i$). Die Singularität ist selbstähnlich: für sehr kleine $z$ enthält sie $\\theta$ selbst.\n",
+   "einfach": "Die Welle in Knesers Tetration hat scharfe Stellen genau bei den ganzen Zahlen. Der Grund: bei −1 ist die Tetration 0, und die gewöhnliche Lösung am komplexen Fixpunkt kann den Wert 0 nie erreichen — die Welle muss das ausgleichen und wird dort unendlich, aber so langsam wie ein Superlogarithmus.",
+   "beweis": {
+    "art": "skizze",
+    "text": "(i) Aus $\\lambda\\Psi'(\\lambda u)=\\ln b\\cdot b^{\\Psi(u)}\\Psi'(u)$: eine Nullstelle $u_0$ von $\\Psi'$ gäbe Nullstellen $u_0\\lambda^{-k}$, die sich bei 0 häufen,\nWiderspruch zu $\\Psi'(0)=1$; $\\Psi(\\lambda u)=b^{\\Psi(u)}\\neq0$. (ii) Wäre $z+\\theta(z)$ bei $z\\to-1$ beschränkt, gäbe es einen Häufungspunkt $s^*$ mit\n$F(s^*)=0$. (iii) $\\theta(z)=h(\\mathrm{sexp}\\,z)-z$, $h(w)=1+h(\\log_bw)$ zweimal angewandt und Taylor-Entwicklung von $\\log\\log\\mathrm{sexp}$ bei 0;\nnumerisch bestätigt: der Rest fällt wie $|z|^2$ bis $|z|=10^{-12}$.\n",
+    "luecken": [
+     "Dass die Fortsetzung von h nur über der Bahn von 0 behindert ist (singuläre Werte von Poincaré-Funktionen), ist zitiert, nicht hier bewiesen.",
+     "Analytizität auf ℝ∖ℤ: die Wahl des Hauptzweigs ist nur numerisch geprüft (stetiger Verlauf in allen Abtastungen)."
+    ]
+   },
+   "quellen": [
+    {
+     "ref": "diese_arbeit",
+     "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, Abschnitt 2 (S1–S6) und 3.1; p5_lokal.py"
+    }
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "(i), (ii) ja, sobald man sieht, dass F den Wert 0 auslässt; (iii) ist eine kurze Rechnung.",
+    "f2_benutzte_voraussetzungen": "Kneser-Darstellung sexp = F(z+θ(z)); Poincaré-Funktion ganz.",
+    "f3_spezialfall": "nein",
+    "f4_uebertragbar": "Auf jede Basis über η (Basis 2 gleich geprüft) und vermutlich auf Kneser-artige Pentation (dort trifft die Pentation den Wert, den die reguläre Lösung auslässt).",
+    "f5_neue_frage": "Gilt dasselbe für die Welle zwischen regulärer und Kneser-artiger Pentation (kn.beob.einheitliche_raenge)?"
+   },
+   "bewertung": {
+    "richtigkeit": "Kern bewiesen, Lokalform numerisch auf 10⁻²⁷",
+    "neuheit": "neu_ungeprueft",
+    "nutzen": "Erklärt, warum Kneser und die reguläre Lösung an L sich nicht analytisch ineinander überführen lassen, und wo genau.",
+    "nutzen_stufe": "hoch"
+   },
+   "kanten": [
+    {
+     "typ": "verwandt",
+     "ziel": "kn.beob.theta_fourier_algebraisch"
     },
     {
-     "id": "bw.zert.8r1_alt",
-     "score": 1.25,
+     "typ": "verwandt",
+     "ziel": "kn.gescheitert.regulaer_an_L"
+    },
+    {
+     "typ": "verwandt",
+     "ziel": "kn.konstr.kneser"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "id_kn_1.yaml",
+   "_strang": "kn.theta",
+   "_idee": "zahlen.identitaeten",
+   "_niveau": "forschung",
+   "_status_eff": "skizze",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "kn.beob.theta_fourier_algebraisch",
+     "score": 4.2,
      "warum": [
-      "gemeinsame Objekte: kneser_T"
+      "verwandt",
+      "über kn.konstr.kneser",
+      "über kn.beob.theta_koeffizienten"
      ]
     },
     {
-     "id": "bw.zert.8r1",
+     "id": "kn.beob.theta_koeffizienten",
+     "score": 3.85,
+     "warum": [
+      "verwandt (rückwärts)",
+      "über kn.beob.theta_fourier_algebraisch",
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
+     "id": "kn.frage.theta_exponent",
+     "score": 3.2,
+     "warum": [
+      "über kn.beob.theta_fourier_algebraisch",
+      "über kn.beob.theta_koeffizienten",
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
+     "id": "kn.konstr.kneser",
+     "score": 2.7,
+     "warum": [
+      "verwandt",
+      "über kn.beob.theta_fourier_algebraisch",
+      "über kn.gescheitert.regulaer_an_L"
+     ]
+    },
+    {
+     "id": "bw.ann.K1K2",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
+     "id": "kn.satz.halbexp_singularitaet_L",
+     "score": 1.6,
+     "warum": [
+      "über kn.konstr.kneser",
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
+     "id": "kn.gescheitert.regulaer_an_L",
+     "score": 1.35,
+     "warum": [
+      "verwandt",
+      "über kn.konstr.kneser"
+     ]
+    },
+    {
+     "id": "kn.beob.referenzwerte",
      "score": 1.25,
      "warum": [
       "gemeinsame Objekte: kneser_T"
@@ -61496,9 +61671,202 @@
     }
    ],
    "en": {
-    "titel": "Which number determines the Fourier decay of Kneser's θ?",
-    "aussage": "The coefficients $a_n$ of $\\theta$ (kn.beob.theta_fourier_algebraisch) decay roughly like $n^{-1.2}$, but the exponent is still falling. Is the decay\n$n^{-1-c}$ with an exact constant $c$ — for instance from $L$ ($\\mathrm{Re}(1/L)=0.169$, or from $2\\pi i/L$) — or $n^{-1}(\\ln n)^{-p}$?\nAn exactly determinable exponent would be a genuine constant belonging to Kneser alone; the search for relations with classical constants\n(ar.beob.keine_relationen) has found nothing for the values themselves.\n",
-    "einfach": "How fast does the wave in Kneser's tetration become weaker? If the answer is an exact number that can be computed from the fixed point, we would have a new formula that belongs to Kneser."
+    "titel": "θ is singular exactly at the integers — with a “superlogarithm singularity”",
+    "aussage": "(i) $\\Psi'$ has no zero and $\\Psi$ omits the value 0; hence $F'\\neq0$ and $F\\neq0$ everywhere.\n(ii) Since $\\mathrm{sexp}(-1)=0$ but $F$ is never 0, $z+\\theta(z)$ must become unbounded as $z\\to-1$: **θ is singular at every integer**.\nAt all other real points $\\theta$ is analytic.\n(iii) The singularity is neither a power nor a logarithm. Near $z=0$ we have (base $e$)\n$$\\theta(z)=2-z+h\\bigl(\\log(Az)+\\kappa z+O(z^2)\\bigr),\\qquad A=\\mathrm{sexp}'(0),\\quad\\kappa=\\frac{\\mathrm{sexp}''(0)}{2A}-\\frac A2.$$\n$\\theta$ grows without bound there, but incredibly slowly: from $z=10^{-2}i$ to $10^{-30}i$, $\\theta$ changes by only $0.14$\n(from $26.205+5.227i$ to $26.330+4.763i$). The singularity is self-similar: for very small $z$ it contains $\\theta$ itself.\n",
+    "bereich": "Base $b>\\eta$ (computed for $e$ and 2); $\\mathrm{sexp}(z)=F(z+\\theta(z))$, $F(s)=\\Psi(\\lambda^s)$ with the Poincaré function $\\Psi$ at the fixed point $L$, $\\lambda=L\\ln b$; $h=F^{-1}$ the regular Abel function",
+    "einfach": "The wave in Kneser's tetration has sharp spots exactly at the integers. The reason: at −1 the tetration is 0, and the ordinary solution at the complex fixed point can never reach the value 0 — the wave has to compensate for this and becomes infinite there, but as slowly as a superlogarithm.",
+    "beweis": {
+     "text": "(i) From $\\lambda\\Psi'(\\lambda u)=\\ln b\\cdot b^{\\Psi(u)}\\Psi'(u)$: a zero $u_0$ of $\\Psi'$ would give zeros $u_0\\lambda^{-k}$ accumulating at 0,\ncontradicting $\\Psi'(0)=1$; $\\Psi(\\lambda u)=b^{\\Psi(u)}\\neq0$. (ii) If $z+\\theta(z)$ were bounded as $z\\to-1$, there would be an accumulation point $s^*$ with\n$F(s^*)=0$. (iii) $\\theta(z)=h(\\mathrm{sexp}\\,z)-z$, $h(w)=1+h(\\log_bw)$ applied twice and Taylor expansion of $\\log\\log\\mathrm{sexp}$ at 0;\nconfirmed numerically: the remainder decays like $|z|^2$ down to $|z|=10^{-12}$.\n",
+     "luecken": [
+      "That the continuation of h is obstructed only over the orbit of 0 (singular values of Poincaré functions) is cited, not proved here.",
+      "Analyticity on ℝ∖ℤ: the choice of the principal branch has only been checked numerically (continuous course in all samplings)."
+     ]
+    },
+    "pruefung": {
+     "f1_folgt_unmittelbar": "(i), (ii) yes, once one sees that F omits the value 0; (iii) is a short computation.",
+     "f2_benutzte_voraussetzungen": "Kneser representation sexp = F(z+θ(z)); Poincaré function entire.",
+     "f3_spezialfall": "no",
+     "f4_uebertragbar": "To every base above η (base 2 checked likewise) and presumably to Kneser-like pentation (there the pentation hits the value that the regular solution omits).",
+     "f5_neue_frage": "Does the same hold for the wave between the regular and the Kneser-like pentation (kn.beob.einheitliche_raenge)?"
+    },
+    "bewertung": {
+     "nutzen": "Explains why Kneser's solution and the regular solution at L cannot be analytically transformed into each other, and where exactly.",
+     "richtigkeit": "Core proved, local form numerically to 10⁻²⁷"
+    },
+    "quellen": [
+     {
+      "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, section 2 (S1–S6) and 3.1; p5_lokal.py"
+     }
+    ]
+   },
+   "_en_stand": "aktuell",
+   "_en_geprueft": "nein",
+   "befunde": []
+  },
+  {
+   "id": "kn.beob.theta_koeffizienten",
+   "titel": "Formel für die Fourier-Koeffizienten von θ: aₙ = [qⁿ] h(c + log(1−q)) + O(n⁻²)",
+   "art": "beobachtung",
+   "ebene": "C",
+   "status": "numerisch",
+   "niveau": "forschung",
+   "objekte": [
+    "kneser_T",
+    "theta_kneser"
+   ],
+   "bereich": "Basis $b>\\eta$; $\\theta(z)=\\sum a_nq^n$, $q=e^{2\\pi iz}$; $h$, $A$, $\\kappa$ wie in kn.satz.theta_singularitaet",
+   "aussage": "Aus der Singularität bei $q=1$ folgt eine geschlossene Asymptotik der Koeffizienten:\n$$a_n=[q^n]\\,h\\Bigl(\\frac{c+\\log(1-q)}{\\ln b}\\Bigr)+O(n^{-2}),\\qquad c=\\ln\\frac{A}{2\\pi\\ln b}+\\frac{i\\pi}2 .$$\nMit der Korrektur $\\delta_1=\\tfrac12+i\\kappa/2\\pi$ wird der Rest $O(n^{-3})$. Gemessen bis $n=4000$: relativer Rest $1.9\\cdot10^{-5}$ (erste Ordnung),\n$4.8\\cdot10^{-9}$ (zweite Ordnung); eine Transfer-Entwicklung mit 8 Gliedern trifft $a_{4096}$ auf $6\\cdot10^{-7}$. Für Basis 2 gleich gut.\nFührend ist $a_n\\approx-h'\\bigl((c-\\ln n)/\\ln b\\bigr)/n$ (bis auf den Faktor $1/\\ln b$); weil $h'(v)=h'(\\log v)/v$, folgt $|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$:\n**der Exponent ist genau 1**, der lokale Exponent sinkt wie $1+1/\\ln n$. Die Koeffizienten der Kneser-Welle werden also von zwei Dingen bestimmt:\nder regulären Abel-Funktion am komplexen Fixpunkt und der einen Zahl $A=\\mathrm{sexp}'(0)$.\n",
+   "einfach": "Man kann die Stärken der Schwingungen in Knesers Welle fast genau vorhersagen: man nimmt die gewöhnliche Lösung am komplexen Fixpunkt und setzt einen Logarithmus ein. Die Vorhersage stimmt bis zur 4000. Schwingung auf acht bis neun Stellen.",
+   "formen": [
+    {
+     "tex": "a_n=[q^n]\\,h\\bigl((c+\\log(1-q))/\\ln b\\bigr)+O(n^{-2})",
+     "notiz": "Koeffizientenformel"
+    },
+    {
+     "tex": "|a_n|\\asymp\\frac{1}{n\\,\\ln n\\,\\ln\\ln n\\cdots}",
+     "notiz": "Exponent genau 1"
+    }
+   ],
+   "quellen": [
+    {
+     "ref": "diese_arbeit",
+     "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 und 3.2; p3_modell.py, p4_korrektur.py"
+    }
+   ],
+   "pruefung": {
+    "f1_folgt_unmittelbar": "Nein: Transfer von der Singularität auf die Koeffizienten (Flajolet–Odlyzko) ist für Funktionen wie h(c + log u) nicht wörtlich bewiesen; numerisch sehr deutlich.",
+    "f2_benutzte_voraussetzungen": "Δ-Analytizität bei q = 1 (aus kn.satz.theta_singularitaet), Koeffizienten bis n = 4096 auf 44 Stellen.",
+    "f3_spezialfall": "nein",
+    "f4_uebertragbar": "Gleiche Formel für Basis 2 geprüft; L geht nur über h und c ein.",
+    "f5_neue_frage": "Streng beweisen; die Schwankung von arg aₙ (selbstähnlich in slog(ln ln n)) explizit über θ′ ausdrücken."
+   },
+   "bewertung": {
+    "richtigkeit": "numerisch bis n = 4000 auf 5·10⁻⁹; Herleitung mit Lücke",
+    "neuheit": "neu_ungeprueft",
+    "nutzen": "Eine echte Identität für Kneser: die Korrekturwelle zur regulären Lösung aus h und sexp′(0) allein.",
+    "nutzen_stufe": "hoch"
+   },
+   "kanten": [
+    {
+     "typ": "verwandt",
+     "ziel": "kn.satz.theta_singularitaet"
+    },
+    {
+     "typ": "stuetzt",
+     "ziel": "kn.beob.theta_fourier_algebraisch"
+    },
+    {
+     "typ": "verwandt",
+     "ziel": "kn.frage.theta_exponent"
+    }
+   ],
+   "gebiet": "kn",
+   "_datei": "id_kn_1.yaml",
+   "_strang": "kn.theta",
+   "_idee": "zahlen.identitaeten",
+   "_niveau": "forschung",
+   "_status_eff": "numerisch",
+   "_bedingungen_auto": [],
+   "_wurzelbedingungen": [],
+   "_neu_pruefen": [],
+   "_tragweite": 0,
+   "_abhaengig": [],
+   "_traegt": [],
+   "_verwandt": [
+    {
+     "id": "kn.beob.theta_fourier_algebraisch",
+     "score": 5.55,
+     "warum": [
+      "stützt (Evidenz)",
+      "über kn.frage.theta_exponent",
+      "über kn.satz.theta_singularitaet"
+     ]
+    },
+    {
+     "id": "kn.frage.theta_exponent",
+     "score": 5.2,
+     "warum": [
+      "verwandt (rückwärts)",
+      "verwandt",
+      "über kn.beob.theta_fourier_algebraisch"
+     ]
+    },
+    {
+     "id": "kn.satz.theta_singularitaet",
+     "score": 3.85,
+     "warum": [
+      "verwandt",
+      "über kn.beob.theta_fourier_algebraisch",
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
+     "id": "bw.ann.K1K2",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
+     "id": "kn.konstr.kneser",
+     "score": 1.7,
+     "warum": [
+      "über kn.satz.theta_singularitaet",
+      "über kn.beob.theta_fourier_algebraisch",
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
+     "id": "kn.satz.halbexp_singularitaet_L",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
+     "id": "kn.beob.referenzwerte",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: kneser_T"
+     ]
+    },
+    {
+     "id": "gr.beob.kneser_ableitung",
+     "score": 1.25,
+     "warum": [
+      "gemeinsame Objekte: kneser_T"
+     ]
+    }
+   ],
+   "en": {
+    "titel": "Formula for the Fourier coefficients of θ: aₙ = [qⁿ] h(c + log(1−q)) + O(n⁻²)",
+    "aussage": "The singularity at $q=1$ yields a closed asymptotic formula for the coefficients:\n$$a_n=[q^n]\\,h\\Bigl(\\frac{c+\\log(1-q)}{\\ln b}\\Bigr)+O(n^{-2}),\\qquad c=\\ln\\frac{A}{2\\pi\\ln b}+\\frac{i\\pi}2 .$$\nWith the correction $\\delta_1=\\tfrac12+i\\kappa/2\\pi$ the remainder becomes $O(n^{-3})$. Measured up to $n=4000$: relative remainder $1.9\\cdot10^{-5}$ (first order),\n$4.8\\cdot10^{-9}$ (second order); a transfer expansion with 8 terms hits $a_{4096}$ to $6\\cdot10^{-7}$. Equally good for base 2.\nThe leading term is $a_n\\approx-h'\\bigl((c-\\ln n)/\\ln b\\bigr)/n$ (up to the factor $1/\\ln b$); since $h'(v)=h'(\\log v)/v$, it follows that $|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$:\n**the exponent is exactly 1**, and the local exponent decreases like $1+1/\\ln n$. So the coefficients of the Kneser wave are determined by two things:\nthe regular Abel function at the complex fixed point and the one number $A=\\mathrm{sexp}'(0)$.\n",
+    "bereich": "Base $b>\\eta$; $\\theta(z)=\\sum a_nq^n$, $q=e^{2\\pi iz}$; $h$, $A$, $\\kappa$ as in kn.satz.theta_singularitaet",
+    "einfach": "The strengths of the oscillations in Kneser's wave can be predicted almost exactly: one takes the ordinary solution at the complex fixed point and inserts a logarithm. The prediction is correct up to the 4000th oscillation to eight or nine digits.",
+    "formen": [
+     {
+      "notiz": "Coefficient formula"
+     },
+     {
+      "notiz": "Exponent exactly 1"
+     }
+    ],
+    "pruefung": {
+     "f1_folgt_unmittelbar": "No: the transfer from the singularity to the coefficients (Flajolet–Odlyzko) is not proved literally for functions like h(c + log u); numerically very clear.",
+     "f2_benutzte_voraussetzungen": "Δ-analyticity at q = 1 (from kn.satz.theta_singularitaet), coefficients up to n = 4096 to 44 digits.",
+     "f3_spezialfall": "no",
+     "f4_uebertragbar": "Same formula checked for base 2; L enters only through h and c.",
+     "f5_neue_frage": "Prove it rigorously; express the fluctuation of arg aₙ (self-similar in slog(ln ln n)) explicitly via θ′."
+    },
+    "bewertung": {
+     "nutzen": "A genuine identity for Kneser: the correction wave to the regular solution from h and sexp′(0) alone.",
+     "richtigkeit": "numerical up to n = 4000 to 5·10⁻⁹; derivation with a gap"
+    },
+    "quellen": [
+     {
+      "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 and 3.2; p3_modell.py, p4_korrektur.py"
+     }
+    ]
    },
    "_en_stand": "aktuell",
    "_en_geprueft": "nein",
@@ -78898,7 +79266,49 @@
   },
   {
    "von": "kn.frage.theta_exponent",
+   "nach": "kn.beob.theta_koeffizienten",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.frage.theta_exponent",
    "nach": "br.satz.gevrey_fourier",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.theta_singularitaet",
+   "nach": "kn.beob.theta_fourier_algebraisch",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.theta_singularitaet",
+   "nach": "kn.gescheitert.regulaer_an_L",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.satz.theta_singularitaet",
+   "nach": "kn.konstr.kneser",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.beob.theta_koeffizienten",
+   "nach": "kn.satz.theta_singularitaet",
+   "typ": "verwandt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.beob.theta_koeffizienten",
+   "nach": "kn.beob.theta_fourier_algebraisch",
+   "typ": "stuetzt",
+   "notiz": ""
+  },
+  {
+   "von": "kn.beob.theta_koeffizienten",
+   "nach": "kn.frage.theta_exponent",
    "typ": "verwandt",
    "notiz": ""
   },
@@ -87602,14 +88012,16 @@
    "id": "kn.theta",
    "gebiet": "kn",
    "name": "Knesers Welle θ genau vermessen",
-   "verlauf": "Kneser ist die reguläre Lösung am komplexen Fixpunkt plus eine Welle θ; ihre Fourier-Koeffizienten fallen nur algebraisch — welche Zahl steckt im Abfall?",
+   "verlauf": "Kneser ist die reguläre Lösung am komplexen Fixpunkt plus eine Welle θ; sie ist genau an den ganzen Zahlen singulär, und ihre Fourier-Koeffizienten folgen einer geschlossenen Formel mit Exponent 1.",
    "mitglieder": [
     "kn.beob.theta_fourier_algebraisch",
+    "kn.satz.theta_singularitaet",
+    "kn.beob.theta_koeffizienten",
     "kn.frage.theta_exponent"
    ],
    "en": {
     "name": "Measuring Kneser's wave θ precisely",
-    "verlauf": "Kneser's solution is the regular solution at the complex fixed point plus a wave θ; its Fourier coefficients decay only algebraically — which number is hidden in the decay?"
+    "verlauf": "Kneser's solution is the regular solution at the complex fixed point plus a wave θ; it is singular exactly at the integers, and its Fourier coefficients follow a closed formula with exponent 1."
    },
    "_en_stand": "aktuell"
   }
@@ -88538,7 +88950,7 @@
    "stufe": "HINWEIS",
    "regel": "theorie-fortschritt",
    "id": "kn",
-   "text": "116 von 120 Aussagen mit Theorie-Block"
+   "text": "116 von 122 Aussagen mit Theorie-Block"
   },
   {
    "stufe": "HINWEIS",
@@ -88562,7 +88974,7 @@
    "stufe": "HINWEIS",
    "regel": "uebersetzung-fortschritt",
    "id": "kn",
-   "text": "120 von 120 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 116 von 120 Theorie-Blöcken"
+   "text": "122 von 122 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 116 von 122 Theorie-Blöcken"
   },
   {
    "stufe": "HINWEIS",
@@ -88591,7 +89003,7 @@
  ],
  "statistik": {
   "art:annahme": 5,
-  "art:beobachtung": 62,
+  "art:beobachtung": 63,
   "art:definition": 15,
   "art:frage": 32,
   "art:gegenbeispiel": 4,
@@ -88600,15 +89012,15 @@
   "art:korollar": 13,
   "art:korrektur": 4,
   "art:lemma": 9,
-  "art:satz": 210,
+  "art:satz": 211,
   "art:vermutung": 33,
   "befund:HINWEIS": 37,
   "ebene:A": 81,
   "ebene:B": 97,
-  "ebene:C": 188,
+  "ebene:C": 190,
   "ebene:X": 49,
   "niveau:einstieg": 60,
-  "niveau:forschung": 207,
+  "niveau:forschung": 209,
   "niveau:vertiefung": 148,
   "status:annahme": 3,
   "status:bedingt": 27,
@@ -88617,13 +89029,13 @@
   "status:definition": 15,
   "status:entlastet": 1,
   "status:gescheitert": 11,
-  "status:numerisch": 69,
+  "status:numerisch": 70,
   "status:offen": 33,
-  "status:skizze": 11,
+  "status:skizze": 12,
   "status:ueberholt": 3,
   "status:vermutung": 29,
   "status:widerlegt": 4,
-  "uebersetzung:aktuell": 415,
+  "uebersetzung:aktuell": 417,
   "zitate_ungeprueft": 104
  },
  "ideen": {
@@ -88632,8 +89044,8 @@
     "id": "gleichung",
     "name": "Die Gleichung T(x+1) = aᵀ⁽ˣ⁾",
     "kurz": "Was jede Lösung der Grundgleichung erfüllt, ganz gleich, wie man sie zwischen den ganzen Höhen festlegt.",
-    "x": 457.2,
-    "y": 359.2,
+    "x": 457.6,
+    "y": 357.7,
     "r": 278.9,
     "n": 70,
     "fuell": {
@@ -88665,8 +89077,8 @@
     "id": "dynamik",
     "name": "Dynamik von bᶻ und der Fixpunkt L",
     "kurz": "Was passiert, wenn man b^z immer wieder anwendet — und welche Rolle die Fixpunkte spielen.",
-    "x": -25.3,
-    "y": 208.1,
+    "x": -25.7,
+    "y": 208.7,
     "r": 184.8,
     "n": 23,
     "fuell": {
@@ -88692,8 +89104,8 @@
     "id": "turm",
     "name": "Unendlicher Turm und Basen-Ebene",
     "kurz": "Für welche Basen der unendlich hohe Turm einen Grenzwert hat, und welche Bilder dabei in der komplexen Ebene entstehen.",
-    "x": -397.3,
-    "y": -134.5,
+    "x": -396.6,
+    "y": -132.5,
     "r": 222.4,
     "n": 43,
     "fuell": {
@@ -88724,8 +89136,8 @@
     "id": "fortsetzung",
     "name": "Fraktionale Fortsetzung",
     "kurz": "Wie man T(x) zwischen den ganzen Höhen festlegt — und welche Wahl die natürliche ist.",
-    "x": 587.6,
-    "y": -270.6,
+    "x": 589.1,
+    "y": -271.9,
     "r": 324.3,
     "n": 103,
     "fuell": {
@@ -88761,8 +89173,8 @@
     "id": "basiswechsel",
     "name": "Basiswechsel T ∘ slog",
     "kurz": "Was entsteht, wenn man die Tetration zu einer Basis mit dem Superlogarithmus einer anderen zusammensetzt.",
-    "x": -39.6,
-    "y": 712.7,
+    "x": -38.7,
+    "y": 713.3,
     "r": 280.0,
     "n": 69,
     "fuell": {
@@ -88796,8 +89208,8 @@
     "id": "stufen",
     "name": "Höhere Stufen",
     "kurz": "Pentation, Hexation und die ganze Leiter der Hyperoperationen.",
-    "x": -471.0,
-    "y": 355.8,
+    "x": -472.4,
+    "y": 357.5,
     "r": 233.4,
     "n": 51,
     "fuell": {
@@ -88828,8 +89240,8 @@
     "id": "verwandte",
     "name": "Verwandte Funktionen",
     "kurz": "Andere Funktionen, die man wie die Tetration iteriert und fortsetzt — und was man an ihnen über die Tetration lernt.",
-    "x": 124.9,
-    "y": -489.4,
+    "x": 125.5,
+    "y": -488.7,
     "r": 147.1,
     "n": 11,
     "fuell": {
@@ -88857,19 +89269,19 @@
     "id": "zahlen",
     "name": "Zahlen und Arithmetik",
     "kurz": "Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.",
-    "x": -253.3,
-    "y": -574.2,
-    "r": 200.2,
-    "n": 32,
+    "x": -256.1,
+    "y": -577.8,
+    "r": 204.5,
+    "n": 34,
     "fuell": {
-     "bedingt": 3,
+     "bedingt": 4,
      "bewiesen": 20,
-     "numerisch": 3,
+     "numerisch": 4,
      "offen": 3,
      "vermutung": 3
     },
     "herkunft": {
-     "eigen": 12,
+     "eigen": 14,
      "forum": 1,
      "literatur": 19
     },
@@ -88888,8 +89300,8 @@
     "id": "bruecken",
     "name": "Brücken",
     "kurz": "Wo die Tetration in Logik, Wachstumstheorie und Fourier-Analysis auftaucht.",
-    "x": 16.7,
-    "y": -167.1,
+    "x": 17.3,
+    "y": -166.4,
     "r": 152.8,
     "n": 13,
     "fuell": {
@@ -88919,8 +89331,8 @@
     "eltern": "gleichung",
     "name": "Begriffe",
     "kurz": "Abel-, Schröder- und Böttcher-Gleichung, Superfunktion und ihre Grenzen.",
-    "x": 408.6,
-    "y": 298.5,
+    "x": 409.0,
+    "y": 297.1,
     "r": 68.4,
     "n": 8,
     "fuell": {
@@ -88951,8 +89363,8 @@
     "eltern": "gleichung",
     "name": "Freiheit der Lösungen",
     "kurz": "Zu jeder Lösung gibt es unendlich viele weitere — verschoben um eine periodische Funktion θ.",
-    "x": 407.2,
-    "y": 159.2,
+    "x": 407.6,
+    "y": 157.8,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -88982,8 +89394,8 @@
     "eltern": "gleichung",
     "name": "Was fest ist, was frei ist",
     "kurz": "Welche Grössen jede Tetration gleich hat und welche von der Wahl abhängen.",
-    "x": 263.2,
-    "y": 345.1,
+    "x": 263.5,
+    "y": 343.6,
     "r": 59.5,
     "n": 5,
     "fuell": {
@@ -89012,8 +89424,8 @@
     "eltern": "gleichung",
     "name": "Werte, Ableitungen, Gestalt",
     "kurz": "Türme an ganzen Stellen, Steigungen, Krümmung und Ableitung nach der Basis.",
-    "x": 374.3,
-    "y": 475.0,
+    "x": 374.6,
+    "y": 473.6,
     "r": 105.4,
     "n": 28,
     "fuell": {
@@ -89071,8 +89483,8 @@
     "eltern": "gleichung",
     "name": "Integrale",
     "kurz": "Flächen unter der Tetration und unter Türmen.",
-    "x": 546.5,
-    "y": 368.2,
+    "x": 546.9,
+    "y": 366.7,
     "r": 80.1,
     "n": 13,
     "fuell": {
@@ -89115,8 +89527,8 @@
     "eltern": "gleichung",
     "name": "Superlogarithmus",
     "kurz": "Die Umkehrung nach der Höhe — wie oft man logarithmieren muss.",
-    "x": 296.9,
-    "y": 224.6,
+    "x": 297.2,
+    "y": 223.2,
     "r": 59.5,
     "n": 5,
     "fuell": {
@@ -89145,8 +89557,8 @@
     "eltern": "gleichung",
     "name": "Superwurzeln",
     "kurz": "Die Umkehrung nach der Basis, über Lamberts W.",
-    "x": 518.9,
-    "y": 222.4,
+    "x": 519.2,
+    "y": 220.9,
     "r": 59.5,
     "n": 5,
     "fuell": {
@@ -89174,8 +89586,8 @@
     "eltern": "dynamik",
     "name": "Fixpunkte von bᶻ",
     "kurz": "Wo b^z = z ist, und wie stark die Abbildung dort zieht oder stösst.",
-    "x": 60.1,
-    "y": 130.7,
+    "x": 59.7,
+    "y": 131.4,
     "r": 59.5,
     "n": 5,
     "fuell": {
@@ -89204,8 +89616,8 @@
     "eltern": "dynamik",
     "name": "Anziehend und abstossend",
     "kurz": "Koenigs-Koordinaten — nahe einem gewöhnlichen Fixpunkt ist die Abbildung eine reine Streckung.",
-    "x": -65.5,
-    "y": 104.6,
+    "x": -65.9,
+    "y": 105.2,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -89233,8 +89645,8 @@
     "eltern": "dynamik",
     "name": "Parabolisch",
     "kurz": "Fixpunkte mit Multiplikator 1 (wie bei η) — Fatou-Koordinaten, langsames Kriechen.",
-    "x": -0.2,
-    "y": 258.4,
+    "x": -0.7,
+    "y": 259.1,
     "r": 75.7,
     "n": 11,
     "fuell": {
@@ -89267,8 +89679,8 @@
     "eltern": "dynamik",
     "name": "Indifferent",
     "kurz": "Drehende Fixpunkte — Siegel-Scheiben und Cremer-Punkte.",
-    "x": -111.9,
-    "y": 204.1,
+    "x": -112.3,
+    "y": 204.6,
     "r": 41.0,
     "n": 1,
     "fuell": {
@@ -89291,8 +89703,8 @@
     "eltern": "turm",
     "name": "Konvergenz des Turms",
     "kurz": "Der Turm b^b^b^… konvergiert genau für e⁻ᵉ ≤ b ≤ η = e^(1/e).",
-    "x": -266.1,
-    "y": -152.2,
+    "x": -265.4,
+    "y": -150.2,
     "r": 80.1,
     "n": 13,
     "fuell": {
@@ -89332,8 +89744,8 @@
     "eltern": "turm",
     "name": "Periode 2 unter e⁻ᵉ",
     "kurz": "Unter der Eulerschen Schranke springt der Turm zwischen zwei Werten hin und her.",
-    "x": -463.8,
-    "y": -73.4,
+    "x": -463.0,
+    "y": -71.6,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -89362,8 +89774,8 @@
     "eltern": "turm",
     "name": "Regionen und Fraktale",
     "kurz": "Die Basen-Ebene zerfällt in Gebiete mit Periode 1, 2, 3 … — mit fraktalen Rändern.",
-    "x": -420.9,
-    "y": -218.0,
+    "x": -420.1,
+    "y": -216.2,
     "r": 82.1,
     "n": 14,
     "fuell": {
@@ -89404,8 +89816,8 @@
     "eltern": "turm",
     "name": "Spiralen und Mittelwerte",
     "kurz": "Wie der Turm um seinen Grenzwert kreist, und was sein Mittel ist.",
-    "x": -336.9,
-    "y": -9.3,
+    "x": -336.2,
+    "y": -7.3,
     "r": 73.4,
     "n": 10,
     "fuell": {
@@ -89445,8 +89857,8 @@
     "eltern": "fortsetzung",
     "name": "Regulär unter η",
     "kurz": "Für kleine Basen liefert der reelle Fixpunkt eine natürliche Lösung.",
-    "x": 384.0,
-    "y": -369.9,
+    "x": 386.0,
+    "y": -372.3,
     "r": 87.8,
     "n": 17,
     "fuell": {
@@ -89498,8 +89910,8 @@
     "eltern": "fortsetzung",
     "name": "Der Grenzfall η",
     "kurz": "Der parabolische Übergang, Engpass bei e und das Verhalten knapp darüber.",
-    "x": 558.6,
-    "y": -417.8,
+    "x": 560.9,
+    "y": -419.2,
     "r": 82.1,
     "n": 14,
     "fuell": {
@@ -89545,8 +89957,8 @@
     "eltern": "fortsetzung",
     "name": "Kneser über η",
     "kurz": "Holomorphe Lösung über die komplexen Fixpunkte L und L̄.",
-    "x": 352.4,
-    "y": -208.1,
+    "x": 353.6,
+    "y": -210.6,
     "r": 71.0,
     "n": 9,
     "fuell": {
@@ -89580,8 +89992,8 @@
     "eltern": "fortsetzung",
     "name": "Andere Konstruktionen",
     "kurz": "Linear, Carleman-Matrizen, Cauchy-Integrale, Walker — und wie sie zu Kneser stehen.",
-    "x": 525.3,
-    "y": -234.7,
+    "x": 526.6,
+    "y": -236.3,
     "r": 97.9,
     "n": 23,
     "fuell": {
@@ -89642,8 +90054,8 @@
     "eltern": "fortsetzung",
     "name": "Eindeutigkeit",
     "kurz": "Welche Bedingungen genau eine Lösung auswählen.",
-    "x": 423.1,
-    "y": -84.1,
+    "x": 423.6,
+    "y": -86.3,
     "r": 65.7,
     "n": 7,
     "fuell": {
@@ -89679,8 +90091,8 @@
     "eltern": "fortsetzung",
     "name": "Reelle Kennzeichnung?",
     "kurz": "Gibt es wie bei Γ eine rein reelle Bedingung, die Kneser auswählt?",
-    "x": 507.4,
-    "y": -9.3,
+    "x": 507.5,
+    "y": -11.0,
     "r": 41.0,
     "n": 1,
     "fuell": {
@@ -89705,8 +90117,8 @@
     "eltern": "fortsetzung",
     "name": "Halbe Exponentialfunktion",
     "kurz": "f(f(x)) = e^x — Wachstum, Konstruktion und die Polynom-Vermutung.",
-    "x": 645.4,
-    "y": -66.8,
+    "x": 645.8,
+    "y": -67.8,
     "r": 102.5,
     "n": 26,
     "fuell": {
@@ -89769,8 +90181,8 @@
     "eltern": "fortsetzung",
     "name": "Tetration als Störung",
     "kurz": "eˣ − 1 Schritt für Schritt in eˣ verbiegen — jede Ordnung ist ein Polynom in der Höhe.",
-    "x": 689.6,
-    "y": -228.9,
+    "x": 690.9,
+    "y": -229.6,
     "r": 59.5,
     "n": 5,
     "fuell": {
@@ -89802,8 +90214,8 @@
     "eltern": "fortsetzung",
     "name": "Selbst ausrechnen",
     "kurz": "Ein Polynom auf [−1, 0] plus eˣ und ln — Tetration in Desmos, mit bekanntem Fehler.",
-    "x": 664.8,
-    "y": -332.5,
+    "x": 666.6,
+    "y": -333.3,
     "r": 41.0,
     "n": 1,
     "fuell": {
@@ -89826,8 +90238,8 @@
     "eltern": "basiswechsel",
     "name": "Gleicher Fixpunkt",
     "kurz": "Basen mit gemeinsamem Fixpunkt — dort ist der Wechsel fast linear.",
-    "x": -10.1,
-    "y": 513.3,
+    "x": -8.8,
+    "y": 514.0,
     "r": 68.4,
     "n": 8,
     "fuell": {
@@ -89864,8 +90276,8 @@
     "eltern": "basiswechsel",
     "name": "Log-Peeling und Grenzkanal",
     "kurz": "Logarithmen schichtweise abschälen; die Schwänze konvergieren gegen eine Konstante.",
-    "x": -18.4,
-    "y": 655.9,
+    "x": -17.5,
+    "y": 656.6,
     "r": 68.4,
     "n": 8,
     "fuell": {
@@ -89901,8 +90313,8 @@
     "eltern": "basiswechsel",
     "name": "Phasengesetz und Welle",
     "kurz": "Der Basiswechsel ist bis auf eine periodische Welle linear.",
-    "x": 115.3,
-    "y": 591.6,
+    "x": 116.4,
+    "y": 592.7,
     "r": 73.4,
     "n": 10,
     "fuell": {
@@ -89946,8 +90358,8 @@
     "eltern": "basiswechsel",
     "name": "Kreisabbildung",
     "kurz": "Die Phase als Homöomorphismus des Kreises, mit exakter Antisymmetrie.",
-    "x": 105.5,
-    "y": 733.5,
+    "x": 105.8,
+    "y": 734.5,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -89982,8 +90394,8 @@
     "eltern": "basiswechsel",
     "name": "Moden und Singularitäten",
     "kurz": "Fourier-Moden der Welle, ihr Abfall und die Singularität, die ihn bestimmt.",
-    "x": -156.4,
-    "y": 563.0,
+    "x": -155.2,
+    "y": 563.4,
     "r": 80.1,
     "n": 13,
     "fuell": {
@@ -90029,8 +90441,8 @@
     "eltern": "basiswechsel",
     "name": "Antwortkern und Basisableitung",
     "kurz": "Wie die Welle auf eine kleine Änderung der Basis antwortet — über ein Riemann–Hilbert-Problem.",
-    "x": -160.7,
-    "y": 738.7,
+    "x": -160.2,
+    "y": 739.0,
     "r": 89.6,
     "n": 18,
     "fuell": {
@@ -90083,8 +90495,8 @@
     "eltern": "basiswechsel",
     "name": "Rekonstruktion und Zertifikat",
     "kurz": "Die Welle aus Ankerwerten zurückgewinnen und rigoros zertifizieren.",
-    "x": -11.7,
-    "y": 792.9,
+    "x": -11.6,
+    "y": 793.7,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -90120,8 +90532,8 @@
     "eltern": "stufen",
     "name": "Pentation und Hexation",
     "kurz": "Die Tetration iterieren — Fixpunkte, Kneser-artige Lösungen, Verzweigungen.",
-    "x": -399.1,
-    "y": 470.7,
+    "x": -400.6,
+    "y": 472.4,
     "r": 87.8,
     "n": 17,
     "fuell": {
@@ -90176,8 +90588,8 @@
     "eltern": "stufen",
     "name": "ηₙ → 2 und eₙ → 4",
     "kurz": "Die Grenzbasen der höheren Stufen und ihr Grenzwert (TPID 10).",
-    "x": -349.4,
-    "y": 295.9,
+    "x": -350.7,
+    "y": 297.7,
     "r": 87.8,
     "n": 17,
     "fuell": {
@@ -90227,8 +90639,8 @@
     "eltern": "stufen",
     "name": "Gebrochene Ränge",
     "kurz": "Eine Rechenart zwischen Potenz und Tetration — als halber Schritt eines Operators auf Funktionen.",
-    "x": -517.4,
-    "y": 340.9,
+    "x": -518.8,
+    "y": 342.3,
     "r": 80.1,
     "n": 13,
     "fuell": {
@@ -90269,8 +90681,8 @@
     "eltern": "stufen",
     "name": "Hyperoperationen",
     "kurz": "Ackermann, andere Klammerungen, Ordinalzahlen.",
-    "x": -466.9,
-    "y": 202.9,
+    "x": -468.0,
+    "y": 204.5,
     "r": 56.0,
     "n": 4,
     "fuell": {
@@ -90296,8 +90708,8 @@
     "eltern": "verwandte",
     "name": "Produkt-Tetration und Vergleichsfunktionen",
     "kurz": "Die Superfunktion von x·aˣ, und wie man mit einer bekannten Funktion als Massstab fortsetzt.",
-    "x": 135.2,
-    "y": -526.1,
+    "x": 135.7,
+    "y": -525.4,
     "r": 62.7,
     "n": 6,
     "fuell": {
@@ -90331,8 +90743,8 @@
     "eltern": "verwandte",
     "name": "Exponentielle Fakultät",
     "kurz": "n^((n−1)^(…)) — ein Turm mit fallenden Basen, fortgesetzt über die Tetration.",
-    "x": 76.9,
-    "y": -419.1,
+    "x": 77.6,
+    "y": -418.3,
     "r": 52.0,
     "n": 3,
     "fuell": {
@@ -90361,8 +90773,8 @@
     "eltern": "verwandte",
     "name": "Elementare Superfunktionen",
     "kurz": "Funktionen, deren Iteration man geschlossen hinschreiben kann — Tschebyschow, Möbius, Logistik.",
-    "x": 182.1,
-    "y": -420.0,
+    "x": 182.8,
+    "y": -419.4,
     "r": 47.2,
     "n": 2,
     "fuell": {
@@ -90386,8 +90798,8 @@
     "eltern": "zahlen",
     "name": "Transzendenz",
     "kurz": "Gelfond–Schneider, Schanuel und was die Gleichung über Zahlwerte erzwingt.",
-    "x": -217.8,
-    "y": -487.3,
+    "x": -223.1,
+    "y": -485.4,
     "r": 96.4,
     "n": 22,
     "fuell": {
@@ -90442,8 +90854,8 @@
     "eltern": "zahlen",
     "name": "Kneser–Schanuel",
     "kurz": "Eine Schanuel-artige Vermutung für die Kneser-Tetration.",
-    "x": -222.7,
-    "y": -641.6,
+    "x": -241.8,
+    "y": -638.6,
     "r": 52.0,
     "n": 3,
     "fuell": {
@@ -90471,17 +90883,18 @@
     "id": "zahlen.identitaeten",
     "eltern": "zahlen",
     "name": "Formeln und Identitäten",
-    "kurz": "Gibt es Formeln für Kneser-Zahlen mit π, γ, ζ? Bisher nein — aber die Welle θ trägt vielleicht eine eigene Konstante.",
-    "x": -118.7,
-    "y": -605.7,
-    "r": 52.0,
-    "n": 3,
+    "kurz": "Keine Formeln für Kneser-Zahlen mit π, γ, ζ — aber eine echte Formel für Knesers Welle θ aus der regulären Lösung.",
+    "x": -126.6,
+    "y": -615.4,
+    "r": 59.5,
+    "n": 5,
     "fuell": {
-     "numerisch": 2,
+     "bedingt": 1,
+     "numerisch": 3,
      "offen": 1
     },
     "herkunft": {
-     "eigen": 3
+     "eigen": 5
     },
     "offen": [
      "kn.frage.theta_exponent"
@@ -90489,11 +90902,13 @@
     "mitglieder": [
      "ar.beob.keine_relationen",
      "kn.beob.theta_fourier_algebraisch",
-     "kn.frage.theta_exponent"
+     "kn.beob.theta_koeffizienten",
+     "kn.frage.theta_exponent",
+     "kn.satz.theta_singularitaet"
     ],
     "en": {
      "name": "Formulas and identities",
-     "kurz": "Are there formulas for Kneser numbers with π, γ, ζ? So far no — but the wave θ may carry a constant of its own."
+     "kurz": "No formulas for Kneser numbers with π, γ, ζ — but a genuine formula for Kneser's wave θ in terms of the regular solution."
     }
    },
    {
@@ -90501,8 +90916,8 @@
     "eltern": "zahlen",
     "name": "Kongruenzen",
     "kurz": "Türme modulo m, Endziffern und p-adische Grenzwerte.",
-    "x": -373.7,
-    "y": -514.8,
+    "x": -378.9,
+    "y": -513.7,
     "r": 56.0,
     "n": 4,
     "fuell": {
@@ -90528,8 +90943,8 @@
     "eltern": "bruecken",
     "name": "Logik und Wachstum",
     "kurz": "Definierbarkeit, Hardy-Felder, Komplexitätstheorie.",
-    "x": -44.5,
-    "y": -120.2,
+    "x": -43.9,
+    "y": -119.5,
     "r": 65.7,
     "n": 7,
     "fuell": {
@@ -90562,8 +90977,8 @@
     "eltern": "bruecken",
     "name": "Kreis und Fourier",
     "kurz": "Werkzeuge aus der Analysis auf dem Kreis.",
-    "x": 82.9,
-    "y": -110.9,
+    "x": 83.4,
+    "y": -110.1,
     "r": 56.0,
     "n": 4,
     "fuell": {
@@ -90591,8 +91006,8 @@
     "eltern": "bruecken",
     "name": "Iteration als Wirkung",
     "kurz": "Was „iterieren“ allgemein heisst — eine Leiter von ganzen Schritten bis zu Hyperoperationen.",
-    "x": 35.8,
-    "y": -209.4,
+    "x": 36.4,
+    "y": -208.7,
     "r": 47.2,
     "n": 2,
     "fuell": {
@@ -90654,7 +91069,7 @@
    [
     "basiswechsel",
     "zahlen",
-    4.04
+    4.7
    ],
    [
     "bruecken",
@@ -90689,7 +91104,7 @@
    [
     "bruecken",
     "zahlen",
-    1.7
+    1.82
    ],
    [
     "dynamik",
@@ -90744,7 +91159,7 @@
    [
     "fortsetzung",
     "zahlen",
-    8.19
+    9.36
    ],
    [
     "gleichung",
@@ -90764,7 +91179,7 @@
    [
     "gleichung",
     "zahlen",
-    11.86
+    12.15
    ],
    [
     "stufen",
@@ -90779,7 +91194,7 @@
    [
     "stufen",
     "zahlen",
-    5.86
+    6.15
    ],
    [
     "turm",
@@ -91091,7 +91506,7 @@
    [
     "basiswechsel.antwort",
     "zahlen.identitaeten",
-    0.23
+    0.38
    ],
    [
     "basiswechsel.antwort",
@@ -91241,7 +91656,7 @@
    [
     "basiswechsel.gleiches_l",
     "zahlen.identitaeten",
-    0.17
+    0.28
    ],
    [
     "basiswechsel.gleiches_l",
@@ -91391,7 +91806,7 @@
    [
     "basiswechsel.moden",
     "zahlen.identitaeten",
-    0.17
+    0.28
    ],
    [
     "basiswechsel.moden",
@@ -91521,7 +91936,7 @@
    [
     "basiswechsel.phase",
     "zahlen.identitaeten",
-    0.12
+    0.19
    ],
    [
     "basiswechsel.phase",
@@ -91601,7 +92016,7 @@
    [
     "basiswechsel.rekonstruktion",
     "zahlen.identitaeten",
-    0.3
+    0.5
    ],
    [
     "basiswechsel.rekonstruktion",
@@ -91736,7 +92151,7 @@
    [
     "bruecken.logik",
     "zahlen.identitaeten",
-    0.19
+    0.31
    ],
    [
     "bruecken.logik",
@@ -92366,7 +92781,7 @@
    [
     "fortsetzung.andere",
     "zahlen.identitaeten",
-    0.09
+    0.16
    ],
    [
     "fortsetzung.andere",
@@ -92471,7 +92886,7 @@
    [
     "fortsetzung.eindeutigkeit",
     "zahlen.identitaeten",
-    0.19
+    0.31
    ],
    [
     "fortsetzung.eindeutigkeit",
@@ -92596,7 +93011,7 @@
    [
     "fortsetzung.eta",
     "zahlen.identitaeten",
-    0.12
+    0.21
    ],
    [
     "fortsetzung.eta",
@@ -92716,7 +93131,7 @@
    [
     "fortsetzung.halbexp",
     "zahlen.identitaeten",
-    0.3
+    0.5
    ],
    [
     "fortsetzung.halbexp",
@@ -92806,7 +93221,7 @@
    [
     "fortsetzung.kneser",
     "zahlen.identitaeten",
-    0.55
+    1.25
    ],
    [
     "fortsetzung.kneser",
@@ -93371,7 +93786,7 @@
    [
     "gleichung.integrale",
     "zahlen.identitaeten",
-    0.83
+    1.06
    ],
    [
     "gleichung.integrale",
@@ -93526,7 +93941,7 @@
    [
     "gleichung.werte",
     "zahlen.identitaeten",
-    0.11
+    0.18
    ],
    [
     "gleichung.werte",
@@ -93621,7 +94036,7 @@
    [
     "stufen.halbrang",
     "zahlen.identitaeten",
-    0.3
+    0.5
    ],
    [
     "stufen.halbrang",
@@ -93696,7 +94111,7 @@
    [
     "stufen.pentation",
     "zahlen.identitaeten",
-    0.14
+    0.23
    ],
    [
     "stufen.pentation",
@@ -93866,7 +94281,7 @@
    [
     "zahlen.identitaeten",
     "zahlen.transzendenz",
-    0.39
+    0.48
    ],
    [
     "zahlen.kongruenzen",
@@ -93883,2906 +94298,2920 @@
    "fg.def.abel": {
     "haupt": false,
     "r": 5.0,
-    "x": 431.3,
-    "y": 328.2,
+    "x": 431.7,
+    "y": 326.7,
     "idee": "gleichung.begriffe"
    },
    "fg.def.boettcher": {
     "haupt": false,
     "r": 5.0,
-    "x": 366.9,
-    "y": 291.2,
+    "x": 367.3,
+    "y": 289.7,
     "idee": "gleichung.begriffe"
    },
    "fg.def.iterationsgruppe": {
     "haupt": false,
     "r": 5.0,
-    "x": 448.1,
-    "y": 273.4,
+    "x": 448.5,
+    "y": 272.0,
     "idee": "gleichung.begriffe"
    },
    "fg.def.schroeder": {
     "haupt": false,
     "r": 5.0,
-    "x": 395.4,
-    "y": 347.7,
+    "x": 395.8,
+    "y": 346.2,
     "idee": "gleichung.begriffe"
    },
    "fg.def.tetration": {
     "haupt": true,
     "r": 9.8,
-    "x": 411.4,
-    "y": 267.1,
+    "x": 411.7,
+    "y": 265.7,
     "idee": "gleichung.begriffe"
    },
    "fg.kor.keine_ganze_tetration": {
     "haupt": false,
     "r": 5.0,
-    "x": 383.4,
-    "y": 250.1,
+    "x": 383.8,
+    "y": 248.6,
     "idee": "gleichung.begriffe"
    },
    "fg.lem.ganzzahlwerte": {
     "haupt": false,
     "r": 9.0,
-    "x": 422.7,
-    "y": 298.5,
+    "x": 423.1,
+    "y": 297.1,
     "idee": "gleichung.begriffe"
    },
    "fg.satz.schroeder_abel": {
     "haupt": true,
     "r": 21.0,
-    "x": 390.6,
-    "y": 315.0,
+    "x": 391.0,
+    "y": 313.6,
     "idee": "gleichung.begriffe"
    },
    "fg.kor.nichteindeutigkeit": {
     "haupt": false,
     "r": 7.8,
-    "x": 364.0,
-    "y": 151.6,
+    "x": 364.3,
+    "y": 150.1,
     "idee": "gleichung.freiheit"
    },
    "fg.lem.periodisch_liouville": {
     "haupt": false,
     "r": 11.3,
-    "x": 421.9,
-    "y": 159.2,
+    "x": 422.2,
+    "y": 157.8,
     "idee": "gleichung.freiheit"
    },
    "fg.satz.allgemeine_loesung": {
     "haupt": true,
     "r": 14.9,
-    "x": 388.5,
-    "y": 176.4,
+    "x": 388.9,
+    "y": 174.9,
     "idee": "gleichung.freiheit"
    },
    "fg.satz.einbettung_fluss": {
     "haupt": false,
     "r": 5.0,
-    "x": 430.8,
-    "y": 190.0,
+    "x": 431.2,
+    "y": 188.5,
     "idee": "gleichung.freiheit"
    },
    "fg.satz.kohomologisch": {
     "haupt": true,
     "r": 13.3,
-    "x": 410.1,
-    "y": 126.6,
+    "x": 410.4,
+    "y": 125.1,
     "idee": "gleichung.freiheit"
    },
    "fg.satz.tpid4": {
     "haupt": false,
     "r": 5.0,
-    "x": 448.2,
-    "y": 133.2,
+    "x": 448.6,
+    "y": 131.7,
     "idee": "gleichung.freiheit"
    },
    "gr.satz.exponentialitaet": {
     "haupt": true,
     "r": 7.0,
-    "x": 244.0,
-    "y": 362.7,
+    "x": 244.3,
+    "y": 361.2,
     "idee": "gleichung.festfrei"
    },
    "gr.satz.frei_und_fest": {
     "haupt": false,
     "r": 5.0,
-    "x": 218.8,
-    "y": 337.2,
+    "x": 219.1,
+    "y": 335.8,
     "idee": "gleichung.festfrei"
    },
    "gr.satz.stufenleiter": {
     "haupt": false,
     "r": 5.0,
-    "x": 266.2,
-    "y": 311.6,
+    "x": 266.4,
+    "y": 310.2,
     "idee": "gleichung.festfrei"
    },
    "gr.satz.tauschregel": {
     "haupt": false,
     "r": 5.0,
-    "x": 287.4,
-    "y": 376.7,
+    "x": 287.7,
+    "y": 375.2,
     "idee": "gleichung.festfrei"
    },
    "gr.satz.taylor_leiter": {
     "haupt": true,
     "r": 9.8,
-    "x": 278.2,
-    "y": 345.1,
+    "x": 278.5,
+    "y": 343.6,
     "idee": "gleichung.festfrei"
    },
    "gr.beob.kneser_ableitung": {
     "haupt": false,
     "r": 5.0,
-    "x": 324.0,
-    "y": 495.8,
+    "x": 324.3,
+    "y": 494.3,
     "idee": "gleichung.werte"
    },
    "gr.beob.kneser_pde_wackeln": {
     "haupt": false,
     "r": 5.0,
-    "x": 398.5,
-    "y": 423.2,
+    "x": 398.8,
+    "y": 421.8,
     "idee": "gleichung.werte"
    },
    "gr.beob.wendepunkte": {
     "haupt": false,
     "r": 7.0,
-    "x": 337.4,
-    "y": 468.5,
+    "x": 337.7,
+    "y": 467.0,
     "idee": "gleichung.werte"
    },
    "gr.def.turm": {
     "haupt": false,
     "r": 5.0,
-    "x": 392.2,
-    "y": 532.1,
+    "x": 392.5,
+    "y": 530.7,
     "idee": "gleichung.werte"
    },
    "gr.gegen.tpid7_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": 320.3,
-    "y": 443.7,
+    "x": 320.6,
+    "y": 442.3,
     "idee": "gleichung.werte"
    },
    "gr.kor.basis_summe": {
     "haupt": false,
     "r": 5.0,
-    "x": 455.3,
-    "y": 485.9,
+    "x": 455.6,
+    "y": 484.5,
     "idee": "gleichung.werte"
    },
    "gr.kor.ganze_stellen": {
     "haupt": false,
     "r": 5.0,
-    "x": 305.6,
-    "y": 522.8,
+    "x": 305.9,
+    "y": 521.4,
     "idee": "gleichung.werte"
    },
    "gr.kor.konvex_nach_oben": {
     "haupt": false,
     "r": 7.0,
-    "x": 422.6,
-    "y": 492.7,
+    "x": 422.9,
+    "y": 491.2,
     "idee": "gleichung.werte"
    },
    "gr.kor.produktformel": {
     "haupt": false,
     "r": 9.0,
-    "x": 394.3,
-    "y": 501.2,
+    "x": 394.6,
+    "y": 499.8,
     "idee": "gleichung.werte"
    },
    "gr.korr.grenzidentitaet": {
     "haupt": false,
     "r": 5.0,
-    "x": 393.0,
-    "y": 391.6,
+    "x": 393.3,
+    "y": 390.1,
     "idee": "gleichung.werte"
    },
    "gr.satz.abklingen": {
     "haupt": false,
     "r": 5.0,
-    "x": 456.7,
-    "y": 436.9,
+    "x": 457.0,
+    "y": 435.5,
     "idee": "gleichung.werte"
    },
    "gr.satz.basis_ganz": {
     "haupt": true,
     "r": 11.8,
-    "x": 358.3,
-    "y": 489.6,
+    "x": 358.6,
+    "y": 488.2,
     "idee": "gleichung.werte"
    },
    "gr.satz.basis_gleichung": {
     "haupt": true,
     "r": 9.8,
-    "x": 323.1,
-    "y": 413.7,
+    "x": 323.4,
+    "y": 412.2,
     "idee": "gleichung.werte"
    },
    "gr.satz.gestalt": {
     "haupt": true,
     "r": 14.9,
-    "x": 376.7,
-    "y": 447.2,
+    "x": 377.0,
+    "y": 445.8,
     "idee": "gleichung.werte"
    },
    "gr.satz.grenzfaelle": {
     "haupt": false,
     "r": 5.0,
-    "x": 437.6,
-    "y": 461.1,
+    "x": 437.9,
+    "y": 459.6,
     "idee": "gleichung.werte"
    },
    "gr.satz.kehrwert_turmsumme": {
     "haupt": false,
     "r": 5.0,
-    "x": 335.6,
-    "y": 530.0,
+    "x": 335.9,
+    "y": 528.5,
     "idee": "gleichung.werte"
    },
    "gr.satz.kettenregel": {
     "haupt": true,
     "r": 18.2,
-    "x": 386.7,
-    "y": 475.0,
+    "x": 387.0,
+    "y": 473.6,
     "idee": "gleichung.werte"
    },
    "gr.satz.omega_ableitung": {
     "haupt": true,
     "r": 9.8,
-    "x": 409.2,
-    "y": 452.8,
+    "x": 409.5,
+    "y": 451.4,
     "idee": "gleichung.werte"
    },
    "gr.satz.selbstpotenz": {
     "haupt": true,
     "r": 11.8,
-    "x": 362.6,
-    "y": 518.5,
+    "x": 362.9,
+    "y": 517.0,
     "idee": "gleichung.werte"
    },
    "gr.satz.stellen": {
     "haupt": false,
     "r": 5.0,
-    "x": 365.3,
-    "y": 406.1,
+    "x": 365.6,
+    "y": 404.7,
     "idee": "gleichung.werte"
    },
    "gr.satz.turm_ableitung": {
     "haupt": false,
     "r": 5.0,
-    "x": 429.1,
-    "y": 521.2,
+    "x": 429.4,
+    "y": 519.8,
     "idee": "gleichung.werte"
    },
    "gr.satz.turm_pde": {
     "haupt": false,
     "r": 5.0,
-    "x": 417.7,
-    "y": 550.8,
+    "x": 418.0,
+    "y": 549.3,
     "idee": "gleichung.werte"
    },
    "gr.satz.vorzeichen": {
     "haupt": false,
     "r": 5.0,
-    "x": 289.4,
-    "y": 447.9,
+    "x": 289.7,
+    "y": 446.5,
     "idee": "gleichung.werte"
    },
    "gr.satz.wurzel_eta": {
     "haupt": true,
     "r": 7.0,
-    "x": 300.5,
-    "y": 478.1,
+    "x": 300.8,
+    "y": 476.6,
     "idee": "gleichung.werte"
    },
    "gr.satz.zweite_ableitung": {
     "haupt": true,
     "r": 11.0,
-    "x": 352.0,
-    "y": 432.1,
+    "x": 352.3,
+    "y": 430.7,
     "idee": "gleichung.werte"
    },
    "gr.verm.ein_wendepunkt": {
     "haupt": true,
     "r": 7.0,
-    "x": 338.5,
-    "y": 560.4,
+    "x": 338.8,
+    "y": 558.9,
     "idee": "gleichung.werte"
    },
    "gr.verm.tpid7": {
     "haupt": false,
     "r": 5.0,
-    "x": 428.1,
-    "y": 421.5,
+    "x": 428.4,
+    "y": 420.0,
     "idee": "gleichung.werte"
    },
    "gr.verm.ungerade_ableitungen": {
     "haupt": true,
     "r": 7.0,
-    "x": 370.7,
-    "y": 552.9,
+    "x": 371.0,
+    "y": 551.4,
     "idee": "gleichung.werte"
    },
    "gr.beob.integral_halb": {
     "haupt": false,
     "r": 5.0,
-    "x": 568.0,
-    "y": 396.2,
+    "x": 568.4,
+    "y": 394.8,
     "idee": "gleichung.integrale"
    },
    "gr.beob.integrale_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": 507.1,
-    "y": 361.2,
+    "x": 507.5,
+    "y": 359.8,
     "idee": "gleichung.integrale"
    },
    "gr.frage.integral_form": {
     "haupt": false,
     "r": 5.0,
-    "x": 583.9,
-    "y": 344.4,
+    "x": 584.3,
+    "y": 343.0,
     "idee": "gleichung.integrale"
    },
    "gr.kor.integral_formen": {
     "haupt": false,
     "r": 5.0,
-    "x": 492.7,
-    "y": 390.4,
+    "x": 493.1,
+    "y": 388.9,
     "idee": "gleichung.integrale"
    },
    "gr.kor.turmintegral_formen": {
     "haupt": false,
     "r": 5.0,
-    "x": 488.8,
-    "y": 334.7,
+    "x": 489.1,
+    "y": 333.3,
     "idee": "gleichung.integrale"
    },
    "gr.satz.integral_log": {
     "haupt": false,
     "r": 5.0,
-    "x": 534.0,
-    "y": 414.7,
+    "x": 534.4,
+    "y": 413.2,
     "idee": "gleichung.integrale"
    },
    "gr.satz.integral_produkt": {
     "haupt": false,
     "r": 5.0,
-    "x": 522.7,
-    "y": 322.3,
+    "x": 523.1,
+    "y": 320.8,
     "idee": "gleichung.integrale"
    },
    "gr.satz.integral_unten": {
     "haupt": false,
     "r": 5.0,
-    "x": 572.5,
-    "y": 312.7,
+    "x": 572.8,
+    "y": 311.3,
     "idee": "gleichung.integrale"
    },
    "gr.satz.sophomore": {
     "haupt": true,
     "r": 11.8,
-    "x": 529.5,
-    "y": 383.8,
+    "x": 529.8,
+    "y": 382.4,
     "idee": "gleichung.integrale"
    },
    "gr.satz.turmintegral_grenzen": {
     "haupt": true,
     "r": 11.0,
-    "x": 549.2,
-    "y": 338.4,
+    "x": 549.5,
+    "y": 337.0,
     "idee": "gleichung.integrale"
    },
    "gr.satz.turmintegral_periodisch": {
     "haupt": false,
     "r": 5.0,
-    "x": 565.7,
-    "y": 429.3,
+    "x": 566.1,
+    "y": 427.8,
     "idee": "gleichung.integrale"
    },
    "gr.satz.young": {
     "haupt": true,
     "r": 11.8,
-    "x": 559.9,
-    "y": 368.2,
+    "x": 560.3,
+    "y": 366.7,
     "idee": "gleichung.integrale"
    },
    "gr.verm.turmintegral_rate": {
     "haupt": false,
     "r": 5.0,
-    "x": 598.3,
-    "y": 387.1,
+    "x": 598.6,
+    "y": 385.6,
     "idee": "gleichung.integrale"
    },
    "gr.satz.ln_aus_steigungen": {
     "haupt": false,
     "r": 7.0,
-    "x": 299.8,
-    "y": 191.1,
+    "x": 300.2,
+    "y": 189.7,
     "idee": "gleichung.slog"
    },
    "gr.satz.logstern": {
     "haupt": false,
     "r": 5.0,
-    "x": 321.1,
-    "y": 256.2,
+    "x": 321.4,
+    "y": 254.8,
     "idee": "gleichung.slog"
    },
    "gr.satz.slog_ableitung": {
     "haupt": true,
     "r": 11.8,
-    "x": 277.7,
-    "y": 242.2,
+    "x": 278.0,
+    "y": 240.8,
     "idee": "gleichung.slog"
    },
    "gr.satz.slog_grund": {
     "haupt": true,
     "r": 13.9,
-    "x": 311.9,
-    "y": 224.6,
+    "x": 312.3,
+    "y": 223.2,
     "idee": "gleichung.slog"
    },
    "gr.satz.slog_steigung_langsam": {
     "haupt": false,
     "r": 5.0,
-    "x": 252.5,
-    "y": 216.8,
+    "x": 252.8,
+    "y": 215.3,
     "idee": "gleichung.slog"
    },
    "gr.def.epsilon_omega": {
     "haupt": true,
     "r": 11.8,
-    "x": 499.7,
-    "y": 240.0,
+    "x": 500.0,
+    "y": 238.5,
     "idee": "gleichung.superwurzeln"
    },
    "gr.satz.superwurzel": {
     "haupt": true,
     "r": 11.0,
-    "x": 534.0,
-    "y": 222.4,
+    "x": 534.3,
+    "y": 220.9,
     "idee": "gleichung.superwurzeln"
    },
    "gr.satz.superwurzel_dritte": {
     "haupt": false,
     "r": 5.0,
-    "x": 521.9,
-    "y": 188.9,
+    "x": 522.2,
+    "y": 187.4,
     "idee": "gleichung.superwurzeln"
    },
    "gr.satz.superwurzel_omega": {
     "haupt": false,
     "r": 5.0,
-    "x": 543.1,
-    "y": 253.9,
+    "x": 543.4,
+    "y": 252.5,
     "idee": "gleichung.superwurzeln"
    },
    "gr.satz.turm_superwurzel": {
     "haupt": false,
     "r": 5.0,
-    "x": 474.5,
-    "y": 214.5,
+    "x": 474.8,
+    "y": 213.0,
     "idee": "gleichung.superwurzeln"
    },
    "fp.def.eta": {
     "haupt": false,
     "r": 5.0,
-    "x": 63.0,
-    "y": 97.2,
+    "x": 62.6,
+    "y": 97.9,
     "idee": "dynamik.fixpunkte"
    },
    "fp.satz.abstossend": {
     "haupt": false,
     "r": 5.0,
-    "x": 84.3,
-    "y": 162.2,
+    "x": 83.9,
+    "y": 163.0,
     "idee": "dynamik.fixpunkte"
    },
    "fp.satz.fixpunkt_summen": {
     "haupt": false,
     "r": 5.0,
-    "x": 15.7,
-    "y": 122.8,
+    "x": 15.3,
+    "y": 123.5,
     "idee": "dynamik.fixpunkte"
    },
    "fp.satz.lambert": {
     "haupt": true,
     "r": 21.0,
-    "x": 75.1,
-    "y": 130.7,
+    "x": 74.7,
+    "y": 131.4,
     "idee": "dynamik.fixpunkte"
    },
    "fp.satz.reelle_fixpunkte": {
     "haupt": true,
     "r": 14.4,
-    "x": 40.9,
-    "y": 148.3,
+    "x": 40.5,
+    "y": 149.0,
     "idee": "dynamik.fixpunkte"
    },
    "it.lem.julia": {
     "haupt": false,
     "r": 5.0,
-    "x": -84.2,
-    "y": 121.7,
+    "x": -84.6,
+    "y": 122.3,
     "idee": "dynamik.koenigs"
    },
    "it.satz.boettcher": {
     "haupt": false,
     "r": 5.0,
-    "x": -62.7,
-    "y": 72.0,
+    "x": -63.0,
+    "y": 72.5,
     "idee": "dynamik.koenigs"
    },
    "it.satz.karlin_mcgregor": {
     "haupt": false,
     "r": 5.0,
-    "x": -41.9,
-    "y": 135.4,
+    "x": -42.3,
+    "y": 135.9,
     "idee": "dynamik.koenigs"
    },
    "it.satz.koenigs": {
     "haupt": true,
     "r": 21.0,
-    "x": -50.9,
-    "y": 104.6,
+    "x": -51.2,
+    "y": 105.2,
     "idee": "dynamik.koenigs"
    },
    "it.satz.sternberg_reell": {
     "haupt": false,
     "r": 5.0,
-    "x": -108.8,
-    "y": 97.0,
+    "x": -109.1,
+    "y": 97.5,
     "idee": "dynamik.koenigs"
    },
    "it.satz.vertauschbar": {
     "haupt": true,
     "r": 18.5,
-    "x": -24.5,
-    "y": 78.5,
+    "x": -24.9,
+    "y": 79.1,
     "idee": "dynamik.koenigs"
    },
    "it.konstr.levy": {
     "haupt": false,
     "r": 5.0,
-    "x": 2.4,
-    "y": 228.2,
+    "x": 1.9,
+    "y": 228.8,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.baker": {
     "haupt": true,
     "r": 9.8,
-    "x": -17.6,
-    "y": 274.4,
+    "x": -18.1,
+    "y": 275.0,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.baker_einbettung": {
     "haupt": false,
     "r": 5.0,
-    "x": 21.7,
-    "y": 287.0,
+    "x": 21.2,
+    "y": 287.7,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.ecalle_voronin": {
     "haupt": false,
     "r": 5.0,
-    "x": -40.4,
-    "y": 251.3,
+    "x": -40.9,
+    "y": 252.0,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.erdos_jabotinsky": {
     "haupt": false,
     "r": 5.0,
-    "x": 37.8,
-    "y": 234.3,
+    "x": 37.3,
+    "y": 234.9,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.leau_fatou": {
     "haupt": true,
     "r": 14.4,
-    "x": 13.4,
-    "y": 258.4,
+    "x": 12.9,
+    "y": 259.1,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.moebius_familie": {
     "haupt": false,
     "r": 5.0,
-    "x": -13.0,
-    "y": 305.8,
+    "x": -13.4,
+    "y": 306.4,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.parabolische_rate": {
     "haupt": true,
     "r": 7.0,
-    "x": -24.5,
-    "y": 211.7,
+    "x": -25.0,
+    "y": 212.4,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.szekeres": {
     "haupt": false,
     "r": 5.0,
-    "x": 52.4,
-    "y": 277.7,
+    "x": 51.9,
+    "y": 278.3,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.szekeres_monoton": {
     "haupt": true,
     "r": 7.0,
-    "x": -55.0,
-    "y": 281.1,
+    "x": -55.5,
+    "y": 281.7,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.zeta_polynom_partitionen": {
     "haupt": false,
     "r": 5.0,
-    "x": 26.2,
-    "y": 202.0,
+    "x": 25.7,
+    "y": 202.7,
     "idee": "dynamik.parabolisch"
    },
    "it.satz.cremer": {
     "haupt": true,
     "r": 7.0,
-    "x": -111.9,
-    "y": 204.1,
+    "x": -112.3,
+    "y": 204.6,
     "idee": "dynamik.indifferent"
    },
    "fp.beob.i_turm": {
     "haupt": false,
     "r": 5.0,
-    "x": -263.5,
-    "y": -181.9,
+    "x": -262.8,
+    "y": -180.0,
     "idee": "turm.konvergenz"
    },
    "fp.beob.tpid6_rate": {
     "haupt": false,
     "r": 5.0,
-    "x": -244.6,
-    "y": -124.2,
+    "x": -243.9,
+    "y": -122.2,
     "idee": "turm.konvergenz"
    },
    "fp.frage.tpid12_13": {
     "haupt": false,
     "r": 5.0,
-    "x": -305.5,
-    "y": -159.2,
+    "x": -304.8,
+    "y": -157.2,
     "idee": "turm.konvergenz"
    },
    "fp.satz.baker_rippon_kardioide": {
     "haupt": true,
     "r": 7.0,
-    "x": -228.7,
-    "y": -176.0,
+    "x": -228.0,
+    "y": -174.0,
     "idee": "turm.konvergenz"
    },
    "fp.satz.nachbar_turm": {
     "haupt": false,
     "r": 5.0,
-    "x": -214.4,
-    "y": -133.3,
+    "x": -213.7,
+    "y": -131.3,
     "idee": "turm.konvergenz"
    },
    "fp.satz.shell_thron": {
     "haupt": true,
     "r": 11.0,
-    "x": -283.1,
-    "y": -136.6,
+    "x": -282.5,
+    "y": -134.6,
     "idee": "turm.konvergenz"
    },
    "fp.satz.shell_thron_flaeche": {
     "haupt": false,
     "r": 5.0,
-    "x": -319.9,
-    "y": -130.0,
+    "x": -319.2,
+    "y": -128.0,
     "idee": "turm.konvergenz"
    },
    "fp.satz.thron_variabel": {
     "haupt": false,
     "r": 5.0,
-    "x": -278.6,
-    "y": -105.7,
+    "x": -277.9,
+    "y": -103.7,
     "idee": "turm.konvergenz"
    },
    "fp.satz.tpid6": {
     "haupt": false,
     "r": 5.0,
-    "x": -240.2,
-    "y": -207.6,
+    "x": -239.5,
+    "y": -205.6,
     "idee": "turm.konvergenz"
    },
    "fp.satz.turm_reell": {
     "haupt": true,
     "r": 18.5,
-    "x": -252.7,
-    "y": -152.2,
+    "x": -252.1,
+    "y": -150.2,
     "idee": "turm.konvergenz"
    },
    "fp.satz.turm_reihe_ln": {
     "haupt": false,
     "r": 5.0,
-    "x": -246.9,
-    "y": -91.1,
+    "x": -246.2,
+    "y": -89.1,
     "idee": "turm.konvergenz"
    },
    "fp.satz.unendliche_superwurzel": {
     "haupt": false,
     "r": 5.0,
-    "x": -323.8,
-    "y": -185.7,
+    "x": -323.2,
+    "y": -183.7,
     "idee": "turm.konvergenz"
    },
    "fp.verm.knospen": {
     "haupt": false,
     "r": 5.0,
-    "x": -289.9,
-    "y": -198.1,
+    "x": -289.2,
+    "y": -196.1,
     "idee": "turm.konvergenz"
    },
    "fp.satz.baker_rippon_periodisch": {
     "haupt": false,
     "r": 5.0,
-    "x": -482.5,
-    "y": -56.2,
+    "x": -481.7,
+    "y": -54.5,
     "idee": "turm.periode2"
    },
    "fp.satz.grenzfunktionen": {
     "haupt": false,
     "r": 5.0,
-    "x": -460.9,
-    "y": -106.0,
+    "x": -460.2,
+    "y": -104.2,
     "idee": "turm.periode2"
    },
    "fp.satz.p2_form": {
     "haupt": true,
     "r": 11.8,
-    "x": -449.1,
-    "y": -73.4,
+    "x": -448.4,
+    "y": -71.6,
     "idee": "turm.periode2"
    },
    "fp.satz.p2_kein_kreis": {
     "haupt": false,
     "r": 5.0,
-    "x": -440.2,
-    "y": -42.6,
+    "x": -439.5,
+    "y": -40.8,
     "idee": "turm.periode2"
    },
    "fp.satz.p2_raten": {
     "haupt": false,
     "r": 5.0,
-    "x": -422.8,
-    "y": -99.5,
+    "x": -422.0,
+    "y": -97.7,
     "idee": "turm.periode2"
    },
    "fp.satz.rechteckwelle": {
     "haupt": true,
     "r": 9.8,
-    "x": -507.1,
-    "y": -81.0,
+    "x": -506.3,
+    "y": -79.3,
     "idee": "turm.periode2"
    },
    "fp.beob.gleiches_L_kategorien": {
     "haupt": false,
     "r": 5.0,
-    "x": -437.8,
-    "y": -202.5,
+    "x": -437.0,
+    "y": -200.7,
     "idee": "turm.regionen"
    },
    "fp.beob.negative_achse": {
     "haupt": false,
     "r": 5.0,
-    "x": -418.3,
-    "y": -247.5,
+    "x": -417.5,
+    "y": -245.8,
     "idee": "turm.regionen"
    },
    "fp.beob.partner_keil": {
     "haupt": false,
     "r": 5.0,
-    "x": -399.5,
-    "y": -190.2,
+    "x": -398.8,
+    "y": -188.4,
     "idee": "turm.regionen"
    },
    "fp.beob.regionen": {
     "haupt": false,
     "r": 5.0,
-    "x": -460.0,
-    "y": -224.9,
+    "x": -459.3,
+    "y": -223.2,
     "idee": "turm.regionen"
    },
    "fp.def.basenklassen": {
     "haupt": false,
     "r": 5.0,
-    "x": -383.8,
-    "y": -241.6,
+    "x": -383.0,
+    "y": -239.8,
     "idee": "turm.regionen"
    },
    "fp.satz.baker_rippon_parameter": {
     "haupt": false,
     "r": 5.0,
-    "x": -433.3,
-    "y": -171.9,
+    "x": -432.5,
+    "y": -170.1,
     "idee": "turm.regionen"
    },
    "fp.satz.exp_normalform": {
     "haupt": true,
     "r": 7.0,
-    "x": -444.5,
-    "y": -263.6,
+    "x": -443.8,
+    "y": -261.8,
     "idee": "turm.regionen"
    },
    "fp.satz.gleiches_L": {
     "haupt": true,
     "r": 11.0,
-    "x": -478.2,
-    "y": -251.2,
+    "x": -477.4,
+    "y": -249.5,
     "idee": "turm.regionen"
    },
    "fp.satz.messbare_dynamik": {
     "haupt": false,
     "r": 5.0,
-    "x": -369.6,
-    "y": -199.3,
+    "x": -368.8,
+    "y": -197.5,
     "idee": "turm.regionen"
    },
    "fp.satz.multiplikator_rezept": {
     "haupt": true,
     "r": 14.4,
-    "x": -407.6,
-    "y": -218.0,
+    "x": -406.9,
+    "y": -216.2,
     "idee": "turm.regionen"
    },
    "fp.satz.neutral": {
     "haupt": false,
     "r": 5.0,
-    "x": -474.3,
-    "y": -196.0,
+    "x": -473.5,
+    "y": -194.2,
     "idee": "turm.regionen"
    },
    "fp.satz.parabolisch_rand": {
     "haupt": true,
     "r": 9.8,
-    "x": -353.6,
-    "y": -232.8,
+    "x": -352.9,
+    "y": -231.0,
     "idee": "turm.regionen"
    },
    "fp.satz.parameter_konform": {
     "haupt": false,
     "r": 5.0,
-    "x": -395.1,
-    "y": -273.0,
+    "x": -394.4,
+    "y": -271.2,
     "idee": "turm.regionen"
    },
    "fp.verm.knospen_drehzahl": {
     "haupt": false,
     "r": 5.0,
-    "x": -401.9,
-    "y": -157.4,
+    "x": -401.1,
+    "y": -155.6,
     "idee": "turm.regionen"
    },
    "fp.ann.siegel_rand": {
     "haupt": false,
     "r": 5.0,
-    "x": -354.4,
-    "y": 6.8,
+    "x": -353.8,
+    "y": 8.8,
     "idee": "turm.spiralen"
    },
    "fp.frage.holomorphe_familie": {
     "haupt": false,
     "r": 5.0,
-    "x": -334.2,
-    "y": -39.9,
+    "x": -333.5,
+    "y": -37.9,
     "idee": "turm.spiralen"
    },
    "fp.gegen.bruch_mittel": {
     "haupt": false,
     "r": 5.0,
-    "x": -314.8,
-    "y": 19.6,
+    "x": -314.1,
+    "y": 21.6,
     "idee": "turm.spiralen"
    },
    "fp.kor.fourier_taylor": {
     "haupt": false,
     "r": 5.0,
-    "x": -283.7,
-    "y": 10.2,
+    "x": -283.0,
+    "y": 12.1,
     "idee": "turm.spiralen"
    },
    "fp.satz.kreismittel": {
     "haupt": true,
     "r": 11.0,
-    "x": -323.2,
-    "y": -9.3,
+    "x": -322.5,
+    "y": -7.3,
     "idee": "turm.spiralen"
    },
    "fp.satz.siegel_mittel": {
     "haupt": false,
     "r": 5.0,
-    "x": -377.5,
-    "y": -16.4,
+    "x": -376.8,
+    "y": -14.5,
     "idee": "turm.spiralen"
    },
    "fp.satz.siegel_unbeschraenkt": {
     "haupt": false,
     "r": 5.0,
-    "x": -298.5,
-    "y": -33.7,
+    "x": -297.8,
+    "y": -31.7,
     "idee": "turm.spiralen"
    },
    "fp.satz.spirale": {
     "haupt": false,
     "r": 5.0,
-    "x": -349.8,
-    "y": 38.6,
+    "x": -349.1,
+    "y": 40.5,
     "idee": "turm.spiralen"
    },
    "fp.verm.bruch_mittel": {
     "haupt": false,
     "r": 5.0,
-    "x": -392.2,
-    "y": 13.6,
+    "x": -391.6,
+    "y": 15.6,
     "idee": "turm.spiralen"
    },
    "fp.verm.doppelmittel": {
     "haupt": false,
     "r": 5.0,
-    "x": -361.4,
-    "y": -56.5,
+    "x": -360.8,
+    "y": -54.5,
     "idee": "turm.spiralen"
    },
    "kl.beob.q_binomial": {
     "haupt": false,
     "r": 5.0,
-    "x": 420.4,
-    "y": -393.0,
+    "x": 422.5,
+    "y": -395.4,
     "idee": "fortsetzung.regulaer"
    },
    "kl.beob.zwei_abel": {
     "haupt": false,
     "r": 7.8,
-    "x": 404.9,
-    "y": -342.5,
+    "x": 407.0,
+    "y": -344.9,
     "idee": "fortsetzung.regulaer"
    },
    "kl.frage.tpid5": {
     "haupt": false,
     "r": 5.0,
-    "x": 371.8,
-    "y": -324.6,
+    "x": 373.9,
+    "y": -327.0,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.basis_unter_eins": {
     "haupt": false,
     "r": 5.0,
-    "x": 360.8,
-    "y": -414.6,
+    "x": 362.8,
+    "y": -417.0,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.bruchprodukt": {
     "haupt": true,
     "r": 9.8,
-    "x": 374.7,
-    "y": -441.7,
+    "x": 376.7,
+    "y": -444.1,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.bruchsumme": {
     "haupt": true,
     "r": 14.4,
-    "x": 367.4,
-    "y": -354.6,
+    "x": 369.4,
+    "y": -357.0,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.carlson": {
     "haupt": false,
     "r": 5.0,
-    "x": 434.4,
-    "y": -351.5,
+    "x": 436.4,
+    "y": -353.9,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.folgen_vollmonoton": {
     "haupt": false,
     "r": 5.0,
-    "x": 441.1,
-    "y": -321.7,
+    "x": 443.2,
+    "y": -324.1,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.grenzwertformel": {
     "haupt": true,
     "r": 9.8,
-    "x": 327.7,
-    "y": -402.5,
+    "x": 329.8,
+    "y": -404.9,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.koenigs_spektral": {
     "haupt": true,
     "r": 11.0,
-    "x": 402.7,
-    "y": -310.3,
+    "x": 404.7,
+    "y": -312.7,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.newton_reihe": {
     "haupt": false,
     "r": 5.0,
-    "x": 450.0,
-    "y": -384.4,
+    "x": 452.1,
+    "y": -386.8,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.obere_superexp": {
     "haupt": false,
     "r": 5.0,
-    "x": 331.6,
-    "y": -348.2,
+    "x": 333.6,
+    "y": -350.6,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.regulaer": {
     "haupt": true,
     "r": 17.5,
-    "x": 397.0,
-    "y": -369.9,
+    "x": 399.1,
+    "y": -372.3,
     "idee": "fortsetzung.regulaer"
    },
    "kl.satz.vier_sqrt2": {
     "haupt": false,
     "r": 5.0,
-    "x": 409.3,
-    "y": -423.8,
+    "x": 411.3,
+    "y": -426.2,
     "idee": "fortsetzung.regulaer"
    },
    "kl.verm.faktor": {
     "haupt": false,
     "r": 5.0,
-    "x": 343.7,
-    "y": -312.6,
+    "x": 345.8,
+    "y": -315.0,
     "idee": "fortsetzung.regulaer"
    },
    "kl.verm.streifenbreite": {
     "haupt": true,
     "r": 9.8,
-    "x": 345.6,
-    "y": -376.7,
+    "x": 347.6,
+    "y": -379.1,
     "idee": "fortsetzung.regulaer"
    },
    "kl.verm.vollmonoton": {
     "haupt": false,
     "r": 7.0,
-    "x": 386.5,
-    "y": -398.8,
+    "x": 388.6,
+    "y": -401.2,
     "idee": "fortsetzung.regulaer"
    },
    "br.frage.implosion": {
     "haupt": false,
     "r": 5.0,
-    "x": 580.0,
-    "y": -390.0,
+    "x": 582.3,
+    "y": -391.4,
     "idee": "fortsetzung.eta"
    },
    "br.satz.sattel_knoten": {
     "haupt": true,
     "r": 9.8,
-    "x": 541.7,
-    "y": -402.3,
+    "x": 544.0,
+    "y": -403.7,
     "idee": "fortsetzung.eta"
    },
    "br.satz.shishikura": {
     "haupt": true,
     "r": 7.0,
-    "x": 519.5,
-    "y": -424.7,
+    "x": 521.8,
+    "y": -426.2,
     "idee": "fortsetzung.eta"
    },
    "kl.beob.eta_konstanten": {
     "haupt": false,
     "r": 5.0,
-    "x": 595.7,
-    "y": -441.4,
+    "x": 598.0,
+    "y": -442.8,
     "idee": "fortsetzung.eta"
    },
    "kl.beob.stetig_eta": {
     "haupt": false,
     "r": 5.0,
-    "x": 546.2,
-    "y": -371.6,
+    "x": 548.5,
+    "y": -373.1,
     "idee": "fortsetzung.eta"
    },
    "kl.frage.eta_analytisch": {
     "haupt": false,
     "r": 5.0,
-    "x": 535.0,
-    "y": -463.3,
+    "x": 537.3,
+    "y": -464.8,
     "idee": "fortsetzung.eta"
    },
    "kl.frage.stetig_eta": {
     "haupt": false,
     "r": 5.0,
-    "x": 610.0,
-    "y": -399.0,
+    "x": 612.2,
+    "y": -400.5,
     "idee": "fortsetzung.eta"
    },
    "kl.kor.eta_baker": {
     "haupt": false,
     "r": 5.0,
-    "x": 505.2,
-    "y": -395.7,
+    "x": 507.5,
+    "y": -397.2,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.cheta": {
     "haupt": false,
     "r": 5.0,
-    "x": 584.4,
-    "y": -472.8,
+    "x": 586.7,
+    "y": -474.2,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.eta_digamma": {
     "haupt": false,
     "r": 5.0,
-    "x": 625.9,
-    "y": -432.6,
+    "x": 628.2,
+    "y": -434.0,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.eta_koordinate": {
     "haupt": true,
     "r": 9.8,
-    "x": 561.2,
-    "y": -447.3,
+    "x": 563.5,
+    "y": -448.7,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.moebius_qdigamma": {
     "haupt": false,
     "r": 5.0,
-    "x": 577.7,
-    "y": -357.1,
+    "x": 579.9,
+    "y": -358.6,
     "idee": "fortsetzung.eta"
    },
    "kl.satz.parabolisch": {
     "haupt": true,
     "r": 11.0,
-    "x": 571.9,
-    "y": -417.8,
+    "x": 574.2,
+    "y": -419.2,
     "idee": "fortsetzung.eta"
    },
    "kl.verm.lambert_zeta": {
     "haupt": false,
     "r": 5.0,
-    "x": 501.3,
-    "y": -451.0,
+    "x": 503.6,
+    "y": -452.4,
     "idee": "fortsetzung.eta"
    },
    "kn.beob.referenzwerte": {
     "haupt": false,
     "r": 7.0,
-    "x": 355.1,
-    "y": -239.0,
+    "x": 356.3,
+    "y": -241.6,
     "idee": "fortsetzung.kneser"
    },
    "kn.gescheitert.regulaer_an_L": {
     "haupt": false,
     "r": 5.0,
-    "x": 374.8,
-    "y": -178.9,
+    "x": 376.0,
+    "y": -181.4,
     "idee": "fortsetzung.kneser"
    },
    "kn.konstr.cauchy": {
     "haupt": false,
     "r": 5.0,
-    "x": 311.3,
-    "y": -215.3,
+    "x": 312.5,
+    "y": -217.9,
     "idee": "fortsetzung.kneser"
    },
    "kn.konstr.kneser": {
     "haupt": true,
     "r": 18.9,
-    "x": 366.3,
-    "y": -208.1,
+    "x": 367.5,
+    "y": -210.6,
     "idee": "fortsetzung.kneser"
    },
    "kn.konstr.paulsen_cowgill_iteration": {
     "haupt": false,
     "r": 5.0,
-    "x": 391.3,
-    "y": -232.8,
+    "x": 392.5,
+    "y": -235.4,
     "idee": "fortsetzung.kneser"
    },
    "kn.kor.basisvergleich": {
     "haupt": false,
     "r": 5.0,
-    "x": 327.6,
-    "y": -255.9,
+    "x": 328.8,
+    "y": -258.4,
     "idee": "fortsetzung.kneser"
    },
    "kn.satz.kneser_eigenschaften": {
     "haupt": true,
     "r": 11.0,
-    "x": 339.4,
-    "y": -159.6,
+    "x": 340.6,
+    "y": -162.2,
     "idee": "fortsetzung.kneser"
    },
    "kn.satz.paulsen_komplex": {
     "haupt": false,
     "r": 5.0,
-    "x": 406.3,
-    "y": -188.4,
+    "x": 407.5,
+    "y": -191.0,
     "idee": "fortsetzung.kneser"
    },
    "kn.satz.singulaer_minus2": {
     "haupt": true,
     "r": 9.8,
-    "x": 334.7,
-    "y": -191.8,
+    "x": 335.8,
+    "y": -194.4,
     "idee": "fortsetzung.kneser"
    },
    "kn.beob.carleman_rate": {
     "haupt": false,
     "r": 5.0,
-    "x": 545.7,
-    "y": -208.1,
+    "x": 547.0,
+    "y": -209.7,
     "idee": "fortsetzung.andere"
    },
    "kn.frage.abel_bruchsumme": {
     "haupt": false,
     "r": 5.0,
-    "x": 487.9,
-    "y": -241.3,
+    "x": 489.2,
+    "y": -243.0,
     "idee": "fortsetzung.andere"
    },
    "kn.frage.tpid14": {
     "haupt": false,
     "r": 5.0,
-    "x": 560.8,
-    "y": -257.3,
+    "x": 562.1,
+    "y": -258.9,
     "idee": "fortsetzung.andere"
    },
    "kn.frage.tpid16": {
     "haupt": false,
     "r": 5.0,
-    "x": 513.5,
-    "y": -190.6,
+    "x": 514.8,
+    "y": -192.2,
     "idee": "fortsetzung.andere"
    },
    "kn.frage.tpid17": {
     "haupt": false,
     "r": 5.0,
-    "x": 502.7,
-    "y": -278.3,
+    "x": 504.0,
+    "y": -279.9,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.carleman": {
     "haupt": true,
     "r": 9.8,
-    "x": 509.1,
-    "y": -219.9,
+    "x": 510.4,
+    "y": -221.5,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.kontinuumssumme": {
     "haupt": false,
     "r": 5.0,
-    "x": 574.4,
-    "y": -216.8,
+    "x": 575.7,
+    "y": -218.4,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.linear": {
     "haupt": true,
     "r": 11.0,
-    "x": 538.0,
-    "y": -234.7,
+    "x": 539.3,
+    "y": -236.3,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.paulsen_stoerung": {
     "haupt": false,
     "r": 5.0,
-    "x": 474.3,
-    "y": -213.7,
+    "x": 475.6,
+    "y": -215.3,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.quadratisch": {
     "haupt": false,
     "r": 5.0,
-    "x": 549.9,
-    "y": -287.3,
+    "x": 551.2,
+    "y": -288.9,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.walker": {
     "haupt": false,
     "r": 5.0,
-    "x": 543.5,
-    "y": -176.7,
+    "x": 544.8,
+    "y": -178.4,
     "idee": "fortsetzung.andere"
    },
    "kn.konstr.zwei_sinh": {
     "haupt": false,
     "r": 5.0,
-    "x": 470.5,
-    "y": -266.5,
+    "x": 471.8,
+    "y": -268.1,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.abel_bruchsumme": {
     "haupt": false,
     "r": 5.0,
-    "x": 589.6,
-    "y": -248.9,
+    "x": 590.9,
+    "y": -250.5,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.grenzwert_trick": {
     "haupt": true,
     "r": 9.8,
-    "x": 527.8,
-    "y": -263.0,
+    "x": 529.1,
+    "y": -264.6,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.hooshmand": {
     "haupt": false,
     "r": 5.0,
-    "x": 473.3,
-    "y": -297.0,
+    "x": 474.6,
+    "y": -298.6,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.intuitiver_log": {
     "haupt": false,
     "r": 5.0,
-    "x": 486.1,
-    "y": -178.9,
+    "x": 487.4,
+    "y": -180.5,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.linear_glatt": {
     "haupt": false,
     "r": 5.0,
-    "x": 607.7,
-    "y": -223.6,
+    "x": 609.0,
+    "y": -225.3,
     "idee": "fortsetzung.andere"
    },
    "kn.satz.walker_konjugation": {
     "haupt": false,
     "r": 5.0,
-    "x": 516.3,
-    "y": -304.7,
+    "x": 517.6,
+    "y": -306.3,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.carleman_eigenwerte": {
     "haupt": false,
     "r": 5.0,
-    "x": 581.0,
-    "y": -187.8,
+    "x": 582.3,
+    "y": -189.4,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.carleman_kneser": {
     "haupt": true,
     "r": 7.0,
-    "x": 455.5,
-    "y": -186.2,
+    "x": 456.9,
+    "y": -187.8,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.szekeres_wachstum": {
     "haupt": false,
     "r": 5.0,
-    "x": 450.4,
-    "y": -231.6,
+    "x": 451.7,
+    "y": -233.3,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.tpid3": {
     "haupt": false,
     "r": 5.0,
-    "x": 580.0,
-    "y": -289.1,
+    "x": 581.3,
+    "y": -290.7,
     "idee": "fortsetzung.andere"
    },
    "kn.verm.tpid3_bedingung": {
     "haupt": false,
     "r": 5.0,
-    "x": 521.7,
-    "y": -155.7,
+    "x": 523.0,
+    "y": -157.3,
     "idee": "fortsetzung.andere"
    },
    "kn.beob.kouznetsov_numerik": {
     "haupt": false,
     "r": 5.0,
-    "x": 425.9,
-    "y": -116.1,
+    "x": 426.4,
+    "y": -118.3,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.def.slog": {
     "haupt": true,
     "r": 11.8,
-    "x": 437.5,
-    "y": -84.1,
+    "x": 438.0,
+    "y": -86.3,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.frage.beta_methode": {
     "haupt": false,
     "r": 5.0,
-    "x": 446.2,
-    "y": -54.0,
+    "x": 446.7,
+    "y": -56.2,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.satz.paulsen_cowgill": {
     "haupt": true,
     "r": 11.0,
-    "x": 404.8,
-    "y": -67.3,
+    "x": 405.3,
+    "y": -69.5,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.satz.tk_kriterien": {
     "haupt": false,
     "r": 5.0,
-    "x": 380.7,
-    "y": -91.6,
+    "x": 381.2,
+    "y": -93.8,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.satz.trappmann_kouznetsov": {
     "haupt": false,
     "r": 5.0,
-    "x": 463.3,
-    "y": -109.7,
+    "x": 463.8,
+    "y": -111.9,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "kn.verm.tk_c2": {
     "haupt": false,
     "r": 5.0,
-    "x": 409.7,
-    "y": -34.2,
+    "x": 410.2,
+    "y": -36.4,
     "idee": "fortsetzung.eindeutigkeit"
    },
    "br.frage.bohr_mollerup": {
     "haupt": true,
     "r": 7.0,
-    "x": 507.4,
-    "y": -9.3,
+    "x": 507.5,
+    "y": -11.0,
     "idee": "fortsetzung.reell"
    },
    "kn.beob.polynom_eckmode": {
     "haupt": false,
     "r": 5.0,
-    "x": 623.0,
-    "y": -109.9,
+    "x": 623.4,
+    "y": -110.9,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.polynom_halbexp_fehlergesetz": {
     "haupt": false,
     "r": 5.0,
-    "x": 694.0,
-    "y": -49.1,
+    "x": 694.4,
+    "y": -50.0,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.polynom_konforme_stabilitaet": {
     "haupt": false,
     "r": 5.0,
-    "x": 594.8,
-    "y": -45.9,
+    "x": 595.2,
+    "y": -46.9,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.polynom_moebius_schwelle": {
     "haupt": false,
     "r": 5.0,
-    "x": 669.8,
-    "y": -118.9,
+    "x": 670.1,
+    "y": -119.9,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.polynom_rand_plateau": {
     "haupt": false,
     "r": 5.0,
-    "x": 663.4,
-    "y": -9.4,
+    "x": 663.8,
+    "y": -10.4,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.slog_scheibe": {
     "haupt": false,
     "r": 7.8,
-    "x": 647.8,
-    "y": -94.8,
+    "x": 648.2,
+    "y": -95.7,
     "idee": "fortsetzung.halbexp"
    },
    "kn.gescheitert.polynom_ecke_wege": {
     "haupt": false,
     "r": 5.0,
-    "x": 591.1,
-    "y": -98.3,
+    "x": 591.5,
+    "y": -99.2,
     "idee": "fortsetzung.halbexp"
    },
    "kn.gescheitert.polynom_kantorovich": {
     "haupt": false,
     "r": 5.0,
-    "x": 709.1,
-    "y": -80.8,
+    "x": 709.5,
+    "y": -81.8,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.halbe_exp": {
     "haupt": true,
     "r": 9.8,
-    "x": 608.3,
-    "y": -73.4,
+    "x": 608.7,
+    "y": -74.3,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.halbe_exp_wachstum": {
     "haupt": false,
     "r": 5.0,
-    "x": 726.9,
-    "y": -55.8,
+    "x": 727.3,
+    "y": -56.8,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.halbexp_beschraenkt": {
     "haupt": true,
     "r": 9.8,
-    "x": 680.5,
-    "y": -89.2,
+    "x": 680.9,
+    "y": -90.1,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.halbexp_singularitaet_L": {
     "haupt": true,
     "r": 12.6,
-    "x": 657.9,
-    "y": -66.8,
+    "x": 658.3,
+    "y": -67.8,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.kneser_e_zertifiziert": {
     "haupt": true,
     "r": 11.0,
-    "x": 629.4,
-    "y": -52.1,
+    "x": 629.7,
+    "y": -53.1,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_approximation_ecke": {
     "haupt": true,
     "r": 9.8,
-    "x": 633.6,
-    "y": -23.1,
+    "x": 634.0,
+    "y": -24.1,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_cd_identitaet": {
     "haupt": false,
     "r": 5.0,
-    "x": 606.5,
-    "y": -11.5,
+    "x": 606.9,
+    "y": -12.5,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_eckprofil": {
     "haupt": false,
     "r": 5.0,
-    "x": 576.3,
-    "y": -18.7,
+    "x": 576.7,
+    "y": -19.7,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_halbexp_endlich": {
     "haupt": true,
     "r": 11.0,
-    "x": 665.6,
-    "y": -40.5,
+    "x": 666.0,
+    "y": -41.4,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_halbexp_hauptsatz": {
     "haupt": true,
     "r": 7.0,
-    "x": 664.3,
-    "y": -150.7,
+    "x": 664.7,
+    "y": -151.7,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_halbexp_reduktion": {
     "haupt": false,
     "r": 5.0,
-    "x": 689.1,
-    "y": 9.4,
+    "x": 689.4,
+    "y": 8.4,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_hauptsatz_kr0": {
     "haupt": true,
     "r": 7.0,
-    "x": 560.0,
-    "y": -94.1,
+    "x": 560.4,
+    "y": -95.0,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_modelle": {
     "haupt": false,
     "r": 5.0,
-    "x": 636.4,
-    "y": -136.1,
+    "x": 636.8,
+    "y": -137.1,
     "idee": "fortsetzung.halbexp"
    },
    "kn.satz.polynom_zweig_400": {
     "haupt": true,
     "r": 9.8,
-    "x": 593.9,
-    "y": -128.5,
+    "x": 594.3,
+    "y": -129.5,
     "idee": "fortsetzung.halbexp"
    },
    "kn.verm.polynom_halbexp": {
     "haupt": false,
     "r": 5.0,
-    "x": 700.5,
-    "y": -20.4,
+    "x": 700.9,
+    "y": -21.3,
     "idee": "fortsetzung.halbexp"
    },
    "kn.verm.polynom_halbexp_eckmoden": {
     "haupt": false,
     "r": 5.0,
-    "x": 571.2,
-    "y": -63.7,
+    "x": 571.6,
+    "y": -64.7,
     "idee": "fortsetzung.halbexp"
    },
    "kn.verm.polynom_halbexp_kern": {
     "haupt": false,
     "r": 5.0,
-    "x": 699.5,
-    "y": -120.7,
+    "x": 699.9,
+    "y": -121.6,
     "idee": "fortsetzung.halbexp"
    },
    "kn.verm.polynom_halbexp_schranke": {
     "haupt": false,
     "r": 5.0,
-    "x": 641.8,
-    "y": 11.5,
+    "x": 642.2,
+    "y": 10.5,
     "idee": "fortsetzung.halbexp"
    },
    "kn.beob.stoerungsreihe_fehler": {
     "haupt": false,
     "r": 5.0,
-    "x": 704.7,
-    "y": -228.9,
+    "x": 706.0,
+    "y": -229.6,
     "idee": "fortsetzung.stoerung"
    },
    "kn.frage.stoerungsreihe": {
     "haupt": false,
     "r": 5.0,
-    "x": 670.4,
-    "y": -211.3,
+    "x": 671.7,
+    "y": -212.0,
     "idee": "fortsetzung.stoerung"
    },
    "kn.konstr.stoerungsreihe": {
     "haupt": true,
     "r": 7.0,
-    "x": 692.6,
-    "y": -262.4,
+    "x": 693.9,
+    "y": -263.1,
     "idee": "fortsetzung.stoerung"
    },
    "kn.satz.stoerungsreihe_baeume": {
     "haupt": false,
     "r": 5.0,
-    "x": 713.8,
-    "y": -197.4,
+    "x": 715.1,
+    "y": -198.1,
     "idee": "fortsetzung.stoerung"
    },
    "kn.satz.stoerungsreihe_tangens": {
     "haupt": false,
     "r": 5.0,
-    "x": 645.2,
-    "y": -236.8,
+    "x": 646.5,
+    "y": -237.5,
     "idee": "fortsetzung.stoerung"
    },
    "kn.beob.naeherungsleiter": {
     "haupt": true,
     "r": 7.0,
-    "x": 664.8,
-    "y": -332.5,
+    "x": 666.6,
+    "y": -333.3,
     "idee": "fortsetzung.naeherung"
    },
    "kl.frage.basiswechsel_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": -28.2,
-    "y": 529.8,
+    "x": -26.8,
+    "y": 530.5,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.frage.gleiches_L_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": -7.4,
-    "y": 481.9,
+    "x": -6.1,
+    "y": 482.6,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.gescheitert.naiver_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": 12.6,
-    "y": 542.9,
+    "x": 13.9,
+    "y": 543.7,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.basiswechsel_gleiches_L": {
     "haupt": true,
     "r": 9.8,
-    "x": 4.0,
-    "y": 513.3,
+    "x": 5.3,
+    "y": 514.0,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.invariante_daempfung": {
     "haupt": true,
     "r": 7.0,
-    "x": -35.3,
-    "y": 464.8,
+    "x": -34.0,
+    "y": 465.5,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.koenigs_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": -51.8,
-    "y": 505.9,
+    "x": -50.5,
+    "y": 506.7,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.qk_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": 29.3,
-    "y": 488.2,
+    "x": 30.7,
+    "y": 488.9,
     "idee": "basiswechsel.gleiches_l"
    },
    "kl.satz.wertseitiger_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": -23.3,
-    "y": 562.4,
+    "x": -22.0,
+    "y": 563.2,
     "idee": "basiswechsel.gleiches_l"
    },
    "bw.ann.hyp22": {
     "haupt": false,
     "r": 11.0,
-    "x": -4.3,
-    "y": 655.9,
+    "x": -3.4,
+    "y": 656.6,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.ann.hyp24": {
     "haupt": false,
     "r": 11.0,
-    "x": -36.4,
-    "y": 672.4,
+    "x": -35.5,
+    "y": 673.1,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.def.F_bd": {
     "haupt": false,
     "r": 5.0,
-    "x": -60.0,
-    "y": 648.5,
+    "x": -59.2,
+    "y": 649.2,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.lem.stoppregel": {
     "haupt": false,
     "r": 7.8,
-    "x": -31.6,
-    "y": 705.0,
+    "x": -30.7,
+    "y": 705.7,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.lem.wachstumsluecke": {
     "haupt": false,
     "r": 8.5,
-    "x": -15.6,
-    "y": 624.5,
+    "x": -14.8,
+    "y": 625.2,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.prop.ganzzahl": {
     "haupt": false,
     "r": 5.0,
-    "x": 21.1,
-    "y": 630.8,
+    "x": 21.9,
+    "y": 631.5,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.prop.gruppoid": {
     "haupt": true,
     "r": 13.3,
-    "x": 4.3,
-    "y": 685.5,
+    "x": 5.2,
+    "y": 686.2,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.satz.schwanzkonvergenz": {
     "haupt": true,
     "r": 14.9,
-    "x": -43.5,
-    "y": 607.4,
+    "x": -42.7,
+    "y": 608.1,
     "idee": "basiswechsel.abschaelen"
    },
    "bw.beob.offset_zertifikat": {
     "haupt": false,
     "r": 5.0,
-    "x": 117.9,
-    "y": 561.0,
+    "x": 119.1,
+    "y": 562.1,
     "idee": "basiswechsel.phase"
    },
    "bw.frage.halbiter_vergleich": {
     "haupt": false,
     "r": 5.0,
-    "x": 137.4,
-    "y": 620.5,
+    "x": 138.5,
+    "y": 621.5,
     "idee": "basiswechsel.phase"
    },
    "bw.frage.nixon_eta_basiswechsel": {
     "haupt": false,
     "r": 5.0,
-    "x": 74.7,
-    "y": 584.5,
+    "x": 75.8,
+    "y": 585.5,
     "idee": "basiswechsel.phase"
    },
    "bw.gegen.unverschoben": {
     "haupt": false,
     "r": 5.0,
-    "x": 153.7,
-    "y": 567.2,
+    "x": 154.8,
+    "y": 568.2,
     "idee": "basiswechsel.phase"
    },
    "bw.lem.offset": {
     "haupt": false,
     "r": 5.0,
-    "x": 59.9,
-    "y": 614.5,
+    "x": 61.0,
+    "y": 615.5,
     "idee": "basiswechsel.phase"
    },
    "bw.satz.imaginaere_richtung": {
     "haupt": true,
     "r": 7.0,
-    "x": 102.4,
-    "y": 639.5,
+    "x": 103.5,
+    "y": 640.5,
     "idee": "basiswechsel.phase"
    },
    "bw.satz.paulsen_cowgill_hardy": {
     "haupt": true,
     "r": 7.0,
-    "x": 90.7,
-    "y": 544.4,
+    "x": 91.9,
+    "y": 545.5,
     "idee": "basiswechsel.phase"
    },
    "bw.satz.phasengesetz": {
     "haupt": true,
     "r": 13.9,
-    "x": 97.7,
-    "y": 607.7,
+    "x": 98.9,
+    "y": 608.8,
     "idee": "basiswechsel.phase"
    },
    "bw.satz.phasengesetz_gestoppt": {
     "haupt": true,
     "r": 9.8,
-    "x": 129.0,
-    "y": 591.6,
+    "x": 130.1,
+    "y": 592.7,
     "idee": "basiswechsel.phase"
    },
    "bw.verm.adressen": {
     "haupt": false,
     "r": 5.0,
-    "x": 168.5,
-    "y": 611.1,
+    "x": 169.6,
+    "y": 612.1,
     "idee": "basiswechsel.phase"
    },
    "bw.prop.antisym_c1": {
     "haupt": false,
     "r": 5.0,
-    "x": 146.5,
-    "y": 707.4,
+    "x": 146.8,
+    "y": 708.4,
     "idee": "basiswechsel.kreis"
    },
    "bw.prop.kozykel": {
     "haupt": true,
     "r": 12.6,
-    "x": 120.2,
-    "y": 733.5,
+    "x": 120.5,
+    "y": 734.5,
     "idee": "basiswechsel.kreis"
    },
    "bw.satz.antisymmetrie": {
     "haupt": false,
     "r": 7.0,
-    "x": 62.3,
-    "y": 725.8,
+    "x": 62.5,
+    "y": 726.8,
     "idee": "basiswechsel.kreis"
    },
    "bw.satz.c1_produkt": {
     "haupt": false,
     "r": 5.0,
-    "x": 108.4,
-    "y": 700.8,
+    "x": 108.7,
+    "y": 701.8,
     "idee": "basiswechsel.kreis"
    },
    "bw.satz.homoeo": {
     "haupt": true,
     "r": 11.0,
-    "x": 86.8,
-    "y": 750.6,
+    "x": 87.1,
+    "y": 751.6,
     "idee": "basiswechsel.kreis"
    },
    "bw.satz.minimalregularitaet": {
     "haupt": false,
     "r": 5.0,
-    "x": 129.1,
-    "y": 764.2,
+    "x": 129.4,
+    "y": 765.2,
     "idee": "basiswechsel.kreis"
    },
    "bw.beob.modenabfall": {
     "haupt": false,
     "r": 5.0,
-    "x": -134.9,
-    "y": 591.1,
+    "x": -133.7,
+    "y": 591.4,
     "idee": "basiswechsel.moden"
    },
    "bw.beob.positionsgesetz": {
     "haupt": false,
     "r": 5.0,
-    "x": -195.9,
-    "y": 556.1,
+    "x": -194.7,
+    "y": 556.4,
     "idee": "basiswechsel.moden"
    },
    "bw.beob.sigma_stern": {
     "haupt": false,
     "r": 5.0,
-    "x": -119.1,
-    "y": 539.3,
+    "x": -117.9,
+    "y": 539.6,
     "idee": "basiswechsel.moden"
    },
    "bw.beob.singularitaet": {
     "haupt": false,
     "r": 7.8,
-    "x": -143.1,
-    "y": 563.0,
+    "x": -141.9,
+    "y": 563.4,
     "idee": "basiswechsel.moden"
    },
    "bw.frage.streifen_gevrey": {
     "haupt": false,
     "r": 5.0,
-    "x": -168.9,
-    "y": 609.5,
+    "x": -167.7,
+    "y": 609.9,
     "idee": "basiswechsel.moden"
    },
    "bw.kor.modenzahl": {
     "haupt": false,
     "r": 5.0,
-    "x": -214.2,
-    "y": 529.6,
+    "x": -213.0,
+    "y": 529.9,
     "idee": "basiswechsel.moden"
    },
    "bw.korr.r20": {
     "haupt": false,
     "r": 5.0,
-    "x": -180.3,
-    "y": 517.1,
+    "x": -179.1,
+    "y": 517.5,
     "idee": "basiswechsel.moden"
    },
    "bw.prop.saddle": {
     "haupt": true,
     "r": 9.8,
-    "x": -173.5,
-    "y": 578.7,
+    "x": -172.3,
+    "y": 579.0,
     "idee": "basiswechsel.moden"
    },
    "bw.satz.fourier_naht": {
     "haupt": false,
     "r": 5.0,
-    "x": -104.7,
-    "y": 581.9,
+    "x": -103.5,
+    "y": 582.3,
     "idee": "basiswechsel.moden"
    },
    "bw.satz.ursache_kozykel": {
     "haupt": true,
     "r": 7.0,
-    "x": -210.2,
-    "y": 585.2,
+    "x": -209.0,
+    "y": 585.6,
     "idee": "basiswechsel.moden"
    },
    "bw.verm.nirgends_analytisch": {
     "haupt": true,
     "r": 7.0,
-    "x": -130.5,
-    "y": 507.6,
+    "x": -129.3,
+    "y": 508.0,
     "idee": "basiswechsel.moden"
    },
    "bw.verm.streifen": {
     "haupt": true,
     "r": 7.0,
-    "x": -137.3,
-    "y": 624.1,
+    "x": -136.1,
+    "y": 624.5,
     "idee": "basiswechsel.moden"
    },
    "bw.verm.universell": {
     "haupt": true,
     "r": 9.8,
-    "x": -153.8,
-    "y": 533.3,
+    "x": -152.6,
+    "y": 533.7,
     "idee": "basiswechsel.moden"
    },
    "bw.ann.K1K2": {
     "haupt": false,
     "r": 8.5,
-    "x": -147.8,
-    "y": 738.7,
+    "x": -147.3,
+    "y": 739.0,
     "idee": "basiswechsel.antwort"
    },
    "bw.ann.basis_diffbar": {
     "haupt": false,
     "r": 7.0,
-    "x": -139.9,
-    "y": 765.9,
+    "x": -139.4,
+    "y": 766.2,
     "idee": "basiswechsel.antwort"
    },
    "bw.beob.hub_genauigkeit": {
     "haupt": false,
     "r": 5.0,
-    "x": -199.0,
-    "y": 731.9,
+    "x": -198.5,
+    "y": 732.3,
     "idee": "basiswechsel.antwort"
    },
    "bw.beob.kernkleid": {
     "haupt": false,
     "r": 5.0,
-    "x": -124.5,
-    "y": 715.7,
+    "x": -124.0,
+    "y": 716.0,
     "idee": "basiswechsel.antwort"
    },
    "bw.beob.m2": {
     "haupt": false,
     "r": 5.0,
-    "x": -172.9,
-    "y": 783.8,
+    "x": -172.3,
+    "y": 784.1,
     "idee": "basiswechsel.antwort"
    },
    "bw.def.auswahlprinzip": {
     "haupt": true,
     "r": 11.8,
-    "x": -177.3,
-    "y": 753.8,
+    "x": -176.8,
+    "y": 754.2,
     "idee": "basiswechsel.antwort"
    },
    "bw.gescheitert.cstep": {
     "haupt": false,
     "r": 5.0,
-    "x": -183.8,
-    "y": 694.2,
+    "x": -183.3,
+    "y": 694.6,
     "idee": "basiswechsel.antwort"
    },
    "bw.gescheitert.orbitanker": {
     "haupt": false,
     "r": 5.0,
-    "x": -110.6,
-    "y": 757.0,
+    "x": -110.1,
+    "y": 757.3,
     "idee": "basiswechsel.antwort"
    },
    "bw.gescheitert.rh_v1": {
     "haupt": false,
     "r": 5.0,
-    "x": -212.9,
-    "y": 760.2,
+    "x": -212.4,
+    "y": 760.6,
     "idee": "basiswechsel.antwort"
    },
    "bw.gescheitert.vorhersage_r8": {
     "haupt": false,
     "r": 5.0,
-    "x": -135.6,
-    "y": 685.0,
+    "x": -135.1,
+    "y": 685.3,
     "idee": "basiswechsel.antwort"
    },
    "bw.korr.konstante": {
     "haupt": false,
     "r": 5.0,
-    "x": -142.2,
-    "y": 797.9,
+    "x": -141.7,
+    "y": 798.3,
     "idee": "basiswechsel.antwort"
    },
    "bw.lem.geom_kozykel": {
     "haupt": false,
     "r": 7.8,
-    "x": -158.2,
-    "y": 709.9,
+    "x": -157.7,
+    "y": 710.2,
     "idee": "basiswechsel.antwort"
    },
    "bw.lem.randgesetz": {
     "haupt": false,
     "r": 5.0,
-    "x": -216.7,
-    "y": 706.3,
+    "x": -216.2,
+    "y": 706.6,
     "idee": "basiswechsel.antwort"
    },
    "bw.prop.hub": {
     "haupt": true,
     "r": 7.0,
-    "x": -95.1,
-    "y": 724.3,
+    "x": -94.6,
+    "y": 724.6,
     "idee": "basiswechsel.antwort"
    },
    "bw.satz.antwortkern": {
     "haupt": true,
     "r": 7.0,
-    "x": -103.9,
-    "y": 786.6,
+    "x": -103.4,
+    "y": 786.9,
     "idee": "basiswechsel.antwort"
    },
    "bw.satz.kern_eindeutig": {
     "haupt": true,
     "r": 11.0,
-    "x": -170.0,
-    "y": 667.3,
+    "x": -169.5,
+    "y": 667.6,
     "idee": "basiswechsel.antwort"
    },
    "bw.satz.kern_existenz": {
     "haupt": true,
     "r": 9.8,
-    "x": -237.2,
-    "y": 741.9,
+    "x": -236.7,
+    "y": 742.2,
     "idee": "basiswechsel.antwort"
    },
    "bw.verm.rang_eins": {
     "haupt": false,
     "r": 5.0,
-    "x": -200.8,
-    "y": 795.7,
+    "x": -200.3,
+    "y": 796.1,
     "idee": "basiswechsel.antwort"
    },
    "bw.beob.blind": {
     "haupt": false,
     "r": 5.0,
-    "x": -30.5,
-    "y": 810.1,
+    "x": -30.3,
+    "y": 810.8,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.frage.intervallmarsch": {
     "haupt": false,
     "r": 5.0,
-    "x": -8.9,
-    "y": 760.3,
+    "x": -8.7,
+    "y": 761.1,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.korr.tails": {
     "haupt": false,
     "r": 7.0,
-    "x": 2.9,
-    "y": 792.9,
+    "x": 3.1,
+    "y": 793.7,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.satz.anker_rekonstruktion": {
     "haupt": true,
     "r": 7.0,
-    "x": 11.8,
-    "y": 823.7,
+    "x": 12.0,
+    "y": 824.4,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.zert.8r1": {
     "haupt": true,
     "r": 7.0,
-    "x": 29.2,
-    "y": 766.9,
+    "x": 29.4,
+    "y": 767.6,
     "idee": "basiswechsel.rekonstruktion"
    },
    "bw.zert.8r1_alt": {
     "haupt": false,
     "r": 5.0,
-    "x": -55.0,
-    "y": 785.3,
+    "x": -54.8,
+    "y": 786.0,
     "idee": "basiswechsel.rekonstruktion"
    },
    "kn.beob.decation_reell": {
     "haupt": false,
     "r": 5.0,
-    "x": -378.1,
-    "y": 498.0,
+    "x": -379.6,
+    "y": 499.7,
     "idee": "stufen.pentation"
    },
    "kn.beob.hexation_verzweigt": {
     "haupt": false,
     "r": 7.0,
-    "x": -415.7,
-    "y": 485.9,
+    "x": -417.2,
+    "y": 487.7,
     "idee": "stufen.pentation"
    },
    "kn.beob.pentation_werte": {
     "haupt": false,
     "r": 5.0,
-    "x": -437.5,
-    "y": 463.9,
+    "x": -439.0,
+    "y": 465.6,
     "idee": "stufen.pentation"
    },
    "kn.beob.stufe5": {
     "haupt": false,
     "r": 5.0,
-    "x": -362.7,
-    "y": 447.6,
+    "x": -364.2,
+    "y": 449.3,
     "idee": "stufen.pentation"
    },
    "kn.beob.stufe6": {
     "haupt": false,
     "r": 5.0,
-    "x": -411.2,
-    "y": 516.0,
+    "x": -412.7,
+    "y": 517.7,
     "idee": "stufen.pentation"
    },
    "kn.beob.tetra_euler": {
     "haupt": false,
     "r": 5.0,
-    "x": -422.3,
-    "y": 426.0,
+    "x": -423.8,
+    "y": 427.7,
     "idee": "stufen.pentation"
    },
    "kn.beob.unendliche_hexation": {
     "haupt": false,
     "r": 5.0,
-    "x": -348.7,
-    "y": 489.1,
+    "x": -350.2,
+    "y": 490.8,
     "idee": "stufen.pentation"
    },
    "kn.frage.hexation_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": -451.5,
-    "y": 492.3,
+    "x": -453.0,
+    "y": 494.1,
     "idee": "stufen.pentation"
    },
    "kn.konstr.hexation_regulaer": {
     "haupt": false,
     "r": 5.0,
-    "x": -333.1,
-    "y": 456.2,
+    "x": -334.6,
+    "y": 457.9,
     "idee": "stufen.pentation"
    },
    "kn.konstr.pentation": {
     "haupt": true,
     "r": 11.0,
-    "x": -386.1,
-    "y": 470.7,
+    "x": -387.6,
+    "y": 472.4,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_eindeutig_g0": {
     "haupt": true,
     "r": 9.8,
-    "x": -396.5,
-    "y": 441.7,
+    "x": -398.0,
+    "y": 443.5,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_gebiete": {
     "haupt": false,
     "r": 5.0,
-    "x": -439.4,
-    "y": 528.0,
+    "x": -440.9,
+    "y": 529.7,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_keine_halbebene": {
     "haupt": true,
     "r": 7.0,
-    "x": -373.8,
-    "y": 416.7,
+    "x": -375.3,
+    "y": 418.4,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_logpunkt": {
     "haupt": true,
     "r": 7.0,
-    "x": -408.4,
-    "y": 398.9,
+    "x": -409.9,
+    "y": 400.6,
     "idee": "stufen.pentation"
    },
    "kn.satz.hexation_struktur": {
     "haupt": false,
     "r": 5.0,
-    "x": -341.9,
-    "y": 518.9,
+    "x": -343.4,
+    "y": 520.6,
     "idee": "stufen.pentation"
    },
    "kn.satz.kein_kneser_anziehend": {
     "haupt": false,
     "r": 5.0,
-    "x": -380.4,
-    "y": 530.2,
+    "x": -381.9,
+    "y": 532.0,
     "idee": "stufen.pentation"
    },
    "kn.verm.hexation_streifen": {
     "haupt": true,
     "r": 7.0,
-    "x": -455.3,
-    "y": 438.1,
+    "x": -456.8,
+    "y": 439.8,
     "idee": "stufen.pentation"
    },
    "kn.beob.eta4_interpolation": {
     "haupt": false,
     "r": 5.0,
-    "x": -366.0,
-    "y": 311.2,
+    "x": -367.3,
+    "y": 312.9,
     "idee": "stufen.etas"
    },
    "kn.beob.eta4_matrix": {
     "haupt": false,
     "r": 5.0,
-    "x": -346.9,
-    "y": 267.0,
+    "x": -348.2,
+    "y": 268.7,
     "idee": "stufen.etas"
    },
    "kn.beob.eta7_eta8": {
     "haupt": false,
     "r": 5.0,
-    "x": -328.5,
-    "y": 323.2,
+    "x": -329.8,
+    "y": 325.0,
     "idee": "stufen.etas"
    },
    "kn.beob.hoehere_etas": {
     "haupt": false,
     "r": 5.0,
-    "x": -387.8,
-    "y": 289.1,
+    "x": -389.1,
+    "y": 290.9,
     "idee": "stufen.etas"
    },
    "kn.beob.kritische_profile": {
     "haupt": false,
     "r": 5.0,
-    "x": -313.0,
-    "y": 272.8,
+    "x": -314.3,
+    "y": 274.6,
     "idee": "stufen.etas"
    },
    "kn.beob.tpid10_gesetz": {
     "haupt": false,
     "r": 5.0,
-    "x": -361.6,
-    "y": 341.2,
+    "x": -362.9,
+    "y": 343.0,
     "idee": "stufen.etas"
    },
    "kn.beob.zwischenwerte_basis2": {
     "haupt": false,
     "r": 5.0,
-    "x": -372.6,
-    "y": 251.2,
+    "x": -373.9,
+    "y": 253.0,
     "idee": "stufen.etas"
    },
    "kn.frage.andere_etas": {
     "haupt": false,
     "r": 5.0,
-    "x": -299.0,
-    "y": 314.3,
+    "x": -300.3,
+    "y": 316.1,
     "idee": "stufen.etas"
    },
    "kn.frage.pentation_untergrenze": {
     "haupt": false,
     "r": 5.0,
-    "x": -401.8,
-    "y": 317.6,
+    "x": -403.1,
+    "y": 319.3,
     "idee": "stufen.etas"
    },
    "kn.satz.basis2_hoehe3": {
     "haupt": false,
     "r": 5.0,
-    "x": -324.2,
-    "y": 241.9,
+    "x": -325.5,
+    "y": 243.7,
     "idee": "stufen.etas"
    },
    "kn.satz.eta_auswahl": {
     "haupt": true,
     "r": 7.0,
-    "x": -330.8,
-    "y": 355.5,
+    "x": -332.1,
+    "y": 357.2,
     "idee": "stufen.etas"
    },
    "kn.satz.eta_kriterium": {
     "haupt": true,
     "r": 7.0,
-    "x": -292.3,
-    "y": 344.1,
+    "x": -293.6,
+    "y": 345.9,
     "idee": "stufen.etas"
    },
    "kn.satz.kritische_rate": {
     "haupt": false,
     "r": 5.0,
-    "x": -405.7,
-    "y": 263.3,
+    "x": -407.0,
+    "y": 265.1,
     "idee": "stufen.etas"
    },
    "kn.satz.schwellen_monoton": {
     "haupt": true,
     "r": 9.8,
-    "x": -336.4,
-    "y": 295.9,
+    "x": -337.7,
+    "y": 297.7,
     "idee": "stufen.etas"
    },
    "kn.verm.beschraenkt_unter_2": {
     "haupt": false,
     "r": 5.0,
-    "x": -283.4,
-    "y": 281.4,
+    "x": -284.7,
+    "y": 283.2,
     "idee": "stufen.etas"
    },
    "kn.verm.tpid10": {
     "haupt": false,
     "r": 5.0,
-    "x": -389.7,
-    "y": 353.2,
+    "x": -391.0,
+    "y": 355.0,
     "idee": "stufen.etas"
    },
    "kn.verm.tpid11": {
     "haupt": false,
     "r": 5.0,
-    "x": -358.7,
-    "y": 224.1,
+    "x": -360.0,
+    "y": 225.9,
     "idee": "stufen.etas"
    },
    "kn.beob.einheitliche_raenge": {
     "haupt": false,
     "r": 5.0,
-    "x": -534.5,
-    "y": 356.5,
+    "x": -535.9,
+    "y": 358.0,
     "idee": "stufen.halbrang"
    },
    "kn.beob.halbrang_basis2": {
     "haupt": false,
     "r": 5.0,
-    "x": -514.8,
-    "y": 311.1,
+    "x": -516.2,
+    "y": 312.6,
     "idee": "stufen.halbrang"
    },
    "kn.beob.halbrang_divergenz": {
     "haupt": false,
     "r": 5.0,
-    "x": -496.0,
-    "y": 368.9,
+    "x": -497.3,
+    "y": 370.4,
     "idee": "stufen.halbrang"
    },
    "kn.beob.halbrang_kneser_test": {
     "haupt": false,
     "r": 5.0,
-    "x": -556.9,
-    "y": 333.9,
+    "x": -558.3,
+    "y": 335.4,
     "idee": "stufen.halbrang"
    },
    "kn.beob.halbrang_rangfortsetzung": {
     "haupt": false,
     "r": 5.0,
-    "x": -480.1,
-    "y": 317.1,
+    "x": -481.5,
+    "y": 318.6,
     "idee": "stufen.halbrang"
    },
    "kn.beob.halbrang_theta_grenze": {
     "haupt": false,
     "r": 5.0,
-    "x": -529.9,
-    "y": 387.3,
+    "x": -531.3,
+    "y": 388.8,
     "idee": "stufen.halbrang"
    },
    "kn.beob.kneser_beschraenkte_summe": {
     "haupt": false,
     "r": 5.0,
-    "x": -541.3,
-    "y": 295.0,
+    "x": -542.7,
+    "y": 296.5,
     "idee": "stufen.halbrang"
    },
    "kn.frage.halber_rang": {
     "haupt": false,
     "r": 5.0,
-    "x": -465.7,
-    "y": 359.7,
+    "x": -467.1,
+    "y": 361.2,
     "idee": "stufen.halbrang"
    },
    "kn.gescheitert.mischkurve": {
     "haupt": false,
     "r": 5.0,
-    "x": -571.2,
-    "y": 363.1,
+    "x": -572.6,
+    "y": 364.6,
     "idee": "stufen.halbrang"
    },
    "kn.gescheitert.polynom_rekonstruktion": {
     "haupt": false,
     "r": 5.0,
-    "x": -491.5,
-    "y": 285.4,
+    "x": -492.9,
+    "y": 286.9,
     "idee": "stufen.halbrang"
    },
    "kn.satz.halbrang_linear": {
     "haupt": true,
     "r": 11.0,
-    "x": -504.1,
-    "y": 340.9,
+    "x": -505.5,
+    "y": 342.3,
     "idee": "stufen.halbrang"
    },
    "kn.satz.halbrang_quadratisch": {
     "haupt": false,
     "r": 5.0,
-    "x": -498.3,
-    "y": 402.0,
+    "x": -499.7,
+    "y": 403.4,
     "idee": "stufen.halbrang"
    },
    "kn.satz.rangjets_exppoly": {
     "haupt": false,
     "r": 5.0,
-    "x": -575.2,
-    "y": 307.4,
+    "x": -576.6,
+    "y": 308.9,
     "idee": "stufen.halbrang"
    },
    "br.def.hyperoperation": {
     "haupt": true,
     "r": 9.8,
-    "x": -451.3,
-    "y": 202.9,
+    "x": -452.5,
+    "y": 204.5,
     "idee": "stufen.hyperop"
    },
    "br.satz.ackermann": {
     "haupt": false,
     "r": 5.0,
-    "x": -441.8,
-    "y": 235.6,
+    "x": -443.0,
+    "y": 237.1,
     "idee": "stufen.hyperop"
    },
    "br.satz.hyperop_varianten": {
     "haupt": false,
     "r": 5.0,
-    "x": -486.8,
-    "y": 221.1,
+    "x": -487.9,
+    "y": 222.7,
     "idee": "stufen.hyperop"
    },
    "br.satz.ordinal_tetration": {
     "haupt": false,
     "r": 5.0,
-    "x": -463.8,
-    "y": 168.3,
+    "x": -465.0,
+    "y": 169.8,
     "idee": "stufen.hyperop"
    },
    "br.beob.produkt_iteration_dreieck": {
     "haupt": true,
     "r": 7.0,
-    "x": 149.8,
-    "y": -526.1,
+    "x": 150.3,
+    "y": -525.4,
     "idee": "verwandte.produkt"
    },
    "br.beob.produkt_tetration_werte": {
     "haupt": true,
     "r": 7.0,
-    "x": 116.5,
-    "y": -508.9,
+    "x": 117.0,
+    "y": -508.2,
     "idee": "verwandte.produkt"
    },
    "br.def.produkt_tetration": {
     "haupt": false,
     "r": 5.0,
-    "x": 138.0,
-    "y": -558.7,
+    "x": 138.6,
+    "y": -558.0,
     "idee": "verwandte.produkt"
    },
    "br.frage.verwandte_funktionen": {
     "haupt": false,
     "r": 5.0,
-    "x": 158.8,
-    "y": -495.3,
+    "x": 159.3,
+    "y": -494.6,
     "idee": "verwandte.produkt"
    },
    "br.satz.produkt_parabolisch": {
     "haupt": false,
     "r": 5.0,
-    "x": 91.9,
-    "y": -533.7,
+    "x": 92.4,
+    "y": -533.0,
     "idee": "verwandte.produkt"
    },
    "br.satz.vergleichsfunktion": {
     "haupt": false,
     "r": 5.0,
-    "x": 176.2,
-    "y": -552.1,
+    "x": 176.7,
+    "y": -551.4,
     "idee": "verwandte.produkt"
    },
    "ar.frage.ef_fortsetzung": {
     "haupt": true,
     "r": 7.0,
-    "x": 93.3,
-    "y": -419.1,
+    "x": 93.9,
+    "y": -418.3,
     "idee": "verwandte.fakultaet"
    },
    "ar.konstr.ef_sexp": {
     "haupt": false,
     "r": 5.0,
-    "x": 56.1,
-    "y": -400.0,
+    "x": 56.7,
+    "y": -399.2,
     "idee": "verwandte.fakultaet"
    },
    "ar.satz.ef_null_ableitung": {
     "haupt": false,
     "r": 5.0,
-    "x": 80.1,
-    "y": -455.4,
+    "x": 80.8,
+    "y": -454.6,
     "idee": "verwandte.fakultaet"
    },
    "it.satz.elementare_superfunktionen": {
     "haupt": false,
     "r": 5.0,
-    "x": 159.6,
-    "y": -399.4,
+    "x": 160.3,
+    "y": -398.8,
     "idee": "verwandte.elementar"
    },
    "it.satz.moebius_iteration": {
     "haupt": true,
     "r": 9.8,
-    "x": 199.7,
-    "y": -420.0,
+    "x": 200.4,
+    "y": -419.4,
     "idee": "verwandte.elementar"
    },
    "ar.frage.e_hoch_e": {
     "haupt": false,
     "r": 5.0,
-    "x": -240.5,
-    "y": -531.0,
+    "x": -245.8,
+    "y": -529.1,
     "idee": "zahlen.transzendenz"
    },
    "ar.frage.ganze_tuerme": {
     "haupt": false,
     "r": 5.0,
-    "x": -168.5,
-    "y": -469.3,
+    "x": -173.8,
+    "y": -467.4,
     "idee": "zahlen.transzendenz"
    },
    "ar.kor.benachbart": {
     "haupt": false,
     "r": 5.0,
-    "x": -257.1,
-    "y": -431.3,
+    "x": -262.4,
+    "y": -429.4,
     "idee": "zahlen.transzendenz"
    },
    "ar.lem.nullstellen": {
     "haupt": false,
     "r": 7.0,
-    "x": -197.3,
-    "y": -460.6,
+    "x": -202.6,
+    "y": -458.7,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.algebraische_basen": {
     "haupt": false,
     "r": 5.0,
-    "x": -226.9,
-    "y": -557.6,
+    "x": -232.2,
+    "y": -555.6,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.bpw": {
     "haupt": true,
     "r": 9.8,
-    "x": -182.2,
-    "y": -510.0,
+    "x": -187.5,
+    "y": -508.1,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.ef_liouville": {
     "haupt": false,
     "r": 5.0,
-    "x": -269.0,
-    "y": -466.2,
+    "x": -274.3,
+    "y": -464.3,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.gelfond_schneider": {
     "haupt": true,
     "r": 13.3,
-    "x": -205.0,
-    "y": -487.3,
+    "x": -210.3,
+    "y": -485.4,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.hermite_lindemann": {
     "haupt": true,
     "r": 12.6,
-    "x": -234.0,
-    "y": -472.5,
+    "x": -239.3,
+    "y": -470.5,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.keine_arith_info": {
     "haupt": true,
     "r": 7.0,
-    "x": -193.1,
-    "y": -540.1,
+    "x": -198.4,
+    "y": -538.2,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.liouville_tuerme": {
     "haupt": false,
     "r": 5.0,
-    "x": -199.5,
-    "y": -429.1,
+    "x": -204.8,
+    "y": -427.2,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.masser_typ": {
     "haupt": false,
     "r": 5.0,
-    "x": -221.4,
-    "y": -408.0,
+    "x": -226.7,
+    "y": -406.1,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.orbitschranke": {
     "haupt": true,
     "r": 9.8,
-    "x": -229.7,
-    "y": -443.1,
+    "x": -235.0,
+    "y": -441.1,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.pila": {
     "haupt": true,
     "r": 11.0,
-    "x": -215.3,
-    "y": -515.7,
+    "x": -220.6,
+    "y": -513.7,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.rationale_tuerme": {
     "haupt": false,
     "r": 5.0,
-    "x": -161.9,
-    "y": -440.3,
+    "x": -167.2,
+    "y": -438.3,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.schanuel_orbit": {
     "haupt": false,
     "r": 5.0,
-    "x": -269.9,
-    "y": -549.9,
+    "x": -275.2,
+    "y": -547.9,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.sondow_marques_xx": {
     "haupt": false,
     "r": 5.0,
-    "x": -135.1,
-    "y": -476.2,
+    "x": -140.4,
+    "y": -474.3,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.ssc_gelfond": {
     "haupt": false,
     "r": 5.0,
-    "x": -272.8,
-    "y": -519.2,
+    "x": -278.1,
+    "y": -517.3,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.superwurzel_arith": {
     "haupt": false,
     "r": 5.0,
-    "x": -292.9,
-    "y": -484.2,
+    "x": -298.2,
+    "y": -482.3,
     "idee": "zahlen.transzendenz"
    },
    "ar.satz.unendliche_tuerme_gs": {
     "haupt": false,
     "r": 5.0,
-    "x": -162.9,
-    "y": -541.9,
+    "x": -168.2,
+    "y": -540.0,
     "idee": "zahlen.transzendenz"
    },
    "ar.verm.gelfond_turm": {
     "haupt": true,
     "r": 7.0,
-    "x": -153.2,
-    "y": -501.5,
+    "x": -158.5,
+    "y": -499.6,
     "idee": "zahlen.transzendenz"
    },
    "ar.verm.schanuel": {
     "haupt": true,
     "r": 9.8,
-    "x": -255.3,
-    "y": -494.0,
+    "x": -260.6,
+    "y": -492.1,
     "idee": "zahlen.transzendenz"
    },
    "ar.beob.ausschluss": {
     "haupt": false,
     "r": 5.0,
-    "x": -243.5,
-    "y": -622.5,
+    "x": -262.6,
+    "y": -619.5,
     "idee": "zahlen.ks"
    },
    "ar.satz.funktional_ks": {
     "haupt": true,
     "r": 9.8,
-    "x": -206.4,
-    "y": -641.6,
+    "x": -225.4,
+    "y": -638.6,
     "idee": "zahlen.ks"
    },
    "ar.verm.ks": {
     "haupt": false,
     "r": 5.0,
-    "x": -219.5,
-    "y": -678.0,
+    "x": -238.6,
+    "y": -675.0,
     "idee": "zahlen.ks"
    },
    "ar.beob.keine_relationen": {
-    "haupt": true,
-    "r": 7.0,
-    "x": -102.4,
-    "y": -605.7,
+    "haupt": false,
+    "r": 5.0,
+    "x": -111.5,
+    "y": -615.4,
     "idee": "zahlen.identitaeten"
    },
    "kn.beob.theta_fourier_algebraisch": {
     "haupt": false,
     "r": 5.0,
-    "x": -139.6,
-    "y": -586.6,
+    "x": -145.8,
+    "y": -597.8,
+    "idee": "zahlen.identitaeten"
+   },
+   "kn.beob.theta_koeffizienten": {
+    "haupt": false,
+    "r": 5.0,
+    "x": -123.6,
+    "y": -648.9,
     "idee": "zahlen.identitaeten"
    },
    "kn.frage.theta_exponent": {
     "haupt": false,
     "r": 5.0,
-    "x": -115.5,
-    "y": -642.1,
+    "x": -102.4,
+    "y": -583.8,
+    "idee": "zahlen.identitaeten"
+   },
+   "kn.satz.theta_singularitaet": {
+    "haupt": true,
+    "r": 7.0,
+    "x": -171.0,
+    "y": -623.3,
     "idee": "zahlen.identitaeten"
    },
    "ar.satz.padische_tuerme": {
     "haupt": false,
     "r": 5.0,
-    "x": -370.7,
-    "y": -549.4,
+    "x": -375.8,
+    "y": -548.4,
     "idee": "zahlen.kongruenzen"
    },
    "ar.satz.selbstpotenz_kongruenz": {
     "haupt": false,
     "r": 5.0,
-    "x": -348.7,
-    "y": -482.1,
+    "x": -353.8,
+    "y": -481.1,
     "idee": "zahlen.kongruenzen"
    },
    "br.satz.ripa": {
     "haupt": false,
     "r": 5.0,
-    "x": -393.6,
-    "y": -496.6,
+    "x": -398.7,
+    "y": -495.5,
     "idee": "zahlen.kongruenzen"
    },
    "br.satz.turm_mod_m": {
     "haupt": true,
     "r": 11.0,
-    "x": -358.2,
-    "y": -514.8,
+    "x": -363.3,
+    "y": -513.7,
     "idee": "zahlen.kongruenzen"
    },
    "br.frage.kneser_hardy": {
     "haupt": false,
     "r": 5.0,
-    "x": -62.8,
-    "y": -103.4,
+    "x": -62.2,
+    "y": -102.7,
     "idee": "bruecken.logik"
    },
    "br.frage.transexp": {
     "haupt": false,
     "r": 5.0,
-    "x": -41.7,
-    "y": -152.2,
+    "x": -41.1,
+    "y": -151.4,
     "idee": "bruecken.logik"
    },
    "br.satz.boshernitzan": {
     "haupt": false,
     "r": 5.0,
-    "x": -21.4,
-    "y": -90.1,
+    "x": -20.8,
+    "y": -89.4,
     "idee": "bruecken.logik"
    },
    "br.satz.halbexp_komplexitaet": {
     "haupt": false,
     "r": 5.0,
-    "x": -86.9,
-    "y": -127.7,
+    "x": -86.3,
+    "y": -127.0,
     "idee": "bruecken.logik"
    },
    "br.satz.kalmar": {
     "haupt": false,
     "r": 5.0,
-    "x": -4.3,
-    "y": -145.7,
+    "x": -3.8,
+    "y": -145.0,
     "idee": "bruecken.logik"
    },
    "br.satz.nicht_definierbar": {
     "haupt": false,
     "r": 5.0,
-    "x": -57.9,
-    "y": -70.2,
+    "x": -57.3,
+    "y": -69.5,
     "idee": "bruecken.logik"
    },
    "br.satz.vdd_miller": {
     "haupt": true,
     "r": 9.8,
-    "x": -30.1,
-    "y": -120.2,
+    "x": -29.6,
+    "y": -119.5,
     "idee": "bruecken.logik"
    },
    "br.gescheitert.rotationszahl": {
     "haupt": false,
     "r": 5.0,
-    "x": 85.9,
-    "y": -145.6,
+    "x": 86.5,
+    "y": -144.8,
     "idee": "bruecken.fourier"
    },
    "br.satz.gevrey_fourier": {
     "haupt": false,
     "r": 5.0,
-    "x": 107.9,
-    "y": -78.2,
+    "x": 108.5,
+    "y": -77.5,
     "idee": "bruecken.fourier"
    },
    "br.satz.privalov": {
     "haupt": true,
     "r": 11.0,
-    "x": 98.4,
-    "y": -110.9,
+    "x": 99.0,
+    "y": -110.1,
     "idee": "bruecken.fourier"
    },
    "br.satz.young_kreis": {
     "haupt": true,
     "r": 11.0,
-    "x": 63.0,
-    "y": -92.7,
+    "x": 63.6,
+    "y": -91.9,
     "idee": "bruecken.fourier"
    },
    "br.def.iteration_wirkung": {
     "haupt": true,
     "r": 7.0,
-    "x": 53.4,
-    "y": -209.4,
+    "x": 54.0,
+    "y": -208.7,
     "idee": "bruecken.wirkungen"
    },
    "br.frage.iterationsleiter": {
     "haupt": false,
     "r": 5.0,
-    "x": 13.3,
-    "y": -188.8,
+    "x": 13.9,
+    "y": -188.1,
     "idee": "bruecken.wirkungen"
    }
   }
