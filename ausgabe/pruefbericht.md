@@ -1,8 +1,8 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-422 Aussagen · 759 Kanten · 57 Experimente
+425 Aussagen · 768 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 151, numerisch 71, bewiesen_literatur 60, offen 33, vermutung 29, bedingt 27, definition 15, skizze 14, gescheitert 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 152, numerisch 71, bewiesen_literatur 60, offen 34, vermutung 29, bedingt 27, definition 15, skizze 15, gescheitert 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 104
 
@@ -50,7 +50,7 @@
 **theorie-fortschritt** (5)
 
 - `ar` — 29 von 31 Aussagen mit Theorie-Block
-- `br` — 28 von 29 Aussagen mit Theorie-Block
+- `br` — 28 von 32 Aussagen mit Theorie-Block
 - `gr` — 56 von 57 Aussagen mit Theorie-Block
 - `it` — 19 von 20 Aussagen mit Theorie-Block
 - `kn` — 116 von 126 Aussagen mit Theorie-Block
@@ -58,7 +58,7 @@
 **uebersetzung-fortschritt** (6)
 
 - `ar` — 31 von 31 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 29 von 31 Theorie-Blöcken
-- `br` — 29 von 29 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 28 von 29 Theorie-Blöcken
+- `br` — 32 von 32 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 28 von 32 Theorie-Blöcken
 - `gr` — 57 von 57 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 56 von 57 Theorie-Blöcken
 - `it` — 20 von 20 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 19 von 20 Theorie-Blöcken
 - `kn` — 126 von 126 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 116 von 126 Theorie-Blöcken
@@ -103,6 +103,7 @@
 - `fp.satz.siegel_mittel` — Nach Herman (1985) ist $\Delta$ für diophantisches $\alpha$ unbeschränkt; Carathéodory greift dann nicht. Zu zeigen wäre, dass $\varphi$ Randwerte in $L^1(d\theta)$ hat (Hardy-Raum $H^1$), damit der Mittelwertsatz gilt.
 - `fp.satz.siegel_mittel` — Ohne Jordan-Rand ist die Randdynamik nicht automatisch zu einer Drehung konjugiert; die Gleichverteilung des Turms bezüglich $\omega_L$ ist offen.
 - `kl.satz.invariante_daempfung` — Dass die klassische periodische Phase (bw.satz.phasengesetz) als Grenzwert |λ| → 1 einer Familie gedämpfter Übergänge entsteht, ist eine Deutung, kein Grenzwertsatz.
+- `br.satz.reelle_kennzeichnung` — Beide Richtungen brauchen θ_T ∈ L¹ und die Majorante an den ganzen Zahlen (wie kn.satz.theta_mittelwerte).
 - `kn.satz.theta_singularitaet` — Dass die Fortsetzung von h nur über der Bahn von 0 behindert ist (singuläre Werte von Poincaré-Funktionen), ist zitiert, nicht hier bewiesen.
 - `kn.satz.theta_singularitaet` — Analytizität auf ℝ∖ℤ: die Wahl des Hauptzweigs ist nur numerisch geprüft (stetiger Verlauf in allen Abtastungen).
 - `kn.satz.theta_mittelwerte` — Die Majorante ist aus der Lokalform abgelesen; eine ausgeschriebene Abschätzung von h und h′ auf {log(Az) : 0 < arg z < π} fehlt.

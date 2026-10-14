@@ -301,6 +301,23 @@
       Open — in any case not settled. A secondary source attributes to Boshernitzan having shown this for, among others, Kneser's solution; this has not been checked against the original.
     worum: |
       Is Kneser's tetration so “well-behaved” that no combination of it and its derivatives changes sign infinitely often for large $x$?
+- id: br.frage.momentenfamilie
+  quelle_hash: 96cd2e5ab610
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Does the moment family M[θᵏ] = M[θ]ᵏ (all k) pin down Kneser?
+    aussage: |
+      Kneser satisfies $M[\theta^k]=M[\theta]^k$ for all $k$ (kn.satz.theta_mittelwerte). For general functions this family is weaker than
+      “no negative modes” (it sees only the distribution of values; counterexample $f=e^{-2\pi ix}$). **Among tetrations** it is rigid to first order:
+      $\delta V_k[p]=0$ for all $k$ forces $p$ to be constant — proved for perturbations that are holomorphic in the strip $|\mathrm{Im}z|<0.09$ (numerically already from $0.0008$).
+      Open: does this also hold nonlinearly, or is there a tetration $\neq$ Kneser whose $\theta_T$ is a measure-preserving rearrangement of a boundary function that is holomorphic above?
+    einfach: A simpler family of conditions — "the mean of the powers is the power of the mean" — already suffices locally to pin down Kneser.
+      Whether it also suffices globally is open.
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, M; s3_univalenz.py
 - id: br.frage.transexp
   quelle_hash: ab49f2045259
   theorie_hash: d02fd8a0c080
@@ -491,6 +508,44 @@
     worum: |
       Hardy fields are collections of “well-behaved” functions that do not oscillate infinitely often for large $x$. There are such collections that contain functions that grow faster than any
       exponential tower — that is, tetration-like functions.
+- id: br.satz.endlich_viele_reichen_nicht
+  quelle_hash: e87338b626fe
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: No single real mean-value formula — and no finite list — singles out Kneser
+    aussage: |
+      To first order, every mean-value condition $C$ sees only the part of $p$ with positive frequency:
+      $\delta C[p]=\sum_{k\ge1}\hat F_C(k)\,\overline{\hat p(k)}$ with a fixed weight function $F_C$ that is holomorphic above (for instance $F=2(\theta-a_0)(1+\theta')$ for $M[\theta^2]=M[\theta]^2$).
+      It follows that **finitely many such equations never pin down Kneser** — there is always a curve of non-constant perturbations $p$ along which all of them hold exactly.
+      Explicitly constructed (each equation satisfied to $10^{-35}$ or better, independently re-checked with 50 digits): tetrations $\neq$ Kneser that satisfy
+      $M[\theta_T^2]=M[\theta_T]^2$, or the σ-product $=1$, or $\int_1^e\mathrm{slog}_T'^2/h'=1$, or $M[\ln(T'\,h'\circ T)]=0$ — for example
+      $p=0.03\sin4\pi x-0.0460228\sin2\pi x-0.00167248(\cos2\pi x-1)$ for the slog formula —, one that satisfies the first and the second at once, and one
+      (with a tiny perturbation) that satisfies three formulas and the first three Fourier conditions at once. None of these quantities has an extremum at Kneser.
+      The linear tetration violates all of them (e.g. $\int_1^e\mathrm{slog}'^2/h'=0.96753$).
+    bereich: real-analytic tetrations $T(x)=\mathrm{sexp}(x+p(x))$, $p$ 1-periodic, $1+p'>0$, $T(0)=1$; conditions from kn.satz.theta_mittelwerte
+    einfach: 'A single equation is too weak: there are many tetrations that satisfy it just as well as Kneser does. We have explicitly constructed
+      such “look-alikes” for each of the new formulas. To pin down Kneser, one needs infinitely many conditions.'
+    beweis:
+      text: |
+        Linearizing $\theta_T=\theta(x+p)+p$ and the mean-value principle give the weight form (confirmed numerically to $10^{-17}$). If the linear map
+        $p\mapsto(\delta C_1,\dots,\delta C_n)$ onto $\mathbb C^n$ is surjective (shown for each single condition, e.g. $\hat F(1)=2a_1\neq0$), the implicit function theorem
+        in finitely many trigonometric parameters yields a solution curve. Counterexamples via Newton and secant methods, dps 40, re-checked with dps 50.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: a dimension argument (a function against finitely many numbers); the explicit linearization and the counterexamples
+        make it concrete.'
+      f2_benutzte_voraussetzungen: 'Mean-value principle (gap: majorant, kn.satz.theta_mittelwerte) for the linearization; the counterexamples
+        themselves were recomputed directly.'
+      f3_spezialfall: 'Sharpens fg.kor.nichteindeutigkeit: analytic + monotone + finitely many integral equations is not enough.'
+      f4_uebertragbar: To any finite list of conditions that depend continuously on p.
+      f5_neue_frage: Which infinite family suffices (br.satz.reelle_kennzeichnung)?
+    bewertung:
+      nutzen: 'Answers whether one of the real Kneser formulas alone suffices: no.'
+      richtigkeit: complete; counterexamples to 10⁻³⁵
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S1, S2, Table 3; s2_gegenbeispiele.py, s5_pruefen.py
 - id: br.satz.gevrey_fourier
   quelle_hash: 776d63d4805c
   theorie_hash: eb357044fb25
@@ -879,6 +934,48 @@
       into the other by a change of coordinates — not even formally.
     worum: |
       Which fractional iterate of $xe^x$ is the natural one? The answer is already in the theory of parabolic fixed points.
+- id: br.satz.reelle_kennzeichnung
+  quelle_hash: e2595ef0f990
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'A real but nonlocal characterization of Kneser: infinitely many Fourier equations or a defect E(T) = 0'
+    aussage: |
+      $$T=\text{Kneser}\iff\int_0^1h(T(x))\,e^{2\pi imx}\,dx=\frac{1}{2\pi im}\ \ \text{for all }m\ge1\iff E(T)=0,$$
+      equivalently: the real and imaginary parts of $h(T(x))-x$ form a periodic Hilbert pair. The **defect**
+      $$E(T)=\tfrac14\iint\frac{|\theta_T(x)-\theta_T(y)|^2}{\sin^2\pi(x-y)}\,dx\,dy-\tfrac1\pi\,\mathrm{Fläche}(\theta_T)=2\sum_{m\ge1}m\,|\hat\theta_T(-m)|^2\ \ge0$$
+      is a single real quantity that attains its minimum 0 exactly at Kneser (area = the area enclosed by the curve $\theta_T$).
+      For real-analytic $T$ the negative modes decay exponentially; for the linear tetration only like $m^{-2}$ ($E\approx4.7\cdot10^{-5}$).
+      An exactly solvable example: if one bends Kneser with a Möbius map ($e^{2\pi i\varphi}=e^{i\alpha}(q-a)/(1-\bar aq)$), then
+      $\hat\theta_T(-n)=ia^n/(2\pi n)$ and $E=-\ln(1-|a|^2)/(2\pi^2)$.
+      Like Bohr–Mollerup for Γ, this is a condition on the real axis only — but **nonlocal** (Hilbert kernel); a local condition (signs of derivatives) remains open.
+    bereich: real-analytic tetrations $T$ with $T'>0$, $T(0)=1$, base $b>\eta$; $\theta_T(x)=h(T(x))-x$ with the regular Abel function $h$ at
+      the fixed point $L$
+    einfach: 'One can recognize Kneser after all with computations on the number line alone: a certain "error quantity" is always at least zero
+      and equals zero exactly at Kneser. Unlike for the gamma function, however, this is not a simple curvature condition at every point, but
+      a condition that concerns the whole period at once.'
+    beweis:
+      text: |
+        “$\Leftarrow$”: If the negative modes vanish, $\theta_T$ is the boundary value of a periodic function holomorphic in the upper half-plane (Hardy space,
+        Lusin–Privalov); then $T$ satisfies Kneser's conditions, and Paulsen–Cowgill (kn.satz.paulsen_komplex) gives $T=$ Kneser. “$\Rightarrow$”: Stage 3, Z5.
+        $E$: Douglas formula for the Dirichlet energy plus the area formula $\tfrac1\pi\mathrm{Fläche}=\sum_m m(|\hat\theta(m)|^2-|\hat\theta(-m)|^2)$.
+        Möbius example: exact Fourier expansion, numerically to $5\cdot10^{-29}$.
+      luecken:
+      - Both directions need θ_T ∈ L¹ and the majorant at the integers (as in kn.satz.theta_mittelwerte).
+    pruefung:
+      f1_folgt_unmittelbar: 'At its core yes: Paulsen–Cowgill in Hardy-space language. New are the real form, the defect E and the Möbius example.'
+      f2_benutzte_voraussetzungen: Paulsen–Cowgill uniqueness; Hardy-space theory; majorant at the integers.
+      f3_spezialfall: 'Yes: of “θ holomorphic above ⇔ Kneser”.'
+      f4_uebertragbar: To every base above η.
+      f5_neue_frage: Is there a local characterization? Do fewer conditions suffice (only even m, only real parts)? Does the moment family pin
+        down Kneser (br.frage.momentenfamilie)?
+    bewertung:
+      nutzen: First purely real characterization of Kneser with an extremal principle — a partial answer to br.frage.bohr_mollerup.
+      richtigkeit: core proved, majorant sketched
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S3, S4, MÖ, Lemma R; s1_moebius.py, s4_hooshmand.py
 - id: br.satz.ripa
   quelle_hash: c0d8861acd89
   theorie_hash: ead7881f997d

@@ -2,11 +2,11 @@
 
 Hauptideen und Unterideen mit Füllstand (Status der Aussagen), Herkunft (Literatur / Forum / nur eigene Arbeit) und den offenen Aussagen (Vermutungen, Fragen, Annahmen, bedingte Sätze; nach Tragweite). Erzeugt von baue.py.
 
-## Fraktionale Fortsetzung (103 Aussagen)
+## Fraktionale Fortsetzung (106 Aussagen)
 
 Wie man T(x) zwischen den ganzen Höhen festlegt — und welche Wahl die natürliche ist.
 
-Stand: bewiesen 47, bedingt 9, numerisch 19, Vermutung 14, offen 11, verworfen 3 · Literatur 50 / Forum 20 / eigen 33
+Stand: bewiesen 48, bedingt 10, numerisch 19, Vermutung 14, offen 12, verworfen 3 · Literatur 50 / Forum 20 / eigen 36
 
 - **Halbe Exponentialfunktion** (26): bewiesen 8, bedingt 6, numerisch 6, Vermutung 4, verworfen 2 · Literatur 7 / Forum 1 / eigen 18 · offen: kn.satz.halbexp_beschraenkt, kn.satz.polynom_halbexp_hauptsatz, kn.satz.polynom_halbexp_reduktion, kn.satz.polynom_hauptsatz_kr0, kn.verm.polynom_halbexp, kn.verm.polynom_halbexp_eckmoden, kn.verm.polynom_halbexp_kern, kn.verm.polynom_halbexp_schranke
 - **Andere Konstruktionen** (23): bewiesen 10, bedingt 1, numerisch 3, Vermutung 5, offen 4 · Literatur 10 / Forum 11 / eigen 2 · offen: kn.frage.abel_bruchsumme, kn.frage.tpid14, kn.frage.tpid16, kn.frage.tpid17, kn.verm.carleman_eigenwerte, kn.verm.carleman_kneser, kn.verm.szekeres_wachstum, kn.verm.tpid3 …
@@ -15,7 +15,7 @@ Stand: bewiesen 47, bedingt 9, numerisch 19, Vermutung 14, offen 11, verworfen 3
 - **Kneser über η** (9): bewiesen 5, numerisch 3, verworfen 1 · Literatur 7 / Forum 0 / eigen 2
 - **Eindeutigkeit** (7): bewiesen 4, numerisch 1, Vermutung 1, offen 1 · Literatur 6 / Forum 0 / eigen 1 · offen: kn.frage.beta_methode, kn.verm.tk_c2
 - **Tetration als Störung** (5): bewiesen 3, numerisch 1, offen 1 · Literatur 0 / Forum 2 / eigen 3 · offen: kn.frage.stoerungsreihe
-- **Reelle Kennzeichnung?** (1): offen 1 · Literatur 1 / Forum 0 / eigen 0 · offen: br.frage.bohr_mollerup
+- **Reelle Kennzeichnung?** (4): bewiesen 1, bedingt 1, offen 2 · Literatur 1 / Forum 0 / eigen 3 · offen: br.frage.bohr_mollerup, br.frage.momentenfamilie
 - **Selbst ausrechnen** (1): numerisch 1 · Literatur 0 / Forum 1 / eigen 0
 
 ## Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ (71 Aussagen)
@@ -112,16 +112,16 @@ Stand: bewiesen 6, bedingt 1, numerisch 2, offen 2 · Literatur 2 / Forum 8 / ei
 
 ## Stärkste Kopplungen zwischen Hauptideen
 
-- Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 53.77
-- Basiswechsel T ∘ slog — Fraktionale Fortsetzung: 40.05
-- Fraktionale Fortsetzung — Höhere Stufen: 30.73
-- Dynamik von bᶻ und der Fixpunkt L — Fraktionale Fortsetzung: 28.26
+- Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 56.06
+- Basiswechsel T ∘ slog — Fraktionale Fortsetzung: 41.08
+- Fraktionale Fortsetzung — Höhere Stufen: 31.09
+- Dynamik von bᶻ und der Fixpunkt L — Fraktionale Fortsetzung: 28.42
 - Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Unendlicher Turm und Basen-Ebene: 22.61
 - Basiswechsel T ∘ slog — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 21.35
 - Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 18.72
-- Fraktionale Fortsetzung — Unendlicher Turm und Basen-Ebene: 17.25
+- Fraktionale Fortsetzung — Unendlicher Turm und Basen-Ebene: 17.55
 - Dynamik von bᶻ und der Fixpunkt L — Unendlicher Turm und Basen-Ebene: 14.08
-- Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Zahlen und Arithmetik: 13.24
+- Fraktionale Fortsetzung — Zahlen und Arithmetik: 13.41
 
 ## Stärkste Kopplungen über Ideengrenzen
 

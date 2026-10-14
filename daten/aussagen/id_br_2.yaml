@@ -1,0 +1,106 @@
+gebiet: br
+# Identitätssuche Etappe 4 (14.10.2026): Wählt eine reelle Bedingung Kneser aus? Rechnungen: forschung/identitaeten_2026_10_14/etappe4/.
+aussagen:
+
+- id: br.satz.endlich_viele_reichen_nicht
+  titel: 'Keine einzelne reelle Mittelwertformel — und keine endliche Liste — wählt Kneser aus'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  bereich: 'reell-analytische Tetrationen $T(x)=\mathrm{sexp}(x+p(x))$, $p$ 1-periodisch, $1+p''>0$, $T(0)=1$; Bedingungen aus kn.satz.theta_mittelwerte'
+  aussage: |
+    In erster Ordnung sieht jede Mittelwert-Bedingung $C$ nur den Teil von $p$ mit positiver Frequenz:
+    $\delta C[p]=\sum_{k\ge1}\hat F_C(k)\,\overline{\hat p(k)}$ mit einer festen, oben holomorphen Gewichtsfunktion $F_C$ (etwa $F=2(\theta-a_0)(1+\theta')$ für $M[\theta^2]=M[\theta]^2$).
+    Daraus folgt: **endlich viele solche Gleichungen legen Kneser nie fest** — es gibt stets eine Kurve nicht konstanter Störungen $p$, längs der alle exakt gelten.
+    Ausdrücklich gebaut (Gleichung jeweils auf $10^{-35}$ und besser erfüllt, unabhängig mit 50 Stellen nachgeprüft): Tetrationen $\neq$ Kneser, die
+    $M[\theta_T^2]=M[\theta_T]^2$, oder das σ-Produkt $=1$, oder $\int_1^e\mathrm{slog}_T'^2/h'=1$, oder $M[\ln(T'\,h'\circ T)]=0$ erfüllen — zum Beispiel
+    $p=0.03\sin4\pi x-0.0460228\sin2\pi x-0.00167248(\cos2\pi x-1)$ für die slog-Formel —, eine, die die erste und zweite zugleich erfüllt, und eine
+    (mit winziger Störung), die drei Formeln und die ersten drei Fourier-Bedingungen zugleich erfüllt. Keine dieser Grössen hat bei Kneser ein Extremum.
+    Die lineare Tetration verletzt alle (z. B. $\int_1^e\mathrm{slog}'^2/h'=0.96753$).
+  einfach: >-
+    Eine einzelne Gleichung ist zu schwach: es gibt viele Tetrationen, die sie genauso erfüllen wie Kneser. Wir haben solche „Doppelgänger“ für jede
+    der neuen Formeln konkret gebaut. Um Kneser festzulegen, braucht man unendlich viele Bedingungen.
+  beweis:
+    art: vollstaendig
+    text: |
+      Linearisierung von $\theta_T=\theta(x+p)+p$ und das Mittelwertprinzip geben die Gewichtsform (numerisch auf $10^{-17}$ bestätigt). Ist die lineare Abbildung
+      $p\mapsto(\delta C_1,\dots,\delta C_n)$ auf $\mathbb C^n$ surjektiv (für jede einzelne Bedingung gezeigt, z. B. $\hat F(1)=2a_1\neq0$), liefert der Satz über
+      implizite Funktionen in endlich vielen trigonometrischen Parametern eine Lösungskurve. Gegenbeispiele mit Newton- bzw. Sehnenverfahren, dps 40, nachgeprüft mit dps 50.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S1, S2, Tabelle 3; s2_gegenbeispiele.py, s5_pruefen.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Dimensionsargument (Funktion gegen endlich viele Zahlen); die explizite Linearisierung und die Gegenbeispiele machen es konkret.'
+    f2_benutzte_voraussetzungen: 'Mittelwertprinzip (Lücke Majorante, kn.satz.theta_mittelwerte) für die Linearisierung; die Gegenbeispiele selbst sind direkt nachgerechnet.'
+    f3_spezialfall: 'Verschärft fg.kor.nichteindeutigkeit: analytisch + monoton + endlich viele Integralgleichungen reicht nicht.'
+    f4_uebertragbar: 'Auf jede endliche Liste von Bedingungen, die stetig von p abhängen.'
+    f5_neue_frage: 'Welche unendliche Familie reicht (br.satz.reelle_kennzeichnung)?'
+  bewertung: {richtigkeit: 'vollständig; Gegenbeispiele auf 10⁻³⁵', neuheit: neu_ungeprueft, nutzen: 'Beantwortet, ob eine der reellen Kneser-Formeln allein reicht: nein.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta_mittelwerte}
+    - {typ: verallgemeinert, ziel: fg.kor.nichteindeutigkeit}
+    - {typ: motiviert, ziel: br.satz.reelle_kennzeichnung}
+
+- id: br.satz.reelle_kennzeichnung
+  titel: 'Eine reelle, aber nichtlokale Kennzeichnung von Kneser: unendlich viele Fourier-Gleichungen oder ein Defekt E(T) = 0'
+  art: satz
+  ebene: B
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  bereich: 'reell-analytische Tetrationen $T$ mit $T''>0$, $T(0)=1$, Basis $b>\eta$; $\theta_T(x)=h(T(x))-x$ mit der regulären Abel-Funktion $h$ am Fixpunkt $L$'
+  aussage: |
+    $$T=\text{Kneser}\iff\int_0^1h(T(x))\,e^{2\pi imx}\,dx=\frac{1}{2\pi im}\ \ \text{für alle }m\ge1\iff E(T)=0,$$
+    gleichwertig: Real- und Imaginärteil von $h(T(x))-x$ bilden ein periodisches Hilbert-Paar. Der **Defekt**
+    $$E(T)=\tfrac14\iint\frac{|\theta_T(x)-\theta_T(y)|^2}{\sin^2\pi(x-y)}\,dx\,dy-\tfrac1\pi\,\mathrm{Fläche}(\theta_T)=2\sum_{m\ge1}m\,|\hat\theta_T(-m)|^2\ \ge0$$
+    ist eine einzige reelle Grösse, die genau bei Kneser ihr Minimum 0 annimmt (Fläche = die von der Kurve $\theta_T$ umlaufene Fläche).
+    Für reell-analytische $T$ fallen die negativen Moden exponentiell; bei der linearen Tetration nur wie $m^{-2}$ ($E\approx4.7\cdot10^{-5}$).
+    Exakt lösbares Beispiel: verbiegt man Kneser mit einer Möbius-Abbildung ($e^{2\pi i\varphi}=e^{i\alpha}(q-a)/(1-\bar aq)$), ist
+    $\hat\theta_T(-n)=ia^n/(2\pi n)$ und $E=-\ln(1-|a|^2)/(2\pi^2)$.
+    Wie Bohr–Mollerup für Γ ist das eine Bedingung nur auf der reellen Achse — aber **nichtlokal** (Hilbert-Kern); eine lokale Bedingung (Vorzeichen von Ableitungen) ist weiter offen.
+  einfach: >-
+    Man kann Kneser doch mit Rechnungen nur auf der Zahlengeraden erkennen: eine bestimmte „Fehlergrösse“ ist immer mindestens null und genau bei
+    Kneser gleich null. Anders als bei der Gammafunktion ist das aber keine einfache Krümmungsbedingung an jeder Stelle, sondern eine Bedingung,
+    die die ganze Periode auf einmal betrifft.
+  beweis:
+    art: skizze
+    text: |
+      „$\Leftarrow$“: Verschwinden die negativen Moden, ist $\theta_T$ Randwert einer in der oberen Halbebene holomorphen periodischen Funktion (Hardy-Raum,
+      Lusin–Privalov); dann erfüllt $T$ Knesers Bedingungen, und Paulsen–Cowgill (kn.satz.paulsen_komplex) gibt $T=$ Kneser. „$\Rightarrow$“: Etappe 3, Z5.
+      $E$: Douglas-Formel für die Dirichlet-Energie plus Flächenformel $\tfrac1\pi\mathrm{Fläche}=\sum_m m(|\hat\theta(m)|^2-|\hat\theta(-m)|^2)$.
+      Möbius-Beispiel: exakte Fourier-Entwicklung, numerisch auf $5\cdot10^{-29}$.
+    luecken:
+      - 'Beide Richtungen brauchen θ_T ∈ L¹ und die Majorante an den ganzen Zahlen (wie kn.satz.theta_mittelwerte).'
+  stuetzt_sich_auf: [kn.satz.paulsen_komplex]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S3, S4, MÖ, Lemma R; s1_moebius.py, s4_hooshmand.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Im Kern ja: Paulsen–Cowgill in Hardy-Raum-Sprache. Neu sind die reelle Form, der Defekt E und das Möbius-Beispiel.'
+    f2_benutzte_voraussetzungen: 'Paulsen–Cowgill-Eindeutigkeit; Hardy-Raum-Theorie; Majorante an den ganzen Zahlen.'
+    f3_spezialfall: 'Ja: von „θ holomorph oben ⇔ Kneser“.'
+    f4_uebertragbar: 'Auf jede Basis über η.'
+    f5_neue_frage: 'Gibt es eine lokale Kennzeichnung? Reichen weniger Bedingungen (nur gerade m, nur Realteile)? Legt die Momentenfamilie Kneser fest (br.frage.momentenfamilie)?'
+  bewertung: {richtigkeit: 'Kern bewiesen, Majorante skizziert', neuheit: neu_ungeprueft, nutzen: 'Erste rein reelle Kennzeichnung von Kneser mit Extremalprinzip — Teilantwort auf br.frage.bohr_mollerup.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.bohr_mollerup}
+    - {typ: verwandt, ziel: kn.satz.theta_mittelwerte}
+    - {typ: verwandt, ziel: kn.satz.hooshmand}
+
+- id: br.frage.momentenfamilie
+  titel: 'Legt die Momentenfamilie M[θᵏ] = M[θ]ᵏ (alle k) Kneser fest?'
+  art: frage
+  ebene: B
+  status: offen
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  aussage: |
+    Kneser erfüllt $M[\theta^k]=M[\theta]^k$ für alle $k$ (kn.satz.theta_mittelwerte). Für allgemeine Funktionen ist diese Familie schwächer als
+    „keine negativen Moden“ (sie sieht nur die Werteverteilung; Gegenbeispiel $f=e^{-2\pi ix}$). **Unter Tetrationen** ist sie in erster Ordnung starr:
+    $\delta V_k[p]=0$ für alle $k$ erzwingt $p$ konstant — bewiesen für Störungen, die im Streifen $|\mathrm{Im}z|<0.09$ holomorph sind (numerisch schon ab $0.0008$).
+    Offen: gilt das auch nichtlinear, oder gibt es eine Tetration $\neq$ Kneser, deren $\theta_T$ eine maßtreue Umordnung einer oben holomorphen Randfunktion ist?
+  einfach: >-
+    Eine einfachere Familie von Bedingungen — „der Mittelwert der Potenzen ist die Potenz des Mittelwerts“ — reicht im Kleinen schon aus, um Kneser
+    festzulegen. Ob sie auch im Grossen reicht, ist offen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, M; s3_univalenz.py'}]
+  kanten:
+    - {typ: verwandt, ziel: br.satz.reelle_kennzeichnung}
+    - {typ: verwandt, ziel: kn.satz.theta_mittelwerte}
