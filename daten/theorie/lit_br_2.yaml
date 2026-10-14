@@ -1,0 +1,106 @@
+# Theorie-Blöcke: verwandte Funktionen (Forum tid 1808, 1816, 1828) und Iteration als Wirkung (MphLee, tid 1389), 13.10.2026
+
+br.def.produkt_tetration:
+  worum: |
+    Eine Schwester der Tetration: statt $x\mapsto a^x$ iteriert man $x\mapsto x\,a^x$.
+  genau: |
+    $\mathrm{prodtet}_a(c+1)=\mathrm{prodtet}_a(c)\,a^{\mathrm{prodtet}_a(c)}$, $\mathrm{prodtet}_a(0)=1$; rückwärts mit Lambert W; alle Basen sind Streckungen der Basis $e$.
+  warum: |
+    Setzt man $t=x\ln a$, wird $x\,a^x\cdot\ln a=t\,e^t$. Wer also $t\mapsto te^t$ iterieren kann, kann jede Basis. Bei der Tetration geht das nicht —
+    $a^x$ und $e^x$ sind nicht durch eine Streckung verbunden, deshalb hängt dort so viel von der Basis ab.
+  beispiel: |
+    $\mathrm{prodtet}_e(1)=1\cdot e^1=e$, $\mathrm{prodtet}_e(2)=e\cdot e^e=e^{e+1}\approx41.19$, $\mathrm{prodtet}_e(-1)=W(1)=0.567143$ (die Omega-Konstante).
+  bilder: [exp.verwandte_funktionen]
+  einordnung: |
+    Wie man sie fortsetzt: [[br.satz.produkt_parabolisch]], Werte: [[br.beob.produkt_tetration_werte]]; die Umkehrungen $\omega_n$ von $x(e^x)\uparrow\uparrow n$: [[gr.def.epsilon_omega]].
+
+br.satz.produkt_parabolisch:
+  worum: |
+    Welche gebrochene Iteration von $xe^x$ ist die natürliche? Die Antwort steht schon in der Theorie parabolischer Fixpunkte.
+  genau: |
+    $0$ ist parabolisch ($g'(0)=1$); formale Iterierte $x+c\lambda x^2+\tfrac{c(2c-1)}2\lambda^2x^3+\dots$; Fatou-Koordinate $\alpha=-\tfrac1{\lambda x}+\tfrac12\ln x+\dots$;
+    iterativer Rest $\tfrac12$ (bei $e^x-1$: $\tfrac13$).
+  warum: |
+    Nahe 0 schiebt $xe^x$ nur um etwa $x^2$ weiter — die Bahn kriecht wie $-1/n$ aus dem Fixpunkt heraus. Die Fatou-Koordinate „streckt“ dieses Kriechen
+    zu gleich grossen Schritten; in ihr ist die gebrochene Iteration einfach $\alpha+c$. Das ist dieselbe Lage wie bei der Basis $\eta$ am Fixpunkt $e$.
+    Der iterative Rest (der Faktor vor $\ln x$) ist eine formale Invariante: weil er bei $xe^x$ und $e^x-1$ verschieden ist, kann man die eine Abbildung
+    nicht durch Koordinatenwechsel in die andere verwandeln — auch nicht formal.
+  beispiel: |
+    Halbe Iterierte: $c=\tfrac12$ gibt $x+\tfrac\lambda2x^2+0\cdot x^3+\dots$ — der $x^3$-Term verschwindet genau bei $c=\tfrac12$.
+  bilder: []
+  einordnung: |
+    Allgemeine Theorie: [[it.satz.leau_fatou]], Divergenz der formalen Reihe: [[it.satz.baker]]; dieselbe Struktur in der Störungsreihe: [[kn.konstr.stoerungsreihe]].
+
+br.beob.produkt_tetration_werte:
+  worum: |
+    Konkrete Zahlen für die natürliche Produkt-Tetration, und ein Abgleich mit dem Forumswert.
+  genau: |
+    $\mathrm{prodtet}_e(\tfrac12)=1.5134281085\ldots$; der Forumswert $1.5134$ (Lagrange-Interpolation) stimmt auf allen angegebenen Stellen.
+  warum: |
+    Rechenweg: mit $W$ tausendfach zurück bis nahe 0, dort in der Fatou-Koordinate um $\tfrac12$ verschieben, dann ebenso oft mit $xe^x$ vorwärts.
+    Die Interpolation im Forum macht im Kern dasselbe — weit links ist die Funktion fast linear in der Fatou-Koordinate —, darum trifft sie den Wert.
+  beispiel: |
+    Probe: dieselbe Rechnung mit $c=1$ gibt $e$ auf 20 Stellen.
+  bilder: [exp.verwandte_funktionen]
+  einordnung: |
+    Satz dahinter: [[br.satz.produkt_parabolisch]]; Fragen zur Gestalt: [[br.frage.verwandte_funktionen]].
+
+br.satz.vergleichsfunktion:
+  worum: |
+    Zwei neue Forumsideen — Exponentialfakultät über sexp und Tetration über Produkt-Tetration — sind derselbe alte Trick.
+  genau: |
+    Wächst $a_n$ wie $S(n+D)$ für eine bekannte Superfunktion $S$, so setzt man fort durch $a(x)=\lim_k\Phi_x^{(k)}(S(x+k+D))$ mit den Rückwärtsschritten $\Phi$ der eigenen Rekursion.
+  warum: |
+    Weit draussen sind $a_n$ und $S(n+D)$ fast gleich; jeder Rückwärtsschritt ist ein Logarithmus und macht den relativen Fehler winzig. Darum konvergiert die
+    Folge doppelt exponentiell, und die Ganzzahlwerte kommen exakt zurück. Was der Trick nicht liefert: eine Begründung, warum gerade diese Fortsetzung
+    „richtig“ ist — eine andere Vergleichsfunktion kann eine andere Lösung geben (beim Basiswechsel unterscheiden sie sich um eine θ-Welle).
+  beispiel: |
+    Exponentialfakultät: $D=-1.0552140087$, $0.5!_2=0.7575097219$ (ar.konstr.ef_sexp).
+  bilder: []
+  einordnung: |
+    Allgemeine Form: [[kn.satz.grenzwert_trick]]; derselbe Fall zwischen zwei Basen: [[bw.def.F_bd]]; Anwendung: [[ar.konstr.ef_sexp]].
+
+br.frage.verwandte_funktionen:
+  worum: |
+    Ein Arbeitsprogramm für verwandte Funktionen — vieles davon ist mit einem Rechner erreichbar.
+  genau: |
+    Konvexität und Eindeutigkeit der Produkt-Tetration, Ableitungen nach Höhe und Basis, Produkt-Superwurzeln, Abhängigkeit der Exponentialfakultät von der
+    Vergleichsfunktion, Familien mit parabolischem Anfang, Identitäten zwischen den Funktionen.
+  warum: |
+    Bei der Tetration hat man für jede dieser Fragen schon Antworten oder Werkzeuge (Kapitel 1). Dieselben Werkzeuge an Nachbarfunktionen auszuprobieren
+    zeigt, welche Eigenschaften speziell für $a^x$ sind und welche allgemein für schnelles Iterieren gelten.
+  beispiel: |
+    Ein Einstieg: $\mathrm{prodtet}_e'(c)$ aus der Kettenregel, $\mathrm{prodtet}'(c+1)=(1+\mathrm{prodtet}(c))\,e^{\mathrm{prodtet}(c)}\,\mathrm{prodtet}'(c)$ — analog zu gr.ableitung.
+  bilder: []
+  einordnung: |
+    Ausgangspunkte: [[br.satz.produkt_parabolisch]], [[br.satz.vergleichsfunktion]], [[ar.frage.ef_fortsetzung]].
+
+br.def.iteration_wirkung:
+  worum: |
+    Was heisst „iterieren“, wenn die Anzahl der Schritte keine ganze Zahl sein muss?
+  genau: |
+    Eine $A$-Wirkung $F(a,y)$ mit $F(0,y)=y$, $F(a+b,y)=F(a,F(b,y))$; eine Superfunktion ist eine verträgliche Abbildung von der Verschiebung auf $A$ zu $f$;
+    aus einer umkehrbaren Superfunktion $\chi$ entsteht die Wirkung $\chi(a+\chi^{-1}(y))$.
+  warum: |
+    Die Tetration $T$ übersetzt „eins weiterzählen“ in „einmal $e^x$ anwenden“: $T(a+1)=e^{T(a)}$. Ist $T$ umkehrbar (mit $\mathrm{slog}$), kann man jede
+    Verschiebung um $a$ zurückübersetzen: $\exp^{\circ a}(y)=T(a+\mathrm{slog}\,y)$ — das ist die gebrochene Iteration von $\exp$. Die Sprache der Wirkungen
+    macht klar, dass das nur ein Fall eines allgemeinen Musters ist, und wo es an Grenzen stösst (Fixpunkte, periodische Punkte).
+  beispiel: |
+    $A=\mathbb R$, $f=\exp$, $\chi=T$: $F(\tfrac12,y)=T(\tfrac12+\mathrm{slog}\,y)$ ist eine halbe Exponentialfunktion.
+  bilder: []
+  einordnung: |
+    Klassische Form: [[fg.def.iterationsgruppe]], [[fg.def.abel]]; die Leiter der Verallgemeinerungen: [[br.frage.iterationsleiter]].
+
+br.frage.iterationsleiter:
+  worum: |
+    Eine Landkarte der Verallgemeinerungen des Iterierens, von MphLee im Forum als „Leiter“ angelegt.
+  genau: |
+    Ganze → reelle/komplexe Iteration → Monoide → Vorordnungen (Ordinalzahlen, Integrale) → Kategorien → Hyperoperationen beliebigen Rangs.
+  warum: |
+    Jede Stufe ersetzt die „Zeit“ (die Höhe) durch eine allgemeinere Struktur. Die Hoffnung der obersten Stufe: wenn Iteration selbst eine Operation ist,
+    die man iterieren kann, entstehen die Hyperoperationen von selbst — und mit ihnen vielleicht ein Sinn für gebrochene Ränge.
+  beispiel: |
+    Stufe 4, diskret: Iteration über Ordinalzahlen, etwa $f^{\circ\omega}=\lim_n f^{\circ n}$ — das ist der Weg zur Ordinal-Tetration (br.satz.ordinal_tetration).
+  bilder: []
+  einordnung: |
+    Grundbegriff: [[br.def.iteration_wirkung]]; die Frage nach gebrochenen Rängen von der analytischen Seite: [[kn.frage.halber_rang]].

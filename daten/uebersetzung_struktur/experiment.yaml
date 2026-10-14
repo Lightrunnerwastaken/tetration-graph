@@ -971,6 +971,28 @@
       - name: r_k · k^{5/4} = 1 ± 0.01 for k ≤ 10 (b = 1.25)
       - name: 'Control check b=1.3 (N=80, tol=1e-3): modes 1–6 agree to 1e-20 (relative)'
 - art: experiment
+  id: exp.stoerungsreihe
+  quelle_hash: eb1d26343273
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Tetration as a perturbation of eˣ − 1 (forum polynomial tid 1827) and approximation ladder for Desmos
+    frage: Is the polynomial from tid 1827 the truncated perturbation series of G(y) = e^{G(y−1)} − 1 + u, how accurate is it, from which order
+      does the series diverge, and which polynomials are suitable for Desmos?
+    ergebnis:
+      zusammenfassung: Forum polynomial (tid 1827) derived as a perturbation series of eˣ − 1 and rebuilt exactly; ∫|error| at N = 8 = 2.41e-7,
+        best order N = 6, divergence afterwards. Approximation ladder for Desmos measured.
+      pruefungen:
+      - name: g_n is a polynomial of degree 2n − 1 (n = 1 … 14)
+      - name: Functional equation G(y) = e^{G(y−1)} − 1 + u holds exactly up to u⁸, also at y = 1/2 and 7/3
+      - name: 'N = 8 gives the forum polynomial: degree 15, a₀ = 1, a₁ = 87159883/79833600'
+      - name: 'The series diverges: the error falls down to a best order and rises again afterwards'
+      - name: '∫₋₁⁰ |sexp − P_8| = 2.4·10⁻⁷ with two quadratures (forum figure 5.52·10⁻⁷: same order of magnitude, but twice as large)'
+      - name: The perturbation series is exactly C¹ at the seams (each g_n has g_n′(1) = g_n′(0)), but not C²
+      - name: 'Ladder: linear ~10⁻², P_8 ~10⁻⁶, Chebyshev degree 8 < 10⁻⁶, degree 12 < 10⁻⁸'
+- art: experiment
   id: exp.stufe5
   quelle_hash: b2aeef7b21b4
   herkunft:
@@ -1226,6 +1248,33 @@
       - name: ∫_{−1}^0 T_b = 1/2 exactly at one base between 2 and e (Kneser)
       - name: ∫_{−1}^0 T_b decreases with b (1.5, 2, 2.5, e, 3, 10)
       - name: 'TPID 1: the first four eigenvalues of the N×N Carleman matrix approach λ^k (distance decreases with N)'
+- art: experiment
+  id: exp.verwandte_funktionen
+  quelle_hash: 39a583ea8379
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Product tetration (Fatou coordinate) and exponential factorial from sexp
+    frage: Do the change of base and the series of product tetration agree, what value does the Fatou coordinate give at c = ½, is the constant
+      D of the exponential factorial correct, and what does the continuation give as x → 0 (TPID 2)?
+    ergebnis:
+      zusammenfassung: 'Product tetration: change of base as a conjugation, parabolic fixed point 0 (not formally conjugate to eˣ − 1), Fatou
+        value prodtet_e(½) = 1.5134281 (forum 1.5134). Exponential factorial: D = -1.055214008713 (forum value −0.0613 not reproduced), continuation
+        converges, 0.5!₂ = 0.7575097219, x!₂ → 0.573049 for x ↓ 0 (γ = 0.57722).'
+      pruefungen:
+      - name: 'ln a · x·aˣ = (x ln a)·e^{x ln a}: x·aˣ is conjugate to x·eˣ (scaling by ln a)'
+      - name: 'Half iterate of x·e^{λx}: h = x + λx²/2 + 0·x³ + …, h∘h = x·e^{λx} up to x³ (formula c(2c−1)/2·λ² at c = 1/2)'
+      - name: 'x·eˣ and eˣ − 1 are NOT formally conjugate (not even with a scaling): the formal invariant 1 − a₃/a₂² is ½ versus ⅓'
+      - name: Fatou coordinate α(x) = −1/x + ½ ln x + Σ d_k x^k solves α(x eˣ) = α(x) + 1 formally (½ = 1 − a₃/a₂², a₃ = ½)
+      - name: 'Fatou product tetration: prodtet(0) = 1, prodtet(1) = e, prodtet(−1) = W(1) = 0.567143…'
+      - name: prodtet_e(½) from the Fatou coordinate = 1.513428… — agrees with the interpolation value 1.5134 from the forum in all given digits
+      - name: D = lim slog_e(n!₂) − n = −1.0552140087 (Kneser, slog(1) = 0), stable from n = 6
+      - name: 'Integer check: the continuation gives 1!₂ = 1 and 2!₂ = 2 to 10⁻¹²'
+      - name: at x = ½ and 1.5 the chain converges (last extension changes < 10⁻¹²)
+      - name: 'The forum value D = −0.0613312423001 does not fit Kneser with slog(1) = 0: the formula would then give 1!₂ ≈ 3.5'
+      - name: 'TPID 2 for this continuation: x!₂ → 0.57305 for x ↓ 0 — close to γ = 0.57722, but off by 0.004'
 - art: experiment
   id: exp.young
   quelle_hash: d9b75c25bc14

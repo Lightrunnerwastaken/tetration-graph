@@ -1,0 +1,222 @@
+gebiet: br
+# Verwandte Funktionen (Produkt-Tetration, Vergleichsfunktionen; Forum tid 1808, 1816, 1828) und Iteration als Wirkung (MphLee, tid 1389),
+# nachgerechnet in exp.verwandte_funktionen (13.10.2026).
+aussagen:
+
+- id: br.def.produkt_tetration
+  titel: 'Produkt-Tetration: die Superfunktion von x·aˣ'
+  art: definition
+  ebene: X
+  status: definition
+  niveau: einstieg
+  objekte: [superfunktion, lambert_w]
+  aussage: |
+    Die **Produkt-Tetration** zur Basis $a>1$ ist die Superfunktion von $g_a(x)=x\,a^x$ mit Startwert 1:
+    $$\mathrm{prodtet}_a(c+1)=g_a(\mathrm{prodtet}_a(c)),\qquad \mathrm{prodtet}_a(0)=1.$$
+    Rückwärts geht man mit Lambert W: $g_e^{-1}=W$, also $\mathrm{prodtet}_e(c-1)=W(\mathrm{prodtet}_e(c))$. Werte: $\mathrm{prodtet}_e(-1)=W(1)=0.567143\ldots$,
+    $\mathrm{prodtet}_e(1)=e$, $\mathrm{prodtet}_e(2)=e^{e+1}$. Für $c\to-\infty$ geht $\mathrm{prodtet}_e(c)\to0$.
+    **Alle Basen sind eine:** $\ln a\cdot g_a(x)=g_e(x\ln a)$, also ist $g_a$ zu $g_e$ durch eine Streckung konjugiert und
+    $$\mathrm{prodtet}_a(c)=\frac{\mathrm{prodtet}_e\bigl(c+\mathrm{prodslog}_e(\ln a)\bigr)}{\ln a}.$$
+  einfach: >-
+    Statt immer wieder „a hoch“ zu rechnen, rechnet man immer wieder „x mal a hoch x“. Das wächst noch etwas schneller als die Tetration. Anders als bei
+    der Tetration ist jede Basis nur eine gestreckte Fassung der Basis e — man muss also nur eine einzige Funktion verstehen.
+  formen:
+    - {tex: '\mathrm{prodtet}_e(c-1)=W(\mathrm{prodtet}_e(c))', notiz: 'Abstieg mit Lambert W'}
+    - {tex: '\ln a\cdot x a^x=(x\ln a)\,e^{x\ln a}', notiz: 'Basiswechsel ist eine Streckung'}
+  experimente: [exp.verwandte_funktionen]
+  quellen: [{ref: forum_tid1808}, {ref: forum_tid1816, stelle: 'Basiswechsel (dort ohne Beweis)'}]
+  kanten:
+    - {typ: analog_zu, ziel: fg.def.tetration}
+    - {typ: verwandt, ziel: gr.def.epsilon_omega}
+
+- id: br.satz.produkt_parabolisch
+  titel: 'Produkt-Tetration lebt an einem parabolischen Fixpunkt — wie Tetration bei η, nicht wie Kneser'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [superfunktion, abel]
+  bereich: '$g(x)=xe^{\lambda x}$, $\lambda>0$, reelle Achse rechts von 0'
+  aussage: |
+    $0$ ist ein parabolischer Fixpunkt: $g(x)=x+\lambda x^2+\tfrac{\lambda^2}{2}x^3+\dots$ Die formalen Iterierten haben Koeffizienten, die Polynome in der
+    Iterationszahl $c$ sind:
+    $$g^{\circ c}(x)=x+c\lambda x^2+\tfrac{c(2c-1)}{2}\lambda^2x^3+O(x^4)$$
+    (so in der Antwort im Forum). Die Reihe divergiert im Allgemeinen (it.satz.baker); die natürliche Fortsetzung ist die Fatou-Koordinate
+    $\alpha(x)=-\tfrac1{\lambda x}+\tfrac12\ln x+\dots$ der abstossenden Seite, $\mathrm{prodtet}(c)=\alpha^{-1}(\alpha(1)+c)$.
+    Der iterative Rest ist $\tfrac12$; bei $e^x-1$ ist er $\tfrac13$ — **die beiden Abbildungen sind nicht einmal formal konjugiert**, die Produkt-Tetration
+    ist also eine eigene parabolische Iteration und keine verkleidete Tetration.
+  einfach: >-
+    Bei 0 bleibt x·eˣ fast stehen — die Abbildung schiebt nur ganz langsam weg. Für solche Punkte gibt es eine bekannte Methode (Fatou-Koordinaten),
+    die die Zwischenwerte natürlich festlegt, genau wie bei der Tetration zur Basis η. Eine Rechnung zeigt: x·eˣ und eˣ − 1 sehen sich ähnlich, sind
+    aber auch im Kleinen verschieden.
+  beweis:
+    art: vollstaendig
+    text: |
+      Koeffizientenvergleich: für $g=x+a_2x^2+a_3x^3+\dots$ ist $g^{\circ c}=x+ca_2x^2+(ca_3+c(c-1)a_2^2)x^3+\dots$; mit $a_2=\lambda$, $a_3=\lambda^2/2$ folgt
+      $c(2c-1)\lambda^2/2$. Der iterative Rest $1-a_3/a_2^2$ ist unter Streckungen invariant und eine formale Invariante parabolischer Keime (Leau–Fatou,
+      Écalle); er ist $\tfrac12$ für $xe^x$ und $\tfrac13$ für $e^x-1$. Die Fatou-Koordinate löst $\alpha(g(x))=\alpha(x)+1$; ihr Logarithmus-Koeffizient ist
+      der iterative Rest. Nachgerechnet in exp.verwandte_funktionen.
+  stuetzt_sich_auf: [it.satz.leau_fatou]
+  experimente: [exp.verwandte_funktionen]
+  quellen: [{ref: forum_tid1808, stelle: 'Antwort vom 08.07.2026 (Reihe um den Fixpunkt 0)'}, {ref: diese_arbeit}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Theorie parabolischer Keime.'
+    f2_benutzte_voraussetzungen: '$\lambda>0$; reelle Achse rechts von 0 (abstossende Seite).'
+    f3_spezialfall: 'Ja: von it.satz.leau_fatou; dieselbe Lage wie die Tetration zur Basis η am Fixpunkt e.'
+    f4_uebertragbar: 'Auf jede Abbildung $x\,h(x)$ mit $h(0)=1$, $h''(0)>0$ — eine ganze Familie von „Tetrationen“ mit parabolischem Anfang.'
+    f5_neue_frage: 'Ist die Fatou-Produkt-Tetration die einzige, die eine Monotonie- oder Konvexitätsbedingung erfüllt (wie bei η)?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Ordnet die Produkt-Tetration in die bekannte Theorie ein und zeigt, dass sie natürlich festgelegt ist.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: spezialfall_von, ziel: it.satz.leau_fatou}
+    - {typ: analog_zu, ziel: kn.konstr.stoerungsreihe}
+    - {typ: verwandt, ziel: it.satz.baker}
+
+- id: br.beob.produkt_tetration_werte
+  titel: 'Fatou-Produkt-Tetration: prodtet_e(½) = 1.5134281085 — die Interpolation im Forum lag schon richtig'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [superfunktion]
+  aussage: |
+    Mit der Fatou-Koordinate aus br.satz.produkt_parabolisch (Abstieg mit Lambert W bis $x\approx5\cdot10^{-5}$, dort die Reihe
+    $\alpha(x)=-\tfrac1x+\tfrac12\ln x-\tfrac16x+\tfrac1{16}x^2-\tfrac{19}{540}x^3+\dots$, dann zurück) ist
+    $$\mathrm{prodtet}_e(\tfrac12)=1.5134281085\ldots$$
+    Die Probe $\mathrm{prodtet}_e(-1)=W(1)$, $\mathrm{prodtet}_e(0)=1$, $\mathrm{prodtet}_e(1)=e$ stimmt auf 20 Stellen. Der Wert aus der Lagrange-Interpolation
+    im Forum ($1.5134$, tid 1816) stimmt auf allen dort angegebenen Stellen überein: die Interpolation „weit links, dann vorwärts“ landet bei der Fatou-Lösung,
+    so wie bei der Basis $\eta$.
+  einfach: >-
+    Mit der natürlichen Methode für langsame Fixpunkte bekommt man einen festen Wert für die Produkt-Tetration bei ½. Der Wert, den das Forum mit
+    einer einfachen Interpolation in Desmos gefunden hat, stimmt damit überein.
+  experimente: [exp.verwandte_funktionen]
+  quellen: [{ref: forum_tid1816, stelle: 'Wert 1.5134 (Lagrange-Interpolation, Desmos)'}, {ref: diese_arbeit}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gerechnet).'
+    f2_benutzte_voraussetzungen: 'Fatou-Koordinate bis $x^{6}$, 20000 Abstiege mit Lambert W, 40 Stellen.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis über den Basiswechsel (br.def.produkt_tetration).'
+    f5_neue_frage: 'Ist die Fatou-Produkt-Tetration auf ganz ℝ konvex, und warum trifft die Lagrange-Interpolation sie (Konvergenzsatz wie bei Lévy, it.konstr.levy)?'
+  bewertung: {richtigkeit: numerisch, neuheit: neu_ungeprueft, nutzen: 'Gibt Referenzwerte für Experimente mit Produkt-Tetration.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt, ziel: br.satz.produkt_parabolisch}
+
+- id: br.satz.vergleichsfunktion
+  titel: 'Fortsetzen mit einer Vergleichsfunktion: Exponentialfakultät und Produkt-Tetration sind derselbe Grenzwert-Trick'
+  art: satz
+  ebene: B
+  status: skizze
+  niveau: vertiefung
+  objekte: [superfunktion]
+  aussage: |
+    Beide Forumsvorschläge folgen einem Muster: Man kennt schon eine stetige Superfunktion $S$ einer **Vergleichsabbildung** $g$, und die gesuchte Folge
+    $a_n$ verhält sich für grosse $n$ wie $S(n+\text{const})$. Dann setzt man fort durch
+    $$a(x)=\lim_{k\to\infty}\Phi_x^{(k)}\bigl(S(x+k+D)\bigr),\qquad D=\lim_n\bigl(S^{-1}(a_n)-n\bigr),$$
+    wobei $\Phi_x^{(k)}$ die $k$ Rückwärtsschritte der eigenen Rekursion sind. Für die Exponentialfakultät ($a_n=n^{a_{n-1}}$, $S=\mathrm{sexp}_e$)
+    ist $\Phi$ eine Kette von Logarithmen zu den Basen $x+1,\dots,x+k$ (tid 1828); für Tetration mit Produkt-Tetration als Vergleich (tid 1816) ist
+    $S=\mathrm{prodtet}$. Das ist genau der Grenzwert-Trick kn.satz.grenzwert_trick bzw. der Basiswechsel $T\circ\mathrm{slog}$: die Rückwärtsschritte
+    ziehen jeden Fehler doppelt exponentiell zusammen, deshalb konvergiert $D$ so schnell.
+    Wie beim Basiswechsel ist nicht zu erwarten, dass das Ergebnis analytisch oder „die“ natürliche Lösung ist.
+    Für die Exponentialfakultät nachgerechnet (ar.konstr.ef_sexp): $D=-1.0552140087$, die ganzen Werte kommen auf $10^{-12}$ zurück.
+  einfach: >-
+    Ein bekannter Trick: Man kennt schon eine glatte Funktion, die für grosse Zahlen fast gleich wächst wie die gesuchte. Man rechnet weit draussen
+    mit dieser bekannten Funktion und geht dann Schritt für Schritt zurück. Dabei werden Fehler sehr schnell winzig. So wurden im Forum sowohl die
+    Exponentialfakultät als auch die Tetration (über die Produkt-Tetration) fortgesetzt.
+  beweis:
+    art: skizze
+    text: 'Einordnung: beide Vorschläge haben die Form $\lim_k\Phi^{(k)}\circ S(\cdot+k+D)$ aus kn.satz.grenzwert_trick.'
+    luecken:
+      - 'Konvergenz für die Exponentialfakultät nur gemessen (doppelt exponentiell, ganze Werte auf 10⁻¹²), nicht bewiesen.'
+      - 'Für Tetration mit Produkt-Tetration als Vergleich (tid 1816) weder Konvergenz noch Glattheit geprüft.'
+  stuetzt_sich_auf: [kn.satz.grenzwert_trick]
+  experimente: [exp.verwandte_funktionen]
+  quellen: [{ref: forum_tid1828}, {ref: forum_tid1816}, {ref: forum_tid1290}, {ref: diese_arbeit, stelle: 'Einordnung als Grenzwert-Trick'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Einordnung ja; die Konvergenz ist für die Exponentialfakultät gemessen, für tid 1816 nur plausibel.'
+    f2_benutzte_voraussetzungen: 'Eine stetige Superfunktion $S$ der Vergleichsabbildung; schnelle Kontraktion der Rückwärtsschritte.'
+    f3_spezialfall: 'Ja: von kn.satz.grenzwert_trick; der Basiswechsel (bw.def.F_bd) ist derselbe Fall mit $S$ = Tetration zu einer anderen Basis.'
+    f4_uebertragbar: 'Auf jede Folge, die wie eine bekannte Superfunktion wächst (Hyperfakultäten, Türme mit wechselnden Basen).'
+    f5_neue_frage: 'Hängt das Ergebnis von der Wahl von $S$ ab (sexp gegen prodtet als Vergleich)? Beim Basiswechsel ist die Antwort ja — als θ-Welle.'
+  bewertung: {richtigkeit: 'Einordnung sicher, Konvergenz teils gemessen', neuheit: folklore, nutzen: 'Zeigt, dass zwei neue Forumsideen ein bekanntes Werkzeug sind, und was man von ihnen erwarten kann.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: spezialfall_von, ziel: kn.satz.grenzwert_trick}
+    - {typ: analog_zu, ziel: bw.def.F_bd}
+    - {typ: verwandt, ziel: br.def.produkt_tetration}
+
+- id: br.frage.verwandte_funktionen
+  titel: 'Was man an verwandten Funktionen noch untersuchen kann'
+  art: frage
+  ebene: B
+  status: offen
+  niveau: einstieg
+  objekte: [superfunktion]
+  aussage: |
+    Offene, zum Teil einfache Fragen zu den Funktionen dieses Bereichs:
+    - **Produkt-Tetration:** Ist die Fatou-Lösung konvex, und ist sie (wie bei η) die einzige mit einer Monotoniebedingung? Wie sehen $\mathrm{prodtet}'$
+      und die Ableitung nach der Basis aus (analog zu gr.ableitung)? Gibt es eine Produkt-Superwurzel über die $\omega_n$ (gr.def.epsilon_omega)?
+    - **Exponentialfakultät:** Hängt die Fortsetzung über sexp von der Wahl der Vergleichsfunktion ab, und ist sie mit der totalen Monotonie aus
+      TPID 2 (ar.frage.ef_fortsetzung) verträglich?
+    - **Familien:** Welche Abbildungen $x\,h(x)$ oder $h(x)-1+u$ haben einen parabolischen Anfang, und ergeben sie über eine Störungsreihe
+      (kn.konstr.stoerungsreihe) immer Polynome in der Höhe?
+    - **Beziehungen:** Gibt es Identitäten zwischen Tetration, Produkt-Tetration und den $\varepsilon_n$ (zum Beispiel über $\ln$-Schritte), wie es sie
+      zwischen Tetration und Superwurzel gibt?
+  einfach: >-
+    Eine Liste von Fragen zum Weiterforschen: Für die neuen Funktionen kann man dieselben Dinge untersuchen wie für die Tetration — Ableitungen, Krümmung,
+    Umkehrungen, Eindeutigkeit. Manche davon sind gut zu Hause mit einem Rechner zu prüfen.
+  quellen: [{ref: forum_tid1808}, {ref: forum_tid1816}, {ref: forum_tid1828}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: motiviert, ziel: br.satz.produkt_parabolisch}
+    - {typ: motiviert, ziel: br.satz.vergleichsfunktion}
+    - {typ: verwandt, ziel: ar.frage.ef_fortsetzung}
+
+- id: br.def.iteration_wirkung
+  titel: 'Iteration als Wirkung: Höhen aus einem beliebigen Zahlbereich, Superfunktionen als verträgliche Abbildungen'
+  art: definition
+  ebene: X
+  status: definition
+  niveau: vertiefung
+  objekte: [superfunktion, iterationsgruppe]
+  aussage: |
+    Sei $A$ ein Monoid (zum Beispiel $\mathbb N$, $\mathbb R$, $\mathbb C$ mit $+$). Eine **$A$-Wirkung** auf einer Menge $Y$ ist $F:A\times Y\to Y$ mit
+    $F(0,y)=y$ und $F(a+b,y)=F(a,F(b,y))$ — „$F(a,\cdot)$ ist die $a$-te Iterierte“. Ganzzahlige Iteration ist die $\mathbb N$-Wirkung $F(n,y)=f^{\circ n}(y)$.
+    Eine Superfunktion $\chi$ mit $\chi(a+1)=f(\chi(a))$ ist eine **verträgliche Abbildung** von der Verschiebung $a\mapsto a+1$ auf $A$ zu $f$ auf $Y$.
+    Ist $\chi$ umkehrbar, so ist $F_\chi(a,y)=\chi(a+\chi^{-1}(y))$ eine $A$-Wirkung, die die ganzen Iterierten von $f$ fortsetzt — das ist genau der
+    Weg Tetration → gebrochene Iterierte von $\exp$. Global geht das nur, wenn $f$ dieselbe Bahnstruktur wie die Verschiebung hat (bijektiv, ohne periodische Punkte).
+  einfach: >-
+    Iterieren heisst: eine Abbildung immer wieder anwenden. Man kann das so allgemein fassen, dass die „Anzahl der Wiederholungen“ aus irgendeinem
+    Zahlbereich kommen darf. Eine Tetration ist dann ein Übersetzer zwischen „eins weiterzählen“ und „einmal e hoch rechnen“.
+  formen:
+    - {tex: 'F(a+b,y)=F(a,F(b,y)),\quad F(0,y)=y', notiz: 'Wirkungsgesetz'}
+    - {tex: 'F_\chi(a,y)=\chi\bigl(a+\chi^{-1}(y)\bigr)', notiz: 'aus einer umkehrbaren Superfunktion'}
+  quellen: [{ref: forum_tid1389}]
+  kanten:
+    - {typ: verallgemeinert, ziel: fg.def.iterationsgruppe}
+    - {typ: verwandt, ziel: fg.def.abel}
+
+- id: br.frage.iterationsleiter
+  titel: 'MphLees Leiter: von ganzer Iteration bis zu Hyperoperationen beliebigen Rangs'
+  art: frage
+  ebene: X
+  status: offen
+  niveau: forschung
+  objekte: [hyperoperation, iterationsgruppe]
+  aussage: |
+    Die Notizen ordnen Verallgemeinerungen der Iteration als Leiter (Stufen der Beschreibung):
+    1. ganze Iteration ($\mathbb N$-Wirkungen);
+    2. reelle und komplexe Iteration (Tetration, Kneser, Fatou-Koordinaten gehören hierher);
+    3. allgemeine Monoide als „Zeit“;
+    4. Vorordnungen als Zeit: diskret ergibt das vollständige Rekursion und Iteration über Ordinalzahlen ($\omega$-Komposition),
+       stetig ergibt es Kompositions-Integrale;
+    5. beliebige Kategorien als Zeit (Funktorkategorien, 2-Kategorien);
+    6. die Konstruktion auf sich selbst angewandt soll Goodstein-artige Hyperoperationen beliebigen Rangs ergeben — vom Verfasser selbst als „fast“
+       erreicht bezeichnet.
+    Offen ist, ob Stufe 6 tatsächlich eine Definition gebrochener Ränge liefert, und ob sie mit dem Operator-Ansatz für den halben Rang
+    (kn.frage.halber_rang) zusammenpasst. Weitere offene Punkte der Notizen: Hindernisse für Fortsetzungen über Kohomologie messen, und die
+    „log-artige“ Gegenseite über Charaktere verstehen.
+  einfach: >-
+    Ein Forscher im Forum baut eine Treppe: unten steht das gewöhnliche Wiederholen, ganz oben sollen die Rechenarten jeder Stufe stehen —
+    Addition, Multiplikation, Potenz, Tetration und dazwischen. Die oberen Stufen sind noch nicht fertig gebaut.
+  quellen: [{ref: forum_tid1389, stelle: '„ladder“-Beitrag, Mai 2022'}]
+  kanten:
+    - {typ: verwandt, ziel: br.def.iteration_wirkung}
+    - {typ: verwandt, ziel: kn.frage.halber_rang}
+    - {typ: verwandt, ziel: br.satz.ordinal_tetration}

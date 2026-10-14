@@ -1,0 +1,66 @@
+# Theorie-Blöcke: Tetration als Störung von eˣ − 1 und Näherungen zum Selberrechnen (Forum tid 1827), 13.10.2026
+
+kn.konstr.stoerungsreihe:
+  worum: |
+    Woher kommt ein Polynom, das Knesers Tetration auf sechs Stellen trifft, ohne Carleman-Matrizen und ohne Fixpunkt-Rechnung? Aus einer Störungsreihe.
+  genau: |
+    $G(y)=e^{G(y-1)}-1+u$, $G(0)=0$; $G=\sum g_n(y)u^n$ mit Polynomen $g_n$ vom Grad $2n-1$; $\mathrm{sexp}_e(x)\approx\sum_{n\le N}g_n(x+1)$.
+  warum: |
+    **Wie man darauf kommt.** Bei $u=0$ ist $e^z-1$ an der Stelle 0 „fast die Identität“ (parabolischer Fixpunkt): die Bahn von 0 bleibt bei 0, alles ist trivial.
+    Dreht man $u$ ein wenig auf, schiebt jeder Schritt um ungefähr $u$ weiter — in erster Ordnung ist $G\approx uy$, ein Polynom in der Höhe. In jeder
+    höheren Ordnung entsteht eine Gleichung $g_n(y)-g_n(y-1)=$ (Polynom aus den früheren $g_k$), und eine solche **Differenzengleichung mit Polynom rechts
+    hat immer eine Polynomlösung** (wie $\sum_{t<y}t^2=\tfrac{y(y-1)(2y-1)}6$). Polynome kann man an jeder Höhe auswerten — so entsteht die Fortsetzung
+    ganz von selbst. Erst am Ende setzt man $u=1$ und hofft, dass die Reihe noch brauchbar ist. Sie ist es bis etwa zur achten Ordnung.
+    Dieselbe Idee steckt hinter unserem halben Rang: dort wird $x+1$ zu $x+1+\varepsilon(2^x-x-1)$ verbogen, und die Koeffizienten sind Exponentialpolynome.
+  beispiel: |
+    $g_1=y$, $g_2=\tfrac{y(y-1)(2y-1)}{12}$. Bei $x=-\tfrac12$ (also $y=\tfrac12$): $g_1=\tfrac12$, $g_2=0$, $g_3=-\tfrac1{768}$, $g_4=-\tfrac1{6144}$, …
+    $P_8(-\tfrac12)$ liegt etwa $4\cdot10^{-7}$ neben $\mathrm{sexp}_e(-\tfrac12)=0.4985\ldots$
+  bilder: [exp.stoerungsreihe]
+  einordnung: |
+    Fehler und Divergenz: [[kn.beob.stoerungsreihe_fehler]]; offene Frage nach der Summe: [[kn.frage.stoerungsreihe]]; Gegenstück beim halben Rang:
+    [[kn.satz.rangjets_exppoly]]; Hintergrund parabolischer Punkte: [[it.satz.leau_fatou]].
+
+kn.beob.stoerungsreihe_fehler:
+  worum: |
+    Wie gut ist die Störungsreihe wirklich, und warum hört man bei Ordnung 8 auf?
+  genau: |
+    $\int_{-1}^0|\mathrm{sexp}_e-P_N|$: $5.6\cdot10^{-3}$, $8.5\cdot10^{-4}$, …, $2.2\cdot10^{-7}$ ($N=6,7$), $2.4\cdot10^{-7}$ ($N=8$), $2.8\cdot10^{-5}$ ($N=14$).
+  warum: |
+    Die Koeffizienten $g_n$ wachsen am Ende ungefähr wie $n!$ — typisch für Störungsreihen an parabolischen Punkten (dieselbe Gevrey-Divergenz wie beim
+    halben Rang). Solche Reihen werden zuerst besser und dann schlechter; die beste Genauigkeit erreicht man beim kleinsten Glied.
+    Dass die Nähte $C^1$ sind, folgt aus der Bauart: die rechte Seite der Differenzengleichung ist ein Produkt aus mindestens zwei Faktoren, die bei 0 verschwinden.
+  beispiel: |
+    Grösster Fehler von $P_8$ auf $[-1,0]$: $4.6\cdot10^{-7}$; Sprung der zweiten Ableitung an der Naht: $8.7\cdot10^{-6}$.
+  bilder: [exp.stoerungsreihe]
+  einordnung: |
+    Konstruktion: [[kn.konstr.stoerungsreihe]]; gleiche Divergenz beim halben Rang: [[kn.beob.halbrang_divergenz]].
+
+kn.frage.stoerungsreihe:
+  worum: |
+    Eine divergente Reihe mit erstaunlich guter Abschneidung — steckt dahinter genau Kneser?
+  genau: |
+    Ist $\sum g_n(y)u^n$ die asymptotische Entwicklung einer Familie von Superfunktionen $G_u$ von $e^z-1+u$, und ist $G_1(x+1)=\mathrm{sexp}_e(x)$ (Kneser)?
+  warum: |
+    Für $u>0$ hat $e^z-1+u$ keinen reellen Fixpunkt mehr; der parabolische Punkt spaltet in ein komplexes Paar auf — genau die Lage, in der Knesers
+    Konstruktion arbeitet. Wenn die Familie $G_u$ für jedes $u$ die Kneser-artige Lösung ist und analytisch in $u$ von 0 weg läuft, wäre die Reihe ihre
+    Entwicklung, und eine Borel-Summe könnte sie zurückgewinnen. Bewiesen ist davon nichts.
+  beispiel: |
+    Ein erster Test: die beste Abschneidung liegt $2\cdot10^{-7}$ neben Kneser — eine θ-Welle dieser Grösse wäre nicht ausgeschlossen.
+  bilder: []
+  einordnung: |
+    Verwandte offene Frage: [[kn.frage.halber_rang]]; Werkzeug: [[it.satz.ecalle_voronin]].
+
+kn.beob.naeherungsleiter:
+  worum: |
+    Tetration zum Selberzeichnen: was man in Desmos oder auf dem Taschenrechner eingeben kann, und wie genau das ist.
+  genau: |
+    Polynom $p$ auf $[-1,0]$ mit $p(-1)=0$, $p(0)=1$; rechts $T(x)=e^{T(x-1)}$, links $T(x)=\ln T(x+1)$. Fehlertabelle von linear ($10^{-2}$) bis Grad 12 ($10^{-10}$).
+  warum: |
+    Die Gleichung $T(x+1)=e^{T(x)}$ bestimmt alles, sobald man ein Stück der Länge 1 kennt. Ein Polynom auf diesem Stück ist leicht einzugeben;
+    der Fehler wird nach rechts mit jedem $e$-Schritt um den Faktor $T'$ vergrössert, nach links verkleinert.
+    In Desmos geht die Fortsetzung zum Beispiel mit einer Liste von Stücken: $T_0(x)=p(x)$ auf $[-1,0]$, $T_1(x)=e^{p(x-1)}$ auf $[0,1]$, $T_2(x)=e^{e^{p(x-2)}}$ auf $[1,2]$.
+  beispiel: |
+    Mit dem Polynom vom Grad 8: $T(\tfrac12)=e^{p(-\tfrac12)}$, $p(-\tfrac12)=0.49856\ldots$, also $T(\tfrac12)\approx1.64635$ (Kneser: $1.646354\ldots$).
+  bilder: [exp.stoerungsreihe]
+  einordnung: |
+    Die einfachste Stufe: [[kn.konstr.linear]]; Glattheit an den Nähten: [[kn.konstr.quadratisch]]; Polynom ohne Kneser-Werte: [[kn.konstr.stoerungsreihe]].

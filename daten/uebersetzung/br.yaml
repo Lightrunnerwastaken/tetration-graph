@@ -1,5 +1,48 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: br.beob.produkt_tetration_werte
+  quelle_hash: 0abbbf4fb4a6
+  theorie_hash: 3423bb890be3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'Fatou product tetration: prodtet_e(½) = 1.5134281085 — the interpolation in the forum was already right'
+    aussage: |
+      With the Fatou coordinate from br.satz.produkt_parabolisch (descent with Lambert W to $x\approx5\cdot10^{-5}$, there the series
+      $\alpha(x)=-\tfrac1x+\tfrac12\ln x-\tfrac16x+\tfrac1{16}x^2-\tfrac{19}{540}x^3+\dots$, then back) one gets
+      $$\mathrm{prodtet}_e(\tfrac12)=1.5134281085\ldots$$
+      The check $\mathrm{prodtet}_e(-1)=W(1)$, $\mathrm{prodtet}_e(0)=1$, $\mathrm{prodtet}_e(1)=e$ holds to 20 digits. The value from the Lagrange interpolation
+      in the forum ($1.5134$, tid 1816) agrees in all digits given there: the interpolation "far to the left, then forward" lands at the Fatou solution,
+      just as for base $\eta$.
+    einfach: With the natural method for slow fixed points one gets a definite value for the product tetration at ½. The value the forum found
+      with a simple interpolation in Desmos agrees with it.
+    pruefung:
+      f1_folgt_unmittelbar: No (computed).
+      f2_benutzte_voraussetzungen: Fatou coordinate up to $x^{6}$, 20000 descents with Lambert W, 40 digits.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every base via the change of base (br.def.produkt_tetration).
+      f5_neue_frage: Is the Fatou product tetration convex on all of ℝ, and why does the Lagrange interpolation hit it (convergence theorem as
+        for Lévy, it.konstr.levy)?
+    bewertung:
+      nutzen: Gives reference values for experiments with product tetration.
+      richtigkeit: numerical
+    quellen:
+    - stelle: Value 1.5134 (Lagrange interpolation, Desmos)
+    - {}
+  en_theorie:
+    beispiel: |
+      Check: the same computation with $c=1$ gives $e$ to 20 digits.
+    einordnung: |
+      Theorem behind it: [[br.satz.produkt_parabolisch]]; questions about the shape: [[br.frage.verwandte_funktionen]].
+    genau: |
+      $\mathrm{prodtet}_e(\tfrac12)=1.5134281085\ldots$; the forum value $1.5134$ (Lagrange interpolation) agrees in all given digits.
+    warum: |
+      Computation: go back a thousand times with $W$ to near 0, shift by $\tfrac12$ there in the Fatou coordinate, then go forward the same number of times with $xe^x$.
+      The interpolation in the forum does essentially the same — far to the left the function is almost linear in the Fatou coordinate — which is why it hits the value.
+    worum: |
+      Concrete numbers for the natural product tetration, and a comparison with the forum value.
 - id: br.def.hyperoperation
   quelle_hash: 33e5aa60a2be
   theorie_hash: dd794f98c082
@@ -24,6 +67,77 @@
     worum: |
       Tetration is the fourth level of a ladder: repeated addition gives multiplication, repeated multiplication gives exponentiation, repeated exponentiation gives tetration —
       and so on. For the levels there is a notation of its own, with arrows.
+- id: br.def.iteration_wirkung
+  quelle_hash: 56c1414db613
+  theorie_hash: 97d71c11e791
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'Iteration as an action: heights from an arbitrary number domain, superfunctions as compatible maps'
+    aussage: |
+      Let $A$ be a monoid (for example $\mathbb N$, $\mathbb R$, $\mathbb C$ with $+$). An **$A$-action** on a set $Y$ is $F:A\times Y\to Y$ with
+      $F(0,y)=y$ and $F(a+b,y)=F(a,F(b,y))$ — "$F(a,\cdot)$ is the $a$-th iterate". Integer iteration is the $\mathbb N$-action $F(n,y)=f^{\circ n}(y)$.
+      A superfunction $\chi$ with $\chi(a+1)=f(\chi(a))$ is a **compatible map** from the shift $a\mapsto a+1$ on $A$ to $f$ on $Y$.
+      If $\chi$ is invertible, then $F_\chi(a,y)=\chi(a+\chi^{-1}(y))$ is an $A$-action that continues the integer iterates of $f$ — this is exactly the
+      route tetration → fractional iterates of $\exp$. Globally this works only if $f$ has the same orbit structure as the shift (bijective, without periodic points).
+    einfach: Iterating means applying a map again and again. One can phrase this so generally that the "number of repetitions" may come from any
+      number domain. A tetration is then a translator between "count one further" and "compute e to the power once".
+    formen:
+    - notiz: action law
+    - notiz: from an invertible superfunction
+  en_theorie:
+    beispiel: |
+      $A=\mathbb R$, $f=\exp$, $\chi=T$: $F(\tfrac12,y)=T(\tfrac12+\mathrm{slog}\,y)$ is a half exponential function.
+    einordnung: |
+      Classical form: [[fg.def.iterationsgruppe]], [[fg.def.abel]]; the ladder of generalizations: [[br.frage.iterationsleiter]].
+    genau: |
+      An $A$-action $F(a,y)$ with $F(0,y)=y$, $F(a+b,y)=F(a,F(b,y))$; a superfunction is a compatible map from the shift on $A$ to $f$;
+      from an invertible superfunction $\chi$ arises the action $\chi(a+\chi^{-1}(y))$.
+    warum: |
+      Tetration $T$ translates "count one further" into "apply $e^x$ once": $T(a+1)=e^{T(a)}$. If $T$ is invertible (with $\mathrm{slog}$), one can translate every
+      shift by $a$ back: $\exp^{\circ a}(y)=T(a+\mathrm{slog}\,y)$ — this is the fractional iteration of $\exp$. The language of actions
+      makes clear that this is only one case of a general pattern, and where it hits limits (fixed points, periodic points).
+    worum: |
+      What does "iterate" mean when the number of steps does not have to be an integer?
+- id: br.def.produkt_tetration
+  quelle_hash: 765bec836606
+  theorie_hash: e30352c9a460
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'Product tetration: the superfunction of x·aˣ'
+    aussage: |
+      The **product tetration** to base $a>1$ is the superfunction of $g_a(x)=x\,a^x$ with starting value 1:
+      $$\mathrm{prodtet}_a(c+1)=g_a(\mathrm{prodtet}_a(c)),\qquad \mathrm{prodtet}_a(0)=1.$$
+      Going backward is done with Lambert W: $g_e^{-1}=W$, so $\mathrm{prodtet}_e(c-1)=W(\mathrm{prodtet}_e(c))$. Values: $\mathrm{prodtet}_e(-1)=W(1)=0.567143\ldots$,
+      $\mathrm{prodtet}_e(1)=e$, $\mathrm{prodtet}_e(2)=e^{e+1}$. For $c\to-\infty$, $\mathrm{prodtet}_e(c)\to0$.
+      **All bases are one:** $\ln a\cdot g_a(x)=g_e(x\ln a)$, so $g_a$ is conjugate to $g_e$ by a scaling and
+      $$\mathrm{prodtet}_a(c)=\frac{\mathrm{prodtet}_e\bigl(c+\mathrm{prodslog}_e(\ln a)\bigr)}{\ln a}.$$
+    einfach: Instead of computing "a to the power" again and again, one computes "x times a to the power x" again and again. This grows even a
+      bit faster than tetration. Unlike for tetration, every base is just a stretched version of the base e — so one only has to understand a
+      single function.
+    formen:
+    - notiz: descent with Lambert W
+    - notiz: change of base is a scaling
+    quellen:
+    - {}
+    - stelle: Change of base (there without proof)
+  en_theorie:
+    beispiel: |
+      $\mathrm{prodtet}_e(1)=1\cdot e^1=e$, $\mathrm{prodtet}_e(2)=e\cdot e^e=e^{e+1}\approx41.19$, $\mathrm{prodtet}_e(-1)=W(1)=0.567143$ (the omega constant).
+    einordnung: |
+      How to continue it: [[br.satz.produkt_parabolisch]], values: [[br.beob.produkt_tetration_werte]]; the inverses $\omega_n$ of $x(e^x)\uparrow\uparrow n$: [[gr.def.epsilon_omega]].
+    genau: |
+      $\mathrm{prodtet}_a(c+1)=\mathrm{prodtet}_a(c)\,a^{\mathrm{prodtet}_a(c)}$, $\mathrm{prodtet}_a(0)=1$; backward with Lambert W; all bases are scalings of the base $e$.
+    warum: |
+      With $t=x\ln a$ one gets $x\,a^x\cdot\ln a=t\,e^t$. So whoever can iterate $t\mapsto te^t$ can do every base. For tetration this does not work —
+      $a^x$ and $e^x$ are not connected by a scaling, which is why so much depends on the base there.
+    worum: |
+      A sister of tetration: instead of $x\mapsto a^x$ one iterates $x\mapsto x\,a^x$.
 - id: br.frage.bohr_mollerup
   quelle_hash: 9eba94c0a896
   theorie_hash: 5fe7b267d267
@@ -92,6 +206,44 @@
     worum: |
       For bases just above $\eta$ the tower squeezes through the bottleneck at $e$. The theory of parabolic implosion describes such passages very precisely. Can one use it to describe Kneser's
       tetration near $\eta$ and the boundary law exactly?
+- id: br.frage.iterationsleiter
+  quelle_hash: 10b4456d873f
+  theorie_hash: c0ff630c5b25
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'MphLee''s ladder: from integer iteration to hyperoperations of arbitrary rank'
+    aussage: |
+      The notes arrange generalizations of iteration as a ladder (levels of description):
+      1. integer iteration ($\mathbb N$-actions);
+      2. real and complex iteration (tetration, Kneser, Fatou coordinates belong here);
+      3. general monoids as "time";
+      4. preorders as time: discrete, this gives complete recursion and iteration over ordinal numbers ($\omega$-composition),
+         continuous, it gives composition integrals;
+      5. arbitrary categories as time (functor categories, 2-categories);
+      6. the construction applied to itself is supposed to give Goodstein-like hyperoperations of arbitrary rank — described by the author himself as "almost"
+         reached.
+      Open is whether level 6 really yields a definition of fractional ranks, and whether it fits with the operator approach for the half rank
+      (kn.frage.halber_rang). Further open points in the notes: measuring obstructions to continuations via cohomology, and understanding the
+      "log-like" counterpart via characters.
+    einfach: 'A researcher in the forum builds a staircase: at the bottom is ordinary repeating, at the very top the operations of every level
+      are supposed to stand — addition, multiplication, power, tetration and everything in between. The upper levels are not yet fully built.'
+    quellen:
+    - stelle: The "ladder" post, May 2022
+  en_theorie:
+    beispiel: |
+      Level 4, discrete: iteration over ordinal numbers, for instance $f^{\circ\omega}=\lim_n f^{\circ n}$ — this is the road to ordinal tetration (br.satz.ordinal_tetration).
+    einordnung: |
+      Basic notion: [[br.def.iteration_wirkung]]; the question of fractional ranks from the analytic side: [[kn.frage.halber_rang]].
+    genau: |
+      Integer → real/complex iteration → monoids → preorders (ordinal numbers, integrals) → categories → hyperoperations of arbitrary rank.
+    warum: |
+      Each level replaces the "time" (the height) by a more general structure. The hope of the top level: if iteration is itself an operation
+      that can be iterated, the hyperoperations arise by themselves — and with them perhaps a sense of fractional ranks.
+    worum: |
+      A map of the generalizations of iterating, laid out in the forum by MphLee as a "ladder".
 - id: br.frage.kneser_hardy
   quelle_hash: 64d444423ea6
   theorie_hash: b096a585c329
@@ -145,6 +297,40 @@
       limits $L,\bar L$) provide exactly such finiteness statements — then tetration theory would contribute to new logic.
     worum: |
       Is there a “tame” mathematical world in which tetration lives? This is an open problem in logic — and Kneser's solution is a natural candidate.
+- id: br.frage.verwandte_funktionen
+  quelle_hash: b2c40f158afd
+  theorie_hash: ca9f73093521
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: What else one can investigate about related functions
+    aussage: |
+      Open, in part simple, questions about the functions of this area:
+      - **Product tetration:** Is the Fatou solution convex, and is it (as for η) the only one with a monotonicity condition? What do $\mathrm{prodtet}'$
+        and the derivative with respect to the base look like (analogous to gr.ableitung)? Is there a product superroot via the $\omega_n$ (gr.def.epsilon_omega)?
+      - **Exponential factorial:** Does the continuation via sexp depend on the choice of the comparison function, and is it compatible with the total monotonicity from
+        TPID 2 (ar.frage.ef_fortsetzung)?
+      - **Families:** Which maps $x\,h(x)$ or $h(x)-1+u$ have a parabolic start, and do they always give polynomials in the height via a perturbation series
+        (kn.konstr.stoerungsreihe)?
+      - **Relations:** Are there identities between tetration, product tetration and the $\varepsilon_n$ (for example via $\ln$ steps), as there are
+        between tetration and the superroot?
+    einfach: 'A list of questions for further research: for the new functions one can investigate the same things as for tetration — derivatives,
+      curvature, inverses, uniqueness. Some of these are easy to check at home with a computer.'
+  en_theorie:
+    beispiel: |
+      A starting point: $\mathrm{prodtet}_e'(c)$ from the chain rule, $\mathrm{prodtet}'(c+1)=(1+\mathrm{prodtet}(c))\,e^{\mathrm{prodtet}(c)}\,\mathrm{prodtet}'(c)$ — analogous to gr.ableitung.
+    einordnung: |
+      Starting points: [[br.satz.produkt_parabolisch]], [[br.satz.vergleichsfunktion]], [[ar.frage.ef_fortsetzung]].
+    genau: |
+      Convexity and uniqueness of product tetration, derivatives with respect to height and base, product superroots, dependence of the exponential factorial on the
+      comparison function, families with a parabolic start, identities between the functions.
+    warum: |
+      For tetration one already has answers or tools for each of these questions (chapter 1). Trying the same tools on neighboring functions
+      shows which properties are special to $a^x$ and which hold generally for fast iteration.
+    worum: |
+      A work program for related functions — much of it is within reach with a computer.
 - id: br.gescheitert.rotationszahl
   quelle_hash: 11e86173076b
   theorie_hash: dec681b0337f
@@ -606,6 +792,60 @@
     worum: |
       For every sufficiently smooth periodic function $u$ there is a “partner” $\tilde u$ such that $\tilde u-iu$ is the boundary value of a holomorphic function. This is the
       tool with which one constructs the base kernel without the engine.
+- id: br.satz.produkt_parabolisch
+  quelle_hash: 435a401ac402
+  theorie_hash: 55e0fc399662
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Product tetration lives at a parabolic fixed point — like tetration at η, not like Kneser
+    aussage: |
+      $0$ is a parabolic fixed point: $g(x)=x+\lambda x^2+\tfrac{\lambda^2}{2}x^3+\dots$ The formal iterates have coefficients that are polynomials in the
+      iteration number $c$:
+      $$g^{\circ c}(x)=x+c\lambda x^2+\tfrac{c(2c-1)}{2}\lambda^2x^3+O(x^4)$$
+      (as in the answer in the forum). The series diverges in general (it.satz.baker); the natural continuation is the Fatou coordinate
+      $\alpha(x)=-\tfrac1{\lambda x}+\tfrac12\ln x+\dots$ of the repelling side, $\mathrm{prodtet}(c)=\alpha^{-1}(\alpha(1)+c)$.
+      The iterative residue is $\tfrac12$; for $e^x-1$ it is $\tfrac13$ — **the two maps are not even formally conjugate**, so product tetration
+      is its own parabolic iteration and not a disguised tetration.
+    bereich: $g(x)=xe^{\lambda x}$, $\lambda>0$, real axis to the right of 0
+    einfach: 'At 0, x·eˣ almost stands still — the map pushes away only very slowly. For such points there is a known method (Fatou coordinates)
+      that fixes the intermediate values naturally, exactly as for tetration to base η. A computation shows: x·eˣ and eˣ − 1 look similar, but
+      differ even in the small.'
+    beweis:
+      text: |
+        Compare coefficients: for $g=x+a_2x^2+a_3x^3+\dots$ one has $g^{\circ c}=x+ca_2x^2+(ca_3+c(c-1)a_2^2)x^3+\dots$; with $a_2=\lambda$, $a_3=\lambda^2/2$ this gives
+        $c(2c-1)\lambda^2/2$. The iterative residue $1-a_3/a_2^2$ is invariant under scalings and is a formal invariant of parabolic germs (Leau–Fatou,
+        Écalle); it is $\tfrac12$ for $xe^x$ and $\tfrac13$ for $e^x-1$. The Fatou coordinate solves $\alpha(g(x))=\alpha(x)+1$; its logarithm coefficient is
+        the iterative residue. Checked in exp.verwandte_funktionen.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the theory of parabolic germs.
+      f2_benutzte_voraussetzungen: $\lambda>0$; real axis to the right of 0 (repelling side).
+      f3_spezialfall: 'Yes: of it.satz.leau_fatou; the same situation as tetration to base η at the fixed point e.'
+      f4_uebertragbar: To every map $x\,h(x)$ with $h(0)=1$, $h'(0)>0$ — a whole family of "tetrations" with a parabolic start.
+      f5_neue_frage: Is the Fatou product tetration the only one that satisfies a monotonicity or convexity condition (as for η)?
+    bewertung:
+      nutzen: Places product tetration in the known theory and shows that it is determined naturally.
+      richtigkeit: complete
+    quellen:
+    - stelle: Answer of 08.07.2026 (series around the fixed point 0)
+    - {}
+  en_theorie:
+    beispiel: |
+      Half iterate: $c=\tfrac12$ gives $x+\tfrac\lambda2x^2+0\cdot x^3+\dots$ — the $x^3$ term vanishes exactly at $c=\tfrac12$.
+    einordnung: |
+      General theory: [[it.satz.leau_fatou]], divergence of the formal series: [[it.satz.baker]]; the same structure in the perturbation series: [[kn.konstr.stoerungsreihe]].
+    genau: |
+      $0$ is parabolic ($g'(0)=1$); formal iterate $x+c\lambda x^2+\tfrac{c(2c-1)}2\lambda^2x^3+\dots$; Fatou coordinate $\alpha=-\tfrac1{\lambda x}+\tfrac12\ln x+\dots$;
+      iterative residue $\tfrac12$ (for $e^x-1$: $\tfrac13$).
+    warum: |
+      Near 0, $xe^x$ pushes on by only about $x^2$ — the orbit creeps out of the fixed point like $-1/n$. The Fatou coordinate "stretches" this creeping
+      into steps of equal size; in it the fractional iteration is simply $\alpha+c$. This is the same situation as for base $\eta$ at the fixed point $e$.
+      The iterative residue (the factor in front of $\ln x$) is a formal invariant: because it differs for $xe^x$ and $e^x-1$, one map cannot be turned
+      into the other by a change of coordinates — not even formally.
+    worum: |
+      Which fractional iterate of $xe^x$ is the natural one? The answer is already in the theory of parabolic fixed points.
 - id: br.satz.ripa
   quelle_hash: c0d8861acd89
   theorie_hash: ead7881f997d
@@ -843,6 +1083,61 @@
     worum: |
       “Tame geometry” allows logarithms, exponential functions and analytic functions on compact pieces — but everything one can build from them grows
       at most like a tower of fixed height. Tetration grows faster.
+- id: br.satz.vergleichsfunktion
+  quelle_hash: a9ef7b6f730e
+  theorie_hash: b71a5500c78a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'Continuing with a comparison function: exponential factorial and product tetration are the same limit trick'
+    aussage: |
+      Both forum proposals follow one pattern: one already knows a continuous superfunction $S$ of a **comparison map** $g$, and the sequence
+      $a_n$ in question behaves for large $n$ like $S(n+\text{const})$. Then one continues by
+      $$a(x)=\lim_{k\to\infty}\Phi_x^{(k)}\bigl(S(x+k+D)\bigr),\qquad D=\lim_n\bigl(S^{-1}(a_n)-n\bigr),$$
+      where $\Phi_x^{(k)}$ are the $k$ backward steps of the sequence's own recursion. For the exponential factorial ($a_n=n^{a_{n-1}}$, $S=\mathrm{sexp}_e$)
+      $\Phi$ is a chain of logarithms to the bases $x+1,\dots,x+k$ (tid 1828); for tetration with product tetration as the comparison (tid 1816),
+      $S=\mathrm{prodtet}$. This is exactly the limit trick kn.satz.grenzwert_trick, or the change of base $T\circ\mathrm{slog}$: the backward steps
+      contract every error doubly exponentially, which is why $D$ converges so fast.
+      As with the change of base, one should not expect the result to be analytic or "the" natural solution.
+      Checked for the exponential factorial (ar.konstr.ef_sexp): $D=-1.0552140087$, the integer values come back to $10^{-12}$.
+    einfach: 'A known trick: one already knows a smooth function that, for large numbers, grows almost the same as the one being sought. One computes
+      far out with this known function and then goes back step by step. Errors become tiny very quickly. This is how the forum continued both
+      the exponential factorial and tetration (via product tetration).'
+    beweis:
+      text: 'Classification: both proposals have the form $\lim_k\Phi^{(k)}\circ S(\cdot+k+D)$ from kn.satz.grenzwert_trick.'
+      luecken:
+      - Convergence for the exponential factorial only measured (doubly exponential, integer values to 10⁻¹²), not proved.
+      - For tetration with product tetration as the comparison (tid 1816), neither convergence nor smoothness has been checked.
+    pruefung:
+      f1_folgt_unmittelbar: The classification yes; convergence is measured for the exponential factorial, for tid 1816 only plausible.
+      f2_benutzte_voraussetzungen: A continuous superfunction $S$ of the comparison map; fast contraction of the backward steps.
+      f3_spezialfall: 'Yes: of kn.satz.grenzwert_trick; the change of base (bw.def.F_bd) is the same case with $S$ = tetration to another base.'
+      f4_uebertragbar: To every sequence that grows like a known superfunction (hyperfactorials, towers with alternating bases).
+      f5_neue_frage: Does the result depend on the choice of $S$ (sexp versus prodtet as the comparison)? For the change of base the answer is
+        yes — as a θ-wave.
+    bewertung:
+      nutzen: Shows that two new forum ideas are a known tool, and what one can expect from them.
+      richtigkeit: Classification certain, convergence partly measured
+    quellen:
+    - {}
+    - {}
+    - {}
+    - stelle: Classification as the limit trick
+  en_theorie:
+    beispiel: |
+      Exponential factorial: $D=-1.0552140087$, $0.5!_2=0.7575097219$ (ar.konstr.ef_sexp).
+    einordnung: |
+      General form: [[kn.satz.grenzwert_trick]]; the same case between two bases: [[bw.def.F_bd]]; application: [[ar.konstr.ef_sexp]].
+    genau: |
+      If $a_n$ grows like $S(n+D)$ for a known superfunction $S$, one continues by $a(x)=\lim_k\Phi_x^{(k)}(S(x+k+D))$ with the backward steps $\Phi$ of the sequence's own recursion.
+    warum: |
+      Far out, $a_n$ and $S(n+D)$ are almost equal; each backward step is a logarithm and makes the relative error tiny. That is why the
+      sequence converges doubly exponentially and the integer values come back exactly. What the trick does not provide: a reason why precisely this continuation is
+      "right" — a different comparison function can give a different solution (for the change of base they differ by a θ-wave).
+    worum: |
+      Two new forum ideas — exponential factorial via sexp and tetration via product tetration — are the same old trick.
 - id: br.satz.young_kreis
   quelle_hash: '460719923996'
   theorie_hash: 0aa400184ddc

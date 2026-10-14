@@ -1,0 +1,237 @@
+{
+ "id": "exp.stoerungsreihe",
+ "skript_hash": "dcd6a7eac80222f8",
+ "gelaufen": "2026-10-13 23:16",
+ "laufzeit_s": 12.5,
+ "python": "3.13.9",
+ "zusammenfassung": "Forumspolynom (tid 1827) als Störungsreihe von eˣ − 1 hergeleitet und exakt nachgebaut; ∫|Fehler| bei N = 8 = 2.41e-7, beste Ordnung N = 6, danach Divergenz. Näherungsleiter für Desmos gemessen.",
+ "pruefungen": [
+  {
+   "name": "g_n ist ein Polynom vom Grad 2n − 1 (n = 1 … 14)",
+   "ok": true,
+   "wert": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19,
+    21,
+    23,
+    25,
+    27
+   ]
+  },
+  {
+   "name": "Funktionalgleichung G(y) = e^{G(y−1)} − 1 + u gilt exakt bis u⁸ auch bei y = 1/2 und 7/3",
+   "ok": true,
+   "wert": null
+  },
+  {
+   "name": "N = 8 gibt das Forumspolynom: Grad 15, a₀ = 1, a₁ = 87159883/79833600",
+   "ok": true,
+   "wert": [
+    "1",
+    "87159883/79833600",
+    "3944583499/14529715200"
+   ]
+  },
+  {
+   "name": "Die Reihe divergiert: der Fehler fällt bis zu einer besten Ordnung und steigt danach wieder",
+   "ok": true,
+   "wert": {
+    "beste_N": 6,
+    "Fehler_bestes": "2.17e-7",
+    "N=14": "2.75e-5"
+   }
+  },
+  {
+   "name": "∫₋₁⁰ |sexp − P_8| = 2.4·10⁻⁷ mit zwei Quadraturen (Forumsangabe 5.52·10⁻⁷: gleiche Grössenordnung, aber doppelt so gross)",
+   "ok": true,
+   "wert": {
+    "Gauss-Legendre 40": "2.408e-7",
+    "Trapez 2001": "2.406e-7"
+   }
+  },
+  {
+   "name": "Die Störungsreihe ist an den Nahtstellen exakt C¹ (jedes g_n hat g_n′(1) = g_n′(0)), aber nicht C²",
+   "ok": true,
+   "wert": {
+    "Störungsreihe P_2": "0.174",
+    "Störungsreihe P_4": "0.00189",
+    "Störungsreihe P_8": "8.67e-6"
+   }
+  },
+  {
+   "name": "Leiter: linear ~10⁻², P_8 ~10⁻⁶, Tschebyschow Grad 8 < 10⁻⁶, Grad 12 < 10⁻⁸",
+   "ok": true,
+   "wert": {
+    "linear 1 + x": "9.17e-03",
+    "Störungsreihe P_2": "1.50e-03",
+    "Störungsreihe P_4": "2.97e-05",
+    "Störungsreihe P_8": "4.60e-07",
+    "Tschebyschow an Kneser, Grad 3": "7.13e-04",
+    "Tschebyschow an Kneser, Grad 5": "2.48e-05",
+    "Tschebyschow an Kneser, Grad 8": "1.23e-07",
+    "Tschebyschow an Kneser, Grad 12": "7.08e-11"
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "P8_koeffizienten": [
+   "1",
+   "87159883/79833600",
+   "3944583499/14529715200",
+   "17362542271/81729648000",
+   "199863943/2874009600",
+   "254779193/5748019200",
+   "15390481/1045094400",
+   "5637281/653184000",
+   "763207/270950400",
+   "5989049/3657830400",
+   "69841/149299200",
+   "4043953/14370048000",
+   "1095811/11496038400",
+   "66061/1437004800",
+   "320791/43589145600",
+   "929569/81729648000"
+  ],
+  "L1_fehler_nach_N": {
+   "1": "0.005563",
+   "2": "0.0008466",
+   "3": "8.738e-5",
+   "4": "1.538e-5",
+   "5": "1.642e-6",
+   "6": "2.168e-7",
+   "7": "2.209e-7",
+   "8": "2.408e-7",
+   "9": "3.191e-7",
+   "10": "5.398e-7",
+   "11": "1.127e-6",
+   "12": "2.808e-6",
+   "13": "8.189e-6",
+   "14": "2.755e-5"
+  },
+  "g_n(1/2)": {
+   "1": "1/2",
+   "2": "0",
+   "3": "-1/768",
+   "4": "-1/6144",
+   "5": "13/491520",
+   "6": "23/11796480",
+   "7": "-151/660602880",
+   "8": "461/3523215360",
+   "9": "-87685/152202903552",
+   "10": "78142457/60881161420800",
+   "11": "-1163480683/396854978150400",
+   "12": "80142778619/10715084410060800",
+   "13": "-579403217612381/26744850687511756800",
+   "14": "23772436341854131/332824808555701862400"
+  },
+  "leiter": [
+   {
+    "name": "linear 1 + x",
+    "grad": 1,
+    "max_fehler": "0.00917",
+    "knick_bei_0": "0.0",
+    "sprung_T2_bei_0": "1.0"
+   },
+   {
+    "name": "Störungsreihe P_2",
+    "grad": 3,
+    "max_fehler": "0.0015",
+    "knick_bei_0": "0.0",
+    "sprung_T2_bei_0": "0.174"
+   },
+   {
+    "name": "Störungsreihe P_4",
+    "grad": 7,
+    "max_fehler": "2.97e-5",
+    "knick_bei_0": "0.0",
+    "sprung_T2_bei_0": "0.00189"
+   },
+   {
+    "name": "Störungsreihe P_8",
+    "grad": 15,
+    "max_fehler": "4.6e-7",
+    "knick_bei_0": "0.0",
+    "sprung_T2_bei_0": "8.67e-6"
+   },
+   {
+    "name": "Tschebyschow an Kneser, Grad 3",
+    "grad": 3,
+    "max_fehler": "0.000713",
+    "knick_bei_0": "0.00616",
+    "sprung_T2_bei_0": "0.111"
+   },
+   {
+    "name": "Tschebyschow an Kneser, Grad 5",
+    "grad": 5,
+    "max_fehler": "2.48e-5",
+    "knick_bei_0": "0.00022",
+    "sprung_T2_bei_0": "0.00661"
+   },
+   {
+    "name": "Tschebyschow an Kneser, Grad 8",
+    "grad": 8,
+    "max_fehler": "1.23e-7",
+    "knick_bei_0": "2.94e-7",
+    "sprung_T2_bei_0": "0.00021"
+   },
+   {
+    "name": "Tschebyschow an Kneser, Grad 12",
+    "grad": 12,
+    "max_fehler": "7.08e-11",
+    "knick_bei_0": "1.89e-10",
+    "sprung_T2_bei_0": "2.97e-7"
+   }
+  ],
+  "tschebyschow_koeffizienten": {
+   "3": [
+    "1.0",
+    "1.09211555446",
+    "0.270183846416",
+    "0.178068291954"
+   ],
+   "5": [
+    "1.0",
+    "1.09182794474",
+    "0.273417110808",
+    "0.221931970385",
+    "0.0825327354645",
+    "0.0421899311511"
+   ],
+   "8": [
+    "1.0",
+    "1.09176696734",
+    "0.271445352811",
+    "0.211828229004",
+    "0.0655654131297",
+    "0.0318550888273",
+    "-0.00617922488113",
+    "-0.0102665360889",
+    "-0.00564779198127"
+   ],
+   "12": [
+    "1.0",
+    "1.09176735105",
+    "0.271483161547",
+    "0.212451171147",
+    "0.0695073172511",
+    "0.0440195381108",
+    "0.0134136557944",
+    "0.00461557028504",
+    "-0.00528939487594",
+    "-0.00893601192793",
+    "-0.00826498863319",
+    "-0.00399080364264",
+    "-0.000922936063718"
+   ]
+  }
+ }
+}

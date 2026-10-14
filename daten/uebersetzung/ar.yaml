@@ -145,6 +145,61 @@
     worum: |
       Remarkably little is known about the numbers in towers. Even such simple questions as “Is ${}^4\pi$ an integer?” are open — not because they sound hard,
       but because one cannot even compute ${}^4\pi$ precisely enough to check.
+- id: ar.konstr.ef_sexp
+  quelle_hash: 5ee278549c55
+  theorie_hash: 6a9ac9144b13
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Exponential factorial continued via tetration — and what it gives at 0 (TPID 2)
+    aussage: |
+      The sequence $n!_2$ ($1,2,9,262144,5^{262144},\dots$) grows like tetration: $D=\lim_n(\mathrm{slog}_e(n!_2)-n)$ exists, and one continues by
+      $$x!_2=\lim_{k\to\infty}\log_{x+1}\Bigl(\log_{x+2}\bigl(\cdots\log_{x+k}(\mathrm{sexp}_e(x+k+D))\bigr)\Bigr).$$
+      Computed with Kneser ($\mathrm{slog}_e(1)=0$): $D=-1.0552140087127$ (stable to 13 digits from $n=6$ on). The formula gives $1!_2=1$ and $2!_2=2$ to
+      $10^{-12}$ and converges doubly exponentially in $k$: $0.5!_2=0.7575097219$, $1.5!_2=1.3595364027$.
+      The forum value $D\approx-0.0613312423$ does not fit this normalization (with it the formula would give $1!_2\approx3.5$); where it comes from is unclear.
+      **As $x\downarrow0$** the continuation has the limit $0.573049\ldots$ — astonishingly close to the Euler–Mascheroni constant $\gamma=0.577216$
+      from the conjecture TPID 2 (ar.frage.ef_fortsetzung), but off by $0.004$. So this continuation is, if TPID 2 is correct, not the
+      totally monotone one.
+    bereich: $x!_2=x^{(x-1)!_2}$, $1!_2=1$; Kneser $\mathrm{sexp}_e$ with $\mathrm{sexp}_e(0)=1$; real $x>0$
+    einfach: 'The exponential factorial (4 to the power 3 to the power 2 to the power 1 and so on) grows almost exactly like a tetration. So far
+      out one can use tetration and compute back with logarithms — this gives values between the integers. At 0 about 0.573 comes out: close to
+      the famous number 0.5772 from an old conjecture, but not equal.'
+    formen:
+    - notiz: Kneser, $\mathrm{slog}_e(1)=0$
+    - notiz: for this continuation
+    pruefung:
+      f1_folgt_unmittelbar: No; the convergence is measured, not proved (the forum explicitly gives no proofs).
+      f2_benutzte_voraussetzungen: Kneser sexp and slog from gp-tetration; logarithms of the huge values moved forward symbolically by one level;
+        40–60 digits.
+      f3_spezialfall: 'Yes: a case of the limit trick with a comparison function (br.satz.vergleichsfunktion).'
+      f4_uebertragbar: To every tower sequence with alternating bases; with another comparison function (say tetration to base 2) one gets a perhaps
+        different continuation.
+      f5_neue_frage: Does the limit at 0 depend on the comparison function? Is there a comparison function that gives $\gamma$ — or is TPID 2
+        false?
+    bewertung:
+      nutzen: First precise numbers for this continuation and a concrete test of TPID 2.
+      richtigkeit: numerical; integer check to 10⁻¹²
+    quellen:
+    - {}
+    - stelle: D in Kneser normalization, integer check, limit at 0 (13.10.2026)
+  en_theorie:
+    beispiel: |
+      $x=0.01$: $0.576448$; $x=0.001$: $0.573389$; $x=10^{-5}$: $0.573052$ (each independent of $k=6,7$ to 12 digits).
+    einordnung: |
+      The conjecture behind it: [[ar.frage.ef_fortsetzung]]; the trick in general: [[br.satz.vergleichsfunktion]]; arithmetic of the exponential factorial: [[ar.satz.ef_liouville]].
+    genau: |
+      $D=\lim(\mathrm{slog}_e(n!_2)-n)=-1.0552140087$; $x!_2=\lim_k\log_{x+1}\cdots\log_{x+k}(\mathrm{sexp}_e(x+k+D))$; $\lim_{x\downarrow0}x!_2=0.573049\ldots$
+    warum: |
+      $n!_2$ is a tower with falling bases $n,n-1,\dots,2$. The upper bases change the value only little — soon the tower grows like a tower of all
+      equal bases, i.e. like a tetration, shifted in height by a fixed amount $D$. Far out one replaces the tower by
+      $\mathrm{sexp}_e(x+k+D)$ and goes back with logarithms to the bases $x+k,\dots,x+1$; each step makes the error doubly exponentially smaller.
+      As $x\to0$ the last base $x+1$ becomes 1 — the logarithm to this base divides by $\ln(1+x)\approx x$, which is why very
+      long chains (k = 7) and many digits are needed there. The limit $0.57305$ is close to $\gamma$, but stably different from it.
+    worum: |
+      How to fix $x!_2=x^{(x-1)!_2}$ between the integers by holding on to tetration far out — and what this means for TPID 2.
 - id: ar.kor.benachbart
   quelle_hash: 947e7df0c273
   theorie_hash: 45532a827333

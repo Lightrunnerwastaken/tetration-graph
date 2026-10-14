@@ -1,0 +1,148 @@
+gebiet: kn
+# Tetration als Störung von eˣ − 1 (Polynom ohne Carleman, Forum tid 1827) und Näherungen zum Selberrechnen (Desmos),
+# nachgerechnet in exp.stoerungsreihe (13.10.2026).
+aussagen:
+
+- id: kn.konstr.stoerungsreihe
+  titel: 'Tetration als Störung von eˣ − 1: Polynome in der Höhe, Ordnung für Ordnung'
+  art: konstruktion
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [superfunktion]
+  bereich: 'Basis $e$; formale Potenzreihe in einem Hilfsparameter $u$, ausgewertet bei $u=1$'
+  aussage: |
+    Man bettet die Tetration in die Familie $f_u(z)=e^z-1+u$ ein und sucht $G(y)$ mit
+    $$G(y)=e^{G(y-1)}-1+u,\qquad G(0)=0.$$
+    Bei $u=1$ ist das $G(y)=e^{G(y-1)}$, also $G(y)=\mathrm{sexp}_e(y-1)$; bei $u=0$ ist $G\equiv0$ (der parabolische Fixpunkt von $e^z-1$).
+    Mit dem Ansatz $G=\sum_{n\ge1}g_n(y)\,u^n$ wird $g_1(y)=y$, und für $n\ge2$
+    $$g_n(y)-g_n(y-1)=[u^n]\bigl(e^{G(y-1)}-1-G(y-1)\bigr),$$
+    wobei rechts nur $g_1,\dots,g_{n-1}$ vorkommen. Jedes $g_n$ ist daher ein **Polynom vom Grad $2n-1$** in $y$ (Summenformel von Faulhaber), und
+    $P_N(x)=\sum_{n\le N}g_n(x+1)$ ist eine Näherung für $\mathrm{sexp}_e(x)$, die an jeder reellen Höhe definiert ist.
+    $N=8$ gibt genau das Polynom vom Grad 15 aus dem Forum ($a_0=1$, $a_1=87159883/79833600$); dort steht die Rekursion mit $f_n=n!\,g_n$ und Bell-Polynomen,
+    die nichts anderes sind als die Koeffizienten von $e^{G}$.
+  einfach: >-
+    Statt die Tetration direkt anzugreifen, verbiegt man eine einfachere Abbildung, eˣ − 1, Schritt für Schritt in eˣ. Bei der einfachen Abbildung
+    passiert gar nichts (alles bleibt bei 0). Jeder kleine Verbiegungsschritt bringt ein Polynom in der Höhe dazu — und Polynome kann man an jeder
+    Höhe ausrechnen, auch bei 1/2. Zählt man acht solche Schritte zusammen, bekommt man ein Polynom, das Knesers Tetration auf etwa sechs Stellen trifft.
+  formen:
+    - {tex: 'G(y)=e^{G(y-1)}-1+u,\quad G(0)=0', notiz: 'Einbettung; $u=1$ ist die Tetration'}
+    - {tex: 'g_1(y)=y,\qquad g_2(y)=\sum_{t=0}^{y-1}\tfrac{t^2}{2}=\tfrac{y(y-1)(2y-1)}{12}', notiz: 'die ersten beiden Ordnungen'}
+    - {tex: '\mathrm{sexp}_e(x)\approx P_N(x)=\sum_{n=1}^{N}g_n(x+1)', notiz: 'abgeschnittene Störungsreihe'}
+  beweis:
+    art: vollstaendig
+    text: |
+      Koeffizientenvergleich in $u$: $[u^1]$ gibt $g_1(y)=g_1(y-1)+1$, also $g_1=y$. Für $n\ge2$ ist $[u^n]e^{G}$ eine Summe von Produkten von mindestens zwei
+      $g_k$ mit $k<n$ plus $g_n$ selbst; das $g_n$ hebt sich gegen die linke Seite. Ist die rechte Seite ein Polynom $q_n(y-1)$ vom Grad $2n-2$ (Induktion:
+      Produkte von $g_k$ mit Gradsumme $\le\sum(2k-1)\le2n-2$), so ist $g_n(y)=\sum_{t=0}^{y-1}q_n(t)$ ein Polynom vom Grad $2n-1$ mit $g_n(0)=0$.
+      Exakt nachgerechnet bis $n=14$ (exp.stoerungsreihe).
+  stuetzt_sich_auf: [fg.def.tetration]
+  experimente: [exp.stoerungsreihe]
+  quellen: [{ref: forum_tid1827}, {ref: diese_arbeit, stelle: 'Herleitung der Forumsrekursion als Störungsreihe (13.10.2026)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald man die Einbettung $e^z-1+u$ sieht; das Forum gibt nur die Rekursion, nicht die Herleitung.'
+    f2_benutzte_voraussetzungen: 'Nur Rechnen mit formalen Potenzreihen; über Konvergenz in $u$ wird nichts behauptet.'
+    f3_spezialfall: 'Ja: Entwicklung einer Superfunktion in einem Familienparameter, wie beim halben Rang (kn.satz.rangjets_exppoly) mit $x+1+\varepsilon(2^x-x-1)$.'
+    f4_uebertragbar: 'Auf jede Basis über $f_u(z)=b^z-1+u$ (dann $u=1$ gibt $b^{G}$) und auf $xe^x$ (Produkt-Tetration, br.satz.produkt_parabolisch).'
+    f5_neue_frage: 'Welche Tetration ergibt eine Summation der divergenten Reihe in $u$ (kn.frage.stoerungsreihe)?'
+  bewertung: {richtigkeit: 'vollständig; Forumspolynom exakt reproduziert', neuheit: folklore, nutzen: 'Erklärt eine Näherung ohne Carleman-Matrizen in einer Zeile und verbindet sie mit dem halben Rang.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: analog_zu, ziel: kn.satz.rangjets_exppoly}
+    - {typ: verwandt, ziel: it.satz.leau_fatou}
+    - {typ: verwandt, ziel: kn.konstr.paulsen_stoerung}
+
+- id: kn.beob.stoerungsreihe_fehler
+  titel: 'Die Störungsreihe divergiert: beste Ordnung um N = 6–8, Fehler 2·10⁻⁷, und die Nähte sind von selbst C¹'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [superfunktion]
+  bereich: 'Basis $e$, $P_N$ wie in kn.konstr.stoerungsreihe, Vergleich mit Kneser auf $[-1,0]$'
+  aussage: |
+    $\int_{-1}^0|\mathrm{sexp}_e-P_N|$ fällt von $5.6\cdot10^{-3}$ ($N=1$) auf $2.2\cdot10^{-7}$ ($N=6,7$) und steigt danach wieder
+    ($2.4\cdot10^{-7}$ bei $N=8$, $5.4\cdot10^{-7}$ bei $N=10$, $2.8\cdot10^{-5}$ bei $N=14$): **die Reihe in $u$ divergiert**, man bricht bei der kleinsten
+    Ordnung ab. Für $N=8$ messen wir $2.4\cdot10^{-7}$ (zwei Quadraturen), das Forum nennt $5.52\cdot10^{-7}$; der grösste Fehler ist $4.6\cdot10^{-7}$.
+    Jedes $P_N$ erfüllt $P_N(-1)=0$, $P_N(0)=1$ und $P_N'(0)=P_N'(-1)$ exakt: setzt man es mit $T(x+1)=e^{T(x)}$ auf ganz $\mathbb R$ fort, ist die Kurve
+    an den Nähten von selbst einmal stetig differenzierbar (die zweite Ableitung springt).
+  einfach: >-
+    Mehr Schritte machen die Näherung nicht immer besser: bis etwa sechs bis acht Schritte wird sie genauer, danach wieder schlechter. Das ist typisch
+    für Reihen, die nicht konvergieren — man hört am besten Punkt auf. Schön ist: die Näherung passt an den Nahtstellen ohne Knick zusammen.
+  experimente: [exp.stoerungsreihe]
+  quellen: [{ref: forum_tid1827, stelle: 'Fehlerangabe 5.52·10⁻⁷'}, {ref: diese_arbeit}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die C¹-Naht ja ($g_n''(1)-g_n''(0)$ ist die Ableitung eines Produkts aus mindestens zwei Faktoren, die bei 0 verschwinden); die Fehler sind gemessen.'
+    f2_benutzte_voraussetzungen: 'Kneser-Werte aus gp-tetration (40 Stellen), Gauss–Legendre mit 40 Knoten und Trapez mit 2001 Punkten.'
+    f3_spezialfall: 'Ja: dasselbe Muster wie die Gevrey-Divergenz beim halben Rang (kn.beob.halbrang_divergenz).'
+    f4_uebertragbar: 'Auf andere Basen; dort ist die beste Ordnung eine Funktion der Basis.'
+    f5_neue_frage: 'Wächst $g_n(1/2)$ wie $n!\,A^{-n}$ (Gevrey-1), und wo liegt die nächste Singularität der Borel-Transformierten?'
+  bewertung: {richtigkeit: 'numerisch, zwei Quadraturen stimmen überein', neuheit: neu_ungeprueft, nutzen: 'Zeigt Stärke und Grenze der Methode und korrigiert die Fehlerangabe aus dem Forum nach unten.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.konstr.stoerungsreihe}
+    - {typ: analog_zu, ziel: kn.beob.halbrang_divergenz}
+
+- id: kn.frage.stoerungsreihe
+  titel: 'Welche Tetration summiert die Störungsreihe?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [superfunktion]
+  aussage: |
+    Die Reihe $\sum_n g_n(y)u^n$ aus kn.konstr.stoerungsreihe divergiert, ihre beste Abschneidung liegt $2\cdot10^{-7}$ neben Kneser. Ist sie die
+    asymptotische Entwicklung (in $u\to0$) einer echten Familie von Superfunktionen von $e^z-1+u$, und ergibt deren Wert bei $u=1$ — etwa über eine
+    Borel-Summe — genau Knesers Tetration? Oder wählt die Polynom-Fortsetzung eine andere Lösung, die sich um eine kleine θ-Welle unterscheidet?
+    Für $u>0$ hat $e^z-1+u$ keinen reellen Fixpunkt mehr (der parabolische Punkt spaltet in zwei komplexe auf) — genau die Lage, in der Kneser
+    gebaut wird; das spricht für Kneser, beweist es aber nicht.
+  einfach: >-
+    Die Reihe hört nie auf, besser zu werden und dann wieder schlechter. Kann man sie trotzdem sinnvoll „aufsummieren“, und kommt dabei genau Knesers
+    Tetration heraus? Dass sie Kneser auf sechs Stellen nahekommt, ist ein Hinweis, aber kein Beweis.
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: motiviert, ziel: kn.konstr.stoerungsreihe}
+    - {typ: verwandt, ziel: kn.frage.halber_rang}
+    - {typ: verwandt, ziel: it.satz.ecalle_voronin}
+
+- id: kn.beob.naeherungsleiter
+  titel: 'Tetration selbst ausrechnen: eine Leiter von Näherungen für Desmos und Taschenrechner'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: einstieg
+  objekte: [superfunktion]
+  bereich: 'Basis $e$; Polynom $p$ auf $[-1,0]$ mit $p(-1)=0$, $p(0)=1$, fortgesetzt durch $T(x)=e^{T(x-1)}$ und $T(x)=\ln T(x+1)$'
+  aussage: |
+    Rezept: man legt ein Polynom $p$ auf das Grundstück $[-1,0]$ und setzt fort durch $T(x)=e^{T(x-1)}$ nach rechts und $T(x)=\ln T(x+1)$ nach links
+    (in Desmos mit einer stückweisen oder rekursiven Definition). Grösster Abstand zu Kneser auf $[-1,0]$:
+
+    | Näherung | Grad | grösster Fehler | Knick bei 0 |
+    |---|---|---|---|
+    | linear $1+x$ | 1 | $9.2\cdot10^{-3}$ | 0 (aber $T''$ springt) |
+    | Störungsreihe $P_2$ | 3 | $1.5\cdot10^{-3}$ | 0 |
+    | Störungsreihe $P_4$ | 7 | $3.0\cdot10^{-5}$ | 0 |
+    | Störungsreihe $P_8$ (Forum) | 15 | $4.6\cdot10^{-7}$ | 0 |
+    | an Kneser interpoliert | 5 | $2.5\cdot10^{-5}$ | $2\cdot10^{-4}$ |
+    | an Kneser interpoliert | 8 | $1.2\cdot10^{-7}$ | $3\cdot10^{-7}$ |
+    | an Kneser interpoliert | 12 | $7\cdot10^{-11}$ | $2\cdot10^{-10}$ |
+
+    Das Polynom vom Grad 8 (Interpolation an Kneser in Tschebyschow-Knoten, mit $p(-1)=0$, $p(0)=1$):
+    $p(x)=1+1.09176696734x+0.271445352811x^2+0.211828229004x^3+0.0655654131297x^4+0.0318550888273x^5-0.00617922488113x^6-0.0102665360889x^7-0.00564779198127x^8$.
+    Die Störungsreihe braucht keine Kneser-Werte und ist an den Nähten exakt $C^1$; die Interpolation ist bei gleichem Grad genauer, braucht aber Kneser als Eingabe.
+  einfach: >-
+    Wer Tetration in Desmos zeichnen will, braucht nur ein gutes Stück Kurve zwischen −1 und 0 — der Rest folgt durch „e hoch“ und „ln“. Die Tabelle
+    zeigt, wie gut verschiedene Stücke sind: eine Gerade liegt etwa ein Prozent daneben, ein Polynom vom Grad 8 nur noch ein Zehnmillionstel.
+  formen:
+    - {tex: 'T(x)=\begin{cases}p(x)&-1\le x\le0\\ e^{T(x-1)}&x>0\\ \ln T(x+1)&-2<x<-1\end{cases}', notiz: 'Fortsetzung auf $(-2,\infty)$'}
+  experimente: [exp.stoerungsreihe]
+  quellen: [{ref: forum_tid1827}, {ref: diese_arbeit}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Das Rezept ja (Funktionalgleichung); die Fehler sind gemessen.'
+    f2_benutzte_voraussetzungen: 'Kneser-Werte aus gp-tetration; Fehler auf 2001 Punkten.'
+    f3_spezialfall: 'Die lineare Stufe ist kn.konstr.linear; die quadratische Näherung (kn.konstr.quadratisch) fällt für $b=e$ mit der linearen zusammen.'
+    f4_uebertragbar: 'Auf jede Basis über $b^x$ und $\log_b$; die Polynome müssen neu bestimmt werden.'
+    f5_neue_frage: 'Wie viel Genauigkeit verliert die Fortsetzung nach rechts (jede $e$-Stufe vergrössert den Fehler um den Faktor $T''$)?'
+  bewertung: {richtigkeit: numerisch, neuheit: folklore, nutzen: 'Praktisch: eine sofort verwendbare Formel mit bekanntem Fehler.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.linear}
+    - {typ: verwandt, ziel: kn.konstr.quadratisch}
+    - {typ: verwandt, ziel: kn.konstr.stoerungsreihe}

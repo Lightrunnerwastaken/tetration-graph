@@ -1,0 +1,140 @@
+{
+ "id": "exp.verwandte_funktionen",
+ "skript_hash": "160c50f17dc89e7c",
+ "gelaufen": "2026-10-13 23:57",
+ "laufzeit_s": 79.0,
+ "python": "3.13.9",
+ "zusammenfassung": "Produkt-Tetration: Basiswechsel als Konjugation, parabolischer Fixpunkt 0 (nicht formal konjugiert zu eˣ − 1), Fatou-Wert prodtet_e(½) = 1.5134281 (Forum 1.5134). Exponentielle Fakultät: D = -1.055214008713 (Forumswert −0.0613 nicht reproduziert), Fortsetzung konvergiert, 0.5!₂ = 0.7575097219, x!₂ → 0.573049 für x ↓ 0 (γ = 0.57722).",
+ "pruefungen": [
+  {
+   "name": "ln a · x·aˣ = (x ln a)·e^{x ln a}: x·aˣ ist zu x·eˣ konjugiert (Streckung um ln a)",
+   "ok": true,
+   "wert": "1.76e-38"
+  },
+  {
+   "name": "Halbe Iterierte von x·e^{λx}: h = x + λx²/2 + 0·x³ + …, h∘h = x·e^{λx} bis x³ (Formel c(2c−1)/2·λ² bei c = 1/2)",
+   "ok": true,
+   "wert": "0"
+  },
+  {
+   "name": "x·eˣ und eˣ − 1 sind NICHT formal konjugiert (auch nicht mit Streckung): die Formel-Invariante 1 − a₃/a₂² ist ½ gegen ⅓",
+   "ok": true,
+   "wert": {
+    "x·eˣ": "1/2",
+    "eˣ−1": "1/3"
+   }
+  },
+  {
+   "name": "Fatou-Koordinate α(x) = −1/x + ½ ln x + Σ d_k x^k löst α(x eˣ) = α(x) + 1 formal (½ = 1 − a₃/a₂², a₃ = ½)",
+   "ok": true,
+   "wert": {
+    "d1": "-1/6",
+    "d2": "1/16",
+    "d3": "-19/540"
+   }
+  },
+  {
+   "name": "Fatou-Produkt-Tetration: prodtet(0) = 1, prodtet(1) = e, prodtet(−1) = W(1) = 0.567143…",
+   "ok": true,
+   "wert": {
+    "-1": "0.567143290409784",
+    "0": "1.0",
+    "0.5": "1.51342810850016",
+    "1": "2.71828182845905"
+   }
+  },
+  {
+   "name": "prodtet_e(½) aus der Fatou-Koordinate = 1.513428… — stimmt mit dem Interpolationswert 1.5134 aus dem Forum auf allen angegebenen Stellen",
+   "ok": true,
+   "wert": {
+    "Fatou": "1.5134281085",
+    "Forum (Lagrange)": "1.5134"
+   }
+  },
+  {
+   "name": "D = lim slog_e(n!₂) − n = −1.0552140087 (Kneser, slog(1) = 0), stabil ab n = 6",
+   "ok": true,
+   "wert": {
+    "2": "-1.2984543981681",
+    "3": "-1.203686318055",
+    "4": "-1.0690976942478",
+    "5": "-1.0552140478845",
+    "6": "-1.0552140087127",
+    "7": "-1.0552140087127"
+   }
+  },
+  {
+   "name": "Ganzzahlprobe: die Fortsetzung gibt 1!₂ = 1 und 2!₂ = 2 auf 10⁻¹²",
+   "ok": true,
+   "wert": {
+    "1": "1.0",
+    "2": "2.0"
+   }
+  },
+  {
+   "name": "bei x = ½ und 1.5 konvergiert die Kette (letzte Verlängerung ändert < 10⁻¹²)",
+   "ok": true,
+   "wert": {
+    "0.5!₂": "0.757509721883141",
+    "1.5!₂": "1.35953640271215"
+   }
+  },
+  {
+   "name": "Der Forumswert D = −0.0613312423001 passt nicht zu Kneser mit slog(1) = 0: die Formel gäbe damit 1!₂ ≈ 3.5",
+   "ok": true,
+   "wert": "3.49807429481"
+  },
+  {
+   "name": "TPID 2 an dieser Fortsetzung: x!₂ → 0.57305 für x ↓ 0 — nahe an γ = 0.57722, aber um 0.004 daneben",
+   "ok": true,
+   "wert": {
+    "0.1": "0.6073439715",
+    "0.01": "0.5764478856",
+    "0.001": "0.5733886197",
+    "0.0001": "0.5730829346",
+    "0.00001": "0.5730523684",
+    "Grenzwert": "0.57304897",
+    "gamma": "0.5772156649"
+   }
+  }
+ ],
+ "fehlgeschlagen": [],
+ "daten": {
+  "prodtet_e_halb": "1.5134281085001618746",
+  "D_n": {
+   "2": "-1.29845439816813",
+   "3": "-1.20368631805504",
+   "4": "-1.06909769424779",
+   "5": "-1.05521404788452",
+   "6": "-1.05521400871265",
+   "7": "-1.05521400871265"
+  },
+  "fortsetzung": {
+   "1": [
+    "1.0",
+    "1.0"
+   ],
+   "2": [
+    "2.0",
+    "2.0"
+   ],
+   "0.5": [
+    "0.757509721883141",
+    "0.757509721883141"
+   ],
+   "1.5": [
+    "1.35953640271215",
+    "1.35953640271215"
+   ]
+  },
+  "mit_forum_D": "3.49807429481",
+  "gegen_0": {
+   "0.1": "0.60734397145145",
+   "0.01": "0.576447885624283",
+   "0.001": "0.573388619708518",
+   "0.0001": "0.573082934587287",
+   "0.00001": "0.573052368426715"
+  },
+  "EF_0": "0.5730489722"
+ }
+}

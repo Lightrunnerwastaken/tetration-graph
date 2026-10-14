@@ -1,8 +1,8 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-395 Aussagen · 687 Kanten · 55 Experimente
+407 Aussagen · 721 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 142, numerisch 63, bewiesen_literatur 60, offen 29, vermutung 29, bedingt 27, definition 13, gescheitert 11, skizze 10, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 144, numerisch 67, bewiesen_literatur 60, offen 32, vermutung 29, bedingt 27, definition 15, gescheitert 11, skizze 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 104
 
@@ -49,7 +49,7 @@
 
 **uebersetzung-fortschritt** (1)
 
-- `quelle` — 211 von 295 quelle-Gegenständen übersetzt
+- `quelle` — 216 von 300 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (3)
 
@@ -90,6 +90,8 @@
 - `fp.satz.siegel_mittel` — Nach Herman (1985) ist $\Delta$ für diophantisches $\alpha$ unbeschränkt; Carathéodory greift dann nicht. Zu zeigen wäre, dass $\varphi$ Randwerte in $L^1(d\theta)$ hat (Hardy-Raum $H^1$), damit der Mittelwertsatz gilt.
 - `fp.satz.siegel_mittel` — Ohne Jordan-Rand ist die Randdynamik nicht automatisch zu einer Drehung konjugiert; die Gleichverteilung des Turms bezüglich $\omega_L$ ist offen.
 - `kl.satz.invariante_daempfung` — Dass die klassische periodische Phase (bw.satz.phasengesetz) als Grenzwert |λ| → 1 einer Familie gedämpfter Übergänge entsteht, ist eine Deutung, kein Grenzwertsatz.
+- `br.satz.vergleichsfunktion` — Konvergenz für die Exponentialfakultät nur gemessen (doppelt exponentiell, ganze Werte auf 10⁻¹²), nicht bewiesen.
+- `br.satz.vergleichsfunktion` — Für Tetration mit Produkt-Tetration als Vergleich (tid 1816) weder Konvergenz noch Glattheit geprüft.
 - `gr.korr.grenzidentitaet` — Gleichmässige Abschätzung der unteren Faktoren, die den Grenzwert nicht ändern.
 
 ## Bedingte Aussagen (Wurzelbedingungen = unbewiesene Enden der Beweiskette)
@@ -179,3 +181,5 @@
 - `exp.tpid10_abstaende` — aktuell, 8/8 Prüfungen. 2 − ηₙ fällt wie n^(−1.47); Vorhersage η₇ ≈ 1.8399 gegen Levenstein 2017 ≈ 1.839. TPID 11 (1) gilt für n = 4…6; die Quotienten 1.594, 0.9208 entscheiden (2) nicht.
 - `exp.tpid3` — aktuell, 5/5 Prüfungen. TPID 3: s=3/4, p=2/3 (anziehend, x0 im Kreis): 6.1e-11 bei N = 32; s=3/4, p=3/2 (abstossend, x0 im Kreis): 0.00034 bei N = 32; s=3/10, p=2 (Polynom, x0 = 0.7): 1.0 bei N = 32; s=1/2, p=1/2 (x0 auf dem Rand): 0.23 bei N = 32; s=3/10, p=1/2 (x0 ausserhalb): 0.42 bei N = 32
 - `exp.superwurzel_omega` — aktuell, 6/6 Prüfungen. Superwurzel-Formel exp(ω_{n−1}(ln Y)), h(x) = 1/ssrt(1/x), geschlossene Basisableitung und Ableitungen von ε_n, ω_n auf ≥ 20 Stellen bestätigt; die Grenzidentität gilt nur, wenn n → ∞ nach dem Einsetzen von ω_n geht.
+- `exp.stoerungsreihe` — aktuell, 7/7 Prüfungen. Forumspolynom (tid 1827) als Störungsreihe von eˣ − 1 hergeleitet und exakt nachgebaut; ∫|Fehler| bei N = 8 = 2.41e-7, beste Ordnung N = 6, danach Divergenz. Näherungsleiter für Desmos gemessen.
+- `exp.verwandte_funktionen` — aktuell, 11/11 Prüfungen. Produkt-Tetration: Basiswechsel als Konjugation, parabolischer Fixpunkt 0 (nicht formal konjugiert zu eˣ − 1), Fatou-Wert prodtet_e(½) = 1.5134281 (Forum 1.5134). Exponentielle Fakultät: D = -1.055214008713 (Forumswert −0.0613 nicht reproduziert), Fortsetzung konvergiert, 0.5!₂ = 0.7575097219, x!₂ → 0.573049 für x ↓ 0 (γ = 0.57722).

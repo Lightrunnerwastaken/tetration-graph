@@ -718,6 +718,61 @@
       The higher the level, the closer $\eta_N$ lies to 2, and at base 2 every level is exactly $x+1$-like at heights 1 and 2 (values 2 and 4).
     worum: |
       Measured values of the hyperoperations at their own limit bases, to the left of height 1.
+- id: kn.beob.naeherungsleiter
+  quelle_hash: fb0a79d0aa8a
+  theorie_hash: 46e4649868c1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'Computing tetration yourself: a ladder of approximations for Desmos and pocket calculators'
+    aussage: |
+      Recipe: place a polynomial $p$ on the stretch $[-1,0]$ and continue by $T(x)=e^{T(x-1)}$ to the right and $T(x)=\ln T(x+1)$ to the left
+      (in Desmos with a piecewise or recursive definition). Largest distance from Kneser on $[-1,0]$:
+
+      | Approximation | Degree | largest error | kink at 0 |
+      |---|---|---|---|
+      | linear $1+x$ | 1 | $9.2\cdot10^{-3}$ | 0 (but $T''$ jumps) |
+      | perturbation series $P_2$ | 3 | $1.5\cdot10^{-3}$ | 0 |
+      | perturbation series $P_4$ | 7 | $3.0\cdot10^{-5}$ | 0 |
+      | perturbation series $P_8$ (forum) | 15 | $4.6\cdot10^{-7}$ | 0 |
+      | interpolated at Kneser | 5 | $2.5\cdot10^{-5}$ | $2\cdot10^{-4}$ |
+      | interpolated at Kneser | 8 | $1.2\cdot10^{-7}$ | $3\cdot10^{-7}$ |
+      | interpolated at Kneser | 12 | $7\cdot10^{-11}$ | $2\cdot10^{-10}$ |
+
+      The polynomial of degree 8 (interpolation at Kneser in Chebyshev nodes, with $p(-1)=0$, $p(0)=1$):
+      $p(x)=1+1.09176696734x+0.271445352811x^2+0.211828229004x^3+0.0655654131297x^4+0.0318550888273x^5-0.00617922488113x^6-0.0102665360889x^7-0.00564779198127x^8$.
+      The perturbation series needs no Kneser values and is exactly $C^1$ at the seams; at the same degree the interpolation is more accurate, but needs Kneser as input.
+    bereich: Base $e$; polynomial $p$ on $[-1,0]$ with $p(-1)=0$, $p(0)=1$, continued by $T(x)=e^{T(x-1)}$ and $T(x)=\ln T(x+1)$
+    einfach: 'Anyone who wants to draw tetration in Desmos only needs a good piece of curve between −1 and 0 — the rest follows by "e to the power"
+      and "ln". The table shows how good different pieces are: a straight line is off by about one percent, a polynomial of degree 8 by only one
+      ten-millionth.'
+    formen:
+    - notiz: Continuation to $(-2,\infty)$
+    pruefung:
+      f1_folgt_unmittelbar: The recipe yes (functional equation); the errors are measured.
+      f2_benutzte_voraussetzungen: Kneser values from gp-tetration; errors on 2001 points.
+      f3_spezialfall: The linear stage is kn.konstr.linear; the quadratic approximation (kn.konstr.quadratisch) coincides with the linear one
+        for $b=e$.
+      f4_uebertragbar: To every base via $b^x$ and $\log_b$; the polynomials have to be determined anew.
+      f5_neue_frage: How much accuracy does the continuation to the right lose (each $e$-step enlarges the error by the factor $T'$)?
+    bewertung:
+      nutzen: 'Practical: a formula that can be used immediately, with known error.'
+      richtigkeit: numerical
+  en_theorie:
+    beispiel: |
+      With the polynomial of degree 8: $T(\tfrac12)=e^{p(-\tfrac12)}$, $p(-\tfrac12)=0.49856\ldots$, hence $T(\tfrac12)\approx1.64635$ (Kneser: $1.646354\ldots$).
+    einordnung: |
+      The simplest stage: [[kn.konstr.linear]]; smoothness at the seams: [[kn.konstr.quadratisch]]; polynomial without Kneser values: [[kn.konstr.stoerungsreihe]].
+    genau: |
+      Polynomial $p$ on $[-1,0]$ with $p(-1)=0$, $p(0)=1$; to the right $T(x)=e^{T(x-1)}$, to the left $T(x)=\ln T(x+1)$. Error table from linear ($10^{-2}$) to degree 12 ($10^{-10}$).
+    warum: |
+      The equation $T(x+1)=e^{T(x)}$ determines everything as soon as one knows a piece of length 1. A polynomial on this piece is easy to enter;
+      the error is enlarged by the factor $T'$ with each $e$-step to the right and reduced to the left.
+      In Desmos the continuation works, for example, with a list of pieces: $T_0(x)=p(x)$ on $[-1,0]$, $T_1(x)=e^{p(x-1)}$ on $[0,1]$, $T_2(x)=e^{e^{p(x-2)}}$ on $[1,2]$.
+    worum: |
+      Tetration to draw yourself: what one can enter in Desmos or on a pocket calculator, and how accurate it is.
 - id: kn.beob.pentation_werte
   quelle_hash: 06cb2fab84ad
   theorie_hash: a027fdb976e5
@@ -1152,6 +1207,51 @@
     worum: |
       What does the disk up to the fixed point $L$ look like when mapped with Kneser's super-logarithm? Like a slanted band upward and downward. Its shape is the only
       numerical ingredient in the uniqueness proof for the half-exponential function.
+- id: kn.beob.stoerungsreihe_fehler
+  quelle_hash: d0fad681edaa
+  theorie_hash: 4d351ed62bd1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'The perturbation series diverges: best order around N = 6–8, error 2·10⁻⁷, and the seams are C¹ automatically'
+    aussage: |
+      $\int_{-1}^0|\mathrm{sexp}_e-P_N|$ falls from $5.6\cdot10^{-3}$ ($N=1$) to $2.2\cdot10^{-7}$ ($N=6,7$) and then rises again
+      ($2.4\cdot10^{-7}$ at $N=8$, $5.4\cdot10^{-7}$ at $N=10$, $2.8\cdot10^{-5}$ at $N=14$): **the series in $u$ diverges**, and one stops at the smallest
+      order. For $N=8$ we measure $2.4\cdot10^{-7}$ (two quadratures), the forum states $5.52\cdot10^{-7}$; the largest error is $4.6\cdot10^{-7}$.
+      Every $P_N$ satisfies $P_N(-1)=0$, $P_N(0)=1$ and $P_N'(0)=P_N'(-1)$ exactly: if one continues it to all of $\mathbb R$ with $T(x+1)=e^{T(x)}$, the curve
+      is automatically once continuously differentiable at the seams (the second derivative jumps).
+    bereich: Base $e$, $P_N$ as in kn.konstr.stoerungsreihe, comparison with Kneser on $[-1,0]$
+    einfach: 'More steps do not always make the approximation better: up to about six to eight steps it gets more accurate, then worse again.
+      This is typical of series that do not converge — one does best to stop at the right point. The nice thing is that the approximation fits
+      together at the seams without a kink.'
+    pruefung:
+      f1_folgt_unmittelbar: The C¹ seam yes ($g_n'(1)-g_n'(0)$ is the derivative of a product of at least two factors that vanish at 0); the errors
+        are measured.
+      f2_benutzte_voraussetzungen: Kneser values from gp-tetration (40 digits), Gauss–Legendre with 40 nodes and trapezoid rule with 2001 points.
+      f3_spezialfall: 'Yes: the same pattern as the Gevrey divergence at the half rank (kn.beob.halbrang_divergenz).'
+      f4_uebertragbar: To other bases; there the best order is a function of the base.
+      f5_neue_frage: Does $g_n(1/2)$ grow like $n!\,A^{-n}$ (Gevrey-1), and where is the nearest singularity of the Borel transform?
+    bewertung:
+      nutzen: Shows the strength and the limit of the method and corrects the error figure from the forum downward.
+      richtigkeit: numerical, two quadratures agree
+    quellen:
+    - stelle: Error figure 5.52·10⁻⁷
+    - {}
+  en_theorie:
+    beispiel: |
+      Largest error of $P_8$ on $[-1,0]$: $4.6\cdot10^{-7}$; jump of the second derivative at the seam: $8.7\cdot10^{-6}$.
+    einordnung: |
+      Construction: [[kn.konstr.stoerungsreihe]]; same divergence at the half rank: [[kn.beob.halbrang_divergenz]].
+    genau: |
+      $\int_{-1}^0|\mathrm{sexp}_e-P_N|$: $5.6\cdot10^{-3}$, $8.5\cdot10^{-4}$, …, $2.2\cdot10^{-7}$ ($N=6,7$), $2.4\cdot10^{-7}$ ($N=8$), $2.8\cdot10^{-5}$ ($N=14$).
+    warum: |
+      Eventually the coefficients $g_n$ grow roughly like $n!$ — typical of perturbation series at parabolic points (the same Gevrey divergence as at the
+      half rank). Such series first get better and then worse; the best accuracy is reached at the smallest term.
+      That the seams are $C^1$ follows from the construction: the right side of the difference equation is a product of at least two factors that vanish at 0.
+    worum: |
+      How good is the perturbation series really, and why does one stop at order 8?
 - id: kn.beob.stufe5
   quelle_hash: e3010cdc705f
   theorie_hash: 75114238a511
@@ -1763,6 +1863,36 @@
       3. Hence the question hinges on a choice of tetration below 1 that does not yet exist.
     worum: |
       The ordinary infinite tower has a value exactly between $e^{-e}$ and $\eta$. For the next level one knows the upper bound $\eta_4$ — but not whether there is a lower one.
+- id: kn.frage.stoerungsreihe
+  quelle_hash: 9a365d227f18
+  theorie_hash: 6ad8508abdd8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Which tetration does the perturbation series sum to?
+    aussage: |
+      The series $\sum_n g_n(y)u^n$ from kn.konstr.stoerungsreihe diverges, and its best truncation lies $2\cdot10^{-7}$ away from Kneser. Is it the
+      asymptotic expansion (as $u\to0$) of a genuine family of superfunctions of $e^z-1+u$, and does their value at $u=1$ — for instance via a
+      Borel sum — give exactly Kneser's tetration? Or does the polynomial continuation pick a different solution that differs by a small θ-wave?
+      For $u>0$, $e^z-1+u$ no longer has a real fixed point (the parabolic point splits into two complex ones) — exactly the situation in which Kneser's construction
+      works; this speaks for Kneser but does not prove it.
+    einfach: The series never stops getting better and then worse again. Can one nevertheless "add it up" in a meaningful way, and does exactly
+      Kneser's tetration come out? That it comes within six digits of Kneser is a hint, but not a proof.
+  en_theorie:
+    beispiel: |
+      A first test: the best truncation lies $2\cdot10^{-7}$ from Kneser — a θ-wave of this size would not be ruled out.
+    einordnung: |
+      Related open question: [[kn.frage.halber_rang]]; tool: [[it.satz.ecalle_voronin]].
+    genau: |
+      Is $\sum g_n(y)u^n$ the asymptotic expansion of a family of superfunctions $G_u$ of $e^z-1+u$, and is $G_1(x+1)=\mathrm{sexp}_e(x)$ (Kneser)?
+    warum: |
+      For $u>0$, $e^z-1+u$ no longer has a real fixed point; the parabolic point splits into a complex pair — exactly the situation in which Kneser's
+      construction works. If the family $G_u$ is the Kneser-type solution for every $u$ and runs analytically in $u$ away from 0, the series would be its
+      expansion, and a Borel sum could recover it. None of this is proved.
+    worum: |
+      A divergent series with a surprisingly good truncation — is it exactly Kneser behind it?
 - id: kn.frage.tpid14
   quelle_hash: dc59427c43f7
   theorie_hash: 956651bc3a58
@@ -2640,6 +2770,69 @@
       3. For the curvature the freedom does not suffice: It jumps.
     worum: |
       An approximation for computing by hand: Between $-1$ and $0$ a parabola instead of a straight line — then for every base the curve has no more kinks.
+- id: kn.konstr.stoerungsreihe
+  quelle_hash: d60ca0af2ce6
+  theorie_hash: ed7c8665429d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'Tetration as a perturbation of eˣ − 1: polynomials in the height, order by order'
+    aussage: |
+      Embed tetration in the family $f_u(z)=e^z-1+u$ and look for $G(y)$ with
+      $$G(y)=e^{G(y-1)}-1+u,\qquad G(0)=0.$$
+      For $u=1$ this is $G(y)=e^{G(y-1)}$, i.e. $G(y)=\mathrm{sexp}_e(y-1)$; for $u=0$ it is $G\equiv0$ (the parabolic fixed point of $e^z-1$).
+      With the ansatz $G=\sum_{n\ge1}g_n(y)\,u^n$ one gets $g_1(y)=y$, and for $n\ge2$
+      $$g_n(y)-g_n(y-1)=[u^n]\bigl(e^{G(y-1)}-1-G(y-1)\bigr),$$
+      where only $g_1,\dots,g_{n-1}$ occur on the right. Hence each $g_n$ is a **polynomial of degree $2n-1$** in $y$ (Faulhaber's summation formula), and
+      $P_N(x)=\sum_{n\le N}g_n(x+1)$ is an approximation to $\mathrm{sexp}_e(x)$ that is defined at every real height.
+      $N=8$ gives exactly the degree-15 polynomial from the forum ($a_0=1$, $a_1=87159883/79833600$); there the recursion appears with $f_n=n!\,g_n$ and Bell polynomials,
+      which are nothing but the coefficients of $e^{G}$.
+    bereich: Base $e$; formal power series in an auxiliary parameter $u$, evaluated at $u=1$
+    einfach: Instead of attacking tetration directly, one bends a simpler map, eˣ − 1, step by step into eˣ. For the simple map nothing happens
+      at all (everything stays at 0). Each small bending step adds a polynomial in the height, and polynomials can be evaluated at any height,
+      also at 1/2. Adding up eight such steps gives a polynomial that matches Kneser's tetration to about six digits.
+    formen:
+    - notiz: embedding; $u=1$ is tetration
+    - notiz: the first two orders
+    - notiz: truncated perturbation series
+    beweis:
+      text: |
+        Compare coefficients in $u$: $[u^1]$ gives $g_1(y)=g_1(y-1)+1$, hence $g_1=y$. For $n\ge2$, $[u^n]e^{G}$ is a sum of products of at least two
+        $g_k$ with $k<n$ plus $g_n$ itself; the $g_n$ cancels against the left side. If the right side is a polynomial $q_n(y-1)$ of degree $2n-2$ (induction:
+        products of $g_k$ with degree sum $\le\sum(2k-1)\le2n-2$), then $g_n(y)=\sum_{t=0}^{y-1}q_n(t)$ is a polynomial of degree $2n-1$ with $g_n(0)=0$.
+        Checked exactly up to $n=14$ (exp.stoerungsreihe).
+    pruefung:
+      f1_folgt_unmittelbar: Yes, once one sees the embedding $e^z-1+u$; the forum gives only the recursion, not the derivation.
+      f2_benutzte_voraussetzungen: Only computation with formal power series; nothing is claimed about convergence in $u$.
+      f3_spezialfall: 'Yes: expansion of a superfunction in a family parameter, as for the half rank (kn.satz.rangjets_exppoly) with $x+1+\varepsilon(2^x-x-1)$.'
+      f4_uebertragbar: To every base via $f_u(z)=b^z-1+u$ (then $u=1$ gives $b^{G}$) and to $xe^x$ (product tetration, br.satz.produkt_parabolisch).
+      f5_neue_frage: Which tetration does a summation of the divergent series in $u$ give (kn.frage.stoerungsreihe)?
+    bewertung:
+      nutzen: Explains an approximation without Carleman matrices in one line and connects it to the half rank.
+      richtigkeit: complete; forum polynomial reproduced exactly
+    quellen:
+    - {}
+    - stelle: Derivation of the forum recursion as a perturbation series (13.10.2026)
+  en_theorie:
+    beispiel: |
+      $g_1=y$, $g_2=\tfrac{y(y-1)(2y-1)}{12}$. At $x=-\tfrac12$ (i.e. $y=\tfrac12$): $g_1=\tfrac12$, $g_2=0$, $g_3=-\tfrac1{768}$, $g_4=-\tfrac1{6144}$, …
+      $P_8(-\tfrac12)$ is off by about $4\cdot10^{-7}$ from $\mathrm{sexp}_e(-\tfrac12)=0.4985\ldots$
+    einordnung: |
+      Error and divergence: [[kn.beob.stoerungsreihe_fehler]]; open question about the sum: [[kn.frage.stoerungsreihe]]; counterpart at the half rank:
+      [[kn.satz.rangjets_exppoly]]; background on parabolic points: [[it.satz.leau_fatou]].
+    genau: |
+      $G(y)=e^{G(y-1)}-1+u$, $G(0)=0$; $G=\sum g_n(y)u^n$ with polynomials $g_n$ of degree $2n-1$; $\mathrm{sexp}_e(x)\approx\sum_{n\le N}g_n(x+1)$.
+    warum: |
+      **How one arrives at this.** At $u=0$, $e^z-1$ is "almost the identity" at the point 0 (a parabolic fixed point): the orbit of 0 stays at 0, everything is trivial.
+      Turn $u$ up a little, and each step pushes on by about $u$ — to first order $G\approx uy$, a polynomial in the height. In every
+      higher order an equation $g_n(y)-g_n(y-1)=$ (polynomial in the earlier $g_k$) arises, and such a **difference equation with a polynomial on the right
+      always has a polynomial solution** (like $\sum_{t<y}t^2=\tfrac{y(y-1)(2y-1)}6$). Polynomials can be evaluated at any height — so the continuation
+      comes out all by itself. Only at the end does one set $u=1$ and hope that the series is still usable. It is, up to about the eighth order.
+      The same idea lies behind our half rank: there $x+1$ is bent to $x+1+\varepsilon(2^x-x-1)$, and the coefficients are exponential polynomials.
+    worum: |
+      Where does a polynomial come from that matches Kneser's tetration to six digits, without Carleman matrices and without fixed-point computations? From a perturbation series.
 - id: kn.konstr.walker
   quelle_hash: 83e1a70596c7
   theorie_hash: 3aee657664be
