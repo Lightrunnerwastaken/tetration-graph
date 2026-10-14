@@ -1,0 +1,128 @@
+gebiet: kn
+# Identitätssuche Etappe 1 (14.10.2026): Struktur der Störungsreihe und Fourier-Abfall von Knesers θ.
+# Rechnungen: forschung/identitaeten_2026_10_14/ (BERICHT_ETAPPE1.md).
+aussagen:
+
+- id: kn.satz.stoerungsreihe_tangens
+  titel: 'Der Rand der Störungsreihe ist die Tangensfunktion: Leitkoeffizienten sind Tangentenzahlen'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [superfunktion]
+  bereich: '$G(y)=e^{G(y-1)}-1+u$, $G(0)=0$, $G=\sum g_n(y)u^n$ wie in kn.konstr.stoerungsreihe'
+  aussage: |
+    Sammelt man von jedem Polynom $g_n$ nur das höchste Glied $y^{2n-1}$, so entsteht eine geschlossene Funktion:
+    $$\sum_{n\ge1}\mathrm{LC}(g_n)\,u^n y^{2n-1}=\sqrt{2u}\,\tan\!\Bigl(y\sqrt{u/2}\Bigr),\qquad \mathrm{LC}(g_n)=\frac{2^{1-n}\,T_n}{(2n-1)!},$$
+    mit den Tangentenzahlen $T_n=1,2,16,272,7936,\dots$ ($\tan x=\sum T_n x^{2n-1}/(2n-1)!$). Auch die nächste Schicht ist geschlossen: mit
+    $H(y)=G(y-1)$ und $\vartheta=y\sqrt{u/2}$ ist der Anteil vom Gewicht $-3$
+    $$H_1=\frac u3\Bigl(\sec^2\vartheta\,\ln\cos\vartheta+1-4\sec^2\vartheta\Bigr).$$
+  einfach: >-
+    Die Polynome der Störungsreihe sehen kompliziert aus. Nimmt man aber von jedem nur den grössten Teil, ergibt sich zusammen genau die
+    Tangensfunktion aus der Schule. Auch der zweitgrösste Teil lässt sich mit Kosinus und Logarithmus geschlossen hinschreiben.
+  formen:
+    - {tex: '\sum_n \mathrm{LC}(g_n)u^ny^{2n-1}=\sqrt{2u}\tan(y\sqrt{u/2})', notiz: 'höchste Schicht'}
+    - {tex: 'H_1=\tfrac u3(\sec^2\vartheta\ln\cos\vartheta+1-4\sec^2\vartheta),\ \vartheta=y\sqrt{u/2}', notiz: 'zweite Schicht'}
+  beweis:
+    art: vollstaendig
+    text: |
+      Gib $y$ das Gewicht 1 und $u$ das Gewicht $-2$. Aus $H(y+1)-H(y)=u+\sum_{m\ge2}H^m/m!$ und $H(y+1)-H(y)=H'+\tfrac12H''+\dots$ (jede Ableitung senkt
+      das Gewicht um 1) folgt Schicht für Schicht: Gewicht $-2$: $H_0'=H_0^2/2+u$, $H_0(0)=0$, also $H_0=\sqrt{2u}\tan\vartheta$. Gewicht $-3$:
+      $H_1'-H_0H_1=-H_0^3/12-uH_0/2$ mit $H_1(0)=-u$ (aus $G(-1)=\ln(1-u)$); integrierender Faktor $\cos^2\vartheta$. Beide Schichten stimmen mit den
+      exakten Polynomen bis $n=12$ überein.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K1/K2 und Beweis B1; b_gewichte.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein — man braucht die Gewichtszerlegung; dann ist jede Schicht eine gewöhnliche Differentialgleichung.'
+    f2_benutzte_voraussetzungen: 'Nur die formale Rekursion der Störungsreihe.'
+    f3_spezialfall: 'Ja: die höchste Schicht ist der parabolische Grenzfall $H''=H^2/2+u$ (Riccati), wie bei der parabolischen Implosion.'
+    f4_uebertragbar: 'Auf jede Störung $h(z)-1+u$ mit $h(z)=1+z+z^2/2+\dots$ und auf $x\,e^x$; die höchste Schicht hängt nur vom $z^2$-Koeffizienten ab.'
+    f5_neue_frage: 'Die Pole von $\tan$ bei $y\sqrt{u/2}=\pi(k+\frac12)$ — legen sie die Singularitäten der Borel-Transformierten fest (kn.frage.stoerungsreihe)?'
+  bewertung: {richtigkeit: 'vollständig; exakt geprüft bis n = 12', neuheit: neu_ungeprueft, nutzen: 'Erste geschlossene Struktur in der Störungsreihe; verbindet sie mit Tangentenzahlen und gibt Kandidaten für ihre Singularitäten.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.stoerungsreihe}
+    - {typ: motiviert, ziel: kn.frage.stoerungsreihe}
+    - {typ: verwandt, ziel: it.satz.leau_fatou}
+
+- id: kn.satz.stoerungsreihe_baeume
+  titel: 'Die Störungsreihe zählt Bäume: n!·gₙ(k) sind markierte Bäume der Höhe ≤ k (bei k = 3 die Bell-Zahlen)'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [superfunktion]
+  aussage: |
+    An ganzen Höhen ist $G(k)=f^{\circ k}(0)$ mit $f(z)=u+e^z-1$. Kombinatorisch heisst das: $n!\,g_n(k)$ ist die Anzahl der Bäume mit $n$ markierten
+    Blättern und Höhe $\le k$, deren innere Knoten nichtleere Mengen von Kindern sind (Einzelkinder erlaubt). Folgerungen:
+    $n!\,g_n(2)=1$, $\;n!\,g_n(3)=B_{n+1}$ (Bell-Zahlen), $\;g_n(-1)=-1/n$ (wegen $G(-1)=\ln(1-u)$).
+    Die Folgen $n!\,g_n(4)=4,14,87,658,5801,\dots$ und das ganzzahlige Newton-Dreieck der $g_n$ (Zeilensummen $1,3,70,4640,668316$) stehen nicht in der OEIS.
+    Die Polynome $g_n(y)$ setzen diese Baumzählung auf gebrochene Höhen fort — die Tetration bei $u=1$ ist die „Zahl der Bäume der Höhe $x+1$“.
+  einfach: >-
+    Die Zahlen in der Störungsreihe zählen etwas Konkretes: Bäume mit beschrifteten Blättern, die nicht höher als k sind. Für Höhe 3 kommen genau die
+    Bell-Zahlen heraus, die zählen, wie man eine Menge in Gruppen aufteilen kann. Die Tetration ist damit eine Art „Baumzählung bei gebrochener Höhe“.
+  beweis:
+    art: vollstaendig
+    text: |
+      $u$ ist die erzeugende Funktion eines einzelnen markierten Blatts, $e^z-1$ die einer nichtleeren Menge; $f^{\circ k}(0)$ ist daher die exponentielle
+      erzeugende Funktion der Bäume der Höhe $\le k$ (Spezies-Komposition). $G(3)=e^{e^u-1+u}-1+u$ und $\tfrac{d}{du}e^{e^u-1}=e^{e^u-1+u}$ geben die Bell-Zahlen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K3; b_baeume.py, b_kombinatorik.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald man die Rekursion als Spezies-Komposition liest.'
+    f2_benutzte_voraussetzungen: 'Exponentielle erzeugende Funktionen; nur ganze Höhen.'
+    f3_spezialfall: 'Ja: Bäume als Iteration von eˣ − 1 (vgl. it.satz.zeta_polynom_partitionen).'
+    f4_uebertragbar: 'Auf $x\,e^x$ (Bäume mit ausgezeichnetem Kind, br.beob.produkt_iteration_dreieck).'
+    f5_neue_frage: 'Gibt es eine Zähldeutung der Werte bei halber Höhe (positive Rationalzahlen?) oder des Grenzwerts bei $u=1$?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Gibt der Störungsreihe eine anschauliche Bedeutung und liefert neue Zählfolgen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.stoerungsreihe}
+    - {typ: analog_zu, ziel: it.satz.zeta_polynom_partitionen}
+
+- id: kn.beob.theta_fourier_algebraisch
+  titel: 'Knesers θ hat Fourier-Koeffizienten, die nur algebraisch fallen (etwa n^(−1.2)) — θ ist auf der reellen Achse singulär'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  bereich: 'Basis $e$; $\mathrm{sexp}(z)=F(z+\theta(z))$ mit der regulären Superfunktion $F=\sigma^{-1}(e^{Lz})$ am Fixpunkt $L$, $\sigma''(L)=1$; $\theta=\sum a_ne^{2\pi inz}$ in der oberen Halbebene'
+  aussage: |
+    Die ersten Koeffizienten (auf 162 Stellen):
+    $a_1=0.00385157873541-0.09056477795412\,i$, $a_2=0.00210091678690-0.03795624815248\,i$, $a_3=0.00144754775842-0.02281729713002\,i$;
+    $\arg a_n\to$ nahe $-\pi/2$. $|a_n|$ fällt **nicht** geometrisch, sondern algebraisch: der lokale Exponent ist $1.254$ ($n=2$), $1.241$ ($8$),
+    $1.208$ ($32$), $1.192$ ($64$) und sinkt langsam ($a_{64}$ auf $10^{-97}$ genau). Also hat $\theta$, als Funktion von $z$ betrachtet,
+    Singularitäten auf der reellen Achse — die reguläre Lösung am komplexen Fixpunkt und Kneser unterscheiden sich dort nicht analytisch.
+  einfach: >-
+    Knesers Tetration ist die „gewöhnliche“ Lösung am komplexen Fixpunkt plus eine kleine Welle. Die Welle besteht aus Schwingungen, deren Stärke
+    erstaunlich langsam abnimmt. Das zeigt: die Welle hat auf der reellen Achse scharfe Stellen. Wie schnell genau sie abnimmt, könnte eine neue
+    Kennzahl der Kneser-Tetration sein.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K8; a_theta.py, daten/theta_*.json'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'fatou.gp-Fork bei dps 120/160/200 auf Kreisen mit Radius 0.2 (bei grösserem |Im z| bricht der Motor über dps 60 ab).'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis über η und auf die Pentation (θ zwischen regulärer und Kneser-artiger Lösung, kn.beob.einheitliche_raenge).'
+    f5_neue_frage: 'Wie lautet der genaue Abfall — $n^{-1-c}$ oder $n^{-1}(\ln n)^{-p}$? (kn.frage.theta_exponent)'
+  bewertung: {richtigkeit: 'numerisch, 162 Stellen für a₁–a₃', neuheit: neu_ungeprueft, nutzen: 'Erste hochgenaue θ-Koeffizienten; zeigt eine unerwartete Singularitätsstruktur.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.kneser}
+    - {typ: verwandt, ziel: fg.satz.kohomologisch}
+    - {typ: motiviert, ziel: kn.frage.theta_exponent}
+
+- id: kn.frage.theta_exponent
+  titel: 'Welche Zahl bestimmt den Fourier-Abfall von Knesers θ?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  aussage: |
+    Die Koeffizienten $a_n$ von $\theta$ (kn.beob.theta_fourier_algebraisch) fallen ungefähr wie $n^{-1.2}$, der Exponent sinkt aber noch. Ist der Abfall
+    $n^{-1-c}$ mit einer exakten Konstante $c$ — etwa aus $L$ ($\mathrm{Re}(1/L)=0.169$, oder aus $2\pi i/L$) — oder $n^{-1}(\ln n)^{-p}$?
+    Ein exakt bestimmbarer Exponent wäre eine echte, nur Kneser eigene Konstante; die Suche nach Beziehungen zu klassischen Konstanten
+    (ar.beob.keine_relationen) hat für die Werte selbst nichts ergeben.
+  einfach: >-
+    Wie schnell wird die Welle in Knesers Tetration schwächer? Wenn die Antwort eine genaue Zahl ist, die man aus dem Fixpunkt ausrechnen kann,
+    hätte man eine neue Formel, die zu Kneser gehört.
+  quellen: [{ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.theta_fourier_algebraisch}
+    - {typ: verwandt, ziel: br.satz.gevrey_fourier}

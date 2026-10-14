@@ -43,6 +43,38 @@
       3. Rigorous relative to the digits — which themselves are not interval-certified.
     worum: |
       Is $T_e(\tfrac12)$ perhaps a simple fraction or a simple algebraic number? With almost 2000 digits one can rule this out for huge denominators and heights.
+- id: ar.beob.keine_relationen
+  quelle_hash: 130fc995dca3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'No formula with π, e, γ, ζ(3), Γ(¼) …: 50 tetration constants checked to 160 digits'
+    aussage: |
+      Checked to 160 reliable digits (levels dps 120/160/200): Kneser values for the bases $e$ and 2 ($T_e(\tfrac12)=1.6463542337511945809\ldots$, $T(-\tfrac12)$,
+      $\mathrm{slog}$ values), the Taylor coefficients $a_1\ldots a_{15}$ of $\mathrm{sexp}_e$ at 0, $\mathrm{slog}'(0)$, $\mathrm{slog}''(0)$,
+      $\int_0^1T_e=1.7145219588906204882\ldots$, $\int_{-1}^0T_e$, the constants $D$ and $0!_2$ of the exponential factorial, $\mathrm{prodtet}_e(\tfrac12)$,
+      Fatou constants and the θ coefficients. Against 23 classical constants (π, e, $e^e$, γ, ln 2, ln 3, ln π, ζ(3), Catalan, Γ(¼), Γ(⅓), Ω, $L$, …)
+      there is **no integer relation with coefficient norm below about $4\cdot10^5$**; against small bases of five constants such as $\{1,\pi,e,\gamma,\ln2\}$ none below
+      $10^{22}$; no product of powers below $10^{9}$; no algebraic number of degree $\le6$ with height below $10^{19}$.
+      Near-hits vanish at full precision: $\mathrm{slog}'(0)=0.915946$ versus Catalan $0.915966$, $T_e(\tfrac12)$ versus $\tfrac{19}8\ln2$,
+      $0!_2$ versus γ. The method rediscovers three built-in control formulas.
+    einfach: We computed 50 numbers from tetration to exactly 160 digits and had the computer search for formulas with π, e, Euler's constant
+      and many others. There are none — at least none with reasonably small numbers in them. A few numbers look familiar in their first digits,
+      but that is coincidence.
+    pruefung:
+      f1_folgt_unmittelbar: No (lattice reduction); the bounds are rigorous for the respective LLL lattice.
+      f2_benutzte_voraussetzungen: Kneser values from the fatou.gp fork, accuracy secured over three levels; hits count only if they hold 15 further
+        digits.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every new constant (base η, pentation, half rank).
+      f5_neue_frage: Are there constants that belong to Kneser alone (Fourier decay of θ, kn.frage.theta_exponent)?
+    bewertung:
+      nutzen: Rules out simple formulas for the known Kneser numbers and answers gr.frage.integral_form negatively for small coefficients.
+      richtigkeit: numerical, rigorous lattice bounds
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, Table 2; a_relationen.py, daten/relationen.json
 - id: ar.frage.e_hoch_e
   quelle_hash: 4853cefd39bb
   theorie_hash: 4f9db302b632
@@ -434,6 +466,37 @@
       3. Liouville: A number that is approximated this well by fractions is not algebraic.
     worum: |
       A tower of descending numbers — $n^{(n-1)^{\cdots^{2^1}}}$ — grows so fast that the sum of its reciprocals is certainly transcendental.
+- id: ar.satz.ef_null_ableitung
+  quelle_hash: 78e3df305a8e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: '0!₂ is a derivative: lim x!₂ (x → 0) = F′(1) = 0.5730489722129730653…'
+    aussage: |
+      For every differentiable continuation, $\lim_{x\downarrow0}F(x)=F'(1)$. For the continuation via Kneser (ar.konstr.ef_sexp) this is
+      $$0!_2=F'(1)=0.5730489722129730653505964537816700999925\ldots$$
+      (160 digits), and $D=\mathrm{slog}_e(262144\ln5+\ln\ln6)-4=-1.0552140087126523890449559784636570718988\ldots$ (error of this formula about $10^{-180000}$).
+      Thus TPID 2 becomes a question about a slope: it conjectures $F'(1)=\gamma$ for the totally monotone continuation. The Kneser continuation has $0.57305$, i.e. $\gamma-0.00417$.
+    bereich: every differentiable continuation $F(x)=x!_2$ with $F(x+1)=(x+1)^{F(x)}$, $F(1)=1$
+    einfach: What the exponential factorial is "at 0" depends only on how steep it is at 1. The old conjecture that Euler's constant 0.5772 comes
+      out there is therefore a statement about this slope. Our continuation has the slope 0.57305 — just off.
+    beweis:
+      text: $F(x+1)=(x+1)^{F(x)}$ gives $F(x)=\ln F(x+1)/\ln(1+x)$. With $F(1)=1$, $\ln F(1+x)=F'(1)\,x+O(x^2)$ and $\ln(1+x)=x+O(x^2)$, hence
+        $F(x)\to F'(1)$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes (L'Hôpital).
+      f2_benutzte_voraussetzungen: Differentiability at 1.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every tower sequence $a_{n}=b_n^{a_{n-1}}$ with $b_1=1$.
+      f5_neue_frage: Which continuation has $F'(1)=\gamma$ — and is it totally monotone?
+    bewertung:
+      nutzen: Makes TPID 2 concretely testable and gives the exact Kneser value.
+      richtigkeit: complete; value to 160 digits
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K7; a_konstanten.py
+    - {}
 - id: ar.satz.funktional_ks
   quelle_hash: 2330ea5d457c
   theorie_hash: 130b8ba7b00c

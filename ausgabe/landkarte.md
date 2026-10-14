@@ -2,11 +2,11 @@
 
 Hauptideen und Unterideen mit Füllstand (Status der Aussagen), Herkunft (Literatur / Forum / nur eigene Arbeit) und den offenen Aussagen (Vermutungen, Fragen, Annahmen, bedingte Sätze; nach Tragweite). Erzeugt von baue.py.
 
-## Fraktionale Fortsetzung (101 Aussagen)
+## Fraktionale Fortsetzung (103 Aussagen)
 
 Wie man T(x) zwischen den ganzen Höhen festlegt — und welche Wahl die natürliche ist.
 
-Stand: bewiesen 45, bedingt 9, numerisch 19, Vermutung 14, offen 11, verworfen 3 · Literatur 50 / Forum 20 / eigen 31
+Stand: bewiesen 47, bedingt 9, numerisch 19, Vermutung 14, offen 11, verworfen 3 · Literatur 50 / Forum 20 / eigen 33
 
 - **Halbe Exponentialfunktion** (26): bewiesen 8, bedingt 6, numerisch 6, Vermutung 4, verworfen 2 · Literatur 7 / Forum 1 / eigen 18 · offen: kn.satz.halbexp_beschraenkt, kn.satz.polynom_halbexp_hauptsatz, kn.satz.polynom_halbexp_reduktion, kn.satz.polynom_hauptsatz_kr0, kn.verm.polynom_halbexp, kn.verm.polynom_halbexp_eckmoden, kn.verm.polynom_halbexp_kern, kn.verm.polynom_halbexp_schranke
 - **Andere Konstruktionen** (23): bewiesen 10, bedingt 1, numerisch 3, Vermutung 5, offen 4 · Literatur 10 / Forum 11 / eigen 2 · offen: kn.frage.abel_bruchsumme, kn.frage.tpid14, kn.frage.tpid16, kn.frage.tpid17, kn.verm.carleman_eigenwerte, kn.verm.carleman_kneser, kn.verm.szekeres_wachstum, kn.verm.tpid3 …
@@ -14,7 +14,7 @@ Stand: bewiesen 45, bedingt 9, numerisch 19, Vermutung 14, offen 11, verworfen 3
 - **Der Grenzfall η** (14): bewiesen 8, numerisch 2, Vermutung 1, offen 3 · Literatur 9 / Forum 2 / eigen 3 · offen: br.frage.implosion, kl.frage.eta_analytisch, kl.frage.stetig_eta, kl.verm.lambert_zeta
 - **Kneser über η** (9): bewiesen 5, numerisch 3, verworfen 1 · Literatur 7 / Forum 0 / eigen 2
 - **Eindeutigkeit** (7): bewiesen 4, numerisch 1, Vermutung 1, offen 1 · Literatur 6 / Forum 0 / eigen 1 · offen: kn.frage.beta_methode, kn.verm.tk_c2
-- **Tetration als Störung** (3): bewiesen 1, numerisch 1, offen 1 · Literatur 0 / Forum 2 / eigen 1 · offen: kn.frage.stoerungsreihe
+- **Tetration als Störung** (5): bewiesen 3, numerisch 1, offen 1 · Literatur 0 / Forum 2 / eigen 3 · offen: kn.frage.stoerungsreihe
 - **Reelle Kennzeichnung?** (1): offen 1 · Literatur 1 / Forum 0 / eigen 0 · offen: br.frage.bohr_mollerup
 - **Selbst ausrechnen** (1): numerisch 1 · Literatur 0 / Forum 1 / eigen 0
 
@@ -68,23 +68,24 @@ Stand: bewiesen 30, bedingt 1, numerisch 6, Vermutung 1, offen 3, verworfen 2 ·
 - **Spiralen und Mittelwerte** (10): bewiesen 4, bedingt 1, numerisch 1, offen 2, verworfen 2 · Literatur 4 / Forum 0 / eigen 6 · offen: fp.frage.holomorphe_familie, fp.verm.doppelmittel
 - **Periode 2 unter e⁻ᵉ** (6): bewiesen 6 · Literatur 5 / Forum 1 / eigen 0
 
-## Zahlen und Arithmetik (29 Aussagen)
+## Zahlen und Arithmetik (32 Aussagen)
 
 Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.
 
-Stand: bewiesen 20, bedingt 3, numerisch 1, Vermutung 3, offen 2 · Literatur 19 / Forum 1 / eigen 9
+Stand: bewiesen 20, bedingt 3, numerisch 3, Vermutung 3, offen 3 · Literatur 19 / Forum 1 / eigen 12
 
 - **Transzendenz** (22): bewiesen 15, bedingt 3, Vermutung 2, offen 2 · Literatur 15 / Forum 1 / eigen 6 · offen: ar.verm.schanuel, ar.frage.e_hoch_e, ar.frage.ganze_tuerme, ar.satz.schanuel_orbit, ar.verm.gelfond_turm
 - **Kongruenzen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
 - **Kneser–Schanuel** (3): bewiesen 1, numerisch 1, Vermutung 1 · Literatur 0 / Forum 0 / eigen 3 · offen: ar.verm.ks
+- **Formeln und Identitäten** (3): numerisch 2, offen 1 · Literatur 0 / Forum 0 / eigen 3 · offen: kn.frage.theta_exponent
 
-## Dynamik von bᶻ und der Fixpunkt L (22 Aussagen)
+## Dynamik von bᶻ und der Fixpunkt L (23 Aussagen)
 
 Was passiert, wenn man b^z immer wieder anwendet — und welche Rolle die Fixpunkte spielen.
 
-Stand: bewiesen 22 · Literatur 19 / Forum 1 / eigen 2
+Stand: bewiesen 23 · Literatur 20 / Forum 1 / eigen 2
 
-- **Parabolisch** (10): bewiesen 10 · Literatur 10 / Forum 0 / eigen 0
+- **Parabolisch** (11): bewiesen 11 · Literatur 11 / Forum 0 / eigen 0
 - **Anziehend und abstossend** (6): bewiesen 6 · Literatur 6 / Forum 0 / eigen 0
 - **Fixpunkte von bᶻ** (5): bewiesen 5 · Literatur 2 / Forum 1 / eigen 2
 - **Indifferent** (1): bewiesen 1 · Literatur 1 / Forum 0 / eigen 0
@@ -99,32 +100,32 @@ Stand: bewiesen 9, offen 3, verworfen 1 · Literatur 10 / Forum 2 / eigen 1
 - **Kreis und Fourier** (4): bewiesen 3, verworfen 1 · Literatur 3 / Forum 0 / eigen 1
 - **Iteration als Wirkung** (2): bewiesen 1, offen 1 · Literatur 0 / Forum 2 / eigen 0 · offen: br.frage.iterationsleiter
 
-## Verwandte Funktionen (9 Aussagen)
+## Verwandte Funktionen (11 Aussagen)
 
 Andere Funktionen, die man wie die Tetration iteriert und fortsetzt — und was man an ihnen über die Tetration lernt.
 
-Stand: bewiesen 4, bedingt 1, numerisch 2, offen 2 · Literatur 2 / Forum 7 / eigen 0
+Stand: bewiesen 6, bedingt 1, numerisch 2, offen 2 · Literatur 2 / Forum 8 / eigen 1
 
-- **Produkt-Tetration und Vergleichsfunktionen** (5): bewiesen 2, bedingt 1, numerisch 1, offen 1 · Literatur 0 / Forum 5 / eigen 0 · offen: br.frage.verwandte_funktionen
-- **Exponentielle Fakultät** (2): numerisch 1, offen 1 · Literatur 0 / Forum 2 / eigen 0 · offen: ar.frage.ef_fortsetzung
+- **Produkt-Tetration und Vergleichsfunktionen** (6): bewiesen 3, bedingt 1, numerisch 1, offen 1 · Literatur 0 / Forum 5 / eigen 1 · offen: br.frage.verwandte_funktionen
+- **Exponentielle Fakultät** (3): bewiesen 1, numerisch 1, offen 1 · Literatur 0 / Forum 3 / eigen 0 · offen: ar.frage.ef_fortsetzung
 - **Elementare Superfunktionen** (2): bewiesen 2 · Literatur 2 / Forum 0 / eigen 0
 
 ## Stärkste Kopplungen zwischen Hauptideen
 
-- Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 53.53
+- Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 53.77
 - Basiswechsel T ∘ slog — Fraktionale Fortsetzung: 40.05
-- Fraktionale Fortsetzung — Höhere Stufen: 30.48
-- Dynamik von bᶻ und der Fixpunkt L — Fraktionale Fortsetzung: 27.27
+- Fraktionale Fortsetzung — Höhere Stufen: 30.73
+- Dynamik von bᶻ und der Fixpunkt L — Fraktionale Fortsetzung: 28.26
 - Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Unendlicher Turm und Basen-Ebene: 22.61
 - Basiswechsel T ∘ slog — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 21.35
 - Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 18.72
 - Fraktionale Fortsetzung — Unendlicher Turm und Basen-Ebene: 17.25
-- Dynamik von bᶻ und der Fixpunkt L — Unendlicher Turm und Basen-Ebene: 13.96
+- Dynamik von bᶻ und der Fixpunkt L — Unendlicher Turm und Basen-Ebene: 14.08
 - Basiswechsel T ∘ slog — Unendlicher Turm und Basen-Ebene: 12.32
 
 ## Stärkste Kopplungen über Ideengrenzen
 
-- Parabolisch (Dynamik von bᶻ und der Fixpunkt L) — Der Grenzfall η (Fraktionale Fortsetzung): 7.77
+- Parabolisch (Dynamik von bᶻ und der Fixpunkt L) — Der Grenzfall η (Fraktionale Fortsetzung): 8.0
 - Anziehend und abstossend (Dynamik von bᶻ und der Fixpunkt L) — Regulär unter η (Fraktionale Fortsetzung): 7.39
 - Andere Konstruktionen (Fraktionale Fortsetzung) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 5.61
 - Regulär unter η (Fraktionale Fortsetzung) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 5.61

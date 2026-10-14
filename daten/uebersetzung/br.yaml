@@ -1,5 +1,38 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: br.beob.produkt_iteration_dreieck
+  quelle_hash: b49b67923157
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'The iteration of x·eˣ: a new counting triangle and exact Fatou coefficients'
+    aussage: |
+      As for $e^x-1$ (it.satz.zeta_polynom_partitionen), the coefficients of $(xe^x)^{\circ t}$ are polynomials in $t$; in the binomial basis
+      $\binom tj$ the integer triangle $2;\ 3,12;\ 4,84,144;\ 5,510,2760,2880;\dots$ arises, with diagonal $n!(n-1)!$ and row sums $2,15,232,6155$.
+      At $t=-1$ one gets $(-n)^{n-1}$, i.e. the coefficients of Lambert W — the counterpart of the Möbius number for $e^x-1$.
+      The Fatou coordinate is exactly
+      $$\alpha(x)=-\tfrac1x+\tfrac12\ln x-\tfrac x6+\tfrac{x^2}{16}-\tfrac{19x^3}{540}+\tfrac{x^4}{48}-\tfrac{41x^5}{4200}+\tfrac{37x^6}{103680}+\dots$$
+      (for $e^x-1$: $-\tfrac2x+\tfrac13\ln x-\tfrac x{36}+\tfrac{x^2}{540}+\dots$). The triangle, row sums, Julia coefficients $2,-3,10,-50,321,-2422$ and the
+      half iterate are not in the OEIS; only the simple iterates (×2, A185298) are known.
+    einfach: For product tetration, too, the coefficients of the fractional repetitions count something — the numbers for this are not yet in
+      any sequence database. Backward (t = −1), exactly the known coefficients of the Lambert W function appear.
+    beweis:
+      text: Polynomiality in $t$ as for every formal iteration with $f'(0)=1$ (Jabotinsky); the value at $t=-1$ is the inverse series $W(x)=\sum(-n)^{n-1}x^n/n!$;
+        Fatou coefficients from the recursion of $\alpha(xe^x)=\alpha(x)+1$. Checked exactly up to $n=16$.
+    pruefung:
+      f1_folgt_unmittelbar: The identities yes; the combinatorial interpretation (chains of pointed partitions, Chapoton–Vallette) has not been
+        checked.
+      f2_benutzte_voraussetzungen: Formal power series.
+      f3_spezialfall: Analogous to it.satz.zeta_polynom_partitionen.
+      f4_uebertragbar: To every map $x\,h(x)$ with $h(0)=1$.
+      f5_neue_frage: Which objects does the triangle count — chains in the lattice of pointed partitions?
+    bewertung:
+      nutzen: New counting sequences and exact tools for product tetration.
+      richtigkeit: complete for the identities; interpretation open
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K5/K6; b_diagonalen.py, a_fatou.py
 - id: br.beob.produkt_tetration_werte
   quelle_hash: 0abbbf4fb4a6
   theorie_hash: 3423bb890be3

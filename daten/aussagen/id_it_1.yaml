@@ -1,0 +1,38 @@
+gebiet: it
+# Identitätssuche Etappe 1 (14.10.2026): Kombinatorik der gebrochenen Iterierten von eˣ − 1.
+aussagen:
+
+- id: it.satz.zeta_polynom_partitionen
+  titel: 'Gebrochene Iterierte von eˣ − 1 zählen Ketten im Partitionsverband (Zeta-Polynom)'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [iterationsgruppe]
+  bereich: '$f(x)=e^x-1$, formale Iterierte $f^{\circ t}$ am parabolischen Fixpunkt 0, $t$ beliebig'
+  aussage: |
+    Die Taylor-Koeffizienten der $t$-ten Iterierten sind Polynome in $t$ mit einer Zähldeutung:
+    $$n!\,[x^n]\,(e^x-1)^{\circ t}=\sum_j B(n,j)\binom tj=Z(\Pi_n,t),$$
+    wobei $B(n,j)$ die Zahl der echten Ketten der Länge $j$ im Verband $\Pi_n$ der Mengenpartitionen ist und $Z$ dessen Zeta-Polynom. Spezialfälle:
+    $t=1,2,3$ geben Bell-artige Zahlen (A000110, A000258, A000307), $t=-1$ die Möbius-Zahl $(-1)^{n-1}(n-1)!$ (Koeffizienten von $\ln(1+x)$),
+    $t=\tfrac12$ die halbe Iterierte (A052104), und die Diagonale $n!(n-1)!/2^{n-1}$ zählt die maximalen Ketten.
+  einfach: >-
+    Wendet man eˣ − 1 „t-mal“ an, auch für gebrochenes t, dann zählen die Koeffizienten etwas: wie viele Wege es gibt, eine Menge Schritt für Schritt
+    in immer gröbere Gruppen zusammenzufassen. Die halbe Iterierte ist so eine Zählung „bei halber Schrittzahl“.
+  beweis:
+    art: vollstaendig
+    text: |
+      $(e^x-1)^{\circ k}$ ist die erzeugende Funktion der Ketten $\hat0=\pi_0\le\pi_1\le\dots\le\pi_k=\hat1$ im Partitionsverband (Spezies-Komposition von
+      „nichtleere Menge“); Zusammenfassen gleicher Glieder gibt $\sum_jB(n,j)\binom kj$, ein Polynom in $k$, das die formale Iterierte für alle $t$ festlegt
+      (Jabotinsky). Exakt geprüft bis $n=16$.
+  quellen: [{ref: oeis_A008826}, {ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K4; b_diagonalen.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (klassische Kombinatorik).'
+    f2_benutzte_voraussetzungen: 'Formale Iteration; über Konvergenz wird nichts gesagt (die Reihe divergiert für gebrochenes t, it.satz.baker).'
+    f3_spezialfall: 'Ja: Zeta-Polynome endlicher Verbände.'
+    f4_uebertragbar: 'Auf $x\,e^x$ (br.beob.produkt_iteration_dreieck) und auf die Störungsreihe (kn.satz.stoerungsreihe_baeume).'
+    f5_neue_frage: 'Gibt es eine Zähldeutung, die die divergente Reihe bei $t=\tfrac12$ summierbar macht?'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Verbindet gebrochene Iteration mit klassischer Kombinatorik.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: it.satz.erdos_jabotinsky}
+    - {typ: verwandt, ziel: it.satz.baker}

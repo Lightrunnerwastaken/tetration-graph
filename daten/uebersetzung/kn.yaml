@@ -1457,6 +1457,37 @@
       this threshold the value is $e$. There the curve $b^x$ touches the line $y=x$. The same happens one level higher: The curve of tetration
       $x\mapsto{}^xb$ touches the line $y=x$ at exactly one base $\eta_4\approx1.6353$, at the point $e_4\approx3.0885$. And exactly up to $\eta_4$
       the infinite pentation has a value.
+- id: kn.beob.theta_fourier_algebraisch
+  quelle_hash: 671403463eb6
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Kneser's θ has Fourier coefficients that decay only algebraically (about n^(−1.2)) — θ is singular on the real axis
+    aussage: |
+      The first coefficients (to 162 digits):
+      $a_1=0.00385157873541-0.09056477795412\,i$, $a_2=0.00210091678690-0.03795624815248\,i$, $a_3=0.00144754775842-0.02281729713002\,i$;
+      $\arg a_n\to$ near $-\pi/2$. $|a_n|$ does **not** decay geometrically but algebraically: the local exponent is $1.254$ ($n=2$), $1.241$ ($8$),
+      $1.208$ ($32$), $1.192$ ($64$) and falls slowly ($a_{64}$ exact to $10^{-97}$). So $\theta$, viewed as a function of $z$, has
+      singularities on the real axis — the regular solution at the complex fixed point and Kneser's solution do not differ analytically there.
+    bereich: Base $e$; $\mathrm{sexp}(z)=F(z+\theta(z))$ with the regular superfunction $F=\sigma^{-1}(e^{Lz})$ at the fixed point $L$, $\sigma'(L)=1$;
+      $\theta=\sum a_ne^{2\pi inz}$ in the upper half-plane
+    einfach: 'Kneser''s tetration is the "ordinary" solution at the complex fixed point plus a small wave. The wave consists of oscillations whose
+      strength decreases surprisingly slowly. This shows: the wave has sharp spots on the real axis. Exactly how fast it decreases could be a
+      new key number of Kneser''s tetration.'
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: fatou.gp fork at dps 120/160/200 on circles of radius 0.2 (for larger |Im z| the engine breaks down above dps
+        60).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every base via η and to pentation (θ between the regular and the Kneser-type solution, kn.beob.einheitliche_raenge).
+      f5_neue_frage: What is the exact decay — $n^{-1-c}$ or $n^{-1}(\ln n)^{-p}$? (kn.frage.theta_exponent)
+    bewertung:
+      nutzen: First high-precision θ coefficients; shows an unexpected singularity structure.
+      richtigkeit: numerical, 162 digits for a₁–a₃
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K8; a_theta.py, daten/theta_*.json
 - id: kn.beob.tpid10_gesetz
   quelle_hash: f2e8832b4a5d
   theorie_hash: 1c743a9ec77a
@@ -1893,6 +1924,21 @@
       expansion, and a Borel sum could recover it. None of this is proved.
     worum: |
       A divergent series with a surprisingly good truncation — is it exactly Kneser behind it?
+- id: kn.frage.theta_exponent
+  quelle_hash: c832cbea7468
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Which number determines the Fourier decay of Kneser's θ?
+    aussage: |
+      The coefficients $a_n$ of $\theta$ (kn.beob.theta_fourier_algebraisch) decay roughly like $n^{-1.2}$, but the exponent is still falling. Is the decay
+      $n^{-1-c}$ with an exact constant $c$ — for instance from $L$ ($\mathrm{Re}(1/L)=0.169$, or from $2\pi i/L$) — or $n^{-1}(\ln n)^{-p}$?
+      An exactly determinable exponent would be a genuine constant belonging to Kneser alone; the search for relations with classical constants
+      (ar.beob.keine_relationen) has found nothing for the values themselves.
+    einfach: How fast does the wave in Kneser's tetration become weaker? If the answer is an exact number that can be computed from the fixed
+      point, we would have a new formula that belongs to Kneser.
 - id: kn.frage.tpid14
   quelle_hash: dc59427c43f7
   theorie_hash: 956651bc3a58
@@ -5150,6 +5196,75 @@
     worum: |
       To the left of $-1$ every tetration quickly becomes very negative: Just before $-2$ it looks like a logarithm and falls to $-\infty$. This holds for
       every smooth solution — Kneser, regular, linear.
+- id: kn.satz.stoerungsreihe_baeume
+  quelle_hash: 4661c440766a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'The perturbation series counts trees: n!·gₙ(k) are labeled trees of height ≤ k (Bell numbers at k = 3)'
+    aussage: |
+      At integer heights, $G(k)=f^{\circ k}(0)$ with $f(z)=u+e^z-1$. Combinatorially this means: $n!\,g_n(k)$ is the number of trees with $n$ labeled
+      leaves and height $\le k$ whose inner nodes have nonempty sets of children (single children allowed). Consequences:
+      $n!\,g_n(2)=1$, $\;n!\,g_n(3)=B_{n+1}$ (Bell numbers), $\;g_n(-1)=-1/n$ (because of $G(-1)=\ln(1-u)$).
+      The sequences $n!\,g_n(4)=4,14,87,658,5801,\dots$ and the integer Newton triangle of the $g_n$ (row sums $1,3,70,4640,668316$) are not in the OEIS.
+      The polynomials $g_n(y)$ continue this tree counting to fractional heights — tetration at $u=1$ is the "number of trees of height $x+1$".
+    einfach: 'The numbers in the perturbation series count something concrete: trees with labeled leaves that are no taller than k. For height
+      3, exactly the Bell numbers come out, which count how a set can be divided into groups. Tetration is thus a kind of "tree counting at fractional
+      height".'
+    beweis:
+      text: |
+        $u$ is the generating function of a single labeled leaf, $e^z-1$ that of a nonempty set; $f^{\circ k}(0)$ is therefore the exponential
+        generating function of the trees of height $\le k$ (species composition). $G(3)=e^{e^u-1+u}-1+u$ and $\tfrac{d}{du}e^{e^u-1}=e^{e^u-1+u}$ give the Bell numbers.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, as soon as one reads the recursion as a species composition.
+      f2_benutzte_voraussetzungen: Exponential generating functions; integer heights only.
+      f3_spezialfall: 'Yes: trees as iteration of eˣ − 1 (cf. it.satz.zeta_polynom_partitionen).'
+      f4_uebertragbar: To $x\,e^x$ (trees with a distinguished child, br.beob.produkt_iteration_dreieck).
+      f5_neue_frage: Is there a counting interpretation of the values at half height (positive rational numbers?) or of the limit at $u=1$?
+    bewertung:
+      nutzen: Gives the perturbation series a concrete meaning and yields new counting sequences.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K3; b_baeume.py, b_kombinatorik.py
+- id: kn.satz.stoerungsreihe_tangens
+  quelle_hash: a9071dad7e9b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: 'The edge of the perturbation series is the tangent function: leading coefficients are tangent numbers'
+    aussage: |
+      If one collects from each polynomial $g_n$ only the highest term $y^{2n-1}$, a closed-form function results:
+      $$\sum_{n\ge1}\mathrm{LC}(g_n)\,u^n y^{2n-1}=\sqrt{2u}\,\tan\!\Bigl(y\sqrt{u/2}\Bigr),\qquad \mathrm{LC}(g_n)=\frac{2^{1-n}\,T_n}{(2n-1)!},$$
+      with the tangent numbers $T_n=1,2,16,272,7936,\dots$ ($\tan x=\sum T_n x^{2n-1}/(2n-1)!$). The next layer is also closed: with
+      $H(y)=G(y-1)$ and $\vartheta=y\sqrt{u/2}$ the part of weight $-3$ is
+      $$H_1=\frac u3\Bigl(\sec^2\vartheta\,\ln\cos\vartheta+1-4\sec^2\vartheta\Bigr).$$
+    bereich: $G(y)=e^{G(y-1)}-1+u$, $G(0)=0$, $G=\sum g_n(y)u^n$ as in kn.konstr.stoerungsreihe
+    einfach: The polynomials of the perturbation series look complicated. But if one takes only the largest part of each, together they give exactly
+      the tangent function from school. The second largest part, too, can be written in closed form with cosine and logarithm.
+    formen:
+    - notiz: top layer
+    - notiz: second layer
+    beweis:
+      text: |
+        Give $y$ the weight 1 and $u$ the weight $-2$. From $H(y+1)-H(y)=u+\sum_{m\ge2}H^m/m!$ and $H(y+1)-H(y)=H'+\tfrac12H''+\dots$ (each derivative lowers
+        the weight by 1) it follows layer by layer: weight $-2$: $H_0'=H_0^2/2+u$, $H_0(0)=0$, hence $H_0=\sqrt{2u}\tan\vartheta$. Weight $-3$:
+        $H_1'-H_0H_1=-H_0^3/12-uH_0/2$ with $H_1(0)=-u$ (from $G(-1)=\ln(1-u)$); integrating factor $\cos^2\vartheta$. Both layers agree with the
+        exact polynomials up to $n=12$.
+    pruefung:
+      f1_folgt_unmittelbar: No — one needs the weight decomposition; then each layer is an ordinary differential equation.
+      f2_benutzte_voraussetzungen: Only the formal recursion of the perturbation series.
+      f3_spezialfall: 'Yes: the top layer is the parabolic limiting case $H''=H^2/2+u$ (Riccati), as in parabolic implosion.'
+      f4_uebertragbar: To every perturbation $h(z)-1+u$ with $h(z)=1+z+z^2/2+\dots$ and to $x\,e^x$; the top layer depends only on the $z^2$ coefficient.
+      f5_neue_frage: The poles of $\tan$ at $y\sqrt{u/2}=\pi(k+\frac12)$ — do they fix the singularities of the Borel transform (kn.frage.stoerungsreihe)?
+    bewertung:
+      nutzen: First closed structure in the perturbation series; connects it with tangent numbers and gives candidates for its singularities.
+      richtigkeit: complete; checked exactly up to n = 12
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K1/K2 and proof B1; b_gewichte.py
 - id: kn.satz.tk_kriterien
   quelle_hash: 6c3823c4f35a
   theorie_hash: 4c66507fee37

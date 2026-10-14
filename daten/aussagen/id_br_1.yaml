@@ -1,0 +1,36 @@
+gebiet: br
+# Identitätssuche Etappe 1 (14.10.2026): Iterationsdreieck und Fatou-Koordinate von x·eˣ.
+aussagen:
+
+- id: br.beob.produkt_iteration_dreieck
+  titel: 'Die Iteration von x·eˣ: ein neues Zähldreieck und exakte Fatou-Koeffizienten'
+  art: beobachtung
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [superfunktion, abel]
+  aussage: |
+    Wie bei $e^x-1$ (it.satz.zeta_polynom_partitionen) sind die Koeffizienten von $(xe^x)^{\circ t}$ Polynome in $t$; in der Binomialbasis
+    $\binom tj$ entsteht das ganzzahlige Dreieck $2;\ 3,12;\ 4,84,144;\ 5,510,2760,2880;\dots$ mit Diagonale $n!(n-1)!$ und Zeilensummen $2,15,232,6155$.
+    Bei $t=-1$ kommt $(-n)^{n-1}$ heraus, also die Koeffizienten von Lambert W — das Gegenstück zur Möbius-Zahl bei $e^x-1$.
+    Die Fatou-Koordinate ist exakt
+    $$\alpha(x)=-\tfrac1x+\tfrac12\ln x-\tfrac x6+\tfrac{x^2}{16}-\tfrac{19x^3}{540}+\tfrac{x^4}{48}-\tfrac{41x^5}{4200}+\tfrac{37x^6}{103680}+\dots$$
+    (bei $e^x-1$: $-\tfrac2x+\tfrac13\ln x-\tfrac x{36}+\tfrac{x^2}{540}+\dots$). Dreieck, Zeilensummen, Julia-Koeffizienten $2,-3,10,-50,321,-2422$ und die
+    halbe Iterierte stehen nicht in der OEIS; nur die einfachen Iterierten (×2, A185298) sind bekannt.
+  einfach: >-
+    Auch bei der Produkt-Tetration zählen die Koeffizienten der gebrochenen Wiederholungen etwas — die Zahlen dazu stehen noch in keiner Folgendatenbank.
+    Rückwärts (t = −1) erscheinen genau die bekannten Koeffizienten der Lambert-W-Funktion.
+  beweis:
+    art: vollstaendig
+    text: 'Polynomialität in $t$ wie bei jeder formalen Iteration mit $f''(0)=1$ (Jabotinsky); der Wert bei $t=-1$ ist die Umkehrreihe $W(x)=\sum(-n)^{n-1}x^n/n!$; Fatou-Koeffizienten aus der Rekursion von $\alpha(xe^x)=\alpha(x)+1$. Exakt geprüft bis $n=16$.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K5/K6; b_diagonalen.py, a_fatou.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Identitäten ja; die kombinatorische Deutung (Ketten punktierter Partitionen, Chapoton–Vallette) ist nicht nachgeprüft.'
+    f2_benutzte_voraussetzungen: 'Formale Potenzreihen.'
+    f3_spezialfall: 'Analog zu it.satz.zeta_polynom_partitionen.'
+    f4_uebertragbar: 'Auf jede Abbildung $x\,h(x)$ mit $h(0)=1$.'
+    f5_neue_frage: 'Welche Objekte zählt das Dreieck — Ketten im Verband der punktierten Partitionen?'
+  bewertung: {richtigkeit: 'vollständig für die Identitäten; Deutung offen', neuheit: neu_ungeprueft, nutzen: 'Neue Zählfolgen und genaue Werkzeuge für die Produkt-Tetration.', nutzen_stufe: gering}
+  kanten:
+    - {typ: analog_zu, ziel: it.satz.zeta_polynom_partitionen}
+    - {typ: verwandt, ziel: br.satz.produkt_parabolisch}

@@ -1,0 +1,66 @@
+gebiet: ar
+# Identitätssuche Etappe 1 (14.10.2026): Relationssuche auf 160 Stellen und die exponentielle Fakultät bei 0.
+aussagen:
+
+- id: ar.beob.keine_relationen
+  titel: 'Keine Formel mit π, e, γ, ζ(3), Γ(¼) …: 50 Tetrations-Konstanten auf 160 Stellen geprüft'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [transzendenz, kneser_T]
+  aussage: |
+    Geprüft auf 160 sichere Stellen (Stufen dps 120/160/200): Kneser-Werte zu den Basen $e$ und 2 ($T_e(\tfrac12)=1.6463542337511945809\ldots$, $T(-\tfrac12)$,
+    $\mathrm{slog}$-Werte), die Taylor-Koeffizienten $a_1\ldots a_{15}$ von $\mathrm{sexp}_e$ bei 0, $\mathrm{slog}'(0)$, $\mathrm{slog}''(0)$,
+    $\int_0^1T_e=1.7145219588906204882\ldots$, $\int_{-1}^0T_e$, die Konstante $D$ und $0!_2$ der exponentiellen Fakultät, $\mathrm{prodtet}_e(\tfrac12)$,
+    Fatou-Konstanten und die θ-Koeffizienten. Gegen 23 klassische Konstanten (π, e, $e^e$, γ, ln 2, ln 3, ln π, ζ(3), Catalan, Γ(¼), Γ(⅓), Ω, $L$, …)
+    gibt es **keine ganzzahlige Relation mit Koeffizientennorm unter etwa $4\cdot10^5$**; gegen kleine Fünferbasen wie $\{1,\pi,e,\gamma,\ln2\}$ keine unter
+    $10^{22}$; kein Produkt von Potenzen unter $10^{9}$; keine algebraische Zahl vom Grad $\le6$ mit Höhe unter $10^{19}$.
+    Beinahe-Treffer fallen bei voller Genauigkeit weg: $\mathrm{slog}'(0)=0.915946$ gegen Catalan $0.915966$, $T_e(\tfrac12)$ gegen $\tfrac{19}8\ln2$,
+    $0!_2$ gegen γ. Die Methode findet drei eingebaute Kontrollformeln wieder.
+  einfach: >-
+    Wir haben 50 Zahlen aus der Tetration auf 160 Stellen genau ausgerechnet und mit dem Computer nach Formeln mit π, e, der Eulerschen Konstante und
+    vielen anderen gesucht. Es gibt keine — jedenfalls keine mit vernünftig kleinen Zahlen darin. Ein paar Zahlen sehen auf den ersten Stellen bekannt aus,
+    aber das ist Zufall.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, Tabelle 2; a_relationen.py, daten/relationen.json'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Gitterreduktion); die Schranken sind streng für das jeweilige LLL-Gitter.'
+    f2_benutzte_voraussetzungen: 'Kneser-Werte aus dem fatou.gp-Fork, Genauigkeit über drei Stufen abgesichert; Treffer nur, wenn sie 15 weitere Stellen halten.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede neue Konstante (Basis η, Pentation, halber Rang).'
+    f5_neue_frage: 'Gibt es Konstanten, die nur zu Kneser gehören (Fourier-Abfall von θ, kn.frage.theta_exponent)?'
+  bewertung: {richtigkeit: 'numerisch, strenge Gitterschranken', neuheit: neu_ungeprueft, nutzen: 'Schliesst einfache Formeln für die bekannten Kneser-Zahlen aus und beantwortet gr.frage.integral_form negativ für kleine Koeffizienten.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: gr.frage.integral_form}
+    - {typ: verwandt, ziel: ar.frage.e_hoch_e}
+
+- id: ar.satz.ef_null_ableitung
+  titel: '0!₂ ist eine Ableitung: lim x!₂ (x → 0) = F′(1) = 0.5730489722129730653…'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: einstieg
+  objekte: [superfunktion]
+  bereich: 'jede differenzierbare Fortsetzung $F(x)=x!_2$ mit $F(x+1)=(x+1)^{F(x)}$, $F(1)=1$'
+  aussage: |
+    Für jede differenzierbare Fortsetzung gilt $\lim_{x\downarrow0}F(x)=F'(1)$. Für die Fortsetzung über Kneser (ar.konstr.ef_sexp) ist das
+    $$0!_2=F'(1)=0.5730489722129730653505964537816700999925\ldots$$
+    (160 Stellen), und $D=\mathrm{slog}_e(262144\ln5+\ln\ln6)-4=-1.0552140087126523890449559784636570718988\ldots$ (Fehler dieser Formel etwa $10^{-180000}$).
+    Damit wird TPID 2 zu einer Frage über eine Steigung: sie vermutet $F'(1)=\gamma$ für die total monotone Fortsetzung. Die Kneser-Fortsetzung hat $0.57305$, also $\gamma-0.00417$.
+  einfach: >-
+    Was die Exponentialfakultät „bei 0“ ist, hängt nur davon ab, wie steil sie bei 1 ist. Die alte Vermutung, dass dort die Eulersche Zahl 0.5772
+    herauskommt, ist also eine Aussage über diese Steigung. Unsere Fortsetzung hat die Steigung 0.57305 — knapp daneben.
+  beweis:
+    art: vollstaendig
+    text: '$F(x+1)=(x+1)^{F(x)}$ gibt $F(x)=\ln F(x+1)/\ln(1+x)$. Mit $F(1)=1$ ist $\ln F(1+x)=F''(1)\,x+O(x^2)$ und $\ln(1+x)=x+O(x^2)$, also $F(x)\to F''(1)$.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K7; a_konstanten.py'}, {ref: forum_tid1828}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (L''Hôpital).'
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit bei 1.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Turmfolge $a_{n}=b_n^{a_{n-1}}$ mit $b_1=1$.'
+    f5_neue_frage: 'Welche Fortsetzung hat $F''(1)=\gamma$ — und ist sie total monoton?'
+  bewertung: {richtigkeit: 'vollständig; Wert auf 160 Stellen', neuheit: folklore, nutzen: 'Macht TPID 2 konkret prüfbar und gibt den genauen Kneser-Wert.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: ar.frage.ef_fortsetzung}
+    - {typ: verwandt, ziel: ar.konstr.ef_sexp}

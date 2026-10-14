@@ -1,8 +1,8 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-407 Aussagen · 721 Kanten · 57 Experimente
+415 Aussagen · 739 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 144, numerisch 67, bewiesen_literatur 60, offen 32, vermutung 29, bedingt 27, definition 15, gescheitert 11, skizze 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 149, numerisch 69, bewiesen_literatur 60, offen 33, vermutung 29, bedingt 27, definition 15, gescheitert 11, skizze 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 104
 
@@ -13,7 +13,7 @@
 ## WARNUNG (0)
 
 
-## HINWEIS (29)
+## HINWEIS (37)
 
 
 **abschwaechbar** (22)
@@ -47,9 +47,20 @@
 - `kn.gescheitert.polynom_rekonstruktion` — wird von kn.satz.halbrang_quadratisch korrigiert; Status 'gescheitert' prüfen
 - `kn.verm.tpid3` — wird von kn.verm.tpid3_bedingung korrigiert; Status 'vermutung' prüfen
 
-**uebersetzung-fortschritt** (1)
+**theorie-fortschritt** (4)
 
-- `quelle` — 216 von 300 quelle-Gegenständen übersetzt
+- `ar` — 29 von 31 Aussagen mit Theorie-Block
+- `br` — 28 von 29 Aussagen mit Theorie-Block
+- `it` — 19 von 20 Aussagen mit Theorie-Block
+- `kn` — 116 von 120 Aussagen mit Theorie-Block
+
+**uebersetzung-fortschritt** (5)
+
+- `ar` — 31 von 31 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 29 von 31 Theorie-Blöcken
+- `br` — 29 von 29 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 28 von 29 Theorie-Blöcken
+- `it` — 20 von 20 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 19 von 20 Theorie-Blöcken
+- `kn` — 120 von 120 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 116 von 120 Theorie-Blöcken
+- `quelle` — 217 von 301 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (3)
 

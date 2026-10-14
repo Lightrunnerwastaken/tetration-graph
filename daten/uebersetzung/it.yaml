@@ -1064,3 +1064,37 @@
     worum: |
       One can “halve” maps in many ways. But if one demands that all fractional steps be holomorphic at the fixed point, exactly
       one possibility remains: scale by $\lambda^t$ in the Koenigs coordinate. This is the **regular iteration**.
+- id: it.satz.zeta_polynom_partitionen
+  quelle_hash: 5601ddb293cc
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-14'
+  geprueft: nein
+  en:
+    titel: Fractional iterates of eˣ − 1 count chains in the partition lattice (zeta polynomial)
+    aussage: |
+      The Taylor coefficients of the $t$-th iterate are polynomials in $t$ with a counting interpretation:
+      $$n!\,[x^n]\,(e^x-1)^{\circ t}=\sum_j B(n,j)\binom tj=Z(\Pi_n,t),$$
+      where $B(n,j)$ is the number of proper chains of length $j$ in the lattice $\Pi_n$ of set partitions and $Z$ is its zeta polynomial. Special cases:
+      $t=1,2,3$ give Bell-like numbers (A000110, A000258, A000307), $t=-1$ the Möbius number $(-1)^{n-1}(n-1)!$ (coefficients of $\ln(1+x)$),
+      $t=\tfrac12$ the half iterate (A052104), and the diagonal $n!(n-1)!/2^{n-1}$ counts the maximal chains.
+    bereich: $f(x)=e^x-1$, formal iterate $f^{\circ t}$ at the parabolic fixed point 0, $t$ arbitrary
+    einfach: 'If one applies eˣ − 1 "t times", also for fractional t, the coefficients count something: how many ways there are to merge a set
+      step by step into ever coarser groups. The half iterate is such a count "at half the number of steps".'
+    beweis:
+      text: |
+        $(e^x-1)^{\circ k}$ is the generating function of the chains $\hat0=\pi_0\le\pi_1\le\dots\le\pi_k=\hat1$ in the partition lattice (species composition of
+        "nonempty set"); collecting equal terms gives $\sum_jB(n,j)\binom kj$, a polynomial in $k$, which fixes the formal iterate for all $t$
+        (Jabotinsky). Checked exactly up to $n=16$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes (classical combinatorics).
+      f2_benutzte_voraussetzungen: Formal iteration; nothing is said about convergence (the series diverges for fractional t, it.satz.baker).
+      f3_spezialfall: 'Yes: zeta polynomials of finite lattices.'
+      f4_uebertragbar: To $x\,e^x$ (br.beob.produkt_iteration_dreieck) and to the perturbation series (kn.satz.stoerungsreihe_baeume).
+      f5_neue_frage: Is there a counting interpretation that makes the divergent series summable at $t=\tfrac12$?
+    bewertung:
+      nutzen: Connects fractional iteration with classical combinatorics.
+      richtigkeit: complete
+    quellen:
+    - {}
+    - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K4; b_diagonalen.py
