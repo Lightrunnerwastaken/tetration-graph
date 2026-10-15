@@ -1,0 +1,33 @@
+gebiet: kn
+# Bezeichnungen für die Identitätssuche (14.10.2026): σ, h, F und Knesers Welle θ.
+aussagen:
+
+- id: kn.def.theta_welle
+  titel: 'Bezeichnungen: Schröder-Funktion σ, reguläre Abel-Funktion h und Knesers Welle θ'
+  art: definition
+  ebene: C
+  status: definition
+  niveau: vertiefung
+  objekte: [kneser_T, theta_kneser, schroeder, fixpunkt_L]
+  bereich: 'Basis $b>\eta$ (hier meist $b=e$); $L$ der Fixpunkt $b^L=L$ mit $\mathrm{Im}\,L>0$ (für $e$: $L\approx0.318+1.337i$), $\lambda=L\ln b$'
+  aussage: |
+    - **σ (Schröder-Funktion am Fixpunkt $L$):** eine Koordinate um $L$, in der „$b$ hoch“ zur Multiplikation wird:
+      $\sigma(b^w)=\lambda\,\sigma(w)$, $\sigma(L)=0$, $\sigma'(L)=1$. Ihre Umkehrung $\Psi=\sigma^{-1}$ ist ganz.
+    - **h (reguläre Abel-Funktion an $L$):** macht aus der Multiplikation eine Addition, $e^{\log\lambda\cdot h(w)}=\sigma(w)$, also
+      $$h(b^w)=h(w)+1 .$$
+      $h$ verhält sich wie ein Superlogarithmus, ist aber am komplexen Fixpunkt gebaut und auf der reellen Achse nicht reell.
+    - **F (reguläre Superfunktion):** die Umkehrung von $h$, $F(s)=\Psi(\lambda^s)$, mit $F(s+1)=b^{F(s)}$ (kn.gescheitert.regulaer_an_L).
+    - **θ (Knesers Welle):** der Unterschied zwischen $h$ und Knesers Tetration,
+      $$\theta(x)=h(\mathrm{sexp}\,x)-x,\qquad\text{gleichwertig}\qquad \mathrm{sexp}(z)=F\bigl(z+\theta(z)\bigr).$$
+      Weil $h(\mathrm{sexp}(x+1))=h(\mathrm{sexp}\,x)+1$, ist $\theta$ **1-periodisch**: $\theta(z)=\sum_n a_n e^{2\pi inz}$. Für Kneser enthält diese Reihe nur
+      $n\ge0$, d. h. $\theta$ setzt sich ruhig in die obere Halbebene fort und strebt dort gegen eine Konstante $a_0$.
+    - **$M[G]=\int_0^1G(x)\,dx$** bezeichnet den Mittelwert über eine Periode.
+  einfach: >-
+    Rund um den komplexen Fixpunkt L kann man die Tetration sehr einfach beschreiben: dort wird „e hoch“ zu einer Multiplikation (σ) und nach einem
+    Logarithmus zu „plus 1“ (h). Diese Lösung ist aber auf der Zahlengeraden nicht reell. Knesers Tetration ist diese Lösung plus eine kleine,
+    periodische Korrektur — die Welle θ.
+  quellen: [{ref: kneser1950}, {ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, Abschnitt 1; etappe3/BERICHT_ETAPPE3.md, Abschnitt 1'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.gescheitert.regulaer_an_L}
+    - {typ: verwandt, ziel: kn.konstr.kneser}
+    - {typ: verwandt, ziel: fg.def.schroeder}

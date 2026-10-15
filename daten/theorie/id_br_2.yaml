@@ -1,0 +1,31 @@
+# Theorie-Blöcke: reelle Kennzeichnung von Kneser (Identitätssuche Etappe 4, 14.10.2026). Bezeichnungen h, θ, M: kn.def.theta_welle.
+
+br.satz.endlich_viele_reichen_nicht:
+  worum: |
+    Legt eine der reellen Kneser-Formeln Kneser schon allein fest? **Bezeichnungen:** jede glatte Tetration ist $T(x)=\mathrm{sexp}(x+p(x))$ mit einer 1-periodischen
+    Funktion $p$; ihre Welle ist $\theta_T(x)=h(T(x))-x$ mit der regulären Abel-Funktion $h$ am komplexen Fixpunkt ([[kn.def.theta_welle]]). Kneser heisst: $p$ konstant.
+  genau: |
+    Nein: endlich viele Mittelwert-Gleichungen lassen immer noch Tetrationen $T\neq$ Kneser zu; solche „Doppelgänger“ sind ausdrücklich gebaut.
+  warum: |
+    $p$ ist eine ganze Funktion, also unendlich viele Zahlen; jede Gleichung legt nur eine Zahl fest. Endlich viele Gleichungen schneiden aus diesem
+    unendlichdimensionalen Raum nur eine Fläche heraus, auf der neben Kneser noch viele andere liegen.
+  beispiel: |
+    $p=0.03\sin4\pi x-0.0460228\sin2\pi x-0.00167248(\cos2\pi x-1)$ erfüllt $\int_1^e\mathrm{slog}_T'^2/h'=1$ auf $10^{-35}$, ist aber nicht Kneser.
+  bilder: []
+  einordnung: |
+    Die Formeln selbst: [[kn.satz.theta_mittelwerte]]; was stattdessen reicht: [[br.satz.reelle_kennzeichnung]].
+
+br.satz.reelle_kennzeichnung:
+  worum: |
+    Eine Bedingung nur auf der reellen Achse, die genau Kneser auswählt — ähnlich wie Bohr–Mollerup für Γ. **Bezeichnungen:** $T(x)=\mathrm{sexp}(x+p(x))$,
+    $\theta_T(x)=h(T(x))-x$ mit der regulären Abel-Funktion $h$ am komplexen Fixpunkt $L$ ([[kn.def.theta_welle]]); $\hat\theta_T(-m)$ ist der Fourier-Koeffizient zur Frequenz $-m$.
+  genau: |
+    $T=$ Kneser genau dann, wenn alle negativen Fourier-Koeffizienten von $\theta_T$ verschwinden, d. h. wenn der Defekt $E(T)=2\sum_{m\ge1}m|\hat\theta_T(-m)|^2$ null ist.
+  warum: |
+    Keine negativen Frequenzen heisst: $\theta_T$ lässt sich in die obere Halbebene holomorph fortsetzen. Genau diese Eigenschaft wählt nach Paulsen–Cowgill Kneser aus.
+    $E$ ist eine Summe von Quadraten, also $\ge0$, und null nur ohne negative Frequenzen.
+  beispiel: |
+    Lineare Tetration: $E\approx4.7\cdot10^{-5}$. Möbius-Verbiegung von Kneser mit Parameter $a$: $E=-\ln(1-|a|^2)/(2\pi^2)$.
+  bilder: []
+  einordnung: |
+    Warum weniger nicht reicht: [[br.satz.endlich_viele_reichen_nicht]]; die alte Frage: [[br.frage.bohr_mollerup]]; eine einfachere Familie: [[br.frage.momentenfamilie]].

@@ -68,14 +68,14 @@ Stand: bewiesen 30, bedingt 1, numerisch 6, Vermutung 1, offen 3, verworfen 2 ·
 - **Spiralen und Mittelwerte** (10): bewiesen 4, bedingt 1, numerisch 1, offen 2, verworfen 2 · Literatur 4 / Forum 0 / eigen 6 · offen: fp.frage.holomorphe_familie, fp.verm.doppelmittel
 - **Periode 2 unter e⁻ᵉ** (6): bewiesen 6 · Literatur 5 / Forum 1 / eigen 0
 
-## Zahlen und Arithmetik (38 Aussagen)
+## Zahlen und Arithmetik (39 Aussagen)
 
 Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.
 
-Stand: bewiesen 24, bedingt 5, numerisch 3, Vermutung 3, offen 3 · Literatur 19 / Forum 1 / eigen 18
+Stand: bewiesen 25, bedingt 5, numerisch 3, Vermutung 3, offen 3 · Literatur 20 / Forum 1 / eigen 18
 
 - **Transzendenz** (22): bewiesen 15, bedingt 3, Vermutung 2, offen 2 · Literatur 15 / Forum 1 / eigen 6 · offen: ar.verm.schanuel, ar.frage.e_hoch_e, ar.frage.ganze_tuerme, ar.satz.schanuel_orbit, ar.verm.gelfond_turm
-- **Formeln und Identitäten** (9): bewiesen 4, bedingt 2, numerisch 2, offen 1 · Literatur 0 / Forum 0 / eigen 9 · offen: kn.satz.theta_singularitaet, kn.frage.theta_exponent, kn.satz.theta_koeffizienten
+- **Formeln und Identitäten** (10): bewiesen 5, bedingt 2, numerisch 2, offen 1 · Literatur 1 / Forum 0 / eigen 9 · offen: kn.satz.theta_singularitaet, kn.frage.theta_exponent, kn.satz.theta_koeffizienten
 - **Kongruenzen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
 - **Kneser–Schanuel** (3): bewiesen 1, numerisch 1, Vermutung 1 · Literatur 0 / Forum 0 / eigen 3 · offen: ar.verm.ks
 
@@ -120,8 +120,8 @@ Stand: bewiesen 6, bedingt 1, numerisch 2, offen 2 · Literatur 2 / Forum 8 / ei
 - Basiswechsel T ∘ slog — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 21.35
 - Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 18.72
 - Fraktionale Fortsetzung — Unendlicher Turm und Basen-Ebene: 17.55
+- Fraktionale Fortsetzung — Zahlen und Arithmetik: 17.38
 - Dynamik von bᶻ und der Fixpunkt L — Unendlicher Turm und Basen-Ebene: 14.08
-- Fraktionale Fortsetzung — Zahlen und Arithmetik: 13.41
 
 ## Stärkste Kopplungen über Ideengrenzen
 
@@ -137,6 +137,6 @@ Stand: bewiesen 6, bedingt 1, numerisch 2, offen 2 · Literatur 2 / Forum 8 / ei
 - Kneser über η (Fraktionale Fortsetzung) — Pentation und Hexation (Höhere Stufen): 4.04
 - Andere Konstruktionen (Fraktionale Fortsetzung) — Pentation und Hexation (Höhere Stufen): 3.97
 - Antwortkern und Basisableitung (Basiswechsel T ∘ slog) — Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.87
+- Kneser über η (Fraktionale Fortsetzung) — Formeln und Identitäten (Zahlen und Arithmetik): 3.8
 - Regulär unter η (Fraktionale Fortsetzung) — Begriffe (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.6
 - Eindeutigkeit (Fraktionale Fortsetzung) — Freiheit der Lösungen (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾): 3.42
-- Werte, Ableitungen, Gestalt (Die Gleichung T(x+1) = aᵀ⁽ˣ⁾) — Pentation und Hexation (Höhere Stufen): 3.4

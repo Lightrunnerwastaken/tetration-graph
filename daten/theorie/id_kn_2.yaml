@@ -1,0 +1,31 @@
+# Theorie-Blöcke: exakte Formeln aus Knesers Struktur (Identitätssuche Etappe 3, 14.10.2026). Bezeichnungen σ, h, θ, M: kn.def.theta_welle.
+
+kn.satz.theta_mittelwerte:
+  worum: |
+    Reelle Integralformeln, die nur Knesers Tetration erfüllt. **Bezeichnungen** (ausführlich in [[kn.def.theta_welle]]): $L$ ist der komplexe Fixpunkt
+    ($e^L=L$), $\sigma$ die Schröder-Funktion dort ($\sigma(e^w)=L\sigma(w)$), $h=\log\sigma/\log L$ die reguläre Abel-Funktion ($h(e^w)=h(w)+1$),
+    $\theta(x)=h(\mathrm{sexp}\,x)-x$ Knesers periodische Welle und $M[G]=\int_0^1G$ der Mittelwert über eine Periode.
+  genau: |
+    Für jede oben holomorphe periodische Funktion $G$ mit Grenzwert $G_\infty$ ist $M[G]=G_\infty$; also $M[\theta^2]=M[\theta]^2$, $\int_1^e\mathrm{slog}'^2/h'=1$ und mehr.
+  warum: |
+    Der Mittelwert $\int_0^1G(x+iy)\,dx$ hängt nicht von der Höhe $y$ ab (Cauchy), und ganz oben ist er $G_\infty$. Für Kneser ist θ oben holomorph — für jede andere
+    Tetration nicht. Darum gelten die Formeln nur für Kneser. Die slog-Form entsteht aus $M[1/(1+\theta')]=1$ mit der Substitution $w=\mathrm{sexp}\,x$.
+  beispiel: |
+    $\int_0^1\ln\mathrm{sexp}'(x)\,dx=0.49843955952\ldots=-\int_0^1\ln|h'(\mathrm{sexp}\,x)|\,dx$; eine um $\varepsilon=10^{-4}$ verbogene Tetration verfehlt das um etwa $10^{-4}$.
+  bilder: []
+  einordnung: |
+    Reicht eine dieser Formeln allein? Nein: [[br.satz.endlich_viele_reichen_nicht]]; was reicht: [[br.satz.reelle_kennzeichnung]].
+
+kn.satz.binet_kappa:
+  worum: |
+    Weit oben in der komplexen Ebene ist Knesers Tetration fast $L+\kappa e^{Lz}$; wie gross ist $\kappa$? (σ, θ, $a_0$: siehe [[kn.def.theta_welle]].)
+  genau: |
+    $\kappa=e^{La_0}=M[\sigma(\mathrm{sexp}\,x)e^{-Lx}]=\exp\bigl(\int_0^1\ln\mathrm{sexp}'-\tfrac{3L}2+i\int_0^\infty(\mathrm{sexp}(it)-L)\,dt\bigr)$.
+  warum: |
+    Oben ist $\theta\approx a_0$, also $\mathrm{sexp}=F(z+a_0)\approx L+e^{L(z+a_0)}$. Das Mittelwertprinzip übersetzt $e^{La_0}$ in Integrale auf der reellen Achse,
+    wie Binets Formel die Konstanten von $\ln\Gamma$ in Integrale übersetzt.
+  beispiel: |
+    $\kappa=1.71764019594\ldots-2.38444301173\ldots\,i$.
+  bilder: []
+  einordnung: |
+    Grundlage: [[kn.satz.theta_mittelwerte]]; verwandte exakte Integrale: [[kn.satz.senkrechte_integrale]].

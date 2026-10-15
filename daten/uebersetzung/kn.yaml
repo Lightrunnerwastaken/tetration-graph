@@ -1459,6 +1459,7 @@
       the infinite pentation has a value.
 - id: kn.beob.theta_fourier_algebraisch
   quelle_hash: 451c379c5a8c
+  theorie_hash: d32fbe474d03
   herkunft:
     modell: sonnet
     datum: '2026-10-15'
@@ -1490,6 +1491,18 @@
       grund: 'Stage 2 (n up to 4096) shows: the argument drifts and has no limit; corrected on 14.10.2026.'
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md (K8) and etappe2/BERICHT_ETAPPE2.md (section 3.0)
+  en_theorie:
+    beispiel: |
+      $|a_{64}|=5.48\cdot10^{-4}$, $|a_{4096}|=4.60\cdot10^{-6}$; the ratio corresponds to an average exponent of about $1.15$.
+    einordnung: |
+      Exact asymptotics: [[kn.satz.theta_koeffizienten]]; answer to the question about the exponent: [[kn.frage.theta_exponent]].
+    genau: |
+      $|a_n|$ decays only slowly, locally roughly like $n^{-1.2}$ with a decreasing exponent; $\arg a_n$ wanders without a limit.
+    warum: |
+      A smooth periodic function would have geometrically decaying coefficients. The slow decay reveals sharp points on the real axis —
+      they lie exactly at the integers ([[kn.satz.theta_singularitaet]]).
+    worum: |
+      How fast do the oscillations of the wave θ get weaker? (θ, $h$, $L$: see [[kn.def.theta_welle]].)
 - id: kn.beob.tpid10_gesetz
   quelle_hash: f2e8832b4a5d
   theorie_hash: 1c743a9ec77a
@@ -1658,6 +1671,51 @@
     worum: |
       The super-logarithm answers the reverse question: How many levels does the tower need to reach the value $y$? It counts
       levels, just as the logarithm counts factors.
+- id: kn.def.theta_welle
+  quelle_hash: f00cb1bdc0e9
+  theorie_hash: ded73032558c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-15'
+  geprueft: nein
+  en:
+    titel: 'Notation: Schröder function σ, regular Abel function h, and Kneser''s wave θ'
+    aussage: |
+      - **σ (Schröder function at the fixed point $L$):** a coordinate around $L$ in which "$b$ to the power" becomes multiplication:
+        $\sigma(b^w)=\lambda\,\sigma(w)$, $\sigma(L)=0$, $\sigma'(L)=1$. Its inverse $\Psi=\sigma^{-1}$ is entire.
+      - **h (regular Abel function at $L$):** turns the multiplication into an addition, $e^{\log\lambda\cdot h(w)}=\sigma(w)$, that is,
+        $$h(b^w)=h(w)+1 .$$
+        $h$ behaves like a super-logarithm, but it is built at the complex fixed point and is not real on the real axis.
+      - **F (regular superfunction):** the inverse of $h$, $F(s)=\Psi(\lambda^s)$, with $F(s+1)=b^{F(s)}$ (kn.gescheitert.regulaer_an_L).
+      - **θ (Kneser's wave):** the difference between $h$ and Kneser's tetration,
+        $$\theta(x)=h(\mathrm{sexp}\,x)-x,\qquad\text{equivalently}\qquad \mathrm{sexp}(z)=F\bigl(z+\theta(z)\bigr).$$
+        Because $h(\mathrm{sexp}(x+1))=h(\mathrm{sexp}\,x)+1$, $\theta$ is **1-periodic**: $\theta(z)=\sum_n a_n e^{2\pi inz}$. For Kneser this series contains only
+        $n\ge0$, i.e. $\theta$ continues calmly into the upper half-plane and tends to a constant $a_0$ there.
+      - **$M[G]=\int_0^1G(x)\,dx$** denotes the mean over one period.
+    bereich: 'Base $b>\eta$ (here mostly $b=e$); $L$ the fixed point $b^L=L$ with $\mathrm{Im}\,L>0$ (for $e$: $L\approx0.318+1.337i$), $\lambda=L\ln
+      b$'
+    einfach: 'Around the complex fixed point L, tetration can be described very simply: there, "e to the power" becomes a multiplication (σ),
+      and after taking a logarithm it becomes "plus 1" (h). However, this solution is not real on the number line. Kneser''s tetration is this
+      solution plus a small periodic correction — the wave θ.'
+    quellen:
+    - {}
+    - stelle: forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, section 1; etappe3/BERICHT_ETAPPE3.md, section 1
+  en_theorie:
+    beispiel: |
+      Base $e$: $L=0.3181315052\ldots+1.3372357014\ldots\,i$. The wave has Fourier coefficients $a_1=0.00385-0.09056\,i$, $a_2=0.00210-0.03796\,i$, …
+      and the mean $a_0=26.193+5.425\,i$ (fixed only modulo $2\pi i/L$).
+    einordnung: |
+      Why the regular solution alone is not enough: [[kn.gescheitert.regulaer_an_L]]. What is known about θ: [[kn.beob.theta_fourier_algebraisch]],
+      [[kn.satz.theta_singularitaet]], [[kn.satz.theta_koeffizienten]], [[kn.satz.theta_mittelwerte]].
+    genau: |
+      $\sigma(e^w)=L\sigma(w)$ (Schröder function at $L$), $h=\log\sigma/\log L$ with $h(e^w)=h(w)+1$ (regular Abel function), $F=h^{-1}$,
+      $\theta(x)=h(\mathrm{sexp}\,x)-x$, hence $\mathrm{sexp}(z)=F(z+\theta(z))$; $\theta$ is 1-periodic.
+    warum: |
+      At the complex fixed point $L$, iteration is easy (Koenigs): one linearizes $e^w$ to $w\mapsto Lw$. This gives a super-logarithm $h$ — but a
+      complex one. Every other super-logarithm, including Kneser's $\mathrm{slog}$, differs from $h$ only by a 1-periodic function
+      (fg.satz.kohomologisch). For Kneser this is exactly $-\theta\circ\mathrm{slog}$; in other words, $\theta$ measures how far Kneser is from the solution at the fixed point.
+    worum: |
+      The notation for all entries about Kneser's wave θ in one place.
 - id: kn.frage.abel_bruchsumme
   quelle_hash: 25a2df671512
   theorie_hash: d2f0f560d634
@@ -3184,6 +3242,7 @@
       At base 2 the values at heights 1 and 2 are the same for all ranks — but not at height 3.
 - id: kn.satz.binet_kappa
   quelle_hash: a37b24ff2644
+  theorie_hash: 860d76d707e8
   herkunft:
     modell: sonnet
     datum: '2026-10-15'
@@ -3212,6 +3271,18 @@
       richtigkeit: sketched; numerically to 10⁻³⁵
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, V3 and B-V3
+  en_theorie:
+    beispiel: |
+      $\kappa=1.71764019594\ldots-2.38444301173\ldots\,i$.
+    einordnung: |
+      Basis: [[kn.satz.theta_mittelwerte]]; related exact integrals: [[kn.satz.senkrechte_integrale]].
+    genau: |
+      $\kappa=e^{La_0}=M[\sigma(\mathrm{sexp}\,x)e^{-Lx}]=\exp\bigl(\int_0^1\ln\mathrm{sexp}'-\tfrac{3L}2+i\int_0^\infty(\mathrm{sexp}(it)-L)\,dt\bigr)$.
+    warum: |
+      Far up, $\theta\approx a_0$, so $\mathrm{sexp}=F(z+a_0)\approx L+e^{L(z+a_0)}$. The mean-value principle translates $e^{La_0}$ into integrals on the real axis,
+      just as Binet's formula translates the constants of $\ln\Gamma$ into integrals.
+    worum: |
+      Far up in the complex plane, Kneser's tetration is almost $L+\kappa e^{Lz}$; how large is $\kappa$? (σ, θ, $a_0$: see [[kn.def.theta_welle]].)
 - id: kn.satz.eta_auswahl
   quelle_hash: 813ee016fe3f
   theorie_hash: c4412a7ee9c4
@@ -5369,6 +5440,7 @@
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K1/K2 and proof B1; b_gewichte.py
 - id: kn.satz.theta_koeffizienten
   quelle_hash: 06df6d641a24
+  theorie_hash: 0b4809d7d3d1
   herkunft:
     modell: sonnet
     datum: '2026-10-15'
@@ -5413,8 +5485,21 @@
     quellen:
     - stelle: 'forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 and 3.2; proof: luecken/BERICHT_LUECKEN_ANALYTISCH.md, l2_transfer.py'
     bedingungen_text: the same branch check as for kn.satz.theta_singularitaet
+  en_theorie:
+    beispiel: |
+      At $n=4000$ the formula (with correction term) agrees to $5\cdot10^{-9}$ relative.
+    einordnung: |
+      Measured values: [[kn.beob.theta_fourier_algebraisch]]; the question it answers: [[kn.frage.theta_exponent]].
+    genau: |
+      $a_n=[q^n]\,h((c+\log(1-q))/\ln b)+O(1/(n^2\ln n))$, $c=\ln(A/(2\pi\ln b))+i\pi/2$; the exponent is exactly 1.
+    warum: |
+      In the variable $q$, the only singularity of θ on the unit circle is at $q=1$, and there it has the form $h(c+\log(1-q))$
+      ([[kn.satz.theta_singularitaet]]). By the transfer theorem of singularity analysis, the form of the singularity determines the coefficients.
+    worum: |
+      A formula that predicts the oscillations of the wave θ. (θ, $h$: see [[kn.def.theta_welle]]; $q=e^{2\pi iz}$.)
 - id: kn.satz.theta_mittelwerte
   quelle_hash: 090807e20be5
+  theorie_hash: bece1ec26c04
   herkunft:
     modell: sonnet
     datum: '2026-10-15'
@@ -5458,8 +5543,23 @@
     quellen:
     - stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 and B-Z; s2_nullmoden.py, s2b_kontrolle.py; majorant: luecken/BERICHT_LUECKEN_ANALYTISCH.md,
         l1_schranken.py'
+  en_theorie:
+    beispiel: |
+      $\int_0^1\ln\mathrm{sexp}'(x)\,dx=0.49843955952\ldots=-\int_0^1\ln|h'(\mathrm{sexp}\,x)|\,dx$; a tetration bent by $\varepsilon=10^{-4}$ misses this by about $10^{-4}$.
+    einordnung: |
+      Does one of these formulas suffice on its own? No: [[br.satz.endlich_viele_reichen_nicht]]; what does suffice: [[br.satz.reelle_kennzeichnung]].
+    genau: |
+      For every periodic function $G$ that is holomorphic above and has limit $G_\infty$, $M[G]=G_\infty$; hence $M[\theta^2]=M[\theta]^2$, $\int_1^e\mathrm{slog}'^2/h'=1$, and more.
+    warum: |
+      The mean $\int_0^1G(x+iy)\,dx$ does not depend on the height $y$ (Cauchy), and at the very top it is $G_\infty$. For Kneser, θ is holomorphic above — for every other
+      tetration it is not. That is why the formulas hold only for Kneser. The slog form arises from $M[1/(1+\theta')]=1$ with the substitution $w=\mathrm{sexp}\,x$.
+    worum: |
+      Real integral formulas that only Kneser's tetration satisfies. **Notation** (in detail in [[kn.def.theta_welle]]): $L$ is the complex fixed point
+      ($e^L=L$), $\sigma$ the Schröder function there ($\sigma(e^w)=L\sigma(w)$), $h=\log\sigma/\log L$ the regular Abel function ($h(e^w)=h(w)+1$),
+      $\theta(x)=h(\mathrm{sexp}\,x)-x$ Kneser's periodic wave, and $M[G]=\int_0^1G$ the mean over one period.
 - id: kn.satz.theta_singularitaet
   quelle_hash: f6737a0ffc33
+  theorie_hash: 0e2231f1ebdd
   herkunft:
     modell: sonnet
     datum: '2026-10-15'
@@ -5503,6 +5603,18 @@
     - stelle: forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, section 2 (S1–S6) and 3.1; p5_lokal.py
     bedingungen_text: Branch choice at one point (z₀ = 0.05i, distance 4·10⁻⁴⁸ where < 0.12 is needed) only checked in floating point, not with
       intervals; base e only
+  en_theorie:
+    beispiel: |
+      $\theta(10^{-2}i)=26.205+5.227\,i$, $\theta(10^{-30}i)=26.330+4.763\,i$: over 28 orders of magnitude, θ changes by only $0.14$ in the real part.
+    einordnung: |
+      Consequence for the coefficients: [[kn.satz.theta_koeffizienten]]; consequence for means: [[kn.satz.theta_mittelwerte]].
+    genau: |
+      θ is singular exactly at the integers; near 0 we have $\theta(z)=2-z+h(\log(Az)+\kappa z+O(z^2))$ with $A=\mathrm{sexp}'(0)$.
+    warum: |
+      $\mathrm{sexp}(-1)=0$, but the regular solution $F$ never takes the value 0 (because $\Psi(\lambda u)=e^{\Psi(u)}\neq0$). For $F(z+\theta(z))$ to reach 0 nevertheless,
+      $z+\theta(z)$ must run off to infinity — and as slowly as a super-logarithm, because from 0 one first has to go two steps ($0\to1\to e$).
+    worum: |
+      Where and why the wave θ is not smooth. (σ, $h$, $F$, θ: see [[kn.def.theta_welle]].)
 - id: kn.satz.tk_kriterien
   quelle_hash: 6c3823c4f35a
   theorie_hash: 4c66507fee37

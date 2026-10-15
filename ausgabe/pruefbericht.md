@@ -1,8 +1,8 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-425 Aussagen · 769 Kanten · 57 Experimente
+426 Aussagen · 772 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 155, numerisch 69, bewiesen_literatur 60, offen 34, bedingt 30, vermutung 29, definition 15, gescheitert 11, skizze 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 155, numerisch 69, bewiesen_literatur 60, offen 34, bedingt 30, vermutung 29, definition 16, gescheitert 11, skizze 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 104
 
@@ -50,18 +50,18 @@
 **theorie-fortschritt** (5)
 
 - `ar` — 29 von 31 Aussagen mit Theorie-Block
-- `br` — 28 von 32 Aussagen mit Theorie-Block
+- `br` — 30 von 32 Aussagen mit Theorie-Block
 - `gr` — 56 von 57 Aussagen mit Theorie-Block
 - `it` — 19 von 20 Aussagen mit Theorie-Block
-- `kn` — 116 von 126 Aussagen mit Theorie-Block
+- `kn` — 122 von 127 Aussagen mit Theorie-Block
 
 **uebersetzung-fortschritt** (6)
 
 - `ar` — 31 von 31 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 29 von 31 Theorie-Blöcken
-- `br` — 32 von 32 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 28 von 32 Theorie-Blöcken
+- `br` — 32 von 32 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 30 von 32 Theorie-Blöcken
 - `gr` — 57 von 57 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 56 von 57 Theorie-Blöcken
 - `it` — 20 von 20 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 19 von 20 Theorie-Blöcken
-- `kn` — 126 von 126 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 116 von 126 Theorie-Blöcken
+- `kn` — 127 von 127 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 122 von 127 Theorie-Blöcken
 - `quelle` — 217 von 301 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (3)

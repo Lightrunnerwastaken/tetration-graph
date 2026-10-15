@@ -1,0 +1,61 @@
+# Theorie-Blöcke: Knesers Welle θ (Identitätssuche, 14.10.2026). Bezeichnungen σ, h, F, θ: kn.def.theta_welle.
+
+kn.def.theta_welle:
+  worum: |
+    Die Bezeichnungen für alle Einträge über Knesers Welle θ an einem Ort.
+  genau: |
+    $\sigma(e^w)=L\sigma(w)$ (Schröder-Funktion an $L$), $h=\log\sigma/\log L$ mit $h(e^w)=h(w)+1$ (reguläre Abel-Funktion), $F=h^{-1}$,
+    $\theta(x)=h(\mathrm{sexp}\,x)-x$, also $\mathrm{sexp}(z)=F(z+\theta(z))$; $\theta$ ist 1-periodisch.
+  warum: |
+    Am komplexen Fixpunkt $L$ ist Iteration einfach (Koenigs): man linearisiert $e^w$ zu $w\mapsto Lw$. Das gibt einen Superlogarithmus $h$ — aber einen
+    komplexen. Jeder andere Superlogarithmus, auch Knesers $\mathrm{slog}$, unterscheidet sich von $h$ nur um eine 1-periodische Funktion
+    (fg.satz.kohomologisch). Für Kneser ist das genau $-\theta\circ\mathrm{slog}$; anders gesagt misst $\theta$, wie weit Kneser von der Lösung am Fixpunkt entfernt ist.
+  beispiel: |
+    Basis $e$: $L=0.3181315052\ldots+1.3372357014\ldots\,i$. Die Welle hat Fourier-Koeffizienten $a_1=0.00385-0.09056\,i$, $a_2=0.00210-0.03796\,i$, …
+    und den Mittelwert $a_0=26.193+5.425\,i$ (nur modulo $2\pi i/L$ festgelegt).
+  bilder: []
+  einordnung: |
+    Warum die reguläre Lösung allein nicht reicht: [[kn.gescheitert.regulaer_an_L]]. Was man über θ weiss: [[kn.beob.theta_fourier_algebraisch]],
+    [[kn.satz.theta_singularitaet]], [[kn.satz.theta_koeffizienten]], [[kn.satz.theta_mittelwerte]].
+
+kn.beob.theta_fourier_algebraisch:
+  worum: |
+    Wie schnell werden die Schwingungen der Welle θ schwächer? (θ, $h$, $L$: siehe [[kn.def.theta_welle]].)
+  genau: |
+    $|a_n|$ fällt nur langsam, lokal etwa wie $n^{-1.2}$ mit sinkendem Exponenten; $\arg a_n$ wandert ohne Grenzwert.
+  warum: |
+    Eine glatte periodische Funktion hätte geometrisch fallende Koeffizienten. Der langsame Abfall verrät scharfe Stellen auf der reellen Achse —
+    sie liegen genau an den ganzen Zahlen ([[kn.satz.theta_singularitaet]]).
+  beispiel: |
+    $|a_{64}|=5.48\cdot10^{-4}$, $|a_{4096}|=4.60\cdot10^{-6}$; das Verhältnis entspricht einem mittleren Exponenten von etwa $1.15$.
+  bilder: []
+  einordnung: |
+    Genaue Asymptotik: [[kn.satz.theta_koeffizienten]]; Antwort auf die Frage nach dem Exponenten: [[kn.frage.theta_exponent]].
+
+kn.satz.theta_singularitaet:
+  worum: |
+    Wo und warum die Welle θ nicht glatt ist. (σ, $h$, $F$, θ: siehe [[kn.def.theta_welle]].)
+  genau: |
+    θ ist genau an den ganzen Zahlen singulär; nahe 0 gilt $\theta(z)=2-z+h(\log(Az)+\kappa z+O(z^2))$ mit $A=\mathrm{sexp}'(0)$.
+  warum: |
+    $\mathrm{sexp}(-1)=0$, aber die reguläre Lösung $F$ nimmt den Wert 0 nie an (weil $\Psi(\lambda u)=e^{\Psi(u)}\neq0$). Damit $F(z+\theta(z))$ trotzdem 0 erreichen kann,
+    muss $z+\theta(z)$ ins Unendliche laufen — und zwar so langsam wie ein Superlogarithmus, weil man von 0 aus erst zwei Stufen ($0\to1\to e$) gehen muss.
+  beispiel: |
+    $\theta(10^{-2}i)=26.205+5.227\,i$, $\theta(10^{-30}i)=26.330+4.763\,i$: über 28 Grössenordnungen ändert sich θ nur um $0.14$ im Realteil.
+  bilder: []
+  einordnung: |
+    Folge für die Koeffizienten: [[kn.satz.theta_koeffizienten]]; Folge für Mittelwerte: [[kn.satz.theta_mittelwerte]].
+
+kn.satz.theta_koeffizienten:
+  worum: |
+    Eine Formel, die die Schwingungen der Welle θ vorhersagt. (θ, $h$: siehe [[kn.def.theta_welle]]; $q=e^{2\pi iz}$.)
+  genau: |
+    $a_n=[q^n]\,h((c+\log(1-q))/\ln b)+O(1/(n^2\ln n))$, $c=\ln(A/(2\pi\ln b))+i\pi/2$; der Exponent ist genau 1.
+  warum: |
+    In der Variablen $q$ liegt die einzige Singularität von θ auf dem Einheitskreis bei $q=1$, und dort hat sie die Form $h(c+\log(1-q))$
+    ([[kn.satz.theta_singularitaet]]). Nach dem Übertragungssatz der Singularitätenanalyse bestimmt die Form der Singularität die Koeffizienten.
+  beispiel: |
+    Bei $n=4000$ stimmt die Formel (mit Korrekturglied) auf $5\cdot10^{-9}$ relativ.
+  bilder: []
+  einordnung: |
+    Messwerte: [[kn.beob.theta_fourier_algebraisch]]; die beantwortete Frage: [[kn.frage.theta_exponent]].

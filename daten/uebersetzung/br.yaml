@@ -510,6 +510,7 @@
       exponential tower — that is, tetration-like functions.
 - id: br.satz.endlich_viele_reichen_nicht
   quelle_hash: 0333357c1697
+  theorie_hash: f0819dd33594
   herkunft:
     modell: sonnet
     datum: '2026-10-15'
@@ -547,6 +548,19 @@
       richtigkeit: complete; counterexamples to 10⁻³⁵
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S1, S2, Table 3; s2_gegenbeispiele.py, s5_pruefen.py
+  en_theorie:
+    beispiel: |
+      $p=0.03\sin4\pi x-0.0460228\sin2\pi x-0.00167248(\cos2\pi x-1)$ satisfies $\int_1^e\mathrm{slog}_T'^2/h'=1$ to $10^{-35}$, but is not Kneser.
+    einordnung: |
+      The formulas themselves: [[kn.satz.theta_mittelwerte]]; what suffices instead: [[br.satz.reelle_kennzeichnung]].
+    genau: |
+      No: finitely many mean-value equations still admit tetrations $T\neq$ Kneser; such "look-alikes" are constructed explicitly.
+    warum: |
+      $p$ is an entire function, hence infinitely many numbers; each equation fixes only one number. Finitely many equations cut out of this
+      infinite-dimensional space only a surface, on which many others lie besides Kneser.
+    worum: |
+      Does one of the real Kneser formulas pin down Kneser on its own? **Notation:** every smooth tetration is $T(x)=\mathrm{sexp}(x+p(x))$ with a 1-periodic
+      function $p$; its wave is $\theta_T(x)=h(T(x))-x$ with the regular Abel function $h$ at the complex fixed point ([[kn.def.theta_welle]]). Kneser means: $p$ constant.
 - id: br.satz.gevrey_fourier
   quelle_hash: 776d63d4805c
   theorie_hash: eb357044fb25
@@ -937,6 +951,7 @@
       Which fractional iterate of $xe^x$ is the natural one? The answer is already in the theory of parabolic fixed points.
 - id: br.satz.reelle_kennzeichnung
   quelle_hash: 27ac2ae49ee3
+  theorie_hash: 06459b3f3349
   herkunft:
     modell: sonnet
     datum: '2026-10-15'
@@ -976,6 +991,19 @@
       richtigkeit: complete (Paulsen–Cowgill and majorant cited or proved, respectively)
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S3, S4, MÖ, Lemma R; s1_moebius.py, s4_hooshmand.py
+  en_theorie:
+    beispiel: |
+      Linear tetration: $E\approx4.7\cdot10^{-5}$. Möbius bending of Kneser with parameter $a$: $E=-\ln(1-|a|^2)/(2\pi^2)$.
+    einordnung: |
+      Why less does not suffice: [[br.satz.endlich_viele_reichen_nicht]]; the old question: [[br.frage.bohr_mollerup]]; a simpler family: [[br.frage.momentenfamilie]].
+    genau: |
+      $T=$ Kneser if and only if all negative Fourier coefficients of $\theta_T$ vanish, i.e. if the defect $E(T)=2\sum_{m\ge1}m|\hat\theta_T(-m)|^2$ is zero.
+    warum: |
+      No negative frequencies means: $\theta_T$ can be continued holomorphically into the upper half-plane. By Paulsen–Cowgill, exactly this property selects Kneser.
+      $E$ is a sum of squares, hence $\ge0$, and zero only without negative frequencies.
+    worum: |
+      A condition on the real axis only that selects exactly Kneser — similar to Bohr–Mollerup for Γ. **Notation:** $T(x)=\mathrm{sexp}(x+p(x))$,
+      $\theta_T(x)=h(T(x))-x$ with the regular Abel function $h$ at the complex fixed point $L$ ([[kn.def.theta_welle]]); $\hat\theta_T(-m)$ is the Fourier coefficient at frequency $-m$.
 - id: br.satz.ripa
   quelle_hash: c0d8861acd89
   theorie_hash: ead7881f997d
