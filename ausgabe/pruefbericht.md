@@ -1,8 +1,8 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-425 Aussagen · 768 Kanten · 57 Experimente
+425 Aussagen · 769 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 152, numerisch 71, bewiesen_literatur 60, offen 34, vermutung 29, bedingt 27, definition 15, skizze 15, gescheitert 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 155, numerisch 69, bewiesen_literatur 60, offen 34, bedingt 30, vermutung 29, definition 15, gescheitert 11, skizze 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 104
 
@@ -103,11 +103,7 @@
 - `fp.satz.siegel_mittel` — Nach Herman (1985) ist $\Delta$ für diophantisches $\alpha$ unbeschränkt; Carathéodory greift dann nicht. Zu zeigen wäre, dass $\varphi$ Randwerte in $L^1(d\theta)$ hat (Hardy-Raum $H^1$), damit der Mittelwertsatz gilt.
 - `fp.satz.siegel_mittel` — Ohne Jordan-Rand ist die Randdynamik nicht automatisch zu einer Drehung konjugiert; die Gleichverteilung des Turms bezüglich $\omega_L$ ist offen.
 - `kl.satz.invariante_daempfung` — Dass die klassische periodische Phase (bw.satz.phasengesetz) als Grenzwert |λ| → 1 einer Familie gedämpfter Übergänge entsteht, ist eine Deutung, kein Grenzwertsatz.
-- `br.satz.reelle_kennzeichnung` — Beide Richtungen brauchen θ_T ∈ L¹ und die Majorante an den ganzen Zahlen (wie kn.satz.theta_mittelwerte).
-- `kn.satz.theta_singularitaet` — Dass die Fortsetzung von h nur über der Bahn von 0 behindert ist (singuläre Werte von Poincaré-Funktionen), ist zitiert, nicht hier bewiesen.
-- `kn.satz.theta_singularitaet` — Analytizität auf ℝ∖ℤ: die Wahl des Hauptzweigs ist nur numerisch geprüft (stetiger Verlauf in allen Abtastungen).
-- `kn.satz.theta_mittelwerte` — Die Majorante ist aus der Lokalform abgelesen; eine ausgeschriebene Abschätzung von h und h′ auf {log(Az) : 0 < arg z < π} fehlt.
-- `kn.satz.binet_kappa` — Benutzt dieselbe Majorante wie kn.satz.theta_mittelwerte.
+- `kn.satz.theta_singularitaet` — Zweigwahl: bewiesen ist, dass die Zweige überall übereinstimmen, sobald sie an einem Punkt übereinstimmen; an z₀ = 0.05i ist der Abstand 4·10⁻⁴⁸ (nötig < 0.12), aber nur in Gleitkomma gerechnet, nicht mit Intervallen, und nur für Basis e.
 - `br.satz.vergleichsfunktion` — Konvergenz für die Exponentialfakultät nur gemessen (doppelt exponentiell, ganze Werte auf 10⁻¹²), nicht bewiesen.
 - `br.satz.vergleichsfunktion` — Für Tetration mit Produkt-Tetration als Vergleich (tid 1816) weder Konvergenz noch Glattheit geprüft.
 - `gr.korr.grenzidentitaet` — Gleichmässige Abschätzung der unteren Faktoren, die den Grenzwert nicht ändern.
@@ -141,6 +137,9 @@
 - `bw.satz.anker_rekonstruktion` — bw.ann.K1K2
 - `bw.zert.8r1` — — · zusätzlich: korrekte Implementierung der Intervallarithmetik und die drei offenen Punkte des Zertifikats-README: Mikrosegment-Induktion, Hilbert-Röhren-Supremum, Γ-Steigungsbeweis
 - `ar.satz.schanuel_orbit` — ar.verm.schanuel
+- `gr.satz.ein_wendepunkt_e2` — — · zusätzlich: Annahme H: Motorwerte an den Kreisknoten auf 10⁻⁵ genau und |sexp| ≤ 1000 nahe der Achse; dass die Werte zu Kneser gehören, ist nur numerisch belegt
+- `kn.satz.theta_singularitaet` — — · zusätzlich: Zweigwahl an einem Punkt (z₀ = 0.05i, Abstand 4·10⁻⁴⁸ bei nötigen < 0.12) nur in Gleitkomma geprüft, nicht mit Intervallen; nur Basis e
+- `kn.satz.theta_koeffizienten` — — · zusätzlich: dieselbe Zweigprüfung wie bei kn.satz.theta_singularitaet
 
 ## Experimente
 

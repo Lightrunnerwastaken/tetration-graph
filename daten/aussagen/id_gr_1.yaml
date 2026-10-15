@@ -1,32 +1,43 @@
 gebiet: gr
-# Identitätssuche Etappe 3 (14.10.2026): Nullstellenzählung von sexp″ zur Basis e.
+# Identitätssuche Etappe 3 (14.10.2026): Wendepunkt zur Basis e und 2; mit Intervallarithmetik zertifiziert (luecken/wendepunkt/).
 aussagen:
 
-- id: gr.beob.ein_wendepunkt_e
-  titel: 'Basis e: Knesers Tetration hat genau einen Wendepunkt (rechnergestützt, Nullstellenzählung im Komplexen)'
-  art: beobachtung
+- id: gr.satz.ein_wendepunkt_e2
+  titel: 'Basen e und 2: Knesers Tetration hat genau einen Wendepunkt (Intervallarithmetik, unter einer Annahme an die Motorwerte)'
+  art: satz
   ebene: C
-  status: numerisch
+  status: bedingt
+  bedingungen_text: 'Annahme H: Motorwerte an den Kreisknoten auf 10⁻⁵ genau und |sexp| ≤ 1000 nahe der Achse; dass die Werte zu Kneser gehören, ist nur numerisch belegt'
   niveau: vertiefung
   objekte: [kneser_T, konvexitaet]
-  bereich: 'Kneser-$\mathrm{sexp}_e$ auf $(-2,\infty)$'
+  bereich: 'Kneser-$\mathrm{sexp}_b$ auf $(-2,\infty)$, $b=e$ und $b=2$'
+  voraussetzungen:
+    - {text: 'Annahme H: die Motorwerte an den 5×256 Kreisknoten |z − c| = 0.2 (c = −0.4 … 0.4) sind auf 10⁻⁵ genau, und |sexp| ≤ 1000 für |z − c| ≤ 0.3.', benutzt: ja}
   aussage: |
-    Das Argumentprinzip zählt die Nullstellen von $\mathrm{sexp}''$ (nach kn.satz.ableitung_nullstellenfrei die Nullstellen von $\varphi=\mathrm{sexp}''/\mathrm{sexp}'$)
-    in Streifen $[x_0,x_0+1]\times[-4,4]$: im ganzen Gebiet $[-1.8,1.4]\times[-4,4]$ liegt genau eine, der reelle Wendepunkt $x_w=-0.5218\ldots$;
-    oberhalb $|\mathrm{Im}z|=4$ ist $|\varphi-L|\ll|L|$. Mit zwei elementaren Schritten ($\mathrm{sexp}''>0$ auf $[-0.4,\infty)$ nach gr.kor.konvex_nach_oben;
-    $\mathrm{sexp}''(x)<0$ auf $(-2,-1.6)$ aus $\mathrm{sexp}''(x+1)<0$) folgt: **genau ein Wendepunkt auf $(-2,\infty)$** — für $b=e$ die Vermutung
-    gr.verm.ein_wendepunkt, bis auf eine Zertifizierung mit Intervallarithmetik.
+    Knesers Tetration hat genau einen Wendepunkt auf $(-2,\infty)$, und $\mathrm{sexp}''$ hat dort eine einfache Nullstelle:
+    $$b=e:\ x_w=-0.521764792623322155340028093\pm4\cdot10^{-28},\qquad b=2:\ x_w=-0.030244542753639263604287235\pm3\cdot10^{-28}.$$
+    Zertifiziert mit Ball-Arithmetik (arb/acb): aus den Knotenwerten mit Fehlerradius $10^{-30}$ (bzw. $10^{-5}$ für die Vorzeichen) die Taylor-Reihen mit
+    Aliasing- und Restschranke, die Vorzeichen von $\mathrm{sexp}',\mathrm{sexp}'',\mathrm{sexp}'''$ auf $[-1.6,0.6]$ (Basis $e$) bzw. $[-1.1,1.0]$ (Basis 2) und die
+    Nullstelle per Intervall-Newton. Ausserhalb: nach rechts gr.kor.konvex_nach_oben, nach links $T''(x)=T''(x+1)/(\lambda T(x+1))-\lambda T'(x)^2<0$.
+    Damit ist gr.verm.ein_wendepunkt für $b=e$ und $b=2$ bewiesen — unter Annahme H. Nicht zertifiziert ist, dass die Motorwerte zu Kneser gehören und nicht zu
+    einer anderen Tetration; numerisch belegt (unabhängige Genauigkeitsstufen stimmen auf $10^{-110}$, die Turmgleichung hält auf $5\cdot10^{-90}$, die θ-Reihe nur mit
+    Moden $n\ge0$ trifft die Werte auf $4\cdot10^{-59}$). Eine frühere komplexe Zählung (alle Nullstellen von $\mathrm{sexp}''$ in $[-1.8,1.4]\times[-4,4]$) bleibt nur rechnergestützt.
   einfach: >-
-    Ob die Kneser-Kurve ihre Krümmung genau einmal wechselt, war offen. Für die Basis e zählt eine Rechnung in der komplexen Ebene alle Stellen, an
-    denen die Krümmung null wird: es ist genau eine. Ganz streng ist das erst, wenn man die Rechnung mit garantierten Rundungsfehlern wiederholt.
-  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, W; s4_zaehlung.py'}]
+    Die Kneser-Kurve wechselt ihre Krümmung genau einmal — zur Basis e bei −0.5218 und zur Basis 2 bei −0.0302. Das ist jetzt mit garantierten
+    Rundungsfehlern nachgerechnet. Vorausgesetzt wird nur, dass die Werte aus dem Rechenmotor auf fünf Stellen stimmen; tatsächlich stimmen sie auf viel mehr.
+  beweis:
+    art: vollstaendig
+    text: 'Ball-Arithmetik ab den Knotenwerten (w_reell.py, je etwa 2 s); mit Fehlerradius 10⁻³ schlägt die Prüfung fehl, sie kann also scheitern. Belege für H in w_pruef.py.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/luecken/wendepunkt/BERICHT_WENDEPUNKT.md; w_reell.py, w_pruef.py; zuvor etappe3/BERICHT_ETAPPE3.md, W'}]
   pruefung:
-    f1_folgt_unmittelbar: 'Nein (Windungszahlen gerechnet).'
-    f2_benutzte_voraussetzungen: 'Windungszahlen in Gleitkomma (dps 30), ganzzahlig auf 10⁻³⁰, Schrittweite ≤ 0.26 rad; Kneser-Werte aus dem Motor und der θ-Reihe.'
+    f1_folgt_unmittelbar: 'Nein (zertifizierte Rechnung).'
+    f2_benutzte_voraussetzungen: 'Annahme H; gr.kor.konvex_nach_oben; Turmgleichung. Nicht gebraucht: kn.satz.ableitung_nullstellenfrei.'
     f3_spezialfall: nein
-    f4_uebertragbar: 'Auf Basis 2 (Wendepunkt bei −0.0302) und als Familie in b.'
-    f5_neue_frage: 'Zertifizierung mit Intervallarithmetik (python-flint arb).'
-  bewertung: {richtigkeit: 'rechnergestützt, nicht zertifiziert', neuheit: neu_ungeprueft, nutzen: 'Löst die Wendepunkt-Vermutung für b = e bis auf die Zertifizierung.', nutzen_stufe: hoch}
+    f4_uebertragbar: 'Auf jede einzelne Basis über η mit denselben Skripten; für eine ganze Familie in b bräuchte es Schranken in b.'
+    f5_neue_frage: 'Die Annahme H selbst zertifizieren (strenge θ-Schranke), und die Aussage für alle b > η.'
+  bewertung: {richtigkeit: 'zertifiziert unter Annahme H', neuheit: neu_ungeprueft, nutzen: 'Beweist die Wendepunkt-Vermutung für zwei Basen bis auf eine klar benannte numerische Annahme.', nutzen_stufe: hoch}
+  versionen:
+    - {aenderung: 'Früher gr.beob.ein_wendepunkt_e (rechnergestützt, nur Basis e, komplexe Zählung).', grund: 'Mit Intervallarithmetik zertifiziert und auf Basis 2 erweitert, 14.10.2026.'}
   kanten:
     - {typ: stuetzt, ziel: gr.verm.ein_wendepunkt}
     - {typ: verwandt, ziel: kn.satz.ableitung_nullstellenfrei}

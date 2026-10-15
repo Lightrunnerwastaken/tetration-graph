@@ -509,10 +509,10 @@
       Hardy fields are collections of “well-behaved” functions that do not oscillate infinitely often for large $x$. There are such collections that contain functions that grow faster than any
       exponential tower — that is, tetration-like functions.
 - id: br.satz.endlich_viele_reichen_nicht
-  quelle_hash: e87338b626fe
+  quelle_hash: 0333357c1697
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-15'
   geprueft: nein
   en:
     titel: No single real mean-value formula — and no finite list — singles out Kneser
@@ -536,8 +536,9 @@
     pruefung:
       f1_folgt_unmittelbar: 'Almost: a dimension argument (a function against finitely many numbers); the explicit linearization and the counterexamples
         make it concrete.'
-      f2_benutzte_voraussetzungen: 'Mean-value principle (gap: majorant, kn.satz.theta_mittelwerte) for the linearization; the counterexamples
-        themselves were recomputed directly.'
+      f2_benutzte_voraussetzungen: Mean-value principle (kn.satz.theta_mittelwerte) for the linearization; because the weights F_C are not integrable
+        at the integers, their coefficients must be taken regularized (M[F·(e^{−2πijx} − 1)]); the counterexamples themselves were recomputed
+        directly.
       f3_spezialfall: 'Sharpens fg.kor.nichteindeutigkeit: analytic + monotone + finitely many integral equations is not enough.'
       f4_uebertragbar: To any finite list of conditions that depend continuously on p.
       f5_neue_frage: Which infinite family suffices (br.satz.reelle_kennzeichnung)?
@@ -935,10 +936,10 @@
     worum: |
       Which fractional iterate of $xe^x$ is the natural one? The answer is already in the theory of parabolic fixed points.
 - id: br.satz.reelle_kennzeichnung
-  quelle_hash: e2595ef0f990
+  quelle_hash: 27ac2ae49ee3
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-15'
   geprueft: nein
   en:
     titel: 'A real but nonlocal characterization of Kneser: infinitely many Fourier equations or a defect E(T) = 0'
@@ -961,9 +962,8 @@
         “$\Leftarrow$”: If the negative modes vanish, $\theta_T$ is the boundary value of a periodic function holomorphic in the upper half-plane (Hardy space,
         Lusin–Privalov); then $T$ satisfies Kneser's conditions, and Paulsen–Cowgill (kn.satz.paulsen_komplex) gives $T=$ Kneser. “$\Rightarrow$”: Stage 3, Z5.
         $E$: Douglas formula for the Dirichlet energy plus the area formula $\tfrac1\pi\mathrm{Fläche}=\sum_m m(|\hat\theta(m)|^2-|\hat\theta(-m)|^2)$.
+        Integrability of $\theta_T$ at the points where $x+p(x)$ is an integer: the same majorant as in kn.satz.theta_mittelwerte (Grunsky/Koebe).
         Möbius example: exact Fourier expansion, numerically to $5\cdot10^{-29}$.
-      luecken:
-      - Both directions need θ_T ∈ L¹ and the majorant at the integers (as in kn.satz.theta_mittelwerte).
     pruefung:
       f1_folgt_unmittelbar: 'At its core yes: Paulsen–Cowgill in Hardy-space language. New are the real form, the defect E and the Möbius example.'
       f2_benutzte_voraussetzungen: Paulsen–Cowgill uniqueness; Hardy-space theory; majorant at the integers.
@@ -973,7 +973,7 @@
         down Kneser (br.frage.momentenfamilie)?
     bewertung:
       nutzen: First purely real characterization of Kneser with an extremal principle — a partial answer to br.frage.bohr_mollerup.
-      richtigkeit: core proved, majorant sketched
+      richtigkeit: complete (Paulsen–Cowgill and majorant cited or proved, respectively)
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S3, S4, MÖ, Lemma R; s1_moebius.py, s4_hooshmand.py
 - id: br.satz.ripa

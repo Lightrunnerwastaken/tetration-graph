@@ -31,7 +31,7 @@ aussagen:
   quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S1, S2, Tabelle 3; s2_gegenbeispiele.py, s5_pruefen.py'}]
   pruefung:
     f1_folgt_unmittelbar: 'Fast: Dimensionsargument (Funktion gegen endlich viele Zahlen); die explizite Linearisierung und die Gegenbeispiele machen es konkret.'
-    f2_benutzte_voraussetzungen: 'Mittelwertprinzip (Lücke Majorante, kn.satz.theta_mittelwerte) für die Linearisierung; die Gegenbeispiele selbst sind direkt nachgerechnet.'
+    f2_benutzte_voraussetzungen: 'Mittelwertprinzip (kn.satz.theta_mittelwerte) für die Linearisierung; weil die Gewichte F_C an den ganzen Zahlen nicht integrierbar sind, sind ihre Koeffizienten regularisiert zu nehmen (M[F·(e^{−2πijx} − 1)]); die Gegenbeispiele selbst sind direkt nachgerechnet.'
     f3_spezialfall: 'Verschärft fg.kor.nichteindeutigkeit: analytisch + monoton + endlich viele Integralgleichungen reicht nicht.'
     f4_uebertragbar: 'Auf jede endliche Liste von Bedingungen, die stetig von p abhängen.'
     f5_neue_frage: 'Welche unendliche Familie reicht (br.satz.reelle_kennzeichnung)?'
@@ -45,7 +45,7 @@ aussagen:
   titel: 'Eine reelle, aber nichtlokale Kennzeichnung von Kneser: unendlich viele Fourier-Gleichungen oder ein Defekt E(T) = 0'
   art: satz
   ebene: B
-  status: skizze
+  status: bewiesen
   niveau: forschung
   objekte: [kneser_T, theta_kneser]
   bereich: 'reell-analytische Tetrationen $T$ mit $T''>0$, $T(0)=1$, Basis $b>\eta$; $\theta_T(x)=h(T(x))-x$ mit der regulären Abel-Funktion $h$ am Fixpunkt $L$'
@@ -63,14 +63,13 @@ aussagen:
     Kneser gleich null. Anders als bei der Gammafunktion ist das aber keine einfache Krümmungsbedingung an jeder Stelle, sondern eine Bedingung,
     die die ganze Periode auf einmal betrifft.
   beweis:
-    art: skizze
+    art: vollstaendig
     text: |
       „$\Leftarrow$“: Verschwinden die negativen Moden, ist $\theta_T$ Randwert einer in der oberen Halbebene holomorphen periodischen Funktion (Hardy-Raum,
       Lusin–Privalov); dann erfüllt $T$ Knesers Bedingungen, und Paulsen–Cowgill (kn.satz.paulsen_komplex) gibt $T=$ Kneser. „$\Rightarrow$“: Etappe 3, Z5.
       $E$: Douglas-Formel für die Dirichlet-Energie plus Flächenformel $\tfrac1\pi\mathrm{Fläche}=\sum_m m(|\hat\theta(m)|^2-|\hat\theta(-m)|^2)$.
+      Integrierbarkeit von $\theta_T$ an den Stellen, wo $x+p(x)$ ganz ist: dieselbe Majorante wie bei kn.satz.theta_mittelwerte (Grunsky/Koebe).
       Möbius-Beispiel: exakte Fourier-Entwicklung, numerisch auf $5\cdot10^{-29}$.
-    luecken:
-      - 'Beide Richtungen brauchen θ_T ∈ L¹ und die Majorante an den ganzen Zahlen (wie kn.satz.theta_mittelwerte).'
   stuetzt_sich_auf: [kn.satz.paulsen_komplex]
   quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S3, S4, MÖ, Lemma R; s1_moebius.py, s4_hooshmand.py'}]
   pruefung:
@@ -79,7 +78,7 @@ aussagen:
     f3_spezialfall: 'Ja: von „θ holomorph oben ⇔ Kneser“.'
     f4_uebertragbar: 'Auf jede Basis über η.'
     f5_neue_frage: 'Gibt es eine lokale Kennzeichnung? Reichen weniger Bedingungen (nur gerade m, nur Realteile)? Legt die Momentenfamilie Kneser fest (br.frage.momentenfamilie)?'
-  bewertung: {richtigkeit: 'Kern bewiesen, Majorante skizziert', neuheit: neu_ungeprueft, nutzen: 'Erste rein reelle Kennzeichnung von Kneser mit Extremalprinzip — Teilantwort auf br.frage.bohr_mollerup.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'vollständig (Paulsen–Cowgill und Majorante zitiert bzw. bewiesen)', neuheit: neu_ungeprueft, nutzen: 'Erste rein reelle Kennzeichnung von Kneser mit Extremalprinzip — Teilantwort auf br.frage.bohr_mollerup.', nutzen_stufe: hoch}
   kanten:
     - {typ: verwandt, ziel: br.frage.bohr_mollerup}
     - {typ: verwandt, ziel: kn.satz.theta_mittelwerte}

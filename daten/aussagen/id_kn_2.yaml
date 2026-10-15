@@ -41,7 +41,7 @@ aussagen:
   titel: 'Mittelwerte über eine Periode sind multiplikativ — reelle Formeln, die nur Kneser erfüllt (z. B. ∫₁ᵉ slog′²/h′ = 1)'
   art: satz
   ebene: C
-  status: skizze
+  status: bewiesen
   niveau: forschung
   objekte: [kneser_T, theta_kneser]
   bereich: 'Basis $b>\eta$ (gerechnet für $e$ und 2); $h$, $\sigma$ reguläre Abel- bzw. Schröder-Funktion am Fixpunkt $L$; $\theta(x)=h(\mathrm{sexp}\,x)-x$ auf dem stetigen Zweig; $M[G]=\int_0^1G(x)\,dx$'
@@ -61,21 +61,22 @@ aussagen:
     - {tex: '\int_1^e\frac{\mathrm{slog}''(w)^2}{h''(w)}\,dw=1', notiz: 'einfachste Form ($=M[1/(1+\theta'')]$)'}
     - {tex: 'M[\theta^k]=M[\theta]^k,\quad M[e^{c\theta}]=e^{cM[\theta]}', notiz: 'Multiplikativität'}
   beweis:
-    art: skizze
+    art: vollstaendig
     text: |
-      $\frac{d}{dy}\int_0^1G(x+iy)\,dx=i[G(1+iy)-G(iy)]=0$; oben ist der Mittelwert $G_\infty$, unten der Randmittelwert. Anwendungen: $G=\Phi(\theta)$ ($\Phi$ ganz),
-      $G=e^{kL\theta}$ (Formel mit $\sigma$), $G=(1+\theta')^s$ für $\mathrm{Re}\,s<1$ und $G=\log(1+\theta')$ (eindeutig nach kn.satz.ableitung_nullstellenfrei);
-      Substitution $w=\mathrm{sexp}\,x$ gibt die slog-Form. Die Majorante kommt aus der Lokalform von $\theta$ an den ganzen Zahlen (kn.satz.theta_singularitaet).
-    luecken:
-      - 'Die Majorante ist aus der Lokalform abgelesen; eine ausgeschriebene Abschätzung von h und h′ auf {log(Az) : 0 < arg z < π} fehlt.'
-  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 und B-Z; s2_nullmoden.py, s2b_kontrolle.py'}]
+      $\frac{d}{dy}\int_0^1G(x+iy)\,dx=i[G(1+iy)-G(iy)]=0$; oben ist der Mittelwert $G_\infty$, unten der Randmittelwert. Anwendungen: $G=\Phi(\theta)$ ($\Phi$ ganz
+      mit $\log M_\Phi(s)=O(e^{\kappa s})$ — alle hier benutzten), $G=e^{kL\theta}$ (Formel mit $\sigma$), $G=(1+\theta')^s$ für $\mathrm{Re}\,s<1$ und
+      $G=\log(1+\theta')$ (eindeutig nach kn.satz.ableitung_nullstellenfrei); Substitution $w=\mathrm{sexp}\,x$ gibt die slog-Form.
+      **Majorante** (Grenzübergang $y\to0$ mit dominierter Konvergenz): $\sigma$ ist auf der ganzen oberen Halbebene schlicht, weil der Hauptzweig-Logarithmus sie
+      injektiv in sich abbildet; Grunsky- und Koebe-Schranken beim dritten iterierten Logarithmus (der mindestens $\pi/2$ über der Achse liegt) geben auf $|z|<0.1$
+      (Basis $e$) $|\theta|\le31.7+2.91\ln\ln\ln(1/|z|)$ und $c/(|z|\ln(1/|z|)(\ln\ln)^4)\le|1+\theta'|\le C/(|z|\ln(1/|z|))$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 und B-Z; s2_nullmoden.py, s2b_kontrolle.py; Majorante: luecken/BERICHT_LUECKEN_ANALYTISCH.md, l1_schranken.py'}]
   pruefung:
     f1_folgt_unmittelbar: 'Das Prinzip ja (Hardy-Raum, klassisch); die Anwendung auf θ und die reellen Formeln nein.'
     f2_benutzte_voraussetzungen: 'θ holomorph und periodisch in der oberen Halbebene mit Grenzwert (Knesers Konstruktion, Paulsen–Cowgill); sexp′ ≠ 0; Majorante an den ganzen Zahlen.'
     f3_spezialfall: 'Die Aussage „keine negativen Fourier-Moden“ ist eine Umformulierung von „θ holomorph oben“, also von Knesers Eindeutigkeitsbedingung.'
     f4_uebertragbar: 'Auf jede Basis über η (Basis 2 geprüft) und auf Kneser-artige Pentation.'
     f5_neue_frage: 'Wählt eine dieser Gleichungen allein Kneser aus? Nein (br.satz.endlich_viele_reichen_nicht); unendlich viele reichen (br.satz.reelle_kennzeichnung).'
-  bewertung: {richtigkeit: 'Kern bewiesen, Majorante skizziert; numerisch auf 10⁻⁹⁸', neuheit: neu_ungeprueft, nutzen: 'Erste reelle Integralformeln, die Kneser von allen anderen Tetrationen unterscheiden.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'vollständig (Majorante mit Grunsky/Koebe); numerisch auf 10⁻⁹⁸', neuheit: neu_ungeprueft, nutzen: 'Erste reelle Integralformeln, die Kneser von allen anderen Tetrationen unterscheiden.', nutzen_stufe: hoch}
   kanten:
     - {typ: stuetzt_sich_auf, ziel: kn.satz.ableitung_nullstellenfrei}
     - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
@@ -120,7 +121,7 @@ aussagen:
   titel: 'Binet-artige Formel für Knesers Asymptotik-Konstante κ (sexp ≈ L + κ e^{Lz} oben)'
   art: korollar
   ebene: C
-  status: skizze
+  status: bewiesen
   niveau: forschung
   objekte: [kneser_T, theta_kneser]
   aussage: |
@@ -132,10 +133,8 @@ aussagen:
     Weit oben in der komplexen Ebene sieht Knesers Tetration fast aus wie „Fixpunkt plus eine kleine Exponentialfunktion“. Der Vorfaktor dieser
     Exponentialfunktion lässt sich exakt als Integral ausdrücken — so wie man bei der Gammafunktion Konstanten durch Integrale ausdrückt.
   beweis:
-    art: skizze
+    art: vollstaendig
     text: '$E(z)=\log\mathrm{sexp}''(z)-Lh(\mathrm{sexp}z)$ ist eindeutig (kn.satz.ableitung_nullstellenfrei), $E(z+1)-E(z)=\mathrm{sexp}(z)-L$, $E\to L$ oben; das Mittelwertargument gibt $m''(y)=i(\mathrm{sexp}(iy)-L)$, also $\int_0^1E=L-i\int_0^\infty(\mathrm{sexp}(it)-L)dt$; mit $M[h\circ\mathrm{sexp}]=a_0+\tfrac12$ folgt die Formel modulo $2\pi i$, und $\kappa=e^{La_0}$ ist eindeutig. Numerisch auf $10^{-35}$.'
-    luecken:
-      - 'Benutzt dieselbe Majorante wie kn.satz.theta_mittelwerte.'
   stuetzt_sich_auf: [kn.satz.theta_mittelwerte]
   quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, V3 und B-V3'}]
   pruefung:
@@ -147,4 +146,4 @@ aussagen:
   bewertung: {richtigkeit: 'skizziert; numerisch auf 10⁻³⁵', neuheit: neu_ungeprueft, nutzen: 'Verbindet die Asymptotik oben mit Integralen auf der reellen Achse.', nutzen_stufe: mittel}
   kanten:
     - {typ: verwandt, ziel: kn.satz.senkrechte_integrale}
-    - {typ: verwandt, ziel: kn.beob.theta_koeffizienten}
+    - {typ: verwandt, ziel: kn.satz.theta_koeffizienten}

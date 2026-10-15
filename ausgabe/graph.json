@@ -1,6 +1,6 @@
 {
- "gebaut": "2026-10-14 17:28",
- "eingabe_hash": "f8dfbe7659653d4b",
+ "gebaut": "2026-10-15 08:42",
+ "eingabe_hash": "10a55094df9224f9",
  "gebiete": [
   {
    "id": "gr",
@@ -5494,10 +5494,9 @@
      ]
     },
     {
-     "id": "gr.kor.ganze_stellen",
+     "id": "gr.satz.ein_wendepunkt_e2",
      "score": 1.53,
      "warum": [
-      "über gr.satz.zweite_ableitung",
       "über gr.verm.ein_wendepunkt"
      ]
     }
@@ -6138,7 +6137,7 @@
      ]
     },
     {
-     "id": "gr.beob.ein_wendepunkt_e",
+     "id": "gr.satz.ein_wendepunkt_e2",
      "score": 3.67,
      "warum": [
       "stützt (Evidenz) (rückwärts)",
@@ -10954,7 +10953,7 @@
      ]
     },
     {
-     "id": "gr.beob.ein_wendepunkt_e",
+     "id": "gr.satz.ein_wendepunkt_e2",
      "score": 2.02,
      "warum": [
       "über gr.verm.ein_wendepunkt",
@@ -11127,7 +11126,7 @@
      ]
     },
     {
-     "id": "gr.beob.ein_wendepunkt_e",
+     "id": "gr.satz.ein_wendepunkt_e2",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, konvexitaet"
@@ -11441,7 +11440,7 @@
      ]
     },
     {
-     "id": "gr.beob.ein_wendepunkt_e",
+     "id": "gr.satz.ein_wendepunkt_e2",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, konvexitaet"
@@ -42369,6 +42368,13 @@
      ]
     },
     {
+     "id": "kn.satz.theta_koeffizienten",
+     "score": 2.5,
+     "warum": [
+      "gemeinsame Objekte: kneser_T, theta_kneser"
+     ]
+    },
+    {
      "id": "kn.satz.binet_kappa",
      "score": 2.5,
      "warum": [
@@ -42377,13 +42383,6 @@
     },
     {
      "id": "kn.frage.theta_exponent",
-     "score": 2.5,
-     "warum": [
-      "gemeinsame Objekte: kneser_T, theta_kneser"
-     ]
-    },
-    {
-     "id": "kn.beob.theta_koeffizienten",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, theta_kneser"
@@ -60798,7 +60797,7 @@
    ],
    "pruefung": {
     "f1_folgt_unmittelbar": "Fast: Dimensionsargument (Funktion gegen endlich viele Zahlen); die explizite Linearisierung und die Gegenbeispiele machen es konkret.",
-    "f2_benutzte_voraussetzungen": "Mittelwertprinzip (Lücke Majorante, kn.satz.theta_mittelwerte) für die Linearisierung; die Gegenbeispiele selbst sind direkt nachgerechnet.",
+    "f2_benutzte_voraussetzungen": "Mittelwertprinzip (kn.satz.theta_mittelwerte) für die Linearisierung; weil die Gewichte F_C an den ganzen Zahlen nicht integrierbar sind, sind ihre Koeffizienten regularisiert zu nehmen (M[F·(e^{−2πijx} − 1)]); die Gegenbeispiele selbst sind direkt nachgerechnet.",
     "f3_spezialfall": "Verschärft fg.kor.nichteindeutigkeit: analytisch + monoton + endlich viele Integralgleichungen reicht nicht.",
     "f4_uebertragbar": "Auf jede endliche Liste von Bedingungen, die stetig von p abhängen.",
     "f5_neue_frage": "Welche unendliche Familie reicht (br.satz.reelle_kennzeichnung)?"
@@ -60880,14 +60879,14 @@
      ]
     },
     {
-     "id": "kn.frage.theta_exponent",
+     "id": "kn.satz.theta_koeffizienten",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
     {
-     "id": "kn.beob.theta_koeffizienten",
+     "id": "kn.frage.theta_exponent",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, theta_kneser"
@@ -60911,7 +60910,7 @@
     },
     "pruefung": {
      "f1_folgt_unmittelbar": "Almost: a dimension argument (a function against finitely many numbers); the explicit linearization and the counterexamples make it concrete.",
-     "f2_benutzte_voraussetzungen": "Mean-value principle (gap: majorant, kn.satz.theta_mittelwerte) for the linearization; the counterexamples themselves were recomputed directly.",
+     "f2_benutzte_voraussetzungen": "Mean-value principle (kn.satz.theta_mittelwerte) for the linearization; because the weights F_C are not integrable at the integers, their coefficients must be taken regularized (M[F·(e^{−2πijx} − 1)]); the counterexamples themselves were recomputed directly.",
      "f3_spezialfall": "Sharpens fg.kor.nichteindeutigkeit: analytic + monotone + finitely many integral equations is not enough.",
      "f4_uebertragbar": "To any finite list of conditions that depend continuously on p.",
      "f5_neue_frage": "Which infinite family suffices (br.satz.reelle_kennzeichnung)?"
@@ -60935,7 +60934,7 @@
    "titel": "Eine reelle, aber nichtlokale Kennzeichnung von Kneser: unendlich viele Fourier-Gleichungen oder ein Defekt E(T) = 0",
    "art": "satz",
    "ebene": "B",
-   "status": "skizze",
+   "status": "bewiesen",
    "niveau": "forschung",
    "objekte": [
     "kneser_T",
@@ -60945,11 +60944,8 @@
    "aussage": "$$T=\\text{Kneser}\\iff\\int_0^1h(T(x))\\,e^{2\\pi imx}\\,dx=\\frac{1}{2\\pi im}\\ \\ \\text{für alle }m\\ge1\\iff E(T)=0,$$\ngleichwertig: Real- und Imaginärteil von $h(T(x))-x$ bilden ein periodisches Hilbert-Paar. Der **Defekt**\n$$E(T)=\\tfrac14\\iint\\frac{|\\theta_T(x)-\\theta_T(y)|^2}{\\sin^2\\pi(x-y)}\\,dx\\,dy-\\tfrac1\\pi\\,\\mathrm{Fläche}(\\theta_T)=2\\sum_{m\\ge1}m\\,|\\hat\\theta_T(-m)|^2\\ \\ge0$$\nist eine einzige reelle Grösse, die genau bei Kneser ihr Minimum 0 annimmt (Fläche = die von der Kurve $\\theta_T$ umlaufene Fläche).\nFür reell-analytische $T$ fallen die negativen Moden exponentiell; bei der linearen Tetration nur wie $m^{-2}$ ($E\\approx4.7\\cdot10^{-5}$).\nExakt lösbares Beispiel: verbiegt man Kneser mit einer Möbius-Abbildung ($e^{2\\pi i\\varphi}=e^{i\\alpha}(q-a)/(1-\\bar aq)$), ist\n$\\hat\\theta_T(-n)=ia^n/(2\\pi n)$ und $E=-\\ln(1-|a|^2)/(2\\pi^2)$.\nWie Bohr–Mollerup für Γ ist das eine Bedingung nur auf der reellen Achse — aber **nichtlokal** (Hilbert-Kern); eine lokale Bedingung (Vorzeichen von Ableitungen) ist weiter offen.\n",
    "einfach": "Man kann Kneser doch mit Rechnungen nur auf der Zahlengeraden erkennen: eine bestimmte „Fehlergrösse“ ist immer mindestens null und genau bei Kneser gleich null. Anders als bei der Gammafunktion ist das aber keine einfache Krümmungsbedingung an jeder Stelle, sondern eine Bedingung, die die ganze Periode auf einmal betrifft.",
    "beweis": {
-    "art": "skizze",
-    "text": "„$\\Leftarrow$“: Verschwinden die negativen Moden, ist $\\theta_T$ Randwert einer in der oberen Halbebene holomorphen periodischen Funktion (Hardy-Raum,\nLusin–Privalov); dann erfüllt $T$ Knesers Bedingungen, und Paulsen–Cowgill (kn.satz.paulsen_komplex) gibt $T=$ Kneser. „$\\Rightarrow$“: Etappe 3, Z5.\n$E$: Douglas-Formel für die Dirichlet-Energie plus Flächenformel $\\tfrac1\\pi\\mathrm{Fläche}=\\sum_m m(|\\hat\\theta(m)|^2-|\\hat\\theta(-m)|^2)$.\nMöbius-Beispiel: exakte Fourier-Entwicklung, numerisch auf $5\\cdot10^{-29}$.\n",
-    "luecken": [
-     "Beide Richtungen brauchen θ_T ∈ L¹ und die Majorante an den ganzen Zahlen (wie kn.satz.theta_mittelwerte)."
-    ]
+    "art": "vollstaendig",
+    "text": "„$\\Leftarrow$“: Verschwinden die negativen Moden, ist $\\theta_T$ Randwert einer in der oberen Halbebene holomorphen periodischen Funktion (Hardy-Raum,\nLusin–Privalov); dann erfüllt $T$ Knesers Bedingungen, und Paulsen–Cowgill (kn.satz.paulsen_komplex) gibt $T=$ Kneser. „$\\Rightarrow$“: Etappe 3, Z5.\n$E$: Douglas-Formel für die Dirichlet-Energie plus Flächenformel $\\tfrac1\\pi\\mathrm{Fläche}=\\sum_m m(|\\hat\\theta(m)|^2-|\\hat\\theta(-m)|^2)$.\nIntegrierbarkeit von $\\theta_T$ an den Stellen, wo $x+p(x)$ ganz ist: dieselbe Majorante wie bei kn.satz.theta_mittelwerte (Grunsky/Koebe).\nMöbius-Beispiel: exakte Fourier-Entwicklung, numerisch auf $5\\cdot10^{-29}$.\n"
    },
    "stuetzt_sich_auf": [
     "kn.satz.paulsen_komplex"
@@ -60968,7 +60964,7 @@
     "f5_neue_frage": "Gibt es eine lokale Kennzeichnung? Reichen weniger Bedingungen (nur gerade m, nur Realteile)? Legt die Momentenfamilie Kneser fest (br.frage.momentenfamilie)?"
    },
    "bewertung": {
-    "richtigkeit": "Kern bewiesen, Majorante skizziert",
+    "richtigkeit": "vollständig (Paulsen–Cowgill und Majorante zitiert bzw. bewiesen)",
     "neuheit": "neu_ungeprueft",
     "nutzen": "Erste rein reelle Kennzeichnung von Kneser mit Extremalprinzip — Teilantwort auf br.frage.bohr_mollerup.",
     "nutzen_stufe": "hoch"
@@ -60992,7 +60988,7 @@
    "_strang": "br.reell",
    "_idee": "fortsetzung.reell",
    "_niveau": "forschung",
-   "_status_eff": "skizze",
+   "_status_eff": "bewiesen",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
@@ -61054,14 +61050,14 @@
      ]
     },
     {
-     "id": "kn.frage.theta_exponent",
+     "id": "kn.satz.theta_koeffizienten",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
     {
-     "id": "kn.beob.theta_koeffizienten",
+     "id": "kn.frage.theta_exponent",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, theta_kneser"
@@ -61074,10 +61070,7 @@
     "bereich": "real-analytic tetrations $T$ with $T'>0$, $T(0)=1$, base $b>\\eta$; $\\theta_T(x)=h(T(x))-x$ with the regular Abel function $h$ at the fixed point $L$",
     "einfach": "One can recognize Kneser after all with computations on the number line alone: a certain \"error quantity\" is always at least zero and equals zero exactly at Kneser. Unlike for the gamma function, however, this is not a simple curvature condition at every point, but a condition that concerns the whole period at once.",
     "beweis": {
-     "text": "“$\\Leftarrow$”: If the negative modes vanish, $\\theta_T$ is the boundary value of a periodic function holomorphic in the upper half-plane (Hardy space,\nLusin–Privalov); then $T$ satisfies Kneser's conditions, and Paulsen–Cowgill (kn.satz.paulsen_komplex) gives $T=$ Kneser. “$\\Rightarrow$”: Stage 3, Z5.\n$E$: Douglas formula for the Dirichlet energy plus the area formula $\\tfrac1\\pi\\mathrm{Fläche}=\\sum_m m(|\\hat\\theta(m)|^2-|\\hat\\theta(-m)|^2)$.\nMöbius example: exact Fourier expansion, numerically to $5\\cdot10^{-29}$.\n",
-     "luecken": [
-      "Both directions need θ_T ∈ L¹ and the majorant at the integers (as in kn.satz.theta_mittelwerte)."
-     ]
+     "text": "“$\\Leftarrow$”: If the negative modes vanish, $\\theta_T$ is the boundary value of a periodic function holomorphic in the upper half-plane (Hardy space,\nLusin–Privalov); then $T$ satisfies Kneser's conditions, and Paulsen–Cowgill (kn.satz.paulsen_komplex) gives $T=$ Kneser. “$\\Rightarrow$”: Stage 3, Z5.\n$E$: Douglas formula for the Dirichlet energy plus the area formula $\\tfrac1\\pi\\mathrm{Fläche}=\\sum_m m(|\\hat\\theta(m)|^2-|\\hat\\theta(-m)|^2)$.\nIntegrability of $\\theta_T$ at the points where $x+p(x)$ is an integer: the same majorant as in kn.satz.theta_mittelwerte (Grunsky/Koebe).\nMöbius example: exact Fourier expansion, numerically to $5\\cdot10^{-29}$.\n"
     },
     "pruefung": {
      "f1_folgt_unmittelbar": "At its core yes: Paulsen–Cowgill in Hardy-space language. New are the real form, the defect E and the Möbius example.",
@@ -61088,7 +61081,7 @@
     },
     "bewertung": {
      "nutzen": "First purely real characterization of Kneser with an extremal principle — a partial answer to br.frage.bohr_mollerup.",
-     "richtigkeit": "core proved, majorant sketched"
+     "richtigkeit": "complete (Paulsen–Cowgill and majorant cited or proved, respectively)"
     },
     "quellen": [
      {
@@ -61186,14 +61179,14 @@
      ]
     },
     {
-     "id": "kn.frage.theta_exponent",
+     "id": "kn.satz.theta_koeffizienten",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
     {
-     "id": "kn.beob.theta_koeffizienten",
+     "id": "kn.frage.theta_exponent",
      "score": 2.5,
      "warum": [
       "gemeinsame Objekte: kneser_T, theta_kneser"
@@ -61222,38 +61215,55 @@
    "befunde": []
   },
   {
-   "id": "gr.beob.ein_wendepunkt_e",
-   "titel": "Basis e: Knesers Tetration hat genau einen Wendepunkt (rechnergestützt, Nullstellenzählung im Komplexen)",
-   "art": "beobachtung",
+   "id": "gr.satz.ein_wendepunkt_e2",
+   "titel": "Basen e und 2: Knesers Tetration hat genau einen Wendepunkt (Intervallarithmetik, unter einer Annahme an die Motorwerte)",
+   "art": "satz",
    "ebene": "C",
-   "status": "numerisch",
+   "status": "bedingt",
+   "bedingungen_text": "Annahme H: Motorwerte an den Kreisknoten auf 10⁻⁵ genau und |sexp| ≤ 1000 nahe der Achse; dass die Werte zu Kneser gehören, ist nur numerisch belegt",
    "niveau": "vertiefung",
    "objekte": [
     "kneser_T",
     "konvexitaet"
    ],
-   "bereich": "Kneser-$\\mathrm{sexp}_e$ auf $(-2,\\infty)$",
-   "aussage": "Das Argumentprinzip zählt die Nullstellen von $\\mathrm{sexp}''$ (nach kn.satz.ableitung_nullstellenfrei die Nullstellen von $\\varphi=\\mathrm{sexp}''/\\mathrm{sexp}'$)\nin Streifen $[x_0,x_0+1]\\times[-4,4]$: im ganzen Gebiet $[-1.8,1.4]\\times[-4,4]$ liegt genau eine, der reelle Wendepunkt $x_w=-0.5218\\ldots$;\noberhalb $|\\mathrm{Im}z|=4$ ist $|\\varphi-L|\\ll|L|$. Mit zwei elementaren Schritten ($\\mathrm{sexp}''>0$ auf $[-0.4,\\infty)$ nach gr.kor.konvex_nach_oben;\n$\\mathrm{sexp}''(x)<0$ auf $(-2,-1.6)$ aus $\\mathrm{sexp}''(x+1)<0$) folgt: **genau ein Wendepunkt auf $(-2,\\infty)$** — für $b=e$ die Vermutung\ngr.verm.ein_wendepunkt, bis auf eine Zertifizierung mit Intervallarithmetik.\n",
-   "einfach": "Ob die Kneser-Kurve ihre Krümmung genau einmal wechselt, war offen. Für die Basis e zählt eine Rechnung in der komplexen Ebene alle Stellen, an denen die Krümmung null wird: es ist genau eine. Ganz streng ist das erst, wenn man die Rechnung mit garantierten Rundungsfehlern wiederholt.",
+   "bereich": "Kneser-$\\mathrm{sexp}_b$ auf $(-2,\\infty)$, $b=e$ und $b=2$",
+   "voraussetzungen": [
+    {
+     "text": "Annahme H: die Motorwerte an den 5×256 Kreisknoten |z − c| = 0.2 (c = −0.4 … 0.4) sind auf 10⁻⁵ genau, und |sexp| ≤ 1000 für |z − c| ≤ 0.3.",
+     "benutzt": "ja"
+    }
+   ],
+   "aussage": "Knesers Tetration hat genau einen Wendepunkt auf $(-2,\\infty)$, und $\\mathrm{sexp}''$ hat dort eine einfache Nullstelle:\n$$b=e:\\ x_w=-0.521764792623322155340028093\\pm4\\cdot10^{-28},\\qquad b=2:\\ x_w=-0.030244542753639263604287235\\pm3\\cdot10^{-28}.$$\nZertifiziert mit Ball-Arithmetik (arb/acb): aus den Knotenwerten mit Fehlerradius $10^{-30}$ (bzw. $10^{-5}$ für die Vorzeichen) die Taylor-Reihen mit\nAliasing- und Restschranke, die Vorzeichen von $\\mathrm{sexp}',\\mathrm{sexp}'',\\mathrm{sexp}'''$ auf $[-1.6,0.6]$ (Basis $e$) bzw. $[-1.1,1.0]$ (Basis 2) und die\nNullstelle per Intervall-Newton. Ausserhalb: nach rechts gr.kor.konvex_nach_oben, nach links $T''(x)=T''(x+1)/(\\lambda T(x+1))-\\lambda T'(x)^2<0$.\nDamit ist gr.verm.ein_wendepunkt für $b=e$ und $b=2$ bewiesen — unter Annahme H. Nicht zertifiziert ist, dass die Motorwerte zu Kneser gehören und nicht zu\neiner anderen Tetration; numerisch belegt (unabhängige Genauigkeitsstufen stimmen auf $10^{-110}$, die Turmgleichung hält auf $5\\cdot10^{-90}$, die θ-Reihe nur mit\nModen $n\\ge0$ trifft die Werte auf $4\\cdot10^{-59}$). Eine frühere komplexe Zählung (alle Nullstellen von $\\mathrm{sexp}''$ in $[-1.8,1.4]\\times[-4,4]$) bleibt nur rechnergestützt.\n",
+   "einfach": "Die Kneser-Kurve wechselt ihre Krümmung genau einmal — zur Basis e bei −0.5218 und zur Basis 2 bei −0.0302. Das ist jetzt mit garantierten Rundungsfehlern nachgerechnet. Vorausgesetzt wird nur, dass die Werte aus dem Rechenmotor auf fünf Stellen stimmen; tatsächlich stimmen sie auf viel mehr.",
+   "beweis": {
+    "art": "vollstaendig",
+    "text": "Ball-Arithmetik ab den Knotenwerten (w_reell.py, je etwa 2 s); mit Fehlerradius 10⁻³ schlägt die Prüfung fehl, sie kann also scheitern. Belege für H in w_pruef.py."
+   },
    "quellen": [
     {
      "ref": "diese_arbeit",
-     "stelle": "forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, W; s4_zaehlung.py"
+     "stelle": "forschung/identitaeten_2026_10_14/luecken/wendepunkt/BERICHT_WENDEPUNKT.md; w_reell.py, w_pruef.py; zuvor etappe3/BERICHT_ETAPPE3.md, W"
     }
    ],
    "pruefung": {
-    "f1_folgt_unmittelbar": "Nein (Windungszahlen gerechnet).",
-    "f2_benutzte_voraussetzungen": "Windungszahlen in Gleitkomma (dps 30), ganzzahlig auf 10⁻³⁰, Schrittweite ≤ 0.26 rad; Kneser-Werte aus dem Motor und der θ-Reihe.",
+    "f1_folgt_unmittelbar": "Nein (zertifizierte Rechnung).",
+    "f2_benutzte_voraussetzungen": "Annahme H; gr.kor.konvex_nach_oben; Turmgleichung. Nicht gebraucht: kn.satz.ableitung_nullstellenfrei.",
     "f3_spezialfall": "nein",
-    "f4_uebertragbar": "Auf Basis 2 (Wendepunkt bei −0.0302) und als Familie in b.",
-    "f5_neue_frage": "Zertifizierung mit Intervallarithmetik (python-flint arb)."
+    "f4_uebertragbar": "Auf jede einzelne Basis über η mit denselben Skripten; für eine ganze Familie in b bräuchte es Schranken in b.",
+    "f5_neue_frage": "Die Annahme H selbst zertifizieren (strenge θ-Schranke), und die Aussage für alle b > η."
    },
    "bewertung": {
-    "richtigkeit": "rechnergestützt, nicht zertifiziert",
+    "richtigkeit": "zertifiziert unter Annahme H",
     "neuheit": "neu_ungeprueft",
-    "nutzen": "Löst die Wendepunkt-Vermutung für b = e bis auf die Zertifizierung.",
+    "nutzen": "Beweist die Wendepunkt-Vermutung für zwei Basen bis auf eine klar benannte numerische Annahme.",
     "nutzen_stufe": "hoch"
    },
+   "versionen": [
+    {
+     "aenderung": "Früher gr.beob.ein_wendepunkt_e (rechnergestützt, nur Basis e, komplexe Zählung).",
+     "grund": "Mit Intervallarithmetik zertifiziert und auf Basis 2 erweitert, 14.10.2026."
+    }
+   ],
    "kanten": [
     {
      "typ": "stuetzt",
@@ -61269,7 +61279,7 @@
    "_strang": "gr.kurve",
    "_idee": "gleichung.werte",
    "_niveau": "vertiefung",
-   "_status_eff": "numerisch",
+   "_status_eff": "bedingt",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
@@ -61341,26 +61351,41 @@
     }
    ],
    "en": {
-    "titel": "Base e: Kneser's tetration has exactly one inflection point (computer-assisted, zero count in the complex plane)",
-    "aussage": "The argument principle counts the zeros of $\\mathrm{sexp}''$ (by kn.satz.ableitung_nullstellenfrei the zeros of $\\varphi=\\mathrm{sexp}''/\\mathrm{sexp}'$)\nin strips $[x_0,x_0+1]\\times[-4,4]$: in the whole region $[-1.8,1.4]\\times[-4,4]$ there is exactly one, the real inflection point $x_w=-0.5218\\ldots$;\nabove $|\\mathrm{Im}z|=4$ we have $|\\varphi-L|\\ll|L|$. With two elementary steps ($\\mathrm{sexp}''>0$ on $[-0.4,\\infty)$ by gr.kor.konvex_nach_oben;\n$\\mathrm{sexp}''(x)<0$ on $(-2,-1.6)$ from $\\mathrm{sexp}''(x+1)<0$) it follows: **exactly one inflection point on $(-2,\\infty)$** — for $b=e$ the conjecture\ngr.verm.ein_wendepunkt, up to a certification with interval arithmetic.\n",
-    "bereich": "Kneser $\\mathrm{sexp}_e$ on $(-2,\\infty)$",
-    "einfach": "Whether the Kneser curve changes its curvature exactly once was open. For base e, a computation in the complex plane counts all places where the curvature is zero: there is exactly one. It is fully rigorous only once the computation is repeated with guaranteed rounding errors.",
+    "titel": "Bases e and 2: Kneser's tetration has exactly one inflection point (interval arithmetic, under an assumption on the engine values)",
+    "aussage": "Kneser's tetration has exactly one inflection point on $(-2,\\infty)$, and $\\mathrm{sexp}''$ has a simple zero there:\n$$b=e:\\ x_w=-0.521764792623322155340028093\\pm4\\cdot10^{-28},\\qquad b=2:\\ x_w=-0.030244542753639263604287235\\pm3\\cdot10^{-28}.$$\nCertified with ball arithmetic (arb/acb): from the node values with error radius $10^{-30}$ (resp. $10^{-5}$ for the signs) the Taylor series with\naliasing and remainder bounds, the signs of $\\mathrm{sexp}',\\mathrm{sexp}'',\\mathrm{sexp}'''$ on $[-1.6,0.6]$ (base $e$) resp. $[-1.1,1.0]$ (base 2), and the\nzero by interval Newton. Outside: to the right gr.kor.konvex_nach_oben, to the left $T''(x)=T''(x+1)/(\\lambda T(x+1))-\\lambda T'(x)^2<0$.\nThis proves gr.verm.ein_wendepunkt for $b=e$ and $b=2$ — under assumption H. What is not certified is that the engine values belong to Kneser and not to\nanother tetration; it is supported numerically (independent precision levels agree to $10^{-110}$, the tower equation holds to $5\\cdot10^{-90}$, the θ series with\nmodes $n\\ge0$ only matches the values to $4\\cdot10^{-59}$). An earlier complex count (all zeros of $\\mathrm{sexp}''$ in $[-1.8,1.4]\\times[-4,4]$) remains only computer-assisted.\n",
+    "bereich": "Kneser $\\mathrm{sexp}_b$ on $(-2,\\infty)$, $b=e$ and $b=2$",
+    "einfach": "The Kneser curve changes its curvature exactly once — at −0.5218 for base e and at −0.0302 for base 2. This has now been recomputed with guaranteed rounding errors. The only assumption is that the values from the computing engine are correct to five places; in fact they are correct to many more.",
+    "beweis": {
+     "text": "Ball arithmetic starting from the node values (w_reell.py, about 2 s each); with error radius 10⁻³ the check fails, so it can fail. Evidence for H in w_pruef.py."
+    },
     "pruefung": {
-     "f1_folgt_unmittelbar": "No (winding numbers computed).",
-     "f2_benutzte_voraussetzungen": "Winding numbers in floating point (dps 30), integer to 10⁻³⁰, step size ≤ 0.26 rad; Kneser values from the engine and the θ series.",
+     "f1_folgt_unmittelbar": "No (certified computation).",
+     "f2_benutzte_voraussetzungen": "Assumption H; gr.kor.konvex_nach_oben; tower equation. Not needed: kn.satz.ableitung_nullstellenfrei.",
      "f3_spezialfall": "no",
-     "f4_uebertragbar": "To base 2 (inflection point at −0.0302) and as a family in b.",
-     "f5_neue_frage": "Certification with interval arithmetic (python-flint arb)."
+     "f4_uebertragbar": "To any single base above η with the same scripts; for a whole family in b, bounds in b would be needed.",
+     "f5_neue_frage": "Certify assumption H itself (rigorous θ bound), and the statement for all b > η."
     },
     "bewertung": {
-     "nutzen": "Resolves the inflection-point conjecture for b = e up to the certification.",
-     "richtigkeit": "computer-assisted, not certified"
+     "nutzen": "Proves the inflection-point conjecture for two bases, up to one clearly named numerical assumption.",
+     "richtigkeit": "certified under assumption H"
     },
+    "voraussetzungen": [
+     {
+      "text": "Assumption H: the engine values at the 5×256 circle nodes |z − c| = 0.2 (c = −0.4 … 0.4) are accurate to 10⁻⁵, and |sexp| ≤ 1000 for |z − c| ≤ 0.3."
+     }
+    ],
+    "versionen": [
+     {
+      "aenderung": "Formerly gr.beob.ein_wendepunkt_e (computer-assisted, base e only, complex count).",
+      "grund": "Certified with interval arithmetic and extended to base 2, 14.10.2026."
+     }
+    ],
     "quellen": [
      {
-      "stelle": "forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, W; s4_zaehlung.py"
+      "stelle": "forschung/identitaeten_2026_10_14/luecken/wendepunkt/BERICHT_WENDEPUNKT.md; w_reell.py, w_pruef.py; previously etappe3/BERICHT_ETAPPE3.md, W"
      }
-    ]
+    ],
+    "bedingungen_text": "Assumption H: engine values at the circle nodes accurate to 10⁻⁵ and |sexp| ≤ 1000 near the axis; that the values belong to Kneser is only supported numerically"
    },
    "_en_stand": "aktuell",
    "_en_geprueft": "nein",
@@ -61854,7 +61879,7 @@
     "theta_kneser"
    ],
    "bereich": "Basis $e$; $\\mathrm{sexp}(z)=F(z+\\theta(z))$ mit der regulären Superfunktion $F=\\sigma^{-1}(e^{Lz})$ am Fixpunkt $L$, $\\sigma'(L)=1$; $\\theta=\\sum a_ne^{2\\pi inz}$ in der oberen Halbebene",
-   "aussage": "Die ersten Koeffizienten (auf 162 Stellen):\n$a_1=0.00385157873541-0.09056477795412\\,i$, $a_2=0.00210091678690-0.03795624815248\\,i$, $a_3=0.00144754775842-0.02281729713002\\,i$.\n$|a_n|$ fällt **nicht** geometrisch: der lokale Exponent ist $1.254$ ($n=2$), $1.184$ ($64$), $1.137$ ($1024$), $1.121$ ($4096$) und sinkt weiter\n(Koeffizienten bis $n=4096$ auf 44 Stellen, zwei unabhängige Einstellungen). $\\arg a_n$ wandert langsam ($-1.53$ bei $n=1$, $-1.37$ bei $n=4096$)\nund hat keinen Grenzwert — die Angabe „$\\arg a_n\\to-\\pi/2$“ aus Etappe 1 war falsch. Also hat $\\theta$ Singularitäten auf der reellen Achse;\nwo und welcher Art sie sind, steht in kn.satz.theta_singularitaet, die genaue Asymptotik in kn.beob.theta_koeffizienten.\n",
+   "aussage": "Die ersten Koeffizienten (auf 162 Stellen):\n$a_1=0.00385157873541-0.09056477795412\\,i$, $a_2=0.00210091678690-0.03795624815248\\,i$, $a_3=0.00144754775842-0.02281729713002\\,i$.\n$|a_n|$ fällt **nicht** geometrisch: der lokale Exponent ist $1.254$ ($n=2$), $1.184$ ($64$), $1.137$ ($1024$), $1.121$ ($4096$) und sinkt weiter\n(Koeffizienten bis $n=4096$ auf 44 Stellen, zwei unabhängige Einstellungen). $\\arg a_n$ wandert langsam ($-1.53$ bei $n=1$, $-1.37$ bei $n=4096$)\nund hat keinen Grenzwert — die Angabe „$\\arg a_n\\to-\\pi/2$“ aus Etappe 1 war falsch. Also hat $\\theta$ Singularitäten auf der reellen Achse;\nwo und welcher Art sie sind, steht in kn.satz.theta_singularitaet, die genaue Asymptotik in kn.satz.theta_koeffizienten.\n",
    "einfach": "Knesers Tetration ist die „gewöhnliche“ Lösung am komplexen Fixpunkt plus eine kleine Welle. Die Welle besteht aus Schwingungen, deren Stärke erstaunlich langsam abnimmt. Das zeigt: die Welle hat auf der reellen Achse scharfe Stellen.",
    "quellen": [
     {
@@ -61867,7 +61892,7 @@
     "f2_benutzte_voraussetzungen": "fatou.gp-Fork bei dps 60–200 nahe der reellen Achse (|Im z| ≤ 0.2); Etappe 1 und 2 stimmen für a₁…a₆₄ auf 3.5·10⁻⁸⁰ überein.",
     "f3_spezialfall": "nein",
     "f4_uebertragbar": "Basis 2 zeigt dieselbe Struktur (|a₄₀₉₆| = 4.579·10⁻⁶ gegen 4.603·10⁻⁶ bei e).",
-    "f5_neue_frage": "Erklärt durch kn.satz.theta_singularitaet und kn.beob.theta_koeffizienten."
+    "f5_neue_frage": "Erklärt durch kn.satz.theta_singularitaet und kn.satz.theta_koeffizienten."
    },
    "bewertung": {
     "richtigkeit": "numerisch, 44–162 Stellen",
@@ -61909,7 +61934,7 @@
    "_traegt": [],
    "_verwandt": [
     {
-     "id": "kn.beob.theta_koeffizienten",
+     "id": "kn.satz.theta_koeffizienten",
      "score": 5.55,
      "warum": [
       "stützt (Evidenz) (rückwärts)",
@@ -61923,16 +61948,16 @@
      "warum": [
       "motiviert",
       "verwandt (rückwärts)",
-      "über kn.beob.theta_koeffizienten"
+      "über kn.satz.theta_koeffizienten"
      ]
     },
     {
      "id": "kn.satz.theta_singularitaet",
-     "score": 4.2,
+     "score": 4.55,
      "warum": [
       "verwandt (rückwärts)",
       "über kn.konstr.kneser",
-      "über kn.beob.theta_koeffizienten"
+      "über kn.satz.theta_koeffizienten"
      ]
     },
     {
@@ -61947,7 +61972,7 @@
      "id": "kn.satz.binet_kappa",
      "score": 2.85,
      "warum": [
-      "über kn.beob.theta_koeffizienten",
+      "über kn.satz.theta_koeffizienten",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -61975,7 +62000,7 @@
    ],
    "en": {
     "titel": "Kneser's θ has Fourier coefficients that decay only slowly (locally about n^(−1.2)) — θ is singular on the real axis",
-    "aussage": "The first coefficients (to 162 digits):\n$a_1=0.00385157873541-0.09056477795412\\,i$, $a_2=0.00210091678690-0.03795624815248\\,i$, $a_3=0.00144754775842-0.02281729713002\\,i$.\n$|a_n|$ does **not** decay geometrically: the local exponent is $1.254$ ($n=2$), $1.184$ ($64$), $1.137$ ($1024$), $1.121$ ($4096$) and keeps falling\n(coefficients up to $n=4096$ to 44 digits, two independent settings). $\\arg a_n$ drifts slowly ($-1.53$ at $n=1$, $-1.37$ at $n=4096$)\nand has no limit — the statement “$\\arg a_n\\to-\\pi/2$” from stage 1 was wrong. So $\\theta$ has singularities on the real axis;\nwhere they are and of what kind is given in kn.satz.theta_singularitaet, the exact asymptotics in kn.beob.theta_koeffizienten.\n",
+    "aussage": "The first coefficients (to 162 digits):\n$a_1=0.00385157873541-0.09056477795412\\,i$, $a_2=0.00210091678690-0.03795624815248\\,i$, $a_3=0.00144754775842-0.02281729713002\\,i$.\n$|a_n|$ does **not** decay geometrically: the local exponent is $1.254$ ($n=2$), $1.184$ ($64$), $1.137$ ($1024$), $1.121$ ($4096$) and keeps falling\n(coefficients up to $n=4096$ to 44 digits, two independent settings). $\\arg a_n$ drifts slowly ($-1.53$ at $n=1$, $-1.37$ at $n=4096$)\nand has no limit — the statement “$\\arg a_n\\to-\\pi/2$” from stage 1 was wrong. So $\\theta$ has singularities on the real axis;\nwhere they are and of what kind is given in kn.satz.theta_singularitaet, the exact asymptotics in kn.satz.theta_koeffizienten.\n",
     "bereich": "Base $e$; $\\mathrm{sexp}(z)=F(z+\\theta(z))$ with the regular superfunction $F=\\sigma^{-1}(e^{Lz})$ at the fixed point $L$, $\\sigma'(L)=1$; $\\theta=\\sum a_ne^{2\\pi inz}$ in the upper half-plane",
     "einfach": "Kneser's tetration is the \"ordinary\" solution at the complex fixed point plus a small wave. The wave consists of oscillations whose strength decreases surprisingly slowly. This shows: the wave has sharp spots on the real axis.",
     "pruefung": {
@@ -61983,7 +62008,7 @@
      "f2_benutzte_voraussetzungen": "fatou.gp fork at dps 60–200 near the real axis (|Im z| ≤ 0.2); stages 1 and 2 agree for a₁…a₆₄ to 3.5·10⁻⁸⁰.",
      "f3_spezialfall": "no",
      "f4_uebertragbar": "Base 2 shows the same structure (|a₄₀₉₆| = 4.579·10⁻⁶ versus 4.603·10⁻⁶ for e).",
-     "f5_neue_frage": "Explained by kn.satz.theta_singularitaet and kn.beob.theta_koeffizienten."
+     "f5_neue_frage": "Explained by kn.satz.theta_singularitaet and kn.satz.theta_koeffizienten."
     },
     "bewertung": {
      "nutzen": "First high-precision θ coefficients; reveals an unexpected singularity structure.",
@@ -62016,8 +62041,8 @@
     "kneser_T",
     "theta_kneser"
    ],
-   "aussage": "Ausgangsfrage (Etappe 1): Fallen die $a_n$ wie $n^{-1-c}$ mit einer Kneser-eigenen Konstante $c$, oder wie $n^{-1}(\\ln n)^{-p}$?\n**Antwort (Etappe 2): weder noch.** Der Exponent ist genau 1, mit einem Produkt iterierter Logarithmen,\n$|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$; die Drift des lokalen Exponenten ist $1+1/\\ln n$ (kn.beob.theta_koeffizienten). Eine eigene\n„Kneser-Exponentenzahl“ gibt es nicht; der Abfall wird von $A=\\mathrm{sexp}'(0)$ und der regulären Abel-Funktion $h$ bestimmt.\n**Offen bleibt:** die Übertragung von der Singularität auf die Koeffizienten streng zu beweisen, und die Schwankung von $\\arg a_n$ explizit\nüber $\\theta'$ auf der reellen Achse auszudrücken.\n",
-   "einfach": "Die Welle in Knesers Tetration wird so langsam schwächer wie 1/n, nur noch ein klein wenig schneller. Eine neue Zahl steckt nicht darin — aber eine schöne Formel (siehe die verwandten Einträge). Ein strenger Beweis fehlt noch.",
+   "aussage": "Ausgangsfrage (Etappe 1): Fallen die $a_n$ wie $n^{-1-c}$ mit einer Kneser-eigenen Konstante $c$, oder wie $n^{-1}(\\ln n)^{-p}$?\n**Antwort (Etappe 2): weder noch.** Der Exponent ist genau 1, mit einem Produkt iterierter Logarithmen,\n$|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$; die Drift des lokalen Exponenten ist $1+1/\\ln n$ (kn.satz.theta_koeffizienten). Eine eigene\n„Kneser-Exponentenzahl“ gibt es nicht; der Abfall wird von $A=\\mathrm{sexp}'(0)$ und der regulären Abel-Funktion $h$ bestimmt.\nDie Übertragung von der Singularität auf die Koeffizienten ist inzwischen bewiesen (kn.satz.theta_koeffizienten). **Offen bleibt:** die Schwankung von $\\arg a_n$ explizit\nüber $\\theta'$ auf der reellen Achse auszudrücken.\n",
+   "einfach": "Die Welle in Knesers Tetration wird so langsam schwächer wie 1/n, nur noch ein klein wenig schneller. Eine neue Zahl steckt nicht darin — aber eine schöne Formel (siehe die verwandten Einträge), die inzwischen auch bewiesen ist.",
    "quellen": [
     {
      "ref": "diese_arbeit",
@@ -62031,7 +62056,7 @@
     },
     {
      "typ": "verwandt",
-     "ziel": "kn.beob.theta_koeffizienten"
+     "ziel": "kn.satz.theta_koeffizienten"
     },
     {
      "typ": "verwandt",
@@ -62052,7 +62077,7 @@
    "_traegt": [],
    "_verwandt": [
     {
-     "id": "kn.beob.theta_koeffizienten",
+     "id": "kn.satz.theta_koeffizienten",
      "score": 5.2,
      "warum": [
       "verwandt",
@@ -62066,15 +62091,15 @@
      "warum": [
       "motiviert (rückwärts)",
       "verwandt",
-      "über kn.beob.theta_koeffizienten"
+      "über kn.satz.theta_koeffizienten"
      ]
     },
     {
      "id": "kn.satz.theta_singularitaet",
-     "score": 3.2,
+     "score": 3.55,
      "warum": [
       "über kn.beob.theta_fourier_algebraisch",
-      "über kn.beob.theta_koeffizienten",
+      "über kn.satz.theta_koeffizienten",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -62082,7 +62107,7 @@
      "id": "kn.satz.binet_kappa",
      "score": 2.85,
      "warum": [
-      "über kn.beob.theta_koeffizienten",
+      "über kn.satz.theta_koeffizienten",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -62117,8 +62142,8 @@
    ],
    "en": {
     "titel": "Which number determines the Fourier decay of Kneser's θ? — Answer: none of its own, the exponent is exactly 1",
-    "aussage": "Original question (stage 1): Do the $a_n$ decay like $n^{-1-c}$ with a constant $c$ of Kneser's own, or like $n^{-1}(\\ln n)^{-p}$?\n**Answer (stage 2): neither.** The exponent is exactly 1, with a product of iterated logarithms,\n$|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$; the drift of the local exponent is $1+1/\\ln n$ (kn.beob.theta_koeffizienten). There is\nno \"Kneser exponent number\" of its own; the decay is determined by $A=\\mathrm{sexp}'(0)$ and the regular Abel function $h$.\n**Still open:** proving the transfer from the singularity to the coefficients rigorously, and expressing the fluctuation of $\\arg a_n$ explicitly\nvia $\\theta'$ on the real axis.\n",
-    "einfach": "The wave in Kneser's tetration weakens about as slowly as 1/n, only a tiny bit faster. No new number is hidden in it — but a beautiful formula (see the related entries). A rigorous proof is still missing.",
+    "aussage": "Original question (stage 1): Do the $a_n$ decay like $n^{-1-c}$ with a constant $c$ of Kneser's own, or like $n^{-1}(\\ln n)^{-p}$?\n**Answer (stage 2): neither.** The exponent is exactly 1, with a product of iterated logarithms,\n$|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$; the drift of the local exponent is $1+1/\\ln n$ (kn.satz.theta_koeffizienten). There is\nno \"Kneser exponent number\" of its own; the decay is determined by $A=\\mathrm{sexp}'(0)$ and the regular Abel function $h$.\nThe transfer from the singularity to the coefficients has since been proven (kn.satz.theta_koeffizienten). **Still open:** expressing the fluctuation of $\\arg a_n$ explicitly\nvia $\\theta'$ on the real axis.\n",
+    "einfach": "The wave in Kneser's tetration weakens about as slowly as 1/n, only a tiny bit faster. No new number is hidden in it — but a beautiful formula (see the related entries), which has since also been proven.",
     "quellen": [
      {
       "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md"
@@ -62134,7 +62159,8 @@
    "titel": "θ ist genau an den ganzen Zahlen singulär — mit einer „Superlogarithmus-Singularität“",
    "art": "satz",
    "ebene": "C",
-   "status": "skizze",
+   "status": "bedingt",
+   "bedingungen_text": "Zweigwahl an einem Punkt (z₀ = 0.05i, Abstand 4·10⁻⁴⁸ bei nötigen < 0.12) nur in Gleitkomma geprüft, nicht mit Intervallen; nur Basis e",
    "niveau": "forschung",
    "objekte": [
     "kneser_T",
@@ -62145,10 +62171,9 @@
    "einfach": "Die Welle in Knesers Tetration hat scharfe Stellen genau bei den ganzen Zahlen. Der Grund: bei −1 ist die Tetration 0, und die gewöhnliche Lösung am komplexen Fixpunkt kann den Wert 0 nie erreichen — die Welle muss das ausgleichen und wird dort unendlich, aber so langsam wie ein Superlogarithmus.",
    "beweis": {
     "art": "skizze",
-    "text": "(i) Aus $\\lambda\\Psi'(\\lambda u)=\\ln b\\cdot b^{\\Psi(u)}\\Psi'(u)$: eine Nullstelle $u_0$ von $\\Psi'$ gäbe Nullstellen $u_0\\lambda^{-k}$, die sich bei 0 häufen,\nWiderspruch zu $\\Psi'(0)=1$; $\\Psi(\\lambda u)=b^{\\Psi(u)}\\neq0$. (ii) Wäre $z+\\theta(z)$ bei $z\\to-1$ beschränkt, gäbe es einen Häufungspunkt $s^*$ mit\n$F(s^*)=0$. (iii) $\\theta(z)=h(\\mathrm{sexp}\\,z)-z$, $h(w)=1+h(\\log_bw)$ zweimal angewandt und Taylor-Entwicklung von $\\log\\log\\mathrm{sexp}$ bei 0;\nnumerisch bestätigt: der Rest fällt wie $|z|^2$ bis $|z|=10^{-12}$.\n",
+    "text": "(i) Aus $\\lambda\\Psi'(\\lambda u)=\\ln b\\cdot b^{\\Psi(u)}\\Psi'(u)$: eine Nullstelle $u_0$ von $\\Psi'$ gäbe Nullstellen $u_0\\lambda^{-k}$, die sich bei 0 häufen,\nWiderspruch zu $\\Psi'(0)=1$; $\\Psi(\\lambda u)=b^{\\Psi(u)}\\neq0$. (ii) Wäre $z+\\theta(z)$ bei $z\\to-1$ beschränkt, gäbe es einen Häufungspunkt $s^*$ mit\n$F(s^*)=0$. (iii) $\\theta(z)=h(\\mathrm{sexp}\\,z)-z$, $h(w)=1+h(\\log_bw)$ zweimal angewandt und Taylor-Entwicklung von $\\log\\log\\mathrm{sexp}$ bei 0;\nnumerisch bestätigt: der Rest fällt wie $|z|^2$ bis $|z|=10^{-12}$. Holomorphie von $h$ auf dem nötigen Gebiet ohne Zitat: die Schröder-Funktion $\\sigma$ ist\nauf der ganzen oberen Halbebene schlicht, weil der Hauptzweig-Logarithmus sie injektiv in sich abbildet (Lemma U, luecken/BERICHT_LUECKEN_ANALYTISCH.md).\n",
     "luecken": [
-     "Dass die Fortsetzung von h nur über der Bahn von 0 behindert ist (singuläre Werte von Poincaré-Funktionen), ist zitiert, nicht hier bewiesen.",
-     "Analytizität auf ℝ∖ℤ: die Wahl des Hauptzweigs ist nur numerisch geprüft (stetiger Verlauf in allen Abtastungen)."
+     "Zweigwahl: bewiesen ist, dass die Zweige überall übereinstimmen, sobald sie an einem Punkt übereinstimmen; an z₀ = 0.05i ist der Abstand 4·10⁻⁴⁸ (nötig < 0.12), aber nur in Gleitkomma gerechnet, nicht mit Intervallen, und nur für Basis e."
     ]
    },
    "quellen": [
@@ -62189,29 +62214,40 @@
    "_strang": "kn.theta",
    "_idee": "zahlen.identitaeten",
    "_niveau": "forschung",
-   "_status_eff": "skizze",
+   "_status_eff": "bedingt",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
-   "_tragweite": 0,
+   "_tragweite": 1,
    "_abhaengig": [],
-   "_traegt": [],
+   "_traegt": [
+    "kn.satz.theta_koeffizienten"
+   ],
    "_verwandt": [
     {
-     "id": "kn.beob.theta_fourier_algebraisch",
-     "score": 4.2,
+     "id": "kn.satz.theta_koeffizienten",
+     "score": 6.85,
      "warum": [
-      "verwandt",
-      "über kn.konstr.kneser",
-      "über kn.beob.theta_koeffizienten"
+      "stützt sich auf (Beweis) (rückwärts)",
+      "verwandt (rückwärts)",
+      "über kn.beob.theta_fourier_algebraisch"
      ]
     },
     {
-     "id": "kn.beob.theta_koeffizienten",
-     "score": 3.85,
+     "id": "kn.beob.theta_fourier_algebraisch",
+     "score": 4.55,
      "warum": [
-      "verwandt (rückwärts)",
+      "verwandt",
+      "über kn.konstr.kneser",
+      "über kn.satz.theta_koeffizienten"
+     ]
+    },
+    {
+     "id": "kn.frage.theta_exponent",
+     "score": 3.55,
+     "warum": [
       "über kn.beob.theta_fourier_algebraisch",
+      "über kn.satz.theta_koeffizienten",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -62227,17 +62263,8 @@
      "id": "kn.satz.binet_kappa",
      "score": 3.2,
      "warum": [
-      "über kn.beob.theta_koeffizienten",
+      "über kn.satz.theta_koeffizienten",
       "über kn.satz.theta_mittelwerte",
-      "gemeinsame Objekte: kneser_T, theta_kneser"
-     ]
-    },
-    {
-     "id": "kn.frage.theta_exponent",
-     "score": 3.2,
-     "warum": [
-      "über kn.beob.theta_fourier_algebraisch",
-      "über kn.beob.theta_koeffizienten",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -62272,10 +62299,9 @@
     "bereich": "Base $b>\\eta$ (computed for $e$ and 2); $\\mathrm{sexp}(z)=F(z+\\theta(z))$, $F(s)=\\Psi(\\lambda^s)$ with the Poincaré function $\\Psi$ at the fixed point $L$, $\\lambda=L\\ln b$; $h=F^{-1}$ the regular Abel function",
     "einfach": "The wave in Kneser's tetration has sharp spots exactly at the integers. The reason: at −1 the tetration is 0, and the ordinary solution at the complex fixed point can never reach the value 0 — the wave has to compensate for this and becomes infinite there, but as slowly as a superlogarithm.",
     "beweis": {
-     "text": "(i) From $\\lambda\\Psi'(\\lambda u)=\\ln b\\cdot b^{\\Psi(u)}\\Psi'(u)$: a zero $u_0$ of $\\Psi'$ would give zeros $u_0\\lambda^{-k}$ accumulating at 0,\ncontradicting $\\Psi'(0)=1$; $\\Psi(\\lambda u)=b^{\\Psi(u)}\\neq0$. (ii) If $z+\\theta(z)$ were bounded as $z\\to-1$, there would be an accumulation point $s^*$ with\n$F(s^*)=0$. (iii) $\\theta(z)=h(\\mathrm{sexp}\\,z)-z$, $h(w)=1+h(\\log_bw)$ applied twice and Taylor expansion of $\\log\\log\\mathrm{sexp}$ at 0;\nconfirmed numerically: the remainder decays like $|z|^2$ down to $|z|=10^{-12}$.\n",
+     "text": "(i) From $\\lambda\\Psi'(\\lambda u)=\\ln b\\cdot b^{\\Psi(u)}\\Psi'(u)$: a zero $u_0$ of $\\Psi'$ would give zeros $u_0\\lambda^{-k}$ accumulating at 0,\ncontradicting $\\Psi'(0)=1$; $\\Psi(\\lambda u)=b^{\\Psi(u)}\\neq0$. (ii) If $z+\\theta(z)$ were bounded as $z\\to-1$, there would be an accumulation point $s^*$ with\n$F(s^*)=0$. (iii) $\\theta(z)=h(\\mathrm{sexp}\\,z)-z$, $h(w)=1+h(\\log_bw)$ applied twice and Taylor expansion of $\\log\\log\\mathrm{sexp}$ at 0;\nconfirmed numerically: the remainder decays like $|z|^2$ down to $|z|=10^{-12}$. Holomorphy of $h$ on the required domain without citation: the Schröder function $\\sigma$ is\nunivalent on the whole upper half-plane, because the principal-branch logarithm maps it injectively into itself (Lemma U, luecken/BERICHT_LUECKEN_ANALYTISCH.md).\n",
      "luecken": [
-      "That the continuation of h is obstructed only over the orbit of 0 (singular values of Poincaré functions) is cited, not proved here.",
-      "Analyticity on ℝ∖ℤ: the choice of the principal branch has only been checked numerically (continuous course in all samplings)."
+      "Branch choice: it is proved that the branches agree everywhere as soon as they agree at one point; at z₀ = 0.05i the distance is 4·10⁻⁴⁸ (needed < 0.12), but this was computed only in floating point, not with intervals, and only for base e."
      ]
     },
     "pruefung": {
@@ -62293,55 +62319,70 @@
      {
       "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, section 2 (S1–S6) and 3.1; p5_lokal.py"
      }
-    ]
+    ],
+    "bedingungen_text": "Branch choice at one point (z₀ = 0.05i, distance 4·10⁻⁴⁸ where < 0.12 is needed) only checked in floating point, not with intervals; base e only"
    },
    "_en_stand": "aktuell",
    "_en_geprueft": "nein",
    "befunde": []
   },
   {
-   "id": "kn.beob.theta_koeffizienten",
-   "titel": "Formel für die Fourier-Koeffizienten von θ: aₙ = [qⁿ] h(c + log(1−q)) + O(n⁻²)",
-   "art": "beobachtung",
+   "id": "kn.satz.theta_koeffizienten",
+   "titel": "Formel für die Fourier-Koeffizienten von θ: aₙ = [qⁿ] h(c + log(1−q)) + O(1/(n² ln n)), Exponent genau 1",
+   "art": "satz",
    "ebene": "C",
-   "status": "numerisch",
+   "status": "bedingt",
+   "bedingungen_text": "dieselbe Zweigprüfung wie bei kn.satz.theta_singularitaet",
    "niveau": "forschung",
    "objekte": [
     "kneser_T",
     "theta_kneser"
    ],
    "bereich": "Basis $b>\\eta$; $\\theta(z)=\\sum a_nq^n$, $q=e^{2\\pi iz}$; $h$, $A$, $\\kappa$ wie in kn.satz.theta_singularitaet",
-   "aussage": "Aus der Singularität bei $q=1$ folgt eine geschlossene Asymptotik der Koeffizienten:\n$$a_n=[q^n]\\,h\\Bigl(\\frac{c+\\log(1-q)}{\\ln b}\\Bigr)+O(n^{-2}),\\qquad c=\\ln\\frac{A}{2\\pi\\ln b}+\\frac{i\\pi}2 .$$\nMit der Korrektur $\\delta_1=\\tfrac12+i\\kappa/2\\pi$ wird der Rest $O(n^{-3})$. Gemessen bis $n=4000$: relativer Rest $1.9\\cdot10^{-5}$ (erste Ordnung),\n$4.8\\cdot10^{-9}$ (zweite Ordnung); eine Transfer-Entwicklung mit 8 Gliedern trifft $a_{4096}$ auf $6\\cdot10^{-7}$. Für Basis 2 gleich gut.\nFührend ist $a_n\\approx-h'\\bigl((c-\\ln n)/\\ln b\\bigr)/n$ (bis auf den Faktor $1/\\ln b$); weil $h'(v)=h'(\\log v)/v$, folgt $|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$:\n**der Exponent ist genau 1**, der lokale Exponent sinkt wie $1+1/\\ln n$. Die Koeffizienten der Kneser-Welle werden also von zwei Dingen bestimmt:\nder regulären Abel-Funktion am komplexen Fixpunkt und der einen Zahl $A=\\mathrm{sexp}'(0)$.\n",
-   "einfach": "Man kann die Stärken der Schwingungen in Knesers Welle fast genau vorhersagen: man nimmt die gewöhnliche Lösung am komplexen Fixpunkt und setzt einen Logarithmus ein. Die Vorhersage stimmt bis zur 4000. Schwingung auf acht bis neun Stellen.",
+   "aussage": "Aus der Singularität bei $q=1$ folgt eine geschlossene Asymptotik der Koeffizienten:\n$$a_n=[q^n]\\,h\\Bigl(\\frac{c+\\log(1-q)}{\\ln b}\\Bigr)+O\\Bigl(\\frac1{n^2\\ln n}\\Bigr),\\qquad c=\\ln\\frac{A}{2\\pi\\ln b}+\\frac{i\\pi}2 .$$\nMit der Korrektur $\\delta_1=\\tfrac12+i\\kappa/2\\pi$ wird der Rest $O(1/(n^3\\ln n))$. Führend ist $a_n=-h'(v_n)/n+O(1/(n\\ln^2n))$ mit $v_n=(c-\\ln n)/\\ln b$, und\n$$\\frac{c_1}{n\\ln n\\,(\\ln\\ln n)^4}\\le|a_n|\\le\\frac{C_1}{n\\ln n}:$$\n**der Exponent ist genau 1**, der lokale Exponent sinkt wie $1+1/\\ln n$ (heuristisch $|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$).\nGemessen bis $n=4000$: relativer Rest $1.9\\cdot10^{-5}$ (erste Ordnung), $4.8\\cdot10^{-9}$ (zweite Ordnung); für Basis 2 gleich gut.\nDie Koeffizienten der Kneser-Welle werden also von der regulären Abel-Funktion am komplexen Fixpunkt und der einen Zahl $A=\\mathrm{sexp}'(0)$ bestimmt.\n",
+   "einfach": "Man kann die Stärken der Schwingungen in Knesers Welle fast genau vorhersagen: man nimmt die gewöhnliche Lösung am komplexen Fixpunkt und setzt einen Logarithmus ein. Die Vorhersage stimmt bis zur 4000. Schwingung auf acht bis neun Stellen, und inzwischen ist sie auch bewiesen.",
    "formen": [
     {
-     "tex": "a_n=[q^n]\\,h\\bigl((c+\\log(1-q))/\\ln b\\bigr)+O(n^{-2})",
+     "tex": "a_n=[q^n]\\,h\\bigl((c+\\log(1-q))/\\ln b\\bigr)+O(1/(n^2\\ln n))",
      "notiz": "Koeffizientenformel"
     },
     {
-     "tex": "|a_n|\\asymp\\frac{1}{n\\,\\ln n\\,\\ln\\ln n\\cdots}",
+     "tex": "\\frac{c_1}{n\\ln n(\\ln\\ln n)^4}\\le|a_n|\\le\\frac{C_1}{n\\ln n}",
      "notiz": "Exponent genau 1"
     }
+   ],
+   "beweis": {
+    "art": "vollstaendig",
+    "text": "$\\theta$ ist auf $|q|\\le1$ ausser bei $q=1$ analytisch (kn.satz.theta_singularitaet), also $\\Delta$-analytisch bei $q=1$. Aus der Lokalform und den Schranken\nfür $h'$ (Grunsky/Koebe, wie bei kn.satz.theta_mittelwerte) folgt $\\theta(q)-H(q)=O(|1-q|/\\log(1/|1-q|))$ im $\\Delta$-Gebiet mit $H(q)=h((c+\\log(1-q))/\\ln b)$;\nder Übertragungssatz für O-Terme (Flajolet–Odlyzko, Flajolet–Sedgewick Satz VI.3) gibt $a_n-[q^n]H=O(1/(n^2\\ln n))$. Die Schranken für $|a_n|$ kommen aus\ndenselben Schranken für $h'$ über eine Hankel-Kontur.\n"
+   },
+   "stuetzt_sich_auf": [
+    "kn.satz.theta_singularitaet"
    ],
    "quellen": [
     {
      "ref": "diese_arbeit",
-     "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 und 3.2; p3_modell.py, p4_korrektur.py"
+     "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 und 3.2; Beweis: luecken/BERICHT_LUECKEN_ANALYTISCH.md, l2_transfer.py"
     }
    ],
    "pruefung": {
-    "f1_folgt_unmittelbar": "Nein: Transfer von der Singularität auf die Koeffizienten (Flajolet–Odlyzko) ist für Funktionen wie h(c + log u) nicht wörtlich bewiesen; numerisch sehr deutlich.",
-    "f2_benutzte_voraussetzungen": "Δ-Analytizität bei q = 1 (aus kn.satz.theta_singularitaet), Koeffizienten bis n = 4096 auf 44 Stellen.",
-    "f3_spezialfall": "nein",
+    "f1_folgt_unmittelbar": "Aus der Singularität mit dem Übertragungssatz, ja; dafür braucht es nur eine Schranke, keine vollständige Entwicklung.",
+    "f2_benutzte_voraussetzungen": "Δ-Analytizität bei q = 1 (bedingt auf die Zweigprüfung in kn.satz.theta_singularitaet), Schranken für h′; Flajolet–Sedgewick Satz VI.3 zitiert.",
+    "f3_spezialfall": "Ja: Singularitätenanalyse.",
     "f4_uebertragbar": "Gleiche Formel für Basis 2 geprüft; L geht nur über h und c ein.",
-    "f5_neue_frage": "Streng beweisen; die Schwankung von arg aₙ (selbstähnlich in slog(ln ln n)) explizit über θ′ ausdrücken."
+    "f5_neue_frage": "Konstanten der O-Terme ausschreiben; die Schwankung von arg aₙ (selbstähnlich in slog(ln ln n)) explizit über θ′ ausdrücken."
    },
    "bewertung": {
-    "richtigkeit": "numerisch bis n = 4000 auf 5·10⁻⁹; Herleitung mit Lücke",
+    "richtigkeit": "bewiesen, bedingt auf eine in Gleitkomma geprüfte Zweigwahl; numerisch bis n = 4000 auf 5·10⁻⁹",
     "neuheit": "neu_ungeprueft",
     "nutzen": "Eine echte Identität für Kneser: die Korrekturwelle zur regulären Lösung aus h und sexp′(0) allein.",
     "nutzen_stufe": "hoch"
    },
+   "versionen": [
+    {
+     "aenderung": "Früher kn.beob.theta_koeffizienten (Beobachtung, Rest O(n⁻²)).",
+     "grund": "Übertragungssatz bewiesen, Rest verschärft auf O(1/(n² ln n)), 14.10.2026."
+    }
+   ],
    "kanten": [
     {
      "typ": "verwandt",
@@ -62361,14 +62402,25 @@
    "_strang": "kn.theta",
    "_idee": "zahlen.identitaeten",
    "_niveau": "forschung",
-   "_status_eff": "numerisch",
+   "_status_eff": "bedingt",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
    "_tragweite": 0,
-   "_abhaengig": [],
+   "_abhaengig": [
+    "kn.satz.theta_singularitaet"
+   ],
    "_traegt": [],
    "_verwandt": [
+    {
+     "id": "kn.satz.theta_singularitaet",
+     "score": 6.85,
+     "warum": [
+      "stützt sich auf (Beweis)",
+      "verwandt",
+      "über kn.beob.theta_fourier_algebraisch"
+     ]
+    },
     {
      "id": "kn.beob.theta_fourier_algebraisch",
      "score": 5.55,
@@ -62385,15 +62437,6 @@
       "verwandt (rückwärts)",
       "verwandt",
       "über kn.beob.theta_fourier_algebraisch"
-     ]
-    },
-    {
-     "id": "kn.satz.theta_singularitaet",
-     "score": 3.85,
-     "warum": [
-      "verwandt",
-      "über kn.beob.theta_fourier_algebraisch",
-      "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
     {
@@ -62436,10 +62479,10 @@
     }
    ],
    "en": {
-    "titel": "Formula for the Fourier coefficients of θ: aₙ = [qⁿ] h(c + log(1−q)) + O(n⁻²)",
-    "aussage": "The singularity at $q=1$ yields a closed asymptotic formula for the coefficients:\n$$a_n=[q^n]\\,h\\Bigl(\\frac{c+\\log(1-q)}{\\ln b}\\Bigr)+O(n^{-2}),\\qquad c=\\ln\\frac{A}{2\\pi\\ln b}+\\frac{i\\pi}2 .$$\nWith the correction $\\delta_1=\\tfrac12+i\\kappa/2\\pi$ the remainder becomes $O(n^{-3})$. Measured up to $n=4000$: relative remainder $1.9\\cdot10^{-5}$ (first order),\n$4.8\\cdot10^{-9}$ (second order); a transfer expansion with 8 terms hits $a_{4096}$ to $6\\cdot10^{-7}$. Equally good for base 2.\nThe leading term is $a_n\\approx-h'\\bigl((c-\\ln n)/\\ln b\\bigr)/n$ (up to the factor $1/\\ln b$); since $h'(v)=h'(\\log v)/v$, it follows that $|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$:\n**the exponent is exactly 1**, and the local exponent decreases like $1+1/\\ln n$. So the coefficients of the Kneser wave are determined by two things:\nthe regular Abel function at the complex fixed point and the one number $A=\\mathrm{sexp}'(0)$.\n",
+    "titel": "Formula for the Fourier coefficients of θ: aₙ = [qⁿ] h(c + log(1−q)) + O(1/(n² ln n)), exponent exactly 1",
+    "aussage": "The singularity at $q=1$ yields a closed asymptotic formula for the coefficients:\n$$a_n=[q^n]\\,h\\Bigl(\\frac{c+\\log(1-q)}{\\ln b}\\Bigr)+O\\Bigl(\\frac1{n^2\\ln n}\\Bigr),\\qquad c=\\ln\\frac{A}{2\\pi\\ln b}+\\frac{i\\pi}2 .$$\nWith the correction $\\delta_1=\\tfrac12+i\\kappa/2\\pi$ the remainder becomes $O(1/(n^3\\ln n))$. The leading term is $a_n=-h'(v_n)/n+O(1/(n\\ln^2n))$ with $v_n=(c-\\ln n)/\\ln b$, and\n$$\\frac{c_1}{n\\ln n\\,(\\ln\\ln n)^4}\\le|a_n|\\le\\frac{C_1}{n\\ln n}:$$\n**the exponent is exactly 1**, and the local exponent decreases like $1+1/\\ln n$ (heuristically $|a_n|\\asymp1/(n\\ln n\\ln\\ln n\\cdots)$).\nMeasured up to $n=4000$: relative remainder $1.9\\cdot10^{-5}$ (first order), $4.8\\cdot10^{-9}$ (second order); equally good for base 2.\nSo the coefficients of the Kneser wave are determined by the regular Abel function at the complex fixed point and the one number $A=\\mathrm{sexp}'(0)$.\n",
     "bereich": "Base $b>\\eta$; $\\theta(z)=\\sum a_nq^n$, $q=e^{2\\pi iz}$; $h$, $A$, $\\kappa$ as in kn.satz.theta_singularitaet",
-    "einfach": "The strengths of the oscillations in Kneser's wave can be predicted almost exactly: one takes the ordinary solution at the complex fixed point and inserts a logarithm. The prediction is correct up to the 4000th oscillation to eight or nine digits.",
+    "einfach": "The strengths of the oscillations in Kneser's wave can be predicted almost exactly: one takes the ordinary solution at the complex fixed point and inserts a logarithm. The prediction is correct up to the 4000th oscillation to eight or nine digits, and by now it has also been proved.",
     "formen": [
      {
       "notiz": "Coefficient formula"
@@ -62448,22 +62491,32 @@
       "notiz": "Exponent exactly 1"
      }
     ],
+    "beweis": {
+     "text": "$\\theta$ is analytic on $|q|\\le1$ except at $q=1$ (kn.satz.theta_singularitaet), hence $\\Delta$-analytic at $q=1$. From the local form and the bounds\nfor $h'$ (Grunsky/Koebe, as in kn.satz.theta_mittelwerte) it follows that $\\theta(q)-H(q)=O(|1-q|/\\log(1/|1-q|))$ in the $\\Delta$-domain with $H(q)=h((c+\\log(1-q))/\\ln b)$;\nthe transfer theorem for O-terms (Flajolet–Odlyzko, Flajolet–Sedgewick Theorem VI.3) gives $a_n-[q^n]H=O(1/(n^2\\ln n))$. The bounds for $|a_n|$ come from\nthe same bounds for $h'$ via a Hankel contour.\n"
+    },
     "pruefung": {
-     "f1_folgt_unmittelbar": "No: the transfer from the singularity to the coefficients (Flajolet–Odlyzko) is not proved literally for functions like h(c + log u); numerically very clear.",
-     "f2_benutzte_voraussetzungen": "Δ-analyticity at q = 1 (from kn.satz.theta_singularitaet), coefficients up to n = 4096 to 44 digits.",
-     "f3_spezialfall": "no",
+     "f1_folgt_unmittelbar": "From the singularity with the transfer theorem, yes; for that only a bound is needed, not a complete expansion.",
+     "f2_benutzte_voraussetzungen": "Δ-analyticity at q = 1 (conditional on the branch check in kn.satz.theta_singularitaet), bounds for h′; Flajolet–Sedgewick Theorem VI.3 cited.",
+     "f3_spezialfall": "Yes: singularity analysis.",
      "f4_uebertragbar": "Same formula checked for base 2; L enters only through h and c.",
-     "f5_neue_frage": "Prove it rigorously; express the fluctuation of arg aₙ (self-similar in slog(ln ln n)) explicitly via θ′."
+     "f5_neue_frage": "Write out the constants of the O-terms; express the fluctuation of arg aₙ (self-similar in slog(ln ln n)) explicitly via θ′."
     },
     "bewertung": {
      "nutzen": "A genuine identity for Kneser: the correction wave to the regular solution from h and sexp′(0) alone.",
-     "richtigkeit": "numerical up to n = 4000 to 5·10⁻⁹; derivation with a gap"
+     "richtigkeit": "proved, conditional on a branch choice checked in floating point; numerically up to n = 4000 to 5·10⁻⁹"
     },
+    "versionen": [
+     {
+      "aenderung": "Formerly kn.beob.theta_koeffizienten (observation, remainder O(n⁻²)).",
+      "grund": "Transfer theorem proved, remainder sharpened to O(1/(n² ln n)), 14.10.2026."
+     }
+    ],
     "quellen": [
      {
-      "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 and 3.2; p3_modell.py, p4_korrektur.py"
+      "stelle": "forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 and 3.2; proof: luecken/BERICHT_LUECKEN_ANALYTISCH.md, l2_transfer.py"
      }
-    ]
+    ],
+    "bedingungen_text": "the same branch check as for kn.satz.theta_singularitaet"
    },
    "_en_stand": "aktuell",
    "_en_geprueft": "nein",
@@ -62621,7 +62674,7 @@
    "titel": "Mittelwerte über eine Periode sind multiplikativ — reelle Formeln, die nur Kneser erfüllt (z. B. ∫₁ᵉ slog′²/h′ = 1)",
    "art": "satz",
    "ebene": "C",
-   "status": "skizze",
+   "status": "bewiesen",
    "niveau": "forschung",
    "objekte": [
     "kneser_T",
@@ -62641,16 +62694,13 @@
     }
    ],
    "beweis": {
-    "art": "skizze",
-    "text": "$\\frac{d}{dy}\\int_0^1G(x+iy)\\,dx=i[G(1+iy)-G(iy)]=0$; oben ist der Mittelwert $G_\\infty$, unten der Randmittelwert. Anwendungen: $G=\\Phi(\\theta)$ ($\\Phi$ ganz),\n$G=e^{kL\\theta}$ (Formel mit $\\sigma$), $G=(1+\\theta')^s$ für $\\mathrm{Re}\\,s<1$ und $G=\\log(1+\\theta')$ (eindeutig nach kn.satz.ableitung_nullstellenfrei);\nSubstitution $w=\\mathrm{sexp}\\,x$ gibt die slog-Form. Die Majorante kommt aus der Lokalform von $\\theta$ an den ganzen Zahlen (kn.satz.theta_singularitaet).\n",
-    "luecken": [
-     "Die Majorante ist aus der Lokalform abgelesen; eine ausgeschriebene Abschätzung von h und h′ auf {log(Az) : 0 < arg z < π} fehlt."
-    ]
+    "art": "vollstaendig",
+    "text": "$\\frac{d}{dy}\\int_0^1G(x+iy)\\,dx=i[G(1+iy)-G(iy)]=0$; oben ist der Mittelwert $G_\\infty$, unten der Randmittelwert. Anwendungen: $G=\\Phi(\\theta)$ ($\\Phi$ ganz\nmit $\\log M_\\Phi(s)=O(e^{\\kappa s})$ — alle hier benutzten), $G=e^{kL\\theta}$ (Formel mit $\\sigma$), $G=(1+\\theta')^s$ für $\\mathrm{Re}\\,s<1$ und\n$G=\\log(1+\\theta')$ (eindeutig nach kn.satz.ableitung_nullstellenfrei); Substitution $w=\\mathrm{sexp}\\,x$ gibt die slog-Form.\n**Majorante** (Grenzübergang $y\\to0$ mit dominierter Konvergenz): $\\sigma$ ist auf der ganzen oberen Halbebene schlicht, weil der Hauptzweig-Logarithmus sie\ninjektiv in sich abbildet; Grunsky- und Koebe-Schranken beim dritten iterierten Logarithmus (der mindestens $\\pi/2$ über der Achse liegt) geben auf $|z|<0.1$\n(Basis $e$) $|\\theta|\\le31.7+2.91\\ln\\ln\\ln(1/|z|)$ und $c/(|z|\\ln(1/|z|)(\\ln\\ln)^4)\\le|1+\\theta'|\\le C/(|z|\\ln(1/|z|))$.\n"
    },
    "quellen": [
     {
      "ref": "diese_arbeit",
-     "stelle": "forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 und B-Z; s2_nullmoden.py, s2b_kontrolle.py"
+     "stelle": "forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 und B-Z; s2_nullmoden.py, s2b_kontrolle.py; Majorante: luecken/BERICHT_LUECKEN_ANALYTISCH.md, l1_schranken.py"
     }
    ],
    "pruefung": {
@@ -62661,7 +62711,7 @@
     "f5_neue_frage": "Wählt eine dieser Gleichungen allein Kneser aus? Nein (br.satz.endlich_viele_reichen_nicht); unendlich viele reichen (br.satz.reelle_kennzeichnung)."
    },
    "bewertung": {
-    "richtigkeit": "Kern bewiesen, Majorante skizziert; numerisch auf 10⁻⁹⁸",
+    "richtigkeit": "vollständig (Majorante mit Grunsky/Koebe); numerisch auf 10⁻⁹⁸",
     "neuheit": "neu_ungeprueft",
     "nutzen": "Erste reelle Integralformeln, die Kneser von allen anderen Tetrationen unterscheiden.",
     "nutzen_stufe": "hoch"
@@ -62689,7 +62739,7 @@
    "_strang": "kn.formeln",
    "_idee": "zahlen.identitaeten",
    "_niveau": "forschung",
-   "_status_eff": "skizze",
+   "_status_eff": "bewiesen",
    "_bedingungen_auto": [],
    "_wurzelbedingungen": [],
    "_neu_pruefen": [],
@@ -62752,7 +62802,7 @@
      ]
     },
     {
-     "id": "kn.beob.theta_koeffizienten",
+     "id": "kn.satz.theta_koeffizienten",
      "score": 3.2,
      "warum": [
       "über kn.satz.theta_singularitaet",
@@ -62772,8 +62822,8 @@
    "en": {
     "titel": "Means over one period are multiplicative — real formulas that only Kneser satisfies (e.g. ∫₁ᵉ slog′²/h′ = 1)",
     "aussage": "**Principle:** If $G$ is holomorphic in the upper half-plane, 1-periodic, with limit $G_\\infty$ at the top (and an integrable majorant on the\nreal axis), then $M[G(x+i0)]=G_\\infty$. For Kneser, $\\theta$ is such a function — so means of functions of $\\theta$ are\n**multiplicative**. This yields purely real equations:\n$$\\int_0^1\\theta^2=\\Bigl(\\int_0^1\\theta\\Bigr)^2,\\qquad \\int_0^1\\sigma(\\mathrm{sexp}\\,x)e^{-Lx}dx\\cdot\\int_0^1\\frac{e^{Lx}}{\\sigma(\\mathrm{sexp}\\,x)}dx=1,$$\n$$\\int_1^e\\frac{\\mathrm{slog}'(w)^2}{h'(w)}\\,dw=1,\\qquad \\int_0^1\\ln\\mathrm{sexp}'(x)\\,dx=-\\int_0^1\\ln|h'(\\mathrm{sexp}\\,x)|\\,dx=0.49843955952451799390\\ldots$$\nand $\\theta$ has no negative Fourier modes on the real axis. For every other real tetration these formulas are false:\n$T(x)=\\mathrm{sexp}(x+\\varepsilon\\sin2\\pi x)$ violates them already at $\\varepsilon=10^{-4}$ by $10^{-5}$–$10^{-4}$. Checked to $10^{-98}$ (base $e$) and $10^{-58}$ (base 2).\n",
-    "bereich": "Base $b>\\eta$ (computed for $e$ and 2); $h$, $\\sigma$ the regular Abel and Schröder function at the fixed point $L$; $\\theta(x)=h(\\mathrm{sexp}\\,x)-x$\non the continuous branch; $M[G]=\\int_0^1G(x)\\,dx$",
-    "einfach": "For Kneser's tetration there are integral formulas on the number line that no other tetration satisfies — for example: a certain\ndefinite integral from 1 to e is exactly 1. The reason is that Kneser's wave θ continues smoothly upward into the complex plane. Such formulas\nare rare “real fingerprints” of Kneser.",
+    "bereich": "Base $b>\\eta$ (computed for $e$ and 2); $h$, $\\sigma$ the regular Abel and Schröder function at the fixed point $L$; $\\theta(x)=h(\\mathrm{sexp}\\,x)-x$ on the continuous branch; $M[G]=\\int_0^1G(x)\\,dx$",
+    "einfach": "For Kneser's tetration there are integral formulas on the number line that no other tetration satisfies — for example: a certain definite integral from 1 to e is exactly 1. The reason is that Kneser's wave θ continues smoothly upward into the complex plane. Such formulas are rare “real fingerprints” of Kneser.",
     "formen": [
      {
       "notiz": "simplest form ($=M[1/(1+\\theta')]$)"
@@ -62783,10 +62833,7 @@
      }
     ],
     "beweis": {
-     "text": "$\\frac{d}{dy}\\int_0^1G(x+iy)\\,dx=i[G(1+iy)-G(iy)]=0$; at the top the mean is $G_\\infty$, at the bottom the boundary mean. Applications: $G=\\Phi(\\theta)$ ($\\Phi$ entire),\n$G=e^{kL\\theta}$ (formula with $\\sigma$), $G=(1+\\theta')^s$ for $\\mathrm{Re}\\,s<1$ and $G=\\log(1+\\theta')$ (single-valued by kn.satz.ableitung_nullstellenfrei);\nthe substitution $w=\\mathrm{sexp}\\,x$ gives the slog form. The majorant comes from the local form of $\\theta$ at the integers (kn.satz.theta_singularitaet).\n",
-     "luecken": [
-      "The majorant is read off from the local form; a written-out estimate of h and h′ on {log(Az) : 0 < arg z < π} is missing."
-     ]
+     "text": "$\\frac{d}{dy}\\int_0^1G(x+iy)\\,dx=i[G(1+iy)-G(iy)]=0$; at the top the mean is $G_\\infty$, at the bottom the boundary mean. Applications: $G=\\Phi(\\theta)$ ($\\Phi$ entire\nwith $\\log M_\\Phi(s)=O(e^{\\kappa s})$ — all those used here), $G=e^{kL\\theta}$ (formula with $\\sigma$), $G=(1+\\theta')^s$ for $\\mathrm{Re}\\,s<1$ and\n$G=\\log(1+\\theta')$ (single-valued by kn.satz.ableitung_nullstellenfrei); the substitution $w=\\mathrm{sexp}\\,x$ gives the slog form.\n**Majorant** (limit $y\\to0$ by dominated convergence): $\\sigma$ is univalent on the whole upper half-plane, because the principal-branch logarithm maps it injectively into itself; Grunsky and Koebe bounds for the third iterated logarithm (which lies at least $\\pi/2$ above the axis) give on $|z|<0.1$\n(base $e$) $|\\theta|\\le31.7+2.91\\ln\\ln\\ln(1/|z|)$ and $c/(|z|\\ln(1/|z|)(\\ln\\ln)^4)\\le|1+\\theta'|\\le C/(|z|\\ln(1/|z|))$.\n"
     },
     "pruefung": {
      "f1_folgt_unmittelbar": "The principle yes (Hardy space, classical); the application to θ and the real formulas no.",
@@ -62797,11 +62844,11 @@
     },
     "bewertung": {
      "nutzen": "First real integral formulas that distinguish Kneser from all other tetrations.",
-     "richtigkeit": "Core proved, majorant sketched; numerically to 10⁻⁹⁸"
+     "richtigkeit": "complete (majorant via Grunsky/Koebe); numerically to 10⁻⁹⁸"
     },
     "quellen": [
      {
-      "stelle": "forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 and B-Z; s2_nullmoden.py, s2b_kontrolle.py"
+      "stelle": "forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 and B-Z; s2_nullmoden.py, s2b_kontrolle.py; majorant: luecken/BERICHT_LUECKEN_ANALYTISCH.md, l1_schranken.py"
      }
     ]
    },
@@ -62959,7 +63006,7 @@
    "titel": "Binet-artige Formel für Knesers Asymptotik-Konstante κ (sexp ≈ L + κ e^{Lz} oben)",
    "art": "korollar",
    "ebene": "C",
-   "status": "skizze",
+   "status": "bewiesen",
    "niveau": "forschung",
    "objekte": [
     "kneser_T",
@@ -62968,11 +63015,8 @@
    "aussage": "Für $\\mathrm{Im}\\,z\\to\\infty$ gilt $\\mathrm{sexp}(z)=L+\\kappa e^{Lz}+o(e^{-y\\,\\mathrm{Im}L})$ mit\n$$\\kappa=e^{La_0}=\\int_0^1\\sigma(\\mathrm{sexp}\\,x)e^{-Lx}dx=\\exp\\Bigl(\\int_0^1\\ln\\mathrm{sexp}'-\\tfrac{3L}2+i\\int_0^\\infty(\\mathrm{sexp}(it)-L)\\,dt\\Bigr),$$\n$\\kappa=1.7176401959431580370\\ldots-2.3844430117304858788\\ldots\\,i$, $|\\kappa|=2.9386827523\\ldots$ (Basis 2: $\\kappa_2=-0.0912950128\\ldots-3.0092098197\\ldots\\,i$).\nWie Binets Formel für $\\ln\\Gamma$ drückt sie eine Konstante der Asymptotik durch reelle und senkrechte Integrale der Funktion selbst aus.\n",
    "einfach": "Weit oben in der komplexen Ebene sieht Knesers Tetration fast aus wie „Fixpunkt plus eine kleine Exponentialfunktion“. Der Vorfaktor dieser Exponentialfunktion lässt sich exakt als Integral ausdrücken — so wie man bei der Gammafunktion Konstanten durch Integrale ausdrückt.",
    "beweis": {
-    "art": "skizze",
-    "text": "$E(z)=\\log\\mathrm{sexp}'(z)-Lh(\\mathrm{sexp}z)$ ist eindeutig (kn.satz.ableitung_nullstellenfrei), $E(z+1)-E(z)=\\mathrm{sexp}(z)-L$, $E\\to L$ oben; das Mittelwertargument gibt $m'(y)=i(\\mathrm{sexp}(iy)-L)$, also $\\int_0^1E=L-i\\int_0^\\infty(\\mathrm{sexp}(it)-L)dt$; mit $M[h\\circ\\mathrm{sexp}]=a_0+\\tfrac12$ folgt die Formel modulo $2\\pi i$, und $\\kappa=e^{La_0}$ ist eindeutig. Numerisch auf $10^{-35}$.",
-    "luecken": [
-     "Benutzt dieselbe Majorante wie kn.satz.theta_mittelwerte."
-    ]
+    "art": "vollstaendig",
+    "text": "$E(z)=\\log\\mathrm{sexp}'(z)-Lh(\\mathrm{sexp}z)$ ist eindeutig (kn.satz.ableitung_nullstellenfrei), $E(z+1)-E(z)=\\mathrm{sexp}(z)-L$, $E\\to L$ oben; das Mittelwertargument gibt $m'(y)=i(\\mathrm{sexp}(iy)-L)$, also $\\int_0^1E=L-i\\int_0^\\infty(\\mathrm{sexp}(it)-L)dt$; mit $M[h\\circ\\mathrm{sexp}]=a_0+\\tfrac12$ folgt die Formel modulo $2\\pi i$, und $\\kappa=e^{La_0}$ ist eindeutig. Numerisch auf $10^{-35}$."
    },
    "stuetzt_sich_auf": [
     "kn.satz.theta_mittelwerte"
@@ -63003,7 +63047,7 @@
     },
     {
      "typ": "verwandt",
-     "ziel": "kn.beob.theta_koeffizienten"
+     "ziel": "kn.satz.theta_koeffizienten"
     }
    ],
    "gebiet": "kn",
@@ -63011,11 +63055,9 @@
    "_strang": "kn.formeln",
    "_idee": "zahlen.identitaeten",
    "_niveau": "forschung",
-   "_status_eff": "skizze",
+   "_status_eff": "bewiesen",
    "_bedingungen_auto": [],
-   "_wurzelbedingungen": [
-    "kn.satz.theta_mittelwerte"
-   ],
+   "_wurzelbedingungen": [],
    "_neu_pruefen": [],
    "_tragweite": 0,
    "_abhaengig": [
@@ -63032,7 +63074,7 @@
      ]
     },
     {
-     "id": "kn.beob.theta_koeffizienten",
+     "id": "kn.satz.theta_koeffizienten",
      "score": 3.5,
      "warum": [
       "verwandt",
@@ -63044,7 +63086,7 @@
      "score": 3.2,
      "warum": [
       "über kn.satz.theta_mittelwerte",
-      "über kn.beob.theta_koeffizienten",
+      "über kn.satz.theta_koeffizienten",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -63052,7 +63094,7 @@
      "id": "kn.frage.theta_exponent",
      "score": 2.85,
      "warum": [
-      "über kn.beob.theta_koeffizienten",
+      "über kn.satz.theta_koeffizienten",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -63060,7 +63102,7 @@
      "id": "kn.beob.theta_fourier_algebraisch",
      "score": 2.85,
      "warum": [
-      "über kn.beob.theta_koeffizienten",
+      "über kn.satz.theta_koeffizienten",
       "gemeinsame Objekte: kneser_T, theta_kneser"
      ]
     },
@@ -63094,10 +63136,7 @@
     "aussage": "For $\\mathrm{Im}\\,z\\to\\infty$ we have $\\mathrm{sexp}(z)=L+\\kappa e^{Lz}+o(e^{-y\\,\\mathrm{Im}L})$ with\n$$\\kappa=e^{La_0}=\\int_0^1\\sigma(\\mathrm{sexp}\\,x)e^{-Lx}dx=\\exp\\Bigl(\\int_0^1\\ln\\mathrm{sexp}'-\\tfrac{3L}2+i\\int_0^\\infty(\\mathrm{sexp}(it)-L)\\,dt\\Bigr),$$\n$\\kappa=1.7176401959431580370\\ldots-2.3844430117304858788\\ldots\\,i$, $|\\kappa|=2.9386827523\\ldots$ (base 2: $\\kappa_2=-0.0912950128\\ldots-3.0092098197\\ldots\\,i$).\nLike Binet's formula for $\\ln\\Gamma$, it expresses a constant of the asymptotics through real and vertical integrals of the function itself.\n",
     "einfach": "Far up in the complex plane, Kneser's tetration looks almost like “fixed point plus a small exponential function”. The prefactor of this exponential function can be expressed exactly as an integral — just as one expresses constants of the gamma function by integrals.",
     "beweis": {
-     "text": "$E(z)=\\log\\mathrm{sexp}'(z)-Lh(\\mathrm{sexp}z)$ is single-valued (kn.satz.ableitung_nullstellenfrei), $E(z+1)-E(z)=\\mathrm{sexp}(z)-L$, $E\\to L$ above; the mean-value argument gives $m'(y)=i(\\mathrm{sexp}(iy)-L)$, hence $\\int_0^1E=L-i\\int_0^\\infty(\\mathrm{sexp}(it)-L)dt$; with $M[h\\circ\\mathrm{sexp}]=a_0+\\tfrac12$ the formula follows modulo $2\\pi i$, and $\\kappa=e^{La_0}$ is unique. Numerically to $10^{-35}$.",
-     "luecken": [
-      "Uses the same majorant as kn.satz.theta_mittelwerte."
-     ]
+     "text": "$E(z)=\\log\\mathrm{sexp}'(z)-Lh(\\mathrm{sexp}z)$ is single-valued (kn.satz.ableitung_nullstellenfrei), $E(z+1)-E(z)=\\mathrm{sexp}(z)-L$, $E\\to L$ above; the mean-value argument gives $m'(y)=i(\\mathrm{sexp}(iy)-L)$, hence $\\int_0^1E=L-i\\int_0^\\infty(\\mathrm{sexp}(it)-L)dt$; with $M[h\\circ\\mathrm{sexp}]=a_0+\\tfrac12$ the formula follows modulo $2\\pi i$, and $\\kappa=e^{La_0}$ is unique. Numerically to $10^{-35}$."
     },
     "pruefung": {
      "f1_folgt_unmittelbar": "From the mean-value principle, yes.",
@@ -80501,13 +80540,13 @@
    "notiz": ""
   },
   {
-   "von": "gr.beob.ein_wendepunkt_e",
+   "von": "gr.satz.ein_wendepunkt_e2",
    "nach": "gr.verm.ein_wendepunkt",
    "typ": "stuetzt",
    "notiz": ""
   },
   {
-   "von": "gr.beob.ein_wendepunkt_e",
+   "von": "gr.satz.ein_wendepunkt_e2",
    "nach": "kn.satz.ableitung_nullstellenfrei",
    "typ": "verwandt",
    "notiz": ""
@@ -80580,7 +80619,7 @@
   },
   {
    "von": "kn.frage.theta_exponent",
-   "nach": "kn.beob.theta_koeffizienten",
+   "nach": "kn.satz.theta_koeffizienten",
    "typ": "verwandt",
    "notiz": ""
   },
@@ -80609,19 +80648,24 @@
    "notiz": ""
   },
   {
-   "von": "kn.beob.theta_koeffizienten",
+   "von": "kn.satz.theta_koeffizienten",
+   "nach": "kn.satz.theta_singularitaet",
+   "typ": "stuetzt_sich_auf"
+  },
+  {
+   "von": "kn.satz.theta_koeffizienten",
    "nach": "kn.satz.theta_singularitaet",
    "typ": "verwandt",
    "notiz": ""
   },
   {
-   "von": "kn.beob.theta_koeffizienten",
+   "von": "kn.satz.theta_koeffizienten",
    "nach": "kn.beob.theta_fourier_algebraisch",
    "typ": "stuetzt",
    "notiz": ""
   },
   {
-   "von": "kn.beob.theta_koeffizienten",
+   "von": "kn.satz.theta_koeffizienten",
    "nach": "kn.frage.theta_exponent",
    "typ": "verwandt",
    "notiz": ""
@@ -80687,7 +80731,7 @@
   },
   {
    "von": "kn.satz.binet_kappa",
-   "nach": "kn.beob.theta_koeffizienten",
+   "nach": "kn.satz.theta_koeffizienten",
    "typ": "verwandt",
    "notiz": ""
   },
@@ -88857,7 +88901,7 @@
     "gr.beob.kneser_ableitung",
     "gr.beob.wendepunkte",
     "gr.verm.ein_wendepunkt",
-    "gr.beob.ein_wendepunkt_e",
+    "gr.satz.ein_wendepunkt_e2",
     "gr.verm.tpid7",
     "gr.gegen.tpid7_kneser",
     "gr.verm.ungerade_ableitungen"
@@ -89399,7 +89443,7 @@
    "mitglieder": [
     "kn.beob.theta_fourier_algebraisch",
     "kn.satz.theta_singularitaet",
-    "kn.beob.theta_koeffizienten",
+    "kn.satz.theta_koeffizienten",
     "kn.frage.theta_exponent"
    ],
    "en": {
@@ -90419,7 +90463,7 @@
  ],
  "statistik": {
   "art:annahme": 5,
-  "art:beobachtung": 64,
+  "art:beobachtung": 62,
   "art:definition": 15,
   "art:frage": 33,
   "art:gegenbeispiel": 4,
@@ -90428,7 +90472,7 @@
   "art:korollar": 14,
   "art:korrektur": 4,
   "art:lemma": 9,
-  "art:satz": 216,
+  "art:satz": 218,
   "art:vermutung": 33,
   "befund:HINWEIS": 39,
   "ebene:A": 81,
@@ -90439,15 +90483,15 @@
   "niveau:forschung": 214,
   "niveau:vertiefung": 151,
   "status:annahme": 3,
-  "status:bedingt": 27,
-  "status:bewiesen": 152,
+  "status:bedingt": 30,
+  "status:bewiesen": 155,
   "status:bewiesen_literatur": 60,
   "status:definition": 15,
   "status:entlastet": 1,
   "status:gescheitert": 11,
-  "status:numerisch": 71,
+  "status:numerisch": 69,
   "status:offen": 34,
-  "status:skizze": 15,
+  "status:skizze": 11,
   "status:ueberholt": 3,
   "status:vermutung": 29,
   "status:widerlegt": 4,
@@ -90465,8 +90509,9 @@
     "r": 279.9,
     "n": 71,
     "fuell": {
+     "bedingt": 1,
      "bewiesen": 58,
-     "numerisch": 8,
+     "numerisch": 7,
      "offen": 1,
      "vermutung": 4
     },
@@ -90557,8 +90602,8 @@
     "r": 328.7,
     "n": 106,
     "fuell": {
-     "bedingt": 10,
-     "bewiesen": 48,
+     "bedingt": 9,
+     "bewiesen": 49,
      "numerisch": 19,
      "offen": 12,
      "vermutung": 14,
@@ -90690,9 +90735,9 @@
     "r": 211.7,
     "n": 38,
     "fuell": {
-     "bedingt": 6,
-     "bewiesen": 22,
-     "numerisch": 4,
+     "bedingt": 5,
+     "bewiesen": 24,
+     "numerisch": 3,
      "offen": 3,
      "vermutung": 3
     },
@@ -90845,8 +90890,9 @@
     "r": 106.8,
     "n": 29,
     "fuell": {
+     "bedingt": 1,
      "bewiesen": 20,
-     "numerisch": 6,
+     "numerisch": 5,
      "vermutung": 3
     },
     "herkunft": {
@@ -90855,6 +90901,7 @@
      "literatur": 4
     },
     "offen": [
+     "gr.satz.ein_wendepunkt_e2",
      "gr.verm.ein_wendepunkt",
      "gr.verm.tpid7",
      "gr.verm.ungerade_ableitungen"
@@ -90869,11 +90916,11 @@
      "gr.satz.selbstpotenz",
      "gr.satz.zweite_ableitung",
      "gr.kor.konvex_nach_oben",
-     "gr.beob.ein_wendepunkt_e",
      "gr.beob.kneser_ableitung",
      "gr.beob.kneser_pde_wackeln",
      "gr.def.turm",
      "gr.gegen.tpid7_kneser",
+     "gr.satz.ein_wendepunkt_e2",
      "gr.satz.grenzfaelle",
      "gr.satz.kehrwert_turmsumme",
      "gr.satz.stellen",
@@ -91513,8 +91560,7 @@
     "r": 56.0,
     "n": 4,
     "fuell": {
-     "bedingt": 1,
-     "bewiesen": 1,
+     "bewiesen": 2,
      "offen": 2
     },
     "herkunft": {
@@ -92313,27 +92359,29 @@
     "r": 71.0,
     "n": 9,
     "fuell": {
-     "bedingt": 3,
-     "bewiesen": 2,
-     "numerisch": 3,
+     "bedingt": 2,
+     "bewiesen": 4,
+     "numerisch": 2,
      "offen": 1
     },
     "herkunft": {
      "eigen": 9
     },
     "offen": [
-     "kn.frage.theta_exponent"
+     "kn.satz.theta_singularitaet",
+     "kn.frage.theta_exponent",
+     "kn.satz.theta_koeffizienten"
     ],
     "mitglieder": [
      "kn.satz.theta_mittelwerte",
+     "kn.satz.theta_singularitaet",
      "ar.beob.keine_relationen",
      "kn.beob.theta_fourier_algebraisch",
-     "kn.beob.theta_koeffizienten",
      "kn.frage.theta_exponent",
      "kn.satz.ableitung_nullstellenfrei",
      "kn.satz.senkrechte_integrale",
-     "kn.satz.theta_singularitaet",
-     "kn.satz.binet_kappa"
+     "kn.satz.binet_kappa",
+     "kn.satz.theta_koeffizienten"
     ],
     "en": {
      "name": "Formulas and identities",
@@ -95857,25 +95905,18 @@
     "y": 332.5,
     "idee": "gleichung.festfrei"
    },
-   "gr.beob.ein_wendepunkt_e": {
+   "gr.beob.kneser_ableitung": {
     "haupt": false,
     "r": 5.0,
     "x": 330.4,
     "y": 484.3,
     "idee": "gleichung.werte"
    },
-   "gr.beob.kneser_ableitung": {
+   "gr.beob.kneser_pde_wackeln": {
     "haupt": false,
     "r": 5.0,
     "x": 404.8,
     "y": 411.9,
-    "idee": "gleichung.werte"
-   },
-   "gr.beob.kneser_pde_wackeln": {
-    "haupt": false,
-    "r": 5.0,
-    "x": 398.5,
-    "y": 520.5,
     "idee": "gleichung.werte"
    },
    "gr.beob.wendepunkte": {
@@ -95888,15 +95929,15 @@
    "gr.def.turm": {
     "haupt": false,
     "r": 5.0,
-    "x": 326.8,
-    "y": 432.4,
+    "x": 398.5,
+    "y": 520.5,
     "idee": "gleichung.werte"
    },
    "gr.gegen.tpid7_kneser": {
     "haupt": false,
     "r": 5.0,
-    "x": 443.7,
-    "y": 449.7,
+    "x": 326.8,
+    "y": 432.4,
     "idee": "gleichung.werte"
    },
    "gr.kor.basis_summe": {
@@ -95953,6 +95994,13 @@
     "r": 9.8,
     "x": 461.5,
     "y": 474.5,
+    "idee": "gleichung.werte"
+   },
+   "gr.satz.ein_wendepunkt_e2": {
+    "haupt": true,
+    "r": 7.0,
+    "x": 443.7,
+    "y": 449.7,
     "idee": "gleichung.werte"
    },
    "gr.satz.gestalt": {
@@ -96054,8 +96102,8 @@
     "idee": "gleichung.werte"
    },
    "gr.verm.ungerade_ableitungen": {
-    "haupt": true,
-    "r": 7.0,
+    "haupt": false,
+    "r": 5.0,
     "x": 329.5,
     "y": 402.4,
     "idee": "gleichung.werte"
@@ -98520,18 +98568,11 @@
    "ar.beob.keine_relationen": {
     "haupt": false,
     "r": 5.0,
-    "x": -155.2,
-    "y": -619.5,
-    "idee": "zahlen.identitaeten"
-   },
-   "kn.beob.theta_fourier_algebraisch": {
-    "haupt": false,
-    "r": 5.0,
     "x": -134.7,
     "y": -666.7,
     "idee": "zahlen.identitaeten"
    },
-   "kn.beob.theta_koeffizienten": {
+   "kn.beob.theta_fourier_algebraisch": {
     "haupt": false,
     "r": 5.0,
     "x": -115.0,
@@ -98555,8 +98596,8 @@
    "kn.satz.binet_kappa": {
     "haupt": false,
     "r": 5.0,
-    "x": -83.6,
-    "y": -616.1,
+    "x": -162.2,
+    "y": -683.5,
     "idee": "zahlen.identitaeten"
    },
    "kn.satz.senkrechte_integrale": {
@@ -98564,6 +98605,13 @@
     "r": 5.0,
     "x": -150.4,
     "y": -587.3,
+    "idee": "zahlen.identitaeten"
+   },
+   "kn.satz.theta_koeffizienten": {
+    "haupt": true,
+    "r": 7.0,
+    "x": -83.6,
+    "y": -616.1,
     "idee": "zahlen.identitaeten"
    },
    "kn.satz.theta_mittelwerte": {
@@ -98575,9 +98623,9 @@
    },
    "kn.satz.theta_singularitaet": {
     "haupt": true,
-    "r": 7.0,
-    "x": -162.2,
-    "y": -683.5,
+    "r": 9.8,
+    "x": -155.2,
+    "y": -619.5,
     "idee": "zahlen.identitaeten"
    },
    "ar.satz.padische_tuerme": {

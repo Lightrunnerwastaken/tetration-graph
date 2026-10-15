@@ -90,7 +90,7 @@ aussagen:
     $|a_n|$ fällt **nicht** geometrisch: der lokale Exponent ist $1.254$ ($n=2$), $1.184$ ($64$), $1.137$ ($1024$), $1.121$ ($4096$) und sinkt weiter
     (Koeffizienten bis $n=4096$ auf 44 Stellen, zwei unabhängige Einstellungen). $\arg a_n$ wandert langsam ($-1.53$ bei $n=1$, $-1.37$ bei $n=4096$)
     und hat keinen Grenzwert — die Angabe „$\arg a_n\to-\pi/2$“ aus Etappe 1 war falsch. Also hat $\theta$ Singularitäten auf der reellen Achse;
-    wo und welcher Art sie sind, steht in kn.satz.theta_singularitaet, die genaue Asymptotik in kn.beob.theta_koeffizienten.
+    wo und welcher Art sie sind, steht in kn.satz.theta_singularitaet, die genaue Asymptotik in kn.satz.theta_koeffizienten.
   einfach: >-
     Knesers Tetration ist die „gewöhnliche“ Lösung am komplexen Fixpunkt plus eine kleine Welle. Die Welle besteht aus Schwingungen, deren Stärke
     erstaunlich langsam abnimmt. Das zeigt: die Welle hat auf der reellen Achse scharfe Stellen.
@@ -100,7 +100,7 @@ aussagen:
     f2_benutzte_voraussetzungen: 'fatou.gp-Fork bei dps 60–200 nahe der reellen Achse (|Im z| ≤ 0.2); Etappe 1 und 2 stimmen für a₁…a₆₄ auf 3.5·10⁻⁸⁰ überein.'
     f3_spezialfall: nein
     f4_uebertragbar: 'Basis 2 zeigt dieselbe Struktur (|a₄₀₉₆| = 4.579·10⁻⁶ gegen 4.603·10⁻⁶ bei e).'
-    f5_neue_frage: 'Erklärt durch kn.satz.theta_singularitaet und kn.beob.theta_koeffizienten.'
+    f5_neue_frage: 'Erklärt durch kn.satz.theta_singularitaet und kn.satz.theta_koeffizienten.'
   bewertung: {richtigkeit: 'numerisch, 44–162 Stellen', neuheit: neu_ungeprueft, nutzen: 'Erste hochgenaue θ-Koeffizienten; zeigt eine unerwartete Singularitätsstruktur.', nutzen_stufe: mittel}
   versionen:
     - {aenderung: 'Etappe 1: „arg a_n → −π/2“ behauptet.', grund: 'Etappe 2 (n bis 4096) zeigt: das Argument wandert und hat keinen Grenzwert; korrigiert am 14.10.2026.'}
@@ -119,24 +119,25 @@ aussagen:
   aussage: |
     Ausgangsfrage (Etappe 1): Fallen die $a_n$ wie $n^{-1-c}$ mit einer Kneser-eigenen Konstante $c$, oder wie $n^{-1}(\ln n)^{-p}$?
     **Antwort (Etappe 2): weder noch.** Der Exponent ist genau 1, mit einem Produkt iterierter Logarithmen,
-    $|a_n|\asymp1/(n\ln n\ln\ln n\cdots)$; die Drift des lokalen Exponenten ist $1+1/\ln n$ (kn.beob.theta_koeffizienten). Eine eigene
+    $|a_n|\asymp1/(n\ln n\ln\ln n\cdots)$; die Drift des lokalen Exponenten ist $1+1/\ln n$ (kn.satz.theta_koeffizienten). Eine eigene
     „Kneser-Exponentenzahl“ gibt es nicht; der Abfall wird von $A=\mathrm{sexp}'(0)$ und der regulären Abel-Funktion $h$ bestimmt.
-    **Offen bleibt:** die Übertragung von der Singularität auf die Koeffizienten streng zu beweisen, und die Schwankung von $\arg a_n$ explizit
+    Die Übertragung von der Singularität auf die Koeffizienten ist inzwischen bewiesen (kn.satz.theta_koeffizienten). **Offen bleibt:** die Schwankung von $\arg a_n$ explizit
     über $\theta'$ auf der reellen Achse auszudrücken.
   einfach: >-
     Die Welle in Knesers Tetration wird so langsam schwächer wie 1/n, nur noch ein klein wenig schneller. Eine neue Zahl steckt nicht darin —
-    aber eine schöne Formel (siehe die verwandten Einträge). Ein strenger Beweis fehlt noch.
+    aber eine schöne Formel (siehe die verwandten Einträge), die inzwischen auch bewiesen ist.
   quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md'}]
   kanten:
     - {typ: verwandt, ziel: kn.beob.theta_fourier_algebraisch}
-    - {typ: verwandt, ziel: kn.beob.theta_koeffizienten}
+    - {typ: verwandt, ziel: kn.satz.theta_koeffizienten}
     - {typ: verwandt, ziel: br.satz.gevrey_fourier}
 
 - id: kn.satz.theta_singularitaet
   titel: 'θ ist genau an den ganzen Zahlen singulär — mit einer „Superlogarithmus-Singularität“'
   art: satz
   ebene: C
-  status: skizze
+  status: bedingt
+  bedingungen_text: 'Zweigwahl an einem Punkt (z₀ = 0.05i, Abstand 4·10⁻⁴⁸ bei nötigen < 0.12) nur in Gleitkomma geprüft, nicht mit Intervallen; nur Basis e'
   niveau: forschung
   objekte: [kneser_T, theta_kneser]
   bereich: 'Basis $b>\eta$ (gerechnet für $e$ und 2); $\mathrm{sexp}(z)=F(z+\theta(z))$, $F(s)=\Psi(\lambda^s)$ mit der Poincaré-Funktion $\Psi$ am Fixpunkt $L$, $\lambda=L\ln b$; $h=F^{-1}$ die reguläre Abel-Funktion'
@@ -158,10 +159,10 @@ aussagen:
       (i) Aus $\lambda\Psi'(\lambda u)=\ln b\cdot b^{\Psi(u)}\Psi'(u)$: eine Nullstelle $u_0$ von $\Psi'$ gäbe Nullstellen $u_0\lambda^{-k}$, die sich bei 0 häufen,
       Widerspruch zu $\Psi'(0)=1$; $\Psi(\lambda u)=b^{\Psi(u)}\neq0$. (ii) Wäre $z+\theta(z)$ bei $z\to-1$ beschränkt, gäbe es einen Häufungspunkt $s^*$ mit
       $F(s^*)=0$. (iii) $\theta(z)=h(\mathrm{sexp}\,z)-z$, $h(w)=1+h(\log_bw)$ zweimal angewandt und Taylor-Entwicklung von $\log\log\mathrm{sexp}$ bei 0;
-      numerisch bestätigt: der Rest fällt wie $|z|^2$ bis $|z|=10^{-12}$.
+      numerisch bestätigt: der Rest fällt wie $|z|^2$ bis $|z|=10^{-12}$. Holomorphie von $h$ auf dem nötigen Gebiet ohne Zitat: die Schröder-Funktion $\sigma$ ist
+      auf der ganzen oberen Halbebene schlicht, weil der Hauptzweig-Logarithmus sie injektiv in sich abbildet (Lemma U, luecken/BERICHT_LUECKEN_ANALYTISCH.md).
     luecken:
-      - 'Dass die Fortsetzung von h nur über der Bahn von 0 behindert ist (singuläre Werte von Poincaré-Funktionen), ist zitiert, nicht hier bewiesen.'
-      - 'Analytizität auf ℝ∖ℤ: die Wahl des Hauptzweigs ist nur numerisch geprüft (stetiger Verlauf in allen Abtastungen).'
+      - 'Zweigwahl: bewiesen ist, dass die Zweige überall übereinstimmen, sobald sie an einem Punkt übereinstimmen; an z₀ = 0.05i ist der Abstand 4·10⁻⁴⁸ (nötig < 0.12), aber nur in Gleitkomma gerechnet, nicht mit Intervallen, und nur für Basis e.'
   quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, Abschnitt 2 (S1–S6) und 3.1; p5_lokal.py'}]
   pruefung:
     f1_folgt_unmittelbar: '(i), (ii) ja, sobald man sieht, dass F den Wert 0 auslässt; (iii) ist eine kurze Rechnung.'
@@ -175,36 +176,47 @@ aussagen:
     - {typ: verwandt, ziel: kn.gescheitert.regulaer_an_L}
     - {typ: verwandt, ziel: kn.konstr.kneser}
 
-- id: kn.beob.theta_koeffizienten
-  titel: 'Formel für die Fourier-Koeffizienten von θ: aₙ = [qⁿ] h(c + log(1−q)) + O(n⁻²)'
-  art: beobachtung
+- id: kn.satz.theta_koeffizienten
+  titel: 'Formel für die Fourier-Koeffizienten von θ: aₙ = [qⁿ] h(c + log(1−q)) + O(1/(n² ln n)), Exponent genau 1'
+  art: satz
   ebene: C
-  status: numerisch
+  status: bedingt
+  bedingungen_text: 'dieselbe Zweigprüfung wie bei kn.satz.theta_singularitaet'
   niveau: forschung
   objekte: [kneser_T, theta_kneser]
   bereich: 'Basis $b>\eta$; $\theta(z)=\sum a_nq^n$, $q=e^{2\pi iz}$; $h$, $A$, $\kappa$ wie in kn.satz.theta_singularitaet'
   aussage: |
     Aus der Singularität bei $q=1$ folgt eine geschlossene Asymptotik der Koeffizienten:
-    $$a_n=[q^n]\,h\Bigl(\frac{c+\log(1-q)}{\ln b}\Bigr)+O(n^{-2}),\qquad c=\ln\frac{A}{2\pi\ln b}+\frac{i\pi}2 .$$
-    Mit der Korrektur $\delta_1=\tfrac12+i\kappa/2\pi$ wird der Rest $O(n^{-3})$. Gemessen bis $n=4000$: relativer Rest $1.9\cdot10^{-5}$ (erste Ordnung),
-    $4.8\cdot10^{-9}$ (zweite Ordnung); eine Transfer-Entwicklung mit 8 Gliedern trifft $a_{4096}$ auf $6\cdot10^{-7}$. Für Basis 2 gleich gut.
-    Führend ist $a_n\approx-h'\bigl((c-\ln n)/\ln b\bigr)/n$ (bis auf den Faktor $1/\ln b$); weil $h'(v)=h'(\log v)/v$, folgt $|a_n|\asymp1/(n\ln n\ln\ln n\cdots)$:
-    **der Exponent ist genau 1**, der lokale Exponent sinkt wie $1+1/\ln n$. Die Koeffizienten der Kneser-Welle werden also von zwei Dingen bestimmt:
-    der regulären Abel-Funktion am komplexen Fixpunkt und der einen Zahl $A=\mathrm{sexp}'(0)$.
+    $$a_n=[q^n]\,h\Bigl(\frac{c+\log(1-q)}{\ln b}\Bigr)+O\Bigl(\frac1{n^2\ln n}\Bigr),\qquad c=\ln\frac{A}{2\pi\ln b}+\frac{i\pi}2 .$$
+    Mit der Korrektur $\delta_1=\tfrac12+i\kappa/2\pi$ wird der Rest $O(1/(n^3\ln n))$. Führend ist $a_n=-h'(v_n)/n+O(1/(n\ln^2n))$ mit $v_n=(c-\ln n)/\ln b$, und
+    $$\frac{c_1}{n\ln n\,(\ln\ln n)^4}\le|a_n|\le\frac{C_1}{n\ln n}:$$
+    **der Exponent ist genau 1**, der lokale Exponent sinkt wie $1+1/\ln n$ (heuristisch $|a_n|\asymp1/(n\ln n\ln\ln n\cdots)$).
+    Gemessen bis $n=4000$: relativer Rest $1.9\cdot10^{-5}$ (erste Ordnung), $4.8\cdot10^{-9}$ (zweite Ordnung); für Basis 2 gleich gut.
+    Die Koeffizienten der Kneser-Welle werden also von der regulären Abel-Funktion am komplexen Fixpunkt und der einen Zahl $A=\mathrm{sexp}'(0)$ bestimmt.
   einfach: >-
     Man kann die Stärken der Schwingungen in Knesers Welle fast genau vorhersagen: man nimmt die gewöhnliche Lösung am komplexen Fixpunkt und
-    setzt einen Logarithmus ein. Die Vorhersage stimmt bis zur 4000. Schwingung auf acht bis neun Stellen.
+    setzt einen Logarithmus ein. Die Vorhersage stimmt bis zur 4000. Schwingung auf acht bis neun Stellen, und inzwischen ist sie auch bewiesen.
   formen:
-    - {tex: 'a_n=[q^n]\,h\bigl((c+\log(1-q))/\ln b\bigr)+O(n^{-2})', notiz: 'Koeffizientenformel'}
-    - {tex: '|a_n|\asymp\frac{1}{n\,\ln n\,\ln\ln n\cdots}', notiz: 'Exponent genau 1'}
-  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 und 3.2; p3_modell.py, p4_korrektur.py'}]
+    - {tex: 'a_n=[q^n]\,h\bigl((c+\log(1-q))/\ln b\bigr)+O(1/(n^2\ln n))', notiz: 'Koeffizientenformel'}
+    - {tex: '\frac{c_1}{n\ln n(\ln\ln n)^4}\le|a_n|\le\frac{C_1}{n\ln n}', notiz: 'Exponent genau 1'}
+  beweis:
+    art: vollstaendig
+    text: |
+      $\theta$ ist auf $|q|\le1$ ausser bei $q=1$ analytisch (kn.satz.theta_singularitaet), also $\Delta$-analytisch bei $q=1$. Aus der Lokalform und den Schranken
+      für $h'$ (Grunsky/Koebe, wie bei kn.satz.theta_mittelwerte) folgt $\theta(q)-H(q)=O(|1-q|/\log(1/|1-q|))$ im $\Delta$-Gebiet mit $H(q)=h((c+\log(1-q))/\ln b)$;
+      der Übertragungssatz für O-Terme (Flajolet–Odlyzko, Flajolet–Sedgewick Satz VI.3) gibt $a_n-[q^n]H=O(1/(n^2\ln n))$. Die Schranken für $|a_n|$ kommen aus
+      denselben Schranken für $h'$ über eine Hankel-Kontur.
+  stuetzt_sich_auf: [kn.satz.theta_singularitaet]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 und 3.2; Beweis: luecken/BERICHT_LUECKEN_ANALYTISCH.md, l2_transfer.py'}]
   pruefung:
-    f1_folgt_unmittelbar: 'Nein: Transfer von der Singularität auf die Koeffizienten (Flajolet–Odlyzko) ist für Funktionen wie h(c + log u) nicht wörtlich bewiesen; numerisch sehr deutlich.'
-    f2_benutzte_voraussetzungen: 'Δ-Analytizität bei q = 1 (aus kn.satz.theta_singularitaet), Koeffizienten bis n = 4096 auf 44 Stellen.'
-    f3_spezialfall: nein
+    f1_folgt_unmittelbar: 'Aus der Singularität mit dem Übertragungssatz, ja; dafür braucht es nur eine Schranke, keine vollständige Entwicklung.'
+    f2_benutzte_voraussetzungen: 'Δ-Analytizität bei q = 1 (bedingt auf die Zweigprüfung in kn.satz.theta_singularitaet), Schranken für h′; Flajolet–Sedgewick Satz VI.3 zitiert.'
+    f3_spezialfall: 'Ja: Singularitätenanalyse.'
     f4_uebertragbar: 'Gleiche Formel für Basis 2 geprüft; L geht nur über h und c ein.'
-    f5_neue_frage: 'Streng beweisen; die Schwankung von arg aₙ (selbstähnlich in slog(ln ln n)) explizit über θ′ ausdrücken.'
-  bewertung: {richtigkeit: 'numerisch bis n = 4000 auf 5·10⁻⁹; Herleitung mit Lücke', neuheit: neu_ungeprueft, nutzen: 'Eine echte Identität für Kneser: die Korrekturwelle zur regulären Lösung aus h und sexp′(0) allein.', nutzen_stufe: hoch}
+    f5_neue_frage: 'Konstanten der O-Terme ausschreiben; die Schwankung von arg aₙ (selbstähnlich in slog(ln ln n)) explizit über θ′ ausdrücken.'
+  bewertung: {richtigkeit: 'bewiesen, bedingt auf eine in Gleitkomma geprüfte Zweigwahl; numerisch bis n = 4000 auf 5·10⁻⁹', neuheit: neu_ungeprueft, nutzen: 'Eine echte Identität für Kneser: die Korrekturwelle zur regulären Lösung aus h und sexp′(0) allein.', nutzen_stufe: hoch}
+  versionen:
+    - {aenderung: 'Früher kn.beob.theta_koeffizienten (Beobachtung, Rest O(n⁻²)).', grund: 'Übertragungssatz bewiesen, Rest verschärft auf O(1/(n² ln n)), 14.10.2026.'}
   kanten:
     - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
     - {typ: stuetzt, ziel: kn.beob.theta_fourier_algebraisch}

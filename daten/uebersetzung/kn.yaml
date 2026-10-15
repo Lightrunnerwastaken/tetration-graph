@@ -1458,10 +1458,10 @@
       $x\mapsto{}^xb$ touches the line $y=x$ at exactly one base $\eta_4\approx1.6353$, at the point $e_4\approx3.0885$. And exactly up to $\eta_4$
       the infinite pentation has a value.
 - id: kn.beob.theta_fourier_algebraisch
-  quelle_hash: de9d905ffe77
+  quelle_hash: 451c379c5a8c
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-15'
   geprueft: nein
   en:
     titel: Kneser's θ has Fourier coefficients that decay only slowly (locally about n^(−1.2)) — θ is singular on the real axis
@@ -1471,7 +1471,7 @@
       $|a_n|$ does **not** decay geometrically: the local exponent is $1.254$ ($n=2$), $1.184$ ($64$), $1.137$ ($1024$), $1.121$ ($4096$) and keeps falling
       (coefficients up to $n=4096$ to 44 digits, two independent settings). $\arg a_n$ drifts slowly ($-1.53$ at $n=1$, $-1.37$ at $n=4096$)
       and has no limit — the statement “$\arg a_n\to-\pi/2$” from stage 1 was wrong. So $\theta$ has singularities on the real axis;
-      where they are and of what kind is given in kn.satz.theta_singularitaet, the exact asymptotics in kn.beob.theta_koeffizienten.
+      where they are and of what kind is given in kn.satz.theta_singularitaet, the exact asymptotics in kn.satz.theta_koeffizienten.
     bereich: Base $e$; $\mathrm{sexp}(z)=F(z+\theta(z))$ with the regular superfunction $F=\sigma^{-1}(e^{Lz})$ at the fixed point $L$, $\sigma'(L)=1$;
       $\theta=\sum a_ne^{2\pi inz}$ in the upper half-plane
     einfach: 'Kneser''s tetration is the "ordinary" solution at the complex fixed point plus a small wave. The wave consists of oscillations whose
@@ -1481,7 +1481,7 @@
       f2_benutzte_voraussetzungen: fatou.gp fork at dps 60–200 near the real axis (|Im z| ≤ 0.2); stages 1 and 2 agree for a₁…a₆₄ to 3.5·10⁻⁸⁰.
       f3_spezialfall: 'no'
       f4_uebertragbar: Base 2 shows the same structure (|a₄₀₉₆| = 4.579·10⁻⁶ versus 4.603·10⁻⁶ for e).
-      f5_neue_frage: Explained by kn.satz.theta_singularitaet and kn.beob.theta_koeffizienten.
+      f5_neue_frage: Explained by kn.satz.theta_singularitaet and kn.satz.theta_koeffizienten.
     bewertung:
       nutzen: First high-precision θ coefficients; reveals an unexpected singularity structure.
       richtigkeit: numerical, 44–162 digits
@@ -1490,40 +1490,6 @@
       grund: 'Stage 2 (n up to 4096) shows: the argument drifts and has no limit; corrected on 14.10.2026.'
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md (K8) and etappe2/BERICHT_ETAPPE2.md (section 3.0)
-- id: kn.beob.theta_koeffizienten
-  quelle_hash: 878b6b0a9287
-  herkunft:
-    modell: sonnet
-    datum: '2026-10-14'
-  geprueft: nein
-  en:
-    titel: 'Formula for the Fourier coefficients of θ: aₙ = [qⁿ] h(c + log(1−q)) + O(n⁻²)'
-    aussage: |
-      The singularity at $q=1$ yields a closed asymptotic formula for the coefficients:
-      $$a_n=[q^n]\,h\Bigl(\frac{c+\log(1-q)}{\ln b}\Bigr)+O(n^{-2}),\qquad c=\ln\frac{A}{2\pi\ln b}+\frac{i\pi}2 .$$
-      With the correction $\delta_1=\tfrac12+i\kappa/2\pi$ the remainder becomes $O(n^{-3})$. Measured up to $n=4000$: relative remainder $1.9\cdot10^{-5}$ (first order),
-      $4.8\cdot10^{-9}$ (second order); a transfer expansion with 8 terms hits $a_{4096}$ to $6\cdot10^{-7}$. Equally good for base 2.
-      The leading term is $a_n\approx-h'\bigl((c-\ln n)/\ln b\bigr)/n$ (up to the factor $1/\ln b$); since $h'(v)=h'(\log v)/v$, it follows that $|a_n|\asymp1/(n\ln n\ln\ln n\cdots)$:
-      **the exponent is exactly 1**, and the local exponent decreases like $1+1/\ln n$. So the coefficients of the Kneser wave are determined by two things:
-      the regular Abel function at the complex fixed point and the one number $A=\mathrm{sexp}'(0)$.
-    bereich: Base $b>\eta$; $\theta(z)=\sum a_nq^n$, $q=e^{2\pi iz}$; $h$, $A$, $\kappa$ as in kn.satz.theta_singularitaet
-    einfach: 'The strengths of the oscillations in Kneser''s wave can be predicted almost exactly: one takes the ordinary solution at the complex
-      fixed point and inserts a logarithm. The prediction is correct up to the 4000th oscillation to eight or nine digits.'
-    formen:
-    - notiz: Coefficient formula
-    - notiz: Exponent exactly 1
-    pruefung:
-      f1_folgt_unmittelbar: 'No: the transfer from the singularity to the coefficients (Flajolet–Odlyzko) is not proved literally for functions
-        like h(c + log u); numerically very clear.'
-      f2_benutzte_voraussetzungen: Δ-analyticity at q = 1 (from kn.satz.theta_singularitaet), coefficients up to n = 4096 to 44 digits.
-      f3_spezialfall: 'no'
-      f4_uebertragbar: Same formula checked for base 2; L enters only through h and c.
-      f5_neue_frage: Prove it rigorously; express the fluctuation of arg aₙ (self-similar in slog(ln ln n)) explicitly via θ′.
-    bewertung:
-      nutzen: 'A genuine identity for Kneser: the correction wave to the regular solution from h and sexp′(0) alone.'
-      richtigkeit: numerical up to n = 4000 to 5·10⁻⁹; derivation with a gap
-    quellen:
-    - stelle: forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 and 3.2; p3_modell.py, p4_korrektur.py
 - id: kn.beob.tpid10_gesetz
   quelle_hash: f2e8832b4a5d
   theorie_hash: 1c743a9ec77a
@@ -1961,22 +1927,22 @@
     worum: |
       A divergent series with a surprisingly good truncation — is it exactly Kneser behind it?
 - id: kn.frage.theta_exponent
-  quelle_hash: 93e7ad44b34a
+  quelle_hash: fa151f287b79
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-15'
   geprueft: nein
   en:
     titel: 'Which number determines the Fourier decay of Kneser''s θ? — Answer: none of its own, the exponent is exactly 1'
     aussage: |
       Original question (stage 1): Do the $a_n$ decay like $n^{-1-c}$ with a constant $c$ of Kneser's own, or like $n^{-1}(\ln n)^{-p}$?
       **Answer (stage 2): neither.** The exponent is exactly 1, with a product of iterated logarithms,
-      $|a_n|\asymp1/(n\ln n\ln\ln n\cdots)$; the drift of the local exponent is $1+1/\ln n$ (kn.beob.theta_koeffizienten). There is
+      $|a_n|\asymp1/(n\ln n\ln\ln n\cdots)$; the drift of the local exponent is $1+1/\ln n$ (kn.satz.theta_koeffizienten). There is
       no "Kneser exponent number" of its own; the decay is determined by $A=\mathrm{sexp}'(0)$ and the regular Abel function $h$.
-      **Still open:** proving the transfer from the singularity to the coefficients rigorously, and expressing the fluctuation of $\arg a_n$ explicitly
+      The transfer from the singularity to the coefficients has since been proven (kn.satz.theta_koeffizienten). **Still open:** expressing the fluctuation of $\arg a_n$ explicitly
       via $\theta'$ on the real axis.
     einfach: The wave in Kneser's tetration weakens about as slowly as 1/n, only a tiny bit faster. No new number is hidden in it — but a beautiful
-      formula (see the related entries). A rigorous proof is still missing.
+      formula (see the related entries), which has since also been proven.
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md
 - id: kn.frage.tpid14
@@ -3217,10 +3183,10 @@
     worum: |
       At base 2 the values at heights 1 and 2 are the same for all ranks — but not at height 3.
 - id: kn.satz.binet_kappa
-  quelle_hash: 2c700bf85415
+  quelle_hash: a37b24ff2644
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-15'
   geprueft: nein
   en:
     titel: Binet-type formula for Kneser's asymptotic constant κ (sexp ≈ L + κ e^{Lz} above)
@@ -3235,8 +3201,6 @@
       text: $E(z)=\log\mathrm{sexp}'(z)-Lh(\mathrm{sexp}z)$ is single-valued (kn.satz.ableitung_nullstellenfrei), $E(z+1)-E(z)=\mathrm{sexp}(z)-L$,
         $E\to L$ above; the mean-value argument gives $m'(y)=i(\mathrm{sexp}(iy)-L)$, hence $\int_0^1E=L-i\int_0^\infty(\mathrm{sexp}(it)-L)dt$;
         with $M[h\circ\mathrm{sexp}]=a_0+\tfrac12$ the formula follows modulo $2\pi i$, and $\kappa=e^{La_0}$ is unique. Numerically to $10^{-35}$.
-      luecken:
-      - Uses the same majorant as kn.satz.theta_mittelwerte.
     pruefung:
       f1_folgt_unmittelbar: From the mean-value principle, yes.
       f2_benutzte_voraussetzungen: As for kn.satz.theta_mittelwerte.
@@ -5403,11 +5367,57 @@
       richtigkeit: complete; checked exactly up to n = 12
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K1/K2 and proof B1; b_gewichte.py
-- id: kn.satz.theta_mittelwerte
-  quelle_hash: 9c77c17b114a
+- id: kn.satz.theta_koeffizienten
+  quelle_hash: 06df6d641a24
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-15'
+  geprueft: nein
+  en:
+    titel: 'Formula for the Fourier coefficients of θ: aₙ = [qⁿ] h(c + log(1−q)) + O(1/(n² ln n)), exponent exactly 1'
+    aussage: |
+      The singularity at $q=1$ yields a closed asymptotic formula for the coefficients:
+      $$a_n=[q^n]\,h\Bigl(\frac{c+\log(1-q)}{\ln b}\Bigr)+O\Bigl(\frac1{n^2\ln n}\Bigr),\qquad c=\ln\frac{A}{2\pi\ln b}+\frac{i\pi}2 .$$
+      With the correction $\delta_1=\tfrac12+i\kappa/2\pi$ the remainder becomes $O(1/(n^3\ln n))$. The leading term is $a_n=-h'(v_n)/n+O(1/(n\ln^2n))$ with $v_n=(c-\ln n)/\ln b$, and
+      $$\frac{c_1}{n\ln n\,(\ln\ln n)^4}\le|a_n|\le\frac{C_1}{n\ln n}:$$
+      **the exponent is exactly 1**, and the local exponent decreases like $1+1/\ln n$ (heuristically $|a_n|\asymp1/(n\ln n\ln\ln n\cdots)$).
+      Measured up to $n=4000$: relative remainder $1.9\cdot10^{-5}$ (first order), $4.8\cdot10^{-9}$ (second order); equally good for base 2.
+      So the coefficients of the Kneser wave are determined by the regular Abel function at the complex fixed point and the one number $A=\mathrm{sexp}'(0)$.
+    bereich: Base $b>\eta$; $\theta(z)=\sum a_nq^n$, $q=e^{2\pi iz}$; $h$, $A$, $\kappa$ as in kn.satz.theta_singularitaet
+    einfach: 'The strengths of the oscillations in Kneser''s wave can be predicted almost exactly: one takes the ordinary solution at the complex
+      fixed point and inserts a logarithm. The prediction is correct up to the 4000th oscillation to eight or nine digits, and by now it has also
+      been proved.'
+    formen:
+    - notiz: Coefficient formula
+    - notiz: Exponent exactly 1
+    beweis:
+      text: |
+        $\theta$ is analytic on $|q|\le1$ except at $q=1$ (kn.satz.theta_singularitaet), hence $\Delta$-analytic at $q=1$. From the local form and the bounds
+        for $h'$ (Grunsky/Koebe, as in kn.satz.theta_mittelwerte) it follows that $\theta(q)-H(q)=O(|1-q|/\log(1/|1-q|))$ in the $\Delta$-domain with $H(q)=h((c+\log(1-q))/\ln b)$;
+        the transfer theorem for O-terms (Flajolet–Odlyzko, Flajolet–Sedgewick Theorem VI.3) gives $a_n-[q^n]H=O(1/(n^2\ln n))$. The bounds for $|a_n|$ come from
+        the same bounds for $h'$ via a Hankel contour.
+    pruefung:
+      f1_folgt_unmittelbar: From the singularity with the transfer theorem, yes; for that only a bound is needed, not a complete expansion.
+      f2_benutzte_voraussetzungen: Δ-analyticity at q = 1 (conditional on the branch check in kn.satz.theta_singularitaet), bounds for h′; Flajolet–Sedgewick
+        Theorem VI.3 cited.
+      f3_spezialfall: 'Yes: singularity analysis.'
+      f4_uebertragbar: Same formula checked for base 2; L enters only through h and c.
+      f5_neue_frage: Write out the constants of the O-terms; express the fluctuation of arg aₙ (self-similar in slog(ln ln n)) explicitly via
+        θ′.
+    bewertung:
+      nutzen: 'A genuine identity for Kneser: the correction wave to the regular solution from h and sexp′(0) alone.'
+      richtigkeit: proved, conditional on a branch choice checked in floating point; numerically up to n = 4000 to 5·10⁻⁹
+    versionen:
+    - aenderung: Formerly kn.beob.theta_koeffizienten (observation, remainder O(n⁻²)).
+      grund: Transfer theorem proved, remainder sharpened to O(1/(n² ln n)), 14.10.2026.
+    quellen:
+    - stelle: 'forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 and 3.2; proof: luecken/BERICHT_LUECKEN_ANALYTISCH.md, l2_transfer.py'
+    bedingungen_text: the same branch check as for kn.satz.theta_singularitaet
+- id: kn.satz.theta_mittelwerte
+  quelle_hash: 090807e20be5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-15'
   geprueft: nein
   en:
     titel: Means over one period are multiplicative — real formulas that only Kneser satisfies (e.g. ∫₁ᵉ slog′²/h′ = 1)
@@ -5419,23 +5429,21 @@
       $$\int_1^e\frac{\mathrm{slog}'(w)^2}{h'(w)}\,dw=1,\qquad \int_0^1\ln\mathrm{sexp}'(x)\,dx=-\int_0^1\ln|h'(\mathrm{sexp}\,x)|\,dx=0.49843955952451799390\ldots$$
       and $\theta$ has no negative Fourier modes on the real axis. For every other real tetration these formulas are false:
       $T(x)=\mathrm{sexp}(x+\varepsilon\sin2\pi x)$ violates them already at $\varepsilon=10^{-4}$ by $10^{-5}$–$10^{-4}$. Checked to $10^{-98}$ (base $e$) and $10^{-58}$ (base 2).
-    bereich: |-
-      Base $b>\eta$ (computed for $e$ and 2); $h$, $\sigma$ the regular Abel and Schröder function at the fixed point $L$; $\theta(x)=h(\mathrm{sexp}\,x)-x$
+    bereich: Base $b>\eta$ (computed for $e$ and 2); $h$, $\sigma$ the regular Abel and Schröder function at the fixed point $L$; $\theta(x)=h(\mathrm{sexp}\,x)-x$
       on the continuous branch; $M[G]=\int_0^1G(x)\,dx$
-    einfach: |-
-      For Kneser's tetration there are integral formulas on the number line that no other tetration satisfies — for example: a certain
-      definite integral from 1 to e is exactly 1. The reason is that Kneser's wave θ continues smoothly upward into the complex plane. Such formulas
-      are rare “real fingerprints” of Kneser.
+    einfach: 'For Kneser''s tetration there are integral formulas on the number line that no other tetration satisfies — for example: a certain
+      definite integral from 1 to e is exactly 1. The reason is that Kneser''s wave θ continues smoothly upward into the complex plane. Such formulas
+      are rare “real fingerprints” of Kneser.'
     formen:
     - notiz: simplest form ($=M[1/(1+\theta')]$)
     - notiz: multiplicativity
     beweis:
       text: |
-        $\frac{d}{dy}\int_0^1G(x+iy)\,dx=i[G(1+iy)-G(iy)]=0$; at the top the mean is $G_\infty$, at the bottom the boundary mean. Applications: $G=\Phi(\theta)$ ($\Phi$ entire),
-        $G=e^{kL\theta}$ (formula with $\sigma$), $G=(1+\theta')^s$ for $\mathrm{Re}\,s<1$ and $G=\log(1+\theta')$ (single-valued by kn.satz.ableitung_nullstellenfrei);
-        the substitution $w=\mathrm{sexp}\,x$ gives the slog form. The majorant comes from the local form of $\theta$ at the integers (kn.satz.theta_singularitaet).
-      luecken:
-      - 'The majorant is read off from the local form; a written-out estimate of h and h′ on {log(Az) : 0 < arg z < π} is missing.'
+        $\frac{d}{dy}\int_0^1G(x+iy)\,dx=i[G(1+iy)-G(iy)]=0$; at the top the mean is $G_\infty$, at the bottom the boundary mean. Applications: $G=\Phi(\theta)$ ($\Phi$ entire
+        with $\log M_\Phi(s)=O(e^{\kappa s})$ — all those used here), $G=e^{kL\theta}$ (formula with $\sigma$), $G=(1+\theta')^s$ for $\mathrm{Re}\,s<1$ and
+        $G=\log(1+\theta')$ (single-valued by kn.satz.ableitung_nullstellenfrei); the substitution $w=\mathrm{sexp}\,x$ gives the slog form.
+        **Majorant** (limit $y\to0$ by dominated convergence): $\sigma$ is univalent on the whole upper half-plane, because the principal-branch logarithm maps it injectively into itself; Grunsky and Koebe bounds for the third iterated logarithm (which lies at least $\pi/2$ above the axis) give on $|z|<0.1$
+        (base $e$) $|\theta|\le31.7+2.91\ln\ln\ln(1/|z|)$ and $c/(|z|\ln(1/|z|)(\ln\ln)^4)\le|1+\theta'|\le C/(|z|\ln(1/|z|))$.
     pruefung:
       f1_folgt_unmittelbar: The principle yes (Hardy space, classical); the application to θ and the real formulas no.
       f2_benutzte_voraussetzungen: θ holomorphic and periodic in the upper half-plane with a limit (Kneser's construction, Paulsen–Cowgill); sexp′
@@ -5446,14 +5454,15 @@
         (br.satz.reelle_kennzeichnung).
     bewertung:
       nutzen: First real integral formulas that distinguish Kneser from all other tetrations.
-      richtigkeit: Core proved, majorant sketched; numerically to 10⁻⁹⁸
+      richtigkeit: complete (majorant via Grunsky/Koebe); numerically to 10⁻⁹⁸
     quellen:
-    - stelle: forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 and B-Z; s2_nullmoden.py, s2b_kontrolle.py
+    - stelle: 'forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, Z0–Z5 and B-Z; s2_nullmoden.py, s2b_kontrolle.py; majorant: luecken/BERICHT_LUECKEN_ANALYTISCH.md,
+        l1_schranken.py'
 - id: kn.satz.theta_singularitaet
-  quelle_hash: b2c1c5b1c179
+  quelle_hash: f6737a0ffc33
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-15'
   geprueft: nein
   en:
     titel: θ is singular exactly at the integers — with a “superlogarithm singularity”
@@ -5475,10 +5484,11 @@
         (i) From $\lambda\Psi'(\lambda u)=\ln b\cdot b^{\Psi(u)}\Psi'(u)$: a zero $u_0$ of $\Psi'$ would give zeros $u_0\lambda^{-k}$ accumulating at 0,
         contradicting $\Psi'(0)=1$; $\Psi(\lambda u)=b^{\Psi(u)}\neq0$. (ii) If $z+\theta(z)$ were bounded as $z\to-1$, there would be an accumulation point $s^*$ with
         $F(s^*)=0$. (iii) $\theta(z)=h(\mathrm{sexp}\,z)-z$, $h(w)=1+h(\log_bw)$ applied twice and Taylor expansion of $\log\log\mathrm{sexp}$ at 0;
-        confirmed numerically: the remainder decays like $|z|^2$ down to $|z|=10^{-12}$.
+        confirmed numerically: the remainder decays like $|z|^2$ down to $|z|=10^{-12}$. Holomorphy of $h$ on the required domain without citation: the Schröder function $\sigma$ is
+        univalent on the whole upper half-plane, because the principal-branch logarithm maps it injectively into itself (Lemma U, luecken/BERICHT_LUECKEN_ANALYTISCH.md).
       luecken:
-      - That the continuation of h is obstructed only over the orbit of 0 (singular values of Poincaré functions) is cited, not proved here.
-      - 'Analyticity on ℝ∖ℤ: the choice of the principal branch has only been checked numerically (continuous course in all samplings).'
+      - 'Branch choice: it is proved that the branches agree everywhere as soon as they agree at one point; at z₀ = 0.05i the distance is 4·10⁻⁴⁸
+        (needed < 0.12), but this was computed only in floating point, not with intervals, and only for base e.'
     pruefung:
       f1_folgt_unmittelbar: (i), (ii) yes, once one sees that F omits the value 0; (iii) is a short computation.
       f2_benutzte_voraussetzungen: Kneser representation sexp = F(z+θ(z)); Poincaré function entire.
@@ -5491,6 +5501,8 @@
       richtigkeit: Core proved, local form numerically to 10⁻²⁷
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, section 2 (S1–S6) and 3.1; p5_lokal.py
+    bedingungen_text: Branch choice at one point (z₀ = 0.05i, distance 4·10⁻⁴⁸ where < 0.12 is needed) only checked in floating point, not with
+      intervals; base e only
 - id: kn.satz.tk_kriterien
   quelle_hash: 6c3823c4f35a
   theorie_hash: 4c66507fee37

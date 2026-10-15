@@ -6,7 +6,7 @@ Hauptideen und Unterideen mit Füllstand (Status der Aussagen), Herkunft (Litera
 
 Wie man T(x) zwischen den ganzen Höhen festlegt — und welche Wahl die natürliche ist.
 
-Stand: bewiesen 48, bedingt 10, numerisch 19, Vermutung 14, offen 12, verworfen 3 · Literatur 50 / Forum 20 / eigen 36
+Stand: bewiesen 49, bedingt 9, numerisch 19, Vermutung 14, offen 12, verworfen 3 · Literatur 50 / Forum 20 / eigen 36
 
 - **Halbe Exponentialfunktion** (26): bewiesen 8, bedingt 6, numerisch 6, Vermutung 4, verworfen 2 · Literatur 7 / Forum 1 / eigen 18 · offen: kn.satz.halbexp_beschraenkt, kn.satz.polynom_halbexp_hauptsatz, kn.satz.polynom_halbexp_reduktion, kn.satz.polynom_hauptsatz_kr0, kn.verm.polynom_halbexp, kn.verm.polynom_halbexp_eckmoden, kn.verm.polynom_halbexp_kern, kn.verm.polynom_halbexp_schranke
 - **Andere Konstruktionen** (23): bewiesen 10, bedingt 1, numerisch 3, Vermutung 5, offen 4 · Literatur 10 / Forum 11 / eigen 2 · offen: kn.frage.abel_bruchsumme, kn.frage.tpid14, kn.frage.tpid16, kn.frage.tpid17, kn.verm.carleman_eigenwerte, kn.verm.carleman_kneser, kn.verm.szekeres_wachstum, kn.verm.tpid3 …
@@ -15,16 +15,16 @@ Stand: bewiesen 48, bedingt 10, numerisch 19, Vermutung 14, offen 12, verworfen 
 - **Kneser über η** (9): bewiesen 5, numerisch 3, verworfen 1 · Literatur 7 / Forum 0 / eigen 2
 - **Eindeutigkeit** (7): bewiesen 4, numerisch 1, Vermutung 1, offen 1 · Literatur 6 / Forum 0 / eigen 1 · offen: kn.frage.beta_methode, kn.verm.tk_c2
 - **Tetration als Störung** (5): bewiesen 3, numerisch 1, offen 1 · Literatur 0 / Forum 2 / eigen 3 · offen: kn.frage.stoerungsreihe
-- **Reelle Kennzeichnung?** (4): bewiesen 1, bedingt 1, offen 2 · Literatur 1 / Forum 0 / eigen 3 · offen: br.frage.bohr_mollerup, br.frage.momentenfamilie
+- **Reelle Kennzeichnung?** (4): bewiesen 2, offen 2 · Literatur 1 / Forum 0 / eigen 3 · offen: br.frage.bohr_mollerup, br.frage.momentenfamilie
 - **Selbst ausrechnen** (1): numerisch 1 · Literatur 0 / Forum 1 / eigen 0
 
 ## Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ (71 Aussagen)
 
 Was jede Lösung der Grundgleichung erfüllt, ganz gleich, wie man sie zwischen den ganzen Höhen festlegt.
 
-Stand: bewiesen 58, numerisch 8, Vermutung 4, offen 1 · Literatur 20 / Forum 19 / eigen 32
+Stand: bewiesen 58, bedingt 1, numerisch 7, Vermutung 4, offen 1 · Literatur 20 / Forum 19 / eigen 32
 
-- **Werte, Ableitungen, Gestalt** (29): bewiesen 20, numerisch 6, Vermutung 3 · Literatur 4 / Forum 10 / eigen 15 · offen: gr.verm.ein_wendepunkt, gr.verm.tpid7, gr.verm.ungerade_ableitungen
+- **Werte, Ableitungen, Gestalt** (29): bewiesen 20, bedingt 1, numerisch 5, Vermutung 3 · Literatur 4 / Forum 10 / eigen 15 · offen: gr.satz.ein_wendepunkt_e2, gr.verm.ein_wendepunkt, gr.verm.tpid7, gr.verm.ungerade_ableitungen
 - **Integrale** (13): bewiesen 9, numerisch 2, Vermutung 1, offen 1 · Literatur 2 / Forum 1 / eigen 10 · offen: gr.frage.integral_form, gr.verm.turmintegral_rate
 - **Begriffe** (8): bewiesen 8 · Literatur 6 / Forum 0 / eigen 2
 - **Freiheit der Lösungen** (6): bewiesen 6 · Literatur 3 / Forum 1 / eigen 2
@@ -72,10 +72,10 @@ Stand: bewiesen 30, bedingt 1, numerisch 6, Vermutung 1, offen 3, verworfen 2 ·
 
 Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.
 
-Stand: bewiesen 22, bedingt 6, numerisch 4, Vermutung 3, offen 3 · Literatur 19 / Forum 1 / eigen 18
+Stand: bewiesen 24, bedingt 5, numerisch 3, Vermutung 3, offen 3 · Literatur 19 / Forum 1 / eigen 18
 
 - **Transzendenz** (22): bewiesen 15, bedingt 3, Vermutung 2, offen 2 · Literatur 15 / Forum 1 / eigen 6 · offen: ar.verm.schanuel, ar.frage.e_hoch_e, ar.frage.ganze_tuerme, ar.satz.schanuel_orbit, ar.verm.gelfond_turm
-- **Formeln und Identitäten** (9): bewiesen 2, bedingt 3, numerisch 3, offen 1 · Literatur 0 / Forum 0 / eigen 9 · offen: kn.frage.theta_exponent
+- **Formeln und Identitäten** (9): bewiesen 4, bedingt 2, numerisch 2, offen 1 · Literatur 0 / Forum 0 / eigen 9 · offen: kn.satz.theta_singularitaet, kn.frage.theta_exponent, kn.satz.theta_koeffizienten
 - **Kongruenzen** (4): bewiesen 4 · Literatur 4 / Forum 0 / eigen 0
 - **Kneser–Schanuel** (3): bewiesen 1, numerisch 1, Vermutung 1 · Literatur 0 / Forum 0 / eigen 3 · offen: ar.verm.ks
 

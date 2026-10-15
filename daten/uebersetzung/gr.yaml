@@ -1,35 +1,5 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
-- id: gr.beob.ein_wendepunkt_e
-  quelle_hash: d8b7f3e5da2b
-  herkunft:
-    modell: sonnet
-    datum: '2026-10-14'
-  geprueft: nein
-  en:
-    titel: 'Base e: Kneser''s tetration has exactly one inflection point (computer-assisted, zero count in the complex plane)'
-    aussage: |
-      The argument principle counts the zeros of $\mathrm{sexp}''$ (by kn.satz.ableitung_nullstellenfrei the zeros of $\varphi=\mathrm{sexp}''/\mathrm{sexp}'$)
-      in strips $[x_0,x_0+1]\times[-4,4]$: in the whole region $[-1.8,1.4]\times[-4,4]$ there is exactly one, the real inflection point $x_w=-0.5218\ldots$;
-      above $|\mathrm{Im}z|=4$ we have $|\varphi-L|\ll|L|$. With two elementary steps ($\mathrm{sexp}''>0$ on $[-0.4,\infty)$ by gr.kor.konvex_nach_oben;
-      $\mathrm{sexp}''(x)<0$ on $(-2,-1.6)$ from $\mathrm{sexp}''(x+1)<0$) it follows: **exactly one inflection point on $(-2,\infty)$** — for $b=e$ the conjecture
-      gr.verm.ein_wendepunkt, up to a certification with interval arithmetic.
-    bereich: Kneser $\mathrm{sexp}_e$ on $(-2,\infty)$
-    einfach: 'Whether the Kneser curve changes its curvature exactly once was open. For base e, a computation in the complex plane counts all
-      places where the curvature is zero: there is exactly one. It is fully rigorous only once the computation is repeated with guaranteed rounding
-      errors.'
-    pruefung:
-      f1_folgt_unmittelbar: No (winding numbers computed).
-      f2_benutzte_voraussetzungen: Winding numbers in floating point (dps 30), integer to 10⁻³⁰, step size ≤ 0.26 rad; Kneser values from the
-        engine and the θ series.
-      f3_spezialfall: 'no'
-      f4_uebertragbar: To base 2 (inflection point at −0.0302) and as a family in b.
-      f5_neue_frage: Certification with interval arithmetic (python-flint arb).
-    bewertung:
-      nutzen: Resolves the inflection-point conjecture for b = e up to the certification.
-      richtigkeit: computer-assisted, not certified
-    quellen:
-    - stelle: forschung/identitaeten_2026_10_14/etappe3/BERICHT_ETAPPE3.md, W; s4_zaehlung.py
 - id: gr.beob.integral_halb
   quelle_hash: b5f7278e6b2e
   theorie_hash: 2f3851edff61
@@ -919,6 +889,50 @@
     worum: |
       How does a tetration change when the base is shifted a little? The answer follows a step rule — almost the same as for the ordinary slope,
       only with an additional term.
+- id: gr.satz.ein_wendepunkt_e2
+  quelle_hash: c335e9514878
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-15'
+  geprueft: nein
+  en:
+    titel: 'Bases e and 2: Kneser''s tetration has exactly one inflection point (interval arithmetic, under an assumption on the engine values)'
+    aussage: |
+      Kneser's tetration has exactly one inflection point on $(-2,\infty)$, and $\mathrm{sexp}''$ has a simple zero there:
+      $$b=e:\ x_w=-0.521764792623322155340028093\pm4\cdot10^{-28},\qquad b=2:\ x_w=-0.030244542753639263604287235\pm3\cdot10^{-28}.$$
+      Certified with ball arithmetic (arb/acb): from the node values with error radius $10^{-30}$ (resp. $10^{-5}$ for the signs) the Taylor series with
+      aliasing and remainder bounds, the signs of $\mathrm{sexp}',\mathrm{sexp}'',\mathrm{sexp}'''$ on $[-1.6,0.6]$ (base $e$) resp. $[-1.1,1.0]$ (base 2), and the
+      zero by interval Newton. Outside: to the right gr.kor.konvex_nach_oben, to the left $T''(x)=T''(x+1)/(\lambda T(x+1))-\lambda T'(x)^2<0$.
+      This proves gr.verm.ein_wendepunkt for $b=e$ and $b=2$ — under assumption H. What is not certified is that the engine values belong to Kneser and not to
+      another tetration; it is supported numerically (independent precision levels agree to $10^{-110}$, the tower equation holds to $5\cdot10^{-90}$, the θ series with
+      modes $n\ge0$ only matches the values to $4\cdot10^{-59}$). An earlier complex count (all zeros of $\mathrm{sexp}''$ in $[-1.8,1.4]\times[-4,4]$) remains only computer-assisted.
+    bereich: Kneser $\mathrm{sexp}_b$ on $(-2,\infty)$, $b=e$ and $b=2$
+    einfach: The Kneser curve changes its curvature exactly once — at −0.5218 for base e and at −0.0302 for base 2. This has now been recomputed
+      with guaranteed rounding errors. The only assumption is that the values from the computing engine are correct to five places; in fact they
+      are correct to many more.
+    beweis:
+      text: Ball arithmetic starting from the node values (w_reell.py, about 2 s each); with error radius 10⁻³ the check fails, so it can fail.
+        Evidence for H in w_pruef.py.
+    pruefung:
+      f1_folgt_unmittelbar: No (certified computation).
+      f2_benutzte_voraussetzungen: 'Assumption H; gr.kor.konvex_nach_oben; tower equation. Not needed: kn.satz.ableitung_nullstellenfrei.'
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To any single base above η with the same scripts; for a whole family in b, bounds in b would be needed.
+      f5_neue_frage: Certify assumption H itself (rigorous θ bound), and the statement for all b > η.
+    bewertung:
+      nutzen: Proves the inflection-point conjecture for two bases, up to one clearly named numerical assumption.
+      richtigkeit: certified under assumption H
+    voraussetzungen:
+    - text: 'Assumption H: the engine values at the 5×256 circle nodes |z − c| = 0.2 (c = −0.4 … 0.4) are accurate to 10⁻⁵, and |sexp| ≤ 1000
+        for |z − c| ≤ 0.3.'
+    versionen:
+    - aenderung: Formerly gr.beob.ein_wendepunkt_e (computer-assisted, base e only, complex count).
+      grund: Certified with interval arithmetic and extended to base 2, 14.10.2026.
+    quellen:
+    - stelle: forschung/identitaeten_2026_10_14/luecken/wendepunkt/BERICHT_WENDEPUNKT.md; w_reell.py, w_pruef.py; previously etappe3/BERICHT_ETAPPE3.md,
+        W
+    bedingungen_text: 'Assumption H: engine values at the circle nodes accurate to 10⁻⁵ and |sexp| ≤ 1000 near the axis; that the values belong
+      to Kneser is only supported numerically'
 - id: gr.satz.exponentialitaet
   quelle_hash: 320d13ad122c
   theorie_hash: d6116c3d1068
