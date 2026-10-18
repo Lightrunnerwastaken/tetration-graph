@@ -1,0 +1,119 @@
+# Theorie-Blöcke: Runde 18.10.2026, Agent 06 — Asymptotik und Singularitäten von Knesers sexp (forschung/runde_2026_10_18/06_asymptotik/BERICHT.md;
+# Taylor-Aussagen auch 05_kombinatorik/BERICHT.md).
+
+kn.satz.minus2_hebbar:
+  worum: |
+    Wie weit reicht der Logarithmus bei $-2$? Zieht man ihn ab, wird Knesers Tetration glatter, als der Schnitt vermuten lässt.
+  genau: |
+    $\mathrm{sexp}(z)-\log(z+2)$ ist holomorph auf $\mathbb C\setminus(-\infty,-3]$; die einzige Nullstelle von $\mathrm{sexp}$ ist $-1$.
+  warum: |
+    Auf $(-3,-2)$ ist $\mathrm{sexp}(x)=\log\mathrm{sexp}(x+1)$ mit negativem Argument; der Sprung über den Schnitt ist darum $2\pi i$, genau wie bei $\log(z+2)$, und hebt sich weg.
+  beispiel: |
+    Bei $-2$ selbst ist der Wert der Differenz $\log\mathrm{sexp}'(-1)=0.08780\ldots$
+  bilder: []
+  einordnung: |
+    Verschärft [[kn.satz.singulaer_minus2]]; Folgerungen [[kn.kor.minus2_entwicklung]], [[kn.satz.taylor_darboux]], [[kn.satz.nebenblatt_zweigpunkte]].
+
+kn.kor.minus2_entwicklung:
+  worum: |
+    Die Potenzreihe von Knesers Tetration rund um $-2$, nach Abzug des Logarithmus.
+  genau: |
+    $\mathrm{sexp}(-2+\varepsilon)=\log\varepsilon+\sum g_n\varepsilon^n$, Radius 1, $(-1)^ng_n\,n\log n\to1$.
+  warum: |
+    Der Radius reicht bis zur nächsten Singularität bei $-3$; dort sitzt ein $\log\log$, und dessen Koeffizienten fallen wie $1/(n\log n)$.
+  beispiel: |
+    $g_0=0.08780$, $g_1=-0.29722$, $g_2=0.27626$.
+  bilder: []
+  einordnung: |
+    Aus [[kn.satz.minus2_hebbar]].
+
+kn.satz.taylor_darboux:
+  worum: |
+    Wie sehen die Taylor-Koeffizienten von Knesers Tetration um 0 für grosse $n$ aus, und sind sie alle positiv?
+  genau: |
+    $c_n=(-1)^{n+1}/(n2^n)+O(\rho^{-n})$ für jedes $\rho<3$; positiv bis $n=21$, ab $c_{22}<0$ abwechselnd.
+  warum: |
+    Der Logarithmus bei $-2$ ist die nächste Singularität und gibt den Leitterm $[z^n]\log(z+2)$. Der Rest ist bis $|z|<3$ holomorph und deshalb exponentiell kleiner.
+  beispiel: |
+    $c_{22}=-1.549\cdot10^{-9}$ gegen den Leitterm $-1/(22\cdot2^{22})=-1.084\cdot10^{-8}$.
+  bilder: []
+  einordnung: |
+    Beantwortet die Frage aus [[gr.beob.kneser_ableitung]]; Grundlage [[kn.satz.minus2_hebbar]]; Feinstruktur des Rests: [[kn.beob.taylor_drei_stufen]].
+
+kn.beob.taylor_drei_stufen:
+  worum: |
+    Was bestimmt den kleinen Rest $d_n$ der Taylor-Koeffizienten?
+  genau: |
+    Bis $n\approx505$ ein Sattelpunkt auf der positiven Achse ($d_n>0$), ab $n=506$ die Singularität bei $-3$ ($d_n\approx(-1/3)^n/(n\log n)$).
+  warum: |
+    Die Cauchy-Abschätzung enthält das Maximum der Funktion auf dem Kreis; $\mathrm{sexp}$ ist bei $z\approx3$ millionenfach grösser als bei $-3$, darum gewinnt die Singularität erst spät.
+  beispiel: |
+    Hayman-Näherung trifft $d_n$ auf 1.0042 bei $n=400$.
+  bilder: []
+  einordnung: |
+    Rest aus [[kn.satz.taylor_darboux]]; singulärer Teil wie in [[kn.kor.minus2_entwicklung]].
+
+kn.satz.wertevorrat:
+  worum: |
+    Welche Werte nimmt Knesers Tetration im Komplexen an?
+  genau: |
+    Jeden Wert $c\ne0$ unendlich oft, die 0 genau einmal (bei $-1$).
+  warum: |
+    Wiederholtes Logarithmieren führt jedes $c$ zum Fixpunkt $L$ (Denjoy–Wolff); nahe $L$ ist die Tetration oben fast eine Exponentialfunktion und trifft jeden Wert in einer ganzen Familie.
+  beispiel: |
+    $c=2\pi i$: Urbilder im Abstand $\gamma=2\pi i/L=4.447+1.058i$.
+  bilder: []
+  einordnung: |
+    Benutzt [[kn.konstr.kneser]]; erzeugt [[kn.satz.nebenblatt_zweigpunkte]].
+
+kn.satz.nebenblatt_zweigpunkte:
+  worum: |
+    Was passiert, wenn man Knesers Tetration über ihren Schnitt hinaus fortsetzt?
+  genau: |
+    Auf Nebenblättern gibt es unendlich viele logarithmische Verzweigungspunkte, über $w-1$ für jedes $w$ mit $\mathrm{sexp}(w)\in2\pi i\mathbb Z\setminus\{0\}$.
+  warum: |
+    Über den Schnitt wird $\mathrm{sexp}(z+1)$ zu $\mathrm{sexp}(z+1)-2\pi i$; wo das null wird, bekommt $\log$ eine neue Singularität.
+  beispiel: |
+    $1.00431248+0.70941354i$ (dort ist $\mathrm{sexp}(w)=2\pi i$ mit $w$ eins weiter rechts).
+  bilder: []
+  einordnung: |
+    Aus [[kn.satz.minus2_hebbar]] und [[kn.satz.wertevorrat]].
+
+kn.kor.doppelreihe_oben:
+  worum: |
+    Knesers Tetration weit oben in der komplexen Ebene als Doppelreihe.
+  genau: |
+    $\mathrm{sexp}=L+\sum p_k\kappa^ke_{k,m}e^{(kL+2\pi im)z}$, reine Glieder $p_k\kappa^k$.
+  warum: |
+    Einsetzen der Fourier-Reihe von $\theta$ in $\Psi(\kappa e^{L(z+\theta-a_0)})$ und Ausmultiplizieren; absolut konvergent, weil $\Psi$ ganz ist.
+  beispiel: |
+    Bei $y=4$ fehlt ohne Fourier-Glied $2\cdot10^{-14}$, mit ihm $10^{-25}$.
+  bilder: []
+  einordnung: |
+    Aus [[kn.konstr.kneser]]; $\kappa$: [[kn.satz.binet_kappa]]; Umkehrung: [[kn.kor.slog_bei_L]].
+
+kn.kor.slog_bei_L:
+  worum: |
+    Der Superlogarithmus nahe dem Fixpunkt $L$.
+  genau: |
+    $\mathrm{slog}(w)=\ell/L-\sum a_ne^{2\pi in\,\mathrm{slog}\,w}$, $\ell=\log(\sigma(w)/\kappa)$.
+  warum: |
+    Umkehrung der Darstellung oben: $h(\mathrm{sexp}\,z)=z+\theta(z)$.
+  beispiel: |
+    Leitform $\ell/L-a_1(\sigma/\kappa)^\gamma$ trifft auf $5\cdot10^{-19}$.
+  bilder: []
+  einordnung: |
+    Umkehrung von [[kn.kor.doppelreihe_oben]]; Gegenstück [[kn.satz.halbexp_singularitaet_L]].
+
+kn.kor.halbexp_band:
+  worum: |
+    Wie gut beschreibt der einfache iterierte Logarithmus Knesers halbe e-Funktion?
+  genau: |
+    $|\mathrm{slog}_{\mathrm{lin}}(f(x))-\mathrm{slog}_{\mathrm{lin}}(x)-\tfrac12|\le0.01704$.
+  warum: |
+    $\mathrm{slog}$ macht genau einen halben Schritt; $\mathrm{slog}_{\mathrm{lin}}$ weicht davon an zwei Stellen höchstens um die Wellenbreite ab.
+  beispiel: |
+    Stichprobe: grösster Fehler 0.016521.
+  bilder: []
+  einordnung: |
+    Aus [[gr.satz.slog_logstern_welle]]; halbe e-Funktion: [[kn.satz.halbe_exp]], Wachstum [[kn.satz.halbe_exp_wachstum]].

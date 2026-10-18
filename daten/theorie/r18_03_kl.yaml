@@ -1,0 +1,75 @@
+# Theorie-Blöcke zur Runde 18.10.2026, Bericht 03 (Basis-Ebene bei η).
+
+kl.beob.kneser_fortsetzung_regulaer:
+  worum: |
+    Unter $\eta=e^{1/e}$ baut man die Tetration am anziehenden reellen Fixpunkt (regulär), darüber nach Kneser an den komplexen Fixpunkten. Passen die beiden Bauweisen als Funktion der Basis zusammen?
+  genau: |
+    Die Taylor-Reihe von $b\mapsto T^{\rm reg}_b(x)$ um eine Basis knapp unter $\eta$, über $\eta$ hinaus ausgewertet, trifft Knesers Werte auf bis zu 33 Stellen.
+  warum: |
+    Gemessen, nicht bewiesen. Eine Deutung: Kneser für $b>\eta$ ist die Douady–Lavaurs-Koordinate der parabolischen Implosion und hängt glatt von $b$ ab.
+  beispiel: |
+    $x=\frac12$, Reihe um $\eta$ mit 20 Gliedern: $T^{\rm K}_{\eta+0.01}(\frac12)-H(\eta+0.01)\approx10^{-33}$.
+  bilder: []
+  einordnung: |
+    Verschärft [[kl.beob.stetig_eta]]; Teilantwort auf [[kl.frage.eta_analytisch]]; Zusammenfassung in [[kl.verm.eta_glatt_nicht_analytisch]].
+
+kl.beob.eta_taylor:
+  worum: |
+    Die Koeffizienten der Reihe von $T_b(\frac12)$ in Potenzen von $b-\eta$.
+  genau: |
+    $a_0=T_\eta(\frac12)=1.25715\ldots$, $a_1=0.43858\ldots$, $a_2=-0.18434\ldots$; Vorzeichenwechsel, Radius $\eta-1$, $a_n\sim C(-1)^nn^{-\gamma}(\eta-1)^{-n}$ mit $\gamma\approx2.4$.
+  warum: |
+    Die nächste Singularität ist $b=1$, wo $T_b(\frac12)\approx1+\varepsilon-\varepsilon^{3/2}$ mit $\varepsilon=b-1$; ein $\varepsilon^{3/2}$-Glied erzeugt Koeffizienten wie $n^{-5/2}$.
+  beispiel: |
+    $a_{15}=28.258895\ldots\approx C\,15^{-2.4}(\eta-1)^{-15}$.
+  bilder: []
+  einordnung: |
+    Prüfwerte für [[kl.satz.c1_noerlund]] ($a_1=c_1(\frac12)$) und [[kl.beob.kneser_fortsetzung_regulaer]].
+
+kl.beob.regulaer_flach_singulaer:
+  worum: |
+    Wo steckt die Nicht-Analytizität bei $\eta$? In der Koordinate des Multiplikators $\lambda$ ist $\eta$ der Randpunkt $\lambda=1$ des Einheitskreises.
+  genau: |
+    Die Reihe der regulären Tetration um $\lambda_0=0.8$ hat neben dem Hauptteil einen Anteil der Grösse $10^{-36}$ mit Radius genau $0.2=1-\lambda_0$: eine flache Singularität bei $\lambda=1$.
+  warum: |
+    Im punktierten Einheitskreis ist die reguläre Tetration analytisch in $\lambda$ (Shell–Thron); ein Radius $0.2$ kann daher nur vom Kreispunkt nahe 1 kommen. Die parabolischen Randpunkte $e^{2\pi ip/q}$ liegen dicht und werden zu $\lambda=1$ hin immer schwächer.
+  beispiel: |
+    Randstärke bei $\lambda=e^{i\pi/2}$ etwa $10^{-3}$, bei $e^{i\pi/64}$ etwa $10^{-30}$.
+  bilder: []
+  einordnung: |
+    Grundlage von [[kl.verm.eta_glatt_nicht_analytisch]]; parabolische Randpunkte: [[fp.satz.parabolisch_rand]].
+
+kl.verm.eta_glatt_nicht_analytisch:
+  worum: |
+    Ist die Tetration in der Basis bei $\eta$ analytisch? Diese Vermutung fasst die Messungen zusammen.
+  genau: |
+    $T^{\rm K}=H$ über $\eta$, $T^{\rm reg}=H+E^-$ unter $\eta$, mit konvergenter Reihe $H$ und einem bei $\eta$ unendlich flachen, singulären $E^-$. Also $C^\infty$, aber nicht analytisch.
+  warum: |
+    Gestützt durch die Fortsetzung auf 33 Stellen, die gemeinsame Reihe und den gemessenen flachen Anteil. Ein Kandidat für die Grösse ist $\exp(-2\pi N)$ mit der Durchgangszeit $N$ durch den Engpass.
+  bilder: []
+  einordnung: |
+    Antwortet auf [[kl.frage.eta_analytisch]]; offene Reste: [[kl.frage.eta_flacher_rest]]; Engpass: [[br.frage.implosion]].
+
+kl.satz.c1_noerlund:
+  worum: |
+    Wie ändert sich die Tetration zur Basis $\eta$, wenn man die Basis ein wenig verschiebt?
+  genau: |
+    $c_1=T_\eta'\,G$ mit $G(x+1)-G(x)=\frac e\eta T_\eta/T_\eta'$, $G(0)=0$, $G$ die Nörlund-Hauptlösung.
+  warum: |
+    Die Summengleichung ist [[gr.satz.basis_gleichung]] bei $b=\eta$. Offen ist nur, warum gerade die Hauptlösung (ohne periodischen Zusatz) die richtige ist.
+  beispiel: |
+    $c_1(\frac12)=0.438581800170784$ aus der Formel gegen $0.4385818001708944$ aus der Taylor-Reihe.
+  bilder: []
+  einordnung: |
+    Spezialfall von [[gr.satz.basis_gleichung]]; Prüfwerte aus [[kl.beob.eta_taylor]]; Koordinate bei $\eta$: [[kl.satz.eta_koordinate]].
+
+kl.frage.eta_flacher_rest:
+  worum: |
+    Zwei Restfragen zur Basis $\eta$: Ist Knesers Seite exakt analytisch, und welche Form hat der flache Rest $E^-$ der regulären Seite?
+  genau: |
+    (1) $T^{\rm K}=H$ exakt? (2) $E^-\approx\exp(-A/\sqrt{\eta-b})$ mit welchem $A$?
+  warum: |
+    Die Messung reicht bis $10^{-33}$; ein noch flacherer Rest auf der Kneser-Seite ist nicht ausgeschlossen. Die Konstante $A$ sollte aus den Écalle–Voronin-Invarianten von $e^u-1$ kommen.
+  bilder: []
+  einordnung: |
+    Folgt aus [[kl.verm.eta_glatt_nicht_analytisch]]; Werkzeug: [[br.satz.shishikura]].

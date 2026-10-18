@@ -1,0 +1,247 @@
+gebiet: kn
+# Forschungsrunde 18.10.2026, Bericht 07 „Ränge“: Rangleiter im beschränkten Bereich, Grenzprofil, Rangverschiebung, Konvexitätsweg zu TPID 10.
+# Rechnungen: forschung/runde_2026_10_18/07_raenge/. H_3 = b^x, H_4 = Tetration, H_{r+1}(x+1) = H_r(H_{r+1}(x)), H_{r+1}(0) = 1.
+aussagen:
+
+- id: kn.satz.koenigs_leiter_monoton
+  titel: 'Beschränkte Rangleiter: die Koenigs-Stufen steigen gegen ihren Fixpunkt, und die Fixpunkte fallen streng gegen eine Grenze ≥ b'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [hyperoperation, schroeder]
+  bereich: '$1<b<e^{1/e}$ ab $r=3$, und $b<2$ ab dem Rang, an dem die Leiter beschränkt wird; Stufen durch Koenigs-Konstruktion am kleinsten Fixpunkt $p_r\ge1$'
+  voraussetzungen:
+    - {text: '$H_r(b,\cdot)$ stetig, streng wachsend, $H_r(b,1)=b>1$, mit einem Fixpunkt $\ge1$', benutzt: ja}
+    - {text: 'der kleinste Fixpunkt $p_r\ge1$ ist nicht entartet: $0<\lambda_r=\partial_xH_r(b,p_r)<1$', benutzt: ja}
+  aussage: |
+    Sei $\sigma_r$ die Schröder-Funktion von $f=H_r(b,\cdot)$ an $p_r$ und $H_{r+1}(x)=\sigma_r^{-1}(\lambda_r^x\sigma_r(1))$ (Koenigs-Stufe).
+    Dann ist $H_{r+1}$ reell-analytisch, streng wachsend, $H_{r+1}(0)=1$, $H_{r+1}(x+1)=f(H_{r+1}(x))$ und $H_{r+1}\uparrow p_r$. Ausserdem gilt
+    $$b<p_{r+1}<p_r,$$
+    und $q_r:=H_{r+1}(b,2)=H_r(b,b)$ ist streng fallend in $r$. Also existiert $p_\infty=\lim p_r\ge b$. (Für $b<e^{1/e}$ ist $H_4$ dabei die Kneser- bzw. reguläre Tetration.)
+  einfach: >-
+    Für kleine Basen bleiben die höheren Rechenarten beschränkt. Dann gibt es für jede neue Stufe eine natürliche Wahl, und man kann beweisen:
+    Die Obergrenzen der Stufen werden mit jedem Rang kleiner, bleiben aber über der Basis b.
+  beweis:
+    art: vollstaendig
+    text: |
+      $H_{r+1}<p_r$ gibt $p_{r+1}<p_r$. Die Bahn $1,b,H_{r+1}(b),\dots$ von $H_{r+1}$ liegt ab dem zweiten Glied über $b$ (wegen $H_{r+1}(b)>H_{r+1}(1)=b$) und konvergiert gegen $p_{r+1}$, also $p_{r+1}>b$.
+      Monotonie: $q_{r+1}=H_{r+1}(b)=H_r(H_{r+1}(b-1))$ und $H_{r+1}(b-1)<b$ wegen $b-1<1$, also $q_{r+1}<H_r(b)=q_r$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/07_raenge/BERICHT.md, B1, §1; koenigs_leiter.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Koenigs (it.satz.koenigs) plus Monotonie der Bahnen; neu ist die Anwendung auf die ganze Leiter.'
+    f2_benutzte_voraussetzungen: 'Stetigkeit, strenge Monotonie, Nichtentartung von $p_r$ für jede Stufe; keine Konvexität.'
+    f3_spezialfall: 'Ergänzt kn.satz.schwellen_monoton (Beschränkt ⇔ Fixpunkt) um die Monotonie der Fixpunkte.'
+    f4_uebertragbar: 'Auf jede Kette, deren Stufen streng wachsend sind und deren kleinster Fixpunkt anziehend ist, z. B. mit Kneser-Saat bei $b=1.5$.'
+    f5_neue_frage: 'Ist $p_\infty=b$ (kn.verm.grenzprofil_rampe)?'
+  bewertung: {richtigkeit: 'vollständig unter der Nichtentartung; numerisch bis r = 16 bei b = √2, 1.2, 1.5 bestätigt', neuheit: neu_ungeprueft, nutzen: 'Sicherer Rahmen für alle Aussagen über die beschränkte Leiter.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: it.satz.koenigs}
+    - {typ: verwandt, ziel: kn.satz.schwellen_monoton}
+    - {typ: motiviert, ziel: kn.verm.grenzprofil_rampe}
+
+- id: kn.verm.grenzprofil_rampe
+  titel: 'Grenzprofil der Rangleiter: H_r(b, x) → min(x+1, b) — eine Rampe mit Deckel'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation]
+  bereich: '$1<b<2$, beschränkte Koenigs-Leiter (kn.satz.koenigs_leiter_monoton), $x\ge0$'
+  aussage: |
+    $$\lim_{r\to\infty}H_r(b,x)=\min(x+1,\,b)\qquad(x\ge0),$$
+    insbesondere $p_r\to b$. Belege: $b=\sqrt2,\ 1.2,\ 1.5$ bis $r=16$, monotone Annäherung; die Plateau-Formel
+    $H_{r+1}(x)-1\approx-\ln(\lambda_{r-1}^{b-1}+\lambda_r^x)/L_{r-1}$ trifft das Profil auf 0.01–1 % (bei $b=1.2$, Rang 15: $H(0.25)=1.146017$ gegen 1.145963).
+    Die Annäherung an die Rampe selbst ist nur logarithmisch schnell. Bei $b=2$ ergibt $\min(x+1,2)=x+1$ auf $[0,1]$, also genau $H_r(2,\tfrac12)\to1.5$.
+  einfach: >-
+    Je höher die Rechenart, desto mehr sieht ihr Bild aus wie eine Rampe, die wie „plus 1“ steigt und dann bei der Basis b flach wird.
+  gegenbeispielsuche: 'Drei Basen (√2, 1.2, 1.5 mit Kneser-Saat) bis r = 16 und zwei Rechengenauigkeiten (dps 30/Grad 40 gegen dps 20/Grad 30, 12 Stellen gleich): kein Rang, an dem sich das Profil von der Rampe entfernt.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/07_raenge/BERICHT.md, B2, §2; koenigs_leiter.py, auswertung_leiter.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; folgt aus dem Plateau-Modell, falls dessen Fehlerabschätzung bewiesen wird.'
+    f2_benutzte_voraussetzungen: 'Linearisierung von $\sigma_r$ im Plateau, $\lambda_r\to0$, $L_r/L_{r-1}\to1$.'
+    f3_spezialfall: 'Verallgemeinert die Beobachtung $H_r(2,x)\to x+1$ (kn.beob.zwischenwerte_basis2) auf beschränkte Leitern.'
+    f4_uebertragbar: 'Auf Leitern mit Kneser-Saat (b = 1.5 geprüft); auf negativen Höhen offen.'
+    f5_neue_frage: 'Beweis von $p_\infty=b$; Profil auf $(b-2,0)$.'
+  bewertung: {richtigkeit: 'Vermutung, gut belegt, Mechanismus hergeleitet', neuheit: neu_ungeprueft, nutzen: 'Erklärt die S-Form der kritischen Stufen und das Bild bei b = 2.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.beob.zwischenwerte_basis2}
+    - {typ: verwandt, ziel: kn.beob.kritische_profile}
+    - {typ: verwandt, ziel: kn.satz.eta_kriterium}
+
+- id: kn.satz.plateau_modell
+  titel: 'Plateau-Modell der Rangleiter: eine Abbildung in zwei Grössen (δ, λ) beschreibt die Leiter Schritt für Schritt'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [hyperoperation, schroeder]
+  bereich: 'beschränkte Koenigs-Leiter, $1<b<2$; $\delta_r=p_r-b$, $\lambda_r=\partial_xH_r(b,p_r)$, $L_r=-\ln\lambda_r$'
+  aussage: |
+    Bis auf einen relativen Fehler $O(L_r\delta_r)$ gilt
+    $$\delta_{r+1}=\delta_r(1-\mu_r),\qquad \lambda_{r+1}=\delta_rL_r\mu_r,\qquad \mu_r=\lambda_r^{\,b-1+\delta_{r+1}}.$$
+    Einschrittfehler gegen die echte Leiter: bei $b=1.2$ (r = 14) $1.6\cdot10^{-4}$ für δ und $4.3\cdot10^{-4}$ für λ; bei $\sqrt2$ $2.4\cdot10^{-3}$ bzw. $1.6\cdot10^{-2}$, beide fallend.
+  einfach: >-
+    Statt die ganzen Funktionen auszurechnen, reichen zwei Zahlen pro Rang: wie weit der Fixpunkt noch über b liegt und wie stark er anzieht.
+    Eine einfache Rechenregel gibt sie von Rang zu Rang fast genau weiter.
+  beweis:
+    art: skizze
+    text: |
+      Im Plateau $[b,p_r]$ ist $\sigma_r$ bis auf $O(c_2\delta_r)=O(L_r\delta_r)$ die Identität, also $H_{r+1}(1+x)\approx p_r-\delta_r\lambda_r^x$. Fixpunkt und Ableitung
+      daraus ergeben die Abbildung; Einsetzen des Plateaus in $H_{r+1}(x+1)=H_r(H_{r+1}(x))$ gibt die Profilformel.
+    luecken:
+      - 'Die Fehlerabschätzung $O(L_r\delta_r)$ aus der Linearisierung von σ_r im Plateau ist nicht quantitativ bewiesen.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/07_raenge/BERICHT.md, B3, §2; auswertung_leiter.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Linearisierung der Schröder-Funktion im fast flachen Bereich.'
+    f2_benutzte_voraussetzungen: 'Kleinheit von $\delta_r$ und $L_r\delta_r$; Koenigs-Stufen.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede beschränkte Leiter mit anziehenden Fixpunkten.'
+    f5_neue_frage: 'Asymptotik der Abbildung (kn.verm.leiter_rate); ein Beweis der Lücke gäbe $p_\infty=b$.'
+  bewertung: {richtigkeit: 'Skizze, Lücke in der Fehlerabschätzung; numerisch gut', neuheit: neu_ungeprueft, nutzen: 'Macht die Leiter bis r = 10⁷ berechenbar.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.koenigs_leiter_monoton}
+    - {typ: stuetzt, ziel: kn.verm.grenzprofil_rampe}
+
+- id: kn.verm.leiter_rate
+  titel: 'Rate der Rangleiter: r·μ_r → k = (2−b)/(b−1), δ_r ~ (b−1)k^k/(r^k ln r)'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation]
+  bereich: 'beschränkte Koenigs-Leiter, $1<b<2$; Grössen wie in kn.satz.plateau_modell, $M_r=-\ln\mu_r$'
+  aussage: |
+    Mit $k=(2-b)/(b-1)$ gilt
+    $$r\mu_r\to k,\qquad \Delta(1/\mu_r)=\frac{1}{k+1/M_r}+\dots,\qquad \delta_r\sim\frac{(b-1)k^k}{r^k\ln r},\qquad L_r\sim\frac{\ln r}{b-1}.$$
+    Für das Plateau-Modell formal hergeleitet (langsame Kurve $M=(D-\ln(M/a))/k$, $a=b-1$) und bis $r=10^7$ iteriert: $\Delta(1/\mu)=0.676678$ gegen 0.6767 ($\sqrt2$), 0.245823 gegen 0.2458 ($b=1.2$).
+    Für die echte Leiter (bis $r=16$) ist es eine Vermutung; die Konstanten konvergieren nur mit Korrekturen $\ln\ln r/\ln r$.
+  einfach: >-
+    Wie schnell die Obergrenzen gegen b fallen, hängt nur von einer einzigen Zahl k ab, die man aus der Basis ausrechnet.
+  gegenbeispielsuche: 'Modell bis r = 10⁷ bei √2 und 1.2 iteriert (Zuwachsformel auf 4–5 Stellen); an der echten Leiter bis r = 16 nicht widerlegbar, aber wegen der langsamen Korrekturen auch nicht direkt prüfbar.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/07_raenge/BERICHT.md, B4, §3; modellabbildung.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Für das Modell ja (formale Asymptotik); für die Leiter nicht.'
+    f2_benutzte_voraussetzungen: 'Plateau-Modell (Lücke), Kontraktion $a<1$ auf die langsame Kurve.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede $b\in(1,2)$; bei $b\to2$ geht $k\to0$.'
+    f5_neue_frage: 'Rechnungen bis höherem Rang, um die Exponenten der echten Leiter direkt zu sehen.'
+  bewertung: {richtigkeit: 'formal hergeleitet für das Modell; für die Leiter Vermutung', neuheit: neu_ungeprueft, nutzen: 'Quantitatives Gesetz für die Annäherung an die Rampe.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.plateau_modell}
+    - {typ: stuetzt, ziel: kn.verm.grenzprofil_rampe}
+
+- id: kn.beob.rangverschiebung
+  titel: 'Eine θ-Störung einer Stufe verschiebt die ganze spätere Leiter nur um einen festen Bruchteil eines Rangs'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, periodische_stoerung]
+  bereich: '$b=\sqrt2$, Koenigs-Leiter; Störung $H_4\mapsto H_4\circ\psi$ mit $\psi=x+\varepsilon\sin2\pi x$ oder $x+\varepsilon(1-\cos2\pi x)$, ab $H_5$ wieder Koenigs'
+  aussage: |
+    Für die gestörte Leiter gilt $H'_r=H_{r+c}+o(1)$ mit **einer** Konstante $c(\varepsilon)$, gleich für $p_r$, $\lambda_r$ und das Profil bei 0.25 und 0.5 (4–5 Stellen):
+    $c(0.05)=-0.31022$, $c(-0.05)=+0.3067$, $c(0.01)=-0.06134$, Kosinusrichtung $c(0.01)=-0.07739$; Gradient $(dc/d\varepsilon_{\sin},dc/d\varepsilon_{\cos})\approx(-6.13,-7.74)$, $c\approx-6.15\varepsilon-0.7\varepsilon^2$.
+    Alle übrigen Abweichungen fallen pro Rang etwa um den Faktor $\mu_r\sim k/r$, also überexponentiell ($\sim k^r/r!$): $c_r-c_\infty$ (aus λ) $=1.6\cdot10^{-2},\ 4.8\cdot10^{-3},\ 1.4\cdot10^{-3},\ 4.0\cdot10^{-4},\ 1.0\cdot10^{-4}$ für $r=6\dots10$.
+  einfach: >-
+    Verbiegt man die Tetration leicht, ohne ihre ganzzahligen Werte zu ändern, dann sind alle späteren Rechenarten fast genau dieselben wie vorher —
+    nur um ein Stück eines Rangs nach vorne oder hinten verschoben.
+  experimente: []
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/07_raenge/BERICHT.md, B5, B6, §5; koenigs_leiter.py, rangverschiebung.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung).'
+    f2_benutzte_voraussetzungen: 'Koenigs-Stufen ab $H_5$; Interpolation von $\ln|Q-Q_\infty|$ in $r$ (Randfehler in der 4. Stelle ab r ≥ 13).'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf andere Basen im beschränkten Bereich; bei $b=2$ (unbeschränkt) offen.'
+    f5_neue_frage: 'Ist $c$ eine exakte Funktion der Störung (kn.verm.rangkoordinate)?'
+  bewertung: {richtigkeit: 'numerisch, 4–5 Stellen, mehrere Gegenproben', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass die θ-Freiheit hoch in der Leiter zu einer einzigen Zahl wird.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.halbrang_theta_grenze}
+    - {typ: motiviert, ziel: kn.verm.rangkoordinate}
+    - {typ: verwandt, ziel: kn.beob.halbrang_rangfortsetzung}
+
+- id: kn.verm.rangkoordinate
+  titel: 'Rangkoordinate: ein Abel-Funktional Φ(Tf) = Φ(f) + 1 auf beschränkten Leitern; ein halber Rang legt nur eine Richtung der θ-Freiheit fest'
+  art: vermutung
+  ebene: B
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation, abel, fatou_koord, periodische_stoerung]
+  bereich: 'beschränkte Leitern $1<b<2$; $T$ = Rangschritt $H_r\mapsto H_{r+1}$ (Koenigs)'
+  aussage: |
+    Auf dem Raum der beschränkten Stufen gibt es ein Abel-Funktional $\Phi$ mit $\Phi(Tf)=\Phi(f)+1$: Die Leiter wird quer zu einer eindimensionalen Kurve $W$
+    überexponentiell angezogen und läuft längs $W$ parabolisch (Schritte $\sim k/r$) — das Funktionenraum-Gegenstück zur Fatou-Koordinate.
+    Die θ-Freiheit einer Stufe wirkt asymptotisch nur über $\Phi$. **Falls $\Phi$ existiert und glatt ist** (dieser Teil ist bewiesen), ist die Bedingung
+    „echter halber Rang“ $\Phi(H_{3.5})=\Phi(H_3)+\tfrac12$ eine einzige Gleichung: sie legt eine Linearkombination der θ-Parameter fest
+    (bei $\sqrt2$ Gewichte $\approx(-6.13,-7.74)$ für $(\sin,1-\cos)$), nicht die ganze Freiheit. Für einen kanonischen halben Rang bräuchte man zusätzlich
+    eine kanonische Interpolation der Querkontraktion (Gamma-artig, $\prod\mu\sim k^s/\Gamma(r+s)$; nicht ausgearbeitet).
+  einfach: >-
+    Man kann jeder Rechenart in der Leiter eine „Rangnummer“ zuordnen, auch eine gebrochene. Ein halber Rang müsste genau die Nummer 3½ haben —
+    das ist aber nur eine Bedingung und reicht allein nicht, um ihn eindeutig festzulegen.
+  gegenbeispielsuche: 'Vier Störungen (sin ±0.05, sin 0.01, cos 0.01) und vier Messgrössen (p_r, λ_r, Profil bei 0.25 und 0.5): alle geben dieselbe Verschiebung c auf 4–5 Stellen; keine Messgrösse wich ab.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/07_raenge/BERICHT.md, B7, §5'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Zählung folgt unmittelbar, falls Φ existiert; die Existenz nicht.'
+    f2_benutzte_voraussetzungen: 'Rangverschiebung und überexponentielle Querkontraktion (kn.beob.rangverschiebung).'
+    f3_spezialfall: 'Analog zur Fatou-Koordinate einer parabolischen Abbildung (it.satz.leau_fatou), hier im Funktionenraum.'
+    f4_uebertragbar: 'Bei $b=2$ (unbeschränkte Leiter) offen; dort bläht der Rangabstieg die Querrichtungen auf.'
+    f5_neue_frage: 'Existenz und Glattheit von Φ; kanonische Querinterpolation für einen vollen halben Rang.'
+  bewertung: {richtigkeit: 'Vermutung (Existenz); Zählung bewiesen unter Existenz', neuheit: neu_ungeprueft, nutzen: 'Neue Form der Halbrang-Frage: eine Gleichung plus eine Interpolation.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.beob.rangverschiebung}
+    - {typ: verwandt, ziel: kn.frage.halber_rang}
+    - {typ: analog_zu, ziel: it.satz.leau_fatou}
+
+- id: kn.satz.konvex_eta_grenze
+  titel: 'Konvexe Fortsetzungsketten haben η_r → 2, mit der Schranke b + b(b−1)^{r−2} = 2'
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen_text: 'Alle Stufen $H_s(b,\cdot)$, $s\ge4$, sind stetig und konvex auf $[1,2]$. Für die echten Ketten an den kritischen Basen ist das ab $N=5$ falsch (kn.gescheitert.konvexitaetsweg).'
+  niveau: forschung
+  objekte: [hyperoperation, eta, konvexitaet]
+  bereich: '$1<b<2$, Fortsetzungsketten wie in kn.satz.schwellen_monoton'
+  aussage: |
+    Sind alle $H_s(b,\cdot)$, $s\ge4$, konvex auf $[1,2]$, so gilt $u_r:=H_r(b,2)\le(2-b)b+(b-1)u_{r-1}$, also
+    $$H_r(b,2)\le b+b(b-1)^{r-2}.$$
+    Jede Basis $b<2$ hat dann ab einem Rang einen Fixpunkt in $[1,2]$, und mit kn.satz.schwellen_monoton folgt $\eta_r\to2$, genauer $\eta_r\ge\eta_r^*$ mit $b+b(b-1)^{r-2}=2$ ($r=4$: 1.545; $r=8$: 1.732).
+  einfach: >-
+    Wenn alle Stufen nach oben gekrümmt wären, könnte man beweisen, dass die Grenzbasen gegen 2 gehen. Leider sind die echten Stufen nicht so gekrümmt.
+  beweis:
+    art: bedingt
+    text: |
+      $u_r=H_{r-1}(b,b)$ und Konvexität auf $[1,2]$ geben $H_{r-1}(b)\le(2-b)H_{r-1}(1)+(b-1)H_{r-1}(2)$. Ist $b(b-1)^{r-2}\le2-b$, so $H_r(b,2)\le2$,
+      also $H_r(b,1)-1>0\ge H_r(b,2)-2$; der Zwischenwertsatz gibt einen Fixpunkt.
+  stuetzt_sich_auf: [kn.satz.schwellen_monoton]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/07_raenge/BERICHT.md, B8, §4'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Konvexität und Zwischenwertsatz.'
+    f2_benutzte_voraussetzungen: 'Konvexität aller Stufen auf $[1,2]$; Monotonie in $b$ für die Schwellenform.'
+    f3_spezialfall: 'Ein hinreichendes Kriterium wie kn.satz.eta_kriterium.'
+    f4_uebertragbar: 'Auf jede Kette mit konvexen Stufen.'
+    f5_neue_frage: 'Gibt es eine schwächere Formannahme (S-Form), die an den echten Stufen gilt und dennoch reicht?'
+  bewertung: {richtigkeit: 'vollständig unter der Konvexitätsannahme', neuheit: neu_ungeprueft, nutzen: 'Klärt, was ein Konvexitätsbeweis von TPID 10 bräuchte.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.tpid10}
+    - {typ: verwandt, ziel: kn.satz.eta_kriterium}
+
+- id: kn.gescheitert.konvexitaetsweg
+  titel: 'Konvexitätsweg zu TPID 10 versperrt: die kritischen Stufen F_N sind ab N = 5 auf [1, 2] nicht konvex (S-Form)'
+  art: gescheitert
+  ebene: C
+  status: gescheitert
+  niveau: forschung
+  objekte: [hyperoperation, eta, konvexitaet]
+  bereich: 'kritische Stufen $F_N=H_N(\eta_N,\cdot)$ der Fortsetzungskette, $N=4\dots8$ (Profildaten rang_gamma, ~20 Stellen)'
+  aussage: |
+    $F_N(1.5)-\tfrac12(F_N(1)+F_N(2))=-0.0072$ ($N=4$), $+0.0048,\ +0.0122,\ +0.0171,\ +0.0206$ ($N=5\dots8$): ab $N=5$ liegt $F_N$ in der Mitte von $[1,2]$
+    **über** der Sehne; auch auf $[0,1]$ liegt $F_N(0.5)$ über der Sehne. $F_N$ ist auf $[0,2]$ konkav und erst danach konvex — passend zur Rampe $\min(x+1,b)$.
+    Die Voraussetzung von kn.satz.konvex_eta_grenze gilt also für die gewählten Ketten nicht. Nebenbefund (ebenfalls negativ): $(4-e_r)/(2-\eta_r)=2.308,\ 2.499,\ 2.660,\ 2.777,\ 2.849,\ 2.877$
+    ($r=3\dots8$) mit fast linear fallenden Zuwächsen — eher ein Maximum als eine Grenzkonstante 3.
+  einfach: >-
+    Der Beweisweg über die Krümmung funktioniert nicht: Die echten Stufen sind zuerst nach unten und dann nach oben gekrümmt, wie ein liegendes S.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/07_raenge/BERICHT.md, B9, B10, §4; eta_values.csv'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.konvex_eta_grenze}
+    - {typ: verwandt, ziel: kn.verm.tpid10}
+    - {typ: stuetzt, ziel: kn.verm.grenzprofil_rampe}

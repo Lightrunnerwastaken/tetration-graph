@@ -1,0 +1,25 @@
+# Theorie-Blöcke: Böttcher- gegen Kneser-Superfunktion (Runde 18.10.2026, Bericht 09).
+
+br.satz.boettcher_nicht_kneser:
+  worum: |
+    Ein Polynom $x^d+c$ hat zwei natürliche Ausgangspunkte für gebrochene Iteration: den komplexen Fixpunkt $L$ (Kneser) und den superanziehenden Fixpunkt $\infty$ (Böttcher).
+  genau: |
+    $S_B=\varphi^{-1}(\exp(G(c)d^z))$ ist reell-analytisch und eine Superfunktion, aber $S_B\neq S_K$.
+  warum: |
+    Wäre $S_B=S_K$, so müsste $G\circ S_K=G(c)\,\mathrm{Re}\,d^z$ auf einem ganzen Band gelten; an dessen Rand müsste $S_K$ eine Kurve in die Cantor-Menge $K$ legen — das geht nur, wenn $S_K$ konstant ist.
+  beispiel: |
+    $x^2+1$: $G(1)=0.40735452273948$; $S_B(0)=1$, $S_B(-1)=0$ wie bei $S_K$.
+  bilder: []
+  einordnung: |
+    Verwandt mit [[it.satz.karlin_mcgregor]] (reguläre Iterationen an verschiedenen Fixpunkten sind verschieden) und [[it.satz.boettcher]]; Grösse des Unterschieds: [[br.beob.boettcher_kneser_abstand]].
+
+br.beob.boettcher_kneser_abstand:
+  worum: |
+    Wie verschieden sind Böttcher- und Kneser-Superfunktion tatsächlich?
+  genau: |
+    Bei $x^2+1$: $S_B(x)=S_K(x-1+p(x))$ mit $\max|p|=4.5\cdot10^{-7}$, Defekt $E=3.9\cdot10^{-14}$; bei $x^4+1$: $2.2\cdot10^{-4}$ bzw. $1.5\cdot10^{-8}$.
+  warum: |
+    Vermutlich sind beide Lösungen in einem breiten Band holomorph, und der Unterschied ist exponentiell klein in der Bandbreite, etwa $e^{-2\pi\delta}$ mit $\delta\approx\pi/(2\ln d)$ (schwach belegt).
+  bilder: []
+  einordnung: |
+    Ähnliches Muster wie [[kl.beob.zwei_abel]] und [[kl.verm.streifenbreite]]; gemessen mit dem Defekt aus [[br.satz.reelle_kennzeichnung]].

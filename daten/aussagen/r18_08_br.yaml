@@ -1,0 +1,281 @@
+gebiet: br
+# Forschungsrunde 18.10.2026, Bericht 08 „Lokale, reelle Kennzeichnung von Kneser“: Taylor-Radius, ungerade Ableitungen, Negativergebnisse.
+# Rechnungen: forschung/runde_2026_10_18/08_reelle_kennzeichnung/. Basis e; H = {Re z > −2}; ρ_T(x) = Konvergenzradius der Taylor-Reihe von T an x.
+aussagen:
+
+- id: br.satz.taylorradius_halbebene
+  titel: 'Lokales Extremalprinzip: ρ_T(x) ≤ x + 2 für jede Tetration, Gleichheit überall genau bei Holomorphie auf Re z > −2 — Kneser ist an jeder Stelle maximal'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, tetrationsgleichung]
+  bereich: 'reell-analytische Tetrationen $T$ auf $(-2,\infty)$, $T(x+1)=e^{T(x)}$, $T(0)=1$, $T''>0$; für $b>\eta$ wörtlich mit $\log_b$'
+  aussage: |
+    Für jede solche $T$ gilt $\rho_T(x)\le x+2$, und $D_T(x):=x+2-\rho_T(x)\ge0$ ist nicht fallend. Gleichwertig sind:
+    (a) $T$ ist holomorph auf $H=\{\mathrm{Re}\,z>-2\}$; (b) an jeder Stelle $x$ gilt $(-1)^{k-1}k(x+2)^kT^{(k)}(x)/k!\to1$, insbesondere $(-1)^{k-1}T^{(k)}(x)>0$ für alle grossen $k$;
+    (c) (b) auf einer Folge $x_j\to\infty$; (d) $\rho_T(x)=x+2$ für alle $x$; (e) $\rho_T(x)-x\to2$ für $x\to\infty$.
+    Kneser ist holomorph auf $\mathbb C\setminus(-\infty,-2]$, hat also $D\equiv0$. Hat $T$ einen singulären Punkt $z_0\in H$, so verletzt $T$ (b) bei allen $x$ mit $|x-z_0|<x+2$, und $D_T(x)\ge\mathrm{Re}\,z_0+2-o(1)$.
+  einfach: >-
+    An jeder Stelle kann man messen, wie weit die Taylor-Reihe einer Tetration reicht. Mehr als bis zur Stelle −2 geht nie. Knesers Tetration
+    erreicht diesen Höchstwert überall; gleichwertig wechseln ihre hohen Ableitungen das Vorzeichen wie bei log(x+2).
+  beweis:
+    art: vollstaendig
+    text: |
+      Lemma 0: $T(x)=\log(x+2)+B(x+2)$ mit $B$ analytisch nahe 0 (aus $T(x+1)=\log T(x+2)$), komplex ebenso, wenn $T$ auf $H$ holomorph ist.
+      (a)⇒(b): $B$ ist auf einer Umgebung der abgeschlossenen Scheibe $\overline{D(x,x+2)}$ holomorph, die Koeffizienten von $\log(z+2)$ dominieren.
+      (c)⇒(a): Pringsheim — bei ab $k_0$ positiven Koeffizienten von $-T(x-u)$ liegt eine Singularität bei $u=R$ reell; da $T$ auf $(-2,\infty)$ analytisch ist, folgt $R=x+2$; die Scheiben $D(x_j,x_j+2)$ schöpfen $H$ aus.
+      $\rho_T\le x+2$ wegen $T\to-\infty$ bei $-2$; $\rho$ ist 1-Lipschitz, daher $D_T$ nicht fallend und (e)⇒(d). Singularität in $H$: Monodromie auf dem einfach zusammenhängenden $H$.
+  stuetzt_sich_auf: [kn.konstr.kneser]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, A, B, E, Lemma 0, B-A, B-B; e1_kneser_ungerade.py'}, {ref: forum_tid882, stelle: 'Levenstein: hohe Ableitungen folgen log(x+2)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Im Kern aus Pringsheim und der Log-Struktur bei −2 (Lemma 0); die Kombination zu einer Äquivalenz ist neu.'
+    f2_benutzte_voraussetzungen: 'Reelle Analytizität auf $(-2,\infty)$, Funktionalgleichung, $T\to-\infty$ bei $-2$.'
+    f3_spezialfall: 'Präzisiert Levensteins Beobachtung (hohe Ableitungen wie log(x+2)) zu einer Kennzeichnung der Halbebenen-Holomorphie.'
+    f4_uebertragbar: 'Auf jede Basis $b>\eta$.'
+    f5_neue_frage: 'Erzwingt Holomorphie auf $H$ schon Kneser (br.frage.halbebene_eindeutigkeit)?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Erste lokale, reelle Grösse, bei der Kneser an jeder Stelle extremal ist — Bohr–Mollerup-artig.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.bohr_mollerup}
+    - {typ: verwandt, ziel: br.satz.reelle_kennzeichnung}
+    - {typ: motiviert, ziel: br.frage.halbebene_eindeutigkeit}
+
+- id: br.satz.ungerade_ableitungen_halbebene
+  titel: 'Positive ungerade Ableitungen — schon ab irgendeiner Ordnung — erzwingen Holomorphie auf Re z > −2'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, konvexitaet]
+  bereich: '$C^\infty$-Tetrationen $T$ auf $(-2,\infty)$ zur Basis $e$ (Analytizität wird nicht vorausgesetzt)'
+  aussage: |
+    Gilt $T^{(2n+1)}\ge0$ auf $(-2,\infty)$ für alle $n\ge n_0$ (irgendein $n_0$), so ist $T$ reell-analytisch und holomorph auf $H=\{\mathrm{Re}\,z>-2\}$.
+    Gilt die Bedingung nur auf $(X,\infty)$, folgt Holomorphie auf $\mathrm{Re}\,z>X$. Mike3s Vermutung (gr.verm.ungerade_ableitungen) ist also stärker als gedacht:
+    sie impliziert die Halbebenen-Holomorphie.
+  einfach: >-
+    Wenn ab einer gewissen Ordnung alle ungeraden Ableitungen nie negativ sind, dann ist die Tetration automatisch sehr glatt — sie lässt sich in die ganze rechte Halbebene
+    der komplexen Zahlen fortsetzen.
+  beweis:
+    art: vollstaendig
+    text: |
+      Lemma (Bernstein, absolut konvexe Funktionen; hier selbst bewiesen): Ist $g\in C^\infty(a,\infty)$ mit $g^{(2k)}\ge0$ für alle $k$, so ist $g$ an $x$ analytisch mit Radius $\ge x-a$
+      (Taylor mit Integralrest für $E(u)=\tfrac12(g(x+u)+g(x-u))$ gibt $g^{(2k)}(x)\le M(2k)!/r^{2k}$; ungerade Ordnungen über Konvexität von $g^{(2k)}$).
+      Mit $g=T^{(2n_0+1)}$, $a=-2$: $g$ holomorph auf allen $D(x,x+2)$, also auf $H$; $T$ entsteht durch Integration.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, C, B-C'}, {ref: forum_tid882, stelle: 'Vermutung (mike3)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Aus Bernsteins Lemma über absolut konvexe Funktionen, angewandt auf eine hohe ungerade Ableitung.'
+    f2_benutzte_voraussetzungen: 'Nur $C^\infty$ und das Vorzeichen; die Funktionalgleichung nur für die Lage von $-2$.'
+    f3_spezialfall: 'Variante von Bernsteins Satz.'
+    f4_uebertragbar: 'Auf jede Basis $b>\eta$ und jede Funktion mit Singularität bei $-2$.'
+    f5_neue_frage: 'Erfüllt jede auf $H$ holomorphe Tetration auch C(0)? Gilt C(0) für Kneser?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Ordnet mike3s Vermutung ein: sie ist eine Halbebenen-Bedingung.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: gr.verm.ungerade_ableitungen}
+    - {typ: verwandt, ziel: br.satz.taylorradius_halbebene}
+
+- id: br.satz.lokal_genau_dann_halbebene
+  titel: 'Zurückführung: eine lokale reelle Kennzeichnung von Kneser gibt es genau dann, wenn Holomorphie auf Re z > −2 schon Kneser erzwingt'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T]
+  bereich: 'reell-analytische Tetrationen zur Basis $e$; Bedingungen (b)–(e) aus br.satz.taylorradius_halbebene und C($n_0$) aus br.satz.ungerade_ableitungen_halbebene'
+  aussage: |
+    Sei Q*: „jede reelle Tetration, die auf $\mathrm{Re}\,z>-2$ holomorph ist, ist Kneser“. Dann kennzeichnet jede der Bedingungen (b)–(e) Kneser **genau dann**, wenn Q* gilt.
+    Für C($n_0$) gilt „Q* ⇒ kennzeichnet“ (die Umkehrung ist offen, und dass Kneser C(0) erfüllt, ist mike3s Vermutung).
+    Q* ist Paulsen–Cowgill ohne die Grenzwertbedingung bei $i\infty$, in der Halbebenen-Fassung (stärker als kn.verm.tk_c2).
+  einfach: >-
+    Die Suche nach einer einfachen reellen Bedingung für Kneser ist jetzt auf eine einzige Frage zurückgeführt: Reicht es, dass die Tetration in der
+    rechten Halbebene glatt ist? Wenn ja, gibt es die Bedingung; wenn nein, nicht.
+  beweis:
+    art: vollstaendig
+    text: |
+      {T erfüllt (b)} = Hol(H) nach br.satz.taylorradius_halbebene, {T erfüllt C($n_0$)} ⊂ Hol(H) nach br.satz.ungerade_ableitungen_halbebene. Gilt Q*, besteht Hol(H) nur aus Kneser.
+      Gibt es $T^*\ne$ Kneser in Hol(H), so erfüllt $T^*$ (b), die Bedingung kennzeichnet also nicht.
+  stuetzt_sich_auf: [br.satz.taylorradius_halbebene, br.satz.ungerade_ableitungen_halbebene]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, D'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus den beiden Sätzen.'
+    f2_benutzte_voraussetzungen: 'br.satz.taylorradius_halbebene, br.satz.ungerade_ableitungen_halbebene.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede Basis über η.'
+    f5_neue_frage: 'Q* selbst (br.frage.halbebene_eindeutigkeit).'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Präzise Antwort auf die Form der Bohr–Mollerup-Frage: lokal geht genau dann, wenn Q*.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.bohr_mollerup}
+    - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}
+    - {typ: verwandt, ziel: kn.verm.tk_c2}
+
+- id: br.frage.halbebene_eindeutigkeit
+  titel: 'Q*: Ist jede reelle Tetration, die auf Re z > −2 holomorph ist, schon Kneser?'
+  art: frage
+  ebene: B
+  status: offen
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  aussage: |
+    Paulsen–Cowgill ohne die Grenzwertbedingung bei $i\infty$, Halbebenen-Fassung. Ansatz: $\theta_T=h\circ T-z$ ist dann auf der oberen Halbebene bis auf harmlose Log-Punkte ($T=L$)
+    periodisch holomorph; zu zeigen wäre, dass $q=e^{2\pi iz}=0$ keine wesentliche Singularität sein kann. Alle geprüften Verbiegungen $\mathrm{sexp}_K\circ(\mathrm{id}+p)$ mit ganzem,
+    nicht konstantem $p$ haben Verzweigungspunkte in $H$ ($z+p(z)=-2$ hat je Periodenstreifen $\sim2N$ Lösungen); nicht ausgeschlossen ist, dass alle auf Nebenblättern liegen.
+    Teilfrage: Ist für jede Tetration $\ne$ Kneser sogar $\sup_x\rho_T(x)<\infty$? Dann wäre schon „$\rho_T$ unbeschränkt“ kennzeichnend.
+  einfach: >-
+    Reicht es für die Eindeutigkeit, dass die Tetration in der rechten Halbebene der komplexen Zahlen glatt ist? Das ist offen, und an dieser Frage
+    hängt, ob es eine einfache reelle Kennzeichnung gibt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, D, Offene Fragen 1 und 3'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.tk_c2}
+    - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}
+    - {typ: verwandt, ziel: br.frage.bohr_mollerup}
+
+- id: br.satz.slog_nie_total_monoton
+  titel: 'slog′ ist für keine Tetration auf einem Intervall total monoton und nie log-konkav (keine Pólya-Frequenz-Funktion)'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: forschung
+  objekte: [slog, konvexitaet]
+  bereich: 'jede reell-analytische Tetration zur Basis $e$ und ihr $\mathrm{slog}_T$ auf $\mathbb R$'
+  aussage: |
+    (N1) $\mathrm{slog}_T'$ ist auf keinem offenen Intervall vollständig monoton oder absolut monoton; $T'$ ist nirgends absolut monoton; ist $T'$ auf $(a,b)$ vollständig monoton, dann schon auf $(-2,b]$
+    (für Kneser höchstens $b\le-0.5218$).
+    (N2) $\log\mathrm{slog}_T'$ ist bei $+\infty$ konvex und kann nicht überall konvex sein; also ist $\mathrm{slog}_T'$ weder log-konkav (keine PF₂-, keine Pólya-Frequenz-Funktion) noch log-konvex.
+  einfach: >-
+    Zwei naheliegende Ideen für eine Gamma-artige Kennzeichnung scheitern für jede Tetration, nicht nur für Kneser: die Ableitung des Superlogarithmus
+    hat nie die besonders schönen Vorzeichen- oder Krümmungseigenschaften, die man dafür bräuchte.
+  beweis:
+    art: vollstaendig
+    text: |
+      N1: Bernstein macht $u\mapsto f(\beta'-u)$ zu einer Potenzreihe mit Koeffizienten $\ge0$; nach Pringsheim liegt die Singularität reell, $\mathrm{slog}_T$ ist auf ganz $\mathbb R$ analytisch, also ganz;
+      dann $\mathrm{slog}_T(e^w)=\mathrm{slog}_T(w)+1$ auf $\mathbb C$, bei $w=L$ folgt $0=1$. Für $T'$ analog ($T$ wäre ganz bzw. der Pringsheim-Punkt ist $-2$).
+      N2: $(\log\mathrm{slog}')''(w)=(1-G'(\ell)+G''(\ell))/w^2$, $\ell=\log w$, mit $G',G''\to0$; eine überall konvexe Funktion mit $\log\mathrm{slog}'\sim-\log w$ rechts und $\sim w$ links gibt es nicht.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, N1, N2, B-N1, B-N2'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Aus Bernstein, Pringsheim und „slog ist nicht ganz“.'
+    f2_benutzte_voraussetzungen: 'Analytizität von $\mathrm{slog}_T$ auf $\mathbb R$, Fixpunkt $L$, Asymptotik von $\mathrm{slog}$ bei $\pm\infty$ (N2 mit Standard-Induktion hergeleitet).'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede Basis $b>\eta$.'
+    f5_neue_frage: 'Welche schwächere Vorzeichenbedingung auf der slog-Seite bleibt möglich?'
+  bewertung: {richtigkeit: 'vollständig (N2: Asymptotik hergeleitet)', neuheit: neu_ungeprueft, nutzen: 'Schliesst zwei naheliegende Bohr–Mollerup-Wege für alle Tetrationen aus.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.bohr_mollerup}
+    - {typ: verwandt, ziel: gr.kor.konvex_nach_oben}
+
+- id: br.satz.endliche_vorzeichen_offen
+  titel: 'Endlich viele Vorzeichenbedingungen trennen Kneser nie von nahen Verbiegungen; die Ränder sind universell'
+  art: satz
+  ebene: B
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, konvexitaet]
+  bereich: 'reell-analytische Tetrationen; Verbiegungen $T=\mathrm{sexp}_K(x+p(x))$ (Sinus, Möbius)'
+  aussage: |
+    (N3) Für jede feste Ordnung $n$ und jede Tetration hat $T^{(n)}$ bei $-2$ das Vorzeichen $(-1)^{n-1}$ und ist für grosse $x$ positiv; $\mathrm{slog}^{(n)}$ hat bei $+\infty$ das Vorzeichen $(-1)^{n-1}$, bei $-\infty$ ist es positiv.
+    Positivität von $T',\dots,T^{(n)}$ auf einem Intervall der Länge 1 überträgt sich nach rechts.
+    (N4) Für jedes $N$ haben alle hinreichend kleinen Verbiegungen (Möbius $|a|<a_N$, Sinus $\varepsilon<\varepsilon_N$) dieselben Vorzeichen und Nullstellenzahlen von $T',\dots,T^{(N)}$ auf $(-2,\infty)$ wie Kneser.
+    Eine kennzeichnende Vorzeichenbedingung muss also unendlich viele Ordnungen enthalten, und Verletzungen treten erst bei Ordnungen $\to\infty$ auf.
+  einfach: >-
+    Prüft man nur endlich viele Ableitungen, sieht eine leicht verbogene Tetration genau gleich aus wie Kneser. Man muss also unendlich viele Ableitungen anschauen.
+  beweis:
+    art: skizze
+    text: |
+      N3: Lemma 0 bei $-2$; rechts $(e^T)^{(n)}=e^TY_n(T',\dots,T^{(n)})$ mit dem vollständigen Bell-Polynom (nichtnegative Koeffizienten); slog über Faà di Bruno.
+      N4: $T_a\to T_K$ mit allen Ableitungen gleichmässig auf Kompakta, am linken Rand $B_a\to B_K$, am rechten Rand trägt N3; einfache Nullstellen bleiben stabil.
+    luecken:
+      - 'Die Einfachheit der Nullstellen von Knesers $T^{(k)}$, $k\le N$, ist nur numerisch belegt (jede gerade Ableitung bis 26 wechselt genau einmal).'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, N3, N4, B-N3; e2_stoerungen.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'N3 fast (Lemma 0 und Bell-Polynome); N4 aus Stetigkeit der Ableitungen in der Störung.'
+    f2_benutzte_voraussetzungen: 'Lemma 0, Bell-Polynome, Einfachheit der Nullstellen (numerisch).'
+    f3_spezialfall: 'Vorzeichenform von br.satz.endlich_viele_reichen_nicht; N3 verallgemeinert gr.kor.konvex_nach_oben.'
+    f4_uebertragbar: 'Auf jede Familie von Verbiegungen, die in $C^N$ gegen Kneser geht.'
+    f5_neue_frage: 'Welche unendliche Vorzeichenfamilie reicht — und reicht sie nur zusammen mit $x\to\infty$?'
+  bewertung: {richtigkeit: 'N3 vollständig, N4 mit numerischer Lücke', neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum lokale Bedingungen hohe Ordnungen und x → ∞ brauchen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: analog_zu, ziel: br.satz.endlich_viele_reichen_nicht}
+    - {typ: verallgemeinert, ziel: gr.kor.konvex_nach_oben}
+
+- id: br.beob.verbiegungen_singularitaeten
+  titel: 'Verbiegungen von Kneser haben Singularitäten in Re z > −2: Taylor-Radius 0.2–1.7 statt x + 2, ungerade Ableitungen ab Ordnung 3–15 negativ'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, periodische_stoerung]
+  bereich: '$T=\mathrm{sexp}_K(x+p(x))$: Sinus-, Kosinus-, Möbius-Störungen und die Gegenbeispiele aus Etappe 4; Gitter $x=-1.5,\dots,0.4$, Ordnungen $k<100$, dps 50'
+  aussage: |
+    Alle 13 getesteten Verbiegungen verletzen C(0) an 8–20 von 20 Gitterstellen (kleinste verletzende ungerade Ordnung 3, 5 oder 15); Radius bei $x=0.3$: 0.20–1.74 statt 2.3.
+    Einzige Ausnahme im Messfenster: $\varepsilon=10^{-6}$ (Singularität in Höhe 2.42, ausserhalb aller Kreise mit $x\le0.4$).
+    Sinus-Störung: logarithmische Verzweigungspunkte bei $\varphi(z_0)=-2$ auf dem Hauptblatt, Höhe $\approx\ln(4(x+2)/\varepsilon)/2\pi$ (z. B. $\varepsilon=0.03$: $z_0\approx-0.318+0.766i$).
+    Möbius-Verbiegung: Verzweigungspunkte im Abstand $\delta=\ln(1/|a|)/2\pi$ von der Achse, also $\rho_T\le\delta$ für alle $x$.
+    Kleine Störung, grobe Verletzung: $\varepsilon=10^{-3}$ gibt $T^{(5)}(-0.6)=-0.408212081901$ (Kneser $5.40941046332$); $\varepsilon=0.03$ gibt $T'''(0)=-5.98442555504$ (Kneser 1.2747).
+  einfach: >-
+    Schon eine winzige Verbiegung von Kneser macht einige ungerade Ableitungen negativ, weil sie in der komplexen Ebene eine Störstelle erzeugt, die die Taylor-Reihe
+    stark verkürzt.
+  experimente: []
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, E1, E2, E3, X, Tabelle 2; e2_stoerungen.py, e3_singularitaeten.py, t2_gegenprobe.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Höhenformeln folgen aus der Log-Singularität bei −2 (hergeleitet); Lage und Blatt numerisch.'
+    f2_benutzte_voraussetzungen: 'Holomorphie von Kneser auf $\mathbb C\setminus(-\infty,-2]$; Reihenkomposition, zwei Wege auf 12 Stellen gleich.'
+    f3_spezialfall: 'Bestätigt br.satz.taylorradius_halbebene (E) an Beispielen.'
+    f4_uebertragbar: 'Auf jede Störung mit ganzem, nicht konstantem $p$ (Argumentprinzip), soweit die Lösungen auf dem Hauptblatt liegen.'
+    f5_neue_frage: 'Gibt es eine Verbiegung, deren Verzweigungspunkte alle auf Nebenblättern liegen?'
+  bewertung: {richtigkeit: 'numerisch, zwei unabhängige Rechenwege', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass die lokale Bedingung in der Praxis sehr trennscharf ist.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: br.satz.taylorradius_halbebene}
+    - {typ: stuetzt, ziel: br.frage.halbebene_eindeutigkeit}
+    - {typ: verwandt, ziel: br.satz.reelle_kennzeichnung}
+
+- id: br.beob.kneser_ungerade_99
+  titel: 'Kneser: alle ungeraden Taylor-Koeffizienten bis Ordnung 99 positiv auf [−1.95, 1.5]'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, konvexitaet]
+  bereich: 'Kneser-Tetration zur Basis $e$, $x\in[-1.95,0.5]$ (Schritt 0.05), dazu $(0.5,1.5]$ über zwei Zentren; dps 60'
+  aussage: |
+    $c_{2n+1}(x)>0$ für $2n+1\le99$ auf $x\in[-1.95,0.5]$ und, soweit zwei Rechenwege übereinstimmen (Ordnung 75–99), auf $(0.5,1.5]$.
+    Kleinster normierter Wert $c_kk(x+2)^k$: 0.952 ($k=1$, $x\approx-1.65$); der Quotient aus br.satz.taylorradius_halbebene (b) ist $1.0000$ bei $k=99$ für $x\le0.15$.
+    Erweitert die Messung zu gr.verm.ungerade_ableitungen von Ordnung 25 auf 99.
+  einfach: >-
+    Für Knesers Tetration sind alle ungeraden Ableitungen bis zur 99. an allen geprüften Stellen positiv — wie mike3 vermutet hat.
+  experimente: []
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, K; e1_kneser_ungerade.py, e1b_rechts.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Für hohe Ordnungen folgt die Positivität aus br.satz.taylorradius_halbebene; für mittlere Ordnungen nicht.'
+    f2_benutzte_voraussetzungen: 'Taylor-Daten von Etappe 3; für $x>0.5$ Auslöschung im exp-Weg, darum nur bei Übereinstimmung zweier Wege gewertet.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf andere Basen mit derselben Methode.'
+    f5_neue_frage: 'Mittlere Ordnungen bei $x>1$ — dort sagt Levenstein erste Vorzeichenwechsel der geraden Ordnungen erst sehr spät voraus.'
+  bewertung: {richtigkeit: 'numerisch, dps 60', neuheit: neu_ungeprueft, nutzen: 'Stärkerer Beleg für mike3s Vermutung.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: gr.verm.ungerade_ableitungen}
+    - {typ: verwandt, ziel: br.satz.ungerade_ableitungen_halbebene}
+
+- id: br.beob.kneser_logkonvex
+  titel: 'Kneser hat T′ log-konvex (Minimum von (log T′)″ = 0.9196) — aber das kennzeichnet nicht'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, konvexitaet]
+  bereich: 'Kneser-Tetration zur Basis $e$ auf $(-2,\infty)$'
+  aussage: |
+    $(\log T')''>0$ auf $(-2,\infty)$ mit Minimum $0.9196$ bei $x\approx-0.04$ (gleichwertig: $1/\mathrm{slog}'$ konvex). Gemessen auf $(-2,2]$ (Schritt 0.02, dps 40);
+    rechts davon bewiesen über $(\log T')''(x+1)=(\log T')''(x)+T''(x)$ und $T''>0$ für $x\ge0$. Die lineare Tetration hat $(\log T')''=0$ auf $(-1,1)$, liegt also genau auf dem Rand.
+    Nicht kennzeichnend: es ist eine offene Bedingung, alle nahen Verbiegungen erfüllen sie auch.
+  einfach: >-
+    Die Ableitung von Knesers Tetration ist „logarithmisch nach oben gekrümmt“, mit deutlichem Abstand. Das gilt aber auch für leicht verbogene Tetrationen, darum legt es Kneser nicht fest.
+  experimente: []
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, L; e4_logkonvex.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Rechts von 2 ja (Rekursion); auf $(-2,2]$ nur gemessen.'
+    f2_benutzte_voraussetzungen: 'Funktionalgleichung, $T''''>0$ für $x\ge0$ (Wendepunkt bei −0.5218).'
+    f3_spezialfall: 'Gegenstück zur Log-Konvexität bei Bohr–Mollerup.'
+    f4_uebertragbar: 'Auf andere Basen; dort andere Minima.'
+    f5_neue_frage: 'Gibt es eine Basis, bei der die Log-Konvexität von $T''$ bricht?'
+  bewertung: {richtigkeit: 'numerisch auf (−2, 2], rechts bewiesen', neuheit: neu_ungeprueft, nutzen: 'Klärt, dass Log-Konvexität hier nicht wie bei Γ wirkt.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.bohr_mollerup}
+    - {typ: verwandt, ziel: gr.kor.konvex_nach_oben}

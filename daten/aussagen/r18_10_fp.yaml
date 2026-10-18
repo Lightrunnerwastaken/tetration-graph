@@ -1,0 +1,154 @@
+gebiet: fp
+# Runde 18.10.2026, Bericht 10 Teil B: unendliche Türme mit zufälligen Basen.
+# Rechnungen: forschung/runde_2026_10_18/10_neues_gebiet/ (z1_zufallsturm.py, z2_schwelle.py, z3_durchmesser.py).
+aussagen:
+
+- id: fp.satz.zufallsturm_unter_eins
+  titel: 'Türme mit wechselnden Basen in (0,1): höchstens zwei Häufungspunkte, 0-1-Gesetz, und robuste Zweierschwingung unter e^(−e)'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [turm]
+  bereich: '$T_N=f_{a_1}\circ\dots\circ f_{a_N}(1)$, $f_a(x)=a^x$, alle $a_n\in(0,1)$; für (ii) Basen unabhängig gleich verteilt (u.i.v.)'
+  aussage: |
+    (i) Der Durchmesser $D_N$ von $I_N=f_{a_1}\circ\dots\circ f_{a_N}([0,1])$ fällt monoton; $T_{2n}\to v$, $T_{2n+1}\to u$ mit $[u,v]=\bigcap I_N$. Der Turm konvergiert genau dann, wenn $D_N\to0$.
+    (ii) Bei u.i.v. Basen ist Konvergenz ein 0-1-Ereignis.
+    (iii) **Robuste Zweierschwingung:** zu jedem $a_0<e^{-e}$ gibt es $\varepsilon>0$, so dass **jede** Basenfolge in $[a_0-\varepsilon,a_0+\varepsilon]$ einen divergenten Turm gibt.
+  einfach: >-
+    Wenn alle Basen zwischen 0 und 1 liegen, kann der Turm höchstens zwischen zwei Werten hin und her springen. Ob er sich am Ende einpendelt, ist bei
+    zufälligen Basen entweder fast sicher ja oder fast sicher nein. Liegen alle Basen nahe bei einer Zahl unter e^(−e) ≈ 0.066, so schwingt er immer.
+  beweis:
+    art: vollstaendig
+    text: |
+      (i) Alle $T_M$ ($M\ge N$) liegen in $I_N$, $I_{N+1}\subset I_N$, und $T_N$ ist je nach Parität der obere oder untere Endpunkt.
+      (ii) $f_{a_1}$ hat auf $[0,1]$ Ableitungen zwischen $a_1|\ln a_1|>0$ und $|\ln a_1|$, also ist $\{D_\infty=0\}$ verschiebungsinvariant; Ergodizität gibt 0-1.
+      (iii) Der 2-Zyklus $p<q$ von $f_{a_0}$ ist anziehend ($|f'(p)f'(q)|<1$); Radien mit $|f'(p)|r_p<r_q$, $|f'(q)|r_q<r_p$ geben Fallen $I_p,I_q$ mit $f_a(I_p)\subset I_q$, $f_a(I_q)\subset I_p$
+      für alle $a$ nahe $a_0$; $T_N$ und $T_{N+1}$ landen in verschiedenen Fallen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B1, B2 (Teil B)'}]
+  pruefung:
+    f1_folgt_unmittelbar: '(i) ja (klassisch, geschachtelte Intervalle); (ii) aus Kolmogorovs 0-1-Gesetz; (iii) Fallenpaar-Argument.'
+    f2_benutzte_voraussetzungen: 'Monotonie von a^x für a < 1; Unabhängigkeit nur für (ii).'
+    f3_spezialfall: 'Verallgemeinert die Periode-2-Divergenz von fp.satz.turm_reell auf wechselnde Basen.'
+    f4_uebertragbar: 'Auf jede Familie fallender Kontraktionen; komplexe Basen offen.'
+    f5_neue_frage: 'Was passiert, wenn die Basen nicht in einem kleinen Intervall unter e^(−e) liegen, sondern zufällig bis nahe 0 (fp.beob.zufallsturm_verschmelzung)?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Grundlage für Zufallstürme; (iii) zeigt, wann der Zufall Eulers Schwingung nicht zerstört.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: fp.satz.turm_reell}
+    - {typ: verwandt, ziel: fp.satz.baker_rippon_periodisch}
+    - {typ: verwandt, ziel: fp.satz.p2_form}
+
+- id: fp.satz.zufallsturm_divergenz
+  titel: 'Zufallsturm mit Basen ≥ 1 divergiert fast sicher, sobald Basen über η möglich sind und Basen nahe 1 nicht zu häufig'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [turm, eta]
+  bereich: 'Basen $a_n\ge1$ u.i.v., $c_n=\ln a_n$; $T_N=f_{a_1}\circ\dots\circ f_{a_N}(1)$'
+  aussage: |
+    Ist $P(\ln a>1/e)>0$ und $P(\ln a\le\varepsilon)\le C\varepsilon^\kappa$ für ein $\kappa>0$, so ist $T_\infty=\infty$ fast sicher.
+    (Mit einem Atom bei $a=1$ konvergiert der Turm dagegen immer.)
+  einfach: >-
+    Wenn ab und zu eine Basis über e^(1/e) vorkommt und Basen ganz nahe bei 1 selten genug sind, wächst der zufällige Turm fast sicher ins Unendliche.
+  beweis:
+    art: vollstaendig
+    text: |
+      Die Vorwärtskette $X_{n+1}=\exp(c_{n+1}X_n)$ hat dieselbe Verteilung wie $T_n$, und $T_n$ wächst. Mit $p=P(c\ge c^*)>0$, $c^*>1/e$, ist nach $r$ guten Schritten $X\ge\exp_{c^*}^r(1)$;
+      von dort fällt $X_{k+1}\ge X_k^2$ nur mit Wahrscheinlichkeit $\le C(2\log X/X)^\kappa$ aus, summierbar längs $X^{2^k}$. Also ist $P_x(X_n\to\infty)\ge\eta_0>0$ gleichmässig;
+      Martingal-Konvergenz gibt $X_n\to\infty$ fast sicher, also $P(T_\infty\le M)=\lim P(X_n\le M)=0$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B3'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; braucht Vorwärtskette und Martingal-Argument.'
+    f2_benutzte_voraussetzungen: 'Unabhängigkeit, Masse über η, Potenzschranke für Basen nahe 1.'
+    f3_spezialfall: 'Zufallsversion von fp.satz.turm_reell (Divergenz über η).'
+    f4_uebertragbar: 'Auf stationäre, schwach abhängige Basenfolgen (vermutlich).'
+    f5_neue_frage: 'Wo liegt die genaue Schwelle, wenn Basen nahe 1 häufiger sind (fp.verm.zufallsturm_slog_schwelle)?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Erstes Divergenzkriterium für Zufallstürme mit Basen über 1.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.turm_reell}
+    - {typ: motiviert, ziel: fp.verm.zufallsturm_slog_schwelle}
+
+- id: fp.beob.zufallsturm_verschmelzung
+  titel: 'Mit gleichverteilten Basen in (0, β) konvergiert der Turm auch dann, wenn alle Basen unter Eulers Schranke e^(−e) liegen'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [turm]
+  bereich: 'Basen u.i.v. gleichverteilt auf $(0,\beta)$, $\beta<e^{-e}=0.0660$; Durchmesser $D_N$ wie in fp.satz.zufallsturm_unter_eins'
+  aussage: |
+    Für $\beta=0.035$–$0.05$ konvergiert der Turm in allen Läufen schon nach $N\le64\,000$ Stufen; bei $\beta=0.03$ ist er nach $N=16\mathrm k/64\mathrm k/256\mathrm k$ noch in $92/77/40\,\%$ der Läufe unverschmolzen.
+    Die Überlebenswahrscheinlichkeit fällt exponentiell in $N$, mit Rate $\approx3.4\cdot10^{-5}$ ($\beta=0.035$), $4\cdot10^{-6}$ ($0.03$), $10^{-7}$ ($0.025$); bei $0.015$–$0.02$ keine Verschmelzung bis $256\,000$.
+    Die Verschmelzung ist ein seltenes Einzelereignis: $D_N$ springt von $\approx1$ direkt auf $<10^{-300}$. Die robuste Schwingung (fp.satz.zufallsturm_unter_eins, iii) greift hier nicht,
+    weil Basen beliebig nahe 0 jedes Fallenpaar sprengen. Der naive Ljapunow-Exponent ist kein Kriterium (negativ auf beiden Seiten).
+  einfach: >-
+    Euler wusste: ist die Basis kleiner als etwa 0.066, so schwingt der Turm ewig zwischen zwei Werten. Wählt man die Basen aber zufällig zwischen 0 und
+    0.03, pendelt er sich trotzdem ein — irgendwann, oft erst nach sehr vielen Stufen. Der Zufall zerstört die Schwingung.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B4; z1_zufallsturm.py, z2_schwelle.py, z3_durchmesser.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: '2 Saaten, M = 200–1000 Läufe, Exponentialgesetz an 3 N-Werten angepasst.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf andere Verteilungen mit Masse beliebig nahe 0.'
+    f5_neue_frage: 'Konvergiert der Turm für jedes β > 0 fast sicher (fp.verm.zufallsturm_konvergenz), und wie hängt die Rate von β ab?'
+  bewertung: {richtigkeit: 'numerisch, Rate grob', neuheit: neu_ungeprueft, nutzen: 'Überraschendes Verhalten: Zufall hebt Eulers Divergenzschranke auf.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.zufallsturm_unter_eins}
+    - {typ: verwandt, ziel: fp.satz.turm_reell}
+    - {typ: stuetzt, ziel: fp.verm.zufallsturm_konvergenz}
+
+- id: fp.verm.zufallsturm_konvergenz
+  titel: 'Vermutung: der Turm mit gleichverteilten Basen in (0, β) konvergiert fast sicher für jedes β > 0'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [turm]
+  bereich: 'wie fp.beob.zufallsturm_verschmelzung'
+  aussage: |
+    Für jedes $\beta>0$ konvergiert der Turm mit u.i.v. Basen $\sim U(0,\beta)$ fast sicher; die Verschmelzungsrate fällt wie $e^{-c/\beta}$.
+    Grund: Basen beliebig nahe 0 zerstören jedes Fallenpaar um einen 2-Zyklus; nach dem 0-1-Gesetz (fp.satz.zufallsturm_unter_eins) genügt eine positive Wahrscheinlichkeit der Verschmelzung.
+  einfach: >-
+    Vermutlich pendelt sich der zufällige Turm immer ein, egal wie klein die Basen sind — es dauert nur immer länger.
+  gegenbeispielsuche: 'z1–z3: bei β = 0.015–0.02 keine Verschmelzung bis N = 256 000 — kein Gegenbeispiel, aber auch keine Bestätigung für kleines β.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B5'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Numerik fp.beob.zufallsturm_verschmelzung, 0-1-Gesetz.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Verteilung mit Masse in jeder Umgebung von 0.'
+    f5_neue_frage: 'Rate e^(−c/β) beweisen; komplexe Zufallsbasen (zufälliges Shell–Thron-Gebiet).'
+  bewertung: {richtigkeit: 'Vermutung, Numerik für β ≥ 0.025', neuheit: neu_ungeprueft, nutzen: 'Klare, prüfbare Vermutung zu Zufallstürmen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.zufallsturm_unter_eins}
+    - {typ: verwandt, ziel: fp.satz.shell_thron}
+
+- id: fp.verm.zufallsturm_slog_schwelle
+  titel: 'Vermutung: Schwelle mit dem Superlogarithmus — Basen ≥ 1 mit P(ln a ≤ ε) = κ/slog(1/ε): Konvergenz fast sicher genau für κ > 1'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [turm, slog, eta]
+  bereich: 'Basen $a_n\ge1$ u.i.v. mit Masse über $\eta$ und $G(\varepsilon)=P(\ln a\le\varepsilon)=\kappa/\mathrm{slog}(1/\varepsilon)$ nahe 0'
+  aussage: |
+    Der Turm konvergiert fast sicher genau dann, wenn $\kappa>1$.
+    Heuristik: in slog-Koordinaten $Y=\mathrm{slog}X$ steigt $Y$ je Schritt um $1+o(1)$, solange $c$ nicht unter $\approx1/X$ fällt; sonst springt die Kette auf beschränkte Höhe zurück
+    (Kartenhaus-Kette mit Rückfallwahrscheinlichkeit $q_Y\approx G(1/\exp^Y(1))\approx\kappa/Y$). Positiv rekurrent $\iff\sum_k\prod_{j\le k}(1-q_j)<\infty\iff\kappa>1$.
+    Lücke: Fehlerterme der slog-Näherung und die Rückfallverteilung sind nicht streng kontrolliert.
+  einfach: >-
+    Wie oft dürfen Basen nahe bei 1 vorkommen, damit der Turm doch endlich bleibt? Die vermutete Grenze ist genau mit dem Superlogarithmus beschrieben —
+    die Tetration taucht hier als Massstab für Wahrscheinlichkeiten auf.
+  gegenbeispielsuche: 'Keine: weder numerisch geprüft noch nach Gegenbeispielen gesucht (nur heuristisch hergeleitet).'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B6'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; heuristische Reduktion auf eine Kartenhaus-Kette.'
+    f2_benutzte_voraussetzungen: 'slog-Näherung der Vorwärtskette, Rekurrenzkriterium für Kartenhaus-Ketten.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf andere langsam variierende G; Schwelle allgemein Σ Π(1−q_j).'
+    f5_neue_frage: 'Strenger Beweis; was geschieht genau bei κ = 1?'
+  bewertung: {richtigkeit: 'heuristisch hergeleitet, nicht numerisch geprüft', neuheit: neu_ungeprueft, nutzen: 'Verbindet Zufallstürme mit dem Superlogarithmus als natürlicher Skala.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.zufallsturm_divergenz}
+    - {typ: verwandt, ziel: kn.def.slog}

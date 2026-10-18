@@ -1,0 +1,39 @@
+gebiet: gr
+# Runde 18.10.2026, Agent 06 (Asymptotik): Knesers slog gegen den linearen iterierten Logarithmus auf der reellen Achse.
+# Rechnungen: forschung/runde_2026_10_18/06_asymptotik/ (BERICHT.md, a11_slog_reell.py).
+aussagen:
+
+- id: gr.satz.slog_logstern_welle
+  titel: 'slog = linearer log* + periodische Welle in [−0.0078653, +0.0091705]; einen Grenzwert slog − log* gibt es nicht'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: einstieg
+  objekte: [slog, kneser_T]
+  bereich: 'Knesers $\mathrm{slog}_e$ auf $(0,\infty)$; $\mathrm{slog}_{\mathrm{lin}}(x)=n-1+\log^{[n]}x$ mit $\log^{[n]}x\in(0,1]$ (linear interpolierter $\log^*$)'
+  aussage: |
+    $$\mathrm{slog}(x)-\mathrm{slog}_{\mathrm{lin}}(x)=P\bigl(\mathrm{slog}\,x-\lceil\mathrm{slog}\,x\rceil\bigr),\qquad P(u)=u+1-\mathrm{sexp}(u)\ \text{auf }[-1,0].$$
+    Die Welle $P$ ist nicht konstant, also hat $\mathrm{slog}(x)-\log^*x$ keinen Grenzwert („$\mathrm{slog}=\log^*x+c+o(1)$“ ist falsch). Numerisch:
+    $\min P=-0.0078653491479050970569$ (bei $u=-0.80655771470683940698$), $\max P=0.0091704769530226506576$ (bei $u=-0.22232190393351360972$),
+    Nullstelle $-0.53308891039947058146$, Mittel $\int_{-1}^0P=\tfrac12-\int_{-1}^0\mathrm{sexp}=0.00078181717000866027139$.
+  einfach: >-
+    Der einfache iterierte Logarithmus (so oft logarithmieren, bis man unter 1 ist, und den Rest linear dazuzählen) liegt sehr nahe an Knesers
+    Superlogarithmus. Der Unterschied ist aber keine feste Zahl, sondern eine kleine Welle, die sich immer wiederholt und nie grösser als 0.01 wird.
+  beweis:
+    art: vollstaendig
+    text: |
+      Beide Funktionen erfüllen $A(e^x)=A(x)+1$, also ist die Differenz 1-periodisch in der Höhe; auf $[0,1]$ ist sie in $u=\mathrm{slog}\,x\in[-1,0]$ gleich $u-(\mathrm{sexp}(u)-1)=P(u)$.
+      Wäre $P$ konstant, so wäre $\mathrm{sexp}$ auf $[-1,0]$ linear, wegen Analytizität überall — Widerspruch zu $\mathrm{sexp}(1)=e$. Mittelwert über gr.beob.integrale_kneser.
+      Zahlen aus zwei Taylor-Sätzen, 20 Stellen gleich.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B11 und Abschnitt 4; a11_slog_reell.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, die Form folgt direkt aus der Abel-Gleichung; die Schranken sind Rechnung.'
+    f2_benutzte_voraussetzungen: 'Abel-Gleichung für slog und slog_lin, Analytizität von sexp, Kneser-Werte auf [−1,0].'
+    f3_spezialfall: 'Zwei Abel-Funktionen unterscheiden sich um eine periodische Funktion der Höhe (allgemein).'
+    f4_uebertragbar: 'Auf jede Basis b > η und jede andere Tetration (andere Welle P).'
+    f5_neue_frage: 'Gibt die Welle P eine neue reelle Kennzeichnung von Kneser (z. B. über ihre Extrema)?'
+  bewertung: {richtigkeit: 'Form vollständig; Zahlen numerisch auf 20 Stellen', neuheit: neu_ungeprueft, nutzen: 'Genaue, schulnahe Beschreibung von slog durch den iterierten Logarithmus.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: gr.satz.logstern, notiz: 'präzisiert: Differenz ist eine periodische Welle'}
+    - {typ: stuetzt_sich_auf, ziel: gr.beob.integrale_kneser}
+    - {typ: verwandt, ziel: kn.def.slog}

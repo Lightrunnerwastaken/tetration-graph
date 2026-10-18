@@ -1,0 +1,59 @@
+gebiet: it
+# Runde 18.10.2026, Agent 05 (Kombinatorik): Erzeuger von eˣ − 1 + u, Bernoulli-Formel; Negativergebnis zur Pentation.
+# Rechnungen: forschung/runde_2026_10_18/05_kombinatorik/ (BERICHT.md, s2_generator.py).
+aussagen:
+
+- id: it.satz.julia_variation_bernoulli
+  titel: 'Der in u lineare Teil des Erzeugers von eˣ − 1 + u ist eine Bernoulli-Reihe in der Julia-Funktion von eˣ − 1'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, e_minus_1]
+  bereich: '$\lambda_u$ formaler Erzeuger von $e^x-1+u$ (kn.satz.stoerungsreihe_fluss), $\lambda_0$ Julia-Funktion von $e^x-1$'
+  aussage: |
+    Für $\mu:=\partial_u\lambda_u|_{u=0}$ gilt
+    $$\mu=\lambda_0\sum_{k\ge0}\frac{B_k^+}{k!}\Bigl(\lambda_0\frac{d}{dx}\Bigr)^{k}\frac1{\lambda_0},$$
+    mit den Bernoulli-Zahlen $B_k^+$ ($B_1^+=+\tfrac12$). Explizit
+    $\mu=1-\tfrac x2+\tfrac{x^2}6-\tfrac{x^3}{18}+\tfrac{5x^4}{288}-\tfrac{x^5}{240}+\tfrac{x^6}{2880}+\tfrac{61x^7}{302400}+\dots$
+  einfach: >-
+    Wenn man die Abbildung eˣ − 1 ein kleines Stück verschiebt, ändert sich ihre „Geschwindigkeitsregel“. Diese Änderung lässt sich mit den
+    berühmten Bernoulli-Zahlen genau hinschreiben.
+  beweis:
+    art: vollstaendig
+    text: |
+      Variation $f_\varepsilon=\exp(\lambda_\varepsilon\partial)x$: $\delta f=\lambda(f(x))\int_0^1\psi(\varphi_sx)\,ds$ mit $\psi=\delta\lambda/\lambda$. Mit $\delta f=1$ und der Fatou-Zeit $\tau$
+      ($D=d/d\tau=\lambda\,d/dx$) wird daraus $A(\tau+1)=\frac{e^D-1}{D}\Psi(\tau)$ mit $A=1/\lambda\circ\varphi_\tau$, also $\Psi=\frac{De^D}{e^D-1}A=\sum B_k^+D^kA/k!$.
+      Die Reihe konvergiert $x$-adisch, weil jedes $D$ den Grad um 1 hebt. Exakt geprüft bis $x^9$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S9 und B4; s2_generator.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; die Variationsformel ist klassisch, die geschlossene Bernoulli-Form hier hergeleitet.'
+    f2_benutzte_voraussetzungen: 'Formaler Fluss, Fatou-Zeit, x-adische Konvergenz.'
+    f3_spezialfall: 'Ja: Variation des Erzeugers einer beliebigen formal einbettbaren Abbildung.'
+    f4_uebertragbar: 'Auf jede Störung $f+\varepsilon$ einer parabolischen Abbildung.'
+    f5_neue_frage: 'Gibt es eine ähnliche Formel für die höheren u-Ordnungen von $\lambda_u$?'
+  bewertung: {richtigkeit: 'vollständig; exakt bis x⁹', neuheit: neu_ungeprueft, nutzen: 'Geschlossene erste Ordnung des Erzeugers der Störungsreihe.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.stoerungsreihe_fluss}
+    - {typ: verwandt, ziel: it.lem.julia}
+
+- id: it.gescheitert.pentation_baeume
+  titel: 'Keine neue Baum-Kombinatorik für die Pentation: der nächste Rang ist an der Störungsstelle hyperbolisch'
+  art: gescheitert
+  ebene: C
+  status: gescheitert
+  niveau: forschung
+  objekte: [superfunktion, schroeder, hyperoperation]
+  aussage: |
+    Idee: Die Störungsreihe zählt Bäume (kn.satz.stoerungsreihe_baeume); vielleicht zählt die nächste Stufe „Bäume aus Bäumen“. Ergebnis: Die Abbildung
+    $y\mapsto G(y;u)$ hat bei 0 den Multiplikator $\lambda_u(0)=u+\dots$ (kn.satz.stoerungsreihe_fluss), ist also hyperbolisch (anziehend) und nicht
+    parabolisch. Die nächste Stufe ist eine Koenigs-Linearisierung ohne Baumstruktur; „Bäume aus Bäumen“ ergeben nur Ketten von Ketten, also die
+    Kettenformel $Z(st)=Z(s)\circ Z(t)$.
+  einfach: >-
+    Man hoffte, dass die nächste Rechenstufe nach der Tetration auch etwas Schönes zählt. Das klappt hier nicht: An dieser Stelle verhält sich die
+    nächste Stufe ganz gewöhnlich, und es entsteht keine neue Zählstruktur.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, Q1'}]
+  bewertung: {richtigkeit: 'elementar bewiesen', neuheit: neu_ungeprueft, nutzen: 'Schliesst einen naheliegenden Weg zur Kombinatorik der Pentation aus.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.stoerungsreihe_baeume}
+    - {typ: verwandt, ziel: it.satz.koenigs}

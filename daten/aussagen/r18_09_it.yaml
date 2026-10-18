@@ -1,0 +1,37 @@
+gebiet: it
+# Runde 18.10.2026, Bericht 09: reguläre Superfunktion eines Polynoms lässt keinen Wert aus.
+# Rechnungen: forschung/runde_2026_10_18/09_superfunktionen/.
+aussagen:
+
+- id: it.satz.poincare_polynom_surjektiv
+  titel: 'Die Poincaré-Funktion von x^d + c (c ≠ 0) lässt keinen Wert aus — anders als bei eˣ, wo 0 fehlt'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [schroeder, superfunktion, regulaer_T]
+  bereich: '$f(x)=x^d+c$, $d\ge2$, $c\neq0$; abstossender Fixpunkt $L$ mit Multiplikator $\lambda$; Poincaré-Funktion $\Psi$ mit $\Psi(\lambda u)=f(\Psi(u))$, $\Psi(0)=L$, $\Psi''(0)=1$; reguläre Superfunktion $F(s)=\Psi(\lambda^s)$'
+  aussage: |
+    $\Psi$ ist ganz und nimmt **jeden** komplexen Wert an; also lässt auch die reguläre Superfunktion $F$ keinen Wert aus.
+    Bei $e^x$ dagegen lässt $\Psi$ den Wert 0 aus (kn.satz.theta_singularitaet) — dieser Unterschied ist für die Singularitäten von Knesers θ aber nicht entscheidend
+    (kn.satz.zoo_singulaerer_ort), wohl aber für die Nullstellen von $S'$ (kn.beob.zoo_ableitung_nullstellen).
+  einfach: >-
+    Die gewöhnliche Lösung am komplexen Fixpunkt trifft bei einem Polynom wie x²+1 jede Zahl. Bei eˣ ist das anders: dort wird die Null nie getroffen.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\Psi$ ist ganz, weil $\Psi(u)=f^n(\Psi(u/\lambda^n))$. Lässt $\Psi$ den Wert $a$ aus, so wegen $\Psi(\lambda u)=f(\Psi(u))$ auch alle Urbilder $f^{-1}(a)$.
+      Nach Picard ist das höchstens ein Wert, also hat $a$ nur ein Urbild: $a=c$ (Urbild 0). Dann muss $\Psi$ auch alle Urbilder von 0 auslassen, die $d\ge2$
+      verschiedenen Wurzeln von $-c$ — Widerspruch.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, P1 und B-P1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Picard und der Funktionalgleichung (elementar).'
+    f2_benutzte_voraussetzungen: 'Kleiner Satz von Picard; f hat höchstens einen Wert mit nur einem Urbild (c), und c ≠ 0.'
+    f3_spezialfall: 'Ja: Ausnahmewerte von Poincaré-Funktionen liegen in der Menge der ausnahmsweisen Werte von f.'
+    f4_uebertragbar: 'Auf jedes Polynom vom Grad ≥ 2, das nicht zu x^d konjugiert ist; bei x^d (c = 0) fehlt der Wert 0 tatsächlich.'
+    f5_neue_frage: 'Welche ganzen f haben eine Poincaré-Funktion mit Ausnahmewert (nur die mit einem asymptotischen, rückwärts invarianten Wert)?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Zeigt, dass der Ausnahmewert bei eˣ nicht der Grund für Knesers θ-Singularität ist.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: it.satz.koenigs}
+    - {typ: motiviert, ziel: kn.satz.zoo_singulaerer_ort}

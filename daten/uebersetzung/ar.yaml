@@ -177,6 +177,44 @@
     worum: |
       Remarkably little is known about the numbers in towers. Even such simple questions as “Is ${}^4\pi$ an integer?” are open — not because they sound hard,
       but because one cannot even compute ${}^4\pi$ precisely enough to check.
+- id: ar.konstr.ef_profinit
+  quelle_hash: b906f2c50afa
+  theorie_hash: 3ec91e548bf8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Profinite exponential factorial: Ê(0) = 0, Ê(−1) = Ê(1) = 1'
+    aussage: |-
+      $\hat E(x)\bmod m:=EF(n)\bmod m$ for $n\equiv x\pmod{\tilde\Lambda(m)}$, $n\ge N(m)$, defines a continuous map $\hat E:\hat{\mathbb Z}\to\hat{\mathbb Z}$ with $\hat E(x)=x\star\hat E(x-1)$ and
+      $$\hat E(0)=0,\quad\hat E(1)=1,\quad\hat E(-1)=1,\quad\hat E(2)=(0;2,2,2,\dots)\ (\text{2-adisch }0,\text{ sonst }2),\quad\hat E_2(x)=[x\text{ ungerade}].$$
+      In the sense of TPID 2, "$EF(0)$" is therefore profinitely 0, not $\gamma$: the profinite extension does not answer the real question, but shows $\hat E(-1)=\hat E(1)$.
+    bereich: $\hat{\mathbb Z}=\varprojlim\mathbb Z/m$; $\tilde\Lambda(m)$ and $N(m)$ as in ar.satz.ef_periode
+    einfach: One can also define the exponential factorial for "numbers" that live in all residue classes at the same time. There, 0 gives the
+      number 0 and −1 gives the number 1.
+    beweis:
+      text: |-
+        Compatible, since $\tilde\Lambda(m)\mid\tilde\Lambda(m')$ for $m\mid m'$. $\hat E(0)=0$, because $m\mid n$. $\hat E(-1)=1$: $n$ odd, $EF(n-1)$ even, $n\equiv-1\bmod p^k$, so $(-1)^{\rm gerade}=1$.
+        $\hat E(2)$: exponent $\equiv\hat E(1)=1\bmod\lambda(p^k)$, so 2 in $\mathbb Z_p$ ($p$ odd), 0 in $\mathbb Z_2$.
+    gegenbeispielsuche: Table for $2^{20},3^{12},5^8,7^6,10^6$ (E4c).
+    pruefung:
+      f1_folgt_unmittelbar: Yes, as soon as the period is known.
+      f2_benutzte_voraussetzungen: ar.satz.ef_periode (compatibility of the periods).
+      f3_spezialfall: Analogous to the profinite tower limit α̂ (ar.satz.pentation_block_konstant).
+      f4_uebertragbar: To every sequence that is eventually periodic modulo every m with compatible periods.
+      f5_neue_frage: Does Ê have further "nice" values, for instance at −2 or 1/2 ∈ ℤ̂ (for odd moduli)?
+    bewertung:
+      nutzen: Profinite answer to "EF(0)"; separates the arithmetic from the analytic extension.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B16; e4c_vorperiode2.py
+    - {}
+  en_theorie:
+    einordnung: Arithmetic answer next to the analytic question [[ar.frage.ef_fortsetzung]] and [[ar.satz.ef_null_ableitung]].
+    genau: $\hat E:\hat{\mathbb Z}\to\hat{\mathbb Z}$ continuous, $\hat E(0)=0$, $\hat E(\pm1)=1$.
+    warum: The periods $\tilde\Lambda(m)$ are compatible, so the residues for $n\equiv x$ define a value in every $\mathbb Z/m$.
+    worum: Can $EF$ be extended to profinite numbers — and what is "$EF(0)$" then?
 - id: ar.konstr.ef_sexp
   quelle_hash: 5ee278549c55
   theorie_hash: 6a9ac9144b13
@@ -280,6 +318,47 @@
       For $x\ne-1$ we have $T(x)\ne0$; then [[ar.satz.orbitschranke]].
     worum: |
       For every increasing tetration to base $e$: Of two values at distance $1$, at least one is transcendental — everywhere except at $-1$ (there $T(-1)=0$, $T(0)=1$).
+- id: ar.kor.padisch_hoehere_raenge
+  quelle_hash: 40d8a9edc80e
+  theorie_hash: f3df6ea0d131
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: All hyperoperations of rank 4 and above have the same p-adic limit — 3↑↑↑3 has exactly 7 625 597 484 986 finished final digits
+    aussage: |-
+      Every $H_r(a,n)$ with $r\ge4$ is a tower $a\uparrow\uparrow M_r(a,n)$ with $M_r(a,n)\to\infty$ (pentation: $M=a\uparrow\uparrow\uparrow(n-1)$). Hence all ranks $r\ge4$ have
+      the same limit $\alpha_p(a)$, and $v_p(H_r(a,n)-\alpha_p(a))=V_p(a)(M-t_p(a))$. Decimal: $D=\min$ of the 2-adic and 5-adic formula. Examples:
+      $D(3\uparrow\uparrow\uparrow3)=7\,625\,597\,484\,986$, $D(2\uparrow\uparrow\uparrow4)=65\,534$. Each pentation step adds $V(a)\,(a\uparrow\uparrow\uparrow n-a\uparrow\uparrow\uparrow(n-1))$ digits —
+      the congruence speed of pentation grows tetrationally.
+    bereich: hyperoperations $H_r(a,n)$, $r\ge4$, $n\ge1$; $D(\cdot)$ = number of final decimal digits
+    einfach: Pentation, hexation and all higher levels are in the end only towers of enormous height. That is why they all end at the same p-adic
+      limit, and one can say exactly how many last digits are already finished — for 3↑↑↑3 it is 7 625 597 484 986.
+    beweis:
+      text: |-
+        $H_r(a,n)=H_{r-1}(a,H_r(a,n-1))$; by induction every $H_r(a,n)$ is a tower $a\uparrow\uparrow M$. Then ar.satz.padisch_bewertung with $H=M$. Example: $3\uparrow\uparrow\uparrow3=3\uparrow\uparrow M$, $M=7625597484987$;
+        $v_2=1+2M$, $v_5=M-t_5(3)=M-1$ ($\mathrm{ord}_53=4$, $V_5(3)=1$, tower mod 4 stable from height 1), so $D=M-1$.
+    gegenbeispielsuche: 'Decimal $a<60$, $M<40$: no deviation (E3c).'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from ar.satz.padisch_bewertung.
+      f2_benutzte_voraussetzungen: Only that higher hyperoperations are towers of unbounded height.
+      f3_spezialfall: 'Yes: ar.satz.padisch_bewertung at enormous height.'
+      f4_uebertragbar: To every base and every modulus m (minimum over the prime divisors).
+      f5_neue_frage: Which digits follow after the finished ones? → ar.satz.padisch_koenigs, ar.satz.pentation_block_konstant
+    bewertung:
+      nutzen: Exact number of final digits for pentation and higher.
+      recherche: Core known (Ripà); formulation for higher ranks not found, elementary.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B3, B4; e3_hoehere_raenge.py
+  en_theorie:
+    beispiel: '$3\uparrow\uparrow\uparrow3=3\uparrow\uparrow7625597484987$: 5-adically $M-1$, 2-adically $2M+1$ finished digits, decimally the
+      minimum $M-1$.'
+    einordnung: 'Follows from [[ar.satz.padisch_bewertung]]; digits after that: [[ar.satz.pentation_block_konstant]].'
+    genau: All ranks $r\ge4$ have the same limit $\alpha_p(a)$; $D(3\uparrow\uparrow\uparrow3)=7\,625\,597\,484\,986$.
+    warum: Every higher hyperoperation is a tower $a\uparrow\uparrow M$ with a huge $M$; one puts $H=M$ into [[ar.satz.padisch_bewertung]].
+    worum: What does the exact valuation say about pentation and higher?
 - id: ar.lem.nullstellen
   quelle_hash: 01e4c4aa87ac
   theorie_hash: 9d093d4adc03
@@ -497,6 +576,50 @@
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K7; a_konstanten.py
     - {}
+- id: ar.satz.ef_periode
+  quelle_hash: 8746e06810f5
+  theorie_hash: f63c7d8acf4a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The exponential factorial modulo m has smallest period Λ̃(m) — the Carmichael chain with the factor of two capped
+    aussage: |-
+      $EF(n)\bmod m$ is eventually periodic with smallest period
+      $$P(m)=\tilde\Lambda(m)=\mathrm{kgV}_{j\ge0}\,\widetilde{\lambda^{j}(m)},\qquad\text{equivalently}\quad P(m)=\mathrm{kgV}\bigl(\tilde m,P(\lambda(m))\bigr).$$
+      In particular $EF(n)\bmod2^k=[n\text{ ungerade}]$ for large $n$ (period 2). Examples: $P(5)=10$, $P(23)=2530$, $P(16)=2$, $P(100)=50$.
+      Preperiod: $EF(n)\bmod m$ is periodic from $N(m)\le6$ on for all $m<400$; $N(2^k)=6$ for $k\ge21$ (proved up to $\approx EF(5)$), so $N$ is unbounded, but grows like an inverse of $EF$.
+    bereich: $EF(n)=n^{EF(n-1)}$, $EF(1)=1$; $\lambda$ the Carmichael function; $\tilde x$ = $x$ with its power of two capped at $2^1$
+    einfach: 'The exponential factorial 1, 2, 9, 262144, … becomes unimaginably large. Its residues modulo m, however, eventually repeat, and
+      we know the exact length of this repetition: one computes m, then λ(m), λ(λ(m)), … and takes the least common multiple — with powers of
+      two capped.'
+    beweis:
+      text: |-
+        Upper bound: CRT; $p=2$: for even $n$, $EF(n)\equiv0$; for odd $n$, $\lambda(2^k)$ divides the exponent, so $\equiv1$, i.e. $P(2^k)=2$. $p$ odd: $EF(n)\bmod p^k$ depends only on $n\bmod p^k$
+        and $EF(n-1)\bmod\lambda(p^k)$. Lower bound: (ii) $p^k\mid P(p^k)$, because $D=\mathrm{kgV}(p^{k-1},P(\lambda(p^k)))$ is not a period (for $k=1$ zero pattern, for $k\ge2$ with $n\equiv2\bmod p$:
+        $v_p((1+D/n)^e-1)=k-1<k$); (i) $P(\lambda(p^k))\mid P(p^k)$ by choosing $n$ with $q^j\mid\mathrm{ord}_pn$ and CRT. Unwinding gives $\tilde\Lambda(m)$.
+    gegenbeispielsuche: 'All 218 $m<260$ and 632 $m\in[260,1500)$ with $\tilde\Lambda\le3\cdot10^4$: no deviation.'
+    pruefung:
+      f1_folgt_unmittelbar: Upper bound yes (Carmichael); the equality needs the lower bound with a CRT argument.
+      f2_benutzte_voraussetzungen: Carmichael function, CRT, LTE.
+      f3_spezialfall: Counterpart of the period of n↑↑∞ mod m (OEIS A127699), there without capping the factor of two.
+      f4_uebertragbar: To other descending towers b_n^{b_{n−1}^{⋯}} with b_n = f(n).
+      f5_neue_frage: Exact formula for the preperiod N(m) (jumps at N(2^k) for k = 3, 19, 21).
+    bewertung:
+      nutzen: First exact arithmetic of the exponential factorial modulo m.
+      recherche: Not found in OEIS; A127699 (counterpart for towers) has no capping.
+      richtigkeit: complete; 850 moduli
+    quellen:
+    - stelle: forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B13, B14, B15; e4_expfakultaet.py, e4b_perioden.py, e4c_vorperiode2.py
+    - {}
+  en_theorie:
+    beispiel: '$P(5)=10$: $EF(n)\bmod5$ repeats from $n\le6$ on with period 10.'
+    einordnung: Counterpart of [[ar.satz.selbstpotenz_kongruenz]]; profinite extension [[ar.konstr.ef_profinit]].
+    genau: Smallest period $\tilde\Lambda(m)=\mathrm{kgV}_j\widetilde{\lambda^j(m)}$, factors of two capped at 2; e.g. $P(100)=50$.
+    warum: Modulo $p^k$, $EF(n)$ depends on $n\bmod p^k$ and on the exponent modulo $\lambda(p^k)$ — hence the chain. Modulo $2^k$, $EF(n)$ for
+      large $n$ is only $[n\text{ ungerade}]$, hence the capping.
+    worum: How do the residues of the exponential factorial $EF(n)=n^{EF(n-1)}$ repeat?
 - id: ar.satz.funktional_ks
   quelle_hash: 2330ea5d457c
   theorie_hash: 130b8ba7b00c
@@ -661,6 +784,43 @@
     worum: |
       An important warning: The real equation alone says nothing about the kind of number its values are. One can build a smooth, increasing tetration that takes any
       desired value between $1$ and $e$ at $\tfrac12$ — even a rational one.
+- id: ar.satz.keine_padische_interpolation
+  quelle_hash: 3fcd6a371aad
+  theorie_hash: 2dd12eefd85e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: From rank 4 on there is no p-adically continuous extension in the height
+    aussage: |-
+      For $r\ge4$, $n\mapsto H_r(a,n)$ cannot be extended p-adically continuously on **any** arithmetic progression. Ranks 1–3, by contrast, interpolate: $a+n$, $a\cdot n$ always, $a^n$ for $a\equiv1\bmod p$
+      (even analytically), otherwise class by class mod $p-1$. In particular there is no p-adic tetration with heights in $\mathbb Z_p$; the Schröder route also fails, because $\lambda^s=p^{Vs}u^s$ is not defined for $s\notin\mathbb Z$.
+    bereich: hyperoperations $H_r(a,n)$; extension $F$ to the p-adic closure of a progression $n_0+d\mathbb N$
+    einfach: Addition, multiplication and exponentiation can be extended p-adically to "in-between heights". From tetration on this never works
+      — precisely because the towers settle down p-adically.
+    beweis:
+      text: We have $n_0+dp^k\to n_0$ p-adically and $\to\infty$ in the reals, so $F(n_0)=\lim H_r(a,n_0+dp^k)=\alpha$; likewise $F(n_0+d)=\alpha$
+        — a contradiction to $H_r(a,n_0)<H_r(a,n_0+d)$, which are different as integers.
+    pruefung:
+      f1_folgt_unmittelbar: Yes (two lines) from the p-adic convergence.
+      f2_benutzte_voraussetzungen: Only that H_r(a, n) converges p-adically to α and differs for different n.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every sequence that converges p-adically and is not eventually constant.
+      f5_neue_frage: Is there a p-adic counterpart of the Kneser question with heights in another ring, for instance with p-adic dependence on
+        the base?
+    bewertung:
+      nutzen: Answers the question of a p-adic tetration for heights in ℤ_p in the negative.
+      recherche: Dichotomy formulation not found; content elementary.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B11
+  en_theorie:
+    einordnung: Answers the question from [[ar.satz.padische_tuerme]] and [[br.satz.ripa]] (f5) in the negative.
+    genau: No, for no rank $\ge4$ and on no progression; ranks 1–3 interpolate.
+    warum: $n_0+dp^k$ is p-adically close to $n_0$ but huge in the reals; the tower there is p-adically almost $\alpha$. A continuous extension
+      would have the same value $\alpha$ at $n_0$ and $n_0+d$ — a contradiction.
+    worum: Is there a p-adic tetration $a\uparrow\uparrow s$ for $s\in\mathbb Z_p$?
 - id: ar.satz.liouville_tuerme
   quelle_hash: 792e573dfc20
   theorie_hash: 781a3535e056
@@ -795,6 +955,169 @@
       If $T(x)$ is algebraic and $\ne0$, then $e^{T(x)}=T(x+1)$ is transcendental by Hermite–Lindemann. Only $T(x)=0$ remains.
     worum: |
       What the equation $T(x+1)=e^{T(x)}$ together with Hermite–Lindemann forces: Two neighboring tower values cannot both be algebraic — except $0$ and $1$.
+- id: ar.satz.padisch_bewertung
+  quelle_hash: 0af5994710fb
+  theorie_hash: 95103a780e64
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Exact number of finished p-adic digits of a tower: V·(H − t)'
+    aussage: |-
+      (i) $p$ odd, $p\nmid a$: With $V_p(a)=v_p(a^{p-1}-1)$ and the **onset height** $t_p(a)$ = smallest height $\ge-1$ from which $a\uparrow\uparrow n\bmod\mathrm{ord}_p(a)$ is constant, we have
+      $$v_p\bigl(a\uparrow\uparrow H-\alpha_p(a)\bigr)=V_p(a)\,(H-t_p(a))\qquad\text{for all }H\ge t_p(a).$$
+      (ii) $p=2$, $a$ odd: $v_2(a\uparrow\uparrow H-\alpha_2(a))=v_2(a-1)+H\,(v_2(a^2-1)-1)$ for all $H\ge0$.
+      (iii) $p\mid a$: $v_p(a\uparrow\uparrow H)=v_p(a)\cdot a\uparrow\uparrow(H-1)$ (and $\alpha_p(a)=0$).
+      For $H<t_p(a)$ there is **no** such formula: there, sums of units can happen to be divisible by $p$ (506 cases, e.g. $a=2$, $p=3$, $H=0$).
+    bereich: integers $a\ge2$, prime $p$, $\alpha_p(a)=\lim_Ha\uparrow\uparrow H$ in $\mathbb Z_p$, $a\uparrow\uparrow(-1)=0$
+    einfach: 'For a tower like 7^7^7^…, the last digits (in a number system for the prime p) eventually become fixed. How many exactly is a simple
+      calculation: a speed V times the height, minus a small onset height t.'
+    beweis:
+      text: |-
+        LTE: for $o=\mathrm{ord}_p(a)$ we have $v_p(a^x-1)=0$ for $o\nmid x$ and $=V+v_p(x)$ for $o\mid x$ (since $(p-1)/o$ is coprime to $p$). With $D_H=a\uparrow\uparrow(H+1)-a\uparrow\uparrow H=a^{a\uparrow\uparrow(H-1)}(a^{D_{H-1}}-1)$
+        we get $d_H=v_p(D_H)=V+d_{H-1}$ if $o\mid D_{H-1}$, and 0 otherwise. From $H\ge t+1$ on, $o\mid D_{H-1}$; minimality of $t$ gives $d_t=0$ (resp. $d_0=V$ for $t=-1$). Hence $d_H=V(H-t)$,
+        and since $\alpha-a\uparrow\uparrow H=\sum_{j\ge H}D_j$ has strictly increasing valuations, $v_p(a\uparrow\uparrow H-\alpha)=d_H$. For $p=2$ analogously with $v_2(a^x-1)=v_2(a^2-1)+v_2(x)-1$ ($x$ even).
+    gegenbeispielsuche: '49 652 cases ($p\le13$, $a<400$, $H<30$, 40 digits) and $H=100,300$: no deviation.'
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: from the LTE lemma and the stabilization of the towers modulo ord_p(a).'
+      f2_benutzte_voraussetzungen: LTE, stabilization modulo m (br.satz.turm_mod_m); no analysis.
+      f3_spezialfall: 'Refines br.satz.ripa: there a constant speed from some height on, here the exact onset height.'
+      f4_uebertragbar: To all hyperoperations of rank 4 and above (ar.kor.padisch_hoehere_raenge) and to decimal final digits (minimum over 2
+        and 5).
+      f5_neue_frage: Distribution of the valuations below the onset height — random like 1/p?
+    bewertung:
+      nutzen: Makes the final-digits question exact for every prime.
+      recherche: Core (constant speed) in Ripà–Onnis; exact form with onset height as order stabilization not found there.
+      richtigkeit: complete; 49 652 cases without deviation
+    quellen:
+    - stelle: forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B1, B2; e1_bewertung.py, e3_hoehere_raenge.py
+    - {}
+  en_theorie:
+    beispiel: '$a=3$, $p=5$: $\mathrm{ord}_53=4$, $V=v_5(80)=1$, $t=1$; so $3\uparrow\uparrow H$ has exactly $H-1$ finished 5-adic digits.'
+    einordnung: 'Refines [[br.satz.ripa]]; consequence for higher ranks: [[ar.kor.padisch_hoehere_raenge]].'
+    genau: $v_p(a\uparrow\uparrow H-\alpha_p(a))=V_p(a)(H-t_p(a))$ for $H\ge t_p(a)$, with $V_p(a)=v_p(a^{p-1}-1)$ and the onset height $t_p(a)$.
+    warum: The distance between two neighboring towers is $a^{x}(a^{D}-1)$; by the LTE lemma its valuation grows by exactly $V$ as soon as $D$
+      is divisible by $\mathrm{ord}_p(a)$ — and from the onset height on this always holds.
+    worum: How many p-adic final digits of $a\uparrow\uparrow H$ are already fixed?
+- id: ar.satz.padisch_isometrie
+  quelle_hash: c41d6a87af52
+  theorie_hash: 38643d71f09b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: a ↦ α_p(a) is an analytic isometry class by class
+    aussage: |-
+      On each class, $a\mapsto\alpha_p(a)$ is locally analytic and **distance-preserving**: $v_p(\alpha_p(a')-\alpha_p(a))=v_p(a'-a)$. In particular it is nowhere locally constant
+      and injective on classes. Derivative: $\alpha'(a)=\alpha^2/(a(1-\lambda))$, a unit.
+    bereich: classes of bases with the same $a\bmod p$ and the same stable residue $c$ mod $p-1$
+    einfach: If one changes the base a little p-adically, the limit of the tower changes by exactly the same amount — no more and no less.
+    beweis:
+      text: |-
+        For $n\ge2$ the coefficient of $(z^n-z'^n)/(z-z')$ in $Y(z)-Y(z')$ has valuation $\ge(n-1)-v_p(n!)>0$, hence $v_p(Y(z)-Y(z'))=v_p(z-z')$. The same class gives the same $u$
+        and $L(a)-L(a')=\log_p\langle a/a'\rangle$ with valuation $v_p(a-a')$.
+    gegenbeispielsuche: 2 992 cases without deviation (E2b).
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the Lambert formula.
+      f2_benutzte_voraussetzungen: Valuation of the coefficients of Y.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To κ_p(a) (presumably also analytic class by class).
+      f5_neue_frage: Is κ_p(a) as a function of a also an isometry, or does it have zeros of the derivative?
+    bewertung:
+      nutzen: Describes the dependence of the limit on the base completely.
+      richtigkeit: complete; 2 992 cases
+    quellen:
+    - stelle: forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B6; e2_lambert_koenigs.py
+  en_theorie:
+    einordnung: Follows from [[ar.satz.padisch_lambert]].
+    genau: On classes of equal residue, $v_p(\alpha(a')-\alpha(a))=v_p(a'-a)$ — an analytic isometry.
+    warum: In the Lambert series all terms from the second on are p-adically small; the linear part alone determines the distance.
+    worum: How does the p-adic tower limit depend on the base?
+- id: ar.satz.padisch_koenigs
+  quelle_hash: fe7acaca00e9
+  theorie_hash: b5b07b1a0b87
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'p-adic Koenigs constant: the next digits of a tower run geometrically, and V is the valuation of the multiplier'
+    aussage: |-
+      (i) The multiplier at the fixed point is $\lambda=g'(\alpha)=\alpha\log_pa=\log_p\alpha$, and $v_p(\lambda)=V_p(a)$: **the congruence speed is the valuation of the multiplier.**
+      (ii) The p-adic Koenigs constant $\kappa_p(a)=\lim_n(a\uparrow\uparrow n-\alpha)/\lambda^n$ exists and is $\ne0$; $v_p(\kappa)=-V\,t_p(a)$ ($p$ odd), $v_2(\kappa)=v_2(a-1)$.
+      (iii) Digit law: the first not yet finished block $F_j(H)=\bigl((a\uparrow\uparrow H-\alpha)/p^{v}\bigr)\bmod p^j$ is $\equiv\mathrm{unit}(\kappa)\,u^H$ with $u=\mathrm{unit}(\lambda)$, hence periodic in $H$
+      with period $\mathrm{ord}(u\bmod p^j)$. Examples (unit part of $\kappa$ mod $p^{12}$, last digits): $\kappa_5(2)$: 207392627, $v=-2$; $\kappa_3(2)$: 485993, $v=-1$; $\kappa_2(3)$: 583, $v=1$.
+    bereich: $g(x)=u\,e^{Lx}$ as in ar.satz.padisch_lambert, fixed point $\alpha=\alpha_p(a)$, $V=V_p(a)$
+    einfach: 'After the already finished digits of a tower come digits that change according to a simple pattern: at every step they are multiplied
+      by the same number. The starting number of this pattern is a new constant, the p-adic Koenigs constant.'
+    beweis:
+      text: |-
+        $g'(\alpha)=Lue^{L\alpha}=L\alpha=\log_p\alpha$ because $\alpha=a^\alpha$; $v_p(\lambda)=v_p(L)=V$. Since $0<|\lambda|<1$, Koenigs' theorem (which holds verbatim in non-archimedean fields) gives an analytic
+        linearization $\sigma(g(x))=\lambda\sigma(x)$ with $\sigma(x)=x-\alpha+O((x-\alpha)^2)$; from this $(a\uparrow\uparrow n-\alpha)/\lambda^n\to\kappa\ne0$ with error $O(|\lambda|^n)$. $v_p(\kappa)$ follows from ar.satz.padisch_bewertung;
+        the block is $\mathrm{unit}(\kappa)\mathrm{unit}(\lambda)^H\bmod p^j$ as soon as the error lies below $p^{-j}$.
+    gegenbeispielsuche: 'E2c: 11 pairs at 120 digits; E3b/E6a: 7 pairs, each ≥ 67 heights, no deviation.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from Koenigs' theorem in the non-archimedean setting, once the multiplier is known.
+      f2_benutzte_voraussetzungen: Koenigs linearization over ℚ_p; ar.satz.padisch_bewertung for v_p(κ).
+      f3_spezialfall: p-adic counterpart of it.satz.koenigs for the tower.
+      f4_uebertragbar: To every p-adically attracting fixed point, also mixed towers.
+      f5_neue_frage: Can κ_p(a) be expressed in closed form (series as for α_p)? Relations between κ_p(a) for different p?
+    bewertung:
+      nutzen: New invariant and a law for the next digits; interprets V dynamically.
+      richtigkeit: complete; numerically confirmed
+    quellen:
+    - stelle: forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B7, B8, B9; e2_lambert_koenigs.py, e3_hoehere_raenge.py, e6_block_profinit.py
+  en_theorie:
+    beispiel: $\kappa_5(2)$ has valuation $-2$ and ends in 207392627 mod $5^{12}$.
+    einordnung: 'p-adic counterpart of [[it.satz.koenigs]]; pentation: [[ar.satz.pentation_block_konstant]].'
+    genau: $\lambda=\log_p\alpha$ has valuation $V$; $(a\uparrow\uparrow n-\alpha)/\lambda^n\to\kappa_p(a)\ne0$; the first unfinished block is
+      $\mathrm{unit}(\kappa)\,u^H$.
+    warum: Near the attracting fixed point, by Koenigs the iteration is a pure stretching by $\lambda$ — this holds p-adically just as it does
+      in the complex case.
+    worum: What happens to the digits directly after the finished ones?
+- id: ar.satz.padisch_lambert
+  quelle_hash: 4e0308b847a5
+  theorie_hash: eb5723937297
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The p-adic tower limit is the Lambert series in log_p a
+    aussage: |-
+      $$\alpha_p(a)=u\sum_{n\ge0}\frac{(n+1)^{n-1}}{n!}\,(u\log_pa)^n,\qquad u=\omega(a)^c\quad(p=2:\ u=\pm1\equiv a\bmod 4).$$
+      This is the same series as for the real infinite tower, $h(a)=-W(-\ln a)/\ln a$, only with $\log_p$ and the root of unity $u$ as a rotation.
+    bereich: $p\nmid a$; $\omega$ Teichmüller character, $c$ the stable residue of the tower mod $p-1$, $\log_p$ the p-adic logarithm
+    einfach: For the real infinite tower there is a famous formula with the Lambert W function. Exactly the same formula holds p-adically — one
+      only has to replace the ordinary logarithm by the p-adic one and build in a small rotation.
+    beweis:
+      text: |-
+        $Y(z)=\sum(n+1)^{n-1}z^n/n!$ formally satisfies $Y=e^{zY}$ and converges for $v_p(z)>1/(p-1)$; there $Y\equiv1$ and composition with $\exp$ is admissible. From the stabilization mod $p-1$ on,
+        $a^x=u\,e^{Lx}=:g(x)$ with $L=\log_pa$, $v_p(L)\ge1$; $g$ is a contraction on $\mathbb Z_p$ with factor $|L|$, the tower is a $g$-orbit, its limit the unique fixed point,
+        and $x=uY(uL)$ satisfies $x=ue^{Lx}$. ($p=2$ analogously with $v_2(L)\ge2$.)
+    gegenbeispielsuche: 668 cases, 60 digits, $p\in\{2,3,5,7,11,13,101\}$; cross-check 25 digits.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: from Banach''s fixed-point theorem and the Lagrange series of Y = e^{zY}.'
+      f2_benutzte_voraussetzungen: Convergence of the p-adic exponential series, Teichmüller decomposition a = ω(a)⟨a⟩.
+      f3_spezialfall: p-adic counterpart of fp.satz.lambert.
+      f4_uebertragbar: Perhaps to mixed towers with periodic bases (fixed point of a product of contractions).
+      f5_neue_frage: Can the Koenigs constant κ_p(a) also be expressed by such a series?
+    bewertung:
+      nutzen: Closed formula for the p-adic limit; connects p-adic and real towers.
+      recherche: Refines Shapiro–Shapiro Prop. 5.4; explicit series not found there or in OEIS.
+      richtigkeit: complete; 668 cases
+    quellen:
+    - stelle: forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B5; e2_lambert_koenigs.py
+    - stelle: Prop. 5.4
+  en_theorie:
+    beispiel: Real-valued, the same series $h(a)=-W(-\ln a)/\ln a$ is the value of $a^{a^{a^{\cdots}}}$ for $a\le\eta$.
+    einordnung: Refines [[ar.satz.padische_tuerme]]; real counterpart [[fp.satz.lambert]]; consequence [[ar.satz.padisch_isometrie]].
+    genau: $\alpha_p(a)=u\sum_{n\ge0}\frac{(n+1)^{n-1}}{n!}(u\log_pa)^n$ with a root of unity $u$.
+    warum: From some height on, the tower is an orbit of the contraction $g(x)=u\,e^{x\log_pa}$; its fixed point solves $x=ue^{Lx}$, and the Lambert
+      series $Y=e^{zY}$ solves that.
+    worum: What is the value of the p-adic infinite tower?
 - id: ar.satz.padische_tuerme
   quelle_hash: 1a6a17a21025
   theorie_hash: d3a166923ab5
@@ -840,6 +1163,42 @@
       2. For $n\equiv1\pmod p$, $x\mapsto n^x$ is a contraction on $\mathbb Z_p$ with factor $1/p$; Banach yields exactly one fixed point.
     worum: |
       In the reals the infinite tower converges only up to base $e^{1/e}$. In the $p$-adic numbers it converges for every integer base.
+- id: ar.satz.pentation_block_konstant
+  quelle_hash: f09264f9b3c8
+  theorie_hash: 85c99c550a2f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: For pentation, the first unfinished digit block freezes
+    aussage: |-
+      The fresh block of $a\uparrow\uparrow\uparrow n$ is **constant** for large $n$, equal to $\mathrm{unit}(\kappa)\,u^{\hat\alpha(a)}\bmod p^j$: For tetration it runs geometrically, for pentation the exponent
+      contains the tower limit itself. Here $\hat\alpha:\hat{\mathbb Z}\to\hat{\mathbb Z}$ (tower $a\uparrow\uparrow\infty$ in all moduli at once) is continuous with $\hat\alpha(0)=0$, $\hat\alpha(1)=1$, $\hat\alpha(-1)=-1$.
+      Example $p=5$, $a=2$: $\beta_4=357$.
+    bereich: $a\uparrow\uparrow\uparrow n$ for large $n$; $\hat\alpha(a)\in\hat{\mathbb Z}$ the profinite tower limit
+    einfach: For tetration, the next digits still change from step to step according to a pattern. For pentation they eventually stop completely,
+      because the heights are themselves towers whose residues become constant.
+    beweis:
+      text: 'From ar.satz.padisch_koenigs with $H=M_n=a\uparrow\uparrow\uparrow(n-1)$: $M_n$ is a tower, hence modulo $\mathrm{ord}(u\bmod p^j)$
+        eventually constant, equal to $\hat\alpha(a)$ modulo this order.'
+    gegenbeispielsuche: Direct check impossible (heights too large); α̂ checked at three moduli up to 2.5·10⁸.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the digit law and the stabilization of the heights.
+      f2_benutzte_voraussetzungen: ar.satz.padisch_koenigs, towers modulo m.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To all ranks from 5 on (there too the heights are towers).
+      f5_neue_frage: Is there a formula for the frozen blocks β_j in terms of κ and α̂?
+    bewertung:
+      nutzen: Shows a qualitative difference between tetration and pentation in the digits.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B10, B12; e6_block_profinit.py
+  en_theorie:
+    einordnung: Follows from [[ar.satz.padisch_koenigs]]; related [[ar.kor.padisch_hoehere_raenge]].
+    genau: 'No: the block of $a\uparrow\uparrow\uparrow n$ is eventually constant $\mathrm{unit}(\kappa)u^{\hat\alpha(a)}$.'
+    warum: The height $M_n=a\uparrow\uparrow\uparrow(n-1)$ is itself a tower, its residues become constant; hence so does $u^{M_n}$.
+    worum: Do the unfinished digits also run geometrically for pentation?
 - id: ar.satz.pila
   quelle_hash: b5921c51da47
   theorie_hash: 620fa4b38c71

@@ -1,0 +1,107 @@
+# Theorie-Blöcke zur Runde 18.10.2026, Bericht 07 „Ränge“ (forschung/runde_2026_10_18/07_raenge/BERICHT.md).
+
+kn.satz.koenigs_leiter_monoton:
+  worum: |
+    Für kleine Basen $b$ bleibt jede höhere Rechenart $H_r(b,\cdot)$ ab einem Rang beschränkt und hat einen anziehenden Fixpunkt $p_r$.
+    Dann ist die nächste Stufe durch die Koenigs-Konstruktion an $p_r$ natürlich festgelegt.
+  genau: |
+    $H_{r+1}(x)=\sigma_r^{-1}(\lambda_r^x\sigma_r(1))$ steigt gegen $p_r$, und $b<p_{r+1}<p_r$; $H_r(b,b)$ fällt streng in $r$.
+  warum: |
+    Die neue Stufe bleibt unter $p_r$, also auch ihr Fixpunkt. Ihre Bahn $1,b,\dots$ liegt ab dem zweiten Glied über $b$, also liegt auch der Grenzwert $p_{r+1}$ über $b$.
+  beispiel: |
+    $b=\sqrt2$: $p_3=2$, $p_4=1.549217$, $p_8=1.438372$, $p_{15}=1.421547$ — fallend gegen $\sqrt2=1.414214$.
+  bilder: []
+  einordnung: |
+    Rahmen für [[kn.verm.grenzprofil_rampe]] und [[kn.satz.plateau_modell]]; Schwellen allgemein: [[kn.satz.schwellen_monoton]].
+
+kn.verm.grenzprofil_rampe:
+  worum: |
+    Wie sieht $H_r(b,x)$ für sehr hohen Rang aus?
+  genau: |
+    Vermutet: $H_r(b,x)\to\min(x+1,b)$ für $x\ge0$, $1<b<2$.
+  warum: |
+    Im fast flachen Plateau ist die Schröder-Funktion fast die Identität. Die Funktionalgleichung gibt dann $H_{r+1}(x)-1\approx-\ln(\lambda_{r-1}^{b-1}+\lambda_r^x)/L_{r-1}$,
+    und weil $\lambda_r\to0$, wird daraus $\min(b-1,x)$.
+  beispiel: |
+    $b=1.2$, Rang 15: $H(0.75)=1.198815$, die Rampe gibt 1.2.
+  bilder: []
+  einordnung: |
+    Bei $b=2$ dasselbe Bild wie [[kn.beob.zwischenwerte_basis2]]; an den Grenzbasen [[kn.beob.kritische_profile]]. Erklärt [[kn.gescheitert.konvexitaetsweg]].
+
+kn.satz.plateau_modell:
+  worum: |
+    Zwei Zahlen je Rang — Abstand $\delta_r=p_r-b$ und Anziehung $\lambda_r$ — beschreiben die Leiter fast vollständig.
+  genau: |
+    $\delta_{r+1}=\delta_r(1-\mu_r)$, $\lambda_{r+1}=\delta_rL_r\mu_r$, $\mu_r=\lambda_r^{b-1+\delta_{r+1}}$, Fehler $O(L_r\delta_r)$.
+  warum: |
+    Linearisierung der Schröder-Funktion im Plateau; die Fehlerschranke ist noch nicht bewiesen.
+  beispiel: |
+    Bei $b=1.2$, Rang 14, weicht der Modellschritt um $1.6\cdot10^{-4}$ (δ) bzw. $4.3\cdot10^{-4}$ (λ) relativ ab.
+  bilder: []
+  einordnung: |
+    Grundlage für [[kn.verm.leiter_rate]] und Stütze für [[kn.verm.grenzprofil_rampe]].
+
+kn.verm.leiter_rate:
+  worum: |
+    Wie schnell nähert sich die Leiter der Rampe?
+  genau: |
+    $r\mu_r\to k=(2-b)/(b-1)$, $\delta_r\sim(b-1)k^k/(r^k\ln r)$, $L_r\sim\ln r/(b-1)$.
+  warum: |
+    Im Modell wird $M=-\ln\mu$ schnell an eine langsame Kurve gebunden; dort gilt $d(1/\mu)/dr=1/(k+1/M)$.
+  beispiel: |
+    Modell bei $r=10^7$, $b=\sqrt2$: $\Delta(1/\mu)=0.676678$, Formel 0.6767.
+  bilder: []
+  einordnung: |
+    Folgt aus [[kn.satz.plateau_modell]]; für die echte Leiter offen.
+
+kn.beob.rangverschiebung:
+  worum: |
+    Was macht eine kleine θ-Verbiegung der Tetration mit den höheren Rechenarten?
+  genau: |
+    Die gestörte Leiter ist asymptotisch die ungestörte, um $c(\varepsilon)$ Ränge verschoben; $c(0.05)=-0.31022$ bei $b=\sqrt2$.
+  warum: |
+    Querabweichungen werden pro Rang um $\mu_r\sim k/r$ gedämpft (überexponentiell); übrig bleibt nur die Bewegung längs der langsamen Richtung.
+  beispiel: |
+    Aus $p_r$, $\lambda_r$, $H(0.25)$ und $H(0.5)$ gemessen ergibt sich bei Rang 14 jeweils $-0.3102$.
+  bilder: []
+  einordnung: |
+    Führt zu [[kn.verm.rangkoordinate]]; vergleiche [[kn.beob.halbrang_theta_grenze]].
+
+kn.verm.rangkoordinate:
+  worum: |
+    Gibt es eine „Rangnummer“ $\Phi$ für Funktionen, die beim Rangschritt um 1 wächst?
+  genau: |
+    Vermutet: $\Phi(Tf)=\Phi(f)+1$. Ein halber Rang muss $\Phi(H_{3.5})=\Phi(H_3)+\tfrac12$ erfüllen — eine Gleichung für die ganze θ-Freiheit.
+  warum: |
+    Die Rangverschiebung zeigt eine eindimensionale langsame Richtung mit parabolischem Lauf; ihre Phase ist eine Abel-Koordinate wie die Fatou-Koordinate.
+  beispiel: |
+    Bei $\sqrt2$ fixiert die Bedingung die Kombination $-6.13\,\varepsilon_{\sin}-7.74\,\varepsilon_{\cos}$.
+  bilder: []
+  einordnung: |
+    Neue Fassung von [[kn.frage.halber_rang]]; Vorbild [[it.satz.leau_fatou]]; Beleg [[kn.beob.rangverschiebung]].
+
+kn.satz.konvex_eta_grenze:
+  worum: |
+    Ein bedingter Beweis von $\eta_r\to2$ (TPID 10, Eta-Teil).
+  genau: |
+    Konvexe Stufen auf $[1,2]$ geben $H_r(b,2)\le b+b(b-1)^{r-2}$, also einen Fixpunkt ab einem Rang.
+  warum: |
+    Konvexität erlaubt, $H_{r-1}(b)$ durch die Sehne zwischen $1$ und $2$ abzuschätzen; die Abweichung schrumpft dann geometrisch.
+  beispiel: |
+    $r=8$: jede Basis über 1.732 wäre ab Rang 8 beschränkt.
+  bilder: []
+  einordnung: |
+    Die Bedingung scheitert: [[kn.gescheitert.konvexitaetsweg]]; Ziel [[kn.verm.tpid10]]; Schwellen [[kn.satz.schwellen_monoton]].
+
+kn.gescheitert.konvexitaetsweg:
+  worum: |
+    Sind die kritischen Stufen konvex, wie der bedingte Satz braucht?
+  genau: |
+    Nein: ab $N=5$ liegt $F_N(1.5)$ über der Sehne ($+0.0048\dots+0.0206$).
+  warum: |
+    Die Stufen nähern sich der Rampe $\min(x+1,b)$, die oben einen Knick nach unten hat; das erzwingt eine S-Form.
+  beispiel: |
+    $N=8$: $F_8(1.5)-\tfrac12(F_8(1)+F_8(2))=+0.0206$.
+  bilder: []
+  einordnung: |
+    Versperrt [[kn.satz.konvex_eta_grenze]] für die echten Ketten; passt zu [[kn.verm.grenzprofil_rampe]].

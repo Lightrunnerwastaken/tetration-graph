@@ -108,6 +108,39 @@
       By now fully discharged: The tower values grow with a fixed minimal gap ([[bw.lem.wachstumsluecke]]), the first inequality follows from the stopping rule.
     worum: |
       The second assumption from Paper I: When peeling, the values stay large enough, and the tower grows beyond all bounds.
+- id: bw.beob.anlauf_ursache
+  quelle_hash: 29c3c8dc7d4c
+  theorie_hash: 040602771492
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The rank-5 wave comes almost entirely from the onset of F_{b,d}, not from the rank-4 wave
+    aussage: |-
+      About 99 % of the rank-5 wave (first mode $\sim5\cdot10^{-3}$ at $(e,2)$) arises in levels 0–1, i.e. at $y=P_d(\theta)\in[1,d]$ and $U_1\in[d,{}^dd]$,
+      where $F_{b,d}$ is still far from its asymptotics ($c(U_1)-\mu_4=0.18$ at $U_1=2$). The rank-4 wave ($1.4\cdot10^{-4}$) contributes via the weight $1/P_d'(\theta+m)$
+      at most $7\cdot10^{-5}$. So the waves do **not** add up in leading order: the rank-4 wave determines the smoothness, not the size.
+    bereich: as in bw.satz.produktformel_rang5
+    einfach: Where does the large wave of pentation come from? Not from the small wave of tetration, but from the fact that the translation has
+      not yet "settled in" at small heights.
+    pruefung:
+      f1_folgt_unmittelbar: No, evaluation of the feed-in law from bw.satz.produktformel_rang5.
+      f2_benutzte_voraussetzungen: Level decomposition, first order.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Presumably to rank 6/7 (c₆ = Φ₅ is fed in).
+      f5_neue_frage: Formula for K₅(b) from the onset of F (counterpart of bw.satz.antwortkern).
+    bewertung:
+      nutzen: Answers whether the waves add up.
+      richtigkeit: numerical
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B14; t4_ebenen.py, t11_gewicht.py
+  en_theorie:
+    beispiel: $c(U_1)-\mu_4=0.18$ at $U_1=2$; contribution of the rank-4 wave at most $7\cdot10^{-5}$ out of $5\cdot10^{-3}$.
+    einordnung: The rank-4 wave determines the smoothness ([[bw.verm.rang5_nirgends_diffbar]]), not the size ([[bw.beob.wellen_raenge]]).
+    genau: 'No, not in leading order: about 99 % come from the onset of $F_{b,d}$ at small heights.'
+    warum: The rank-4 wave enters only with the small weight $1/P_d'(\theta+m)$ ([[bw.satz.produktformel_rang5]], feed-in law).
+    worum: Is the rank-5 wave composed of the rank-4 wave?
 - id: bw.beob.blind
   quelle_hash: c4cbfca2906f
   theorie_hash: b603127105eb
@@ -181,6 +214,39 @@
       Comparison under the assumption that the 180-digit value is correct (the other two agree with it to $\ge31$ digits). Presumed cause: computational grid with 32 instead of 64 points.
     worum: |
       The hub column shows 40 digits but carries only about 31 correct ones — a comparison of the three existing versions of $m(2)$ shows this.
+- id: bw.beob.kein_gemeinsamer_fixpunkt
+  quelle_hash: ef77525c8f99
+  theorie_hash: 12fe2c921a61
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The real fixed point L_b of tetration falls strictly with b — no wave-free real rank-5 pairs
+    aussage: |-
+      $L_{1.8}=-1.6938$, $L_2=-1.7439$, $L_e=-1.8504$, $L_3=-1.8745$, $L_4=-1.9252$, $L_5=-1.9501$, $L_{10}=-1.9859$ (against engine pentx to $10^{-70}$; 7 + 4 bases).
+      $L_b$ falls strictly in $b$; so two different real bases never have a common fixed point, and by bw.satz.fixpunkt_konjugator there is no wave-free real translation.
+      Measured, the first mode of the rank-5 wave is always $\approx0.010$–$0.015\cdot|\ln\log_bd|$.
+    bereich: Kneser tetration $T_b$, $b>\eta_5$; $L_b\in(-2,-1)$ its real fixed point
+    einfach: Every real base has its own fixed point of tetration, and the larger the base, the lower it lies. That is why a wave remains in every
+      base change of pentation.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured); monotonicity not proved.
+      f2_benutzte_voraussetzungen: Kneser tetration from the engine, Newton at the fixed point.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To fixed points of higher ranks (p_r) presumably likewise.
+      f5_neue_frage: Prove monotonicity of L_b in b (e.g. via the derivative with respect to the base, bw.satz.antwortkern).
+    bewertung:
+      nutzen: Rules out wave-free real pairs.
+      richtigkeit: numerical to 10⁻⁷⁰
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B6; t5_basen.py
+  en_theorie:
+    beispiel: $L_2=-1.7439$, $L_e=-1.8504$, $L_{10}=-1.9859$.
+    einordnung: 'Pentation values: [[kn.beob.pentation_werte]].'
+    genau: 'No, as far as measured: the real fixed point $L_b$ of tetration falls strictly with $b$.'
+    warum: Measured at 11 bases; by [[bw.satz.fixpunkt_konjugator]] a wave-free translation would need a common fixed point.
+    worum: Can a real base change of pentation be wave-free?
 - id: bw.beob.kernkleid
   quelle_hash: bf07254baee4
   theorie_hash: 3a0a51cf6e52
@@ -448,6 +514,76 @@
     worum: |
       An observation that turned out to be an illusion: the solver for the complex continuation of the phase broke down in a slanted sector,
       and that looked like a genuine singularity.
+- id: bw.beob.skalensprung
+  quelle_hash: 8fe117d626ed
+  theorie_hash: 5b1b063c2458
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The slope of the rank-5 phase jumps between the scales of the levels
+    aussage: |-
+      The difference quotient of $\Phi_5$ at $\theta_0$ is constant up to $h\approx2^{-18}$ ($\hat G'=1.0657272$), jumps at $h\approx1/U_3'$ and is constant
+      again from $h=2^{-50}$ on ($1.0665953$). The ratio $1.000815$ is exactly $1+\Phi_4'(U_3)$ (to $10^{-6}$), as the product formula requires.
+    bereich: $(b,d)=(e,2)$, $\theta_0=0.05$, dps 120
+    einfach: If one measures the slope of the pentation wave with an ever finer scale, it changes abruptly each time the scale resolves the next
+      level of the tetration wave.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured), but predicted by bw.satz.produktformel_rang5.
+      f2_benutzte_voraussetzungen: Chain up to U₄ ~ 2^(5·10⁸); only one more level measurable.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To rank 6 (t10_rang6_skalen.py).
+      f5_neue_frage: Do the difference quotients in general follow the partial products (Hardy lemma)?
+    bewertung:
+      nutzen: Direct evidence for the product structure.
+      richtigkeit: numerical to 10⁻⁶
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B10; t8_produkt.py
+  en_theorie:
+    beispiel: $1.0657272\to1.0665953$, ratio $1.000815$.
+    einordnung: Supports [[bw.satz.produktformel_rang5]] and [[bw.verm.rang5_nirgends_diffbar]].
+    genau: The difference quotient of $\Phi_5$ is constant on coarse and fine scales; in between it jumps by the factor $1+\Phi_4'(U_3)$.
+    warum: At step size $h\approx1/U_3'$ the next level of the rank-4 wave is resolved.
+    worum: Can one see the product structure in the computation?
+- id: bw.beob.wellen_raenge
+  quelle_hash: '957693196456'
+  theorie_hash: 54552e644f29
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Waves and means of the base change from rank 4 to 7: rank 5 about 60 times larger, higher ranks equally large, but rougher'
+    aussage: |-
+      **Size:** $|a_1|(\Phi_5)/|a_1|(\Phi_4)\approx54$–$77$ (13 pairs), limit $d\to b$: $62.1$ ($b=e$), $\approx75$ ($b=2$). Span $(e,2)$: $0.00029$ (r=4),
+      $0.0193$ (5), $0.0174$ (6), $0.0144$ (7).
+      **Linear response:** $|a_1(\Phi_5)|\approx K_5(b)|\ln\log_bd|$ with $K_5(e)=0.01207$, $K_5(2)\approx0.0148$ (depends on the base), on rank 4 $K_4\approx1.94$–$1.98\cdot10^{-4}$ (almost universal).
+      **Roughness:** $|a_2/a_1|=0.0096$ (r=4), $0.090$ (5), $0.33$ (6), $0.51$ (7); $c_6(V)=H_6(V)-V=\Phi_5(\{V\})$ exactly from $V\approx3.3$ on.
+      **Means** $\mu_4\ldots\mu_7$: $(e,2)$: $-1.1284038$, $-0.9432744(2)$, $-0.920180(4)$, $-0.91917(3)$; $(e,3)$: $0.1924223$, $0.1258095(1)$, $0.102464(1)$, $0.08882(2)$.
+      **Hub:** $\mu(2,3)\approx\mu(e,3)-\mu(e,2)$ with remainder $3\cdot10^{-10}$ (r=4), $10^{-5}$ (5), $2\cdot10^{-5}$ (6), of the order wave² as the cocycle requires.
+    bereich: 'Rank 4: Kneser tetration; rank 5: regular pentation; rank 6: Kneser hexation (engine hexx); rank 7: regular at the left fixed point
+      of hexation'
+    einfach: The wave in the base change is about 60 times larger for pentation than for tetration. Further up it no longer grows, but becomes
+      more and more jagged. The mean shift seems to approach a fixed value as the operation level rises.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: Trapezoidal rule; on rank ≥ 5 only algebraically convergent because of the roughness (error in parentheses
+        from M-comparison and antisymmetry).
+      f3_spezialfall: 'Rank 4: bw.beob.m2, bw.satz.antwortkern.'
+      f4_uebertragbar: To further pairs of bases.
+      f5_neue_frage: Closed formula for K₅(b) and r(b); limit lim μ_r(b,d) for r → ∞.
+    bewertung:
+      nutzen: First numbers for the base change above tetration.
+      richtigkeit: numerical, μ₅…μ₇ to 10⁻⁷…10⁻⁵
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B12, B13, B15–B17; e1_paare.py, e2_rang6.py, e3_rang7.py, zusammenfassung.py
+  en_theorie:
+    beispiel: $\mu_4\ldots\mu_7(e,2)=-1.1284,\ -0.9433,\ -0.9202,\ -0.9192$; $|a_2/a_1|=0.0096,\ 0.090,\ 0.33,\ 0.51$.
+    einordnung: 'Rank-4 values: [[bw.beob.m2]], [[bw.satz.antwortkern]]; hub additivity: [[bw.prop.hub]].'
+    genau: Rank 5 about 60 times larger than rank 4, ranks 6 and 7 equally large, but more jagged; $\mu_r(e,2)$ approaches about $-0.919$.
+    warum: Measured via conjugator chains; the size comes from the onset ([[bw.beob.anlauf_ursache]]).
+    worum: How large are the wave and the mean of the base change on ranks 4 to 7?
 - id: bw.def.F_bd
   quelle_hash: 65bb67551096
   theorie_hash: d17670926ca8
@@ -1507,6 +1643,46 @@
     worum: |
       A textbook theorem: if a periodic function has in the strip a singularity of the form $\exp(v/(\theta-\bar\theta^*))$, then its Fourier modes decay with an
       additional $\sqrt k$ term in the exponent — exactly the form of the measured mode decay.
+- id: bw.satz.abschaelen_rang
+  quelle_hash: e990ae571914
+  theorie_hash: 0d4bb21abb0f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Peeling identity: the base change at rank r peels off with the base change at rank r−1'
+    aussage: |-
+      $$\mathrm{spog}_b\bigl(P_d(x+1)\bigr)=1+\mathrm{spog}_b\bigl(F_{b,d}(P_d(x))\bigr),$$
+      iterated $G(x+n)-n=\mathrm{spog}_b\bigl(H_n(P_d(x))\bigr)$ with $G=\mathrm{spog}_b\circ P_d$ and $H_n=\mathrm{slog}_b^{\circ n}\circ T_d^{\circ n}$.
+      In general: $A_{r,b}\circ H_{r,d}(x+1)=1+A_{r,b}\bigl(G_{r-1}(H_{r,d}(x))\bigr)$.
+      At rank 4 the peeling step $\log_b\circ\exp_d=\alpha\cdot\mathrm{id}$ is linear; from rank 5 on it is $F=\mathrm{id}+\mu_4+P_4+$onset, a shift with a wave.
+    bereich: $b,d>\eta_5$; $T$ tetration, $P_d$ a pentation with $P_d(x+1)=T_d(P_d(x))$, $\mathrm{spog}_b$ an Abel function of $T_b$; $F=F_{b,d}=\mathrm{slog}_b\circ
+      T_d$; in general $H_{r,d}$ the hyperoperation of rank $r$, $A_{r,b}$ its Abel function, $G_{r-1}=A_{r-1,b}\circ H_{r-1,d}$
+    einfach: To translate a pentation with base d into the height of a base b, one can peel off level by level. Each step uses the translation
+      one operation lower, so for pentation the known translation of tetration.
+    beweis:
+      text: $\mathrm{spog}_b(T_dz)=\mathrm{spog}_b(\mathrm{slog}_b(T_dz))+1$ because $\mathrm{spog}_b\circ T_b=\mathrm{spog}_b+1$; with $z=P_d(x)$
+        the identity follows, iteration gives the second form.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the two Abel equations.
+      f2_benutzte_voraussetzungen: Only the functional equations, no construction.
+      f3_spezialfall: 'Rank 4: the peeling with log_b ∘ exp_d from the proof of bw.satz.schwanzkonvergenz.'
+      f4_uebertragbar: To every rank and every pair of Abel functions.
+      f5_neue_frage: What follows from the fact that the peeling step is no longer linear from rank 5 on (smoothness, bw.verm.rang5_nirgends_diffbar)?
+    bewertung:
+      nutzen: Basis of all rank-5 results of this round; shows where the difference from rank 4 comes from.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B1
+  en_theorie:
+    beispiel: At rank 4 the peeling step $\log_b\circ\exp_d$ is simply multiplication by $\ln d/\ln b$; at rank 5 it is $F_{b,d}\approx\mathrm{id}+\mu_4+$
+      wave.
+    einordnung: Basis for [[bw.satz.phasengesetz_rang5]]; rank-4 case in [[bw.satz.schwanzkonvergenz]].
+    genau: $\mathrm{spog}_b(P_d(x+1))=1+\mathrm{spog}_b(F_{b,d}(P_d(x)))$ with $F_{b,d}=\mathrm{slog}_b\circ T_d$; in general with the translation
+      one operation lower.
+    warum: 'Two Abel equations in a row: $\mathrm{spog}_b\circ T_b=\mathrm{spog}_b+1$ and $T_d(P_d(x))=P_d(x+1)$.'
+    worum: How does one translate a pentation with base $d$ into pentation heights with base $b$? One peels off one level at a time.
 - id: bw.satz.anker_rekonstruktion
   quelle_hash: fc7b756e53c1
   theorie_hash: 60c68d9c4630
@@ -1694,6 +1870,45 @@
     worum: |
       The phase map is not only continuous but continuously differentiable, and its derivative can be written down as a product: tower values to
       base $d$ divided by tower values to base $b$, level by level.
+- id: bw.satz.fixpunkt_konjugator
+  quelle_hash: bf8115454b5e
+  theorie_hash: 35498060d857
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The rank-5 wave measures how far the conjugator H at the fixed point deviates from a pure power
+    aussage: |-
+      $H(L_d)=L_b$, and in Schröder coordinates
+      $$\sigma_b(H(y))=C\,\sigma_d(y)^{\kappa}\exp\bigl(\ln\lambda_b\cdot P_5(\mathrm{spog}_d\,y)\bigr),\qquad\kappa=\frac{\ln\lambda_b}{\ln\lambda_d}.$$
+      The wave is zero exactly when $H$ is a pure power in Schröder coordinates. Exactly (not only asymptotically) $\hat G(x)=x+\Phi_5(\{x\})$ holds,
+      checked down to $x=-15.7$ to $10^{-110}$; $\kappa(e,2)=1.13541$. $G=\mathrm{spog}_b\circ P_d$ itself tends for $x\to-\infty$ to $\mathrm{spog}_b(L_d)=-3.41245$.
+    bereich: as in bw.satz.phasengesetz_rang5; $\sigma_b$ Schröder function of $T_b$ at the fixed point $L_b$, $\lambda_b=T_b'(L_b)$
+    einfach: 'The translation function H maps the fixed point of one tetration to that of the other. The wave shows how "crooked" it does this:
+      if it were a pure power there, there would be no wave.'
+    beweis:
+      text: For $x\to-\infty$, $P_d(x)=\Psi_d(\sigma_d(1)\lambda_d^x)\to L_d$ and $H(P_dx)\to L_b$. Inserting $\mathrm{spog}=\log(\sigma/\sigma(1))/\log\lambda$
+        into $\hat G(x)=x+\Phi_5(\{x\})$ gives the Schröder form.
+    bedingungen_text: as in bw.satz.phasengesetz_rang5
+    pruefung:
+      f1_folgt_unmittelbar: Yes, a rewriting of bw.satz.phasengesetz_rang5.
+      f2_benutzte_voraussetzungen: Regular pentation at the fixed point (Schröder representation).
+      f3_spezialfall: 'Counterpart of kl.satz.basiswechsel_gleiches_L: there a common fixed point makes the translation wave-free.'
+      f4_uebertragbar: To every rank with a regular hyperoperation at the fixed point.
+      f5_neue_frage: Complex bases with a common fixed point of T_b and T_d — wave-free rank-5 translation?
+    bewertung:
+      nutzen: Gives the wave a geometric meaning at the fixed point.
+      richtigkeit: proved under the conditions of bw.satz.phasengesetz_rang5; checked to 10⁻¹¹⁰
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B5; t13_fixpunkt.py
+  en_theorie:
+    beispiel: $\kappa(e,2)=\ln\lambda_e/\ln\lambda_2=1.13541$.
+    einordnung: 'Counterpart of [[kl.satz.basiswechsel_gleiches_L]] (common fixed point, no wave); real bases never have one: [[bw.beob.kein_gemeinsamer_fixpunkt]].'
+    genau: 'The conjugator $H$ sends $L_d$ to $L_b$; in Schröder coordinates it is $C\sigma_d^\kappa$ times a factor coming from the wave. No
+      wave means: pure power.'
+    warum: For $x\to-\infty$ the regular pentation runs into the fixed point; one inserts its Schröder representation into $\hat G(x)=x+\Phi_5(\{x\})$.
+    worum: What does the rank-5 wave mean geometrically?
 - id: bw.satz.fourier_naht
   quelle_hash: a973c71deece
   theorie_hash: 0ba4a2130a54
@@ -2147,6 +2362,143 @@
     worum: |
       The phase law should hold without the assumptions from Paper I if one stops the logarithm chain in time. Paper III says: The old
       estimates continue to hold verbatim. This has not yet been written out.
+- id: bw.satz.phasengesetz_induktion
+  quelle_hash: 6ebed61b6e04
+  theorie_hash: 55d17b0d027a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Phase law on every rank: rank r−1 implies rank r'
+    aussage: |-
+      If the phase law is proved on rank $r-1$ (so $G_{r-1}(u)-u$ is bounded) and $H_{r-1,b}'\to\infty$ grows, then it holds on rank $r$:
+      $A_{r,b}(H_{r,d}(x))-x=\mu_r+$ 1-periodic wave $+o(1)$, with conjugator $\lim A_{r-1,b}^{\circ n}\circ H_{r-1,d}^{\circ n}$.
+      Numerically for $r=6$ (Kneser hexation) and $r=7$ (regular at the left fixed point of hexation): periodic, independent of the cutoff to $10^{-30}$.
+    bereich: $r\ge5$; $H_{r,b}$ hyperoperations of the engine family (odd ranks regular at the real fixed point, even ranks from 6 on Kneser-like)
+    einfach: 'The proof for pentation can be repeated level by level: if the rule holds for one operation, it also holds for the next. For hexation
+      and the seventh level this agrees with the computation.'
+    beweis:
+      text: The same proof as bw.satz.phasengesetz_rang5, one level higher; only the boundedness of G_{r−1} − id and the growth of H_{r−1,b}′
+        are needed.
+      luecken:
+      - 'For even r ≥ 6 (Kneser ranks): real-valuedness and monotonicity of the Kneser inverse on the range used and uniqueness of the fixed point
+        only measured.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, induction with bw.satz.phasengesetz_rang5 as the step.
+      f2_benutzte_voraussetzungen: Boundedness of the lower phase, growth of the derivative, monotonicity of the inverse.
+      f3_spezialfall: Rank 5 is the first step.
+      f4_uebertragbar: To any family of hyperoperations with real, monotone inverses.
+      f5_neue_frage: Does μ_r(b,d) converge for r → ∞? For (e,2) it seems so (distances 0.185, 0.023, 0.001).
+    bewertung:
+      nutzen: Base change for all ranks.
+      richtigkeit: Sketch, numerical up to rank 7
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B3 and B15; e2_rang6.py, e3_rang7.py, lib6.py, lib7.py
+  en_theorie:
+    beispiel: 'Rank 6 and 7 for $(e,2)$: periodic and independent of the cutoff to $10^{-30}$.'
+    einordnung: 'Step: [[bw.satz.phasengesetz_rang5]]; numbers: [[bw.beob.wellen_raenge]].'
+    genau: If it holds on rank $r-1$ (bounded phase), it holds on rank $r$; a gap for the even, Kneser-like ranks.
+    warum: The same summation proof as on rank 5, with the lower translation as the peeling step.
+    worum: The phase law for every rank, not only for tetration and pentation.
+- id: bw.satz.phasengesetz_rang5
+  quelle_hash: 67602acca5b9
+  theorie_hash: 43c7d000d910
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Phase law for pentation: spog_b(P_d(x)) − x → μ₅ + 1-periodic wave'
+    aussage: |-
+      (i) $H:=\lim_n\mathrm{slog}_b^{\circ n}\circ T_d^{\circ n}$ exists uniformly on compact subsets of $(L_d,\infty)$, is strictly increasing and satisfies $T_b\circ H=H\circ T_d$.
+      (ii) $\hat G:=\mathrm{spog}_b\circ H\circ P_d$ satisfies $\hat G(x+1)=\hat G(x)+1$ **for all** $x$, and $G(x)-\hat G(x)\to0$ superexponentially for $G=\mathrm{spog}_b\circ P_d$.
+      Hence $G(x)-x=\Phi_5(\{x\})+o(1)$ with the continuous, 1-periodic phase $\Phi_5=\hat G-\mathrm{id}$ (mean $\mu_5$).
+      (iii) Cocycle and antisymmetry as on rank 4: $\Phi_{b,d}(\theta)=\Phi_{c,d}(\theta)+\Phi_{b,c}(\theta+\Phi_{c,d}(\theta))$, $\mu_5(b,d)=-\mu_5(d,b)$.
+      Example $(b,d)=(e,2)$: $\mu_5=-0.9432744(2)$, chain values $n=0,1,2,\infty$: $-0.055,-0.415,-0.839,-0.93476$ (at $\theta=0$).
+    bereich: $b,d>\eta_5=1.73736$; $T$ Kneser tetration, $P_b$ regular pentation at the fixed point $L_b\in(-2,-1)$ of $T_b$ (kn.konstr.pentation),
+      $\mathrm{spog}_b=P_b^{-1}$ on $(L_b,\infty)$
+    einfach: 'What is known for tetration also holds one level higher: if one translates the pentation of one base into the height of another,
+      the result is "x plus a constant plus a small wave". The proof is even simpler than for tetration.'
+    formen:
+    - notiz: conjugator
+    - notiz: exactly periodic phase
+    beweis:
+      text: |-
+        $H_{n+1}(y)-H_n(y)=(\mathrm{slog}_b^{\circ n})'(\xi)\,(F(U_n)-U_n)$ with $U_n=T_d^{\circ n}y$ (mean value theorem). $|F(u)-u|\le C$ (rank-4 phase law); the
+        intermediate points stay $\ge U_{n-i}-C'$, and since $\mathrm{slog}_b'$ is decreasing on $[0,\infty)$, $(\mathrm{slog}_b^{\circ n})'(\xi)\le\mathrm{slog}_b'(U_n-C')$.
+        $U_n$ grows like a tower, so $\sum|H_{n+1}-H_n|<\infty$. In the limit $H\circ T_d=T_b\circ H$ follows, and from that (ii). Monotonicity from the counterpart pair as in bw.satz.homoeo;
+        (iii) as in bw.prop.kozykel and bw.satz.antisymmetrie.
+    bedingungen_text: 'bw.satz.phasengesetz (only boundedness of F(u) − u used); for pentation measured: multiplier λ > 1 and L_b the only real
+      fixed point of T_b'
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: from bw.satz.abschaelen_rang and the boundedness of F(u) − u.'
+      f2_benutzte_voraussetzungen: Rank-4 phase law only as the bound |F(u) − u| ≤ C; monotonicity of slog_b′ on [0, ∞); L_d the only fixed point
+        (measured).
+      f3_spezialfall: Counterpart of bw.satz.phasengesetz one level higher; pattern "comparison of two Abel coordinates".
+      f4_uebertragbar: To all ranks, see bw.satz.phasengesetz_induktion.
+      f5_neue_frage: How smooth is Φ₅? (bw.verm.rang5_nirgends_diffbar)
+    bewertung:
+      nutzen: First phase law above tetration; carries the remaining rank-5 findings.
+      recherche: 'One search: forum tid 970 mentions "base-change pentation" only speculatively.'
+      richtigkeit: conditionally proved, numerically confirmed to 10⁻⁴⁰
+    nachgeprueft:
+    - ergebnis: Limit independent of the cutoff X = 40/60/75 to 10⁻⁴⁰; engine ipentx against own chain to 30 digits; cocycle residual (2, e, 3)
+        < 10⁻¹¹⁷; μ₅(e,2) + μ₅(2,e) = 2·10⁻⁸ (quadrature error).
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B2 and B4; t1_rang5.py, t9_kozykel.py, e1_paare.py
+  en_theorie:
+    beispiel: '$(b,d)=(e,2)$: $\mu_5=-0.9432744$, span of the wave $0.0193$ (on rank 4: $0.00029$).'
+    einordnung: 'Follows from [[bw.satz.abschaelen_rang]]; generalization to all ranks: [[bw.satz.phasengesetz_induktion]]; smoothness: [[bw.verm.rang5_nirgends_diffbar]].'
+    genau: 'Yes: $\mathrm{spog}_b(P_d(x))-x\to\Phi_5(\{x\})$, $\Phi_5$ continuous and 1-periodic with mean $\mu_5$; the conjugator $H=\lim\mathrm{slog}_b^{\circ
+      n}\circ T_d^{\circ n}$ satisfies $T_b\circ H=H\circ T_d$.'
+    warum: The differences $H_{n+1}-H_n$ are bounded by the bounded rank-4 deviation $F(u)-u$ times a derivative of $\mathrm{slog}_b^{\circ n}$
+      at tower-high points, hence summable.
+    worum: Does the phase law of the base change ([[bw.satz.phasengesetz]]) also hold for pentation?
+- id: bw.satz.produktformel_rang5
+  quelle_hash: da74fcac3402
+  theorie_hash: 2cb369c93a66
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Level decomposition and product formula: the derivative of the rank-5 phase is an infinite product ∏(1 + Φ₄′)'
+    aussage: |-
+      (i) Exact decomposition: $\Phi_5(\theta)=\mathrm{spog}_b\bigl(\mathrm{slog}_b^{\circ m}(U_m+c(U_m))\bigr)-\theta$, and $c(U)-\Phi_4(\{U\})\to0$ superexponentially.
+      (ii) Product formula: $H_{n+1}'(y)/H_n'(y)=F'(U_n)(1+o(1))=1+\Phi_4'(U_n)+o(1)$, formally $H'(y)=\prod_jF'(T_d^{\circ j}y)$.
+      (iii) Feed-in law (first order): $\Phi_5-\Phi_5^{(m)}=(1+\Phi_5'(\theta))\,P_4(U_m)/P_d'(\theta+m)+O(P_4^2)$, where in $\Phi_5^{(m)}$ the lower wave is replaced by its mean.
+      So the rank-4 wave reappears in every lower level inside the rank-5 wave, with the tower-like growing frequency $U_j'$.
+    bereich: as in bw.satz.phasengesetz_rang5; $U_m=P_d(\theta+m)$, $c=H-\mathrm{id}$, $\Phi_4$ the rank-4 phase of $(b,d)$
+    einfach: The wave of pentation contains the wave of tetration again and again, oscillating faster at each level. The slope of the pentation
+      wave is therefore a product of infinitely many factors, one per level.
+    beweis:
+      text: |-
+        $H=\mathrm{slog}_b^{\circ m}\circ H\circ T_d^{\circ m}$ gives (i); $c(U)-F(U)+U=O(\mathrm{slog}_b'(T_dU))$. The chain rule yields exactly
+        $H_{n+1}'/H_n'=F'(U_n)\cdot(\mathrm{slog}_b^{\circ n})'(F(U_n))/(\mathrm{slog}_b^{\circ n})'(U_n)$, the second factor is $1+O(1/U_n)$. (iii) by differentiating with respect to $c_m$.
+    bedingungen_text: as in bw.satz.phasengesetz_rang5; in addition the C¹ form of the rank-4 phase law (F′ = 1 + Φ₄′ + o(1), measured)
+    pruefung:
+      f1_folgt_unmittelbar: Yes, chain rule applied to the construction of H.
+      f2_benutzte_voraussetzungen: Rank-4 phase law in C¹ form (measured; cf. bw.prop.antisym_c1, bw.satz.c1_produkt).
+      f3_spezialfall: On rank 4 the peeling step has the constant derivative α; there the product converges absolutely (bw.satz.c1_produkt).
+      f4_uebertragbar: To every rank ≥ 5 with the lower phase as a factor.
+      f5_neue_frage: Does ∏(1 + Φ₄′(T_d^j y)) exist for almost all y? (bw.verm.rang5_nirgends_diffbar)
+    bewertung:
+      nutzen: Shows the mechanism that makes the rank-5 wave rough.
+      richtigkeit: conditional; numerically confirmed to 3·10⁻⁹
+    nachgeprueft:
+    - ergebnis: 'c(U) − μ₄ = P₄(U) in all digits from U ≈ 5.4 on (d = 2); feed-in law: measured/predicted = 1 ± 10⁻³ at 12 points; θ = 0.05, U₃
+        = 5.3·10⁸: quotient − 1 = 8.1454952·10⁻⁴ against Φ₄′(U₃) = 8.1454722·10⁻⁴.'
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B7–B9; t4_ebenen.py, t11_gewicht.py, t8_produkt.py
+  en_theorie:
+    beispiel: '$\theta=0.05$, $U_3=5.3\cdot10^8$: quotient $-1=8.1454952\cdot10^{-4}$ against $\Phi_4''(U_3)=8.1454722\cdot10^{-4}$.'
+    einordnung: 'Rank-4 counterpart: [[bw.satz.c1_produkt]]; evidence: [[bw.beob.skalensprung]]; conjectured consequence: [[bw.verm.rang5_nirgends_diffbar]].'
+    genau: The derivative of the conjugator is an infinite product $\prod_j(1+\Phi_4'(T_d^{\circ j}y)+o(1))$; the rank-4 wave sits on every level
+      with tower-like growing frequency.
+    warum: Exact chain rule on $H_{n+1}=\mathrm{slog}_b^{\circ n}\circ F\circ T_d^{\circ n}$; the peeling step $F$ has the derivative $1+\Phi_4'$
+      instead of a constant.
+    worum: Why is the rank-5 wave rougher than the rank-4 wave?
 - id: bw.satz.schwanzkonvergenz
   quelle_hash: 70350cee5fb6
   theorie_hash: 660000eb76b0
@@ -2361,6 +2713,50 @@
     worum: |
       The counter-position to the strip conjecture: If one translates a smooth tetration into another base, the result is infinitely often differentiable,
       but at no single point representable by a power series. The singularities of the approximations move closer to the real axis with every logarithm level.
+- id: bw.verm.rang5_nirgends_diffbar
+  quelle_hash: 435b284b8cb5
+  theorie_hash: 2b95ce2f79b3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Conjecture: From rank 5 on, the base-change phase is continuous but nowhere differentiable (Weierstrass type with tower gaps)'
+    aussage: |-
+      $\Phi_5$ (and every $\Phi_r$, $r\ge5$) is continuous but nowhere (at least almost nowhere) differentiable; modulus of continuity $\approx h\cdot\#\{j:U_j'h<1\}\sim h\,\mathrm{slog}(1/h)$.
+      Evidence: product formula and scale jump; the Fourier tail falls algebraically, about $k^{-1.3}$ (rank 5, $k\le64$), whereas on rank 4 it falls exponentially ($|a_{64}|=10^{-49}$).
+      Level $j$ carries the oscillation $P_4(U_j)/U_j'$ with frequency $U_j'$; its contribution $P_4'(U_j)$ to the slope does not decrease with $j$ — the borderline case $ab=1$ of the Weierstrass function,
+      only with tower-like gaps.
+    bereich: $\Phi_r$ for $r\ge5$, real bases $b\ne d$ above $\eta_5$
+    einfach: 'The wave of tetration is very smooth. From pentation on, however, the wave presumably becomes as rough as the famous Weierstrass
+      function: continuous everywhere, but with a slope nowhere.'
+    beweis:
+      text: Whether $H'(y)=\prod_j(1+\Phi_4'(T_d^jy)+o(1))$ exists depends on $\sum_j\Phi_4'(T_d^jy)$; if the fractions $\{T_d^jy\}$ are equidistributed
+        for almost all $y$ and almost independent (Salem–Zygmund for very lacunary sequences), the series diverges like a random walk.
+      luecken:
+      - Koksma's metric theorem for the sequence T_d^j(y).
+      - 'A lemma of Hardy type: the difference quotients follow the partial products.'
+    gegenbeispielsuche: We looked for a point with a stable difference quotient across all scales; at θ₀ = 0.05 it jumps at every resolvable level
+      (bw.beob.skalensprung), further points not systematically checked.
+    naechste_frage: Equidistribution of {T_d^j(y)} for almost all y (Koksma) plus a Hardy lemma; does Φ₅ lie in the Zygmund class?
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Product formula; equidistribution (unproved).
+      f3_spezialfall: Weierstrass/Hardy functions with gaps.
+      f4_uebertragbar: To all ranks r ≥ 5; not to rank 4 (constant peeling derivative).
+      f5_neue_frage: 'From rank 5 on, the question "analytic or C^∞" (bw.verm.nirgends_analytisch) is outdated: not even C¹?'
+    bewertung:
+      nutzen: Fundamental difference between rank 4 and higher ranks.
+      richtigkeit: Conjecture with two numerical pieces of evidence
+    quellen:
+    - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B11; t8_produkt.py, e1_paare.py
+  en_theorie:
+    beispiel: Fourier modes fall like $k^{-1.3}$ on rank 5, exponentially on rank 4 ($|a_{64}|=10^{-49}$).
+    einordnung: 'On rank 4 the dispute is analytic versus $C^\infty$: [[bw.verm.nirgends_analytisch]], [[bw.verm.streifen]]; mechanism: [[bw.satz.produktformel_rang5]].'
+    genau: 'Conjectured: continuous but nowhere differentiable, modulus of continuity $\sim h\,\mathrm{slog}(1/h)$.'
+    warum: 'Every level contributes equally to the slope, as in the Weierstrass function in the borderline case $ab=1$; missing: equidistribution
+      of the sequence $\{T_d^jy\}$ and a Hardy lemma.'
+    worum: How smooth is the wave of the base change from rank 5 on?
 - id: bw.verm.rang_eins
   quelle_hash: e32fc365f3d0
   theorie_hash: 09d991e97934

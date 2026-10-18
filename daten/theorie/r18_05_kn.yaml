@@ -1,0 +1,92 @@
+# Theorie-Blöcke: Runde 18.10.2026, Agent 05 — geschlossene Bauform der Störungsreihe (forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md).
+
+kn.satz.stoerungsreihe_fluss:
+  worum: |
+    Die Störungsreihe $G(y)=e^{G(y-1)}-1+u$ wird sonst Schritt für Schritt berechnet. Hier wird sie als Lösung einer einzigen Differentialgleichung geschrieben.
+  genau: |
+    $H(y)=G(y-1)$ erfüllt formal $H'=\lambda_u(H)$, wobei $\exp(\lambda_u\partial)x=e^x-1+u$.
+  warum: |
+    Der Fluss der Differentialgleichung hat Polynome in $y$ als Koeffizienten und stimmt an allen ganzen Höhen mit der Iteration überein; Polynome, die auf $\mathbb N$ gleich sind, sind gleich.
+  beispiel: |
+    $\lambda_u(0)=G'(0)=u+u^2/12+u^3/120+\dots$
+  bilder: []
+  einordnung: |
+    Rahmen: [[kn.konstr.stoerungsreihe]]; Julia-Gleichung: [[it.lem.julia]]; Folgerung: [[kn.satz.stoerungsreihe_bauform]].
+
+kn.satz.stoerungsreihe_residuen:
+  worum: |
+    Wo steht die Differentialgleichung der Störungsreihe still, und wie läuft sie dort an?
+  genau: |
+    Nullstellen $x_\pm=u-1-W(-e^{u-1})$, und $\lambda_u'(x_\pm)=x_\pm$, also Residuum $1/x_\pm$ von $1/\lambda_u$.
+  warum: |
+    An einem Fixpunkt eines Zeit-1-Flusses ist der Multiplikator $e^{\lambda'}$; hier ist der Multiplikator $e^{x_\pm}$.
+  beispiel: |
+    $x_+/v=2i+2v/3-2iv^2/9-\dots$ mit $u=2v^2$.
+  bilder: []
+  einordnung: |
+    Baustein für [[kn.satz.stoerungsreihe_bauform]]; parabolischer Grenzfall: [[it.satz.leau_fatou]].
+
+kn.satz.stoerungsreihe_bauform:
+  worum: |
+    Eine Formel, aus der alle Schichten der Störungsreihe folgen.
+  genau: |
+    $H=\gamma+\beta\tan\Theta$, $\Theta=\omega(y+C-R_u(H))+(\gamma/\beta)\ln\cos\Theta$; jede Schicht ist ein Polynom in $\tan\theta$, $\ln\cos\theta$ und $\theta$.
+  warum: |
+    $1/\lambda_u$ zerfällt in zwei einfache Brüche an den Fixpunkten plus einen polynomialen Rest. Integriert gibt das Arcustangens und Logarithmus; nach $H$ aufgelöst einen verbogenen Tangens.
+  beispiel: |
+    $h_1=\tfrac23(L\sec^2\theta-4\sec^2\theta+1)$ mit $L=\ln\cos\theta$.
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[kn.satz.stoerungsreihe_tangens]]; Folgerungen [[kn.satz.stoerungsreihe_logarithmen]], [[kn.satz.stoerungsreihe_saekular]], [[kn.satz.stoerungsreihe_dritte_schicht]].
+
+kn.satz.stoerungsreihe_logarithmen:
+  worum: |
+    Welche Teile der Schichten haben die höchste Logarithmus-Potenz, und was ergeben sie zusammen?
+  genau: |
+    $\sum_kv^k[L^k]h_k=2\tan(\theta+vL/3)$.
+  warum: |
+    Jedes $L$ kostet in der Bauform einen Faktor $v$ (über $\gamma/\beta\approx v/3$); die höchsten Logarithmen sehen deshalb nur den Leitteil.
+  beispiel: |
+    $[L]h_1=\tfrac23\sec^2\theta=\tfrac23\tan'\theta$.
+  bilder: []
+  einordnung: |
+    Aus [[kn.satz.stoerungsreihe_bauform]]; analog zur Tangensschicht [[kn.satz.stoerungsreihe_tangens]].
+
+kn.satz.stoerungsreihe_saekular:
+  worum: |
+    Wann taucht in den Schichten die Höhe $\theta$ „nackt“ auf, nicht versteckt in Tangens oder Logarithmus?
+  genau: |
+    $\omega/v=1-v^4/270+\dots$; das erste nackte $\theta$ ist $-\theta\sec^2\theta/135$ in $h_4$.
+  warum: |
+    Nur die Abweichung der Frequenz $\omega$ von $v$ erzeugt nackte $\theta$, und sie beginnt bei $v^4$.
+  beispiel: |
+    $-1/135=2\cdot(-1/270)$.
+  bilder: []
+  einordnung: |
+    Aus [[kn.satz.stoerungsreihe_bauform]] und [[kn.satz.stoerungsreihe_residuen]].
+
+kn.satz.stoerungsreihe_dritte_schicht:
+  worum: |
+    Die dritte Schicht der Störungsreihe als geschlossene Formel.
+  genau: |
+    $h_2=t[\tfrac29L^2(1+t^2)-2L(1+t^2)+41t^2/9+13/3]$, $t=\tan\theta$.
+  warum: |
+    Ansatz aus der Bauform; eindeutig lösbar, weil $t$, $L$, $\theta$ algebraisch unabhängig sind.
+  beispiel: |
+    $[y^{2n-3}]g_n(y-1)=13/12,\ 7/8,\ 301/720,\dots$
+  bilder: []
+  einordnung: |
+    Fall $k=2$ von [[kn.satz.stoerungsreihe_bauform]]; erste zwei Schichten: [[kn.satz.stoerungsreihe_tangens]].
+
+kn.verm.stoerungsreihe_ganzzahlig:
+  worum: |
+    Werden die Schichtkoeffizienten nach passender Normierung ganze Zahlen?
+  genau: |
+    $(2n-2)!\,2^{n-1}[y^{2n-2}]g_n(y-1)=-1,-3,-26,-468,\dots$ ganz für $n\le12$; vermutet für alle $n$.
+  warum: |
+    Unbewiesen; nötig ist eine Teilbarkeit durch 3.
+  beispiel: |
+    $n=4$: $-26$.
+  bilder: []
+  einordnung: |
+    Zählfolgen der Störungsreihe: [[kn.satz.stoerungsreihe_baeume]].

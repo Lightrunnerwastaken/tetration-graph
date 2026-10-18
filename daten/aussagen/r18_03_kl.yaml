@@ -1,0 +1,176 @@
+gebiet: kl
+# Runde 18.10.2026, Bericht 03 (Basis-Ebene): Tetration als Funktion der Basis bei η.
+# Rechnungen: forschung/runde_2026_10_18/03_basis_ebene/ (BERICHT.md).
+aussagen:
+
+- id: kl.beob.kneser_fortsetzung_regulaer
+  titel: 'Kneser über η ist die Fortsetzung der regulären Tetration durch η (auf 33 Stellen)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [regulaer_T, kneser_T, eta]
+  bereich: '$T_b(x)$ für reelles $x$ ($x=\pm\frac12$ gerechnet); regulär am anziehenden Fixpunkt für $b<\eta$, Kneser für $b>\eta$'
+  aussage: |
+    Entwickelt man $b\mapsto T^{\rm reg}_b(x)$ um eine Basis $b_0=\eta-s$ unter $\eta$ in eine Taylor-Reihe und wertet sie über $\eta$ hinaus bei $b=\eta+\delta$ aus,
+    so trifft man Knesers Wert $T^{\rm K}_{\eta+\delta}(x)$. Für $x=\frac12$, $s=0.05$: Abweichung $5\cdot10^{-30}$ ($\delta=0.01$) bzw. $3\cdot10^{-27}$ ($\delta=0.02$).
+    Mit der Reihe $H$ um $\eta$ selbst (aus $s=0.03$, 20 Glieder) ist $T^{\rm K}-H=1\cdot10^{-33}$ für $\delta=10^{-3}$ und $10^{-2}$ und liegt für $\delta=0.05,\,0.1,\,0.2$
+    unter dem Restglied; Gegenprobe $x=-\frac12$: $1.8\cdot10^{-33}$. Kneser-Werte bei 40 und 60 Stellen Rechengenauigkeit gleich.
+  einfach: >-
+    Unter η und über η baut man die Tetration auf ganz verschiedene Arten. Trotzdem gilt: Nimmt man die Formel, die die untere Bauweise in der Basis hat,
+    und rechnet sie einfach über η hinaus weiter, kommen genau Knesers Werte heraus — auf 33 Stellen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B3; e3_fortsetzung.py, e5_kneser_gegen_H.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; aus der Konstruktion ist nicht zu sehen, warum Knesers Lösung die reguläre Familie fortsetzen sollte.'
+    f2_benutzte_voraussetzungen: 'Motor (fatou.gp-Fork) für Kneser bei dps 40/60; eigene reguläre Rechnung regulaer.py; Taylor-Koeffizienten aus einem Kreis um η − s.'
+    f3_spezialfall: 'Verschärft kl.beob.stetig_eta (dort nur gleicher Wert und gleiche erste Ableitung).'
+    f4_uebertragbar: 'Auf andere Höhen x (zwei geprüft); vermutlich auf jede Höhe x > −2.'
+    f5_neue_frage: 'Ist Kneser in b um η analytisch ohne Schlitz, also gleich H, oder nur bis auf einen flachen Rest unter 10⁻³³? → kl.frage.eta_flacher_rest'
+  bewertung: {richtigkeit: 'numerisch, 27–33 Stellen, zwei Höhen', neuheit: neu_ungeprueft, recherche: 'Kouznetsov (TORI-Wiki) und mike3 (Forum 2011) halten η für einen Verzweigungspunkt; eine Fortsetzung auf 33 Stellen ist dort nicht gemessen.', nutzen: 'Verbindet die beiden Bauweisen der Tetration zu einer Funktion der Basis.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: kl.frage.eta_analytisch}
+    - {typ: verallgemeinert, ziel: kl.beob.stetig_eta}
+    - {typ: verwandt, ziel: br.frage.implosion}
+
+- id: kl.beob.eta_taylor
+  titel: 'Taylor-Reihe von T_b(1/2) um η: Koeffizienten, Radius η − 1, Singularität bei b = 1'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [regulaer_T, kneser_T, eta]
+  bereich: '$T_b(\frac12)=\sum_n a_n(b-\eta)^n$; Koeffizienten aus der regulären Familie unter $\eta$'
+  aussage: |
+    Die Koeffizienten sind von beiden Seiten gleich und wechseln das Vorzeichen:
+    $a_0=1.2571530750541726\ldots$ ($=T_\eta(\frac12)$ auf $10^{-30}$), $a_1=0.4385818001708944\ldots$, $a_2=-0.1843369537180530\ldots$, $a_3=0.1298981675017401\ldots$,
+    $a_4=-0.1247020111691168\ldots$, $a_5=0.1479656405163631\ldots$, $a_{10}=-1.37302101193\ldots$, $a_{15}=28.258895\ldots$
+    Der Konvergenzradius ist $\eta-1$, die nächste Singularität liegt bei $b=1$, und $a_n\sim C(-1)^nn^{-\gamma}(\eta-1)^{-n}$ mit $\gamma\approx2.4$
+    (erwartet $\frac52$ aus $T_b(\frac12)\approx1+\varepsilon-\varepsilon^{3/2}$, $\varepsilon=b-1$). Für $x=-\frac12$: $a_0\ldots a_3=0.62207798\ldots,\,-0.22217528\ldots,\,0.25915104\ldots,\,-0.36084873\ldots$
+  einfach: >-
+    Man kann T_b(1/2) um die Basis η als unendliche Summe von Potenzen schreiben. Die Zahlen davor wechseln das Vorzeichen und wachsen langsam;
+    die Summe funktioniert bis hinunter zur Basis 1, wo die Tetration wirklich kaputt geht.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B4 und Tabelle a_n; e4_ableitungen_eta.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'a₀…a₁₂ aus s = 0.02 und s = 0.03 auf mindestens 13 Stellen gleich; a₀ gegen sexpeta geprüft.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Höhe; die Singularität bei b = 1 ist für alle Höhen dieselbe.'
+    f5_neue_frage: 'Höhere Basisableitungen als Hauptlösungen einer Hierarchie? Prüfwert c₂ = 2a₂ = −0.36867390743610604049.'
+  bewertung: {richtigkeit: 'numerisch, ≥ 13 Stellen', neuheit: neu_ungeprueft, recherche: 'Kouznetsov gibt eine vorläufige Taylor-Tabelle in b − η an (andere Höhe).', nutzen: 'Prüfwerte für jede künftige Theorie der Basisabhängigkeit.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kl.beob.kneser_fortsetzung_regulaer}
+    - {typ: verwandt, ziel: kl.frage.eta_analytisch}
+
+- id: kl.beob.regulaer_flach_singulaer
+  titel: 'Die reguläre Familie hat bei η eine winzige, extrem flache Singularität'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [regulaer_T, multiplikator, eta, shell_thron]
+  bereich: '$g(\lambda)=T^{\rm reg}(\frac12)$ als Funktion des Multiplikators $\lambda$ ($b=\exp(\lambda e^{-\lambda})$), analytisch im punktierten Einheitskreis'
+  aussage: |
+    Um $\lambda_0=0.8$ zerfallen die Taylor-Koeffizienten von $g$ in einen Hauptteil (Radius $\approx0.8$, Singularität $\lambda=0$, also $b=1$) und einen winzigen Anteil mit
+    Radius genau $1-\lambda_0=0.200\pm0.02$ (Ordnungen $k=64\ldots248$, 150 Stellen) und Amplitude $\sim10^{-36}$; um $\lambda_0=0.9$ liegt er unter $10^{-65}$.
+    Also hat $g$ eine flache (wesentliche) Singularität auf dem Einheitskreis bei $\lambda=1$ (oder an nahen parabolischen Punkten $e^{2\pi ip/q}$; der Wurzeltest trennt das nicht).
+    In der Basis fallen die Koeffizienten um $\eta-s$ unter-geometrisch ($\approx e^{-c\sqrt k}$); bei fester Ordnung wächst $\ln|c_ks^k|$ grob linear in $-1/\sqrt s$ (Steigung 10–15).
+    Zum Vergleich sind die Randpunkte $\lambda=e^{i\pi/2},e^{i\pi/4},e^{i\pi/8}$ starke Singularitäten (Schwanz $\sim10^{-3}$); zu $\lambda=1$ hin bricht die Stärke ein ($\theta=\pi/64$: $\sim10^{-30}$).
+  einfach: >-
+    Die untere Bauweise ist bei η nicht ganz gewöhnlich: Sie hat dort eine Störstelle, die aber so schwach ist (Grösse um 10⁻³⁰ bis 10⁻⁵⁰),
+    dass man sie nur in sehr hohen Gliedern der Reihe sieht.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B5, B6, B9; e2b_schwanz.py, e7_schwanz_b.py, e6_randstaerke.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; dass g im punktierten Einheitskreis analytisch ist, folgt aus Shell–Thron, der Ort der Singularität aus dem gemessenen Radius.'
+    f2_benutzte_voraussetzungen: 'Rauschgrenze 10⁻¹⁵⁰ (dps 150); Schröder-Reihe 3. Ordnung in regulaer.py; je zwei Kreisradien für die Randstärke.'
+    f3_spezialfall: 'Passt zur parabolischen Implosion: die dicht liegenden parabolischen Randpunkte hinterlassen eine Spur, die zu λ = 1 hin flach wird.'
+    f4_uebertragbar: 'Auf jede Höhe x und jede Familie exp(λe^{−λ}z).'
+    f5_neue_frage: 'Ist |λ| = 1 eine natürliche Grenze der regulären Familie? Genaue Form exp(−A/√(η−b))?'
+  bewertung: {richtigkeit: 'numerisch; Radius gesichert, Stärke-Konstante grob', neuheit: neu_ungeprueft, nutzen: 'Zeigt, wo die Nicht-Analytizität bei η sitzt — auf der regulären Seite.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: kl.frage.eta_analytisch}
+    - {typ: verwandt, ziel: fp.satz.parabolisch_rand}
+    - {typ: verwandt, ziel: br.satz.shishikura}
+
+- id: kl.verm.eta_glatt_nicht_analytisch
+  titel: 'T_b(x) ist in der Basis bei η unendlich oft differenzierbar, aber nicht analytisch — der Defekt sitzt auf der regulären Seite'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [regulaer_T, kneser_T, eta]
+  bereich: '$b\mapsto T_b(x)$, regulär für $b<\eta$, Kneser für $b>\eta$, festes $x>-2$'
+  aussage: |
+    Es gibt eine in einer Umgebung von $\eta$ konvergente Reihe $H(b)$ mit
+    $$T^{\rm K}_b(x)=H(b)\ (b>\eta),\qquad T^{\rm reg}_b(x)=H(b)+E^-(b)\ (b<\eta),$$
+    wobei $E^-$ mit allen Ableitungen bei $\eta$ verschwindet und dort singulär ist. Insbesondere ist $b\mapsto T_b(x)$ bei $\eta$ $C^\infty$, aber nicht analytisch.
+    Kandidat für die Grösse: $E^-\approx\exp(-2\pi N)$ mit der Durchgangszeit $N=\pi\sqrt{2\eta/(e|b-\eta|)}$ (nur grob bestätigt).
+  einfach: >-
+    Die Tetration hängt bei η glatt von der Basis ab, aber nicht „perfekt glatt“ (analytisch). Überraschend: Die Störung steckt in der unteren,
+    regulären Bauweise, nicht in Knesers.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B7 und Abschnitt Deutung'}, {ref: mizugadro_tetration}, {ref: forum_mike3_2011}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Zusammenfassung von drei Messungen.'
+    f2_benutzte_voraussetzungen: 'kl.beob.kneser_fortsetzung_regulaer, kl.beob.eta_taylor, kl.beob.regulaer_flach_singulaer.'
+    f3_spezialfall: 'Deutung über parabolische Implosion: Kneser für b > η als Douady–Lavaurs-Torkoordinate.'
+    f4_uebertragbar: 'Auf η-Übergänge höherer Ränge (Pentation bei η₅).'
+    f5_neue_frage: 'Ist T^K = H exakt? Konstante A in E⁻ ≈ exp(−A/√(η−b)) und Zusammenhang mit den Écalle–Voronin-Invarianten von eᵘ − 1.'
+  gegenbeispielsuche: 'Gesucht nach einem Defekt auf der Kneser-Seite: $T^{\rm K}-H\le1.8\cdot10^{-33}$ bei $\delta=10^{-3},10^{-2}$ und unter dem Restglied bei $\delta=0.05,0.1,0.2$ (zwei Höhen); auf der regulären Seite gefunden ($10^{-30}$ bis $10^{-65}$).'
+  bewertung: {richtigkeit: 'Vermutung, numerisch gut gestützt', neuheit: neu_ungeprueft, nutzen: 'Beantwortet kl.frage.eta_analytisch numerisch: glatt, nicht analytisch.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: kl.frage.eta_analytisch}
+    - {typ: verwandt, ziel: br.frage.implosion}
+    - {typ: verwandt, ziel: bw.lem.randgesetz}
+
+- id: kl.satz.c1_noerlund
+  titel: 'Die erste Basisableitung bei η ist eine Nörlund-Hauptlösung'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [T_b, fatou_koord, eta]
+  bereich: '$T_\eta$ die Tetration zur Basis $\eta$ (Fatou-Koordinate), $c_1(x)=\partial_bT_b(x)|_{b=\eta}$'
+  aussage: |
+    $$c_1(x)=T_\eta'(x)\,G(x),\qquad G(x+1)-G(x)=\frac e\eta\,\frac{T_\eta(x)}{T_\eta'(x)},\qquad G(0)=0,$$
+    und $G$ ist die Nörlund-Hauptlösung dieser Summengleichung (asymptotische Entwicklung für $x\to\infty$ ohne periodischen Anteil). Die Formel trifft den Taylor-Wert:
+    $x=\frac12$: $0.438581800170784$ gegen $0.4385818001708944$ ($10^{-13}$, Euler–Maclaurin mit $N=60$), $x=-\frac12$: $2.5\cdot10^{-13}$.
+  einfach: >-
+    Wie stark sich die Tetration bei der Basis η ändert, wenn man die Basis ein wenig verschiebt, lässt sich als eine Art „Summe bis unendlich“ schreiben —
+    ähnlich wie man aus einer Folge die Summe ihrer Glieder macht.
+  beweis:
+    art: skizze
+    text: |
+      Ableiten von $T_b(x+1)=b^{T_b(x)}$ nach $b$ bei $\eta$ gibt $c(x+1)=T(x+1)[c(x)/e+T(x)/\eta]$; mit $T'(x+1)=T(x+1)T'(x)/e$ und $c=T'G$ folgt die Summengleichung,
+      $T_b(0)=1$ gibt $G(0)=0$. Auch $G=-\partial_b\,\mathrm{slog}_b\circ T_\eta$. Die Lösungen unterscheiden sich um 1-periodische Funktionen; $r(x)\sim ex^2/(2\eta)$ wächst polynomial.
+    luecken:
+      - 'Dass gerade die Nörlund-Hauptlösung (ohne periodischen Anteil) die Basisableitung ist; plausibel, weil die gestörte Fatou-Koordinate eine asymptotische Entwicklung in 1/(y − e) und Logarithmen hat.'
+  stuetzt_sich_auf: [gr.satz.basis_gleichung]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B8; e8_c1_noerlund.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Summengleichung ja (aus gr.satz.basis_gleichung bei b = η); die Wahl der Lösung nicht.'
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit in b bei η (kl.beob.stetig_eta); Euler–Maclaurin bis r‴.'
+    f3_spezialfall: 'Ja: gr.satz.basis_gleichung mit ln b = 1/e.'
+    f4_uebertragbar: 'Auf höhere Ableitungen c_k (Hierarchie von Summengleichungen) und auf η-Basen höherer Ränge.'
+    f5_neue_frage: 'Ist c₂ ebenfalls Hauptlösung einer Gleichung mit c₁ als Quelle? Prüfwert c₂(1/2) = −0.36867390743610604049.'
+  bewertung: {richtigkeit: 'Skizze; Formel auf 13 Stellen bestätigt, Konvergenz in N sichtbar', neuheit: neu_ungeprueft, nutzen: 'Erste geschlossene Formel für die Basisabhängigkeit genau an der Schwelle.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: spezialfall_von, ziel: gr.satz.basis_gleichung}
+    - {typ: verwandt, ziel: kl.satz.eta_koordinate}
+    - {typ: stuetzt, ziel: kl.beob.stetig_eta}
+
+- id: kl.frage.eta_flacher_rest
+  titel: 'Ist Kneser in der Basis um η exakt analytisch — und wie gross ist der flache Rest der regulären Seite?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [regulaer_T, kneser_T, eta]
+  aussage: |
+    (1) Gilt $T^{\rm K}_b(x)=H(b)$ exakt, d. h. ist Knesers Tetration auf einer Umgebung von $\eta$ (ohne Schlitz) analytisch in $b$, oder nur bis auf einen flachen Rest unter $10^{-33}$?
+    (2) Welche genaue Form hat $E^-=T^{\rm reg}-H$: $\exp(-A/\sqrt{\eta-b})$ mit welcher Konstanten $A$, und wie hängt sie mit der Durchgangszeit und den Écalle–Voronin-Invarianten von $e^u-1$ zusammen?
+  einfach: >-
+    Zwei Restfragen: Ist Knesers Seite wirklich ganz ohne Störung? Und wie genau sieht die winzige Störung auf der unteren Seite aus?
+  naechste_frage: 'Monodromie auf einem Kreis um η rechnen (Motor schaltet automatisch zwischen Kneser und regulär); Kneser-Werte näher an η als 10⁻⁴ mit höherer Genauigkeit.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, Offene Fragen 1–2'}, {ref: lavaurs1989}]
+  kanten:
+    - {typ: verwandt, ziel: kl.verm.eta_glatt_nicht_analytisch}
+    - {typ: verwandt, ziel: br.frage.implosion}

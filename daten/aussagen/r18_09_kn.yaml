@@ -1,0 +1,211 @@
+gebiet: kn
+# Runde 18.10.2026, Bericht 09: Kneser-Superfunktionen anderer Abbildungen (x²+1, x⁴+1, cosh) und welche Gesetze universell sind.
+# Rechnungen: forschung/runde_2026_10_18/09_superfunktionen/ (Löser zoo.py, Kouznetsov-Kontur + Gauss–Newton; Kontrolle eˣ auf 10⁻¹⁵).
+aussagen:
+
+- id: kn.satz.zoo_singulaerer_ort
+  titel: 'Kneser-Superfunktionen anderer Abbildungen: θ ist genau über den singulären Werten von f singulär'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Dass der Hauptast die richtige Fortsetzung von h ist (Zweigwahl wie in kn.satz.theta_singularitaet), ist nur numerisch belegt (Periodizitätsfehler ≤ 2·10⁻¹⁴)'
+  niveau: forschung
+  objekte: [superfunktion, theta_kneser, schroeder, periodische_stoerung]
+  bereich: 'Voraussetzung (V): $f$ ganz und reell, abstossender Fixpunkt $L$ in der oberen Halbebene $\mathbb H$, ein Ast $g$ von $f^{-1}$ mit $g(\mathbb H)\subset\mathbb H$, reell und wachsend auf $(v,\infty)$ mit singulärem Wert $v$; Kneser-Superfunktion $S=F(z+\theta(z))$, $F(s)=\Psi(\lambda^s)$, $h=F^{-1}$; Beispiele $e^x$, $x^2+1$, $x^4+1$, $\cosh x$'
+  aussage: |
+    Unter (V) ist $\theta(z)=h(S(z))-z$ auf der reellen Achse **genau** an den Stellen singulär, an denen $S$ einen Punkt der Bahn
+    $P=\{v,f(v),f^2(v),\dots\}$ eines singulären Werts von $f$ trifft (kritischer Wert, wo $f'=0$, oder asymptotischer Wert wie 0 bei $e^x$).
+    Im untersuchten Zoo ist das $z_1+\mathbb Z$ mit $S(z_1)=v$ (Normierung $S(-1)=v$, also $z_1=-1$); überall sonst auf $\mathbb R$ ist $\theta$ analytisch.
+    Ein von der regulären Superfunktion **ausgelassener** Wert ist dafür nicht nötig: bei Polynomen lässt $F$ keinen Wert aus
+    (it.satz.poincare_polynom_surjektiv), und $\theta$ ist trotzdem singulär. Der Mechanismus bei $e^x$ (kn.satz.theta_singularitaet) ist also ein Sonderfall.
+    Numerisch: negative Fourier-Moden von $\theta$ $\le1.1\cdot10^{-15}$, der Rest nach Abzug der Puiseux-Reihe fällt glatt wie $1/n^2$ (keine weiteren Singularitäten auf $|q|=1$).
+  einfach: >-
+    Knesers Bauweise funktioniert nicht nur für eˣ, sondern auch für x²+1, x⁴+1 oder cosh x. Auch dort gibt es eine kleine Welle θ, und sie hat scharfe
+    Stellen. Diese liegen genau dort, wo die Superfunktion einen besonderen Wert der Abbildung trifft — bei x²+1 den Wert 1, wo die Parabel ihren Scheitel hat.
+  beweis:
+    art: skizze
+    text: |
+      $h$ setzt sich längs jedes Weges fort, der $P$ meidet, denn die Schröder-Funktion $\sigma=\lim\lambda^n(g^n-L)$ ist aus Ästen von $f^{-1}$ gebaut, und diese sind nur
+      über singulären Werten verzweigt. $g$ ist auf $\mathbb H$ univalent, also ist $\sigma$ dort schlicht (Hurwitz; wie Lemma U der Vorarbeit). $S$ ist auf $(-2,\infty)$
+      reell und wachsend; im Zoo ist $P\cap\mathbb R=\{v,f(v),\dots\}$ (bei $\cosh$ wird der zweite singuläre Wert $-1$ auf $\mathbb R$ nie getroffen).
+    luecken:
+      - 'Zweigwahl: dass der Hauptast die richtige Fortsetzung ist, ist nur numerisch belegt (stetige Abtastung, Periodizitätsfehler ≤ 2·10⁻¹⁴), wie Lücke S4 der Vorarbeit.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, U1 und Abschnitt 2; zoo.py, s2_theta.py'}, {ref: kouznetsov2009, stelle: 'Konturverfahren, hier verallgemeinert'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: es ist das Argument von kn.satz.theta_singularitaet, nur mit singulären Werten statt ausgelassenen Werten formuliert.'
+    f2_benutzte_voraussetzungen: 'Voraussetzung (V), Schlichtheit von σ auf ℍ, Zweigwahl (numerisch).'
+    f3_spezialfall: 'Verallgemeinert kn.satz.theta_singularitaet (dort nur eˣ, asymptotischer Wert 0).'
+    f4_uebertragbar: 'Auf jede ganze reelle f mit (V); bei mehreren reellen singulären Werten auf S(ℝ) sollten sich mehrere Singularitätenreihen überlagern (nicht untersucht).'
+    f5_neue_frage: 'Eindeutigkeit (Paulsen–Cowgill) für allgemeine f mit (V)? Was passiert bei Abbildungen ohne reellen singulären Wert?'
+  bewertung: {richtigkeit: 'Kern hergeleitet, Zweigwahl numerisch', neuheit: neu_ungeprueft, nutzen: 'Zeigt, welcher Teil der θ-Struktur von eˣ allgemein ist: die Singularitäten kommen von den singulären Werten der Abbildung.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: it.satz.elementare_superfunktionen}
+    - {typ: verwandt, ziel: kn.konstr.kneser}
+
+- id: kn.satz.zoo_puiseux
+  titel: 'Puiseux-Gesetz: bei einem kritischen Wert vom Grad d fallen Knesers θ-Koeffizienten wie n^(−1−1/d), mit geschlossener Konstante'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Voraussetzung (V) und die Δ-Analytizität bei q = 1 aus kn.satz.zoo_singulaerer_ort (Zweigwahl numerisch)'
+  niveau: forschung
+  objekte: [superfunktion, theta_kneser, fourier_moden, gevrey]
+  bereich: 'wie kn.satz.zoo_singulaerer_ort; kritischer Wert $v$ vom Grad $d<\infty$: $f(w_c+X)=v+aX^d+\dots$, $A=S''(z_1)>0$; $\theta=\sum a_nq^n$, $q=e^{2\pi iz}$'
+  aussage: |
+    Nahe $z_1$ ist $\theta(z)=\Phi\bigl((z-z_1)^{1/d}\bigr)$ mit $\Phi$ holomorph. Daraus folgt
+    $$a_n=\sum_{k\ge1,\ d\nmid k}E_k\,[q^n](1-q)^{k/d},\qquad [q^n](1-q)^\alpha=\frac{\Gamma(n-\alpha)}{\Gamma(-\alpha)\Gamma(n+1)},\qquad E_1=h'(w_c)\Bigl(\frac{iA}{2\pi a}\Bigr)^{1/d},$$
+    also $a_n\approx C_1n^{-1-1/d}$ mit $C_1=E_1/\Gamma(-1/d)$. Für $d=2$ ist auch $E_3$ geschlossen (mit $B=S''(z_1)/2$ und einer Korrektur $\delta=A/12$ bei $\cosh$).
+    Numerisch: bei $x^2+1$ ist $a_n/(C_1n^{-3/2})=0.99985$ bei $n=512$, mit zwei Gliedern bleibt ein relativer Rest $0.65/n^2$; bei $\cosh$ ebenso;
+    bei $x^4+1$ bleibt mit drei Gliedern $0.24/n$ (lokaler Exponent $1.273$ bei $n=1024$, langsam gegen $1.25$).
+    Der Logarithmus bei $e^x$ ist der Grenzfall $d=\infty$: dort gilt $a_n\approx-h'(c-\ln n)/n$ mit Exponent genau 1 (kn.satz.theta_koeffizienten), mit dem neuen Löser reproduziert ($|a_{1024}|=2.2013\cdot10^{-5}$).
+    Die langsame Drift des lokalen Exponenten ist eine Besonderheit des log-Falls; bei algebraischen kritischen Werten liegt er sofort bei $1+1/d$.
+  einfach: >-
+    Wie schnell die Schwingungen der Welle schwächer werden, hängt nur davon ab, wie „spitz“ der besondere Wert der Abbildung ist. Bei einer Parabel
+    (Grad 2) fallen sie wie 1/n hoch 1,5, beim Grad 4 wie 1/n hoch 1,25. Die Vorfaktoren kann man ausrechnen, und die Vorhersage stimmt sehr genau.
+  formen:
+    - {tex: 'a_n\sim\frac{h''(w_c)}{\Gamma(-1/d)}\Bigl(\frac{iA}{2\pi a}\Bigr)^{1/d}n^{-1-1/d}', notiz: 'führendes Glied'}
+  beweis:
+    art: vollstaendig
+    text: |
+      In $\mathbb H$ gilt $S(z-1)=g(S(z))$, also $\theta(z)=1-z+h(g(S(z)))$. Mit $S(z)-v=A(z-z_1)+B(z-z_1)^2+\dots$ ist $g(S)-w_c=((S-v)/a)^{1/d}\cdot$(analytisch in $(S-v)^{1/d}$),
+      und $h$ ist bei $w_c$ analytisch, weil $w_c\notin P$. Mit $z-z_1=\log q/(2\pi i)$ wird $\theta$ eine konvergente Reihe in $(1-q)^{k/d}$; ganzzahlige Potenzen tragen nicht bei.
+      Da $\theta$ bei $q=1$ $\Delta$-analytisch ist, gilt der Transfersatz von Flajolet–Odlyzko für $(1-q)^\alpha$ wörtlich (anders als im log-Fall, wo eine eigene Abschätzung nötig war).
+  stuetzt_sich_auf: [kn.satz.zoo_singulaerer_ort]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, U2, U3, B-U2 und Abschnitt 2; s2_theta.py, s3_puiseux.py'}, {ref: flajolet_odlyzko1990}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Aus der Puiseux-Form mit dem Transfersatz ja; neu ist die Lokalform über g und die geschlossene Konstante.'
+    f2_benutzte_voraussetzungen: '(V), Δ-Analytizität aus kn.satz.zoo_singulaerer_ort, Transfersatz (Flajolet–Odlyzko, zitiert).'
+    f3_spezialfall: 'Ja: Singularitätenanalyse für algebraische Singularitäten; der log-Fall kn.satz.theta_koeffizienten ist der Grenzfall d → ∞.'
+    f4_uebertragbar: 'Auf jeden kritischen Wert endlichen Grads; einheitlich a_n ≈ [qⁿ] h(g_v(v + A·i(1−q)/2π)) mit der lokalen Umkehrung g_v.'
+    f5_neue_frage: 'Gehen die Superfunktionen von (1+x/d)^d für d → ∞ in sexp über, und wie geht n^(−1−1/d) gleichmässig in das Superlog-Gesetz über?'
+  bewertung: {richtigkeit: 'bewiesen unter (V) und der Zweigwahl; numerisch bis n = 1024 auf 10⁻⁹ relativ', neuheit: neu_ungeprueft, nutzen: 'Erklärt den Fourier-Abfall von Knesers Welle als Funktion des Grads des singulären Werts; macht den eˣ-Fall zu einem Grenzfall.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.theta_koeffizienten}
+    - {typ: verwandt, ziel: kn.beob.theta_fourier_algebraisch}
+    - {typ: verwandt, ziel: br.satz.gevrey_fourier}
+
+- id: kn.beob.zoo_mittelwerte
+  titel: 'Knesers Mittelwertgesetze gelten auch für die Superfunktionen von x²+1, x⁴+1 und cosh'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [superfunktion, theta_kneser, periodische_stoerung]
+  bereich: 'Kneser-Superfunktionen unter (V) (kn.satz.zoo_singulaerer_ort); Mittel $M[G]=\int_{-1}^0G$'
+  aussage: |
+    Für $e^x$, $x^2+1$, $\cosh x$ und $x^4+1$ gelten auf $10^{-10}$ bis $10^{-15}$:
+    keine negativen Fourier-Moden von $\theta$, $M[\theta^2]=M[\theta]^2$, $M[e^{i\theta}]=e^{iM[\theta]}$, σ-Produkt $=1$,
+    $M[1/(1+\theta')]=1$ (also $\int\mathrm{slog}'^2/h'=1$) und $M[\log(1+\theta')]=0$.
+    Eine um $10^{-4}$ verbogene Superfunktion $T(x)=S(x+10^{-4}\sin2\pi x)$ verletzt jedes dieser Gesetze um $10^{-6}$ bis $10^{-4}$.
+    Begründung: das Mittelwertprinzip (kn.satz.theta_mittelwerte) braucht nur $\theta$ holomorph und periodisch in $\mathbb H$ mit Grenzwert oben und eine integrierbare
+    Majorante; bei $d<\infty$ ist $\theta$ beschränkt (Puiseux), die Majorante also trivial. Die Gesetze mit $1+\theta'$ brauchen zusätzlich $1+\theta'\neq0$ in $\mathbb H$
+    (kn.beob.zoo_ableitung_nullstellen). Auch die Kennzeichnung durch den Defekt $E$ (br.satz.reelle_kennzeichnung) überträgt sich wörtlich — vorausgesetzt, die
+    Eindeutigkeit nach Paulsen–Cowgill gilt für diese $f$ (nicht bewiesen).
+  einfach: >-
+    Die schönen Integralformeln, die nur Knesers Tetration erfüllt, gelten genauso für die Kneser-Lösungen von x²+1, x⁴+1 und cosh. Sie sind also kein
+    Zufall der Exponentialfunktion, sondern folgen allein aus der Bauweise. Schon eine winzige Verbiegung zerstört sie.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, U4 und Abschnitt 3 (Tabelle); s4_mittel.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem Mittelwertprinzip, sobald θ holomorph, periodisch und beschränkt ist; die Zahlen bestätigen das.'
+    f2_benutzte_voraussetzungen: 'Gauss–Legendre auf [−1, 0] mit Glättung der Wurzelenden, 300/200 Knoten, zwei Lösereinstellungen.'
+    f3_spezialfall: 'Ja: Anwendung von kn.satz.theta_mittelwerte auf andere Abbildungen.'
+    f4_uebertragbar: 'Auf jede Abbildung mit (V).'
+    f5_neue_frage: 'Gilt die Eindeutigkeit (Paulsen–Cowgill) für allgemeine f mit (V), so dass E = 0 auch dort kennzeichnet?'
+  bewertung: {richtigkeit: 'numerisch 10⁻¹⁰…10⁻¹⁵, Herleitung kurz', neuheit: neu_ungeprueft, nutzen: 'Trennt die universellen Kneser-Gesetze von den eˣ-eigenen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.theta_mittelwerte}
+    - {typ: uebertragbar_auf, ziel: br.satz.reelle_kennzeichnung}
+    - {typ: verwandt, ziel: kn.satz.zoo_singulaerer_ort}
+
+- id: kn.beob.zoo_ableitung_nullstellen
+  titel: 'S′ ≠ 0 in der oberen Halbebene ist eine Besonderheit von eˣ: die Superfunktion von x²+1 hat Nullstellen, universell ist nur 1+θ′ ≠ 0'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [superfunktion, theta_kneser]
+  bereich: 'Kneser-Superfunktionen $S_K$ von $x^2+1$, $x^4+1$, $\cosh$ und $e^x$ in $\mathbb H$; $S''=F''(z+\theta)\,(1+\theta'')$'
+  aussage: |
+    $S_K(x^2+1)$ hat in $\mathbb H$ die Nullstelle $z_0=2.1799322204542+2.5972861621226\,i$; $S_K(x^4+1)$ hat die Nullstellen
+    $1.0435923930395+1.3498560554128\,i$, $2.15828+1.11638\,i$, $2.40764+1.28052\,i$ (Newton, $|S|<10^{-15}$, zwei Einstellungen gleich auf 13 Stellen).
+    Wegen $S'(z+1)=f'(S(z))S'(z)$ ist dort $S(z_0+1)=v$ und $S'(z_0+1)=0$. Bei $e^x$ dagegen hat weder $S$ noch $S'$ in $[-6,2]\times(0,8]$ eine Nullstelle
+    (Argumentprinzip; bewiesen ist $S'\neq0$ in kn.satz.ableitung_nullstellenfrei), weil $F$ den Wert 0 auslässt, was bei Polynomen nicht so ist.
+    Universell ist dagegen $1+\theta'\neq0$ in $\{\mathrm{Im}\,z>0.01\}$ für alle vier Abbildungen (Windungszahl 0 auf $10^{-15}$, $|1+\theta'|\ge0.69$):
+    die Nullstellen von $S'$ stammen von kritischen Punkten von $F$, nicht von $\theta$. Der richtige allgemeine Satz lautet also
+    „$z\mapsto z+\theta(z)$ ist in $\mathbb H$ lokal umkehrbar“; für $e^x$ ist das gleichwertig mit $S'\neq0$. Bei $\cosh$ wurde in $\mathrm{Re}\,z\le3$ keine Nullstelle gefunden; weiter rechts offen.
+  einfach: >-
+    Bei eˣ wird die Steigung der Kneser-Lösung in der komplexen Ebene nie null. Bei x²+1 schon — an einer genau berechneten Stelle. Das liegt nicht an
+    der Welle θ, sondern an der gewöhnlichen Lösung darunter. Die Welle selbst verhält sich bei allen Abbildungen gleich gutmütig.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, A1, A2 und Abschnitt 4; s5_nullstellen.py, s5b_rechts.py, s5c_w.py, s5d_pruef.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Der Mechanismus ja (S = 0 bei z gibt S′ = 0 bei z+1, sobald f′(0) = 0); die Lage der Nullstellen ist gemessen.'
+    f2_benutzte_voraussetzungen: 'Newton auf dem Kneser-Löser, Argumentprinzip auf Rechtecken [x₀, x₀+1] × [0.02, 8].'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Abbildung, deren Poincaré-Funktion kritische Punkte hat (z. B. cosh über den Urbildern von iπk).'
+    f5_neue_frage: 'Hat S_K(cosh) Nullstellen weiter rechts? Lässt sich 1+θ′ ≠ 0 in ℍ allgemein beweisen?'
+  bewertung: {richtigkeit: 'numerisch, 13 Stellen', neuheit: neu_ungeprueft, nutzen: 'Zeigt, welche Voraussetzung die Mittelwertgesetze wirklich brauchen (1+θ′ ≠ 0 statt S′ ≠ 0).', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.ableitung_nullstellenfrei}
+    - {typ: stuetzt, ziel: kn.beob.zoo_mittelwerte}
+    - {typ: verwandt, ziel: it.satz.poincare_polynom_surjektiv}
+
+- id: kn.verm.zoo_lokal_konvex
+  titel: 'Bei kritischen Werten endlichen Grads ist Re(1+θ′) > 0 in der oberen Halbebene — bei eˣ nicht'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [superfunktion, theta_kneser]
+  bereich: 'Kneser-Superfunktionen unter (V) mit kritischem Wert vom Grad $d<\infty$ ($x^2+1$, $\cosh$, $x^4+1$); $h_1=h''(w_c)$'
+  aussage: |
+    Vermutung: für $d<\infty$ gilt $\mathrm{Re}(1+\theta'(z))>0$ in ganz $\mathbb H$, d. h. $z\mapsto z+\theta(z)$ ist dort „close-to-convex“.
+    Belege: nahe $z_1$ ist $1+\theta'\approx\frac1d h_1(A/a)^{1/d}\zeta^{1/d-1}$, also liegt $\arg(1+\theta')$ in $[\arg h_1-(1-1/d)\pi,\ \arg h_1]$:
+    $[-0.74,0.83]$ ($x^2+1$), $[-0.75,0.82]$ ($\cosh$), $[-1.03,1.33]$ ($x^4+1$), immer in $(-\pi/2,\pi/2)$. Auf den Abtastlinien $y\ge0.003$ ist
+    $\min\mathrm{Re}(1+\theta')=0.78$, $0.77$, $0.72$.
+    **Falsch für $e^x$:** dort wandert $\arg(1+\theta')\approx\arg h'(\log(Az))-\arg z$ unbeschränkt langsam ($\max|\arg|=1.76$ bei $|z|=10^{-8}$, $2.28$ bei $|z|=10^{-250}$),
+    $\mathrm{Re}(1+\theta')$ wird sehr nahe an den ganzen Zahlen negativ.
+  einfach: >-
+    Bei Abbildungen mit einem „spitzen“ besonderen Wert (wie der Scheitel einer Parabel) scheint die Welle θ die Richtungen in der komplexen Ebene nie
+    um mehr als einen rechten Winkel zu verdrehen. Bei eˣ passiert das dagegen ganz nahe an den ganzen Zahlen doch.
+  gegenbeispielsuche: 'Abtastung von Re(1+θ′) auf Linien y ≥ 0.003 für x²+1, cosh, x⁴+1 (kein negativer Wert, Minimum 0.72); bei eˣ gefunden: negativ für |z| ≲ 10⁻⁶.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, A3 und Abschnitt 4; s5c_w.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; die Lokalform beschränkt nur das Argument nahe z₁.'
+    f2_benutzte_voraussetzungen: 'Puiseux-Lokalform (kn.satz.zoo_puiseux) und Abtastung auf Linien y ≥ 0.003.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Abbildung mit kritischem Wert endlichen Grads, vermutlich mit d-abhängiger Schranke.'
+    f5_neue_frage: 'Beweis über Schlichtheit von σ und die Lokalform? Folgt daraus die Univalenz von z + θ(z) in ℍ?'
+  bewertung: {richtigkeit: 'Vermutung mit numerischen Belegen und Lokalanalyse', neuheit: neu_ungeprueft, nutzen: 'Trennt algebraische von logarithmischen Singularitäten auch geometrisch.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.zoo_ableitung_nullstellen}
+    - {typ: verwandt, ziel: kn.satz.zoo_puiseux}
+
+- id: kn.beob.zoo_wendepunkt
+  titel: 'Auch die Kneser-Superfunktionen von x²+1, cosh und x⁴+1 haben genau einen Wendepunkt'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [superfunktion, konvexitaet]
+  bereich: 'Kneser-Superfunktionen $S$ auf $(-2,\infty)$ mit Normierung $S(-1)=v$; $f''>0$ und $f''''>0$ auf $(0,\infty)$, $S>0$ auf $(-2,\infty)$'
+  aussage: |
+    Jede der vier Superfunktionen hat genau einen Wendepunkt $x_w$ (zwei Einstellungen gleich auf $\le4\cdot10^{-15}$):
+    $x^2+1$: $-1.260116574678058$; $\cosh$: $-0.747584443746352$; $x^4+1$: $-1.308589915241198$; $e^x$: $-0.521764792623339$ (Zertifikat gr.satz.ein_wendepunkt_e2: $-0.521764792623322$).
+    Grund: aus $S''(x+1)=f''(S)S'^2+f'(S)S''$ folgt wie bei $e^x$: ist $S''(x)\ge0$, so $S''(x+1)>0$; ist $S''(x+1)\le0$, so $S''(x)<0$ (für $x>-2$).
+    Es reicht also ein einziger Vorzeichenwechsel auf einem Stück der Länge $>1$; gefunden auf $(-1.99,1]$, mit $S''\ge0.019$ auf $(x_w+0.05,1]$ und $S''<0$ nahe $-2$.
+    Rechnergestützt in Gleitkomma, nicht mit Intervallen zertifiziert.
+  einfach: >-
+    Die Kneser-Kurven von x²+1, cosh und x⁴+1 wechseln ihre Krümmung genau einmal, genau wie Knesers Tetration. Der Grund ist derselbe einfache
+    Schluss: ist die Kurve einmal nach oben gekrümmt, bleibt sie es eine Einheit weiter rechts auch.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, W und Abschnitt 5; s6_wendepunkt.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Fortpflanzung ja (dasselbe Lemma wie bei eˣ); der eine Vorzeichenwechsel auf (−1.99, 1] ist gemessen.'
+    f2_benutzte_voraussetzungen: 'f′, f″ > 0 auf S((−2, ∞)); Werte des Kneser-Lösers in Gleitkomma.'
+    f3_spezialfall: 'Ja: dieselbe Fortpflanzung wie in gr.satz.ein_wendepunkt_e2.'
+    f4_uebertragbar: 'Auf jede Superfunktion mit f′, f″ > 0 auf ihrem reellen Wertebereich.'
+    f5_neue_frage: 'Mit Ball-Arithmetik zertifizieren wie bei eˣ; gilt es für alle x² + c mit c > 1/4?'
+  bewertung: {richtigkeit: 'rechnergestützt, Gleitkomma', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass die Ein-Wendepunkt-Eigenschaft kein eˣ-Zufall ist.', nutzen_stufe: gering}
+  kanten:
+    - {typ: analog_zu, ziel: gr.satz.ein_wendepunkt_e2}
+    - {typ: verwandt, ziel: gr.verm.ein_wendepunkt}

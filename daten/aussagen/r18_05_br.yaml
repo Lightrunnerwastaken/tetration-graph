@@ -1,0 +1,40 @@
+gebiet: br
+# Runde 18.10.2026, Agent 05 (Kombinatorik): Zähldeutung des Iterationsdreiecks von x·eˣ.
+# Rechnungen: forschung/runde_2026_10_18/05_kombinatorik/ (BERICHT.md, s4_punktiert.py).
+aussagen:
+
+- id: br.satz.produkt_iteration_ketten
+  titel: 'Die Iterierten von x·eˣ zählen Ketten punktierter Partitionen; Möbius-Zahl (−1)^(n−1)·n^(n−2)'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion, lambert_w]
+  bereich: 'Verband der punktierten Partitionen einer $n$-Menge (Ordnung von Chapoton–Vallette), $\hat0$ = feinste Partition'
+  aussage: |
+    $$n!\,[x^n]\,(xe^x)^{\circ t}=\sum_j B'(n,j)\binom tj,$$
+    wobei $B'(n,j)$ die Zahl der strikten Ketten $\hat0<\sigma_1<\dots<\sigma_j$ ist, deren letztes Glied $\sigma_j$ maximal ist (ein einziger Block mit Punkt).
+    Das ist das Dreieck $2;\ 3,12;\ 4,84,144;\ 5,510,2760,2880;\ 6,3210,41940,117360,86400$ aus br.beob.produkt_iteration_dreieck (Diagonale $n!(n-1)!$,
+    Zeilensummen $2,15,232,6155,248916$). Für jedes der $n$ Maxima $M$ gilt $\mu(\hat0,M)=(-1)^{n-1}n^{n-2}$; die Summe $(-n)^{n-1}=n!\,[x^n]\,W(x)$ ist der Wert bei $t=-1$.
+  einfach: >-
+    Die Zahlen im Dreieck der wiederholten Abbildung x·eˣ zählen etwas Konkretes: Wege, auf denen man eine Menge Schritt für Schritt in immer gröbere
+    Gruppen mit je einem markierten Mitglied zusammenlegt, bis nur noch eine Gruppe übrig ist.
+  beweis:
+    art: vollstaendig
+    text: |
+      $xE$ (punktierte Menge) $\circ F$ heisst: einen Block aus $F$-Strukturen wählen und darin einen Punkt. Also sind $(xE)^{\circ t}$ die Multiketten
+      $\hat0\le\pi_1\le\dots\le\pi_t$ mit $\pi_t$ einblockig, die Punkte erben sich nach oben (Ordnung von Chapoton–Vallette). Die verschiedenen Glieder über $\hat0$
+      bilden eine strikte Kette bis zum Maximum; ihre Lage in $t$ Stufen wählt man auf $\binom tj$ Arten. Bei $t=-1$: $\sum_j(-1)^jB'(n,j)=\sum_M\mu(\hat0,M)$ (Hall)
+      $=n![x^n]W(x)=(-n)^{n-1}$; Symmetrie gibt die Möbius-Zahl. Durch Abzählen geprüft für $n\le6$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, P1–P3 und B6; s4_punktiert.py'}, {ref: chapoton_vallette2006}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald man die Iteration als Spezies-Komposition der punktierten Mengen liest.'
+    f2_benutzte_voraussetzungen: 'Exponentielle erzeugende Funktionen, Satz von Hall, Lagrange-Inversion für W.'
+    f3_spezialfall: 'Gegenstück zu it.satz.zeta_polynom_partitionen (eˣ − 1 und der gewöhnliche Partitionsverband).'
+    f4_uebertragbar: 'Auf andere Spezies $F$ mit $F=x+\dots$ (Ketten in passenden Operaden-Verbänden).'
+    f5_neue_frage: 'Steht die Möbius-Formel schon bei Chapoton–Vallette (arXiv math/0410051, Volltext nicht geprüft)? Sie passt zu dim PreLie(n) = n^{n−1}.'
+  bewertung: {richtigkeit: 'vollständig; durch Abzählen geprüft für n ≤ 6', neuheit: neu_ungeprueft, nutzen: 'Erklärt das Dreieck aus br.beob.produkt_iteration_dreieck kombinatorisch.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: br.beob.produkt_iteration_dreieck}
+    - {typ: analog_zu, ziel: it.satz.zeta_polynom_partitionen}
+    - {typ: verwandt, ziel: kn.satz.stoerungsreihe_baeume}

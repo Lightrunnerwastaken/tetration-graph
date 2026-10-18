@@ -1,0 +1,240 @@
+gebiet: kn
+# Runde 18.10.2026, Bericht 02: Knesers θ-Welle bei höheren Rängen (Basis 2).
+# Rechnungen: forschung/runde_2026_10_18/02_theta_hoehere_raenge/ (BERICHT.md, Befunde B1–B13).
+aussagen:
+
+- id: kn.satz.theta6_singularitaet
+  titel: 'θ der Kneser-Hexation ist nicht an den ganzen Zahlen singulär, sondern bei x* = ihex(p) + ℤ — mit einem Wurzelknick vom Exponenten ln b / ln sexp′(p)'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Zweigwahl (h(w) = 1 + h(ipent w) und Hauptzweig von ipent längs hex(x* + iε)) nur numerisch bestätigt, wie bei kn.satz.theta_singularitaet; nur Basis 2'
+  niveau: forschung
+  objekte: [hyperoperation, theta_kneser, superfunktion, schroeder]
+  bereich: '$b=2$; $P$ reguläre Pentation (Motor pentx) am reellen Fixpunkt $p=-1.7439091761$ von sexp, $\lambda_4=\mathrm{sexp}''(p)=5.1717972635$; Motor-Hexation hex Kneser-artig am abstossenden Fixpunkt $kp=-1.992948435932+1.445128496639i$ von $P$ ($\mu=1.368932747340+2.488144667623i$); $h$ reguläre Abel-Funktion von $P$ an $kp$; $\theta_6(z)=h(\mathrm{hex}\,z)-z$'
+  aussage: |
+    (i) $\theta_6$ hat keine negativen Moden und ist **genau** bei $x^*+\mathbb Z$ singulär, $x^*=\mathrm{ihex}(p)=-2.76502205052560345111$; die ganzen Zahlen sind reguläre Punkte.
+    (ii) Lokal gilt
+    $$\theta_6(z)=\theta^*+K(z-x^*)^{\alpha}+O(|z-x^*|^{2\alpha})+O(z-x^*),\qquad\alpha=\frac{\ln b}{\ln\lambda_4}=0.42182244029502478293,$$
+    mit $\theta^*=2-x^*+h(\mathrm{psing})=5.17719763470+1.23143667244i$ und $K=h'(\mathrm{psing})\,\mathrm{ipent}'(-2)\,A_6^{\alpha}b^{-\mathrm{pcent}}/\mathrm{sexp}'(-1)=0.2746753+0.4215492i$,
+    $A_6=\mathrm{hex}'(x^*)=1.0325027039$, $\mathrm{psing}=-1.97859584473632+1.91185121532145i$. $K\ne0$ streng.
+    $\theta_6$ bleibt also bei $x^*$ **endlich** (Hölder-stetig mit Exponent $\alpha$), anders als bei der Tetration, wo $\theta$ superlogarithmisch unbeschränkt wird.
+  einfach: >-
+    Bei der Tetration hat Knesers Welle ihre scharfen Stellen an den ganzen Zahlen. Bei der Hexation liegen sie woanders: dort, wo die Hexation
+    den reellen Fixpunkt der Tetration trifft. Die Welle wird dort auch nicht unendlich, sondern hat nur einen Knick wie eine Wurzelfunktion.
+  beweis:
+    art: skizze
+    text: |
+      $P(z)=\Psi_p(\lambda_4^z)\to p$ für $\mathrm{Re}\,z\to-\infty$; am Punkt $x^*$ erreicht hex genau diesen Ausnahmewert, die Werte $\mathrm{hex}(k)$ sind für $h$ keine Ausnahmewerte.
+      $\theta_6(z)=1+h(V)-z$ mit $V=\mathrm{ipent}(\mathrm{hex}\,z)$, $V\to-\infty$ für $z\to x^*$. Weil sexp bei $-2$ logarithmisch singulär ist, hat slog für $V\to-\infty$ den
+      endlichen Grenzwert $-2$: $\mathrm{slog}\,V=-2+b^V/\mathrm{sexp}'(-1)+\dots$, also $\mathrm{ipent}(V)=\mathrm{psing}+\mathrm{ipent}'(-2)\,b^V/\mathrm{sexp}'(-1)+O(b^{2V})$, und
+      $b^V=(A_6(z-x^*))^{\ln b/\ln\lambda_4}b^{-\mathrm{pcent}}(1+O(z-x^*))$. $K\ne0$, weil $h'$, $\mathrm{ipent}'$, $A_6$ nullstellenfrei sind (S1-Argument aus kn.satz.theta_singularitaet).
+    luecken:
+      - 'Zweigwahl: h(w) = 1 + h(ipent w) und der Hauptzweig von ipent müssen längs hex(x* + iε) die analytische Fortsetzung sein; nur numerisch (B4/B5 treffen die Koeffizienten), nicht mit Intervallen.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B1–B3 und Abschnitt 1; s1_theta6.py, s7_lokal6.py, lib6.py'}]
+  nachgeprueft:
+    - {ergebnis: 'a₋ₙ < 2.4·10⁻⁴⁹ (dps 40); arg(a_n/a_{n−1}) → −2πx* mod 2π = −1.47641, gemessen −1.476402 (n = 128); zwei Läufe (dps 40/30) stimmen auf 10⁻²⁹ (n ≤ 16) überein; θ(x* + iy) − θ* fällt wie y^α.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, aber aus drei Zutaten: Ausnahmewert p der regulären Pentation, endlicher Grenzwert von slog bei −∞, Nullstellenfreiheit der Ableitungen.'
+    f2_benutzte_voraussetzungen: 'Kneser-Darstellung hex = F_kp(z + θ₆); Zweigwahl (numerisch).'
+    f3_spezialfall: 'Gegenstück zu kn.satz.theta_singularitaet eine Stufe höher; dort ist der Ausnahmewert 0 = sexp(−1).'
+    f4_uebertragbar: 'Auf gerade Ränge allgemein, siehe kn.verm.theta_gerade_raenge; auf andere Basen über η₅ mit α = ln b/ln λ₄.'
+    f5_neue_frage: 'Zweigwahl mit Intervallarithmetik beweisen; Koeffizientengesetz (kn.satz.theta6_koeffizienten).'
+  bewertung: {richtigkeit: 'Lokalform hergeleitet, Zweigwahl numerisch', neuheit: neu_ungeprueft, recherche: 'Der Exponent 0.4218 und die Ecke der Kurve stehen schon qualitativ in kn.beob.hexation_verzweigt (θ ~ (x − x_c)^{1/α}, x_c = x* + 1); neu sind Ort als ihex(p), Konstanten θ*, K, die Regularität an den ganzen Zahlen und die Herleitung.', nutzen: 'Klärt den Typ der Singularität der Hexations-Welle; beantwortet f5 von kn.satz.theta_singularitaet.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: analog_zu, ziel: kn.satz.theta_singularitaet}
+    - {typ: stuetzt, ziel: kn.beob.hexation_verzweigt}
+    - {typ: verwandt, ziel: kn.frage.hexation_kneser}
+    - {typ: verwandt, ziel: kn.satz.kein_kneser_anziehend}
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+
+- id: kn.satz.theta6_koeffizienten
+  titel: 'Fourier-Koeffizienten der Hexations-Welle: aₙ ≈ C₆ e^(−2πinx*) n^(−1−α), Potenzabfall mit Exponent 1.4218'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Lokalform aus kn.satz.theta6_singularitaet (Zweigwahl numerisch) und Δ-Analytizität von θ₆ bei Q = 1 für den Übertragungssatz; nur Basis 2'
+  niveau: forschung
+  objekte: [theta_kneser, fourier_moden, hyperoperation]
+  bereich: 'wie kn.satz.theta6_singularitaet; $\theta_6=\sum a_nq^n$, $q=e^{2\pi iz}$, $Q=q\,e^{-2\pi ix^*}$'
+  aussage: |
+    (i) Modell: $a_n=e^{-2\pi inx^*}b_n(1+O(1/n))$ mit $b_n=[Q^n]\,h\bigl((c_6+\log(1-Q))/\ln\lambda_4\bigr)$,
+    $c_6=\ln(A_6/2\pi)+i\pi/2-\mathrm{pcent}\ln\lambda_4$; mit der Korrektur $\delta_1=\tfrac12+i\kappa_6/2\pi$ ($\kappa_6=0.335274554885$) wird der Rest $O(1/n^2)$.
+    (ii) Asymptotik: $a_n\approx C_6e^{-2\pi inx^*}n^{-1-\alpha}$, $C_6=K(i/2\pi)^\alpha/\Gamma(-\alpha)=0.0053906-0.0631856i$ ($|C_6|=0.06342$).
+    Die Koeffizienten fallen wie eine **Potenz** mit Exponent $1.4218$, ohne iterierte Logarithmen; der reine Leitterm $-h'(v_n)/(n\ln\lambda_4)$ der Tetration trifft hier nicht (Faktor 1.63).
+  einfach: >-
+    Wie stark die einzelnen Schwingungen der Hexations-Welle sind, lässt sich vorhersagen: Sie werden wie eine feste Potenz von n kleiner,
+    schneller als bei der Tetration. Die Rechnung stimmt bis zur 160. Schwingung auf etwa zwei Prozent.
+  formen:
+    - {tex: 'a_n\approx C_6\,e^{-2\pi inx^*}\,n^{-1-\alpha},\ \alpha=\ln b/\ln\lambda_4', notiz: 'Potenzabfall'}
+  beweis:
+    art: skizze
+    text: '(ii) aus der Lokalform $\theta_6\approx\theta^*+K(z-x^*)^\alpha$ über den Übertragungssatz für $(1-Q)^\alpha$ (Flajolet–Odlyzko); (i) Struktur wie kn.satz.theta_koeffizienten mit $\ln\lambda_4$ statt $\ln b$.'
+    luecken:
+      - 'Zweigwahl wie bei kn.satz.theta6_singularitaet.'
+      - 'Δ-Analytizität bei Q = 1 und Fehlerschranke für (i) nicht bewiesen, nur gemessen.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B4, B5 und Abschnitt 1; s2_modell6.py, s2b_fuehrend6.py'}, {ref: flajolet_odlyzko1990}]
+  nachgeprueft:
+    - {ergebnis: 'n·Rest₁ = 0.33 → 0.309, n²·Rest₂ = 0.50 → 0.394 (n = 8…160), Rest₂ = 1.5·10⁻⁵ bei n = 160; a_n e^{2πinx*}/(C₆n^{−1−α}) = 1.050 … 1.016 (n = 5…160).'}
+  pruefung:
+    f1_folgt_unmittelbar: '(ii) ja, aus kn.satz.theta6_singularitaet mit dem Übertragungssatz.'
+    f2_benutzte_voraussetzungen: 'Lokalform, Δ-Analytizität.'
+    f3_spezialfall: 'Gegenstück zu kn.satz.theta_koeffizienten (dort Exponent genau 1 mit Log-Korrekturen, α = 0).'
+    f4_uebertragbar: 'Auf gerade Ränge mit Exponent 1 + α_r (kn.verm.theta_gerade_raenge).'
+    f5_neue_frage: 'Rest in (i) beweisen; Basisabhängigkeit von C₆.'
+  bewertung: {richtigkeit: 'Struktur hergeleitet, numerisch auf 2 % (n = 160)', neuheit: neu_ungeprueft, nutzen: 'Erklärt den Modenabfall der Kneser-Hexation vollständig.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.satz.theta6_singularitaet}
+    - {typ: analog_zu, ziel: kn.satz.theta_koeffizienten}
+
+- id: kn.verm.theta_gerade_raenge
+  titel: 'Vermutung: Auf jedem geraden Rang sitzt die Singularität von θ dort, wo H_r den Fixpunkt p_{r−2} trifft, mit Exponent ln λ_{r−4} / ln λ_{r−2}'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation, theta_kneser, fixpunkt_L, multiplikator]
+  bereich: 'Motor-Familie zur Basis 2: gerade Ränge Kneser-artig am abstossenden komplexen Fixpunkt, ungerade Ränge regulär am reellen Fixpunkt $p_{r-1}$ von $H_{r-1}$; $\lambda_k=H_k''(p_k)$, $\lambda_2=b$, $\lambda_0=1$'
+  aussage: |
+    Für gerade $r\ge4$ ist $\theta_r$ genau bei $x_r^*+\mathbb Z$ singulär mit $H_r(x_r^*)=p_{r-2}$ (dem Grenzwert von $H_{r-1}$ für $\mathrm{Re}\,z\to-\infty$), und lokal
+    $\theta_r\approx\theta^*+K(z-x_r^*)^{\alpha_r}$, $\alpha_r=\ln\lambda_{r-4}/\ln\lambda_{r-2}$; die Koeffizienten fallen wie $n^{-1-\alpha_r}$.
+    $r=4$ ist der Grenzfall $\alpha=0$: $x_4^*=-1$, Exponent genau 1 mit iterierten Log-Korrekturen. $r=6$: kn.satz.theta6_singularitaet.
+    **Rang 8 (Oktation):** Kneser am abstossenden Fixpunkt $kp_8=-4.294772+1.283451i$ von $H_7$ ($\mu=3.41616+3.22021i$); singulär bei $x_8^*=H_8^{-1}(p_6)=-4.7138756$,
+    $p_6=-3.6994078$; vorhergesagt $\alpha_8=\ln\lambda_4/\ln\lambda_6=0.730137$ ($\lambda_6=9.493087$).
+  gegenbeispielsuche: 'Geprüft wurden r = 4, 6, 8 (Ort jeweils getroffen, bei r = 8 auf 4·10⁻⁴ rad); ganze Zahlen auf Rang 6 und 8 als mögliche weitere Singularitäten geprüft: regulär. Rang 10 nicht gerechnet.'
+  einfach: >-
+    Das Muster scheint auf jeder zweiten Rechenart wiederzukehren: Die scharfe Stelle der Welle liegt dort, wo die Rechenart einen bestimmten
+    Fixpunkt zwei Stufen tiefer trifft, und wie scharf sie ist, sagt ein Verhältnis zweier Logarithmen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B6, B7 und Abschnitt 2; s6_theta8.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Rang 8 (dps 20, 64 Punkte): arg(a_n/a_{n−1}) = −1.798224 (n = 24) gegen −1.797773; lokaler Exponent 1.702 → 1.713, Ziel 1.730; negative Moden 2·10⁻¹⁰.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Argument: H_{r−2} hat bei x_{r−2}* − 1 eine logarithmische Singularität zur Basis λ_{r−4}, also hat H_{r−2}^{−1}(V) für V → −∞ einen endlichen Grenzwert mit Annäherung λ_{r−4}^V.'
+    f2_benutzte_voraussetzungen: 'Struktur der Motor-Familie, Zweigwahl wie bei Rang 6.'
+    f3_spezialfall: 'Enthält kn.satz.theta_singularitaet (r = 4) und kn.satz.theta6_singularitaet (r = 6).'
+    f4_uebertragbar: 'Auf andere Basen über den Schwellen η_r.'
+    f5_neue_frage: 'α₈ genauer messen (höheres N, dps 30), Rang 10 prüfen.'
+  bewertung: {richtigkeit: 'für r = 4, 6 hergeleitet, für r = 8 Ort belegt, Exponent grob', neuheit: neu_ungeprueft, nutzen: 'Einheitliches Gesetz für die Wellen aller Kneser-artigen Ränge.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.theta6_singularitaet}
+    - {typ: verallgemeinert, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: kn.satz.hexation_struktur}
+
+- id: kn.beob.theta5_wachsende_koeffizienten
+  titel: 'Kneser-artige Pentation am anziehenden Fixpunkt L₄: θ hat wachsende Koeffizienten und reicht nicht bis zur reellen Achse'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, theta_kneser, schroeder, fixpunkt_L]
+  bereich: '$b=2$; $H_5$ Kneser-artige Pentation aus dem Cauchy-Löser (kn.beob.einheitliche_raenge); $L_4=1.469818+1.664342i$ Kneser-Fixpunkt von sexp; $\sigma$ Koenigs-Funktion an $L_4$; $\theta_5=\log_\mu\sigma(H_5)-z$'
+  aussage: |
+    sexp₂ hat keinen für slog anziehenden komplexen Fixpunkt (9 Startwerte laufen alle nach $p$). $L_4$ ist für sexp **anziehend**: $\mu=0.154239+0.690508i$, $|\mu|=0.7075$.
+    Die Koeffizienten von $\theta_5$ **wachsen**: $|a_1|,\dots,|a_{10}|=2.88,\ 9.42,\ 27.2,\ 154,\ 705,\ 3357,\ 1.42\cdot10^4,\ 5.25\cdot10^4,\ 1.76\cdot10^5,\ 6.53\cdot10^5$,
+    Rate $(\ln|a_n|-\ln|a_{n-4}|)/8\pi=0.27$–$0.28$. Die θ-Reihe konvergiert nur für $\mathrm{Im}\,z>y_c\approx0.27$; $\theta_5$ reicht nicht bis $\mathbb R$.
+    Die Grenze ist der Rand von $\{z:H_5(z)\text{ im Einzugsgebiet von }L_4\}$ (1-periodisch, weil $\mathrm{sexp}^{\circ n}(H_5(z))=H_5(z+n)$); darunter liegen fraktal
+    durchmischt Punkte im Becken von $\bar L_4$ und entkommende Bahnen, höchster Punkt ausserhalb bei $y\approx0.26$.
+  einfach: >-
+    Bei der Pentation hat die Tetration nur einen anziehenden komplexen Fixpunkt. Baut man die Welle dort, wird sie nach unten immer wilder
+    und erreicht die reelle Achse gar nicht. Ob der Fixpunkt abstösst oder anzieht, entscheidet also, ob es eine reelle Welle gibt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B8, B9 und Abschnitt 3; s3_theta5.py, s3b_wachstum5.py, s4_becken5.py, s8_fixpunkte_sexp.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); passt zu kn.satz.kein_kneser_anziehend (am anziehenden Fixpunkt gibt es keine reelle Kneser-Darstellung).'
+    f2_benutzte_voraussetzungen: 'e6-Löser auf 4·10⁻¹⁰; Linien y = 0.30/0.35/0.5/0.7 stimmen für n ≤ 12 auf 2·10⁻⁴ überein; keine negativen Moden (≤ 7·10⁻¹⁰); Karte 100×25.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Vermutlich auf die Etappe-6-Hexation am anziehenden Fixpunkt von K₅ (ungeprüft).'
+    f5_neue_frage: 'Ist der Beckenrand eine natürliche Grenze von θ₅ (kn.verm.theta5_natuerliche_grenze)? Gibt es eine Kneser-artige Pentation an einem abstossenden Fixpunkt eines Nebenzweigs?'
+  bewertung: {richtigkeit: numerisch, neuheit: neu_ungeprueft, nutzen: 'Zeigt, warum Rang 5 keine reelle θ-Darstellung hat, obwohl die Pentation selbst wohldefiniert ist.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.kein_kneser_anziehend}
+    - {typ: verwandt, ziel: kn.beob.einheitliche_raenge}
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+
+- id: kn.verm.theta5_natuerliche_grenze
+  titel: 'Vermutung: Der Rand des Beckens von L₄ ist eine natürliche Grenze der Rang-5-Welle θ₅'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [theta_kneser, hyperoperation]
+  bereich: 'wie kn.beob.theta5_wachsende_koeffizienten; $\Omega$ die Komponente von $\{z:H_5(z)\in B(L_4)\}$, die $i\infty$ enthält'
+  aussage: |
+    $\theta_5$ ist auf $\Omega$ holomorph und lässt sich über keinen Punkt von $\partial\Omega$ hinaus fortsetzen.
+  gegenbeispielsuche: 'Gesucht wurden Randstücke, über die die θ-Reihe weiter konvergiert, und logarithmische Punkte mit H₅(z + n) = L₄ (100×25-Raster); keine gefunden.'
+  einfach: >-
+    Die Welle der Pentation endet an einer zerfransten Linie oberhalb der reellen Achse, und man kann sie vermutlich nirgends darüber hinaus fortsetzen.
+  beweis:
+    art: skizze
+    text: 'Liesse sich $\theta_5$ über $z_0\in\partial\Omega$ fortsetzen und wäre $\Psi$ (Umkehrung von $\sigma$) längs $s_0+t$, $t\ge0$, eindeutig fortsetzbar, so wäre $H_5(z_0+n)=F(s_0+n)\to L_4$, also $H_5(z_0)$ im Becken — Widerspruch.'
+    luecken:
+      - 'Ψ ist nicht ganz (entsteht aus Zweigen von slog); die eindeutige Fortsetzbarkeit längs s₀ + t ist nicht gesichert.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B9 und Abschnitt 3; s4_becken5.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Koenigs-Funktion auf dem ganzen Becken; Fortsetzbarkeit von Ψ.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Kneser-artige Konstruktion an einem anziehenden Fixpunkt.'
+    f5_neue_frage: 'Hat die Etappe-6-Hexation dieselbe Grenze?'
+  bewertung: {richtigkeit: 'Vermutung mit Teilargument', neuheit: neu_ungeprueft, nutzen: 'Würde die fehlende reelle Darstellung auf Rang 5 erklären.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.theta5_wachsende_koeffizienten}
+    - {typ: verwandt, ziel: kn.satz.kein_kneser_anziehend}
+
+- id: kn.beob.pentationswelle_singularitaet
+  titel: 'Die Welle zwischen regulärer und Kneser-artiger Pentation fällt wie e^(−2π·1.6902 n)/n — bestimmt durch die Stelle, an der K₅ den Fixpunkt L₃ trifft'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, fourier_moden, fixpunkt_L]
+  bereich: '$b=2$; $P$ reguläre Pentation (Motor), $K_5$ Kneser-artige Pentation (e6-Löser, $4\cdot10^{-10}$); $\psi=P^{-1}\circ K_5-z=\sum c_ne^{2\pi inz}$; $L_3$ Fixpunkt von $2^z$'
+  aussage: |
+    $\psi$ ist auf $\mathbb R$ analytisch, $c_0=3.4572\cdot10^{-6}$, $c_{-n}=\overline{c_n}$, $|c_{\pm1}|=2.80\cdot10^{-6}$. Es gilt $c_{-n}=(\kappa_n/n)\,e^{2\pi inz_{L3}}$ mit
+    langsam veränderlichem $\kappa_n$ ($|\kappa_n|=0.1145,\dots,0.1211$, $n=1\ldots14$), wobei $z_{L3}=-0.6181507204932638+1.6901945137048313i$ die Stelle mit $K_5(z_{L3})=L_3$ ist
+    (Verzweigungspunkt von slog). Der Abfall ist also genau $e^{-2\pi\cdot1.6902\,n}/n$ — logarithmische Singularität mit superlog-artiger Korrektur; das erklärt die Amplitude
+    $\sim10^{-5}$ aus kn.beob.einheitliche_raenge. Gegenrichtung: $\chi=K_5^{-1}\circ P-z$ hat ihren Punkt bei $P^{-1}(L_3)=-0.95762+1.87156i$; $\chi(z+\psi(z))=-\psi(z)$.
+    **Vermutung (Rangskalierung):** Amplitude $\approx Ce^{-2\pi d_r}$ mit der Höhe $d_r$ des nächsten Verzweigungspunkts, grob $d_r\approx\pi/\ln\lambda_{r-1}$:
+    Rang 5 ergibt $6.1\cdot10^{-6}$ (gemessen $2.8\cdot10^{-6}$), Rang 7 ergibt $1.6\cdot10^{-4}$.
+  einfach: >-
+    Die ältere und die neue Pentation unterscheiden sich nur um eine winzige Welle. Wie winzig, legt ein einziger Punkt in der komplexen Ebene fest:
+    der, an dem die neue Pentation den komplexen Fixpunkt von 2^z erreicht. Er liegt hoch über der Achse, darum ist die Welle so klein.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B10, B11 und Abschnitt 4; s5_psi5.py, s5b_psi5_hoch.py, s5c_hoehen.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); lokal ψ ≈ 1 − z + ipent(slog(K₅(z))) mit logarithmischem Verzweigungspunkt von slog bei L₃.'
+    f2_benutzte_voraussetzungen: 'Linien y = 0.8/1.2/1.5/1.6 stimmen auf 10⁻¹¹ (n = 1) bis 4·10⁻⁴ (n = 14); Ort aus Quotienten auf ≥ 4 Stellen, Newton auf 10⁻¹⁵; Reihe bricht oberhalb y = 1.69 zusammen.'
+    f3_spezialfall: 'Gleicher Mechanismus wie kn.satz.theta_singularitaet (Singularität dort, wo eine Lösung einen Ausnahmewert trifft).'
+    f4_uebertragbar: 'Auf Rang 7, sobald es eine Kneser-artige Heptation gibt (ihyper(7, kp) ist entartet).'
+    f5_neue_frage: 'Rangskalierung bei Rang 7 nachrechnen.'
+  bewertung: {richtigkeit: 'numerisch; Rangskalierung Vermutung mit einem Datenpunkt', neuheit: neu_ungeprueft, nutzen: 'Erklärt die Grösse der Welle zwischen den beiden Pentationen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.beob.einheitliche_raenge}
+    - {typ: analog_zu, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: kn.konstr.pentation}
+
+- id: kn.beob.theta_basis_quasiuniversal
+  titel: 'Knesers θ-Koeffizienten hängen für kleine n kaum von der Basis ab — asymptotisch aber schon'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fourier_moden]
+  bereich: 'Kneser-Tetration, Basen $b\in[1.45,1000]$; $\theta=\sum a_nq^n$ wie in kn.def.theta_welle'
+  aussage: |
+    $|a_1(b)|=0.088953$ ($b=1.45$), $0.089238$ ($1.5$), $0.090060$ ($2$), $0.090647$ ($e$), $0.091335$ ($4$), $0.091955$ ($10$), $0.092910$ ($100$), $0.093248$ ($1000$):
+    monoton und sättigend, nur 5 % Schwankung. Für $n=64$ liegen die Werte zwischen $5.12\cdot10^{-4}$ und $5.67\cdot10^{-4}$, $\arg a_n\approx-\pi/2+O(0.1)$.
+    $|a_n(e)|/|a_n(2)|=1.0065$ ($n=1$) … $1.0050$ ($n=4096$). **Kein Gesetz:** nach dem Leitterm aus kn.satz.theta_koeffizienten schwankt das Verhältnis für astronomische $n$
+    zwischen $0.49$ und $3.3$ (z. B. $0.83$ bei $\ln\ln n=10$, $1.63$ bei $15$), weil $b$ über $h_b'$ an einer Stelle der Grösse $\mathrm{slog}_b(\ln\ln n)$ eingeht.
+  einfach: >-
+    Die ersten Schwingungen der Kneser-Welle sind bei allen Basen fast gleich stark, von 1.45 bis 1000. Das ist aber kein Naturgesetz:
+    Bei unvorstellbar feinen Schwingungen gehen die Basen auseinander.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B12, B13 und Abschnitt 5; d1_universal.py, d2_basen.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Nicht-Universalität folgt aus kn.satz.theta_koeffizienten; die Quasi-Universalität für kleine n ist gemessen und unerklärt.'
+    f2_benutzte_voraussetzungen: 'dps 30, y = 0.1, N = 256; Basis 2 und e gegen die 44-stelligen Etappe-2-Werte auf ≥ 8 Stellen.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Frage auch für die Hexations-Welle (Basisabhängigkeit von C₆).'
+    f5_neue_frage: 'Warum ist a_n für kleine n fast basisunabhängig? Grenzfunktionen für b → η⁺ und b → ∞?'
+  bewertung: {richtigkeit: numerisch, neuheit: neu_ungeprueft, nutzen: 'Beantwortet die Frage nach der Basisunabhängigkeit aus Etappe 2 (nein).', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta_koeffizienten}
+    - {typ: verwandt, ziel: kn.beob.theta_fourier_algebraisch}

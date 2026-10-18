@@ -1,0 +1,59 @@
+# Theorie-Blöcke: Türme mit zufälligen Basen (Runde 18.10.2026, Bericht 10, Teil B).
+
+fp.satz.zufallsturm_unter_eins:
+  worum: |
+    Was passiert mit dem Turm $a_1^{a_2^{a_3^{\cdots}}}$, wenn die Basen wechseln, aber alle in $(0,1)$ liegen?
+  genau: |
+    Gerade und ungerade Stufen konvergieren je für sich; Konvergenz des Turms heisst, dass beide Grenzen gleich sind. Bei Zufallsbasen ist das fast sicher oder fast nie so.
+    Liegen alle Basen nahe einem $a_0<e^{-e}$, schwingt der Turm immer.
+  warum: |
+    $a^x$ ist für $a<1$ fallend, also kehrt jede Stufe die Ordnung um: die Bilder von $[0,1]$ sind geschachtelte Intervalle. Unter $e^{-e}$ hält ein Fallenpaar um den 2-Zyklus die Schwingung fest.
+  beispiel: |
+    $a_0=0.05$: der 2-Zyklus von $0.05^x$ zieht an, und jede Basenfolge in $[0.05-\varepsilon,0.05+\varepsilon]$ schwingt.
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[fp.satz.turm_reell]]; periodische Basen: [[fp.satz.baker_rippon_periodisch]].
+
+fp.satz.zufallsturm_divergenz:
+  worum: |
+    Zufallsbasen $\ge1$: wann wächst der Turm ins Unendliche?
+  genau: |
+    Fast sicher, wenn Basen über $\eta$ positive Wahrscheinlichkeit haben und $P(\ln a\le\varepsilon)\le C\varepsilon^\kappa$.
+  warum: |
+    Einige grosse Basen treiben den Turm hoch; danach quadriert er sich bei jedem Schritt fast sicher, weil Basen nahe 1 zu selten sind, um ihn zu bremsen.
+  bilder: []
+  einordnung: |
+    Zufallsversion von [[fp.satz.turm_reell]]; Schwelle: [[fp.verm.zufallsturm_slog_schwelle]].
+
+fp.beob.zufallsturm_verschmelzung:
+  worum: |
+    Euler: der Turm mit fester Basis $a<e^{-e}\approx0.066$ schwingt. Was, wenn die Basen zufällig in $(0,\beta)$ mit $\beta<e^{-e}$ liegen?
+  genau: |
+    Er konvergiert trotzdem (gemessen für $\beta\ge0.025$), aber erst nach einem seltenen Verschmelzungsereignis.
+  warum: |
+    Basen sehr nahe 0 sprengen das Fallenpaar um den 2-Zyklus; irgendwann fallen die beiden Grenzwerte schlagartig zusammen.
+  bilder: []
+  einordnung: |
+    Gegenstück zu Teil (iii) von [[fp.satz.zufallsturm_unter_eins]]; Vermutung: [[fp.verm.zufallsturm_konvergenz]].
+
+fp.verm.zufallsturm_konvergenz:
+  worum: |
+    Gilt die Konvergenz des Zufallsturms für jede noch so kleine Obergrenze $\beta$?
+  genau: |
+    Vermutet: ja, fast sicher, mit Verschmelzungsrate etwa $e^{-c/\beta}$.
+  warum: |
+    Nach dem 0-1-Gesetz reicht positive Wahrscheinlichkeit der Verschmelzung, und Basen nahe 0 bieten dafür immer eine Chance.
+  bilder: []
+  einordnung: |
+    Gestützt durch [[fp.beob.zufallsturm_verschmelzung]].
+
+fp.verm.zufallsturm_slog_schwelle:
+  worum: |
+    Wie häufig dürfen Basen nahe 1 sein, damit ein Zufallsturm mit Basen $\ge1$ endlich bleibt?
+  genau: |
+    Vermutet: bei $P(\ln a\le\varepsilon)=\kappa/\mathrm{slog}(1/\varepsilon)$ genau für $\kappa>1$.
+  warum: |
+    Gemessen in Superlogarithmus-Höhe wächst der Turm je Schritt um etwa 1, und auf Höhe $Y$ stürzt er mit Wahrscheinlichkeit etwa $\kappa/Y$ ab — wie eine Irrfahrt mit harmonischer Rückfallrate.
+  bilder: []
+  einordnung: |
+    Ergänzt [[fp.satz.zufallsturm_divergenz]]; Superlogarithmus: [[kn.def.slog]].

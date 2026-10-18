@@ -1,0 +1,37 @@
+gebiet: fp
+# Runde 18.10.2026, Bericht 03 (Basis-Ebene): Gestalt des Shell–Thron-Gebiets bei η.
+aussagen:
+
+- id: fp.satz.horn_eta
+  titel: 'Bei η bilden die Basen ausserhalb des Shell–Thron-Gebiets ein dünnes Horn der Breite ∝ (b − η)^{3/2}'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [shell_thron, multiplikator, eta]
+  bereich: 'Shell–Thron-Rand $b(t)=\exp(\lambda e^{-\lambda})$, $\lambda=e^{it}$, kleine $t$'
+  aussage: |
+    $$b-\eta=\frac\eta e\Bigl(\frac{t^2}2+\frac{it^3}6\Bigr)+O(t^4),\qquad\text{also}\qquad|\mathrm{Im}\,b|\approx\frac{\sqrt2\,e^{1/2}}{3\sqrt\eta}\,(\mathrm{Re}\,b-\eta)^{3/2}.$$
+    Das Äussere des Shell–Thron-Gebiets (wo man Kneser braucht) berührt $\eta$ also als Spitze nach links, die wie $(\mathrm{Re}\,b-\eta)^{3/2}$ aufgeht; alle übrigen Basen
+    nahe $\eta$ liegen im Inneren. Bei $\mathrm{Re}\,b-\eta=0.01$ ist das Horn nur $\pm6.5\cdot10^{-4}$ breit.
+  einfach: >-
+    Rund um die Basis η gehört fast alles zum Bereich, in dem der unendliche Turm einen Grenzwert hat. Nur ein ganz dünnes Horn rechts von η gehört nicht dazu —
+    und genau dort braucht man Knesers Bauweise.
+  beweis:
+    art: vollstaendig
+    text: |
+      Mit $b=\exp(\lambda e^{-\lambda})$ (fp.satz.multiplikator_rezept) und $\lambda=e^{it}$: $\lambda e^{-\lambda}=e^{-1}(1+u)e^{-u}$ mit $u=it-t^2/2-it^3/6+\dots$, und
+      $(1+u)e^{-u}=1-u^2/2+u^3/3+O(u^4)=1+t^2/2+it^3/6+O(t^4)$. Also $\ln b-1/e=(t^2/2+it^3/6)/e$; Real- und Imaginärteil eliminieren $t$.
+  stuetzt_sich_auf: [fp.satz.multiplikator_rezept]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B1 und Details B1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Taylor-Entwicklung von λe^{−λ} um λ = 1.'
+    f2_benutzte_voraussetzungen: 'Nur die Randparametrisierung des Shell–Thron-Gebiets.'
+    f3_spezialfall: 'Ja: Spitze der Kardioide in λ, abgebildet durch eine Abbildung mit kritischem Punkt bei λ = 1.'
+    f4_uebertragbar: 'Auf jede Familie mit parabolischem Randpunkt, an dem die Parameterabbildung kritisch ist.'
+    f5_neue_frage: 'Erklärt, warum die reguläre Tetration bei Im b ≈ 7·10⁻⁴ (δ = 0.01) wild wird; Gestalt der Knospen bei e^{2πip/q}.'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, recherche: 'Spitze bei η bekannt; die 3/2-Breite ist im Graphen nicht eingetragen, Quelle nicht gesucht.', nutzen: 'Zeigt, wie klein der Kneser-Bereich nahe η ist.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.shell_thron}
+    - {typ: verwandt, ziel: fp.satz.parameter_konform}
+    - {typ: motiviert, ziel: kl.beob.kneser_fortsetzung_regulaer}

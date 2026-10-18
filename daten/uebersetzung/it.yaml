@@ -1,5 +1,35 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: it.gescheitert.pentation_baeume
+  quelle_hash: da5d72919f9f
+  theorie_hash: b1ada3caa8b4
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'No new tree combinatorics for pentation: the next rank is hyperbolic at the perturbation point'
+    aussage: |
+      Idea: The perturbation series counts trees (kn.satz.stoerungsreihe_baeume); perhaps the next level counts "trees of trees". Result: The map
+      $y\mapsto G(y;u)$ has multiplier $\lambda_u(0)=u+\dots$ at 0 (kn.satz.stoerungsreihe_fluss), so it is hyperbolic (attracting) and not
+      parabolic. The next level is a Koenigs linearization without tree structure; "trees of trees" give only chains of chains, that is, the
+      chain formula $Z(st)=Z(s)\circ Z(t)$.
+    einfach: 'One hoped that the next level of computation after tetration would also count something beautiful. That does not work here: at this
+      point the next level behaves quite ordinarily, and no new counting structure arises.'
+    bewertung:
+      nutzen: Rules out an obvious route to the combinatorics of pentation.
+      richtigkeit: proved elementarily
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, Q1
+  en_theorie:
+    worum: |
+      Does the next rank after tetration count "trees of trees"?
+    genau: |
+      No: $y\mapsto G(y;u)$ has multiplier $u+\dots$ at 0, so it is hyperbolic; only the chain formula $Z(st)=Z(s)\circ Z(t)$ remains.
+    warum: |
+      Tree combinatorics arises at parabolic points (multiplier 1); at an attracting point Koenigs linearizes the map without any new structure.
+    einordnung: |
+      Starting point: [[kn.satz.stoerungsreihe_baeume]]; linearization: [[it.satz.koenigs]].
 - id: it.konstr.levy
   quelle_hash: a7566c544b11
   theorie_hash: 460e3e54e6b5
@@ -50,6 +80,45 @@
     worum: |
       The first to seriously want to build “half as many times $e^x$” was Paul Lévy (1927). His trick: for large $x$, $e^x$ is almost the same
       as $e^x-1$, and $e^x-1$ has a fixed point at 0 at which one can iterate.
+- id: it.lem.erzeuger_starr
+  quelle_hash: ceb49ca71825
+  theorie_hash: baaf4ef63ad1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Rigidity at a fixed point: a generator holomorphic there is a multiple of the regular one'
+    aussage: |
+      If $J$ is holomorphic near $p$ and satisfies the Julia equation there, then $J(p)=0$ and $J=c\cdot J_p$ for a constant $c$.
+      The Julia equation alone allows every $c$; that the time-1 map is $f$ requires $c\in\{1+2\pi ik/\log\lambda\}$.
+    bereich: $f$ holomorphic, $p$ hyperbolic fixed point with multiplier $\lambda$ ($|\lambda|\neq0,1$), Schröder function $\sigma$; regular generator
+      $J_p=\log\lambda\cdot\sigma/\sigma'$
+    einfach: 'If the velocity field is smooth at a fixed point, then it is already determined there: it is the field of the ordinary (regular)
+      iteration at that fixed point, at most up to a factor.'
+    beweis:
+      text: |
+        $J(p)=\lambda J(p)$ gives $J(p)=0$. In the coordinate $u=\sigma(z)$, $J$ becomes $K(u)$ with $K(\lambda u)=\lambda K(u)$; comparing coefficients $k_n(\lambda^n-\lambda)=0$ gives $K=k_1u$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from Koenigs' theorem (it.satz.koenigs).
+      f2_benutzte_voraussetzungen: Linearization at the hyperbolic fixed point.
+      f3_spezialfall: 'Yes: uniqueness of the regular iteration (classical).'
+      f4_uebertragbar: To every hyperbolic fixed point; for parabolic points the analogous statement with the Fatou coordinate does not hold directly.
+      f5_neue_frage: What happens if a generator is to be holomorphic at two fixed points (it.satz.erzeuger_resonanz)?
+    bewertung:
+      nutzen: Building block for the two-fixed-points theorem.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A2
+  en_theorie:
+    worum: |
+      How much freedom does a generator have at a fixed point where it is smooth?
+    genau: |
+      None: $J=c\,J_p$ with the regular generator $J_p=\log\lambda\,\sigma/\sigma'$.
+    warum: |
+      In the Schröder coordinate the equation becomes $K(\lambda u)=\lambda K(u)$, and its only power series solutions are $K=k_1u$.
+    einordnung: |
+      Follows from [[it.satz.koenigs]]; building block for [[it.satz.erzeuger_resonanz]] and [[it.satz.kneser_erzeuger]].
 - id: it.lem.julia
   quelle_hash: 0405af31095c
   theorie_hash: 21943177e3ae
@@ -472,6 +541,100 @@
     worum: |
       For which times $t$ does the formal iterate converge? Erdős and Jabotinsky showed: either for all — or only for so few
       that one cannot see them on the real axis.
+- id: it.satz.erzeuger_resonanz
+  quelle_hash: d181b2441978
+  theorie_hash: 9cf2c1132a23
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'One generator, two fixed points: holomorphic at both only under resonance λ_p = λ_q^m — never for b^z above η'
+    aussage: |
+      If $J\not\equiv0$ is holomorphic on a connected domain $D\ni p,q$ and satisfies the Julia equation near $p$ and $q$, then
+      $$\lambda_p=\lambda_q^m\quad\text{for some }m\in\mathbb Z\setminus\{0\}.$$
+      Consequences: (a) **$b>\eta$:** for the pair $L,\bar L$ this is impossible ($m=1$ and $\mathrm{Im}\log\lambda\in\pi\mathbb Z$ would be needed). No generator is holomorphic around $L$ and $\bar L$ at the same time,
+      and **every real generator** (on a domain around $L$ symmetric about the axis) is singular at $L$ — Kneser's singularity at $L$ is forced.
+      (b) **Möbius maps:** there we always have $\lambda_p\lambda_q=1$, exactly the resonance $m=-1$; this explains why both fixed points can yield the same iteration (it.satz.moebius_iteration).
+      (c) **$1<b<\eta$:** see kl.satz.resonanzbasen — except at countably many resonance bases, the distinctness of the two regular iterations is thereby proved.
+    bereich: $f$ entire, $p,q$ hyperbolic fixed points, $q$ repelling (regular superfunction $F_q$ entire), multipliers $\lambda_p,\lambda_q$
+    einfach: A smooth velocity field at two fixed points at once is possible only if the stretching factors at the two points stand in a special
+      ratio. For b to the power x with b above e^(1/e) this never happens. Hence every real tetration, Kneser's too, must have a sharp point at
+      the complex fixed point.
+    beweis:
+      text: |
+        By it.lem.erzeuger_starr, $J=c_1J_p$ near $p$ and $J=c_2J_q$ near $q$. If one integrates $1/J$ along a path in $D$, the continuation of $h_p$ becomes $Ah_q+B$, $A=c_2/c_1$;
+        conversely $F_p(As+B)=F_q(s)$, hence everywhere ($F_q$ entire). $F_q$ has period $2\pi i/\ell_q$, the period group of $F_p$ is $(2\pi i/\ell_p)\mathbb Z$; so $A=m\ell_q/\ell_p$.
+        From the two superfunction equations it follows that $A-1\in(2\pi i/\ell_p)\mathbb Z$, hence $m\ell_q-\ell_p\in2\pi i\mathbb Z$, that is, $\lambda_q^m=\lambda_p$.
+    pruefung:
+      f1_folgt_unmittelbar: No; needs the period argument with the entire superfunction.
+      f2_benutzte_voraussetzungen: Rigidity (it.lem.erzeuger_starr), entire regular superfunction at the repelling fixed point, period group of
+        F_p.
+      f3_spezialfall: Related to it.satz.karlin_mcgregor (same regular iteration only for Möbius); here as a resonance condition for generators.
+      f4_uebertragbar: 'To every entire f with two hyperbolic fixed points; for fixed points L_j, L_k of exp numerically no resonance (|j|,|k|
+        ≤ 40, |m| ≤ 12: smallest relative distance 0.424).'
+      f5_neue_frage: Does Karlin–McGregor cover the resonant case? Can L_j = L_k^m ever hold for fixed points of exp (Schanuel-like)?
+    bewertung:
+      nutzen: Explains in one theorem why Kneser's singularity at L is unavoidable and why Möbius is the exception.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A3, A3a, A3d
+    - stelle: related statement for Möbius
+  en_theorie:
+    worum: |
+      Can a generator be smooth at two fixed points at the same time? Then it would be regular at both — and the two regular iterations equal.
+    genau: |
+      Only if $\lambda_p=\lambda_q^m$ for an integer $m\neq0$. For $b^z$ above $\eta$ (pair $L,\bar L$) never; for Möbius always ($m=-1$).
+    warum: |
+      If one integrates $1/J$ from one fixed point to the other, the two regular superfunctions become affinely related; their periods $2\pi i/\log\lambda$ must then fit together.
+    beispiel: |
+      Möbius: $\lambda_p\lambda_q=1$, so resonance $m=-1$, and indeed both fixed points yield the same iteration.
+    einordnung: |
+      Explains [[it.satz.moebius_iteration]], related to [[it.satz.karlin_mcgregor]]; consequences: [[it.satz.kneser_erzeuger]], [[kl.satz.resonanzbasen]].
+- id: it.satz.julia_variation_bernoulli
+  quelle_hash: bdded0c67eb8
+  theorie_hash: b1ffa16856fc
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The part of the generator of eˣ − 1 + u that is linear in u is a Bernoulli series in the Julia function of eˣ − 1
+    aussage: |
+      For $\mu:=\partial_u\lambda_u|_{u=0}$ we have
+      $$\mu=\lambda_0\sum_{k\ge0}\frac{B_k^+}{k!}\Bigl(\lambda_0\frac{d}{dx}\Bigr)^{k}\frac1{\lambda_0},$$
+      with the Bernoulli numbers $B_k^+$ ($B_1^+=+\tfrac12$). Explicitly
+      $\mu=1-\tfrac x2+\tfrac{x^2}6-\tfrac{x^3}{18}+\tfrac{5x^4}{288}-\tfrac{x^5}{240}+\tfrac{x^6}{2880}+\tfrac{61x^7}{302400}+\dots$
+    bereich: $\lambda_u$ formal generator of $e^x-1+u$ (kn.satz.stoerungsreihe_fluss), $\lambda_0$ Julia function of $e^x-1$
+    einfach: If one shifts the map eˣ − 1 by a small amount, its "velocity rule" changes. This change can be written down exactly with the famous
+      Bernoulli numbers.
+    beweis:
+      text: |
+        Variation $f_\varepsilon=\exp(\lambda_\varepsilon\partial)x$: $\delta f=\lambda(f(x))\int_0^1\psi(\varphi_sx)\,ds$ with $\psi=\delta\lambda/\lambda$. With $\delta f=1$ and the Fatou time $\tau$
+        ($D=d/d\tau=\lambda\,d/dx$) this becomes $A(\tau+1)=\frac{e^D-1}{D}\Psi(\tau)$ with $A=1/\lambda\circ\varphi_\tau$, hence $\Psi=\frac{De^D}{e^D-1}A=\sum B_k^+D^kA/k!$.
+        The series converges $x$-adically, because each $D$ raises the degree by 1. Checked exactly up to $x^9$.
+    pruefung:
+      f1_folgt_unmittelbar: No; the variation formula is classical, the closed Bernoulli form is derived here.
+      f2_benutzte_voraussetzungen: Formal flow, Fatou time, x-adic convergence.
+      f3_spezialfall: 'Yes: variation of the generator of an arbitrary formally embeddable map.'
+      f4_uebertragbar: To every perturbation $f+\varepsilon$ of a parabolic map.
+      f5_neue_frage: Is there a similar formula for the higher u-orders of $\lambda_u$?
+    bewertung:
+      nutzen: Closed first order of the generator of the perturbation series.
+      richtigkeit: complete; exact up to x⁹
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S9 and B4; s2_generator.py
+  en_theorie:
+    worum: |
+      How does the generator (the Julia function) of $e^x-1$ change when the map is shifted by a small $u$?
+    genau: |
+      $\partial_u\lambda_u|_{u=0}=\lambda_0\sum_kB_k^+(\lambda_0\,d/dx)^k(1/\lambda_0)/k!$.
+    warum: |
+      In Fatou time the variation becomes $A(\tau+1)=\frac{e^D-1}{D}\Psi$; the inverse of $(e^D-1)/D$ is the generating function of the Bernoulli numbers.
+    beispiel: |
+      $\mu=1-x/2+x^2/6-x^3/18+\dots$
+    einordnung: |
+      Generator of the perturbation series: [[kn.satz.stoerungsreihe_fluss]]; Julia equation: [[it.lem.julia]].
 - id: it.satz.karlin_mcgregor
   quelle_hash: dad605f74776
   theorie_hash: 9ae2a80a1bcc
@@ -530,6 +693,96 @@
     worum: |
       Below $\eta$, $b^x$ has two fixed points, and at each one can build a “regular” iteration. Are these in the end the same? Karlin and
       McGregor gave the general answer in 1968: only for the linear fractional functions.
+- id: it.satz.kein_ganzer_erzeuger
+  quelle_hash: 986ec1d9d2cc
+  theorie_hash: fe5ab3268619
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'No entire and no meromorphic generator: the Julia equation for b^z has no solution J ≢ 0 on all of ℂ'
+    aussage: |
+      There is no entire and no meromorphic function $J\not\equiv0$ with $J(b^z)=\ln b\cdot b^z\,J(z)$ on all of $\mathbb C$.
+      Every flow whose time-1 map is $b^z$ (that is, every fractional iteration) therefore has a generator with genuine singularities.
+    bereich: $f(z)=b^z=e^{cz}$, $c=\ln b$, every $b\notin\{0,1\}$; Julia equation $J(f(z))=f'(z)J(z)$ (it.lem.julia); every tetration $T$ yields
+      $J_T=T'\circ\mathrm{slog}_T$
+    einfach: A tetration with fractional heights is a flow that carries every point x to b to the power x after one unit of time. Its velocity
+      field J can never be smooth on the whole complex plane — somewhere there must be places where it breaks.
+    beweis:
+      text: |
+        Entire: With $M(r)=\max_{|w|=r}|J|$ and $|w|=R\Leftrightarrow cz=\log R+iy$, $|y|\le\pi$, we get $M(R)\le|c|R\,M(\sqrt{\log^2R+\pi^2}/|c|)$. Iterated ($N\le\log^*R+O(1)$ steps)
+        this gives $M(R)=O(R^{1+\varepsilon})$, so $J=\alpha w+\beta$; $\alpha e^{cz}+\beta=ce^{cz}(\alpha z+\beta)$ forces $\alpha=\beta=0$.
+        Meromorphic: preimages of a pole are poles; for a pole $p\neq0$ the backward orbit accumulates on the Julia set, contradicting discreteness; a pole at 0 forces one at $f(0)=1$.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: it is a growth estimate plus backward orbits; the statement is probably folklore.'
+      f2_benutzte_voraussetzungen: Only the Julia equation on all of ℂ, a Liouville-type estimate, density of backward orbits in the Julia set.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every transcendental entire f with similar growth of the inverse (e.g. polynomials with exp).
+      f5_neue_frage: 'Where exactly must J be singular? (Partial answer: at one of the fixed points L, L̄ — it.satz.erzeuger_resonanz.)'
+    bewertung:
+      nutzen: Cornerstone for the question which singularities a generator must have.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A1, A1′
+  en_theorie:
+    worum: |
+      A fractional iteration of $b^z$ is a flow; its velocity field $J$ (generator, Julia function) satisfies the linear equation $J(b^z)=\ln b\,b^zJ(z)$.
+    genau: |
+      No entire or meromorphic function $J\not\equiv0$ satisfies it on all of $\mathbb C$.
+    warum: |
+      The equation forces $J$ to grow at most linearly, and that is not compatible with the factor $b^z$. Poles are inherited by all preimages and would accumulate.
+    beispiel: |
+      Ansatz $J=\alpha w+\beta$: $\alpha e^{cz}+\beta=ce^{cz}(\alpha z+\beta)$ works only with $\alpha=\beta=0$.
+    einordnung: |
+      Julia equation: [[it.lem.julia]]; where the singularities must lie: [[it.satz.erzeuger_resonanz]].
+- id: it.satz.kneser_erzeuger
+  quelle_hash: efccae8bc440
+  theorie_hash: d7624ec9a2b1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Kneser''s generator at the fixed point: J_K = J_L·(1+θ′∘slog_K), branching (w−L)^(1+2πi/L), for base e exactly five times continuously
+      differentiable'
+    aussage: |
+      $$J_K(w)=J_L(w)\,\bigl(1+\theta'(\mathrm{slog}_Kw)\bigr),\qquad J_K-J_L=2\pi i\,a_1e^{-2\pi ia_0}L\,(w-L)^{\alpha}\bigl(1+O(|w-L|)\bigr),\quad\alpha=1+\frac{2\pi i}{L}.$$
+      $J_K$ is **not** analytic at $L$ (otherwise by it.lem.erzeuger_starr $1+\theta'$ would be constant, hence θ constant): a genuine transcendental branch point.
+      Base $e$: $\mathrm{Re}\,\alpha=1+2\pi\,\mathrm{Im}L/|L|^2=5.44695072\ldots$, so $J_K$ is **$C^5$ but not $C^6$** at the fixed point (the 6th derivative grows like $|w-L|^{-0.553}$);
+      in general $C^{\lfloor\mathrm{Re}\,\alpha\rfloor}$, from $C^{45}$ at $b=1.45$ to $C^3$ at $b=10^6$. One loop around $L$ multiplies the singular term by $e^{-4\pi^2/L}$ (absolute value $1.2954\cdot10^{-3}$).
+      Numerically: local slope $5.4466$–$5.4475$ for $r=10^{-3}\to10^{-4}$; loop factor measured $1.2975\cdot10^{-3}$ (deviation $O(r)$).
+    bereich: Base $b>\eta$; $\mathrm{sexp}_K=F_L\circ(\mathrm{id}+\theta)$, $\theta=\sum a_ne^{2\pi ins}$ (kn.def.theta_welle); regular generator
+      $J_L=1/h'=L\sigma/\sigma'$ (base $e$)
+    einfach: 'The velocity field of Kneser''s tetration is almost smooth at the complex fixed point, but not quite: for base e it can be differentiated
+      exactly five times, and the sixth derivative becomes infinite there. This number comes solely from the location of the fixed point.'
+    beweis:
+      text: |
+        From $\mathrm{sexp}_K=F_L\circ(\mathrm{id}+\theta)$ follow $\mathrm{slog}_K=(\mathrm{id}+\theta)^{-1}\circ h$ and the product formula. Near $L$, $e^{2\pi is}\approx e^{-2\pi ia_0}\sigma(w)^{2\pi i/L}$,
+        and substituting this into $1+\theta'$ gives the singular term (branch of $a_0$ matching the sheet). Smoothness: $|(w-L)^\alpha|=|w-L|^{\mathrm{Re}\,\alpha}$ up to a bounded factor, hence $C^k$ exactly for $k<\mathrm{Re}\,\alpha$, provided $a_1\neq0$.
+    bedingungen_text: Degree of smoothness under a₁(b) ≠ 0 (supported for b = e and 2); exponent and loop factor additionally confirmed numerically
+    pruefung:
+      f1_folgt_unmittelbar: The product formula yes; exponent and degree of smoothness after a short computation.
+      f2_benutzte_voraussetzungen: Kneser representation with θ, a₁ ≠ 0, rigidity for the non-analyticity.
+      f3_spezialfall: 'Yes: concrete case of it.satz.erzeuger_resonanz (a) with the exact singularity.'
+      f4_uebertragbar: To every base above η (table over b) and to the superfunctions of other maps (kn.satz.zoo_singulaerer_ort).
+      f5_neue_frage: Where are the remaining singularities of J_K on its Riemann surface (image of the backward orbit of L)?
+    bewertung:
+      nutzen: Measures Kneser's forced singularity at the fixed point exactly; a new, simple invariant (C⁵ for base e).
+      richtigkeit: Formula proved, smoothness under a₁ ≠ 0, exponent measured to 4 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A4, A4a, A4b, A4c; s1_erzeuger_bei_L.py, s4_tabellen.py
+  en_theorie:
+    worum: |
+      Kneser's tetration must be singular at $L$. How strongly?
+    genau: |
+      $J_K=J_L(1+\theta'\circ\mathrm{slog}_K)$, and $J_K-J_L\sim C(w-L)^{1+2\pi i/L}$; for base $e$, $\mathrm{Re}(1+2\pi i/L)=5.44695$, so $C^5$, not $C^6$.
+    warum: |
+      Near $L$, $e^{2\pi is}$ is a non-integer power $\sigma(w)^{2\pi i/L}$; the first Fourier term $a_1$ of θ produces this power in the field.
+    beispiel: |
+      For base $1.45$ (near $\eta$) the field is $C^{45}$, for base $10^6$ only $C^3$.
+    einordnung: |
+      Concrete case of [[it.satz.erzeuger_resonanz]]; θ structure: [[kn.satz.theta_singularitaet]].
 - id: it.satz.koenigs
   quelle_hash: c531492ed1b2
   theorie_hash: 9749797402b6
@@ -834,6 +1087,94 @@
     worum: |
       At an attracting fixed point with slope $\lambda$, $|\lambda|<1$, the distance shrinks like $\lambda^n$. If the slope is exactly 1,
       it goes much more slowly: like $1/n$. This classical computation lies behind several rates in the library.
+- id: it.satz.poincare_polynom_surjektiv
+  quelle_hash: bcaa62141d22
+  theorie_hash: 40406df061c1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The Poincaré function of x^d + c (c ≠ 0) omits no value — unlike eˣ, where 0 is missing
+    aussage: |
+      $\Psi$ is entire and takes **every** complex value; so the regular superfunction $F$ also omits no value.
+      For $e^x$, on the other hand, $\Psi$ omits the value 0 (kn.satz.theta_singularitaet) — but this difference is not decisive for the singularities of Kneser's θ
+      (kn.satz.zoo_singulaerer_ort), though it is for the zeros of $S'$ (kn.beob.zoo_ableitung_nullstellen).
+    bereich: $f(x)=x^d+c$, $d\ge2$, $c\neq0$; repelling fixed point $L$ with multiplier $\lambda$; Poincaré function $\Psi$ with $\Psi(\lambda
+      u)=f(\Psi(u))$, $\Psi(0)=L$, $\Psi'(0)=1$; regular superfunction $F(s)=\Psi(\lambda^s)$
+    einfach: 'The ordinary solution at the complex fixed point hits every number for a polynomial like x²+1. For eˣ this is different: there the
+      zero is never hit.'
+    beweis:
+      text: |
+        $\Psi$ is entire because $\Psi(u)=f^n(\Psi(u/\lambda^n))$. If $\Psi$ omits the value $a$, then by $\Psi(\lambda u)=f(\Psi(u))$ it also omits all preimages $f^{-1}(a)$.
+        By Picard this is at most one value, so $a$ has only one preimage: $a=c$ (preimage 0). Then $\Psi$ must also omit all preimages of 0, the $d\ge2$
+        distinct roots of $-c$ — a contradiction.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from Picard and the functional equation (elementary).
+      f2_benutzte_voraussetzungen: Little Picard theorem; f has at most one value with only one preimage (c), and c ≠ 0.
+      f3_spezialfall: 'Yes: exceptional values of Poincaré functions lie in the set of exceptional values of f.'
+      f4_uebertragbar: To every polynomial of degree ≥ 2 that is not conjugate to x^d; for x^d (c = 0) the value 0 is indeed missing.
+      f5_neue_frage: Which entire f have a Poincaré function with an exceptional value (only those with an asymptotic, backward-invariant value)?
+    bewertung:
+      nutzen: Shows that the exceptional value for eˣ is not the reason for Kneser's θ singularity.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, P1 and B-P1
+  en_theorie:
+    worum: |
+      The Poincaré function $\Psi$ at a repelling fixed point ($\Psi(\lambda u)=f(\Psi(u))$) is entire. Does it omit values?
+    genau: |
+      For $f=x^d+c$, $c\neq0$, $\Psi$ takes every value. For $e^x$, on the other hand, the value 0 is missing.
+    warum: |
+      An omitted value brings all its preimages with it as omitted values. Picard allows at most one; that works only if each step has exactly one preimage — not the case for $x^d+c$.
+    beispiel: |
+      $x^2+1$: the only value with one preimage is 1 (preimage 0), but 0 has two preimages $\pm i$.
+    einordnung: |
+      Shows that [[kn.satz.zoo_singulaerer_ort]] works without an omitted value; basis: [[it.satz.koenigs]].
+- id: it.satz.regulaerer_erzeuger_fortsetzung
+  quelle_hash: 91a0571e8448
+  theorie_hash: 6351e9b18171
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The regular generator of exp lives over ℂ without the orbit of zero {0, 1, e, e^e, …}; 0 and 1 are genuine branch points
+    aussage: |
+      $\sigma$ and $J_L$ can be analytically continued along **every** path in $\mathbb C\setminus P$ (proved).
+      Numerically (20 digits, two settings): one loop around 0 changes $J_L(1/2)$ from $1.39814+0.02656i$ to $-6.56052+2.25811i$, one loop around 1 changes $J_L(3/2)$
+      from $2.05008-0.30198i$ to $-8.27091+2.37225i$; loops around $L$ or around 3 change nothing ($<10^{-30}$). So 0 and 1 are genuine branch points;
+      $J_L(L+2\pi i)=-14.322345969901284658+10.705167958195350901\,i\neq0$ (with trivial monodromy around 0 it would have to be 0).
+    bereich: Base $e$, fixed point $L$, Schröder function $\sigma$ ($\sigma\circ\exp=L\sigma$), $\Psi=\sigma^{-1}$ entire, $J_L=L\sigma/\sigma'$;
+      $P=\{0,1,e,e^e,\dots\}$ the orbit of the singular value 0
+    einfach: The velocity field of the ordinary iteration at the complex fixed point can be continued everywhere, as long as one goes around the
+      points 0, 1, e, e to the power e, and so on. Around 0 and around 1 it really changes when one walks once around.
+    beweis:
+      text: |
+        $J_L\circ\Psi(u)=Lu\Psi'(u)$ is entire, and $\Psi$ has no critical points; it suffices to continue $\sigma$. For a path $\gamma$ in $\Omega=\mathbb C\setminus P$ all iterated
+        logarithms $\gamma_n=\log^n\circ\gamma$ can be chosen continuously. $\exp:\mathbb C\setminus\exp^{-1}(P)\to\Omega$ is a covering, so every logarithm shortens the hyperbolic length,
+        on compact sets by a fixed factor $<1$; $\gamma_n\to L$ uniformly, and $\sigma(\gamma(t))=L^n\sigma_{\mathrm{loc}}(\gamma_n(t))$.
+    pruefung:
+      f1_folgt_unmittelbar: No; needs the hyperbolic contraction of the iterated logarithms.
+      f2_benutzte_voraussetzungen: Ψ entire without critical points, covering property of exp, Schwarz–Pick.
+      f3_spezialfall: Similar to the continuation of the Abel function in kn.satz.theta_singularitaet and kn.satz.zoo_singulaerer_ort (branching
+        only over the orbit of the singular values).
+      f4_uebertragbar: To every base above η and to every entire f with a finite set of singular values.
+      f5_neue_frage: Which representation of π₁(ℂ∖P) is the monodromy group? Is every point exp^k(0) a genuine branch point?
+    bewertung:
+      nutzen: Connects the generator with the orbit of the singular value, the central object of transcendental dynamics.
+      richtigkeit: continuation proved, branching numerically to 20 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A5, A5a; s2_monodromie_regulaer.py
+  en_theorie:
+    worum: |
+      How far can the regular generator $J_L=L\sigma/\sigma'$ be continued from $L$?
+    genau: |
+      Along every path that avoids the orbit $\{0,1,e,e^e,\dots\}$; around 0 and 1 it actually changes (numerically).
+    warum: |
+      One continues $\sigma$ via iterated logarithms: $\sigma(w)=L^n\sigma(\log^nw)$; the logarithms contract every path toward $L$, as long as they never hit 0.
+    einordnung: |
+      Same branching set as in [[kn.satz.zoo_singulaerer_ort]] and [[kn.satz.theta_singularitaet]].
 - id: it.satz.sternberg_reell
   quelle_hash: 7adb38fa9d22
   theorie_hash: b40e160fb61e

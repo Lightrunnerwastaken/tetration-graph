@@ -1,0 +1,310 @@
+gebiet: kn
+# Runde 18.10.2026, Agent 06 (Asymptotik, Singularitäten, Wachstum von Knesers sexp/slog, Basis e).
+# Die Taylor-Aussagen um 0 hat auch Agent 05 (Kombinatorik) unabhängig gefunden; sie stehen hier einmal und zitieren beide Berichte.
+# Rechnungen: forschung/runde_2026_10_18/06_asymptotik/ und 05_kombinatorik/ (s3_taylor.py, s3b_zentren.py).
+aussagen:
+
+- id: kn.satz.minus2_hebbar
+  titel: 'sexp(z) − log(z+2) ist holomorph bis −3: der Schnitt über (−3, −2) ist hebbar'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [kneser_T, singularitaet_m2]
+  bereich: 'Knesers $\mathrm{sexp}=\mathrm{sexp}_e$, holomorph auf $\mathbb C\setminus(-\infty,-2]$, reell und wachsend auf $(-2,\infty)$'
+  aussage: |
+    $g(z):=\mathrm{sexp}(z)-\log(z+2)$ ist holomorph auf $\mathbb C\setminus(-\infty,-3]$. Der Sprung von $\mathrm{sexp}$ über $(-3,-2)$ ist genau $2\pi i$, derselbe wie bei
+    $\log(z+2)$. Ausserdem hat $\mathrm{sexp}$ auf seinem Holomorphiegebiet genau eine Nullstelle, $z=-1$. Bei $-3$ ist $g$ singulär
+    (lokal $\mathrm{sexp}(z)=\log(\log(z+3)+g(z+1))$, also wie $\log\log$).
+  einfach: >-
+    Kurz vor −2 sieht Knesers Tetration aus wie ein Logarithmus. Zieht man diesen Logarithmus ab, bleibt eine Funktion übrig, die noch ein ganzes Stück
+    weiter glatt ist, nämlich bis −3. Der Schnitt zwischen −3 und −2 kommt also nur vom Logarithmus.
+  beweis:
+    art: vollstaendig
+    text: |
+      (a) Ist $\mathrm{sexp}(w)=0$ und $w-1$ nicht auf dem Schnitt, so wäre $e^{\mathrm{sexp}(w-1)}=0$; also $w\in(-\infty,-1]$, und auf $(-2,-1]$ ist nur $-1$ eine Nullstelle.
+      (b) Für $x\in(-3,-2)$ ist $\exp(\mathrm{sexp}(x\pm i0))=\mathrm{sexp}(x+1)<0$, also $\mathrm{sexp}(x\pm i0)=\log|\mathrm{sexp}(x+1)|\pm i\pi(2k+1)$ mit konstantem $k$;
+      nahe $-2$ ist $\mathrm{sexp}(z)=\log(\mathrm{sexp}(z+1)/(z+2))+\log(z+2)$ mit reellem erstem Teil, also $k=0$. Der Sprung $2\pi i$ ist der von $\log(z+2)$; $g$ setzt
+      sich stetig und nach Morera holomorph fort. Bei $-2$: $g=\log(\mathrm{sexp}(z+1)/(z+2))$ mit Wert $\log\mathrm{sexp}'(-1)$.
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B1 und Abschnitt 1.1; a4_minus2.py'}
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, T1 und B5; s3_taylor.py'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: aus Knesers Holomorphie auf ℂ∖(−∞,−2] und der Funktionalgleichung; die Hebbarkeit über (−3,−2) war aber nirgends notiert.'
+    f2_benutzte_voraussetzungen: 'Holomorphie auf ℂ∖(−∞,−2], Monotonie auf der reellen Achse, sexp(z+1) = e^{sexp z}, Schwarz-Spiegelung.'
+    f3_spezialfall: 'Verschärft kn.satz.singulaer_minus2 (dort nur reell und für ε → 0).'
+    f4_uebertragbar: 'Auf jede Basis b > η mit Knesers Lösung; der Sprung ist dann 2πi/ln b.'
+    f5_neue_frage: 'Wie sieht die Fortsetzung über (−4,−3) aus? → kn.satz.nebenblatt_zweigpunkte.'
+  bewertung: {richtigkeit: 'vollständig; Reihe um −2 trifft den Motor bei −2.5+0.3i auf 3·10⁻³⁶', neuheit: neu_ungeprueft, nutzen: 'Grundlage der genauen Taylor-Asymptotik um 0 und um −2.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.singulaer_minus2}
+    - {typ: stuetzt_sich_auf, ziel: kn.konstr.kneser}
+    - {typ: verwandt, ziel: kn.satz.ableitung_nullstellenfrei}
+
+- id: kn.kor.minus2_entwicklung
+  titel: 'Entwicklung bei −2: sexp(−2+ε) = log ε + Σ gₙεⁿ mit Radius genau 1 und gₙ ≈ (−1)ⁿ/(n log n)'
+  art: korollar
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, singularitaet_m2]
+  aussage: |
+    $\mathrm{sexp}(-2+\varepsilon)=\log\varepsilon+\sum_{n\ge0}g_n\varepsilon^n$ mit Konvergenzradius genau 1 (bewiesen), und
+    $g_0=\log\mathrm{sexp}'(-1)=0.0877978063264598517937\ldots$, $g_1=-0.297219697366030084849\ldots$, $g_2=0.276261377462556794738\ldots$ (numerisch).
+    Asymptotik: $(-1)^ng_n\cdot n\log n\to1$, genauer $1+(g_0-\gamma)/\log n+O(\log^{-2}n)$ ($\gamma$ = Euler-Konstante).
+  einfach: >-
+    Rund um −2 kann man Knesers Tetration als Logarithmus plus eine Potenzreihe schreiben. Diese Reihe reicht genau bis −3, und ihre Koeffizienten
+    werden ungefähr wie 1/(n log n) kleiner, mit wechselndem Vorzeichen.
+  beweis:
+    art: skizze
+    text: |
+      Radius: aus kn.satz.minus2_hebbar und der Singularität bei $-3$. Koeffizienten aus $g(-2+\varepsilon)=\log(\mathrm{sexp}(-1+\varepsilon)/\varepsilon)$ mit der Taylorreihe
+      um $-1$. Asymptotik: bei $\varepsilon=-1$ ist mit $\eta=1+\varepsilon$, $\Lambda=\log(1/\eta)$ der singuläre Teil $\log(\Lambda-g_0)$; Flajolet–Odlyzko gibt
+      $[\zeta^n]\log(\Lambda-c)=\frac1{n\log n}[1+(c-\gamma)/\log n+\dots]$.
+    luecken:
+      - 'Das Restglied der Flajolet–Odlyzko-Übertragung ist nicht abgeschätzt; gemessen 0.852 bei n = 140, Fit des 1/log n-Glieds −0.461 gegen Theorie −0.489.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B2, B3 und Abschnitt 1.1; a4_minus2.py, a5_fit.py, daten/g_minus2.json'}, {ref: flajolet_odlyzko1990}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Der Radius ja (aus kn.satz.minus2_hebbar); die Asymptotik braucht den Transfersatz.'
+    f2_benutzte_voraussetzungen: 'kn.satz.minus2_hebbar, Taylorreihe um −1, Singularitätsanalyse (Flajolet–Odlyzko).'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf andere Basen; g₀ = log(sexp′(−1))/ln b.'
+    f5_neue_frage: 'Restglied der Übertragung zertifizieren.'
+  bewertung: {richtigkeit: 'Radius vollständig; Koeffizienten zwei Einstellungen, Abstand ≤ 2·10⁻³²; Asymptotik hergeleitet', neuheit: neu_ungeprueft, nutzen: 'Genaue lokale Beschreibung bei −2.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.satz.minus2_hebbar}
+    - {typ: verallgemeinert, ziel: kn.satz.singulaer_minus2}
+
+- id: kn.satz.taylor_darboux
+  titel: 'Taylor-Koeffizienten von Knesers sexp um 0: cₙ = (−1)^(n+1)/(n·2ⁿ) + O(ρ⁻ⁿ), ρ < 3; c₂₂ ist der erste negative'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Das Vorzeichenmuster für alle n braucht max|g| ≤ 180 auf |z| = 2.5; das ist nur auf einem Gitter gemessen (177.6), nicht mit Intervallen zertifiziert. Die Formel für cₙ selbst ist bewiesen.'
+  niveau: vertiefung
+  objekte: [kneser_T]
+  bereich: '$\mathrm{sexp}_e(z)=\sum_{n\ge0}c_nz^n$, $|z|<2$; $g=\mathrm{sexp}-\log(z+2)$ wie in kn.satz.minus2_hebbar'
+  voraussetzungen:
+    - {text: 'max|g| ≤ 180 auf |z| = 2.5 (Gitter mit 400 und 300 Punkten, dps 40: 177.41 bzw. 177.25; g(2.5) = 177.6114)', benutzt: ja, notiz: 'nur für das Vorzeichenmuster ab n = 44'}
+  aussage: |
+    (i) **Bewiesen:** $c_n=\dfrac{(-1)^{n+1}}{n\,2^n}+d_n$ mit $\limsup|d_n|^{1/n}=1/3$, also $d_n=O(\rho^{-n})$ für jedes $\rho<3$.
+    (ii) **Vorzeichen:** $c_n>0$ für $0\le n\le21$, $c_{22}=-1.5492416655467695218\cdot10^{-9}$ ist der erste negative Koeffizient, und
+    $\mathrm{sign}\,c_n=(-1)^{n+1}$ für alle $n\ge21$ — numerisch bis $n=640$, für alle $n$ unter der Gitterschranke für $|g|$.
+    Damit ist die Frage aus gr.beob.kneser_ableitung („sind alle Taylor-Koeffizienten positiv?“) verneint.
+  einfach: >-
+    Die Potenzreihe von Knesers Tetration um 0 beginnt mit lauter positiven Zahlen. Ab der 22. Zahl wechseln die Vorzeichen aber ab. Der Grund ist
+    der Logarithmus bei −2: Er bestimmt die Grösse der Zahlen fast genau, und der Rest ist viel kleiner.
+  beweis:
+    art: bedingt
+    text: |
+      (i) $c_n-[z^n]\log(z+2)=[z^n]g$, und $g$ ist holomorph auf $|z|<3$ (kn.satz.minus2_hebbar); Cauchy-Abschätzung. (ii) $|d_n|\le M\cdot2.5^{-n}$ mit $M=\max_{|z|=2.5}|g|$;
+      mit $M\le180$ ist $|d_n|<1/(2n2^n)$ für $n\ge44$; für $n<44$ (und bis 640) direkt gerechnet. Koeffizienten aus Cauchy-DFT mit zwei Einstellungen
+      (Übereinstimmung ≤ 10⁻⁴⁰ relativ bis n = 70; mit abgezogenem Logarithmus bis n = 640). Bericht 05 bestätigt die Vorzeichen bis n = 100 unabhängig (dps 130/100).
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B4, B5 und Abschnitte 2.1, 2.3; e1_taylor.py, e7_gkoeff.py, a3_vorzeichen.py, a12_schranke.py'}
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, T1, T4 und B5; s3_taylor.py'}
+  pruefung:
+    f1_folgt_unmittelbar: '(i) ja, aus kn.satz.minus2_hebbar; (ii) braucht zusätzlich die Schranke für |g| und die Rechnung für kleine n.'
+    f2_benutzte_voraussetzungen: 'Holomorphie von g auf ℂ∖(−∞,−3]; Gitterschranke für |g| auf |z| = 2.5.'
+    f3_spezialfall: 'Darboux-Methode mit exponentiell kleinem Fehler.'
+    f4_uebertragbar: 'Auf andere Basen und Entwicklungszentren (Leitterm aus dem Logarithmus bei −2).'
+    f5_neue_frage: 'Intervallschranke für |sexp| auf |z| = 2.5 aus der Funktionalgleichung — dann ist das Vorzeichenmuster ohne Bedingung bewiesen.'
+  bewertung: {richtigkeit: '(i) vollständig; (ii) numerisch bis n = 640, allgemein bedingt', neuheit: neu_ungeprueft, nutzen: 'Beantwortet die offene Frage aus gr.beob.kneser_ableitung und gibt die Koeffizienten mit exponentiell kleinem Fehler.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.satz.minus2_hebbar}
+    - {typ: verwandt, ziel: gr.beob.kneser_ableitung, notiz: 'beantwortet f5: nicht alle positiv, c₂₂ < 0'}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.singulaer_minus2}
+
+- id: kn.beob.taylor_drei_stufen
+  titel: 'Der Rest dₙ der Taylor-Koeffizienten hat drei Stufen: Sattel auf der positiven Achse bis n ≈ 505, danach die Singularität bei −3'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T]
+  bereich: '$d_n=c_n-(-1)^{n+1}/(n2^n)$ aus kn.satz.taylor_darboux, Basis $e$'
+  aussage: |
+    (i) Für $n\lesssim500$ beherrscht ein Hayman-Sattelpunkt auf der positiven Achse den Rest: $d_n\approx g(R)R^{-n}/\sqrt{2\pi b(R)}$ mit $Rg'(R)/g(R)=n$,
+    $R$ von 2.49 ($n=20$) bis 3.23 ($n=500$), und $d_n>0$. Grund: $\mathrm{sexp}$ wird bei $z\approx3$ riesig ($\mathrm{sexp}(3)\approx3.8\cdot10^6$).
+    (ii) Kipppunkt: vorhergesagt bei $n\approx500$, gemessen $d_n>0$ bis $n=505$, ab $n=506$ Vorzeichen $(-1)^n$.
+    (iii) Danach übernimmt die $\log\log$-Singularität bei $-3$: $d_n\approx(-1/3)^n/(n\log n)\cdot(1+(B-\gamma)/\log n+\dots)$, $B=\log3+g_0$.
+    Vom Zentrum $-0.4$ aus (Vergleichskreis nur bis 2.3, $\mathrm{sexp}(2.3)\approx50$) sieht man die Stufe (iii) schon bei $n\approx60$–$80$ (Abweichung 0.7 % bei $n=80$).
+  einfach: >-
+    Nach Abzug des Hauptteils bleibt in den Taylor-Zahlen ein kleiner Rest. Zuerst bestimmt ihn das riesige Wachstum der Tetration rechts von 0,
+    erst ab etwa der 506. Zahl die Stelle −3 links. Wer nur die ersten paar hundert Zahlen ansieht, zieht deshalb leicht falsche Schlüsse.
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B6 und Abschnitt 2.2; a2_sattel.py, a6_wechsel.py, a7_wechsel_pruef.py'}
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, T2, T3; s3b_zentren.py'}
+    - {ref: hayman1956}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Sattelpunktmethode und Singularitätsanalyse, numerisch bestätigt.'
+    f2_benutzte_voraussetzungen: 'kn.satz.minus2_hebbar; g-Koeffizienten bis n = 640 aus zwei Einstellungen (30 Stellen gleich bis n = 520).'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf andere Basen; der Kipppunkt n*(b) hängt am Wachstum von sexp_b auf der positiven Achse.'
+    f5_neue_frage: 'Strenger Beweis der Sattel-Dominanz; drittes und viertes Glied der 1/log n-Reihe (gemessenes Verhältnis 1.128 stabil für n = 520…640).'
+  bewertung: {richtigkeit: 'hergeleitet + numerisch; Hayman-Verhältnis 1.0042 bei n = 400, Kipppunkt vorhergesagt und gemessen', neuheit: neu_ungeprueft, nutzen: 'Warnt vor Extrapolationen aus wenigen hundert Taylor-Koeffizienten.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.taylor_darboux}
+    - {typ: verwandt, ziel: kn.kor.minus2_entwicklung}
+
+- id: kn.satz.wertevorrat
+  titel: 'Knesers sexp nimmt jeden Wert ausser 0 unendlich oft an; die 0 genau einmal, bei −1'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [kneser_T, fixpunkt_L]
+  aussage: |
+    Auf $\mathbb C\setminus(-\infty,-2]$ hat Knesers $\mathrm{sexp}_e$ genau eine Nullstelle ($z=-1$) und nimmt jeden Wert $c\ne0$ unendlich oft an.
+    Die Urbilder kommen in Familien $w_j\approx w_0+j\gamma$ mit $\gamma=2\pi i/L=4.44695+1.05794i$.
+  einfach: >-
+    Im Komplexen trifft Knesers Tetration jede Zahl unendlich oft — nur die Null genau einmal, an der Stelle −1.
+  beweis:
+    art: vollstaendig
+    text: |
+      Für $c$ in der oberen Halbebene bildet der Hauptlogarithmus diese in sich ab (kein Automorphismus, Fixpunkt $L$); nach Denjoy–Wolff gilt $\log^{[k]}c\to L$.
+      Oben ist $\mathrm{sexp}(z)=\Psi(\kappa e^{L(z+\theta(z)-a_0)})$ (Kneser). Für $v=\log^{[k]}c$ nahe $L$ hat $z+\theta(z)-a_0=(\log(\sigma(v)/\kappa)+2\pi ij)/L$ für jedes
+      grosse $j$ genau eine Lösung $z_j$ (Rouché), und $\mathrm{sexp}(z_j+k)=c$. Untere Halbebene durch Spiegelung; $c<0$ und $c>0$ durch einen Logarithmusschritt
+      (bei $c=\mathrm{sexp}(n)$ mit $\log c+2\pi i$). Die Nullstelle: siehe kn.satz.minus2_hebbar. Nachgerechnet für $c=2\pi i$ (Restfehler $3\cdot10^{-47}$).
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B7 und Abschnitt 1.2; e8b_familie.py'}, {ref: denjoy_wolff1926}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; braucht Denjoy–Wolff und Knesers Darstellung in der oberen Halbebene.'
+    f2_benutzte_voraussetzungen: 'kn.konstr.kneser (Darstellung oben, θ − a₀ → 0), Denjoy–Wolff, Rouché.'
+    f3_spezialfall: 'Analog zum Satz von Picard (ein ausgelassener Wert), hier für eine Funktion mit Schnitt.'
+    f4_uebertragbar: 'Auf jede Basis b > η mit Knesers Lösung.'
+    f5_neue_frage: 'Ergibt unendlich viele Verzweigungspunkte auf Nebenblättern (kn.satz.nebenblatt_zweigpunkte).'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Klärt den Wertevorrat und erzeugt die Nebenblatt-Struktur.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.konstr.kneser}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.minus2_hebbar}
+    - {typ: motiviert, ziel: kn.satz.nebenblatt_zweigpunkte}
+
+- id: kn.satz.nebenblatt_zweigpunkte
+  titel: 'Die Riemannsche Fläche von sexp hat unendlich viele weitere logarithmische Verzweigungspunkte, z. B. bei 1.0043125 + 0.7094135i'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, singularitaet_m2]
+  aussage: |
+    Setzt man $\mathrm{sexp}$ über den Schnitt fort, so gibt es ausser $-2,-3,\dots$ unendlich viele weitere logarithmische Verzweigungspunkte: über $w-1$ für jedes $w$
+    mit $\mathrm{sexp}(w)\in2\pi i\mathbb Z\setminus\{0\}$. Beispiele: $w-1=1.00431248259468800394+0.70941354086940362668i$ ($\mathrm{sexp}(w)=2\pi i$) und
+    $w-1=1.15587108746+0.49064172727i$ ($\mathrm{sexp}(w)=4\pi i$). Die Projektionen aller Verzweigungspunkte liegen in $\{w-m:m\ge1,\ \exists n:\mathrm{sexp}(w+n)=\mathrm{sexp}(n-1)\}$.
+  einfach: >-
+    Geht man in der komplexen Ebene um die Schnittlinie herum auf ein anderes „Blatt“ der Funktion, tauchen dort neue Stellen auf, an denen sie
+    wie ein Logarithmus nach unendlich geht — und zwar unendlich viele.
+  beweis:
+    art: skizze
+    text: |
+      Quert $z+1$ den Schnitt $(-3,-2)$ von unten nach oben, wird $\mathrm{sexp}(z+1)$ zu $\mathrm{sexp}(z+1)-2\pi i$ (kn.satz.minus2_hebbar). Der Zweig von $\mathrm{sexp}(z)$, der dabei
+      entsteht ($z$ quert $(-4,-3)$), ist $\log(\mathrm{sexp}(z+1)-2\pi i)+2\pi il$; bei $\mathrm{sexp}(w)=2\pi i$ hat er bei $z=w-1$ die Form $\log(\mathrm{sexp}'(w)(z-w+1))+$holomorph
+      ($\mathrm{sexp}'\ne0$, kn.satz.ableitung_nullstellenfrei). Mit kn.satz.wertevorrat gibt es unendlich viele solche $w$. Beispiel bei dps 60 und 45 (Abstand $5\cdot10^{-54}$).
+    luecken:
+      - 'Dass jeder Turm von Logarithmen in der Menge {w − m : sexp(w+n) = sexp(n−1)} auch als Zweig erreicht wird, ist nur für n ≤ 2 ausgeführt.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B8 und Abschnitt 1.3; e8_zweigpunkte.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus kn.satz.minus2_hebbar und kn.satz.wertevorrat, bis auf die Vollständigkeit der Liste.'
+    f2_benutzte_voraussetzungen: 'Sprung 2πi über (−3,−2), sexp′ ≠ 0, Wertevorrat.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf andere Basen b > η.'
+    f5_neue_frage: 'Liegen die Verzweigungspunkte dicht in ℂ? Gibt es Lösungen von sexp(w) ∈ 2πiℤ∖{0} im Streifen −2 < Re w ≤ −1?'
+  bewertung: {richtigkeit: 'Skizze; Beispielpunkte auf 50 Stellen', neuheit: neu_ungeprueft, nutzen: 'Erster Blick auf die ganze Riemannsche Fläche von sexp.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.minus2_hebbar}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.wertevorrat}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.ableitung_nullstellenfrei}
+
+- id: kn.kor.doppelreihe_oben
+  titel: 'Oben ist sexp eine konvergente Doppelreihe in e^(Lz) und e^(2πiz); die reinen e^(kLz)-Koeffizienten sind pₖκᵏ'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, schroeder, theta_kneser, fixpunkt_L]
+  bereich: 'Basis $e$, $\mathrm{Im}\,z>0$; $\Psi=\sigma^{-1}=\sum p_kw^k$ (ganz), $\kappa$ aus kn.satz.binet_kappa, $\theta=a_0+\sum a_nq^n$, $q=e^{2\pi iz}$'
+  aussage: |
+    $$\mathrm{sexp}(z)=L+\sum_{k\ge1,\,m\ge0}p_k\kappa^k\,e_{k,m}\,e^{(kL+2\pi im)z},\qquad e_{k,m}=[q^m]\exp\bigl(kL(\theta(q)-a_0)\bigr),$$
+    absolut konvergent auf der ganzen oberen Halbebene. Also $C_{k,0}=p_k\kappa^k$ und $C_{1,1}=\kappa La_1$. Der Grösse nach kommen
+    $e^{Lz},\dots,e^{5Lz}$ ($|e^{kLz}|=e^{-1.337ky}$) vor der ersten Fourier-Korrektur $e^{(L+2\pi i)z}$ ($e^{-7.62y}$).
+    $p_1\dots p_4=1,\ -0.151315-0.296749i,\ -0.036976+0.098731i,\ 0.025812-0.017387i$.
+  einfach: >-
+    Weit oben in der komplexen Ebene lässt sich Knesers Tetration als Summe aus zwei Arten von Wellen schreiben. Die wichtigsten Glieder kommen
+    direkt aus der Lösung am Fixpunkt L; Knesers Korrektur meldet sich erst danach.
+  beweis:
+    art: vollstaendig
+    text: |
+      Aus $\mathrm{sexp}=\Psi(\kappa e^{Lz}E(q))$ mit $E(q)=\exp(L\sum_{n\ge1}a_nq^n)$ und $\Psi$ ganz folgt $\mathrm{sexp}=\sum_kp_k\kappa^ke^{kLz}E(q)^k$; absolute Konvergenz über
+      $\sum|p_k||\kappa e^{Lz}|^k\tilde E(|q|)^k<\infty$ mit $\tilde E(t)=\exp(|L|\sum|a_n|t^n)$, endlich für $t<1$. Motor gegen $\Psi(\kappa e^{Lz})$: Fehler $2\cdot10^{-14}$ bei $y=4$
+      (Grösse des ersten Fourier-Glieds), mit ihm $10^{-25}$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B9 und Abschnitt 3; a9_oben.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus kn.konstr.kneser durch Ausmultiplizieren.'
+    f2_benutzte_voraussetzungen: 'Kneser-Darstellung oben, Ψ ganz, θ holomorph oben mit Fourier-Reihe.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis b > η.'
+    f5_neue_frage: 'Umkehrung für slog nahe L (kn.kor.slog_bei_L).'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Macht die Struktur oben explizit und rechenbar.', nutzen_stufe: gering}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.konstr.kneser}
+    - {typ: verwandt, ziel: kn.satz.binet_kappa}
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+
+- id: kn.kor.slog_bei_L
+  titel: 'slog nahe L: slog(w) = ℓ/L − Σ aₙ e^(2πin·slog w), ℓ = log(σ(w)/κ) — Hochzahlen m + nγ und ein Logarithmus'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [slog, schroeder, theta_kneser, fixpunkt_L]
+  aussage: |
+    Nahe dem Fixpunkt $L$ (auf dem Hauptblatt) gilt
+    $$\mathrm{slog}(w)=\frac{\ell}{L}-\sum_{n\ge1}a_ne^{2\pi in\,\mathrm{slog}\,w},\qquad\ell=\log\frac{\sigma(w)}{\kappa},$$
+    mit Leitform $\ell/L-a_1(\sigma(w)/\kappa)^\gamma$, $\gamma=2\pi i/L$. Die Entwicklung hat Hochzahlen $m+n\gamma$ in $\sigma(w)$ und genau einen Logarithmus.
+  einfach: >-
+    Auch die Umkehrfunktion der Tetration, der Superlogarithmus, hat nahe dem Fixpunkt L eine genaue Form: ein Logarithmus plus kleine Korrekturen
+    mit komplexen Hochzahlen.
+  beweis:
+    art: vollstaendig
+    text: 'Umkehrung von kn.kor.doppelreihe_oben: aus $h(\mathrm{sexp}\,z)=z+\theta(z)$ mit $h=\log(\sigma)/L$. Volle Umkehr trifft den Motor auf $10^{-48}$, die Leitform mit $a_1$ auf $5\cdot10^{-19}$ ($y=3$).'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B10 und Abschnitt 3; a10_slogL.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, als Umkehrung der Darstellung oben.'
+    f2_benutzte_voraussetzungen: 'kn.konstr.kneser, Schröder-Funktion σ am Fixpunkt L.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Analog zu kn.satz.halbexp_singularitaet_L (dort für die halbe e-Funktion, ohne Logarithmen).'
+    f5_neue_frage: 'Wie sieht slog auf den Nebenblättern nahe L aus?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Explizite lokale Form von slog am Fixpunkt.', nutzen_stufe: gering}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.kor.doppelreihe_oben}
+    - {typ: analog_zu, ziel: kn.satz.halbexp_singularitaet_L}
+    - {typ: verwandt, ziel: kn.def.slog}
+
+- id: kn.kor.halbexp_band
+  titel: 'Knesers halbe e-Funktion liegt in „Höhe“ gemessen höchstens 0.01704 neben der halben Stufe des linearen log*'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [kneser_T, slog]
+  bereich: '$f$ Knesers halbe e-Funktion ($f\circ f=\exp$, $\mathrm{slog}\,f(x)=\mathrm{slog}\,x+\tfrac12$); $\mathrm{slog}_{\mathrm{lin}}$ wie in gr.satz.slog_logstern_welle'
+  aussage: |
+    Für alle reellen $x$ gilt
+    $$\bigl|\mathrm{slog}_{\mathrm{lin}}(f(x))-\mathrm{slog}_{\mathrm{lin}}(x)-\tfrac12\bigr|\le\max P-\min P=0.0170358261009277477\ldots$$
+  einfach: >-
+    Misst man die Höhe mit dem einfachen, stückweise linearen iterierten Logarithmus, so macht Knesers halbe e-Funktion fast genau einen halben Schritt:
+    Der Fehler ist nie grösser als 0.017.
+  beweis:
+    art: vollstaendig
+    text: 'Zweimal gr.satz.slog_logstern_welle: $\mathrm{slog}_{\mathrm{lin}}=\mathrm{slog}-P(\cdot)$ an $x$ und an $f(x)$, und $\mathrm{slog}\,f(x)-\mathrm{slog}\,x=\tfrac12$. Stichprobe (400 Punkte in $[0.05,5\cdot10^4]$): max 0.016521.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B12 und Abschnitt 4; a13_halbexp_band.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus gr.satz.slog_logstern_welle.'
+    f2_benutzte_voraussetzungen: 'Die Wellenschranken min P, max P (numerisch auf 20 Stellen).'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede gebrochene Iterierte exp^{[s]} (Band gleicher Breite um s).'
+    f5_neue_frage: 'Ist das die genaueste elementare Beschreibung? Eine elementare Asymptotikreihe gibt es nicht (kn.satz.halbe_exp_wachstum).'
+  bewertung: {richtigkeit: 'bewiesen aus den numerischen Wellenschranken', neuheit: neu_ungeprueft, nutzen: 'Handliche, scharfe elementare Beschreibung der halben e-Funktion.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: gr.satz.slog_logstern_welle}
+    - {typ: verwandt, ziel: kn.satz.halbe_exp}
+    - {typ: verwandt, ziel: kn.satz.halbe_exp_wachstum}

@@ -1,5 +1,120 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: br.beob.boettcher_kneser_abstand
+  quelle_hash: 197496ce9765
+  theorie_hash: 0dd5d68fbfd2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Böttcher and Kneser differ for x²+1 only by a shift of 4.5·10⁻⁷ (defect E = 3.9·10⁻¹⁴)
+    aussage: |
+      - $x^2+1$: $\max\lvert p\rvert=4.476914\cdot10^{-7}$, $\lvert\hat p(1)\rvert=1.4006\cdot10^{-7}$, $\lvert\hat\theta_B(-1)\rvert=1.401\cdot10^{-7}$, defect $E=2\sum m\lvert\hat\theta_B(-m)\rvert^2=3.92\cdot10^{-14}$;
+      - $x^4+1$: $\max\lvert p\rvert=2.199189\cdot10^{-4}$, $\lvert\hat p(1)\rvert=8.5462\cdot10^{-5}$, $\lvert\hat\theta_B(-1)\rvert=8.546\cdot10^{-5}$, $E=1.46\cdot10^{-8}$
+
+      (two settings agree to $6\cdot10^{-17}$, two heights agree to $10^{-16}$; the noise is at $10^{-16}$, so $S_B\neq S_K$ is also clearly visible numerically.)
+      Scan $d=2$: $|\hat p(1)|=6.65\cdot10^{-8}$ ($c=0.5$), $1.40\cdot10^{-7}$ ($c=1$), $3.02\cdot10^{-7}$ ($c=2$). **Weak conjecture (5 cases):**
+      $|\hat p(1)|\approx e^{-2\pi\delta}$ with effective width $\delta=2.39\ldots2.63$ ($d=2$) and $1.49$ ($d=4$), roughly matching the bandwidth $\pi/(2\ln d)=2.27$ and $1.13$ from the proof,
+      with a $c$-dependent prefactor. Runs with $c=4$, $d=4,c=2$ and $d=6$ failed because of overflow.
+    bereich: $S_B$, $S_K$ as in br.satz.boettcher_nicht_kneser; $S_B(x)=S_K(x-1+p(x))$ with 1-periodic, real-analytic $p$; defect $E$ from br.satz.reelle_kennzeichnung
+    einfach: The two solutions of x²+1 are different, but on the number line they differ only in the seventh digit. For practical computations
+      they are the same — and yet only one of them is "Kneser". The error measure E from the real characterization sees the difference directly.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: Böttcher series, Kneser solver in two settings, negative modes at two heights Y = 0.03 and 0.06.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every x^d + c with an escaping critical orbit; numerically limited by overflow.
+      f5_neue_frage: Does ln|p̂(1)| = −2πδ(c, d) + O(1) hold with an explicit δ? Where are the singularities of p?
+    bewertung:
+      nutzen: Impressively shows how close another natural solution can lie to Kneser; test case for the defect E.
+      richtigkeit: numerical to 10⁻¹⁶; size law weakly supported
+    quellen:
+    - stelle: forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, B2, B3 and Section 6; s7_boettcher.py, s8_scan.py
+  en_theorie:
+    worum: |
+      How different are the Böttcher and Kneser superfunctions actually?
+    genau: |
+      For $x^2+1$: $S_B(x)=S_K(x-1+p(x))$ with $\max|p|=4.5\cdot10^{-7}$, defect $E=3.9\cdot10^{-14}$; for $x^4+1$: $2.2\cdot10^{-4}$ and $1.5\cdot10^{-8}$, respectively.
+    warum: |
+      Presumably both solutions are holomorphic in a wide band, and the difference is exponentially small in the bandwidth, about $e^{-2\pi\delta}$ with $\delta\approx\pi/(2\ln d)$ (weakly supported).
+    einordnung: |
+      Similar pattern to [[kl.beob.zwei_abel]] and [[kl.verm.streifenbreite]]; measured with the defect from [[br.satz.reelle_kennzeichnung]].
+- id: br.beob.kneser_logkonvex
+  quelle_hash: ebc34136662b
+  theorie_hash: f931ea0dae47
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Kneser has T′ log-convex (minimum of (log T′)″ = 0.9196) — but this does not characterize
+    aussage: |
+      $(\log T')''>0$ on $(-2,\infty)$ with minimum $0.9196$ at $x\approx-0.04$ (equivalently: $1/\mathrm{slog}'$ convex). Measured on $(-2,2]$ (step 0.02, dps 40);
+      to the right of that proved via $(\log T')''(x+1)=(\log T')''(x)+T''(x)$ and $T''>0$ for $x\ge0$. The linear tetration has $(\log T')''=0$ on $(-1,1)$, so it lies exactly on the boundary.
+      Not characterizing: it is an open condition, and all nearby bendings satisfy it too.
+    bereich: Kneser tetration to base $e$ on $(-2,\infty)$
+    einfach: The derivative of Kneser's tetration is "logarithmically curved upward", with a clear margin. But this also holds for slightly bent
+      tetrations, so it does not pin down Kneser.
+    pruefung:
+      f1_folgt_unmittelbar: To the right of 2 yes (recursion); on $(-2,2]$ only measured.
+      f2_benutzte_voraussetzungen: Functional equation, $T''>0$ for $x\ge0$ (inflection point at −0.5218).
+      f3_spezialfall: Counterpart to the log-convexity in Bohr–Mollerup.
+      f4_uebertragbar: To other bases; there other minima.
+      f5_neue_frage: Is there a base for which the log-convexity of $T'$ breaks?
+    bewertung:
+      nutzen: Clarifies that log-convexity does not work here as it does for Γ.
+      richtigkeit: numerical on (−2, 2], proved to the right
+    quellen:
+    - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, L; e4_logkonvex.py
+  en_theorie:
+    worum: |
+      Is $T'$ log-convex like Γ?
+    genau: |
+      For Kneser yes, with $\min(\log T')''=0.9196$; the linear tetration lies exactly on the boundary with $(\log T')''=0$.
+    warum: |
+      To the right of 2, $(\log T')''(x+1)=(\log T')''(x)+T''(x)$ carries the positivity over; measured on the left.
+    beispiel: |
+      Minimum at $x\approx-0.04$.
+    einordnung: |
+      Open condition, so it does not characterize ([[br.satz.endliche_vorzeichen_offen]]); comparison with [[br.frage.bohr_mollerup]].
+- id: br.beob.kneser_ungerade_99
+  quelle_hash: 0a4a76330aa5
+  theorie_hash: 4d7247723610
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Kneser: all odd Taylor coefficients up to order 99 positive on [−1.95, 1.5]'
+    aussage: |
+      $c_{2n+1}(x)>0$ for $2n+1\le99$ on $x\in[-1.95,0.5]$ and, as far as two computation routes agree (orders 75–99), on $(0.5,1.5]$.
+      Smallest normalized value $c_kk(x+2)^k$: 0.952 ($k=1$, $x\approx-1.65$); the quotient from br.satz.taylorradius_halbebene (b) is $1.0000$ at $k=99$ for $x\le0.15$.
+      Extends the measurement for gr.verm.ungerade_ableitungen from order 25 to 99.
+    bereich: Kneser tetration to base $e$, $x\in[-1.95,0.5]$ (step 0.05), plus $(0.5,1.5]$ via two centers; dps 60
+    einfach: For Kneser's tetration, all odd derivatives up to the 99th are positive at all points checked — as mike3 conjectured.
+    pruefung:
+      f1_folgt_unmittelbar: For high orders the positivity follows from br.satz.taylorradius_halbebene; for middle orders it does not.
+      f2_benutzte_voraussetzungen: Taylor data from stage 3; for $x>0.5$ cancellation in the exp route, so counted only when two routes agree.
+      f3_spezialfall: No.
+      f4_uebertragbar: To other bases with the same method.
+      f5_neue_frage: Middle orders at $x>1$ — there Levenstein predicts first sign changes of the even orders only very late.
+    bewertung:
+      nutzen: Stronger evidence for mike3's conjecture.
+      richtigkeit: numerical, dps 60
+    quellen:
+    - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, K; e1_kneser_ungerade.py, e1b_rechts.py
+  en_theorie:
+    worum: |
+      New measurement for mike3's conjecture.
+    genau: |
+      All odd Taylor coefficients up to order 99 are positive on $[-1.95,1.5]$.
+    warum: |
+      Computation with 60 digits; for $x>0.5$ counted only where two computation routes agree.
+    beispiel: |
+      Smallest normalized value 0.952 at $k=1$, $x\approx-1.65$.
+    einordnung: |
+      Supports [[gr.verm.ungerade_ableitungen]]; consequence of it: [[br.satz.ungerade_ableitungen_halbebene]].
 - id: br.beob.produkt_iteration_dreieck
   quelle_hash: b49b67923157
   herkunft:
@@ -76,6 +191,49 @@
       The interpolation in the forum does essentially the same — far to the left the function is almost linear in the Fatou coordinate — which is why it hits the value.
     worum: |
       Concrete numbers for the natural product tetration, and a comparison with the forum value.
+- id: br.beob.verbiegungen_singularitaeten
+  quelle_hash: 8cdf62158542
+  theorie_hash: 5e380fdba29f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Bendings of Kneser have singularities in Re z > −2: Taylor radius 0.2–1.7 instead of x + 2, odd derivatives negative from order 3–15'
+    aussage: |
+      All 13 bendings tested violate C(0) at 8–20 of 20 grid points (smallest violating odd order 3, 5 or 15); radius at $x=0.3$: 0.20–1.74 instead of 2.3.
+      The only exception in the measurement window: $\varepsilon=10^{-6}$ (singularity at height 2.42, outside all disks with $x\le0.4$).
+      Sine perturbation: logarithmic branch points at $\varphi(z_0)=-2$ on the principal sheet, height $\approx\ln(4(x+2)/\varepsilon)/2\pi$ (e.g. $\varepsilon=0.03$: $z_0\approx-0.318+0.766i$).
+      Möbius bending: branch points at distance $\delta=\ln(1/|a|)/2\pi$ from the axis, hence $\rho_T\le\delta$ for all $x$.
+      Small perturbation, gross violation: $\varepsilon=10^{-3}$ gives $T^{(5)}(-0.6)=-0.408212081901$ (Kneser $5.40941046332$); $\varepsilon=0.03$ gives $T'''(0)=-5.98442555504$ (Kneser 1.2747).
+    bereich: '$T=\mathrm{sexp}_K(x+p(x))$: sine, cosine and Möbius perturbations and the counterexamples from stage 4; grid $x=-1.5,\dots,0.4$,
+      orders $k<100$, dps 50'
+    einfach: Even a tiny bending of Kneser makes some odd derivatives negative, because it creates a disturbance point in the complex plane that
+      shortens the Taylor series considerably.
+    pruefung:
+      f1_folgt_unmittelbar: The height formulas follow from the log singularity at −2 (derived); location and sheet numerical.
+      f2_benutzte_voraussetzungen: Holomorphy of Kneser on $\mathbb C\setminus(-\infty,-2]$; series composition, two routes agree to 12 digits.
+      f3_spezialfall: Confirms br.satz.taylorradius_halbebene (E) in examples.
+      f4_uebertragbar: To every perturbation with entire, non-constant $p$ (argument principle), as far as the solutions lie on the principal
+        sheet.
+      f5_neue_frage: Is there a bending whose branch points all lie on secondary sheets?
+    bewertung:
+      nutzen: Shows that the local condition is very selective in practice.
+      richtigkeit: numerical, two independent routes
+    quellen:
+    - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, E1, E2, E3, X, Table 2; e2_stoerungen.py, e3_singularitaeten.py,
+        t2_gegenprobe.py
+  en_theorie:
+    worum: |
+      How do genuine bendings of Kneser violate the local condition?
+    genau: |
+      They have branch points in $\mathrm{Re}\,z>-2$, at height $\approx\ln(1/\varepsilon)/2\pi$; as a result the Taylor radius drops and even low odd derivatives become negative.
+    warum: |
+      Where $z+p(z)=-2$ holds, $T=\mathrm{sexp}_K(z+p(z))$ inherits Kneser's log singularity at $-2$.
+    beispiel: |
+      $\varepsilon=10^{-3}$: $T^{(5)}(-0.6)=-0.408$ instead of $+5.409$.
+    einordnung: |
+      Evidence for [[br.satz.taylorradius_halbebene]] and for [[br.frage.halbebene_eindeutigkeit]].
 - id: br.def.hyperoperation
   quelle_hash: 33e5aa60a2be
   theorie_hash: dd794f98c082
@@ -206,6 +364,35 @@
     worum: |
       The gamma function is the only continuation of the factorial that is “logarithmically convex” — a purely real condition. Is there something like that for tetration? So far only complex-variable
       conditions select Kneser's solution.
+- id: br.frage.halbebene_eindeutigkeit
+  quelle_hash: fd88fc98918c
+  theorie_hash: e2bbb8719ac3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Q*: Is every real tetration that is holomorphic on Re z > −2 already Kneser?'
+    aussage: |
+      Paulsen–Cowgill without the limit condition at $i\infty$, half-plane version. Approach: $\theta_T=h\circ T-z$ is then periodic and holomorphic on the upper half-plane up to harmless log points ($T=L$);
+      one would have to show that $q=e^{2\pi iz}=0$ cannot be an essential singularity. All bendings $\mathrm{sexp}_K\circ(\mathrm{id}+p)$ checked so far with entire,
+      non-constant $p$ have branch points in $H$ ($z+p(z)=-2$ has $\sim2N$ solutions per period strip); it is not ruled out that all lie on secondary sheets.
+      Subquestion: For every tetration $\ne$ Kneser, is even $\sup_x\rho_T(x)<\infty$? Then already "$\rho_T$ unbounded" would be characterizing.
+    einfach: Is it enough for uniqueness that the tetration is smooth in the right half-plane of the complex numbers? This is open, and whether
+      a simple real characterization exists depends on this question.
+    quellen:
+    - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, D, Open questions 1 and 3
+  en_theorie:
+    worum: |
+      Is holomorphy on $\mathrm{Re}\,z>-2$ (without a limit at $i\infty$) enough for uniqueness?
+    genau: |
+      Open. Paulsen–Cowgill additionally need $T(z)\to L$ for $\mathrm{Im}\,z\to\infty$.
+    warum: |
+      Then $\theta_T$ would be periodic and holomorphic above up to harmless points; what is missing is to rule out an essential singularity at $q=0$.
+    beispiel: |
+      All bendings checked so far have branch points in the half-plane.
+    einordnung: |
+      Related to [[kn.verm.tk_c2]]; decides [[br.satz.lokal_genau_dann_halbebene]].
 - id: br.frage.implosion
   quelle_hash: ecae3d5e45e8
   theorie_hash: e0d48de3c164
@@ -472,6 +659,55 @@
       2. The offset $\pm3$ comes from the starting value $A(m+1,0)=A(m,1)$.
     worum: |
       The Ackermann function, the standard example of a computable but not primitive recursive function, is at its core the ladder of hyperoperations with base 2.
+- id: br.satz.boettcher_nicht_kneser
+  quelle_hash: a4ac7c19610e
+  theorie_hash: 4d646949c117
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Polynomials have a second natural real superfunction (Böttcher, from ∞) — and it is not Kneser's solution
+    aussage: |
+      $S_B(z):=\varphi^{-1}\bigl(\exp(G(c)\,d^z)\bigr)$ is a real, real-analytic superfunction of $f$ with $S_B(0)=c$ and $S_B(-1)=0$ (square-root branching at $-2$),
+      just like $S_K$ — it corresponds to regular iteration at the superattracting fixed point $\infty$. Nevertheless $S_B\neq S_K$.
+      ($G(1)=0.40735452273948$ for $d=2$, $0.17707602108109$ for $d=4$.) For $e^x$ there is no counterpart, because $\infty$ is an essential singularity there.
+    bereich: $f(x)=x^d+c$, $d$ even, $f(x)>x$ on $\mathbb R$ (e.g. $x^2+1$, $x^4+1$); Böttcher coordinate $\varphi$ with $\varphi(f(w))=\varphi(w)^d$,
+      $\varphi(w)\sim w$ at $\infty$; Green function $G$ of the filled Julia set $K$; Kneser superfunction $S_K$ from kn.satz.zoo_singulaerer_ort
+    einfach: 'For polynomials like x²+1 there are two quite different natural ways to apply a function "half as often": one comes from the complex
+      fixed point (Kneser), the other from infinity (Böttcher). Both are real and smooth. One can prove that they are not equal.'
+    beweis:
+      text: |
+        The critical orbit $0\to c\to\dots$ runs off to $\infty$, so $K$ is a Cantor set with $K\cap\mathbb R=\emptyset$; $G\ge0$ is harmonic on $\mathbb C\setminus K$,
+        $G=0$ on $K$, $G=\log|\varphi|$ near $\infty$. Suppose $S_B=S_K$. Then $G(S_K(z))=G(c)\,\mathrm{Re}\,d^z$ near the real half-line. Let $U_0$ be the component of
+        $\{z\in\mathbb H:S_K(z)\notin K\}$ that contains a strip over $(-2,\infty)$; there both sides are harmonic, hence equal; because $G>0$, we get $\mathrm{Re}\,d^z>0$,
+        so $U_0\subset B_0=\{0<\mathrm{Im}\,z<\pi/(2\ln d)\}$. Boundary points of $U_0$ in $\mathbb H$ would have $\mathrm{Re}\,d^z=0$, and there are none in $B_0$; hence $U_0=B_0$.
+        On the upper edge there then lies the connected curve $x\mapsto S_K(x+i\pi/(2\ln d))$ inside the totally disconnected set $K$, so it is constant — a contradiction.
+        Only this is needed: $S_K$ holomorphic on $\mathbb H$, non-constant, real on $\mathbb R$.
+    pruefung:
+      f1_folgt_unmittelbar: No; the proof needs the Green function, a Cantor set and an open-closed argument.
+      f2_benutzte_voraussetzungen: Böttcher coordinate (it.satz.boettcher), K Cantor set (critical orbit escapes), S_K holomorphic on ℍ and non-constant.
+      f3_spezialfall: 'Related to it.satz.karlin_mcgregor: regular iterations at two different fixed points (here L and ∞) do not agree.'
+      f4_uebertragbar: To every polynomial with an escaping critical orbit and a real superfunction without a real fixed point.
+      f5_neue_frage: How large exactly is the difference (br.beob.boettcher_kneser_abstand), and where are the singularities of the connecting
+        function p?
+    bewertung:
+      nutzen: First case of a second, equally natural real superfunction besides Kneser; shows that "natural + real-analytic" does not determine
+        Kneser.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, B1 and B-B1 (Section 6); s7_boettcher.py
+  en_theorie:
+    worum: |
+      A polynomial $x^d+c$ has two natural starting points for fractional iteration: the complex fixed point $L$ (Kneser) and the superattracting fixed point $\infty$ (Böttcher).
+    genau: |
+      $S_B=\varphi^{-1}(\exp(G(c)d^z))$ is real-analytic and a superfunction, but $S_B\neq S_K$.
+    warum: |
+      If $S_B=S_K$, then $G\circ S_K=G(c)\,\mathrm{Re}\,d^z$ would have to hold on a whole band; at its boundary $S_K$ would have to map a curve into the Cantor set $K$ — which is possible only if $S_K$ is constant.
+    beispiel: |
+      $x^2+1$: $G(1)=0.40735452273948$; $S_B(0)=1$, $S_B(-1)=0$ as for $S_K$.
+    einordnung: |
+      Related to [[it.satz.karlin_mcgregor]] (regular iterations at different fixed points are different) and [[it.satz.boettcher]]; size of the difference: [[br.beob.boettcher_kneser_abstand]].
 - id: br.satz.boshernitzan
   quelle_hash: 824aeb0e610f
   theorie_hash: a5299c0f91f3
@@ -561,6 +797,52 @@
     worum: |
       Does one of the real Kneser formulas pin down Kneser on its own? **Notation:** every smooth tetration is $T(x)=\mathrm{sexp}(x+p(x))$ with a 1-periodic
       function $p$; its wave is $\theta_T(x)=h(T(x))-x$ with the regular Abel function $h$ at the complex fixed point ([[kn.def.theta_welle]]). Kneser means: $p$ constant.
+- id: br.satz.endliche_vorzeichen_offen
+  quelle_hash: 0f66a4e938ee
+  theorie_hash: e064c2f48568
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Finitely many sign conditions never separate Kneser from nearby bendings; the boundaries are universal
+    aussage: |
+      (N3) For every fixed order $n$ and every tetration, $T^{(n)}$ has the sign $(-1)^{n-1}$ at $-2$ and is positive for large $x$; $\mathrm{slog}^{(n)}$ has the sign $(-1)^{n-1}$ at $+\infty$ and is positive at $-\infty$.
+      Positivity of $T',\dots,T^{(n)}$ on an interval of length 1 carries over to the right.
+      (N4) For every $N$, all sufficiently small bendings (Möbius $|a|<a_N$, sine $\varepsilon<\varepsilon_N$) have the same signs and numbers of zeros of $T',\dots,T^{(N)}$ on $(-2,\infty)$ as Kneser.
+      So a characterizing sign condition must contain infinitely many orders, and violations occur only at orders $\to\infty$.
+    bereich: real-analytic tetrations; bendings $T=\mathrm{sexp}_K(x+p(x))$ (sine, Möbius)
+    einfach: If one checks only finitely many derivatives, a slightly bent tetration looks exactly like Kneser. So one has to look at infinitely
+      many derivatives.
+    beweis:
+      text: |
+        N3: Lemma 0 at $-2$; to the right $(e^T)^{(n)}=e^TY_n(T',\dots,T^{(n)})$ with the complete Bell polynomial (nonnegative coefficients); slog via Faà di Bruno.
+        N4: $T_a\to T_K$ with all derivatives uniformly on compact sets, at the left boundary $B_a\to B_K$, at the right boundary N3 carries; simple zeros remain stable.
+      luecken:
+      - The simplicity of the zeros of Kneser's $T^{(k)}$, $k\le N$, is only supported numerically (every even derivative up to 26 changes sign
+        exactly once).
+    pruefung:
+      f1_folgt_unmittelbar: N3 almost (Lemma 0 and Bell polynomials); N4 from continuity of the derivatives in the perturbation.
+      f2_benutzte_voraussetzungen: Lemma 0, Bell polynomials, simplicity of the zeros (numerical).
+      f3_spezialfall: Sign version of br.satz.endlich_viele_reichen_nicht; N3 generalizes gr.kor.konvex_nach_oben.
+      f4_uebertragbar: To every family of bendings that tends to Kneser in $C^N$.
+      f5_neue_frage: Which infinite family of signs suffices — and does it suffice only together with $x\to\infty$?
+    bewertung:
+      nutzen: Explains why local conditions need high orders and x → ∞.
+      richtigkeit: N3 complete, N4 with a numerical gap
+    quellen:
+    - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, N3, N4, B-N3; e2_stoerungen.py
+  en_theorie:
+    worum: |
+      Can a list of finitely many sign conditions select Kneser?
+    genau: |
+      No: small bendings have the same sign patterns as Kneser for $T',\dots,T^{(N)}$; at the boundaries the signs are the same for all tetrations.
+    warum: |
+      The derivatives depend continuously on the bending, and simple zeros move only slightly.
+    beispiel: |
+      Sine perturbation $10^{-4}$: first violation only at order 15; at $10^{-6}$ none at all in the measurement window.
+    einordnung: |
+      Sign counterpart to [[br.satz.endlich_viele_reichen_nicht]].
 - id: br.satz.gevrey_fourier
   quelle_hash: 776d63d4805c
   theorie_hash: eb357044fb25
@@ -752,6 +1034,48 @@
       depth.
     worum: |
       In computability too, tetration is the first function to break through a natural limit: It is computable with simple loops, but not “elementary”.
+- id: br.satz.lokal_genau_dann_halbebene
+  quelle_hash: e8cfe0822a3d
+  theorie_hash: 9ab82d72d64a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Reduction: a local real characterization of Kneser exists exactly when holomorphy on Re z > −2 already forces Kneser'
+    aussage: |
+      Let Q*: "every real tetration that is holomorphic on $\mathrm{Re}\,z>-2$ is Kneser". Then each of the conditions (b)–(e) characterizes Kneser **exactly when** Q* holds.
+      For C($n_0$), "Q* ⇒ characterizes" holds (the converse is open, and that Kneser satisfies C(0) is mike3's conjecture).
+      Q* is Paulsen–Cowgill without the limit condition at $i\infty$, in the half-plane version (stronger than kn.verm.tk_c2).
+    bereich: real-analytic tetrations to base $e$; conditions (b)–(e) from br.satz.taylorradius_halbebene and C($n_0$) from br.satz.ungerade_ableitungen_halbebene
+    einfach: 'The search for a simple real condition for Kneser is now reduced to a single question: Is it enough that the tetration is smooth
+      in the right half-plane? If yes, the condition exists; if no, it does not.'
+    beweis:
+      text: |
+        {T satisfies (b)} = Hol(H) by br.satz.taylorradius_halbebene, {T satisfies C($n_0$)} ⊂ Hol(H) by br.satz.ungerade_ableitungen_halbebene. If Q* holds, Hol(H) consists of Kneser only.
+        If there is a $T^*\ne$ Kneser in Hol(H), then $T^*$ satisfies (b), so the condition does not characterize.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the two theorems.
+      f2_benutzte_voraussetzungen: br.satz.taylorradius_halbebene, br.satz.ungerade_ableitungen_halbebene.
+      f3_spezialfall: No.
+      f4_uebertragbar: To every base above η.
+      f5_neue_frage: Q* itself (br.frage.halbebene_eindeutigkeit).
+    bewertung:
+      nutzen: 'Precise answer to the form of the Bohr–Mollerup question: local works exactly when Q*.'
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, D
+  en_theorie:
+    worum: |
+      Is there a local real characterization of Kneser?
+    genau: |
+      Yes exactly when Q* holds: every real tetration that is holomorphic on $\mathrm{Re}\,z>-2$ is Kneser.
+    warum: |
+      The condition from [[br.satz.taylorradius_halbebene]] describes exactly half-plane holomorphy; so it characterizes exactly when this class contains only Kneser.
+    beispiel: |
+      A Möbius bending is holomorphic on every bounded domain but violates the condition for large $x$ — one needs $x\to\infty$ as in Bohr–Mollerup.
+    einordnung: |
+      Reduces [[br.frage.bohr_mollerup]] to [[br.frage.halbebene_eindeutigkeit]]; uniqueness with a limit: [[kn.satz.paulsen_cowgill]].
 - id: br.satz.nicht_definierbar
   quelle_hash: ee306b2e785c
   theorie_hash: b061e02ee1f0
@@ -895,6 +1219,52 @@
     worum: |
       For every sufficiently smooth periodic function $u$ there is a “partner” $\tilde u$ such that $\tilde u-iu$ is the boundary value of a holomorphic function. This is the
       tool with which one constructs the base kernel without the engine.
+- id: br.satz.produkt_iteration_ketten
+  quelle_hash: 9ad8c66b326d
+  theorie_hash: e2507df17cb1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The iterates of x·eˣ count chains of pointed partitions; Möbius number (−1)^(n−1)·n^(n−2)
+    aussage: |
+      $$n!\,[x^n]\,(xe^x)^{\circ t}=\sum_j B'(n,j)\binom tj,$$
+      where $B'(n,j)$ is the number of strict chains $\hat0<\sigma_1<\dots<\sigma_j$ whose last member $\sigma_j$ is maximal (a single block with a point).
+      This is the triangle $2;\ 3,12;\ 4,84,144;\ 5,510,2760,2880;\ 6,3210,41940,117360,86400$ from br.beob.produkt_iteration_dreieck (diagonal $n!(n-1)!$,
+      row sums $2,15,232,6155,248916$). For each of the $n$ maxima $M$ we have $\mu(\hat0,M)=(-1)^{n-1}n^{n-2}$; the sum $(-n)^{n-1}=n!\,[x^n]\,W(x)$ is the value at $t=-1$.
+    bereich: Lattice of pointed partitions of an $n$-set (order of Chapoton–Vallette), $\hat0$ = finest partition
+    einfach: 'The numbers in the triangle of the repeated map x·eˣ count something concrete: ways of merging a set step by step into ever coarser
+      groups, each with one marked member, until only one group is left.'
+    beweis:
+      text: |
+        $xE$ (pointed set) $\circ F$ means: choose a block of $F$-structures and a point in it. So $(xE)^{\circ t}$ are the multichains
+        $\hat0\le\pi_1\le\dots\le\pi_t$ with $\pi_t$ having one block, the points being inherited upward (order of Chapoton–Vallette). The distinct members above $\hat0$
+        form a strict chain up to the maximum; their positions among the $t$ levels can be chosen in $\binom tj$ ways. At $t=-1$: $\sum_j(-1)^jB'(n,j)=\sum_M\mu(\hat0,M)$ (Hall)
+        $=n![x^n]W(x)=(-n)^{n-1}$; symmetry gives the Möbius number. Checked by counting for $n\le6$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, as soon as one reads the iteration as a composition of species of the pointed sets.
+      f2_benutzte_voraussetzungen: Exponential generating functions, Hall's theorem, Lagrange inversion for W.
+      f3_spezialfall: Counterpart to it.satz.zeta_polynom_partitionen (eˣ − 1 and the ordinary partition lattice).
+      f4_uebertragbar: To other species $F$ with $F=x+\dots$ (chains in suitable operad lattices).
+      f5_neue_frage: Is the Möbius formula already in Chapoton–Vallette (arXiv math/0410051, full text not checked)? It fits dim PreLie(n) = n^{n−1}.
+    bewertung:
+      nutzen: Explains the triangle from br.beob.produkt_iteration_dreieck combinatorially.
+      richtigkeit: complete; checked by counting for n ≤ 6
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, P1–P3 and B6; s4_punktiert.py
+    - {}
+  en_theorie:
+    worum: |
+      What does the integer triangle of the iterates of $xe^x$ count?
+    genau: |
+      $n![x^n](xe^x)^{\circ t}=\sum_jB'(n,j)\binom tj$, $B'(n,j)$ = chains of length $j$ of pointed partitions that end in the one-block maximum; $\mu(\hat0,M)=(-1)^{n-1}n^{n-2}$.
+    warum: |
+      $xe^x$ is the species "set with one point"; its $t$-fold composition gives multichains of pointed partitions. At $t=-1$, Hall's theorem gives the Möbius number, and the inverse function is Lambert W.
+    beispiel: |
+      $n=4$: $4\binom t1+84\binom t2+144\binom t3$ (diagonal $4!\cdot3!=144$).
+    einordnung: |
+      Explains [[br.beob.produkt_iteration_dreieck]]; counterpart for $e^x-1$: [[it.satz.zeta_polynom_partitionen]].
 - id: br.satz.produkt_parabolisch
   quelle_hash: 435a401ac402
   theorie_hash: 55e0fc399662
@@ -1154,6 +1524,100 @@
       through which the tower creeps slowly. The theory of **parabolic implosion** (Lavaurs, Douady, Shishikura) describes this
       passage precisely: There is a coordinate in which every step is again “$+1$”, and the number of steps through the gate is essentially
       $1/\alpha$, where $\alpha$ can be read off from the multiplier of the two fixed points.
+- id: br.satz.slog_nie_total_monoton
+  quelle_hash: 70722dd6c0a7
+  theorie_hash: 7429969c9a89
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: slog′ is not totally monotone on an interval for any tetration, and never log-concave (no Pólya frequency function)
+    aussage: |
+      (N1) $\mathrm{slog}_T'$ is completely monotone or absolutely monotone on no open interval; $T'$ is absolutely monotone nowhere; if $T'$ is completely monotone on $(a,b)$, then already on $(-2,b]$
+      (for Kneser at most $b\le-0.5218$).
+      (N2) $\log\mathrm{slog}_T'$ is convex at $+\infty$ and cannot be convex everywhere; so $\mathrm{slog}_T'$ is neither log-concave (not a PF₂ function, not a Pólya frequency function) nor log-convex.
+    bereich: every real-analytic tetration to base $e$ and its $\mathrm{slog}_T$ on $\mathbb R$
+    einfach: 'Two obvious ideas for a Gamma-like characterization fail for every tetration, not only for Kneser: the derivative of the superlogarithm
+      never has the particularly nice sign or curvature properties one would need.'
+    beweis:
+      text: |
+        N1: Bernstein turns $u\mapsto f(\beta'-u)$ into a power series with coefficients $\ge0$; by Pringsheim the singularity lies on the real axis, $\mathrm{slog}_T$ is analytic on all of $\mathbb R$, hence entire;
+        then $\mathrm{slog}_T(e^w)=\mathrm{slog}_T(w)+1$ on $\mathbb C$, and at $w=L$ we get $0=1$. For $T'$ analogously ($T$ would be entire, or the Pringsheim point is $-2$).
+        N2: $(\log\mathrm{slog}')''(w)=(1-G'(\ell)+G''(\ell))/w^2$, $\ell=\log w$, with $G',G''\to0$; a function that is convex everywhere with $\log\mathrm{slog}'\sim-\log w$ on the right and $\sim w$ on the left does not exist.
+    pruefung:
+      f1_folgt_unmittelbar: From Bernstein, Pringsheim and "slog is not entire".
+      f2_benutzte_voraussetzungen: Analyticity of $\mathrm{slog}_T$ on $\mathbb R$, fixed point $L$, asymptotics of $\mathrm{slog}$ at $\pm\infty$
+        (N2 derived by standard induction).
+      f3_spezialfall: No.
+      f4_uebertragbar: To every base $b>\eta$.
+      f5_neue_frage: Which weaker sign condition on the slog side remains possible?
+    bewertung:
+      nutzen: Rules out two obvious Bohr–Mollerup routes for all tetrations.
+      richtigkeit: 'complete (N2: asymptotics derived)'
+    quellen:
+    - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, N1, N2, B-N1, B-N2
+  en_theorie:
+    worum: |
+      Two obvious Gamma-like conditions on the slog side: total monotonicity and log-concavity of $\mathrm{slog}'$.
+    genau: |
+      Both are impossible for every tetration.
+    warum: |
+      Total monotonicity would make $\mathrm{slog}$ an entire function; then $\mathrm{slog}(e^w)=\mathrm{slog}(w)+1$ would also hold at the fixed point $L$, that is, $0=1$.
+      For log-convexity, the asymptotics at $+\infty$ and $-\infty$ do not fit together.
+    beispiel: |
+      Kneser: $T''<0$ only on $(-2,-0.5218)$.
+    einordnung: |
+      Negative for [[br.frage.bohr_mollerup]]; boundary behavior as in [[gr.kor.konvex_nach_oben]].
+- id: br.satz.taylorradius_halbebene
+  quelle_hash: e0b2291e6fec
+  theorie_hash: 5acd238c5251
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Local extremal principle: ρ_T(x) ≤ x + 2 for every tetration, equality everywhere exactly for holomorphy on Re z > −2 — Kneser is
+      maximal at every point'
+    aussage: |
+      For every such $T$ we have $\rho_T(x)\le x+2$, and $D_T(x):=x+2-\rho_T(x)\ge0$ is non-decreasing. The following are equivalent:
+      (a) $T$ is holomorphic on $H=\{\mathrm{Re}\,z>-2\}$; (b) at every point $x$ we have $(-1)^{k-1}k(x+2)^kT^{(k)}(x)/k!\to1$, in particular $(-1)^{k-1}T^{(k)}(x)>0$ for all large $k$;
+      (c) (b) on a sequence $x_j\to\infty$; (d) $\rho_T(x)=x+2$ for all $x$; (e) $\rho_T(x)-x\to2$ for $x\to\infty$.
+      Kneser is holomorphic on $\mathbb C\setminus(-\infty,-2]$, so it has $D\equiv0$. If $T$ has a singular point $z_0\in H$, then $T$ violates (b) at all $x$ with $|x-z_0|<x+2$, and $D_T(x)\ge\mathrm{Re}\,z_0+2-o(1)$.
+    bereich: real-analytic tetrations $T$ on $(-2,\infty)$, $T(x+1)=e^{T(x)}$, $T(0)=1$, $T'>0$; for $b>\eta$ verbatim with $\log_b$
+    einfach: At every point one can measure how far the Taylor series of a tetration reaches. It never reaches past the point −2. Kneser's tetration
+      attains this maximum everywhere; equivalently, its high derivatives alternate in sign like those of log(x+2).
+    beweis:
+      text: |
+        Lemma 0: $T(x)=\log(x+2)+B(x+2)$ with $B$ analytic near 0 (from $T(x+1)=\log T(x+2)$), likewise in the complex case if $T$ is holomorphic on $H$.
+        (a)⇒(b): $B$ is holomorphic on a neighborhood of the closed disk $\overline{D(x,x+2)}$, and the coefficients of $\log(z+2)$ dominate.
+        (c)⇒(a): Pringsheim — if the coefficients of $-T(x-u)$ are positive from $k_0$ on, there is a singularity at $u=R$ on the real axis; since $T$ is analytic on $(-2,\infty)$, it follows that $R=x+2$; the disks $D(x_j,x_j+2)$ exhaust $H$.
+        $\rho_T\le x+2$ because $T\to-\infty$ at $-2$; $\rho$ is 1-Lipschitz, hence $D_T$ is non-decreasing and (e)⇒(d). Singularity in $H$: monodromy on the simply connected $H$.
+    pruefung:
+      f1_folgt_unmittelbar: At its core from Pringsheim and the log structure at −2 (Lemma 0); the combination into an equivalence is new.
+      f2_benutzte_voraussetzungen: Real analyticity on $(-2,\infty)$, functional equation, $T\to-\infty$ at $-2$.
+      f3_spezialfall: Sharpens Levenstein's observation (high derivatives behave like log(x+2)) into a characterization of half-plane holomorphy.
+      f4_uebertragbar: To every base $b>\eta$.
+      f5_neue_frage: Does holomorphy on $H$ already force Kneser (br.frage.halbebene_eindeutigkeit)?
+    bewertung:
+      nutzen: First local, real quantity for which Kneser is extremal at every point — Bohr–Mollerup-like.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, A, B, E, Lemma 0, B-A, B-B; e1_kneser_ungerade.py
+    - stelle: 'Levenstein: high derivatives follow log(x+2)'
+  en_theorie:
+    worum: |
+      Bohr–Mollerup characterizes Γ by a condition at every point. We look for something similar for Kneser. The suitable local quantity is the
+      radius of convergence $\rho_T(x)$ of the Taylor series at $x$.
+    genau: |
+      $\rho_T(x)\le x+2$ always; $\rho_T(x)=x+2$ for all $x$ $\iff$ $T$ holomorphic on $\mathrm{Re}\,z>-2$ $\iff$ $(-1)^{k-1}k(x+2)^kT^{(k)}(x)/k!\to1$ at every point.
+    warum: |
+      Every tetration has a singularity like $\log(x+2)$ at $-2$, so no series reaches further. If $T$ is holomorphic in the half-plane, $\log(z+2)$ is the nearest singularity
+      and determines the high coefficients. Conversely, a fixed sign pattern forces the singularity onto the real axis by Pringsheim, hence to $-2$.
+    beispiel: |
+      Kneser: the normalized quotient is $1.0000$ at $k=99$ for $x\le0.15$; a sine bending with $\varepsilon=0.03$ has radius only $\approx0.8$ at $x=0.3$.
+    einordnung: |
+      Partly answers [[br.frage.bohr_mollerup]]; nonlocal counterpart [[br.satz.reelle_kennzeichnung]]; [[br.frage.halbebene_eindeutigkeit]] remains open.
 - id: br.satz.turm_mod_m
   quelle_hash: 9b054b1a3d38
   theorie_hash: fa949fbcc8b7
@@ -1202,6 +1666,50 @@
       3. Hence $a\uparrow\uparrow n\bmod m$ is also eventually constant.
     worum: |
       If you look only at the last digits of a tower like $3^{3^{3^{\cdot^{\cdot}}}}$, they stop changing beyond a certain height — even though the number itself becomes unimaginably large.
+- id: br.satz.ungerade_ableitungen_halbebene
+  quelle_hash: c8b84c0745d1
+  theorie_hash: 4d8ee68f3dbd
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Positive odd derivatives — from some order on — force holomorphy on Re z > −2
+    aussage: |
+      If $T^{(2n+1)}\ge0$ on $(-2,\infty)$ for all $n\ge n_0$ (some $n_0$), then $T$ is real-analytic and holomorphic on $H=\{\mathrm{Re}\,z>-2\}$.
+      If the condition holds only on $(X,\infty)$, holomorphy follows on $\mathrm{Re}\,z>X$. Thus mike3's conjecture (gr.verm.ungerade_ableitungen) is stronger than expected:
+      it implies half-plane holomorphy.
+    bereich: $C^\infty$ tetrations $T$ on $(-2,\infty)$ to base $e$ (analyticity is not assumed)
+    einfach: If from a certain order on all odd derivatives are never negative, then the tetration is automatically very smooth — it can be continued
+      into the whole right half-plane of the complex numbers.
+    beweis:
+      text: |
+        Lemma (Bernstein, absolutely convex functions; proved here directly): if $g\in C^\infty(a,\infty)$ with $g^{(2k)}\ge0$ for all $k$, then $g$ is analytic at $x$ with radius $\ge x-a$
+        (Taylor with integral remainder for $E(u)=\tfrac12(g(x+u)+g(x-u))$ gives $g^{(2k)}(x)\le M(2k)!/r^{2k}$; odd orders via convexity of $g^{(2k)}$).
+        With $g=T^{(2n_0+1)}$, $a=-2$: $g$ is holomorphic on all $D(x,x+2)$, hence on $H$; $T$ is obtained by integration.
+    pruefung:
+      f1_folgt_unmittelbar: From Bernstein's lemma on absolutely convex functions, applied to a high odd derivative.
+      f2_benutzte_voraussetzungen: Only $C^\infty$ and the sign; the functional equation only for the location of $-2$.
+      f3_spezialfall: Variant of Bernstein's theorem.
+      f4_uebertragbar: To every base $b>\eta$ and every function with a singularity at $-2$.
+      f5_neue_frage: Does every tetration holomorphic on $H$ also satisfy C(0)? Does C(0) hold for Kneser?
+    bewertung:
+      nutzen: 'Places mike3''s conjecture: it is a half-plane condition.'
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, C, B-C
+    - stelle: Conjecture (mike3)
+  en_theorie:
+    worum: |
+      mike3 conjectured: all odd derivatives of Kneser are positive. What follows from such a condition?
+    genau: |
+      $T^{(2n+1)}\ge0$ for all $n\ge n_0$ on $(-2,\infty)$ ⇒ $T$ holomorphic on $\mathrm{Re}\,z>-2$.
+    warum: |
+      By Bernstein, a function whose even derivatives are all $\ge0$ is analytic with radius up to the boundary of the interval. We apply this to a high odd derivative of $T$.
+    beispiel: |
+      Kneser satisfies the condition numerically up to order 99 ([[br.beob.kneser_ungerade_99]]).
+    einordnung: |
+      Places [[gr.verm.ungerade_ableitungen]]; together with [[br.satz.taylorradius_halbebene]] the basis for [[br.satz.lokal_genau_dann_halbebene]].
 - id: br.satz.vdd_miller
   quelle_hash: eceefa30009a
   theorie_hash: f806a8691722

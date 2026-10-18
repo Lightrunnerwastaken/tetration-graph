@@ -41,6 +41,83 @@
       need only integer heights and do not depend on the choice of the fractional tetration.
     worum: |
       The most important numbers for base $\eta$ — computed so that one can check and compare with them.
+- id: kl.beob.eta_taylor
+  quelle_hash: ac17ba059a16
+  theorie_hash: f436de3155ac
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Taylor series of T_b(1/2) about η: coefficients, radius η − 1, singularity at b = 1'
+    aussage: |-
+      The coefficients are the same from both sides and alternate in sign:
+      $a_0=1.2571530750541726\ldots$ ($=T_\eta(\frac12)$ to $10^{-30}$), $a_1=0.4385818001708944\ldots$, $a_2=-0.1843369537180530\ldots$, $a_3=0.1298981675017401\ldots$,
+      $a_4=-0.1247020111691168\ldots$, $a_5=0.1479656405163631\ldots$, $a_{10}=-1.37302101193\ldots$, $a_{15}=28.258895\ldots$
+      The radius of convergence is $\eta-1$, the nearest singularity lies at $b=1$, and $a_n\sim C(-1)^nn^{-\gamma}(\eta-1)^{-n}$ with $\gamma\approx2.4$
+      (expected $\frac52$ from $T_b(\frac12)\approx1+\varepsilon-\varepsilon^{3/2}$, $\varepsilon=b-1$). For $x=-\frac12$: $a_0\ldots a_3=0.62207798\ldots,\,-0.22217528\ldots,\,0.25915104\ldots,\,-0.36084873\ldots$
+    bereich: $T_b(\frac12)=\sum_n a_n(b-\eta)^n$; coefficients from the regular family below $\eta$
+    einfach: One can write T_b(1/2) about the base η as an infinite sum of powers. The numbers in front alternate in sign and grow slowly; the
+      sum works all the way down to base 1, where tetration really breaks down.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: a₀…a₁₂ from s = 0.02 and s = 0.03 agree to at least 13 digits; a₀ checked against sexpeta.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every height; the singularity at b = 1 is the same for all heights.
+      f5_neue_frage: Higher base derivatives as principal solutions of a hierarchy? Check value c₂ = 2a₂ = −0.36867390743610604049.
+    bewertung:
+      nutzen: Check values for any future theory of the dependence on the base.
+      recherche: Kouznetsov gives a preliminary Taylor table in b − η (other height).
+      richtigkeit: numerical, ≥ 13 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B4 and table a_n; e4_ableitungen_eta.py
+  en_theorie:
+    beispiel: $a_{15}=28.258895\ldots\approx C\,15^{-2.4}(\eta-1)^{-15}$.
+    einordnung: Check values for [[kl.satz.c1_noerlund]] ($a_1=c_1(\frac12)$) and [[kl.beob.kneser_fortsetzung_regulaer]].
+    genau: $a_0=T_\eta(\frac12)=1.25715\ldots$, $a_1=0.43858\ldots$, $a_2=-0.18434\ldots$; sign alternation, radius $\eta-1$, $a_n\sim C(-1)^nn^{-\gamma}(\eta-1)^{-n}$
+      with $\gamma\approx2.4$.
+    warum: The nearest singularity is $b=1$, where $T_b(\frac12)\approx1+\varepsilon-\varepsilon^{3/2}$ with $\varepsilon=b-1$; an $\varepsilon^{3/2}$
+      term produces coefficients like $n^{-5/2}$.
+    worum: The coefficients of the series of $T_b(\frac12)$ in powers of $b-\eta$.
+- id: kl.beob.kneser_fortsetzung_regulaer
+  quelle_hash: 49fce49c7dab
+  theorie_hash: 310870a67230
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Kneser above η is the continuation of the regular tetration through η (to 33 digits)
+    aussage: |-
+      If one expands $b\mapsto T^{\rm reg}_b(x)$ in a Taylor series about a base $b_0=\eta-s$ below $\eta$ and evaluates it beyond $\eta$ at $b=\eta+\delta$,
+      one hits Kneser's value $T^{\rm K}_{\eta+\delta}(x)$. For $x=\frac12$, $s=0.05$: deviation $5\cdot10^{-30}$ ($\delta=0.01$) and $3\cdot10^{-27}$ ($\delta=0.02$), respectively.
+      With the series $H$ about $\eta$ itself (from $s=0.03$, 20 terms), $T^{\rm K}-H=1\cdot10^{-33}$ for $\delta=10^{-3}$ and $10^{-2}$, and for $\delta=0.05,\,0.1,\,0.2$ it lies
+      below the remainder term; cross-check $x=-\frac12$: $1.8\cdot10^{-33}$. Kneser values agree at 40 and 60 digits of working precision.
+    bereich: $T_b(x)$ for real $x$ ($x=\pm\frac12$ computed); regular at the attracting fixed point for $b<\eta$, Kneser for $b>\eta$
+    einfach: 'Below η and above η the tetration is built in quite different ways. Nevertheless: if one takes the formula that the lower construction
+      has in the base and simply keeps computing it beyond η, exactly Kneser''s values come out — to 33 digits.'
+    pruefung:
+      f1_folgt_unmittelbar: No; it cannot be seen from the construction why Kneser's solution should continue the regular family.
+      f2_benutzte_voraussetzungen: Engine (fatou.gp fork) for Kneser at dps 40/60; own regular computation regulaer.py; Taylor coefficients from
+        a circle about η − s.
+      f3_spezialfall: Sharpens kl.beob.stetig_eta (there only the same value and the same first derivative).
+      f4_uebertragbar: To other heights x (two checked); presumably to every height x > −2.
+      f5_neue_frage: Is Kneser analytic in b about η without a cut, i.e. equal to H, or only up to a flat remainder below 10⁻³³? → kl.frage.eta_flacher_rest
+    bewertung:
+      nutzen: Connects the two constructions of tetration into one function of the base.
+      recherche: Kouznetsov (TORI wiki) and mike3 (forum 2011) regard η as a branch point; a continuation to 33 digits is not measured there.
+      richtigkeit: numerical, 27–33 digits, two heights
+    quellen:
+    - stelle: forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B3; e3_fortsetzung.py, e5_kneser_gegen_H.py
+  en_theorie:
+    beispiel: '$x=\frac12$, series about $\eta$ with 20 terms: $T^{\rm K}_{\eta+0.01}(\frac12)-H(\eta+0.01)\approx10^{-33}$.'
+    einordnung: Sharpens [[kl.beob.stetig_eta]]; partial answer to [[kl.frage.eta_analytisch]]; summary in [[kl.verm.eta_glatt_nicht_analytisch]].
+    genau: The Taylor series of $b\mapsto T^{\rm reg}_b(x)$ about a base just below $\eta$, evaluated beyond $\eta$, hits Kneser's values to up
+      to 33 digits.
+    warum: 'Measured, not proved. One interpretation: Kneser for $b>\eta$ is the Douady–Lavaurs coordinate of the parabolic implosion and depends
+      smoothly on $b$.'
+    worum: Below $\eta=e^{1/e}$ one builds the tetration at the attracting real fixed point (regular), above it according to Kneser at the complex
+      fixed points. Do the two constructions fit together as a function of the base?
 - id: kl.beob.q_binomial
   quelle_hash: 0619e2e83547
   theorie_hash: 4999a614a002
@@ -107,6 +184,79 @@
       Can one compute the fractional tetration from the integer values alone, $1,\ a,\ a^a,\ a^{a^a},\dots$? For bases below $\eta$, yes:
       V. Reshetnikov wrote down in 2017 a formula that mixes these values with **q-binomial coefficients**. It is an interpolation —
       like drawing a smooth curve through measured points —, only not in $z$ but in $q^z$. Computed, it gives exactly the regular tetration.
+- id: kl.beob.regulaer_flach_singulaer
+  quelle_hash: c35d59fdd018
+  theorie_hash: eaf46ebbc89a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The regular family has a tiny, extremely flat singularity at η
+    aussage: |-
+      About $\lambda_0=0.8$ the Taylor coefficients of $g$ split into a main part (radius $\approx0.8$, singularity $\lambda=0$, i.e. $b=1$) and a tiny part with
+      radius exactly $1-\lambda_0=0.200\pm0.02$ (orders $k=64\ldots248$, 150 digits) and amplitude $\sim10^{-36}$; about $\lambda_0=0.9$ it lies below $10^{-65}$.
+      So $g$ has a flat (essential) singularity on the unit circle at $\lambda=1$ (or at nearby parabolic points $e^{2\pi ip/q}$; the root test does not separate these).
+      In the base the coefficients about $\eta-s$ decay sub-geometrically ($\approx e^{-c\sqrt k}$); at fixed order $\ln|c_ks^k|$ grows roughly linearly in $-1/\sqrt s$ (slope 10–15).
+      By comparison, the boundary points $\lambda=e^{i\pi/2},e^{i\pi/4},e^{i\pi/8}$ are strong singularities (tail $\sim10^{-3}$); toward $\lambda=1$ the strength collapses ($\theta=\pi/64$: $\sim10^{-30}$).
+    bereich: $g(\lambda)=T^{\rm reg}(\frac12)$ as a function of the multiplier $\lambda$ ($b=\exp(\lambda e^{-\lambda})$), analytic in the punctured
+      unit disk
+    einfach: 'The lower construction is not quite ordinary at η: it has a blemish there, but so faint (size about 10⁻³⁰ to 10⁻⁵⁰) that one sees
+      it only in very high terms of the series.'
+    pruefung:
+      f1_folgt_unmittelbar: No; that g is analytic in the punctured unit disk follows from Shell–Thron, the location of the singularity from the
+        measured radius.
+      f2_benutzte_voraussetzungen: Noise floor 10⁻¹⁵⁰ (dps 150); Schröder series of 3rd order in regulaer.py; two circle radii each for the boundary
+        strength.
+      f3_spezialfall: 'Fits the parabolic implosion: the densely lying parabolic boundary points leave a trace that becomes flat toward λ = 1.'
+      f4_uebertragbar: To every height x and every family exp(λe^{−λ}z).
+      f5_neue_frage: Is |λ| = 1 a natural boundary of the regular family? Exact form exp(−A/√(η−b))?
+    bewertung:
+      nutzen: Shows where the non-analyticity at η sits — on the regular side.
+      richtigkeit: numerical; radius secured, strength constant rough
+    quellen:
+    - stelle: forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B5, B6, B9; e2b_schwanz.py, e7_schwanz_b.py, e6_randstaerke.py
+  en_theorie:
+    beispiel: Boundary strength at $\lambda=e^{i\pi/2}$ about $10^{-3}$, at $e^{i\pi/64}$ about $10^{-30}$.
+    einordnung: 'Basis of [[kl.verm.eta_glatt_nicht_analytisch]]; parabolic boundary points: [[fp.satz.parabolisch_rand]].'
+    genau: 'The series of the regular tetration about $\lambda_0=0.8$ has, besides the main part, a part of size $10^{-36}$ with radius exactly
+      $0.2=1-\lambda_0$: a flat singularity at $\lambda=1$.'
+    warum: In the punctured unit disk the regular tetration is analytic in $\lambda$ (Shell–Thron); a radius $0.2$ can therefore only come from
+      the circle point near 1. The parabolic boundary points $e^{2\pi ip/q}$ lie densely and become weaker and weaker toward $\lambda=1$.
+    worum: Where does the non-analyticity at $\eta$ sit? In the coordinate of the multiplier $\lambda$, $\eta$ is the boundary point $\lambda=1$
+      of the unit circle.
+- id: kl.beob.resonanz_abweichung
+  quelle_hash: 1701d3c3c136
+  theorie_hash: 851a9de2aea9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Also at the resonance bases b₂, b₃ the regular iterations deviate from each other — smoothly through the resonance
+    aussage: |-
+      $|\hat c_1|=1.4010369\cdot10^{-4}$ at $b_2$ and $3.6650371\cdot10^{-3}$ at $b_3$ (dps 60/N 48 against dps 90/N 64: 10 digits agree; control $\sqrt2$: $3.626087773\cdot10^{-25}$ as in the graph).
+      The size runs smoothly through the resonance; so the resonance does not make the two iterations equal.
+      Incidentally: $|\hat c_1|\,e^{2\pi^2/|\ln\lambda_a|}=0.091$ ($\sqrt2$), $0.085$ ($b_2$), $0.078$ ($b_3$) — support for kl.verm.streifenbreite across 20 orders of magnitude, with a slowly drifting constant.
+    bereich: Resonance bases $b_k$ from kl.satz.resonanzbasen; $\hat c_1$ the first Fourier coefficient of the periodic difference of the two
+      regular Abel functions (as in kl.beob.zwei_abel)
+    einfach: 'At the special bases the proof would have left a gap. But the computation shows: even there the two tetrations are clearly different.'
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: High-precision regular Abel functions at a and A, two precision levels.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every b_k (computational cost grows because b_k → 1).
+      f5_neue_frage: Does Karlin–McGregor (it.satz.karlin_mcgregor) cover the resonant case and thus give a proof?
+    bewertung:
+      nutzen: Closes the gap of kl.satz.resonanzbasen numerically.
+      richtigkeit: numerical, 10 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A3c; s3_resonanz_unter_eta.py, s3_ausgabe.txt
+  en_theorie:
+    einordnung: Complements [[kl.satz.resonanzbasen]]; supports [[kl.verm.streifenbreite]].
+    genau: 'No: first Fourier coefficient of the difference $1.40\cdot10^{-4}$ at $b_2$, $3.67\cdot10^{-3}$ at $b_3$, smooth through the resonance.'
+    warum: Resonance is only a necessary condition for equality; the computation shows that it is not sufficient here.
+    worum: Might the two regular iterations be equal at the resonance bases after all?
 - id: kl.beob.stetig_eta
   quelle_hash: ef66b3a8d64b
   theorie_hash: e74130f25a34
@@ -288,6 +438,32 @@
     worum: |
       Below and above $\eta$ the tetrations fit together numerically so well that even the slope agrees. Is the tetration, as a function of the base, therefore analytic at
       $\eta$ — or only very smooth, with a hidden branch point?
+- id: kl.frage.eta_flacher_rest
+  quelle_hash: c1e9e13da33d
+  theorie_hash: 3b3ffedbf317
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Is Kneser in the base about η exactly analytic — and how large is the flat remainder of the regular side?
+    aussage: |-
+      (1) Does $T^{\rm K}_b(x)=H(b)$ hold exactly, i.e. is Kneser's tetration analytic in $b$ on a neighborhood of $\eta$ (without a cut), or only up to a flat remainder below $10^{-33}$?
+      (2) What exact form does $E^-=T^{\rm reg}-H$ have: $\exp(-A/\sqrt{\eta-b})$ with which constant $A$, and how is it related to the passage time and the Écalle–Voronin invariants of $e^u-1$?
+    einfach: 'Two remaining questions: Is Kneser''s side really entirely free of disturbance? And what exactly does the tiny disturbance on the
+      lower side look like?'
+    naechste_frage: Compute monodromy on a circle about η (engine switches automatically between Kneser and regular); Kneser values closer to
+      η than 10⁻⁴ with higher precision.
+    quellen:
+    - stelle: forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, open questions 1–2
+    - {}
+  en_theorie:
+    einordnung: 'Follows from [[kl.verm.eta_glatt_nicht_analytisch]]; tool: [[br.satz.shishikura]].'
+    genau: (1) $T^{\rm K}=H$ exactly? (2) $E^-\approx\exp(-A/\sqrt{\eta-b})$ with which $A$?
+    warum: The measurement reaches $10^{-33}$; an even flatter remainder on the Kneser side is not ruled out. The constant $A$ should come from
+      the Écalle–Voronin invariants of $e^u-1$.
+    worum: 'Two remaining questions about the base $\eta$: Is Kneser''s side exactly analytic, and what form does the flat remainder $E^-$ of
+      the regular side have?'
 - id: kl.frage.gleiches_L_kneser
   quelle_hash: ef3d1b9219c2
   theorie_hash: aa2db415737a
@@ -768,6 +944,47 @@
     worum: |
       “The sum of the first one and a half tower levels” — that sounds meaningless, but acquires a precise meaning: Since the levels approach $a$,
       one may replace each level far out by $a$ and add exactly “half a level $a$”.
+- id: kl.satz.c1_noerlund
+  quelle_hash: 23ce5f26f2c5
+  theorie_hash: aceb6b3c1d9e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The first base derivative at η is a Nörlund principal solution
+    aussage: |-
+      $$c_1(x)=T_\eta'(x)\,G(x),\qquad G(x+1)-G(x)=\frac e\eta\,\frac{T_\eta(x)}{T_\eta'(x)},\qquad G(0)=0,$$
+      and $G$ is the Nörlund principal solution of this sum equation (asymptotic expansion for $x\to\infty$ without a periodic part). The formula hits the Taylor value:
+      $x=\frac12$: $0.438581800170784$ against $0.4385818001708944$ ($10^{-13}$, Euler–Maclaurin with $N=60$), $x=-\frac12$: $2.5\cdot10^{-13}$.
+    bereich: $T_\eta$ the tetration with base $\eta$ (Fatou coordinate), $c_1(x)=\partial_bT_b(x)|_{b=\eta}$
+    einfach: How strongly the tetration at base η changes when one shifts the base a little can be written as a kind of "sum to infinity" — similar
+      to how one turns a sequence into the sum of its terms.
+    beweis:
+      text: |-
+        Differentiating $T_b(x+1)=b^{T_b(x)}$ with respect to $b$ at $\eta$ gives $c(x+1)=T(x+1)[c(x)/e+T(x)/\eta]$; with $T'(x+1)=T(x+1)T'(x)/e$ and $c=T'G$ the sum equation follows,
+        $T_b(0)=1$ gives $G(0)=0$. Also $G=-\partial_b\,\mathrm{slog}_b\circ T_\eta$. The solutions differ by 1-periodic functions; $r(x)\sim ex^2/(2\eta)$ grows polynomially.
+      luecken:
+      - That precisely the Nörlund principal solution (without a periodic part) is the base derivative; plausible, because the perturbed Fatou
+        coordinate has an asymptotic expansion in 1/(y − e) and logarithms.
+    pruefung:
+      f1_folgt_unmittelbar: The sum equation yes (from gr.satz.basis_gleichung at b = η); the choice of solution no.
+      f2_benutzte_voraussetzungen: Differentiability in b at η (kl.beob.stetig_eta); Euler–Maclaurin up to r‴.
+      f3_spezialfall: 'Yes: gr.satz.basis_gleichung with ln b = 1/e.'
+      f4_uebertragbar: To higher derivatives c_k (hierarchy of sum equations) and to η bases of higher ranks.
+      f5_neue_frage: Is c₂ likewise a principal solution of an equation with c₁ as source? Check value c₂(1/2) = −0.36867390743610604049.
+    bewertung:
+      nutzen: First closed formula for the dependence on the base exactly at the threshold.
+      richtigkeit: Sketch; formula confirmed to 13 digits, convergence in N visible
+    quellen:
+    - stelle: forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B8; e8_c1_noerlund.py
+  en_theorie:
+    beispiel: $c_1(\frac12)=0.438581800170784$ from the formula against $0.4385818001708944$ from the Taylor series.
+    einordnung: 'Special case of [[gr.satz.basis_gleichung]]; check values from [[kl.beob.eta_taylor]]; coordinate at $\eta$: [[kl.satz.eta_koordinate]].'
+    genau: $c_1=T_\eta'\,G$ with $G(x+1)-G(x)=\frac e\eta T_\eta/T_\eta'$, $G(0)=0$, $G$ the Nörlund principal solution.
+    warum: The sum equation is [[gr.satz.basis_gleichung]] at $b=\eta$. Only open is why precisely the principal solution (without a periodic
+      addition) is the right one.
+    worum: How does the tetration with base $\eta$ change when the base is shifted a little?
 - id: kl.satz.carlson
   quelle_hash: 4a98b7f791ad
   theorie_hash: d1e37cb5c27f
@@ -1713,6 +1930,47 @@
       Below $\eta$ every tower runs into an attracting fixed point $a$. There each step is almost a scaling by $\lambda$, and in the
       Koenigs coordinate even exactly. So one makes the half step there as a scaling by $\sqrt\lambda$ and computes back. This
       is the **regular tetration** — the natural solution below $\eta$.
+- id: kl.satz.resonanzbasen
+  quelle_hash: 7eadf70ad504
+  theorie_hash: 8182750db3a6
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Below η the regular iterations at the two fixed points are different — except at most at the resonance bases b_k (b₂ = 1.04480…)
+    aussage: |-
+      Always $\lambda_a\lambda_A=t(t+1)\ln^2(1+1/t)<1$. By it.satz.erzeuger_resonanz, a common holomorphic generator at $a$ and $A$ is therefore possible only if
+      $\lambda_a\lambda_A^k=1$ with $k\ge2$, and for every $k\ge2$ there is such a **resonance base** $b_k$ (numerically exactly one):
+      $$b_2=1.0448043479287792775\ldots,\quad b_3=1.0015621748618726604\ldots,\quad b_4=1.000038279179596386\ldots$$
+      (values numerical, 20 digits). The resonance bases form a discrete set with accumulation point 1. For all other $b\in(1,\eta)$ it is thus **proved** that the two regular iterations
+      are different (so far only measured, kl.beob.zwei_abel); at the $b_k$ the proof does not apply (see kl.beob.resonanz_abweichung).
+    bereich: $1<b<\eta$, fixed points $a<A$ of $b^x$ with multipliers $\lambda_a=\ln a<1<\lambda_A=\ln A$; parametrization $a=(1+1/t)^t$, $A=(1+1/t)^{t+1}$
+    einfach: For bases between 1 and e^(1/e) there are two real fixed points and two ordinary tetrations. That they are different was only measured.
+      Now it is proved — except for a sequence of special bases that accumulate ever more densely near 1.
+    beweis:
+      text: |-
+        $\lambda_a\lambda_A<1$ follows from the inequality $\ln(1+x)<x/\sqrt{1+x}$ for $x=1/t>0$. This rules out $m=\pm1$, and $\lambda_a=\lambda_A^m$ requires $m=-k$, $k\ge2$.
+        Along $t\in(0,\infty)$, $\ln\lambda_a/\ln\lambda_A$ runs continuously from $-\infty$ ($t\to0$, i.e. $b\to1$) to $-1$ ($b\to\eta$), so $\lambda_a\lambda_A^k=1$ has a solution for every $k\ge2$
+        (intermediate value theorem); the ratio is real-analytic and not constant, so the solutions are discrete points. Uniqueness for each $k$ and the values only numerical (findroot).
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from it.satz.erzeuger_resonanz and an elementary inequality.
+      f2_benutzte_voraussetzungen: Two-fixed-points theorem, ln(1+x) < x/√(1+x), monotonicity of the ratio of the log multipliers.
+      f3_spezialfall: 'Yes: application of it.satz.erzeuger_resonanz to b^x below η.'
+      f4_uebertragbar: To every real family with two real fixed points.
+      f5_neue_frage: Are the iterations also different at the b_k (numerically yes), and is there a proof for that?
+    bewertung:
+      nutzen: Turns the measured difference of the two regular tetrations into a theorem almost everywhere.
+      richtigkeit: proved; values of the b_k numerical to 20 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A3b and consequences of A3; s3_resonanz_unter_eta.py
+  en_theorie:
+    beispiel: '$\sqrt2$: $\ln2\cdot\ln4=0.961<1$, no resonance; the difference of the two iterations is $3.6\cdot10^{-25}$ — tiny, but not zero.'
+    einordnung: 'Follows from [[it.satz.erzeuger_resonanz]]; proves [[kl.beob.zwei_abel]] almost everywhere; gap numerically: [[kl.beob.resonanz_abweichung]].'
+    genau: Yes, except at most at resonance bases $b_k$ with $\ln a\cdot(\ln A)^k=1$, $k\ge2$; $b_2=1.04480\ldots$, $b_3=1.00156\ldots$.
+    warum: Equal iterations would mean a common smooth generator at $a$ and $A$; that requires resonance. $m=\pm1$ is ruled out because always
+      $\ln a\cdot\ln A<1$.
+    worum: For $1<b<\eta$, $b^x$ has two real fixed points $a<A$ and thus two regular tetrations. Are they different?
 - id: kl.satz.vier_sqrt2
   quelle_hash: de26bd199ae3
   theorie_hash: bb5c4f7033f9
@@ -1823,6 +2081,45 @@
     worum: |
       One can also pose the base change the other way around: not “which height does this value have?” but “which value belongs to the same height?”. Below $\eta$ this
       translation of values is simply a power in Koenigs coordinates.
+- id: kl.verm.eta_glatt_nicht_analytisch
+  quelle_hash: 3546f7dc1b38
+  theorie_hash: abbba3f6a8a2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: T_b(x) is infinitely differentiable in the base at η, but not analytic — the defect sits on the regular side
+    aussage: |-
+      There is a series $H(b)$ convergent in a neighborhood of $\eta$ with
+      $$T^{\rm K}_b(x)=H(b)\ (b>\eta),\qquad T^{\rm reg}_b(x)=H(b)+E^-(b)\ (b<\eta),$$
+      where $E^-$ vanishes with all derivatives at $\eta$ and is singular there. In particular $b\mapsto T_b(x)$ is $C^\infty$ at $\eta$, but not analytic.
+      Candidate for the size: $E^-\approx\exp(-2\pi N)$ with the passage time $N=\pi\sqrt{2\eta/(e|b-\eta|)}$ (only roughly confirmed).
+    bereich: $b\mapsto T_b(x)$, regular for $b<\eta$, Kneser for $b>\eta$, fixed $x>-2$
+    einfach: At η the tetration depends smoothly on the base, but not "perfectly smoothly" (analytically). Surprisingly, the disturbance sits
+      in the lower, regular construction, not in Kneser's.
+    gegenbeispielsuche: 'We looked for a defect on the Kneser side: $T^{\rm K}-H\le1.8\cdot10^{-33}$ at $\delta=10^{-3},10^{-2}$ and below the
+      remainder term at $\delta=0.05,0.1,0.2$ (two heights); found on the regular side ($10^{-30}$ to $10^{-65}$).'
+    pruefung:
+      f1_folgt_unmittelbar: No; summary of three measurements.
+      f2_benutzte_voraussetzungen: kl.beob.kneser_fortsetzung_regulaer, kl.beob.eta_taylor, kl.beob.regulaer_flach_singulaer.
+      f3_spezialfall: 'Interpretation via parabolic implosion: Kneser for b > η as the Douady–Lavaurs torus coordinate.'
+      f4_uebertragbar: To η transitions of higher ranks (pentation at η₅).
+      f5_neue_frage: Is T^K = H exact? Constant A in E⁻ ≈ exp(−A/√(η−b)) and relation to the Écalle–Voronin invariants of eᵘ − 1.
+    bewertung:
+      nutzen: 'Answers kl.frage.eta_analytisch numerically: smooth, not analytic.'
+      richtigkeit: Conjecture, well supported numerically
+    quellen:
+    - stelle: forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B7 and section Deutung
+    - {}
+    - {}
+  en_theorie:
+    einordnung: 'Answers [[kl.frage.eta_analytisch]]; open remainders: [[kl.frage.eta_flacher_rest]]; bottleneck: [[br.frage.implosion]].'
+    genau: $T^{\rm K}=H$ above $\eta$, $T^{\rm reg}=H+E^-$ below $\eta$, with a convergent series $H$ and an infinitely flat, singular $E^-$ at
+      $\eta$. So $C^\infty$, but not analytic.
+    warum: Supported by the continuation to 33 digits, the common series and the measured flat part. A candidate for the size is $\exp(-2\pi N)$
+      with the passage time $N$ through the bottleneck.
+    worum: Is the tetration analytic in the base at $\eta$? This conjecture summarizes the measurements.
 - id: kl.verm.faktor
   quelle_hash: 26c3f5288fa6
   theorie_hash: 22cdcfab5ab5

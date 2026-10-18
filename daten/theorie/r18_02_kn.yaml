@@ -1,0 +1,91 @@
+# Theorie-Blöcke: Knesers θ-Welle bei höheren Rängen (Runde 18.10.2026, Bericht 02). Bezeichnungen σ, h, θ: kn.def.theta_welle.
+
+kn.satz.theta6_singularitaet:
+  worum: |
+    Wo und wie ist die Welle der Kneser-Hexation singulär? (θ, $h$: wie in [[kn.def.theta_welle]], eine Stufe höher.)
+  genau: |
+    Genau bei $x^*+\mathbb Z$ mit $\mathrm{hex}(x^*)=p$ (reeller Fixpunkt von sexp), lokal $\theta_6\approx\theta^*+K(z-x^*)^\alpha$, $\alpha=\ln b/\ln\mathrm{sexp}'(p)=0.4218$.
+  warum: |
+    Die reguläre Pentation lässt den Wert $p$ aus (sie läuft nur für $\mathrm{Re}\,z\to-\infty$ dorthin); trifft die Hexation $p$, muss die Welle ausgleichen.
+    Weil slog bei $-\infty$ einen endlichen Grenzwert hat, bleibt die Welle endlich und bekommt nur einen Wurzelknick.
+  beispiel: |
+    Basis 2: $x^*=-2.765022$, $\theta^*=5.1772+1.2314i$, $K=0.2747+0.4215i$.
+  bilder: []
+  einordnung: |
+    Rang-4-Gegenstück: [[kn.satz.theta_singularitaet]]; die Ecke war schon in [[kn.beob.hexation_verzweigt]] gesehen; allgemein: [[kn.verm.theta_gerade_raenge]].
+
+kn.satz.theta6_koeffizienten:
+  worum: |
+    Wie schnell fallen die Fourier-Koeffizienten der Hexations-Welle?
+  genau: |
+    $a_n\approx C_6e^{-2\pi inx^*}n^{-1-\alpha}$, also wie die Potenz $n^{-1.4218}$, mit $|C_6|=0.0634$.
+  warum: |
+    Ein Wurzelknick $(1-Q)^\alpha$ gibt nach dem Übertragungssatz von Flajolet–Odlyzko Koeffizienten $\sim n^{-1-\alpha}/\Gamma(-\alpha)$.
+  beispiel: |
+    $|a_{160}|=4.736\cdot10^{-5}$; Vorhersage trifft auf $1.6\,\%$.
+  bilder: []
+  einordnung: |
+    Folgt aus [[kn.satz.theta6_singularitaet]]; Rang 4: [[kn.satz.theta_koeffizienten]] (Exponent genau 1).
+
+kn.verm.theta_gerade_raenge:
+  worum: |
+    Ein gemeinsames Gesetz für die Wellen aller geraden (Kneser-artigen) Ränge.
+  genau: |
+    Singulär bei $H_r(x_r^*)=p_{r-2}$, Exponent $\alpha_r=\ln\lambda_{r-4}/\ln\lambda_{r-2}$; Tetration: $\alpha_4=0$.
+  warum: |
+    Zwei Stufen tiefer hat $H_{r-2}$ eine logarithmische Singularität zur Basis $\lambda_{r-4}$; das bestimmt den Knick. Bei der Tetration bricht diese Verschachtelung nie ab.
+  beispiel: |
+    Rang 8: $x_8^*=-4.71388$, vorhergesagt $\alpha_8=0.7301$, gemessen lokaler Exponent $1.713$ (Ziel $1.730$).
+  bilder: []
+  einordnung: |
+    Enthält [[kn.satz.theta_singularitaet]] und [[kn.satz.theta6_singularitaet]].
+
+kn.beob.theta5_wachsende_koeffizienten:
+  worum: |
+    Gibt es für die Kneser-artige Pentation eine θ-Welle auf der reellen Achse?
+  genau: |
+    Nein: am anziehenden Fixpunkt $L_4$ wachsen die Koeffizienten wie $e^{2\pi\cdot0.27n}$; die Welle lebt nur oberhalb $\mathrm{Im}\,z\approx0.27$.
+  warum: |
+    Die Koenigs-Funktion gibt es nur auf dem Becken von $L_4$; reelle Punkte liegen nie darin ([[kn.satz.kein_kneser_anziehend]]).
+  beispiel: |
+    $|a_{10}|=6.5\cdot10^5$.
+  bilder: []
+  einordnung: |
+    Grenze vermutet natürlich: [[kn.verm.theta5_natuerliche_grenze]]; Löser: [[kn.beob.einheitliche_raenge]].
+
+kn.verm.theta5_natuerliche_grenze:
+  worum: |
+    Endet die Rang-5-Welle an einer Grenze, über die man nicht hinaus kann?
+  genau: |
+    Vermutet: der Rand des Beckens von $L_4$ (zurückgeholt in die $z$-Ebene) ist eine natürliche Grenze von $\theta_5$.
+  warum: |
+    Eine Fortsetzung über den Rand würde den Randpunkt ins Becken ziehen; offen ist, ob die Umkehrung von $\sigma$ dafür eindeutig fortsetzbar ist.
+  bilder: []
+  einordnung: |
+    Beobachtung dazu: [[kn.beob.theta5_wachsende_koeffizienten]].
+
+kn.beob.pentationswelle_singularitaet:
+  worum: |
+    Warum unterscheiden sich reguläre und Kneser-artige Pentation nur um $10^{-6}$?
+  genau: |
+    Ihre Welle hat Koeffizienten $\sim e^{-2\pi\cdot1.6902n}/n$; die Rate kommt von der Stelle $z_{L3}$ mit $K_5(z_{L3})=L_3$, hoch über der Achse.
+  warum: |
+    Dort hat slog einen logarithmischen Verzweigungspunkt; je höher er liegt, desto kleiner die Welle.
+  beispiel: |
+    $z_{L3}=-0.61815+1.69019i$, $|c_1|=2.8\cdot10^{-6}$.
+  bilder: []
+  einordnung: |
+    Erklärt die Amplitude aus [[kn.beob.einheitliche_raenge]]; Mechanismus wie [[kn.satz.theta_singularitaet]].
+
+kn.beob.theta_basis_quasiuniversal:
+  worum: |
+    Hängt Knesers Welle von der Basis ab?
+  genau: |
+    Für kleine $n$ kaum ($|a_1|$ schwankt von $b=1.45$ bis $1000$ nur um 5 %), für astronomische $n$ deutlich (Verhältnis zwischen 0.5 und 3.3).
+  warum: |
+    Nach [[kn.satz.theta_koeffizienten]] geht die Basis erst tief in der Verschachtelung ein, über $\mathrm{slog}_b(\ln\ln n)$. Warum die ersten Koeffizienten so ähnlich sind, ist offen.
+  beispiel: |
+    $|a_1(2)|=0.090060$, $|a_1(e)|=0.090647$.
+  bilder: []
+  einordnung: |
+    Koeffizienten: [[kn.beob.theta_fourier_algebraisch]].

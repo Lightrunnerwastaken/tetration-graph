@@ -1,0 +1,110 @@
+# Theorie-Blöcke zur Runde 18.10.2026, Bericht 04 (Arithmetik der Türme).
+
+ar.satz.padisch_bewertung:
+  worum: |
+    Wie viele p-adische Endziffern von $a\uparrow\uparrow H$ stehen schon fest?
+  genau: |
+    $v_p(a\uparrow\uparrow H-\alpha_p(a))=V_p(a)(H-t_p(a))$ für $H\ge t_p(a)$, mit $V_p(a)=v_p(a^{p-1}-1)$ und der Anlaufhöhe $t_p(a)$.
+  warum: |
+    Der Abstand zweier Nachbartürme ist $a^{x}(a^{D}-1)$; nach dem LTE-Lemma steigt seine Bewertung um genau $V$, sobald $D$ durch $\mathrm{ord}_p(a)$ teilbar ist — und das gilt ab der Anlaufhöhe immer.
+  beispiel: |
+    $a=3$, $p=5$: $\mathrm{ord}_53=4$, $V=v_5(80)=1$, $t=1$; also hat $3\uparrow\uparrow H$ genau $H-1$ fertige 5-adische Ziffern.
+  bilder: []
+  einordnung: |
+    Verfeinert [[br.satz.ripa]]; Folgerung für höhere Ränge: [[ar.kor.padisch_hoehere_raenge]].
+
+ar.kor.padisch_hoehere_raenge:
+  worum: |
+    Was sagt die exakte Bewertung über Pentation und höher?
+  genau: |
+    Alle Ränge $r\ge4$ haben denselben Grenzwert $\alpha_p(a)$; $D(3\uparrow\uparrow\uparrow3)=7\,625\,597\,484\,986$.
+  warum: |
+    Jede höhere Hyperoperation ist ein Turm $a\uparrow\uparrow M$ mit riesigem $M$; man setzt $H=M$ in [[ar.satz.padisch_bewertung]] ein.
+  beispiel: |
+    $3\uparrow\uparrow\uparrow3=3\uparrow\uparrow7625597484987$: 5-adisch $M-1$, 2-adisch $2M+1$ fertige Ziffern, dezimal das Minimum $M-1$.
+  bilder: []
+  einordnung: |
+    Folgt aus [[ar.satz.padisch_bewertung]]; Ziffern danach: [[ar.satz.pentation_block_konstant]].
+
+ar.satz.padisch_lambert:
+  worum: |
+    Welchen Wert hat der p-adische unendliche Turm?
+  genau: |
+    $\alpha_p(a)=u\sum_{n\ge0}\frac{(n+1)^{n-1}}{n!}(u\log_pa)^n$ mit einer Einheitswurzel $u$.
+  warum: |
+    Ab einer Höhe ist der Turm ein Orbit der Kontraktion $g(x)=u\,e^{x\log_pa}$; ihr Fixpunkt löst $x=ue^{Lx}$, und das löst die Lambert-Reihe $Y=e^{zY}$.
+  beispiel: |
+    Reell ist dieselbe Reihe $h(a)=-W(-\ln a)/\ln a$ der Wert von $a^{a^{a^{\cdots}}}$ für $a\le\eta$.
+  bilder: []
+  einordnung: |
+    Verfeinert [[ar.satz.padische_tuerme]]; reelles Gegenstück [[fp.satz.lambert]]; Folgerung [[ar.satz.padisch_isometrie]].
+
+ar.satz.padisch_isometrie:
+  worum: |
+    Wie hängt der p-adische Turmgrenzwert von der Basis ab?
+  genau: |
+    Auf Klassen gleichen Rests ist $v_p(\alpha(a')-\alpha(a))=v_p(a'-a)$ — eine analytische Isometrie.
+  warum: |
+    In der Lambert-Reihe sind alle Glieder ab dem zweiten p-adisch klein; der lineare Teil bestimmt den Abstand allein.
+  bilder: []
+  einordnung: |
+    Folgt aus [[ar.satz.padisch_lambert]].
+
+ar.satz.padisch_koenigs:
+  worum: |
+    Was passiert mit den Ziffern direkt nach den fertigen?
+  genau: |
+    $\lambda=\log_p\alpha$ hat Bewertung $V$; $(a\uparrow\uparrow n-\alpha)/\lambda^n\to\kappa_p(a)\ne0$; der erste unfertige Block ist $\mathrm{unit}(\kappa)\,u^H$.
+  warum: |
+    Nahe dem anziehenden Fixpunkt ist die Iteration nach Koenigs eine reine Streckung um $\lambda$ — das gilt p-adisch genauso wie komplex.
+  beispiel: |
+    $\kappa_5(2)$ hat Bewertung $-2$ und endet mod $5^{12}$ auf 207392627.
+  bilder: []
+  einordnung: |
+    p-adisches Gegenstück zu [[it.satz.koenigs]]; Pentation: [[ar.satz.pentation_block_konstant]].
+
+ar.satz.pentation_block_konstant:
+  worum: |
+    Laufen die unfertigen Ziffern auch bei der Pentation geometrisch?
+  genau: |
+    Nein: der Block von $a\uparrow\uparrow\uparrow n$ ist schliesslich konstant $\mathrm{unit}(\kappa)u^{\hat\alpha(a)}$.
+  warum: |
+    Die Höhe $M_n=a\uparrow\uparrow\uparrow(n-1)$ ist selbst ein Turm, ihre Reste werden konstant; damit auch $u^{M_n}$.
+  bilder: []
+  einordnung: |
+    Folgt aus [[ar.satz.padisch_koenigs]]; verwandt [[ar.kor.padisch_hoehere_raenge]].
+
+ar.satz.keine_padische_interpolation:
+  worum: |
+    Gibt es eine p-adische Tetration $a\uparrow\uparrow s$ für $s\in\mathbb Z_p$?
+  genau: |
+    Nein, für keinen Rang $\ge4$ und auf keiner Progression; Ränge 1–3 interpolieren.
+  warum: |
+    $n_0+dp^k$ liegt p-adisch nahe $n_0$, ist reell aber riesig; der Turm dort ist p-adisch fast $\alpha$. Eine stetige Fortsetzung hätte bei $n_0$ und $n_0+d$ denselben Wert $\alpha$ — Widerspruch.
+  bilder: []
+  einordnung: |
+    Beantwortet die Frage aus [[ar.satz.padische_tuerme]] und [[br.satz.ripa]] (f5) negativ.
+
+ar.satz.ef_periode:
+  worum: |
+    Wie wiederholen sich die Reste der exponentiellen Fakultät $EF(n)=n^{EF(n-1)}$?
+  genau: |
+    Kleinste Periode $\tilde\Lambda(m)=\mathrm{kgV}_j\widetilde{\lambda^j(m)}$, Zweieranteile auf 2 gekappt; z. B. $P(100)=50$.
+  warum: |
+    Modulo $p^k$ hängt $EF(n)$ von $n\bmod p^k$ und vom Exponenten modulo $\lambda(p^k)$ ab — daher die Kette. Modulo $2^k$ ist $EF(n)$ für grosse $n$ nur noch $[n\text{ ungerade}]$, daher die Kappung.
+  beispiel: |
+    $P(5)=10$: $EF(n)\bmod5$ wiederholt sich ab $n\le6$ mit Periode 10.
+  bilder: []
+  einordnung: |
+    Gegenstück zu [[ar.satz.selbstpotenz_kongruenz]]; profinite Fortsetzung [[ar.konstr.ef_profinit]].
+
+ar.konstr.ef_profinit:
+  worum: |
+    Kann man $EF$ auf profinite Zahlen fortsetzen — und was ist dann „$EF(0)$“?
+  genau: |
+    $\hat E:\hat{\mathbb Z}\to\hat{\mathbb Z}$ stetig, $\hat E(0)=0$, $\hat E(\pm1)=1$.
+  warum: |
+    Die Perioden $\tilde\Lambda(m)$ sind verträglich, also definieren die Reste für $n\equiv x$ einen Wert in jedem $\mathbb Z/m$.
+  bilder: []
+  einordnung: |
+    Arithmetische Antwort neben der analytischen Frage [[ar.frage.ef_fortsetzung]] und [[ar.satz.ef_null_ableitung]].

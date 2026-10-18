@@ -1,0 +1,68 @@
+gebiet: kl
+# Runde 18.10.2026, Bericht 10: Resonanzbasen unter η — wann ein Erzeuger an beiden reellen Fixpunkten glatt sein könnte.
+# Rechnungen: forschung/runde_2026_10_18/10_neues_gebiet/ (s3_resonanz_unter_eta.py).
+aussagen:
+
+- id: kl.satz.resonanzbasen
+  titel: 'Unter η sind die regulären Iterationen an den beiden Fixpunkten verschieden — ausser höchstens an den Resonanzbasen b_k (b₂ = 1.04480…)'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [regulaer_T, multiplikator, eta, julia_funktion]
+  bereich: '$1<b<\eta$, Fixpunkte $a<A$ von $b^x$ mit Multiplikatoren $\lambda_a=\ln a<1<\lambda_A=\ln A$; Parametrisierung $a=(1+1/t)^t$, $A=(1+1/t)^{t+1}$'
+  aussage: |
+    Es gilt immer $\lambda_a\lambda_A=t(t+1)\ln^2(1+1/t)<1$. Nach it.satz.erzeuger_resonanz ist ein gemeinsamer holomorpher Erzeuger an $a$ und $A$ also nur bei
+    $\lambda_a\lambda_A^k=1$ mit $k\ge2$ möglich, und für jedes $k\ge2$ gibt es eine solche **Resonanzbasis** $b_k$ (numerisch genau eine):
+    $$b_2=1.0448043479287792775\ldots,\quad b_3=1.0015621748618726604\ldots,\quad b_4=1.000038279179596386\ldots$$
+    (Werte numerisch, 20 Stellen). Die Resonanzbasen bilden eine diskrete Menge mit Häufungspunkt 1. Für alle anderen $b\in(1,\eta)$ ist damit **bewiesen**, dass die beiden regulären Iterationen
+    verschieden sind (bisher nur gemessen, kl.beob.zwei_abel); an den $b_k$ greift der Beweis nicht (dazu kl.beob.resonanz_abweichung).
+  einfach: >-
+    Für Basen zwischen 1 und e^(1/e) gibt es zwei reelle Fixpunkte und zwei gewöhnliche Tetrationen. Dass sie verschieden sind, war nur gemessen.
+    Jetzt ist es bewiesen — bis auf eine Folge besonderer Basen, die sich immer dichter bei 1 sammeln.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\lambda_a\lambda_A<1$ folgt aus der Ungleichung $\ln(1+x)<x/\sqrt{1+x}$ für $x=1/t>0$. Damit fallen $m=\pm1$ weg, und $\lambda_a=\lambda_A^m$ verlangt $m=-k$, $k\ge2$.
+      Längs $t\in(0,\infty)$ läuft $\ln\lambda_a/\ln\lambda_A$ stetig von $-\infty$ ($t\to0$, also $b\to1$) bis $-1$ ($b\to\eta$), also hat $\lambda_a\lambda_A^k=1$ für jedes $k\ge2$ eine Lösung
+      (Zwischenwertsatz); das Verhältnis ist reell-analytisch und nicht konstant, also sind die Lösungen diskrete Punkte. Eindeutigkeit je $k$ und die Werte nur numerisch (findroot).
+  stuetzt_sich_auf: [it.satz.erzeuger_resonanz]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A3b und Folgerungen zu A3; s3_resonanz_unter_eta.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus it.satz.erzeuger_resonanz und einer elementaren Ungleichung.'
+    f2_benutzte_voraussetzungen: 'Zwei-Fixpunkte-Satz, ln(1+x) < x/√(1+x), Monotonie des Verhältnisses der Log-Multiplikatoren.'
+    f3_spezialfall: 'Ja: Anwendung von it.satz.erzeuger_resonanz auf b^x unter η.'
+    f4_uebertragbar: 'Auf jede reelle Familie mit zwei reellen Fixpunkten.'
+    f5_neue_frage: 'Sind die Iterationen auch an den b_k verschieden (numerisch ja), und gibt es dafür einen Beweis?'
+  bewertung: {richtigkeit: 'bewiesen; Werte der b_k numerisch auf 20 Stellen', neuheit: neu_ungeprueft, nutzen: 'Macht die gemessene Verschiedenheit der beiden regulären Tetrationen fast überall zu einem Satz.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: kl.beob.zwei_abel}
+    - {typ: verwandt, ziel: kl.satz.regulaer}
+    - {typ: verwandt, ziel: it.satz.karlin_mcgregor}
+
+- id: kl.beob.resonanz_abweichung
+  titel: 'Auch an den Resonanzbasen b₂, b₃ weichen die regulären Iterationen voneinander ab — glatt durch die Resonanz hindurch'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [regulaer_T, periodische_stoerung, fourier_moden]
+  bereich: 'Resonanzbasen $b_k$ aus kl.satz.resonanzbasen; $\hat c_1$ der erste Fourier-Koeffizient der periodischen Differenz der beiden regulären Abel-Funktionen (wie kl.beob.zwei_abel)'
+  aussage: |
+    $|\hat c_1|=1.4010369\cdot10^{-4}$ bei $b_2$ und $3.6650371\cdot10^{-3}$ bei $b_3$ (dps 60/N 48 gegen dps 90/N 64: 10 Stellen gleich; Kontrolle $\sqrt2$: $3.626087773\cdot10^{-25}$ wie im Graphen).
+    Die Grösse verläuft glatt durch die Resonanz; die Resonanz macht die beiden Iterationen also nicht gleich.
+    Nebenbei: $|\hat c_1|\,e^{2\pi^2/|\ln\lambda_a|}=0.091$ ($\sqrt2$), $0.085$ ($b_2$), $0.078$ ($b_3$) — Stütze für kl.verm.streifenbreite über 20 Grössenordnungen, mit langsam driftender Konstante.
+  einfach: >-
+    An den besonderen Basen hätte der Beweis eine Lücke gelassen. Die Rechnung zeigt aber: auch dort sind die beiden Tetrationen deutlich verschieden.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A3c; s3_resonanz_unter_eta.py, s3_ausgabe.txt'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Hochgenaue reguläre Abel-Funktionen an a und A, zwei Genauigkeitsstufen.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jedes b_k (Rechenaufwand wächst, weil b_k → 1).'
+    f5_neue_frage: 'Deckt Karlin–McGregor (it.satz.karlin_mcgregor) den resonanten Fall und liefert so einen Beweis?'
+  bewertung: {richtigkeit: 'numerisch, 10 Stellen', neuheit: neu_ungeprueft, nutzen: 'Schliesst die Lücke von kl.satz.resonanzbasen numerisch.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kl.satz.resonanzbasen}
+    - {typ: stuetzt, ziel: kl.verm.streifenbreite}
+    - {typ: stuetzt, ziel: kl.beob.zwei_abel}

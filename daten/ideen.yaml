@@ -66,6 +66,11 @@
   name: Indifferent
   kurz: Drehende Fixpunkte — Siegel-Scheiben und Cremer-Punkte.
   straenge: [it.indifferent]
+- id: dynamik.erzeuger
+  eltern: dynamik
+  name: Der Erzeuger J
+  kurz: Tetration als Strömung eines Vektorfelds — und wo eine gebrochene Iteration singulär sein muss.
+  straenge: [it.erzeuger]
 
 # ------------------------------------------------------------------ Turm und Basen-Ebene
 - id: turm
@@ -91,6 +96,11 @@
   name: Spiralen und Mittelwerte
   kurz: Wie der Turm um seinen Grenzwert kreist, und was sein Mittel ist.
   straenge: [fp.spiralen_mittel]
+- id: turm.zufall
+  eltern: turm
+  name: Zufällige Basen
+  kurz: Unendliche Türme, deren Basen zufällig gezogen werden — wann sie konvergieren, schwingen oder davonlaufen.
+  straenge: [fp.zufall]
 
 # ------------------------------------------------------------------ Fraktionale Fortsetzung
 - id: fortsetzung
@@ -104,13 +114,13 @@
 - id: fortsetzung.eta
   eltern: fortsetzung
   name: Der Grenzfall η
-  kurz: Der parabolische Übergang, Engpass bei e und das Verhalten knapp darüber.
+  kurz: Der parabolische Übergang, Engpass bei e und das Verhalten knapp darüber — und warum die Tetration dort glatt, aber nicht analytisch in der Basis ist.
   straenge: [kl.eta, br.engpass]
 - id: fortsetzung.kneser
   eltern: fortsetzung
   name: Kneser über η
   kurz: Holomorphe Lösung über die komplexen Fixpunkte L und L̄.
-  straenge: [kn.konstruktion, kn.rand]
+  straenge: [kn.konstruktion, kn.rand, kn.singularitaeten]
 - id: fortsetzung.andere
   eltern: fortsetzung
   name: Andere Konstruktionen
@@ -206,6 +216,21 @@
   name: Hyperoperationen
   kurz: Ackermann, andere Klammerungen, Ordinalzahlen.
   aussagen: [br.def.hyperoperation, br.satz.ackermann, br.satz.ordinal_tetration, br.satz.hyperop_varianten]
+- id: stufen.welle
+  eltern: stufen
+  name: Knesers Welle auf höheren Rängen
+  kurz: Die Welle ist dort singulär, wo die Kneser-Lösung einen Wert trifft, den die reguläre auslässt; die Art des Knicks kommt aus zwei Multiplikatoren.
+  straenge: [kn.theta_raenge]
+- id: stufen.basiswechsel
+  eltern: stufen
+  name: Basiswechsel höherer Ränge
+  kurz: Ab Rang 5 wird der Schälschritt selbst wellig; die tiefere Welle wird auf jeder Ebene eingespeist — eine Weierstrass-artige, raue Phase.
+  straenge: [bw.hoehere_raenge]
+- id: stufen.grenzprofil
+  eltern: stufen
+  name: Die Leiter im Grenzfall
+  kurz: Für hohe Ränge wird jede beschränkte Rechenart zur Rampe min(x+1, b).
+  aussagen: [kn.satz.koenigs_leiter_monoton, kn.verm.grenzprofil_rampe, kn.satz.plateau_modell, kn.verm.leiter_rate]
 
 # ------------------------------------------------------------------ Verwandte Funktionen
 - id: verwandte
@@ -226,6 +251,11 @@
   name: Elementare Superfunktionen
   kurz: Funktionen, deren Iteration man geschlossen hinschreiben kann — Tschebyschow, Möbius, Logistik.
   aussagen: [it.satz.elementare_superfunktionen, it.satz.moebius_iteration]
+- id: verwandte.superfunktionen
+  eltern: verwandte
+  name: Kneser für andere Abbildungen
+  kurz: Knesers Bauweise für x²+1, x⁴+1, cosh und die Böttcher-Superfunktion von ∞ her — was an eˣ besonders ist und was universell.
+  straenge: [kn.zoo, br.boettcher]
 
 # ------------------------------------------------------------------ Zahlen
 - id: zahlen
@@ -249,7 +279,7 @@
 - id: zahlen.kongruenzen
   eltern: zahlen
   name: Kongruenzen
-  kurz: Türme modulo m, Endziffern und p-adische Grenzwerte.
+  kurz: Türme modulo m, Endziffern, p-adische Grenzwerte als Lambert-Reihe und das Gesetz der nächsten Ziffern.
   straenge: [ar.kongruenzen, br.diskret]
 
 # ------------------------------------------------------------------ Brücken

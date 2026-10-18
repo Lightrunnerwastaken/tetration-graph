@@ -1,0 +1,331 @@
+gebiet: bw
+# Runde 18.10.2026, Bericht 01: Basiswechsel auf höheren Rängen (Pentation, Hexation, Rang 7).
+# Rechnungen: forschung/runde_2026_10_18/01_basiswechsel_raenge/ (BERICHT.md, Befunde #1–#17 = B1–B17).
+aussagen:
+
+- id: bw.satz.abschaelen_rang
+  titel: 'Abschäl-Identität: der Basiswechsel auf Rang r schält mit dem Basiswechsel auf Rang r−1 ab'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [F_bd, hyperoperation, abel]
+  bereich: '$b,d>\eta_5$; $T$ Tetration, $P_d$ eine Pentation mit $P_d(x+1)=T_d(P_d(x))$, $\mathrm{spog}_b$ eine Abel-Funktion von $T_b$; $F=F_{b,d}=\mathrm{slog}_b\circ T_d$; allgemein $H_{r,d}$ Hyperoperation vom Rang $r$, $A_{r,b}$ ihre Abel-Funktion, $G_{r-1}=A_{r-1,b}\circ H_{r-1,d}$'
+  aussage: |
+    $$\mathrm{spog}_b\bigl(P_d(x+1)\bigr)=1+\mathrm{spog}_b\bigl(F_{b,d}(P_d(x))\bigr),$$
+    iteriert $G(x+n)-n=\mathrm{spog}_b\bigl(H_n(P_d(x))\bigr)$ mit $G=\mathrm{spog}_b\circ P_d$ und $H_n=\mathrm{slog}_b^{\circ n}\circ T_d^{\circ n}$.
+    Allgemein: $A_{r,b}\circ H_{r,d}(x+1)=1+A_{r,b}\bigl(G_{r-1}(H_{r,d}(x))\bigr)$.
+    Auf Rang 4 ist der Schälschritt $\log_b\circ\exp_d=\alpha\cdot\mathrm{id}$ linear; ab Rang 5 ist er $F=\mathrm{id}+\mu_4+P_4+$Anlauf, eine Verschiebung mit Welle.
+  einfach: >-
+    Um eine Pentation zur Basis d in die Höhe einer Basis b zu übersetzen, kann man Stufe für Stufe abschälen. Jeder Schritt benutzt
+    die Übersetzung eine Rechenart tiefer, also bei der Pentation die bekannte Übersetzung der Tetration.
+  beweis:
+    art: vollstaendig
+    text: '$\mathrm{spog}_b(T_dz)=\mathrm{spog}_b(\mathrm{slog}_b(T_dz))+1$ wegen $\mathrm{spog}_b\circ T_b=\mathrm{spog}_b+1$; mit $z=P_d(x)$ folgt die Identität, Iteration gibt die zweite Form.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus den beiden Abel-Gleichungen.'
+    f2_benutzte_voraussetzungen: 'Nur die Funktionalgleichungen, keine Konstruktion.'
+    f3_spezialfall: 'Rang 4: das Abschälen mit log_b ∘ exp_d aus dem Beweis von bw.satz.schwanzkonvergenz.'
+    f4_uebertragbar: 'Auf jeden Rang und jedes Paar von Abel-Funktionen.'
+    f5_neue_frage: 'Was folgt daraus, dass der Schälschritt ab Rang 5 nicht mehr linear ist (Glattheit, bw.verm.rang5_nirgends_diffbar)?'
+  bewertung: {richtigkeit: vollständig, neuheit: nur_schreibweise, nutzen: 'Grundlage aller Rang-5-Ergebnisse dieser Runde; zeigt, woher der Unterschied zu Rang 4 kommt.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: bw.satz.schwanzkonvergenz}
+    - {typ: verwandt, ziel: kn.konstr.pentation}
+
+- id: bw.satz.phasengesetz_rang5
+  titel: 'Phasengesetz für die Pentation: spog_b(P_d(x)) − x → μ₅ + 1-periodische Welle'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'bw.satz.phasengesetz (nur Beschränktheit von F(u) − u benutzt); für die Pentation gemessen: Multiplikator λ > 1 und L_b einziger reeller Fixpunkt von T_b'
+  niveau: forschung
+  objekte: [F_bd, phase, hyperoperation, kreishomoeo]
+  bereich: '$b,d>\eta_5=1.73736$; $T$ Kneser-Tetration, $P_b$ reguläre Pentation am Fixpunkt $L_b\in(-2,-1)$ von $T_b$ (kn.konstr.pentation), $\mathrm{spog}_b=P_b^{-1}$ auf $(L_b,\infty)$'
+  aussage: |
+    (i) $H:=\lim_n\mathrm{slog}_b^{\circ n}\circ T_d^{\circ n}$ existiert gleichmässig auf Kompakta von $(L_d,\infty)$, ist streng wachsend und erfüllt $T_b\circ H=H\circ T_d$.
+    (ii) $\hat G:=\mathrm{spog}_b\circ H\circ P_d$ erfüllt $\hat G(x+1)=\hat G(x)+1$ **für alle** $x$, und $G(x)-\hat G(x)\to0$ superexponentiell für $G=\mathrm{spog}_b\circ P_d$.
+    Also $G(x)-x=\Phi_5(\{x\})+o(1)$ mit der stetigen, 1-periodischen Phase $\Phi_5=\hat G-\mathrm{id}$ (Mittel $\mu_5$).
+    (iii) Kozykel und Antisymmetrie wie auf Rang 4: $\Phi_{b,d}(\theta)=\Phi_{c,d}(\theta)+\Phi_{b,c}(\theta+\Phi_{c,d}(\theta))$, $\mu_5(b,d)=-\mu_5(d,b)$.
+    Beispiel $(b,d)=(e,2)$: $\mu_5=-0.9432744(2)$, Kettenwerte $n=0,1,2,\infty$: $-0.055,-0.415,-0.839,-0.93476$ (bei $\theta=0$).
+  einfach: >-
+    Was man für die Tetration weiss, gilt auch eine Stufe höher: Übersetzt man die Pentation einer Basis in die Höhe einer anderen,
+    kommt „x plus eine Konstante plus eine kleine Welle“ heraus. Der Beweis ist sogar einfacher als bei der Tetration.
+  formen:
+    - {tex: 'H=\lim_n\mathrm{slog}_b^{\circ n}\circ T_d^{\circ n},\quad T_b\circ H=H\circ T_d', notiz: 'Konjugator'}
+    - {tex: '\hat G=\mathrm{spog}_b\circ H\circ P_d,\quad \hat G(x+1)=\hat G(x)+1', notiz: 'exakt periodische Phase'}
+  beweis:
+    art: bedingt
+    text: |
+      $H_{n+1}(y)-H_n(y)=(\mathrm{slog}_b^{\circ n})'(\xi)\,(F(U_n)-U_n)$ mit $U_n=T_d^{\circ n}y$ (Mittelwertsatz). $|F(u)-u|\le C$ (Rang-4-Phasengesetz); die
+      Zwischenpunkte bleiben $\ge U_{n-i}-C'$, und weil $\mathrm{slog}_b'$ auf $[0,\infty)$ fällt, ist $(\mathrm{slog}_b^{\circ n})'(\xi)\le\mathrm{slog}_b'(U_n-C')$.
+      $U_n$ wächst turmartig, also $\sum|H_{n+1}-H_n|<\infty$. Im Limes folgt $H\circ T_d=T_b\circ H$ und daraus (ii). Monotonie aus dem Gegenpaar wie bei bw.satz.homoeo;
+      (iii) wie bw.prop.kozykel und bw.satz.antisymmetrie.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B2 und B4; t1_rang5.py, t9_kozykel.py, e1_paare.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Grenzwert unabhängig vom Abbruch X = 40/60/75 auf 10⁻⁴⁰; Motor-ipentx gegen eigene Kette auf 30 Stellen; Kozykel-Rest (2, e, 3) < 10⁻¹¹⁷; μ₅(e,2) + μ₅(2,e) = 2·10⁻⁸ (Quadraturfehler).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: aus bw.satz.abschaelen_rang und der Beschränktheit von F(u) − u.'
+    f2_benutzte_voraussetzungen: 'Rang-4-Phasengesetz nur als Schranke |F(u) − u| ≤ C; Monotonie von slog_b′ auf [0, ∞); L_d einziger Fixpunkt (gemessen).'
+    f3_spezialfall: 'Gegenstück zu bw.satz.phasengesetz eine Stufe höher; Muster „Vergleich zweier Abel-Koordinaten“.'
+    f4_uebertragbar: 'Auf alle Ränge, siehe bw.satz.phasengesetz_induktion.'
+    f5_neue_frage: 'Wie glatt ist Φ₅? (bw.verm.rang5_nirgends_diffbar)'
+  bewertung: {richtigkeit: 'bedingt bewiesen, numerisch auf 10⁻⁴⁰ bestätigt', neuheit: neu_ungeprueft, recherche: 'Eine Suche: Forum tid 970 erwähnt „base-change pentation“ nur spekulativ.', nutzen: 'Erstes Phasengesetz oberhalb der Tetration; trägt die übrigen Rang-5-Befunde.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: bw.satz.phasengesetz}
+    - {typ: stuetzt_sich_auf, ziel: bw.satz.abschaelen_rang}
+    - {typ: analog_zu, ziel: bw.satz.homoeo}
+    - {typ: analog_zu, ziel: bw.prop.kozykel}
+    - {typ: analog_zu, ziel: bw.satz.antisymmetrie}
+    - {typ: verwandt, ziel: kn.konstr.pentation}
+
+- id: bw.satz.phasengesetz_induktion
+  titel: 'Phasengesetz auf jedem Rang: aus Rang r−1 folgt Rang r'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [F_bd, phase, hyperoperation]
+  bereich: '$r\ge5$; $H_{r,b}$ Hyperoperationen der Motor-Familie (ungerade Ränge regulär am reellen Fixpunkt, gerade Ränge ab 6 Kneser-artig)'
+  aussage: |
+    Ist das Phasengesetz auf Rang $r-1$ bewiesen (also $G_{r-1}(u)-u$ beschränkt) und wächst $H_{r-1,b}'\to\infty$, so gilt es auf Rang $r$:
+    $A_{r,b}(H_{r,d}(x))-x=\mu_r+$ 1-periodische Welle $+o(1)$, mit Konjugator $\lim A_{r-1,b}^{\circ n}\circ H_{r-1,d}^{\circ n}$.
+    Numerisch für $r=6$ (Kneser-Hexation) und $r=7$ (regulär am linken Fixpunkt der Hexation): periodisch, unabhängig vom Abbruch auf $10^{-30}$.
+  einfach: >-
+    Der Beweis für die Pentation lässt sich Stufe um Stufe wiederholen: Gilt die Regel für eine Rechenart, gilt sie auch für die nächste.
+    Bei Hexation und siebter Stufe stimmt das in der Rechnung.
+  beweis:
+    art: skizze
+    text: 'Derselbe Beweis wie bw.satz.phasengesetz_rang5, eine Stufe höher; gebraucht werden nur die Beschränktheit von G_{r−1} − id und das Wachstum von H_{r−1,b}′.'
+    luecken:
+      - 'Für gerade r ≥ 6 (Kneser-Ränge): Reellwertigkeit und Monotonie der Kneser-Umkehrung auf dem benutzten Bereich und Eindeutigkeit des Fixpunkts nur gemessen.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B3 und B15; e2_rang6.py, e3_rang7.py, lib6.py, lib7.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Induktion mit bw.satz.phasengesetz_rang5 als Schritt.'
+    f2_benutzte_voraussetzungen: 'Beschränktheit der tieferen Phase, Wachstum der Ableitung, Monotonie der Umkehrung.'
+    f3_spezialfall: 'Rang 5 ist der erste Schritt.'
+    f4_uebertragbar: 'Auf jede Familie von Hyperoperationen mit reellen, monotonen Umkehrungen.'
+    f5_neue_frage: 'Konvergiert μ_r(b,d) für r → ∞? Für (e,2) scheint es so (Abstände 0.185, 0.023, 0.001).'
+  bewertung: {richtigkeit: 'Skizze, numerisch bis Rang 7', neuheit: neu_ungeprueft, nutzen: 'Basiswechsel für alle Ränge.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: bw.satz.phasengesetz_rang5}
+    - {typ: verwandt, ziel: kn.satz.hexation_struktur}
+
+- id: bw.satz.fixpunkt_konjugator
+  titel: 'Die Rang-5-Welle misst, wie weit der Konjugator H am Fixpunkt von einer reinen Potenz abweicht'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'wie bw.satz.phasengesetz_rang5'
+  niveau: forschung
+  objekte: [F_bd, phase, schroeder, fixpunkt_L]
+  bereich: 'wie bw.satz.phasengesetz_rang5; $\sigma_b$ Schröder-Funktion von $T_b$ am Fixpunkt $L_b$, $\lambda_b=T_b''(L_b)$'
+  aussage: |
+    $H(L_d)=L_b$, und in Schröder-Koordinaten
+    $$\sigma_b(H(y))=C\,\sigma_d(y)^{\kappa}\exp\bigl(\ln\lambda_b\cdot P_5(\mathrm{spog}_d\,y)\bigr),\qquad\kappa=\frac{\ln\lambda_b}{\ln\lambda_d}.$$
+    Die Welle ist genau dann null, wenn $H$ in Schröder-Koordinaten eine reine Potenz ist. Exakt (nicht nur asymptotisch) gilt $\hat G(x)=x+\Phi_5(\{x\})$,
+    geprüft bis $x=-15.7$ auf $10^{-110}$; $\kappa(e,2)=1.13541$. $G=\mathrm{spog}_b\circ P_d$ selbst strebt für $x\to-\infty$ gegen $\mathrm{spog}_b(L_d)=-3.41245$.
+  einfach: >-
+    Die Übersetzungsfunktion H bringt den Fixpunkt der einen Tetration auf den der anderen. Die Welle zeigt, wie „schief“ sie das tut:
+    Wäre sie dort eine reine Potenz, gäbe es keine Welle.
+  beweis:
+    art: vollstaendig
+    text: 'Für $x\to-\infty$ gilt $P_d(x)=\Psi_d(\sigma_d(1)\lambda_d^x)\to L_d$ und $H(P_dx)\to L_b$. Einsetzen von $\mathrm{spog}=\log(\sigma/\sigma(1))/\log\lambda$ in $\hat G(x)=x+\Phi_5(\{x\})$ gibt die Schröder-Form.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B5; t13_fixpunkt.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Umformung von bw.satz.phasengesetz_rang5.'
+    f2_benutzte_voraussetzungen: 'Reguläre Pentation am Fixpunkt (Schröder-Darstellung).'
+    f3_spezialfall: 'Gegenstück zu kl.satz.basiswechsel_gleiches_L: dort macht ein gemeinsamer Fixpunkt die Übersetzung wellenfrei.'
+    f4_uebertragbar: 'Auf jeden Rang mit regulärer Hyperoperation am Fixpunkt.'
+    f5_neue_frage: 'Komplexe Basen mit gemeinsamem Fixpunkt von T_b und T_d — wellenfreie Rang-5-Übersetzung?'
+  bewertung: {richtigkeit: 'bewiesen unter den Bedingungen von bw.satz.phasengesetz_rang5; auf 10⁻¹¹⁰ geprüft', neuheit: neu_ungeprueft, nutzen: 'Gibt der Welle eine geometrische Bedeutung am Fixpunkt.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: bw.satz.phasengesetz_rang5}
+    - {typ: analog_zu, ziel: kl.satz.basiswechsel_gleiches_L}
+    - {typ: motiviert, ziel: kl.frage.gleiches_L_kneser}
+
+- id: bw.beob.kein_gemeinsamer_fixpunkt
+  titel: 'Der reelle Fixpunkt L_b der Tetration fällt streng mit b — keine wellenfreien reellen Rang-5-Paare'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [fixpunkt_L, kneser_T, phase]
+  bereich: 'Kneser-Tetration $T_b$, $b>\eta_5$; $L_b\in(-2,-1)$ ihr reeller Fixpunkt'
+  aussage: |
+    $L_{1.8}=-1.6938$, $L_2=-1.7439$, $L_e=-1.8504$, $L_3=-1.8745$, $L_4=-1.9252$, $L_5=-1.9501$, $L_{10}=-1.9859$ (gegen Motor-pentx auf $10^{-70}$; 7 + 4 Basen).
+    $L_b$ fällt streng in $b$; zwei verschiedene reelle Basen haben also nie einen gemeinsamen Fixpunkt, und nach bw.satz.fixpunkt_konjugator gibt es keine wellenfreie reelle Übersetzung.
+    Gemessen ist die erste Mode der Rang-5-Welle stets $\approx0.010$–$0.015\cdot|\ln\log_bd|$.
+  einfach: >-
+    Jede reelle Basis hat ihren eigenen Fixpunkt der Tetration, und je grösser die Basis, desto tiefer liegt er. Darum bleibt bei jedem Basiswechsel
+    der Pentation eine Welle übrig.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B6; t5_basen.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); Monotonie nicht bewiesen.'
+    f2_benutzte_voraussetzungen: 'Kneser-Tetration aus dem Motor, Newton am Fixpunkt.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf Fixpunkte höherer Ränge (p_r) vermutlich ebenso.'
+    f5_neue_frage: 'Monotonie von L_b in b beweisen (z. B. über die Ableitung nach der Basis, bw.satz.antwortkern).'
+  bewertung: {richtigkeit: 'numerisch auf 10⁻⁷⁰', neuheit: folklore, nutzen: 'Schliesst wellenfreie reelle Paare aus.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt, ziel: bw.satz.fixpunkt_konjugator}
+    - {typ: verwandt, ziel: kn.beob.pentation_werte}
+
+- id: bw.satz.produktformel_rang5
+  titel: 'Ebenen-Zerlegung und Produktformel: die Ableitung der Rang-5-Phase ist ein unendliches Produkt ∏(1 + Φ₄′)'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'wie bw.satz.phasengesetz_rang5; zusätzlich C¹-Form des Rang-4-Phasengesetzes (F′ = 1 + Φ₄′ + o(1), gemessen)'
+  niveau: forschung
+  objekte: [F_bd, phase, fourier_moden]
+  bereich: 'wie bw.satz.phasengesetz_rang5; $U_m=P_d(\theta+m)$, $c=H-\mathrm{id}$, $\Phi_4$ die Rang-4-Phase von $(b,d)$'
+  aussage: |
+    (i) Exakte Zerlegung: $\Phi_5(\theta)=\mathrm{spog}_b\bigl(\mathrm{slog}_b^{\circ m}(U_m+c(U_m))\bigr)-\theta$, und $c(U)-\Phi_4(\{U\})\to0$ superexponentiell.
+    (ii) Produktformel: $H_{n+1}'(y)/H_n'(y)=F'(U_n)(1+o(1))=1+\Phi_4'(U_n)+o(1)$, formal $H'(y)=\prod_jF'(T_d^{\circ j}y)$.
+    (iii) Einspeisegesetz (erste Ordnung): $\Phi_5-\Phi_5^{(m)}=(1+\Phi_5'(\theta))\,P_4(U_m)/P_d'(\theta+m)+O(P_4^2)$, wobei in $\Phi_5^{(m)}$ die tiefere Welle durch ihr Mittel ersetzt ist.
+    Die Rang-4-Welle steckt also in jeder tieferen Ebene wieder in der Rang-5-Welle, mit der turmartig wachsenden Frequenz $U_j'$.
+  einfach: >-
+    Die Welle der Pentation enthält die Welle der Tetration immer wieder, auf jeder Stufe schneller schwingend. Die Steigung der
+    Pentations-Welle ist darum ein Produkt aus unendlich vielen Faktoren, je einer pro Stufe.
+  beweis:
+    art: bedingt
+    text: |
+      $H=\mathrm{slog}_b^{\circ m}\circ H\circ T_d^{\circ m}$ gibt (i); $c(U)-F(U)+U=O(\mathrm{slog}_b'(T_dU))$. Die Kettenregel liefert exakt
+      $H_{n+1}'/H_n'=F'(U_n)\cdot(\mathrm{slog}_b^{\circ n})'(F(U_n))/(\mathrm{slog}_b^{\circ n})'(U_n)$, der zweite Faktor ist $1+O(1/U_n)$. (iii) durch Ableiten nach $c_m$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B7–B9; t4_ebenen.py, t11_gewicht.py, t8_produkt.py'}]
+  nachgeprueft:
+    - {ergebnis: 'c(U) − μ₄ = P₄(U) auf alle Stellen ab U ≈ 5.4 (d = 2); Einspeisegesetz: gemessen/vorhergesagt = 1 ± 10⁻³ an 12 Stellen; θ = 0.05, U₃ = 5.3·10⁸: Quotient − 1 = 8.1454952·10⁻⁴ gegen Φ₄′(U₃) = 8.1454722·10⁻⁴.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Kettenregel auf die Konstruktion von H.'
+    f2_benutzte_voraussetzungen: 'Rang-4-Phasengesetz in C¹-Form (gemessen; vgl. bw.prop.antisym_c1, bw.satz.c1_produkt).'
+    f3_spezialfall: 'Auf Rang 4 hat der Schälschritt die konstante Ableitung α; dort konvergiert das Produkt absolut (bw.satz.c1_produkt).'
+    f4_uebertragbar: 'Auf jeden Rang ≥ 5 mit der tieferen Phase als Faktor.'
+    f5_neue_frage: 'Existiert ∏(1 + Φ₄′(T_d^j y)) für fast alle y? (bw.verm.rang5_nirgends_diffbar)'
+  bewertung: {richtigkeit: 'bedingt; numerisch auf 3·10⁻⁹ bestätigt', neuheit: neu_ungeprueft, nutzen: 'Zeigt den Mechanismus, der die Rang-5-Welle rau macht.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: bw.satz.phasengesetz_rang5}
+    - {typ: analog_zu, ziel: bw.satz.c1_produkt}
+
+- id: bw.beob.skalensprung
+  titel: 'Die Steigung der Rang-5-Phase springt zwischen den Skalen der Ebenen'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [phase]
+  bereich: '$(b,d)=(e,2)$, $\theta_0=0.05$, dps 120'
+  aussage: |
+    Der Differenzenquotient von $\Phi_5$ bei $\theta_0$ ist bis $h\approx2^{-18}$ konstant ($\hat G'=1.0657272$), springt bei $h\approx1/U_3'$ und ist ab $h=2^{-50}$
+    wieder konstant ($1.0665953$). Das Verhältnis $1.000815$ ist genau $1+\Phi_4'(U_3)$ (auf $10^{-6}$), wie die Produktformel verlangt.
+  einfach: >-
+    Misst man die Steigung der Pentations-Welle mit immer feinerem Massstab, ändert sie sich sprunghaft, jedes Mal wenn der Massstab die nächste
+    Stufe der Tetrations-Welle auflöst.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B10; t8_produkt.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen), aber von bw.satz.produktformel_rang5 vorhergesagt.'
+    f2_benutzte_voraussetzungen: 'Kette bis U₄ ~ 2^(5·10⁸); nur eine Ebene mehr messbar.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf Rang 6 (t10_rang6_skalen.py).'
+    f5_neue_frage: 'Folgen die Differenzenquotienten allgemein den Teilprodukten (Hardy-Lemma)?'
+  bewertung: {richtigkeit: 'numerisch auf 10⁻⁶', neuheit: neu_ungeprueft, nutzen: 'Direkter Beleg für die Produktstruktur.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: bw.satz.produktformel_rang5}
+    - {typ: stuetzt, ziel: bw.verm.rang5_nirgends_diffbar}
+
+- id: bw.verm.rang5_nirgends_diffbar
+  titel: 'Vermutung: Ab Rang 5 ist die Basiswechsel-Phase stetig, aber nirgends differenzierbar (Weierstrass-Typ mit Turm-Lücken)'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [phase, fourier_moden, gevrey]
+  bereich: '$\Phi_r$ für $r\ge5$, reelle Basen $b\ne d$ über $\eta_5$'
+  aussage: |
+    $\Phi_5$ (und jedes $\Phi_r$, $r\ge5$) ist stetig, aber nirgends (mindestens fast nirgends) differenzierbar; Stetigkeitsmodul $\approx h\cdot\#\{j:U_j'h<1\}\sim h\,\mathrm{slog}(1/h)$.
+    Belege: Produktformel und Skalensprung; der Fourier-Schwanz fällt algebraisch, etwa $k^{-1.3}$ (Rang 5, $k\le64$), auf Rang 4 dagegen exponentiell ($|a_{64}|=10^{-49}$).
+    Ebene $j$ trägt die Schwingung $P_4(U_j)/U_j'$ mit Frequenz $U_j'$; ihr Beitrag $P_4'(U_j)$ zur Steigung nimmt mit $j$ nicht ab — der Grenzfall $ab=1$ der Weierstrass-Funktion,
+    nur mit turmartigen Lücken.
+  einfach: >-
+    Die Welle der Tetration ist sehr glatt. Ab der Pentation wird die Welle dagegen vermutlich so rau wie die berühmte Weierstrass-Funktion:
+    überall stetig, aber nirgends mit einer Steigung.
+  gegenbeispielsuche: 'Gesucht wurde eine Stelle mit stabilem Differenzenquotienten über alle Skalen; bei θ₀ = 0.05 springt er bei jeder auflösbaren Ebene (bw.beob.skalensprung), weitere Stellen nicht systematisch geprüft.'
+  naechste_frage: 'Gleichverteilung von {T_d^j(y)} für fast alle y (Koksma) plus ein Hardy-Lemma; liegt Φ₅ in der Zygmund-Klasse?'
+  beweis:
+    art: skizze
+    text: 'Ob $H''(y)=\prod_j(1+\Phi_4''(T_d^jy)+o(1))$ existiert, hängt an $\sum_j\Phi_4''(T_d^jy)$; sind die Brüche $\{T_d^jy\}$ für fast alle $y$ gleichverteilt und fast unabhängig (Salem–Zygmund für sehr lückenhafte Folgen), divergiert die Reihe wie eine Irrfahrt.'
+    luecken:
+      - 'Koksmas metrischer Satz für die Folge T_d^j(y).'
+      - 'Ein Lemma vom Hardy-Typ: die Differenzenquotienten folgen den Teilprodukten.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B11; t8_produkt.py, e1_paare.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Produktformel; Gleichverteilung (unbewiesen).'
+    f3_spezialfall: 'Weierstrass-/Hardy-Funktionen mit Lücken.'
+    f4_uebertragbar: 'Auf alle Ränge r ≥ 5; nicht auf Rang 4 (konstante Schälableitung).'
+    f5_neue_frage: 'Ab Rang 5 ist die Frage „analytisch oder C^∞“ (bw.verm.nirgends_analytisch) überholt: nicht einmal C¹?'
+  bewertung: {richtigkeit: 'Vermutung mit zwei numerischen Belegen', neuheit: neu_ungeprueft, nutzen: 'Grundsätzlicher Unterschied zwischen Rang 4 und höheren Rängen.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: bw.verm.nirgends_analytisch}
+    - {typ: verwandt, ziel: bw.verm.streifen}
+    - {typ: verwandt, ziel: bw.beob.modenabfall}
+
+- id: bw.beob.wellen_raenge
+  titel: 'Wellen und Mittel des Basiswechsels von Rang 4 bis 7: Rang 5 rund 60-mal grösser, höhere Ränge gleich gross, aber rauer'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [phase, fourier_moden, hyperoperation]
+  bereich: 'Rang 4: Kneser-Tetration; Rang 5: reguläre Pentation; Rang 6: Kneser-Hexation (Motor hexx); Rang 7: regulär am linken Fixpunkt der Hexation'
+  aussage: |
+    **Grösse:** $|a_1|(\Phi_5)/|a_1|(\Phi_4)\approx54$–$77$ (13 Paare), Grenzwert $d\to b$: $62.1$ ($b=e$), $\approx75$ ($b=2$). Spannweite $(e,2)$: $0.00029$ (r=4),
+    $0.0193$ (5), $0.0174$ (6), $0.0144$ (7).
+    **Lineare Antwort:** $|a_1(\Phi_5)|\approx K_5(b)|\ln\log_bd|$ mit $K_5(e)=0.01207$, $K_5(2)\approx0.0148$ (basisabhängig), auf Rang 4 $K_4\approx1.94$–$1.98\cdot10^{-4}$ (fast universell).
+    **Rauheit:** $|a_2/a_1|=0.0096$ (r=4), $0.090$ (5), $0.33$ (6), $0.51$ (7); $c_6(V)=H_6(V)-V=\Phi_5(\{V\})$ exakt ab $V\approx3.3$.
+    **Mittel** $\mu_4\ldots\mu_7$: $(e,2)$: $-1.1284038$, $-0.9432744(2)$, $-0.920180(4)$, $-0.91917(3)$; $(e,3)$: $0.1924223$, $0.1258095(1)$, $0.102464(1)$, $0.08882(2)$.
+    **Hub:** $\mu(2,3)\approx\mu(e,3)-\mu(e,2)$ mit Rest $3\cdot10^{-10}$ (r=4), $10^{-5}$ (5), $2\cdot10^{-5}$ (6), von der Ordnung Welle² wie der Kozykel verlangt.
+  einfach: >-
+    Die Welle beim Basiswechsel ist bei der Pentation etwa 60-mal grösser als bei der Tetration. Weiter oben wächst sie nicht mehr, wird aber
+    immer zackiger. Die mittlere Verschiebung scheint sich mit steigender Rechenart einem festen Wert zu nähern.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B12, B13, B15–B17; e1_paare.py, e2_rang6.py, e3_rang7.py, zusammenfassung.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Trapezregel; auf Rang ≥ 5 wegen der Rauheit nur algebraisch konvergent (Fehler in Klammern aus M-Vergleich und Antisymmetrie).'
+    f3_spezialfall: 'Rang 4: bw.beob.m2, bw.satz.antwortkern.'
+    f4_uebertragbar: 'Auf weitere Basenpaare.'
+    f5_neue_frage: 'Geschlossene Formel für K₅(b) und r(b); Grenzwert lim μ_r(b,d) für r → ∞.'
+  bewertung: {richtigkeit: 'numerisch, μ₅…μ₇ auf 10⁻⁷…10⁻⁵', neuheit: neu_ungeprueft, nutzen: 'Erste Zahlen für den Basiswechsel oberhalb der Tetration.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: bw.satz.phasengesetz_induktion}
+    - {typ: analog_zu, ziel: bw.satz.antwortkern}
+    - {typ: verwandt, ziel: bw.beob.m2}
+    - {typ: verwandt, ziel: bw.prop.hub}
+
+- id: bw.beob.anlauf_ursache
+  titel: 'Die Rang-5-Welle stammt fast ganz aus dem Anlauf von F_{b,d}, nicht aus der Rang-4-Welle'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [F_bd, phase]
+  bereich: 'wie bw.satz.produktformel_rang5'
+  aussage: |
+    Etwa 99 % der Rang-5-Welle (erste Mode $\sim5\cdot10^{-3}$ bei $(e,2)$) entsteht in den Ebenen 0–1, also bei $y=P_d(\theta)\in[1,d]$ und $U_1\in[d,{}^dd]$,
+    wo $F_{b,d}$ noch weit von seiner Asymptotik ist ($c(U_1)-\mu_4=0.18$ bei $U_1=2$). Die Rang-4-Welle ($1.4\cdot10^{-4}$) trägt über das Gewicht $1/P_d'(\theta+m)$
+    höchstens $7\cdot10^{-5}$ bei. Die Wellen setzen sich also in führender Ordnung **nicht** zusammen: die Rang-4-Welle bestimmt die Glattheit, nicht die Grösse.
+  einfach: >-
+    Woher kommt die grosse Welle der Pentation? Nicht von der kleinen Welle der Tetration, sondern davon, dass die Übersetzung bei kleinen Höhen
+    noch nicht „eingeschwungen“ ist.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B14; t4_ebenen.py, t11_gewicht.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, Auswertung des Einspeisegesetzes aus bw.satz.produktformel_rang5.'
+    f2_benutzte_voraussetzungen: 'Ebenen-Zerlegung, erste Ordnung.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Vermutlich auf Rang 6/7 (c₆ = Φ₅ wird eingespeist).'
+    f5_neue_frage: 'Formel für K₅(b) aus dem Anlauf von F (Gegenstück zu bw.satz.antwortkern).'
+  bewertung: {richtigkeit: numerisch, neuheit: neu_ungeprueft, nutzen: 'Beantwortet, ob sich die Wellen zusammensetzen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: bw.satz.produktformel_rang5}
+    - {typ: verwandt, ziel: bw.beob.wellen_raenge}

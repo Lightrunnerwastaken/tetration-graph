@@ -1,0 +1,75 @@
+# Theorie-Blöcke: Kneser-Superfunktionen anderer Abbildungen (Runde 18.10.2026, Bericht 09). Bezeichnungen σ, h, θ: kn.def.theta_welle.
+
+kn.satz.zoo_singulaerer_ort:
+  worum: |
+    Knesers Bauweise $S=F(z+\theta(z))$ geht für jede ganze reelle Abbildung $f$ mit einem Paar komplexer Fixpunkte $L,\bar L$, etwa $x^2+1$, $x^4+1$, $\cosh x$.
+    Wo hat die Welle θ dann ihre scharfen Stellen?
+  genau: |
+    Genau dort, wo $S$ auf der reellen Achse die Bahn eines **singulären Werts** von $f$ trifft (kritischer oder asymptotischer Wert); im Zoo bei $z_1+\mathbb Z$ mit $S(z_1)=v$.
+  warum: |
+    $\theta=h\circ S-\mathrm{id}$, und die Abel-Funktion $h$ ist aus Ästen von $f^{-1}$ gebaut. Diese verzweigen nur über singulären Werten; anderswo setzt sich $h$ analytisch fort.
+  beispiel: |
+    Bei $x^2+1$ ist $v=1$ (Scheitel der Parabel), $S(-1)=1$, $S(-2)=0$; θ ist bei $-1+\mathbb Z$ singulär, sonst analytisch.
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[kn.satz.theta_singularitaet]]; der ausgelassene Wert von $e^x$ ist dabei nicht nötig ([[it.satz.poincare_polynom_surjektiv]]). Folge: [[kn.satz.zoo_puiseux]].
+
+kn.satz.zoo_puiseux:
+  worum: |
+    Wie schnell fallen die Fourier-Koeffizienten $a_n$ von θ, wenn die Singularität von einem kritischen Wert vom Grad $d$ kommt?
+  genau: |
+    $a_n\approx C_1n^{-1-1/d}$ mit $C_1=h'(w_c)(iA/2\pi a)^{1/d}/\Gamma(-1/d)$, dazu eine Reihe in $n^{-1-k/d}$.
+  warum: |
+    Nahe $z_1$ ist $S\approx v+A(z-z_1)$, und der Ast $g$ von $f^{-1}$ zieht daraus eine $d$-te Wurzel. Also ist θ eine Reihe in $(z-z_1)^{1/d}$, und eine Singularität
+    $(1-q)^{1/d}$ gibt nach dem Transfersatz Koeffizienten $\sim n^{-1-1/d}/\Gamma(-1/d)$.
+  beispiel: |
+    $x^2+1$: $C_1=0.0030758-0.0653307\,i$, $a_1=0.0029141-0.0606080\,i$; bei $n=512$ trifft $C_1n^{-3/2}$ den echten Wert auf $1.5\cdot10^{-4}$.
+  bilder: []
+  einordnung: |
+    Der log-Fall [[kn.satz.theta_koeffizienten]] ist der Grenzfall $d\to\infty$; Hintergrund: [[br.satz.gevrey_fourier]].
+
+kn.beob.zoo_mittelwerte:
+  worum: |
+    Sind Knesers Integralformeln ($M[\theta^2]=M[\theta]^2$, $\int\mathrm{slog}'^2/h'=1$ …) eine Eigenheit von $e^x$?
+  genau: |
+    Nein: sie gelten für $x^2+1$, $x^4+1$, $\cosh$ auf $10^{-10}$ bis $10^{-15}$; eine Verbiegung um $10^{-4}$ verletzt sie um $10^{-6}$ bis $10^{-4}$.
+  warum: |
+    Das Mittelwertprinzip braucht nur, dass θ oben holomorph, periodisch und beschränkt genug ist — das liefert die Bauweise für jedes $f$ mit (V).
+  bilder: []
+  einordnung: |
+    Anwendung von [[kn.satz.theta_mittelwerte]]; die Formeln mit $1+\theta'$ brauchen [[kn.beob.zoo_ableitung_nullstellen]]; Kennzeichnung: [[br.satz.reelle_kennzeichnung]].
+
+kn.beob.zoo_ableitung_nullstellen:
+  worum: |
+    Bei $e^x$ wird $\mathrm{sexp}'$ in der oberen Halbebene nie null. Gilt das allgemein?
+  genau: |
+    Nein: $S_K(x^2+1)$ wird bei $2.17993+2.59729\,i$ null, also $S'$ eine Stelle weiter rechts. Allgemein gilt nur $1+\theta'\neq0$.
+  warum: |
+    $S'=F'(z+\theta)(1+\theta')$. Bei Polynomen hat $F$ kritische Punkte (weil $F$ jeden Wert trifft, auch den kritischen Wert), bei $e^x$ nicht. θ selbst bleibt gutmütig.
+  beispiel: |
+    $S(z_0)=0$ und $f'(0)=0$ geben $S'(z_0+1)=f'(S(z_0))S'(z_0)=0$.
+  bilder: []
+  einordnung: |
+    Gegenstück zu [[kn.satz.ableitung_nullstellenfrei]]; Ursache [[it.satz.poincare_polynom_surjektiv]].
+
+kn.verm.zoo_lokal_konvex:
+  worum: |
+    Verdreht die Abbildung $z\mapsto z+\theta(z)$ Richtungen um weniger als einen rechten Winkel, d. h. gilt $\mathrm{Re}(1+\theta')>0$?
+  genau: |
+    Vermutet für kritische Werte endlichen Grads (gemessen $\min\mathrm{Re}\approx0.72\ldots0.78$); falsch für $e^x$ ganz nahe den ganzen Zahlen.
+  warum: |
+    Nahe der Singularität ist $1+\theta'\sim\zeta^{1/d-1}$, das Argument ist also auf ein Intervall der Länge $(1-1/d)\pi$ beschränkt; beim Logarithmus ($d=\infty$) wandert es unbeschränkt.
+  bilder: []
+  einordnung: |
+    Verschärft [[kn.beob.zoo_ableitung_nullstellen]]; Lokalform aus [[kn.satz.zoo_puiseux]].
+
+kn.beob.zoo_wendepunkt:
+  worum: |
+    Haben die Kneser-Superfunktionen anderer Abbildungen wie $\mathrm{sexp}$ genau einen Wendepunkt?
+  genau: |
+    Ja (rechnergestützt): $x^2+1$: $-1.26012$, $\cosh$: $-0.74758$, $x^4+1$: $-1.30859$ (Normierung $S(-1)=v$).
+  warum: |
+    $S''(x+1)=f''(S)S'^2+f'(S)S''$ mit $f',f''>0$: Positive Krümmung pflanzt sich nach rechts fort, negative nach links; ein Vorzeichenwechsel auf einem Stück der Länge > 1 reicht.
+  bilder: []
+  einordnung: |
+    Gleiches Argument wie [[gr.satz.ein_wendepunkt_e2]]; Vermutung für Kneser: [[gr.verm.ein_wendepunkt]].

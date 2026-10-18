@@ -1,10 +1,10 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-426 Aussagen · 772 Kanten · 57 Experimente
+519 Aussagen · 1037 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 155, numerisch 69, bewiesen_literatur 60, offen 34, bedingt 30, vermutung 29, definition 16, gescheitert 11, skizze 11, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 194, numerisch 92, bewiesen_literatur 60, bedingt 40, vermutung 40, offen 36, skizze 17, definition 16, gescheitert 13, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
 
-**Zitate nicht am Original geprüft:** 104
+**Zitate nicht am Original geprüft:** 112
 
 
 ## FEHLER (0)
@@ -49,20 +49,20 @@
 
 **theorie-fortschritt** (5)
 
-- `ar` — 29 von 31 Aussagen mit Theorie-Block
-- `br` — 30 von 32 Aussagen mit Theorie-Block
-- `gr` — 56 von 57 Aussagen mit Theorie-Block
-- `it` — 19 von 20 Aussagen mit Theorie-Block
-- `kn` — 122 von 127 Aussagen mit Theorie-Block
+- `ar` — 38 von 40 Aussagen mit Theorie-Block
+- `br` — 42 von 44 Aussagen mit Theorie-Block
+- `gr` — 57 von 58 Aussagen mit Theorie-Block
+- `it` — 27 von 28 Aussagen mit Theorie-Block
+- `kn` — 161 von 166 Aussagen mit Theorie-Block
 
 **uebersetzung-fortschritt** (6)
 
-- `ar` — 31 von 31 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 29 von 31 Theorie-Blöcken
-- `br` — 32 von 32 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 30 von 32 Theorie-Blöcken
-- `gr` — 57 von 57 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 56 von 57 Theorie-Blöcken
-- `it` — 20 von 20 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 19 von 20 Theorie-Blöcken
-- `kn` — 127 von 127 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 122 von 127 Theorie-Blöcken
-- `quelle` — 217 von 301 quelle-Gegenständen übersetzt
+- `ar` — 40 von 40 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 38 von 40 Theorie-Blöcken
+- `br` — 44 von 44 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 42 von 44 Theorie-Blöcken
+- `gr` — 58 von 58 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 57 von 58 Theorie-Blöcken
+- `it` — 28 von 28 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 27 von 28 Theorie-Blöcken
+- `kn` — 166 von 166 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 161 von 166 Theorie-Blöcken
+- `quelle` — 223 von 307 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (3)
 
@@ -107,6 +107,19 @@
 - `br.satz.vergleichsfunktion` — Konvergenz für die Exponentialfakultät nur gemessen (doppelt exponentiell, ganze Werte auf 10⁻¹²), nicht bewiesen.
 - `br.satz.vergleichsfunktion` — Für Tetration mit Produkt-Tetration als Vergleich (tid 1816) weder Konvergenz noch Glattheit geprüft.
 - `gr.korr.grenzidentitaet` — Gleichmässige Abschätzung der unteren Faktoren, die den Grenzwert nicht ändern.
+- `bw.satz.phasengesetz_induktion` — Für gerade r ≥ 6 (Kneser-Ränge): Reellwertigkeit und Monotonie der Kneser-Umkehrung auf dem benutzten Bereich und Eindeutigkeit des Fixpunkts nur gemessen.
+- `bw.verm.rang5_nirgends_diffbar` — Koksmas metrischer Satz für die Folge T_d^j(y).
+- `bw.verm.rang5_nirgends_diffbar` — Ein Lemma vom Hardy-Typ: die Differenzenquotienten folgen den Teilprodukten.
+- `kn.satz.theta6_singularitaet` — Zweigwahl: h(w) = 1 + h(ipent w) und der Hauptzweig von ipent müssen längs hex(x* + iε) die analytische Fortsetzung sein; nur numerisch (B4/B5 treffen die Koeffizienten), nicht mit Intervallen.
+- `kn.satz.theta6_koeffizienten` — Zweigwahl wie bei kn.satz.theta6_singularitaet.
+- `kn.satz.theta6_koeffizienten` — Δ-Analytizität bei Q = 1 und Fehlerschranke für (i) nicht bewiesen, nur gemessen.
+- `kn.verm.theta5_natuerliche_grenze` — Ψ ist nicht ganz (entsteht aus Zweigen von slog); die eindeutige Fortsetzbarkeit längs s₀ + t ist nicht gesichert.
+- `kl.satz.c1_noerlund` — Dass gerade die Nörlund-Hauptlösung (ohne periodischen Anteil) die Basisableitung ist; plausibel, weil die gestörte Fatou-Koordinate eine asymptotische Entwicklung in 1/(y − e) und Logarithmen hat.
+- `kn.kor.minus2_entwicklung` — Das Restglied der Flajolet–Odlyzko-Übertragung ist nicht abgeschätzt; gemessen 0.852 bei n = 140, Fit des 1/log n-Glieds −0.461 gegen Theorie −0.489.
+- `kn.satz.nebenblatt_zweigpunkte` — Dass jeder Turm von Logarithmen in der Menge {w − m : sexp(w+n) = sexp(n−1)} auch als Zweig erreicht wird, ist nur für n ≤ 2 ausgeführt.
+- `kn.satz.plateau_modell` — Die Fehlerabschätzung $O(L_r\delta_r)$ aus der Linearisierung von σ_r im Plateau ist nicht quantitativ bewiesen.
+- `br.satz.endliche_vorzeichen_offen` — Die Einfachheit der Nullstellen von Knesers $T^{(k)}$, $k\le N$, ist nur numerisch belegt (jede gerade Ableitung bis 26 wechselt genau einmal).
+- `kn.satz.zoo_singulaerer_ort` — Zweigwahl: dass der Hauptast die richtige Fortsetzung ist, ist nur numerisch belegt (stetige Abtastung, Periodizitätsfehler ≤ 2·10⁻¹⁴), wie Lücke S4 der Vorarbeit.
 
 ## Bedingte Aussagen (Wurzelbedingungen = unbewiesene Enden der Beweiskette)
 
@@ -140,6 +153,16 @@
 - `gr.satz.ein_wendepunkt_e2` — — · zusätzlich: Annahme H: Motorwerte an den Kreisknoten auf 10⁻⁵ genau und |sexp| ≤ 1000 nahe der Achse; dass die Werte zu Kneser gehören, ist nur numerisch belegt
 - `kn.satz.theta_singularitaet` — — · zusätzlich: Zweigwahl an einem Punkt (z₀ = 0.05i, Abstand 4·10⁻⁴⁸ bei nötigen < 0.12) nur in Gleitkomma geprüft, nicht mit Intervallen; nur Basis e
 - `kn.satz.theta_koeffizienten` — — · zusätzlich: dieselbe Zweigprüfung wie bei kn.satz.theta_singularitaet
+- `bw.satz.phasengesetz_rang5` — — · zusätzlich: bw.satz.phasengesetz (nur Beschränktheit von F(u) − u benutzt); für die Pentation gemessen: Multiplikator λ > 1 und L_b einziger reeller Fixpunkt von T_b
+- `bw.satz.fixpunkt_konjugator` — — · zusätzlich: wie bw.satz.phasengesetz_rang5
+- `bw.satz.produktformel_rang5` — — · zusätzlich: wie bw.satz.phasengesetz_rang5; zusätzlich C¹-Form des Rang-4-Phasengesetzes (F′ = 1 + Φ₄′ + o(1), gemessen)
+- `kn.satz.theta6_singularitaet` — — · zusätzlich: Zweigwahl (h(w) = 1 + h(ipent w) und Hauptzweig von ipent längs hex(x* + iε)) nur numerisch bestätigt, wie bei kn.satz.theta_singularitaet; nur Basis 2
+- `kn.satz.theta6_koeffizienten` — — · zusätzlich: Lokalform aus kn.satz.theta6_singularitaet (Zweigwahl numerisch) und Δ-Analytizität von θ₆ bei Q = 1 für den Übertragungssatz; nur Basis 2
+- `kn.satz.taylor_darboux` — — · zusätzlich: Das Vorzeichenmuster für alle n braucht max|g| ≤ 180 auf |z| = 2.5; das ist nur auf einem Gitter gemessen (177.6), nicht mit Intervallen zertifiziert. Die Formel für cₙ selbst ist bewiesen.
+- `kn.satz.konvex_eta_grenze` — — · zusätzlich: Alle Stufen $H_s(b,\cdot)$, $s\ge4$, sind stetig und konvex auf $[1,2]$. Für die echten Ketten an den kritischen Basen ist das ab $N=5$ falsch (kn.gescheitert.konvexitaetsweg).
+- `kn.satz.zoo_singulaerer_ort` — — · zusätzlich: Dass der Hauptast die richtige Fortsetzung von h ist (Zweigwahl wie in kn.satz.theta_singularitaet), ist nur numerisch belegt (Periodizitätsfehler ≤ 2·10⁻¹⁴)
+- `kn.satz.zoo_puiseux` — — · zusätzlich: Voraussetzung (V) und die Δ-Analytizität bei q = 1 aus kn.satz.zoo_singulaerer_ort (Zweigwahl numerisch)
+- `it.satz.kneser_erzeuger` — — · zusätzlich: Glattheitsgrad unter a₁(b) ≠ 0 (für b = e und 2 belegt); Exponent und Umlauffaktor zusätzlich numerisch bestätigt
 
 ## Experimente
 

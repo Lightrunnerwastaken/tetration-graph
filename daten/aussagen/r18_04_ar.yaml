@@ -1,0 +1,307 @@
+gebiet: ar
+# Runde 18.10.2026, Bericht 04 (Arithmetik): p-adische Türme, Hyperoperationen, exponentielle Fakultät.
+# Rechnungen: forschung/runde_2026_10_18/04_arithmetik/ (BERICHT.md, ar_lib.py, e1–e6).
+aussagen:
+
+- id: ar.satz.padisch_bewertung
+  titel: 'Exakte Zahl fertiger p-adischer Ziffern eines Turms: V·(H − t)'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [padisch, turm, mod_m]
+  bereich: 'ganze $a\ge2$, Primzahl $p$, $\alpha_p(a)=\lim_Ha\uparrow\uparrow H$ in $\mathbb Z_p$, $a\uparrow\uparrow(-1)=0$'
+  aussage: |
+    (i) $p$ ungerade, $p\nmid a$: Mit $V_p(a)=v_p(a^{p-1}-1)$ und der **Anlaufhöhe** $t_p(a)$ = kleinste Höhe $\ge-1$, ab der $a\uparrow\uparrow n\bmod\mathrm{ord}_p(a)$ konstant ist, gilt
+    $$v_p\bigl(a\uparrow\uparrow H-\alpha_p(a)\bigr)=V_p(a)\,(H-t_p(a))\qquad\text{für alle }H\ge t_p(a).$$
+    (ii) $p=2$, $a$ ungerade: $v_2(a\uparrow\uparrow H-\alpha_2(a))=v_2(a-1)+H\,(v_2(a^2-1)-1)$ für alle $H\ge0$.
+    (iii) $p\mid a$: $v_p(a\uparrow\uparrow H)=v_p(a)\cdot a\uparrow\uparrow(H-1)$ (und $\alpha_p(a)=0$).
+    Für $H<t_p(a)$ gibt es **keine** solche Formel: dort können Summen von Einheiten zufällig durch $p$ teilbar sein (506 Fälle, z. B. $a=2$, $p=3$, $H=0$).
+  einfach: >-
+    Bei einem Turm wie 7^7^7^… stehen die letzten Ziffern (in einem Zahlsystem zur Primzahl p) irgendwann fest. Wie viele genau, ist eine einfache
+    Rechnung: eine Geschwindigkeit V mal die Höhe, abzüglich einer kleinen Anlaufhöhe t.
+  beweis:
+    art: vollstaendig
+    text: |
+      LTE: für $o=\mathrm{ord}_p(a)$ ist $v_p(a^x-1)=0$ für $o\nmid x$ und $=V+v_p(x)$ für $o\mid x$ (da $(p-1)/o$ zu $p$ teilerfremd). Mit $D_H=a\uparrow\uparrow(H+1)-a\uparrow\uparrow H=a^{a\uparrow\uparrow(H-1)}(a^{D_{H-1}}-1)$
+      ist $d_H=v_p(D_H)=V+d_{H-1}$, falls $o\mid D_{H-1}$, sonst 0. Ab $H\ge t+1$ ist $o\mid D_{H-1}$; Minimalität von $t$ gibt $d_t=0$ (bzw. $d_0=V$ für $t=-1$). Also $d_H=V(H-t)$,
+      und da $\alpha-a\uparrow\uparrow H=\sum_{j\ge H}D_j$ streng wachsende Bewertungen hat, ist $v_p(a\uparrow\uparrow H-\alpha)=d_H$. Für $p=2$ analog mit $v_2(a^x-1)=v_2(a^2-1)+v_2(x)-1$ ($x$ gerade).
+  stuetzt_sich_auf: [br.satz.turm_mod_m]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B1, B2; e1_bewertung.py, e3_hoehere_raenge.py'}, {ref: ripa_onnis2022}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: aus dem LTE-Lemma und der Stabilisierung der Türme modulo ord_p(a).'
+    f2_benutzte_voraussetzungen: 'LTE, Stabilisierung modulo m (br.satz.turm_mod_m); keine Analysis.'
+    f3_spezialfall: 'Verfeinert br.satz.ripa: dort konstante Geschwindigkeit ab einer Höhe, hier die exakte Anlaufhöhe.'
+    f4_uebertragbar: 'Auf alle Hyperoperationen ab Rang 4 (ar.kor.padisch_hoehere_raenge) und auf Dezimal-Endziffern (Minimum über 2 und 5).'
+    f5_neue_frage: 'Verteilung der Bewertungen unterhalb der Anlaufhöhe — zufällig wie 1/p?'
+  gegenbeispielsuche: '49 652 Fälle ($p\le13$, $a<400$, $H<30$, 40 Stellen) und $H=100,300$: keine Abweichung.'
+  bewertung: {richtigkeit: 'vollständig; 49 652 Fälle ohne Abweichung', neuheit: neu_ungeprueft, recherche: 'Kern (konstante Geschwindigkeit) bei Ripà–Onnis; exakte Form mit Anlaufhöhe als Ordnungs-Stabilisierung dort nicht gefunden.', nutzen: 'Macht die Endziffern-Frage für jede Primzahl exakt.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: br.satz.ripa}
+    - {typ: verwandt, ziel: ar.satz.padische_tuerme}
+
+- id: ar.kor.padisch_hoehere_raenge
+  titel: 'Alle Hyperoperationen ab Rang 4 haben denselben p-adischen Grenzwert — 3↑↑↑3 hat genau 7 625 597 484 986 fertige Endziffern'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [padisch, hyperoperation, mod_m]
+  bereich: 'Hyperoperationen $H_r(a,n)$, $r\ge4$, $n\ge1$; $D(\cdot)$ = Zahl endgültiger Dezimal-Endziffern'
+  aussage: |
+    Jedes $H_r(a,n)$ mit $r\ge4$ ist ein Turm $a\uparrow\uparrow M_r(a,n)$ mit $M_r(a,n)\to\infty$ (Pentation: $M=a\uparrow\uparrow\uparrow(n-1)$). Daher haben alle Ränge $r\ge4$
+    denselben Grenzwert $\alpha_p(a)$, und $v_p(H_r(a,n)-\alpha_p(a))=V_p(a)(M-t_p(a))$. Dezimal: $D=\min$ der 2- und 5-adischen Formel. Beispiele:
+    $D(3\uparrow\uparrow\uparrow3)=7\,625\,597\,484\,986$, $D(2\uparrow\uparrow\uparrow4)=65\,534$. Pro Pentationsstufe kommen $V(a)\,(a\uparrow\uparrow\uparrow n-a\uparrow\uparrow\uparrow(n-1))$ Ziffern hinzu —
+    die Kongruenzgeschwindigkeit der Pentation wächst tetrational.
+  einfach: >-
+    Pentation, Hexation und alle höheren Stufen sind am Ende nur Türme mit einer riesigen Höhe. Darum enden sie p-adisch alle beim selben Grenzwert, und man kann genau sagen,
+    wie viele letzte Ziffern schon fertig sind — bei 3↑↑↑3 sind es 7 625 597 484 986.
+  beweis:
+    art: vollstaendig
+    text: |
+      $H_r(a,n)=H_{r-1}(a,H_r(a,n-1))$; induktiv ist jedes $H_r(a,n)$ ein Turm $a\uparrow\uparrow M$. Dann ar.satz.padisch_bewertung mit $H=M$. Beispiel: $3\uparrow\uparrow\uparrow3=3\uparrow\uparrow M$, $M=7625597484987$;
+      $v_2=1+2M$, $v_5=M-t_5(3)=M-1$ ($\mathrm{ord}_53=4$, $V_5(3)=1$, Turm mod 4 stabil ab Höhe 1), also $D=M-1$.
+  stuetzt_sich_auf: [ar.satz.padisch_bewertung]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B3, B4; e3_hoehere_raenge.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus ar.satz.padisch_bewertung.'
+    f2_benutzte_voraussetzungen: 'Nur, dass höhere Hyperoperationen Türme mit unbeschränkter Höhe sind.'
+    f3_spezialfall: 'Ja: ar.satz.padisch_bewertung bei riesiger Höhe.'
+    f4_uebertragbar: 'Auf jede Basis und jeden Modul m (Minimum über die Primteiler).'
+    f5_neue_frage: 'Welche Ziffern folgen nach den fertigen? → ar.satz.padisch_koenigs, ar.satz.pentation_block_konstant'
+  gegenbeispielsuche: 'Dezimal $a<60$, $M<40$: keine Abweichung (E3c).'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, recherche: 'Kern bekannt (Ripà); Formulierung für höhere Ränge nicht gefunden, elementar.', nutzen: 'Exakte Endziffern-Zahl für Pentation und höher.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: spezialfall_von, ziel: ar.satz.padisch_bewertung}
+    - {typ: verwandt, ziel: br.satz.ripa}
+
+- id: ar.satz.padisch_lambert
+  titel: 'Der p-adische Turmgrenzwert ist die Lambert-Reihe in log_p a'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [padisch, turm, lambert_w]
+  bereich: '$p\nmid a$; $\omega$ Teichmüller-Zeichen, $c$ der stabile Rest des Turms mod $p-1$, $\log_p$ der p-adische Logarithmus'
+  aussage: |
+    $$\alpha_p(a)=u\sum_{n\ge0}\frac{(n+1)^{n-1}}{n!}\,(u\log_pa)^n,\qquad u=\omega(a)^c\quad(p=2:\ u=\pm1\equiv a\bmod 4).$$
+    Das ist dieselbe Reihe wie beim reellen unendlichen Turm, $h(a)=-W(-\ln a)/\ln a$, nur mit $\log_p$ und der Einheitswurzel $u$ als Drehung.
+  einfach: >-
+    Für den reellen unendlichen Turm gibt es eine berühmte Formel mit der Lambert-W-Funktion. Genau dieselbe Formel gilt p-adisch — man muss nur den
+    gewöhnlichen Logarithmus durch den p-adischen ersetzen und eine kleine Drehung einbauen.
+  beweis:
+    art: vollstaendig
+    text: |
+      $Y(z)=\sum(n+1)^{n-1}z^n/n!$ erfüllt formal $Y=e^{zY}$ und konvergiert für $v_p(z)>1/(p-1)$; dort ist $Y\equiv1$ und die Komposition mit $\exp$ zulässig. Ab der Stabilisierung mod $p-1$
+      ist $a^x=u\,e^{Lx}=:g(x)$ mit $L=\log_pa$, $v_p(L)\ge1$; $g$ ist auf $\mathbb Z_p$ eine Kontraktion mit Faktor $|L|$, der Turm ist ein $g$-Orbit, sein Grenzwert der einzige Fixpunkt,
+      und $x=uY(uL)$ erfüllt $x=ue^{Lx}$. ($p=2$ analog mit $v_2(L)\ge2$.)
+  stuetzt_sich_auf: [ar.satz.padische_tuerme]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B5; e2_lambert_koenigs.py'}, {ref: shapiro2007, stelle: 'Prop. 5.4'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: aus dem Banachschen Fixpunktsatz und der Lagrange-Reihe von Y = e^{zY}.'
+    f2_benutzte_voraussetzungen: 'Konvergenz der p-adischen Exponentialreihe, Teichmüller-Zerlegung a = ω(a)⟨a⟩.'
+    f3_spezialfall: 'p-adisches Gegenstück zu fp.satz.lambert.'
+    f4_uebertragbar: 'Vielleicht auf gemischte Türme mit periodischen Basen (Fixpunkt eines Produkts von Kontraktionen).'
+    f5_neue_frage: 'Ist auch die Koenigs-Konstante κ_p(a) durch eine solche Reihe ausdrückbar?'
+  gegenbeispielsuche: '668 Fälle, 60 Stellen, $p\in\{2,3,5,7,11,13,101\}$; Gegenprobe 25 Stellen.'
+  bewertung: {richtigkeit: 'vollständig; 668 Fälle', neuheit: neu_ungeprueft, recherche: 'Verfeinert Shapiro–Shapiro Prop. 5.4; explizite Reihe dort und in OEIS nicht gefunden.', nutzen: 'Geschlossene Formel für den p-adischen Grenzwert; verbindet p-adische und reelle Türme.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verallgemeinert, ziel: ar.satz.padische_tuerme}
+    - {typ: analog_zu, ziel: fp.satz.lambert}
+
+- id: ar.satz.padisch_isometrie
+  titel: 'a ↦ α_p(a) ist klassenweise eine analytische Isometrie'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [padisch, turm]
+  bereich: 'Klassen von Basen mit gleichem $a\bmod p$ und gleichem stabilem Rest $c$ mod $p-1$'
+  aussage: |
+    Auf jeder Klasse ist $a\mapsto\alpha_p(a)$ lokal analytisch und **abstandstreu**: $v_p(\alpha_p(a')-\alpha_p(a))=v_p(a'-a)$. Insbesondere ist sie nirgends lokal konstant
+    und auf Klassen injektiv. Ableitung: $\alpha'(a)=\alpha^2/(a(1-\lambda))$, eine Einheit.
+  einfach: >-
+    Ändert man die Basis p-adisch ein wenig, ändert sich der Grenzwert des Turms um genau gleich viel — nicht mehr und nicht weniger.
+  beweis:
+    art: vollstaendig
+    text: |
+      Für $n\ge2$ hat der Koeffizient von $(z^n-z'^n)/(z-z')$ in $Y(z)-Y(z')$ Bewertung $\ge(n-1)-v_p(n!)>0$, also $v_p(Y(z)-Y(z'))=v_p(z-z')$. Gleiche Klasse ergibt gleiches $u$
+      und $L(a)-L(a')=\log_p\langle a/a'\rangle$ mit Bewertung $v_p(a-a')$.
+  stuetzt_sich_auf: [ar.satz.padisch_lambert]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B6; e2_lambert_koenigs.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Lambert-Formel.'
+    f2_benutzte_voraussetzungen: 'Bewertung der Koeffizienten von Y.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf κ_p(a) (vermutlich ebenfalls klassenweise analytisch).'
+    f5_neue_frage: 'Ist κ_p(a) als Funktion von a ebenfalls eine Isometrie oder hat sie Nullstellen der Ableitung?'
+  gegenbeispielsuche: '2 992 Fälle ohne Abweichung (E2b).'
+  bewertung: {richtigkeit: 'vollständig; 2 992 Fälle', neuheit: neu_ungeprueft, nutzen: 'Beschreibt die Abhängigkeit des Grenzwerts von der Basis vollständig.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: ar.satz.padisch_lambert}
+
+- id: ar.satz.padisch_koenigs
+  titel: 'p-adische Koenigs-Konstante: die nächsten Ziffern eines Turms laufen geometrisch, und V ist die Bewertung des Multiplikators'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [padisch, turm, multiplikator, schroeder]
+  bereich: '$g(x)=u\,e^{Lx}$ wie in ar.satz.padisch_lambert, Fixpunkt $\alpha=\alpha_p(a)$, $V=V_p(a)$'
+  aussage: |
+    (i) Der Multiplikator am Fixpunkt ist $\lambda=g'(\alpha)=\alpha\log_pa=\log_p\alpha$, und $v_p(\lambda)=V_p(a)$: **die Kongruenzgeschwindigkeit ist die Bewertung des Multiplikators.**
+    (ii) Die p-adische Koenigs-Konstante $\kappa_p(a)=\lim_n(a\uparrow\uparrow n-\alpha)/\lambda^n$ existiert und ist $\ne0$; $v_p(\kappa)=-V\,t_p(a)$ ($p$ ungerade), $v_2(\kappa)=v_2(a-1)$.
+    (iii) Ziffern-Gesetz: der erste noch nicht fertige Block $F_j(H)=\bigl((a\uparrow\uparrow H-\alpha)/p^{v}\bigr)\bmod p^j$ ist $\equiv\mathrm{unit}(\kappa)\,u^H$ mit $u=\mathrm{unit}(\lambda)$, also periodisch in $H$
+    mit Periode $\mathrm{ord}(u\bmod p^j)$. Beispiele (Einheitsteil von $\kappa$ mod $p^{12}$, letzte Ziffern): $\kappa_5(2)$: 207392627, $v=-2$; $\kappa_3(2)$: 485993, $v=-1$; $\kappa_2(3)$: 583, $v=1$.
+  einfach: >-
+    Nach den schon fertigen Ziffern eines Turms kommen Ziffern, die sich nach einem einfachen Muster ändern: Sie werden bei jeder Stufe mit derselben Zahl malgenommen.
+    Die Startzahl dieses Musters ist eine neue Konstante, die p-adische Koenigs-Konstante.
+  beweis:
+    art: vollstaendig
+    text: |
+      $g'(\alpha)=Lue^{L\alpha}=L\alpha=\log_p\alpha$ wegen $\alpha=a^\alpha$; $v_p(\lambda)=v_p(L)=V$. Da $0<|\lambda|<1$, gibt der Satz von Koenigs (gilt wörtlich in nichtarchimedischen Körpern) eine analytische
+      Linearisierung $\sigma(g(x))=\lambda\sigma(x)$ mit $\sigma(x)=x-\alpha+O((x-\alpha)^2)$; daraus $(a\uparrow\uparrow n-\alpha)/\lambda^n\to\kappa\ne0$ mit Fehler $O(|\lambda|^n)$. $v_p(\kappa)$ folgt aus ar.satz.padisch_bewertung;
+      der Block ist $\mathrm{unit}(\kappa)\mathrm{unit}(\lambda)^H\bmod p^j$, sobald der Fehler unter $p^{-j}$ liegt.
+  stuetzt_sich_auf: [ar.satz.padisch_bewertung, ar.satz.padisch_lambert, it.satz.koenigs]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B7, B8, B9; e2_lambert_koenigs.py, e3_hoehere_raenge.py, e6_block_profinit.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem Koenigs-Satz im Nichtarchimedischen, sobald man den Multiplikator kennt.'
+    f2_benutzte_voraussetzungen: 'Koenigs-Linearisierung über ℚ_p; ar.satz.padisch_bewertung für v_p(κ).'
+    f3_spezialfall: 'p-adisches Gegenstück zu it.satz.koenigs für den Turm.'
+    f4_uebertragbar: 'Auf jeden p-adisch anziehenden Fixpunkt, auch gemischte Türme.'
+    f5_neue_frage: 'Ist κ_p(a) geschlossen ausdrückbar (Reihe wie bei α_p)? Relationen zwischen κ_p(a) für verschiedene p?'
+  gegenbeispielsuche: 'E2c: 11 Paare bei 120 Stellen; E3b/E6a: 7 Paare, je ≥ 67 Höhen, keine Abweichung.'
+  bewertung: {richtigkeit: 'vollständig; numerisch bestätigt', neuheit: neu_ungeprueft, nutzen: 'Neue Invariante und ein Gesetz für die nächsten Ziffern; deutet V dynamisch.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: analog_zu, ziel: it.satz.koenigs}
+    - {typ: verwandt, ziel: br.satz.ripa}
+
+- id: ar.satz.pentation_block_konstant
+  titel: 'Bei der Pentation friert der erste unfertige Ziffernblock ein'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [padisch, hyperoperation]
+  bereich: '$a\uparrow\uparrow\uparrow n$ für grosse $n$; $\hat\alpha(a)\in\hat{\mathbb Z}$ der profinite Turmgrenzwert'
+  aussage: |
+    Der frische Block von $a\uparrow\uparrow\uparrow n$ ist für grosse $n$ **konstant** gleich $\mathrm{unit}(\kappa)\,u^{\hat\alpha(a)}\bmod p^j$: Bei der Tetration läuft er geometrisch, bei der Pentation steht im Exponenten
+    der Turmgrenzwert selbst. Dabei ist $\hat\alpha:\hat{\mathbb Z}\to\hat{\mathbb Z}$ (Turm $a\uparrow\uparrow\infty$ in allen Moduln zugleich) stetig mit $\hat\alpha(0)=0$, $\hat\alpha(1)=1$, $\hat\alpha(-1)=-1$.
+    Beispiel $p=5$, $a=2$: $\beta_4=357$.
+  einfach: >-
+    Bei der Tetration ändern sich die nächsten Ziffern noch von Stufe zu Stufe nach einem Muster. Bei der Pentation bleiben sie irgendwann ganz stehen,
+    weil die Höhen selbst Türme sind, deren Reste konstant werden.
+  beweis:
+    art: vollstaendig
+    text: 'Aus ar.satz.padisch_koenigs mit $H=M_n=a\uparrow\uparrow\uparrow(n-1)$: $M_n$ ist ein Turm, also modulo $\mathrm{ord}(u\bmod p^j)$ schliesslich konstant gleich $\hat\alpha(a)$ modulo dieser Ordnung.'
+  stuetzt_sich_auf: [ar.satz.padisch_koenigs, br.satz.turm_mod_m]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B10, B12; e6_block_profinit.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem Ziffern-Gesetz und der Stabilisierung der Höhen.'
+    f2_benutzte_voraussetzungen: 'ar.satz.padisch_koenigs, Türme modulo m.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf alle Ränge ab 5 (auch dort sind die Höhen Türme).'
+    f5_neue_frage: 'Gibt es eine Formel für die eingefrorenen Blöcke β_j über κ und α̂?'
+  gegenbeispielsuche: 'Direkte Prüfung unmöglich (Höhen zu gross); α̂ an drei Moduln bis 2.5·10⁸ geprüft.'
+  bewertung: {richtigkeit: 'vollständig', neuheit: neu_ungeprueft, nutzen: 'Zeigt einen qualitativen Unterschied zwischen Tetration und Pentation in den Ziffern.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: ar.satz.padisch_koenigs}
+    - {typ: verwandt, ziel: ar.kor.padisch_hoehere_raenge}
+
+- id: ar.satz.keine_padische_interpolation
+  titel: 'Ab Rang 4 gibt es keine p-adisch stetige Fortsetzung in der Höhe'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [padisch, hyperoperation, hoehe]
+  bereich: 'Hyperoperationen $H_r(a,n)$; Fortsetzung $F$ auf den p-adischen Abschluss einer Progression $n_0+d\mathbb N$'
+  aussage: |
+    Für $r\ge4$ ist $n\mapsto H_r(a,n)$ auf **keiner** arithmetischen Progression p-adisch stetig fortsetzbar. Die Ränge 1–3 dagegen interpolieren: $a+n$, $a\cdot n$ immer, $a^n$ für $a\equiv1\bmod p$
+    (sogar analytisch), sonst klassenweise mod $p-1$. Insbesondere gibt es keine p-adische Tetration mit Höhen in $\mathbb Z_p$; auch der Schröder-Weg scheitert, weil $\lambda^s=p^{Vs}u^s$ für $s\notin\mathbb Z$ nicht erklärt ist.
+  einfach: >-
+    Addition, Multiplikation und Potenz kann man p-adisch auf „Zwischenhöhen“ fortsetzen. Ab der Tetration geht das nie — gerade weil die Türme p-adisch zur Ruhe kommen.
+  beweis:
+    art: vollstaendig
+    text: 'Es gilt $n_0+dp^k\to n_0$ p-adisch und $\to\infty$ reell, also $F(n_0)=\lim H_r(a,n_0+dp^k)=\alpha$; ebenso $F(n_0+d)=\alpha$ — Widerspruch zu $H_r(a,n_0)<H_r(a,n_0+d)$, die als ganze Zahlen verschieden sind.'
+  stuetzt_sich_auf: [ar.kor.padisch_hoehere_raenge]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B11'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (zwei Zeilen) aus der p-adischen Konvergenz.'
+    f2_benutzte_voraussetzungen: 'Nur, dass H_r(a, n) p-adisch gegen α konvergiert und für verschiedene n verschieden ist.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Folge, die p-adisch konvergiert und nicht schliesslich konstant ist.'
+    f5_neue_frage: 'Gibt es ein p-adisches Gegenstück zur Kneser-Frage mit Höhen in einem anderen Ring, etwa mit p-adischer Abhängigkeit von der Basis?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, recherche: 'Dichotomie-Formulierung nicht gefunden; Inhalt elementar.', nutzen: 'Beantwortet die Frage nach einer p-adischen Tetration für Höhen in ℤ_p negativ.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: ar.satz.padische_tuerme}
+    - {typ: verwandt, ziel: br.satz.ripa}
+
+- id: ar.satz.ef_periode
+  titel: 'Die exponentielle Fakultät modulo m hat die kleinste Periode Λ̃(m) — die Carmichael-Kette mit gekapptem Zweieranteil'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [mod_m, turm]
+  bereich: '$EF(n)=n^{EF(n-1)}$, $EF(1)=1$; $\lambda$ die Carmichael-Funktion; $\tilde x$ = $x$ mit Zweieranteil auf höchstens $2^1$ gekappt'
+  aussage: |
+    $EF(n)\bmod m$ ist schliesslich periodisch mit kleinster Periode
+    $$P(m)=\tilde\Lambda(m)=\mathrm{kgV}_{j\ge0}\,\widetilde{\lambda^{j}(m)},\qquad\text{gleichwertig}\quad P(m)=\mathrm{kgV}\bigl(\tilde m,P(\lambda(m))\bigr).$$
+    Insbesondere $EF(n)\bmod2^k=[n\text{ ungerade}]$ für grosse $n$ (Periode 2). Beispiele: $P(5)=10$, $P(23)=2530$, $P(16)=2$, $P(100)=50$.
+    Vorperiode: $EF(n)\bmod m$ ist periodisch ab $N(m)\le6$ für alle $m<400$; $N(2^k)=6$ für $k\ge21$ (bewiesen bis $\approx EF(5)$), also ist $N$ unbeschränkt, wächst aber wie eine Umkehrung von $EF$.
+  einfach: >-
+    Die exponentielle Fakultät 1, 2, 9, 262144, … wird unvorstellbar gross. Ihre Reste modulo m wiederholen sich aber irgendwann, und wir kennen die genaue Länge
+    dieser Wiederholung: Man rechnet m, dann λ(m), λ(λ(m)), … und nimmt das kleinste gemeinsame Vielfache — mit gekappten Zweierpotenzen.
+  beweis:
+    art: vollstaendig
+    text: |
+      Obere Schranke: CRT; $p=2$: für gerades $n$ ist $EF(n)\equiv0$, für ungerades $n$ teilt $\lambda(2^k)$ den Exponenten, also $\equiv1$, d. h. $P(2^k)=2$. $p$ ungerade: $EF(n)\bmod p^k$ hängt nur von $n\bmod p^k$
+      und $EF(n-1)\bmod\lambda(p^k)$ ab. Untere Schranke: (ii) $p^k\mid P(p^k)$, weil $D=\mathrm{kgV}(p^{k-1},P(\lambda(p^k)))$ keine Periode ist (für $k=1$ Nullstellenmuster, für $k\ge2$ mit $n\equiv2\bmod p$:
+      $v_p((1+D/n)^e-1)=k-1<k$); (i) $P(\lambda(p^k))\mid P(p^k)$ durch Wahl von $n$ mit $q^j\mid\mathrm{ord}_pn$ und CRT. Abwickeln gibt $\tilde\Lambda(m)$.
+  stuetzt_sich_auf: [br.satz.turm_mod_m]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B13, B14, B15; e4_expfakultaet.py, e4b_perioden.py, e4c_vorperiode2.py'}, {ref: oeis_A127699}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Obere Schranke ja (Carmichael); die Gleichheit braucht die untere Schranke mit CRT-Argument.'
+    f2_benutzte_voraussetzungen: 'Carmichael-Funktion, CRT, LTE.'
+    f3_spezialfall: 'Gegenstück zur Periode von n↑↑∞ mod m (OEIS A127699), dort ohne Kappung des Zweieranteils.'
+    f4_uebertragbar: 'Auf andere absteigende Türme b_n^{b_{n−1}^{⋯}} mit b_n = f(n).'
+    f5_neue_frage: 'Genaue Formel für die Vorperiode N(m) (Sprünge bei N(2^k) für k = 3, 19, 21).'
+  gegenbeispielsuche: 'Alle 218 $m<260$ und 632 $m\in[260,1500)$ mit $\tilde\Lambda\le3\cdot10^4$: keine Abweichung.'
+  bewertung: {richtigkeit: 'vollständig; 850 Moduln', neuheit: neu_ungeprueft, recherche: 'In OEIS nicht gefunden; A127699 (Gegenstück für Türme) hat keine Kappung.', nutzen: 'Erste exakte Arithmetik der exponentiellen Fakultät modulo m.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: ar.satz.selbstpotenz_kongruenz}
+    - {typ: verwandt, ziel: ar.satz.ef_liouville}
+
+- id: ar.konstr.ef_profinit
+  titel: 'Profinite exponentielle Fakultät: Ê(0) = 0, Ê(−1) = Ê(1) = 1'
+  art: konstruktion
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [mod_m, padisch]
+  bereich: '$\hat{\mathbb Z}=\varprojlim\mathbb Z/m$; $\tilde\Lambda(m)$ und $N(m)$ wie in ar.satz.ef_periode'
+  aussage: |
+    $\hat E(x)\bmod m:=EF(n)\bmod m$ für $n\equiv x\pmod{\tilde\Lambda(m)}$, $n\ge N(m)$, definiert eine stetige Abbildung $\hat E:\hat{\mathbb Z}\to\hat{\mathbb Z}$ mit $\hat E(x)=x\star\hat E(x-1)$ und
+    $$\hat E(0)=0,\quad\hat E(1)=1,\quad\hat E(-1)=1,\quad\hat E(2)=(0;2,2,2,\dots)\ (\text{2-adisch }0,\text{ sonst }2),\quad\hat E_2(x)=[x\text{ ungerade}].$$
+    Im Sinn von TPID 2 ist „$EF(0)$“ profinit also 0, nicht $\gamma$: die profinite Fortsetzung beantwortet die reelle Frage nicht, zeigt aber $\hat E(-1)=\hat E(1)$.
+  einfach: >-
+    Man kann die exponentielle Fakultät auch für „Zahlen“ erklären, die gleichzeitig in allen Restklassen leben. Dort kommt bei 0 die Zahl 0 heraus und bei −1 die Zahl 1.
+  beweis:
+    art: vollstaendig
+    text: |
+      Verträglich, da $\tilde\Lambda(m)\mid\tilde\Lambda(m')$ für $m\mid m'$. $\hat E(0)=0$, weil $m\mid n$. $\hat E(-1)=1$: $n$ ungerade, $EF(n-1)$ gerade, $n\equiv-1\bmod p^k$, also $(-1)^{\rm gerade}=1$.
+      $\hat E(2)$: Exponent $\equiv\hat E(1)=1\bmod\lambda(p^k)$, also 2 in $\mathbb Z_p$ ($p$ ungerade), 0 in $\mathbb Z_2$.
+  stuetzt_sich_auf: [ar.satz.ef_periode]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/04_arithmetik/BERICHT.md, B16; e4c_vorperiode2.py'}, {ref: forum_tpid}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald die Periode bekannt ist.'
+    f2_benutzte_voraussetzungen: 'ar.satz.ef_periode (Verträglichkeit der Perioden).'
+    f3_spezialfall: 'Analog zum profiniten Turmgrenzwert α̂ (ar.satz.pentation_block_konstant).'
+    f4_uebertragbar: 'Auf jede Folge, die modulo jedem m schliesslich periodisch mit verträglichen Perioden ist.'
+    f5_neue_frage: 'Hat Ê weitere „schöne“ Werte, etwa bei −2 oder 1/2 ∈ ℤ̂ (für ungerade Moduln)?'
+  gegenbeispielsuche: 'Tabelle für $2^{20},3^{12},5^8,7^6,10^6$ (E4c).'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Profinite Antwort auf „EF(0)“; trennt die arithmetische von der analytischen Fortsetzung.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: ar.frage.ef_fortsetzung}
+    - {typ: verwandt, ziel: ar.satz.ef_null_ableitung}

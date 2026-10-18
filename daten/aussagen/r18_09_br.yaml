@@ -1,0 +1,75 @@
+gebiet: br
+# Runde 18.10.2026, Bericht 09: die Böttcher-Superfunktion eines Polynoms — natürlich, reell, fast gleich wie Kneser, aber nicht Kneser.
+# Rechnungen: forschung/runde_2026_10_18/09_superfunktionen/ (s7_boettcher.py, s8_scan.py).
+aussagen:
+
+- id: br.satz.boettcher_nicht_kneser
+  titel: 'Polynome haben eine zweite natürliche reelle Superfunktion (Böttcher, von ∞ her) — und sie ist nicht Knesers Lösung'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion, kneser_T, riemann_abbildung]
+  bereich: '$f(x)=x^d+c$, $d$ gerade, $f(x)>x$ auf $\mathbb R$ (z. B. $x^2+1$, $x^4+1$); Böttcher-Koordinate $\varphi$ mit $\varphi(f(w))=\varphi(w)^d$, $\varphi(w)\sim w$ bei $\infty$; Green-Funktion $G$ der gefüllten Julia-Menge $K$; Kneser-Superfunktion $S_K$ aus kn.satz.zoo_singulaerer_ort'
+  aussage: |
+    $S_B(z):=\varphi^{-1}\bigl(\exp(G(c)\,d^z)\bigr)$ ist eine reelle, reell-analytische Superfunktion von $f$ mit $S_B(0)=c$ und $S_B(-1)=0$ (Wurzelverzweigung bei $-2$),
+    genau wie $S_K$ — sie entspricht der regulären Iteration am superanziehenden Fixpunkt $\infty$. Trotzdem gilt $S_B\neq S_K$.
+    ($G(1)=0.40735452273948$ für $d=2$, $0.17707602108109$ für $d=4$.) Bei $e^x$ gibt es kein Gegenstück, weil $\infty$ dort wesentlich singulär ist.
+  einfach: >-
+    Bei Polynomen wie x²+1 gibt es zwei ganz verschiedene natürliche Arten, „halb so oft“ anzuwenden: eine kommt vom komplexen Fixpunkt (Kneser), die
+    andere aus dem Unendlichen (Böttcher). Beide sind reell und glatt. Man kann beweisen, dass sie nicht gleich sind.
+  beweis:
+    art: vollstaendig
+    text: |
+      Die kritische Bahn $0\to c\to\dots$ läuft nach $\infty$, also ist $K$ eine Cantor-Menge mit $K\cap\mathbb R=\emptyset$; $G\ge0$ ist harmonisch auf $\mathbb C\setminus K$,
+      $G=0$ auf $K$, $G=\log|\varphi|$ nahe $\infty$. Angenommen $S_B=S_K$. Dann ist $G(S_K(z))=G(c)\,\mathrm{Re}\,d^z$ nahe der reellen Halbgeraden. Sei $U_0$ die Komponente von
+      $\{z\in\mathbb H:S_K(z)\notin K\}$, die einen Streifen über $(-2,\infty)$ enthält; dort sind beide Seiten harmonisch, also gleich; wegen $G>0$ ist $\mathrm{Re}\,d^z>0$,
+      also $U_0\subset B_0=\{0<\mathrm{Im}\,z<\pi/(2\ln d)\}$. Randpunkte von $U_0$ in $\mathbb H$ hätten $\mathrm{Re}\,d^z=0$, die gibt es in $B_0$ nicht; also $U_0=B_0$.
+      Auf der Oberkante liegt dann die zusammenhängende Kurve $x\mapsto S_K(x+i\pi/(2\ln d))$ in der total unzusammenhängenden Menge $K$, ist also konstant — Widerspruch.
+      Gebraucht wird nur: $S_K$ holomorph auf $\mathbb H$, nicht konstant, reell auf $\mathbb R$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, B1 und B-B1 (Abschnitt 6); s7_boettcher.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; der Beweis braucht Green-Funktion, Cantor-Menge und ein Offen-abgeschlossen-Argument.'
+    f2_benutzte_voraussetzungen: 'Böttcher-Koordinate (it.satz.boettcher), K Cantor-Menge (kritische Bahn entkommt), S_K holomorph auf ℍ und nicht konstant.'
+    f3_spezialfall: 'Verwandt mit it.satz.karlin_mcgregor: reguläre Iterationen an zwei verschiedenen Fixpunkten (hier L und ∞) stimmen nicht überein.'
+    f4_uebertragbar: 'Auf jedes Polynom mit entkommender kritischer Bahn und reeller Superfunktion ohne reellen Fixpunkt.'
+    f5_neue_frage: 'Wie gross ist der Unterschied genau (br.beob.boettcher_kneser_abstand), und wo liegen die Singularitäten der Verbindungsfunktion p?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Erster Fall einer zweiten, ebenso natürlichen reellen Superfunktion neben Kneser; zeigt, dass „natürlich + reell-analytisch“ Kneser nicht festlegt.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: it.satz.boettcher}
+    - {typ: analog_zu, ziel: it.satz.karlin_mcgregor}
+    - {typ: verwandt, ziel: fg.def.boettcher}
+    - {typ: verwandt, ziel: kn.satz.zoo_singulaerer_ort}
+
+- id: br.beob.boettcher_kneser_abstand
+  titel: 'Böttcher und Kneser unterscheiden sich bei x²+1 nur um eine Verschiebung von 4.5·10⁻⁷ (Defekt E = 3.9·10⁻¹⁴)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [superfunktion, kneser_T, periodische_stoerung, fourier_moden]
+  bereich: '$S_B$, $S_K$ wie in br.satz.boettcher_nicht_kneser; $S_B(x)=S_K(x-1+p(x))$ mit 1-periodischem, reell-analytischem $p$; Defekt $E$ aus br.satz.reelle_kennzeichnung'
+  aussage: |
+    - $x^2+1$: $\max\lvert p\rvert=4.476914\cdot10^{-7}$, $\lvert\hat p(1)\rvert=1.4006\cdot10^{-7}$, $\lvert\hat\theta_B(-1)\rvert=1.401\cdot10^{-7}$, Defekt $E=2\sum m\lvert\hat\theta_B(-m)\rvert^2=3.92\cdot10^{-14}$;
+    - $x^4+1$: $\max\lvert p\rvert=2.199189\cdot10^{-4}$, $\lvert\hat p(1)\rvert=8.5462\cdot10^{-5}$, $\lvert\hat\theta_B(-1)\rvert=8.546\cdot10^{-5}$, $E=1.46\cdot10^{-8}$
+
+    (zwei Einstellungen gleich auf $6\cdot10^{-17}$, zwei Höhen gleich auf $10^{-16}$; das Rauschen liegt bei $10^{-16}$, also ist $S_B\neq S_K$ auch numerisch klar sichtbar.)
+    Scan $d=2$: $|\hat p(1)|=6.65\cdot10^{-8}$ ($c=0.5$), $1.40\cdot10^{-7}$ ($c=1$), $3.02\cdot10^{-7}$ ($c=2$). **Schwache Vermutung (5 Fälle):**
+    $|\hat p(1)|\approx e^{-2\pi\delta}$ mit effektiver Breite $\delta=2.39\ldots2.63$ ($d=2$) bzw. $1.49$ ($d=4$), grob passend zur Bandbreite $\pi/(2\ln d)=2.27$ bzw. $1.13$ aus dem Beweis,
+    mit $c$-abhängigem Vorfaktor. Läufe mit $c=4$, $d=4,c=2$ und $d=6$ scheiterten an Überlauf.
+  einfach: >-
+    Die beiden Lösungen von x²+1 sind zwar verschieden, aber auf der Zahlengeraden unterscheiden sie sich erst in der siebten Stelle. Für praktische
+    Rechnungen sind sie gleich — und doch ist nur eine davon „Kneser“. Das Fehlermass E aus der reellen Kennzeichnung sieht den Unterschied direkt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, B2, B3 und Abschnitt 6; s7_boettcher.py, s8_scan.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Böttcher-Reihe, Kneser-Löser in zwei Einstellungen, negative Moden auf zwei Höhen Y = 0.03 und 0.06.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jedes x^d + c mit entkommender kritischer Bahn; numerisch begrenzt durch Überlauf.'
+    f5_neue_frage: 'Gilt ln|p̂(1)| = −2πδ(c, d) + O(1) mit explizitem δ? Wo liegen die Singularitäten von p?'
+  bewertung: {richtigkeit: 'numerisch auf 10⁻¹⁶; Grössengesetz schwach belegt', neuheit: neu_ungeprueft, nutzen: 'Zeigt eindrücklich, wie nah eine andere natürliche Lösung an Kneser liegen kann; Testfall für den Defekt E.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: br.satz.boettcher_nicht_kneser}
+    - {typ: verwandt, ziel: br.satz.reelle_kennzeichnung}
+    - {typ: analog_zu, ziel: kl.beob.zwei_abel}
+    - {typ: analog_zu, ziel: kl.verm.streifenbreite}

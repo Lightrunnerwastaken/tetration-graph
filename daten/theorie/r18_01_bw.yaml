@@ -1,0 +1,131 @@
+# Theorie-Blöcke: Basiswechsel auf höheren Rängen (Runde 18.10.2026, Bericht 01). Bezeichnungen F, Φ, μ: bw.satz.phasengesetz.
+
+bw.satz.abschaelen_rang:
+  worum: |
+    Wie übersetzt man eine Pentation zur Basis $d$ in Pentationshöhen zur Basis $b$? Man schält Schritt für Schritt eine Stufe ab.
+  genau: |
+    $\mathrm{spog}_b(P_d(x+1))=1+\mathrm{spog}_b(F_{b,d}(P_d(x)))$ mit $F_{b,d}=\mathrm{slog}_b\circ T_d$; allgemein mit der Übersetzung eine Rechenart tiefer.
+  warum: |
+    Zwei Abel-Gleichungen hintereinander: $\mathrm{spog}_b\circ T_b=\mathrm{spog}_b+1$ und $T_d(P_d(x))=P_d(x+1)$.
+  beispiel: |
+    Auf Rang 4 ist der Schälschritt $\log_b\circ\exp_d$ einfach Multiplikation mit $\ln d/\ln b$; auf Rang 5 ist er $F_{b,d}\approx\mathrm{id}+\mu_4+$ Welle.
+  bilder: []
+  einordnung: |
+    Grundlage für [[bw.satz.phasengesetz_rang5]]; Rang-4-Fall in [[bw.satz.schwanzkonvergenz]].
+
+bw.satz.phasengesetz_rang5:
+  worum: |
+    Gilt das Phasengesetz des Basiswechsels ([[bw.satz.phasengesetz]]) auch für die Pentation?
+  genau: |
+    Ja: $\mathrm{spog}_b(P_d(x))-x\to\Phi_5(\{x\})$, $\Phi_5$ stetig und 1-periodisch mit Mittel $\mu_5$; der Konjugator $H=\lim\mathrm{slog}_b^{\circ n}\circ T_d^{\circ n}$ erfüllt $T_b\circ H=H\circ T_d$.
+  warum: |
+    Die Differenzen $H_{n+1}-H_n$ sind durch die beschränkte Rang-4-Abweichung $F(u)-u$ mal einer Ableitung von $\mathrm{slog}_b^{\circ n}$ an turmhohen Stellen beschränkt, also summierbar.
+  beispiel: |
+    $(b,d)=(e,2)$: $\mu_5=-0.9432744$, Spannweite der Welle $0.0193$ (auf Rang 4: $0.00029$).
+  bilder: []
+  einordnung: |
+    Folgt aus [[bw.satz.abschaelen_rang]]; Verallgemeinerung auf alle Ränge: [[bw.satz.phasengesetz_induktion]]; Glattheit: [[bw.verm.rang5_nirgends_diffbar]].
+
+bw.satz.phasengesetz_induktion:
+  worum: |
+    Das Phasengesetz für jeden Rang, nicht nur für Tetration und Pentation.
+  genau: |
+    Gilt es auf Rang $r-1$ (beschränkte Phase), so gilt es auf Rang $r$; Lücke bei den geraden, Kneser-artigen Rängen.
+  warum: |
+    Derselbe Summationsbeweis wie auf Rang 5, mit der tieferen Übersetzung als Schälschritt.
+  beispiel: |
+    Rang 6 und 7 für $(e,2)$: periodisch und unabhängig vom Abbruch auf $10^{-30}$.
+  bilder: []
+  einordnung: |
+    Schritt: [[bw.satz.phasengesetz_rang5]]; Zahlen: [[bw.beob.wellen_raenge]].
+
+bw.satz.fixpunkt_konjugator:
+  worum: |
+    Was bedeutet die Rang-5-Welle geometrisch?
+  genau: |
+    Der Konjugator $H$ schickt $L_d$ auf $L_b$; in Schröder-Koordinaten ist er $C\sigma_d^\kappa$ mal einem Faktor aus der Welle. Keine Welle heisst: reine Potenz.
+  warum: |
+    Für $x\to-\infty$ läuft die reguläre Pentation in den Fixpunkt; man setzt ihre Schröder-Darstellung in $\hat G(x)=x+\Phi_5(\{x\})$ ein.
+  beispiel: |
+    $\kappa(e,2)=\ln\lambda_e/\ln\lambda_2=1.13541$.
+  bilder: []
+  einordnung: |
+    Gegenstück zu [[kl.satz.basiswechsel_gleiches_L]] (gemeinsamer Fixpunkt, keine Welle); reelle Basen haben nie einen: [[bw.beob.kein_gemeinsamer_fixpunkt]].
+
+bw.beob.kein_gemeinsamer_fixpunkt:
+  worum: |
+    Kann ein reeller Basiswechsel der Pentation wellenfrei sein?
+  genau: |
+    Nein, soweit gemessen: der reelle Fixpunkt $L_b$ der Tetration fällt streng mit $b$.
+  warum: |
+    Gemessen an 11 Basen; nach [[bw.satz.fixpunkt_konjugator]] bräuchte eine wellenfreie Übersetzung einen gemeinsamen Fixpunkt.
+  beispiel: |
+    $L_2=-1.7439$, $L_e=-1.8504$, $L_{10}=-1.9859$.
+  bilder: []
+  einordnung: |
+    Pentationswerte: [[kn.beob.pentation_werte]].
+
+bw.satz.produktformel_rang5:
+  worum: |
+    Warum ist die Rang-5-Welle rauer als die Rang-4-Welle?
+  genau: |
+    Die Ableitung des Konjugators ist ein unendliches Produkt $\prod_j(1+\Phi_4'(T_d^{\circ j}y)+o(1))$; die Rang-4-Welle steckt auf jeder Ebene mit turmartig wachsender Frequenz.
+  warum: |
+    Exakte Kettenregel auf $H_{n+1}=\mathrm{slog}_b^{\circ n}\circ F\circ T_d^{\circ n}$; der Schälschritt $F$ hat die Ableitung $1+\Phi_4'$ statt einer Konstanten.
+  beispiel: |
+    $\theta=0.05$, $U_3=5.3\cdot10^8$: Quotient $-1=8.1454952\cdot10^{-4}$ gegen $\Phi_4'(U_3)=8.1454722\cdot10^{-4}$.
+  bilder: []
+  einordnung: |
+    Rang-4-Gegenstück: [[bw.satz.c1_produkt]]; Belege: [[bw.beob.skalensprung]]; Folgerung vermutet: [[bw.verm.rang5_nirgends_diffbar]].
+
+bw.beob.skalensprung:
+  worum: |
+    Sieht man die Produktstruktur in der Rechnung?
+  genau: |
+    Der Differenzenquotient von $\Phi_5$ ist auf groben und feinen Skalen konstant, dazwischen springt er um den Faktor $1+\Phi_4'(U_3)$.
+  warum: |
+    Bei Schrittweite $h\approx1/U_3'$ wird die nächste Ebene der Rang-4-Welle aufgelöst.
+  beispiel: |
+    $1.0657272\to1.0665953$, Verhältnis $1.000815$.
+  bilder: []
+  einordnung: |
+    Stützt [[bw.satz.produktformel_rang5]] und [[bw.verm.rang5_nirgends_diffbar]].
+
+bw.verm.rang5_nirgends_diffbar:
+  worum: |
+    Wie glatt ist die Welle des Basiswechsels ab Rang 5?
+  genau: |
+    Vermutet: stetig, aber nirgends differenzierbar, Stetigkeitsmodul $\sim h\,\mathrm{slog}(1/h)$.
+  warum: |
+    Jede Ebene trägt gleich viel zur Steigung bei, wie bei der Weierstrass-Funktion im Grenzfall $ab=1$; fehlen: Gleichverteilung der Folge $\{T_d^jy\}$ und ein Hardy-Lemma.
+  beispiel: |
+    Fourier-Moden fallen auf Rang 5 wie $k^{-1.3}$, auf Rang 4 exponentiell ($|a_{64}|=10^{-49}$).
+  bilder: []
+  einordnung: |
+    Auf Rang 4 streitet man über analytisch gegen $C^\infty$: [[bw.verm.nirgends_analytisch]], [[bw.verm.streifen]]; Mechanismus: [[bw.satz.produktformel_rang5]].
+
+bw.beob.wellen_raenge:
+  worum: |
+    Wie gross sind Welle und Mittel des Basiswechsels auf den Rängen 4 bis 7?
+  genau: |
+    Rang 5 rund 60-mal grösser als Rang 4, Ränge 6 und 7 gleich gross, aber zackiger; $\mu_r(e,2)$ nähert sich etwa $-0.919$.
+  warum: |
+    Gemessen über Konjugator-Ketten; die Grösse kommt aus dem Anlauf ([[bw.beob.anlauf_ursache]]).
+  beispiel: |
+    $\mu_4\ldots\mu_7(e,2)=-1.1284,\ -0.9433,\ -0.9202,\ -0.9192$; $|a_2/a_1|=0.0096,\ 0.090,\ 0.33,\ 0.51$.
+  bilder: []
+  einordnung: |
+    Rang-4-Werte: [[bw.beob.m2]], [[bw.satz.antwortkern]]; Hub-Additivität: [[bw.prop.hub]].
+
+bw.beob.anlauf_ursache:
+  worum: |
+    Setzt sich die Rang-5-Welle aus der Rang-4-Welle zusammen?
+  genau: |
+    Nein, nicht in führender Ordnung: rund 99 % stammen aus dem Anlauf von $F_{b,d}$ bei kleinen Höhen.
+  warum: |
+    Die Rang-4-Welle geht nur mit dem kleinen Gewicht $1/P_d'(\theta+m)$ ein ([[bw.satz.produktformel_rang5]], Einspeisegesetz).
+  beispiel: |
+    $c(U_1)-\mu_4=0.18$ bei $U_1=2$; Beitrag der Rang-4-Welle höchstens $7\cdot10^{-5}$ von $5\cdot10^{-3}$.
+  bilder: []
+  einordnung: |
+    Die Rang-4-Welle bestimmt die Glattheit ([[bw.verm.rang5_nirgends_diffbar]]), nicht die Grösse ([[bw.beob.wellen_raenge]]).

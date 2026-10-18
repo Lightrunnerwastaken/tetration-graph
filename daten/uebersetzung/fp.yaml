@@ -348,6 +348,39 @@
       The base $x_n$ whose $n$-story tower gives exactly $n$ approaches $\eta$. Here we measure how fast: The distance is almost exactly
       $10.49/n^2$. The constant is no coincidence. A tower with a base just above $\eta$ “sticks” near $e$ for a long time before it grows away —
       and how long it sticks is known from the theory of bottlenecks.
+- id: fp.beob.zufallsturm_verschmelzung
+  quelle_hash: 9a4a62c89b13
+  theorie_hash: 453eee013cdc
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: With uniformly distributed bases in (0, β) the tower converges even when all bases lie below Euler's bound e^(−e)
+    aussage: |-
+      For $\beta=0.035$–$0.05$ the tower converges in all runs already after $N\le64\,000$ levels; at $\beta=0.03$ it is still unmerged in $92/77/40\,\%$ of the runs after $N=16\mathrm k/64\mathrm k/256\mathrm k$.
+      The survival probability falls exponentially in $N$, with rate $\approx3.4\cdot10^{-5}$ ($\beta=0.035$), $4\cdot10^{-6}$ ($0.03$), $10^{-7}$ ($0.025$); at $0.015$–$0.02$ no merging up to $256\,000$.
+      The merging is a rare single event: $D_N$ jumps from $\approx1$ directly to $<10^{-300}$. The robust oscillation (fp.satz.zufallsturm_unter_eins, iii) does not apply here,
+      because bases arbitrarily close to 0 break every pair of traps. The naive Lyapunov exponent is no criterion (negative on both sides).
+    bereich: bases i.i.d. uniformly distributed on $(0,\beta)$, $\beta<e^{-e}=0.0660$; diameter $D_N$ as in fp.satz.zufallsturm_unter_eins
+    einfach: 'Euler knew: if the base is smaller than about 0.066, the tower oscillates forever between two values. But if one chooses the bases
+      randomly between 0 and 0.03, it settles down anyway — eventually, often only after very many levels. Randomness destroys the oscillation.'
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: 2 seeds, M = 200–1000 runs, exponential law fitted at 3 values of N.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To other distributions with mass arbitrarily close to 0.
+      f5_neue_frage: Does the tower converge almost surely for every β > 0 (fp.verm.zufallsturm_konvergenz), and how does the rate depend on β?
+    bewertung:
+      nutzen: 'Surprising behavior: randomness removes Euler''s divergence bound.'
+      richtigkeit: numerical, rate rough
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B4; z1_zufallsturm.py, z2_schwelle.py, z3_durchmesser.py
+  en_theorie:
+    einordnung: 'Counterpart to part (iii) of [[fp.satz.zufallsturm_unter_eins]]; conjecture: [[fp.verm.zufallsturm_konvergenz]].'
+    genau: It converges anyway (measured for $\beta\ge0.025$), but only after a rare merging event.
+    warum: Bases very close to 0 break the pair of traps around the 2-cycle; at some point the two limits suddenly coincide.
+    worum: 'Euler: the tower with a fixed base $a<e^{-e}\approx0.066$ oscillates. What if the bases lie randomly in $(0,\beta)$ with $\beta<e^{-e}$?'
 - id: fp.def.basenklassen
   quelle_hash: 7dd7dcb09dc8
   theorie_hash: fa9c507ad07b
@@ -1011,6 +1044,45 @@
       3. At $x=e^{-e}$, $\mu=1$ and both values coincide at $1/e$.
     worum: |
       Below $e^{-e}\approx0.066$ the tower jumps between two values. How do these two values depend on the base? Smoothly — they are even analytic.
+- id: fp.satz.horn_eta
+  quelle_hash: 06153f84ee74
+  theorie_hash: 075ac3b3e0a0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: At η the bases outside the Shell–Thron region form a thin horn of width ∝ (b − η)^{3/2}
+    aussage: |-
+      $$b-\eta=\frac\eta e\Bigl(\frac{t^2}2+\frac{it^3}6\Bigr)+O(t^4),\qquad\text{also}\qquad|\mathrm{Im}\,b|\approx\frac{\sqrt2\,e^{1/2}}{3\sqrt\eta}\,(\mathrm{Re}\,b-\eta)^{3/2}.$$
+      So the exterior of the Shell–Thron region (where one needs Kneser) touches $\eta$ as a cusp pointing left that opens like $(\mathrm{Re}\,b-\eta)^{3/2}$; all other bases
+      near $\eta$ lie in the interior. At $\mathrm{Re}\,b-\eta=0.01$ the horn is only $\pm6.5\cdot10^{-4}$ wide.
+    bereich: Shell–Thron boundary $b(t)=\exp(\lambda e^{-\lambda})$, $\lambda=e^{it}$, small $t$
+    einfach: Around the base η almost everything belongs to the region where the infinite tower has a limit. Only a very thin horn to the right
+      of η does not belong to it — and exactly there one needs Kneser's construction.
+    beweis:
+      text: |-
+        With $b=\exp(\lambda e^{-\lambda})$ (fp.satz.multiplikator_rezept) and $\lambda=e^{it}$: $\lambda e^{-\lambda}=e^{-1}(1+u)e^{-u}$ with $u=it-t^2/2-it^3/6+\dots$, and
+        $(1+u)e^{-u}=1-u^2/2+u^3/3+O(u^4)=1+t^2/2+it^3/6+O(t^4)$. So $\ln b-1/e=(t^2/2+it^3/6)/e$; real and imaginary parts eliminate $t$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, Taylor expansion of λe^{−λ} about λ = 1.
+      f2_benutzte_voraussetzungen: Only the boundary parametrization of the Shell–Thron region.
+      f3_spezialfall: 'Yes: cusp of the cardioid in λ, mapped by a map with a critical point at λ = 1.'
+      f4_uebertragbar: To every family with a parabolic boundary point at which the parameter map is critical.
+      f5_neue_frage: Explains why the regular tetration becomes wild at Im b ≈ 7·10⁻⁴ (δ = 0.01); shape of the buds at e^{2πip/q}.
+    bewertung:
+      nutzen: Shows how small the Kneser region near η is.
+      recherche: Cusp at η known; the 3/2 width is not entered in the graph, source not searched.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B1 and details B1
+  en_theorie:
+    beispiel: At $\mathrm{Re}\,b-\eta=0.01$ the horn is only $\pm6.5\cdot10^{-4}$ wide.
+    einordnung: 'Follows from [[fp.satz.multiplikator_rezept]]; region: [[fp.satz.shell_thron]]; meaning for the dependence on the base: [[kl.beob.kneser_fortsetzung_regulaer]].'
+    genau: $b-\eta=\frac\eta e(\frac{t^2}2+\frac{it^3}6)+O(t^4)$ for $\lambda=e^{it}$; the exterior is a horn with $|\mathrm{Im}\,b|\approx\frac{\sqrt2e^{1/2}}{3\sqrt\eta}(\mathrm{Re}\,b-\eta)^{3/2}$.
+    warum: The map $\lambda\mapsto\exp(\lambda e^{-\lambda})$ has a critical point at $\lambda=1$; the unit circle is folded into a cusp there.
+      Real and imaginary parts behave like $t^2$ and $t^3$.
+    worum: What exactly does the boundary of the Shell–Thron region look like at the cusp $b=\eta$?
 - id: fp.satz.kreismittel
   quelle_hash: 66485e87d471
   theorie_hash: 04a5826d570c
@@ -2380,6 +2452,86 @@
       The infinite tower $b^{b^{b^{\cdots}}}$ assigns a limit $y$ to every suitable base $b$. Can one reverse this — find, for
       a desired limit, the base? Yes, and the answer is astonishingly simple: $b=y^{1/y}$. But only as long as $y$
       lies between $1/e$ and $e$. Outside, the formula does deliver a base, but its tower ends up somewhere else.
+- id: fp.satz.zufallsturm_divergenz
+  quelle_hash: f7804224bf4c
+  theorie_hash: 5d642b1961b3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: A random tower with bases ≥ 1 diverges almost surely as soon as bases above η are possible and bases near 1 are not too frequent
+    aussage: |-
+      If $P(\ln a>1/e)>0$ and $P(\ln a\le\varepsilon)\le C\varepsilon^\kappa$ for some $\kappa>0$, then $T_\infty=\infty$ almost surely.
+      (With an atom at $a=1$, by contrast, the tower always converges.)
+    bereich: bases $a_n\ge1$ i.i.d., $c_n=\ln a_n$; $T_N=f_{a_1}\circ\dots\circ f_{a_N}(1)$
+    einfach: If now and then a base above e^(1/e) occurs and bases very close to 1 are rare enough, the random tower grows to infinity almost
+      surely.
+    beweis:
+      text: |-
+        The forward chain $X_{n+1}=\exp(c_{n+1}X_n)$ has the same distribution as $T_n$, and $T_n$ grows. With $p=P(c\ge c^*)>0$, $c^*>1/e$, after $r$ good steps $X\ge\exp_{c^*}^r(1)$;
+        from there $X_{k+1}\ge X_k^2$ fails only with probability $\le C(2\log X/X)^\kappa$, summable along $X^{2^k}$. So $P_x(X_n\to\infty)\ge\eta_0>0$ uniformly;
+        martingale convergence gives $X_n\to\infty$ almost surely, hence $P(T_\infty\le M)=\lim P(X_n\le M)=0$.
+    pruefung:
+      f1_folgt_unmittelbar: No; needs the forward chain and a martingale argument.
+      f2_benutzte_voraussetzungen: Independence, mass above η, power bound for bases near 1.
+      f3_spezialfall: Random version of fp.satz.turm_reell (divergence above η).
+      f4_uebertragbar: To stationary, weakly dependent sequences of bases (presumably).
+      f5_neue_frage: Where exactly is the threshold if bases near 1 are more frequent (fp.verm.zufallsturm_slog_schwelle)?
+    bewertung:
+      nutzen: First divergence criterion for random towers with bases above 1.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B3
+  en_theorie:
+    einordnung: 'Random version of [[fp.satz.turm_reell]]; threshold: [[fp.verm.zufallsturm_slog_schwelle]].'
+    genau: Almost surely, if bases above $\eta$ have positive probability and $P(\ln a\le\varepsilon)\le C\varepsilon^\kappa$.
+    warum: A few large bases drive the tower up; after that it squares itself at every step almost surely, because bases near 1 are too rare to
+      slow it down.
+    worum: 'Random bases $\ge1$: when does the tower grow to infinity?'
+- id: fp.satz.zufallsturm_unter_eins
+  quelle_hash: e833c40a24be
+  theorie_hash: 31a9e8b1b15d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Towers with changing bases in (0,1): at most two accumulation points, 0-1 law, and a robust two-cycle oscillation below e^(−e)'
+    aussage: |-
+      (i) The diameter $D_N$ of $I_N=f_{a_1}\circ\dots\circ f_{a_N}([0,1])$ decreases monotonically; $T_{2n}\to v$, $T_{2n+1}\to u$ with $[u,v]=\bigcap I_N$. The tower converges exactly when $D_N\to0$.
+      (ii) For i.i.d. bases, convergence is a 0-1 event.
+      (iii) **Robust two-cycle oscillation:** for every $a_0<e^{-e}$ there is $\varepsilon>0$ such that **every** sequence of bases in $[a_0-\varepsilon,a_0+\varepsilon]$ gives a divergent tower.
+    bereich: $T_N=f_{a_1}\circ\dots\circ f_{a_N}(1)$, $f_a(x)=a^x$, all $a_n\in(0,1)$; for (ii) bases independent and identically distributed
+      (i.i.d.)
+    einfach: If all bases lie between 0 and 1, the tower can at most jump back and forth between two values. Whether it settles down in the end
+      is, for random bases, either almost surely yes or almost surely no. If all bases lie near a number below e^(−e) ≈ 0.066, it always oscillates.
+    beweis:
+      text: |-
+        (i) All $T_M$ ($M\ge N$) lie in $I_N$, $I_{N+1}\subset I_N$, and $T_N$ is the upper or lower endpoint depending on parity.
+        (ii) $f_{a_1}$ has derivatives on $[0,1]$ between $a_1|\ln a_1|>0$ and $|\ln a_1|$, so $\{D_\infty=0\}$ is shift-invariant; ergodicity gives 0-1.
+        (iii) The 2-cycle $p<q$ of $f_{a_0}$ is attracting ($|f'(p)f'(q)|<1$); radii with $|f'(p)|r_p<r_q$, $|f'(q)|r_q<r_p$ give traps $I_p,I_q$ with $f_a(I_p)\subset I_q$, $f_a(I_q)\subset I_p$
+        for all $a$ near $a_0$; $T_N$ and $T_{N+1}$ land in different traps.
+    pruefung:
+      f1_folgt_unmittelbar: (i) yes (classical, nested intervals); (ii) from Kolmogorov's 0-1 law; (iii) trap-pair argument.
+      f2_benutzte_voraussetzungen: Monotonicity of a^x for a < 1; independence only for (ii).
+      f3_spezialfall: Generalizes the period-2 divergence of fp.satz.turm_reell to changing bases.
+      f4_uebertragbar: To every family of decreasing contractions; complex bases open.
+      f5_neue_frage: What happens if the bases do not lie in a small interval below e^(−e), but randomly down to near 0 (fp.beob.zufallsturm_verschmelzung)?
+    bewertung:
+      nutzen: Basis for random towers; (iii) shows when randomness does not destroy Euler's oscillation.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B1, B2 (part B)
+  en_theorie:
+    beispiel: '$a_0=0.05$: the 2-cycle of $0.05^x$ attracts, and every sequence of bases in $[0.05-\varepsilon,0.05+\varepsilon]$ oscillates.'
+    einordnung: 'Generalizes [[fp.satz.turm_reell]]; periodic bases: [[fp.satz.baker_rippon_periodisch]].'
+    genau: |-
+      Even and odd levels each converge on their own; convergence of the tower means that both limits are equal. For random bases this is almost surely or almost never the case.
+      If all bases lie near some $a_0<e^{-e}$, the tower always oscillates.
+    warum: '$a^x$ is decreasing for $a<1$, so every level reverses the order: the images of $[0,1]$ are nested intervals. Below $e^{-e}$ a pair
+      of traps around the 2-cycle holds the oscillation in place.'
+    worum: What happens to the tower $a_1^{a_2^{a_3^{\cdots}}}$ when the bases change but all lie in $(0,1)$?
 - id: fp.verm.bruch_mittel
   quelle_hash: 7bfde9f797ae
   theorie_hash: 7efe9ce89beb
@@ -2582,3 +2734,71 @@
     worum: |
       In the bud labeled $2/5$ the tower jumps between 5 values lying around the fixed point — and skips a neighbor each time:
       2 places further per step.
+- id: fp.verm.zufallsturm_konvergenz
+  quelle_hash: 80e63faa1502
+  theorie_hash: c063201ae179
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Conjecture: the tower with uniformly distributed bases in (0, β) converges almost surely for every β > 0'
+    aussage: |-
+      For every $\beta>0$ the tower with i.i.d. bases $\sim U(0,\beta)$ converges almost surely; the merging rate falls like $e^{-c/\beta}$.
+      Reason: bases arbitrarily close to 0 destroy every pair of traps around a 2-cycle; by the 0-1 law (fp.satz.zufallsturm_unter_eins) a positive probability of merging suffices.
+    bereich: as in fp.beob.zufallsturm_verschmelzung
+    einfach: Presumably the random tower always settles down, no matter how small the bases are — it only takes longer and longer.
+    gegenbeispielsuche: 'z1–z3: at β = 0.015–0.02 no merging up to N = 256 000 — no counterexample, but also no confirmation for small β.'
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Numerics fp.beob.zufallsturm_verschmelzung, 0-1 law.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every distribution with mass in every neighborhood of 0.
+      f5_neue_frage: Prove the rate e^(−c/β); complex random bases (random Shell–Thron region).
+    bewertung:
+      nutzen: Clear, testable conjecture on random towers.
+      richtigkeit: Conjecture, numerics for β ≥ 0.025
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B5
+  en_theorie:
+    einordnung: Supported by [[fp.beob.zufallsturm_verschmelzung]].
+    genau: 'Conjectured: yes, almost surely, with a merging rate of about $e^{-c/\beta}$.'
+    warum: By the 0-1 law a positive probability of merging suffices, and bases near 0 always offer a chance for that.
+    worum: Does the convergence of the random tower hold for every upper bound $\beta$, however small?
+- id: fp.verm.zufallsturm_slog_schwelle
+  quelle_hash: 83370ed591fe
+  theorie_hash: 182ecf9687e1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Conjecture: threshold with the super-logarithm — bases ≥ 1 with P(ln a ≤ ε) = κ/slog(1/ε): convergence almost surely exactly for κ
+      > 1'
+    aussage: |-
+      The tower converges almost surely if and only if $\kappa>1$.
+      Heuristic: in slog coordinates $Y=\mathrm{slog}X$, $Y$ rises by $1+o(1)$ per step as long as $c$ does not fall below $\approx1/X$; otherwise the chain jumps back to bounded height
+      (house-of-cards chain with fall-back probability $q_Y\approx G(1/\exp^Y(1))\approx\kappa/Y$). Positive recurrent $\iff\sum_k\prod_{j\le k}(1-q_j)<\infty\iff\kappa>1$.
+      Gap: error terms of the slog approximation and the fall-back distribution are not rigorously controlled.
+    bereich: bases $a_n\ge1$ i.i.d. with mass above $\eta$ and $G(\varepsilon)=P(\ln a\le\varepsilon)=\kappa/\mathrm{slog}(1/\varepsilon)$ near
+      0
+    einfach: How often may bases near 1 occur for the tower to stay finite after all? The conjectured boundary is described exactly with the super-logarithm
+      — tetration shows up here as a scale for probabilities.
+    gegenbeispielsuche: 'None: neither checked numerically nor searched for counterexamples (only derived heuristically).'
+    pruefung:
+      f1_folgt_unmittelbar: No; heuristic reduction to a house-of-cards chain.
+      f2_benutzte_voraussetzungen: slog approximation of the forward chain, recurrence criterion for house-of-cards chains.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To other slowly varying G; threshold in general Σ Π(1−q_j).
+      f5_neue_frage: Rigorous proof; what happens exactly at κ = 1?
+    bewertung:
+      nutzen: Connects random towers with the super-logarithm as a natural scale.
+      richtigkeit: derived heuristically, not checked numerically
+    quellen:
+    - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, B6
+  en_theorie:
+    einordnung: 'Complements [[fp.satz.zufallsturm_divergenz]]; super-logarithm: [[kn.def.slog]].'
+    genau: 'Conjectured: for $P(\ln a\le\varepsilon)=\kappa/\mathrm{slog}(1/\varepsilon)$ exactly for $\kappa>1$.'
+    warum: Measured in super-logarithm height, the tower grows by about 1 per step, and at height $Y$ it crashes with probability about $\kappa/Y$
+      — like a random walk with harmonic fall-back rate.
+    worum: How frequent may bases near 1 be for a random tower with bases $\ge1$ to stay finite?

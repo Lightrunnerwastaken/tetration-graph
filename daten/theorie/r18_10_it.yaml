@@ -1,0 +1,62 @@
+# Theorie-Blöcke: der Erzeuger J der Tetration (Runde 18.10.2026, Bericht 10, Teil A). Bezeichnungen σ, h, θ: kn.def.theta_welle.
+
+it.satz.kein_ganzer_erzeuger:
+  worum: |
+    Eine gebrochene Iteration von $b^z$ ist ein Fluss; sein Geschwindigkeitsfeld $J$ (Erzeuger, Julia-Funktion) erfüllt die lineare Gleichung $J(b^z)=\ln b\,b^zJ(z)$.
+  genau: |
+    Keine ganze oder meromorphe Funktion $J\not\equiv0$ erfüllt sie auf ganz $\mathbb C$.
+  warum: |
+    Die Gleichung zwingt $J$, höchstens linear zu wachsen, und das verträgt sich nicht mit dem Faktor $b^z$. Pole vererben sich auf alle Urbilder und würden sich häufen.
+  beispiel: |
+    Ansatz $J=\alpha w+\beta$: $\alpha e^{cz}+\beta=ce^{cz}(\alpha z+\beta)$ geht nur mit $\alpha=\beta=0$.
+  bilder: []
+  einordnung: |
+    Julia-Gleichung: [[it.lem.julia]]; wo die Singularitäten liegen müssen: [[it.satz.erzeuger_resonanz]].
+
+it.lem.erzeuger_starr:
+  worum: |
+    Wie viel Freiheit hat ein Erzeuger an einem Fixpunkt, an dem er glatt ist?
+  genau: |
+    Keine: $J=c\,J_p$ mit dem regulären Erzeuger $J_p=\log\lambda\,\sigma/\sigma'$.
+  warum: |
+    In der Schröder-Koordinate wird die Gleichung $K(\lambda u)=\lambda K(u)$, und deren einzige Potenzreihenlösungen sind $K=k_1u$.
+  bilder: []
+  einordnung: |
+    Folgt aus [[it.satz.koenigs]]; Baustein für [[it.satz.erzeuger_resonanz]] und [[it.satz.kneser_erzeuger]].
+
+it.satz.erzeuger_resonanz:
+  worum: |
+    Kann ein Erzeuger an zwei Fixpunkten zugleich glatt sein? Dann wäre er an beiden regulär — und die beiden regulären Iterationen gleich.
+  genau: |
+    Nur wenn $\lambda_p=\lambda_q^m$ für ein ganzes $m\neq0$. Für $b^z$ über $\eta$ (Paar $L,\bar L$) nie; bei Möbius immer ($m=-1$).
+  warum: |
+    Integriert man $1/J$ vom einen zum anderen Fixpunkt, werden die beiden regulären Superfunktionen affin verwandt; ihre Perioden $2\pi i/\log\lambda$ müssen dann zusammenpassen.
+  beispiel: |
+    Möbius: $\lambda_p\lambda_q=1$, also Resonanz $m=-1$, und tatsächlich liefern beide Fixpunkte dieselbe Iteration.
+  bilder: []
+  einordnung: |
+    Erklärt [[it.satz.moebius_iteration]], verwandt mit [[it.satz.karlin_mcgregor]]; Folgen: [[it.satz.kneser_erzeuger]], [[kl.satz.resonanzbasen]].
+
+it.satz.kneser_erzeuger:
+  worum: |
+    Knesers Tetration muss an $L$ singulär sein. Wie stark?
+  genau: |
+    $J_K=J_L(1+\theta'\circ\mathrm{slog}_K)$, und $J_K-J_L\sim C(w-L)^{1+2\pi i/L}$; bei Basis $e$ ist $\mathrm{Re}(1+2\pi i/L)=5.44695$, also $C^5$, nicht $C^6$.
+  warum: |
+    Nahe $L$ ist $e^{2\pi is}$ eine nichtganze Potenz $\sigma(w)^{2\pi i/L}$; das erste Fourier-Glied $a_1$ von θ erzeugt diese Potenz im Feld.
+  beispiel: |
+    Für Basis $1.45$ (nahe $\eta$) ist das Feld $C^{45}$, für Basis $10^6$ nur $C^3$.
+  bilder: []
+  einordnung: |
+    Konkreter Fall von [[it.satz.erzeuger_resonanz]]; θ-Struktur: [[kn.satz.theta_singularitaet]].
+
+it.satz.regulaerer_erzeuger_fortsetzung:
+  worum: |
+    Wie weit lässt sich der reguläre Erzeuger $J_L=L\sigma/\sigma'$ von $L$ aus fortsetzen?
+  genau: |
+    Längs jedes Weges, der die Bahn $\{0,1,e,e^e,\dots\}$ meidet; um 0 und 1 ändert er sich tatsächlich (numerisch).
+  warum: |
+    Man setzt $\sigma$ über iterierte Logarithmen fort: $\sigma(w)=L^n\sigma(\log^nw)$; die Logarithmen ziehen jeden Weg zu $L$ zusammen, solange sie nie 0 treffen.
+  bilder: []
+  einordnung: |
+    Gleiche Verzweigungsmenge wie bei [[kn.satz.zoo_singulaerer_ort]] und [[kn.satz.theta_singularitaet]].

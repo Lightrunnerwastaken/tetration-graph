@@ -1735,6 +1735,51 @@
     worum: |
       The super-logarithm $\operatorname{slog}_a$ is the inverse of the tetration: it tells **at what height** the tower reaches a given
       value. Its basic rules are the tower rules, read backward.
+- id: gr.satz.slog_logstern_welle
+  quelle_hash: a418e4f6ea8c
+  theorie_hash: 22bc59e416f3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: slog = linear log* + periodic wave in [−0.0078653, +0.0091705]; a limit of slog − log* does not exist
+    aussage: |
+      $$\mathrm{slog}(x)-\mathrm{slog}_{\mathrm{lin}}(x)=P\bigl(\mathrm{slog}\,x-\lceil\mathrm{slog}\,x\rceil\bigr),\qquad P(u)=u+1-\mathrm{sexp}(u)\ \text{on }[-1,0].$$
+      The wave $P$ is not constant, so $\mathrm{slog}(x)-\log^*x$ has no limit ("$\mathrm{slog}=\log^*x+c+o(1)$" is false). Numerically:
+      $\min P=-0.0078653491479050970569$ (at $u=-0.80655771470683940698$), $\max P=0.0091704769530226506576$ (at $u=-0.22232190393351360972$),
+      zero $-0.53308891039947058146$, mean $\int_{-1}^0P=\tfrac12-\int_{-1}^0\mathrm{sexp}=0.00078181717000866027139$.
+    bereich: Kneser's $\mathrm{slog}_e$ on $(0,\infty)$; $\mathrm{slog}_{\mathrm{lin}}(x)=n-1+\log^{[n]}x$ with $\log^{[n]}x\in(0,1]$ (linearly
+      interpolated $\log^*$)
+    einfach: The simple iterated logarithm (take the logarithm repeatedly until you are below 1, and add the remainder linearly) lies very close
+      to Kneser's superlogarithm. But the difference is not a fixed number; it is a small wave that keeps repeating and is never larger than 0.01.
+    beweis:
+      text: |
+        Both functions satisfy $A(e^x)=A(x)+1$, so the difference is 1-periodic in the height; on $[0,1]$ it equals $u-(\mathrm{sexp}(u)-1)=P(u)$ in $u=\mathrm{slog}\,x\in[-1,0]$.
+        If $P$ were constant, $\mathrm{sexp}$ would be linear on $[-1,0]$, by analyticity everywhere — a contradiction to $\mathrm{sexp}(1)=e$. Mean via gr.beob.integrale_kneser.
+        Numbers from two Taylor sets, equal to 20 digits.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, the form follows directly from the Abel equation; the bounds are computation.
+      f2_benutzte_voraussetzungen: Abel equation for slog and slog_lin, analyticity of sexp, Kneser values on [−1,0].
+      f3_spezialfall: Two Abel functions differ by a periodic function of the height (in general).
+      f4_uebertragbar: To every base b > η and every other tetration (another wave P).
+      f5_neue_frage: Does the wave P give a new real characterization of Kneser (e.g. via its extrema)?
+    bewertung:
+      nutzen: Exact, school-level description of slog by the iterated logarithm.
+      richtigkeit: Form complete; numbers numerical to 20 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B11 and Section 4; a11_slog_reell.py
+  en_theorie:
+    worum: |
+      How close is Kneser's superlogarithm to the simple iterated logarithm $\log^*$ (take the logarithm repeatedly until you are below 1)?
+    genau: |
+      $\mathrm{slog}-\mathrm{slog}_{\mathrm{lin}}=P(\text{fractional part of the height})$ with $P(u)=u+1-\mathrm{sexp}(u)$, $-0.0078653\le P\le0.0091705$; no limit.
+    warum: |
+      Both functions grow by exactly 1 at every $e^x$; so their difference repeats with period 1 in the height. On one period it is $P$, and $P$ is not constant.
+    beispiel: |
+      Mean of the wave: $\tfrac12-\int_{-1}^0\mathrm{sexp}=0.00078182$.
+    einordnung: |
+      Sharpens [[gr.satz.logstern]]; integral from [[gr.beob.integrale_kneser]]; application [[kn.kor.halbexp_band]].
 - id: gr.satz.slog_steigung_langsam
   quelle_hash: 2f5b8c1c9df5
   theorie_hash: b4e27f6585b2

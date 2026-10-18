@@ -273,6 +273,50 @@
       Two runs with different precision, contour, and number of points secure the digits.
     worum: |
       For every hyperoperation $H_r$ there is a limit base $\eta_r$: there $H_r(\eta_r,\cdot)$ touches the diagonal, and up to it the next hyperoperation stays bounded.
+- id: kn.beob.grosse_basis
+  quelle_hash: e642a2fe7f74
+  theorie_hash: df344640df8f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Kneser for large bases: T′(0) grows slowly, the inflection point moves to the left'
+    aussage: |
+      | $b$ | $T_b'(0)$ | $T_b''(0)$ | Inflection point $x_w$ |
+      |---|---|---|---|
+      | 2 | 0.889364954620976 | 0.0173530979307 | −0.0302445427536393 |
+      | 3 | 1.14909879145946 | 0.716664350009 | −0.603863714358098 |
+      | 5 | 1.40602362406508 | 1.62222718161 | −0.84692037022525 |
+      | 30 | 2.03120317345009 | 4.63385039301 | −1.11289628131011 |
+      | 100 | 2.33385048951909 | 6.47678151514 | −1.18188034423232 |
+      | 1000 | 2.78599024341557 | 9.67356140182 | −1.25479311682541 |
+      | $10^4$ | 3.1405112564132 | 12.5406025267 | −1.29677936033631 |
+
+      $x_w(2)$ matches the certified value. No law for the growth was found; $b=10^6$ fails in the engine.
+    bereich: real bases $2\le b\le10^4$, 30 digits
+    einfach: The larger the base, the steeper the tetration at 0 — but only slowly. Its bend (inflection point) keeps moving further left towards
+      −1.3.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: Engine at dps 30.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To the question of the limiting behavior for b → ∞.
+      f5_neue_frage: Does x_w(b) tend to a limit (−3/2? −2?) and does T′(0) grow like ln ln b?
+    bewertung:
+      nutzen: Values for large bases, starting point for an asymptotic analysis.
+      richtigkeit: numerical, 30 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B10; e9_grosse_basis.py
+  en_theorie:
+    einordnung: |
+      Supplements [[gr.beob.wendepunkte]] and [[gr.verm.ein_wendepunkt]].
+    genau: |
+      $T_b'(0)$: 0.889, 2.334, 2.786, 3.141 for $b=2,10^2,10^3,10^4$; inflection point $x_w$: $-0.030$, $-1.182$, $-1.255$, $-1.297$.
+    warum: |
+      Only measured (engine, 30 digits); no law for the growth has been found. $x_w(2)$ matches the certified value.
+    worum: |
+      How does Kneser's tetration behave for very large bases?
 - id: kn.beob.halbrang_basis2
   quelle_hash: fe58489aa07b
   theorie_hash: c63655b6d7ac
@@ -718,6 +762,45 @@
       The higher the level, the closer $\eta_N$ lies to 2, and at base 2 every level is exactly $x+1$-like at heights 1 and 2 (values 2 and 4).
     worum: |
       Measured values of the hyperoperations at their own limit bases, to the left of height 1.
+- id: kn.beob.motor_komplex_regulaer
+  quelle_hash: d7a9cf404a7e
+  theorie_hash: 1bc44b23c91a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: For complex bases inside the Shell–Thron region the engine computes the regular tetration, Kneser only in the horn to the right of
+      η
+    aussage: |
+      For bases inside the Shell–Thron region the engine yields the regular (Koenigs) tetration at the attracting fixed point: at $b=1.4\pm0.01i$ and $b=1.4+0.1i$ it agrees to 15 digits with
+      an independent Koenigs computation (regulaer.py), also at $z=0.5+3i$. It computes Kneser only outside, so near $\eta$ only in the thin
+      horn (fp.satz.horn_eta). On the circle around $\eta$ it therefore switches automatically between Kneser and regular. Kneser values below $b=\eta+10^{-4}$ fail at 40 digits (overflow).
+    bereich: Engine = fatou.gp fork (forschung/runde_2026_10_18/03_basis_ebene/motor.py); complex bases near the real axis
+    einfach: 'Our program for complex bases does not always compute Kneser: where the infinite tower has a limit, it computes the simpler regular
+      tetration. One has to know this before interpreting its numbers.'
+    pruefung:
+      f1_folgt_unmittelbar: No; property of the software.
+      f2_benutzte_voraussetzungen: Three bases, several heights, 15 digits.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Affects every computation with the engine at complex bases (monodromy, Paulsen comparison).
+      f5_neue_frage: Which solution does Paulsen 2019 choose inside the Shell–Thron region, and does it depend holomorphically on b?
+    bewertung:
+      nutzen: 'Warning and tool: inside, the engine is a checked regular computation.'
+      richtigkeit: numerical, 15 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/03_basis_ebene/BERICHT.md, B2; regulaer.py, motor.py
+  en_theorie:
+    beispiel: |
+      $b=1.4+0.1i$, $z=0.5+3i$: engine and regulaer.py agree to 15 digits.
+    einordnung: |
+      Important for comparisons with [[kn.satz.paulsen_komplex]]; shape of the Kneser region at $\eta$: [[fp.satz.horn_eta]].
+    genau: |
+      Inside the Shell–Thron region the regular tetration at the attracting fixed point (15 digits against our own Koenigs computation), Kneser only outside.
+    warum: |
+      Where an attracting fixed point exists, the method finds it; Kneser's construction needs a pair of fixed points without attraction.
+    worum: |
+      Which tetration does our program (fatou.gp fork) deliver for complex bases?
 - id: kn.beob.naeherungsleiter
   quelle_hash: fb0a79d0aa8a
   theorie_hash: 46e4649868c1
@@ -833,6 +916,50 @@
       With the construction from [[kn.konstr.pentation]] and Kneser values to 40 digits, pentation values can be computed accurately. J. D. Fox computed
       the same quantities in 2007 in the tetration forum with a completely different method (a huge matrix for the slog). Both computations
       agree to 22 digits — a strong sign that they describe the same function.
+- id: kn.beob.pentationswelle_singularitaet
+  quelle_hash: 7ae5a325aef6
+  theorie_hash: b9cbce084b3f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The wave between regular and Kneser-type pentation decays like e^(−2π·1.6902 n)/n — determined by the point where K₅ hits the fixed
+      point L₃
+    aussage: |
+      $\psi$ is analytic on $\mathbb R$, $c_0=3.4572\cdot10^{-6}$, $c_{-n}=\overline{c_n}$, $|c_{\pm1}|=2.80\cdot10^{-6}$. We have $c_{-n}=(\kappa_n/n)\,e^{2\pi inz_{L3}}$ with
+      slowly varying $\kappa_n$ ($|\kappa_n|=0.1145,\dots,0.1211$, $n=1\ldots14$), where $z_{L3}=-0.6181507204932638+1.6901945137048313i$ is the point with $K_5(z_{L3})=L_3$
+      (branch point of slog). So the decay is exactly $e^{-2\pi\cdot1.6902\,n}/n$ — a logarithmic singularity with a superlog-type correction; this explains the amplitude
+      $\sim10^{-5}$ from kn.beob.einheitliche_raenge. Opposite direction: $\chi=K_5^{-1}\circ P-z$ has its point at $P^{-1}(L_3)=-0.95762+1.87156i$; $\chi(z+\psi(z))=-\psi(z)$.
+      **Conjecture (rank scaling):** amplitude $\approx Ce^{-2\pi d_r}$ with the height $d_r$ of the nearest branch point, roughly $d_r\approx\pi/\ln\lambda_{r-1}$:
+      rank 5 gives $6.1\cdot10^{-6}$ (measured $2.8\cdot10^{-6}$), rank 7 gives $1.6\cdot10^{-4}$.
+    bereich: $b=2$; $P$ regular pentation (engine), $K_5$ Kneser-type pentation (e6 solver, $4\cdot10^{-10}$); $\psi=P^{-1}\circ K_5-z=\sum c_ne^{2\pi
+      inz}$; $L_3$ fixed point of $2^z$
+    einfach: 'The older and the new pentation differ only by a tiny wave. How tiny is fixed by a single point in the complex plane: the one where
+      the new pentation reaches the complex fixed point of 2^z. It lies high above the axis, which is why the wave is so small.'
+    pruefung:
+      f1_folgt_unmittelbar: No (measured); locally ψ ≈ 1 − z + ipent(slog(K₅(z))) with a logarithmic branch point of slog at L₃.
+      f2_benutzte_voraussetzungen: Lines y = 0.8/1.2/1.5/1.6 agree to 10⁻¹¹ (n = 1) up to 4·10⁻⁴ (n = 14); location from quotients to ≥ 4 digits,
+        Newton to 10⁻¹⁵; the series breaks down above y = 1.69.
+      f3_spezialfall: Same mechanism as kn.satz.theta_singularitaet (singularity where a solution hits an exceptional value).
+      f4_uebertragbar: To rank 7, as soon as a Kneser-type heptation exists (ihyper(7, kp) is degenerate).
+      f5_neue_frage: Recompute the rank scaling at rank 7.
+    bewertung:
+      nutzen: Explains the size of the wave between the two pentations.
+      richtigkeit: numerical; rank scaling is a conjecture with one data point
+    quellen:
+    - stelle: forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B10, B11 and Section 4; s5_psi5.py, s5b_psi5_hoch.py, s5c_hoehen.py
+  en_theorie:
+    beispiel: |
+      $z_{L3}=-0.61815+1.69019i$, $|c_1|=2.8\cdot10^{-6}$.
+    einordnung: |
+      Explains the amplitude from [[kn.beob.einheitliche_raenge]]; mechanism as in [[kn.satz.theta_singularitaet]].
+    genau: |
+      Its wave has coefficients $\sim e^{-2\pi\cdot1.6902n}/n$; the rate comes from the point $z_{L3}$ with $K_5(z_{L3})=L_3$, high above the axis.
+    warum: |
+      There slog has a logarithmic branch point; the higher it lies, the smaller the wave.
+    worum: |
+      Why do the regular and the Kneser-type pentation differ only by $10^{-6}$?
 - id: kn.beob.polynom_eckmode
   quelle_hash: 9c2c411e2391
   theorie_hash: 85f4d16a9f10
@@ -1106,6 +1233,46 @@
       3. For a large multiplier $|\mu|$ this happens already at reachable degrees; for Kneser's $|\mu|=1.17$ the rotation is so slow that it happens only at astronomical degrees.
     worum: |
       Does the conjecture hold in the sharpest version “uniformly up to the boundary $|x|=|L|$”? The computations up to degree 1500 say yes — but the behavior at the corner speaks against it, at some point.
+- id: kn.beob.rangverschiebung
+  quelle_hash: 863d3a4fbe5e
+  theorie_hash: af4144b98b76
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: A θ perturbation of one stage shifts the whole later ladder only by a fixed fraction of a rank
+    aussage: |
+      For the perturbed ladder, $H'_r=H_{r+c}+o(1)$ with **one** constant $c(\varepsilon)$, the same for $p_r$, $\lambda_r$ and the profile at 0.25 and 0.5 (4–5 digits):
+      $c(0.05)=-0.31022$, $c(-0.05)=+0.3067$, $c(0.01)=-0.06134$, cosine direction $c(0.01)=-0.07739$; gradient $(dc/d\varepsilon_{\sin},dc/d\varepsilon_{\cos})\approx(-6.13,-7.74)$, $c\approx-6.15\varepsilon-0.7\varepsilon^2$.
+      All remaining deviations fall per rank by about the factor $\mu_r\sim k/r$, hence super-exponentially ($\sim k^r/r!$): $c_r-c_\infty$ (from λ) $=1.6\cdot10^{-2},\ 4.8\cdot10^{-3},\ 1.4\cdot10^{-3},\ 4.0\cdot10^{-4},\ 1.0\cdot10^{-4}$ for $r=6\dots10$.
+    bereich: $b=\sqrt2$, Koenigs ladder; perturbation $H_4\mapsto H_4\circ\psi$ with $\psi=x+\varepsilon\sin2\pi x$ or $x+\varepsilon(1-\cos2\pi
+      x)$, from $H_5$ on Koenigs again
+    einfach: If one bends the tetration slightly without changing its integer values, then all later operations are almost exactly the same as
+      before — only shifted forward or backward by a piece of a rank.
+    pruefung:
+      f1_folgt_unmittelbar: No (computation).
+      f2_benutzte_voraussetzungen: Koenigs stages from $H_5$ on; interpolation of $\ln|Q-Q_\infty|$ in $r$ (edge error in the 4th digit from r
+        ≥ 13).
+      f3_spezialfall: No.
+      f4_uebertragbar: To other bases in the bounded range; open at $b=2$ (unbounded).
+      f5_neue_frage: Is $c$ an exact function of the perturbation (kn.verm.rangkoordinate)?
+    bewertung:
+      nutzen: Shows that the θ freedom high up in the ladder becomes a single number.
+      richtigkeit: numerical, 4–5 digits, several cross-checks
+    quellen:
+    - stelle: forschung/runde_2026_10_18/07_raenge/BERICHT.md, B5, B6, §5; koenigs_leiter.py, rangverschiebung.py
+  en_theorie:
+    beispiel: |
+      Measured from $p_r$, $\lambda_r$, $H(0.25)$ and $H(0.5)$, at rank 14 each gives $-0.3102$.
+    einordnung: |
+      Leads to [[kn.verm.rangkoordinate]]; compare [[kn.beob.halbrang_theta_grenze]].
+    genau: |
+      The perturbed ladder is asymptotically the unperturbed one, shifted by $c(\varepsilon)$ ranks; $c(0.05)=-0.31022$ at $b=\sqrt2$.
+    warum: |
+      Transverse deviations are damped per rank by $\mu_r\sim k/r$ (super-exponentially); only the motion along the slow direction remains.
+    worum: |
+      What does a small θ bending of the tetration do to the higher operations?
 - id: kn.beob.referenzwerte
   quelle_hash: dbe6b651491a
   theorie_hash: e1341202bed6
@@ -1375,6 +1542,50 @@
     worum: |
       The next pair after $(e_5,\eta_5)$: At which base does the **hexation** $b\uparrow\uparrow\uparrow\uparrow x$ touch the line $y=x$? The answer lies at $b\approx1.8$,
       that is above $\eta_5$ — there only the Kneser-type hexation from [[kn.frage.hexation_kneser]] exists.
+- id: kn.beob.taylor_drei_stufen
+  quelle_hash: b78075372bf0
+  theorie_hash: 63f333ba705e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'The remainder dₙ of the Taylor coefficients has three stages: saddle on the positive axis up to n ≈ 505, then the singularity at −3'
+    aussage: |
+      (i) For $n\lesssim500$ a Hayman saddle point on the positive axis governs the remainder: $d_n\approx g(R)R^{-n}/\sqrt{2\pi b(R)}$ with $Rg'(R)/g(R)=n$,
+      $R$ from 2.49 ($n=20$) to 3.23 ($n=500$), and $d_n>0$. Reason: $\mathrm{sexp}$ becomes huge at $z\approx3$ ($\mathrm{sexp}(3)\approx3.8\cdot10^6$).
+      (ii) Tipping point: predicted at $n\approx500$, measured $d_n>0$ up to $n=505$, from $n=506$ on sign $(-1)^n$.
+      (iii) After that the $\log\log$ singularity at $-3$ takes over: $d_n\approx(-1/3)^n/(n\log n)\cdot(1+(B-\gamma)/\log n+\dots)$, $B=\log3+g_0$.
+      From the center $-0.4$ (comparison circle only up to 2.3, $\mathrm{sexp}(2.3)\approx50$) stage (iii) is already visible at $n\approx60$–$80$ (deviation 0.7 % at $n=80$).
+    bereich: $d_n=c_n-(-1)^{n+1}/(n2^n)$ from kn.satz.taylor_darboux, base $e$
+    einfach: After subtracting the main part, a small remainder is left in the Taylor numbers. First it is determined by the huge growth of tetration
+      to the right of 0, and only from about the 506th number on by the point −3 on the left. Anyone who looks only at the first few hundred numbers
+      can therefore easily draw wrong conclusions.
+    pruefung:
+      f1_folgt_unmittelbar: No; saddle-point method and singularity analysis, confirmed numerically.
+      f2_benutzte_voraussetzungen: kn.satz.minus2_hebbar; g coefficients up to n = 640 from two settings (30 digits equal up to n = 520).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To other bases; the tipping point n*(b) depends on the growth of sexp_b on the positive axis.
+      f5_neue_frage: Rigorous proof of the saddle dominance; third and fourth term of the 1/log n series (measured ratio 1.128 stable for n =
+        520…640).
+    bewertung:
+      nutzen: Warns against extrapolations from a few hundred Taylor coefficients.
+      richtigkeit: derived + numerical; Hayman ratio 1.0042 at n = 400, tipping point predicted and measured
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B6 and Section 2.2; a2_sattel.py, a6_wechsel.py, a7_wechsel_pruef.py
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, T2, T3; s3b_zentren.py
+    - {}
+  en_theorie:
+    beispiel: |
+      The Hayman approximation hits $d_n$ to within 1.0042 at $n=400$.
+    einordnung: |
+      Remainder from [[kn.satz.taylor_darboux]]; singular part as in [[kn.kor.minus2_entwicklung]].
+    genau: |
+      Up to $n\approx505$ a saddle point on the positive axis ($d_n>0$), from $n=506$ the singularity at $-3$ ($d_n\approx(-1/3)^n/(n\log n)$).
+    warum: |
+      The Cauchy estimate contains the maximum of the function on the circle; $\mathrm{sexp}$ at $z\approx3$ is millions of times larger than at $-3$, so the singularity wins only late.
+    worum: |
+      What determines the small remainder $d_n$ of the Taylor coefficients?
 - id: kn.beob.tetra_euler
   quelle_hash: cf35024179ea
   theorie_hash: 0856b93d40b5
@@ -1457,6 +1668,91 @@
       this threshold the value is $e$. There the curve $b^x$ touches the line $y=x$. The same happens one level higher: The curve of tetration
       $x\mapsto{}^xb$ touches the line $y=x$ at exactly one base $\eta_4\approx1.6353$, at the point $e_4\approx3.0885$. And exactly up to $\eta_4$
       the infinite pentation has a value.
+- id: kn.beob.theta5_wachsende_koeffizienten
+  quelle_hash: d3ba3af951e0
+  theorie_hash: a9c6ce90fe7c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Kneser-type pentation at the attracting fixed point L₄: θ has growing coefficients and does not reach the real axis'
+    aussage: |
+      sexp₂ has no complex fixed point that is attracting for slog (9 starting values all run to $p$). $L_4$ is **attracting** for sexp: $\mu=0.154239+0.690508i$, $|\mu|=0.7075$.
+      The coefficients of $\theta_5$ **grow**: $|a_1|,\dots,|a_{10}|=2.88,\ 9.42,\ 27.2,\ 154,\ 705,\ 3357,\ 1.42\cdot10^4,\ 5.25\cdot10^4,\ 1.76\cdot10^5,\ 6.53\cdot10^5$,
+      rate $(\ln|a_n|-\ln|a_{n-4}|)/8\pi=0.27$–$0.28$. The θ series converges only for $\mathrm{Im}\,z>y_c\approx0.27$; $\theta_5$ does not reach $\mathbb R$.
+      The boundary is the edge of $\{z:H_5(z)\text{ in the basin of }L_4\}$ (1-periodic, because $\mathrm{sexp}^{\circ n}(H_5(z))=H_5(z+n)$); below it, points in the basin of $\bar L_4$ and escaping orbits are mixed
+      in a fractal way, highest point outside at $y\approx0.26$.
+    bereich: $b=2$; $H_5$ Kneser-type pentation from the Cauchy solver (kn.beob.einheitliche_raenge); $L_4=1.469818+1.664342i$ Kneser fixed point
+      of sexp; $\sigma$ Koenigs function at $L_4$; $\theta_5=\log_\mu\sigma(H_5)-z$
+    einfach: For pentation, tetration has only one attracting complex fixed point. If the wave is built there, it becomes wilder and wilder downward
+      and does not reach the real axis at all. So whether the fixed point repels or attracts decides whether a real wave exists.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured); consistent with kn.satz.kein_kneser_anziehend (at the attracting fixed point there is no real Kneser
+        representation).
+      f2_benutzte_voraussetzungen: e6 solver to 4·10⁻¹⁰; lines y = 0.30/0.35/0.5/0.7 agree for n ≤ 12 to 2·10⁻⁴; no negative modes (≤ 7·10⁻¹⁰);
+        map 100×25.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Presumably to the stage-6 hexation at the attracting fixed point of K₅ (unchecked).
+      f5_neue_frage: Is the edge of the basin a natural boundary of θ₅ (kn.verm.theta5_natuerliche_grenze)? Is there a Kneser-type pentation at
+        a repelling fixed point of a side branch?
+    bewertung:
+      nutzen: Shows why rank 5 has no real θ representation although the pentation itself is well defined.
+      richtigkeit: numerical
+    quellen:
+    - stelle: forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B8, B9 and Section 3; s3_theta5.py, s3b_wachstum5.py, s4_becken5.py,
+        s8_fixpunkte_sexp.py
+  en_theorie:
+    beispiel: |
+      $|a_{10}|=6.5\cdot10^5$.
+    einordnung: |
+      Boundary conjectured to be natural: [[kn.verm.theta5_natuerliche_grenze]]; solver: [[kn.beob.einheitliche_raenge]].
+    genau: |
+      No: at the attracting fixed point $L_4$ the coefficients grow like $e^{2\pi\cdot0.27n}$; the wave lives only above $\mathrm{Im}\,z\approx0.27$.
+    warum: |
+      The Koenigs function exists only on the basin of $L_4$; real points never lie in it ([[kn.satz.kein_kneser_anziehend]]).
+    worum: |
+      Is there a θ wave on the real axis for the Kneser-type pentation?
+- id: kn.beob.theta_basis_quasiuniversal
+  quelle_hash: 38f6d8771a3d
+  theorie_hash: 05940af85651
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Kneser's θ coefficients hardly depend on the base for small n — but asymptotically they do
+    aussage: |
+      $|a_1(b)|=0.088953$ ($b=1.45$), $0.089238$ ($1.5$), $0.090060$ ($2$), $0.090647$ ($e$), $0.091335$ ($4$), $0.091955$ ($10$), $0.092910$ ($100$), $0.093248$ ($1000$):
+      monotone and saturating, only 5 % variation. For $n=64$ the values lie between $5.12\cdot10^{-4}$ and $5.67\cdot10^{-4}$, $\arg a_n\approx-\pi/2+O(0.1)$.
+      $|a_n(e)|/|a_n(2)|=1.0065$ ($n=1$) … $1.0050$ ($n=4096$). **No law:** by the leading term from kn.satz.theta_koeffizienten the ratio fluctuates for astronomical $n$
+      between $0.49$ and $3.3$ (e.g. $0.83$ at $\ln\ln n=10$, $1.63$ at $15$), because $b$ enters via $h_b'$ at a point of size $\mathrm{slog}_b(\ln\ln n)$.
+    bereich: Kneser tetration, bases $b\in[1.45,1000]$; $\theta=\sum a_nq^n$ as in kn.def.theta_welle
+    einfach: 'The first oscillations of the Kneser wave are almost equally strong for all bases, from 1.45 to 1000. But that is no law of nature:
+      for unimaginably fine oscillations the bases drift apart.'
+    pruefung:
+      f1_folgt_unmittelbar: The non-universality follows from kn.satz.theta_koeffizienten; the quasi-universality for small n is measured and
+        unexplained.
+      f2_benutzte_voraussetzungen: dps 30, y = 0.1, N = 256; base 2 and e against the 44-digit stage-2 values to ≥ 8 digits.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: The question also arises for the hexation wave (base dependence of C₆).
+      f5_neue_frage: Why is a_n almost independent of the base for small n? Limit functions for b → η⁺ and b → ∞?
+    bewertung:
+      nutzen: Answers the question about base independence from stage 2 (no).
+      richtigkeit: numerical
+    quellen:
+    - stelle: forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B12, B13 and Section 5; d1_universal.py, d2_basen.py
+  en_theorie:
+    beispiel: |
+      $|a_1(2)|=0.090060$, $|a_1(e)|=0.090647$.
+    einordnung: |
+      Coefficients: [[kn.beob.theta_fourier_algebraisch]].
+    genau: |
+      For small $n$ hardly ($|a_1|$ varies from $b=1.45$ to $1000$ by only 5 %), for astronomical $n$ clearly (ratio between 0.5 and 3.3).
+    warum: |
+      By [[kn.satz.theta_koeffizienten]] the base enters only deep in the nesting, via $\mathrm{slog}_b(\ln\ln n)$. Why the first coefficients are so similar is open.
+    worum: |
+      Does Kneser's wave depend on the base?
 - id: kn.beob.theta_fourier_algebraisch
   quelle_hash: 451c379c5a8c
   theorie_hash: d32fbe474d03
@@ -1605,6 +1901,127 @@
     worum: |
       The infinite tower $b^{b^{\cdots}}$ has a value up to $\eta$, the infinite pentation up to $\eta_4$ — and the infinite hexation $b\uparrow\uparrow\uparrow\uparrow\infty$ exactly up to $\eta_5$.
       Each level has its own limiting base, and every time it is the number at which the level below touches the line $y=x$.
+- id: kn.beob.zoo_ableitung_nullstellen
+  quelle_hash: e2380545b081
+  theorie_hash: dde190ed86b5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'S′ ≠ 0 in the upper half-plane is a peculiarity of eˣ: the superfunction of x²+1 has zeros, only 1+θ′ ≠ 0 is universal'
+    aussage: |
+      $S_K(x^2+1)$ has in $\mathbb H$ the zero $z_0=2.1799322204542+2.5972861621226\,i$; $S_K(x^4+1)$ has the zeros
+      $1.0435923930395+1.3498560554128\,i$, $2.15828+1.11638\,i$, $2.40764+1.28052\,i$ (Newton, $|S|<10^{-15}$, two settings equal to 13 digits).
+      Because $S'(z+1)=f'(S(z))S'(z)$, there $S(z_0+1)=v$ and $S'(z_0+1)=0$. For $e^x$, on the other hand, neither $S$ nor $S'$ has a zero in $[-6,2]\times(0,8]$
+      (argument principle; $S'\neq0$ is proved in kn.satz.ableitung_nullstellenfrei), because $F$ omits the value 0, which is not so for polynomials.
+      Universal, on the other hand, is $1+\theta'\neq0$ in $\{\mathrm{Im}\,z>0.01\}$ for all four maps (winding number 0 to $10^{-15}$, $|1+\theta'|\ge0.69$):
+      the zeros of $S'$ come from critical points of $F$, not from $\theta$. So the right general statement is
+      “$z\mapsto z+\theta(z)$ is locally invertible in $\mathbb H$”; for $e^x$ this is equivalent to $S'\neq0$. For $\cosh$ no zero was found in $\mathrm{Re}\,z\le3$; further right it is open.
+    bereich: Kneser superfunctions $S_K$ of $x^2+1$, $x^4+1$, $\cosh$ and $e^x$ in $\mathbb H$; $S'=F'(z+\theta)\,(1+\theta')$
+    einfach: For eˣ the slope of the Kneser solution never becomes zero in the complex plane. For x²+1 it does — at an exactly computed place.
+      This is not due to the wave θ but to the ordinary solution underneath. The wave itself behaves equally well-behaved for all maps.
+    pruefung:
+      f1_folgt_unmittelbar: The mechanism yes (S = 0 at z gives S′ = 0 at z+1, as soon as f′(0) = 0); the location of the zeros is measured.
+      f2_benutzte_voraussetzungen: Newton on the Kneser solver, argument principle on rectangles [x₀, x₀+1] × [0.02, 8].
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every map whose Poincaré function has critical points (e.g. cosh via the preimages of iπk).
+      f5_neue_frage: Does S_K(cosh) have zeros further right? Can 1+θ′ ≠ 0 in ℍ be proved in general?
+    bewertung:
+      nutzen: Shows which assumption the mean-value laws really need (1+θ′ ≠ 0 instead of S′ ≠ 0).
+      richtigkeit: numerical, 13 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, A1, A2 and Section 4; s5_nullstellen.py, s5b_rechts.py, s5c_w.py, s5d_pruef.py
+  en_theorie:
+    beispiel: |
+      $S(z_0)=0$ and $f'(0)=0$ give $S'(z_0+1)=f'(S(z_0))S'(z_0)=0$.
+    einordnung: |
+      Counterpart of [[kn.satz.ableitung_nullstellenfrei]]; cause [[it.satz.poincare_polynom_surjektiv]].
+    genau: |
+      No: $S_K(x^2+1)$ becomes zero at $2.17993+2.59729\,i$, hence $S'$ one step further right. In general only $1+\theta'\neq0$ holds.
+    warum: |
+      $S'=F'(z+\theta)(1+\theta')$. For polynomials $F$ has critical points (because $F$ hits every value, including the critical value), for $e^x$ it does not. θ itself stays well-behaved.
+    worum: |
+      For $e^x$, $\mathrm{sexp}'$ never becomes zero in the upper half-plane. Does this hold in general?
+- id: kn.beob.zoo_mittelwerte
+  quelle_hash: e2e123e5c101
+  theorie_hash: dc6f93151733
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Kneser's mean-value laws also hold for the superfunctions of x²+1, x⁴+1 and cosh
+    aussage: |
+      For $e^x$, $x^2+1$, $\cosh x$ and $x^4+1$, the following hold to $10^{-10}$ up to $10^{-15}$:
+      no negative Fourier modes of $\theta$, $M[\theta^2]=M[\theta]^2$, $M[e^{i\theta}]=e^{iM[\theta]}$, σ product $=1$,
+      $M[1/(1+\theta')]=1$ (i.e. $\int\mathrm{slog}'^2/h'=1$) and $M[\log(1+\theta')]=0$.
+      A superfunction $T(x)=S(x+10^{-4}\sin2\pi x)$ bent by $10^{-4}$ violates each of these laws by $10^{-6}$ up to $10^{-4}$.
+      Reason: the mean-value principle (kn.satz.theta_mittelwerte) needs only $\theta$ holomorphic and periodic in $\mathbb H$ with a limit at the top and an integrable
+      majorant; for $d<\infty$, $\theta$ is bounded (Puiseux), so the majorant is trivial. The laws with $1+\theta'$ additionally need $1+\theta'\neq0$ in $\mathbb H$
+      (kn.beob.zoo_ableitung_nullstellen). The characterization by the defect $E$ (br.satz.reelle_kennzeichnung) also carries over verbatim — provided the
+      uniqueness of Paulsen–Cowgill holds for these $f$ (not proved).
+    bereich: Kneser superfunctions under (V) (kn.satz.zoo_singulaerer_ort); mean $M[G]=\int_{-1}^0G$
+    einfach: The beautiful integral formulas that only Kneser's tetration satisfies hold just the same for the Kneser solutions of x²+1, x⁴+1
+      and cosh. So they are not an accident of the exponential function but follow from the construction alone. Even a tiny bending destroys them.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the mean-value principle as soon as θ is holomorphic, periodic and bounded; the numbers confirm this.
+      f2_benutzte_voraussetzungen: Gauss–Legendre on [−1, 0] with smoothing of the root ends, 300/200 nodes, two solver settings.
+      f3_spezialfall: 'Yes: application of kn.satz.theta_mittelwerte to other maps.'
+      f4_uebertragbar: To every map with (V).
+      f5_neue_frage: Does the uniqueness (Paulsen–Cowgill) hold for general f with (V), so that E = 0 characterizes there too?
+    bewertung:
+      nutzen: Separates the universal Kneser laws from those peculiar to eˣ.
+      richtigkeit: numerical 10⁻¹⁰…10⁻¹⁵, derivation short
+    quellen:
+    - stelle: forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, U4 and Section 3 (table); s4_mittel.py
+  en_theorie:
+    einordnung: |
+      Application of [[kn.satz.theta_mittelwerte]]; the formulas with $1+\theta'$ need [[kn.beob.zoo_ableitung_nullstellen]]; characterization: [[br.satz.reelle_kennzeichnung]].
+    genau: |
+      No: they hold for $x^2+1$, $x^4+1$, $\cosh$ to $10^{-10}$ up to $10^{-15}$; a bending by $10^{-4}$ violates them by $10^{-6}$ up to $10^{-4}$.
+    warum: |
+      The mean-value principle needs only that θ is holomorphic, periodic and bounded enough at the top — the construction provides this for every $f$ with (V).
+    worum: |
+      Are Kneser's integral formulas ($M[\theta^2]=M[\theta]^2$, $\int\mathrm{slog}'^2/h'=1$ …) a peculiarity of $e^x$?
+- id: kn.beob.zoo_wendepunkt
+  quelle_hash: 62a6b90719a3
+  theorie_hash: 500929ede359
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The Kneser superfunctions of x²+1, cosh and x⁴+1 also have exactly one inflection point
+    aussage: |
+      Each of the four superfunctions has exactly one inflection point $x_w$ (two settings equal to $\le4\cdot10^{-15}$):
+      $x^2+1$: $-1.260116574678058$; $\cosh$: $-0.747584443746352$; $x^4+1$: $-1.308589915241198$; $e^x$: $-0.521764792623339$ (certificate gr.satz.ein_wendepunkt_e2: $-0.521764792623322$).
+      Reason: from $S''(x+1)=f''(S)S'^2+f'(S)S''$ it follows, as for $e^x$: if $S''(x)\ge0$, then $S''(x+1)>0$; if $S''(x+1)\le0$, then $S''(x)<0$ (for $x>-2$).
+      So a single sign change on a stretch of length $>1$ suffices; found on $(-1.99,1]$, with $S''\ge0.019$ on $(x_w+0.05,1]$ and $S''<0$ near $-2$.
+      Computer-assisted in floating point, not certified with intervals.
+    bereich: Kneser superfunctions $S$ on $(-2,\infty)$ with normalization $S(-1)=v$; $f'>0$ and $f''>0$ on $(0,\infty)$, $S>0$ on $(-2,\infty)$
+    einfach: 'The Kneser curves of x²+1, cosh and x⁴+1 change their curvature exactly once, just like Kneser''s tetration. The reason is the same
+      simple argument: once the curve is curved upward, it stays so one unit further right as well.'
+    pruefung:
+      f1_folgt_unmittelbar: The propagation yes (the same lemma as for eˣ); the one sign change on (−1.99, 1] is measured.
+      f2_benutzte_voraussetzungen: f′, f″ > 0 on S((−2, ∞)); values of the Kneser solver in floating point.
+      f3_spezialfall: 'Yes: the same propagation as in gr.satz.ein_wendepunkt_e2.'
+      f4_uebertragbar: To every superfunction with f′, f″ > 0 on its real range of values.
+      f5_neue_frage: Certify with ball arithmetic as for eˣ; does it hold for all x² + c with c > 1/4?
+    bewertung:
+      nutzen: Shows that the one-inflection-point property is no eˣ accident.
+      richtigkeit: computer-assisted, floating point
+    quellen:
+    - stelle: forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, W and Section 5; s6_wendepunkt.py
+  en_theorie:
+    einordnung: |
+      Same argument as [[gr.satz.ein_wendepunkt_e2]]; conjecture for Kneser: [[gr.verm.ein_wendepunkt]].
+    genau: |
+      Yes (computer-assisted): $x^2+1$: $-1.26012$, $\cosh$: $-0.74758$, $x^4+1$: $-1.30859$ (normalization $S(-1)=v$).
+    warum: |
+      $S''(x+1)=f''(S)S'^2+f'(S)S''$ with $f',f''>0$: positive curvature propagates to the right, negative to the left; a sign change on a stretch of length > 1 suffices.
+    worum: |
+      Do the Kneser superfunctions of other maps, like $\mathrm{sexp}$, have exactly one inflection point?
 - id: kn.beob.zwischenwerte_basis2
   quelle_hash: ce3c7b19539e
   theorie_hash: c9a16aae8c5a
@@ -2090,6 +2507,35 @@
       No proof known; the bound is estimated from computations in the forum.
     worum: |
       “Fake functions” are entire functions with positive coefficients that mimic a given growing function. TPID 17 asks about the quality of a method for this.
+- id: kn.gescheitert.konvexitaetsweg
+  quelle_hash: 32066fe397a4
+  theorie_hash: 5960c2ce0ef1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Convexity route to TPID 10 blocked: the critical stages F_N are not convex on [1, 2] from N = 5 on (S-shape)'
+    aussage: |
+      $F_N(1.5)-\tfrac12(F_N(1)+F_N(2))=-0.0072$ ($N=4$), $+0.0048,\ +0.0122,\ +0.0171,\ +0.0206$ ($N=5\dots8$): from $N=5$ on, $F_N$ lies in the middle of $[1,2]$
+      **above** the chord; also on $[0,1]$, $F_N(0.5)$ lies above the chord. $F_N$ is concave on $[0,2]$ and convex only after that — consistent with the ramp $\min(x+1,b)$.
+      So the assumption of kn.satz.konvex_eta_grenze does not hold for the chains chosen. Side finding (also negative): $(4-e_r)/(2-\eta_r)=2.308,\ 2.499,\ 2.660,\ 2.777,\ 2.849,\ 2.877$
+      ($r=3\dots8$) with almost linearly decreasing increments — more like a maximum than a limit constant 3.
+    bereich: critical stages $F_N=H_N(\eta_N,\cdot)$ of the continuation chain, $N=4\dots8$ (profile data rang_gamma, ~20 digits)
+    einfach: 'The proof route via curvature does not work: the true stages are first curved downward and then upward, like a sideways S.'
+    quellen:
+    - stelle: forschung/runde_2026_10_18/07_raenge/BERICHT.md, B9, B10, §4; eta_values.csv
+  en_theorie:
+    beispiel: |
+      $N=8$: $F_8(1.5)-\tfrac12(F_8(1)+F_8(2))=+0.0206$.
+    einordnung: |
+      Blocks [[kn.satz.konvex_eta_grenze]] for the true chains; consistent with [[kn.verm.grenzprofil_rampe]].
+    genau: |
+      No: from $N=5$ on, $F_N(1.5)$ lies above the chord ($+0.0048\dots+0.0206$).
+    warum: |
+      The stages approach the ramp $\min(x+1,b)$, which has a downward kink at the top; this forces an S-shape.
+    worum: |
+      Are the critical stages convex, as the conditional theorem needs?
 - id: kn.gescheitert.mischkurve
   quelle_hash: 87a4d141de07
   theorie_hash: d4d3ef174d4a
@@ -3095,6 +3541,178 @@
       Numerator and denominator are both $\ln\varepsilon/\ln(\text{base})+$ bounded ([[kn.satz.singulaer_minus2]]). Divide by $\ln\varepsilon$: the constants vanish.
     worum: |
       Near $-2$ all tetrations fall like a logarithm, but with different steepness. The ratio of two bases tends to the ratio of their logarithms.
+- id: kn.kor.doppelreihe_oben
+  quelle_hash: eb7c3ca5df48
+  theorie_hash: 91ecb9c74ba3
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Above, sexp is a convergent double series in e^(Lz) and e^(2πiz); the pure e^(kLz) coefficients are pₖκᵏ
+    aussage: |
+      $$\mathrm{sexp}(z)=L+\sum_{k\ge1,\,m\ge0}p_k\kappa^k\,e_{k,m}\,e^{(kL+2\pi im)z},\qquad e_{k,m}=[q^m]\exp\bigl(kL(\theta(q)-a_0)\bigr),$$
+      absolutely convergent on the whole upper half-plane. So $C_{k,0}=p_k\kappa^k$ and $C_{1,1}=\kappa La_1$. In order of size,
+      $e^{Lz},\dots,e^{5Lz}$ ($|e^{kLz}|=e^{-1.337ky}$) come before the first Fourier correction $e^{(L+2\pi i)z}$ ($e^{-7.62y}$).
+      $p_1\dots p_4=1,\ -0.151315-0.296749i,\ -0.036976+0.098731i,\ 0.025812-0.017387i$.
+    bereich: Base $e$, $\mathrm{Im}\,z>0$; $\Psi=\sigma^{-1}=\sum p_kw^k$ (entire), $\kappa$ from kn.satz.binet_kappa, $\theta=a_0+\sum a_nq^n$,
+      $q=e^{2\pi iz}$
+    einfach: Far up in the complex plane, Kneser's tetration can be written as a sum of two kinds of waves. The most important terms come directly
+      from the solution at the fixed point L; Kneser's correction only makes itself felt afterwards.
+    beweis:
+      text: |
+        From $\mathrm{sexp}=\Psi(\kappa e^{Lz}E(q))$ with $E(q)=\exp(L\sum_{n\ge1}a_nq^n)$ and $\Psi$ entire, it follows that $\mathrm{sexp}=\sum_kp_k\kappa^ke^{kLz}E(q)^k$; absolute convergence via
+        $\sum|p_k||\kappa e^{Lz}|^k\tilde E(|q|)^k<\infty$ with $\tilde E(t)=\exp(|L|\sum|a_n|t^n)$, finite for $t<1$. Engine against $\Psi(\kappa e^{Lz})$: error $2\cdot10^{-14}$ at $y=4$
+        (size of the first Fourier term), with it $10^{-25}$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from kn.konstr.kneser by expanding the product.
+      f2_benutzte_voraussetzungen: Kneser representation above, Ψ entire, θ holomorphic above with Fourier series.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every base b > η.
+      f5_neue_frage: Inversion for slog near L (kn.kor.slog_bei_L).
+    bewertung:
+      nutzen: Makes the structure above explicit and computable.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B9 and Section 3; a9_oben.py
+  en_theorie:
+    beispiel: |
+      At $y=4$, without the Fourier term $2\cdot10^{-14}$ is missing, with it $10^{-25}$.
+    einordnung: |
+      From [[kn.konstr.kneser]]; $\kappa$: [[kn.satz.binet_kappa]]; inversion: [[kn.kor.slog_bei_L]].
+    genau: |
+      $\mathrm{sexp}=L+\sum p_k\kappa^ke_{k,m}e^{(kL+2\pi im)z}$, pure terms $p_k\kappa^k$.
+    warum: |
+      Insert the Fourier series of $\theta$ into $\Psi(\kappa e^{L(z+\theta-a_0)})$ and expand; absolutely convergent because $\Psi$ is entire.
+    worum: |
+      Kneser's tetration far up in the complex plane as a double series.
+- id: kn.kor.halbexp_band
+  quelle_hash: cf3bdacae260
+  theorie_hash: 9ee00c47136f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Measured in “height”, Kneser's half exponential lies at most 0.01704 away from the half step of the linear log*
+    aussage: |
+      For all real $x$,
+      $$\bigl|\mathrm{slog}_{\mathrm{lin}}(f(x))-\mathrm{slog}_{\mathrm{lin}}(x)-\tfrac12\bigr|\le\max P-\min P=0.0170358261009277477\ldots$$
+    bereich: $f$ Kneser's half exponential ($f\circ f=\exp$, $\mathrm{slog}\,f(x)=\mathrm{slog}\,x+\tfrac12$); $\mathrm{slog}_{\mathrm{lin}}$
+      as in gr.satz.slog_logstern_welle
+    einfach: 'If one measures the height with the simple, piecewise linear iterated logarithm, Kneser''s half exponential makes almost exactly
+      half a step: the error is never larger than 0.017.'
+    beweis:
+      text: 'Apply gr.satz.slog_logstern_welle twice: $\mathrm{slog}_{\mathrm{lin}}=\mathrm{slog}-P(\cdot)$ at $x$ and at $f(x)$, and $\mathrm{slog}\,f(x)-\mathrm{slog}\,x=\tfrac12$.
+        Sample (400 points in $[0.05,5\cdot10^4]$): max 0.016521.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from gr.satz.slog_logstern_welle.
+      f2_benutzte_voraussetzungen: The wave bounds min P, max P (numerically to 20 digits).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every fractional iterate exp^{[s]} (band of the same width around s).
+      f5_neue_frage: Is this the most accurate elementary description? There is no elementary asymptotic series (kn.satz.halbe_exp_wachstum).
+    bewertung:
+      nutzen: Handy, sharp elementary description of the half exponential.
+      richtigkeit: proved from the numerical wave bounds
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B12 and Section 4; a13_halbexp_band.py
+  en_theorie:
+    beispiel: |
+      Sample: largest error 0.016521.
+    einordnung: |
+      From [[gr.satz.slog_logstern_welle]]; half exponential: [[kn.satz.halbe_exp]], growth [[kn.satz.halbe_exp_wachstum]].
+    genau: |
+      $|\mathrm{slog}_{\mathrm{lin}}(f(x))-\mathrm{slog}_{\mathrm{lin}}(x)-\tfrac12|\le0.01704$.
+    warum: |
+      $\mathrm{slog}$ makes exactly half a step; $\mathrm{slog}_{\mathrm{lin}}$ deviates from that at two places by at most the wave width.
+    worum: |
+      How well does the simple iterated logarithm describe Kneser's half exponential?
+- id: kn.kor.minus2_entwicklung
+  quelle_hash: e0b1c2214e06
+  theorie_hash: '212058248126'
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Expansion at −2: sexp(−2+ε) = log ε + Σ gₙεⁿ with radius exactly 1 and gₙ ≈ (−1)ⁿ/(n log n)'
+    aussage: |
+      $\mathrm{sexp}(-2+\varepsilon)=\log\varepsilon+\sum_{n\ge0}g_n\varepsilon^n$ with radius of convergence exactly 1 (proved), and
+      $g_0=\log\mathrm{sexp}'(-1)=0.0877978063264598517937\ldots$, $g_1=-0.297219697366030084849\ldots$, $g_2=0.276261377462556794738\ldots$ (numerical).
+      Asymptotics: $(-1)^ng_n\cdot n\log n\to1$, more precisely $1+(g_0-\gamma)/\log n+O(\log^{-2}n)$ ($\gamma$ = Euler constant).
+    einfach: Around −2, Kneser's tetration can be written as a logarithm plus a power series. This series reaches exactly down to −3, and its
+      coefficients shrink roughly like 1/(n log n), with alternating sign.
+    beweis:
+      text: |
+        Radius: from kn.satz.minus2_hebbar and the singularity at $-3$. Coefficients from $g(-2+\varepsilon)=\log(\mathrm{sexp}(-1+\varepsilon)/\varepsilon)$ with the Taylor series
+        around $-1$. Asymptotics: at $\varepsilon=-1$, with $\eta=1+\varepsilon$, $\Lambda=\log(1/\eta)$ the singular part is $\log(\Lambda-g_0)$; Flajolet–Odlyzko gives
+        $[\zeta^n]\log(\Lambda-c)=\frac1{n\log n}[1+(c-\gamma)/\log n+\dots]$.
+      luecken:
+      - The remainder of the Flajolet–Odlyzko transfer is not estimated; measured 0.852 at n = 140, fit of the 1/log n term −0.461 against theory
+        −0.489.
+    pruefung:
+      f1_folgt_unmittelbar: The radius yes (from kn.satz.minus2_hebbar); the asymptotics needs the transfer theorem.
+      f2_benutzte_voraussetzungen: kn.satz.minus2_hebbar, Taylor series around −1, singularity analysis (Flajolet–Odlyzko).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To other bases; g₀ = log(sexp′(−1))/ln b.
+      f5_neue_frage: Certify the remainder of the transfer.
+    bewertung:
+      nutzen: Exact local description at −2.
+      richtigkeit: Radius complete; coefficients two settings, distance ≤ 2·10⁻³²; asymptotics derived
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B2, B3 and Section 1.1; a4_minus2.py, a5_fit.py, daten/g_minus2.json
+    - {}
+  en_theorie:
+    beispiel: |
+      $g_0=0.08780$, $g_1=-0.29722$, $g_2=0.27626$.
+    einordnung: |
+      From [[kn.satz.minus2_hebbar]].
+    genau: |
+      $\mathrm{sexp}(-2+\varepsilon)=\log\varepsilon+\sum g_n\varepsilon^n$, radius 1, $(-1)^ng_n\,n\log n\to1$.
+    warum: |
+      The radius reaches to the next singularity at $-3$; there sits a $\log\log$, and its coefficients decay like $1/(n\log n)$.
+    worum: |
+      The power series of Kneser's tetration around $-2$, after subtracting the logarithm.
+- id: kn.kor.slog_bei_L
+  quelle_hash: 4b8c49fd8ce1
+  theorie_hash: fac79e4c9897
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'slog near L: slog(w) = ℓ/L − Σ aₙ e^(2πin·slog w), ℓ = log(σ(w)/κ) — exponents m + nγ and one logarithm'
+    aussage: |
+      Near the fixed point $L$ (on the principal sheet),
+      $$\mathrm{slog}(w)=\frac{\ell}{L}-\sum_{n\ge1}a_ne^{2\pi in\,\mathrm{slog}\,w},\qquad\ell=\log\frac{\sigma(w)}{\kappa},$$
+      with leading form $\ell/L-a_1(\sigma(w)/\kappa)^\gamma$, $\gamma=2\pi i/L$. The expansion has exponents $m+n\gamma$ in $\sigma(w)$ and exactly one logarithm.
+    einfach: 'The inverse function of tetration, the superlogarithm, also has an exact form near the fixed point L: a logarithm plus small corrections
+      with complex exponents.'
+    beweis:
+      text: 'Inversion of kn.kor.doppelreihe_oben: from $h(\mathrm{sexp}\,z)=z+\theta(z)$ with $h=\log(\sigma)/L$. Full inversion hits the engine
+        to $10^{-48}$, the leading form with $a_1$ to $5\cdot10^{-19}$ ($y=3$).'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, as the inversion of the representation above.
+      f2_benutzte_voraussetzungen: kn.konstr.kneser, Schröder function σ at the fixed point L.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Analogous to kn.satz.halbexp_singularitaet_L (there for the half exponential, without logarithms).
+      f5_neue_frage: What does slog look like on the side sheets near L?
+    bewertung:
+      nutzen: Explicit local form of slog at the fixed point.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B10 and Section 3; a10_slogL.py
+  en_theorie:
+    beispiel: |
+      The leading form $\ell/L-a_1(\sigma/\kappa)^\gamma$ hits to $5\cdot10^{-19}$.
+    einordnung: |
+      Inversion of [[kn.kor.doppelreihe_oben]]; counterpart [[kn.satz.halbexp_singularitaet_L]].
+    genau: |
+      $\mathrm{slog}(w)=\ell/L-\sum a_ne^{2\pi in\,\mathrm{slog}\,w}$, $\ell=\log(\sigma(w)/\kappa)$.
+    warum: |
+      Inversion of the representation above: $h(\mathrm{sexp}\,z)=z+\theta(z)$.
+    worum: |
+      The superlogarithm near the fixed point $L$.
 - id: kn.satz.abel_bruchsumme
   quelle_hash: 672d65ad3f07
   theorie_hash: af411b9142b6
@@ -4460,6 +5078,99 @@
     worum: |
       Kneser's tetration does not live only on the real axis. If one allows complex heights, it is holomorphic almost everywhere, mirror-symmetric,
       and runs into the fixed point $L$ upward, into $\bar L$ downward.
+- id: kn.satz.koenigs_leiter_monoton
+  quelle_hash: c950dc8caab5
+  theorie_hash: be48bc0df0db
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Bounded rank ladder: the Koenigs stages rise toward their fixed point, and the fixed points fall strictly toward a limit ≥ b'
+    aussage: |
+      Let $\sigma_r$ be the Schröder function of $f=H_r(b,\cdot)$ at $p_r$ and $H_{r+1}(x)=\sigma_r^{-1}(\lambda_r^x\sigma_r(1))$ (Koenigs stage).
+      Then $H_{r+1}$ is real-analytic, strictly increasing, $H_{r+1}(0)=1$, $H_{r+1}(x+1)=f(H_{r+1}(x))$ and $H_{r+1}\uparrow p_r$. Moreover
+      $$b<p_{r+1}<p_r,$$
+      and $q_r:=H_{r+1}(b,2)=H_r(b,b)$ is strictly decreasing in $r$. So $p_\infty=\lim p_r\ge b$ exists. (For $b<e^{1/e}$, $H_4$ is the Kneser resp. regular tetration.)
+    bereich: $1<b<e^{1/e}$ from $r=3$ on, and $b<2$ from the rank at which the ladder becomes bounded; stages by Koenigs construction at the smallest
+      fixed point $p_r\ge1$
+    einfach: 'For small bases the higher operations stay bounded. Then there is a natural choice for each new stage, and one can prove: the upper
+      bounds of the stages get smaller with every rank, but stay above the base b.'
+    beweis:
+      text: |
+        $H_{r+1}<p_r$ gives $p_{r+1}<p_r$. The orbit $1,b,H_{r+1}(b),\dots$ of $H_{r+1}$ lies above $b$ from the second term on (because $H_{r+1}(b)>H_{r+1}(1)=b$) and converges to $p_{r+1}$, so $p_{r+1}>b$.
+        Monotonicity: $q_{r+1}=H_{r+1}(b)=H_r(H_{r+1}(b-1))$ and $H_{r+1}(b-1)<b$ because $b-1<1$, so $q_{r+1}<H_r(b)=q_r$.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: Koenigs (it.satz.koenigs) plus monotonicity of the orbits; new is the application to the whole ladder.'
+      f2_benutzte_voraussetzungen: Continuity, strict monotonicity, non-degeneracy of $p_r$ for every stage; no convexity.
+      f3_spezialfall: Supplements kn.satz.schwellen_monoton (bounded ⇔ fixed point) with the monotonicity of the fixed points.
+      f4_uebertragbar: To every chain whose stages are strictly increasing and whose smallest fixed point is attracting, e.g. with Kneser seed
+        at $b=1.5$.
+      f5_neue_frage: Is $p_\infty=b$ (kn.verm.grenzprofil_rampe)?
+    bewertung:
+      nutzen: Safe framework for all statements about the bounded ladder.
+      richtigkeit: complete under the non-degeneracy; confirmed numerically up to r = 16 at b = √2, 1.2, 1.5
+    voraussetzungen:
+    - text: $H_r(b,\cdot)$ continuous, strictly increasing, $H_r(b,1)=b>1$, with a fixed point $\ge1$
+    - text: 'the smallest fixed point $p_r\ge1$ is non-degenerate: $0<\lambda_r=\partial_xH_r(b,p_r)<1$'
+    quellen:
+    - stelle: forschung/runde_2026_10_18/07_raenge/BERICHT.md, B1, §1; koenigs_leiter.py
+  en_theorie:
+    beispiel: |
+      $b=\sqrt2$: $p_3=2$, $p_4=1.549217$, $p_8=1.438372$, $p_{15}=1.421547$ — falling toward $\sqrt2=1.414214$.
+    einordnung: |
+      Framework for [[kn.verm.grenzprofil_rampe]] and [[kn.satz.plateau_modell]]; thresholds in general: [[kn.satz.schwellen_monoton]].
+    genau: |
+      $H_{r+1}(x)=\sigma_r^{-1}(\lambda_r^x\sigma_r(1))$ rises toward $p_r$, and $b<p_{r+1}<p_r$; $H_r(b,b)$ falls strictly in $r$.
+    warum: |
+      The new stage stays below $p_r$, hence so does its fixed point. Its orbit $1,b,\dots$ lies above $b$ from the second term on, so the limit $p_{r+1}$ also lies above $b$.
+    worum: |
+      For small bases $b$, every higher operation $H_r(b,\cdot)$ stays bounded from some rank on and has an attracting fixed point $p_r$.
+      Then the next stage is naturally determined by the Koenigs construction at $p_r$.
+- id: kn.satz.konvex_eta_grenze
+  quelle_hash: 7588f23ee52a
+  theorie_hash: 2eae8228ace9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Convex continuation chains have η_r → 2, with the bound b + b(b−1)^{r−2} = 2
+    aussage: |
+      If all $H_s(b,\cdot)$, $s\ge4$, are convex on $[1,2]$, then $u_r:=H_r(b,2)\le(2-b)b+(b-1)u_{r-1}$, hence
+      $$H_r(b,2)\le b+b(b-1)^{r-2}.$$
+      Every base $b<2$ then has a fixed point in $[1,2]$ from some rank on, and with kn.satz.schwellen_monoton it follows that $\eta_r\to2$, more precisely $\eta_r\ge\eta_r^*$ with $b+b(b-1)^{r-2}=2$ ($r=4$: 1.545; $r=8$: 1.732).
+    bereich: $1<b<2$, continuation chains as in kn.satz.schwellen_monoton
+    einfach: If all stages were curved upward, one could prove that the limiting bases tend to 2. Unfortunately the true stages are not curved
+      like that.
+    beweis:
+      text: |
+        $u_r=H_{r-1}(b,b)$ and convexity on $[1,2]$ give $H_{r-1}(b)\le(2-b)H_{r-1}(1)+(b-1)H_{r-1}(2)$. If $b(b-1)^{r-2}\le2-b$, then $H_r(b,2)\le2$,
+        so $H_r(b,1)-1>0\ge H_r(b,2)-2$; the intermediate value theorem gives a fixed point.
+    bedingungen_text: All stages $H_s(b,\cdot)$, $s\ge4$, are continuous and convex on $[1,2]$. For the true chains at the critical bases this
+      is false from $N=5$ on (kn.gescheitert.konvexitaetsweg).
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from convexity and the intermediate value theorem.
+      f2_benutzte_voraussetzungen: Convexity of all stages on $[1,2]$; monotonicity in $b$ for the threshold form.
+      f3_spezialfall: A sufficient criterion like kn.satz.eta_kriterium.
+      f4_uebertragbar: To every chain with convex stages.
+      f5_neue_frage: Is there a weaker shape assumption (S-shape) that holds for the true stages and still suffices?
+    bewertung:
+      nutzen: Clarifies what a convexity proof of TPID 10 would need.
+      richtigkeit: complete under the convexity assumption
+    quellen:
+    - stelle: forschung/runde_2026_10_18/07_raenge/BERICHT.md, B8, §4
+  en_theorie:
+    beispiel: |
+      $r=8$: every base above 1.732 would be bounded from rank 8 on.
+    einordnung: |
+      The condition fails: [[kn.gescheitert.konvexitaetsweg]]; goal [[kn.verm.tpid10]]; thresholds [[kn.satz.schwellen_monoton]].
+    genau: |
+      Convex stages on $[1,2]$ give $H_r(b,2)\le b+b(b-1)^{r-2}$, hence a fixed point from some rank on.
+    warum: |
+      Convexity allows estimating $H_{r-1}(b)$ by the chord between $1$ and $2$; the deviation then shrinks geometrically.
+    worum: |
+      A conditional proof of $\eta_r\to2$ (TPID 10, eta part).
 - id: kn.satz.kritische_rate
   quelle_hash: 3537cde20853
   theorie_hash: 097217f35cf4
@@ -4550,6 +5261,96 @@
       $\ln b=1$, i.e. $b=e$; then the curvature is $1$ on the right, $0$ on the left.
     worum: |
       The kinks of the linear tetration can be removed only for base $e$, and even there only in the first derivative. The second always jumps.
+- id: kn.satz.minus2_hebbar
+  quelle_hash: db968245e7be
+  theorie_hash: 98a252a772b6
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'sexp(z) − log(z+2) is holomorphic down to −3: the cut across (−3, −2) is removable'
+    aussage: |
+      $g(z):=\mathrm{sexp}(z)-\log(z+2)$ is holomorphic on $\mathbb C\setminus(-\infty,-3]$. The jump of $\mathrm{sexp}$ across $(-3,-2)$ is exactly $2\pi i$, the same as for
+      $\log(z+2)$. Moreover, $\mathrm{sexp}$ has exactly one zero on its domain of holomorphy, $z=-1$. At $-3$, $g$ is singular
+      (locally $\mathrm{sexp}(z)=\log(\log(z+3)+g(z+1))$, so like $\log\log$).
+    bereich: Kneser's $\mathrm{sexp}=\mathrm{sexp}_e$, holomorphic on $\mathbb C\setminus(-\infty,-2]$, real and increasing on $(-2,\infty)$
+    einfach: Just before −2, Kneser's tetration looks like a logarithm. If one subtracts this logarithm, what remains is a function that is smooth
+      for a whole stretch further, namely down to −3. So the cut between −3 and −2 comes only from the logarithm.
+    beweis:
+      text: |
+        (a) If $\mathrm{sexp}(w)=0$ and $w-1$ is not on the cut, then $e^{\mathrm{sexp}(w-1)}=0$ would hold; so $w\in(-\infty,-1]$, and on $(-2,-1]$ only $-1$ is a zero.
+        (b) For $x\in(-3,-2)$, $\exp(\mathrm{sexp}(x\pm i0))=\mathrm{sexp}(x+1)<0$, hence $\mathrm{sexp}(x\pm i0)=\log|\mathrm{sexp}(x+1)|\pm i\pi(2k+1)$ with constant $k$;
+        near $-2$, $\mathrm{sexp}(z)=\log(\mathrm{sexp}(z+1)/(z+2))+\log(z+2)$ with a real first part, hence $k=0$. The jump $2\pi i$ is that of $\log(z+2)$; $g$ continues
+        continuously and, by Morera, holomorphically. At $-2$: $g=\log(\mathrm{sexp}(z+1)/(z+2))$ with value $\log\mathrm{sexp}'(-1)$.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: from Kneser''s holomorphy on ℂ∖(−∞,−2] and the functional equation; but the removability across (−3,−2) had
+        not been noted anywhere.'
+      f2_benutzte_voraussetzungen: Holomorphy on ℂ∖(−∞,−2], monotonicity on the real axis, sexp(z+1) = e^{sexp z}, Schwarz reflection.
+      f3_spezialfall: Sharpens kn.satz.singulaer_minus2 (there only real and for ε → 0).
+      f4_uebertragbar: To every base b > η with Kneser's solution; the jump is then 2πi/ln b.
+      f5_neue_frage: What does the continuation across (−4,−3) look like? → kn.satz.nebenblatt_zweigpunkte.
+    bewertung:
+      nutzen: Foundation of the exact Taylor asymptotics around 0 and around −2.
+      richtigkeit: complete; the series around −2 hits the engine at −2.5+0.3i to 3·10⁻³⁶
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B1 and Section 1.1; a4_minus2.py
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, T1 and B5; s3_taylor.py
+  en_theorie:
+    beispiel: |
+      At $-2$ itself the value of the difference is $\log\mathrm{sexp}'(-1)=0.08780\ldots$
+    einordnung: |
+      Sharpens [[kn.satz.singulaer_minus2]]; consequences [[kn.kor.minus2_entwicklung]], [[kn.satz.taylor_darboux]], [[kn.satz.nebenblatt_zweigpunkte]].
+    genau: |
+      $\mathrm{sexp}(z)-\log(z+2)$ is holomorphic on $\mathbb C\setminus(-\infty,-3]$; the only zero of $\mathrm{sexp}$ is $-1$.
+    warum: |
+      On $(-3,-2)$, $\mathrm{sexp}(x)=\log\mathrm{sexp}(x+1)$ with a negative argument; the jump across the cut is therefore $2\pi i$, exactly as for $\log(z+2)$, and cancels.
+    worum: |
+      How far does the logarithm at $-2$ reach? If it is subtracted, Kneser's tetration becomes smoother than the cut suggests.
+- id: kn.satz.nebenblatt_zweigpunkte
+  quelle_hash: 560fe51ab654
+  theorie_hash: 7f3893f998b0
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The Riemann surface of sexp has infinitely many further logarithmic branch points, e.g. at 1.0043125 + 0.7094135i
+    aussage: |
+      If one continues $\mathrm{sexp}$ across the cut, then besides $-2,-3,\dots$ there are infinitely many further logarithmic branch points: above $w-1$ for every $w$
+      with $\mathrm{sexp}(w)\in2\pi i\mathbb Z\setminus\{0\}$. Examples: $w-1=1.00431248259468800394+0.70941354086940362668i$ ($\mathrm{sexp}(w)=2\pi i$) and
+      $w-1=1.15587108746+0.49064172727i$ ($\mathrm{sexp}(w)=4\pi i$). The projections of all branch points lie in $\{w-m:m\ge1,\ \exists n:\mathrm{sexp}(w+n)=\mathrm{sexp}(n-1)\}$.
+    einfach: If one goes around the cut line in the complex plane onto another “sheet” of the function, new places appear there where it goes
+      to infinity like a logarithm — and infinitely many of them.
+    beweis:
+      text: |
+        If $z+1$ crosses the cut $(-3,-2)$ from below to above, $\mathrm{sexp}(z+1)$ becomes $\mathrm{sexp}(z+1)-2\pi i$ (kn.satz.minus2_hebbar). The branch of $\mathrm{sexp}(z)$ that arises
+        ($z$ crosses $(-4,-3)$) is $\log(\mathrm{sexp}(z+1)-2\pi i)+2\pi il$; at $\mathrm{sexp}(w)=2\pi i$ it has at $z=w-1$ the form $\log(\mathrm{sexp}'(w)(z-w+1))+$holomorphic
+        ($\mathrm{sexp}'\ne0$, kn.satz.ableitung_nullstellenfrei). By kn.satz.wertevorrat there are infinitely many such $w$. Example at dps 60 and 45 (distance $5\cdot10^{-54}$).
+      luecken:
+      - 'That every tower of logarithms in the set {w − m : sexp(w+n) = sexp(n−1)} is also reached as a branch is carried out only for n ≤ 2.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from kn.satz.minus2_hebbar and kn.satz.wertevorrat, except for the completeness of the list.
+      f2_benutzte_voraussetzungen: Jump 2πi across (−3,−2), sexp′ ≠ 0, set of values.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To other bases b > η.
+      f5_neue_frage: Are the branch points dense in ℂ? Are there solutions of sexp(w) ∈ 2πiℤ∖{0} in the strip −2 < Re w ≤ −1?
+    bewertung:
+      nutzen: First look at the whole Riemann surface of sexp.
+      richtigkeit: Sketch; example points to 50 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B8 and Section 1.3; e8_zweigpunkte.py
+  en_theorie:
+    beispiel: |
+      $1.00431248+0.70941354i$ (there $\mathrm{sexp}(w)=2\pi i$ with $w$ one step further to the right).
+    einordnung: |
+      From [[kn.satz.minus2_hebbar]] and [[kn.satz.wertevorrat]].
+    genau: |
+      On side sheets there are infinitely many logarithmic branch points, above $w-1$ for every $w$ with $\mathrm{sexp}(w)\in2\pi i\mathbb Z\setminus\{0\}$.
+    warum: |
+      Across the cut, $\mathrm{sexp}(z+1)$ becomes $\mathrm{sexp}(z+1)-2\pi i$; where that becomes zero, $\log$ gets a new singularity.
+    worum: |
+      What happens when one continues Kneser's tetration beyond its cut?
 - id: kn.satz.paulsen_cowgill
   quelle_hash: f36c8ec7c7d2
   theorie_hash: be2856b8f060
@@ -4658,6 +5459,50 @@
     worum: |
       Kneser's construction does not need a real base. Paulsen has shown that it also works for complex bases. Whether the solution
       even depends holomorphically on the base is not established by this; that would allow differentiating with respect to the base.
+- id: kn.satz.plateau_modell
+  quelle_hash: f7d116c52773
+  theorie_hash: dbe0794ceffc
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Plateau model of the rank ladder: a map in two quantities (δ, λ) describes the ladder step by step'
+    aussage: |
+      Up to a relative error $O(L_r\delta_r)$,
+      $$\delta_{r+1}=\delta_r(1-\mu_r),\qquad \lambda_{r+1}=\delta_rL_r\mu_r,\qquad \mu_r=\lambda_r^{\,b-1+\delta_{r+1}}.$$
+      One-step error against the true ladder: at $b=1.2$ (r = 14) $1.6\cdot10^{-4}$ for δ and $4.3\cdot10^{-4}$ for λ; at $\sqrt2$ $2.4\cdot10^{-3}$ and $1.6\cdot10^{-2}$ respectively, both decreasing.
+    bereich: bounded Koenigs ladder, $1<b<2$; $\delta_r=p_r-b$, $\lambda_r=\partial_xH_r(b,p_r)$, $L_r=-\ln\lambda_r$
+    einfach: 'Instead of computing the whole functions, two numbers per rank are enough: how far the fixed point still lies above b and how strongly
+      it attracts. A simple rule passes them on from rank to rank almost exactly.'
+    beweis:
+      text: |
+        In the plateau $[b,p_r]$, $\sigma_r$ is the identity up to $O(c_2\delta_r)=O(L_r\delta_r)$, so $H_{r+1}(1+x)\approx p_r-\delta_r\lambda_r^x$. Fixed point and derivative
+        from this give the map; inserting the plateau into $H_{r+1}(x+1)=H_r(H_{r+1}(x))$ gives the profile formula.
+      luecken:
+      - The error estimate $O(L_r\delta_r)$ from the linearization of σ_r in the plateau is not proved quantitatively.
+    pruefung:
+      f1_folgt_unmittelbar: No; linearization of the Schröder function in the almost flat region.
+      f2_benutzte_voraussetzungen: Smallness of $\delta_r$ and $L_r\delta_r$; Koenigs stages.
+      f3_spezialfall: No.
+      f4_uebertragbar: To every bounded ladder with attracting fixed points.
+      f5_neue_frage: Asymptotics of the map (kn.verm.leiter_rate); a proof of the gap would give $p_\infty=b$.
+    bewertung:
+      nutzen: Makes the ladder computable up to r = 10⁷.
+      richtigkeit: Sketch, gap in the error estimate; numerically good
+    quellen:
+    - stelle: forschung/runde_2026_10_18/07_raenge/BERICHT.md, B3, §2; auswertung_leiter.py
+  en_theorie:
+    beispiel: |
+      At $b=1.2$, rank 14, the model step deviates by $1.6\cdot10^{-4}$ (δ) and $4.3\cdot10^{-4}$ (λ) relative.
+    einordnung: |
+      Foundation for [[kn.verm.leiter_rate]] and support for [[kn.verm.grenzprofil_rampe]].
+    genau: |
+      $\delta_{r+1}=\delta_r(1-\mu_r)$, $\lambda_{r+1}=\delta_rL_r\mu_r$, $\mu_r=\lambda_r^{b-1+\delta_{r+1}}$, error $O(L_r\delta_r)$.
+    warum: |
+      Linearization of the Schröder function in the plateau; the error bound is not yet proved.
+    worum: |
+      Two numbers per rank — distance $\delta_r=p_r-b$ and attraction $\lambda_r$ — describe the ladder almost completely.
 - id: kn.satz.polynom_approximation_ecke
   quelle_hash: d57d03e2f1fc
   theorie_hash: e0973b5cab11
@@ -5401,6 +6246,266 @@
       richtigkeit: complete
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K3; b_baeume.py, b_kombinatorik.py
+- id: kn.satz.stoerungsreihe_bauform
+  quelle_hash: b5b5d5def5a5
+  theorie_hash: 8ee9365917d8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Structural form of all layers: H = γ + β tan Θ, and every layer is a polynomial in tan θ, ln cos θ and θ'
+    aussage: |
+      With $x_\pm=\gamma\pm i\beta$ (kn.satz.stoerungsreihe_residuen),
+      $$H=\gamma+\beta\tan\Theta,\qquad \Theta=\omega\bigl(y+C-R_u(H)\bigr)+\frac{\gamma}{\beta}\ln\cos\Theta,$$
+      with $\omega=|x_+|^2/(2\,\mathrm{Im}\,x_+)$, $\pi/\omega=\mathrm{Re}(2\pi i/x_+)$ and a power series $R_u$ with polynomial coefficients.
+      Consequence: every layer $h_k$ is a polynomial in $t=\tan\theta$, $L=\ln\cos\theta$ and $\theta$, with $\deg_L h_k\le k$. For example
+      $h_1=\tfrac23(L\sec^2\theta-4\sec^2\theta+1)$ (the second layer from kn.satz.stoerungsreihe_tangens). For $k\le4$ the ansatz is solved and all
+      coefficients agree exactly with the $g_n$.
+    bereich: $H(y)=G(y-1)$ from kn.konstr.stoerungsreihe; $u=2v^2$, $\theta=vy$, $H=\sum_k v^{k+1}h_k(\theta)$
+    einfach: 'The perturbation series consists of many layers. Each layer can be assembled from only three building blocks: the tangent, the logarithm
+      of the cosine, and the height itself. Behind this is a single formula in which tetration looks like a bent tangent.'
+    beweis:
+      text: |
+        $\Lambda_v=(\xi-\xi_+)(\xi-\xi_-)Q_v(\xi)$ in $\mathbb Q[\xi][[v]]$ (Hensel, $Q_0=\tfrac12$), hence $1/\lambda_u=\sum_\pm 1/(x_\pm(x-x_\pm))+\rho_u$ with polynomial
+        $\rho_u$. Integration: $y+C=\frac{2\beta}{r^2}\arctan\frac{H-\gamma}\beta+\frac{\gamma}{r^2}\ln((H-\gamma)^2+\beta^2)+R_u(H)$, $r^2=\beta^2+\gamma^2$. Substituting
+        $H=\gamma+\beta\tan\Theta$ gives the structural form; expanding around $\theta$ gives the polynomial structure of the layers.
+    pruefung:
+      f1_folgt_unmittelbar: 'No: one needs the flow (kn.satz.stoerungsreihe_fluss) and the residues; then it is partial fractions and integration.'
+      f2_benutzte_voraussetzungen: Formal flow, Hensel factorization, residues 1/x±.
+      f3_spezialfall: 'A perturbed Fatou coordinate: for u → 0 the Fatou coordinate of eˣ − 1 arises.'
+      f4_uebertragbar: To every saddle-node perturbation with two simple fixed points.
+      f5_neue_frage: Does the regular remainder $R_u$ have a closed form? At u = 0 it is the Fatou remainder of eˣ − 1.
+    bewertung:
+      nutzen: Explains all closed-form layers found so far at once.
+      richtigkeit: complete; consequences checked exactly for k ≤ 4
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S3, S4, S8 and B3; s1_schichten.py, daten/s1_schichten.json
+  en_theorie:
+    beispiel: |
+      $h_1=\tfrac23(L\sec^2\theta-4\sec^2\theta+1)$ with $L=\ln\cos\theta$.
+    einordnung: |
+      Generalizes [[kn.satz.stoerungsreihe_tangens]]; consequences [[kn.satz.stoerungsreihe_logarithmen]], [[kn.satz.stoerungsreihe_saekular]], [[kn.satz.stoerungsreihe_dritte_schicht]].
+    genau: |
+      $H=\gamma+\beta\tan\Theta$, $\Theta=\omega(y+C-R_u(H))+(\gamma/\beta)\ln\cos\Theta$; every layer is a polynomial in $\tan\theta$, $\ln\cos\theta$ and $\theta$.
+    warum: |
+      $1/\lambda_u$ splits into two simple fractions at the fixed points plus a polynomial remainder. Integrated, this gives arctangent and logarithm; solved for $H$, a bent tangent.
+    worum: |
+      One formula from which all layers of the perturbation series follow.
+- id: kn.satz.stoerungsreihe_dritte_schicht
+  quelle_hash: 2eef2a35bb5c
+  theorie_hash: fd2c9dc11672
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Third layer of the perturbation series in closed form: h₂ = t[(2/9)L²(1+t²) − 2L(1+t²) + 41t²/9 + 13/3]'
+    aussage: |
+      $$h_2=t\Bigl[\tfrac29L^2(1+t^2)-2L(1+t^2)+\tfrac{41t^2}9+\tfrac{13}3\Bigr],$$
+      equivalently $H_2=(u/2)^{3/2}\tan\theta\,[\tfrac29\sec^2\theta\ln^2\cos\theta-2\sec^2\theta\ln\cos\theta+(41\tan^2\theta+39)/9]$.
+      From this follow the coefficients $[y^{2n-3}]\,g_n(y-1)=\tfrac{13}{12},\tfrac78,\tfrac{301}{720},\tfrac{9577}{60480},\dots$
+      Also $h_3$ and $h_4$ are known explicitly (report, B3).
+    bereich: $t=\tan\theta$, $L=\ln\cos\theta$, $\theta=vy$, $u=2v^2$
+    einfach: After the first two layers, the third layer of the perturbation series is now also known as a short formula in tangent and logarithm.
+    beweis:
+      text: Ansatz following kn.satz.stoerungsreihe_bauform; the solution is unique because $t$, $L$, $\theta$ are algebraically independent.
+        Checked exactly against the $g_n$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, as a computation from the structural form.
+      f2_benutzte_voraussetzungen: Structural form, exact polynomials g_n.
+      f3_spezialfall: Yes, layer k = 2 of the structural form.
+      f4_uebertragbar: To every layer (h₃, h₄ also computed).
+      f5_neue_frage: Are the normalized layer coefficients integers (kn.verm.stoerungsreihe_ganzzahlig)?
+    bewertung:
+      nutzen: Extends kn.satz.stoerungsreihe_tangens by one layer.
+      richtigkeit: complete; checked exactly
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S7, S8; s1_schichten.py, daten/s1_schichten.json
+  en_theorie:
+    beispiel: |
+      $[y^{2n-3}]g_n(y-1)=13/12,\ 7/8,\ 301/720,\dots$
+    einordnung: |
+      Case $k=2$ of [[kn.satz.stoerungsreihe_bauform]]; first two layers: [[kn.satz.stoerungsreihe_tangens]].
+    genau: |
+      $h_2=t[\tfrac29L^2(1+t^2)-2L(1+t^2)+41t^2/9+13/3]$, $t=\tan\theta$.
+    warum: |
+      Ansatz from the structural form; uniquely solvable because $t$, $L$, $\theta$ are algebraically independent.
+    worum: |
+      The third layer of the perturbation series as a closed formula.
+- id: kn.satz.stoerungsreihe_fluss
+  quelle_hash: 619dc3fc4d5a
+  theorie_hash: 83e7bb9aacba
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'The perturbation series is the flow of a differential equation: H′ = λᵤ(H) with the generator of eˣ − 1 + u'
+    aussage: |
+      Let $f_u(x)=e^x-1+u$ and $\lambda_u$ the graded formal generator with $\exp(\lambda_u\partial_x)\,x=f_u(x)$ (the degree of $x$ is 1, of $u$ is 2):
+      $$\lambda_u=\Bigl(u+\frac{x^2}2\Bigr)+\Bigl(-\frac{ux}2-\frac{x^3}{12}\Bigr)+\Bigl(\frac{u^2}{12}+\frac{ux^2}6+\frac{x^4}{48}\Bigr)+\dots$$
+      Then $H(y)=G(y-1)$ is formally the flow $H'=\lambda_u(H)$ with $H(0)=\ln(1-u)$. In particular
+      $$\lambda_u(0)=G'(0)=u+\frac{u^2}{12}+\frac{u^3}{120}+\frac{u^4}{5040}-\frac{u^5}{10080}+\frac{u^6}{332640}-\frac{323\,u^7}{86486400}+\dots$$
+    bereich: $G(y)=e^{G(y-1)}-1+u$, $G(0)=0$, $H(y)=G(y-1)$, formal in $u$ (kn.konstr.stoerungsreihe)
+    einfach: 'The perturbation series of tetration arises step by step from the rule “e to the power, minus 1, plus u”. But it can also be written
+      as the solution of a single differential equation: the height y is then a time, and the series flows according to a fixed velocity rule.'
+    beweis:
+      text: |
+        Let $\varphi_y=\exp(y\lambda_u\partial)$. The degrees of $\lambda_u$ are $\ge2$ and $H(0)=\ln(1-u)=O(u)$; hence only finitely
+        many Lie terms contribute to each $u$ order, and $K(y):=\varphi_y(H(0))$ has polynomials in $y$ as coefficients in each $u$ order. We have $K(y+1)=f_u(K(y))$ and
+        $K(0)=H(0)$, hence $K(k)=H(k)$ for all $k\in\mathbb N$; polynomials that agree on $\mathbb N$ are equal. Lie check exact up to degree 14.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: it is the Julia equation (it.lem.julia) in the formal graded setting; new is only that the polynomial structure
+        in y determines the flow uniquely.'
+      f2_benutzte_voraussetzungen: Only formal power series; no convergence.
+      f3_spezialfall: 'Yes: generator of a formally embeddable map (Écalle, classical in spirit).'
+      f4_uebertragbar: To every perturbation $h(x)-1+u$ with $h=1+x+x^2/2+\dots$.
+      f5_neue_frage: Enables the structural form kn.satz.stoerungsreihe_bauform; a closed form for the regular remainder $R_u$ is open.
+    bewertung:
+      nutzen: Replaces the recursion by a differential equation and opens up the structural form of all layers.
+      richtigkeit: complete; checked exactly up to degree 14
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S1, S10 and B1; s2_generator.py
+  en_theorie:
+    beispiel: |
+      $\lambda_u(0)=G'(0)=u+u^2/12+u^3/120+\dots$
+    einordnung: |
+      Framework: [[kn.konstr.stoerungsreihe]]; Julia equation: [[it.lem.julia]]; consequence: [[kn.satz.stoerungsreihe_bauform]].
+    genau: |
+      $H(y)=G(y-1)$ formally satisfies $H'=\lambda_u(H)$, where $\exp(\lambda_u\partial)x=e^x-1+u$.
+    warum: |
+      The flow of the differential equation has polynomials in $y$ as coefficients and agrees with the iteration at all integer heights; polynomials that agree on $\mathbb N$ are equal.
+    worum: |
+      The perturbation series $G(y)=e^{G(y-1)}-1+u$ is otherwise computed step by step. Here it is written as the solution of a single differential equation.
+- id: kn.satz.stoerungsreihe_logarithmen
+  quelle_hash: 589c01d50d71
+  theorie_hash: 81a70aa42dcd
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The highest logarithm parts of all layers add up to 2·tan(θ + v·ln cos θ/3)
+    aussage: |
+      The coefficient of $L^k$ in $h_k$ is $[L^k]h_k=\dfrac{2\tan^{(k)}(\theta)}{3^k\,k!}$; generating function
+      $$\sum_{k\ge0}v^k\,[L^k]h_k=2\tan\Bigl(\theta+\frac{vL}3\Bigr)\qquad(L\text{ frozen}).$$
+      The derivatives $\tan^{(k)}$ are Hoffman's derivative polynomials in $\tan\theta$; their values at 0 are the tangent and secant numbers.
+    bereich: Layers $h_k(\theta)$ as in kn.satz.stoerungsreihe_bauform, $L=\ln\cos\theta$
+    einfach: In every layer there is a part with the highest power of the logarithm. If one collects these parts from all layers, one gets a simple
+      tangent again — only slightly shifted.
+    beweis:
+      text: |
+        Order counting in the structural form: each $L$ costs at least one factor $v$ via $\gamma/\beta=v/3+O(v^3)$; expanding $\ln\cos\Theta$ around $\theta$
+        costs one $v$ each without a new $L$. So the $L^k$ part of $h_k$ equals $[v^k]\,2\tan(\theta+vL/3)$. Confirmed exactly for $k\le4$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from kn.satz.stoerungsreihe_bauform by order counting.
+      f2_benutzte_voraussetzungen: Structural form and $\gamma/\beta=v/3+O(v^3)$, $\beta/v=2+O(v^2)$.
+      f3_spezialfall: Yes, the leading part of the structural form.
+      f4_uebertragbar: To other perturbations; the factor 1/3 depends on the $x^3$ coefficient of eˣ.
+      f5_neue_frage: Is there a similar sum formula for the second-highest logarithms $[L^{k-1}]h_k$?
+    bewertung:
+      nutzen: Connects the perturbation series with tangent and secant numbers.
+      richtigkeit: complete; exact for k ≤ 4
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S5 and B3; s1_schichten.py
+  en_theorie:
+    beispiel: |
+      $[L]h_1=\tfrac23\sec^2\theta=\tfrac23\tan'\theta$.
+    einordnung: |
+      From [[kn.satz.stoerungsreihe_bauform]]; analogous to the tangent layer [[kn.satz.stoerungsreihe_tangens]].
+    genau: |
+      $\sum_kv^k[L^k]h_k=2\tan(\theta+vL/3)$.
+    warum: |
+      In the structural form each $L$ costs a factor $v$ (via $\gamma/\beta\approx v/3$); the highest logarithms therefore see only the leading part.
+    worum: |
+      Which parts of the layers have the highest power of the logarithm, and what do they give together?
+- id: kn.satz.stoerungsreihe_residuen
+  quelle_hash: c8c2e1861b85
+  theorie_hash: 04a881ac6fe8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: The two zeros of the generator are Lambert fixed points x± = u − 1 − W(−e^(u−1)); 1/λᵤ has residue 1/x± there
+    aussage: |
+      The fixed points of $f_u$ are $x_\pm=u-1-W_{0,-1}(-e^{u-1})=\gamma\pm i\beta$, with
+      $$\frac{x_+}{v}=2i+\frac{2v}3-\frac{2iv^2}9-\frac{8v^3}{135}+\frac{iv^4}{135}-\dots\qquad(u=2v^2).$$
+      They are the zeros of $\lambda_u$, and $\lambda_u'(x_\pm)=x_\pm$ holds. Hence $1/\lambda_u$ has the residue $1/x_\pm$ there.
+    bereich: $f_u(x)=e^x-1+u$, $\lambda_u$ as in kn.satz.stoerungsreihe_fluss, $u=2v^2$, formal in $v$
+    einfach: The rule “e to the power, minus 1, plus u” has two fixed points (places that do not move). They can be given exactly with the Lambert
+      W function. At these places the differential equation of the perturbation series stands still, and how fast it starts up there is simply
+      the fixed point itself.
+    beweis:
+      text: |
+        $e^x-1-x=-u$ becomes $ye^{-y}=e^{u-1}$ with $y=x+1-u$, hence $x=u-1-W(-e^{u-1})$. At a fixed point $p$ of the time-1 flow, $\lambda(p)=0$ and
+        $f'(p)=e^{\lambda'(p)}$ hold; since $f_u'=e^x$, it follows that $\lambda'(x_\pm)=x_\pm$. Formally in $v$ via the Hensel factorization of $\Lambda_v(\xi)=\lambda_u(v\xi)/v^2=(\xi^2+4)/2+O(v)$.
+        Residue checked exactly up to $v^{11}$, Lambert form to $10^{-42}$.
+    pruefung:
+      f1_folgt_unmittelbar: 'Yes: residue = 1/log(multiplier) is classical; new is the Lambert form in the perturbation setting.'
+      f2_benutzte_voraussetzungen: Formal Hensel factorization in $\mathbb Q[\xi][[v]]$.
+      f3_spezialfall: 'Yes: general residue formula for generators at fixed points.'
+      f4_uebertragbar: To every map with two fixed points born from a parabolic point (saddle-node).
+      f5_neue_frage: Yields the frequency ω of the structural form (kn.satz.stoerungsreihe_saekular).
+    bewertung:
+      nutzen: Foundation of the closed structural form.
+      richtigkeit: complete; exact up to v¹¹
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S2 and B2; s2_generator.py, s6_lambert.py
+  en_theorie:
+    beispiel: |
+      $x_+/v=2i+2v/3-2iv^2/9-\dots$ with $u=2v^2$.
+    einordnung: |
+      Building block for [[kn.satz.stoerungsreihe_bauform]]; parabolic limiting case: [[it.satz.leau_fatou]].
+    genau: |
+      Zeros $x_\pm=u-1-W(-e^{u-1})$, and $\lambda_u'(x_\pm)=x_\pm$, hence residue $1/x_\pm$ of $1/\lambda_u$.
+    warum: |
+      At a fixed point of a time-1 flow the multiplier is $e^{\lambda'}$; here the multiplier is $e^{x_\pm}$.
+    worum: |
+      Where does the differential equation of the perturbation series stand still, and how does it start up there?
+- id: kn.satz.stoerungsreihe_saekular
+  quelle_hash: 258df4e8bc97
+  theorie_hash: 17c71e437da9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Frequency ω = v(1 − v⁴/270 + …): the first bare θ (secular term) appears only in layer 5'
+    aussage: |
+      $$\frac\omega v=1-\frac{v^4}{270}+\frac{v^6}{42525}+\frac{137v^8}{1020600}-\frac{2041v^{10}}{2652284250}+\dots$$
+      A term with a bare $\theta$ (not hidden in $\tan$ or $\ln\cos$) first occurs in $h_4$: $-\theta\sec^2\theta/135$, exactly $2\cdot(-1/270)\,\theta\sec^2\theta$.
+      In addition, $\gamma/\beta=v/3+v^3/135-13v^5/5670+\dots$ and $\beta/v=2-2v^2/9+v^4/135+\dots$.
+    bereich: Structural form from kn.satz.stoerungsreihe_bauform, $u=2v^2$
+    einfach: The tangent in the structural form oscillates with a frequency that is almost exactly v. The small deviation shows up only in the
+      fifth layer, as a term in which the height stands completely bare.
+    beweis:
+      text: |
+        $\omega$ from the fixed-point series (kn.satz.stoerungsreihe_residuen); the bare $\theta$ arises in the structural form only from $\omega/v-1=O(v^4)$, $R_u$ produces none.
+        $h_4$ from the ansatz, $\omega$ numerically against Lambert W to $10^{-19}$ (at $u=10^{-3}$).
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the structural form and the fixed-point series.
+      f2_benutzte_voraussetzungen: kn.satz.stoerungsreihe_bauform, kn.satz.stoerungsreihe_residuen.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every saddle-node perturbation; the order $v^4$ depends on the Taylor coefficients of eˣ.
+      f5_neue_frage: Is $\deg_\theta h_k\le\lfloor k/4\rfloor$ sharp? So far checked only for k ≤ 4.
+    bewertung:
+      nutzen: Shows when the pure tangent structure is broken by secular terms.
+      richtigkeit: complete; confirmed exactly
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S6, S8 and B3; s2_generator.py, s1_schichten.py
+  en_theorie:
+    beispiel: |
+      $-1/135=2\cdot(-1/270)$.
+    einordnung: |
+      From [[kn.satz.stoerungsreihe_bauform]] and [[kn.satz.stoerungsreihe_residuen]].
+    genau: |
+      $\omega/v=1-v^4/270+\dots$; the first bare $\theta$ is $-\theta\sec^2\theta/135$ in $h_4$.
+    warum: |
+      Only the deviation of the frequency $\omega$ from $v$ produces bare $\theta$, and it starts at $v^4$.
+    worum: |
+      When does the height $\theta$ appear “bare” in the layers, not hidden in a tangent or logarithm?
 - id: kn.satz.stoerungsreihe_tangens
   quelle_hash: a9071dad7e9b
   herkunft:
@@ -5438,6 +6543,171 @@
       richtigkeit: complete; checked exactly up to n = 12
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K1/K2 and proof B1; b_gewichte.py
+- id: kn.satz.taylor_darboux
+  quelle_hash: a072f5f54a6f
+  theorie_hash: 0056261b1ca8
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Taylor coefficients of Kneser''s sexp around 0: cₙ = (−1)^(n+1)/(n·2ⁿ) + O(ρ⁻ⁿ), ρ < 3; c₂₂ is the first negative one'
+    aussage: |
+      (i) **Proved:** $c_n=\dfrac{(-1)^{n+1}}{n\,2^n}+d_n$ with $\limsup|d_n|^{1/n}=1/3$, hence $d_n=O(\rho^{-n})$ for every $\rho<3$.
+      (ii) **Sign:** $c_n>0$ for $0\le n\le21$, $c_{22}=-1.5492416655467695218\cdot10^{-9}$ is the first negative coefficient, and
+      $\mathrm{sign}\,c_n=(-1)^{n+1}$ for all $n\ge21$ — numerically up to $n=640$, for all $n$ under the grid bound for $|g|$.
+      This answers in the negative the question from gr.beob.kneser_ableitung (“are all Taylor coefficients positive?”).
+    bereich: $\mathrm{sexp}_e(z)=\sum_{n\ge0}c_nz^n$, $|z|<2$; $g=\mathrm{sexp}-\log(z+2)$ as in kn.satz.minus2_hebbar
+    einfach: 'The power series of Kneser''s tetration around 0 starts with nothing but positive numbers. From the 22nd number on, however, the
+      signs alternate. The reason is the logarithm at −2: it determines the size of the numbers almost exactly, and the rest is much smaller.'
+    beweis:
+      text: |
+        (i) $c_n-[z^n]\log(z+2)=[z^n]g$, and $g$ is holomorphic on $|z|<3$ (kn.satz.minus2_hebbar); Cauchy estimate. (ii) $|d_n|\le M\cdot2.5^{-n}$ with $M=\max_{|z|=2.5}|g|$;
+        with $M\le180$, $|d_n|<1/(2n2^n)$ for $n\ge44$; for $n<44$ (and up to 640) computed directly. Coefficients from Cauchy DFT with two settings
+        (agreement ≤ 10⁻⁴⁰ relative up to n = 70; with the logarithm subtracted up to n = 640). Report 05 confirms the signs up to n = 100 independently (dps 130/100).
+    bedingungen_text: The sign pattern for all n needs max|g| ≤ 180 on |z| = 2.5; this is only measured on a grid (177.6), not certified with
+      intervals. The formula for cₙ itself is proved.
+    pruefung:
+      f1_folgt_unmittelbar: (i) yes, from kn.satz.minus2_hebbar; (ii) additionally needs the bound for |g| and the computation for small n.
+      f2_benutzte_voraussetzungen: Holomorphy of g on ℂ∖(−∞,−3]; grid bound for |g| on |z| = 2.5.
+      f3_spezialfall: Darboux method with exponentially small error.
+      f4_uebertragbar: To other bases and expansion centers (leading term from the logarithm at −2).
+      f5_neue_frage: Interval bound for |sexp| on |z| = 2.5 from the functional equation — then the sign pattern is proved without a condition.
+    bewertung:
+      nutzen: Answers the open question from gr.beob.kneser_ableitung and gives the coefficients with exponentially small error.
+      richtigkeit: (i) complete; (ii) numerical up to n = 640, in general conditional
+    voraussetzungen:
+    - notiz: only for the sign pattern from n = 44 on
+      text: 'max|g| ≤ 180 on |z| = 2.5 (grids with 400 and 300 points, dps 40: 177.41 and 177.25 respectively; g(2.5) = 177.6114)'
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B4, B5 and Sections 2.1, 2.3; e1_taylor.py, e7_gkoeff.py, a3_vorzeichen.py,
+        a12_schranke.py
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, T1, T4 and B5; s3_taylor.py
+  en_theorie:
+    beispiel: |
+      $c_{22}=-1.549\cdot10^{-9}$ against the leading term $-1/(22\cdot2^{22})=-1.084\cdot10^{-8}$.
+    einordnung: |
+      Answers the question from [[gr.beob.kneser_ableitung]]; foundation [[kn.satz.minus2_hebbar]]; fine structure of the remainder: [[kn.beob.taylor_drei_stufen]].
+    genau: |
+      $c_n=(-1)^{n+1}/(n2^n)+O(\rho^{-n})$ for every $\rho<3$; positive up to $n=21$, from $c_{22}<0$ alternating.
+    warum: |
+      The logarithm at $-2$ is the nearest singularity and gives the leading term $[z^n]\log(z+2)$. The remainder is holomorphic up to $|z|<3$ and therefore exponentially smaller.
+    worum: |
+      What do the Taylor coefficients of Kneser's tetration around 0 look like for large $n$, and are they all positive?
+- id: kn.satz.theta6_koeffizienten
+  quelle_hash: 560acce44d90
+  theorie_hash: 92e603b1647a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Fourier coefficients of the hexation wave: aₙ ≈ C₆ e^(−2πinx*) n^(−1−α), power-law decay with exponent 1.4218'
+    aussage: |
+      (i) Model: $a_n=e^{-2\pi inx^*}b_n(1+O(1/n))$ with $b_n=[Q^n]\,h\bigl((c_6+\log(1-Q))/\ln\lambda_4\bigr)$,
+      $c_6=\ln(A_6/2\pi)+i\pi/2-\mathrm{pcent}\ln\lambda_4$; with the correction $\delta_1=\tfrac12+i\kappa_6/2\pi$ ($\kappa_6=0.335274554885$) the remainder becomes $O(1/n^2)$.
+      (ii) Asymptotics: $a_n\approx C_6e^{-2\pi inx^*}n^{-1-\alpha}$, $C_6=K(i/2\pi)^\alpha/\Gamma(-\alpha)=0.0053906-0.0631856i$ ($|C_6|=0.06342$).
+      The coefficients decay like a **power** with exponent $1.4218$, without iterated logarithms; the pure leading term $-h'(v_n)/(n\ln\lambda_4)$ of tetration does not fit here (factor 1.63).
+    bereich: as in kn.satz.theta6_singularitaet; $\theta_6=\sum a_nq^n$, $q=e^{2\pi iz}$, $Q=q\,e^{-2\pi ix^*}$
+    einfach: 'How strong the individual oscillations of the hexation wave are can be predicted: they shrink like a fixed power of n, faster than
+      for tetration. The calculation agrees to about two percent up to the 160th oscillation.'
+    formen:
+    - notiz: Power-law decay
+    beweis:
+      text: (ii) from the local form $\theta_6\approx\theta^*+K(z-x^*)^\alpha$ via the transfer theorem for $(1-Q)^\alpha$ (Flajolet–Odlyzko);
+        (i) structure as in kn.satz.theta_koeffizienten with $\ln\lambda_4$ instead of $\ln b$.
+      luecken:
+      - Branch choice as for kn.satz.theta6_singularitaet.
+      - Δ-analyticity at Q = 1 and an error bound for (i) are not proved, only measured.
+    bedingungen_text: Local form from kn.satz.theta6_singularitaet (branch choice numerical) and Δ-analyticity of θ₆ at Q = 1 for the transfer
+      theorem; base 2 only
+    pruefung:
+      f1_folgt_unmittelbar: (ii) yes, from kn.satz.theta6_singularitaet with the transfer theorem.
+      f2_benutzte_voraussetzungen: Local form, Δ-analyticity.
+      f3_spezialfall: Counterpart of kn.satz.theta_koeffizienten (there the exponent is exactly 1 with log corrections, α = 0).
+      f4_uebertragbar: To even ranks with exponent 1 + α_r (kn.verm.theta_gerade_raenge).
+      f5_neue_frage: Prove the remainder in (i); base dependence of C₆.
+    bewertung:
+      nutzen: Completely explains the mode decay of the Kneser hexation.
+      richtigkeit: Structure derived, numerically to 2 % (n = 160)
+    nachgeprueft:
+    - ergebnis: n·Rest₁ = 0.33 → 0.309, n²·Rest₂ = 0.50 → 0.394 (n = 8…160), Rest₂ = 1.5·10⁻⁵ at n = 160; a_n e^{2πinx*}/(C₆n^{−1−α}) = 1.050
+        … 1.016 (n = 5…160).
+    quellen:
+    - stelle: forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B4, B5 and Section 1; s2_modell6.py, s2b_fuehrend6.py
+    - {}
+  en_theorie:
+    beispiel: |
+      $|a_{160}|=4.736\cdot10^{-5}$; the prediction is accurate to $1.6\,\%$.
+    einordnung: |
+      Follows from [[kn.satz.theta6_singularitaet]]; rank 4: [[kn.satz.theta_koeffizienten]] (exponent exactly 1).
+    genau: |
+      $a_n\approx C_6e^{-2\pi inx^*}n^{-1-\alpha}$, i.e. like the power $n^{-1.4218}$, with $|C_6|=0.0634$.
+    warum: |
+      A root-type kink $(1-Q)^\alpha$ gives, by the transfer theorem of Flajolet–Odlyzko, coefficients $\sim n^{-1-\alpha}/\Gamma(-\alpha)$.
+    worum: |
+      How fast do the Fourier coefficients of the hexation wave decay?
+- id: kn.satz.theta6_singularitaet
+  quelle_hash: 88d7032d711f
+  theorie_hash: b26b5fcb4510
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: θ of the Kneser hexation is not singular at the integers but at x* = ihex(p) + ℤ — with a root-type kink of exponent ln b / ln sexp′(p)
+    aussage: |
+      (i) $\theta_6$ has no negative modes and is singular **exactly** at $x^*+\mathbb Z$, $x^*=\mathrm{ihex}(p)=-2.76502205052560345111$; the integers are regular points.
+      (ii) Locally
+      $$\theta_6(z)=\theta^*+K(z-x^*)^{\alpha}+O(|z-x^*|^{2\alpha})+O(z-x^*),\qquad\alpha=\frac{\ln b}{\ln\lambda_4}=0.42182244029502478293,$$
+      with $\theta^*=2-x^*+h(\mathrm{psing})=5.17719763470+1.23143667244i$ and $K=h'(\mathrm{psing})\,\mathrm{ipent}'(-2)\,A_6^{\alpha}b^{-\mathrm{pcent}}/\mathrm{sexp}'(-1)=0.2746753+0.4215492i$,
+      $A_6=\mathrm{hex}'(x^*)=1.0325027039$, $\mathrm{psing}=-1.97859584473632+1.91185121532145i$. $K\ne0$ strictly.
+      So $\theta_6$ stays **finite** at $x^*$ (Hölder continuous with exponent $\alpha$), unlike for tetration, where $\theta$ becomes unbounded at superlogarithmic rate.
+    bereich: $b=2$; $P$ regular pentation (engine pentx) at the real fixed point $p=-1.7439091761$ of sexp, $\lambda_4=\mathrm{sexp}'(p)=5.1717972635$;
+      engine hexation hex of Kneser type at the repelling fixed point $kp=-1.992948435932+1.445128496639i$ of $P$ ($\mu=1.368932747340+2.488144667623i$);
+      $h$ regular Abel function of $P$ at $kp$; $\theta_6(z)=h(\mathrm{hex}\,z)-z$
+    einfach: 'For tetration, Kneser''s wave has its sharp spots at the integers. For hexation they lie elsewhere: where the hexation hits the
+      real fixed point of tetration. There the wave does not become infinite either, but only has a kink like a root function.'
+    beweis:
+      text: |
+        $P(z)=\Psi_p(\lambda_4^z)\to p$ for $\mathrm{Re}\,z\to-\infty$; at the point $x^*$, hex takes exactly this exceptional value, while the values $\mathrm{hex}(k)$ are not exceptional values for $h$.
+        $\theta_6(z)=1+h(V)-z$ with $V=\mathrm{ipent}(\mathrm{hex}\,z)$, $V\to-\infty$ for $z\to x^*$. Since sexp is logarithmically singular at $-2$, slog has for $V\to-\infty$ the
+        finite limit $-2$: $\mathrm{slog}\,V=-2+b^V/\mathrm{sexp}'(-1)+\dots$, hence $\mathrm{ipent}(V)=\mathrm{psing}+\mathrm{ipent}'(-2)\,b^V/\mathrm{sexp}'(-1)+O(b^{2V})$, and
+        $b^V=(A_6(z-x^*))^{\ln b/\ln\lambda_4}b^{-\mathrm{pcent}}(1+O(z-x^*))$. $K\ne0$ because $h'$, $\mathrm{ipent}'$, $A_6$ have no zeros (S1 argument from kn.satz.theta_singularitaet).
+      luecken:
+      - 'Branch choice: h(w) = 1 + h(ipent w) and the principal branch of ipent must be the analytic continuation along hex(x* + iε); only numerical
+        (B4/B5 hit the coefficients), not with intervals.'
+    bedingungen_text: Branch choice (h(w) = 1 + h(ipent w) and principal branch of ipent along hex(x* + iε)) confirmed only numerically, as for
+      kn.satz.theta_singularitaet; base 2 only
+    pruefung:
+      f1_folgt_unmittelbar: 'No, but from three ingredients: exceptional value p of the regular pentation, finite limit of slog at −∞, absence
+        of zeros of the derivatives.'
+      f2_benutzte_voraussetzungen: Kneser representation hex = F_kp(z + θ₆); branch choice (numerical).
+      f3_spezialfall: Counterpart of kn.satz.theta_singularitaet one level higher; there the exceptional value is 0 = sexp(−1).
+      f4_uebertragbar: To even ranks in general, see kn.verm.theta_gerade_raenge; to other bases via η₅ with α = ln b/ln λ₄.
+      f5_neue_frage: Prove the branch choice with interval arithmetic; coefficient law (kn.satz.theta6_koeffizienten).
+    bewertung:
+      nutzen: Clarifies the type of singularity of the hexation wave; answers f5 of kn.satz.theta_singularitaet.
+      recherche: The exponent 0.4218 and the corner of the curve already appear qualitatively in kn.beob.hexation_verzweigt (θ ~ (x − x_c)^{1/α},
+        x_c = x* + 1); new are the location as ihex(p), the constants θ*, K, the regularity at the integers and the derivation.
+      richtigkeit: Local form derived, branch choice numerical
+    nachgeprueft:
+    - ergebnis: a₋ₙ < 2.4·10⁻⁴⁹ (dps 40); arg(a_n/a_{n−1}) → −2πx* mod 2π = −1.47641, measured −1.476402 (n = 128); two runs (dps 40/30) agree
+        to 10⁻²⁹ (n ≤ 16); θ(x* + iy) − θ* decays like y^α.
+    quellen:
+    - stelle: forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B1–B3 and Section 1; s1_theta6.py, s7_lokal6.py, lib6.py
+  en_theorie:
+    beispiel: |
+      Base 2: $x^*=-2.765022$, $\theta^*=5.1772+1.2314i$, $K=0.2747+0.4215i$.
+    einordnung: |
+      Rank-4 counterpart: [[kn.satz.theta_singularitaet]]; the corner was already seen in [[kn.beob.hexation_verzweigt]]; in general: [[kn.verm.theta_gerade_raenge]].
+    genau: |
+      Exactly at $x^*+\mathbb Z$ with $\mathrm{hex}(x^*)=p$ (real fixed point of sexp), locally $\theta_6\approx\theta^*+K(z-x^*)^\alpha$, $\alpha=\ln b/\ln\mathrm{sexp}'(p)=0.4218$.
+    warum: |
+      The regular pentation omits the value $p$ (it only runs there for $\mathrm{Re}\,z\to-\infty$); if the hexation hits $p$, the wave has to compensate.
+      Because slog has a finite limit at $-\infty$, the wave stays finite and only gets a root-type kink.
+    worum: |
+      Where and how is the wave of the Kneser hexation singular? (θ, $h$: as in [[kn.def.theta_welle]], one level higher.)
 - id: kn.satz.theta_koeffizienten
   quelle_hash: 06df6d641a24
   theorie_hash: 0b4809d7d3d1
@@ -5764,6 +7034,160 @@
       3. The smoothness of all derivatives is the technical part of the work.
     worum: |
       $e^x-1$ has a fixed point at 0 and can be iterated well there; $e^x$ has no real one. Walker connects the two by a smooth function $h$.
+- id: kn.satz.wertevorrat
+  quelle_hash: 6967593899e2
+  theorie_hash: 50010f0551fb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: Kneser's sexp takes every value except 0 infinitely often; the value 0 exactly once, at −1
+    aussage: |
+      On $\mathbb C\setminus(-\infty,-2]$, Kneser's $\mathrm{sexp}_e$ has exactly one zero ($z=-1$) and takes every value $c\ne0$ infinitely often.
+      The preimages come in families $w_j\approx w_0+j\gamma$ with $\gamma=2\pi i/L=4.44695+1.05794i$.
+    einfach: In the complex plane, Kneser's tetration hits every number infinitely often — only zero exactly once, at the point −1.
+    beweis:
+      text: |
+        For $c$ in the upper half-plane, the principal logarithm maps it into itself (not an automorphism, fixed point $L$); by Denjoy–Wolff, $\log^{[k]}c\to L$.
+        Above, $\mathrm{sexp}(z)=\Psi(\kappa e^{L(z+\theta(z)-a_0)})$ (Kneser). For $v=\log^{[k]}c$ near $L$, the equation $z+\theta(z)-a_0=(\log(\sigma(v)/\kappa)+2\pi ij)/L$ has for every
+        large $j$ exactly one solution $z_j$ (Rouché), and $\mathrm{sexp}(z_j+k)=c$. Lower half-plane by reflection; $c<0$ and $c>0$ by one logarithm step
+        (for $c=\mathrm{sexp}(n)$ with $\log c+2\pi i$). The zero: see kn.satz.minus2_hebbar. Recomputed for $c=2\pi i$ (residual error $3\cdot10^{-47}$).
+    pruefung:
+      f1_folgt_unmittelbar: No; needs Denjoy–Wolff and Kneser's representation in the upper half-plane.
+      f2_benutzte_voraussetzungen: kn.konstr.kneser (representation above, θ − a₀ → 0), Denjoy–Wolff, Rouché.
+      f3_spezialfall: Analogous to Picard's theorem (one omitted value), here for a function with a cut.
+      f4_uebertragbar: To every base b > η with Kneser's solution.
+      f5_neue_frage: Yields infinitely many branch points on side sheets (kn.satz.nebenblatt_zweigpunkte).
+    bewertung:
+      nutzen: Clarifies the set of values and generates the side-sheet structure.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_18/06_asymptotik/BERICHT.md, B7 and Section 1.2; e8b_familie.py
+    - {}
+  en_theorie:
+    beispiel: |
+      $c=2\pi i$: preimages at distance $\gamma=2\pi i/L=4.447+1.058i$.
+    einordnung: |
+      Uses [[kn.konstr.kneser]]; produces [[kn.satz.nebenblatt_zweigpunkte]].
+    genau: |
+      Every value $c\ne0$ infinitely often, the value 0 exactly once (at $-1$).
+    warum: |
+      Repeated logarithms lead every $c$ to the fixed point $L$ (Denjoy–Wolff); near $L$ the tetration above is almost an exponential function and hits every value in a whole family.
+    worum: |
+      Which values does Kneser's tetration take in the complex plane?
+- id: kn.satz.zoo_puiseux
+  quelle_hash: 8fd5e342e30b
+  theorie_hash: 7286cb3ec513
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Puiseux law: at a critical value of degree d, Kneser''s θ coefficients decay like n^(−1−1/d), with a closed-form constant'
+    aussage: |
+      Near $z_1$, $\theta(z)=\Phi\bigl((z-z_1)^{1/d}\bigr)$ with $\Phi$ holomorphic. From this it follows that
+      $$a_n=\sum_{k\ge1,\ d\nmid k}E_k\,[q^n](1-q)^{k/d},\qquad [q^n](1-q)^\alpha=\frac{\Gamma(n-\alpha)}{\Gamma(-\alpha)\Gamma(n+1)},\qquad E_1=h'(w_c)\Bigl(\frac{iA}{2\pi a}\Bigr)^{1/d},$$
+      hence $a_n\approx C_1n^{-1-1/d}$ with $C_1=E_1/\Gamma(-1/d)$. For $d=2$, $E_3$ is also closed (with $B=S''(z_1)/2$ and a correction $\delta=A/12$ for $\cosh$).
+      Numerically: for $x^2+1$, $a_n/(C_1n^{-3/2})=0.99985$ at $n=512$, with two terms a relative remainder $0.65/n^2$ is left; likewise for $\cosh$;
+      for $x^4+1$, with three terms $0.24/n$ is left (local exponent $1.273$ at $n=1024$, slowly toward $1.25$).
+      The logarithm for $e^x$ is the limiting case $d=\infty$: there $a_n\approx-h'(c-\ln n)/n$ with exponent exactly 1 (kn.satz.theta_koeffizienten), reproduced with the new solver ($|a_{1024}|=2.2013\cdot10^{-5}$).
+      The slow drift of the local exponent is a peculiarity of the log case; for algebraic critical values it sits at $1+1/d$ right away.
+    bereich: 'as in kn.satz.zoo_singulaerer_ort; critical value $v$ of degree $d<\infty$: $f(w_c+X)=v+aX^d+\dots$, $A=S''(z_1)>0$; $\theta=\sum
+      a_nq^n$, $q=e^{2\pi iz}$'
+    einfach: How fast the oscillations of the wave get weaker depends only on how “pointed” the special value of the map is. For a parabola (degree
+      2) they decay like 1/n to the power 1.5, for degree 4 like 1/n to the power 1.25. The prefactors can be computed, and the prediction agrees
+      very precisely.
+    formen:
+    - notiz: leading term
+    beweis:
+      text: |
+        In $\mathbb H$, $S(z-1)=g(S(z))$, so $\theta(z)=1-z+h(g(S(z)))$. With $S(z)-v=A(z-z_1)+B(z-z_1)^2+\dots$, $g(S)-w_c=((S-v)/a)^{1/d}\cdot$(analytic in $(S-v)^{1/d}$),
+        and $h$ is analytic at $w_c$ because $w_c\notin P$. With $z-z_1=\log q/(2\pi i)$, $\theta$ becomes a convergent series in $(1-q)^{k/d}$; integer powers do not contribute.
+        Since $\theta$ is $\Delta$-analytic at $q=1$, the transfer theorem of Flajolet–Odlyzko for $(1-q)^\alpha$ applies verbatim (unlike in the log case, where a separate estimate was needed).
+    bedingungen_text: Assumption (V) and the Δ-analyticity at q = 1 from kn.satz.zoo_singulaerer_ort (branch choice numerical)
+    pruefung:
+      f1_folgt_unmittelbar: From the Puiseux form with the transfer theorem yes; new are the local form via g and the closed constant.
+      f2_benutzte_voraussetzungen: (V), Δ-analyticity from kn.satz.zoo_singulaerer_ort, transfer theorem (Flajolet–Odlyzko, cited).
+      f3_spezialfall: 'Yes: singularity analysis for algebraic singularities; the log case kn.satz.theta_koeffizienten is the limiting case d
+        → ∞.'
+      f4_uebertragbar: To every critical value of finite degree; uniformly a_n ≈ [qⁿ] h(g_v(v + A·i(1−q)/2π)) with the local inverse g_v.
+      f5_neue_frage: Do the superfunctions of (1+x/d)^d pass into sexp as d → ∞, and how does n^(−1−1/d) pass uniformly into the superlog law?
+    bewertung:
+      nutzen: Explains the Fourier decay of Kneser's wave as a function of the degree of the singular value; makes the eˣ case a limiting case.
+      richtigkeit: proved under (V) and the branch choice; numerical up to n = 1024 to 10⁻⁹ relative
+    quellen:
+    - stelle: forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, U2, U3, B-U2 and Section 2; s2_theta.py, s3_puiseux.py
+    - {}
+  en_theorie:
+    beispiel: |
+      $x^2+1$: $C_1=0.0030758-0.0653307\,i$, $a_1=0.0029141-0.0606080\,i$; at $n=512$, $C_1n^{-3/2}$ hits the true value to $1.5\cdot10^{-4}$.
+    einordnung: |
+      The log case [[kn.satz.theta_koeffizienten]] is the limiting case $d\to\infty$; background: [[br.satz.gevrey_fourier]].
+    genau: |
+      $a_n\approx C_1n^{-1-1/d}$ with $C_1=h'(w_c)(iA/2\pi a)^{1/d}/\Gamma(-1/d)$, plus a series in $n^{-1-k/d}$.
+    warum: |
+      Near $z_1$, $S\approx v+A(z-z_1)$, and the branch $g$ of $f^{-1}$ takes a $d$-th root of it. So θ is a series in $(z-z_1)^{1/d}$, and a singularity
+      $(1-q)^{1/d}$ gives, by the transfer theorem, coefficients $\sim n^{-1-1/d}/\Gamma(-1/d)$.
+    worum: |
+      How fast do the Fourier coefficients $a_n$ of θ decay when the singularity comes from a critical value of degree $d$?
+- id: kn.satz.zoo_singulaerer_ort
+  quelle_hash: 5681ce28eaf0
+  theorie_hash: a1f0ba14d202
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Kneser superfunctions of other maps: θ is singular exactly above the singular values of f'
+    aussage: |
+      Under (V), $\theta(z)=h(S(z))-z$ is singular on the real axis **exactly** at the places where $S$ hits a point of the orbit
+      $P=\{v,f(v),f^2(v),\dots\}$ of a singular value of $f$ (critical value, where $f'=0$, or asymptotic value such as 0 for $e^x$).
+      In the zoo studied this is $z_1+\mathbb Z$ with $S(z_1)=v$ (normalization $S(-1)=v$, so $z_1=-1$); everywhere else on $\mathbb R$, $\theta$ is analytic.
+      A value **omitted** by the regular superfunction is not needed for this: for polynomials $F$ omits no value
+      (it.satz.poincare_polynom_surjektiv), and $\theta$ is singular nevertheless. So the mechanism for $e^x$ (kn.satz.theta_singularitaet) is a special case.
+      Numerically: negative Fourier modes of $\theta$ $\le1.1\cdot10^{-15}$, the remainder after subtracting the Puiseux series decays smoothly like $1/n^2$ (no further singularities on $|q|=1$).
+    bereich: 'Assumption (V): $f$ entire and real, repelling fixed point $L$ in the upper half-plane $\mathbb H$, a branch $g$ of $f^{-1}$ with
+      $g(\mathbb H)\subset\mathbb H$, real and increasing on $(v,\infty)$ with singular value $v$; Kneser superfunction $S=F(z+\theta(z))$, $F(s)=\Psi(\lambda^s)$,
+      $h=F^{-1}$; examples $e^x$, $x^2+1$, $x^4+1$, $\cosh x$'
+    einfach: Kneser's construction works not only for eˣ but also for x²+1, x⁴+1 or cosh x. There too there is a small wave θ, and it has sharp
+      spots. These lie exactly where the superfunction hits a special value of the map — for x²+1 the value 1, where the parabola has its vertex.
+    beweis:
+      text: |
+        $h$ continues along every path that avoids $P$, since the Schröder function $\sigma=\lim\lambda^n(g^n-L)$ is built from branches of $f^{-1}$, and these are branched only
+        above singular values. $g$ is univalent on $\mathbb H$, so $\sigma$ is schlicht there (Hurwitz; like Lemma U of the preliminary work). $S$ is real and increasing
+        on $(-2,\infty)$; in the zoo $P\cap\mathbb R=\{v,f(v),\dots\}$ (for $\cosh$ the second singular value $-1$ is never hit on $\mathbb R$).
+      luecken:
+      - 'Branch choice: that the principal branch is the correct continuation is supported only numerically (continuous sampling, periodicity
+        error ≤ 2·10⁻¹⁴), like gap S4 of the preliminary work.'
+    bedingungen_text: That the principal branch is the correct continuation of h (branch choice as in kn.satz.theta_singularitaet) is supported
+      only numerically (periodicity error ≤ 2·10⁻¹⁴)
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: it is the argument of kn.satz.theta_singularitaet, only formulated with singular values instead of omitted
+        values.'
+      f2_benutzte_voraussetzungen: Assumption (V), schlichtness of σ on ℍ, branch choice (numerical).
+      f3_spezialfall: Generalizes kn.satz.theta_singularitaet (there only eˣ, asymptotic value 0).
+      f4_uebertragbar: To every entire real f with (V); with several real singular values on S(ℝ), several series of singularities should superpose
+        (not studied).
+      f5_neue_frage: Uniqueness (Paulsen–Cowgill) for general f with (V)? What happens for maps without a real singular value?
+    bewertung:
+      nutzen: 'Shows which part of the θ structure of eˣ is general: the singularities come from the singular values of the map.'
+      richtigkeit: Core derived, branch choice numerical
+    quellen:
+    - stelle: forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, U1 and Section 2; zoo.py, s2_theta.py
+    - stelle: Contour method, generalized here
+  en_theorie:
+    beispiel: |
+      For $x^2+1$, $v=1$ (vertex of the parabola), $S(-1)=1$, $S(-2)=0$; θ is singular at $-1+\mathbb Z$, analytic elsewhere.
+    einordnung: |
+      Generalizes [[kn.satz.theta_singularitaet]]; the omitted value of $e^x$ is not needed for this ([[it.satz.poincare_polynom_surjektiv]]). Consequence: [[kn.satz.zoo_puiseux]].
+    genau: |
+      Exactly where $S$ on the real axis hits the orbit of a **singular value** of $f$ (critical or asymptotic value); in the zoo at $z_1+\mathbb Z$ with $S(z_1)=v$.
+    warum: |
+      $\theta=h\circ S-\mathrm{id}$, and the Abel function $h$ is built from branches of $f^{-1}$. These branch only above singular values; elsewhere $h$ continues analytically.
+    worum: |
+      Kneser's construction $S=F(z+\theta(z))$ works for every entire real map $f$ with a pair of complex fixed points $L,\bar L$, e.g. $x^2+1$, $x^4+1$, $\cosh x$.
+      Where does the wave θ then have its sharp spots?
 - id: kn.verm.beschraenkt_unter_2
   quelle_hash: 710af4f8b1fe
   theorie_hash: a8d97b989f71
@@ -5928,6 +7352,47 @@
       $\bar L$ logarithmic singularities, its power series about $0$ cannot converge beyond them.
     worum: |
       The intuitive super-logarithm gets better and better with growing $n$ — but toward which limit? The conjecture: exactly toward Kneser's super-logarithm.
+- id: kn.verm.grenzprofil_rampe
+  quelle_hash: f80dc0f13342
+  theorie_hash: 4e24e040a785
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Limit profile of the rank ladder: H_r(b, x) → min(x+1, b) — a ramp with a cap'
+    aussage: |
+      $$\lim_{r\to\infty}H_r(b,x)=\min(x+1,\,b)\qquad(x\ge0),$$
+      in particular $p_r\to b$. Evidence: $b=\sqrt2,\ 1.2,\ 1.5$ up to $r=16$, monotone approach; the plateau formula
+      $H_{r+1}(x)-1\approx-\ln(\lambda_{r-1}^{b-1}+\lambda_r^x)/L_{r-1}$ hits the profile to 0.01–1 % (at $b=1.2$, rank 15: $H(0.25)=1.146017$ against 1.145963).
+      The approach to the ramp itself is only logarithmically fast. At $b=2$, $\min(x+1,2)=x+1$ on $[0,1]$, so exactly $H_r(2,\tfrac12)\to1.5$.
+    bereich: $1<b<2$, bounded Koenigs ladder (kn.satz.koenigs_leiter_monoton), $x\ge0$
+    einfach: The higher the operation, the more its graph looks like a ramp that rises like “plus 1” and then goes flat at the base b.
+    gegenbeispielsuche: 'Three bases (√2, 1.2, 1.5 with Kneser seed) up to r = 16 and two computing precisions (dps 30/degree 40 against dps 20/degree
+      30, 12 digits equal): no rank at which the profile moves away from the ramp.'
+    pruefung:
+      f1_folgt_unmittelbar: No; follows from the plateau model if its error estimate is proved.
+      f2_benutzte_voraussetzungen: Linearization of $\sigma_r$ in the plateau, $\lambda_r\to0$, $L_r/L_{r-1}\to1$.
+      f3_spezialfall: Generalizes the observation $H_r(2,x)\to x+1$ (kn.beob.zwischenwerte_basis2) to bounded ladders.
+      f4_uebertragbar: To ladders with Kneser seed (checked for b = 1.5); open for negative heights.
+      f5_neue_frage: Proof of $p_\infty=b$; profile on $(b-2,0)$.
+    bewertung:
+      nutzen: Explains the S-shape of the critical stages and the picture at b = 2.
+      richtigkeit: Conjecture, well supported, mechanism derived
+    quellen:
+    - stelle: forschung/runde_2026_10_18/07_raenge/BERICHT.md, B2, §2; koenigs_leiter.py, auswertung_leiter.py
+  en_theorie:
+    beispiel: |
+      $b=1.2$, rank 15: $H(0.75)=1.198815$, the ramp gives 1.2.
+    einordnung: |
+      At $b=2$ the same picture as [[kn.beob.zwischenwerte_basis2]]; at the limiting bases [[kn.beob.kritische_profile]]. Explains [[kn.gescheitert.konvexitaetsweg]].
+    genau: |
+      Conjectured: $H_r(b,x)\to\min(x+1,b)$ for $x\ge0$, $1<b<2$.
+    warum: |
+      In the almost flat plateau the Schröder function is almost the identity. The functional equation then gives $H_{r+1}(x)-1\approx-\ln(\lambda_{r-1}^{b-1}+\lambda_r^x)/L_{r-1}$,
+      and since $\lambda_r\to0$, this becomes $\min(b-1,x)$.
+    worum: |
+      What does $H_r(b,x)$ look like for very high rank?
 - id: kn.verm.hexation_streifen
   quelle_hash: 4b721ccfc362
   theorie_hash: 5d58d364037a
@@ -6009,6 +7474,46 @@
     worum: |
       If “holomorphic in a half-plane” does not work for the hexation ([[kn.satz.hexation_keine_halbebene]]) — what then determines the Kneser-type hexation? Presumably a
       strip: On a vertical strip of width 1 it is smooth and takes no value twice, and only it manages that.
+- id: kn.verm.leiter_rate
+  quelle_hash: 0439690083f3
+  theorie_hash: 47a3c20a3ace
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Rate of the rank ladder: r·μ_r → k = (2−b)/(b−1), δ_r ~ (b−1)k^k/(r^k ln r)'
+    aussage: |
+      With $k=(2-b)/(b-1)$,
+      $$r\mu_r\to k,\qquad \Delta(1/\mu_r)=\frac{1}{k+1/M_r}+\dots,\qquad \delta_r\sim\frac{(b-1)k^k}{r^k\ln r},\qquad L_r\sim\frac{\ln r}{b-1}.$$
+      Formally derived for the plateau model (slow curve $M=(D-\ln(M/a))/k$, $a=b-1$) and iterated up to $r=10^7$: $\Delta(1/\mu)=0.676678$ against 0.6767 ($\sqrt2$), 0.245823 against 0.2458 ($b=1.2$).
+      For the true ladder (up to $r=16$) it is a conjecture; the constants converge only with corrections $\ln\ln r/\ln r$.
+    bereich: bounded Koenigs ladder, $1<b<2$; quantities as in kn.satz.plateau_modell, $M_r=-\ln\mu_r$
+    einfach: How fast the upper bounds fall toward b depends on only a single number k, which can be computed from the base.
+    gegenbeispielsuche: Model iterated up to r = 10⁷ at √2 and 1.2 (increment formula to 4–5 digits); on the true ladder up to r = 16 it cannot
+      be refuted, but because of the slow corrections it cannot be checked directly either.
+    pruefung:
+      f1_folgt_unmittelbar: For the model yes (formal asymptotics); for the ladder no.
+      f2_benutzte_voraussetzungen: Plateau model (gap), contraction $a<1$ onto the slow curve.
+      f3_spezialfall: No.
+      f4_uebertragbar: To every $b\in(1,2)$; as $b\to2$, $k\to0$.
+      f5_neue_frage: Computations up to higher rank, to see the exponents of the true ladder directly.
+    bewertung:
+      nutzen: Quantitative law for the approach to the ramp.
+      richtigkeit: formally derived for the model; conjecture for the ladder
+    quellen:
+    - stelle: forschung/runde_2026_10_18/07_raenge/BERICHT.md, B4, §3; modellabbildung.py
+  en_theorie:
+    beispiel: |
+      Model at $r=10^7$, $b=\sqrt2$: $\Delta(1/\mu)=0.676678$, formula 0.6767.
+    einordnung: |
+      Follows from [[kn.satz.plateau_modell]]; open for the true ladder.
+    genau: |
+      $r\mu_r\to k=(2-b)/(b-1)$, $\delta_r\sim(b-1)k^k/(r^k\ln r)$, $L_r\sim\ln r/(b-1)$.
+    warum: |
+      In the model, $M=-\ln\mu$ is quickly bound to a slow curve; there $d(1/\mu)/dr=1/(k+1/M)$ holds.
+    worum: |
+      How fast does the ladder approach the ramp?
 - id: kn.verm.polynom_halbexp
   quelle_hash: ea87e6949e3f
   theorie_hash: d2f27465c3d8
@@ -6259,6 +7764,87 @@
       only weakly suppressed) — the condition number grows by about a factor of $1.9$ per degree.
     worum: |
       The last missing piece for a proof: Do the polynomials $p_N$ stay bounded up to the boundary $|x|=|L|$, and do they stay in the disk in the corridor, no matter how large $N$ becomes?
+- id: kn.verm.rangkoordinate
+  quelle_hash: a9c597028155
+  theorie_hash: b1b5eb8b92d1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Rank coordinate: an Abel functional Φ(Tf) = Φ(f) + 1 on bounded ladders; a half rank fixes only one direction of the θ freedom'
+    aussage: |
+      On the space of bounded stages there is an Abel functional $\Phi$ with $\Phi(Tf)=\Phi(f)+1$: the ladder is attracted super-exponentially transversally to a one-dimensional curve $W$
+      and runs along $W$ parabolically (steps $\sim k/r$) — the function-space counterpart of the Fatou coordinate.
+      The θ freedom of a stage acts asymptotically only via $\Phi$. **If $\Phi$ exists and is smooth** (this part is proved), the condition
+      “true half rank” $\Phi(H_{3.5})=\Phi(H_3)+\tfrac12$ is a single equation: it fixes one linear combination of the θ parameters
+      (at $\sqrt2$ weights $\approx(-6.13,-7.74)$ for $(\sin,1-\cos)$), not the whole freedom. For a canonical half rank one would additionally need
+      a canonical interpolation of the transverse contraction (Gamma-like, $\prod\mu\sim k^s/\Gamma(r+s)$; not worked out).
+    bereich: bounded ladders $1<b<2$; $T$ = rank step $H_r\mapsto H_{r+1}$ (Koenigs)
+    einfach: One can assign a “rank number” to every operation in the ladder, even a fractional one. A half rank would have to have exactly the
+      number 3½ — but that is only one condition and alone does not suffice to determine it uniquely.
+    gegenbeispielsuche: 'Four perturbations (sin ±0.05, sin 0.01, cos 0.01) and four measured quantities (p_r, λ_r, profile at 0.25 and 0.5):
+      all give the same shift c to 4–5 digits; no measured quantity deviated.'
+    pruefung:
+      f1_folgt_unmittelbar: The counting follows immediately if Φ exists; the existence does not.
+      f2_benutzte_voraussetzungen: Rank shift and super-exponential transverse contraction (kn.beob.rangverschiebung).
+      f3_spezialfall: Analogous to the Fatou coordinate of a parabolic map (it.satz.leau_fatou), here in function space.
+      f4_uebertragbar: Open at $b=2$ (unbounded ladder); there the rank descent inflates the transverse directions.
+      f5_neue_frage: Existence and smoothness of Φ; canonical transverse interpolation for a full half rank.
+    bewertung:
+      nutzen: 'New form of the half-rank question: one equation plus one interpolation.'
+      richtigkeit: Conjecture (existence); counting proved under existence
+    quellen:
+    - stelle: forschung/runde_2026_10_18/07_raenge/BERICHT.md, B7, §5
+  en_theorie:
+    beispiel: |
+      At $\sqrt2$ the condition fixes the combination $-6.13\,\varepsilon_{\sin}-7.74\,\varepsilon_{\cos}$.
+    einordnung: |
+      New version of [[kn.frage.halber_rang]]; model [[it.satz.leau_fatou]]; evidence [[kn.beob.rangverschiebung]].
+    genau: |
+      Conjectured: $\Phi(Tf)=\Phi(f)+1$. A half rank must satisfy $\Phi(H_{3.5})=\Phi(H_3)+\tfrac12$ — one equation for the whole θ freedom.
+    warum: |
+      The rank shift shows a one-dimensional slow direction with parabolic run; its phase is an Abel coordinate like the Fatou coordinate.
+    worum: |
+      Is there a “rank number” $\Phi$ for functions that grows by 1 under the rank step?
+- id: kn.verm.stoerungsreihe_ganzzahlig
+  quelle_hash: 03b21ba01861
+  theorie_hash: 98b962351530
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Conjecture: (2n−2)!·2^(n−1)·[y^(2n−2)] gₙ(y−1) is an integer for all n (−1, −3, −26, −468, −14256, …)'
+    aussage: |
+      The normalized second layer $(2n-2)!\,2^{n-1}\,[y^{2n-2}]\,g_n(y-1)=-1,-3,-26,-468,-14256,-657568,-42752256,\dots$ is integer-valued (checked for $n\le12$);
+      likewise the third layer times 6: $13,126,2408,76616,3656688,\dots$ None of the sequences is in the OEIS (search on 18.10.2026).
+      Conjectured: integrality for all $n$ (a divisibility by 3 is needed).
+    einfach: After a suitable normalization, the layers of the perturbation series yield integers. This was checked up to n = 12; whether it always
+      stays so is open.
+    gegenbeispielsuche: 's5_folgen.py: exact rational computation of the normalized coefficients for n ≤ 12, no denominator ≠ 1 found.'
+    pruefung:
+      f1_folgt_unmittelbar: No; the second layer is known (kn.satz.stoerungsreihe_tangens), but the divisibility by 3 does not follow directly.
+      f2_benutzte_voraussetzungen: Exact polynomials g_n up to n = 12.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To higher layers (third layer ×6 also observed to be integer).
+      f5_neue_frage: Is there a counting interpretation as for kn.satz.stoerungsreihe_baeume?
+    bewertung:
+      nutzen: New number sequences for the OEIS.
+      richtigkeit: numerical for n ≤ 12
+    quellen:
+    - stelle: forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, P3 and Open question 3; s5_folgen.py
+  en_theorie:
+    beispiel: |
+      $n=4$: $-26$.
+    einordnung: |
+      Counting sequences of the perturbation series: [[kn.satz.stoerungsreihe_baeume]].
+    genau: |
+      $(2n-2)!\,2^{n-1}[y^{2n-2}]g_n(y-1)=-1,-3,-26,-468,\dots$ integer for $n\le12$; conjectured for all $n$.
+    warum: |
+      Unproved; a divisibility by 3 is needed.
+    worum: |
+      Do the layer coefficients become integers after a suitable normalization?
 - id: kn.verm.szekeres_wachstum
   quelle_hash: 3d9dca934d7a
   theorie_hash: ca021033ef5f
@@ -6304,6 +7890,93 @@
       for these coefficients would be a criterion without complex analysis. It is supported only numerically.
     worum: |
       Which half-iterate of $e^x-1$ is “the right one”? Szekeres proposes: the one with the most regular growth, and tries to make that measurable.
+- id: kn.verm.theta5_natuerliche_grenze
+  quelle_hash: b61e6f534dd9
+  theorie_hash: f0897a1e3309
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Conjecture: The edge of the basin of L₄ is a natural boundary of the rank-5 wave θ₅'
+    aussage: |
+      $\theta_5$ is holomorphic on $\Omega$ and cannot be continued beyond any point of $\partial\Omega$.
+    bereich: as in kn.beob.theta5_wachsende_koeffizienten; $\Omega$ the component of $\{z:H_5(z)\in B(L_4)\}$ that contains $i\infty$
+    einfach: The wave of the pentation ends at a ragged line above the real axis, and presumably it cannot be continued beyond it anywhere.
+    beweis:
+      text: If $\theta_5$ could be continued across $z_0\in\partial\Omega$ and $\Psi$ (inverse of $\sigma$) were uniquely continuable along $s_0+t$,
+        $t\ge0$, then $H_5(z_0+n)=F(s_0+n)\to L_4$, so $H_5(z_0)$ would lie in the basin — contradiction.
+      luecken:
+      - Ψ is not entire (it arises from branches of slog); the unique continuability along s₀ + t is not secured.
+    gegenbeispielsuche: Searched for boundary pieces across which the θ series keeps converging, and for logarithmic points with H₅(z + n) = L₄
+      (100×25 grid); none found.
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Koenigs function on the whole basin; continuability of Ψ.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every Kneser-type construction at an attracting fixed point.
+      f5_neue_frage: Does the stage-6 hexation have the same boundary?
+    bewertung:
+      nutzen: Would explain the missing real representation at rank 5.
+      richtigkeit: Conjecture with partial argument
+    quellen:
+    - stelle: forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B9 and Section 3; s4_becken5.py
+  en_theorie:
+    einordnung: |
+      Observation on this: [[kn.beob.theta5_wachsende_koeffizienten]].
+    genau: |
+      Conjectured: the edge of the basin of $L_4$ (pulled back into the $z$ plane) is a natural boundary of $\theta_5$.
+    warum: |
+      A continuation across the edge would pull the boundary point into the basin; it is open whether the inverse of $\sigma$ can be continued uniquely for this.
+    worum: |
+      Does the rank-5 wave end at a boundary that cannot be crossed?
+- id: kn.verm.theta_gerade_raenge
+  quelle_hash: de1456157b5e
+  theorie_hash: e7b846d65abb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: 'Conjecture: On every even rank the singularity of θ sits where H_r hits the fixed point p_{r−2}, with exponent ln λ_{r−4} / ln λ_{r−2}'
+    aussage: |
+      For even $r\ge4$, $\theta_r$ is singular **exactly** at $x_r^*+\mathbb Z$ with $H_r(x_r^*)=p_{r-2}$ (the limit of $H_{r-1}$ for $\mathrm{Re}\,z\to-\infty$), and locally
+      $\theta_r\approx\theta^*+K(z-x_r^*)^{\alpha_r}$, $\alpha_r=\ln\lambda_{r-4}/\ln\lambda_{r-2}$; the coefficients decay like $n^{-1-\alpha_r}$.
+      $r=4$ is the borderline case $\alpha=0$: $x_4^*=-1$, exponent exactly 1 with iterated log corrections. $r=6$: kn.satz.theta6_singularitaet.
+      **Rank 8 (octation):** Kneser at the repelling fixed point $kp_8=-4.294772+1.283451i$ of $H_7$ ($\mu=3.41616+3.22021i$); singular at $x_8^*=H_8^{-1}(p_6)=-4.7138756$,
+      $p_6=-3.6994078$; predicted $\alpha_8=\ln\lambda_4/\ln\lambda_6=0.730137$ ($\lambda_6=9.493087$).
+    bereich: 'Engine family for base 2: even ranks Kneser-type at the repelling complex fixed point, odd ranks regular at the real fixed point
+      $p_{r-1}$ of $H_{r-1}$; $\lambda_k=H_k''(p_k)$, $\lambda_2=b$, $\lambda_0=1$'
+    einfach: 'The pattern seems to recur at every second operation: the sharp spot of the wave lies where the operation hits a certain fixed point
+      two levels below, and how sharp it is is given by a ratio of two logarithms.'
+    gegenbeispielsuche: 'Checked were r = 4, 6, 8 (location hit each time, for r = 8 to 4·10⁻⁴ rad); integers on rank 6 and 8 were checked as
+      possible further singularities: regular. Rank 10 not computed.'
+    pruefung:
+      f1_folgt_unmittelbar: 'No; argument: H_{r−2} has at x_{r−2}* − 1 a logarithmic singularity to base λ_{r−4}, so H_{r−2}^{−1}(V) has a finite
+        limit for V → −∞ with approach λ_{r−4}^V.'
+      f2_benutzte_voraussetzungen: Structure of the engine family, branch choice as for rank 6.
+      f3_spezialfall: Contains kn.satz.theta_singularitaet (r = 4) and kn.satz.theta6_singularitaet (r = 6).
+      f4_uebertragbar: To other bases via the thresholds η_r.
+      f5_neue_frage: Measure α₈ more precisely (higher N, dps 30), check rank 10.
+    bewertung:
+      nutzen: Unified law for the waves of all Kneser-type ranks.
+      richtigkeit: Derived for r = 4, 6, location confirmed for r = 8, exponent rough
+    nachgeprueft:
+    - ergebnis: 'Rank 8 (dps 20, 64 points): arg(a_n/a_{n−1}) = −1.798224 (n = 24) versus −1.797773; local exponent 1.702 → 1.713, target 1.730;
+        negative modes 2·10⁻¹⁰.'
+    quellen:
+    - stelle: forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B6, B7 and Section 2; s6_theta8.py
+  en_theorie:
+    beispiel: |
+      Rank 8: $x_8^*=-4.71388$, predicted $\alpha_8=0.7301$, measured local exponent $1.713$ (target $1.730$).
+    einordnung: |
+      Contains [[kn.satz.theta_singularitaet]] and [[kn.satz.theta6_singularitaet]].
+    genau: |
+      Singular at $H_r(x_r^*)=p_{r-2}$, exponent $\alpha_r=\ln\lambda_{r-4}/\ln\lambda_{r-2}$; tetration: $\alpha_4=0$.
+    warum: |
+      Two levels lower, $H_{r-2}$ has a logarithmic singularity to base $\lambda_{r-4}$; this determines the kink. For tetration this nesting never ends.
+    worum: |
+      A common law for the waves of all even (Kneser-type) ranks.
 - id: kn.verm.tk_c2
   quelle_hash: 7c1b50ca58f5
   theorie_hash: 7484d18e848f
@@ -6586,3 +8259,44 @@
       A fixed point there therefore leaves no trace in the spectrum of the sections. Supported only by five cases.
     worum: |
       The measurements on TPID 3 show a simple pattern: The matrix about 0 “sees” a fixed point only if it lies in the circle of convergence of its series.
+- id: kn.verm.zoo_lokal_konvex
+  quelle_hash: 0dba84d5a1d3
+  theorie_hash: 4046d5eb8aef
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-18'
+  geprueft: nein
+  en:
+    titel: At critical values of finite degree, Re(1+θ′) > 0 in the upper half-plane — not for eˣ
+    aussage: |
+      Conjecture: for $d<\infty$, $\mathrm{Re}(1+\theta'(z))>0$ in all of $\mathbb H$, i.e. $z\mapsto z+\theta(z)$ is “close-to-convex” there.
+      Evidence: near $z_1$, $1+\theta'\approx\frac1d h_1(A/a)^{1/d}\zeta^{1/d-1}$, so $\arg(1+\theta')$ lies in $[\arg h_1-(1-1/d)\pi,\ \arg h_1]$:
+      $[-0.74,0.83]$ ($x^2+1$), $[-0.75,0.82]$ ($\cosh$), $[-1.03,1.33]$ ($x^4+1$), always in $(-\pi/2,\pi/2)$. On the sampling lines $y\ge0.003$,
+      $\min\mathrm{Re}(1+\theta')=0.78$, $0.77$, $0.72$.
+      **False for $e^x$:** there $\arg(1+\theta')\approx\arg h'(\log(Az))-\arg z$ wanders without bound, slowly ($\max|\arg|=1.76$ at $|z|=10^{-8}$, $2.28$ at $|z|=10^{-250}$),
+      $\mathrm{Re}(1+\theta')$ becomes negative very close to the integers.
+    bereich: Kneser superfunctions under (V) with critical value of degree $d<\infty$ ($x^2+1$, $\cosh$, $x^4+1$); $h_1=h'(w_c)$
+    einfach: For maps with a “pointed” special value (like the vertex of a parabola), the wave θ seems never to twist the directions in the complex
+      plane by more than a right angle. For eˣ, on the other hand, this does happen very close to the integers.
+    gegenbeispielsuche: 'Sampling of Re(1+θ′) on lines y ≥ 0.003 for x²+1, cosh, x⁴+1 (no negative value, minimum 0.72); found for eˣ: negative
+      for |z| ≲ 10⁻⁶.'
+    pruefung:
+      f1_folgt_unmittelbar: No; the local form bounds the argument only near z₁.
+      f2_benutzte_voraussetzungen: Puiseux local form (kn.satz.zoo_puiseux) and sampling on lines y ≥ 0.003.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every map with a critical value of finite degree, presumably with a d-dependent bound.
+      f5_neue_frage: Proof via schlichtness of σ and the local form? Does the univalence of z + θ(z) in ℍ follow from it?
+    bewertung:
+      nutzen: Separates algebraic from logarithmic singularities also geometrically.
+      richtigkeit: Conjecture with numerical evidence and local analysis
+    quellen:
+    - stelle: forschung/runde_2026_10_18/09_superfunktionen/BERICHT.md, A3 and Section 4; s5c_w.py
+  en_theorie:
+    einordnung: |
+      Sharpens [[kn.beob.zoo_ableitung_nullstellen]]; local form from [[kn.satz.zoo_puiseux]].
+    genau: |
+      Conjectured for critical values of finite degree (measured $\min\mathrm{Re}\approx0.72\ldots0.78$); false for $e^x$ very close to the integers.
+    warum: |
+      Near the singularity, $1+\theta'\sim\zeta^{1/d-1}$, so the argument is confined to an interval of length $(1-1/d)\pi$; for the logarithm ($d=\infty$) it wanders without bound.
+    worum: |
+      Does the map $z\mapsto z+\theta(z)$ rotate directions by less than a right angle, i.e. does $\mathrm{Re}(1+\theta')>0$ hold?

@@ -1,0 +1,178 @@
+gebiet: it
+# Runde 18.10.2026, Bericht 10 Teil A: der Erzeuger (Julia-Funktion) J der Tetration als Fluss von exp_b.
+# Rechnungen: forschung/runde_2026_10_18/10_neues_gebiet/ (s1–s4).
+aussagen:
+
+- id: it.satz.kein_ganzer_erzeuger
+  titel: 'Kein ganzer und kein meromorpher Erzeuger: die Julia-Gleichung für b^z hat keine Lösung J ≢ 0 auf ganz ℂ'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, iterationsgruppe]
+  bereich: '$f(z)=b^z=e^{cz}$, $c=\ln b$, jedes $b\notin\{0,1\}$; Julia-Gleichung $J(f(z))=f''(z)J(z)$ (it.lem.julia); jede Tetration $T$ liefert $J_T=T''\circ\mathrm{slog}_T$'
+  aussage: |
+    Es gibt keine ganze und keine meromorphe Funktion $J\not\equiv0$ mit $J(b^z)=\ln b\cdot b^z\,J(z)$ auf ganz $\mathbb C$.
+    Jeder Fluss, dessen Zeit-1-Abbildung $b^z$ ist (also jede gebrochene Iteration), hat daher einen Erzeuger mit echten Singularitäten.
+  einfach: >-
+    Eine Tetration mit gebrochenen Höhen ist eine Strömung, die jeden Punkt x nach einer Zeiteinheit nach b hoch x bringt. Ihr Geschwindigkeitsfeld J
+    kann nie in der ganzen komplexen Ebene glatt sein — irgendwo muss es Stellen geben, an denen es zerbricht.
+  beweis:
+    art: vollstaendig
+    text: |
+      Ganz: Mit $M(r)=\max_{|w|=r}|J|$ und $|w|=R\Leftrightarrow cz=\log R+iy$, $|y|\le\pi$, folgt $M(R)\le|c|R\,M(\sqrt{\log^2R+\pi^2}/|c|)$. Iteriert ($N\le\log^*R+O(1)$ Schritte)
+      gibt das $M(R)=O(R^{1+\varepsilon})$, also $J=\alpha w+\beta$; $\alpha e^{cz}+\beta=ce^{cz}(\alpha z+\beta)$ erzwingt $\alpha=\beta=0$.
+      Meromorph: Urbilder eines Pols sind Pole; für einen Pol $p\neq0$ häuft sich die Rückwärtsbahn auf der Julia-Menge, Widerspruch zur Diskretheit; ein Pol bei 0 erzwingt einen bei $f(0)=1$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A1, A1′'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: es ist eine Wachstumsabschätzung plus Rückwärtsbahnen; die Aussage ist wohl Folklore.'
+    f2_benutzte_voraussetzungen: 'Nur die Julia-Gleichung auf ganz ℂ, Liouville-artige Abschätzung, Dichte der Rückwärtsbahnen auf der Julia-Menge.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede transzendente ganze f mit ähnlichem Wachstum der Umkehrung (z. B. Polynome mit exp).'
+    f5_neue_frage: 'Wo genau muss J singulär sein? (Antwort teilweise: an einem der Fixpunkte L, L̄ — it.satz.erzeuger_resonanz.)'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Grundstein für die Frage, welche Singularitäten ein Erzeuger haben muss.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: it.lem.julia}
+    - {typ: motiviert, ziel: it.satz.erzeuger_resonanz}
+
+- id: it.lem.erzeuger_starr
+  titel: 'Starrheit am Fixpunkt: ein dort holomorpher Erzeuger ist ein Vielfaches des regulären'
+  art: lemma
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [julia_funktion, schroeder, regulaer_T]
+  bereich: '$f$ holomorph, $p$ hyperbolischer Fixpunkt mit Multiplikator $\lambda$ ($|\lambda|\neq0,1$), Schröder-Funktion $\sigma$; regulärer Erzeuger $J_p=\log\lambda\cdot\sigma/\sigma''$'
+  aussage: |
+    Ist $J$ holomorph nahe $p$ und erfüllt dort die Julia-Gleichung, so ist $J(p)=0$ und $J=c\cdot J_p$ für eine Konstante $c$.
+    Die Julia-Gleichung allein lässt jedes $c$ zu; dass die Zeit-1-Abbildung $f$ ist, verlangt $c\in\{1+2\pi ik/\log\lambda\}$.
+  einfach: >-
+    Wenn das Geschwindigkeitsfeld an einem Fixpunkt glatt ist, dann ist es dort schon festgelegt: es ist das Feld der gewöhnlichen (regulären) Iteration
+    an diesem Fixpunkt, höchstens mit einem Faktor.
+  beweis:
+    art: vollstaendig
+    text: |
+      $J(p)=\lambda J(p)$ gibt $J(p)=0$. In der Koordinate $u=\sigma(z)$ wird $J$ zu $K(u)$ mit $K(\lambda u)=\lambda K(u)$; Koeffizientenvergleich $k_n(\lambda^n-\lambda)=0$ gibt $K=k_1u$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A2'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem Satz von Koenigs (it.satz.koenigs).'
+    f2_benutzte_voraussetzungen: 'Linearisierung am hyperbolischen Fixpunkt.'
+    f3_spezialfall: 'Ja: Eindeutigkeit der regulären Iteration (klassisch).'
+    f4_uebertragbar: 'Auf jeden hyperbolischen Fixpunkt; parabolisch gilt Analoges mit der Fatou-Koordinate nicht direkt.'
+    f5_neue_frage: 'Was passiert, wenn ein Erzeuger an zwei Fixpunkten holomorph sein soll (it.satz.erzeuger_resonanz)?'
+  bewertung: {richtigkeit: vollständig, neuheit: klassisch, nutzen: 'Baustein für den Zwei-Fixpunkte-Satz.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: it.satz.koenigs}
+    - {typ: verwandt, ziel: it.lem.julia}
+
+- id: it.satz.erzeuger_resonanz
+  titel: 'Ein Erzeuger, zwei Fixpunkte: holomorph an beiden nur bei Resonanz λ_p = λ_q^m — bei b^z über η also nie'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, multiplikator, fixpunkt_L, regulaer_T]
+  bereich: '$f$ ganz, $p,q$ hyperbolische Fixpunkte, $q$ abstossend (reguläre Superfunktion $F_q$ ganz), Multiplikatoren $\lambda_p,\lambda_q$'
+  aussage: |
+    Ist $J\not\equiv0$ holomorph auf einem zusammenhängenden Gebiet $D\ni p,q$ und erfüllt nahe $p$ und $q$ die Julia-Gleichung, dann gilt
+    $$\lambda_p=\lambda_q^m\quad\text{für ein }m\in\mathbb Z\setminus\{0\}.$$
+    Folgerungen: (a) **$b>\eta$:** für das Paar $L,\bar L$ ist das unmöglich ($m=1$ und $\mathrm{Im}\log\lambda\in\pi\mathbb Z$ wären nötig). Kein Erzeuger ist um $L$ und $\bar L$ zugleich holomorph,
+    und **jeder reelle Erzeuger** (auf einem zur Achse symmetrischen Gebiet um $L$) ist an $L$ singulär — Knesers Singularität an $L$ ist erzwungen.
+    (b) **Möbius-Abbildungen:** dort ist immer $\lambda_p\lambda_q=1$, genau die Resonanz $m=-1$; das erklärt, warum beide Fixpunkte dieselbe Iteration liefern können (it.satz.moebius_iteration).
+    (c) **$1<b<\eta$:** siehe kl.satz.resonanzbasen — ausser an abzählbar vielen Resonanzbasen ist die Verschiedenheit der beiden regulären Iterationen damit bewiesen.
+  einfach: >-
+    Ein glattes Geschwindigkeitsfeld an zwei Fixpunkten gleichzeitig geht nur, wenn die Streckfaktoren an den beiden Punkten in einem besonderen
+    Verhältnis stehen. Bei b hoch x mit b über e^(1/e) passiert das nie. Darum muss jede reelle Tetration, auch Knesers, am komplexen Fixpunkt eine scharfe Stelle haben.
+  beweis:
+    art: vollstaendig
+    text: |
+      Nach it.lem.erzeuger_starr ist $J=c_1J_p$ nahe $p$ und $J=c_2J_q$ nahe $q$. Integriert man $1/J$ längs eines Weges in $D$, wird die Fortsetzung von $h_p$ zu $Ah_q+B$, $A=c_2/c_1$;
+      umgekehrt $F_p(As+B)=F_q(s)$, also überall ($F_q$ ganz). $F_q$ hat die Periode $2\pi i/\ell_q$, die Periodengruppe von $F_p$ ist $(2\pi i/\ell_p)\mathbb Z$; also $A=m\ell_q/\ell_p$.
+      Aus den beiden Superfunktionsgleichungen folgt $A-1\in(2\pi i/\ell_p)\mathbb Z$, also $m\ell_q-\ell_p\in2\pi i\mathbb Z$, d. h. $\lambda_q^m=\lambda_p$.
+  stuetzt_sich_auf: [it.lem.erzeuger_starr]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A3, A3a, A3d'}, {ref: karlin_mcgregor1968, stelle: 'verwandte Aussage für Möbius'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; braucht das Periodenargument mit der ganzen Superfunktion.'
+    f2_benutzte_voraussetzungen: 'Starrheit (it.lem.erzeuger_starr), ganze reguläre Superfunktion am abstossenden Fixpunkt, Periodengruppe von F_p.'
+    f3_spezialfall: 'Verwandt mit it.satz.karlin_mcgregor (gleiche reguläre Iteration nur bei Möbius); hier als Resonanzbedingung für Erzeuger.'
+    f4_uebertragbar: 'Auf jede ganze f mit zwei hyperbolischen Fixpunkten; für Fixpunkte L_j, L_k von exp numerisch keine Resonanz (|j|,|k| ≤ 40, |m| ≤ 12: kleinster relativer Abstand 0.424).'
+    f5_neue_frage: 'Deckt Karlin–McGregor den resonanten Fall? Kann L_j = L_k^m für Fixpunkte von exp je gelten (Schanuel-artig)?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Erklärt in einem Satz, warum Knesers Singularität an L unvermeidlich ist und warum Möbius die Ausnahme bildet.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: it.satz.karlin_mcgregor}
+    - {typ: verwandt, ziel: it.satz.moebius_iteration}
+    - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
+    - {typ: motiviert, ziel: kl.satz.resonanzbasen}
+
+- id: it.satz.kneser_erzeuger
+  titel: 'Knesers Erzeuger am Fixpunkt: J_K = J_L·(1+θ′∘slog_K), Verzweigung (w−L)^(1+2πi/L), bei Basis e genau fünfmal stetig differenzierbar'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Glattheitsgrad unter a₁(b) ≠ 0 (für b = e und 2 belegt); Exponent und Umlauffaktor zusätzlich numerisch bestätigt'
+  niveau: forschung
+  objekte: [julia_funktion, kneser_T, theta_kneser, fixpunkt_L]
+  bereich: 'Basis $b>\eta$; $\mathrm{sexp}_K=F_L\circ(\mathrm{id}+\theta)$, $\theta=\sum a_ne^{2\pi ins}$ (kn.def.theta_welle); regulärer Erzeuger $J_L=1/h''=L\sigma/\sigma''$ (Basis $e$)'
+  aussage: |
+    $$J_K(w)=J_L(w)\,\bigl(1+\theta'(\mathrm{slog}_Kw)\bigr),\qquad J_K-J_L=2\pi i\,a_1e^{-2\pi ia_0}L\,(w-L)^{\alpha}\bigl(1+O(|w-L|)\bigr),\quad\alpha=1+\frac{2\pi i}{L}.$$
+    $J_K$ ist an $L$ **nicht** analytisch (sonst wäre nach it.lem.erzeuger_starr $1+\theta'$ konstant, also θ konstant): ein echter transzendenter Verzweigungspunkt.
+    Basis $e$: $\mathrm{Re}\,\alpha=1+2\pi\,\mathrm{Im}L/|L|^2=5.44695072\ldots$, also ist $J_K$ am Fixpunkt **$C^5$, aber nicht $C^6$** (die 6. Ableitung wächst wie $|w-L|^{-0.553}$);
+    allgemein $C^{\lfloor\mathrm{Re}\,\alpha\rfloor}$, von $C^{45}$ bei $b=1.45$ bis $C^3$ bei $b=10^6$. Ein Umlauf um $L$ multipliziert das singuläre Glied mit $e^{-4\pi^2/L}$ (Betrag $1.2954\cdot10^{-3}$).
+    Numerisch: lokale Steigung $5.4466$–$5.4475$ für $r=10^{-3}\to10^{-4}$; Umlauffaktor gemessen $1.2975\cdot10^{-3}$ (Abweichung $O(r)$).
+  einfach: >-
+    Das Geschwindigkeitsfeld von Knesers Tetration ist am komplexen Fixpunkt fast glatt, aber nicht ganz: bei Basis e kann man es genau fünfmal
+    ableiten, die sechste Ableitung wird dort unendlich. Diese Zahl kommt allein aus der Lage des Fixpunkts.
+  beweis:
+    art: vollstaendig
+    text: |
+      Aus $\mathrm{sexp}_K=F_L\circ(\mathrm{id}+\theta)$ folgt $\mathrm{slog}_K=(\mathrm{id}+\theta)^{-1}\circ h$ und die Produktformel. Nahe $L$ ist $e^{2\pi is}\approx e^{-2\pi ia_0}\sigma(w)^{2\pi i/L}$,
+      eingesetzt in $1+\theta'$ gibt das das singuläre Glied (Zweig von $a_0$ passend zum Blatt). Glattheit: $|(w-L)^\alpha|=|w-L|^{\mathrm{Re}\,\alpha}$ bis auf beschränkten Faktor, also $C^k$ genau für $k<\mathrm{Re}\,\alpha$, sofern $a_1\neq0$.
+  stuetzt_sich_auf: [it.lem.erzeuger_starr]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A4, A4a, A4b, A4c; s1_erzeuger_bei_L.py, s4_tabellen.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Produktformel ja; Exponent und Glattheitsgrad nach kurzer Rechnung.'
+    f2_benutzte_voraussetzungen: 'Kneser-Darstellung mit θ, a₁ ≠ 0, Starrheit für die Nichtanalytizität.'
+    f3_spezialfall: 'Ja: konkreter Fall von it.satz.erzeuger_resonanz (a) mit genauer Singularität.'
+    f4_uebertragbar: 'Auf jede Basis über η (Tabelle über b) und auf die Superfunktionen anderer Abbildungen (kn.satz.zoo_singulaerer_ort).'
+    f5_neue_frage: 'Wo liegen die übrigen Singularitäten von J_K auf seiner Riemannfläche (Bild der Rückwärtsbahn von L)?'
+  bewertung: {richtigkeit: 'Formel bewiesen, Glattheit unter a₁ ≠ 0, Exponent auf 4 Stellen gemessen', neuheit: neu_ungeprueft, nutzen: 'Misst Knesers erzwungene Singularität am Fixpunkt genau; eine neue, einfache Kennzahl (C⁵ bei Basis e).', nutzen_stufe: hoch}
+  kanten:
+    - {typ: spezialfall_von, ziel: it.satz.erzeuger_resonanz}
+    - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+    - {typ: verwandt, ziel: it.lem.julia}
+
+- id: it.satz.regulaerer_erzeuger_fortsetzung
+  titel: 'Der reguläre Erzeuger von exp lebt über ℂ ohne die Bahn der Null {0, 1, e, e^e, …}; 0 und 1 sind echte Verzweigungspunkte'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, schroeder, fixpunkt_L]
+  bereich: 'Basis $e$, Fixpunkt $L$, Schröder-Funktion $\sigma$ ($\sigma\circ\exp=L\sigma$), $\Psi=\sigma^{-1}$ ganz, $J_L=L\sigma/\sigma''$; $P=\{0,1,e,e^e,\dots\}$ die Bahn des singulären Werts 0'
+  aussage: |
+    $\sigma$ und $J_L$ lassen sich längs **jedes** Weges in $\mathbb C\setminus P$ analytisch fortsetzen (bewiesen).
+    Numerisch (20 Stellen, zwei Einstellungen): ein Umlauf um 0 ändert $J_L(1/2)$ von $1.39814+0.02656i$ auf $-6.56052+2.25811i$, ein Umlauf um 1 ändert $J_L(3/2)$
+    von $2.05008-0.30198i$ auf $-8.27091+2.37225i$; Umläufe um $L$ oder um 3 ändern nichts ($<10^{-30}$). Also sind 0 und 1 echte Verzweigungspunkte;
+    $J_L(L+2\pi i)=-14.322345969901284658+10.705167958195350901\,i\neq0$ (bei trivialer Monodromie um 0 müsste es 0 sein).
+  einfach: >-
+    Das Geschwindigkeitsfeld der gewöhnlichen Iteration am komplexen Fixpunkt kann man überall hin fortsetzen, solange man die Punkte 0, 1, e, e hoch e
+    und so weiter umgeht. Um 0 und um 1 herum ändert es sich wirklich, wenn man einmal herumläuft.
+  beweis:
+    art: vollstaendig
+    text: |
+      $J_L\circ\Psi(u)=Lu\Psi'(u)$ ist ganz, und $\Psi$ hat keine kritischen Punkte; es genügt, $\sigma$ fortzusetzen. Für einen Weg $\gamma$ in $\Omega=\mathbb C\setminus P$ lassen sich alle iterierten
+      Logarithmen $\gamma_n=\log^n\circ\gamma$ stetig wählen. $\exp:\mathbb C\setminus\exp^{-1}(P)\to\Omega$ ist eine Überlagerung, also verkürzt jeder Logarithmus die hyperbolische Länge,
+      auf Kompakta um einen festen Faktor $<1$; $\gamma_n\to L$ gleichmässig, und $\sigma(\gamma(t))=L^n\sigma_{\mathrm{loc}}(\gamma_n(t))$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A5, A5a; s2_monodromie_regulaer.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; braucht die hyperbolische Kontraktion der iterierten Logarithmen.'
+    f2_benutzte_voraussetzungen: 'Ψ ganz ohne kritische Punkte, Überlagerungseigenschaft von exp, Schwarz–Pick.'
+    f3_spezialfall: 'Ähnlich der Fortsetzung der Abel-Funktion in kn.satz.theta_singularitaet und kn.satz.zoo_singulaerer_ort (Verzweigung nur über der Bahn der singulären Werte).'
+    f4_uebertragbar: 'Auf jede Basis über η und auf jede ganze f mit endlicher Menge singulärer Werte.'
+    f5_neue_frage: 'Welche Darstellung von π₁(ℂ∖P) ist die Monodromiegruppe? Ist jeder Punkt exp^k(0) ein echter Verzweigungspunkt?'
+  bewertung: {richtigkeit: 'Fortsetzung bewiesen, Verzweigung numerisch auf 20 Stellen', neuheit: neu_ungeprueft, nutzen: 'Verbindet den Erzeuger mit der Bahn des singulären Werts, dem zentralen Objekt der transzendenten Dynamik.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
+    - {typ: analog_zu, ziel: kn.satz.zoo_singulaerer_ort}
+    - {typ: verwandt, ziel: it.lem.julia}

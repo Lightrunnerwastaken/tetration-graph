@@ -1,0 +1,230 @@
+gebiet: kn
+# Runde 18.10.2026, Agent 05 (Kombinatorik und erzeugende Funktionen): geschlossene Bauform der Störungsreihe.
+# Rechnungen: forschung/runde_2026_10_18/05_kombinatorik/ (BERICHT.md, s1_schichten.py, s2_generator.py, s6_lambert.py).
+aussagen:
+
+- id: kn.satz.stoerungsreihe_fluss
+  titel: 'Die Störungsreihe ist der Fluss einer Differentialgleichung: H′ = λᵤ(H) mit dem Erzeuger von eˣ − 1 + u'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion, julia_funktion, iterationsgruppe]
+  bereich: '$G(y)=e^{G(y-1)}-1+u$, $G(0)=0$, $H(y)=G(y-1)$, formal in $u$ (kn.konstr.stoerungsreihe)'
+  aussage: |
+    Sei $f_u(x)=e^x-1+u$ und $\lambda_u$ der graduierte formale Erzeuger mit $\exp(\lambda_u\partial_x)\,x=f_u(x)$ (Grad von $x$ ist 1, von $u$ ist 2):
+    $$\lambda_u=\Bigl(u+\frac{x^2}2\Bigr)+\Bigl(-\frac{ux}2-\frac{x^3}{12}\Bigr)+\Bigl(\frac{u^2}{12}+\frac{ux^2}6+\frac{x^4}{48}\Bigr)+\dots$$
+    Dann ist $H(y)=G(y-1)$ formal der Fluss $H'=\lambda_u(H)$ mit $H(0)=\ln(1-u)$. Insbesondere gilt
+    $$\lambda_u(0)=G'(0)=u+\frac{u^2}{12}+\frac{u^3}{120}+\frac{u^4}{5040}-\frac{u^5}{10080}+\frac{u^6}{332640}-\frac{323\,u^7}{86486400}+\dots$$
+  einfach: >-
+    Die Störungsreihe der Tetration entsteht Schritt für Schritt aus der Rechenregel „e hoch, minus 1, plus u“. Man kann sie aber auch als Lösung
+    einer einzigen Differentialgleichung schreiben: Die Höhe y ist dann eine Zeit, und die Reihe fliesst mit einer festen Geschwindigkeitsregel.
+  beweis:
+    art: vollstaendig
+    text: |
+      Sei $\varphi_y=\exp(y\lambda_u\partial)$. Die Grade von $\lambda_u$ sind $\ge2$ und $H(0)=\ln(1-u)=O(u)$; also tragen zu jeder $u$-Ordnung nur endlich
+      viele Lie-Glieder bei, und $K(y):=\varphi_y(H(0))$ hat in jeder $u$-Ordnung Polynome in $y$ als Koeffizienten. Es gilt $K(y+1)=f_u(K(y))$ und
+      $K(0)=H(0)$, also $K(k)=H(k)$ für alle $k\in\mathbb N$; Polynome, die auf $\mathbb N$ übereinstimmen, sind gleich. Lie-Kontrolle exakt bis Grad 14.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S1, S10 und B1; s2_generator.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: es ist die Julia-Gleichung (it.lem.julia) im formal-graduierten Rahmen; neu ist nur, dass die Polynomstruktur in y den Fluss eindeutig festlegt.'
+    f2_benutzte_voraussetzungen: 'Nur formale Potenzreihen; keine Konvergenz.'
+    f3_spezialfall: 'Ja: Erzeuger einer formal einbettbaren Abbildung (Écalle, im Geist klassisch).'
+    f4_uebertragbar: 'Auf jede Störung $h(x)-1+u$ mit $h=1+x+x^2/2+\dots$.'
+    f5_neue_frage: 'Ermöglicht die Bauform kn.satz.stoerungsreihe_bauform; offen ist eine geschlossene Form für den regulären Rest $R_u$.'
+  bewertung: {richtigkeit: 'vollständig; exakt geprüft bis Grad 14', neuheit: neu_ungeprueft, nutzen: 'Ersetzt die Rekursion durch eine Differentialgleichung und öffnet die Bauform aller Schichten.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.stoerungsreihe}
+    - {typ: stuetzt_sich_auf, ziel: it.lem.julia}
+    - {typ: motiviert, ziel: kn.satz.stoerungsreihe_bauform}
+
+- id: kn.satz.stoerungsreihe_residuen
+  titel: 'Die zwei Nullstellen des Erzeugers sind Lambert-Fixpunkte x± = u − 1 − W(−e^(u−1)); 1/λᵤ hat dort das Residuum 1/x±'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [lambert_w, julia_funktion, multiplikator]
+  bereich: '$f_u(x)=e^x-1+u$, $\lambda_u$ wie in kn.satz.stoerungsreihe_fluss, $u=2v^2$, formal in $v$'
+  aussage: |
+    Die Fixpunkte von $f_u$ sind $x_\pm=u-1-W_{0,-1}(-e^{u-1})=\gamma\pm i\beta$, mit
+    $$\frac{x_+}{v}=2i+\frac{2v}3-\frac{2iv^2}9-\frac{8v^3}{135}+\frac{iv^4}{135}-\dots\qquad(u=2v^2).$$
+    Sie sind die Nullstellen von $\lambda_u$, und es gilt $\lambda_u'(x_\pm)=x_\pm$. Also hat $1/\lambda_u$ dort das Residuum $1/x_\pm$.
+  einfach: >-
+    Die Rechenregel „e hoch, minus 1, plus u“ hat zwei Fixpunkte (Stellen, die sich nicht bewegen). Man kann sie mit der Lambert-W-Funktion genau
+    angeben. An diesen Stellen steht die Differentialgleichung der Störungsreihe still, und wie schnell sie dort anläuft, ist einfach der Fixpunkt selbst.
+  beweis:
+    art: vollstaendig
+    text: |
+      $e^x-1-x=-u$ wird mit $y=x+1-u$ zu $ye^{-y}=e^{u-1}$, also $x=u-1-W(-e^{u-1})$. An einem Fixpunkt $p$ des Zeit-1-Flusses gilt $\lambda(p)=0$ und
+      $f'(p)=e^{\lambda'(p)}$; wegen $f_u'=e^x$ folgt $\lambda'(x_\pm)=x_\pm$. Formal in $v$ über die Hensel-Faktorisierung von $\Lambda_v(\xi)=\lambda_u(v\xi)/v^2=(\xi^2+4)/2+O(v)$.
+      Residuum exakt bis $v^{11}$, Lambert-Form auf $10^{-42}$ geprüft.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S2 und B2; s2_generator.py, s6_lambert.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja: Residuum = 1/log(Multiplikator) ist klassisch; neu ist die Lambert-Form im Störungsrahmen.'
+    f2_benutzte_voraussetzungen: 'Formale Hensel-Faktorisierung in $\mathbb Q[\xi][[v]]$.'
+    f3_spezialfall: 'Ja: allgemeine Residuenformel für Erzeuger an Fixpunkten.'
+    f4_uebertragbar: 'Auf jede Abbildung mit zwei aus einem parabolischen Punkt geborenen Fixpunkten (Sattel-Knoten).'
+    f5_neue_frage: 'Liefert die Frequenz ω der Bauform (kn.satz.stoerungsreihe_saekular).'
+  bewertung: {richtigkeit: 'vollständig; exakt bis v¹¹', neuheit: folklore, nutzen: 'Grundlage der geschlossenen Bauform.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.stoerungsreihe_fluss}
+    - {typ: verwandt, ziel: it.satz.leau_fatou}
+
+- id: kn.satz.stoerungsreihe_bauform
+  titel: 'Bauform aller Schichten: H = γ + β tan Θ, und jede Schicht ist ein Polynom in tan θ, ln cos θ und θ'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion, fatou_koord]
+  bereich: '$H(y)=G(y-1)$ aus kn.konstr.stoerungsreihe; $u=2v^2$, $\theta=vy$, $H=\sum_k v^{k+1}h_k(\theta)$'
+  aussage: |
+    Mit $x_\pm=\gamma\pm i\beta$ (kn.satz.stoerungsreihe_residuen) gilt
+    $$H=\gamma+\beta\tan\Theta,\qquad \Theta=\omega\bigl(y+C-R_u(H)\bigr)+\frac{\gamma}{\beta}\ln\cos\Theta,$$
+    mit $\omega=|x_+|^2/(2\,\mathrm{Im}\,x_+)$, $\pi/\omega=\mathrm{Re}(2\pi i/x_+)$ und einer Potenzreihe $R_u$ mit polynomialen Koeffizienten.
+    Folgerung: jede Schicht $h_k$ ist ein Polynom in $t=\tan\theta$, $L=\ln\cos\theta$ und $\theta$, mit $\deg_L h_k\le k$. Zum Beispiel
+    $h_1=\tfrac23(L\sec^2\theta-4\sec^2\theta+1)$ (die zweite Schicht aus kn.satz.stoerungsreihe_tangens). Für $k\le4$ ist der Ansatz gelöst und alle
+    Koeffizienten stimmen exakt mit den $g_n$ überein.
+  einfach: >-
+    Die Störungsreihe besteht aus vielen Schichten. Jede Schicht lässt sich aus nur drei Bausteinen zusammensetzen: dem Tangens, dem Logarithmus des
+    Kosinus und der Höhe selbst. Dahinter steht eine einzige Formel, in der die Tetration wie ein verbogener Tangens aussieht.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\Lambda_v=(\xi-\xi_+)(\xi-\xi_-)Q_v(\xi)$ in $\mathbb Q[\xi][[v]]$ (Hensel, $Q_0=\tfrac12$), also $1/\lambda_u=\sum_\pm 1/(x_\pm(x-x_\pm))+\rho_u$ mit polynomialem
+      $\rho_u$. Integration: $y+C=\frac{2\beta}{r^2}\arctan\frac{H-\gamma}\beta+\frac{\gamma}{r^2}\ln((H-\gamma)^2+\beta^2)+R_u(H)$, $r^2=\beta^2+\gamma^2$. Einsetzen von
+      $H=\gamma+\beta\tan\Theta$ ergibt die Bauform; Entwickeln um $\theta$ ergibt die Polynomstruktur der Schichten.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S3, S4, S8 und B3; s1_schichten.py, daten/s1_schichten.json'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein: man braucht den Fluss (kn.satz.stoerungsreihe_fluss) und die Residuen; dann ist es Partialbruchzerlegung und Integration.'
+    f2_benutzte_voraussetzungen: 'Formaler Fluss, Hensel-Faktorisierung, Residuen 1/x±.'
+    f3_spezialfall: 'Eine Störungs-Fatou-Koordinate: bei u → 0 entsteht die Fatou-Koordinate von eˣ − 1.'
+    f4_uebertragbar: 'Auf jede Sattel-Knoten-Störung mit zwei einfachen Fixpunkten.'
+    f5_neue_frage: 'Hat der reguläre Rest $R_u$ eine geschlossene Form? Bei u = 0 ist er der Fatou-Rest von eˣ − 1.'
+  bewertung: {richtigkeit: 'vollständig; Folgerungen exakt geprüft für k ≤ 4', neuheit: neu_ungeprueft, nutzen: 'Erklärt alle bisher gefundenen geschlossenen Schichten auf einmal.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.stoerungsreihe_fluss}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.stoerungsreihe_residuen}
+    - {typ: verallgemeinert, ziel: kn.satz.stoerungsreihe_tangens}
+    - {typ: verwandt, ziel: it.satz.leau_fatou}
+
+- id: kn.satz.stoerungsreihe_logarithmen
+  titel: 'Die höchsten Logarithmus-Anteile aller Schichten summieren sich zu 2·tan(θ + v·ln cos θ/3)'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion]
+  bereich: 'Schichten $h_k(\theta)$ wie in kn.satz.stoerungsreihe_bauform, $L=\ln\cos\theta$'
+  aussage: |
+    Der Koeffizient von $L^k$ in $h_k$ ist $[L^k]h_k=\dfrac{2\tan^{(k)}(\theta)}{3^k\,k!}$; erzeugend
+    $$\sum_{k\ge0}v^k\,[L^k]h_k=2\tan\Bigl(\theta+\frac{vL}3\Bigr)\qquad(L\text{ eingefroren}).$$
+    Die Ableitungen $\tan^{(k)}$ sind Hoffmans Ableitungspolynome in $\tan\theta$; ihre Werte bei 0 sind die Tangens- und Sekanszahlen.
+  einfach: >-
+    In jeder Schicht gibt es einen Teil mit der höchsten Potenz des Logarithmus. Sammelt man diese Teile aus allen Schichten, ergibt sich wieder
+    ein einfacher Tangens — nur leicht verschoben.
+  beweis:
+    art: vollstaendig
+    text: |
+      Ordnungszählung in der Bauform: jedes $L$ kostet über $\gamma/\beta=v/3+O(v^3)$ mindestens einen Faktor $v$; das Entwickeln von $\ln\cos\Theta$ um $\theta$
+      kostet je ein $v$ ohne neues $L$. Also ist der $L^k$-Anteil von $h_k$ gleich $[v^k]\,2\tan(\theta+vL/3)$. Exakt bestätigt für $k\le4$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S5 und B3; s1_schichten.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus kn.satz.stoerungsreihe_bauform durch Ordnungszählung.'
+    f2_benutzte_voraussetzungen: 'Bauform und $\gamma/\beta=v/3+O(v^3)$, $\beta/v=2+O(v^2)$.'
+    f3_spezialfall: 'Ja, der Leitteil der Bauform.'
+    f4_uebertragbar: 'Auf andere Störungen; der Faktor 1/3 hängt am $x^3$-Koeffizienten von eˣ.'
+    f5_neue_frage: 'Gibt es eine ähnliche Summenformel für die zweithöchsten Logarithmen $[L^{k-1}]h_k$?'
+  bewertung: {richtigkeit: 'vollständig; exakt für k ≤ 4', neuheit: neu_ungeprueft, nutzen: 'Verbindet die Störungsreihe mit Tangens- und Sekanszahlen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.satz.stoerungsreihe_bauform}
+    - {typ: analog_zu, ziel: kn.satz.stoerungsreihe_tangens}
+
+- id: kn.satz.stoerungsreihe_saekular
+  titel: 'Frequenz ω = v(1 − v⁴/270 + …): das erste nackte θ (Säkularterm) steht erst in Schicht 5'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion]
+  bereich: 'Bauform aus kn.satz.stoerungsreihe_bauform, $u=2v^2$'
+  aussage: |
+    $$\frac\omega v=1-\frac{v^4}{270}+\frac{v^6}{42525}+\frac{137v^8}{1020600}-\frac{2041v^{10}}{2652284250}+\dots$$
+    Ein Glied mit nacktem $\theta$ (nicht in $\tan$ oder $\ln\cos$ versteckt) kommt erst in $h_4$ vor: $-\theta\sec^2\theta/135$, genau $2\cdot(-1/270)\,\theta\sec^2\theta$.
+    Ausserdem gilt $\gamma/\beta=v/3+v^3/135-13v^5/5670+\dots$ und $\beta/v=2-2v^2/9+v^4/135+\dots$.
+  einfach: >-
+    Der Tangens in der Bauform schwingt mit einer Frequenz, die fast genau v ist. Die kleine Abweichung zeigt sich erst in der fünften Schicht,
+    als ein Glied, in dem die Höhe ganz offen dasteht.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\omega$ aus der Fixpunktreihe (kn.satz.stoerungsreihe_residuen); das nackte $\theta$ entsteht in der Bauform nur aus $\omega/v-1=O(v^4)$, $R_u$ erzeugt keines.
+      $h_4$ aus dem Ansatz, $\omega$ numerisch gegen Lambert-W auf $10^{-19}$ (bei $u=10^{-3}$).
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S6, S8 und B3; s2_generator.py, s1_schichten.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Bauform und Fixpunktreihe.'
+    f2_benutzte_voraussetzungen: 'kn.satz.stoerungsreihe_bauform, kn.satz.stoerungsreihe_residuen.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Sattel-Knoten-Störung; die Ordnung $v^4$ hängt an den Taylor-Koeffizienten von eˣ.'
+    f5_neue_frage: 'Gilt $\deg_\theta h_k\le\lfloor k/4\rfloor$ scharf? Bisher nur für k ≤ 4 geprüft.'
+  bewertung: {richtigkeit: 'vollständig; exakt bestätigt', neuheit: neu_ungeprueft, nutzen: 'Zeigt, wann die reine Tangens-Struktur durch Säkularterme gebrochen wird.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.satz.stoerungsreihe_bauform}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.stoerungsreihe_residuen}
+
+- id: kn.satz.stoerungsreihe_dritte_schicht
+  titel: 'Dritte Schicht der Störungsreihe geschlossen: h₂ = t[(2/9)L²(1+t²) − 2L(1+t²) + 41t²/9 + 13/3]'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion]
+  bereich: '$t=\tan\theta$, $L=\ln\cos\theta$, $\theta=vy$, $u=2v^2$'
+  aussage: |
+    $$h_2=t\Bigl[\tfrac29L^2(1+t^2)-2L(1+t^2)+\tfrac{41t^2}9+\tfrac{13}3\Bigr],$$
+    gleichwertig $H_2=(u/2)^{3/2}\tan\theta\,[\tfrac29\sec^2\theta\ln^2\cos\theta-2\sec^2\theta\ln\cos\theta+(41\tan^2\theta+39)/9]$.
+    Daraus folgen die Koeffizienten $[y^{2n-3}]\,g_n(y-1)=\tfrac{13}{12},\tfrac78,\tfrac{301}{720},\tfrac{9577}{60480},\dots$
+    Auch $h_3$ und $h_4$ sind explizit bekannt (Bericht, B3).
+  einfach: >-
+    Nach den ersten beiden Schichten ist jetzt auch die dritte Schicht der Störungsreihe als kurze Formel aus Tangens und Logarithmus bekannt.
+  beweis:
+    art: vollstaendig
+    text: 'Ansatz nach kn.satz.stoerungsreihe_bauform; die Lösung ist eindeutig, weil $t$, $L$, $\theta$ algebraisch unabhängig sind. Exakt gegen die $g_n$ geprüft.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, S7, S8; s1_schichten.py, daten/s1_schichten.json'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, als Rechnung aus der Bauform.'
+    f2_benutzte_voraussetzungen: 'Bauform, exakte Polynome g_n.'
+    f3_spezialfall: 'Ja, Schicht k = 2 der Bauform.'
+    f4_uebertragbar: 'Auf jede Schicht (h₃, h₄ ebenfalls berechnet).'
+    f5_neue_frage: 'Sind die normierten Schichtkoeffizienten ganz (kn.verm.stoerungsreihe_ganzzahlig)?'
+  bewertung: {richtigkeit: 'vollständig; exakt geprüft', neuheit: neu_ungeprueft, nutzen: 'Erweitert kn.satz.stoerungsreihe_tangens um eine Schicht.', nutzen_stufe: gering}
+  kanten:
+    - {typ: spezialfall_von, ziel: kn.satz.stoerungsreihe_bauform}
+    - {typ: verallgemeinert, ziel: kn.satz.stoerungsreihe_tangens}
+
+- id: kn.verm.stoerungsreihe_ganzzahlig
+  titel: 'Vermutung: (2n−2)!·2^(n−1)·[y^(2n−2)] gₙ(y−1) ist für alle n ganz (−1, −3, −26, −468, −14256, …)'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [superfunktion]
+  aussage: |
+    Die normierte zweite Schicht $(2n-2)!\,2^{n-1}\,[y^{2n-2}]\,g_n(y-1)=-1,-3,-26,-468,-14256,-657568,-42752256,\dots$ ist ganzzahlig (geprüft für $n\le12$);
+    ebenso die dritte Schicht mal 6: $13,126,2408,76616,3656688,\dots$ Keine der Folgen steht in der OEIS (Suche am 18.10.2026).
+    Vermutet: Ganzzahligkeit für alle $n$ (nötig ist eine Teilbarkeit durch 3).
+  einfach: >-
+    Aus den Schichten der Störungsreihe entstehen nach einer passenden Normierung ganze Zahlen. Das wurde bis n = 12 geprüft; ob es immer so bleibt, ist offen.
+  gegenbeispielsuche: 's5_folgen.py: exakte rationale Rechnung der normierten Koeffizienten für n ≤ 12, kein Nenner ≠ 1 gefunden.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/05_kombinatorik/BERICHT.md, P3 und Offene Frage 3; s5_folgen.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; die zweite Schicht ist bekannt (kn.satz.stoerungsreihe_tangens), aber die Teilbarkeit durch 3 folgt nicht direkt.'
+    f2_benutzte_voraussetzungen: 'Exakte Polynome g_n bis n = 12.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf höhere Schichten (dritte Schicht ×6 ebenfalls ganz beobachtet).'
+    f5_neue_frage: 'Gibt es eine Zähldeutung wie bei kn.satz.stoerungsreihe_baeume?'
+  bewertung: {richtigkeit: 'numerisch für n ≤ 12', neuheit: neu_ungeprueft, nutzen: 'Neue Zahlenfolgen für die OEIS.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.stoerungsreihe_baeume}
+    - {typ: verwandt, ziel: kn.satz.stoerungsreihe_tangens}
