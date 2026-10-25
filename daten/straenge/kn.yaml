@@ -34,13 +34,13 @@
 - id: kn.etas
   gebiet: kn
   name: TPID 10 — Etas und Eulers
-  verlauf: Gehen ηₙ → 2 und eₙ → 4? Interpolation (Robbins, mike3), Matrix-slog (nuninho), Kneser (Levenstein 2010, 2017), Heuristik (Nixon) und unsere 30-Stellen-Glieder mit Abstandsgesetz.
-  mitglieder: [kn.verm.tpid10, kn.verm.tpid11, kn.beob.eta4_interpolation, kn.beob.eta4_matrix, kn.beob.hoehere_etas, kn.beob.tpid10_gesetz, kn.verm.beschraenkt_unter_2, kn.frage.pentation_untergrenze, kn.frage.andere_etas, kn.beob.eta7_eta8, kn.satz.schwellen_monoton, kn.satz.basis2_hoehe3, kn.satz.kritische_rate, kn.satz.eta_auswahl, kn.satz.eta_kriterium, kn.beob.kritische_profile, kn.beob.zwischenwerte_basis2, kn.satz.konvex_eta_grenze, kn.gescheitert.konvexitaetsweg]
+  verlauf: Gehen ηₙ → 2 und eₙ → 4? Interpolation (Robbins, mike3), Matrix-slog (nuninho), Kneser (Levenstein 2010, 2017), Heuristik (Nixon) und unsere 30-Stellen-Glieder mit Abstandsgesetz. Jede Berührung hat Krümmung βᵣ und iteratives Residuum ιᵣ (ab r = 4 negativ, um −0.6); 2 − ηᵣ passt besser zu C/(r ln r) als zu einem Potenzgesetz — η₉ würde entscheiden; für eᵣ passt keine einfache Form.
+  mitglieder: [kn.verm.tpid10, kn.verm.tpid11, kn.beob.eta4_interpolation, kn.beob.eta4_matrix, kn.beob.hoehere_etas, kn.beob.tpid10_gesetz, kn.verm.beschraenkt_unter_2, kn.frage.pentation_untergrenze, kn.frage.andere_etas, kn.beob.eta7_eta8, kn.satz.schwellen_monoton, kn.satz.basis2_hoehe3, kn.satz.kritische_rate, kn.satz.eta_auswahl, kn.satz.eta_kriterium, kn.beob.kritische_profile, kn.beob.zwischenwerte_basis2, kn.satz.konvex_eta_grenze, kn.gescheitert.konvexitaetsweg, kn.satz.kritische_rate_log, kn.beob.iota_raenge, kn.beob.beta_raenge, kn.verm.eta_r_log, kn.gescheitert.e_potenzgesetz]
 - id: kn.halbrang
   gebiet: kn
   name: Gebrochene Ränge — eine Rechenart zwischen Potenz und Tetration?
-  verlauf: Der halbe Schritt ist eine gebrochene Iteration eines Operators auf Funktionen. Im linearen Modell exakt, in zweiter Ordnung holomorph; zwei naheliegende Kurzwege scheitern.
-  mitglieder: [kn.satz.halbrang_linear, kn.satz.halbrang_quadratisch, kn.gescheitert.polynom_rekonstruktion, kn.gescheitert.mischkurve, kn.satz.rangjets_exppoly, kn.beob.halbrang_basis2, kn.beob.halbrang_kneser_test, kn.beob.halbrang_divergenz, kn.beob.halbrang_theta_grenze, kn.beob.kneser_beschraenkte_summe, kn.beob.halbrang_rangfortsetzung, kn.beob.einheitliche_raenge, kn.frage.halber_rang, kn.beob.rangverschiebung, kn.verm.rangkoordinate]
+  verlauf: Der halbe Schritt ist eine gebrochene Iteration eines Operators auf Funktionen. Im linearen Modell exakt, in zweiter Ordnung holomorph; zwei naheliegende Kurzwege scheitern. Die Rangkoordinate Φ ist rechenbar (Abel-Gleichung exakt, Existenz numerisch); Φ = 3.5 legt die Leiter darüber fest, nicht den halben Rang selbst.
+  mitglieder: [kn.satz.halbrang_linear, kn.satz.halbrang_quadratisch, kn.gescheitert.polynom_rekonstruktion, kn.gescheitert.mischkurve, kn.satz.rangjets_exppoly, kn.beob.halbrang_basis2, kn.beob.halbrang_kneser_test, kn.beob.halbrang_divergenz, kn.beob.halbrang_theta_grenze, kn.beob.kneser_beschraenkte_summe, kn.beob.halbrang_rangfortsetzung, kn.beob.einheitliche_raenge, kn.frage.halber_rang, kn.beob.rangverschiebung, kn.verm.rangkoordinate, kn.konstr.rangkoordinate, kn.beob.rangkoordinate_gradient, kn.beob.rangkoordinate_nichtlinear, kn.verm.rangkoordinate_rangwachstum, kn.beob.halbrang_niveauflaeche, kn.verm.halbrangleiter_oben_kanonisch, kn.gescheitert.rangkoordinate_basis2]
 - id: kn.stoerung
   gebiet: kn
   name: Tetration als Störung von eˣ − 1
@@ -54,8 +54,8 @@
 - id: kn.theta
   gebiet: kn
   name: Knesers Welle θ genau vermessen
-  verlauf: Kneser ist die reguläre Lösung am komplexen Fixpunkt plus eine Welle θ; sie ist genau an den ganzen Zahlen singulär, und ihre Fourier-Koeffizienten folgen einer geschlossenen Formel mit Exponent 1.
-  mitglieder: [kn.def.theta_welle, kn.beob.theta_fourier_algebraisch, kn.satz.theta_singularitaet, kn.satz.theta_koeffizienten, kn.frage.theta_exponent]
+  verlauf: Kneser ist die reguläre Lösung am komplexen Fixpunkt plus eine Welle θ; sie ist genau an den ganzen Zahlen singulär, mit unendlich vielen Blättern, und ihre Fourier-Koeffizienten folgen einer geschlossenen Formel mit Exponent 1. Ihre Phase ist die Phase von 1 + θ′ an der reellen Stelle 1/(2πn) und wiederholt sich an den Periodenrändern in iterierten Logarithmen. Die Zweigwahl dahinter ist mit Intervallarithmetik zertifiziert (Basis e und 2); es bleibt eine Motor-Annahme mit Toleranz 0.027.
+  mitglieder: [kn.def.theta_welle, kn.beob.theta_fourier_algebraisch, kn.satz.theta_singularitaet, kn.satz.theta_koeffizienten, kn.frage.theta_exponent, kn.satz.theta_phase_achse, kn.satz.theta_phase_koeffizienten, kn.beob.theta_phase_selbstaehnlich, kn.beob.theta_phase_verlauf, kn.beob.theta_phase_randkopien, kn.verm.theta_phase_unbeschraenkt, kn.lem.zweig_ein_ball, kn.lem.sigma_de_branges, kn.satz.zweigwahl_zertifikat, kn.satz.sexp_schlicht_nahe_null, kn.kor.theta_verzweigung_unendlich]
 - id: kn.formeln
   gebiet: kn
   name: Exakte Formeln aus Knesers Struktur
@@ -64,8 +64,8 @@
 - id: kn.theta_raenge
   gebiet: kn
   name: Knesers Welle auf allen Rängen
-  verlauf: Auf geraden Rängen ist die Welle dort singulär, wo die Kneser-Lösung einen von der regulären ausgelassenen Wert trifft, mit Wurzelknick aus zwei Multiplikator-Logarithmen; auf Rang 5 reicht sie nicht bis ℝ.
-  mitglieder: [kn.satz.theta6_singularitaet, kn.satz.theta6_koeffizienten, kn.verm.theta_gerade_raenge, kn.beob.theta5_wachsende_koeffizienten, kn.verm.theta5_natuerliche_grenze, kn.beob.pentationswelle_singularitaet, kn.beob.theta_basis_quasiuniversal]
+  verlauf: Auf geraden Rängen ist die Welle dort singulär, wo die Kneser-Lösung den Fixpunkt zwei Stufen tiefer trifft, mit Exponent ln λᵣ₋₄ / ln λᵣ₋₂ (hergeleitet bis auf die Zweigwahl, geprüft bis Rang 10); an einem anziehenden Fixpunkt (Rang 5) endet sie an einer natürlichen Grenze, dem Beckenrand.
+  mitglieder: [kn.satz.theta6_singularitaet, kn.satz.theta6_koeffizienten, kn.verm.theta_gerade_raenge, kn.beob.theta5_wachsende_koeffizienten, kn.verm.theta5_natuerliche_grenze, kn.beob.pentationswelle_singularitaet, kn.beob.theta_basis_quasiuniversal, kn.satz.theta_anziehend_natuerliche_grenze, kn.satz.theta5_natuerliche_grenze, kn.beob.theta5_dach, kn.beob.theta5_unter_konvergenzkreis, kn.frage.theta5_rand, kn.lem.umkehr_minus_unendlich, kn.satz.theta_gerade_raenge_struktur, kn.beob.theta10_singularitaet, kn.beob.theta_gerade_raenge_exponenten, kn.verm.alpha_r_gegen_1]
 - id: kn.singularitaeten
   gebiet: kn
   name: Schnitte und Taylor-Koeffizienten von sexp
@@ -76,3 +76,23 @@
   name: Kneser für andere Abbildungen
   verlauf: 'Knesers Bauweise für x²+1, x⁴+1, cosh: θ singulär über den singulären Werten, Abfall n^(−1−1/d), Mittelwertgesetze universell, S′ ≠ 0 nicht.'
   mitglieder: [kn.satz.zoo_singulaerer_ort, kn.satz.zoo_puiseux, kn.beob.zoo_mittelwerte, kn.beob.zoo_ableitung_nullstellen, kn.verm.zoo_lokal_konvex, kn.beob.zoo_wendepunkt]
+- id: kn.riemannflaeche
+  gebiet: kn
+  name: Riemannsche Flächen von sexp und slog
+  verlauf: Die Fläche von sexp ist eine volle Log-Überlagerung ihrer eigenen Verschiebung; verzweigt ist sie genau über den Punkten, deren Turm auf den einer negativen ganzen Zahl fällt — dicht in ℂ, aber abzählbar. Die Fläche von slog führt über ein 2πi-periodisches Blatt und die exakte Monodromie um L zu den drei Grundpunkten L, L̄, 0 und einer ebenso dichten, exp-invarianten Verzweigungsmenge.
+  mitglieder: [kn.satz.riemannflaeche_logueberlagerung, kn.satz.verzweigungsorte_charakterisierung, kn.satz.nebenblatt_nullstellen_rechts, kn.satz.verzweigung_dicht, kn.beob.verzweigung_gitter, kn.beob.verzweigung_nah, kn.frage.verzweigung_abstand, kn.beob.slog_taylor_radius_L, kn.satz.slog_periodische_halbebene, kn.beob.sexp_trifft_L, kn.kor.slog_monodromie_L, kn.satz.sexp_asymptotischer_wert_null, kn.satz.slog_verzweigung_dicht, kn.verm.slog_verzweigung_genau]
+- id: kn.flucht
+  gebiet: kn
+  name: Flucht und Haare unter sexp
+  verlauf: sexp zieht die Fluchtmenge von eᶻ zurück — dicht, Fläche null, oben doppelt periodisch mit dem Gitter ℤ + (2πi/L)ℤ und vier Schritten mehr pro schrägem Schritt ω; der Grundstreifen landet in einer schmalen Linse, und weil kein Haar L erreicht, steigen die Haar-Urbilder nicht ins Unendliche.
+  mitglieder: [kn.satz.flucht_urbild_dicht, kn.satz.flucht_gitter, kn.beob.flucht_gitter_numerik, kn.beob.streifen_linse, kn.beob.reelle_urbilder, kn.kor.haar_urbilder_beschraenkt, kn.frage.flucht_torus]
+- id: kn.theta_komplex
+  gebiet: kn
+  name: Knesers Welle für komplexe Basen
+  verlauf: Für komplexe Basen bleiben die Singularität bei den ganzen Zahlen und das Koeffizientengesetz, oben und unten mit eigener Konstante; nahe dem Shell–Thron-Rand, in einer Knospe, erscheint knapp über der Achse eine neue Singularität über dem Bahnwert sexp(4).
+  mitglieder: [kn.satz.komplex_radius, kn.beob.komplex_koeffizientengesetz, kn.beob.komplex_wellen_unsymmetrisch, kn.beob.rand_zusatzsingularitaet, kn.verm.zusatzsingularitaet_bahnwert, kn.verm.a0_rand]
+- id: kn.raenge_basis
+  gebiet: kn
+  name: Die Hierarchie als Funktion der Basis
+  verlauf: Links von null wechseln sich die Ränge ab (Pol und Fixpunkt bei geraden, keiner bei ungeraden); nur die ungeraden Grenzbasen η₃, η₅, … sind Bruchstellen — an η₄ ist die Pentation analytisch, an η₅ springt die Hexation um eine periodische Höhenverschiebung θ ~ 10⁻⁵.
+  mitglieder: [kn.satz.ganze_negative_hoehen, kn.satz.negative_struktur, kn.verm.singulaere_basen_ungerade, kn.beob.pentation_analytisch_eta4, kn.beob.hexation_sprung_eta5, kn.beob.landkarte_p4_p6]

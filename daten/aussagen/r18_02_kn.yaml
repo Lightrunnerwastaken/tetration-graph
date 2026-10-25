@@ -38,7 +38,7 @@ aussagen:
     f1_folgt_unmittelbar: 'Nein, aber aus drei Zutaten: Ausnahmewert p der regulären Pentation, endlicher Grenzwert von slog bei −∞, Nullstellenfreiheit der Ableitungen.'
     f2_benutzte_voraussetzungen: 'Kneser-Darstellung hex = F_kp(z + θ₆); Zweigwahl (numerisch).'
     f3_spezialfall: 'Gegenstück zu kn.satz.theta_singularitaet eine Stufe höher; dort ist der Ausnahmewert 0 = sexp(−1).'
-    f4_uebertragbar: 'Auf gerade Ränge allgemein, siehe kn.verm.theta_gerade_raenge; auf andere Basen über η₅ mit α = ln b/ln λ₄.'
+    f4_uebertragbar: 'Auf gerade Ränge allgemein, hergeleitet in kn.satz.theta_gerade_raenge_struktur; auf andere Basen über η₅ mit α = ln b/ln λ₄.'
     f5_neue_frage: 'Zweigwahl mit Intervallarithmetik beweisen; Koeffizientengesetz (kn.satz.theta6_koeffizienten).'
   bewertung: {richtigkeit: 'Lokalform hergeleitet, Zweigwahl numerisch', neuheit: neu_ungeprueft, recherche: 'Der Exponent 0.4218 und die Ecke der Kurve stehen schon qualitativ in kn.beob.hexation_verzweigt (θ ~ (x − x_c)^{1/α}, x_c = x* + 1); neu sind Ort als ihex(p), Konstanten θ*, K, die Regularität an den ganzen Zahlen und die Herleitung.', nutzen: 'Klärt den Typ der Singularität der Hexations-Welle; beantwortet f5 von kn.satz.theta_singularitaet.', nutzen_stufe: hoch}
   kanten:
@@ -80,7 +80,7 @@ aussagen:
     f1_folgt_unmittelbar: '(ii) ja, aus kn.satz.theta6_singularitaet mit dem Übertragungssatz.'
     f2_benutzte_voraussetzungen: 'Lokalform, Δ-Analytizität.'
     f3_spezialfall: 'Gegenstück zu kn.satz.theta_koeffizienten (dort Exponent genau 1 mit Log-Korrekturen, α = 0).'
-    f4_uebertragbar: 'Auf gerade Ränge mit Exponent 1 + α_r (kn.verm.theta_gerade_raenge).'
+    f4_uebertragbar: 'Auf gerade Ränge mit Exponent 1 + α_r (kn.satz.theta_gerade_raenge_struktur (ii)).'
     f5_neue_frage: 'Rest in (i) beweisen; Basisabhängigkeit von C₆.'
   bewertung: {richtigkeit: 'Struktur hergeleitet, numerisch auf 2 % (n = 160)', neuheit: neu_ungeprueft, nutzen: 'Erklärt den Modenabfall der Kneser-Hexation vollständig.', nutzen_stufe: mittel}
   kanten:
@@ -91,7 +91,7 @@ aussagen:
   titel: 'Vermutung: Auf jedem geraden Rang sitzt die Singularität von θ dort, wo H_r den Fixpunkt p_{r−2} trifft, mit Exponent ln λ_{r−4} / ln λ_{r−2}'
   art: vermutung
   ebene: C
-  status: vermutung
+  status: ueberholt
   niveau: forschung
   objekte: [hyperoperation, theta_kneser, fixpunkt_L, multiplikator]
   bereich: 'Motor-Familie zur Basis 2: gerade Ränge Kneser-artig am abstossenden komplexen Fixpunkt, ungerade Ränge regulär am reellen Fixpunkt $p_{r-1}$ von $H_{r-1}$; $\lambda_k=H_k''(p_k)$, $\lambda_2=b$, $\lambda_0=1$'
@@ -101,13 +101,16 @@ aussagen:
     $r=4$ ist der Grenzfall $\alpha=0$: $x_4^*=-1$, Exponent genau 1 mit iterierten Log-Korrekturen. $r=6$: kn.satz.theta6_singularitaet.
     **Rang 8 (Oktation):** Kneser am abstossenden Fixpunkt $kp_8=-4.294772+1.283451i$ von $H_7$ ($\mu=3.41616+3.22021i$); singulär bei $x_8^*=H_8^{-1}(p_6)=-4.7138756$,
     $p_6=-3.6994078$; vorhergesagt $\alpha_8=\ln\lambda_4/\ln\lambda_6=0.730137$ ($\lambda_6=9.493087$).
-  gegenbeispielsuche: 'Geprüft wurden r = 4, 6, 8 (Ort jeweils getroffen, bei r = 8 auf 4·10⁻⁴ rad); ganze Zahlen auf Rang 6 und 8 als mögliche weitere Singularitäten geprüft: regulär. Rang 10 nicht gerechnet.'
+  gegenbeispielsuche: 'Geprüft wurden r = 4, 6, 8 (Ort jeweils getroffen, bei r = 8 auf 4·10⁻⁴ rad); ganze Zahlen auf Rang 6 und 8 als mögliche weitere Singularitäten geprüft: regulär. Rang 10 gerechnet (kn.beob.theta10_singularitaet), Ort und Exponent getroffen.'
   einfach: >-
     Das Muster scheint auf jeder zweiten Rechenart wiederzukehren: Die scharfe Stelle der Welle liegt dort, wo die Rechenart einen bestimmten
     Fixpunkt zwei Stufen tiefer trifft, und wie scharf sie ist, sagt ein Verhältnis zweier Logarithmen.
   quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_18/02_theta_hoehere_raenge/BERICHT.md, B6, B7 und Abschnitt 2; s6_theta8.py'}]
   nachgeprueft:
     - {ergebnis: 'Rang 8 (dps 20, 64 Punkte): arg(a_n/a_{n−1}) = −1.798224 (n = 24) gegen −1.797773; lokaler Exponent 1.702 → 1.713, Ziel 1.730; negative Moden 2·10⁻¹⁰.'}
+    - {ergebnis: '25.10.2026: Rang 8 α = 0.7302 (Fit mit Korrekturgliedern), Rang 10 Ort x₁₀* = −6.6936050663 und α = 0.8360 (zwei Linien). Der lokale Exponent 1.713 (Ziel 1.730) ist durch das Korrekturglied n^(−α) erklärt (kn.beob.theta_gerade_raenge_exponenten).'}
+  versionen:
+    - {datum: '2026-10-25', aenderung: 'Status vermutung → ueberholt.', grund: 'Ersetzt durch kn.satz.theta_gerade_raenge_struktur (hergeleitet bis auf die Zweigwahl, Kern-Lemma kn.lem.umkehr_minus_unendlich), geprüft bis Rang 10; Bericht forschung/runde_2026_10_25/09_gerade_raenge_gesetz.'}
   pruefung:
     f1_folgt_unmittelbar: 'Nein; Argument: H_{r−2} hat bei x_{r−2}* − 1 eine logarithmische Singularität zur Basis λ_{r−4}, also hat H_{r−2}^{−1}(V) für V → −∞ einen endlichen Grenzwert mit Annäherung λ_{r−4}^V.'
     f2_benutzte_voraussetzungen: 'Struktur der Motor-Familie, Zweigwahl wie bei Rang 6.'
@@ -131,9 +134,10 @@ aussagen:
   aussage: |
     sexp₂ hat keinen für slog anziehenden komplexen Fixpunkt (9 Startwerte laufen alle nach $p$). $L_4$ ist für sexp **anziehend**: $\mu=0.154239+0.690508i$, $|\mu|=0.7075$.
     Die Koeffizienten von $\theta_5$ **wachsen**: $|a_1|,\dots,|a_{10}|=2.88,\ 9.42,\ 27.2,\ 154,\ 705,\ 3357,\ 1.42\cdot10^4,\ 5.25\cdot10^4,\ 1.76\cdot10^5,\ 6.53\cdot10^5$,
-    Rate $(\ln|a_n|-\ln|a_{n-4}|)/8\pi=0.27$–$0.28$. Die θ-Reihe konvergiert nur für $\mathrm{Im}\,z>y_c\approx0.27$; $\theta_5$ reicht nicht bis $\mathbb R$.
-    Die Grenze ist der Rand von $\{z:H_5(z)\text{ im Einzugsgebiet von }L_4\}$ (1-periodisch, weil $\mathrm{sexp}^{\circ n}(H_5(z))=H_5(z+n)$); darunter liegen fraktal
-    durchmischt Punkte im Becken von $\bar L_4$ und entkommende Bahnen, höchster Punkt ausserhalb bei $y\approx0.26$.
+    Rate $(\ln|a_n|-\ln|a_{n-4}|)/8\pi=0.27$–$0.28$. Die θ-Reihe konvergiert nur für $\mathrm{Im}\,z>y_c=y_{\max}\approx0.2645$ (kn.beob.theta5_dach); $\theta_5$ reicht nicht bis $\mathbb R$.
+    Die Grenze ist der Rand von $\{z:H_5(z)\text{ im Einzugsgebiet von }L_4\}$ (1-periodisch, weil $\mathrm{sexp}^{\circ n}(H_5(z))=H_5(z+n)$); darunter liegen vor allem Punkte im Becken
+    von $\bar L_4$ (96 % unter dem Dach) und einige entkommende Bahnen; einen fraktalen Rand zeigt die Kastenzählung auf Skalen $\ge10^{-3}$ nicht; höchster Punkt ausserhalb bei
+    $y\approx0.2645$, $x\approx0.031$.
   einfach: >-
     Bei der Pentation hat die Tetration nur einen anziehenden komplexen Fixpunkt. Baut man die Welle dort, wird sie nach unten immer wilder
     und erreicht die reelle Achse gar nicht. Ob der Fixpunkt abstösst oder anzieht, entscheidet also, ob es eine reelle Welle gibt.
@@ -143,8 +147,10 @@ aussagen:
     f2_benutzte_voraussetzungen: 'e6-Löser auf 4·10⁻¹⁰; Linien y = 0.30/0.35/0.5/0.7 stimmen für n ≤ 12 auf 2·10⁻⁴ überein; keine negativen Moden (≤ 7·10⁻¹⁰); Karte 100×25.'
     f3_spezialfall: nein
     f4_uebertragbar: 'Vermutlich auf die Etappe-6-Hexation am anziehenden Fixpunkt von K₅ (ungeprüft).'
-    f5_neue_frage: 'Ist der Beckenrand eine natürliche Grenze von θ₅ (kn.verm.theta5_natuerliche_grenze)? Gibt es eine Kneser-artige Pentation an einem abstossenden Fixpunkt eines Nebenzweigs?'
+    f5_neue_frage: 'Ist der Beckenrand eine natürliche Grenze von θ₅? Ja, bedingt auf die numerischen Annahmen über K₅ (kn.satz.theta5_natuerliche_grenze). Gibt es eine Kneser-artige Pentation an einem abstossenden Fixpunkt eines Nebenzweigs?'
   bewertung: {richtigkeit: numerisch, neuheit: neu_ungeprueft, nutzen: 'Zeigt, warum Rang 5 keine reelle θ-Darstellung hat, obwohl die Pentation selbst wohldefiniert ist.', nutzen_stufe: mittel}
+  nachgeprueft:
+    - {gegen: kn.beob.theta5_dach, ergebnis: '25.10.2026: Wortlaut nach der Korrektur angepasst (y_c = y_max ≈ 0.2645; das Kriterium |w| > 60 in s4_becken5.py zählte Punkte, die nach L₄ laufen, als entkommend); Status numerisch bleibt.'}
   kanten:
     - {typ: stuetzt, ziel: kn.satz.kein_kneser_anziehend}
     - {typ: verwandt, ziel: kn.beob.einheitliche_raenge}
@@ -154,7 +160,7 @@ aussagen:
   titel: 'Vermutung: Der Rand des Beckens von L₄ ist eine natürliche Grenze der Rang-5-Welle θ₅'
   art: vermutung
   ebene: C
-  status: vermutung
+  status: ueberholt
   niveau: forschung
   objekte: [theta_kneser, hyperoperation]
   bereich: 'wie kn.beob.theta5_wachsende_koeffizienten; $\Omega$ die Komponente von $\{z:H_5(z)\in B(L_4)\}$, die $i\infty$ enthält'
@@ -176,6 +182,8 @@ aussagen:
     f4_uebertragbar: 'Auf jede Kneser-artige Konstruktion an einem anziehenden Fixpunkt.'
     f5_neue_frage: 'Hat die Etappe-6-Hexation dieselbe Grenze?'
   bewertung: {richtigkeit: 'Vermutung mit Teilargument', neuheit: neu_ungeprueft, nutzen: 'Würde die fehlende reelle Darstellung auf Rang 5 erklären.', nutzen_stufe: gering}
+  versionen:
+    - {datum: '2026-10-25', aenderung: 'Status vermutung → ueberholt; ersetzt durch kn.satz.theta5_natuerliche_grenze.', grund: 'Bewiesen unter den numerischen Annahmen über K₅ (Durchschiebe-Satz kn.satz.theta_anziehend_natuerliche_grenze); die Lücke „Ψ nicht ganz“ entfällt, weil nur die lokale Umkehrung von σ nahe L₄ gebraucht wird.'}
   kanten:
     - {typ: verwandt, ziel: kn.beob.theta5_wachsende_koeffizienten}
     - {typ: verwandt, ziel: kn.satz.kein_kneser_anziehend}

@@ -1,0 +1,164 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 08: Natürliche Grenze der θ-Welle der Kneser-artigen Pentation (Basis 2).
+# Rechnungen: forschung/runde_2026_10_25/08_pentation_natuerliche_grenze/ (BERICHT.md, Befunde N1–N10). Gegenprobe: EINTRAG.md dort.
+aussagen:
+
+- id: kn.satz.theta_anziehend_natuerliche_grenze
+  titel: 'Durchschiebe-Satz: Baut man eine Superfunktion an einem anziehenden Fixpunkt, so ist der Rand der Becken-Komponente Ω eine natürliche Grenze der Welle θ'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion, schroeder, theta_kneser, periodische_stoerung]
+  bereich: '$f$ holomorph auf einem Gebiet $D$; $L$ anziehender Fixpunkt mit $0<|\mu|<1$, Becken $B$, Koenigs-Funktion $\sigma$ ($\sigma\circ f=\mu\sigma$, $\sigma''(L)=1$); $F$ holomorph auf $\mathbb H$, $F(\mathbb H)\subset D$, $F(z+1)=f(F(z))$, $F(z)\in B$ für $\mathrm{Im}\,z>Y_0$; $A=F^{-1}(B)\cap\mathbb H$, $\Omega$ die Komponente von $A$ mit $\{\mathrm{Im}\,z>Y_0\}\subset\Omega$; $S=\sigma\circ F$ auf $\Omega$, $\theta=\log S/\log\mu-z$'
+  aussage: |
+    (i) Jede analytische Fortsetzung von $\theta$ längs eines Weges in $\mathbb H$, der in $\{\mathrm{Im}\,z>Y_0\}$ beginnt, bleibt in $\Omega$. Jeder Punkt von $\partial\Omega\cap\mathbb H$ ist singulär:
+    $\partial\Omega\cap\mathbb H$ ist eine **natürliche Grenze** von $\theta$. Umgekehrt setzt sich $\theta$ längs jedes Weges in $\Omega$ fort, der die Nullstellen von $S$ meidet (dort liegen logarithmische Punkte).
+    (ii) Ist $\theta$ 1-periodisch mit Fourier-Reihe $\theta=\sum_na_ne^{2\pi inz}$, so gilt
+    $$\limsup_{n\to\infty}|a_n|^{1/n}=e^{2\pi y_c},\qquad y_c=\max\bigl(y_{\max},\ \text{Höhe der höchsten Nullstelle von }S\text{ in }\Omega\bigr),$$
+    mit $y_{\max}=\sup\{\mathrm{Im}\,z:z\in\mathbb H\setminus\Omega\}$; insbesondere $y_c\ge y_{\max}$.
+  einfach: >-
+    Baut man eine Rechenart an einem Fixpunkt, der anzieht, so lebt ihre Welle nur dort, wo die Rechenart ins Einzugsgebiet dieses Fixpunkts fällt. Über den Rand dieses
+    Gebiets kommt man nirgends hinaus: Jeder Versuch würde den Randpunkt selbst ins Einzugsgebiet ziehen.
+  beweis:
+    art: vollstaendig
+    text: |
+      **Lemma.** Ist $U\subset\mathbb H$ eine Scheibe, $T$ holomorph auf $U$ und $T$ auf einer offenen $V\subset U\cap\Omega$ gleich einem Zweig von $\theta$, so ist $U\subset A$.
+      Beweis: Auf einer abgeschlossenen Teilscheibe $U'$ ist $T$ beschränkt, also $E_n=\mu^n\exp(\log\mu\,(z+T))\to0$ gleichmässig; für $n\ge n_0$ ist $W_n=\sigma_N^{-1}\circ E_n$ holomorph mit Werten in einer Umgebung $N$ von $L$, auf der $\sigma$ injektiv ist.
+      Auf einer kleinen Scheibe $D_v\subset V$ ist $F(z+n)=f^n(F(z))\in N$ für grosse $n$ und $\sigma(F(z+n))=\mu^nS(z)=E_n(z)$, also $F(z+n)=W_n(z)$. Nach dem Identitätssatz gilt das auf ganz $U'$, also $f^n(F(z))\in N\subset B$ und $F(z)\in B$.
+      **Satz.** Verliesse eine Fortsetzung längs $\gamma$ das Gebiet $\Omega$ erstmals bei $z_0=\gamma(t^*)\in\partial\Omega$, so wäre das Funktionselement bei $z_0$ auf einer Scheibe $U$ holomorph und stimmte kurz vorher mit einem Zweig von $\theta$ überein; nach dem Lemma $U\subset A$, und da $U$ zusammenhängend ist und $\Omega$ trifft, $U\subset\Omega$ — Widerspruch.
+      (ii) $\{\mathrm{Im}\,z>y_{\max}\}\subset\Omega$, dort hat $\theta$ höchstens logarithmische Punkte; an den Randpunkten der Höhe $y_{\max}$ ist $\theta$ nach (i) singulär; Cauchy–Hadamard.
+      Neu gegenüber dem Teilargument in kn.verm.theta5_natuerliche_grenze: Man braucht nur die **lokale** Umkehrung $\sigma_N^{-1}$ nahe $L$, nachdem man $n$ Schritte nach rechts geschoben hat, nicht die (mehrdeutige) globale Umkehrung $\Psi$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/08_pentation_natuerliche_grenze/BERICHT.md, N1, N3, N10 und Abschnitt 1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; braucht das Durchschieben z ↦ z + n, den Satz von Koenigs (lokal) und den Identitätssatz.'
+    f2_benutzte_voraussetzungen: 'F(z+n) = fⁿ(F z) auf ℍ, F(ℍ) ⊂ D, σ injektiv nahe L, fⁿ → L lokal gleichmässig auf B, Becken rückwärts invariant. Keine Fraktalität, keine globale Umkehrung von σ.'
+    f3_spezialfall: 'Verwandt mit der Tatsache, dass sich die Koenigs-Funktion nicht über den Beckenrand fortsetzen lässt; hier für die Welle θ einer Superfunktion.'
+    f4_uebertragbar: 'Auf jede Kneser-artige Stufe an einem anziehenden Fixpunkt (Pentation zur Basis 2, e6-Hexation am anziehenden Fixpunkt von K₅). An abstossenden Fixpunkten (Motor-Ränge 4, 6, 8) gibt es keine solche Grenze: dort reicht θ bis ℝ mit isolierten Singularitäten.'
+    f5_neue_frage: 'Ist ∂Ω ∩ ℍ in konkreten Fällen nicht leer (sonst ist (i) leer)? Hausdorff-Dimension von ∂Ω? Siehe kn.frage.theta5_rand.'
+  bewertung: {richtigkeit: 'vollständig (beim Eintragen Schritt für Schritt nachgelesen)', neuheit: neu_ungeprueft, nutzen: 'Erklärt allgemein, warum Superfunktionen an anziehenden Fixpunkten keine reelle Welle haben, und schliesst die Lücke der Vermutung aus Runde 18.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: it.satz.koenigs}
+    - {typ: verwandt, ziel: kn.satz.kein_kneser_anziehend}
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+
+- id: kn.satz.theta5_natuerliche_grenze
+  titel: 'Die Rang-5-Welle θ₅ der Kneser-artigen Pentation (Basis 2) hat den Rand des Beckens von L₄ als natürliche Grenze; ihr Konvergenzkreis gehört zum höchsten Randpunkt'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'K₅ = H₅ ist nur numerisch gegeben (e6-Löser, etwa 4·10⁻¹⁰): dass H₅ auf ganz ℍ holomorph ist, den Schnitt (−∞, −2] von sexp₂ meidet und H₅(z+1) = sexp₂(H₅ z) erfüllt, ist nur auf dem Prüfraster (y ∈ [0.02, 0.5]) gemessen; ebenso, dass ∂Ω ∩ ℍ nicht leer ist (kn.beob.theta5_dach)'
+  niveau: forschung
+  objekte: [hyperoperation, theta_kneser, schroeder, fixpunkt_L]
+  bereich: '$b=2$; $H_5$ Kneser-artige Pentation aus dem Cauchy-Löser (e6), $f=\mathrm{sexp}_2$ auf $\mathbb C\setminus(-\infty,-2]$, $L_4=1.469818+1.664342i$ anziehend, $\mu=0.154239+0.690508i$, $|\mu|=0.7075$; $\Omega$, $y_{\max}$ wie in kn.satz.theta_anziehend_natuerliche_grenze; $\theta_5=\log_\mu\sigma(H_5)-z=\sum a_nq^n$'
+  aussage: |
+    Unter diesen Annahmen erfüllt $F=H_5$ die Voraussetzungen von kn.satz.theta_anziehend_natuerliche_grenze. Also ist $\theta_5$ genau auf $\Omega$ holomorph (bis auf höchstens logarithmische Punkte über
+    Nullstellen von $\sigma\circ H_5$, d. h. bei $H_5(z+k)=L_4$), $\partial\Omega\cap\mathbb H$ ist eine natürliche Grenze, und $\limsup|a_n|^{1/n}=e^{2\pi y_c}$ mit $y_c\ge y_{\max}\approx0.2645$.
+    Die Vermutung kn.verm.theta5_natuerliche_grenze ist damit unter denselben numerischen Annahmen bewiesen.
+  einfach: >-
+    Für die Pentation zur Basis 2 heisst das: Ihre Welle endet an einer zerfransten Linie knapp über der reellen Achse, und darüber hinaus lässt sie sich nirgends fortsetzen.
+    Wie schnell die Schwingungen der Welle wachsen, legt der höchste Punkt dieser Linie fest.
+  beweis:
+    art: bedingt
+    text: 'Einsetzen in kn.satz.theta_anziehend_natuerliche_grenze. Gemessen sind die Voraussetzungen: $|H_5(z+1)-\mathrm{sexp}_2(H_5z)|\le4.1\cdot10^{-15}$ auf $40\times25$ Punkten ($y\in[0.02,0.5]$), $H_5$ trifft den Schnitt dort nicht, und für $\mathrm{Im}\,z\ge0.30$ liegen alle Punkte im Becken von $L_4$.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/08_pentation_natuerliche_grenze/BERICHT.md, N2, N3; s1_rand.py, lib.py (liest eta_hyperoperationen/halb_rang_basis2_2026_10_13/data/e6_H*.pkl)'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026: s1_rand.py 100 0.01 erneut gelaufen — L₄, μ, Funktionalgleichung (max 4.08·10⁻¹⁵), Schnittabstand, Klassen {L₄: 2288, L̄₄: 179, entkommt: 33, offen: 0} und Feinsuche (0.26350 bei x = 0.02350, 0.26450 bei x = 0.03100) gleich wie im Bericht.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus kn.satz.theta_anziehend_natuerliche_grenze, sobald die Eigenschaften von H₅ feststehen.'
+    f2_benutzte_voraussetzungen: 'Existenz und Eigenschaften von K₅ (numerisch), Koenigs-Funktion an L₄.'
+    f3_spezialfall: 'Ja, von kn.satz.theta_anziehend_natuerliche_grenze.'
+    f4_uebertragbar: 'Auf die e6-Hexation am anziehenden Fixpunkt von K₅ (dort ∂Ω ∩ ℍ nicht nachgerechnet).'
+    f5_neue_frage: 'Nullstellen von σ∘H₅ in Ω, strenger Nachweis ∂Ω ∩ ℍ ≠ ∅ (kn.frage.theta5_rand).'
+  bewertung: {richtigkeit: 'bedingt: Satz bewiesen, Voraussetzungen über K₅ nur numerisch', neuheit: neu_ungeprueft, nutzen: 'Beantwortet die Frage f5 von kn.beob.theta5_wachsende_koeffizienten.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: spezialfall_von, ziel: kn.satz.theta_anziehend_natuerliche_grenze}
+    - {typ: ersetzt, ziel: kn.verm.theta5_natuerliche_grenze}
+    - {typ: verwandt, ziel: kn.beob.theta5_wachsende_koeffizienten}
+    - {typ: verwandt, ziel: kn.beob.einheitliche_raenge}
+
+- id: kn.beob.theta5_dach
+  titel: 'Das „Dach“ des Beckenrands der Pentation: höchster Randpunkt y_max ≈ 0.2645 bei x ≈ 0.031; Wachstumsrate und Phase der θ₅-Koeffizienten zeigen genau dorthin'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, theta_kneser, fourier_moden, fixpunkt_L]
+  bereich: 'wie kn.satz.theta5_natuerliche_grenze; Becken-Klassen unter Vorwärtsiteration von $\mathrm{sexp}_2$ (Abstand $<10^{-6}$ zu $L_4$ bzw. $\bar L_4$; „entkommt“ bei $\mathrm{Re}\,w>60$ oder nicht endlich)'
+  aussage: |
+    (i) Die Oberkante von $\mathbb H\setminus\Omega$ ist ein breites, flaches Dach: im groben Raster für $x\in[0.01,0.10]$ überall bei $0.26$. Die Feinsuche (Raster $7.5\cdot10^{-4}\times5\cdot10^{-4}$, keine unentschiedenen Punkte)
+    gibt zwei Spitzen, $y=0.26450$ bei $x=0.03100$ und $y=0.26350$ bei $x=0.02350$. Das ist eine **untere** Schranke für $y_{\max}$ (dünne Spitzen könnten fehlen).
+    (ii) Die Koeffizienten zeigen von zwei Seiten auf dieselbe Stelle: die lokale Rate $(\ln|a_n|-\ln|a_{n-8}|)/16\pi$ ist $0.277,\ 0.277,\ 0.267$ ($n=18,20,24$), die Phase $-\arg(a_n/a_{n-1})/2\pi\bmod1$
+    ist $0.002$–$0.028$; die führende Singularität liegt also bei $x\approx0.02$–$0.03$, an der Dachspitze. Logarithmische Punkte über dem Dach zeigen sich nicht: $y_c=y_{\max}$.
+    (iii) Unter dem Dach ($x\in[0,0.05]$, $y\in[0.215,0.265]$) liegen 96 % der Rasterpunkte im Becken von $\bar L_4$ (2400 von 2500), 4 % in dem von $L_4$: die Grenze ist dort die zwischen den beiden Becken.
+    Die Kastenzählung ($N=34,14,7,3,2$ für $\varepsilon=0.001\ldots0.016$, Steigung 1.04) gibt auf Skalen $\ge10^{-3}$ **keinen** Beleg für einen fraktalen Rand.
+    (iv) Die Bahn von $L_3$ (Fixpunkt von $2^z$, Grenzwert von $\mathrm{sexp}_2$ für $\mathrm{Im}\to\infty$) läuft unter $\mathrm{sexp}_2$ spiralförmig nach $L_4$; Punkte mit grossem $|\mathrm{Im}\,w|$ liegen daher im Becken von $L_4$.
+    Das Kriterium $|w|>60$ für „entkommt“ in runde_2026_10_18/02 (s4_becken5.py) zählt sie falsch; richtig ist $\mathrm{Re}\,w>60$ oder nicht endlich.
+  einfach: >-
+    Der obere Rand des Gebiets, in dem die Pentationswelle lebt, sieht aus wie ein flaches Dach in der Höhe 0.26. Wie schnell die Schwingungen der Welle wachsen und
+    in welche Richtung sie sich drehen, zeigt genau auf die höchste Stelle dieses Dachs.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/08_pentation_natuerliche_grenze/BERICHT.md, N4, N5, N8, N9 und Abschnitt 2; s1_rand.py, s2_koeff.py, s3_kasten.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Bericht: Linien y = 0.30 und 0.33 (N = 512) stimmen bis n = 24 auf ≤ 2.3·10⁻³ überein; negative Moden ≤ 4·10⁻⁸; ab n ≈ 32 Rauschen.'}
+    - {ergebnis: 'Gegenprobe 25.10.2026: s2_koeff.py 0.30 0.33 512 0.6 0.12 und s1_rand.py 100 0.01 erneut gelaufen; |a₁₀| = 6.534·10⁵, Rate 0.2769 und Phase 0.0021 bei n = 18, 0.2670 und 0.0283 bei n = 24, Dachspitzen 0.26450/0.26350 — alles wie im Bericht. Die relative Abweichung der beiden Linien ist bei n = 32 schon 0.18, verlässlich also nur bis n ≈ 24.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); die Übereinstimmung von Rate und Ort ist die Vorhersage von kn.satz.theta5_natuerliche_grenze (ii).'
+    f2_benutzte_voraussetzungen: 'e6-Daten (H₄, H₅) in doppelter Genauigkeit; Koenigs-Reihe an L₄ mit 30 Gliedern; Becken-Klassifikation bis 150–250 Schritte.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Dieselbe Messung für die e6-Hexation.'
+    f5_neue_frage: 'Genaues y_max als Supremum über dünne Spitzen; geschlossene Kennzeichnung der Dachspitze (abstossender Zyklus von sexp₂?); Hausdorff-Dimension auf feineren Skalen.'
+  bewertung: {richtigkeit: 'numerisch; Dach auf 5·10⁻⁴, Koeffizienten verlässlich bis n ≈ 24', neuheit: neu_ungeprueft, recherche: 'Verfeinert y ≈ 0.26 (Raster 0.02) aus kn.beob.theta5_wachsende_koeffizienten.', nutzen: 'Bestätigt den Konvergenzradius von θ₅ unabhängig von zwei Seiten.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.theta5_natuerliche_grenze}
+    - {typ: korrigiert, ziel: kn.beob.theta5_wachsende_koeffizienten, notiz: 'Entkommen-Kriterium |w| > 60 und „fraktal durchmischt“'}
+
+- id: kn.beob.theta5_unter_konvergenzkreis
+  titel: 'Der Konvergenzkreis der θ₅-Reihe ist keine natürliche Grenze: θ₅ setzt sich darunter fort, wo Ω tiefer reicht — Lückensätze sind hier fehl am Platz'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [theta_kneser, fourier_moden, hyperoperation]
+  bereich: 'wie kn.satz.theta5_natuerliche_grenze; $q=e^{2\pi iz}$'
+  aussage: |
+    Bei $z_1=0.6+0.12i$, deutlich unter $y_{\max}\approx0.2645$, ist $\theta_5$ holomorph: Die senkrechte Strecke von $0.6+0.45i$ bis $0.6+0.08i$ liegt ganz im Becken von $L_4$ (200 von 200 Punkten), und die
+    Mittelwerteigenschaft gilt auf $7\cdot10^{-8}$ ($\rho=0.02$) bzw. $1.7\cdot10^{-7}$ ($\rho=0.03$), während die Fourier-Glieder dort divergieren ($|a_{60}q^{60}|=1.8\cdot10^{22}$).
+    Auf dem Kreis $|q|=e^{-2\pi y_{\max}}$ liegen also nur die Dachspitzen als Singularitäten; die natürliche Grenze ist $\partial\Omega$, nicht der Kreis.
+    Lückensätze (Hadamard, Fabry, Pólya–Carlson), die den Konvergenzkreis selbst zur natürlichen Grenze machen, greifen nicht: alle $a_n\ne0$ wachsen glatt. Die Grenze kommt aus der Dynamik, nicht aus der Arithmetik der Koeffizienten.
+  einfach: >-
+    Die Fourier-Reihe der Pentationswelle hört unterhalb einer bestimmten Höhe auf zu konvergieren. Die Welle selbst geht aber an vielen Stellen tiefer hinunter;
+    nur an der höchsten Stelle des Dachs ist wirklich Schluss.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/08_pentation_natuerliche_grenze/BERICHT.md, N6, N7; s2_koeff.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026: s2_koeff.py erneut — Klassen auf der Strecke [0, 200, 0, 0], Mittelwertfehler 6.81·10⁻⁸ (ρ = 0.02) und 1.70·10⁻⁷ (ρ = 0.03), |a₆₀q⁶⁰| = 1.79·10²².'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Teilweise: aus kn.satz.theta_anziehend_natuerliche_grenze (i) ist θ₅ auf ganz Ω holomorph; dass Ω bei x = 0.6 tiefer reicht als das Dach, ist gemessen.'
+    f2_benutzte_voraussetzungen: 'e6-Daten (Genauigkeit ~10⁻¹⁰, durch log σ verstärkt); Becken-Klassifikation.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Welle an einem anziehenden Fixpunkt mit nicht waagrechtem Beckenrand.'
+    f5_neue_frage: 'Wie tief reicht Ω im Mittel einer Periode, und wie misst man θ₅ dort genau (Fortsetzung ohne Fourier-Reihe)?'
+  bewertung: {richtigkeit: 'numerisch auf ~10⁻⁷', neuheit: neu_ungeprueft, nutzen: 'Verhindert den Fehlschluss „Konvergenzkreis = natürliche Grenze“.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.theta_anziehend_natuerliche_grenze}
+    - {typ: verwandt, ziel: kn.beob.theta5_dach}
+
+- id: kn.frage.theta5_rand
+  titel: 'Offen: Ist ∂Ω ∩ ℍ streng nicht leer, hat σ∘H₅ Nullstellen in Ω, und wie fraktal ist der Rand der Pentationswelle?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [hyperoperation, theta_kneser, schroeder]
+  bereich: 'wie kn.satz.theta5_natuerliche_grenze'
+  aussage: |
+    (1) Gibt es Punkte mit $H_5(z+k)=L_4$ in $\Omega$ (logarithmische Punkte von $\theta_5$)? Ausgeschlossen sind sie nur oberhalb des Dachs (kn.beob.theta5_dach). Prüfweg: Argumentprinzip für $\sigma\circ H_5$ auf Teilgebieten von $\Omega$.
+    (2) Streng zeigen, dass $\partial\Omega\cap\mathbb H\neq\emptyset$, ohne Numerik.
+    (3) Hausdorff-Dimension von $\partial\Omega$; sie ist die von $\partial B(L_4)\subset J(\mathrm{sexp}_2)$, weil $H_5$ lokal konform ist.
+    (4) Genaues $y_{\max}$: Liegt $H_5$ an der Dachspitze auf einem abstossenden Zyklus von $\mathrm{sexp}_2$?
+    (5) Dasselbe für die e6-Hexation am anziehenden Fixpunkt von $K_5$.
+  einfach: >-
+    Offen ist, ob die Pentationswelle unter dem Dach noch besondere Punkte hat, ob man die Existenz des Rands ohne Computer beweisen kann und wie zerfranst er wirklich ist.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/08_pentation_natuerliche_grenze/BERICHT.md, Offene Fragen 1–5'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta5_natuerliche_grenze}
+    - {typ: verwandt, ziel: kn.beob.theta5_dach}

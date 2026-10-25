@@ -15,7 +15,9 @@ aussagen:
     Bei $t=-1$ kommt $(-n)^{n-1}$ heraus, also die Koeffizienten von Lambert W — das Gegenstück zur Möbius-Zahl bei $e^x-1$.
     Die Fatou-Koordinate ist exakt
     $$\alpha(x)=-\tfrac1x+\tfrac12\ln x-\tfrac x6+\tfrac{x^2}{16}-\tfrac{19x^3}{540}+\tfrac{x^4}{48}-\tfrac{41x^5}{4200}+\tfrac{37x^6}{103680}+\dots$$
-    (bei $e^x-1$: $-\tfrac2x+\tfrac13\ln x-\tfrac x{36}+\tfrac{x^2}{540}+\dots$). Dreieck, Zeilensummen, Julia-Koeffizienten $2,-3,10,-50,321,-2422$ und die
+    (bei $e^x-1$: $-\tfrac2x+\tfrac13\ln x-\tfrac x{36}+\tfrac{x^2}{540}+\dots$). Alle Koeffizienten sind rational, weil $\ln F=\ln x+x$ exakt gilt: $\alpha(F)-\alpha=1$ wird zu
+    $(1-e^{-x})/x+\beta x+\sum c_k(F^k-x^k)=1$ (22 Glieder in forschung/runde_2026_10_25/14_klammerungen/fatou_reihe_ausgabe.txt); $|c_k|(2\pi)^k/(k-1)!$ bleibt für $k\le22$
+    zwischen 0.03 und 5.4. Dreieck, Zeilensummen, Julia-Koeffizienten $2,-3,10,-50,321,-2422$ und die
     halbe Iterierte stehen nicht in der OEIS; nur die einfachen Iterierten (×2, A185298) sind bekannt.
   einfach: >-
     Auch bei der Produkt-Tetration zählen die Koeffizienten der gebrochenen Wiederholungen etwas — die Zahlen dazu stehen noch in keiner Folgendatenbank.
@@ -34,3 +36,4 @@ aussagen:
   kanten:
     - {typ: analog_zu, ziel: it.satz.zeta_polynom_partitionen}
     - {typ: verwandt, ziel: br.satz.produkt_parabolisch}
+    - {typ: verwandt, ziel: it.verm.mexp_halbiterierte_divergent}

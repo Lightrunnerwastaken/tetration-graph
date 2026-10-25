@@ -45,7 +45,7 @@ aussagen:
     f1_folgt_unmittelbar: 'Nein; die Riemann-Abbildung ist der wesentliche Schritt.'
     f2_benutzte_voraussetzungen: 'Fixpunktpaar $L,\bar L$ nichtreell, abstossend.'
     f3_spezialfall: 'Methode für Abel-Funktionen an komplexen Fixpunktpaaren allgemein (Trappmann–Kouznetsov).'
-    f4_uebertragbar: 'Auf komplexe Basen (Paulsen 2019) und auf andere Funktionen mit nichtreellem Fixpunktpaar.'
+    f4_uebertragbar: 'Auf komplexe Basen (Paulsen 2019) und auf andere Funktionen mit nichtreellem Fixpunktpaar; dort muss die Welle θ_U nicht in der ganzen oberen Halbebene holomorph sein (kn.beob.rand_zusatzsingularitaet).'
     f5_neue_frage: 'Wie hängt $\theta_K$ von der Basis ab? → bw.def.auswahlprinzip (Paper V)'
   bewertung: {richtigkeit: gesichert (Literatur), neuheit: klassisch, nutzen: 'Die Standardlösung für b > η.', nutzen_stufe: hoch}
   kanten:
@@ -149,6 +149,8 @@ aussagen:
   bewertung: {richtigkeit: 'Fortsetzung und Eindeutigkeit für komplexe Basen gesichert (Abstract); Holomorphie in b nicht belegt; Bereich ungeprüft', neuheit: bekannt, nutzen: 'Trägt die Störungstheorie in der Basis — sofern die Holomorphie in b sich bestätigt.', nutzen_stufe: hoch}
   kanten:
     - {typ: stuetzt, ziel: bw.ann.basis_diffbar, notiz: 'nur falls Paulsen 2019 (oder 2026) die Holomorphie in b zeigt — ungeprüft; und nicht die gleichmässige Vertauschung des Grenzwerts'}
+    - {typ: verwandt, ziel: kn.beob.rand_zusatzsingularitaet, notiz: 'nahe dem Shell–Thron-Rand hat θ_U Singularitäten in der oberen Halbebene'}
+    - {typ: verwandt, ziel: kn.satz.komplex_radius}
 
 - id: kn.def.slog
   titel: Superlogarithmus
@@ -465,7 +467,7 @@ aussagen:
   art: konstruktion
   ebene: C
   status: bedingt
-  bedingungen_text: 'λ_b = T_b′(L_b) > 1 und L_b einziger Fixpunkt von T_b in (−2, −1): gemessen (e 6.4607, 2 5.1718), bewiesen nur λ_b ≥ 1 am kleinsten Fixpunkt; gleichwertig zur Log-Konkavität von T_b auf (−1, 0), die für b > b₇ bricht (gr.gegen.tpid7_kneser)'
+  bedingungen_text: 'λ_b = T_b′(L_b) > 1 und L_b einziger Fixpunkt von T_b in (−2, −1): gemessen (e 6.4607, 2 5.1718), bewiesen nur λ_b ≥ 1 am kleinsten Fixpunkt; gleichwertig zur Log-Konkavität von T_b auf (−1, 0), die für b > b₇ bricht (gr.gegen.tpid7_kneser); λ_b > 1 auf dem Raster b = 1.2…3 gemessen, Minimum 4.7799 bei b* = 1.53279 (kn.beob.landkarte_p4_p6)'
   niveau: vertiefung
   objekte: [hyperoperation, kneser_T, superfunktion, schroeder, multiplikator]
   bereich: 'reelle $b>\eta$, Kneser-Tetration $T_b$; Fixpunkt $L_b\in(-2,-1)$ mit $\lambda_b=T_b^{\prime}(L_b)>1$'
@@ -752,7 +754,7 @@ aussagen:
     f1_folgt_unmittelbar: 'Ja, aus dem Wertebereich der Pentation.'
     f2_benutzte_voraussetzungen: 'Nur Stetigkeit, Monotonie und $H(0)=1$ — gilt für jede wachsende Hexation, regulär oder Kneser-artig.'
     f3_spezialfall: 'Analog zu fg.kor.keine_ganze_tetration (Tetration bricht bei −2 ab, weil $b^x>0$).'
-    f4_uebertragbar: 'Muster: Stufe $n+1$ hat eine reelle Singularität genau dann, wenn Stufe $n$ nach unten beschränkt ist — exp (>0) → Tetration singulär; Tetration (alle Werte) → Pentation glatt; Pentation (>L_T) → Hexation singulär; Hexation (alle Werte) → Heptation glatt.'
+    f4_uebertragbar: 'Muster: Stufe $n+1$ hat eine reelle Singularität genau dann, wenn Stufe $n$ nach unten beschränkt ist — exp (>0) → Tetration singulär; Tetration (alle Werte) → Pentation glatt; Pentation (>L_T) → Hexation singulär; Hexation (alle Werte) → Heptation glatt — für alle Ränge: kn.satz.negative_struktur (bedingt), ganze Werte: kn.satz.ganze_negative_hoehen.'
     f5_neue_frage: 'Ist die Singularität bei $s_b$ genau logarithmisch, $H(x)\approx\log_\lambda(x-s_b)$, so dass $H$ bei $s_b+1$ analytisch bleibt (wie die Tetration bei −1)?'
   bewertung: {richtigkeit: vollständig, neuheit: bekannt, recherche: 'Korrektur 12.10.2026 (Literaturkarte L2): im Forum bekannt — S. Levenstein 07.08.2017 (tid 1177, Beitrag 1): hex(−3) = −2 und eine Singularität nahe −3.86 zur Basis e, weil die Hexation bei ≈ −2.86 den Fixpunkt −1.85 der Tetration erreicht (dasselbe Argument wie hier); J. D. Nixon (Beitrag 2): jede analytische Hyperoperation der Stufe n erfüllt f(−k) = 1−k für 0 ≤ k ≤ n−1, Beweis H. Trappmann zugeschrieben; Levenstein (Beitrag 5): Tetration und Hexation haben eine logarithmische Singularität, Pentation und Heptation laufen gegen einen Fixpunkt. Hier neu: der Beweis für jede wachsende Hexation und die Messwerte s_b.', nutzen: 'Zeigt den Wechsel glatt/singulär über die Stufen.', nutzen_stufe: mittel}
   quellen: [{ref: diese_arbeit}, {ref: forum_tid1177, stelle: 'Levenstein, Beiträge 1 und 5 (07.08./03.09.2017); Nixon, Beitrag 2 (21.08.2017)'}]
@@ -790,7 +792,7 @@ aussagen:
     f2_benutzte_voraussetzungen: 'Fixpunkt und Multiplikator gemessen; die Wahl der Pentation (regulär am negativen Fixpunkt der Kneser-Tetration).'
     f3_spezialfall: 'Ja: reguläre Superfunktion am anziehenden Fixpunkt.'
     f4_uebertragbar: 'Für $b>\eta_5$ fehlt der reelle Fixpunkt → kn.frage.hexation_kneser.'
-    f5_neue_frage: 'Geht $H_b$ für $b\uparrow\eta_5$ stetig in eine Kneser-artige Hexation über (wie die Tetration bei η)?'
+    f5_neue_frage: 'Geht $H_b$ für $b\uparrow\eta_5$ stetig in eine Kneser-artige Hexation über (wie die Tetration bei η)? Vorläufig nein: die Motor-Hexation springt an η₅ um eine 1-periodische Höhenverschiebung θ ~ 10⁻⁵ (kn.beob.hexation_sprung_eta5); ob das an der Zwei-Bogen-Auswahl liegt, ist offen.'
   bewertung: {richtigkeit: 'Konstruktion vollständig, Werte numerisch (≈ 25 Stellen)', neuheit: vermutlich_neu, recherche: 'Forum: Levenstein beschreibt 2017 (tid 1177) die Hexation allgemein als Kneser-artig an den konjugierten Fixpunkten der Pentation (gerechnet für e und 1.84) und rechnet 2020 zur Basis 2 (tid 1263); eine reguläre Hexation am anziehenden reellen Fixpunkt der Pentation unter η₅ mit Werten nicht gefunden (Suche 08.10. und 12.10.2026).', nutzen: 'Erste Werte der Hexation für kleine Basen.', nutzen_stufe: mittel}
   quellen: [{ref: diese_arbeit}]
   kanten:
@@ -854,6 +856,7 @@ aussagen:
   quellen: [{ref: diese_arbeit}]
   kanten:
     - {typ: verwandt, ziel: kn.konstr.kneser}
+    - {typ: verwandt, ziel: kn.satz.theta_anziehend_natuerliche_grenze, notiz: 'Gegenstück: was die Welle an einem anziehenden Fixpunkt stattdessen tut'}
 
 - id: kn.beob.hexation_verzweigt
   titel: Die Kneser-artige Hexation zur Basis 2 ist in der oberen Halbebene verzweigt
@@ -1527,6 +1530,7 @@ aussagen:
   quellen: [{ref: diese_arbeit}]
   kanten:
     - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}
+    - {typ: verwandt, ziel: kn.satz.slog_periodische_halbebene, notiz: 'die Holomorphie auf |w| < |L| ist dort die Bedingung'}
 
 - id: kn.satz.halbexp_beschraenkt
   titel: 'Eindeutigkeit über einen Korridor: Knesers halbe e-Funktion ist die einzige, die den Korridor V₀ in die Scheibe |z| < |L| abbildet'

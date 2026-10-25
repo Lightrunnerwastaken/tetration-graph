@@ -1,0 +1,82 @@
+gebiet: kl
+# Runde 25.10.2026, Bericht 23: Basisableitung an den Rändern b → 1⁺ und b → η⁺ (Randzahl ε₀, Kanalgesetz der Vorwärtssumme).
+# Rechnungen: forschung/runde_2026_10_25/23_basisableitung/ (BERICHT.md, EINTRAG.md).
+aussagen:
+
+- id: kl.satz.eps0_b_gegen_1
+  titel: 'Für b → 1⁺ ist ε₀ = 1 − 1/ln(1/ln b) + kleiner Rest, und T′(0) ≈ (a − 1)·ln(1/λ)'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [regulaer_T, multiplikator]
+  bereich: 'reguläre Tetration am anziehenden Fixpunkt $a$ ($b^a=a$), Multiplikator $\lambda=a\ln b$, $b\to1^+$; $\varepsilon_0$ wie in gr.satz.elastizitaet_rand'
+  aussage: |
+    $$T_b'(0)\approx(a-1)\ln\frac1\lambda,\qquad \varepsilon_0(b)=1-\frac1{\ln(1/\ln b)}+R(b),$$
+    mit gemessenem $R(b)/\ln b=1.27,\ 1.34,\ 1.38,\ 1.42$ (wandert noch, vermutlich mit einem Faktor in $\ln\ln$).
+    $b=1+10^{-6}$: $\varepsilon_0=0.927619011$ gegen die Formel $0.927617589$; $T'(0)=1.38155238735\cdot10^{-5}$ gegen $1.38155\cdot10^{-5}$. $b=1+10^{-4}$: Rest $1.38\ln b$.
+    Damit $\varepsilon_0\to1$ für $b\to1^+$, aber nur logarithmisch langsam.
+  einfach: >-
+    Für Basen knapp über 1 wird die Randzahl ε₀ fast 1 — aber sehr langsam, mit dem Logarithmus des Logarithmus. Grund: Die Tetration ist dann fast eine einfache
+    Annäherung an den Fixpunkt, a − (a − 1)·λˣ.
+  beweis:
+    art: skizze
+    text: |
+      Für $b\to1$ rückt der anziehende Fixpunkt $a$ an 1, und $\lambda=a\ln b\to0$. Die Iteration ist bis auf $O(\ln b)$ linear: $T(x)\approx a-(a-1)\lambda^x$, also
+      $T'(0)\approx(a-1)\ln(1/\lambda)$. Mit $a-1\approx\lambda\approx\ln b$ ist $\ln T'(0)\approx\ln\ln b+\ln\ln(1/\ln b)$, und Ableiten nach $\ln\ln b$ gibt $1-1/\ln(1/\ln b)$.
+    luecken:
+      - 'Der Fehler der Linearisierung (Koenigs-Koordinate) ist nur geschätzt; der gemessene Rest R/ln b wandert (1.27 → 1.42), die Fehlerordnung O(ln b) ist also nicht gesichert.'
+  stuetzt_sich_auf: [kl.satz.regulaer]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B10 und Abschnitt „B10 b → 1⁺“; d2_elastizitaet.py, a4_eps0_tabelle.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Linearisierung am stark anziehenden Fixpunkt.'
+    f2_benutzte_voraussetzungen: 'Reguläre Tetration (Koenigs) am anziehenden Fixpunkt; a − 1 ≈ λ ≈ ln b.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Höhe: bei festem y ∈ (−1, 0) geht T_b(y) → 1 (Stufe bei −1), passend zu T_b(½) ≈ 1 + ε − ε^{3/2} (kl.beob.eta_taylor).'
+    f5_neue_frage: 'Genaue Form des Rests R(b) — ein Glied ln b · ln ln(1/ln b)?'
+  bewertung: {richtigkeit: 'Skizze; Leitterm auf 1.4·10⁻⁶ bestätigt', neuheit: neu_ungeprueft, nutzen: 'Erklärt das obere Ende der ε₀-Tabelle.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: gr.satz.elastizitaet_rand}
+    - {typ: verwandt, ziel: gr.beob.eps0_tabelle}
+
+- id: kl.satz.kanalgesetz_vorwaertssumme
+  titel: 'Kanalgesetz: knapp über η wächst die Vorwärtssumme der Basisableitung wie (π/2)·√(2η/e)·(b − η)^{−3/2}'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, eta, sattel_knoten]
+  bereich: '$b=\eta+\delta$, $\delta\to0^+$; $r(x)=1/(b\ln^2b\,T''(x-1))$ wie in gr.beob.wackeln_basen; Kneser'
+  aussage: |
+    Die Vorwärtssumme an der Stelle 0 braucht nur $T'(0)$ und die ganzen Türme:
+    $$S_b(0)=\sum_{k\ge0}r(k)=\frac1{b\ln^2b}\Bigl[\frac{\ln b}{T'(0)}+\sum_{j\ge0}\frac1{T'(j)}\Bigr],\qquad T'(j)=T'(0)\prod_{i=1}^{j}\ln b\,(b\uparrow\uparrow i),$$
+    gleichwertig $S_b(0)=S^{\rm Kobi}_b(1)/T_b'(0)$ mit $S^{\rm Kobi}$ aus gr.satz.turm_pde. Für $\delta\to0^+$ gilt
+    $$S_b(0)\sim\frac\pi2\sqrt{\frac{2\eta}{e}}\;\delta^{-3/2}=1.61946527\,\delta^{-3/2},$$
+    mit einer Korrektur $1-c\,\delta$, $c\approx0.644$. Gemessenes Verhältnis zum Leitterm: $0.94432$, $0.98151$, $0.99365$, $0.99808$, $0.99936$, $0.99981$, $0.999936$ bei
+    $\delta=10^{-1},\,3\cdot10^{-2},\,10^{-2},\,3\cdot10^{-3},\,10^{-3},\,3\cdot10^{-4},\,10^{-4}$; $(1-\text{Verhältnis})/\delta=0.6432$, $0.6436$, $0.6436$ bei $10^{-3}$, $3\cdot10^{-4}$, $10^{-4}$.
+  einfach: >-
+    Knapp über η kriecht die Tetration lange durch einen Engpass bei e. Die Summe, die die Basisableitung trägt, wird darum riesig — wie eins durch (b − η) hoch 3/2,
+    mit einer Konstante, die sich aus der Form des Engpasses ausrechnen lässt.
+  beweis:
+    art: skizze
+    text: |
+      Im Engpass bei $e$ ist $q(y)=b^y-y\approx\alpha+\beta(y-e)^2$ mit $\alpha=e^2\delta/\eta$ (aus $\ln b=1/e+\delta/\eta+O(\delta^2)$) und $\beta=1/(2e)$. Dort ist $T'\approx q(T)$, also
+      $\sum_j1/T'(j)\approx\int dx/T'=\int dy/q(y)^2=\pi/(2\alpha^{3/2}\beta^{1/2})$. Mit $1/(b\ln^2b)\to e^2/\eta$ folgt $S\sim\frac\pi2\sqrt{2\eta/e}\,\delta^{-3/2}$.
+    luecken:
+      - 'T′ wird im Kanal durch q(T) ersetzt, die Summe durch das Integral, und die Glieder ausserhalb des Kanals werden weggelassen; die Messung zeigt eine Korrektur der Ordnung δ (nicht δ^{1/2}), c ≈ 0.644 ist nicht hergeleitet.'
+  stuetzt_sich_auf: [gr.satz.turm_pde]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B15 und Abschnitt „B15 Kanalgesetz“; a3_kanal.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026: T′(0) bei η + 10⁻³ mit neuer Einstellung (dps 32, Schritt 10⁻¹⁰) neu gerechnet, a3_kanal.py darauf: S(0) = 51179.047757596, Verhältnis 0.9993567761 — gleich wie im Bericht.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Sattel-Knoten-Rechnung wie bei der Durchgangszeit.'
+    f2_benutzte_voraussetzungen: 'Kneser nur über T′(0) (Motor); Engpass-Form von b^y − y bei e; Kanal-Näherung T′ ≈ q(T).'
+    f3_spezialfall: 'Gleiche Engpass-Integrale wie bei der Durchgangszeit N = π√(2η/(e δ)) (kl.verm.eta_glatt_nicht_analytisch) — hier mit q² statt q.'
+    f4_uebertragbar: 'Auf jeden Sattel-Knoten-Durchgang (Pentation bei η₅).'
+    f5_neue_frage: 'Konstante c ≈ 0.644 der Korrektur herleiten; folgt damit auch der Grenzwert von T′_b(0) für b → η⁺ aus ganzen Türmen?'
+  bewertung: {richtigkeit: 'Skizze; Leitterm auf 6·10⁻⁵ bestätigt (δ = 10⁻⁴)', neuheit: neu_ungeprueft, nutzen: 'Quantifiziert, wie die Basisableitung bei η⁺ explodiert.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: analog_zu, ziel: gr.satz.wurzel_eta}
+    - {typ: verwandt, ziel: br.satz.sattel_knoten}
+    - {typ: verwandt, ziel: kl.satz.c1_noerlund}
+    - {typ: verwandt, ziel: fp.satz.horn_eta}

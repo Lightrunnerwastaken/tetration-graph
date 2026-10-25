@@ -110,10 +110,10 @@
       The second assumption from Paper I: When peeling, the values stay large enough, and the tower grows beyond all bounds.
 - id: bw.beob.anlauf_ursache
   quelle_hash: 29c3c8dc7d4c
-  theorie_hash: 040602771492
+  theorie_hash: e82c144ddf24
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: The rank-5 wave comes almost entirely from the onset of F_{b,d}, not from the rank-4 wave
@@ -137,7 +137,8 @@
     - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B14; t4_ebenen.py, t11_gewicht.py
   en_theorie:
     beispiel: $c(U_1)-\mu_4=0.18$ at $U_1=2$; contribution of the rank-4 wave at most $7\cdot10^{-5}$ out of $5\cdot10^{-3}$.
-    einordnung: The rank-4 wave determines the smoothness ([[bw.verm.rang5_nirgends_diffbar]]), not the size ([[bw.beob.wellen_raenge]]).
+    einordnung: |
+      The rank-4 wave determines the smoothness ([[bw.satz.rang5_singulaer]]), not the size ([[bw.beob.wellen_raenge]]).
     genau: 'No, not in leading order: about 99 % come from the onset of $F_{b,d}$ at small heights.'
     warum: The rank-4 wave enters only with the small weight $1/P_d'(\theta+m)$ ([[bw.satz.produktformel_rang5]], feed-in law).
     worum: Is the rank-5 wave composed of the rank-4 wave?
@@ -478,6 +479,50 @@
       Measured and model-dependent: from $k\approx510$ on one reaches the mode floor of the engine; the extrapolation in the window width $w$ determines the result.
     worum: |
       The height of the conjectured analyticity strip is a single number $\sigma^*$. Measured, it is small and still uncertain.
+- id: bw.beob.singulaer_unsichtbar
+  quelle_hash: 50f71b5ed2b8
+  theorie_hash: 9d4f66bc1d09
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'The singularity is invisible: drift χ = −∫log(1+P₄′) ≈ Var(P₄′)/2 = 2.04·10⁻⁷ for (e,2), visible only after about 5·10⁶ tower levels'
+    aussage: |
+      For $\lambda$-almost all $y$ we have (sketch, strong law of large numbers for the almost independent digits $\{U_j\}$) $\tfrac1n\log\Pi_n(y)\to-\chi$ with
+      $$\chi=-\int_0^1\log(1+P_4'(t))\,dt\approx\tfrac12\mathrm{Var}(P_4')\approx4\pi^2|a_1|^2.$$
+      $(e,2)$: $\chi=2.0377869\cdot10^{-7}$, $n^*=1/\chi\approx4.9\cdot10^6$ levels (scale $h\sim1/(2\uparrow\uparrow(5\cdot10^6))$). Further pairs: $(e,3)$ $1.3126\cdot10^{-8}$, $(2,3)$ $3.2033\cdot10^{-7}$,
+      $(e,10)$ $9.9356\cdot10^{-7}$ ($n^*=1.0\cdot10^6$), $(e,2.7)$ $6.84\cdot10^{-11}$ ($n^*=1.5\cdot10^{10}$). Under $dH$ the drift is $+\mathrm{KL}=2.0378\cdot10^{-7}$.
+      **Negative finding:** The measured value $\hat G'\approx1.0657$ (bw.beob.skalensprung) is not a derivative value but a plateau $\Pi_n$; no computable scale distinguishes $\hat G$ from a Lipschitz function.
+      The Fourier tail $|a_k|\sim k^{-1.3}$ ($k\le64$, bw.verm.rang5_nirgends_diffbar) belongs to the lead-in; only $|a_k|\le1/(2\pi k)$ is certain, because $d\hat G$ is a probability measure on the circle.
+    bereich: rank-4 waves $P_4$ from the Fourier modes of round 18 (e1_*.json), nine base pairs
+    bewertung:
+      nutzen: Explains why round 18 believed it had measured a smooth derivative.
+      richtigkeit: χ numerical (grids 4000/8000/12345, M = 64/128); the rate as a sketch
+    einfach: Why did nobody see this? Per tower level the slope loses on average only a tiny fraction, about two ten-millionths. Only after millions
+      of levels does this become visible — on lengths far smaller than anything that could ever be computed.
+    nachgeprueft:
+    - ergebnis: 'Cross-check 25.10.2026: χ(e,2) via a third grid (midpoint rule, 12345 points) 2.0377869066·10⁻⁷; Var(P₄′)/2 via Parseval 2.0378192·10⁻⁷;
+        s3_hellinger.py gives χ = 2.03778691·10⁻⁷.'
+    pruefung:
+      f1_folgt_unmittelbar: χ > 0 follows from Jensen's inequality (∫P₄′ = 0); the numerical value is measured.
+      f2_benutzte_voraussetzungen: Fourier modes of Φ₄ (round 18, M = 64/128 identical); for the rate the law of large numbers (not written out).
+      f3_spezialfall: 'Random walk log Π_n with drift −χ and variance Var(P₄′): the drift dominates from n ≈ 2/χ on.'
+      f4_uebertragbar: To every pair; χ ∝ |a₁|² ∝ (ln log_b d)² by bw.satz.antwortkern (conjecture in the report, question 5).
+      f5_neue_frage: Does χ(b,d) ≈ 4π²K₄²(ln log_b d)² hold with K₄ ≈ 1.94…1.98·10⁻⁴?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B6 and B9, table; s1_konstanten.py, s3_hellinger.py
+  en_theorie:
+    beispiel: |
+      $(e,2.7)$: $\chi=6.8\cdot10^{-11}$, $n^*=1.5\cdot10^{10}$ levels.
+    einordnung: |
+      Reinterprets [[bw.beob.skalensprung]]; supports [[bw.satz.rang5_singulaer]].
+    genau: |
+      $\log\Pi_n$ is a random walk with drift $-\chi$, $\chi=-\int\log(1+P_4')\approx\mathrm{Var}(P_4')/2=2.04\cdot10^{-7}$ for $(e,2)$; the drift takes effect only after $n^*\approx5\cdot10^6$ levels.
+    warum: |
+      Jensen: $\int\log(1+P_4')<\log\int(1+P_4')=0$. The number is tiny because $P_4'$ is only about $10^{-3}$ in size and enters quadratically.
+    worum: |
+      Why did round 18 measure a smooth derivative $\hat G'\approx1.0657$ when $\hat G'=0$ almost everywhere?
 - id: bw.beob.singularitaet
   quelle_hash: 84da972454dc
   theorie_hash: 63473bd70cf0
@@ -515,17 +560,17 @@
       An observation that turned out to be an illusion: the solver for the complex continuation of the phase broke down in a slanted sector,
       and that looked like a genuine singularity.
 - id: bw.beob.skalensprung
-  quelle_hash: 8fe117d626ed
-  theorie_hash: 5b1b063c2458
+  quelle_hash: 733d9c7ad988
+  theorie_hash: 397584a436c8
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: The slope of the rank-5 phase jumps between the scales of the levels
-    aussage: |-
-      The difference quotient of $\Phi_5$ at $\theta_0$ is constant up to $h\approx2^{-18}$ ($\hat G'=1.0657272$), jumps at $h\approx1/U_3'$ and is constant
-      again from $h=2^{-50}$ on ($1.0665953$). The ratio $1.000815$ is exactly $1+\Phi_4'(U_3)$ (to $10^{-6}$), as the product formula requires.
+    aussage: |
+      The difference quotient of $\Phi_5$ at $\theta_0$ is constant up to $h\approx2^{-18}$ (plateau $\Pi_n=1.0657272$ of the difference quotient — not a derivative value, cf. bw.beob.singulaer_unsichtbar),
+      jumps at $h\approx1/U_3'$ and is constant again from $h=2^{-50}$ on (next plateau $\Pi_{n+1}=1.0665953$). The ratio $1.000815$ is exactly $1+\Phi_4'(U_3)$ (to $10^{-6}$), as the product formula requires.
     bereich: $(b,d)=(e,2)$, $\theta_0=0.05$, dps 120
     einfach: If one measures the slope of the pentation wave with an ever finer scale, it changes abruptly each time the scale resolves the next
       level of the tetration wave.
@@ -540,9 +585,13 @@
       richtigkeit: numerical to 10⁻⁶
     quellen:
     - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B10; t8_produkt.py
+    nachgeprueft:
+    - ergebnis: '25.10.2026: Numbers untouched; only the interpretation corrected — the constant values are plateaus Πₙ of the difference quotient,
+        not a derivative value.'
   en_theorie:
     beispiel: $1.0657272\to1.0665953$, ratio $1.000815$.
-    einordnung: Supports [[bw.satz.produktformel_rang5]] and [[bw.verm.rang5_nirgends_diffbar]].
+    einordnung: |
+      Supports [[bw.satz.produktformel_rang5]] and [[bw.lem.wackel]]; the plateaus are not derivative values ([[bw.satz.rang5_singulaer]]).
     genau: The difference quotient of $\Phi_5$ is constant on coarse and fine scales; in between it jumps by the factor $1+\Phi_4'(U_3)$.
     warum: At step size $h\approx1/U_3'$ the next level of the rank-4 wave is resolved.
     worum: Can one see the product structure in the computation?
@@ -1017,6 +1066,91 @@
       singularity is superseded; the numbers would have to be re-justified purely empirically via [[bw.beob.modenabfall]].
     worum: |
       How many Fourier modes does one need to tabulate the wave to 150 or 500 digits? The fitted model gives an answer — but its justification has fallen away.
+- id: bw.kor.rang5_fast_ueberall_diffbar
+  quelle_hash: 1ef60da8fa4b
+  theorie_hash: 8b906e47535a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: The rank-5 phase is differentiable almost everywhere — simply because Ĝ = id + Φ₅ is monotone (Lebesgue's theorem)
+    aussage: |
+      $\hat G$ is monotone nondecreasing as a pointwise limit of increasing functions. By Lebesgue's theorem a monotone function is differentiable almost everywhere with finite derivative.
+      Hence $\Phi_5=\hat G-\mathrm{id}$ is **differentiable almost everywhere**, with $\Phi_5'\ge-1$ and $\int_0^1(1+\Phi_5')\le1$.
+      Thus bw.verm.rang5_nirgends_diffbar (“nowhere, at least almost nowhere differentiable”) is refuted verbatim, without any computation and without the gaps of bw.lem.wackel.
+      Together with bw.satz.kein_endlicher_ableitungswert, $\hat G'=0$ almost everywhere follows (bw.satz.rang5_singulaer).
+    bereich: every base-change phase $\Phi_r=\hat G-\mathrm{id}$ that arises as the limit $\hat G(x)=\lim_n\bigl(G(x+n)-n\bigr)$ of a strictly
+      increasing function $G$ (here $G=\mathrm{spog}_b\circ P_d$)
+    beweis:
+      text: $G=\mathrm{spog}_b\circ P_d$ is strictly increasing, hence so is $x\mapsto G(x+n)-n$; the limit $\hat G$ (bw.satz.phasengesetz_rang5
+        (ii)) is monotone nondecreasing. Lebesgue's differentiation theorem for monotone functions gives the finite derivative almost everywhere.
+    bewertung:
+      nutzen: Settles the smoothness question of round 18 in principle and shows where its Weierstrass picture went wrong (additive instead of
+        multiplicative structure).
+      richtigkeit: complete under the existence of Φ₅
+    einfach: 'The pentation translation is an increasing function. A classical theorem says: Every increasing function has a slope almost everywhere.
+      So the wave cannot be “rough everywhere like the Weierstrass function”.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the monotonicity of Ĝ and Lebesgue's theorem.
+      f2_benutzte_voraussetzungen: Only the existence of the limit Ĝ (bw.satz.phasengesetz_rang5) and the monotonicity of G.
+      f3_spezialfall: 'Yes: Lebesgue''s theorem for monotone functions.'
+      f4_uebertragbar: 'To every base-change phase of every rank: Φ_r is never nowhere differentiable; a Weierstrass-type phase is excluded.'
+      f5_neue_frage: What value does the almost-everywhere existing derivative have? → bw.satz.rang5_singulaer (Ĝ′ = 0 a.e.)
+    quellen:
+    - stelle: forschung/runde_2026_10_25/10_basiswechsel_hoelder/EINTRAG.md, cross-check (consequence of BERICHT.md B4)
+  en_theorie:
+    beispiel: |
+      The Cantor function is likewise monotone, continuous and differentiable almost everywhere — with derivative 0.
+    einordnung: |
+      Refutes [[bw.verm.rang5_nirgends_diffbar]]; the value of the derivative: [[bw.satz.rang5_singulaer]].
+    genau: |
+      No: $\hat G=\lim(G(x+n)-n)$ is monotone, hence differentiable almost everywhere by Lebesgue; so is $\Phi_5=\hat G-\mathrm{id}$.
+    warum: |
+      The Weierstrass function is a sum of oscillations with both signs. $\hat G$, by contrast, arises multiplicatively from positive factors and is monotone —
+      the additive picture $\Phi_5'\approx\sum_jP_4'(U_j)$ overlooks the term $-\tfrac12P_4'^2$ in $\log(1+P_4')$, which dominates after about $1/\chi$ levels.
+    worum: |
+      Can an increasing function be “nowhere differentiable”?
+- id: bw.kor.singulaer_mass
+  quelle_hash: 72ded598e03c
+  theorie_hash: 5e0749694ceb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'The measure dĜ is singular but full-dimensional: Ĝ′ = +∞ almost everywhere with respect to dĜ, local dimension 1 everywhere'
+    aussage: |
+      (i) $H'=+\infty$ for $dH$-almost all $y$; the entire increment of $H$ sits on a Lebesgue null set $N$, and $H(N)$ has full length in the image interval.
+      (ii) $\log\mu(B(y,h))/\log h\to1$ for **every** $y$: the measure $dH$ (and $d\hat G$) has local dimension 1 everywhere — singular, but not low-dimensional.
+    bereich: as in bw.satz.rang5_singulaer
+    beweis:
+      luecken:
+      - Inherits the gaps of bw.satz.rang5_singulaer and bw.satz.hoelder_eins.
+      text: '(i) For the singular part of a measure, the derivative of the distribution function is $+\infty$ almost everywhere with respect to
+        that measure (de la Vallée Poussin). (ii) from bw.satz.hoelder_eins: $\log\mu(B(y,h))=\log h+O(n(h))$, and $n(h)=\mathrm{slog}(1/h)=o(\log(1/h))$.'
+    bewertung:
+      nutzen: 'Describes the kind of singularity more precisely: full-dimensional, not fractally thin as with Cantor.'
+      richtigkeit: Sketch (inherits gaps), standard argument
+    einfach: Almost the whole rise happens on a set without length, and there the function is infinitely steep. Nevertheless this set is “as large
+      as a segment” in the sense of dimension.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, with standard measure theory from bw.satz.rang5_singulaer and bw.satz.hoelder_eins.
+      f2_benutzte_voraussetzungen: Singularity and the Hölder bounds.
+      f3_spezialfall: 'Yes: general property of singular measures.'
+      f4_uebertragbar: To every singular phase with Hölder-1 increments.
+      f5_neue_frage: Which Hausdorff function measures the support exactly?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B5
+  en_theorie:
+    einordnung: |
+      Follows from [[bw.satz.rang5_singulaer]] and [[bw.satz.hoelder_eins]].
+    genau: |
+      On a Lebesgue null set on which $H'=+\infty$; the measure $dH$ nevertheless has local dimension 1 everywhere.
+    warum: |
+      General measure theory for the singular part (de la Vallée Poussin); the dimension follows from the Hölder bounds with $\mathrm{slog}(1/h)=o(\log(1/h))$.
+    worum: |
+      Where does the rise of a singular function sit?
 - id: bw.korr.konstante
   quelle_hash: 9bad483b9b2c
   theorie_hash: 6f0775244bff
@@ -1378,6 +1512,62 @@
       3. $s_{j+1}=d^{s_j}\ge s_j+\delta_0$, so $s_j\ge s_0+j\,\delta_0\to\infty$ (in truth much faster).
     worum: |
       Above $\eta$ the curve $y=d^x$ lies everywhere above the diagonal, with a fixed minimal distance. Therefore every tower grows by at least this distance per level.
+- id: bw.lem.wackel
+  quelle_hash: e8d5462dea77
+  theorie_hash: 6e10486ec1f9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Wobble lemma: on the scale s/U_n′ the difference quotient of the rank-5 conjugator is Π_n·(1 + W(U_n, s))'
+    aussage: |
+      For every $y>L_d$, every $s>0$ and $h=s/U_n'(y)$ we have
+      $$\frac{H(y+h)-H(y)}{h}=\Pi_n(y)\,\bigl(1+W(U_n,s)+\varepsilon_n(s)\bigr),\qquad W(u,s)=\frac{P_4(u+s)-P_4(u)}{s},$$
+      with the partial product $\Pi_n(y)=(\mathrm{slog}_b^{\circ n})'(H(U_n))\,U_n'(y)$ independent of $s$ and $\varepsilon_n(s)=O(s/U_n)+O\bigl(\sup_{U\ge U_n-C}|r(U)|/s\bigr)$.
+      Limiting cases: $s\to0$ gives $\Pi_n(1+P_4'(U_n))\approx\Pi_{n+1}$ (product formula), $s\gg1$ gives $\Pi_n$. Between two levels the difference quotient thus “wobbles” exactly with the rank-4 wave.
+      Numerically $(e,2)$, level 3: $Q(s)=D(s)/(1+W)$ is constant for $s\in[10^{-3},10^3]$ up to $(0.4\ldots1.1)/U_3$ (θ = 0.02, 0.03, 0.05, 0.08, 0.1); wobble amplitude $6\ldots8\cdot10^{-4}$.
+    bereich: as in bw.satz.phasengesetz_rang5; $U_n=T_d^{\circ n}(y)$, $U_n'=(T_d^{\circ n})'(y)$; $P_4=\Phi_4-\mu_4$ the mean-free rank-4 wave
+      of $(b,d)$; $c(U)=H(U)-U=\mu_4+P_4(U)+r(U)$ with $\sup_{U\ge V}|r(U)|\to0$ (bw.satz.produktformel_rang5 (i))
+    beweis:
+      luecken:
+      - 'L2: uniform distortion bounds $U_n''''/U_n''^2=O(1/U_n)$ and $(\mathrm{slog}_b^{\circ n})''''/(\mathrm{slog}_b^{\circ n})''=O(1/U_n)$
+        at tower heights only sketched (from $T''''/T''^2\approx1/T$).'
+      - 'L1 (inherited): conditions of bw.satz.phasengesetz_rang5 and the decomposition $c=\mu_4+P_4+r$ from bw.satz.produktformel_rang5 (conditional).'
+      text: |
+        Exactly, $H(y)=\mathrm{slog}_b^{\circ n}(H(U_n))$ and $H(U_n)=U_n+c(U_n)$. Mean value theorem:
+        $H(y+h)-H(y)=(\mathrm{slog}_b^{\circ n})'(\xi)\,[\Delta U+P_4(U_n+\Delta U)-P_4(U_n)+\Delta r]$ with $\Delta U=s(1+O(s/U_n))$ (from $U_n''/U_n'^2=O(1/U_n)$),
+        $|\Delta r|\le2\sup|r|$ and $(\mathrm{slog}_b^{\circ n})'(\xi)/(\mathrm{slog}_b^{\circ n})'(H(U_n))=1+O(s/U_n)$. Division by $h=s/U_n'$ gives the formula.
+    bewertung:
+      nutzen: Closes the Hardy gap of bw.verm.rang5_nirgends_diffbar and carries all smoothness statements about Φ₅.
+      richtigkeit: Sketch (L2); numerically confirmed to O(1/U_n), 5 values of θ, two pairs
+    einfach: How steep is the pentation translation when measured at a given scale? The answer is a product of all levels already resolved, times
+      a small wobble factor that traces exactly the wave of tetration.
+    formen:
+    - notiz: wobble lemma
+    nachgeprueft:
+    - ergebnis: 'Cross-check 25.10.2026 at new points θ = 0.03 and 0.08 (dps 90): remainder after the prediction 2.5·10⁻⁷ at U₃ = 4.5·10⁶ and
+        4.9·10⁻¹⁶ at U₃ = 7.3·10¹⁴, i.e. 1.1/U₃ resp. 0.36/U₃ — the predicted error order.'
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: mean value theorem applied to the exact level decomposition from bw.satz.produktformel_rang5.'
+      f2_benutzte_voraussetzungen: Level decomposition c = μ₄ + P₄ + r with r → 0; distortion bounds L2; P₄ continuous.
+      f3_spezialfall: 'Yes: a lemma of Hardy type (difference quotients follow the partial products), as bw.verm.rang5_nirgends_diffbar named
+        it as a gap.'
+      f4_uebertragbar: To every rank r ≥ 5 with the rank-(r−1) wave in place of P₄.
+      f5_neue_frage: What does the wobbling say about the existence of the derivative? → bw.satz.kein_endlicher_ableitungswert
+    quellen:
+    - stelle: forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B1; s2_wackeln.py (cross-check θ = 0.03, 0.08 at dps 90 in EINTRAG.md)
+  en_theorie:
+    beispiel: |
+      $(e,2)$, $\theta=0.05$, level 3: wobble amplitude $8\cdot10^{-4}$, remainder after the prediction $1.3\cdot10^{-9}\approx0.7/U_3$.
+    einordnung: |
+      Makes [[bw.satz.produktformel_rang5]] precise and explains [[bw.beob.skalensprung]]; carries [[bw.satz.hoelder_eins]] and [[bw.satz.kein_endlicher_ableitungswert]].
+    genau: |
+      On the scale $h=s/U_n'$ we have $(H(y+h)-H(y))/h=\Pi_n(y)\,(1+W(U_n,s)+\varepsilon_n)$ with $W(u,s)=(P_4(u+s)-P_4(u))/s$ and $\varepsilon_n=O(s/U_n)$.
+    warum: |
+      $H=\mathrm{slog}_b^{\circ n}\circ H\circ T_d^{\circ n}$ and $H(U)=U+\mu_4+P_4(U)+r(U)$; in the coordinate $U_n$ a step of length $s$ is thus a step $s+\Delta P_4$, which the almost constant derivative of $\mathrm{slog}_b^{\circ n}$ passes on.
+    worum: |
+      How does one measure the slope of the rank-5 conjugator $H$ at a given scale? The lemma says what the difference quotient does between two tower levels.
 - id: bw.prop.antisym_c1
   quelle_hash: 247d57346903
   theorie_hash: 73f11cf2b85e
@@ -1644,11 +1834,11 @@
       A textbook theorem: if a periodic function has in the strip a singularity of the form $\exp(v/(\theta-\bar\theta^*))$, then its Fourier modes decay with an
       additional $\sqrt k$ term in the exponent — exactly the form of the measured mode decay.
 - id: bw.satz.abschaelen_rang
-  quelle_hash: e990ae571914
+  quelle_hash: 9f6fb4efdd23
   theorie_hash: 0d4bb21abb0f
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'Peeling identity: the base change at rank r peels off with the base change at rank r−1'
@@ -1669,7 +1859,7 @@
       f2_benutzte_voraussetzungen: Only the functional equations, no construction.
       f3_spezialfall: 'Rank 4: the peeling with log_b ∘ exp_d from the proof of bw.satz.schwanzkonvergenz.'
       f4_uebertragbar: To every rank and every pair of Abel functions.
-      f5_neue_frage: What follows from the fact that the peeling step is no longer linear from rank 5 on (smoothness, bw.verm.rang5_nirgends_diffbar)?
+      f5_neue_frage: What follows from the fact that the peeling step is no longer linear from rank 5 on (smoothness, bw.satz.rang5_singulaer)?
     bewertung:
       nutzen: Basis of all rank-5 results of this round; shows where the difference from rank 4 comes from.
       richtigkeit: complete
@@ -1953,6 +2143,50 @@
     worum: |
       How fast the Fourier coefficients of a periodic function decay reveals how smooth it is. A jump in the $(m+1)$-th derivative gives coefficients
       of size $k^{-(m+2)}$.
+- id: bw.satz.hoelder_eins
+  quelle_hash: 071638d0baaf
+  theorie_hash: e422f58be0df
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'The rank-5 phase has Hölder exponent 1 everywhere: increments h·e^{O(slog(1/h))}'
+    aussage: |
+      Locally uniformly in $y$ we have
+      $$c\,h\,(1-\delta_-)^{n(h)}\le H(y+h)-H(y)\le C\,h\,(1+\delta_+)^{n(h)},$$
+      so $H(y+h)-H(y)=h^{1+o(1)}$: $H$ and $\hat G=\mathrm{id}+\Phi_5$ are bi-Hölder to every exponent $1\pm\varepsilon$, the modulus of continuity is $h\,e^{O(\mathrm{slog}(1/h))}$.
+      For $(e,2)$: $P_4'\in[-8.874\cdot10^{-4},\,9.196\cdot10^{-4}]$. On all computable scales ($n\delta\ll1$) this is $h(1+O(\delta\,n(h)))$, i.e. the form $h\,\mathrm{slog}(1/h)$ from bw.verm.rang5_nirgends_diffbar.
+    bereich: as in bw.lem.wackel; $\delta_\pm=\max(\pm P_4')$, $n(h)=\mathrm{slog}(1/h)+O(1)$ the number of levels resolved at scale $h$
+    beweis:
+      luecken:
+      - As in bw.lem.wackel (L1, L2).
+      text: Between two levels the difference quotient is $\Pi_n(1+W)$ with $|W|\le\max|P_4'|$ (bw.lem.wackel), and $\Pi_{n+1}/\Pi_n=(1+P_4'(U_n))(1+O(1/U_n))$;
+        the product of the corrections converges.
+    bewertung:
+      nutzen: Shows that Φ₅ is not rough in the Hölder sense; the non-smoothness sits in the derivative alone.
+      richtigkeit: Sketch as bw.lem.wackel
+    einfach: On every scale the pentation wave is almost as smooth as an ordinary smooth function. The deviation grows only with the number of
+      tower levels, and that is small even at the tiniest scales.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from bw.lem.wackel and the product formula.
+      f2_benutzte_voraussetzungen: Bounds for P₄′; convergence of the product of the (1 + O(1/U_n)).
+      f3_spezialfall: 'Counterpart of Riesz products with bounded factors: Hölder 1 up to slow corrections.'
+      f4_uebertragbar: To every rank ≥ 5 with bounded derivative of the lower wave; on rank 6 the lower wave Φ₅ itself is not C¹ — open there.
+      f5_neue_frage: Exact Hausdorff function of the support of dĜ (roughly h·e^{−χ slog(1/h)})?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B2; s1_konstanten.py
+  en_theorie:
+    beispiel: |
+      $(e,2)$: $\delta_\pm\approx9\cdot10^{-4}$; even at $h=10^{-10^{100}}$ it is only about five levels.
+    einordnung: |
+      Follows from [[bw.lem.wackel]]; compatible with the modulus from [[bw.verm.rang5_nirgends_diffbar]]. The non-smoothness sits in the derivative: [[bw.satz.rang5_singulaer]].
+    genau: |
+      No: $H(y+h)-H(y)$ lies between $c\,h(1-\delta_-)^{n(h)}$ and $C\,h(1+\delta_+)^{n(h)}$ with $n(h)=\mathrm{slog}(1/h)$, hence Hölder exponent 1 everywhere.
+    warum: |
+      Each newly resolved level multiplies the slope by $1+P_4'\in[1-\delta_-,1+\delta_+]$, and at scale $h$ only $\mathrm{slog}(1/h)$ levels are resolved.
+    worum: |
+      Is the rank-5 wave rough in the Hölder sense (like the Weierstrass function with exponent below 1)?
 - id: bw.satz.homoeo
   quelle_hash: e8038f65e0ae
   theorie_hash: 2378ca236a88
@@ -2063,6 +2297,53 @@
     worum: |
       To the right the tower grows to infinity, and the base change keeps its wave. But if one lets the height run **upward** into the complex plane,
       the tetration runs into its fixed point $L_d$ — and there the other base is harmless. The base change comes to rest.
+- id: bw.satz.kein_endlicher_ableitungswert
+  quelle_hash: 5a04f32d2a4d
+  theorie_hash: ac5f8bf1c52c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Nowhere a finite positive derivative value: at every point H′ = 0, H′ = +∞ or H′ does not exist'
+    aussage: |
+      (i) For **every** $y\in(L_d,\infty)$: $H'(y)$ is $0$, $+\infty$ or does not exist. Equivalently: $\Phi_5'(x)\in\{-1,+\infty\}$ or $\Phi_5'(x)$ does not exist, at every point $x$.
+      The reason is a fixed lower bound on the wobbling: $c_0=\min_u\max_{s\in[1,2]}|W(u,s)|\ge\tfrac14\,\mathrm{Spannweite}(P_4)>0$; $(e,2)$: $c_0=9.815\cdot10^{-5}=0.342\cdot\mathrm{Spannweite}$ (ratio 0.342 for all nine pairs, because $P_4$ is almost a pure sine wave).
+      (ii) The points with $H'=0$, with $H'=+\infty$ and without a derivative are each dense on their own.
+    bereich: 'as in bw.lem.wackel; $P_4$ continuous and not constant (for all nine pairs computed: first mode $|a_1|\approx7\cdot10^{-5}$ at $(e,2)$)'
+    beweis:
+      luecken:
+      - As in bw.lem.wackel (L1, L2); for (ii) additionally P₄ ∈ C¹.
+      text: |
+        (i) If $H'(y)=L\in(0,\infty)$ exists, then $D(y,s/U_n')/D(y,S/U_n')\to1$ uniformly in $s\in[1,2]$ for fixed $S$. By bw.lem.wackel the quotient is
+        $(1+W(U_n,s))/(1+W(U_n,S))+o(1)$ with $|W(u,S)|\le\mathrm{Spannweite}/S$; but for every $u$ there is $s\in[1,2]$ with $|W(u,s)|\ge c_0$, because $u+s$ sweeps out a full period.
+        For $S>8$ this is a contradiction. (ii) If $U_j(I)$ lies in a window of length $\eta$, then $U_{j+1}(I)$ covers a length $\ge\eta T_d'(U_j)\gg1$; so one can steer $\{U_{j+1}\}$
+        into any window: near the minimum point of $P_4'$, $\Pi_n$ falls geometrically ($H'=0$), near the maximum point it rises ($H'=\infty$), alternating it stays bounded (no derivative by (i)).
+    bewertung:
+      nutzen: 'The correct core of “nowhere differentiable”: nowhere a derivative in (0, ∞).'
+      richtigkeit: Sketch as bw.lem.wackel; c₀ numerical for nine pairs
+    einfach: At no point does the translation function have an ordinary, finite slope greater than zero. Either it is completely flat there, infinitely
+      steep, or the slope is not determined at all, because it wobbles again at every finer level.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from bw.lem.wackel.
+      f2_benutzte_voraussetzungen: 'Only: P₄ continuous and not constant, plus the error order of the wobble lemma.'
+      f3_spezialfall: 'As for singular Riesz products and the Minkowski question-mark function: no finite positive derivative.'
+      f4_uebertragbar: To every rank ≥ 5, as soon as the lower wave is not constant.
+      f5_neue_frage: Together with Lebesgue's theorem the singularity follows at once (bw.satz.rang5_singulaer).
+    quellen:
+    - stelle: forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B3 and B7; s1_konstanten.py
+  en_theorie:
+    beispiel: |
+      $(e,2)$: $c_0=9.815\cdot10^{-5}$, range $2.873\cdot10^{-4}$.
+    einordnung: |
+      Uses [[bw.lem.wackel]]; together with [[bw.kor.rang5_fast_ueberall_diffbar]] this yields [[bw.satz.rang5_singulaer]].
+    genau: |
+      Nowhere a derivative in $(0,\infty)$: $H'(y)\in\{0,+\infty\}$ or $H'(y)$ does not exist; each of the three sets is dense.
+    warum: |
+      If $H$ had slope $L>0$ at $y$, the difference quotients at the scales $s/U_n'$ and $S/U_n'$ would have to converge to each other. But the wobbling $W(U_n,s)$ is at every level
+      at least $c_0\ge\mathrm{Spannweite}(P_4)/4$ for some $s\in[1,2]$, while $W(U_n,S)$ is small for large $S$.
+    worum: |
+      Can the rank-5 translation have an ordinary slope anywhere?
 - id: bw.satz.kern_eindeutig
   quelle_hash: c529e5dd80a5
   theorie_hash: 0d820a8674ce
@@ -2402,11 +2683,11 @@
     warum: The same summation proof as on rank 5, with the lower translation as the peeling step.
     worum: The phase law for every rank, not only for tetration and pentation.
 - id: bw.satz.phasengesetz_rang5
-  quelle_hash: 67602acca5b9
-  theorie_hash: 43c7d000d910
+  quelle_hash: 4f3662046426
+  theorie_hash: b3e680aad8d7
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'Phase law for pentation: spog_b(P_d(x)) − x → μ₅ + 1-periodic wave'
@@ -2437,7 +2718,7 @@
         (measured).
       f3_spezialfall: Counterpart of bw.satz.phasengesetz one level higher; pattern "comparison of two Abel coordinates".
       f4_uebertragbar: To all ranks, see bw.satz.phasengesetz_induktion.
-      f5_neue_frage: How smooth is Φ₅? (bw.verm.rang5_nirgends_diffbar)
+      f5_neue_frage: How smooth is Φ₅? (bw.satz.rang5_singulaer)
     bewertung:
       nutzen: First phase law above tetration; carries the remaining rank-5 findings.
       recherche: 'One search: forum tid 970 mentions "base-change pentation" only speculatively.'
@@ -2449,18 +2730,19 @@
     - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B2 and B4; t1_rang5.py, t9_kozykel.py, e1_paare.py
   en_theorie:
     beispiel: '$(b,d)=(e,2)$: $\mu_5=-0.9432744$, span of the wave $0.0193$ (on rank 4: $0.00029$).'
-    einordnung: 'Follows from [[bw.satz.abschaelen_rang]]; generalization to all ranks: [[bw.satz.phasengesetz_induktion]]; smoothness: [[bw.verm.rang5_nirgends_diffbar]].'
+    einordnung: |
+      Follows from [[bw.satz.abschaelen_rang]]; generalization to all ranks: [[bw.satz.phasengesetz_induktion]]; smoothness: [[bw.satz.rang5_singulaer]].
     genau: 'Yes: $\mathrm{spog}_b(P_d(x))-x\to\Phi_5(\{x\})$, $\Phi_5$ continuous and 1-periodic with mean $\mu_5$; the conjugator $H=\lim\mathrm{slog}_b^{\circ
       n}\circ T_d^{\circ n}$ satisfies $T_b\circ H=H\circ T_d$.'
     warum: The differences $H_{n+1}-H_n$ are bounded by the bounded rank-4 deviation $F(u)-u$ times a derivative of $\mathrm{slog}_b^{\circ n}$
       at tower-high points, hence summable.
     worum: Does the phase law of the base change ([[bw.satz.phasengesetz]]) also hold for pentation?
 - id: bw.satz.produktformel_rang5
-  quelle_hash: da74fcac3402
-  theorie_hash: 2cb369c93a66
+  quelle_hash: e396ecf63daa
+  theorie_hash: 91ccf5b8865f
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'Level decomposition and product formula: the derivative of the rank-5 phase is an infinite product ∏(1 + Φ₄′)'
@@ -2482,7 +2764,7 @@
       f2_benutzte_voraussetzungen: Rank-4 phase law in C¹ form (measured; cf. bw.prop.antisym_c1, bw.satz.c1_produkt).
       f3_spezialfall: On rank 4 the peeling step has the constant derivative α; there the product converges absolutely (bw.satz.c1_produkt).
       f4_uebertragbar: To every rank ≥ 5 with the lower phase as a factor.
-      f5_neue_frage: Does ∏(1 + Φ₄′(T_d^j y)) exist for almost all y? (bw.verm.rang5_nirgends_diffbar)
+      f5_neue_frage: 'Answered (sketch): the product tends to 0 for almost all y (drift −χ, bw.beob.singulaer_unsichtbar), hence H′ = 0 a.e. (bw.satz.rang5_singulaer).'
     bewertung:
       nutzen: Shows the mechanism that makes the rank-5 wave rough.
       richtigkeit: conditional; numerically confirmed to 3·10⁻⁹
@@ -2493,12 +2775,69 @@
     - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B7–B9; t4_ebenen.py, t11_gewicht.py, t8_produkt.py
   en_theorie:
     beispiel: '$\theta=0.05$, $U_3=5.3\cdot10^8$: quotient $-1=8.1454952\cdot10^{-4}$ against $\Phi_4''(U_3)=8.1454722\cdot10^{-4}$.'
-    einordnung: 'Rank-4 counterpart: [[bw.satz.c1_produkt]]; evidence: [[bw.beob.skalensprung]]; conjectured consequence: [[bw.verm.rang5_nirgends_diffbar]].'
+    einordnung: |
+      Rank-4 counterpart: [[bw.satz.c1_produkt]]; evidence: [[bw.beob.skalensprung]]; consequence: [[bw.satz.rang5_singulaer]].
     genau: The derivative of the conjugator is an infinite product $\prod_j(1+\Phi_4'(T_d^{\circ j}y)+o(1))$; the rank-4 wave sits on every level
       with tower-like growing frequency.
     warum: Exact chain rule on $H_{n+1}=\mathrm{slog}_b^{\circ n}\circ F\circ T_d^{\circ n}$; the peeling step $F$ has the derivative $1+\Phi_4'$
       instead of a constant.
     worum: Why is the rank-5 wave rougher than the rank-4 wave?
+- id: bw.satz.rang5_singulaer
+  quelle_hash: 5c0425b9f6b1
+  theorie_hash: cacd8dd4e5ae
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'The rank-5 base change is singular like the Cantor function: Ĝ strictly increasing, Ĝ′ = 0 almost everywhere, hence Φ₅′ = −1 almost
+      everywhere'
+    aussage: |
+      $H$ is a **singular function**: continuous, strictly increasing, $H'=0$ $\lambda$-almost everywhere, $dH\perp\lambda$. Because $\mathrm{spog}_b$ and $P_d$ are smooth diffeomorphisms, the same holds for $\hat G=\mathrm{spog}_b\circ H\circ P_d$:
+      $$\hat G'=0\ \text{almost everywhere},\qquad\Phi_5'=-1\ \text{almost everywhere}.$$
+      Quantitatively: the Hellinger affinity of the digit distribution per level is $A_K=\sum_i\sqrt{p_iq_i}<1$ with $q_i=1/K$, $p_i=1/K+P_4(\tfrac{i+1}K)-P_4(\tfrac iK)$;
+      $(e,2)$: $1-A_2=1.0\cdot10^{-8}$, $1-A_8=4.8\cdot10^{-8}$, $1-A_K\to1-\int_0^1\sqrt{1+P_4'}=5.0945\cdot10^{-8}\approx\mathrm{Var}(P_4')/8$.
+    bereich: 'as in bw.lem.wackel; $\lambda$ Lebesgue measure, $\mu=dH$; cells of level $n$: $y$-intervals with fixed $\lfloor K\,U_j\rfloor$,
+      $j\le n$'
+    beweis:
+      luecken:
+      - 'L2 as in bw.lem.wackel (way 1 via bw.satz.kein_endlicher_ableitungswert; way 2: bounds δ_j → 0 for the bin weights not written out).'
+      - 'L1 (inherited): conditions of bw.satz.phasengesetz_rang5 and bw.satz.produktformel_rang5.'
+      text: |
+        **Way 1 (cross-check, short):** By bw.kor.rang5_fast_ueberall_diffbar, $H'$ exists almost everywhere and is finite; by bw.satz.kein_endlicher_ableitungswert it is never in $(0,\infty)$; hence $H'=0$ almost everywhere.
+        **Way 2 (report, Kakutani):** $Z_n=\mu(C_n(y))/\lambda(C_n(y))$ is a positive martingale under $\lambda$ with $E_\lambda[\sqrt{Z_{n+1}}\mid\mathcal F_n]=\sqrt{Z_n}\sum_i\sqrt{p_iq_i}$.
+        Coarsening to the bins $i=\lfloor K\{U_{n+1}\}\rfloor$ increases the affinity; there $q_i=1/K+\delta$ and $p_i=1/K+\Delta P_4+\delta$ with $\delta_j\to0$.
+        Hence $E_\lambda\sqrt{Z_n}\le\prod_j(A_K+\delta_j)\to0$, $Z_\infty=d\mu_{ac}/d\lambda=0$ almost everywhere. This is the Kakutani argument, related to Zygmund's theorem on lacunary Riesz products $\prod(1+a\cos n_kx)$.
+    bewertung:
+      nutzen: 'Replaces the Weierstrass picture of round 18 with the correct one: a singular, Cantor-like phase.'
+      richtigkeit: Sketch with two independent ways; affinities numerically confirmed
+    einfach: The pentation translation rises everywhere, and yet its slope is zero almost everywhere — as with the Cantor function (“devil's staircase”).
+      The whole rise sits on a set so thin that it has no length. One cannot see this in any computation, because the effect becomes noticeable
+      only after millions of tower levels.
+    nachgeprueft:
+    - ergebnis: 's3_hellinger.py again on 25.10.2026: 1 − A₂ = 1.0005·10⁻⁸, 1 − A₈ = 4.8377·10⁻⁸, limit 5.094487·10⁻⁸ (M = 64 and 128 identical);
+        independently via Parseval Var(P₄′)/8 = 5.0945·10⁻⁸.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, on way 1 from bw.kor.rang5_fast_ueberall_diffbar and bw.satz.kein_endlicher_ableitungswert.
+      f2_benutzte_voraussetzungen: 'Way 1: monotonicity and wobble lemma; way 2: almost equidistributed digits {U_j} under λ, P₄ not 1/K-periodic.'
+      f3_spezialfall: 'Yes: Kakutani dichotomy for (almost) independent digits; singular Riesz products.'
+      f4_uebertragbar: To all ranks ≥ 5 (bw.verm.dichotomie_raenge); not to rank 4, where the peeling step is linear and the phase analytic.
+      f5_neue_frage: Is dĜ a Rajchman measure (Fourier–Stieltjes coefficients → 0)? For linear lacunary Riesz products it is not.
+    quellen:
+    - stelle: forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B4; s3_hellinger.py; way 1 from EINTRAG.md (cross-check)
+    - stelle: Riesz products (lacunary series), for comparison; passage not checked
+  en_theorie:
+    beispiel: |
+      $(e,2)$: Hellinger distance per level $5.09\cdot10^{-8}$, drift $\chi=2.04\cdot10^{-7}$.
+    einordnung: |
+      Refutes [[bw.verm.rang5_nirgends_diffbar]]; consequences: [[bw.kor.singulaer_mass]]; why one does not see it: [[bw.beob.singulaer_unsichtbar]]; rank 4 for comparison smooth: [[bw.satz.c1_produkt]].
+    genau: |
+      $\hat G=\mathrm{id}+\Phi_5$ is singular: strictly increasing, $\hat G'=0$ almost everywhere, hence $\Phi_5'=-1$ almost everywhere.
+    warum: |
+      In short: the derivative exists almost everywhere (Lebesgue) and is never finite and positive (wobble argument), hence 0. Quantitatively: under Lebesgue measure the digits $\{U_j\}$
+      are almost equidistributed, under $dH$ distributed according to $1+P_4'$; the Hellinger affinity per level is $A<1$, and the product over infinitely many levels tends to 0 (Kakutani).
+    worum: |
+      What kind of non-smoothness does the rank-5 base-change phase really have?
 - id: bw.satz.schwanzkonvergenz
   quelle_hash: 70350cee5fb6
   theorie_hash: 660000eb76b0
@@ -2651,6 +2990,53 @@
     worum: |
       For complex bases each logarithm must choose a branch — a strip $m_j$ of the complex plane. The sequence of these choices is an
       “address”. The conjecture: the phase law holds here too, only the wave additionally depends on the address.
+- id: bw.verm.dichotomie_raenge
+  quelle_hash: 947f03c3a6b9
+  theorie_hash: 1977921b64da
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Conjecture: The base-change conjugator is smooth when the peeling step has a constant phase (rank 4), and singular otherwise — hence
+      singular on all ranks r ≥ 5'
+    aussage: |
+      On rank 4 the peeling step is $\log_b\circ\exp_d=\alpha\cdot\mathrm{id}$ (constant phase); the digit distribution stays equidistributed, the affinity is 1 and the phase analytic.
+      From rank 5 on, the peeling step has a non-constant phase, and the conjugator is singular. On rank 6 the peeling step $G_5=\mathrm{id}+\Phi_5$ is itself already singular
+      ($c_6(V)=\Phi_5(\{V\})$, bw.beob.wellen_raenge); then a single level already brings the affinity $A_K\to0$ for $K\to\infty$.
+    bereich: base-change phases $\Phi_r$ of the engine family, real bases $b\ne d$ above $\eta_5$; peeling step from bw.satz.abschaelen_rang
+    beweis:
+      luecken:
+      - Rank-6 level theorem c₆ = Φ₅ + o(1) only numerical (round 18).
+      - For even ranks the gap of bw.satz.phasengesetz_induktion (Kneser inversion).
+      text: Like bw.satz.rang5_singulaer one level higher, with $d\hat G_5$ in place of $d(t+P_4(t))$ as the digit distribution; a singular digit
+        measure has affinity 0 with respect to the equidistributed one.
+    bewertung:
+      nutzen: Separates rank 4 fundamentally from all higher ranks.
+      richtigkeit: Conjecture; rank 5 proved as a sketch
+    einfach: From pentation on, all translations between two bases become “devil's staircases”. Only for tetration is the step below so simple
+      (a fixed factor) that the translation stays smooth.
+    gegenbeispielsuche: Only rank 4 (smooth, bw.satz.c1_produkt) and rank 5 (singular, bw.satz.rang5_singulaer) treated; rank 6 not computed,
+      supported only by c₆ = Φ₅ from V ≈ 3.3 on (round 18).
+    naechste_frage: Prove the rank-6 level theorem c₆ = Φ₅ + o(1) and carry the Hellinger argument one level higher; is there a natural smooth
+      rank-5 translation (complex bases with a common fixed point)?
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Theorem B on rank 5; level theorem on rank 6 (numerical).
+      f3_spezialfall: Kakutani dichotomy.
+      f4_uebertragbar: To every family of hyperoperations whose peeling step becomes wavy from some rank on.
+      f5_neue_frage: Is there a smooth rank-5 translation with a wave-free peeling step (bw.satz.fixpunkt_konjugator, complex bases)?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B8
+  en_theorie:
+    einordnung: |
+      Rank 5: [[bw.satz.rang5_singulaer]]; peeling: [[bw.satz.abschaelen_rang]]; rank 4: [[bw.satz.c1_produkt]].
+    genau: |
+      Conjectured: smooth if and only if the peeling step has a constant phase (rank 4), singular for all $r\ge5$.
+    warum: |
+      The singularity comes from the non-equidistributed digit distribution of the peeling step; from rank 6 on, the peeling step is itself singular.
+    worum: |
+      Does the singularity hold on all higher ranks?
 - id: bw.verm.nirgends_analytisch
   quelle_hash: aca8af84a885
   theorie_hash: 1691edda59a5
@@ -2714,11 +3100,11 @@
       The counter-position to the strip conjecture: If one translates a smooth tetration into another base, the result is infinitely often differentiable,
       but at no single point representable by a power series. The singularities of the approximations move closer to the real axis with every logarithm level.
 - id: bw.verm.rang5_nirgends_diffbar
-  quelle_hash: 435b284b8cb5
-  theorie_hash: 2b95ce2f79b3
+  quelle_hash: 0ea805871342
+  theorie_hash: 1d2c42e1f987
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'Conjecture: From rank 5 on, the base-change phase is continuous but nowhere differentiable (Weierstrass type with tower gaps)'
@@ -2738,7 +3124,7 @@
       - 'A lemma of Hardy type: the difference quotients follow the partial products.'
     gegenbeispielsuche: We looked for a point with a stable difference quotient across all scales; at θ₀ = 0.05 it jumps at every resolvable level
       (bw.beob.skalensprung), further points not systematically checked.
-    naechste_frage: Equidistribution of {T_d^j(y)} for almost all y (Koksma) plus a Hardy lemma; does Φ₅ lie in the Zygmund class?
+    naechste_frage: 'Answered: Hardy lemma = bw.lem.wackel; result bw.satz.rang5_singulaer.'
     pruefung:
       f1_folgt_unmittelbar: No.
       f2_benutzte_voraussetzungen: Product formula; equidistribution (unproved).
@@ -2747,13 +3133,20 @@
       f5_neue_frage: 'From rank 5 on, the question "analytic or C^∞" (bw.verm.nirgends_analytisch) is outdated: not even C¹?'
     bewertung:
       nutzen: Fundamental difference between rank 4 and higher ranks.
-      richtigkeit: Conjecture with two numerical pieces of evidence
+      richtigkeit: 'Refuted 25.10.2026: Ĝ = id + Φ₅ is monotone, hence by Lebesgue differentiable almost everywhere (bw.kor.rang5_fast_ueberall_diffbar);
+        the truth is: singular, Φ₅′ = −1 almost everywhere, nowhere a finite positive derivative value of Ĝ (bw.satz.rang5_singulaer, bw.satz.kein_endlicher_ableitungswert).'
     quellen:
     - stelle: forschung/runde_2026_10_18/01_basiswechsel_raenge/BERICHT.md, B11; t8_produkt.py, e1_paare.py
+    versionen:
+    - aenderung: Status conjecture → refuted.
+      grund: Monotonicity of Ĝ + Lebesgue's theorem; the additive Weierstrass picture Σ P₄′(U_j) overlooks the drift −χ of Σ log(1 + P₄′(U_j));
+        report forschung/runde_2026_10_25/10_basiswechsel_hoelder.
   en_theorie:
     beispiel: Fourier modes fall like $k^{-1.3}$ on rank 5, exponentially on rank 4 ($|a_{64}|=10^{-49}$).
     einordnung: 'On rank 4 the dispute is analytic versus $C^\infty$: [[bw.verm.nirgends_analytisch]], [[bw.verm.streifen]]; mechanism: [[bw.satz.produktformel_rang5]].'
-    genau: 'Conjectured: continuous but nowhere differentiable, modulus of continuity $\sim h\,\mathrm{slog}(1/h)$.'
+    genau: |
+      Conjectured: continuous but nowhere differentiable, modulus of continuity $\sim h\,\mathrm{slog}(1/h)$.
+      Refuted (25.10.2026): differentiable almost everywhere, even singular — [[bw.satz.rang5_singulaer]].
     warum: 'Every level contributes equally to the slope, as in the Weierstrass function in the borderline case $ab=1$; missing: equidistribution
       of the sequence $\{T_d^jy\}$ and a Hardy lemma.'
     worum: How smooth is the wave of the base change from rank 5 on?

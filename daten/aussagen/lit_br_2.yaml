@@ -41,10 +41,12 @@ aussagen:
     $0$ ist ein parabolischer Fixpunkt: $g(x)=x+\lambda x^2+\tfrac{\lambda^2}{2}x^3+\dots$ Die formalen Iterierten haben Koeffizienten, die Polynome in der
     Iterationszahl $c$ sind:
     $$g^{\circ c}(x)=x+c\lambda x^2+\tfrac{c(2c-1)}{2}\lambda^2x^3+O(x^4)$$
-    (so in der Antwort im Forum). Die Reihe divergiert im Allgemeinen (it.satz.baker); die natürliche Fortsetzung ist die Fatou-Koordinate
+    (so in der Antwort im Forum). Die Reihe divergiert im Allgemeinen (vgl. it.satz.baker für $e^z-1$); die formale Halbiterierte divergiert numerisch wie $(k-2)!/(2\pi)^k$
+    (it.verm.mexp_halbiterierte_divergent). Die natürliche Fortsetzung ist die Fatou-Koordinate
     $\alpha(x)=-\tfrac1{\lambda x}+\tfrac12\ln x+\dots$ der abstossenden Seite, $\mathrm{prodtet}(c)=\alpha^{-1}(\alpha(1)+c)$.
     Der iterative Rest ist $\tfrac12$; bei $e^x-1$ ist er $\tfrac13$ — **die beiden Abbildungen sind nicht einmal formal konjugiert**, die Produkt-Tetration
     ist also eine eigene parabolische Iteration und keine verkleidete Tetration.
+    Dieselbe Abbildung ist im Logarithmus die ausgewogene Tetration und die linke Pentation (br.satz.klammerung_log_reduktion).
   einfach: >-
     Bei 0 bleibt x·eˣ fast stehen — die Abbildung schiebt nur ganz langsam weg. Für solche Punkte gibt es eine bekannte Methode (Fatou-Koordinaten),
     die die Zwischenwerte natürlich festlegt, genau wie bei der Tetration zur Basis η. Eine Rechnung zeigt: x·eˣ und eˣ − 1 sehen sich ähnlich, sind
@@ -70,6 +72,7 @@ aussagen:
     - {typ: spezialfall_von, ziel: it.satz.leau_fatou}
     - {typ: analog_zu, ziel: kn.konstr.stoerungsreihe}
     - {typ: verwandt, ziel: it.satz.baker}
+    - {typ: verwandt, ziel: br.satz.klammerung_log_reduktion}
 
 - id: br.beob.produkt_tetration_werte
   titel: 'Fatou-Produkt-Tetration: prodtet_e(½) = 1.5134281085 — die Interpolation im Forum lag schon richtig'

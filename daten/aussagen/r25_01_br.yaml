@@ -1,0 +1,312 @@
+gebiet: br
+# Runde 25.10.2026, Bericht 01 „Halbebenen-Eindeutigkeit (Q*)“. Rechnungen: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/.
+# Bezeichnungen: Basis e; H = {Re z > −2}, U = {Im z > 0}; F = sexp_K (Kneser); jede reelle Tetration ist T = F∘σ, σ = id + p_T,
+# p_T = slog_K∘T − id (reell-analytisch, 1-periodisch); q = e^{2πiz}; L = a + ib = 0.31813 + 1.33724i; Hol(H) = reelle Tetrationen, holomorph auf H.
+aussagen:
+
+- id: br.satz.halbebene_liouville_scharf
+  titel: 'Q* gilt, sobald die Verbiegung p_T oben eindeutig ist und langsamer als e^(2π Im z) wächst — die Schwelle ist scharf'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, T_b, periodische_stoerung]
+  bereich: 'reelle Tetrationen $T$ zur Basis $e$ auf $(-2,\infty)$ mit $T(0)=1$; $T=\mathrm{sexp}_K\circ(\mathrm{id}+p_T)$, $p_T=\mathrm{slog}_K\circ T-\mathrm{id}$; $U=\{\mathrm{Im}\,z>0\}$'
+  aussage: |
+    Setzt sich $p_T$ eindeutig holomorph auf $U$ fort und gilt einseitig
+    $$-\mathrm{Im}\,p_T(z)\le o\bigl(e^{2\pi\,\mathrm{Im}\,z}\bigr)\qquad(\mathrm{Im}\,z\to\infty,\ \text{gleichmässig in }\mathrm{Re}\,z),$$
+    so ist $p_T\equiv0$, also $T$ die Kneser-Tetration. Statt $-\mathrm{Im}\,p_T$ darf auch $+\mathrm{Im}\,p_T$ oder $\pm\mathrm{Re}\,p_T$ stehen.
+    Die Schwelle ist scharf (als Aussage über periodische Funktionen): $p=\varepsilon\sin2\pi z$ wächst genau wie $\tfrac\varepsilon2e^{2\pi\,\mathrm{Im}\,z}$.
+    Für Q* (br.frage.halbebene_eindeutigkeit) heisst das: ein Gegenbeispiel in Hol(H) hat entweder ein auf $U$ mehrdeutiges $p_T$ ($T$ trifft dort
+    Verzweigungspunkte von $\mathrm{slog}_K$) oder es gilt $|p_T|\ge c\,e^{2\pi\,\mathrm{Im}\,z}$ auf einer Folge. Die fehlende Bedingung bei $i\infty$ ist also
+    „$p_T$ eindeutig und $o(e^{2\pi\,\mathrm{Im}\,z})$“ — viel schwächer als der Grenzwert $L$ bei Paulsen–Cowgill.
+  einfach: >-
+    Jede reelle Tetration ist eine „verbogene“ Kneser-Tetration: T(x) = Kneser(x + p(x)) mit einer periodischen Verbiegung p. Lässt sich p in die obere
+    Halbebene fortsetzen und wächst es dort langsamer als e hoch 2π mal die Höhe, dann ist p null — die Tetration ist Kneser. Ein einfacher Sinus wächst
+    genau so schnell wie diese Schwelle.
+  beweis:
+    art: vollstaendig
+    text: |
+      $P(q):=p_T(z)$ ist holomorph auf $0<|q|<1$, wegen der reellen Analytizität auch auf einem Ring um $|q|=1$, und die Spiegelung $P(1/\bar q)=\overline{P(q)}$
+      setzt $P$ auf $\mathbb C^*$ fort: $P=\sum c_nq^n$ mit $c_{-n}=\bar c_n$. Für $f=iP$ (Koeffizienten $a_n=ic_n$) und $A(r)=\max(0,\sup_{|q|=r}\mathrm{Re}\,f)$ gilt
+      $\frac1\pi\int\mathrm{Re}\,f(re^{it})e^{-int}dt=a_nr^n+\overline{a_{-n}}r^{-n}$ und $|\mathrm{Re}\,f|\le2A-\mathrm{Re}\,f$, also
+      $|a_{-m}|\le r^m(4A(r)+2|a_0|)+|a_m|r^{2m}$ (Borel–Carathéodory). Die Voraussetzung ist $A(r)=o(1/r)$; mit $r\to0$ folgt $c_{-m}=0$ für $m\ge1$, wegen der Symmetrie
+      $c_m=0$. Also ist $p_T$ konstant, und $T(0)=1$ gibt $p_T=0$. Schärfe: $\sin2\pi z=(e^{2\pi iz}-e^{-2\pi iz})/2i$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B1, B2 und Beweis Satz A'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Laurent-Reihe in q und eine Borel–Carathéodory-Abschätzung; die Spiegelung c₋ₙ = c̄ₙ macht aus der einseitigen Schranke eine beidseitige.'
+    f2_benutzte_voraussetzungen: 'p_T reell-analytisch, 1-periodisch, eindeutig holomorph auf U mit der einseitigen Schranke; T(0) = 1. Holomorphie von T auf Re z > −2 wird nicht benutzt.'
+    f3_spezialfall: 'Verallgemeinert fg.lem.periodisch_liouville (dort beschränkt nach oben und unten) auf einseitiges Wachstum o(e^{2π Im z}) bei reellem p.'
+    f4_uebertragbar: 'Auf jede Basis b > η (mit sexp_b, slog_b) und jede reelle Superfunktion, die als Verbiegung einer Referenzlösung geschrieben wird.'
+    f5_neue_frage: 'Wann ist p_T für T ∈ Hol(H) auf U eindeutig? Die Mehrdeutigkeit kommt von den Verzweigungspunkten von slog_K (br.satz.enden_klassifikation).'
+  bewertung: {richtigkeit: 'vollständig; Beweis bei der Gegenprobe 25.10.2026 nachgelesen', neuheit: neu_ungeprueft, nutzen: 'Benennt genau, welche Bedingung bei i∞ für Q* fehlt.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verallgemeinert, ziel: fg.lem.periodisch_liouville}
+    - {typ: verwandt, ziel: br.frage.halbebene_eindeutigkeit}
+    - {typ: verwandt, ziel: br.satz.reelle_kennzeichnung}
+    - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}
+
+- id: br.satz.schroeder_kugel_genuegt
+  titel: 'Abschwächung von Paulsen–Cowgill: bleibt T oben in einem Halbstreifen nahe L, so ist T schon Kneser'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, schroeder, fixpunkt_L]
+  bereich: 'Basis $e$; $T\in$ Hol(H); $\sigma$ die Schröder-Funktion an $L$ ($\sigma(e^w)=L\sigma(w)$, $\sigma(L)=0$, $\sigma''(L)=1$); $L=a+ib$, $b/2\pi=0.21282$'
+  aussage: |
+    Sei $B$ eine so kleine Kreisscheibe um $L$, dass $\sigma$ auf $B$ schlicht ist und $\{w\in B:e^w\in B\}$ zusammenhängt. Gibt es $c\in(-2,-1]$, $\delta>0$ und $Y$ mit
+    $$T(z)\in B\qquad\text{für }c\le\mathrm{Re}\,z\le c+1+\delta,\ \mathrm{Im}\,z\ge Y,$$
+    so gilt $T(x+iy)\to L$ ($y\to+\infty$) für jedes $x>-2$, und nach Paulsen–Cowgill ist $T$ die Kneser-Tetration.
+    **Folgerung:** Kein $T\in$ Hol(H) strebt „mit $k\ge1$ Zusatzwindungen“ gegen $L$, d. h. mit $\sigma(T(z))\sim e^{z(L+2\pi ik)}$: ein solches $T$ strebt gegen $L$,
+    wäre also Kneser — und Kneser hat $k=0$ ($\sigma(T)L^{-z}=e^{L\theta}\to\kappa\neq0$, kn.satz.binet_kappa).
+  einfach: >-
+    Paulsen und Cowgill verlangen, dass die Tetration weit oben genau gegen den Fixpunkt L strebt. Es reicht schon, dass sie in einem Streifen, der etwas
+    breiter als 1 ist und links von −1 beginnt, in der Nähe von L bleibt. Der Grenzwert folgt dann von selbst.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\zeta=\sigma\circ T$ ist auf dem Halbstreifen holomorph mit $\zeta(z+1)=L\zeta(z)$, also ist $E(q)=\zeta(z)L^{-z}$ periodisch und auf einer punktierten Scheibe um $q=0$ eindeutig.
+      $|E|\le Ce^{-ax+by}\le C'|q|^{-b/2\pi}$ mit $b/2\pi<1$: $q=0$ ist hebbar, also $\zeta\to0$ und $T\to L$ gleichmässig auf dem Streifen. Nach rechts mit $T(z+1)=e^{T(z)}$; für
+      $x\in[c-1,c]$ liegt $T(x+iy)$ schliesslich nahe $L+2\pi i\mathbb Z$, der Index ist wegen des Zusammenhangs konstant und bei $x=c$ gleich 0. Wegen $c-1\le-2$ ist jedes
+      $x>-2$ erfasst. Spiegelung gibt $\bar L$ unten; Paulsen–Cowgill.
+  stuetzt_sich_auf: [kn.satz.paulsen_cowgill]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B3, B5 und Beweis Satz A′'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: dieselbe Technik (E = σ(T)·L^{−z} hebbar in q = 0, weil b/2π < 1) wie im Eindeutigkeitsteil von kn.satz.kneser_e_zertifiziert und vermutlich bei Paulsen–Cowgill.'
+    f2_benutzte_voraussetzungen: 'Holomorphie auf Re z > −2, Funktionalgleichung, Reellwertigkeit (für L̄ unten), Schlichtheit von σ auf B; Paulsen–Cowgill (Literatur). Der Streifen muss links von −1 beginnen, sonst folgt links nur T → L + 2πim.'
+    f3_spezialfall: 'Abschwächung der Grenzwertbedingung in kn.satz.paulsen_cowgill.'
+    f4_uebertragbar: 'Auf jede Basis b > η mit λ = L ln b statt L, solange Im log λ < 2π.'
+    f5_neue_frage: 'Genügt eine Folge von Höhen statt eines ganzen Halbstreifens?'
+  bewertung: {richtigkeit: 'vollständig bis auf das zitierte Paulsen–Cowgill; bei der Gegenprobe nachgelesen', neuheit: neu_ungeprueft, nutzen: 'Macht die Grenzwertbedingung von Paulsen–Cowgill schwach und lokal; schliesst Enden mit Zusatzwindungen um L aus.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.halbebene_eindeutigkeit}
+    - {typ: verwandt, ziel: kn.satz.binet_kappa}
+
+- id: br.satz.enden_klassifikation
+  titel: 'Wie eine Tetration auf Re z > −2 oben enden kann: Schröder-Exponent log L + 2πik oder log L̄ + 2πik — nur L mit k = 0 kommt vor'
+  art: satz
+  ebene: B
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, T_b, schroeder, fixpunkt_L]
+  bereich: 'Basis $e$; $T\in$ Hol(H); $E_T(q)=\sigma(T(z))\,L^{-z}$ auf einem oberen Halbstreifen, als Funktion von $q=e^{2\pi iz}$'
+  aussage: |
+    Sei $E_T$ nahe $q=0$ eindeutig. Dann gilt:
+    (i) $E_T$ hebbar $\iff T\to L$. Eine Nullstelle der Ordnung $k$ entspricht $\sigma(T)\sim e^{z(\log L+2\pi ik)}$, ein Pol der Ordnung $k$ entspricht $e^{z(\log L-2\pi ik)}$;
+    dann gilt $|\sigma(T)|\to\infty$ (wegen $2\pi k>b$).
+    (ii) Nullstellen der Ordnung $k\ge1$ kommen nicht vor (br.satz.schroeder_kugel_genuegt); realisiert ist nur Kneser mit $k=0$.
+    (iii) Hätte $T$ bei $+i\infty$ den Grenzwert $\bar L$ („vertauschtes Kneser“), so müsste der Schröder-Exponent an $\bar L$ ein Nebenzweig $\log\bar L+2\pi ik$ mit $k\ge1$ sein,
+    denn $|\bar L^{z}|=e^{ax+by}$ wächst und erzwingt $E(0)=0$. Paulsen–Cowgill schliesst diesen Fall **nicht** aus.
+    Kandidaten für ein Gegenbeispiel zu Q* sind also nur: Enden ohne Grenzwert ($E_T$ mit Pol oder wesentlicher Singularität), Enden an $\bar L$ mit $k\ge1$,
+    Enden an anderen Fixpunkten $L_j$ von $\exp$, und $T$, die nahe $i\infty$ singuläre Werte von $\sigma$ umlaufen (dann ist $E_T$ mehrdeutig).
+  einfach: >-
+    Weit oben in der komplexen Ebene kann sich eine Tetration, die in der rechten Halbebene glatt ist, nur auf wenige Arten verhalten. Die Art von Kneser —
+    ruhig gegen den Fixpunkt L — ist die einzige, die wirklich vorkommt, solange man eine bestimmte Koordinate eindeutig wählen kann. Was übrig bleibt, sind
+    wenige, genau benannte Kandidaten für ein Gegenbeispiel.
+  beweis:
+    art: skizze
+    text: |
+      Ist $E$ eindeutig und hebbar mit Nullstelle der Ordnung $k\ge0$, so ist $\zeta=e^{z(\log L+2\pi ik)}E_1(q)$ mit $E_1(0)\ne0$; ein Pol gibt $e^{z(\log L-2\pi ik)}$.
+      (ii) aus br.satz.schroeder_kugel_genuegt. (iii) Mit der Schröder-Funktion an $\bar L$: beschränktes $\zeta\to0$ und $|\bar L^{-z}|=e^{-ax-by}\to0$ geben $E(0)=0$.
+      $\sigma=\Psi^{-1}$ mit ganzem $\Psi$, $\Psi(Lw)=e^{\Psi(w)}$: $\Psi$ lässt 0 aus, hat keine kritischen Punkte ($\Psi'(Lw)=e^{\Psi(w)}\Psi'(w)/L$, $\Psi'(0)=1$), und die Bahn $0,1,e,e^e,\dots$
+      besteht aus asymptotischen Werten.
+    luecken:
+      - 'Eindeutigkeit von E_T verlangt, dass T nahe i∞ die singulären Werte von σ umgeht; dass diese genau 0, 1, e, eᵉ, … sind, ist nicht bewiesen.'
+      - 'Polfall: dass T dann keinen Grenzwert hat, ist nicht ausgeführt (σ(T) läuft längs einer logarithmischen Spirale nach ∞; Ψ könnte dort einen asymptotischen Wert haben).'
+      - '(iii) setzt eine eindeutige Schröder-Koordinate an L̄ voraus.'
+  stuetzt_sich_auf: [br.satz.schroeder_kugel_genuegt]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B4, B5, B6, B12 und Beweis „Befund 4/6“'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Laurent-Klassifikation der isolierten Singularität von E_T in q = 0 plus br.satz.schroeder_kugel_genuegt.'
+    f2_benutzte_voraussetzungen: 'Eindeutigkeit von E_T (Lücke), Schlichtheit von σ nahe L, Paulsen–Cowgill (über br.satz.schroeder_kugel_genuegt).'
+    f3_spezialfall: 'Klassifikation der Enden einer Superfunktion über die Schröder-Koordinate, wie bei Kneser-artigen Konstruktionen üblich.'
+    f4_uebertragbar: 'Auf jede Basis b > η (Exponent log λ + 2πik).'
+    f5_neue_frage: 'Gibt es ein vertauschtes Kneser (br.frage.vertauschtes_kneser)? Kann E_T einen Pol oder eine wesentliche Singularität haben?'
+  bewertung: {richtigkeit: 'Skizze; Kern (Laurent in q) vollständig, drei benannte Lücken', neuheit: neu_ungeprueft, nutzen: 'Engt die möglichen Gegenbeispiele zu Q* auf wenige, benannte Typen ein.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.halbebene_eindeutigkeit}
+    - {typ: motiviert, ziel: br.frage.vertauschtes_kneser}
+
+- id: br.satz.verbiegung_schwarz
+  titel: 'Schwarz-Starrheit: eine Verbiegung von Kneser, die die obere Halbebene in sich abbildet, ist trivial'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, periodische_stoerung]
+  bereich: '$\sigma=\mathrm{id}+p$, $p$ reell-analytisch und 1-periodisch, holomorph auf $U=\{\mathrm{Im}\,z>0\}$; $T=\mathrm{sexp}_K\circ\sigma$, $T(0)=1$'
+  aussage: |
+    Gilt $\sigma(U)\subset U$, so ist $p$ konstant, mit $T(0)=1$ also $p\equiv0$.
+    Jede nicht triviale Verbiegung $\mathrm{sexp}_K\circ\sigma$ führt also mit $\sigma$ aus der oberen Halbebene heraus. Solange $\sigma$ dabei die reelle Achse nur auf
+    $(-2,\infty)$ kreuzt, bleibt man auf dem Hauptblatt von $\mathrm{sexp}_K$; wo die Bereiche $\{\mathrm{Im}\,\sigma<0\}$ liegen, sagt br.lem.zungen_bis_unendlich.
+  einfach: >-
+    Verbiegt man Knesers Tetration mit einer periodischen Funktion, die die obere Halbebene nie verlässt, so ist die Verbiegung gar keine: sie ist null.
+    Jede echte Verbiegung muss also irgendwo nach unten ausweichen.
+  beweis:
+    art: vollstaendig
+    text: |
+      $g(q)=e^{2\pi i\sigma(z)}=q\,e^{2\pi ip}$ ist holomorph auf der punktierten Einheitsscheibe, und $\sigma(U)\subset U$ gibt $|g|<1$, also ist $0$ hebbar. Weil $p$ eindeutig ist,
+      hat $g$ auf kleinen Kreisen die Windungszahl 1: $g(0)=0$ ist eine einfache Nullstelle, und weitere gibt es nicht. Auf $|q|=1$ ist $g$ holomorph mit $|g|=1$ ($\sigma$ reell auf $\mathbb R$).
+      Also ist $g/q$ nullstellenfrei mit Betrag 1 am Rand; Maximum- und Minimumprinzip geben $g=e^{i\alpha}q$, also $p$ konstant.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B7 und Beweis Satz B'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem Schwarz-Lemma in der Koordinate q = e^{2πiz}.'
+    f2_benutzte_voraussetzungen: 'p eindeutig holomorph auf U, reell-analytisch auf ℝ (für |g| = 1 am Rand), σ(U) ⊂ U.'
+    f3_spezialfall: 'Ja: eine Selbstabbildung der Kreisscheibe mit Randbetrag 1 und genau einer einfachen Nullstelle ist eine Drehung.'
+    f4_uebertragbar: 'Auf Verbiegungen jeder Superfunktion und jede Basis; die Tetration geht nicht ein.'
+    f5_neue_frage: 'Wo genau verlässt σ die obere Halbebene, und trifft σ dort (−∞, −2]? (br.lem.zungen_bis_unendlich, br.verm.verbiegung_hauptblatt)'
+  bewertung: {richtigkeit: 'vollständig; bei der Gegenprobe nachgelesen', neuheit: neu_ungeprueft, nutzen: 'Erster struktureller Hebel für Q*: Gegenbeispiele brauchen Bereiche mit Im σ < 0.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.halbebene_eindeutigkeit}
+    - {typ: verwandt, ziel: br.satz.reelle_kennzeichnung}
+
+- id: br.lem.zungen_bis_unendlich
+  titel: 'Die Bereiche, in denen eine Verbiegung σ nach unten zeigt, reichen bis i∞, und σ ist auf ihrem Rand nach beiden Seiten unbeschränkt'
+  art: lemma
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [periodische_stoerung]
+  bereich: '$\sigma=\mathrm{id}+p$ wie in br.satz.verbiegung_schwarz, $p$ nicht konstant'
+  aussage: |
+    (a) Jede Zusammenhangskomponente von $\{\mathrm{Im}\,\sigma<0\}\cap U$ ist nach oben unbeschränkt (reicht bis $i\infty$), und auf ihrem Rand, wo $\sigma$ reell ist,
+    ist $\sigma$ nach unten und nach oben unbeschränkt.
+    (b) Ist $\sigma'>0$ auf $\mathbb R$, so ist die an $\mathbb R$ anliegende Komponente von $\{\mathrm{Im}\,\sigma>0\}\cap U$ nach oben unbeschränkt.
+  einfach: >-
+    Wo eine Verbiegung nach unten zeigt, entstehen „Zungen“, die bis ganz nach oben reichen. Am Rand dieser Zungen nimmt die Verbiegung beliebig grosse
+    und beliebig kleine reelle Werte an — auch Werte unter −2, wo Knesers Tetration ihren Schnitt hat.
+  beweis:
+    art: vollstaendig
+    text: |
+      (a) Angenommen $\sigma\ge m$ auf dem Rand der Komponente $W_0$. Dann bildet $u=\sigma-m+1$ die Menge $W_0$ in die untere Halbebene und den Rand nach $[1,\infty)$ ab;
+      $\mathrm{Im}\log u\in(-\pi,0)$ ist harmonisch, beschränkt und am endlichen Rand 0. Der Randpunkt $\infty$ ist polar, also $\mathrm{Im}\log u\equiv0$ — Widerspruch. Ebenso nach oben.
+      Eine Komponente ohne $i\infty$ widerspricht dem Maximumprinzip für $|g|=|e^{2\pi i\sigma}|$ (innen $>1$, am Rand $=1$).
+      (b) Wäre die Komponente nach oben beschränkt, so wäre $g$ auf ihrem Bild in der $q$-Ebene eine eigentliche Abbildung in die Kreisscheibe, also surjektiv, und träfe 0 — aber $g\ne0$ für $q\ne0$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B8 und Beweis Lemma C'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus dem erweiterten Maximumprinzip (ein Randpunkt ist polar) und dem Satz über eigentliche Abbildungen.'
+    f2_benutzte_voraussetzungen: 'p nicht konstant, eindeutig holomorph auf U; für (b) zusätzlich σ′ > 0 auf ℝ.'
+    f3_spezialfall: 'Phragmén–Lindelöf-Argument für harmonische Funktionen.'
+    f4_uebertragbar: 'Auf jede periodische Verbiegung, unabhängig von der Tetration.'
+    f5_neue_frage: 'Muss eine Randkurve mit σ ∈ (−n−1, −n) einen ganzzahligen Wert erreichen, bevor sie H verlässt? Das würde br.verm.verbiegung_hauptblatt beweisen.'
+  bewertung: {richtigkeit: 'vollständig; bei der Gegenprobe nachgelesen', neuheit: neu_ungeprueft, nutzen: 'Zeigt, wo eine Verbiegung den Schnitt von Kneser treffen muss — Ausgangspunkt für den Hauptblatt-Beweis.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: br.satz.verbiegung_schwarz}
+    - {typ: motiviert, ziel: br.verm.verbiegung_hauptblatt}
+
+- id: br.beob.hauptblatt_singularitaet_trig
+  titel: 'Verbiegungen mit trigonometrischem Polynom haben eine Log-Singularität auf dem Hauptblatt in Re z > −2 — 48 von 48 Fällen'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, periodische_stoerung, singularitaet_m2]
+  bereich: '$T=\mathrm{sexp}_K\circ\sigma$, $\sigma=\mathrm{id}+p$, $p$ reelles trigonometrisches Polynom mit $p(0)=0$ und $1+p''>0.05$ auf $\mathbb R$; Basis $e$'
+  aussage: |
+    Für $p=0.1\sin2\pi z$, $0.01\sin2\pi z$, $0.1(\cos2\pi z-1)$, $0.03\sin4\pi z$, eine Mischung und 43 zufällige monotone $p$ vom Grad $\le4$ gibt es $z^*\in H$, $\mathrm{Im}\,z^*>0$,
+    mit $\sigma(z^*)=-2$, das man vom reellen Punkt $\mathrm{Re}\,z^*$ senkrecht erreicht, ohne dass $\sigma$ den Schnitt $(-\infty,-2]$ trifft. Dort hat $T$ eine Log-Singularität
+    auf dem Hauptblatt ($\sigma'(z^*)\ne0$), liegt also nicht in Hol(H). Die Treffer:
+    $-1.34447550088905+0.43879214577273i$ ($\varepsilon=0.1$), $-1.40241335014+0.84925715767i$ ($0.01\sin$), $-1.65165420789+0.33975837427i$ ($\cos-1$),
+    $-1.68002515627+0.26418492215i$ ($\sin4\pi z$), $-1.70286485526+0.22694484402i$ (Mischung); jeweils $|\sigma(z^*)+2|<10^{-40}$.
+    Bei $\varepsilon=0.1$ bleibt das Bild des senkrechten Wegs ganz in der oberen Halbebene (Abstand zum Schnitt $\ge0.019$ bis 1 % vor dem Ende).
+    Damit wird die Beobachtung aus br.beob.verbiegungen_singularitaeten zu einem Nachweis auf dem Hauptblatt: die dort offene Möglichkeit „alle Verzweigungspunkte
+    auf Nebenblättern“ tritt bei diesen Verbiegungen nicht ein.
+  einfach: >-
+    Für viele verschiedene Verbiegungen von Kneser findet man eine Stelle in der rechten Halbebene, an der die verbogene Tetration wie ein Logarithmus
+    unendlich wird — und zwar auf dem Weg, den man direkt von der Zahlengeraden aus erreicht. Solche Verbiegungen sind also nicht überall glatt.
+  experimente: []
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B9, B10; hauptblatt.py, log_hauptblatt.txt, log_gegenprobe.txt, log_zufall.txt'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein: Lage der Wurzel und Verlauf des Wegs sind gerechnet; die Log-Singularität bei −2 auf dem Hauptblatt ist bekannt.'
+    f2_benutzte_voraussetzungen: 'Nur σ wird ausgewertet (kein Kneser-Wert); Holomorphie von sexp_K auf ℂ ∖ (−∞, −2]; Vorzeichenwechsel von Im σ auf 4000 bzw. 12000 Wegpunkten (dps 30/40), Gleitkomma.'
+    f3_spezialfall: 'Bestätigt br.satz.taylorradius_halbebene (E) an Beispielen.'
+    f4_uebertragbar: 'Auf jede Basis b > η und jede ganze Verbiegung, soweit die Wurzel auf dem Hauptblatt liegt.'
+    f5_neue_frage: 'Gilt es für jedes nicht konstante ganze p (br.verm.verbiegung_hauptblatt)?'
+  bewertung: {richtigkeit: 'numerisch; Gegenprobe 25.10.2026: Skript erneut gelaufen (gleiche 5 Treffer, 43 von 43), ε = 0.1 mit eigenem Code (findroot, 20000 Wegpunkte, Bisektion) bestätigt', neuheit: neu_ungeprueft, nutzen: 'Schliesst die naheliegenden Gegenbeispielkandidaten für Q* aus.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: br.verm.verbiegung_hauptblatt}
+    - {typ: verwandt, ziel: br.beob.verbiegungen_singularitaeten}
+    - {typ: stuetzt, ziel: br.frage.halbebene_eindeutigkeit}
+
+- id: br.verm.verbiegung_hauptblatt
+  titel: 'Vermutung: jede Verbiegung von Kneser mit nicht konstantem trigonometrischem Polynom ist in Re z > −2 auf dem Hauptblatt singulär'
+  art: vermutung
+  ebene: B
+  status: vermutung
+  niveau: forschung
+  objekte: [kneser_T, periodische_stoerung]
+  bereich: '$T=\mathrm{sexp}_K\circ(\mathrm{id}+p)$, $p$ reelles trigonometrisches Polynom, nicht konstant, $1+p''>0$ auf $\mathbb R$; Basis $e$'
+  aussage: |
+    Es gibt $z^*\in H=\{\mathrm{Re}\,z>-2\}$ mit $z^*+p(z^*)=-2$, das von der reellen Achse aus auf einem Weg erreicht wird, auf dem $\mathrm{id}+p$ den Schnitt $(-\infty,-2]$ nicht trifft.
+    Insbesondere liegt keine solche Tetration in Hol(H). Fehlender Schritt zum Beweis: eine Randkurve von $\sigma^{-1}(\mathbb C\setminus(-\infty,-2])$ mit $\sigma\in(-n-1,-n)$ muss bis zu einem
+    ganzzahligen Wert laufen, bevor sie $H$ verlässt oder nach $i\infty$ geht (vgl. br.lem.zungen_bis_unendlich).
+  einfach: >-
+    Vermutlich hat jede Verbiegung von Kneser mit einer endlichen Sinus-Kosinus-Summe in der rechten Halbebene eine Stelle, an der sie unendlich wird. Dann
+    wäre keine davon ein Gegenbeispiel zur Eindeutigkeitsfrage Q*.
+  gegenbeispielsuche: '43 zufällige monotone p vom Grad ≤ 4 (Koeffizienten gleichverteilt bis 0.15/n^{1.5}, seed 7, 120 Ziehungen) und 5 gezielte Beispiele, je 40–60 Newton-Starts in (−2, 0) × (0.05, 2.5): jedes Mal ein Hauptblatt-Treffer, kein Gegenbeispiel. Gegenprobe 25.10.2026 mit demselben Skript: wieder 43 von 43.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B10 und Offene Frage 3; hauptblatt.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Monotonie von σ auf ℝ; Lage des Schnitts von sexp_K.'
+    f3_spezialfall: 'Teilfall von Q* (br.frage.halbebene_eindeutigkeit) für trigonometrische Verbiegungen.'
+    f4_uebertragbar: 'Vermutlich auf jedes ganze p und jede Basis über η.'
+    f5_neue_frage: 'Reicht die Topologie aus br.lem.zungen_bis_unendlich für einen Beweis?'
+  bewertung: {richtigkeit: 'Vermutung, 48 Fälle', neuheit: neu_ungeprueft, nutzen: 'Würde eine grosse Klasse von Gegenbeispielkandidaten für Q* ausschliessen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: br.frage.halbebene_eindeutigkeit}
+
+- id: br.kor.nebenblatt_minus2_regulaer
+  titel: 'Nach einmaligem Kreuzen von (−4, −3) ist −2 ein regulärer Punkt von sexp_K'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, singularitaet_m2]
+  bereich: 'Knesers $\mathrm{sexp}_e$ und seine Fortsetzung über den Schnitt $(-\infty,-2]$'
+  aussage: |
+    Auf dem Blatt von $F=\mathrm{sexp}_K$, das man erreicht, wenn $z$ einmal die Strecke $(-4,-3)$ kreuzt, gilt nahe $w=-2$
+    $$F(w)=\mathrm{Log}\bigl(\mathrm{Log}\,F(w+2)\pm2\pi i\bigr)\ \to\ \ln2\pi\pm\tfrac{i\pi}2,$$
+    $-2$ ist dort also regulär. Darum beweist das blosse Zählen der Lösungen von $\sigma(z)=-2$ (je Periodenstreifen etwa $2N$ bei Grad $N$) noch keine
+    Singularität in $H$; man muss das Blatt verfolgen (br.beob.hauptblatt_singularitaet_trig).
+  einfach: >-
+    Auf einem anderen „Blatt“ von Knesers Tetration ist die Stelle −2 harmlos. Deshalb genügt es nicht zu zählen, wie oft eine Verbiegung den Wert −2
+    trifft — man muss prüfen, auf welchem Blatt man dabei ist.
+  beweis:
+    art: vollstaendig
+    text: |
+      Kreuzt $z$ die Strecke $(-4,-3)$, so kreuzt $z+1$ die Strecke $(-3,-2)$, und dort springt $F(z+1)$ um $\mp2\pi i$ (kn.satz.minus2_hebbar). Auf dem neuen Blatt ist also
+      $F(w)=\mathrm{Log}\,F(w+1)$ mit $F(w+1)=\mathrm{Log}\,F(w+2)\pm2\pi i$. Bei $w=-2$ ist $F(0)=1$, also $F(-1)=\pm2\pi i\ne0$ und $F(-2)=\ln2\pi\pm i\pi/2$; alles ist dort holomorph.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B11'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, lokale Rechnung aus dem Sprung 2πi über (−3, −2).'
+    f2_benutzte_voraussetzungen: 'kn.satz.minus2_hebbar; F(0) = 1.'
+    f3_spezialfall: 'Gleicher Mechanismus wie in kn.satz.nebenblatt_zweigpunkte.'
+    f4_uebertragbar: 'Auf jede Basis b > η (Sprung 2πi/ln b).'
+    f5_neue_frage: 'Auf welchen Blättern ist −2 singulär? Gibt es eine Verbiegung, deren Wurzeln von σ = −2 alle auf solchen regulären Blättern liegen?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum die Zählung aus Runde 18 nichts beweist und der Hauptblatt-Test nötig ist.', nutzen_stufe: gering}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.satz.minus2_hebbar}
+    - {typ: verwandt, ziel: kn.satz.nebenblatt_zweigpunkte}
+    - {typ: motiviert, ziel: br.beob.hauptblatt_singularitaet_trig}
+
+- id: br.frage.vertauschtes_kneser
+  titel: 'Gibt es ein „vertauschtes Kneser“ — eine Tetration auf Re z > −2, die oben gegen L̄ statt gegen L strebt?'
+  art: frage
+  ebene: B
+  status: offen
+  niveau: forschung
+  objekte: [kneser_T, T_b, fixpunkt_L]
+  aussage: |
+    Nach br.satz.enden_klassifikation (iii) müsste der Schröder-Exponent an $\bar L$ ein Nebenzweig $\log\bar L+2\pi ik$ mit $k\ge1$ sein — gesucht ist also eine
+    Kneser-artige Konstruktion mit einem anderen Zweig des Multiplikator-Logarithmus. Paulsen–Cowgill schliesst das nicht aus (dort wird $L$ oben verlangt).
+    Das ist der natürlichste Kandidat für ein Gegenbeispiel zu Q* (br.frage.halbebene_eindeutigkeit).
+    Weitere offene Teilfragen: Kann $E_T=\sigma(T)L^{-z}$ bei $q=0$ einen Pol oder eine wesentliche Singularität haben? Kann $T$ nahe $i\infty$ die Werte $0,1,e,\dots$ umlaufen?
+    Sind die singulären Werte von $\sigma$ genau $0,1,e,e^e,\dots$?
+  einfach: >-
+    Knesers Tetration strebt weit oben gegen den Fixpunkt L. Könnte es eine andere, ebenfalls glatte Tetration geben, die stattdessen gegen den gespiegelten
+    Fixpunkt strebt? Wenn ja, wäre die Eindeutigkeitsfrage Q* mit Nein beantwortet.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B6 und Offene Fragen 1, 2, 4'}]
+  kanten:
+    - {typ: verwandt, ziel: br.frage.halbebene_eindeutigkeit}
+    - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}

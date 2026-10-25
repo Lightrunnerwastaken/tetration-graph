@@ -1,5 +1,39 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: br.beob.ausgewogene_raenge_entartung
+  quelle_hash: f751b92f7084
+  theorie_hash: 0b5c3b5044a1
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Balanced ranks degenerate at 1: the balanced pentation has a triple fixed point there'
+    aussage: |-
+      From $\ln P(e^\ell)=F^{[s]}(\ell)$ with $s=\ell/\ln2$ and $F^{[s]}(\ell)=\ell+s\ell^2+(s^2-\tfrac s2)\ell^3+\dots$ it follows formally that
+      $$\ln P(e^\ell)=\ell+\frac{\ell^3}{\ln2}-\frac{\ell^4}{2\ln2}+O(\ell^5).$$
+      Numerically: $(\ln P-\ell)/\ell^3=1.439155$ at $\ell=0.005$ and $1.446369$ at $\ell=-0.005$; mean $1.442762$ against $1/\ln2=1.442695$, slope $-0.7214$ against $-1/(2\ln2)=-0.7213$
+      (two settings equal to 22 digits). So the fixed point 1 is triple (two sheets, repelling on both real sides).
+      Formally (computed only for rank 5), the balanced step of rank $k$ has the form $\zeta+\zeta^{k-2}/(\ln2)^{k-4}+\dots$: the degeneracy grows with the rank.
+    bereich: Balanced pentation $P(y)=y[4]y$ with the continuation br.satz.klammerung_fortsetzung; log coordinate $\ell=\ln y$
+    einfach: 'For the balanced variants, the point 1 becomes "flatter" with every rank: the map deviates from the identity ever more slowly there.'
+    pruefung:
+      f1_folgt_unmittelbar: Formally yes (inserting the flow formula); uniform validity for $s\to0$ is not proved.
+      f2_benutzte_voraussetzungen: Continuation via the Fatou coordinate; expansion of the fractional iterate for small $s$.
+      f3_spezialfall: No.
+      f4_uebertragbar: Ranks ≥ 6 need multi-sheeted Fatou coordinates (not computed).
+      f5_neue_frage: Balanced ranks ≥ 6 numerically; how many sheets does the step of rank k really have?
+    bewertung:
+      nutzen: Shows that left and balanced ranks from 5 on are built differently.
+      richtigkeit: numerical for rank 5 (4 digits in the coefficient), formal for higher ranks
+    quellen:
+    - stelle: forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Finding 12; kanonisch.py (kanonisch_A.txt, kanonisch_B.txt; the report gives
+        1.43932 instead of 1.439155)
+  en_theorie:
+    einordnung: 'Contrast to the simple germs of the left ranks [[br.satz.linke_raenge_keim]]; sheets at the parabolic fixed point: [[it.satz.leau_fatou]].'
+    genau: '$\ln P(e^\ell)=\ell+\ell^3/\ln2-\ell^4/(2\ln2)+\dots$: a triple fixed point.'
+    warum: The iteration number $s=\ell/\ln2$ is itself small; the second term $s\ell^2$ thereby becomes a third one.
+    worum: What does the step of the balanced pentation $y\mapsto y[4]y$ look like at 1?
 - id: br.beob.boettcher_kneser_abstand
   quelle_hash: 197496ce9765
   theorie_hash: 0dd5d68fbfd2
@@ -40,6 +74,170 @@
       Presumably both solutions are holomorphic in a wide band, and the difference is exponentially small in the bandwidth, about $e^{-2\pi\delta}$ with $\delta\approx\pi/(2\ln d)$ (weakly supported).
     einordnung: |
       Similar pattern to [[kl.beob.zwei_abel]] and [[kl.verm.streifenbreite]]; measured with the defect from [[br.satz.reelle_kennzeichnung]].
+- id: br.beob.gegenbeispiel_doppelpunkt
+  quelle_hash: f9c8502ae022
+  theorie_hash: b66277e7db9e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: The stage-4 counterexamples a and c each have a double point — they lie outside the Jordan case
+    aussage: |-
+      Counterexample a ($p=-0.035254\sin2\pi x+0.000462(\cos2\pi x-1)+0.03\sin4\pi x$) has exactly one double point, at $x\approx0.372$ and $0.614$ (point $\approx26.192+5.473i$);
+      counterexample c ($p=-0.046023\sin2\pi x-0.001672(\cos2\pi x-1)+0.03\sin4\pi x$) at $x\approx0.341$ and $0.637$ ($\approx26.196+5.464i$); in both cases a small loop forms at the top.
+      The perturbations are small ($|p|<0.07$), but steep: $\max p'\approx0.60$ (a) and $0.67$ (c), above the bound $0.431$ from br.satz.sehnenkriterium.
+      So br.satz.momente_jordan says nothing about these examples.
+    bereich: 'Counterexamples from br.satz.endlich_viele_reichen_nicht: a satisfies $M[\theta_T^2]=M[\theta_T]^2$, c the slog formula; data forschung/identitaeten_2026_10_14/etappe4/daten/gegenbeispiel_*_40.json'
+    einfach: The old "look-alikes" of Kneser that satisfy individual formulas have a wave curve with a small knot. So they do not contradict the
+      new theorem.
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: 'Polygons with N = 400, 600 and other nodes (k = 4, dps 20): one intersection each time.'
+      f3_spezialfall: 'no'
+      f4_uebertragbar: —
+      f5_neue_frage: Are there counterexamples to the whole moment family with a double point? → br.frage.momente_doppelpunkt
+    bewertung:
+      nutzen: Shows that the Jordan case does not cover the known counterexamples, and why.
+      richtigkeit: numerical, three samplings
+    nachgeprueft:
+    - ergebnis: 'Cross-check when entering (25.10.2026): s2_fein.py 16 600 a and c respectively (new sampling) gives exactly one intersection
+        each, at x ∈ [0.3717, 0.3733] with [0.6133, 0.6150] (a) and [0.3400, 0.3417] with [0.6367, 0.6383] (c); max p′ from the Fourier data 0.5985
+        (a) and 0.6662 (c).'
+    quellen:
+    - stelle: forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Finding X; s2_fein.py, daten/log_s2_ac_15_400.txt, daten/log_s1_20_4.txt
+  en_theorie:
+    beispiel: 'Counterexample a: double point at $x\approx0.372$ and $0.614$.'
+    einordnung: 'The examples come from [[br.satz.endlich_viele_reichen_nicht]]; open case: [[br.frage.momente_doppelpunkt]].'
+    genau: Their wave curves each have a double point with a small loop at the top.
+    warum: The perturbations are small, but steep ($p'$ up to 0.6); the speed fluctuates so strongly that two points of the curve meet.
+    worum: Why do the known look-alikes of Kneser not contradict the Jordan theorem?
+- id: br.beob.hauptblatt_singularitaet_trig
+  quelle_hash: 63728c008087
+  theorie_hash: 691e97ce5aaf
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: Bendings by a trigonometric polynomial have a log singularity on the principal sheet in Re z > −2 — 48 of 48 cases
+    aussage: |-
+      For $p=0.1\sin2\pi z$, $0.01\sin2\pi z$, $0.1(\cos2\pi z-1)$, $0.03\sin4\pi z$, a mixture and 43 random monotone $p$ of degree $\le4$ there is $z^*\in H$, $\mathrm{Im}\,z^*>0$,
+      with $\sigma(z^*)=-2$, reached from the real point $\mathrm{Re}\,z^*$ vertically without $\sigma$ hitting the cut $(-\infty,-2]$. There $T$ has a log singularity
+      on the principal sheet ($\sigma'(z^*)\ne0$), so it is not in Hol(H). The hits:
+      $-1.34447550088905+0.43879214577273i$ ($\varepsilon=0.1$), $-1.40241335014+0.84925715767i$ ($0.01\sin$), $-1.65165420789+0.33975837427i$ ($\cos-1$),
+      $-1.68002515627+0.26418492215i$ ($\sin4\pi z$), $-1.70286485526+0.22694484402i$ (mixture); in each case $|\sigma(z^*)+2|<10^{-40}$.
+      For $\varepsilon=0.1$ the image of the vertical path stays entirely in the upper half-plane (distance to the cut $\ge0.019$ up to 1 % before the end).
+      Thus the observation from br.beob.verbiegungen_singularitaeten becomes a proof on the principal sheet: the possibility left open there, "all branch points
+      on secondary sheets", does not occur for these bendings.
+    bereich: $T=\mathrm{sexp}_K\circ\sigma$, $\sigma=\mathrm{id}+p$, $p$ a real trigonometric polynomial with $p(0)=0$ and $1+p'>0.05$ on $\mathbb
+      R$; base $e$
+    einfach: For many different bendings of Kneser one finds a point in the right half-plane where the bent tetration becomes infinite like a
+      logarithm — on the path that one reaches directly from the real line. So such bendings are not smooth everywhere.
+    pruefung:
+      f1_folgt_unmittelbar: 'No: location of the root and course of the path are computed; the log singularity at −2 on the principal sheet is
+        known.'
+      f2_benutzte_voraussetzungen: Only σ is evaluated (no Kneser value); holomorphy of sexp_K on ℂ ∖ (−∞, −2]; sign change of Im σ on 4000 and
+        12000 path points respectively (dps 30/40), floating point.
+      f3_spezialfall: Confirms br.satz.taylorradius_halbebene (E) on examples.
+      f4_uebertragbar: To every base b > η and every entire bending, as far as the root lies on the principal sheet.
+      f5_neue_frage: Does it hold for every non-constant entire p (br.verm.verbiegung_hauptblatt)?
+    bewertung:
+      nutzen: Rules out the obvious counterexample candidates for Q*.
+      richtigkeit: 'numerical; cross-check 25.10.2026: script run again (same 5 hits, 43 of 43), ε = 0.1 confirmed with own code (findroot, 20000
+        path points, bisection)'
+    quellen:
+    - stelle: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B9, B10; hauptblatt.py, log_hauptblatt.txt, log_gegenprobe.txt,
+        log_zufall.txt
+  en_theorie:
+    beispiel: '$\varepsilon=0.1$: $z^*=-1.34447550088905+0.43879214577273i$; the image of the path stays entirely in the upper half-plane.'
+    einordnung: 'Makes [[br.beob.verbiegungen_singularitaeten]] precise; supports [[br.verm.verbiegung_hauptblatt]]; why counting is not enough:
+      [[br.kor.nebenblatt_minus2_regulaer]].'
+    genau: In 48 of 48 cases there is $z^*\in H$ with $\sigma(z^*)=-2$ that is reached vertically from the axis without $\sigma$ hitting the cut.
+    warum: On the principal sheet, $\mathrm{sexp}_K$ is logarithmically singular at $-2$. If $\sigma$ stays outside $(-\infty,-2]$ along the path,
+      one is on the principal sheet, and $T$ becomes infinite at $z^*$.
+    worum: Do bendings of Kneser really have their singularities in $H$ on the principal sheet — or only on secondary sheets, where they would
+      not matter?
+- id: br.beob.klammerung_werte
+  quelle_hash: a474f7353b4a
+  theorie_hash: b75c5145cc23
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Values of the continued variants to over 20 digits: 2[4]3 = 14.6545…, 2[5′]½ = 3.3049…, 2[6′]½ = 8.4762…'
+    aussage: |-
+      Setting A (dps 30, $n=300$, $K=12$) against B (dps 50, $n=1500$, $K=18$), 22 digits equal:
+      $2[4]3=14.654511776029386087290142357920$, $2[4]\sqrt2=2.5519515900664733159948710551$, $e[4]3=5164.0796335205401942184734139$, $\tfrac12[4]3=0.75719198254705640265505464700$;
+      $2[5']\tfrac12=3.3049080007536475312904140452$, $2[5']\tfrac32=468247.12773186285106947604232$, $e[5']\tfrac12=12.540371827877451627512874303$, $\tfrac12[5']\tfrac12=0.56420394844110023442988843693$;
+      $F^{[1/2]}(1)=1.5134281085001618745523784596$ (group check $F^{[1/2]}\circ F^{[1/2]}(1)-e=3\cdot10^{-46}$).
+      Left hexation to base 2: the step in log coordinates is $G(\zeta)=F(F(F(\zeta)))e^{-\zeta}=\zeta+2\zeta^2+5\zeta^3+\tfrac{65}6\zeta^4+\dots$ (no fractional iterate needed), and
+      $2[6']\tfrac12=8.4762321835075403787413216014$ (15 digits between two settings; semigroup check $1.3\cdot10^{-37}$; check $\ln(2[6']1)=1024\ln2$).
+      Cross-check when entering with a different method (formal half-iterate near 0 instead of Fatou coordinate, dps 40): $F^{[1/2]}(1)$, $2[4]\sqrt2$, $2[5']\tfrac12$ equal to 30 digits, $2[6']\tfrac12$ to 25 digits.
+      $F^{[1/2]}(1)$ is $\mathrm{prodtet}_e(\tfrac12)$ and agrees with br.beob.produkt_tetration_werte (1.5134281085).
+    bereich: Continuation according to br.satz.klammerung_fortsetzung; $a[4]b$ balanced with $b=2^t$; left hexation to base 2 via its own step
+    einfach: Concrete numbers for the new fractional towers, confirmed to more than 20 digits and by two different computation routes.
+    pruefung:
+      f1_folgt_unmittelbar: No (computation).
+      f2_benutzte_voraussetzungen: Fatou series up to $K$ terms, $n$ backward and forward steps respectively, Newton inversion.
+      f3_spezialfall: No.
+      f4_uebertragbar: To every left or balanced variant with a parabolic germ at 1.
+      f5_neue_frage: Higher left ranks with non-integer base (rank 6′ to base $e$) need fractional iterates in the step itself.
+    bewertung:
+      nutzen: Check values for any future computation on these variants.
+      richtigkeit: numerical, 22 digits; confirmed when entering with a second method to 25–30 digits
+    quellen:
+    - stelle: forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Findings 6, 14; kanonisch.py, hexation_links.py, kanonisch_A.txt, kanonisch_B.txt,
+        hexation_A.txt, hexation_B.txt
+  en_theorie:
+    einordnung: 'Computation following [[br.satz.klammerung_fortsetzung]]; germ of the left hexation: [[br.satz.linke_raenge_keim]]; $F^{[1/2]}(1)=\mathrm{prodtet}_e(\tfrac12)$
+      as in [[br.beob.produkt_tetration_werte]].'
+    genau: $2[4]3=14.6545117760\ldots$, $2[5']\tfrac12=3.3049080007\ldots$, $F^{[1/2]}(1)=1.5134281085\ldots$, $2[6']\tfrac12=8.4762321835\ldots$
+    warum: Two settings of the Fatou computation agree to 22 digits; a second method (formal half-iterate near 0) confirms the values to 25–30
+      digits.
+    worum: Check values of the continued variants.
+- id: br.beob.kneser_kurve_sehnen
+  quelle_hash: 9177ab940cd0
+  theorie_hash: e8626c5efe98
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: Kneser's θ-curve has no double point and goes around positively; every horizontal line meets it at most twice; chord constant m* =
+      0.3010
+    aussage: |-
+      $\Gamma_K$ has no double point and goes around $c=M[\theta]=a_0$ once positively (area $+0.0762$); every horizontal line meets it at most twice, and on all
+      horizontal chords $\mu>0$. The chord constant is
+      $$m^*=\inf_{t<s}\frac{\mu(s,t)}{\min(s-t,\,1-s+t)}=0.3010,$$
+      attained at $t=0.2414$, $s=0.7412$ at height $\mathrm{Im}\,\theta=5.4532$ (almost exactly opposite: $s-t\approx\tfrac12$).
+    bereich: base $e$; $\Gamma_K=\theta((0,1))$ on the real axis; $\mu$ and $m^*$ as in br.satz.sehnenkriterium
+    einfach: 'The curve that Kneser''s wave draws on the number line does not intersect itself and has a simple shape: every horizontal line meets
+      it at most twice.'
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: Sampling N = 400 (dps 15), 600 (dps 16), 800 (dps 18) with geometric refinement down to x = 10⁻¹²; the tip
+        itself only analytically.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Not yet computed for base 2 and other bases above η.
+      f5_neue_frage: Can the absence of double points be proved, e.g. via the univalence of θ as a function of q = e^{2πiz} on the disk?
+    bewertung:
+      nutzen: Supplies the number that makes the chord criterion explicit.
+      richtigkeit: numerical, three samplings, four digits
+    nachgeprueft:
+    - ergebnis: 'Cross-check when entering (25.10.2026): s2_fein.py 16 600 kneser (new polygon, 671 points) gives 0 intersections, area 0.076155,
+        winding number +1; s4_sehnen.py with 4000 and 8000 heights gives m* = 0.3010 at the same place.'
+    quellen:
+    - stelle: forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Findings K and m*; s2_fein.py, s4_sehnen.py, daten/log_s4_15_400.txt,
+        daten/log_s4_18_800.txt
+  en_theorie:
+    beispiel: 'The narrowest point lies almost exactly opposite: $t=0.2414$, $s=0.7412$.'
+    einordnung: 'Used in [[br.satz.sehnenkriterium]]; local form: [[kn.satz.theta_singularitaet]].'
+    genau: Free of double points, once positively around $a_0$, every horizontal line is met at most twice; $m^*=0.3010$.
+    warum: Measured on polygons with 400 to 800 points; at the tip (at the integers) the curve runs very slowly to infinity, and only the local
+      form helps there.
+    worum: What does the curve look like that Kneser's wave $\theta$ draws on the real axis?
 - id: br.beob.kneser_logkonvex
   quelle_hash: ebc34136662b
   theorie_hash: f931ea0dae47
@@ -116,20 +314,22 @@
     einordnung: |
       Supports [[gr.verm.ungerade_ableitungen]]; consequence of it: [[br.satz.ungerade_ableitungen_halbebene]].
 - id: br.beob.produkt_iteration_dreieck
-  quelle_hash: b49b67923157
+  quelle_hash: 3c43bd435efb
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'The iteration of x·eˣ: a new counting triangle and exact Fatou coefficients'
-    aussage: |
+    aussage: |-
       As for $e^x-1$ (it.satz.zeta_polynom_partitionen), the coefficients of $(xe^x)^{\circ t}$ are polynomials in $t$; in the binomial basis
       $\binom tj$ the integer triangle $2;\ 3,12;\ 4,84,144;\ 5,510,2760,2880;\dots$ arises, with diagonal $n!(n-1)!$ and row sums $2,15,232,6155$.
       At $t=-1$ one gets $(-n)^{n-1}$, i.e. the coefficients of Lambert W — the counterpart of the Möbius number for $e^x-1$.
       The Fatou coordinate is exactly
       $$\alpha(x)=-\tfrac1x+\tfrac12\ln x-\tfrac x6+\tfrac{x^2}{16}-\tfrac{19x^3}{540}+\tfrac{x^4}{48}-\tfrac{41x^5}{4200}+\tfrac{37x^6}{103680}+\dots$$
-      (for $e^x-1$: $-\tfrac2x+\tfrac13\ln x-\tfrac x{36}+\tfrac{x^2}{540}+\dots$). The triangle, row sums, Julia coefficients $2,-3,10,-50,321,-2422$ and the
+      (for $e^x-1$: $-\tfrac2x+\tfrac13\ln x-\tfrac x{36}+\tfrac{x^2}{540}+\dots$). All coefficients are rational because $\ln F=\ln x+x$ holds exactly: $\alpha(F)-\alpha=1$ becomes
+      $(1-e^{-x})/x+\beta x+\sum c_k(F^k-x^k)=1$ (22 terms in forschung/runde_2026_10_25/14_klammerungen/fatou_reihe_ausgabe.txt); $|c_k|(2\pi)^k/(k-1)!$ stays for $k\le22$
+      between 0.03 and 5.4. The triangle, row sums, Julia coefficients $2,-3,10,-50,321,-2422$ and the
       half iterate are not in the OEIS; only the simple iterates (×2, A185298) are known.
     einfach: For product tetration, too, the coefficients of the fractional repetitions count something — the numbers for this are not yet in
       any sequence database. Backward (t = −1), exactly the known coefficients of the Lambert W function appear.
@@ -192,15 +392,15 @@
     worum: |
       Concrete numbers for the natural product tetration, and a comparison with the forum value.
 - id: br.beob.verbiegungen_singularitaeten
-  quelle_hash: 8cdf62158542
+  quelle_hash: a432ede56e96
   theorie_hash: 5e380fdba29f
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'Bendings of Kneser have singularities in Re z > −2: Taylor radius 0.2–1.7 instead of x + 2, odd derivatives negative from order 3–15'
-    aussage: |
+    aussage: |-
       All 13 bendings tested violate C(0) at 8–20 of 20 grid points (smallest violating odd order 3, 5 or 15); radius at $x=0.3$: 0.20–1.74 instead of 2.3.
       The only exception in the measurement window: $\varepsilon=10^{-6}$ (singularity at height 2.42, outside all disks with $x\le0.4$).
       Sine perturbation: logarithmic branch points at $\varphi(z_0)=-2$ on the principal sheet, height $\approx\ln(4(x+2)/\varepsilon)/2\pi$ (e.g. $\varepsilon=0.03$: $z_0\approx-0.318+0.766i$).
@@ -216,7 +416,8 @@
       f3_spezialfall: Confirms br.satz.taylorradius_halbebene (E) in examples.
       f4_uebertragbar: To every perturbation with entire, non-constant $p$ (argument principle), as far as the solutions lie on the principal
         sheet.
-      f5_neue_frage: Is there a bending whose branch points all lie on secondary sheets?
+      f5_neue_frage: Is there a bending whose branch points all lie on secondary sheets? For trigonometric polynomials no (48 cases, br.beob.hauptblatt_singularitaet_trig);
+        in general br.verm.verbiegung_hauptblatt.
     bewertung:
       nutzen: Shows that the local condition is very selective in practice.
       richtigkeit: numerical, two independent routes
@@ -224,16 +425,12 @@
     - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, E1, E2, E3, X, Table 2; e2_stoerungen.py, e3_singularitaeten.py,
         t2_gegenprobe.py
   en_theorie:
-    worum: |
-      How do genuine bendings of Kneser violate the local condition?
-    genau: |
-      They have branch points in $\mathrm{Re}\,z>-2$, at height $\approx\ln(1/\varepsilon)/2\pi$; as a result the Taylor radius drops and even low odd derivatives become negative.
-    warum: |
-      Where $z+p(z)=-2$ holds, $T=\mathrm{sexp}_K(z+p(z))$ inherits Kneser's log singularity at $-2$.
-    beispiel: |
-      $\varepsilon=10^{-3}$: $T^{(5)}(-0.6)=-0.408$ instead of $+5.409$.
-    einordnung: |
-      Evidence for [[br.satz.taylorradius_halbebene]] and for [[br.frage.halbebene_eindeutigkeit]].
+    beispiel: '$\varepsilon=10^{-3}$: $T^{(5)}(-0.6)=-0.408$ instead of $+5.409$.'
+    einordnung: Evidence for [[br.satz.taylorradius_halbebene]] and for [[br.frage.halbebene_eindeutigkeit]].
+    genau: They have branch points in $\mathrm{Re}\,z>-2$, at height $\approx\ln(1/\varepsilon)/2\pi$; as a result the Taylor radius drops and
+      even low odd derivatives become negative.
+    warum: Where $z+p(z)=-2$ holds, $T=\mathrm{sexp}_K(z+p(z))$ inherits Kneser's log singularity at $-2$.
+    worum: How do genuine bendings of Kneser violate the local condition?
 - id: br.def.hyperoperation
   quelle_hash: 33e5aa60a2be
   theorie_hash: dd794f98c082
@@ -365,34 +562,34 @@
       The gamma function is the only continuation of the factorial that is “logarithmically convex” — a purely real condition. Is there something like that for tetration? So far only complex-variable
       conditions select Kneser's solution.
 - id: br.frage.halbebene_eindeutigkeit
-  quelle_hash: fd88fc98918c
+  quelle_hash: 91d7b6df23a3
   theorie_hash: e2bbb8719ac3
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'Q*: Is every real tetration that is holomorphic on Re z > −2 already Kneser?'
-    aussage: |
-      Paulsen–Cowgill without the limit condition at $i\infty$, half-plane version. Approach: $\theta_T=h\circ T-z$ is then periodic and holomorphic on the upper half-plane up to harmless log points ($T=L$);
-      one would have to show that $q=e^{2\pi iz}=0$ cannot be an essential singularity. All bendings $\mathrm{sexp}_K\circ(\mathrm{id}+p)$ checked so far with entire,
-      non-constant $p$ have branch points in $H$ ($z+p(z)=-2$ has $\sim2N$ solutions per period strip); it is not ruled out that all lie on secondary sheets.
+    aussage: |-
+      Paulsen–Cowgill without the limit condition at $i\infty$, half-plane version. Approach: $\theta_T=h\circ T-z$ is then periodic and holomorphic on the upper half-plane except for log points ($T=L$)
+      and places where $T$ winds around singular values of $\sigma$ (presumably $0,1,e,e^e,\dots$) (br.satz.enden_klassifikation); one would have to show that $q=e^{2\pi iz}=0$ cannot be an essential singularity. All bendings $\mathrm{sexp}_K\circ(\mathrm{id}+p)$ checked so far with entire,
+      non-constant $p$ have branch points in $H$ ($z+p(z)=-2$ has $\sim2N$ solutions per period strip); for 48 trigonometric bendings, numerically documented, each has a branch point on the principal sheet
+      (br.beob.hauptblatt_singularitaet_trig, br.verm.verbiegung_hauptblatt).
       Subquestion: For every tetration $\ne$ Kneser, is even $\sup_x\rho_T(x)<\infty$? Then already "$\rho_T$ unbounded" would be characterizing.
+      **Status 25.10.2026:** The missing condition at $i\infty$ is exactly "$p_T$ single-valued and $o(e^{2\pi\,\mathrm{Im}\,z})$" (br.satz.halbebene_liouville_scharf); instead of the limit, "near $L$
+      in a half-strip" suffices (br.satz.schroeder_kugel_genuegt); every genuine bending leaves the upper half-plane with $\sigma$ (br.satz.verbiegung_schwarz); the possible ends are classified,
+      the most natural candidate for a counterexample is a swapped Kneser (br.frage.vertauschtes_kneser).
     einfach: Is it enough for uniqueness that the tetration is smooth in the right half-plane of the complex numbers? This is open, and whether
       a simple real characterization exists depends on this question.
     quellen:
     - stelle: forschung/runde_2026_10_18/08_reelle_kennzeichnung/BERICHT.md, D, Open questions 1 and 3
   en_theorie:
-    worum: |
-      Is holomorphy on $\mathrm{Re}\,z>-2$ (without a limit at $i\infty$) enough for uniqueness?
-    genau: |
-      Open. Paulsen–Cowgill additionally need $T(z)\to L$ for $\mathrm{Im}\,z\to\infty$.
-    warum: |
-      Then $\theta_T$ would be periodic and holomorphic above up to harmless points; what is missing is to rule out an essential singularity at $q=0$.
-    beispiel: |
-      All bendings checked so far have branch points in the half-plane.
-    einordnung: |
-      Related to [[kn.verm.tk_c2]]; decides [[br.satz.lokal_genau_dann_halbebene]].
+    beispiel: All bendings checked so far have branch points in the half-plane.
+    einordnung: Related to [[kn.verm.tk_c2]]; decides [[br.satz.lokal_genau_dann_halbebene]].
+    genau: Open. Paulsen–Cowgill additionally need $T(z)\to L$ for $\mathrm{Im}\,z\to\infty$.
+    warum: Then $\theta_T$ would be periodic and holomorphic above up to harmless points; what is missing is to rule out an essential singularity
+      at $q=0$.
+    worum: Is holomorphy on $\mathrm{Re}\,z>-2$ (without a limit at $i\infty$) enough for uniqueness?
 - id: br.frage.implosion
   quelle_hash: ecae3d5e45e8
   theorie_hash: e0d48de3c164
@@ -488,19 +685,47 @@
       Open — in any case not settled. A secondary source attributes to Boshernitzan having shown this for, among others, Kneser's solution; this has not been checked against the original.
     worum: |
       Is Kneser's tetration so “well-behaved” that no combination of it and its derivatives changes sign infinitely often for large $x$?
-- id: br.frage.momentenfamilie
-  quelle_hash: 96cd2e5ab610
+- id: br.frage.momente_doppelpunkt
+  quelle_hash: 59b69842b1d9
+  theorie_hash: 210e3f6e4e0e
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: Is there a tetration ≠ Kneser with a self-intersecting θ_T-curve that satisfies the whole moment family?
+    aussage: |-
+      By br.satz.momente_jordan, only the case remains of br.frage.momentenfamilie that $\Gamma_T$ has double points; such tetrations already exist for small perturbations
+      (br.beob.gegenbeispiel_doppelpunkt). Then $\mathbb C\setminus\Gamma_T$ splits into several subdomains $U_j$: $C_T=1/(\zeta-c)$ holds on $\Omega_T$, on each $U_j$ the function $C_T$ is
+      holomorphic, with jumps at the edges, summed over the sheets. On a self-intersecting curve there are many representing measures for $c$ (mixtures of harmonic
+      measures of different subdomains) — the argument of the Jordan case does not suffice there. A counterexample has neither been found nor searched for.
+      Possible ways: the winding-number function of the curve and an argument as in the Jordan case on the immersed domain over $\Gamma_T$ (Blank's problem); numerically, perturbations with
+      $\sin4\pi x$ and large $p'$, for which one sets $V_2,\dots,V_K$ to zero simultaneously, and check whether the solutions converge as $K$ grows.
+    einfach: 'Only the case in which the wave curve intersects itself is still open: could a tetration other than Kneser have all power means
+      right there?'
+    quellen:
+    - stelle: forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Finding O, Section "What remains open", Open Questions 1–2
+  en_theorie:
+    beispiel: 'Candidates: perturbations with $\sin4\pi x$ and large $p''$, for which many moments are set to zero simultaneously.'
+    einordnung: Remainder of [[br.frage.momentenfamilie]] after [[br.satz.momente_jordan]].
+    genau: Is there $T\neq$ Kneser with a double point in $\Gamma_T$ and $M[\theta_T^k]=M[\theta_T]^k$ for all $k$?
+    warum: On a self-intersecting curve there are many distributions with the same Cauchy transform outside; the Jordan argument breaks down.
+    worum: The last open case of the moment question.
+- id: br.frage.momentenfamilie
+  quelle_hash: 612d82bb0553
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: Does the moment family M[θᵏ] = M[θ]ᵏ (all k) pin down Kneser?
-    aussage: |
+    aussage: |-
       Kneser satisfies $M[\theta^k]=M[\theta]^k$ for all $k$ (kn.satz.theta_mittelwerte). For general functions this family is weaker than
       “no negative modes” (it sees only the distribution of values; counterexample $f=e^{-2\pi ix}$). **Among tetrations** it is rigid to first order:
       $\delta V_k[p]=0$ for all $k$ forces $p$ to be constant — proved for perturbations that are holomorphic in the strip $|\mathrm{Im}z|<0.09$ (numerically already from $0.0008$).
       Open: does this also hold nonlinearly, or is there a tetration $\neq$ Kneser whose $\theta_T$ is a measure-preserving rearrangement of a boundary function that is holomorphic above?
+      **Partial answer (round 25.10.2026):** If the wave curve $\theta_T$ is free of double points, the moment family forces Kneser (br.satz.momente_jordan, sketch), in particular for all $T$ with
+      $0.7686<\varphi'<1.4306$ (br.kor.momente_umgebung) — without a strip condition. Only the case with a double point remains open (br.frage.momente_doppelpunkt).
     einfach: A simpler family of conditions — "the mean of the powers is the power of the mean" — already suffices locally to pin down Kneser.
       Whether it also suffices globally is open.
     quellen:
@@ -534,6 +759,32 @@
       limits $L,\bar L$) provide exactly such finiteness statements — then tetration theory would contribute to new logic.
     worum: |
       Is there a “tame” mathematical world in which tetration lives? This is an open problem in logic — and Kneser's solution is a natural candidate.
+- id: br.frage.vertauschtes_kneser
+  quelle_hash: a367d258e3af
+  theorie_hash: c3aad3f3d3e5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: Is there a "swapped Kneser" — a tetration on Re z > −2 that tends to L̄ instead of L at the top?
+    aussage: |-
+      By br.satz.enden_klassifikation (iii), the Schröder exponent at $\bar L$ would have to be a secondary branch $\log\bar L+2\pi ik$ with $k\ge1$ — so what is sought is a
+      Kneser-type construction with a different branch of the multiplier logarithm. Paulsen–Cowgill does not rule this out (there $L$ is required at the top).
+      This is the most natural candidate for a counterexample to Q* (br.frage.halbebene_eindeutigkeit).
+      Further open subquestions: Can $E_T=\sigma(T)L^{-z}$ have a pole or an essential singularity at $q=0$? Can $T$ near $i\infty$ wind around the values $0,1,e,\dots$?
+      Are the singular values of $\sigma$ exactly $0,1,e,e^e,\dots$?
+    einfach: Kneser's tetration tends to the fixed point L far up. Could there be another, equally smooth tetration that instead tends to the
+      mirrored fixed point? If so, the uniqueness question Q* would be answered with No.
+    quellen:
+    - stelle: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B6 and Open Questions 1, 2, 4
+  en_theorie:
+    beispiel: For Kneser itself, $k=0$ at $L$.
+    einordnung: From [[br.satz.enden_klassifikation]]; main question [[br.frage.halbebene_eindeutigkeit]].
+    genau: At $\bar L$ it would have to have the Schröder exponent $\log\bar L+2\pi ik$ with $k\ge1$, that is, a secondary branch of the multiplier
+      logarithm.
+    warum: $|\bar L^{z}|$ grows upward; for the Schröder coordinate to tend to 0 nevertheless, it needs additional windings $e^{2\pi ikz}$.
+    worum: 'The most natural candidate for a counterexample to Q*: a tetration that tends to $\bar L$ at the top.'
 - id: br.frage.verwandte_funktionen
   quelle_hash: b2c40f158afd
   theorie_hash: ca9f73093521
@@ -606,6 +857,194 @@
     worum: |
       Circle maps have a famous invariant, the rotation number. Why not for the phase maps of the base change as well? Because that would be a type error: The
       map goes from one circle to a **different** circle.
+- id: br.kor.linke_pentation_ausgewogen
+  quelle_hash: f1cedd5de624
+  theorie_hash: 58565c4a4aeb
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Left pentation = root of the balanced tetration of x^x: x[5′]t = (x^x [4] 2^t)^{1/x}'
+    aussage: $$x[5']t=\bigl(x^x[4]2^t\bigr)^{1/x}.$$
+    bereich: $x>0$; integer $t\ge0$, and real $t$ if both sides are continued with the same fractional iteration of $F(m)=me^m$ (br.satz.klammerung_fortsetzung)
+    einfach: 'The fifth operation, parenthesized from the bottom, is nothing new: one takes the balanced tetration of x to the x and extracts
+      the x-th root.'
+    beweis:
+      text: $\ln(x^x)=x\ln x=m_0$, so $\ln\bigl(x^x[4]2^n\bigr)=F^{[n]}(m_0)=x\ln(x[5']n)$ by br.satz.klammerung_log_reduktion. For real $t$ both
+        sides are defined by the same $F^{[t]}$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: Log reduction; for real $t$ a common iteration of $F$.
+      f3_spezialfall: Yes, of br.satz.klammerung_log_reduktion.
+      f4_uebertragbar: To the convention $a_5b$ with $a^{a-1}$ instead of $x^x$.
+      f5_neue_frage: Are there similar bridges between higher left and balanced ranks? (The germs differ, br.beob.ausgewogene_raenge_entartung.)
+    bewertung:
+      nutzen: Connects two previously separate variants.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Finding 2
+  en_theorie:
+    einordnung: Follows from [[br.satz.klammerung_log_reduktion]].
+    genau: $x[5']t=(x^x[4]2^t)^{1/x}$.
+    warum: Both start in the logarithm at the same value $m_0=x\ln x$ and iterate the same map $F$.
+    worum: How are left pentation and balanced tetration related?
+- id: br.kor.linke_varianten_nicht_eta
+  quelle_hash: 37c8d9b28824
+  theorie_hash: 2260c79bd24f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: No left variant to a base x > 0 is formally conjugate to the tetration at η or to e^z − 1
+    aussage: |-
+      For $\eta^x$ around $e$ and for $e^z-1$, $\beta=\tfrac13$; for the left steps, $\beta=\tfrac12$ (rank 5′) and $\beta=(9-2k)/(2x)<0$ (rank $k+1\ge6′$) respectively.
+      Because β is a formal conjugation invariant, none of these steps is formally (let alone analytically) conjugate to the η-tetration or to $e^z-1$.
+      For rank 5′ this already appears in another form for the product tetration (br.satz.produkt_parabolisch: same germ up to scaling).
+    bereich: 'Steps of the left ranks at $y=1$ (br.satz.linke_raenge_keim); η-tetration: $w\mapsto\eta^{e+w}-e$; formal conjugation of parabolic
+      germs $z+az^2+\dots$, $a\neq0$'
+    einfach: 'The operations parenthesized from the bottom are not a disguised tetration to base e^(1/e): a key number that does not change under
+      any change of variables is different.'
+    beweis:
+      text: |-
+        $\beta=1-b/a^2$ is invariant under $z\mapsto cz$ and under every formal conjugation (normal form $z+z^2+(1-\beta)z^3$). $\eta^{e+w}=e+w+w^2/(2e)+w^3/(6e^2)+\dots$ gives $b/a^2=\tfrac23$,
+        likewise $e^z-1$. Values for the left steps from br.satz.linke_raenge_keim; $(9-2k)/(2x)=\tfrac13$ would imply $x<0$.
+    bedingungen_text: For rank 5′ and for integer bases without condition; for rank $\ge6′$ with non-integer base under the condition of br.satz.linke_raenge_keim.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from br.satz.linke_raenge_keim and the invariance of β.
+      f2_benutzte_voraussetzungen: Formal classification of parabolic germs (multiplicity and iterative residue).
+      f3_spezialfall: Yes; for rank 5′ equivalent to the statement about the product tetration.
+      f4_uebertragbar: To every comparison of parabolic hyperoperation variants.
+      f5_neue_frage: Is there any real base at all for which a left variant is formally conjugate to a balanced one?
+    bewertung:
+      nutzen: Separates the variants cleanly from the η-tetration.
+      richtigkeit: complete for rank 5′, otherwise as br.satz.linke_raenge_keim
+    quellen:
+    - stelle: forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Finding 9
+  en_theorie:
+    einordnung: 'Follows from [[br.satz.linke_raenge_keim]]; for rank 5′ already at [[br.satz.produkt_parabolisch]]; η-tetration: [[kl.satz.parabolisch]].'
+    genau: 'No: its residue is $\tfrac13$, the left steps have $\tfrac12$ or a negative value.'
+    warum: The iterative residue does not change under any series of coordinate changes; different residues rule out any conjugation.
+    worum: Is a left variant perhaps merely a disguised tetration to base $\eta$?
+- id: br.kor.momente_umgebung
+  quelle_hash: e95a32d97f86
+  theorie_hash: 257812da8731
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Nonlinear uniqueness in an explicit neighborhood: moment family and 0.7686 < φ′ < 1.4306 ⇒ Kneser'
+    aussage: |-
+      Every real-analytic tetration $T=\mathrm{sexp}\circ\varphi$ with $0.7686<\varphi'<1.4306$ (i.e. $-0.231<p'<0.431$) and $M[\theta_T^k]=M[\theta_T]^k$ for all $k$ is Kneser.
+      Unlike the first-order rigidity in br.frage.momentenfamilie, this needs no strip condition on $p$ and does not apply only to small perturbations in the limit.
+      The counterexamples from stage 4 that satisfy individual formulas (br.satz.endlich_viele_reichen_nicht) lie outside this neighborhood (br.beob.gegenbeispiel_doppelpunkt).
+    bereich: real-analytic tetrations $T=\mathrm{sexp}\circ\varphi$ to base $e$, $\varphi=\mathrm{id}+p$
+    einfach: All tetrations that do not differ too much from Kneser (the slope of the bending stays between 0.77 and 1.43) are recognized as Kneser
+      by the family of power means — if the gaps in the proof can be closed.
+    beweis:
+      text: br.satz.sehnenkriterium makes $\theta_T$ free of double points; br.satz.momente_jordan then gives $T=$ Kneser.
+      luecken:
+      - All gaps of br.satz.momente_jordan (Smirnov class, H¹, orientation at the tip, position of c).
+      - m* = 0.3010 only numerical, tip region only qualitative (br.satz.sehnenkriterium).
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from br.satz.sehnenkriterium and br.satz.momente_jordan.
+      f2_benutzte_voraussetzungen: Both theorems with their gaps; real-analytic T with φ′ within the bound.
+      f3_spezialfall: Nonlinear version of the first-order rigidity from br.frage.momentenfamilie.
+      f4_uebertragbar: To other bases above η with their own m*.
+      f5_neue_frage: How large is the largest neighborhood? The convex set from br.satz.sehnenkriterium is much larger than the Lipschitz ball.
+    bewertung:
+      nutzen: Partial answer to br.frage.momentenfamilie with an explicit neighborhood.
+      richtigkeit: Sketch (inherits the gaps of both theorems)
+    quellen:
+    - stelle: forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Finding N
+  en_theorie:
+    beispiel: The stage-4 look-alikes have $p'$ up to $0.60$ and $0.67$, respectively, and lie outside.
+    einordnung: From [[br.satz.sehnenkriterium]] and [[br.satz.momente_jordan]]; partial answer to [[br.frage.momentenfamilie]].
+    genau: $0.7686<\varphi'<1.4306$ and $M[\theta_T^k]=M[\theta_T]^k$ for all $k$ $\Rightarrow$ $T=$ Kneser (sketch).
+    warum: In this neighborhood the wave curve is free of double points, and there the Jordan theorem applies.
+    worum: An explicit neighborhood of Kneser in which the moment family alone recognizes Kneser.
+- id: br.kor.nebenblatt_minus2_regulaer
+  quelle_hash: 13bbef717d4d
+  theorie_hash: 0cb7fd770c61
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: After crossing (−4, −3) once, −2 is a regular point of sexp_K
+    aussage: |-
+      On the sheet of $F=\mathrm{sexp}_K$ that one reaches when $z$ crosses the segment $(-4,-3)$ once, near $w=-2$ we have
+      $$F(w)=\mathrm{Log}\bigl(\mathrm{Log}\,F(w+2)\pm2\pi i\bigr)\ \to\ \ln2\pi\pm\tfrac{i\pi}2,$$
+      so $-2$ is regular there. Therefore merely counting the solutions of $\sigma(z)=-2$ (about $2N$ per period strip for degree $N$) does not yet prove a
+      singularity in $H$; one has to follow the sheet (br.beob.hauptblatt_singularitaet_trig).
+    bereich: Kneser's $\mathrm{sexp}_e$ and its continuation across the cut $(-\infty,-2]$
+    einfach: On another "sheet" of Kneser's tetration the point −2 is harmless. That is why it is not enough to count how often a bending hits
+      the value −2 — one has to check which sheet one is on at the time.
+    beweis:
+      text: |-
+        If $z$ crosses the segment $(-4,-3)$, then $z+1$ crosses the segment $(-3,-2)$, and there $F(z+1)$ jumps by $\mp2\pi i$ (kn.satz.minus2_hebbar). So on the new sheet
+        $F(w)=\mathrm{Log}\,F(w+1)$ with $F(w+1)=\mathrm{Log}\,F(w+2)\pm2\pi i$. At $w=-2$, $F(0)=1$, so $F(-1)=\pm2\pi i\ne0$ and $F(-2)=\ln2\pi\pm i\pi/2$; everything is holomorphic there.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, local computation from the jump 2πi across (−3, −2).
+      f2_benutzte_voraussetzungen: kn.satz.minus2_hebbar; F(0) = 1.
+      f3_spezialfall: Same mechanism as in kn.satz.nebenblatt_zweigpunkte.
+      f4_uebertragbar: To every base b > η (jump 2πi/ln b).
+      f5_neue_frage: On which sheets is −2 singular? Is there a bending all of whose roots of σ = −2 lie on such regular sheets?
+    bewertung:
+      nutzen: Explains why the count from round 18 proves nothing and the principal-sheet test is necessary.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B11
+  en_theorie:
+    beispiel: $\mathrm{Log}(2\pi i)=1.8379+1.5708i$.
+    einordnung: Mechanism like [[kn.satz.nebenblatt_zweigpunkte]], follows from [[kn.satz.minus2_hebbar]].
+    genau: 'No: after crossing $(-4,-3)$ once, $F(-2)=\ln2\pi\pm i\pi/2$ is regular.'
+    warum: On this sheet $F(-1)=\pm2\pi i$ instead of 0, and the logarithm of that is harmless.
+    worum: Is $-2$ singular on every sheet of $\mathrm{sexp}_K$?
+- id: br.lem.zungen_bis_unendlich
+  quelle_hash: 84ed88192081
+  theorie_hash: 967d0c8e4454
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: The regions where a bending σ points downward reach up to i∞, and σ is unbounded in both directions on their boundary
+    aussage: |-
+      (a) Every connected component of $\{\mathrm{Im}\,\sigma<0\}\cap U$ is unbounded upward (reaches $i\infty$), and on its boundary, where $\sigma$ is real,
+      $\sigma$ is unbounded below and above.
+      (b) If $\sigma'>0$ on $\mathbb R$, then the component of $\{\mathrm{Im}\,\sigma>0\}\cap U$ adjacent to $\mathbb R$ is unbounded upward.
+    bereich: $\sigma=\mathrm{id}+p$ as in br.satz.verbiegung_schwarz, $p$ not constant
+    einfach: Where a bending points downward, "tongues" arise that reach all the way up. On the boundary of these tongues the bending takes arbitrarily
+      large and arbitrarily small real values — also values below −2, where Kneser's tetration has its cut.
+    beweis:
+      text: |-
+        (a) Suppose $\sigma\ge m$ on the boundary of the component $W_0$. Then $u=\sigma-m+1$ maps $W_0$ into the lower half-plane and the boundary to $[1,\infty)$;
+        $\mathrm{Im}\log u\in(-\pi,0)$ is harmonic, bounded, and 0 on the finite boundary. The boundary point $\infty$ is polar, so $\mathrm{Im}\log u\equiv0$ — a contradiction. Likewise for the upper bound.
+        A component without $i\infty$ contradicts the maximum principle for $|g|=|e^{2\pi i\sigma}|$ (inside $>1$, on the boundary $=1$).
+        (b) If the component were bounded above, $g$ on its image in the $q$-plane would be a proper map into the disk, hence surjective, and would hit 0 — but $g\ne0$ for $q\ne0$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the extended maximum principle (one boundary point is polar) and the theorem on proper maps.
+      f2_benutzte_voraussetzungen: p not constant, single-valued holomorphic on U; for (b) additionally σ′ > 0 on ℝ.
+      f3_spezialfall: Phragmén–Lindelöf argument for harmonic functions.
+      f4_uebertragbar: To every periodic bending, independent of the tetration.
+      f5_neue_frage: Must a boundary curve with σ ∈ (−n−1, −n) reach an integer value before it leaves H? That would prove br.verm.verbiegung_hauptblatt.
+    bewertung:
+      nutzen: Shows where a bending must hit Kneser's cut — starting point for the principal-sheet proof.
+      richtigkeit: complete; re-read in the cross-check
+    quellen:
+    - stelle: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B8 and proof of Lemma C
+  en_theorie:
+    beispiel: '$p=0.1\sin2\pi z$: far up, $\mathrm{Im}\,\sigma\approx y+0.05\,e^{2\pi y}\cos2\pi x$, so the tongues lie above $x\approx\pm\tfrac12$
+      (where $\cos2\pi x<0$); on their boundary $\sigma$ also takes values below $-2$.'
+    einordnung: Tool for [[br.verm.verbiegung_hauptblatt]]; complements [[br.satz.verbiegung_schwarz]].
+    genau: Every component reaches $i\infty$, and $\sigma$ is unbounded below and above on its boundary.
+    warum: |-
+      If $\sigma$ were bounded below on the boundary, there would be a bounded harmonic function ($\mathrm{Im}\log$ of a shifted $\sigma$) with boundary value 0 that is not 0 —
+      the maximum principle forbids this, because a single boundary point $\infty$ does not count.
+    worum: 'The regions $\{\mathrm{Im}\,\sigma<0\}$ of a bending: what do they look like, and which values does $\sigma$ take on their boundary?'
 - id: br.satz.ackermann
   quelle_hash: 16d51ac2167e
   theorie_hash: d467f652d95d
@@ -744,6 +1183,59 @@
     worum: |
       Hardy fields are collections of “well-behaved” functions that do not oscillate infinitely often for large $x$. There are such collections that contain functions that grow faster than any
       exponential tower — that is, tetration-like functions.
+- id: br.satz.enden_klassifikation
+  quelle_hash: 9b845c41231e
+  theorie_hash: 9117111428b9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'How a tetration on Re z > −2 can end at the top: Schröder exponent log L + 2πik or log L̄ + 2πik — only L with k = 0 occurs'
+    aussage: |-
+      Let $E_T$ be single-valued near $q=0$. Then:
+      (i) $E_T$ removable $\iff T\to L$. A zero of order $k$ corresponds to $\sigma(T)\sim e^{z(\log L+2\pi ik)}$, a pole of order $k$ corresponds to $e^{z(\log L-2\pi ik)}$;
+      in that case $|\sigma(T)|\to\infty$ (because $2\pi k>b$).
+      (ii) Zeros of order $k\ge1$ do not occur (br.satz.schroeder_kugel_genuegt); only Kneser with $k=0$ is realized.
+      (iii) If $T$ had the limit $\bar L$ at $+i\infty$ ("swapped Kneser"), the Schröder exponent at $\bar L$ would have to be a secondary branch $\log\bar L+2\pi ik$ with $k\ge1$,
+      since $|\bar L^{z}|=e^{ax+by}$ grows and forces $E(0)=0$. Paulsen–Cowgill does **not** rule out this case.
+      Candidates for a counterexample to Q* are therefore only: ends without a limit ($E_T$ with a pole or an essential singularity), ends at $\bar L$ with $k\ge1$,
+      ends at other fixed points $L_j$ of $\exp$, and $T$ that wind around singular values of $\sigma$ near $i\infty$ (then $E_T$ is multivalued).
+    bereich: base $e$; $T\in$ Hol(H); $E_T(q)=\sigma(T(z))\,L^{-z}$ on an upper half-strip, as a function of $q=e^{2\pi iz}$
+    einfach: Far up in the complex plane, a tetration that is smooth in the right half-plane can behave in only a few ways. Kneser's way — calmly
+      approaching the fixed point L — is the only one that actually occurs, as long as a certain coordinate can be chosen single-valued. What
+      remains is a few, precisely named candidates for a counterexample.
+    beweis:
+      text: |-
+        If $E$ is single-valued and removable with a zero of order $k\ge0$, then $\zeta=e^{z(\log L+2\pi ik)}E_1(q)$ with $E_1(0)\ne0$; a pole gives $e^{z(\log L-2\pi ik)}$.
+        (ii) from br.satz.schroeder_kugel_genuegt. (iii) With the Schröder function at $\bar L$: bounded $\zeta\to0$ and $|\bar L^{-z}|=e^{-ax-by}\to0$ give $E(0)=0$.
+        $\sigma=\Psi^{-1}$ with entire $\Psi$, $\Psi(Lw)=e^{\Psi(w)}$: $\Psi$ omits 0, has no critical points ($\Psi'(Lw)=e^{\Psi(w)}\Psi'(w)/L$, $\Psi'(0)=1$), and the orbit $0,1,e,e^e,\dots$
+        consists of asymptotic values.
+      luecken:
+      - Single-valuedness of E_T requires that T avoids encircling the singular values of σ near i∞; that these are exactly 0, 1, e, eᵉ, … has
+        not been proved.
+      - 'Pole case: that T then has no limit is not carried out (σ(T) runs along a logarithmic spiral to ∞; Ψ could have an asymptotic value there).'
+      - (iii) presupposes a single-valued Schröder coordinate at L̄.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: Laurent classification of the isolated singularity of E_T at q = 0 plus br.satz.schroeder_kugel_genuegt.'
+      f2_benutzte_voraussetzungen: Single-valuedness of E_T (gap), univalence of σ near L, Paulsen–Cowgill (via br.satz.schroeder_kugel_genuegt).
+      f3_spezialfall: Classification of the ends of a superfunction via the Schröder coordinate, as is usual for Kneser-type constructions.
+      f4_uebertragbar: To every base b > η (exponent log λ + 2πik).
+      f5_neue_frage: Is there a swapped Kneser (br.frage.vertauschtes_kneser)? Can E_T have a pole or an essential singularity?
+    bewertung:
+      nutzen: Narrows the possible counterexamples to Q* down to a few named types.
+      richtigkeit: Sketch; core (Laurent in q) complete, three named gaps
+    quellen:
+    - stelle: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B4, B5, B6, B12 and proof "Finding 4/6"
+  en_theorie:
+    beispiel: 'Kneser: removable with $E(0)=\kappa\ne0$, so $k=0$.'
+    einordnung: 'Open: [[br.frage.vertauschtes_kneser]]; presupposed: [[br.satz.schroeder_kugel_genuegt]].'
+    genau: |-
+      If $E_T=\sigma(T)L^{-z}$ is single-valued in $q$, a zero of order $k$ corresponds to the exponent $\log L+2\pi ik$, a pole to the exponent $\log L-2\pi ik$.
+      Only $k=0$ at $L$ occurs; an end at $\bar L$ would need a secondary branch $k\ge1$.
+    warum: An isolated singularity at $q=0$ is removable (with a zero), a pole, or essential. The factor $L^{z}$ decays upward, $\bar L^{z}$ grows
+      — so an end at $\bar L$ forces a zero.
+    worum: How can a tetration from Hol(H) behave far up, and which cases remain as a counterexample to Q*?
 - id: br.satz.endlich_viele_reichen_nicht
   quelle_hash: 0333357c1697
   theorie_hash: f0819dd33594
@@ -884,6 +1376,60 @@
     worum: |
       How smooth a periodic function is can be read off its Fourier components: If they decay exponentially, it is analytic in a strip; if they decay only like $e^{-c\sqrt k}$, it is
       “almost analytic” (Gevrey).
+- id: br.satz.halbebene_liouville_scharf
+  quelle_hash: aa57a6d2c13e
+  theorie_hash: 45866f8bd4f5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: Q* holds as soon as the bending p_T is single-valued at the top and grows more slowly than e^(2π Im z) — the threshold is sharp
+    aussage: |-
+      If $p_T$ continues uniquely holomorphically to $U$ and the one-sided bound
+      $$-\mathrm{Im}\,p_T(z)\le o\bigl(e^{2\pi\,\mathrm{Im}\,z}\bigr)\qquad(\mathrm{Im}\,z\to\infty,\ \text{uniformly in }\mathrm{Re}\,z),$$
+      holds, then $p_T\equiv0$, so $T$ is the Kneser tetration. Instead of $-\mathrm{Im}\,p_T$ one may also take $+\mathrm{Im}\,p_T$ or $\pm\mathrm{Re}\,p_T$.
+      The threshold is sharp (as a statement about periodic functions): $p=\varepsilon\sin2\pi z$ grows exactly like $\tfrac\varepsilon2e^{2\pi\,\mathrm{Im}\,z}$.
+      For Q* (br.frage.halbebene_eindeutigkeit) this means: a counterexample in Hol(H) either has a $p_T$ that is multivalued on $U$ ($T$ hits
+      branch points of $\mathrm{slog}_K$ there), or $|p_T|\ge c\,e^{2\pi\,\mathrm{Im}\,z}$ holds along a sequence. So the missing condition at $i\infty$ is
+      "$p_T$ single-valued and $o(e^{2\pi\,\mathrm{Im}\,z})$" — much weaker than the limit $L$ in Paulsen–Cowgill.
+    bereich: real tetrations $T$ to base $e$ on $(-2,\infty)$ with $T(0)=1$; $T=\mathrm{sexp}_K\circ(\mathrm{id}+p_T)$, $p_T=\mathrm{slog}_K\circ
+      T-\mathrm{id}$; $U=\{\mathrm{Im}\,z>0\}$
+    einfach: 'Every real tetration is a "bent" Kneser tetration: T(x) = Kneser(x + p(x)) with a periodic bending p. If p can be continued into
+      the upper half-plane and grows there more slowly than e to the power 2π times the height, then p is zero — the tetration is Kneser. A simple
+      sine grows exactly as fast as this threshold.'
+    beweis:
+      text: |-
+        $P(q):=p_T(z)$ is holomorphic on $0<|q|<1$ and, by real analyticity, also on an annulus around $|q|=1$, and the reflection $P(1/\bar q)=\overline{P(q)}$
+        continues $P$ to $\mathbb C^*$: $P=\sum c_nq^n$ with $c_{-n}=\bar c_n$. For $f=iP$ (coefficients $a_n=ic_n$) and $A(r)=\max(0,\sup_{|q|=r}\mathrm{Re}\,f)$ we have
+        $\frac1\pi\int\mathrm{Re}\,f(re^{it})e^{-int}dt=a_nr^n+\overline{a_{-n}}r^{-n}$ and $|\mathrm{Re}\,f|\le2A-\mathrm{Re}\,f$, hence
+        $|a_{-m}|\le r^m(4A(r)+2|a_0|)+|a_m|r^{2m}$ (Borel–Carathéodory). The hypothesis is $A(r)=o(1/r)$; letting $r\to0$ gives $c_{-m}=0$ for $m\ge1$, and by symmetry
+        $c_m=0$. So $p_T$ is constant, and $T(0)=1$ gives $p_T=0$. Sharpness: $\sin2\pi z=(e^{2\pi iz}-e^{-2\pi iz})/2i$.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: a Laurent series in q and a Borel–Carathéodory estimate; the reflection c₋ₙ = c̄ₙ turns the one-sided bound
+        into a two-sided one.'
+      f2_benutzte_voraussetzungen: p_T real-analytic, 1-periodic, uniquely holomorphic on U with the one-sided bound; T(0) = 1. Holomorphy of
+        T on Re z > −2 is not used.
+      f3_spezialfall: Generalizes fg.lem.periodisch_liouville (there bounded above and below) to one-sided growth o(e^{2π Im z}) for real p.
+      f4_uebertragbar: To every base b > η (with sexp_b, slog_b) and every real superfunction written as a bending of a reference solution.
+      f5_neue_frage: When is p_T single-valued on U for T ∈ Hol(H)? The multivaluedness comes from the branch points of slog_K (br.satz.enden_klassifikation).
+    bewertung:
+      nutzen: Names exactly which condition at i∞ is missing for Q*.
+      richtigkeit: complete; proof re-read in the cross-check 25.10.2026
+    quellen:
+    - stelle: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B1, B2 and proof of Theorem A
+  en_theorie:
+    beispiel: $p=\varepsilon\sin2\pi z$ has $|p|\approx\tfrac\varepsilon2e^{2\pi\,\mathrm{Im}\,z}$ — exactly at the threshold; the corresponding
+      tetration is nevertheless not in Hol(H) ([[br.beob.hauptblatt_singularitaet_trig]]).
+    einordnung: 'Generalizes [[fg.lem.periodisch_liouville]]; partial answer to [[br.frage.halbebene_eindeutigkeit]]; the form with a limit: [[br.satz.schroeder_kugel_genuegt]].'
+    genau: $p_T$ uniquely holomorphic on $U$ and one-sidedly $-\mathrm{Im}\,p_T\le o(e^{2\pi\,\mathrm{Im}\,z})$ $\Rightarrow$ $p_T\equiv0$. The
+      threshold $e^{2\pi\,\mathrm{Im}\,z}$ is the size of $\sin2\pi z$.
+    warum: |-
+      In $q=e^{2\pi iz}$, $p_T$ is a Laurent series; because $p_T$ is real, the coefficients of $q^n$ and $q^{-n}$ belong together. A one-sided bound on the
+      real part controls, by Borel–Carathéodory, all coefficients of $q^{-n}$; the growing modes drop out, and by symmetry the decaying ones too.
+    worum: |-
+      Q* asks whether holomorphy on $\mathrm{Re}\,z>-2$ already forces Kneser. Every real tetration is $T=\mathrm{sexp}_K\circ(\mathrm{id}+p_T)$ with periodic $p_T$;
+      Kneser means $p_T=0$. Which condition on $p_T$ far up is enough?
 - id: br.satz.halbexp_komplexitaet
   quelle_hash: d76bfb1149e0
   theorie_hash: 177726830f97
@@ -936,42 +1482,39 @@
       Half-exponential functions — functions that give the exponential function when applied twice in a row — appear not only in Kneser's work, but also as the
       limit of what can be proved about the complexity of computational problems.
 - id: br.satz.hyperop_varianten
-  quelle_hash: 0018644d4f47
+  quelle_hash: 96200c894de9
   theorie_hash: 7153f546b3cd
   herkunft:
     modell: sonnet
-    datum: '2026-10-12'
-  geprueft:
-    beweis: zweitpruefung
-    intern: nein
-    kern: zweitpruefung
-    theorie: nein
-    zusatz: nein
+    datum: '2026-10-25'
+  geprueft: nein
   en:
-    beweis:
-      text: |
-        (i) $x[4'](n+1)=(x[4']n)^x$ with $x[4']0=x$ gives $x^{x^n}$; the left pentation by substitution. (ii) Induction on $b=2^k$. (iii) Conjugation with $\log^{[s]}$ transfers commutativity and associativity of
-        addition; distributivity: $\log^{[s]}(x\oplus_s y)=\log^{[s]}x+\log^{[s]}y$, and $\exp$ turns sums into products, so $\oplus_{s+1}$ distributes over $\oplus_s$.
-    pruefung:
-      f2_benutzte_voraussetzungen: 'For (iii) with non-integer s: an iteration group exp^[s].'
-      f5_neue_frage: Is there a natural choice for the intermediate levels (Nixon's half-operations, forum tid 1386, 1535)?
-      f3_spezialfall: 'Yes: conjugation of a group operation.'
-      f1_folgt_unmittelbar: Yes.
-      f4_uebertragbar: Any iteration group instead of exp^[s].
-    bewertung:
-      nutzen: Shows what freedom lies in the definition of the hyperoperations.
-      richtigkeit: complete
     titel: 'Other parenthesizations: left-parenthesized, balanced, and Bennett''s commutative hyperoperations'
-    aussage: |
+    aussage: |-
       (i) **Left-parenthesized** tetration is trivial: with $x[4']0=x$ we have $x[4']n=x^{x^n}$; only the left pentation
       ($x[5']0=x$, $x[5'](n+1)=(x[5']n)[4']x$) becomes nontrivial: $x[5']1=x^{x^x}$, $x[5']2=x^{x^{x+x^{x+1}}}$.
       (ii) **Balanced** ($a[n+1](2b)=(a[n+1]b)[n](a[n+1]b)$) again gives $\cdot$ and exponentiation for levels 2, 3; balanced tetration is the iteration of $x\mapsto x^x$
-      at the point $2^t$: $a[4]2^t=f^{[t]}(a)$ with $f(x)=x^x$ — a fixed point at 1 with $f'(1)=1$ (parabolic).
+      at the point $2^t$: $a[4]2^t=f^{[t]}(a)$ with $f(x)=x^x$ — a fixed point at 1 with $f'(1)=1$ (parabolic). In the logarithm this is the iteration of $me^m$, i.e. of the
+      product tetration; so there is a natural fractional height without Kneser (sketched in br.satz.klammerung_fortsetzung).
       (iii) **Bennett (1915):** $x\oplus_sy=\exp^{[s]}\bigl(\log^{[s]}x+\log^{[s]}y\bigr)$ gives addition, multiplication and $x\oplus_2y=e^{\ln x\ln y}$ for $s=0,1,2$; every level is
       commutative, associative, and distributes over the previous one. With $\exp^{[1/2]}$ (kn.satz.halbe_exp) an operation “between + and ·” arises.
     einfach: How you parenthesize a tower is a choice. Parenthesized from the top, you get the usual tetration; from the bottom, something simple.
       Bennett proposed an entirely different ladder in 1915, in which every level stays commutative — and with the half-exponential function you
       even get intermediate levels.
+    beweis:
+      text: |-
+        (i) $x[4'](n+1)=(x[4']n)^x$ with $x[4']0=x$ gives $x^{x^n}$; the left pentation by substitution. (ii) Induction on $b=2^k$. (iii) Conjugation with $\log^{[s]}$ transfers commutativity and associativity of
+        addition; distributivity: $\log^{[s]}(x\oplus_s y)=\log^{[s]}x+\log^{[s]}y$, and $\exp$ turns sums into products, so $\oplus_{s+1}$ distributes over $\oplus_s$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes.
+      f2_benutzte_voraussetzungen: 'For (iii) with non-integer s: an iteration group exp^[s].'
+      f3_spezialfall: 'Yes: conjugation of a group operation.'
+      f4_uebertragbar: Any iteration group instead of exp^[s].
+      f5_neue_frage: 'Is there a natural choice for the intermediate levels (Nixon''s half-operations, forum tid 1386, 1535)? Structure of the
+        left ranks at 1: br.satz.linke_raenge_keim.'
+    bewertung:
+      nutzen: Shows what freedom lies in the definition of the hyperoperations.
+      richtigkeit: complete
     quellen:
     - {}
     - {}
@@ -979,19 +1522,17 @@
     - stelle: (i) left-evaluated hyperoperations
     - stelle: (iii) Bennett's sequence as a sequence of monoids, field by completion
   en_theorie:
-    beispiel: |
-      $2\oplus_22=e^{(\ln2)^2}=1.6168$; $e\oplus_2y=y$ — $e$ is the neutral element of level 2.
-    einordnung: |
-      With the half-exponential function ([[kn.satz.halbe_exp]]), Bennett levels between the integer ones can be formed.
-    genau: |
+    beispiel: $2\oplus_22=e^{(\ln2)^2}=1.6168$; $e\oplus_2y=y$ — $e$ is the neutral element of level 2.
+    einordnung: With the half-exponential function ([[kn.satz.halbe_exp]]), Bennett levels between the integer ones can be formed.
+    genau: |-
       - **Left:** $x[4']n=x^{x^n}$, the left pentation is nontrivial.
       - **Balanced:** doubling instead of counting further; balanced tetration iterates $x\mapsto x^x$.
       - **Bennett (1915):** $x\oplus_sy=\exp^{[s]}(\log^{[s]}x+\log^{[s]}y)$ — every level commutative and associative, $\oplus_2$ is $e^{\ln x\ln y}$.
-    warum: |
+    warum: |-
       1. Left: $(x^{x^n})^x=x^{x^{n+1}}$.
       2. Bennett: With $\log^{[s]}$ every level is converted into ordinary addition; commutativity and associativity come from there, and because $\exp$ turns sums into
          products, every level distributes over the previous one.
-    worum: |
+    worum: |-
       “Tetration” presupposes a parenthesization: from the top. Other parenthesizations and other ladders give other operations — some trivial, some with beautiful
       laws.
 - id: br.satz.kalmar
@@ -1034,6 +1575,152 @@
       depth.
     worum: |
       In computability too, tetration is the first function to break through a natural limit: It is computable with simple loops, but not “elementary”.
+- id: br.satz.klammerung_fortsetzung
+  quelle_hash: 68e3a6ba6bc8
+  theorie_hash: 589a7f701a8e
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: Fractional heights for balanced tetration and left pentation via the Fatou coordinate of m·e^m — entirely without Kneser
+    aussage: |-
+      For $m>0$ (repelling side) let $\Phi(m)=\lim_n\bigl(\Phi_{\rm as}(W^{[n]}(m))+n\bigr)$, for $m<0$ (attracting side) $\Phi(m)=\lim_n\bigl(\Phi_{\rm as}(F^{[n]}(m))-n\bigr)$,
+      and $F^{[t]}=\Phi^{-1}(\Phi+t)$ on each side. With this,
+      $$a[4]2^t=\exp F^{[t]}(\ln a),\qquad x[5']t=\exp\bigl(F^{[t]}(x\ln x)/x\bigr)$$
+      are defined for all real $t$, real-analytic in $t$ and with the semigroup property. For $x>1$ resp. $0<x<1$, $x\ln x$ lies on the repelling resp. attracting side (likewise $\ln a$ for $a>1$ resp. $a<1$).
+      The Fatou coordinate of each side is unique up to an additive constant, and this drops out of $F^{[t]}$: one needs **no** Kneser procedure. Numerical error about $c_{K+1}n^{-K-1}$.
+      On the repelling side this is exactly the product tetration: $F^{[t]}(m)=\mathrm{prodtet}_e(\mathrm{prodslog}_e(m)+t)$ (br.satz.produkt_parabolisch), so e.g. $a[4]2^t=\exp\,\mathrm{prodtet}_e\bigl(\mathrm{prodslog}_e(\ln a)+t\bigr)$ for $a>1$.
+    bereich: $F(m)=me^m$, parabolic fixed point 0; real starting values $m\neq0$; asymptotic Fatou series $\Phi_{\rm as}(m)=-1/m+\tfrac12\ln|m|-m/6+m^2/16-\dots$
+      (br.beob.produkt_iteration_dreieck; in the report 22 terms exactly)
+    einfach: Because both variants merely repeat m ↦ m·e^m, and this map has a particularly simple fixed point at 0, there is a natural way to
+      apply them "half" or "one and a half times" as well — much simpler than for ordinary tetration.
+    beweis:
+      text: |-
+        On the attracting and the repelling real sheet there exists a Fatou coordinate (it.satz.leau_fatou) with the asymptotic series $\Phi_{\rm as}$; $W^{[n]}(m)\to0^+$ and $F^{[n]}(m)\to0^-$ respectively,
+        so the limits converge. $\Phi^{-1}(\Phi+t)$ does not depend on the additive constant. Computation with Newton inversion of $\Phi_{\rm as}$ (kanonisch.py).
+      luecken:
+      - The uniqueness theorem for Fatou coordinates is cited and not verified for the real sheet; which additional real condition singles out
+        this iteration among all real-analytic iterations of F (e.g. the asymptotics $F^{[t]}(m)=m+tm^2+\dots$ as for Szekeres, it.satz.szekeres)
+        is not carried out.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: standard theory of parabolic fixed points, applied to $F$.'
+      f2_benutzte_voraussetzungen: Existence and uniqueness of the Fatou coordinate on the real sheets; convergence of $W^{[n]}$ and $F^{[n]}$
+        to 0.
+      f3_spezialfall: 'Yes: regular parabolic iteration as for the product tetration (br.satz.produkt_parabolisch) and for $b=\eta$ (kl.satz.parabolisch).'
+      f4_uebertragbar: To all left ranks (germ at 1 parabolic, br.satz.linke_raenge_keim); for balanced ranks ≥ 5 these are multi-sheeted Fatou
+        coordinates.
+      f5_neue_frage: Is the continuation analytic at $x=1$ (resp. $a=1$)? (Presumably not, it.verm.mexp_halbiterierte_divergent.)
+    bewertung:
+      nutzen: Gives these variants fractional heights without a freedom of choice θ; on the repelling side it is already in the graph as the product
+        tetration.
+      richtigkeit: Sketch; building blocks from the literature, uniqueness statement cited (cf. it.satz.szekeres)
+    quellen:
+    - stelle: forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Finding 5; kanonisch.py
+    - stelle: §10 (Leau–Fatou, Fatou coordinates)
+  en_theorie:
+    beispiel: $2[4]\sqrt2=\exp F^{[1/2]}(\ln2)=2.55195159006647\ldots$
+    einordnung: |-
+      Building blocks: [[it.satz.leau_fatou]] and the Fatou series of $xe^x$ ([[br.beob.produkt_iteration_dreieck]]); on the repelling side it is the product tetration ([[br.satz.produkt_parabolisch]]);
+      same approach for $b=\eta$ ([[kl.satz.parabolisch]]); real uniqueness: [[it.satz.szekeres]].
+    genau: 'Via the Fatou coordinate of $F$ at its parabolic fixed point 0: $F^{[t]}=\Phi^{-1}(\Phi+t)$, separately on the repelling ($m>0$) and
+      attracting side ($m<0$).'
+    warum: |-
+      At a parabolic fixed point the Fatou coordinate is unique up to a constant on each sheet, and the constant drops out when iterating. For ordinary tetration, no
+      such real fixed point exists (for $b>\eta$), which is why Kneser is needed there.
+    worum: How does one continue the height of these variants to real numbers without the freedom of choice θ of ordinary tetration?
+- id: br.satz.klammerung_log_reduktion
+  quelle_hash: d2c3e188a9bc
+  theorie_hash: eb1fb31b29a7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Balanced tetration and left pentation are both the iteration of F(m) = m·e^m (inverse: Lambert W)'
+    aussage: |-
+      With $F(m)=me^m$ we have exactly $\ln(y^y)=F(\ln y)$ and $\ln\bigl(z[4']x\bigr)=\zeta e^{x\zeta}$ ($\zeta=\ln z$); with $m=x\zeta$ the step of the left pentation also becomes $F$. For integers $n\ge0$:
+      $$a[4]2^n=\exp F^{[n]}(\ln a),\qquad x[5']n=\exp\bigl(F^{[n]}(x\ln x)/x\bigr).$$
+      Likewise in the convention $a_4b=a^{a^{b-1}}$, $a_5(b+1)=(a_5b)_4a$, $a_51=a$ (according to the report the Wikipedia convention): $a_5b=\exp\bigl(F^{[b-1]}((a-1)\ln a)/(a-1)\bigr)$ for $a\neq1$.
+      $F$ is exactly the step $g_e(x)=xe^x$ of the product tetration (br.def.produkt_tetration; with $m=\lambda x$ also $x\mapsto xe^{\lambda x}$): all these variants are the same parabolic iteration.
+      In the complex domain, $F$ has exactly the fixed points $m=2\pi ik$ with multiplier $1+2\pi ik$ (repelling for $k\neq0$); for $x^x$ they all lie above $y=1$ on different sheets of the logarithm, for the step of the left pentation at $\ln y=2\pi ik/x$.
+    bereich: Left hyperoperations and balanced tetration as in br.satz.hyperop_varianten; $x>0$, $a>0$; integer heights
+    einfach: Two unusual ways of building towers — balanced (x to the x, again and again) and parenthesized from the bottom — look different.
+      If one takes the logarithm, both become the same simple map m ↦ m·e^m.
+    beweis:
+      text: |-
+        $\ln(y^y)=y\ln y=e^\ell\ell=F(\ell)$ with $\ell=\ln y$; the balanced recursion $a[4]2b=(a[4]b)^{a[4]b}$ is therefore $\ell\mapsto F(\ell)$, and $a[4]1=a$.
+        Left: $\ln(z^{z^x})=z^x\ln z=\zeta e^{x\zeta}$; with $m_n:=x\ln(x[5']n)$ we get $m_{n+1}=x\zeta_ne^{x\zeta_n}=F(m_n)$, $m_0=x\ln x$. The second convention likewise with $a-1$ instead of $x$.
+        Fixed points: $me^m=m\iff m=0$ or $e^m=1$; $F'(m)=(1+m)e^m$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes (one line).
+      f2_benutzte_voraussetzungen: Only the recursions; for integer heights no iteration theory.
+      f3_spezialfall: For $x^x$ the logarithm conjugation is folklore; with the product tetration a common normal form.
+      f4_uebertragbar: To every variant whose step in the logarithm has the form $\zeta e^{c\zeta}$.
+      f5_neue_frage: Fractional heights via the Fatou coordinate of $F$ (br.satz.klammerung_fortsetzung).
+    bewertung:
+      nutzen: Reduces three variants to one map and makes them computable with standard theory; for x^x probably folklore, for the left pentation
+        not found.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Findings 1, 3, 13
+  en_theorie:
+    beispiel: $2[5']1=\exp(F(2\ln2)/2)=\exp(2\ln2\cdot4/2)=16=2^{2^2}$.
+    einordnung: Complements [[br.satz.hyperop_varianten]]; $F$ is the step of the product tetration ([[br.def.produkt_tetration]], [[br.satz.produkt_parabolisch]]);
+      the inverse is Lambert W ([[fp.satz.lambert]]).
+    genau: 'In the logarithm both are the iteration of $F(m)=me^m$: $a[4]2^n=\exp F^{[n]}(\ln a)$, $x[5'']n=\exp(F^{[n]}(x\ln x)/x)$.'
+    warum: $\ln(y^y)=y\ln y$, and with $y=e^\ell$ this is $\ell e^\ell$. For the left pentation, $\ln(z^{z^x})=\zeta e^{x\zeta}$; with $m=x\zeta$
+      one gets $me^m$ again.
+    worum: Balanced tetration (iteration of $x\mapsto x^x$) and left pentation (iteration of $y\mapsto y^{y^x}$) look different. What is behind
+      this?
+- id: br.satz.linke_raenge_keim
+  quelle_hash: 58ae634efe12
+  theorie_hash: 0bc468fbdca9
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: All left ranks from 5 on have the same structure at 1; iterative residue ½ at rank 5′ and (9 − 2k)/(2x) for the step of rank k + 1
+      ≥ 6′
+    aussage: |-
+      $$T_k(\zeta,s)=\zeta+s\zeta^2+(A_ks^2+B_ks)\zeta^3+O(\zeta^4),\qquad A_4=\tfrac12,\ B_4=0;\qquad A_k=1,\ B_k=k-\tfrac92\ \ (k\ge5),$$
+      from the recursion $A_{k+1}=1$, $B_{k+1}=A_k+B_k$. The step of every left rank is parabolic at $y=1$ with second coefficient = base $x$, and its iterative residue is
+      $$\beta=\tfrac12\ \ \text{(left pentation, every }x),\qquad \beta=\frac{9-2k}{2x}\ \ (k\ge5):\ \text{hexation }-\tfrac1{2x},\ \text{rank 7′ }-\tfrac3{2x}.$$
+      Left hexation to base 2: $G=\zeta+2\zeta^2+5\zeta^3+\dots$, $\beta=-\tfrac14$.
+    bereich: '$T_k(\zeta,s):=\ln\bigl(e^\zeta[k'']s\bigr)$ for left ranks $k\ge4$; step of rank $k+1$ to base $x$: $u\mapsto T_k(u,x)$, fixed
+      point $u=0$ ($y=1$); iterative residue $\beta=1-b/a^2$ for $u+au^2+bu^3+\dots$'
+    einfach: All operations parenthesized from the bottom, from the fifth on, look the same at 1. They differ only in one key number, and there
+      is a simple formula for it.
+    beweis:
+      text: |-
+        Induction: if $T_k(u,s)=u+su^2+(As^2+Bs)u^3+\dots$, then the step of rank $k+1$ to base $y=e^\zeta$ is the germ $u\mapsto u+yu^2+(Ay^2+By)u^3$.
+        Its $s$-fold iterate is $u+sau^2+(sb+s(s-1)a^2)u^3$; starting from $u=\zeta$ with $y=1+\zeta+\dots$ this gives $\zeta+s\zeta^2+(s^2+(A+B)s)\zeta^3$. Start $T_4=\zeta e^{s\zeta}$.
+        For integer $s$ the iteration formula is induction; for real $s$ it is the formal flow formula (named condition). Exact check in fractions: $T_5,T_6,T_7$ for $s=1\dots4$ give $n^2+(k-\tfrac92)n$.
+    bedingungen_text: For rank 5′ and for integer base $x$ without condition (only integer iteration numbers). For rank $\ge6′$ with non-integer
+      base under the assumption that the canonical fractional iterate (br.satz.klammerung_fortsetzung) has the formal expansion uniformly in $s$
+      (standard theorem, not verified).
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: induction with the iteration formula for germs of third order.'
+      f2_benutzte_voraussetzungen: Log reduction of the first step; iteration formula; for real iteration numbers the uniform expansion.
+      f3_spezialfall: Rank 5′ is the germ of the product tetration (br.satz.produkt_parabolisch, residue ½).
+      f4_uebertragbar: Higher orders $\zeta^4,\dots$ can be obtained recursively in the same way.
+      f5_neue_frage: Cite or prove uniformity in $s$; take $B_k=k-\tfrac92$ as a function of $k$ seriously for a fractional rank between 5′ and
+        6′?
+    bewertung:
+      nutzen: One key number that distinguishes all left ranks and makes them comparable.
+      richtigkeit: complete for rank 5′ and integer bases; otherwise under the named condition; checked exactly for s = 1…4 at k = 5, 6, 7 and
+        recomputed when entering
+    quellen:
+    - stelle: forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Findings 7, 8; rang_keime.py, rang_keime_ausgabe.txt
+  en_theorie:
+    beispiel: 'Left hexation to base 2: step $\zeta+2\zeta^2+5\zeta^3+\dots$, residue $1-5/4=-\tfrac14$.'
+    einordnung: 'Builds on [[br.satz.klammerung_log_reduktion]]; consequence: [[br.kor.linke_varianten_nicht_eta]]; the residue governs the rate
+      in [[it.satz.parabolische_rate]].'
+    genau: $\ln(e^\zeta[k']s)=\zeta+s\zeta^2+(A_ks^2+B_ks)\zeta^3+\dots$ with $A_k=1$, $B_k=k-\tfrac92$ ($k\ge5$); iterative residue of the step
+      $\tfrac12$ (rank 5′) and $(9-2k)/(2x)$ respectively.
+    warum: Each rank iterates the previous one; the iteration formula $u+sau^2+(sb+s(s-1)a^2)u^3$ for germs gives the recursion $B_{k+1}=A_k+B_k$.
+    worum: What do the higher left ranks look like at the fixed point 1?
 - id: br.satz.lokal_genau_dann_halbebene
   quelle_hash: e8cfe0822a3d
   theorie_hash: 9ab82d72d64a
@@ -1076,6 +1763,113 @@
       A Möbius bending is holomorphic on every bounded domain but violates the condition for large $x$ — one needs $x\to\infty$ as in Bohr–Mollerup.
     einordnung: |
       Reduces [[br.frage.bohr_mollerup]] to [[br.frage.halbebene_eindeutigkeit]]; uniqueness with a limit: [[kn.satz.paulsen_cowgill]].
+- id: br.satz.momente_cauchy
+  quelle_hash: 92f316cd7a3d
+  theorie_hash: 857c8c27009a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: Moment family ⇔ the Cauchy transform of the values of θ_T is 1/(ζ − c) outside the curve
+    aussage: |-
+      Let $C_T(\zeta)=\displaystyle\int_0^1\frac{dx}{\zeta-\theta_T(x)}$ be the Cauchy transform of the value distribution of $\theta_T$ and $\Omega_T$ the component of
+      $\mathbb C\setminus\Gamma_T$ that contains a left half-plane. Then
+      $$M[\theta_T^k]=M[\theta_T]^k\ \text{for all }k\ge1\iff C_T(\zeta)=\frac1{\zeta-c}\ \text{on }\Omega_T .$$
+      In particular $c$ does not lie in $\Omega_T$. So the infinitely many equations of the moment family are **one** equation for a holomorphic function.
+      Numerically (Kneser, 20 digits): $|C_T-1/(\zeta-c)|\le7\cdot10^{-22}$ at $\zeta=-5,\ 20+5i,\ 25+10i,\ 26-3i$. For counterexample a from stage 4 (only $M[\theta_T^2]=M[\theta_T]^2$)
+      the deviation at $\zeta=-5$ is $2.4\cdot10^{-10}$, matching the first violated moment ($\approx V_3/(\zeta-c)^4=2.7\cdot10^{-10}$).
+    bereich: real-analytic tetrations $T=\mathrm{sexp}\circ\varphi$ to base $e$, $\varphi=\mathrm{id}+p$, $p$ 1-periodic, $\varphi'>0$; $\theta_T=h\circ
+      T-\mathrm{id}$, $M=\int_0^1$, $c=M[\theta_T]$, $\Gamma_T=\theta_T((0,1))$
+    einfach: 'Instead of infinitely many equations "mean of the k-th power = k-th power of the mean", a single one suffices: a certain function
+      formed from all values of the wave must look exactly like 1/(ζ − c) outside the wave curve.'
+    beweis:
+      text: |-
+        For $\mathrm{Re}\,\zeta<-R_T\le\inf\mathrm{Re}\,\theta_T$ we have $1/(\zeta-w)=-\int_0^\infty e^{t(\zeta-w)}dt$ for all $w\in\Gamma_T$. Fubini (integrand $\le e^{t(\mathrm{Re}\,\zeta+R_T)}$) gives
+        $C_T(\zeta)=-\int_0^\infty e^{t\zeta}\Lambda(t)\,dt$ with $\Lambda(t)=M[e^{-t\theta_T}]=\sum_k(-t)^kM[\theta_T^k]/k!$ (dominated by $M[e^{t|\theta_T|}]<\infty$).
+        Under the moment family, $\Lambda(t)=e^{-tc}$, so $C_T=1/(\zeta-c)$ on the half-plane and, by continuation, on all of $\Omega_T$. Conversely, the
+        uniqueness of the Laplace transform gives $\Lambda(t)=e^{-tc}$ for $t>0$; because $\Lambda$ is entire, this holds for all $t$, and the Taylor coefficients are the moments.
+        If $c$ lay in $\Omega_T$, the function $C_T$, holomorphic there, would have a pole.
+    bedingungen_text: Uses that Re θ_T is bounded below on (0, 1) (at both ends Re θ_T → +∞). This comes from the local form of kn.satz.theta_singularitaet,
+      which is tied there to the engine assumption (E) (branch choice certified with intervals, kn.satz.zweigwahl_zertifikat). The integrability
+      of e^{λ|θ_T|} follows from the majorant of kn.satz.theta_mittelwerte.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: moments ↔ Laplace transform ↔ Cauchy transform is classical; what is new is the application to θ_T.'
+      f2_benutzte_voraussetzungen: Re θ_T bounded below (local form at the ends); M[e^{λ|θ_T|}] < ∞ for all λ (majorant |θ| ≤ 31.7 + 2.91 lnlnln(1/|z|)
+        from kn.satz.theta_mittelwerte, transferred via θ_T = θ∘φ + p and min φ′ > 0).
+      f3_spezialfall: 'Yes: a moment problem with an exponentially integrable distribution is determined by the Laplace transform.'
+      f4_uebertragbar: To every base above η with the same local form at the integers.
+      f5_neue_frage: When is 1/(ζ − c) the only continuation into the interior of the curve? → br.satz.momente_jordan
+    bewertung:
+      nutzen: Turns the infinite moment family into one equation for a holomorphic function; basis of the Jordan theorem.
+      richtigkeit: proved except for the behavior at the ends (local form); numerical to 7·10⁻²²
+    quellen:
+    - stelle: forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Finding C and Theorem C; s1_kurve.py
+  en_theorie:
+    beispiel: For Kneser it holds to $7\cdot10^{-22}$; a look-alike that satisfies only $k=2$ misses it by $2.4\cdot10^{-10}$ — exactly as much
+      as the third moment predicts.
+    einordnung: Initial question [[br.frage.momentenfamilie]]; consequence in the Jordan case [[br.satz.momente_jordan]].
+    genau: It holds if and only if $\int_0^1dx/(\zeta-\theta_T(x))=1/(\zeta-c)$ on the outer component of $\mathbb C\setminus\Gamma_T$.
+    warum: |-
+      Far to the left, $1/(\zeta-w)$ is a Laplace transform; if one swaps the integrals, the Laplace transform of $M[e^{-t\theta_T}]=\sum(-t)^kM[\theta_T^k]/k!$ appears.
+      The moment family says exactly that this sum is $e^{-tc}$.
+    worum: The moment family $M[\theta_T^k]=M[\theta_T]^k$ is infinitely many equations. Can they be combined into one?
+- id: br.satz.momente_jordan
+  quelle_hash: 3484419244ed
+  theorie_hash: 0d086d026bcc
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Jordan case: moment family and a θ_T-curve without double points force Kneser'
+    aussage: |-
+      If $\theta_T$ is injective on $(0,1)$ and $M[\theta_T^k]=M[\theta_T]^k$ holds for all $k$, then
+      $$\theta_T(x)=G\bigl(e^{2\pi i(x+\beta)}\bigr)$$
+      with the conformal map $G:\mathbb D\to D_T$, $G(0)=c$, and a constant $\beta$. So the values of $\theta_T$ are distributed exactly according to the harmonic measure of $D_T$ seen from the point $c$,
+      $\theta_T$ has no negative Fourier modes, and by br.satz.reelle_kennzeichnung $T=$ Kneser.
+      The obvious constructions for counterexamples fail: $\theta_T=G(\beta-x)$ (only negative modes) has the wrong direction of circulation at the tip, and $G\circ\psi$ with a
+      measure-preserving map $\psi$ of degree $n\ge2$ would have $n$ tips per period instead of one.
+    bereich: as in br.satz.momente_cauchy; $\Gamma_T$ a Jordan curve through $\infty$ (i.e. $\theta_T$ injective on $(0,1)$), $D_T$ the component
+      of $\hat{\mathbb C}\setminus\Gamma_T$ that is not $\Omega_T$
+    einfach: If the wave curve does not intersect itself, the means of all powers determine how fast the curve is traversed — and that works in
+      only one way, exactly as for Kneser. So such a tetration is Kneser.
+    beweis:
+      text: |-
+        Near $x=0$, $\theta_T(x)=\theta(\varphi'(0)x)+O(x)$, and the distance between the two sides of the tip ($\asymp1/(X\ln X)$) is much larger than $O(x)$; therefore $D_T$ lies, as for Kneser,
+        to the left of the direction of travel. $C_T(\zeta)=\int_\Gamma f(z)\,dz/(\zeta-z)$ with $f=1/\theta_T'$ jumps across $\Gamma_T$ by $-2\pi if$ (Plemelj). With $C_T=1/(\zeta-c)$ on $\Omega_T$
+        (br.satz.momente_cauchy), $\Phi:=1/(\zeta-c)-C_T$ has on $D_T$ a simple pole at $c$ (residue 1) and the boundary values $\Phi(\theta_T(x))\,\theta_T'(x)=2\pi i$.
+        $F(q):=q\,\Phi(G(q))\,G'(q)$ is holomorphic on $\mathbb D$ with $F(0)=1$, and on the circle $q=e^{i\tau}$ we have $F\,d\tau=2\pi\,dx$, so $F$ is real and $\ge0$ there. A holomorphic $F$
+        with real boundary values is constant, so $F\equiv1$ and $dx/d\tau=1/2\pi$: that is the claim. No negative modes; then br.satz.reelle_kennzeichnung (Paulsen–Cowgill).
+      luecken:
+      - (a) “Im F has boundary value 0 ⇒ Im F ≡ 0” needs F in the Smirnov class; D_T is unbounded with a very thin tip (G only in H^p for p <
+        ½), F is not estimated.
+      - (b) Isolated zeros of θ_T′ (cusps of the curve) are excluded; this concerns only a null set, but is not carried out.
+      - (c) For “no negative modes” one needs G ∈ H¹; only θ_T ∈ L¹ is known.
+      - (d) The direction of circulation at the tip is justified only via the local form; that c lies in D_T (and not on Γ_T) is not shown separately
+        — br.satz.momente_cauchy gives only c ∉ Ω_T.
+    pruefung:
+      f1_folgt_unmittelbar: No; the core is the positivity of F = q·Φ(G)·G′ on the circle.
+      f2_benutzte_voraussetzungen: br.satz.momente_cauchy; Jordan property of Γ_T; Plemelj jump; Hardy and Smirnov classes (gaps a, c); orientation
+        at the tip (local form); br.satz.reelle_kennzeichnung.
+      f3_spezialfall: 'Yes: on a Jordan domain, the harmonic measure is the only distribution on the boundary with Cauchy transform 1/(ζ − c)
+        outside.'
+      f4_uebertragbar: To every base above η and to Kneser-type waves with exactly one tip per period.
+      f5_neue_frage: Case with a double point (br.frage.momente_doppelpunkt); close gap (a) via the local form and |θ_T| ≲ log log log.
+    bewertung:
+      nutzen: Answers br.frage.momentenfamilie for all tetrations with a wave curve free of double points (up to the gaps).
+      richtigkeit: Proof sketch with four named gaps
+    quellen:
+    - stelle: forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Findings J and R, Theorem J and Section (R)
+  en_theorie:
+    beispiel: 'Kneser itself: $G(q)=\theta(z)$ with $q=e^{2\pi iz}$, $\beta=0$.'
+    einordnung: From [[br.satz.momente_cauchy]] and [[br.satz.reelle_kennzeichnung]]; [[br.frage.momente_doppelpunkt]] remains open.
+    genau: 'Yes (sketch): then $\theta_T(x)=G(e^{2\pi i(x+\beta)})$ with the conformal map $G$ of the interior domain, so no negative modes, so
+      Kneser.'
+    warum: |-
+      Outside, the Cauchy transform is $1/(\zeta-c)$; its jump across the curve gives inside a function with a fixed pole at $c$. Pulled back to the disk it becomes
+      a holomorphic function with real, positive boundary values — and that is constant. This fixes the speed.
+    worum: Does the moment family force Kneser when the wave curve does not intersect itself?
 - id: br.satz.nicht_definierbar
   quelle_hash: ee306b2e785c
   theorie_hash: b061e02ee1f0
@@ -1266,28 +2060,30 @@
     einordnung: |
       Explains [[br.beob.produkt_iteration_dreieck]]; counterpart for $e^x-1$: [[it.satz.zeta_polynom_partitionen]].
 - id: br.satz.produkt_parabolisch
-  quelle_hash: 435a401ac402
+  quelle_hash: 6b2963e6da30
   theorie_hash: 55e0fc399662
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: Product tetration lives at a parabolic fixed point — like tetration at η, not like Kneser
-    aussage: |
+    aussage: |-
       $0$ is a parabolic fixed point: $g(x)=x+\lambda x^2+\tfrac{\lambda^2}{2}x^3+\dots$ The formal iterates have coefficients that are polynomials in the
       iteration number $c$:
       $$g^{\circ c}(x)=x+c\lambda x^2+\tfrac{c(2c-1)}{2}\lambda^2x^3+O(x^4)$$
-      (as in the answer in the forum). The series diverges in general (it.satz.baker); the natural continuation is the Fatou coordinate
+      (as in the answer in the forum). The series diverges in general (cf. it.satz.baker for $e^z-1$); the formal half iterate diverges numerically like $(k-2)!/(2\pi)^k$
+      (it.verm.mexp_halbiterierte_divergent). The natural continuation is the Fatou coordinate
       $\alpha(x)=-\tfrac1{\lambda x}+\tfrac12\ln x+\dots$ of the repelling side, $\mathrm{prodtet}(c)=\alpha^{-1}(\alpha(1)+c)$.
       The iterative residue is $\tfrac12$; for $e^x-1$ it is $\tfrac13$ — **the two maps are not even formally conjugate**, so product tetration
       is its own parabolic iteration and not a disguised tetration.
+      The same map is, in the logarithm, the balanced tetration and the left pentation (br.satz.klammerung_log_reduktion).
     bereich: $g(x)=xe^{\lambda x}$, $\lambda>0$, real axis to the right of 0
     einfach: 'At 0, x·eˣ almost stands still — the map pushes away only very slowly. For such points there is a known method (Fatou coordinates)
       that fixes the intermediate values naturally, exactly as for tetration to base η. A computation shows: x·eˣ and eˣ − 1 look similar, but
       differ even in the small.'
     beweis:
-      text: |
+      text: |-
         Compare coefficients: for $g=x+a_2x^2+a_3x^3+\dots$ one has $g^{\circ c}=x+ca_2x^2+(ca_3+c(c-1)a_2^2)x^3+\dots$; with $a_2=\lambda$, $a_3=\lambda^2/2$ this gives
         $c(2c-1)\lambda^2/2$. The iterative residue $1-a_3/a_2^2$ is invariant under scalings and is a formal invariant of parabolic germs (Leau–Fatou,
         Écalle); it is $\tfrac12$ for $xe^x$ and $\tfrac13$ for $e^x-1$. The Fatou coordinate solves $\alpha(g(x))=\alpha(x)+1$; its logarithm coefficient is
@@ -1305,30 +2101,28 @@
     - stelle: Answer of 08.07.2026 (series around the fixed point 0)
     - {}
   en_theorie:
-    beispiel: |
-      Half iterate: $c=\tfrac12$ gives $x+\tfrac\lambda2x^2+0\cdot x^3+\dots$ — the $x^3$ term vanishes exactly at $c=\tfrac12$.
-    einordnung: |
-      General theory: [[it.satz.leau_fatou]], divergence of the formal series: [[it.satz.baker]]; the same structure in the perturbation series: [[kn.konstr.stoerungsreihe]].
-    genau: |
+    beispiel: 'Half iterate: $c=\tfrac12$ gives $x+\tfrac\lambda2x^2+0\cdot x^3+\dots$ — the $x^3$ term vanishes exactly at $c=\tfrac12$.'
+    einordnung: 'General theory: [[it.satz.leau_fatou]], divergence of the formal series: [[it.satz.baker]]; the same structure in the perturbation
+      series: [[kn.konstr.stoerungsreihe]].'
+    genau: |-
       $0$ is parabolic ($g'(0)=1$); formal iterate $x+c\lambda x^2+\tfrac{c(2c-1)}2\lambda^2x^3+\dots$; Fatou coordinate $\alpha=-\tfrac1{\lambda x}+\tfrac12\ln x+\dots$;
       iterative residue $\tfrac12$ (for $e^x-1$: $\tfrac13$).
-    warum: |
+    warum: |-
       Near 0, $xe^x$ pushes on by only about $x^2$ — the orbit creeps out of the fixed point like $-1/n$. The Fatou coordinate "stretches" this creeping
       into steps of equal size; in it the fractional iteration is simply $\alpha+c$. This is the same situation as for base $\eta$ at the fixed point $e$.
       The iterative residue (the factor in front of $\ln x$) is a formal invariant: because it differs for $xe^x$ and $e^x-1$, one map cannot be turned
       into the other by a change of coordinates — not even formally.
-    worum: |
-      Which fractional iterate of $xe^x$ is the natural one? The answer is already in the theory of parabolic fixed points.
+    worum: Which fractional iterate of $xe^x$ is the natural one? The answer is already in the theory of parabolic fixed points.
 - id: br.satz.reelle_kennzeichnung
-  quelle_hash: 27ac2ae49ee3
+  quelle_hash: eff2c6b1746c
   theorie_hash: 06459b3f3349
   herkunft:
     modell: sonnet
-    datum: '2026-10-15'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'A real but nonlocal characterization of Kneser: infinitely many Fourier equations or a defect E(T) = 0'
-    aussage: |
+    aussage: |-
       $$T=\text{Kneser}\iff\int_0^1h(T(x))\,e^{2\pi imx}\,dx=\frac{1}{2\pi im}\ \ \text{for all }m\ge1\iff E(T)=0,$$
       equivalently: the real and imaginary parts of $h(T(x))-x$ form a periodic Hilbert pair. The **defect**
       $$E(T)=\tfrac14\iint\frac{|\theta_T(x)-\theta_T(y)|^2}{\sin^2\pi(x-y)}\,dx\,dy-\tfrac1\pi\,\mathrm{Fläche}(\theta_T)=2\sum_{m\ge1}m\,|\hat\theta_T(-m)|^2\ \ge0$$
@@ -1343,7 +2137,7 @@
       and equals zero exactly at Kneser. Unlike for the gamma function, however, this is not a simple curvature condition at every point, but
       a condition that concerns the whole period at once.'
     beweis:
-      text: |
+      text: |-
         “$\Leftarrow$”: If the negative modes vanish, $\theta_T$ is the boundary value of a periodic function holomorphic in the upper half-plane (Hardy space,
         Lusin–Privalov); then $T$ satisfies Kneser's conditions, and Paulsen–Cowgill (kn.satz.paulsen_komplex) gives $T=$ Kneser. “$\Rightarrow$”: Stage 3, Z5.
         $E$: Douglas formula for the Dirichlet energy plus the area formula $\tfrac1\pi\mathrm{Fläche}=\sum_m m(|\hat\theta(m)|^2-|\hat\theta(-m)|^2)$.
@@ -1355,23 +2149,22 @@
       f3_spezialfall: 'Yes: of “θ holomorphic above ⇔ Kneser”.'
       f4_uebertragbar: To every base above η.
       f5_neue_frage: Is there a local characterization? Do fewer conditions suffice (only even m, only real parts)? Does the moment family pin
-        down Kneser (br.frage.momentenfamilie)?
+        down Kneser (br.frage.momentenfamilie; in the Jordan case yes, sketched in br.satz.momente_jordan)?
     bewertung:
       nutzen: First purely real characterization of Kneser with an extremal principle — a partial answer to br.frage.bohr_mollerup.
       richtigkeit: complete (Paulsen–Cowgill and majorant cited or proved, respectively)
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/etappe4/BERICHT_ETAPPE4.md, S3, S4, MÖ, Lemma R; s1_moebius.py, s4_hooshmand.py
   en_theorie:
-    beispiel: |
-      Linear tetration: $E\approx4.7\cdot10^{-5}$. Möbius bending of Kneser with parameter $a$: $E=-\ln(1-|a|^2)/(2\pi^2)$.
-    einordnung: |
-      Why less does not suffice: [[br.satz.endlich_viele_reichen_nicht]]; the old question: [[br.frage.bohr_mollerup]]; a simpler family: [[br.frage.momentenfamilie]].
-    genau: |
-      $T=$ Kneser if and only if all negative Fourier coefficients of $\theta_T$ vanish, i.e. if the defect $E(T)=2\sum_{m\ge1}m|\hat\theta_T(-m)|^2$ is zero.
-    warum: |
+    beispiel: 'Linear tetration: $E\approx4.7\cdot10^{-5}$. Möbius bending of Kneser with parameter $a$: $E=-\ln(1-|a|^2)/(2\pi^2)$.'
+    einordnung: 'Why less does not suffice: [[br.satz.endlich_viele_reichen_nicht]]; the old question: [[br.frage.bohr_mollerup]]; a simpler family:
+      [[br.frage.momentenfamilie]].'
+    genau: $T=$ Kneser if and only if all negative Fourier coefficients of $\theta_T$ vanish, i.e. if the defect $E(T)=2\sum_{m\ge1}m|\hat\theta_T(-m)|^2$
+      is zero.
+    warum: |-
       No negative frequencies means: $\theta_T$ can be continued holomorphically into the upper half-plane. By Paulsen–Cowgill, exactly this property selects Kneser.
       $E$ is a sum of squares, hence $\ge0$, and zero only without negative frequencies.
-    worum: |
+    worum: |-
       A condition on the real axis only that selects exactly Kneser — similar to Bohr–Mollerup for Γ. **Notation:** $T(x)=\mathrm{sexp}(x+p(x))$,
       $\theta_T(x)=h(T(x))-x$ with the regular Abel function $h$ at the complex fixed point $L$ ([[kn.def.theta_welle]]); $\hat\theta_T(-m)$ is the Fourier coefficient at frequency $-m$.
 - id: br.satz.ripa
@@ -1455,6 +2248,103 @@
     worum: |
       A bottleneck: A map that almost has a fixed point — only a tiny $\varepsilon$ is missing — holds the orbit up for a long time. The waiting time grows like $1/\sqrt\varepsilon$. This is exactly what happens to the
       tower for bases just above $\eta$ near $e$.
+- id: br.satz.schroeder_kugel_genuegt
+  quelle_hash: 9497017cccbe
+  theorie_hash: 70651420c041
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Weakening of Paulsen–Cowgill: if T stays near L in a half-strip at the top, then T is already Kneser'
+    aussage: |-
+      Let $B$ be a disk around $L$ so small that $\sigma$ is univalent on $B$ and $\{w\in B:e^w\in B\}$ is connected. If there are $c\in(-2,-1]$, $\delta>0$ and $Y$ with
+      $$T(z)\in B\qquad\text{for }c\le\mathrm{Re}\,z\le c+1+\delta,\ \mathrm{Im}\,z\ge Y,$$
+      then $T(x+iy)\to L$ ($y\to+\infty$) for every $x>-2$, and by Paulsen–Cowgill $T$ is the Kneser tetration.
+      **Corollary:** No $T\in$ Hol(H) tends to $L$ "with $k\ge1$ extra windings", i.e. with $\sigma(T(z))\sim e^{z(L+2\pi ik)}$: such a $T$ tends to $L$
+      and would therefore be Kneser — and Kneser has $k=0$ ($\sigma(T)L^{-z}=e^{L\theta}\to\kappa\neq0$, kn.satz.binet_kappa).
+    bereich: base $e$; $T\in$ Hol(H); $\sigma$ the Schröder function at $L$ ($\sigma(e^w)=L\sigma(w)$, $\sigma(L)=0$, $\sigma'(L)=1$); $L=a+ib$,
+      $b/2\pi=0.21282$
+    einfach: Paulsen and Cowgill require that the tetration tends exactly to the fixed point L far up. It is already enough that it stays near
+      L in a strip that is slightly wider than 1 and starts to the left of −1. The limit then follows by itself.
+    beweis:
+      text: |-
+        $\zeta=\sigma\circ T$ is holomorphic on the half-strip with $\zeta(z+1)=L\zeta(z)$, so $E(q)=\zeta(z)L^{-z}$ is periodic and single-valued on a punctured disk around $q=0$.
+        $|E|\le Ce^{-ax+by}\le C'|q|^{-b/2\pi}$ with $b/2\pi<1$: $q=0$ is removable, hence $\zeta\to0$ and $T\to L$ uniformly on the strip. To the right with $T(z+1)=e^{T(z)}$; for
+        $x\in[c-1,c]$, $T(x+iy)$ eventually lies near $L+2\pi i\mathbb Z$, the index is constant because of connectedness and equals 0 at $x=c$. Because $c-1\le-2$, every
+        $x>-2$ is covered. Reflection gives $\bar L$ below; Paulsen–Cowgill.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: the same technique (E = σ(T)·L^{−z} removable at q = 0 because b/2π < 1) as in the uniqueness part of kn.satz.kneser_e_zertifiziert
+        and presumably in Paulsen–Cowgill.'
+      f2_benutzte_voraussetzungen: Holomorphy on Re z > −2, functional equation, realness (for L̄ below), univalence of σ on B; Paulsen–Cowgill
+        (literature). The strip must start to the left of −1, otherwise only T → L + 2πim follows on the left.
+      f3_spezialfall: Weakening of the limit condition in kn.satz.paulsen_cowgill.
+      f4_uebertragbar: To every base b > η with λ = L ln b instead of L, as long as Im log λ < 2π.
+      f5_neue_frage: Does a sequence of heights suffice instead of a whole half-strip?
+    bewertung:
+      nutzen: Makes the limit condition of Paulsen–Cowgill weak and local; rules out ends with extra windings around L.
+      richtigkeit: complete except for the cited Paulsen–Cowgill; re-read in the cross-check
+    quellen:
+    - stelle: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B3, B5 and proof of Theorem A′
+  en_theorie:
+    beispiel: 'Kneser itself: $E=e^{L\theta}\to\kappa=1.7176-2.3844i$ ([[kn.satz.binet_kappa]]).'
+    einordnung: Rests on [[kn.satz.paulsen_cowgill]]; basis for [[br.satz.enden_klassifikation]].
+    genau: If $T$ stays in a small disk around $L$ on a half-strip of width $>1$ that starts to the left of $-1$, then $T$ is Kneser.
+    warum: |-
+      In the Schröder coordinate, $T(z+1)=e^{T(z)}$ becomes $\zeta(z+1)=L\zeta(z)$; $E=\zeta L^{-z}$ is periodic and grows at most like $|q|^{-0.213}$. A singularity
+      that grows more slowly than $1/|q|$ is removable — so $\zeta$ tends to 0 and $T$ to $L$.
+    worum: Paulsen–Cowgill require the limit $L$ far up. How much of that is really needed?
+- id: br.satz.sehnenkriterium
+  quelle_hash: 91dfd67f0d93
+  theorie_hash: 04b9ec6312ca
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Chord criterion: θ_T has no double point if sup|1/φ′ − 1| < m* = 0.3010, i.e. for 0.7686 < φ′ < 1.4306'
+    aussage: |-
+      **Arc picture.** $\theta_T(x)=u(x)-x$ with $u=u_K\circ\varphi$: All tetrations traverse the same fixed arc $\Gamma_0=h((1,e))$, only at a different speed.
+      **Double points.** $\theta_T(x)=\theta_T(y)$ with $x>y$ holds if and only if there is a horizontal chord of the Kneser curve ($t<s$, $\mathrm{Im}\,\theta(t)=\mathrm{Im}\,\theta(s)$) with
+      $$\psi(s)-\psi(t)=(s-t)-\mu(s,t),\qquad\mu(s,t):=\mathrm{Re}\,\theta(t)-\mathrm{Re}\,\theta(s).$$
+      The set of $\psi$ with $\psi(s)-\psi(t)>(s-t)-\mu(s,t)$ on all chords is convex and contains $\mathrm{id}$ (because $\mu>0$ on all chords, br.beob.kneser_kurve_sehnen).
+      **Criterion.** With $m^*:=\inf\mu(s,t)/\min(s-t,\,1-s+t)$, we have: $\sup|1/\varphi'-1|=\mathrm{Lip}(\psi-\mathrm{id})<m^*\ \Rightarrow\ \theta_T$ is free of double points.
+      With $m^*=0.3010$, $0.7686<\varphi'<1.4306$ suffices, i.e. $-0.231<p'<0.431$. This is not sharp: $p=\varepsilon\sin2\pi x$ remains free of double points up to $\varepsilon=0.09$ ($p'$ up to $\pm0.57$).
+    bereich: as in br.satz.momente_cauchy; $\psi=\varphi^{-1}$, $u_K(s)=s+\theta(s)$ with Kneser's wave $\theta$
+    einfach: All tetrations draw the same curve, only at different speeds; if one subtracts the time from it, the wave curve results. Whether
+      it intersects itself depends only on how strongly the speed fluctuates. If the slope of φ lies between 0.77 and 1.43, there is no point
+      of intersection.
+    beweis:
+      text: |-
+        $\theta_T(x)=\theta_T(y)\iff u(x)-u(y)=x-y$; with $s=\varphi(x)$, $t=\varphi(y)$, $u_K(s)-u_K(t)$ is then real and equal to $\psi(s)-\psi(t)$. Because $\mathrm{Im}\,u_K=\mathrm{Im}\,\theta$,
+        $\theta(s)$ and $\theta(t)$ lie at the same height, and $\mathrm{Re}(u_K(s)-u_K(t))=(s-t)-\mu$. The condition is linear in $\psi$, so the set is convex.
+        $r=\psi-\mathrm{id}$ is 1-periodic, so $|r(s)-r(t)|\le\mathrm{Lip}(r)\min(s-t,1-s+t)<m^*\min(s-t,1-s+t)\le\mu$, and $r(s)-r(t)=-\mu$ is impossible.
+        At the tip ($t\to0$, $s\to1$), $\mu\asymp1/(X\ln X)$ with $X=\ln(1/x)$, much larger than the distance $\asymp x$; hence $m^*>0$.
+      luecken:
+      - m* = 0.3010 is measured on polygons (infimum at t = 0.2414, s = 0.7412, height 5.4532), not with intervals; the tip region x < 10⁻¹² is
+        estimated only via the local form (kn.satz.theta_singularitaet), without constants.
+    bedingungen_text: The criterion with m* as an infimum is proved. The numerical value m* = 0.3010 is measured on polygons (N = 400, 600, 800,
+      four digits equal); that m* > 0 also holds in the unsampled tip region x < 10⁻¹² is justified only qualitatively via the local form.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the reformulation θ_T = u_K∘φ − id; the real work is in the number m*.
+      f2_benutzte_voraussetzungen: φ increasing with φ(x+1) = φ(x) + 1; μ > 0 on all chords and m* > 0 (numerical plus local form at the tip).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To other bases above η (own m*, same tip form) and to every curve of the form "fixed arc minus time".
+      f5_neue_frage: 'Sharp form: The convex set is much larger than the Lipschitz ball. One-sided version (for s − t ≤ ½ only inf r′ counts,
+        otherwise only sup r′)?'
+    bewertung:
+      nutzen: Gives an explicit neighborhood of Kneser in which the Jordan theorem applies.
+      richtigkeit: Criterion proved; numerical value m* numerical (four digits, three samplings)
+    quellen:
+    - stelle: forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Findings B, D, S and Theorems D, S; s2_fein.py, s4_sehnen.py
+  en_theorie:
+    beispiel: $p=0.09\sin2\pi x$ has $p'$ up to $0.57$ and is nevertheless free of double points — the criterion is only sufficient.
+    einordnung: 'Number $m^*$: [[br.beob.kneser_kurve_sehnen]]; application: [[br.kor.momente_umgebung]].'
+    genau: If $\sup|1/\varphi'-1|<m^*=0.3010$, i.e. for $0.7686<\varphi'<1.4306$.
+    warum: |-
+      All tetrations run over the same arc, only at different speeds. A double point needs a horizontal chord of the Kneser curve whose length $\mu$ is balanced exactly by
+      the fluctuation of the speed; if the fluctuation is smaller than $m^*$ times the distance, that is impossible.
+    worum: When does the wave curve $\theta_T$ of a tetration not intersect itself?
 - id: br.satz.shishikura
   quelle_hash: de70ca52745d
   theorie_hash: 2321769c07fe
@@ -1749,6 +2639,47 @@
     worum: |
       “Tame geometry” allows logarithms, exponential functions and analytic functions on compact pieces — but everything one can build from them grows
       at most like a tower of fixed height. Tetration grows faster.
+- id: br.satz.verbiegung_schwarz
+  quelle_hash: 820e556d09d2
+  theorie_hash: d4602cc859b5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Schwarz rigidity: a bending of Kneser that maps the upper half-plane into itself is trivial'
+    aussage: |-
+      If $\sigma(U)\subset U$, then $p$ is constant, and with $T(0)=1$ we get $p\equiv0$.
+      So every nontrivial bending $\mathrm{sexp}_K\circ\sigma$ takes $\sigma$ out of the upper half-plane. As long as $\sigma$ crosses the real axis only on
+      $(-2,\infty)$, one stays on the principal sheet of $\mathrm{sexp}_K$; where the regions $\{\mathrm{Im}\,\sigma<0\}$ lie is described by br.lem.zungen_bis_unendlich.
+    bereich: $\sigma=\mathrm{id}+p$, $p$ real-analytic and 1-periodic, holomorphic on $U=\{\mathrm{Im}\,z>0\}$; $T=\mathrm{sexp}_K\circ\sigma$,
+      $T(0)=1$
+    einfach: 'If one bends Kneser''s tetration with a periodic function that never leaves the upper half-plane, the bending is none at all: it
+      is zero. So every genuine bending has to swerve downward somewhere.'
+    beweis:
+      text: |-
+        $g(q)=e^{2\pi i\sigma(z)}=q\,e^{2\pi ip}$ is holomorphic on the punctured unit disk, and $\sigma(U)\subset U$ gives $|g|<1$, so $0$ is removable. Because $p$ is single-valued,
+        $g$ has winding number 1 on small circles: $g(0)=0$ is a simple zero, and there are no others. On $|q|=1$, $g$ is holomorphic with $|g|=1$ ($\sigma$ real on $\mathbb R$).
+        So $g/q$ is zero-free with modulus 1 on the boundary; the maximum and minimum principles give $g=e^{i\alpha}q$, hence $p$ constant.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the Schwarz lemma in the coordinate q = e^{2πiz}.
+      f2_benutzte_voraussetzungen: p single-valued holomorphic on U, real-analytic on ℝ (for |g| = 1 on the boundary), σ(U) ⊂ U.
+      f3_spezialfall: 'Yes: a self-map of the disk with boundary modulus 1 and exactly one simple zero is a rotation.'
+      f4_uebertragbar: To bendings of any superfunction and any base; the tetration does not enter.
+      f5_neue_frage: Where exactly does σ leave the upper half-plane, and does σ hit (−∞, −2] there? (br.lem.zungen_bis_unendlich, br.verm.verbiegung_hauptblatt)
+    bewertung:
+      nutzen: 'First structural lever for Q*: counterexamples need regions with Im σ < 0.'
+      richtigkeit: complete; re-read in the cross-check
+    quellen:
+    - stelle: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B7 and proof of Theorem B
+  en_theorie:
+    beispiel: '$p=\varepsilon\sin2\pi z$: $\mathrm{Im}\,\sigma$ becomes negative far up, because $\varepsilon\sin2\pi z$ grows there like $e^{2\pi\,\mathrm{Im}\,z}$.'
+    einordnung: 'Where $\sigma$ points downward: [[br.lem.zungen_bis_unendlich]]; question: [[br.frage.halbebene_eindeutigkeit]].'
+    genau: 'No: $\sigma(U)\subset U$ implies $p$ constant.'
+    warum: Then $g=e^{2\pi i\sigma}$ is a self-map of the unit disk (in $q$) with exactly one simple zero and modulus 1 on the boundary — by the
+      Schwarz lemma a rotation.
+    worum: Can a genuine bending $\sigma=\mathrm{id}+p$ map the upper half-plane into itself (then $\mathrm{sexp}_K\circ\sigma$ would surely remain
+      holomorphic)?
 - id: br.satz.vergleichsfunktion
   quelle_hash: a9ef7b6f730e
   theorie_hash: b71a5500c78a
@@ -1850,3 +2781,41 @@
     worum: |
       An area formula for circle maps: The area between the graph of such a map and the diagonal is exactly the negative of the corresponding area for the
       inverse map. This is the actual reason for the antisymmetry in the base change.
+- id: br.verm.verbiegung_hauptblatt
+  quelle_hash: f897fd5095b5
+  theorie_hash: 5aaa622c1424
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Conjecture: every bending of Kneser by a non-constant trigonometric polynomial is singular on the principal sheet in Re z > −2'
+    aussage: |-
+      There is $z^*\in H=\{\mathrm{Re}\,z>-2\}$ with $z^*+p(z^*)=-2$ that is reached from the real axis along a path on which $\mathrm{id}+p$ does not hit the cut $(-\infty,-2]$.
+      In particular, no such tetration lies in Hol(H). Missing step for the proof: a boundary curve of $\sigma^{-1}(\mathbb C\setminus(-\infty,-2])$ with $\sigma\in(-n-1,-n)$ must run to an
+      integer value before it leaves $H$ or goes to $i\infty$ (cf. br.lem.zungen_bis_unendlich).
+    bereich: $T=\mathrm{sexp}_K\circ(\mathrm{id}+p)$, $p$ a real trigonometric polynomial, non-constant, $1+p'>0$ on $\mathbb R$; base $e$
+    einfach: Presumably every bending of Kneser by a finite sine-cosine sum has a point in the right half-plane where it becomes infinite. Then
+      none of them would be a counterexample to the uniqueness question Q*.
+    gegenbeispielsuche: '43 random monotone p of degree ≤ 4 (coefficients uniformly distributed up to 0.15/n^{1.5}, seed 7, 120 draws) and 5 targeted
+      examples, 40–60 Newton starts each in (−2, 0) × (0.05, 2.5): every time a principal-sheet hit, no counterexample. Cross-check 25.10.2026
+      with the same script: again 43 of 43.'
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Monotonicity of σ on ℝ; location of the cut of sexp_K.
+      f3_spezialfall: Special case of Q* (br.frage.halbebene_eindeutigkeit) for trigonometric bendings.
+      f4_uebertragbar: Presumably to every entire p and every base above η.
+      f5_neue_frage: Is the topology from br.lem.zungen_bis_unendlich enough for a proof?
+    bewertung:
+      nutzen: Would rule out a large class of counterexample candidates for Q*.
+      richtigkeit: Conjecture, 48 cases
+    quellen:
+    - stelle: forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md, B10 and Open Question 3; hauptblatt.py
+  en_theorie:
+    beispiel: 43 of 43 random monotone polynomials of degree $\le4$.
+    einordnung: 'Special case of [[br.frage.halbebene_eindeutigkeit]]; evidence: [[br.beob.hauptblatt_singularitaet_trig]].'
+    genau: 'Presumably not: every such bending has a log singularity on the principal sheet in $H$.'
+    warum: |-
+      Far up, the highest mode of $p$ dominates; $\sigma$ takes all real values in tongues up to $i\infty$ ([[br.lem.zungen_bis_unendlich]]). The missing step is that a boundary curve
+      reaches an integer value $\le-2$ before it leaves $H$.
+    worum: Can a bending by a finite sine-cosine sum be a counterexample to Q*?

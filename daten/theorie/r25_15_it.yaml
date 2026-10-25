@@ -1,0 +1,94 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 15 „Monodromie des regulären Erzeugers“ (forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md).
+# Bezeichnungen: Ψ = σ^{-1} ganz, Ψ(Lu) = e^{Ψ(u)}; J_L = Lσ/σ'; P = {0, 1, e, e^e, …}.
+
+it.satz.erzeuger_riemannflaeche:
+  worum: |
+    Der reguläre Erzeuger $J_L$ lässt sich längs jedes Weges um die Punkte $0,1,e,\dots$ herum fortsetzen und wird dabei mehrdeutig. Wie sieht die Gesamtheit aller Zweige aus?
+  genau: |
+    Ψ ist eine Überlagerung über $\mathbb C\setminus P$; die Zweige über $z$ sind die Punkte $u$ mit $\Psi(u)=z$, und dort ist $J_L=Lu\Psi'(u)$.
+  warum: |
+    Jeder Zweig von σ ist bis auf einen Faktor $L^n$ der Hauptzweig nach $n$ Logarithmen; die Logarithmen ziehen jeden Weg zum Fixpunkt zusammen. Ein lokaler Homöomorphismus, der alle Wege hochhebt, ist eine Überlagerung.
+  bilder: []
+  einordnung: |
+    Baut auf [[it.satz.regulaerer_erzeuger_fortsetzung]]; die Monodromie selbst: [[it.satz.erzeuger_kranzrekursion]].
+
+it.satz.erzeuger_kranzrekursion:
+  worum: |
+    Was passiert mit dem Zweig von $J_L$, wenn man um 0, 1, e, … herumläuft?
+  genau: |
+    Zweige ↔ endliche Folgen $(m_1,m_2,\dots)$; ein Umlauf um 0 erhöht $m_1$, ein Umlauf um $p_k$ erhöht $m_{k+1}$, aber nur wenn $m_1=\dots=m_k=0$.
+  warum: |
+    Ein Logarithmus macht aus dem Umlauf um 0 einen Schritt um $2\pi i$ (Verschiebung von $m_1$) und aus dem Umlauf um $p_k$ einen Umlauf um $p_{k-1}$, aber nur auf dem Hauptzweig des Logarithmus.
+  beispiel: |
+    Vom Hauptblatt: $a$ führt zu $(1)$, $b_1$ zu $(0,1)$, $b_2$ zu $(0,0,1)$; vom Blatt $(1)$ aus ändert $b_1$ nichts. Alle 48 Proben numerisch bestätigt.
+  bilder: []
+  einordnung: |
+    Folgerungen: [[it.kor.erzeuger_verzweigung_logarithmisch]], [[it.satz.erzeuger_monodromiegruppe]], [[it.kor.erzeuger_umlaufwerte]]; für θ: [[kn.kor.theta_verzweigung_unendlich]].
+
+it.kor.erzeuger_verzweigung_logarithmisch:
+  worum: |
+    Welcher Art sind die Verzweigungspunkte von $J_L$?
+  genau: |
+    Jede Verzweigung ist logarithmisch (unendlich viele Blätter); auf dem Hauptblatt ist jedes $\exp^k(0)$ eine; algebraische Verzweigungen gibt es nicht.
+  warum: |
+    Die Bahnen der Umläufe um $p_k$ sind nach dem Zählwerk entweder unendlich oder bestehen aus einem Punkt; ein Punkt heisst „hier gar keine Verzweigung“.
+  bilder: []
+  einordnung: |
+    Folgt aus [[it.satz.erzeuger_kranzrekursion]]; beantwortet die Frage aus [[it.satz.regulaerer_erzeuger_fortsetzung]].
+
+it.satz.erzeuger_monodromiegruppe:
+  worum: |
+    Welche Gruppe bilden alle Umläufe zusammen?
+  genau: |
+    $G=\mathrm{IMG}(\exp)=\bigcup G_k$, $G_k\cong G_{k-1}\wr\mathbb Z$; nicht frei, nicht endlich erzeugt, lokal auflösbar.
+  warum: |
+    Ein Umlauf um $p_{k+1}$ wirkt wie ein Umlauf um $p_k$, aber nur unter dem Buchstaben 0; das ist genau der Bau eines Kranzprodukts. Umläufe mit getrennten Wirkungsbereichen vertauschen, obwohl die Wege es nicht tun.
+  beispiel: |
+    $G_1=\mathbb Z\wr\mathbb Z$ ist die Lampenanzünder-Gruppe: $(m_1,m_2)\mapsto(m_1+c,\ m_2+f(m_1))$ mit endlich getragenem $f$.
+  bilder: []
+  einordnung: |
+    Aus [[it.satz.erzeuger_kranzrekursion]]; Erweiterung für die slog: [[it.satz.regulaere_slog_riemannflaeche]]; andere Basen: [[it.satz.erzeuger_monodromie_basen]].
+
+it.kor.erzeuger_umlaufwerte:
+  worum: |
+    Welche Werte hat $J_L$ am Basispunkt nach einem einfachen Umlauf?
+  genau: |
+    Nach $b_k^j$: $J_L=L^{k+1}J^{(j)}$, $J^{(1)}=-14.32234596990128+10.70516795819535\,i$.
+  warum: |
+    Die Adresse $0^kj$ gehört zum Punkt $u=L^{k+1}s_j$, und Ψ′ ist längs der Bahn $s_j, Ls_j, L^2s_j,\dots$ konstant.
+  bilder: []
+  einordnung: |
+    Aus [[it.satz.erzeuger_kranzrekursion]]; derselbe Wert $J^{(1)}$ wie in [[it.satz.regulaerer_erzeuger_fortsetzung]].
+
+it.kor.kneser_erzeuger_sigma:
+  worum: |
+    Wie hängt Knesers Erzeuger mit dem regulären zusammen?
+  genau: |
+    $J_K=J_L\cdot Q(\sigma^{2\pi i/L})$, mit $Q(q)=1/\Phi'(s)$, $q=e^{2\pi is}$.
+  warum: |
+    Der Korrekturfaktor $1+\theta'\circ\mathrm{slog}_K$ ist 1-periodisch in der regulären slog $h$, also eine Funktion von $e^{2\pi ih}=\sigma^{2\pi i/L}$.
+  bilder: []
+  einordnung: |
+    Umformung von [[it.satz.kneser_erzeuger]]; was der Faktor an den ganzen Zahlen leisten muss: [[kn.kor.theta_verzweigung_unendlich]].
+
+it.satz.regulaere_slog_riemannflaeche:
+  worum: |
+    Wie sieht die Riemannfläche der regulären slog $h=\log\sigma/L$ aus?
+  genau: |
+    Die $s$-Ebene mit Projektion $F_L$ über $\mathbb C\setminus(P\cup\{L\})$; die Monodromie enthält $\bigoplus\mathbb Z$ (Umläufe um $L$) und bildet auf $G$ ab. Ob der Quotient genau $G$ ist und ob die Erweiterung zerfällt, ist offen.
+  warum: |
+    Zu jedem Blatt von σ kommen die Zweige des Logarithmus; nur auf dem Blatt, auf dem σ bei $L$ verschwindet, ändert ein Umlauf um $L$ den Zweig.
+  bilder: []
+  einordnung: |
+    Baut auf [[it.satz.erzeuger_monodromiegruppe]] und [[it.satz.erzeuger_riemannflaeche]]; Bezeichnungen: [[kn.def.theta_welle]].
+
+it.satz.erzeuger_monodromie_basen:
+  worum: |
+    Hängt das Zählwerk der Umläufe an der Basis $e$?
+  genau: |
+    Vermutlich nicht: für jede Basis $b>\eta$ dieselbe Rekursion und dieselbe Gruppe (Skizze).
+  warum: |
+    Die Beweise benutzen nur, dass $L_b$ in der oberen Halbebene unter $\pi/\ln b$ liegt und die Bahn der Null auf der positiven reellen Achse.
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[it.satz.erzeuger_kranzrekursion]].

@@ -1,0 +1,93 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 23 (Basisableitung: Elastizität, Vorzeichenmuster, ε₀, Wackeln).
+
+gr.satz.elastizitaet_stufe:
+  worum: |
+    Wie ändert sich $T_b(x)$, wenn man die Basis ein wenig vergrössert? Statt der Ableitung $D=\partial_bT_b$ betrachtet man die prozentuale Änderung: die Elastizität $E=\partial\ln|T|/\partial\ln\ln b$.
+  genau: |
+    $E(x+1)=(1+E(x))\ln T(x+1)$, $E(0)=0$, $E(1)=\ln b$.
+  warum: |
+    Logarithmiert man $T(x+1)=b^{T(x)}$, steht da $\ln T(x+1)=\ln b\cdot T(x)$ — ein Produkt. Die prozentuale Änderung eines Produkts ist die Summe der prozentualen Änderungen:
+    $1$ von $\ln b$ und $E(x)$ von $T(x)$, mal dem Gewicht $\ln b\,T(x)=\ln T(x+1)$.
+  beispiel: |
+    $E(2)=(1+\ln b)\ln(b^b)=(1+\ln b)\,b\ln b$; für $b=2$ ist das $1.6931\cdot1.3863=2.347$.
+  bilder: []
+  einordnung: |
+    Logarithmische Form von [[gr.satz.basis_gleichung]]; Anwendung: [[gr.satz.vorzeichen_reduktion]].
+
+gr.satz.vorzeichen_reduktion:
+  worum: |
+    Hebt eine grössere Basis die Tetrationskurve oder senkt sie sie? Gemessen ist: links von $-1$ und rechts von $0$ hebt sie, dazwischen senkt sie ([[gr.beob.basis_monoton]]).
+  genau: |
+    Das Muster gilt genau dann, wenn auf $(-1,0)$ die Ungleichungen $\max(-1,\ln T)<E<0$ gelten. Gleichwertig: $\partial_b\mathrm{slog}_b>0$ auf $(0,1)$, $<0$ sonst.
+    Dann schneiden sich zwei Kurven verschiedener Basen nur bei $-1$ und $0$.
+  warum: |
+    Die Stufenregel [[gr.satz.elastizitaet_stufe]] schiebt das Vorzeichen von Streifen zu Streifen: rechts von 0 ist $\ln T>0$, also bleibt $E>0$, sobald $E>-1$ war; links von $-1$
+    ist $T<0$ und $\ln T<0$, darum kippt dort die Bedingung zu $E>\ln T$.
+  beispiel: |
+    $b=2$: $E(-\tfrac12)=-0.230$ liegt zwischen $\max(-1,\ln T_2(-\tfrac12))=\ln0.5448=-0.607$ und $0$.
+  bilder: []
+  einordnung: |
+    Ränder: [[gr.satz.elastizitaet_rand]]; offen ist der Beweis für Kneser: [[gr.frage.vorzeichen_kneser]].
+
+gr.satz.elastizitaet_rand:
+  worum: |
+    An den Stellen $-1$ und $0$ ist $D=0$; wie die Elastizität sich dort verhält, sagt eine einzige Zahl $\varepsilon_0$: die prozentuale Änderung von $T'(0)$.
+  genau: |
+    $E(-1^+)=\varepsilon_0-1$, $E'(0)=\varepsilon_0T'(0)$; das Muster verlangt $0\le\varepsilon_0\le1$.
+  warum: |
+    Bei $-1$ sind $D$ und $T$ beide null, ihr Quotient ist der Quotient der Ableitungen, und $T'(-1)=T'(0)/\ln b$. Bei $0$ ist $T=1$ und $D=0$, also zählt nur $D'(0)=\partial_bT'(0)$.
+  beispiel: |
+    $b=e$: $\varepsilon_0=0.5473$, also $E(-1^+)=-0.4527$.
+  bilder: []
+  einordnung: |
+    Werte von $\varepsilon_0$: [[gr.beob.eps0_tabelle]]; Grenzfall $b\to1$: [[kl.satz.eps0_b_gegen_1]].
+
+gr.beob.basis_monoton:
+  worum: |
+    Wie hängt die Tetrationskurve von der Basis ab — für alle Basen von knapp über 1 bis 10 000?
+  genau: |
+    Immer gleich: grössere Basis hebt die Kurve auf $(-2,-1)$ und $(0,\infty)$ und senkt sie auf $(-1,0)$; die Kurven kreuzen sich nur bei $(-1,0)$ und $(0,1)$.
+  warum: |
+    Gemessen an 13 Basen auf einem feinen Gitter und an 39 Basen dicht in $b$, regulär unter $\eta$ und nach Kneser darüber; die Ungleichungen aus [[gr.satz.vorzeichen_reduktion]] halten mit Abstand.
+  beispiel: |
+    $T_2(-\tfrac12)=0.5448\ldots$ und $T_e(-\tfrac12)=0.4986\ldots$ (kleiner), aber $T_2(\tfrac12)=1.4588\ldots<T_e(\tfrac12)=1.6464\ldots$.
+  bilder: []
+  einordnung: |
+    Stützt [[gr.satz.vorzeichen_reduktion]]; Stetigkeit über $\eta$: [[kl.beob.stetig_eta]].
+
+gr.beob.eps0_tabelle:
+  worum: |
+    Die Randzahl $\varepsilon_0(b)$ aus [[gr.satz.elastizitaet_rand]] — wie gross ist sie?
+  genau: |
+    Zwischen 0 und 1: $0.928$ bei $b=1+10^{-6}$, $0.613$ bei $\eta$, $0.547$ bei $e$, $0.408$ bei $10^4$; für grosse $b$ fast linear fallend in $\ln\ln b$.
+  warum: |
+    Gemessen mit gemischten Differenzen in $b$ und $x$, zwei Einstellungen. Für $b\to1$ erklärt [[kl.satz.eps0_b_gegen_1]] den Wert nahe 1.
+  beispiel: |
+    $\varepsilon_0\approx0.45$ für grosse $b$ heisst: $T_b'(0)$ wächst etwa wie $(\ln b)^{0.45}$ — passt zu [[kn.beob.grosse_basis]].
+  bilder: []
+  einordnung: |
+    Ob $\varepsilon_0$ positiv bleibt, ist offen: [[gr.frage.vorzeichen_kneser]].
+
+gr.beob.wackeln_basen:
+  worum: |
+    Knesers Basisableitung ist fast die Vorwärtssumme aus Kobis Gleichung ([[gr.satz.turm_pde]]). Wie gross ist der Rest, und wie hängt er von der Basis ab?
+  genau: |
+    $u=D/T'=u_0+w$, $u_0$ die Vorwärtssumme, $w$ 1-periodisch mit $w(0)=0$. Die Spanne von $w$ ist $0.5$–$0.64\,\%$ von $u$, von $1.5\cdot10^{-3}$ knapp über $\eta$ bis $7\cdot10^{-9}$ bei $10^4$.
+  warum: |
+    $u$ und $u_0$ lösen dieselbe Summengleichung $u(x+1)-u(x)=r(x)$, also ist ihre Differenz periodisch. Die Grösse ist gemessen.
+  beispiel: |
+    $b=2$: Spanne $5.66\cdot10^{-4}$ — dieselbe Zahl wie das Wackeln von $p$ in [[gr.beob.kneser_pde_wackeln]].
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[gr.beob.kneser_pde_wackeln]]; Gegenstück bei $\eta$: [[kl.satz.c1_noerlund]]; Engpass: [[kl.satz.kanalgesetz_vorwaertssumme]].
+
+gr.frage.vorzeichen_kneser:
+  worum: |
+    Das Vorzeichenmuster der Basisableitung ist überall gemessen, aber nicht bewiesen.
+  genau: |
+    Zu zeigen: $\max(-1,\ln T)<E<0$ auf $(-1,0)$ für Kneser und regulär; offen ist auch, ob $\varepsilon_0$ für $b\to\infty$ positiv bleibt.
+  warum: |
+    [[gr.satz.vorzeichen_reduktion]] macht das ganze Muster zu diesen zwei Ungleichungen; sie folgen nicht aus der Gleichung allein, weil die Basisableitung bei gebrochener Höhe von der Wahl der Lösung abhängt.
+  bilder: []
+  einordnung: |
+    Messungen: [[gr.beob.basis_monoton]], [[gr.beob.eps0_tabelle]].

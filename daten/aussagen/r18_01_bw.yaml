@@ -28,7 +28,7 @@ aussagen:
     f2_benutzte_voraussetzungen: 'Nur die Funktionalgleichungen, keine Konstruktion.'
     f3_spezialfall: 'Rang 4: das Abschälen mit log_b ∘ exp_d aus dem Beweis von bw.satz.schwanzkonvergenz.'
     f4_uebertragbar: 'Auf jeden Rang und jedes Paar von Abel-Funktionen.'
-    f5_neue_frage: 'Was folgt daraus, dass der Schälschritt ab Rang 5 nicht mehr linear ist (Glattheit, bw.verm.rang5_nirgends_diffbar)?'
+    f5_neue_frage: 'Was folgt daraus, dass der Schälschritt ab Rang 5 nicht mehr linear ist (Glattheit, bw.satz.rang5_singulaer)?'
   bewertung: {richtigkeit: vollständig, neuheit: nur_schreibweise, nutzen: 'Grundlage aller Rang-5-Ergebnisse dieser Runde; zeigt, woher der Unterschied zu Rang 4 kommt.', nutzen_stufe: mittel}
   kanten:
     - {typ: verallgemeinert, ziel: bw.satz.schwanzkonvergenz}
@@ -70,7 +70,7 @@ aussagen:
     f2_benutzte_voraussetzungen: 'Rang-4-Phasengesetz nur als Schranke |F(u) − u| ≤ C; Monotonie von slog_b′ auf [0, ∞); L_d einziger Fixpunkt (gemessen).'
     f3_spezialfall: 'Gegenstück zu bw.satz.phasengesetz eine Stufe höher; Muster „Vergleich zweier Abel-Koordinaten“.'
     f4_uebertragbar: 'Auf alle Ränge, siehe bw.satz.phasengesetz_induktion.'
-    f5_neue_frage: 'Wie glatt ist Φ₅? (bw.verm.rang5_nirgends_diffbar)'
+    f5_neue_frage: 'Wie glatt ist Φ₅? (bw.satz.rang5_singulaer)'
   bewertung: {richtigkeit: 'bedingt bewiesen, numerisch auf 10⁻⁴⁰ bestätigt', neuheit: neu_ungeprueft, recherche: 'Eine Suche: Forum tid 970 erwähnt „base-change pentation“ nur spekulativ.', nutzen: 'Erstes Phasengesetz oberhalb der Tetration; trägt die übrigen Rang-5-Befunde.', nutzen_stufe: hoch}
   kanten:
     - {typ: stuetzt_sich_auf, ziel: bw.satz.phasengesetz}
@@ -202,8 +202,8 @@ aussagen:
     f2_benutzte_voraussetzungen: 'Rang-4-Phasengesetz in C¹-Form (gemessen; vgl. bw.prop.antisym_c1, bw.satz.c1_produkt).'
     f3_spezialfall: 'Auf Rang 4 hat der Schälschritt die konstante Ableitung α; dort konvergiert das Produkt absolut (bw.satz.c1_produkt).'
     f4_uebertragbar: 'Auf jeden Rang ≥ 5 mit der tieferen Phase als Faktor.'
-    f5_neue_frage: 'Existiert ∏(1 + Φ₄′(T_d^j y)) für fast alle y? (bw.verm.rang5_nirgends_diffbar)'
-  bewertung: {richtigkeit: 'bedingt; numerisch auf 3·10⁻⁹ bestätigt', neuheit: neu_ungeprueft, nutzen: 'Zeigt den Mechanismus, der die Rang-5-Welle rau macht.', nutzen_stufe: hoch}
+    f5_neue_frage: 'Beantwortet (Skizze): das Produkt geht für fast alle y gegen 0 (Drift −χ, bw.beob.singulaer_unsichtbar), also H′ = 0 f. ü. (bw.satz.rang5_singulaer).'
+  bewertung: {richtigkeit: 'bedingt; numerisch auf 3·10⁻⁹ bestätigt', neuheit: neu_ungeprueft, nutzen: 'Zeigt den Mechanismus, der die Rang-5-Welle singulär macht.', nutzen_stufe: hoch}
   kanten:
     - {typ: stuetzt_sich_auf, ziel: bw.satz.phasengesetz_rang5}
     - {typ: analog_zu, ziel: bw.satz.c1_produkt}
@@ -217,8 +217,8 @@ aussagen:
   objekte: [phase]
   bereich: '$(b,d)=(e,2)$, $\theta_0=0.05$, dps 120'
   aussage: |
-    Der Differenzenquotient von $\Phi_5$ bei $\theta_0$ ist bis $h\approx2^{-18}$ konstant ($\hat G'=1.0657272$), springt bei $h\approx1/U_3'$ und ist ab $h=2^{-50}$
-    wieder konstant ($1.0665953$). Das Verhältnis $1.000815$ ist genau $1+\Phi_4'(U_3)$ (auf $10^{-6}$), wie die Produktformel verlangt.
+    Der Differenzenquotient von $\Phi_5$ bei $\theta_0$ ist bis $h\approx2^{-18}$ konstant (Plateau $\Pi_n=1.0657272$ des Differenzenquotienten — kein Ableitungswert, vgl. bw.beob.singulaer_unsichtbar),
+    springt bei $h\approx1/U_3'$ und ist ab $h=2^{-50}$ wieder konstant (nächstes Plateau $\Pi_{n+1}=1.0665953$). Das Verhältnis $1.000815$ ist genau $1+\Phi_4'(U_3)$ (auf $10^{-6}$), wie die Produktformel verlangt.
   einfach: >-
     Misst man die Steigung der Pentations-Welle mit immer feinerem Massstab, ändert sie sich sprunghaft, jedes Mal wenn der Massstab die nächste
     Stufe der Tetrations-Welle auflöst.
@@ -230,15 +230,17 @@ aussagen:
     f4_uebertragbar: 'Auf Rang 6 (t10_rang6_skalen.py).'
     f5_neue_frage: 'Folgen die Differenzenquotienten allgemein den Teilprodukten (Hardy-Lemma)?'
   bewertung: {richtigkeit: 'numerisch auf 10⁻⁶', neuheit: neu_ungeprueft, nutzen: 'Direkter Beleg für die Produktstruktur.', nutzen_stufe: mittel}
+  nachgeprueft:
+    - {gegen: bw.beob.singulaer_unsichtbar, ergebnis: '25.10.2026: Zahlen unberührt; nur die Deutung berichtigt — die konstanten Werte sind Plateaus Πₙ des Differenzenquotienten, kein Ableitungswert.'}
   kanten:
     - {typ: stuetzt, ziel: bw.satz.produktformel_rang5}
-    - {typ: stuetzt, ziel: bw.verm.rang5_nirgends_diffbar}
+    - {typ: stuetzt, ziel: bw.lem.wackel}
 
 - id: bw.verm.rang5_nirgends_diffbar
   titel: 'Vermutung: Ab Rang 5 ist die Basiswechsel-Phase stetig, aber nirgends differenzierbar (Weierstrass-Typ mit Turm-Lücken)'
   art: vermutung
   ebene: C
-  status: vermutung
+  status: widerlegt
   niveau: forschung
   objekte: [phase, fourier_moden, gevrey]
   bereich: '$\Phi_r$ für $r\ge5$, reelle Basen $b\ne d$ über $\eta_5$'
@@ -251,7 +253,7 @@ aussagen:
     Die Welle der Tetration ist sehr glatt. Ab der Pentation wird die Welle dagegen vermutlich so rau wie die berühmte Weierstrass-Funktion:
     überall stetig, aber nirgends mit einer Steigung.
   gegenbeispielsuche: 'Gesucht wurde eine Stelle mit stabilem Differenzenquotienten über alle Skalen; bei θ₀ = 0.05 springt er bei jeder auflösbaren Ebene (bw.beob.skalensprung), weitere Stellen nicht systematisch geprüft.'
-  naechste_frage: 'Gleichverteilung von {T_d^j(y)} für fast alle y (Koksma) plus ein Hardy-Lemma; liegt Φ₅ in der Zygmund-Klasse?'
+  naechste_frage: 'Beantwortet: Hardy-Lemma = bw.lem.wackel; Ergebnis bw.satz.rang5_singulaer.'
   beweis:
     art: skizze
     text: 'Ob $H''(y)=\prod_j(1+\Phi_4''(T_d^jy)+o(1))$ existiert, hängt an $\sum_j\Phi_4''(T_d^jy)$; sind die Brüche $\{T_d^jy\}$ für fast alle $y$ gleichverteilt und fast unabhängig (Salem–Zygmund für sehr lückenhafte Folgen), divergiert die Reihe wie eine Irrfahrt.'
@@ -265,7 +267,9 @@ aussagen:
     f3_spezialfall: 'Weierstrass-/Hardy-Funktionen mit Lücken.'
     f4_uebertragbar: 'Auf alle Ränge r ≥ 5; nicht auf Rang 4 (konstante Schälableitung).'
     f5_neue_frage: 'Ab Rang 5 ist die Frage „analytisch oder C^∞“ (bw.verm.nirgends_analytisch) überholt: nicht einmal C¹?'
-  bewertung: {richtigkeit: 'Vermutung mit zwei numerischen Belegen', neuheit: neu_ungeprueft, nutzen: 'Grundsätzlicher Unterschied zwischen Rang 4 und höheren Rängen.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'Widerlegt 25.10.2026: Ĝ = id + Φ₅ ist monoton, also nach Lebesgue fast überall differenzierbar (bw.kor.rang5_fast_ueberall_diffbar); richtig ist: singulär, Φ₅′ = −1 fast überall, nirgends ein endlicher positiver Ableitungswert von Ĝ (bw.satz.rang5_singulaer, bw.satz.kein_endlicher_ableitungswert).', neuheit: neu_ungeprueft, nutzen: 'Grundsätzlicher Unterschied zwischen Rang 4 und höheren Rängen.', nutzen_stufe: hoch}
+  versionen:
+    - {datum: '2026-10-25', aenderung: 'Status vermutung → widerlegt.', grund: 'Monotonie von Ĝ + Satz von Lebesgue; das additive Weierstrass-Bild Σ P₄′(U_j) übersieht die Drift −χ von Σ log(1 + P₄′(U_j)); Bericht forschung/runde_2026_10_25/10_basiswechsel_hoelder.'}
   kanten:
     - {typ: verwandt, ziel: bw.verm.nirgends_analytisch}
     - {typ: verwandt, ziel: bw.verm.streifen}

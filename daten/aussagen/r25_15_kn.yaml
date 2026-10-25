@@ -1,0 +1,41 @@
+gebiet: kn
+# Forschungsrunde 25.10.2026, Bericht 15 „Monodromie des regulären Erzeugers“, Folgerung für Knesers θ.
+# Rechnungen: forschung/runde_2026_10_25/15_erzeuger_monodromie/ (m3_theta_ganzzahl.py). Bezeichnungen: kn.def.theta_welle, r25_15_it.yaml.
+aussagen:
+
+- id: kn.kor.theta_verzweigung_unendlich
+  titel: 'Knesers θ hat an jeder ganzen Zahl einen Verzweigungspunkt unendlicher Ordnung: ein Umlauf führt nie auf denselben Zweig zurück'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [theta_kneser, kneser_T, fixpunkt_L]
+  bereich: 'Basis $e$; $\mathrm{sexp}_K=F_L\circ(\mathrm{id}+\theta)$ in der oberen Halbebene, $F_L(w)=\Psi(e^{Lw})$, $\theta=h\circ\mathrm{sexp}_K-\mathrm{id}$ mit der regulären slog $h=\log\sigma/L$'
+  aussage: |
+    θ lässt sich aus der oberen Halbebene längs beliebiger Wege in eine punktierte Umgebung jeder ganzen Zahl $n$ fortsetzen, und kein Umlauf um $n$ (beliebig oft) führt auf denselben Zweig zurück:
+    $n$ ist ein logarithmischer, also unendlich-blättriger Verzweigungspunkt. Auf dem Ausgangsblatt gilt $|s+\theta(s)|\to\infty$ für $s\to n$ von oben (kn.satz.theta_singularitaet (ii)).
+    „Logarithmisch“ meint die Blätterzahl, nicht das Wachstum: θ wächst dort wie $h(\log z)$, also unvorstellbar langsam (kn.satz.theta_singularitaet (iii)).
+    Numerisch bei $n=0$, $s=iy$: $\mathrm{Re}(L\theta(iy))=1.098,\ 1.166,\ 1.264,\ 1.347,\ 1.382,\ 1.407$ für $y=0.3,\ 0.1,\ 0.03,\ 0.01,\ 0.006,\ 0.004$ (monoton steigend),
+    und $|F_L(-1+iy+\theta(iy))|/y\to1.09176=\mathrm{sexp}'(0)$ (Reihen mit 2048 und 4096 Gliedern auf 12 Stellen gleich).
+  einfach: >-
+    Die Welle in Knesers Tetration hat an jeder ganzen Zahl nicht nur eine scharfe Stelle: Geht man in der komplexen Ebene um diese Stelle herum, kommt man
+    nie wieder beim selben Wert an, egal wie oft man herumläuft.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\mathrm{sexp}_K$ hat bei $-1$ eine einfache Nullstelle und bildet eine kleine punktierte Scheibe um $-1$ biholomorph auf eine punktierte Umgebung von 0 ab, die $P\setminus\{0\}$ und $L$ meidet;
+      dort lässt sich $h$ längs jedes Weges fortsetzen (it.satz.erzeuger_riemannflaeche). Ein Umlauf um $-1$ wird ein Umlauf um 0, dessen Monodromie ein Konjugat von $a$ ist;
+      $a$ hat auf der Faser nur unendliche Bahnen (it.satz.erzeuger_kranzrekursion), also kehrt σ und damit $h=\log\sigma/L$ und θ nie zurück. Wegen $\theta(s+1)=\theta(s)$ gilt dasselbe an jeder ganzen Zahl.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M7, M7a; m3_theta_ganzzahl.py, m3_ausgabe.txt'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus kn.satz.theta_singularitaet (ii) und der Monodromie des regulären Erzeugers.'
+    f2_benutzte_voraussetzungen: 'Kneser-Darstellung in der oberen Halbebene, einfache Nullstelle von $\mathrm{sexp}_K$ bei −1, freie Wirkung von $a$ auf der Faser.'
+    f3_spezialfall: 'Verfeinert kn.satz.theta_singularitaet um die Art der Verzweigung.'
+    f4_uebertragbar: 'Auf jede Basis über η, sobald it.satz.erzeuger_monodromie_basen gilt; für andere Abbildungen über die Bahn ihres singulären Werts (kn.satz.zoo_singulaerer_ort).'
+    f5_neue_frage: 'Gilt $\theta(n+iy)=h(\log(1/y))+O(1)$ auf passendem Zweig? (Die Numerik zeigt nur den Trend.)'
+  bewertung: {richtigkeit: 'vollständig; Numerik zeigt den sehr langsamen monotonen Anstieg', neuheit: neu_ungeprueft, nutzen: 'Erklärt die Singularitäten von θ an den ganzen Zahlen als Spur der Monodromie des regulären Erzeugers.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: it.satz.erzeuger_kranzrekursion}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: it.kor.kneser_erzeuger_sigma}
+    - {typ: verwandt, ziel: kn.satz.zoo_singulaerer_ort}

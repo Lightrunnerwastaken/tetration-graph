@@ -1,5 +1,109 @@
 # Maschinell geführt (python -m wissen.uebersetzung einlesen …). Englische Fassung je Aussage; quelle_hash = Hash der
 # übersetzten deutschen Texte. Nicht von Hand ändern, ausser Fehler in einzelnen Texten – dann `geprueft` anpassen.
+- id: gr.beob.basis_monoton
+  quelle_hash: e567048a1033
+  theorie_hash: 88533454060a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Measured from b = 1.01 to 10⁴: a larger base raises the curve on (−2, −1) and (0, ∞) and lowers it on (−1, 0); curves of different
+      bases intersect only at −1 and 0'
+    aussage: |
+      The pattern from gr.satz.vorzeichen_reduktion holds at all measured bases: $1.01$, $1.1$, $1.3$, $1.44$, $1.444$, $\eta-10^{-3}$ (regular), $\eta+10^{-3}$, $1.45$, $2$, $e$, $10$,
+      $1000$, $10^4$ (Kneser). The margins of the inequalities: $\min(E+1)\ge0.42$, $\min\bigl((E-\ln T)/|\ln T|\bigr)\ge0.23$. $D$ to 20 digits (dps 34, step $10^{-10}$).
+      At fixed height, $b\mapsto T_b(x)$ is monotone (increasing on $(-2,-1)\cup(0,\infty)$, decreasing on $(-1,0)$): all 380 neighboring differences over 39 bases from $1.01$ to $1000$
+      (including $1.444$, $1.445$, $1.446$ on both sides of $\eta$) at 10 heights have the correct sign. $E$ increases strictly on $(-1,0)$ from $\varepsilon_0-1$ to $0$ and decreases at
+      fixed height in $b$: $E(-\tfrac12)=-0.0454$ ($1.01$), $-0.190$ ($\eta$), $-0.230$ ($2$), $-0.311$ ($10$), $-0.405$ ($10^4$).
+    bereich: regular at the attracting fixed point for $b<\eta$, Kneser for $b>\eta$; grid $x=-1.95,\dots,2$ (step $0.05$)
+    bewertung:
+      nutzen: Describes how the tetration curve depends on the base — simple and the same for all bases.
+      richtigkeit: numerical, 13 bases fine, 39 bases dense, two settings
+    einfach: If the base is made larger, the tetration curve becomes higher to the left of −1 and to the right of 0, but lower between −1 and
+      0. Therefore curves of different bases cross only at −1 (value 0) and at 0 (value 1).
+    nachgeprueft:
+    - ergebnis: 'Cross-check 25.10.2026 at new bases and settings (dps 28, step 10⁻⁹): b = 3 and b = 1.3 pattern +…+0−…−0+…+ on the whole grid,
+        E increasing; b = 3: min(E+1) = 0.559, min((E − ln T)/|ln T|) = 0.477, E(−½) = −0.2604 (between 2 and 10).'
+    pruefung:
+      f1_folgt_unmittelbar: No (measured); gr.satz.vorzeichen_reduktion turns it into two inequalities.
+      f2_benutzte_voraussetzungen: Engine (fatou.gp fork), central differences in b and x; cross-check dps 30 with its own list of bases.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Below and above η; open for b → ∞ (gr.frage.vorzeichen_kneser).
+      f5_neue_frage: Proof of the inner inequalities → gr.frage.vorzeichen_kneser
+    quellen:
+    - stelle: forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B4–B6, B8; d2_elastizitaet.py, a2_muster.py, d3_dicht.py
+  en_theorie:
+    beispiel: |
+      $T_2(-\tfrac12)=0.5448\ldots$ and $T_e(-\tfrac12)=0.4986\ldots$ (smaller), but $T_2(\tfrac12)=1.4588\ldots<T_e(\tfrac12)=1.6464\ldots$.
+    einordnung: |
+      Supports [[gr.satz.vorzeichen_reduktion]]; continuity across $\eta$: [[kl.beob.stetig_eta]].
+    genau: |
+      Always the same: a larger base raises the curve on $(-2,-1)$ and $(0,\infty)$ and lowers it on $(-1,0)$; the curves cross only at $(-1,0)$ and $(0,1)$.
+    warum: |
+      Measured at 13 bases on a fine grid and at 39 bases densely in $b$, regular below $\eta$ and after Kneser above; the inequalities from [[gr.satz.vorzeichen_reduktion]] hold with room to spare.
+    worum: |
+      How does the tetration curve depend on the base — for all bases from just above 1 to 10 000?
+- id: gr.beob.eps0_tabelle
+  quelle_hash: f35e141057f9
+  theorie_hash: 3ec00f8e64f5
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'The boundary number ε₀(b) lies in (0, 1): it falls from 1 (b → 1) through 0.613 (η) to 0.408 (b = 10⁴)'
+    aussage: |
+      | $b$ | $\varepsilon_0$ | $T'(0)$ |
+      |---|---|---|
+      | $1+10^{-6}$ | 0.927619011350656 | $1.38155238735013\cdot10^{-5}$ |
+      | $1+10^{-4}$ | 0.891564964316508 | $9.21121157816745\cdot10^{-4}$ |
+      | 1.01 | 0.795746922025197 | 0.046470364663981 |
+      | 1.1 | 0.694300150872462 | 0.252411832369148 |
+      | 1.3 | 0.634409655317119 | 0.494931191358990 |
+      | 1.444 | 0.613038361675502 | 0.610624490849637 |
+      | $\eta+10^{-3}$ | 0.612836763472541 | 0.611799684319319 |
+      | 1.45 | 0.612316944671937 | 0.614837428629744 |
+      | 2 | 0.571578377725955 | 0.889364954620976 |
+      | $e$ | 0.547308383994694 | 1.09176735125832 |
+      | 10 | 0.492576113765722 | 1.68428902795601 |
+      | 100 | 0.448962383770609 | 2.33385048951909 |
+      | 1000 | 0.424696207332254 | 2.78599024341557 |
+      | $10^4$ | 0.408139790749556 | 3.14051125641320 |
+
+      $\varepsilon_0$ is continuous and decreasing through $\eta$ ($\varepsilon_0(\eta)\approx0.61296$), 12–17 digits (range of two settings $10^{-18}$ to $5\cdot10^{-14}$).
+      For large $b$, $\varepsilon_0$ falls almost linearly in $\ln\ln b$, slope $-0.063$, $-0.060$, $-0.058$ (from 10 via 100 and 1000 to $10^4$), slowly flattening.
+      Consequence: between $b=10$ and $10^4$, $T_b'(0)$ grows roughly like $(\ln b)^{0.45}$, not like $\ln\ln b$.
+    bereich: $\varepsilon_0(b)=\partial\ln T_b'(0)/\partial\ln\ln b$ as in gr.satz.elastizitaet_rand; regular below $\eta$, Kneser above
+    bewertung:
+      nutzen: Check numbers for every theory of the base dependence; documents 0 < ε₀ < 1.
+      richtigkeit: numerical, 12–17 digits
+    einfach: The number that governs the pattern at the boundary always lies between 0 and 1 — near 1 for bases just above 1, around 0.61 at η
+      and around 0.41 at base 10 000.
+    nachgeprueft:
+    - ergebnis: 'Cross-check 25.10.2026 with new settings (dps 32, step 10⁻¹⁰): ε₀(2) = 0.571578377725955, ε₀(η + 10⁻³) = 0.612836763472541; dps
+        28, step 10⁻⁹: ε₀(1.3) = 0.63440965531712 — same as in the table.'
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: Engine at dps 30–40, mixed central differences; at η + 10⁻⁴ and b = 10⁵ the engine fails (∂_bT′(0) wrong or
+        abort).
+      f3_spezialfall: 'no'
+      f4_uebertragbar: T′(0) at e, 2, 100, 1000, 10⁴ matches kn.beob.grosse_basis and the known value 1.0917673512583.
+      f5_neue_frage: Does ε₀ stay positive for b → ∞? Continuing linearly, it would fall to 0 at ln ln b ≈ 9, and the pattern would break at x
+        = 0 (gr.frage.vorzeichen_kneser).
+    quellen:
+    - stelle: forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B9, B11 and table ε₀(b); d2_elastizitaet.py, a4_eps0_tabelle.py
+  en_theorie:
+    beispiel: |
+      $\varepsilon_0\approx0.45$ for large $b$ means: $T_b'(0)$ grows roughly like $(\ln b)^{0.45}$ — fits [[kn.beob.grosse_basis]].
+    einordnung: |
+      Whether $\varepsilon_0$ stays positive is open: [[gr.frage.vorzeichen_kneser]].
+    genau: |
+      Between 0 and 1: $0.928$ at $b=1+10^{-6}$, $0.613$ at $\eta$, $0.547$ at $e$, $0.408$ at $10^4$; for large $b$ almost linearly decreasing in $\ln\ln b$.
+    warum: |
+      Measured with mixed differences in $b$ and $x$, two settings. For $b\to1$, [[kl.satz.eps0_b_gegen_1]] explains the value near 1.
+    worum: |
+      The boundary number $\varepsilon_0(b)$ from [[gr.satz.elastizitaet_rand]] — how large is it?
 - id: gr.beob.integral_halb
   quelle_hash: b5f7278e6b2e
   theorie_hash: 2f3851edff61
@@ -130,22 +234,20 @@
       For the most important tetration, Kneser's solution at base $e$, the slope and the curvature at $0$ are known to many digits,
       and with them the beginning of its power series.
 - id: gr.beob.kneser_pde_wackeln
-  quelle_hash: 35fb13e36808
+  quelle_hash: a458c19c2262
   theorie_hash: 449d71b174d2
   herkunft:
     modell: sonnet
-    datum: '2026-10-12'
-  geprueft:
-    intern: nein
-    kern: zweitpruefung
-    theorie: nein
+    datum: '2026-10-25'
+  geprueft: nein
   en:
     pruefung:
       f5_neue_frage: Are the Fourier coefficients of p the base derivatives of the base-change modes (bw.beob.modenabfall)?
       f1_folgt_unmittelbar: No, measurement.
       f2_benutzte_voraussetzungen: Kneser values from the fork (b ± 10⁻⁷, Richardson); S as a forward sum to 48 digits.
       f3_spezialfall: Infinitesimal version of bw.satz.phasengesetz.
-      f4_uebertragbar: Any base above η; the range falls from 2 to e.
+      f4_uebertragbar: Any base above η; the range falls from 1.5·10⁻³ (just above η) through 5.7·10⁻⁴ (2) to 7·10⁻⁹ (10⁴), relative to u from
+        0.64 % to 0.50 % (gr.beob.wackeln_basen).
     bewertung:
       richtigkeit: numerical (periodicity to 10⁻³²)
       nutzen: Shows that Kneser is not the family of the forum equation, and ties this to the base change.
@@ -178,6 +280,52 @@
       of $p$ is the derivative of this wave with respect to the base.
     worum: |
       Does the well-known Kneser tetration satisfy the forum equation from [[gr.satz.turm_pde]] at fractional height too? Almost — but not quite.
+- id: gr.beob.wackeln_basen
+  quelle_hash: a62f24a6bb6d
+  theorie_hash: bee4ce38f233
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Forward sum plus wobble: Kneser''s base derivative deviates from the Kobi form by only 0.5–0.64 %, even for b → η⁺'
+    aussage: |
+      Structure (proved, the u-version of gr.satz.turm_pde): $u=u_0+w$ with the forward sum $u_0(x)=\sum_{k\ge0}[r(k)-r(x+k)]$ and a 1-periodic $w$, $w(0)=0$;
+      for the family with constant $p$ from gr.satz.turm_pde, $w\equiv0$.
+      Measured for Kneser, range of $w$ (grid $0.05$): $1.512\cdot10^{-3}$ ($\eta+10^{-3}$), $1.500\cdot10^{-3}$ ($1.45$), $5.66\cdot10^{-4}$ ($2$), $2.85\cdot10^{-4}$ ($e$),
+      $3.23\cdot10^{-5}$ ($10$), $1.0\cdot10^{-7}$ ($1000$), $7.4\cdot10^{-9}$ ($10^4$); relative to $|u(-\tfrac12)|$: $0.64\,\%$, $0.64\,\%$, $0.60\,\%$, $0.59\,\%$, $0.55\,\%$, $0.51\,\%$, $0.50\,\%$.
+      For $b\to\eta^+$, $w$ stays finite. Periodicity of $w$ on the grid: $6\cdot10^{-14}$ to $7\cdot10^{-24}$. Hence $D\approx T'u_0$ gives the Kneser base derivative everywhere to within less than $0.7\,\%$
+      and matches the sign pattern.
+    bereich: $b>\eta$, $u=D/T'$; $r(x)=\dfrac{T(x)}{b\ln b\,T'(x)}=\dfrac1{b\ln^2b\,T'(x-1)}$
+    bewertung:
+      nutzen: Shows that the Kobi form almost hits the base derivative, and how the wobbling decreases with the base.
+      richtigkeit: numerical; periodicity to ≥ 13 digits
+    einfach: A simple sum along the ever higher towers gives almost exactly how Kneser's tetration reacts to a change of the base — up to a small,
+      regular wobble of less than one percent, which does not vanish even just above η.
+    nachgeprueft:
+    - ergebnis: 'Cross-check 25.10.2026 at the new base b = 3 (dps 28, step 10⁻⁹): range of w 2.34·10⁻⁴, that is 0.58 % of |u(−½)| = 0.0403; periodicity
+        error 7.9·10⁻¹⁷ — fits between e and 10.'
+    pruefung:
+      f1_folgt_unmittelbar: The structure yes (telescoping sum from gr.satz.basis_gleichung); the magnitudes measured.
+      f2_benutzte_voraussetzungen: Convergence of the forward sum (b > η, T′ grows super-geometrically); engine values for D and T′.
+      f3_spezialfall: 'Generalizes gr.beob.kneser_pde_wackeln (there only b = 2 and e: 5.7·10⁻⁴, 2.9·10⁻⁴).'
+      f4_uebertragbar: To every base above η.
+      f5_neue_frage: Limit of the wobbling for b → η⁺ (range ≈ 1.51·10⁻³) — is it related to the Écalle invariant of eᵘ − 1? Mean value theorem
+        for ∂_bθ_b?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B12–B14; a2_muster.py
+    - {}
+  en_theorie:
+    beispiel: |
+      $b=2$: range $5.66\cdot10^{-4}$ — the same number as the wobble of $p$ in [[gr.beob.kneser_pde_wackeln]].
+    einordnung: |
+      Generalizes [[gr.beob.kneser_pde_wackeln]]; counterpart at $\eta$: [[kl.satz.c1_noerlund]]; bottleneck: [[kl.satz.kanalgesetz_vorwaertssumme]].
+    genau: |
+      $u=D/T'=u_0+w$, $u_0$ the forward sum, $w$ 1-periodic with $w(0)=0$. The range of $w$ is $0.5$–$0.64\,\%$ of $u$, from $1.5\cdot10^{-3}$ just above $\eta$ to $7\cdot10^{-9}$ at $10^4$.
+    warum: |
+      $u$ and $u_0$ solve the same summation equation $u(x+1)-u(x)=r(x)$, so their difference is periodic. The magnitude is measured.
+    worum: |
+      Kneser's base derivative is almost the forward sum from Kobi's equation ([[gr.satz.turm_pde]]). How large is the remainder, and how does it depend on the base?
 - id: gr.beob.wendepunkte
   quelle_hash: 9acd0a6f0bb8
   theorie_hash: 41fa66a32ca5
@@ -348,6 +496,34 @@
     worum: |
       Is the area $\int_0^1T_e=1.71452\ldots$ perhaps a known number in disguise, say a combination of $e$, $\pi$ and $\ln2$?
       So far nothing points that way.
+- id: gr.frage.vorzeichen_kneser
+  quelle_hash: 348b2deafedc
+  theorie_hash: fe9f27da1276
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Open: Why does max(−1, ln T) < E < 0 hold on (−1, 0) for Kneser — and does ε₀ stay positive for large bases?'
+    aussage: |
+      (1) Proof of the inner inequalities $\max(-1,\ln T(y))<E(y)<0$ for $y\in(-1,0)$ (gr.satz.vorzeichen_reduktion) for Kneser above $\eta$ and regular below $\eta$ — for instance via the Fatou coordinate,
+      or for the Kobi family via the condition that is equivalent according to the report, $R(x+1)<R(0)<R(x)$, $R(x)=\sum_{k\ge-1}1/T'(x+k)$, $R(-1)=R(0)$.
+      (2) Does $\varepsilon_0(b)>0$ remain for $b\to\infty$? If it kept falling linearly in $\ln\ln b$ (gr.beob.eps0_tabelle), it would become zero near $\ln\ln b\approx9$, and the pattern would break at $x=0$.
+      (3) Is $T_b(x)$ also monotone in $b$ for complex heights, and what does the second base derivative $\partial_b^2T$ say?
+    einfach: The pattern is measured everywhere, but not proved. And nobody knows whether it holds for huge bases.
+    naechste_frage: For (2) the engine needs bases above 10⁵ (it breaks off there today). The attempt via the forward sum led only to the equivalent
+      condition in (1).
+    quellen:
+    - stelle: forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, N1, N2, open questions 1, 2, 5
+  en_theorie:
+    einordnung: |
+      Measurements: [[gr.beob.basis_monoton]], [[gr.beob.eps0_tabelle]].
+    genau: |
+      To show: $\max(-1,\ln T)<E<0$ on $(-1,0)$ for Kneser and regular; also open is whether $\varepsilon_0$ stays positive for $b\to\infty$.
+    warum: |
+      [[gr.satz.vorzeichen_reduktion]] turns the whole pattern into these two inequalities; they do not follow from the equation alone, because the base derivative at fractional height depends on the choice of solution.
+    worum: |
+      The sign pattern of the base derivative is measured everywhere, but not proved.
 - id: gr.gegen.tpid7_kneser
   quelle_hash: e64575bf2c53
   theorie_hash: 66823b7a0e84
@@ -829,16 +1005,12 @@
     worum: |
       How much does a tower change when the base is changed a little? The answer builds up level by level.
 - id: gr.satz.basis_gleichung
-  quelle_hash: 9f397ae34f8e
+  quelle_hash: bb38688673a1
   theorie_hash: c3367b542ef2
   herkunft:
     modell: sonnet
-    datum: '2026-10-12'
-  geprueft:
-    beweis: nein
-    intern: nein
-    kern: zweitpruefung
-    theorie: nein
+    datum: '2026-10-25'
+  geprueft: nein
   en:
     beweis:
       text: |
@@ -868,6 +1040,7 @@
     formen:
     - notiz: 'derivative of the self-tower x↑↑x (forum tid 789): base derivative plus height derivative'
     - notiz: Robbins 2009 (tid 337), the same sum counted differently
+    - notiz: logarithmic form (gr.satz.elastizitaet_stufe)
   en_theorie:
     beispiel: |
       $n=2$: $\frac1b\bigl(T(0)\ln b\,T(1)T(2)+T(1)T(2)\bigr)=b^b(1+\ln b)$ — the well-known derivative of $b^b$. **Self-tower:** The derivative of $x\uparrow\uparrow x$ is
@@ -933,6 +1106,98 @@
         W
     bedingungen_text: 'Assumption H: engine values at the circle nodes accurate to 10⁻⁵ and |sexp| ≤ 1000 near the axis; that the values belong
       to Kneser is only supported numerically'
+- id: gr.satz.elastizitaet_rand
+  quelle_hash: 4d57e70ab3fa
+  theorie_hash: d5769780cc1c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'At the boundaries everything hangs on ε₀ = ∂ln T′(0)/∂ln ln b: E(−1⁺) = ε₀ − 1, E′(0) = ε₀ T′(0); the pattern requires 0 ≤ ε₀ ≤ 1'
+    aussage: |
+      $T'(0)=\ln b\cdot T'(-1)$, and
+      $$E(-1^+)=\varepsilon_0-1,\qquad E'(0)=\varepsilon_0\,T'(0).$$
+      The sign pattern from gr.satz.vorzeichen_reduktion forces $0\le\varepsilon_0\le1$. If $D$ changes sign at $-1$ and $0$ with nonvanishing derivative,
+      then $0<\varepsilon_0<1$, that is: $T_b'(0)$ increases in $b$, and $T_b'(-1)=T_b'(0)/\ln b$ decreases in $b$.
+    bereich: as gr.satz.vorzeichen_reduktion; $\varepsilon_0(b)=\dfrac{b\ln b\,\partial_bT_b'(0)}{T_b'(0)}=\dfrac{\partial\ln T_b'(0)}{\partial\ln\ln
+      b}$
+    beweis:
+      text: |
+        Chain rule at $x=-1$: $T'(0)=\ln b\,T(0)\,T'(-1)$. As $y\to-1$, by l'Hôpital $D/T\to D'(-1)/T'(-1)$, hence
+        $E(-1^+)=b\ln b\,\partial_b\ln T'(-1)=b\ln b\,\partial_b[\ln T'(0)-\ln\ln b]=\varepsilon_0-1$. $E'(0)=b\ln b\,[D'(0)T(0)-D(0)T'(0)]/T(0)^2=b\ln b\,D'(0)=\varepsilon_0T'(0)$.
+        Near $0^-$, $E(y)\approx\varepsilon_0T'(0)\,y$ and $\ln T(y)\approx T'(0)\,y$: $E<0$ gives $\varepsilon_0\ge0$, $E>\ln T$ gives $\varepsilon_0\le1$; near $-1^+$, $-1\le E\le0$ gives the same.
+        Transversality: $D'(0)=\varepsilon_0T'(0)/(b\ln b)$ and $D'(-1)=(\varepsilon_0-1)T'(-1)/(b\ln b)$.
+    bewertung:
+      nutzen: Translates the pattern at the boundary into a checkable number.
+      richtigkeit: complete
+    einfach: 'At the boundaries the whole pattern hangs on a single number: by what percentage the slope at 0 grows when ln b grows by one percent.
+      This number must lie between 0 and 1.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, chain rule and l'Hôpital.
+      f2_benutzte_voraussetzungen: Differentiability of T′ in b at x = −1 and 0; T′(−1) > 0.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Every increasing family with T_b(0) = 1.
+      f5_neue_frage: How does ε₀(b) behave? → gr.beob.eps0_tabelle, kl.satz.eps0_b_gegen_1
+    quellen:
+    - stelle: forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B3
+  en_theorie:
+    beispiel: |
+      $b=e$: $\varepsilon_0=0.5473$, hence $E(-1^+)=-0.4527$.
+    einordnung: |
+      Values of $\varepsilon_0$: [[gr.beob.eps0_tabelle]]; limiting case $b\to1$: [[kl.satz.eps0_b_gegen_1]].
+    genau: |
+      $E(-1^+)=\varepsilon_0-1$, $E'(0)=\varepsilon_0T'(0)$; the pattern requires $0\le\varepsilon_0\le1$.
+    warum: |
+      At $-1$, $D$ and $T$ are both zero, their quotient is the quotient of the derivatives, and $T'(-1)=T'(0)/\ln b$. At $0$, $T=1$ and $D=0$, so only $D'(0)=\partial_bT'(0)$ counts.
+    worum: |
+      At the points $-1$ and $0$, $D=0$; how the elasticity behaves there is told by a single number $\varepsilon_0$: the percentage change of $T'(0)$.
+- id: gr.satz.elastizitaet_stufe
+  quelle_hash: 8bc7ffecb16a
+  theorie_hash: 8d373ff576e2
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: The base elasticity E = ∂ln T/∂ln ln b obeys the step rule E(x+1) = (1 + E(x))·ln T(x+1)
+    aussage: |
+      With the **elasticity** $E(x)=\dfrac{b\ln b\,D(x)}{T(x)}=\dfrac{\partial\ln|T_b(x)|}{\partial\ln\ln b}$ we have
+      $$E(x+1)=\bigl(1+E(x)\bigr)\ln T(x+1),\qquad E(0)=0,\qquad E(1)=\ln b,$$
+      and at integer heights $E(n)=\sum_{k=1}^{n}\prod_{j=k}^{n}\ln T(j)$ — the logarithmic form of gr.satz.basis_gleichung.
+    bereich: every family of real tetrations differentiable in $b$ with $T_b(0)=1$, $b>1$; $D(x)=\partial_bT_b(x)$; $E$ is defined where $T(x)\ne0$
+    beweis:
+      text: |
+        $\ln T(x+1)=\ln b\cdot T(x)$; apply $b\ln b\,\partial_b$ to it. On the left stands $b\ln b\,D(x+1)/T(x+1)=E(x+1)$, on the right
+        $b\ln b\,[T(x)/b+\ln b\,D(x)]=\ln b\,T(x)\,[1+E(x)]=\ln T(x+1)\,(1+E(x))$. $E(0)=0$ because of $D(0)=0$, $E(1)=\ln b$ because of $T_b(1)=b$. The sum formula follows by induction.
+    bewertung:
+      nutzen: Reduces the sign problem of the base derivative to a piece of length 1.
+      recherche: The graph contained only the linear equation for D (gr.satz.basis_gleichung).
+      richtigkeit: complete
+    einfach: 'One asks by what percentage the tetration changes when ln b grows by one percent. This “elasticity” obeys a very simple rule: one
+      step further to the right it is (1 + old value) times ln T.'
+    formen:
+    - notiz: integer heights
+    pruefung:
+      f1_folgt_unmittelbar: 'Yes: gr.satz.basis_gleichung, divided by T(x+1)/(b ln b).'
+      f2_benutzte_voraussetzungen: Differentiability in b, T_b(0) = 1, T(x) ≠ 0.
+      f3_spezialfall: Logarithmic version of the linear step equation for D.
+      f4_uebertragbar: 'Every family T(x+1) = exp(c·T(x)) with parameter c: the same rule for E = ∂ln|T|/∂ln c.'
+      f5_neue_frage: Does the form make the sign of D transparent? → gr.satz.vorzeichen_reduktion
+    quellen:
+    - stelle: forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B1; d2_elastizitaet.py
+  en_theorie:
+    beispiel: |
+      $E(2)=(1+\ln b)\ln(b^b)=(1+\ln b)\,b\ln b$; for $b=2$ this is $1.6931\cdot1.3863=2.347$.
+    einordnung: |
+      Logarithmic form of [[gr.satz.basis_gleichung]]; application: [[gr.satz.vorzeichen_reduktion]].
+    genau: |
+      $E(x+1)=(1+E(x))\ln T(x+1)$, $E(0)=0$, $E(1)=\ln b$.
+    warum: |
+      Taking the logarithm of $T(x+1)=b^{T(x)}$ gives $\ln T(x+1)=\ln b\cdot T(x)$ — a product. The percentage change of a product is the sum of the percentage changes:
+      $1$ from $\ln b$ and $E(x)$ from $T(x)$, times the weight $\ln b\,T(x)=\ln T(x+1)$.
+    worum: |
+      How does $T_b(x)$ change when the base is increased a little? Instead of the derivative $D=\partial_bT_b$ one looks at the percentage change: the elasticity $E=\partial\ln|T|/\partial\ln\ln b$.
 - id: gr.satz.exponentialitaet
   quelle_hash: 320d13ad122c
   theorie_hash: d6116c3d1068
@@ -1296,17 +1561,12 @@
     worum: |
       The area under the tetration between $-1$ and $0$ is exactly the negative of the area under the super-logarithm between $0$ and $1$.
 - id: gr.satz.kehrwert_turmsumme
-  quelle_hash: 57d18a341b6d
-  theorie_hash: 9f0cbae22d2e
+  quelle_hash: b06c8ea12e87
+  theorie_hash: e9b288bcf234
   herkunft:
     modell: sonnet
-    datum: '2026-10-12'
-  geprueft:
-    beweis: zweitpruefung
-    intern: nein
-    kern: zweitpruefung
-    theorie: zweitpruefung
-    zusatz: nein
+    datum: '2026-10-25'
+  geprueft: nein
   en:
     beweis:
       text: $1/T(y+1)=b^{-T(y)}$; telescoping as for any fractional sum with summands → 0. The first term dominates because $T(x+m+1)$ grows as
@@ -1314,11 +1574,12 @@
     gegenbeispielsuche: 'exp.eta_digamma: $C_2$, $C_e$, $C_{10}$ to 25 digits; base 2 with Kneser $T_2(1/2)=1.4587818160\ldots$: ratio $(C-R(x))/2^{-T(x)}$
       = 1.435, 1.064, 1.000… at x = 1/2, 3/2, 5/2.'
     pruefung:
-      f5_neue_frage: 'Is $C_2$ irrational? (Terms $2^{-2\uparrow\uparrow k}$: Liouville-like fast — presumably transcendent.)'
+      f5_neue_frage: 'Is $C_e$ transcendental, is $C_b$ irrational for rational, non-integer $b$? ($C_2$ is a Liouville number: ar.satz.kehrwertsumme_liouville.)'
       f1_folgt_unmittelbar: Yes.
       f2_benutzte_voraussetzungen: Only the growth of the tower (b > η); for the value C_b only integer heights.
       f3_spezialfall: 'Yes: Müller–Schleicher sum with summand → 0.'
-      f4_uebertragbar: To any rapidly growing sequence (Engel-type series); whether C_b is transcendent is open.
+      f4_uebertragbar: To any rapidly growing sequence (Engel-type series). For integer b ≥ 2, C_b is a Liouville number, hence transcendental
+        (ar.satz.kehrwertsumme_liouville); for b = e and non-integer b open (ar.frage.kehrwertsumme_e).
     bewertung:
       richtigkeit: complete
       nutzen: Simple, beautiful constant above η; counterpart to the divergent sum of the towers.
@@ -1336,6 +1597,8 @@
     quellen:
     - stelle: §13, Theorem candidate E
     - {}
+    nachgeprueft:
+    - ergebnis: Statement and proof untouched; only f4/f5 adjusted.
   en_theorie:
     beispiel: |
       $$C_2=\frac12+\frac14+\frac1{16}+\frac1{65536}+2^{-65536}+\dots=0.8125152587890625\ldots$$
@@ -1343,7 +1606,7 @@
       $C_e=e^{-1}+e^{-e}+e^{-e^e}+\dots=0.367879+0.065988+0.0000003+\dots=0.43386773919\ldots$
     einordnung: |
       The fractional sum is an example of the Müller–Schleicher sums from Chapter 5 ([[kl.satz.bruchsumme]]); here the summands
-      tend to $0$, there to a fixed point. Whether $C_2$ is irrational or transcendental is open.
+      tend to $0$, there to a fixed point. For integer bases such as $b=2$, $C_b$ is a Liouville number, hence transcendental ([[ar.satz.kehrwertsumme_liouville]]); for $b=e$ this is open.
     genau: |
       For $b>\eta$ let
       $$C_b=\sum_{k\ge1}\frac1{b\uparrow\uparrow k}=\frac1b+\frac1{b^b}+\frac1{b^{b^b}}+\dots$$
@@ -2659,6 +2922,57 @@
     worum: |
       A tetration cannot increase over one stretch and decrease elsewhere: the sign of the slope is inherited from level to level.
       For bases below $1$, by contrast, it flips at every step.
+- id: gr.satz.vorzeichen_reduktion
+  quelle_hash: ed39dfd0548b
+  theorie_hash: b27dfc604a2b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: The sign pattern of the base derivative depends only on max(−1, ln T) < E < 0 on (−1, 0)
+    aussage: |
+      (i) The pattern
+      $$D>0\ \text{on}\ (-2,-1)\cup(0,\infty),\qquad D<0\ \text{on}\ (-1,0),\qquad D(-1)=D(0)=0$$
+      holds if and only if $\max\bigl(-1,\ln T(y)\bigr)<E(y)<0$ for all $y\in(-1,0)$. Without any condition, $D(n)>0$ holds for integer $n\ge1$ and $D(x)\to+\infty$ for $x\to-2^+$.
+      (ii) Equivalent on the slog side: $\partial_b\mathrm{slog}_b(y)=-u(\mathrm{slog}_by)$; the pattern reads $\partial_b\mathrm{slog}_b>0$ on $(0,1)$ and $<0$ for $y<0$ and for $y>1$.
+      (iii) If the pattern holds for all bases in $[b_1,b_2]$, then $T_{b_1}$ and $T_{b_2}$ meet on $(-2,\infty)$ only at $x=-1$ and $x=0$, and $T_{b_2}<T_{b_1}$ exactly on $(-1,0)$.
+    bereich: real family, differentiable in $b$, for every $b>1$ differentiable with $T'>0$ on $(-2,\infty)$ and $T_b(0)=1$ (hence $T_b(-1)=0$);
+      $E$ as in gr.satz.elastizitaet_stufe, $u=D/T'$
+    beweis:
+      text: |
+        $T<0$ on $(-2,-1)$, $T\in(0,1)$ on $(-1,0)$, $T>1$ on $(0,\infty)$. On $(-1,0)$: $\mathrm{sign}\,D=\mathrm{sign}\,E$. On $(0,1)$: $E(y+1)=(1+E(y))\ln T(y+1)$ with
+        $\ln T(y+1)>0$, hence $D(y+1)>0\iff E(y)>-1$. On $(1,\infty)$: $E>0$ implies $E(x+1)>0$ (induction over the strips). On $(-2,-1)$: for $x=y-1$,
+        $E(x)=E(y)/\ln T(y)-1$ and $\mathrm{sign}\,D(x)=-\mathrm{sign}\,E(x)$ (because $T(x)<0$), hence $D(x)>0\iff E(y)>\ln T(y)$. Integer points: $D(-1)=D(0)=0$, $D(n)>0$ from the sum formula
+        in gr.satz.basis_gleichung. Boundary at $-2$: $D(x)=[D(x+1)/T(x+1)-T(x)/b]/\ln b$, the first term tends to $D'(-1)/T'(-1)$, $T(x)\to-\infty$.
+        (ii) Differentiating $T_b(\mathrm{slog}_by)=y$ with respect to $b$: $D+T'\,\partial_b\mathrm{slog}_b=0$. (iii) $b\mapsto T_b(x)$ is strictly monotone for every fixed $x\notin\{-1,0\}$.
+    bewertung:
+      nutzen: Turns a sign pattern on all of (−2, ∞) into two inequalities on a piece of length 1.
+      richtigkeit: complete
+    einfach: 'Whether a larger base raises or lowers the curve need only be checked on the piece between −1 and 0: If the elasticity there lies
+      between −1 (resp. ln T) and 0, then a larger base raises the curve to the left of −1 and to the right of 0 and lowers it in between.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from gr.satz.elastizitaet_stufe by case distinction on the sign of T and ln T.
+      f2_benutzte_voraussetzungen: T continuous, strictly increasing (T′ > 0 only for the slog form), T_b(0) = 1, differentiability in b; no Kneser
+        property.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Regular below η and Kneser above alike; every increasing family.
+      f5_neue_frage: Prove the inner inequalities for Kneser → gr.frage.vorzeichen_kneser
+    quellen:
+    - stelle: forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B2, B7, B16
+  en_theorie:
+    beispiel: |
+      $b=2$: $E(-\tfrac12)=-0.230$ lies between $\max(-1,\ln T_2(-\tfrac12))=\ln0.5448=-0.607$ and $0$.
+    einordnung: |
+      Boundaries: [[gr.satz.elastizitaet_rand]]; the proof for Kneser is open: [[gr.frage.vorzeichen_kneser]].
+    genau: |
+      The pattern holds if and only if the inequalities $\max(-1,\ln T)<E<0$ hold on $(-1,0)$. Equivalent: $\partial_b\mathrm{slog}_b>0$ on $(0,1)$, $<0$ elsewhere.
+      Then two curves of different bases intersect only at $-1$ and $0$.
+    warum: |
+      The step rule [[gr.satz.elastizitaet_stufe]] pushes the sign from strip to strip: to the right of 0, $\ln T>0$, so $E>0$ persists once $E>-1$ held; to the left of $-1$,
+      $T<0$ and $\ln T<0$, so there the condition flips to $E>\ln T$.
+    worum: |
+      Does a larger base raise the tetration curve or lower it? What is measured: to the left of $-1$ and to the right of $0$ it raises, in between it lowers ([[gr.beob.basis_monoton]]).
 - id: gr.satz.wurzel_eta
   quelle_hash: dbd6698e6e57
   theorie_hash: 1ab3f6fc0662

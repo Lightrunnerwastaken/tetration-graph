@@ -1,0 +1,292 @@
+gebiet: bw
+# Runde 25.10.2026, Bericht 10: Glattheit der Rang-5-Basiswechsel-Welle (Hölder-Exponent, Singularität).
+# Rechnungen: forschung/runde_2026_10_25/10_basiswechsel_hoelder/ (BERICHT.md, Befunde #1–#9 = B1–B9); Gegenprobe in EINTRAG.md.
+# Bezeichnungen wie r18_01_bw.yaml: F = slog_b∘T_d, H = lim slog_b^n∘T_d^n, U_n = T_d^n(y), c = H − id, P₄ = Φ₄ − μ₄, Ĝ = spog_b∘H∘P_d = id + Φ₅.
+aussagen:
+
+- id: bw.lem.wackel
+  titel: 'Wackel-Lemma: auf der Skala s/U_n′ ist der Differenzenquotient des Rang-5-Konjugators Π_n·(1 + W(U_n, s))'
+  art: lemma
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [F_bd, phase]
+  bereich: 'wie bw.satz.phasengesetz_rang5; $U_n=T_d^{\circ n}(y)$, $U_n''=(T_d^{\circ n})''(y)$; $P_4=\Phi_4-\mu_4$ die mittelwertfreie Rang-4-Welle von $(b,d)$; $c(U)=H(U)-U=\mu_4+P_4(U)+r(U)$ mit $\sup_{U\ge V}|r(U)|\to0$ (bw.satz.produktformel_rang5 (i))'
+  aussage: |
+    Für jedes $y>L_d$, jedes $s>0$ und $h=s/U_n'(y)$ gilt
+    $$\frac{H(y+h)-H(y)}{h}=\Pi_n(y)\,\bigl(1+W(U_n,s)+\varepsilon_n(s)\bigr),\qquad W(u,s)=\frac{P_4(u+s)-P_4(u)}{s},$$
+    mit dem von $s$ unabhängigen Teilprodukt $\Pi_n(y)=(\mathrm{slog}_b^{\circ n})'(H(U_n))\,U_n'(y)$ und $\varepsilon_n(s)=O(s/U_n)+O\bigl(\sup_{U\ge U_n-C}|r(U)|/s\bigr)$.
+    Grenzfälle: $s\to0$ gibt $\Pi_n(1+P_4'(U_n))\approx\Pi_{n+1}$ (Produktformel), $s\gg1$ gibt $\Pi_n$. Zwischen zwei Ebenen „wackelt“ der Differenzenquotient also genau mit der Rang-4-Welle.
+    Numerisch $(e,2)$, Ebene 3: $Q(s)=D(s)/(1+W)$ ist für $s\in[10^{-3},10^3]$ konstant bis auf $(0.4\ldots1.1)/U_3$ (θ = 0.02, 0.03, 0.05, 0.08, 0.1); Wackel-Amplitude $6\ldots8\cdot10^{-4}$.
+  einfach: >-
+    Wie steil ist die Pentations-Übersetzung, wenn man mit einem bestimmten Massstab misst? Die Antwort ist ein Produkt aus allen schon aufgelösten Stufen,
+    mal ein kleiner Wackelfaktor, der genau die Welle der Tetration nachzeichnet.
+  formen:
+    - {tex: '\frac{H(y+h)-H(y)}{h}=\Pi_n(y)\bigl(1+W(U_n,s)+\varepsilon_n\bigr),\ h=s/U_n''', notiz: 'Wackel-Lemma'}
+  beweis:
+    art: skizze
+    text: |
+      Exakt gilt $H(y)=\mathrm{slog}_b^{\circ n}(H(U_n))$ und $H(U_n)=U_n+c(U_n)$. Mittelwertsatz:
+      $H(y+h)-H(y)=(\mathrm{slog}_b^{\circ n})'(\xi)\,[\Delta U+P_4(U_n+\Delta U)-P_4(U_n)+\Delta r]$ mit $\Delta U=s(1+O(s/U_n))$ (aus $U_n''/U_n'^2=O(1/U_n)$),
+      $|\Delta r|\le2\sup|r|$ und $(\mathrm{slog}_b^{\circ n})'(\xi)/(\mathrm{slog}_b^{\circ n})'(H(U_n))=1+O(s/U_n)$. Division durch $h=s/U_n'$ gibt die Formel.
+    luecken:
+      - 'L2: gleichmässige Verzerrungsschranken $U_n''''/U_n''^2=O(1/U_n)$ und $(\mathrm{slog}_b^{\circ n})''''/(\mathrm{slog}_b^{\circ n})''=O(1/U_n)$ an Turmhöhen nur skizziert (aus $T''''/T''^2\approx1/T$).'
+      - 'L1 (geerbt): Bedingungen von bw.satz.phasengesetz_rang5 und die Zerlegung $c=\mu_4+P_4+r$ aus bw.satz.produktformel_rang5 (bedingt).'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B1; s2_wackeln.py (Gegenprobe θ = 0.03, 0.08 bei dps 90 in EINTRAG.md)'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026 an neuen Stellen θ = 0.03 und 0.08 (dps 90): Rest nach Vorhersage 2.5·10⁻⁷ bei U₃ = 4.5·10⁶ und 4.9·10⁻¹⁶ bei U₃ = 7.3·10¹⁴, also 1.1/U₃ bzw. 0.36/U₃ — die vorhergesagte Fehlerordnung.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Mittelwertsatz auf die exakte Ebenen-Zerlegung aus bw.satz.produktformel_rang5.'
+    f2_benutzte_voraussetzungen: 'Ebenen-Zerlegung c = μ₄ + P₄ + r mit r → 0; Verzerrungsschranken L2; P₄ stetig.'
+    f3_spezialfall: 'Ja: ein Lemma vom Hardy-Typ (Differenzenquotienten folgen den Teilprodukten), wie es bw.verm.rang5_nirgends_diffbar als Lücke nannte.'
+    f4_uebertragbar: 'Auf jeden Rang r ≥ 5 mit der Rang-(r−1)-Welle an der Stelle von P₄.'
+    f5_neue_frage: 'Was sagt das Wackeln über die Existenz der Ableitung? → bw.satz.kein_endlicher_ableitungswert'
+  bewertung: {richtigkeit: 'Skizze (L2); numerisch auf O(1/U_n) bestätigt, 5 Stellen θ, zwei Paare', neuheit: neu_ungeprueft, nutzen: 'Schliesst die Hardy-Lücke von bw.verm.rang5_nirgends_diffbar und trägt alle Glattheitsaussagen zu Φ₅.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: bw.satz.produktformel_rang5}
+    - {typ: verwandt, ziel: bw.beob.skalensprung}
+
+- id: bw.satz.hoelder_eins
+  titel: 'Die Rang-5-Phase hat überall den Hölder-Exponenten 1: Zuwächse h·e^{O(slog(1/h))}'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [F_bd, phase]
+  bereich: 'wie bw.lem.wackel; $\delta_\pm=\max(\pm P_4'')$, $n(h)=\mathrm{slog}(1/h)+O(1)$ die Zahl der auf der Skala $h$ aufgelösten Ebenen'
+  aussage: |
+    Lokal gleichmässig in $y$ gilt
+    $$c\,h\,(1-\delta_-)^{n(h)}\le H(y+h)-H(y)\le C\,h\,(1+\delta_+)^{n(h)},$$
+    also $H(y+h)-H(y)=h^{1+o(1)}$: $H$ und $\hat G=\mathrm{id}+\Phi_5$ sind zu jedem Exponenten $1\pm\varepsilon$ bi-Hölder, der Stetigkeitsmodul ist $h\,e^{O(\mathrm{slog}(1/h))}$.
+    Für $(e,2)$: $P_4'\in[-8.874\cdot10^{-4},\,9.196\cdot10^{-4}]$. Auf allen rechenbaren Skalen ($n\delta\ll1$) ist das $h(1+O(\delta\,n(h)))$, also die Form $h\,\mathrm{slog}(1/h)$ aus bw.verm.rang5_nirgends_diffbar.
+  einfach: >-
+    Auf jeder Skala ist die Pentations-Welle fast so glatt wie eine gewöhnliche glatte Funktion. Die Abweichung wächst nur mit der Zahl der Turm-Stufen,
+    und die ist selbst für winzigste Massstäbe klein.
+  beweis:
+    art: skizze
+    text: 'Zwischen zwei Ebenen ist der Differenzenquotient $\Pi_n(1+W)$ mit $|W|\le\max|P_4''|$ (bw.lem.wackel), und $\Pi_{n+1}/\Pi_n=(1+P_4''(U_n))(1+O(1/U_n))$; das Produkt der Korrekturen konvergiert.'
+    luecken:
+      - 'Wie bw.lem.wackel (L1, L2).'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B2; s1_konstanten.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus bw.lem.wackel und der Produktformel.'
+    f2_benutzte_voraussetzungen: 'Schranken für P₄′; Konvergenz des Produkts der (1 + O(1/U_n)).'
+    f3_spezialfall: 'Gegenstück zu Riesz-Produkten mit beschränkten Faktoren: Hölder-1 bis auf langsame Korrekturen.'
+    f4_uebertragbar: 'Auf jeden Rang ≥ 5 mit beschränkter Ableitung der tieferen Welle; auf Rang 6 ist die tiefere Welle Φ₅ selbst nicht C¹ — dort offen.'
+    f5_neue_frage: 'Genaue Hausdorff-Funktion des Trägers von dĜ (etwa h·e^{−χ slog(1/h)})?'
+  bewertung: {richtigkeit: 'Skizze wie bw.lem.wackel', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass Φ₅ nicht im Hölder-Sinn rau ist; die Unglätte steckt allein in der Ableitung.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: bw.lem.wackel}
+    - {typ: verwandt, ziel: bw.verm.rang5_nirgends_diffbar}
+
+- id: bw.satz.kein_endlicher_ableitungswert
+  titel: 'Nirgends ein endlicher positiver Ableitungswert: an jeder Stelle ist H′ = 0, H′ = +∞ oder H′ existiert nicht'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [F_bd, phase, fourier_moden]
+  bereich: 'wie bw.lem.wackel; $P_4$ stetig und nicht konstant (für alle neun gerechneten Paare: erste Mode $|a_1|\approx7\cdot10^{-5}$ bei $(e,2)$)'
+  aussage: |
+    (i) Für **jedes** $y\in(L_d,\infty)$ gilt: $H'(y)$ ist $0$, $+\infty$ oder existiert nicht. Gleichwertig: $\Phi_5'(x)\in\{-1,+\infty\}$ oder $\Phi_5'(x)$ existiert nicht, an jeder Stelle $x$.
+    Der Grund ist eine feste Untergrenze des Wackelns: $c_0=\min_u\max_{s\in[1,2]}|W(u,s)|\ge\tfrac14\,\mathrm{Spannweite}(P_4)>0$; $(e,2)$: $c_0=9.815\cdot10^{-5}=0.342\cdot\mathrm{Spannweite}$ (Verhältnis 0.342 bei allen neun Paaren, weil $P_4$ fast eine reine Sinuswelle ist).
+    (ii) Die Stellen mit $H'=0$, mit $H'=+\infty$ und ohne Ableitung liegen jede für sich dicht.
+  einfach: >-
+    Die Übersetzungsfunktion hat an keiner Stelle eine gewöhnliche, endliche Steigung grösser als null. Entweder ist sie dort ganz flach, unendlich steil,
+    oder die Steigung ist gar nicht festgelegt, weil sie auf jeder feineren Stufe wieder wackelt.
+  beweis:
+    art: skizze
+    text: |
+      (i) Existiert $H'(y)=L\in(0,\infty)$, so geht $D(y,s/U_n')/D(y,S/U_n')\to1$ gleichmässig in $s\in[1,2]$ bei festem $S$. Nach bw.lem.wackel ist der Quotient
+      $(1+W(U_n,s))/(1+W(U_n,S))+o(1)$ mit $|W(u,S)|\le\mathrm{Spannweite}/S$; zu jedem $u$ gibt es aber $s\in[1,2]$ mit $|W(u,s)|\ge c_0$, weil $u+s$ eine volle Periode überstreicht.
+      Für $S>8$ ist das ein Widerspruch. (ii) Liegt $U_j(I)$ in einem Fenster der Länge $\eta$, so überdeckt $U_{j+1}(I)$ eine Länge $\ge\eta T_d'(U_j)\gg1$; man kann $\{U_{j+1}\}$
+      also in jedes Fenster lenken: nahe der Minimalstelle von $P_4'$ fällt $\Pi_n$ geometrisch ($H'=0$), nahe der Maximalstelle steigt es ($H'=\infty$), abwechselnd bleibt es beschränkt (keine Ableitung nach (i)).
+    luecken:
+      - 'Wie bw.lem.wackel (L1, L2); für (ii) zusätzlich P₄ ∈ C¹.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B3 und B7; s1_konstanten.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus bw.lem.wackel.'
+    f2_benutzte_voraussetzungen: 'Nur: P₄ stetig und nicht konstant, dazu die Fehlerordnung des Wackel-Lemmas.'
+    f3_spezialfall: 'Wie bei singulären Riesz-Produkten und der Minkowski-Fragezeichenfunktion: keine endliche positive Ableitung.'
+    f4_uebertragbar: 'Auf jeden Rang ≥ 5, sobald die tiefere Welle nicht konstant ist.'
+    f5_neue_frage: 'Zusammen mit dem Satz von Lebesgue folgt sofort die Singularität (bw.satz.rang5_singulaer).'
+  bewertung: {richtigkeit: 'Skizze wie bw.lem.wackel; c₀ numerisch für neun Paare', neuheit: neu_ungeprueft, nutzen: 'Der richtige Kern von „nirgends differenzierbar“: an keiner Stelle eine Ableitung in (0, ∞).', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: bw.lem.wackel}
+    - {typ: korrigiert, ziel: bw.verm.rang5_nirgends_diffbar}
+
+- id: bw.kor.rang5_fast_ueberall_diffbar
+  titel: 'Die Rang-5-Phase ist fast überall differenzierbar — schon weil Ĝ = id + Φ₅ monoton ist (Satz von Lebesgue)'
+  art: korollar
+  ebene: C
+  status: bedingt
+  bedingungen: [bw.satz.phasengesetz_rang5]
+  niveau: forschung
+  objekte: [phase, F_bd]
+  bereich: 'jede Basiswechsel-Phase $\Phi_r=\hat G-\mathrm{id}$, die als Grenzwert $\hat G(x)=\lim_n\bigl(G(x+n)-n\bigr)$ einer streng wachsenden Funktion $G$ entsteht (hier $G=\mathrm{spog}_b\circ P_d$)'
+  aussage: |
+    $\hat G$ ist als punktweiser Grenzwert wachsender Funktionen monoton nichtfallend. Nach dem Satz von Lebesgue ist eine monotone Funktion fast überall differenzierbar mit endlicher Ableitung.
+    Also ist $\Phi_5=\hat G-\mathrm{id}$ **fast überall differenzierbar**, mit $\Phi_5'\ge-1$ und $\int_0^1(1+\Phi_5')\le1$.
+    Damit ist bw.verm.rang5_nirgends_diffbar („nirgends, mindestens fast nirgends differenzierbar“) im Wortlaut widerlegt, ohne jede Rechnung und ohne die Lücken von bw.lem.wackel.
+    Zusammen mit bw.satz.kein_endlicher_ableitungswert folgt $\hat G'=0$ fast überall (bw.satz.rang5_singulaer).
+  einfach: >-
+    Die Übersetzung der Pentation ist eine wachsende Funktion. Ein klassischer Satz sagt: Jede wachsende Funktion hat fast überall eine Steigung.
+    Darum kann die Welle nicht „überall rau wie die Weierstrass-Funktion“ sein.
+  beweis:
+    art: bedingt
+    text: '$G=\mathrm{spog}_b\circ P_d$ ist streng wachsend, also auch $x\mapsto G(x+n)-n$; der Grenzwert $\hat G$ (bw.satz.phasengesetz_rang5 (ii)) ist monoton nichtfallend. Lebesgues Differentiationssatz für monotone Funktionen gibt die endliche Ableitung fast überall.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/10_basiswechsel_hoelder/EINTRAG.md, Gegenprobe (Folgerung aus BERICHT.md B4)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Monotonie von Ĝ und dem Satz von Lebesgue.'
+    f2_benutzte_voraussetzungen: 'Nur die Existenz des Grenzwerts Ĝ (bw.satz.phasengesetz_rang5) und die Monotonie von G.'
+    f3_spezialfall: 'Ja: Satz von Lebesgue für monotone Funktionen.'
+    f4_uebertragbar: 'Auf jede Basiswechsel-Phase jedes Rangs: Φ_r ist nie nirgends differenzierbar; eine Weierstrass-artige Phase ist ausgeschlossen.'
+    f5_neue_frage: 'Welchen Wert hat die fast überall existierende Ableitung? → bw.satz.rang5_singulaer (Ĝ′ = 0 f. ü.)'
+  bewertung: {richtigkeit: 'vollständig unter der Existenz von Φ₅', neuheit: neu_ungeprueft, nutzen: 'Entscheidet die Glattheitsfrage der Runde 18 im Grundsatz und zeigt, wo deren Weierstrass-Bild fehlging (additive statt multiplikative Struktur).', nutzen_stufe: hoch}
+  kanten:
+    - {typ: widerlegt, ziel: bw.verm.rang5_nirgends_diffbar}
+    - {typ: stuetzt_sich_auf, ziel: bw.satz.phasengesetz_rang5}
+
+- id: bw.satz.rang5_singulaer
+  titel: 'Der Rang-5-Basiswechsel ist singulär wie die Cantor-Funktion: Ĝ streng wachsend, Ĝ′ = 0 fast überall, also Φ₅′ = −1 fast überall'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [F_bd, phase, fourier_moden]
+  bereich: 'wie bw.lem.wackel; $\lambda$ Lebesgue-Mass, $\mu=dH$; Zellen der Ebene $n$: $y$-Intervalle mit festem $\lfloor K\,U_j\rfloor$, $j\le n$'
+  aussage: |
+    $H$ ist eine **singuläre Funktion**: stetig, streng wachsend, $H'=0$ $\lambda$-fast-überall, $dH\perp\lambda$. Weil $\mathrm{spog}_b$ und $P_d$ glatte Diffeomorphismen sind, gilt dasselbe für $\hat G=\mathrm{spog}_b\circ H\circ P_d$:
+    $$\hat G'=0\ \text{fast überall},\qquad\Phi_5'=-1\ \text{fast überall}.$$
+    Quantitativ: Die Hellinger-Affinität der Ziffernverteilung je Ebene ist $A_K=\sum_i\sqrt{p_iq_i}<1$ mit $q_i=1/K$, $p_i=1/K+P_4(\tfrac{i+1}K)-P_4(\tfrac iK)$;
+    $(e,2)$: $1-A_2=1.0\cdot10^{-8}$, $1-A_8=4.8\cdot10^{-8}$, $1-A_K\to1-\int_0^1\sqrt{1+P_4'}=5.0945\cdot10^{-8}\approx\mathrm{Var}(P_4')/8$.
+  einfach: >-
+    Die Übersetzung der Pentation steigt überall, und doch ist ihre Steigung fast überall null — wie bei der Cantor-Funktion („Teufelstreppe“).
+    Der ganze Anstieg sitzt auf einer Menge, die so dünn ist, dass sie keine Länge hat. Sehen kann man das in keiner Rechnung, weil der Effekt erst nach Millionen Turm-Stufen spürbar wird.
+  beweis:
+    art: skizze
+    text: |
+      **Weg 1 (Gegenprobe, kurz):** Nach bw.kor.rang5_fast_ueberall_diffbar existiert $H'$ fast überall und ist endlich; nach bw.satz.kein_endlicher_ableitungswert liegt es nie in $(0,\infty)$; also $H'=0$ fast überall.
+      **Weg 2 (Bericht, Kakutani):** $Z_n=\mu(C_n(y))/\lambda(C_n(y))$ ist unter $\lambda$ ein positives Martingal mit $E_\lambda[\sqrt{Z_{n+1}}\mid\mathcal F_n]=\sqrt{Z_n}\sum_i\sqrt{p_iq_i}$.
+      Vergröbern auf die Fächer $i=\lfloor K\{U_{n+1}\}\rfloor$ vergrössert die Affinität; dort ist $q_i=1/K+\delta$ und $p_i=1/K+\Delta P_4+\delta$ mit $\delta_j\to0$.
+      Also $E_\lambda\sqrt{Z_n}\le\prod_j(A_K+\delta_j)\to0$, $Z_\infty=d\mu_{ac}/d\lambda=0$ fast überall. Das ist das Kakutani-Argument, verwandt mit Zygmunds Satz über lakunäre Riesz-Produkte $\prod(1+a\cos n_kx)$.
+    luecken:
+      - 'L2 wie bw.lem.wackel (Weg 1 über bw.satz.kein_endlicher_ableitungswert; Weg 2: Schranken δ_j → 0 für die Fächergewichte nicht ausgeschrieben).'
+      - 'L1 (geerbt): Bedingungen von bw.satz.phasengesetz_rang5 und bw.satz.produktformel_rang5.'
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B4; s3_hellinger.py; Weg 1 aus EINTRAG.md (Gegenprobe)'}
+    - {ref: zygmund2002, stelle: 'Riesz-Produkte (lakunäre Reihen), zum Vergleich; Stelle nicht geprüft'}
+  nachgeprueft:
+    - {ergebnis: 's3_hellinger.py am 25.10.2026 erneut: 1 − A₂ = 1.0005·10⁻⁸, 1 − A₈ = 4.8377·10⁻⁸, Grenzwert 5.094487·10⁻⁸ (M = 64 und 128 gleich); unabhängig über Parseval Var(P₄′)/8 = 5.0945·10⁻⁸.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, auf Weg 1 aus bw.kor.rang5_fast_ueberall_diffbar und bw.satz.kein_endlicher_ableitungswert.'
+    f2_benutzte_voraussetzungen: 'Weg 1: Monotonie und Wackel-Lemma; Weg 2: fast gleichverteilte Ziffern {U_j} unter λ, P₄ nicht 1/K-periodisch.'
+    f3_spezialfall: 'Ja: Kakutani-Dichotomie für (fast) unabhängige Ziffern; singuläre Riesz-Produkte.'
+    f4_uebertragbar: 'Auf alle Ränge ≥ 5 (bw.verm.dichotomie_raenge); auf Rang 4 nicht, dort ist der Schälschritt linear und die Phase analytisch.'
+    f5_neue_frage: 'Ist dĜ ein Rajchman-Mass (Fourier-Stieltjes-Koeffizienten → 0)? Bei linearen lakunären Riesz-Produkten nicht.'
+  bewertung: {richtigkeit: 'Skizze mit zwei unabhängigen Wegen; Affinitäten numerisch bestätigt', neuheit: neu_ungeprueft, nutzen: 'Ersetzt das Weierstrass-Bild der Runde 18 durch das richtige: eine singuläre, Cantor-artige Phase.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: widerlegt, ziel: bw.verm.rang5_nirgends_diffbar}
+    - {typ: stuetzt_sich_auf, ziel: bw.satz.kein_endlicher_ableitungswert}
+    - {typ: stuetzt_sich_auf, ziel: bw.kor.rang5_fast_ueberall_diffbar}
+    - {typ: stuetzt_sich_auf, ziel: bw.satz.produktformel_rang5}
+    - {typ: analog_zu, ziel: bw.satz.c1_produkt}
+
+- id: bw.kor.singulaer_mass
+  titel: 'Das Mass dĜ ist singulär, aber volldimensional: Ĝ′ = +∞ fast überall bezüglich dĜ, lokale Dimension überall 1'
+  art: korollar
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [phase]
+  bereich: 'wie bw.satz.rang5_singulaer'
+  aussage: |
+    (i) $H'=+\infty$ für $dH$-fast-alle $y$; der ganze Zuwachs von $H$ sitzt auf einer Lebesgue-Nullmenge $N$, und $H(N)$ hat volle Länge im Bildintervall.
+    (ii) $\log\mu(B(y,h))/\log h\to1$ für **jedes** $y$: das Mass $dH$ (und $d\hat G$) hat überall die lokale Dimension 1 — singulär, aber nicht dimensionsarm.
+  einfach: >-
+    Fast der ganze Anstieg passiert auf einer Menge ohne Länge, und dort ist die Funktion unendlich steil. Trotzdem ist diese Menge „so gross wie eine Strecke“ im Sinn der Dimension.
+  beweis:
+    art: skizze
+    text: '(i) Für den singulären Anteil eines Masses ist die Ableitung der Verteilungsfunktion fast überall bezüglich dieses Masses $+\infty$ (de la Vallée Poussin). (ii) aus bw.satz.hoelder_eins: $\log\mu(B(y,h))=\log h+O(n(h))$, und $n(h)=\mathrm{slog}(1/h)=o(\log(1/h))$.'
+    luecken:
+      - 'Erbt die Lücken von bw.satz.rang5_singulaer und bw.satz.hoelder_eins.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B5'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, mit Standard-Masstheorie aus bw.satz.rang5_singulaer und bw.satz.hoelder_eins.'
+    f2_benutzte_voraussetzungen: 'Singularität und die Hölder-Schranken.'
+    f3_spezialfall: 'Ja: allgemeine Eigenschaft singulärer Masse.'
+    f4_uebertragbar: 'Auf jede singuläre Phase mit Hölder-1-Zuwächsen.'
+    f5_neue_frage: 'Welche Hausdorff-Funktion misst den Träger genau?'
+  bewertung: {richtigkeit: 'Skizze (erbt Lücken), Standardschluss', neuheit: neu_ungeprueft, nutzen: 'Beschreibt die Art der Singularität genauer: volldimensional, nicht fraktal dünn wie bei Cantor.', nutzen_stufe: gering}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: bw.satz.rang5_singulaer}
+    - {typ: stuetzt_sich_auf, ziel: bw.satz.hoelder_eins}
+
+- id: bw.beob.singulaer_unsichtbar
+  titel: 'Die Singularität ist unsichtbar: Drift χ = −∫log(1+P₄′) ≈ Var(P₄′)/2 = 2.04·10⁻⁷ für (e,2), sichtbar erst nach etwa 5·10⁶ Turm-Ebenen'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [phase, fourier_moden]
+  bereich: 'Rang-4-Wellen $P_4$ aus den Fourier-Moden der Runde 18 (e1_*.json), neun Basenpaare'
+  aussage: |
+    Für $\lambda$-fast alle $y$ gilt (Skizze, starkes Gesetz der grossen Zahlen für die fast unabhängigen Ziffern $\{U_j\}$) $\tfrac1n\log\Pi_n(y)\to-\chi$ mit
+    $$\chi=-\int_0^1\log(1+P_4'(t))\,dt\approx\tfrac12\mathrm{Var}(P_4')\approx4\pi^2|a_1|^2.$$
+    $(e,2)$: $\chi=2.0377869\cdot10^{-7}$, $n^*=1/\chi\approx4.9\cdot10^6$ Ebenen (Skala $h\sim1/(2\uparrow\uparrow(5\cdot10^6))$). Weitere Paare: $(e,3)$ $1.3126\cdot10^{-8}$, $(2,3)$ $3.2033\cdot10^{-7}$,
+    $(e,10)$ $9.9356\cdot10^{-7}$ ($n^*=1.0\cdot10^6$), $(e,2.7)$ $6.84\cdot10^{-11}$ ($n^*=1.5\cdot10^{10}$). Unter $dH$ ist die Drift $+\mathrm{KL}=2.0378\cdot10^{-7}$.
+    **Negativ:** Der gemessene Wert $\hat G'\approx1.0657$ (bw.beob.skalensprung) ist kein Ableitungswert, sondern ein Plateau $\Pi_n$; keine rechenbare Skala unterscheidet $\hat G$ von einer Lipschitz-Funktion.
+    Der Fourier-Schwanz $|a_k|\sim k^{-1.3}$ ($k\le64$, bw.verm.rang5_nirgends_diffbar) gehört zum Vorlauf; sicher ist nur $|a_k|\le1/(2\pi k)$, weil $d\hat G$ ein Wahrscheinlichkeitsmass auf dem Kreis ist.
+  einfach: >-
+    Warum hat das niemand gesehen? Pro Turm-Stufe verliert die Steigung im Mittel nur einen winzigen Bruchteil, etwa zwei Zehnmillionstel. Erst nach Millionen
+    Stufen wird das sichtbar — auf Längen, die viel kleiner sind als alles, was sich je ausrechnen lässt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B6 und B9, Tabelle; s1_konstanten.py, s3_hellinger.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026: χ(e,2) über ein drittes Gitter (Mittelpunktregel, 12345 Punkte) 2.0377869066·10⁻⁷; Var(P₄′)/2 über Parseval 2.0378192·10⁻⁷; s3_hellinger.py gibt χ = 2.03778691·10⁻⁷.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'χ > 0 folgt aus der Jensen-Ungleichung (∫P₄′ = 0); der Zahlwert ist gemessen.'
+    f2_benutzte_voraussetzungen: 'Fourier-Moden von Φ₄ (Runde 18, M = 64/128 gleich); für die Rate das Gesetz der grossen Zahlen (nicht ausgeschrieben).'
+    f3_spezialfall: 'Irrfahrt log Π_n mit Drift −χ und Varianz Var(P₄′): die Drift überwiegt ab n ≈ 2/χ.'
+    f4_uebertragbar: 'Auf jedes Paar; χ ∝ |a₁|² ∝ (ln log_b d)² nach bw.satz.antwortkern (Vermutung im Bericht, Frage 5).'
+    f5_neue_frage: 'Gilt χ(b,d) ≈ 4π²K₄²(ln log_b d)² mit K₄ ≈ 1.94…1.98·10⁻⁴?'
+  bewertung: {richtigkeit: 'χ numerisch (Gitter 4000/8000/12345, M = 64/128); die Rate als Skizze', neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum die Runde 18 eine glatte Ableitung zu messen glaubte.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: bw.satz.rang5_singulaer}
+    - {typ: korrigiert, ziel: bw.beob.skalensprung}
+    - {typ: verwandt, ziel: bw.beob.wellen_raenge}
+
+- id: bw.verm.dichotomie_raenge
+  titel: 'Vermutung: Der Basiswechsel-Konjugator ist glatt, wenn der Schälschritt eine konstante Phase hat (Rang 4), und singulär sonst — also singulär auf allen Rängen r ≥ 5'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [phase, hyperoperation, F_bd]
+  bereich: 'Basiswechsel-Phasen $\Phi_r$ der Motor-Familie, reelle Basen $b\ne d$ über $\eta_5$; Schälschritt aus bw.satz.abschaelen_rang'
+  aussage: |
+    Auf Rang 4 ist der Schälschritt $\log_b\circ\exp_d=\alpha\cdot\mathrm{id}$ (konstante Phase); die Ziffernverteilung bleibt gleichverteilt, die Affinität ist 1 und die Phase analytisch.
+    Ab Rang 5 hat der Schälschritt eine nicht konstante Phase, und der Konjugator ist singulär. Auf Rang 6 ist der Schälschritt $G_5=\mathrm{id}+\Phi_5$ selbst schon singulär
+    ($c_6(V)=\Phi_5(\{V\})$, bw.beob.wellen_raenge); dann bringt schon eine Ebene die Affinität $A_K\to0$ für $K\to\infty$.
+  einfach: >-
+    Ab der Pentation werden alle Übersetzungen zwischen zwei Basen zu „Teufelstreppen“. Nur bei der Tetration ist der Schritt darunter so einfach (ein fester Faktor),
+    dass die Übersetzung glatt bleibt.
+  gegenbeispielsuche: 'Nur Rang 4 (glatt, bw.satz.c1_produkt) und Rang 5 (singulär, bw.satz.rang5_singulaer) behandelt; Rang 6 nicht gerechnet, gestützt nur durch c₆ = Φ₅ ab V ≈ 3.3 (Runde 18).'
+  naechste_frage: 'Rang-6-Ebenensatz c₆ = Φ₅ + o(1) beweisen und das Hellinger-Argument eine Stufe höher führen; gibt es eine natürliche glatte Rang-5-Übersetzung (komplexe Basen mit gemeinsamem Fixpunkt)?'
+  beweis:
+    art: skizze
+    text: 'Wie bw.satz.rang5_singulaer eine Stufe höher, mit $d\hat G_5$ an Stelle von $d(t+P_4(t))$ als Ziffernverteilung; ein singuläres Ziffernmass hat gegen das gleichverteilte die Affinität 0.'
+    luecken:
+      - 'Rang-6-Ebenensatz c₆ = Φ₅ + o(1) nur numerisch (Runde 18).'
+      - 'Für gerade Ränge die Lücke von bw.satz.phasengesetz_induktion (Kneser-Umkehrung).'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/10_basiswechsel_hoelder/BERICHT.md, B8'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Satz B auf Rang 5; Ebenensatz auf Rang 6 (numerisch).'
+    f3_spezialfall: 'Kakutani-Dichotomie.'
+    f4_uebertragbar: 'Auf jede Familie von Hyperoperationen, deren Schälschritt ab einem Rang wellig wird.'
+    f5_neue_frage: 'Gibt es eine glatte Rang-5-Übersetzung mit wellenfreiem Schälschritt (bw.satz.fixpunkt_konjugator, komplexe Basen)?'
+  bewertung: {richtigkeit: 'Vermutung; Rang 5 als Skizze bewiesen', neuheit: neu_ungeprueft, nutzen: 'Trennt Rang 4 grundsätzlich von allen höheren Rängen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: bw.satz.rang5_singulaer}
+    - {typ: verwandt, ziel: bw.satz.abschaelen_rang}
+    - {typ: verwandt, ziel: bw.satz.fixpunkt_konjugator}

@@ -77,7 +77,7 @@ aussagen:
     f2_benutzte_voraussetzungen: 'Paulsen–Cowgill-Eindeutigkeit; Hardy-Raum-Theorie; Majorante an den ganzen Zahlen.'
     f3_spezialfall: 'Ja: von „θ holomorph oben ⇔ Kneser“.'
     f4_uebertragbar: 'Auf jede Basis über η.'
-    f5_neue_frage: 'Gibt es eine lokale Kennzeichnung? Reichen weniger Bedingungen (nur gerade m, nur Realteile)? Legt die Momentenfamilie Kneser fest (br.frage.momentenfamilie)?'
+    f5_neue_frage: 'Gibt es eine lokale Kennzeichnung? Reichen weniger Bedingungen (nur gerade m, nur Realteile)? Legt die Momentenfamilie Kneser fest (br.frage.momentenfamilie; im Jordan-Fall ja, skizziert in br.satz.momente_jordan)?'
   bewertung: {richtigkeit: 'vollständig (Paulsen–Cowgill und Majorante zitiert bzw. bewiesen)', neuheit: neu_ungeprueft, nutzen: 'Erste rein reelle Kennzeichnung von Kneser mit Extremalprinzip — Teilantwort auf br.frage.bohr_mollerup.', nutzen_stufe: hoch}
   kanten:
     - {typ: verwandt, ziel: br.frage.bohr_mollerup}
@@ -96,6 +96,8 @@ aussagen:
     „keine negativen Moden“ (sie sieht nur die Werteverteilung; Gegenbeispiel $f=e^{-2\pi ix}$). **Unter Tetrationen** ist sie in erster Ordnung starr:
     $\delta V_k[p]=0$ für alle $k$ erzwingt $p$ konstant — bewiesen für Störungen, die im Streifen $|\mathrm{Im}z|<0.09$ holomorph sind (numerisch schon ab $0.0008$).
     Offen: gilt das auch nichtlinear, oder gibt es eine Tetration $\neq$ Kneser, deren $\theta_T$ eine maßtreue Umordnung einer oben holomorphen Randfunktion ist?
+    **Teilantwort (Runde 25.10.2026):** Ist die Wellenkurve $\theta_T$ doppelpunktfrei, so erzwingt die Momentenfamilie Kneser (br.satz.momente_jordan, Skizze), insbesondere für alle $T$ mit
+    $0.7686<\varphi'<1.4306$ (br.kor.momente_umgebung) — ohne Streifenbedingung. Offen bleibt nur der Fall mit Doppelpunkt (br.frage.momente_doppelpunkt).
   einfach: >-
     Eine einfachere Familie von Bedingungen — „der Mittelwert der Potenzen ist die Potenz des Mittelwerts“ — reicht im Kleinen schon aus, um Kneser
     festzulegen. Ob sie auch im Grossen reicht, ist offen.
@@ -103,3 +105,5 @@ aussagen:
   kanten:
     - {typ: verwandt, ziel: br.satz.reelle_kennzeichnung}
     - {typ: verwandt, ziel: kn.satz.theta_mittelwerte}
+    - {typ: verwandt, ziel: br.satz.momente_jordan}
+    - {typ: verwandt, ziel: br.frage.momente_doppelpunkt}

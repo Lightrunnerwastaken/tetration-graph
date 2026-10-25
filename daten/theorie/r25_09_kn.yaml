@@ -1,0 +1,66 @@
+# Theorie-Blöcke: Runde 25.10.2026, Bericht 09 — Gesetz für die θ-Singularität bei geraden Rängen (forschung/runde_2026_10_25/09_gerade_raenge_gesetz/BERICHT.md).
+# Bezeichnungen der Motor-Familie: p_k reeller Fixpunkt von H_k, λ_k = H_k′(p_k), x_r* mit H_r(x_r*) = p_{r−2}, z_s = x_s* − 1.
+
+kn.lem.umkehr_minus_unendlich:
+  worum: |
+    Wohin läuft die Umkehrung einer geraden Rechenart, wenn ihr Argument nach $-\infty$ geht?
+  genau: |
+    Gegen den festen Punkt $z_s=x_s^*-1$, und zwar wie $z_s+\kappa_s\lambda_{s-2}^V$ mit $\kappa_s=c_{s-1}/A_s$.
+  warum: |
+    Eine Stufe tiefer ist $H_{s-1}^{-1}$ nahe $p_{s-2}$ ein Logarithmus zur Basis $\lambda_{s-2}$. Also ist $\lambda_{s-2}^{H_s(z)}$ eine bei $z_s$ analytische Funktion mit einfacher Nullstelle, und die lässt sich umkehren.
+  beispiel: |
+    $s=4$: $\mathrm{slog}(V)\approx-2+2^V/\mathrm{sexp}'(-1)$; $s=8$: Vorfaktor $11330.717$, Rate $\lambda_6=9.493$.
+  bilder: []
+  einordnung: |
+    Der Schritt $s=4$ steckt schon im Beweis von [[kn.satz.theta6_singularitaet]]; Anwendung: [[kn.satz.theta_gerade_raenge_struktur]].
+
+kn.satz.theta_gerade_raenge_struktur:
+  worum: |
+    Ein gemeinsames Gesetz für Knesers Welle auf den Rängen 6, 8, 10, …
+  genau: |
+    $\theta_r=-z+\Theta_r(u)$ mit $u=(z-x_r^*)^{\alpha_r}g_r(z)$, $\alpha_r=\ln\lambda_{r-4}/\ln\lambda_{r-2}$; Koeffizienten $a_n\approx c_1e^{-2\pi inx_r^*}n^{-1-\alpha_r}(1+c_2'n^{-\alpha_r}+\dots)$.
+  warum: |
+    Trifft $H_r$ den Fixpunkt $p_{r-2}$, so läuft $H_r(z-1)$ nach $-\infty$; zwei Stufen tiefer läuft die Umkehrung dann nach dem Kern-Lemma ([[kn.lem.umkehr_minus_unendlich]]) mit der Rate $\lambda_{r-4}^V$ gegen einen festen Punkt.
+    Umgerechnet in $z$ ist das eine Potenz $(z-x_r^*)^{\alpha_r}$.
+  beispiel: |
+    Basis 2: $\alpha_6=0.4218$, $\alpha_8=0.7301$, $\alpha_{10}=0.8361$.
+  bilder: []
+  einordnung: |
+    Enthält [[kn.satz.theta6_singularitaet]] und [[kn.satz.theta6_koeffizienten]]; ersetzt [[kn.verm.theta_gerade_raenge]]; Rang 4: [[kn.satz.theta_singularitaet]].
+
+kn.beob.theta10_singularitaet:
+  worum: |
+    Stimmt das Gesetz auch auf Rang 10?
+  genau: |
+    Ja: Die Phase $\arg(a_n/a_{n-1})$ läuft gegen $-2\pi\,\mathrm{frac}(x_{10}^*)$ mit $x_{10}^*=H_{10}^{-1}(p_8)=-6.6936050663$.
+  warum: |
+    Eine einzelne Singularität bei $x^*$ je Periode gibt Koeffizienten mit dem Faktor $e^{-2\pi inx^*}$; ihr Quotient dreht sich um $-2\pi x^*$.
+  beispiel: |
+    $n=31$: $-1.925615$ gegen $-1.925136$.
+  bilder: []
+  einordnung: |
+    Stützt [[kn.satz.theta_gerade_raenge_struktur]]; Exponent: [[kn.beob.theta_gerade_raenge_exponenten]].
+
+kn.beob.theta_gerade_raenge_exponenten:
+  worum: |
+    Wie misst man den Exponenten $\alpha_r$ aus wenigen Koeffizienten richtig?
+  genau: |
+    Mit den Korrekturgliedern $n^{-\alpha}$, $n^{-1}$, $n^{-2\alpha}$ im Fit: $\alpha_8=0.7302$, $\alpha_{10}=0.8360$, beide auf etwa $10^{-4}$ an der Vorhersage.
+  warum: |
+    Ist $\alpha$ nahe 1, fällt $n^{-\alpha}$ bei $n\le30$ kaum ab; der einfache Quotient benachbarter Koeffizienten liegt dann um $0.01$ daneben.
+  beispiel: |
+    Rang 10: roher Exponent $1.8275$ bei $n=30$, Fit $1.8360$, Vorhersage $1.8361$.
+  bilder: []
+  einordnung: |
+    Messung zu [[kn.satz.theta_gerade_raenge_struktur]]; erklärt den zu kleinen Rang-8-Wert in [[kn.verm.theta_gerade_raenge]].
+
+kn.verm.alpha_r_gegen_1:
+  worum: |
+    Wie sieht die Welle bei sehr hohen geraden Rängen aus?
+  genau: |
+    Vermutet: $\alpha_r\to1$ und $z_{r-2}-p_{r-2}\to0$.
+  warum: |
+    Die Logarithmen $\ln\lambda_r$ wachsen immer langsamer (Zuwächse $0.95$, $0.61$, $0.44$), also nähert sich ihr Verhältnis 1.
+  bilder: []
+  einordnung: |
+    Folgerung aus den Zahlen in [[kn.satz.theta_gerade_raenge_struktur]].

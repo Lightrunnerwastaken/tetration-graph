@@ -1,0 +1,203 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 02 „Die Schwankung von arg aₙ der θ-Welle, explizit“. Rechnungen: forschung/runde_2026_10_25/02_theta_argument/.
+# Bezeichnungen wie kn.def.theta_welle und Etappe 2: A = sexp′(0), Φ(s) = arg(1+θ′(s+i0)) für reelles s ∉ ℤ, P(Y) = arg h′(Y+iπ),
+# σₙ = 1 + slog(A/(2πn)) ≈ 1/(2πn). Eingabedaten: forschung/identitaeten_2026_10_14/etappe2/daten (aₙ bis n = 4096).
+aussagen:
+
+- id: kn.satz.theta_phase_achse
+  titel: 'Eine Periode von Knesers Welle ist die ganze Gerade Im w = π: arg(1 + θ′(s)) = arg h′(Y + iπ) − π mit Y = ln(−sexp(s−2))'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Zweigidentität S4 (σ∘sexp = e^{ℓ(z+θ)}) wie in kn.satz.theta_singularitaet; sie ist jetzt mit Intervallarithmetik zertifiziert bis auf die Motor-Annahme (E) (kn.satz.zweigwahl_zertifikat)'
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, abel]
+  bereich: 'Basis $e$ (Basis 2 gleich geprüft); $\theta$, $h$ wie in kn.def.theta_welle; $\Phi(s)=\arg(1+\theta''(s+i0))$ für reelles $s\notin\mathbb Z$, $P(Y)=\arg h''(Y+i\pi)$'
+  aussage: |
+    Für $s\in(0,1)$ gilt
+    $$\Phi(s)=\arg h'(\mathrm{sexp}\,s+i0)=\arg h'(\mathrm{sexp}(s-2)+i0)=P\bigl(\ln(-\mathrm{sexp}(s-2))\bigr)-\pi\pmod{2\pi}.$$
+    Durchläuft $s$ eine Periode, so läuft $Y=\ln(-\mathrm{sexp}(s-2))$ über ganz $\mathbb R$: **eine Periode der Welle entspricht genau der Geraden $\mathrm{Im}\,w=\pi$** von $h'$.
+    Über eine Periode ist $\int_0^1\Phi(s)\,ds=0$ für den stetigen Zweig $\Phi=\mathrm{Im}\log(1+\theta')$ (er verlässt nahe den Enden das Intervall $(-\pi,\pi]$) und $\int_0^1\ln|1+\theta'(s)|\,ds=0$ —
+    das ist $M[\log(1+\theta')]=0$ aus kn.satz.theta_mittelwerte; die nötige Nullstellenfreiheit von $1+\theta'$ in der oberen Halbebene ist kn.satz.ableitung_nullstellenfrei.
+    Numerisch: $s+\theta(s)=h(x+i0)$ hat für $x=1.2,1.5,1.8,2.0,2.3$ eine reelle Lösung ($|\mathrm{Im}\,s|\le1.3\cdot10^{-7}$) mit dem Hauptzweig von $h$, $(1+\theta')/h'=\mathrm{sexp}'(s)$ ist reell,
+    und die Argumente stimmen auf $2\cdot10^{-6}$; ebenso für Basis 2.
+  einfach: >-
+    Die Welle in Knesers Tetration hat an jeder Stelle der Zahlengeraden einen Winkel. Dieser Winkel lässt sich an einer anderen Stelle ablesen: an der Ableitung
+    der gewöhnlichen Lösung am komplexen Fixpunkt, auf einer waagrechten Geraden in der Höhe π. Eine ganze Periode der Welle entspricht dieser ganzen Geraden.
+    Im Mittel über eine Periode ist der Winkel genau null.
+  beweis:
+    art: vollstaendig
+    text: |
+      Aus S4 folgt $1+\theta'(z)=h'(\mathrm{sexp}\,z)\,\mathrm{sexp}'(z)$ (Satz Z(iii) im Lücken-Bericht). Für reelles $s\notin\mathbb Z$ ist $\mathrm{sexp}'(s)>0$, also $\Phi(s)=\arg h'(\mathrm{sexp}\,s+i0)$.
+      $h'(w)=h'(\mathrm{Log}\,w)/w$ (Lemma U(d)) ändert das Argument für $w>0$ nicht; zweimal angewandt ($\mathrm{sexp}\,s>0$, $\mathrm{sexp}(s-1)>0$) gibt $\arg h'(\mathrm{sexp}(s-2)+i0)$ mit
+      $\mathrm{sexp}(s-2)=-X<0$, und $\mathrm{Log}(-X+i0)=\ln X+i\pi$ gibt $P(\ln X)-\pi$. $h'$ setzt sich über $\mathbb R\setminus\{0,1,e,e^e,\dots\}$ fort (Lemma U(e)); $(1,e)$, $(0,1)$, $(-\infty,0)$ treffen diese Menge nicht.
+      Mittelwert: $G=\log(1+\theta')$ ist oben eindeutig, periodisch, $\to0$; kn.satz.theta_mittelwerte.
+  stuetzt_sich_auf: [kn.satz.theta_singularitaet, kn.satz.theta_mittelwerte, kn.satz.ableitung_nullstellenfrei]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/02_theta_argument/BERICHT.md, B1, B5 und Herleitung (1); p1_phase.py (Teil B), p3_gerade.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus 1 + θ′ = h′(sexp)·sexp′ und der Kettenregel h′(w) = h′(Log w)/w, sobald die Zweigwahl S4 steht.'
+    f2_benutzte_voraussetzungen: 'S4 (bedingt, s. o.); sexp′ > 0 auf ℝ; Lemma U (d), (e). Für den Mittelwert kn.satz.theta_mittelwerte und kn.satz.ableitung_nullstellenfrei (der Bericht nannte die Nullstellenfreiheit noch als nur numerisch geprüfte Voraussetzung; sie ist im Graphen bewiesen).'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede Basis b > η (Basis 2 geprüft: |Im s| ≤ 1.1·10⁻⁷ an fünf Stellen).'
+    f5_neue_frage: 'Was bestimmt den Verlauf von P(Y) für Y → ±∞? (kn.beob.theta_phase_randkopien)'
+  bewertung: {richtigkeit: 'bewiesen bis auf S4 (Motor-Annahme E); numerisch auf 2·10⁻⁶; Gegenprobe 25.10.2026: p1_phase.py e erneut gelaufen, Ausgabe identisch', neuheit: neu_ungeprueft, nutzen: 'Übersetzt die Welle auf der reellen Achse in eine einzige Gerade für h′; Grundlage der Phasenformel für aₙ.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+    - {typ: motiviert, ziel: kn.satz.theta_phase_koeffizienten}
+
+- id: kn.satz.theta_phase_koeffizienten
+  titel: 'Die Phase der θ-Koeffizienten ist die Phase von 1 + θ′ an der reellen Stelle ≈ 1/(2πn): arg aₙ = π + Φ(σₙ) + arctan(π/(2(ln n − ln(A/2π)))) + …'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fourier_moden]
+  bereich: 'Basis $e$ (Basis 2 gleich geprüft); $\theta=\sum a_nq^n$; $A=\mathrm{sexp}''(0)$; $\sigma_n=1+\mathrm{slog}(A/(2\pi n))\approx1/(2\pi n)$; $\Phi$ wie in kn.satz.theta_phase_achse'
+  aussage: |
+    $$\arg a_n=\pi+\Phi(\sigma_n)+\arctan\frac{\pi}{2(\ln n-\ln(A/2\pi))}+O\Bigl(\frac1{\ln n\,\ln\ln n}\Bigr),\qquad a_n\approx-\frac{1+\theta'(\sigma_n)}{2\pi n^2}\,e^{i\pi/(2\ln n)} .$$
+    Die Phase von $a_n$ wird also von der Welle selbst an einem Punkt der reellen Achse bestimmt — das beantwortet den offenen Punkt von kn.frage.theta_exponent.
+    Numerisch (Basis $e$): Abstand der Formel zum führenden Term $\pi+\arg h'(v_n)$ aus kn.satz.theta_koeffizienten: $-5.2\cdot10^{-2}$ ($n=4096$), $-4.0\cdot10^{-6}$ ($\ln\ln n=10$),
+    $-3.5\cdot10^{-8}$ ($\ln\ln n=15.154$, ein Turmwert), $-9.8\cdot10^{-15}$ ($\ln\ln n=30$); dieser Abstand mal $\ln n\,\ln\ln n$ bleibt in $[-3.1,-0.9]$. Basis 2 verhält sich gleich.
+    Betrag: die Achsenformel geteilt durch den führenden Term ist $0.895,\ 0.937,\ 0.948,\ 0.956$ für $n=16,\dots,4096$ ($\to1$).
+  einfach: >-
+    Jede Schwingung der Welle hat einen Winkel. Er lässt sich vorhersagen: man liest den Winkel der Welle selbst an einer reellen Stelle ab, die sehr nahe bei
+    null liegt (etwa 1/(2πn)), und addiert eine kleine Korrektur. Bei astronomisch grossen n stimmt das auf viele Stellen.
+  beweis:
+    art: skizze
+    text: |
+      Führend ist $na_n\approx-h'(v)$ mit $v=Y_n+i\pi/2$, $Y_n=\ln(A/2\pi n)<0$. Zerlege $h'(v)=h'(\mathrm{Log}\,v)/v$: der äussere Faktor unterscheidet sich von dem bei $Y_n+i0$ um
+      $\arctan(\pi/2|Y_n|)$ im Argument; der innere Punkt verschiebt sich um $-i\arctan(\pi/2|Y_n|)$, was $(\pi/2|Y_n|)\,\mathrm{Re}(h''/h')(\ln|Y_n|+i\pi)=O(1/(|Y_n|\ln|Y_n|))$ beiträgt
+      ($h''/h'\approx-1/w$ für grosses $\mathrm{Re}\,w$). Schliesslich ist $\arg h'(Y_n+i0)=\Phi(\sigma_n)$, weil $\mathrm{sexp}(\sigma_n-2)=Y_n$ (kn.satz.theta_phase_achse). Betrag ebenso mit
+      $\mathrm{sexp}'(\sigma_n-2)\approx1/\sigma_n\approx2\pi n$.
+    luecken:
+      - 'Fehlerordnung O(1/(ln n ln ln n)) nicht streng: sie braucht eine Schranke für h″/h′ auf der Geraden Im w = π und eine Kontrolle des Rests aus kn.satz.theta_koeffizienten. Dessen Argumentfehler (Daten gegen führenden Term) ist bei n ≤ 4096 gemessen etwa 0.13/ln n; dass er asymptotisch kleiner als 1/(ln n ln ln n) ist, ist nicht gezeigt.'
+      - 'Hängt an der Zweigwahl S4 wie kn.satz.theta_singularitaet.'
+  stuetzt_sich_auf: [kn.satz.theta_koeffizienten, kn.satz.theta_phase_achse]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/02_theta_argument/BERICHT.md, B2 und Herleitung (2); p2_formeln.py, p4_modul.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: aus der Koeffizientenformel von kn.satz.theta_koeffizienten und einem Logarithmusschritt in h′.'
+    f2_benutzte_voraussetzungen: 'kn.satz.theta_koeffizienten (führender Term), Kettenregel für h′, Asymptotik h″/h′ ≈ −1/w; Zweigwahl S4.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf Basis 2 geprüft; für b > η mit ln b in v_n.'
+    f5_neue_frage: 'Vollentwicklung: h′(Y + iπ/2) als Reihe in (iπ/2)^k h^{(k+1)}(Y + i0), übersetzt in Ableitungen von θ an σₙ (konvergiert für |Y| > π/2, also n ≥ 2)?'
+  bewertung: {richtigkeit: 'Skizze; numerisch bis ln ln n = 30 bestätigt; Gegenprobe 25.10.2026: p2_formeln.py e erneut gelaufen, alle Zahlen identisch', neuheit: neu_ungeprueft, nutzen: 'Beantwortet, wovon die Schwankung von arg aₙ abhängt: von θ′ selbst an einem reellen Punkt.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.frage.theta_exponent}
+    - {typ: verwandt, ziel: kn.beob.theta_fourier_algebraisch}
+
+- id: kn.beob.theta_phase_selbstaehnlich
+  titel: 'Selbstähnliche Form arg aₙ ≈ arg h′(n + i0) − π/ln ln n — sie gilt nur weg von den Turmstellen'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fourier_moden]
+  bereich: 'Basis $e$ (und 2); $\Phi(\mathrm{slog}\,n)=\arg h''(n+i0)=\arg h''(\ln\ln\ln n+i0)$'
+  aussage: |
+    Auf der Ebene von $n$ selbst gilt
+    $$\arg a_n=\Phi(\mathrm{slog}\,n)-\frac{\pi}{\ln\ln n}+O\Bigl(\frac1{\ln\ln n\,\ln\ln\ln n}\Bigr),\qquad\text{gleichwertig}\quad a_n/h'(n+i0)\to1,$$
+    aber **nur**, wenn $\mathrm{slog}\,n$ mod 1 von 0 wegbleibt — nicht gleichmässig. Abstand zum führenden Term: $+5.1\cdot10^{-4}$ ($\ln\ln n=1000$), $+2\cdot10^{-5}$ ($10^4$);
+    an Turmstellen versagt die Form: $-1.17$ ($\ln\ln\ln n=e$), $-1.43$ ($\ln\ln\ln n=e^e$). Für $n\le4096$ ist sie unbrauchbar ($|a_{4096}/h'(4096)|=0.39$), und eine reine
+    Taylor-Entwicklung an der Achse konvergiert dort nicht (die nötige Verschiebung $\varepsilon\approx\pi/\ln\ln n\approx1.5$ ist grösser als der Abstand zum Turmpunkt 1).
+    Bei Basis 2 sind die Turmwerte 2, 4, 16 selbst ganze Zahlen; dort ist $h'(n+i0)$ singulär und $|a_n/h'(n)|$ fällt auf 0.
+  einfach: >-
+    Man kann den Winkel der n-ten Schwingung auch direkt bei der Zahl n ablesen — das stimmt aber nur für unvorstellbar grosse n und nicht in der Nähe
+    besonderer Zahlen wie e hoch e hoch e, an denen die Funktion h eine scharfe Stelle hat.
+  experimente: []
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/02_theta_argument/BERICHT.md, B3, B8 und Herleitung (3); p2_formeln.py, p1_phase.py (Teil C)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Herleitung über zwei weitere Logarithmen aus kn.satz.theta_phase_koeffizienten; die Fehlerordnung ist heuristisch.'
+    f2_benutzte_voraussetzungen: 'Asymptotik h″/h′ ≈ −1/w; Lage der Turmpunkte 0, 1, e, eᵉ, … als Singularitäten von h′ auf der Achse.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Basis 2 geprüft (dort fallen Turmwerte auf ganze n).'
+    f5_neue_frage: 'Gibt es eine gleichmässige Form, die die Turmstellen mit erfasst?'
+  bewertung: {richtigkeit: 'numerisch (Formeln bis ln ln n = 10⁸ ausgewertet), Herleitung heuristisch', neuheit: neu_ungeprueft, nutzen: 'Zeigt, warum arg aₙ selbstähnlich in iterierten Logarithmen schwankt — und wo diese Beschreibung bricht.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta_phase_koeffizienten}
+    - {typ: verwandt, ziel: kn.frage.theta_exponent}
+
+- id: kn.beob.theta_phase_verlauf
+  titel: 'Die Phase Φ = arg(1 + θ′) fällt über eine Periode streng von +1.097 auf −0.993; |1 + θ′| ist nahe s = ½ am kleinsten (0.684)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  bereich: 'Basis $e$ und 2; $\Phi(s)=\arg(1+\theta''(s+i0))$ auf $[0.02,0.98]$, aus den $a_n$ ($n\le4096$) bei $\eta=0.003$ bzw. $0.002$ und quadratischer Extrapolation $\eta\to0$'
+  aussage: |
+    Basis $e$: $\Phi$ fällt auf $[0.02,0.98]$ streng von $+1.0970$ auf $-0.9930$; $\Phi(\tfrac12)=-0.0165$; $|1+\theta'|$ ist nahe $s=\tfrac12$ minimal ($0.684$) und wächst zu den Rändern
+    ($3.36$ bei $s=0.02$, $3.63$ bei $0.98$). Basis 2 fast gleich: $+1.0844$ und $-1.0020$, $\Phi(\tfrac12)=-0.0118$, $|1+\theta'(\tfrac12)|=0.686$.
+    Zwei Datensätze (dps 80, $\eta=0.003$ und dps 60, $\eta=0.002$) stimmen auf $10^{-8}$; die Umlaufzahl von $1+\theta'$ auf $|q|=e^{-2\pi\eta}$ ist $0.000000$ (passend zu kn.satz.ableitung_nullstellenfrei),
+    und die Mittel von $\arg$ und $\ln|\cdot|$ auf diesen Kreisen sind $0$ bis auf $10^{-16}$.
+  einfach: >-
+    Der Winkel der Welle nimmt über eine Periode gleichmässig ab, von etwa +1.1 bis −1.0. In der Mitte der Periode ist die Welle am flachsten.
+    Für die Basen e und 2 sieht das fast gleich aus.
+  experimente: []
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/02_theta_argument/BERICHT.md, B4, B5; p1_phase.py (Teil A)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); der Mittelwert 0 folgt aus kn.satz.theta_phase_achse.'
+    f2_benutzte_voraussetzungen: 'Fourier-Koeffizienten aus Etappe 2; Extrapolation η → 0 (θ ist auf ℝ ∖ ℤ analytisch); Monotonie nur auf einem Gitter von 15 Punkten.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Basis 2 gleich gemessen; die Ähnlichkeit passt zu kn.beob.theta_basis_quasiuniversal.'
+    f5_neue_frage: 'Ist Φ auf (0, 1) streng monoton (beweisbar über P(Y) auf der Geraden Im w = π)?'
+  bewertung: {richtigkeit: 'numerisch, zwei Datensätze auf 10⁻⁸; Gegenprobe 25.10.2026: p1_phase.py e erneut gelaufen, Werte identisch', neuheit: neu_ungeprueft, nutzen: 'Erste genaue Karte der Phase von θ′ auf der reellen Achse.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta_phase_achse}
+    - {typ: verwandt, ziel: kn.beob.theta_basis_quasiuniversal}
+
+- id: kn.beob.theta_phase_randkopien
+  titel: 'An den Rändern der Periode wiederholt sich Φ in iterierten Logarithmen — bei s → 0⁺ um π verschoben'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  bereich: 'Basis $e$; $\Phi(s)=P(Y)-\pi$, $Y=\ln(-\mathrm{sexp}(s-2))$ (kn.satz.theta_phase_achse); stetige Spur über die aufgelösten Ebenen'
+  aussage: |
+    Für $s\to0^+$ gilt $\Phi(s)\approx\Phi(\mathrm{slog}\ln Y)+\pi$ — eine um $\pi$ verschobene Kopie; für $s\to1^-$ entsteht eine Kopie ohne Verschiebung.
+    (Modulo $2\pi$ hergeleitet aus $P(Y)=\arg h'(\ln Y+i\pi/Y)-\arctan(\pi/Y)$; die Verschiebung $+\pi$ legt die stetige Spur fest.)
+    Über die aufgelösten Ebenen reicht der stetige Zweig von $-1.17$ bis $+4.79$ (Spannweite $5.96>\pi$): $\Phi(Y=e^{3.5})=3.448$, $\Phi(e^{10})=2.526$, $\Phi(e^{16})=4.251$,
+    $\Phi(e^{19})=3.994$; der Übergang bei $\ln Y=e^e$ ist eine stetige Drehung um etwa $+2.1$.
+    Weil $\arg a_n\approx\pi+\Phi(\sigma_n)$ mit $\sigma_n\to0^+$ (kn.satz.theta_phase_koeffizienten), ist die Langzeitschwankung von $\arg a_n$ genau dieses Randgesetz; es erklärt die Werte
+    aus Etappe 2 (etwa $-0.208$ bei $\ln\ln n=15.154$ und $+0.322$ bei $30$).
+  einfach: >-
+    Ganz am Rand einer Periode sieht der Winkel der Welle wieder aus wie die ganze Periode, nur in viel kleinerem Massstab und um einen halben Umlauf gedreht.
+    Darum kommt der Winkel der Schwingungen nie zur Ruhe.
+  experimente: []
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/02_theta_argument/BERICHT.md, B6 und Herleitung (6/7); p3_gerade.py (adaptive Spur, 3025 Punkte)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Modulo 2π ja, aus h′(w) = h′(Log w)/w; die Verschiebung +π nur numerisch.'
+    f2_benutzte_voraussetzungen: 'kn.satz.theta_phase_achse; stetige Verfolgung von P(Y) über drei Grössenordnungen von ln Y.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Vermutlich auf Basis 2 (nicht gerechnet).'
+    f5_neue_frage: 'Bleibt die Verschiebung +π auf allen tieferen Ebenen? (kn.verm.theta_phase_unbeschraenkt)'
+  bewertung: {richtigkeit: 'numerisch (mod 2π hergeleitet)', neuheit: neu_ungeprueft, nutzen: 'Erklärt die Langzeitschwankung von arg aₙ aus Etappe 2.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: motiviert, ziel: kn.verm.theta_phase_unbeschraenkt}
+    - {typ: verwandt, ziel: kn.beob.theta_fourier_algebraisch}
+
+- id: kn.verm.theta_phase_unbeschraenkt
+  titel: 'Vermutung: der stetige Zweig von arg aₙ wächst unbeschränkt — unvorstellbar langsam'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fourier_moden]
+  bereich: 'Basis $e$; stetiger Zweig von $\Phi$ bei $s\to0^+$ und von $\arg a_n$ in $n$'
+  aussage: |
+    Der stetige Zweig von $\Phi$ ist bei $s\to0^+$ nach oben unbeschränkt, weil jede tiefere Ebene des Randgesetzes (kn.beob.theta_phase_randkopien) $+\pi$ hinzufügt.
+    Damit wächst auch der stetige Zweig von $\arg a_n$ unbeschränkt, aber über Turmhöhen hinweg: die zweite Ebene liegt erst bei $\ln Y\approx e^{e^e}$.
+  einfach: >-
+    Vermutlich dreht sich der Winkel der Schwingungen, wenn man ihn stetig verfolgt, immer weiter — aber so langsam, dass man dafür Zahlen mit Türmen von
+    Exponenten braucht.
+  gegenbeispielsuche: 'Nur die erste aufgelöste Ebene ist gerechnet (p3_gerade.py, stetige Spur mit 3025 Punkten): dort hält die Verschiebung +π. Die zweite Ebene (ln Y ≈ e^{eᵉ}, Auflösung ≈ e^{−eᵉ} in Im) ist nicht gerechnet. Selbstkonsistenz: Ist R der Wertebereich des stetigen Zweigs und gilt das Randgesetz auf jeder Ebene, so müsste R + π ⊆ R̄ sein — für beschränktes R unmöglich.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/02_theta_argument/BERICHT.md, B7 und Offene Frage 1; p3_gerade.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; folgt, falls die Verschiebung +π auf jeder Ebene gilt.'
+    f2_benutzte_voraussetzungen: 'Randgesetz aus kn.beob.theta_phase_randkopien auf allen Ebenen.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Vermutlich auf jede Basis über η.'
+    f5_neue_frage: 'P(Y) auf der zweiten Ebene über eine verschachtelte Kettenregel verfolgen.'
+  bewertung: {richtigkeit: 'Vermutung, eine Ebene gerechnet', neuheit: neu_ungeprueft, nutzen: 'Würde zeigen, dass arg aₙ nicht nur ohne Grenzwert, sondern unbeschränkt ist.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.frage.theta_exponent}

@@ -1,0 +1,166 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 03 „Zweigwahl-Zertifikat in Intervallarithmetik“. Rechnungen: forschung/runde_2026_10_25/03_zweigwahl_zertifikat/
+# (zertifikat.py, teil_a.py; python-flint arb/acb). Bezeichnungen wie im Lücken-Bericht (forschung/identitaeten_2026_10_14/luecken/BERICHT_LUECKEN_ANALYTISCH.md):
+# λ = L ln b, ℓ = Log λ (für e ist ℓ = L), F(s) = Ψ(e^{ℓs}), σ = Schröder-Funktion (σ′(L) = 1, schlicht auf ℍ, Ψ∘σ = id: Lemma U), S4: σ(sexp z) = e^{ℓ(z+θ(z))}.
+aussagen:
+
+- id: kn.lem.zweig_ein_ball
+  titel: 'Zweigwahl an einem Punkt ohne Poincaré-Funktion: liegt e^(ℓ(z₀+θ(z₀))) in σ(ℍ), so gilt σ(sexp z₀) = e^(ℓ(z₀+θ(z₀)))'
+  art: lemma
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, schroeder, fixpunkt_L]
+  bereich: 'Basis $b>\eta$; Kneser-Darstellung $\mathrm{sexp}=F(z+\theta)$ mit $\theta$ holomorph und periodisch in der oberen Halbebene; $\sigma$ schlicht auf $\mathbb H$ mit $\Psi\circ\sigma=\mathrm{id}$; $z_0$ mit $\mathrm{Im}\,z_0>0$'
+  aussage: |
+    (i) Ist $P:=e^{\ell(z_0+\theta(z_0))}\in\sigma(\mathbb H)$, so gilt die Zweigidentität S4 an $z_0$: $\sigma(\mathrm{sexp}\,z_0)=P$. Nach dem Hochhebungs-Lemma gilt sie dann auf jeder
+    zusammenhängenden Menge um $z_0$, auf der $\mathrm{sexp}$ in $\mathbb H$ liegt — etwa auf dem Halbkreis $\{|z|<0.1,\ \mathrm{Im}\,z>0\}$. $\Psi$ muss dafür nie ausgewertet werden.
+    (ii) Prüfbar mit einem einzigen Ball: für einen beliebigen Testpunkt $w_1\in\mathbb H$ enthält $\sigma(B(w_1,\mathrm{Im}\,w_1))$ nach Koebe-¼ die Scheibe $B(\sigma(w_1),\rho)$ mit
+    $\rho=|\sigma'(w_1)|\,\mathrm{Im}\,w_1/4$; es genügt $|P-\sigma(w_1)|<\rho$.
+    (iii) Toleranz: ist $\theta(z_0)$ nur bis auf $\tau$ bekannt, genügt $|P-\sigma(w_1)|+|P|(e^{|\ell|\tau}-1)<\rho$. Eine Änderung von $\theta$ um $2\pi ik/\ell$ ändert $P$ nicht —
+    die Konstante $a_0$ und ihr Zweig spielen für S4 keine Rolle.
+    (iv) Nebenprodukt: mit $\varepsilon=|P-\sigma(w_1)|/(\mathrm{Im}\,w_1|\sigma'(w_1)|)$ gilt $|\mathrm{sexp}\,z_0-w_1|\le\mathrm{Im}\,w_1\cdot t^*$, $t^*/(1+t^*)^2=\varepsilon$ (Koebe-Wachstum).
+  einfach: >-
+    Ob die Welle θ und die gewöhnliche Lösung am Fixpunkt richtig zusammenpassen, entscheidet sich an einem einzigen Punkt. Man muss dort nur zeigen, dass eine
+    bestimmte Zahl in einem bekannten Gebiet liegt — und dafür reicht ein Kreis um einen frei gewählten Testpunkt.
+  beweis:
+    art: vollstaendig
+    text: |
+      (i) $P=\sigma(w')$ mit $w'\in\mathbb H$ gibt $\Psi(P)=w'$ (Lemma U(c)); die Kneser-Darstellung gibt $\Psi(P)=F(z_0+\theta(z_0))=\mathrm{sexp}\,z_0$. Also $\sigma(\mathrm{sexp}\,z_0)=\sigma(w')=P$.
+      Die beiden Hochhebungen $e^{\ell(z+\theta)}$ und $\sigma\circ\mathrm{sexp}$ von $\mathrm{sexp}$ über den lokalen Homöomorphismus $\Psi$ stimmen an $z_0$ überein, also überall (Lemma H).
+      (ii) $g(\zeta)=(\sigma(w_1+r_1\zeta)-\sigma(w_1))/(r_1\sigma'(w_1))$, $r_1=\mathrm{Im}\,w_1$, ist normiert schlicht auf der Einheitsscheibe; Koebe-¼.
+      (iii) $|e^{\ell\delta}-1|\le e^{|\ell|\tau}-1$ für $|\delta|\le\tau$. (iv) $|g(\zeta)|\ge|\zeta|/(1+|\zeta|)^2$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/03_zweigwahl_zertifikat/BERICHT.md, B1, B7 und Abschnitt 1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Lemma U(c), der Kneser-Darstellung und Koebe-¼; neu ist nur, dass man Ψ(P) gar nicht braucht.'
+    f2_benutzte_voraussetzungen: 'Kneser-Darstellung (V1), Schlichtheit von σ auf ℍ und Ψ∘σ = id (Lemma U), Koebe-¼ und Koebe-Wachstum.'
+    f3_spezialfall: 'Ein Hochhebungs-Argument: zwei Lifts über einen lokalen Homöomorphismus stimmen überein, wenn sie es an einem Punkt tun.'
+    f4_uebertragbar: 'Auf jede Kneser-artige Konstruktion, deren Schröder-Funktion auf einem Gebiet schlicht ist — für die Kneser-artige Pentation fehlt genau diese Schlichtheit.'
+    f5_neue_frage: 'Lässt sich der Punkt z₀ so hoch legen, dass zertifizierte Kneser-Werte reichen (kn.satz.kneser_e_zertifiziert)?'
+  bewertung: {richtigkeit: 'vollständig; bei der Gegenprobe nachgelesen', neuheit: neu_ungeprueft, nutzen: 'Vereinfacht das Zertifikat für die Zweigwahl auf eine Ball-Prüfung ohne Poincaré-Funktion.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+
+- id: kn.lem.sigma_de_branges
+  titel: 'Rigorose Schröder-Funktion: σ(w) = λⁿσ(log_bⁿ w), nahe L eingeschlossen mit de Branges (|aₖ| ≤ k)'
+  art: lemma
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [schroeder, fixpunkt_L]
+  bereich: 'Basis $b>\eta$; $\sigma$ die Schröder-Funktion an $L$ ($\sigma(b^w)=\lambda\sigma(w)$, $\sigma(L)=0$, $\sigma''(L)=1$), schlicht auf $\mathbb H$; $B(L,R)\subset\mathbb H$'
+  aussage: |
+    Für $w\in\mathbb H$ und $v_0=w$, $v_{k+1}=\log_bv_k$ (Hauptzweig; bildet $\mathbb H$ in $\mathbb H$ ab) gilt
+    $$\sigma(w)=\lambda^n\sigma(v_n),\qquad\sigma'(w)=\lambda^n\sigma'(v_n)\prod_{k<n}\frac1{v_k\ln b},$$
+    und mit $u=v_n-L$, $t=|u|/R$:
+    $$|\sigma(L+u)-u|\le R\Bigl(\frac{t}{(1-t)^2}-t\Bigr),\qquad|\sigma'(L+u)-1|\le\frac{1+t}{(1-t)^3}-1 .$$
+    Der Fehler in $\sigma(w)$ fällt wie $|\lambda|^{-n}$; mit $n=450$ (Basis $e$) bzw. $700$ (Basis 2), $R=1$ und 800 Bit wird $\sigma(w)$ in Ballarithmetik auf etwa $10^{-61}$ eingeschlossen.
+    Zu viele Schritte bei zu wenig Bits sprengen den Ball — dann schlägt eine darauf gebaute Prüfung fehl, statt Falsches zu behaupten.
+  einfach: >-
+    Die Schröder-Funktion lässt sich mit garantierter Fehlergrenze ausrechnen: man nimmt so oft den Logarithmus, bis man ganz nahe beim Fixpunkt ist, und
+    schätzt den Rest mit dem Satz von de Branges ab, der für alle schlichten Funktionen gilt.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\sigma(w)=\lambda\sigma(\log_bw)$ auf $\mathbb H$ und Kettenregel. $f(t)=\sigma(L+Rt)/R$ ist normiert schlicht auf der Einheitsscheibe (Schlichtheit von $\sigma$ auf $\mathbb H$, $B(L,R)\subset\mathbb H$);
+      de Branges gibt $|a_k|\le k$, also $|f(t)-t|\le\sum_{k\ge2}kt^k=t/(1-t)^2-t$ und $|f'(t)-1|\le\sum_{k\ge2}k^2t^{k-1}=(1+t)/(1-t)^3-1$. Mit $|v_n-L|\sim C|\lambda|^{-n}$ ist der Rest $\approx2t^2R$,
+      mal $|\lambda|^n$ also $O(|\lambda|^{-n})$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/03_zweigwahl_zertifikat/BERICHT.md, Abschnitt 1 „Rigoroses σ“; zertifikat.py (Basis.sigma)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Schröder-Gleichung, der Schlichtheit auf ℍ und dem Satz von de Branges.'
+    f2_benutzte_voraussetzungen: 'σ schlicht auf ℍ (Lemma U), Im L > R; de Branges (1985).'
+    f3_spezialfall: 'Standardverfahren der rigorosen Koenigs-Linearisierung (it.satz.koenigs) mit einer universellen Schranke für schlichte Funktionen.'
+    f4_uebertragbar: 'Auf jede Basis b > η (Im L > 1 für e und 2) und jede Schröder-Funktion, die auf einer Scheibe um den Fixpunkt schlicht ist.'
+    f5_neue_frage: 'Reicht dasselbe Werkzeug für rigorose Werte von h und h′ entlang der Kette (etwa für eine strenge Fassung von kn.satz.theta_phase_koeffizienten)?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Macht σ und σ′ mit garantierter Fehlergrenze verfügbar — Baustein des Zweigwahl-Zertifikats.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: it.satz.koenigs}
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+
+- id: kn.satz.zweigwahl_zertifikat
+  titel: 'Die Zweigwahl für Knesers θ ist mit Intervallarithmetik zertifiziert — Basis e und 2; die Motordaten müssen nur auf 0.027 stimmen'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Motor-Annahme (E): |θ_K(z₀) − θ_num(z₀)| ≤ 0.027 (mod 2πi/ℓ) bei z₀ = 0.05i, d. h. die Motor-θ-Reihe ist an einem Punkt auf zwei Stellen Knesers Welle; nicht zertifiziert ist, dass der Motor (fatou.gp) Knesers Lösung rechnet'
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, schroeder, fixpunkt_L]
+  bereich: 'Basen $e$ und 2; $\theta_{\rm num}=\sum_{n\le4096}a_nq^n$ mit den $a_n$ aus Etappe 2 (dps 80, $y=0.003$), als exakte Zahlen genommen; $\theta_K$ Knesers Welle'
+  voraussetzungen:
+    - {text: 'Kneser-Darstellung (V1): sexp holomorph auf ℂ ∖ (−∞, −2], sexp = F(z+θ_K) mit θ_K holomorph und periodisch oben', benutzt: ja}
+    - {text: 'Motor-Annahme (E): |θ_K(z₀) − θ_num(z₀)| ≤ 0.027 mod 2πi/ℓ', benutzt: ja, notiz: 'zwei Motoreinstellungen stimmen auf 2·10⁻⁵⁹; für Basis e auf Im z ≥ 0.36 Übereinstimmung mit dem zertifizierten θ_K auf 3·10⁻⁷⁹ (mod 2πi/L)'}
+    - {text: 'de Branges, Koebe-¼, Koebe-Wachstum (zitiert)', benutzt: ja}
+  aussage: |
+    In Ballarithmetik (python-flint, 800 Bit) gilt mit kn.lem.zweig_ein_ball und kn.lem.sigma_de_branges für $P=e^{\ell(z_0+\theta_{\rm num}(z_0))}$:
+    Basis $e$, $z_0=0.05i$: $|P-\sigma(w_1)|\le2.2\cdot10^{-61}$ bei $\rho\ge0.1212$; Basis 2: $|P-\sigma(w_1)|\le1.6\cdot10^{-61}$ bei $\rho\ge0.0980$. Ebenso bestanden an
+    $0.07e^{i\pi/3}$, $0.08e^{3i\pi/4}$ und $0.5+0.05i$ für beide Basen ($\rho\ge0.031$). Die Prüfung bleibt gültig, solange $|\theta_K(z_0)-\theta_{\rm num}(z_0)|\le\tau_{\max}=0.0273$
+    (beide Basen, rigoros nach unten gerundet).
+    **Unter dieser Motor-Annahme gilt die Zweigidentität S4 für Kneser zu den Basen $e$ und 2**; das ersetzt das Gleitkomma-Zertifikat ($4\cdot10^{-48}$, nur Basis $e$) in kn.satz.theta_singularitaet.
+    Belege für die Annahme: zwei Motoreinstellungen geben $\theta(0.05i)$ bis auf $2.1\cdot10^{-59}$ (e) bzw. $1.6\cdot10^{-59}$ (2) gleich; für Basis $e$ ist die Motor-Reihe auf $\mathrm{Im}\,z\ge0.36$
+    gleich dem zertifizierten $\theta_K$ aus kn.satz.kneser_e_zertifiziert plus $3\cdot2\pi i/L$, bis auf $3\cdot10^{-79}$ (die ersten 60 Fourier-Koeffizienten auf $5\cdot10^{-82}$);
+    das ist ein starker Beleg für (E), aber kein Beweis, weil man bei $z_0=0.05i$ Knesers θ nahe der Achse braucht.
+    Nebenbefunde: $\mathrm{sexp}(0.05i)$ folgt allein aus θ auf $2.4\cdot10^{-62}$ (e) bzw. $1.8\cdot10^{-62}$ (2) und stimmt mit den unabhängigen Taylor-Daten auf $2.5\cdot10^{-63}$ bzw. $1.3\cdot10^{-63}$.
+    Die „Zweigzahl 0“ für $\theta=3-z+h(u_3)$ ist eine Konvention des Programms ($h$ hängt von einer Abbruchregel ab und springt bei deren Änderung um $2\pi i/\ell$); inhaltlich zählt nur S4.
+  einfach: >-
+    Bisher war die entscheidende Prüfung für die Formeln über Knesers Welle nur mit gewöhnlichen Kommazahlen gerechnet. Jetzt ist sie mit Intervallen gemacht, bei denen
+    der Computer jeden Rundungsfehler mitführt — für die Basen e und 2. Vorausgesetzt wird nur noch, dass die Daten aus dem Rechenmotor an einem Punkt auf zwei
+    Stellen stimmen; tatsächlich stimmen sie auf fast 60 Stellen.
+  beweis:
+    art: vollstaendig
+    text: |
+      $L$ per Intervall-Newton (Einschluss und Eindeutigkeit im Ball vom Radius $10^{-40}$); $\theta_{\rm num}(z_0)$ als Ball aus den Datei-$a_n$; Testpunkt $w_1$ per Gleitkomma-Newton gewählt und
+      als exakte Zahl weiterverwendet; $\sigma(w_1)$, $\sigma'(w_1)$ nach kn.lem.sigma_de_branges (450 bzw. 700 Log-Schritte, jede Iterierte in $\mathbb H$ geprüft); dann $|P-\sigma(w_1)|<\rho$
+      und $\tau_{\max}=\mathrm{log1p}((\rho-|P-\sigma(w_1)|)/|P|)/|\ell|$, nach unten gerundet. Gegenprobe mit 320 Bit und 300/420 Schritten: $10^{-33}$ bzw. $10^{-32}$, ebenfalls weit unter $\rho$.
+  stuetzt_sich_auf: [kn.lem.zweig_ein_ball, kn.lem.sigma_de_branges]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/03_zweigwahl_zertifikat/BERICHT.md, B2–B10 und Abschnitt 2; zertifikat.py, daten/zertifikat.json; Abgleich mit dem zertifizierten θ_K: gegenprobe_motor_gegen_zert.py und EINTRAG.md'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein: rechnergestützte Ballprüfung, eine Zeile Logik aus kn.lem.zweig_ein_ball.'
+    f2_benutzte_voraussetzungen: 'Kneser-Darstellung; Motor-Annahme (E) mit grosser Reserve; de Branges, Koebe-¼; Schlichtheit von σ (Lemma U).'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede Basis über η mit vorhandener θ-Reihe (je etwa 1 min); für Basis e lässt sich (E) vermutlich ganz durch kn.satz.kneser_e_zertifiziert ersetzen (Prüfpunkt auf Im z ≥ 0.36 und ein Weg nach unten, auf dem sexp in ℍ bleibt).'
+    f5_neue_frage: '(E) selbst zertifizieren; dasselbe Ein-Ball-Zertifikat für die Kneser-artige Pentation (dort fehlt die Schlichtheit von σ).'
+  bewertung: {richtigkeit: 'rechnergestützt bewiesen unter (E); Gegenprobe 25.10.2026: zertifikat.py erneut gelaufen, Ausgabe identisch; Logik und Ballrechnung nachgelesen', neuheit: neu_ungeprueft, nutzen: 'Schliesst die letzte Gleitkomma-Lücke von kn.satz.theta_singularitaet und kn.satz.theta_koeffizienten und erweitert sie auf Basis 2.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.theta_singularitaet}
+    - {typ: stuetzt, ziel: kn.satz.theta_koeffizienten}
+    - {typ: verwandt, ziel: kn.satz.kneser_e_zertifiziert}
+    - {typ: analog_zu, ziel: gr.satz.ein_wendepunkt_e2}
+
+- id: kn.satz.sexp_schlicht_nahe_null
+  titel: 'Knesers sexp ist auf |z| < 0.1 schlicht — mit Intervallen für Basis e und 2, samt Schranken für ε₀, ε₁ und sexp′/A'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Motor-Annahme (E2): die Taylor-Koeffizienten der Motordaten um 0 (k ≤ 127) sind auf 10⁻³⁰ genau und |c_k| ≤ 1 für k ≥ 128; für die Schlichtheit allein genügt ein Fehler ≤ 3.7'
+  niveau: forschung
+  objekte: [kneser_T]
+  bereich: 'Basen $e$ und 2; $r=0.1$; $A=\mathrm{sexp}''(0)$; Taylor-Daten etappe3/daten/taylor_130_256.json bzw. taylor_b2_80_256.json'
+  aussage: |
+    Auf $|z|\le0.1$ gilt $\mathrm{sexp}\,z=1+Az(1+\varepsilon_0)$, $\ln\mathrm{sexp}\,z=Az(1+\varepsilon_1)$ (Hauptzweig) und:
+    Basis $e$ ($A=1.0917674$): $\sum_{k\ge2}k|c_k|r^{k-1}\le0.06098<A$, also ist sexp auf $|z|<0.1$ schlicht (Noshiro–Warschawski); $|\varepsilon_0|\le0.0277$, $|\varepsilon_1|\le0.0339$, $|\mathrm{sexp}'/A-1|\le0.0559$.
+    Basis 2 ($A=0.8893650$): Summe $\le0.00463$; $|\varepsilon_0|\le0.0030$, $|\varepsilon_1|\le0.0481$, $|\mathrm{sexp}'/A-1|\le0.0052$.
+    Daraus folgt $\mathrm{sexp}(D)\subset\mathbb H$ für den Halbkreis $D=\{|z|<0.1,\ \mathrm{Im}\,z>0\}$ — die Voraussetzung, um S4 von einem Punkt auf $D$ zu übertragen (kn.lem.zweig_ein_ball).
+    Die Schlichtheit hält, solange die Taylor-Koeffizienten bis auf $4.39$ (e) bzw. $3.77$ (2) stimmen.
+    **Kleine Korrektur:** Im Lücken-Bericht (Satz Z) stand $|\varepsilon_0|\le0.027$ (Gittermaximum $0.02688$); zertifiziert ist $0.0277$. In Satz M (M3) sollte man $1.028$ statt $1.027$ schreiben; die Aussagen ändern sich nicht.
+  einfach: >-
+    Nahe bei null ist Knesers Tetration fast eine Gerade mit Steigung A. Mit garantierten Fehlergrenzen ist jetzt gezeigt, wie wenig sie davon abweicht, und dass sie
+    dort keinen Wert zweimal annimmt — für die Basen e und 2.
+  beweis:
+    art: vollstaendig
+    text: |
+      Noshiro–Warschawski: $\mathrm{Re}\,\mathrm{sexp}'\ge A-\sum_{k\ge2}k|c_k|r^{k-1}>0$ auf der konvexen Scheibe ⇒ schlicht. Die ε-Grössen sind holomorph auf $|z|\le r$; ihr Maximum liegt auf $|z|=r$,
+      überdeckt von 16384 Bällen und mit acb (Horner, Datenkugeln vom Radius $10^{-30}$, Rest $\le2r^{N+1}$ bzw. $2(N+1)r^N$) ausgewertet. $\mathrm{sexp}(D)\subset\mathbb H$: wäre $\mathrm{sexp}\,z$ reell, so wäre
+      $\mathrm{sexp}\,\bar z=\mathrm{sexp}\,z$ mit $\bar z\ne z$, im Widerspruch zur Schlichtheit; nahe der Achse ist $\mathrm{Im}\,\mathrm{sexp}>0$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/03_zweigwahl_zertifikat/BERICHT.md, B11–B13 und Abschnitt 3; teil_a.py, daten/teil_a.json'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus Noshiro–Warschawski und dem Maximumprinzip, sobald die Koeffizienten eingeschlossen sind.'
+    f2_benutzte_voraussetzungen: 'Motor-Annahme (E2); normiert wird mit A aus den Daten (Abweichung zu Knesers A ≤ 10⁻³⁰, in den gerundeten Schranken enthalten).'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede Basis mit Taylor-Daten um 0; für Basis e könnte man statt der Motordaten das zertifizierte Polynom aus kn.satz.kneser_e_zertifiziert nehmen und (E2) streichen.'
+    f5_neue_frage: 'ε₀ ≤ 0.027 mit zentrierter Form (Taylor-Verschiebung je Bogen) statt reiner Ballauswertung zertifizieren.'
+  bewertung: {richtigkeit: 'rechnergestützt bewiesen unter (E2); Gegenprobe 25.10.2026: teil_a.py erneut gelaufen, Ausgabe identisch', neuheit: neu_ungeprueft, nutzen: 'Macht die Hilfsschranken für die Zweigwahl und die Majorante rigoros, erstmals auch für Basis 2.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: kn.satz.zweigwahl_zertifikat}
+    - {typ: verwandt, ziel: kn.satz.theta_mittelwerte}

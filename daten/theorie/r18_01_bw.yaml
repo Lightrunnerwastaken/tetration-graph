@@ -24,7 +24,7 @@ bw.satz.phasengesetz_rang5:
     $(b,d)=(e,2)$: $\mu_5=-0.9432744$, Spannweite der Welle $0.0193$ (auf Rang 4: $0.00029$).
   bilder: []
   einordnung: |
-    Folgt aus [[bw.satz.abschaelen_rang]]; Verallgemeinerung auf alle Ränge: [[bw.satz.phasengesetz_induktion]]; Glattheit: [[bw.verm.rang5_nirgends_diffbar]].
+    Folgt aus [[bw.satz.abschaelen_rang]]; Verallgemeinerung auf alle Ränge: [[bw.satz.phasengesetz_induktion]]; Glattheit: [[bw.satz.rang5_singulaer]].
 
 bw.satz.phasengesetz_induktion:
   worum: |
@@ -76,7 +76,7 @@ bw.satz.produktformel_rang5:
     $\theta=0.05$, $U_3=5.3\cdot10^8$: Quotient $-1=8.1454952\cdot10^{-4}$ gegen $\Phi_4'(U_3)=8.1454722\cdot10^{-4}$.
   bilder: []
   einordnung: |
-    Rang-4-Gegenstück: [[bw.satz.c1_produkt]]; Belege: [[bw.beob.skalensprung]]; Folgerung vermutet: [[bw.verm.rang5_nirgends_diffbar]].
+    Rang-4-Gegenstück: [[bw.satz.c1_produkt]]; Belege: [[bw.beob.skalensprung]]; Folgerung: [[bw.satz.rang5_singulaer]].
 
 bw.beob.skalensprung:
   worum: |
@@ -89,13 +89,14 @@ bw.beob.skalensprung:
     $1.0657272\to1.0665953$, Verhältnis $1.000815$.
   bilder: []
   einordnung: |
-    Stützt [[bw.satz.produktformel_rang5]] und [[bw.verm.rang5_nirgends_diffbar]].
+    Stützt [[bw.satz.produktformel_rang5]] und [[bw.lem.wackel]]; die Plateaus sind keine Ableitungswerte ([[bw.satz.rang5_singulaer]]).
 
 bw.verm.rang5_nirgends_diffbar:
   worum: |
     Wie glatt ist die Welle des Basiswechsels ab Rang 5?
   genau: |
     Vermutet: stetig, aber nirgends differenzierbar, Stetigkeitsmodul $\sim h\,\mathrm{slog}(1/h)$.
+    Widerlegt (25.10.2026): fast überall differenzierbar, sogar singulär — [[bw.satz.rang5_singulaer]].
   warum: |
     Jede Ebene trägt gleich viel zur Steigung bei, wie bei der Weierstrass-Funktion im Grenzfall $ab=1$; fehlen: Gleichverteilung der Folge $\{T_d^jy\}$ und ein Hardy-Lemma.
   beispiel: |
@@ -128,4 +129,4 @@ bw.beob.anlauf_ursache:
     $c(U_1)-\mu_4=0.18$ bei $U_1=2$; Beitrag der Rang-4-Welle höchstens $7\cdot10^{-5}$ von $5\cdot10^{-3}$.
   bilder: []
   einordnung: |
-    Die Rang-4-Welle bestimmt die Glattheit ([[bw.verm.rang5_nirgends_diffbar]]), nicht die Grösse ([[bw.beob.wellen_raenge]]).
+    Die Rang-4-Welle bestimmt die Glattheit ([[bw.satz.rang5_singulaer]]), nicht die Grösse ([[bw.beob.wellen_raenge]]).

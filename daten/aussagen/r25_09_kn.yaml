@@ -1,0 +1,180 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 09: Gesetz für die θ-Singularität bei geraden Rängen (Basis 2, Motor-Familie).
+# Rechnungen: forschung/runde_2026_10_25/09_gerade_raenge_gesetz/ (BERICHT.md, Befunde G1–G9). Gegenprobe: EINTRAG.md dort.
+aussagen:
+
+- id: kn.lem.umkehr_minus_unendlich
+  titel: 'Kern-Lemma der geraden Ränge: H_s⁻¹(V) läuft für Re V → −∞ wie z_s + Φ_s(λ_{s−2}^V) gegen einen festen Punkt, mit Φ_s′(0) = c_{s−1}/A_s'
+  art: lemma
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [hyperoperation, schroeder, multiplikator]
+  bereich: 'Motor-Familie zur Basis $b$ (gerechnet $b=2$): ungerade Ränge $q$ regulär am reellen Fixpunkt $p_{q-1}$ von $H_{q-1}$, $\lambda_{q-1}=H_{q-1}''(p_{q-1})>1$, nahe $p_{q-1}$ ist $H_q^{-1}(w)=\log\bigl(\sigma_{q-1}(w-p_{q-1})/c_q\bigr)/\ln\lambda_{q-1}$ mit $\sigma_{q-1}''(0)=1$ ($c_3=1$, $c_5=\lambda_4^{\mathrm{pcent}}$, $c_7=11389.99447$); gerade Ränge Kneser-artig; $H_s(x_s^*)=p_{s-2}$, $A_s=H_s''(x_s^*)$, $z_s=x_s^*-1$ ($x_4^*=-1$, $z_4=-2$, $p_2=0$, $\lambda_2=b$)'
+  aussage: |
+    Sei $s\ge4$ gerade, $A_s\ne0$, und gelte auf einem Zweig $H_s(z)=H_{s-1}^{-1}(H_s(z+1))$ mit der obigen Darstellung von $H_{s-1}^{-1}$ nahe $p_{s-2}$. Dann gibt es ein bei 0 analytisches $\Phi_s$ mit
+    $$H_s^{-1}(V)=z_s+\Phi_s\bigl(\lambda_{s-2}^{\,V}\bigr),\qquad\Phi_s(0)=0,\qquad\Phi_s'(0)=\kappa_s=\frac{c_{s-1}}{A_s},$$
+    für $\mathrm{Re}\,V\to-\infty$, auf dem Zweig von $H_s^{-1}$, der nach $z_s$ läuft. Insbesondere $H_s^{-1}(V)-z_s\approx\kappa_s\lambda_{s-2}^V$.
+    Basis 2: $\kappa_4=1/\mathrm{sexp}'(-1)=0.779373$, $\kappa_6=\lambda_4^{\mathrm{pcent}}/A_6=29.3046709$, $\kappa_8=c_7/A_8=11330.7170$.
+  einfach: >-
+    Läuft man bei einer geraden Rechenart mit dem Wert immer weiter nach links ins Negative, so läuft ihre Umkehrung nicht ins Unendliche, sondern auf einen festen Punkt zu,
+    und zwar so schnell wie eine Potenz mit fester Basis. Diese Basis und der Vorfaktor sind genau bekannt.
+  beweis:
+    art: vollstaendig
+    text: |
+      Aus $H_s(z)=H_{s-1}^{-1}(H_s(z+1))$ und der Darstellung von $H_{s-1}^{-1}$ folgt $\lambda_{s-2}^{H_s(z)}=\sigma_{s-2}\bigl(H_s(z+1)-p_{s-2}\bigr)/c_{s-1}=:E(z)$. Wegen $H_s(z_s+1)=p_{s-2}$, $\sigma'(0)=1$ ist $E$ bei $z_s$
+      analytisch mit einfacher Nullstelle, $E'(z_s)=A_s/c_{s-1}\neq0$, also lokal umkehrbar: $z=z_s+E^{-1}(u)$. Mit $u=\lambda_{s-2}^V$ ($\to0$ für $\mathrm{Re}\,V\to-\infty$) folgt die Behauptung mit $\Phi_s=E^{-1}$
+      ($V$ ist dabei nur modulo $2\pi i/\ln\lambda_{s-2}$ bestimmt; das legt den Zweig fest). $s=4$: $H_3^{-1}=\log_b$, $p_2=0$, $c_3=1$, $A_4=\mathrm{sexp}'(-1)$, also $\mathrm{slog}(V)=-2+b^V/\mathrm{sexp}'(-1)+O(b^{2V})$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/09_gerade_raenge_gesetz/BERICHT.md, G2, G3 und Abschnitt 1; p2_lemma.py, daten/lemma_20.json'}]
+  nachgeprueft:
+    - {ergebnis: 'Motor (dps 20, V = −k + it): Quotient aufeinanderfolgender Werte s = 4: 2.000130 (k = 12, Ziel b = 2); s = 6: 5.1717970 (Ziel λ₄ = 5.1717973); s = 8: 9.493036 (k = 10, Ziel λ₆ = 9.493087). Konstante 0.779424 gegen 0.779373, 29.3046705 gegen 29.3046709, 11330.710 gegen 11330.717; die Abweichungen fallen um den Faktor λ_{s−2} je Schritt (O(λ^{2V})-Glied).'}
+    - {ergebnis: 'Gegenprobe 25.10.2026: p2_lemma.py 20 rang9 neu gerechnet (Motor ohne Zwischenspeicher, 78 s); Ausgabe daten/lemma_20.json byte-gleich mit der des Berichts; Quotienten 2.00013049 (s = 4, k = 12), 5.17179703 (s = 6), 9.49303563 (s = 8, k = 10), Konstanten 0.779424 / 29.3046705 / 11330.7097 gegen 0.779373 / 29.3046709 / 11330.7170.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Funktionalgleichung und dem Satz über die Umkehrfunktion — sobald man sieht, dass λ^{H_s} bei z_s eine einfache Nullstelle hat.'
+    f2_benutzte_voraussetzungen: 'Reguläre Darstellung von H_{s−1}⁻¹ nahe p_{s−2}; H_s(x_s*) = p_{s−2}; A_s ≠ 0; Zweig, auf dem die Funktionalgleichung gilt.'
+    f3_spezialfall: 's = 4 ist der endliche Grenzwert slog(V) → −2 aus kn.satz.theta6_singularitaet.'
+    f4_uebertragbar: 'Auf jede Basis über den Schwellen η_r mit derselben Familienstruktur.'
+    f5_neue_frage: 'Wie gross ist der Konvergenzradius von Φ_s, und wie hängt er vom Rang ab (kn.verm.alpha_r_gegen_1)?'
+  bewertung: {richtigkeit: 'vollständig unter den genannten Voraussetzungen; Motor bestätigt Rate und Konstante auf 6–7 Stellen', neuheit: neu_ungeprueft, nutzen: 'Kern der Herleitung des Gesetzes für alle geraden Ränge.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta6_singularitaet, notiz: 'verallgemeinert den Beweisschritt slog(V) → −2 (Fall s = 4)'}
+    - {typ: verwandt, ziel: kn.verm.theta_gerade_raenge}
+
+- id: kn.satz.theta_gerade_raenge_struktur
+  titel: 'Struktursatz für Knesers Welle auf geraden Rängen r ≥ 6: θ_r = −z + Θ_r((z − x_r*)^α_r g_r(z)), α_r = ln λ_{r−4}/ln λ_{r−2}, singuläre Exponenten kα_r + m'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Zweigwahl wie bei kn.satz.theta6_singularitaet: dass die Abel-Gleichung h(w) = 1 + h(H_{r−1}⁻¹ w) und die Hauptzweige von H_{r−1}⁻¹ und H_{r−2}⁻¹ längs H_r(x_r* + iε) die richtige Fortsetzung sind und h bei ψ_r analytisch ist, ist nur numerisch gestützt (Ort, Exponent, Konstanten passen); dass θ_r auf ℝ je Periode keine weitere Singularität hat, ist nur gemessen; (ii) braucht zusätzlich Δ-Analytizität bei Q = 1'
+  niveau: forschung
+  objekte: [hyperoperation, theta_kneser, multiplikator, fourier_moden]
+  bereich: 'Motor-Familie wie kn.lem.umkehr_minus_unendlich; $r\ge6$ gerade, $F=H_{r-1}$, $h=h_r$ reguläre Abel-Funktion von $F$ am abstossenden Kneser-Fixpunkt, $\theta_r(z)=h(H_rz)-z=\sum a_nq^n$; $x_r^*$ mit $H_r(x_r^*)=p_{r-2}$, $A_r=H_r''(x_r^*)$'
+  aussage: |
+    (i) Nahe $x_r^*$ gilt
+    $$\theta_r(z)=-z+\Theta_r(u),\qquad u=\lambda_{r-4}^{\,H_r(z-1)}=(z-x_r^*)^{\alpha_r}g_r(z),\qquad\alpha_r=\frac{\ln\lambda_{r-4}}{\ln\lambda_{r-2}},$$
+    mit $\Theta_r(u)=2+h\bigl(1+F^{-1}(z_{r-2}+\Phi_{r-2}(u))\bigr)$ analytisch bei 0 und $g_r$ analytisch bei $x_r^*$, $g_r(x_r^*)=(A_r/c_{r-1})^{\alpha_r}\ne0$. Also ist
+    $\theta_r(x_r^*)=2-x_r^*+h(\psi_r)$ mit $\psi_r=1+F^{-1}(z_{r-2})$ ($\mathrm{Im}\,F^{-1}(z_{r-2})=\pi/\ln\lambda_{r-2}$), der lineare Koeffizient ist
+    $$K=h'(\psi_r)\,(F^{-1})'(z_{r-2})\,\frac{c_{r-3}}{A_{r-2}}\Bigl(\frac{A_r}{c_{r-1}}\Bigr)^{\alpha_r}\ne0,$$
+    und die singulären Exponenten liegen in $\{k\alpha_r+m:k\ge1,\ m\ge0\}$. Für $r=6$ ist das genau kn.satz.theta6_singularitaet ($\theta^*$, $K$).
+    Bei $r=4$ hat $H_2^{-1}(V)=V/b$ keinen endlichen Grenzwert; die Kette bricht nie ab, und es entsteht der superlogarithmische Fall $\alpha_4=0$ (kn.satz.theta_singularitaet).
+    (ii) Für die Koeffizienten gilt
+    $$a_n\,e^{2\pi inx_r^*}\,n^{1+\alpha_r}=c_1+c_2n^{-\alpha_r}+c_3n^{-1}+c_4n^{-2\alpha_r}+\dots,\qquad c_1=K\,(i/2\pi)^{\alpha_r}/\Gamma(-\alpha_r).$$
+    Wegen des Glieds $n^{-\alpha_r}$ mit $\alpha_r$ nahe 1 konvergiert der rohe lokale Exponent nur sehr langsam (kn.beob.theta_gerade_raenge_exponenten).
+  einfach: >-
+    Auf jeder geraden Rechenart ab der Hexation hat Knesers Welle pro Periode genau eine scharfe Stelle: dort, wo die Rechenart den Fixpunkt zwei Stufen tiefer trifft.
+    Wie scharf der Knick ist, gibt das Verhältnis zweier Logarithmen von Steigungen an Fixpunkten. Die Herleitung ist dieselbe für alle diese Ränge.
+  beweis:
+    art: skizze
+    text: |
+      Zweimal die Abel-Gleichung $h(w)=1+h(F^{-1}w)$ und einmal $F^{-1}(V)=1+F^{-1}(H_{r-2}^{-1}V)$ geben $\theta_r(z)=2-z+h\bigl(1+F^{-1}(H_{r-2}^{-1}(V))\bigr)$ mit $V=F^{-1}(H_rz)=H_r(z-1)$.
+      Für $z\to x_r^*$ ist $H_rz\to p_{r-2}$, also $V=\log(\sigma(H_rz-p_{r-2})/c_{r-1})/\ln\lambda_{r-2}\to-\infty$. Nach kn.lem.umkehr_minus_unendlich ($s=r-2$) ist $H_{r-2}^{-1}(V)=z_{r-2}+\Phi(u)$ mit
+      $u=\lambda_{r-4}^V=[\sigma(H_rz-p_{r-2})/c_{r-1}]^{\alpha_r}=(z-x_r^*)^{\alpha_r}g_r(z)$. $F^{-1}$ ist bei $z_{r-2}$ analytisch, weil $z_{r-2}\ne p_{r-2}$ (Abstand $-0.066$ bzw. $-0.031$).
+      (ii) mit dem Übertragungssatz (Flajolet–Odlyzko) für $(1-Q)^{k\alpha+m}$: $u^2$ gibt $n^{-1-2\alpha}$, $(z-x^*)u$ gibt $n^{-2-\alpha}$.
+    luecken:
+      - 'Zweigwahl: Abel-Gleichung und Hauptzweige von H_{r−1}⁻¹, H_{r−2}⁻¹ längs H_r(x_r* + iε) und Analytizität von h bei ψ_r nur numerisch (wie kn.satz.theta6_singularitaet).'
+      - 'Keine weitere Singularität von θ_r auf ℝ je Periode: nur gemessen (Phasenkonvergenz).'
+      - 'Für (ii): Δ-Analytizität bei Q = 1 und Restglied nicht bewiesen.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/09_gerade_raenge_gesetz/BERICHT.md, G4, G5 und Abschnitt 2'}, {ref: flajolet_odlyzko1990}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, bis auf die Zweigwahl: aus kn.lem.umkehr_minus_unendlich und den Funktionalgleichungen der Familie.'
+    f2_benutzte_voraussetzungen: 'Kern-Lemma für s = r − 2; reguläre Darstellung von H_{r−1}⁻¹ nahe p_{r−2}; Abel-Gleichung von h; Zweigwahl (numerisch).'
+    f3_spezialfall: 'Enthält kn.satz.theta6_singularitaet (r = 6); r = 4 ist der Grenzfall kn.satz.theta_singularitaet.'
+    f4_uebertragbar: 'Auf andere Basen über den Schwellen η_r, mit λ₂ = b.'
+    f5_neue_frage: 'Zweigwahl gemeinsam für r = 4, 6, 8, … schliessen (Intervallprüfung an einem Punkt plus Eindeutigkeit der Fortsetzung); K und c₁ für Rang 10 aus der Formel vorhersagen und mit der Messung (c₁ = 0.00214 − 0.02680i) vergleichen.'
+  bewertung: {richtigkeit: 'hergeleitet mit derselben Lücke wie bei Rang 4 und 6; Ort und Exponent bei Rang 8 und 10 numerisch auf 4 Stellen bestätigt', neuheit: neu_ungeprueft, nutzen: 'Macht aus der Vermutung für alle geraden Ränge eine Herleitung mit einer einzigen, gemeinsamen Lücke.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.lem.umkehr_minus_unendlich}
+    - {typ: verallgemeinert, ziel: kn.satz.theta6_singularitaet}
+    - {typ: verallgemeinert, ziel: kn.satz.theta6_koeffizienten}
+    - {typ: ersetzt, ziel: kn.verm.theta_gerade_raenge}
+    - {typ: analog_zu, ziel: kn.satz.theta_singularitaet}
+
+- id: kn.beob.theta10_singularitaet
+  titel: 'Rang 10 (Basis 2): Die Welle der Kneser-Dekation ist genau bei x₁₀* = H₁₀⁻¹(p₈) = −6.6936050663 + ℤ singulär'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, theta_kneser, fourier_moden, fixpunkt_L]
+  bereich: '$b=2$, Motor (gp-Fork, dps 20, Rang 8–10 mit 29.9 Stellen laut hyperdigits); $H_{10}$ Kneser-Dekation am abstossenden Fixpunkt von $H_9$; $\theta_{10}$ auf der Linie $y=0.03$ mit 64 Punkten'
+  aussage: |
+    $kp_{10}=-6.446551033773+1.135522857734i$, $\mu=6.846572362362+3.728976625797i$ ($|\mu|=7.7962$); $p_8=-5.683035382152679$ (reeller Fixpunkt von $H_8$), $\lambda_8=H_8'(p_8)=14.75876993730426$;
+    $x_{10}^*=H_{10}^{-1}(p_8)=-6.693605066320422$ ($H_{10}(x_{10}^*)-p_8=4\cdot10^{-25}$), $A_{10}=H_{10}'(x_{10}^*)=0.998384186281$.
+    $\theta_{10}$ hat keine negativen Moden ($\le8.4\cdot10^{-11}$), und $\arg(a_n/a_{n-1})=-1.99724,\ -1.93027,\ -1.92666,\ -1.925615$ ($n=2,8,16,31$) läuft gegen $-2\pi\,\mathrm{frac}(x_{10}^*)=-1.925136$;
+    der Abstand fällt etwa wie $n^{-1.75}$. Die Singularität sitzt also genau bei $x_{10}^*+\mathbb Z$, wie kn.satz.theta_gerade_raenge_struktur sagt; Rang 10 war vorher ungerechnet.
+  einfach: >-
+    Auch bei der zehnten Rechenart sitzt die scharfe Stelle der Welle genau dort, wo die Rechenart den Fixpunkt der achten trifft. Das sieht man daran, wie sich
+    die Schwingungen der Welle von einer zur nächsten drehen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/09_gerade_raenge_gesetz/BERICHT.md, G1, G7 und Abschnitt 3; p3_rang10.py, p4_theta_r.py, daten/rang10_20.json, daten/theta10_20_0.03_64.json'}]
+  nachgeprueft:
+    - {ergebnis: 'Bericht: grösster Schritt von θ₁₀ auf der Linie 0.0047 (eindeutige Zweigverfolgung); mit Taylor-Kreisradius 0.08 statt 0.03 scheitert der Motor („knhex: Newton bleibt nicht im Bogen“). Eine zweite Einstellung fehlte.'}
+    - {ergebnis: 'Gegenprobe 25.10.2026: p4_theta_r.py auf der zweiten Linie y = 0.025 (64 Punkte): kp₁₀, μ, p₈, λ₈, x₁₀* neu gerechnet und gleich; die a_n stimmen mit y = 0.03 auf ≤ 4.8·10⁻⁶ relativ überein (n ≤ 31), arg(a₃₁/a₃₀) = −1.925615 wie im Bericht. Auf den Linien y = 0.04, 0.05 und mit 128 Punkten bei y = 0.03 scheitert der Motor an einzelnen Punkten mit x ≈ 0.27–0.30 (Rang-10-Auswertung gibt einen Fehler).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); vorhergesagt von kn.satz.theta_gerade_raenge_struktur.'
+    f2_benutzte_voraussetzungen: 'Motor-Ränge 8–10 (29.9 Stellen), dps 20, Linie y = 0.03 bzw. 0.025, N = 64.'
+    f3_spezialfall: 'Fall r = 10 von kn.satz.theta_gerade_raenge_struktur.'
+    f4_uebertragbar: 'Rang 12 (α₁₂ = ln λ₈/ln λ₁₀ vorhersagen und prüfen).'
+    f5_neue_frage: 'Warum scheitert die Rang-10-Auswertung bei x ≈ 0.27–0.30 für y ≥ 0.03 (Bogen des Rang-8-Newton)?'
+  bewertung: {richtigkeit: 'numerisch; Ort auf 5·10⁻⁴ rad bei n = 31, zwei Linien gleich auf 5·10⁻⁶', neuheit: neu_ungeprueft, nutzen: 'Erster Test des Gesetzes auf Rang 10.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.theta_gerade_raenge_struktur}
+    - {typ: stuetzt, ziel: kn.verm.theta_gerade_raenge}
+
+- id: kn.beob.theta_gerade_raenge_exponenten
+  titel: 'Exponent der Wellen-Singularität gemessen: α₈ = 0.7302 (vorhergesagt 0.730137), α₁₀ = 0.8360 (0.836070) — nur mit den Korrekturgliedern n^(−α)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, theta_kneser, fourier_moden, multiplikator]
+  bereich: '$b=2$; Rang 8 aus runde_2026_10_18/02 (nur $|a_n|$, $n\le24$), Rang 10 aus kn.beob.theta10_singularitaet (komplexe $a_n$, $n\le31$); Modell aus kn.satz.theta_gerade_raenge_struktur (ii)'
+  aussage: |
+    Der Fit mit den Gliedern $c_1+c_2n^{-\alpha}+c_3n^{-1}+c_4n^{-2\alpha}$ gibt $\alpha_8=0.7302$ (Ziel $\ln\lambda_4/\ln\lambda_6=0.73013714$) und $\alpha_{10}=0.8360$ (Ziel $\ln\lambda_6/\ln\lambda_8=0.83606974$),
+    stabil auf $\pm0.0002$ bei drei Startwerten ($n_{\min}=3,5,8$) und drei Modelltiefen. Mit dem vorhergesagten $\alpha_{10}$ ist der relative Rest $7.8\cdot10^{-6}$ ($n\ge4$), mit $\alpha=0.73$ sind es $6.1\cdot10^{-4}$, mit $\alpha=1$ $2.4\cdot10^{-2}$; $c_1=0.00214-0.02680i$.
+    Folge der Exponenten (Basis 2): $\alpha_4=0$, $\alpha_6=0.42182244$, $\alpha_8=0.73013714$, $\alpha_{10}=0.83606974$, aus $\ln\lambda_2,\ln\lambda_4,\ln\lambda_6,\ln\lambda_8=0.693147,\ 1.643220,\ 2.250564,\ 2.691837$.
+    **Negativ:** Der rohe lokale Exponent (Quotient benachbarter $|a_n|$) taugt bei hohen Rängen nicht: Bei $n\le31$ liegt er um $0.01$–$0.015$ zu tief (Rang 8: $1.7164$ bei $n=23$; Rang 10: $1.8275$ bei $n=30$ statt $1.8361$), weil $n^{-\alpha}$ mit $\alpha$ nahe 1 kaum abfällt.
+    Daher stammt der zu kleine Wert $1.713$ für Rang 8 in kn.verm.theta_gerade_raenge.
+  einfach: >-
+    Wie scharf die Knicke der Welle auf Rang 8 und 10 sind, stimmt auf vier Stellen mit der Vorhersage überein. Dafür muss man aber die kleinen Korrekturen mitnehmen;
+    der einfache Vergleich zweier benachbarter Schwingungen liegt sonst deutlich daneben.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/09_gerade_raenge_gesetz/BERICHT.md, G5, G6, G7, G9; p5_fit.py, p2_lemma.py; runde_2026_10_18/02_theta_hoehere_raenge/daten/theta8_20_0.03_64.json'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026: p5_fit.py erneut — α₈ = 0.7302 (T3, alle n_min), α₁₀ = 0.8360 (T3 und komplex), Rest 7.81·10⁻⁶ / 6.11·10⁻⁴ / 2.41·10⁻² wie im Bericht. Dasselbe komplexe Modell auf den neu gerechneten a_n der Linie y = 0.025: α₁₀ = 0.8360, c₁ = 0.00214 − 0.0268i, Rest mit Vorhersage-α 7.9·10⁻⁶.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); bestätigt die Vorhersage α_r = ln λ_{r−4}/ln λ_{r−2}.'
+    f2_benutzte_voraussetzungen: 'Koeffizientenmodell aus kn.satz.theta_gerade_raenge_struktur (ii); Daten dps 20, N = 64; Rang 8 nur Beträge.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Dieselbe Fit-Methode für Rang 12 und andere Basen.'
+    f5_neue_frage: 'c₁ aus K vorhersagen (kn.satz.theta_gerade_raenge_struktur) und mit 0.00214 − 0.02680i vergleichen.'
+  bewertung: {richtigkeit: 'numerisch auf ±0.0002, zwei Linien bei Rang 10', neuheit: neu_ungeprueft, nutzen: 'Bestätigt den Exponenten, den Runde 18 bei Rang 8 nur grob (1.713 statt 1.730) traf.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.theta_gerade_raenge_struktur}
+    - {typ: korrigiert, ziel: kn.verm.theta_gerade_raenge, notiz: 'lokaler Exponent 1.713 bei Rang 8 war durch das Korrekturglied n^{−α} verfälscht'}
+    - {typ: verwandt, ziel: kn.beob.theta10_singularitaet}
+
+- id: kn.verm.alpha_r_gegen_1
+  titel: 'Vermutung: Für grosse gerade Ränge geht α_r → 1, und der Hilfspunkt z_{r−2} rückt an den Fixpunkt p_{r−2} heran'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation, multiplikator, theta_kneser]
+  bereich: 'Motor-Familie zur Basis 2 wie kn.lem.umkehr_minus_unendlich'
+  aussage: |
+    Gemessen: $x_r^*-p_{r-2}=-1.02111,\ -1.01446,\ -1.01057$ ($r=6,8,10$), $A_r=H_r'(x_r^*)=1.03250,\ 1.00523,\ 0.99838$, und $z_{r-2}-p_{r-2}=x_{r-2}^*-1-p_{r-2}=-0.06561$ ($r=8$), $-0.03084$ ($r=10$).
+    Vermutet: $\alpha_r=\ln\lambda_{r-4}/\ln\lambda_{r-2}\to1$ und $z_{r-2}-p_{r-2}\to0$ für $r\to\infty$. Dann rückt der Verzweigungspunkt von $H_{r-1}^{-1}$ (bei $p_{r-2}$) an $\psi_r$ heran, und der Konvergenzradius von $\Theta_r$ schrumpft.
+  gegenbeispielsuche: 'Nur drei Werte (r = 6, 8, 10); Rang 12 nicht gerechnet. Die Zuwächse von ln λ (0.950, 0.607, 0.441) fallen, das passt zu α_r → 1.'
+  einfach: >-
+    Je höher die gerade Rechenart, desto mehr ähnelt der Knick der Welle einem gewöhnlichen Knick wie bei |x|, und zwei wichtige Punkte rücken zusammen.
+    Das ist bisher nur an drei Rängen gesehen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/09_gerade_raenge_gesetz/BERICHT.md, G8, Offene Fragen 3 und 4; p2_lemma.py, p3_rang10.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Werte von p_r, x_r*, λ_r aus dem Motor (29.9 Stellen).'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf andere Basen; Bezug zu einem Grenzprofil H_r ≈ z + 1 links (vgl. kn.verm.grenzprofil_rampe für 1 < b < 2).'
+    f5_neue_frage: 'Beweis über H_r ≈ z + 1 auf einem wachsenden Bereich links? Was bedeutet das Zusammenrücken für die Grösse von θ_r? Rang 12 rechnen.'
+  bewertung: {richtigkeit: 'Vermutung aus drei Werten', neuheit: neu_ungeprueft, nutzen: 'Sagt, wie die Wellen sehr hoher Ränge aussehen.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta_gerade_raenge_struktur}
+    - {typ: verwandt, ziel: kn.verm.grenzprofil_rampe, notiz: 'dort Rampe min(x+1, b) für 1 < b < 2'}

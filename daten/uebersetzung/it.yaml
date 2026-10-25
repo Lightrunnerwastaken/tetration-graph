@@ -80,6 +80,164 @@
     worum: |
       The first to seriously want to build “half as many times $e^x$” was Paul Lévy (1927). His trick: for large $x$, $e^x$ is almost the same
       as $e^x-1$, and $e^x-1$ has a fixed point at 0 at which one can iterate.
+- id: it.kor.erzeuger_umlaufwerte
+  quelle_hash: 046c46a7dd08
+  theorie_hash: f5d8015dfbfd
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Values after a loop in closed form: after b_k^j, J_L = L^{k+1} · J^{(j)}'
+    aussage: |-
+      After $b_k^j$ (address $0^kj$), at the base point $L$,
+      $$\sigma=L^{k+1}s_j,\qquad J_L=L^{k+1}J^{(j)},\qquad J^{(j)}=Ls_j\Psi'(s_j)\ \ (\text{value of }J_L\text{ at }L+2\pi ij\text{ along }\ell_j).$$
+      Numerically (30 digits): $s_1=-0.95262397349458069216579816424+2.24193859082677437839204171742\,i$, $J^{(1)}=-14.3223459699012846576275+10.7051679581953509008574\,i$
+      — equal to the value from it.satz.regulaerer_erzeuger_fortsetzung to all 20 digits given there; vertical and left path equal to $2\cdot10^{-30}$.
+      Check: $|\Delta u|$ after $a,b_1,b_2,b_3$ is $|L|^{1,2,3,4}|s_1|=3.348,\ 4.602,\ 6.326,\ 8.696$, exactly as measured.
+    bereich: base $e$, base point $L$, loop $b_k^j$ ($b_0=a$) from the principal sheet; $s_j$ = endpoint of the lift of $\ell_j$ starting from
+      $u=0$, so $\Psi(s_j)=L+2\pi ij$
+    einfach: 'How much the velocity field changes after a loop does not have to be computed anew for every loop: a single number suffices, which
+      one multiplies by a power of the fixed point L.'
+    beweis:
+      text: |-
+        The address $0^kj$ belongs to $u=L^{k+1}s_j$ (the paths $\ell_0$ are trivial). From $\Psi'(Lv)L=e^{\Psi(v)}\Psi'(v)$ and $\Psi(L^is_j)=L$ ($i\ge1$) it follows that $\Psi'(L^is_j)=\Psi'(s_j)$,
+        so $J_L=Lu\Psi'(u)=L\cdot L^{k+1}s_j\Psi'(s_j)=L^{k+1}J^{(j)}$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the coding and the functional equation of Ψ.
+      f2_benutzte_voraussetzungen: Coding (it.satz.erzeuger_kranzrekursion), $\Psi(Lu)=e^{\Psi(u)}$.
+      f3_spezialfall: No.
+      f4_uebertragbar: To every base above η with $L_b$ and $\ln b$ in the appropriate places.
+      f5_neue_frage: Closed values for general addresses (several places ≠ 0).
+    bewertung:
+      nutzen: Makes the values on all sheets reachable via simple loops available without new computation.
+      richtigkeit: Formula complete; values numerical to 30 digits with two paths
+    quellen:
+    - stelle: forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M5; m1_monodromie.py, m1_ausgabe_A.txt, m1_ausgabe_B2.txt
+  en_theorie:
+    einordnung: From [[it.satz.erzeuger_kranzrekursion]]; the same value $J^{(1)}$ as in [[it.satz.regulaerer_erzeuger_fortsetzung]].
+    genau: 'After $b_k^j$: $J_L=L^{k+1}J^{(j)}$, $J^{(1)}=-14.32234596990128+10.70516795819535\,i$.'
+    warum: The address $0^kj$ belongs to the point $u=L^{k+1}s_j$, and Ψ′ is constant along the orbit $s_j, Ls_j, L^2s_j,\dots$.
+    worum: What values does $J_L$ have at the base point after a simple loop?
+- id: it.kor.erzeuger_verzweigung_logarithmisch
+  quelle_hash: d83037ab2192
+  theorie_hash: a205d5de87f7
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: Every point exp^k(0) is a logarithmic branch point of J_L on the principal sheet; there are no algebraic branchings
+    aussage: |-
+      On the sheet with address $m$, $p_k$ is a branch point of σ and $J_L$ if and only if $m_1=\dots=m_k=0$; then it is logarithmic (no loop returns, σ → ∞ along an asymptotic channel),
+      otherwise σ and $J_L$ are regular there. The point 0 is logarithmic on every sheet. In particular, on the principal sheet **every** point $0,1,e,e^e,\dots$ is a logarithmic
+      branch point, and algebraic branch points (finite cycles of length ≥ 2) never occur.
+    bereich: base $e$; sheets with addresses $m\in\mathbb Z^{(\infty)}$ according to it.satz.erzeuger_kranzrekursion (connection to $p_k$ along
+      the segment $[L,p_k]$)
+    einfach: If one walks around 0, 1, e, e to the power e, …, one never gets back onto the same floor, no matter how often one walks — there
+      are infinitely many floors there, not two or three.
+    beweis:
+      text: |-
+        Over a punctured disk around $p_k$, every component of the covering corresponds to an orbit of $b_k$. By it.satz.erzeuger_kranzrekursion the orbits are infinite (if $m_1=\dots=m_k=0$) or fixed points.
+        Degree 1: the component is a punctured disk, its hole a point of $\mathbb C$ (at ∞, Ψ would be bounded on a punctured neighborhood of ∞, hence constant — Liouville), so σ is regular there.
+        Infinite: the component is the universal covering, a logarithmic singularity.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the wreath recursion and the classification of coverings of a punctured disk.
+      f2_benutzte_voraussetzungen: Covering, orbits of $b_k$, Liouville.
+      f3_spezialfall: No.
+      f4_uebertragbar: To every base for which it.satz.erzeuger_monodromie_basen holds.
+      f5_neue_frage: Asymptotics of σ in the logarithmic channels.
+    bewertung:
+      nutzen: Answers the open question from round 18 whether every exp^k(0) is a genuine branch point.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M3
+  en_theorie:
+    einordnung: Follows from [[it.satz.erzeuger_kranzrekursion]]; answers the question from [[it.satz.regulaerer_erzeuger_fortsetzung]].
+    genau: Every branching is logarithmic (infinitely many sheets); on the principal sheet every $\exp^k(0)$ is one; there are no algebraic branchings.
+    warum: By the counter, the orbits of the loops around $p_k$ are either infinite or consist of a single point; a single point means “no branching
+      here at all”.
+    worum: Of what kind are the branch points of $J_L$?
+- id: it.kor.kneser_erzeuger_sigma
+  quelle_hash: 540391b9bdb2
+  theorie_hash: fcb608b6a707
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Kneser''s generator is a function of σ alone: J_K = J_L · Q(σ^{2πi/L})'
+    aussage: |-
+      $$J_K=J_L\cdot Q\bigl(\sigma^{2\pi i/L}\bigr),\qquad Q(q)=1/\Phi'(s),\ \ q=e^{2\pi is}.$$
+      So the factor $1+\theta'\circ\mathrm{slog}_K$ is a function of the single quantity $\sigma^{2\pi i/L}$. On the real axis $J_K$ is analytic (also at $0,1,e,\dots$), $J_L$ on the Kneser sheet is not:
+      the factor cancels the monodromy of $J_L$ at every $p_k$ there.
+    bereich: base $e$; $h=\log\sigma/L$ regular slog, $\mathrm{slog}_K=\Phi\circ h$ with $\Phi=(\mathrm{id}+\theta)^{-1}$ on the domain of definition
+      of Φ (kn.def.theta_welle)
+    einfach: The velocity field of Kneser's tetration is that of the ordinary iteration times a correction factor, and this factor depends only
+      on the Schröder coordinate σ.
+    beweis:
+      text: |-
+        $J_K=J_L(1+\theta'\circ\mathrm{slog}_K)$ (it.satz.kneser_erzeuger) and $1+\theta'(\mathrm{slog}_K)=1/\Phi'(h)$. From $\Phi(s+1)=\Phi(s)+1$, $\Phi'$ is 1-periodic, so $\Phi'(s)=R(e^{2\pi is})$,
+        and $e^{2\pi ih}=\sigma^{2\pi i/L}$. $J_K$ is analytic on the real axis because $\mathrm{sexp}_K$ is and $\mathrm{sexp}_K'$ does not vanish there.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the (unconditionally proved) product formula in it.satz.kneser_erzeuger and the periodicity of Φ′.
+      f2_benutzte_voraussetzungen: Kneser representation, invertibility of $\mathrm{id}+\theta$ on the domain used.
+      f3_spezialfall: Yes, reformulation of it.satz.kneser_erzeuger.
+      f4_uebertragbar: To every base above η and every tetration of the form $F_L\circ(\mathrm{id}+p)$ with periodic $p$.
+      f5_neue_frage: Is there a choice of $p$ whose generator is single-valued on a larger subsurface?
+    bewertung:
+      nutzen: Connects Kneser's correction with the monodromy of the regular generator.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M6
+  en_theorie:
+    einordnung: 'Reformulation of [[it.satz.kneser_erzeuger]]; what the factor has to achieve at the integers: [[kn.kor.theta_verzweigung_unendlich]].'
+    genau: $J_K=J_L\cdot Q(\sigma^{2\pi i/L})$, with $Q(q)=1/\Phi'(s)$, $q=e^{2\pi is}$.
+    warum: The correction factor $1+\theta'\circ\mathrm{slog}_K$ is 1-periodic in the regular slog $h$, hence a function of $e^{2\pi ih}=\sigma^{2\pi
+      i/L}$.
+    worum: How is Kneser's generator related to the regular one?
+- id: it.kor.poincare_exp_ableitung_produkt
+  quelle_hash: aa784d3e0b21
+  theorie_hash: 0b6b9885169c
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Product formula for the Poincaré function of exp at the fixed point L: Ψ′(ζ) = exp Σₖ (Ψ(ζ/Lᵏ) − L); Ψ has no critical points and
+      omits 0'
+    aussage: |-
+      $$\Psi'(\zeta)=\exp\Bigl(\sum_{k\ge1}\bigl(\Psi(\zeta L^{-k})-L\bigr)\Bigr),$$
+      the sum converges locally uniformly on $\mathbb C$. In particular, $\Psi$ has no critical points, and $\Psi(\zeta)=e^{\Psi(\zeta/L)}\neq0$.
+    bereich: 'base $e$, $e^L=L$, $|L|>1$; $\Psi=\sigma^{-1}$ the Poincaré function at $L$: entire, $\Psi(L\zeta)=e^{\Psi(\zeta)}$, $\Psi(0)=L$,
+      $\Psi''(0)=1$'
+    einfach: The inverse of the Schröder function at the fixed point L has a derivative that can be written as e to the power of an infinite sum.
+      Because e to any power is never zero, this function has a horizontal tangent nowhere.
+    beweis:
+      text: |-
+        Differentiating $\Psi(L\zeta)=e^{\Psi(\zeta)}$ gives $L\Psi'(L\zeta)=e^{\Psi(\zeta)}\Psi'(\zeta)$, hence $\Psi'(\zeta)=e^{\Psi(\zeta/L)-L}\,\Psi'(\zeta/L)$ because $1/L=e^{-L}$.
+        Applied $N$ times: $\Psi'(\zeta)=\exp\bigl(\sum_{k=1}^N(\Psi(\zeta L^{-k})-L)\bigr)\Psi'(\zeta L^{-N})$. Because $\Psi(x)-L=O(x)$ and $|L|>1$, the sum converges locally uniformly, and $\Psi'(\zeta L^{-N})\to\Psi'(0)=1$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, by differentiating the Poincaré equation; special case of the general formula Ψ′(ζ) = Πₖ f′(Ψ(ζ/λᵏ))/λ for Poincaré
+        functions.
+      f2_benutzte_voraussetzungen: Ψ entire with Ψ(Lζ) = exp Ψ(ζ), Ψ′(0) = 1, |L| > 1.
+      f3_spezialfall: Yes, of the product formula for Poincaré functions with f = exp, f′ = f.
+      f4_uebertragbar: To every base b > η (factor ln b·b^{Ψ}/λ) and every map without critical points.
+      f5_neue_frage: Does the formula give a fast, accurate evaluation of Ψ′ for the Kneser computation?
+    bewertung:
+      nutzen: One-line proof that Ψ has no critical points; explicit formula for Ψ′.
+      recherche: The product formula is generally known for Poincaré functions; the absence of zeros is already in kn.satz.theta_singularitaet
+        (i) with a different proof.
+      richtigkeit: complete
+    quellen:
+    - stelle: forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md, R7 and proof R7
+  en_theorie:
+    beispiel: At $\zeta=0$ all summands are 0, so $\Psi'(0)=1$.
+    einordnung: Second proof of part (i) in [[kn.satz.theta_singularitaet]]; used in [[it.satz.regulaerer_erzeuger_fortsetzung]].
+    genau: $\Psi'(\zeta)=\exp\sum_{k\ge1}(\Psi(\zeta L^{-k})-L)$; so $\Psi'\ne0$ everywhere, and $\Psi$ omits 0.
+    warum: Differentiating the Poincaré equation $\Psi(L\zeta)=e^{\Psi(\zeta)}$ and substituting it into itself again and again gives an infinite
+      product of factors $e^{\Psi(\zeta/L^k)-L}$, which converges because $|L|>1$.
+    worum: A closed formula for the derivative of the inverse $\Psi$ of the Schröder function of exp at the fixed point $L$.
 - id: it.lem.erzeuger_starr
   quelle_hash: ceb49ca71825
   theorie_hash: baaf4ef63ad1
@@ -541,6 +699,135 @@
     worum: |
       For which times $t$ does the formal iterate converge? Erdős and Jabotinsky showed: either for all — or only for so few
       that one cannot see them on the real axis.
+- id: it.satz.erzeuger_kranzrekursion
+  quelle_hash: c4e816b2300e
+  theorie_hash: 329e7017d573
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Monodromy of the regular generator as a counter: sheets ↔ finite sequences (m₁, m₂, …); a raises m₁, b_k raises m_{k+1} only if m₁
+      = … = m_k = 0'
+    aussage: |-
+      The action on the preimages $L+2\pi im$ of $L$ under exp is the wreath recursion
+      $$a=\bigl(m\mapsto m+1;\ \text{all sections trivial}\bigr),\qquad b_k=\bigl(\mathrm{id};\ b_k|_0=b_{k-1},\ \text{otherwise trivial}\bigr),\quad b_0:=a.$$
+      The coding $\mathrm{code}(u)=(m_1,\mathrm{code}(u'))$ with $\Psi(u/L)=L+2\pi im_1$ and $u'$ = lift of $\ell_{m_1}^{-1}$ starting from $u/L$ is an equivariant bijection of the fiber $\Psi^{-1}(L)$
+      onto the finite sequences $\mathbb Z^{(\infty)}$ (principal sheet $u=0$ = zero sequence). Explicitly:
+      $$a(m_1,m_2,\dots)=(m_1+1,m_2,\dots),\qquad b_k:\ m_{k+1}\mapsto m_{k+1}+1\ \text{if}\ m_1=\dots=m_k=0,\ \text{otherwise identity}.$$
+      The coding depends on the paths: with vertical $\ell_m$ (passing 0 on the right), $a$ would have the section $a^{-1}$ at the place $-1$.
+      Numerically (independent Newton tracking of $\Psi(u(t))=z(t)$): 48 of 48 samples (12 sheets × $a,b_1,b_2,b_3$) as predicted, with 30 digits 12 of 12.
+    bereich: 'base $e$; $\pi_1(\mathbb C\setminus P,L)$ freely generated by $a$ (lasso along $[L,0]$) and $b_k$ (lasso along $[L,p_k]$, $k\ge1$);
+      connecting paths $\ell_m$ from $L$ to $L+2\pi im$ passing 0 on the left: $L\to-1+i\,\mathrm{Im}L\to-1+i(\mathrm{Im}L+2\pi m)\to L+2\pi im$'
+    einfach: Every floor of the velocity field has an address made of integers. A loop around 0 raises the first number. A loop around 1 raises
+      the second, but only if the first is zero — like a counter in which a wheel turns only if all the wheels before it stand at zero.
+    beweis:
+      text: |-
+        $a$: the lift starting from $L+2\pi im$ runs as $\log((1-t)L)+2\pi im$ horizontally to the left, the small circle around 0 becomes the vertical segment of length $2\pi$; so $a(m)=m+1$.
+        The composed sections enclose rectangles in $\mathrm{Re}\le-1$ that contain no point of $P$. $b_k$ does not circle 0, the lift is closed; for $m\neq0$ it circles
+        $p_{k-1}+2\pi im\notin P$ (trivial), for $m=0$ it is the lasso along $\log[L,p_k]$ around $p_{k-1}$, homotopic to $b_{k-1}$ in the upper half-plane.
+        Coding: $u\mapsto(m_1,u')$ is a bijection $\Psi^{-1}(L)\to\mathbb Z\times\Psi^{-1}(L)$; only $u=0$ has the address $0^\infty$ (Ψ is injective near 0), so code is injective on finite addresses.
+        Because the monodromy is transitive and the finite sequences form one orbit, all addresses are finite.
+    pruefung:
+      f1_folgt_unmittelbar: No; standard technique of iterated monodromy groups (Nekrashevych), carried out here for exp.
+      f2_benutzte_voraussetzungen: Covering (it.satz.erzeuger_riemannflaeche); $L$ in the upper half-plane; $P\subset[0,\infty)$; choice of the
+        paths $\ell_m$.
+      f3_spezialfall: No.
+      f4_uebertragbar: To bases $b>\eta$ (it.satz.erzeuger_monodromie_basen, sketch); for $b<\eta$, $P$ accumulates, and then it is different.
+      f5_neue_frage: Which sheets does Kneser's slog reach under its maximal continuation? Monodromy of the regular slog (it.satz.regulaere_slog_riemannflaeche).
+    bewertung:
+      nutzen: Answers the monodromy question from it.satz.regulaerer_erzeuger_fortsetzung completely.
+      richtigkeit: complete; 48/48 numerical, recomputed when entering (same output)
+    quellen:
+    - stelle: forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M2, M9; m1_monodromie.py, m1_ausgabe_A.txt, m1_ausgabe_B.txt, m1_ausgabe_B2.txt
+    - stelle: iterated monodromy groups, wreath recursion (language, not content)
+  en_theorie:
+    beispiel: 'From the principal sheet: $a$ leads to $(1)$, $b_1$ to $(0,1)$, $b_2$ to $(0,0,1)$; from the sheet $(1)$, $b_1$ changes nothing.
+      All 48 samples confirmed numerically.'
+    einordnung: 'Consequences: [[it.kor.erzeuger_verzweigung_logarithmisch]], [[it.satz.erzeuger_monodromiegruppe]], [[it.kor.erzeuger_umlaufwerte]];
+      for θ: [[kn.kor.theta_verzweigung_unendlich]].'
+    genau: Branches ↔ finite sequences $(m_1,m_2,\dots)$; a loop around 0 raises $m_1$, a loop around $p_k$ raises $m_{k+1}$, but only if $m_1=\dots=m_k=0$.
+    warum: A logarithm turns the loop around 0 into a step by $2\pi i$ (shift of $m_1$) and the loop around $p_k$ into a loop around $p_{k-1}$,
+      but only on the principal branch of the logarithm.
+    worum: What happens to the branch of $J_L$ when one goes around 0, 1, e, …?
+- id: it.satz.erzeuger_monodromie_basen
+  quelle_hash: ed8318453c92
+  theorie_hash: 3456be49cc85
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: For every base b > η the same wreath recursion and the same monodromy group (sketch)
+    aussage: |-
+      For $b>\eta$ the same recursion holds as for $e$ ($a$ shifts $m_1$, $b_k|_0=b_{k-1}$), hence the same monodromy group $G=\mathrm{IMG}(b^z)\cong\mathbb Z\wr\mathbb Z\wr\cdots$ and
+      the same branching structure (it.kor.erzeuger_verzweigung_logarithmisch). The rectangle and half-plane arguments carry over verbatim:
+      $\mathrm{Im}\log_bw\in(0,\pi/\ln b)$ for $\mathrm{Im}\,w>0$ and $0<\mathrm{Im}L_b<\pi/\ln b$.
+    bereich: $b>\eta$, fixed point $L_b$ in the upper half-plane, $P_b=\{0,1,b,b^b,\dots\}$, preimages $L_b+2\pi im/\ln b$
+    einfach: The counter of loops looks the same for every base above e^(1/e), not only for base e.
+    beweis:
+      text: The lift of $a$ runs horizontally to the left, the sections enclose rectangles to the left of the imaginary axis; the lift of $b_k$
+        at $m=0$ stays in the strip above the real axis and is homotopic to $b_{k-1}$.
+      luecken:
+      - The continuability of σ along all paths (it.satz.regulaerer_erzeuger_fortsetzung) is written out only for $b=e$.
+      - No numerics for $b\neq e$.
+    pruefung:
+      f1_folgt_unmittelbar: Almost, if the continuability holds for every base.
+      f2_benutzte_voraussetzungen: Position of $L_b$ in the strip $0<\mathrm{Im}<\pi/\ln b$; continuability of σ.
+      f3_spezialfall: Generalizes it.satz.erzeuger_kranzrekursion from $e$ to $b>\eta$.
+      f4_uebertragbar: For $b<\eta$, $P_b$ accumulates at the real fixed point; there the monodromy changes fundamentally.
+      f5_neue_frage: What happens when passing through η?
+    bewertung:
+      nutzen: Shows that the structure does not depend on the base e.
+      richtigkeit: Sketch with two named gaps
+    quellen:
+    - stelle: forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M10
+  en_theorie:
+    einordnung: Generalizes [[it.satz.erzeuger_kranzrekursion]].
+    genau: 'Presumably not: for every base $b>\eta$ the same recursion and the same group (sketch).'
+    warum: The proofs use only that $L_b$ lies in the upper half-plane below $\pi/\ln b$ and the orbit of zero on the positive real axis.
+    worum: Does the counter of loops depend on the base $e$?
+- id: it.satz.erzeuger_monodromiegruppe
+  quelle_hash: 6010a03ca009
+  theorie_hash: 4fc08a169a83
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: The monodromy group of the regular generator is IMG(exp) = ℤ ≀ ℤ ≀ ℤ ≀ … — not free, not finitely generated, locally solvable
+    aussage: |-
+      $$G=\bigcup_kG_k,\qquad G_0=\mathbb Z,\qquad G_k\cong G_{k-1}\wr\mathbb Z\ \ \text{(restricted wreath product)},\qquad G_1=\mathbb Z\wr\mathbb Z\ \ \text{(lamplighter)}.$$
+      $G$ is not free, not finitely generated, locally solvable and not solvable ($G_k$ has derived length $k+1$). Relations such as $[b_1,a^nb_1a^{-n}]=1$ ($n\neq0$), $[b_2,b_1b_2b_1^{-1}]=1$,
+      $[b_2,ab_1a^{-1}]=1$ hold, which do not hold in the free group $\pi_1(\mathbb C\setminus P)$: the monodromy is not faithful. $G$ is at the same time the iterated monodromy group $\mathrm{IMG}(\exp)$ with base point $L$.
+      Geometrically checked: the lift of these three commutator paths closes on 8 test sheets (jump $<4\cdot10^{-14}$), for $[a,b_1]$, $[b_1,b_2]$, $[a,b_2]$ it does not (jump up to 7.5).
+    bereich: base $e$; $G$ = image of $\pi_1(\mathbb C\setminus P,L)$ in the permutations of the fiber $\Psi^{-1}(L)$; $G_k=\langle a,b_1,\dots,b_k\rangle$
+    einfach: All possible loops together form a group that is built like a nested counter. Some different paths act the same way — so the loops
+      are not independent of each other.
+    beweis:
+      text: |-
+        $b_j=\delta_0(b_{j-1})$ acts only under the letter 0, and conjugation with $a^n$ shifts this to $\delta_n$. So $G_k$ contains the group $\bigoplus_n\delta_n(G_{k-1})$ and the shift;
+        the action $(m_1,\text{rest})\mapsto(m_1+c,g_{m_1}(\text{rest}))$ with finitely supported $(g_n)$ is the faithful wreath product $G_{k-1}\wr\mathbb Z$. Every finitely generated subgroup lies in some $G_k$,
+        which changes only the first $k+1$ places, whereas $b_{k+1}$ changes the $(k+2)$-th; the derived length of iterated wreath products is standard. Relations: elements with disjoint supports commute.
+        IMG: an element acts trivially on all finite words if and only if on all words $v0^\infty$.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from the wreath recursion with standard facts about wreath products.
+      f2_benutzte_voraussetzungen: Wreath recursion (it.satz.erzeuger_kranzrekursion); derived length of iterated wreath products of abelian groups.
+      f3_spezialfall: An example of an iterated monodromy group of a transcendental map; literature on this not checked.
+      f4_uebertragbar: The same group for every base $b>\eta$ (it.satz.erzeuger_monodromie_basen, sketch).
+      f5_neue_frage: Is the monodromy of the regular slog the wreath product $\mathbb Z\wr_{\mathbb Z^{(\infty)}}G$ (it.satz.regulaere_slog_riemannflaeche)?
+    bewertung:
+      nutzen: Complete algebraic description of the multivaluedness of the generator.
+      richtigkeit: complete; relations confirmed geometrically, recomputed when entering (same output)
+    quellen:
+    - stelle: forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M4, M4a, M4b; m2_relationen.py, m2_ausgabe.txt
+  en_theorie:
+    beispiel: '$G_1=\mathbb Z\wr\mathbb Z$ is the lamplighter group: $(m_1,m_2)\mapsto(m_1+c,\ m_2+f(m_1))$ with finitely supported $f$.'
+    einordnung: 'From [[it.satz.erzeuger_kranzrekursion]]; extension for the slog: [[it.satz.regulaere_slog_riemannflaeche]]; other bases: [[it.satz.erzeuger_monodromie_basen]].'
+    genau: $G=\mathrm{IMG}(\exp)=\bigcup G_k$, $G_k\cong G_{k-1}\wr\mathbb Z$; not free, not finitely generated, locally solvable.
+    warum: A loop around $p_{k+1}$ acts like a loop around $p_k$, but only under the letter 0; that is exactly the structure of a wreath product.
+      Loops with disjoint ranges of action commute, although the paths do not.
+    worum: What group do all loops form together?
 - id: it.satz.erzeuger_resonanz
   quelle_hash: d181b2441978
   theorie_hash: 9cf2c1132a23
@@ -591,6 +878,48 @@
       Möbius: $\lambda_p\lambda_q=1$, so resonance $m=-1$, and indeed both fixed points yield the same iteration.
     einordnung: |
       Explains [[it.satz.moebius_iteration]], related to [[it.satz.karlin_mcgregor]]; consequences: [[it.satz.kneser_erzeuger]], [[kl.satz.resonanzbasen]].
+- id: it.satz.erzeuger_riemannflaeche
+  quelle_hash: 675a11e1d52c
+  theorie_hash: 7b12e760ee5b
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'The Riemann surface of the regular generator J_L is the u-plane: Ψ is a covering over ℂ ∖ {0, 1, e, e^e, …}'
+    aussage: |-
+      $\Psi:\mathbb C\setminus\Psi^{-1}(P)\to\mathbb C\setminus P$ is a covering. So the maximal continuation of σ is the $u$-plane with projection Ψ:
+      the sheets over $z$ are the points of $\Psi^{-1}(z)$, and the monodromy acts transitively. On the sheet $u$, $J_L=Lu\,\Psi'(u)$.
+      Different sheets carry different germs of $J_L$; so $J_L$ has exactly the same monodromy as σ.
+    bereich: base $e$, notation as in the file header; $\Psi$ without critical points (kn.satz.theta_singularitaet (i))
+    einfach: 'The velocity field of the ordinary iteration at the complex fixed point has many “floors”. All of them together form a simple picture:
+      one whole plane, which the known function Ψ maps onto the number plane.'
+    beweis:
+      text: |-
+        Ψ is locally biholomorphic. Path lifting: if $\Psi(u_0)=z_0$, then $u_0/L^n$ lies, for large $n$, in the disk of univalence around 0; the germ at $u_0$ is $z\mapsto L^n\sigma(\ell_n(z))$ with a branch
+        $\ell_n$ of $\log^n$. Its continuation along a path γ in $\mathbb C\setminus P$ is that of the principal germ along $\ell_n\circ\gamma$, and this path again lies in $\mathbb C\setminus P$
+        (if $\ell_n\circ\gamma$ met a point $p_j$, then γ would meet the point $p_{j+n}$); this continuation gives it.satz.regulaerer_erzeuger_fortsetzung. A local homeomorphism with path lifting is a covering
+        (Forster, Riemannsche Flächen, Theorem 4.19). Equal $J$-germs on two sheets: $\sigma_2/\sigma_2'=\sigma_1/\sigma_1'$ gives $\sigma_2=c\sigma_1$, hence $\Psi(cu)=\Psi(u)$ everywhere; differentiating at 0 gives $c=1$.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: from the continuability (it.satz.regulaerer_erzeuger_fortsetzung) and the covering criterion.'
+      f2_benutzte_voraussetzungen: Ψ entire without critical points; path lifting for all germs; covering criterion for local homeomorphisms.
+      f3_spezialfall: 'Yes: Poincaré functions of entire maps are coverings outside the orbits of the singular values (known); stated here for
+        $J_L$.'
+      f4_uebertragbar: To every base above η and every entire function with finitely many singular values.
+      f5_neue_frage: The monodromy explicitly (it.satz.erzeuger_kranzrekursion).
+    bewertung:
+      nutzen: Framework for the complete description of the monodromy.
+      richtigkeit: complete (with the cited covering criterion)
+    quellen:
+    - stelle: forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M1
+    - stelle: Theorem 4.19 (covering criterion)
+  en_theorie:
+    einordnung: 'Builds on [[it.satz.regulaerer_erzeuger_fortsetzung]]; the monodromy itself: [[it.satz.erzeuger_kranzrekursion]].'
+    genau: Ψ is a covering over $\mathbb C\setminus P$; the branches over $z$ are the points $u$ with $\Psi(u)=z$, and there $J_L=Lu\Psi'(u)$.
+    warum: Every branch of σ is, up to a factor $L^n$, the principal branch after $n$ logarithms; the logarithms contract every path to the fixed
+      point. A local homeomorphism that lifts all paths is a covering.
+    worum: The regular generator $J_L$ can be continued along every path around the points $0,1,e,\dots$ and becomes multivalued in doing so.
+      What does the totality of all branches look like?
 - id: it.satz.julia_variation_bernoulli
   quelle_hash: bdded0c67eb8
   theorie_hash: b1ffa16856fc
@@ -737,16 +1066,16 @@
     einordnung: |
       Julia equation: [[it.lem.julia]]; where the singularities must lie: [[it.satz.erzeuger_resonanz]].
 - id: it.satz.kneser_erzeuger
-  quelle_hash: efccae8bc440
+  quelle_hash: 1fa873221d78
   theorie_hash: d7624ec9a2b1
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'Kneser''s generator at the fixed point: J_K = J_L·(1+θ′∘slog_K), branching (w−L)^(1+2πi/L), for base e exactly five times continuously
       differentiable'
-    aussage: |
+    aussage: |-
       $$J_K(w)=J_L(w)\,\bigl(1+\theta'(\mathrm{slog}_Kw)\bigr),\qquad J_K-J_L=2\pi i\,a_1e^{-2\pi ia_0}L\,(w-L)^{\alpha}\bigl(1+O(|w-L|)\bigr),\quad\alpha=1+\frac{2\pi i}{L}.$$
       $J_K$ is **not** analytic at $L$ (otherwise by it.lem.erzeuger_starr $1+\theta'$ would be constant, hence θ constant): a genuine transcendental branch point.
       Base $e$: $\mathrm{Re}\,\alpha=1+2\pi\,\mathrm{Im}L/|L|^2=5.44695072\ldots$, so $J_K$ is **$C^5$ but not $C^6$** at the fixed point (the 6th derivative grows like $|w-L|^{-0.553}$);
@@ -757,7 +1086,7 @@
     einfach: 'The velocity field of Kneser''s tetration is almost smooth at the complex fixed point, but not quite: for base e it can be differentiated
       exactly five times, and the sixth derivative becomes infinite there. This number comes solely from the location of the fixed point.'
     beweis:
-      text: |
+      text: |-
         From $\mathrm{sexp}_K=F_L\circ(\mathrm{id}+\theta)$ follow $\mathrm{slog}_K=(\mathrm{id}+\theta)^{-1}\circ h$ and the product formula. Near $L$, $e^{2\pi is}\approx e^{-2\pi ia_0}\sigma(w)^{2\pi i/L}$,
         and substituting this into $1+\theta'$ gives the singular term (branch of $a_0$ matching the sheet). Smoothness: $|(w-L)^\alpha|=|w-L|^{\mathrm{Re}\,\alpha}$ up to a bounded factor, hence $C^k$ exactly for $k<\mathrm{Re}\,\alpha$, provided $a_1\neq0$.
     bedingungen_text: Degree of smoothness under a₁(b) ≠ 0 (supported for b = e and 2); exponent and loop factor additionally confirmed numerically
@@ -766,23 +1095,21 @@
       f2_benutzte_voraussetzungen: Kneser representation with θ, a₁ ≠ 0, rigidity for the non-analyticity.
       f3_spezialfall: 'Yes: concrete case of it.satz.erzeuger_resonanz (a) with the exact singularity.'
       f4_uebertragbar: To every base above η (table over b) and to the superfunctions of other maps (kn.satz.zoo_singulaerer_ort).
-      f5_neue_frage: Where are the remaining singularities of J_K on its Riemann surface (image of the backward orbit of L)?
+      f5_neue_frage: 'Where are the remaining singularities of J_K on its Riemann surface (image of the backward orbit of L)? Kneser''s generator
+        as a function of σ: it.kor.kneser_erzeuger_sigma.'
     bewertung:
       nutzen: Measures Kneser's forced singularity at the fixed point exactly; a new, simple invariant (C⁵ for base e).
       richtigkeit: Formula proved, smoothness under a₁ ≠ 0, exponent measured to 4 digits
     quellen:
     - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A4, A4a, A4b, A4c; s1_erzeuger_bei_L.py, s4_tabellen.py
   en_theorie:
-    worum: |
-      Kneser's tetration must be singular at $L$. How strongly?
-    genau: |
-      $J_K=J_L(1+\theta'\circ\mathrm{slog}_K)$, and $J_K-J_L\sim C(w-L)^{1+2\pi i/L}$; for base $e$, $\mathrm{Re}(1+2\pi i/L)=5.44695$, so $C^5$, not $C^6$.
-    warum: |
-      Near $L$, $e^{2\pi is}$ is a non-integer power $\sigma(w)^{2\pi i/L}$; the first Fourier term $a_1$ of θ produces this power in the field.
-    beispiel: |
-      For base $1.45$ (near $\eta$) the field is $C^{45}$, for base $10^6$ only $C^3$.
-    einordnung: |
-      Concrete case of [[it.satz.erzeuger_resonanz]]; θ structure: [[kn.satz.theta_singularitaet]].
+    beispiel: For base $1.45$ (near $\eta$) the field is $C^{45}$, for base $10^6$ only $C^3$.
+    einordnung: 'Concrete case of [[it.satz.erzeuger_resonanz]]; θ structure: [[kn.satz.theta_singularitaet]].'
+    genau: $J_K=J_L(1+\theta'\circ\mathrm{slog}_K)$, and $J_K-J_L\sim C(w-L)^{1+2\pi i/L}$; for base $e$, $\mathrm{Re}(1+2\pi i/L)=5.44695$, so
+      $C^5$, not $C^6$.
+    warum: Near $L$, $e^{2\pi is}$ is a non-integer power $\sigma(w)^{2\pi i/L}$; the first Fourier term $a_1$ of θ produces this power in the
+      field.
+    worum: Kneser's tetration must be singular at $L$. How strongly?
 - id: it.satz.koenigs
   quelle_hash: c531492ed1b2
   theorie_hash: 9749797402b6
@@ -1131,16 +1458,58 @@
       $x^2+1$: the only value with one preimage is 1 (preimage 0), but 0 has two preimages $\pm i$.
     einordnung: |
       Shows that [[kn.satz.zoo_singulaerer_ort]] works without an omitted value; basis: [[it.satz.koenigs]].
+- id: it.satz.regulaere_slog_riemannflaeche
+  quelle_hash: 0bb8cd1af3d6
+  theorie_hash: 4e51b7851d79
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Riemann surface of the regular slog: the s-plane over ℂ ∖ (P ∪ {L}); its monodromy contains ⊕ℤ and maps onto G'
+    aussage: |-
+      $F_L$ is a covering over $\mathbb C\setminus(P\cup\{L\})$ ($L$ is an asymptotic value); so the $s$-plane is the Riemann surface of $h$, with fiber $\{(u,k)\}$
+      ($u\in\Psi^{-1}(z)$, $k$ a branch of $\log u$). The loop δ around $L$ changes $k$ only on the sheet $u\approx0$; its conjugates generate $N\cong\bigoplus_{\mathbb Z^{(\infty)}}\mathbb Z$,
+      and the monodromy group $H$ of $h$ maps onto $G$ (forgetting $k$).
+    bereich: base $e$; $F_L=\Psi\circ\exp_L$, $\exp_L(s)=e^{Ls}$ (regular superfunction), $h=\log\sigma/L$ the regular slog; $G$ from it.satz.erzeuger_monodromiegruppe
+    einfach: The regular super-logarithm also has many floors; for every floor of the generator there are infinitely many more logarithm floors.
+    beweis:
+      text: |-
+        $\exp_L:\mathbb C\to\mathbb C\setminus\{0\}$ and Ψ (outside $\Psi^{-1}(P\cup\{L\})$) are coverings; the composition has path lifting, so it is a covering. A small loop around $L$
+        lifts to a loop around $u=0$ only on the sheet $u\approx0$; $g\delta g^{-1}$ shifts $k$ exactly on the sheet $g(0)$, and by transitivity all of $\bigoplus\mathbb Z$ arises.
+      luecken:
+      - 'Whether the kernel of $H\to G$ is exactly $N$, i.e. $H/N\cong G$: for elements from the kernel of $\pi_1(\mathbb C\setminus P)\to G$
+        (e.g. $[b_1,ab_1a^{-1}]$) it is not shown that their shifts of $k$ are finitely supported (noticed when entering; the report calls the
+        quotient proved).'
+      - Whether the extension splits, i.e. $H\cong\mathbb Z\wr_{\mathbb Z^{(\infty)}}G$, has not been checked.
+    pruefung:
+      f1_folgt_unmittelbar: The covering yes; the group structure no.
+      f2_benutzte_voraussetzungen: it.satz.erzeuger_riemannflaeche, transitivity of the monodromy.
+      f3_spezialfall: No.
+      f4_uebertragbar: To bases above η as in it.satz.erzeuger_monodromie_basen.
+      f5_neue_frage: 'Riemann surface of $\mathrm{slog}_K$ itself: which addresses does Kneser''s slog reach under maximal continuation?'
+    bewertung:
+      nutzen: Framework for the Riemann surface of Kneser's slog.
+      richtigkeit: Covering and subgroup N proved; quotient and splitting open
+    quellen:
+    - stelle: forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M8, open question 1
+  en_theorie:
+    einordnung: 'Builds on [[it.satz.erzeuger_monodromiegruppe]] and [[it.satz.erzeuger_riemannflaeche]]; notation: [[kn.def.theta_welle]].'
+    genau: The $s$-plane with projection $F_L$ over $\mathbb C\setminus(P\cup\{L\})$; the monodromy contains $\bigoplus\mathbb Z$ (loops around
+      $L$) and maps onto $G$. Whether the quotient is exactly $G$ and whether the extension splits is open.
+    warum: To every sheet of σ come the branches of the logarithm; only on the sheet on which σ vanishes at $L$ does a loop around $L$ change
+      the branch.
+    worum: What does the Riemann surface of the regular slog $h=\log\sigma/L$ look like?
 - id: it.satz.regulaerer_erzeuger_fortsetzung
-  quelle_hash: 91a0571e8448
+  quelle_hash: 60ebb50ca3f9
   theorie_hash: 6351e9b18171
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: The regular generator of exp lives over ℂ without the orbit of zero {0, 1, e, e^e, …}; 0 and 1 are genuine branch points
-    aussage: |
+    aussage: |-
       $\sigma$ and $J_L$ can be analytically continued along **every** path in $\mathbb C\setminus P$ (proved).
       Numerically (20 digits, two settings): one loop around 0 changes $J_L(1/2)$ from $1.39814+0.02656i$ to $-6.56052+2.25811i$, one loop around 1 changes $J_L(3/2)$
       from $2.05008-0.30198i$ to $-8.27091+2.37225i$; loops around $L$ or around 3 change nothing ($<10^{-30}$). So 0 and 1 are genuine branch points;
@@ -1150,7 +1519,7 @@
     einfach: The velocity field of the ordinary iteration at the complex fixed point can be continued everywhere, as long as one goes around the
       points 0, 1, e, e to the power e, and so on. Around 0 and around 1 it really changes when one walks once around.
     beweis:
-      text: |
+      text: |-
         $J_L\circ\Psi(u)=Lu\Psi'(u)$ is entire, and $\Psi$ has no critical points; it suffices to continue $\sigma$. For a path $\gamma$ in $\Omega=\mathbb C\setminus P$ all iterated
         logarithms $\gamma_n=\log^n\circ\gamma$ can be chosen continuously. $\exp:\mathbb C\setminus\exp^{-1}(P)\to\Omega$ is a covering, so every logarithm shortens the hyperbolic length,
         on compact sets by a fixed factor $<1$; $\gamma_n\to L$ uniformly, and $\sigma(\gamma(t))=L^n\sigma_{\mathrm{loc}}(\gamma_n(t))$.
@@ -1160,21 +1529,20 @@
       f3_spezialfall: Similar to the continuation of the Abel function in kn.satz.theta_singularitaet and kn.satz.zoo_singulaerer_ort (branching
         only over the orbit of the singular values).
       f4_uebertragbar: To every base above η and to every entire f with a finite set of singular values.
-      f5_neue_frage: Which representation of π₁(ℂ∖P) is the monodromy group? Is every point exp^k(0) a genuine branch point?
+      f5_neue_frage: 'Answered: wreath recursion, monodromy group IMG(exp) = ℤ≀ℤ≀… (it.satz.erzeuger_kranzrekursion, it.satz.erzeuger_monodromiegruppe);
+        every exp^k(0) is logarithmic on the principal sheet (it.kor.erzeuger_verzweigung_logarithmisch). Open: monodromy of the regular slog
+        (it.satz.regulaere_slog_riemannflaeche).'
     bewertung:
       nutzen: Connects the generator with the orbit of the singular value, the central object of transcendental dynamics.
       richtigkeit: continuation proved, branching numerically to 20 digits
     quellen:
     - stelle: forschung/runde_2026_10_18/10_neues_gebiet/BERICHT.md, A5, A5a; s2_monodromie_regulaer.py
   en_theorie:
-    worum: |
-      How far can the regular generator $J_L=L\sigma/\sigma'$ be continued from $L$?
-    genau: |
-      Along every path that avoids the orbit $\{0,1,e,e^e,\dots\}$; around 0 and 1 it actually changes (numerically).
-    warum: |
-      One continues $\sigma$ via iterated logarithms: $\sigma(w)=L^n\sigma(\log^nw)$; the logarithms contract every path toward $L$, as long as they never hit 0.
-    einordnung: |
-      Same branching set as in [[kn.satz.zoo_singulaerer_ort]] and [[kn.satz.theta_singularitaet]].
+    einordnung: Same branching set as in [[kn.satz.zoo_singulaerer_ort]] and [[kn.satz.theta_singularitaet]].
+    genau: Along every path that avoids the orbit $\{0,1,e,e^e,\dots\}$; around 0 and 1 it actually changes (numerically).
+    warum: 'One continues $\sigma$ via iterated logarithms: $\sigma(w)=L^n\sigma(\log^nw)$; the logarithms contract every path toward $L$, as
+      long as they never hit 0.'
+    worum: How far can the regular generator $J_L=L\sigma/\sigma'$ be continued from $L$?
 - id: it.satz.sternberg_reell
   quelle_hash: 7adb38fa9d22
   theorie_hash: b40e160fb61e
@@ -1439,3 +1807,49 @@
     quellen:
     - {}
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, K4; b_diagonalen.py
+- id: it.verm.mexp_halbiterierte_divergent
+  quelle_hash: 1d38be7b88c3
+  theorie_hash: dca5355affff
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: The formal half-iterate of m·e^m diverges (Gevrey-1) — so a[4]2^½ at a = 1 and x[5′]½ at x = 1 would be smooth but not analytic
+    aussage: |-
+      The formal half-iterate
+      $$g(m)=m+\tfrac{m^2}2+\tfrac{m^4}{48}-\tfrac{m^5}{96}+\tfrac{m^6}{640}+\tfrac{41m^7}{5760}-\tfrac{99m^8}{7168}+\dots$$
+      has radius of convergence 0; numerically $|g_k|\approx C\,(k-2)!/(2\pi)^k$ (Gevrey-1, rate $1/(2\pi)$): $|g_k|(2\pi)^k/(k-2)!$ lies between 0.17 and 47 for $k\le35$, with no trend.
+      The coefficients of the Fatou series (br.beob.produkt_iteration_dreieck) show the same growth: $|c_k|(2\pi)^k/(k-1)!$ lies between 0.03 and 5.4 for $2\le k\le22$.
+      Consequence, if the divergence holds: $F$ has no half-iterate analytic at 0; so $a\mapsto a[4]2^{1/2}$ at $a=1$ and $x\mapsto x[5']\tfrac12$ at $x=1$ are $C^\infty$
+      (the continuations from both sides glue smoothly), but not analytic.
+    bereich: $F(m)=me^m$ at 0 (step of the product tetration to base $e$, br.def.produkt_tetration); formal half-iterate $g$ with $g\circ g=F$,
+      $g(m)=m+\dots$ (unique); continuations according to br.satz.klammerung_fortsetzung
+    einfach: 'The “half” application of m ↦ m·e^m cannot be written at 0 as a convergent power series. That is why the half balanced and left
+      towers have an invisible seam at the value 1: smooth, but not quite as well-behaved as a power series.'
+    gegenbeispielsuche: 35 coefficients of $g$ exactly in fractions (when entering, the first 8 confirmed with own code); no stretch in which
+      the normalized magnitudes fall toward 0; the Fatou series (22 terms) shows the same growth. A proof is missing.
+    pruefung:
+      f1_folgt_unmittelbar: 'The divergence does not follow immediately. The consequence does: an analytic half-iterate tangent to the identity
+        would have the (unique) formal half-iterate as its Taylor series, and $x\mapsto x\ln x$ is locally invertible at 1.'
+      f2_benutzte_voraussetzungen: Uniqueness of formal iterates of tangent germs; asymptotic expansion of the Fatou continuation on both sides.
+      f3_spezialfall: Counterpart to Baker's theorem for $e^z-1$ (it.satz.baker); makes the remark “the series diverges in general” in br.satz.produkt_parabolisch
+        concrete for the half-iterate.
+      f4_uebertragbar: To the product tetration (same germ) and to all left ranks (br.satz.linke_raenge_keim).
+      f5_neue_frage: 'Proof via the horn map (it.satz.ecalle_voronin): the basin of 0 contains the critical point $-1$ of $F$; is that enough
+        to rule out a half-iterate (not only a flow)?'
+    bewertung:
+      nutzen: Says that these variants (and the product tetration) cannot be continued analytically at 1 and 0, respectively.
+      richtigkeit: Conjecture with strong numerical support; consequence proved under the divergence
+    quellen:
+    - stelle: forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Findings 4, 10, 11; halbiterierte_reihe.py, halbiterierte_ausgabe.txt, fatou_reihe_ausgabe.txt
+  en_theorie:
+    beispiel: $g_8=-\tfrac{99}{7168}$, $g_{20}\approx-1.63$, $g_{30}\approx2.7\cdot10^{6}$, $g_{35}\approx-4.0\cdot10^{9}$.
+    einordnung: |-
+      Like Baker's theorem for $e^z-1$ ([[it.satz.baker]]); Écalle–Voronin: [[it.satz.ecalle_voronin]]; same germ as for the product tetration ([[br.beob.produkt_iteration_dreieck]]);
+      similar phenomenon in the base at η: [[kl.verm.eta_glatt_nicht_analytisch]].
+    genau: 'Presumably not: the formal half-iterate grows like $(k-2)!/(2\pi)^k$. Then $a[4]2^{1/2}$ at $a=1$ and $x[5'']\tfrac12$ at $x=1$ are
+      smooth but not analytic.'
+    warum: An analytic half-iterate would have to be the unique formal one. The divergence itself is documented only numerically; a proof would
+      go via the horn map.
+    worum: Does $me^m$ have a half-iterate at 0 as a convergent power series?

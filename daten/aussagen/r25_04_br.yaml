@@ -1,0 +1,243 @@
+gebiet: br
+# Runde 25.10.2026, Bericht 04: Legt die Momentenfamilie Kneser auch nichtlinear fest? Rechnungen: forschung/runde_2026_10_25/04_momentenfamilie/.
+# Bezeichnungen wie in br.satz.endlich_viele_reichen_nicht: Basis e, T = sexp∘φ, φ = id + p (p 1-periodisch), θ_T = h∘T − id, M = ∫₀¹, c = M[θ_T], Γ_T = θ_T((0,1)).
+aussagen:
+
+- id: br.satz.momente_cauchy
+  titel: 'Momentenfamilie ⇔ die Cauchy-Transformierte der Werte von θ_T ist 1/(ζ − c) ausserhalb der Kurve'
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen_text: 'Benutzt, dass Re θ_T auf (0, 1) nach unten beschränkt ist (an beiden Enden Re θ_T → +∞). Das kommt aus der Lokalform von kn.satz.theta_singularitaet, die dort an die Motor-Annahme (E) gebunden ist (Zweigwahl mit Intervallen zertifiziert, kn.satz.zweigwahl_zertifikat). Die Integrierbarkeit von e^{λ|θ_T|} folgt aus der Majorante von kn.satz.theta_mittelwerte.'
+  niveau: forschung
+  objekte: [kneser_T, T_b, theta_kneser]
+  bereich: 'reell-analytische Tetrationen $T=\mathrm{sexp}\circ\varphi$ zur Basis $e$, $\varphi=\mathrm{id}+p$, $p$ 1-periodisch, $\varphi''>0$; $\theta_T=h\circ T-\mathrm{id}$, $M=\int_0^1$, $c=M[\theta_T]$, $\Gamma_T=\theta_T((0,1))$'
+  aussage: |
+    Sei $C_T(\zeta)=\displaystyle\int_0^1\frac{dx}{\zeta-\theta_T(x)}$ die Cauchy-Transformierte der Werteverteilung von $\theta_T$ und $\Omega_T$ die Komponente von
+    $\mathbb C\setminus\Gamma_T$, die eine linke Halbebene enthält. Dann gilt
+    $$M[\theta_T^k]=M[\theta_T]^k\ \text{für alle }k\ge1\iff C_T(\zeta)=\frac1{\zeta-c}\ \text{auf }\Omega_T .$$
+    Insbesondere liegt $c$ nicht in $\Omega_T$. Die unendlich vielen Gleichungen der Momentenfamilie sind also **eine** Gleichung für eine holomorphe Funktion.
+    Numerisch (Kneser, 20 Stellen): $|C_T-1/(\zeta-c)|\le7\cdot10^{-22}$ bei $\zeta=-5,\ 20+5i,\ 25+10i,\ 26-3i$. Beim Gegenbeispiel a aus Etappe 4 (nur $M[\theta_T^2]=M[\theta_T]^2$)
+    ist die Abweichung bei $\zeta=-5$ gleich $2.4\cdot10^{-10}$, passend zum ersten verletzten Moment ($\approx V_3/(\zeta-c)^4=2.7\cdot10^{-10}$).
+  einfach: >-
+    Statt unendlich vieler Gleichungen „Mittelwert der k-ten Potenz = k-te Potenz des Mittelwerts“ genügt eine einzige: Eine bestimmte Funktion, die man aus
+    allen Werten der Welle bildet, muss ausserhalb der Wellenkurve genau so aussehen wie 1/(ζ − c).
+  beweis:
+    art: bedingt
+    text: |
+      Für $\mathrm{Re}\,\zeta<-R_T\le\inf\mathrm{Re}\,\theta_T$ ist $1/(\zeta-w)=-\int_0^\infty e^{t(\zeta-w)}dt$ für alle $w\in\Gamma_T$. Fubini (Integrand $\le e^{t(\mathrm{Re}\,\zeta+R_T)}$) gibt
+      $C_T(\zeta)=-\int_0^\infty e^{t\zeta}\Lambda(t)\,dt$ mit $\Lambda(t)=M[e^{-t\theta_T}]=\sum_k(-t)^kM[\theta_T^k]/k!$ (dominiert durch $M[e^{t|\theta_T|}]<\infty$).
+      Unter der Momentenfamilie ist $\Lambda(t)=e^{-tc}$, also $C_T=1/(\zeta-c)$ auf der Halbebene und durch Fortsetzung auf ganz $\Omega_T$. Umgekehrt gibt die
+      Eindeutigkeit der Laplace-Transformation $\Lambda(t)=e^{-tc}$ für $t>0$; weil $\Lambda$ ganz ist, gilt das für alle $t$, und die Taylor-Koeffizienten sind die Momente.
+      Läge $c$ in $\Omega_T$, hätte die dort holomorphe Funktion $C_T$ einen Pol.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Befund C und Satz C; s1_kurve.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Momente ↔ Laplace-Transformierte ↔ Cauchy-Transformierte ist klassisch; neu ist die Anwendung auf θ_T.'
+    f2_benutzte_voraussetzungen: 'Re θ_T nach unten beschränkt (Lokalform an den Enden); M[e^{λ|θ_T|}] < ∞ für alle λ (Majorante |θ| ≤ 31.7 + 2.91 lnlnln(1/|z|) aus kn.satz.theta_mittelwerte, über θ_T = θ∘φ + p und min φ′ > 0 übertragen).'
+    f3_spezialfall: 'Ja: ein Momentenproblem mit exponentiell integrierbarer Verteilung ist durch die Laplace-Transformierte bestimmt.'
+    f4_uebertragbar: 'Auf jede Basis über η mit derselben Lokalform an den ganzen Zahlen.'
+    f5_neue_frage: 'Wann ist 1/(ζ − c) die einzige Fortsetzung ins Innere der Kurve? → br.satz.momente_jordan'
+  bewertung: {richtigkeit: 'bewiesen bis auf die Lage an den Enden (Lokalform); numerisch auf 7·10⁻²²', neuheit: neu_ungeprueft, nutzen: 'Macht aus der unendlichen Momentenfamilie eine Gleichung für eine holomorphe Funktion; Grundlage des Jordan-Satzes.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.theta_mittelwerte}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.theta_singularitaet}
+    - {typ: verwandt, ziel: br.frage.momentenfamilie}
+
+- id: br.satz.sehnenkriterium
+  titel: 'Sehnenkriterium: θ_T hat keinen Doppelpunkt, wenn sup|1/φ′ − 1| < m* = 0.3010, also für 0.7686 < φ′ < 1.4306'
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen_text: 'Das Kriterium mit m* als Infimum ist bewiesen. Der Zahlenwert m* = 0.3010 ist auf Polygonen gemessen (N = 400, 600, 800, vier Stellen gleich); dass m* > 0 auch im nicht abgetasteten Spitzenbereich x < 10⁻¹² gilt, ist nur über die Lokalform qualitativ begründet.'
+  niveau: forschung
+  objekte: [kneser_T, T_b, theta_kneser, periodische_stoerung]
+  bereich: 'wie br.satz.momente_cauchy; $\psi=\varphi^{-1}$, $u_K(s)=s+\theta(s)$ mit Knesers Welle $\theta$'
+  aussage: |
+    **Bogen-Bild.** $\theta_T(x)=u(x)-x$ mit $u=u_K\circ\varphi$: Alle Tetrationen durchlaufen denselben festen Bogen $\Gamma_0=h((1,e))$, nur mit anderer Geschwindigkeit.
+    **Doppelpunkte.** $\theta_T(x)=\theta_T(y)$ mit $x>y$ gilt genau dann, wenn es eine waagrechte Sehne der Kneser-Kurve gibt ($t<s$, $\mathrm{Im}\,\theta(t)=\mathrm{Im}\,\theta(s)$) mit
+    $$\psi(s)-\psi(t)=(s-t)-\mu(s,t),\qquad\mu(s,t):=\mathrm{Re}\,\theta(t)-\mathrm{Re}\,\theta(s).$$
+    Die Menge der $\psi$ mit $\psi(s)-\psi(t)>(s-t)-\mu(s,t)$ auf allen Sehnen ist konvex und enthält $\mathrm{id}$ (weil $\mu>0$ auf allen Sehnen, br.beob.kneser_kurve_sehnen).
+    **Kriterium.** Mit $m^*:=\inf\mu(s,t)/\min(s-t,\,1-s+t)$ gilt: $\sup|1/\varphi'-1|=\mathrm{Lip}(\psi-\mathrm{id})<m^*\ \Rightarrow\ \theta_T$ ist doppelpunktfrei.
+    Mit $m^*=0.3010$ genügt $0.7686<\varphi'<1.4306$, also $-0.231<p'<0.431$. Das ist nicht scharf: $p=\varepsilon\sin2\pi x$ bleibt bis $\varepsilon=0.09$ ($p'$ bis $\pm0.57$) doppelpunktfrei.
+  einfach: >-
+    Alle Tetrationen zeichnen dieselbe Kurve, nur verschieden schnell; zieht man davon die Zeit ab, entsteht die Wellenkurve. Ob sie sich selbst schneidet, hängt
+    nur davon ab, wie stark die Geschwindigkeit schwankt. Liegt die Steigung von φ zwischen 0.77 und 1.43, gibt es keinen Schnittpunkt.
+  beweis:
+    art: bedingt
+    text: |
+      $\theta_T(x)=\theta_T(y)\iff u(x)-u(y)=x-y$; mit $s=\varphi(x)$, $t=\varphi(y)$ ist dann $u_K(s)-u_K(t)$ reell und gleich $\psi(s)-\psi(t)$. Weil $\mathrm{Im}\,u_K=\mathrm{Im}\,\theta$,
+      liegen $\theta(s)$ und $\theta(t)$ auf gleicher Höhe, und $\mathrm{Re}(u_K(s)-u_K(t))=(s-t)-\mu$. Die Bedingung ist linear in $\psi$, also ist die Menge konvex.
+      $r=\psi-\mathrm{id}$ ist 1-periodisch, also $|r(s)-r(t)|\le\mathrm{Lip}(r)\min(s-t,1-s+t)<m^*\min(s-t,1-s+t)\le\mu$, und $r(s)-r(t)=-\mu$ ist unmöglich.
+      An der Spitze ($t\to0$, $s\to1$) ist $\mu\asymp1/(X\ln X)$ mit $X=\ln(1/x)$, viel grösser als der Abstand $\asymp x$; darum ist $m^*>0$.
+    luecken:
+      - 'm* = 0.3010 ist auf Polygonen gemessen (Infimum bei t = 0.2414, s = 0.7412, Höhe 5.4532), nicht mit Intervallen; der Spitzenbereich x < 10⁻¹² ist nur über die Lokalform (kn.satz.theta_singularitaet) abgeschätzt, ohne Konstanten.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Befunde B, D, S und Sätze D, S; s2_fein.py, s4_sehnen.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Umformulierung θ_T = u_K∘φ − id; die eigentliche Arbeit steckt in der Zahl m*.'
+    f2_benutzte_voraussetzungen: 'φ wachsend mit φ(x+1) = φ(x) + 1; μ > 0 auf allen Sehnen und m* > 0 (numerisch plus Lokalform an der Spitze).'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf andere Basen über η (eigenes m*, gleiche Spitzenform) und auf jede Kurve der Form „fester Bogen minus Zeit“.'
+    f5_neue_frage: 'Scharfe Form: Die konvexe Menge ist viel grösser als die Lipschitz-Kugel. Einseitige Fassung (für s − t ≤ ½ zählt nur inf r′, sonst nur sup r′)?'
+  bewertung: {richtigkeit: 'Kriterium bewiesen; Zahlenwert m* numerisch (vier Stellen, drei Abtastungen)', neuheit: neu_ungeprueft, nutzen: 'Gibt eine ausdrückliche Umgebung von Kneser, in der der Jordan-Satz greift.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: br.beob.kneser_kurve_sehnen}
+    - {typ: verwandt, ziel: br.satz.endlich_viele_reichen_nicht}
+
+- id: br.beob.kneser_kurve_sehnen
+  titel: 'Knesers θ-Kurve ist doppelpunktfrei und positiv umlaufen, jede waagrechte Gerade trifft sie höchstens zweimal; Sehnenkonstante m* = 0.3010'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser]
+  bereich: 'Basis $e$; $\Gamma_K=\theta((0,1))$ auf der reellen Achse; $\mu$ und $m^*$ wie in br.satz.sehnenkriterium'
+  aussage: |
+    $\Gamma_K$ hat keinen Doppelpunkt und umläuft $c=M[\theta]=a_0$ einmal positiv (Fläche $+0.0762$); jede waagrechte Gerade schneidet sie höchstens zweimal, und auf allen
+    waagrechten Sehnen ist $\mu>0$. Die Sehnenkonstante ist
+    $$m^*=\inf_{t<s}\frac{\mu(s,t)}{\min(s-t,\,1-s+t)}=0.3010,$$
+    angenommen bei $t=0.2414$, $s=0.7412$ auf der Höhe $\mathrm{Im}\,\theta=5.4532$ (fast genau gegenüber: $s-t\approx\tfrac12$).
+  einfach: >-
+    Die Kurve, die Knesers Welle auf der Zahlengeraden zeichnet, schneidet sich nicht selbst und hat eine einfache Form: Jede waagrechte Linie trifft sie höchstens zweimal.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Befunde K und m*; s2_fein.py, s4_sehnen.py, daten/log_s4_15_400.txt, daten/log_s4_18_800.txt'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe beim Eintragen (25.10.2026): s2_fein.py 16 600 kneser (neues Polygon, 671 Punkte) ergibt 0 Schnitte, Fläche 0.076155, Umlaufzahl +1; s4_sehnen.py mit 4000 und 8000 Höhen ergibt m* = 0.3010 an derselben Stelle.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Abtastung N = 400 (dps 15), 600 (dps 16), 800 (dps 18) mit geometrischer Verdichtung bis x = 10⁻¹²; die Spitze selbst nur analytisch.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Für Basis 2 und andere Basen über η noch nicht gerechnet.'
+    f5_neue_frage: 'Lässt sich die Doppelpunktfreiheit beweisen, etwa über die Schlichtheit von θ als Funktion von q = e^{2πiz} auf der Kreisscheibe?'
+  bewertung: {richtigkeit: 'numerisch, drei Abtastungen, vier Stellen', neuheit: neu_ungeprueft, nutzen: 'Liefert die Zahl, die das Sehnenkriterium ausdrücklich macht.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+    - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
+
+- id: br.satz.momente_jordan
+  titel: 'Jordan-Fall: Momentenfamilie und doppelpunktfreie θ_T-Kurve erzwingen Kneser'
+  art: satz
+  ebene: B
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, T_b, theta_kneser, riemann_abbildung, fourier_moden]
+  bereich: 'wie br.satz.momente_cauchy; $\Gamma_T$ Jordankurve durch $\infty$ (d. h. $\theta_T$ injektiv auf $(0,1)$), $D_T$ die Komponente von $\hat{\mathbb C}\setminus\Gamma_T$, die nicht $\Omega_T$ ist'
+  aussage: |
+    Ist $\theta_T$ auf $(0,1)$ injektiv und gilt $M[\theta_T^k]=M[\theta_T]^k$ für alle $k$, so ist
+    $$\theta_T(x)=G\bigl(e^{2\pi i(x+\beta)}\bigr)$$
+    mit der konformen Abbildung $G:\mathbb D\to D_T$, $G(0)=c$, und einer Konstanten $\beta$. Die Werte von $\theta_T$ sind also genau nach dem harmonischen Mass von $D_T$ vom Punkt $c$ aus
+    verteilt, $\theta_T$ hat keine negativen Fourier-Moden, und nach br.satz.reelle_kennzeichnung ist $T=$ Kneser.
+    Die naheliegenden Bauarten für Gegenbeispiele scheitern: $\theta_T=G(\beta-x)$ (nur negative Moden) hat an der Spitze die falsche Umlaufrichtung, und $G\circ\psi$ mit einer
+    maßtreuen Abbildung $\psi$ vom Grad $n\ge2$ hätte $n$ Spitzen je Periode statt einer.
+  einfach: >-
+    Wenn die Wellenkurve sich nicht selbst schneidet, legen die Mittelwerte aller Potenzen fest, wie schnell die Kurve durchlaufen wird — und das geht nur auf eine Art,
+    genau so wie bei Kneser. Eine solche Tetration ist also Kneser.
+  beweis:
+    art: skizze
+    text: |
+      Nahe $x=0$ ist $\theta_T(x)=\theta(\varphi'(0)x)+O(x)$, und der Abstand der beiden Seiten der Spitze ($\asymp1/(X\ln X)$) ist viel grösser als $O(x)$; darum liegt $D_T$ wie bei Kneser
+      links der Laufrichtung. $C_T(\zeta)=\int_\Gamma f(z)\,dz/(\zeta-z)$ mit $f=1/\theta_T'$ springt über $\Gamma_T$ um $-2\pi if$ (Plemelj). Mit $C_T=1/(\zeta-c)$ auf $\Omega_T$
+      (br.satz.momente_cauchy) hat $\Phi:=1/(\zeta-c)-C_T$ auf $D_T$ einen einfachen Pol bei $c$ (Residuum 1) und die Randwerte $\Phi(\theta_T(x))\,\theta_T'(x)=2\pi i$.
+      $F(q):=q\,\Phi(G(q))\,G'(q)$ ist holomorph auf $\mathbb D$ mit $F(0)=1$, und auf dem Kreis $q=e^{i\tau}$ gilt $F\,d\tau=2\pi\,dx$, also ist $F$ dort reell und $\ge0$. Ein holomorphes $F$
+      mit reellen Randwerten ist konstant, also $F\equiv1$ und $dx/d\tau=1/2\pi$: das ist die Behauptung. Keine negativen Moden; dann br.satz.reelle_kennzeichnung (Paulsen–Cowgill).
+    luecken:
+      - '(a) „Im F hat Randwert 0 ⇒ Im F ≡ 0“ braucht F in der Smirnov-Klasse; D_T ist unbeschränkt mit sehr dünner Spitze (G nur in H^p für p < ½), F ist nicht abgeschätzt.'
+      - '(b) Isolierte Nullstellen von θ_T′ (Spitzen der Kurve) sind ausgenommen; das betrifft nur eine Nullmenge, ist aber nicht ausgeführt.'
+      - '(c) Für „keine negativen Moden“ wird G ∈ H¹ gebraucht; bekannt ist nur θ_T ∈ L¹.'
+      - '(d) Die Umlaufrichtung an der Spitze ist nur über die Lokalform begründet; dass c in D_T liegt (und nicht auf Γ_T), ist nicht eigens gezeigt — br.satz.momente_cauchy gibt nur c ∉ Ω_T.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Befunde J und R, Satz J und Abschnitt (R)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; der Kern ist die Positivität von F = q·Φ(G)·G′ auf dem Kreis.'
+    f2_benutzte_voraussetzungen: 'br.satz.momente_cauchy; Jordan-Eigenschaft von Γ_T; Plemelj-Sprung; Hardy- und Smirnov-Klassen (Lücken a, c); Orientierung an der Spitze (Lokalform); br.satz.reelle_kennzeichnung.'
+    f3_spezialfall: 'Ja: Auf einem Jordangebiet ist das harmonische Mass die einzige Verteilung auf dem Rand mit Cauchy-Transformierter 1/(ζ − c) aussen.'
+    f4_uebertragbar: 'Auf jede Basis über η und auf Kneser-artige Wellen mit genau einer Spitze je Periode.'
+    f5_neue_frage: 'Fall mit Doppelpunkt (br.frage.momente_doppelpunkt); Lücke (a) über die Lokalform und |θ_T| ≲ log log log schliessen.'
+  bewertung: {richtigkeit: 'Beweisskizze mit vier benannten Lücken', neuheit: neu_ungeprueft, nutzen: 'Beantwortet br.frage.momentenfamilie für alle Tetrationen mit doppelpunktfreier Wellenkurve (bis auf die Lücken).', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: br.satz.momente_cauchy}
+    - {typ: stuetzt_sich_auf, ziel: br.satz.reelle_kennzeichnung}
+    - {typ: verwandt, ziel: br.frage.momentenfamilie, notiz: 'Teilantwort: ja im Jordan-Fall'}
+    - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}
+
+- id: br.kor.momente_umgebung
+  titel: 'Nichtlineare Eindeutigkeit in einer ausdrücklichen Umgebung: Momentenfamilie und 0.7686 < φ′ < 1.4306 ⇒ Kneser'
+  art: korollar
+  ebene: B
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, T_b, theta_kneser, periodische_stoerung]
+  bereich: 'reell-analytische Tetrationen $T=\mathrm{sexp}\circ\varphi$ zur Basis $e$, $\varphi=\mathrm{id}+p$'
+  aussage: |
+    Jede reell-analytische Tetration $T=\mathrm{sexp}\circ\varphi$ mit $0.7686<\varphi'<1.4306$ (also $-0.231<p'<0.431$) und $M[\theta_T^k]=M[\theta_T]^k$ für alle $k$ ist Kneser.
+    Anders als die Starrheit erster Ordnung in br.frage.momentenfamilie braucht das keine Streifenbedingung an $p$ und gilt nicht nur für kleine Störungen im Grenzwert.
+    Die Gegenbeispiele aus Etappe 4, die einzelne Formeln erfüllen (br.satz.endlich_viele_reichen_nicht), liegen ausserhalb dieser Umgebung (br.beob.gegenbeispiel_doppelpunkt).
+  einfach: >-
+    Alle Tetrationen, die sich nicht zu stark von Kneser unterscheiden (die Steigung der Verbiegung bleibt zwischen 0.77 und 1.43), werden durch die Familie der
+    Potenz-Mittelwerte als Kneser erkannt — wenn die Beweislücken sich schliessen lassen.
+  beweis:
+    art: skizze
+    text: 'br.satz.sehnenkriterium macht $\theta_T$ doppelpunktfrei; br.satz.momente_jordan gibt dann $T=$ Kneser.'
+    luecken:
+      - 'Alle Lücken von br.satz.momente_jordan (Smirnov-Klasse, H¹, Orientierung an der Spitze, Lage von c).'
+      - 'm* = 0.3010 nur numerisch, Spitzenbereich nur qualitativ (br.satz.sehnenkriterium).'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Befund N'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus br.satz.sehnenkriterium und br.satz.momente_jordan.'
+    f2_benutzte_voraussetzungen: 'Beide Sätze mit ihren Lücken; reell-analytisches T mit φ′ in der Schranke.'
+    f3_spezialfall: 'Nichtlineare Fassung der Starrheit erster Ordnung aus br.frage.momentenfamilie.'
+    f4_uebertragbar: 'Auf andere Basen über η mit eigenem m*.'
+    f5_neue_frage: 'Wie gross ist die grösste Umgebung? Die konvexe Menge aus br.satz.sehnenkriterium ist viel grösser als die Lipschitz-Kugel.'
+  bewertung: {richtigkeit: 'Skizze (erbt die Lücken beider Sätze)', neuheit: neu_ungeprueft, nutzen: 'Teilantwort auf br.frage.momentenfamilie mit ausdrücklicher Umgebung.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: br.satz.sehnenkriterium}
+    - {typ: folgt_unmittelbar_aus, ziel: br.satz.momente_jordan}
+    - {typ: verwandt, ziel: br.frage.momentenfamilie, notiz: 'beantwortet sie in der Umgebung 0.7686 < φ′ < 1.4306 (Skizze)'}
+
+- id: br.beob.gegenbeispiel_doppelpunkt
+  titel: 'Die Etappe-4-Gegenbeispiele a und c haben je einen Doppelpunkt — sie liegen ausserhalb des Jordan-Falls'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [T_b, theta_kneser, periodische_stoerung]
+  bereich: 'Gegenbeispiele aus br.satz.endlich_viele_reichen_nicht: a erfüllt $M[\theta_T^2]=M[\theta_T]^2$, c die slog-Formel; Daten forschung/identitaeten_2026_10_14/etappe4/daten/gegenbeispiel_*_40.json'
+  aussage: |
+    Gegenbeispiel a ($p=-0.035254\sin2\pi x+0.000462(\cos2\pi x-1)+0.03\sin4\pi x$) hat genau einen Doppelpunkt, bei $x\approx0.372$ und $0.614$ (Punkt $\approx26.192+5.473i$);
+    Gegenbeispiel c ($p=-0.046023\sin2\pi x-0.001672(\cos2\pi x-1)+0.03\sin4\pi x$) bei $x\approx0.341$ und $0.637$ ($\approx26.196+5.464i$); beide Male entsteht oben eine kleine Schleife.
+    Die Störungen sind klein ($|p|<0.07$), aber steil: $\max p'\approx0.60$ (a) und $0.67$ (c), über der Schranke $0.431$ aus br.satz.sehnenkriterium.
+    br.satz.momente_jordan sagt über diese Beispiele also nichts.
+  einfach: >-
+    Die alten „Doppelgänger“ von Kneser, die einzelne Formeln erfüllen, haben eine Wellenkurve mit einem kleinen Knoten. Darum widersprechen sie dem neuen Satz nicht.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Befund X; s2_fein.py, daten/log_s2_ac_15_400.txt, daten/log_s1_20_4.txt'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe beim Eintragen (25.10.2026): s2_fein.py 16 600 a bzw. c (neue Abtastung) ergibt je genau einen Schnitt, bei x ∈ [0.3717, 0.3733] mit [0.6133, 0.6150] (a) und [0.3400, 0.3417] mit [0.6367, 0.6383] (c); max p′ aus den Fourier-Daten 0.5985 (a) und 0.6662 (c).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Polygone mit N = 400, 600 und anderen Knoten (k = 4, dps 20): jeweils ein Schnitt.'
+    f3_spezialfall: nein
+    f4_uebertragbar: —
+    f5_neue_frage: 'Gibt es Gegenbeispiele zur ganzen Momentenfamilie mit Doppelpunkt? → br.frage.momente_doppelpunkt'
+  bewertung: {richtigkeit: 'numerisch, drei Abtastungen', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass der Jordan-Fall die bekannten Gegenbeispiele nicht erfasst und warum.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: br.satz.endlich_viele_reichen_nicht}
+    - {typ: verwandt, ziel: br.satz.sehnenkriterium}
+
+- id: br.frage.momente_doppelpunkt
+  titel: 'Gibt es eine Tetration ≠ Kneser mit sich schneidender θ_T-Kurve, die die ganze Momentenfamilie erfüllt?'
+  art: frage
+  ebene: B
+  status: offen
+  niveau: forschung
+  objekte: [T_b, theta_kneser, fourier_moden]
+  aussage: |
+    Nach br.satz.momente_jordan bleibt von br.frage.momentenfamilie nur der Fall, dass $\Gamma_T$ Doppelpunkte hat; solche Tetrationen gibt es schon bei kleinen Störungen
+    (br.beob.gegenbeispiel_doppelpunkt). Dann zerfällt $\mathbb C\setminus\Gamma_T$ in mehrere Teilgebiete $U_j$: $C_T=1/(\zeta-c)$ gilt auf $\Omega_T$, auf jedem $U_j$ ist $C_T$
+    holomorph, mit Sprüngen an den Kanten, summiert über die Blätter. Auf einer sich schneidenden Kurve gibt es viele darstellende Masse für $c$ (Mischungen harmonischer
+    Masse verschiedener Teilgebiete) — das Argument des Jordan-Falls reicht dort nicht. Ein Gegenbeispiel wurde weder gefunden noch gesucht.
+    Mögliche Wege: die Umlaufzahlfunktion der Kurve und ein Argument wie im Jordan-Fall auf dem immersierten Gebiet über $\Gamma_T$ (Blanks Problem); numerisch Störungen mit
+    $\sin4\pi x$ und grossem $p'$, an denen man $V_2,\dots,V_K$ zugleich nullsetzt, und prüfen, ob die Lösungen mit wachsendem $K$ konvergieren.
+  einfach: >-
+    Offen ist nur noch der Fall, in dem die Wellenkurve sich selbst schneidet: Könnte dort eine andere Tetration als Kneser alle Potenz-Mittelwerte richtig haben?
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md, Befund O, Abschnitt „Was offen bleibt“, Offene Fragen 1–2'}]
+  kanten:
+    - {typ: verwandt, ziel: br.frage.momentenfamilie}
+    - {typ: verwandt, ziel: br.satz.momente_jordan}
+    - {typ: verwandt, ziel: br.beob.gegenbeispiel_doppelpunkt}

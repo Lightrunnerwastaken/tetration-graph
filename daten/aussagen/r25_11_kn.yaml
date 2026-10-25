@@ -1,0 +1,159 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 11: Asymptotik von η_r, e_r und Kenngrössen der Berührung (Krümmung β_r, iteratives Residuum ι_r).
+# Rechnungen: forschung/runde_2026_10_25/11_eta_n_asymptotik/ (BERICHT.md, Befunde B1–B14); Gegenprobe in EINTRAG.md.
+# F_r = H_r(η_r,·) die Stufe an ihrer eigenen Grenzbasis, a_k = F_r^{(k)}(e_r)/k!, β_r = a_2, ι_r = 1 − a_3/a_2².
+aussagen:
+
+- id: kn.satz.kritische_rate_log
+  titel: 'Verfeinerte kritische Rate: e_r − H_{r+1}(η_r, k) = 1/(β_r(k + ι_r ln k + C_r + o(1))) mit dem iterativen Residuum ι_r'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [hyperoperation, eta, fatou_koord]
+  voraussetzungen:
+    - {text: 'F = H_r(η_r,·) ist reell-analytisch (C⁴ genügt) an e_r mit F(e_r) = e_r, F′(e_r) = 1, β_r = F″(e_r)/2 > 0', benutzt: ja}
+    - {text: 'H_{r+1}(η_r,k) konvergiert von unten gegen e_r (wie in kn.satz.kritische_rate)', benutzt: ja}
+  aussage: |
+    Mit $a_k=F_r^{(k)}(e_r)/k!$, $\beta_r=a_2$ und dem iterativen Residuum $\iota_r=1-a_3/a_2^2$ gilt
+    $$e_r-H_{r+1}(\eta_r,k)=\frac{1}{\beta_r\bigl(k+\iota_r\ln k+C_r+o(1)\bigr)}\qquad(k\to\infty).$$
+    $r=3$ ($\beta=1/(2e)$, $\iota=1/3$): $e-{}^k\eta=2e/k-\tfrac{2e}3\ln k/k^2+O(1/k^2)$, die bekannte langsame Konvergenz an $e^{1/e}$.
+    Für $r\ge4$ ist $\iota_r<0$ (kn.beob.iota_raenge): der Logarithmusterm wechselt das Vorzeichen, die nächste Stufe erreicht $e_r$ etwas schneller als die reine Form $1/(\beta k)$.
+  einfach: >-
+    Genau an der Grenzbasis kriecht die nächste Rechenart wie 1 durch die Schrittzahl auf den Berührpunkt zu. Die nächstfeinere Korrektur ist ein Logarithmus,
+    und dessen Vorfaktor ist eine Kennzahl der Berührung, die man nicht wegtransformieren kann.
+  formen:
+    - {tex: 'e_r-H_{r+1}(\eta_r,k)=\frac1{\beta_r(k+\iota_r\ln k+C_r+o(1))}', notiz: 'verfeinerte Rate'}
+    - {tex: '\Phi(w)=-\frac1w+\iota\log(-w),\quad \Phi(g(w))=\Phi(w)+1+O(w^2)', notiz: 'genäherte Fatou-Koordinate'}
+  beweis:
+    art: vollstaendig
+    text: |
+      Mit $w=\beta_r(x-e_r)$ wird $F$ zu $g(w)=w+w^2+cw^3+O(w^4)$, $c=a_3/a_2^2$, $\iota=1-c$. Für $\Phi(w)=-1/w+\iota\log(-w)$ ist $-1/g(w)=-1/w+1+(c-1)w+O(w^2)$ und
+      $\log(-g(w))=\log(-w)+w+O(w^2)$, also $\Phi(g(w))-\Phi(w)=1+O(w^2)$. Längs des Orbits $w_k\uparrow0$ ist $w_k=O(1/k)$, die Fehler sind summierbar: $\Phi(w_k)=k+C+o(1)$,
+      also $-1/w_k=k+\iota\ln k+C+o(1)$. Zurückübersetzt folgt die Formel.
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/11_eta_n_asymptotik/BERICHT.md, B3 und Beweis'}
+    - {ref: milnor2006, stelle: 'résidu itératif 1 − b/a² eines parabolischen Keims z + az² + bz³ (Stelle nicht geprüft)'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Standardrechnung mit der Fatou-Koordinate am parabolischen Fixpunkt.'
+    f2_benutzte_voraussetzungen: 'Taylor-Entwicklung bis zur vierten Ordnung, β_r > 0, Konvergenz von unten; die Zahlen β_r, ι_r sind numerisch.'
+    f3_spezialfall: 'Ja: Asymptotik der Orbits am parabolischen Fixpunkt mit dem iterativen Residuum (Écalle); verschärft kn.satz.kritische_rate.'
+    f4_uebertragbar: 'Auf jede Stufe und jede Fortsetzungskette mit nicht entarteter Falte; auf die Engpasszeit knapp über η_r (Korrektur zu π/√(αβ(b−η_r))).'
+    f5_neue_frage: 'Schätzt man η_r aus endlichen Höhen, verschiebt ι_r ln k das Ergebnis — wie gross ist der Fehler in kn.beob.kritische_profile?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, recherche: 'Methode klassisch (Écalle, Fatou-Koordinate); die Anwendung auf die Grenzbasen der Ränge im Forum nicht gesehen (keine eigene Suche).', nutzen: 'Zweites Glied der kritischen Rate und eine neue Kennzahl jeder Berührung.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.kritische_rate}
+    - {typ: analog_zu, ziel: it.satz.parabolische_rate}
+    - {typ: verwandt, ziel: it.satz.leau_fatou}
+
+- id: kn.beob.iota_raenge
+  titel: 'Iteratives Residuum der Berührung: ι₃ = 1/3, dann ι₄ … ι₈ ≈ −0.39, −0.55, −0.60, −0.61, −0.59 — Minimum bei r = 7'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, eta, fatou_koord]
+  bereich: 'Fortsetzungskette wie kn.beob.eta7_eta8 (ungerade Stufen regulär, gerade Stufen über der Berührbasis Kneser-artig; r = 8 mit experimenteller Zwei-Bogen-Auswahl); η_r, e_r aus eta_values.csv'
+  aussage: |
+    $\iota_r=1-a_3/a_2^2$ an der Berührstelle $e_r$:
+    $\iota_3=1/3$ (exakt), $\iota_4=-0.3940091010835869$, $\iota_5=-0.5523418565090349$, $\iota_6=-0.6006192688985848$, $\iota_7=-0.6057589653632122$, $\iota_8=-0.5928654176566894$.
+    Die Folge ist nicht monoton: Zuwächse $-0.727,\ -0.158,\ -0.048,\ -0.005,\ +0.013$ — Minimum bei $r=7$, danach steigt sie.
+    Die effektiven Konvergenzradien der Taylor-Reihen von $F_r$ um $e_r$ (Quotienten $a_k/a_{k+1}$, $k\le8$) schrumpfen: $\approx2.9,\ 1.84,\ 1.47,\ 1.29,\ 1.15$ ($r=4\ldots8$).
+  einfach: >-
+    Jede Berührung hat neben der Krümmung eine zweite Kennzahl. Bei der Potenz ist sie 1/3, bei allen höheren Rechenarten negativ um −0.6,
+    und sie hat bei der Heptation ein Minimum.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/11_eta_n_asymptotik/BERICHT.md, B1, B2, B12; jets.py, analyse.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Zwei Cauchy-Einstellungen je Rang (ρ = 0.1/M = 32/dps 25 und ρ = 0.03/M = 16/dps 30; r = 8: ρ = 0.03 und 0.05) gleich auf ≥ 16 Stellen; Gegenprobe 25.10.2026 mit dritter Einstellung r = 6, ρ = 0.05, M = 24, dps 28: ι₆ = −0.6006192688985848 auf alle Stellen gleich. Bei r = 8 begrenzt η₈ (13 Stellen) die Genauigkeit.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); ι₃ = 1/3 aus η^x an e.'
+    f2_benutzte_voraussetzungen: 'Gewählte Fortsetzungskette und die Werte η_r, e_r; Cauchy-Abtastung im Komplexen.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Gibt die Log-Korrektur in kn.satz.kritische_rate_log für jeden Rang.'
+    f5_neue_frage: 'Hat ι_r einen Grenzwert um −0.6, oder steckt nach dem Minimum ein Paritätseffekt (gerade Ränge Kneser-artig, ungerade regulär)? Welche Singularität lässt den Radius um e_r schrumpfen?'
+  bewertung: {richtigkeit: 'numerisch, drei Einstellungen bei r = 6, zwei sonst', neuheit: neu_ungeprueft, nutzen: 'Neue Invariante der Berührungen und Prüfwert für jede künftige Theorie von η_r.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.kritische_rate_log}
+    - {typ: verwandt, ziel: kn.beob.eta7_eta8}
+
+- id: kn.beob.beta_raenge
+  titel: 'Krümmung der Berührung β_r = F_r″(e_r)/2 für r = 3 … 8: 0.184, 0.293, 0.377, 0.443, 0.496, 0.537 — wachsend mit fallenden Zuwächsen'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  bereich: 'wie kn.beob.iota_raenge'
+  aussage: |
+    $\beta_3=1/(2e)=0.1839397$, $\beta_4=0.2934833259466268$, $\beta_5=0.3769856540413645$, $\beta_6=0.4429294090481398$, $\beta_7=0.4961476451837973$, $\beta_8=0.5368242373506136$.
+    Zuwächse $0.110,\ 0.084,\ 0.066,\ 0.053,\ 0.041$; ein Grenzwert ist offen (Drei-Punkt-Fits geben $1.72$ aus $r=5,6,7$ und $0.87$ aus $r=6,7,8$ — instabil, keine Aussage).
+  einfach: >-
+    Wie stark die Kurve der Rechenart im Berührpunkt gebogen ist, wächst mit dem Rang, aber immer langsamer.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/11_eta_n_asymptotik/BERICHT.md, B4, B5; jets.py, analyse.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Unabhängig im Graphen: β₄ = 0.29348 (kn.beob.tetra_euler), β₆ = 0.44293 (kn.beob.stufe6), β₇ = 0.4961476452 und β₈ = 0.5368242374 (kn.satz.kritische_rate, Runde 12.10.); dritte Einstellung r = 6 (25.10.2026) gleich auf 16 Stellen. Neu ist nur β₅.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Wie kn.beob.iota_raenge.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'β_r geht in kn.satz.kritische_rate und in die Engpasszeit knapp über η_r ein.'
+    f5_neue_frage: 'Bleibt β_r beschränkt? Die Rampe min(x+1, b) (kn.verm.grenzprofil_rampe) hätte im Knick unendliche Krümmung.'
+  bewertung: {richtigkeit: 'numerisch, mit unabhängigen Werten für r = 4, 6, 7, 8', neuheit: neu_ungeprueft, nutzen: 'Vollständige Liste der Krümmungen; Kontrolle älterer Werte.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.kritische_rate}
+    - {typ: verwandt, ziel: kn.verm.grenzprofil_rampe}
+
+- id: kn.verm.eta_r_log
+  titel: 'Vermutung: 2 − η_r ~ C/(r ln r) mit C ≈ 2.20 — der Exponent 1.46 wäre nur eine Übergangszahl'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  bereich: 'Grenzbasen $\eta_3\ldots\eta_8$ der Fortsetzungskette (kn.beob.eta7_eta8)'
+  aussage: |
+    $v_r=(2-\eta_r)\,r\ln r=1.8303,\ 2.0222,\ 2.1136,\ 2.1596,\ 2.1827,\ 2.1935$ ($r=3\ldots8$); die Zuwächse halbieren sich fast (Quotienten $0.48,\ 0.50,\ 0.50,\ 0.46$),
+    Aitken-Werte $2.1966,\ 2.2063,\ 2.2061,\ 2.2028$. Vermutet: $2-\eta_r\sim C/(r\ln r)$, $C\approx2.20$.
+    Folgerung: der lokale Exponent $\ln\frac{2-\eta_{r-1}}{2-\eta_r}/\ln\frac r{r-1}$ geht wie $1+1/\ln r$ langsam gegen 1; die gemessenen $1.462,\ 1.471,\ 1.470,\ 1.466,\ 1.460$ wären eine Übergangszone.
+    Freie Drei-Punkt-Grenzfits $L-Ar^{-q}$ geben $L=1.99978,\ 1.99766,\ 1.99693$ — leicht unter 2, wie bei einer Konvergenz, die langsamer ist als jedes Potenzgesetz.
+    **Prüfung:** $\eta_9\approx1.888827$ (dieses Modell) gegen $1.889137$ (Potenzfit der Runde 12.10.) und $1.88892\ldots1.88932$ ($A(r+c)^{-p}$); schon vier Stellen von $\eta_9$ entscheiden.
+  einfach: >-
+    Die Grenzbasen nähern sich der 2. Wie schnell? Bisher dachte man „wie 1 durch r hoch 1.47“. Besser passt „wie 1 durch (r mal Logarithmus von r)“.
+    Dann wäre die 1.47 nur eine Zwischenzahl. Das nächste Glied η₉ würde es entscheiden.
+  gegenbeispielsuche: 'Andere Normierungen geprüft: (2 − η_r)·r^1.5 wächst fast linear (Aitken 2.96, 3.03, 3.50, 2.33, instabil); (r−1)ln(r−1) und r(ln r)² driften gleichsinnig. Nur sechs Glieder; η₉ war in dieser Runde nicht rechenbar (H₉ über der komplexen Oktation, über 5 min je Basis).'
+  naechste_frage: 'η₉ auf vier Stellen (ein längerer Lauf auf dem Server); Herleitung über η_{r+1} − η_r ≈ G/S_r mit S_r = ∂_bH_r(b,e_r) — bräuchte S_r ~ r² ln r.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/11_eta_n_asymptotik/BERICHT.md, B6–B9, B13; analyse.py, eta_values.csv'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026: analyse.py erneut (gleiche Zahlen) und v_r, Aitken-Werte und lokale Exponenten unabhängig aus den η-Werten des Graphen nachgerechnet (mpmath, 30 Stellen): gleich auf alle angegebenen Stellen.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Anpassung an sechs Glieder).'
+    f2_benutzte_voraussetzungen: 'Die gewählte Fortsetzungskette (η_r hängt von ihr ab, kn.satz.eta_auswahl); η₈ nur auf 13 Stellen.'
+    f3_spezialfall: 'Nein; die Form r ln r erscheint auch in der Rangleiter (kn.verm.leiter_rate: δ_r ~ c/(r^k ln r)).'
+    f4_uebertragbar: 'Auf 4 − e_r nicht: dort passt keine Form (kn.gescheitert.e_potenzgesetz).'
+    f5_neue_frage: 'Woher käme ln r? Wächst die Basisempfindlichkeit S_r = ∂_bH_r(b,e_r) wie r² ln r?'
+  bewertung: {richtigkeit: 'Vermutung, sechs Glieder, stabile Aitken-Werte', neuheit: neu_ungeprueft, recherche: 'Laut Bericht nennen Forum und Runde 12.10. nur Potenzfits (keine eigene Suche).', nutzen: 'Konkurrierendes Gesetz zu kn.beob.tpid10_gesetz mit einer scharfen Vorhersage für η₉.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.verm.tpid10}
+    - {typ: verwandt, ziel: kn.beob.tpid10_gesetz}
+    - {typ: verwandt, ziel: kn.beob.eta7_eta8}
+    - {typ: analog_zu, ziel: kn.verm.leiter_rate}
+
+- id: kn.gescheitert.e_potenzgesetz
+  titel: 'Kein einfaches Gesetz für die Berührhöhen e_r: Potenzgesetze und Log-Formen sind instabil, freie Grenzfits liegen über 4'
+  art: gescheitert
+  ebene: C
+  status: gescheitert
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  bereich: '$e_3\ldots e_8$ der Fortsetzungskette (kn.beob.eta7_eta8)'
+  aussage: |
+    Freie Drei-Punkt-Grenzfits $L-Ar^{-q}$ für $e_r$ geben $L=4.118,\ 4.178,\ 4.229$ — über 4 und steigend. Der lokale Exponent von $4-e_r$ steigt ($1.185\to1.386$),
+    das Modell $A(r+c)^{-p}$ ist instabil ($p=1.47\to2.42$), und keine Normierung ($r\ln r$, $r^{1.5}$, $r\ln^2r$, $(r-1)\ln(r-1)$) ist stabil.
+    Gilt $e_r\le4$, so muss $4-e_r$ zuletzt schneller fallen als jede Anpassung an $r\le8$. Das Verhältnis $(4-e_r)/(2-\eta_r)$ (schon in kn.gescheitert.konvexitaetsweg) hat bald ein Maximum.
+  einfach: >-
+    Für die Grenzbasen gibt es ein schönes Gesetz, für die Berührhöhen nicht. Jede einfache Formel, die man an die sechs bekannten Werte anpasst, sagt einen Grenzwert über 4 voraus — das passt nicht zur Vermutung „gegen 4“.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/11_eta_n_asymptotik/BERICHT.md, B10, B11; analyse.py'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.tpid10}
+    - {typ: verwandt, ziel: kn.beob.tpid10_gesetz}
+    - {typ: verwandt, ziel: kn.gescheitert.konvexitaetsweg}

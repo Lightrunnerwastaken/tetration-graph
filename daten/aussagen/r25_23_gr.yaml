@@ -1,0 +1,238 @@
+gebiet: gr
+# Runde 25.10.2026, Bericht 23: Basisableitung D = ∂_b T_b(x) — Elastizität, Vorzeichenmuster, Randzahl ε₀, Wackeln über die Basen.
+# Rechnungen: forschung/runde_2026_10_25/23_basisableitung/ (BERICHT.md, EINTRAG.md).
+aussagen:
+
+- id: gr.satz.elastizitaet_stufe
+  titel: 'Die Basis-Elastizität E = ∂ln T/∂ln ln b gehorcht der Stufenregel E(x+1) = (1 + E(x))·ln T(x+1)'
+  art: satz
+  ebene: A
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [T_b]
+  bereich: 'jede in $b$ differenzierbare Familie reeller Tetrationen mit $T_b(0)=1$, $b>1$; $D(x)=\partial_bT_b(x)$; $E$ ist definiert, wo $T(x)\ne0$'
+  aussage: |
+    Mit der **Elastizität** $E(x)=\dfrac{b\ln b\,D(x)}{T(x)}=\dfrac{\partial\ln|T_b(x)|}{\partial\ln\ln b}$ gilt
+    $$E(x+1)=\bigl(1+E(x)\bigr)\ln T(x+1),\qquad E(0)=0,\qquad E(1)=\ln b,$$
+    und an ganzen Höhen $E(n)=\sum_{k=1}^{n}\prod_{j=k}^{n}\ln T(j)$ — die logarithmische Form von gr.satz.basis_gleichung.
+  einfach: >-
+    Man fragt, um wie viel Prozent sich die Tetration ändert, wenn ln b um ein Prozent wächst. Diese „Elastizität“ gehorcht einer sehr einfachen Regel:
+    einen Schritt weiter rechts ist sie (1 + alter Wert) mal ln T.
+  formen:
+    - {tex: 'E(n)=\sum_{k=1}^{n}\prod_{j=k}^{n}\ln T(j)', notiz: 'ganze Höhen'}
+  beweis:
+    art: vollstaendig
+    text: |
+      $\ln T(x+1)=\ln b\cdot T(x)$; darauf $b\ln b\,\partial_b$ anwenden. Links steht $b\ln b\,D(x+1)/T(x+1)=E(x+1)$, rechts
+      $b\ln b\,[T(x)/b+\ln b\,D(x)]=\ln b\,T(x)\,[1+E(x)]=\ln T(x+1)\,(1+E(x))$. $E(0)=0$ wegen $D(0)=0$, $E(1)=\ln b$ wegen $T_b(1)=b$. Die Summenformel folgt durch Induktion.
+  stuetzt_sich_auf: [gr.satz.basis_gleichung]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B1; d2_elastizitaet.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja: gr.satz.basis_gleichung, geteilt durch T(x+1)/(b ln b).'
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit in b, T_b(0) = 1, T(x) ≠ 0.'
+    f3_spezialfall: 'Logarithmische Fassung der linearen Stufengleichung für D.'
+    f4_uebertragbar: 'Jede Familie T(x+1) = exp(c·T(x)) mit Parameter c: dieselbe Regel für E = ∂ln|T|/∂ln c.'
+    f5_neue_frage: 'Macht die Form das Vorzeichen von D durchschaubar? → gr.satz.vorzeichen_reduktion'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, recherche: 'Im Graph stand nur die lineare Gleichung für D (gr.satz.basis_gleichung).', nutzen: 'Rückt das Vorzeichenproblem der Basisableitung auf ein Stück der Länge 1.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: gr.satz.basis_ganz}
+
+- id: gr.satz.vorzeichen_reduktion
+  titel: 'Das Vorzeichenmuster der Basisableitung hängt nur an max(−1, ln T) < E < 0 auf (−1, 0)'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [T_b, slog]
+  bereich: 'reelle, in $b$ differenzierbare Familie, für jedes $b>1$ differenzierbar mit $T''>0$ auf $(-2,\infty)$ und $T_b(0)=1$ (also $T_b(-1)=0$); $E$ wie in gr.satz.elastizitaet_stufe, $u=D/T''$'
+  aussage: |
+    (i) Das Muster
+    $$D>0\ \text{auf}\ (-2,-1)\cup(0,\infty),\qquad D<0\ \text{auf}\ (-1,0),\qquad D(-1)=D(0)=0$$
+    gilt genau dann, wenn $\max\bigl(-1,\ln T(y)\bigr)<E(y)<0$ für alle $y\in(-1,0)$. Ohne jede Bedingung gilt $D(n)>0$ für ganze $n\ge1$ und $D(x)\to+\infty$ für $x\to-2^+$.
+    (ii) Gleichwertig auf der slog-Seite: $\partial_b\mathrm{slog}_b(y)=-u(\mathrm{slog}_by)$; das Muster heisst $\partial_b\mathrm{slog}_b>0$ auf $(0,1)$ und $<0$ für $y<0$ und für $y>1$.
+    (iii) Gilt das Muster für alle Basen in $[b_1,b_2]$, so treffen sich $T_{b_1}$ und $T_{b_2}$ auf $(-2,\infty)$ nur bei $x=-1$ und $x=0$, und $T_{b_2}<T_{b_1}$ genau auf $(-1,0)$.
+  einfach: >-
+    Ob eine grössere Basis die Kurve hebt oder senkt, muss man nur auf dem Stück zwischen −1 und 0 prüfen: Liegt die Elastizität dort zwischen −1 (bzw. ln T) und 0,
+    dann hebt eine grössere Basis die Kurve links von −1 und rechts von 0 und senkt sie dazwischen.
+  beweis:
+    art: vollstaendig
+    text: |
+      $T<0$ auf $(-2,-1)$, $T\in(0,1)$ auf $(-1,0)$, $T>1$ auf $(0,\infty)$. Auf $(-1,0)$: $\mathrm{sign}\,D=\mathrm{sign}\,E$. Auf $(0,1)$: $E(y+1)=(1+E(y))\ln T(y+1)$ mit
+      $\ln T(y+1)>0$, also $D(y+1)>0\iff E(y)>-1$. Auf $(1,\infty)$: aus $E>0$ folgt $E(x+1)>0$ (Induktion über die Streifen). Auf $(-2,-1)$: für $x=y-1$ ist
+      $E(x)=E(y)/\ln T(y)-1$ und $\mathrm{sign}\,D(x)=-\mathrm{sign}\,E(x)$ (weil $T(x)<0$), also $D(x)>0\iff E(y)>\ln T(y)$. Ganze Stellen: $D(-1)=D(0)=0$, $D(n)>0$ aus der Summenformel
+      in gr.satz.basis_gleichung. Rand bei $-2$: $D(x)=[D(x+1)/T(x+1)-T(x)/b]/\ln b$, der erste Term geht gegen $D'(-1)/T'(-1)$, $T(x)\to-\infty$.
+      (ii) Ableiten von $T_b(\mathrm{slog}_by)=y$ nach $b$: $D+T'\,\partial_b\mathrm{slog}_b=0$. (iii) $b\mapsto T_b(x)$ ist für jedes feste $x\notin\{-1,0\}$ streng monoton.
+  stuetzt_sich_auf: [gr.satz.elastizitaet_stufe, gr.satz.basis_gleichung]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B2, B7, B16'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus gr.satz.elastizitaet_stufe durch Fallunterscheidung nach dem Vorzeichen von T und ln T.'
+    f2_benutzte_voraussetzungen: 'T stetig, streng wachsend (T′ > 0 nur für die slog-Form), T_b(0) = 1, Differenzierbarkeit in b; keine Kneser-Eigenschaft.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Regulär unter η und Kneser darüber gleichermassen; jede wachsende Familie.'
+    f5_neue_frage: 'Die inneren Ungleichungen für Kneser beweisen → gr.frage.vorzeichen_kneser'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Macht aus einem Vorzeichenmuster auf ganz (−2, ∞) zwei Ungleichungen auf einem Stück der Länge 1.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: gr.satz.vorzeichen}
+    - {typ: verwandt, ziel: gr.satz.slog_ableitung}
+
+- id: gr.satz.elastizitaet_rand
+  titel: 'An den Rändern hängt alles an ε₀ = ∂ln T′(0)/∂ln ln b: E(−1⁺) = ε₀ − 1, E′(0) = ε₀ T′(0); das Muster verlangt 0 ≤ ε₀ ≤ 1'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [T_b]
+  bereich: 'wie gr.satz.vorzeichen_reduktion; $\varepsilon_0(b)=\dfrac{b\ln b\,\partial_bT_b''(0)}{T_b''(0)}=\dfrac{\partial\ln T_b''(0)}{\partial\ln\ln b}$'
+  aussage: |
+    $T'(0)=\ln b\cdot T'(-1)$, und
+    $$E(-1^+)=\varepsilon_0-1,\qquad E'(0)=\varepsilon_0\,T'(0).$$
+    Das Vorzeichenmuster aus gr.satz.vorzeichen_reduktion erzwingt $0\le\varepsilon_0\le1$. Wechselt $D$ bei $-1$ und $0$ mit nichtverschwindender Ableitung das Vorzeichen,
+    so ist $0<\varepsilon_0<1$, das heisst: $T_b'(0)$ steigt in $b$, und $T_b'(-1)=T_b'(0)/\ln b$ fällt in $b$.
+  einfach: >-
+    Das ganze Muster hängt an den Rändern an einer einzigen Zahl: um wie viel Prozent die Steigung bei 0 wächst, wenn ln b um ein Prozent wächst.
+    Diese Zahl muss zwischen 0 und 1 liegen.
+  beweis:
+    art: vollstaendig
+    text: |
+      Kettenregel bei $x=-1$: $T'(0)=\ln b\,T(0)\,T'(-1)$. Bei $y\to-1$ gilt nach l'Hôpital $D/T\to D'(-1)/T'(-1)$, also
+      $E(-1^+)=b\ln b\,\partial_b\ln T'(-1)=b\ln b\,\partial_b[\ln T'(0)-\ln\ln b]=\varepsilon_0-1$. $E'(0)=b\ln b\,[D'(0)T(0)-D(0)T'(0)]/T(0)^2=b\ln b\,D'(0)=\varepsilon_0T'(0)$.
+      Nahe $0^-$ ist $E(y)\approx\varepsilon_0T'(0)\,y$ und $\ln T(y)\approx T'(0)\,y$: aus $E<0$ folgt $\varepsilon_0\ge0$, aus $E>\ln T$ folgt $\varepsilon_0\le1$; nahe $-1^+$ gibt $-1\le E\le0$ dasselbe.
+      Transversal: $D'(0)=\varepsilon_0T'(0)/(b\ln b)$ und $D'(-1)=(\varepsilon_0-1)T'(-1)/(b\ln b)$.
+  stuetzt_sich_auf: [gr.satz.vorzeichen_reduktion, gr.satz.kettenregel]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B3'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Kettenregel und l''Hôpital.'
+    f2_benutzte_voraussetzungen: 'Differenzierbarkeit von T′ in b bei x = −1 und 0; T′(−1) > 0.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Jede wachsende Familie mit T_b(0) = 1.'
+    f5_neue_frage: 'Wie verhält sich ε₀(b)? → gr.beob.eps0_tabelle, kl.satz.eps0_b_gegen_1'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Übersetzt das Muster am Rand in eine prüfbare Zahl.', nutzen_stufe: mittel}
+
+- id: gr.beob.basis_monoton
+  titel: 'Gemessen von b = 1.01 bis 10⁴: grössere Basis hebt die Kurve auf (−2, −1) und (0, ∞) und senkt sie auf (−1, 0); Kurven verschiedener Basen schneiden sich nur bei −1 und 0'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: einstieg
+  objekte: [kneser_T, regulaer_T]
+  bereich: 'regulär am anziehenden Fixpunkt für $b<\eta$, Kneser für $b>\eta$; Gitter $x=-1.95,\dots,2$ (Schritt $0.05$)'
+  aussage: |
+    Das Muster aus gr.satz.vorzeichen_reduktion gilt an allen gemessenen Basen: $1.01$, $1.1$, $1.3$, $1.44$, $1.444$, $\eta-10^{-3}$ (regulär), $\eta+10^{-3}$, $1.45$, $2$, $e$, $10$,
+    $1000$, $10^4$ (Kneser). Die Ränder der Ungleichungen: $\min(E+1)\ge0.42$, $\min\bigl((E-\ln T)/|\ln T|\bigr)\ge0.23$. $D$ auf 20 Stellen (dps 34, Schritt $10^{-10}$).
+    Bei fester Höhe ist $b\mapsto T_b(x)$ monoton (steigend auf $(-2,-1)\cup(0,\infty)$, fallend auf $(-1,0)$): alle 380 Nachbardifferenzen über 39 Basen von $1.01$ bis $1000$
+    (darunter $1.444$, $1.445$, $1.446$ beidseits $\eta$) an 10 Höhen haben das richtige Vorzeichen. $E$ steigt auf $(-1,0)$ streng von $\varepsilon_0-1$ nach $0$ und fällt bei
+    fester Höhe in $b$: $E(-\tfrac12)=-0.0454$ ($1.01$), $-0.190$ ($\eta$), $-0.230$ ($2$), $-0.311$ ($10$), $-0.405$ ($10^4$).
+  einfach: >-
+    Macht man die Basis grösser, wird die Tetrationskurve links von −1 und rechts von 0 höher, zwischen −1 und 0 aber tiefer. Darum kreuzen sich
+    Kurven verschiedener Basen nur bei −1 (Wert 0) und bei 0 (Wert 1).
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B4–B6, B8; d2_elastizitaet.py, a2_muster.py, d3_dicht.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026 an neuen Basen und Einstellungen (dps 28, Schritt 10⁻⁹): b = 3 und b = 1.3 Muster +…+0−…−0+…+ auf dem ganzen Gitter, E steigend; b = 3: min(E+1) = 0.559, min((E − ln T)/|ln T|) = 0.477, E(−½) = −0.2604 (zwischen 2 und 10).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); gr.satz.vorzeichen_reduktion macht es zu zwei Ungleichungen.'
+    f2_benutzte_voraussetzungen: 'Motor (fatou.gp-Fork), zentrale Differenzen in b und x; Gegenprobe dps 30 mit eigener Basisliste.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Unter und über η; für b → ∞ offen (gr.frage.vorzeichen_kneser).'
+    f5_neue_frage: 'Beweis der inneren Ungleichungen → gr.frage.vorzeichen_kneser'
+  bewertung: {richtigkeit: 'numerisch, 13 Basen fein, 39 Basen dicht, zwei Einstellungen', neuheit: neu_ungeprueft, nutzen: 'Beschreibt, wie die Tetrationskurve von der Basis abhängt — einfach und für alle Basen gleich.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: gr.satz.vorzeichen_reduktion}
+    - {typ: verwandt, ziel: kl.beob.stetig_eta}
+
+- id: gr.beob.eps0_tabelle
+  titel: 'Die Randzahl ε₀(b) liegt in (0, 1): sie fällt von 1 (b → 1) über 0.613 (η) bis 0.408 (b = 10⁴)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, regulaer_T, eta]
+  bereich: '$\varepsilon_0(b)=\partial\ln T_b''(0)/\partial\ln\ln b$ wie in gr.satz.elastizitaet_rand; regulär unter $\eta$, Kneser darüber'
+  aussage: |
+    | $b$ | $\varepsilon_0$ | $T'(0)$ |
+    |---|---|---|
+    | $1+10^{-6}$ | 0.927619011350656 | $1.38155238735013\cdot10^{-5}$ |
+    | $1+10^{-4}$ | 0.891564964316508 | $9.21121157816745\cdot10^{-4}$ |
+    | 1.01 | 0.795746922025197 | 0.046470364663981 |
+    | 1.1 | 0.694300150872462 | 0.252411832369148 |
+    | 1.3 | 0.634409655317119 | 0.494931191358990 |
+    | 1.444 | 0.613038361675502 | 0.610624490849637 |
+    | $\eta+10^{-3}$ | 0.612836763472541 | 0.611799684319319 |
+    | 1.45 | 0.612316944671937 | 0.614837428629744 |
+    | 2 | 0.571578377725955 | 0.889364954620976 |
+    | $e$ | 0.547308383994694 | 1.09176735125832 |
+    | 10 | 0.492576113765722 | 1.68428902795601 |
+    | 100 | 0.448962383770609 | 2.33385048951909 |
+    | 1000 | 0.424696207332254 | 2.78599024341557 |
+    | $10^4$ | 0.408139790749556 | 3.14051125641320 |
+
+    $\varepsilon_0$ ist stetig und fallend durch $\eta$ ($\varepsilon_0(\eta)\approx0.61296$), 12–17 Stellen (Spanne zweier Einstellungen $10^{-18}$ bis $5\cdot10^{-14}$).
+    Für grosse $b$ fällt $\varepsilon_0$ fast linear in $\ln\ln b$, Steigung $-0.063$, $-0.060$, $-0.058$ (von 10 über 100 und 1000 bis $10^4$), langsam flacher.
+    Folge: zwischen $b=10$ und $10^4$ wächst $T_b'(0)$ etwa wie $(\ln b)^{0.45}$, nicht wie $\ln\ln b$.
+  einfach: >-
+    Die Zahl, die das Muster am Rand regelt, liegt immer zwischen 0 und 1 — nahe 1 für Basen knapp über 1, um 0.61 bei η und um 0.41 bei der Basis 10 000.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B9, B11 und Tabelle ε₀(b); d2_elastizitaet.py, a4_eps0_tabelle.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026 mit neuen Einstellungen (dps 32, Schritt 10⁻¹⁰): ε₀(2) = 0.571578377725955, ε₀(η + 10⁻³) = 0.612836763472541; dps 28, Schritt 10⁻⁹: ε₀(1.3) = 0.63440965531712 — gleich wie in der Tabelle.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Motor bei dps 30–40, gemischte zentrale Differenzen; bei η + 10⁻⁴ und b = 10⁵ versagt der Motor (∂_bT′(0) falsch bzw. Abbruch).'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'T′(0) bei e, 2, 100, 1000, 10⁴ trifft kn.beob.grosse_basis und den bekannten Wert 1.0917673512583.'
+    f5_neue_frage: 'Bleibt ε₀ für b → ∞ positiv? Linear weiter fiele es bei ln ln b ≈ 9 auf 0, und das Muster bräche bei x = 0 (gr.frage.vorzeichen_kneser).'
+  bewertung: {richtigkeit: 'numerisch, 12–17 Stellen', neuheit: neu_ungeprueft, nutzen: 'Prüfzahlen für jede Theorie der Basisabhängigkeit; belegt 0 < ε₀ < 1.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: gr.satz.elastizitaet_rand}
+    - {typ: verwandt, ziel: kn.beob.grosse_basis}
+
+- id: gr.beob.wackeln_basen
+  titel: 'Vorwärtssumme plus Wackeln: Knesers Basisableitung weicht von der Kobi-Form nur um 0.5–0.64 % ab, auch für b → η⁺'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, periodische_stoerung]
+  bereich: '$b>\eta$, $u=D/T''$; $r(x)=\dfrac{T(x)}{b\ln b\,T''(x)}=\dfrac1{b\ln^2b\,T''(x-1)}$'
+  aussage: |
+    Struktur (bewiesen, die u-Fassung von gr.satz.turm_pde): $u=u_0+w$ mit der Vorwärtssumme $u_0(x)=\sum_{k\ge0}[r(k)-r(x+k)]$ und einem 1-periodischen $w$, $w(0)=0$;
+    für die Familie mit konstantem $p$ aus gr.satz.turm_pde ist $w\equiv0$.
+    Gemessen für Kneser, Spanne von $w$ (Gitter $0.05$): $1.512\cdot10^{-3}$ ($\eta+10^{-3}$), $1.500\cdot10^{-3}$ ($1.45$), $5.66\cdot10^{-4}$ ($2$), $2.85\cdot10^{-4}$ ($e$),
+    $3.23\cdot10^{-5}$ ($10$), $1.0\cdot10^{-7}$ ($1000$), $7.4\cdot10^{-9}$ ($10^4$); relativ zu $|u(-\tfrac12)|$: $0.64\,\%$, $0.64\,\%$, $0.60\,\%$, $0.59\,\%$, $0.55\,\%$, $0.51\,\%$, $0.50\,\%$.
+    Für $b\to\eta^+$ bleibt $w$ endlich. Periodizität von $w$ am Gitter: $6\cdot10^{-14}$ bis $7\cdot10^{-24}$. Also gibt $D\approx T'u_0$ die Kneser-Basisableitung überall auf weniger als $0.7\,\%$
+    und trifft das Vorzeichenmuster.
+  einfach: >-
+    Eine einfache Summe entlang der immer höheren Türme gibt fast genau an, wie Knesers Tetration auf eine Änderung der Basis reagiert — bis auf ein kleines,
+    regelmässiges Wackeln von weniger als einem Prozent, das auch knapp über η nicht verschwindet.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B12–B14; a2_muster.py'}, {ref: forum_tid417}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026 an der neuen Basis b = 3 (dps 28, Schritt 10⁻⁹): Spanne von w 2.34·10⁻⁴, das sind 0.58 % von |u(−½)| = 0.0403; Periodizitätsfehler 7.9·10⁻¹⁷ — passt zwischen e und 10.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Struktur ja (Teleskopsumme aus gr.satz.basis_gleichung); die Grössen gemessen.'
+    f2_benutzte_voraussetzungen: 'Konvergenz der Vorwärtssumme (b > η, T′ wächst übergeometrisch); Motorwerte für D und T′.'
+    f3_spezialfall: 'Verallgemeinert gr.beob.kneser_pde_wackeln (dort nur b = 2 und e: 5.7·10⁻⁴, 2.9·10⁻⁴).'
+    f4_uebertragbar: 'Auf jede Basis über η.'
+    f5_neue_frage: 'Grenzwert des Wackelns für b → η⁺ (Spanne ≈ 1.51·10⁻³) — hängt er mit der Écalle-Invariante von eᵘ − 1 zusammen? Mittelwertsatz für ∂_bθ_b?'
+  bewertung: {richtigkeit: 'numerisch; Periodizität auf ≥ 13 Stellen', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass die Kobi-Form die Basisableitung fast trifft, und wie das Wackeln mit der Basis abnimmt.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: gr.beob.kneser_pde_wackeln}
+    - {typ: verwandt, ziel: gr.satz.turm_pde}
+    - {typ: verwandt, ziel: kl.satz.c1_noerlund}
+
+- id: gr.frage.vorzeichen_kneser
+  titel: 'Offen: Warum gilt max(−1, ln T) < E < 0 auf (−1, 0) für Kneser — und bleibt ε₀ für grosse Basen positiv?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [kneser_T, regulaer_T]
+  aussage: |
+    (1) Beweis der inneren Ungleichungen $\max(-1,\ln T(y))<E(y)<0$ für $y\in(-1,0)$ (gr.satz.vorzeichen_reduktion) für Kneser über $\eta$ und regulär unter $\eta$ — etwa über die Fatou-Koordinate,
+    oder für die Kobi-Familie über die nach dem Bericht gleichwertige Bedingung $R(x+1)<R(0)<R(x)$, $R(x)=\sum_{k\ge-1}1/T'(x+k)$, $R(-1)=R(0)$.
+    (2) Bleibt $\varepsilon_0(b)>0$ für $b\to\infty$? Fiele es linear in $\ln\ln b$ weiter (gr.beob.eps0_tabelle), würde es nahe $\ln\ln b\approx9$ null, und das Muster bräche bei $x=0$.
+    (3) Ist $T_b(x)$ auch für komplexe Höhen monoton in $b$, und was sagt die zweite Basisableitung $\partial_b^2T$?
+  einfach: >-
+    Das Muster ist überall gemessen, aber nicht bewiesen. Und niemand weiss, ob es für riesige Basen hält.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, N1, N2, Offene Fragen 1, 2, 5'}]
+  naechste_frage: 'Für (2) braucht der Motor Basen über 10⁵ (dort bricht er heute ab). Der Versuch über die Vorwärtssumme führte nur auf die gleichwertige Bedingung in (1).'
+  kanten:
+    - {typ: verwandt, ziel: gr.satz.vorzeichen_reduktion}
+    - {typ: verwandt, ziel: gr.beob.basis_monoton}

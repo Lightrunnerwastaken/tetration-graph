@@ -24,7 +24,7 @@
 - id: gleichung.werte
   eltern: gleichung
   name: Werte, Ableitungen, Gestalt
-  kurz: Türme an ganzen Stellen, Steigungen, Krümmung und Ableitung nach der Basis.
+  kurz: Türme an ganzen Stellen, Steigungen, Krümmung und Ableitung nach der Basis — und wie eine grössere Basis die Kurve hebt und senkt.
   straenge: [gr.werte, gr.kurve, gr.ableitung, gr.basis]
 - id: gleichung.integrale
   eltern: gleichung
@@ -71,6 +71,12 @@
   name: Der Erzeuger J
   kurz: Tetration als Strömung eines Vektorfelds — und wo eine gebrochene Iteration singulär sein muss.
   straenge: [it.erzeuger]
+- id: dynamik.flucht
+  eltern: dynamik
+  name: Fluchtmenge und Haare
+  kurz: Welche Stellen die Tetration in die Flucht von eᶻ schickt — ein schräges Gitter in Kneser-Koordinaten — und warum kein Haar von eᶻ den Fixpunkt L erreicht.
+  straenge: [kn.flucht]
+  aussagen: [fp.satz.kein_haar_bei_L]
 
 # ------------------------------------------------------------------ Turm und Basen-Ebene
 - id: turm
@@ -119,8 +125,8 @@
 - id: fortsetzung.kneser
   eltern: fortsetzung
   name: Kneser über η
-  kurz: Holomorphe Lösung über die komplexen Fixpunkte L und L̄.
-  straenge: [kn.konstruktion, kn.rand, kn.singularitaeten]
+  kurz: Holomorphe Lösung über die komplexen Fixpunkte L und L̄ — auch für komplexe Basen — und die ganzen Riemannschen Flächen von sexp und slog.
+  straenge: [kn.konstruktion, kn.rand, kn.singularitaeten, kn.riemannflaeche, kn.theta_komplex]
 - id: fortsetzung.andere
   eltern: fortsetzung
   name: Andere Konstruktionen
@@ -135,7 +141,7 @@
   eltern: fortsetzung
   name: Reelle Kennzeichnung?
   kurz: Gibt es wie bei Γ eine rein reelle Bedingung, die Kneser auswählt?
-  straenge: [br.reell]
+  straenge: [br.reell, br.halbebene, br.momente]
 - id: fortsetzung.halbexp
   eltern: fortsetzung
   name: Halbe Exponentialfunktion
@@ -215,17 +221,23 @@
   eltern: stufen
   name: Hyperoperationen
   kurz: Ackermann, andere Klammerungen, Ordinalzahlen.
+  straenge: [br.klammerungen]
   aussagen: [br.def.hyperoperation, br.satz.ackermann, br.satz.ordinal_tetration, br.satz.hyperop_varianten]
 - id: stufen.welle
   eltern: stufen
   name: Knesers Welle auf höheren Rängen
-  kurz: Die Welle ist dort singulär, wo die Kneser-Lösung einen Wert trifft, den die reguläre auslässt; die Art des Knicks kommt aus zwei Multiplikatoren.
+  kurz: Die Welle ist dort singulär, wo die Kneser-Lösung einen Wert trifft, den die reguläre auslässt; die Art des Knicks kommt aus zwei Multiplikatoren — an einem anziehenden Fixpunkt endet sie an einer natürlichen Grenze, dem Rand des Beckens.
   straenge: [kn.theta_raenge]
 - id: stufen.basiswechsel
   eltern: stufen
   name: Basiswechsel höherer Ränge
-  kurz: Ab Rang 5 wird der Schälschritt selbst wellig; die tiefere Welle wird auf jeder Ebene eingespeist — eine Weierstrass-artige, raue Phase.
+  kurz: Ab Rang 5 wird der Schälschritt selbst wellig; die tiefere Welle wird auf jeder Ebene eingespeist — keine Weierstrass-Rauheit, sondern eine singuläre, Cantor-artige Phase (Ableitung fast überall 0), die man auf keiner rechenbaren Skala sieht.
   straenge: [bw.hoehere_raenge]
+- id: stufen.basis
+  eltern: stufen
+  name: Ränge als Funktion der Basis
+  kurz: Gerade Grenzbasen sind nur Schwellen, ungerade echte Bruchstellen; an η₅ passen reguläre und Kneser-artige Hexation nicht zusammen.
+  straenge: [kn.raenge_basis]
 - id: stufen.grenzprofil
   eltern: stufen
   name: Die Leiter im Grenzfall
@@ -264,7 +276,7 @@
 - id: zahlen.transzendenz
   eltern: zahlen
   name: Transzendenz
-  kurz: Gelfond–Schneider, Schanuel und was die Gleichung über Zahlwerte erzwingt.
+  kurz: Gelfond–Schneider, Schanuel und was die Gleichung über Zahlwerte und Steigungen erzwingt — und warum die Kehrwertsumme eines Turms ganzer Zahlen transzendent ist.
   straenge: [ar.klassisch, ar.gleichung, ar.zaehlen]
 - id: zahlen.ks
   eltern: zahlen

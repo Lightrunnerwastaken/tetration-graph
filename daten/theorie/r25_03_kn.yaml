@@ -1,0 +1,59 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 03 „Zweigwahl-Zertifikat in Intervallarithmetik“ (forschung/runde_2026_10_25/03_zweigwahl_zertifikat/BERICHT.md).
+# Bezeichnungen σ, Ψ, h, F, θ: kn.def.theta_welle; ℓ = Log λ; S4: σ(sexp z) = e^{ℓ(z+θ(z))}.
+
+kn.lem.zweig_ein_ball:
+  worum: |
+    Die Formeln für Knesers Welle θ ([[kn.satz.theta_singularitaet]], [[kn.satz.theta_koeffizienten]]) brauchen, dass $\sigma\circ\mathrm{sexp}$ und $e^{\ell(z+\theta)}$ übereinstimmen
+    und nicht um einen anderen Zweig von $\Psi^{-1}$ auseinanderliegen. Wie prüft man das?
+  genau: |
+    Es genügt ein Punkt $z_0$ und dort die Aussage $P=e^{\ell(z_0+\theta(z_0))}\in\sigma(\mathbb H)$; diese folgt aus $|P-\sigma(w_1)|<|\sigma'(w_1)|\,\mathrm{Im}\,w_1/4$ für irgendein $w_1\in\mathbb H$.
+  warum: |
+    $\Psi$ ist auf $\sigma(\mathbb H)$ die Umkehrung von $\sigma$. Liegt $P$ dort, so ist $\Psi(P)=\mathrm{sexp}\,z_0$ genau der Punkt, den $\sigma$ wieder auf $P$ abbildet. Dass $P$ dort liegt,
+    zeigt Koebes ¼-Satz: das Bild einer Scheibe unter einer schlichten Funktion enthält eine Scheibe von bekannter Grösse.
+  beispiel: |
+    Basis $e$, $z_0=0.05i$: $\rho\ge0.1212$, gemessener Abstand $2.2\cdot10^{-61}$.
+  bilder: []
+  einordnung: |
+    Rechnung: [[kn.satz.zweigwahl_zertifikat]]; Baustein: [[kn.lem.sigma_de_branges]].
+
+kn.lem.sigma_de_branges:
+  worum: |
+    Für ein Zertifikat braucht man $\sigma(w_1)$ und $\sigma'(w_1)$ mit garantierter Fehlergrenze.
+  genau: |
+    $\sigma(w)=\lambda^n\sigma(\log_b^nw)$, und nahe $L$ gilt $|\sigma(L+u)-u|\le R(t/(1-t)^2-t)$, $t=|u|/R$.
+  warum: |
+    Wiederholtes Logarithmieren zieht jeden Punkt der oberen Halbebene zum Fixpunkt $L$. Dort ist $\sigma$ fast die Identität; wie weit genau, sagt der Satz von de Branges ($|a_k|\le k$),
+    weil $\sigma$ auf einer Scheibe um $L$ schlicht ist.
+  beispiel: |
+    Basis $e$: nach 450 Schritten ist der Rest etwa $10^{-61}$.
+  bilder: []
+  einordnung: |
+    Rigorose Fassung von Koenigs' Linearisierung ([[it.satz.koenigs]]); benutzt in [[kn.satz.zweigwahl_zertifikat]].
+
+kn.satz.zweigwahl_zertifikat:
+  worum: |
+    Die letzte Lücke in den θ-Sätzen war ein Gleitkomma-Zertifikat an einem Punkt, nur für Basis $e$. Hält es mit Intervallen, und für Basis 2?
+  genau: |
+    Ja: an vier Punkten je Basis mit Abstand $\approx10^{-61}$ bei nötigen $<0.03$ bis $0.12$. Die Motordaten müssen nur auf $0.027$ stimmen.
+  warum: |
+    Alle Schritte laufen in Ballarithmetik; einzig die Eingabe $\theta_{\rm num}$ stammt aus dem Motor. Weil die Prüfung $|P-\sigma(w_1)|<\rho$ eine riesige Reserve hat, verträgt sie
+    einen Fehler der Eingabe von $0.027$ — der Motor ist $57$ Grössenordnungen genauer.
+  beispiel: |
+    Basis 2, $z_0=0.05i$: $|P-\sigma(w_1)|\le1.6\cdot10^{-61}$, $\rho\ge0.0980$, $\tau_{\max}\ge0.0273$.
+  bilder: []
+  einordnung: |
+    Stützt [[kn.satz.theta_singularitaet]] und [[kn.satz.theta_koeffizienten]]; gleiche Art Motor-Annahme wie [[gr.satz.ein_wendepunkt_e2]]; für Basis $e$ wohl ganz streng machbar mit [[kn.satz.kneser_e_zertifiziert]].
+
+kn.satz.sexp_schlicht_nahe_null:
+  worum: |
+    Um die Zweigwahl von einem Punkt auf den Halbkreis um 0 zu übertragen, muss $\mathrm{sexp}$ dort in der oberen Halbebene bleiben.
+  genau: |
+    $\mathrm{sexp}$ ist auf $|z|<0.1$ schlicht; $\mathrm{sexp}\,z=1+Az(1+\varepsilon_0)$ mit $|\varepsilon_0|\le0.0277$ (Basis $e$) bzw. $0.0030$ (Basis 2).
+  warum: |
+    Ist der Realteil der Ableitung auf einer konvexen Scheibe positiv, nimmt die Funktion dort keinen Wert zweimal an (Noshiro–Warschawski). Die Ableitung ist $A$ plus wenig, weil die
+    Taylor-Koeffizienten schnell fallen.
+  beispiel: |
+    Basis $e$: $\sum_{k\ge2}k|c_k|0.1^{k-1}\le0.061$ gegen $A=1.092$.
+  bilder: []
+  einordnung: |
+    Hilfssatz für [[kn.lem.zweig_ein_ball]] und die Majorante in [[kn.satz.theta_mittelwerte]].

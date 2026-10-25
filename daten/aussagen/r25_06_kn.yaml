@@ -1,0 +1,253 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 06: Riemannsche Fläche von sexp — Nebenblätter und Verzweigungspunkte (Kneser, Basis e). Rechnungen: forschung/runde_2026_10_25/06_riemannflaeche_sexp/.
+# Bezeichnungen: F_N(z) = sexp(z+N) auf dom_N = {z : z+N ∉ (−∞,−2]} (Hauptblatt); E_k = exp^[k](0) = sexp(k−1), also E_0 = 0, E_1 = 1, E_2 = e, …
+# Z = Nullstellen aller Zweige, P = Projektionen aller Verzweigungspunkte. Schliesst an kn.satz.nebenblatt_zweigpunkte (Runde 18) an.
+aussagen:
+
+- id: kn.satz.riemannflaeche_logueberlagerung
+  titel: 'Die Riemannsche Fläche von sexp ist die volle Logarithmus-Überlagerung ihrer eigenen Verschiebung; alle Zweigwerte sind Log-Ketten von sexp(z+K)'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, singularitaet_m2]
+  bereich: 'Knesers $\mathrm{sexp}=\mathrm{sexp}_e$, holomorph auf dem Hauptblatt $\mathbb C\setminus(-\infty,-2]$; $\mathcal R$ die Riemannsche Fläche (maximale Fortsetzung des Hauptkeims), $\mathcal R_1$ die Fläche von $z\mapsto\mathrm{sexp}(z+1)$ mit der Funktion $S$'
+  aussage: |
+    $\mathcal R$ ist die volle Logarithmus-Überlagerung von $\mathcal R_1$ ohne die Nullstellen von $S$: Über jedem Punkt $p$ von $\mathcal R_1$ mit $S(p)\neq0$ liegen **alle** Logarithmen von $S(p)$
+    als Werte von $\mathrm{sexp}$. Gleichwertig: Die Werte aller regulären Zweige über $z$ sind
+    $$V(z)=\bigcup_K\bigl\{h_0:\ h_0=\log h_1,\ \dots,\ h_{K-1}=\log h_K,\ h_K=F_K(z),\ h_1,\dots,h_K\neq0\bigr\}$$
+    mit beliebigen Zweigen der Logarithmen (Ketten ohne Zwischenwert 0). Über einem regulären Punkt liegen abzählbar unendlich viele Werte.
+  einfach: >-
+    Setzt man Knesers Tetration auf alle möglichen Wege fort, bekommt man an jeder Stelle unendlich viele Werte. Es sind genau die Zahlen, die man aus sexp(z+K) durch K-maliges
+    Logarithmieren erhält, wobei man bei jedem Logarithmus frei wählen darf, um wie viele 2πi man ihn verschiebt.
+  beweis:
+    art: vollstaendig
+    text: |
+      Die Fortsetzung von $\mathrm{sexp}$ längs eines Weges existiert genau dann, wenn $S$ längs des Weges fortsetzbar ist und nicht 0 wird; dann ist $\mathrm{sexp}=\log S$
+      (aus $\mathrm{sexp}(z+1)=e^{\mathrm{sexp}(z)}$ und Eindeutigkeit). Also ist $\mathcal R$ die Komponente des Hauptkeims in $\{(p,\lambda):p\in\mathcal R_1,\ e^\lambda=S(p)\}$. Diese Überlagerung
+      ist zusammenhängend: $\mathcal R_1$ ohne die diskreten Nullstellen von $S$ ist zusammenhängend, und ein Umlauf um die einfache Nullstelle $z=-2$ von $S$ (Hauptblatt, $\mathrm{sexp}'(-1)\neq0$)
+      ändert $\lambda$ um $2\pi i$. Jeder Punkt über $z$ wird über einen beschränkten Weg erreicht; für grosses $N$ bleibt $\mathrm{sexp}(\cdot+N)$ längs des Weges auf dem Hauptblatt
+      (die Halbebene $\mathrm{Re}>-2$ ist einfach zusammenhängend). Also ist jeder Wert eine solche Kette, und durch wiederholte Anwendung des ersten Schritts kommt jede Kette vor.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/06_riemannflaeche_sexp/BERICHT.md, R1 und Abschnitt 1 (a), (b)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, aber der Schluss ist kurz: die Funktionalgleichung macht die Fläche selbstähnlich.'
+    f2_benutzte_voraussetzungen: 'sexp(z+1) = exp(sexp z) auf dem Hauptblatt; Holomorphie auf ℂ∖(−∞,−2]; einfache Nullstelle von sexp bei −1 (sexp′ ≠ 0, kn.satz.ableitung_nullstellenfrei).'
+    f3_spezialfall: 'Gleiche Bauart wie die Fläche des Logarithmus: der Umlauf um eine einfache Nullstelle erzeugt alle Zweige.'
+    f4_uebertragbar: 'Auf jede Basis b > η (Sprung 2πi/ln b) und auf jede Superfunktion von exp mit einfacher Nullstelle.'
+    f5_neue_frage: 'Wo genau liegen die Verzweigungen? → kn.satz.verzweigungsorte_charakterisierung'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Beschreibt die ganze Riemannsche Fläche von sexp in einem Satz.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.ableitung_nullstellenfrei}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.kneser_eigenschaften}
+    - {typ: verwandt, ziel: kn.satz.nebenblatt_zweigpunkte}
+
+- id: kn.satz.verzweigungsorte_charakterisierung
+  titel: 'Verzweigungsorte von sexp: z verzweigt genau dann, wenn sexp(z+M) = sexp(M−n) für ein M und ein n ≥ 2; Typ log^[n−1]'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, singularitaet_m2]
+  bereich: 'wie kn.satz.riemannflaeche_logueberlagerung; $\mathrm{sexp}$ in den Bedingungen auf dem Hauptblatt, $M$ so gross, dass $z+M$ im Hauptgebiet liegt'
+  aussage: |
+    Die Nullstellen aller Zweige sind
+    $$Z=\{\zeta:\ \exists M\ \ \mathrm{sexp}(\zeta+M)=\mathrm{sexp}(M-1)\},$$
+    alle einfach. Die Projektionen aller Verzweigungspunkte sind
+    $$P=\bigcup_{m\ge1}(Z-m)=\{z:\ \exists M,\ n\ge2:\ \mathrm{sexp}(z+M)=\mathrm{sexp}(M-n)\}.$$
+    Über $Z-m$ hat der betroffene Zweig eine Singularität vom Typ $\log^{[m]}$ („Tiefe“ $m=n-1$; Tiefe 1 ist ein reiner Logarithmus), andere Singularitäten gibt es nicht.
+    Um einen Punkt von $Z-1$ wirkt die Monodromie als $\lambda\mapsto\lambda+2\pi i$ auf dem betroffenen Logarithmus.
+    Damit ist die Lücke von kn.satz.nebenblatt_zweigpunkte geschlossen (dort war die Erreichbarkeit nur für $n\le2$ ausgeführt).
+  einfach: >-
+    Man kann genau sagen, wo die Fortsetzungen von Knesers Tetration „verzweigen“: an den Stellen z, deren Turm sexp(z+M) irgendwann genau auf den Turm einer der Zahlen −2, −3, −4, …
+    fällt. Je später das passiert, desto tiefer ist die Verzweigung (Logarithmus, Logarithmus vom Logarithmus, …).
+  beweis:
+    art: vollstaendig
+    text: |
+      Ein Zweig ist bei $\zeta$ null $\iff h_0=0\iff h_i=E_i$ für alle $i$ ($\exp$ ist eindeutig) $\iff F_K(\zeta)=E_K$ für ein $K$. Die Zwischenwerte $E_i\ge1$ sind nicht 0, die Kette ist also
+      zulässig (kn.satz.riemannflaeche_logueberlagerung). $h_0'=F_K'(\zeta)/(E_1E_2\cdots E_K)\neq0$, weil $\mathrm{sexp}'$ auf dem Hauptblatt nicht verschwindet: einfache Nullstelle.
+      Eine Singularität eines Zweigs über $z$ ist eine Stelle, an der ein Zwischenwert $h_m$ der Kette 0 wird, also $z+m\in Z$; dort ist $h_{m-1}=\log h_m$ logarithmisch verzweigt und $h_0$
+      vom Typ $\log^{[m]}$. Umgekehrt wird jeder Punkt von $Z-m$ von einem Zweig erreicht, dessen $h_m$ dort verschwindet.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/06_riemannflaeche_sexp/BERICHT.md, R2 und Abschnitt 1 (c), Monodromie'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus kn.satz.riemannflaeche_logueberlagerung und der Eindeutigkeit von exp.'
+    f2_benutzte_voraussetzungen: 'kn.satz.riemannflaeche_logueberlagerung; sexp′ ≠ 0 auf dem Hauptblatt (kn.satz.ableitung_nullstellenfrei).'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis b > η: z verzweigt ⇔ sexp_b(z+M) = sexp_b(M−n), n ≥ 2.'
+    f5_neue_frage: 'Wie liegen diese Punkte in der Ebene? → kn.satz.verzweigung_dicht'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Vollständige Liste der Verzweigungsorte; schliesst die Lücke aus Runde 18.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.riemannflaeche_logueberlagerung}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.ableitung_nullstellenfrei}
+    - {typ: verallgemeinert, ziel: kn.satz.nebenblatt_zweigpunkte, notiz: 'schliesst deren Lücke (Erreichbarkeit für alle n)'}
+
+- id: kn.satz.nebenblatt_nullstellen_rechts
+  titel: 'Nullstellen der Nebenzweige liegen rechts: Re sexp(ζ+N+k) ≥ sexp(N+k−1); jede feste Verzweigungstiefe ist nirgends dicht'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, singularitaet_m2, exp_familie]
+  bereich: 'wie kn.satz.verzweigungsorte_charakterisierung; $\zeta\in Z$, $N\ge0$ mit $\zeta+N$ im Hauptgebiet'
+  aussage: |
+    (i) Für $\zeta\in Z$ gilt $\mathrm{Re}\,\mathrm{sexp}(\zeta+N+k)\ge\mathrm{sexp}(N+k-1)$ für alle $k\ge0$. Insbesondere ist $\mathrm{Re}\,\mathrm{sexp}(w)\ge0$ für jede Nullstelle $w$ eines Nebenzweigs
+    im Hauptgebiet; die Punkte aus kn.satz.nebenblatt_zweigpunkte ($\mathrm{sexp}(w)=2\pi ik$) liegen genau auf dem Rand $\mathrm{Re}=0$.
+    (ii) Für jede feste Tiefe $m$ ist $Z-m$ nirgends dicht (sein Abschluss hat kein Inneres).
+  einfach: >-
+    Die Nullstellen auf den Nebenblättern sind nicht überall: Ihre Türme haben immer einen Realteil, der mindestens so gross ist wie der Turm 0, 1, e, e^e, … Darum liegen die Verzweigungen
+    einer festen Tiefe dünn in der Ebene, mit Lücken überall.
+  beweis:
+    art: vollstaendig
+    text: |
+      (i) Sei $c=\mathrm{sexp}(\zeta+N)$, $a_i=\exp^{[i]}(c)$ und $a_k=E_{N+k}$. Dann $\mathrm{Re}\,a_{k-1}=\log|a_k|=E_{N+k-1}$; aus $\mathrm{Re}\,a_{i+1}\ge E_{N+i+1}\ge1$ folgt
+      $\mathrm{Re}\,a_i=\log|a_{i+1}|\ge\log\mathrm{Re}\,a_{i+1}\ge E_{N+i}$ (Rückwärtsinduktion). (ii) Also liegt $G_N=\{c:\exists k\ \exp^{[k]}(c)=E_{N+k}\}$ in
+      $A_N=\{c:\mathrm{Re}\,\exp^{[i]}(c)\ge E_{N+i}\ \forall i\ge0\}$. $A_N$ ist abgeschlossen und hat kein Inneres: Auf einer offenen Menge in $A_N$ liefen alle Iterierten gleichmässig gegen $\infty$,
+      die Familie wäre normal, aber die Fatou-Menge von $\exp$ ist leer (Misiurewicz 1981). Weil $Z\cap\mathrm{dom}_N=F_N^{-1}(G_N)\subset F_N^{-1}(A_N)$ und $F_N$ offen ist, ist der Abschluss
+      von $Z$ in $\mathrm{dom}_N$ nirgends dicht; Verschiebungen erhalten das.
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/06_riemannflaeche_sexp/BERICHT.md, R3, R4 und Abschnitt 2'}
+    - {ref: misiurewicz1981, stelle: 'Julia-Menge von e^z ist ℂ (Fatou-Menge leer)'}
+  pruefung:
+    f1_folgt_unmittelbar: '(i) ja, eine Rückwärtsinduktion mit Re log u = log|u| ≥ log Re u; (ii) aus (i) und J(exp) = ℂ.'
+    f2_benutzte_voraussetzungen: 'kn.satz.verzweigungsorte_charakterisierung; Fatou-Menge von exp leer (Misiurewicz 1981, Quelle ungeprüft); F_N offen.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis b > η, da dort J(exp_b) = ℂ (fp.satz.abstossend).'
+    f5_neue_frage: 'Hausdorff-Dimension des Abschlusses von Z (er liegt in sexp⁻¹(A₀), einem „Haarbündel“ von exp)? Gibt es Punkte von Z im Streifen −2 < Re ≤ −1?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass jede einzelne Tiefe dünn ist — die Dichte entsteht erst aus allen Tiefen zusammen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.verzweigungsorte_charakterisierung}
+    - {typ: verwandt, ziel: kn.satz.nebenblatt_zweigpunkte}
+    - {typ: verwandt, ziel: fp.satz.abstossend}
+
+- id: kn.satz.verzweigung_dicht
+  titel: 'Die Verzweigungsorte aller Blätter von sexp liegen dicht in ℂ, sind aber abzählbar; jeder einzelne Zweig hat lokal nur endlich viele'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, singularitaet_m2, exp_familie]
+  bereich: 'wie kn.satz.verzweigungsorte_charakterisierung'
+  aussage: |
+    $P$ ist dicht in $\mathbb C$: Neben jedem Punkt der Ebene, auch neben einem harmlosen wie $0.3$, liegen auf geeigneten Nebenblättern beliebig nahe Verzweigungspunkte.
+    $P$ ist abzählbar, also eine Lebesgue-Nullmenge und mager. Jeder einzelne Zweig (eine Log-Kette fester Länge) hat in jedem beschränkten Gebiet nur endlich viele Singularitäten;
+    erst die Vereinigung über alle Zweige ist dicht, und jede feste Tiefe für sich ist nirgends dicht (kn.satz.nebenblatt_nullstellen_rechts).
+  einfach: >-
+    Auf irgendeinem der unendlich vielen Blätter liegt neben jeder Stelle der Ebene eine Verzweigung, beliebig nahe. Trotzdem sind es nur abzählbar viele Punkte, und jedes einzelne Blatt
+    sieht in einem beschränkten Stück der Ebene nur endlich viele davon.
+  beweis:
+    art: vollstaendig
+    text: |
+      Ist $c\in\exp^{-[s]}(1)$ und $F_N(z)=c$, so ist $F_{N+s}(z)=1=\mathrm{sexp}(0)$, also $z\in P$ für $N+s\ge2$. Die Rückwärtsbahn $\bigcup_s\exp^{-[s]}(1)$ liegt dicht in $J(\exp)=\mathbb C$
+      (1 ist kein Ausnahmewert; Satz über Rückwärtsbahnen ganzer Funktionen, Bergweiler 1993, Bull. AMS, Thm. 4). Ihr Urbild unter der offenen Abbildung $F_N$ ist dicht in $\mathrm{dom}_N$,
+      und $\bigcup_N\mathrm{dom}_N=\mathbb C$. Abzählbar: Jede Gleichung $\mathrm{sexp}(z+M)=\mathrm{sexp}(M-n)$ hat auf jedem Kompaktum von $\mathrm{dom}_M$ endlich viele Lösungen.
+      Endlichkeit je Zweig: Über einer beschränkten Scheibe $D\subset\mathrm{dom}_{N'}$ ist ein Zweig (und jede seiner Fortsetzungen in $D$) singulär nur, wo $F_{N'}$ einen der Werte
+      $E_1,\dots,E_{N'}$ annimmt — endlich viele Punkte in $\bar D$.
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/06_riemannflaeche_sexp/BERICHT.md, R5, R6 und Abschnitt 3; s2_dicht.py'}
+    - {ref: misiurewicz1981, stelle: 'J(e^z) = ℂ'}
+    - {ref: bergweiler1993, stelle: 'Rückwärtsbahnen nicht ausgenommener Punkte liegen dicht in J (Thm. 4 laut Bericht)', geprueft: nein}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus kn.satz.verzweigungsorte_charakterisierung und dem Satz über dichte Rückwärtsbahnen.'
+    f2_benutzte_voraussetzungen: 'J(exp) = ℂ (Misiurewicz 1981); Rückwärtsbahnen nicht ausgenommener Punkte liegen dicht in der Julia-Menge (Bergweiler 1993, ungeprüft); F_N offen.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Mit demselben Beweis auf jede Basis b > η (J(exp_b) = ℂ, fp.satz.abstossend). Für 1 < b < η (reguläre Tetration, exp_b hat eine Fatou-Menge) vermutlich nicht dicht — ungeprüft.'
+    f5_neue_frage: 'Wie schnell kommen Verzweigungsorte der Tiefe ≤ m an einen Punkt heran? → kn.frage.verzweigung_abstand'
+  bewertung: {richtigkeit: 'vollständig (zwei Sätze der Exponential-Dynamik zitiert)', neuheit: neu_ungeprueft, nutzen: 'Beantwortet die Frage aus Runde 18, ob die Verzweigungspunkte dicht liegen: ja.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.satz.verzweigungsorte_charakterisierung}
+    - {typ: verwandt, ziel: kn.satz.nebenblatt_zweigpunkte, notiz: 'beantwortet deren f5 („dicht in ℂ?“): ja'}
+    - {typ: verwandt, ziel: kn.satz.nebenblatt_nullstellen_rechts}
+
+- id: kn.beob.verzweigung_gitter
+  titel: 'Oben liegen die reinen Log-Verzweigungsorte in Reihen mit Abstand γ = 2πi/L; der Fehler schrumpft je Glied um den Faktor e^{2πiγ} ≈ −0.0012262 + 0.0004246i'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, fixpunkt_L, theta_kneser, schroeder]
+  bereich: 'Basis $e$, obere Halbebene; $\mathrm{sexp}=\Psi(\kappa e^{L(z+\theta(z)-a_0)})$ (kn.kor.doppelreihe_oben), $\gamma=2\pi i/L=4.44695+1.05794i$'
+  aussage: |
+    Die Lösungen von $\mathrm{sexp}(w)=2\pi ik$ (ihre Verschiebungen $w-1$ sind Verzweigungsorte der Tiefe 1) bilden oben Reihen $w_j$ mit $w_{j+1}-w_j\to\gamma$. Der Fehler
+    $\delta_j=w_{j+1}-w_j-\gamma$ erfüllt $\delta_{j+1}/\delta_j\to e^{2\pi i\gamma}=-0.00122619+0.00042455i$ ($|e^{2\pi i\gamma}|=e^{-2\pi\,\mathrm{Im}\gamma}=0.0012976$);
+    gemessen $-0.0012284+0.0004250i$ ($k=1$) und $-0.0012326+0.0004181i$ ($k=2$).
+
+    | $k$ | $j$ | $w_j$ | $\mathrm{sexp}'(w_j)$ |
+    |---|---|---|---|
+    | 1 | 0 | $2.004312482594688003944+0.709413540869403626679i$ | $-11.600149+6.494471i$ |
+    | 1 | 1 | $6.451336487382556769423+1.766298794622866278511i$ | $-11.520432+6.456817i$ |
+    | 1 | 2 | $10.89828756564794741946+2.824240112601807370779i$ | $-11.520514+6.456897i$ |
+    | 2 | 0 | $2.155871087462956998251+0.490641727266906844928i$ | $-30.486886+25.869768i$ |
+    | 2 | 1 | $6.60644184445492460808+1.546446382998737726742i$ | $-29.490303+26.208759i$ |
+    | 2 | 2 | $11.05338899528792567913+2.60439051951416481697i$ | $-29.491659+26.208780i$ |
+
+    Herleitung: $\mathrm{sexp}(w)=c$ mit festem Urbild $t\in\Psi^{-1}(c)$ heisst $w+\theta(w)=\mathrm{const}+j\gamma$, also $\delta_j=-(\theta(w_{j+1})-\theta(w_j))\approx a_1e^{2\pi iw_j}$, und das Verhältnis
+    aufeinanderfolgender Fehler ist $e^{2\pi i\gamma}$. Das Gitter $\mathbb Z+\gamma\mathbb Z$ ordnet die Punkte oben; eine echte Gitterperiode hat $\mathrm{sexp}$ aber nicht:
+    Verschieben um $\gamma$ erhält die Klasse nur asymptotisch ($\mathrm{Im}\to\infty$), Verschieben um 1 wechselt sie ($Z+1$ ist die Klasse von 0, nicht von $-1$).
+  einfach: >-
+    Weit oben in der Ebene liegen die Verzweigungsstellen fast auf einem schiefen Gitter. Die Abweichung vom Gitter wird von Punkt zu Punkt etwa 770-mal kleiner, genau wie die Theorie vorhersagt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/06_riemannflaeche_sexp/BERICHT.md, R7, R10 und Abschnitt 4; s1_familie.py, daten/familie_40.json, daten/s1_dps50.log'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe beim Eintragen (25.10.2026): s1_familie.py 45 (dps 45, neue Motorwerte) gibt alle w_j für k = 1, 2, −1 auf den 22 gedruckten Stellen wie bei dps 40 und 50, dieselben δ_j und δ₁/δ₀ = −0.0012284 + 0.0004250i (k = 1), −0.0012326 + 0.0004181i (k = 2).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Gitterrichtung γ ja (aus kn.satz.wertevorrat); das Fehlergesetz aus der Kneser-Darstellung oben, Restglied nicht abgeschätzt.'
+    f2_benutzte_voraussetzungen: 'Kneser-Darstellung oben mit θ = a₀ + a₁e^{2πiz} + …; Motor-Newton bei dps 40, 45, 50.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis b > η mit γ = 2πi/L_b.'
+    f5_neue_frage: 'Restglied abschätzen; das gemessene Verhältnis weicht relativ um 0.2 % ab — passt das zum nächsten Fourier-Glied a₂?'
+  bewertung: {richtigkeit: 'hergeleitet (ohne Restglied) und numerisch auf 22 Stellen', neuheit: neu_ungeprueft, nutzen: 'Ordnet die Verzweigungsorte oben; das Fehlergesetz war neu, die Gitterrichtung aus Runde 18 bekannt.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.wertevorrat}
+    - {typ: verwandt, ziel: kn.kor.doppelreihe_oben}
+    - {typ: verwandt, ziel: kn.satz.verzweigungsorte_charakterisierung}
+
+- id: kn.beob.verzweigung_nah
+  titel: 'Beispiele naher Verzweigungsorte: Tiefe 1 bei 0.300141 − 0.006244i, nur 0.0062 neben dem harmlosen Punkt 0.3'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, singularitaet_m2]
+  bereich: 'Basis $e$; Konstruktion aus kn.satz.verzweigung_dicht: Bahn $o_i=\exp^{[i]}(\mathrm{sexp}(z_0))$, Ziel in $\exp^{-1}(E_j)$ nahe $o_{s-1}$, rückwärts logarithmieren, dann Newton in $z$'
+  aussage: |
+    | Ausgangspunkt $z_0$ | Tiefe | Verzweigungsort $z$ | Abstand $\lvert z-z_0\rvert$ | Bedingung |
+    |---|---|---|---|---|
+    | $0.3$ | 1 | $0.300141218682681-0.006243993284628i$ | $0.0062$ | $\mathrm{sexp}(z+4)=\mathrm{sexp}(2)$ |
+    | $1.3+0.1i$ | 2 | $1.302765581658078+0.103084277039998i$ | $0.0041$ | $\mathrm{sexp}(z+3)=\mathrm{sexp}(0)$ |
+    | $-0.5+0.25i$ | 3 | $-0.518732284642257+0.215501282693660i$ | $0.039$ | $\mathrm{sexp}(z+4)=\mathrm{sexp}(0)$ |
+
+    Bei $0.3$ werden die Abstände von Stufe zu Stufe ($s=2,3,4$) überexponentiell kleiner: $1.24$, $0.29$, $0.0062$. Nahe $0.3$ liegt also ein Punkt der Tiefe 1 im Abstand $0.006$,
+    obwohl die Tiefe-1-Punkte nirgends dicht sind: Wie nahe eine feste Tiefe herankommt, hängt stark vom Punkt ab.
+  einfach: >-
+    Schon neben der Stelle 0.3, wo Knesers Tetration ganz harmlos ist, liegt auf einem Nebenblatt eine Verzweigung, nur sechs Tausendstel entfernt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/06_riemannflaeche_sexp/BERICHT.md, R8, R9; s2_dicht.py, daten/dicht_40.json'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe beim Eintragen (25.10.2026): s2_dicht.py 45 (dps 45, neue Motorwerte) gibt alle drei Punkte auf mindestens 15 Stellen gleich (z. B. 0.300141218682681473 − 0.00624399328462789499i), Kettenprobe ≤ 4·10⁻¹³⁴.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung); die Existenz folgt aus kn.satz.verzweigung_dicht.'
+    f2_benutzte_voraussetzungen: 'Motor-Newton auf dem Hauptblatt bei dps 40 und 45; die Kette exp^[s](u₀) = E_j ist exakt geprüft.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jeden Ausgangspunkt und jede Basis b > η.'
+    f5_neue_frage: 'Gilt d_m(z) ≍ 1/|F_m′(z)| für den Abstand zur nächsten Verzweigung der Tiefe ≤ m? → kn.frage.verzweigung_abstand'
+  bewertung: {richtigkeit: 'numerisch, zwei Einstellungen, 15 Stellen', neuheit: neu_ungeprueft, nutzen: 'Macht die Dichte greifbar: konkrete Verzweigungsorte neben gewöhnlichen Punkten.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.verzweigung_dicht}
+    - {typ: verwandt, ziel: kn.satz.nebenblatt_nullstellen_rechts}
+
+- id: kn.frage.verzweigung_abstand
+  titel: 'Wie schnell nähern sich Verzweigungsorte fester Tiefe einem Punkt, und wie gross ist der Abschluss der Nullstellenmenge der Nebenzweige?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [kneser_T, singularitaet_m2, exp_familie]
+  aussage: |
+    (1) Abstand $d_m(z)$ von $z$ zum nächsten Verzweigungsort der Tiefe $\le m$: vermutlich $d_m\asymp1/|F_m'(z)|$ (überexponentiell klein); eine Schranke von unten fehlt.
+    (2) Hausdorff-Dimension des Abschlusses von $Z$: Er liegt in $\mathrm{sexp}^{-1}(A_0)$, und $A_0=\{c:\mathrm{Re}\,\exp^{[i]}(c)\ge E_i\ \forall i\}$ ist ein „Haarbündel“ der Exponentialabbildung.
+    (3) Gibt es Punkte von $Z$ im Streifen $-2<\mathrm{Re}\,z\le-1$? (kn.satz.nebenblatt_nullstellen_rechts sagt dort nur $\mathrm{Re}\,\mathrm{sexp}\ge0$.)
+    (4) Andere Basen: Für $b>\eta$ gilt die Dichte wie für $e$; für $1<b<\eta$ hat $\exp_b$ eine Fatou-Menge, und die Verzweigungsorte der regulären Tetration sind vielleicht nicht dicht.
+  einfach: >-
+    Wie nahe kommen Verzweigungen einer bestimmten Tiefe an einen Punkt heran, und wie „dick“ ist die Menge der Nullstellen auf den Nebenblättern?
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/06_riemannflaeche_sexp/BERICHT.md, Offene Fragen 1–4'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.verzweigung_dicht}
+    - {typ: verwandt, ziel: kn.satz.nebenblatt_nullstellen_rechts}
+    - {typ: verwandt, ziel: fp.satz.messbare_dynamik}

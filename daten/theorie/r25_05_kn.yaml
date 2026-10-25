@@ -1,0 +1,83 @@
+# Theorie-Blöcke: Runde 25.10.2026, Bericht 05 — Knesers Welle für komplexe Basen (forschung/runde_2026_10_25/05_komplexe_basen_welle/BERICHT.md).
+# Bezeichnungen: θ_U = h₊∘sexp − id = Σ aₙqⁿ (oben, Fixpunkt L₊), θ_L (unten, L₋), F± = Ψ±(λ±^s), A = sexp′(0).
+
+kn.satz.komplex_radius:
+  worum: |
+    Bleibt die scharfe Stelle der Kneser-Welle bei den ganzen Zahlen erhalten, wenn die Basis komplex wird?
+  genau: |
+    Ja: Die $q$-Reihe von $\theta_U$ (und die $p$-Reihe von $\theta_L$) hat Radius $\le1$, und $q=1$ ist singulär.
+  warum: |
+    $\mathrm{sexp}(-1)=0$ für jede Basis, aber $F_\pm=\Psi_\pm(\lambda_\pm^s)$ wird nie 0, weil $\Psi(\lambda u)=b^{\Psi(u)}$ und $b^w\neq0$. Wäre $\theta_U$ bei $-1$ holomorph,
+    gäbe $\mathrm{sexp}=F_+(z+\theta_U)$ dort den Wert 0.
+  beispiel: |
+    Bei $\ln b=2\,ie^{-i}$ fallen die $a_n$ wie $0.139/(n\ln n)$ — wie bei reellen Basen, also Radius genau 1.
+  bilder: []
+  einordnung: |
+    Reeller Fall: [[kn.satz.theta_singularitaet]]; Darstellung für komplexe Basen: [[kn.satz.paulsen_komplex]].
+
+kn.beob.komplex_koeffizientengesetz:
+  worum: |
+    Gilt die geschlossene Formel für Knesers Wellenkoeffizienten auch für komplexe Basen?
+  genau: |
+    $a_n\approx[q^n]h_+((c_U+\log(1-q))/\ln b)$ mit $c_U=\log(iA/(2\pi\ln b))$; unten ebenso mit $h_-$ und $c_L=\log(-iA/(2\pi\ln b))$.
+  warum: |
+    Nahe $q=1$ ist $z\approx i(1-q)/2\pi$ und $\log_b\mathrm{sexp}\,z\approx Az/\ln b$; zweimal logarithmiert und in $h_+$ eingesetzt entsteht die Formel, wie im reellen Fall.
+    Unten ist $z\approx-i(1-p)/2\pi$, daher das Minuszeichen.
+  beispiel: |
+    $\ln b=2\,ie^{-i}$: relativer Rest $0.11/n$ bei $n=200$.
+  bilder: []
+  einordnung: |
+    Reeller Fall: [[kn.satz.theta_koeffizienten]]; Ausnahme nahe am Rand: [[kn.beob.rand_zusatzsingularitaet]].
+
+kn.beob.komplex_wellen_unsymmetrisch:
+  worum: |
+    Sind obere und untere Welle für komplexe Basen noch Spiegelbilder?
+  genau: |
+    Nein: $a_0^U=22.911+3.524i$, $a_0^L=10.370-4.063i$ bei $\ln b=2\,ie^{-i}$.
+  warum: |
+    Ohne reelle Basis fehlt die Spiegelsymmetrie; die beiden Fixpunkte $L_\pm$ stossen verschieden stark ab ($|\lambda_+|=1.35$, $|\lambda_-|=2.12$).
+  beispiel: |
+    $|a_1^U|=0.08979$, $|a_1^L|=0.09317$.
+  bilder: []
+  einordnung: |
+    Beide Wellen folgen trotzdem dem Gesetz [[kn.beob.komplex_koeffizientengesetz]].
+
+kn.beob.rand_zusatzsingularitaet:
+  worum: |
+    Was passiert mit Knesers Welle nahe am Rand des Shell–Thron-Gebiets?
+  genau: |
+    Bei $\ln b=1.1\,ie^{-i}$ hat $\theta_U$ eine Singularität bei $z^*\approx0.0338+0.0114i$ in der oberen Halbebene; die Koeffizienten wachsen wie $1.074^n$.
+  warum: |
+    Gemessen über den Quotienten der Reste nach Abzug des Modells; eine Newton-Rechnung trifft dieselbe Stelle als Lösung von $\mathrm{sexp}(z)=\mathrm{sexp}(4)$.
+  beispiel: |
+    In der Richtung $\lambda\to e^i$ bei gleichem $|\lambda_+|$ tritt nichts dergleichen auf.
+  bilder: []
+  einordnung: |
+    Erklärungsversuch: [[kn.verm.zusatzsingularitaet_bahnwert]]; Knospen am Rand: [[fp.verm.knospen]].
+
+kn.verm.zusatzsingularitaet_bahnwert:
+  worum: |
+    Woher kommt die Zusatzsingularität von $\theta_U$?
+  genau: |
+    Vermutung: Sie sitzt über einem Bahnwert $\mathrm{sexp}(n)$ — hier $\mathrm{sexp}(z^*)=\mathrm{sexp}(4)$.
+  warum: |
+    Die Bahnwerte $0,1,b,\dots$ sind asymptotische Werte von $F_+$ und damit singuläre Werte von $h_+$; das macht $\theta$ schon an den ganzen Zahlen singulär. In der Knospe 1/4 kehrt die
+    Bahn von 0 nach vier Schritten fast zu 0 zurück, darum liegt ein Urbild von $\mathrm{sexp}(4)$ ganz nahe bei 0.
+  beispiel: |
+    $\mathrm{sexp}(3)=0.0372+0.0025i\approx0$, $\mathrm{sexp}(4)=1.0332+0.0252i\approx1$; Urbild nahe 0: $0.0338189+0.0113749i$.
+  bilder: []
+  einordnung: |
+    Mechanismus wie in [[kn.satz.zoo_singulaerer_ort]]; Beobachtung: [[kn.beob.rand_zusatzsingularitaet]].
+
+kn.verm.a0_rand:
+  worum: |
+    Wie verhält sich der Mittelwert der Welle zum Shell–Thron-Rand hin?
+  genau: |
+    Vermutlich $a_0\approx(7\dots7.6)/\ln|\lambda_+|$.
+  warum: |
+    Nur gemessen, an sechs Basen in zwei Richtungen; eine Herleitung fehlt.
+  beispiel: |
+    $r=1.1$, Richtung $\lambda\to i$: $a_0=150.9$, $\ln|\lambda_+|=0.0466$, Produkt $7.03$.
+  bilder: []
+  einordnung: |
+    Gemessen mit denselben Läufen wie [[kn.beob.komplex_koeffizientengesetz]].

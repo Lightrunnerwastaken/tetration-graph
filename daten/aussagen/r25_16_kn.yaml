@@ -1,0 +1,223 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 16: Julia-Menge von e^z und wie Knesers sexp die Ebene abbildet (Fluchtmenge, Gitter, Linse, Haar-Urbilder).
+# Rechnungen: forschung/runde_2026_10_25/16_julia_menge_sexp/ (BERICHT.md, EINTRAG.md).
+aussagen:
+
+- id: kn.satz.flucht_urbild_dicht
+  titel: 'Welche Stellen schickt sexp in die Flucht? E = sexp⁻¹(I(exp)) ist verschiebungsinvariant, dicht und hat Fläche null'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [kneser_T, exp_familie]
+  bereich: 'Basis $e$, $F=\mathrm{sexp}$ (Kneser) auf $\mathbb C\setminus(-\infty,-2]$; $I(\exp)=\{w:\exp^{\circ n}(w)\to\infty\}$ die Fluchtmenge von $e^w$ (die Julia-Menge ist ganz $\mathbb C$)'
+  aussage: |
+    Sei $E=F^{-1}(I(\exp))$. Dann gilt:
+    (i) $z\in E\iff F(z+n)\to\infty$ für $n\to\infty$; und $z\in E\iff z+1\in E$ (soweit beide Stellen im Definitionsbereich liegen).
+    (ii) $E$ ist dicht im Definitionsbereich, hat aber Lebesgue-Mass $0$.
+    (iii) $E$ enthält $(-2,\infty)$ und alle Mengen $F^{-1}\bigl(\exp^{-n}(\mathbb R)\bigr)$, $n\ge0$.
+  einfach: >-
+    Bei eᶻ ist die Julia-Menge die ganze Ebene; interessant sind darum die Punkte, deren Bahn ins Unendliche flieht. Die Stellen z, die Knesers
+    Tetration auf solche Punkte abbildet, liegen überall dicht — zusammen haben sie aber die Fläche null.
+  beweis:
+    art: vollstaendig
+    text: |
+      (i) $F(z+n)=\exp^{\circ n}(F(z))$, und $I$ ist vollständig invariant ($w\in I\iff e^w\in I$).
+      (ii) Dicht: Wegen $J(\exp)=\mathbb C$ liegt die Rückwärtsbahn des flüchtenden Punkts $1$ dicht in $\mathbb C$, und sie besteht aus flüchtenden Punkten; also ist $I$ dicht.
+      $F$ ist offen, darum trifft $F(U)$ für jede offene Menge $U$ die Menge $I$. Mass 0: Für fast jedes $w$ häuft sich die Bahn am Orbit $0,1,e,\dots$ (Rees, Lyubich),
+      flieht also nicht; $I$ ist eine Nullmenge. Ausserhalb der diskreten Nullstellen von $F'$ ist $F$ lokal biholomorph, das Urbild einer Nullmenge ist wieder eine Nullmenge.
+      (iii) Jede reelle Bahn von $e^x$ flieht.
+  stuetzt_sich_auf: [fp.satz.messbare_dynamik]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/16_julia_menge_sexp/BERICHT.md, B1, B2'}, {ref: misiurewicz1981, stelle: 'J(e^z) = ℂ'}, {ref: rees1986, geprueft: sekundaer}, {ref: lyubich1987, geprueft: sekundaer}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der vollständigen Invarianz von I, J(exp) = ℂ und dem Mass-null-Satz von Rees und Lyubich (fp.satz.messbare_dynamik).'
+    f2_benutzte_voraussetzungen: 'Nur F(z+1) = exp F(z) und F holomorph, nicht konstant; Kneser-Eigenschaften werden nicht gebraucht (gilt für jede holomorphe Tetration zur Basis e).'
+    f3_spezialfall: 'Urbild einer vollständig invarianten Menge unter einer Superfunktion.'
+    f4_uebertragbar: 'Auf Basen b > η (konjugiert zu λe^w mit λ = ln b > 1/e), soweit dort I(λe^w) eine Nullmenge ist (nicht geprüft).'
+    f5_neue_frage: 'Hat E in jeder offenen Menge die Hausdorff-Dimension 2 (McMullen, lokal)? → kn.frage.flucht_torus'
+  bewertung: {richtigkeit: 'vollständig; die Mass-null-Aussage nur über fp.satz.messbare_dynamik (Rezensionen)', neuheit: folklore, nutzen: 'Grundlage für das Fluchtmuster von sexp.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.abstossend}
+
+- id: kn.satz.flucht_gitter
+  titel: 'Oben ist das Fluchtmuster von sexp doppelt periodisch: Gitter ℤ + (2πi/L)ℤ, und die Eintrittszeit wächst um 4 pro schrägem Schritt ω'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [kneser_T, schroeder, theta_kneser, fixpunkt_L, exp_familie]
+  bereich: 'Basis $e$, obere Halbebene; $\Psi$ Poincaré-Funktion an $L$ ($\Psi(Lw)=\exp\Psi(w)$, ganz), $F_L(u)=\Psi(e^{Lu})$, Kneser $F=F_L\circ h$ mit $h(z)=z+\theta(z)$ (kn.def.theta_welle); $E$ wie in kn.satz.flucht_urbild_dicht'
+  aussage: |
+    (i) $F_L$ ist ganz mit $F_L(u+1)=\exp F_L(u)$ und $F_L(u+P)=F_L(u)$, $P=2\pi i/L=4.446951+1.057940\,i$. Die Menge $E_L=F_L^{-1}(I(\exp))$ ist also invariant unter
+    dem Gitter $\Lambda=\mathbb Z+P\mathbb Z$ (reduzierte Basis $1$ und $\omega=P-4=0.446951+1.057940\,i$), und $E\cap\{\mathrm{Im}\,z>0\}=h^{-1}(E_L)$.
+    Wegen $h(z+\omega)-h(z)-\omega=\theta(z+\omega)-\theta(z)\to0$ für $\mathrm{Im}\,z\to\infty$ ist $E$ oben asymptotisch $\Lambda$-periodisch.
+    (ii) Für den Eintrittsindex $N_L(u)=\min\{n\in\mathbb Z:\mathrm{Re}\,F_L(u+n)>R\}$ ($R>\mathrm{Re}\,L$) gilt $N_L(u+1)=N_L(u)-1$, $N_L(u+P)=N_L(u)$, und
+    $$N_L(u)+\frac{\mathrm{Re}(Lu)}{\mathrm{Re}\,L}\ \text{ist }\Lambda\text{-periodisch},\qquad -\frac{\mathrm{Re}(Lz)}{\mathrm{Re}\,L}=\frac{\mathrm{Im}\,L}{\mathrm{Re}\,L}\,\mathrm{Im}\,z-\mathrm{Re}\,z,\qquad \frac{\mathrm{Im}\,L}{\mathrm{Re}\,L}=4.2034.$$
+    Insbesondere $N_L(u+\omega)=N_L(u)+4$ exakt. Für Kneser ist $N(z)=N_L(h(z))$, also $N(z+1)=N(z)-1$ exakt und $N(z+\omega)=N(z)+4$ ausser in einer Umgebung der
+    Niveaugrenzen, die für $\mathrm{Im}\,z\to\infty$ schrumpft. Dasselbe gilt für den Streifenaustritt $T(z)=\min\{n:|\mathrm{Im}\,F(z+n)|>\pi\}$.
+  einfach: >-
+    Färbt man jede Stelle z danach, wie viele Schritte eᶻ braucht, bis der Wert der Tetration weit nach rechts geflohen ist, entsteht oben ein Muster,
+    das sich in zwei Richtungen wiederholt: um 1 nach rechts (dann braucht es einen Schritt weniger) und schräg um ω ≈ 0.45 + 1.06i (dann braucht es genau vier Schritte mehr).
+  beweis:
+    art: vollstaendig
+    text: |
+      Wegen $e^L=L$ ist $\log L=L$, also $F_L(u+1)=\Psi(Le^{Lu})=\exp\Psi(e^{Lu})$ und $F_L(u+P)=\Psi(e^{Lu+2\pi i})=F_L(u)$; $I$ ist vollständig invariant, also ist $E_L$
+      unter $\Lambda$ invariant. Oben ist $F=F_L\circ h$ mit 1-periodischem $\theta\to a_0$ (Kneser). $N_L$ existiert, weil $F_L(u+n)\to\Psi(0)=L$ für $n\to-\infty$
+      (unendlich nur auf der Nullmenge der Bahnen, die nie $\mathrm{Re}>R$ erreichen). $A(u)=-\mathrm{Re}(Lu)/\mathrm{Re}\,L$ erfüllt $A(u+1)=A(u)-1$ und $A(u+P)=A(u)$, weil
+      $\mathrm{Re}(LP)=\mathrm{Re}(2\pi i)=0$; also ist $N_L-A$ unter $\Lambda$ invariant, und $\omega=P-4$ gibt $+4$. Für Kneser ist $h(z+n)=h(z)+n$, also $N=N_L\circ h$,
+      und $h(z+\omega)=h(z)+\omega+\varepsilon$ mit $\varepsilon=\theta(z+\omega)-\theta(z)\to0$.
+  stuetzt_sich_auf: [kn.konstr.kneser, kn.def.theta_welle, kn.satz.flucht_urbild_dicht]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/16_julia_menge_sexp/BERICHT.md, B3–B5 und Abschnitt „Zu 3“, „Zu 4/5“'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: aus Knesers Darstellung oben und e^L = L; neu ist der Blick auf das Fluchtmuster.'
+    f2_benutzte_voraussetzungen: 'Ψ ganz, Kneser-Darstellung F = F_L∘h in der oberen Halbebene, θ → a₀; vollständige Invarianz von I.'
+    f3_spezialfall: 'Gleiches Gitter wie die Urbild-Familien w₀ + jP in kn.satz.wertevorrat.'
+    f4_uebertragbar: 'Auf jede Basis b > η mit Λ = ℤ + (2πi/log λ_b)ℤ und Steigung Im(log λ_b)/Re(log λ_b).'
+    f5_neue_frage: 'Wie sieht E_L/Λ auf dem Torus ℂ/Λ aus, und wie ändert sich die Steigung für b → η? → kn.frage.flucht_torus'
+  bewertung: {richtigkeit: 'vollständig (Gitter und Formel); die Nähe für Kneser numerisch, kn.beob.flucht_gitter_numerik', neuheit: neu_ungeprueft, nutzen: 'Macht die Struktur der Fluchtmenge in Kneser-Koordinaten exakt beschreibbar.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.wertevorrat}
+    - {typ: verwandt, ziel: kn.kor.doppelreihe_oben}
+
+- id: kn.beob.flucht_gitter_numerik
+  titel: 'Gemessen: N(z + ω) = N(z) + 4 gilt ab Im z ≈ 3 an jedem Gitterpunkt; die Steigung von N ist 4.24 gegen Im L/Re L = 4.20'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, exp_familie]
+  bereich: 'Basis $e$, Grundstreifen $0\le\mathrm{Re}\,z<1$, $|\mathrm{Im}\,z|\le7.5$; $N$ und $T$ wie in kn.satz.flucht_gitter'
+  aussage: |
+    Anteil der Gitterpunkte mit $N(z+\omega)=N(z)+4$ je Band in $\mathrm{Im}\,z$ (Gitter $200\times1201$, $R=50$):
+    $0.74$ ($0$–$0.5$), $0.93$ ($0.5$–$1$), $0.996$ ($1$–$1.5$), $0.998$ ($1.5$–$2$), $0.9999$ ($2$–$2.5$), $1.0$ ab $\mathrm{Im}\,z\ge3$.
+    Zweite Einstellung ($R=20$, Gitter $150\times900$): $0.80$, $0.95$, $0.9975$, $0.998$, $0.9999$, $1.0$ ab $\mathrm{Im}\,z\ge3$. Streifenaustritt $T$ statt $N$: $0.91$ ($0$–$1$), $0.9996$ ($1$–$2$), $1.0$ ab $\mathrm{Im}\,z\ge2$.
+    Ausgleichsgerade des mittleren $N+\mathrm{Re}\,z$ über $1<\mathrm{Im}\,z<7.4$: Steigung $4.244$ gegen $\mathrm{Im}\,L/\mathrm{Re}\,L=4.2034$ (1 % durch den periodischen Anteil).
+    Nahe der reellen Achse bricht das Gitter, weil $\theta$ an den ganzen Zahlen unbeschränkt ist (kn.satz.theta_singularitaet).
+  einfach: >-
+    Am Computer sieht man das schräge Gitter direkt: Ab einer Höhe von etwa 3 über der reellen Achse stimmt die Regel „schräg um ω heisst vier Schritte mehr“ an jedem
+    gerechneten Punkt; weiter unten wird das Muster durch Knesers Welle verzerrt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/16_julia_menge_sexp/BERICHT.md, B4, B5; e1_eintrittsindex.py, e3_gegenprobe.py, cache/e1_zahlen.json, bilder/e1_zebene.png'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026: e3_gegenprobe.py neu gerechnet, R = 20: 0.8006, 0.9463, 0.9975, 0.9978, 0.9999, 1.0, 1.0, 1.0 je Band — gleich wie im Bericht.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen); bestätigt die Asymptotik aus kn.satz.flucht_gitter.'
+    f2_benutzte_voraussetzungen: 'Taylor-Auswerter für sexp um 0.5 + i·y_c (y_c = 0, 1.5, 3, 4.5, 6), Abweichung zu gp ≤ 1.5·10⁻¹¹; Rechnung in double precision.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis über η (mit dem Motor nachrechenbar).'
+    f5_neue_frage: 'Wie schnell schrumpft der Fehleranteil mit Im z — wie |θ(z+ω) − θ(z)| ∼ e^{−2π Im z}?'
+  bewertung: {richtigkeit: 'numerisch, zwei Einstellungen; Fluchtbilder sind an den Niveaugrenzen empfindlich, die Gitterstatistik nicht', neuheit: neu_ungeprueft, nutzen: 'Zeigt, ab welcher Höhe sexp oben wie die reguläre Superfunktion an L aussieht.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt, ziel: kn.satz.flucht_gitter}
+
+- id: kn.beob.streifen_linse
+  titel: 'sexp bildet den Grundstreifen in eine Linse zwischen L̄ und L ab, ganz innerhalb |Im w| < 1.756; senkrechte Linien werden Bögen, keine Kreise'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [kneser_T, fixpunkt_L]
+  bereich: 'Basis $e$, Streifen $0\le\mathrm{Re}\,z<1$; $S_0=\{|\mathrm{Im}\,w|<\pi\}$'
+  aussage: |
+    $F$ bildet den Streifen in die Linse $\Omega$ zwischen $F(i\mathbb R)$ und $F(1+i\mathbb R)=\exp(F(i\mathbb R))$ ab, mit $\max|\mathrm{Im}\,F|=1.7558$; also
+    $\Omega\subset\{|\mathrm{Im}\,w|<1.756\}\subset S_0$. Die Bilder senkrechter Linien $F(x_0+iy)$ sind Bögen von $\bar L$ über $F(x_0)$ nach $L$, spiegelbildlich zur reellen Achse,
+    aber keine Kreise: die beste Kreisanpassung weicht um $2.9\,\%$ ($x_0=0$), $3.8\,\%$ ($\tfrac14$), $4.8\,\%$ ($\tfrac12$) und $6.0\,\%$ ($\tfrac34$) des Radius ab.
+    Nahe $L$ sind es logarithmische Spiralen: aus $F(z)\approx L+\kappa e^{Lz}$ (kn.kor.doppelreihe_oben) dreht sich das Argument pro Einheit Höhe um $\mathrm{Re}\,L=0.318$ rad,
+    und der Abstand zu $L$ schrumpft um den Faktor $e^{-\mathrm{Im}\,L}=0.263$.
+  einfach: >-
+    Der Streifen zwischen den senkrechten Linien durch 0 und 1 landet unter der Tetration in einer schmalen Linse, die vom Fixpunkt L unten bis L oben reicht.
+    Jede senkrechte Linie wird dabei zu einem Bogen, der sich am Ende um L herum eindreht.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/16_julia_menge_sexp/BERICHT.md, B6, B11; kneser_feld.py, e1_eintrittsindex.py, e3_gegenprobe.py, bilder/e1_webene.png'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026: Kreistest in e3_gegenprobe.py neu gerechnet: 2.88 %, 3.77 %, 4.78 %, 5.97 % — gleich wie im Bericht.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Spiralen ja (aus kn.kor.doppelreihe_oben); Linse, Höhe 1.7558 und Kreisabweichung gemessen.'
+    f2_benutzte_voraussetzungen: 'Taylor-Auswerter (Abweichung zu gp ≤ 1.5·10⁻¹¹); Injektivität auf dem Streifen nur aus den Bildern.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis b > η.'
+    f5_neue_frage: 'Gibt es eine geschlossene Beschreibung der Linse Ω? → kn.frage.flucht_torus'
+  bewertung: {richtigkeit: 'numerisch, ≥ 10 Stellen', neuheit: neu_ungeprueft, nutzen: 'Anschauliches Bild der komplexen Kneser-Tetration; sichert, dass der Grundstreifen in S₀ landet.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.kor.doppelreihe_oben}
+    - {typ: verwandt, ziel: kn.satz.kneser_eigenschaften}
+
+- id: kn.beob.reelle_urbilder
+  titel: 'Im F > 0 auf dem oberen Grundstreifen; die ersten nichtreellen Urbilder der reellen Achse liegen erst bei Re z ≈ 2.52'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: vertiefung
+  objekte: [kneser_T]
+  bereich: 'Basis $e$, $F=\mathrm{sexp}$ Kneser, obere Halbebene'
+  aussage: |
+    Auf $0<\mathrm{Re}\,z<1$, $\mathrm{Im}\,z>0$ ist $\mathrm{Im}\,F(z)>0$, sogar $\mathrm{Im}\,F(z)/\mathrm{Im}\,z\ge0.178$ ($400\times800$ Punkte bis $\mathrm{Im}\,z=10^{-4}$).
+    Mit $0<\mathrm{Im}\,F<\pi\Rightarrow\mathrm{Im}\,e^F>0$ folgt $\mathrm{Im}\,F>0$ auch auf $1\le\mathrm{Re}\,z<2$; also ist $F(z)\notin\mathbb R$ für $0<\mathrm{Re}\,z<2$, $\mathrm{Im}\,z>0$.
+    Den Wert $\mathrm{Im}\,F(z)=\pi$ erreicht $F$ zuerst bei $z\approx1.516+0.635\,i$; dort ist $F(z+1)$ reell negativ. Die ersten nichtreellen Urbilder der reellen Achse
+    beginnen also bei $\mathrm{Re}\,z\approx2.52$ (Gitterauflösung $0.0025$).
+  einfach: >-
+    Oberhalb der reellen Achse bleibt die Tetration zunächst oberhalb der reellen Achse. Erst ab etwa Re z = 2.5 gibt es nichtreelle Stellen, die
+    wieder auf eine reelle (negative) Zahl abgebildet werden.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/16_julia_menge_sexp/BERICHT.md, B7, B8; e2_reell.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026: e2_reell.py neu gerechnet: min Im F/Im z = 0.17831, erstes Im F = π bei 1.51625 + 0.63456i — gleich wie im Bericht.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Der Schritt vom Streifen zum nächsten ja (0 < Im F < π ⇒ Im e^F > 0); der Grundstreifen gemessen.'
+    f2_benutzte_voraussetzungen: 'Taylor-Auswerter; Gitter bis Im z = 10⁻⁴, für Im z > 7.5 nur über F → L.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis b > η (dort Streifen |Im w| < π/ln b).'
+    f5_neue_frage: 'Ist Im F > 0 auf dem oberen Grundstreifen beweisbar (z. B. aus der Schlichtheit von sexp dort)?'
+  bewertung: {richtigkeit: 'numerisch, Gitter 0.0025', neuheit: neu_ungeprueft, nutzen: 'Zeigt, wo sexp die reelle Achse zum ersten Mal wieder trifft; Eingangsgrösse für die Haar-Urbilder.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.wertevorrat}
+
+- id: kn.kor.haar_urbilder_beschraenkt
+  titel: 'Kein Urbild eines Haars von eᶻ steigt in einem senkrechten Streifen bis Im z → ∞'
+  art: korollar
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [kneser_T, fixpunkt_L, exp_familie]
+  bereich: 'Basis $e$, Kneser $F$; Haare = dynamische Strahlen $g_s$ von $e^w$ (Schleicher–Zimmer); $F_L$ wie in kn.satz.flucht_gitter'
+  aussage: |
+    Für jedes Haar $g_s$ und jeden senkrechten Streifen $a\le\mathrm{Re}\,z\le b$ ist $F^{-1}(g_s)\cap\{a\le\mathrm{Re}\,z\le b\}$ nach oben beschränkt.
+    In der Koordinate $u$ von $F_L$ bleibt $\mathrm{Re}(Lu)$ auf jedem Urbild $F_L^{-1}(g_s)$ nach unten beschränkt.
+  einfach: >-
+    Die Haare von eᶻ kommen nie an den Fixpunkt L heran. Weil Knesers Tetration weit oben fast nur noch L ist, können die zurückgeholten Haare darum nicht beliebig hoch steigen.
+  beweis:
+    art: skizze
+    text: |
+      $F(z)\to L$ gleichmässig für $\mathrm{Im}\,z\to\infty$ in $a\le\mathrm{Re}\,z\le b$ (aus $F=F_L\circ h$, $\theta\to a_0$). Hätte $F^{-1}(g_s)$ dort Punkte $z_n$ mit
+      $\mathrm{Im}\,z_n\to\infty$, so häuften sich $F(z_n)\in g_s$ bei $L$ — ausgeschlossen durch fp.satz.kein_haar_bei_L. Ebenso $F_L(u)\to L$ für $\mathrm{Re}(Lu)\to-\infty$.
+    luecken:
+      - 'Erbt die Lücke von fp.satz.kein_haar_bei_L (Struktursätze von Schleicher–Zimmer im Fall „singulärer Wert flüchtet“ nicht am Original geprüft).'
+  stuetzt_sich_auf: [fp.satz.kein_haar_bei_L, kn.konstr.kneser]
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/16_julia_menge_sexp/BERICHT.md, B10 und Abschnitt „Zu 10“'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus fp.satz.kein_haar_bei_L und F → L oben.'
+    f2_benutzte_voraussetzungen: 'Gleichmässige Konvergenz F → L in senkrechten Streifen; fp.satz.kein_haar_bei_L.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis b > η, sobald das Gegenstück zu fp.satz.kein_haar_bei_L für λe^w gilt.'
+    f5_neue_frage: 'Welche Homologieklassen tragen die Haar-Urbilder auf dem Torus ℂ/Λ? (Keine, die in Richtung L läuft.) → kn.frage.flucht_torus'
+  bewertung: {richtigkeit: 'Skizze, Lücke wie fp.satz.kein_haar_bei_L', neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum die Fluchtbilder oben aus kurzen, schrägen Stücken bestehen.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.flucht_gitter}
+
+- id: kn.frage.flucht_torus
+  titel: 'Offene Fragen zur Fluchtmenge unter sexp: Torus-Bild, Dimension, Linse, andere Basen'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [kneser_T, exp_familie, fixpunkt_L]
+  aussage: |
+    (1) Hat $E=\mathrm{sexp}^{-1}(I(\exp))$ in jeder offenen Menge die Hausdorff-Dimension 2 (McMullens Satz lokal übertragen)?
+    (2) Wie sieht $E_L/\Lambda$ auf dem Torus $\mathbb C/\Lambda$ aus, und welche Homologieklassen tragen die Haar-Urbilder?
+    (3) Gibt es eine geschlossene Beschreibung der Linse $\Omega=\mathrm{sexp}(\{0\le\mathrm{Re}\,z<1\})$?
+    (4) Wo liegt die Menge $\{T=\infty\}$ der Punkte, deren Bahn den Streifen $S_0$ nie verlässt (Devaneys unzerlegbares Kontinuum), in Kneser-Koordinaten — nur auf der reellen Achse?
+    (5) Für Basen $b>\eta$ ist das Gitter $\mathbb Z+(2\pi i/\log\lambda_b)\mathbb Z$; wie ändert sich die Steigung $\mathrm{Im}\log\lambda_b/\mathrm{Re}\log\lambda_b$, und was passiert für $b\to\eta$?
+  einfach: >-
+    Wie sieht das Muster der flüchtenden Stellen genau aus, wenn man es auf einen Doughnut (Torus) aufwickelt, wie „dick“ ist es, und wie verändert es sich mit der Basis?
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/16_julia_menge_sexp/BERICHT.md, Offene Fragen 1–5'}, {ref: mcmullen1987, geprueft: sekundaer}]
+  naechste_frage: 'Für (5): Kneser-Werte für b ∈ {1.5, 2, 10} auf demselben Gitter rechnen; für b ↓ η geht λ_b → 1, und die Steigung wächst vermutlich über alle Grenzen (Re log λ_b schrumpft schneller als Im log λ_b).'
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.flucht_gitter}
+    - {typ: verwandt, ziel: kn.satz.flucht_urbild_dicht}

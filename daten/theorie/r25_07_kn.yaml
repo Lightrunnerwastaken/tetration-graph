@@ -1,0 +1,92 @@
+# Theorie-Blöcke: Runde 25.10.2026, Bericht 07 — Riemannsche Fläche von Knesers slog (forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md).
+# Bezeichnungen σ, θ: kn.def.theta_welle; A = slog um 0, γ = 2πi/L.
+
+kn.beob.slog_taylor_radius_L:
+  worum: |
+    Wie weit reicht die Potenzreihe des Superlogarithmus um 0, und was sitzt an ihrem Rand?
+  genau: |
+    $A_n=-2\,\mathrm{Re}\,(1/(nL^{n+1}))\,(1+O(n^{-\mathrm{Re}\,\gamma}))$: Radius $|L|=1.37456$, am Rand nur $L$ und $\bar L$ als Logarithmen.
+  warum: |
+    Nahe $L$ ist $\mathrm{slog}\approx\log(w-L)/L$; ein Logarithmus am Rand gibt Koeffizienten $-1/(nL^{n+1})$. Das nächste Glied $(w-L)^\gamma$ ist um $n^{-\mathrm{Re}\,\gamma}$ kleiner.
+  beispiel: |
+    Bei $n=300$ stimmt $A_n$ mit dem Leitglied auf $2\cdot10^{-11}$ überein.
+  bilder: []
+  einordnung: |
+    Stützt [[kn.beob.slog_scheibe]]; Form bei $L$: [[kn.kor.slog_bei_L]]; dieselbe Methode für sexp: [[kn.satz.taylor_darboux]].
+
+kn.satz.slog_periodische_halbebene:
+  worum: |
+    Ein ganzes Blatt der slog-Fläche, das man explizit hinschreiben kann.
+  genau: |
+    Auf $\mathrm{Re}\,w<\mathrm{Re}\,L$ ist $\mathrm{slog}(w)=A(e^w)-1$ holomorph und $2\pi i$-periodisch; auf $\mathrm{Re}\,w=\mathrm{Re}\,L$ liegen die Log-Punkte $L+2\pi i\mathbb Z$ und $\bar L+2\pi i\mathbb Z$.
+  warum: |
+    Links der Senkrechten ist $|e^w|<|L|$, also liegt $e^w$ in der Scheibe, auf der $A$ holomorph ist. Erreicht $e^w$ den Rand bei $L$, so geschieht das an allen $w=L+2\pi ik$ zugleich.
+  beispiel: |
+    Bei $w\to L+2\pi i$ von links: $\mathrm{slog}(w)\approx\log(w-L-2\pi i)/L+c$.
+  bilder: []
+  einordnung: |
+    Braucht [[kn.beob.slog_scheibe]] und [[kn.beob.slog_taylor_radius_L]]; das Blatt rechts davon: [[kn.beob.sexp_trifft_L]]; Übergang: [[kn.kor.slog_monodromie_L]].
+
+kn.beob.sexp_trifft_L:
+  worum: |
+    Nimmt Knesers Tetration den Fixpunkt $L$ an, und was macht slog an den Kopien $L+2\pi ik$ rechts der Senkrechten?
+  genau: |
+    Auf dem Kneser-Blatt sind $L+2\pi ik$ ($k\ne0$) regulär, $s^*_1=\mathrm{slog}(L+2\pi i)=2.0339794527\ldots+0.6260388922\ldots i$; daher $\mathrm{sexp}(s^*_1+1)=e^{L+2\pi i}=L$.
+  warum: |
+    $L+2\pi i$ ist ein gewöhnlicher Wert, den sexp nach [[kn.satz.wertevorrat]] annimmt; ein exp-Schritt macht daraus $L$, weil $e^{2\pi i}=1$.
+  beispiel: |
+    $\mathrm{sexp}(3.0339794528+0.6260388922i)=L$, unabhängig über die Taylorreihe von sexp um 0 auf $10^{-30}$ bestätigt.
+  bilder: []
+  einordnung: |
+    Gegenstück zum periodischen Blatt [[kn.satz.slog_periodische_halbebene]], wo dieselben Punkte Log-Punkte sind.
+
+kn.kor.slog_monodromie_L:
+  worum: |
+    Was passiert mit slog, wenn man einmal um $L$ herumläuft?
+  genau: |
+    In der regulären Höhe $u=\log\sigma/L$ ist es die Verschiebung $u\mapsto u+\gamma$, $\gamma=2\pi i/L$; in der Kneser-Höhe $s=u+\vartheta(u)$ also $M_L(s)=(u+\gamma)+\vartheta(u+\gamma)$.
+  warum: |
+    $\sigma$ hat bei $L$ eine einfache Nullstelle, $\log\sigma$ wächst beim Umlauf um $2\pi i$. Die Welle $\vartheta$ ist 1-periodisch und übersetzt die Verschiebung in die echte Höhe.
+  beispiel: |
+    Der Sprung des Motor-slog über seinen Schnitt oberhalb von $L$ ist bei $y=2$ etwa $4.4471+1.0554i\approx\gamma$, genau $M_L$ auf $2\cdot10^{-15}$.
+  bilder: []
+  einordnung: |
+    Folgt aus [[kn.kor.slog_bei_L]]; verbindet [[kn.satz.slog_periodische_halbebene]] mit dem Kneser-Blatt.
+
+kn.satz.sexp_asymptotischer_wert_null:
+  worum: |
+    Wird Knesers Tetration irgendwo im Unendlichen beliebig klein?
+  genau: |
+    Ja: längs $z(X)=3+\mathrm{slog}(\log(X+i\pi))$ ist $\mathrm{sexp}(z(X))=\exp(-e^X)\to0$; über $w=0$ hat slog einen logarithmischen Punkt.
+  warum: |
+    Zwei Schritte vorher ist sexp gleich $X+i\pi$, einen Schritt vorher $e^{X+i\pi}=-e^X$, also sehr negativ, und $e$ hoch sehr negativ ist fast 0.
+  beispiel: |
+    $X=10$: $\mathrm{sexp}(z(10))=\exp(-22026.5)$.
+  bilder: []
+  einordnung: |
+    Liefert den dritten Grundpunkt der slog-Fläche für [[kn.satz.slog_verzweigung_dicht]]; die 0 wird sonst nur bei $-1$ angenommen ([[kn.satz.wertevorrat]]).
+
+kn.satz.slog_verzweigung_dicht:
+  worum: |
+    Wo überall kann der Superlogarithmus auf irgendeinem Blatt singulär werden?
+  genau: |
+    Die Menge $B$ dieser Punkte ist unter exp und allen Logarithmen abgeschlossen, enthält die vollen Bahnen von $L$, $\bar L$, 0 und liegt dicht in $\mathbb C$.
+  warum: |
+    Weil $\mathrm{slog}(e^w)=\mathrm{slog}(w)+1$ längs jedes Weges gilt, wandern Singularitäten mit exp vorwärts und mit den Logarithmen rückwärts. Die Rückwärtsbahn von $L$ unter exp
+    liegt dicht, weil die Julia-Menge von exp die ganze Ebene ist.
+  beispiel: |
+    $1=e^0$, $2\pi i$ (ein Logarithmus von 1) und $L+2\pi i$ (ein Logarithmus von $L$) liegen in $B$.
+  bilder: []
+  einordnung: |
+    Grundpunkte aus [[kn.kor.slog_monodromie_L]] und [[kn.satz.sexp_asymptotischer_wert_null]]; für sexp ist die Dichte offen ([[kn.satz.nebenblatt_zweigpunkte]]); vermutet genau: [[kn.verm.slog_verzweigung_genau]].
+
+kn.verm.slog_verzweigung_genau:
+  worum: |
+    Sind die drei Bahnen von $L$, $\bar L$ und 0 schon alle singulären Punkte?
+  genau: |
+    Vermutet: $B=G(L)\cup G(\bar L)\cup G(0)$, und alle Singularitäten sind logarithmisch.
+  warum: |
+    Die reguläre Höhe $u$ verzweigt nur über $L$ und der Bahn der 0 ([[it.satz.regulaerer_erzeuger_fortsetzung]]); auf dem Hauptblatt hat sexp keine kritischen Punkte.
+  bilder: []
+  einordnung: |
+    Verschärfung von [[kn.satz.slog_verzweigung_dicht]].

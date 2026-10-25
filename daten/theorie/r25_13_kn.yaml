@@ -1,0 +1,85 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 13 „Rangkoordinate Φ“ (forschung/runde_2026_10_25/13_rangkoordinate/BERICHT.md).
+
+kn.konstr.rangkoordinate:
+  worum: |
+    Auf beschränkten Leitern ($1<b<2$) führt der Rangschritt $T$ (Koenigs-Konstruktion) von $H_r$ zu $H_{r+1}$. Gesucht ist eine Zahl $\Phi(g)$, die angibt, „welchen Rang“ eine beliebige Funktion $g$ hat.
+  genau: |
+    $\Phi(g)=\lim_n(s_n-n)$ mit $\ln(p(T^ng)-b)=L(s_n)$, $L$ interpoliert $r\mapsto\ln(p_r-b)$. Dann $\Phi(Tg)=\Phi(g)+1$ und $\Phi(H_r)=r$, falls der Grenzwert existiert.
+  warum: |
+    Hoch oben in der Leiter unterscheiden sich gestörte und ungestörte Leitern nur noch durch eine Verschiebung im Rang (kn.beob.rangverschiebung); der Fixpunkt $p$ misst diese Verschiebung.
+    Die Abel-Gleichung ist dann nur eine Indexverschiebung.
+  beispiel: |
+    $b=\sqrt2$: $\Phi\bigl(H_4\circ(x+0.005\sin2\pi x)\bigr)=3.96934$, also eine Verschiebung um $-0.0307$ Rang.
+  bilder: []
+  einordnung: |
+    Präzisiert [[kn.verm.rangkoordinate]]; Rahmen: [[kn.satz.koenigs_leiter_monoton]]; Vorbild ist die Fatou-Koordinate [[it.satz.leau_fatou]].
+
+kn.beob.rangkoordinate_gradient:
+  worum: |
+    Wie stark ändert eine θ-Welle an der Tetration $H_4$ die Rangkoordinate, und hängt das von der Frequenz der Welle ab?
+  genau: |
+    Bei $\sqrt2$: $-6.125,\ 8.060,\ -2.84$ (Sinus, $n=1,2,3$) und $-8.042,\ -11.258,\ 9.91$ (Kosinus); kein Abfall mit $n$. Bei $b=1.5$: $-4.89$, $-10.74$.
+  warum: |
+    Der Rangschritt liest $f$ längs der ganzen Bahn $1,b,f(b),\dots$; an diesen Punkten tasten auch schnelle Wellen die Funktion ab. Ein Modell nur am Fixpunkt reicht nicht.
+  beispiel: |
+    Vorhersage $c(\sin,0.01)=-0.06135$ aus dem Gradienten, in Runde 18 gemessen $-0.06134$.
+  bilder: []
+  einordnung: |
+    Baut auf [[kn.konstr.rangkoordinate]]; Grösse der zweiten Ordnung: [[kn.beob.rangkoordinate_nichtlinear]]; frühere Messung: [[kn.beob.rangverschiebung]].
+
+kn.beob.rangkoordinate_nichtlinear:
+  worum: |
+    Ist die Rangkoordinate eine lineare Funktion der θ-Parameter?
+  genau: |
+    Nein: $c(\sin+\cos,0.02)=-0.25834$ statt $-0.27214$; quadratische Koeffizienten $Q_{ss}\approx-1$, $Q_{sc}\approx17$, $Q_{cc}\approx29$.
+  warum: |
+    Die Störung geht nichtlinear in Fixpunkt und Schröder-Funktion jeder Stufe ein; nur die erste Ordnung ist linear.
+  bilder: []
+  einordnung: |
+    Ergänzt [[kn.beob.rangkoordinate_gradient]]; vergleiche die zweite Ordnung im Halbrangmodell [[kn.satz.halbrang_quadratisch]].
+
+kn.verm.rangkoordinate_rangwachstum:
+  worum: |
+    Wirkt dieselbe Welle $\sin2\pi x$ an $H_5$, $H_6$, … gleich stark wie an $H_4$?
+  genau: |
+    Nein, stärker: $-6.125,\ -6.526,\ \le-6.82,\ \le-7.06,\ \le-7.24$ für $r=4\dots8$; vermutet $\approx1.6\ln r$ Wachstum.
+  warum: |
+    Noch nicht verstanden; ein möglicher Zusammenhang ist das Wachstum $L_r\sim\ln r/(b-1)$ der Kontraktionsrate.
+  bilder: []
+  einordnung: |
+    Messgrösse aus [[kn.konstr.rangkoordinate]]; Raten der Leiter: [[kn.verm.leiter_rate]].
+
+kn.beob.halbrang_niveauflaeche:
+  worum: |
+    Legt die Bedingung „Rangkoordinate 3.5“ einen halben Rang zwischen $b^x$ und der Tetration fest?
+  genau: |
+    Zwei Kandidaten mit gleichem Φ ($\approx3.4991$, gleich auf $5\cdot10^{-5}$) haben Leitern, die bis auf $10^{-5}$ zusammenlaufen, unterscheiden sich aber selbst: $g^*(0.5)=1.223358$ gegen $1.222821$.
+  warum: |
+    Φ ist eine einzige Zahl; seine Niveaufläche im Funktionenraum hat unendlich viele Richtungen. Alle Punkte der Fläche haben dieselbe Zukunft unter $T$, aber verschiedene Gegenwart.
+  beispiel: |
+    In erster Ordnung ändert $8.060\sin2\pi x+6.125\sin4\pi x$ die Rangkoordinate nicht.
+  bilder: []
+  einordnung: |
+    Bestätigt die Zählung in [[kn.verm.rangkoordinate]]; Deutung: [[kn.verm.halbrangleiter_oben_kanonisch]]; die Halbrang-Frage: [[kn.frage.halber_rang]].
+
+kn.verm.halbrangleiter_oben_kanonisch:
+  worum: |
+    Was legt die Rangkoordinate beim halben Rang fest, wenn man den ganzen Funktionenraum betrachtet?
+  genau: |
+    Vermutet: oben ($r\to\infty$) eine eindeutige Halbrang-Leiter auf der langsamen Kurve; auf endlicher Höhe nur das Blatt $\Phi=r+\tfrac12$; kein kanonischer Abstieg.
+  warum: |
+    $T$ zieht quer zur langsamen Kurve überexponentiell zusammen; $T^{-1}$ bläht entsprechend auf. Wie bei einer Fatou-Koordinate bestimmt Φ nur die Lage längs der Kurve.
+  bilder: []
+  einordnung: |
+    Verfeinert [[kn.verm.rangkoordinate]]; Belege: [[kn.beob.halbrang_niveauflaeche]]; lineares Modell eines halben Schritts: [[kn.satz.halbrang_linear]].
+
+kn.gescheitert.rangkoordinate_basis2:
+  worum: |
+    Lässt sich die Rangkoordinate auch bei $b=2$ bauen?
+  genau: |
+    Nicht mit dem Fixpunkt als Messgrösse: $H_r(2,2)=4$ für alle $r$, kein anziehender Fixpunkt, kein Koenigs-Schritt.
+  warum: |
+    Die Konstruktion braucht die beschränkte Leiter; bei $b=2$ ist sie unbeschränkt.
+  bilder: []
+  einordnung: |
+    Ersatzidee über die Rampe [[kn.verm.grenzprofil_rampe]]; Halbrang bei Basis 2: [[kn.beob.halbrang_basis2]].

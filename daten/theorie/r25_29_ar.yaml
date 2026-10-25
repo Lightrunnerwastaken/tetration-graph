@@ -1,0 +1,123 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 29 (Transzendenz und Irrationalitätsmasse).
+
+ar.satz.kehrwertsumme_liouville:
+  worum: |
+    Ist $C_2=\tfrac12+\tfrac14+\tfrac1{16}+\tfrac1{65536}+\dots$ ein Bruch, eine algebraische oder eine transzendente Zahl?
+  genau: |
+    Für jede ganze Basis $b\ge2$ ist $C_b=\sum_k1/(b\uparrow\uparrow k)$ eine Liouville-Zahl, also transzendent; ihr Kettenbruch entsteht Stück für Stück durch „Falten“.
+  warum: |
+    Die Teilsumme bis zum $N$-ten Glied ist ein Bruch mit Nenner $q=b\uparrow\uparrow N$. Der Rest ist ungefähr $1/(b\uparrow\uparrow(N+1))=b^{-q}$-artig klein, also kleiner als jede feste Potenz $q^{-k}$.
+    So gute Annäherungen durch Brüche hat nach Liouville keine algebraische Zahl.
+  beispiel: |
+    $S_4=\tfrac{53249}{65536}$, und $C_2-S_4\approx2^{-65536}$; im Kettenbruch erscheint das Glied $2^{65504}-1$.
+  bilder: []
+  einordnung: |
+    Beantwortet die offen gelassene Frage in [[gr.satz.kehrwert_turmsumme]]; derselbe Trick wie bei [[ar.satz.ef_liouville]]; offen bleibt [[ar.frage.kehrwertsumme_e]].
+
+ar.satz.rang_dichotomie_kehrwerte:
+  worum: |
+    Was passiert mit der Summe der Kehrwerte, wenn man auf der Leiter Addition, Multiplikation, Potenz, Turm, … nach oben geht?
+  genau: |
+    Bis Rang 2 divergiert sie, bei Rang 3 ist sie $1/(b-1)$, ab Rang 4 ist sie eine Liouville-Zahl.
+  warum: |
+    Ab Rang 4 ist jeder Wert ein Turm $b\uparrow\uparrow M_k$, und die Exponenten wachsen so schnell wie in [[ar.satz.kehrwertsumme_liouville]].
+  beispiel: |
+    $b=2$: $\sum2^{-k}=1$, aber $\sum1/(2\uparrow\uparrow k)=0.8125152\ldots$ ist transzendent.
+  bilder: []
+  einordnung: |
+    Rangleiter: [[br.satz.ackermann]]; was zwischen Rang 3 und 4 liegt: [[kn.frage.halber_rang]].
+
+ar.satz.ableitungsorbit:
+  worum: |
+    Was weiss man sicher über die Zahlen $T'(0)$, $T'(1)$, … — ohne unbewiesene Vermutungen?
+  genau: |
+    Bei Basis $e$ ist $T'(1)=e\,T'(0)$, also sind nicht beide algebraisch. Bei ganzer Basis ist höchstens eines der $T'(n)$ algebraisch.
+  warum: |
+    Die Kettenregel gibt $T'(x+1)=\ln b\,T(x+1)\,T'(x)$. Der Quotient zweier Steigungen an ganzen Stellen ist darum ein Produkt aus Potenzen von $\ln b$ und Turmwerten — und $e$ bzw. $\ln b$ sind transzendent.
+  beispiel: |
+    Kneser: $T_e'(0)=1.0917673512583\ldots$, $T_e'(1)=e\cdot1.0917673512583\ldots=2.9677\ldots$.
+  bilder: []
+  einordnung: |
+    Unter Schanuel verschärft: [[ar.satz.schanuel_ableitungen]]; Werte statt Steigungen: [[ar.satz.orbitschranke]].
+
+ar.satz.schanuel_ableitungen:
+  worum: |
+    Was würde Schanuels Vermutung über die Steigungen der Tetration zur Basis $e$ an ganzen Stellen sagen?
+  genau: |
+    Höchstens eine der Zahlen $T'(0),T'(1),\dots$ ist algebraisch; $\mathbb Q(T'(0),\dots,T'(n))$ hat Transzendenzgrad mindestens $n$.
+  warum: |
+    Die Quotienten $T'(n)/T'(m)$ sind Produkte der Turmwerte $e,e^e,\dots$, und die sind unter Schanuel algebraisch unabhängig ([[ar.satz.schanuel_orbit]]).
+  bilder: []
+  einordnung: |
+    Unbedingte Fassung: [[ar.satz.ableitungsorbit]]; Vermutung: [[ar.verm.schanuel]].
+
+ar.satz.jet_identitaeten:
+  worum: |
+    Welche Kneser-Konstanten sind wirklich verschieden? Die Ableitungen des Superlogarithmus bei 0 hängen an denen der Tetration bei 0.
+  genau: |
+    $\mathrm{slog}'(0)=1/a_1$, $\mathrm{slog}''(0)=(a_1^2-2a_2)/a_1^3$; alle Taylor-Koeffizienten bei $-1$ und von slog bei 0 sind rationale Ausdrücke in $a_1,a_2,\dots$.
+  warum: |
+    $T(-1+h)=\log T(h)$, und slog ist die Umkehrfunktion von $T$ bei $-1$.
+  beispiel: |
+    $\mathrm{slog}_e'(0)=1/1.0917673512583\ldots=0.9159460564995\ldots$.
+  bilder: []
+  einordnung: |
+    Bereinigt die Konstantenliste von [[ar.beob.keine_relationen]]; Werte: [[gr.beob.kneser_ableitung]].
+
+ar.satz.keine_arith_info_ableitung:
+  worum: |
+    Legt die Gleichung $T(x+1)=e^{T(x)}$ zusammen mit Glattheit und Monotonie die Steigung bei 0 fest? Und was heisst das für Transzendenzbeweise?
+  genau: |
+    Jede Steigung $c>0$ kommt bei einer reell-analytischen, wachsenden Lösung vor. „Schanuel ⇒ $T(\tfrac12)$ transzendent für jede Lösung“ ist gleichwertig mit „Schanuel ist falsch“.
+  warum: |
+    Man ersetzt $x$ durch $\varphi(x)=\int_0^xg$ mit einer positiven, periodischen Dichte $g$ vom Mittel 1 und $g(0)=c/T'(0)$ (ein Poisson-Kern). Und weil es eine Lösung mit $T(\tfrac12)=\tfrac32$ gibt,
+    kann eine Aussage über alle Lösungen nur dann „transzendent“ liefern, wenn ihre Voraussetzung nie erfüllt ist.
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[ar.satz.keine_arith_info]]; Konstruktion wie [[fg.kor.nichteindeutigkeit]]; Kneser-spezifischer Rahmen: [[ar.verm.ks]].
+
+ar.satz.metrisch_fast_alle:
+  worum: |
+    Kettenbrüche von Kneser-Werten sehen „zufällig“ aus. Beweist das etwas?
+  genau: |
+    Für fast alle Stellen $x$ sind $x$ und $T(x)$ algebraisch unabhängig, und $T(x)$ hat einen typischen Kettenbruch. Für eine bestimmte Stelle folgt daraus nichts.
+  warum: |
+    Eine Polynomgleichung zwischen $x$ und $T(x)$ hat nur abzählbar viele Lösungen, weil $T$ keine algebraische Funktion ist; und $T$ verzerrt Nullmengen nicht.
+  bilder: []
+  einordnung: |
+    Ordnet [[ar.beob.kf_population]] ein; Gegenstück zur Zählschranke [[ar.satz.bpw]].
+
+ar.satz.fixpunkt_transzendent:
+  worum: |
+    Sind die Grundkonstanten von Knesers Konstruktion — der Fixpunkt $L$ und der Multiplikator — vielleicht einfache Zahlen?
+  genau: |
+    $L=-W_0(-1)$ ist transzendent, ebenso jeder nichtreelle Fixpunkt von $b^z$ bei algebraischer Basis. Der Multiplikator $L_b\ln b$ ist es unter Schanuel.
+  warum: |
+    $e^L=L$: eine algebraische Zahl $L\ne0$ hätte nach Hermite–Lindemann ein transzendentes $e^L$. Für $b^L=L$ greift ebenso Gelfond–Schneider.
+  bilder: []
+  einordnung: |
+    Fixpunkte: [[fp.satz.lambert]]; Werkzeuge: [[ar.satz.hermite_lindemann]], [[ar.satz.gelfond_schneider]].
+
+ar.beob.kf_population:
+  worum: |
+    Haben Kneser-Werte eine verborgene Struktur, die man im Kettenbruch sähe (wie bei $e$ oder $\sqrt2$)?
+  genau: |
+    47 Werte, 21 485 gesicherte Glieder: Gauss–Kuzmin, Chintschin, Lévy und Irrationalitätsexponent verhalten sich wie bei Zufallszahlen.
+  warum: |
+    Gemessen, mit einer Intervall-Methode, die nur sichere Glieder zählt. Nach [[ar.satz.metrisch_fast_alle]] ist genau das zu erwarten.
+  beispiel: |
+    $\sqrt2=[1;2,2,2,\dots]$ fällt mit $\chi^2=2995$ sofort auf, die Kneser-Population hat $\chi^2=12.0$ bei 8 Freiheitsgraden.
+  bilder: []
+  einordnung: |
+    Erweitert [[ar.beob.ausschluss]].
+
+ar.frage.kehrwertsumme_e:
+  worum: |
+    Bei ganzen Basen ist die Kehrwertsumme des Turms transzendent ([[ar.satz.kehrwertsumme_liouville]]). Und bei der Basis $e$?
+  genau: |
+    Offen, ob $e^{-1}+e^{-e}+e^{-e^e}+\dots$ transzendent oder auch nur irrational ist.
+  warum: |
+    Die Teilsummen sind keine Brüche; für Liouvilles Trick bräuchte man eine quantitative Unabhängigkeit von $e,e^e,e^{e^e}$ — schon $e^e$ ist offen ([[ar.frage.e_hoch_e]]).
+  bilder: []
+  einordnung: |
+    Konstante aus [[gr.satz.kehrwert_turmsumme]].

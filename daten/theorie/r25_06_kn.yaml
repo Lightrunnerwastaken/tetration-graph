@@ -1,0 +1,98 @@
+# Theorie-Blöcke: Runde 25.10.2026, Bericht 06 — Riemannsche Fläche von sexp (forschung/runde_2026_10_25/06_riemannflaeche_sexp/BERICHT.md).
+# Bezeichnungen: F_N(z) = sexp(z+N) (Hauptblatt), E_k = sexp(k−1), Z = Nullstellen aller Zweige, P = Verzweigungsorte.
+
+kn.satz.riemannflaeche_logueberlagerung:
+  worum: |
+    Welche Werte bekommt Knesers Tetration, wenn man sie über ihren Schnitt hinaus auf alle Arten fortsetzt?
+  genau: |
+    Genau alle Ketten $h_0=\log h_1,\dots,h_{K-1}=\log h_K$ mit $h_K=\mathrm{sexp}(z+K)$ (Hauptblatt) und Zwischenwerten $\neq0$, bei beliebiger Wahl der Logarithmus-Zweige.
+  warum: |
+    Wegen $\mathrm{sexp}(z+1)=e^{\mathrm{sexp}(z)}$ ist jede Fortsetzung ein Logarithmus der um 1 verschobenen Funktion. Ein Umlauf um die einfache Nullstelle bei $-2$ (für $\mathrm{sexp}(z+1)$)
+    verschiebt den Logarithmus um $2\pi i$, darum kommen alle Zweige vor.
+  beispiel: |
+    Über $z=0$ liegen die Werte $1+2\pi ik$ (Kette der Länge 1 aus $\mathrm{sexp}(1)=e$), $\log(e+2\pi ij)+2\pi ik$ (Länge 2 aus $\mathrm{sexp}(2)=e^e$) und alle längeren Ketten; der Hauptwert ist 1.
+  bilder: []
+  einordnung: |
+    Grundlage für [[kn.satz.verzweigungsorte_charakterisierung]]; frühere Teilbeschreibung: [[kn.satz.nebenblatt_zweigpunkte]].
+
+kn.satz.verzweigungsorte_charakterisierung:
+  worum: |
+    Wo genau verzweigen die Fortsetzungen von sexp?
+  genau: |
+    $z$ verzweigt $\iff\mathrm{sexp}(z+M)=\mathrm{sexp}(M-n)$ für ein $M$ und ein $n\ge2$; die Verzweigung ist vom Typ $\log^{[n-1]}$.
+  warum: |
+    Ein Zweig wird singulär, wo ein Zwischenwert der Log-Kette 0 wird. Weil $\exp$ eindeutig ist, heisst „Zwischenwert 0“, dass die Kette danach genau $1,e,e^e,\dots$ durchläuft —
+    also fällt der Turm von $z$ auf den Turm einer negativen ganzen Zahl.
+  beispiel: |
+    $n=2$, $\mathrm{sexp}(w)=2\pi i$: der Punkt $w-1=1.0043125+0.7094135i$ aus Runde 18.
+  bilder: []
+  einordnung: |
+    Aus [[kn.satz.riemannflaeche_logueberlagerung]]; schliesst die Lücke von [[kn.satz.nebenblatt_zweigpunkte]]; Lage: [[kn.satz.verzweigung_dicht]].
+
+kn.satz.nebenblatt_nullstellen_rechts:
+  worum: |
+    Wo können die Nullstellen der Nebenzweige liegen?
+  genau: |
+    Ihr Turm bleibt im Realteil über dem Turm $0,1,e,\dots$: $\mathrm{Re}\,\mathrm{sexp}(\zeta+N+k)\ge\mathrm{sexp}(N+k-1)$. Jede feste Tiefe ist nirgends dicht.
+  warum: |
+    Rückwärts gerechnet: $\mathrm{Re}\log u=\log|u|\ge\log\mathrm{Re}\,u$. Eine offene Menge solcher Startwerte würde unter $\exp$ gleichmässig nach unendlich laufen, aber die
+    Fatou-Menge von $\exp$ ist leer.
+  beispiel: |
+    Die Punkte mit $\mathrm{sexp}(w)=2\pi ik$ liegen genau auf dem Rand $\mathrm{Re}\,\mathrm{sexp}=0$.
+  bilder: []
+  einordnung: |
+    Ergänzt [[kn.satz.verzweigung_dicht]]: dicht wird es erst, wenn man alle Tiefen zusammennimmt.
+
+kn.satz.verzweigung_dicht:
+  worum: |
+    Liegen die Verzweigungspunkte aller Blätter dicht in der Ebene?
+  genau: |
+    Ja, aber es sind nur abzählbar viele, und jeder einzelne Zweig sieht lokal nur endlich viele.
+  warum: |
+    Die Urbilder von 1 unter allen Iterierten von $\exp$ liegen dicht in der Ebene, weil die Julia-Menge von $\exp$ die ganze Ebene ist. Trifft $\mathrm{sexp}(z+N)$ ein solches Urbild,
+    so landet der Turm von $z$ auf dem Turm von 0 — das ist eine Verzweigung.
+  beispiel: |
+    Neben $0.3$ liegt eine Verzweigung der Tiefe 1 bei $0.300141-0.006244i$ ([[kn.beob.verzweigung_nah]]).
+  bilder: []
+  einordnung: |
+    Aus [[kn.satz.verzweigungsorte_charakterisierung]]; beantwortet die Frage aus [[kn.satz.nebenblatt_zweigpunkte]]; offen: [[kn.frage.verzweigung_abstand]].
+
+kn.beob.verzweigung_gitter:
+  worum: |
+    Wie sind die einfachsten Verzweigungsorte weit oben angeordnet?
+  genau: |
+    In Reihen mit Abstand $\gamma=2\pi i/L$; der Fehler schrumpft je Glied um $e^{2\pi i\gamma}\approx-0.0012262+0.0004246i$.
+  warum: |
+    Oben ist $\mathrm{sexp}\approx\Psi(\kappa e^{L(z+\theta)})$; eine Lösung wiederholt sich, wenn $L(z+\theta)$ um $2\pi i$ wächst. Die Welle $\theta\approx a_0+a_1e^{2\pi iz}$ stört das
+    Gitter, und ihr Einfluss nimmt je Schritt um $e^{2\pi i\gamma}$ ab.
+  beispiel: |
+    $k=1$: $\delta_1/\delta_0=-0.0012284+0.0004250i$.
+  bilder: []
+  einordnung: |
+    Gitterrichtung aus [[kn.satz.wertevorrat]]; Darstellung oben: [[kn.kor.doppelreihe_oben]].
+
+kn.beob.verzweigung_nah:
+  worum: |
+    Konkrete Verzweigungsorte neben gewöhnlichen Punkten.
+  genau: |
+    Tiefe 1 bei $0.300141-0.006244i$, Tiefe 2 bei $1.302766+0.103084i$, Tiefe 3 bei $-0.518732+0.215501i$.
+  warum: |
+    Man verfolgt den Turm des Punkts, wählt in einem späten Schritt ein nahes Urbild eines Turmwerts $E_j$ und logarithmiert zurück.
+  beispiel: |
+    Für $0.3$: Abstände $1.24$, $0.29$, $0.0062$ nach 2, 3, 4 Schritten.
+  bilder: []
+  einordnung: |
+    Veranschaulicht [[kn.satz.verzweigung_dicht]].
+
+kn.frage.verzweigung_abstand:
+  worum: |
+    Offene Feinfragen zur Verteilung der Verzweigungsorte.
+  genau: |
+    Abstand zur nächsten Verzweigung fester Tiefe; Dimension des Abschlusses der Nullstellen; Nullstellen im Streifen $-2<\mathrm{Re}\le-1$; andere Basen.
+  warum: |
+    Die Dichte ist bewiesen, die quantitative Seite nicht.
+  beispiel: |
+    Vermutung $d_m(z)\asymp1/|F_m'(z)|$.
+  bilder: []
+  einordnung: |
+    Zu [[kn.satz.verzweigung_dicht]] und [[kn.satz.nebenblatt_nullstellen_rechts]].

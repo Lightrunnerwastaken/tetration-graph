@@ -1,0 +1,29 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 23 (Basisableitung bei b → 1⁺ und b → η⁺).
+
+kl.satz.eps0_b_gegen_1:
+  worum: |
+    Was macht die Randzahl $\varepsilon_0=\partial\ln T_b'(0)/\partial\ln\ln b$ aus [[gr.satz.elastizitaet_rand]], wenn die Basis gegen 1 geht?
+  genau: |
+    $\varepsilon_0=1-1/\ln(1/\ln b)$ plus ein Rest der Grösse etwa $1.4\ln b$; $T'(0)\approx(a-1)\ln(1/\lambda)$.
+  warum: |
+    Knapp über 1 zieht der Fixpunkt $a\approx1+\ln b$ sehr stark an (Multiplikator $\lambda\approx\ln b$), und die Tetration ist fast $a-(a-1)\lambda^x$. Ableiten bei 0 gibt
+    $T'(0)\approx\ln b\cdot\ln(1/\ln b)$, und dessen prozentuale Änderung in $\ln b$ ist $1-1/\ln(1/\ln b)$.
+  beispiel: |
+    $b=1+10^{-6}$: Formel $0.9276176$, gemessen $0.9276190$.
+  bilder: []
+  einordnung: |
+    Oberes Ende der Tabelle [[gr.beob.eps0_tabelle]]; reguläre Tetration: [[kl.satz.regulaer]].
+
+kl.satz.kanalgesetz_vorwaertssumme:
+  worum: |
+    Knapp über $\eta$ kriecht die Tetration lange durch den Engpass bei $e$. Wie gross wird dann die Vorwärtssumme $S_b(0)=\sum_kr(k)$, die die Basisableitung trägt ([[gr.beob.wackeln_basen]])?
+  genau: |
+    $S_b(0)\sim\frac\pi2\sqrt{2\eta/e}\,(b-\eta)^{-3/2}=1.6195\,(b-\eta)^{-3/2}$, Korrektur $1-0.644\,(b-\eta)$.
+  warum: |
+    Im Engpass ist ein Schritt fast $q(y)=b^y-y\approx\alpha+\beta(y-e)^2$ mit $\alpha\propto b-\eta$, und $T'\approx q(T)$. Die Summe der $1/T'$ wird zum Integral $\int dy/q^2$, und das ist
+    $\pi/(2\alpha^{3/2}\beta^{1/2})$ — daher die Potenz $-3/2$ (bei der Durchgangszeit $\int dy/q$ ist es $-1/2$).
+  beispiel: |
+    $b=\eta+10^{-3}$: $S_b(0)=51179.05$, das ist $0.99936$ mal der Leitterm $1.6195\cdot10^{4.5}$.
+  bilder: []
+  einordnung: |
+    Dieselbe Engpass-Rechnung wie [[gr.satz.wurzel_eta]] und [[br.satz.sattel_knoten]]; Basisableitung genau bei $\eta$: [[kl.satz.c1_noerlund]].

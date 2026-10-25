@@ -1083,6 +1083,60 @@
     warum: The map $\lambda\mapsto\exp(\lambda e^{-\lambda})$ has a critical point at $\lambda=1$; the unit circle is folded into a cusp there.
       Real and imaginary parts behave like $t^2$ and $t^3$.
     worum: What exactly does the boundary of the Shell–Thron region look like at the cusp $b=\eta$?
+- id: fp.satz.kein_haar_bei_L
+  quelle_hash: 770bce940c4d
+  theorie_hash: ddd3f34b338a
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: No hair of eᶻ ends at the fixed point L or accumulates there
+    aussage: |
+      No dynamic ray $g_s$ of $e^w$ has $L$ or $\bar L$ in its closure — neither as an endpoint nor as an accumulation point. The same holds for the broken
+      preimage rays of the real axis and for every non-real periodic point whose orbit lies entirely in the interior of $S_0$.
+      This cannot be extended to arbitrary connected subsets of the escaping set: $I(\exp)$ is itself connected (Rempe 2010) and dense.
+    bereich: $f(w)=e^w$; hairs = dynamic rays $g_s$ with address $s=s_0s_1\ldots$ (Schleicher–Zimmer), strips $S_k=\{(2k-1)\pi<\mathrm{Im}\,w<(2k+1)\pi\}$;
+      $L=-W_0(-1)$
+    beweis:
+      luecken:
+      - The structure theorems of Schleicher–Zimmer used (disjointness, tail in S_{s₀}, ℝ carries the address 0^∞, behavior of the broken rays)
+        have not been checked against the original for the case “singular value 0 escapes along ℝ”.
+      text: |
+        Structure (Schleicher–Zimmer): $\exp(g_s)\subset g_{\sigma s}$, rays of different addresses are disjoint, the tail of $g_s$ lies in $S_{s_0}$, and $\mathbb R$ belongs to the address $0^\infty$.
+        The lines $\mathrm{Im}\,w=(2k+1)\pi$ are mapped onto $(-\infty,0)\subset\mathbb R$. (a) If $s$ is not eventually $0$, then $g_{\sigma^ns}$ never meets these lines
+        (otherwise $g_{\sigma^{n+1}s}\cap\mathbb R\ne\emptyset$, hence $\sigma^{n+1}s=0^\infty$); as a connected set, $g_{\sigma^ns}$ lies entirely in $S_{s_n}$. If $L$ lies in the closure
+        of $g_s$, then $L=\exp^{\circ n}(L)$ lies in the closure of $S_{s_n}$; since $L$ lies in the interior of $S_0$ ($\mathrm{Im}\,L=1.337<\pi$), $s_n=0$ follows for all $n$ — contradiction.
+        (b) If $s$ is eventually $0$ (or a broken preimage of $\mathbb R$), then $\exp^{\circ m}(g_s)\subset\mathbb R$, and $L$ would lie in the closure of $\mathbb R$. The same for $\bar L$.
+    bewertung:
+      nutzen: Explains why no pulled-back hairs reach up into Kneser's upper half-plane.
+      recherche: The report suspects that the case is known (Devaney 1993, Rempe 2006 exclude it in the landing theorems); not looked up.
+      richtigkeit: Sketch; argument short and closed, gap only in the cited structure theorems
+    einfach: The escaping points of eᶻ form long hairs that run off to infinity on the right. None of these hairs comes arbitrarily close to the
+      fixed point L — because a hair that always stays in the middle strip would have to be the real axis, and that does not come near L.
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: short argument from the ray structure and the position of L in the strip S₀.'
+      f2_benutzte_voraussetzungen: Ray structure after Schleicher–Zimmer; Im L < π; L not real.
+      f3_spezialfall: Counterpart of the landing theorems for periodic rays, which exclude the case “singular value on a periodic ray”.
+      f4_uebertragbar: To every non-real periodic point with orbit in S₀ and to b^w, b > η (strips of width 2π/ln b).
+      f5_neue_frage: Is L then a point of an indecomposable continuum (Devaney) — and what does its preimage under sexp look like?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/16_julia_menge_sexp/BERICHT.md, B9 and section “On 9”
+    - {}
+    - {}
+    - stelle: I(exp) connected
+    - stelle: novelty question (indecomposable continua)
+    - stelle: novelty question (landing theorem for periodic rays)
+  en_theorie:
+    einordnung: |
+      Consequence for tetration: [[kn.kor.haar_urbilder_beschraenkt]]; dynamics of $e^w$ in general: [[fp.satz.messbare_dynamik]], [[fp.satz.abstossend]].
+    genau: |
+      No — neither for $L$ nor for $\bar L$, and for no non-real periodic point whose orbit stays in the strip $|\mathrm{Im}\,w|<\pi$.
+    warum: |
+      A hair that meets the lines $\mathrm{Im}\,w=\pm\pi,\pm3\pi,\dots$ becomes real after two steps, so it then belongs to the real axis. Otherwise every image of the hair stays in a single strip.
+      If it accumulates at $L$, then all images accumulate at $L$, and $L$ lies in the middle strip — so the hair would be the real axis. But that does not come near $L$.
+    worum: |
+      The escaping points of $e^w$ lie on “hairs” (dynamic rays) that run off to infinity on the right. Can a hair end at the fixed point $L$ or accumulate there?
 - id: fp.satz.kreismittel
   quelle_hash: 66485e87d471
   theorie_hash: 04a5826d570c
@@ -2619,17 +2673,12 @@
     worum: |
       A second mean-value claim of the note: averaged over the boundary **and** over time, $2\pi$ comes out. Its justification has fallen away; whether it is nevertheless correct is open.
 - id: fp.verm.knospen
-  quelle_hash: bf80fda57d62
+  quelle_hash: fd03fb33c11e
   theorie_hash: 19b154394486
   herkunft:
     modell: sonnet
-    datum: '2026-10-12'
-  geprueft:
-    beweis: nein
-    intern: nein
-    kern: zweitpruefung
-    theorie: nein
-    zusatz: nein
+    datum: '2026-10-25'
+  geprueft: nein
   en:
     beweis:
       text: '$b^z$ is conjugate to $E_\kappa(w)=e^w+\kappa$. Rempe–Schleicher (2008, Prop. 6.2 and Thm. 6.8(c)): If the inner ray at angle $p/q$
@@ -2644,7 +2693,8 @@
     pruefung:
       f2_benutzte_voraussetzungen: A single singular value (0) — hence the tower is the orbit that finds the cycle; r−1 small enough so that the
         radial path lies in the child component.
-      f5_neue_frage: Which tetration belongs to bases with an attracting q-cycle? (q-valued regular construction)
+      f5_neue_frage: 'Which tetration belongs to bases with an attracting q-cycle? (q-valued regular construction) Hint: there the Kneser wave
+        presumably acquires singularities above the orbit values (kn.verm.zusatzsingularitaet_bahnwert).'
       f3_spezialfall: 'Yes: special case of the bifurcation at parabolic parameters (child component of period qn at the root with rotation number
         p/q), here n = 1.'
       f1_folgt_unmittelbar: 'From the literature yes: child components of the exponential family (Rempe–Schleicher 2008) plus Fatou''s theorem

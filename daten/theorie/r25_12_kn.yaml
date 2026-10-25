@@ -1,0 +1,76 @@
+# Theorie-Blöcke: Höhere Ränge als Funktion der Basis (Runde 25.10.2026, Bericht 12). H_r Stufe vom Rang r, p_r negativer Fixpunkt, η_r Grenzbasen.
+
+kn.satz.ganze_negative_hoehen:
+  worum: |
+    Welche Werte nimmt eine höhere Rechenart bei negativen ganzen Höhen an?
+  genau: |
+    $H_r(b,-k)=1-k$ für $1\le k\le r-3$, für jede Basis.
+  warum: |
+    Nach links rechnet man mit der Umkehrung der Stufe darunter: $H_{r+1}(x-1)=H_r^{-1}(H_{r+1}(x))$, und $H_r$ bildet die Werte $0,-1,\dots$ schon richtig ab.
+  beispiel: |
+    Hexation: $H_6(-1)=0$, $H_6(-2)=-1$, $H_6(-3)=-2$.
+  bilder: []
+  einordnung: |
+    Verallgemeinert die ganzen Werte aus [[kn.satz.hexation_struktur]]; Grundlage für [[kn.satz.negative_struktur]].
+
+kn.satz.negative_struktur:
+  worum: |
+    Was tun die höheren Rechenarten links von null?
+  genau: |
+    Gerade Ränge stürzen bei $\sigma_r\in(-(r-2),-(r-3))$ auf $-\infty$ und haben kurz davor einen negativen Fixpunkt $p_r$; ungerade Ränge laufen gegen $p_{r-1}$ und liegen links über $y=x$.
+  warum: |
+    Eine ungerade Stufe nimmt nur Werte über $p_{r-1}$ an, also ist die Umkehrung, mit der die nächste gerade Stufe nach links weiterrechnet, nur dort erklärt — am Rand geht sie gegen $-\infty$.
+    Die ganzen Werte aus [[kn.satz.ganze_negative_hoehen]] legen die Intervalle fest.
+  beispiel: |
+    $b=2$: $\sigma_6=-3.76502$, $p_6=-3.69941$.
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[kn.satz.hexation_struktur]]; Zahlen: [[kn.beob.landkarte_p4_p6]]; Folgerung für die Basen: [[kn.verm.singulaere_basen_ungerade]].
+
+kn.verm.singulaere_basen_ungerade:
+  worum: |
+    An welchen Basen ändert sich die Bauweise der Hierarchie, und wo ist sie nur eine Schwelle?
+  genau: |
+    Vermutet: nur an $\eta_3,\eta_5,\eta_7,\dots$ ist $H_r(b,x)$ in $b$ nicht analytisch; $\eta_4,\eta_6,\dots$ sind nur Schwellen der Beschränktheit.
+  warum: |
+    Gerade Ränge werden an einem anziehenden positiven Fixpunkt gebaut, der bei $\eta_{r-1}$ (ungerader Index) parabolisch wird und verschwindet. Ungerade Ränge sitzen am negativen Fixpunkt $p_{r-1}$, den es für jede Basis gibt.
+  beispiel: |
+    Pentation an $\eta_4$: analytisch; Hexation an $\eta_5$: Sprung.
+  bilder: []
+  einordnung: |
+    Belege: [[kn.beob.pentation_analytisch_eta4]], [[kn.beob.hexation_sprung_eta5]]; Rang 4 an η: [[kl.verm.eta_glatt_nicht_analytisch]].
+
+kn.beob.pentation_analytisch_eta4:
+  worum: |
+    Merkt die Pentation die Schwelle $\eta_4$, ab der sie unbeschränkt wächst?
+  genau: |
+    Nein: $b\mapsto H_5(b,x)$ ist um $\eta_4$ analytisch; Cauchy-Koeffizienten zweier Kreise stimmen auf $10^{-19}$ überein.
+  warum: |
+    Der Bau-Fixpunkt $p_4(b)$ und sein Multiplikator hängen an $\eta_4$ glatt von $b$ ab; an $\eta_4$ ändert sich nur die Tetration weit rechts (sie verliert ihre positiven Fixpunkte).
+  bilder: []
+  einordnung: |
+    Stützt [[kn.verm.singulaere_basen_ungerade]]; Bau: [[kn.konstr.pentation]].
+
+kn.beob.hexation_sprung_eta5:
+  worum: |
+    Passen reguläre und Kneser-artige Hexation an ihrer Grenzbasis $\eta_5$ zusammen, wie die beiden Tetrationen an $\eta$?
+  genau: |
+    Nein (Motor): $R(x)=L(x+\theta(x))$ mit 1-periodischem $\theta$ der Grösse $10^{-5}$, fast eine reine erste Harmonische.
+  warum: |
+    Zwei Lösungen derselben Gleichung $H(x+1)=P_b(H(x))$ mit $H(0)=1$ unterscheiden sich immer um eine periodische Höhenverschiebung; ob die gemessene von der Kneser-Hexation selbst oder von der Auswahl des Motors kommt, ist offen.
+  beispiel: |
+    $\theta(\tfrac12)=8.282\cdot10^{-6}$, gleich bei $x=-\tfrac12,\ \tfrac12,\ \tfrac32$.
+  bilder: []
+  einordnung: |
+    Gegenstück: [[kl.beob.kneser_fortsetzung_regulaer]]; Bauweisen: [[kn.konstr.hexation_regulaer]], [[kn.frage.hexation_kneser]].
+
+kn.beob.landkarte_p4_p6:
+  worum: |
+    Wo liegen die negativen Bau-Fixpunkte der Tetration und der Hexation, und wie stark stossen sie ab?
+  genau: |
+    Für $b=1.2\ldots3$ fallen $p_4,\sigma_6,p_6$; $\lambda_4$ hat bei $b^*=1.53279$ ein Minimum $4.7799$, $\lambda_6\ge9.49$.
+  warum: |
+    Gemessen mit dem Motor (Illinois-Verfahren mit Klammer); Stichproben stimmen mit älteren Werten im Graphen überein.
+  bilder: []
+  einordnung: |
+    Stützt die Bedingung $\lambda_b>1$ in [[kn.konstr.pentation]] und [[kn.satz.negative_struktur]]; vgl. [[bw.beob.kein_gemeinsamer_fixpunkt]].

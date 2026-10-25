@@ -1,0 +1,39 @@
+gebiet: it
+# Forschungsrunde 25.10.2026, Bericht 14 „Andere Klammerungen“: lokale Iterationstheorie der Normalform F(m) = m e^m.
+# Rechnungen: forschung/runde_2026_10_25/14_klammerungen/ (halbiterierte_reihe.py, fatou_reihe.py).
+# Die Fatou-Reihe von F steht schon in br.beob.produkt_iteration_dreieck (F ist der Schritt der Produkt-Tetration zur Basis e).
+aussagen:
+
+- id: it.verm.mexp_halbiterierte_divergent
+  titel: 'Die formale Halbiterierte von m·e^m divergiert (Gevrey-1) — darum wären a[4]2^½ bei a = 1 und x[5′]½ bei x = 1 glatt, aber nicht analytisch'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [fatou_koord, iterationsgruppe, gevrey, hyperoperation]
+  bereich: '$F(m)=me^m$ bei 0 (Schritt der Produkt-Tetration zur Basis $e$, br.def.produkt_tetration); formale Halbiterierte $g$ mit $g\circ g=F$, $g(m)=m+\dots$ (eindeutig); Fortsetzungen nach br.satz.klammerung_fortsetzung'
+  aussage: |
+    Die formale Halbiterierte
+    $$g(m)=m+\tfrac{m^2}2+\tfrac{m^4}{48}-\tfrac{m^5}{96}+\tfrac{m^6}{640}+\tfrac{41m^7}{5760}-\tfrac{99m^8}{7168}+\dots$$
+    hat Konvergenzradius 0; numerisch gilt $|g_k|\approx C\,(k-2)!/(2\pi)^k$ (Gevrey-1, Rate $1/(2\pi)$): $|g_k|(2\pi)^k/(k-2)!$ liegt für $k\le35$ zwischen 0.17 und 47, ohne Trend.
+    Dasselbe Wachstum zeigen die Koeffizienten der Fatou-Reihe (br.beob.produkt_iteration_dreieck): $|c_k|(2\pi)^k/(k-1)!$ liegt für $2\le k\le22$ zwischen 0.03 und 5.4.
+    Folge, falls die Divergenz stimmt: $F$ hat keine bei 0 analytische Halbiterierte; also ist $a\mapsto a[4]2^{1/2}$ bei $a=1$ und $x\mapsto x[5']\tfrac12$ bei $x=1$ zwar $C^\infty$
+    (die Fortsetzungen von beiden Seiten kleben glatt), aber nicht analytisch.
+  einfach: >-
+    Die „halbe“ Anwendung von m ↦ m·e^m lässt sich bei 0 nicht als konvergente Potenzreihe schreiben. Darum haben die halben ausgewogenen und linken Türme
+    beim Wert 1 eine unsichtbare Naht: glatt, aber nicht ganz so gutmütig wie eine Potenzreihe.
+  gegenbeispielsuche: '35 Koeffizienten von $g$ exakt in Bruchzahlen (beim Eintragen die ersten 8 mit eigenem Code bestätigt); kein Abschnitt, in dem die normierten Beträge gegen 0 fallen; die Fatou-Reihe (22 Glieder) zeigt dasselbe Wachstum. Ein Beweis fehlt.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Befunde 4, 10, 11; halbiterierte_reihe.py, halbiterierte_ausgabe.txt, fatou_reihe_ausgabe.txt'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Divergenz nicht. Die Folgerung ja: eine analytische Halbiterierte tangential zur Identität hätte die (eindeutige) formale Halbiterierte als Taylor-Reihe, und $x\mapsto x\ln x$ ist bei 1 lokal umkehrbar.'
+    f2_benutzte_voraussetzungen: 'Eindeutigkeit formaler Iterierter tangentialer Keime; asymptotische Entwicklung der Fatou-Fortsetzung beidseitig.'
+    f3_spezialfall: 'Gegenstück zu Bakers Satz für $e^z-1$ (it.satz.baker); macht die Bemerkung „die Reihe divergiert im Allgemeinen“ in br.satz.produkt_parabolisch für die Halbiterierte konkret.'
+    f4_uebertragbar: 'Auf die Produkt-Tetration (gleicher Keim) und auf alle linken Ränge (br.satz.linke_raenge_keim).'
+    f5_neue_frage: 'Beweis über die Hornabbildung (it.satz.ecalle_voronin): das Becken von 0 enthält den kritischen Punkt $-1$ von $F$; genügt das, um eine Halbiterierte (nicht nur einen Fluss) auszuschliessen?'
+  bewertung: {richtigkeit: 'Vermutung mit starker numerischer Stütze; Folgerung bewiesen unter der Divergenz', neuheit: neu_ungeprueft, nutzen: 'Sagt, dass diese Varianten (und die Produkt-Tetration) bei 1 bzw. 0 nicht analytisch fortsetzbar sind.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: analog_zu, ziel: it.satz.baker}
+    - {typ: verwandt, ziel: it.satz.ecalle_voronin}
+    - {typ: verwandt, ziel: br.beob.produkt_iteration_dreieck}
+    - {typ: verwandt, ziel: br.satz.produkt_parabolisch}
+    - {typ: verwandt, ziel: kl.verm.eta_glatt_nicht_analytisch}

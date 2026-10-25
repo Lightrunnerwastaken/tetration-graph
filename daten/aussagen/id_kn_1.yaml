@@ -121,8 +121,9 @@ aussagen:
     **Antwort (Etappe 2): weder noch.** Der Exponent ist genau 1, mit einem Produkt iterierter Logarithmen,
     $|a_n|\asymp1/(n\ln n\ln\ln n\cdots)$; die Drift des lokalen Exponenten ist $1+1/\ln n$ (kn.satz.theta_koeffizienten). Eine eigene
     „Kneser-Exponentenzahl“ gibt es nicht; der Abfall wird von $A=\mathrm{sexp}'(0)$ und der regulären Abel-Funktion $h$ bestimmt.
-    Die Übertragung von der Singularität auf die Koeffizienten ist inzwischen bewiesen (kn.satz.theta_koeffizienten). **Offen bleibt:** die Schwankung von $\arg a_n$ explizit
-    über $\theta'$ auf der reellen Achse auszudrücken.
+    Die Übertragung von der Singularität auf die Koeffizienten ist inzwischen bewiesen (kn.satz.theta_koeffizienten). **Beantwortet (25.10.2026, Skizze):**
+    $\arg a_n=\pi+\Phi(\sigma_n)+\arctan\frac{\pi}{2(\ln n-\ln(A/2\pi))}+O(1/(\ln n\ln\ln n))$ mit $\Phi=\arg(1+\theta')$ auf der reellen Achse und
+    $\sigma_n\approx1/(2\pi n)$ (kn.satz.theta_phase_koeffizienten). Offen bleibt, ob der stetige Zweig von $\arg a_n$ unbeschränkt ist (kn.verm.theta_phase_unbeschraenkt).
   einfach: >-
     Die Welle in Knesers Tetration wird so langsam schwächer wie 1/n, nur noch ein klein wenig schneller. Eine neue Zahl steckt nicht darin —
     aber eine schöne Formel (siehe die verwandten Einträge), die inzwischen auch bewiesen ist.
@@ -131,13 +132,14 @@ aussagen:
     - {typ: verwandt, ziel: kn.beob.theta_fourier_algebraisch}
     - {typ: verwandt, ziel: kn.satz.theta_koeffizienten}
     - {typ: verwandt, ziel: br.satz.gevrey_fourier}
+    - {typ: verwandt, ziel: kn.satz.theta_phase_koeffizienten}
 
 - id: kn.satz.theta_singularitaet
   titel: 'θ ist genau an den ganzen Zahlen singulär — mit einer „Superlogarithmus-Singularität“'
   art: satz
   ebene: C
   status: bedingt
-  bedingungen_text: 'Zweigwahl an einem Punkt (z₀ = 0.05i, Abstand 4·10⁻⁴⁸ bei nötigen < 0.12) nur in Gleitkomma geprüft, nicht mit Intervallen; nur Basis e'
+  bedingungen_text: 'Motor-Annahme (E): die Motor-θ-Reihe trifft Knesers θ bei z₀ = 0.05i bis auf 0.027 (mod 2πi/ℓ); die Zweigwahl selbst ist mit Intervallarithmetik bewiesen, Basis e und 2 (kn.satz.zweigwahl_zertifikat); Hilfsschranken nahe 0 unter (E2) (kn.satz.sexp_schlicht_nahe_null). Belege für (E): zwei Motoreinstellungen auf 2·10⁻⁵⁹ gleich; Basis e stimmt auf Im z ≥ 0.36 mit dem zertifizierten θ_K (kn.satz.kneser_e_zertifiziert) auf 3·10⁻⁷⁹'
   niveau: forschung
   objekte: [kneser_T, theta_kneser]
   bereich: 'Basis $b>\eta$ (gerechnet für $e$ und 2); $\mathrm{sexp}(z)=F(z+\theta(z))$, $F(s)=\Psi(\lambda^s)$ mit der Poincaré-Funktion $\Psi$ am Fixpunkt $L$, $\lambda=L\ln b$; $h=F^{-1}$ die reguläre Abel-Funktion'
@@ -145,8 +147,10 @@ aussagen:
     (i) $\Psi'$ hat keine Nullstelle und $\Psi$ lässt den Wert 0 aus; daher ist $F'\neq0$ und $F\neq0$ überall.
     (ii) Weil $\mathrm{sexp}(-1)=0$, aber $F$ nie 0 wird, muss $z+\theta(z)$ bei $z\to-1$ unbeschränkt werden: **θ ist an jeder ganzen Zahl singulär**.
     An allen anderen reellen Stellen ist $\theta$ analytisch.
-    (iii) Die Singularität ist weder eine Potenz noch ein Logarithmus. Nahe $z=0$ gilt (Basis $e$)
-    $$\theta(z)=2-z+h\bigl(\log(Az)+\kappa z+O(z^2)\bigr),\qquad A=\mathrm{sexp}'(0),\quad\kappa=\frac{\mathrm{sexp}''(0)}{2A}-\frac A2.$$
+    (iii) Die Singularität wächst weder wie eine Potenz noch wie ein Logarithmus; topologisch ist sie ein Verzweigungspunkt unendlicher Ordnung (kn.kor.theta_verzweigung_unendlich).
+    Nahe $z=0$ gilt (Basis $e$)
+    $$\theta(z)=2-z+h\bigl(\log(Az)+\kappa z+O(z^2)\bigr),\qquad A=\mathrm{sexp}'(0),\quad\kappa=\frac{\mathrm{sexp}''(0)}{2A}-\frac A2$$
+    (modulo $2\pi i/L$; gemeint ist der Zweig von $h$, der an $z_0=0.05i$ den Datenwert von θ liefert — die „Zweigzahl 0“ des Programms ist nur eine Konvention).
     $\theta$ wächst dort unbeschränkt, aber unvorstellbar langsam: von $z=10^{-2}i$ bis $10^{-30}i$ ändert sich $\theta$ nur um $0.14$
     (von $26.205+5.227i$ nach $26.330+4.763i$). Die Singularität ist selbstähnlich: für sehr kleine $z$ enthält sie $\theta$ selbst.
   einfach: >-
@@ -162,26 +166,30 @@ aussagen:
       numerisch bestätigt: der Rest fällt wie $|z|^2$ bis $|z|=10^{-12}$. Holomorphie von $h$ auf dem nötigen Gebiet ohne Zitat: die Schröder-Funktion $\sigma$ ist
       auf der ganzen oberen Halbebene schlicht, weil der Hauptzweig-Logarithmus sie injektiv in sich abbildet (Lemma U, luecken/BERICHT_LUECKEN_ANALYTISCH.md).
     luecken:
-      - 'Zweigwahl: bewiesen ist, dass die Zweige überall übereinstimmen, sobald sie an einem Punkt übereinstimmen; an z₀ = 0.05i ist der Abstand 4·10⁻⁴⁸ (nötig < 0.12), aber nur in Gleitkomma gerechnet, nicht mit Intervallen, und nur für Basis e.'
+      - 'Zweigwahl: mit Intervallen zertifiziert für Basis e und 2 (kn.satz.zweigwahl_zertifikat); offen ist nur die Motor-Annahme (E) mit Toleranz 0.027.'
+  stuetzt_sich_auf: [kn.satz.zweigwahl_zertifikat, kn.satz.sexp_schlicht_nahe_null]
   quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, Abschnitt 2 (S1–S6) und 3.1; p5_lokal.py'}]
   pruefung:
     f1_folgt_unmittelbar: '(i), (ii) ja, sobald man sieht, dass F den Wert 0 auslässt; (iii) ist eine kurze Rechnung.'
     f2_benutzte_voraussetzungen: 'Kneser-Darstellung sexp = F(z+θ(z)); Poincaré-Funktion ganz.'
     f3_spezialfall: nein
-    f4_uebertragbar: 'Auf jede Basis über η (Basis 2 gleich geprüft) und vermutlich auf Kneser-artige Pentation (dort trifft die Pentation den Wert, den die reguläre Lösung auslässt).'
+    f4_uebertragbar: 'Auf jede Basis über η (Basis 2 gleich geprüft) und vermutlich auf Kneser-artige Pentation (dort trifft die Pentation den Wert, den die reguläre Lösung auslässt). Zweigwahl für Basis 2 jetzt ebenfalls zertifiziert. (i)–(ii) gelten wörtlich auch für komplexe Basen ausserhalb Shell–Thron (kn.satz.komplex_radius).'
     f5_neue_frage: 'Gilt dasselbe für die Welle zwischen regulärer und Kneser-artiger Pentation (kn.beob.einheitliche_raenge)?'
-  bewertung: {richtigkeit: 'Kern bewiesen, Lokalform numerisch auf 10⁻²⁷', neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum Kneser und die reguläre Lösung an L sich nicht analytisch ineinander überführen lassen, und wo genau.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'Kern bewiesen; Zweigwahl mit Intervallen zertifiziert (Basis e und 2) unter Motor-Annahme (E); Lokalform numerisch auf 10⁻²⁷', neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum Kneser und die reguläre Lösung an L sich nicht analytisch ineinander überführen lassen, und wo genau.', nutzen_stufe: hoch}
+  versionen:
+    - {datum: '2026-10-25', aenderung: 'Bedingung „Zweigwahl nur in Gleitkomma, nur Basis e“ ersetzt durch die viel schwächere Motor-Annahme (E) mit Toleranz 0.027; Status bleibt bedingt.', grund: 'Zweigwahl mit Intervallarithmetik zertifiziert, Basis e und 2 (kn.satz.zweigwahl_zertifikat; Bericht forschung/runde_2026_10_25/03_zweigwahl_zertifikat).'}
   kanten:
     - {typ: verwandt, ziel: kn.beob.theta_fourier_algebraisch}
     - {typ: verwandt, ziel: kn.gescheitert.regulaer_an_L}
     - {typ: verwandt, ziel: kn.konstr.kneser}
+    - {typ: verwandt, ziel: kn.kor.theta_verzweigung_unendlich}
 
 - id: kn.satz.theta_koeffizienten
   titel: 'Formel für die Fourier-Koeffizienten von θ: aₙ = [qⁿ] h(c + log(1−q)) + O(1/(n² ln n)), Exponent genau 1'
   art: satz
   ebene: C
   status: bedingt
-  bedingungen_text: 'dieselbe Zweigprüfung wie bei kn.satz.theta_singularitaet'
+  bedingungen_text: 'dieselbe Bedingung wie kn.satz.theta_singularitaet: Motor-Annahme (E); die Zweigwahl ist mit Intervallen zertifiziert (kn.satz.zweigwahl_zertifikat), Basis e und 2'
   niveau: forschung
   objekte: [kneser_T, theta_kneser]
   bereich: 'Basis $b>\eta$; $\theta(z)=\sum a_nq^n$, $q=e^{2\pi iz}$; $h$, $A$, $\kappa$ wie in kn.satz.theta_singularitaet'
@@ -210,13 +218,14 @@ aussagen:
   quellen: [{ref: diese_arbeit, stelle: 'forschung/identitaeten_2026_10_14/etappe2/BERICHT_ETAPPE2.md, S7–S9 und 3.2; Beweis: luecken/BERICHT_LUECKEN_ANALYTISCH.md, l2_transfer.py'}]
   pruefung:
     f1_folgt_unmittelbar: 'Aus der Singularität mit dem Übertragungssatz, ja; dafür braucht es nur eine Schranke, keine vollständige Entwicklung.'
-    f2_benutzte_voraussetzungen: 'Δ-Analytizität bei q = 1 (bedingt auf die Zweigprüfung in kn.satz.theta_singularitaet), Schranken für h′; Flajolet–Sedgewick Satz VI.3 zitiert.'
+    f2_benutzte_voraussetzungen: 'Δ-Analytizität bei q = 1 (bedingt auf Motor-Annahme E, Zweigwahl zertifiziert), Schranken für h′; Flajolet–Sedgewick Satz VI.3 zitiert.'
     f3_spezialfall: 'Ja: Singularitätenanalyse.'
-    f4_uebertragbar: 'Gleiche Formel für Basis 2 geprüft; L geht nur über h und c ein.'
-    f5_neue_frage: 'Konstanten der O-Terme ausschreiben; die Schwankung von arg aₙ (selbstähnlich in slog(ln ln n)) explizit über θ′ ausdrücken.'
-  bewertung: {richtigkeit: 'bewiesen, bedingt auf eine in Gleitkomma geprüfte Zweigwahl; numerisch bis n = 4000 auf 5·10⁻⁹', neuheit: neu_ungeprueft, nutzen: 'Eine echte Identität für Kneser: die Korrekturwelle zur regulären Lösung aus h und sexp′(0) allein.', nutzen_stufe: hoch}
+    f4_uebertragbar: 'Gleiche Formel für Basis 2 geprüft; L geht nur über h und c ein. Für komplexe Basen numerisch bestätigt, mit c = log(±iA/(2π ln b)) (kn.beob.komplex_koeffizientengesetz); nicht in Knospen nahe dem Rand (kn.beob.rand_zusatzsingularitaet).'
+    f5_neue_frage: 'Konstanten der O-Terme ausschreiben; die Schwankung von arg aₙ (selbstähnlich in slog(ln ln n)) explizit über θ′ ausdrücken — beantwortet in kn.satz.theta_phase_koeffizienten (Skizze).'
+  bewertung: {richtigkeit: 'bewiesen unter Motor-Annahme (E) (Zweigwahl mit Intervallen zertifiziert); numerisch bis n = 4000 auf 5·10⁻⁹', neuheit: neu_ungeprueft, nutzen: 'Eine echte Identität für Kneser: die Korrekturwelle zur regulären Lösung aus h und sexp′(0) allein.', nutzen_stufe: hoch}
   versionen:
     - {aenderung: 'Früher kn.beob.theta_koeffizienten (Beobachtung, Rest O(n⁻²)).', grund: 'Übertragungssatz bewiesen, Rest verschärft auf O(1/(n² ln n)), 14.10.2026.'}
+    - {datum: '2026-10-25', aenderung: 'Bedingung auf die Motor-Annahme (E) abgeschwächt; Status bleibt bedingt.', grund: 'Zweigwahl mit Intervallarithmetik zertifiziert, Basis e und 2 (kn.satz.zweigwahl_zertifikat).'}
   kanten:
     - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
     - {typ: stuetzt, ziel: kn.beob.theta_fourier_algebraisch}

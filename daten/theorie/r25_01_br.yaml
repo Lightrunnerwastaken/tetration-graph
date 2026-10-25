@@ -1,0 +1,125 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 01 „Halbebenen-Eindeutigkeit (Q*)“ (forschung/runde_2026_10_25/01_halbebene_eindeutigkeit/BERICHT.md).
+# Bezeichnungen: T = sexp_K∘σ, σ = id + p_T, H = {Re z > −2}, U = {Im z > 0}, q = e^{2πiz}.
+
+br.satz.halbebene_liouville_scharf:
+  worum: |
+    Q* fragt, ob Holomorphie auf $\mathrm{Re}\,z>-2$ schon Kneser erzwingt. Jede reelle Tetration ist $T=\mathrm{sexp}_K\circ(\mathrm{id}+p_T)$ mit periodischem $p_T$;
+    Kneser heisst $p_T=0$. Welche Bedingung an $p_T$ weit oben reicht?
+  genau: |
+    $p_T$ eindeutig holomorph auf $U$ und einseitig $-\mathrm{Im}\,p_T\le o(e^{2\pi\,\mathrm{Im}\,z})$ $\Rightarrow$ $p_T\equiv0$. Die Schwelle $e^{2\pi\,\mathrm{Im}\,z}$ ist die Grösse von $\sin2\pi z$.
+  warum: |
+    In $q=e^{2\pi iz}$ ist $p_T$ eine Laurent-Reihe; weil $p_T$ reell ist, gehören die Koeffizienten von $q^n$ und $q^{-n}$ zusammen. Eine einseitige Schranke für den
+    Realteil kontrolliert nach Borel–Carathéodory alle Koeffizienten von $q^{-n}$; die wachsenden Moden fallen weg, wegen der Symmetrie auch die fallenden.
+  beispiel: |
+    $p=\varepsilon\sin2\pi z$ hat $|p|\approx\tfrac\varepsilon2e^{2\pi\,\mathrm{Im}\,z}$ — genau an der Schwelle; die zugehörige Tetration ist trotzdem nicht in Hol(H) ([[br.beob.hauptblatt_singularitaet_trig]]).
+  bilder: []
+  einordnung: |
+    Verallgemeinert [[fg.lem.periodisch_liouville]]; Teilantwort auf [[br.frage.halbebene_eindeutigkeit]]; die Form mit Grenzwert: [[br.satz.schroeder_kugel_genuegt]].
+
+br.satz.schroeder_kugel_genuegt:
+  worum: |
+    Paulsen–Cowgill verlangen den Grenzwert $L$ weit oben. Wie viel davon braucht man wirklich?
+  genau: |
+    Bleibt $T$ auf einem Halbstreifen der Breite $>1$, der links von $-1$ beginnt, in einer kleinen Scheibe um $L$, so ist $T$ Kneser.
+  warum: |
+    In der Schröder-Koordinate wird $T(z+1)=e^{T(z)}$ zu $\zeta(z+1)=L\zeta(z)$; $E=\zeta L^{-z}$ ist periodisch und wächst höchstens wie $|q|^{-0.213}$. Eine Singularität,
+    die langsamer als $1/|q|$ wächst, ist hebbar — also strebt $\zeta$ gegen 0 und $T$ gegen $L$.
+  beispiel: |
+    Kneser selbst: $E=e^{L\theta}\to\kappa=1.7176-2.3844i$ ([[kn.satz.binet_kappa]]).
+  bilder: []
+  einordnung: |
+    Stützt sich auf [[kn.satz.paulsen_cowgill]]; Grundlage für [[br.satz.enden_klassifikation]].
+
+br.satz.enden_klassifikation:
+  worum: |
+    Wie kann sich eine Tetration aus Hol(H) weit oben verhalten, und welche Fälle bleiben als Gegenbeispiel zu Q* übrig?
+  genau: |
+    Ist $E_T=\sigma(T)L^{-z}$ in $q$ eindeutig, so entspricht eine Nullstelle der Ordnung $k$ dem Exponenten $\log L+2\pi ik$, ein Pol dem Exponenten $\log L-2\pi ik$.
+    Nur $k=0$ an $L$ kommt vor; ein Ende an $\bar L$ bräuchte einen Nebenzweig $k\ge1$.
+  warum: |
+    Eine isolierte Singularität in $q=0$ ist hebbar (mit Nullstelle), ein Pol oder wesentlich. Der Faktor $L^{z}$ fällt nach oben, $\bar L^{z}$ wächst — darum zwingt ein Ende an $\bar L$ eine Nullstelle.
+  beispiel: |
+    Kneser: hebbar mit $E(0)=\kappa\ne0$, also $k=0$.
+  bilder: []
+  einordnung: |
+    Offen: [[br.frage.vertauschtes_kneser]]; vorausgesetzt: [[br.satz.schroeder_kugel_genuegt]].
+
+br.satz.verbiegung_schwarz:
+  worum: |
+    Kann eine echte Verbiegung $\sigma=\mathrm{id}+p$ die obere Halbebene in sich abbilden (dann bliebe $\mathrm{sexp}_K\circ\sigma$ sicher holomorph)?
+  genau: |
+    Nein: aus $\sigma(U)\subset U$ folgt $p$ konstant.
+  warum: |
+    $g=e^{2\pi i\sigma}$ ist dann eine Selbstabbildung der Einheitsscheibe (in $q$) mit genau einer einfachen Nullstelle und Betrag 1 am Rand — nach dem Schwarz-Lemma eine Drehung.
+  beispiel: |
+    $p=\varepsilon\sin2\pi z$: $\mathrm{Im}\,\sigma$ wird weit oben negativ, weil $\varepsilon\sin2\pi z$ dort wie $e^{2\pi\,\mathrm{Im}\,z}$ wächst.
+  bilder: []
+  einordnung: |
+    Wo $\sigma$ nach unten zeigt: [[br.lem.zungen_bis_unendlich]]; Frage: [[br.frage.halbebene_eindeutigkeit]].
+
+br.lem.zungen_bis_unendlich:
+  worum: |
+    Die Bereiche $\{\mathrm{Im}\,\sigma<0\}$ einer Verbiegung: wie sehen sie aus, und welche Werte nimmt $\sigma$ an ihrem Rand an?
+  genau: |
+    Jede Komponente reicht bis $i\infty$, und $\sigma$ ist auf ihrem Rand nach unten und oben unbeschränkt.
+  warum: |
+    Wäre $\sigma$ am Rand nach unten beschränkt, gäbe es eine beschränkte harmonische Funktion ($\mathrm{Im}\log$ einer verschobenen $\sigma$) mit Randwert 0, die nicht 0 ist —
+    das verbietet das Maximumprinzip, weil ein einzelner Randpunkt $\infty$ nicht zählt.
+  beispiel: |
+    $p=0.1\sin2\pi z$: weit oben ist $\mathrm{Im}\,\sigma\approx y+0.05\,e^{2\pi y}\cos2\pi x$, die Zungen liegen also über $x\approx\pm\tfrac12$ (wo $\cos2\pi x<0$); an ihrem Rand nimmt $\sigma$ auch Werte unter $-2$ an.
+  bilder: []
+  einordnung: |
+    Werkzeug für [[br.verm.verbiegung_hauptblatt]]; ergänzt [[br.satz.verbiegung_schwarz]].
+
+br.beob.hauptblatt_singularitaet_trig:
+  worum: |
+    Haben Verbiegungen von Kneser ihre Singularitäten in $H$ wirklich auf dem Hauptblatt — oder nur auf Nebenblättern, wo sie nicht stören würden?
+  genau: |
+    In 48 von 48 Fällen gibt es $z^*\in H$ mit $\sigma(z^*)=-2$, das man senkrecht von der Achse aus erreicht, ohne dass $\sigma$ den Schnitt trifft.
+  warum: |
+    Auf dem Hauptblatt ist $\mathrm{sexp}_K$ bei $-2$ logarithmisch singulär. Bleibt $\sigma$ längs des Wegs ausserhalb von $(-\infty,-2]$, so ist man auf dem Hauptblatt, und $T$ wird bei $z^*$ unendlich.
+  beispiel: |
+    $\varepsilon=0.1$: $z^*=-1.34447550088905+0.43879214577273i$; das Bild des Wegs bleibt ganz oben.
+  bilder: []
+  einordnung: |
+    Präzisiert [[br.beob.verbiegungen_singularitaeten]]; stützt [[br.verm.verbiegung_hauptblatt]]; warum Zählen nicht reicht: [[br.kor.nebenblatt_minus2_regulaer]].
+
+br.verm.verbiegung_hauptblatt:
+  worum: |
+    Kann eine Verbiegung mit endlicher Sinus-Kosinus-Summe ein Gegenbeispiel zu Q* sein?
+  genau: |
+    Vermutlich nicht: jede solche Verbiegung hat in $H$ eine Log-Singularität auf dem Hauptblatt.
+  warum: |
+    Weit oben dominiert die höchste Mode von $p$; $\sigma$ nimmt in Zungen bis $i\infty$ alle reellen Werte an ([[br.lem.zungen_bis_unendlich]]). Es fehlt der Schritt, dass eine Randkurve
+    einen ganzzahligen Wert $\le-2$ erreicht, bevor sie $H$ verlässt.
+  beispiel: |
+    43 von 43 zufälligen monotonen Polynomen vom Grad $\le4$.
+  bilder: []
+  einordnung: |
+    Teilfall von [[br.frage.halbebene_eindeutigkeit]]; Belege: [[br.beob.hauptblatt_singularitaet_trig]].
+
+br.kor.nebenblatt_minus2_regulaer:
+  worum: |
+    Ist $-2$ auf jedem Blatt von $\mathrm{sexp}_K$ singulär?
+  genau: |
+    Nein: nach einmaligem Kreuzen von $(-4,-3)$ ist $F(-2)=\ln2\pi\pm i\pi/2$ regulär.
+  warum: |
+    Auf diesem Blatt ist $F(-1)=\pm2\pi i$ statt 0, und der Logarithmus davon ist harmlos.
+  beispiel: |
+    $\mathrm{Log}(2\pi i)=1.8379+1.5708i$.
+  bilder: []
+  einordnung: |
+    Mechanismus wie [[kn.satz.nebenblatt_zweigpunkte]], folgt aus [[kn.satz.minus2_hebbar]].
+
+br.frage.vertauschtes_kneser:
+  worum: |
+    Der natürlichste Kandidat für ein Gegenbeispiel zu Q*: eine Tetration, die oben gegen $\bar L$ strebt.
+  genau: |
+    Sie müsste an $\bar L$ den Schröder-Exponenten $\log\bar L+2\pi ik$ mit $k\ge1$ haben, also einen Nebenzweig des Multiplikator-Logarithmus.
+  warum: |
+    $|\bar L^{z}|$ wächst nach oben; damit die Schröder-Koordinate trotzdem gegen 0 geht, braucht sie zusätzliche Windungen $e^{2\pi ikz}$.
+  beispiel: |
+    Für Kneser selbst ist $k=0$ an $L$.
+  bilder: []
+  einordnung: |
+    Aus [[br.satz.enden_klassifikation]]; Hauptfrage [[br.frage.halbebene_eindeutigkeit]].

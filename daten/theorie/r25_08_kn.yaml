@@ -1,0 +1,66 @@
+# Theorie-Blöcke: Runde 25.10.2026, Bericht 08 — natürliche Grenze der θ-Welle der Pentation (forschung/runde_2026_10_25/08_pentation_natuerliche_grenze/BERICHT.md).
+# Bezeichnungen: σ Koenigs-Funktion am anziehenden Fixpunkt, B Becken, Ω Komponente von F⁻¹(B) mit i∞, θ = log σ(F)/log μ − z.
+
+kn.satz.theta_anziehend_natuerliche_grenze:
+  worum: |
+    Wie weit lässt sich die Welle einer Superfunktion fortsetzen, die an einem **anziehenden** Fixpunkt gebaut ist?
+  genau: |
+    Genau bis zum Rand von $\Omega$, der Menge der $z$, für die $F(z)$ im Becken liegt; dort ist eine natürliche Grenze. Der Konvergenzradius der Fourier-Reihe gehört zum höchsten Randpunkt (oder einer höheren Nullstelle von $\sigma\circ F$).
+  warum: |
+    Wäre $\theta$ an einem Randpunkt $z_0$ holomorph, so schiebt man $n$ Schritte nach rechts: $F(z+n)=f^n(F(z))$ landet nahe dem Fixpunkt, wo $\sigma$ umkehrbar ist, und aus $\theta$ lässt sich $F(z+n)$ in einer ganzen Scheibe um $z_0$
+    zurückgewinnen. Dann läge $F(z_0)$ im Becken — Widerspruch.
+  beispiel: |
+    Pentation zur Basis 2 am anziehenden Fixpunkt $L_4$ von $\mathrm{sexp}_2$: [[kn.satz.theta5_natuerliche_grenze]].
+  bilder: []
+  einordnung: |
+    Ergänzt [[kn.satz.kein_kneser_anziehend]] (dort: keine reelle Kneser-Lösung an einem anziehenden Fixpunkt); benutzt nur den lokalen Satz von Koenigs ([[it.satz.koenigs]]).
+
+kn.satz.theta5_natuerliche_grenze:
+  worum: |
+    Die Welle der Kneser-artigen Pentation zur Basis 2, die an einem anziehenden Fixpunkt gebaut ist.
+  genau: |
+    Natürliche Grenze ist der Rand von $\Omega=\{z:H_5(z)\text{ im Becken von }L_4\}$ (Komponente mit $i\infty$); $\limsup|a_n|^{1/n}=e^{2\pi y_c}$ mit $y_c\ge y_{\max}\approx0.2645$.
+  warum: |
+    Einsetzen in [[kn.satz.theta_anziehend_natuerliche_grenze]]; die Eigenschaften von $H_5$ sind nur numerisch bekannt, darum „bedingt“.
+  beispiel: |
+    $L_4=1.469818+1.664342i$, $\mu=0.154239+0.690508i$.
+  bilder: []
+  einordnung: |
+    Beweist [[kn.verm.theta5_natuerliche_grenze]] unter den numerischen Annahmen; Messung: [[kn.beob.theta5_dach]].
+
+kn.beob.theta5_dach:
+  worum: |
+    Wo liegt der höchste Punkt des Randes, und zeigen die Koeffizienten wirklich dorthin?
+  genau: |
+    Ein flaches Dach in der Höhe $0.26$, Spitze $0.2645$ bei $x\approx0.031$; Rate $0.267$–$0.277$ und Phase $0.002$–$0.028$ der $a_n$ treffen diese Stelle.
+  warum: |
+    Nach Cauchy–Hadamard bestimmt die höchste Singularität die Wachstumsrate, ihr Realteil die Drehung $\arg(a_n/a_{n-1})$.
+  beispiel: |
+    $|a_{24}|=1.35\cdot10^{16}$ auf der Linie $y=0.30$.
+  bilder: []
+  einordnung: |
+    Stützt [[kn.satz.theta5_natuerliche_grenze]]; verfeinert [[kn.beob.theta5_wachsende_koeffizienten]].
+
+kn.beob.theta5_unter_konvergenzkreis:
+  worum: |
+    Ist der Konvergenzkreis der Fourier-Reihe selbst die Grenze, wie bei Lückenreihen?
+  genau: |
+    Nein: bei $0.6+0.12i$, weit unter dem Dach, ist $\theta_5$ holomorph, obwohl die Reihe dort divergiert.
+  warum: |
+    Die Grenze ist der Rand von $\Omega$, und der liegt nicht überall auf derselben Höhe; die Reihe sieht nur den höchsten Punkt.
+  beispiel: |
+    Mittelwerttest auf dem Kreis vom Radius $0.02$: Fehler $7\cdot10^{-8}$; Fourier-Glied $|a_{60}q^{60}|=1.8\cdot10^{22}$.
+  bilder: []
+  einordnung: |
+    Folgt aus [[kn.satz.theta_anziehend_natuerliche_grenze]] (i) und der Form des Dachs [[kn.beob.theta5_dach]].
+
+kn.frage.theta5_rand:
+  worum: |
+    Was am Rand der Pentationswelle noch offen ist.
+  genau: |
+    Logarithmische Punkte in $\Omega$, ein strenger Nachweis, dass es den Rand gibt, seine Hausdorff-Dimension, die genaue Dachspitze und der Fall der e6-Hexation.
+  warum: |
+    Der Satz [[kn.satz.theta_anziehend_natuerliche_grenze]] sagt, **dass** der Rand eine Grenze ist, aber nicht, wie er aussieht.
+  bilder: []
+  einordnung: |
+    Zu [[kn.satz.theta5_natuerliche_grenze]] und [[kn.beob.theta5_dach]].

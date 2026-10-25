@@ -1,0 +1,41 @@
+gebiet: fp
+# Runde 25.10.2026, Bericht 16: Haare (dynamische Strahlen) von e^z häufen sich nicht am Fixpunkt L.
+# Rechnungen: forschung/runde_2026_10_25/16_julia_menge_sexp/ (BERICHT.md, EINTRAG.md).
+aussagen:
+
+- id: fp.satz.kein_haar_bei_L
+  titel: 'Kein Haar von eᶻ endet am Fixpunkt L oder häuft sich dort'
+  art: satz
+  ebene: X
+  status: skizze
+  niveau: forschung
+  objekte: [fixpunkt_L, exp_familie]
+  bereich: '$f(w)=e^w$; Haare = dynamische Strahlen $g_s$ mit Adresse $s=s_0s_1\ldots$ (Schleicher–Zimmer), Streifen $S_k=\{(2k-1)\pi<\mathrm{Im}\,w<(2k+1)\pi\}$; $L=-W_0(-1)$'
+  aussage: |
+    Kein dynamischer Strahl $g_s$ von $e^w$ hat $L$ oder $\bar L$ in seinem Abschluss — weder als Endpunkt noch als Häufungspunkt. Dasselbe gilt für die zerbrochenen
+    Urbild-Strahlen der reellen Achse und für jeden nichtreellen periodischen Punkt, dessen Bahn ganz im Innern von $S_0$ liegt.
+    Auf beliebige zusammenhängende Teilmengen der Fluchtmenge lässt sich das nicht erweitern: $I(\exp)$ ist selbst zusammenhängend (Rempe 2010) und dicht.
+  einfach: >-
+    Die flüchtenden Punkte von eᶻ bilden lange Haare, die nach rechts ins Unendliche laufen. Keines dieser Haare kommt dem Fixpunkt L beliebig nahe —
+    weil ein Haar, das immer im mittleren Streifen bleibt, die reelle Achse sein müsste, und die kommt nicht in die Nähe von L.
+  beweis:
+    art: skizze
+    text: |
+      Struktur (Schleicher–Zimmer): $\exp(g_s)\subset g_{\sigma s}$, Strahlen verschiedener Adresse sind disjunkt, der Schwanz von $g_s$ liegt in $S_{s_0}$, und $\mathbb R$ gehört zur Adresse $0^\infty$.
+      Die Geraden $\mathrm{Im}\,w=(2k+1)\pi$ werden auf $(-\infty,0)\subset\mathbb R$ abgebildet. (a) Ist $s$ nicht schliesslich $0$, so trifft $g_{\sigma^ns}$ diese Geraden nie
+      (sonst $g_{\sigma^{n+1}s}\cap\mathbb R\ne\emptyset$, also $\sigma^{n+1}s=0^\infty$); als zusammenhängende Menge liegt $g_{\sigma^ns}$ ganz in $S_{s_n}$. Liegt $L$ im Abschluss
+      von $g_s$, dann $L=\exp^{\circ n}(L)$ im Abschluss von $S_{s_n}$; weil $L$ im Innern von $S_0$ liegt ($\mathrm{Im}\,L=1.337<\pi$), folgt $s_n=0$ für alle $n$ — Widerspruch.
+      (b) Ist $s$ schliesslich $0$ (oder ein zerbrochenes Urbild von $\mathbb R$), so ist $\exp^{\circ m}(g_s)\subset\mathbb R$, und $L$ läge im Abschluss von $\mathbb R$. Gleich für $\bar L$.
+    luecken:
+      - 'Die benutzten Struktursätze von Schleicher–Zimmer (Disjunktheit, Schwanz in S_{s₀}, ℝ trägt die Adresse 0^∞, Verhalten der zerbrochenen Strahlen) sind für den Fall „singulärer Wert 0 flüchtet auf ℝ“ nicht am Original geprüft.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/16_julia_menge_sexp/BERICHT.md, B9 und Abschnitt „Zu 9“'}, {ref: schleicher_zimmer2003, geprueft: nein}, {ref: devaney_krych1984, geprueft: nein}, {ref: rempe2010, stelle: 'I(exp) zusammenhängend', geprueft: nein}, {ref: devaney1993, stelle: 'Neuheitsfrage (unzerlegbare Kontinua)', geprueft: nein}, {ref: rempe2006, stelle: 'Neuheitsfrage (Landesatz für periodische Strahlen)', geprueft: nein}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: kurzes Argument aus der Strahlenstruktur und der Lage von L im Streifen S₀.'
+    f2_benutzte_voraussetzungen: 'Strahlenstruktur nach Schleicher–Zimmer; Im L < π; L nicht reell.'
+    f3_spezialfall: 'Gegenstück zu den Landesätzen für periodische Strahlen, die den Fall „singulärer Wert auf einem periodischen Strahl“ ausschliessen.'
+    f4_uebertragbar: 'Auf jeden nichtreellen periodischen Punkt mit Bahn in S₀ und auf b^w, b > η (Streifen der Breite 2π/ln b).'
+    f5_neue_frage: 'Ist L dann ein Punkt eines unzerlegbaren Kontinuums (Devaney) — und wie sieht dessen Urbild unter sexp aus?'
+  bewertung: {richtigkeit: 'Skizze; Argument kurz und geschlossen, Lücke nur in den zitierten Struktursätzen', neuheit: folklore, recherche: 'Der Bericht vermutet, dass der Fall bekannt ist (Devaney 1993, Rempe 2006 schliessen ihn in den Landesätzen aus); nicht nachgeschlagen.', nutzen: 'Erklärt, warum keine zurückgezogenen Haare in Knesers obere Halbebene hinaufreichen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: fp.satz.messbare_dynamik}
+    - {typ: verwandt, ziel: fp.satz.abstossend}

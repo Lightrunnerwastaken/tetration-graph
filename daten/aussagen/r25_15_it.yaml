@@ -1,0 +1,282 @@
+gebiet: it
+# Forschungsrunde 25.10.2026, Bericht 15 „Monodromie des regulären Erzeugers J_L von exp“. Rechnungen: forschung/runde_2026_10_25/15_erzeuger_monodromie/.
+# Basis e; L = 0.31813…+1.33723…i (e^L = L), Ψ ganz mit Ψ(Lu) = e^{Ψ(u)}, Ψ(0) = L, Ψ'(0) = 1, σ = Ψ^{-1} nahe L, J_L = Lσ/σ',
+# P = {p_0 = 0, p_1 = 1, p_2 = e, …}, p_k = exp^k(0). Baut auf r18_10_it.yaml (it.satz.regulaerer_erzeuger_fortsetzung) auf.
+aussagen:
+
+- id: it.satz.erzeuger_riemannflaeche
+  titel: 'Die Riemannfläche des regulären Erzeugers J_L ist die u-Ebene: Ψ ist eine Überlagerung über ℂ ∖ {0, 1, e, e^e, …}'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, schroeder, fixpunkt_L]
+  bereich: 'Basis $e$, Bezeichnungen wie im Dateikopf; $\Psi$ ohne kritische Punkte (kn.satz.theta_singularitaet (i))'
+  aussage: |
+    $\Psi:\mathbb C\setminus\Psi^{-1}(P)\to\mathbb C\setminus P$ ist eine Überlagerung. Die maximale Fortsetzung von σ ist also die $u$-Ebene mit Projektion Ψ:
+    die Blätter über $z$ sind die Punkte von $\Psi^{-1}(z)$, und die Monodromie wirkt transitiv. Auf dem Blatt $u$ ist $J_L=Lu\,\Psi'(u)$.
+    Verschiedene Blätter tragen verschiedene Keime von $J_L$; $J_L$ hat also genau dieselbe Monodromie wie σ.
+  einfach: >-
+    Das Geschwindigkeitsfeld der gewöhnlichen Iteration am komplexen Fixpunkt hat viele „Stockwerke“. Alle zusammen bilden ein einfaches Bild: eine
+    ganze Ebene, die von der bekannten Funktion Ψ auf die Zahlenebene abgebildet wird.
+  beweis:
+    art: vollstaendig
+    text: |
+      Ψ ist lokal biholomorph. Wegehebung: Ist $\Psi(u_0)=z_0$, so liegt $u_0/L^n$ für grosses $n$ in der Schlichtheitsscheibe um 0; der Keim bei $u_0$ ist $z\mapsto L^n\sigma(\ell_n(z))$ mit einem Zweig
+      $\ell_n$ von $\log^n$. Seine Fortsetzung längs eines Weges γ in $\mathbb C\setminus P$ ist die des Hauptkeims längs $\ell_n\circ\gamma$, und dieser Weg liegt wieder in $\mathbb C\setminus P$
+      (träfe $\ell_n\circ\gamma$ einen Punkt $p_j$, so träfe γ den Punkt $p_{j+n}$); diese Fortsetzung gibt it.satz.regulaerer_erzeuger_fortsetzung. Ein lokaler Homöomorphismus mit Wegehebung ist eine Überlagerung
+      (Forster, Riemannsche Flächen, Satz 4.19). Gleiche $J$-Keime auf zwei Blättern: $\sigma_2/\sigma_2'=\sigma_1/\sigma_1'$ gibt $\sigma_2=c\sigma_1$, also $\Psi(cu)=\Psi(u)$ überall; Ableiten bei 0 gibt $c=1$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M1'}, {ref: forster1977, stelle: 'Satz 4.19 (Überlagerungskriterium)', geprueft: nein}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: aus der Fortsetzbarkeit (it.satz.regulaerer_erzeuger_fortsetzung) und dem Überlagerungskriterium.'
+    f2_benutzte_voraussetzungen: 'Ψ ganz ohne kritische Punkte; Wegehebung für alle Keime; Überlagerungskriterium für lokale Homöomorphismen.'
+    f3_spezialfall: 'Ja: Poincaré-Funktionen ganzer Abbildungen sind ausserhalb der Bahnen der singulären Werte Überlagerungen (bekannt); hier für $J_L$ ausgesprochen.'
+    f4_uebertragbar: 'Auf jede Basis über η und jede ganze Funktion mit endlich vielen singulären Werten.'
+    f5_neue_frage: 'Die Monodromie explizit (it.satz.erzeuger_kranzrekursion).'
+  bewertung: {richtigkeit: 'vollständig (mit zitiertem Überlagerungskriterium)', neuheit: folklore, nutzen: 'Rahmen für die vollständige Beschreibung der Monodromie.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: it.satz.regulaerer_erzeuger_fortsetzung}
+    - {typ: verwandt, ziel: kn.satz.theta_singularitaet}
+
+- id: it.satz.erzeuger_kranzrekursion
+  titel: 'Monodromie des regulären Erzeugers als Zählwerk: Blätter ↔ endliche Folgen (m₁, m₂, …); a erhöht m₁, b_k erhöht m_{k+1} nur wenn m₁ = … = m_k = 0'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, schroeder, fixpunkt_L]
+  bereich: 'Basis $e$; $\pi_1(\mathbb C\setminus P,L)$ frei erzeugt von $a$ (Lasso längs $[L,0]$) und $b_k$ (Lasso längs $[L,p_k]$, $k\ge1$); Verbindungswege $\ell_m$ von $L$ nach $L+2\pi im$ links an 0 vorbei: $L\to-1+i\,\mathrm{Im}L\to-1+i(\mathrm{Im}L+2\pi m)\to L+2\pi im$'
+  aussage: |
+    Die Wirkung auf den Urbildern $L+2\pi im$ von $L$ unter exp ist die Kranzrekursion
+    $$a=\bigl(m\mapsto m+1;\ \text{alle Abschnitte trivial}\bigr),\qquad b_k=\bigl(\mathrm{id};\ b_k|_0=b_{k-1},\ \text{sonst trivial}\bigr),\quad b_0:=a.$$
+    Die Kodierung $\mathrm{code}(u)=(m_1,\mathrm{code}(u'))$ mit $\Psi(u/L)=L+2\pi im_1$ und $u'$ = Hebung von $\ell_{m_1}^{-1}$ ab $u/L$ ist eine äquivariante Bijektion der Faser $\Psi^{-1}(L)$
+    auf die endlichen Folgen $\mathbb Z^{(\infty)}$ (Hauptblatt $u=0$ = Nullfolge). Explizit:
+    $$a(m_1,m_2,\dots)=(m_1+1,m_2,\dots),\qquad b_k:\ m_{k+1}\mapsto m_{k+1}+1\ \text{falls}\ m_1=\dots=m_k=0,\ \text{sonst identisch}.$$
+    Die Kodierung hängt von den Wegen ab: mit senkrechten $\ell_m$ (rechts an 0 vorbei) hätte $a$ an der Stelle $-1$ den Abschnitt $a^{-1}$.
+    Numerisch (unabhängige Newton-Verfolgung von $\Psi(u(t))=z(t)$): 48 von 48 Proben (12 Blätter × $a,b_1,b_2,b_3$) wie vorhergesagt, mit 30 Stellen 12 von 12.
+  einfach: >-
+    Jedes Stockwerk des Geschwindigkeitsfelds hat eine Adresse aus ganzen Zahlen. Ein Umlauf um 0 erhöht die erste Zahl. Ein Umlauf um 1 erhöht die zweite,
+    aber nur, wenn die erste null ist — wie ein Zählwerk, bei dem sich ein Rad nur dreht, wenn alle Räder davor auf null stehen.
+  beweis:
+    art: vollstaendig
+    text: |
+      $a$: die Hebung ab $L+2\pi im$ läuft als $\log((1-t)L)+2\pi im$ waagrecht nach links, der kleine Kreis um 0 wird zur senkrechten Strecke der Länge $2\pi$; also $a(m)=m+1$.
+      Die zusammengesetzten Abschnitte umschliessen Rechtecke in $\mathrm{Re}\le-1$, die keinen Punkt von $P$ enthalten. $b_k$ umläuft 0 nicht, die Hebung ist geschlossen; für $m\neq0$ umläuft sie
+      $p_{k-1}+2\pi im\notin P$ (trivial), für $m=0$ ist sie das Lasso längs $\log[L,p_k]$ um $p_{k-1}$, in der oberen Halbebene homotop zu $b_{k-1}$.
+      Kodierung: $u\mapsto(m_1,u')$ ist eine Bijektion $\Psi^{-1}(L)\to\mathbb Z\times\Psi^{-1}(L)$; nur $u=0$ hat die Adresse $0^\infty$ (Ψ ist nahe 0 injektiv), also ist code injektiv auf endlichen Adressen.
+      Weil die Monodromie transitiv ist und die endlichen Folgen eine Bahn bilden, sind alle Adressen endlich.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M2, M9; m1_monodromie.py, m1_ausgabe_A.txt, m1_ausgabe_B.txt, m1_ausgabe_B2.txt'}, {ref: nekrashevych2005, stelle: 'iterierte Monodromiegruppen, Kranzrekursion (Sprache, nicht Inhalt)', geprueft: nein}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Standardtechnik iterierter Monodromiegruppen (Nekrashevych), hier für exp ausgeführt.'
+    f2_benutzte_voraussetzungen: 'Überlagerung (it.satz.erzeuger_riemannflaeche); $L$ in der oberen Halbebene; $P\subset[0,\infty)$; Wahl der Wege $\ell_m$.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf Basen $b>\eta$ (it.satz.erzeuger_monodromie_basen, Skizze); für $b<\eta$ häuft sich $P$, dann anders.'
+    f5_neue_frage: 'Welche Blätter erreicht Knesers slog bei seiner maximalen Fortsetzung? Monodromie der regulären slog (it.satz.regulaere_slog_riemannflaeche).'
+  bewertung: {richtigkeit: 'vollständig; 48/48 numerisch, beim Eintragen neu gerechnet (gleiche Ausgabe)', neuheit: neu_ungeprueft, nutzen: 'Beantwortet die Monodromiefrage aus it.satz.regulaerer_erzeuger_fortsetzung vollständig.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: it.satz.erzeuger_riemannflaeche}
+    - {typ: verwandt, ziel: it.satz.regulaerer_erzeuger_fortsetzung}
+    - {typ: verwandt, ziel: kn.satz.zoo_singulaerer_ort}
+
+- id: it.kor.erzeuger_verzweigung_logarithmisch
+  titel: 'Jeder Punkt exp^k(0) ist auf dem Hauptblatt ein logarithmischer Verzweigungspunkt von J_L; algebraische Verzweigungen gibt es nicht'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, schroeder, fixpunkt_L]
+  bereich: 'Basis $e$; Blätter mit Adressen $m\in\mathbb Z^{(\infty)}$ nach it.satz.erzeuger_kranzrekursion (Verbindung zu $p_k$ längs der Strecke $[L,p_k]$)'
+  aussage: |
+    Auf dem Blatt mit Adresse $m$ ist $p_k$ genau dann ein Verzweigungspunkt von σ und $J_L$, wenn $m_1=\dots=m_k=0$; dann ist er logarithmisch (kein Umlauf kehrt zurück, σ → ∞ längs eines asymptotischen Kanals),
+    sonst sind σ und $J_L$ dort regulär. Der Punkt 0 ist auf jedem Blatt logarithmisch. Insbesondere ist auf dem Hauptblatt **jeder** Punkt $0,1,e,e^e,\dots$ ein logarithmischer
+    Verzweigungspunkt, und algebraische Verzweigungspunkte (endliche Zyklen der Länge ≥ 2) kommen nie vor.
+  einfach: >-
+    Läuft man um 0, 1, e, e hoch e, … herum, kommt man nie mehr auf dasselbe Stockwerk zurück, egal wie oft man läuft — es gibt dort unendlich viele Stockwerke, nicht zwei oder drei.
+  beweis:
+    art: vollstaendig
+    text: |
+      Über einer punktierten Scheibe um $p_k$ entspricht jede Komponente der Überlagerung einer Bahn von $b_k$. Nach it.satz.erzeuger_kranzrekursion sind die Bahnen unendlich (falls $m_1=\dots=m_k=0$) oder Fixpunkte.
+      Grad 1: die Komponente ist eine punktierte Scheibe, ihr Loch ein Punkt von $\mathbb C$ (bei ∞ wäre Ψ auf einer punktierten Umgebung von ∞ beschränkt, also konstant — Liouville), also ist σ dort regulär.
+      Unendlich: die Komponente ist die universelle Überlagerung, eine logarithmische Singularität.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M3'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Kranzrekursion und der Klassifikation der Überlagerungen einer punktierten Scheibe.'
+    f2_benutzte_voraussetzungen: 'Überlagerung, Bahnen von $b_k$, Liouville.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede Basis, für die it.satz.erzeuger_monodromie_basen gilt.'
+    f5_neue_frage: 'Asymptotik von σ in den logarithmischen Kanälen.'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Beantwortet die offene Frage aus Runde 18, ob jedes exp^k(0) ein echter Verzweigungspunkt ist.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: it.satz.erzeuger_kranzrekursion}
+    - {typ: verwandt, ziel: it.satz.regulaerer_erzeuger_fortsetzung}
+
+- id: it.satz.erzeuger_monodromiegruppe
+  titel: 'Die Monodromiegruppe des regulären Erzeugers ist IMG(exp) = ℤ ≀ ℤ ≀ ℤ ≀ … — nicht frei, nicht endlich erzeugt, lokal auflösbar'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, fixpunkt_L]
+  bereich: 'Basis $e$; $G$ = Bild von $\pi_1(\mathbb C\setminus P,L)$ in den Permutationen der Faser $\Psi^{-1}(L)$; $G_k=\langle a,b_1,\dots,b_k\rangle$'
+  aussage: |
+    $$G=\bigcup_kG_k,\qquad G_0=\mathbb Z,\qquad G_k\cong G_{k-1}\wr\mathbb Z\ \ \text{(eingeschränktes Kranzprodukt)},\qquad G_1=\mathbb Z\wr\mathbb Z\ \ \text{(Lampenanzünder)}.$$
+    $G$ ist nicht frei, nicht endlich erzeugt, lokal auflösbar und nicht auflösbar ($G_k$ hat Ableitungslänge $k+1$). Es gelten Relationen wie $[b_1,a^nb_1a^{-n}]=1$ ($n\neq0$), $[b_2,b_1b_2b_1^{-1}]=1$,
+    $[b_2,ab_1a^{-1}]=1$, die in der freien Gruppe $\pi_1(\mathbb C\setminus P)$ nicht gelten: die Monodromie ist nicht treu. $G$ ist zugleich die iterierte Monodromiegruppe $\mathrm{IMG}(\exp)$ zum Basispunkt $L$.
+    Geometrisch geprüft: die Hebung dieser drei Kommutatorwege schliesst sich auf 8 Probeblättern (Sprung $<4\cdot10^{-14}$), bei $[a,b_1]$, $[b_1,b_2]$, $[a,b_2]$ nicht (Sprung bis 7.5).
+  einfach: >-
+    Alle möglichen Umläufe zusammen bilden eine Gruppe, die wie ein ineinandergeschachteltes Zählwerk gebaut ist. Manche verschiedene Wege wirken gleich —
+    die Umläufe sind also nicht unabhängig voneinander.
+  beweis:
+    art: vollstaendig
+    text: |
+      $b_j=\delta_0(b_{j-1})$ wirkt nur unter dem Buchstaben 0, und Konjugation mit $a^n$ verschiebt das nach $\delta_n$. Also enthält $G_k$ die Gruppe $\bigoplus_n\delta_n(G_{k-1})$ und die Verschiebung;
+      die Wirkung $(m_1,\text{Rest})\mapsto(m_1+c,g_{m_1}(\text{Rest}))$ mit endlich getragenem $(g_n)$ ist das treue Kranzprodukt $G_{k-1}\wr\mathbb Z$. Jede endlich erzeugte Untergruppe liegt in einem $G_k$,
+      das nur die ersten $k+1$ Stellen ändert, $b_{k+1}$ aber die $(k+2)$-te; Ableitungslänge der iterierten Kranzprodukte ist Standard. Relationen: Elemente mit getrennten Trägern vertauschen.
+      IMG: ein Element wirkt auf allen endlichen Wörtern trivial genau dann, wenn auf allen Wörtern $v0^\infty$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M4, M4a, M4b; m2_relationen.py, m2_ausgabe.txt'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Kranzrekursion mit Standardtatsachen über Kranzprodukte.'
+    f2_benutzte_voraussetzungen: 'Kranzrekursion (it.satz.erzeuger_kranzrekursion); Ableitungslänge iterierter Kranzprodukte abelscher Gruppen.'
+    f3_spezialfall: 'Ein Beispiel einer iterierten Monodromiegruppe einer transzendenten Abbildung; Literatur dazu nicht geprüft.'
+    f4_uebertragbar: 'Dieselbe Gruppe für jede Basis $b>\eta$ (it.satz.erzeuger_monodromie_basen, Skizze).'
+    f5_neue_frage: 'Ist die Monodromie der regulären slog das Kranzprodukt $\mathbb Z\wr_{\mathbb Z^{(\infty)}}G$ (it.satz.regulaere_slog_riemannflaeche)?'
+  bewertung: {richtigkeit: 'vollständig; Relationen geometrisch bestätigt, beim Eintragen neu gerechnet (gleiche Ausgabe)', neuheit: neu_ungeprueft, nutzen: 'Vollständige algebraische Beschreibung der Mehrdeutigkeit des Erzeugers.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: it.satz.erzeuger_kranzrekursion}
+    - {typ: verwandt, ziel: it.kor.erzeuger_verzweigung_logarithmisch}
+
+- id: it.kor.erzeuger_umlaufwerte
+  titel: 'Werte nach einem Umlauf in geschlossener Form: nach b_k^j ist J_L = L^{k+1} · J^{(j)}'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, schroeder, fixpunkt_L]
+  bereich: 'Basis $e$, Basispunkt $L$, Umlauf $b_k^j$ ($b_0=a$) vom Hauptblatt; $s_j$ = Endpunkt der Hebung von $\ell_j$ ab $u=0$, also $\Psi(s_j)=L+2\pi ij$'
+  aussage: |
+    Nach $b_k^j$ (Adresse $0^kj$) ist am Basispunkt $L$
+    $$\sigma=L^{k+1}s_j,\qquad J_L=L^{k+1}J^{(j)},\qquad J^{(j)}=Ls_j\Psi'(s_j)\ \ (\text{Wert von }J_L\text{ bei }L+2\pi ij\text{ längs }\ell_j).$$
+    Numerisch (30 Stellen): $s_1=-0.95262397349458069216579816424+2.24193859082677437839204171742\,i$, $J^{(1)}=-14.3223459699012846576275+10.7051679581953509008574\,i$
+    — gleich dem Wert aus it.satz.regulaerer_erzeuger_fortsetzung auf alle 20 dort angegebenen Stellen; senkrechter und linker Weg gleich auf $2\cdot10^{-30}$.
+    Probe: $|\Delta u|$ nach $a,b_1,b_2,b_3$ ist $|L|^{1,2,3,4}|s_1|=3.348,\ 4.602,\ 6.326,\ 8.696$, genau wie gemessen.
+  einfach: >-
+    Wie sehr sich das Geschwindigkeitsfeld nach einem Umlauf ändert, muss man nicht für jeden Umlauf neu ausrechnen: Es genügt eine einzige Zahl, die man mit
+    einer Potenz des Fixpunkts L malnimmt.
+  beweis:
+    art: vollstaendig
+    text: |
+      Die Adresse $0^kj$ gehört zu $u=L^{k+1}s_j$ (die Wege $\ell_0$ sind trivial). Aus $\Psi'(Lv)L=e^{\Psi(v)}\Psi'(v)$ und $\Psi(L^is_j)=L$ ($i\ge1$) folgt $\Psi'(L^is_j)=\Psi'(s_j)$,
+      also $J_L=Lu\Psi'(u)=L\cdot L^{k+1}s_j\Psi'(s_j)=L^{k+1}J^{(j)}$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M5; m1_monodromie.py, m1_ausgabe_A.txt, m1_ausgabe_B2.txt'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Kodierung und der Funktionalgleichung von Ψ.'
+    f2_benutzte_voraussetzungen: 'Kodierung (it.satz.erzeuger_kranzrekursion), $\Psi(Lu)=e^{\Psi(u)}$.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede Basis über η mit $L_b$ und $\ln b$ an den passenden Stellen.'
+    f5_neue_frage: 'Geschlossene Werte für allgemeine Adressen (mehrere Stellen ≠ 0).'
+  bewertung: {richtigkeit: 'Formel vollständig; Werte numerisch auf 30 Stellen mit zwei Wegen', neuheit: neu_ungeprueft, nutzen: 'Macht die Werte auf allen Blättern über einfache Umläufe ohne neue Rechnung verfügbar.', nutzen_stufe: gering}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: it.satz.erzeuger_kranzrekursion}
+    - {typ: stuetzt, ziel: it.satz.regulaerer_erzeuger_fortsetzung}
+
+- id: it.kor.kneser_erzeuger_sigma
+  titel: 'Knesers Erzeuger ist eine Funktion von σ allein: J_K = J_L · Q(σ^{2πi/L})'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [julia_funktion, kneser_T, theta_kneser, fixpunkt_L]
+  bereich: 'Basis $e$; $h=\log\sigma/L$ reguläre slog, $\mathrm{slog}_K=\Phi\circ h$ mit $\Phi=(\mathrm{id}+\theta)^{-1}$ auf dem Definitionsgebiet von Φ (kn.def.theta_welle)'
+  aussage: |
+    $$J_K=J_L\cdot Q\bigl(\sigma^{2\pi i/L}\bigr),\qquad Q(q)=1/\Phi'(s),\ \ q=e^{2\pi is}.$$
+    Der Faktor $1+\theta'\circ\mathrm{slog}_K$ ist also eine Funktion der einen Grösse $\sigma^{2\pi i/L}$. Auf der reellen Achse ist $J_K$ analytisch (auch bei $0,1,e,\dots$), $J_L$ auf dem Kneser-Blatt nicht:
+    der Faktor hebt dort die Monodromie von $J_L$ an jedem $p_k$ auf.
+  einfach: >-
+    Das Geschwindigkeitsfeld von Knesers Tetration ist das der gewöhnlichen Iteration mal einem Korrekturfaktor, und dieser Faktor hängt nur von der
+    Schröder-Koordinate σ ab.
+  beweis:
+    art: vollstaendig
+    text: |
+      $J_K=J_L(1+\theta'\circ\mathrm{slog}_K)$ (it.satz.kneser_erzeuger) und $1+\theta'(\mathrm{slog}_K)=1/\Phi'(h)$. Aus $\Phi(s+1)=\Phi(s)+1$ ist $\Phi'$ 1-periodisch, also $\Phi'(s)=R(e^{2\pi is})$,
+      und $e^{2\pi ih}=\sigma^{2\pi i/L}$. $J_K$ ist auf der reellen Achse analytisch, weil $\mathrm{sexp}_K$ es ist und $\mathrm{sexp}_K'$ dort nicht verschwindet.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M6'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der (unbedingt bewiesenen) Produktformel in it.satz.kneser_erzeuger und der Periodizität von Φ′.'
+    f2_benutzte_voraussetzungen: 'Kneser-Darstellung, Umkehrbarkeit von $\mathrm{id}+\theta$ auf dem benutzten Gebiet.'
+    f3_spezialfall: 'Ja, Umformung von it.satz.kneser_erzeuger.'
+    f4_uebertragbar: 'Auf jede Basis über η und jede Tetration der Form $F_L\circ(\mathrm{id}+p)$ mit periodischem $p$.'
+    f5_neue_frage: 'Gibt es eine Wahl von $p$, deren Erzeuger auf einer grösseren Teilfläche einwertig ist?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Verbindet Knesers Korrektur mit der Monodromie des regulären Erzeugers.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: it.satz.kneser_erzeuger, notiz: 'benutzt nur die dort unbedingt bewiesene Produktformel J_K = J_L(1 + θ′∘slog_K), nicht den bedingten Glattheitsgrad'}
+    - {typ: verwandt, ziel: it.satz.erzeuger_kranzrekursion}
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+
+- id: it.satz.regulaere_slog_riemannflaeche
+  titel: 'Riemannfläche der regulären slog: die s-Ebene über ℂ ∖ (P ∪ {L}); ihre Monodromie enthält ⊕ℤ und bildet auf G ab'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [slog, schroeder, fixpunkt_L]
+  bereich: 'Basis $e$; $F_L=\Psi\circ\exp_L$, $\exp_L(s)=e^{Ls}$ (reguläre Superfunktion), $h=\log\sigma/L$ die reguläre slog; $G$ aus it.satz.erzeuger_monodromiegruppe'
+  aussage: |
+    $F_L$ ist eine Überlagerung über $\mathbb C\setminus(P\cup\{L\})$ ($L$ ist asymptotischer Wert); die $s$-Ebene ist also die Riemannfläche von $h$, mit Faser $\{(u,k)\}$
+    ($u\in\Psi^{-1}(z)$, $k$ Zweig von $\log u$). Der Umlauf δ um $L$ ändert $k$ nur auf dem Blatt $u\approx0$; seine Konjugierten erzeugen $N\cong\bigoplus_{\mathbb Z^{(\infty)}}\mathbb Z$,
+    und die Monodromiegruppe $H$ von $h$ bildet auf $G$ ab (Vergessen von $k$).
+  einfach: >-
+    Auch der reguläre Superlogarithmus hat viele Stockwerke; zu jedem Stockwerk des Erzeugers kommen noch unendlich viele Logarithmus-Stockwerke dazu.
+  beweis:
+    art: skizze
+    text: |
+      $\exp_L:\mathbb C\to\mathbb C\setminus\{0\}$ und Ψ (ausserhalb von $\Psi^{-1}(P\cup\{L\})$) sind Überlagerungen; die Verkettung hat Wegehebung, ist also eine Überlagerung. Ein kleiner Umlauf um $L$
+      hebt sich nur auf dem Blatt $u\approx0$ zu einem Umlauf um $u=0$; $g\delta g^{-1}$ verschiebt $k$ genau auf dem Blatt $g(0)$, und wegen der Transitivität entsteht ganz $\bigoplus\mathbb Z$.
+    luecken:
+      - 'Ob der Kern von $H\to G$ genau $N$ ist, also $H/N\cong G$: für Elemente aus dem Kern von $\pi_1(\mathbb C\setminus P)\to G$ (z. B. $[b_1,ab_1a^{-1}]$) ist nicht gezeigt, dass ihre Verschiebungen von $k$ endlich getragen sind (beim Eintragen bemerkt; der Bericht nennt den Quotienten bewiesen).'
+      - 'Ob die Erweiterung zerfällt, also $H\cong\mathbb Z\wr_{\mathbb Z^{(\infty)}}G$, ist nicht geprüft.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M8, offene Frage 1'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Überlagerung ja; die Gruppenstruktur nicht.'
+    f2_benutzte_voraussetzungen: 'it.satz.erzeuger_riemannflaeche, Transitivität der Monodromie.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf Basen über η wie it.satz.erzeuger_monodromie_basen.'
+    f5_neue_frage: 'Riemannfläche von $\mathrm{slog}_K$ selbst: welche Adressen erreicht Knesers slog bei maximaler Fortsetzung?'
+  bewertung: {richtigkeit: 'Überlagerung und Untergruppe N bewiesen; Quotient und Zerfall offen', neuheit: neu_ungeprueft, nutzen: 'Rahmen für die Riemannfläche von Knesers slog.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: it.satz.erzeuger_monodromiegruppe}
+    - {typ: stuetzt_sich_auf, ziel: it.satz.erzeuger_riemannflaeche}
+    - {typ: verwandt, ziel: kn.def.theta_welle}
+    - {typ: verwandt, ziel: kn.kor.slog_monodromie_L, notiz: 'Monodromie von Knesers slog um L (u ↦ u + γ) — Gegenstück auf der Kneser-Seite'}
+
+- id: it.satz.erzeuger_monodromie_basen
+  titel: 'Für jede Basis b > η dieselbe Kranzrekursion und dieselbe Monodromiegruppe (Skizze)'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [julia_funktion, fixpunkt_L, eta]
+  bereich: '$b>\eta$, Fixpunkt $L_b$ in der oberen Halbebene, $P_b=\{0,1,b,b^b,\dots\}$, Urbilder $L_b+2\pi im/\ln b$'
+  aussage: |
+    Für $b>\eta$ gilt dieselbe Rekursion wie bei $e$ ($a$ verschiebt $m_1$, $b_k|_0=b_{k-1}$), also dieselbe Monodromiegruppe $G=\mathrm{IMG}(b^z)\cong\mathbb Z\wr\mathbb Z\wr\cdots$ und
+    dieselbe Verzweigungsstruktur (it.kor.erzeuger_verzweigung_logarithmisch). Das Rechteck- und das Halbebenenargument übertragen sich wörtlich:
+    $\mathrm{Im}\log_bw\in(0,\pi/\ln b)$ für $\mathrm{Im}\,w>0$ und $0<\mathrm{Im}L_b<\pi/\ln b$.
+  einfach: >-
+    Das Zählwerk der Umläufe sieht für jede Basis über e^(1/e) gleich aus, nicht nur für die Basis e.
+  beweis:
+    art: skizze
+    text: |
+      Die Hebung von $a$ läuft waagrecht nach links, die Abschnitte umschliessen Rechtecke links der imaginären Achse; die Hebung von $b_k$ bei $m=0$ bleibt im Streifen über der reellen Achse und ist zu $b_{k-1}$ homotop.
+    luecken:
+      - 'Die Fortsetzbarkeit von σ längs aller Wege (it.satz.regulaerer_erzeuger_fortsetzung) ist nur für $b=e$ ausgeschrieben.'
+      - 'Keine Numerik für $b\neq e$.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/15_erzeuger_monodromie/BERICHT.md, M10'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast, wenn die Fortsetzbarkeit für jede Basis gilt.'
+    f2_benutzte_voraussetzungen: 'Lage von $L_b$ im Streifen $0<\mathrm{Im}<\pi/\ln b$; Fortsetzbarkeit von σ.'
+    f3_spezialfall: 'Verallgemeinert it.satz.erzeuger_kranzrekursion von $e$ auf $b>\eta$.'
+    f4_uebertragbar: 'Für $b<\eta$ häuft sich $P_b$ beim reellen Fixpunkt; dort ändert sich die Monodromie grundlegend.'
+    f5_neue_frage: 'Was passiert beim Durchgang durch η?'
+  bewertung: {richtigkeit: 'Skizze mit zwei benannten Lücken', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass die Struktur nicht an der Basis e hängt.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verallgemeinert, ziel: it.satz.erzeuger_kranzrekursion}
+    - {typ: verwandt, ziel: it.satz.erzeuger_monodromiegruppe}

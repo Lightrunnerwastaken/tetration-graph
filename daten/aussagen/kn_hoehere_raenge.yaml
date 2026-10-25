@@ -30,7 +30,7 @@ aussagen:
     f2_benutzte_voraussetzungen: 'Die gewählte Fortsetzungskette; lokale Faltenstruktur ($\partial_x^2H_r>0$). Dass die Berührung die globale Schwelle ist, braucht kn.satz.schwellen_monoton und ist für die gebauten Stufen nicht bewiesen.'
     f3_spezialfall: 'Fortsetzung von kn.beob.stufe6.'
     f4_uebertragbar: 'η₉ (Nonation) wäre die nächste Berührbasis — nicht berechnet; Nonation bei b = 2 und 1.83 ist gebaut.'
-    f5_neue_frage: 'Warum sinkt der lokale Exponent? Ist $2-\eta_r\sim C\,r^{-3/2}$ mit einer Log-Korrektur?'
+    f5_neue_frage: 'Teilweise beantwortet: $(2-\eta_r)\,r\ln r$ ist fast konstant ≈ 2.20 (kn.verm.eta_r_log); dann geht der lokale Exponent wie $1+1/\ln r$ gegen 1. Prüfstein η₉.'
   bewertung: {richtigkeit: 'numerisch, zwei unabhängige Präzisionen; keine Intervallzertifikate', neuheit: vermutlich_neu, recherche: 'Levenstein 2017 (tid 1177) gab für die Oktationsgrenze ≈ 1.839 an (3 Stellen); η₈ und genaue Werte nicht gefunden (Literaturkarte 12.10.2026).', nutzen: 'Zwei neue Glieder für TPID 10 und ein echter Test des Abstandsgesetzes.', nutzen_stufe: hoch}
   kanten:
     - {typ: stuetzt, ziel: kn.verm.tpid10}
@@ -113,7 +113,7 @@ aussagen:
     - {text: 'H_{r+1}(η_r,k) konvergiert von unten gegen e_r', benutzt: ja}
   aussage: |
     $$k\,\bigl(e_r-H_{r+1}(\eta_r,k)\bigr)\to\frac1{\beta_r},\qquad \beta_r=\tfrac12\,\partial_x^2H_r(\eta_r,e_r).$$
-    Numerisch $\beta_7\approx0.4961476452$, $\beta_8\approx0.5368242374$. Knapp über $\eta_r$ braucht die nächste Stufe deshalb sehr viele Schritte, bis sie davonläuft;
+    Numerisch $\beta_7\approx0.4961476452$, $\beta_8\approx0.5368242374$; $\beta_4=0.29348$, $\beta_5=0.37699$, $\beta_6=0.44293$ (kn.beob.beta_raenge). Knapp über $\eta_r$ braucht die nächste Stufe deshalb sehr viele Schritte, bis sie davonläuft;
     endliche Iterationen trennen die Schwelle schlecht. Lokal: unter $\eta_r$ liegen zwei Fixpunkte im Abstand $\approx\sqrt{\alpha(\eta_r-b)/\beta}$ von $e_r$ ($\alpha=\partial_bH_r$).
   einfach: >-
     Genau an der Grenzbasis kommt die nächste Rechenart dem Berührpunkt nur sehr langsam näher — der Abstand schrumpft wie 1 durch die Schrittzahl.
@@ -124,7 +124,7 @@ aussagen:
     f2_benutzte_voraussetzungen: 'Konvergenz von unten und Nichtentartung β > 0; die Werte β₇, β₈ sind numerisch.'
     f3_spezialfall: 'Ja: Leau–Fatou-Rate am parabolischen Fixpunkt (it.satz.parabolische_rate), wie beim η-Turm.'
     f4_uebertragbar: 'Engpasszeit knapp über η_r ≈ π/√(αβ(b−η_r)) — nur als Heuristik.'
-    f5_neue_frage: 'Gilt das Randgesetz (bw.lem.randgesetz) mit Konstante für jede Stufe?'
+    f5_neue_frage: 'Gilt das Randgesetz (bw.lem.randgesetz) mit Konstante für jede Stufe? Nächstes Glied: ι_r ln k (kn.satz.kritische_rate_log).'
   bewertung: {richtigkeit: 'vollständig unter den Voraussetzungen; β numerisch', neuheit: folklore, nutzen: 'Erklärt, warum Schwellen aus endlichen Iterationen ungenau sind.', nutzen_stufe: mittel}
   kanten:
     - {typ: verallgemeinert, ziel: it.satz.parabolische_rate}
@@ -382,6 +382,7 @@ aussagen:
     eines **Operators auf Funktionen**, nicht der Höhe. Ein injektiver Fixpunkt von $T_b$ müsste $f(x+1)=f(f(x))$ erfüllen, das erzwingt $f=x+1$ und $b=2$; ein einfaches Fixpunkt-Argument
     wie bei der Tetration fehlt also. Bekannt: der lineare (kn.satz.halbrang_linear) und der quadratische Schritt (kn.satz.halbrang_quadratisch) für Teststörungen. Hochrechnung:
     $\eta_{3.5}^{\rm fit}=1.55682$ — ohne Bedeutung, solange es kein $H_{3.5}$ gibt.
+    Bei $b=\sqrt2$ legt die Rangkoordinate nur ein Blatt fest: Kandidaten mit gleichem Φ haben $H_{3.5}(\sqrt2,0.5)\approx1.2228$–$1.2234$ je nach Familie (kn.beob.halbrang_niveauflaeche).
   naechste_frage: 'Q₁/₂ auf Gamma-Modenpaare verallgemeinern, die Reihen für bˣ kontrollieren, eine Auswahlklasse mit variablen Wachstumsgewichten festlegen (die Halbebenenklasse enthält für b > e^(1/e) keine Tetration).'
   quellen: [{ref: diese_arbeit, stelle: 'forschung/eta_hyperoperationen/rang_gamma, halb_rang_quadratisch, halb_rang_analytisch'}]
   kanten:

@@ -1,10 +1,10 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-519 Aussagen · 1037 Kanten · 57 Experimente
+646 Aussagen · 1420 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 194, numerisch 92, bewiesen_literatur 60, bedingt 40, vermutung 40, offen 36, skizze 17, definition 16, gescheitert 13, widerlegt 4, annahme 3, ueberholt 3, entlastet 1
+**Effektiver Status:** bewiesen 235, numerisch 127, bewiesen_literatur 60, bedingt 55, vermutung 49, offen 43, skizze 32, definition 16, gescheitert 15, ueberholt 5, widerlegt 5, annahme 3, entlastet 1
 
-**Zitate nicht am Original geprüft:** 112
+**Zitate nicht am Original geprüft:** 131
 
 
 ## FEHLER (0)
@@ -49,20 +49,20 @@
 
 **theorie-fortschritt** (5)
 
-- `ar` — 38 von 40 Aussagen mit Theorie-Block
-- `br` — 42 von 44 Aussagen mit Theorie-Block
-- `gr` — 57 von 58 Aussagen mit Theorie-Block
-- `it` — 27 von 28 Aussagen mit Theorie-Block
-- `kn` — 161 von 166 Aussagen mit Theorie-Block
+- `ar` — 48 von 50 Aussagen mit Theorie-Block
+- `br` — 65 von 67 Aussagen mit Theorie-Block
+- `gr` — 64 von 65 Aussagen mit Theorie-Block
+- `it` — 37 von 38 Aussagen mit Theorie-Block
+- `kn` — 227 von 232 Aussagen mit Theorie-Block
 
 **uebersetzung-fortschritt** (6)
 
-- `ar` — 40 von 40 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 38 von 40 Theorie-Blöcken
-- `br` — 44 von 44 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 42 von 44 Theorie-Blöcken
-- `gr` — 58 von 58 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 57 von 58 Theorie-Blöcken
-- `it` — 28 von 28 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 27 von 28 Theorie-Blöcken
-- `kn` — 166 von 166 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 161 von 166 Theorie-Blöcken
-- `quelle` — 223 von 307 quelle-Gegenständen übersetzt
+- `ar` — 50 von 50 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 48 von 50 Theorie-Blöcken
+- `br` — 67 von 67 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 65 von 67 Theorie-Blöcken
+- `gr` — 65 von 65 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 64 von 65 Theorie-Blöcken
+- `it` — 38 von 38 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 37 von 38 Theorie-Blöcken
+- `kn` — 232 von 232 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 227 von 232 Theorie-Blöcken
+- `quelle` — 231 von 315 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (3)
 
@@ -103,7 +103,7 @@
 - `fp.satz.siegel_mittel` — Nach Herman (1985) ist $\Delta$ für diophantisches $\alpha$ unbeschränkt; Carathéodory greift dann nicht. Zu zeigen wäre, dass $\varphi$ Randwerte in $L^1(d\theta)$ hat (Hardy-Raum $H^1$), damit der Mittelwertsatz gilt.
 - `fp.satz.siegel_mittel` — Ohne Jordan-Rand ist die Randdynamik nicht automatisch zu einer Drehung konjugiert; die Gleichverteilung des Turms bezüglich $\omega_L$ ist offen.
 - `kl.satz.invariante_daempfung` — Dass die klassische periodische Phase (bw.satz.phasengesetz) als Grenzwert |λ| → 1 einer Familie gedämpfter Übergänge entsteht, ist eine Deutung, kein Grenzwertsatz.
-- `kn.satz.theta_singularitaet` — Zweigwahl: bewiesen ist, dass die Zweige überall übereinstimmen, sobald sie an einem Punkt übereinstimmen; an z₀ = 0.05i ist der Abstand 4·10⁻⁴⁸ (nötig < 0.12), aber nur in Gleitkomma gerechnet, nicht mit Intervallen, und nur für Basis e.
+- `kn.satz.theta_singularitaet` — Zweigwahl: mit Intervallen zertifiziert für Basis e und 2 (kn.satz.zweigwahl_zertifikat); offen ist nur die Motor-Annahme (E) mit Toleranz 0.027.
 - `br.satz.vergleichsfunktion` — Konvergenz für die Exponentialfakultät nur gemessen (doppelt exponentiell, ganze Werte auf 10⁻¹²), nicht bewiesen.
 - `br.satz.vergleichsfunktion` — Für Tetration mit Produkt-Tetration als Vergleich (tid 1816) weder Konvergenz noch Glattheit geprüft.
 - `gr.korr.grenzidentitaet` — Gleichmässige Abschätzung der unteren Faktoren, die den Grenzwert nicht ändern.
@@ -116,16 +116,50 @@
 - `kn.verm.theta5_natuerliche_grenze` — Ψ ist nicht ganz (entsteht aus Zweigen von slog); die eindeutige Fortsetzbarkeit längs s₀ + t ist nicht gesichert.
 - `kl.satz.c1_noerlund` — Dass gerade die Nörlund-Hauptlösung (ohne periodischen Anteil) die Basisableitung ist; plausibel, weil die gestörte Fatou-Koordinate eine asymptotische Entwicklung in 1/(y − e) und Logarithmen hat.
 - `kn.kor.minus2_entwicklung` — Das Restglied der Flajolet–Odlyzko-Übertragung ist nicht abgeschätzt; gemessen 0.852 bei n = 140, Fit des 1/log n-Glieds −0.461 gegen Theorie −0.489.
-- `kn.satz.nebenblatt_zweigpunkte` — Dass jeder Turm von Logarithmen in der Menge {w − m : sexp(w+n) = sexp(n−1)} auch als Zweig erreicht wird, ist nur für n ≤ 2 ausgeführt.
 - `kn.satz.plateau_modell` — Die Fehlerabschätzung $O(L_r\delta_r)$ aus der Linearisierung von σ_r im Plateau ist nicht quantitativ bewiesen.
 - `br.satz.endliche_vorzeichen_offen` — Die Einfachheit der Nullstellen von Knesers $T^{(k)}$, $k\le N$, ist nur numerisch belegt (jede gerade Ableitung bis 26 wechselt genau einmal).
 - `kn.satz.zoo_singulaerer_ort` — Zweigwahl: dass der Hauptast die richtige Fortsetzung ist, ist nur numerisch belegt (stetige Abtastung, Periodizitätsfehler ≤ 2·10⁻¹⁴), wie Lücke S4 der Vorarbeit.
+- `br.satz.enden_klassifikation` — Eindeutigkeit von E_T verlangt, dass T nahe i∞ die singulären Werte von σ umgeht; dass diese genau 0, 1, e, eᵉ, … sind, ist nicht bewiesen.
+- `br.satz.enden_klassifikation` — Polfall: dass T dann keinen Grenzwert hat, ist nicht ausgeführt (σ(T) läuft längs einer logarithmischen Spirale nach ∞; Ψ könnte dort einen asymptotischen Wert haben).
+- `br.satz.enden_klassifikation` — (iii) setzt eine eindeutige Schröder-Koordinate an L̄ voraus.
+- `kn.satz.theta_phase_koeffizienten` — Fehlerordnung O(1/(ln n ln ln n)) nicht streng: sie braucht eine Schranke für h″/h′ auf der Geraden Im w = π und eine Kontrolle des Rests aus kn.satz.theta_koeffizienten. Dessen Argumentfehler (Daten gegen führenden Term) ist bei n ≤ 4096 gemessen etwa 0.13/ln n; dass er asymptotisch kleiner als 1/(ln n ln ln n) ist, ist nicht gezeigt.
+- `kn.satz.theta_phase_koeffizienten` — Hängt an der Zweigwahl S4 wie kn.satz.theta_singularitaet.
+- `br.satz.sehnenkriterium` — m* = 0.3010 ist auf Polygonen gemessen (Infimum bei t = 0.2414, s = 0.7412, Höhe 5.4532), nicht mit Intervallen; der Spitzenbereich x < 10⁻¹² ist nur über die Lokalform (kn.satz.theta_singularitaet) abgeschätzt, ohne Konstanten.
+- `br.satz.momente_jordan` — (a) „Im F hat Randwert 0 ⇒ Im F ≡ 0“ braucht F in der Smirnov-Klasse; D_T ist unbeschränkt mit sehr dünner Spitze (G nur in H^p für p < ½), F ist nicht abgeschätzt.
+- `br.satz.momente_jordan` — (b) Isolierte Nullstellen von θ_T′ (Spitzen der Kurve) sind ausgenommen; das betrifft nur eine Nullmenge, ist aber nicht ausgeführt.
+- `br.satz.momente_jordan` — (c) Für „keine negativen Moden“ wird G ∈ H¹ gebraucht; bekannt ist nur θ_T ∈ L¹.
+- `br.satz.momente_jordan` — (d) Die Umlaufrichtung an der Spitze ist nur über die Lokalform begründet; dass c in D_T liegt (und nicht auf Γ_T), ist nicht eigens gezeigt — br.satz.momente_cauchy gibt nur c ∉ Ω_T.
+- `br.kor.momente_umgebung` — Alle Lücken von br.satz.momente_jordan (Smirnov-Klasse, H¹, Orientierung an der Spitze, Lage von c).
+- `br.kor.momente_umgebung` — m* = 0.3010 nur numerisch, Spitzenbereich nur qualitativ (br.satz.sehnenkriterium).
+- `kn.satz.theta_gerade_raenge_struktur` — Zweigwahl: Abel-Gleichung und Hauptzweige von H_{r−1}⁻¹, H_{r−2}⁻¹ längs H_r(x_r* + iε) und Analytizität von h bei ψ_r nur numerisch (wie kn.satz.theta6_singularitaet).
+- `kn.satz.theta_gerade_raenge_struktur` — Keine weitere Singularität von θ_r auf ℝ je Periode: nur gemessen (Phasenkonvergenz).
+- `kn.satz.theta_gerade_raenge_struktur` — Für (ii): Δ-Analytizität bei Q = 1 und Restglied nicht bewiesen.
+- `bw.lem.wackel` — L2: gleichmässige Verzerrungsschranken $U_n''/U_n'^2=O(1/U_n)$ und $(\mathrm{slog}_b^{\circ n})''/(\mathrm{slog}_b^{\circ n})'=O(1/U_n)$ an Turmhöhen nur skizziert (aus $T''/T'^2\approx1/T$).
+- `bw.lem.wackel` — L1 (geerbt): Bedingungen von bw.satz.phasengesetz_rang5 und die Zerlegung $c=\mu_4+P_4+r$ aus bw.satz.produktformel_rang5 (bedingt).
+- `bw.satz.hoelder_eins` — Wie bw.lem.wackel (L1, L2).
+- `bw.satz.kein_endlicher_ableitungswert` — Wie bw.lem.wackel (L1, L2); für (ii) zusätzlich P₄ ∈ C¹.
+- `bw.satz.rang5_singulaer` — L2 wie bw.lem.wackel (Weg 1 über bw.satz.kein_endlicher_ableitungswert; Weg 2: Schranken δ_j → 0 für die Fächergewichte nicht ausgeschrieben).
+- `bw.satz.rang5_singulaer` — L1 (geerbt): Bedingungen von bw.satz.phasengesetz_rang5 und bw.satz.produktformel_rang5.
+- `bw.kor.singulaer_mass` — Erbt die Lücken von bw.satz.rang5_singulaer und bw.satz.hoelder_eins.
+- `bw.verm.dichotomie_raenge` — Rang-6-Ebenensatz c₆ = Φ₅ + o(1) nur numerisch (Runde 18).
+- `bw.verm.dichotomie_raenge` — Für gerade Ränge die Lücke von bw.satz.phasengesetz_induktion (Kneser-Umkehrung).
+- `kn.verm.singulaere_basen_ungerade` — Einfachheit von p_r für alle b nur numerisch (kn.beob.landkarte_p4_p6).
+- `kn.verm.singulaere_basen_ungerade` — Analytizität der Kneser-artigen Stufen in b angenommen.
+- `br.satz.klammerung_fortsetzung` — Der Eindeutigkeitssatz für Fatou-Koordinaten ist zitiert und nicht für das reelle Blatt nachgeprüft; welche reelle Zusatzbedingung diese Iteration unter allen reell-analytischen Iterationen von F auszeichnet (etwa die Asymptotik $F^{[t]}(m)=m+tm^2+\dots$ wie bei Szekeres, it.satz.szekeres), ist nicht ausgeführt.
+- `it.satz.regulaere_slog_riemannflaeche` — Ob der Kern von $H\to G$ genau $N$ ist, also $H/N\cong G$: für Elemente aus dem Kern von $\pi_1(\mathbb C\setminus P)\to G$ (z. B. $[b_1,ab_1a^{-1}]$) ist nicht gezeigt, dass ihre Verschiebungen von $k$ endlich getragen sind (beim Eintragen bemerkt; der Bericht nennt den Quotienten bewiesen).
+- `it.satz.regulaere_slog_riemannflaeche` — Ob die Erweiterung zerfällt, also $H\cong\mathbb Z\wr_{\mathbb Z^{(\infty)}}G$, ist nicht geprüft.
+- `it.satz.erzeuger_monodromie_basen` — Die Fortsetzbarkeit von σ längs aller Wege (it.satz.regulaerer_erzeuger_fortsetzung) ist nur für $b=e$ ausgeschrieben.
+- `it.satz.erzeuger_monodromie_basen` — Keine Numerik für $b\neq e$.
+- `fp.satz.kein_haar_bei_L` — Die benutzten Struktursätze von Schleicher–Zimmer (Disjunktheit, Schwanz in S_{s₀}, ℝ trägt die Adresse 0^∞, Verhalten der zerbrochenen Strahlen) sind für den Fall „singulärer Wert 0 flüchtet auf ℝ“ nicht am Original geprüft.
+- `kn.kor.haar_urbilder_beschraenkt` — Erbt die Lücke von fp.satz.kein_haar_bei_L (Struktursätze von Schleicher–Zimmer im Fall „singulärer Wert flüchtet“ nicht am Original geprüft).
+- `kl.satz.eps0_b_gegen_1` — Der Fehler der Linearisierung (Koenigs-Koordinate) ist nur geschätzt; der gemessene Rest R/ln b wandert (1.27 → 1.42), die Fehlerordnung O(ln b) ist also nicht gesichert.
+- `kl.satz.kanalgesetz_vorwaertssumme` — T′ wird im Kanal durch q(T) ersetzt, die Summe durch das Integral, und die Glieder ausserhalb des Kanals werden weggelassen; die Messung zeigt eine Korrektur der Ordnung δ (nicht δ^{1/2}), c ≈ 0.644 ist nicht hergeleitet.
 
 ## Bedingte Aussagen (Wurzelbedingungen = unbewiesene Enden der Beweiskette)
 
 - `kl.satz.folgen_vollmonoton` — kl.verm.vollmonoton
 - `kl.satz.newton_reihe` — — · zusätzlich: Die Poincaré-Reihe Ψ am anziehenden Fixpunkt hat Konvergenzradius grösser als |s₀| (für b = √2 nachgerechnet: 1.316 > 0.632); allgemein aus der Holomorphie der regulären Tetration auf Re h > −2 zu zeigen, die bisher nur für √2 belegt ist (kl.satz.vier_sqrt2)
-- `kn.konstr.pentation` — — · zusätzlich: λ_b = T_b′(L_b) > 1 und L_b einziger Fixpunkt von T_b in (−2, −1): gemessen (e 6.4607, 2 5.1718), bewiesen nur λ_b ≥ 1 am kleinsten Fixpunkt; gleichwertig zur Log-Konkavität von T_b auf (−1, 0), die für b > b₇ bricht (gr.gegen.tpid7_kneser)
+- `kn.konstr.pentation` — — · zusätzlich: λ_b = T_b′(L_b) > 1 und L_b einziger Fixpunkt von T_b in (−2, −1): gemessen (e 6.4607, 2 5.1718), bewiesen nur λ_b ≥ 1 am kleinsten Fixpunkt; gleichwertig zur Log-Konkavität von T_b auf (−1, 0), die für b > b₇ bricht (gr.gegen.tpid7_kneser); λ_b > 1 auf dem Raster b = 1.2…3 gemessen, Minimum 4.7799 bei b* = 1.53279 (kn.beob.landkarte_p4_p6)
 - `kn.satz.hexation_struktur` — —
 - `kn.konstr.hexation_regulaer` — —
 - `kn.satz.hexation_keine_halbebene` — kn.beob.hexation_verzweigt
@@ -151,8 +185,8 @@
 - `bw.zert.8r1` — — · zusätzlich: korrekte Implementierung der Intervallarithmetik und die drei offenen Punkte des Zertifikats-README: Mikrosegment-Induktion, Hilbert-Röhren-Supremum, Γ-Steigungsbeweis
 - `ar.satz.schanuel_orbit` — ar.verm.schanuel
 - `gr.satz.ein_wendepunkt_e2` — — · zusätzlich: Annahme H: Motorwerte an den Kreisknoten auf 10⁻⁵ genau und |sexp| ≤ 1000 nahe der Achse; dass die Werte zu Kneser gehören, ist nur numerisch belegt
-- `kn.satz.theta_singularitaet` — — · zusätzlich: Zweigwahl an einem Punkt (z₀ = 0.05i, Abstand 4·10⁻⁴⁸ bei nötigen < 0.12) nur in Gleitkomma geprüft, nicht mit Intervallen; nur Basis e
-- `kn.satz.theta_koeffizienten` — — · zusätzlich: dieselbe Zweigprüfung wie bei kn.satz.theta_singularitaet
+- `kn.satz.theta_singularitaet` — — · zusätzlich: Motor-Annahme (E): die Motor-θ-Reihe trifft Knesers θ bei z₀ = 0.05i bis auf 0.027 (mod 2πi/ℓ); die Zweigwahl selbst ist mit Intervallarithmetik bewiesen, Basis e und 2 (kn.satz.zweigwahl_zertifikat); Hilfsschranken nahe 0 unter (E2) (kn.satz.sexp_schlicht_nahe_null). Belege für (E): zwei Motoreinstellungen auf 2·10⁻⁵⁹ gleich; Basis e stimmt auf Im z ≥ 0.36 mit dem zertifizierten θ_K (kn.satz.kneser_e_zertifiziert) auf 3·10⁻⁷⁹
+- `kn.satz.theta_koeffizienten` — — · zusätzlich: dieselbe Bedingung wie kn.satz.theta_singularitaet: Motor-Annahme (E); die Zweigwahl ist mit Intervallen zertifiziert (kn.satz.zweigwahl_zertifikat), Basis e und 2
 - `bw.satz.phasengesetz_rang5` — — · zusätzlich: bw.satz.phasengesetz (nur Beschränktheit von F(u) − u benutzt); für die Pentation gemessen: Multiplikator λ > 1 und L_b einziger reeller Fixpunkt von T_b
 - `bw.satz.fixpunkt_konjugator` — — · zusätzlich: wie bw.satz.phasengesetz_rang5
 - `bw.satz.produktformel_rang5` — — · zusätzlich: wie bw.satz.phasengesetz_rang5; zusätzlich C¹-Form des Rang-4-Phasengesetzes (F′ = 1 + Φ₄′ + o(1), gemessen)
@@ -163,6 +197,21 @@
 - `kn.satz.zoo_singulaerer_ort` — — · zusätzlich: Dass der Hauptast die richtige Fortsetzung von h ist (Zweigwahl wie in kn.satz.theta_singularitaet), ist nur numerisch belegt (Periodizitätsfehler ≤ 2·10⁻¹⁴)
 - `kn.satz.zoo_puiseux` — — · zusätzlich: Voraussetzung (V) und die Δ-Analytizität bei q = 1 aus kn.satz.zoo_singulaerer_ort (Zweigwahl numerisch)
 - `it.satz.kneser_erzeuger` — — · zusätzlich: Glattheitsgrad unter a₁(b) ≠ 0 (für b = e und 2 belegt); Exponent und Umlauffaktor zusätzlich numerisch bestätigt
+- `kn.satz.theta_phase_achse` — — · zusätzlich: Zweigidentität S4 (σ∘sexp = e^{ℓ(z+θ)}) wie in kn.satz.theta_singularitaet; sie ist jetzt mit Intervallarithmetik zertifiziert bis auf die Motor-Annahme (E) (kn.satz.zweigwahl_zertifikat)
+- `kn.satz.zweigwahl_zertifikat` — — · zusätzlich: Motor-Annahme (E): |θ_K(z₀) − θ_num(z₀)| ≤ 0.027 (mod 2πi/ℓ) bei z₀ = 0.05i, d. h. die Motor-θ-Reihe ist an einem Punkt auf zwei Stellen Knesers Welle; nicht zertifiziert ist, dass der Motor (fatou.gp) Knesers Lösung rechnet
+- `kn.satz.sexp_schlicht_nahe_null` — — · zusätzlich: Motor-Annahme (E2): die Taylor-Koeffizienten der Motordaten um 0 (k ≤ 127) sind auf 10⁻³⁰ genau und |c_k| ≤ 1 für k ≥ 128; für die Schlichtheit allein genügt ein Fehler ≤ 3.7
+- `br.satz.momente_cauchy` — — · zusätzlich: Benutzt, dass Re θ_T auf (0, 1) nach unten beschränkt ist (an beiden Enden Re θ_T → +∞). Das kommt aus der Lokalform von kn.satz.theta_singularitaet, die dort an die Motor-Annahme (E) gebunden ist (Zweigwahl mit Intervallen zertifiziert, kn.satz.zweigwahl_zertifikat). Die Integrierbarkeit von e^{λ|θ_T|} folgt aus der Majorante von kn.satz.theta_mittelwerte.
+- `br.satz.sehnenkriterium` — — · zusätzlich: Das Kriterium mit m* als Infimum ist bewiesen. Der Zahlenwert m* = 0.3010 ist auf Polygonen gemessen (N = 400, 600, 800, vier Stellen gleich); dass m* > 0 auch im nicht abgetasteten Spitzenbereich x < 10⁻¹² gilt, ist nur über die Lokalform qualitativ begründet.
+- `kn.satz.komplex_radius` — — · zusätzlich: Vorausgesetzt ist die Kneser-Darstellung für komplexe Basen (Paulsen 2019, kn.satz.paulsen_komplex, Volltext ungeprüft): sexp = F₊(z + θ_U(z)) mit 1-periodischem θ_U im oberen Bereich (ebenso unten mit F₋), und sexp ist um z = −1 holomorph. Der Schluss selbst ist vollständig.
+- `kn.satz.slog_periodische_halbebene` — kn.beob.slog_scheibe · zusätzlich: (i) braucht nur, dass Knesers slog auf der Scheibe |w| < |L| holomorph ist (kn.beob.slog_scheibe; Radius |L| aus kn.beob.slog_taylor_radius_L, beides numerisch). (ii) braucht zusätzlich, dass A auf dem Kreis |w| = |L| nur bei L und L̄ singulär ist (nur gemessen).
+- `kn.satz.theta5_natuerliche_grenze` — — · zusätzlich: K₅ = H₅ ist nur numerisch gegeben (e6-Löser, etwa 4·10⁻¹⁰): dass H₅ auf ganz ℍ holomorph ist, den Schnitt (−∞, −2] von sexp₂ meidet und H₅(z+1) = sexp₂(H₅ z) erfüllt, ist nur auf dem Prüfraster (y ∈ [0.02, 0.5]) gemessen; ebenso, dass ∂Ω ∩ ℍ nicht leer ist (kn.beob.theta5_dach)
+- `kn.satz.theta_gerade_raenge_struktur` — — · zusätzlich: Zweigwahl wie bei kn.satz.theta6_singularitaet: dass die Abel-Gleichung h(w) = 1 + h(H_{r−1}⁻¹ w) und die Hauptzweige von H_{r−1}⁻¹ und H_{r−2}⁻¹ längs H_r(x_r* + iε) die richtige Fortsetzung sind und h bei ψ_r analytisch ist, ist nur numerisch gestützt (Ort, Exponent, Konstanten passen); dass θ_r auf ℝ je Periode keine weitere Singularität hat, ist nur gemessen; (ii) braucht zusätzlich Δ-Analytizität bei Q = 1
+- `bw.kor.rang5_fast_ueberall_diffbar` — —
+- `kn.satz.negative_struktur` — — · zusätzlich: Die gebauten Stufen sind stetig und streng wachsend in x; ungerade Stufen sind regulär am abstossenden Fixpunkt p_{r−1} der Stufe darunter gebaut, also H_r → p_{r−1} für x → −∞ (Monotonie für die gebauten höheren Stufen nicht bewiesen)
+- `kn.konstr.rangkoordinate` — — · zusätzlich: Existenz des Grenzwerts und Unabhängigkeit vom Interpolationsschema; nur numerisch belegt ($b=\sqrt2$: 5–6 Stellen für Glieder nahe ganzen Rängen, 3–4 Stellen bei halbzahligem Abstand)
+- `br.satz.linke_raenge_keim` — — · zusätzlich: Für Rang 5′ und für ganze Basis $x$ ohne Bedingung (nur ganze Iterationszahlen). Für Rang $\ge6′$ mit nicht ganzer Basis unter der Annahme, dass die kanonische gebrochene Iterierte (br.satz.klammerung_fortsetzung) die formale Entwicklung gleichmässig in $s$ hat (Standardsatz, nicht nachgeprüft).
+- `br.kor.linke_varianten_nicht_eta` — — · zusätzlich: Für Rang 5′ und für ganze Basen ohne Bedingung; für Rang $\ge6′$ mit nicht ganzer Basis unter der Bedingung von br.satz.linke_raenge_keim.
+- `ar.satz.schanuel_ableitungen` — ar.verm.schanuel
 
 ## Experimente
 

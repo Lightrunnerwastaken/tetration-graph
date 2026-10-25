@@ -1,0 +1,36 @@
+gebiet: it
+# Runde 25.10.2026, Bericht 07 (Riemannsche Fläche von Knesers slog), Befund R7.
+# Rechnungen: forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md. Übrige Befunde in r25_07_kn.yaml.
+aussagen:
+
+- id: it.kor.poincare_exp_ableitung_produkt
+  titel: 'Produktformel für die Poincaré-Funktion von exp am Fixpunkt L: Ψ′(ζ) = exp Σₖ (Ψ(ζ/Lᵏ) − L); Ψ hat keine kritischen Punkte und lässt 0 aus'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [schroeder, fixpunkt_L]
+  bereich: 'Basis $e$, $e^L=L$, $|L|>1$; $\Psi=\sigma^{-1}$ die Poincaré-Funktion an $L$: ganz, $\Psi(L\zeta)=e^{\Psi(\zeta)}$, $\Psi(0)=L$, $\Psi''(0)=1$'
+  aussage: |
+    $$\Psi'(\zeta)=\exp\Bigl(\sum_{k\ge1}\bigl(\Psi(\zeta L^{-k})-L\bigr)\Bigr),$$
+    die Summe konvergiert lokal gleichmässig auf $\mathbb C$. Insbesondere hat $\Psi$ keine kritischen Punkte, und $\Psi(\zeta)=e^{\Psi(\zeta/L)}\neq0$.
+  einfach: >-
+    Die Umkehrung der Schröder-Funktion am Fixpunkt L hat eine Ableitung, die man als e hoch eine unendliche Summe schreiben kann. Weil e hoch etwas nie null ist,
+    hat diese Funktion nirgends eine waagrechte Tangente.
+  beweis:
+    art: vollstaendig
+    text: |
+      Ableiten von $\Psi(L\zeta)=e^{\Psi(\zeta)}$ gibt $L\Psi'(L\zeta)=e^{\Psi(\zeta)}\Psi'(\zeta)$, also $\Psi'(\zeta)=e^{\Psi(\zeta/L)-L}\,\Psi'(\zeta/L)$ wegen $1/L=e^{-L}$.
+      $N$-mal angewandt: $\Psi'(\zeta)=\exp\bigl(\sum_{k=1}^N(\Psi(\zeta L^{-k})-L)\bigr)\Psi'(\zeta L^{-N})$. Wegen $\Psi(x)-L=O(x)$ und $|L|>1$ konvergiert die Summe lokal gleichmässig, und $\Psi'(\zeta L^{-N})\to\Psi'(0)=1$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md, R7 und Beweis R7'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, durch Ableiten der Poincaré-Gleichung; Spezialfall der allgemeinen Formel Ψ′(ζ) = Πₖ f′(Ψ(ζ/λᵏ))/λ für Poincaré-Funktionen.'
+    f2_benutzte_voraussetzungen: 'Ψ ganz mit Ψ(Lζ) = exp Ψ(ζ), Ψ′(0) = 1, |L| > 1.'
+    f3_spezialfall: 'Ja, der Produktformel für Poincaré-Funktionen mit f = exp, f′ = f.'
+    f4_uebertragbar: 'Auf jede Basis b > η (Faktor ln b·b^{Ψ}/λ) und jede Abbildung ohne kritische Punkte.'
+    f5_neue_frage: 'Gibt die Formel eine schnelle, genaue Auswertung von Ψ′ für die Kneser-Rechnung?'
+  bewertung: {richtigkeit: vollständig, neuheit: folklore, recherche: 'Die Produktformel ist für Poincaré-Funktionen allgemein bekannt; die Nullstellenfreiheit steht schon in kn.satz.theta_singularitaet (i) mit anderem Beweis.', nutzen: 'Einzeiliger Beweis, dass Ψ keine kritischen Punkte hat; explizite Formel für Ψ′.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.theta_singularitaet, notiz: 'zweiter Beweis von (i): Ψ′ ≠ 0, Ψ ≠ 0'}
+    - {typ: verwandt, ziel: it.satz.regulaerer_erzeuger_fortsetzung}
+    - {typ: verwandt, ziel: it.satz.koenigs}

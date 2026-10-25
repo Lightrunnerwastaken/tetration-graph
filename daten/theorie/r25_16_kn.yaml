@@ -1,0 +1,94 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 16 (Fluchtmenge von e^z unter Knesers sexp).
+
+kn.satz.flucht_urbild_dicht:
+  worum: |
+    Für $e^w$ ist die Julia-Menge die ganze Ebene. Darum schaut man auf die Fluchtmenge $I$: die Punkte, deren Bahn $w,e^w,e^{e^w},\dots$ gegen $\infty$ geht.
+    Welche Stellen $z$ schickt Knesers Tetration dorthin?
+  genau: |
+    $E=\mathrm{sexp}^{-1}(I)$ erfüllt $z\in E\iff z+1\in E\iff\mathrm{sexp}(z+n)\to\infty$; $E$ ist dicht, hat Fläche null und enthält die reelle Achse ab $-2$.
+  warum: |
+    $\mathrm{sexp}(z+n)$ ist die $n$-te Iterierte von $e^w$ an $w=\mathrm{sexp}(z)$. Die Fluchtmenge ist dicht (Rückwärtsbahnen liegen dicht in der Julia-Menge $\mathbb C$) und hat Mass null
+    (Rees, Lyubich); eine holomorphe Funktion zieht beides zurück.
+  beispiel: |
+    Jede reelle Stelle $x>-2$ liegt in $E$: $\mathrm{sexp}(x+n)$ ist ein immer höherer Turm.
+  bilder: []
+  einordnung: |
+    Die Mass-Aussage stammt aus [[fp.satz.messbare_dynamik]]; die genaue Gestalt oben beschreibt [[kn.satz.flucht_gitter]].
+
+kn.satz.flucht_gitter:
+  worum: |
+    Weit oben in der Halbebene ist Knesers Tetration fast die reguläre Superfunktion $F_L(u)=\Psi(e^{Lu})$ am Fixpunkt $L$ (Bezeichnungen: [[kn.def.theta_welle]]).
+    Diese hat zwei Perioden: eine echte und eine „bis auf einen Schritt“.
+  genau: |
+    $F_L(u+1)=e^{F_L(u)}$, $F_L(u+2\pi i/L)=F_L(u)$. Das Fluchtmuster ist unter $\Lambda=\mathbb Z+(2\pi i/L)\mathbb Z$ invariant, und die Eintrittszeit ist
+    $N\approx4.2034\,\mathrm{Im}\,z-\mathrm{Re}\,z$ plus eine $\Lambda$-periodische Funktion; schräg um $\omega=2\pi i/L-4$ kommen genau 4 Schritte dazu.
+  warum: |
+    Nahe $L$ wächst der Abstand zu $L$ pro Schritt um $|L|=e^{\mathrm{Re}\,L}$, und $|e^{Lu}|=e^{\mathrm{Re}(Lu)}$. Bis die Bahn die Umgebung von $L$ verlässt, braucht sie
+    darum etwa $-\mathrm{Re}(Lu)/\mathrm{Re}\,L$ Schritte. Diese lineare Funktion fällt um 1 pro Schritt nach rechts und bleibt bei $u\mapsto u+2\pi i/L$ gleich.
+  beispiel: |
+    $\omega=0.446951+1.057940\,i$: Wer von $z$ schräg um $\omega$ nach oben geht, braucht genau vier Schritte von $e^w$ mehr, um nach rechts zu fliehen.
+  bilder: []
+  einordnung: |
+    Dasselbe Gitter ordnet die Urbilder eines Werts in [[kn.satz.wertevorrat]]; die Messung steht in [[kn.beob.flucht_gitter_numerik]]; Ausblick [[kn.frage.flucht_torus]].
+
+kn.beob.flucht_gitter_numerik:
+  worum: |
+    Ab welcher Höhe sieht man das schräge Gitter aus [[kn.satz.flucht_gitter]] in Knesers Tetration selbst?
+  genau: |
+    Der Anteil der Punkte mit $N(z+\omega)=N(z)+4$ steigt von $0.74$ (Höhe unter $0.5$) auf $1.0$ ab Höhe 3; die Steigung von $N$ ist $4.244$ gegen $4.2034$.
+  warum: |
+    Gemessen. Die Abweichung kommt von Knesers Welle $\theta$, die nach oben exponentiell schnell konstant wird; nahe der reellen Achse ist $\theta$ an den ganzen Zahlen unbeschränkt.
+  beispiel: |
+    Zweite Einstellung (Schwelle 20 statt 50, anderes Gitter): $0.80$, $0.95$, $0.9975$, $0.998$, $0.9999$, $1.0$.
+  bilder: []
+  einordnung: |
+    Stützt [[kn.satz.flucht_gitter]]; die Singularität von $\theta$: [[kn.satz.theta_singularitaet]].
+
+kn.beob.streifen_linse:
+  worum: |
+    Wohin bildet Knesers Tetration den Grundstreifen $0\le\mathrm{Re}\,z<1$ ab?
+  genau: |
+    In eine Linse zwischen $\bar L$ und $L$ mit $|\mathrm{Im}\,w|<1.756$. Senkrechte Linien werden Bögen von $\bar L$ nach $L$ (keine Kreise, 3–6 % daneben), die sich nahe $L$ als Spiralen eindrehen.
+  warum: |
+    Oben ist $\mathrm{sexp}(z)\approx L+\kappa e^{Lz}$ ([[kn.kor.doppelreihe_oben]]): pro Einheit Höhe dreht sich das Argument um $\mathrm{Re}\,L=0.318$, der Abstand schrumpft um $e^{-1.337}=0.263$.
+    Form und Höhe der Linse sind gemessen.
+  beispiel: |
+    $x_0=\tfrac12$: der Bogen geht durch $\mathrm{sexp}(\tfrac12)=1.6463\ldots$; die beste Kreisanpassung hat Radius $1.363$ und weicht um $4.8\,\%$ ab.
+  bilder: []
+  einordnung: |
+    Die Linse liegt im Streifen $S_0$, in dem [[fp.satz.kein_haar_bei_L]] arbeitet; Grenzverhalten oben: [[kn.satz.kneser_eigenschaften]].
+
+kn.beob.reelle_urbilder:
+  worum: |
+    Wo trifft Knesers Tetration ausserhalb der reellen Achse wieder reelle Werte?
+  genau: |
+    Auf dem oberen Grundstreifen ist $\mathrm{Im}\,\mathrm{sexp}>0$ (sogar $\ge0.178\,\mathrm{Im}\,z$), also auch auf dem nächsten Streifen; reelle Werte kommen erst ab $\mathrm{Re}\,z\approx2.52$ vor.
+  warum: |
+    Ist $0<\mathrm{Im}\,w<\pi$, dann $\mathrm{Im}\,e^w=e^{\mathrm{Re}\,w}\sin(\mathrm{Im}\,w)>0$. Erst wo $\mathrm{Im}\,\mathrm{sexp}=\pi$ wird (zuerst bei $1.516+0.635\,i$), ist der nächste Wert reell negativ.
+  beispiel: |
+    $\mathrm{sexp}(2.516+0.635\,i)$ ist eine negative reelle Zahl.
+  bilder: []
+  einordnung: |
+    Ergänzt den Wertevorrat [[kn.satz.wertevorrat]]; diese Urbilder sind Teil der Fluchtmenge aus [[kn.satz.flucht_urbild_dicht]].
+
+kn.kor.haar_urbilder_beschraenkt:
+  worum: |
+    Können die zurückgezogenen Haare von $e^w$ in Knesers oberer Halbebene beliebig hoch steigen?
+  genau: |
+    Nein: in jedem senkrechten Streifen ist das Urbild eines Haars nach oben beschränkt.
+  warum: |
+    Weit oben ist $\mathrm{sexp}$ fast $L$. Ein Haar-Urbild, das beliebig hoch steigt, hätte ein Bild, das sich bei $L$ häuft — und das schliesst [[fp.satz.kein_haar_bei_L]] aus.
+  bilder: []
+  einordnung: |
+    Folgerung aus [[fp.satz.kein_haar_bei_L]]; Rahmen [[kn.satz.flucht_gitter]].
+
+kn.frage.flucht_torus:
+  worum: |
+    Was man über die Fluchtmenge in Kneser-Koordinaten noch nicht weiss.
+  genau: |
+    Hausdorff-Dimension lokal, Bild auf dem Torus $\mathbb C/\Lambda$, geschlossene Form der Linse, Lage der Punkte mit $T=\infty$, Abhängigkeit von der Basis.
+  warum: |
+    [[kn.satz.flucht_gitter]] reduziert die Fluchtmenge oben auf eine Menge auf dem Torus; deren Gestalt ist offen.
+  bilder: []
+  einordnung: |
+    Ausgangspunkte: [[kn.satz.flucht_urbild_dicht]], [[kn.beob.streifen_linse]], [[kn.kor.haar_urbilder_beschraenkt]].

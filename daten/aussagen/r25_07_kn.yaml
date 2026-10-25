@@ -1,0 +1,268 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 07: Riemannsche Fläche von Knesers slog (Basis e).
+# Rechnungen: forschung/runde_2026_10_25/07_riemannflaeche_slog/ (BERICHT.md, Befunde R1–R14). Gegenprobe: EINTRAG.md dort.
+# Die Produktformel für Ψ′ (R7) steht in r25_07_it.yaml.
+aussagen:
+
+- id: kn.beob.slog_taylor_radius_L
+  titel: 'Taylorreihe von Knesers slog um 0: Aₙ ≈ −2 Re(1/(n L^(n+1))), Radius genau |L|, relativer Rest wie n^(−Re γ)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [slog, kneser_T, fixpunkt_L]
+  bereich: 'Basis $e$; $A(w)=\mathrm{slog}(w)=\sum_{n\ge0}A_nw^n$ (Knesers slog, Hauptzweig um 0); $L=0.3181315+1.3372357i$, $|L|=1.3745570107$; $\gamma=2\pi i/L=4.44695+1.05794i$'
+  aussage: |
+    $$A_n=-2\,\mathrm{Re}\,\frac{1}{n\,L^{n+1}}\,\bigl(1+O(n^{-\mathrm{Re}\,\gamma})\bigr),\qquad \mathrm{Re}\,\gamma=4.447 .$$
+    Der Konvergenzradius ist also genau $|L|$, und das Leitglied ist $\frac1L\log(1-w/L)+\frac1{\bar L}\log(1-w/\bar L)$: Am Rand sitzen nur die beiden Fixpunkte, als Logarithmen mit Vorfaktor $1/L$ bzw. $1/\bar L$.
+    Der Rest kommt vom nächsten Glied $(w-L)^{\gamma}$ der Entwicklung bei $L$ (kn.kor.slog_bei_L). Auf dem Kreis $|w|=|L|$ zeigt sich keine weitere Singularität mit Exponent $\mathrm{Re}\,\alpha\lesssim4$.
+  einfach: >-
+    Die Potenzreihe des Superlogarithmus um 0 reicht genau bis zu den beiden komplexen Fixpunkten L und L̄. Ihre Koeffizienten sind fast genau die eines Logarithmus,
+    der bei L und L̄ sitzt; der Rest ist bei der 300. Zahl um einen Faktor von etwa zehn Milliarden kleiner.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md, R1; s1_radius.py (liest polynom_halbexp/gemeinsam/kneser_slog_koeff_300.json)'}]
+  nachgeprueft:
+    - {ergebnis: 'Quotient Aₙ/Leitglied = 1 ± 2·10⁻¹¹ bei n = 250, 300; Hüllkurve des Rests mit lokaler Steigung −5.4, −4.9, −5.2, −5.1, −4.5 (n ≈ 80–280), Theorie −4.447.'}
+    - {ergebnis: 'Gegenprobe 25.10.2026: s1_radius.py erneut gelaufen, alle Zahlen gleich (Quotient 1.00000000002 bei n = 250 und 300).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Der Radius |L| ist Folklore (Logarithmus bei L, Holomorphie auf |w| < |L| wie in kn.beob.slog_scheibe); die Form des Rests folgt aus kn.kor.slog_bei_L, sobald es auf dem Kreis keine weitere Singularität gibt — das ist nur gemessen.'
+    f2_benutzte_voraussetzungen: '300 Taylor-Koeffizienten (50 Stellen) aus polynom_halbexp; Darboux-Vergleich.'
+    f3_spezialfall: 'Darboux-Methode wie bei kn.satz.taylor_darboux (dort für sexp mit dem Logarithmus bei −2).'
+    f4_uebertragbar: 'Auf jede Basis b > η: Radius |L_b|, Leitglied log(1 − w/L_b)/(L_b ln b) + konj.'
+    f5_neue_frage: 'Strenger Beweis, dass auf |w| = |L| nur L, L̄ singulär sind (etwa über das Bild der Kreisscheibe unter slog, kn.beob.slog_scheibe).'
+  bewertung: {richtigkeit: 'numerisch, 300 Koeffizienten; Leitglied auf 2·10⁻¹¹', neuheit: folklore, recherche: 'Radius |L| ist bekannt (Walker, Paulsen); neu formuliert sind Leitglied und Rest-Exponent Re γ.', nutzen: 'Grundlage für das periodische Blatt (kn.satz.slog_periodische_halbebene).', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.beob.slog_scheibe}
+    - {typ: verwandt, ziel: kn.kor.slog_bei_L}
+    - {typ: analog_zu, ziel: kn.satz.taylor_darboux}
+
+- id: kn.satz.slog_periodische_halbebene
+  titel: 'Links der Senkrechten Re w = Re L ist slog(w) = slog(eʷ) − 1 holomorph und 2πi-periodisch; auf der Senkrechten sitzt ein Gitter von Log-Punkten L + 2πiℤ und L̄ + 2πiℤ'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen: [kn.beob.slog_scheibe]
+  bedingungen_text: '(i) braucht nur, dass Knesers slog auf der Scheibe |w| < |L| holomorph ist (kn.beob.slog_scheibe; Radius |L| aus kn.beob.slog_taylor_radius_L, beides numerisch). (ii) braucht zusätzlich, dass A auf dem Kreis |w| = |L| nur bei L und L̄ singulär ist (nur gemessen).'
+  niveau: forschung
+  objekte: [slog, kneser_T, fixpunkt_L]
+  bereich: 'Basis $e$; $A$ Knesers slog auf $D=\{|w|<|L|\}$; $P(w):=A(e^w)-1$ auf der Halbebene $H=\{\mathrm{Re}\,w<\mathrm{Re}\,L\}$, $\mathrm{Re}\,L=0.3181315$'
+  aussage: |
+    (i) $P$ ist auf $H$ holomorph und $2\pi i$-periodisch und stimmt auf $D\cap H$ mit slog überein. $P$ ist also die Fortsetzung von slog auf die ganze linke Halbebene („periodisches Blatt“).
+    (ii) Auf der Randgeraden $\mathrm{Re}\,w=\mathrm{Re}\,L$ ist $P$ genau an den Punkten $w_0\in(L+2\pi i\mathbb Z)\cup(\bar L+2\pi i\mathbb Z)$ singulär, und zwar logarithmisch:
+    $$P(w)=\frac1L\log(w-w_0)+c+o(1)\qquad(w\to w_0=L+2\pi ik\text{ von links}),$$
+    bei $\bar L+2\pi ik$ mit $1/\bar L$. An allen anderen Punkten der Geraden setzt sich $P$ fort.
+  einfach: >-
+    In der linken Hälfte der Ebene wiederholt sich der Superlogarithmus nach oben und unten mit dem Abstand 2π, so wie die e-Funktion. Am Rand dieser Hälfte
+    sitzen deshalb nicht nur die zwei Fixpunkte L und L̄, sondern eine ganze Leiter von Kopien davon, alle im Abstand 2π übereinander.
+  beweis:
+    art: bedingt
+    text: |
+      Für $\mathrm{Re}\,w<\mathrm{Re}\,L$ ist $|e^w|=e^{\mathrm{Re}\,w}<e^{\mathrm{Re}\,L}=|e^L|=|L|$, also $e^w\in D$ und $P$ holomorph; die Periode ist die von $e^w$.
+      Nahe 0 ist $A(e^w)-1=A(w)$ (Funktionalgleichung; Probe $2\cdot10^{-50}$), nach dem Identitätssatz auf dem zusammenhängenden $D\cap H$.
+      Für $w\to L+2\pi ik$ von links geht $e^w$ von innen gegen $L$; mit $A(\zeta)=\frac1L\log(\zeta-L)+c+o(1)$ (kn.kor.slog_bei_L) folgt $P(w)=\frac1L\log\bigl(L(w-L-2\pi ik)\bigr)+c-1+o(1)$.
+      Ist $w$ ein anderer Randpunkt, so ist $e^w$ ein Punkt des Kreises $|\zeta|=|L|$ ausser $L,\bar L$ und dort nach Bedingung (ii) regulär.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md, R2 und Beweis R2; s1_radius.py, s2_blaetter.py, s3_gitter_L.py'}]
+  nachgeprueft:
+    - {ergebnis: 'Motor-slog links der Senkrechten = A(eʷ) − 1 an 7 Punkten (z. B. −0.5+5i, −3+7.9i) auf ≤ 10⁻³⁰. Log-Test an L, L+2πi, L+4πi von links: Differenz der Werte bei Abstand 10⁻³ und 10⁻² = log(0.1)/L ± 0.0022 (Grösse des (w−w₀)-Glieds).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus der Holomorphie von A auf |w| < |L| und der Funktionalgleichung; (ii) aus der Lage der Singularitäten auf dem Kreis (numerisch).'
+    f2_benutzte_voraussetzungen: 'A holomorph auf D; slog(eʷ) = slog(w) + 1 nahe 0; Logarithmus-Form bei L (kn.kor.slog_bei_L).'
+    f3_spezialfall: 'Gegenstück zur 2πi-Periodizität von exp: P = A∘exp − 1 erbt sie.'
+    f4_uebertragbar: 'Auf jede Basis b > η: Halbebene {|b^w| < |L_b|} = {Re w < ln|L_b|/ln b}, Gitter L_b + 2πiℤ/ln b.'
+    f5_neue_frage: 'Wie sieht das Blatt rechts der Senkrechten aus (kn.beob.sexp_trifft_L), und wie hängen die Blätter zusammen (kn.kor.slog_monodromie_L)?'
+  bewertung: {richtigkeit: '(i) zwei Zeilen aus der Holomorphie auf D; (ii) an der numerischen Lage der Randsingularitäten', neuheit: neu_ungeprueft, recherche: 'Das Gitter auf Re w = Re L ist uns aus der Literatur nicht bekannt; nicht recherchiert.', nutzen: 'Gibt die erste ganze Halbebene der slog-Fläche explizit.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.beob.slog_scheibe}
+    - {typ: stuetzt_sich_auf, ziel: kn.beob.slog_taylor_radius_L}
+    - {typ: stuetzt_sich_auf, ziel: kn.kor.slog_bei_L}
+    - {typ: verwandt, ziel: kn.def.slog}
+
+- id: kn.beob.sexp_trifft_L
+  titel: 'Knesers sexp trifft den Fixpunkt L: sexp(3.03397945276213068853 + 0.62603889222758265196i) = L — das Kneser-Blatt von slog ist an L + 2πik (k ≠ 0) regulär'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [slog, kneser_T, fixpunkt_L]
+  bereich: 'Basis $e$; $K$ das Blatt von slog rechts der Senkrechten $\mathrm{Re}\,w=\mathrm{Re}\,L$ (wie im Motor, Schnitte von $L$ senkrecht nach oben und von $\bar L$ nach unten); sexp auf dem Hauptzweig $\mathbb C\setminus(-\infty,-2]$'
+  aussage: |
+    Auf $K$ sind die Gitterpunkte $L+2\pi ik$, $k\ne0$, **regulär**, mit
+    $s^*_1=\mathrm{slog}_K(L+2\pi i)=2.0339794527621306885320165722+0.6260388922275826519647882805i$,
+    $s^*_2=2.1711479776960512760791065186+0.4626241915670184355004755120i$,
+    $s^*_3=2.2440413113722070178255433948+0.3910177242666462632551004951i$,
+    $s^*_{-1}=1.9164381432450097009166882644-0.8024346897198475543050758983i$.
+    Es gilt $\mathrm{sexp}(s^*_k)=L+2\pi ik$, also
+    $$\mathrm{sexp}(s^*_k+1+n)=L\qquad(n\ge0),$$
+    z. B. $\mathrm{sexp}(z_L)=L$ für $z_L=3.03397945276213068853+0.62603889222758265196i$. Über $L$ hat die slog-Fläche also neben dem Log-Punkt des Hauptblatts auch reguläre Punkte.
+    Die $s^*_k$ wandern mit $k$ langsam nach rechts, etwa wie $\mathrm{slog}(\ln2\pi k+i\pi/2)+1$.
+  einfach: >-
+    Knesers Tetration erreicht den Fixpunkt L tatsächlich, an einer Stelle mit Realteil etwa 3. Danach bleibt sie dort stehen, weil e hoch L wieder L ist.
+    Die Kopien von L auf der Leiter rechts davon sind für den Superlogarithmus ganz gewöhnliche Punkte.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md, R3, R4; s4_schnitt_und_sstern.py, daten/s4_dps30.txt, daten/s4_dps40.txt'}]
+  nachgeprueft:
+    - {ergebnis: 'Bericht: dps 30 und 40 gleich auf 28 Stellen; sexp(s*ₖ) = L + 2πik und sexp(s*ₖ + 1) = L auf 10⁻³⁰ (= Versatz 10⁻³⁰ des Messpunkts).'}
+    - {ergebnis: 'Gegenprobe 25.10.2026: Motor neu mit dps 35 — s*₁, s*₂, s*₃, s*₋₁ gleich auf allen 28 angegebenen Stellen. Unabhängig ohne Motor über die Taylorreihe von sexp um 0 (runde_2026_10_18/06_asymptotik/daten/taylor_0_1.5_400_50.json) an s*ₖ − 2 und drei exp-Schritte: |sexp(s*ₖ) − (L + 2πik)| ≤ 1.2·10⁻³⁰, |sexp(s*ₖ + 1) − L| ≤ 1.6·10⁻³⁰ (k = 1, 2, −1).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Dass sexp den Wert L überhaupt annimmt, folgt aus kn.satz.wertevorrat: L + 2πi ≠ 0 wird angenommen, und ein exp-Schritt führt auf L. Neu sind die konkreten Stellen und die Regularität des Blatts K an L + 2πik.'
+    f2_benutzte_voraussetzungen: 'Motor (fatou.gp-Fork) mit dps 30/35/40; Taylorreihe von sexp um 0 (Radius 2).'
+    f3_spezialfall: 'Fall c = L von kn.satz.wertevorrat (dessen Beweis über log^[k] c → L greift bei c = L selbst nicht, weil σ(L) = 0).'
+    f4_uebertragbar: 'Auf jede Basis b > η: sexp_b trifft L_b bei s*₁ + 1 mit sexp_b(s*₁) = L_b + 2πi/ln b.'
+    f5_neue_frage: 'Wie verteilen sich alle Lösungen von sexp(z) = L in der Ebene (Familien z ≈ z₀ + jγ wie in kn.satz.wertevorrat)?'
+  bewertung: {richtigkeit: 'numerisch auf 28 Stellen, unabhängig über die Taylorreihe bestätigt; Existenz bewiesen (über kn.satz.wertevorrat)', neuheit: neu_ungeprueft, nutzen: 'Konkrete Lösungen von sexp(z) = L; zeigt, dass über L reguläre Blätter liegen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: spezialfall_von, ziel: kn.satz.wertevorrat}
+    - {typ: verwandt, ziel: kn.satz.slog_periodische_halbebene}
+    - {typ: verwandt, ziel: kn.satz.nebenblatt_zweigpunkte}
+
+- id: kn.kor.slog_monodromie_L
+  titel: 'Monodromie von slog um L: ein Umlauf verschiebt die reguläre Höhe u um γ = 2πi/L, M_L(s) = (u+γ) + ϑ(u+γ)'
+  art: korollar
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [slog, schroeder, theta_kneser, fixpunkt_L]
+  bereich: 'Basis $e$; $\sigma$ Schröder-Funktion an $L$ ($\sigma(e^w)=L\sigma(w)$, $\sigma(L)=0$, $\sigma''(L)=1$); $u(w)=\log\sigma(w)/L$ die reguläre Abel-Funktion; Kneser: $u(\mathrm{sexp}\,z)=z+\theta(z)$, Umkehrung $z=u+\vartheta(u)$ mit 1-periodischem $\vartheta$, holomorph für $\mathrm{Im}\,u>c$'
+  aussage: |
+    Nahe $L$ auf dem Hauptblatt ist $\mathrm{slog}=u+\vartheta(u)$ mit $\mathrm{Im}\,u\to+\infty$ für $w\to L$. Ein Umlauf um $L$ gegen den Uhrzeiger ändert $\log\sigma$ um $2\pi i$, also $u\mapsto u+\gamma$ mit
+    $\gamma=2\pi i/L=4.44695+1.05794i$, und
+    $$M_L(s)=(u+\gamma)+\vartheta(u+\gamma),\qquad u=(\mathrm{id}+\vartheta)^{-1}(s).$$
+    Die Zweige von slog über einer punktierten Umgebung von $L$ sind $s_k=(u+k\gamma)+\vartheta(u+k\gamma)$, $k\in\mathbb Z$ (für festes $k$ und $w$ nahe genug bei $L$), paarweise verschieden: $L$ ist ein logarithmischer Punkt. $M_L$ vertauscht mit $s\mapsto s+1$.
+  einfach: >-
+    Läuft man einmal um den Fixpunkt L herum, landet der Superlogarithmus auf einem anderen Blatt. Welches, sagt eine genaue Formel: In der Höhe der gewöhnlichen
+    Lösung am Fixpunkt ist es nur eine Verschiebung um die feste Zahl 2πi/L; Knesers Welle übersetzt das in die echte Höhe.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\sigma$ hat bei $L$ eine einfache Nullstelle; ein Umlauf ändert $\arg\sigma$ um $2\pi$, also $u$ um $\gamma$. Weil $\mathrm{Re}\,L>0$, ist $\mathrm{Im}\,\gamma=2\pi\,\mathrm{Re}\,L/|L|^2>0$: Umläufe gegen den Uhrzeiger
+      vergrössern $\mathrm{Im}\,u$, der Weg $u(t)$ bleibt im Holomorphiegebiet von $\vartheta$, und $s(t)=u(t)+\vartheta(u(t))$ ist die Fortsetzung. Für $k<0$ genügt $\mathrm{Im}\,u>c+|k|\,\mathrm{Im}\,\gamma$,
+      was nahe $L$ gilt. $\mathrm{id}+\vartheta$ ist dort injektiv (Umkehrung von $z\mapsto z+\theta(z)$), und die $u+k\gamma$ sind verschieden, also auch die $s_k$.
+      $u\mapsto u+\gamma$ vertauscht mit $u\mapsto u+1$, und $\vartheta$ ist 1-periodisch.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md, R5, R6, R14 und Beweis R5; s5_monodromie.py, s5b_monodromie_genau.py, s4_schnitt_und_sstern.py (κ_m aus polynom_halbexp/gemeinsam/kneser_singularitaet_L.json)'}]
+  nachgeprueft:
+    - {ergebnis: 'Der Motor klebt das periodische Blatt (links) und das Kneser-Blatt (rechts) längs {Re L + iy : y ≥ Im L} (und gespiegelt) zusammen; der Sprung dort ist M_L: Vorhersage M_L(links) = rechts auf 2·10⁻¹⁵ bei y = 1.8 und 2.0 (= Versatz 10⁻¹⁵ der Messpunkte, dps 30 und 40); bei y = 2.5 und 3 Abweichung 3·10⁻¹¹ bzw. 6·10⁻⁸ durch Abbruch der ϑ-Reihe nach 6 Gliedern. Mit 6 Gliedern unbrauchbar für Im u < −1 (y = 5: grösstes Glied 10¹³).'}
+    - {ergebnis: 'Gegenprobe 25.10.2026: s5b_monodromie_genau.py mit dps 35 (neue Motorwerte): Abweichung 2.8·10⁻¹⁵ (y = 1.8), 1.9·10⁻¹⁵ (y = 2.0), 2.7·10⁻¹¹ (2.5), 6.2·10⁻⁸ (3.0) — wie im Bericht.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus kn.kor.slog_bei_L (Umkehrung der Kneser-Darstellung): ℓ = log(σ/κ) wächst beim Umlauf um 2πi.'
+    f2_benutzte_voraussetzungen: 'Kneser-Darstellung u(sexp z) = z + θ(z) mit θ holomorph oben; σ′(L) = 1; Re L > 0.'
+    f3_spezialfall: 'Monodromie eines logarithmischen Punkts, verdreht durch die Welle ϑ.'
+    f4_uebertragbar: 'Auf jede Basis b > η (γ = 2πi/(L_b ln b)); auf jede Kneser-artige Stufe an einem abstossenden Fixpunkt.'
+    f5_neue_frage: 'Welche Gruppe erzeugen M_L, M_L̄ und die Monodromie über 0 (kn.satz.sexp_asymptotischer_wert_null)? Wie sieht die Naht oberhalb von L + 2πi aus, wo die ϑ-Reihe divergiert?'
+  bewertung: {richtigkeit: 'vollständig; Motor bestätigt auf 15 Stellen', neuheit: neu_ungeprueft, recherche: 'Formel neu ausgeschrieben; Inhalt steckt in Knesers Darstellung.', nutzen: 'Erklärt den Sprung des Motor-slog an seinem Schnitt exakt; Baustein für die Riemannsche Fläche.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: kn.kor.slog_bei_L}
+    - {typ: stuetzt_sich_auf, ziel: kn.konstr.kneser}
+    - {typ: verwandt, ziel: kn.satz.slog_periodische_halbebene}
+
+- id: kn.satz.sexp_asymptotischer_wert_null
+  titel: '0 ist asymptotischer Wert von Knesers sexp; über w = 0 hat die slog-Fläche einen logarithmischen Punkt'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [slog, kneser_T]
+  bereich: 'Basis $e$; sexp auf $\mathbb C\setminus(-\infty,-2]$, slog der Hauptzweig nahe $[0,\infty)$; für $\mathrm{Re}\,\zeta$ gross und $|\mathrm{Im}\,\zeta|<3\pi/2$ sei $\mathrm{slog}(\zeta):=\mathrm{slog}(\log\zeta)+1$'
+  aussage: |
+    (i) Für reelles $X\to+\infty$ sei $z(X)=2+\mathrm{slog}(X+i\pi)=3+\mathrm{slog}(\log(X+i\pi))$. Dann gilt $z(X)\to\infty$ und
+    $$\mathrm{sexp}(z(X))=\exp(-e^X)\to0 .$$
+    Also ist 0 (der ausgelassene Wert von exp) ein asymptotischer Wert von sexp; angenommen wird 0 nur bei $-1$ (kn.satz.wertevorrat).
+    (ii) Für $w$ nahe 0 und $k\in\mathbb Z$ ist
+    $$\mathrm{slog}_{(0),k}(w)=2+\mathrm{slog}\bigl(\log(-\log w-2\pi ik)+i\pi\bigr)$$
+    ein Zweig von slog mit $\mathrm{sexp}(\mathrm{slog}_{(0),k}(w))=w$ und $\mathrm{slog}_{(0),k}(w)\to\infty$ für $w\to0$; ein Umlauf um 0 führt den Zweig $k$ in $k+1$ über.
+    Über $w=0$ liegt also ein logarithmischer Punkt der slog-Fläche (eine transzendente Singularität).
+  einfach: >-
+    Knesers Tetration wird nirgends null ausser bei −1. Es gibt aber Wege ins Unendliche, auf denen sie der Null beliebig nahe kommt — so wie e hoch x
+    für x gegen minus unendlich. Deshalb hat auch der Superlogarithmus über der Null eine Stelle, an der er wie ein Logarithmus ins Unendliche läuft.
+  beweis:
+    art: vollstaendig
+    text: |
+      Der Hauptzweig von slog ist auf einer Umgebung von $[0,1]$ holomorph (sexp ist auf $[-1,0]$ streng wachsend mit $\mathrm{sexp}'\neq0$, kn.satz.ableitung_nullstellenfrei), und
+      $\mathrm{slog}(v)=\mathrm{slog}(\log v)+1$ setzt ihn auf Scheiben $D(v,\rho)$ um alle $v\ge0$ fort, mit $\rho$ nach unten beschränkt (Induktion über $[\exp^n0,\exp^{n+1}0]$; der Radius wächst mit dem Faktor $e^{\mathrm{Re}}$).
+      Für $\mathrm{Re}\,\zeta$ gross und $|\mathrm{Im}\,\zeta|<3\pi/2$ liegt $\log\zeta$ höchstens $3\pi/(2|\zeta|)$ über der Achse; also ist $\mathrm{slog}(\zeta)$ dort holomorph mit $\mathrm{sexp}(\mathrm{slog}\,\zeta)=\zeta$.
+      (i) $\mathrm{sexp}(z(X)-1)=e^{X+i\pi}=-e^X$, also $\mathrm{sexp}(z(X))=\exp(-e^X)$; $z(X)\to\infty$, weil $\mathrm{slog}(\log X)\to\infty$.
+      (ii) Mit $\zeta=\log(-\log w-2\pi ik)+i\pi$ ist $e^\zeta=\log w+2\pi ik$ und $e^{e^\zeta}=w$; für $w\to0$ ist $\mathrm{Re}\,\zeta\to\infty$ und $\mathrm{Im}\,\zeta\in(\pi/2,3\pi/2)$.
+      Dass $\mathrm{slog}_{(0),k}$ eine Fortsetzung des Hauptkeims ist, folgt aus $\mathrm{slog}(e^v)=\mathrm{slog}(v)+1$ als Identität von Fortsetzungen längs Wegen. Ein Umlauf um 0 ersetzt $\log w$ durch $\log w+2\pi i$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md, R8 und Beweis R8'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: aus der Funktionalgleichung und der Fortsetzbarkeit des reellen slog in eine Umgebung der positiven Achse. Die im Bericht genannte Lücke (Holomorphie von slog_K auf {Re ζ > R, π/2 < Im ζ < 3π/2}) ist mit der Radius-Induktion geschlossen.'
+    f2_benutzte_voraussetzungen: 'sexp′ ≠ 0 auf ℝ (kn.satz.ableitung_nullstellenfrei), sexp(z+1) = exp(sexp z), exp lässt 0 aus.'
+    f3_spezialfall: 'Gegenstück zu 0 als asymptotischem Wert von exp; für Kneser-sexp ist die Kurve z(X) explizit.'
+    f4_uebertragbar: 'Auf jede Basis b > η und jede Superfunktion einer Abbildung mit ausgelassenem Wert.'
+    f5_neue_frage: 'Gibt es weitere asymptotische Werte von sexp (etwa L, längs Im z → ∞)? Welche Monodromiegruppe erzeugen die Umläufe um 0, L, L̄?'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Liefert den dritten Grundpunkt 0 der slog-Fläche neben L und L̄.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.ableitung_nullstellenfrei}
+    - {typ: verwandt, ziel: kn.satz.wertevorrat}
+    - {typ: motiviert, ziel: kn.satz.slog_verzweigung_dicht}
+
+- id: kn.satz.slog_verzweigung_dicht
+  titel: 'Die singulären Punkte der slog-Fläche bilden eine unter exp voll invariante Menge: sie enthält die vollen Bahnen von L, L̄ und 0 und liegt dicht in ℂ'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [slog, kneser_T, fixpunkt_L]
+  bereich: 'Basis $e$; $B\subset\mathbb C$ die Menge der Punkte $w_0$, zu denen es einen Weg $\delta$ ab 1 gibt, längs dessen sich slog (Hauptkeim bei 1) bis vor $w_0$, aber nicht bis $w_0$ fortsetzen lässt; $G(x)=\{y:\exp^n(y)=\exp^m(x)\text{ für }n,m\ge0\}$ die volle Bahn'
+  aussage: |
+    (i) $\exp(B)\subset B$ und $\exp^{-1}(B)\subset B$ (mit allen Zweigen des Logarithmus).
+    (ii) $L,\bar L,0\in B$. Also gilt $G(L)\cup G(\bar L)\cup G(0)\subset B$; zum Beispiel liegen $1,e,e^e,2\pi ik,\log(2\pi ik)+2\pi ij,L+2\pi ik$ in $B$.
+    (iii) Jeder Punkt $w_0$ mit $\exp^n(w_0)=L$ ist auf einem passenden Blatt ein Log-Punkt: dort ist $\mathrm{slog}=A_L\circ\exp^n-n$ mit dem Hauptzweig $A_L$ nahe $L$, also
+    $\mathrm{slog}(w)=\frac1L\log(w-w_0)+c+o(1)$, und die Monodromie ist $M_L$ aus kn.kor.slog_monodromie_L.
+    (iv) $B$ liegt dicht in $\mathbb C$.
+  einfach: >-
+    Die Stellen, an denen der Superlogarithmus auf irgendeinem seiner Blätter kaputtgeht, kommen nie allein: Mit jeder Stelle sind auch ihr e hoch und alle ihre
+    Logarithmen solche Stellen. Weil die e-Funktion die ganze Ebene durchmischt, liegen diese Stellen am Ende überall dicht.
+  beweis:
+    art: vollstaendig
+    text: |
+      Als Identität von Fortsetzungen gilt längs jedes Weges $\gamma$: slog längs $\gamma$ $=$ (slog längs $\exp\circ\gamma$)$-1$ (Startkeime: $\mathrm{slog}(e^w)-1=\mathrm{slog}(w)$ nahe der reellen Achse).
+      (i) $\exp(B)\subset B$: Wäre slog längs $\exp\circ\gamma$ bis $\exp(w_0)$ fortsetzbar, dann längs $\gamma$ bis $w_0$ ($\exp$ ist lokal biholomorph).
+      $\exp^{-1}(B)\subset B$: Sei $b\in B$ über $\delta$ ab 1 erreicht. Durchläuft $\delta$ den Punkt 0, schiebt man es in einer Scheibe, in der der benutzte Zweig holomorph ist, an 0 vorbei. Vorgeschaltet wird
+      eine $k$-fache Schleife von 1 längs $[\varepsilon,1]$ um die Kreisscheibe $|w|\le\varepsilon$; dort ist der Hauptzweig holomorph (sexp bildet eine Umgebung von $[-1,0]$ biholomorph ab), die Schleife ändert slog also nicht.
+      Der hochgehobene Weg ab 0 endet bei $\log b+2\pi i(k_0+k)$, und längs ihm ist slog $=$ (slog längs $\delta$)$\circ\exp-1$, am Ende singulär. So erreicht man jeden Punkt von $\exp^{-1}(b)$.
+      (ii) $L$: längs $w(t)=\mathrm{sexp}(it)$, $t\to\infty$, ist slog $=it$ fortsetzbar ($\mathrm{sexp}'\ne0$) und unbeschränkt, $w(t)\to L$ (kn.konstr.kneser); $\bar L$ durch Spiegelung; 0 nach kn.satz.sexp_asymptotischer_wert_null.
+      (iii) $\exp^n$ ist bei $w_0$ lokal biholomorph, und $M_L$ vertauscht mit der Verschiebung um $n$.
+      (iv) $J(\exp)=\mathbb C$ (Misiurewicz 1981), und für eine ganze transzendente Funktion liegt die Rückwärtsbahn jedes nicht ausgenommenen Punkts dicht in $J$; einziger Ausnahmewert von exp ist 0. Also ist $\bigcup_n\exp^{-n}(L)\subset B$ dicht.
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md, R9, R10, R11 und Beweise R9, R10'}
+    - {ref: misiurewicz1981, stelle: 'J(exp) = ℂ'}
+    - {ref: fatou1926, stelle: 'Rückwärtsbahnen nicht ausgenommener Punkte häufen sich an jedem Punkt von J (Standardsatz der Iteration ganzer Funktionen; Stelle nicht nachgeschlagen)'}
+    - {ref: bergweiler1993, stelle: 'Übersicht: Dichte der Rückwärtsbahnen in J', geprueft: nein}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein: braucht das Hochheben von Wegen unter exp und die drei Grundpunkte L, L̄, 0. Die Dichte folgt dann aus J(exp) = ℂ.'
+    f2_benutzte_voraussetzungen: 'slog(eʷ) = slog(w) + 1 als Identität von Fortsetzungen; Hauptzweig holomorph nahe [0, 1] (statt, wie im Bericht, auf dem ganzen Einheitskreis); sexp(it) → L; kn.satz.sexp_asymptotischer_wert_null; J(exp) = ℂ.'
+    f3_spezialfall: 'Die Teilmenge G(0) ∖ {0} = {1, e, e^e, …} samt Urbildern ist die Verzweigungsmenge des regulären Erzeugers (it.satz.regulaerer_erzeuger_fortsetzung).'
+    f4_uebertragbar: 'Auf reelle Basen b > η (dort ist ebenfalls J(b^z) = ℂ, Devaney); auf Superfunktionen anderer ganzer Abbildungen mit J = ℂ.'
+    f5_neue_frage: 'Ist B genau G(L) ∪ G(L̄) ∪ G(0) (kn.verm.slog_verzweigung_genau)? Gilt die Dichte auch für die Verzweigungspunkte von sexp (Frage f5 von kn.satz.nebenblatt_zweigpunkte)? Aus diesem Satz folgt sie nicht direkt.'
+  bewertung: {richtigkeit: 'vollständig; der Schritt „alle Urbilder“ wurde beim Eintragen mit einer kleinen Schleife um 0 statt mit dem Weg auf der imaginären Achse geführt, damit er keine Holomorphie von A auf |w| = 1 braucht', neuheit: neu_ungeprueft, nutzen: 'Beantwortet die Dichtefrage für die slog-Fläche; zeigt, dass slog keine Riemannsche Fläche mit diskreter Verzweigung hat.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.sexp_asymptotischer_wert_null}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.ableitung_nullstellenfrei}
+    - {typ: stuetzt_sich_auf, ziel: kn.kor.slog_monodromie_L}
+    - {typ: verwandt, ziel: kn.satz.nebenblatt_zweigpunkte, notiz: 'dort Frage f5 (Dichte) für sexp; hier für slog beantwortet'}
+    - {typ: analog_zu, ziel: it.satz.regulaerer_erzeuger_fortsetzung}
+    - {typ: analog_zu, ziel: kn.satz.verzweigung_dicht, notiz: 'dieselbe Dichte für die Fläche von sexp'}
+
+- id: kn.verm.slog_verzweigung_genau
+  titel: 'Vermutung: Die singulären Punkte der slog-Fläche sind genau die vollen Bahnen von L, L̄ und 0, und alle sind logarithmisch'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [slog, kneser_T, fixpunkt_L]
+  bereich: 'wie kn.satz.slog_verzweigung_dicht'
+  aussage: |
+    $B=G(L)\cup G(\bar L)\cup G(0)$, und die slog-Fläche hat keine algebraischen Verzweigungspunkte: Jede Singularität ist transzendent (logarithmisch).
+  gegenbeispielsuche: 'Keine gezielte Suche (Bericht R12, R13). Gestützt durch: Über dem Bild des Hauptblatts von sexp gibt es keine algebraischen Punkte (sexp′ ≠ 0, kn.satz.ableitung_nullstellenfrei); auf Nebenblättern ist sexp′(z) = sexp(z)·sexp′(z−1); slog = u + ϑ(u) mit u verzweigt nur über L und der Bahn der 0 (it.satz.regulaerer_erzeuger_fortsetzung).'
+  einfach: >-
+    Vermutlich gibt es ausser den Stellen, die aus L, L̄ und 0 durch e hoch und Logarithmen entstehen, keine weiteren kaputten Stellen, und an allen läuft
+    der Superlogarithmus wie ein Logarithmus ins Unendliche statt wie eine Wurzel zu verzweigen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/07_riemannflaeche_slog/BERICHT.md, R12, R13, Offene Fragen 2 und 5'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Struktur slog = u + ϑ(u); Nullstellenfreiheit von sexp′ auf dem Hauptblatt.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede Basis b > η.'
+    f5_neue_frage: 'Blätter um 0 (kn.satz.sexp_asymptotischer_wert_null) numerisch abtasten; Monodromiegruppe von M_L, M_L̄, M_0.'
+  bewertung: {richtigkeit: 'Vermutung mit Teilargument', neuheit: neu_ungeprueft, nutzen: 'Würde die slog-Fläche vollständig beschreiben.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.satz.slog_verzweigung_dicht}
+    - {typ: verwandt, ziel: it.satz.regulaerer_erzeuger_fortsetzung}

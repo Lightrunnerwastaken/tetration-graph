@@ -1,0 +1,210 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 12: Höhere Ränge als Funktion der Basis (negative Struktur, singuläre Basen, Sprung der Hexation an η₅).
+# Rechnungen: forschung/runde_2026_10_25/12_hoehere_raenge_basis/ (BERICHT.md, Befunde B1–B8); Gegenprobe in EINTRAG.md.
+# H₃ = b^x, H₄ Tetration, H₅ Pentation, …; H_{r+1}(b,0) = 1, H_{r+1}(b,x+1) = H_r(b,H_{r+1}(b,x)); p_r negativer Fixpunkt von H_r, λ_r = ∂ₓH_r(b,p_r).
+aussagen:
+
+- id: kn.satz.ganze_negative_hoehen
+  titel: 'Ganze negative Höhen: H_r(b, −k) = 1 − k für 1 ≤ k ≤ r − 3, auf jedem Rang und für jede Basis'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [hyperoperation]
+  voraussetzungen:
+    - {text: 'Linksfortsetzung über H_{r+1}(x−1) = H_r^{−1}(H_{r+1}(x)) mit injektivem (streng wachsendem) H_r', benutzt: ja}
+  aussage: |
+    Für $r\ge4$, jede Basis $b>1$ und $1\le k\le r-3$ gilt $H_r(b,-k)=1-k$.
+    Also $H_4(-1)=0$; $H_5(-1)=0$, $H_5(-2)=-1$; $H_6(-1)=0$, $H_6(-2)=-1$, $H_6(-3)=-2$; und so weiter — jeder Rang hat eine Stelle mehr.
+  einfach: >-
+    Geht man bei einer Rechenart in ganzen Schritten nach links, kommen 0, −1, −2, … heraus — bei der Tetration nur ein Schritt, bei jeder höheren Rechenart einer mehr.
+  beweis:
+    art: vollstaendig
+    text: '$H_4(-1)=\log_b1=0$. Gilt $H_r(-k)=1-k$ für $k\le r-3$, so ist $H_{r+1}(-1)=H_r^{-1}(1)=0$ und $H_{r+1}(-k-1)=H_r^{-1}(H_{r+1}(-k))=H_r^{-1}(1-k)=-k$ für $k\le r-3$, also bis $k+1=(r+1)-3$.'
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/12_hoehere_raenge_basis/BERICHT.md, B1; Motor: H₆(−3) + 2 = 0 bei sechs Basen'}
+    - {ref: forum_tid1177, stelle: 'Nixon, Beitrag 2 (21.08.2017): f(−k) = 1−k für jede analytische Hyperoperation, Beweis H. Trappmann zugeschrieben'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, Induktion über den Rang.'
+    f2_benutzte_voraussetzungen: 'Nur die Rekursion und die Injektivität der Stufe darunter.'
+    f3_spezialfall: 'Verallgemeinert die ganzen Werte aus kn.satz.hexation_struktur.'
+    f4_uebertragbar: 'Auf jede Fortsetzungskette mit streng wachsenden Stufen.'
+    f5_neue_frage: 'Wo liegt die erste nicht ganzzahlige Besonderheit links? → kn.satz.negative_struktur'
+  bewertung: {richtigkeit: vollständig, neuheit: bekannt, nutzen: 'Anker für die Lage der negativen Fixpunkte und Pole aller Ränge.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.hexation_struktur}
+    - {typ: verwandt, ziel: fg.kor.keine_ganze_tetration}
+
+- id: kn.satz.negative_struktur
+  titel: 'Lagegesetz links: gerade Ränge haben einen Pol σ_r und einen negativen Fixpunkt p_r in (−(r−2), −(r−3)), ungerade Ränge keinen negativen Fixpunkt'
+  art: satz
+  ebene: B
+  status: bedingt
+  bedingungen_text: 'Die gebauten Stufen sind stetig und streng wachsend in x; ungerade Stufen sind regulär am abstossenden Fixpunkt p_{r−1} der Stufe darunter gebaut, also H_r → p_{r−1} für x → −∞ (Monotonie für die gebauten höheren Stufen nicht bewiesen)'
+  niveau: forschung
+  objekte: [hyperoperation, superfunktion]
+  bereich: 'Fortsetzungskette der Motor-Familie, jede Basis $b>1$; $p_2:=0$ (untere Grenze des Wertebereichs von $b^x$)'
+  aussage: |
+    (i) **Gerade** $r\ge4$: $H_r(b,\cdot)$ lebt auf $(\sigma_r,\infty)$, mit $H_r(b,x)\to-\infty$ für $x\downarrow\sigma_r$, wobei $\sigma_r=y_r-1$ und $H_r(b,y_r)=p_{r-2}$,
+    $$\sigma_r\in\bigl(-(r-2),-(r-3)\bigr)\quad(\sigma_4=-2),$$
+    und $H_r$ hat einen negativen Fixpunkt $p_r\in(\sigma_r,-(r-3))$ — genau in dem Intervall, das der nächste ungerade Schritt braucht.
+    (ii) **Ungerade** $r\ge5$: $H_r(b,x)\downarrow p_{r-1}$ für $x\to-\infty$ und $H_r(b,x)>x$ für alle $x\le0$; es gibt keinen negativen Fixpunkt und keine reelle Singularität.
+    Motor: $\sigma_6<p_6<-3$ bei $b=1.2,\,1.3,\,1.5,\,1.7,\,2,\,3$; $\min_{[-12,0]}(H_5-x)\ge0.90$.
+  einfach: >-
+    Links von null wechseln sich die Rechenarten ab: Tetration, Hexation, Oktation … brechen irgendwo ab (sie stürzen auf minus unendlich) und haben kurz davor einen Fixpunkt.
+    Pentation, Heptation … laufen dagegen ruhig gegen diesen Fixpunkt und liegen links immer über der Geraden y = x.
+  beweis:
+    art: bedingt
+    text: |
+      Induktion mit kn.satz.ganze_negative_hoehen. Gerade $r$: $H_{r-1}^{-1}$ ist nur auf $(p_{r-2},\infty)$ erklärt und strebt am linken Rand gegen $-\infty$; wegen
+      $H_r(-(r-3))=-(r-4)<p_{r-2}<-(r-5)=H_r(-(r-4))$ gibt es genau ein $y_r\in(-(r-3),-(r-4))$ mit $H_r(y_r)=p_{r-2}$, und $H_r(x-1)=H_{r-1}^{-1}(H_r(x))\to-\infty$ für $x\downarrow y_r$.
+      Mit $H_r(-(r-3))+(r-3)=1>0$ gibt der Zwischenwertsatz $p_r$. Ungerade $r$: für $x\le-(r-3)$ ist $H_r(x)>p_{r-1}>-(r-3)\ge x$; für $-k-1<x\le-k$, $k+1\le r-3$, ist $H_r(x)>H_r(-k-1)=-k\ge x$.
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/12_hoehere_raenge_basis/BERICHT.md, B2; e1_struktur.py, daten/struktur.json'}
+    - {ref: forum_tid1177, stelle: 'Levenstein, Beitrag 5 (03.09.2017): Tetration und Hexation mit logarithmischer Singularität, Pentation und Heptation gegen einen Fixpunkt'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus kn.satz.ganze_negative_hoehen und dem Zwischenwertsatz.'
+    f2_benutzte_voraussetzungen: 'Stetigkeit, strenge Monotonie, Bau der ungeraden Stufen am Fixpunkt p_{r−1}; Eindeutigkeit von p_r nur gemessen (r = 6, sechs Basen, λ₆ ≥ 9.49).'
+    f3_spezialfall: 'Verallgemeinert kn.satz.hexation_struktur (r = 6) auf alle Ränge.'
+    f4_uebertragbar: 'Auf jede Kette mit streng wachsenden Stufen; für b < η_{r−1} ist der Wertebereich der ungeraden Stufe nach oben beschränkt, die Aussage links bleibt.'
+    f5_neue_frage: 'Ist p_r für alle b einfach (λ_r > 1)? Grenzwerte für b → 1 und b → ∞ (vermutlich σ_r, p_r → ganze Zahlen)?'
+  bewertung: {richtigkeit: 'bedingt bewiesen (Monotonie der gebauten Stufen), numerisch für r = 4…6 bestätigt', neuheit: folklore, recherche: 'Das Muster gerade/ungerade nennt Levenstein 2017 (tid 1177); die Intervall-Lage für alle Ränge dort nicht gesehen (keine eigene Suche).', nutzen: 'Legt fest, wo jeder Rang gebaut wird, und zeigt, dass der Bau-Fixpunkt der ungeraden Ränge für jede Basis existiert.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.hexation_struktur}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.ganze_negative_hoehen}
+    - {typ: verwandt, ziel: kn.konstr.pentation}
+
+- id: kn.verm.singulaere_basen_ungerade
+  titel: 'Vermutung: Nur η₃, η₅, η₇, … sind singuläre Basen der Hierarchie; η₄, η₆, … sind blosse Schwellen der Beschränktheit'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation, eta]
+  bereich: 'Fortsetzungskette: ungerade Ränge regulär am negativen Fixpunkt $p_{r-1}$; gerade Ränge unter $\eta_{r-1}$ regulär am anziehenden positiven Fixpunkt von $H_{r-1}$, darüber Kneser-artig'
+  aussage: |
+    Die Bauweise wechselt nur an $\eta_3,\eta_5,\eta_7,\dots$: dort verliert ein gerader Rang $r$ seinen anziehenden Bau-Fixpunkt ($b=\eta_{r-1}$).
+    Die ungeraden Ränge sind am Fixpunkt $p_{r-1}$ gebaut, der für jedes $b>1$ existiert und (gemessen) einfach ist (kn.satz.negative_struktur).
+    Vermutet: $b\mapsto H_r(b,x)$ ist höchstens an den $\eta_{2j+1}\le\eta_{r-1}$ (gerades $r$) bzw. $\eta_{2j+1}\le\eta_{r-2}$ (ungerades $r$) nicht analytisch; an $\eta_4,\eta_6,\dots$
+    ändert sich nur, ob die nächste Stufe beschränkt bleibt.
+  einfach: >-
+    Die Grenzbasen mit ungerader Nummer sind echte Bruchstellen, an denen sich die Bauweise ändert. Die mit gerader Nummer sind nur Schwellen, ab denen die nächste Rechenart unbeschränkt wächst; die Rechenarten selbst merken dort nichts.
+  gegenbeispielsuche: 'Pentation an η₄: analytisch in b auf 19 Stellen (kn.beob.pentation_analytisch_eta4); Hexation an η₅: Sprung um eine periodische Höhenverschiebung 10⁻⁵ (kn.beob.hexation_sprung_eta5); Tetration an η₃: C^∞, aber nicht analytisch (kl.verm.eta_glatt_nicht_analytisch). η₆ und höher nicht geprüft.'
+  naechste_frage: 'Ist die Heptation an η₆ analytisch in b, die Oktation an η₇ nicht?'
+  beweis:
+    art: skizze
+    text: 'Ungerade Stufe: $H_r(b,x)=\Psi_b(c_b\lambda_b^x)$ am einfachen Fixpunkt $p_{r-1}(b)$; Fixpunkt, Multiplikator und Poincaré-Funktion hängen analytisch von $b$ ab, solange $H_{r-1}$ es tut. Gerade Stufe: dasselbe am anziehenden Fixpunkt, bis er bei $\eta_{r-1}$ parabolisch wird.'
+    luecken:
+      - 'Einfachheit von p_r für alle b nur numerisch (kn.beob.landkarte_p4_p6).'
+      - 'Analytizität der Kneser-artigen Stufen in b angenommen.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/12_hoehere_raenge_basis/BERICHT.md, B3 (Schranke für gerade r hier zu „≤ η_{r−1}“ berichtigt, siehe EINTRAG.md)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Zusammenschau aus kn.satz.negative_struktur und zwei Messungen.'
+    f2_benutzte_voraussetzungen: 'Einfachheit der Bau-Fixpunkte, Analytizität der Kneser-Stufen in b.'
+    f3_spezialfall: 'Rang 4 an η₃: kl.verm.eta_glatt_nicht_analytisch.'
+    f4_uebertragbar: 'Auf jede Kette, die gerade Ränge an positiven, ungerade an negativen Fixpunkten baut.'
+    f5_neue_frage: 'Welcher Art ist die Singularität an η₅ — Sprung (Hexation) statt glatt-nicht-analytisch (Tetration an η₃)?'
+  bewertung: {richtigkeit: 'Vermutung mit Herleitungsskizze und zwei Messungen', neuheit: neu_ungeprueft, nutzen: 'Ordnet die Grenzbasen in zwei Sorten.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.negative_struktur}
+    - {typ: verwandt, ziel: kl.verm.eta_glatt_nicht_analytisch}
+    - {typ: verwandt, ziel: kn.konstr.hexation_regulaer}
+
+- id: kn.beob.pentation_analytisch_eta4
+  titel: 'Die Pentation ist an η₄ analytisch in der Basis (Cauchy-Koeffizienten zweier Kreise gleich auf 10⁻¹⁹)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, eta, kneser_T]
+  bereich: '$b\mapsto H_5(b,x)$ um $\eta_4=1.6353244967\ldots$, $x=0.5,\ 1.5,\ -0.5$; Motor fatou_fork (hyper(5,x)); untere Halbebene über $H_5(\bar b)=\overline{H_5(b)}$'
+  aussage: |
+    Die Cauchy-Koeffizienten $c_k$ von $b\mapsto H_5(b,x)$ um $\eta_4$ auf Kreisen mit Radius $0.03$ und $0.06$ (16 Punkte) stimmen überein: $c_0\ldots c_4$ auf $10^{-19}$–$10^{-20}$, $c_7$ auf $10^{-15}$ (Faltungsrest).
+    $x=0.5$: $c_0\ldots c_4=1.36021836220,\ 0.36612344974,\ -0.17305719728,\ 0.10786705950,\ -0.07798323078$.
+    Einseitige kubische Fits links und rechts von $\eta_4$ treffen sich bis auf den Fit-Rest ($3\cdot10^{-12}$ bei Abständen $0.0025\ldots0.01$).
+  einfach: >-
+    Bei der Basis η₄ wird die Pentation unbeschränkt. Trotzdem ändert sie sich dort ganz glatt mit der Basis — sie merkt die Schwelle nicht.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/12_hoehere_raenge_basis/BERICHT.md, B4; e2_cauchy_h5.py, e4c_stencil.py, daten/cauchy_h5_*.json'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe 25.10.2026, e4c_stencil.py mit neuen Abständen 0.004…0.012 (dps 20): Wert links − rechts 8.7·10⁻¹² (x = 0.5) und 1.5·10⁻¹¹ (x = 1.5), also Fit-Rest; erste Ableitung in b 0.366123 links und rechts (c₁ = 0.36612345).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Erwartet: H₅ ist am Fixpunkt p₄(b) gebaut, der an η₄ nichts Besonderes hat (kn.verm.singulaere_basen_ungerade).'
+    f2_benutzte_voraussetzungen: 'Motor-Werte für komplexe b mit Im b > 0; Spiegelung für Im b < 0.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Heptation an η₆ (nicht gerechnet).'
+    f5_neue_frage: 'Konvergenzradius der Reihe in b − η₄ (nächste singuläre Basis η₃ im Abstand 0.19)?'
+  bewertung: {richtigkeit: 'numerisch, zwei Kreise und zwei Fit-Stencils', neuheit: neu_ungeprueft, nutzen: 'Stützt die Trennung der Grenzbasen in Bruchstellen und Schwellen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.verm.singulaere_basen_ungerade}
+    - {typ: verwandt, ziel: kn.konstr.pentation}
+    - {typ: verwandt, ziel: kn.beob.tetra_euler}
+
+- id: kn.beob.hexation_sprung_eta5
+  titel: 'Sprung der Hexation an η₅: Kneser von rechts = regulär von links nach einer periodischen Höhenverschiebung θ(x) ≈ 10⁻⁵'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, eta, superfunktion, periodische_stoerung]
+  bereich: '$L(x)=\lim_{b\uparrow\eta_5}H_6(b,x)$ (reguläre Hexation, kn.konstr.hexation_regulaer), $R(x)=\lim_{b\downarrow\eta_5}H_6(b,x)$ (Kneser-artige Hexation des Motors, Zwei-Bogen-Auswahl), je per kubischem Einseiten-Fit in $b-\eta_5$'
+  aussage: |
+    $L\ne R$: es gilt $R(x)=L(x+\theta(x))$ mit **1-periodischem** $\theta$, $\theta(k)=0$,
+    $\theta(\tfrac14)=1.247\cdot10^{-5}$, $\theta(\tfrac12)=8.282\cdot10^{-6}$, $\theta(\tfrac34)=-4.185\cdot10^{-6}$; fast reine erste Harmonische $\theta\approx8.33\cdot10^{-6}\sin2\pi x+4.14\cdot10^{-6}(1-\cos2\pi x)$.
+    Bei $x=\tfrac12$ ist $R-L=6.10\cdot10^{-6}$. Kontrollen ohne Bauwechsel: $3\cdot10^{-9}$ (Hexation um $b=1.66$), $3\cdot10^{-12}$ (Pentation um $\eta_4$).
+    Bei der Tetration an $\eta_3$ gibt es keinen solchen Sprung (kl.beob.kneser_fortsetzung_regulaer, $10^{-33}$). Deutung offen: echte Eigenschaft der Kneser-Hexation oder der Zwei-Bogen-Auswahl nahe dem fast parabolischen Fixpunkt.
+  einfach: >-
+    Unter der Basis 1.7374 baut man die Hexation anders als darüber. Bei der Tetration passen die beiden Bauweisen an ihrer Grenze nahtlos zusammen, bei der Hexation nicht:
+    sie unterscheiden sich um eine winzige, wellenförmige Verschiebung der Höhe.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/12_hoehere_raenge_basis/BERICHT.md, B5; e4_h6_ueber_eta5.py, e4c_stencil.py, e5_theta_sprung.py, daten/theta_sprung_eta5_20.json'}]
+  nachgeprueft:
+    - {ergebnis: 'Bericht: Abstände 0.01–0.04 und 0.0025–0.01 geben denselben Sprung (Fit-Abbruch würde um Faktor 256 fallen); dps 20 und 32 gleich auf 22 Stellen; θ(−½) = θ(½) = θ(3/2) auf 4 Stellen. Gegenprobe 25.10.2026 mit neuen Abständen 0.004…0.012: R − L = 6.1013·10⁻⁶ (x = ½) und 3.6960·10⁻⁶ (x = 3/2), also θ(3/2) = 8.2816·10⁻⁶ = θ(½); einseitige Grenzwerte gleich auf 10⁻¹⁰.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen). Dass zwei Lösungen derselben Abel-Gleichung sich um ein periodisches θ unterscheiden, ist klar (fg.satz.allgemeine_loesung); neu ist, dass θ ≠ 0.'
+    f2_benutzte_voraussetzungen: 'Motor-Hexation beidseits (regulär links, Kneser-artig mit Zwei-Bogen-Auswahl rechts), Glattheit jeder Seite für sich (zwei Stencils gleich auf 2·10⁻⁸).'
+    f3_spezialfall: 'Gegenstück zur Tetration an η₃, wo Kneser die reguläre Familie fortsetzt.'
+    f4_uebertragbar: 'Oktation an η₇ (nicht gerechnet).'
+    f5_neue_frage: 'Kneser-Hexation bei b = η₅ + 0.0025 mit einem zweiten, unabhängigen Verfahren; Verhalten der Amplitude von θ für b ↓ η₅.'
+  bewertung: {richtigkeit: 'numerisch, drei Stencils, zwei Präzisionen; Deutung offen', neuheit: neu_ungeprueft, nutzen: 'Erster gemessener Bruch zwischen regulärer und Kneser-artiger Bauweise an einer Grenzbasis; beantwortet die Frage aus kn.konstr.hexation_regulaer vorläufig mit Nein.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: kn.verm.singulaere_basen_ungerade}
+    - {typ: verwandt, ziel: kl.beob.kneser_fortsetzung_regulaer}
+    - {typ: verwandt, ziel: kn.konstr.hexation_regulaer}
+    - {typ: verwandt, ziel: kn.frage.hexation_kneser}
+    - {typ: verwandt, ziel: kn.beob.hexation_verzweigt}
+
+- id: kn.beob.landkarte_p4_p6
+  titel: 'Landkarte der Bau-Fixpunkte für b = 1.2 … 3: p₄, σ₆, p₆ fallen; λ₄ = T_b′(p₄) hat ein Minimum 4.7799 bei b* = 1.53279'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, multiplikator, fixpunkt_L]
+  bereich: 'Motor fatou_fork, dps 24; $p_4=L_b$ negativer Fixpunkt der Tetration, $\lambda_4=T_b''(p_4)$; $\sigma_6$ Pol und $p_6$ negativer Fixpunkt der Hexation, $\lambda_6=H_6''(p_6)$'
+  aussage: |
+    | $b$ | $p_4$ | $\lambda_4$ | $\sigma_6$ | $p_6$ | $\lambda_6$ |
+    |---|---|---|---|---|---|
+    | 1.2 | −1.41090711782 | 5.35928758 | −3.46432484986 | −3.41709586535 | 12.6942156 |
+    | 1.5 | −1.58672927939 | 4.78300576 | −3.62649163343 | −3.56178274236 | 10.0075471 |
+    | 1.7 | −1.66313572515 | 4.84481697 | −3.69421687256 | −3.62660329249 | 9.5445897 |
+    | 2 | −1.74390917613 | 5.17179726 | −3.76502205053 | −3.69940781692 | 9.4930871 |
+    | 3 | −1.87450725581 | 7.07353609 | −3.87995816466 | −3.83415305722 | 11.4559004 |
+    $p_4,\sigma_6,p_6$ fallen monoton in $b$ und gehen ohne Knick über $\eta_5$. $\lambda_4$ hat ein inneres Minimum bei $b^*=1.5327874$ ($\pm4\cdot10^{-7}$) mit $\lambda_4(b^*)=4.7798524$;
+    $\lambda_6$ fällt von 12.7 ($b=1.2$) auf 9.49 ($b=2$) und steigt wieder. Vermutung: $\inf_{b>1}\lambda_4(b)\approx4.78>1$, der Bau-Fixpunkt der ungeraden Ränge entartet nie.
+  einfach: >-
+    Eine Tabelle, wo die Fixpunkte liegen, an denen die höheren Rechenarten gebaut werden, und wie stark sie abstossen. Sie stossen für jede Basis kräftig ab,
+    am schwächsten bei der Basis 1.533 — und auch dort noch fast um den Faktor 5.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/12_hoehere_raenge_basis/BERICHT.md, B6, B7, Landkarte; e1_struktur.py, e3_lambda4_min.py, daten/struktur.json, daten/lambda4_min_24.json'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegen unabhängige Werte im Graphen: p₄(2) = L₂ = −1.7439091761327 und λ₄(2) = 5.1717972635 (kn.beob.pentation_werte), σ₆(1.5) = −3.62649 und σ₆(1.7) = −3.69422 (kn.satz.hexation_struktur), p₆(2) = −3.6994078 und λ₆(2) = 9.493087 (r18_02_kn, Heptation): alle gleich. Das λ₄-Minimum nur bei einer Präzision (dps 24).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Motor-Werte; Illinois-Verfahren mit Klammer (eine Sekanten-Fassung sprang über den Pol und wurde verworfen).'
+    f3_spezialfall: 'Verlängert bw.beob.kein_gemeinsamer_fixpunkt (p₄ fällt) nach unten bis b = 1.2.'
+    f4_uebertragbar: 'Auf p₈, λ₈ (nicht gerechnet).'
+    f5_neue_frage: 'Ist b* = 1.5327874 mit etwas Bekanntem verbunden? Grenzwerte für b → 1 und b → ∞ (p₄ → −1 bzw. −2, σ₆ → −3 bzw. −4)?'
+  bewertung: {richtigkeit: 'numerisch, dps 24; Stichproben gegen den Graphen auf 11–14 Stellen', neuheit: neu_ungeprueft, nutzen: 'Stützt die gemessene Bedingung λ_b > 1 der Pentation über ein ganzes Basisintervall.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: kn.konstr.pentation}
+    - {typ: stuetzt, ziel: kn.satz.negative_struktur}
+    - {typ: verwandt, ziel: kn.satz.hexation_struktur}
+    - {typ: verwandt, ziel: bw.beob.kein_gemeinsamer_fixpunkt}

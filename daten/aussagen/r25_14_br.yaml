@@ -1,0 +1,241 @@
+gebiet: br
+# Forschungsrunde 25.10.2026, Bericht 14 „Andere Klammerungen stetig fortsetzen“. Rechnungen: forschung/runde_2026_10_25/14_klammerungen/.
+# Schreibweise wie br.satz.hyperop_varianten: x[4']n = x^(x^n), x[5']0 = x, x[5'](n+1) = (x[5']n)[4']x, allgemein y[k+1']0 = y, y[k+1'](n+1) = (y[k+1']n)[k']y.
+# Ausgewogen: a[4]2^t = f^[t](a), f(x) = x^x. F(m) = m e^m, W = Lambert W (Hauptast).
+aussagen:
+
+- id: br.satz.klammerung_log_reduktion
+  titel: 'Ausgewogene Tetration und linke Pentation sind beide die Iteration von F(m) = m·e^m (Umkehrung: Lambert W)'
+  art: satz
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [hyperoperation, iterationsgruppe, lambert_w]
+  bereich: 'Linke Hyperoperationen und ausgewogene Tetration wie in br.satz.hyperop_varianten; $x>0$, $a>0$; ganze Höhen'
+  aussage: |
+    Mit $F(m)=me^m$ gilt exakt $\ln(y^y)=F(\ln y)$ und $\ln\bigl(z[4']x\bigr)=\zeta e^{x\zeta}$ ($\zeta=\ln z$); mit $m=x\zeta$ wird auch der Schritt der linken Pentation zu $F$. Für ganze $n\ge0$:
+    $$a[4]2^n=\exp F^{[n]}(\ln a),\qquad x[5']n=\exp\bigl(F^{[n]}(x\ln x)/x\bigr).$$
+    Ebenso in der Konvention $a_4b=a^{a^{b-1}}$, $a_5(b+1)=(a_5b)_4a$, $a_51=a$ (laut Bericht die Wikipedia-Konvention): $a_5b=\exp\bigl(F^{[b-1]}((a-1)\ln a)/(a-1)\bigr)$ für $a\neq1$.
+    $F$ ist genau der Schritt $g_e(x)=xe^x$ der Produkt-Tetration (br.def.produkt_tetration; mit $m=\lambda x$ auch $x\mapsto xe^{\lambda x}$): alle diese Varianten sind dieselbe parabolische Iteration.
+    Komplex hat $F$ genau die Fixpunkte $m=2\pi ik$ mit Multiplikator $1+2\pi ik$ (abstossend für $k\neq0$); für $x^x$ liegen sie alle über $y=1$ auf verschiedenen Blättern des Logarithmus, für den Schritt der linken Pentation bei $\ln y=2\pi ik/x$.
+  einfach: >-
+    Zwei ungewohnte Arten, Türme zu bauen — ausgewogen (x hoch x, immer wieder) und von unten geklammert — sehen verschieden aus. Nimmt man den Logarithmus,
+    werden beide zur selben einfachen Abbildung m ↦ m·e^m.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\ln(y^y)=y\ln y=e^\ell\ell=F(\ell)$ mit $\ell=\ln y$; die ausgewogene Rekursion $a[4]2b=(a[4]b)^{a[4]b}$ ist also $\ell\mapsto F(\ell)$, und $a[4]1=a$.
+      Links: $\ln(z^{z^x})=z^x\ln z=\zeta e^{x\zeta}$; mit $m_n:=x\ln(x[5']n)$ ist $m_{n+1}=x\zeta_ne^{x\zeta_n}=F(m_n)$, $m_0=x\ln x$. Die zweite Konvention genauso mit $a-1$ statt $x$.
+      Fixpunkte: $me^m=m\iff m=0$ oder $e^m=1$; $F'(m)=(1+m)e^m$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Befunde 1, 3, 13'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja (eine Zeile).'
+    f2_benutzte_voraussetzungen: 'Nur die Rekursionen; für ganze Höhen keine Iterationstheorie.'
+    f3_spezialfall: 'Für $x^x$ ist die Logarithmus-Konjugation Folklore; mit der Produkt-Tetration eine gemeinsame Normalform.'
+    f4_uebertragbar: 'Auf jede Variante, deren Schritt im Logarithmus die Form $\zeta e^{c\zeta}$ hat.'
+    f5_neue_frage: 'Gebrochene Höhen über die Fatou-Koordinate von $F$ (br.satz.klammerung_fortsetzung).'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Führt drei Varianten auf eine Abbildung zurück und macht sie mit Standardtheorie rechenbar; für x^x wohl Folklore, für die linke Pentation nicht gefunden.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: br.satz.hyperop_varianten, notiz: 'ergänzt (i) und (ii)'}
+    - {typ: verwandt, ziel: br.def.produkt_tetration, notiz: 'F ist der Schritt der Produkt-Tetration zur Basis e'}
+    - {typ: verwandt, ziel: br.satz.produkt_parabolisch}
+    - {typ: verwandt, ziel: fp.satz.lambert}
+
+- id: br.kor.linke_pentation_ausgewogen
+  titel: 'Linke Pentation = Wurzel der ausgewogenen Tetration von x^x: x[5′]t = (x^x [4] 2^t)^{1/x}'
+  art: korollar
+  ebene: X
+  status: bewiesen
+  niveau: vertiefung
+  objekte: [hyperoperation, iterationsgruppe]
+  bereich: '$x>0$; ganze $t\ge0$, und reelle $t$, wenn beide Seiten mit derselben gebrochenen Iteration von $F(m)=me^m$ fortgesetzt werden (br.satz.klammerung_fortsetzung)'
+  aussage: |
+    $$x[5']t=\bigl(x^x[4]2^t\bigr)^{1/x}.$$
+  einfach: >-
+    Die von unten geklammerte fünfte Rechenart ist nichts Neues: Man nimmt die ausgewogene Tetration von x hoch x und zieht die x-te Wurzel.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\ln(x^x)=x\ln x=m_0$, also $\ln\bigl(x^x[4]2^n\bigr)=F^{[n]}(m_0)=x\ln(x[5']n)$ nach br.satz.klammerung_log_reduktion. Für reelle $t$ sind beide Seiten durch dasselbe $F^{[t]}$ erklärt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Befund 2'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja.'
+    f2_benutzte_voraussetzungen: 'Log-Reduktion; für reelle $t$ eine gemeinsame Iteration von $F$.'
+    f3_spezialfall: 'Ja, von br.satz.klammerung_log_reduktion.'
+    f4_uebertragbar: 'Auf die Konvention $a_5b$ mit $a^{a-1}$ statt $x^x$.'
+    f5_neue_frage: 'Gibt es ähnliche Brücken zwischen höheren linken und ausgewogenen Rängen? (Die Keime unterscheiden sich, br.beob.ausgewogene_raenge_entartung.)'
+  bewertung: {richtigkeit: vollständig, neuheit: neu_ungeprueft, nutzen: 'Verbindet zwei bisher getrennte Varianten.', nutzen_stufe: gering}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: br.satz.klammerung_log_reduktion}
+    - {typ: verwandt, ziel: br.satz.hyperop_varianten}
+
+- id: br.satz.klammerung_fortsetzung
+  titel: 'Gebrochene Höhen für ausgewogene Tetration und linke Pentation über die Fatou-Koordinate von m·e^m — ganz ohne Kneser'
+  art: konstruktion
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [hyperoperation, fatou_koord, iterationsgruppe, lambert_w]
+  bereich: '$F(m)=me^m$, parabolischer Fixpunkt 0; reelle Startwerte $m\neq0$; asymptotische Fatou-Reihe $\Phi_{\rm as}(m)=-1/m+\tfrac12\ln|m|-m/6+m^2/16-\dots$ (br.beob.produkt_iteration_dreieck; im Bericht 22 Glieder exakt)'
+  aussage: |
+    Für $m>0$ (abstossende Seite) sei $\Phi(m)=\lim_n\bigl(\Phi_{\rm as}(W^{[n]}(m))+n\bigr)$, für $m<0$ (anziehende Seite) $\Phi(m)=\lim_n\bigl(\Phi_{\rm as}(F^{[n]}(m))-n\bigr)$,
+    und $F^{[t]}=\Phi^{-1}(\Phi+t)$ auf jeder Seite. Damit sind für alle reellen $t$
+    $$a[4]2^t=\exp F^{[t]}(\ln a),\qquad x[5']t=\exp\bigl(F^{[t]}(x\ln x)/x\bigr)$$
+    erklärt, reell-analytisch in $t$ und mit der Halbgruppeneigenschaft. Für $x>1$ bzw. $0<x<1$ liegt $x\ln x$ auf der abstossenden bzw. anziehenden Seite (ebenso $\ln a$ für $a>1$ bzw. $a<1$).
+    Die Fatou-Koordinate jeder Seite ist bis auf eine additive Konstante eindeutig, und diese fällt in $F^{[t]}$ heraus: man braucht **kein** Kneser-Verfahren. Rechenfehler etwa $c_{K+1}n^{-K-1}$.
+    Auf der abstossenden Seite ist das genau die Produkt-Tetration: $F^{[t]}(m)=\mathrm{prodtet}_e(\mathrm{prodslog}_e(m)+t)$ (br.satz.produkt_parabolisch), also z. B. $a[4]2^t=\exp\,\mathrm{prodtet}_e\bigl(\mathrm{prodslog}_e(\ln a)+t\bigr)$ für $a>1$.
+  einfach: >-
+    Weil beide Varianten nur m ↦ m·e^m wiederholen, und diese Abbildung bei 0 einen besonders einfachen Fixpunkt hat, gibt es eine natürliche Art,
+    sie auch „halb“ oder „anderthalb Mal“ anzuwenden — viel einfacher als bei der gewöhnlichen Tetration.
+  beweis:
+    art: skizze
+    text: |
+      Auf dem anziehenden und dem abstossenden reellen Blatt existiert eine Fatou-Koordinate (it.satz.leau_fatou) mit der asymptotischen Reihe $\Phi_{\rm as}$; $W^{[n]}(m)\to0^+$ bzw. $F^{[n]}(m)\to0^-$,
+      also konvergieren die Grenzwerte. $\Phi^{-1}(\Phi+t)$ hängt nicht von der additiven Konstante ab. Rechnung mit Newton-Umkehrung von $\Phi_{\rm as}$ (kanonisch.py).
+    luecken:
+      - 'Der Eindeutigkeitssatz für Fatou-Koordinaten ist zitiert und nicht für das reelle Blatt nachgeprüft; welche reelle Zusatzbedingung diese Iteration unter allen reell-analytischen Iterationen von F auszeichnet (etwa die Asymptotik $F^{[t]}(m)=m+tm^2+\dots$ wie bei Szekeres, it.satz.szekeres), ist nicht ausgeführt.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Befund 5; kanonisch.py'}, {ref: milnor2006, stelle: '§10 (Leau–Fatou, Fatou-Koordinaten)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Standardtheorie parabolischer Fixpunkte, angewandt auf $F$.'
+    f2_benutzte_voraussetzungen: 'Existenz und Eindeutigkeit der Fatou-Koordinate auf den reellen Blättern; Konvergenz von $W^{[n]}$ und $F^{[n]}$ gegen 0.'
+    f3_spezialfall: 'Ja: reguläre parabolische Iteration wie bei der Produkt-Tetration (br.satz.produkt_parabolisch) und bei $b=\eta$ (kl.satz.parabolisch).'
+    f4_uebertragbar: 'Auf alle linken Ränge (Keim bei 1 parabolisch, br.satz.linke_raenge_keim); bei ausgewogenen Rängen ≥ 5 sind es mehrblättrige Fatou-Koordinaten.'
+    f5_neue_frage: 'Ist die Fortsetzung bei $x=1$ (bzw. $a=1$) analytisch? (Vermutlich nicht, it.verm.mexp_halbiterierte_divergent.)'
+  bewertung: {richtigkeit: 'Skizze; Bausteine aus der Literatur, Eindeutigkeitsaussage zitiert (vgl. it.satz.szekeres)', neuheit: folklore, nutzen: 'Gibt diesen Varianten gebrochene Höhen ohne Wahlfreiheit θ; auf der abstossenden Seite schon als Produkt-Tetration im Graphen.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: it.satz.leau_fatou}
+    - {typ: stuetzt_sich_auf, ziel: br.beob.produkt_iteration_dreieck}
+    - {typ: stuetzt_sich_auf, ziel: br.satz.klammerung_log_reduktion}
+    - {typ: verwandt, ziel: br.satz.produkt_parabolisch, notiz: 'auf der abstossenden Seite dieselbe Konstruktion'}
+    - {typ: verwandt, ziel: it.satz.szekeres, notiz: 'reelle Eindeutigkeit der regulären parabolischen Iteration'}
+    - {typ: analog_zu, ziel: kl.satz.parabolisch}
+
+- id: br.beob.klammerung_werte
+  titel: 'Werte der fortgesetzten Varianten auf über 20 Stellen: 2[4]3 = 14.6545…, 2[5′]½ = 3.3049…, 2[6′]½ = 8.4762…'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, fatou_koord]
+  bereich: 'Fortsetzung nach br.satz.klammerung_fortsetzung; $a[4]b$ ausgewogen mit $b=2^t$; linke Hexation zur Basis 2 über ihren eigenen Schritt'
+  aussage: |
+    Einstellung A (dps 30, $n=300$, $K=12$) gegen B (dps 50, $n=1500$, $K=18$), 22 Stellen gleich:
+    $2[4]3=14.654511776029386087290142357920$, $2[4]\sqrt2=2.5519515900664733159948710551$, $e[4]3=5164.0796335205401942184734139$, $\tfrac12[4]3=0.75719198254705640265505464700$;
+    $2[5']\tfrac12=3.3049080007536475312904140452$, $2[5']\tfrac32=468247.12773186285106947604232$, $e[5']\tfrac12=12.540371827877451627512874303$, $\tfrac12[5']\tfrac12=0.56420394844110023442988843693$;
+    $F^{[1/2]}(1)=1.5134281085001618745523784596$ (Gruppenprobe $F^{[1/2]}\circ F^{[1/2]}(1)-e=3\cdot10^{-46}$).
+    Linke Hexation zur Basis 2: der Schritt ist in Log-Koordinaten $G(\zeta)=F(F(F(\zeta)))e^{-\zeta}=\zeta+2\zeta^2+5\zeta^3+\tfrac{65}6\zeta^4+\dots$ (keine gebrochene Iterierte nötig), und
+    $2[6']\tfrac12=8.4762321835075403787413216014$ (15 Stellen zwischen zwei Einstellungen; Halbgruppenprobe $1.3\cdot10^{-37}$; Probe $\ln(2[6']1)=1024\ln2$).
+    Gegenprobe beim Eintragen mit einem anderen Verfahren (formale Halbiterierte nahe 0 statt Fatou-Koordinate, dps 40): $F^{[1/2]}(1)$, $2[4]\sqrt2$, $2[5']\tfrac12$ auf 30 Stellen, $2[6']\tfrac12$ auf 25 Stellen gleich.
+    $F^{[1/2]}(1)$ ist $\mathrm{prodtet}_e(\tfrac12)$ und stimmt mit br.beob.produkt_tetration_werte (1.5134281085) überein.
+  einfach: >-
+    Konkrete Zahlen für die neuen gebrochenen Türme, auf mehr als 20 Stellen und mit zwei verschiedenen Rechenwegen bestätigt.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Befunde 6, 14; kanonisch.py, hexation_links.py, kanonisch_A.txt, kanonisch_B.txt, hexation_A.txt, hexation_B.txt'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung).'
+    f2_benutzte_voraussetzungen: 'Fatou-Reihe bis $K$ Glieder, $n$ Rückwärts- bzw. Vorwärtsschritte, Newton-Umkehrung.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf jede linke oder ausgewogene Variante mit parabolischem Keim bei 1.'
+    f5_neue_frage: 'Höhere linke Ränge mit nicht ganzer Basis (Rang 6′ zu Basis $e$) brauchen gebrochene Iterierte im Schritt selbst.'
+  bewertung: {richtigkeit: 'numerisch, 22 Stellen; beim Eintragen mit einem zweiten Verfahren auf 25–30 Stellen bestätigt', neuheit: neu_ungeprueft, nutzen: 'Prüfwerte für jede künftige Rechnung zu diesen Varianten.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: br.satz.klammerung_fortsetzung}
+    - {typ: verwandt, ziel: br.satz.linke_raenge_keim}
+    - {typ: verwandt, ziel: br.beob.produkt_tetration_werte, notiz: 'F^[1/2](1) = prodtet_e(1/2), gleicher Wert'}
+
+- id: br.satz.linke_raenge_keim
+  titel: 'Alle linken Ränge ab 5 haben bei 1 dieselbe Bauart; iteratives Residuum ½ bei Rang 5′ und (9 − 2k)/(2x) beim Schritt von Rang k + 1 ≥ 6′'
+  art: satz
+  ebene: X
+  status: bedingt
+  bedingungen_text: 'Für Rang 5′ und für ganze Basis $x$ ohne Bedingung (nur ganze Iterationszahlen). Für Rang $\ge6′$ mit nicht ganzer Basis unter der Annahme, dass die kanonische gebrochene Iterierte (br.satz.klammerung_fortsetzung) die formale Entwicklung gleichmässig in $s$ hat (Standardsatz, nicht nachgeprüft).'
+  niveau: forschung
+  objekte: [hyperoperation, fatou_koord]
+  bereich: '$T_k(\zeta,s):=\ln\bigl(e^\zeta[k'']s\bigr)$ für linke Ränge $k\ge4$; Schritt von Rang $k+1$ zur Basis $x$: $u\mapsto T_k(u,x)$, Fixpunkt $u=0$ ($y=1$); iteratives Residuum $\beta=1-b/a^2$ für $u+au^2+bu^3+\dots$'
+  aussage: |
+    $$T_k(\zeta,s)=\zeta+s\zeta^2+(A_ks^2+B_ks)\zeta^3+O(\zeta^4),\qquad A_4=\tfrac12,\ B_4=0;\qquad A_k=1,\ B_k=k-\tfrac92\ \ (k\ge5),$$
+    aus der Rekursion $A_{k+1}=1$, $B_{k+1}=A_k+B_k$. Der Schritt jedes linken Rangs ist bei $y=1$ parabolisch mit zweitem Koeffizienten = Basis $x$, und sein iteratives Residuum ist
+    $$\beta=\tfrac12\ \ \text{(linke Pentation, jedes }x),\qquad \beta=\frac{9-2k}{2x}\ \ (k\ge5):\ \text{Hexation }-\tfrac1{2x},\ \text{Rang 7′ }-\tfrac3{2x}.$$
+    Linke Hexation zur Basis 2: $G=\zeta+2\zeta^2+5\zeta^3+\dots$, $\beta=-\tfrac14$.
+  einfach: >-
+    Alle von unten geklammerten Rechenarten ab der fünften sehen bei 1 gleich gebaut aus. Sie unterscheiden sich nur in einer Kennzahl, und für diese
+    Kennzahl gibt es eine einfache Formel.
+  beweis:
+    art: bedingt
+    text: |
+      Induktion: Ist $T_k(u,s)=u+su^2+(As^2+Bs)u^3+\dots$, so ist der Schritt von Rang $k+1$ zur Basis $y=e^\zeta$ der Keim $u\mapsto u+yu^2+(Ay^2+By)u^3$.
+      Seine $s$-fache Iterierte ist $u+sau^2+(sb+s(s-1)a^2)u^3$; ab $u=\zeta$ mit $y=1+\zeta+\dots$ gibt das $\zeta+s\zeta^2+(s^2+(A+B)s)\zeta^3$. Start $T_4=\zeta e^{s\zeta}$.
+      Für ganze $s$ ist die Iterationsformel Induktion; für reelle $s$ ist sie die formale Flussformel (benannte Bedingung). Exakte Probe in Bruchzahlen: $T_5,T_6,T_7$ für $s=1\dots4$ geben $n^2+(k-\tfrac92)n$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Befunde 7, 8; rang_keime.py, rang_keime_ausgabe.txt'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Induktion mit der Iterationsformel für Keime dritter Ordnung.'
+    f2_benutzte_voraussetzungen: 'Log-Reduktion des ersten Schritts; Iterationsformel; für reelle Iterationszahlen die gleichmässige Entwicklung.'
+    f3_spezialfall: 'Rang 5′ ist der Keim der Produkt-Tetration (br.satz.produkt_parabolisch, Residuum ½).'
+    f4_uebertragbar: 'Höhere Ordnungen $\zeta^4,\dots$ lassen sich genauso rekursiv gewinnen.'
+    f5_neue_frage: 'Gleichmässigkeit in $s$ zitieren oder beweisen; $B_k=k-\tfrac92$ als Funktion von $k$ für einen gebrochenen Rang zwischen 5′ und 6′ ernst nehmen?'
+  bewertung: {richtigkeit: 'vollständig für Rang 5′ und ganze Basen; sonst unter der benannten Bedingung; exakt für s = 1…4 bei k = 5, 6, 7 nachgerechnet und beim Eintragen neu gerechnet', neuheit: neu_ungeprueft, nutzen: 'Eine Kennzahl, die alle linken Ränge unterscheidet und vergleichbar macht.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: br.satz.klammerung_log_reduktion}
+    - {typ: verwandt, ziel: br.satz.produkt_parabolisch}
+    - {typ: verwandt, ziel: it.satz.parabolische_rate, notiz: 'das Residuum steuert das ln n-Glied der Rate'}
+
+- id: br.kor.linke_varianten_nicht_eta
+  titel: 'Keine linke Variante zu einer Basis x > 0 ist formal konjugiert zur Tetration bei η oder zu e^z − 1'
+  art: korollar
+  ebene: X
+  status: bedingt
+  bedingungen_text: 'Für Rang 5′ und für ganze Basen ohne Bedingung; für Rang $\ge6′$ mit nicht ganzer Basis unter der Bedingung von br.satz.linke_raenge_keim.'
+  niveau: forschung
+  objekte: [hyperoperation, eta, e_minus_1]
+  bereich: 'Schritte der linken Ränge bei $y=1$ (br.satz.linke_raenge_keim); η-Tetration: $w\mapsto\eta^{e+w}-e$; formale Konjugation parabolischer Keime $z+az^2+\dots$, $a\neq0$'
+  aussage: |
+    Bei $\eta^x$ um $e$ und bei $e^z-1$ ist $\beta=\tfrac13$; bei den linken Schritten ist $\beta=\tfrac12$ (Rang 5′) bzw. $\beta=(9-2k)/(2x)<0$ (Rang $k+1\ge6′$).
+    Weil β eine formale Konjugationsinvariante ist, ist keiner dieser Schritte formal (und erst recht nicht analytisch) zur η-Tetration oder zu $e^z-1$ konjugiert.
+    Für Rang 5′ steht das in anderer Form schon bei der Produkt-Tetration (br.satz.produkt_parabolisch: gleicher Keim bis auf Skalierung).
+  einfach: >-
+    Die von unten geklammerten Rechenarten sind keine verkleidete Tetration zur Basis e^(1/e): Eine Kennzahl, die sich bei keiner Umrechnung ändert, ist verschieden.
+  beweis:
+    art: bedingt
+    text: |
+      $\beta=1-b/a^2$ ist unter $z\mapsto cz$ und unter jeder formalen Konjugation invariant (Normalform $z+z^2+(1-\beta)z^3$). $\eta^{e+w}=e+w+w^2/(2e)+w^3/(6e^2)+\dots$ gibt $b/a^2=\tfrac23$,
+      ebenso $e^z-1$. Werte für die linken Schritte aus br.satz.linke_raenge_keim; $(9-2k)/(2x)=\tfrac13$ hätte $x<0$ zur Folge.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Befund 9'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, aus br.satz.linke_raenge_keim und der Invarianz von β.'
+    f2_benutzte_voraussetzungen: 'Formale Klassifikation parabolischer Keime (Vielfachheit und iteratives Residuum).'
+    f3_spezialfall: 'Ja; für Rang 5′ gleichwertig mit der Aussage über die Produkt-Tetration.'
+    f4_uebertragbar: 'Auf jeden Vergleich parabolischer Hyperoperations-Varianten.'
+    f5_neue_frage: 'Gibt es überhaupt eine reelle Basis, bei der eine linke Variante zu einer ausgewogenen formal konjugiert ist?'
+  bewertung: {richtigkeit: 'vollständig für Rang 5′, sonst wie br.satz.linke_raenge_keim', neuheit: neu_ungeprueft, nutzen: 'Trennt die Varianten sauber von der η-Tetration.', nutzen_stufe: gering}
+  kanten:
+    - {typ: folgt_unmittelbar_aus, ziel: br.satz.linke_raenge_keim}
+    - {typ: verwandt, ziel: br.satz.produkt_parabolisch}
+    - {typ: verwandt, ziel: kl.satz.parabolisch}
+
+- id: br.beob.ausgewogene_raenge_entartung
+  titel: 'Ausgewogene Ränge entarten bei 1: die ausgewogene Pentation hat dort einen dreifachen Fixpunkt'
+  art: beobachtung
+  ebene: X
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, fatou_koord]
+  bereich: 'Ausgewogene Pentation $P(y)=y[4]y$ mit der Fortsetzung br.satz.klammerung_fortsetzung; Log-Koordinate $\ell=\ln y$'
+  aussage: |
+    Aus $\ln P(e^\ell)=F^{[s]}(\ell)$ mit $s=\ell/\ln2$ und $F^{[s]}(\ell)=\ell+s\ell^2+(s^2-\tfrac s2)\ell^3+\dots$ folgt formal
+    $$\ln P(e^\ell)=\ell+\frac{\ell^3}{\ln2}-\frac{\ell^4}{2\ln2}+O(\ell^5).$$
+    Numerisch: $(\ln P-\ell)/\ell^3=1.439155$ bei $\ell=0.005$ und $1.446369$ bei $\ell=-0.005$; Mittel $1.442762$ gegen $1/\ln2=1.442695$, Steigung $-0.7214$ gegen $-1/(2\ln2)=-0.7213$
+    (zwei Einstellungen auf 22 Stellen gleich). Der Fixpunkt 1 ist also dreifach (zwei Blätter, auf beiden reellen Seiten abstossend).
+    Formal (nur gerechnet für Rang 5) ist der ausgewogene Schritt von Rang $k$ von der Form $\zeta+\zeta^{k-2}/(\ln2)^{k-4}+\dots$: die Entartung wächst mit dem Rang.
+  einfach: >-
+    Bei den ausgewogenen Varianten wird der Punkt 1 mit jedem Rang „flacher“: Die Abbildung weicht dort immer langsamer von der Identität ab.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/14_klammerungen/BERICHT.md, Befund 12; kanonisch.py (kanonisch_A.txt, kanonisch_B.txt; der Bericht nennt 1.43932 statt 1.439155)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Formal ja (Einsetzen der Flussformel); die gleichmässige Gültigkeit für $s\to0$ ist nicht bewiesen.'
+    f2_benutzte_voraussetzungen: 'Fortsetzung über die Fatou-Koordinate; Entwicklung der gebrochenen Iterierten für kleine $s$.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Ränge ≥ 6 brauchen mehrblättrige Fatou-Koordinaten (nicht gerechnet).'
+    f5_neue_frage: 'Ausgewogene Ränge ≥ 6 numerisch; wie viele Blätter hat der Schritt von Rang k wirklich?'
+  bewertung: {richtigkeit: 'numerisch für Rang 5 (4 Stellen im Koeffizienten), formal für höhere Ränge', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass linke und ausgewogene Ränge ab 5 verschieden gebaut sind.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: br.satz.klammerung_fortsetzung}
+    - {typ: verwandt, ziel: it.satz.leau_fatou}
+    - {typ: verwandt, ziel: br.satz.linke_raenge_keim}

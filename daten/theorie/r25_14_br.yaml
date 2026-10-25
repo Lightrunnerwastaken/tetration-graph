@@ -1,0 +1,87 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 14 „Andere Klammerungen“ (forschung/runde_2026_10_25/14_klammerungen/BERICHT.md).
+# Schreibweise wie br.satz.hyperop_varianten; F(m) = m e^m.
+
+br.satz.klammerung_log_reduktion:
+  worum: |
+    Die ausgewogene Tetration (Iteration von $x\mapsto x^x$) und die linke Pentation (Iteration von $y\mapsto y^{y^x}$) sehen verschieden aus. Was steckt dahinter?
+  genau: |
+    Im Logarithmus sind beide die Iteration von $F(m)=me^m$: $a[4]2^n=\exp F^{[n]}(\ln a)$, $x[5']n=\exp(F^{[n]}(x\ln x)/x)$.
+  warum: |
+    $\ln(y^y)=y\ln y$, und mit $y=e^\ell$ ist das $\ell e^\ell$. Bei der linken Pentation ist $\ln(z^{z^x})=\zeta e^{x\zeta}$; mit $m=x\zeta$ entsteht wieder $me^m$.
+  beispiel: |
+    $2[5']1=\exp(F(2\ln2)/2)=\exp(2\ln2\cdot4/2)=16=2^{2^2}$.
+  bilder: []
+  einordnung: |
+    Ergänzt [[br.satz.hyperop_varianten]]; $F$ ist der Schritt der Produkt-Tetration ([[br.def.produkt_tetration]], [[br.satz.produkt_parabolisch]]); die Umkehrung ist Lambert W ([[fp.satz.lambert]]).
+
+br.kor.linke_pentation_ausgewogen:
+  worum: |
+    Wie hängen linke Pentation und ausgewogene Tetration zusammen?
+  genau: |
+    $x[5']t=(x^x[4]2^t)^{1/x}$.
+  warum: |
+    Beide starten im Logarithmus bei demselben Wert $m_0=x\ln x$ und iterieren dieselbe Abbildung $F$.
+  bilder: []
+  einordnung: |
+    Folgt aus [[br.satz.klammerung_log_reduktion]].
+
+br.satz.klammerung_fortsetzung:
+  worum: |
+    Wie setzt man die Höhe dieser Varianten auf reelle Zahlen fort, ohne die Wahlfreiheit θ der gewöhnlichen Tetration?
+  genau: |
+    Über die Fatou-Koordinate von $F$ an ihrem parabolischen Fixpunkt 0: $F^{[t]}=\Phi^{-1}(\Phi+t)$, getrennt auf der abstossenden ($m>0$) und anziehenden Seite ($m<0$).
+  warum: |
+    An einem parabolischen Fixpunkt ist die Fatou-Koordinate auf jedem Blatt bis auf eine Konstante eindeutig, und die Konstante fällt beim Iterieren heraus. Bei der gewöhnlichen Tetration fehlt
+    ein solcher reeller Fixpunkt (für $b>\eta$), darum braucht man dort Kneser.
+  beispiel: |
+    $2[4]\sqrt2=\exp F^{[1/2]}(\ln2)=2.55195159006647\ldots$
+  bilder: []
+  einordnung: |
+    Bausteine: [[it.satz.leau_fatou]] und die Fatou-Reihe von $xe^x$ ([[br.beob.produkt_iteration_dreieck]]); auf der abstossenden Seite ist es die Produkt-Tetration ([[br.satz.produkt_parabolisch]]);
+    gleiches Vorgehen bei $b=\eta$ ([[kl.satz.parabolisch]]); reelle Eindeutigkeit: [[it.satz.szekeres]].
+
+br.beob.klammerung_werte:
+  worum: |
+    Prüfwerte der fortgesetzten Varianten.
+  genau: |
+    $2[4]3=14.6545117760\ldots$, $2[5']\tfrac12=3.3049080007\ldots$, $F^{[1/2]}(1)=1.5134281085\ldots$, $2[6']\tfrac12=8.4762321835\ldots$
+  warum: |
+    Zwei Einstellungen der Fatou-Rechnung stimmen auf 22 Stellen überein; ein zweites Verfahren (formale Halbiterierte nahe 0) bestätigt die Werte auf 25–30 Stellen.
+  bilder: []
+  einordnung: |
+    Rechnung nach [[br.satz.klammerung_fortsetzung]]; Keim der linken Hexation: [[br.satz.linke_raenge_keim]]; $F^{[1/2]}(1)=\mathrm{prodtet}_e(\tfrac12)$ wie in [[br.beob.produkt_tetration_werte]].
+
+br.satz.linke_raenge_keim:
+  worum: |
+    Wie sehen die höheren linken Ränge am Fixpunkt 1 aus?
+  genau: |
+    $\ln(e^\zeta[k']s)=\zeta+s\zeta^2+(A_ks^2+B_ks)\zeta^3+\dots$ mit $A_k=1$, $B_k=k-\tfrac92$ ($k\ge5$); iteratives Residuum des Schritts $\tfrac12$ (Rang 5′) bzw. $(9-2k)/(2x)$.
+  warum: |
+    Jeder Rang iteriert den vorigen; die Iterationsformel $u+sau^2+(sb+s(s-1)a^2)u^3$ für Keime gibt die Rekursion $B_{k+1}=A_k+B_k$.
+  beispiel: |
+    Linke Hexation zur Basis 2: Schritt $\zeta+2\zeta^2+5\zeta^3+\dots$, Residuum $1-5/4=-\tfrac14$.
+  bilder: []
+  einordnung: |
+    Baut auf [[br.satz.klammerung_log_reduktion]]; Folgerung: [[br.kor.linke_varianten_nicht_eta]]; das Residuum steuert die Rate in [[it.satz.parabolische_rate]].
+
+br.kor.linke_varianten_nicht_eta:
+  worum: |
+    Ist eine linke Variante vielleicht nur eine verkleidete Tetration zur Basis $\eta$?
+  genau: |
+    Nein: deren Residuum ist $\tfrac13$, die linken Schritte haben $\tfrac12$ oder einen negativen Wert.
+  warum: |
+    Das iterative Residuum ändert sich unter keiner Koordinatenwechsel-Reihe; verschiedene Residuen schliessen jede Konjugation aus.
+  bilder: []
+  einordnung: |
+    Folgt aus [[br.satz.linke_raenge_keim]]; für Rang 5′ schon bei [[br.satz.produkt_parabolisch]]; η-Tetration: [[kl.satz.parabolisch]].
+
+br.beob.ausgewogene_raenge_entartung:
+  worum: |
+    Wie sieht der Schritt der ausgewogenen Pentation $y\mapsto y[4]y$ bei 1 aus?
+  genau: |
+    $\ln P(e^\ell)=\ell+\ell^3/\ln2-\ell^4/(2\ln2)+\dots$: ein dreifacher Fixpunkt.
+  warum: |
+    Die Iterationszahl $s=\ell/\ln2$ ist selbst klein; das zweite Glied $s\ell^2$ wird dadurch zu einem dritten.
+  bilder: []
+  einordnung: |
+    Gegensatz zu den einfachen Keimen der linken Ränge [[br.satz.linke_raenge_keim]]; Blätter am parabolischen Fixpunkt: [[it.satz.leau_fatou]].

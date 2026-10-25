@@ -1,0 +1,212 @@
+gebiet: kn
+# Forschungsrunde 25.10.2026, Bericht 13 „Rangkoordinate Φ“: Konstruktion, Gradient, Nichtlinearität, halber Rang.
+# Rechnungen: forschung/runde_2026_10_25/13_rangkoordinate/. Baut auf r18_07_kn.yaml (kn.beob.rangverschiebung, kn.verm.rangkoordinate) auf.
+# H_3 = b^x, H_{r+1} = T H_r (Koenigs-Schritt am kleinsten Fixpunkt p_r ≥ 1), δ_r = p_r − b.
+aussagen:
+
+- id: kn.konstr.rangkoordinate
+  titel: 'Rangkoordinate Φ aus der Fixpunktfolge ln(p_r − b): Φ(Tg) = Φ(g) + 1 und Φ(H_r) = r, sobald der Grenzwert existiert'
+  art: konstruktion
+  ebene: B
+  status: bedingt
+  bedingungen_text: 'Existenz des Grenzwerts und Unabhängigkeit vom Interpolationsschema; nur numerisch belegt ($b=\sqrt2$: 5–6 Stellen für Glieder nahe ganzen Rängen, 3–4 Stellen bei halbzahligem Abstand)'
+  niveau: forschung
+  objekte: [hyperoperation, abel, periodische_stoerung]
+  bereich: '$1<b<2$ mit beschränkter Koenigs-Leiter (kn.satz.koenigs_leiter_monoton); $T$ = Koenigs-Rangschritt am kleinsten Fixpunkt $p\ge1$; gerechnet bei $b=\sqrt2$ ($H_3=b^x$, dps 20, Grad 30, Leiter bis $r=14$) und $b=1.5$ ($H_4$ = Kneser)'
+  aussage: |
+    Sei $p_r$ der Fixpunkt von $H_r(b,\cdot)$ und $L$ eine lokale Interpolation (4 oder 6 Stützstellen) der Folge $r\mapsto\ln(p_r-b)$. Für ein Startglied $g$ sei $s_n$ die Lösung von
+    $$\ln\bigl(p(T^ng)-b\bigr)=L(s_n),\qquad \Phi(g):=\lim_{n\to\infty}(s_n-n).$$
+    Existiert der Grenzwert, so gilt exakt $\Phi(Tg)=\Phi(g)+1$ und $\Phi(H_r)=r$.
+    Numerisch wird $s_n-n$ ab $n\approx6$ auf 5–6 Stellen stationär (für $H_4\circ(x+0.005\sin2\pi x)$: 3.969339, 3.969334, 3.969339, 3.969345 bei $n=5\dots8$).
+    Bei halbzahligem Abstand zu den Stützstellen ist die Genauigkeit nur 3–4 Stellen: 4- und 6-Punkt-Interpolation geben 3.49888 bzw. 3.49913 ($n=7$),
+    und ihr Abstand fällt nur algebraisch ($1.2\cdot10^{-3},\ 6.4\cdot10^{-4},\ 3.9\cdot10^{-4},\ 2.5\cdot10^{-4}$ für $n=4\dots7$).
+  einfach: >-
+    Man gibt jeder Funktion eine Rangnummer: Man wendet den Schritt „nächste Rechenart bauen“ immer wieder an und schaut hoch oben nach, auf welcher
+    Sprosse der gewöhnlichen Leiter man gelandet ist. Die echten Rechenarten bekommen so die Nummern 3, 4, 5, …, und ein Schritt nach oben erhöht die Nummer genau um 1.
+  beweis:
+    art: bedingt
+    text: |
+      Die Folge für $Tg$ ist die um eins verschobene Folge für $g$: $s_n(Tg)=s_{n+1}(g)$, also $\Phi(Tg)=\lim\bigl(s_{n+1}(g)-(n+1)\bigr)+1=\Phi(g)+1$.
+      Für $g=H_r$ trifft $L$ die Stützstellen, also $s_n=r+n$. Dass der Grenzwert existiert und nicht vom Interpolationsschema abhängt, ist nur numerisch belegt:
+      die Querabweichungen sterben überexponentiell (kn.beob.rangverschiebung), und der Interpolationsfehler fällt, weil $\ln\delta_r$ in $r$ immer glatter wird.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/13_rangkoordinate/BERICHT.md, B1, B10; phi.py, exp.py, half2.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Die Abel-Gleichung ja (Verschiebung der Folge); die Existenz nicht.'
+    f2_benutzte_voraussetzungen: 'Beschränkte Leiter mit anziehenden Fixpunkten; Interpolation der Basisfolge; für die Existenz die überexponentielle Querkontraktion.'
+    f3_spezialfall: 'Funktionenraum-Gegenstück zur Fatou-Koordinate (it.satz.leau_fatou); rechenbare Fassung von kn.verm.rangkoordinate.'
+    f4_uebertragbar: 'Auf jede beschränkte Leiter ($1<b<2$); bei $b=2$ fehlt der Fixpunkt (kn.gescheitert.rangkoordinate_basis2).'
+    f5_neue_frage: 'Beweis der Existenz (langsame Kurve und stabile Blätterung des Rangschritts); Fehlerordnung der Interpolation in $r$.'
+  bewertung: {richtigkeit: 'Abel-Gleichung und Normierung bewiesen unter Existenz; Existenz numerisch (5–6 bzw. 3–4 Stellen)', neuheit: neu_ungeprueft, nutzen: 'Macht die vermutete Rangkoordinate rechenbar und normiert sie.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt, ziel: kn.verm.rangkoordinate}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.koenigs_leiter_monoton}
+    - {typ: analog_zu, ziel: it.satz.leau_fatou}
+
+- id: kn.beob.rangkoordinate_gradient
+  titel: 'Gradient der Rangkoordinate nach den θ-Moden: Beträge 3 bis 11, kein Abfall mit der Frequenz'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, periodische_stoerung]
+  bereich: 'Störung $H_4\mapsto H_4\circ\psi$, $\psi=x+\varepsilon\eta$, $\eta$ 1-periodisch mit $\eta(0)=0$ (die ganzen Werte bleiben); $b=\sqrt2$ (Koenigs-Leiter) und $b=1.5$ ($H_4$ Kneser); symmetrische Differenzen $\varepsilon=\pm0.005$'
+  aussage: |
+    Bei $b=\sqrt2$:
+    $$\frac{\partial\Phi}{\partial(\sin2\pi nx)}=-6.125,\ +8.060,\ -2.84,\qquad \frac{\partial\Phi}{\partial(1-\cos2\pi nx)}=-8.042,\ -11.258,\ +9.91\qquad(n=1,2,3),$$
+    für $n=1,2$ auf 4 Stellen, für $n=3$ auf etwa $\pm0.01$ (die Folge läuft noch). Bei $b=1.5$: $-4.89$ und $-10.74$ für $n=1$ (2–3 Stellen).
+    Die Komponenten fallen mit der Frequenz **nicht** ab: $d\Phi$ ist keine glatte Gewichtsfunktion auf dem Kreis, sondern eher verteilungsartig.
+    Ein Modell, das nur $\eta,\eta',\eta''$ am Fixpunkt $p_4=1.5492$ benutzt, passt nicht (Reste bis 7.7). Vermuteter Grund: $Tf$ hängt von $f$ längs der ganzen Bahn $1,b,f(b),\dots\to p$ ab.
+    Die Ableitung in der Kosinusrichtung ist $-8.04$; der Wert $-7.74$ in kn.beob.rangverschiebung ist die Sekante bei $\varepsilon=0.01$ (der quadratische Term ist in dieser Richtung gross, kn.beob.rangkoordinate_nichtlinear).
+  einfach: >-
+    Man kann ausrechnen, wie stark sich die Rangnummer ändert, wenn man die Tetration mit einer kleinen Welle verbiegt. Überraschend: schnelle Wellen wirken
+    genauso stark wie langsame.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/13_rangkoordinate/BERICHT.md, B2, B3, B6; exp.py (grad, grad1), punktmodell.py; Gegenprobe gegenprobe.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung).'
+    f2_benutzte_voraussetzungen: 'Koenigs-Leiter ab $H_5$, 4-Punkt-Interpolation der Basisfolge, symmetrische Differenzen; dps 20, Grad 30, Leiter bis $r=14$.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Bei $b=1.5$ mit Kneser-Saat gleich gerechnet; andere Basen im beschränkten Bereich wahrscheinlich ähnlich.'
+    f5_neue_frage: 'Sitzt $d\Phi$ als Verteilung auf den Phasen der Bahn $1,b,H_4(b),\dots$ (Moden bis 10 bei höherem Grad testen)?'
+  bewertung: {richtigkeit: 'numerisch, 4 Stellen für n = 1, 2; gegen die Daten von Runde 18 (dps 30, Grad 40) auf 3–4 Stellen bestätigt; beim Eintragen ohne Zwischenspeicher neu gerechnet (gleich)', neuheit: neu_ungeprueft, nutzen: 'Gibt die Gewichte der einen Gleichung, die ein halber Rang an die θ-Freiheit stellt.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.konstr.rangkoordinate}
+    - {typ: verwandt, ziel: kn.beob.rangverschiebung}
+    - {typ: stuetzt, ziel: kn.verm.rangkoordinate}
+
+- id: kn.beob.rangkoordinate_nichtlinear
+  titel: 'Die Rangkoordinate ist differenzierbar, aber nicht linear: grosse quadratische Terme, gemischt sin·cos ≈ 17'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, periodische_stoerung]
+  bereich: '$b=\sqrt2$, $c=\Phi(H_4\circ\psi)-4$ mit $\psi=x+\sum_i\varepsilon_i\eta_i$; Ansatz $c=\sum g_i\varepsilon_i+\sum_{i,j}Q_{ij}\varepsilon_i\varepsilon_j+\dots$ ($Q$ symmetrisch)'
+  aussage: |
+    $c(\sin,0.02)=-0.12293$, $c(1-\cos,0.02)=-0.14921$, beide zusammen $-0.25834$ statt der Summe $-0.27214$; $c(\sin,\pm0.1)=-0.64164$ bzw. $+0.62124$
+    (ungerader Teil $-0.63144$ statt linear $-0.6125$). Daraus $Q_{ss}\approx-1.0$, $Q_{sc}\approx17$, $Q_{s_1s_2}\approx-1.6$ (2–3 Stellen) und, aus $c(1-\cos,0.02)$ gegen linear $-0.16084$,
+    $Q_{cc}\approx29$ — passend zu Runde 18, wo $c(1-\cos,0.01)=-0.07739$ statt $-0.0804$ gemessen wurde.
+    $\Phi$ ist also in erster Ordnung linear (die Gradienten aus kn.beob.rangkoordinate_gradient sagen $c(\sin,0.01)=-0.06135$ voraus, gemessen $-0.06134$), aber keine lineare Funktion der θ-Parameter.
+  einfach: >-
+    Zwei kleine Verbiegungen zusammen verschieben die Rangnummer nicht genau um die Summe der einzelnen Verschiebungen. Für sehr kleine Verbiegungen stimmt die Summe fast, für grössere nicht mehr.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/13_rangkoordinate/BERICHT.md, B4; exp.py add, daten/exp_sqrt2_d20_g30_R15_add.json'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung).'
+    f2_benutzte_voraussetzungen: 'Wie kn.beob.rangkoordinate_gradient; die Q-Werte aus je einer Störungsgrösse geschätzt (2–3 Stellen).'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf andere Basen nicht geprüft.'
+    f5_neue_frage: 'Ist die Niveaufläche $\Phi=3.5$ in den θ-Parametern konvex oder gekrümmt in eine feste Richtung?'
+  bewertung: {richtigkeit: 'numerisch, 2–3 Stellen; Q_cc beim Eintragen aus den Berichtszahlen abgeleitet', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass eine lineare Halbrang-Bedingung nur in erster Ordnung stimmt.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.konstr.rangkoordinate}
+    - {typ: verwandt, ziel: kn.beob.rangkoordinate_gradient}
+    - {typ: verwandt, ziel: kn.satz.halbrang_quadratisch}
+
+- id: kn.verm.rangkoordinate_rangwachstum
+  titel: 'Dieselbe θ-Welle verschiebt den Rang umso stärker, je höher man sie einbaut — vermutlich wie log r'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation, periodische_stoerung]
+  bereich: '$b=\sqrt2$, Störung $H_r\mapsto H_r\circ(x+\varepsilon\sin2\pi x)$, $\varepsilon=\pm0.005$, Rangkoordinate aus kn.konstr.rangkoordinate'
+  aussage: |
+    $\partial\Phi/\partial\varepsilon=-6.125$ ($r=4$), $-6.526$ ($r=5$), $\le-6.82$ ($r=6$), $\le-7.06$ ($r=7$), $\le-7.24$ ($r=8$); ab $r=6$ nur Schranken, weil die Folge $s_n-n$ noch fällt, wenn die Leiter bei $r=14$ endet.
+    Vermutung: $|\partial\Phi/\partial\varepsilon|$ an $H_r$ wächst unbeschränkt, grob wie $1.6\ln r+\mathrm{const}$.
+  einfach: >-
+    Eine Verbiegung wirkt stärker, wenn man sie weiter oben in der Leiter einbaut. Wie schnell das zunimmt, ist noch unsicher; die Zahlen passen grob zu einem Logarithmus.
+  gegenbeispielsuche: 'Fünf Ränge (4–8) bei $\sqrt2$; die Folgen wurden beim Eintragen aus dem Zwischenspeicher neu ausgewertet (gleiche Werte, alle monoton fallend). Kein Rang mit kleinerem Betrag. Die Zuwächse 0.40, ≥0.30, ≥0.24, ≥0.18 trennen log r nicht von einer kleinen Potenz.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/13_rangkoordinate/BERICHT.md, B5; exp.py sqrt2 20 30 15 rank (cache/r5…r8_s1_*)'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Existenz von Φ (kn.konstr.rangkoordinate), Leiter bis $r=14$.'
+    f3_spezialfall: 'Nein.'
+    f4_uebertragbar: 'Auf andere Basen im beschränkten Bereich (nicht gerechnet).'
+    f5_neue_frage: 'Längere Leitern ($R\ge25$); hängt das Wachstum mit $L_r\sim\ln r/(b-1)$ aus kn.verm.leiter_rate zusammen?'
+  bewertung: {richtigkeit: 'Vermutung; Werte für r = 4, 5 auf 3 Stellen, sonst Schranken', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass die θ-Freiheit höherer Stufen nicht schwächer wirkt als die der Tetration.', nutzen_stufe: gering}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.konstr.rangkoordinate}
+    - {typ: verwandt, ziel: kn.verm.leiter_rate}
+    - {typ: verwandt, ziel: kn.beob.rangkoordinate_gradient}
+
+- id: kn.beob.halbrang_niveauflaeche
+  titel: 'Halber Rang bei √2: zwei Kandidaten mit gleicher Rangkoordinate haben fast dieselbe Leiter darüber, unterscheiden sich aber selbst in der 4. Stelle'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [hyperoperation, periodische_stoerung]
+  bereich: '$b=\sqrt2$, $H_3=b^x$, $H_4$ Koenigs-Tetration; Familien $g_t=(1-t)H_3+tH_4$ (lin) und $H_3^{1-t}H_4^t$ (geo), beide mit $g(0)=1$, $g(1)=b$; Φ mit 6-Punkt-Interpolation'
+  aussage: |
+    Aus $\Phi(g_t)$ bei $t=0.3,\ 0.5,\ 0.7$ (quadratisch interpoliert) folgen $t^*=0.62762$ (lin) und $0.62300$ (geo); beide $g^*$ haben dieselbe Rangkoordinate bis auf $5\cdot10^{-5}$.
+    Ihre Leitern $T^ng^*$ laufen zusammen: der relative Unterschied von $p-b$ ist $1.2\cdot10^{-2},\ 9.9\cdot10^{-4},\ 1.7\cdot10^{-4},\ 4.5\cdot10^{-5},\ 2.0\cdot10^{-5}$ für $n=0\dots4$,
+    danach ein Boden um $10^{-5}$ (Kontraktion je Schritt etwa 12, 6, 4, 2). Auf Höhe 3.5 selbst unterscheiden sie sich deutlich:
+    $g^*(0.5)=1.223358$ gegen $1.222821$, $g^*(1.5)=1.592052$ gegen $1.591226$, Fixpunkt $1.64203$ gegen $1.63921$.
+    Die Bedingung „Φ = 3.5“ ist **eine** reelle Gleichung; die Niveaufläche ist unendlichdimensional, z. B. liegt $8.060\sin2\pi x+6.125\sin4\pi x$ in erster Ordnung im Kern von $d\Phi$.
+    Gegenprobe beim Eintragen: die beiden $g^*$ haben $\Phi\approx3.4991$ (4 Punkte: 3.4989), nicht genau 3.5 — die quadratische Interpolation in $t$ trifft die Nullstelle nur auf etwa $10^{-3}$.
+    Die Aussage hängt daran nicht, weil beide Kandidaten denselben Φ-Wert haben.
+  einfach: >-
+    Ein halber Rang müsste die Rangnummer 3½ haben. Zwei verschiedene Kandidaten mit derselben Nummer erzeugen darüber fast genau dieselben Rechenarten —
+    aber sie selbst sind verschieden. Die Nummer allein legt den halben Rang also nicht fest.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/13_rangkoordinate/BERICHT.md, B7, B8; half2.py; Gegenprobe gegenprobe.py, gegenprobe_half2_ausgabe.txt'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Rechnung); die Dimensionszählung folgt unmittelbar, sobald Φ glatt mit nichtverschwindendem Gradienten ist.'
+    f2_benutzte_voraussetzungen: 'Rangkoordinate (kn.konstr.rangkoordinate), Gradient (kn.beob.rangkoordinate_gradient), zwei Familien zwischen $H_3$ und $H_4$.'
+    f3_spezialfall: 'Bestätigt die Zählung in kn.verm.rangkoordinate numerisch.'
+    f4_uebertragbar: 'Auf andere Familien und Basen im beschränkten Bereich; bei $b=2$ nicht (kn.gescheitert.rangkoordinate_basis2).'
+    f5_neue_frage: 'Welche zweite, unabhängige Bedingung wählt auf der Niveaufläche einen Punkt aus?'
+  bewertung: {richtigkeit: 'numerisch; Leiterwerte und Unterschiede beim Eintragen ohne Zwischenspeicher neu gerechnet (gleich bis auf die Rundung von t*)', neuheit: neu_ungeprueft, nutzen: 'Zeigt konkret, was die Rangbedingung festlegt und was nicht.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: stuetzt_sich_auf, ziel: kn.konstr.rangkoordinate}
+    - {typ: stuetzt, ziel: kn.verm.rangkoordinate}
+    - {typ: stuetzt, ziel: kn.verm.halbrangleiter_oben_kanonisch}
+    - {typ: verwandt, ziel: kn.frage.halber_rang}
+
+- id: kn.verm.halbrangleiter_oben_kanonisch
+  titel: 'Die Leiter der halben Ränge ist hoch oben kanonisch, auf endlicher Höhe nur bis auf das Blatt Φ = const bestimmt — und nach unten gibt es keinen kanonischen Weg'
+  art: vermutung
+  ebene: B
+  status: vermutung
+  niveau: forschung
+  objekte: [hyperoperation, abel, fatou_koord]
+  bereich: 'beschränkte Koenigs-Leitern $1<b<2$; Rangschritt $T$, Rangkoordinate Φ (kn.konstr.rangkoordinate)'
+  aussage: |
+    Φ ist die Fatou-artige Koordinate längs einer langsamen Kurve $W$ des Rangschritts $T$ im Funktionenraum; die Querrichtungen werden überexponentiell zusammengezogen
+    (bei $\sqrt2$ Faktoren etwa 12, 6, 4, 2 je Schritt). Daraus folgt, falls $W$ und die stabile Blätterung existieren: Die Halbrang-Leiter $H_{r+1/2}$ ist für $r\to\infty$
+    als Punkt von $W$ mit $\Phi=r+\tfrac12$ eindeutig; auf endlicher Höhe ist $H_{r+1/2}$ nur bis auf das Blatt $\{\Phi=r+\tfrac12\}$ bestimmt. Rückwärts ($T^{-1}$) blähen
+    sich die Blätter auf, darum gibt es keinen kanonischen Abstieg. Für eine Auswahl auf endlicher Höhe braucht man eine zweite, unabhängige Bedingung
+    (Kandidaten: Glattheit in $r$ über alle Ränge, Gamma-artige Interpolation der Querkontraktion).
+  einfach: >-
+    Weit oben in der Leiter sind die halben Rechenarten eindeutig, weil alle Kandidaten dort zusammenlaufen. Weiter unten, etwa zwischen Potenz und
+    Tetration, bleibt eine grosse Auswahl übrig, und der Weg von oben nach unten macht sie nicht kleiner.
+  gegenbeispielsuche: 'Zwei Familien (lin, geo) bei $\sqrt2$ mit gleichem Φ: Zusammenlaufen bis zum numerischen Boden $10^{-5}$, keine Abweichung von der Blätterung. Nur eine Basis und Leitern bis $r=14$; die Existenz von $W$ ist nicht geprüft.'
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/13_rangkoordinate/BERICHT.md, B9 und Abschnitt „Was Φ für den halben Rang festlegt“'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, sobald langsame Kurve und stabile Blätterung existieren; deren Existenz ist nicht bewiesen.'
+    f2_benutzte_voraussetzungen: 'Überexponentielle Querkontraktion (kn.beob.rangverschiebung), Rangkoordinate, Zusammenlaufen gleich-Φ-Kandidaten (kn.beob.halbrang_niveauflaeche).'
+    f3_spezialfall: 'Funktionenraum-Gegenstück zur Lage einer parabolischen Abbildung nahe einer invarianten Kurve; verfeinert kn.verm.rangkoordinate.'
+    f4_uebertragbar: 'Bei $b=2$ (unbeschränkte Leiter) offen.'
+    f5_neue_frage: 'Gibt es eine natürliche zweite Bedingung (kn.frage.halber_rang)?'
+  bewertung: {richtigkeit: 'Vermutung; Mechanismus hergeleitet, Existenz der Blätterung offen', neuheit: neu_ungeprueft, nutzen: 'Erklärt, warum ein halber Rang oben leicht und unten schwer festzulegen ist.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verwandt, ziel: kn.verm.rangkoordinate}
+    - {typ: verwandt, ziel: kn.frage.halber_rang}
+    - {typ: verwandt, ziel: kn.satz.halbrang_linear}
+
+- id: kn.gescheitert.rangkoordinate_basis2
+  titel: 'Bei Basis 2 lässt sich die Rangkoordinate so nicht bauen: die Leiter hat keinen anziehenden Fixpunkt'
+  art: gescheitert
+  ebene: C
+  status: gescheitert
+  niveau: forschung
+  objekte: [hyperoperation]
+  bereich: '$b=2$, Rangleiter $H_r(2,\cdot)$'
+  aussage: |
+    Bei $b=2$ ist $H_r(2,2)=4$ für alle $r$, die Leiter ist unbeschränkt, und es gibt weder einen Koenigs-Schritt noch die Messgrösse $p_r-b$ aus kn.konstr.rangkoordinate.
+    Eine Fassung über $H_r(2,\tfrac12)\to1.5$ (Rampe, kn.verm.grenzprofil_rampe) wurde nicht gerechnet, weil Kneser je Rang über hyper(r, x) in der verfügbaren Zeit zu teuer war.
+  einfach: >-
+    Für die Basis 2 fehlt der Punkt, an dem man die Rangnummer ablesen könnte. Dort braucht man ein anderes Messgerät.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/13_rangkoordinate/BERICHT.md, B11'}]
+  kanten:
+    - {typ: verwandt, ziel: kn.konstr.rangkoordinate}
+    - {typ: verwandt, ziel: kn.beob.halbrang_basis2}
+    - {typ: verwandt, ziel: kn.verm.grenzprofil_rampe}

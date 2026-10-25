@@ -1,0 +1,205 @@
+gebiet: kn
+# Runde 25.10.2026, Bericht 05: Knesers Welle für komplexe Basen (Paulsen–Cowgill). Rechnungen: forschung/runde_2026_10_25/05_komplexe_basen_welle/.
+# Basen in zwei Richtungen zum Shell–Thron-Rand: ln b = r·i·e^{−i} (bei r = 1 Randpunkt mit Multiplikator i, Drehzahl 1/4) und ln b = r·e^{i−e^{i}} (bei r = 1 Multiplikator e^{i}).
+# θ_U = h₊∘sexp − id = Σ aₙqⁿ (q = e^{2πiz}, obere Welle zum Fixpunkt L₊), θ_L = h₋∘sexp − id = Σ dₙpⁿ (p = e^{−2πiz}, untere Welle zu L₋).
+aussagen:
+
+- id: kn.satz.komplex_radius
+  titel: 'Komplexe Basen: Die q-Reihe der Kneser-Welle hat Radius ≤ 1, die Singularität bei q = 1 (z = −1) bleibt — für beide Wellen'
+  art: satz
+  ebene: C
+  status: bedingt
+  bedingungen_text: 'Vorausgesetzt ist die Kneser-Darstellung für komplexe Basen (Paulsen 2019, kn.satz.paulsen_komplex, Volltext ungeprüft): sexp = F₊(z + θ_U(z)) mit 1-periodischem θ_U im oberen Bereich (ebenso unten mit F₋), und sexp ist um z = −1 holomorph. Der Schluss selbst ist vollständig.'
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fixpunkt_L, schroeder, shell_thron]
+  bereich: 'komplexe Basen $b$ ausserhalb des Shell–Thron-Gebiets, $\ln b$ Hauptzweig; Fixpunkte $L_\pm$ mit $\lambda_\pm=L_\pm\ln b$, $|\lambda_\pm|>1$; $F_\pm(s)=\Psi_\pm(\lambda_\pm^s)$ mit den Poincaré-Funktionen $\Psi_\pm$; $\theta_U=\sum a_nq^n$, $\theta_L=\sum d_np^n$'
+  aussage: |
+    (i) $F_\pm$ ist ganz und lässt den Wert 0 aus, weil $\Psi_\pm(\lambda_\pm u)=b^{\Psi_\pm(u)}\neq0$ — auch für komplexes $b$; ausserdem ist $F_\pm'\neq0$.
+    (ii) Die Potenzreihe von $\theta_U$ in $q$ hat Konvergenzradius $R\le1$, und $q=1$ (also $z=-1$, wo $\mathrm{sexp}(-1)=0$) ist singulär oder liegt ausserhalb. Ebenso für $\theta_L$ in $p$.
+    (iii) Wo $\mathrm{sexp}(z)=b^{\mathrm{sexp}(z-1)}$ gilt, ist $\mathrm{sexp}(z)\neq0$: Die Nullstelle bei $-1$ „wandert“ nicht mit der Basis, und neue Singularitäten von $\theta_U$
+    (kn.beob.rand_zusatzsingularitaet) kommen nicht von Nullstellen. Newton-„Nullstellen“ nahe $z=3$ und $z=5$ ($|\mathrm{sexp}|\approx10^{-14}$ bei 30 Stellen) sind Fehlkonvergenzen.
+  einfach: >-
+    Auch für komplexe Basen hat die Welle in Knesers Tetration eine scharfe Stelle bei den ganzen Zahlen. Der Grund ist derselbe wie bei reellen Basen: Bei −1 ist die
+    Tetration 0, und die gewöhnliche Lösung am Fixpunkt kann den Wert 0 nie annehmen.
+  beweis:
+    art: bedingt
+    text: |
+      Wäre $R>1$, so wäre $\theta_U$ auf einem Streifen um die reelle Achse holomorph. Beide Seiten von $\mathrm{sexp}(z)=F_+(z+\theta_U(z))$ wären dann auf der zusammenhängenden Menge
+      (Streifen und oberer Bereich, ohne den Schnitt) holomorph und stimmten oben überein, also auch bei $z=-1$: $F_+(-1+\theta_U(-1))=0$, Widerspruch zu (i). Dasselbe Argument mit einer
+      Umgebung von $q=1$ statt des Streifens zeigt, dass $q=1$ singulär ist, wenn $R=1$. Für $\theta_L$ genauso mit $F_-$ und $p$. Benutzt werden nur $\ln b\neq0$ und $|\lambda_\pm|>1$;
+      $\Psi'\neq0$ folgt mit dem Häufungsargument aus kn.satz.theta_singularitaet (Nullstellen $u_0\lambda^{-k}\to0$), in dem komplexes $b$ keine Rolle spielt. (iii): $b^w=e^{w\ln b}\neq0$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/05_komplexe_basen_welle/BERICHT.md, K1 und K2 mit Beweisen'}, {ref: paulsen2019, geprueft: sekundaer}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Ja, mit demselben Schluss wie (i)–(ii) von kn.satz.theta_singularitaet; neu ist nur die Feststellung, dass dort nirgends benutzt wird, dass b reell ist.'
+    f2_benutzte_voraussetzungen: 'Darstellung sexp = F₊(z + θ_U) oben (Paulsen 2019); sexp(−1) = 0; Ψ₊ ganz (|λ₊| > 1); sexp holomorph um −1.'
+    f3_spezialfall: 'Verallgemeinert kn.satz.theta_singularitaet (i)–(ii) auf komplexe Basen.'
+    f4_uebertragbar: 'Auf jede Kneser-artige Superfunktion, die an einer Stelle einen von F ausgelassenen Wert annimmt (vgl. kn.satz.zoo_singulaerer_ort).'
+    f5_neue_frage: 'Ist θ_U für komplexe b noch in der ganzen oberen Halbebene holomorph? Nicht immer: kn.beob.rand_zusatzsingularitaet.'
+  bewertung: {richtigkeit: 'Schluss vollständig; bedingt auf die Kneser-Darstellung für komplexe Basen (Literatur, Volltext ungeprüft)', neuheit: neu_ungeprueft, nutzen: 'Überträgt den Kern der Singularitätsaussage auf komplexe Basen; Ausgangspunkt für das Koeffizientengesetz dort.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.theta_singularitaet}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.paulsen_komplex}
+    - {typ: verwandt, ziel: kn.satz.minus2_hebbar}
+
+- id: kn.beob.komplex_koeffizientengesetz
+  titel: 'Komplexe Basen: Das Koeffizientengesetz aₙ ≈ [qⁿ] h₊((c + log(1−q))/ln b) gilt für beide Wellen, mit c = log(±iA/(2π ln b)); Exponent genau 1'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fixpunkt_L, fourier_moden]
+  bereich: 'komplexe Basen ausserhalb Shell–Thron: $\ln b=r\,ie^{-i}$ mit $r=2,\ 1.5,\ 1.2$ und $\ln b=r\,e^{i-e^i}$ mit $r=1.2,\ 1.1$; $h_\pm$ reguläre Abel-Funktion an $L_\pm$, $A=\mathrm{sexp}''(0)$'
+  aussage: |
+    Für die obere Welle gilt
+    $$a_n=[q^n]\,h_+\Bigl(\frac{c_U+\log(1-q)}{\ln b}\Bigr)\bigl(1+O(1/n)\bigr),\qquad c_U=\log\frac{iA}{2\pi\ln b},\quad A=\mathrm{sexp}'(0)\in\mathbb C,$$
+    mit gemessenem $n\cdot|a_n-b_n|/|a_n|\approx0.11$ ($r=2$), $0.12$ ($1.5$), $0.16$ ($1.2$) und $0.17$, $0.13$ (zweite Richtung, $r=1.1$, $1.2$) bei $n=200$ ($b_n$ = Modellkoeffizient).
+    **Exponent genau 1:** $n\ln n\,|a_n|\approx0.139,\ 0.116,\ 0.080$ und $0.095$ ($r=1.1$, zweite Richtung) bei $n=200$, langsam veränderlich; der lokale Exponent (1.18–1.25) sinkt wie im reellen Fall.
+    Die untere Welle $\theta_L$ folgt demselben Gesetz mit $h_-$ und $c_L=\log(-iA/(2\pi\ln b))$: $n\cdot$Rest $\approx0.128$ bei $n=64$ ($r=2$; nur eine Einstellung).
+    Für reelle $b$ ist $c_U=\ln(A/(2\pi\ln b))+i\pi/2$, das Gesetz von kn.satz.theta_koeffizienten. Ausnahme in der Liste: $\ln b=1.1\,ie^{-i}$ (kn.beob.rand_zusatzsingularitaet).
+  einfach: >-
+    Die Formel, mit der man die Schwingungsstärken von Knesers Welle vorhersagen kann, funktioniert auch für komplexe Basen — oben und unten, mit je einer eigenen Konstante.
+    Nur ganz nahe am Rand des Shell–Thron-Gebiets kann sie versagen.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/05_komplexe_basen_welle/BERICHT.md, K3, K4, K5 und Herleitung K3/K5; e2_welle.py, daten/welle_*.json'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe beim Eintragen (25.10.2026): e2_welle.py für ln b = 2ie^{−i} auf der neuen Linie y = 0.07 (dps 30, N = 512): n·rel. Rest 0.126 (n = 64), 0.120 (96), 0.116 (128), n ln n |aₙ| = 0.1385 (n = 128); aₙ gegen die Linie y = 0.05 relativ ≤ 2·10⁻¹⁵ bis n = 96.'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Herleitung wie im reellen Fall: θ_U = 2 + h₊(log_b log_b sexp z) − z und z ≈ i(1−q)/2π für q → 1; ein Übertragungssatz ist für komplexe b nicht ausgeführt.'
+    f2_benutzte_voraussetzungen: 'Motor fatou.gp-Fork, dps 30, Linie y = 0.05, N = 512, Gegenprobe y = 0.08 (aₙ auf 10 Stellen gleich bis n = 96); untere Welle nur dps 60, y = 0.25, N = 256. h₋ nahe der reellen Achse versagt (beide Fixpunkte haben Zweig k = 0, die Iteration landet bei L₊).'
+    f3_spezialfall: 'Verallgemeinert kn.satz.theta_koeffizienten auf komplexe Basen (dort bewiesen).'
+    f4_uebertragbar: 'Auf jede Basis ausserhalb Shell–Thron, solange θ_U in der oberen Halbebene keine weitere Singularität hat.'
+    f5_neue_frage: 'Übertragungssatz für komplexe b ausführen; zweite Einstellung und ein h₋, das nahe der Achse funktioniert, für die untere Welle.'
+  bewertung: {richtigkeit: 'numerisch, 5 Basen, Gegenprobe auf zwei weiteren Linien', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass Knesers Wellenformel kein Effekt reeller Basen ist.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: verallgemeinert, ziel: kn.satz.theta_koeffizienten}
+    - {typ: stuetzt_sich_auf, ziel: kn.satz.komplex_radius}
+    - {typ: verwandt, ziel: kn.frage.theta_exponent}
+
+- id: kn.beob.komplex_wellen_unsymmetrisch
+  titel: 'Für komplexe Basen sind obere und untere Kneser-Welle verschieden (nicht konjugiert)'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fixpunkt_L]
+  bereich: '$\ln b=2\,ie^{-i}$, $b=2.53352+4.74767i$ (ausserhalb Shell–Thron)'
+  aussage: |
+    Bei reellen Basen ist die untere Welle das Spiegelbild der oberen. Für komplexe $b$ nicht: Bei $\ln b=2\,ie^{-i}$ ist $L_+=0.18477+0.65020i$ ($|\lambda_+|=1.3519$),
+    $L_-=-0.54770-0.90505i$ ($|\lambda_-|=2.1157$), und
+    $a_0^U=22.911+3.524i$, $a_0^L=10.370-4.063i$, $|a_1^U|=0.08979$, $|a_1^L|=0.09317$, $\arg a_n^U\approx-1.47\dots-1.27$, $\arg d_n\approx+1.52\dots+1.43$.
+  einfach: >-
+    Für komplexe Basen gibt es oben und unten zwei verschiedene Fixpunkte, die verschieden stark abstossen. Darum sehen die beiden Wellen von Knesers Tetration verschieden aus.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/05_komplexe_basen_welle/BERICHT.md, K6; e2_welle.py, daten/welle_exp_2__sin_1__I_cos_1____30_0.05_512_m0_U.json, daten/welle_exp_2__sin_1__I_cos_1____60_0.25_256_m0_L.json'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Qualitativ ja: ohne Spiegelsymmetrie T(z̄) = conj T(z) gibt es keinen Grund für Konjugation; die Zahlen sind gemessen.'
+    f2_benutzte_voraussetzungen: 'Motor für komplexe Basen; untere Welle nur in einer Einstellung.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf jede nichtreelle Basis ausserhalb Shell–Thron.'
+    f5_neue_frage: 'Gibt es eine Beziehung zwischen a₀^U und a₀^L (etwa über die Funktionalgleichung oder die Mittelwertformeln)?'
+  bewertung: {richtigkeit: 'numerisch (eine Basis, untere Welle eine Einstellung)', neuheit: neu_ungeprueft, nutzen: 'Warnt davor, Formeln der reellen Basen ungeprüft zu spiegeln.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.komplex_koeffizientengesetz}
+    - {typ: verwandt, ziel: kn.satz.kneser_eigenschaften}
+
+- id: kn.beob.rand_zusatzsingularitaet
+  titel: 'Nahe dem Shell–Thron-Rand (Richtung λ → i) hat θ_U eine zusätzliche Singularität in der oberen Halbebene, bei z* ≈ 0.034 + 0.011i — das Koeffizientengesetz bricht'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fixpunkt_L, shell_thron, fourier_moden]
+  bereich: '$\ln b=1.1\,ie^{-i}$: $b=2.09072+1.41301i$, $L_+=0.47676+0.82451i$, $\lambda_+=-0.0487+1.0465i$, $|\lambda_+|=1.0477$; Vergleichsbasen $\ln b=1.2\,ie^{-i}$ und $\ln b=1.1\,e^{i-e^i}$'
+  aussage: |
+    Die Reste $r_n=a_n-b_n$ (nach Abzug des Modells aus kn.beob.komplex_koeffizientengesetz) wachsen geometrisch: $r_{n+1}/r_n\to\rho$, gemessen $|\rho|=1.0673$ bei $n=199$ (noch langsam steigend)
+    und Argument fest bei $-0.2127$. Also hat $\theta_U$ eine Singularität bei $z^*\approx0.0339+0.0104i$ (mod 1, Prony mit 1–3 Termen: $\mathrm{Im}\,z^*=0.0102$–$0.0108$) **in der oberen Halbebene**,
+    wo man $\theta_U$ für holomorph hält; der Radius der $q$-Reihe ist $R\approx0.94<1$, und das Gesetz gilt nicht mehr. Das langsame Steigen des Quotienten passt zu einer
+    logarithmischen Verzweigung, nicht zu einem Pol.
+    Beim Eintragen nachgerechnet: $\mathrm{sexp}(z)=\mathrm{sexp}(4)$ hat nahe 0 die Lösung $z=0.0338189+0.0113749i$. Der Quotiententest unterschätzt $\mathrm{Im}\,z^*$ bei
+    $\log$-artigen Singularitäten: $|r_{n+1}/r_n|\approx|\rho|\,(1-(1+1/\ln n)/n)$ mit $|\rho|=e^{2\pi\cdot0.0113749}$ sagt $1.0677$ bei $n=199$ und $1.0661$ bei $n=160$ voraus, gemessen $1.0673$ und $1.0659$;
+    der Realteil stimmt auf $4\cdot10^{-5}$. Also vermutlich $z^*$ genau dort (kn.verm.zusatzsingularitaet_bahnwert).
+    In der Richtung $\lambda\to e^i$ ($\ln b=1.1\,e^{i-e^i}$, $|\lambda_+|\approx1.047$) und bei $\ln b=1.2\,ie^{-i}$ ($|\lambda_+|=1.091$) gibt es keine solche Singularität (Gesetz hält bis $n=200$).
+  einfach: >-
+    Geht man mit der Basis nahe an den Rand des Shell–Thron-Gebiets, taucht in Knesers Welle plötzlich eine neue scharfe Stelle auf — nicht auf der Zahlengeraden, sondern knapp darüber.
+    Dann wachsen die Schwingungsstärken immer weiter, und die schöne Formel stimmt nicht mehr.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/05_komplexe_basen_welle/BERICHT.md, K7, K8 und Abschnitt „K7 Ort“; e2_welle.py, e3_prony.py; Gegenprobe g1_zstern_gegenprobe.py, daten/log_g1_zstern.txt'}]
+  nachgeprueft:
+    - {ergebnis: 'Gegenprobe beim Eintragen (25.10.2026): e2_welle.py auf der neuen Linie y = 0.06 (dps 30, N = 512): Quotienten r_{n+1}/r_n bei n = 40, 80, 120, 160 auf 8 Stellen wie bei y = 0.05; Prony (n = 100…180): z* = 0.03388 + 0.01022i (1 Term), 0.03393 + 0.01070i (2 Terme). Lösung von sexp(z) = sexp(4) mit dem Motor: 0.0338189 + 0.0113749i (Probe 9·10⁻³⁹).'}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gemessen).'
+    f2_benutzte_voraussetzungen: 'Zwei bzw. drei Linien y = 0.05, 0.06, 0.08 mit gleichen Koeffizienten bis n = 128 (10 Stellen), also kein Rechenfehler; Rauschen ≤ 10⁻³ bei n = 200 gegen |rₙ| = 70.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Vermutlich auf andere rationale Randrichtungen p/q, wenn das passende Urbild über der Achse liegt (kn.verm.zusatzsingularitaet_bahnwert).'
+    f5_neue_frage: 'z* für r = 1.15, 1.12, 1.08 verfolgen: Wann überquert es die reelle Achse? Für r → 1 braucht man ein h₊ ohne Hauptzweig-Iteration (bei r = 1.05 erreichen die Bahnen L₊ nicht), etwa über Fatou-Koordinaten.'
+  bewertung: {richtigkeit: 'numerisch, drei Linien; Lage durch eine unabhängige Newton-Rechnung bestätigt', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass Knesers Welle für komplexe Basen nicht in der ganzen oberen Halbebene holomorph sein muss.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.komplex_koeffizientengesetz}
+    - {typ: verwandt, ziel: kn.satz.paulsen_komplex}
+    - {typ: verwandt, ziel: fp.verm.knospen}
+
+- id: kn.verm.zusatzsingularitaet_bahnwert
+  titel: 'Vermutung: Die Zusatzsingularitäten von θ_U liegen über den Bahnwerten sexp(n) — bei der Basis in der Knospe 1/4 kehrt die Bahn von 0 fast zurück'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fixpunkt_L, shell_thron, hyperbolische_komponente]
+  bereich: 'komplexe Basen ausserhalb Shell–Thron; $\theta_U=h_+\circ\mathrm{sexp}-\mathrm{id}$, $F_+=\Psi_+(\lambda_+^s)$ wie in kn.satz.komplex_radius'
+  aussage: |
+    Die Singularitäten von $\theta_U$ in der oberen Halbebene liegen an Stellen, an denen $\mathrm{sexp}$ einen Wert der Bahn $0,1,b,b^b,\dots$ ($=\mathrm{sexp}(n)$, $n\ge-1$) annimmt.
+    Diese Werte sind asymptotische Werte von $F_+$ (die 0 wird ausgelassen, ist also nach Iversen asymptotisch, und $F_+(s+1)=b^{F_+(s)}$ trägt das weiter), also singuläre Werte von $h_+$ —
+    derselbe Mechanismus wie an den ganzen Zahlen (kn.satz.zoo_singulaerer_ort). Für $\ln b=1.1\,ie^{-i}$ hat $b^z$ einen anziehenden 4-Zyklus (Betrag des Multiplikators $0.524$;
+    Knospe zur Drehzahl 1/4, fp.verm.knospen), die Bahn von 0 kehrt fast zurück ($\mathrm{sexp}(3)=0.03722+0.00249i$, $\mathrm{sexp}(4)=1.03321+0.02524i$), und
+    $\mathrm{sexp}(z)=\mathrm{sexp}(4)$ hat die Lösung $z=0.0338189+0.0113749i$ knapp über der Achse — das ist $z^*$ aus kn.beob.rand_zusatzsingularitaet.
+    (Der Bericht hatte $\mathrm{sexp}(z^*)\approx1.034+0.024i$ gemessen und nur mit $0,1,b,L_\pm$ verglichen; er vermutete einen Zusammenhang mit der fast geschlossenen Bahn.)
+  einfach: >-
+    Die neue scharfe Stelle sitzt dort, wo die Tetration denselben Wert hat wie an der Stelle 4. Weil der Turm 0, 1, b, b^b, … bei dieser Basis nach vier Schritten fast wieder bei 0 ankommt,
+    liegt eine solche Stelle ganz nahe bei 0, knapp über der Zahlengeraden.
+  gegenbeispielsuche: |
+    Beim Eintragen (g1_zstern_gegenprobe.py, daten/log_g1_zstern.txt): Für die Nachbarbasen **ohne** Zusatzsingularität liegen die entsprechenden Urbilder nahe 0 **unter** der Achse:
+    $\ln b=1.2\,ie^{-i}$ (ebenfalls anziehender 4-Zyklus): Urbilder von $\mathrm{sexp}(4),\mathrm{sexp}(8),\mathrm{sexp}(12)$ bei $\mathrm{Im}\,z=-0.038,\,-0.020,\,-0.024$;
+    $\ln b=1.1\,e^{i-e^i}$ (anziehender 6-Zyklus, also auch dort eine Knospe): Urbilder von $\mathrm{sexp}(6),\mathrm{sexp}(12)$ bei $\mathrm{Im}\,z=-0.019,\,-0.009$; $\ln b=1.2\,e^{i-e^i}$: kein Bahnwert nahe 1.
+    Bei $\ln b=1.1\,ie^{-i}$ liegt ein zweites Urbild (von $\mathrm{sexp}(8)$) bei $0.04839+0.00272i$, passend zu einer zweiten, schwächeren Prony-Wurzel nahe $0.048$–$0.049$.
+    Nicht geprüft: ob jedes solche Urbild über der Achse wirklich singulär ist (es kommt auf den Zweig von $h_+$ an), und weitere Basen.
+  quellen:
+    - {ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/05_komplexe_basen_welle/BERICHT.md, K10 und Offene Frage 1; Gegenprobe beim Eintragen: g1_zstern_gegenprobe.py, daten/log_g1_zstern.txt'}
+    - {ref: iversen1914, stelle: 'Satz von Iversen: ausgelassene Werte ganzer Funktionen sind asymptotisch', geprueft: nein}
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; die Lage stimmt numerisch, der Zweig ist nicht verfolgt.'
+    f2_benutzte_voraussetzungen: 'Iversen (ausgelassene Werte ganzer Funktionen sind asymptotisch); F₊′ ≠ 0 (keine kritischen Werte); Lage aus Prony gegen Newton (Abstand 3·10⁻⁵ im Realteil, Imaginärteil im erwarteten Bias des Quotiententests).'
+    f3_spezialfall: 'Überträgt den Mechanismus von kn.satz.zoo_singulaerer_ort (θ singulär, wo die Superfunktion die Bahn eines singulären Werts trifft) von der reellen Achse in die obere Halbebene.'
+    f4_uebertragbar: 'Auf jede rationale Randrichtung p/q: in der Knospe kehrt die Bahn von 0 nach q Schritten fast zurück, und ein Urbild von sexp(q) liegt nahe 0.'
+    f5_neue_frage: 'Bei welchem Abstand vom Rand überquert das Urbild die Achse? Gibt es Basen, für die unendlich viele Urbilder (sexp(4m), m → ∞, gegen ein Urbild des Zykluspunkts) über der Achse liegen?'
+  bewertung: {richtigkeit: 'Vermutung; Lage für eine Basis numerisch bestätigt, Gegenrichtung an drei Basen konsistent', neuheit: neu_ungeprueft, nutzen: 'Erklärt die überraschende Zusatzsingularität mit einem bekannten Mechanismus.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: analog_zu, ziel: kn.satz.zoo_singulaerer_ort}
+    - {typ: stuetzt, ziel: kn.beob.rand_zusatzsingularitaet}
+    - {typ: verwandt, ziel: fp.verm.knospen}
+    - {typ: verwandt, ziel: fp.verm.knospen_drehzahl}
+
+- id: kn.verm.a0_rand
+  titel: 'Vermutung: Der Mittelwert a₀ der oberen Welle wächst zum Shell–Thron-Rand wie etwa 7/ln|λ₊|'
+  art: vermutung
+  ebene: C
+  status: vermutung
+  niveau: forschung
+  objekte: [kneser_T, theta_kneser, fixpunkt_L, shell_thron]
+  bereich: 'obere Welle $\theta_U$, $a_0=M[\theta_U]$; Basen $\ln b=r\,ie^{-i}$ ($r=2,1.5,1.2,1.1$) und $\ln b=r\,e^{i-e^i}$ ($r=1.2,1.1$)'
+  aussage: |
+    $a_0=22.9,\ 38.7,\ 82.7,\ 150.9$ für $r=2,\ 1.5,\ 1.2,\ 1.1$ in der Richtung $\lambda\to i$ und $90.9,\ 166.4$ für $r=1.2,\ 1.1$ in der Richtung $\lambda\to e^i$.
+    Etwa $a_0\propto1/\ln|\lambda_+|$: $a_0\ln|\lambda_+|\approx6.9,\ 7.2,\ 7.2,\ 7.0$ bzw. $7.6,\ 7.6$. Vermutung: $a_0\ln|\lambda_+|$ hat beim Grenzübergang zum Rand einen endlichen,
+    von der Richtung abhängigen Grenzwert.
+  einfach: >-
+    Je näher die Basis am Rand des Shell–Thron-Gebiets liegt, desto grösser wird der Mittelwert der Welle — ungefähr umgekehrt proportional dazu, wie stark der Fixpunkt noch abstösst.
+  gegenbeispielsuche: |
+    Sechs Basen in zwei Richtungen, alle mit Produkt zwischen 6.9 und 7.6. Näher am Rand ($r=1.05$) bricht die Rechnung von $h_+$ ab (die Hauptzweig-Iteration von $\log_b$ erreicht $L_+$ nicht),
+    dort ungeprüft. Nachgerechnet beim Eintragen: $r=1.1$, $\lambda\to i$: $a_0=150.901+4.147i$, $|\lambda_+|=1.04767$, Produkt $7.03$.
+  quellen: [{ref: diese_arbeit, stelle: 'forschung/runde_2026_10_25/05_komplexe_basen_welle/BERICHT.md, K9 und K11; e2_welle.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (Skalierung aus sechs Werten).'
+    f2_benutzte_voraussetzungen: 'Motor dps 30, y = 0.05; h₊ über Hauptzweig-Iteration.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Auf reelle Basen b ↓ η (dort |λ| → 1, Vergleich mit dem Verhalten von Kneser nahe η).'
+    f5_neue_frage: 'Woher kommt die Konstante, und hängt sie nur von arg λ ab? Rechnung mit Fatou-Koordinaten statt Hauptzweig-Iteration näher am Rand.'
+  bewertung: {richtigkeit: 'Vermutung aus sechs Basen', neuheit: neu_ungeprueft, nutzen: 'Erste Skalierungsregel für Knesers Welle am Rand von Shell–Thron.', nutzen_stufe: gering}
+  kanten:
+    - {typ: verwandt, ziel: kn.beob.komplex_koeffizientengesetz}
+    - {typ: verwandt, ziel: fp.satz.shell_thron}

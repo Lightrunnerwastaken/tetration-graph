@@ -1,0 +1,82 @@
+# Theorie-Blöcke zur Runde 25.10.2026, Bericht 02 „Die Schwankung von arg aₙ der θ-Welle“ (forschung/runde_2026_10_25/02_theta_argument/BERICHT.md).
+# Bezeichnungen σ, h, F, θ: kn.def.theta_welle; Φ(s) = arg(1+θ′(s+i0)), σₙ = 1 + slog(A/(2πn)).
+
+kn.satz.theta_phase_achse:
+  worum: |
+    Welchen Winkel hat die Ableitung $1+\theta'$ von Knesers Welle auf der reellen Achse, und wo kann man ihn sonst ablesen?
+  genau: |
+    $\Phi(s)=\arg h'(\mathrm{sexp}(s-2)+i0)=\arg h'(Y+i\pi)-\pi$ mit $Y=\ln(-\mathrm{sexp}(s-2))$; eine Periode in $s$ ist die ganze Gerade $\mathrm{Im}\,w=\pi$. Im Mittel ist $\Phi$ (stetiger Zweig) null.
+  warum: |
+    Auf der Achse ist $1+\theta'=h'(\mathrm{sexp})\cdot\mathrm{sexp}'$ und $\mathrm{sexp}'>0$; das Argument kommt also nur von $h'$. Die Kettenregel $h'(w)=h'(\mathrm{Log}\,w)/w$
+    lässt es für positive $w$ unverändert; erst beim Logarithmus einer negativen Zahl springt man auf die Höhe $i\pi$.
+  beispiel: |
+    $\Phi(\tfrac12)=-0.0165$; bei $s=\tfrac12$ ist $\mathrm{sexp}(-1.5)=\ln\mathrm{sexp}(-0.5)=-0.69603$, also $Y=-0.36237$ — ein Punkt nahe der Mitte der Geraden.
+  bilder: []
+  einordnung: |
+    Mittelwert aus [[kn.satz.theta_mittelwerte]] und [[kn.satz.ableitung_nullstellenfrei]]; Anwendung: [[kn.satz.theta_phase_koeffizienten]].
+
+kn.satz.theta_phase_koeffizienten:
+  worum: |
+    Wovon hängt der Winkel der Fourier-Koeffizienten $a_n$ von θ ab? Etappe 2 zeigte nur, dass er nicht zur Ruhe kommt.
+  genau: |
+    $\arg a_n\approx\pi+\Phi(\sigma_n)+\arctan\bigl(\pi/(2(\ln n-\ln(A/2\pi)))\bigr)$ mit $\sigma_n\approx1/(2\pi n)$; der Fehler ist etwa $1/(\ln n\ln\ln n)$.
+  warum: |
+    Der führende Term ist $-h'(v_n)/n$ mit $v_n=\ln(A/2\pi n)+i\pi/2$ ([[kn.satz.theta_koeffizienten]]). Ein Logarithmusschritt bringt $v_n$ fast auf die reelle Stelle $\ln(A/2\pi n)$,
+    und die ist $\mathrm{sexp}(\sigma_n-2)$ — dort liest [[kn.satz.theta_phase_achse]] den Winkel von $1+\theta'$ ab.
+  beispiel: |
+    Bei $\ln\ln n=30$ stimmt die Formel mit dem führenden Term auf $10^{-14}$; bei $n=4096$ nur auf $0.05$.
+  bilder: []
+  einordnung: |
+    Beantwortet den offenen Punkt von [[kn.frage.theta_exponent]]; Randverhalten: [[kn.beob.theta_phase_randkopien]].
+
+kn.beob.theta_phase_selbstaehnlich:
+  worum: |
+    Kann man den Winkel von $a_n$ direkt bei der Zahl $n$ ablesen statt bei $1/(2\pi n)$?
+  genau: |
+    Ja, als $\arg h'(n+i0)-\pi/\ln\ln n$ — aber nur weg von den Turmstellen $\ln\ln\ln n\approx e,e^e,\dots$.
+  warum: |
+    Zwei weitere Logarithmen führen $v_n$ in die Nähe der reellen Stelle $\ln\ln\ln n$; dort ist $h'$ glatt, ausser an den Turmpunkten $0,1,e,e^e,\dots$, wo $h'$ singulär ist.
+  beispiel: |
+    Bei $\ln\ln n=1000$ ist der Fehler $5\cdot10^{-4}$, bei $\ln\ln\ln n=e$ dagegen $1.17$.
+  bilder: []
+  einordnung: |
+    Grobe Form von [[kn.satz.theta_phase_koeffizienten]].
+
+kn.beob.theta_phase_verlauf:
+  worum: |
+    Wie sieht der Winkel $\Phi$ der Welle über eine Periode aus?
+  genau: |
+    Streng fallend von $+1.097$ (bei $s=0.02$) auf $-0.993$ (bei $0.98$), $\Phi(\tfrac12)=-0.0165$; $|1+\theta'|$ ist nahe $\tfrac12$ minimal.
+  warum: |
+    Gemessen aus den Fourier-Koeffizienten knapp über der Achse und auf die Achse extrapoliert; nahe den ganzen Zahlen wird $|1+\theta'|$ gross, weil θ dort singulär ist.
+  beispiel: |
+    Basis 2: $+1.084$ bis $-1.002$, $\Phi(\tfrac12)=-0.012$ — fast dieselbe Kurve.
+  bilder: []
+  einordnung: |
+    Daten zu [[kn.satz.theta_phase_achse]]; Ähnlichkeit der Basen wie in [[kn.beob.theta_basis_quasiuniversal]].
+
+kn.beob.theta_phase_randkopien:
+  worum: |
+    Was passiert mit $\Phi$ ganz nahe an den Enden der Periode?
+  genau: |
+    Bei $s\to0^+$ wiederholt sich $\Phi$ als $\Phi(\mathrm{slog}\ln Y)+\pi$, bei $s\to1^-$ ohne Verschiebung.
+  warum: |
+    Für grosses $Y$ liegt $\ln Y+i\pi/Y$ fast auf der reellen Achse bei $\ln Y$; dort ist $\arg h'$ wieder ein Wert von $\Phi$ an einer anderen Stelle der Periode — eine Ebene tiefer.
+  beispiel: |
+    $\Phi(Y=e^{16})=4.251$, also schon mehr als $\pi$ über dem Wert in der Periodenmitte.
+  bilder: []
+  einordnung: |
+    Erklärt die Schwankung aus [[kn.beob.theta_fourier_algebraisch]]; führt zu [[kn.verm.theta_phase_unbeschraenkt]].
+
+kn.verm.theta_phase_unbeschraenkt:
+  worum: |
+    Bleibt der stetig verfolgte Winkel von $a_n$ beschränkt?
+  genau: |
+    Vermutlich nicht: jede tiefere Ebene des Randgesetzes addiert $\pi$.
+  warum: |
+    Wäre der Wertebereich $R$ beschränkt und gälte das Randgesetz auf jeder Ebene, so müsste $R+\pi\subseteq\bar R$ sein — unmöglich.
+  beispiel: |
+    Die zweite Ebene liegt erst bei $\ln Y\approx e^{e^e}\approx3.8\cdot10^{6}$.
+  bilder: []
+  einordnung: |
+    Aus [[kn.beob.theta_phase_randkopien]]; Ausgangsfrage [[kn.frage.theta_exponent]].

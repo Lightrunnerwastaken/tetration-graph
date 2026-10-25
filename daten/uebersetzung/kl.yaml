@@ -1097,6 +1097,53 @@
       At base $\eta$, $\eta^x$ touches the line $y=x$ at $e$. The ordinary tetration runs toward $e$ from below. From above there is
       also a natural solution: it starts at $e^2$, is already $e^e\approx15.15$ at $x=1$ and comes arbitrarily
       close to $e$ for $x\to-\infty$. J. D. Fox named it “cheta” in the Tetration forum in 2009. Like the upper solution below $\eta$, it is an entire function.
+- id: kl.satz.eps0_b_gegen_1
+  quelle_hash: 45e5b0e8834c
+  theorie_hash: cdcb4ee4f445
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: For b → 1⁺, ε₀ = 1 − 1/ln(1/ln b) + small remainder, and T′(0) ≈ (a − 1)·ln(1/λ)
+    aussage: |
+      $$T_b'(0)\approx(a-1)\ln\frac1\lambda,\qquad \varepsilon_0(b)=1-\frac1{\ln(1/\ln b)}+R(b),$$
+      with measured $R(b)/\ln b=1.27,\ 1.34,\ 1.38,\ 1.42$ (still drifting, presumably with a factor in $\ln\ln$).
+      $b=1+10^{-6}$: $\varepsilon_0=0.927619011$ versus the formula $0.927617589$; $T'(0)=1.38155238735\cdot10^{-5}$ versus $1.38155\cdot10^{-5}$. $b=1+10^{-4}$: remainder $1.38\ln b$.
+      Hence $\varepsilon_0\to1$ for $b\to1^+$, but only logarithmically slowly.
+    bereich: regular tetration at the attracting fixed point $a$ ($b^a=a$), multiplier $\lambda=a\ln b$, $b\to1^+$; $\varepsilon_0$ as in gr.satz.elastizitaet_rand
+    beweis:
+      luecken:
+      - The error of the linearization (Koenigs coordinate) is only estimated; the measured remainder R/ln b drifts (1.27 → 1.42), so the error
+        order O(ln b) is not secured.
+      text: |
+        For $b\to1$ the attracting fixed point $a$ moves toward 1, and $\lambda=a\ln b\to0$. The iteration is linear up to $O(\ln b)$: $T(x)\approx a-(a-1)\lambda^x$, hence
+        $T'(0)\approx(a-1)\ln(1/\lambda)$. With $a-1\approx\lambda\approx\ln b$ we get $\ln T'(0)\approx\ln\ln b+\ln\ln(1/\ln b)$, and differentiating with respect to $\ln\ln b$ gives $1-1/\ln(1/\ln b)$.
+    bewertung:
+      nutzen: Explains the upper end of the ε₀ table.
+      richtigkeit: Sketch; leading term confirmed to 1.4·10⁻⁶
+    einfach: 'For bases just above 1 the boundary number ε₀ becomes almost 1 — but very slowly, with the logarithm of the logarithm. Reason: The
+      tetration is then almost a simple approach to the fixed point, a − (a − 1)·λˣ.'
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: linearization at the strongly attracting fixed point.'
+      f2_benutzte_voraussetzungen: Regular tetration (Koenigs) at the attracting fixed point; a − 1 ≈ λ ≈ ln b.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: 'To every height: for fixed y ∈ (−1, 0), T_b(y) → 1 (step at −1), matching T_b(½) ≈ 1 + ε − ε^{3/2} (kl.beob.eta_taylor).'
+      f5_neue_frage: Exact form of the remainder R(b) — a term ln b · ln ln(1/ln b)?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B10 and section “B10 b → 1⁺”; d2_elastizitaet.py, a4_eps0_tabelle.py
+  en_theorie:
+    beispiel: |
+      $b=1+10^{-6}$: formula $0.9276176$, measured $0.9276190$.
+    einordnung: |
+      Upper end of the table [[gr.beob.eps0_tabelle]]; regular tetration: [[kl.satz.regulaer]].
+    genau: |
+      $\varepsilon_0=1-1/\ln(1/\ln b)$ plus a remainder of size about $1.4\ln b$; $T'(0)\approx(a-1)\ln(1/\lambda)$.
+    warum: |
+      Just above 1 the fixed point $a\approx1+\ln b$ attracts very strongly (multiplier $\lambda\approx\ln b$), and the tetration is almost $a-(a-1)\lambda^x$. Differentiating at 0 gives
+      $T'(0)\approx\ln b\cdot\ln(1/\ln b)$, and its percentage change in $\ln b$ is $1-1/\ln(1/\ln b)$.
+    worum: |
+      What does the boundary number $\varepsilon_0=\partial\ln T_b'(0)/\partial\ln\ln b$ from [[gr.satz.elastizitaet_rand]] do when the base goes to 1?
 - id: kl.satz.eta_digamma
   quelle_hash: ce14924ae647
   theorie_hash: aead9e46ad5c
@@ -1434,6 +1481,59 @@
     worum: |
       The wave in the classical base change and the damped oscillation at the common fixed point are the same phenomenon. How long the wave lives depends only on
       how close the multiplier $|\lambda|$ is to $1$. At $|\lambda|=1$ it becomes immortal.
+- id: kl.satz.kanalgesetz_vorwaertssumme
+  quelle_hash: 3df13b8b0ba1
+  theorie_hash: 282daf18d33f
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Channel law: just above η the forward sum of the base derivative grows like (π/2)·√(2η/e)·(b − η)^{−3/2}'
+    aussage: |
+      The forward sum at the point 0 needs only $T'(0)$ and the integer towers:
+      $$S_b(0)=\sum_{k\ge0}r(k)=\frac1{b\ln^2b}\Bigl[\frac{\ln b}{T'(0)}+\sum_{j\ge0}\frac1{T'(j)}\Bigr],\qquad T'(j)=T'(0)\prod_{i=1}^{j}\ln b\,(b\uparrow\uparrow i),$$
+      equivalently $S_b(0)=S^{\rm Kobi}_b(1)/T_b'(0)$ with $S^{\rm Kobi}$ from gr.satz.turm_pde. For $\delta\to0^+$,
+      $$S_b(0)\sim\frac\pi2\sqrt{\frac{2\eta}{e}}\;\delta^{-3/2}=1.61946527\,\delta^{-3/2},$$
+      with a correction $1-c\,\delta$, $c\approx0.644$. Measured ratio to the leading term: $0.94432$, $0.98151$, $0.99365$, $0.99808$, $0.99936$, $0.99981$, $0.999936$ at
+      $\delta=10^{-1},\,3\cdot10^{-2},\,10^{-2},\,3\cdot10^{-3},\,10^{-3},\,3\cdot10^{-4},\,10^{-4}$; $(1-\text{ratio})/\delta=0.6432$, $0.6436$, $0.6436$ at $10^{-3}$, $3\cdot10^{-4}$, $10^{-4}$.
+    bereich: $b=\eta+\delta$, $\delta\to0^+$; $r(x)=1/(b\ln^2b\,T'(x-1))$ as in gr.beob.wackeln_basen; Kneser
+    beweis:
+      luecken:
+      - T′ is replaced in the channel by q(T), the sum by the integral, and the terms outside the channel are dropped; the measurement shows a
+        correction of order δ (not δ^{1/2}), c ≈ 0.644 is not derived.
+      text: |
+        In the bottleneck at $e$, $q(y)=b^y-y\approx\alpha+\beta(y-e)^2$ with $\alpha=e^2\delta/\eta$ (from $\ln b=1/e+\delta/\eta+O(\delta^2)$) and $\beta=1/(2e)$. There $T'\approx q(T)$, so
+        $\sum_j1/T'(j)\approx\int dx/T'=\int dy/q(y)^2=\pi/(2\alpha^{3/2}\beta^{1/2})$. With $1/(b\ln^2b)\to e^2/\eta$ we get $S\sim\frac\pi2\sqrt{2\eta/e}\,\delta^{-3/2}$.
+    bewertung:
+      nutzen: Quantifies how the base derivative explodes at η⁺.
+      richtigkeit: Sketch; leading term confirmed to 6·10⁻⁵ (δ = 10⁻⁴)
+    einfach: Just above η the tetration creeps for a long time through a bottleneck at e. The sum that carries the base derivative therefore becomes
+      huge — like one over (b − η) to the power 3/2, with a constant that can be computed from the shape of the bottleneck.
+    nachgeprueft:
+    - ergebnis: 'Cross-check 25.10.2026: T′(0) at η + 10⁻³ recomputed with a new setting (dps 32, step 10⁻¹⁰), a3_kanal.py run on it: S(0) = 51179.047757596,
+        ratio 0.9993567761 — same as in the report.'
+    pruefung:
+      f1_folgt_unmittelbar: No; saddle-node computation as for the passage time.
+      f2_benutzte_voraussetzungen: Kneser only via T′(0) (engine); bottleneck shape of b^y − y at e; channel approximation T′ ≈ q(T).
+      f3_spezialfall: Same bottleneck integrals as for the passage time N = π√(2η/(e δ)) (kl.verm.eta_glatt_nicht_analytisch) — here with q² instead
+        of q.
+      f4_uebertragbar: To every saddle-node passage (pentation at η₅).
+      f5_neue_frage: Derive the constant c ≈ 0.644 of the correction; does the limit of T′_b(0) for b → η⁺ then also follow from integer towers?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/23_basisableitung/BERICHT.md, B15 and section “B15 channel law”; a3_kanal.py
+  en_theorie:
+    beispiel: |
+      $b=\eta+10^{-3}$: $S_b(0)=51179.05$, that is $0.99936$ times the leading term $1.6195\cdot10^{4.5}$.
+    einordnung: |
+      The same bottleneck computation as [[gr.satz.wurzel_eta]] and [[br.satz.sattel_knoten]]; base derivative exactly at $\eta$: [[kl.satz.c1_noerlund]].
+    genau: |
+      $S_b(0)\sim\frac\pi2\sqrt{2\eta/e}\,(b-\eta)^{-3/2}=1.6195\,(b-\eta)^{-3/2}$, correction $1-0.644\,(b-\eta)$.
+    warum: |
+      In the bottleneck one step is almost $q(y)=b^y-y\approx\alpha+\beta(y-e)^2$ with $\alpha\propto b-\eta$, and $T'\approx q(T)$. The sum of the $1/T'$ becomes the integral $\int dy/q^2$, and that is
+      $\pi/(2\alpha^{3/2}\beta^{1/2})$ — hence the power $-3/2$ (for the passage time $\int dy/q$ it is $-1/2$).
+    worum: |
+      Just above $\eta$ the tetration creeps for a long time through the bottleneck at $e$. How large does the forward sum $S_b(0)=\sum_kr(k)$ then become, which carries the base derivative ([[gr.beob.wackeln_basen]])?
 - id: kl.satz.koenigs_basiswechsel
   quelle_hash: 54056096e88c
   theorie_hash: ede5a8a2f1ae
@@ -2082,11 +2182,11 @@
       One can also pose the base change the other way around: not “which height does this value have?” but “which value belongs to the same height?”. Below $\eta$ this
       translation of values is simply a power in Koenigs coordinates.
 - id: kl.verm.eta_glatt_nicht_analytisch
-  quelle_hash: 3546f7dc1b38
+  quelle_hash: e31faf7864ca
   theorie_hash: abbba3f6a8a2
   herkunft:
     modell: sonnet
-    datum: '2026-10-18'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: T_b(x) is infinitely differentiable in the base at η, but not analytic — the defect sits on the regular side
@@ -2104,7 +2204,8 @@
       f1_folgt_unmittelbar: No; summary of three measurements.
       f2_benutzte_voraussetzungen: kl.beob.kneser_fortsetzung_regulaer, kl.beob.eta_taylor, kl.beob.regulaer_flach_singulaer.
       f3_spezialfall: 'Interpretation via parabolic implosion: Kneser for b > η as the Douady–Lavaurs torus coordinate.'
-      f4_uebertragbar: To η transitions of higher ranks (pentation at η₅).
+      f4_uebertragbar: 'At η₅ (the construction change of hexation, not of pentation) the picture does not fit: there a jump θ ~ 10⁻⁵ (kn.beob.hexation_sprung_eta5);
+        at η₄ pentation is analytic (kn.beob.pentation_analytisch_eta4).'
       f5_neue_frage: Is T^K = H exact? Constant A in E⁻ ≈ exp(−A/√(η−b)) and relation to the Écalle–Voronin invariants of eᵘ − 1.
     bewertung:
       nutzen: 'Answers kl.frage.eta_analytisch numerically: smooth, not analytic.'

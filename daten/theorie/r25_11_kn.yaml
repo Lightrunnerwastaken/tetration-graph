@@ -1,0 +1,62 @@
+# Theorie-Blöcke: Kenngrössen der Berührung und Asymptotik von η_r (Runde 25.10.2026, Bericht 11). F_r = H_r(η_r,·), a_k = F_r^{(k)}(e_r)/k!.
+
+kn.satz.kritische_rate_log:
+  worum: |
+    Wie schnell läuft die nächste Rechenart an der Grenzbasis $\eta_r$ gegen den Berührpunkt $e_r$ — genauer als „wie $1/k$“?
+  genau: |
+    $e_r-H_{r+1}(\eta_r,k)=1/\bigl(\beta_r(k+\iota_r\ln k+C_r+o(1))\bigr)$ mit $\beta_r=a_2$ und dem iterativen Residuum $\iota_r=1-a_3/a_2^2$.
+  warum: |
+    In der Koordinate $w=\beta_r(x-e_r)$ ist die Abbildung $w+w^2+cw^3+\dots$; die Funktion $-1/w+(1-c)\log(-w)$ wächst bei jedem Schritt um $1+O(w^2)$, und diese Fehler sind summierbar.
+  beispiel: |
+    $r=3$: $e-{}^k\eta\approx2e/k-\tfrac{2e}3\,\ln k/k^2$.
+  bilder: []
+  einordnung: |
+    Verschärft [[kn.satz.kritische_rate]]; Zahlen: [[kn.beob.iota_raenge]], [[kn.beob.beta_raenge]]; allgemein: [[it.satz.parabolische_rate]].
+
+kn.beob.iota_raenge:
+  worum: |
+    Die zweite Kennzahl jeder Berührung: das iterative Residuum $\iota_r$.
+  genau: |
+    $\iota_3=1/3$, $\iota_4\ldots\iota_8=-0.394,\ -0.552,\ -0.601,\ -0.606,\ -0.593$; Minimum bei $r=7$.
+  warum: |
+    Gemessen über Cauchy-Integrale von $F_r$ auf Kreisen um $e_r$; die Grösse ist unter glatten Koordinatenwechseln invariant.
+  beispiel: |
+    $r=6$: drei Einstellungen (Radius 0.1, 0.05, 0.03) geben $\iota_6=-0.6006192688985848$.
+  bilder: []
+  einordnung: |
+    Geht in [[kn.satz.kritische_rate_log]] ein; Grenzbasen: [[kn.beob.eta7_eta8]].
+
+kn.beob.beta_raenge:
+  worum: |
+    Wie stark ist jede Stufe im Berührpunkt gekrümmt?
+  genau: |
+    $\beta_r=0.184,\ 0.293,\ 0.377,\ 0.443,\ 0.496,\ 0.537$ für $r=3\ldots8$, wachsend mit fallenden Zuwächsen.
+  warum: |
+    Gemessen wie $\iota_r$; vier der sechs Werte stehen unabhängig schon im Graphen.
+  bilder: []
+  einordnung: |
+    Konstante in [[kn.satz.kritische_rate]]; Grenzbild: [[kn.verm.grenzprofil_rampe]].
+
+kn.verm.eta_r_log:
+  worum: |
+    Wie schnell gehen die Grenzbasen $\eta_r$ gegen 2?
+  genau: |
+    Vermutet: $2-\eta_r\sim C/(r\ln r)$ mit $C\approx2.20$; dann geht der lokale Exponent wie $1+1/\ln r$ gegen 1.
+  warum: |
+    $(2-\eta_r)\,r\ln r$ ist von $r=3$ bis $8$ fast konstant geworden (Zuwächse halbieren sich); andere Normierungen driften.
+  beispiel: |
+    Vorhersage $\eta_9\approx1.88883$ gegen $1.88914$ aus dem Potenzgesetz.
+  bilder: []
+  einordnung: |
+    Konkurriert mit [[kn.beob.tpid10_gesetz]]; Ziel: [[kn.verm.tpid10]]; ähnliche Form in [[kn.verm.leiter_rate]].
+
+kn.gescheitert.e_potenzgesetz:
+  worum: |
+    Gibt es für die Berührhöhen $e_r$ ein Gesetz wie für $\eta_r$?
+  genau: |
+    Nein, nicht mit sechs Gliedern: alle einfachen Formen sind instabil, freie Grenzfits liegen über 4.
+  warum: |
+    Der lokale Exponent von $4-e_r$ steigt noch; die Folge ist offenbar weit von ihrer Asymptotik entfernt.
+  bilder: []
+  einordnung: |
+    Zu [[kn.verm.tpid10]]; Verhältnis $(4-e_r)/(2-\eta_r)$: [[kn.gescheitert.konvexitaetsweg]].

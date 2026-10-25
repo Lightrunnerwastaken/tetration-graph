@@ -115,10 +115,14 @@ aussagen:
   niveau: forschung
   objekte: [kneser_T, theta_kneser]
   aussage: |
-    Paulsen–Cowgill ohne die Grenzwertbedingung bei $i\infty$, Halbebenen-Fassung. Ansatz: $\theta_T=h\circ T-z$ ist dann auf der oberen Halbebene bis auf harmlose Log-Punkte ($T=L$)
-    periodisch holomorph; zu zeigen wäre, dass $q=e^{2\pi iz}=0$ keine wesentliche Singularität sein kann. Alle geprüften Verbiegungen $\mathrm{sexp}_K\circ(\mathrm{id}+p)$ mit ganzem,
-    nicht konstantem $p$ haben Verzweigungspunkte in $H$ ($z+p(z)=-2$ hat je Periodenstreifen $\sim2N$ Lösungen); nicht ausgeschlossen ist, dass alle auf Nebenblättern liegen.
+    Paulsen–Cowgill ohne die Grenzwertbedingung bei $i\infty$, Halbebenen-Fassung. Ansatz: $\theta_T=h\circ T-z$ ist dann auf der oberen Halbebene bis auf Log-Punkte ($T=L$)
+    und Stellen, an denen $T$ singuläre Werte von $\sigma$ (vermutlich $0,1,e,e^e,\dots$) umläuft, periodisch holomorph (br.satz.enden_klassifikation); zu zeigen wäre, dass $q=e^{2\pi iz}=0$ keine wesentliche Singularität sein kann. Alle geprüften Verbiegungen $\mathrm{sexp}_K\circ(\mathrm{id}+p)$ mit ganzem,
+    nicht konstantem $p$ haben Verzweigungspunkte in $H$ ($z+p(z)=-2$ hat je Periodenstreifen $\sim2N$ Lösungen); für 48 trigonometrische Verbiegungen liegt numerisch belegt je ein Verzweigungspunkt auf dem Hauptblatt
+    (br.beob.hauptblatt_singularitaet_trig, br.verm.verbiegung_hauptblatt).
     Teilfrage: Ist für jede Tetration $\ne$ Kneser sogar $\sup_x\rho_T(x)<\infty$? Dann wäre schon „$\rho_T$ unbeschränkt“ kennzeichnend.
+    **Stand 25.10.2026:** Die fehlende Bedingung bei $i\infty$ ist genau „$p_T$ eindeutig und $o(e^{2\pi\,\mathrm{Im}\,z})$“ (br.satz.halbebene_liouville_scharf); statt des Grenzwerts genügt „nahe $L$
+    in einem Halbstreifen“ (br.satz.schroeder_kugel_genuegt); jede echte Verbiegung verlässt mit $\sigma$ die obere Halbebene (br.satz.verbiegung_schwarz); die möglichen Enden sind klassifiziert,
+    natürlichster Kandidat für ein Gegenbeispiel ist ein vertauschtes Kneser (br.frage.vertauschtes_kneser).
   einfach: >-
     Reicht es für die Eindeutigkeit, dass die Tetration in der rechten Halbebene der komplexen Zahlen glatt ist? Das ist offen, und an dieser Frage
     hängt, ob es eine einfache reelle Kennzeichnung gibt.
@@ -127,6 +131,8 @@ aussagen:
     - {typ: verwandt, ziel: kn.verm.tk_c2}
     - {typ: verwandt, ziel: kn.satz.paulsen_cowgill}
     - {typ: verwandt, ziel: br.frage.bohr_mollerup}
+    - {typ: verwandt, ziel: br.satz.halbebene_liouville_scharf}
+    - {typ: verwandt, ziel: br.frage.vertauschtes_kneser}
 
 - id: br.satz.slog_nie_total_monoton
   titel: 'slog′ ist für keine Tetration auf einem Intervall total monoton und nie log-konkav (keine Pólya-Frequenz-Funktion)'
@@ -219,7 +225,7 @@ aussagen:
     f2_benutzte_voraussetzungen: 'Holomorphie von Kneser auf $\mathbb C\setminus(-\infty,-2]$; Reihenkomposition, zwei Wege auf 12 Stellen gleich.'
     f3_spezialfall: 'Bestätigt br.satz.taylorradius_halbebene (E) an Beispielen.'
     f4_uebertragbar: 'Auf jede Störung mit ganzem, nicht konstantem $p$ (Argumentprinzip), soweit die Lösungen auf dem Hauptblatt liegen.'
-    f5_neue_frage: 'Gibt es eine Verbiegung, deren Verzweigungspunkte alle auf Nebenblättern liegen?'
+    f5_neue_frage: 'Gibt es eine Verbiegung, deren Verzweigungspunkte alle auf Nebenblättern liegen? Für trigonometrische Polynome nein (48 Fälle, br.beob.hauptblatt_singularitaet_trig); allgemein br.verm.verbiegung_hauptblatt.'
   bewertung: {richtigkeit: 'numerisch, zwei unabhängige Rechenwege', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass die lokale Bedingung in der Praxis sehr trennscharf ist.', nutzen_stufe: mittel}
   kanten:
     - {typ: stuetzt, ziel: br.satz.taylorradius_halbebene}

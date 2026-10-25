@@ -626,6 +626,7 @@ aussagen:
   formen:
     - {tex: '\frac{d}{dx}\bigl(x\uparrow\uparrow x\bigr)=D_x(x)+T_x''(x)', notiz: 'Ableitung des Selbst-Turms x↑↑x (Forum tid 789): Basis- plus Höhenableitung'}
     - {tex: '\partial_a({}^xa)=\frac1a\sum_{k=1}^{x}(\ln a)^{k-1}\prod_{j=0}^{k}{}^{x-j}a', notiz: 'Robbins 2009 (tid 337), dieselbe Summe anders gezählt'}
+    - {tex: 'E(x+1)=(1+E(x))\ln T(x+1),\ E=b\ln b\,D/T', notiz: 'logarithmische Form (gr.satz.elastizitaet_stufe)'}
   beweis:
     art: vollstaendig
     text: |
@@ -709,7 +710,7 @@ aussagen:
     f1_folgt_unmittelbar: 'Nein, Messung.'
     f2_benutzte_voraussetzungen: 'Kneser-Werte aus dem Fork (b ± 10⁻⁷, Richardson); S als Vorwärtssumme auf 48 Stellen.'
     f3_spezialfall: 'Infinitesimale Fassung von bw.satz.phasengesetz.'
-    f4_uebertragbar: 'Jede Basis über η; die Spanne fällt von 2 zu e.'
+    f4_uebertragbar: 'Jede Basis über η; die Spanne fällt von 1.5·10⁻³ (knapp über η) über 5.7·10⁻⁴ (2) bis 7·10⁻⁹ (10⁴), relativ zu u von 0.64 % auf 0.50 % (gr.beob.wackeln_basen).'
     f5_neue_frage: 'Sind die Fourier-Koeffizienten von p die Basisableitungen der Basiswechsel-Moden (bw.beob.modenabfall)?'
   bewertung: {richtigkeit: 'numerisch (Periodizität auf 10⁻³²)', neuheit: neu_ungeprueft, nutzen: 'Zeigt, dass Kneser nicht die Familie der Forumsgleichung ist, und bindet das an den Basiswechsel.', nutzen_stufe: mittel}
   quellen: [{ref: forum_tid417}, {ref: forum_levenstein2009}, {ref: diese_arbeit}]
@@ -1120,11 +1121,15 @@ aussagen:
     f1_folgt_unmittelbar: Ja.
     f2_benutzte_voraussetzungen: 'Nur Wachstum des Turms (b > η); der Wert C_b nur ganze Höhen.'
     f3_spezialfall: 'Ja: Müller–Schleicher-Summe mit Summand → 0.'
-    f4_uebertragbar: 'Auf jede rasch wachsende Folge (Engel-artige Reihen); ob C_b transzendent ist, ist offen.'
-    f5_neue_frage: 'Ist $C_2$ irrational? (Glieder $2^{-2\uparrow\uparrow k}$: liouvilleartig schnell — vermutlich transzendent.)'
+    f4_uebertragbar: 'Auf jede rasch wachsende Folge (Engel-artige Reihen). Für ganze b ≥ 2 ist C_b eine Liouville-Zahl, also transzendent (ar.satz.kehrwertsumme_liouville); für b = e und nicht ganze b offen (ar.frage.kehrwertsumme_e).'
+    f5_neue_frage: 'Ist $C_e$ transzendent, ist $C_b$ für rationales, nicht ganzes $b$ irrational? ($C_2$ ist eine Liouville-Zahl: ar.satz.kehrwertsumme_liouville.)'
   gegenbeispielsuche: 'exp.eta_digamma: $C_2$, $C_e$, $C_{10}$ auf 25 Stellen; Basis 2 mit Kneser-$T_2(1/2)=1.4587818160\ldots$: Verhältnis $(C-R(x))/2^{-T(x)}$ = 1.435, 1.064, 1.000… bei x = 1/2, 3/2, 5/2.'
   bewertung: {richtigkeit: vollständig, neuheit: folklore, nutzen: 'Einfache, schöne Konstante über η; Gegenstück zur divergierenden Summe der Türme.', nutzen_stufe: gering}
+  nachgeprueft:
+    - {gegen: ar.satz.kehrwertsumme_liouville, ergebnis: 'Aussage und Beweis unberührt; nur f4/f5 angepasst.'}
   quellen: [{ref: justus_synthese_jul, stelle: '§13, Theorem candidate E'}, {ref: diese_arbeit}]
+  kanten:
+    - {typ: verwandt, ziel: ar.satz.kehrwertsumme_liouville}
 
 - id: gr.satz.superwurzel
   titel: Superwurzel — welche Zahl hoch sich selbst gibt x?

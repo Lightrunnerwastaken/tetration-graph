@@ -1,0 +1,96 @@
+# Theorie-Blöcke: Runde 25.10.2026, Bericht 04 — die Momentenfamilie nichtlinear (forschung/runde_2026_10_25/04_momentenfamilie/BERICHT.md).
+# Bezeichnungen: T = sexp∘φ, θ_T = h∘T − id, M = ∫₀¹, c = M[θ_T], Γ_T = θ_T((0,1)); siehe br.satz.endlich_viele_reichen_nicht.
+
+br.satz.momente_cauchy:
+  worum: |
+    Die Momentenfamilie $M[\theta_T^k]=M[\theta_T]^k$ sind unendlich viele Gleichungen. Kann man sie zu einer zusammenfassen?
+  genau: |
+    Sie gilt genau dann, wenn $\int_0^1dx/(\zeta-\theta_T(x))=1/(\zeta-c)$ auf der äusseren Komponente von $\mathbb C\setminus\Gamma_T$ ist.
+  warum: |
+    Weit links ist $1/(\zeta-w)$ eine Laplace-Transformierte; vertauscht man die Integrale, steht dort die Laplace-Transformierte von $M[e^{-t\theta_T}]=\sum(-t)^kM[\theta_T^k]/k!$.
+    Die Momentenfamilie sagt genau, dass diese Summe $e^{-tc}$ ist.
+  beispiel: |
+    Für Kneser stimmt es auf $7\cdot10^{-22}$; ein Doppelgänger, der nur $k=2$ erfüllt, verfehlt es um $2.4\cdot10^{-10}$ — so viel, wie das dritte Moment vorhersagt.
+  bilder: []
+  einordnung: |
+    Ausgangsfrage [[br.frage.momentenfamilie]]; Folgerung im Jordan-Fall [[br.satz.momente_jordan]].
+
+br.satz.sehnenkriterium:
+  worum: |
+    Wann schneidet sich die Wellenkurve $\theta_T$ einer Tetration nicht selbst?
+  genau: |
+    Wenn $\sup|1/\varphi'-1|<m^*=0.3010$, also für $0.7686<\varphi'<1.4306$.
+  warum: |
+    Alle Tetrationen laufen über denselben Bogen, nur verschieden schnell. Ein Doppelpunkt braucht eine waagrechte Sehne der Kneser-Kurve, deren Länge $\mu$ genau durch
+    die Schwankung der Geschwindigkeit ausgeglichen wird; ist die Schwankung kleiner als $m^*$ mal der Abstand, geht das nicht.
+  beispiel: |
+    $p=0.09\sin2\pi x$ hat $p'$ bis $0.57$ und ist trotzdem doppelpunktfrei — das Kriterium ist nur hinreichend.
+  bilder: []
+  einordnung: |
+    Zahl $m^*$: [[br.beob.kneser_kurve_sehnen]]; Anwendung: [[br.kor.momente_umgebung]].
+
+br.beob.kneser_kurve_sehnen:
+  worum: |
+    Wie sieht die Kurve aus, die Knesers Welle $\theta$ auf der reellen Achse zeichnet?
+  genau: |
+    Doppelpunktfrei, einmal positiv um $a_0$, jede waagrechte Gerade höchstens zweimal geschnitten; $m^*=0.3010$.
+  warum: |
+    Gemessen auf Polygonen mit 400 bis 800 Punkten; an der Spitze (bei den ganzen Zahlen) läuft die Kurve sehr langsam nach unendlich, dort hilft nur die Lokalform.
+  beispiel: |
+    Die engste Stelle liegt fast genau gegenüber: $t=0.2414$, $s=0.7412$.
+  bilder: []
+  einordnung: |
+    Benutzt in [[br.satz.sehnenkriterium]]; Lokalform: [[kn.satz.theta_singularitaet]].
+
+br.satz.momente_jordan:
+  worum: |
+    Erzwingt die Momentenfamilie Kneser, wenn die Wellenkurve sich nicht selbst schneidet?
+  genau: |
+    Ja (Skizze): dann ist $\theta_T(x)=G(e^{2\pi i(x+\beta)})$ mit der konformen Abbildung $G$ des Innengebiets, also keine negativen Moden, also Kneser.
+  warum: |
+    Die Cauchy-Transformierte ist aussen $1/(\zeta-c)$; ihr Sprung über die Kurve liefert innen eine Funktion mit festem Pol bei $c$. In der Kreisscheibe zurückgeholt wird sie zu
+    einer holomorphen Funktion mit reellen, positiven Randwerten — und die ist konstant. Das legt die Geschwindigkeit fest.
+  beispiel: |
+    Kneser selbst: $G(q)=\theta(z)$ mit $q=e^{2\pi iz}$, $\beta=0$.
+  bilder: []
+  einordnung: |
+    Aus [[br.satz.momente_cauchy]] und [[br.satz.reelle_kennzeichnung]]; offen bleibt [[br.frage.momente_doppelpunkt]].
+
+br.kor.momente_umgebung:
+  worum: |
+    Eine ausdrückliche Umgebung von Kneser, in der die Momentenfamilie allein Kneser erkennt.
+  genau: |
+    $0.7686<\varphi'<1.4306$ und $M[\theta_T^k]=M[\theta_T]^k$ für alle $k$ $\Rightarrow$ $T=$ Kneser (Skizze).
+  warum: |
+    In dieser Umgebung ist die Wellenkurve doppelpunktfrei, und dort greift der Jordan-Satz.
+  beispiel: |
+    Die Etappe-4-Doppelgänger haben $p'$ bis $0.60$ bzw. $0.67$ und liegen ausserhalb.
+  bilder: []
+  einordnung: |
+    Aus [[br.satz.sehnenkriterium]] und [[br.satz.momente_jordan]]; Teilantwort auf [[br.frage.momentenfamilie]].
+
+br.beob.gegenbeispiel_doppelpunkt:
+  worum: |
+    Warum widersprechen die bekannten Doppelgänger von Kneser dem Jordan-Satz nicht?
+  genau: |
+    Ihre Wellenkurven haben je einen Doppelpunkt mit einer kleinen Schleife oben.
+  warum: |
+    Die Störungen sind klein, aber steil ($p'$ bis 0.6); die Geschwindigkeit schwankt so stark, dass zwei Stellen der Kurve aufeinandertreffen.
+  beispiel: |
+    Gegenbeispiel a: Doppelpunkt bei $x\approx0.372$ und $0.614$.
+  bilder: []
+  einordnung: |
+    Die Beispiele stammen aus [[br.satz.endlich_viele_reichen_nicht]]; offener Fall: [[br.frage.momente_doppelpunkt]].
+
+br.frage.momente_doppelpunkt:
+  worum: |
+    Der letzte offene Fall der Momentenfrage.
+  genau: |
+    Gibt es $T\neq$ Kneser mit Doppelpunkt in $\Gamma_T$ und $M[\theta_T^k]=M[\theta_T]^k$ für alle $k$?
+  warum: |
+    Auf einer sich schneidenden Kurve gibt es viele Verteilungen mit derselben Cauchy-Transformierten aussen; der Jordan-Schluss bricht.
+  beispiel: |
+    Kandidaten: Störungen mit $\sin4\pi x$ und grossem $p'$, an denen man viele Momente zugleich nullsetzt.
+  bilder: []
+  einordnung: |
+    Rest von [[br.frage.momentenfamilie]] nach [[br.satz.momente_jordan]].

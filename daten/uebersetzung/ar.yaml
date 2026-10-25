@@ -44,22 +44,23 @@
     worum: |
       Is $T_e(\tfrac12)$ perhaps a simple fraction or a simple algebraic number? With almost 2000 digits one can rule this out for huge denominators and heights.
 - id: ar.beob.keine_relationen
-  quelle_hash: 130fc995dca3
+  quelle_hash: e0b233c25e20
   herkunft:
     modell: sonnet
-    datum: '2026-10-14'
+    datum: '2026-10-25'
   geprueft: nein
   en:
     titel: 'No formula with π, e, γ, ζ(3), Γ(¼) …: 50 tetration constants checked to 160 digits'
     aussage: |
       Checked to 160 reliable digits (levels dps 120/160/200): Kneser values for the bases $e$ and 2 ($T_e(\tfrac12)=1.6463542337511945809\ldots$, $T(-\tfrac12)$,
       $\mathrm{slog}$ values), the Taylor coefficients $a_1\ldots a_{15}$ of $\mathrm{sexp}_e$ at 0, $\mathrm{slog}'(0)$, $\mathrm{slog}''(0)$,
-      $\int_0^1T_e=1.7145219588906204882\ldots$, $\int_{-1}^0T_e$, the constants $D$ and $0!_2$ of the exponential factorial, $\mathrm{prodtet}_e(\tfrac12)$,
+      $\int_0^1T_e=1.7145219588906204882\ldots$, $\int_{-1}^0T_e$, the constant $D$ and $0!_2$ of the exponential factorial, $\mathrm{prodtet}_e(\tfrac12)$,
       Fatou constants and the θ coefficients. Against 23 classical constants (π, e, $e^e$, γ, ln 2, ln 3, ln π, ζ(3), Catalan, Γ(¼), Γ(⅓), Ω, $L$, …)
       there is **no integer relation with coefficient norm below about $4\cdot10^5$**; against small bases of five constants such as $\{1,\pi,e,\gamma,\ln2\}$ none below
       $10^{22}$; no product of powers below $10^{9}$; no algebraic number of degree $\le6$ with height below $10^{19}$.
       Near-hits vanish at full precision: $\mathrm{slog}'(0)=0.915946$ versus Catalan $0.915966$, $T_e(\tfrac12)$ versus $\tfrac{19}8\ln2$,
       $0!_2$ versus γ. The method rediscovers three built-in control formulas.
+      Not independent are $\mathrm{slog}'(0)=1/a_1$ and $\mathrm{slog}''(0)=(a_1^2-2a_2)/a_1^3$ (ar.satz.jet_identitaeten) — rational relations that a linear relation search does not reveal.
     einfach: We computed 50 numbers from tetration to exactly 160 digits and had the computer search for formulas with π, e, Euler's constant
       and many others. There are none — at least none with reasonably small numbers in them. A few numbers look familiar in their first digits,
       but that is coincidence.
@@ -75,6 +76,52 @@
       richtigkeit: numerical, rigorous lattice bounds
     quellen:
     - stelle: forschung/identitaeten_2026_10_14/BERICHT_ETAPPE1.md, Table 2; a_relationen.py, daten/relationen.json
+- id: ar.beob.kf_population
+  quelle_hash: 9fed09917235
+  theorie_hash: 76dd3fbc3640
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: '47 Kneser values, 21 485 certified continued-fraction terms: like random numbers in every test'
+    aussage: |
+      In total 21 485 certified partial quotients (mean 457 per value). Gauss–Kuzmin $\chi^2=12.0$ (8 degrees of freedom, $p=0.15$; 40 random pools of the same size: $2.1$–$23.2$),
+      Khinchin mean $2.664$ (pools $2.645$–$2.718$, expected $2.685$), Lévy $1.180\pm0.006$ (expected $1.1866$, $z=-1.06$), largest partial quotient $154\,488$ (at $T_e(\tfrac23)$, $p=0.18$),
+      effective irrationality exponent $\mu_{\max}\le2.231$ (median $2.120$ versus $2.131$ for random numbers). Controls are recognized: $e$ ($\chi^2=780$), $\sqrt2$ ($2995$).
+      Functional equation between the stored values satisfied to $10^{-519}$. Derivative constants ($\mathrm{sexp}_e'(0)$, $a_2$, $T''(0)$, $\int T$, $0!_2$, $\mathrm{sexp}_2'(0)$) to 150 digits:
+      generic, $\mu_{\max}\le2.15$; $\mathrm{sexp}_e'(0)=[1;10,1,8,1,2,1,1,2,1,6,3,\dots]$.
+    bereich: $T_e$ at 26 rational points, $\mathrm{slog}_e$ at 12, $T_2$ at 5, $\mathrm{slog}_2$ at 4; data with 520 digits ($\ge494$ true), continued
+      fraction of the interval $[x\pm10^{-470}]$
+    bewertung:
+      nutzen: Rules out structures as for e or quadratic irrationals in the first ~460 terms.
+      richtigkeit: numerical, rigorous in the sense of the interval arithmetic of the continued fractions
+    einfach: We examined the continued fractions of 47 Kneser numbers. In every statistic they look like those of randomly chosen numbers — no
+      sign of a hidden formula. But such a statistic can prove nothing.
+    nachgeprueft:
+    - ergebnis: 'Cross-check 25.10.2026: e1_kf_statistik.py recomputed, result file bit-identical (χ² = 12.03, Khinchin 2.6643, Lévy 1.1800, μ_max
+        2.2308); e3_ableitungen_kf.py: same continued fractions, cross-check against the 160 level passed, μ_max ≤ 2.1483.'
+    pruefung:
+      f1_folgt_unmittelbar: No (measured).
+      f2_benutzte_voraussetzungen: Interval continued fraction (only terms that are equal for both interval endpoints); correctness of the 494
+        digits (functional equation as cross-check).
+      f3_spezialfall: Extends ar.beob.ausschluss (one value, 1936 terms) to a population.
+      f4_uebertragbar: To every new constant (pentation, base η).
+      f5_neue_frage: By ar.satz.metrisch_fast_alle this is exactly the expected behavior — only a Kneser-specific argument could show more.
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B12, B13; e1_kf_statistik.py, e3_ableitungen_kf.py, cache/e1_ergebnis.json
+    - stelle: Part A (one value, 1936 terms)
+  en_theorie:
+    beispiel: |
+      $\sqrt2=[1;2,2,2,\dots]$ stands out immediately with $\chi^2=2995$, the Kneser population has $\chi^2=12.0$ at 8 degrees of freedom.
+    einordnung: |
+      Extends [[ar.beob.ausschluss]].
+    genau: |
+      47 values, 21 485 certified terms: Gauss–Kuzmin, Khinchin, Lévy and irrationality exponent behave as for random numbers.
+    warum: |
+      Measured, with an interval method that counts only certain terms. By [[ar.satz.metrisch_fast_alle]] exactly this is to be expected.
+    worum: |
+      Do Kneser values have a hidden structure that one would see in the continued fraction (as for $e$ or $\sqrt2$)?
 - id: ar.frage.e_hoch_e
   quelle_hash: 4853cefd39bb
   theorie_hash: 4f9db302b632
@@ -177,6 +224,34 @@
     worum: |
       Remarkably little is known about the numbers in towers. Even such simple questions as “Is ${}^4\pi$ an integer?” are open — not because they sound hard,
       but because one cannot even compute ${}^4\pi$ precisely enough to check.
+- id: ar.frage.kehrwertsumme_e
+  quelle_hash: a948e1dbdeb8
+  theorie_hash: 8864d7f969be
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Open: Is e⁻¹ + e⁻ᵉ + e^(−e^e) + … transcendental?'
+    aussage: |
+      Is $C_e=\sum_{k\ge1}1/(e\uparrow\uparrow k)=e^{-1}+e^{-e}+e^{-e^e}+\dots=0.43386773918949380481\ldots$ transcendental, or at least irrational? Is $C_b$ irrational for rational, non-integer $b$?
+      The Liouville route from ar.satz.kehrwertsumme_liouville fails because the partial sums are not fractions; one would need a measure of the algebraic independence of
+      $e,e^e,e^{e^e}$, which nobody has. The remainder after three terms is $e^{-e^{e^e}}\approx e^{-3.8\cdot10^6}$.
+    einfach: For integer bases the sum of the reciprocals of the tower is certainly transcendental. For base e one does not know — although after
+      three terms the sum is finished to millions of digits.
+    naechste_frage: Already e^e is open (ar.frage.e_hoch_e); under Schanuel e, e^e, e^{e^e} are independent, but a quantitative measure of independence
+      is missing even then.
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B15, open question 1
+  en_theorie:
+    einordnung: |
+      Constant from [[gr.satz.kehrwert_turmsumme]].
+    genau: |
+      Open whether $e^{-1}+e^{-e}+e^{-e^e}+\dots$ is transcendental or even merely irrational.
+    warum: |
+      The partial sums are not fractions; for Liouville's trick one would need a quantitative independence of $e,e^e,e^{e^e}$ — already $e^e$ is open ([[ar.frage.e_hoch_e]]).
+    worum: |
+      For integer bases the reciprocal sum of the tower is transcendental ([[ar.satz.kehrwertsumme_liouville]]). And for base $e$?
 - id: ar.konstr.ef_profinit
   quelle_hash: b906f2c50afa
   theorie_hash: 3ec91e548bf8
@@ -410,6 +485,50 @@
     worum: |
       An auxiliary lemma for the sharper counting bound: A polynomial in $z$ and $T(z)$ cannot have too many zeros in a disk — otherwise it would be too small to have, at the point $z=1$
       (where $T(1)=e$), the value that $e$, as a transcendental number, forces.
+- id: ar.satz.ableitungsorbit
+  quelle_hash: 5d4c08ee08de
+  theorie_hash: 663ad8c2e165
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Derivatives at integer points: T′(0) and T′(1) = e·T′(0) are not both algebraic; for integer base at most one algebraic T′(n)'
+    aussage: |
+      From $T'(x+1)=\ln b\cdot T(x+1)\,T'(x)$ follows $T'(0)=\ln b\,T'(-1)$ and $T'(n)=T'(-1)\,(\ln b)^{n+1}\prod_{k=0}^{n}T(k)$.
+      (i) Base $e$: $T'(-1)=T'(0)$, $T'(1)=e\,T'(0)$, $T'(n)=T'(0)\prod_{k=1}^nT(k)$; hence $T'(0)$ and $T'(1)$ are **not both algebraic**.
+      (ii) Algebraic base $b\notin\{0,1\}$: among $T'(-1),T'(0),T'(1)$ at most one number is algebraic (quotients $\ln b$, $b\ln b$, $b\ln^2b$).
+      (iii) Integer base $b\ge2$: the whole sequence $(T'(n))_{n\ge-1}$ contains at most one algebraic number and lies in $\mathbb Q(T'(-1),\ln b)$ (transcendence degree $\le2$).
+    bereich: every differentiable real solution with $T(0)=1$ and $T'(0)\ne0$
+    beweis:
+      text: |
+        Chain rule (gr.satz.kettenregel), $T(-1)=0$, $T(0)=1$. The quotients $T'(n)/T'(m)$ are $(\ln b)^{n-m}$ times a number from $\mathbb Q(T(m+1),\dots,T(n))$: for base $e$ with $n=1,m=0$ equal to $e$,
+        for integer base $(\ln b)^{n-m}$ times a positive integer, for algebraic base with $n,m\in\{-1,0,1\}$ equal to $\ln b$, $b\ln b$, $b\ln^2b$. These are transcendental
+        (Hermite–Lindemann: $\ln b$ is transcendental for algebraic $b\ne1$; an algebraic $(\ln b)^m\cdot q$ would make $\ln b$ algebraic).
+    bewertung:
+      nutzen: Safe, simple arithmetic of the slopes.
+      richtigkeit: complete
+    einfach: 'The slope of the tetration at integer points is simply related: for base e it is exactly e times as large at 1 as at 0. Therefore
+      the two slopes cannot both be “nice” algebraic numbers.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, chain rule plus Hermite–Lindemann.
+      f2_benutzte_voraussetzungen: Differentiability, T(0) = 1, T′(0) ≠ 0 (otherwise all T′(n) = 0 would be algebraic); no Kneser property.
+      f3_spezialfall: Counterpart of ar.satz.orbitschranke for derivatives instead of values.
+      f4_uebertragbar: All differentiable solutions; for base e sharpened under Schanuel (ar.satz.schanuel_ableitungen).
+      f5_neue_frage: Is sexp′(0) = 1.0917673512583… algebraically independent of e, e^e, …?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B3–B5
+  en_theorie:
+    beispiel: |
+      Kneser: $T_e'(0)=1.0917673512583\ldots$, $T_e'(1)=e\cdot1.0917673512583\ldots=2.9677\ldots$.
+    einordnung: |
+      Sharpened under Schanuel: [[ar.satz.schanuel_ableitungen]]; values instead of slopes: [[ar.satz.orbitschranke]].
+    genau: |
+      For base $e$, $T'(1)=e\,T'(0)$, so they are not both algebraic. For integer base at most one of the $T'(n)$ is algebraic.
+    warum: |
+      The chain rule gives $T'(x+1)=\ln b\,T(x+1)\,T'(x)$. The quotient of two slopes at integer points is therefore a product of powers of $\ln b$ and tower values — and $e$ resp. $\ln b$ are transcendental.
+    worum: |
+      What is known for certain about the numbers $T'(0)$, $T'(1)$, … — without unproved conjectures?
 - id: ar.satz.algebraische_basen
   quelle_hash: 9e38e437a74a
   theorie_hash: ae9749136b67
@@ -500,16 +619,12 @@
       On the graph of a tetration lie only very few points with simple coordinates. If one counts rational points with numerator and denominator up to $H$, their number grows
       more slowly than any power of $H$, however small.
 - id: ar.satz.ef_liouville
-  quelle_hash: e63f6cc41618
+  quelle_hash: ba542dc15855
   theorie_hash: 155093f1eb80
   herkunft:
     modell: sonnet
-    datum: '2026-10-12'
-  geprueft:
-    beweis: nein
-    intern: nein
-    kern: zweitpruefung
-    theorie: nein
+    datum: '2026-10-25'
+  geprueft: nein
   en:
     beweis:
       text: |
@@ -520,7 +635,8 @@
       f5_neue_frage: 'no'
       f1_folgt_unmittelbar: Yes, Liouville criterion.
       f2_benutzte_voraussetzungen: Only the growth of EF.
-      f3_spezialfall: 'Yes: Σ 1/(b↑↑n) is a Liouville number for the same reason.'
+      f3_spezialfall: 'Yes: Σ 1/(b↑↑n) is a Liouville number for integer b for the same reason (ar.satz.kehrwertsumme_liouville, with explicit
+        continued fraction); for b = e open (ar.frage.kehrwertsumme_e).'
     bewertung:
       nutzen: A secure transcendence result from the tower world.
       richtigkeit: complete
@@ -620,6 +736,47 @@
     warum: Modulo $p^k$, $EF(n)$ depends on $n\bmod p^k$ and on the exponent modulo $\lambda(p^k)$ — hence the chain. Modulo $2^k$, $EF(n)$ for
       large $n$ is only $[n\text{ ungerade}]$, hence the capping.
     worum: How do the residues of the exponential factorial $EF(n)=n^{EF(n-1)}$ repeat?
+- id: ar.satz.fixpunkt_transzendent
+  quelle_hash: 136e8ceeb20a
+  theorie_hash: 849f70e93c89
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: The fixed point L = −W(−1) and the multiplier are transcendental; for algebraic base every non-real fixed point
+    aussage: |
+      (i) $L=-W_0(-1)=0.3181315+1.3372357\,i$ (and every other fixed point of $e^z$) is transcendental, and so is the multiplier $\lambda=L$.
+      (ii) For algebraic $b\notin\{0,1\}$, every non-real fixed point $L_b$ of $b^z$ is transcendental.
+      (iii) For algebraic $b$ with non-rational fixed point (e.g. $b=2$), the transcendence of $\lambda_b$ is unconditionally open; Schanuel $\Rightarrow$ $\lambda_b$ transcendental for every algebraic $b\notin\{0,1\}$.
+    bereich: $b^L=L$; multiplier $\lambda_b=L_b\ln b$, $\lambda e^{-\lambda}=\ln b$
+    beweis:
+      text: |
+        (i) If $L$ were algebraic ($\ne0$), then $e^L=L$ would be algebraic — contradiction to Hermite–Lindemann. (ii) If $L_b$ were algebraic, it would not be rational (non-real), hence
+        $b^{L_b}$ transcendental by Gelfond–Schneider; but $b^{L_b}=L_b$. (iii) $\lambda e^{-\lambda}=\ln b$. If $\lambda,\ln b$ are independent over $\mathbb Q$, Schanuel gives
+        $\mathrm{trdeg}\,\mathbb Q(\lambda,\ln b,e^\lambda,b)\ge2$; for algebraic $\lambda$ and $b$, $e^\lambda=\lambda/\ln b$, so the degree is $\le1$. Dependent: $\lambda=q\ln b$ gives
+        $b^q=q$, $L_b=q$ rational and $\lambda=\ln q$ transcendental.
+    bewertung:
+      nutzen: Secures the arithmetic of the basic constants of Kneser's construction.
+      richtigkeit: complete; (iii) stated conditionally
+    einfach: The complex fixed point L around which Kneser's tetration is built is not an algebraic number — this follows from classical theorems.
+    pruefung:
+      f1_folgt_unmittelbar: Yes (Hermite–Lindemann, Gelfond–Schneider); (iii) short Schanuel computation.
+      f2_benutzte_voraussetzungen: Only the fixed-point equation.
+      f3_spezialfall: Yes, classical transcendence theorems.
+      f4_uebertragbar: To fixed points of the iterates (periodic points) only under Schanuel.
+      f5_neue_frage: Is λ₂ = L₂ ln 2 unconditionally transcendental (no algebraic λ with λe^{−λ} = ln 2)?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B11
+  en_theorie:
+    einordnung: |
+      Fixed points: [[fp.satz.lambert]]; tools: [[ar.satz.hermite_lindemann]], [[ar.satz.gelfond_schneider]].
+    genau: |
+      $L=-W_0(-1)$ is transcendental, and so is every non-real fixed point of $b^z$ for algebraic base. The multiplier $L_b\ln b$ is so under Schanuel.
+    warum: |
+      $e^L=L$: an algebraic number $L\ne0$ would by Hermite–Lindemann have a transcendental $e^L$. For $b^L=L$, Gelfond–Schneider applies likewise.
+    worum: |
+      Are the basic constants of Kneser's construction — the fixed point $L$ and the multiplier — perhaps simple numbers?
 - id: ar.satz.funktional_ks
   quelle_hash: 2330ea5d457c
   theorie_hash: 130b8ba7b00c
@@ -743,24 +900,119 @@
     worum: |
       The most important classical theorem on the exponential function and numbers: If one plugs an algebraic number (other than $0$) into $e^x$, an algebraic number never comes out.
       For towers to base $e$ this is almost the only tool that works without conjectures.
+- id: ar.satz.jet_identitaeten
+  quelle_hash: 37bbac946af4
+  theorie_hash: 9c51ec028e24
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'slog′(0) = 1/a₁ and slog″(0) = (a₁² − 2a₂)/a₁³: the Taylor coefficients at −1 and of slog are polynomials in those at 0'
+    aussage: |
+      $T(-1+h)=\log T(h)$, hence $T'(-1)=a_1$, $T''(-1)=2a_2-a_1^2$ and
+      $$\mathrm{slog}'(0)=\frac1{a_1},\qquad \mathrm{slog}''(0)=\frac{a_1^2-2a_2}{a_1^3}.$$
+      In general all Taylor coefficients of $T$ at $-1$ and of $\mathrm{slog}$ at $0$ lie in $\mathbb Q(a_1,a_2,\dots)$, those of $T$ at $n\ge1$ in $\mathbb Q(e,e^e,\dots,T(n))[a_1,a_2,\dots]$.
+      Consequence: In the relation search ar.beob.keine_relationen, $\mathrm{slog}'(0)$ and $\mathrm{slog}''(0)$ were not constants independent of $a_1,a_2$ (the relation is rational, not linear).
+    bereich: base $e$, every solution $T(h)=1+a_1h+a_2h^2+\dots$ analytic at $0$ with $a_1\ne0$
+    beweis:
+      text: |
+        $T(-1+h)=\log(1+a_1h+a_2h^2+\dots)=a_1h+(a_2-\tfrac12a_1^2)h^2+\dots$, coefficients with rational numbers. $\mathrm{slog}$ is at $0$ the inverse of $T$ at $-1$:
+        $\mathrm{slog}'(0)=1/T'(-1)$, $\mathrm{slog}''(0)=-T''(-1)/T'(-1)^3$. For $n\ge1$: $T(n+h)=\exp T(n-1+h)=T(n)\exp\bigl(T(n-1+h)-T(n-1)\bigr)$, induction.
+    bewertung:
+      nutzen: Cleans up the list of constants for relation searches.
+      richtigkeit: complete; confirmed to 199 digits
+    einfach: If one knows the Taylor series of the tetration at 0, one also knows those at −1 and that of the superlogarithm at 0 — with formulas
+      made of fractions, without new constants.
+    nachgeprueft:
+    - ergebnis: 'Cross-check 25.10.2026: e4_jet_identitaeten.py recomputed: all differences < 10⁻¹⁹⁹ at Kneser values (200 digits).'
+    pruefung:
+      f1_folgt_unmittelbar: Yes (logarithm of a power series, inverse series).
+      f2_benutzte_voraussetzungen: Analyticity at 0, base e (for base b the factor 1/ln b is added).
+      f3_spezialfall: Inversion formula for power series (Lagrange).
+      f4_uebertragbar: 'Every base: then the coefficients lie in ℚ(ln b, a₁, a₂, …).'
+      f5_neue_frage: Which Kneser constants are really independent? (Clean up the list for future relation searches.)
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B7; e4_jet_identitaeten.py
+  en_theorie:
+    beispiel: |
+      $\mathrm{slog}_e'(0)=1/1.0917673512583\ldots=0.9159460564995\ldots$.
+    einordnung: |
+      Cleans up the constant list of [[ar.beob.keine_relationen]]; values: [[gr.beob.kneser_ableitung]].
+    genau: |
+      $\mathrm{slog}'(0)=1/a_1$, $\mathrm{slog}''(0)=(a_1^2-2a_2)/a_1^3$; all Taylor coefficients at $-1$ and of slog at 0 are rational expressions in $a_1,a_2,\dots$.
+    warum: |
+      $T(-1+h)=\log T(h)$, and slog is the inverse function of $T$ at $-1$.
+    worum: |
+      Which Kneser constants are really distinct? The derivatives of the superlogarithm at 0 depend on those of the tetration at 0.
+- id: ar.satz.kehrwertsumme_liouville
+  quelle_hash: b940e4eb8835
+  theorie_hash: 6774e4192f45
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: The sum of the reciprocals of a tower of integers is a Liouville number — with a fully explicit continued fraction
+    aussage: |
+      With $e_1=1$, $e_{k+1}=b^{e_k}$ (so $b\uparrow\uparrow k=b^{e_k}$), the partial sum $S_N=\sum_{k\le N}b^{-e_k}$ has the reduced denominator $q_N=b^{e_N}$, and
+      $$0<C_b-S_N<2\,q_N^{-e_{N+1}/e_N},\qquad \frac{e_{N+1}}{e_N}=\frac{b^{e_N}}{e_N}\to\infty .$$
+      Hence $C_b$ is a **Liouville number** (irrationality exponent $\infty$) and transcendental. The continued fraction arises by folding: if $S_N=[0;a_1,\dots,a_n]$ with even $n$
+      and $x_N=b^{e_{N+1}-2e_N}$, then $S_{N+1}=[0;a_1,\dots,a_n,\,x_N-1,\,1,\,a_n-1,\,a_{n-1},\dots,a_1]$ (zeros merged with their neighbors). Example
+      $$C_2=[0;1,4,2,1,255,3,4,1,\,2^{65504}-1,\,5,3,255,1,2,4,1,\dots],$$
+      for $b\ge3$ it begins $[0;\,b-1,\,1,\,b^{b-2}-1,\,b,\,b^{b^b-2b}-1,\,1,\,b-1,\,b^{b-2}-1,\,1,\,b-1,\dots]$.
+    bereich: integer base $b\ge2$; $C_b=\sum_{k\ge1}1/(b\uparrow\uparrow k)$ as in gr.satz.kehrwert_turmsumme
+    beweis:
+      text: |
+        $b^{e_N}S_N=\sum_{k\le N}b^{e_N-e_k}\equiv1\pmod b$, so $q_N=b^{e_N}$ is the reduced denominator. The remainder is $<2b^{-e_{N+1}}=2q_N^{-e_{N+1}/e_N}$, and $e_{N+1}/e_N\to\infty$:
+        for every $k$ there are infinitely many fractions with $|C_b-p/q|<q^{-k}$ — Liouville. Continued fraction: folding lemma $p/q+(-1)^n/(xq^2)=[a_0;a_1,\dots,a_n,x,-a_n,\dots,-a_1]$
+        ($q=q_n$), here with $b^{-e_{N+1}}=1/(q_N^2x_N)$, $x_N$ an integer because $b^{e_N}\ge2e_N$; normalizing with $[\dots,x,-y]=[\dots,x-1,1,y-1]$ (for odd $n$ first $a_n\to a_n-1,1$).
+    bewertung:
+      nutzen: Answers the question about C_2 left open in the graph (gr.satz.kehrwert_turmsumme).
+      recherche: Liouville elementary; folding lemma classical (van der Poorten–Shallit 1992, details unchecked).
+      richtigkeit: complete
+    einfach: '1/2 + 1/4 + 1/16 + 1/65536 + … is not a root of an equation with integer coefficients: The partial sums are fractions that hit the
+      sum so unnaturally well that by Liouville this works only for transcendental numbers. One also sees it in the continued fraction: huge terms
+      such as 2^65504 − 1 appear there.'
+    nachgeprueft:
+    - ergebnis: 'Cross-check 25.10.2026: e2_kehrwertsumme_liouville.py recomputed (exact fractions): folding rule holds for b = 2 up to N = 5,
+        b = 3, 4, 5, 7 up to N = 3, b = 10 up to N = 2.'
+    pruefung:
+      f1_folgt_unmittelbar: Yes, Liouville criterion as in ar.satz.ef_liouville; the continued fraction from the classical folding lemma (van
+        der Poorten–Shallit).
+      f2_benutzte_voraussetzungen: Only b an integer (denominator exactly a power of b) and the tower growth.
+      f3_spezialfall: Liouville numbers of the type Σ b^{−e_k} with e_{k+1}/e_k → ∞; folded continued fractions.
+      f4_uebertragbar: To every sum Σ 1/a_k of integers a_k with log a_{k+1}/log(a₁⋯a_k) → ∞; not to b = e or non-integer b (ar.frage.kehrwertsumme_e).
+      f5_neue_frage: Is C_e transcendental? → ar.frage.kehrwertsumme_e
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B1; e2_kehrwertsumme_liouville.py
+    - stelle: folding lemma
+  en_theorie:
+    beispiel: |
+      $S_4=\tfrac{53249}{65536}$, and $C_2-S_4\approx2^{-65536}$; the term $2^{65504}-1$ appears in the continued fraction.
+    einordnung: |
+      Answers the question left open in [[gr.satz.kehrwert_turmsumme]]; the same trick as in [[ar.satz.ef_liouville]]; [[ar.frage.kehrwertsumme_e]] remains open.
+    genau: |
+      For every integer base $b\ge2$, $C_b=\sum_k1/(b\uparrow\uparrow k)$ is a Liouville number, hence transcendental; its continued fraction arises piece by piece through “folding”.
+    warum: |
+      The partial sum up to the $N$-th term is a fraction with denominator $q=b\uparrow\uparrow N$. The remainder is of the size $1/(b\uparrow\uparrow(N+1))=b^{-q}$, hence smaller than any fixed power $q^{-k}$.
+      By Liouville no algebraic number has such good approximations by fractions.
+    worum: |
+      Is $C_2=\tfrac12+\tfrac14+\tfrac1{16}+\tfrac1{65536}+\dots$ a fraction, an algebraic number or a transcendental number?
 - id: ar.satz.keine_arith_info
-  quelle_hash: a636cbecfc11
+  quelle_hash: 450714b4cbed
   theorie_hash: d15730f6f102
   herkunft:
     modell: sonnet
-    datum: '2026-10-12'
-  geprueft:
-    beweis: nein
-    intern: nein
-    kern: zweitpruefung
-    theorie: nein
-    zusatz: nein
+    datum: '2026-10-25'
+  geprueft: nein
   en:
     beweis:
       text: $\tilde T=T\circ(\mathrm{id}+\theta)$.
     pruefung:
       f4_uebertragbar: Every base.
-      f5_neue_frage: Any proof about $T_e^{\mathrm K}(1/2)$ must use the complex Kneser condition.
+      f5_neue_frage: Any proof about $T_e^{\mathrm K}(1/2)$ must use the complex Kneser condition; sharpened to an equivalence and extended to
+        $T'(0)$ in ar.satz.keine_arith_info_ableitung.
       f1_folgt_unmittelbar: Yes — special case $b=e$ of fg.kor.nichteindeutigkeit.
       f2_benutzte_voraussetzungen: Existence of a real-analytic solution.
       f3_spezialfall: Yes, of fg.kor.nichteindeutigkeit.
@@ -784,6 +1036,51 @@
     worum: |
       An important warning: The real equation alone says nothing about the kind of number its values are. One can build a smooth, increasing tetration that takes any
       desired value between $1$ and $e$ at $\tfrac12$ — even a rational one.
+- id: ar.satz.keine_arith_info_ableitung
+  quelle_hash: 3f90d5447e60
+  theorie_hash: 1fca2220ff74
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: sexp′(0) too is not fixed by the real equation; “Schanuel ⇒ T(½) transcendental for every solution” is equivalent to “Schanuel is false”
+    aussage: |
+      (i) For **every** $c>0$ there is a real-analytic, strictly increasing tetration $\tilde T$ to base $e$ with $\tilde T(0)=1$ and $\tilde T'(0)=c$.
+      (ii) The statement “for every such solution: Schanuel $\Rightarrow$ $T(\tfrac12)$ transcendental” is equivalent to the negation of Schanuel's conjecture.
+      Every conditional transcendence statement about $T_e^{\rm K}(\tfrac12)$ must therefore use a property that only Kneser's solution has.
+    bereich: base $e$; real-analytic, strictly increasing solutions with $T(0)=1$
+    beweis:
+      text: |
+        (i) $T$ Kneser, $\gamma=c/T'(0)$. Poisson kernel $P_r(x)=(1-r^2)/(1-2r\cos2\pi x+r^2)$: analytic, 1-periodic, mean 1, values in $[\tfrac{1-r}{1+r},\tfrac{1+r}{1-r}]$.
+        For $\gamma\ge1$ choose $r$ with $\tfrac{1+r}{1-r}\ge\gamma$ and $g=1+t(P_r-1)$, $t=(\gamma-1)/(P_r(0)-1)\in[0,1]$; for $\gamma<1$ choose $r$ with $\tfrac{1-r}{1+r}<\gamma$ and
+        $g=1+t(P_r(\cdot-\tfrac12)-1)$, $t=(1-\gamma)/(1-\tfrac{1-r}{1+r})\in(0,1]$. Then $g>0$, mean 1, $g(0)=\gamma$; $\varphi(x)=\int_0^xg$ is analytic, strictly increasing,
+        $\varphi(x+1)=\varphi(x)+1$, $\varphi(0)=0$, and $\tilde T=T\circ\varphi$ does what is required.
+        (ii) By ar.satz.keine_arith_info there is unconditionally a solution with $\tilde T(\tfrac12)=\tfrac32$. Hence “$\forall T:\ \mathrm{SC}\Rightarrow T(\tfrac12)$ transcendental” is equivalent to “$\mathrm{SC}\Rightarrow$ false”.
+    bewertung:
+      nutzen: Sharpens the methodological limitation from ar.satz.keine_arith_info to an equivalence and extends it to the slope.
+      richtigkeit: complete
+    einfach: The equation T(x+1) = e^T(x) alone fixes neither the value at ½ nor the slope at 0 — one can make both almost arbitrary. Whoever
+      wants to prove something about the number T(½) must therefore use what makes Kneser's solution special.
+    pruefung:
+      f1_folgt_unmittelbar: 'Yes: (i) the same reparametrization as fg.kor.nichteindeutigkeit with a positive Poisson kernel; (ii) logic.'
+      f2_benutzte_voraussetzungen: Existence of a real-analytic solution (Kneser); ar.satz.keine_arith_info.
+      f3_spezialfall: Counterpart of ar.satz.keine_arith_info for the slope.
+      f4_uebertragbar: Every base b > 1 with a real-analytic solution.
+      f5_neue_frage: 'T̃(½) and T̃′(0) simultaneously freely choosable (report B8′, only sketched: positivity of the mixed kernels is missing).
+        Which Kneser property (e.g. T(z) → L for Im z → ∞) fits into a transcendence method?'
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B8, B9
+  en_theorie:
+    einordnung: |
+      Generalizes [[ar.satz.keine_arith_info]]; construction as in [[fg.kor.nichteindeutigkeit]]; Kneser-specific framework: [[ar.verm.ks]].
+    genau: |
+      Every slope $c>0$ occurs for a real-analytic, increasing solution. “Schanuel ⇒ $T(\tfrac12)$ transcendental for every solution” is equivalent to “Schanuel is false”.
+    warum: |
+      One replaces $x$ by $\varphi(x)=\int_0^xg$ with a positive, periodic density $g$ of mean 1 and $g(0)=c/T'(0)$ (a Poisson kernel). And because there is a solution with $T(\tfrac12)=\tfrac32$,
+      a statement about all solutions can yield “transcendental” only if its hypothesis is never satisfied.
+    worum: |
+      Do the equation $T(x+1)=e^{T(x)}$ together with smoothness and monotonicity fix the slope at 0? And what does that mean for transcendence proofs?
 - id: ar.satz.keine_padische_interpolation
   quelle_hash: 3fcd6a371aad
   theorie_hash: 2dd12eefd85e
@@ -912,6 +1209,51 @@
       $d\approx\log H/\log\log H$ limits how many there can be. Open: bookkeeping of $\kappa$, height control of the auxiliary polynomials.
     worum: |
       With the auxiliary lemma on zeros the counting bound becomes much sharper: instead of “smaller than any power of $H$” only “a power of $\log H$”.
+- id: ar.satz.metrisch_fast_alle
+  quelle_hash: c999e13151b3
+  theorie_hash: 77ec94bfd371
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: At almost all points x and T(x) are algebraically independent and T(x) has a “random” continued fraction — this says nothing about
+      a specific point
+    aussage: |
+      (i) The set $\{x:\ x\text{ and }T(x)\text{ algebraically dependent}\}$ is countable.
+      (ii) For Lebesgue-almost all $(x_1,\dots,x_n)$ the $2n$ numbers $x_i,T(x_i)$ are algebraically independent — the Kneser–Schanuel statement (ar.verm.ks) holds almost everywhere even with $2n$ instead of $n$.
+      (iii) For almost all $x$, $T(x)$ has irrationality exponent 2, and its continued fraction obeys the laws of Khinchin, Lévy and Gauss–Kuzmin.
+      Therefore no continued-fraction statistic proves anything about a single point such as $T_e(\tfrac12)$.
+    bereich: every real-analytic solution $T$ on $(-2,\infty)$ to a base $b>1$ with $T'>0$
+    beweis:
+      text: |
+        $T$ is not an algebraic function (it grows faster than any). For $P\ne0$ in $\mathbb Q[X_1..X_n,Y_1..Y_n]$, $F(x)=P(x,T(x_1),\dots,T(x_n))$ is analytic and not identically
+        zero (induction on $n$: for generic $x_1,\dots,x_{n-1}$ a nontrivial polynomial in $x_n,T(x_n)$ remains). The zero set has measure 0 (for $n=1$: discrete, hence countable);
+        there are countably many $P$. (iii): The exceptional sets of the metric continued-fraction theorems are null sets, and $T$ is a $C^1$ diffeomorphism, so it pulls null sets back to null sets.
+    bewertung:
+      nutzen: 'Puts the continued-fraction measurements in the right place: evidence for “no structure”, not a proof.'
+      richtigkeit: complete
+    einfach: For almost every point x the value of the tetration is a transcendental, “random-looking” number. But this holds only almost everywhere
+      — for a specific point such as ½ it tells us nothing at all.
+    pruefung:
+      f1_folgt_unmittelbar: Yes (zero sets of analytic functions, metric number theory).
+      f2_benutzte_voraussetzungen: Real analyticity, T′ > 0, T not algebraic; no Kneser property.
+      f3_spezialfall: Metric transcendence for values of transcendental analytic functions.
+      f4_uebertragbar: Almost all bases b > η at a fixed point x (report B10′) — for this the proof is missing that b ↦ T_b^K(x) is real-analytic
+        and not constant.
+      f5_neue_frage: 'Is there a single explicit non-integer point at which one can show irrationality (ar.satz.keine_arith_info_ableitung shows:
+        only with Kneser properties)?'
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B10
+  en_theorie:
+    einordnung: |
+      Puts [[ar.beob.kf_population]] in context; counterpart to the counting bound [[ar.satz.bpw]].
+    genau: |
+      For almost all points $x$, $x$ and $T(x)$ are algebraically independent, and $T(x)$ has a typical continued fraction. For a specific point nothing follows from this.
+    warum: |
+      A polynomial equation between $x$ and $T(x)$ has only countably many solutions, because $T$ is not an algebraic function; and $T$ does not distort null sets.
+    worum: |
+      Continued fractions of Kneser values look “random”. Does that prove anything?
 - id: ar.satz.orbitschranke
   quelle_hash: 1591804b5c22
   theorie_hash: 7ca03018a28b
@@ -1235,6 +1577,47 @@
       $X$ without algebraic parts meets such a surface in only a few points.
     worum: |
       A counting theorem from logic: On “tame” sets (definable in an o-minimal structure), outside the algebraic pieces there are only few algebraic points.
+- id: ar.satz.rang_dichotomie_kehrwerte
+  quelle_hash: 8d5f6d336db2
+  theorie_hash: ea898dbbc8a6
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Reciprocal sums of the hyperoperations: divergent up to rank 2, rational at rank 3, Liouville from rank 4'
+    aussage: |
+      $$\sum_{k\ge1}\frac1{H_r(b,k)}\ \text{is}\ \begin{cases}\text{divergent}, & r\le2,\\[2pt] \dfrac1{b-1}\ \text{(rational)}, & r=3,\\[4pt] \text{a Liouville number}, & r\ge4.\end{cases}$$
+      The jump from “rational” to “transcendental” lies exactly between power and tetration.
+    bereich: integer base $b\ge2$; $H_r(b,k)$ the hyperoperation of rank $r$ ($H_1=b+k$, $H_2=bk$, $H_3=b^k$, $H_4=b\uparrow\uparrow k$, …)
+    beweis:
+      text: |
+        $r=1,2$: harmonic series. $r=3$: geometric series. $r\ge4$: inductively $H_r(b,k)=b\uparrow\uparrow M_k$ with strictly increasing $M_k$, so $1/H_r(b,k)=b^{-E_k}$ with
+        $E_k=e_{M_k}$ and $E_{k+1}\ge b^{E_k}$; the same proof as ar.satz.kehrwertsumme_liouville.
+    bewertung:
+      nutzen: Simple entry into transcendence along the rank ladder.
+      richtigkeit: complete
+    einfach: If one adds the reciprocals of b+1, b+2, … or of b, 2b, 3b, …, the sum becomes infinite. For the powers b, b², b³, … a simple fraction
+      comes out. From towers on, the sum is always a transcendental number.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from ar.satz.kehrwertsumme_liouville and H_r(b,k) = b↑↑M_k for r ≥ 4.
+      f2_benutzte_voraussetzungen: b an integer; rank convention H₃ = power, H₄ = tetration.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: To every sequence that grows faster than every tower of fixed height.
+      f5_neue_frage: Where does the reciprocal sum lie at fractional rank between 3 and 4 (kn.frage.halber_rang)?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B2
+  en_theorie:
+    beispiel: |
+      $b=2$: $\sum2^{-k}=1$, but $\sum1/(2\uparrow\uparrow k)=0.8125152\ldots$ is transcendental.
+    einordnung: |
+      Rank ladder: [[br.satz.ackermann]]; what lies between rank 3 and 4: [[kn.frage.halber_rang]].
+    genau: |
+      Up to rank 2 it diverges, at rank 3 it is $1/(b-1)$, from rank 4 on it is a Liouville number.
+    warum: |
+      From rank 4 on every value is a tower $b\uparrow\uparrow M_k$, and the exponents grow as fast as in [[ar.satz.kehrwertsumme_liouville]].
+    worum: |
+      What happens to the sum of the reciprocals as one goes up the ladder addition, multiplication, power, tower, …?
 - id: ar.satz.rationale_tuerme
   quelle_hash: 4e43dacc7ef9
   theorie_hash: d14b8b05ac23
@@ -1293,6 +1676,46 @@
     worum: |
       What happens to a fraction when it is put into a tower? $(\tfrac12)^{1/2}=1/\sqrt2$ is already no longer a fraction. One level higher it gets even
       “wilder”: $(\tfrac12)^{(1/2)^{1/2}}$ is transcendental. From the fourth level on, nobody knows anymore.
+- id: ar.satz.schanuel_ableitungen
+  quelle_hash: a4e2d927665a
+  theorie_hash: 10cb5845224d
+  herkunft:
+    modell: sonnet
+    datum: '2026-10-25'
+  geprueft: nein
+  en:
+    titel: 'Under Schanuel: among the slopes T′(0), T′(1), T′(2), … (base e) at most one is algebraic'
+    aussage: |
+      Under Schanuel's conjecture, $\{T'(n):n\ge0\}$ contains at most one algebraic number; if $T'(0)$ is algebraic, then $T'(1),\dots,T'(n)$ are algebraically independent; in general
+      $\mathrm{trdeg}_{\mathbb Q}\,\mathbb Q(T'(0),\dots,T'(n))\ge n$. Contrast: for integer base the whole sequence has transcendence degree $\le2$ (ar.satz.ableitungsorbit).
+    bereich: base $e$, every differentiable real solution with $T(0)=1$, $T'(0)\ne0$
+    beweis:
+      text: |
+        $T(k)=\exp^{\circ k}(1)$; by ar.satz.schanuel_orbit ($\alpha=1$), $T(1),\dots,T(n)$ are algebraically independent. $T'(n)/T'(m)=\prod_{k=m+1}^nT(k)$ is a nonconstant monomial
+        in independent numbers, hence transcendental. If $T'(0)$ is algebraic, $T'(1),\dots,T'(n)$ generate over $\bar{\mathbb Q}$ the same field as $T(1),\dots,T(n)$ ($T(k)=T'(k)/T'(k-1)$).
+        In general $\mathbb Q(T'(0),\dots,T'(n))$ contains the quotients $T(1),\dots,T(n)$.
+    bewertung:
+      nutzen: Shows what Schanuel yields for the slopes.
+      richtigkeit: conditional (Schanuel), complete
+    einfach: If one assumes the famous (unproved) conjecture of Schanuel, then the slopes of the tetration to base e at the integer points are
+      almost all mutually independent, transcendental numbers.
+    pruefung:
+      f1_folgt_unmittelbar: Yes, from ar.satz.schanuel_orbit and the quotients in ar.satz.ableitungsorbit.
+      f2_benutzte_voraussetzungen: Schanuel; T(0) = 1, T′(0) ≠ 0.
+      f3_spezialfall: Consequence of Schanuel for iterated exponentials.
+      f4_uebertragbar: All differentiable solutions to base e.
+      f5_neue_frage: Under Schanuel only trdeg ≥ n for n + 1 numbers — is sexp′(0) itself independent of e, e^e, …?
+    quellen:
+    - stelle: forschung/runde_2026_10_25/29_transzendenz/BERICHT.md, B6
+  en_theorie:
+    einordnung: |
+      Unconditional version: [[ar.satz.ableitungsorbit]]; conjecture: [[ar.verm.schanuel]].
+    genau: |
+      At most one of the numbers $T'(0),T'(1),\dots$ is algebraic; $\mathbb Q(T'(0),\dots,T'(n))$ has transcendence degree at least $n$.
+    warum: |
+      The quotients $T'(n)/T'(m)$ are products of the tower values $e,e^e,\dots$, and under Schanuel these are algebraically independent ([[ar.satz.schanuel_orbit]]).
+    worum: |
+      What would Schanuel's conjecture say about the slopes of the tetration to base $e$ at integer points?
 - id: ar.satz.schanuel_orbit
   quelle_hash: 1f7558ca610a
   theorie_hash: 72ea93724edf

@@ -51,7 +51,7 @@ SIGNAL = [
     (r"\bVermutung", r"\bconjecture"),
     (r"\bwiderlegt", r"\brefut|\bdisprov|\bfalsif"),
 ]
-BRITISCH = re.compile(r"neighbour|behaviour|colour|analys(?:e|ing)\b|normalis|favour|centre\b|\bgrey\b|organis|recognis|honour|"
+BRITISCH = re.compile(r"neighbour|behaviour|colour|analys(?:e|ing)\b(?!\.py)|normalis|favour|centre\b|\bgrey\b|organis|recognis|honour|"
                       r"generalis|characteris|minimis|maximis|parametris|neighbouring", re.I)
 DEUTSCHE_WOERTER = re.compile(r" (?:und|der|die|das|ist|wird|mit|für|nicht|auch|oder|wenn|dann|aber) ")
 UMLAUT = re.compile(r"\w*[äöüÄÖÜß]\w*")
