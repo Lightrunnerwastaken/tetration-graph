@@ -1,0 +1,26 @@
+[motor] exp(1) dps=50 bereit nach 2.4s
+k=1 j=0: w=(2.004312482594688003944 + 0.7094135408694036266791j)  sexp'(w)=(-11.600149 + 6.4944708j)
+k=1 j=1: w=(6.451336487382556769423 + 1.766298794622866278511j)  sexp'(w)=(-11.520432 + 6.4568172j)
+k=1 j=2: w=(10.89828756564794741946 + 2.824240112601807370779j)  sexp'(w)=(-11.520514 + 6.456897j)
+   w_1-w_0-gamma = (7.32847e-5 - 0.00105474j)  |.|=0.001057
+   w_2-w_1-gamma = (3.58198e-7 + 1.32682e-6j)  |.|=1.374e-6
+k=2 j=0: w=(2.155871087462956998251 + 0.4906417272669068449277j)  sexp'(w)=(-30.486886 + 25.869768j)
+Traceback (most recent call last):
+  File "D:\Users\janis\Documents\Matura\tetration-graph\forschung\runde_2026_10_25\06_riemannflaeche_sexp\s1_familie.py", line 39, in <module>
+    w, d = newton(g, c)
+           ~~~~~~^^^^^^
+  File "D:\Users\janis\Documents\Matura\tetration-graph\forschung\runde_2026_10_25\06_riemannflaeche_sexp\s1_familie.py", line 21, in newton
+    a, b, f0 = sexp([w + h, w - h, w])
+               ~~~~^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\janis\Documents\Matura\tetration-graph\forschung\runde_2026_10_25\06_riemannflaeche_sexp\s1_familie.py", line 13, in sexp
+    return werte("exp(1)", [f"sexp({gpzahl(z, DPS + 10)})" for z in zs], DPS)
+  File "D:\Users\janis\Documents\Matura\tetration-graph\forschung\runde_2026_10_25\06_riemannflaeche_sexp\motor.py", line 64, in werte
+    _speichern(c)
+    ~~~~~~~~~~^^^
+  File "D:\Users\janis\Documents\Matura\tetration-graph\forschung\runde_2026_10_25\06_riemannflaeche_sexp\motor.py", line 28, in _speichern
+    tmp.replace(CACHE)
+    ~~~~~~~~~~~^^^^^^^
+  File "C:\Users\janis\miniconda3\Lib\pathlib\_local.py", line 780, in replace
+    os.replace(self, target)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+PermissionError: [WinError 5] Zugriff verweigert: 'D:\\Users\\janis\\Documents\\Matura\\tetration-graph\\forschung\\runde_2026_10_25\\06_riemannflaeche_sexp\\daten\\motor_cache.tmp' -> 'D:\\Users\\janis\\Documents\\Matura\\tetration-graph\\forschung\\runde_2026_10_25\\06_riemannflaeche_sexp\\daten\\motor_cache.json'
