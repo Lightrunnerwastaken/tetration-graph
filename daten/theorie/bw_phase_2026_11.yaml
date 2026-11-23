@@ -1,0 +1,62 @@
+# Theorie-Blöcke: Basiswechsel-Phase nach der Forschungsnotiz November 2026 (forschung/basiswechsel_phase_2026_11/).
+
+bw.satz.reelle_konjugation:
+  worum: |
+    Eine einfache Form für den Basiswechsel: er ist die Umrechnung zwischen zwei sehr ähnlichen Abbildungen, $e^w+p$ und $e^w+q$.
+  genau: |
+    Mit $U_a=\ln a\cdot\mathrm{sexp}_a+\ln\ln a$ wird ein Tetrationsschritt zu $w\mapsto e^w+c_a$. Die Umrechnung $H=\lim_j g^{-j}\circ f^j$ existiert auf einer
+    reellen Halbgeraden, $H(u)=u+O(e^{-u})$, und $x+\Phi(x)=S_b(H(U_d(x)))$.
+  warum: |
+    $g^{-1}(f(w))=\ln(e^w+p-q)=w+\ln(1+(p-q)e^{-w})$ unterscheidet sich weit rechts nur um etwa $e^{-w}$ von $w$. Wiederholt man das entlang einer Bahn,
+    die doppelt exponentiell wächst, summieren sich die Korrekturen zu einer konvergenten Reihe.
+  beispiel: |
+    $b=e$, $d=2$: $p=\ln\ln2=-0.3665\ldots$, $q=\ln\ln e=0$; der Mittelwert der Phase ist $\mu_{e,2}=-1.1284037766\ldots$
+  bilder: []
+  einordnung: |
+    Macht [[bw.satz.phasengesetz_gestoppt]] unbedingt; Grundlage für [[bw.satz.nirgends_analytisch]] und [[bw.satz.fourier_huelle]].
+
+bw.satz.nirgends_analytisch:
+  worum: |
+    Die alte Frage „Streifen oder nicht?“: Ist die periodische Welle des Basiswechsels irgendwo analytisch?
+  genau: |
+    Nein — an keiner reellen Stelle. Es gibt also keinen Streifen um die reelle Achse, in dem sie holomorph wäre ($\sigma^*=0$).
+  warum: |
+    Wäre die Welle irgendwo analytisch, dann auch die Umrechnung $H$ auf einer kleinen Kreisscheibe. Dort wäre $g^n\circ H-f^n$ auf einem reellen Stück
+    doppelt exponentiell klein und sonst nur einfach exponentiell gross; ein Satz über subharmonische Funktionen zwingt es dann auf der ganzen Scheibe
+    gegen 0. Weil die Julia-Menge von $e^w+p$ die ganze Ebene ist, liegt in der Scheibe ein periodischer Punkt — und dort würde folgen $e^z+p=e^z+q$.
+  beispiel: |
+    Für $b=e$, $d=2$ sinkt die effektive Streifenbreite $-\ln|a_k|/(2\pi k)$ immer weiter: $0.202$ bei $k=200$, $0.149$ bei $k=700$ — sie geht wie $1/\ln k$ gegen 0,
+    statt sich bei einem festen Wert einzupendeln.
+  bilder: []
+  einordnung: |
+    Widerlegt [[bw.verm.streifen]], beweist Levensteins Vermutung [[bw.verm.nirgends_analytisch]]. Vergleich: Knesers eigene Welle ist an den ganzen Zahlen
+    singulär ([[kn.satz.theta_singularitaet]]); beim Basiswechsel liegen Singularitäten der Näherungen dicht an jeder reellen Stelle ([[bw.satz.endliche_singularitaeten]]).
+
+bw.satz.fourier_huelle:
+  worum: |
+    Wie schnell die Schwingungen der Basiswechsel-Welle schwächer werden, wenn sie nicht analytisch ist.
+  genau: |
+    $\liminf_k -\ln|a_k|/(k\,r_d(k))=\pi^2$ mit $r_d(k)=(\ln k)^{-1+o(1)}$, also grob $|a_k|\approx e^{-\pi^2k/\ln k}$.
+  warum: |
+    Um jede reelle Stelle setzt sich die Welle auf Stufe $j$ holomorph auf einen Kreis vom Radius etwa $(\pi/2)\,r$ fort, mit $r\approx1/U_d'$ der lokalen
+    Höhenskala. Cauchy-Abschätzungen auf diesen schrumpfenden Kreisen geben die Schranke $2\pi\cdot\frac\pi2=\pi^2$; die Singularitäten der Näherungen
+    genau in diesem Abstand zeigen, dass man nicht besser werden kann.
+  beispiel: |
+    Gemessen (Basen $e$ und 2): $-\ln|a_k|/(k\,r_d(k))=9.86$ bei $k=50$, $11.19$ bei $k=700$; $\pi^2=9.87$.
+  bilder: []
+  einordnung: |
+    Beantwortet [[bw.frage.streifen_gevrey]]; offen bleibt [[bw.frage.huelle_grenzwert]]. Messwerte: [[bw.beob.moden_bis_700]].
+
+bw.satz.endliche_singularitaeten:
+  worum: |
+    Was die Näherungen „sehen“: wo die nach endlich vielen Stufen abgebrochene Welle singulär ist.
+  genau: |
+    Bei $z_n^\pm\approx x\pm i\frac{\pi/2}{U_d'(x+n-4)}$, über Stellen mit $\mathrm{sexp}_d(n+z)=b$ auf Nebenblättern; der Taylor-Radius bei $x$ ist ungefähr $(\pi/2)/U_d'(x+n-4)$.
+  warum: |
+    Vier Stufen unter der Spitze erreicht ein Weg mit Imaginärteil um $\pi/2$ in der lokalen Höhenskala einen Punkt, an dem ein Logarithmus seinen
+    Verzweigungspunkt trifft. Je höher $n$, desto kleiner die Skala — die Singularitäten rücken an die Achse.
+  beispiel: |
+    $b=e$, $d=2$, $x=0$: $\mathrm{Im}\,z_7^+=0.0589$ — genau die Zahl, die früher als feste Streifenbreite gemessen wurde.
+  bilder: []
+  einordnung: |
+    Neue Deutung von [[bw.korr.r20]] und [[bw.beob.sigma_stern]]; Grund für die Hülle [[bw.satz.fourier_huelle]].

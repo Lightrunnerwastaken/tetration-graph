@@ -47,6 +47,20 @@ Stand: bewiesen 62, bedingt 1, numerisch 10, Vermutung 4, offen 2 · Literatur 2
 - **Was fest ist, was frei ist** (5): bewiesen 5 · Literatur 2 / Forum 2 / eigen 1
 - **Superwurzeln** (5): bewiesen 5 · Literatur 2 / Forum 3 / eigen 0
 
+## Basiswechsel T ∘ slog (75 Aussagen)
+
+Was entsteht, wenn man die Tetration zu einer Basis mit dem Superlogarithmus einer anderen zusammensetzt.
+
+Stand: bewiesen 22, bedingt 18, numerisch 12, Vermutung 4, offen 6, verworfen 13 · Literatur 8 / Forum 11 / eigen 56
+
+- **Moden und Singularitäten** (19): bewiesen 4, bedingt 3, numerisch 6, offen 1, verworfen 5 · Literatur 2 / Forum 7 / eigen 10 · offen: bw.frage.huelle_grenzwert
+- **Antwortkern und Basisableitung** (18): bewiesen 3, bedingt 5, numerisch 3, Vermutung 2, verworfen 5 · Literatur 1 / Forum 2 / eigen 15 · offen: bw.ann.K1K2, bw.satz.kern_eindeutig, bw.ann.basis_diffbar, bw.satz.kern_existenz, bw.prop.hub, bw.satz.antwortkern
+- **Phasengesetz und Welle** (10): bewiesen 3, bedingt 2, numerisch 2, Vermutung 1, offen 2 · Literatur 3 / Forum 1 / eigen 6 · offen: bw.satz.phasengesetz, bw.frage.halbiter_vergleich, bw.frage.nixon_eta_basiswechsel, bw.lem.offset, bw.verm.adressen
+- **Gleicher Fixpunkt** (8): bewiesen 4, bedingt 1, offen 2, verworfen 1 · Literatur 2 / Forum 0 / eigen 6 · offen: kl.frage.basiswechsel_kneser, kl.frage.gleiches_L_kneser
+- **Log-Peeling und Grenzkanal** (8): bewiesen 6, bedingt 1, Vermutung 1 · Literatur 0 / Forum 1 / eigen 7 · offen: bw.ann.hyp22, bw.satz.schwanzkonvergenz
+- **Kreisabbildung** (6): bewiesen 1, bedingt 4, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.prop.kozykel, bw.satz.homoeo, bw.satz.antisymmetrie, bw.satz.c1_produkt
+- **Rekonstruktion und Zertifikat** (6): bewiesen 1, bedingt 2, numerisch 1, offen 1, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.frage.intervallmarsch, bw.satz.anker_rekonstruktion, bw.zert.8r1
+
 ## Zahlen und Arithmetik (71 Aussagen)
 
 Welche Werte rational, algebraisch oder transzendent sind, und Türme modulo m.
@@ -57,20 +71,6 @@ Stand: bewiesen 46, bedingt 10, numerisch 7, Vermutung 4, offen 4 · Literatur 2
 - **Formeln und Identitäten** (23): bewiesen 10, bedingt 6, numerisch 5, Vermutung 1, offen 1 · Literatur 1 / Forum 0 / eigen 22 · offen: kn.satz.sexp_schlicht_nahe_null, kn.satz.zweigwahl_zertifikat, kn.satz.theta_singularitaet, kn.satz.theta_koeffizienten, kn.satz.theta_phase_achse, kn.frage.theta_exponent, kn.verm.theta_phase_unbeschraenkt
 - **Kongruenzen** (13): bewiesen 13 · Literatur 7 / Forum 1 / eigen 5
 - **Kneser–Schanuel** (4): bewiesen 1, numerisch 2, Vermutung 1 · Literatur 0 / Forum 0 / eigen 4 · offen: ar.verm.ks
-
-## Basiswechsel T ∘ slog (69 Aussagen)
-
-Was entsteht, wenn man die Tetration zu einer Basis mit dem Superlogarithmus einer anderen zusammensetzt.
-
-Stand: bewiesen 19, bedingt 17, numerisch 11, Vermutung 6, offen 6, verworfen 10 · Literatur 7 / Forum 6 / eigen 56
-
-- **Antwortkern und Basisableitung** (18): bewiesen 3, bedingt 5, numerisch 3, Vermutung 2, verworfen 5 · Literatur 1 / Forum 2 / eigen 15 · offen: bw.ann.K1K2, bw.satz.kern_eindeutig, bw.ann.basis_diffbar, bw.satz.kern_existenz, bw.prop.hub, bw.satz.antwortkern
-- **Moden und Singularitäten** (13): bewiesen 2, bedingt 1, numerisch 5, Vermutung 2, offen 1, verworfen 2 · Literatur 1 / Forum 2 / eigen 10 · offen: bw.frage.streifen_gevrey, bw.verm.nirgends_analytisch, bw.verm.streifen
-- **Phasengesetz und Welle** (10): bewiesen 2, bedingt 3, numerisch 2, Vermutung 1, offen 2 · Literatur 3 / Forum 1 / eigen 6 · offen: bw.satz.phasengesetz, bw.frage.halbiter_vergleich, bw.frage.nixon_eta_basiswechsel, bw.lem.offset, bw.verm.adressen
-- **Gleicher Fixpunkt** (8): bewiesen 4, bedingt 1, offen 2, verworfen 1 · Literatur 2 / Forum 0 / eigen 6 · offen: kl.frage.basiswechsel_kneser, kl.frage.gleiches_L_kneser
-- **Log-Peeling und Grenzkanal** (8): bewiesen 6, bedingt 1, Vermutung 1 · Literatur 0 / Forum 1 / eigen 7 · offen: bw.ann.hyp22, bw.satz.schwanzkonvergenz
-- **Kreisabbildung** (6): bewiesen 1, bedingt 4, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.prop.kozykel, bw.satz.homoeo, bw.satz.antisymmetrie, bw.satz.c1_produkt
-- **Rekonstruktion und Zertifikat** (6): bewiesen 1, bedingt 2, numerisch 1, offen 1, verworfen 1 · Literatur 0 / Forum 0 / eigen 6 · offen: bw.frage.intervallmarsch, bw.satz.anker_rekonstruktion, bw.zert.8r1
 
 ## Dynamik von bᶻ und der Fixpunkt L (49 Aussagen)
 
@@ -124,10 +124,10 @@ Stand: bewiesen 9, offen 3, verworfen 1 · Literatur 10 / Forum 2 / eigen 1
 - Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 83.14
 - Dynamik von bᶻ und der Fixpunkt L — Fraktionale Fortsetzung: 69.87
 - Fraktionale Fortsetzung — Zahlen und Arithmetik: 62.57
-- Basiswechsel T ∘ slog — Fraktionale Fortsetzung: 48.87
+- Basiswechsel T ∘ slog — Fraktionale Fortsetzung: 51.36
 - Dynamik von bᶻ und der Fixpunkt L — Höhere Stufen: 42.69
+- Basiswechsel T ∘ slog — Höhere Stufen: 39.36
 - Höhere Stufen — Zahlen und Arithmetik: 37.66
-- Basiswechsel T ∘ slog — Höhere Stufen: 37.22
 - Die Gleichung T(x+1) = aᵀ⁽ˣ⁾ — Höhere Stufen: 36.41
 - Fraktionale Fortsetzung — Unendlicher Turm und Basen-Ebene: 32.38
 

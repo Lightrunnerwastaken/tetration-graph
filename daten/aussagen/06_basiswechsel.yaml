@@ -177,17 +177,14 @@ aussagen:
   titel: Phasengesetz für die gestoppte Kette (Paper III-Lesart)
   art: satz
   ebene: B
-  status: skizze
+  status: bewiesen
   objekte: [F_bd, phase, schwanz_D]
   bereich: 'alle $b,d>\eta$, Kneser-Zweige'
   aussage: 'Das Phasengesetz gilt ohne Hyp. 2.2/2.4, wenn man die gestoppten Schwänze $D_n^{\mathrm{stop}}$ benutzt.'
   beweis:
-    art: skizze
-    text: 'Stoppregel + Wachstumslücke; Paper III: „alle Schwanzabschätzungen von [1,2] gelten wörtlich für $j\ge J_0$“.'
-    luecken:
-      - 'Die wörtliche Übertragung der Lemmas 5.2–5.4 (Paper I) auf $j\ge J_0$ ist behauptet, nicht ausgeschrieben.'
-      - '(R3) — lokale Lipschitz-Stetigkeit von $A_b$ — folgt aus reeller Analytizität von $\operatorname{slog}_b^{\mathrm K}$; im Text nicht explizit gemacht.'
-  stuetzt_sich_auf: [bw.lem.stoppregel, bw.lem.wachstumsluecke, kn.konstr.kneser]
+    art: vollstaendig
+    text: 'Über die reelle Konjugation H = lim g^{-j}∘f^{j} zwischen e^w + p und e^w + q (bw.satz.reelle_konjugation): x + Φ(x) = S_b(H(U_d(x))) mit doppelt exponentiellem Rest; die Stoppregel sichert den reellen Kanal.'
+  stuetzt_sich_auf: [bw.satz.reelle_konjugation, bw.lem.stoppregel, bw.lem.wachstumsluecke, kn.konstr.kneser]
   quellen: [{ref: justus_p3, stelle: '§4, §7'}]
   pruefung:
     f1_folgt_unmittelbar: 'Fast: Inhalt von Paper I + Stoppregel; die Arbeit ist Buchhaltung.'
@@ -195,10 +192,12 @@ aussagen:
     f3_spezialfall: —
     f4_uebertragbar: 'Klasse B: jede wachsende reell-analytische Tetration.'
     f5_neue_frage: 'Ausschreiben und als eigenständigen Satz prüfen — dann sind Papers I–II weitgehend unbedingt.'
-  bewertung: {richtigkeit: 'plausibel, Lücken benannt', neuheit: vermutlich_neu, recherche: 'Paper III.', nutzen: 'Würde die Bedingtheit der ganzen Serie aufheben.', nutzen_stufe: hoch}
+  bewertung: {richtigkeit: 'vollständig (über bw.satz.reelle_konjugation)', neuheit: vermutlich_neu, recherche: 'Paper III.', nutzen: 'Würde die Bedingtheit der ganzen Serie aufheben.', nutzen_stufe: hoch}
   naechste_frage: 'Lemmas 5.2–5.4 für $j\ge J_0$ ausschreiben (1–2 Seiten).'
   kanten:
     - {typ: verallgemeinert, ziel: bw.satz.phasengesetz}
+  versionen:
+    - {datum: '2026-11-23', fassung: 'Graph', aenderung: 'Von Skizze zu bewiesen: die Lücken (Lemmas 5.2–5.4 für j ≥ J0, Lipschitz von A_b) sind durch die reelle Konjugation ersetzt.', grund: 'Forschungsnotiz November 2026, Abschnitt 1, nachgelesen.'}
 
 - id: bw.lem.offset
   titel: Offset-ausgerichteter Grenzkanal
@@ -571,7 +570,7 @@ aussagen:
   titel: Streifenanalytizität der Phase (Paper I, Vermutung 8.1)
   art: vermutung
   ebene: C
-  status: vermutung
+  status: widerlegt
   objekte: [phase, fourier_moden, gevrey]
   aussage: '$D_{b,d}$ setzt sich holomorph in $|\operatorname{Im}\theta|<\sigma_{b,d}$ fort; $|\hat P_{b,d}(k)|\le C e^{-2\pi\sigma|k|}$.'
   gegenbeispielsuche: |
@@ -586,13 +585,14 @@ aussagen:
     f5_neue_frage: 'bw.frage.streifen_gevrey'
   bewertung: {richtigkeit: 'offen und umstritten — im Tetration-Forum wird das Gegenteil vermutet (bw.verm.nirgends_analytisch)', neuheit: vermutlich_neu, recherche: 'Paper I. Nachtrag 08.10.2026: S. Levenstein vermutet seit 2011 für Basiswechsel-Tetrationen „C^∞, aber nirgends analytisch“; das schlösse jeden Streifen aus.', nutzen: 'Würde schnelle Konvergenz der Modentabellen garantieren.', nutzen_stufe: hoch}
   versionen:
+    - {datum: '2026-11-23', fassung: 'Graph', aenderung: 'Widerlegt: die Phase ist nirgends analytisch, es gibt keinen Streifen (bw.satz.nirgends_analytisch).', grund: 'Forschungsnotiz November 2026, Beweis nachgelesen.'}
     - {datum: '2026-10-08', fassung: 'Graph', aenderung: 'Als umstritten markiert: Gegen-Vermutung aus dem Tetration-Forum (2011).'}
 
 - id: bw.verm.nirgends_analytisch
   titel: Basiswechsel-Tetrationen sind nirgends analytisch (Forum-Vermutung)
   art: vermutung
   ebene: C
-  status: vermutung
+  status: ueberholt
   niveau: forschung
   objekte: [phase, schwanz_D, gevrey]
   bereich: '$b\ne d>\eta$, Kneser-Tetration $T_d$; $D_{b,d}(\theta)=\lim_n\log_b^{\circ n}T_d(n+\theta)$'
@@ -619,6 +619,8 @@ aussagen:
     - {typ: verwandt, ziel: bw.frage.streifen_gevrey}
     - {typ: verwandt, ziel: kn.konstr.walker, notiz: 'Walkers Lösung ist ein Grenzwert derselben Art'}
     - {typ: verwandt, ziel: bw.satz.ursache_kozykel, notiz: 'D ist eine nicht-Kneser-Tetration; die Vermutung sagt: sogar nirgends analytisch'}
+  versionen:
+    - {datum: '2026-11-23', fassung: 'Graph', aenderung: 'Bewiesen; ersetzt durch bw.satz.nirgends_analytisch.', grund: 'Forschungsnotiz November 2026, Beweis nachgelesen.'}
 
 - id: bw.beob.modenabfall
   titel: Universelle Modenabfall-Kurve
@@ -638,6 +640,8 @@ aussagen:
   bewertung: {richtigkeit: 'numerisch robust über 14 Paare', neuheit: vermutlich_neu, recherche: 'Paper IV.', nutzen: 'Modenzahl-Formeln für Tabellen.', nutzen_stufe: hoch}
   kanten:
     - {typ: stuetzt, ziel: bw.verm.streifen}
+  nachgeprueft:
+    - {datum: '2026-11-23', ergebnis: 'Das Modell mit festem σ* > 0 trifft nicht zu (σ* = 0); das richtige Abfallgesetz ist −ln|a_k| ≈ π² k r_d(k) mit r_d(k) ≈ 1/ln k (bw.satz.fourier_huelle). Die gemessene Kurve bleibt als Beschreibung des Fensters k ≤ 520 gültig.'}
 
 - id: bw.beob.singularitaet
   titel: Isolierte wesentliche Singularität bei z* (Paper IV, Obs. 6.1/6.2)
@@ -676,6 +680,8 @@ aussagen:
   kanten:
     - {typ: widerlegt, ziel: bw.beob.singularitaet}
     - {typ: ersetzt, ziel: bw.verm.universell}
+  nachgeprueft:
+    - {datum: '2026-11-23', ergebnis: 'Die Kurve y = (π/2)/(ln d · T_d′) ist die Lage echter Singularitäten der Näherungen (z_n ≈ x ± i(π/2)/U_d′(x+n−4), bw.satz.endliche_singularitaeten), nicht nur ein Löserdetail; die Aussage, dass die Grenzfunktion dort keine isolierte Singularität hat, bleibt richtig.'}
 
 - id: bw.verm.universell
   titel: Universelle Singularitätsdaten (Paper IV, Vermutung 6.6)
@@ -794,12 +800,14 @@ aussagen:
   bewertung: {richtigkeit: 'numerisch, modellabhängig', neuheit: vermutlich_neu, recherche: 'Runden 3/19.', nutzen: 'Entscheidungsgrösse.', nutzen_stufe: mittel}
   kanten:
     - {typ: stuetzt, ziel: bw.verm.streifen}
+  nachgeprueft:
+    - {datum: '2026-11-23', ergebnis: 'Die wahre Streifenbreite ist 0 (bw.satz.nirgends_analytisch). Der Wert um 0.058 ist eine Fenstergrösse; er stimmt mit der Singularität der Näherungsstufe n = 7 überein (Im z = 0.0589, bw.satz.endliche_singularitaeten).'}
 
 - id: bw.frage.streifen_gevrey
   titel: Streifen oder Gevrey?
   art: frage
   ebene: C
-  status: offen
+  status: ueberholt
   objekte: [phase, gevrey, fourier_moden]
   aussage: |
     Ist $\Phi_{b,d}$ in einem Streifen positiver Breite analytisch ($\sigma^*>0$) oder nur Gevrey-glatt
@@ -812,6 +820,8 @@ aussagen:
     - {typ: verwandt, ziel: bw.verm.streifen}
     - {typ: verwandt, ziel: bw.verm.nirgends_analytisch}
     - {typ: verwandt, ziel: br.satz.gevrey_fourier}
+  versionen:
+    - {datum: '2026-11-23', fassung: 'Graph', aenderung: 'Beantwortet: weder Streifen noch √k-Gevrey; |a_k| fällt wie exp(−π² k r_d(k)) mit r_d(k) ≈ 1/ln k (bw.satz.fourier_huelle).', grund: 'Forschungsnotiz November 2026.'}
 
 - id: bw.beob.m2
   titel: m(2) = µ_{e,2} auf 180 Stellen, keine geschlossene Form gefunden

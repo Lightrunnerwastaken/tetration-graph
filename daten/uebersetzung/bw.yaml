@@ -329,8 +329,35 @@
       Measured with the engine; independently confirmed by our own recomputation of the wave ([[bw.satz.phasengesetz]]).
     worum: |
       The most important number of the hub column: how far, on average, does the tower to base $2$ lag behind the one to base $e$? Just over one level.
+- id: bw.beob.moden_bis_700
+  quelle_hash: c0dcd470874f
+  herkunft:
+    modell: opus
+    datum: '2026-11-23'
+  geprueft: nein
+  en:
+    titel: Modes of the phase (e, 2) up to k = 700 by two independent routes
+    aussage: |
+      Forward (DFT of $\Phi$ with 2048 points, 335 digits) and backward (reversed base pair, $2\pi ika_k=\int_0^1e^{-2\pi ikQ(y)}dy$, 325 digits)
+      agree: the means to $9.24\cdot10^{-320}$, the coefficients at $k=700$ relatively to $1.78\cdot10^{-34}$.
+      $\mu_{e,2}=-1.1284037766\,2892400987\,9217902036\,4262671116\ldots$ (equal to the value in bw.beob.m2).
+      Normalized damping $-\ln|a_k|/(k\,r_d(k))$: $9.861$ ($k=50$), $10.350$ (100), $10.718$ (200), $10.953$ (350), $11.080$ (500), $11.188$ (700) — above $\pi^2$,
+      consistent with bw.satz.fourier_huelle; a limit cannot be read off from these data.
+    einfach: Two completely different computation routes give the same numbers for the oscillations of the wave, up to the 700th oscillation to
+      34 digits.
+    quellen:
+    - stelle: Section 8, pp. 9–10; check_phase_modes.py
+    pruefung:
+      f1_folgt_unmittelbar: No (computed).
+      f2_benutzte_voraussetzungen: fatou.gp fork (shared library for both routes), 2048 points in each direction.
+      f3_spezialfall: 'no'
+      f4_uebertragbar: Script adaptable to other base pairs.
+      f5_neue_frage: Up to k ≈ 5000, to distinguish the liminf from a possible limit.
+    bewertung:
+      richtigkeit: numerical, two routes
+      nutzen: Touchstone for the envelope and the old mode fits.
 - id: bw.beob.modenabfall
-  quelle_hash: bed4d4941cbc
+  quelle_hash: de9fa2f61daf
   theorie_hash: 306595f286ef
   herkunft:
     modell: sonnet
@@ -357,6 +384,9 @@
     quellen:
     - stelle: Rem. 8.2
     - stelle: Obs. 5.1
+    nachgeprueft:
+    - ergebnis: The model with a fixed σ* > 0 does not hold (σ* = 0); the correct decay law is −ln|a_k| ≈ π² k r_d(k) with r_d(k) ≈ 1/ln k (bw.satz.fourier_huelle).
+        The measured curve remains valid as a description of the window k ≤ 520.
   en_theorie:
     beispiel: |
       The normalized profiles $|a_k|/|a_1|$ of the pairs $(e,2)$ and $(e,3)$ differ for $k\le6$ in $\ln$ by at most $0.03$ ([[exp.moden]]).
@@ -444,7 +474,7 @@
     worum: |
       Where does the singular structure of the wave really sit? The phases of the Fourier modes reveal it: at a fixed point of the absolute height scale, the same for all pairs.
 - id: bw.beob.sigma_stern
-  quelle_hash: 50d2994eeed0
+  quelle_hash: 82c4d1a7b875
   theorie_hash: 1ee0f92da6af
   herkunft:
     modell: sonnet
@@ -470,6 +500,9 @@
       extrapolated 0.058–0.062.'
     quellen:
     - stelle: Rounds 3, 19
+    nachgeprueft:
+    - ergebnis: The true strip width is 0 (bw.satz.nirgends_analytisch). The value around 0.058 is a window quantity; it coincides with the singularity
+        of the approximation at level n = 7 (Im z = 0.0589, bw.satz.endliche_singularitaeten).
   en_theorie:
     einordnung: |
       The decisive quantity for [[bw.frage.streifen_gevrey]]: Gevrey would mean $\sigma^*_\infty=0$. Supports [[bw.verm.streifen]] only if $\sigma^*_\infty>0$ persists.
@@ -745,6 +778,24 @@
       order again and again — for arbitrarily large $x$.
     worum: |
       Do the fractional iterates of $\exp_b$ order the growth rates the way one expects — higher level, faster growth, regardless of the base?
+- id: bw.frage.huelle_grenzwert
+  quelle_hash: 0934a2af4975
+  herkunft:
+    modell: opus
+    datum: '2026-11-23'
+  geprueft: nein
+  en:
+    titel: Is the Fourier envelope a genuine limit?
+    aussage: |
+      Known is $\liminf -\ln|a_k|/(k\,r_d(k))=\pi^2$ (bw.satz.fourier_huelle). Does even $\lim$ hold? The note reduces this to a finite integral:
+      with $J(k)=\min\{j\ge0:U_d(X+j)\ge k^2\}$ and
+      $$I_k=\int_X^{X+1}\bigl[S_b\bigl(U_d(t+J(k))\bigr)-J(k)-t\bigr]e^{-2\pi ikt}\,dt$$
+      one has $|a_k-I_k|\le Ce^{-ck^2}$; the limit holds if and only if $|I_k|\ge\exp(-(\pi^2+\varepsilon)k\,r_d(k))$ for every $\varepsilon>0$ and all large $k$.
+      So the only open point is whether unusually strong cancellation occurs in this finite integral.
+    einfach: We know that the oscillations are, infinitely often, almost exactly as weak as e to the (−π² k / ln k). Whether this holds for all
+      large k or only for some is open — but the question can be reduced to a single, concretely computable integral.
+    quellen:
+    - stelle: p. 9 (A finite integral for individual modes)
 - id: bw.frage.intervallmarsch
   quelle_hash: db81be8ef1b5
   theorie_hash: 6f67060e1d4b
@@ -808,7 +859,7 @@
       The base change converts a tetration into heights of another base. In 2021 Nixon wanted to start from the base η, because there the fractional
       iterates are particularly well understood, and thus regain Kneser's tetration to base e.
 - id: bw.frage.streifen_gevrey
-  quelle_hash: 1f4284d26632
+  quelle_hash: 88688e251683
   theorie_hash: 8269bfce7f18
   herkunft:
     modell: sonnet
@@ -830,6 +881,9 @@
     quellen:
     - stelle: Rounds 19–20
     - stelle: Counter-conjecture
+    versionen:
+    - aenderung: 'Answered: neither a strip nor √k-Gevrey; |a_k| decays like exp(−π² k r_d(k)) with r_d(k) ≈ 1/ln k (bw.satz.fourier_huelle).'
+      grund: Research note, November 2026.
   en_theorie:
     einordnung: |
       Next step: mode campaign up to $k\approx5000$ ($n_{\lim}\approx2200$), beforehand test on the model case [[kl.verm.streifenbreite]] whether the method finds a known
@@ -1192,7 +1246,7 @@
     worum: |
       A small numerical error in Paper IV: the constant of the boundary law.
 - id: bw.korr.r20
-  quelle_hash: 9f91a34c29fd
+  quelle_hash: e796c92d65c0
   theorie_hash: 7651d917a066
   herkunft:
     modell: sonnet
@@ -1220,6 +1274,10 @@
       $\operatorname{Im}[\ln d\,T_d(m+z)]$. The exact finite residual $R(n+z)$ runs smoothly through the zone.
     quellen:
     - stelle: Round 20, R20_SINGULARITY_STRUCTURE.md
+    nachgeprueft:
+    - ergebnis: The curve y = (π/2)/(ln d · T_d′) is the location of genuine singularities of the approximations (z_n ≈ x ± i(π/2)/U_d′(x+n−4),
+        bw.satz.endliche_singularitaeten), not only a solver detail; the statement that the limit function has no isolated singularity there remains
+        correct.
   en_theorie:
     einordnung: |
       Refutes [[bw.beob.singularitaet]] and replaces [[bw.verm.universell]]. Rule for every singularity search with solvers: check breakdowns against an exact ladder.
@@ -2060,6 +2118,56 @@
     worum: |
       The phase map is not only continuous but continuously differentiable, and its derivative can be written down as a product: tower values to
       base $d$ divided by tower values to base $b$, level by level.
+- id: bw.satz.endliche_singularitaeten
+  quelle_hash: 9b5d00f7bd15
+  theorie_hash: 066872e01fc9
+  herkunft:
+    modell: opus
+    datum: '2026-11-23'
+  geprueft: nein
+  en:
+    titel: 'Where the approximations are singular: zₙ ≈ x ± i(π/2)/U_d′(x+n−4) — the old "0.058" explained'
+    bereich: finite approximation $\Phi_n(x)=\mathrm{slog}_b(\mathrm{sexp}_d(n+x))-n-x$, fixed real $x$, $n$ large; $U_d$ as in bw.satz.reelle_konjugation
+    aussage: |
+      The real germ of $\Phi_n$ has accessible conjugate singularities at
+      $$z_n^\pm=x+\frac{\pm i\frac\pi2+o(1)}{U_d'(x+n-4)},$$
+      over the ordinary value $\mathrm{sexp}_d(n+z_n^\pm)=b$ on a nonregular sheet of the outer inverse; the Taylor radius at $x$
+      is $\mathcal R_n(x)\sim\frac{\pi/2}{U_d'(x+n-4)}$. The singularities are infinitely branched and approach every real point as $n$ grows.
+      Example $b=e$, $d=2$, $x=0$: $\mathrm{Im}\,z_n^+=0.5066$ ($n=6$), $0.05890$ ($n=7$), $1.3159\cdot10^{-6}$ ($n=8$); scaled $1.2005$, $1.5478$, $1.5707963260\to\pi/2$.
+      **This explains the earlier "universal 0.058" (bw.beob.sigma_stern, bw.korr.r20):** what was measured was the singularity of the approximation at level $n=7$,
+      not one of the limit function.
+    einfach: If one computes base change only up to a fixed level, the result has genuine singularities just next to the real axis — the higher
+      the level, the closer. One of them lies, at level 7, exactly at height 0.0589, and this is exactly the number we used to take for a fixed
+      property of the wave.
+    beweis:
+      text: Logarithmic continuation along an explicit polygonal path via two inverse g-steps (p. 7); radius from the location of the path and
+        a holomorphic continuation on the smaller disk (p. 8). Numbers with 85 and 20 000 digits.
+      luecken:
+      - Only read, not independently recomputed.
+      - It is an explicitly constructed family; not all singularities of the approximation are enumerated.
+    quellen:
+    - stelle: Sections 6–7, pp. 7–8
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Local height scale from Koebe distortion; choice of sheet via an explicit integer T_n/(2π).
+      f3_spezialfall: The factor π/2 is the same as in the curve y = (π/2)/(ln d · T_d′) from bw.korr.r20 (U_d′ = ln d · sexp_d′).
+      f4_uebertragbar: To every pair of bases above η.
+      f5_neue_frage: Enumerate all singularities of an approximation level; how do they cancel in the limit?
+    bewertung:
+      richtigkeit: sketch, numbers in the note to high precision
+      nutzen: Clarifies what the earlier measurements actually saw.
+  en_theorie:
+    worum: |
+      What the approximations "see": where the wave cut off after finitely many levels is singular.
+    genau: |
+      At $z_n^\pm\approx x\pm i\frac{\pi/2}{U_d'(x+n-4)}$, over points with $\mathrm{sexp}_d(n+z)=b$ on secondary sheets; the Taylor radius at $x$ is about $(\pi/2)/U_d'(x+n-4)$.
+    warum: |
+      Four levels below the top, a path with imaginary part around $\pi/2$ in the local height scale reaches a point where a logarithm hits its
+      branch point. The higher $n$, the smaller the scale — the singularities move toward the axis.
+    beispiel: |
+      $b=e$, $d=2$, $x=0$: $\mathrm{Im}\,z_7^+=0.0589$ — exactly the number that was earlier measured as a fixed strip width.
+    einordnung: |
+      New interpretation of [[bw.korr.r20]] and [[bw.beob.sigma_stern]]; reason for the envelope [[bw.satz.fourier_huelle]].
 - id: bw.satz.fixpunkt_konjugator
   quelle_hash: bf8115454b5e
   theorie_hash: 35498060d857
@@ -2099,6 +2207,56 @@
       wave means: pure power.'
     warum: For $x\to-\infty$ the regular pentation runs into the fixed point; one inserts its Schröder representation into $\hat G(x)=x+\Phi_5(\{x\})$.
     worum: What does the rank-5 wave mean geometrically?
+- id: bw.satz.fourier_huelle
+  quelle_hash: f7ac210249c8
+  theorie_hash: ed1c3e4ab4d7
+  herkunft:
+    modell: opus
+    datum: '2026-11-23'
+  geprueft: nein
+  en:
+    titel: 'Optimal envelope of the Fourier coefficients: liminf −ln|aₖ| / (k·r_d(k)) = π²'
+    bereich: $b\neq d>\eta$; $a_k=\int_0^1\Phi(x)e^{-2\pi ikx}dx$; $r_d(t)=S_d'(\ln(t-c_d))$ for large $t$
+    aussage: |
+      $$\liminf_{k\to\infty}\frac{-\ln|a_k|}{k\,r_d(k)}=\pi^2,\qquad r_d(t)=(\ln t)^{-1+o(1)} .$$
+      Every constant below $\pi^2$ gives a bound $|a_k|\le e^{-ck\,r_d(k)}$ from some $k$ on; every constant above $\pi^2$ fails infinitely often.
+      Roughly, $|a_k|\approx\exp(-\pi^2k/\ln k)$: faster than every Gevrey rate $e^{-c\sqrt k}$ (in particular $-\ln|a_k|/\sqrt k\to\infty$),
+      slower than every strip $e^{-ck}$. $\Phi$ lies in every Gevrey class of order $s>1$. Whether the liminf is a limit remains open.
+    einfach: 'How fast do the oscillations of the wave weaken? Neither as fast as for an analytic function nor as slowly as was last conjectured,
+      but exactly in between: roughly like e to the (−π² · k / ln k).'
+    beweis:
+      text: |
+        Upper bound: on a high period the difference of two approximation levels continues holomorphically to disks of radius $\tau r(y)$, $\tau<\pi/2$,
+        and is $O(e^{-cy})$ there; telescoping and Cauchy estimates give $\limsup r(m)(\|\Phi^{(m)}\|_\infty/m!)^{1/m}\le1/\tau$, and integration by parts
+        with $m=\lfloor2\pi\tau k r(k)\rfloor$ gives $\liminf\ge2\pi\tau\to\pi^2$. Sharpness: an obstruction on shrinking disks
+        (two orbits of $f$ and $g$ and the two-constants theorem) rules out every stronger uniform bound.
+      luecken:
+      - The sharpness (pp. 5–6 of the note) was only read, not independently reconstructed; the upper bound (p. 4) looks clean.
+      - Whether the liminf is a limit does not follow (bw.frage.huelle_grenzwert).
+    quellen:
+    - stelle: Sections 2–5, pp. 3–6
+    pruefung:
+      f1_folgt_unmittelbar: No.
+      f2_benutzte_voraussetzungen: Local height scale r_d from Koebe distortion; two-constants theorem; construction from bw.satz.reelle_konjugation.
+      f3_spezialfall: The constant π² = 2π · (π/2) matches the location of the singularities of the approximations at distance (π/2)·r (bw.satz.endliche_singularitaeten).
+      f4_uebertragbar: To every pair of bases above η; r_d depends only on the inner base d.
+      f5_neue_frage: Is it a genuine limit, and what determines the upward outliers?
+    bewertung:
+      richtigkeit: sketch (upper bound checked, sharpness only read)
+      nutzen: Replaces both old models (strip, √k) by the correct decay law.
+  en_theorie:
+    worum: |
+      How fast the oscillations of the base-change wave weaken, given that it is not analytic.
+    genau: |
+      $\liminf_k -\ln|a_k|/(k\,r_d(k))=\pi^2$ with $r_d(k)=(\ln k)^{-1+o(1)}$, so roughly $|a_k|\approx e^{-\pi^2k/\ln k}$.
+    warum: |
+      Around every real point the wave at level $j$ continues holomorphically to a disk of radius about $(\pi/2)\,r$, with $r\approx1/U_d'$ the local
+      height scale. Cauchy estimates on these shrinking disks give the bound $2\pi\cdot\frac\pi2=\pi^2$; the singularities of the approximations
+      at exactly this distance show that one cannot do better.
+    beispiel: |
+      Measured (bases $e$ and 2): $-\ln|a_k|/(k\,r_d(k))=9.86$ at $k=50$, $11.19$ at $k=700$; $\pi^2=9.87$.
+    einordnung: |
+      Answers [[bw.frage.streifen_gevrey]]; what remains open is [[bw.frage.huelle_grenzwert]]. Measurements: [[bw.beob.moden_bis_700]].
 - id: bw.satz.fourier_naht
   quelle_hash: a973c71deece
   theorie_hash: 0ba4a2130a54
@@ -2477,6 +2635,64 @@
       The equations say $K\circ H=H\circ K=\mathrm{id}$ for $H=\mathrm{id}+\Phi$, $K=\mathrm{id}+\Psi$. Chain rule: $H'(K(u))\,K'(u)=1$, hence nowhere zero; increasing gives positive.
     worum: |
       When are two mutually inverse circle maps smooth with positive derivative? When both are $C^1$. One alone is not enough.
+- id: bw.satz.nirgends_analytisch
+  quelle_hash: e38a4fb23333
+  theorie_hash: 7b4a39fad20c
+  herkunft:
+    modell: opus
+    datum: '2026-11-23'
+  geprueft: nein
+  en:
+    titel: The base-change phase is analytic at no real point (σ* = 0)
+    bereich: $b\neq d>\eta$, real Kneser branches; $f,g,H$ as in bw.satz.reelle_konjugation
+    aussage: |
+      $\Phi_{b,d}$ is real-analytic at no real point. In particular there is no strip $|\mathrm{Im}\,\theta|<\sigma$ with $\sigma>0$
+      into which $\Phi$ continues holomorphically: $\sigma^*(b,d)=0$ for every pair. This proves Levenstein's conjecture (bw.verm.nirgends_analytisch)
+      and refutes the strip conjecture (bw.verm.streifen).
+    einfach: 'The small periodic wave of base change is infinitely often differentiable, but at no point "analytic": nowhere can it be described
+      by a convergent power series. The reason is that the dynamics of "e to the w plus p" is chaotic in the whole complex plane.'
+    beweis:
+      text: |
+        If $\Phi$ were analytic at a real point, then (periodicity, $S_d,U_b$ analytic) so would $H$ be at a large real $u_0$, on a
+        disk $D$. Put $E_n=g^n\circ H-f^n$ on $D$. On a real segment $I\subset[a,\infty)\cap D$ one has $|E_n|\le C_1\exp(-f^n(a))$ (because
+        $g^n(H(u))=H(f^n(u))$ and $H(u)=u+O(e^{-u})$); on all of $D$, $|E_n|\le2B^n(M)$ with $B(t)=e^t+C$, and $\log(2B^n(M))=o(f^n(a))$ because
+        $f(a)>M+1$. The two-constants theorem for the subharmonic $\log|E_n|$ on $D\setminus I$ gives $E_n\to0$ on the open set.
+        $f$ is affinely conjugate to $w\mapsto\ln d\cdot e^w$ with $\ln d>1/e$; its Julia set is the whole plane (Misiurewicz, Devaney), and repelling
+        periodic points are dense. For such a point $z_*$ of period $m$ in $D\setminus I$ it follows that $g^{ml}(H(z_*))\to z_*$ and
+        $g^{ml+1}(H(z_*))\to f(z_*)$, hence $g(z_*)=f(z_*)$, i.e. $p=q$ — contradicting $b\neq d$. Checked step by step on 23.11.2026.
+    quellen:
+    - stelle: p. 11 (fixed-disk proof)
+    - {}
+    - {}
+    - stelle: model for the harmonic-measure argument
+    - stelle: conjecture
+    pruefung:
+      f1_folgt_unmittelbar: 'No, but short: the two-constants theorem plus "Julia set = ℂ".'
+      f2_benutzte_voraussetzungen: Real conjugacy H with H(u) = u + O(e^{-u}); J(λe^z) = ℂ for λ > 1/e (classical); density of repelling periodic
+        points.
+      f3_spezialfall: 'Yes: two different maps e^w + p, e^w + q with Julia set ℂ cannot be analytically conjugate, not even locally at a real
+        point.'
+      f4_uebertragbar: To every base change between Kneser-type superfunctions of maps with Julia set ℂ; not for bases below η (there the Julia
+        set is not all of ℂ).
+      f5_neue_frage: How exactly do the Fourier coefficients decay then? → bw.satz.fourier_huelle
+    bewertung:
+      richtigkeit: complete (checked; not peer-reviewed)
+      nutzen: Settles the strip question for good and proves a forum conjecture from 2011.
+  en_theorie:
+    worum: |
+      The old question "strip or not?": is the periodic wave of base change analytic anywhere?
+    genau: |
+      No — at no real point. So there is no strip around the real axis in which it would be holomorphic ($\sigma^*=0$).
+    warum: |
+      If the wave were analytic somewhere, so would the conversion $H$ be on a small disk. There $g^n\circ H-f^n$ would be doubly exponentially small on a real
+      segment and only singly exponentially large elsewhere; a theorem about subharmonic functions then forces it to 0 on the whole disk.
+      Because the Julia set of $e^w+p$ is the whole plane, the disk contains a periodic point — and there it would follow that $e^z+p=e^z+q$.
+    beispiel: |
+      For $b=e$, $d=2$ the effective strip width $-\ln|a_k|/(2\pi k)$ keeps decreasing: $0.202$ at $k=200$, $0.149$ at $k=700$ — it tends to 0 like $1/\ln k$
+      instead of settling at a fixed value.
+    einordnung: |
+      Refutes [[bw.verm.streifen]], proves Levenstein's conjecture [[bw.verm.nirgends_analytisch]]. Comparison: Kneser's own wave is singular at the integers
+      ([[kn.satz.theta_singularitaet]]); for base change, singularities of the approximations lie densely near every real point ([[bw.satz.endliche_singularitaeten]]).
 - id: bw.satz.paulsen_cowgill_hardy
   quelle_hash: 5c9b829b710e
   theorie_hash: 04a3eae8e1e2
@@ -2598,7 +2814,7 @@
       The central result: If one translates the height from the tower to base $d$ into heights to base $b$, one gets almost a fixed shift $\mu$ —
       plus a tiny wave $P$ that repeats with every integer height. It never goes away.
 - id: bw.satz.phasengesetz_gestoppt
-  quelle_hash: cd319296ab96
+  quelle_hash: c1a237c98d98
   theorie_hash: 68290b22ba20
   herkunft:
     modell: sonnet
@@ -2611,11 +2827,8 @@
     zusatz: nein
   en:
     beweis:
-      text: 'Stopping rule + growth gap; Paper III: “all tail estimates of [1,2] hold verbatim for $j\ge J_0$”.'
-      luecken:
-      - The verbatim transfer of Lemmas 5.2–5.4 (Paper I) to $j\ge J_0$ is claimed, not written out.
-      - (R3) — local Lipschitz continuity of $A_b$ — follows from real analyticity of $\operatorname{slog}_b^{\mathrm K}$; not made explicit in
-        the text.
+      text: 'Via the real conjugacy H = lim g^{-j}∘f^{j} between e^w + p and e^w + q (bw.satz.reelle_konjugation): x + Φ(x) = S_b(H(U_d(x))) with
+        a doubly exponential remainder; the stopping rule secures the real channel.'
     naechste_frage: Write out Lemmas 5.2–5.4 for $j\ge J_0$ (1–2 pages).
     pruefung:
       f5_neue_frage: Write out and check as a standalone theorem — then Papers I–II are largely unconditional.
@@ -2626,12 +2839,15 @@
     bewertung:
       recherche: Paper III.
       nutzen: Would lift the conditionality of the whole series.
-      richtigkeit: plausible, gaps named
+      richtigkeit: complete (via bw.satz.reelle_konjugation)
     titel: Phase law for the stopped chain (Paper III reading)
     aussage: The phase law holds without Hyp. 2.2/2.4 if one uses the stopped tails $D_n^{\mathrm{stop}}$.
     bereich: all $b,d>\eta$, Kneser branches
     quellen:
     - stelle: §4, §7
+    versionen:
+    - aenderung: 'From sketch to proven: the gaps (Lemmas 5.2–5.4 for j ≥ J0, Lipschitz property of A_b) are replaced by the real conjugacy.'
+      grund: Research note, November 2026, section 1, checked.
   en_theorie:
     einordnung: |
       Once this is written out, Papers I–II would be largely unconditional. [[bw.lem.offset]] builds on it.
@@ -2838,6 +3054,59 @@
       are almost equidistributed, under $dH$ distributed according to $1+P_4'$; the Hellinger affinity per level is $A<1$, and the product over infinitely many levels tends to 0 (Kakutani).
     worum: |
       What kind of non-smoothness does the rank-5 base-change phase really have?
+- id: bw.satz.reelle_konjugation
+  quelle_hash: dad776067b21
+  theorie_hash: d4eef52ccbcf
+  herkunft:
+    modell: opus
+    datum: '2026-11-23'
+  geprueft: nein
+  en:
+    titel: Base change is a real conjugacy between eʷ + p and eʷ + q — the phase law without extra hypotheses
+    bereich: $b\neq d>\eta$, real Kneser branches; $c_a=\ln\ln a$, $U_a(s)=\ln a\cdot\mathrm{sexp}_a(s)+c_a$, $S_a=U_a^{-1}$, $p=c_d$, $q=c_b$
+    aussage: |
+      $U_a$ turns the step $s\mapsto s+1$ into $f_a(w)=e^w+c_a$. With $f=f_d$, $g=f_b$ there exists on a real half-line $[R,\infty)$
+      $$H(u)=\lim_{j\to\infty}g^{-j}\bigl(f^{j}(u)\bigr),\qquad H(u)=u+O(e^{-u}),\qquad H\circ f=g\circ H,$$
+      (real principal branches of $g^{-1}(w)=\ln(w-q)$), and the base-change phase is exactly
+      $$x+\Phi_{b,d}(x)=S_b\bigl(H(U_d(x))\bigr),\qquad U_b(x+\Phi(x)+j)-U_d(x+j)=O\bigl(e^{-U_d(x+j)}\bigr).$$
+      Hence the phase law holds without the hypotheses Hyp. 2.2/2.4: $\mathrm{slog}_b(\mathrm{sexp}_d(x))-x=\mu_{b,d}+P_{b,d}(\{x\})+o(1)$,
+      with $\Phi=\mu+P$ real and 1-periodic, and the remainder decays doubly exponentially.
+    einfach: One rewrites both tetrations so that one step is "e to the w plus p" in one case and "e to the w plus q" in the other. Far out on
+      the number line there is then a conversion H between the two that differs only minutely from the identity. Base change is exactly this conversion
+      — which proves the phase law without any extra hypotheses.
+    formen:
+    - notiz: real conjugacy
+    - notiz: phase as a conjugacy
+    beweis:
+      text: |
+        $U_a(s+1)=\ln a\cdot a^{\mathrm{sexp}_a(s)}+c_a=e^{U_a(s)}+c_a$. The first two logarithms of the chain cancel exactly; afterwards
+        $\Phi_{j+2}(x)=S_b(g^{-j}(f^j(u)))-x$ with $u=U_d(x)$. Backwards: $h_j=0$, $h_i=\ln(1+(p-q+h_{i+1})e^{-u_i})$, $u_i=f^i(u)$; for $\mathrm{Re}\,u_i\ge R-2$
+        the map $h\mapsto h_i$ sends the unit disk into itself with derivative $\le\tfrac12$, and the new correction per level is $O(e^{-u_j})$ — contraction gives
+        uniform convergence to $H(u)=u+h_0$. Real conjugacy and the Abel equations give periodicity. Checked on 23.11.2026.
+    quellen:
+    - stelle: Section 1, p. 2
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: an elementary contraction once the coordinates U_a are chosen.'
+      f2_benutzte_voraussetzungen: Real analyticity and monotonicity of the Kneser branches; $b,d>\eta$ (so that $f^j\to\infty$ on the half-line).
+      f3_spezialfall: 'Yes: conjugacy of two maps with the same behavior at +∞ (cf. bw.satz.ursache_kozykel).'
+      f4_uebertragbar: To every pair of real-analytic increasing tetrations with bases above η.
+      f5_neue_frage: Is H analytic anywhere? → bw.satz.nirgends_analytisch
+    bewertung:
+      richtigkeit: complete (checked)
+      nutzen: Makes the phase law unconditional and gives the phase a simple form.
+  en_theorie:
+    worum: |
+      A simple form for base change: it is the conversion between two very similar maps, $e^w+p$ and $e^w+q$.
+    genau: |
+      With $U_a=\ln a\cdot\mathrm{sexp}_a+\ln\ln a$ a tetration step becomes $w\mapsto e^w+c_a$. The conversion $H=\lim_j g^{-j}\circ f^j$ exists on a
+      real half-line, $H(u)=u+O(e^{-u})$, and $x+\Phi(x)=S_b(H(U_d(x)))$.
+    warum: |
+      $g^{-1}(f(w))=\ln(e^w+p-q)=w+\ln(1+(p-q)e^{-w})$ differs from $w$ far to the right only by about $e^{-w}$. Repeating this along an orbit
+      that grows doubly exponentially, the corrections add up to a convergent series.
+    beispiel: |
+      $b=e$, $d=2$: $p=\ln\ln2=-0.3665\ldots$, $q=\ln\ln e=0$; the mean of the phase is $\mu_{e,2}=-1.1284037766\ldots$
+    einordnung: |
+      Makes [[bw.satz.phasengesetz_gestoppt]] unconditional; foundation for [[bw.satz.nirgends_analytisch]] and [[bw.satz.fourier_huelle]].
 - id: bw.satz.schwanzkonvergenz
   quelle_hash: 70350cee5fb6
   theorie_hash: 660000eb76b0
@@ -3038,7 +3307,7 @@
     worum: |
       Does the singularity hold on all higher ranks?
 - id: bw.verm.nirgends_analytisch
-  quelle_hash: aca8af84a885
+  quelle_hash: bc6068d0abc0
   theorie_hash: 1691edda59a5
   herkunft:
     modell: sonnet
@@ -3079,6 +3348,9 @@
     - stelle: Proposition on the branch points
     - stelle: Round 20 (tower analysis)
     - stelle: 'Levenstein 2014: derivatives grow too fast for analyticity; base change in the complex domain not defined'
+    versionen:
+    - aenderung: Proven; superseded by bw.satz.nirgends_analytisch.
+      grund: Research note, November 2026, proof checked.
   en_theorie:
     beispiel: |
       In the mode decay, “nowhere analytic” would be compatible with the Gevrey picture $\ln|a_k|\approx-c\sqrt k$. Our data up to $k\approx520$ do not distinguish strip and
@@ -3192,7 +3464,7 @@
     worum: |
       An early hope: that for a fixed inner base $d$ the wave $P_{b,d}$ would always have the same shape, regardless of $b$ — only its size would change.
 - id: bw.verm.streifen
-  quelle_hash: ea78392edd76
+  quelle_hash: b2c71253974f
   theorie_hash: 3bea313f3fd2
   herkunft:
     modell: sonnet
@@ -3221,6 +3493,8 @@
     titel: Strip analyticity of the phase (Paper I, Conjecture 8.1)
     aussage: $D_{b,d}$ continues holomorphically in $|\operatorname{Im}\theta|<\sigma_{b,d}$; $|\hat P_{b,d}(k)|\le C e^{-2\pi\sigma|k|}$.
     versionen:
+    - aenderung: 'Refuted: the phase is nowhere analytic, there is no strip (bw.satz.nirgends_analytisch).'
+      grund: Research note, November 2026, proof checked.
     - aenderung: 'Marked as disputed: counter-conjecture from the tetration forum (2011).'
     quellen:
     - stelle: Conjecture 8.1, Rem. 8.2

@@ -1,10 +1,10 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-646 Aussagen · 1420 Kanten · 57 Experimente
+652 Aussagen · 1439 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 235, numerisch 127, bewiesen_literatur 60, bedingt 55, vermutung 49, offen 43, skizze 32, definition 16, gescheitert 15, ueberholt 5, widerlegt 5, annahme 3, entlastet 1
+**Effektiver Status:** bewiesen 238, numerisch 128, bewiesen_literatur 60, bedingt 55, vermutung 47, offen 43, skizze 33, definition 16, gescheitert 15, ueberholt 7, widerlegt 6, annahme 3, entlastet 1
 
-**Zitate nicht am Original geprüft:** 131
+**Zitate nicht am Original geprüft:** 134
 
 
 ## FEHLER (0)
@@ -13,7 +13,7 @@
 ## WARNUNG (0)
 
 
-## HINWEIS (39)
+## HINWEIS (42)
 
 
 **abschwaechbar** (22)
@@ -41,28 +41,31 @@
 - `kn.satz.hexation_keine_halbebene` — Voraussetzung unbenutzt: H reell auf der Achse oder H(0) = 1
 - `kn.satz.singulaer_minus2` — Voraussetzung unbenutzt: T differenzierbar in einer Umgebung von −1 (Paper I)
 
-**fassung** (3)
+**fassung** (4)
 
+- `bw.beob.sigma_stern` — wird von bw.satz.endliche_singularitaeten korrigiert; Status 'numerisch' prüfen
 - `kn.gescheitert.polynom_kantorovich` — wird von kn.beob.polynom_eckmode korrigiert; Status 'gescheitert' prüfen
 - `kn.gescheitert.polynom_rekonstruktion` — wird von kn.satz.halbrang_quadratisch korrigiert; Status 'gescheitert' prüfen
 - `kn.verm.tpid3` — wird von kn.verm.tpid3_bedingung korrigiert; Status 'vermutung' prüfen
 
-**theorie-fortschritt** (5)
+**theorie-fortschritt** (6)
 
 - `ar` — 48 von 50 Aussagen mit Theorie-Block
 - `br` — 65 von 67 Aussagen mit Theorie-Block
+- `bw` — 83 von 85 Aussagen mit Theorie-Block
 - `gr` — 64 von 65 Aussagen mit Theorie-Block
 - `it` — 37 von 38 Aussagen mit Theorie-Block
 - `kn` — 227 von 232 Aussagen mit Theorie-Block
 
-**uebersetzung-fortschritt** (6)
+**uebersetzung-fortschritt** (7)
 
 - `ar` — 50 von 50 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 48 von 50 Theorie-Blöcken
 - `br` — 67 von 67 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 65 von 67 Theorie-Blöcken
+- `bw` — 85 von 85 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 83 von 85 Theorie-Blöcken
 - `gr` — 65 von 65 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 64 von 65 Theorie-Blöcken
 - `it` — 38 von 38 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 37 von 38 Theorie-Blöcken
 - `kn` — 232 von 232 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 227 von 232 Theorie-Blöcken
-- `quelle` — 231 von 315 quelle-Gegenständen übersetzt
+- `quelle` — 233 von 317 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (3)
 
@@ -89,8 +92,6 @@
 - `kn.satz.polynom_approximation_ecke` — Dass E eine Quasischeibe ist (Jordan-Gebiet, Dreipunkt-Bedingung, Öffnung), ist nur numerisch auf einem Raster geprüft (kubisch und f_K).
 - `kn.satz.polynom_hauptsatz_kr0` — Die drei Aussagen des Kerns (kn.verm.polynom_halbexp_kern).
 - `kn.satz.polynom_hauptsatz_kr0` — Die Umstellung von H1/H2 auf K_{r₀} und K19 sind von Strang V gegengelesen, nicht von der Leitung Zeile für Zeile.
-- `bw.satz.phasengesetz_gestoppt` — Die wörtliche Übertragung der Lemmas 5.2–5.4 (Paper I) auf $j\ge J_0$ ist behauptet, nicht ausgeschrieben.
-- `bw.satz.phasengesetz_gestoppt` — (R3) — lokale Lipschitz-Stetigkeit von $A_b$ — folgt aus reeller Analytizität von $\mathrm{slog}_b^{\mathrm K}$; im Text nicht explizit gemacht.
 - `bw.lem.randgesetz` — Kontinuumsnäherung statt rigoroser Durchgangszeit (Douady–Lavaurs-Theorie).
 - `bw.lem.randgesetz` — Behauptete Korrektur $O(\ln(b-\eta))$ nicht hergeleitet.
 - `bw.satz.ursache_kozykel` — Herleitung im Forschungslog, nicht als Beweis ausgeschrieben.
@@ -103,6 +104,10 @@
 - `fp.satz.siegel_mittel` — Nach Herman (1985) ist $\Delta$ für diophantisches $\alpha$ unbeschränkt; Carathéodory greift dann nicht. Zu zeigen wäre, dass $\varphi$ Randwerte in $L^1(d\theta)$ hat (Hardy-Raum $H^1$), damit der Mittelwertsatz gilt.
 - `fp.satz.siegel_mittel` — Ohne Jordan-Rand ist die Randdynamik nicht automatisch zu einer Drehung konjugiert; die Gleichverteilung des Turms bezüglich $\omega_L$ ist offen.
 - `kl.satz.invariante_daempfung` — Dass die klassische periodische Phase (bw.satz.phasengesetz) als Grenzwert |λ| → 1 einer Familie gedämpfter Übergänge entsteht, ist eine Deutung, kein Grenzwertsatz.
+- `bw.satz.fourier_huelle` — Die Schärfe (S. 5–6 der Notiz) ist nur gelesen, nicht unabhängig nachvollzogen; die obere Schranke (S. 4) wirkt sauber.
+- `bw.satz.fourier_huelle` — Ob der liminf ein Grenzwert ist, folgt nicht (bw.frage.huelle_grenzwert).
+- `bw.satz.endliche_singularitaeten` — Nur gelesen, nicht unabhängig nachgerechnet.
+- `bw.satz.endliche_singularitaeten` — Es ist eine ausdrücklich konstruierte Familie; nicht alle Singularitäten der Näherung sind aufgezählt.
 - `kn.satz.theta_singularitaet` — Zweigwahl: mit Intervallen zertifiziert für Basis e und 2 (kn.satz.zweigwahl_zertifikat); offen ist nur die Motor-Annahme (E) mit Toleranz 0.027.
 - `br.satz.vergleichsfunktion` — Konvergenz für die Exponentialfakultät nur gemessen (doppelt exponentiell, ganze Werte auf 10⁻¹²), nicht bewiesen.
 - `br.satz.vergleichsfunktion` — Für Tetration mit Produkt-Tetration als Vergleich (tid 1816) weder Konvergenz noch Glattheit geprüft.
@@ -172,7 +177,7 @@
 - `kn.satz.polynom_hauptsatz_kr0` — kn.satz.polynom_approximation_ecke, kn.verm.polynom_halbexp_kern
 - `bw.satz.schwanzkonvergenz` — bw.ann.hyp22
 - `bw.satz.phasengesetz` — bw.ann.hyp22
-- `bw.lem.offset` — bw.satz.phasengesetz_gestoppt
+- `bw.lem.offset` — —
 - `bw.prop.kozykel` — bw.ann.hyp22
 - `bw.satz.homoeo` — bw.ann.hyp22
 - `bw.satz.antisymmetrie` — bw.ann.hyp22

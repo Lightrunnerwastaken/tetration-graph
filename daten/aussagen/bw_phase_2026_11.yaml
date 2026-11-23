@@ -1,0 +1,211 @@
+gebiet: bw
+# Basiswechsel-Phase: nirgends analytisch, Fourier-Hülle, Singularitäten der Näherungen (Forschungsnotiz November 2026,
+# forschung/basiswechsel_phase_2026_11/). Eingetragen am 23.11.2026.
+aussagen:
+
+- id: bw.satz.reelle_konjugation
+  titel: 'Der Basiswechsel ist eine reelle Konjugation zwischen eʷ + p und eʷ + q — Phasengesetz ohne Zusatzannahmen'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [phase, F_bd, schwanz_D]
+  bereich: '$b\neq d>\eta$, reelle Kneser-Zweige; $c_a=\ln\ln a$, $U_a(s)=\ln a\cdot\mathrm{sexp}_a(s)+c_a$, $S_a=U_a^{-1}$, $p=c_d$, $q=c_b$'
+  aussage: |
+    $U_a$ verwandelt den Schritt $s\mapsto s+1$ in $f_a(w)=e^w+c_a$. Mit $f=f_d$, $g=f_b$ existiert auf einer reellen Halbgeraden $[R,\infty)$
+    $$H(u)=\lim_{j\to\infty}g^{-j}\bigl(f^{j}(u)\bigr),\qquad H(u)=u+O(e^{-u}),\qquad H\circ f=g\circ H,$$
+    (reelle Hauptzweige von $g^{-1}(w)=\ln(w-q)$), und die Basiswechsel-Phase ist genau
+    $$x+\Phi_{b,d}(x)=S_b\bigl(H(U_d(x))\bigr),\qquad U_b(x+\Phi(x)+j)-U_d(x+j)=O\bigl(e^{-U_d(x+j)}\bigr).$$
+    Damit gilt das Phasengesetz ohne die Annahmen Hyp. 2.2/2.4: $\mathrm{slog}_b(\mathrm{sexp}_d(x))-x=\mu_{b,d}+P_{b,d}(\{x\})+o(1)$,
+    mit $\Phi=\mu+P$ reell, 1-periodisch, und der Rest fällt doppelt exponentiell.
+  einfach: >-
+    Man schreibt beide Tetrationen so um, dass ein Schritt einmal „e hoch w plus p“ und einmal „e hoch w plus q“ ist. Weit draussen auf der
+    Zahlengeraden gibt es dann eine Umrechnung H zwischen den beiden, die sich nur winzig von der Identität unterscheidet. Der Basiswechsel ist
+    genau diese Umrechnung — das beweist das Phasengesetz ganz ohne Zusatzannahmen.
+  formen:
+    - {tex: 'H=\lim_j g^{-j}\circ f^{j},\quad H(u)=u+O(e^{-u})', notiz: 'reelle Konjugation'}
+    - {tex: 'x+\Phi_{b,d}(x)=S_b(H(U_d(x)))', notiz: 'Phase als Konjugation'}
+  beweis:
+    art: vollstaendig
+    text: |
+      $U_a(s+1)=\ln a\cdot a^{\mathrm{sexp}_a(s)}+c_a=e^{U_a(s)}+c_a$. Die ersten zwei Logarithmen der Kette heben sich exakt weg, danach ist
+      $\Phi_{j+2}(x)=S_b(g^{-j}(f^j(u)))-x$ mit $u=U_d(x)$. Rückwärts: $h_j=0$, $h_i=\ln(1+(p-q+h_{i+1})e^{-u_i})$, $u_i=f^i(u)$; für $\mathrm{Re}\,u_i\ge R-2$
+      bildet $h\mapsto h_i$ die Einheitskreisscheibe in sich ab mit Ableitung $\le\tfrac12$, die neue Korrektur je Stufe ist $O(e^{-u_j})$ — Kontraktion gibt
+      gleichmässige Konvergenz gegen $H(u)=u+h_0$. Reelle Konjugation und Abel-Gleichungen geben die Periodizität. Nachgelesen am 23.11.2026.
+  stuetzt_sich_auf: [kn.konstr.kneser]
+  quellen: [{ref: notiz_basiswechsel_phase2026, stelle: 'Abschnitt 1, S. 2'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: elementare Kontraktion, sobald man die Koordinaten U_a wählt.'
+    f2_benutzte_voraussetzungen: 'Reelle Analytizität und Monotonie der Kneser-Zweige; $b,d>\eta$ (damit $f^j\to\infty$ auf der Halbgeraden).'
+    f3_spezialfall: 'Ja: Konjugation zweier Abbildungen mit gleichem Verhalten bei +∞ (vgl. bw.satz.ursache_kozykel).'
+    f4_uebertragbar: 'Auf jedes Paar reell-analytischer, wachsender Tetrationen mit Basen über η.'
+    f5_neue_frage: 'Ist H irgendwo analytisch? → bw.satz.nirgends_analytisch'
+  bewertung: {richtigkeit: 'vollständig (nachgelesen)', neuheit: neu_ungeprueft, nutzen: 'Macht das Phasengesetz unbedingt und gibt die Phase eine einfache Gestalt.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: verallgemeinert, ziel: bw.satz.phasengesetz}
+    - {typ: verwandt, ziel: bw.satz.schwanzkonvergenz}
+    - {typ: verwandt, ziel: bw.satz.ursache_kozykel}
+
+- id: bw.satz.nirgends_analytisch
+  titel: 'Die Basiswechsel-Phase ist an keiner reellen Stelle analytisch (σ* = 0)'
+  art: satz
+  ebene: C
+  status: bewiesen
+  niveau: forschung
+  objekte: [phase, fourier_moden]
+  bereich: '$b\neq d>\eta$, reelle Kneser-Zweige; $f,g,H$ wie in bw.satz.reelle_konjugation'
+  aussage: |
+    $\Phi_{b,d}$ ist an keiner reellen Stelle reell-analytisch. Insbesondere gibt es keinen Streifen $|\mathrm{Im}\,\theta|<\sigma$ mit $\sigma>0$,
+    in den $\Phi$ sich holomorph fortsetzt: $\sigma^*(b,d)=0$ für jedes Paar. Damit ist Levensteins Vermutung (bw.verm.nirgends_analytisch) bewiesen
+    und die Streifen-Vermutung (bw.verm.streifen) widerlegt.
+  einfach: >-
+    Die kleine periodische Welle beim Basiswechsel ist zwar unendlich oft differenzierbar, aber an keiner Stelle „analytisch“: man kann sie nirgends
+    durch eine konvergente Potenzreihe beschreiben. Der Grund ist, dass die Dynamik von „e hoch w plus p“ in der ganzen komplexen Ebene chaotisch ist.
+  beweis:
+    art: vollstaendig
+    text: |
+      Wäre $\Phi$ bei einer reellen Stelle analytisch, dann (Periodizität, $S_d,U_b$ analytisch) auch $H$ bei einem grossen reellen $u_0$, auf einer
+      Kreisscheibe $D$. Setze $E_n=g^n\circ H-f^n$ auf $D$. Auf einem reellen Stück $I\subset[a,\infty)\cap D$ ist $|E_n|\le C_1\exp(-f^n(a))$ (wegen
+      $g^n(H(u))=H(f^n(u))$ und $H(u)=u+O(e^{-u})$); auf ganz $D$ ist $|E_n|\le2B^n(M)$ mit $B(t)=e^t+C$, und $\log(2B^n(M))=o(f^n(a))$, weil
+      $f(a)>M+1$. Der Zwei-Konstanten-Satz für das subharmonische $\log|E_n|$ auf $D\setminus I$ gibt $E_n\to0$ auf der offenen Menge.
+      $f$ ist affin konjugiert zu $w\mapsto\ln d\cdot e^w$ mit $\ln d>1/e$; deren Julia-Menge ist die ganze Ebene (Misiurewicz, Devaney), abstossende
+      periodische Punkte liegen dicht. Für einen solchen Punkt $z_*$ der Periode $m$ in $D\setminus I$ folgt $g^{ml}(H(z_*))\to z_*$ und
+      $g^{ml+1}(H(z_*))\to f(z_*)$, also $g(z_*)=f(z_*)$, d. h. $p=q$ — Widerspruch zu $b\neq d$. Schritt für Schritt nachgelesen am 23.11.2026.
+  stuetzt_sich_auf: [bw.satz.reelle_konjugation]
+  quellen: [{ref: notiz_basiswechsel_phase2026, stelle: 'S. 11 (Fixed-disk proof)'}, {ref: misiurewicz1981}, {ref: devaney1993}, {ref: cui_huang_wang2026, stelle: 'Vorbild für das Harmonisches-Mass-Argument'}, {ref: forum_levenstein2011, stelle: 'Vermutung'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein, aber kurz: Zwei-Konstanten-Satz plus „Julia-Menge = ℂ“.'
+    f2_benutzte_voraussetzungen: 'Reelle Konjugation H mit H(u) = u + O(e^{-u}); J(λe^z) = ℂ für λ > 1/e (klassisch); Dichte abstossender periodischer Punkte.'
+    f3_spezialfall: 'Ja: zwei verschiedene Abbildungen e^w + p, e^w + q mit Julia-Menge ℂ können nicht analytisch konjugiert sein, auch nicht lokal an einem reellen Punkt.'
+    f4_uebertragbar: 'Auf jeden Basiswechsel zwischen Kneser-artigen Superfunktionen von Abbildungen mit Julia-Menge ℂ; für Basen unter η nicht (dort ist die Julia-Menge nicht ganz ℂ).'
+    f5_neue_frage: 'Wie genau fallen dann die Fourier-Koeffizienten? → bw.satz.fourier_huelle'
+  bewertung: {richtigkeit: 'vollständig (nachgelesen; nicht begutachtet)', neuheit: neu_ungeprueft, nutzen: 'Beantwortet die Streifen-Frage endgültig und beweist eine Forums-Vermutung von 2011.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: widerlegt, ziel: bw.verm.streifen}
+    - {typ: ersetzt, ziel: bw.verm.nirgends_analytisch}
+    - {typ: verwandt, ziel: kn.satz.theta_singularitaet, notiz: 'bei Knesers eigener Welle liegen die Singularitäten ebenfalls auf der reellen Achse'}
+
+- id: bw.satz.fourier_huelle
+  titel: 'Optimale Hülle der Fourier-Koeffizienten: liminf −ln|aₖ| / (k·r_d(k)) = π²'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [phase, fourier_moden, gevrey]
+  bereich: '$b\neq d>\eta$; $a_k=\int_0^1\Phi(x)e^{-2\pi ikx}dx$; $r_d(t)=S_d''(\ln(t-c_d))$ für grosse $t$'
+  aussage: |
+    $$\liminf_{k\to\infty}\frac{-\ln|a_k|}{k\,r_d(k)}=\pi^2,\qquad r_d(t)=(\ln t)^{-1+o(1)} .$$
+    Jede Konstante unter $\pi^2$ gibt eine Schranke $|a_k|\le e^{-ck\,r_d(k)}$ ab einem $k$; jede Konstante über $\pi^2$ scheitert unendlich oft.
+    Grob ist also $|a_k|\approx\exp(-\pi^2k/\ln k)$: schneller als jede Gevrey-Rate $e^{-c\sqrt k}$ (insbesondere $-\ln|a_k|/\sqrt k\to\infty$),
+    langsamer als jeder Streifen $e^{-ck}$. $\Phi$ liegt in jeder Gevrey-Klasse der Ordnung $s>1$. Ob der liminf ein Grenzwert ist, bleibt offen.
+  einfach: >-
+    Wie schnell werden die Schwingungen der Welle schwächer? Weder so schnell wie bei einer analytischen Funktion noch so langsam, wie man
+    zuletzt vermutet hatte, sondern genau dazwischen: ungefähr wie e hoch (−π² · k / ln k).
+  beweis:
+    art: skizze
+    text: |
+      Obere Schranke: auf einer hohen Periode setzt sich die Differenz zweier Näherungsstufen holomorph auf Kreise vom Radius $\tau r(y)$, $\tau<\pi/2$,
+      fort und ist dort $O(e^{-cy})$; Teleskopieren und Cauchy-Abschätzungen geben $\limsup r(m)(\|\Phi^{(m)}\|_\infty/m!)^{1/m}\le1/\tau$, partielle
+      Integration mit $m=\lfloor2\pi\tau k r(k)\rfloor$ gibt $\liminf\ge2\pi\tau\to\pi^2$. Schärfe: ein Hindernis auf schrumpfenden Kreisscheiben
+      (zwei Bahnen von $f$ und $g$ und der Zwei-Konstanten-Satz) schliesst jede stärkere gleichmässige Schranke aus.
+    luecken:
+      - 'Die Schärfe (S. 5–6 der Notiz) ist nur gelesen, nicht unabhängig nachvollzogen; die obere Schranke (S. 4) wirkt sauber.'
+      - 'Ob der liminf ein Grenzwert ist, folgt nicht (bw.frage.huelle_grenzwert).'
+  stuetzt_sich_auf: [bw.satz.reelle_konjugation]
+  quellen: [{ref: notiz_basiswechsel_phase2026, stelle: 'Abschnitte 2–5, S. 3–6'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Lokale Höhenskala r_d aus der Koebe-Verzerrung; Zwei-Konstanten-Satz; Konstruktion aus bw.satz.reelle_konjugation.'
+    f3_spezialfall: 'Die Konstante π² = 2π · (π/2) passt zur Lage der Singularitäten der Näherungen im Abstand (π/2)·r (bw.satz.endliche_singularitaeten).'
+    f4_uebertragbar: 'Auf jedes Basispaar über η; r_d hängt nur von der inneren Basis d ab.'
+    f5_neue_frage: 'Ist es ein echter Grenzwert, und was bestimmt die Ausreisser nach oben?'
+  bewertung: {richtigkeit: 'Skizze (obere Schranke nachgelesen, Schärfe nur gelesen)', neuheit: neu_ungeprueft, nutzen: 'Ersetzt die beiden alten Modelle (Streifen, √k) durch das richtige Abfallgesetz.', nutzen_stufe: hoch}
+  kanten:
+    - {typ: ersetzt, ziel: bw.frage.streifen_gevrey}
+    - {typ: verwandt, ziel: bw.beob.modenabfall}
+    - {typ: verwandt, ziel: bw.prop.saddle}
+
+- id: bw.satz.endliche_singularitaeten
+  titel: 'Wo die Näherungen singulär sind: zₙ ≈ x ± i(π/2)/U_d′(x+n−4) — die alte „0.058“ erklärt'
+  art: satz
+  ebene: C
+  status: skizze
+  niveau: forschung
+  objekte: [phase]
+  bereich: 'endliche Näherung $\Phi_n(x)=\mathrm{slog}_b(\mathrm{sexp}_d(n+x))-n-x$, festes reelles $x$, $n$ gross; $U_d$ wie in bw.satz.reelle_konjugation'
+  aussage: |
+    Der reelle Keim von $\Phi_n$ hat erreichbare konjugierte Singularitäten bei
+    $$z_n^\pm=x+\frac{\pm i\frac\pi2+o(1)}{U_d'(x+n-4)},$$
+    über dem gewöhnlichen Wert $\mathrm{sexp}_d(n+z_n^\pm)=b$ auf einem nicht-regulären Blatt der äusseren Umkehrung; der Taylor-Radius bei $x$
+    ist $\mathcal R_n(x)\sim\frac{\pi/2}{U_d'(x+n-4)}$. Die Singularitäten sind unendlich verzweigt und rücken mit $n$ an jede reelle Stelle.
+    Beispiel $b=e$, $d=2$, $x=0$: $\mathrm{Im}\,z_n^+=0.5066$ ($n=6$), $0.05890$ ($n=7$), $1.3159\cdot10^{-6}$ ($n=8$); skaliert $1.2005$, $1.5478$, $1.5707963260\to\pi/2$.
+    **Das erklärt die frühere „universelle 0.058“ (bw.beob.sigma_stern, bw.korr.r20):** gemessen wurde die Singularität der Näherung auf der Stufe $n=7$,
+    nicht eine der Grenzfunktion.
+  einfach: >-
+    Rechnet man den Basiswechsel nur bis zu einer festen Stufe aus, hat das Ergebnis echte Singularitäten knapp neben der reellen Achse — je höher die
+    Stufe, desto näher. Eine davon liegt bei Stufe 7 genau in der Höhe 0.0589, und genau diese Zahl hatten wir früher für eine feste Eigenschaft der Welle gehalten.
+  beweis:
+    art: skizze
+    text: 'Logarithmische Fortsetzung längs eines expliziten Polygonwegs über zwei inverse g-Schritte (S. 7); Radius über die Lage des Wegs und eine holomorphe Fortsetzung auf der kleineren Scheibe (S. 8). Zahlen mit 85 bzw. 20 000 Stellen.'
+    luecken:
+      - 'Nur gelesen, nicht unabhängig nachgerechnet.'
+      - 'Es ist eine ausdrücklich konstruierte Familie; nicht alle Singularitäten der Näherung sind aufgezählt.'
+  stuetzt_sich_auf: [bw.satz.reelle_konjugation]
+  quellen: [{ref: notiz_basiswechsel_phase2026, stelle: 'Abschnitte 6–7, S. 7–8'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein.'
+    f2_benutzte_voraussetzungen: 'Lokale Höhenskala aus Koebe-Verzerrung; Wahl des Blatts über eine explizite ganze Zahl T_n/(2π).'
+    f3_spezialfall: 'Der Faktor π/2 ist derselbe wie in der Kurve y = (π/2)/(ln d · T_d′) aus bw.korr.r20 (U_d′ = ln d · sexp_d′).'
+    f4_uebertragbar: 'Auf jedes Basispaar über η.'
+    f5_neue_frage: 'Alle Singularitäten einer Näherungsstufe aufzählen; wie heben sie sich im Grenzwert auf?'
+  bewertung: {richtigkeit: 'Skizze, Zahlen in der Notiz mit hoher Genauigkeit', neuheit: neu_ungeprueft, nutzen: 'Klärt, was die früheren Messungen eigentlich gesehen haben.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: korrigiert, ziel: bw.beob.sigma_stern}
+    - {typ: verwandt, ziel: bw.korr.r20, notiz: 'die Löserkurve ist die Lage einer echten Singularität der Näherung'}
+
+- id: bw.beob.moden_bis_700
+  titel: 'Moden der Phase (e, 2) bis k = 700 auf zwei unabhängigen Wegen'
+  art: beobachtung
+  ebene: C
+  status: numerisch
+  niveau: forschung
+  objekte: [fourier_moden, hub_m]
+  aussage: |
+    Vorwärts (DFT von $\Phi$ mit 2048 Punkten, 335 Stellen) und rückwärts (umgekehrtes Basispaar, $2\pi ika_k=\int_0^1e^{-2\pi ikQ(y)}dy$, 325 Stellen)
+    stimmen überein: die Mittel um $9.24\cdot10^{-320}$, die Koeffizienten bei $k=700$ relativ auf $1.78\cdot10^{-34}$.
+    $\mu_{e,2}=-1.1284037766\,2892400987\,9217902036\,4262671116\ldots$ (gleich dem Wert in bw.beob.m2).
+    Normierte Dämpfung $-\ln|a_k|/(k\,r_d(k))$: $9.861$ ($k=50$), $10.350$ (100), $10.718$ (200), $10.953$ (350), $11.080$ (500), $11.188$ (700) — über $\pi^2$,
+    im Einklang mit bw.satz.fourier_huelle; ein Grenzwert ist aus diesen Daten nicht ablesbar.
+  einfach: >-
+    Zwei ganz verschiedene Rechenwege geben für die Schwingungen der Welle dieselben Zahlen, bis zur 700. Schwingung auf 34 Stellen.
+  quellen: [{ref: notiz_basiswechsel_phase2026, stelle: 'Abschnitt 8, S. 9–10; check_phase_modes.py'}]
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein (gerechnet).'
+    f2_benutzte_voraussetzungen: 'fatou.gp-Fork (gemeinsame Bibliothek für beide Wege), 2048 Punkte je Richtung.'
+    f3_spezialfall: nein
+    f4_uebertragbar: 'Skript für andere Basispaare anpassbar.'
+    f5_neue_frage: 'Bis k ≈ 5000, um den liminf von einem möglichen Grenzwert zu unterscheiden.'
+  bewertung: {richtigkeit: 'numerisch, zwei Wege', neuheit: neu_ungeprueft, nutzen: 'Prüfstein für die Hülle und die alten Modenfits.', nutzen_stufe: mittel}
+  kanten:
+    - {typ: stuetzt, ziel: bw.satz.fourier_huelle}
+    - {typ: verwandt, ziel: bw.beob.m2}
+
+- id: bw.frage.huelle_grenzwert
+  titel: 'Ist die Fourier-Hülle ein echter Grenzwert?'
+  art: frage
+  ebene: C
+  status: offen
+  niveau: forschung
+  objekte: [fourier_moden]
+  aussage: |
+    Bekannt ist $\liminf -\ln|a_k|/(k\,r_d(k))=\pi^2$ (bw.satz.fourier_huelle). Gilt sogar $\lim$? Die Notiz führt das auf ein endliches Integral zurück:
+    mit $J(k)=\min\{j\ge0:U_d(X+j)\ge k^2\}$ und
+    $$I_k=\int_X^{X+1}\bigl[S_b\bigl(U_d(t+J(k))\bigr)-J(k)-t\bigr]e^{-2\pi ikt}\,dt$$
+    ist $|a_k-I_k|\le Ce^{-ck^2}$; der Grenzwert gilt genau dann, wenn $|I_k|\ge\exp(-(\pi^2+\varepsilon)k\,r_d(k))$ für jedes $\varepsilon>0$ und alle grossen $k$.
+    Offen ist also nur, ob in diesem endlichen Integral ungewöhnlich starke Auslöschung vorkommt.
+  einfach: >-
+    Wir wissen, dass die Schwingungen unendlich oft fast genau so schwach sind wie e hoch (−π² k / ln k). Ob das für alle grossen k gilt oder nur für
+    manche, ist offen — die Frage lässt sich aber auf ein einziges, konkret ausrechenbares Integral zurückführen.
+  quellen: [{ref: notiz_basiswechsel_phase2026, stelle: 'S. 9 (A finite integral for individual modes)'}]
+  kanten:
+    - {typ: motiviert, ziel: bw.satz.fourier_huelle}
