@@ -71,6 +71,10 @@ Gemessen: κ_G ≈ −3.2 (r₀ = 0.05; R_P ~ n^{−3.1} mal |P_n| ~ n^{−0.106
   **lim sup_n max_{t ∈ 𝒞 ∖ U_{r₁}(L, L̄)} (1/n)·ln|Λ_n(t)/Λ_n(L)| ≤ −η < 0** (gleichmässige Form, V Anmerkung D).
 - Gemessen: Linse s = 0.03 −0.011/−0.013, Γout-Bogen −0.053/−0.037 (k52, n = 300/600); R_A fern 0.178 (n = 200) → 4.2e-8 (n = 1800) (V §3.22).
 - Status **offen**. (FA) folgt aus W12′ zusammen mit Ws Modellrechnung. Der Vergleichsweg mit Superlösung scheitert (k_kern §33, O1/O2).
+- **Nachtrag 23.11.2026 — (FA) ist mit dem Eckprofil unverträglich** (hindernis_2026_11/, nachgelesen): Gelten (A-lok) und (FA) auf dieser Kontur (Aussenöffnung 170° > Θ* = 160.97°),
+  so ist log max_{|t−L| = Rρn^{−0.894}}|Λ_n/Λ_n(L)| ≥ c·n^{0.053} — gegen K10 und die gemessenen Kreismaxima 3.63 (k_kern §28.1(c)). Die Daten (R_A fern ~ n^{−5.734}, V §3.22) sprechen gegen (FA).
+  **Ersatz (A-pol):** R_A(n) = max_𝒞|Λ_n/Λ_n(L)| ≤ C·n^b mit κ_G + b < −1. Schritt 5 im Beweis von Satz A braucht nur das; Satz A und der Hauptsatz bleiben mit (EP), (A-pol), (S_E) stehen,
+  in (F2) entsprechend (A-pol) statt (FA). Fenster mit Aussenöffnung > 180° (z. B. 95°/−110°) sind für (A-lok) + (FA) ohne jede Bedingung ausgeschlossen.
 
 ### 2.3 (S_E) Approximation von f_K auf E — Satz K22
   **dist_E(f_K, P_N) ≤ C_E·N^{−s_E}, s_E = 5.417·α_E, α_E = (u₁ − u₂ − 38.3°)/180°**; bei (80°, −90°) s_E = 3.96.

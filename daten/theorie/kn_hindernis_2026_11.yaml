@@ -1,0 +1,31 @@
+# Theorie-Blöcke: Hindernis für (FA) nach der Forschungsnotiz November 2026 (forschung/polynom_halbexp/phase3/hindernis_2026_11/).
+
+kn.satz.polynom_hindernis_fa:
+  worum: |
+    Passen die Annahmen des bedingten Hauptsatzes überhaupt zusammen? Für zwei davon zusammen mit dem gemessenen Eckverhalten: nein.
+  genau: |
+    Sind die normierten adjungierten Köpfe $h_n$ auf der ganzen Kontur polynomial beschränkt und auf einem fernen Bogen exponentiell klein, dann ist
+    $\log\max|h_n|\ge c\,n^{1-Ap}$ auf jedem Kreis $|t-L|=R\rho n^{-A}$, sobald die Aussenöffnung $\Theta$ grösser als $\Theta_*=160.97^\circ$ ist. Die Standardkontur hat $170^\circ$.
+  warum: |
+    1. Eine Funktion, die auf einem Stück des Randes sehr klein ist, ist auch im Inneren klein, gewichtet mit dem harmonischen Mass dieses Stücks.
+    2. An der Spiralecke fällt das harmonische Mass wie $|t-L|^p$ mit $p=\pi(1+T^2)/\Theta$. Auf dem Kreis vom Radius $n^{-A}$ ist es also noch etwa $n^{-Ap}$, und $n\cdot n^{-Ap}\to\infty$.
+    3. In $L$ ist $h_n=1$, und der Logarithmus erfüllt die Mittelwert-Ungleichung. Ist er auf einem festen Teil des Kreises sehr negativ, muss er anderswo sehr gross sein.
+  beispiel: |
+    $A=0.8936$, $T=0.02833$: bei $\Theta=170^\circ$ ist $Ap=0.9469$, die Untergrenze wächst wie $n^{0.053}$; bei $\Theta=150^\circ$ ist $Ap>1$, kein Widerspruch.
+    Gemessen bleibt das Kreismaximum bei $3.63$ ($n=200$–$600$).
+  bilder: []
+  einordnung: |
+    Führt zur Ersatzannahme (A-pol) in [[kn.verm.polynom_halbexp_kern]]; Daten dazu: [[kn.beob.polynom_fernrate_potenz]]. Der Hauptsatz [[kn.satz.polynom_hauptsatz_kr0]] bleibt mit (A-pol) stehen.
+
+kn.beob.polynom_fernrate_potenz:
+  worum: |
+    Wie schnell werden die adjungierten Köpfe weit weg von der Ecke klein?
+  genau: |
+    Wie $n^{-5.734}$; der Exponent ist $\operatorname{Re}(a(2+2\pi i/L))$ mit $a=1+iL/(4\pi)$.
+  warum: |
+    Der erste Pol der Mellin-Transformierten des adjungierten Eckprofils bestimmt, wie stark die Ecke in den fernen Teil hineinwirkt.
+  beispiel: |
+    $n^{5.734}m_n\approx1.95\cdot10^{11}$ bei $n=1400$, $1800$, $2000$.
+  bilder: []
+  einordnung: |
+    Spricht gegen die exponentielle Fassung (FA) und für (A-pol); zusammen mit [[kn.satz.polynom_hindernis_fa]].

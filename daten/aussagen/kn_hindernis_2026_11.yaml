@@ -1,0 +1,77 @@
+gebiet: kn
+# Hindernis für die Annahme (FA) des bedingten Hauptsatzes (Forschungsnotiz November 2026,
+# forschung/polynom_halbexp/phase3/hindernis_2026_11/). Eingetragen am 23.11.2026.
+aussagen:
+
+- id: kn.satz.polynom_hindernis_fa
+  titel: 'Harmonisches Mass an der Spiralecke: (A-lok) und (FA) erzwingen riesige adjungierte Köpfe nahe L'
+  art: satz
+  ebene: B
+  status: bewiesen
+  niveau: forschung
+  objekte: [superfunktion, fixpunkt_L]
+  bereich: '$\mathcal C$ eine Kontur um $0$, deren Äusseres $U$ nahe $L$ ein Spiralsektor $\arg Z-T\log|Z|\in[\theta_-,\theta_+]$ der Öffnung $\Theta$ ist ($Z=(t-L)/\rho$); $h_n=\Lambda_n/\Lambda_n(L)$ Polynome in $1/t$ vom Grad $\le n$; $a=1+iL/(4\pi)$, $A=\operatorname{Re}a$, $T=\operatorname{Im}a/A$'
+  aussage: |
+    Es gelte $\log|h_n|\le b_n=O(\log n)$ auf $\mathcal C$ und $\log|h_n|\le-\eta n$ auf einem festen Bogen $F\subset\mathcal C$ fern der Ecken (Folgen von (A-lok) und (FA)).
+    Mit $p=\pi(1+T^2)/\Theta$ gilt: Ist $Ap<1$, so ist für jedes $R>0$ und alle grossen $n$
+    $$\log\max_{|t-L|=R\rho n^{-A}}|h_n(t)|\;\ge\;c_R\,n^{1-Ap}.$$
+    Für die Standardkontur ($\Sigma_1,\Sigma_2$ bei $u_A=80^\circ/-90^\circ$, $\Theta=170^\circ$) ist $1-Ap=0.0531$; die kritische Öffnung ist $\Theta_*=\pi A(1+T^2)=160.97^\circ$.
+    Die beschränkten Kreismaxima auf der Kegelskala (Satz K10, gemessen $3.63$) sind daher mit (A-lok) und (FA) **unverträglich**.
+    Umgekehrt: Aus (A-lok) und $M_n\le Cn^B$ auf einem solchen Kreis folgt $-\log m_n\le C_Rn^{Ap}\log(n+1)$ für das Maximum $m_n<1$ des fernen Teils — (FA) wäre falsch.
+    **Zusatz (ohne Bedingung):** Ist $\Theta>\pi$, so erfüllt keine Folge solcher $h_n$ mit $h_n(L)=1$ beide Kontur-Schranken; das Fenster $95^\circ/-110^\circ$ ist damit ausgeschlossen.
+  einfach: >-
+    Zwei Annahmen des bedingten Beweises — die Hilfsfunktionen sind auf der Kontur nahe L höchstens polynomial gross, weit weg sogar exponentiell klein — vertragen sich
+    nicht mit dem, was man an der Ecke ausgerechnet und gemessen hat. Wer weit weg so stark fällt, muss auf kleinen Kreisen um L riesig werden. Also ist sehr
+    wahrscheinlich die Annahme „exponentiell klein“ falsch; der Beweis braucht aber nur „polynomial beschränkt“.
+  beweis:
+    art: vollstaendig
+    text: |
+      $\log|h_n|$ ist subharmonisch im Äusseren $U$ (auch in $\infty$), also $\log|h_n|\le b_n-(b_n+\eta n)\,\omega$ mit dem harmonischen Mass $\omega$ von $F$ in $U$.
+      Die Abbildung $w=e^{-i\pi\theta_-/\Theta}\exp\bigl(\tfrac{\pi}{\Theta}(1-iT)\log Z\bigr)$ streckt den Spiralsektor auf eine halbe Kreisscheibe; $|w|\asymp|Z|^p$, und nach
+      Spiegelung und Randpunkt-Lemma $\omega\asymp\operatorname{Im}w$, also $\omega\ge c|Z|^p$ auf der mittleren Hälfte des Fensters. Auf dem Kreis $|Z|=Rn^{-A}$ belegt diese
+      einen festen Anteil $q=\Theta/(4\pi)$; der Mittelwert-Satz in $L$ (der Pol $0$ liegt ausserhalb der kleinen Scheibe) gibt
+      $0\le q(b_n-c'n^{1-Ap})+(1-q)\log M_n$. Zusatz: im Inneren gilt $\log|h_n|\le b_n+nG_I(t,0)$ und $G_I\le C|Z|^{p_i}$ mit $p_i=\pi(1+T^2)/(2\pi-\Theta)>p$ für $\Theta>\pi$;
+      bei festem kleinem $r$ wird der Kreismittelwert für grosse $n$ negativ. Schritt für Schritt nachgelesen und die Zahlen nachgerechnet am 23.11.2026.
+  stuetzt_sich_auf: []
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Fast: Zwei-Konstanten-Abschätzung mit dem harmonischen Mass, die Arbeit steckt im exakten Eckexponenten p.'
+    f2_benutzte_voraussetzungen: 'Nur die beiden Kontur-Schranken, h_n(L) = 1 und die Spiralform von 𝒞 bei L; keine Eigenschaft des Gamma-Profils.'
+    f3_spezialfall: 'Phragmén–Lindelöf / harmonisches Mass an Winkelecken; hier mit Log-Spiral-Ecke.'
+    f4_uebertragbar: 'Jede Kontur durch einen drehenden Randfixpunkt; jede Basis b > η.'
+    f5_neue_frage: 'Gilt die polynomiale Ersatzannahme (A-pol) auf der ganzen Kontur? (kn.verm.polynom_halbexp_kern)'
+  bewertung: {richtigkeit: 'bewiesen (nachgelesen); Zahlen nachgerechnet', neuheit: neu_ungeprueft, recherche: 'Standardwerkzeug; die Anwendung auf die Köpfe ist neu.', nutzen: 'Zeigt, dass eine Annahme des bedingten Hauptsatzes sehr wahrscheinlich falsch ist, und wodurch man sie ersetzt.', nutzen_stufe: hoch}
+  quellen: [{ref: notiz_polynom_hindernis2026, stelle: '§§1–3'}, {ref: team_polynom_halbexp, stelle: 'phase3/HAUPTSATZ_KR0.md §§1–2; phase3/k_kern/BERICHT §28.1(c), §35.1'}]
+  kanten:
+    - {typ: motiviert, ziel: kn.verm.polynom_halbexp_kern}
+    - {typ: verwandt, ziel: kn.satz.polynom_hauptsatz_kr0}
+    - {typ: verwandt, ziel: kn.beob.polynom_fernrate_potenz}
+    - {typ: verwandt, ziel: kn.satz.polynom_eckprofil}
+
+- id: kn.beob.polynom_fernrate_potenz
+  titel: 'Fern von L fallen die adjungierten Köpfe nur wie eine Potenz: n^{−5.734}, der Exponent aus dem ersten Mellin-Pol'
+  art: beobachtung
+  ebene: B
+  status: numerisch
+  niveau: forschung
+  objekte: [superfunktion, fixpunkt_L]
+  bereich: 'Kubisches Modell; ferner Teil der Kontur (Linse und äusserer Kreisbogen), $m_n=\max|\Lambda_n/\Lambda_n(L)|$ dort'
+  aussage: |
+    $n^{5.734123}\,m_n=1.975\cdot10^{11},\ 1.947\cdot10^{11},\ 1.951\cdot10^{11}$ bei $n=1400,\,1800,\,2000$ ($m_n=1.8\cdot10^{-7},\,4.2\cdot10^{-8},\,2.3\cdot10^{-8}$).
+    Der Exponent $\operatorname{Re}\bigl(a(2+2\pi i/L)\bigr)=5.734$ kommt vom ersten adjungierten Mellin-Pol und wurde unabhängig von diesen Werten berechnet.
+  einfach: >-
+    Weit weg von L werden die Hilfsfunktionen zwar klein, aber nur wie eine Potenz von n und nicht exponentiell. Der Exponent stimmt mit der Vorhersage aus der Ecke überein.
+  gegenbeispielsuche: >-
+    Drei gerundete Stichproben; ein exponentieller Abfall mit sehr kleiner Rate (≈ 0.0034 je Grad) passt auf diesem kurzen Stück ebenfalls. Entschieden wird es durch
+    kn.satz.polynom_hindernis_fa zusammen mit den beschränkten Kreismaxima, nicht durch die Zahlen allein.
+  experimente: []
+  pruefung:
+    f1_folgt_unmittelbar: 'Nein; Messung plus unabhängige Vorhersage des Exponenten.'
+    f2_benutzte_voraussetzungen: '—'
+    f3_spezialfall: '—'
+    f4_uebertragbar: 'Kneser selbst: kubisch und Kneser stimmen in den Köpfen auf < 1 % überein (V §3.22).'
+    f5_neue_frage: 'Beweis einer polynomialen Schranke für den fernen Teil (Teil von (A-pol)).'
+  bewertung: {richtigkeit: 'numerisch, drei Stichproben bis n = 2000', neuheit: vermutlich_neu, recherche: 'Teil der Phase-3-Messungen; keine Vorarbeit zu diesen Köpfen bekannt.', nutzen: 'Spricht gegen (FA) in exponentieller Form und für die polynomiale Ersatzannahme.', nutzen_stufe: mittel}
+  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/v_pruefstand/BERICHT §3.22 (Spalte R_A fern)'}, {ref: notiz_polynom_hindernis2026, stelle: '§4'}]
+  kanten:
+    - {typ: motiviert, ziel: kn.verm.polynom_halbexp_kern}

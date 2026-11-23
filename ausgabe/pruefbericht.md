@@ -1,8 +1,8 @@
 # Prüfbericht Tetrations-Wissensgraph
 
-652 Aussagen · 1439 Kanten · 57 Experimente
+654 Aussagen · 1444 Kanten · 57 Experimente
 
-**Effektiver Status:** bewiesen 238, numerisch 128, bewiesen_literatur 60, bedingt 55, vermutung 47, offen 43, skizze 33, definition 16, gescheitert 15, ueberholt 7, widerlegt 6, annahme 3, entlastet 1
+**Effektiver Status:** bewiesen 239, numerisch 129, bewiesen_literatur 60, bedingt 55, vermutung 47, offen 43, skizze 33, definition 16, gescheitert 15, ueberholt 7, widerlegt 6, annahme 3, entlastet 1
 
 **Zitate nicht am Original geprüft:** 134
 
@@ -55,7 +55,7 @@
 - `bw` — 83 von 85 Aussagen mit Theorie-Block
 - `gr` — 64 von 65 Aussagen mit Theorie-Block
 - `it` — 37 von 38 Aussagen mit Theorie-Block
-- `kn` — 227 von 232 Aussagen mit Theorie-Block
+- `kn` — 229 von 234 Aussagen mit Theorie-Block
 
 **uebersetzung-fortschritt** (7)
 
@@ -64,8 +64,8 @@
 - `bw` — 85 von 85 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 83 von 85 Theorie-Blöcken
 - `gr` — 65 von 65 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 64 von 65 Theorie-Blöcken
 - `it` — 38 von 38 Aussagen übersetzt (0 nicht aktuell, 0 gegengelesen), 37 von 38 Theorie-Blöcken
-- `kn` — 232 von 232 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 227 von 232 Theorie-Blöcken
-- `quelle` — 233 von 317 quelle-Gegenständen übersetzt
+- `kn` — 234 von 234 Aussagen übersetzt (0 nicht aktuell, 1 gegengelesen), 229 von 234 Theorie-Blöcken
+- `quelle` — 234 von 318 quelle-Gegenständen übersetzt
 
 **voraussetzung-offen** (3)
 

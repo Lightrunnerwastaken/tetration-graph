@@ -2238,7 +2238,7 @@ aussagen:
     - {typ: stuetzt, ziel: kn.satz.polynom_hauptsatz_kr0}
 
 - id: kn.verm.polynom_halbexp_kern
-  titel: 'Der offene Kern nach Phase 3: Eck-Pol-Antwort, ferne Raten und Familien-Kohärenz'
+  titel: 'Der offene Kern nach Phase 3: Eck-Pol-Antwort, polynomiale Köpfe und Familien-Kohärenz'
   art: vermutung
   ebene: B
   status: vermutung
@@ -2248,7 +2248,9 @@ aussagen:
   aussage: |
     Für den bedingten Hauptsatz (kn.satz.polynom_hauptsatz_kr0) fehlen drei Aussagen, alle numerisch mit Reserve erfüllt:
     **(G-P)** die Zuwächse der Eck-Pol-Antwort sind auf $K_{r_0}$ polynomial klein: $\sup_{K_{r_0}}|\Delta u_n|\le Cn^{\kappa_G}$ (gemessen $\kappa_G\approx-3.1$);
-    **(FA)** die adjungierten Köpfe fallen fern von $L$ auf $n$-ter-Wurzel-Ebene mit strikter Reserve (Linse $-0.013$, $\Gamma_{\rm out}$-Bogen $-0.037$ je Grad);
+    **(A-pol)** die normierten adjungierten Köpfe sind auf der ganzen Kontur polynomial beschränkt, $\max_{\mathcal C}|\Lambda_n/\Lambda_n(L)|\le Cn^b$ mit $\kappa_G+b<-1$
+    (gemessen: längs der Spiralen bei $L$ höchstens $1.008$, fern fallend wie $n^{-5.73}$). Sie ersetzt (A-lok) und die frühere Fernrate (FA) auf $n$-ter-Wurzel-Ebene;
+    (FA) ist mit dem Eckprofil unverträglich (kn.satz.polynom_hindernis_fa);
     **(Fam-koh)** für die Fast-Lösungen gibt es Keim-Repräsentanten, deren mit $|\Lambda_N/\Lambda_N(L)|$ gewichteter Abstand zu $f_K$ auf der Kontur polynomial bleibt
     (gemessen $\sim N^{-4.7}$, $3\cdot10^{-16}$ bei $N=2000$, für jede Linse).
     Alle drei sind Kohärenzaussagen an Stellen, an denen sich ein wachsender und ein fallender Faktor genau ausgleichen; jede Abschätzung, die die Faktoren einzeln beschränkt, hat dort keine Reserve.
@@ -2257,7 +2259,8 @@ aussagen:
     das zeigt, wie zwei sich exakt aufhebende Grössen zusammen schwingen — so ein Werkzeug fehlt bisher.
   gegenbeispielsuche: >-
     Stärkere Fassungen sind gemessen falsch: Familien-Repräsentant ohne Gewicht auf dicker Linse (wächst e^{0.0137N}), primale Reserve auf n-ter-Wurzel-Ebene (H_P ≡ 0, Lemma K20),
-    gleichmässige Konvergenz bis an L (kn.beob.polynom_rand_plateau). Die benannten Fassungen halten bis N = 2000 bzw. 3000.
+    gleichmässige Konvergenz bis an L (kn.beob.polynom_rand_plateau), exponentieller Abfall der adjungierten Köpfe fern von L (kn.satz.polynom_hindernis_fa).
+    Die benannten Fassungen halten bis N = 2000 bzw. 3000.
   experimente: [exp.polynom_phase3]
   pruefung:
     f1_folgt_unmittelbar: 'Nein.'
@@ -2266,7 +2269,9 @@ aussagen:
     f4_uebertragbar: 'Gleiche Form für jede Basis b > η.'
     f5_neue_frage: 'Ein Riemann–Hilbert-Rahmen mit Verschiebung, der beide Kanäle (Komposition und Multiplikation) an L enthält.'
   bewertung: {richtigkeit: 'numerisch, mit Reserve; von zwei Strängen unabhängig gemessen', neuheit: vermutlich_neu, recherche: 'Phasen 1–3 und GPT-Strang: keine passende Theorie gefunden (Problemblatt OPEN_PROBLEM_2_en.md).', nutzen: 'Die einzige verbleibende Lücke zum Beweis der Polynom-Wurzel-Vermutung in der K_{r₀}-Fassung.', nutzen_stufe: hoch}
-  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/HAUPTSATZ_KR0.md §2, phase3/KERNPROBLEM.md, phase3/OFFENES_PROBLEM_2.md'}]
+  quellen: [{ref: team_polynom_halbexp, stelle: 'phase3/HAUPTSATZ_KR0.md §2, phase3/KERNPROBLEM.md, phase3/OFFENES_PROBLEM_2.md'}, {ref: notiz_polynom_hindernis2026, stelle: '§§2, 4'}]
+  versionen:
+    - {datum: '2026-11-23', fassung: 'Graph', aenderung: '(FA) durch die schwächere Annahme (A-pol) ersetzt; Satz A braucht nur polynomiale Köpfe auf der Kontur.', grund: 'Hindernis kn.satz.polynom_hindernis_fa (Forschungsnotiz November 2026, nachgelesen).'}
   kanten:
     - {typ: motiviert, ziel: kn.satz.polynom_hauptsatz_kr0}
     - {typ: verwandt, ziel: kn.verm.polynom_halbexp_eckmoden}

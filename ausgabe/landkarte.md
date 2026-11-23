@@ -2,15 +2,15 @@
 
 Hauptideen und Unterideen mit Füllstand (Status der Aussagen), Herkunft (Literatur / Forum / nur eigene Arbeit) und den offenen Aussagen (Vermutungen, Fragen, Annahmen, bedingte Sätze; nach Tragweite). Erzeugt von baue.py.
 
-## Fraktionale Fortsetzung (177 Aussagen)
+## Fraktionale Fortsetzung (179 Aussagen)
 
 Wie man T(x) zwischen den ganzen Höhen festlegt — und welche Wahl die natürliche ist.
 
-Stand: bewiesen 76, bedingt 22, numerisch 39, Vermutung 20, offen 17, verworfen 3 · Literatur 59 / Forum 23 / eigen 95
+Stand: bewiesen 77, bedingt 22, numerisch 40, Vermutung 20, offen 17, verworfen 3 · Literatur 59 / Forum 26 / eigen 94
 
 - **Kneser über η** (37): bewiesen 15, bedingt 4, numerisch 13, Vermutung 3, offen 1, verworfen 1 · Literatur 15 / Forum 0 / eigen 22 · offen: kn.frage.verzweigung_abstand, kn.satz.komplex_radius, kn.satz.slog_periodische_halbebene, kn.satz.taylor_darboux, kn.verm.a0_rand, kn.verm.slog_verzweigung_genau, kn.verm.zusatzsingularitaet_bahnwert
 - **Reelle Kennzeichnung?** (29): bewiesen 11, bedingt 6, numerisch 6, Vermutung 1, offen 5 · Literatur 1 / Forum 2 / eigen 26 · offen: br.satz.sehnenkriterium, br.frage.bohr_mollerup, br.frage.halbebene_eindeutigkeit, br.frage.momente_doppelpunkt, br.frage.momentenfamilie, br.frage.vertauschtes_kneser, br.satz.momente_cauchy, br.verm.verbiegung_hauptblatt
-- **Halbe Exponentialfunktion** (27): bewiesen 9, bedingt 6, numerisch 6, Vermutung 4, verworfen 2 · Literatur 7 / Forum 1 / eigen 19 · offen: kn.satz.halbexp_beschraenkt, kn.satz.polynom_halbexp_hauptsatz, kn.satz.polynom_halbexp_reduktion, kn.satz.polynom_hauptsatz_kr0, kn.verm.polynom_halbexp, kn.verm.polynom_halbexp_eckmoden, kn.verm.polynom_halbexp_kern, kn.verm.polynom_halbexp_schranke
+- **Halbe Exponentialfunktion** (29): bewiesen 10, bedingt 6, numerisch 7, Vermutung 4, verworfen 2 · Literatur 7 / Forum 4 / eigen 18 · offen: kn.satz.halbexp_beschraenkt, kn.satz.polynom_halbexp_hauptsatz, kn.satz.polynom_halbexp_reduktion, kn.satz.polynom_hauptsatz_kr0, kn.verm.polynom_halbexp, kn.verm.polynom_halbexp_eckmoden, kn.verm.polynom_halbexp_kern, kn.verm.polynom_halbexp_schranke
 - **Andere Konstruktionen** (23): bewiesen 10, bedingt 1, numerisch 3, Vermutung 5, offen 4 · Literatur 10 / Forum 11 / eigen 2 · offen: kn.frage.abel_bruchsumme, kn.frage.tpid14, kn.frage.tpid16, kn.frage.tpid17, kn.verm.carleman_eigenwerte, kn.verm.carleman_kneser, kn.verm.szekeres_wachstum, kn.verm.tpid3 …
 - **Der Grenzfall η** (21): bewiesen 8, bedingt 2, numerisch 5, Vermutung 2, offen 4 · Literatur 10 / Forum 3 / eigen 8 · offen: br.frage.implosion, kl.frage.eta_analytisch, kl.frage.eta_flacher_rest, kl.frage.stetig_eta, kl.verm.eta_glatt_nicht_analytisch, kl.verm.lambert_zeta
 - **Regulär unter η** (20): bewiesen 10, bedingt 3, numerisch 3, Vermutung 3, offen 1 · Literatur 10 / Forum 3 / eigen 7 · offen: kl.verm.streifenbreite, kl.verm.vollmonoton, kl.frage.tpid5, kl.satz.folgen_vollmonoton, kl.satz.newton_reihe, kl.verm.faktor
@@ -121,9 +121,9 @@ Stand: bewiesen 9, offen 3, verworfen 1 · Literatur 10 / Forum 2 / eigen 1
 ## Stärkste Kopplungen zwischen Hauptideen
 
 - Fraktionale Fortsetzung — Höhere Stufen: 91.3
-- Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 83.14
+- Fraktionale Fortsetzung — Die Gleichung T(x+1) = aᵀ⁽ˣ⁾: 83.36
 - Dynamik von bᶻ und der Fixpunkt L — Fraktionale Fortsetzung: 69.87
-- Fraktionale Fortsetzung — Zahlen und Arithmetik: 62.57
+- Fraktionale Fortsetzung — Zahlen und Arithmetik: 62.73
 - Basiswechsel T ∘ slog — Fraktionale Fortsetzung: 51.36
 - Dynamik von bᶻ und der Fixpunkt L — Höhere Stufen: 42.69
 - Basiswechsel T ∘ slog — Höhere Stufen: 39.36

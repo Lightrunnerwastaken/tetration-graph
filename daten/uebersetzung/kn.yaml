@@ -1385,6 +1385,47 @@
       3. Coherent inputs (Kneser's solution, pole responses) have almost no share in this direction, which is why the error stays small.
     worum: |
       Why do proofs with norm estimates fail? Because the equations have a weak spot at $L$ that grows exponentially with the degree — and which nevertheless does not disturb Kneser's solution.
+- id: kn.beob.polynom_fernrate_potenz
+  quelle_hash: 54f2d13d911a
+  theorie_hash: 49e511b5a6ec
+  herkunft:
+    modell: opus
+    datum: '2026-11-23'
+  geprueft: nein
+  en:
+    titel: 'Far from L the adjoint heads decay only like a power: n^{−5.734}, the exponent from the first Mellin pole'
+    bereich: Cubic model; far part of the contour (lens and outer circular arc), $m_n=\max|\Lambda_n/\Lambda_n(L)|$ there
+    aussage: |
+      $n^{5.734123}\,m_n=1.975\cdot10^{11},\ 1.947\cdot10^{11},\ 1.951\cdot10^{11}$ at $n=1400,\,1800,\,2000$ ($m_n=1.8\cdot10^{-7},\,4.2\cdot10^{-8},\,2.3\cdot10^{-8}$).
+      The exponent $\operatorname{Re}\bigl(a(2+2\pi i/L)\bigr)=5.734$ comes from the first adjoint Mellin pole and was computed independently of these values.
+    einfach: Far away from L the auxiliary functions do become small, but only like a power of n and not exponentially. The exponent agrees with
+      the prediction from the corner.
+    gegenbeispielsuche: Three rounded samples; an exponential decay with a very small rate (≈ 0.0034 per degree) also fits this short stretch.
+      The decision comes from kn.satz.polynom_hindernis_fa together with the bounded circle maxima, not from the numbers alone.
+    quellen:
+    - stelle: phase3/v_pruefstand/BERICHT §3.22 (column R_A fern)
+    - stelle: §4
+    pruefung:
+      f1_folgt_unmittelbar: No; measurement plus an independent prediction of the exponent.
+      f2_benutzte_voraussetzungen: —
+      f3_spezialfall: —
+      f4_uebertragbar: 'Kneser itself: cubic model and Kneser agree in the heads to < 1 % (V §3.22).'
+      f5_neue_frage: Proof of a polynomial bound for the far part (part of (A-pol)).
+    bewertung:
+      richtigkeit: numerical, three samples up to n = 2000
+      recherche: Part of the phase 3 measurements; no prior work on these heads known.
+      nutzen: Speaks against (FA) in exponential form and for the polynomial replacement.
+  en_theorie:
+    worum: |
+      How fast do the adjoint heads become small far away from the corner?
+    genau: |
+      Like $n^{-5.734}$; the exponent is $\operatorname{Re}(a(2+2\pi i/L))$ with $a=1+iL/(4\pi)$.
+    warum: |
+      The first pole of the Mellin transform of the adjoint corner profile determines how strongly the corner reaches into the far part.
+    beispiel: |
+      $n^{5.734}m_n\approx1.95\cdot10^{11}$ at $n=1400$, $1800$, $2000$.
+    einordnung: |
+      Speaks against the exponential version (FA) and for (A-pol); together with [[kn.satz.polynom_hindernis_fa]].
 - id: kn.beob.polynom_halbexp_fehlergesetz
   quelle_hash: 296484c53de3
   theorie_hash: 03f99f9f2083
@@ -7746,6 +7787,66 @@
       4. **Start:** [[kn.satz.polynom_zweig_400]].
     worum: |
       The state of the proof after three working phases, in the version that covers everything the conjecture is about.
+- id: kn.satz.polynom_hindernis_fa
+  quelle_hash: 4ecb4a36f208
+  theorie_hash: 2e745b116609
+  herkunft:
+    modell: opus
+    datum: '2026-11-23'
+  geprueft: nein
+  en:
+    titel: 'Harmonic measure at the spiral corner: (A-lok) and (FA) force huge adjoint heads near L'
+    bereich: $\mathcal C$ a contour around $0$ whose exterior $U$ is, near $L$, a spiral sector $\arg Z-T\log|Z|\in[\theta_-,\theta_+]$ of opening
+      $\Theta$ ($Z=(t-L)/\rho$); $h_n=\Lambda_n/\Lambda_n(L)$ polynomials in $1/t$ of degree $\le n$; $a=1+iL/(4\pi)$, $A=\operatorname{Re}a$,
+      $T=\operatorname{Im}a/A$
+    aussage: |
+      Suppose $\log|h_n|\le b_n=O(\log n)$ on $\mathcal C$ and $\log|h_n|\le-\eta n$ on a fixed arc $F\subset\mathcal C$ away from the corners (consequences of (A-lok) and (FA)).
+      With $p=\pi(1+T^2)/\Theta$: if $Ap<1$, then for every $R>0$ and all large $n$
+      $$\log\max_{|t-L|=R\rho n^{-A}}|h_n(t)|\;\ge\;c_R\,n^{1-Ap}.$$
+      For the standard contour ($\Sigma_1,\Sigma_2$ at $u_A=80^\circ/-90^\circ$, $\Theta=170^\circ$) one has $1-Ap=0.0531$; the critical opening is $\Theta_*=\pi A(1+T^2)=160.97^\circ$.
+      The bounded circle maxima on the cone scale (Theorem K10, measured $3.63$) are therefore **incompatible** with (A-lok) and (FA).
+      Conversely: (A-lok) and $M_n\le Cn^B$ on one such circle give $-\log m_n\le C_Rn^{Ap}\log(n+1)$ for the maximum $m_n<1$ of the far part — (FA) would be false.
+      **Addendum (unconditional):** if $\Theta>\pi$, no sequence of such $h_n$ with $h_n(L)=1$ satisfies both contour bounds; this rules out the window $95^\circ/-110^\circ$.
+    einfach: Two assumptions of the conditional proof — the auxiliary functions are at most polynomially large on the contour near L, and even
+      exponentially small far away — do not fit together with what was computed and measured at the corner. Whatever falls that strongly far away
+      must become huge on small circles around L. So the assumption "exponentially small" is very likely false; the proof only needs "polynomially
+      bounded".
+    beweis:
+      text: |
+        $\log|h_n|$ is subharmonic in the exterior $U$ (also at $\infty$), hence $\log|h_n|\le b_n-(b_n+\eta n)\,\omega$ with the harmonic measure $\omega$ of $F$ in $U$.
+        The map $w=e^{-i\pi\theta_-/\Theta}\exp\bigl(\tfrac{\pi}{\Theta}(1-iT)\log Z\bigr)$ straightens the spiral sector onto a half disk; $|w|\asymp|Z|^p$, and after
+        reflection and the boundary point lemma $\omega\asymp\operatorname{Im}w$, so $\omega\ge c|Z|^p$ on the middle half of the window. On the circle $|Z|=Rn^{-A}$ this occupies
+        a fixed fraction $q=\Theta/(4\pi)$; the mean value inequality at $L$ (the pole $0$ lies outside the small disk) gives
+        $0\le q(b_n-c'n^{1-Ap})+(1-q)\log M_n$. Addendum: inside, $\log|h_n|\le b_n+nG_I(t,0)$ and $G_I\le C|Z|^{p_i}$ with $p_i=\pi(1+T^2)/(2\pi-\Theta)>p$ for $\Theta>\pi$;
+        for a fixed small $r$ the circle mean becomes negative for large $n$. Checked step by step and the numbers recomputed on 23.11.2026.
+    quellen:
+    - stelle: §§1–3
+    - stelle: phase3/HAUPTSATZ_KR0.md §§1–2; phase3/k_kern/BERICHT §28.1(c), §35.1
+    pruefung:
+      f1_folgt_unmittelbar: 'Almost: a two-constants estimate with harmonic measure; the work lies in the exact corner exponent p.'
+      f2_benutzte_voraussetzungen: Only the two contour bounds, h_n(L) = 1 and the spiral shape of 𝒞 at L; no property of the Gamma profile.
+      f3_spezialfall: Phragmén–Lindelöf / harmonic measure at angular corners; here with a log-spiral corner.
+      f4_uebertragbar: Every contour through a rotating boundary fixed point; every base b > η.
+      f5_neue_frage: Does the polynomial replacement (A-pol) hold on the whole contour? (kn.verm.polynom_halbexp_kern)
+    bewertung:
+      richtigkeit: proven (checked); numbers recomputed
+      recherche: Standard tool; the application to the heads is new.
+      nutzen: Shows that one assumption of the conditional main theorem is very likely false, and what replaces it.
+  en_theorie:
+    worum: |
+      Do the assumptions of the conditional main theorem fit together at all? For two of them together with the measured corner behavior: no.
+    genau: |
+      If the normalized adjoint heads $h_n$ are polynomially bounded on the whole contour and exponentially small on a far arc, then
+      $\log\max|h_n|\ge c\,n^{1-Ap}$ on every circle $|t-L|=R\rho n^{-A}$, as soon as the exterior opening $\Theta$ exceeds $\Theta_*=160.97^\circ$. The standard contour has $170^\circ$.
+    warum: |
+      1. A function that is very small on a piece of the boundary is also small inside, weighted with the harmonic measure of that piece.
+      2. At the spiral corner the harmonic measure decays like $|t-L|^p$ with $p=\pi(1+T^2)/\Theta$. On the circle of radius $n^{-A}$ it is still about $n^{-Ap}$, and $n\cdot n^{-Ap}\to\infty$.
+      3. At $L$ we have $h_n=1$, and the logarithm satisfies the mean value inequality. If it is very negative on a fixed part of the circle, it must be very large elsewhere.
+    beispiel: |
+      $A=0.8936$, $T=0.02833$: at $\Theta=170^\circ$ one has $Ap=0.9469$, and the lower bound grows like $n^{0.053}$; at $\Theta=150^\circ$ one has $Ap>1$, no contradiction.
+      Measured, the circle maximum stays at $3.63$ ($n=200$–$600$).
+    einordnung: |
+      Leads to the replacement assumption (A-pol) in [[kn.verm.polynom_halbexp_kern]]; data: [[kn.beob.polynom_fernrate_potenz]]. The main theorem [[kn.satz.polynom_hauptsatz_kr0]] stands with (A-pol).
 - id: kn.satz.polynom_modelle
   quelle_hash: 490c3f1b8e04
   theorie_hash: 59682bfff6b8
@@ -10342,8 +10443,8 @@
     worum: |
       The only place where the proof still depends on an assumption: How strongly is the weak spot at $L$ excited by a “kick” (a pole) very near $L$?
 - id: kn.verm.polynom_halbexp_kern
-  quelle_hash: f46717bd399c
-  theorie_hash: 446794399d41
+  quelle_hash: b6a17141c4c6
+  theorie_hash: 00e06ced6b76
   herkunft:
     modell: sonnet
     datum: '2026-10-12'
@@ -10355,8 +10456,8 @@
     zusatz: nein
   en:
     gegenbeispielsuche: 'Stronger versions are measured to be false: family representative without weight on a thick lens (grows like e^{0.0137N}),
-      primal reserve at the n-th-root level (H_P ≡ 0, Lemma K20), uniform convergence up to L (kn.beob.polynom_rand_plateau). The named versions
-      hold up to N = 2000 and 3000, respectively.'
+      primal reserve at the n-th-root level (H_P ≡ 0, Lemma K20), uniform convergence up to L (kn.beob.polynom_rand_plateau), exponential decay
+      of the adjoint heads far from L (kn.satz.polynom_hindernis_fa). The named versions hold up to N = 2000 and 3000, respectively.'
     pruefung:
       f2_benutzte_voraussetzungen: —
       f5_neue_frage: A Riemann–Hilbert framework with shift that contains both channels (composition and multiplication) at L.
@@ -10367,11 +10468,13 @@
       recherche: 'Phases 1–3 and GPT strand: no suitable theory found (problem sheet OPEN_PROBLEM_2_en.md).'
       nutzen: The only remaining gap to the proof of the polynomial-root conjecture in the K_{r₀} version.
       richtigkeit: numerical, with reserve; measured independently by two strands
-    titel: 'The open core after phase 3: corner-pole response, far rates and family coherence'
+    titel: 'The open core after phase 3: corner-pole response, polynomial heads and family coherence'
     aussage: |
       For the conditional main theorem (kn.satz.polynom_hauptsatz_kr0) three statements are missing, all satisfied numerically with reserve:
       **(G-P)** the increments of the corner-pole response are polynomially small on $K_{r_0}$: $\sup_{K_{r_0}}|\Delta u_n|\le Cn^{\kappa_G}$ (measured $\kappa_G\approx-3.1$);
-      **(FA)** the adjoint heads decay far from $L$ at the level of $n$-th roots with strict reserve (lens $-0.013$, $\Gamma_{\rm out}$ arc $-0.037$ per degree);
+      **(A-pol)** the normalized adjoint heads are polynomially bounded on the whole contour, $\max_{\mathcal C}|\Lambda_n/\Lambda_n(L)|\le Cn^b$ with $\kappa_G+b<-1$
+      (measured: along the spirals at $L$ at most $1.008$, far away decaying like $n^{-5.73}$). It replaces (A-lok) and the former far rate (FA) at the level of $n$-th roots;
+      (FA) is incompatible with the corner profile (kn.satz.polynom_hindernis_fa);
       **(Fam-koh)** for the near-solutions there are germ representatives whose distance to $f_K$ on the contour, weighted with $|\Lambda_N/\Lambda_N(L)|$, remains polynomial
       (measured $\sim N^{-4.7}$, $3\cdot10^{-16}$ at $N=2000$, for every lens).
       All three are coherence statements at places where a growing and a decaying factor balance exactly; every estimate that bounds the factors individually has no reserve there.
@@ -10380,14 +10483,18 @@
       computations. Proving them requires a tool that shows how two exactly canceling quantities oscillate together — such a tool is so far missing.
     quellen:
     - stelle: phase3/HAUPTSATZ_KR0.md §2, phase3/KERNPROBLEM.md, phase3/OFFENES_PROBLEM_2.md
+    - stelle: §§2, 4
+    versionen:
+    - aenderung: (FA) replaced by the weaker assumption (A-pol); Theorem A only needs polynomial heads on the contour.
+      grund: Obstruction kn.satz.polynom_hindernis_fa (research note, November 2026, checked).
   en_theorie:
     beispiel: |
-      Measured up to $N=2000$: increments of the corner-pole response fall like $n^{-3.1}$; far adjoint rates $-0.013$ and $-0.037$ per degree, respectively; weighted family distance $3\cdot10^{-16}$.
+      Measured up to $N=2000$: increments of the corner-pole response fall like $n^{-3.1}$; adjoint heads at most $1.008$ along the spirals, far away decaying like $n^{-5.73}$; weighted family distance $3\cdot10^{-16}$.
     einordnung: |
       Replaces the older assumption [[kn.verm.polynom_halbexp_eckmoden]] for the new target version; failed proof routes in [[kn.gescheitert.polynom_ecke_wege]]; problem sheet for specialists:
       forschung/polynom_halbexp/phase3/OPEN_PROBLEM_2_en.md.
     genau: |
-      Three coherence statements — (G-P) the response to the pole at $L$, (FA) the far rates of the adjoint heads, (Fam-koh) the closeness of the near-solutions in weighted form.
+      Three coherence statements — (G-P) the response to the pole at $L$, (A-pol) polynomial bounds for the adjoint heads on the whole contour, (Fam-koh) the closeness of the near-solutions in weighted form.
     warum: |
       1. The inverse of the equations splits exactly into rank-1 building blocks (“heads”).
       2. Each head is a product of a growing and a falling factor. At the critical places the two rates cancel exactly.
